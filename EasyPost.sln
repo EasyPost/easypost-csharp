@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPost", "EasyPost\EasyPost.csproj", "{69683F8C-9306-4ED3-90BD-1F5C2F6977E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPostTest", "EasyPostTest\EasyPostTest.csproj", "{71AD44B9-6267-4897-91D6-544D7F5C7677}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69683F8C-9306-4ED3-90BD-1F5C2F6977E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69683F8C-9306-4ED3-90BD-1F5C2F6977E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69683F8C-9306-4ED3-90BD-1F5C2F6977E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69683F8C-9306-4ED3-90BD-1F5C2F6977E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71AD44B9-6267-4897-91D6-544D7F5C7677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71AD44B9-6267-4897-91D6-544D7F5C7677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71AD44B9-6267-4897-91D6-544D7F5C7677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71AD44B9-6267-4897-91D6-544D7F5C7677}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
