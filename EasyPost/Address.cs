@@ -98,12 +98,12 @@ namespace EasyPost {
         /// Verify an address.
         /// </summary>
         /// <returns>EasyPost.Address isntance. Check message for verification failures.</returns>
-        public Address Verify() {
+        public void Verify() {
             Request request = new Request("addresses/{id}/verify");
             request.RootElement = "address";
             request.AddUrlSegment("id", id);
 
-            return client.Execute<Address>(request);
+            Resource.Merge(this, client.Execute<Address>(request));
         }
     }
 }

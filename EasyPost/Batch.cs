@@ -39,6 +39,7 @@ namespace EasyPost {
         public static Batch Retrieve(string id) {
             Request request = new Request("batches/{id}");
             request.AddUrlSegment("id", id);
+
             return client.Execute<Batch>(request);
         }
 
@@ -66,12 +67,12 @@ namespace EasyPost {
         /// </summary>
         /// <param name="shipmentIds"></param>
         /// <returns></returns>
-        public Batch AddShipments(List<string> shipmentIds) {
+        public void AddShipments(List<string> shipmentIds) {
             Request request = new Request("batchs/{id}/add_shipments");
             request.AddUrlSegment("id", id);
             request.addBody(shipmentIds, "shipments");
 
-            return client.Execute<Batch>(request);
+            Resource.Merge(this, client.Execute<Batch>(request));
         }
 
         /// <summary>
@@ -79,23 +80,22 @@ namespace EasyPost {
         /// </summary>
         /// <param name="shipmentIds"></param>
         /// <returns></returns>
-        public Batch RemoveShipments(List<string> shipmentIds) {
+        public void RemoveShipments(List<string> shipmentIds) {
             Request request = new Request("batchs/{id}/remove_shipments");
             request.AddUrlSegment("id", id);
             request.addBody(shipmentIds, "shipments");
 
-            return client.Execute<Batch>(request);
+            Resource.Merge(this, client.Execute<Batch>(request));
         }
 
         /// <summary>
         /// Purchase all shipments within a batch. The Batch's state must be "created" before purchasing.
         /// </summary>
-        /// <returns>EasyPost.Buy instance.</returns>
-        public Batch Buy() {
+        public void Buy() {
             Request request = new Request("batches/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
 
-            return client.Execute<Batch>(request);
+            Resource.Merge(this, client.Execute<Batch>(request));
         }
 
         /// <summary>
@@ -103,8 +103,7 @@ namespace EasyPost {
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2"</param>
         /// <param name="orderBy">Optional parameter to order the generated label. Ex: "reference DESC"</param>
-        /// <returns></returns>
-        public Batch GenerateLabel(string fileFormat, string orderBy = null) {
+        public void GenerateLabel(string fileFormat, string orderBy = null) {
             string body = String.Join("&", new List<string>() {
                 string.Concat(Uri.EscapeDataString("file_format"), "=", Uri.EscapeDataString(fileFormat)),
                 string.Concat(Uri.EscapeDataString("order_by"), "=", Uri.EscapeDataString(orderBy))
@@ -114,18 +113,17 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
             request.AddParameter("application/x-www-form-urlencoded", body, ParameterType.RequestBody);
 
-            return client.Execute<Batch>(request);
+            Resource.Merge(this, client.Execute<Batch>(request));
         }
 
         /// <summary>
         /// Asychronously generate a scan from for the batch.
         /// </summary>
-        /// <returns>EasyPost.Batch instance.</returns>
-        public Batch GenerateScanForm() {
+        public void GenerateScanForm() {
             Request request = new Request("batches/{id}/scan_form", Method.POST);
             request.AddUrlSegment("id", id);
 
-            return client.Execute<Batch>(request);
+            Resource.Merge(this, client.Execute<Batch>(request));
         }
     }
 }

@@ -55,12 +55,12 @@ namespace EasyPostTest {
             Assert.AreEqual(batch.state, "creating");
 
             while (batch.state == "creating") { batch = Batch.Retrieve(batch.id); }
-            batch = batch.Buy();
+            batch.Buy();
 
             while (batch.state == "created") { batch = Batch.Retrieve(batch.id); }
             Assert.AreEqual(batch.state, "purchased");
 
-            batch = batch.GenerateLabel("pdf", orderBy: "reference DESC");
+            batch.GenerateLabel("pdf", orderBy: "reference DESC");
             Assert.AreEqual(batch.state, "label_generating");
 
             batch.GenerateScanForm();

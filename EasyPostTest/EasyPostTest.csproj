@@ -60,6 +60,7 @@
     <Compile Include="RequestTest.cs" />
     <Compile Include="CustomsInfoTest.cs" />
     <Compile Include="CustomsItemTest.cs" />
+    <Compile Include="ResourceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EasyPost\EasyPost.csproj">

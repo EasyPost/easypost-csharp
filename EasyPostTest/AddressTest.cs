@@ -56,7 +56,7 @@ namespace EasyPostTest {
                 {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}
             };
             Address address = Address.Create(parameters);
-            address = address.Verify();
+            address.Verify();
             Assert.IsNotNull(address.id);
             Assert.AreEqual(address.company, "Simpler Postage Inc");
             Assert.IsNull(address.name);
