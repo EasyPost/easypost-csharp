@@ -27,47 +27,83 @@ namespace EasyPost {
 
         private static Client client = new Client();
 
+        /// <summary>
+        /// Retrieve an Address from its id.
+        /// </summary>
+        /// <param name="id">String representing an Address. Starts with "adr_".</param>
+        /// <returns>EasyPost.Address instance.</returns>
         public static Address Retrieve(string id) {
-            Request request = new Request("addresses/{id}", Method.GET);
+            Request request = new Request("addresses/{id}");
             request.AddUrlSegment("id", id);
 
             return client.Execute<Address>(request);
         }
 
-        public static Address Create(string name = null, string company = null, string street1 = null, string street2 = null, string city = null,
-                                     string state = null, string zip = null, string country = null, string phone = null, string email = null) {
+        /// <summary>
+        /// Create an Address.
+        /// </summary>
+        /// <param name="parameters">
+        /// Optional dictionary containing parameters to create the address with. Valid pairs:
+        ///   * {"name", string}
+        ///   * {"company", string}
+        ///   * {"stree1", string}
+        ///   * {"street2", string}
+        ///   * {"city", string}
+        ///   * {"state", string}
+        ///   * {"zip", string}
+        ///   * {"country", string}
+        ///   * {"phone", string}
+        ///   * {"email", string}
+        /// All invalid keys will be ignored.
+        /// </param>
+        /// <returns>EasyPost.Address instance.</returns>
+        public static Address Create(Dictionary<string, object> parameters = null) {
+            parameters = parameters ?? new Dictionary<string, object>();
+
             Request request = new Request("addresses", Method.POST);
-            addPayload(request, name, company, street1, street2, city, state, zip, country, phone, email);
+            request.addBody(parameters, "address");
+
             return client.Execute<Address>(request);
         }
 
-        public static Address CreateAndVerify(string name = null, string company = null, string street1 = null, string street2 = null, string city = null,
-                                              string state = null, string zip = null, string country = null, string phone = null, string email = null) {
+        /// <summary>
+        /// Create and verify an Address.
+        /// </summary>
+        /// <param name="parameters">
+        /// Optional dictionary containing parameters to create the address with. Valid pairs:
+        ///   * {"name", string}
+        ///   * {"company", string}
+        ///   * {"stree1", string}
+        ///   * {"street2", string}
+        ///   * {"city", string}
+        ///   * {"state", string}
+        ///   * {"zip", string}
+        ///   * {"country", string}
+        ///   * {"phone", string}
+        ///   * {"email", string}
+        /// All invalid keys will be ignored.
+        /// </param>
+        /// <returns>EasyPost.Address instance.</returns>
+        public static Address CreateAndVerify(Dictionary<string, object> parameters = null) {
+            parameters = parameters ?? new Dictionary<string, object>();
+
             Request request = new Request("addresses/create_and_verify", Method.POST);
             request.RootElement = "address";
-            addPayload(request, name, company, street1, street2, city, state, zip, country, phone, email);
+            request.addBody(parameters, "address");
+
             return client.Execute<Address>(request);
         }
 
+        /// <summary>
+        /// Verify an address.
+        /// </summary>
+        /// <returns>EasyPost.Address isntance. Check message for verification failures.</returns>
         public Address Verify() {
-            Request request = new Request("addresses/{id}/verify", Method.GET);
+            Request request = new Request("addresses/{id}/verify");
             request.RootElement = "address";
             request.AddUrlSegment("id", id);
-            return client.Execute<Address>(request);
-        }
 
-        private static void addPayload(Request request, string name, string company, string street1, string street2,
-                                       string city, string state, string zip, string country, string phone, string email) {
-            request.addPayload("address[name]", name);
-            request.addPayload("address[company]", company);
-            request.addPayload("address[street1]", street1);
-            request.addPayload("address[street2]", street2);
-            request.addPayload("address[city]", city);
-            request.addPayload("address[state]", state);
-            request.addPayload("address[zip]", zip);
-            request.addPayload("address[country]", country);
-            request.addPayload("address[phone]", phone);
-            request.addPayload("address[email]", email);
+            return client.Execute<Address>(request);
         }
     }
 }

@@ -53,10 +53,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AddressTest.cs" />
+    <Compile Include="BatchTest.cs" />
     <Compile Include="ClientTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AddressTest.cs" />
     <Compile Include="RequestTest.cs" />
+    <Compile Include="CustomsInfoTest.cs" />
+    <Compile Include="CustomsItemTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EasyPost\EasyPost.csproj">

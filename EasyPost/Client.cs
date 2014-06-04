@@ -27,7 +27,7 @@ namespace EasyPost {
             if (response.ErrorMessage != null) {
                 throw new InvalidRequest(response.ErrorMessage);
             }  else if (response.StatusCode == HttpStatusCode.BadRequest) {
-                string message = JsonConvert.DeserializeObject<IDictionary<string, string>>(response.Content)["error"];
+                string message = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response.Content)["error"]["message"];
                 throw new InvalidRequest(message);
             } else if (response.StatusCode == HttpStatusCode.NotFound) {
                 throw new ResourceNotFound();

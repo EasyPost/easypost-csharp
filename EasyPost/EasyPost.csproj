@@ -47,10 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
+    <Compile Include="Batch.cs" />
+    <Compile Include="CustomsInfo.cs" />
+    <Compile Include="CustomsItem.cs" />
     <Compile Include="Exception.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs" />
+    <Compile Include="ScanForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
