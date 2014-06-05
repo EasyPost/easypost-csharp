@@ -61,6 +61,10 @@
     <Compile Include="CustomsInfoTest.cs" />
     <Compile Include="CustomsItemTest.cs" />
     <Compile Include="ResourceTest.cs" />
+    <Compile Include="ParcelTest.cs" />
+    <Compile Include="RateTest.cs" />
+    <Compile Include="ShipmentTest.cs" />
+    <Compile Include="ScanFormTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EasyPost\EasyPost.csproj">

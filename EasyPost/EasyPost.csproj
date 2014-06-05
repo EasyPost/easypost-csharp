@@ -48,19 +48,26 @@
   <ItemGroup>
     <Compile Include="Address.cs" />
     <Compile Include="Batch.cs" />
+    <Compile Include="BatchShipment.cs" />
     <Compile Include="CustomsInfo.cs" />
     <Compile Include="CustomsItem.cs" />
     <Compile Include="Exception.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="Parcel.cs" />
+    <Compile Include="PostageLabel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="Resource.cs" />
     <Compile Include="ScanForm.cs" />
+    <Compile Include="Shipment.cs" />
+    <Compile Include="Tracker.cs" />
+    <Compile Include="TrackingDetail.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <Compile Include="Rate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

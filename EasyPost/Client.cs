@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    public class Client {
+    internal class Client {
         public static string apiKey { get; set; }
 
         internal RestClient restClient;
@@ -24,13 +24,20 @@ namespace EasyPost {
         public T Execute<T>(Request request) where T : new() {
             RestResponse<T> response = (RestResponse<T>) restClient.Execute<T>(prepareRequest(request));
 
-            if (response.ErrorMessage != null) {
-                throw new InvalidRequest(response.ErrorMessage);
-            }  else if (response.StatusCode == HttpStatusCode.BadRequest) {
-                string message = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response.Content)["error"]["message"];
+            if (response.StatusCode == HttpStatusCode.BadRequest) {
+                string message;
+
+                try {
+                    message = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response.Content)["error"]["message"];
+                } catch (JsonSerializationException) {
+                    message = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.Content)["error"];
+                }
+
                 throw new InvalidRequest(message);
             } else if (response.StatusCode == HttpStatusCode.NotFound) {
                 throw new ResourceNotFound();
+            } else if (response.ErrorMessage != null) {
+                throw new InvalidRequest(response.ErrorMessage);
             }
 
             return response.Data;

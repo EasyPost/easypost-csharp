@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    public class Request {
+    internal class Request {
         internal RestRequest restRequest;
 
         public string RootElement {
@@ -36,6 +36,18 @@ namespace EasyPost {
             AddParameter("application/x-www-form-urlencoded", encoded, ParameterType.RequestBody);
         }
 
+        public void addBody(List<Dictionary<string, object>> parameters, string parent) {
+            List<Tuple<string, string>> result = new List<Tuple<string, string>>();
+            foreach (Dictionary<string, object> parameter in parameters) {
+                result.AddRange(flattenParameters(parameter, parent));
+            }
+            AddParameter("application/x-www-form-urlencoded", encodeParameters(result), ParameterType.RequestBody);
+        }
+
+        public void addBody(List<Tuple<string, string>> parameters) {
+            AddParameter("application/x-www-form-urlencoded", encodeParameters(parameters), ParameterType.RequestBody);
+        }
+
         public void addBody(List<string> parameters, string parent) {
             List<Tuple<string, string>> result = new List<Tuple<string, string>>();
             for (int i = 0; i < parameters.Count; i++) {
@@ -46,6 +58,10 @@ namespace EasyPost {
 
         internal string encodeParameters(List<Tuple<string, string>> parameters) {
             return string.Join("&", parameters.Select(parameter => encodeParameter(parameter)).ToList());
+        }
+
+        internal string encodeParameter(Tuple<string, string> parameter) {
+            return string.Concat(Uri.EscapeDataString(parameter.Item1), "=", Uri.EscapeDataString(parameter.Item2));
         }
 
         internal List<Tuple<string, string>> flattenParameters(Dictionary<string, object> parameters, string parent) {
@@ -63,10 +79,6 @@ namespace EasyPost {
                 }
             }
             return result;
-        }
-
-        internal string encodeParameter(Tuple<string, string> parameter) {
-            return string.Concat(Uri.EscapeDataString(parameter.Item1), "=", Uri.EscapeDataString(parameter.Item2));
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    class CustomsInfo {
+    public class CustomsInfo {
         public string id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
@@ -48,6 +48,7 @@ namespace EasyPost {
         ///   * {"restriction_type", string}
         ///   * {"eel_pfc", string}
         ///   * {"custom_items", Dictionary<string, object>} -- Can contain the key "id" or all keys required to create a CustomsItem.
+        /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         public static CustomsInfo Create(Dictionary<string, object> parameters) {

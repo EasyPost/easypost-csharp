@@ -13,20 +13,13 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestRetrieve() {
-            Address address = Address.Create();
-            Address retrieved = Address.Retrieve(address.id);
-            Assert.AreEqual(address.id, retrieved.id);
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(ResourceNotFound))]
         public void TestRetrieveInvalidId() {
             Address.Retrieve("not-an-id");
         }
 
         [TestMethod]
-        public void TestCreate() {
+        public void TestCreateAndRetrieve() {
             Dictionary<string, object> parameters = new Dictionary<string, object>() {
                 {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
                 {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}
@@ -35,6 +28,9 @@ namespace EasyPostTest {
             Assert.IsNotNull(address.id);
             Assert.AreEqual(address.company, "Simpler Postage Inc");
             Assert.IsNull(address.name);
+
+            Address retrieved = Address.Retrieve(address.id);
+            Assert.AreEqual(address.id, retrieved.id);
         }
 
         [TestMethod]

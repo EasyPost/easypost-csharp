@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    class CustomsItem {
+    public class CustomsItem {
         public string id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
@@ -44,6 +44,7 @@ namespace EasyPost {
         ///   * {"value", double}
         ///   * {"hs_tariff_number", string}
         ///   * {"origin_country", string}
+        /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
         public static CustomsItem Create(Dictionary<string, object> parameters) {

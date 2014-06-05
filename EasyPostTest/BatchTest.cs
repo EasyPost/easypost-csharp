@@ -1,6 +1,7 @@
 ﻿using EasyPost;
 
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -9,7 +10,7 @@ namespace EasyPostTest {
     public class BatchTest {
         Dictionary<string, object> fromAddress;
         Dictionary<string, object> toAddress;
-        Dictionary<string, object> shipment;
+        Dictionary<string, object> shipmentParameters;
 
         [TestInitialize]
         public void Initialize() {
@@ -23,7 +24,7 @@ namespace EasyPostTest {
                 {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
                 {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}
             };
-            shipment = new Dictionary<string, object>() {
+            shipmentParameters = new Dictionary<string, object>() {
                 {"carrier", "USPS"}, {"service", "Priority"},
                 {"parcel", new Dictionary<string, object>() {{"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}}},
                 {"to_address", toAddress}, {"from_address", fromAddress}
@@ -37,16 +38,24 @@ namespace EasyPostTest {
             Assert.AreEqual(batch.id, retrieved.id);
         }
 
-//        [TestMethod]
-//        public void TestAddRemoveShipments() {
-//            Batch batch = Batch.Create();
-//        }
+        [TestMethod]
+        public void TestAddRemoveShipments() {
+            Batch batch = Batch.Create();
+            Shipment shipment = Shipment.Create(shipmentParameters);
+
+            batch.AddShipments(new List<Shipment>() {shipment});
+            while (batch.shipments == null) { batch = Batch.Retrieve(batch.id); }
+            Assert.AreEqual(batch.shipments[0].id, shipment.id);
+
+            batch.RemoveShipments(new List<Shipment>() {shipment});
+            while (batch.shipments != null) { batch = Batch.Retrieve(batch.id); }
+        }
 
         [TestMethod]
         public void TestCreateThenBuyThenGenerateLabelAndScanForm() {
             Dictionary<string, object> parameters = new Dictionary<string, object>() {
                 {"reference", "EasyPostCSharpTest"},
-                {"shipments", new List<Dictionary<string, object>>() {shipment}}
+                {"shipments", new List<Dictionary<string, object>>() {shipmentParameters}}
             };
 
             Batch batch = Batch.Create(parameters);

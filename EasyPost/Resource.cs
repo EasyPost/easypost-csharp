@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    class Resource {
+    internal class Resource {
         public static void Merge(object left, object right) {
             foreach (PropertyInfo property in right.GetType().GetProperties()) {
                 property.SetValue(left, property.GetValue(right));
