@@ -23,7 +23,6 @@ EasyPost.Client.apiKey = "apiKey";
 ```cs
 using EasyPost;
 
-
 Dictionary<string, object> fromAddress = new Dictionary<string, object>() {
     {"name", "Andrew Tribone"}, {"street1", "480 Fell St"}, {"street2", "#3"},
     {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94102"}

@@ -67,7 +67,7 @@ namespace EasyPost {
             List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() {{"id", shipmentId}}).ToList();
             request.addBody(body, "shipments");
 
-            Resource.Merge(this, client.Execute<Batch>(request));
+            this.Merge(client.Execute<Batch>(request));
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
             request.addBody(shipmentIds, "shipments");
 
-            Resource.Merge(this, client.Execute<Batch>(request));
+            this.Merge(client.Execute<Batch>(request));
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace EasyPost {
             Request request = new Request("batches/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
 
-            Resource.Merge(this, client.Execute<Batch>(request));
+            this.Merge(client.Execute<Batch>(request));
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace EasyPost {
                 new Tuple<string, string>("order_by", orderBy)
             });
 
-            Resource.Merge(this, client.Execute<Batch>(request));
+            this.Merge(client.Execute<Batch>(request));
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace EasyPost {
             Request request = new Request("batches/{id}/scan_form", Method.POST);
             request.AddUrlSegment("id", id);
 
-            Resource.Merge(this, client.Execute<Batch>(request));
+            this.Merge(client.Execute<Batch>(request));
         }
     }
 }

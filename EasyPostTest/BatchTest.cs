@@ -25,7 +25,6 @@ namespace EasyPostTest {
                 {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}
             };
             shipmentParameters = new Dictionary<string, object>() {
-                {"carrier", "USPS"}, {"service", "Priority"},
                 {"parcel", new Dictionary<string, object>() {{"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}}},
                 {"to_address", toAddress}, {"from_address", fromAddress}
             };
