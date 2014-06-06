@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    internal class Request {
+    public class Request {
         internal RestRequest restRequest;
 
         public string RootElement {
