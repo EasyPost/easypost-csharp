@@ -103,7 +103,7 @@ namespace EasyPost {
             request.RootElement = "address";
             request.AddUrlSegment("id", id);
 
-            Resource.Merge(this, client.Execute<Address>(request));
+            this.Merge(client.Execute<Address>(request));
         }
     }
 }

@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    internal class Resource {
-        public static void Merge(object left, object right) {
-            foreach (PropertyInfo property in right.GetType().GetProperties()) {
-                property.SetValue(left, property.GetValue(right));
+    internal static class Resource {
+        public static void Merge(this object dest, object source) {
+            foreach (PropertyInfo property in source.GetType().GetProperties()) {
+                property.SetValue(dest, property.GetValue(source));
             }
         }
     }
