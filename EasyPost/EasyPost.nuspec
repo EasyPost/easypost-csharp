@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>EasyPost-Official</id>
+    <title>EasyPost (Official)</title>
+    <version>1.0.1.3</version>
+    <authors>EasyPost</authors>
+    <owners>EasyPost</owners>
+    <projectUrl>http://www.easypost.com</projectUrl>
+    <licenseUrl>https://github.com/EasyPost/easypost-csharp/blob/master/LICENSE.txt</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>EasyPost Shipping API Client Library for .NET https://easypost.com/docs</description>
+    <tags>EasyPost ShippingAPI USPS UPS FedEx</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="6.0.3" />
+      <dependency id="RestSharp" version="104.4.0" />
+    </dependencies>
+  </metadata>
+</package>
