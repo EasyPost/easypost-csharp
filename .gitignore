@@ -60,6 +60,9 @@ ipch/
 *.vsp
 *.vspx
 
+# NuGet
+*.nupkg
+
 # Guidance Automation Toolkit
 *.gpState
 
