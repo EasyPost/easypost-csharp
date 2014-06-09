@@ -49,6 +49,7 @@
     <Compile Include="Address.cs" />
     <Compile Include="Batch.cs" />
     <Compile Include="BatchShipment.cs" />
+    <Compile Include="Enum.cs" />
     <Compile Include="CustomsInfo.cs" />
     <Compile Include="CustomsItem.cs" />
     <Compile Include="Exception.cs" />

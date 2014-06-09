@@ -180,21 +180,34 @@ namespace EasyPost {
         /// <param name="excludeCarriers">Carriers blacklist.</param>
         /// <param name="excludeServices">Services blacklist.</param>
         /// <returns>EasyPost.Rate instance or null if no rate was found.</returns>
-        public Rate LowestRate(List<string> includeCarriers = null, List<string> includeServices = null,
-                               List<string> excludeCarriers = null, List<string> excludeServices = null) {
+        public Rate LowestRate(List<Carrier> includeCarriers = null, List<Service> includeServices = null,
+                               List<Carrier> excludeCarriers = null, List<Service> excludeServices = null) {
             if (rates == null) GetRates();
 
             List<Rate> result = new List<Rate>(rates);
-            if (includeCarriers != null) filterRates(ref result, rate => includeCarriers.Contains(rate.carrier));
-            if (includeServices != null) filterRates(ref result, rate => includeServices.Contains(rate.service));
-            if (excludeCarriers != null) filterRates(ref result, rate => !excludeCarriers.Contains(rate.carrier));
-            if (excludeServices != null) filterRates(ref result, rate => !excludeServices.Contains(rate.service));
+            if (includeCarriers != null) filterRates(ref result, rate => includeCarriers.Contains(parseCarrier(rate)));
+            if (includeServices != null) filterRates(ref result, rate => includeServices.Contains(parseService(rate)));
+            if (excludeCarriers != null) filterRates(ref result, rate => !excludeCarriers.Contains(parseCarrier(rate)));
+            if (excludeServices != null) filterRates(ref result, rate => !excludeServices.Contains(parseService(rate)));
 
             return result.OrderBy(rate => double.Parse(rate.rate)).FirstOrDefault();
         }
 
         private void filterRates(ref List<Rate> rates, Func<Rate, bool> filter) {
             rates = rates.Where(filter).ToList();
+        }
+
+        private Carrier parseCarrier(Rate rate) {
+            return (Carrier) Enum.Parse(typeof(Carrier), rate.carrier);
+        }
+
+        private Service parseService(Rate rate) {
+            // Enums cannot start with numbers.
+            if (rate.service == "3DaySelect") return Service.ThreeDaySelect;
+            if (rate.service == "2ndDayAirAM") return Service.SecondDayAirAM;
+            if (rate.service == "2ndDayAir") return Service.SecondDayAir;
+
+            return (Service) Enum.Parse(typeof(Service), rate.service);
         }
     }
 }
