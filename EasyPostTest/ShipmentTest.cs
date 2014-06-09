@@ -93,19 +93,19 @@ namespace EasyPostTest {
             Rate rate = shipment.LowestRate();
             Assert.AreEqual(rate, lowestUSPS);
 
-            rate = shipment.LowestRate(includeCarriers: new List<string>() {"UPS"});
+            rate = shipment.LowestRate(includeCarriers: new List<Carrier>() {Carrier.UPS});
             Assert.AreEqual(rate, lowestUPS);
 
-            rate = shipment.LowestRate(includeServices: new List<string>() {"Priority"});
+            rate = shipment.LowestRate(includeServices: new List<Service>() {Service.Priority});
             Assert.AreEqual(rate, highestUSPS);
 
-            rate = shipment.LowestRate(excludeCarriers: new List<string>() {"USPS"});
+            rate = shipment.LowestRate(excludeCarriers: new List<Carrier>() {Carrier.USPS});
             Assert.AreEqual(rate, lowestUPS);
 
-            rate = shipment.LowestRate(excludeServices: new List<string>() {"ParcelSelect"});
+            rate = shipment.LowestRate(excludeServices: new List<Service>() {Service.ParcelSelect});
             Assert.AreEqual(rate, highestUSPS);
 
-            rate = shipment.LowestRate(includeCarriers: new List<string>() {"FooBar"});
+            rate = shipment.LowestRate(includeCarriers: new List<Carrier>() {Carrier.FedEx});
             Assert.IsNull(rate);
         }
     }
