@@ -42,7 +42,7 @@ Shipment shipment = Shipment.Create(new Dictionary<string, object>() {
 shipment.Buy(shipment.LowestRate(includeServices: new List<string>() {"Priority"},
                                  excludeCarriers: new List<string>() {"FedEx"}));
 
-if (shipment.state == "purchased") shipment.GenerateLabel("pdf"); // Populates `shipment.postage_label`
+if (shipment.status == "purchased") shipment.GenerateLabel("pdf"); // Populates `shipment.postage_label`
 ```
 
 ## Documentation
