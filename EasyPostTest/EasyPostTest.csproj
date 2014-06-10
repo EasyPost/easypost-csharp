@@ -60,7 +60,7 @@
     <Compile Include="RequestTest.cs" />
     <Compile Include="CustomsInfoTest.cs" />
     <Compile Include="CustomsItemTest.cs" />
-    <Compile Include="ResourceTest.cs" />
+    <Compile Include="ResourceExtenstionTest.cs" />
     <Compile Include="ParcelTest.cs" />
     <Compile Include="RateTest.cs" />
     <Compile Include="ShipmentTest.cs" />

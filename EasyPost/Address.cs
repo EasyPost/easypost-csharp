@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    public class Address {
+    public class Address : IResource {
         public string id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
@@ -57,9 +57,20 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
-        public static Address Create(Dictionary<string, object> parameters = null) {
-            parameters = parameters ?? new Dictionary<string, object>();
+        public static Address Create(IDictionary<string, object> parameters = null) {
+            return sendCreate(parameters ?? new Dictionary<string, object>());
+        }
 
+        /// <summary>
+        /// Create this Address.
+        /// </summary>
+        /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
+        public void Create() {
+            if (id != null) throw new ResourceAlreadyCreated();
+            this.Merge(sendCreate(this.AsDictionary()));
+        }
+
+        private static Address sendCreate(IDictionary<string, object> parameters) {
             Request request = new Request("addresses", Method.POST);
             request.addBody(parameters, "address");
 
@@ -84,7 +95,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
-        public static Address CreateAndVerify(Dictionary<string, object> parameters = null) {
+        public static Address CreateAndVerify(IDictionary<string, object> parameters = null) {
             parameters = parameters ?? new Dictionary<string, object>();
 
             Request request = new Request("addresses/create_and_verify", Method.POST);
@@ -97,8 +108,10 @@ namespace EasyPost {
         /// <summary>
         /// Verify an address.
         /// </summary>
-        /// <returns>EasyPost.Address isntance. Check message for verification failures.</returns>
+        /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
         public void Verify() {
+            if (id == null) Create();
+
             Request request = new Request("addresses/{id}/verify");
             request.RootElement = "address";
             request.AddUrlSegment("id", id);
