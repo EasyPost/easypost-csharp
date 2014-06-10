@@ -18,6 +18,32 @@ During the initialization of your application add the following to configure Eas
 EasyPost.Client.apiKey = "apiKey";
 ```
 
+### Address Verification
+
+See the [docs](https://www.easypost.com/docs/api#addresses) for more information.
+
+```cs
+using EasyPost;
+
+Address addres = Address.CreateAndVerify(new Dictionary() {
+    {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
+    {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}
+})
+```
+
+OR
+
+```cs
+using EasyPost;
+
+Address address = new Address() {
+    company = "Simpler Postage Inc", street1 = "164 Townsend Street", street2 = "Unit 1",
+    city = "San Francisco", state = "CA", country = "US", zip = "94107"
+};
+
+address.Verify();
+```
+
 ### Purchasing a label for a Shipment
 
 ```cs
@@ -33,15 +59,72 @@ Dictionary<string, object> toAddress = new Dictionary<string, object>() {
 };
 
 Shipment shipment = Shipment.Create(new Dictionary<string, object>() {
-    {"carrier", "USPS"}, {"service", "Priority"},
     {"parcel", new Dictionary<string, object>() {{"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}}},
     {"to_address", toAddress}, {"from_address", fromAddress}, {"reference", "ShipmentRef"}
 });
 
-shipment.Buy(shipment.LowestRate(includeServices: new List<string>() {"Priority"},
-                                 excludeCarriers: new List<string>() {"FedEx"}));
+shipment.Buy(shipment.LowestRate(includeServices: new List<Service>() {Service.Priority},
+                                 excludeCarriers: new List<Carrier>() {Carrier.FedEx}));
 
 if (shipment.status == "purchased") shipment.GenerateLabel("pdf"); // Populates `shipment.postage_label`
+```
+
+OR
+
+```cs
+using EasyPost;
+
+Address fromAddress = new Address() {
+	name = Andrew Tribone", street1 = 480 Fell St", street2 = "#3",
+    city = "San Francisco", state = "CA", country = "US", zip = "94102"
+};
+Address fromAddress = new Address() {
+    company = "Simpler Postage Inc", street1 = "164 Townsend Street", street2 = "Unit 1",
+    city = "San Francisco", state = "CA", country = "US", zip = "94107"
+};
+Parcel parcel = new Parcel() {length = 8, width = 6, height = 5, weight = 10};
+
+Shipment shipment = new Shipment() {to_address = toAddress, from_address = fromAddress, parcel = parcel};
+shipment.Buy(shipment.LowestRate(includeServices: new List<Service>() {Service.Priority},
+                                 excludeCarriers: new List<Carrier>() {Carrier.FedEx}));
+
+if (shipment.status == "purchased") shipment.GenerateLabel("pdf"); // Populates `shipment.postage_label`
+```
+
+### Asynchronous Batch Processing
+
+Batches produce webhooks as its state changes. These hooks can be consumed by your application.
+
+```cs
+using EasyPost;
+
+Dictionary<string, object> fromAddress = new Dictionary<string, object>() {
+    {"name", "Andrew Tribone"}, {"street1", "480 Fell St"}, {"street2", "#3"},
+    {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94102"}
+};
+Dictionary<string, object> toAddress = new Dictionary<string, object>() {
+    {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
+    {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}
+};
+Dictionary<string, object> shipment = new Dictionary<string, object>() {
+	{"carrier", "USPS"}, {"service", "Priority"} // Unlike creating a Shipment, these are used to purchase shipments within a batch.
+    {"parcel", new Dictionary<string, object>() {{"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}}},
+    {"to_address", toAddress}, {"from_address", fromAddress}
+};
+
+Batch batch = Batch.CreateAndBuy(new Dictionary<string, object>() {
+    {"reference", "MyReference"},
+    {"shipments", new List<Dictionary<string, object>>() {shipment}}
+});
+```
+
+If there are no errors you will recieve a webhook with a batch state of `purchased`.
+
+```cs
+using EasyPost;
+
+Batch batch = Batch.Retrieve(id);
+batch.GenerateLabel("zpl"); // Populate batch.label_url asynchronously. Consume the `label_generated` webhook to process further.
 ```
 
 ## Documentation
