@@ -7,9 +7,20 @@ using System.Collections.Generic;
 namespace EasyPostTest {
     [TestClass]
     public class AddressTest {
+        Address address;
+
         [TestInitialize]
         public void Initialize() {
             Client.apiKey = "cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi";
+            address = new Address() {
+                company = "Simpler Postage Inc",
+                street1 = "164 Townsend Street",
+                street2 = "Unit 1",
+                city = "San Francisco",
+                state = "CA",
+                country = "US",
+                zip = "94107"
+            };
         }
 
         [TestMethod]
@@ -31,6 +42,12 @@ namespace EasyPostTest {
 
             Address retrieved = Address.Retrieve(address.id);
             Assert.AreEqual(address.id, retrieved.id);
+        }
+
+        [TestMethod]
+        public void TestCreateInstance() {
+            address.Create();
+            Assert.IsNotNull(address.id);
         }
 
         [TestMethod]
@@ -56,6 +73,12 @@ namespace EasyPostTest {
             Assert.IsNotNull(address.id);
             Assert.AreEqual(address.company, "Simpler Postage Inc");
             Assert.IsNull(address.name);
+        }
+
+        [TestMethod]
+        public void TestVerifyBeforeCreate() {
+            address.Verify();
+            Assert.IsNotNull(address.id);
         }
     }
 }

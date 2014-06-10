@@ -8,19 +8,19 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace EasyPostTest {
     [TestClass]
     public class ShipmentTest {
-        public Dictionary<string, object> parameters;
+        Dictionary<string, object> parameters, toAddress, fromAddress;
 
         [TestInitialize]
         public void Initialize() {
             Client.apiKey = "cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi";
 
-            Dictionary<string, object> fromAddress = new Dictionary<string, object>() {
+            toAddress = new Dictionary<string, object>() {
+                {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
+                {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"},
+            };
+            fromAddress = new Dictionary<string, object>() {
                 {"name", "Andrew Tribone"}, {"street1", "480 Fell St"}, {"street2", "#3"},
                 {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94102"}
-            };
-            Dictionary<string, object> toAddress = new Dictionary<string, object>() {
-                {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
-                {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}
             };
             parameters = new Dictionary<string, object>() {
                 {"parcel", new Dictionary<string, object>() {{"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}}},
@@ -31,8 +31,18 @@ namespace EasyPostTest {
         private Shipment buyShipment() {
             Shipment shipment = Shipment.Create(parameters);
             shipment.GetRates();
-            shipment.Buy(shipment.rates[0]);
+            shipment.Buy(shipment.rates.First());
             return shipment;
+        }
+
+        private Shipment createShipmentResource() {
+            Address to = Address.Create(toAddress);
+            Address from = Address.Create(fromAddress);
+            Parcel parcel = Parcel.Create(new Dictionary<string, object>() {
+                {"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}
+            });
+
+            return new Shipment() {to_address = to, from_address = from, parcel = parcel};
         }
 
         [TestMethod]
@@ -44,6 +54,28 @@ namespace EasyPostTest {
 
             Shipment retrieved = Shipment.Retrieve(shipment.id);
             Assert.AreEqual(shipment.id, retrieved.id);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ResourceAlreadyCreated))]
+        public void TestCreateWithId() {
+            Shipment shipment = new Shipment() {id = "shp_asdlf"};
+            shipment.Create();
+        }
+
+        [TestMethod]
+        public void TestCreateWithPreCreatedAttributes() {
+            Shipment shipment = createShipmentResource();
+            shipment.Create();
+            Assert.IsNotNull(shipment.id);
+        }
+
+        [TestMethod]
+        public void TestGetRatesWithoutCreate() {
+            Shipment shipment = createShipmentResource();
+            shipment.GetRates();
+            Assert.IsNotNull(shipment.id);
+            Assert.IsNotNull(shipment.rates);
         }
 
         [TestMethod]

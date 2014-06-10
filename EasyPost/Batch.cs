@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    public class Batch {
+    public class Batch : IResource {
         public string id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
@@ -47,7 +47,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static Batch Create(Dictionary<string, object> parameters = null) {
+        public static Batch Create(IDictionary<string, object> parameters = null) {
             parameters = parameters ?? new Dictionary<string, object>();
 
             Request request = new Request("batches", Method.POST);
@@ -60,7 +60,7 @@ namespace EasyPost {
         /// Add shipments to the batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be added.</param>
-        public void AddShipments(List<string> shipmentIds) {
+        public void AddShipments(IEnumerable<string> shipmentIds) {
             Request request = new Request("batches/{id}/add_shipments", Method.POST);
             request.AddUrlSegment("id", id);
 
@@ -74,7 +74,7 @@ namespace EasyPost {
         /// Add shipments to the batch.
         /// </summary>
         /// <param name="shipments">List of Shipment objects to be added.</param>
-        public void AddShipments(List<Shipment> shipments) {
+        public void AddShipments(IEnumerable<Shipment> shipments) {
             AddShipments(shipments.Select(shipment => shipment.id).ToList());
         }
 
@@ -82,7 +82,7 @@ namespace EasyPost {
         /// Remove shipments from the batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be removed.</param>
-        public void RemoveShipments(List<string> shipmentIds) {
+        public void RemoveShipments(IEnumerable<string> shipmentIds) {
             Request request = new Request("batches/{id}/remove_shipments", Method.POST);
             request.AddUrlSegment("id", id);
             request.addBody(shipmentIds, "shipments");
@@ -94,7 +94,7 @@ namespace EasyPost {
         /// Remove shipments from the batch.
         /// </summary>
         /// <param name="shipments">List of Shipment objects to be removed.</param>
-        public void RemoveShipments(List<Shipment> shipments) {
+        public void RemoveShipments(IEnumerable<Shipment> shipments) {
             RemoveShipments(shipments.Select(shipment => shipment.id).ToList());
         }
 

@@ -12,4 +12,5 @@ namespace EasyPost
     }
 
     public class ResourceNotFound : Exception {}
+    public class ResourceAlreadyCreated : Exception {}
 }

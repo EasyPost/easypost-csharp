@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    public class CustomsInfo {
+    public class CustomsInfo : IResource {
         public string id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
@@ -51,7 +51,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
-        public static CustomsInfo Create(Dictionary<string, object> parameters) {
+        public static CustomsInfo Create(IDictionary<string, object> parameters) {
             Request request = new Request("customs_infos", Method.POST);
             request.addBody(parameters, "customs_info");
 

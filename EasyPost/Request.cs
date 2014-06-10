@@ -31,12 +31,12 @@ namespace EasyPost {
             restRequest.AddParameter(contentType, content, type);
         }
 
-        public void addBody(Dictionary<string, object> parameters, string parent) {
+        public void addBody(IDictionary<string, object> parameters, string parent) {
             string encoded = encodeParameters(flattenParameters(parameters, parent));
             AddParameter("application/x-www-form-urlencoded", encoded, ParameterType.RequestBody);
         }
 
-        public void addBody(List<Dictionary<string, object>> parameters, string parent) {
+        public void addBody(IEnumerable<IDictionary<string, object>> parameters, string parent) {
             List<Tuple<string, string>> result = new List<Tuple<string, string>>();
             foreach (Dictionary<string, object> parameter in parameters) {
                 result.AddRange(flattenParameters(parameter, parent));
@@ -44,19 +44,19 @@ namespace EasyPost {
             AddParameter("application/x-www-form-urlencoded", encodeParameters(result), ParameterType.RequestBody);
         }
 
-        public void addBody(List<Tuple<string, string>> parameters) {
+        public void addBody(IEnumerable<Tuple<string, string>> parameters) {
             AddParameter("application/x-www-form-urlencoded", encodeParameters(parameters), ParameterType.RequestBody);
         }
 
-        public void addBody(List<string> parameters, string parent) {
+        public void addBody(IEnumerable<string> parameters, string parent) {
             List<Tuple<string, string>> result = new List<Tuple<string, string>>();
-            for (int i = 0; i < parameters.Count; i++) {
-                result.Add(new Tuple<string, string>(string.Concat(parent, "[", i.ToString(), "]"), parameters[i]));
+            for (int i = 0; i < parameters.Count(); i++) {
+                result.Add(new Tuple<string, string>(string.Concat(parent, "[", i.ToString(), "]"), parameters.ElementAt(i)));
             }
             AddParameter("application/x-www-form-urlencoded", encodeParameters(result), ParameterType.RequestBody);
         }
 
-        internal string encodeParameters(List<Tuple<string, string>> parameters) {
+        internal string encodeParameters(IEnumerable<Tuple<string, string>> parameters) {
             return string.Join("&", parameters.Select(parameter => encodeParameter(parameter)).ToList());
         }
 
@@ -64,7 +64,7 @@ namespace EasyPost {
             return string.Concat(Uri.EscapeDataString(parameter.Item1), "=", Uri.EscapeDataString(parameter.Item2));
         }
 
-        internal List<Tuple<string, string>> flattenParameters(Dictionary<string, object> parameters, string parent) {
+        internal List<Tuple<string, string>> flattenParameters(IDictionary<string, object> parameters, string parent) {
             List<Tuple<string, string>> result = new List<Tuple<string, string>>();
             foreach (KeyValuePair<string, object> pair in parameters) {
                 if (pair.Value is Dictionary<string, object>) {
@@ -75,7 +75,9 @@ namespace EasyPost {
                         result.AddRange(flattenParameters(list[i], string.Concat(parent, "[", pair.Key, "][", i, "]")));
                     }
                 } else {
-                    result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), pair.Value.ToString()));
+                    if (pair.Value != null) {
+                        result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), pair.Value.ToString()));
+                    }
                 }
             }
             return result;

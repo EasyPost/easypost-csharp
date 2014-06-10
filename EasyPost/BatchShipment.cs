@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    public class BatchShipment {
+    public class BatchShipment : IResource {
         public string id { get; set; }
         public string batch_status { get; set; }
         public string batch_message { get; set; }

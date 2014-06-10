@@ -54,11 +54,12 @@
     <Compile Include="CustomsItem.cs" />
     <Compile Include="Exception.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="IResource.cs" />
     <Compile Include="Parcel.cs" />
     <Compile Include="PostageLabel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs" />
-    <Compile Include="Resource.cs" />
+    <Compile Include="ResourceExtension.cs" />
     <Compile Include="ScanForm.cs" />
     <Compile Include="Shipment.cs" />
     <Compile Include="Tracker.cs" />

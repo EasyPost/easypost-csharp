@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    public class ScanForm {
+    public class ScanForm : IResource {
         public string id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
@@ -50,7 +50,7 @@ namespace EasyPost {
         /// </summary>
         /// <param name="shipments">List of Shipment objects.</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-        public static ScanForm Create(List<Shipment> shipments) {
+        public static ScanForm Create(IEnumerable<Shipment> shipments) {
             return Create(shipments.Select(shipment => shipment.tracking_code).ToList());
         }
     }

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    public class CustomsItem {
+    public class CustomsItem : IResource {
         public string id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
@@ -47,7 +47,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
-        public static CustomsItem Create(Dictionary<string, object> parameters) {
+        public static CustomsItem Create(IDictionary<string, object> parameters) {
             Request request = new Request("customs_items", Method.POST);
             request.addBody(parameters, "customs_item");
 

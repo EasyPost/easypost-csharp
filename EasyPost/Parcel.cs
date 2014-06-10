@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    public class Parcel {
+    public class Parcel : IResource {
         public string id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
@@ -45,7 +45,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Parcel instance.</returns>
-        public static Parcel Create(Dictionary<string, object> parameters) {
+        public static Parcel Create(IDictionary<string, object> parameters) {
             Request request = new Request("parcels", Method.POST);
             request.addBody(parameters, "parcel");
 

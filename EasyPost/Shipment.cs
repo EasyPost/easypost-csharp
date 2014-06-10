@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    public class Shipment {
+    public class Shipment : IResource {
         public string id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
@@ -69,9 +69,20 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static Shipment Create(Dictionary<string, object> parameters = null) {
-            parameters = parameters ?? new Dictionary<string, object>();
+        public static Shipment Create(IDictionary<string, object> parameters = null) {
+            return sendCreate(parameters ?? new Dictionary<string, object>());
+        }
 
+        /// <summary>
+        /// Create this Shipment.
+        /// </summary>
+        /// <exception cref="ResourceAlreadyCreated">Shipment already has an id.</exception>
+        public void Create() {
+            if (id != null) throw new ResourceAlreadyCreated();
+            this.Merge(sendCreate(this.AsDictionary()));
+        }
+
+        private static Shipment sendCreate(IDictionary<string, object> parameters) {
             Request request = new Request("shipments", Method.POST);
             request.addBody(parameters, "shipment");
 
@@ -82,6 +93,8 @@ namespace EasyPost {
         /// Populate the rates property for this shipment. 
         /// </summary>
         public void GetRates() {
+            if (id == null) Create();
+
             Request request = new Request("shipments/{id}/rates");
             request.AddUrlSegment("id", id);
 
@@ -124,7 +137,7 @@ namespace EasyPost {
                 new Tuple<string, string>("amount", amount.ToString())
             });
 
-            Resource.Merge(this, client.Execute<Shipment>(request));
+            ResourceExtension.Merge(this, client.Execute<Shipment>(request));
         }
 
         /// <summary>
@@ -137,7 +150,7 @@ namespace EasyPost {
             // This is a GET, but uses the request body, so use ParameterType.GetOrPost instead.
             request.AddParameter("file_format", fileFormat, ParameterType.GetOrPost);
 
-            Resource.Merge(this, client.Execute<Shipment>(request));
+            ResourceExtension.Merge(this, client.Execute<Shipment>(request));
         }
         
         /// <summary>
@@ -169,7 +182,7 @@ namespace EasyPost {
             Request request = new Request("shipments/{id}/refund");
             request.AddUrlSegment("id", id);
 
-            Resource.Merge(this, client.Execute<Shipment>(request));
+            ResourceExtension.Merge(this, client.Execute<Shipment>(request));
         }
 
         /// <summary>
@@ -180,8 +193,8 @@ namespace EasyPost {
         /// <param name="excludeCarriers">Carriers blacklist.</param>
         /// <param name="excludeServices">Services blacklist.</param>
         /// <returns>EasyPost.Rate instance or null if no rate was found.</returns>
-        public Rate LowestRate(List<Carrier> includeCarriers = null, List<Service> includeServices = null,
-                               List<Carrier> excludeCarriers = null, List<Service> excludeServices = null) {
+        public Rate LowestRate(IEnumerable<Carrier> includeCarriers = null, IEnumerable<Service> includeServices = null,
+                               IEnumerable<Carrier> excludeCarriers = null, IEnumerable<Service> excludeServices = null) {
             if (rates == null) GetRates();
 
             List<Rate> result = new List<Rate>(rates);
