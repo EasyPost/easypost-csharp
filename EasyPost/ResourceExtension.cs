@@ -24,7 +24,16 @@ namespace EasyPost {
 
             if (value is IResource) {
                 return ((IResource)value).AsDictionary();
-            } else {
+            }
+            else if (value is List<Shipment>)
+            {
+                List<Dictionary<string, object>> values = new List<Dictionary<string, object>>();
+                foreach (Shipment shipment in (List<Shipment>)value)  {
+                    values.Add(((IResource)shipment).AsDictionary());
+                }
+                return (object)values;
+            }
+            else {
                 return value;
             }
         }

@@ -23,7 +23,7 @@ namespace EasyPost {
         /// <summary>
         /// Retrieve a Parcel from its id.
         /// </summary>
-        /// <param name="id">String representing a CustomsItem. Starts with "prcl_".</param>
+        /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
         /// <returns>EasyPost.Parcel instance.</returns>
         public static Parcel Retrieve(string id) {
             Request request = new Request("parcels/{id}");
