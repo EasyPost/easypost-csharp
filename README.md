@@ -25,7 +25,7 @@ See the [docs](https://www.easypost.com/docs/api#addresses) for more information
 ```cs
 using EasyPost;
 
-Address addres = Address.CreateAndVerify(new Dictionary() {
+Address address = Address.CreateAndVerify(new Dictionary() {
     {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
     {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}
 });
