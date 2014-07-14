@@ -16,42 +16,5 @@ namespace EasyPost {
         public string form_url { get; set; }
         public string form_file_type { get; set; }
         public string mode { get; set; }
-
-        private static Client client = new Client();
-
-        /// <summary>
-        /// Retrieve a ScanForm from its id.
-        /// </summary>
-        /// <param name="id">String representing a ScanForm. Starts with "sf_".</param>
-        /// <returns>EasyPost.ScanForm instance.</returns>
-        public static ScanForm Retrieve(string id) {
-            Request request = new Request("scan_forms/{id}");
-            request.AddUrlSegment("id", id);
-
-            return client.Execute<ScanForm>(request);
-        }
-
-        /// <summary>
-        /// Create a ScanFrom for the given tracking codes.
-        /// </summary>
-        /// <param name="trackingCodes">List of tracking codes.</param>
-        /// <returns>EasyPost.ScanForm instance.</returns>
-        public static ScanForm Create(List<string> trackingCodes) {
-            Request request = new Request("scan_forms", Method.POST);
-            request.addBody(new List<Tuple<string, string>>() {
-                new Tuple<string, string>("scan_form[tracking_codes]", string.Join(",", trackingCodes))
-            });
-
-            return client.Execute<ScanForm>(request);
-        }
-
-        /// <summary>
-        /// Create a ScanForm for the given shipments.
-        /// </summary>
-        /// <param name="shipments">List of Shipment objects.</param>
-        /// <returns>EasyPost.ScanForm instance.</returns>
-        public static ScanForm Create(IEnumerable<Shipment> shipments) {
-            return Create(shipments.Select(shipment => shipment.tracking_code).ToList());
-        }
     }
 }
