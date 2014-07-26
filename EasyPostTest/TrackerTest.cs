@@ -16,7 +16,7 @@ namespace EasyPostTest
         public void TestCanRetrieveTrackerInformation()
         {
             string trackingCode = "1ZA57R94YN1145456285";
-            Tracker t = Tracker.Retrieve("fedex", trackingCode);
+            Tracker t = Tracker.Create("fedex", trackingCode);
             Assert.AreEqual(t.tracking_code, trackingCode);
         }
     }
