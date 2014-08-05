@@ -75,7 +75,7 @@ OR
 using EasyPost;
 
 Address fromAddress = new Address() {
-	name = Andrew Tribone", street1 = 480 Fell St", street2 = "#3",
+	name = "Andrew Tribone", street1 = "480 Fell St", street2 = "#3",
     city = "San Francisco", state = "CA", country = "US", zip = "94102"
 };
 Address fromAddress = new Address() {
