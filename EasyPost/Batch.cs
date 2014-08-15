@@ -14,7 +14,7 @@ namespace EasyPost {
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
         public string state { get; set; }
-        public string num_shipments { get; set; }
+        public int num_shipments { get; set; }
         public string reference { get; set; }
         public List<BatchShipment> shipments { get; set; }
         public Dictionary<string, int> status { get; set; }
@@ -65,7 +65,7 @@ namespace EasyPost {
             Request request = new Request("batches/{id}/add_shipments", Method.POST);
             request.AddUrlSegment("id", id);
 
-            List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() {{"id", shipmentId}}).ToList();
+            List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
             request.addBody(body, "shipments");
 
             this.Merge(client.Execute<Batch>(request));
@@ -86,7 +86,9 @@ namespace EasyPost {
         public void RemoveShipments(IEnumerable<string> shipmentIds) {
             Request request = new Request("batches/{id}/remove_shipments", Method.POST);
             request.AddUrlSegment("id", id);
-            request.addBody(shipmentIds, "shipments");
+
+            List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
+            request.addBody(body, "shipments");
 
             this.Merge(client.Execute<Batch>(request));
         }

@@ -46,10 +46,11 @@ namespace EasyPostTest {
             batch.AddShipments(new List<Shipment>() {shipment});
 
             while (batch.shipments == null) { batch = Batch.Retrieve(batch.id); }
+            Assert.AreEqual(batch.num_shipments, 1);
             Assert.AreEqual(batch.shipments[0].id, shipment.id);
 
             batch.RemoveShipments(new List<Shipment>() {shipment});
-            while (batch.shipments != null) { batch = Batch.Retrieve(batch.id); }
+            Assert.AreEqual(batch.num_shipments, 0);
         }
 
         [TestMethod]

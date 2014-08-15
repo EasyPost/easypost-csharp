@@ -1,23 +1,21 @@
 ﻿using EasyPost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPostTest
-{
+namespace EasyPostTest {
     [TestClass]
-    public class TrackerTest
-    {
+    public class TrackerTest {
         [TestInitialize]
-        public void Initialize()
-        {
+        public void Initialize() {
             Client.apiKey = "cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi";
         }
 
         [TestMethod]
-        public void TestCanRetrieveTrackerInformation()
-        {
-            string trackingCode = "1ZA57R94YN1145456285";
-            Tracker t = Tracker.Create("fedex", trackingCode);
-            Assert.AreEqual(t.tracking_code, trackingCode);
+        public void TestCreate() {
+            string carrier = "USPS";
+            string trackingCode = "PA123456789US";
+
+            Tracker tracker = Tracker.Create(carrier, trackingCode);
+            Assert.AreEqual(tracker.tracking_code, trackingCode);
         }
     }
 }

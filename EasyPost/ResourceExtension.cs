@@ -9,7 +9,7 @@ namespace EasyPost {
     internal static class ResourceExtension {
         public static void Merge(this IResource dest, object source) {
             foreach (PropertyInfo property in source.GetType().GetProperties()) {
-                property.SetValue(dest, property.GetValue(source));
+                property.SetValue(dest, property.GetValue(source, null), null);
             }
         }
 
