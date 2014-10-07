@@ -21,6 +21,7 @@ namespace EasyPost {
         public string country { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
+        public bool residential { get; set; }
         public string mode { get; set; }
         public string error { get; set; }
         public string message { get; set; }
