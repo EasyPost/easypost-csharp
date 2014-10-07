@@ -12,6 +12,8 @@ See NuGet docs for instructions on installing via the [dialog](http://docs.nuget
 
 ## Usage
 
+See the [docs](https://www.easypost.com/docs/api#addresses) for more information.
+
 During the initialization of your application add the following to configure EasyPost.
 
 ```cs
@@ -19,8 +21,6 @@ EasyPost.Client.apiKey = "apiKey";
 ```
 
 ### Address Verification
-
-See the [docs](https://www.easypost.com/docs/api#addresses) for more information.
 
 ```cs
 using EasyPost;
