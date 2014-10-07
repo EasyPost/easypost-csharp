@@ -18,7 +18,7 @@ namespace EasyPostTest {
             Dictionary<string, object> item = new Dictionary<string, object>() {
                 {"description", "TShirt"}, {"quantity", 1}, {"weight", 8}, {"origin_country", "US"}
             };
-        
+
             CustomsInfo info = CustomsInfo.Create(new Dictionary<string, object>() {
                 {"customs_certify", true}, {"eel_pfc", "NOEEI 30.37(a)"},
                 {"customs_items", new List<Dictionary<string, object>>() {item}}

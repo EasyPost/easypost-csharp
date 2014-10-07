@@ -25,7 +25,7 @@ namespace EasyPost {
         public List<Rate> rates { get; set; }
         public List<Container> containers { get; set; }
         public List<Item> items { get; set; }
-        
+
         private static Client client = new Client();
 
         /// <summary>
@@ -70,14 +70,13 @@ namespace EasyPost {
         /// Create this Order.
         /// </summary>
         /// <exception cref="ResourceAlreadyCreated">Order already has an id.</exception>
-        public void Create()
-        {
-            if (id != null) throw new ResourceAlreadyCreated();
+        public void Create() {
+            if (id != null)
+                throw new ResourceAlreadyCreated();
             this.Merge(sendCreate(this.AsDictionary()));
         }
 
-        private static Order sendCreate(IDictionary<string, object> parameters)
-        {
+        private static Order sendCreate(IDictionary<string, object> parameters) {
             Request request = new Request("orders", Method.POST);
             request.addBody(parameters, "order");
 
@@ -89,12 +88,11 @@ namespace EasyPost {
         /// </summary>
         /// <param name="carrier">The carrier to purchase a shipment from.</param>
         /// <param name="service">The service to purchase.</param>
-        public void Buy(string carrier, string service)
-        {
+        public void Buy(string carrier, string service) {
             Request request = new Request("orders/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
             request.addBody(new List<Tuple<string, string>>() { new Tuple<string, string>("carrier", carrier), new Tuple<string, string>("service", service) });
-           
+
             ResourceExtension.Merge(this, client.Execute<Order>(request));
         }
 
@@ -102,8 +100,7 @@ namespace EasyPost {
         /// Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
-        public void Buy(Rate rate)
-        {
+        public void Buy(Rate rate) {
             Buy(rate.carrier, rate.service);
         }
     }

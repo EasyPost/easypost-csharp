@@ -24,7 +24,7 @@ namespace EasyPost {
         public double height { get; set; }
         public double weight { get; set; }
         // ADD CUSTOM REFERENCES (e.g. sku, upc)
-        
+
         private static Client client = new Client();
 
         /// <summary>
@@ -72,8 +72,7 @@ namespace EasyPost {
         /// <param name="name">String containing the name of the custom reference to search for.</param>
         /// <param name="value">String containing the value of the custom reference to search for.</param>
         /// <returns>EasyPost.Item instance.</returns>
-        public static Item RetrieveReference(string name, string value)
-        {
+        public static Item RetrieveReference(string name, string value) {
             Request request = new Request("items/retrieve_reference/?{name}={value}");
             request.AddUrlSegment("name", name);
             request.AddUrlSegment("value", value);

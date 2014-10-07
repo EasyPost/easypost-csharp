@@ -8,10 +8,11 @@ namespace EasyPost {
     public class HttpException : Exception {
         public int StatusCode;
 
-        public HttpException(int statusCode, string message) : base(message) {
+        public HttpException(int statusCode, string message)
+            : base(message) {
             StatusCode = statusCode;
         }
     }
 
-    public class ResourceAlreadyCreated : Exception {}
+    public class ResourceAlreadyCreated : Exception { }
 }

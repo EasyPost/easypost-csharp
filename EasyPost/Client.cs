@@ -27,7 +27,7 @@ namespace EasyPost {
         }
 
         public T Execute<T>(Request request) where T : new() {
-            RestResponse<T> response = (RestResponse<T>) restClient.Execute<T>(prepareRequest(request));
+            RestResponse<T> response = (RestResponse<T>)restClient.Execute<T>(prepareRequest(request));
             int statusCode = Convert.ToInt32(response.StatusCode);
 
             if (statusCode < 200 || statusCode > 299) {
@@ -50,7 +50,7 @@ namespace EasyPost {
         }
 
         internal RestRequest prepareRequest(Request request) {
-            RestRequest restRequest = (RestRequest) request;
+            RestRequest restRequest = (RestRequest)request;
 
             restRequest.AddHeader("user_agent", string.Concat("EasyPost/v2 CSharp/", version));
             restRequest.AddHeader("authorization", "Bearer " + apiKey);

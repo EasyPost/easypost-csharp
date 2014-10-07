@@ -55,7 +55,6 @@
     <Compile Include="Exception.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="Enum.cs" />
     <Compile Include="CustomsInfo.cs" />
     <Compile Include="CustomsItem.cs" />
     <Compile Include="Client.cs" />

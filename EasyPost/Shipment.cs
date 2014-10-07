@@ -78,7 +78,8 @@ namespace EasyPost {
         /// </summary>
         /// <exception cref="ResourceAlreadyCreated">Shipment already has an id.</exception>
         public void Create() {
-            if (id != null) throw new ResourceAlreadyCreated();
+            if (id != null)
+                throw new ResourceAlreadyCreated();
             this.Merge(sendCreate(this.AsDictionary()));
         }
 
@@ -93,7 +94,8 @@ namespace EasyPost {
         /// Populate the rates property for this shipment. 
         /// </summary>
         public void GetRates() {
-            if (id == null) Create();
+            if (id == null)
+                Create();
 
             Request request = new Request("shipments/{id}/rates");
             request.AddUrlSegment("id", id);
@@ -108,7 +110,7 @@ namespace EasyPost {
         public void Buy(string rateId) {
             Request request = new Request("shipments/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
-            request.addBody(new Dictionary<string, object>() {{"id", rateId}}, "rate");
+            request.addBody(new Dictionary<string, object>() { { "id", rateId } }, "rate");
 
             Shipment result = client.Execute<Shipment>(request);
 
@@ -152,7 +154,7 @@ namespace EasyPost {
 
             ResourceExtension.Merge(this, client.Execute<Shipment>(request));
         }
-        
+
         /// <summary>
         /// Generate a stamp for this shipment.
         /// </summary>
@@ -193,34 +195,27 @@ namespace EasyPost {
         /// <param name="excludeCarriers">Carriers blacklist.</param>
         /// <param name="excludeServices">Services blacklist.</param>
         /// <returns>EasyPost.Rate instance or null if no rate was found.</returns>
-        public Rate LowestRate(IEnumerable<Carrier> includeCarriers = null, IEnumerable<Service> includeServices = null,
-                               IEnumerable<Carrier> excludeCarriers = null, IEnumerable<Service> excludeServices = null) {
-            if (rates == null) GetRates();
+        public Rate LowestRate(IEnumerable<string> includeCarriers = null, IEnumerable<string> includeServices = null,
+                               IEnumerable<string> excludeCarriers = null, IEnumerable<string> excludeServices = null) {
+            if (rates == null)
+                GetRates();
 
             List<Rate> result = new List<Rate>(rates);
-            if (includeCarriers != null) filterRates(ref result, rate => includeCarriers.Contains(parseCarrier(rate)));
-            if (includeServices != null) filterRates(ref result, rate => includeServices.Contains(parseService(rate)));
-            if (excludeCarriers != null) filterRates(ref result, rate => !excludeCarriers.Contains(parseCarrier(rate)));
-            if (excludeServices != null) filterRates(ref result, rate => !excludeServices.Contains(parseService(rate)));
+
+            if (includeCarriers != null)
+                filterRates(ref result, rate => includeCarriers.Contains(rate.carrier));
+            if (includeServices != null)
+                filterRates(ref result, rate => includeServices.Contains(rate.service));
+            if (excludeCarriers != null)
+                filterRates(ref result, rate => !excludeCarriers.Contains(rate.carrier));
+            if (excludeServices != null)
+                filterRates(ref result, rate => !excludeServices.Contains(rate.service));
 
             return result.OrderBy(rate => double.Parse(rate.rate)).FirstOrDefault();
         }
 
         private void filterRates(ref List<Rate> rates, Func<Rate, bool> filter) {
             rates = rates.Where(filter).ToList();
-        }
-
-        private Carrier parseCarrier(Rate rate) {
-            return (Carrier) Enum.Parse(typeof(Carrier), rate.carrier);
-        }
-
-        private Service parseService(Rate rate) {
-            // Enums cannot start with numbers.
-            if (rate.service == "3DaySelect") return Service.ThreeDaySelect;
-            if (rate.service == "2ndDayAirAM") return Service.SecondDayAirAM;
-            if (rate.service == "2ndDayAir") return Service.SecondDayAir;
-
-            return (Service) Enum.Parse(typeof(Service), rate.service);
         }
     }
 }

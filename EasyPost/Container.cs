@@ -18,7 +18,7 @@ namespace EasyPost {
         public double width { get; set; }
         public double height { get; set; }
         public double max_weight { get; set; }
-        
+
         private static Client client = new Client();
 
         /// <summary>

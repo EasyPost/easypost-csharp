@@ -42,7 +42,8 @@ namespace EasyPostTest {
             Batch batch = Batch.Create();
             Shipment shipment = Shipment.Create(shipmentParameters);
 
-            while (batch.state != "created") batch = Batch.Retrieve(batch.id);
+            while (batch.state != "created")
+                batch = Batch.Retrieve(batch.id);
             batch.AddShipments(new List<Shipment>() { shipment });
 
             while (batch.shipments == null) { batch = Batch.Retrieve(batch.id); }

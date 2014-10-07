@@ -25,15 +25,15 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestCastToRestRequest() {
-            RestRequest request = (RestRequest) new Request("resource");
+            RestRequest request = (RestRequest)new Request("resource");
         }
 
         [TestMethod]
         public void TestAddBody() {
             Request request = new Request("resource");
-            request.addBody(new Dictionary<string, object>() {{"foo", "bar"}}, "parent");
+            request.addBody(new Dictionary<string, object>() { { "foo", "bar" } }, "parent");
 
-            RestRequest restRequest = (RestRequest) request;
+            RestRequest restRequest = (RestRequest)request;
             CollectionAssert.Contains(restRequest.Parameters.Select(parameter => parameter.ToString()).ToList(), "application/x-www-form-urlencoded=parent%5Bfoo%5D=bar");
         }
 
@@ -51,7 +51,7 @@ namespace EasyPostTest {
         [TestMethod]
         public void TestFlattenParameters() {
             Request request = new Request("resource");
-            Dictionary<string, object> parameters = new Dictionary<string, object>() {{"foo", "bar"}, {"baz", "qux"}};
+            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "foo", "bar" }, { "baz", "qux" } };
             List<Tuple<string, string>> result = request.flattenParameters(parameters, "parent");
             CollectionAssert.Contains(result, new Tuple<string, string>("parent[foo]", "bar"));
             CollectionAssert.Contains(result, new Tuple<string, string>("parent[baz]", "qux"));

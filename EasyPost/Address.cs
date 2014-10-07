@@ -67,7 +67,8 @@ namespace EasyPost {
         /// </summary>
         /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
         public void Create() {
-            if (id != null) throw new ResourceAlreadyCreated();
+            if (id != null)
+                throw new ResourceAlreadyCreated();
             this.Merge(sendCreate(this.AsDictionary()));
         }
 
@@ -111,7 +112,8 @@ namespace EasyPost {
         /// </summary>
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
         public void Verify() {
-            if (id == null) Create();
+            if (id == null)
+                Create();
 
             Request request = new Request("addresses/{id}/verify");
             request.RootElement = "address";

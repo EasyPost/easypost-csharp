@@ -21,8 +21,8 @@ namespace EasyPostTest {
 
         [TestInitialize]
         public void Initialize() {
-            dest = new Data() {foo = "foo", bar = 10, baz = new Inner() {qux = "qux"}};
-            source = new Data() {foo = "oof", bar = 42, baz = new Inner() {qux = "xuq"}};
+            dest = new Data() { foo = "foo", bar = 10, baz = new Inner() { qux = "qux" } };
+            source = new Data() { foo = "oof", bar = 42, baz = new Inner() { qux = "xuq" } };
         }
         [TestMethod]
         public void TestMerge() {
@@ -39,7 +39,7 @@ namespace EasyPostTest {
 
             Assert.AreEqual(dictionary["foo"], "oof");
             Assert.AreEqual(dictionary["bar"], 42);
-            Assert.AreEqual(((Dictionary<string, object>) dictionary["baz"])["qux"], "xuq");
+            Assert.AreEqual(((Dictionary<string, object>)dictionary["baz"])["qux"], "xuq");
         }
     }
 }

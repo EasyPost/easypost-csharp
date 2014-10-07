@@ -27,7 +27,7 @@ namespace EasyPostTest {
                 {"to_address", toAddress}, {"from_address", fromAddress}, {"reference", "ShipmentRef"}
             };
         }
-        
+
         private Shipment buyShipment() {
             Shipment shipment = Shipment.Create(parameters);
             shipment.GetRates();
@@ -42,7 +42,7 @@ namespace EasyPostTest {
                 {"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}
             });
 
-            return new Shipment() {to_address = to, from_address = from, parcel = parcel};
+            return new Shipment() { to_address = to, from_address = from, parcel = parcel };
         }
 
         [TestMethod]
@@ -59,7 +59,7 @@ namespace EasyPostTest {
         [TestMethod]
         [ExpectedException(typeof(ResourceAlreadyCreated))]
         public void TestCreateWithId() {
-            Shipment shipment = new Shipment() {id = "shp_asdlf"};
+            Shipment shipment = new Shipment() { id = "shp_asdlf" };
             shipment.Create();
         }
 
@@ -115,29 +115,29 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestLowestRate() {
-            Rate lowestUSPS = new Rate() {rate = "1.0", carrier = "USPS", service = "ParcelSelect"};
-            Rate highestUSPS = new Rate() {rate = "10.0", carrier = "USPS", service = "Priority"};
-            Rate lowestUPS = new Rate() {rate = "2.0", carrier = "UPS", service = "ParcelSelect"};
-            Rate highestUPS = new Rate() {rate = "20.0", carrier = "UPS", service = "Priority"};
+            Rate lowestUSPS = new Rate() { rate = "1.0", carrier = "USPS", service = "ParcelSelect" };
+            Rate highestUSPS = new Rate() { rate = "10.0", carrier = "USPS", service = "Priority" };
+            Rate lowestUPS = new Rate() { rate = "2.0", carrier = "UPS", service = "ParcelSelect" };
+            Rate highestUPS = new Rate() { rate = "20.0", carrier = "UPS", service = "Priority" };
 
-            Shipment shipment = new Shipment() {rates = new List<Rate>() {highestUSPS, lowestUSPS, highestUPS, lowestUPS}};
+            Shipment shipment = new Shipment() { rates = new List<Rate>() { highestUSPS, lowestUSPS, highestUPS, lowestUPS } };
 
             Rate rate = shipment.LowestRate();
             Assert.AreEqual(rate, lowestUSPS);
 
-            rate = shipment.LowestRate(includeCarriers: new List<Carrier>() {Carrier.UPS});
+            rate = shipment.LowestRate(includeCarriers: new List<string>() { "UPS" });
             Assert.AreEqual(rate, lowestUPS);
 
-            rate = shipment.LowestRate(includeServices: new List<Service>() {Service.Priority});
+            rate = shipment.LowestRate(includeServices: new List<string>() { "Priority" });
             Assert.AreEqual(rate, highestUSPS);
 
-            rate = shipment.LowestRate(excludeCarriers: new List<Carrier>() {Carrier.USPS});
+            rate = shipment.LowestRate(excludeCarriers: new List<string>() { "USPS" });
             Assert.AreEqual(rate, lowestUPS);
 
-            rate = shipment.LowestRate(excludeServices: new List<Service>() {Service.ParcelSelect});
+            rate = shipment.LowestRate(excludeServices: new List<string>() { "ParcelSelect" });
             Assert.AreEqual(rate, highestUSPS);
 
-            rate = shipment.LowestRate(includeCarriers: new List<Carrier>() {Carrier.FedEx});
+            rate = shipment.LowestRate(includeCarriers: new List<string>() { "FedEx" });
             Assert.IsNull(rate);
         }
     }

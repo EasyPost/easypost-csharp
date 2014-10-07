@@ -35,7 +35,7 @@ namespace EasyPostTest {
                 {"to_address", toAddress}, {"from_address", fromAddress}, {"reference", "ShipmentRef"}, {"shipments", shipments}
             };
         }
-        
+
         //private Order createOrderResource() {
         //    Address to = Address.Create(toAddress);
         //    Address from = Address.Create(fromAddress);
@@ -59,7 +59,7 @@ namespace EasyPostTest {
         [TestMethod]
         [ExpectedException(typeof(ResourceAlreadyCreated))]
         public void TestCreateOrderWithId() {
-            Order order = new Order() {id = "order_asjhd"};
+            Order order = new Order() { id = "order_asjhd" };
             order.Create();
         }
 
@@ -72,11 +72,10 @@ namespace EasyPostTest {
         //}
 
         [TestMethod]
-        public void TestBuyOrder()
-        {
+        public void TestBuyOrder() {
             Order order = Order.Create(parameters);
             order.Buy("USPS", "Priority");
-            
+
             Assert.IsNotNull(order.shipments[0].postage_label);
         }
     }
