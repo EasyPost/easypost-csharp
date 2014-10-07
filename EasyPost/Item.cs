@@ -28,7 +28,7 @@ namespace EasyPost {
         private static Client client = new Client();
 
         /// <summary>
-        /// Retrieve a Item from its id or reference.
+        /// Retrieve an Item from its id or reference.
         /// </summary>
         /// <param name="id">String representing a Item. Starts with "item_" if passing an id.</param>
         /// <returns>EasyPost.Item instance.</returns>
@@ -40,7 +40,7 @@ namespace EasyPost {
         }
 
         /// <summary>
-        /// Create a Item.
+        /// Create an Item.
         /// </summary>
         /// <param name="parameters">
         /// Dictionary containing parameters to create the item with. Valid pairs:

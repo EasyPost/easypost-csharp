@@ -43,13 +43,13 @@ namespace EasyPostTest {
             Shipment shipment = Shipment.Create(shipmentParameters);
 
             while (batch.state != "created") batch = Batch.Retrieve(batch.id);
-            batch.AddShipments(new List<Shipment>() {shipment});
+            batch.AddShipments(new List<Shipment>() { shipment });
 
             while (batch.shipments == null) { batch = Batch.Retrieve(batch.id); }
             Assert.AreEqual(batch.num_shipments, 1);
             Assert.AreEqual(batch.shipments[0].id, shipment.id);
 
-            batch.RemoveShipments(new List<Shipment>() {shipment});
+            batch.RemoveShipments(new List<Shipment>() { shipment });
             Assert.AreEqual(batch.num_shipments, 0);
         }
 
