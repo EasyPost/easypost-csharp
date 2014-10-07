@@ -42,7 +42,7 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidRequest))]
+        [ExpectedException(typeof(HttpException))]
         public void TestExecuteFail() {
             Client client = new Client("as.asdf");
             client.Execute<JsonTest>(new Request(""));

@@ -28,21 +28,22 @@ namespace EasyPost {
 
         public T Execute<T>(Request request) where T : new() {
             RestResponse<T> response = (RestResponse<T>) restClient.Execute<T>(prepareRequest(request));
+            int statusCode = Convert.ToInt32(response.StatusCode);
 
-            if (response.StatusCode == HttpStatusCode.BadRequest) {
+            if (statusCode < 200 || statusCode > 299) {
                 string message;
 
-                try {
-                    message = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response.Content)["error"]["message"];
-                } catch (JsonSerializationException) {
-                    message = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.Content)["error"];
+                if (response.Content == "") {
+                    message = "";
+                } else {
+                    try {
+                        message = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response.Content)["error"]["message"];
+                    } catch (JsonSerializationException) {
+                        message = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.Content)["error"];
+                    }
                 }
 
-                throw new InvalidRequest(message);
-            } else if (response.StatusCode == HttpStatusCode.NotFound) {
-                throw new ResourceNotFound();
-            } else if (response.ErrorMessage != null) {
-                throw new InvalidRequest(response.ErrorMessage);
+                throw new HttpException(statusCode, message);
             }
 
             return response.Data;

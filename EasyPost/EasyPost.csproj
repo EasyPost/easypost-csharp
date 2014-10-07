@@ -52,12 +52,12 @@
     <Compile Include="Address.cs" />
     <Compile Include="Batch.cs" />
     <Compile Include="BatchShipment.cs" />
+    <Compile Include="Exception.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="CustomsInfo.cs" />
     <Compile Include="CustomsItem.cs" />
-    <Compile Include="Exception.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="IResource.cs" />
     <Compile Include="Container.cs" />

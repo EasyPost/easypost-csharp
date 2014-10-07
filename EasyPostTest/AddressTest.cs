@@ -24,7 +24,7 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ResourceNotFound))]
+        [ExpectedException(typeof(HttpException))]
         public void TestRetrieveInvalidId() {
             Address.Retrieve("not-an-id");
         }
