@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace EasyPost {
     public class Parcel : IResource {
         public string id { get; set; }
+        public string mode { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
         public double length { get; set; }
@@ -16,7 +17,6 @@ namespace EasyPost {
         public double height { get; set; }
         public double weight { get; set; }
         public string predefined_package { get; set; }
-        public string mode { get; set; }
 
         private static Client client = new Client();
 
