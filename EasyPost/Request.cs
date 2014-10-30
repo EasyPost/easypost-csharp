@@ -69,15 +69,15 @@ namespace EasyPost {
             foreach (KeyValuePair<string, object> pair in parameters) {
                 if (pair.Value is Dictionary<string, object>) {
                     result.AddRange(flattenParameters((Dictionary<string, object>)pair.Value, string.Concat(parent, "[", pair.Key, "]")));
+                } else if (pair.Value is IResource) {
+                    result.AddRange(flattenParameters(ResourceExtension.AsDictionary((IResource)pair.Value), string.Concat(parent, "[", pair.Key, "]")));
                 } else if (pair.Value is List<Dictionary<string, object>>) {
                     List<Dictionary<string, object>> list = (List<Dictionary<string, object>>)pair.Value;
                     for (int i = 0; i < list.Count; i++) {
                         result.AddRange(flattenParameters(list[i], string.Concat(parent, "[", pair.Key, "][", i, "]")));
                     }
-                } else {
-                    if (pair.Value != null) {
-                        result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), pair.Value.ToString()));
-                    }
+                } else if (pair.Value != null) {
+                    result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), pair.Value.ToString()));
                 }
             }
             return result;

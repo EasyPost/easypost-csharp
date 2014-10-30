@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace EasyPost {
     public class Shipment : IResource {
         public string id { get; set; }
+        public string mode { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
         public string tracking_code { get; set; }
@@ -35,7 +36,6 @@ namespace EasyPost {
         public string usps_zone { get; set; }
         public string stamp_url { get; set; }
         public string barcode_url { get; set; }
-        public string mode { get; set; }
 
         private static Client client = new Client();
 

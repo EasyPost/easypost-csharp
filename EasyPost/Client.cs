@@ -19,6 +19,8 @@ namespace EasyPost {
         internal RestClient restClient;
 
         public Client(string apiBase = "https://api.easypost.com/v2") {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
             restClient = new RestClient(apiBase);
 
             Assembly assembly = Assembly.GetExecutingAssembly();
@@ -31,8 +33,11 @@ namespace EasyPost {
             int statusCode = Convert.ToInt32(response.StatusCode);
 
             if (statusCode < 200 || statusCode > 299) {
-                string message;
+                if (statusCode == 500) {
+                    throw new HttpException(statusCode, "We're sorry, something went wrong. If the problem persists please contact us at support@easypost.com or open an issue on GitHub.");
+                }
 
+                string message;
                 if (response.Content == "") {
                     message = "";
                 } else {
