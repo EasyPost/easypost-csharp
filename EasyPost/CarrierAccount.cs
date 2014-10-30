@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    class CarrierAccount : IResource {
+    public class CarrierAccount : IResource {
         public string id { get; set; }
         public string mode { get; set; }
         public DateTime created_at { get; set; }
