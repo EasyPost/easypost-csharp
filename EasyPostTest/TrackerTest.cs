@@ -12,7 +12,7 @@ namespace EasyPostTest {
         [TestMethod]
         public void TestCreate() {
             string carrier = "USPS";
-            string trackingCode = "PA123456789US";
+            string trackingCode = "EZ1000000001";
 
             Tracker tracker = Tracker.Create(carrier, trackingCode);
             Assert.AreEqual(tracker.tracking_code, trackingCode);
