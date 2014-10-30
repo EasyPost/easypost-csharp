@@ -19,6 +19,8 @@ namespace EasyPost {
         internal RestClient restClient;
 
         public Client(string apiBase = "https://api.easypost.com/v2") {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
             restClient = new RestClient(apiBase);
 
             Assembly assembly = Assembly.GetExecutingAssembly();
