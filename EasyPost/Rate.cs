@@ -15,6 +15,9 @@ namespace EasyPost {
         public string rate { get; set; }
         public string currency { get; set; }
         public int est_delivery_days { get; set; }
+        public DateTime delivery_date {get; set; } 
+        public bool delivery_date_guaranteed {get; set;}
+        public int delivery_days {get; set;}
         public string carrier { get; set; }
         public string shipment_id { get; set; }
         public string mode { get; set; }
