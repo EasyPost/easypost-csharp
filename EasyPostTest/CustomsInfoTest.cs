@@ -28,5 +28,15 @@ namespace EasyPostTest {
             Assert.AreEqual(info.id, retrieved.id);
             Assert.IsNotNull(retrieved.customs_items);
         }
+
+        [TestMethod]
+        public void TestCreateWithIResource() {
+            CustomsInfo info = CustomsInfo.Create(new Dictionary<string, object>() {
+                {"customs_certify", true}, {"eel_pfc", "NOEEI 30.37(a)"},
+                {"customs_items", new List<IResource>() {new CustomsItem()}}
+            });
+
+            Assert.IsNotNull(info.id);
+        }
     }
 }
