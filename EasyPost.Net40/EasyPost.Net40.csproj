@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{69683F8C-9306-4ED3-90BD-1F5C2F6977E1}</ProjectGuid>
+    <ProjectGuid>{0A65EC53-E6AA-436B-A462-C059D48555D2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EasyPost</RootNamespace>
     <AssemblyName>EasyPost</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -26,7 +26,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>lib\net45\</OutputPath>
+    <OutputPath>..\EasyPost\lib\net40\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=104.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -50,32 +50,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address.cs" />
-    <Compile Include="Batch.cs" />
-    <Compile Include="BatchShipment.cs" />
-    <Compile Include="CarrierAccount.cs" />
-    <Compile Include="Exception.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="CustomsInfo.cs" />
-    <Compile Include="CustomsItem.cs" />
-    <Compile Include="Client.cs" />
-    <Compile Include="IResource.cs" />
-    <Compile Include="Container.cs" />
-    <Compile Include="Parcel.cs" />
-    <Compile Include="Pickup.cs" />
-    <Compile Include="PostageLabel.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Request.cs" />
-    <Compile Include="ResourceExtension.cs" />
-    <Compile Include="ScanForm.cs" />
+    <Compile Include="..\EasyPost\Address.cs" />
+    <Compile Include="..\EasyPost\Batch.cs" />
+    <Compile Include="..\EasyPost\BatchShipment.cs" />
+    <Compile Include="..\EasyPost\CarrierAccount.cs" />
+    <Compile Include="..\EasyPost\Exception.cs" />
+    <Compile Include="..\EasyPost\Order.cs" />
+    <Compile Include="..\EasyPost\Item.cs" />
+    <Compile Include="..\EasyPost\CustomsInfo.cs" />
+    <Compile Include="..\EasyPost\CustomsItem.cs" />
+    <Compile Include="..\EasyPost\Client.cs" />
+    <Compile Include="..\EasyPost\IResource.cs" />
+    <Compile Include="..\EasyPost\Container.cs" />
+    <Compile Include="..\EasyPost\Parcel.cs" />
+    <Compile Include="..\EasyPost\Pickup.cs" />
+    <Compile Include="..\EasyPost\PostageLabel.cs" />
+    <Compile Include="..\EasyPost\Properties\AssemblyInfo.cs" />
+    <Compile Include="..\EasyPost\Request.cs" />
+    <Compile Include="..\EasyPost\ResourceExtension.cs" />
+    <Compile Include="..\EasyPost\ScanForm.cs" />
+    <Compile Include="..\EasyPost\Shipment.cs" />
+    <Compile Include="..\EasyPost\Tracker.cs" />
+    <Compile Include="..\EasyPost\TrackingDetail.cs" />
     <Compile Include="Security.cs" />
-    <Compile Include="Shipment.cs" />
-    <Compile Include="Tracker.cs" />
-    <Compile Include="TrackingDetail.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Rate.cs" />
+    <Compile Include="..\EasyPost\Rate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
