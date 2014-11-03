@@ -41,8 +41,20 @@ namespace EasyPostTest {
             Parcel parcel = Parcel.Create(new Dictionary<string, object>() {
                 {"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}
             });
+            CustomsItem item = new CustomsItem() { description = "description" };
+            CustomsInfo info = new CustomsInfo() {
+                customs_certify = "TRUE",
+                eel_pfc = "NOEEI 30.37(a)",
+                customs_items = new List<CustomsItem>() { item }
+            };
 
-            return new Shipment() { to_address = to, from_address = from, parcel = parcel };
+
+            return new Shipment() {
+                to_address = to,
+                from_address = from,
+                parcel = parcel,
+                customs_info = info
+            };
         }
 
         [TestMethod]
