@@ -16,7 +16,7 @@ namespace EasyPost {
         public string origin_country { get; set; }
         public int quantity { get; set; }
         public double value { get; set; }
-        public int weight { get; set; }
+        public double weight { get; set; }
         public string mode { get; set; }
 
         private static Client client = new Client();
