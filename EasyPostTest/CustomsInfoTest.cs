@@ -31,12 +31,18 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestCreateWithIResource() {
-            CustomsInfo info = CustomsInfo.Create(new Dictionary<string, object>() {
-                {"customs_certify", true}, {"eel_pfc", "NOEEI 30.37(a)"},
-                {"customs_items", new List<IResource>() {new CustomsItem()}}
-            });
+            CustomsItem item = new CustomsItem() { description = "description" };
+            CustomsInfo info = CustomsInfo.Create(
+                new Dictionary<string, object>() {
+                    {"customs_certify", true},
+                    {"eel_pfc", "NOEEI 30.37(a)"},
+                    {"customs_items", new List<IResource>() {item}}
+                }
+            );
 
             Assert.IsNotNull(info.id);
+            Assert.AreEqual(info.customs_items.Count, 1);
+            Assert.AreEqual(info.customs_items[0].description, item.description);
         }
     }
 }
