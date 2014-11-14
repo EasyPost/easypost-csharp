@@ -66,14 +66,14 @@ namespace EasyPostTest {
         public void TestVerify() {
             Dictionary<string, object> parameters = new Dictionary<string, object>() {
                 {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
-                {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}
+                {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}, {"residential", true}
             };
             Address address = Address.Create(parameters);
             address.Verify();
             Assert.IsNotNull(address.id);
             Assert.AreEqual(address.company, "Simpler Postage Inc");
             Assert.IsNull(address.name);
-            Assert.IsNotNull(address.residential);
+            Assert.IsTrue(address.residential);
         }
 
         [TestMethod]
