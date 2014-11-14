@@ -24,6 +24,7 @@ namespace EasyPostTest {
             dest = new Data() { foo = "foo", bar = 10, baz = new Inner() { qux = "qux" } };
             source = new Data() { foo = "oof", bar = 42, baz = new Inner() { qux = "xuq" } };
         }
+
         [TestMethod]
         public void TestMerge() {
             dest.Merge(source);

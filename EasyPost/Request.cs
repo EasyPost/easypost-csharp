@@ -21,6 +21,7 @@ namespace EasyPost {
 
         public Request(string resource, Method method = Method.GET) {
             restRequest = new RestRequest(resource, method);
+            restRequest.AddHeader("Accept", "application/json");
         }
 
         public void AddUrlSegment(string name, string value) {
@@ -38,8 +39,8 @@ namespace EasyPost {
 
         public void addBody(IEnumerable<IDictionary<string, object>> parameters, string parent) {
             List<Tuple<string, string>> result = new List<Tuple<string, string>>();
-            foreach (Dictionary<string, object> parameter in parameters) {
-                result.AddRange(flattenParameters(parameter, parent));
+            for (int i = 0; i < parameters.Count(); i++) {
+                result.AddRange(flattenParameters(parameters.ToList()[i], string.Concat(parent, "[", i, "]")));
             }
             AddParameter("application/x-www-form-urlencoded", encodeParameters(result), ParameterType.RequestBody);
         }
