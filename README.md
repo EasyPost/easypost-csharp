@@ -78,7 +78,7 @@ Address fromAddress = new Address() {
 	name = "Andrew Tribone", street1 = "480 Fell St", street2 = "#3",
     city = "San Francisco", state = "CA", country = "US", zip = "94102"
 };
-Address fromAddress = new Address() {
+Address toAddress = new Address() {
     company = "Simpler Postage Inc", street1 = "164 Townsend Street", street2 = "Unit 1",
     city = "San Francisco", state = "CA", country = "US", zip = "94107"
 };
