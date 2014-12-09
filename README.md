@@ -85,8 +85,8 @@ Address toAddress = new Address() {
 Parcel parcel = new Parcel() {length = 8, width = 6, height = 5, weight = 10};
 
 Shipment shipment = new Shipment() {to_address = toAddress, from_address = fromAddress, parcel = parcel};
-shipment.Buy(shipment.LowestRate(includeServices: new List<Service>() {Service.Priority},
-                                 excludeCarriers: new List<Carrier>() {Carrier.FedEx}));
+shipment.Buy(shipment.LowestRate(includeServices: new List<string>() {"Priority"},
+                                 excludeCarriers: new List<string>() {"FedEx"}));
 
 if (shipment.status == "purchased") shipment.GenerateLabel("pdf"); // Populates `shipment.postage_label.label_pdf_url`
 ```
