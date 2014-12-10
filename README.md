@@ -66,7 +66,7 @@ Shipment shipment = Shipment.Create(new Dictionary<string, object>() {
 shipment.Buy(shipment.LowestRate(includeServices: new List<Service>() {Service.Priority},
                                  excludeCarriers: new List<Carrier>() {Carrier.FedEx}));
 
-if (shipment.status == "purchased") shipment.GenerateLabel("pdf"); // Populates `shipment.postage_label.label_pdf_url`
+ shipment.GenerateLabel("pdf"); // Populates `shipment.postage_label.label_pdf_url`
 ```
 
 OR
@@ -88,7 +88,7 @@ Shipment shipment = new Shipment() {to_address = toAddress, from_address = fromA
 shipment.Buy(shipment.LowestRate(includeServices: new List<string>() {"Priority"},
                                  excludeCarriers: new List<string>() {"FedEx"}));
 
-if (shipment.status == "purchased") shipment.GenerateLabel("pdf"); // Populates `shipment.postage_label.label_pdf_url`
+shipment.GenerateLabel("pdf"); // If there are no errors you will recieve postage_label, tracking_code and the selected_rate
 ```
 
 ### Asynchronous Batch Processing
