@@ -22,7 +22,7 @@ namespace EasyPost {
         public string carrier { get; set; }
         public string shipment_id { get; set; }
         public string carrier_account_id { get; set; }
-        
+
         private static Client client = new Client();
 
         /// <summary>

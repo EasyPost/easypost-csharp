@@ -111,9 +111,7 @@ namespace EasyPost {
         /// Verify an address.
         /// </summary>
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
-        public void Verify(IDictionary<string, object> parameters = null) {
-            parameters = parameters ?? new Dictionary<string, object>();
-
+        public void Verify(string carrier = null) {
             if (id == null)
                 Create();
 
@@ -121,11 +119,8 @@ namespace EasyPost {
             request.RootElement = "address";
             request.AddUrlSegment("id", id);
 
-            try
-            {
-                request.AddParameter("carrier", (string)parameters["carrier"], ParameterType.QueryString);
-            }
-            catch (System.Collections.Generic.KeyNotFoundException e) { }
+            if (carrier != null)
+                request.AddParameter("carrier", carrier, ParameterType.QueryString);
 
             this.Merge(client.Execute<Address>(request));
         }

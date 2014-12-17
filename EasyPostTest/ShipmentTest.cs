@@ -69,8 +69,7 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestRateErrorMessages()
-        {
+        public void TestRateErrorMessages() {
             parameters = new Dictionary<string, object>() {
                 {"parcel", new Dictionary<string, object>() {{"predefined_package", "FEDEXBOX"}, {"weight", 10}}},
                 {"to_address", toAddress}, {"from_address", fromAddress}
