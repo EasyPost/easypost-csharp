@@ -28,8 +28,8 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestRestClientWithBase() {
-            Client client = new Client("apiBase");
-            Assert.AreEqual(client.restClient.BaseUrl, "apiBase");
+            Client client = new Client("http://apiBase.com");
+            Assert.AreEqual(client.restClient.BaseUrl, "http://apiBase.com");
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace EasyPostTest {
         [TestMethod]
         [ExpectedException(typeof(HttpException))]
         public void TestExecuteFail() {
-            Client client = new Client("as.asdf");
+            Client client = new Client("http://as.asdf");
             client.Execute<JsonTest>(new Request(""));
         }
 

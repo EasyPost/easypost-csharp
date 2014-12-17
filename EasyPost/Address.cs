@@ -111,13 +111,16 @@ namespace EasyPost {
         /// Verify an address.
         /// </summary>
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
-        public void Verify() {
+        public void Verify(string carrier = null) {
             if (id == null)
                 Create();
 
             Request request = new Request("addresses/{id}/verify");
             request.RootElement = "address";
             request.AddUrlSegment("id", id);
+
+            if (carrier != null)
+                request.AddParameter("carrier", carrier, ParameterType.QueryString);
 
             this.Merge(client.Execute<Address>(request));
         }

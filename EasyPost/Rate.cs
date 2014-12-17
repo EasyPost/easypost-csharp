@@ -11,6 +11,7 @@ namespace EasyPost {
         public string id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
+        public string mode { get; set; }
         public string service { get; set; }
         public string rate { get; set; }
         public string currency { get; set; }
@@ -20,7 +21,7 @@ namespace EasyPost {
         public int delivery_days {get; set;}
         public string carrier { get; set; }
         public string shipment_id { get; set; }
-        public string mode { get; set; }
+        public string carrier_account_id { get; set; }
 
         private static Client client = new Client();
 

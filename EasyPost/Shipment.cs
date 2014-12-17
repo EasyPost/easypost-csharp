@@ -17,7 +17,7 @@ namespace EasyPost {
         public string status { get; set; }
         public bool is_return { get; set; }
         public Dictionary<string, object> options { get; set; }
-        public List<string> messages { get; set; }
+        public List<Dictionary<string, object>> messages { get; set; }
         public CustomsInfo customs_info { get; set; }
         public Address from_address { get; set; }
         public Address to_address { get; set; }

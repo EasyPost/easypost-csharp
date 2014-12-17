@@ -77,6 +77,20 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
+        public void TestVerifyCarrier() {
+            Dictionary<string, object> parameters = new Dictionary<string, object>() {
+                {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
+                {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}, {"residential", true}
+            };
+            Address address = Address.Create(parameters);
+            address.Verify("usps");
+            Assert.IsNotNull(address.id);
+            Assert.AreEqual(address.company, "Simpler Postage Inc");
+            Assert.AreEqual(address.street1, "164 TOWNSEND ST");
+            Assert.IsNull(address.name);
+        }
+
+        [TestMethod]
         public void TestVerifyBeforeCreate() {
             address.Verify();
             Assert.IsNotNull(address.id);
