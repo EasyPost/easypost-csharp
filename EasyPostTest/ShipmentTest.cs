@@ -69,6 +69,21 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
+        public void TestRateErrorMessages()
+        {
+            parameters = new Dictionary<string, object>() {
+                {"parcel", new Dictionary<string, object>() {{"predefined_package", "FEDEXBOX"}, {"weight", 10}}},
+                {"to_address", toAddress}, {"from_address", fromAddress}
+            };
+            Shipment shipment = Shipment.Create(parameters);
+
+            Assert.IsNotNull(shipment.id);
+            Assert.AreEqual(shipment.messages[0]["carrier"], "USPS");
+            Assert.AreEqual(shipment.messages[0]["type"], "rate_error");
+            Assert.AreEqual(shipment.messages[0]["message"], "Unable to retrieve USPS rates for another carrier's predefined_package parcel type.");            
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ResourceAlreadyCreated))]
         public void TestCreateWithId() {
             Shipment shipment = new Shipment() { id = "shp_asdlf" };
