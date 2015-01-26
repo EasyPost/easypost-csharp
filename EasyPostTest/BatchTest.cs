@@ -57,14 +57,19 @@ namespace EasyPostTest {
             Assert.AreEqual(batch.num_shipments, 0);
         }
 
-        [TestMethod]
-        public void TestCreateThenBuyThenGenerateLabelAndScanForm() {
+        public Batch CreateBatch() {
             Dictionary<string, object> parameters = new Dictionary<string, object>() {
                 {"reference", "EasyPostCSharpTest"},
                 {"shipments", new List<Dictionary<string, object>>() {shipmentParameters}}
             };
 
-            Batch batch = Batch.Create(parameters);
+            return Batch.Create(parameters);
+        }
+
+        [TestMethod]
+        public void TestCreateThenBuyThenGenerateLabelAndScanForm() {
+            Batch batch = CreateBatch();
+
             Assert.IsNotNull(batch.id);
             Assert.AreEqual(batch.reference, "EasyPostCSharpTest");
             Assert.AreEqual(batch.state, "creating");
@@ -75,10 +80,23 @@ namespace EasyPostTest {
             while (batch.state == "created") { batch = Batch.Retrieve(batch.id); }
             Assert.AreEqual(batch.state, "purchased");
 
-            batch.GenerateLabel("pdf", orderBy: "reference DESC");
+            batch.GenerateLabel("pdf");
             Assert.AreEqual(batch.state, "label_generating");
 
             batch.GenerateScanForm();
+        }
+
+        [TestMethod]
+        public void TestGenerateLabelWithOrderBy() {
+            Batch batch = CreateBatch();
+
+            while (batch.state == "creating") { batch = Batch.Retrieve(batch.id); }
+            batch.Buy();
+
+            while (batch.state == "created") { batch = Batch.Retrieve(batch.id); }
+            batch.GenerateLabel("pdf", orderBy: "reference DESC");
+
+            Assert.AreEqual(batch.state, "label_generating");
         }
     }
 }

@@ -119,11 +119,15 @@ namespace EasyPost {
         public void GenerateLabel(string fileFormat, string orderBy = null) {
             Request request = new Request("batches/{id}/label", Method.POST);
             request.AddUrlSegment("id", id);
-            request.addBody(new List<Tuple<string, string>>() {
-                new Tuple<string, string>("file_format", fileFormat),
-                new Tuple<string, string>("order_by", orderBy)
-            });
 
+            List<Tuple<string, string>> body = new List<Tuple<string, string>>() {
+                new Tuple<string, string>("file_format", fileFormat)
+            };
+
+            if (orderBy != null)
+                body.Add(new Tuple<string, string>("order_by", orderBy));
+
+            request.addBody(body);
             this.Merge(client.Execute<Batch>(request));
         }
 
