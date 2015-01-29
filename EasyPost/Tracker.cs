@@ -5,14 +5,18 @@ namespace EasyPost {
     public class Tracker : IResource {
         private static Client client = new Client();
 
-        public DateTime created_at { get; set; }
         public string id { get; set; }
+        public DateTime created_at { get; set; }
+        public DateTime tracking_updated_at { get; set; }
+        public DateTime updated_at { get; set; }
         public string mode { get; set; }
         public string shipment_id { get; set; }
         public string status { get; set; }
         public string tracking_code { get; set; }
+        public string est_delivery_days { get; set; }
+        public string signed_by { get; set; }
+        public double weight { get; set; }
         public List<TrackingDetail> tracking_details { get; set; }
-        public DateTime updated_at { get; set; }
 
         public static Tracker Create(string carrier, string trackingCode) {
             Request request = new Request("trackers", RestSharp.Method.POST);
