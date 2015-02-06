@@ -16,5 +16,7 @@ namespace EasyPost {
         public string form_url { get; set; }
         public string form_file_type { get; set; }
         public string mode { get; set; }
+        public string status { get; set; }
+        public string message { get; set; }
     }
 }
