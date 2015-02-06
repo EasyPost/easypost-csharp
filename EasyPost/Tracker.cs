@@ -13,6 +13,7 @@ namespace EasyPost {
         public string mode { get; set; }
         public string shipment_id { get; set; }
         public string status { get; set; }
+        public string carrier { get; set; }
         public string tracking_code { get; set; }
         public string signed_by { get; set; }
         public double weight { get; set; }

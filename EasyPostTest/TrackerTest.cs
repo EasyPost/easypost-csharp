@@ -17,6 +17,7 @@ namespace EasyPostTest {
             Tracker tracker = Tracker.Create(carrier, trackingCode);
             Assert.AreEqual(tracker.tracking_code, trackingCode);
             Assert.IsNotNull(tracker.est_delivery_date);
+            Assert.IsNotNull(tracker.carrier);
         }
     }
 }
