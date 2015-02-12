@@ -25,6 +25,7 @@ namespace EasyPost {
         public PostageLabel postage_label { get; set; }
         public List<Rate> rates { get; set; }
         public ScanForm scan_form { get; set; }
+         public List<Forms> forms { get; set; }
         public Rate selected_rate { get; set; }
         public Tracker tracker { get; set; }
         public Address buyer_address { get; set; }
