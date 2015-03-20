@@ -42,7 +42,7 @@ namespace EasyPost {
                     message = "";
                 } else {
                     try {
-                        message = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response.Content)["error"]["message"];
+                        message = (string)JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(response.Content)["error"]["message"];
                     } catch (JsonSerializationException) {
                         message = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.Content)["error"];
                     }
