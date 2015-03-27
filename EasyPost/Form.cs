@@ -2,7 +2,7 @@
 
 namespace EasyPost
 {
-    public class Forms : IResource
+    public class Form : IResource
     {
         public string id { get; set; }
         public DateTime created_at { get; set; }
