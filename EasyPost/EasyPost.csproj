@@ -55,6 +55,7 @@
     <Compile Include="BatchShipment.cs" />
     <Compile Include="CarrierAccount.cs" />
     <Compile Include="Exception.cs" />
+    <Compile Include="Forms.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="CustomsInfo.cs" />
