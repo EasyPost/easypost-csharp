@@ -5,13 +5,16 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPostTest {
+namespace EasyPostTest
+{
     [TestClass]
-    public class ShipmentTest {
+    public class ShipmentTest
+    {
         Dictionary<string, object> parameters, toAddress, fromAddress;
 
         [TestInitialize]
-        public void Initialize() {
+        public void Initialize()
+        {
             Client.apiKey = "cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi";
 
             toAddress = new Dictionary<string, object>() {
@@ -28,28 +31,32 @@ namespace EasyPostTest {
             };
         }
 
-        private Shipment buyShipment() {
+        private Shipment buyShipment()
+        {
             Shipment shipment = Shipment.Create(parameters);
             shipment.GetRates();
             shipment.Buy(shipment.rates.First());
             return shipment;
         }
 
-        private Shipment createShipmentResource() {
+        private Shipment createShipmentResource()
+        {
             Address to = Address.Create(toAddress);
             Address from = Address.Create(fromAddress);
             Parcel parcel = Parcel.Create(new Dictionary<string, object>() {
                 {"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}
             });
             CustomsItem item = new CustomsItem() { description = "description" };
-            CustomsInfo info = new CustomsInfo() {
+            CustomsInfo info = new CustomsInfo()
+            {
                 customs_certify = "TRUE",
                 eel_pfc = "NOEEI 30.37(a)",
                 customs_items = new List<CustomsItem>() { item }
             };
 
 
-            return new Shipment() {
+            return new Shipment()
+            {
                 to_address = to,
                 from_address = from,
                 parcel = parcel,
@@ -58,7 +65,8 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestCreateAndRetrieve() {
+        public void TestCreateAndRetrieve()
+        {
             Shipment shipment = Shipment.Create(parameters);
 
             Assert.IsNotNull(shipment.id);
@@ -69,7 +77,8 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestRateErrorMessages() {
+        public void TestRateErrorMessages()
+        {
             parameters = new Dictionary<string, object>() {
                 {"parcel", new Dictionary<string, object>() {{"predefined_package", "FEDEXBOX"}, {"weight", 10}}},
                 {"to_address", toAddress}, {"from_address", fromAddress}
@@ -79,25 +88,28 @@ namespace EasyPostTest {
             Assert.IsNotNull(shipment.id);
             Assert.AreEqual(shipment.messages[0]["carrier"], "USPS");
             Assert.AreEqual(shipment.messages[0]["type"], "rate_error");
-            Assert.AreEqual(shipment.messages[0]["message"], "Unable to retrieve USPS rates for another carrier's predefined_package parcel type.");            
+            Assert.AreEqual(shipment.messages[0]["message"], "Unable to retrieve USPS rates for another carrier's predefined_package parcel type.");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ResourceAlreadyCreated))]
-        public void TestCreateWithId() {
+        public void TestCreateWithId()
+        {
             Shipment shipment = new Shipment() { id = "shp_asdlf" };
             shipment.Create();
         }
 
         [TestMethod]
-        public void TestCreateWithPreCreatedAttributes() {
+        public void TestCreateWithPreCreatedAttributes()
+        {
             Shipment shipment = createShipmentResource();
             shipment.Create();
             Assert.IsNotNull(shipment.id);
         }
 
         [TestMethod]
-        public void TestGetRatesWithoutCreate() {
+        public void TestGetRatesWithoutCreate()
+        {
             Shipment shipment = createShipmentResource();
             shipment.GetRates();
             Assert.IsNotNull(shipment.id);
@@ -105,7 +117,8 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestGetRatesAndBuyPlusInsurance() {
+        public void TestGetRatesAndBuyPlusInsurance()
+        {
             Shipment shipment = Shipment.Create(parameters);
             shipment.GetRates();
             Assert.IsNotNull(shipment.rates);
@@ -119,14 +132,16 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestRefund() {
+        public void TestRefund()
+        {
             Shipment shipment = buyShipment();
             shipment.Refund();
             Assert.IsNotNull(shipment.refund_status);
         }
 
         [TestMethod]
-        public void TestGenerateLabelStampBarcode() {
+        public void TestGenerateLabelStampBarcode()
+        {
             Shipment shipment = buyShipment();
 
             shipment.GenerateLabel("pdf");
@@ -140,7 +155,8 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestLowestRate() {
+        public void TestLowestRate()
+        {
             Rate lowestUSPS = new Rate() { rate = "1.0", carrier = "USPS", service = "ParcelSelect" };
             Rate highestUSPS = new Rate() { rate = "10.0", carrier = "USPS", service = "Priority" };
             Rate lowestUPS = new Rate() { rate = "2.0", carrier = "UPS", service = "ParcelSelect" };
@@ -165,6 +181,40 @@ namespace EasyPostTest {
 
             rate = shipment.LowestRate(includeCarriers: new List<string>() { "FedEx" });
             Assert.IsNull(rate);
+        }
+
+        [TestMethod]
+        public void TestCarrierAccounts()
+        {
+            Address to = Address.Create(toAddress);
+            Address from = Address.Create(fromAddress);
+            Parcel parcel = Parcel.Create(new Dictionary<string, object>() {
+                {"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}
+            });
+            CustomsItem item = new CustomsItem() { description = "description" };
+            CustomsInfo info = new CustomsInfo()
+            {
+                customs_certify = "TRUE",
+                eel_pfc = "NOEEI 30.37(a)",
+                customs_items = new List<CustomsItem>() { item }
+            };
+
+            Shipment shipment = new Shipment();
+            shipment.to_address = to;
+            shipment.from_address = from;
+            shipment.parcel = parcel;
+            shipment.carrier_accounts = new List<CarrierAccount> { new CarrierAccount { id = "ca_qn6QC6fd" } };
+            shipment.Create();
+            var valid = true;
+            if (shipment.rates.Count > 0)
+            {
+                foreach (var rate in shipment.rates)
+                {
+                    if (rate.carrier_account_id != "ca_qn6QC6fd") valid = false;
+                }
+            }
+
+            Assert.IsTrue(valid);
         }
     }
 }
