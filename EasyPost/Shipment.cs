@@ -6,10 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EasyPost
-{
-    public class Shipment : IResource
-    {
+namespace EasyPost {
+    public class Shipment : IResource {
         public string id { get; set; }
         public string mode { get; set; }
         public DateTime created_at { get; set; }
@@ -48,8 +46,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
         /// <returns>EasyPost.Shipment instance.</returns>
-        public static Shipment Retrieve(string id)
-        {
+        public static Shipment Retrieve(string id) {
             Request request = new Request("shipments/{id}");
             request.AddUrlSegment("id", id);
 
@@ -74,8 +71,7 @@ namespace EasyPost
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static Shipment Create(IDictionary<string, object> parameters = null)
-        {
+        public static Shipment Create(IDictionary<string, object> parameters = null) {
             return sendCreate(parameters ?? new Dictionary<string, object>());
         }
 
@@ -83,15 +79,13 @@ namespace EasyPost
         /// Create this Shipment.
         /// </summary>
         /// <exception cref="ResourceAlreadyCreated">Shipment already has an id.</exception>
-        public void Create()
-        {
+        public void Create() {
             if (id != null)
                 throw new ResourceAlreadyCreated();
             this.Merge(sendCreate(this.AsDictionary()));
         }
 
-        private static Shipment sendCreate(IDictionary<string, object> parameters)
-        {
+        private static Shipment sendCreate(IDictionary<string, object> parameters) {
             Request request = new Request("shipments", Method.POST);
             request.addBody(parameters, "shipment");
 
@@ -101,8 +95,7 @@ namespace EasyPost
         /// <summary>
         /// Populate the rates property for this shipment. 
         /// </summary>
-        public void GetRates()
-        {
+        public void GetRates() {
             if (id == null)
                 Create();
 
@@ -116,8 +109,7 @@ namespace EasyPost
         /// Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
-        public void Buy(string rateId)
-        {
+        public void Buy(string rateId) {
             Request request = new Request("shipments/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
             request.addBody(new Dictionary<string, object>() { { "id", rateId } }, "rate");
@@ -134,8 +126,7 @@ namespace EasyPost
         /// Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
-        public void Buy(Rate rate)
-        {
+        public void Buy(Rate rate) {
             Buy(rate.id);
         }
 
@@ -143,8 +134,7 @@ namespace EasyPost
         /// Insure shipment for the given amount.
         /// </summary>
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
-        public void Insure(double amount)
-        {
+        public void Insure(double amount) {
             Request request = new Request("shipments/{id}/insure", Method.POST);
             request.AddUrlSegment("id", id);
             request.addBody(new List<Tuple<string, string>>() {
@@ -158,8 +148,7 @@ namespace EasyPost
         /// Generate a postage label for this shipment.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
-        public void GenerateLabel(string fileFormat)
-        {
+        public void GenerateLabel(string fileFormat) {
             Request request = new Request("shipments/{id}/label");
             request.AddUrlSegment("id", id);
             // This is a GET, but uses the request body, so use ParameterType.GetOrPost instead.
@@ -171,8 +160,7 @@ namespace EasyPost
         /// <summary>
         /// Generate a stamp for this shipment.
         /// </summary>
-        public void GenerateStamp()
-        {
+        public void GenerateStamp() {
             Request request = new Request("shipments/{id}/stamp");
             request.AddUrlSegment("id", id);
 
@@ -183,8 +171,7 @@ namespace EasyPost
         /// <summary>
         /// Generate a barcode for this shipment.
         /// </summary>
-        public void GenerateBarcode()
-        {
+        public void GenerateBarcode() {
             Request request = new Request("shipments/{id}/barcode");
             request.AddUrlSegment("id", id);
 
@@ -195,8 +182,7 @@ namespace EasyPost
         /// <summary>
         /// Send a refund request to the carrier the shipment was purchased from.
         /// </summary>
-        public void Refund()
-        {
+        public void Refund() {
             Request request = new Request("shipments/{id}/refund");
             request.AddUrlSegment("id", id);
 
@@ -212,8 +198,7 @@ namespace EasyPost
         /// <param name="excludeServices">Services blacklist.</param>
         /// <returns>EasyPost.Rate instance or null if no rate was found.</returns>
         public Rate LowestRate(IEnumerable<string> includeCarriers = null, IEnumerable<string> includeServices = null,
-                               IEnumerable<string> excludeCarriers = null, IEnumerable<string> excludeServices = null)
-        {
+                               IEnumerable<string> excludeCarriers = null, IEnumerable<string> excludeServices = null) {
             if (rates == null)
                 GetRates();
 
@@ -231,8 +216,7 @@ namespace EasyPost
             return result.OrderBy(rate => double.Parse(rate.rate)).FirstOrDefault();
         }
 
-        private void filterRates(ref List<Rate> rates, Func<Rate, bool> filter)
-        {
+        private void filterRates(ref List<Rate> rates, Func<Rate, bool> filter) {
             rates = rates.Where(filter).ToList();
         }
     }
