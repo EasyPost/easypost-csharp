@@ -79,7 +79,7 @@ namespace EasyPostTest {
             Assert.IsNotNull(shipment.id);
             Assert.AreEqual(shipment.messages[0]["carrier"], "USPS");
             Assert.AreEqual(shipment.messages[0]["type"], "rate_error");
-            Assert.AreEqual(shipment.messages[0]["message"], "Unable to retrieve USPS rates for another carrier's predefined_package parcel type.");            
+            Assert.AreEqual(shipment.messages[0]["message"], "Unable to retrieve USPS rates for another carrier's predefined_package parcel type.");
         }
 
         [TestMethod]
@@ -165,6 +165,31 @@ namespace EasyPostTest {
 
             rate = shipment.LowestRate(includeCarriers: new List<string>() { "FedEx" });
             Assert.IsNull(rate);
+        }
+
+        [TestMethod]
+        public void TestCarrierAccounts() {
+            Address to = Address.Create(toAddress);
+            Address from = Address.Create(fromAddress);
+            Parcel parcel = Parcel.Create(new Dictionary<string, object>() {
+                {"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}
+            });
+            CustomsItem item = new CustomsItem() { description = "description" };
+            CustomsInfo info = new CustomsInfo() {
+                customs_certify = "TRUE",
+                eel_pfc = "NOEEI 30.37(a)",
+                customs_items = new List<CustomsItem>() { item }
+            };
+
+            Shipment shipment = new Shipment();
+            shipment.to_address = to;
+            shipment.from_address = from;
+            shipment.parcel = parcel;
+            shipment.carrier_accounts = new List<CarrierAccount> { new CarrierAccount { id = "ca_qn6QC6fd" } };
+            shipment.Create();
+            if (shipment.rates.Count > 0)
+                Assert.IsTrue(shipment.rates.TrueForAll(r => r.carrier_account_id == "ca_qn6QC6fd"));
+
         }
     }
 }

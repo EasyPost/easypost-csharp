@@ -37,6 +37,7 @@ namespace EasyPost {
         public string usps_zone { get; set; }
         public string stamp_url { get; set; }
         public string barcode_url { get; set; }
+        public List<CarrierAccount> carrier_accounts { get; set; }
 
         private static Client client = new Client();
 
