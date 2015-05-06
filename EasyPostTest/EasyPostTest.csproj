@@ -78,6 +78,8 @@
     <Compile Include="OrderTest.cs" />
     <Compile Include="ShipmentTest.cs" />
     <Compile Include="TrackerTest.cs" />
+    <Compile Include="CarrierAccountTest.cs" />
+    <Compile Include="UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

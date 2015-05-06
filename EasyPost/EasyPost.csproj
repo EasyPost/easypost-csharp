@@ -75,6 +75,7 @@
     <Compile Include="Tracker.cs" />
     <Compile Include="TrackingDetail.cs" />
     <Compile Include="TrackingLocation.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Rate.cs" />

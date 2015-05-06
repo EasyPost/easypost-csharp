@@ -124,6 +124,9 @@
     <Compile Include="..\EasyPost\Form.cs">
       <Link>Form.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\User.cs">
+      <Link>User.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

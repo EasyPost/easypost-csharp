@@ -28,6 +28,10 @@ namespace EasyPost {
             version = info.FileVersion;
         }
 
+        public IRestResponse Execute(Request request) {
+            return restClient.Execute(prepareRequest(request));
+        }
+
         public T Execute<T>(Request request) where T : new() {
             RestResponse<T> response = (RestResponse<T>)restClient.Execute<T>(prepareRequest(request));
             int statusCode = Convert.ToInt32(response.StatusCode);

@@ -57,7 +57,7 @@ namespace EasyPost {
         /// Create a Shipment.
         /// </summary>
         /// <param name="parameters">
-        /// Optional dictionary containing parameters to create the batch with. Valid pairs:
+        /// Optional dictionary containing parameters to create the shipment with. Valid pairs:
         ///   * {"from_address", Dictionary<string, object>} See Address.Create for a list of valid keys.
         ///   * {"to_address", Dictionary<string, object>} See Address.Create for a list of valid keys.
         ///   * {"buyer_address", Dictionary<string, object>} See Address.Create for a list of valid keys.
@@ -93,7 +93,7 @@ namespace EasyPost {
         }
 
         /// <summary>
-        /// Populate the rates property for this shipment. 
+        /// Populate the rates property for this shipmen
         /// </summary>
         public void GetRates() {
             if (id == null)
