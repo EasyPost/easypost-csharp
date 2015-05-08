@@ -28,13 +28,19 @@ namespace EasyPost {
             restRequest.AddUrlSegment(name, value);
         }
 
-        public void AddParameter(string contentType, string content, ParameterType type) {
-            restRequest.AddParameter(contentType, content, type);
+        public void AddParameter(string name, string value, ParameterType type) {
+            restRequest.AddParameter(name, value, type);
         }
 
         public void addBody(IDictionary<string, object> parameters, string parent) {
             string encoded = encodeParameters(flattenParameters(parameters, parent));
             AddParameter("application/x-www-form-urlencoded", encoded, ParameterType.RequestBody);
+        }
+
+        public void addQueryString(IDictionary<string, object> parameters) {
+            foreach (KeyValuePair<string, object> pair in parameters) {
+                AddParameter((string)pair.Key, (string)pair.Value, ParameterType.QueryString);
+            }
         }
 
         public void addBody(IEnumerable<IDictionary<string, object>> parameters, string parent) {

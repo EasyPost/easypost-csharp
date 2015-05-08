@@ -111,6 +111,9 @@
     <Compile Include="..\EasyPost\Shipment.cs">
       <Link>Shipment.cs</Link>
     </Compile>
+        <Compile Include="..\EasyPost\ShipmentList.cs">
+      <Link>ShipmentList.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\Tracker.cs">
       <Link>Tracker.cs</Link>
     </Compile>

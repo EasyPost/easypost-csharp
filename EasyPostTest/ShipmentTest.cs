@@ -189,7 +189,15 @@ namespace EasyPostTest {
             shipment.Create();
             if (shipment.rates.Count > 0)
                 Assert.IsTrue(shipment.rates.TrueForAll(r => r.carrier_account_id == "ca_qn6QC6fd"));
+        }
 
+        [TestMethod]
+        public void TestList() {
+            ShipmentList shipmentList = Shipment.List();
+            Assert.AreNotEqual(0, shipmentList.shipments.Count);
+
+            ShipmentList nextShipmentList = shipmentList.Next();
+            Assert.AreNotEqual(shipmentList.shipments[0].id, nextShipmentList.shipments[0].id);
         }
     }
 }

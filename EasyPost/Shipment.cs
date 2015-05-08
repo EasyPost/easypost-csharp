@@ -42,6 +42,27 @@ namespace EasyPost {
         private static Client client = new Client();
 
         /// <summary>
+        /// Get a paginated list of shipments.
+        /// </summary>
+        /// Optional dictionary containing parameters to filter the list with. Valid pairs:
+        ///   * {"before_id", string} String representing a Shipment. Starts with "shp_". Only retrieve shipments created before this id. Takes precedence over after_id.
+        ///   * {"after_id", string} String representing a Shipment. Starts with "shp_". Only retrieve shipments created after this id.
+        ///   * {"page_size", int} Size of page. Default to 20.
+        ///   * {"purchased", bool} If true only display purchased shipments.
+        /// All invalid keys will be ignored.
+        /// <param name="parameters">
+        /// </param>
+        /// <returns>Instance of EasyPost.ShipmentList</returns>
+        public static ShipmentList List(Dictionary<string, object> parameters = null) {
+            Request request = new Request("shipments");
+            request.addQueryString(parameters ?? new Dictionary<string, object>());
+
+            ShipmentList shipmentList = client.Execute<ShipmentList>(request);
+            shipmentList.filters = parameters;
+            return shipmentList;
+        }
+
+        /// <summary>
         /// Retrieve a Shipment from its id.
         /// </summary>
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
@@ -93,7 +114,7 @@ namespace EasyPost {
         }
 
         /// <summary>
-        /// Populate the rates property for this shipmen
+        /// Populate the rates property for this shipment
         /// </summary>
         public void GetRates() {
             if (id == null)
