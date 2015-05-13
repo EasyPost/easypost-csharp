@@ -24,6 +24,16 @@ namespace EasyPost {
             restRequest.AddHeader("Accept", "application/json");
         }
 
+        public T Execute<T>() where T : new() {
+            Client client = new Client();
+            return client.Execute<T>(this);
+        }
+
+        public IRestResponse Execute() {
+            Client client = new Client();
+            return client.Execute(this);
+        }
+
         public void AddUrlSegment(string name, string value) {
             restRequest.AddUrlSegment(name, value);
         }

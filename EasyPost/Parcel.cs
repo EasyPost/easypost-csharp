@@ -18,8 +18,6 @@ namespace EasyPost {
         public double weight { get; set; }
         public string predefined_package { get; set; }
 
-        private static Client client = new Client();
-
         /// <summary>
         /// Retrieve a Parcel from its id.
         /// </summary>
@@ -29,7 +27,7 @@ namespace EasyPost {
             Request request = new Request("parcels/{id}");
             request.AddUrlSegment("id", id);
 
-            return client.Execute<Parcel>(request);
+            return request.Execute<Parcel>();
         }
 
         /// <summary>
@@ -49,7 +47,7 @@ namespace EasyPost {
             Request request = new Request("parcels", Method.POST);
             request.addBody(parameters, "parcel");
 
-            return client.Execute<Parcel>(request);
+            return request.Execute<Parcel>();
         }
     }
 }

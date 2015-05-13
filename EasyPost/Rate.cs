@@ -23,8 +23,6 @@ namespace EasyPost {
         public string shipment_id { get; set; }
         public string carrier_account_id { get; set; }
 
-        private static Client client = new Client();
-
         /// <summary>
         /// Retrieve a Rate from its id.
         /// </summary>
@@ -34,7 +32,7 @@ namespace EasyPost {
             Request request = new Request("rates/{id}");
             request.AddUrlSegment("id", id);
 
-            return client.Execute<Rate>(request);
+            return request.Execute<Rate>();
         }
     }
 }

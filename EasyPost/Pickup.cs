@@ -25,8 +25,6 @@ namespace EasyPost {
         public List<CarrierAccount> carrier_accounts { get; set; }
         public List<Rate> pickup_rates { get; set; }
 
-        private static Client client = new Client();
-
         /// <summary>
         /// Retrieve a Pickup from its id.
         /// </summary>
@@ -36,7 +34,7 @@ namespace EasyPost {
             Request request = new Request("pickups/{id}");
             request.AddUrlSegment("id", id);
 
-            return client.Execute<Pickup>(request);
+            return request.Execute<Pickup>();
         }
         /// <summary>
         /// Create a Pickup.
@@ -73,7 +71,7 @@ namespace EasyPost {
             Request request = new Request("pickups", Method.POST);
             request.addBody(parameters, "pickup");
 
-            return client.Execute<Pickup>(request);
+            return request.Execute<Pickup>();
         }
 
         /// <summary>
@@ -89,7 +87,7 @@ namespace EasyPost {
                 new Tuple<string, string>("service", service)
             });
 
-            this.Merge(client.Execute<Pickup>(request));
+            this.Merge(request.Execute<Pickup>());
         }
 
         /// <summary>
@@ -99,7 +97,7 @@ namespace EasyPost {
             Request request = new Request("pickups/{id}/cancel", Method.POST);
             request.AddUrlSegment("id", id);
 
-            this.Merge(client.Execute<Pickup>(request));
+            this.Merge(request.Execute<Pickup>());
         }
     }
 }

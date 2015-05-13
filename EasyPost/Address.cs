@@ -26,8 +26,6 @@ namespace EasyPost {
         public string error { get; set; }
         public string message { get; set; }
 
-        private static Client client = new Client();
-
         /// <summary>
         /// Retrieve an Address from its id.
         /// </summary>
@@ -37,7 +35,7 @@ namespace EasyPost {
             Request request = new Request("addresses/{id}");
             request.AddUrlSegment("id", id);
 
-            return client.Execute<Address>(request);
+            return request.Execute<Address>();
         }
 
         /// <summary>
@@ -76,7 +74,7 @@ namespace EasyPost {
             Request request = new Request("addresses", Method.POST);
             request.addBody(parameters, "address");
 
-            return client.Execute<Address>(request);
+            return request.Execute<Address>();
         }
 
         /// <summary>
@@ -104,7 +102,7 @@ namespace EasyPost {
             request.RootElement = "address";
             request.addBody(parameters, "address");
 
-            return client.Execute<Address>(request);
+            return request.Execute<Address>();
         }
 
         /// <summary>
@@ -122,7 +120,7 @@ namespace EasyPost {
             if (carrier != null)
                 request.AddParameter("carrier", carrier, ParameterType.QueryString);
 
-            this.Merge(client.Execute<Address>(request));
+            this.Merge(request.Execute<Address>());
         }
     }
 }

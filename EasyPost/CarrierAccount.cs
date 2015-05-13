@@ -17,11 +17,9 @@ namespace EasyPost {
         public Dictionary<string, object> credentials { get; set; }
         public Dictionary<string, object> test_credentials { get; set; }
 
-        private static Client client = new Client();
-
         public static List<CarrierAccount> List() {
             Request request = new Request("carrier_accounts");
-            return client.Execute<List<CarrierAccount>>(request);
+            return request.Execute<List<CarrierAccount>>();
         }
 
         /// <summary>
@@ -33,7 +31,7 @@ namespace EasyPost {
             Request request = new Request("carrier_accounts/{id}");
             request.AddUrlSegment("id", id);
 
-            return client.Execute<CarrierAccount>(request);
+            return request.Execute<CarrierAccount>();
         }
 
         /// <summary>
@@ -53,7 +51,7 @@ namespace EasyPost {
             Request request = new Request("carrier_accounts", Method.POST);
             request.addBody(parameters, "carrier_account");
 
-            return client.Execute<CarrierAccount>(request);
+            return request.Execute<CarrierAccount>();
         }
 
         /// <summary>
@@ -63,7 +61,7 @@ namespace EasyPost {
             Request request = new Request("carrier_accounts/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
 
-            client.Execute(request);
+            request.Execute();
         }
 
         /// <summary>
@@ -75,7 +73,7 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
             request.addBody(parameters, "carrier_account");
 
-            this.Merge(client.Execute<CarrierAccount>(request));
+            this.Merge(request.Execute<CarrierAccount>());
         }
     }
 }

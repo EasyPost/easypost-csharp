@@ -19,8 +19,6 @@ namespace EasyPost {
         public double height { get; set; }
         public double max_weight { get; set; }
 
-        private static Client client = new Client();
-
         /// <summary>
         /// Retrieve a Container from its id or reference.
         /// </summary>
@@ -30,7 +28,7 @@ namespace EasyPost {
             Request request = new Request("containers/{id}");
             request.AddUrlSegment("id", id);
 
-            return client.Execute<Container>(request);
+            return request.Execute<Container>();
         }
 
         /// <summary>
@@ -52,7 +50,7 @@ namespace EasyPost {
             Request request = new Request("containers", Method.POST);
             request.addBody(parameters, "container");
 
-            return client.Execute<Container>(request);
+            return request.Execute<Container>();
         }
     }
 }

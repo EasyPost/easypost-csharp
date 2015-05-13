@@ -39,8 +39,6 @@ namespace EasyPost {
         public string barcode_url { get; set; }
         public List<CarrierAccount> carrier_accounts { get; set; }
 
-        private static Client client = new Client();
-
         /// <summary>
         /// Get a paginated list of shipments.
         /// </summary>
@@ -57,7 +55,7 @@ namespace EasyPost {
             Request request = new Request("shipments");
             request.addQueryString(parameters ?? new Dictionary<string, object>());
 
-            ShipmentList shipmentList = client.Execute<ShipmentList>(request);
+            ShipmentList shipmentList = request.Execute<ShipmentList>();
             shipmentList.filters = parameters;
             return shipmentList;
         }
@@ -71,7 +69,7 @@ namespace EasyPost {
             Request request = new Request("shipments/{id}");
             request.AddUrlSegment("id", id);
 
-            return client.Execute<Shipment>(request);
+            return request.Execute<Shipment>();
         }
 
         /// <summary>
@@ -110,7 +108,7 @@ namespace EasyPost {
             Request request = new Request("shipments", Method.POST);
             request.addBody(parameters, "shipment");
 
-            return client.Execute<Shipment>(request);
+            return request.Execute<Shipment>();
         }
 
         /// <summary>
@@ -123,7 +121,7 @@ namespace EasyPost {
             Request request = new Request("shipments/{id}/rates");
             request.AddUrlSegment("id", id);
 
-            rates = client.Execute<Shipment>(request).rates;
+            rates = request.Execute<Shipment>().rates;
         }
 
         /// <summary>
@@ -135,7 +133,7 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
             request.addBody(new Dictionary<string, object>() { { "id", rateId } }, "rate");
 
-            Shipment result = client.Execute<Shipment>(request);
+            Shipment result = request.Execute<Shipment>();
 
             insurance = result.insurance;
             postage_label = result.postage_label;
@@ -162,7 +160,7 @@ namespace EasyPost {
                 new Tuple<string, string>("amount", amount.ToString())
             });
 
-            ResourceExtension.Merge(this, client.Execute<Shipment>(request));
+            this.Merge(request.Execute<Shipment>());
         }
 
         /// <summary>
@@ -175,7 +173,7 @@ namespace EasyPost {
             // This is a GET, but uses the request body, so use ParameterType.GetOrPost instead.
             request.AddParameter("file_format", fileFormat, ParameterType.GetOrPost);
 
-            ResourceExtension.Merge(this, client.Execute<Shipment>(request));
+            this.Merge(request.Execute<Shipment>());
         }
 
         /// <summary>
@@ -185,7 +183,7 @@ namespace EasyPost {
             Request request = new Request("shipments/{id}/stamp");
             request.AddUrlSegment("id", id);
 
-            Shipment result = client.Execute<Shipment>(request);
+            Shipment result = request.Execute<Shipment>();
             stamp_url = result.stamp_url;
         }
 
@@ -196,7 +194,7 @@ namespace EasyPost {
             Request request = new Request("shipments/{id}/barcode");
             request.AddUrlSegment("id", id);
 
-            Shipment result = client.Execute<Shipment>(request);
+            Shipment result = request.Execute<Shipment>();
             barcode_url = result.barcode_url;
         }
 
@@ -207,7 +205,7 @@ namespace EasyPost {
             Request request = new Request("shipments/{id}/refund");
             request.AddUrlSegment("id", id);
 
-            ResourceExtension.Merge(this, client.Execute<Shipment>(request));
+            ResourceExtension.Merge(this, request.Execute<Shipment>());
         }
 
         /// <summary>

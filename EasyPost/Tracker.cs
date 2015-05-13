@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 namespace EasyPost {
     public class Tracker : IResource {
-        private static Client client = new Client();
-
         public string id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime tracking_updated_at { get; set; }
@@ -27,7 +25,7 @@ namespace EasyPost {
 
             request.addBody(parameters, "tracker");
 
-            return client.Execute<Tracker>(request);
+            return request.Execute<Tracker>();
         }
     }
 }

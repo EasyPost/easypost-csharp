@@ -26,8 +26,6 @@ namespace EasyPost {
         public List<Container> containers { get; set; }
         public List<Item> items { get; set; }
 
-        private static Client client = new Client();
-
         /// <summary>
         /// Retrieve a Order from its id or reference.
         /// </summary>
@@ -37,7 +35,7 @@ namespace EasyPost {
             Request request = new Request("orders/{id}");
             request.AddUrlSegment("id", id);
 
-            return client.Execute<Order>(request);
+            return request.Execute<Order>();
         }
 
         /// <summary>
@@ -63,7 +61,7 @@ namespace EasyPost {
             Request request = new Request("orders", Method.POST);
             request.addBody(parameters, "order");
 
-            return client.Execute<Order>(request);
+            return request.Execute<Order>();
         }
 
         /// <summary>
@@ -80,7 +78,7 @@ namespace EasyPost {
             Request request = new Request("orders", Method.POST);
             request.addBody(parameters, "order");
 
-            return client.Execute<Order>(request);
+            return request.Execute<Order>();
         }
 
         /// <summary>
@@ -93,7 +91,7 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
             request.addBody(new List<Tuple<string, string>>() { new Tuple<string, string>("carrier", carrier), new Tuple<string, string>("service", service) });
 
-            ResourceExtension.Merge(this, client.Execute<Order>(request));
+            this.Merge(request.Execute<Order>());
         }
 
         /// <summary>

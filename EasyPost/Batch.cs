@@ -24,8 +24,6 @@ namespace EasyPost {
         public string error { get; set; }
         public string message { get; set; }
 
-        private static Client client = new Client();
-
         /// <summary>
         /// Retrieve a Batch from its id.
         /// </summary>
@@ -35,7 +33,7 @@ namespace EasyPost {
             Request request = new Request("batches/{id}");
             request.AddUrlSegment("id", id);
 
-            return client.Execute<Batch>(request);
+            return request.Execute<Batch>();
         }
 
         /// <summary>
@@ -54,7 +52,7 @@ namespace EasyPost {
             Request request = new Request("batches", Method.POST);
             request.addBody(parameters, "batch");
 
-            return client.Execute<Batch>(request);
+            return request.Execute<Batch>();
         }
 
         /// <summary>
@@ -68,7 +66,7 @@ namespace EasyPost {
             List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
             request.addBody(body, "shipments");
 
-            this.Merge(client.Execute<Batch>(request));
+            this.Merge(request.Execute<Batch>());
         }
 
         /// <summary>
@@ -90,7 +88,7 @@ namespace EasyPost {
             List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
             request.addBody(body, "shipments");
 
-            this.Merge(client.Execute<Batch>(request));
+            this.Merge(request.Execute<Batch>());
         }
 
         /// <summary>
@@ -108,7 +106,7 @@ namespace EasyPost {
             Request request = new Request("batches/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
 
-            this.Merge(client.Execute<Batch>(request));
+            this.Merge(request.Execute<Batch>());
         }
 
         /// <summary>
@@ -128,7 +126,7 @@ namespace EasyPost {
                 body.Add(new Tuple<string, string>("order_by", orderBy));
 
             request.addBody(body);
-            this.Merge(client.Execute<Batch>(request));
+            this.Merge(request.Execute<Batch>());
         }
 
         /// <summary>
@@ -138,7 +136,7 @@ namespace EasyPost {
             Request request = new Request("batches/{id}/scan_form", Method.POST);
             request.AddUrlSegment("id", id);
 
-            this.Merge(client.Execute<Batch>(request));
+            this.Merge(request.Execute<Batch>());
         }
     }
 }

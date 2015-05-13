@@ -24,8 +24,6 @@ namespace EasyPost {
         public List<CustomsItem> customs_items { get; set; }
         public string mode { get; set; }
 
-        private static Client client = new Client();
-
         /// <summary>
         /// Retrieve a CustomsInfo from its id.
         /// </summary>
@@ -35,7 +33,7 @@ namespace EasyPost {
             Request request = new Request("customs_infos/{id}");
             request.AddUrlSegment("id", id);
 
-            return client.Execute<CustomsInfo>(request);
+            return request.Execute<CustomsInfo>();
         }
 
         /// <summary>
@@ -57,7 +55,7 @@ namespace EasyPost {
             Request request = new Request("customs_infos", Method.POST);
             request.addBody(parameters, "customs_info");
 
-            return client.Execute<CustomsInfo>(request);
+            return request.Execute<CustomsInfo>();
         }
     }
 }

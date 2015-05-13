@@ -13,15 +13,17 @@ using System.Reflection;
 namespace EasyPost {
     public class Client {
         public static string apiKey { get; set; }
+        public static string apiBase { get; set; }
 
         public string version;
 
         internal RestClient restClient;
 
-        public Client(string apiBase = "https://api.easypost.com/v2") {
+        public Client(string apiBaseUrl = "https://api.easypost.com/v2") {
             System.Net.ServicePointManager.SecurityProtocol = Security.GetProtocol();
 
-            restClient = new RestClient(apiBase);
+            apiBaseUrl = apiBase ?? apiBaseUrl;
+            restClient = new RestClient(apiBaseUrl);
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);

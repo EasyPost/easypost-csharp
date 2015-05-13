@@ -19,8 +19,6 @@ namespace EasyPost {
         public double weight { get; set; }
         public string mode { get; set; }
 
-        private static Client client = new Client();
-
         /// <summary>
         /// Retrieve a CustomsItem from its id.
         /// </summary>
@@ -30,7 +28,7 @@ namespace EasyPost {
             Request request = new Request("customs_items/{id}");
             request.AddUrlSegment("id", id);
 
-            return client.Execute<CustomsItem>(request);
+            return request.Execute<CustomsItem>();
         }
 
         /// <summary>
@@ -51,7 +49,7 @@ namespace EasyPost {
             Request request = new Request("customs_items", Method.POST);
             request.addBody(parameters, "customs_item");
 
-            return client.Execute<CustomsItem>(request);
+            return request.Execute<CustomsItem>();
         }
     }
 }

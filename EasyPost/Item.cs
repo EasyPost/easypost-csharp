@@ -25,8 +25,6 @@ namespace EasyPost {
         public double weight { get; set; }
         // ADD CUSTOM REFERENCES (e.g. sku, upc)
 
-        private static Client client = new Client();
-
         /// <summary>
         /// Retrieve an Item from its id or reference.
         /// </summary>
@@ -36,7 +34,7 @@ namespace EasyPost {
             Request request = new Request("items/{id}");
             request.AddUrlSegment("id", id);
 
-            return client.Execute<Item>(request);
+            return request.Execute<Item>();
         }
 
         /// <summary>
@@ -63,7 +61,7 @@ namespace EasyPost {
             Request request = new Request("items", Method.POST);
             request.addBody(parameters, "item");
 
-            return client.Execute<Item>(request);
+            return request.Execute<Item>();
         }
 
         /// <summary>
@@ -77,7 +75,7 @@ namespace EasyPost {
             request.AddUrlSegment("name", name);
             request.AddUrlSegment("value", value);
 
-            return client.Execute<Item>(request);
+            return request.Execute<Item>();
         }
     }
 }

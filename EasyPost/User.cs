@@ -22,8 +22,6 @@ namespace EasyPost {
         public int recharge_threshold { get; set; }
         public List<User> children { get; set; }
 
-        private static Client client = new Client();
-
         /// <summary>
         /// Retrieve a User from its id. If no id is specified, it returns the user for the api_key specified.
         /// </summary>
@@ -39,7 +37,7 @@ namespace EasyPost {
                 request.AddUrlSegment("id", id);
             }
 
-            return client.Execute<User>(request);
+            return request.Execute<User>();
         }
 
         /// <summary>
@@ -55,7 +53,7 @@ namespace EasyPost {
             Request request = new Request("users", Method.POST);
             request.addBody(parameters, "user");
 
-            return client.Execute<User>(request);
+            return request.Execute<User>();
         }
 
         /// <summary>
@@ -76,7 +74,7 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
             request.addBody(parameters, "user");
 
-            this.Merge(client.Execute<User>(request));
+            this.Merge(request.Execute<User>());
         }
     }
 }
