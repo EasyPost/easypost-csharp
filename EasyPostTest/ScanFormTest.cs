@@ -16,8 +16,7 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestScanFormList()
-        {
+        public void TestScanFormList() {
             ScanFormList scanFormList = ScanForm.List();
             Assert.AreNotEqual(0, scanFormList.scanForms.Count);
 
