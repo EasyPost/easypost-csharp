@@ -24,6 +24,7 @@ namespace EasyPost {
         public Parcel parcel { get; set; }
         public PostageLabel postage_label { get; set; }
         public List<Rate> rates { get; set; }
+        public List<Fee> fees { get; set; }
         public ScanForm scan_form { get; set; }
         public List<Form> forms { get; set; }
         public Rate selected_rate { get; set; }
@@ -138,7 +139,11 @@ namespace EasyPost {
             insurance = result.insurance;
             postage_label = result.postage_label;
             tracking_code = result.tracking_code;
+            tracker = result.tracker;
             selected_rate = result.selected_rate;
+            forms = result.forms;
+            messages = result.messages;
+            fees = result.fees;
         }
 
         /// <summary>
