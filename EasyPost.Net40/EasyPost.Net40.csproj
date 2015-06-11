@@ -60,6 +60,9 @@
     <Compile Include="..\EasyPost\CarrierAccount.cs">
       <Link>CarrierAccount.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\CarrierType.cs">
+      <Link>CarrierType.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\Client.cs">
       <Link>Client.cs</Link>
     </Compile>

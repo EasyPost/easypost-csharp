@@ -54,6 +54,7 @@
     <Compile Include="Batch.cs" />
     <Compile Include="BatchShipment.cs" />
     <Compile Include="CarrierAccount.cs" />
+    <Compile Include="CarrierType.cs" />
     <Compile Include="Exception.cs" />
     <Compile Include="Fee.cs" />
     <Compile Include="Form.cs" />

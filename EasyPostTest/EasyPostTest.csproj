@@ -79,6 +79,7 @@
     <Compile Include="ShipmentTest.cs" />
     <Compile Include="TrackerTest.cs" />
     <Compile Include="CarrierAccountTest.cs" />
+    <Compile Include="CarrierTypeTest.cs" />
     <Compile Include="UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
