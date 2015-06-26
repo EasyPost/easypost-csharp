@@ -5,10 +5,9 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPostTest
-{
+namespace EasyPostTest {
     [TestClass]
-    class ScanFormTest
+    public class ScanFormTest
     {
         [TestInitialize]
         public void Initialize()

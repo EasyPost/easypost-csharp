@@ -108,6 +108,9 @@
     <Compile Include="..\EasyPost\ScanForm.cs">
       <Link>ScanForm.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\ScanFormList.cs">
+      <Link>ScanFormList.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\Security.cs">
       <Link>Security.cs</Link>
     </Compile>
