@@ -105,9 +105,8 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestGetRatesAndBuyPlusInsurance() {
+        public void TestCreateAndBuyPlusInsurance() {
             Shipment shipment = Shipment.Create(parameters);
-            shipment.GetRates();
             Assert.IsNotNull(shipment.rates);
             Assert.AreNotEqual(shipment.rates.Count, 0);
 
