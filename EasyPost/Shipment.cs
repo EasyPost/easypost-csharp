@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    public class Shipment : IResource {
+    public partial class Shipment : IResource {
         public string id { get; set; }
         public string mode { get; set; }
         public DateTime created_at { get; set; }

@@ -88,7 +88,29 @@ Shipment shipment = new Shipment() {to_address = toAddress, from_address = fromA
 shipment.Buy(shipment.LowestRate(includeServices: new List<string>() {"Priority"},
                                  excludeCarriers: new List<string>() {"FedEx"}));
 
-shipment.GenerateLabel("pdf"); // If there are no errors you will recieve postage_label, tracking_code and the selected_rate
+shipment.GenerateLabel("pdf"); // If there are no errors you will receive postage_label, tracking_code and the selected_rate
+```
+
+OR (async/await)
+
+```cs
+using EasyPost;
+
+Address fromAddress = new Address() {
+	name = "Andrew Tribone", street1 = "480 Fell St", street2 = "#3",
+    city = "San Francisco", state = "CA", country = "US", zip = "94102"
+};
+Address toAddress = new Address() {
+    company = "Simpler Postage Inc", street1 = "164 Townsend Street", street2 = "Unit 1",
+    city = "San Francisco", state = "CA", country = "US", zip = "94107"
+};
+Parcel parcel = new Parcel() {length = 8, width = 6, height = 5, weight = 10};
+
+Shipment shipment = new Shipment() {to_address = toAddress, from_address = fromAddress, parcel = parcel};
+await shipment.BuyAsync(await shipment.LowestRateAsync(includeServices: new List<string>() {"Priority"},
+                                 excludeCarriers: new List<string>() {"FedEx"}));
+
+await shipment.GenerateLabelAsync("pdf"); // If there are no errors you will receive postage_label, tracking_code and the selected_rate
 ```
 
 ### Asynchronous Batch Processing

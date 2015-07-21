@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    public class ScanFormList : IResource {
+    public partial class ScanFormList : IResource {
         public List<ScanForm> scanForms { get; set; }
         public bool has_more { get; set; }
 
