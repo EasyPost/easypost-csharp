@@ -27,5 +27,18 @@ namespace EasyPost {
 
             return request.Execute<Tracker>();
         }
+
+        /// <summary>
+        /// Retrieve a Tracker from its id.
+        /// </summary>
+        /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
+        /// <returns>EasyPost.Tracker instance.</returns>
+        public static Tracker Retrieve(string id)
+        {
+            Request request = new Request("trackers/{id}");
+            request.AddUrlSegment("id", id);
+
+            return request.Execute<Tracker>();
+        }
     }
 }
