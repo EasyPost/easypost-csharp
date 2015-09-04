@@ -100,5 +100,18 @@ namespace EasyPostTest {
 
             Order.Create(parameters);
         }
+
+        [TestMethod]
+        public void TestOrderCarrierAccounts()
+        {
+            Dictionary<string, object> carrierAccounts = new Dictionary<string, object>() { { "id", "ca_qn6QC6fd" } };
+            parameters.Add("carrier_accounts", carrierAccounts);
+            Order order = Order.Create(parameters);
+            Assert.AreEqual(3, order.rates.Count);
+
+            parameters.Remove("carrier_accounts");
+            order = Order.Create(parameters);
+            Assert.AreEqual(9, order.rates.Count);
+        }
     }
 }
