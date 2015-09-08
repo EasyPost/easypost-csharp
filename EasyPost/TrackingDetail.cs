@@ -9,6 +9,6 @@ namespace EasyPost {
         public DateTime datetime { get; set; }
         public string message { get; set; }
         public string status { get; set; }
-        public List<TrackingLocation> tracking_location { get; set; }
+        public TrackingLocation tracking_location { get; set; }
     }
 }
