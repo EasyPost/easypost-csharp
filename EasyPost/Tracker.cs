@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace EasyPost {
-    public class Tracker : IResource {
+    public partial class Tracker : IResource {
         public string id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime tracking_updated_at { get; set; }

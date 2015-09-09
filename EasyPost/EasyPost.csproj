@@ -50,11 +50,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.Async.cs" />
     <Compile Include="Address.cs" />
+    <Compile Include="Batch.Async.cs" />
     <Compile Include="Batch.cs" />
     <Compile Include="BatchShipment.cs" />
+    <Compile Include="CarrierAccount.Async.cs" />
     <Compile Include="CarrierAccount.cs" />
+    <Compile Include="CarrierType.Async.cs" />
     <Compile Include="CarrierType.cs" />
+    <Compile Include="Container.Async.cs" />
+    <Compile Include="CustomsInfo.Async.cs" />
+    <Compile Include="CustomsItem.Async.cs" />
+    <Compile Include="Item.Async.cs" />
+    <Compile Include="Order.Async.cs" />
+    <Compile Include="Parcel.Async.cs" />
+    <Compile Include="Pickup.Async.cs" />
+    <Compile Include="Rate.Async.cs" />
+    <Compile Include="ScanForm.Async.cs" />
+    <Compile Include="ScanFormList.Async.cs" />
     <Compile Include="ScanFormList.cs" />
     <Compile Include="Exception.cs" />
     <Compile Include="Fee.cs" />
@@ -74,8 +88,11 @@
     <Compile Include="ResourceExtension.cs" />
     <Compile Include="ScanForm.cs" />
     <Compile Include="Security.cs" />
+    <Compile Include="Shipment.Async.cs" />
     <Compile Include="Shipment.cs" />
+    <Compile Include="ShipmentList.Async.cs" />
     <Compile Include="ShipmentList.cs" />
+    <Compile Include="Tracker.Async.cs" />
     <Compile Include="Tracker.cs" />
     <Compile Include="TrackingDetail.cs" />
     <Compile Include="TrackingLocation.cs" />

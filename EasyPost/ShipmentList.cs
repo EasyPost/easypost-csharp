@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    public class ShipmentList : IResource {
+    public partial class ShipmentList : IResource {
         public List<Shipment> shipments { get; set; }
         public bool has_more { get; set; }
 
