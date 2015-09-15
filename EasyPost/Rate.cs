@@ -14,7 +14,11 @@ namespace EasyPost {
         public string mode { get; set; }
         public string service { get; set; }
         public string rate { get; set; }
+        public string list_rate { get; set; }
+        public string retail_rate { get; set; }
         public string currency { get; set; }
+        public string list_currency { get; set; }
+        public string retail_currency { get; set; }
         public int est_delivery_days { get; set; }
         public DateTime delivery_date {get; set; } 
         public bool delivery_date_guaranteed {get; set;}

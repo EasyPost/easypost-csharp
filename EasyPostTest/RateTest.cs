@@ -31,6 +31,11 @@ namespace EasyPostTest {
             shipment.GetRates();
             Rate rate = Rate.Retrieve(shipment.rates[0].id);
             Assert.AreEqual(rate.id, shipment.rates[0].id);
+
+            Assert.IsNotNull(rate.rate);
+            Assert.IsNotNull(rate.currency);
+            Assert.IsNotNull(rate.list_rate);
+            Assert.IsNotNull(rate.list_currency);
         }
     }
 }
