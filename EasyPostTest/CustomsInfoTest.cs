@@ -34,9 +34,9 @@ namespace EasyPostTest {
             CustomsItem item = new CustomsItem() { description = "description" };
             CustomsInfo info = CustomsInfo.Create(
                 new Dictionary<string, object>() {
-                    {"customs_certify", true},
-                    {"eel_pfc", "NOEEI 30.37(a)"},
-                    {"customs_items", new List<IResource>() {item}}
+                    { "customs_certify", true },
+                    { "eel_pfc", "NOEEI 30.37(a)" },
+                    { "customs_items", new List<IResource>() { item } }
                 }
             );
 

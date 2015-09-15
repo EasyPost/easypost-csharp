@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace EasyPost {
     public class CustomsItem : IResource {
         public string id { get; set; }
-        public DateTime created_at { get; set; }
-        public DateTime updated_at { get; set; }
+        public Nullable<DateTime> created_at { get; set; }
+        public Nullable<DateTime> updated_at { get; set; }
         public string description { get; set; }
         public string hs_tariff_number { get; set; }
         public string origin_country { get; set; }

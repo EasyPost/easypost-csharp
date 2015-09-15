@@ -10,12 +10,12 @@ namespace EasyPost {
     public class Shipment : IResource {
         public string id { get; set; }
         public string mode { get; set; }
-        public DateTime created_at { get; set; }
-        public DateTime updated_at { get; set; }
+        public Nullable<DateTime> created_at { get; set; }
+        public Nullable<DateTime> updated_at { get; set; }
         public string tracking_code { get; set; }
         public string reference { get; set; }
         public string status { get; set; }
-        public bool is_return { get; set; }
+        public Nullable<bool> is_return { get; set; }
         public Dictionary<string, object> options { get; set; }
         public List<Dictionary<string, object>> messages { get; set; }
         public CustomsInfo customs_info { get; set; }

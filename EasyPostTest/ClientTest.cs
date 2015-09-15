@@ -24,19 +24,19 @@ namespace EasyPostTest {
         public void TestApiBase() {
             Client.apiBase = "https://foobar.com";
             Client client = new Client();
-            Assert.AreEqual(new System.Uri("https://foobar.com"), client.restClient.BaseUrl);
+            Assert.AreEqual(new System.Uri("https://foobar.com"), client.client.BaseUrl);
         }
 
         [TestMethod]
         public void TestRestClient() {
             Client client = new Client();
-            Assert.AreEqual(client.restClient.BaseUrl, "https://api.easypost.com/v2");
+            Assert.AreEqual(client.client.BaseUrl, "https://api.easypost.com/v2");
         }
 
         [TestMethod]
         public void TestRestClientWithBase() {
             Client client = new Client("http://apiBase.com");
-            Assert.AreEqual(client.restClient.BaseUrl, "http://apiBase.com");
+            Assert.AreEqual(client.client.BaseUrl, "http://apiBase.com");
         }
 
         [TestMethod]

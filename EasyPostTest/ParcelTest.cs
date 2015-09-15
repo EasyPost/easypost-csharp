@@ -20,5 +20,15 @@ namespace EasyPostTest {
             Parcel retrieved = Parcel.Retrieve(parcel.id);
             Assert.AreEqual(parcel.id, retrieved.id);
         }
+
+        [TestMethod]
+        public void TestPredefinedPackage() {
+            Parcel parcel = new Parcel() { weight = 1.8, predefined_package = "SMALLFLATRATEBOX" };
+            Shipment shipment = new Shipment() { parcel = parcel };
+            shipment.Create();
+
+            Assert.AreEqual(null, shipment.parcel.height);
+            Assert.AreEqual("SMALLFLATRATEBOX", shipment.parcel.predefined_package);
+        }
     }
 }

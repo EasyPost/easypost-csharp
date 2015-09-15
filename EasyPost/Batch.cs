@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace EasyPost {
     public class Batch : IResource {
         public string id { get; set; }
-        public DateTime created_at { get; set; }
-        public DateTime updated_at { get; set; }
+        public Nullable<DateTime> created_at { get; set; }
+        public Nullable<DateTime> updated_at { get; set; }
         public string state { get; set; }
         public int num_shipments { get; set; }
         public string reference { get; set; }

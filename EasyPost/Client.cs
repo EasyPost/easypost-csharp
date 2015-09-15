@@ -17,13 +17,13 @@ namespace EasyPost {
 
         public string version;
 
-        internal RestClient restClient;
+        internal RestClient client;
 
         public Client(string apiBaseUrl = "https://api.easypost.com/v2") {
             System.Net.ServicePointManager.SecurityProtocol = Security.GetProtocol();
 
             apiBaseUrl = apiBase ?? apiBaseUrl;
-            restClient = new RestClient(apiBaseUrl);
+            client = new RestClient(apiBaseUrl);
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
@@ -31,11 +31,11 @@ namespace EasyPost {
         }
 
         public IRestResponse Execute(Request request) {
-            return restClient.Execute(PrepareRequest(request));
+            return client.Execute(PrepareRequest(request));
         }
 
         public T Execute<T>(Request request) where T : new() {
-            RestResponse<T> response = (RestResponse<T>)restClient.Execute<T>(PrepareRequest(request));
+            RestResponse<T> response = (RestResponse<T>)client.Execute<T>(PrepareRequest(request));
             int statusCode = Convert.ToInt32(response.StatusCode);
 
             if (statusCode < 200 || statusCode > 299) {

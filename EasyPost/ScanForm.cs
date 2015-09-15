@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace EasyPost {
     public class ScanForm : IResource {
         public string id { get; set; }
-        public DateTime created_at { get; set; }
-        public DateTime updated_at { get; set; }
+        public Nullable<DateTime> created_at { get; set; }
+        public Nullable<DateTime> updated_at { get; set; }
         public List<string> tracking_codes { get; set; }
         public Address address { get; set; }
         public string form_url { get; set; }

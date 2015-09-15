@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace EasyPost {
     public class Address : IResource {
         public string id { get; set; }
-        public DateTime created_at { get; set; }
-        public DateTime updated_at { get; set; }
+        public Nullable<DateTime> created_at { get; set; }
+        public Nullable<DateTime> updated_at { get; set; }
         public string name { get; set; }
         public string company { get; set; }
         public string street1 { get; set; }

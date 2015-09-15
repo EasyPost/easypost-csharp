@@ -90,10 +90,10 @@ namespace EasyPost {
                 } else if (pair.Value is IResource) {
                     IResource value = (IResource)pair.Value;
                     result.AddRange(FlattenParameters(value.AsDictionary(), string.Concat(parent, "[", pair.Key, "]")));
+                } else if (pair.Value is List<IResource>) {
+                    FlattenList(parent, result, pair);
                 } else if (pair.Value is IList && pair.Value.GetType().GetGenericArguments().Single().GetInterfaces().Contains(typeof(IResource))) {
-                    foreach (IResource resource in parameters[pair.Key as string] as IEnumerable) {
-                        result.AddRange(FlattenParameters(resource.AsDictionary(), string.Concat(parent, "[", pair.Key, "][", 0, "]")));
-                    }
+                    FlattenList(parent, result, pair);
                 } else if (pair.Value is List<Dictionary<string, object>>) {
                     List<Dictionary<string, object>> list = (List<Dictionary<string, object>>)pair.Value;
                     for (int i = 0; i < list.Count; i++) {
@@ -104,6 +104,14 @@ namespace EasyPost {
                 }
             }
             return result;
+        }
+
+        private void FlattenList(string parent, List<Tuple<string, string>> result, KeyValuePair<string, object> pair) {
+            var index = 0;
+            foreach (IResource resource in pair.Value as IEnumerable) {
+                result.AddRange(FlattenParameters(resource.AsDictionary(), string.Concat(parent, "[", pair.Key, "][", index, "]")));
+                index++;
+            }
         }
     }
 }

@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 namespace EasyPost {
     public class CustomsInfo : IResource {
         public string id { get; set; }
-        public DateTime created_at { get; set; }
-        public DateTime updated_at { get; set; }
+        public Nullable<DateTime> created_at { get; set; }
+        public Nullable<DateTime> updated_at { get; set; }
         public string contents_type { get; set; }
         public string contents_explanation { get; set; }
         public string customs_certify { get; set; }

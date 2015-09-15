@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace EasyPost {
     public class Tracker : IResource {
         public string id { get; set; }
-        public DateTime created_at { get; set; }
+        public Nullable<DateTime> created_at { get; set; }
         public DateTime tracking_updated_at { get; set; }
-        public DateTime updated_at { get; set; }
+        public Nullable<DateTime> updated_at { get; set; }
         public DateTime est_delivery_date { get; set; }
         public string mode { get; set; }
         public string shipment_id { get; set; }

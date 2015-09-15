@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace EasyPost {
     public class TrackingLocation {
-        public DateTime created_at { get; set; }
-        public DateTime updated_at { get; set; }
+        public Nullable<DateTime> created_at { get; set; }
+        public Nullable<DateTime> updated_at { get; set; }
         public string city { get; set; }
         public string state { get; set; }
         public string country { get; set; }
