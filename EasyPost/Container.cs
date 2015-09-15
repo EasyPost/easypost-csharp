@@ -48,7 +48,7 @@ namespace EasyPost {
         /// <returns>EasyPost.Container instance.</returns>
         public static Container Create(IDictionary<string, object> parameters) {
             Request request = new Request("containers", Method.POST);
-            request.addBody(parameters, "container");
+            request.AddBody(parameters, "container");
 
             return request.Execute<Container>();
         }

@@ -72,7 +72,7 @@ namespace EasyPost {
 
         private static Address sendCreate(IDictionary<string, object> parameters) {
             Request request = new Request("addresses", Method.POST);
-            request.addBody(parameters, "address");
+            request.AddBody(parameters, "address");
 
             return request.Execute<Address>();
         }
@@ -100,7 +100,7 @@ namespace EasyPost {
 
             Request request = new Request("addresses/create_and_verify", Method.POST);
             request.RootElement = "address";
-            request.addBody(parameters, "address");
+            request.AddBody(parameters, "address");
 
             return request.Execute<Address>();
         }

@@ -59,7 +59,7 @@ namespace EasyPost {
         /// <returns>EasyPost.Order instance.</returns>
         public static Order Create(IDictionary<string, object> parameters) {
             Request request = new Request("orders", Method.POST);
-            request.addBody(parameters, "order");
+            request.AddBody(parameters, "order");
 
             return request.Execute<Order>();
         }
@@ -76,7 +76,7 @@ namespace EasyPost {
 
         private static Order sendCreate(IDictionary<string, object> parameters) {
             Request request = new Request("orders", Method.POST);
-            request.addBody(parameters, "order");
+            request.AddBody(parameters, "order");
 
             return request.Execute<Order>();
         }
@@ -89,7 +89,7 @@ namespace EasyPost {
         public void Buy(string carrier, string service) {
             Request request = new Request("orders/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
-            request.addBody(new List<Tuple<string, string>>() { new Tuple<string, string>("carrier", carrier), new Tuple<string, string>("service", service) });
+            request.AddBody(new List<Tuple<string, string>>() { new Tuple<string, string>("carrier", carrier), new Tuple<string, string>("service", service) });
 
             this.Merge(request.Execute<Order>());
         }

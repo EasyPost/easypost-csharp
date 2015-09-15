@@ -23,7 +23,7 @@ namespace EasyPost {
                 { "tracking_code", trackingCode }, { "carrier", carrier }
             };
 
-            request.addBody(parameters, "tracker");
+            request.AddBody(parameters, "tracker");
 
             return request.Execute<Tracker>();
         }

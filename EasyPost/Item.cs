@@ -59,7 +59,7 @@ namespace EasyPost {
         /// <returns>EasyPost.Item instance.</returns>
         public static Item Create(IDictionary<string, object> parameters) {
             Request request = new Request("items", Method.POST);
-            request.addBody(parameters, "item");
+            request.AddBody(parameters, "item");
 
             return request.Execute<Item>();
         }

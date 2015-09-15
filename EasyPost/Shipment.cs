@@ -54,7 +54,7 @@ namespace EasyPost {
         /// <returns>Instance of EasyPost.ShipmentList</returns>
         public static ShipmentList List(Dictionary<string, object> parameters = null) {
             Request request = new Request("shipments");
-            request.addQueryString(parameters ?? new Dictionary<string, object>());
+            request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
             ShipmentList shipmentList = request.Execute<ShipmentList>();
             shipmentList.filters = parameters;
@@ -107,7 +107,7 @@ namespace EasyPost {
 
         private static Shipment sendCreate(IDictionary<string, object> parameters) {
             Request request = new Request("shipments", Method.POST);
-            request.addBody(parameters, "shipment");
+            request.AddBody(parameters, "shipment");
 
             return request.Execute<Shipment>();
         }
@@ -132,7 +132,7 @@ namespace EasyPost {
         public void Buy(string rateId) {
             Request request = new Request("shipments/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
-            request.addBody(new Dictionary<string, object>() { { "id", rateId } }, "rate");
+            request.AddBody(new Dictionary<string, object>() { { "id", rateId } }, "rate");
 
             Shipment result = request.Execute<Shipment>();
 
@@ -161,7 +161,7 @@ namespace EasyPost {
         public void Insure(double amount) {
             Request request = new Request("shipments/{id}/insure", Method.POST);
             request.AddUrlSegment("id", id);
-            request.addBody(new List<Tuple<string, string>>() {
+            request.AddBody(new List<Tuple<string, string>>() {
                 new Tuple<string, string>("amount", amount.ToString())
             });
 

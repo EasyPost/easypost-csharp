@@ -51,7 +51,7 @@ namespace EasyPost {
         /// <returns>EasyPost.User instance.</returns>
         public static User Create(Dictionary<string, object> parameters) {
             Request request = new Request("users", Method.POST);
-            request.addBody(parameters, "user");
+            request.AddBody(parameters, "user");
 
             return request.Execute<User>();
         }
@@ -72,7 +72,7 @@ namespace EasyPost {
         public void Update(IDictionary<string, object> parameters) {
             Request request = new Request("users/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
-            request.addBody(parameters, "user");
+            request.AddBody(parameters, "user");
 
             this.Merge(request.Execute<User>());
         }
