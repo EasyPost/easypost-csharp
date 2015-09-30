@@ -26,8 +26,8 @@ EasyPost.Client.apiKey = "apiKey";
 using EasyPost;
 
 Address address = Address.CreateAndVerify(new Dictionary<string, object>() {
-    {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
-    {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}
+    {"company", "EasyPost"}, {"street1", "118 2nd Street"}, {"street2", "4th Floor"},
+    {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94105"}
 });
 ```
 
@@ -37,8 +37,8 @@ OR
 using EasyPost;
 
 Address address = new Address() {
-    company = "Simpler Postage Inc", street1 = "164 Townsend Street", street2 = "Unit 1",
-    city = "San Francisco", state = "CA", country = "US", zip = "94107"
+    company = "EasyPost", street1 = "118 2nd Street", street2 = "4th Floor",
+    city = "San Francisco", state = "CA", country = "US", zip = "94105"
 };
 
 address.Verify();
@@ -50,12 +50,12 @@ address.Verify();
 using EasyPost;
 
 Dictionary<string, object> fromAddress = new Dictionary<string, object>() {
-    {"name", "Andrew Tribone"}, {"street1", "480 Fell St"}, {"street2", "#3"},
-    {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94102"}
+    {"company", "EasyPost"}, {"street1", "118 2nd Street"}, {"street2", "4th Floor"},
+    {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94105"}, {"phone", "415-456-7890"}
 };
 Dictionary<string, object> toAddress = new Dictionary<string, object>() {
-    {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
-    {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}
+    {"name", "Dr. Steve Brule"}, {"street1", "179 N Harbor Dr"}, {"street2", "4th Floor"},
+    {"city", "Redondo Beach"}, {"state", "CA"}, {"country", "US"}, {"zip", "90277"}, {"phone", "310-808-5243"}
 };
 
 Shipment shipment = Shipment.Create(new Dictionary<string, object>() {
