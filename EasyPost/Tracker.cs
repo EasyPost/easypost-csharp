@@ -7,14 +7,14 @@ namespace EasyPost {
         public Nullable<DateTime> created_at { get; set; }
         public DateTime tracking_updated_at { get; set; }
         public Nullable<DateTime> updated_at { get; set; }
-        public DateTime est_delivery_date { get; set; }
+        public Nullable<DateTime> est_delivery_date { get; set; }
         public string mode { get; set; }
         public string shipment_id { get; set; }
         public string status { get; set; }
         public string carrier { get; set; }
         public string tracking_code { get; set; }
         public string signed_by { get; set; }
-        public double weight { get; set; }
+        public Nullable<double> weight { get; set; }
         public List<TrackingDetail> tracking_details { get; set; }
 
         public static Tracker Create(string carrier, string trackingCode) {
