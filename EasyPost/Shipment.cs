@@ -88,6 +88,7 @@ namespace EasyPost {
         ///   * {"is_return", bool}
         ///   * {"currency", string} Defaults to "USD".
         ///   * {"reference", string}
+        ///   * {"carrier_accounts", List<string>} List of CarrierAccount.id to limit rating.
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
