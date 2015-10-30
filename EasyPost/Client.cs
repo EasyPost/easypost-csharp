@@ -36,25 +36,15 @@ namespace EasyPost {
 
         public T Execute<T>(Request request) where T : new() {
             RestResponse<T> response = (RestResponse<T>)client.Execute<T>(PrepareRequest(request));
-            int statusCode = Convert.ToInt32(response.StatusCode);
+            int StatusCode = Convert.ToInt32(response.StatusCode);
 
-            if (statusCode < 200 || statusCode > 299) {
-                if (statusCode == 500) {
-                    throw new HttpException(statusCode, "We're sorry, something went wrong. If the problem persists please contact us at support@easypost.com or open an issue on GitHub.");
+            if (StatusCode > 399) {
+                try {
+                    Dictionary<string, Dictionary<string, object>> Body = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
+                    throw new HttpException(StatusCode, (string)Body["error"]["message"], (string)Body["error"]["code"]);
+                } catch {
+                    throw new HttpException(StatusCode, "RESPONSE.PARSE_ERROR", response.Content);
                 }
-
-                string message;
-                if (response.Content == "") {
-                    message = "";
-                } else {
-                    try {
-                        message = (string)JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(response.Content)["error"]["message"];
-                    } catch (JsonSerializationException) {
-                        message = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.Content)["error"];
-                    }
-                }
-
-                throw new HttpException(statusCode, message);
             }
 
             return response.Data;

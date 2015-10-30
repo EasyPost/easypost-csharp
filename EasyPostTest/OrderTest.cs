@@ -94,11 +94,7 @@ namespace EasyPostTest {
         [TestMethod]
         [ExpectedException(typeof(HttpException))]
         public void TestFailure() {
-            Dictionary<string, object> shipment = shipments[0];
-            Dictionary<string, object> parcel = (Dictionary<string, object>)shipment["parcel"];
-            parcel["predefined_package"] = "Custom";
-
-            Order.Create(parameters);
+            Order.Create(new Dictionary<string, object>());
         }
 
         [TestMethod]
