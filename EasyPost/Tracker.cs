@@ -21,9 +21,13 @@ namespace EasyPost {
         /// Get a paginated list of trackers.
         /// </summary>
         /// Optional dictionary containing parameters to filter the list with. Valid pairs:
+        ///   * {"tracking_code", string} Tracking number string. Only retrieve trackers with the given tracking code.
+        ///   * {"carrier", string} String representing the tracker's carrier. Only retrieve trackers with the given carrier.
         ///   * {"before_id", string} String representing a Tracker. Starts with "trk_". Only retrieve trackers created before this id. Takes precedence over after_id.
         ///   * {"after_id", string} String representing a Tracker. Starts with "trk_". Only retrieve trackers created after this id.
-        ///   * {"page_size", int} Size of page. Default to 20.
+        ///   * {"start_datetime", datetime} Datetime representing the earliest possible tracker. Only retrieve trackers created at or after this datetime. Defaults to 1 month ago.
+        ///   * {"end_datetime", datetime} Datetime representing the latest possible tracker. Only retrieve trackers created before this datetime. Defaults to the end of the current day.
+        ///   * {"page_size", int} Size of page. Default to 30.
         /// All invalid keys will be ignored.
         /// <param name="parameters">
         /// </param>
@@ -39,7 +43,7 @@ namespace EasyPost {
 
         public static Tracker Create(string carrier, string trackingCode) {
             Request request = new Request("trackers", RestSharp.Method.POST);
-            Dictionary<string, object> parameters = new Dictionary<string, object>() { 
+            Dictionary<string, object> parameters = new Dictionary<string, object>() {
                 { "tracking_code", trackingCode }, { "carrier", carrier }
             };
 
