@@ -21,5 +21,14 @@ namespace EasyPostTest {
 
             Assert.AreEqual(Tracker.Retrieve(tracker.id).id, tracker.id);
         }
+
+        [TestMethod]
+        public void TestList() {
+            TrackerList trackerList = Tracker.List();
+            Assert.AreNotEqual(0, trackerList.trackers.Count);
+
+            TrackerList nextTrackerList = trackerList.Next();
+            Assert.AreNotEqual(trackerList.trackers[0].id, nextTrackerList.trackers[0].id);
+        }
     }
 }

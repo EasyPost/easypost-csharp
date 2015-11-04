@@ -123,6 +123,9 @@
     <Compile Include="..\EasyPost\Tracker.cs">
       <Link>Tracker.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\TrackerList.cs">
+      <Link>TrackerList.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\TrackingDetail.cs">
       <Link>TrackingDetail.cs</Link>
     </Compile>
