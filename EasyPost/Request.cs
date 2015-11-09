@@ -94,6 +94,11 @@ namespace EasyPost {
                     FlattenList(parent, result, pair);
                 } else if (pair.Value is IList && pair.Value.GetType().GetGenericArguments().Single().GetInterfaces().Contains(typeof(IResource))) {
                     FlattenList(parent, result, pair);
+                } else if (pair.Value is List<string>) {
+                    List<string> list = (List<string>)pair.Value;
+                    for (int i = 0; i < list.Count; i++) {
+                        result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "][", i, "]"), list[i]));
+                    }
                 } else if (pair.Value is List<Dictionary<string, object>>) {
                     List<Dictionary<string, object>> list = (List<Dictionary<string, object>>)pair.Value;
                     for (int i = 0; i < list.Count; i++) {

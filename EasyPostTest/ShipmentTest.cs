@@ -190,6 +190,17 @@ namespace EasyPostTest {
                 Assert.IsTrue(shipment.rates.TrueForAll(r => r.carrier_account_id == "ca_qn6QC6fd"));
         }
 
+
+        [TestMethod]
+        public void TestCarrierAccountsString() {
+            parameters["carrier_accounts"] = new List<string>() { "ca_qn6QC6fd" };
+            Shipment shipment = Shipment.Create(parameters);
+
+            foreach (Rate rate in shipment.rates) {
+                Assert.AreEqual("ca_qn6QC6fd", rate.carrier_account_id);
+            }
+        }
+
         [TestMethod]
         public void TestList() {
             ShipmentList shipmentList = Shipment.List();
