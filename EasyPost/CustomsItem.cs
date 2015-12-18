@@ -18,6 +18,7 @@ namespace EasyPost {
         public double value { get; set; }
         public double weight { get; set; }
         public string mode { get; set; }
+        public string currency { get; set; }
 
         /// <summary>
         /// Retrieve a CustomsItem from its id.

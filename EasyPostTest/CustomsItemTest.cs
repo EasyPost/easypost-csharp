@@ -15,11 +15,16 @@ namespace EasyPostTest {
         [TestMethod]
         public void TestCreateAndRetrieve() {
             CustomsItem item = CustomsItem.Create(new Dictionary<string, object>() {
-                {"description", "TShirt"}, {"quantity", 1}, {"weight", 8}, {"value", 10.0}
+                {"description", "TShirt"},
+                {"quantity", 1},
+                {"weight", 8},
+                {"value", 10.0},
+                {"currency", "USD"}
             });
             CustomsItem retrieved = CustomsItem.Retrieve(item.id);
             Assert.AreEqual(item.id, retrieved.id);
             Assert.AreEqual(retrieved.value, 10.0);
+            Assert.AreEqual(retrieved.currency, "USD");
         }
     }
 }
