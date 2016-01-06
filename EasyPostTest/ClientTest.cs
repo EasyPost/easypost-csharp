@@ -14,6 +14,14 @@ public class JsonTest {
 namespace EasyPostTest {
     [TestClass]
     public class ClientTest {
+
+        [TestInitialize]
+        public void BeforeEachTest() {
+            // clean out the API key + base before each test; let the constructor defaults do their thing
+            Client.apiKey = null;
+            Client.apiBase = null;
+        }
+
         [TestMethod]
         public void TestApiKey() {
             Client.apiKey = "apiKey";
