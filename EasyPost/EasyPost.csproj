@@ -56,6 +56,7 @@
     <Compile Include="CarrierAccount.cs" />
     <Compile Include="CarrierType.cs" />
     <Compile Include="ClientConfiguration.cs" />
+    <Compile Include="ClientFactory.cs" />
     <Compile Include="TrackerList.cs" />
     <Compile Include="ScanFormList.cs" />
     <Compile Include="Exception.cs" />

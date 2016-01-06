@@ -29,7 +29,7 @@ namespace EasyPost {
         public Client(ClientConfiguration clientConfiguration) {
             System.Net.ServicePointManager.SecurityProtocol = Security.GetProtocol();
 
-            if (clientConfiguration == null) throw new ArgumentNullException(nameof(clientConfiguration));
+            if (clientConfiguration == null) throw new ArgumentNullException("clientConfiguration");
             configuration = clientConfiguration;
 
             client = new RestClient(clientConfiguration.ApiBase);
