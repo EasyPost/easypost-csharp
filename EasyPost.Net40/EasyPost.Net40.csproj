@@ -87,6 +87,9 @@
     <Compile Include="..\EasyPost\Order.cs">
       <Link>Order.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\Options.cs">
+      <Link>Order.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\Parcel.cs">
       <Link>Parcel.cs</Link>
     </Compile>

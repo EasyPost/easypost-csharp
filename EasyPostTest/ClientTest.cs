@@ -14,6 +14,11 @@ public class JsonTest {
 namespace EasyPostTest {
     [TestClass]
     public class ClientTest {
+        [TestCleanup]
+        public void Cleanup() {
+            Client.apiBase = null;
+        }
+
         [TestMethod]
         public void TestApiKey() {
             Client.apiKey = "apiKey";
@@ -37,22 +42,6 @@ namespace EasyPostTest {
         public void TestRestClientWithBase() {
             Client client = new Client("http://apiBase.com");
             Assert.AreEqual(client.client.BaseUrl, "http://apiBase.com");
-        }
-
-        [TestMethod]
-        public void TestExecute() {
-            Client client = new Client("http://echo.jsontest.com");
-            Request request = new Request("key/value", Method.GET);
-
-            JsonTest response = client.Execute<JsonTest>(request);
-            Assert.AreEqual(response.key, "value");
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(HttpException))]
-        public void TestExecuteFail() {
-            Client client = new Client("http://as.asdf");
-            client.Execute<JsonTest>(new Request(""));
         }
 
         [TestMethod]

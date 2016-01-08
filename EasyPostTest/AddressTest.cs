@@ -86,7 +86,7 @@ namespace EasyPostTest {
             address.Verify("usps");
             Assert.IsNotNull(address.id);
             Assert.AreEqual(address.company, "Simpler Postage Inc");
-            Assert.AreEqual(address.street1, "164 TOWNSEND ST");
+            Assert.AreEqual(address.street1, "164 TOWNSEND ST UNIT 1");
             Assert.IsNull(address.name);
         }
 

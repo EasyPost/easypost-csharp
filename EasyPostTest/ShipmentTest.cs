@@ -69,6 +69,13 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
+        public void TestOptions() {
+            Shipment shipment = Shipment.Create(parameters);
+
+            Assert.AreEqual(shipment.options.label_date, null);
+        }
+
+        [TestMethod]
         public void TestRateErrorMessages() {
             parameters = new Dictionary<string, object>() {
                 {"parcel", new Dictionary<string, object>() {{"predefined_package", "FEDEXBOX"}, {"weight", 10}}},
