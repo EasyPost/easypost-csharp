@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="AddressTest.cs" />
     <Compile Include="BatchTest.cs" />
+    <Compile Include="ClientFactoryTest.cs" />
     <Compile Include="ScanFormTest.cs" />
     <Compile Include="ClientTest.cs" />
     <Compile Include="PickupTest.cs" />
