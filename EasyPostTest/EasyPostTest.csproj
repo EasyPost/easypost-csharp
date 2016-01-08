@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="AddressTest.cs" />
     <Compile Include="BatchTest.cs" />
+    <Compile Include="ClientFactoryTest.cs" />
     <Compile Include="ScanFormTest.cs" />
     <Compile Include="ClientTest.cs" />
     <Compile Include="PickupTest.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="TrackerTest.cs" />
     <Compile Include="CarrierAccountTest.cs" />
     <Compile Include="CarrierTypeTest.cs" />
+    <Compile Include="ClientConfigurationTest.cs" />
     <Compile Include="UserTest.cs" />
   </ItemGroup>
   <ItemGroup>

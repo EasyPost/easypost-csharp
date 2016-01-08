@@ -14,6 +14,14 @@ public class JsonTest {
 namespace EasyPostTest {
     [TestClass]
     public class ClientTest {
+
+        [TestInitialize]
+        public void BeforeEachTest() {
+            // clean out the API key + base before each test; let the constructor defaults do their thing
+            Client.apiKey = null;
+            Client.apiBase = null;
+        }
+
         [TestMethod]
         public void TestApiKey() {
             Client.apiKey = "apiKey";
@@ -37,6 +45,12 @@ namespace EasyPostTest {
         public void TestRestClientWithBase() {
             Client client = new Client("http://apiBase.com");
             Assert.AreEqual(client.client.BaseUrl, "http://apiBase.com");
+        }
+
+        [TestMethod]
+        public void TestRestClientWithOptions() {
+            Client client = new Client(new ClientConfiguration("someapikey", "http://apiBase.com"));
+            Assert.AreEqual(new Uri("http://apiBase.com"), client.client.BaseUrl);
         }
 
         [TestMethod]
@@ -64,6 +78,17 @@ namespace EasyPostTest {
             List<String> parameters = client.PrepareRequest(request).Parameters.Select(parameter => parameter.ToString()).ToList();
             CollectionAssert.Contains(parameters, "user_agent=EasyPost/v2 CSharp/" + client.version);
             CollectionAssert.Contains(parameters, "authorization=Bearer " + Client.apiKey);
+            CollectionAssert.Contains(parameters, "content_type=application/x-www-form-urlencoded");
+        }
+
+        [TestMethod]
+        public void TestPrepareRequestWithOptions() {
+            Client client = new Client(new ClientConfiguration("someapikey", "http://foobar.com"));
+            Request request = new Request("resource");
+
+            List<String> parameters = client.PrepareRequest(request).Parameters.Select(parameter => parameter.ToString()).ToList();
+            CollectionAssert.Contains(parameters, "user_agent=EasyPost/v2 CSharp/" + client.version);
+            CollectionAssert.Contains(parameters, "authorization=Bearer someapikey");
             CollectionAssert.Contains(parameters, "content_type=application/x-www-form-urlencoded");
         }
     }
