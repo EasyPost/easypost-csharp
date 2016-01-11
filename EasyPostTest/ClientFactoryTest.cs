@@ -21,46 +21,46 @@ namespace EasyPostTest
 
         [TestMethod]
         public void TestDefaultFactoryClientConstruction() {
-            ClientFactory.SetCurrent(new DefaultClientFactory());
+            ClientManager.SetCurrent(new DefaultClientFactory());
 
             Client.apiKey = "asdf";
-            Client client = ClientFactory.Current.Build();
+            Client client = ClientManager.Current.Build();
 
             Assert.AreEqual(new Uri("https://api.easypost.com/v2"), client.client.BaseUrl);
         }
 
         [TestMethod]
         public void TestClientFactoryInstanceConstructionWithKeyAndUrl() {
-            ClientFactory.SetCurrent(new FakeClientFactoryForKeyPlusUrl());
+            ClientManager.SetCurrent(new FakeClientFactoryForKeyPlusUrl());
 
-            Client client = ClientFactory.Current.Build();
+            Client client = ClientManager.Current.Build();
             Assert.AreEqual(new Uri("http://foobar.com"), client.client.BaseUrl);
         }
 
         [TestMethod]
         public void TestClientFactoryInstanceConstructionWithKey() {
-            ClientFactory.SetCurrent(new FakeClientFactoryForKey());
+            ClientManager.SetCurrent(new FakeClientFactoryForKey());
 
-            Client client = ClientFactory.Current.Build();
+            Client client = ClientManager.Current.Build();
             Assert.AreEqual(new Uri("https://api.easypost.com/v2"), client.client.BaseUrl);
         }
 
         [TestMethod]
         public void TestClientFactoryInstanceDelegatedConstruction() {
-            ClientFactory.SetCurrent(() => null);
-            Assert.AreEqual(null, ClientFactory.Current);
+            ClientManager.SetCurrent(() => null);
+            Assert.AreEqual(null, ClientManager.Current);
         }
 
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
         public void TestClientFactorySetCurrentInstanceFailWithNullReferenceException() {
-            ClientFactory.SetCurrent((IClientFactory)null);
+            ClientManager.SetCurrent((IClientFactory)null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestClientFactorySetCurrentDelegateFailWithNullReferenceException() {
-            ClientFactory.SetCurrent((Func<IClientFactory>)null);
+            ClientManager.SetCurrent((Func<IClientFactory>)null);
         }
 
     }

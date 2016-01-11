@@ -14,7 +14,7 @@ namespace EasyPostTest {
 
         [TestInitialize]
         public void Initialize() {
-            Client.apiKey = "cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi";
+            ClientManager.SetCurrent("cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi");
 
             fromAddress = new Dictionary<string, object>() {
                 {"name", "Andrew Tribone"}, {"street1", "480 Fell St"}, {"street2", "#3"},

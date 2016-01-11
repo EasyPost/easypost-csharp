@@ -12,7 +12,7 @@ namespace EasyPostTest {
     public class RequestTest {
         [TestInitialize]
         public void Initialize() {
-            Client.apiKey = "cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi";
+            ClientManager.SetCurrent("cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi");
         }
 
         [TestMethod]

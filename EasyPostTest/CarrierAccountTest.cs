@@ -11,7 +11,7 @@ namespace EasyPostTest {
     public class CarrierAccountTest {
         [TestInitialize]
         public void Initialize() {
-            Client.apiKey = "VJ63zukvLyxz92NKP1k0EQ";
+            ClientManager.SetCurrent("VJ63zukvLyxz92NKP1k0EQ");
         }
 
         [TestMethod]

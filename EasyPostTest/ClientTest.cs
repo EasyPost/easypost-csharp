@@ -16,19 +16,18 @@ namespace EasyPostTest {
     public class ClientTest {
         [TestCleanup]
         public void Cleanup() {
-            Client.apiBase = null;
+            ClientManager.SetDefault();
         }
 
         [TestMethod]
         public void TestApiKey() {
-            Client.apiKey = "apiKey";
-            Assert.AreEqual(Client.apiKey, "apiKey");
+            ClientManager.SetCurrent("apiKey");
+            Assert.AreEqual(Client.ApiKey, "apiKey");
         }
 
         [TestMethod]
         public void TestApiBase() {
-            Client.apiBase = "https://foobar.com";
-            Client client = new Client();
+            Client client = new Client(new ClientConfiguration("apiKey", "https://foobar.com"));
             Assert.AreEqual(new System.Uri("https://foobar.com"), client.client.BaseUrl);
         }
 
@@ -39,12 +38,6 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestRestClientWithBase() {
-            Client client = new Client("http://apiBase.com");
-            Assert.AreEqual(client.client.BaseUrl, "http://apiBase.com");
-        }
-
-        [TestMethod]
         public void TestRestClientWithOptions() {
             Client client = new Client(new ClientConfiguration("someapikey", "http://apiBase.com"));
             Assert.AreEqual(new Uri("http://apiBase.com"), client.client.BaseUrl);
@@ -52,13 +45,12 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestPrepareRequest() {
-            Client.apiKey = "apiKey";
-            Client client = new Client();
+            ClientManager.SetCurrent("apiKey");
             Request request = new Request("resource");
 
-            List<String> parameters = client.PrepareRequest(request).Parameters.Select(parameter => parameter.ToString()).ToList();
-            CollectionAssert.Contains(parameters, "user_agent=EasyPost/v2 CSharp/" + client.version);
-            CollectionAssert.Contains(parameters, "authorization=Bearer " + Client.apiKey);
+            List<String> parameters = ClientManager.Current.PrepareRequest(request).Parameters.Select(parameter => parameter.ToString()).ToList();
+            CollectionAssert.Contains(parameters, "user_agent=EasyPost/v2 CSharp/" + ClientManager.Current.version);
+            CollectionAssert.Contains(parameters, "authorization=Bearer " + ClientManager.Current.configuration.ApiKey);
             CollectionAssert.Contains(parameters, "content_type=application/x-www-form-urlencoded");
         }
 

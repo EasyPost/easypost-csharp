@@ -17,26 +17,9 @@ See the [docs](https://www.easypost.com/docs/api#addresses) for more information
 If you are operating with a single EasyPost API key, during the initialization of your application add the following to configure EasyPost.
 
 ```cs
-EasyPost.Client.apiKey = "apiKey";
-```
-
-If you have multiple API keys, to control the API key on a per-connection basis, create a new class implementing ```EasyPost.IClientFactory```  and configure the ClientFactory during application initialization.
-
-```cs
 using EasyPost;
-public class MyClientFactory : IClientFactory {
-  // a set of API keys could be enumerated here, either by account, department, or by application tenant  
-  public Client Build() {
-    return new Client(new ClientConfiguration("someApiKey"));
-  }
-}
 
-// initialize the factory with your instance
-EasyPost.ClientFactory.SetCurrent(new MyClientFactory());
-
-// alternatively, initialize the factory with a delegate to obtain an instance.  
-// This is useful for IoC/DI implementations in a concurrent environment.
-EasyPost.ClientFactory.SetCurrent(() => new MyClientFactory());
+ClientManager.SetCurrent("ApiKey");
 ```
 
 ### Address Verification

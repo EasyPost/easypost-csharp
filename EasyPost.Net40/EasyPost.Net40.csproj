@@ -69,8 +69,8 @@
     <Compile Include="..\EasyPost\ClientConfiguration.cs">
       <Link>ClientConfiguration.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost\ClientFactory.cs">
-      <Link>ClientFactory.cs</Link>
+    <Compile Include="..\EasyPost\ClientManager.cs">
+      <Link>ClientManager.cs</Link>
     </Compile>
     <Compile Include="..\EasyPost\Container.cs">
       <Link>Container.cs</Link>

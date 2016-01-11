@@ -13,7 +13,7 @@ namespace EasyPostTest {
 
         [TestInitialize]
         public void Initialize() {
-            Client.apiKey = "WzJHJ6SoPnBVYu0ae4aIHA";
+            ClientManager.SetCurrent("WzJHJ6SoPnBVYu0ae4aIHA");
 
             address = new Address() {
                 company = "Simpler Postage Inc",

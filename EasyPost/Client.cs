@@ -12,19 +12,22 @@ using System.Reflection;
 
 namespace EasyPost {
     public class Client {
-
-        internal const string ApiBaseUrl = "https://api.easypost.com/v2";
-
-        public static string apiKey { get; set; }
-        public static string apiBase { get; set; }
-
         public string version;
 
         internal RestClient client;
         internal ClientConfiguration configuration;
 
-        public Client(string apiBaseUrl = ApiBaseUrl)
-            : this(new ClientConfiguration(apiKey, apiBase ?? apiBaseUrl)) { }
+        public static string ApiKey {
+            get {
+                return ClientManager.Current.configuration.ApiKey;
+            }
+            set {
+                ClientConfiguration configuration = new ClientConfiguration(value);
+                ClientManager.SetCurrent(new Client(configuration));
+            }
+        }
+
+        public Client() : this(new ClientConfiguration(ApiKey)) { }
 
         public Client(ClientConfiguration clientConfiguration) {
             System.Net.ServicePointManager.SecurityProtocol = Security.GetProtocol();

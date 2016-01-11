@@ -10,8 +10,8 @@ namespace EasyPostTest
         public void TestApiKeyConstructor() {
             ClientConfiguration config = new ClientConfiguration("someApiKey");
 
-            Assert.AreEqual("someApiKey",config.ApiKey);
-            Assert.AreEqual(Client.ApiBaseUrl, config.ApiBase);
+            Assert.AreEqual("someApiKey", config.ApiKey);
+            Assert.AreEqual(ClientConfiguration.DefaultBaseUrl, config.ApiBase);
         }
 
         [TestMethod]

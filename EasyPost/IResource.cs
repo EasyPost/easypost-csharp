@@ -5,5 +5,5 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyPost {
-    interface IResource { }
+    internal interface IResource { }
 }
