@@ -1,11 +1,9 @@
 ﻿using EasyPost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPostTest
-{
+namespace EasyPostTest {
     [TestClass]
     public class ClientManagerTest {
-
         [TestMethod]
         public void TestApiKey() {
             ClientManager.SetCurrent("apiKey");
@@ -37,6 +35,5 @@ namespace EasyPostTest
 
             Assert.AreNotSame(client1, client2);
         }
-        
     }
 }
