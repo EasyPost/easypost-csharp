@@ -2,9 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EasyPost {
     public class CarrierAccount : IResource {
@@ -47,7 +44,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
-        public static CarrierAccount Create(IDictionary<string, object> parameters) {
+        public static CarrierAccount Create(Dictionary<string, object> parameters) {
             Request request = new Request("carrier_accounts", Method.POST);
             request.AddBody(parameters, "carrier_account");
 
@@ -68,7 +65,7 @@ namespace EasyPost {
         /// Update this CarrierAccount.
         /// </summary>
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
-        public void Update(IDictionary<string, object> parameters) {
+        public void Update(Dictionary<string, object> parameters) {
             Request request = new Request("carrier_accounts/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
             request.AddBody(parameters, "carrier_account");

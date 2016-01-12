@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Shipment : IResource {
@@ -92,7 +91,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static Shipment Create(IDictionary<string, object> parameters = null) {
+        public static Shipment Create(Dictionary<string, object> parameters = null) {
             return sendCreate(parameters ?? new Dictionary<string, object>());
         }
 
@@ -106,7 +105,7 @@ namespace EasyPost {
             this.Merge(sendCreate(this.AsDictionary()));
         }
 
-        private static Shipment sendCreate(IDictionary<string, object> parameters) {
+        private static Shipment sendCreate(Dictionary<string, object> parameters) {
             Request request = new Request("shipments", Method.POST);
             request.AddBody(parameters, "shipment");
 

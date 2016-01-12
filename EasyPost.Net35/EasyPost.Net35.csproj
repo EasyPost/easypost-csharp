@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{174DF282-06C7-43F7-9401-8A5DCAAC85E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EasyPost.Net35</RootNamespace>
+    <AssemblyName>EasyPost.Net35</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\lib\net35</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net35\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\EasyPost\Address.cs">
+      <Link>Address.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Batch.cs">
+      <Link>Batch.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\BatchShipment.cs">
+      <Link>BatchShipment.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\CarrierAccount.cs">
+      <Link>CarrierAccount.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\CarrierType.cs">
+      <Link>CarrierType.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Client.cs">
+      <Link>Client.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\ClientConfiguration.cs">
+      <Link>ClientConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\ClientManager.cs">
+      <Link>ClientManager.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Container.cs">
+      <Link>Container.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\CustomsInfo.cs">
+      <Link>CustomsInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\CustomsItem.cs">
+      <Link>CustomsItem.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Exception.cs">
+      <Link>Exception.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\IResource.cs">
+      <Link>IResource.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Item.cs">
+      <Link>Item.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Order.cs">
+      <Link>Order.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Options.cs">
+      <Link>Order.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Parcel.cs">
+      <Link>Parcel.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Pickup.cs">
+      <Link>Pickup.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\PostageLabel.cs">
+      <Link>PostageLabel.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Rate.cs">
+      <Link>Rate.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Request.cs">
+      <Link>Request.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\ResourceExtension.cs">
+      <Link>ResourceExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\ScanForm.cs">
+      <Link>ScanForm.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\ScanFormList.cs">
+      <Link>ScanFormList.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Security.cs">
+      <Link>Security.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Shipment.cs">
+      <Link>Shipment.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\ShipmentList.cs">
+      <Link>ShipmentList.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Tracker.cs">
+      <Link>Tracker.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\TrackerList.cs">
+      <Link>TrackerList.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\TrackingDetail.cs">
+      <Link>TrackingDetail.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\TrackingLocation.cs">
+      <Link>TrackingLocation.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\EasyPost\Form.cs">
+      <Link>Form.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Fee.cs">
+      <Link>Fee.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\User.cs">
+      <Link>User.cs</Link>
+    </Compile>
+    <Compile Include="Tuple.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -2,9 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Parcel : IResource {
@@ -43,7 +40,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Parcel instance.</returns>
-        public static Parcel Create(IDictionary<string, object> parameters) {
+        public static Parcel Create(Dictionary<string, object> parameters) {
             Request request = new Request("parcels", Method.POST);
             request.AddBody(parameters, "parcel");
 

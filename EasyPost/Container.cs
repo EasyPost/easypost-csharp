@@ -2,9 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Container : IResource {
@@ -46,7 +43,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Container instance.</returns>
-        public static Container Create(IDictionary<string, object> parameters) {
+        public static Container Create(Dictionary<string, object> parameters) {
             Request request = new Request("containers", Method.POST);
             request.AddBody(parameters, "container");
 
