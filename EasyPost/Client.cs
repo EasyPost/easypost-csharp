@@ -16,19 +16,7 @@ namespace EasyPost {
 
         internal RestClient client;
         internal ClientConfiguration configuration;
-
-        public static string ApiKey {
-            get {
-                return ClientManager.Current.configuration.ApiKey;
-            }
-            set {
-                ClientConfiguration configuration = new ClientConfiguration(value);
-                ClientManager.SetCurrent(new Client(configuration));
-            }
-        }
-
-        public Client() : this(new ClientConfiguration(ApiKey)) { }
-
+        
         public Client(ClientConfiguration clientConfiguration) {
             System.Net.ServicePointManager.SecurityProtocol = Security.GetProtocol();
 

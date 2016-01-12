@@ -2,25 +2,22 @@ using System;
 
 namespace EasyPost {
     /// <summary>
-    /// Provides ability to 
+    /// Provides the ability to manage delegated construction of client connections for requests.
     /// </summary>
     public static class ClientManager {
-        internal static Client Current;
 
-        public static void SetDefault() {
-            SetCurrent(() => new Client());
+        private static Func<Client> getCurrent;
+
+        internal static Client Build() {
+            return getCurrent();
         }
 
-        public static void SetCurrent(string ApiKey) {
-            SetCurrent(() => new Client(new ClientConfiguration(ApiKey)));
-        }
-
-        public static void SetCurrent(Client client) {
-            SetCurrent(() => client);
+        public static void SetCurrent(string apiKey) {
+            SetCurrent(() => new Client(new ClientConfiguration(apiKey)));
         }
 
         public static void SetCurrent(Func<Client> getClient) {
-            Current = getClient();
+            getCurrent = getClient;
         }
     }
 }

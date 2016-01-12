@@ -26,12 +26,12 @@ namespace EasyPost {
         }
 
         public T Execute<T>() where T : new() {
-            Client client = ClientManager.Current;
+            Client client = ClientManager.Build();
             return client.Execute<T>(this);
         }
 
         public IRestResponse Execute() {
-            Client client = ClientManager.Current;
+            Client client = ClientManager.Build();
             return client.Execute(this);
         }
 
