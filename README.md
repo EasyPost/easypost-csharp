@@ -22,6 +22,14 @@ using EasyPost;
 ClientManager.SetCurrent("ApiKey");
 ```
 
+If you are operating with multiple EasyPost API keys, or wish to delegate the construction of the client requests, configure the ClientManager with a delegate at application initialization.
+
+```cs
+using EasyPost;
+
+ClientManager.SetCurrent(() => new Client(new ClientConfiguration("yourApiKeyHere")));
+```
+
 ### Address Verification
 
 ```cs

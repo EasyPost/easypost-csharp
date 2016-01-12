@@ -1,7 +1,5 @@
 ﻿using EasyPost;
 
-using RestSharp;
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -14,15 +12,11 @@ public class JsonTest {
 namespace EasyPostTest {
     [TestClass]
     public class ClientTest {
-        [TestCleanup]
-        public void Cleanup() {
-            ClientManager.SetDefault();
-        }
 
         [TestMethod]
         public void TestApiKey() {
             ClientManager.SetCurrent("apiKey");
-            Assert.AreEqual(Client.ApiKey, "apiKey");
+            Assert.AreEqual("apiKey", ClientManager.Build().configuration.ApiKey);
         }
 
         [TestMethod]
@@ -33,7 +27,7 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestRestClient() {
-            Client client = new Client();
+            Client client = new Client(new ClientConfiguration("apiKey"));
             Assert.AreEqual(client.client.BaseUrl, "https://api.easypost.com/v2");
         }
 
@@ -45,12 +39,14 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestPrepareRequest() {
-            ClientManager.SetCurrent("apiKey");
+            const string apiKey = "apiKey";
+
+            ClientManager.SetCurrent(apiKey);
             Request request = new Request("resource");
 
-            List<String> parameters = ClientManager.Current.PrepareRequest(request).Parameters.Select(parameter => parameter.ToString()).ToList();
-            CollectionAssert.Contains(parameters, "user_agent=EasyPost/v2 CSharp/" + ClientManager.Current.version);
-            CollectionAssert.Contains(parameters, "authorization=Bearer " + ClientManager.Current.configuration.ApiKey);
+            List<String> parameters = ClientManager.Build().PrepareRequest(request).Parameters.Select(parameter => parameter.ToString()).ToList();
+            CollectionAssert.Contains(parameters, "user_agent=EasyPost/v2 CSharp/" + ClientManager.Build().version);
+            CollectionAssert.Contains(parameters, "authorization=Bearer " + apiKey);
             CollectionAssert.Contains(parameters, "content_type=application/x-www-form-urlencoded");
         }
 
