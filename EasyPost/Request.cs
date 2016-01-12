@@ -4,8 +4,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Request {
@@ -43,7 +41,7 @@ namespace EasyPost {
             restRequest.AddParameter(name, value, type);
         }
 
-        public void AddBody(IDictionary<string, object> parameters, string parent) {
+        public void AddBody(Dictionary<string, object> parameters, string parent) {
             string encoded = EncodeParameters(FlattenParameters(parameters, parent));
             AddParameter("application/x-www-form-urlencoded", encoded, ParameterType.RequestBody);
         }
@@ -54,7 +52,7 @@ namespace EasyPost {
             }
         }
 
-        public void AddBody(IEnumerable<IDictionary<string, object>> parameters, string parent) {
+        public void AddBody(List<Dictionary<string, object>> parameters, string parent) {
             List<Tuple<string, string>> result = new List<Tuple<string, string>>();
             for (int i = 0; i < parameters.Count(); i++) {
                 result.AddRange(FlattenParameters(parameters.ToList()[i], string.Concat(parent, "[", i, "]")));
@@ -62,11 +60,11 @@ namespace EasyPost {
             AddParameter("application/x-www-form-urlencoded", EncodeParameters(result), ParameterType.RequestBody);
         }
 
-        public void AddBody(IEnumerable<Tuple<string, string>> parameters) {
+        public void AddBody(List<Tuple<string, string>> parameters) {
             AddParameter("application/x-www-form-urlencoded", EncodeParameters(parameters), ParameterType.RequestBody);
         }
 
-        public void AddBody(IEnumerable<string> parameters, string parent) {
+        public void AddBody(List<string> parameters, string parent) {
             List<Tuple<string, string>> result = new List<Tuple<string, string>>();
             for (int i = 0; i < parameters.Count(); i++) {
                 result.Add(new Tuple<string, string>(string.Concat(parent, "[", i.ToString(), "]"), parameters.ElementAt(i)));
@@ -74,8 +72,8 @@ namespace EasyPost {
             AddParameter("application/x-www-form-urlencoded", EncodeParameters(result), ParameterType.RequestBody);
         }
 
-        internal string EncodeParameters(IEnumerable<Tuple<string, string>> parameters) {
-            return string.Join("&", parameters.Select(parameter => EncodeParameter(parameter)).ToList());
+        internal string EncodeParameters(List<Tuple<string, string>> parameters) {
+            return string.Join("&", parameters.Select(parameter => EncodeParameter(parameter)).ToArray());
         }
 
         internal string EncodeParameter(Tuple<string, string> parameter) {

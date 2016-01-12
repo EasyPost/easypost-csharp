@@ -2,9 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Order : IResource {
@@ -57,7 +54,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Order instance.</returns>
-        public static Order Create(IDictionary<string, object> parameters) {
+        public static Order Create(Dictionary<string, object> parameters) {
             Request request = new Request("orders", Method.POST);
             request.AddBody(parameters, "order");
 
@@ -74,7 +71,7 @@ namespace EasyPost {
             this.Merge(sendCreate(this.AsDictionary()));
         }
 
-        private static Order sendCreate(IDictionary<string, object> parameters) {
+        private static Order sendCreate(Dictionary<string, object> parameters) {
             Request request = new Request("orders", Method.POST);
             request.AddBody(parameters, "order");
 

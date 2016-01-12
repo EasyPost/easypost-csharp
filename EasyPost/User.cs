@@ -2,9 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EasyPost {
     class User : IResource {
@@ -69,7 +66,7 @@ namespace EasyPost {
         ///   * {"recharge_threshold", int} Recharge threshold for the account in cents. Can only be updated on the parent account.
         /// All invalid keys will be ignored.
         /// </param>
-        public void Update(IDictionary<string, object> parameters) {
+        public void Update(Dictionary<string, object> parameters) {
             Request request = new Request("users/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
             request.AddBody(parameters, "user");

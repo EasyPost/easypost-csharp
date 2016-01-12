@@ -3,8 +3,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Batch : IResource {
@@ -44,7 +42,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static Batch Create(IDictionary<string, object> parameters = null) {
+        public static Batch Create(Dictionary<string, object> parameters = null) {
             parameters = parameters ?? new Dictionary<string, object>();
 
             Request request = new Request("batches", Method.POST);

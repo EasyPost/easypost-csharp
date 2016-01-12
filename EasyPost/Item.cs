@@ -2,9 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Item : IResource {
@@ -57,7 +54,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Item instance.</returns>
-        public static Item Create(IDictionary<string, object> parameters) {
+        public static Item Create(Dictionary<string, object> parameters) {
             Request request = new Request("items", Method.POST);
             request.AddBody(parameters, "item");
 

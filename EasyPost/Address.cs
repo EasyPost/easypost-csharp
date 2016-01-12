@@ -2,9 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Address : IResource {
@@ -56,7 +53,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
-        public static Address Create(IDictionary<string, object> parameters = null) {
+        public static Address Create(Dictionary<string, object> parameters = null) {
             return sendCreate(parameters ?? new Dictionary<string, object>());
         }
 
@@ -70,7 +67,7 @@ namespace EasyPost {
             this.Merge(sendCreate(this.AsDictionary()));
         }
 
-        private static Address sendCreate(IDictionary<string, object> parameters) {
+        private static Address sendCreate(Dictionary<string, object> parameters) {
             Request request = new Request("addresses", Method.POST);
             request.AddBody(parameters, "address");
 
@@ -95,7 +92,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
-        public static Address CreateAndVerify(IDictionary<string, object> parameters = null) {
+        public static Address CreateAndVerify(Dictionary<string, object> parameters = null) {
             parameters = parameters ?? new Dictionary<string, object>();
 
             Request request = new Request("addresses/create_and_verify", Method.POST);
