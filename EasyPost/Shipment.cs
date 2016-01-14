@@ -45,6 +45,8 @@ namespace EasyPost {
         /// Optional dictionary containing parameters to filter the list with. Valid pairs:
         ///   * {"before_id", string} String representing a Shipment. Starts with "shp_". Only retrieve shipments created before this id. Takes precedence over after_id.
         ///   * {"after_id", string} String representing a Shipment. Starts with "shp_". Only retrieve shipments created after this id.
+        ///   * {"start_datetime", DateTime} Starting time for the search.
+        ///   * {"end_datetime", DateTime} Ending time for the search.
         ///   * {"page_size", int} Size of page. Default to 20.
         ///   * {"purchased", bool} If true only display purchased shipments.
         /// All invalid keys will be ignored.

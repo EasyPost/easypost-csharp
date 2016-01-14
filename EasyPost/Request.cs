@@ -48,7 +48,7 @@ namespace EasyPost {
 
         public void AddQueryString(IDictionary<string, object> parameters) {
             foreach (KeyValuePair<string, object> pair in parameters) {
-                AddParameter((string)pair.Key, (string)pair.Value, ParameterType.QueryString);
+                AddParameter((string)pair.Key, Convert.ToString(pair.Value), ParameterType.QueryString);
             }
         }
 
@@ -102,6 +102,8 @@ namespace EasyPost {
                     for (int i = 0; i < list.Count; i++) {
                         result.AddRange(FlattenParameters(list[i], string.Concat(parent, "[", pair.Key, "][", i, "]")));
                     }
+                } else if (pair.Value is DateTime) {
+                    result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), Convert.ToString((DateTime)pair.Value)));
                 } else if (pair.Value != null) {
                     result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), pair.Value.ToString()));
                 }
