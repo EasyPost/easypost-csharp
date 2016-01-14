@@ -9,6 +9,8 @@ namespace EasyPost {
         public string parent_id { get; set; }
         public Nullable<DateTime> created_at { get; set; }
         public Nullable<DateTime> updated_at { get; set; }
+        public string password { get; set; }
+        public string password_confirmation { get; set; }
         public string name { get; set; }
         public string email { get; set; }
         public string phone_number { get; set; }
