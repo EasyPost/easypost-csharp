@@ -55,6 +55,7 @@
     <Compile Include="BatchShipment.cs" />
     <Compile Include="CarrierAccount.cs" />
     <Compile Include="CarrierType.cs" />
+    <Compile Include="Error.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="ClientConfiguration.cs" />
     <Compile Include="ClientManager.cs" />
@@ -84,6 +85,8 @@
     <Compile Include="TrackingDetail.cs" />
     <Compile Include="TrackingLocation.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="Verification.cs" />
+    <Compile Include="Verifications.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Rate.cs" />

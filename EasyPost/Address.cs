@@ -22,6 +22,7 @@ namespace EasyPost {
         public string mode { get; set; }
         public string error { get; set; }
         public string message { get; set; }
+        public Verifications verifications { get; set; }
 
         /// <summary>
         /// Retrieve an Address from its id.
@@ -52,52 +53,80 @@ namespace EasyPost {
         ///   * {"email", string}
         /// All invalid keys will be ignored.
         /// </param>
+        /// <param name="verifications">
+        /// A list of verifications to perform on the address.
+        /// Possible items are "delivery" and "zip4".
+        /// </param>
+        /// <param name="strict_verifications">
+        /// A list of verifications to perform on the address.
+        /// Will cause an HttpException to be raised if unsucessful.
+        /// Possible items are "delivery" and "zip4".
+        /// </param>
         /// <returns>EasyPost.Address instance.</returns>
         public static Address Create(Dictionary<string, object> parameters = null) {
-            return sendCreate(parameters ?? new Dictionary<string, object>());
+            List<string> Verifications = null, StrictVerifications = null;
+            parameters = parameters ?? new Dictionary<string, object>();
+
+            if (parameters.ContainsKey("verifications")) {
+                Verifications = (List<string>)parameters["verifications"];
+                parameters.Remove("verifications");
+            }
+
+            if (parameters.ContainsKey("strict_verifications")) {
+                StrictVerifications = (List<string>)parameters["strict_verifications"];
+                parameters.Remove("strict_verifications");
+            }
+
+            return sendCreate(parameters, Verifications, StrictVerifications);
         }
 
         /// <summary>
         /// Create this Address.
         /// </summary>
+        /// <param name="verifications">
+        /// A list of verifications to perform on the address.
+        /// Possible items are "delivery" and "zip4".
+        /// </param>
+        /// <param name="strict_verifications">
+        /// A list of verifications to perform on the address.
+        /// Will cause an HttpException to be raised if unsucessful.
+        /// Possible items are "delivery" and "zip4".
+        /// </param>
         /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
         public void Create() {
-            if (id != null)
-                throw new ResourceAlreadyCreated();
-            this.Merge(sendCreate(this.AsDictionary()));
-        }
-
-        private static Address sendCreate(Dictionary<string, object> parameters) {
-            Request request = new Request("addresses", Method.POST);
-            request.AddBody(parameters, "address");
-
-            return request.Execute<Address>();
+            Create(null, null);
         }
 
         /// <summary>
-        /// Create and verify an Address.
+        /// Create this Address.
         /// </summary>
-        /// <param name="parameters">
-        /// Optional dictionary containing parameters to create the address with. Valid pairs:
-        ///   * {"name", string}
-        ///   * {"company", string}
-        ///   * {"stree1", string}
-        ///   * {"street2", string}
-        ///   * {"city", string}
-        ///   * {"state", string}
-        ///   * {"zip", string}
-        ///   * {"country", string}
-        ///   * {"phone", string}
-        ///   * {"email", string}
-        /// All invalid keys will be ignored.
+        /// <param name="verifications">
+        /// A list of verifications to perform on the address.
+        /// Possible items are "delivery" and "zip4".
         /// </param>
-        /// <returns>EasyPost.Address instance.</returns>
-        public static Address CreateAndVerify(Dictionary<string, object> parameters = null) {
-            parameters = parameters ?? new Dictionary<string, object>();
+        /// <param name="strict_verifications">
+        /// A list of verifications to perform on the address.
+        /// Will cause an HttpException to be raised if unsucessful.
+        /// Possible items are "delivery" and "zip4".
+        /// </param>
+        /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
+        public void Create(List<string> Verifications = null, List<string> StrictVerifications = null) {
+            if (id != null)
+                throw new ResourceAlreadyCreated();
+            this.Merge(sendCreate(this.AsDictionary(), Verifications, StrictVerifications));
+        }
 
-            Request request = new Request("addresses/create_and_verify", Method.POST);
-            request.RootElement = "address";
+        private static Address sendCreate(Dictionary<string, object> parameters, List<string> Verifications = null, List<string> StrictVerifications = null) {
+            Request request = new Request("addresses", Method.POST);
             request.AddBody(parameters, "address");
+
+            foreach (string verification in Verifications ?? new List<string>()) {
+                request.AddParameter("verify[]", verification, ParameterType.QueryString);
+            }
+
+            foreach (string verification in StrictVerifications ?? new List<string>()) {
+                request.AddParameter("verify_strict[]", verification, ParameterType.QueryString);
+            }
 
             return request.Execute<Address>();
         }
@@ -118,6 +147,28 @@ namespace EasyPost {
                 request.AddParameter("carrier", carrier, ParameterType.QueryString);
 
             this.Merge(request.Execute<Address>());
+        }
+
+        /// <summary>
+        /// Create and verify an Address.
+        /// </summary>
+        /// <param name="parameters">
+        /// Optional dictionary containing parameters to create the address with. Valid pairs:
+        ///   * {"name", string}
+        ///   * {"company", string}
+        ///   * {"stree1", string}
+        ///   * {"street2", string}
+        ///   * {"city", string}
+        ///   * {"state", string}
+        ///   * {"zip", string}
+        ///   * {"country", string}
+        ///   * {"phone", string}
+        ///   * {"email", string}
+        /// All invalid keys will be ignored.
+        /// </param>
+        public static Address CreateAndVerify(Dictionary<string, object> parameters = null) {
+            parameters["strict_verify"] = new List<string>() { "delivery" };
+            return Create(parameters);
         }
     }
 }
