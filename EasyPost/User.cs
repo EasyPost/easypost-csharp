@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 
 namespace EasyPost {
-    class User : IResource {
+    public class User : IResource {
         public string id { get; set; }
         public string parent_id { get; set; }
         public Nullable<DateTime> created_at { get; set; }
