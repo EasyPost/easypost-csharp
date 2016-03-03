@@ -1,5 +1,4 @@
-namespace EasyPost
-{
+namespace EasyPost {
     /// <summary>
     /// Provides configuration options for the REST client
     /// </summary>

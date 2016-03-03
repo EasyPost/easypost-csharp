@@ -12,7 +12,7 @@ namespace EasyPost {
         public string reference { get; set; }
         public Nullable<bool> is_return { get; set; }
         public Dictionary<string, string> options { get; set; }
-        public List<string> messages { get; set; }
+        public List<Message> messages { get; set; }
         public Address from_address { get; set; }
         public Address return_address { get; set; }
         public Address to_address { get; set; }

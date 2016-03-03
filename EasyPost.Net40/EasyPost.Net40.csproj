@@ -111,6 +111,9 @@
     <Compile Include="..\EasyPost\Request.cs">
       <Link>Request.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\Message.cs">
+      <Link>Message.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\ResourceExtension.cs">
       <Link>ResourceExtension.cs</Link>
     </Compile>

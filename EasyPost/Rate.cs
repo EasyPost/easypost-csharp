@@ -1,7 +1,6 @@
 ﻿using RestSharp;
 
 using System;
-using System.Collections.Generic;
 
 namespace EasyPost {
     public class Rate : IResource {

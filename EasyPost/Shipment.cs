@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace EasyPost {
     public class Shipment : IResource {
@@ -16,7 +15,7 @@ namespace EasyPost {
         public string status { get; set; }
         public Nullable<bool> is_return { get; set; }
         public Options options { get; set; }
-        public List<Dictionary<string, object>> messages { get; set; }
+        public List<Message> messages { get; set; }
         public CustomsInfo customs_info { get; set; }
         public Address from_address { get; set; }
         public Address to_address { get; set; }
