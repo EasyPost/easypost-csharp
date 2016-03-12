@@ -64,34 +64,25 @@ namespace EasyPost {
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
         public static Address Create(Dictionary<string, object> parameters = null) {
-            List<string> Verifications = null, StrictVerifications = null;
+            List<string> verifications = null, strictVerifications = null;
             parameters = parameters ?? new Dictionary<string, object>();
 
             if (parameters.ContainsKey("verifications")) {
-                Verifications = (List<string>)parameters["verifications"];
+                verifications = (List<string>)parameters["verifications"];
                 parameters.Remove("verifications");
             }
 
             if (parameters.ContainsKey("strict_verifications")) {
-                StrictVerifications = (List<string>)parameters["strict_verifications"];
+                strictVerifications = (List<string>)parameters["strict_verifications"];
                 parameters.Remove("strict_verifications");
             }
 
-            return sendCreate(parameters, Verifications, StrictVerifications);
+            return sendCreate(parameters, verifications, strictVerifications);
         }
 
         /// <summary>
         /// Create this Address.
         /// </summary>
-        /// <param name="verifications">
-        /// A list of verifications to perform on the address.
-        /// Possible items are "delivery" and "zip4".
-        /// </param>
-        /// <param name="strict_verifications">
-        /// A list of verifications to perform on the address.
-        /// Will cause an HttpException to be raised if unsucessful.
-        /// Possible items are "delivery" and "zip4".
-        /// </param>
         /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
         public void Create() {
             Create(null, null);
@@ -110,21 +101,21 @@ namespace EasyPost {
         /// Possible items are "delivery" and "zip4".
         /// </param>
         /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
-        public void Create(List<string> Verifications = null, List<string> StrictVerifications = null) {
+        public void Create(List<string> verifications = null, List<string> strictVerifications = null) {
             if (id != null)
                 throw new ResourceAlreadyCreated();
-            this.Merge(sendCreate(this.AsDictionary(), Verifications, StrictVerifications));
+            this.Merge(sendCreate(this.AsDictionary(), verifications, strictVerifications));
         }
 
-        private static Address sendCreate(Dictionary<string, object> parameters, List<string> Verifications = null, List<string> StrictVerifications = null) {
+        private static Address sendCreate(Dictionary<string, object> parameters, List<string> verifications = null, List<string> strictVerifications = null) {
             Request request = new Request("addresses", Method.POST);
             request.AddBody(parameters, "address");
 
-            foreach (string verification in Verifications ?? new List<string>()) {
+            foreach (string verification in verifications ?? new List<string>()) {
                 request.AddParameter("verify[]", verification, ParameterType.QueryString);
             }
 
-            foreach (string verification in StrictVerifications ?? new List<string>()) {
+            foreach (string verification in strictVerifications ?? new List<string>()) {
                 request.AddParameter("verify_strict[]", verification, ParameterType.QueryString);
             }
 
@@ -167,8 +158,8 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         public static Address CreateAndVerify(Dictionary<string, object> parameters = null) {
-            parameters["strict_verify"] = new List<string>() { "delivery" };
-            return Create(parameters);
+            parameters["strict_verifications"] = new List<string>() { "delivery" };
+            return Address.Create(parameters);
         }
     }
 }

@@ -108,7 +108,7 @@ namespace EasyPostTest {
             address = new Address() {
                 company = "Simpler Postage Inc"
             };
-            address.Create(StrictVerifications: new List<string> { "delivery", "zip4" });
+            address.Create(strictVerifications: new List<string> { "delivery", "zip4" });
         }
 
         [TestMethod]
@@ -160,13 +160,19 @@ namespace EasyPostTest {
         [TestMethod]
         public void TestCreateAndVerify() {
             Dictionary<string, object> parameters = new Dictionary<string, object>() {
-                {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
-                {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}
+                {"company", "Simpler Postage Inc" },
+                { "street1", "164 Townsend Street" },
+                { "street2", "Unit 1" },
+                { "city", "San Francisco" },
+                { "state", "CA" },
+                { "country", "US" },
+                { "zip", "94107" }
             };
             Address address = Address.CreateAndVerify(parameters);
             Assert.IsNotNull(address.id);
             Assert.AreEqual(address.company, "Simpler Postage Inc");
             Assert.IsNull(address.name);
+            Assert.AreEqual(address.verifications.delivery.success, true);
         }
     }
 }
