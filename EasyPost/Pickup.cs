@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Pickup : IResource {
@@ -33,6 +34,14 @@ namespace EasyPost {
 
             return request.Execute<Pickup>();
         }
+
+        public static async Task<Pickup> RetrieveTaskAsync(string id) {
+            Request request = new Request("pickups/{id}");
+            request.AddUrlSegment("id", id);
+
+            return await request.ExecuteTaskAsync<Pickup>();
+        }
+
         /// <summary>
         /// Create a Pickup.
         /// </summary>
@@ -53,6 +62,9 @@ namespace EasyPost {
         public static Pickup Create(Dictionary<string, object> parameters = null) {
             return sendCreate(parameters ?? new Dictionary<string, object>());
         }
+        public static async Task<Pickup> CreateTaskAsync(Dictionary<string, object> parameters = null) {
+            return await sendCreateTaskAsync(parameters ?? new Dictionary<string, object>());
+        }
 
         /// <summary>
         /// Create this Pickup.
@@ -63,12 +75,24 @@ namespace EasyPost {
                 throw new ResourceAlreadyCreated();
             this.Merge(sendCreate(this.AsDictionary()));
         }
+        public async Task CreateTaskAsync() {
+            if (id != null)
+                throw new ResourceAlreadyCreated();
+            this.Merge(await sendCreateTaskAsync(this.AsDictionary()));
+        }
 
         private static Pickup sendCreate(Dictionary<string, object> parameters) {
             Request request = new Request("pickups", Method.POST);
             request.AddBody(parameters, "pickup");
 
             return request.Execute<Pickup>();
+        }
+
+        private static async Task<Pickup> sendCreateTaskAsync(Dictionary<string, object> parameters) {
+            Request request = new Request("pickups", Method.POST);
+            request.AddBody(parameters, "pickup");
+
+            return await request.ExecuteTaskAsync<Pickup>();
         }
 
         /// <summary>
@@ -86,6 +110,16 @@ namespace EasyPost {
 
             this.Merge(request.Execute<Pickup>());
         }
+        public async Task BuyTaskAsync(string carrier, string service) {
+            Request request = new Request("pickups/{id}/buy", Method.POST);
+            request.AddUrlSegment("id", id);
+            request.AddBody(new List<Tuple<string, string>>() {
+                new Tuple<string, string>("carrier", carrier),
+                new Tuple<string, string>("service", service)
+            });
+
+            this.Merge(await request.ExecuteTaskAsync<Pickup>());
+        }
 
         /// <summary>
         /// Cancel this pickup.
@@ -95,6 +129,13 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
 
             this.Merge(request.Execute<Pickup>());
+        }
+
+        public async Task CancelTaskAsync() {
+            Request request = new Request("pickups/{id}/cancel", Method.POST);
+            request.AddUrlSegment("id", id);
+
+            this.Merge(await request.ExecuteTaskAsync<Pickup>());
         }
     }
 }

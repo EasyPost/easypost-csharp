@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class ScanFormList : IResource {
@@ -18,6 +19,13 @@ namespace EasyPost {
             filters["before_id"] = scanForms.Last().id;
 
             return ScanForm.List(filters);
+        }
+
+        public async Task<ScanFormList> NextTaskAsync() {
+            filters = filters ?? new Dictionary<string, object>();
+            filters["before_id"] = scanForms.Last().id;
+
+            return await ScanForm.ListTaskAsync(filters);
         }
     }
 }

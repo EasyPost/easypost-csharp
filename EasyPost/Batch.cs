@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Batch : IResource {
@@ -32,6 +33,13 @@ namespace EasyPost {
             return request.Execute<Batch>();
         }
 
+        public static async Task<Batch> RetrieveTaskAsync(string id) {
+            Request request = new Request("batches/{id}");
+            request.AddUrlSegment("id", id);
+
+            return await request.ExecuteTaskAsync<Batch>();
+        }
+
         /// <summary>
         /// Create a Batch.
         /// </summary>
@@ -51,6 +59,15 @@ namespace EasyPost {
             return request.Execute<Batch>();
         }
 
+        public static async Task<Batch> CreateTaskAsync(Dictionary<string, object> parameters = null) {
+            parameters = parameters ?? new Dictionary<string, object>();
+
+            Request request = new Request("batches", Method.POST);
+            request.AddBody(parameters, "batch");
+
+            return await request.ExecuteTaskAsync<Batch>();
+        }
+
         /// <summary>
         /// Add shipments to the batch.
         /// </summary>
@@ -65,12 +82,26 @@ namespace EasyPost {
             this.Merge(request.Execute<Batch>());
         }
 
+        public async Task AddShipmentsTaskAsync(IEnumerable<string> shipmentIds) {
+            Request request = new Request("batches/{id}/add_shipments", Method.POST);
+            request.AddUrlSegment("id", id);
+
+            List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
+            request.AddBody(body, "shipments");
+
+            this.Merge(await request.ExecuteTaskAsync<Batch>());
+        }
+
         /// <summary>
         /// Add shipments to the batch.
         /// </summary>
         /// <param name="shipments">List of Shipment objects to be added.</param>
         public void AddShipments(IEnumerable<Shipment> shipments) {
             AddShipments(shipments.Select(shipment => shipment.id).ToList());
+        }
+
+        public async Task AddShipmentsTaskAsync(IEnumerable<Shipment> shipments) {
+            await AddShipmentsTaskAsync(shipments.Select(shipment => shipment.id).ToList());
         }
 
         /// <summary>
@@ -87,12 +118,26 @@ namespace EasyPost {
             this.Merge(request.Execute<Batch>());
         }
 
+        public async Task RemoveShipmentsTaskAsync(IEnumerable<string> shipmentIds) {
+            Request request = new Request("batches/{id}/remove_shipments", Method.POST);
+            request.AddUrlSegment("id", id);
+
+            List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
+            request.AddBody(body, "shipments");
+
+            this.Merge(await request.ExecuteTaskAsync<Batch>());
+        }
+
         /// <summary>
         /// Remove shipments from the batch.
         /// </summary>
         /// <param name="shipments">List of Shipment objects to be removed.</param>
         public void RemoveShipments(IEnumerable<Shipment> shipments) {
             RemoveShipments(shipments.Select(shipment => shipment.id).ToList());
+        }
+
+        public async Task RemoveShipmentsTaskAsync(IEnumerable<Shipment> shipments) {
+            await RemoveShipmentsTaskAsync(shipments.Select(shipment => shipment.id).ToList());
         }
 
         /// <summary>
@@ -103,6 +148,13 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
 
             this.Merge(request.Execute<Batch>());
+        }
+
+        public async Task BuyTaskAsync() {
+            Request request = new Request("batches/{id}/buy", Method.POST);
+            request.AddUrlSegment("id", id);
+
+            this.Merge(await request.ExecuteTaskAsync<Batch>());
         }
 
         /// <summary>
@@ -125,6 +177,21 @@ namespace EasyPost {
             this.Merge(request.Execute<Batch>());
         }
 
+        public async Task GenerateLabelTaskAsync(string fileFormat, string orderBy = null) {
+            Request request = new Request("batches/{id}/label", Method.POST);
+            request.AddUrlSegment("id", id);
+
+            List<Tuple<string, string>> body = new List<Tuple<string, string>>() {
+                new Tuple<string, string>("file_format", fileFormat)
+            };
+
+            if (orderBy != null)
+                body.Add(new Tuple<string, string>("order_by", orderBy));
+
+            request.AddBody(body);
+            this.Merge(await request.ExecuteTaskAsync<Batch>());
+        }
+
         /// <summary>
         /// Asychronously generate a scan from for the batch.
         /// </summary>
@@ -133,6 +200,13 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
 
             this.Merge(request.Execute<Batch>());
+        }
+
+        public async Task GenerateScanFormTaskAsync() {
+            Request request = new Request("batches/{id}/scan_form", Method.POST);
+            request.AddUrlSegment("id", id);
+
+            this.Merge(await request.ExecuteTaskAsync<Batch>());
         }
     }
 }

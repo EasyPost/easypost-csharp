@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class TrackerList {
@@ -17,6 +18,13 @@ namespace EasyPost {
             filters["before_id"] = trackers.Last().id;
 
             return Tracker.List(filters);
+        }
+
+        public async Task<TrackerList> NextTaskAsync() {
+            filters = filters ?? new Dictionary<string, object>();
+            filters["before_id"] = trackers.Last().id;
+
+            return await Tracker.ListTaskAsync(filters);
         }
     }
 }

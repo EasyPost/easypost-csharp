@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Request {
@@ -28,9 +29,18 @@ namespace EasyPost {
             return client.Execute<T>(this);
         }
 
+        public async Task<T> ExecuteTaskAsync<T>() where T : new() {
+            Client client = ClientManager.Build();
+            return await client.ExecuteTaskAsync<T>(this);
+        }
+
         public IRestResponse Execute() {
             Client client = ClientManager.Build();
             return client.Execute(this);
+        }
+        public async Task<IRestResponse> ExecuteTaskAsync() {
+            Client client = ClientManager.Build();
+            return await client.ExecuteTaskAsync(this);
         }
 
         public void AddUrlSegment(string name, string value) {

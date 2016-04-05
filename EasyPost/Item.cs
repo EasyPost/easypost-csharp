@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Item : IResource {
@@ -34,6 +35,13 @@ namespace EasyPost {
             return request.Execute<Item>();
         }
 
+        public static async Task<Item> RetrieveTaskAsync(string id) {
+            Request request = new Request("items/{id}");
+            request.AddUrlSegment("id", id);
+
+            return await request.ExecuteTaskAsync<Item>();
+        }
+
         /// <summary>
         /// Create an Item.
         /// </summary>
@@ -60,6 +68,12 @@ namespace EasyPost {
 
             return request.Execute<Item>();
         }
+        public static async Task<Item> CreateTaskAsync(Dictionary<string, object> parameters) {
+            Request request = new Request("items", Method.POST);
+            request.AddBody(parameters, "item");
+
+            return await request.ExecuteTaskAsync<Item>();
+        }
 
         /// <summary>
         /// Retrieve a Item from a custom reference.
@@ -73,6 +87,14 @@ namespace EasyPost {
             request.AddUrlSegment("value", value);
 
             return request.Execute<Item>();
+        }
+
+        public static async Task<Item> RetrieveReferenceTaskAsync(string name, string value) {
+            Request request = new Request("items/retrieve_reference/?{name}={value}");
+            request.AddUrlSegment("name", name);
+            request.AddUrlSegment("value", value);
+
+            return await request.ExecuteTaskAsync<Item>();
         }
     }
 }

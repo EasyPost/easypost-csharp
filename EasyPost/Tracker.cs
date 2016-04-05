@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Tracker : IResource {
@@ -41,6 +42,15 @@ namespace EasyPost {
             return trackerList;
         }
 
+        public static async Task<TrackerList> ListTaskAsync(Dictionary<string, object> parameters = null) {
+            Request request = new Request("trackers");
+            request.AddQueryString(parameters ?? new Dictionary<string, object>());
+
+            TrackerList trackerList = await request.ExecuteTaskAsync<TrackerList>();
+            trackerList.filters = parameters;
+            return trackerList;
+        }
+
         public static Tracker Create(string carrier, string trackingCode) {
             Request request = new Request("trackers", RestSharp.Method.POST);
             Dictionary<string, object> parameters = new Dictionary<string, object>() {
@@ -50,6 +60,17 @@ namespace EasyPost {
             request.AddBody(parameters, "tracker");
 
             return request.Execute<Tracker>();
+        }
+
+        public static async Task<Tracker> CreateTaskAsync(string carrier, string trackingCode) {
+            Request request = new Request("trackers", RestSharp.Method.POST);
+            Dictionary<string, object> parameters = new Dictionary<string, object>() {
+                { "tracking_code", trackingCode }, { "carrier", carrier }
+            };
+
+            request.AddBody(parameters, "tracker");
+
+            return await request.ExecuteTaskAsync<Tracker>();
         }
 
         /// <summary>
@@ -62,6 +83,13 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
 
             return request.Execute<Tracker>();
+        }
+
+        public static async Task<Tracker> RetrieveTaskAsync(string id) {
+            Request request = new Request("trackers/{id}");
+            request.AddUrlSegment("id", id);
+
+            return await request.ExecuteTaskAsync<Tracker>();
         }
     }
 }

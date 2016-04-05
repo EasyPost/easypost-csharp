@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class User : IResource {
@@ -39,6 +40,21 @@ namespace EasyPost {
             return request.Execute<User>();
         }
 
+        public static async Task<User> RetrieveTaskAsync(string id = null) {
+            Request request;
+
+            if (id == null)
+            {
+                request = new Request("users");
+            }
+            else {
+                request = new Request("users/{id}");
+                request.AddUrlSegment("id", id);
+            }
+
+            return await request.ExecuteTaskAsync<User>();
+        }
+
         /// <summary>
         /// Create a child user for the account associated with the api_key specified.
         /// </summary>
@@ -53,6 +69,13 @@ namespace EasyPost {
             request.AddBody(parameters, "user");
 
             return request.Execute<User>();
+        }
+
+        public static async Task<User> CreateTaskAsync(Dictionary<string, object> parameters) {
+            Request request = new Request("users", Method.POST);
+            request.AddBody(parameters, "user");
+
+            return await request.ExecuteTaskAsync<User>();
         }
 
         /// <summary>
@@ -74,6 +97,14 @@ namespace EasyPost {
             request.AddBody(parameters, "user");
 
             this.Merge(request.Execute<User>());
+        }
+
+        public async Task UpdateTaskAsync(Dictionary<string, object> parameters) {
+            Request request = new Request("users/{id}", Method.PUT);
+            request.AddUrlSegment("id", id);
+            request.AddBody(parameters, "user");
+
+            this.Merge(await request.ExecuteTaskAsync<User>());
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using RestSharp;
 
 using System;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Rate : IResource {
@@ -33,6 +34,13 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
 
             return request.Execute<Rate>();
+        }
+
+        public static async Task<Rate> RetrieveTaskAsync(string id) {
+            Request request = new Request("rates/{id}");
+            request.AddUrlSegment("id", id);
+
+            return await request.ExecuteTaskAsync<Rate>();
         }
     }
 }

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Shipment : IResource {
@@ -61,6 +62,15 @@ namespace EasyPost {
             return shipmentList;
         }
 
+        public static async Task<ShipmentList> ListTaskAsync(Dictionary<string, object> parameters = null) {
+            Request request = new Request("shipments");
+            request.AddQueryString(parameters ?? new Dictionary<string, object>());
+
+            ShipmentList shipmentList = await request.ExecuteTaskAsync<ShipmentList>();
+            shipmentList.filters = parameters;
+            return shipmentList;
+        }
+
         /// <summary>
         /// Retrieve a Shipment from its id.
         /// </summary>
@@ -71,6 +81,12 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
 
             return request.Execute<Shipment>();
+        }
+        public static async Task<Shipment> RetrieveTaskAsync(string id) {
+            Request request = new Request("shipments/{id}");
+            request.AddUrlSegment("id", id);
+
+            return await request.ExecuteTaskAsync<Shipment>();
         }
 
         /// <summary>
@@ -95,6 +111,9 @@ namespace EasyPost {
         public static Shipment Create(Dictionary<string, object> parameters = null) {
             return sendCreate(parameters ?? new Dictionary<string, object>());
         }
+        public static async Task<Shipment> CreateTaskAsync(Dictionary<string, object> parameters = null) {
+            return await sendCreateTaskAsync(parameters ?? new Dictionary<string, object>());
+        }
 
         /// <summary>
         /// Create this Shipment.
@@ -105,12 +124,23 @@ namespace EasyPost {
                 throw new ResourceAlreadyCreated();
             this.Merge(sendCreate(this.AsDictionary()));
         }
+        public async Task CreateTaskAsync() {
+            if (id != null)
+                throw new ResourceAlreadyCreated();
+            this.Merge(await sendCreateTaskAsync(this.AsDictionary()));
+        }
 
         private static Shipment sendCreate(Dictionary<string, object> parameters) {
             Request request = new Request("shipments", Method.POST);
             request.AddBody(parameters, "shipment");
 
             return request.Execute<Shipment>();
+        }
+        private static async Task<Shipment> sendCreateTaskAsync(Dictionary<string, object> parameters) {
+            Request request = new Request("shipments", Method.POST);
+            request.AddBody(parameters, "shipment");
+
+            return await request.ExecuteTaskAsync<Shipment>();
         }
 
         /// <summary>
@@ -124,6 +154,16 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
 
             rates = request.Execute<Shipment>().rates;
+        }
+
+        public async Task GetRatesTaskAsync() {
+            if (id == null)
+                Create();
+
+            Request request = new Request("shipments/{id}/rates");
+            request.AddUrlSegment("id", id);
+
+            rates = (await request.ExecuteTaskAsync<Shipment>()).rates;
         }
 
         /// <summary>
@@ -147,12 +187,32 @@ namespace EasyPost {
             fees = result.fees;
         }
 
+        public async Task BuyTaskAsync(string rateId) {
+            Request request = new Request("shipments/{id}/buy", Method.POST);
+            request.AddUrlSegment("id", id);
+            request.AddBody(new Dictionary<string, object>() { { "id", rateId } }, "rate");
+
+            Shipment result = await request.ExecuteTaskAsync<Shipment>();
+
+            insurance = result.insurance;
+            postage_label = result.postage_label;
+            tracking_code = result.tracking_code;
+            tracker = result.tracker;
+            selected_rate = result.selected_rate;
+            forms = result.forms;
+            messages = result.messages;
+            fees = result.fees;
+        }
+
         /// <summary>
         /// Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
         public void Buy(Rate rate) {
             Buy(rate.id);
+        }
+        public async Task BuyTaskAsync(Rate rate) {
+            await BuyTaskAsync(rate.id);
         }
 
         /// <summary>
@@ -169,6 +229,16 @@ namespace EasyPost {
             this.Merge(request.Execute<Shipment>());
         }
 
+        public async Task InsureTaskAsync(double amount) {
+            Request request = new Request("shipments/{id}/insure", Method.POST);
+            request.AddUrlSegment("id", id);
+            request.AddBody(new List<Tuple<string, string>>() {
+                new Tuple<string, string>("amount", amount.ToString())
+            });
+
+            this.Merge(await request.ExecuteTaskAsync<Shipment>());
+        }
+
         /// <summary>
         /// Generate a postage label for this shipment.
         /// </summary>
@@ -182,6 +252,15 @@ namespace EasyPost {
             this.Merge(request.Execute<Shipment>());
         }
 
+        public async Task GenerateLabelTaskAsync(string fileFormat) {
+            Request request = new Request("shipments/{id}/label");
+            request.AddUrlSegment("id", id);
+            // This is a GET, but uses the request body, so use ParameterType.GetOrPost instead.
+            request.AddParameter("file_format", fileFormat, ParameterType.GetOrPost);
+
+            this.Merge(await request.ExecuteTaskAsync<Shipment>());
+        }
+
         /// <summary>
         /// Generate a stamp for this shipment.
         /// </summary>
@@ -190,6 +269,14 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
 
             Shipment result = request.Execute<Shipment>();
+            stamp_url = result.stamp_url;
+        }
+
+        public async Task GenerateStampTaskAsync() {
+            Request request = new Request("shipments/{id}/stamp");
+            request.AddUrlSegment("id", id);
+
+            Shipment result = await request.ExecuteTaskAsync<Shipment>();
             stamp_url = result.stamp_url;
         }
 
@@ -204,6 +291,14 @@ namespace EasyPost {
             barcode_url = result.barcode_url;
         }
 
+        public async Task GenerateBarcodeTaskAsync() {
+            Request request = new Request("shipments/{id}/barcode");
+            request.AddUrlSegment("id", id);
+
+            Shipment result = await request.ExecuteTaskAsync<Shipment>();
+            barcode_url = result.barcode_url;
+        }
+
         /// <summary>
         /// Send a refund request to the carrier the shipment was purchased from.
         /// </summary>
@@ -212,6 +307,13 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
 
             ResourceExtension.Merge(this, request.Execute<Shipment>());
+        }
+
+        public async Task RefundTaskAsync() {
+            Request request = new Request("shipments/{id}/refund");
+            request.AddUrlSegment("id", id);
+
+            ResourceExtension.Merge(this, await request.ExecuteTaskAsync<Shipment>());
         }
 
         /// <summary>
@@ -226,6 +328,25 @@ namespace EasyPost {
                                IEnumerable<string> excludeCarriers = null, IEnumerable<string> excludeServices = null) {
             if (rates == null)
                 GetRates();
+
+            List<Rate> result = new List<Rate>(rates);
+
+            if (includeCarriers != null)
+                filterRates(ref result, rate => includeCarriers.Contains(rate.carrier));
+            if (includeServices != null)
+                filterRates(ref result, rate => includeServices.Contains(rate.service));
+            if (excludeCarriers != null)
+                filterRates(ref result, rate => !excludeCarriers.Contains(rate.carrier));
+            if (excludeServices != null)
+                filterRates(ref result, rate => !excludeServices.Contains(rate.service));
+
+            return result.OrderBy(rate => double.Parse(rate.rate)).FirstOrDefault();
+        }
+
+        public async Task<Rate> LowestRateTaskAsync(IEnumerable<string> includeCarriers = null, IEnumerable<string> includeServices = null,
+                               IEnumerable<string> excludeCarriers = null, IEnumerable<string> excludeServices = null) {
+            if (rates == null)
+                await GetRatesTaskAsync();
 
             List<Rate> result = new List<Rate>(rates);
 

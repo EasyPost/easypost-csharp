@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class ScanForm : IResource {
@@ -32,6 +33,15 @@ namespace EasyPost {
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
             ScanFormList scanFormList = request.Execute<ScanFormList>();
+            scanFormList.filters = parameters;
+            return scanFormList;
+        }
+
+        public static async Task<ScanFormList> ListTaskAsync(Dictionary<string, object> parameters = null) {
+            Request request = new Request("scan_forms");
+            request.AddQueryString(parameters ?? new Dictionary<string, object>());
+
+            ScanFormList scanFormList = await request.ExecuteTaskAsync<ScanFormList>();
             scanFormList.filters = parameters;
             return scanFormList;
         }

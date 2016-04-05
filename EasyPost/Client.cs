@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Client {
@@ -30,6 +31,10 @@ namespace EasyPost {
             return client.Execute(PrepareRequest(request));
         }
 
+        public async Task<IRestResponse> ExecuteTaskAsync(Request request) {
+            return await client.ExecuteTaskAsync(PrepareRequest(request));
+        }
+
         public T Execute<T>(Request request) where T : new() {
             RestResponse<T> response = (RestResponse<T>)client.Execute<T>(PrepareRequest(request));
             int StatusCode = Convert.ToInt32(response.StatusCode);
@@ -39,6 +44,26 @@ namespace EasyPost {
                     Dictionary<string, Dictionary<string, object>> Body = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
                     throw new HttpException(StatusCode, (string)Body["error"]["message"], (string)Body["error"]["code"]);
                 } catch {
+                    throw new HttpException(StatusCode, "RESPONSE.PARSE_ERROR", response.Content);
+                }
+            }
+
+            return response.Data;
+        }
+
+        public async Task<T> ExecuteTaskAsync<T>(Request request) where T : new() {
+            RestResponse<T> response = (RestResponse<T>)await client.ExecuteTaskAsync<T>(PrepareRequest(request));
+            int StatusCode = Convert.ToInt32(response.StatusCode);
+
+            if (StatusCode > 399)
+            {
+                try
+                {
+                    Dictionary<string, Dictionary<string, object>> Body = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
+                    throw new HttpException(StatusCode, (string)Body["error"]["message"], (string)Body["error"]["code"]);
+                }
+                catch
+                {
                     throw new HttpException(StatusCode, "RESPONSE.PARSE_ERROR", response.Content);
                 }
             }

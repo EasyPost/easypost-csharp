@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class CarrierAccount : IResource {
@@ -19,6 +20,11 @@ namespace EasyPost {
             return request.Execute<List<CarrierAccount>>();
         }
 
+        public static async Task<List<CarrierAccount>> ListTaskAsync() {
+            Request request = new Request("carrier_accounts");
+            return await request.ExecuteTaskAsync<List<CarrierAccount>>();
+        }
+
         /// <summary>
         /// Retrieve a CarrierAccount from its id.
         /// </summary>
@@ -29,6 +35,13 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
 
             return request.Execute<CarrierAccount>();
+        }
+
+        public static async Task<CarrierAccount> RetrieveTaskAsync(string id) {
+            Request request = new Request("carrier_accounts/{id}");
+            request.AddUrlSegment("id", id);
+
+            return await request.ExecuteTaskAsync<CarrierAccount>();
         }
 
         /// <summary>
@@ -51,6 +64,13 @@ namespace EasyPost {
             return request.Execute<CarrierAccount>();
         }
 
+        public static async Task<CarrierAccount> CreateTaskAsync(Dictionary<string, object> parameters) {
+            Request request = new Request("carrier_accounts", Method.POST);
+            request.AddBody(parameters, "carrier_account");
+
+            return await request.ExecuteTaskAsync<CarrierAccount>();
+        }
+
         /// <summary>
         /// Remove this CarrierAccount from your account.
         /// </summary>
@@ -59,6 +79,13 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
 
             request.Execute();
+        }
+
+        public async Task DestroyTaskAsync() {
+            Request request = new Request("carrier_accounts/{id}", Method.DELETE);
+            request.AddUrlSegment("id", id);
+
+            await request.ExecuteTaskAsync();
         }
 
         /// <summary>
@@ -71,6 +98,14 @@ namespace EasyPost {
             request.AddBody(parameters, "carrier_account");
 
             this.Merge(request.Execute<CarrierAccount>());
+        }
+
+        public async Task UpdateTaskAsync(Dictionary<string, object> parameters) {
+            Request request = new Request("carrier_accounts/{id}", Method.PUT);
+            request.AddUrlSegment("id", id);
+            request.AddBody(parameters, "carrier_account");
+
+            this.Merge(await request.ExecuteTaskAsync<CarrierAccount>());
         }
     }
 }

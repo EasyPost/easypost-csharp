@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Parcel : IResource {
@@ -27,6 +28,13 @@ namespace EasyPost {
             return request.Execute<Parcel>();
         }
 
+        public static async Task<Parcel> RetrieveTaskAsync(string id) {
+            Request request = new Request("parcels/{id}");
+            request.AddUrlSegment("id", id);
+
+            return await request.ExecuteTaskAsync<Parcel>();
+        }
+
         /// <summary>
         /// Create a Parcel.
         /// </summary>
@@ -45,6 +53,13 @@ namespace EasyPost {
             request.AddBody(parameters, "parcel");
 
             return request.Execute<Parcel>();
+        }
+
+        public static async Task<Parcel> CreateTaskAsync(Dictionary<string, object> parameters) {
+            Request request = new Request("parcels", Method.POST);
+            request.AddBody(parameters, "parcel");
+
+            return await request.ExecuteTaskAsync<Parcel>();
         }
     }
 }

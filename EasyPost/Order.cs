@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class Order : IResource {
@@ -35,6 +36,13 @@ namespace EasyPost {
             return request.Execute<Order>();
         }
 
+        public static async Task<Order> RetrieveTaskAsync(string id) {
+            Request request = new Request("orders/{id}");
+            request.AddUrlSegment("id", id);
+
+            return await request.ExecuteTaskAsync<Order>();
+        }
+
         /// <summary>
         /// Create a Order.
         /// </summary>
@@ -60,6 +68,12 @@ namespace EasyPost {
 
             return request.Execute<Order>();
         }
+        public static async Task<Order> CreateTaskAsync(Dictionary<string, object> parameters) {
+            Request request = new Request("orders", Method.POST);
+            request.AddBody(parameters, "order");
+
+            return await request.ExecuteTaskAsync<Order>();
+        }
 
         /// <summary>
         /// Create this Order.
@@ -70,12 +84,24 @@ namespace EasyPost {
                 throw new ResourceAlreadyCreated();
             this.Merge(sendCreate(this.AsDictionary()));
         }
+        public async Task CreateTaskAsync() {
+            if (id != null)
+                throw new ResourceAlreadyCreated();
+            this.Merge(await sendCreateTaskAsync(this.AsDictionary()));
+        }
 
         private static Order sendCreate(Dictionary<string, object> parameters) {
             Request request = new Request("orders", Method.POST);
             request.AddBody(parameters, "order");
 
             return request.Execute<Order>();
+        }
+
+        private static async Task<Order> sendCreateTaskAsync(Dictionary<string, object> parameters) {
+            Request request = new Request("orders", Method.POST);
+            request.AddBody(parameters, "order");
+
+            return await request.ExecuteTaskAsync<Order>();
         }
 
         /// <summary>
@@ -91,12 +117,24 @@ namespace EasyPost {
             this.Merge(request.Execute<Order>());
         }
 
+        public async Task BuyTaskAsync(string carrier, string service) {
+            Request request = new Request("orders/{id}/buy", Method.POST);
+            request.AddUrlSegment("id", id);
+            request.AddBody(new List<Tuple<string, string>>() { new Tuple<string, string>("carrier", carrier), new Tuple<string, string>("service", service) });
+
+            this.Merge(await request.ExecuteTaskAsync<Order>());
+        }
+
         /// <summary>
         /// Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
         public void Buy(Rate rate) {
             Buy(rate.carrier, rate.service);
+        }
+
+        public async Task BuyTaskAsync(Rate rate) {
+            await BuyTaskAsync(rate.carrier, rate.service);
         }
     }
 }

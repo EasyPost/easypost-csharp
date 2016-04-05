@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class ShipmentList : IResource {
@@ -17,6 +18,13 @@ namespace EasyPost {
             filters["before_id"] = shipments.Last().id;
 
             return Shipment.List(filters);
+        }
+
+        public async Task<ShipmentList> NextTaskAsync() {
+            filters = filters ?? new Dictionary<string, object>();
+            filters["before_id"] = shipments.Last().id;
+
+            return await Shipment.ListTaskAsync(filters);
         }
     }
 }

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EasyPost {
     public class CustomsItem : IResource {
@@ -29,6 +30,13 @@ namespace EasyPost {
             return request.Execute<CustomsItem>();
         }
 
+        public static async Task<CustomsItem> RetrieveTaskAsync(string id) {
+            Request request = new Request("customs_items/{id}");
+            request.AddUrlSegment("id", id);
+
+            return await request.ExecuteTaskAsync<CustomsItem>();
+        }
+
         /// <summary>
         /// Create a CustomsItem.
         /// </summary>
@@ -48,6 +56,13 @@ namespace EasyPost {
             request.AddBody(parameters, "customs_item");
 
             return request.Execute<CustomsItem>();
+        }
+
+        public static async Task<CustomsItem> CreateTaskAsync(Dictionary<string, object> parameters) {
+            Request request = new Request("customs_items", Method.POST);
+            request.AddBody(parameters, "customs_item");
+
+            return await request.ExecuteTaskAsync<CustomsItem>();
         }
     }
 }
