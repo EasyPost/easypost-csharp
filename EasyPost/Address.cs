@@ -19,6 +19,10 @@ namespace EasyPost {
         public string phone { get; set; }
         public string email { get; set; }
         public bool residential { get; set; }
+        public string federal_tax_id { get; set; }
+        public string state_tax_id { get; set; }
+        public string verify { get; set; }
+        public string verify_strict { get; set; }
         public string mode { get; set; }
         public string error { get; set; }
         public string message { get; set; }
