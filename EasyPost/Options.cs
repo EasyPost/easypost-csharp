@@ -35,7 +35,7 @@ namespace EasyPost {
         public Nullable<bool> hold_for_pickup { get; set; }
         public string image_format { get; set; }
         public string invoice_number { get; set; }
-        public Nullable<DateTime> label_date { get; set; }
+        public string label_date { get; set; }
         public string label_format { get; set; }
         public string label_size { get; set; }
         public string machinable { get; set; }
