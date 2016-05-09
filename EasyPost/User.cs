@@ -15,10 +15,10 @@ namespace EasyPost {
         public string email { get; set; }
         public string phone_number { get; set; }
         public string balance { get; set; }
-        public int price_per_shipment { get; set; }
-        public int recharge_amount { get; set; }
-        public int secondary_recharge_amount { get; set; }
-        public int recharge_threshold { get; set; }
+        public string price_per_shipment { get; set; }
+        public string recharge_amount { get; set; }
+        public string secondary_recharge_amount { get; set; }
+        public string recharge_threshold { get; set; }
         public List<User> children { get; set; }
 
         /// <summary>

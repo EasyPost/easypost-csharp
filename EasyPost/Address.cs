@@ -18,7 +18,11 @@ namespace EasyPost {
         public string country { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
-        public bool residential { get; set; }
+        public Nullable<bool> residential { get; set; }
+        public string federal_tax_id { get; set; }
+        public string state_tax_id { get; set; }
+        public List<string> verify { get; set; }
+        public List<string> verify_strict { get; set; }
         public string mode { get; set; }
         public string error { get; set; }
         public string message { get; set; }
@@ -85,7 +89,7 @@ namespace EasyPost {
         /// </summary>
         /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
         public void Create() {
-            Create(null, null);
+            Create(verify, verify_strict);
         }
 
         /// <summary>

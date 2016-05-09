@@ -1,6 +1,5 @@
 ﻿using EasyPost;
 
-using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,6 +15,9 @@ namespace EasyPostTest {
         public void TestRetrieve() {
             User user = User.Retrieve();
             Assert.IsNotNull(user.id);
+
+            User user2 = User.Retrieve(user.id);
+            Assert.AreEqual(user.id, user2.id);
         }
 
         [TestMethod]

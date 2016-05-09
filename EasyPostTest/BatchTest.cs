@@ -11,22 +11,51 @@ namespace EasyPostTest {
         Dictionary<string, object> fromAddress;
         Dictionary<string, object> toAddress;
         Dictionary<string, object> shipmentParameters;
+        Dictionary<string, object> batchShipmentParameters;
 
         [TestInitialize]
         public void Initialize() {
             ClientManager.SetCurrent("cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi");
 
             fromAddress = new Dictionary<string, object>() {
-                {"name", "Andrew Tribone"}, {"street1", "480 Fell St"}, {"street2", "#3"},
-                {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94102"}
+                { "name", "Andrew Tribone" },
+                { "street1", "480 Fell St" },
+                { "street2", "#3" },
+                { "city", "San Francisco" },
+                { "state", "CA" },
+                { "country", "US" },
+                { "zip", "94102" }
             };
             toAddress = new Dictionary<string, object>() {
-                {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
-                {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"}
+                { "company", "Simpler Postage Inc" },
+                { "street1", "164 Townsend Street" },
+                { "street2", "Unit 1" },
+                { "city", "San Francisco" },
+                { "state", "CA" },
+                { "country", "US" },
+                { "zip", "94107" }
             };
             shipmentParameters = new Dictionary<string, object>() {
-                {"parcel", new Dictionary<string, object>() {{"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}}},
-                {"to_address", toAddress}, {"from_address", fromAddress}, {"carrier", "USPS"}, {"service", "Priority"}
+                { "parcel", new Dictionary<string, object>() {
+                    { "length", 8 },
+                    { "width", 6 },
+                    { "height", 5 },
+                    { "weight", 10 }
+                } },
+                { "to_address", toAddress },
+                { "from_address", fromAddress }
+            };
+            batchShipmentParameters = new Dictionary<string, object>() {
+                { "parcel", new Dictionary<string, object>() {
+                    { "length", 8 },
+                    { "width", 6 },
+                    { "height", 5 },
+                    { "weight", 10 }
+                } },
+                { "to_address", toAddress },
+                { "from_address", fromAddress },
+                { "carrier", "USPS" },
+                { "service", "Priority" }
             };
         }
 
@@ -59,8 +88,8 @@ namespace EasyPostTest {
 
         public Batch CreateBatch() {
             Dictionary<string, object> parameters = new Dictionary<string, object>() {
-                {"reference", "EasyPostCSharpTest"},
-                {"shipments", new List<Dictionary<string, object>>() {shipmentParameters}}
+                { "reference", "EasyPostCSharpTest" },
+                { "shipments", new List<Dictionary<string, object>>() { batchShipmentParameters } }
             };
 
             return Batch.Create(parameters);

@@ -15,27 +15,45 @@ namespace EasyPostTest {
             ClientManager.SetCurrent("cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi");
 
             toAddress = new Dictionary<string, object>() {
-                {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
-                {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"},
+                {"company", "Simpler Postage Inc" },
+                { "street1", "164 Townsend Street" },
+                { "street2", "Unit 1" },
+                { "city", "San Francisco" },
+                { "state", "CA" },
+                { "country", "US" },
+                { "zip", "94107" }
             };
             fromAddress = new Dictionary<string, object>() {
-                {"name", "Andrew Tribone"}, {"street1", "480 Fell St"}, {"street2", "#3"},
-                {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94102"}
+                {"name", "Andrew Tribone" },
+                { "street1", "480 Fell St" },
+                { "street2", "#3" },
+                {"city", "San Francisco" },
+                { "state", "CA" },
+                { "country", "US" },
+                { "zip", "94102" }
             };
             parameters = new Dictionary<string, object>() {
-                {"parcel", new Dictionary<string, object>() {{"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}}},
-                {"to_address", toAddress}, {"from_address", fromAddress}, {"reference", "ShipmentRef"}
+                {"parcel", new Dictionary<string, object>() {
+                    { "length", 8 },
+                    { "width", 6 },
+                    { "height", 5 },
+                    { "weight", 10 }
+                } },
+                { "to_address", toAddress },
+                { "from_address", fromAddress },
+                { "reference", "ShipmentRef" },
+                { "options", new Dictionary<string, object>() }
             };
         }
 
-        private Shipment buyShipment() {
+        private Shipment BuyShipment() {
             Shipment shipment = Shipment.Create(parameters);
             shipment.GetRates();
             shipment.Buy(shipment.rates.First());
             return shipment;
         }
 
-        private Shipment createShipmentResource() {
+        private Shipment CreateShipmentResource() {
             Address to = Address.Create(toAddress);
             Address from = Address.Create(fromAddress);
             Parcel parcel = Parcel.Create(new Dictionary<string, object>() {
@@ -70,9 +88,24 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestOptions() {
+            String tomorrow = DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm:sszzz");
+            ((Dictionary<string, object>)parameters["options"])["label_date"] = tomorrow;
             Shipment shipment = Shipment.Create(parameters);
 
-            Assert.AreEqual(shipment.options.label_date, null);
+            Assert.AreEqual(((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:sszzz"), tomorrow);
+        }
+
+        [TestMethod]
+        public void TestInstanceOptions() {
+            DateTime tomorrow = DateTime.Now.AddDays(1);
+
+            Shipment shipment = CreateShipmentResource();
+            shipment.options = new Options() {
+                label_date = tomorrow
+            };
+            shipment.Create();
+
+            Assert.AreEqual(((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:sszzz"), tomorrow.ToString("yyyy-MM-ddTHH:mm:sszzz"));
         }
 
         [TestMethod]
@@ -98,14 +131,14 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestCreateWithPreCreatedAttributes() {
-            Shipment shipment = createShipmentResource();
+            Shipment shipment = CreateShipmentResource();
             shipment.Create();
             Assert.IsNotNull(shipment.id);
         }
 
         [TestMethod]
         public void TestGetRatesWithoutCreate() {
-            Shipment shipment = createShipmentResource();
+            Shipment shipment = CreateShipmentResource();
             shipment.GetRates();
             Assert.IsNotNull(shipment.id);
             Assert.IsNotNull(shipment.rates);
@@ -126,14 +159,14 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestRefund() {
-            Shipment shipment = buyShipment();
+            Shipment shipment = BuyShipment();
             shipment.Refund();
             Assert.IsNotNull(shipment.refund_status);
         }
 
         [TestMethod]
         public void TestGenerateLabelStampBarcode() {
-            Shipment shipment = buyShipment();
+            Shipment shipment = BuyShipment();
 
             shipment.GenerateLabel("pdf");
             Assert.IsNotNull(shipment.postage_label);
