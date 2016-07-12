@@ -6,8 +6,8 @@ using System.Collections.Generic;
 namespace EasyPost {
     public class Address : Resource {
         public string id { get; set; }
-        public Nullable<DateTime> created_at { get; set; }
-        public Nullable<DateTime> updated_at { get; set; }
+        public DateTime? created_at { get; set; }
+        public DateTime? updated_at { get; set; }
         public string name { get; set; }
         public string company { get; set; }
         public string street1 { get; set; }
@@ -18,7 +18,7 @@ namespace EasyPost {
         public string country { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
-        public Nullable<bool> residential { get; set; }
+        public bool? residential { get; set; }
         public string federal_tax_id { get; set; }
         public string state_tax_id { get; set; }
         public List<string> verify { get; set; }

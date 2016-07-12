@@ -8,12 +8,12 @@ namespace EasyPost {
     public class Shipment : Resource {
         public string id { get; set; }
         public string mode { get; set; }
-        public Nullable<DateTime> created_at { get; set; }
-        public Nullable<DateTime> updated_at { get; set; }
+        public DateTime? created_at { get; set; }
+        public DateTime? updated_at { get; set; }
         public string tracking_code { get; set; }
         public string reference { get; set; }
         public string status { get; set; }
-        public Nullable<bool> is_return { get; set; }
+        public bool? is_return { get; set; }
         public Options options { get; set; }
         public List<Message> messages { get; set; }
         public CustomsInfo customs_info { get; set; }

@@ -72,6 +72,7 @@
     <Compile Include="AddressTest.cs" />
     <Compile Include="BatchTest.cs" />
     <Compile Include="ClientManagerTest.cs" />
+    <Compile Include="EventTest.cs" />
     <Compile Include="ResourceTest.cs" />
     <Compile Include="ScanFormTest.cs" />
     <Compile Include="ClientTest.cs" />

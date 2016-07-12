@@ -81,6 +81,9 @@
     <Compile Include="..\EasyPost\CustomsItem.cs">
       <Link>CustomsItem.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\Event.cs">
+      <Link>Event.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\Exception.cs">
       <Link>Exception.cs</Link>
     </Compile>

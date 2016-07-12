@@ -3,8 +3,8 @@
 namespace EasyPost {
     public class PostageLabel : Resource {
         public string id { get; set; }
-        public Nullable<DateTime> created_at { get; set; }
-        public Nullable<DateTime> updated_at { get; set; }
+        public DateTime? created_at { get; set; }
+        public DateTime? updated_at { get; set; }
         public int date_advance { get; set; }
         public string integrated_form { get; set; }
         public DateTime label_date { get; set; }

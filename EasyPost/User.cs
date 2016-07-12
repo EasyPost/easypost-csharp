@@ -7,8 +7,8 @@ namespace EasyPost {
     public class User : Resource {
         public string id { get; set; }
         public string parent_id { get; set; }
-        public Nullable<DateTime> created_at { get; set; }
-        public Nullable<DateTime> updated_at { get; set; }
+        public DateTime? created_at { get; set; }
+        public DateTime? updated_at { get; set; }
         public string password { get; set; }
         public string password_confirmation { get; set; }
         public string name { get; set; }

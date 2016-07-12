@@ -6,8 +6,8 @@ using System.Collections.Generic;
 namespace EasyPost {
     public class Item : Resource {
         public string id { get; set; }
-        public Nullable<DateTime> created_at { get; set; }
-        public Nullable<DateTime> updated_at { get; set; }
+        public DateTime? created_at { get; set; }
+        public DateTime? updated_at { get; set; }
         public string mode { get; set; }
         public string name { get; set; }
         public string description { get; set; }
