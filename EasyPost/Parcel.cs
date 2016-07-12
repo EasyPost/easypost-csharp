@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 
 namespace EasyPost {
-    public class Parcel : IResource {
+    public class Parcel : Resource {
         public string id { get; set; }
         public string mode { get; set; }
         public Nullable<DateTime> created_at { get; set; }

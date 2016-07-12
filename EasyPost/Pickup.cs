@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 
 namespace EasyPost {
-    public class Pickup : IResource {
+    public class Pickup : Resource {
         public string id { get; set; }
         public string mode { get; set; }
         public Nullable<DateTime> created_at { get; set; }
@@ -61,7 +61,7 @@ namespace EasyPost {
         public void Create() {
             if (id != null)
                 throw new ResourceAlreadyCreated();
-            this.Merge(sendCreate(this.AsDictionary()));
+            Merge(sendCreate(this.AsDictionary()));
         }
 
         private static Pickup sendCreate(Dictionary<string, object> parameters) {
@@ -84,7 +84,7 @@ namespace EasyPost {
                 new Tuple<string, string>("service", service)
             });
 
-            this.Merge(request.Execute<Pickup>());
+            Merge(request.Execute<Pickup>());
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace EasyPost {
             Request request = new Request("pickups/{id}/cancel", Method.POST);
             request.AddUrlSegment("id", id);
 
-            this.Merge(request.Execute<Pickup>());
+            Merge(request.Execute<Pickup>());
         }
     }
 }

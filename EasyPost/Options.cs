@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace EasyPost {
-    public class Options : IResource {
+    public class Options : Resource {
         public Nullable<bool> additional_handling { get; set; }
         public string address_validation_level { get; set; }
         public Nullable<bool> alcohol { get; set; }

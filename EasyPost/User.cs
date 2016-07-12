@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 
 namespace EasyPost {
-    public class User : IResource {
+    public class User : Resource {
         public string id { get; set; }
         public string parent_id { get; set; }
         public Nullable<DateTime> created_at { get; set; }
@@ -73,7 +73,7 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
             request.AddBody(parameters, "user");
 
-            this.Merge(request.Execute<User>());
+            Merge(request.Execute<User>());
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace EasyPost {
-    public class ScanForm : IResource {
+    public class ScanForm : Resource {
         public string id { get; set; }
         public Nullable<DateTime> created_at { get; set; }
         public Nullable<DateTime> updated_at { get; set; }

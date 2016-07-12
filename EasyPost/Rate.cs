@@ -3,7 +3,7 @@
 using System;
 
 namespace EasyPost {
-    public class Rate : IResource {
+    public class Rate : Resource {
         public string id { get; set; }
         public Nullable<DateTime> created_at { get; set; }
         public Nullable<DateTime> updated_at { get; set; }

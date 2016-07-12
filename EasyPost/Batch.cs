@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace EasyPost {
-    public class Batch : IResource {
+    public class Batch : Resource {
         public string id { get; set; }
         public Nullable<DateTime> created_at { get; set; }
         public Nullable<DateTime> updated_at { get; set; }
@@ -62,7 +62,7 @@ namespace EasyPost {
             List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
             request.AddBody(body, "shipments");
 
-            this.Merge(request.Execute<Batch>());
+            Merge(request.Execute<Batch>());
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace EasyPost {
             List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
             request.AddBody(body, "shipments");
 
-            this.Merge(request.Execute<Batch>());
+            Merge(request.Execute<Batch>());
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace EasyPost {
             Request request = new Request("batches/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
 
-            this.Merge(request.Execute<Batch>());
+            Merge(request.Execute<Batch>());
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace EasyPost {
                 body.Add(new Tuple<string, string>("order_by", orderBy));
 
             request.AddBody(body);
-            this.Merge(request.Execute<Batch>());
+            Merge(request.Execute<Batch>());
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace EasyPost {
             Request request = new Request("batches/{id}/scan_form", Method.POST);
             request.AddUrlSegment("id", id);
 
-            this.Merge(request.Execute<Batch>());
+            Merge(request.Execute<Batch>());
         }
     }
 }

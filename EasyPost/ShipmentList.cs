@@ -2,7 +2,7 @@
 using System.Linq;
 
 namespace EasyPost {
-    public class ShipmentList : IResource {
+    public class ShipmentList : Resource {
         public List<Shipment> shipments { get; set; }
         public bool has_more { get; set; }
 

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace EasyPost {
-    public class Shipment : IResource {
+    public class Shipment : Resource {
         public string id { get; set; }
         public string mode { get; set; }
         public Nullable<DateTime> created_at { get; set; }
@@ -103,7 +103,7 @@ namespace EasyPost {
         public void Create() {
             if (id != null)
                 throw new ResourceAlreadyCreated();
-            this.Merge(sendCreate(this.AsDictionary()));
+            Merge(sendCreate(this.AsDictionary()));
         }
 
         private static Shipment sendCreate(Dictionary<string, object> parameters) {
@@ -166,7 +166,7 @@ namespace EasyPost {
                 new Tuple<string, string>("amount", amount.ToString())
             });
 
-            this.Merge(request.Execute<Shipment>());
+            Merge(request.Execute<Shipment>());
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace EasyPost {
             // This is a GET, but uses the request body, so use ParameterType.GetOrPost instead.
             request.AddParameter("file_format", fileFormat, ParameterType.GetOrPost);
 
-            this.Merge(request.Execute<Shipment>());
+            Merge(request.Execute<Shipment>());
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace EasyPost {
             Request request = new Request("shipments/{id}/refund");
             request.AddUrlSegment("id", id);
 
-            ResourceExtension.Merge(this, request.Execute<Shipment>());
+            Merge(request.Execute<Shipment>());
         }
 
         /// <summary>

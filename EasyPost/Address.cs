@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 
 namespace EasyPost {
-    public class Address : IResource {
+    public class Address : Resource {
         public string id { get; set; }
         public Nullable<DateTime> created_at { get; set; }
         public Nullable<DateTime> updated_at { get; set; }
@@ -108,7 +108,7 @@ namespace EasyPost {
         public void Create(List<string> verifications = null, List<string> strictVerifications = null) {
             if (id != null)
                 throw new ResourceAlreadyCreated();
-            this.Merge(sendCreate(this.AsDictionary(), verifications, strictVerifications));
+            Merge(sendCreate(this.AsDictionary(), verifications, strictVerifications));
         }
 
         private static Address sendCreate(Dictionary<string, object> parameters, List<string> verifications = null, List<string> strictVerifications = null) {
@@ -141,7 +141,7 @@ namespace EasyPost {
             if (carrier != null)
                 request.AddParameter("carrier", carrier, ParameterType.QueryString);
 
-            this.Merge(request.Execute<Address>());
+            Merge(request.Execute<Address>());
         }
 
         /// <summary>

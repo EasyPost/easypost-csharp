@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace EasyPost {
-    public class Form : IResource {
+    public class Form : Resource {
         public string id { get; set; }
         public Nullable<DateTime> created_at { get; set; }
         public Nullable<DateTime> updated_at { get; set; }      

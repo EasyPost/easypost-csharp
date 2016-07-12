@@ -18,8 +18,8 @@ namespace EasyPost {
             return request.restRequest;
         }
 
-        public Request(string resource, Method method = Method.GET) {
-            restRequest = new RestRequest(resource, method);
+        public Request(string IResource, Method method = Method.GET) {
+            restRequest = new RestRequest(IResource, method);
             restRequest.AddHeader("Accept", "application/json");
         }
 
@@ -113,8 +113,8 @@ namespace EasyPost {
 
         private void FlattenList(string parent, List<Tuple<string, string>> result, KeyValuePair<string, object> pair) {
             var index = 0;
-            foreach (IResource resource in pair.Value as IEnumerable) {
-                result.AddRange(FlattenParameters(resource.AsDictionary(), string.Concat(parent, "[", pair.Key, "][", index, "]")));
+            foreach (IResource IResource in pair.Value as IEnumerable) {
+                result.AddRange(FlattenParameters(IResource.AsDictionary(), string.Concat(parent, "[", pair.Key, "][", index, "]")));
                 index++;
             }
         }

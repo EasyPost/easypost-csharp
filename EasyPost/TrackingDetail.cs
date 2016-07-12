@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace EasyPost {
-    public class TrackingDetail : IResource {
+    public class TrackingDetail : Resource {
         public Nullable<DateTime> datetime { get; set; }
         public string message { get; set; }
         public string status { get; set; }

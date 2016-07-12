@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 
 namespace EasyPost {
-    public class CarrierAccount : IResource {
+    public class CarrierAccount : Resource {
         public string id { get; set; }
         public Nullable<DateTime> created_at { get; set; }
         public Nullable<DateTime> updated_at { get; set; }
@@ -70,7 +70,7 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
             request.AddBody(parameters, "carrier_account");
 
-            this.Merge(request.Execute<CarrierAccount>());
+            Merge(request.Execute<CarrierAccount>());
         }
     }
 }

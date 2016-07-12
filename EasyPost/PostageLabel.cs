@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace EasyPost {
-    public class PostageLabel : IResource {
+    public class PostageLabel : Resource {
         public string id { get; set; }
         public Nullable<DateTime> created_at { get; set; }
         public Nullable<DateTime> updated_at { get; set; }

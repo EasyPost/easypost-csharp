@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace EasyPost {
-    public class ScanFormList : IResource {
+    public class ScanFormList : Resource {
         public List<ScanForm> scanForms { get; set; }
         public bool has_more { get; set; }
 

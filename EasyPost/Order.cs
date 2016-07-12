@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 
 namespace EasyPost {
-    public class Order : IResource {
+    public class Order : Resource {
         public string id { get; set; }
         public Nullable<DateTime> created_at { get; set; }
         public Nullable<DateTime> updated_at { get; set; }
@@ -68,7 +68,7 @@ namespace EasyPost {
         public void Create() {
             if (id != null)
                 throw new ResourceAlreadyCreated();
-            this.Merge(sendCreate(this.AsDictionary()));
+            Merge(sendCreate(this.AsDictionary()));
         }
 
         private static Order sendCreate(Dictionary<string, object> parameters) {
@@ -88,7 +88,7 @@ namespace EasyPost {
             request.AddUrlSegment("id", id);
             request.AddBody(new List<Tuple<string, string>>() { new Tuple<string, string>("carrier", carrier), new Tuple<string, string>("service", service) });
 
-            this.Merge(request.Execute<Order>());
+            Merge(request.Execute<Order>());
         }
 
         /// <summary>

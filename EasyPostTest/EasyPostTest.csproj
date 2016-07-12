@@ -62,7 +62,9 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -70,6 +72,7 @@
     <Compile Include="AddressTest.cs" />
     <Compile Include="BatchTest.cs" />
     <Compile Include="ClientManagerTest.cs" />
+    <Compile Include="ResourceTest.cs" />
     <Compile Include="ScanFormTest.cs" />
     <Compile Include="ClientTest.cs" />
     <Compile Include="ClientConfigurationTest.cs" />
@@ -78,7 +81,6 @@
     <Compile Include="RequestTest.cs" />
     <Compile Include="CustomsInfoTest.cs" />
     <Compile Include="CustomsItemTest.cs" />
-    <Compile Include="ResourceExtenstionTest.cs" />
     <Compile Include="ParcelTest.cs" />
     <Compile Include="RateTest.cs" />
     <Compile Include="OrderTest.cs" />
