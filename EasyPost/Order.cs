@@ -11,7 +11,6 @@ namespace EasyPost {
         public string mode { get; set; }
         public string reference { get; set; }
         public bool? is_return { get; set; }
-        public Dictionary<string, string> options { get; set; }
         public List<Message> messages { get; set; }
         public Address from_address { get; set; }
         public Address return_address { get; set; }
@@ -45,7 +44,6 @@ namespace EasyPost {
         ///   * {"buyer_address", Dictionary<string, object>} See Address.Create for a list of valid keys.
         ///   * {"return_address", Dictionary<string, object>} See Address.Create for a list of valid keys.
         ///   * {"customs_info", Dictionary<string, object>} See CustomsInfo.Create for list of valid keys.
-        ///   * {"options", Dictionary<string, object>} See https://www.easypost.com/docs/api#shipments for list of options.
         ///   * {"is_return", bool}
         ///   * {"reference", string}
         ///   * {"shipments", IEnumerable<Shipment>} See Shipment.Create for list of valid keys.
