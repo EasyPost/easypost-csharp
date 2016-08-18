@@ -12,7 +12,7 @@ See NuGet docs for instructions on installing via the [dialog](http://docs.nuget
 
 ## Usage
 
-See the [docs](https://www.easypost.com/docs/api#addresses) for more information.
+See the [docs](https://www.easypost.com/docs/api) for more information.
 
 If you are operating with a single EasyPost API key, during the initialization of your application add the following to configure EasyPost.
 
