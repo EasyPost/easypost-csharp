@@ -1,6 +1,5 @@
 ﻿using EasyPost;
 
-using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -74,13 +73,15 @@ namespace EasyPostTest {
                 to_address = Address.Create(toAddress),
                 from_address = Address.Create(fromAddress),
                 reference = "OrderRef",
-                shipments = shipments.Select(shipment => Shipment.Create(shipment)).ToList()
+                shipments = shipments.Select(shipment => Shipment.Create(shipment)).ToList(),
+                carrier_accounts = new List<CarrierAccount>() { new CarrierAccount() { id = "ca_qn6QC6fd" } }
             };
 
             order.Create();
 
             Assert.IsNotNull(order.id);
             Assert.AreEqual(order.reference, "OrderRef");
+            CollectionAssert.AreEqual(new HashSet<string>(order.shipments.SelectMany(s => s.rates).Select(r => r.carrier_account_id)).ToList(), new List<string>() { "ca_qn6QC6fd" });
         }
 
         [TestMethod]
@@ -98,8 +99,7 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestOrderCarrierAccounts()
-        {
+        public void TestOrderCarrierAccounts() {
             Dictionary<string, object> carrierAccounts = new Dictionary<string, object>() { { "id", "ca_qn6QC6fd" } };
             parameters.Add("carrier_accounts", carrierAccounts);
             Order order = Order.Create(parameters);

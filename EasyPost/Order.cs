@@ -18,6 +18,7 @@ namespace EasyPost {
         public Address buyer_address { get; set; }
         public CustomsInfo customs_info { get; set; }
         public List<Shipment> shipments { get; set; }
+        public List<CarrierAccount> carrier_accounts { get; set; }
         public List<Rate> rates { get; set; }
         public List<Container> containers { get; set; }
         public List<Item> items { get; set; }
@@ -47,6 +48,7 @@ namespace EasyPost {
         ///   * {"is_return", bool}
         ///   * {"reference", string}
         ///   * {"shipments", IEnumerable<Shipment>} See Shipment.Create for list of valid keys.
+        ///   * {"carrier_accounts", IEnumerable<CarrierAccount>}
         ///   * {"containers", IEnumerable<Container>} See Container.Create for list of valid keys.
         ///   * {"items", IEnumerable<Item>} See Item.Create for list of valid keys.
         /// All invalid keys will be ignored.
