@@ -20,6 +20,7 @@ namespace EasyPost {
         public string secondary_recharge_amount { get; set; }
         public string recharge_threshold { get; set; }
         public List<User> children { get; set; }
+        public List<ApiKey> api_keys { get; set; }
 
         /// <summary>
         /// Retrieve a User from its id. If no id is specified, it returns the user for the api_key specified.

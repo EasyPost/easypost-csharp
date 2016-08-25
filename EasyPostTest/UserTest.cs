@@ -23,6 +23,7 @@ namespace EasyPostTest {
         [TestMethod]
         public void TestCreateAndUpdate() {
             User user = User.Create(new Dictionary<string, object>() { { "name", "Test Name" } });
+            Assert.AreEqual(user.api_keys.Count, 2);
 
             Assert.IsNotNull(user.id);
 

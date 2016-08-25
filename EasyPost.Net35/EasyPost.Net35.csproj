@@ -49,6 +49,9 @@
     <Compile Include="..\EasyPost\Address.cs">
       <Link>Address.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\ApiKey.cs">
+      <Link>ApiKey.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\Batch.cs">
       <Link>Batch.cs</Link>
     </Compile>
