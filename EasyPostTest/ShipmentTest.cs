@@ -15,7 +15,7 @@ namespace EasyPostTest {
             ClientManager.SetCurrent("cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi");
 
             toAddress = new Dictionary<string, object>() {
-                {"company", "Simpler Postage Inc" },
+                { "company", "Simpler Postage Inc" },
                 { "street1", "164 Townsend Street" },
                 { "street2", "Unit 1" },
                 { "city", "San Francisco" },
@@ -24,10 +24,10 @@ namespace EasyPostTest {
                 { "zip", "94107" }
             };
             fromAddress = new Dictionary<string, object>() {
-                {"name", "Andrew Tribone" },
+                { "name", "Andrew Tribone" },
                 { "street1", "480 Fell St" },
                 { "street2", "#3" },
-                {"city", "San Francisco" },
+                { "city", "San Francisco" },
                 { "state", "CA" },
                 { "country", "US" },
                 { "zip", "94102" }
@@ -54,11 +54,30 @@ namespace EasyPostTest {
         }
 
         private Shipment CreateShipmentResource() {
-            Address to = Address.Create(toAddress);
-            Address from = Address.Create(fromAddress);
-            Parcel parcel = Parcel.Create(new Dictionary<string, object>() {
-                {"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}
-            });
+            Address to = new Address() {
+                company = "Simpler Postage Inc",
+                street1 = "164 Townsend Street",
+                street2 = "Unit 1",
+                city = "San Francisco",
+                state = "CA",
+                country = "US",
+                zip = "94107"
+            };
+            Address from = new Address() {
+                name = "Andrew Tribone",
+                street1 = "480 Fell St",
+                street2 = "#3",
+                city = "San Francisco",
+                state = "CA",
+                country = "US",
+                zip = "94102"
+            };
+            Parcel parcel = new Parcel() {
+                length = 8,
+                width = 6,
+                height = 5,
+                weight = 10
+            };
             CustomsItem item = new CustomsItem() { description = "description" };
             CustomsInfo info = new CustomsInfo() {
                 customs_certify = "TRUE",
@@ -111,8 +130,12 @@ namespace EasyPostTest {
         [TestMethod]
         public void TestRateErrorMessages() {
             parameters = new Dictionary<string, object>() {
-                {"parcel", new Dictionary<string, object>() {{"predefined_package", "FEDEXBOX"}, {"weight", 10}}},
-                {"to_address", toAddress}, {"from_address", fromAddress}
+                { "to_address", toAddress },
+                { "from_address", fromAddress },
+                { "parcel", new Dictionary<string, object>() {
+                    { "weight", 10 },
+                    { "predefined_package", "FEDEXBOX" }
+                } }
             };
             Shipment shipment = Shipment.Create(parameters);
 
@@ -211,7 +234,10 @@ namespace EasyPostTest {
             Address to = Address.Create(toAddress);
             Address from = Address.Create(fromAddress);
             Parcel parcel = Parcel.Create(new Dictionary<string, object>() {
-                {"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}
+                { "length", 8 },
+                { "width", 6 },
+                { "height", 5 },
+                { "weight", 10 }
             });
             CustomsItem item = new CustomsItem() { description = "description" };
             CustomsInfo info = new CustomsInfo() {
