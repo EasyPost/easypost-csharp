@@ -12,7 +12,7 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestRetrieve() {
+        public void TestRetrieveSelf() {
             User user = User.Retrieve();
             Assert.IsNotNull(user.id);
 
@@ -21,14 +21,22 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestCreateAndUpdate() {
+        public void TestCRUD() {
             User user = User.Create(new Dictionary<string, object>() { { "name", "Test Name" } });
             Assert.AreEqual(user.api_keys.Count, 2);
-
             Assert.IsNotNull(user.id);
+
+            User other = User.Retrieve(user.id);
+            Assert.AreEqual(user.id, other.id);
 
             user.Update(new Dictionary<string, object>() { { "name", "NewTest Name" } });
             Assert.AreEqual("NewTest Name", user.name);
+
+            user.Destroy();
+            try {
+                User.Retrieve(user.id);
+                Assert.Fail();
+            } catch (HttpException) { }
         }
     }
 }
