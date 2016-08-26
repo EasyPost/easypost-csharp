@@ -8,6 +8,7 @@ namespace EasyPost {
         public string id { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
+        public string type { get; set; }
         public string description { get; set; }
         public string reference { get; set; }
         public string readable { get; set; }

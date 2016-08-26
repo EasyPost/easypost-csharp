@@ -28,11 +28,17 @@ namespace EasyPostTest {
             });
 
             Assert.IsNotNull(account.id);
+            Assert.AreEqual(account.type, "EndiciaAccount");
 
             account.Update(new Dictionary<string, object>() { { "reference", "new-reference" } });
             Assert.AreEqual("new-reference", account.reference);
 
             account.Destroy();
+            try {
+                CarrierAccount.Retrieve(account.id);
+                Assert.Fail();
+            }
+            catch (HttpException) { }
         }
 
         [TestMethod]
