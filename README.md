@@ -112,6 +112,8 @@ Shipment shipment = new Shipment() {
     parcel = parcel
 };
 
+shipment.Create();
+
 foreach (Rate rate in shipment.rates) {
     // process rates
 }
