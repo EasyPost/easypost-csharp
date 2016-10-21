@@ -4,7 +4,7 @@ EasyPost is a simple shipping API. You can sign up for an account at https://eas
 
 ## Documentation
 
-Up-to-date documentation at: https://www.easypost.com/docs/api/c-sharp
+Up-to-date documentation at: https://www.easypost.com/docs/api/csharp
 
 ## Installation
 
@@ -41,9 +41,9 @@ using EasyPost;
 ClientManager.SetCurrent(() => new Client(new ClientConfiguration("yourApiKeyHere")));
 ```
 
-### [Address Verification](https://www.easypost.com/docs/api/c-sharp#create-and-verify-addresses)
+### [Address Verification](https://www.easypost.com/docs/api/csharp#create-and-verify-addresses)
 
-An `Address` can be verified using one or many verifications [methods](https://www.easypost.com/docs/api/c-sharp#verifications-object). If `Address` is created without strict verifications the object will still be created, otherwise an `HttpException` will be raised.
+An `Address` can be verified using one or many verifications [methods](https://www.easypost.com/docs/api/csharp#verifications-object). If `Address` is created without strict verifications the object will still be created, otherwise an `HttpException` will be raised.
 
 ```cs
 using EasyPost;
@@ -91,7 +91,7 @@ try {
 // successful verification
 ```
 
-### [Rating](https://www.easypost.com/docs/api/c-sharp#rates)
+### [Rating](https://www.easypost.com/docs/api/csharp#rates)
 
 Rating is available through the `Shipment` object. Since we do not charge for rating there are rate limits for this action if you do not eventually purchase the `Shipment`. Please contact us at support@easypost.com if you have any questions.
 
@@ -119,7 +119,7 @@ foreach (Rate rate in shipment.rates) {
 }
 ```
 
-### [Postage Label](https://www.easypost.com/docs/api/c-sharp#buy-a-shipment) Generation
+### [Postage Label](https://www.easypost.com/docs/api/csharp#buy-a-shipment) Generation
 
 Purchasing a shipment will generate a `PostageLabel` and any customs `Form`s that are needed for shipping.
 
@@ -173,7 +173,7 @@ foreach (Form form in shipment.forms) {
 
 ### Asynchronous Batch Processing
 
-The `Batch` object allows you to perform operations on multiple `Shipment`s at once. This includes scheduling a `Pickup`, creating a `ScanForm` and consolidating labels. Operations performed on a `Batch` are asynchronous and take advantage of our [webhoook](https://www.easypost.com/docs/api/c-sharp#events) infrastructure.
+The `Batch` object allows you to perform operations on multiple `Shipment`s at once. This includes scheduling a `Pickup`, creating a `ScanForm` and consolidating labels. Operations performed on a `Batch` are asynchronous and take advantage of our [webhoook](https://www.easypost.com/docs/api/csharp#events) infrastructure.
 
 ```cs
 using EasyPost;
@@ -191,7 +191,7 @@ Batch batch = Batch.CreateAndBuy(new Dictionary<string, object>() {
 });
 ```
 
-This will produce two webhooks. One `batch.created` and one `batch.updated`. Process each `Batch` [state](https://www.easypost.com/docs/api/c-sharp#batch-object) according to your business logic.
+This will produce two webhooks. One `batch.created` and one `batch.updated`. Process each `Batch` [state](https://www.easypost.com/docs/api/csharp#batch-object) according to your business logic.
 
 ```cs
 using EasyPost;
