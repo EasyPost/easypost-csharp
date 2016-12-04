@@ -13,6 +13,7 @@ namespace EasyPost {
         public string mode { get; set; }
         public string status { get; set; }
         public string message { get; set; }
+        public string batch_id { get; set; }
 
         /// <summary>
         /// Get a paginated list of scan forms.

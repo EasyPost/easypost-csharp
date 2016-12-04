@@ -20,6 +20,7 @@ namespace EasyPost {
         public string commercial_invoice_size { get; set; }
         public string cost_center { get; set; }
         public string currency { get; set; }
+        public string customs_broker_address_id { get; set; }
         public double? declared_value { get; set; }
         public bool? delivered_duty_paid { get; set; }
         public string delivery_confirmation { get; set; }
@@ -34,6 +35,7 @@ namespace EasyPost {
         public string hazmat { get; set; }
         public bool? hold_for_pickup { get; set; }
         public string image_format { get; set; }
+        public string incoterm { get; set; }
         public string invoice_number { get; set; }
         public DateTime? label_date { get; set; }
         public string label_format { get; set; }
