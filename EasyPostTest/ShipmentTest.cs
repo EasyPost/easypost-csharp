@@ -140,9 +140,9 @@ namespace EasyPostTest {
             Shipment shipment = Shipment.Create(parameters);
 
             Assert.IsNotNull(shipment.id);
-            Assert.AreEqual(shipment.messages[0].carrier, "USPS");
+            Assert.AreEqual(shipment.messages[0].carrier, "UPS");
             Assert.AreEqual(shipment.messages[0].type, "rate_error");
-            Assert.AreEqual(shipment.messages[0].message, "Unable to retrieve USPS rates for another carrier's predefined_package parcel type.");
+            Assert.AreEqual(shipment.messages[0].message, "Unable to retrieve UPS rates for another carrier's predefined_package parcel type.");
         }
 
         [TestMethod]

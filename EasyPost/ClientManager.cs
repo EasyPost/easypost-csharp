@@ -8,6 +8,8 @@ namespace EasyPost {
         private static Func<Client> getCurrent;
 
         internal static Client Build() {
+            if (getCurrent == null)
+                throw new ClientNotConfigured();
             return getCurrent();
         }
 

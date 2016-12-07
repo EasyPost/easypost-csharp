@@ -15,7 +15,9 @@ namespace EasyPost {
         public string tracking_code { get; set; }
         public string signed_by { get; set; }
         public double? weight { get; set; }
+        public string public_url { get; set; }
         public List<TrackingDetail> tracking_details { get; set; }
+        public CarrierDetail carrier_detail { get; set; }
 
         /// <summary>
         /// Get a paginated list of trackers.
