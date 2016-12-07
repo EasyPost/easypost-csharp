@@ -13,4 +13,6 @@ namespace EasyPost {
     }
 
     public class ResourceAlreadyCreated : Exception { }
+
+    public class ClientNotConfigured : Exception { }
 }

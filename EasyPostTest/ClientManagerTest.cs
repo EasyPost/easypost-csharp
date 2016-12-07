@@ -5,6 +5,12 @@ namespace EasyPostTest {
     [TestClass]
     public class ClientManagerTest {
         [TestMethod]
+        [ExpectedException(typeof(ClientNotConfigured))]
+        public void TestNotConfigured() {
+            ClientManager.Build();
+        }
+
+        [TestMethod]
         public void TestApiKey() {
             ClientManager.SetCurrent("apiKey");
             Client client = ClientManager.Build();
