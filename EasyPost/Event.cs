@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using RestSharp;
+
 namespace EasyPost {
     public class Event : Resource {
         public string id { get; set; }
@@ -13,5 +15,26 @@ namespace EasyPost {
         public List<string> pending_urls { get; set; }
         public List<string> completed_urls { get; set; }
         public string status { get; set; }
+
+        /// <summary>
+        /// Resend the last Event for a specific EasyPost object.
+        /// </summary>
+        /// <param name="id">String representing an EasyPost object.</param>
+        public static void Create(string id) {
+            Request request = new Request("events", Method.POST);
+            request.AddQueryString(new Dictionary<string, object>() { { "result_id", id } });
+        }
+
+        /// <summary>
+        /// Retrieve a Event from its id.
+        /// </summary>
+        /// <param name="id">String representing a Event. Starts with "evt_".</param>
+        /// <returns>EasyPost.Event instance.</returns>
+        public static Event Retrieve(string id) {
+            Request request = new Request("events/{id}");
+            request.AddUrlSegment("id", id);
+
+            return request.Execute<Event>();
+        }
     }
 }
