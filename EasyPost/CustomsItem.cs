@@ -14,7 +14,7 @@ namespace EasyPost {
         public int quantity { get; set; }
         public double value { get; set; }
         public double weight { get; set; }
-	public string code { get; set; }
+        public string code { get; set; }
         public string mode { get; set; }
         public string currency { get; set; }
 
