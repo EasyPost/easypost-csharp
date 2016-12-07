@@ -12,7 +12,7 @@ namespace EasyPost {
         public string state { get; set; }
         public int num_shipments { get; set; }
         public string reference { get; set; }
-        public List<Shipment> shipments { get; set; }
+        public List<BatchShipment> shipments { get; set; }
         public Dictionary<string, int> status { get; set; }
         public ScanForm scan_form { get; set; }
         public string label_url { get; set; }
