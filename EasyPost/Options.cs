@@ -13,6 +13,8 @@ namespace EasyPost {
         public bool? by_drone { get; set; }
         public bool? carbon_neutral { get; set; }
         public string carrier_insurance_amount { get; set; }
+        public string carrier_notification_email { get; set; }
+        public string carrier_notification_sms { get; set; }
         public string cod_address_id { get; set; }
         public string cod_amount { get; set; }
         public string cod_method { get; set; }
