@@ -129,6 +129,9 @@
     <Compile Include="..\EasyPost\Report.cs">
       <Link>Report.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\ReportList.cs">
+      <Link>ReportList.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\Resource.cs">
       <Link>Resource.cs</Link>
     </Compile>

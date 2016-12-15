@@ -25,5 +25,14 @@ namespace EasyPostTest {
             Report retrieved = Report.Retrieve("shipment", report.id);
             Assert.AreEqual(report.id, retrieved.id);
         }
+
+        [TestMethod]
+        public void TestList() {
+            ReportList reportList = Report.List("shipment");
+            Assert.AreNotEqual(0, reportList.reports.Count);
+
+            ReportList nextReportList = reportList.Next();
+            Assert.AreNotEqual(reportList.reports[0].id, nextReportList.reports[0].id);
+        }
     }
 }

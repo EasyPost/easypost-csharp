@@ -42,13 +42,35 @@ namespace EasyPost {
         /// </param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         public static Report Create(string type, Dictionary<string, object> parameters = null) {
-            parameters = parameters ?? new Dictionary<string, object>();
-
             Request request = new Request("reports/{type}", Method.POST);
             request.AddUrlSegment("type", type);
-            request.AddQueryString(parameters);
+            request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
             return request.Execute<Report>();
+        }
+
+        /// <summary>
+        /// Get a paginated list of reports.
+        /// </summary>
+        /// Optional dictionary containing parameters to filter the list with. Valid pairs:
+        ///   * {"before_id", string} String representing a Report ID. Only retrieve ScanForms created before this id. Takes precedence over after_id.
+        ///   * {"after_id", string} String representing a Report ID. Only retrieve ScanForms created after this id.
+        ///   * {"start_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created after this datetime.
+        ///   * {"end_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created before this datetime.
+        ///   * {"page_size", int} Max size of list. Default to 20.
+        /// All invalid keys will be ignored.
+        /// <param name="parameters">
+        /// </param>
+        /// <returns>Instance of EasyPost.ScanForm</returns>
+        public static ReportList List(string type, Dictionary<string, object> parameters = null) {
+            Request request = new Request("reports/{type}");
+            request.AddUrlSegment("type", type);
+            request.AddQueryString(parameters ?? new Dictionary<string, object>());
+
+            ReportList reportList = request.Execute<ReportList>();
+            reportList.filters = parameters;
+            reportList.type = type;
+            return reportList;
         }
     }
 }
