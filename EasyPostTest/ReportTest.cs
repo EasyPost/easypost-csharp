@@ -16,7 +16,8 @@ namespace EasyPostTest {
         public void TestCreateAndRetrieve() {
             Dictionary<string, object> parameters = new Dictionary<string, object>() {
                 { "include_children", true },
-                { "end_date", "2016-06-01" }
+                // Unfortunately, this can only be run once a day. If you need to test more than that change the date here.
+                //{ "end_date", "2016-06-01" }
             };
             Report report = Report.Create("shipment", parameters);
             Assert.IsNotNull(report.id);
