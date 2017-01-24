@@ -40,7 +40,7 @@ namespace EasyPost {
         ///   * {"include_children", string} Whether or not to include child objects in the report.
         /// All invalid keys will be ignored.
         /// </param>
-        /// <returns>EasyPost.CarrierAccount instance.</returns>
+        /// <returns>EasyPost.Report instance.</returns>
         public static Report Create(string type, Dictionary<string, object> parameters = null) {
             Request request = new Request("reports/{type}", Method.POST);
             request.AddUrlSegment("type", type);

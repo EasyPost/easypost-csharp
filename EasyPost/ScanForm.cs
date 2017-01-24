@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using RestSharp;
+
 namespace EasyPost {
     public class ScanForm : Resource {
         public string id { get; set; }
@@ -35,6 +37,34 @@ namespace EasyPost {
             ScanFormList scanFormList = request.Execute<ScanFormList>();
             scanFormList.filters = parameters;
             return scanFormList;
+        }
+
+        /// <summary>
+        /// Create a ScanForm.
+        /// </summary>
+        /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
+        /// <returns>EasyPost.ScanForm instance.</returns>
+        public static ScanForm Create(List<Shipment> shipments) {
+            Dictionary<string, object> parameters = new Dictionary<string, object> {
+                { "shipments", shipments }
+            };
+
+            Request request = new Request("scan_forms", Method.POST);
+            request.AddBody(parameters, "scan_form");
+
+            return request.Execute<ScanForm>();
+        }
+
+        /// <summary>
+        /// Retrieve a ScanForm from its id.
+        /// </summary>
+        /// <param name="id">String representing a scan form, starts with "sf_".</param>
+        /// <returns>EasyPost.ScanForm instance.</returns>
+        public static ScanForm Retrieve(string id) {
+            Request request = new Request("scan_forms/{id}");
+            request.AddUrlSegment("id", id);
+
+            return request.Execute<ScanForm>();
         }
     }
 }
