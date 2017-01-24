@@ -100,6 +100,8 @@
     <Compile Include="User.cs" />
     <Compile Include="Verification.cs" />
     <Compile Include="Verifications.cs" />
+    <Compile Include="Webhook.cs" />
+    <Compile Include="WebhookList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Rate.cs" />

@@ -91,6 +91,7 @@
     <Compile Include="CarrierTypeTest.cs" />
     <Compile Include="ReportTest.cs" />
     <Compile Include="UserTest.cs" />
+    <Compile Include="WebhookTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="EasyPost.pfx" />

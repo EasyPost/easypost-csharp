@@ -181,6 +181,12 @@
     <Compile Include="..\EasyPost\Verifications.cs">
       <Link>Verifications.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\Webhook.cs">
+      <Link>Webhook.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\WebhookList.cs">
+      <Link>WebhookList.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\Error.cs">
       <Link>Error.cs</Link>
     </Compile>
