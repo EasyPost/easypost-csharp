@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
+using System.Threading;
 
 namespace EasyPost {
     public class Client {
@@ -20,6 +21,7 @@ namespace EasyPost {
             configuration = clientConfiguration;
 
             client = new RestClient(clientConfiguration.ApiBase);
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
