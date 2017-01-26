@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace EasyPost {
@@ -104,6 +105,12 @@ namespace EasyPost {
                     }
                 } else if (pair.Value is DateTime) {
                     result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), ((DateTime)pair.Value).ToLocalTime().ToString("yyyy-MM-ddTHH:mm:sszzz")));
+                } else if (pair.Value is decimal) {
+                    result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), ((decimal)pair.Value).ToString(CultureInfo.InvariantCulture)));
+                } else if (pair.Value is double) {
+                    result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), ((double)pair.Value).ToString(CultureInfo.InvariantCulture)));
+                } else if (pair.Value is float) {
+                    result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), ((float)pair.Value).ToString(CultureInfo.InvariantCulture)));
                 } else if (pair.Value != null) {
                     result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), pair.Value.ToString()));
                 }
