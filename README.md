@@ -156,7 +156,7 @@ Shipment shipment = new Shipment() {
     to_address = toAddress,
     parcel = parcel,
     customs_info = info,
-    optoins = options
+    options = options
 };
 
 shipment.Buy(shipment.LowestRate(
