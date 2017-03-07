@@ -66,5 +66,6 @@ namespace EasyPost {
         public string parties_to_transaction_are_related { get; set; }
         public string import_state_tax_id { get; set; }
         public string import_federal_tax_id { get; set; }
+        public string customs_include_shipping { get; set; }
     }
 }
