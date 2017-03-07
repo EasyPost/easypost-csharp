@@ -107,11 +107,11 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestOptions() {
-            String tomorrow = DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm:sszzz");
+            String tomorrow = DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm:ssZ");
             ((Dictionary<string, object>)parameters["options"])["label_date"] = tomorrow;
             Shipment shipment = Shipment.Create(parameters);
 
-            Assert.AreEqual(((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:sszzz"), tomorrow);
+            Assert.AreEqual(((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:ssZ"), tomorrow);
         }
 
         [TestMethod]
@@ -124,7 +124,7 @@ namespace EasyPostTest {
             };
             shipment.Create();
 
-            Assert.AreEqual(((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:sszzz"), tomorrow.ToString("yyyy-MM-ddTHH:mm:sszzz"));
+            Assert.AreEqual(((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:ssZ"), tomorrow.ToString("yyyy-MM-ddTHH:mm:ssZ"));
         }
 
         [TestMethod]

@@ -103,7 +103,7 @@ namespace EasyPost {
                         result.AddRange(FlattenParameters(list[i], string.Concat(parent, "[", pair.Key, "][", i, "]")));
                     }
                 } else if (pair.Value is DateTime) {
-                    result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), Convert.ToString(((DateTime)pair.Value).ToString("yyyy-MM-ddTHH:mm:ssZZZ"))));
+                    result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), Convert.ToString(((DateTime)pair.Value).ToString("yyyy-MM-ddTHH:mm:ssZ"))));
                 } else if (pair.Value != null) {
                     result.Add(new Tuple<string, string>(string.Concat(parent, "[", pair.Key, "]"), pair.Value.ToString()));
                 }
