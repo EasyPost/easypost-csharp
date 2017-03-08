@@ -85,6 +85,7 @@
     <Compile Include="ParcelTest.cs" />
     <Compile Include="RateTest.cs" />
     <Compile Include="OrderTest.cs" />
+    <Compile Include="SecurityTest.cs" />
     <Compile Include="ShipmentTest.cs" />
     <Compile Include="TrackerTest.cs" />
     <Compile Include="CarrierAccountTest.cs" />

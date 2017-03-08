@@ -62,5 +62,10 @@ namespace EasyPost {
         public string smartpost_hub { get; set; }
         public string smartpost_manifest { get; set; }
         public string special_rates_eligibility { get; set; }
+        public string commercial_invoice_signature { get; set; }
+        public string parties_to_transaction_are_related { get; set; }
+        public string import_state_tax_id { get; set; }
+        public string import_federal_tax_id { get; set; }
+        public string customs_include_shipping { get; set; }
     }
 }
