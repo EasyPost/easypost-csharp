@@ -21,6 +21,7 @@ namespace EasyPost {
         public bool? residential { get; set; }
         public string federal_tax_id { get; set; }
         public string state_tax_id { get; set; }
+        public string carrier_facility { get; set; }
         public List<string> verify { get; set; }
         public List<string> verify_strict { get; set; }
         public string mode { get; set; }
