@@ -59,7 +59,7 @@ Address address = new Address() {
     verify = new List<string>() { "delivery" }
 };
 
-Address address = address.Create();
+address.Create();
 
 if (address.verifications.delivery.success) {
     // successful verification
