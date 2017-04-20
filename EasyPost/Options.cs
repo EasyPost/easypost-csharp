@@ -68,5 +68,6 @@ namespace EasyPost {
         public string import_federal_tax_id { get; set; }
         public string customs_include_shipping { get; set; }
         public string importer_address_id { get; set; }
+        public string endorsement { get; set; }
     }
 }
