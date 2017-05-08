@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 
 // Make "private" methods testable.
-[assembly: InternalsVisibleTo("EasyPostTest, PublicKey=0024000004800000940000000602000000240000525341310004000001000100fd0773e2410e7775bdb1dcdf4f18bde613db939e4687094c4e35da5c25e029fce5a0598f03ace975f005b002f1e56d42bc00e2c54aa41cc416da712620013b3a35ab016f1ad5382e4742cc725434129b0acb8c8f7c900609d2c65bf00998a9b0c8576299f0efa0d8d8b742b035cdcaf916ea12234fec67273bd4753677a3ccae")]
+[assembly: InternalsVisibleTo("EasyPostTest")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
