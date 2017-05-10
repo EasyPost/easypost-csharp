@@ -12,8 +12,26 @@
     <description>EasyPost Shipping API Client Library for .NET https://easypost.com/docs</description>
     <tags>EasyPost ShippingAPI USPS UPS FedEx</tags>
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="9.0.1" />
-      <dependency id="RestSharp" version="105.2.3" />
+       <group targetFramework="net45" >
+         <dependency id="Newtonsoft.Json" version="9.0.1" />
+         <dependency id="RestSharpSigned" version="105.2.3" />
+       </group>
+       <group targetFramework="net40">
+         <dependency id="Newtonsoft.Json" version="9.0.1" />
+         <dependency id="RestSharpSigned" version="105.2.3" />
+       </group>
+       <group targetFramework="net35" >
+         <dependency id="Newtonsoft.Json" version="9.0.1" />
+         <dependency id="RestSharpSigned" version="105.2.3" />
+       </group>
     </dependencies>
   </metadata>
+  <files>
+     <file src="lib\net45\EasyPost.dll" target="lib\net45" />
+     <file src="lib\net45\EasyPost.xml" target="lib\net45" />
+     <file src="lib\net40\EasyPost.Net40.dll" target="lib\net40" />
+     <file src="lib\net40\EasyPost.Net40.xml" target="lib\net40" />
+     <file src="lib\net35\EasyPost.Net35.dll" target="lib\net35" />
+     <file src="lib\net35\EasyPost.Net35.xml" target="lib\net35" />
+  </files>
 </package>
