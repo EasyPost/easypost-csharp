@@ -160,8 +160,8 @@ Shipment shipment = new Shipment() {
 };
 
 shipment.Buy(shipment.LowestRate(
-    includeServices: new List<Service>() { Service.Priority },
-    excludeCarriers: new List<Carrier>() { Carrier.USPS }
+    includeServices: new List<string>() { "Priority" },
+    excludeCarriers: new List<string>() { "USPS" }
 ));
 
 shipment.postage_label.url; // https://easypost-files.s3-us-west-2.amazonaws.com/files/postage_label/20160826/8e77c397d47b4d088f1c684b7acd802a.png
