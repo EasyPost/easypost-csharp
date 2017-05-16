@@ -175,6 +175,8 @@ namespace EasyPostTest {
 
             shipment.Buy(shipment.rates[0]);
             Assert.IsNotNull(shipment.postage_label);
+            Assert.AreNotEqual(shipment.fees.Count, 0);
+            CollectionAssert.AllItemsAreNotNull(shipment.fees.Select(f => f.type).ToList());
 
             shipment.Insure(100.1);
             Assert.AreNotEqual(shipment.insurance, 100.1);
