@@ -1,0 +1,637 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EasyPost</name>
+    </assembly>
+    <members>
+        <member name="M:EasyPost.Address.Retrieve(System.String)">
+            <summary>
+            Retrieve an Address from its id.
+            </summary>
+            <param name="id">String representing an Address. Starts with "adr_".</param>
+            <returns>EasyPost.Address instance.</returns>
+        </member>
+        <member name="M:EasyPost.Address.Create(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Create an Address.
+            </summary>
+            <param name="parameters">
+            Optional dictionary containing parameters to create the address with. Valid pairs:
+              * {"name", string}
+              * {"company", string}
+              * {"stree1", string}
+              * {"street2", string}
+              * {"city", string}
+              * {"state", string}
+              * {"zip", string}
+              * {"country", string}
+              * {"phone", string}
+              * {"email", string}
+            All invalid keys will be ignored.
+            </param>
+            <param name="verifications">
+            A list of verifications to perform on the address.
+            Possible items are "delivery" and "zip4".
+            </param>
+            <param name="strict_verifications">
+            A list of verifications to perform on the address.
+            Will cause an HttpException to be raised if unsucessful.
+            Possible items are "delivery" and "zip4".
+            </param>
+            <returns>EasyPost.Address instance.</returns>
+        </member>
+        <member name="M:EasyPost.Address.Create">
+            <summary>
+            Create this Address.
+            </summary>
+            <exception cref="T:EasyPost.ResourceAlreadyCreated">Address already has an id.</exception>
+        </member>
+        <member name="M:EasyPost.Address.Create(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+            <summary>
+            Create this Address.
+            </summary>
+            <param name="verifications">
+            A list of verifications to perform on the address.
+            Possible items are "delivery" and "zip4".
+            </param>
+            <param name="strict_verifications">
+            A list of verifications to perform on the address.
+            Will cause an HttpException to be raised if unsucessful.
+            Possible items are "delivery" and "zip4".
+            </param>
+            <exception cref="T:EasyPost.ResourceAlreadyCreated">Address already has an id.</exception>
+        </member>
+        <member name="M:EasyPost.Address.Verify(System.String)">
+            <summary>
+            Verify an address.
+            </summary>
+            <returns>EasyPost.Address instance. Check message for verification failures.</returns>
+        </member>
+        <member name="M:EasyPost.Address.CreateAndVerify(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Create and verify an Address.
+            </summary>
+            <param name="parameters">
+            Optional dictionary containing parameters to create the address with. Valid pairs:
+              * {"name", string}
+              * {"company", string}
+              * {"stree1", string}
+              * {"street2", string}
+              * {"city", string}
+              * {"state", string}
+              * {"zip", string}
+              * {"country", string}
+              * {"phone", string}
+              * {"email", string}
+            All invalid keys will be ignored.
+            </param>
+        </member>
+        <member name="M:EasyPost.Batch.Retrieve(System.String)">
+            <summary>
+            Retrieve a Batch from its id.
+            </summary>
+            <param name="id">String representing a Batch. Starts with "batch_".</param>
+            <returns>EasyPost.Batch instance.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EasyPost.Batch.Create(System.Collections.Generic.Dictionary{System.String,System.Object})" -->
+        <member name="M:EasyPost.Batch.AddShipments(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Add shipments to the batch.
+            </summary>
+            <param name="shipmentIds">List of shipment ids to be added.</param>
+        </member>
+        <member name="M:EasyPost.Batch.AddShipments(System.Collections.Generic.IEnumerable{EasyPost.Shipment})">
+            <summary>
+            Add shipments to the batch.
+            </summary>
+            <param name="shipments">List of Shipment objects to be added.</param>
+        </member>
+        <member name="M:EasyPost.Batch.RemoveShipments(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Remove shipments from the batch.
+            </summary>
+            <param name="shipmentIds">List of shipment ids to be removed.</param>
+        </member>
+        <member name="M:EasyPost.Batch.RemoveShipments(System.Collections.Generic.IEnumerable{EasyPost.Shipment})">
+            <summary>
+            Remove shipments from the batch.
+            </summary>
+            <param name="shipments">List of Shipment objects to be removed.</param>
+        </member>
+        <member name="M:EasyPost.Batch.Buy">
+            <summary>
+            Purchase all shipments within a batch. The Batch's state must be "created" before purchasing.
+            </summary>
+        </member>
+        <member name="M:EasyPost.Batch.GenerateLabel(System.String,System.String)">
+            <summary>
+            Asynchronously generate a label containing all of the Shimpent labels belonging to the batch.
+            </summary>
+            <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
+            <param name="orderBy">Optional parameter to order the generated label. Ex: "reference DESC"</param>
+        </member>
+        <member name="M:EasyPost.Batch.GenerateScanForm">
+            <summary>
+            Asychronously generate a scan from for the batch.
+            </summary>
+        </member>
+        <member name="M:EasyPost.CarrierAccount.Retrieve(System.String)">
+            <summary>
+            Retrieve a CarrierAccount from its id.
+            </summary>
+            <param name="id">String representing a carrier account. Starts with "ca_".</param>
+            <returns>EasyPost.CarrierAccount instance.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EasyPost.CarrierAccount.Create(System.Collections.Generic.Dictionary{System.String,System.Object})" -->
+        <member name="M:EasyPost.CarrierAccount.Destroy">
+            <summary>
+            Remove this CarrierAccount from your account.
+            </summary>
+        </member>
+        <member name="M:EasyPost.CarrierAccount.Update(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Update this CarrierAccount.
+            </summary>
+            <param name="parameters">See CarrierAccount.Create for more details.</param>
+        </member>
+        <member name="M:EasyPost.Event.Create(System.String)">
+            <summary>
+            Resend the last Event for a specific EasyPost object.
+            </summary>
+            <param name="id">String representing an EasyPost object.</param>
+        </member>
+        <member name="M:EasyPost.Event.Retrieve(System.String)">
+            <summary>
+            Retrieve a Event from its id.
+            </summary>
+            <param name="id">String representing a Event. Starts with "evt_".</param>
+            <returns>EasyPost.Event instance.</returns>
+        </member>
+        <member name="T:EasyPost.ClientConfiguration">
+            <summary>
+            Provides configuration options for the REST client
+            </summary>
+        </member>
+        <member name="P:EasyPost.ClientConfiguration.ApiKey">
+            <summary>
+            The API key to use on per-request basis
+            </summary>
+        </member>
+        <member name="P:EasyPost.ClientConfiguration.ApiBase">
+            <summary>
+            The API base URI to use on a per-request basis
+            </summary>
+        </member>
+        <member name="M:EasyPost.ClientConfiguration.#ctor(System.String)">
+            <summary>
+            Create a ClientConfiguration instance
+            </summary>
+            <param name="apiKey">The API key to use for the client connection</param>
+        </member>
+        <member name="M:EasyPost.ClientConfiguration.#ctor(System.String,System.String)">
+            <summary>
+            Create an ClientConfiguration instance
+            </summary>
+            <param name="apiKey">The API key to use for the client connection</param>
+            <param name="apiBase">The base API url to use for the client connection</param>
+        </member>
+        <member name="T:EasyPost.ClientManager">
+            <summary>
+            Provides the ability to manage delegated construction of client connections for requests.
+            </summary>
+        </member>
+        <member name="M:EasyPost.Report.Retrieve(System.String,System.String)">
+            <summary>
+            Retrieve a Report from its id and type.
+            </summary>
+            <param name="type">Type of report, e.g. shipment, tracker, payment_log, etc.</param>
+            <param name="id">String representing a report.</param>
+            <returns>EasyPost.Report instance.</returns>
+        </member>
+        <member name="M:EasyPost.Report.Create(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Create a Report.
+            </summary>
+            <param name="parameters">
+            Optional dictionary containing parameters to create the carrier account with. Valid pairs:
+              * {"start_date", string} Date to start the report at.
+              * {"end_date", string} Date to end the report at.
+              * {"include_children", string} Whether or not to include child objects in the report.
+            All invalid keys will be ignored.
+            </param>
+            <returns>EasyPost.Report instance.</returns>
+        </member>
+        <member name="M:EasyPost.Report.List(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Get a paginated list of reports.
+            </summary>
+            Optional dictionary containing parameters to filter the list with. Valid pairs:
+              * {"before_id", string} String representing a Report ID. Only retrieve ScanForms created before this id. Takes precedence over after_id.
+              * {"after_id", string} String representing a Report ID. Only retrieve ScanForms created after this id.
+              * {"start_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created after this datetime.
+              * {"end_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created before this datetime.
+              * {"page_size", int} Max size of list. Default to 20.
+            All invalid keys will be ignored.
+            <param name="parameters">
+            </param>
+            <returns>Instance of EasyPost.ScanForm</returns>
+        </member>
+        <member name="M:EasyPost.ReportList.Next">
+            <summary>
+            Get the next page of reports based on the original parameters passed to ReportList.List().
+            </summary>
+            <returns>A new EasyPost.ScanFormList instance.</returns>
+        </member>
+        <member name="M:EasyPost.TrackerList.Next">
+            <summary>
+            Get the next page of shipments based on the original parameters passed to Shipment.List().
+            </summary>
+            <returns>A new EasyPost.ShipmentList instance.</returns>
+        </member>
+        <member name="M:EasyPost.ScanFormList.Next">
+            <summary>
+            Get the next page of scan forms based on the original parameters passed to ScanForm.List().
+            </summary>
+            <returns>A new EasyPost.ScanFormList instance.</returns>
+        </member>
+        <member name="M:EasyPost.Order.Retrieve(System.String)">
+            <summary>
+            Retrieve a Order from its id or reference.
+            </summary>
+            <param name="id">String representing a Order. Starts with "order_" if passing an id.</param>
+            <returns>EasyPost.Order instance.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EasyPost.Order.Create(System.Collections.Generic.Dictionary{System.String,System.Object})" -->
+        <member name="M:EasyPost.Order.Create">
+            <summary>
+            Create this Order.
+            </summary>
+            <exception cref="T:EasyPost.ResourceAlreadyCreated">Order already has an id.</exception>
+        </member>
+        <member name="M:EasyPost.Order.Buy(System.String,System.String)">
+            <summary>
+            Purchase the shipments within this order with a carrier and service.
+            </summary>
+            <param name="carrier">The carrier to purchase a shipment from.</param>
+            <param name="service">The service to purchase.</param>
+        </member>
+        <member name="M:EasyPost.Order.Buy(EasyPost.Rate)">
+            <summary>
+            Purchase a label for this shipment with the given rate.
+            </summary>
+            <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
+        </member>
+        <member name="M:EasyPost.Item.Retrieve(System.String)">
+            <summary>
+            Retrieve an Item from its id or reference.
+            </summary>
+            <param name="id">String representing a Item. Starts with "item_" if passing an id.</param>
+            <returns>EasyPost.Item instance.</returns>
+        </member>
+        <member name="M:EasyPost.Item.Create(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Create an Item.
+            </summary>
+            <param name="parameters">
+            Dictionary containing parameters to create the item with. Valid pairs:
+              * {"name", string}
+              * {"description", string}
+              * {"reference", string}
+              * {"harmonized_code", string}
+              * {"country_of_origin", string}
+              * {"warehouse_location", string}
+              * {"value", double}
+              * {"length", double}
+              * {"width", double}
+              * {"height", double}
+              * {"weight", double}
+              ADD ANY CUSTOM REFERENCES HERE
+            All invalid keys will be ignored.
+            </param>
+            <returns>EasyPost.Item instance.</returns>
+        </member>
+        <member name="M:EasyPost.Item.RetrieveReference(System.String,System.String)">
+            <summary>
+            Retrieve a Item from a custom reference.
+            </summary>
+            <param name="name">String containing the name of the custom reference to search for.</param>
+            <param name="value">String containing the value of the custom reference to search for.</param>
+            <returns>EasyPost.Item instance.</returns>
+        </member>
+        <member name="M:EasyPost.CustomsInfo.Retrieve(System.String)">
+            <summary>
+            Retrieve a CustomsInfo from its id.
+            </summary>
+            <param name="id">String representing a CustomsInfo. Starts with "cstinfo_".</param>
+            <returns>EasyPost.CustomsInfo instance.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EasyPost.CustomsInfo.Create(System.Collections.Generic.Dictionary{System.String,System.Object})" -->
+        <member name="M:EasyPost.CustomsItem.Retrieve(System.String)">
+            <summary>
+            Retrieve a CustomsItem from its id.
+            </summary>
+            <param name="id">String representing a CustomsItem. Starts with "cstitem_".</param>
+            <returns>EasyPost.CustomsItem instance.</returns>
+        </member>
+        <member name="M:EasyPost.CustomsItem.Create(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Create a CustomsItem.
+            </summary>
+            <param name="parameters">
+            Dictionary containing parameters to create the customs item with. Valid pairs:
+              * {"description", string}
+              * {"quantity", int}
+              * {"weight", int}
+              * {"value", double}
+              * {"hs_tariff_number", string}
+              * {"origin_country", string}
+            All invalid keys will be ignored.
+            </param>
+            <returns>EasyPost.CustomsItem instance.</returns>
+        </member>
+        <member name="M:EasyPost.Container.Retrieve(System.String)">
+            <summary>
+            Retrieve a Container from its id or reference.
+            </summary>
+            <param name="id">String representing a Container. Starts with "container_" if passing an id.</param>
+            <returns>EasyPost.Container instance.</returns>
+        </member>
+        <member name="M:EasyPost.Container.Create(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Create a Container.
+            </summary>
+            <param name="parameters">
+            Dictionary containing parameters to create the container with. Valid pairs:
+              * {"name", string}
+              * {"type", string}
+              * {"reference", string}
+              * {"length", double}
+              * {"width", double}
+              * {"height", double}
+              * {"max_weight", double}
+            All invalid keys will be ignored.
+            </param>
+            <returns>EasyPost.Container instance.</returns>
+        </member>
+        <member name="M:EasyPost.Parcel.Retrieve(System.String)">
+            <summary>
+            Retrieve a Parcel from its id.
+            </summary>
+            <param name="id">String representing a Parcel. Starts with "prcl_".</param>
+            <returns>EasyPost.Parcel instance.</returns>
+        </member>
+        <member name="M:EasyPost.Parcel.Create(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Create a Parcel.
+            </summary>
+            <param name="parameters">
+            Dictionary containing parameters to create the parcel with. Valid pairs:
+              * {"length", int}
+              * {"width", int}
+              * {"height", int}
+              * {"weight", double}
+              * {"predefined_package", string}
+            All invalid keys will be ignored.
+            </param>
+            <returns>EasyPost.Parcel instance.</returns>
+        </member>
+        <member name="M:EasyPost.Pickup.Retrieve(System.String)">
+            <summary>
+            Retrieve a Pickup from its id.
+            </summary>
+            <param name="id">String representing a Pickup. Starts with "pickup_".</param>
+            <returns>EasyPost.Pickup instance.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EasyPost.Pickup.Create(System.Collections.Generic.Dictionary{System.String,System.Object})" -->
+        <member name="M:EasyPost.Pickup.Create">
+            <summary>
+            Create this Pickup.
+            </summary>
+            <exception cref="T:EasyPost.ResourceAlreadyCreated">Pickup already has an id.</exception>
+        </member>
+        <member name="M:EasyPost.Pickup.Buy(System.String,System.String)">
+            <summary>
+            Purchase this pickup.
+            </summary>
+            <param name="carrier">The name of the carrier to purchase with.</param>
+            <param name="service">The name of the service to purchase.</param>
+        </member>
+        <member name="M:EasyPost.Pickup.Cancel">
+            <summary>
+            Cancel this pickup.
+            </summary>
+        </member>
+        <member name="M:EasyPost.ScanForm.List(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Get a paginated list of scan forms.
+            </summary>
+            Optional dictionary containing parameters to filter the list with. Valid pairs:
+              * {"before_id", string} String representing a ScanForm ID. Starts with "sf_". Only retrieve ScanForms created before this id. Takes precedence over after_id.
+              * {"after_id", string} String representing a ScanForm ID. Starts with "sf_". Only retrieve ScanForms created after this id.
+              * {"start_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created after this datetime.
+              * {"end_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created before this datetime.
+              * {"page_size", int} Max size of list. Default to 20.
+            All invalid keys will be ignored.
+            <param name="parameters">
+            </param>
+            <returns>Instance of EasyPost.ScanForm</returns>
+        </member>
+        <member name="M:EasyPost.ScanForm.Create(System.Collections.Generic.List{EasyPost.Shipment})">
+            <summary>
+            Create a ScanForm.
+            </summary>
+            <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
+            <returns>EasyPost.ScanForm instance.</returns>
+        </member>
+        <member name="M:EasyPost.ScanForm.Retrieve(System.String)">
+            <summary>
+            Retrieve a ScanForm from its id.
+            </summary>
+            <param name="id">String representing a scan form, starts with "sf_".</param>
+            <returns>EasyPost.ScanForm instance.</returns>
+        </member>
+        <member name="M:EasyPost.Shipment.List(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Get a paginated list of shipments.
+            </summary>
+            Optional dictionary containing parameters to filter the list with. Valid pairs:
+              * {"before_id", string} String representing a Shipment. Starts with "shp_". Only retrieve shipments created before this id. Takes precedence over after_id.
+              * {"after_id", string} String representing a Shipment. Starts with "shp_". Only retrieve shipments created after this id.
+              * {"start_datetime", DateTime} Starting time for the search.
+              * {"end_datetime", DateTime} Ending time for the search.
+              * {"page_size", int} Size of page. Default to 20.
+              * {"purchased", bool} If true only display purchased shipments.
+            All invalid keys will be ignored.
+            <param name="parameters">
+            </param>
+            <returns>Instance of EasyPost.ShipmentList</returns>
+        </member>
+        <member name="M:EasyPost.Shipment.Retrieve(System.String)">
+            <summary>
+            Retrieve a Shipment from its id.
+            </summary>
+            <param name="id">String representing a Shipment. Starts with "shp_".</param>
+            <returns>EasyPost.Shipment instance.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EasyPost.Shipment.Create(System.Collections.Generic.Dictionary{System.String,System.Object})" -->
+        <member name="M:EasyPost.Shipment.Create">
+            <summary>
+            Create this Shipment.
+            </summary>
+            <exception cref="T:EasyPost.ResourceAlreadyCreated">Shipment already has an id.</exception>
+        </member>
+        <member name="M:EasyPost.Shipment.GetRates">
+            <summary>
+            Populate the rates property for this shipment
+            </summary>
+        </member>
+        <member name="M:EasyPost.Shipment.Buy(System.String)">
+            <summary>
+            Purchase a label for this shipment with the given rate.
+            </summary>
+            <param name="rateId">The id of the rate to purchase the shipment with.</param>
+        </member>
+        <member name="M:EasyPost.Shipment.Buy(EasyPost.Rate)">
+            <summary>
+            Purchase a label for this shipment with the given rate.
+            </summary>
+            <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
+        </member>
+        <member name="M:EasyPost.Shipment.Insure(System.Double)">
+            <summary>
+            Insure shipment for the given amount.
+            </summary>
+            <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
+        </member>
+        <member name="M:EasyPost.Shipment.GenerateLabel(System.String)">
+            <summary>
+            Generate a postage label for this shipment.
+            </summary>
+            <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
+        </member>
+        <member name="M:EasyPost.Shipment.GenerateStamp">
+            <summary>
+            Generate a stamp for this shipment.
+            </summary>
+        </member>
+        <member name="M:EasyPost.Shipment.GenerateBarcode">
+            <summary>
+            Generate a barcode for this shipment.
+            </summary>
+        </member>
+        <member name="M:EasyPost.Shipment.Refund">
+            <summary>
+            Send a refund request to the carrier the shipment was purchased from.
+            </summary>
+        </member>
+        <member name="M:EasyPost.Shipment.LowestRate(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Get the lowest rate for the shipment. Optionally whitelist/blacklist carriers and servies from the search.
+            </summary>
+            <param name="includeCarriers">Carriers whitelist.</param>
+            <param name="includeServices">Services whitelist.</param>
+            <param name="excludeCarriers">Carriers blacklist.</param>
+            <param name="excludeServices">Services blacklist.</param>
+            <returns>EasyPost.Rate instance or null if no rate was found.</returns>
+        </member>
+        <member name="M:EasyPost.ShipmentList.Next">
+            <summary>
+            Get the next page of shipments based on the original parameters passed to Shipment.List().
+            </summary>
+            <returns>A new EasyPost.ShipmentList instance.</returns>
+        </member>
+        <member name="M:EasyPost.Tracker.List(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Get a paginated list of trackers.
+            </summary>
+            Optional dictionary containing parameters to filter the list with. Valid pairs:
+              * {"tracking_code", string} Tracking number string. Only retrieve trackers with the given tracking code.
+              * {"carrier", string} String representing the tracker's carrier. Only retrieve trackers with the given carrier.
+              * {"before_id", string} String representing a Tracker. Starts with "trk_". Only retrieve trackers created before this id. Takes precedence over after_id.
+              * {"after_id", string} String representing a Tracker. Starts with "trk_". Only retrieve trackers created after this id.
+              * {"start_datetime", datetime} Datetime representing the earliest possible tracker. Only retrieve trackers created at or after this datetime. Defaults to 1 month ago.
+              * {"end_datetime", datetime} Datetime representing the latest possible tracker. Only retrieve trackers created before this datetime. Defaults to the end of the current day.
+              * {"page_size", int} Size of page. Default to 30.
+            All invalid keys will be ignored.
+            <param name="parameters">
+            </param>
+            <returns>Instance of EasyPost.ShipmentList</returns>
+        </member>
+        <member name="M:EasyPost.Tracker.Retrieve(System.String)">
+            <summary>
+            Retrieve a Tracker from its id.
+            </summary>
+            <param name="id">String representing a Tracker. Starts with "trk_".</param>
+            <returns>EasyPost.Tracker instance.</returns>
+        </member>
+        <member name="M:EasyPost.User.Retrieve(System.String)">
+            <summary>
+            Retrieve a User from its id. If no id is specified, it returns the user for the api_key specified.
+            </summary>
+            <param name="id">String representing a user. Starts with "user_".</param>
+            <returns>EasyPost.User instance.</returns>
+        </member>
+        <member name="M:EasyPost.User.Create(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Create a child user for the account associated with the api_key specified.
+            </summary>
+            <param name="parameters">
+            Optional dictionary containing parameters to create the carrier account with. Valid pairs:
+              * {"name", string} Name on the account.
+            All invalid keys will be ignored.
+            </param>
+            <returns>EasyPost.User instance.</returns>
+        </member>
+        <member name="M:EasyPost.User.Update(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Update the User associated with the api_key specified.
+            </summary>
+            <param name="parameters">
+            Optional dictionary containing parameters to create the carrier account with. Valid pairs:
+              * {"name", string} Name on the account.
+              * {"email", string} Email on the account. Can only be updated on the parent account.
+              * {"phone_number", string} Phone number on the account. Can only be updated on the parent account.
+              * {"recharge_amount", int} Recharge amount for the account in cents. Can only be updated on the parent account.
+              * {"secondary_recharge_amount", int} Secondary recharge amount for the account in cents. Can only be updated on the parent account.
+              * {"recharge_threshold", int} Recharge threshold for the account in cents. Can only be updated on the parent account.
+            All invalid keys will be ignored.
+            </param>
+        </member>
+        <member name="M:EasyPost.Webhook.List(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Get a list of scan forms.
+            </summary>
+            <returns>List of EasyPost.Webhook insteances.</returns>
+        </member>
+        <member name="M:EasyPost.Webhook.Retrieve(System.String)">
+            <summary>
+            Retrieve a Webhook from its id.
+            </summary>
+            <param name="id">String representing a webhook. Starts with "hook_".</param>
+            <returns>EasyPost.User instance.</returns>
+        </member>
+        <member name="M:EasyPost.Webhook.Create(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Create a Webhook.
+            </summary>
+            <param name="parameters">
+            Dictionary containing parameters to create the carrier account with. Valid pairs:
+              * { "url", string } Url of the webhook that events will be sent to.
+            All invalid keys will be ignored.
+            </param>
+            <returns>EasyPost.Webhook instance.</returns>
+        </member>
+        <member name="M:EasyPost.Webhook.Update">
+            <summary>
+            Enable a Webhook that has been disabled previously.
+            </summary>
+        </member>
+        <member name="M:EasyPost.Rate.Retrieve(System.String)">
+            <summary>
+            Retrieve a Rate from its id.
+            </summary>
+            <param name="id">String representing a Rate. Starts with "rate_".</param>
+            <returns>EasyPost.Rate instance.</returns>
+        </member>
+    </members>
+</doc>

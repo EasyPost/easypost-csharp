@@ -12,7 +12,7 @@
     <description>EasyPost Shipping API Client Library for .NET https://easypost.com/docs</description>
     <tags>EasyPost ShippingAPI USPS UPS FedEx</tags>
     <dependencies>
-       <group targetFramework="net45" >
+       <group targetFramework="net45">
          <dependency id="Newtonsoft.Json" version="9.0.1" />
          <dependency id="RestSharpSigned" version="105.2.3" />
        </group>
@@ -20,7 +20,7 @@
          <dependency id="Newtonsoft.Json" version="9.0.1" />
          <dependency id="RestSharpSigned" version="105.2.3" />
        </group>
-       <group targetFramework="net35" >
+       <group targetFramework="net35">
          <dependency id="Newtonsoft.Json" version="9.0.1" />
          <dependency id="RestSharpSigned" version="105.2.3" />
        </group>
