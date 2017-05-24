@@ -224,7 +224,7 @@ namespace EasyPost {
         /// <returns>EasyPost.Rate instance or null if no rate was found.</returns>
         public Rate LowestRate(IEnumerable<string> includeCarriers = null, IEnumerable<string> includeServices = null,
                                IEnumerable<string> excludeCarriers = null, IEnumerable<string> excludeServices = null) {
-            if (rates == null)
+            if (rates == null || !rates.Any())
                 GetRates();
 
             List<Rate> result = new List<Rate>(rates);
