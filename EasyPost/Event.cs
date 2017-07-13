@@ -21,7 +21,7 @@ namespace EasyPost {
         /// </summary>
         /// <param name="id">String representing an EasyPost object.</param>
         public static void Create(string id) {
-            Request request = new Request("events", Method.POST);
+            Request request = new Request("v2/events", Method.POST);
             request.AddQueryString(new Dictionary<string, object>() { { "result_id", id } });
         }
 
@@ -31,7 +31,7 @@ namespace EasyPost {
         /// <param name="id">String representing a Event. Starts with "evt_".</param>
         /// <returns>EasyPost.Event instance.</returns>
         public static Event Retrieve(string id) {
-            Request request = new Request("events/{id}");
+            Request request = new Request("v2/events/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Event>();

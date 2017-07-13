@@ -53,7 +53,7 @@ namespace EasyPost {
         /// </param>
         /// <returns>Instance of EasyPost.ShipmentList</returns>
         public static ShipmentList List(Dictionary<string, object> parameters = null) {
-            Request request = new Request("shipments");
+            Request request = new Request("v2/shipments");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
             ShipmentList shipmentList = request.Execute<ShipmentList>();
@@ -67,7 +67,7 @@ namespace EasyPost {
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
         /// <returns>EasyPost.Shipment instance.</returns>
         public static Shipment Retrieve(string id) {
-            Request request = new Request("shipments/{id}");
+            Request request = new Request("v2/shipments/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Shipment>();
@@ -107,7 +107,7 @@ namespace EasyPost {
         }
 
         private static Shipment sendCreate(Dictionary<string, object> parameters) {
-            Request request = new Request("shipments", Method.POST);
+            Request request = new Request("v2/shipments", Method.POST);
             request.AddBody(parameters, "shipment");
 
             return request.Execute<Shipment>();
@@ -120,7 +120,7 @@ namespace EasyPost {
             if (id == null)
                 Create();
 
-            Request request = new Request("shipments/{id}/rates");
+            Request request = new Request("v2/shipments/{id}/rates");
             request.AddUrlSegment("id", id);
 
             rates = request.Execute<Shipment>().rates;
@@ -131,7 +131,7 @@ namespace EasyPost {
         /// </summary>
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
         public void Buy(string rateId) {
-            Request request = new Request("shipments/{id}/buy", Method.POST);
+            Request request = new Request("v2/shipments/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
             request.AddBody(new Dictionary<string, object>() { { "id", rateId } }, "rate");
 
@@ -160,7 +160,7 @@ namespace EasyPost {
         /// </summary>
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
         public void Insure(double amount) {
-            Request request = new Request("shipments/{id}/insure", Method.POST);
+            Request request = new Request("v2/shipments/{id}/insure", Method.POST);
             request.AddUrlSegment("id", id);
             request.AddBody(new List<Tuple<string, string>>() {
                 new Tuple<string, string>("amount", amount.ToString())
@@ -174,7 +174,7 @@ namespace EasyPost {
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         public void GenerateLabel(string fileFormat) {
-            Request request = new Request("shipments/{id}/label");
+            Request request = new Request("v2/shipments/{id}/label");
             request.AddUrlSegment("id", id);
             // This is a GET, but uses the request body, so use ParameterType.GetOrPost instead.
             request.AddParameter("file_format", fileFormat, ParameterType.GetOrPost);
@@ -186,7 +186,7 @@ namespace EasyPost {
         /// Send a refund request to the carrier the shipment was purchased from.
         /// </summary>
         public void Refund() {
-            Request request = new Request("shipments/{id}/refund");
+            Request request = new Request("v2/shipments/{id}/refund");
             request.AddUrlSegment("id", id);
 
             Merge(request.Execute<Shipment>());
