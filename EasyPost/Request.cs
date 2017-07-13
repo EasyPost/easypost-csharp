@@ -1,4 +1,5 @@
 using RestSharp;
+using Newtonsoft.Json;
 
 using System;
 using System.Collections;
@@ -29,6 +30,12 @@ namespace EasyPost {
             return client.Execute<T>(this);
         }
 
+        public T ExecuteJson<T>() where T : new()
+        {
+            Client client = ClientManager.Build();
+            return client.ExecuteJson<T>(this);
+        }
+
         public IRestResponse Execute() {
             Client client = ClientManager.Build();
             return client.Execute(this);
@@ -45,6 +52,10 @@ namespace EasyPost {
         public void AddBody(Dictionary<string, object> parameters, string parent) {
             string encoded = EncodeParameters(FlattenParameters(parameters, parent));
             AddParameter("application/x-www-form-urlencoded", encoded, ParameterType.RequestBody);
+        }
+
+        public void AddBodyJson(Dictionary<string, object> parameters){
+            AddParameter("text/json", JsonConvert.SerializeObject(parameters), ParameterType.RequestBody);
         }
 
         public void AddQueryString(IDictionary<string, object> parameters) {

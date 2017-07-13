@@ -23,7 +23,7 @@ namespace EasyPost {
         /// <param name="id">String representing a report.</param>
         /// <returns>EasyPost.Report instance.</returns>
         public static Report Retrieve(string type, string id) {
-            Request request = new Request("reports/{type}/{id}");
+            Request request = new Request("v2/reports/{type}/{id}");
             request.AddUrlSegment("id", id);
             request.AddUrlSegment("type", type);
 
@@ -42,7 +42,7 @@ namespace EasyPost {
         /// </param>
         /// <returns>EasyPost.Report instance.</returns>
         public static Report Create(string type, Dictionary<string, object> parameters = null) {
-            Request request = new Request("reports/{type}", Method.POST);
+            Request request = new Request("v2/reports/{type}", Method.POST);
             request.AddUrlSegment("type", type);
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
@@ -63,7 +63,7 @@ namespace EasyPost {
         /// </param>
         /// <returns>Instance of EasyPost.ScanForm</returns>
         public static ReportList List(string type, Dictionary<string, object> parameters = null) {
-            Request request = new Request("reports/{type}");
+            Request request = new Request("v2/reports/{type}");
             request.AddUrlSegment("type", type);
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 

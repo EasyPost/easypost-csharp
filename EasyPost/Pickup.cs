@@ -28,11 +28,12 @@ namespace EasyPost {
         /// <param name="id">String representing a Pickup. Starts with "pickup_".</param>
         /// <returns>EasyPost.Pickup instance.</returns>
         public static Pickup Retrieve(string id) {
-            Request request = new Request("pickups/{id}");
+            Request request = new Request("v2/pickups/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Pickup>();
         }
+
         /// <summary>
         /// Create a Pickup.
         /// </summary>
@@ -65,7 +66,7 @@ namespace EasyPost {
         }
 
         private static Pickup sendCreate(Dictionary<string, object> parameters) {
-            Request request = new Request("pickups", Method.POST);
+            Request request = new Request("v2/pickups", Method.POST);
             request.AddBody(parameters, "pickup");
 
             return request.Execute<Pickup>();
@@ -77,7 +78,7 @@ namespace EasyPost {
         /// <param name="carrier">The name of the carrier to purchase with.</param>
         /// <param name="service">The name of the service to purchase.</param>
         public void Buy(string carrier, string service) {
-            Request request = new Request("pickups/{id}/buy", Method.POST);
+            Request request = new Request("v2/pickups/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
             request.AddBody(new List<Tuple<string, string>>() {
                 new Tuple<string, string>("carrier", carrier),
@@ -91,7 +92,7 @@ namespace EasyPost {
         /// Cancel this pickup.
         /// </summary>
         public void Cancel() {
-            Request request = new Request("pickups/{id}/cancel", Method.POST);
+            Request request = new Request("v2/pickups/{id}/cancel", Method.POST);
             request.AddUrlSegment("id", id);
 
             Merge(request.Execute<Pickup>());

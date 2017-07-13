@@ -8,7 +8,7 @@ namespace EasyPost {
         public Dictionary<string, object> fields { get; set; }
 
         public static List<CarrierType> All() {
-            Request request = new Request("carrier_types");
+            Request request = new Request("v2/carrier_types");
             return request.Execute<List<CarrierType>>();
         }
     }
