@@ -55,5 +55,37 @@ namespace EasyPost {
 
             return restRequest;
         }
+
+        public T ExecuteJson<T>(Request request) where T : new()
+        {
+            RestResponse<T> response = (RestResponse<T>)client.Execute<T>(PrepareRequestJson(request));
+            int StatusCode = Convert.ToInt32(response.StatusCode);
+
+            if (StatusCode > 399)
+            {
+                try
+                {
+                    Dictionary<string, Dictionary<string, object>> Body = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
+                    throw new HttpException(StatusCode, (string)Body["error"]["message"], (string)Body["error"]["code"]);
+                }
+                catch
+                {
+                    throw new HttpException(StatusCode, "RESPONSE.PARSE_ERROR", response.Content);
+                }
+            }
+
+            return response.Data;
+        }
+
+        internal RestRequest PrepareRequestJson(Request request)
+        {
+            RestRequest restRequest = (RestRequest)request;
+
+            restRequest.AddHeader("user_agent", string.Concat("EasyPost/v2 CSharp/", version));
+            restRequest.AddHeader("authorization", "Bearer " + this.configuration.ApiKey);
+            restRequest.AddHeader("content_type", "application/json");
+
+            return restRequest;
+        }
     }
 }

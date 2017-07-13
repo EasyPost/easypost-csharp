@@ -28,7 +28,7 @@ namespace EasyPost {
         /// <param name="id">String representing a Item. Starts with "item_" if passing an id.</param>
         /// <returns>EasyPost.Item instance.</returns>
         public static Item Retrieve(string id) {
-            Request request = new Request("items/{id}");
+            Request request = new Request("v2/items/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Item>();
@@ -55,7 +55,7 @@ namespace EasyPost {
         /// </param>
         /// <returns>EasyPost.Item instance.</returns>
         public static Item Create(Dictionary<string, object> parameters) {
-            Request request = new Request("items", Method.POST);
+            Request request = new Request("v2/items", Method.POST);
             request.AddBody(parameters, "item");
 
             return request.Execute<Item>();
@@ -68,7 +68,7 @@ namespace EasyPost {
         /// <param name="value">String containing the value of the custom reference to search for.</param>
         /// <returns>EasyPost.Item instance.</returns>
         public static Item RetrieveReference(string name, string value) {
-            Request request = new Request("items/retrieve_reference/?{name}={value}");
+            Request request = new Request("v2/items/retrieve_reference/?{name}={value}");
             request.AddUrlSegment("name", name);
             request.AddUrlSegment("value", value);
 
