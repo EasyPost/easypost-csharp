@@ -14,7 +14,7 @@ namespace EasyPost {
         }
 
         public static void SetCurrent(string apiKey) {
-            SetCurrent(() => new Client(new configuration(apiKey)));
+            SetCurrent(() => new Client(new ClientConfiguration(apiKey)));
         }
 
         public static void SetCurrent(Func<Client> getClient) {

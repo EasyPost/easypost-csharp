@@ -11,9 +11,9 @@ namespace EasyPost {
         public string version;
 
         internal RestClient client;
-        internal configuration configuration;
+        internal ClientConfiguration configuration;
         
-        public Client(configuration clientConfiguration) {
+        public Client(ClientConfiguration clientConfiguration) {
             System.Net.ServicePointManager.SecurityProtocol = Security.GetProtocol();
 
             if (clientConfiguration == null) throw new ArgumentNullException("clientConfiguration");
