@@ -179,8 +179,12 @@ namespace EasyPost {
         /// Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
-        public void Buy(Rate rate) {
-            Buy(rate.id);
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void Buy(Rate rate, string apiKey = null) {
+            Buy(rate.id, apiKey);
         }
 
         /// <summary>
