@@ -24,12 +24,16 @@ namespace EasyPost {
         /// Retrieve a Batch from its id.
         /// </summary>
         /// <param name="id">String representing a Batch. Starts with "batch_".</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static Batch Retrieve(string id) {
+        public static Batch Retrieve(string id, string apiKey = null) {
             Request request = new Request("batches/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Batch>();
+            return request.Execute<Batch>(apiKey);
         }
 
         /// <summary>
@@ -41,68 +45,92 @@ namespace EasyPost {
         ///   * {"reference", string}
         /// All invalid keys will be ignored.
         /// </param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static Batch Create(Dictionary<string, object> parameters = null) {
+        public static Batch Create(Dictionary<string, object> parameters = null, string apiKey = null) {
             parameters = parameters ?? new Dictionary<string, object>();
 
             Request request = new Request("batches", Method.POST);
             request.AddBody(parameters, "batch");
 
-            return request.Execute<Batch>();
+            return request.Execute<Batch>(apiKey);
         }
 
         /// <summary>
         /// Add shipments to the batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be added.</param>
-        public void AddShipments(IEnumerable<string> shipmentIds) {
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void AddShipments(IEnumerable<string> shipmentIds, string apiKey = null) {
             Request request = new Request("batches/{id}/add_shipments", Method.POST);
             request.AddUrlSegment("id", id);
 
             List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
             request.AddBody(body, "shipments");
 
-            Merge(request.Execute<Batch>());
+            Merge(request.Execute<Batch>(apiKey));
         }
 
         /// <summary>
         /// Add shipments to the batch.
         /// </summary>
         /// <param name="shipments">List of Shipment objects to be added.</param>
-        public void AddShipments(IEnumerable<Shipment> shipments) {
-            AddShipments(shipments.Select(shipment => shipment.id).ToList());
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void AddShipments(IEnumerable<Shipment> shipments, string apiKey = null) {
+            AddShipments(shipments.Select(shipment => shipment.id).ToList(), apiKey);
         }
 
         /// <summary>
         /// Remove shipments from the batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be removed.</param>
-        public void RemoveShipments(IEnumerable<string> shipmentIds) {
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void RemoveShipments(IEnumerable<string> shipmentIds, string apiKey = null) {
             Request request = new Request("batches/{id}/remove_shipments", Method.POST);
             request.AddUrlSegment("id", id);
 
             List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
             request.AddBody(body, "shipments");
 
-            Merge(request.Execute<Batch>());
+            Merge(request.Execute<Batch>(apiKey));
         }
 
         /// <summary>
         /// Remove shipments from the batch.
         /// </summary>
         /// <param name="shipments">List of Shipment objects to be removed.</param>
-        public void RemoveShipments(IEnumerable<Shipment> shipments) {
-            RemoveShipments(shipments.Select(shipment => shipment.id).ToList());
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void RemoveShipments(IEnumerable<Shipment> shipments, string apiKey = null) {
+            RemoveShipments(shipments.Select(shipment => shipment.id).ToList(), apiKey);
         }
 
         /// <summary>
         /// Purchase all shipments within a batch. The Batch's state must be "created" before purchasing.
         /// </summary>
-        public void Buy() {
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void Buy(string apiKey = null) {
             Request request = new Request("batches/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
 
-            Merge(request.Execute<Batch>());
+            Merge(request.Execute<Batch>(apiKey));
         }
 
         /// <summary>
@@ -110,7 +138,11 @@ namespace EasyPost {
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         /// <param name="orderBy">Optional parameter to order the generated label. Ex: "reference DESC"</param>
-        public void GenerateLabel(string fileFormat, string orderBy = null) {
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void GenerateLabel(string fileFormat, string orderBy = null, string apiKey = null) {
             Request request = new Request("batches/{id}/label", Method.POST);
             request.AddUrlSegment("id", id);
 
@@ -122,17 +154,21 @@ namespace EasyPost {
                 body.Add(new Tuple<string, string>("order_by", orderBy));
 
             request.AddBody(body);
-            Merge(request.Execute<Batch>());
+            Merge(request.Execute<Batch>(apiKey));
         }
 
         /// <summary>
         /// Asychronously generate a scan from for the batch.
         /// </summary>
-        public void GenerateScanForm() {
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void GenerateScanForm(string apiKey = null) {
             Request request = new Request("batches/{id}/scan_form", Method.POST);
             request.AddUrlSegment("id", id);
 
-            Merge(request.Execute<Batch>());
+            Merge(request.Execute<Batch>(apiKey));
         }
     }
 }

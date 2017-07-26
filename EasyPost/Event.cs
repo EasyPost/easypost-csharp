@@ -29,12 +29,16 @@ namespace EasyPost {
         /// Retrieve a Event from its id.
         /// </summary>
         /// <param name="id">String representing a Event. Starts with "evt_".</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Event instance.</returns>
-        public static Event Retrieve(string id) {
+        public static Event Retrieve(string id, string apiKey = null) {
             Request request = new Request("events/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Event>();
+            return request.Execute<Event>(apiKey);
         }
     }
 }

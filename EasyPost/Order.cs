@@ -27,12 +27,16 @@ namespace EasyPost {
         /// Retrieve a Order from its id or reference.
         /// </summary>
         /// <param name="id">String representing a Order. Starts with "order_" if passing an id.</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Order instance.</returns>
-        public static Order Retrieve(string id) {
+        public static Order Retrieve(string id, string apiKey = null) {
             Request request = new Request("orders/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Order>();
+            return request.Execute<Order>(apiKey);
         }
 
         /// <summary>
@@ -53,29 +57,41 @@ namespace EasyPost {
         ///   * {"items", IEnumerable<Item>} See Item.Create for list of valid keys.
         /// All invalid keys will be ignored.
         /// </param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Order instance.</returns>
-        public static Order Create(Dictionary<string, object> parameters) {
+        public static Order Create(Dictionary<string, object> parameters, string apiKey = null) {
             Request request = new Request("orders", Method.POST);
             request.AddBody(parameters, "order");
 
-            return request.Execute<Order>();
+            return request.Execute<Order>(apiKey);
         }
 
         /// <summary>
         /// Create this Order.
         /// </summary>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <exception cref="ResourceAlreadyCreated">Order already has an id.</exception>
-        public void Create() {
+        public void Create(string apiKey = null) {
             if (id != null)
                 throw new ResourceAlreadyCreated();
-            Merge(sendCreate(this.AsDictionary()));
+            Merge(sendCreate(this.AsDictionary(), apiKey));
         }
 
-        private static Order sendCreate(Dictionary<string, object> parameters) {
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        private static Order sendCreate(Dictionary<string, object> parameters, string apiKey = null) {
             Request request = new Request("orders", Method.POST);
             request.AddBody(parameters, "order");
 
-            return request.Execute<Order>();
+            return request.Execute<Order>(apiKey);
         }
 
         /// <summary>
@@ -83,20 +99,28 @@ namespace EasyPost {
         /// </summary>
         /// <param name="carrier">The carrier to purchase a shipment from.</param>
         /// <param name="service">The service to purchase.</param>
-        public void Buy(string carrier, string service) {
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void Buy(string carrier, string service, string apiKey = null) {
             Request request = new Request("orders/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
             request.AddBody(new List<Tuple<string, string>>() { new Tuple<string, string>("carrier", carrier), new Tuple<string, string>("service", service) });
 
-            Merge(request.Execute<Order>());
+            Merge(request.Execute<Order>(apiKey));
         }
 
         /// <summary>
         /// Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
-        public void Buy(Rate rate) {
-            Buy(rate.carrier, rate.service);
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void Buy(Rate rate, string apiKey = null) {
+            Buy(rate.carrier, rate.service, apiKey);
         }
     }
 }

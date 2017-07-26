@@ -33,17 +33,25 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// <param name="parameters">
         /// </param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>Instance of EasyPost.ShipmentList</returns>
-        public static TrackerList List(Dictionary<string, object> parameters = null) {
+        public static TrackerList List(Dictionary<string, object> parameters = null, string apiKey = null) {
             Request request = new Request("trackers");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            TrackerList trackerList = request.Execute<TrackerList>();
+            TrackerList trackerList = request.Execute<TrackerList>(apiKey);
             trackerList.filters = parameters;
             return trackerList;
         }
 
-        public static Tracker Create(string carrier, string trackingCode) {
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public static Tracker Create(string carrier, string trackingCode, string apiKey = null) {
             Request request = new Request("trackers", RestSharp.Method.POST);
             Dictionary<string, object> parameters = new Dictionary<string, object>() {
                 { "tracking_code", trackingCode }, { "carrier", carrier }
@@ -51,19 +59,23 @@ namespace EasyPost {
 
             request.AddBody(parameters, "tracker");
 
-            return request.Execute<Tracker>();
+            return request.Execute<Tracker>(apiKey);
         }
 
         /// <summary>
         /// Retrieve a Tracker from its id.
         /// </summary>
         /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Tracker instance.</returns>
-        public static Tracker Retrieve(string id) {
+        public static Tracker Retrieve(string id, string apiKey = null) {
             Request request = new Request("trackers/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Tracker>();
+            return request.Execute<Tracker>(apiKey);
         }
     }
 }

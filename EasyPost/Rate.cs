@@ -27,12 +27,16 @@ namespace EasyPost {
         /// Retrieve a Rate from its id.
         /// </summary>
         /// <param name="id">String representing a Rate. Starts with "rate_".</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Rate instance.</returns>
-        public static Rate Retrieve(string id) {
+        public static Rate Retrieve(string id, string apiKey = null) {
             Request request = new Request("rates/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Rate>();
+            return request.Execute<Rate>(apiKey);
         }
     }
 }

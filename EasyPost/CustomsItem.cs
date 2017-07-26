@@ -22,12 +22,16 @@ namespace EasyPost {
         /// Retrieve a CustomsItem from its id.
         /// </summary>
         /// <param name="id">String representing a CustomsItem. Starts with "cstitem_".</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
-        public static CustomsItem Retrieve(string id) {
+        public static CustomsItem Retrieve(string id, string apiKey = null) {
             Request request = new Request("customs_items/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<CustomsItem>();
+            return request.Execute<CustomsItem>(apiKey);
         }
 
         /// <summary>
@@ -43,12 +47,16 @@ namespace EasyPost {
         ///   * {"origin_country", string}
         /// All invalid keys will be ignored.
         /// </param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
-        public static CustomsItem Create(Dictionary<string, object> parameters) {
+        public static CustomsItem Create(Dictionary<string, object> parameters, string apiKey = null) {
             Request request = new Request("customs_items", Method.POST);
             request.AddBody(parameters, "customs_item");
 
-            return request.Execute<CustomsItem>();
+            return request.Execute<CustomsItem>(apiKey);
         }
     }
 }

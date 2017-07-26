@@ -23,12 +23,16 @@ namespace EasyPost {
         /// Retrieve a CustomsInfo from its id.
         /// </summary>
         /// <param name="id">String representing a CustomsInfo. Starts with "cstinfo_".</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
-        public static CustomsInfo Retrieve(string id) {
+        public static CustomsInfo Retrieve(string id, string apiKey = null) {
             Request request = new Request("customs_infos/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<CustomsInfo>();
+            return request.Execute<CustomsInfo>(apiKey);
         }
 
         /// <summary>
@@ -45,12 +49,16 @@ namespace EasyPost {
         ///   * {"custom_items", Dictionary<string, object>} -- Can contain the key "id" or all keys required to create a CustomsItem.
         /// All invalid keys will be ignored.
         /// </param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
-        public static CustomsInfo Create(Dictionary<string, object> parameters) {
+        public static CustomsInfo Create(Dictionary<string, object> parameters, string apiKey = null) {
             Request request = new Request("customs_infos", Method.POST);
             request.AddBody(parameters, "customs_info");
 
-            return request.Execute<CustomsInfo>();
+            return request.Execute<CustomsInfo>(apiKey);
         }
     }
 }

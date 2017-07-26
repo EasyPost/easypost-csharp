@@ -33,12 +33,16 @@ namespace EasyPost {
         /// Retrieve an Address from its id.
         /// </summary>
         /// <param name="id">String representing an Address. Starts with "adr_".</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Address instance.</returns>
-        public static Address Retrieve(string id) {
+        public static Address Retrieve(string id, string apiKey = null) {
             Request request = new Request("addresses/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Address>();
+            return request.Execute<Address>(apiKey);
         }
 
         /// <summary>
@@ -67,8 +71,12 @@ namespace EasyPost {
         /// Will cause an HttpException to be raised if unsucessful.
         /// Possible items are "delivery" and "zip4".
         /// </param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Address instance.</returns>
-        public static Address Create(Dictionary<string, object> parameters = null) {
+        public static Address Create(Dictionary<string, object> parameters = null, string apiKey = null) {
             List<string> verifications = null, strictVerifications = null;
             parameters = parameters ?? new Dictionary<string, object>();
 
@@ -82,15 +90,19 @@ namespace EasyPost {
                 parameters.Remove("strict_verifications");
             }
 
-            return sendCreate(parameters, verifications, strictVerifications);
+            return sendCreate(parameters, verifications, strictVerifications, apiKey);
         }
 
         /// <summary>
         /// Create this Address.
         /// </summary>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
-        public void Create() {
-            Create(verify, verify_strict);
+        public void Create(string apiKey = null) {
+            Create(verify, verify_strict, apiKey);
         }
 
         /// <summary>
@@ -105,14 +117,22 @@ namespace EasyPost {
         /// Will cause an HttpException to be raised if unsucessful.
         /// Possible items are "delivery" and "zip4".
         /// </param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
-        public void Create(List<string> verifications = null, List<string> strictVerifications = null) {
+        public void Create(List<string> verifications = null, List<string> strictVerifications = null, string apiKey = null) {
             if (id != null)
                 throw new ResourceAlreadyCreated();
-            Merge(sendCreate(this.AsDictionary(), verifications, strictVerifications));
+            Merge(sendCreate(this.AsDictionary(), verifications, strictVerifications, apiKey));
         }
 
-        private static Address sendCreate(Dictionary<string, object> parameters, List<string> verifications = null, List<string> strictVerifications = null) {
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        private static Address sendCreate(Dictionary<string, object> parameters, List<string> verifications = null, List<string> strictVerifications = null, string apiKey = null) {
             Request request = new Request("addresses", Method.POST);
             request.AddBody(parameters, "address");
 
@@ -124,16 +144,21 @@ namespace EasyPost {
                 request.AddParameter("verify_strict[]", verification, ParameterType.QueryString);
             }
 
-            return request.Execute<Address>();
+            return request.Execute<Address>(apiKey);
         }
 
         /// <summary>
         /// Verify an address.
         /// </summary>
+        /// <param name="carrier"></param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
-        public void Verify(string carrier = null) {
+        public void Verify(string carrier = null, string apiKey = null) {
             if (id == null)
-                Create();
+                Create(apiKey);
 
             Request request = new Request("addresses/{id}/verify");
             request.RootElement = "address";
@@ -142,7 +167,7 @@ namespace EasyPost {
             if (carrier != null)
                 request.AddParameter("carrier", carrier, ParameterType.QueryString);
 
-            Merge(request.Execute<Address>());
+            Merge(request.Execute<Address>(apiKey));
         }
 
         /// <summary>
@@ -162,9 +187,13 @@ namespace EasyPost {
         ///   * {"email", string}
         /// All invalid keys will be ignored.
         /// </param>
-        public static Address CreateAndVerify(Dictionary<string, object> parameters = null) {
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public static Address CreateAndVerify(Dictionary<string, object> parameters = null, string apiKey = null) {
             parameters["strict_verifications"] = new List<string>() { "delivery" };
-            return Address.Create(parameters);
+            return Address.Create(parameters, apiKey);
         }
     }
 }
