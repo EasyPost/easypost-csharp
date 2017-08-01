@@ -7,6 +7,8 @@ namespace EasyPost {
         public string logo { get; set; }
         public Dictionary<string, object> fields { get; set; }
 
+        /// <summary>
+        /// </summary>
         /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
         ///     Required for multithreaded applications using multiple apiKeys.
         ///     The singleton of the ClientManager does not allow this to work in the above case.

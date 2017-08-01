@@ -76,6 +76,8 @@ namespace EasyPost {
             Merge(sendCreate(this.AsDictionary(), apiKey));
         }
 
+        /// <summary>
+        /// </summary>
         /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
         ///     Required for multithreaded applications using multiple apiKeys.
         ///     The singleton of the ClientManager does not allow this to work in the above case.

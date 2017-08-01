@@ -47,10 +47,17 @@ namespace EasyPost {
             return trackerList;
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="carrier">
+        /// </param>
+        /// <param name="trackingCode">
+        /// </param>
         /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
         ///     Required for multithreaded applications using multiple apiKeys.
         ///     The singleton of the ClientManager does not allow this to work in the above case.
         /// </param>
+        /// <returns>EasyPost.Tracker instance.</returns>
         public static Tracker Create(string carrier, string trackingCode, string apiKey = null) {
             Request request = new Request("trackers", RestSharp.Method.POST);
             Dictionary<string, object> parameters = new Dictionary<string, object>() {
