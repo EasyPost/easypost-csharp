@@ -21,13 +21,17 @@ namespace EasyPost {
         /// </summary>
         /// <param name="type">Type of report, e.g. shipment, tracker, payment_log, etc.</param>
         /// <param name="id">String representing a report.</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Report instance.</returns>
-        public static Report Retrieve(string type, string id) {
+        public static Report Retrieve(string type, string id, string apiKey = null) {
             Request request = new Request("reports/{type}/{id}");
             request.AddUrlSegment("id", id);
             request.AddUrlSegment("type", type);
 
-            return request.Execute<Report>();
+            return request.Execute<Report>(apiKey);
         }
 
         /// <summary>
@@ -40,13 +44,17 @@ namespace EasyPost {
         ///   * {"include_children", string} Whether or not to include child objects in the report.
         /// All invalid keys will be ignored.
         /// </param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Report instance.</returns>
-        public static Report Create(string type, Dictionary<string, object> parameters = null) {
+        public static Report Create(string type, Dictionary<string, object> parameters = null, string apiKey = null) {
             Request request = new Request("reports/{type}", Method.POST);
             request.AddUrlSegment("type", type);
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            return request.Execute<Report>();
+            return request.Execute<Report>(apiKey);
         }
 
         /// <summary>
@@ -61,13 +69,17 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// <param name="parameters">
         /// </param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>Instance of EasyPost.ScanForm</returns>
-        public static ReportList List(string type, Dictionary<string, object> parameters = null) {
+        public static ReportList List(string type, Dictionary<string, object> parameters = null, string apiKey = null) {
             Request request = new Request("reports/{type}");
             request.AddUrlSegment("type", type);
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            ReportList reportList = request.Execute<ReportList>();
+            ReportList reportList = request.Execute<ReportList>(apiKey);
             reportList.filters = parameters;
             reportList.type = type;
             return reportList;

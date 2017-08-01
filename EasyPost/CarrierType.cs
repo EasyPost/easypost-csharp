@@ -7,9 +7,15 @@ namespace EasyPost {
         public string logo { get; set; }
         public Dictionary<string, object> fields { get; set; }
 
-        public static List<CarrierType> All() {
+        /// <summary>
+        /// </summary>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public static List<CarrierType> All(string apiKey = null) {
             Request request = new Request("carrier_types");
-            return request.Execute<List<CarrierType>>();
+            return request.Execute<List<CarrierType>>(apiKey);
         }
     }
 }

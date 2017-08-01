@@ -24,13 +24,27 @@ namespace EasyPost {
             restRequest.AddHeader("Accept", "application/json");
         }
 
-        public T Execute<T>() where T : new() {
-            Client client = ClientManager.Build();
+        /// <summary>Execute the client query as defined in the request object</summary>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public T Execute<T>(string apiKey = null) where T : new()
+        {
+            //Use the passed in apiKey if defined otherwise use what is in the singleton ClientManager
+            Client client = apiKey == null ? ClientManager.Build() : new Client(new ClientConfiguration(apiKey));
             return client.Execute<T>(this);
         }
 
-        public IRestResponse Execute() {
-            Client client = ClientManager.Build();
+        /// <summary>
+        /// </summary>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public IRestResponse Execute(string apiKey = null) {
+            //Use the passed in apiKey if defined otherwise use what is in the singleton ClientManager
+            Client client = apiKey == null ? ClientManager.Build() : new Client(new ClientConfiguration(apiKey));
             return client.Execute(this);
         }
 

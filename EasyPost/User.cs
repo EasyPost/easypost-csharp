@@ -26,8 +26,12 @@ namespace EasyPost {
         /// Retrieve a User from its id. If no id is specified, it returns the user for the api_key specified.
         /// </summary>
         /// <param name="id">String representing a user. Starts with "user_".</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.User instance.</returns>
-        public static User Retrieve(string id = null) {
+        public static User Retrieve(string id = null, string apiKey = null) {
             Request request;
 
             if (id == null) {
@@ -37,7 +41,7 @@ namespace EasyPost {
                 request.AddUrlSegment("id", id);
             }
 
-            return request.Execute<User>();
+            return request.Execute<User>(apiKey);
         }
 
         /// <summary>
@@ -48,12 +52,16 @@ namespace EasyPost {
         ///   * {"name", string} Name on the account.
         /// All invalid keys will be ignored.
         /// </param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.User instance.</returns>
-        public static User Create(Dictionary<string, object> parameters) {
+        public static User Create(Dictionary<string, object> parameters, string apiKey = null) {
             Request request = new Request("users", Method.POST);
             request.AddBody(parameters, "user");
 
-            return request.Execute<User>();
+            return request.Execute<User>(apiKey);
         }
 
         /// <summary>
@@ -69,18 +77,28 @@ namespace EasyPost {
         ///   * {"recharge_threshold", int} Recharge threshold for the account in cents. Can only be updated on the parent account.
         /// All invalid keys will be ignored.
         /// </param>
-        public void Update(Dictionary<string, object> parameters) {
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void Update(Dictionary<string, object> parameters, string apiKey = null) {
             Request request = new Request("users/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
             request.AddBody(parameters, "user");
 
-            Merge(request.Execute<User>());
+            Merge(request.Execute<User>(apiKey));
         }
 
-        public void Destroy() {
+        /// <summary>
+        /// </summary>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void Destroy(string apiKey = null) {
             Request request = new Request("users/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
-            request.Execute();
+            request.Execute<User>(apiKey);
         }
     }
 }

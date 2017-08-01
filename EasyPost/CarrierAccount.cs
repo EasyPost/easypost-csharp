@@ -15,21 +15,31 @@ namespace EasyPost {
         public Dictionary<string, object> credentials { get; set; }
         public Dictionary<string, object> test_credentials { get; set; }
 
-        public static List<CarrierAccount> List() {
+        /// <summary>
+        /// </summary>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public static List<CarrierAccount> List(string apiKey = null) {
             Request request = new Request("carrier_accounts");
-            return request.Execute<List<CarrierAccount>>();
+            return request.Execute<List<CarrierAccount>>(apiKey);
         }
 
         /// <summary>
         /// Retrieve a CarrierAccount from its id.
         /// </summary>
         /// <param name="id">String representing a carrier account. Starts with "ca_".</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
-        public static CarrierAccount Retrieve(string id) {
+        public static CarrierAccount Retrieve(string id, string apiKey = null) {
             Request request = new Request("carrier_accounts/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<CarrierAccount>();
+            return request.Execute<CarrierAccount>(apiKey);
         }
 
         /// <summary>
@@ -44,34 +54,46 @@ namespace EasyPost {
         ///   * {"test_credentials", Dictionary<string, string>}
         /// All invalid keys will be ignored.
         /// </param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
-        public static CarrierAccount Create(Dictionary<string, object> parameters) {
+        public static CarrierAccount Create(Dictionary<string, object> parameters, string apiKey = null) {
             Request request = new Request("carrier_accounts", Method.POST);
             request.AddBody(parameters, "carrier_account");
 
-            return request.Execute<CarrierAccount>();
+            return request.Execute<CarrierAccount>(apiKey);
         }
 
         /// <summary>
         /// Remove this CarrierAccount from your account.
         /// </summary>
-        public void Destroy() {
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void Destroy(string apiKey = null) {
             Request request = new Request("carrier_accounts/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
 
-            request.Execute();
+            request.Execute<CarrierAccount>(apiKey);
         }
 
         /// <summary>
         /// Update this CarrierAccount.
         /// </summary>
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
-        public void Update(Dictionary<string, object> parameters) {
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
+        public void Update(Dictionary<string, object> parameters, string apiKey = null) {
             Request request = new Request("carrier_accounts/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
             request.AddBody(parameters, "carrier_account");
 
-            Merge(request.Execute<CarrierAccount>());
+            Merge(request.Execute<CarrierAccount>(apiKey));
         }
     }
 }

@@ -26,12 +26,16 @@ namespace EasyPost {
         /// Retrieve an Item from its id or reference.
         /// </summary>
         /// <param name="id">String representing a Item. Starts with "item_" if passing an id.</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Item instance.</returns>
-        public static Item Retrieve(string id) {
+        public static Item Retrieve(string id, string apiKey = null) {
             Request request = new Request("items/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Item>();
+            return request.Execute<Item>(apiKey);
         }
 
         /// <summary>
@@ -53,12 +57,16 @@ namespace EasyPost {
         ///   ADD ANY CUSTOM REFERENCES HERE
         /// All invalid keys will be ignored.
         /// </param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Item instance.</returns>
-        public static Item Create(Dictionary<string, object> parameters) {
+        public static Item Create(Dictionary<string, object> parameters, string apiKey = null) {
             Request request = new Request("items", Method.POST);
             request.AddBody(parameters, "item");
 
-            return request.Execute<Item>();
+            return request.Execute<Item>(apiKey);
         }
 
         /// <summary>
@@ -66,13 +74,17 @@ namespace EasyPost {
         /// </summary>
         /// <param name="name">String containing the name of the custom reference to search for.</param>
         /// <param name="value">String containing the value of the custom reference to search for.</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.Item instance.</returns>
-        public static Item RetrieveReference(string name, string value) {
+        public static Item RetrieveReference(string name, string value, string apiKey = null) {
             Request request = new Request("items/retrieve_reference/?{name}={value}");
             request.AddUrlSegment("name", name);
             request.AddUrlSegment("value", value);
 
-            return request.Execute<Item>();
+            return request.Execute<Item>(apiKey);
         }
     }
 }

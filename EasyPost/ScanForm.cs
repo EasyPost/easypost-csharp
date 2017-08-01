@@ -29,12 +29,16 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// <param name="parameters">
         /// </param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>Instance of EasyPost.ScanForm</returns>
-        public static ScanFormList List(Dictionary<string, object> parameters = null) {
+        public static ScanFormList List(Dictionary<string, object> parameters = null, string apiKey = null) {
             Request request = new Request("scan_forms");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            ScanFormList scanFormList = request.Execute<ScanFormList>();
+            ScanFormList scanFormList = request.Execute<ScanFormList>(apiKey);
             scanFormList.filters = parameters;
             return scanFormList;
         }
@@ -43,8 +47,12 @@ namespace EasyPost {
         /// Create a ScanForm.
         /// </summary>
         /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-        public static ScanForm Create(List<Shipment> shipments) {
+        public static ScanForm Create(List<Shipment> shipments, string apiKey = null) {
             Dictionary<string, object> parameters = new Dictionary<string, object> {
                 { "shipments", shipments }
             };
@@ -52,19 +60,23 @@ namespace EasyPost {
             Request request = new Request("scan_forms", Method.POST);
             request.AddBody(parameters, "scan_form");
 
-            return request.Execute<ScanForm>();
+            return request.Execute<ScanForm>(apiKey);
         }
 
         /// <summary>
         /// Retrieve a ScanForm from its id.
         /// </summary>
         /// <param name="id">String representing a scan form, starts with "sf_".</param>
+        /// <param name="apiKey">Optional: Force a specific apiKey, bypassing the ClientManager singleton object.
+        ///     Required for multithreaded applications using multiple apiKeys.
+        ///     The singleton of the ClientManager does not allow this to work in the above case.
+        /// </param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-        public static ScanForm Retrieve(string id) {
+        public static ScanForm Retrieve(string id, string apiKey = null) {
             Request request = new Request("scan_forms/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<ScanForm>();
+            return request.Execute<ScanForm>(apiKey);
         }
     }
 }
