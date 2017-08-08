@@ -28,7 +28,7 @@ namespace EasyPostTest {
         [TestMethod]
         public void TestRestClient() {
             Client client = new Client(new ClientConfiguration("apiKey"));
-            Assert.AreEqual(client.client.BaseUrl, "https://api.easypost.com/v2");
+            Assert.AreEqual(client.client.BaseUrl, "https://api.easypost.com/");
         }
 
         [TestMethod]
@@ -47,7 +47,7 @@ namespace EasyPostTest {
             List<String> parameters = ClientManager.Build().PrepareRequest(request).Parameters.Select(parameter => parameter.ToString()).ToList();
             CollectionAssert.Contains(parameters, "user_agent=EasyPost/v2 CSharp/" + ClientManager.Build().version);
             CollectionAssert.Contains(parameters, "authorization=Bearer " + apiKey);
-            CollectionAssert.Contains(parameters, "content_type=application/x-www-form-urlencoded");
+            CollectionAssert.Contains(parameters, "content_type=application/json");
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace EasyPostTest {
             List<String> parameters = client.PrepareRequest(request).Parameters.Select(parameter => parameter.ToString()).ToList();
             CollectionAssert.Contains(parameters, "user_agent=EasyPost/v2 CSharp/" + client.version);
             CollectionAssert.Contains(parameters, "authorization=Bearer someapikey");
-            CollectionAssert.Contains(parameters, "content_type=application/x-www-form-urlencoded");
+            CollectionAssert.Contains(parameters, "content_type=application/json");
         }
     }
 }

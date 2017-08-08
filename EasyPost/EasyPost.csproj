@@ -111,7 +111,6 @@
     <Compile Include="Rate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="EasyPost.pfx" />
     <None Include="packages.config" />
   </ItemGroup>

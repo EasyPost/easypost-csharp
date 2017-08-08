@@ -42,7 +42,7 @@ namespace EasyPost {
         /// <returns>EasyPost.Parcel instance.</returns>
         public static Parcel Create(Dictionary<string, object> parameters) {
             Request request = new Request("v2/parcels", Method.POST);
-            request.AddBody(parameters, "parcel");
+            request.AddBody(new Dictionary<string, object>() { { "parcel", parameters } });
 
             return request.Execute<Parcel>();
         }

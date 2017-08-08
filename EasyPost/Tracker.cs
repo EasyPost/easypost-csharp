@@ -49,7 +49,7 @@ namespace EasyPost {
                 { "tracking_code", trackingCode }, { "carrier", carrier }
             };
 
-            request.AddBody(parameters, "tracker");
+            request.AddBody(new Dictionary<string, object>() { { "tracker", parameters } });
 
             return request.Execute<Tracker>();
         }

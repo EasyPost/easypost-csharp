@@ -146,7 +146,7 @@ namespace EasyPostTest {
             Assert.IsNotNull(address.id);
             Assert.AreEqual(address.company, "SIMPLER POSTAGE INC");
             Assert.IsNull(address.name);
-            Assert.IsTrue((bool)address.residential);
+            Assert.IsFalse((bool)address.residential);
         }
 
         [TestMethod]

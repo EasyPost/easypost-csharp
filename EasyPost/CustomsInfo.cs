@@ -48,7 +48,7 @@ namespace EasyPost {
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         public static CustomsInfo Create(Dictionary<string, object> parameters) {
             Request request = new Request("v2/customs_infos", Method.POST);
-            request.AddBody(parameters, "customs_info");
+            request.AddBody(new Dictionary<string, object>() { { "customs_info", parameters } });
 
             return request.Execute<CustomsInfo>();
         }

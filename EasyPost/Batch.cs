@@ -46,7 +46,7 @@ namespace EasyPost {
             parameters = parameters ?? new Dictionary<string, object>();
 
             Request request = new Request("v2/batches", Method.POST);
-            request.AddBody(parameters, "batch");
+            request.AddBody(new Dictionary<string, object>() { { "batch", parameters } });
 
             return request.Execute<Batch>();
         }
@@ -59,8 +59,8 @@ namespace EasyPost {
             Request request = new Request("v2/batches/{id}/add_shipments", Method.POST);
             request.AddUrlSegment("id", id);
 
-            List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
-            request.AddBody(body, "shipments");
+            List<Dictionary<string, object>> shipments = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
+            request.AddBody(new Dictionary<string, object>() { { "shipments", shipments } });
 
             Merge(request.Execute<Batch>());
         }
@@ -81,8 +81,8 @@ namespace EasyPost {
             Request request = new Request("v2/batches/{id}/remove_shipments", Method.POST);
             request.AddUrlSegment("id", id);
 
-            List<Dictionary<string, object>> body = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
-            request.AddBody(body, "shipments");
+            List<Dictionary<string, object>> shipments = shipmentIds.Select(shipmentId => new Dictionary<string, object>() { { "id", shipmentId } }).ToList();
+            request.AddBody(new Dictionary<string, object>() { { "shipments", shipments } });
 
             Merge(request.Execute<Batch>());
         }
@@ -114,14 +114,12 @@ namespace EasyPost {
             Request request = new Request("v2/batches/{id}/label", Method.POST);
             request.AddUrlSegment("id", id);
 
-            List<Tuple<string, string>> body = new List<Tuple<string, string>>() {
-                new Tuple<string, string>("file_format", fileFormat)
-            };
+            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "file_format", fileFormat } };
 
             if (orderBy != null)
-                body.Add(new Tuple<string, string>("order_by", orderBy));
+                parameters["order_by"] = orderBy;
 
-            request.AddBody(body);
+            request.AddQueryString(parameters);
             Merge(request.Execute<Batch>());
         }
 

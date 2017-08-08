@@ -44,7 +44,7 @@ namespace EasyPost {
         /// <returns>EasyPost.Webhook instance.</returns>
         public static Webhook Create(Dictionary<string, object> parameters) {
             Request request = new Request("v2/webhooks", Method.POST);
-            request.AddBody(parameters, "webhook");
+            request.AddBody(new Dictionary<string, object>() { { "webhook", parameters } });
 
             return request.Execute<Webhook>();
         }

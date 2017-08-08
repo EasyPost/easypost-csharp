@@ -50,7 +50,7 @@ namespace EasyPost {
             };
 
             Request request = new Request("v2/scan_forms", Method.POST);
-            request.AddBody(parameters, "scan_form");
+            request.AddBody(new Dictionary<string, object>() { { "scan_form", parameters } });
 
             return request.Execute<ScanForm>();
         }

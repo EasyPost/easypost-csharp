@@ -47,7 +47,7 @@ namespace EasyPost {
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         public static CarrierAccount Create(Dictionary<string, object> parameters) {
             Request request = new Request("v2/carrier_accounts", Method.POST);
-            request.AddBody(parameters, "carrier_account");
+            request.AddBody(new Dictionary<string, object>() { { "carrier_account", parameters } });
 
             return request.Execute<CarrierAccount>();
         }
@@ -69,7 +69,7 @@ namespace EasyPost {
         public void Update(Dictionary<string, object> parameters) {
             Request request = new Request("v2/carrier_accounts/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
-            request.AddBody(parameters, "carrier_account");
+            request.AddBody(new Dictionary<string, object>() { { "carrier_account", parameters } });
 
             Merge(request.Execute<CarrierAccount>());
         }

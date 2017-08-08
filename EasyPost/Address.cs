@@ -114,7 +114,7 @@ namespace EasyPost {
 
         private static Address sendCreate(Dictionary<string, object> parameters, List<string> verifications = null, List<string> strictVerifications = null) {
             Request request = new Request("v2/addresses", Method.POST);
-            request.AddBody(parameters, "address");
+            request.AddBody(new Dictionary<string, object>() { { "address", parameters } });
 
             foreach (string verification in verifications ?? new List<string>()) {
                 request.AddParameter("verify[]", verification, ParameterType.QueryString);

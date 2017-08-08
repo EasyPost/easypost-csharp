@@ -67,7 +67,7 @@ namespace EasyPost {
 
         private static Pickup sendCreate(Dictionary<string, object> parameters) {
             Request request = new Request("v2/pickups", Method.POST);
-            request.AddBody(parameters, "pickup");
+            request.AddBody(new Dictionary<string, object>() { { "pickup", parameters } });
 
             return request.Execute<Pickup>();
         }
@@ -80,10 +80,7 @@ namespace EasyPost {
         public void Buy(string carrier, string service) {
             Request request = new Request("v2/pickups/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
-            request.AddBody(new List<Tuple<string, string>>() {
-                new Tuple<string, string>("carrier", carrier),
-                new Tuple<string, string>("service", service)
-            });
+            request.AddQueryString(new Dictionary<string, object>() { { "carrier", carrier }, { "service", service } });
 
             Merge(request.Execute<Pickup>());
         }
