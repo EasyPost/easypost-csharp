@@ -183,28 +183,6 @@ namespace EasyPost {
         }
 
         /// <summary>
-        /// Generate a stamp for this shipment.
-        /// </summary>
-        public void GenerateStamp() {
-            Request request = new Request("shipments/{id}/stamp");
-            request.AddUrlSegment("id", id);
-
-            Shipment result = request.Execute<Shipment>();
-            stamp_url = result.stamp_url;
-        }
-
-        /// <summary>
-        /// Generate a barcode for this shipment.
-        /// </summary>
-        public void GenerateBarcode() {
-            Request request = new Request("shipments/{id}/barcode");
-            request.AddUrlSegment("id", id);
-
-            Shipment result = request.Execute<Shipment>();
-            barcode_url = result.barcode_url;
-        }
-
-        /// <summary>
         /// Send a refund request to the carrier the shipment was purchased from.
         /// </summary>
         public void Refund() {

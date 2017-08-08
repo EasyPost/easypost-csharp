@@ -509,16 +509,6 @@
             </summary>
             <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         </member>
-        <member name="M:EasyPost.Shipment.GenerateStamp">
-            <summary>
-            Generate a stamp for this shipment.
-            </summary>
-        </member>
-        <member name="M:EasyPost.Shipment.GenerateBarcode">
-            <summary>
-            Generate a barcode for this shipment.
-            </summary>
-        </member>
         <member name="M:EasyPost.Shipment.Refund">
             <summary>
             Send a refund request to the carrier the shipment was purchased from.

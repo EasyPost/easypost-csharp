@@ -190,17 +190,11 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestGenerateLabelStampBarcode() {
+        public void TestGenerateLabel() {
             Shipment shipment = BuyShipment();
 
             shipment.GenerateLabel("pdf");
             Assert.IsNotNull(shipment.postage_label);
-
-            shipment.GenerateStamp();
-            Assert.IsNotNull(shipment.stamp_url);
-
-            shipment.GenerateBarcode();
-            Assert.IsNotNull(shipment.barcode_url);
         }
 
         [TestMethod]
