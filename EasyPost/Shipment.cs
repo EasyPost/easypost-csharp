@@ -34,9 +34,9 @@ namespace EasyPost {
         public string batch_status { get; set; }
         public string batch_message { get; set; }
         public string usps_zone { get; set; }
-        public string stamp_url { get; set; }
-        public string barcode_url { get; set; }
         public List<CarrierAccount> carrier_accounts { get; set; }
+        public string batch_id { get; set; }
+        public string order_id { get; set; }
 
         /// <summary>
         /// Get a paginated list of shipments.
