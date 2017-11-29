@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace EasyPostTest {
     [TestClass]
     public class ShipmentTest {
-        Dictionary<string, object> parameters, toAddress, fromAddress;
+        Dictionary<string, object> parameters, options, toAddress, fromAddress;
 
         [TestInitialize]
         public void Initialize() {
@@ -32,6 +32,7 @@ namespace EasyPostTest {
                 { "country", "US" },
                 { "zip", "94102" }
             };
+            options = new Dictionary<string, object>();
             parameters = new Dictionary<string, object>() {
                 {"parcel", new Dictionary<string, object>() {
                     { "length", 8 },
@@ -42,7 +43,7 @@ namespace EasyPostTest {
                 { "to_address", toAddress },
                 { "from_address", fromAddress },
                 { "reference", "ShipmentRef" },
-                { "options", new Dictionary<string, object>() }
+                { "options", options }
             };
         }
 
@@ -180,6 +181,13 @@ namespace EasyPostTest {
 
             shipment.Insure(100.1);
             Assert.AreNotEqual(shipment.insurance, 100.1);
+        }
+
+        [TestMethod]
+        public void TestPostageInline() {
+            options["postage_label_inline"] = true;
+            Shipment shipment = BuyShipment();
+            Assert.IsNotNull(shipment.postage_label.label_file);
         }
 
         [TestMethod]
