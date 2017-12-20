@@ -108,11 +108,23 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestOptions() {
-            String tomorrow = DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm:ssZ");
-            ((Dictionary<string, object>)parameters["options"])["label_date"] = tomorrow;
+            string tomorrow = DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm:ssZ");
+            options["label_date"] = tomorrow;
+            options["print_custom"] = new List<Dictionary<string, object>>() {
+                new Dictionary<string, object>() {
+                    { "value", "value" },
+                    { "name", "name" },
+                    { "barcode", true }
+                }
+            };
+
+
             Shipment shipment = Shipment.Create(parameters);
 
             Assert.AreEqual(((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:ssZ"), tomorrow);
+            Assert.AreEqual(shipment.options.print_custom[0]["value"], "value");
+            Assert.AreEqual(shipment.options.print_custom[0]["name"], "name");
+            Assert.AreEqual(shipment.options.print_custom[0]["barcode"], "True");
         }
 
         [TestMethod]
