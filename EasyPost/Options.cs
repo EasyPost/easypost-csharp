@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EasyPost {
     public class Options : Resource {
@@ -53,6 +54,8 @@ namespace EasyPost {
         public string print_custom_1_code { get; set; }
         public string print_custom_2_code { get; set; }
         public string print_custom_3_code { get; set; }
+        public List<Dictionary<string, object>> print_custom { get; set;}
+        public bool peel_and_return { get; set; }
         public bool? print_custom_1_barcode { get; set; }
         public bool? print_custom_2_barcode { get; set; }
         public bool? print_custom_3_barcode { get; set; }
