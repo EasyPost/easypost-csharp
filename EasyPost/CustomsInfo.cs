@@ -25,7 +25,7 @@ namespace EasyPost {
         /// <param name="id">String representing a CustomsInfo. Starts with "cstinfo_".</param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         public static CustomsInfo Retrieve(string id) {
-            Request request = new Request("customs_infos/{id}");
+            Request request = new Request("v2/customs_infos/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<CustomsInfo>();
@@ -47,8 +47,8 @@ namespace EasyPost {
         /// </param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         public static CustomsInfo Create(Dictionary<string, object> parameters) {
-            Request request = new Request("customs_infos", Method.POST);
-            request.AddBody(parameters, "customs_info");
+            Request request = new Request("v2/customs_infos", Method.POST);
+            request.AddBody(new Dictionary<string, object>() { { "customs_info", parameters } });
 
             return request.Execute<CustomsInfo>();
         }

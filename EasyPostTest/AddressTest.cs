@@ -10,7 +10,7 @@ namespace EasyPostTest {
 
         [TestInitialize]
         public void Initialize() {
-            ClientManager.SetCurrent("cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi");
+            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
             address = new Address() {
                 company = "Simpler Postage Inc",
                 street1 = "164 Townsend Street",
@@ -146,7 +146,7 @@ namespace EasyPostTest {
             Assert.IsNotNull(address.id);
             Assert.AreEqual(address.company, "SIMPLER POSTAGE INC");
             Assert.IsNull(address.name);
-            Assert.IsTrue((bool)address.residential);
+            Assert.IsFalse((bool)address.residential);
         }
 
         [TestMethod]

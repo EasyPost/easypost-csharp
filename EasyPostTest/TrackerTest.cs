@@ -1,12 +1,13 @@
 ﻿using EasyPost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace EasyPostTest {
     [TestClass]
     public class TrackerTest {
         [TestInitialize]
         public void Initialize() {
-            ClientManager.SetCurrent("cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi");
+            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
         }
 
         [TestMethod]
@@ -25,7 +26,7 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestList() {
-            TrackerList trackerList = Tracker.List();
+            TrackerList trackerList = Tracker.List(new Dictionary<string, object>() { { "page_size", 1 } });
             Assert.AreNotEqual(0, trackerList.trackers.Count);
 
             TrackerList nextTrackerList = trackerList.Next();

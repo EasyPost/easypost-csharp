@@ -35,7 +35,7 @@ namespace EasyPost {
         /// <param name="id">String representing an Address. Starts with "adr_".</param>
         /// <returns>EasyPost.Address instance.</returns>
         public static Address Retrieve(string id) {
-            Request request = new Request("addresses/{id}");
+            Request request = new Request("v2/addresses/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Address>();
@@ -113,8 +113,8 @@ namespace EasyPost {
         }
 
         private static Address sendCreate(Dictionary<string, object> parameters, List<string> verifications = null, List<string> strictVerifications = null) {
-            Request request = new Request("addresses", Method.POST);
-            request.AddBody(parameters, "address");
+            Request request = new Request("v2/addresses", Method.POST);
+            request.AddBody(new Dictionary<string, object>() { { "address", parameters } });
 
             foreach (string verification in verifications ?? new List<string>()) {
                 request.AddParameter("verify[]", verification, ParameterType.QueryString);
@@ -135,7 +135,7 @@ namespace EasyPost {
             if (id == null)
                 Create();
 
-            Request request = new Request("addresses/{id}/verify");
+            Request request = new Request("v2/addresses/{id}/verify");
             request.RootElement = "address";
             request.AddUrlSegment("id", id);
 

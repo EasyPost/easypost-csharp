@@ -21,7 +21,7 @@ namespace EasyPost {
         /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
         /// <returns>EasyPost.Parcel instance.</returns>
         public static Parcel Retrieve(string id) {
-            Request request = new Request("parcels/{id}");
+            Request request = new Request("v2/parcels/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Parcel>();
@@ -41,8 +41,8 @@ namespace EasyPost {
         /// </param>
         /// <returns>EasyPost.Parcel instance.</returns>
         public static Parcel Create(Dictionary<string, object> parameters) {
-            Request request = new Request("parcels", Method.POST);
-            request.AddBody(parameters, "parcel");
+            Request request = new Request("v2/parcels", Method.POST);
+            request.AddBody(new Dictionary<string, object>() { { "parcel", parameters } });
 
             return request.Execute<Parcel>();
         }

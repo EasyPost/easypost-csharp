@@ -421,6 +421,7 @@
             Cancel this pickup.
             </summary>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:EasyPost.Rating.Create(System.Collections.Generic.Dictionary{System.String,System.Object})" -->
         <member name="M:EasyPost.ScanForm.List(System.Collections.Generic.Dictionary{System.String,System.Object})">
             <summary>
             Get a paginated list of scan forms.

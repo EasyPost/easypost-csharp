@@ -16,7 +16,7 @@ namespace EasyPost {
         public Dictionary<string, object> test_credentials { get; set; }
 
         public static List<CarrierAccount> List() {
-            Request request = new Request("carrier_accounts");
+            Request request = new Request("v2/carrier_accounts");
             return request.Execute<List<CarrierAccount>>();
         }
 
@@ -26,7 +26,7 @@ namespace EasyPost {
         /// <param name="id">String representing a carrier account. Starts with "ca_".</param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         public static CarrierAccount Retrieve(string id) {
-            Request request = new Request("carrier_accounts/{id}");
+            Request request = new Request("v2/carrier_accounts/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<CarrierAccount>();
@@ -46,8 +46,8 @@ namespace EasyPost {
         /// </param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         public static CarrierAccount Create(Dictionary<string, object> parameters) {
-            Request request = new Request("carrier_accounts", Method.POST);
-            request.AddBody(parameters, "carrier_account");
+            Request request = new Request("v2/carrier_accounts", Method.POST);
+            request.AddBody(new Dictionary<string, object>() { { "carrier_account", parameters } });
 
             return request.Execute<CarrierAccount>();
         }
@@ -56,7 +56,7 @@ namespace EasyPost {
         /// Remove this CarrierAccount from your account.
         /// </summary>
         public void Destroy() {
-            Request request = new Request("carrier_accounts/{id}", Method.DELETE);
+            Request request = new Request("v2/carrier_accounts/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
 
             request.Execute();
@@ -67,9 +67,9 @@ namespace EasyPost {
         /// </summary>
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
         public void Update(Dictionary<string, object> parameters) {
-            Request request = new Request("carrier_accounts/{id}", Method.PUT);
+            Request request = new Request("v2/carrier_accounts/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
-            request.AddBody(parameters, "carrier_account");
+            request.AddBody(new Dictionary<string, object>() { { "carrier_account", parameters } });
 
             Merge(request.Execute<CarrierAccount>());
         }
