@@ -22,6 +22,17 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestCRUD() {
+            try {
+                User.Create(new Dictionary<string, object>() { { "name", "foo" } });
+                Assert.Fail();
+            } catch (HttpException e) {
+                Assert.AreEqual("USER.INVALID", e.Code);
+                Assert.AreEqual("The user record was invalid and could not be saved.", e.Message);
+                Assert.AreEqual(1, e.Errors.Count);
+                Assert.AreEqual("name", e.Errors[0].field);
+                Assert.AreEqual("First and last name required.", e.Errors[0].message);
+            }
+
             User user = User.Create(new Dictionary<string, object>() { { "name", "Test Name" } });
             Assert.AreEqual(user.api_keys.Count, 2);
             Assert.IsNotNull(user.id);
