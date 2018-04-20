@@ -12,6 +12,7 @@ namespace EasyPost {
         public string label_size { get; set; }
         public string label_type { get; set; }
         public string label_url { get; set; }
+        public string label_file { get; set; }
         public string label_file_type { get; set; }
         public string label_pdf_url { get; set; }
         public string label_epl2_url { get; set; }

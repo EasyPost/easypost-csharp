@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace EasyPostTest {
     [TestClass]
     public class ShipmentTest {
-        Dictionary<string, object> parameters, toAddress, fromAddress;
+        Dictionary<string, object> parameters, options, toAddress, fromAddress;
 
         [TestInitialize]
         public void Initialize() {
@@ -32,6 +32,7 @@ namespace EasyPostTest {
                 { "country", "US" },
                 { "zip", "94102" }
             };
+            options = new Dictionary<string, object>();
             parameters = new Dictionary<string, object>() {
                 {"parcel", new Dictionary<string, object>() {
                     { "length", 8 },
@@ -42,7 +43,7 @@ namespace EasyPostTest {
                 { "to_address", toAddress },
                 { "from_address", fromAddress },
                 { "reference", "ShipmentRef" },
-                { "options", new Dictionary<string, object>() }
+                { "options", options }
             };
         }
 
@@ -107,11 +108,23 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestOptions() {
-            String tomorrow = DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm:ssZ");
-            ((Dictionary<string, object>)parameters["options"])["label_date"] = tomorrow;
+            string tomorrow = DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm:ssZ");
+            options["label_date"] = tomorrow;
+            options["print_custom"] = new List<Dictionary<string, object>>() {
+                new Dictionary<string, object>() {
+                    { "value", "value" },
+                    { "name", "name" },
+                    { "barcode", true }
+                }
+            };
+
+
             Shipment shipment = Shipment.Create(parameters);
 
             Assert.AreEqual(((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:ssZ"), tomorrow);
+            Assert.AreEqual(shipment.options.print_custom[0]["value"], "value");
+            Assert.AreEqual(shipment.options.print_custom[0]["name"], "name");
+            Assert.AreEqual(shipment.options.print_custom[0]["barcode"], "True");
         }
 
         // 
@@ -181,6 +194,13 @@ namespace EasyPostTest {
 
             shipment.Insure(100.1);
             Assert.AreNotEqual(shipment.insurance, 100.1);
+        }
+
+        [TestMethod]
+        public void TestPostageInline() {
+            options["postage_label_inline"] = true;
+            Shipment shipment = BuyShipment();
+            Assert.IsNotNull(shipment.postage_label.label_file);
         }
 
         [TestMethod]
