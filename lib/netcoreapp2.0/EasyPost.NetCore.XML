@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>EasyPost.NetCore</name>
+        <name>EasyPost.NetCore20</name>
     </assembly>
     <members>
         <member name="M:EasyPost.Address.Retrieve(System.String)">
@@ -374,6 +374,7 @@
             <param name="id">String representing a Rate. Starts with "rate_".</param>
             <returns>EasyPost.Rate instance.</returns>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:EasyPost.Rating.Create(System.Collections.Generic.Dictionary{System.String,System.Object})" -->
         <member name="M:EasyPost.Report.Retrieve(System.String,System.String)">
             <summary>
             Retrieve a Report from its id and type.

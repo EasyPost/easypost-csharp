@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPost.Net40", "EasyPost.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPost.Net35", "EasyPost.Net35\EasyPost.Net35.csproj", "{174DF282-06C7-43F7-9401-8A5DCAAC85E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPost.NetCore", "EasyPost.NetCore\EasyPost.NetCore.csproj", "{9570F38B-8092-4511-BB52-7DADDEE24F2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyPost.NetCore20", "EasyPost.NetCore20\EasyPost.NetCore20.csproj", "{C1701BBC-5D36-4440-92FF-147276BDF177}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{174DF282-06C7-43F7-9401-8A5DCAAC85E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{174DF282-06C7-43F7-9401-8A5DCAAC85E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{174DF282-06C7-43F7-9401-8A5DCAAC85E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9570F38B-8092-4511-BB52-7DADDEE24F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9570F38B-8092-4511-BB52-7DADDEE24F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9570F38B-8092-4511-BB52-7DADDEE24F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9570F38B-8092-4511-BB52-7DADDEE24F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1701BBC-5D36-4440-92FF-147276BDF177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1701BBC-5D36-4440-92FF-147276BDF177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1701BBC-5D36-4440-92FF-147276BDF177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1701BBC-5D36-4440-92FF-147276BDF177}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,13 +6,13 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.0": {
-      "EasyPost.NetCore/1.0.0": {
+      "EasyPost.NetCore20/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "11.0.1",
           "RestSharp": "106.2.1"
         },
         "runtime": {
-          "EasyPost.NetCore.dll": {}
+          "EasyPost.NetCore20.dll": {}
         }
       },
       "Newtonsoft.Json/11.0.1": {
@@ -32,7 +32,7 @@
     }
   },
   "libraries": {
-    "EasyPost.NetCore/1.0.0": {
+    "EasyPost.NetCore20/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

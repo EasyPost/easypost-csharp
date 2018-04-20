@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <RootNamespace>EasyPost.NetCore</RootNamespace>
-    <AssemblyName>EasyPost.NetCore</AssemblyName>
+    <RootNamespace>EasyPost.NetCore20</RootNamespace>
+    <AssemblyName>EasyPost.NetCore20</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
@@ -20,16 +20,8 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>EasyPost.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
-    <PackageReference Include="RestSharp" Version="106.2.1" />
-  </ItemGroup>
   <ItemGroup>
     <Compile Include="..\EasyPost\Address.cs">
       <Link>Address.cs</Link>
@@ -86,7 +78,7 @@
       <Link>Order.cs</Link>
     </Compile>
     <Compile Include="..\EasyPost\Options.cs">
-      <Link>Order.cs</Link>
+      <Link>Options.cs</Link>
     </Compile>
     <Compile Include="..\EasyPost\Parcel.cs">
       <Link>Parcel.cs</Link>
@@ -99,6 +91,9 @@
     </Compile>
     <Compile Include="..\EasyPost\Rate.cs">
       <Link>Rate.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\Rating.cs">
+      <Link>Rating.cs</Link>
     </Compile>
     <Compile Include="..\EasyPost\Request.cs">
       <Link>Request.cs</Link>
@@ -167,5 +162,12 @@
       <Link>Error.cs</Link>
     </Compile>
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="EasyPost.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="RestSharpSigned" Version="105.2.3" />
+  </ItemGroup>
 </Project>

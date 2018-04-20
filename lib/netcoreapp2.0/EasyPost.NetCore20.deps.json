@@ -1,0 +1,51 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "cc10939f1722d37dedde94a8f613916d182ab9dd"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "EasyPost.NetCore20/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2",
+          "RestSharpSigned": "105.2.3"
+        },
+        "runtime": {
+          "EasyPost.NetCore20.dll": {}
+        }
+      },
+      "Newtonsoft.Json/11.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "RestSharpSigned/105.2.3": {
+        "runtime": {
+          "lib/net46/RestSharp.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EasyPost.NetCore20/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/11.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+      "path": "newtonsoft.json/11.0.2",
+      "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
+    },
+    "RestSharpSigned/105.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KJg/LHj1Rf+sUyRgGM0VDw27JHBvv7LXJLDDZkUtHwuBWEcAM9co5t/S7jcx48wsYjwRqcmLaagDBm8spcTUFQ==",
+      "path": "restsharpsigned/105.2.3",
+      "hashPath": "restsharpsigned.105.2.3.nupkg.sha512"
+    }
+  }
+}
