@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
+using System.Linq;
 
 namespace EasyPost {
     public class Client {
@@ -12,7 +13,7 @@ namespace EasyPost {
 
         internal RestClient client;
         internal ClientConfiguration configuration;
-        
+
         internal Client(ClientConfiguration clientConfiguration) {
             System.Net.ServicePointManager.SecurityProtocol = Security.GetProtocol();
 
@@ -35,12 +36,23 @@ namespace EasyPost {
             int StatusCode = Convert.ToInt32(response.StatusCode);
 
             if (StatusCode > 399) {
+                Dictionary<string, Dictionary<string, object>> Body;
+                List<Error> Errors;
+
                 try {
-                    Dictionary<string, Dictionary<string, object>> Body = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
-                    throw new HttpException(StatusCode, (string)Body["error"]["message"], (string)Body["error"]["code"]);
-                } catch {
-                    throw new HttpException(StatusCode, "RESPONSE.PARSE_ERROR", response.Content);
+                    Body = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
+                    Errors = JsonConvert.DeserializeObject<List<Error>>(JsonConvert.SerializeObject(Body["error"]["errors"]));
                 }
+                catch {
+                    throw new HttpException(StatusCode, "RESPONSE.PARSE_ERROR", response.Content, new List<Error>());
+                }
+
+                throw new HttpException(
+                    StatusCode,
+                    (string)Body["error"]["code"],
+                    (string)Body["error"]["message"],
+                    Errors
+                );
             }
 
             return response.Data;

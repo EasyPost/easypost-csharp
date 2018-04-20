@@ -10,10 +10,8 @@ namespace EasyPost {
         public string message { get; set; }
         public List<Error> errors { get; set; }
 
-        public static new T Load<T>(string json) where T : Resource
-        {
-            var str = JObject.Parse(json).SelectToken("error").ToString();
-            return JsonConvert.DeserializeObject<T>(str);
+        public static new T Load<T>(string json) where T : Resource {
+            return JsonConvert.DeserializeObject<T>(json);
         }
     }
 }
