@@ -7,7 +7,7 @@ namespace EasyPostTest {
     public class EventTest {
         [TestInitialize]
         public void Initialize() {
-            ClientManager.SetCurrent("cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi");
+            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
         }
 
         [TestMethod]
@@ -16,9 +16,9 @@ namespace EasyPostTest {
         }
             
         [TestMethod]
-        public void TestRetrieve() {
-            Event e = Event.Retrieve("evt_8ff440c1bcef40c6a825171d190c3bdb");
-            Assert.AreEqual(e.result["id"], "sf_8b4c8eb46fa0459e9e7be9f2e784da03");
+         public void TestRetrieve() {
+            Event e = Event.Retrieve("evt_d0000c1a9c6c4614949af6931ea9fac8");
+            Assert.AreEqual(e.result["id"], "shprep_ee1e22402e0b4331be620301b517186f");
         }
     }
 }

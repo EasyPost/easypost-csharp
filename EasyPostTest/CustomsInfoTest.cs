@@ -10,7 +10,7 @@ namespace EasyPostTest {
     public class CustomsInfoTest {
         [TestInitialize]
         public void Initialize() {
-            ClientManager.SetCurrent("cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi");
+            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
         }
 
         [TestMethod]
@@ -31,7 +31,7 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestCreateWithIResource() {
-            CustomsItem item = new CustomsItem() { description = "description" };
+            CustomsItem item = new CustomsItem() { description = "description", quantity = 1 };
             CustomsInfo info = CustomsInfo.Create(
                 new Dictionary<string, object>() {
                     { "customs_certify", true },

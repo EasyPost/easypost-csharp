@@ -9,11 +9,11 @@ namespace EasyPostTest {
     public class PickupTest {
         Address address;
         Shipment shipment;
-        Dictionary<string, object> parameters, toAddress, fromAddress;
+        Dictionary<string, object> parameters, parcel, toAddress, fromAddress;
 
         [TestInitialize]
         public void Initialize() {
-            ClientManager.SetCurrent("WzJHJ6SoPnBVYu0ae4aIHA");
+            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
 
             address = new Address() {
                 company = "Simpler Postage Inc",
@@ -26,23 +26,45 @@ namespace EasyPostTest {
                 phone = "1234567890"
             };
 
+            parcel = new Dictionary<string, object>() {
+                { "length", 8 },
+                { "width", 6 },
+                { "height", 5 },
+                { "weight", 10 }
+            };
             toAddress = new Dictionary<string, object>() {
-                {"company", "Simpler Postage Inc"}, {"street1", "164 Townsend Street"}, {"street2", "Unit 1"},
-                {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94107"},
+                { "company", "Simpler Postage Inc" },
+                { "street1", "164 Townsend Street" },
+                { "street2", "Unit 1" },
+                { "city", "San Francisco" },
+                { "state", "CA" },
+                { "country", "US" },
+                { "zip", "94107" },
             };
             fromAddress = new Dictionary<string, object>() {
-                {"name", "Andrew Tribone"}, {"street1", "480 Fell St"}, {"street2", "#3"},
-                {"city", "San Francisco"}, {"state", "CA"}, {"country", "US"}, {"zip", "94102"}
+                { "name", "Andrew Tribone" },
+                { "street1", "480 Fell St" },
+                { "street2", "#3" },
+                { "city", "San Francisco" },
+                { "state", "CA" },
+                { "country", "US" },
+                { "zip", "94102" }
             };
             shipment = Shipment.Create(new Dictionary<string, object>() {
-                {"parcel", new Dictionary<string, object>() {{"length", 8}, {"width", 6}, {"height", 5}, {"weight", 10}}},
-                {"to_address", toAddress}, {"from_address", fromAddress}, {"reference", "ShipmentRef"}
+                { "parcel", parcel },
+                { "to_address", toAddress },
+                { "from_address", fromAddress },
+                { "reference", "ShipmentRef" }
             });
             shipment.Buy(shipment.LowestRate());
 
             parameters = new Dictionary<string, object>() {
-                {"is_account_address", false}, {"address", address}, {"shipment", shipment},
-                {"min_datetime", DateTime.Now}, {"max_datetime", DateTime.Now}
+                { "is_account_address", false },
+                { "instructions", "In mailbox." },
+                { "address", address },
+                { "shipment", shipment },
+                { "min_datetime", DateTime.Now.AddDays(1) },
+                { "max_datetime", DateTime.Now.AddDays(1) }
             };
         }
 
@@ -61,7 +83,7 @@ namespace EasyPostTest {
         public void TestBuyAndCancel() {
             Pickup pickup = Pickup.Create(parameters);
 
-            pickup.Buy("UPS", pickup.pickup_rates[0].service);
+            pickup.Buy(pickup.pickup_rates[0].carrier, pickup.pickup_rates[0].service);
             Assert.IsNotNull(pickup.confirmation);
 
             pickup.Cancel();

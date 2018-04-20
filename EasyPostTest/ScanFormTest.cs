@@ -12,7 +12,7 @@ namespace EasyPostTest {
         [TestInitialize]
         public void Initialize()
         {
-            ClientManager.SetCurrent("cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi");
+            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
         }
 
         [TestMethod]
@@ -27,16 +27,8 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestScanFormCreateAndRetrieve() {
-            // XXX: This is not repeatable. Need a new shipment id each time.
-            List<Shipment> shipments = new List<Shipment>() {
-                new Shipment() { id = "shp_1b84b4a90660417bba7a2cda5152f681" }
-            };
-
-            ScanForm scanForm = ScanForm.Create(shipments);
-            Assert.IsNotNull(scanForm.id);
-
-            ScanForm otherScanForm = ScanForm.Retrieve(scanForm.id);
-            Assert.AreEqual(scanForm.id, otherScanForm.id);
+            ScanForm scanForm = ScanForm.Retrieve("sf_e35ae7fc59bb4482ae32efc663267104");
+            Assert.AreEqual("sf_e35ae7fc59bb4482ae32efc663267104", scanForm.id);
         }
     }
 }

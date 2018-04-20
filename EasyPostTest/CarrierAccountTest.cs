@@ -1,9 +1,6 @@
 ﻿using EasyPost;
 
-using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPostTest {
@@ -11,24 +8,24 @@ namespace EasyPostTest {
     public class CarrierAccountTest {
         [TestInitialize]
         public void Initialize() {
-            ClientManager.SetCurrent("VJ63zukvLyxz92NKP1k0EQ");
+            ClientManager.SetCurrent("GxhY479LTioDWsGcEtSAfQ");
         }
 
         [TestMethod]
         public void TestRetrieve() {
-            CarrierAccount account = CarrierAccount.Retrieve("ca_7c7X1XzO");
-            Assert.AreEqual("ca_7c7X1XzO", account.id);
+            CarrierAccount account = CarrierAccount.Retrieve("ca_7642d249fdcf47bcb5da9ea34c96dfcf");
+            Assert.AreEqual("ca_7642d249fdcf47bcb5da9ea34c96dfcf", account.id);
         }
 
         [TestMethod]
         public void TestCRUD() {
             CarrierAccount account = CarrierAccount.Create(new Dictionary<string, object>() {
-                {"type", "EndiciaAccount"},
+                {"type", "UspsAccount"},
                 {"description", "description"}
             });
 
             Assert.IsNotNull(account.id);
-            Assert.AreEqual(account.type, "EndiciaAccount");
+            Assert.AreEqual(account.type, "UspsAccount");
 
             account.Update(new Dictionary<string, object>() { { "reference", "new-reference" } });
             Assert.AreEqual("new-reference", account.reference);
@@ -44,7 +41,7 @@ namespace EasyPostTest {
         [TestMethod]
         public void TestList() {
             List<CarrierAccount> accounts = CarrierAccount.List();
-            Assert.AreEqual(accounts[0].id, "ca_7c7X1XzO");
+            Assert.AreEqual(accounts[0].id, "ca_7642d249fdcf47bcb5da9ea34c96dfcf");
         }
     }
 }

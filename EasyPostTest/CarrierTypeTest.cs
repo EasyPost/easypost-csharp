@@ -9,7 +9,7 @@ namespace EasyPostTest {
     public class CarrierTypeTest {
         [TestInitialize]
         public void Initialize() {
-            ClientManager.SetCurrent("VJ63zukvLyxz92NKP1k0EQ");
+            ClientManager.SetCurrent("GxhY479LTioDWsGcEtSAfQ");
         }
 
         [TestMethod]

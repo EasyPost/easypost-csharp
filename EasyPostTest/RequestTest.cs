@@ -12,7 +12,7 @@ namespace EasyPostTest {
     public class RequestTest {
         [TestInitialize]
         public void Initialize() {
-            ClientManager.SetCurrent("cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi");
+            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
         }
 
         [TestMethod]

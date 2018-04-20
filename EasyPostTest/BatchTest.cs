@@ -15,7 +15,7 @@ namespace EasyPostTest {
 
         [TestInitialize]
         public void Initialize() {
-            ClientManager.SetCurrent("cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi");
+            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
 
             fromAddress = new Dictionary<string, object>() {
                 { "name", "Andrew Tribone" },
