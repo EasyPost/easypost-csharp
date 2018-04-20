@@ -16,7 +16,7 @@ namespace EasyPost {
         public string list_currency { get; set; }
         public string retail_currency { get; set; }
         public int est_delivery_days { get; set; }
-        public DateTime delivery_date {get; set; } 
+        public DateTime? delivery_date {get; set; } 
         public bool delivery_date_guaranteed {get; set;}
         public int delivery_days {get; set;}
         public string carrier { get; set; }
