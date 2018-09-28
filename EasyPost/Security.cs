@@ -6,7 +6,7 @@ namespace EasyPost {
 #if NET45
             return SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 #else
-            return SecurityProtocolType.Tls;
+            return (SecurityProtocolType)0x00000C00;
 #endif
         }
     }
