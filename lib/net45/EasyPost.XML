@@ -486,17 +486,19 @@
             Populate the rates property for this shipment
             </summary>
         </member>
-        <member name="M:EasyPost.Shipment.Buy(System.String)">
+        <member name="M:EasyPost.Shipment.Buy(System.String,System.String)">
             <summary>
             Purchase a label for this shipment with the given rate.
             </summary>
             <param name="rateId">The id of the rate to purchase the shipment with.</param>
+            <param name="insuranceValue">The value to insure the shipment for.</param>
         </member>
-        <member name="M:EasyPost.Shipment.Buy(EasyPost.Rate)">
+        <member name="M:EasyPost.Shipment.Buy(EasyPost.Rate,System.String)">
             <summary>
             Purchase a label for this shipment with the given rate.
             </summary>
             <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
+            <param name="insuranceValue">The value to insure the shipment for.</param>
         </member>
         <member name="M:EasyPost.Shipment.Insure(System.Double)">
             <summary>

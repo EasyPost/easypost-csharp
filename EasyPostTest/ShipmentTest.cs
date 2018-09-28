@@ -205,6 +205,15 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
+        public void TestBuyWithInsurance() {
+            Shipment shipment = Shipment.Create(parameters);
+            shipment.GetRates();
+            shipment.Buy(shipment.rates.First(), "100.00");
+
+            Assert.AreEqual(shipment.insurance, "100.00");
+        }
+
+        [TestMethod]
         public void TestPostageInline() {
             options["postage_label_inline"] = true;
             Shipment shipment = BuyShipment();
