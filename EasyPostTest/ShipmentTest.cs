@@ -117,7 +117,12 @@ namespace EasyPostTest {
                     { "barcode", true }
                 }
             };
-
+            options["payment"] = new Dictionary<string, string>() {
+                { "type", "THIRD_PARTY" },
+                { "account", "12345" },
+                { "postal_code", "54321" },
+                { "country", "US" }
+            };
 
             Shipment shipment = Shipment.Create(parameters);
 
@@ -125,6 +130,10 @@ namespace EasyPostTest {
             Assert.AreEqual(shipment.options.print_custom[0]["value"], "value");
             Assert.AreEqual(shipment.options.print_custom[0]["name"], "name");
             Assert.AreEqual(shipment.options.print_custom[0]["barcode"], true);
+            Assert.AreEqual(shipment.options.payment["type"], "THIRD_PARTY");
+            Assert.AreEqual(shipment.options.payment["account"], "12345");
+            Assert.AreEqual(shipment.options.payment["postal_code"], "54321");
+            Assert.AreEqual(shipment.options.payment["country"], "US");
         }
 
         // 
