@@ -136,7 +136,6 @@ namespace EasyPostTest {
             Assert.AreEqual(shipment.options.payment["country"], "US");
         }
 
-        // 
         [TestMethod]
         public void TestInstanceOptions() {
             DateTime tomorrow = DateTime.Now.AddDays(1);
