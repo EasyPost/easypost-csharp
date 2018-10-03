@@ -14,7 +14,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\lib\netcoreapp2.0\EasyPost.NetCore.XML</DocumentationFile>
+    <DocumentationFile>..\lib\netcoreapp2.0\EasyPost.NetCore20.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
