@@ -46,6 +46,8 @@ namespace EasyPost {
         public string machinable { get; set; }
         public bool? neutral_delivery { get; set; }
         public bool? non_contract { get; set; }
+        public string overlabel_construct_code { get; set; }
+        public string overlabel_original_tracking_number { get; set; }
         public Dictionary<string, object> payment { get; set; }
         public string po_sort { get; set; }
         public bool? postage_label_inline { set; get; }
