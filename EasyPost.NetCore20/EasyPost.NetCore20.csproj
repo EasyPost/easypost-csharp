@@ -21,6 +21,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>EasyPost.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyVersion>2.5.1.0</AssemblyVersion>
+    <FileVersion>2.5.1.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\EasyPost\Address.cs">
