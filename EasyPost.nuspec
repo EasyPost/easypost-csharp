@@ -28,6 +28,10 @@
         <dependency id="Newtonsoft.Json" version="11.0.2" />
         <dependency id="RestSharp" version="106.4.2" />
       </group>
+      <group targetFramework="netstandard2.0">
+        <dependency id="Newtonsoft.Json" version="11.0.2" />
+        <dependency id="RestSharp" version="106.4.2" />
+      </group>
     </dependencies>
   </metadata>
   <files>
@@ -39,5 +43,7 @@
     <file src="lib\net35\EasyPost.Net35.xml" target="lib\net35" />
     <file src="lib\netcoreapp2.0\EasyPost.NetCore20.dll" target="lib\netcoreapp2.0" />
     <file src="lib\netcoreapp2.0\EasyPost.NetCore20.xml" target="lib\netcoreapp2.0" />
+    <file src="lib\netstandard2.0\EasyPost.NetStandard20.dll" target="lib\netstandard2.0" />
+    <file src="lib\netstandard2.0\EasyPost.NetStandard20.xml" target="lib\netstandard2.0" />
   </files>
 </package>
