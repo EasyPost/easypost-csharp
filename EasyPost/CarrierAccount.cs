@@ -88,7 +88,7 @@ namespace EasyPost {
         public static CarrierAccount RegisterFedEx(Dictionary<string, object> parameters) {
             Request request = new Request("v2/carrier_accounts/register", Method.POST);
             // enforce type to ensure that attempts for other carriers fail
-            parameters["type"] = "FedExAccount";
+            parameters["type"] = "FedexAccount";
             request.AddBody(new Dictionary<string, object>() { { "carrier_account", parameters } });
 
             return request.Execute<CarrierAccount>();
