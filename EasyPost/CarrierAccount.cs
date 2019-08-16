@@ -73,5 +73,25 @@ namespace EasyPost {
 
             Merge(request.Execute<CarrierAccount>());
         }
+
+        /// <summary>
+        /// Register a FedEx CarrierAccount.
+        /// </summary>
+        /// <param name="parameters">
+        /// Optional dictionary containing parameters to create the carrier account with. Valid pairs:
+        ///   * {"description", string} Description of carrier account.
+        ///   * {"reference", string} External reference for carrier account.
+        ///   * {"registration_data", Dictionary<string, object>} FedEx Account Data
+        /// All invalid keys will be ignored.
+        /// </param>
+        /// <returns>EasyPost.CarrierAccount instance.</returns>
+        public static CarrierAccount RegisterFedEx(Dictionary<string, object> parameters) {
+            Request request = new Request("v2/carrier_accounts/register", Method.POST);
+            // enforce type to ensure that attempts for other carriers fail
+            parameters["type"] = "FedExAccount";
+            request.AddBody(new Dictionary<string, object>() { { "carrier_account", parameters } });
+
+            return request.Execute<CarrierAccount>();
+        }
     }
 }
