@@ -51,6 +51,16 @@ namespace EasyPost {
             return request.Execute<Batch>();
         }
 
+        public static BatchList List(Dictionary<string, object> parameters = null)
+        {
+            Request request = new Request("v2/batches");
+            request.AddQueryString(parameters ?? new Dictionary<string, object>());
+
+            BatchList batchList = request.Execute<BatchList>();
+            batchList.filters = parameters;
+            return batchList;
+        }
+
         /// <summary>
         /// Add shipments to the batch.
         /// </summary>
