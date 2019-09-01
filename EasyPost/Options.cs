@@ -46,6 +46,9 @@ namespace EasyPost {
         public string machinable { get; set; }
         public bool? neutral_delivery { get; set; }
         public bool? non_contract { get; set; }
+        public string overlabel_construct_code { get; set; }
+        public string overlabel_original_tracking_number { get; set; }
+        public Dictionary<string, object> payment { get; set; }
         public string po_sort { get; set; }
         public bool? postage_label_inline { set; get; }
         public string print_custom_1 { get; set; }
@@ -56,6 +59,7 @@ namespace EasyPost {
         public string print_custom_3_code { get; set; }
         public List<Dictionary<string, object>> print_custom { get; set;}
         public bool peel_and_return { get; set; }
+        public DateTime? pickup_min_datetime { get; set; }
         public bool? print_custom_1_barcode { get; set; }
         public bool? print_custom_2_barcode { get; set; }
         public bool? print_custom_3_barcode { get; set; }
@@ -66,6 +70,7 @@ namespace EasyPost {
         public string smartpost_hub { get; set; }
         public string smartpost_manifest { get; set; }
         public string special_rates_eligibility { get; set; }
+        public bool? suppress_etd { get; set; }
         public string commercial_invoice_signature { get; set; }
         public string parties_to_transaction_are_related { get; set; }
         public string import_state_tax_id { get; set; }

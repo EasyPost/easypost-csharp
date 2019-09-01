@@ -130,12 +130,19 @@ namespace EasyPost {
         /// Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
-        public void Buy(string rateId) {
+        /// <param name="insuranceValue">The value to insure the shipment for.</param>
+
+        public void Buy(string rateId, string insuranceValue = null) {
             Request request = new Request("v2/shipments/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
 
-            Dictionary<string, object> rate = new Dictionary<string, object>() { { "id", rateId } };
-            request.AddBody(new Dictionary<string, object>() { { "rate", rate } });
+            Dictionary<string, object> body = new Dictionary<string, object>() { { "rate", new Dictionary<string, object>() { { "id", rateId } } } };
+
+            if (insuranceValue != null) {
+                body["insurance"] = insuranceValue;
+            }
+
+            request.AddBody(body);
 
             Shipment result = request.Execute<Shipment>();
 
@@ -153,8 +160,9 @@ namespace EasyPost {
         /// Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
-        public void Buy(Rate rate) {
-            Buy(rate.id);
+        /// <param name="insuranceValue">The value to insure the shipment for.</param>
+        public void Buy(Rate rate, string insuranceValue = null) {
+            Buy(rate.id, insuranceValue);
         }
 
         /// <summary>

@@ -14,13 +14,15 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\lib\netcoreapp2.0\EasyPost.NetCore.XML</DocumentationFile>
+    <DocumentationFile>..\lib\netcoreapp2.0\EasyPost.NetCore20.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>EasyPost.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyVersion>2.5.1.1</AssemblyVersion>
+    <FileVersion>2.5.1.1</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\EasyPost\Address.cs">
@@ -168,6 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="RestSharpSigned" Version="105.2.3" />
+    <PackageReference Include="RestSharp" Version="106.4.2" />
   </ItemGroup>
 </Project>
