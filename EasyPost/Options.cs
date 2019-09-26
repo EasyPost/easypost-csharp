@@ -16,6 +16,7 @@ namespace EasyPost {
         public string carrier_insurance_amount { get; set; }
         public string carrier_notification_email { get; set; }
         public string carrier_notification_sms { get; set; }
+        public string certified_mail { get; set; }
         public string cod_address_id { get; set; }
         public string cod_amount { get; set; }
         public string cod_method { get; set; }
@@ -64,6 +65,9 @@ namespace EasyPost {
         public bool? print_custom_2_barcode { get; set; }
         public bool? print_custom_3_barcode { get; set; }
         public bool? print_rate { get; set; }
+        public bool? registered_mail { get; set; }
+        public double? registered_mail_amount { get; set; }
+        public bool? return_receipt { get; set; }
         public string return_service { get; set; }
         public bool? saturday_delivery { get; set; }
         public string settlement_method { get; set; }
