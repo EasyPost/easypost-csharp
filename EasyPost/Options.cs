@@ -67,7 +67,6 @@ namespace EasyPost {
         public bool? print_rate { get; set; }
         public bool? registered_mail { get; set; }
         public double? registered_mail_amount { get; set; }
-        public bool? restricted_delivery { get; set; }
         public bool? return_receipt { get; set; }
         public string return_service { get; set; }
         public bool? saturday_delivery { get; set; }
