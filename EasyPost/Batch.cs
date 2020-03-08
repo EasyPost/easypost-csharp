@@ -21,6 +21,28 @@ namespace EasyPost {
         public string message { get; set; }
 
         /// <summary>
+        /// Get a paginated list of shipments.
+        /// </summary>
+        /// Optional dictionary containing parameters to filter the list with. Valid pairs:
+        ///   * {"before_id", string} String representing a Batch. Starts with "batch_". Only retrieve shipments created before this id. Takes precedence over after_id.
+        ///   * {"after_id", string} String representing a Batch. Starts with "batch_". Only retrieve shipments created after this id.
+        ///   * {"start_datetime", DateTime} Starting time for the search.
+        ///   * {"end_datetime", DateTime} Ending time for the search.
+        ///   * {"page_size", int} Size of page. Default to 20.
+        /// All invalid keys will be ignored.
+        /// <param name="parameters">
+        /// </param>
+        /// <returns>Instance of EasyPost.ShipmentList</returns>
+        public static BatchList List(Dictionary<string, object> parameters = null) {
+            Request request = new Request("v2/batches");
+            request.AddQueryString(parameters ?? new Dictionary<string, object>());
+
+            BatchList batchList = request.Execute<BatchList>();
+            batchList.filters = parameters;
+            return batchList;
+        }
+
+        /// <summary>
         /// Retrieve a Batch from its id.
         /// </summary>
         /// <param name="id">String representing a Batch. Starts with "batch_".</param>

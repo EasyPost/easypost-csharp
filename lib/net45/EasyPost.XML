@@ -79,6 +79,21 @@
             All invalid keys will be ignored.
             </param>
         </member>
+        <member name="M:EasyPost.Batch.List(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Get a paginated list of shipments.
+            </summary>
+            Optional dictionary containing parameters to filter the list with. Valid pairs:
+              * {"before_id", string} String representing a Batch. Starts with "batch_". Only retrieve shipments created before this id. Takes precedence over after_id.
+              * {"after_id", string} String representing a Batch. Starts with "batch_". Only retrieve shipments created after this id.
+              * {"start_datetime", DateTime} Starting time for the search.
+              * {"end_datetime", DateTime} Ending time for the search.
+              * {"page_size", int} Size of page. Default to 20.
+            All invalid keys will be ignored.
+            <param name="parameters">
+            </param>
+            <returns>Instance of EasyPost.ShipmentList</returns>
+        </member>
         <member name="M:EasyPost.Batch.Retrieve(System.String)">
             <summary>
             Retrieve a Batch from its id.
@@ -138,6 +153,12 @@
             <summary>
             Asychronously generate a scan from for the batch.
             </summary>
+        </member>
+        <member name="M:EasyPost.BatchList.Next">
+            <summary>
+            Get the next page of batches based on the original parameters passed to Batch.List().
+            </summary>
+            <returns>A new EasyPost.BatchList instance.</returns>
         </member>
         <member name="M:EasyPost.CarrierAccount.Retrieve(System.String)">
             <summary>

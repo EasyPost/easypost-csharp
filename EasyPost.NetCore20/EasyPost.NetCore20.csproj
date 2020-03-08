@@ -35,6 +35,9 @@
     <Compile Include="..\EasyPost\Batch.cs">
       <Link>Batch.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\BatchList.cs">
+      <Link>BatchList.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\BatchShipment.cs">
       <Link>BatchShipment.cs</Link>
     </Compile>

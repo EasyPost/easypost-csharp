@@ -64,6 +64,7 @@
     <Compile Include="Address.cs" />
     <Compile Include="ApiKey.cs" />
     <Compile Include="Batch.cs" />
+    <Compile Include="BatchList.cs" />
     <Compile Include="BatchShipment.cs" />
     <Compile Include="CarrierAccount.cs" />
     <Compile Include="CarrierDetail.cs" />

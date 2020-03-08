@@ -127,5 +127,14 @@ namespace EasyPostTest {
 
             Assert.AreEqual(batch.state, "label_generating");
         }
+
+        [TestMethod]
+        public void TestList() {
+            BatchList batchList = Batch.List(new Dictionary<string, object>() { { "page_size", 1 } });
+            Assert.AreNotEqual(0, batchList.batches.Count);
+
+            BatchList nextBatchList = batchList.Next();
+            Assert.AreNotEqual(batchList.batches[0].id, nextBatchList.batches[0].id);
+        }
     }
 }
