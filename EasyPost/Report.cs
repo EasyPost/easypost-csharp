@@ -33,6 +33,9 @@ namespace EasyPost {
         /// <summary>
         /// Create a Report.
         /// </summary>
+        /// <param name="type">
+        /// The type of report, e.g. "shipment", "tracker", "payment_log", etc.
+        /// </param>
         /// <param name="parameters">
         /// Optional dictionary containing parameters to create the carrier account with. Valid pairs:
         ///   * {"start_date", string} Date to start the report at.
@@ -52,6 +55,7 @@ namespace EasyPost {
         /// <summary>
         /// Get a paginated list of reports.
         /// </summary>
+        /// <param name="parameters">
         /// Optional dictionary containing parameters to filter the list with. Valid pairs:
         ///   * {"before_id", string} String representing a Report ID. Only retrieve ScanForms created before this id. Takes precedence over after_id.
         ///   * {"after_id", string} String representing a Report ID. Only retrieve ScanForms created after this id.
@@ -59,7 +63,9 @@ namespace EasyPost {
         ///   * {"end_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created before this datetime.
         ///   * {"page_size", int} Max size of list. Default to 20.
         /// All invalid keys will be ignored.
-        /// <param name="parameters">
+        /// </param>
+        /// <param name="type">
+        /// The type of report, e.g. "shipment", "tracker", "payment_log", etc.
         /// </param>
         /// <returns>Instance of EasyPost.ScanForm</returns>
         public static ReportList List(string type, Dictionary<string, object> parameters = null) {

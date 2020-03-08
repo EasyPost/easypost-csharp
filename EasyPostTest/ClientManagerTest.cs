@@ -7,6 +7,7 @@ namespace EasyPostTest {
         [TestMethod]
         [ExpectedException(typeof(ClientNotConfigured))]
         public void TestNotConfigured() {
+            ClientManager.Unconfigure();
             ClientManager.Build();
         }
 

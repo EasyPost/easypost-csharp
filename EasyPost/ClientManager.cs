@@ -20,5 +20,9 @@ namespace EasyPost {
         public static void SetCurrent(Func<Client> getClient) {
             getCurrent = getClient;
         }
+
+        public static void Unconfigure() {
+            getCurrent = null;
+        }
     }
 }

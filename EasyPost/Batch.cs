@@ -37,7 +37,7 @@ namespace EasyPost {
         /// </summary>
         /// <param name="parameters">
         /// Optional dictionary containing parameters to create the batch with. Valid pairs:
-        ///   * {"shipments", List<Dictionary<string, object>>} See Shipment.Create for a list of valid keys.
+        ///   * {"shipments", List&lt;Dictionary&lt;string, object&gt;&gt;} See Shipment.Create for a list of valid keys.
         ///   * {"reference", string}
         /// All invalid keys will be ignored.
         /// </param>

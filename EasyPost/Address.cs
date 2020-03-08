@@ -56,16 +56,9 @@ namespace EasyPost {
         ///   * {"country", string}
         ///   * {"phone", string}
         ///   * {"email", string}
+        ///   * {"verifications", List&lt;string&gt;} Possible items are "delivery" and "zip4".
+        ///   * {"strict_verifications", List&lt;string&gt;} Possible items are "delivery" and "zip4".
         /// All invalid keys will be ignored.
-        /// </param>
-        /// <param name="verifications">
-        /// A list of verifications to perform on the address.
-        /// Possible items are "delivery" and "zip4".
-        /// </param>
-        /// <param name="strict_verifications">
-        /// A list of verifications to perform on the address.
-        /// Will cause an HttpException to be raised if unsucessful.
-        /// Possible items are "delivery" and "zip4".
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
         public static Address Create(Dictionary<string, object> parameters = null) {
@@ -100,7 +93,7 @@ namespace EasyPost {
         /// A list of verifications to perform on the address.
         /// Possible items are "delivery" and "zip4".
         /// </param>
-        /// <param name="strict_verifications">
+        /// <param name="strictVerifications">
         /// A list of verifications to perform on the address.
         /// Will cause an HttpException to be raised if unsucessful.
         /// Possible items are "delivery" and "zip4".
@@ -135,8 +128,9 @@ namespace EasyPost {
             if (id == null)
                 Create();
 
-            Request request = new Request("v2/addresses/{id}/verify");
-            request.RootElement = "address";
+            Request request = new Request("v2/addresses/{id}/verify") {
+                RootElement = "address"
+            };
             request.AddUrlSegment("id", id);
 
             if (carrier != null)

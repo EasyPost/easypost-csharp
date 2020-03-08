@@ -20,12 +20,12 @@ namespace EasyPostTest {
         [TestMethod]
         public void TestCRUD() {
             CarrierAccount account = CarrierAccount.Create(new Dictionary<string, object>() {
-                {"type", "UspsAccount"},
+                {"type", "DhlExpressAccount"},
                 {"description", "description"}
             });
 
             Assert.IsNotNull(account.id);
-            Assert.AreEqual(account.type, "UspsAccount");
+            Assert.AreEqual(account.type, "DhlExpressAccount");
 
             account.Update(new Dictionary<string, object>() { { "reference", "new-reference" } });
             Assert.AreEqual("new-reference", account.reference);

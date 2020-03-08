@@ -77,6 +77,9 @@ namespace EasyPost {
             Merge(request.Execute<User>());
         }
 
+        /// <summary>
+        /// Delete the user.
+        /// </summary>
         public void Destroy() {
             Request request = new Request("v2/users/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);

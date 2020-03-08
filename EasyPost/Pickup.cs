@@ -44,7 +44,7 @@ namespace EasyPost {
         ///   * {"max_datetime", DateTime}
         ///   * {"reference", string}
         ///   * {"instructions", string}
-        ///   * {"carrier_accounts", List<CarrierAccount>}
+        ///   * {"carrier_accounts", List&lt;CarrierAccount&gt;}
         ///   * {"address", Address}
         ///   * {"shipment", Shipment}
         ///   * {"batch", Batch}

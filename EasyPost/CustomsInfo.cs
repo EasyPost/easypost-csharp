@@ -42,7 +42,7 @@ namespace EasyPost {
         ///   * {"contents_explanation", string}
         ///   * {"restriction_type", string}
         ///   * {"eel_pfc", string}
-        ///   * {"custom_items", Dictionary<string, object>} -- Can contain the key "id" or all keys required to create a CustomsItem.
+        ///   * {"custom_items", Dictionary&lt;string, object&gt;} -- Can contain the key "id" or all keys required to create a CustomsItem.
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
