@@ -5,6 +5,7 @@ using RestSharp;
 
 namespace EasyPost {
     public class Report : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
@@ -15,6 +16,7 @@ namespace EasyPost {
         public Boolean include_children { get; set; }
         public string url { get; set; }
         public DateTime? url_expires_at { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// Retrieve a Report from its id and type.

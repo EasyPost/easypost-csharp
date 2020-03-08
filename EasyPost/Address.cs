@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace EasyPost {
     public class Address : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
@@ -28,6 +29,7 @@ namespace EasyPost {
         public string error { get; set; }
         public string message { get; set; }
         public Verifications verifications { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// Retrieve an Address from its id.
@@ -75,7 +77,7 @@ namespace EasyPost {
                 parameters.Remove("strict_verifications");
             }
 
-            return sendCreate(parameters, verifications, strictVerifications);
+            return SendCreate(parameters, verifications, strictVerifications);
         }
 
         /// <summary>
@@ -102,10 +104,10 @@ namespace EasyPost {
         public void Create(List<string> verifications = null, List<string> strictVerifications = null) {
             if (id != null)
                 throw new ResourceAlreadyCreated();
-            Merge(sendCreate(this.AsDictionary(), verifications, strictVerifications));
+            Merge(SendCreate(this.AsDictionary(), verifications, strictVerifications));
         }
 
-        private static Address sendCreate(Dictionary<string, object> parameters, List<string> verifications = null, List<string> strictVerifications = null) {
+        private static Address SendCreate(Dictionary<string, object> parameters, List<string> verifications = null, List<string> strictVerifications = null) {
             Request request = new Request("v2/addresses", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "address", parameters } });
 

@@ -4,6 +4,7 @@ using System;
 
 namespace EasyPost {
     public class Rate : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
@@ -22,6 +23,7 @@ namespace EasyPost {
         public string carrier { get; set; }
         public string shipment_id { get; set; }
         public string carrier_account_id { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// Retrieve a Rate from its id.

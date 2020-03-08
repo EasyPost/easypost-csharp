@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 
 namespace EasyPost {
-    public class Rating : Resource
-    {
+    public class Rating : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public Address from_address { get; set; }
         public Address to_address { get; set; }
         public List<Parcel> parcels { get; set; }
         public List<CarrierAccount> carrier_accounts { get; set; }
         public List<Object> ratings { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>Create Rating.</summary>
         /// <param name="parameters">

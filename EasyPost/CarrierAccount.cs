@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace EasyPost {
     public class CarrierAccount : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
@@ -14,6 +15,7 @@ namespace EasyPost {
         public string readable { get; set; }
         public Dictionary<string, object> credentials { get; set; }
         public Dictionary<string, object> test_credentials { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         public static List<CarrierAccount> List() {
             Request request = new Request("v2/carrier_accounts");

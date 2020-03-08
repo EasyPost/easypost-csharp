@@ -6,6 +6,7 @@ using System.Linq;
 
 namespace EasyPost {
     public class Batch : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
@@ -19,6 +20,7 @@ namespace EasyPost {
         public string mode { get; set; }
         public string error { get; set; }
         public string message { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// Retrieve a Batch from its id.

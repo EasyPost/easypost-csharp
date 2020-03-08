@@ -5,6 +5,7 @@ using RestSharp;
 
 namespace EasyPost {
     public class Event : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
@@ -15,6 +16,7 @@ namespace EasyPost {
         public List<string> pending_urls { get; set; }
         public List<string> completed_urls { get; set; }
         public string status { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// Resend the last Event for a specific EasyPost object.

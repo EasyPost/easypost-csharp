@@ -7,9 +7,11 @@ using System.Linq;
 
 namespace EasyPost {
     public class ApiKey : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string key { get; set; }
         public string mode { get; set; }
         public DateTime? created_at { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         public static List<ApiKey> All() {
             Request request = new Request("/v2/api_keys");

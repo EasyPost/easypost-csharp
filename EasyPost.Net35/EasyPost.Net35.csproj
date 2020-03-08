@@ -162,7 +162,6 @@
     <Compile Include="..\EasyPost\TrackingLocation.cs">
       <Link>TrackingLocation.cs</Link>
     </Compile>
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\EasyPost\Form.cs">
       <Link>Form.cs</Link>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace EasyPost {
     public class CustomsInfo : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
@@ -18,6 +19,7 @@ namespace EasyPost {
         public string restriction_comments { get; set; }
         public List<CustomsItem> customs_items { get; set; }
         public string mode { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// Retrieve a CustomsInfo from its id.

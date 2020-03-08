@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace EasyPost {
     public class Tracker : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime tracking_updated_at { get; set; }
@@ -18,6 +19,7 @@ namespace EasyPost {
         public string public_url { get; set; }
         public List<TrackingDetail> tracking_details { get; set; }
         public CarrierDetail carrier_detail { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// Get a paginated list of trackers.

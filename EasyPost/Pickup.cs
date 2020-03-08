@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace EasyPost {
     public class Pickup : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public string mode { get; set; }
         public DateTime? created_at { get; set; }
@@ -21,6 +22,7 @@ namespace EasyPost {
         public Address address { get; set; }
         public List<CarrierAccount> carrier_accounts { get; set; }
         public List<Rate> pickup_rates { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// Retrieve a Pickup from its id.
@@ -52,7 +54,7 @@ namespace EasyPost {
         /// </param>
         /// <returns>EasyPost.Pickup instance.</returns>
         public static Pickup Create(Dictionary<string, object> parameters = null) {
-            return sendCreate(parameters ?? new Dictionary<string, object>());
+            return SendCreate(parameters ?? new Dictionary<string, object>());
         }
 
         /// <summary>
@@ -62,10 +64,10 @@ namespace EasyPost {
         public void Create() {
             if (id != null)
                 throw new ResourceAlreadyCreated();
-            Merge(sendCreate(this.AsDictionary()));
+            Merge(SendCreate(this.AsDictionary()));
         }
 
-        private static Pickup sendCreate(Dictionary<string, object> parameters) {
+        private static Pickup SendCreate(Dictionary<string, object> parameters) {
             Request request = new Request("v2/pickups", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "pickup", parameters } });
 

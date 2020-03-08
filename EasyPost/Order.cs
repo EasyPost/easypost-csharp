@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace EasyPost {
     public class Order : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
@@ -20,6 +21,7 @@ namespace EasyPost {
         public List<Shipment> shipments { get; set; }
         public List<CarrierAccount> carrier_accounts { get; set; }
         public List<Rate> rates { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// Retrieve a Order from its id or reference.
@@ -66,7 +68,7 @@ namespace EasyPost {
         public void Create() {
             if (id != null)
                 throw new ResourceAlreadyCreated();
-            Merge(sendCreate(this.AsDictionary()));
+            Merge(SendCreate(this.AsDictionary()));
         }
 
         /// <summary>
@@ -82,7 +84,7 @@ namespace EasyPost {
             rates = request.Execute<Order>().rates;
         }
 
-        private static Order sendCreate(Dictionary<string, object> parameters) {
+        private static Order SendCreate(Dictionary<string, object> parameters) {
             Request request = new Request("v2/orders", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "order", parameters } });
 

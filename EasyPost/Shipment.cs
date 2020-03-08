@@ -6,6 +6,7 @@ using System.Linq;
 
 namespace EasyPost {
     public class Shipment : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public string mode { get; set; }
         public DateTime? created_at { get; set; }
@@ -37,6 +38,7 @@ namespace EasyPost {
         public List<CarrierAccount> carrier_accounts { get; set; }
         public string batch_id { get; set; }
         public string order_id { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// Get a paginated list of shipments.
@@ -93,7 +95,7 @@ namespace EasyPost {
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
         public static Shipment Create(Dictionary<string, object> parameters = null) {
-            return sendCreate(parameters ?? new Dictionary<string, object>());
+            return SendCreate(parameters ?? new Dictionary<string, object>());
         }
 
         /// <summary>
@@ -103,10 +105,10 @@ namespace EasyPost {
         public void Create() {
             if (id != null)
                 throw new ResourceAlreadyCreated();
-            Merge(sendCreate(this.AsDictionary()));
+            Merge(SendCreate(this.AsDictionary()));
         }
 
-        private static Shipment sendCreate(Dictionary<string, object> parameters) {
+        private static Shipment SendCreate(Dictionary<string, object> parameters) {
             Request request = new Request("v2/shipments", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "shipment", parameters } });
 
@@ -216,18 +218,18 @@ namespace EasyPost {
             List<Rate> result = new List<Rate>(rates);
 
             if (includeCarriers != null)
-                filterRates(ref result, rate => includeCarriers.Contains(rate.carrier));
+                FilterRates(ref result, rate => includeCarriers.Contains(rate.carrier));
             if (includeServices != null)
-                filterRates(ref result, rate => includeServices.Contains(rate.service));
+                FilterRates(ref result, rate => includeServices.Contains(rate.service));
             if (excludeCarriers != null)
-                filterRates(ref result, rate => !excludeCarriers.Contains(rate.carrier));
+                FilterRates(ref result, rate => !excludeCarriers.Contains(rate.carrier));
             if (excludeServices != null)
-                filterRates(ref result, rate => !excludeServices.Contains(rate.service));
+                FilterRates(ref result, rate => !excludeServices.Contains(rate.service));
 
             return result.OrderBy(rate => double.Parse(rate.rate)).FirstOrDefault();
         }
 
-        private void filterRates(ref List<Rate> rates, Func<Rate, bool> filter) {
+        private void FilterRates(ref List<Rate> rates, Func<Rate, bool> filter) {
             rates = rates.Where(filter).ToList();
         }
     }
