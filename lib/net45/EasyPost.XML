@@ -330,43 +330,6 @@
             </summary>
             <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
         </member>
-        <member name="M:EasyPost.Item.Retrieve(System.String)">
-            <summary>
-            Retrieve an Item from its id or reference.
-            </summary>
-            <param name="id">String representing a Item. Starts with "item_" if passing an id.</param>
-            <returns>EasyPost.Item instance.</returns>
-        </member>
-        <member name="M:EasyPost.Item.Create(System.Collections.Generic.Dictionary{System.String,System.Object})">
-            <summary>
-            Create an Item.
-            </summary>
-            <param name="parameters">
-            Dictionary containing parameters to create the item with. Valid pairs:
-              * {"name", string}
-              * {"description", string}
-              * {"reference", string}
-              * {"harmonized_code", string}
-              * {"country_of_origin", string}
-              * {"warehouse_location", string}
-              * {"value", double}
-              * {"length", double}
-              * {"width", double}
-              * {"height", double}
-              * {"weight", double}
-              ADD ANY CUSTOM REFERENCES HERE
-            All invalid keys will be ignored.
-            </param>
-            <returns>EasyPost.Item instance.</returns>
-        </member>
-        <member name="M:EasyPost.Item.RetrieveReference(System.String,System.String)">
-            <summary>
-            Retrieve a Item from a custom reference.
-            </summary>
-            <param name="name">String containing the name of the custom reference to search for.</param>
-            <param name="value">String containing the value of the custom reference to search for.</param>
-            <returns>EasyPost.Item instance.</returns>
-        </member>
         <member name="M:EasyPost.CustomsInfo.Retrieve(System.String)">
             <summary>
             Retrieve a CustomsInfo from its id.
@@ -413,30 +376,6 @@
             All invalid keys will be ignored.
             </param>
             <returns>EasyPost.CustomsItem instance.</returns>
-        </member>
-        <member name="M:EasyPost.Container.Retrieve(System.String)">
-            <summary>
-            Retrieve a Container from its id or reference.
-            </summary>
-            <param name="id">String representing a Container. Starts with "container_" if passing an id.</param>
-            <returns>EasyPost.Container instance.</returns>
-        </member>
-        <member name="M:EasyPost.Container.Create(System.Collections.Generic.Dictionary{System.String,System.Object})">
-            <summary>
-            Create a Container.
-            </summary>
-            <param name="parameters">
-            Dictionary containing parameters to create the container with. Valid pairs:
-              * {"name", string}
-              * {"type", string}
-              * {"reference", string}
-              * {"length", double}
-              * {"width", double}
-              * {"height", double}
-              * {"max_weight", double}
-            All invalid keys will be ignored.
-            </param>
-            <returns>EasyPost.Container instance.</returns>
         </member>
         <member name="M:EasyPost.Parcel.Retrieve(System.String)">
             <summary>

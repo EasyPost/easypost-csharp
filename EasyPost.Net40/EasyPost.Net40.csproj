@@ -85,9 +85,6 @@
     <Compile Include="..\EasyPost\ClientManager.cs">
       <Link>ClientManager.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost\Container.cs">
-      <Link>Container.cs</Link>
-    </Compile>
     <Compile Include="..\EasyPost\CustomsInfo.cs">
       <Link>CustomsInfo.cs</Link>
     </Compile>
@@ -102,9 +99,6 @@
     </Compile>
     <Compile Include="..\EasyPost\IResource.cs">
       <Link>IResource.cs</Link>
-    </Compile>
-    <Compile Include="..\EasyPost\Item.cs">
-      <Link>Item.cs</Link>
     </Compile>
     <Compile Include="..\EasyPost\Order.cs">
       <Link>Order.cs</Link>

@@ -20,8 +20,6 @@ namespace EasyPost {
         public List<Shipment> shipments { get; set; }
         public List<CarrierAccount> carrier_accounts { get; set; }
         public List<Rate> rates { get; set; }
-        public List<Container> containers { get; set; }
-        public List<Item> items { get; set; }
 
         /// <summary>
         /// Retrieve a Order from its id or reference.
