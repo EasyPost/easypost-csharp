@@ -10,7 +10,6 @@ namespace EasyPost {
         public Dictionary<string, object> filters { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
-
         /// <summary>
         /// Get the next page of scan forms based on the original parameters passed to ScanForm.List().
         /// </summary>

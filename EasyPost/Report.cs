@@ -19,6 +19,18 @@ namespace EasyPost {
 #pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
+        /// Retrieve a Report from its id.
+        /// </summary>
+        /// <param name="id">String representing a report.</param>
+        /// <returns>EasyPost.Report instance.</returns>
+        public static Report Retrieve(string id) {
+            Request request = new Request("v2/reports/{id}");
+            request.AddUrlSegment("id", id);
+
+            return request.Execute<Report>();
+        }
+
+        /// <summary>
         /// Retrieve a Report from its id and type.
         /// </summary>
         /// <param name="type">Type of report, e.g. shipment, tracker, payment_log, etc.</param>
