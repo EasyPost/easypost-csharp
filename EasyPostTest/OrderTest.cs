@@ -61,6 +61,14 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
+        public void TestGetRates() {
+            Order order = Order.Create(parameters);
+            List<Rate> old = order.rates;
+            order.GetRates();
+            Assert.AreNotEqual(old, order.rates);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ResourceAlreadyCreated))]
         public void TestCreateOrderWithId() {
             Order order = new Order() { id = "order_asjhd" };

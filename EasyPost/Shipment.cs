@@ -114,7 +114,7 @@ namespace EasyPost {
         }
 
         /// <summary>
-        /// Populate the rates property for this shipment
+        /// Populate the rates property for this Shipment.
         /// </summary>
         public void GetRates() {
             if (id == null)

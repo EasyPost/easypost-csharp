@@ -360,6 +360,11 @@
             </summary>
             <exception cref="T:EasyPost.ResourceAlreadyCreated">Order already has an id.</exception>
         </member>
+        <member name="M:EasyPost.Order.GetRates">
+            <summary>
+            Populate the rates property for this Order.
+            </summary>
+        </member>
         <member name="M:EasyPost.Order.Buy(System.String,System.String)">
             <summary>
             Purchase the shipments within this order with a carrier and service.
@@ -593,7 +598,7 @@
         </member>
         <member name="M:EasyPost.Shipment.GetRates">
             <summary>
-            Populate the rates property for this shipment
+            Populate the rates property for this Shipment.
             </summary>
         </member>
         <member name="M:EasyPost.Shipment.Buy(System.String,System.String)">

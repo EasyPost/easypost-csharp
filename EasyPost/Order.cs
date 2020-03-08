@@ -71,6 +71,19 @@ namespace EasyPost {
             Merge(sendCreate(this.AsDictionary()));
         }
 
+        /// <summary>
+        /// Populate the rates property for this Order.
+        /// </summary>
+        public void GetRates() {
+            if (id == null)
+                Create();
+
+            Request request = new Request("v2/orders/{id}/rates");
+            request.AddUrlSegment("id", id);
+
+            rates = request.Execute<Order>().rates;
+        }
+
         private static Order sendCreate(Dictionary<string, object> parameters) {
             Request request = new Request("v2/orders", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "order", parameters } });
