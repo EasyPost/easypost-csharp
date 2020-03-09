@@ -126,14 +126,19 @@ namespace EasyPostTest {
 
             Shipment shipment = Shipment.Create(parameters);
 
-            Assert.AreEqual(((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:ssZ"), tomorrow);
-            Assert.AreEqual(shipment.options.print_custom[0]["value"], "value");
-            Assert.AreEqual(shipment.options.print_custom[0]["name"], "name");
-            Assert.AreEqual(shipment.options.print_custom[0]["barcode"], true);
-            Assert.AreEqual(shipment.options.payment["type"], "THIRD_PARTY");
-            Assert.AreEqual(shipment.options.payment["account"], "12345");
-            Assert.AreEqual(shipment.options.payment["postal_code"], "54321");
-            Assert.AreEqual(shipment.options.payment["country"], "US");
+            Assert.AreEqual((string)(shipment.options["label_date"]), tomorrow);
+            // pull out the embedded print_custom List<Dictionary<string, object>> to simplify access
+            List<Dictionary<string, object>> print_custom = (List<Dictionary<string, object>>)(shipment.options["print_custom"]);
+            // pull out the embedded Dictionary<string, object> to simplify access
+            Dictionary<string, object> print_custom_0 = (Dictionary<string, object>)print_custom[0];
+            Assert.AreEqual((string)(print_custom_0["value"]), "value");
+            Assert.AreEqual((string)(print_custom_0["name"]), "name");
+            Assert.AreEqual((bool)(print_custom_0["barcode"]), true);
+            Dictionary<string, string> payment = (Dictionary<string, string>)shipment.options["payment"];
+            Assert.AreEqual((string)(payment["type"]), "THIRD_PARTY");
+            Assert.AreEqual((string)(payment["account"]), "12345");
+            Assert.AreEqual((string)(payment["postal_code"]), "54321");
+            Assert.AreEqual((string)(payment["country"]), "US");
         }
 
         [TestMethod]
@@ -141,12 +146,12 @@ namespace EasyPostTest {
             DateTime tomorrow = DateTime.SpecifyKind(DateTime.Now.AddDays(1), DateTimeKind.Utc);
 
             Shipment shipment = CreateShipmentResource();
-            shipment.options = new Options() {
-                label_date = tomorrow
+            shipment.options = new Dictionary<string, object> () {
+                { "label_date", tomorrow }
             };
             shipment.Create();
 
-            Assert.AreEqual(tomorrow.ToString("yyyy-MM-ddTHH:mm:ssZ"), ((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            Assert.AreEqual(tomorrow.ToString("yyyy-MM-ddTHH:mm:ssZ"), (string)shipment.options["label_date"]);
         }
 
         [TestMethod]
@@ -215,6 +220,7 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestPostageInline() {
+            options.Clear();
             options["postage_label_inline"] = true;
             Shipment shipment = BuyShipment();
             Assert.IsNotNull(shipment.postage_label.label_file);
