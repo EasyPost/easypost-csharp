@@ -1,5 +1,7 @@
 using System;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("EasyPostTest")]
 namespace EasyPost {
     /// <summary>
     /// Provides the ability to manage delegated construction of client connections for requests.
