@@ -202,6 +202,14 @@ batch.GenerateLabel("zpl"); // populates batch.label_url asynchronously
 
 Consume the subsequent `batch.updated` webhook to process further.
 
+### Releasing
+
+1. Update the [CHANGELOG](CHANGELOG.md)
+1. Bump version in `EasyPost.nuspec`
+1. Rebuild the library
+1. Create a git tag
+1. Publish new Nuget package
+
 ### Reporting Issues
 
 If you have an issue with the client feel free to open an issue on [GitHub](https://github.com/EasyPost/easypost-csharp/issues). If you have a general shipping question or a questions about EasyPost's service please contact support@easypost.com for additional assitance.
