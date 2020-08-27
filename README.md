@@ -204,11 +204,11 @@ Consume the subsequent `batch.updated` webhook to process further.
 
 ### Releasing
 
-1. Update the [CHANGELOG](CHANGELOG.md)
-1. Bump version in `EasyPost.nuspec`
-1. Rebuild the library
-1. Create a git tag
-1. Publish new Nuget package
+1. Update the [CHANGELOG](CHANGELOG.md).
+1. Bump `version` in `EasyPost.nuspec` and `AssemblyVersion` in all `csproj` files.
+1. Rebuild the library to update `dll`s in `lib` directory.
+1. Create a git tag named the version number, e.g. `2.1.2.1`, and push it.
+1. Publish new version on Nuget.
 
 ### Reporting Issues
 
