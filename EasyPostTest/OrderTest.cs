@@ -54,7 +54,7 @@ namespace EasyPostTest {
             Order order = Order.Create(parameters);
 
             Assert.IsNotNull(order.id);
-            Assert.AreEqual(order.reference, "OrderRef");
+            Assert.AreEqual("OrderRef", order.reference);
 
             Order retrieved = Order.Retrieve(order.id);
             Assert.AreEqual(order.id, retrieved.id);
@@ -77,18 +77,20 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestCreateFromInstance() {
+            Address to_address = Address.Create(toAddress);
+            Address from_address = Address.Create(fromAddress);
             Order order = new Order() {
-                to_address = Address.Create(toAddress),
-                from_address = Address.Create(fromAddress),
+                to_address = to_address,
+                from_address = from_address,
                 reference = "OrderRef",
-                shipments = shipments.Select(shipment => Shipment.Create(shipment)).ToList(),
+                shipments = shipments.Select(shipment => Shipment.Create(new Dictionary<string, object>() { { "parcel", shipment["parcel"] }, { "to_address", to_address }, { "from_address", from_address } })).ToList(),
                 carrier_accounts = new List<CarrierAccount>() { new CarrierAccount() { id = "ca_7642d249fdcf47bcb5da9ea34c96dfcf" } }
             };
 
             order.Create();
 
             Assert.IsNotNull(order.id);
-            Assert.AreEqual(order.reference, "OrderRef");
+            Assert.AreEqual("OrderRef", order.reference);
             CollectionAssert.AreEqual(
                 new List<string>() { "ca_7642d249fdcf47bcb5da9ea34c96dfcf" },
                 new HashSet<string>(order.shipments.SelectMany(s => s.rates).Select(r => r.carrier_account_id)).ToList()

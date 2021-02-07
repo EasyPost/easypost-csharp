@@ -31,26 +31,26 @@ namespace EasyPostTest {
             public void TestMerge() {
                 dest.Merge(source);
 
-                Assert.AreEqual(dest.foo, source.foo);
-                Assert.AreEqual(dest.bar, source.bar);
-                Assert.AreEqual(dest.baz[0].qux, source.baz[0].qux);
+                Assert.AreEqual(source.foo, dest.foo);
+                Assert.AreEqual(source.bar, dest.bar);
+                Assert.AreEqual(source.baz[0].qux, dest.baz[0].qux);
             }
 
             [TestMethod]
             public void TestAsDictionary() {
                 Dictionary<string, object> dictionary = source.AsDictionary();
 
-                Assert.AreEqual(dictionary["foo"], "oof");
-                Assert.AreEqual(dictionary["bar"], 42);
-                Assert.AreEqual(((List<Dictionary<string, object>>)dictionary["baz"])[0]["qux"], "xuq");
+                Assert.AreEqual("oof", dictionary["foo"]);
+                Assert.AreEqual(42, dictionary["bar"]);
+                Assert.AreEqual("xuq", ((List<Dictionary<string, object>>)dictionary["baz"])[0]["qux"]);
             }
 
             [TestMethod]
             public void TestLoad() {
-                Assert.AreEqual(Resource.Load<Data>(JsonConvert.SerializeObject(source.AsDictionary())).foo, "oof");
-                Assert.AreEqual(Resource.Load<Data>(JsonConvert.SerializeObject(source.AsDictionary())).baz[0].qux, "xuq");
-                Assert.AreEqual(Resource.LoadFromDictionary<Data>(source.AsDictionary()).foo, "oof");
-                Assert.AreEqual(Resource.LoadFromDictionary<Data>(source.AsDictionary()).baz[0].qux, "xuq");
+                Assert.AreEqual("oof", Resource.Load<Data>(JsonConvert.SerializeObject(source.AsDictionary())).foo);
+                Assert.AreEqual("xuq", Resource.Load<Data>(JsonConvert.SerializeObject(source.AsDictionary())).baz[0].qux);
+                Assert.AreEqual("oof", Resource.LoadFromDictionary<Data>(source.AsDictionary()).foo);
+                Assert.AreEqual("xuq", Resource.LoadFromDictionary<Data>(source.AsDictionary()).baz[0].qux);
             }
         }
     }

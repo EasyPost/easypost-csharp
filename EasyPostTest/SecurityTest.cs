@@ -8,7 +8,7 @@ namespace EasyPostTest {
     public class SecurityTest {
         [TestMethod]
         public void TestGetProtocol() {
-            Assert.AreEqual(Security.GetProtocol(), SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+            Assert.AreEqual(SecurityProtocolType.Tls12, Security.GetProtocol());
         }
     }
 }

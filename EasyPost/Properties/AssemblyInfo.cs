@@ -15,7 +15,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 
 // Make "private" methods testable.
-[assembly: InternalsVisibleTo("EasyPostTest, PublicKey=0024000004800000940000000602000000240000525341310004000001000100b9d909875738653bb31cbe8e83089f3b748eaaed7fbf54fd6601f73803a24005cac0cea99143a6ef6183a98cdeda360c198fb1d72c130c1de6dd7475c9cc7c01cb9fe2dae674b9531e6d431f8343496f023f356919c007f155254d1862f1734c2ba73441e252dc1dbd7a9b6e4fe048086e12d8742db955894d89685bb1bfb5c1")]
+#if DEBUG
+[assembly: InternalsVisibleTo("EasyPostTest")]
+#else
+[assembly: InternalsVisibleTo("EasyPostTest, PublicKey=0024000004800000140100000602000000240000525341310008000001000100d99de7efe2414581cc393618c44a1a5664f8e3ea301a4bdc84d82cdbdbdd248ebdd3a2a2ddb2e915558780429b85e3d763883f02a70f3ca365122d62af0eadc86f69c50648953a1a04f4dcd4811b174c407e85c6029cc8c0212671a25edd76ba215fb5704308b9bc2dc20d6858a9eda35895ca2d0194de248081c030bb0dc6149ac206faca5af694f582540b6c6a066cda20bf0d89adbd3eba0e66b5e304c18c540cf451597075773f728ce392710cfa91a568cc26f9274e7b5dfb588a3890916384b9e2a700c678732f693c85c81f94d30aa6b4ce2185b43cbc6fee679a6f0c020a7bf70589a80a6d6a890298ca10a8d213567528c79192a061c6df7bc61ab6")]
+#endif
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
@@ -35,6 +39,3 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("2.5.1.3")]
-[assembly: AssemblyInformationalVersion("2.5.1.3")]

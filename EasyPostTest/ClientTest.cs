@@ -28,7 +28,7 @@ namespace EasyPostTest {
         [TestMethod]
         public void TestRestClient() {
             Client client = new Client(new ClientConfiguration("apiKey"));
-            Assert.AreEqual(client.client.BaseUrl, "https://api.easypost.com/");
+            Assert.AreEqual(new System.Uri("https://api.easypost.com/"), client.client.BaseUrl);
         }
 
         [TestMethod]

@@ -100,7 +100,7 @@ namespace EasyPostTest {
             Shipment shipment = Shipment.Create(parameters);
 
             Assert.IsNotNull(shipment.id);
-            Assert.AreEqual(shipment.reference, "ShipmentRef");
+            Assert.AreEqual("ShipmentRef", shipment.reference);
 
             Shipment retrieved = Shipment.Retrieve(shipment.id);
             Assert.AreEqual(shipment.id, retrieved.id);
@@ -126,14 +126,14 @@ namespace EasyPostTest {
 
             Shipment shipment = Shipment.Create(parameters);
 
-            Assert.AreEqual(((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:ssZ"), tomorrow);
-            Assert.AreEqual(shipment.options.print_custom[0]["value"], "value");
-            Assert.AreEqual(shipment.options.print_custom[0]["name"], "name");
-            Assert.AreEqual(shipment.options.print_custom[0]["barcode"], true);
-            Assert.AreEqual(shipment.options.payment["type"], "THIRD_PARTY");
-            Assert.AreEqual(shipment.options.payment["account"], "12345");
-            Assert.AreEqual(shipment.options.payment["postal_code"], "54321");
-            Assert.AreEqual(shipment.options.payment["country"], "US");
+            Assert.AreEqual(tomorrow, ((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            Assert.AreEqual("value", shipment.options.print_custom[0]["value"]);
+            Assert.AreEqual("name", shipment.options.print_custom[0]["name"]);
+            Assert.IsTrue((bool)shipment.options.print_custom[0]["barcode"]);
+            Assert.AreEqual("THIRD_PARTY", shipment.options.payment["type"]);
+            Assert.AreEqual("12345", shipment.options.payment["account"]);
+            Assert.AreEqual("54321", shipment.options.payment["postal_code"]);
+            Assert.AreEqual("US", shipment.options.payment["country"]);
         }
 
         [TestMethod]
@@ -162,9 +162,9 @@ namespace EasyPostTest {
             Shipment shipment = Shipment.Create(parameters);
 
             Assert.IsNotNull(shipment.id);
-            Assert.AreEqual(shipment.messages[0].carrier, "USPS");
-            Assert.AreEqual(shipment.messages[0].type, "rate_error");
-            Assert.AreEqual(shipment.messages[0].message, "Unable to retrieve USPS rates for another carrier's predefined_package parcel type.");
+            Assert.AreEqual("USPS", shipment.messages[0].carrier);
+            Assert.AreEqual("rate_error", shipment.messages[0].type);
+            Assert.AreEqual("Unable to retrieve USPS rates for another carrier's predefined_package parcel type.", shipment.messages[0].message);
         }
 
         [TestMethod]
@@ -210,7 +210,7 @@ namespace EasyPostTest {
             shipment.GetRates();
             shipment.Buy(shipment.rates.First(), "100.00");
 
-            Assert.AreEqual(shipment.insurance, "100.00");
+            Assert.AreEqual("100.00", shipment.insurance);
         }
 
         [TestMethod]
@@ -245,19 +245,29 @@ namespace EasyPostTest {
             Shipment shipment = new Shipment() { rates = new List<Rate>() { highestUSPS, lowestUSPS, highestUPS, lowestUPS } };
 
             Rate rate = shipment.LowestRate();
-            Assert.AreEqual(rate, lowestUSPS);
+            Assert.AreEqual(lowestUSPS.rate, rate.rate);
+            Assert.AreEqual(lowestUSPS.carrier, rate.carrier);
+            Assert.AreEqual(lowestUSPS.service, rate.service);
 
             rate = shipment.LowestRate(includeCarriers: new List<string>() { "UPS" });
-            Assert.AreEqual(rate, lowestUPS);
+            Assert.AreEqual(lowestUPS.rate, rate.rate);
+            Assert.AreEqual(lowestUPS.carrier, rate.carrier);
+            Assert.AreEqual(lowestUPS.service, rate.service);
 
             rate = shipment.LowestRate(includeServices: new List<string>() { "Priority" });
-            Assert.AreEqual(rate, highestUSPS);
+            Assert.AreEqual(highestUSPS.rate, rate.rate);
+            Assert.AreEqual(highestUSPS.carrier, rate.carrier);
+            Assert.AreEqual(highestUSPS.service, rate.service);
 
             rate = shipment.LowestRate(excludeCarriers: new List<string>() { "USPS" });
-            Assert.AreEqual(rate, lowestUPS);
+            Assert.AreEqual(lowestUPS.rate, rate.rate);
+            Assert.AreEqual(lowestUPS.carrier, rate.carrier);
+            Assert.AreEqual(lowestUPS.service, rate.service);
 
             rate = shipment.LowestRate(excludeServices: new List<string>() { "ParcelSelect" });
-            Assert.AreEqual(rate, highestUSPS);
+            Assert.AreEqual(highestUSPS.rate, rate.rate);
+            Assert.AreEqual(highestUSPS.carrier, rate.carrier);
+            Assert.AreEqual(highestUSPS.service, rate.service);
 
             rate = shipment.LowestRate(includeCarriers: new List<string>() { "FedEx" });
             Assert.IsNull(rate);

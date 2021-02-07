@@ -73,7 +73,7 @@ namespace EasyPostTest {
             Pickup pickup = Pickup.Create(parameters);
 
             Assert.IsNotNull(pickup.id);
-            Assert.AreEqual(pickup.address.street1, "164 Townsend Street");
+            Assert.AreEqual("164 Townsend Street", pickup.address.street1);
 
             Pickup retrieved = Pickup.Retrieve(pickup.id);
             Assert.AreEqual(pickup.id, retrieved.id);
@@ -88,7 +88,7 @@ namespace EasyPostTest {
 
             // XXX: This isn't working.
             //pickup.Cancel();
-            //Assert.AreEqual(pickup.status, "canceled");
+            //Assert.AreEqual("canceled", pickup.status);
         }
     }
 }

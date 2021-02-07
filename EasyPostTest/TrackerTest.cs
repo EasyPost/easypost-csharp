@@ -16,12 +16,12 @@ namespace EasyPostTest {
             string trackingCode = "EZ1000000001";
 
             Tracker tracker = Tracker.Create(carrier, trackingCode);
-            Assert.AreEqual(tracker.tracking_code, trackingCode);
+            Assert.AreEqual(trackingCode, tracker.tracking_code);
             Assert.IsNotNull(tracker.est_delivery_date);
             Assert.IsNotNull(tracker.carrier);
             Assert.IsNotNull(tracker.public_url);
 
-            Assert.AreEqual(Tracker.Retrieve(tracker.id).id, tracker.id);
+            Assert.AreEqual(tracker.id, Tracker.Retrieve(tracker.id).id);
         }
 
         [TestMethod]

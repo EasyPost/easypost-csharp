@@ -15,7 +15,7 @@ namespace EasyPostTest {
         [TestMethod]
         public void TestCRUD() {
             Webhook webhook = Webhook.Create(new Dictionary<string, object>() { { "url", "https://www.foobar.com" } });
-            Assert.AreEqual(webhook.url, "https://www.foobar.com");
+            Assert.AreEqual("https://www.foobar.com", webhook.url);
 
             webhook.Update();
 

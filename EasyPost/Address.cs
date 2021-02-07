@@ -50,7 +50,7 @@ namespace EasyPost {
         /// Optional dictionary containing parameters to create the address with. Valid pairs:
         ///   * {"name", string}
         ///   * {"company", string}
-        ///   * {"stree1", string}
+        ///   * {"street1", string}
         ///   * {"street2", string}
         ///   * {"city", string}
         ///   * {"state", string}
@@ -97,7 +97,7 @@ namespace EasyPost {
         /// </param>
         /// <param name="strictVerifications">
         /// A list of verifications to perform on the address.
-        /// Will cause an HttpException to be raised if unsucessful.
+        /// Will cause an HttpException to be raised if unsuccessful.
         /// Possible items are "delivery" and "zip4".
         /// </param>
         /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
@@ -125,7 +125,6 @@ namespace EasyPost {
         /// <summary>
         /// Verify an address.
         /// </summary>
-        /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
         public void Verify(string carrier = null) {
             if (id == null)
                 Create();
@@ -148,7 +147,7 @@ namespace EasyPost {
         /// Optional dictionary containing parameters to create the address with. Valid pairs:
         ///   * {"name", string}
         ///   * {"company", string}
-        ///   * {"stree1", string}
+        ///   * {"street1", string}
         ///   * {"street2", string}
         ///   * {"city", string}
         ///   * {"state", string}

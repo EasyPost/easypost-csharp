@@ -12,7 +12,7 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestLoad() {
-            Assert.AreEqual(Resource.Load<Event>("{'id': 'barfoo'}").id, "barfoo");
+            Assert.AreEqual("barfoo", Resource.Load<Event>("{'id': 'barfoo'}").id);
         }
             
         [TestMethod]

@@ -53,6 +53,7 @@ namespace EasyPost {
         public Dictionary<string, object> AsDictionary() {
             return this.GetType()
                        .GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+                       .Where(info => GetValue(info) != null) // only include parameters that are not null
                        .ToDictionary(info => info.Name, info => GetValue(info));
         }
 

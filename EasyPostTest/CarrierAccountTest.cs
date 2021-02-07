@@ -25,7 +25,7 @@ namespace EasyPostTest {
             });
 
             Assert.IsNotNull(account.id);
-            Assert.AreEqual(account.type, "DhlExpressAccount");
+            Assert.AreEqual("DhlExpressAccount", account.type);
 
             account.Update(new Dictionary<string, object>() { { "reference", "new-reference" } });
             Assert.AreEqual("new-reference", account.reference);
@@ -41,7 +41,7 @@ namespace EasyPostTest {
         [TestMethod]
         public void TestList() {
             List<CarrierAccount> accounts = CarrierAccount.List();
-            Assert.AreEqual(accounts[0].id, "ca_7642d249fdcf47bcb5da9ea34c96dfcf");
+            Assert.AreEqual("ca_7642d249fdcf47bcb5da9ea34c96dfcf", accounts[0].id);
         }
     }
 }

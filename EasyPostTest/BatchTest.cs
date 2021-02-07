@@ -78,12 +78,12 @@ namespace EasyPostTest {
 
             while (batch.shipments == null) { batch = Batch.Retrieve(batch.id); }
             List<string> shipmentIds = batch.shipments.Select(ship => ship.id).ToList();
-            Assert.AreEqual(batch.num_shipments, 2);
+            Assert.AreEqual(2, batch.num_shipments);
             CollectionAssert.Contains(shipmentIds, shipment.id);
             CollectionAssert.Contains(shipmentIds, otherShipment.id);
 
             batch.RemoveShipments(new List<Shipment>() { shipment, otherShipment });
-            Assert.AreEqual(batch.num_shipments, 0);
+            Assert.AreEqual(0, batch.num_shipments);
         }
 
         public Batch CreateBatch() {
@@ -100,17 +100,17 @@ namespace EasyPostTest {
             Batch batch = CreateBatch();
 
             Assert.IsNotNull(batch.id);
-            Assert.AreEqual(batch.reference, "EasyPostCSharpTest");
-            Assert.AreEqual(batch.state, "creating");
+            Assert.AreEqual("EasyPostCSharpTest", batch.reference);
+            Assert.AreEqual("creating", batch.state);
 
             while (batch.state == "creating") { batch = Batch.Retrieve(batch.id); }
             batch.Buy();
 
             while (batch.state == "created") { batch = Batch.Retrieve(batch.id); }
-            Assert.AreEqual(batch.state, "purchased");
+            Assert.AreEqual("purchased", batch.state);
 
             batch.GenerateLabel("pdf");
-            Assert.AreEqual(batch.state, "label_generating");
+            Assert.AreEqual("label_generating", batch.state);
 
             batch.GenerateScanForm();
         }
@@ -125,7 +125,7 @@ namespace EasyPostTest {
             while (batch.state == "created") { batch = Batch.Retrieve(batch.id); }
             batch.GenerateLabel("pdf", orderBy: "reference DESC");
 
-            Assert.AreEqual(batch.state, "label_generating");
+            Assert.AreEqual("label_generating", batch.state);
         }
     }
 }

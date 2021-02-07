@@ -182,7 +182,7 @@ Shipment shipment = new Shipment() {
     from_address = fromAddress,
     to_address = toAddress,
     parcel = parcel,
-    optoins = options
+    options = options
 };
 
 Batch batch = Batch.CreateAndBuy(new Dictionary<string, object>() {
@@ -205,11 +205,13 @@ Consume the subsequent `batch.updated` webhook to process further.
 ### Releasing
 
 1. Update the [CHANGELOG](CHANGELOG.md).
-1. Bump `version` in `EasyPost.nuspec` and `AssemblyVersion` in all `csproj` files.
+1. Bump `version` in `EasyPost.nuspec` and `VersionInfo.cs` files.
 1. Rebuild the library to update `dll`s in `lib` directory.
 1. Create a git tag named the version number, e.g. `2.1.2.1`, and push it.
 1. Publish new version on Nuget.
 
+**Note**: Do not use RestSharp versions > 106.4.2. The `RestRequest.RootElement` functionality is broken in later versions and the client library depends on `RootElement`.
+
 ### Reporting Issues
 
-If you have an issue with the client feel free to open an issue on [GitHub](https://github.com/EasyPost/easypost-csharp/issues). If you have a general shipping question or a questions about EasyPost's service please contact support@easypost.com for additional assitance.
+If you have an issue with the client feel free to open an issue on [GitHub](https://github.com/EasyPost/easypost-csharp/issues). If you have a general shipping question or a questions about EasyPost's service please contact support@easypost.com for additional assistance.

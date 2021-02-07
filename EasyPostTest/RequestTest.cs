@@ -25,7 +25,7 @@ namespace EasyPostTest {
         public void TestRootElement() {
             Request request = new Request("resource");
             request.RootElement = "root";
-            Assert.AreEqual(request.RootElement, "root");
+            Assert.AreEqual("root", request.RootElement);
         }
 
         [TestMethod]

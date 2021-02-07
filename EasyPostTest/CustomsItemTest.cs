@@ -23,8 +23,8 @@ namespace EasyPostTest {
             });
             CustomsItem retrieved = CustomsItem.Retrieve(item.id);
             Assert.AreEqual(item.id, retrieved.id);
-            Assert.AreEqual(retrieved.value, 10.0);
-            Assert.AreEqual(retrieved.currency, "USD");
+            Assert.AreEqual(10.0, retrieved.value);
+            Assert.AreEqual("USD", retrieved.currency);
         }
     }
 }

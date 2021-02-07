@@ -41,8 +41,8 @@ namespace EasyPostTest {
             );
 
             Assert.IsNotNull(info.id);
-            Assert.AreEqual(info.customs_items.Count, 1);
-            Assert.AreEqual(info.customs_items[0].description, item.description);
+            Assert.AreEqual(1, info.customs_items.Count);
+            Assert.AreEqual(item.description, info.customs_items[0].description);
         }
     }
 }
