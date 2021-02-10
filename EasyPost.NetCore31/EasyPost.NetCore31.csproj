@@ -23,7 +23,7 @@
     <DocumentationFile>..\lib\netcoreapp3.1\EasyPost.NetCore31.XML</DocumentationFile>
     <NoWarn>1701;1702;1591;1570</NoWarn>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\EasyPost.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>../EasyPost.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
