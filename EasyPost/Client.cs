@@ -58,7 +58,21 @@ namespace EasyPost {
         internal RestRequest PrepareRequest(Request request) {
             RestRequest restRequest = (RestRequest)request;
 
-            restRequest.AddHeader("user_agent", string.Concat("EasyPost/v2 CSharp/", version));
+#if NET35
+            string user_agent = string.Concat("EasyPost/v2 CSharp (.NET 3.5)/", version);
+#elif NET40
+            string user_agent = string.Concat("EasyPost/v2 CSharp (.NET 4.0)/", version);
+#elif NETCORE31
+            string user_agent = string.Concat("EasyPost/v2 CSharp (.NET Core 3.1)/", version);
+#else
+            string user_agent = string.Concat("EasyPost/v2 CSharp (.NET 4.5.2)/", version);
+#endif
+
+#if DEBUG
+            user_agent += " [DEBUG]";
+#endif
+
+            restRequest.AddHeader("user_agent", user_agent);
             restRequest.AddHeader("authorization", "Bearer " + this.configuration.ApiKey);
             restRequest.AddHeader("content_type", "application/json");
 

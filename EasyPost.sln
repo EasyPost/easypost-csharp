@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPost.Net35", "EasyPost.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyPost.NetCore31", "EasyPost.NetCore31\EasyPost.NetCore31.csproj", "{C1701BBC-5D36-4440-92FF-147276BDF177}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyPost.NetCoreTest", "EasyPost.NetCoreTest\EasyPost.NetCoreTest.csproj", "{3F33CCB7-64D8-4621-B584-1574BB1B49E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{C1701BBC-5D36-4440-92FF-147276BDF177}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1701BBC-5D36-4440-92FF-147276BDF177}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1701BBC-5D36-4440-92FF-147276BDF177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F33CCB7-64D8-4621-B584-1574BB1B49E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F33CCB7-64D8-4621-B584-1574BB1B49E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F33CCB7-64D8-4621-B584-1574BB1B49E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F33CCB7-64D8-4621-B584-1574BB1B49E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

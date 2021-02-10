@@ -45,7 +45,22 @@ namespace EasyPostTest {
             Request request = new Request("resource");
 
             List<String> parameters = ClientManager.Build().PrepareRequest(request).Parameters.Select(parameter => parameter.ToString()).ToList();
-            CollectionAssert.Contains(parameters, "user_agent=EasyPost/v2 CSharp/" + ClientManager.Build().version);
+
+#if NET35
+            string user_agent = string.Concat("EasyPost/v2 CSharp (.NET 3.5)/", ClientManager.Build().version);
+#elif NET40
+            string user_agent = string.Concat("EasyPost/v2 CSharp (.NET 4.0)/", ClientManager.Build().version);
+#elif NETCORE31
+            string user_agent = string.Concat("EasyPost/v2 CSharp (.NET Core 3.1)/", ClientManager.Build().version);
+#else
+            string user_agent = string.Concat("EasyPost/v2 CSharp (.NET 4.5.2)/", ClientManager.Build().version);
+#endif
+
+#if DEBUG
+            user_agent += " [DEBUG]";
+#endif
+
+            CollectionAssert.Contains(parameters, "user_agent=" + user_agent);
             CollectionAssert.Contains(parameters, "authorization=Bearer " + apiKey);
             CollectionAssert.Contains(parameters, "content_type=application/json");
         }
@@ -56,7 +71,22 @@ namespace EasyPostTest {
             Request request = new Request("resource");
 
             List<String> parameters = client.PrepareRequest(request).Parameters.Select(parameter => parameter.ToString()).ToList();
-            CollectionAssert.Contains(parameters, "user_agent=EasyPost/v2 CSharp/" + client.version);
+
+#if NET35
+            string user_agent = string.Concat("EasyPost/v2 CSharp (.NET 3.5)/", client.version);
+#elif NET40
+            string user_agent = string.Concat("EasyPost/v2 CSharp (.NET 4.0)/", client.version);
+#elif NETCORE31
+            string user_agent = string.Concat("EasyPost/v2 CSharp (.NET Core 3.1)/", client.version);
+#else
+            string user_agent = string.Concat("EasyPost/v2 CSharp (.NET 4.5.2)/", client.version);
+#endif
+
+#if DEBUG
+            user_agent += " [DEBUG]";
+#endif
+
+            CollectionAssert.Contains(parameters, "user_agent=" + user_agent);
             CollectionAssert.Contains(parameters, "authorization=Bearer someapikey");
             CollectionAssert.Contains(parameters, "content_type=application/json");
         }
