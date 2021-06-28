@@ -19,10 +19,10 @@ namespace EasyPostTest {
         public void TestScanFormList() {
             Dictionary<string, object> dict = new Dictionary<string, object>() { { "page_size", 1 } };
             ScanFormList scanFormList = ScanForm.List(dict);
-            Assert.AreNotEqual(null, scanFormList.scanForms[0].batch_id);
-            Assert.AreNotEqual(0, scanFormList.scanForms.Count);
+            Assert.AreNotEqual(null, scanFormList.scan_forms[0].batch_id);
+            Assert.AreNotEqual(0, scanFormList.scan_forms.Count);
             ScanFormList nextScanFormList = scanFormList.Next();
-            Assert.AreNotEqual(scanFormList.scanForms[0].id, nextScanFormList.scanForms[0].id);
+            Assert.AreNotEqual(scanFormList.scan_forms[0].id, nextScanFormList.scan_forms[0].id);
         }
 
         [TestMethod]

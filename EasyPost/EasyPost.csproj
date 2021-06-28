@@ -33,6 +33,7 @@
     <Prefer32Bit>false</Prefer32Bit>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>..\lib\net45\EasyPost.XML</DocumentationFile>
+    <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -82,12 +83,10 @@
     <Compile Include="Fee.cs" />
     <Compile Include="Form.cs" />
     <Compile Include="Order.cs" />
-    <Compile Include="Item.cs" />
     <Compile Include="CustomsInfo.cs" />
     <Compile Include="CustomsItem.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="IResource.cs" />
-    <Compile Include="Container.cs" />
     <Compile Include="Parcel.cs" />
     <Compile Include="Pickup.cs" />
     <Compile Include="PostageLabel.cs" />

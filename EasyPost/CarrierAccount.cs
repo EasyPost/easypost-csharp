@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace EasyPost {
     public class CarrierAccount : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
@@ -14,6 +15,7 @@ namespace EasyPost {
         public string readable { get; set; }
         public Dictionary<string, object> credentials { get; set; }
         public Dictionary<string, object> test_credentials { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         public static List<CarrierAccount> List() {
             Request request = new Request("v2/carrier_accounts");
@@ -40,8 +42,8 @@ namespace EasyPost {
         ///   * {"type", string} Required (e.g. EndiciaAccount, UPSAccount, etc.).
         ///   * {"reference", string} External reference for carrier account.
         ///   * {"description", string} Description of carrier account.
-        ///   * {"credentials", Dictionary<string, string>}
-        ///   * {"test_credentials", Dictionary<string, string>}
+        ///   * {"credentials", Dictionary&lt;string, string&gt;}
+        ///   * {"test_credentials", Dictionary&lt;string, string&gt;}
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>

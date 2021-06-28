@@ -5,10 +5,12 @@ using RestSharp;
 
 namespace EasyPost {
     public class Webhook : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public string mode { get; set; }
         public string url { get; set; }
         public DateTime? disabled_at { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// Get a list of scan forms.

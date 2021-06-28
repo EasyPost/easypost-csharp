@@ -36,6 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -91,6 +92,7 @@
     <Compile Include="CarrierAccountTest.cs" />
     <Compile Include="CarrierTypeTest.cs" />
     <Compile Include="ReportTest.cs" />
+    <Compile Include="ApiKeyTest.cs" />
     <Compile Include="UserTest.cs" />
     <Compile Include="WebhookTest.cs" />
   </ItemGroup>

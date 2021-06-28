@@ -5,6 +5,7 @@ using RestSharp;
 
 namespace EasyPost {
     public class ScanForm : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
@@ -16,6 +17,7 @@ namespace EasyPost {
         public string status { get; set; }
         public string message { get; set; }
         public string batch_id { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// Get a paginated list of scan forms.

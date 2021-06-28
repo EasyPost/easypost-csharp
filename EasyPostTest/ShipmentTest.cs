@@ -138,7 +138,7 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestInstanceOptions() {
-            DateTime tomorrow = DateTime.Now.AddDays(1);
+            DateTime tomorrow = DateTime.SpecifyKind(DateTime.Now.AddDays(1), DateTimeKind.Utc);
 
             Shipment shipment = CreateShipmentResource();
             shipment.options = new Options() {
@@ -280,11 +280,12 @@ namespace EasyPostTest {
                 customs_items = new List<CustomsItem>() { item }
             };
 
-            Shipment shipment = new Shipment();
-            shipment.to_address = to;
-            shipment.from_address = from;
-            shipment.parcel = parcel;
-            shipment.carrier_accounts = new List<CarrierAccount> { new CarrierAccount { id = "ca_7642d249fdcf47bcb5da9ea34c96dfcf" } };
+            Shipment shipment = new Shipment {
+                to_address = to,
+                from_address = from,
+                parcel = parcel,
+                carrier_accounts = new List<CarrierAccount> { new CarrierAccount { id = "ca_7642d249fdcf47bcb5da9ea34c96dfcf" } }
+            };
             shipment.Create();
             if (shipment.rates.Count > 0)
                 Assert.IsTrue(shipment.rates.TrueForAll(r => r.carrier_account_id == "ca_7642d249fdcf47bcb5da9ea34c96dfcf"));

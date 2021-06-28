@@ -171,36 +171,13 @@ foreach (Form form in shipment.forms) {
 }
 ```
 
-### Asynchronous Batch Processing
+### Releasing
 
-The `Batch` object allows you to perform operations on multiple `Shipment`s at once. This includes scheduling a `Pickup`, creating a `ScanForm` and consolidating labels. Operations performed on a `Batch` are asynchronous and take advantage of our [webhoook](https://www.easypost.com/docs/api/csharp#events) infrastructure.
-
-```cs
-using EasyPost;
-
-Shipment shipment = new Shipment() {
-    from_address = fromAddress,
-    to_address = toAddress,
-    parcel = parcel,
-    optoins = options
-};
-
-Batch batch = Batch.CreateAndBuy(new Dictionary<string, object>() {
-    { "reference", "MyReference" },
-    { "shipments", new List<Dictionary<string, object>>() { shipment } }
-});
-```
-
-This will produce two webhooks. One `batch.created` and one `batch.updated`. Process each `Batch` [state](https://www.easypost.com/docs/api/csharp#batch-object) according to your business logic.
-
-```cs
-using EasyPost;
-
-Batch batch = Batch.Retrieve("batch_...");
-batch.GenerateLabel("zpl"); // populates batch.label_url asynchronously
-```
-
-Consume the subsequent `batch.updated` webhook to process further.
+1. Update the [CHANGELOG](CHANGELOG.md).
+1. Bump `version` in `EasyPost.nuspec` and `AssemblyVersion` in all `csproj` files.
+1. Rebuild the library to update `dll`s in `lib` directory.
+1. Create a git tag named the version number, e.g. `2.1.2.1`, and push it.
+1. Publish new version on Nuget.
 
 ### Reporting Issues
 

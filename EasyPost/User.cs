@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace EasyPost {
     public class User : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public string parent_id { get; set; }
         public DateTime? created_at { get; set; }
@@ -21,6 +22,7 @@ namespace EasyPost {
         public string recharge_threshold { get; set; }
         public List<User> children { get; set; }
         public List<ApiKey> api_keys { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// Retrieve a User from its id. If no id is specified, it returns the user for the api_key specified.
@@ -77,6 +79,9 @@ namespace EasyPost {
             Merge(request.Execute<User>());
         }
 
+        /// <summary>
+        /// Delete the user.
+        /// </summary>
         public void Destroy() {
             Request request = new Request("v2/users/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);

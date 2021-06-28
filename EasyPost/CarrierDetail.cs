@@ -2,6 +2,7 @@
 
 namespace EasyPost {
     public class CarrierDetail {
+#pragma warning disable IDE1006 // Naming Styles
         public string service { set; get; }
         public string container_type { set; get; }
         public string est_delivery_date_local { set; get; }
@@ -11,5 +12,6 @@ namespace EasyPost {
         public DateTime? guaranteed_delivery_date { set; get; }
         public string alternate_identifier { get; set; }
         public DateTime? initial_delivery_attempt { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
     }
 }

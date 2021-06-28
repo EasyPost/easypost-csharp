@@ -16,9 +16,10 @@ namespace EasyPostTest {
         }
             
         [TestMethod]
-         public void TestRetrieve() {
+        [ExpectedException(typeof(HttpException))]
+        public void TestRetrieve() {
+            // Events are archived after some time. Lets at least make sure we get a 404.
             Event e = Event.Retrieve("evt_d0000c1a9c6c4614949af6931ea9fac8");
-            Assert.AreEqual(e.result["id"], "shprep_ee1e22402e0b4331be620301b517186f");
         }
     }
 }

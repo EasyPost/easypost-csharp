@@ -16,9 +16,8 @@ namespace EasyPost {
             Type type = typeof(T);
             T resource = (T)Activator.CreateInstance(type);
 
-            object attribute;
             foreach (PropertyInfo property in type.GetProperties()) {
-                if (attributes.TryGetValue(property.Name, out attribute) == false)
+                if (attributes.TryGetValue(property.Name, out object attribute) == false)
                     continue;
 
                 if (property.PropertyType.GetInterfaces().Contains(typeof(IResource))) {
@@ -37,8 +36,7 @@ namespace EasyPost {
                     foreach (Dictionary<string, object> attr in (List<Dictionary<string, object>>)attribute) {
                         ((IList)property.GetValue(resource, null)).Add(method.Invoke(resource, new object[] { attr }));
                     }
-                }
-                else {
+                } else {
                     property.SetValue(resource, attribute, null);
                 }
             }

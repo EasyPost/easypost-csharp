@@ -5,6 +5,7 @@ using RestSharp;
 
 namespace EasyPost {
     public class Report : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
@@ -15,6 +16,19 @@ namespace EasyPost {
         public Boolean include_children { get; set; }
         public string url { get; set; }
         public DateTime? url_expires_at { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
+
+        /// <summary>
+        /// Retrieve a Report from its id.
+        /// </summary>
+        /// <param name="id">String representing a report.</param>
+        /// <returns>EasyPost.Report instance.</returns>
+        public static Report Retrieve(string id) {
+            Request request = new Request("v2/reports/{id}");
+            request.AddUrlSegment("id", id);
+
+            return request.Execute<Report>();
+        }
 
         /// <summary>
         /// Retrieve a Report from its id and type.
@@ -33,6 +47,9 @@ namespace EasyPost {
         /// <summary>
         /// Create a Report.
         /// </summary>
+        /// <param name="type">
+        /// The type of report, e.g. "shipment", "tracker", "payment_log", etc.
+        /// </param>
         /// <param name="parameters">
         /// Optional dictionary containing parameters to create the carrier account with. Valid pairs:
         ///   * {"start_date", string} Date to start the report at.
@@ -52,6 +69,7 @@ namespace EasyPost {
         /// <summary>
         /// Get a paginated list of reports.
         /// </summary>
+        /// <param name="parameters">
         /// Optional dictionary containing parameters to filter the list with. Valid pairs:
         ///   * {"before_id", string} String representing a Report ID. Only retrieve ScanForms created before this id. Takes precedence over after_id.
         ///   * {"after_id", string} String representing a Report ID. Only retrieve ScanForms created after this id.
@@ -59,7 +77,9 @@ namespace EasyPost {
         ///   * {"end_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created before this datetime.
         ///   * {"page_size", int} Max size of list. Default to 20.
         /// All invalid keys will be ignored.
-        /// <param name="parameters">
+        /// </param>
+        /// <param name="type">
+        /// The type of report, e.g. "shipment", "tracker", "payment_log", etc.
         /// </param>
         /// <returns>Instance of EasyPost.ScanForm</returns>
         public static ReportList List(string type, Dictionary<string, object> parameters = null) {

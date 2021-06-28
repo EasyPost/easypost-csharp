@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace EasyPost {
     public class Options : Resource {
+#pragma warning disable IDE1006 // Naming Styles
         public bool? additional_handling { get; set; }
         public string address_validation_level { get; set; }
         public bool? alcohol { get; set; }
@@ -75,6 +76,7 @@ namespace EasyPost {
         public string smartpost_manifest { get; set; }
         public string special_rates_eligibility { get; set; }
         public bool? suppress_etd { get; set; }
+        public string commercial_invoice_letterhead { get; set; }
         public string commercial_invoice_signature { get; set; }
         public string parties_to_transaction_are_related { get; set; }
         public string import_state_tax_id { get; set; }
@@ -82,5 +84,6 @@ namespace EasyPost {
         public string customs_include_shipping { get; set; }
         public string importer_address_id { get; set; }
         public string endorsement { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
     }
 }

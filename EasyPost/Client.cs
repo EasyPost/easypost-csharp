@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
-using System.Linq;
 
 namespace EasyPost {
     public class Client {
@@ -16,9 +15,7 @@ namespace EasyPost {
 
         internal Client(ClientConfiguration clientConfiguration) {
             System.Net.ServicePointManager.SecurityProtocol |= Security.GetProtocol();
-
-            if (clientConfiguration == null) throw new ArgumentNullException("clientConfiguration");
-            configuration = clientConfiguration;
+            configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
 
             client = new RestClient(clientConfiguration.ApiBase);
 
