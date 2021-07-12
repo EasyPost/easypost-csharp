@@ -173,7 +173,7 @@ foreach (Form form in shipment.forms) {
 
 ### Warning about Threads
 
-NOTE: The EasyPost .NET client library (in p;articular, the `ClientManager` global object) is not threadsafe; do not attempt to perform requests from multiple threads in parallel. This can be particularly problematic if using multiple API keys; make sure to always use a Mutex, Monitor, or other synchronization method to ensure that concurrent requests do not enter the EasyPost library from different threads.
+NOTE: The EasyPost .NET client library (in particular, the `ClientManager` global object) is not threadsafe; do not attempt to perform requests from multiple threads in parallel. This can be particularly problematic if using multiple API keys; make sure to always use a Mutex, Monitor, or other synchronization method to ensure that concurrent requests do not enter the EasyPost library from different threads.
 
 ### Releasing
 
