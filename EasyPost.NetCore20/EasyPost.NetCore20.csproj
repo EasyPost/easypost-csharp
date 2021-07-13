@@ -146,6 +146,9 @@
     <Compile Include="..\EasyPost\Verification.cs">
       <Link>Verification.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\VerificationDetails.cs">
+      <Link>VerificationDetails.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\Verifications.cs">
       <Link>Verifications.cs</Link>
     </Compile>
