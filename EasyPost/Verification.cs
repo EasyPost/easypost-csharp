@@ -5,6 +5,7 @@ namespace EasyPost {
 #pragma warning disable IDE1006 // Naming Styles
         public bool success { get; set; }
         public List<Error> errors { get; set; }
+        public List<VerificationDetails> details { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
     }
 }
