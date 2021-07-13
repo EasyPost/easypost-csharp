@@ -2,10 +2,10 @@
 
 ## NEXT RELEASE
 
-* Adds missing `commercial_invoice_letterhead` option
+* Adds missing `commercial_invoice_letterhead` option (closes #142)
 * Adds missing `VerificationDetails` object (closes #140, #141, #162)
 * Updates various information in the README related to thread-safety, examples, releasing, etc
-* Adds all missing dates and version from CHANGELOG
+* Adds all missing dates and versions to the CHANGELOG
 
 ## 2.5.1.3 (2020-01-07)
 
