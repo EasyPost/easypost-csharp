@@ -122,6 +122,8 @@
     <Compile Include="..\EasyPost\ShipmentList.cs">
       <Link>ShipmentList.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\SmartRate.cs" Link="SmartRate.cs" />
+    <Compile Include="..\EasyPost\TimeInTransit.cs" Link="TimeInTransit.cs" />
     <Compile Include="..\EasyPost\Tracker.cs">
       <Link>Tracker.cs</Link>
     </Compile>

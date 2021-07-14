@@ -88,6 +88,7 @@
     <Compile Include="OrderTest.cs" />
     <Compile Include="SecurityTest.cs" />
     <Compile Include="ShipmentTest.cs" />
+    <Compile Include="SmartRateTest.cs" />
     <Compile Include="TrackerTest.cs" />
     <Compile Include="CarrierAccountTest.cs" />
     <Compile Include="CarrierTypeTest.cs" />
@@ -105,6 +106,11 @@
       <Project>{69683f8c-9306-4ed3-90bd-1f5c2f6977e1}</Project>
       <Name>EasyPost</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SmartRateData.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
