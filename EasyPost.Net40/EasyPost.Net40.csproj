@@ -33,10 +33,11 @@
     <DocumentationFile>..\lib\net40\EasyPost.Net40.XML</DocumentationFile>
     <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
-  <PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>EasyPost.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
