@@ -17,11 +17,14 @@
     <DocumentationFile>..\lib\netcoreapp2.0\EasyPost.NetCore20.XML</DocumentationFile>
     <NoWarn>1701;1702;1591;1570</NoWarn>
   </PropertyGroup>
-  <PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>EasyPost.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>EasyPost.pfx</AssemblyOriginatorKeyFile>
     <AssemblyVersion>2.5.1.3</AssemblyVersion>
     <FileVersion>2.5.1.3</FileVersion>
   </PropertyGroup>

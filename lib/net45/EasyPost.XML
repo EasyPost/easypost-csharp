@@ -218,6 +218,13 @@
             Provides the ability to manage delegated construction of client connections for requests.
             </summary>
         </member>
+        <member name="M:EasyPost.Report.Retrieve(System.String)">
+            <summary>
+            Retrieve a Report from its id.
+            </summary>
+            <param name="id">String representing a report.</param>
+            <returns>EasyPost.Report instance.</returns>
+        </member>
         <member name="M:EasyPost.Report.Retrieve(System.String,System.String)">
             <summary>
             Retrieve a Report from its id and type.
