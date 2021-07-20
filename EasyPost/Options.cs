@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EasyPost {
-    public class Options : Resource {
+namespace EasyPost
+{
+    public class Options : Resource
+    {
 #pragma warning disable IDE1006 // Naming Styles
         public bool? additional_handling { get; set; }
         public string address_validation_level { get; set; }
@@ -45,6 +47,7 @@ namespace EasyPost {
         public DateTime? label_date { get; set; }
         public string label_format { get; set; }
         public string label_size { get; set; }
+        public string license_number { get; set; }
         public string machinable { get; set; }
         public bool? neutral_delivery { get; set; }
         public bool? non_contract { get; set; }
@@ -59,7 +62,7 @@ namespace EasyPost {
         public string print_custom_1_code { get; set; }
         public string print_custom_2_code { get; set; }
         public string print_custom_3_code { get; set; }
-        public List<Dictionary<string, object>> print_custom { get; set;}
+        public List<Dictionary<string, object>> print_custom { get; set; }
         public bool peel_and_return { get; set; }
         public DateTime? pickup_min_datetime { get; set; }
         public bool? print_custom_1_barcode { get; set; }
