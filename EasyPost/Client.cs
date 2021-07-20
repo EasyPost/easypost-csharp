@@ -13,7 +13,7 @@ namespace EasyPost {
         internal RestClient client;
         internal ClientConfiguration configuration;
 
-        internal Client(ClientConfiguration clientConfiguration) {
+        public Client(ClientConfiguration clientConfiguration) {
             System.Net.ServicePointManager.SecurityProtocol |= Security.GetProtocol();
             configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
 
