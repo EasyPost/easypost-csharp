@@ -3,6 +3,7 @@
 ## NEXT RELEASE
 
 * Adds missing `commercial_invoice_letterhead` option (closes #142)
+* Adds missing `license_number` option
 * Adds missing `VerificationDetails` object (closes #140, #141, #162)
 * Updates various information in the README related to thread-safety, examples, releasing, etc
 * Adds all missing dates and versions to the CHANGELOG
