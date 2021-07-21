@@ -35,15 +35,5 @@ namespace EasyPost
         public TimeInTransit time_in_transit { get; set; }
         public DateTime updated_at { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
-        //public SmartRateResult GetSmartRates()
-        //{
-        //    if (id == null)
-        //        Shipment.Create();
-
-        //    Request request = new Request("v2/shipments/{id}/smartrate");
-        //    request.AddUrlSegment("id", id);
-        //    SmartRateResult smartRateResult = request.Execute<SmartRateResult>();
-        //    return smartRateResult;
-        //}
     }
 }
