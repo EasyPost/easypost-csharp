@@ -128,7 +128,7 @@ namespace EasyPost {
             rates = request.Execute<Shipment>().rates;
         }
 
-        public List<SmartRate> GetSmartRates()
+        public List<Smartrate> GetSmartRates()
         {
             if (id == null)
                 Create();
@@ -136,7 +136,7 @@ namespace EasyPost {
             Request request = new Request("v2/shipments/{id}/smartrate");
             request.AddUrlSegment("id", id);
             request.RootElement = "result";
-            List<SmartRate> smartRates = request.Execute<List<SmartRate>>();
+            List<Smartrate> smartRates = request.Execute<List<Smartrate>>();
             return smartRates;
         }
 

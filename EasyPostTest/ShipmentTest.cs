@@ -316,7 +316,7 @@ namespace EasyPostTest {
         public void ApiCallIsNotNull()
         {
             Shipment shipment = Shipment.Create(parameters);
-            List<SmartRate> smartRateResult = shipment.GetSmartRates();
+            List<Smartrate> smartRateResult = shipment.GetSmartRates();
             Assert.IsNotNull(smartRateResult);
         }
 
@@ -324,7 +324,7 @@ namespace EasyPostTest {
         public void TestGetSmartRates()
         {
             Shipment shipment = Shipment.Create(parameters);
-            List<SmartRate> smartRateResult = shipment.GetSmartRates();
+            List<Smartrate> smartRateResult = shipment.GetSmartRates();
             //Make sure shipment id from smartrate is the same as the created one
             Assert.AreEqual(shipment.rates[0].id, smartRateResult[0].id);
             Assert.IsNotNull(shipment.rates);
@@ -335,7 +335,7 @@ namespace EasyPostTest {
         public void TestTimeInTransitData()
         {
             Shipment shipment = Shipment.Create(parameters);
-            List<SmartRate> smartRateResult = shipment.GetSmartRates();
+            List<Smartrate> smartRateResult = shipment.GetSmartRates();
             Assert.IsInstanceOfType(smartRateResult[0].time_in_transit.percentile_50, typeof(int));
             Assert.IsInstanceOfType(smartRateResult[0].time_in_transit.percentile_75, typeof(int));
             Assert.IsInstanceOfType(smartRateResult[0].time_in_transit.percentile_85, typeof(int));
