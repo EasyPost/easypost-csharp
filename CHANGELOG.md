@@ -4,6 +4,7 @@
 
 * Adds missing `commercial_invoice_letterhead` option (closes #142)
 * Adds missing `license_number` option
+* Adds missing `receiver_liquor_license` option
 * Adds missing `VerificationDetails` object (closes #140, #141, #162)
 * Bumps `RestSharp` from `106.4.2` to `106.12.0`
 * Changes the Client delegate constructor from `internal` to `public`

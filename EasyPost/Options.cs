@@ -69,6 +69,7 @@ namespace EasyPost
         public bool? print_custom_2_barcode { get; set; }
         public bool? print_custom_3_barcode { get; set; }
         public bool? print_rate { get; set; }
+        public string receiver_liquor_license { get; set; }
         public bool? registered_mail { get; set; }
         public double? registered_mail_amount { get; set; }
         public bool? return_receipt { get; set; }
