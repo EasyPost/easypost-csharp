@@ -128,7 +128,7 @@ namespace EasyPost {
             rates = request.Execute<Shipment>().rates;
         }
 
-        public List<Smartrate> GetSmartRates()
+        public List<Smartrate> GetSmartrates()
         {
             if (id == null)
                 Create();
