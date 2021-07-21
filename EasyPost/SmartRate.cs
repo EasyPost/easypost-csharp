@@ -5,11 +5,11 @@ using RestSharp.Deserializers;
 
 namespace EasyPost
 {
-    public class SmartRateResult:Resource
+    public class SmartrateResult:Resource
     {
-        public List<SmartRate> result { get; set; }
+        public List<Smartrate> result { get; set; }
     }
-    public class SmartRate:Resource
+    public class Smartrate:Resource
     {
 #pragma warning disable IDE1006 // Naming Styles
         public string carrier { get; set; }
