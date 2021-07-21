@@ -3,13 +3,10 @@ using System;
 using System.Collections.Generic;
 using RestSharp.Deserializers;
 
-//RANDOM COMMENT: Make sure to gave the get set accessors. I forgot to place it on the result property and it was returning null on the response data even though the content came back correcly.
-//RestSharp uses your class as the starting point, looping through each publicly-accessible, writable property and searching for a corresponding element in the data returned.
 namespace EasyPost
 {
     public class SmartRateResult:Resource
     {
-        //Custom json property name is not working for some reason. Maybe restsharp issue
         public List<SmartRate> result { get; set; }
     }
     public class SmartRate:Resource

@@ -89,7 +89,6 @@
     <Compile Include="OrderTest.cs" />
     <Compile Include="SecurityTest.cs" />
     <Compile Include="ShipmentTest.cs" />
-    <Compile Include="SmartRateTest.cs" />
     <Compile Include="TrackerTest.cs" />
     <Compile Include="CarrierAccountTest.cs" />
     <Compile Include="CarrierTypeTest.cs" />
