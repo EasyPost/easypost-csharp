@@ -316,33 +316,33 @@ namespace EasyPostTest {
         public void ApiCallIsNotNull()
         {
             Shipment shipment = Shipment.Create(parameters);
-            List<Smartrate> smartRateResult = shipment.GetSmartrates();
-            Assert.IsNotNull(smartRateResult);
+            List<Smartrate> smartrateResult = shipment.GetSmartrates();
+            Assert.IsNotNull(smartrateResult);
         }
 
         [TestMethod]
         public void TestGetSmartrates()
         {
             Shipment shipment = Shipment.Create(parameters);
-            List<Smartrate> smartRateResult = shipment.GetSmartrates();
+            List<Smartrate> smartrateResult = shipment.GetSmartrates();
             //Make sure shipment id from smartrate is the same as the created one
-            Assert.AreEqual(shipment.rates[0].id, smartRateResult[0].id);
+            Assert.AreEqual(shipment.rates[0].id, smartrateResult[0].id);
             Assert.IsNotNull(shipment.rates);
         }
 
-        //This API call changes each time. Replicated from the python version. Will fail since percentiles are changing each time. Will check for type instead.
+        //TODO: Once we have a library for recording and replaying HTTP, assert that the following values actually match an integer
         [TestMethod]
         public void TestTimeInTransitData()
         {
             Shipment shipment = Shipment.Create(parameters);
-            List<Smartrate> smartRateResult = shipment.GetSmartrates();
-            Assert.IsInstanceOfType(smartRateResult[0].time_in_transit.percentile_50, typeof(int));
-            Assert.IsInstanceOfType(smartRateResult[0].time_in_transit.percentile_75, typeof(int));
-            Assert.IsInstanceOfType(smartRateResult[0].time_in_transit.percentile_85, typeof(int));
-            Assert.IsInstanceOfType(smartRateResult[0].time_in_transit.percentile_90, typeof(int));
-            Assert.IsInstanceOfType(smartRateResult[0].time_in_transit.percentile_95, typeof(int));
-            Assert.IsInstanceOfType(smartRateResult[0].time_in_transit.percentile_97, typeof(int));
-            Assert.IsInstanceOfType(smartRateResult[0].time_in_transit.percentile_99, typeof(int));
+            List<Smartrate> smartrateResult = shipment.GetSmartrates();
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_50, typeof(int));
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_75, typeof(int));
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_85, typeof(int));
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_90, typeof(int));
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_95, typeof(int));
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_97, typeof(int));
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_99, typeof(int));
         }
     }
 }
