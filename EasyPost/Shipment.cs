@@ -128,25 +128,15 @@ namespace EasyPost {
             rates = request.Execute<Shipment>().rates;
         }
 
-        public SmartRateResult GetSmartRates()
+        public List<SmartRate> GetSmartRates()
         {
             if (id == null)
                 Create();
 
             Request request = new Request("v2/shipments/{id}/smartrate");
             request.AddUrlSegment("id", id);
-            SmartRateResult smartRates = request.Execute<SmartRateResult>();
-            return smartRates;
-        }
-
-        public List<SmartRate> GetSmartRatesList()
-        {
-            if (id == null)
-                Create();
-
-            Request request = new Request("v2/shipments/{id}/smartrate");
-            request.AddUrlSegment("id", id);
-            List<SmartRate> smartRates = request.Execute<SmartRateResult>().result;
+            request.RootElement = "result";
+            List<SmartRate> smartRates = request.Execute<List<SmartRate>>();
             return smartRates;
         }
 
