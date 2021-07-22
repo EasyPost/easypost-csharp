@@ -81,6 +81,7 @@
     <Compile Include="ClientConfigurationTest.cs" />
     <Compile Include="PickupTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\EasyPost\VersionInfo.cs" Link="VersionInfo.cs" />
     <Compile Include="RequestTest.cs" />
     <Compile Include="CustomsInfoTest.cs" />
     <Compile Include="CustomsItemTest.cs" />

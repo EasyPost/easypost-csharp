@@ -90,6 +90,7 @@
     <Compile Include="Pickup.cs" />
     <Compile Include="PostageLabel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\EasyPost\VersionInfo.cs" Link="VersionInfo.cs" />
     <Compile Include="Rating.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="ScanForm.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Verification.cs" />
     <Compile Include="VerificationDetails.cs" />
     <Compile Include="Verifications.cs" />
+    <Compile Include="VersionInfo.cs" />
     <Compile Include="Webhook.cs" />
     <Compile Include="WebhookList.cs" />
   </ItemGroup>
@@ -117,6 +119,9 @@
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
