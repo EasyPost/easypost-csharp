@@ -310,5 +310,39 @@ namespace EasyPostTest {
             ShipmentList nextShipmentList = shipmentList.Next();
             Assert.AreNotEqual(shipmentList.shipments[0].id, nextShipmentList.shipments[0].id);
         }
+
+        //Smart rate
+        [TestMethod]
+        public void ApiCallIsNotNull()
+        {
+            Shipment shipment = Shipment.Create(parameters);
+            List<Smartrate> smartrateResult = shipment.GetSmartrates();
+            Assert.IsNotNull(smartrateResult);
+        }
+
+        [TestMethod]
+        public void TestGetSmartrates()
+        {
+            Shipment shipment = Shipment.Create(parameters);
+            List<Smartrate> smartrateResult = shipment.GetSmartrates();
+            //Make sure shipment id from smartrate is the same as the created one
+            Assert.AreEqual(shipment.rates[0].id, smartrateResult[0].id);
+            Assert.IsNotNull(shipment.rates);
+        }
+
+        //TODO: Once we have a library for recording and replaying HTTP, assert that the following values actually match an integer
+        [TestMethod]
+        public void TestTimeInTransitData()
+        {
+            Shipment shipment = Shipment.Create(parameters);
+            List<Smartrate> smartrateResult = shipment.GetSmartrates();
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_50, typeof(int));
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_75, typeof(int));
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_85, typeof(int));
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_90, typeof(int));
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_95, typeof(int));
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_97, typeof(int));
+            Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_99, typeof(int));
+        }
     }
 }
