@@ -128,6 +128,18 @@ namespace EasyPost {
             rates = request.Execute<Shipment>().rates;
         }
 
+        public List<Smartrate> GetSmartrates()
+        {
+            if (id == null)
+                Create();
+
+            Request request = new Request("v2/shipments/{id}/smartrate");
+            request.AddUrlSegment("id", id);
+            request.RootElement = "result";
+            List<Smartrate> smartrates = request.Execute<List<Smartrate>>();
+            return smartrates;
+        }
+
         /// <summary>
         /// Purchase a label for this shipment with the given rate.
         /// </summary>
