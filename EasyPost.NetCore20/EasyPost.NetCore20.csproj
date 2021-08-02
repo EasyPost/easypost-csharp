@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>netcoreapp2.0</TargetFramework>
-		<OutputType>Library</OutputType>
-		<RootNamespace>EasyPost.NetCore20</RootNamespace>
-		<AssemblyName>EasyPost.NetCore20</AssemblyName>
-	</PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RootNamespace>EasyPost.NetCore20</RootNamespace>
+    <AssemblyName>EasyPost.NetCore20</AssemblyName>
+  </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DebugType>pdbonly</DebugType>
@@ -22,11 +22,11 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>EasyPost.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\EasyPost\EasyPost.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-	<PropertyGroup>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-	</PropertyGroup>
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\EasyPost\Address.cs">
       <Link>Address.cs</Link>
@@ -124,8 +124,12 @@
     <Compile Include="..\EasyPost\ShipmentList.cs">
       <Link>ShipmentList.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost\Smartrate.cs" Link="Smartrate.cs" />
-    <Compile Include="..\EasyPost\TimeInTransit.cs" Link="TimeInTransit.cs" />
+    <Compile Include="..\EasyPost\Smartrate.cs">
+      <Link>Smartrate.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\TimeInTransit.cs">
+      <Link>TimeInTransit.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\Tracker.cs">
       <Link>Tracker.cs</Link>
     </Compile>
@@ -165,10 +169,14 @@
     <Compile Include="..\EasyPost\Error.cs">
       <Link>Error.cs</Link>
     </Compile>
-	<Compile Include="..\EasyPost\VersionInfo.cs" Link="VersionInfo.cs" />
+    <Compile Include="..\EasyPost\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="EasyPost.pfx" />
+    <None Include="..\EasyPost\EasyPost.pfx">
+      <Link>EasyPost.pfx</Link>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
