@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build"
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -37,7 +38,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>EasyPost.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\EasyPost\EasyPost.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -171,6 +172,9 @@
       <Link>TrackingLocation.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\EasyPost\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\Form.cs">
       <Link>Form.cs</Link>
     </Compile>
@@ -200,7 +204,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="EasyPost.pfx" />
+    <None Include="..\EasyPost\EasyPost.pfx">
+      <Link>EasyPost.pfx</Link>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
