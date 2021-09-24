@@ -1,5 +1,6 @@
 ﻿using EasyPost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading;
 
 namespace EasyPostTest {
     [TestClass]
@@ -41,6 +42,57 @@ namespace EasyPostTest {
             Client client2 = ClientManager.Build();
 
             Assert.AreNotSame(client1, client2);
+        }
+
+        [TestMethod]
+        public void TestThreadSafeConfiguration()
+        {
+            ClientManager.SetThreadStatic(true);
+
+            Thread t1 = new Thread(() =>
+            {
+                bool hasCurrent = true;
+
+                try
+                {
+                    Client c = ClientManager.Build();
+                    hasCurrent = true;
+                }
+                catch (ClientNotConfigured)
+                {
+                    hasCurrent = false;
+                }
+
+                Assert.AreEqual(hasCurrent, false);
+
+                ClientManager.SetCurrent("threadApiKey");
+                Client client1 = ClientManager.Build();
+            });
+
+            Thread t2 = new Thread(() =>
+            {
+                bool hasCurrent = true;
+
+                try
+                {
+                    Client c = ClientManager.Build();
+                    hasCurrent = true;
+                }
+                catch (ClientNotConfigured)
+                {
+                    hasCurrent = false;
+                }
+
+                Assert.AreEqual(hasCurrent, false);
+
+                ClientManager.SetCurrent("anotherThreadApiKey");
+                Client client2 = ClientManager.Build();
+            });
+
+            t1.Start();
+            t2.Start();
+            t1.Abort();
+            t2.Abort();
         }
     }
 }

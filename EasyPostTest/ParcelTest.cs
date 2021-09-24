@@ -23,12 +23,14 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestPredefinedPackage() {
-            Parcel parcel = new Parcel() { weight = 1.8, predefined_package = "SMALLFLATRATEBOX" };
-            Shipment shipment = new Shipment() { parcel = parcel };
-            shipment.Create();
+            Parcel parcel = Parcel.Create(new Dictionary<string, object>() {
+                { "weight", 1.8 }, { "predefined_package", "SMALLFLATRATEBOX" }
+            });
 
-            Assert.AreEqual(null, shipment.parcel.height);
-            Assert.AreEqual("SMALLFLATRATEBOX", shipment.parcel.predefined_package);
+            Parcel retrieved = Parcel.Retrieve(parcel.id);
+
+            Assert.AreEqual(null, retrieved.height);
+            Assert.AreEqual("SMALLFLATRATEBOX", retrieved.predefined_package);
         }
     }
 }

@@ -77,11 +77,21 @@ namespace EasyPostTest {
 
         [TestMethod]
         public void TestCreateFromInstance() {
+            List<Shipment> shipmentList = new List<Shipment>();
+
+            foreach (var item in shipments)
+            {
+                item.Add("to_address", Address.Create(toAddress));
+                item.Add("from_address", Address.Create(fromAddress));
+                Shipment shipment = Shipment.Create(item);
+                shipmentList.Add(shipment);
+            }
+
             Order order = new Order() {
                 to_address = Address.Create(toAddress),
                 from_address = Address.Create(fromAddress),
                 reference = "OrderRef",
-                shipments = shipments.Select(shipment => Shipment.Create(shipment)).ToList(),
+                shipments = shipmentList,
                 carrier_accounts = new List<CarrierAccount>() { new CarrierAccount() { id = "ca_7642d249fdcf47bcb5da9ea34c96dfcf" } }
             };
 
