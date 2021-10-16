@@ -8,20 +8,14 @@ on:
 
 jobs:
   build:
+
     runs-on: self-hosted
-    strategy:
-      matrix:
-        dotnet: [ '5.0.11' ]
-    name: EasyPost C#/DotNet ${{ matrix.dotnet }}
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: ${{ matrix.dotnet }}
-      - name: Restore dependencies
-        run: dotnet restore
-      - name: Build
-        run: dotnet build --no-restore
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
+    - uses: actions/checkout@v2
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
