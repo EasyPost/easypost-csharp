@@ -11,7 +11,7 @@ jobs:
     runs-on: self-hosted
     strategy:
       matrix:
-        dotnet: [ '2.0.9', '3.0.3', '5.0.11' ]
+        dotnet: [ '5.0.11' ]
     name: EasyPost C#/DotNet ${{ matrix.dotnet }}
     steps:
       - uses: actions/checkout@v2
