@@ -9,7 +9,7 @@
 * Changes the Client delegate constructor from `internal` to `public`
 * Updates various information in the README related to thread-safety, examples, releasing, etc
 * Adds all missing dates and versions to the CHANGELOG
-* Bumps `RestSharp` from `106.12.0` to `106.13.0`
+* Bumps RestSharp from 106.4.2 to 106.13.0
 * Includes SmartRate handling.
 * Updated Code Signing Identity.
 
