@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## NEXT RELEASE
+## 2.6.0 (2021-11-03)
 
 * Adds missing `commercial_invoice_letterhead` option (closes #142)
 * Adds missing `license_number` option
@@ -9,12 +9,9 @@
 * Changes the Client delegate constructor from `internal` to `public`
 * Updates various information in the README related to thread-safety, examples, releasing, etc
 * Adds all missing dates and versions to the CHANGELOG
-
-## 2.5.1.4 (2021-11-03)
-
 * Bumps `RestSharp` from `106.12.0` to `106.13.0`
-* Updated Code Signing Identity
 * Includes SmartRate handling.
+* Updated Code Signing Identity.
 
 ## 2.5.1.3 (2020-01-07)
 
