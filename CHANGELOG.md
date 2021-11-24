@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 2.6.1 (2021-11-24)
+## 2.7.0 (2021-11-24)
 
 * Adds support for tax identifiers (PR #181)
 
