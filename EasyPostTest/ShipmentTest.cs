@@ -344,5 +344,36 @@ namespace EasyPostTest {
             Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_97, typeof(int));
             Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_99, typeof(int));
         }
+
+        //Tax Identifiers
+        [TestMethod]
+        public void TestTaxIdentifiers()
+        {
+            parameters["tax_identifiers"] = new List<TaxIdentifier>() {
+                new TaxIdentifier {
+                    entity = "SENDER",
+                    tax_id = "12345",
+                    tax_id_type = "EORI",
+                    issuing_country = "GB"
+                }
+            };
+            Shipment shipment = Shipment.Create(parameters);
+            Assert.IsNotNull(shipment.id);
+            Assert.IsNotNull(shipment.rates);
+            TaxIdentifier taxIdentifier = shipment.tax_identifiers[0];
+            Assert.AreEqual("SENDER", taxIdentifier.entity);
+            Assert.AreEqual("HIDDEN", taxIdentifier.tax_id);
+            Assert.AreEqual("EORI", taxIdentifier.tax_id_type);
+            Assert.AreEqual("GB", taxIdentifier.issuing_country);
+
+            Shipment retrieved = Shipment.Retrieve(shipment.id);
+
+            TaxIdentifier retrievedTaxIdentifier = retrieved.tax_identifiers[0];
+            Assert.AreEqual("SENDER", retrievedTaxIdentifier.entity);
+            Assert.AreEqual("HIDDEN", retrievedTaxIdentifier.tax_id);
+            Assert.AreEqual("EORI", retrievedTaxIdentifier.tax_id_type);
+            Assert.AreEqual("GB", retrievedTaxIdentifier.issuing_country);
+        }
+
     }
 }
