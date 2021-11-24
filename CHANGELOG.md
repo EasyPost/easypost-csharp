@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.6.1 (2021-11-24)
+
+* Adds support for tax identifiers (PR #181)
+
 ## 2.6.0 (2021-11-03)
 
 * Adds missing `commercial_invoice_letterhead` option (closes #142)
