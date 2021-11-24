@@ -38,6 +38,7 @@ namespace EasyPost {
         public List<CarrierAccount> carrier_accounts { get; set; }
         public string batch_id { get; set; }
         public string order_id { get; set; }
+        public List<TaxIdentifier> tax_identifiers { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>

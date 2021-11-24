@@ -98,6 +98,7 @@
     <Compile Include="Security.cs" />
     <Compile Include="Shipment.cs" />
     <Compile Include="ShipmentList.cs" />
+    <Compile Include="TaxIdentifier.cs" />
     <Compile Include="Tracker.cs" />
     <Compile Include="TrackingDetail.cs" />
     <Compile Include="TrackingLocation.cs" />

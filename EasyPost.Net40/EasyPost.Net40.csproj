@@ -156,6 +156,9 @@
     <Compile Include="..\EasyPost\Smartrate.cs">
       <Link>Smartrate.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\TaxIdentifier.cs">
+      <Link>TaxIdentifier.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\TimeInTransit.cs">
       <Link>TimeInTransit.cs</Link>
     </Compile>

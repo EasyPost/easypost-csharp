@@ -7,7 +7,9 @@ namespace EasyPost
 {
     public class SmartrateResult:Resource
     {
+#pragma warning disable IDE1006 // Naming Styles
         public List<Smartrate> result { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
     }
     public class Smartrate:Resource
     {
