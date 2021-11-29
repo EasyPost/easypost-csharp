@@ -1,11 +1,12 @@
-﻿using RestSharp;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using RestSharp;
 
-namespace EasyPost {
-    public class Shipment : Resource {
+namespace EasyPost
+{
+    public class Shipment : Resource
+    {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public string mode { get; set; }
@@ -39,6 +40,7 @@ namespace EasyPost {
         public string batch_id { get; set; }
         public string order_id { get; set; }
         public List<TaxIdentifier> tax_identifiers { get; set; }
+        public string service { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
@@ -55,7 +57,8 @@ namespace EasyPost {
         /// <param name="parameters">
         /// </param>
         /// <returns>Instance of EasyPost.ShipmentList</returns>
-        public static ShipmentList List(Dictionary<string, object> parameters = null) {
+        public static ShipmentList List(Dictionary<string, object> parameters = null)
+        {
             Request request = new Request("v2/shipments");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
@@ -69,7 +72,8 @@ namespace EasyPost {
         /// </summary>
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
         /// <returns>EasyPost.Shipment instance.</returns>
-        public static Shipment Retrieve(string id) {
+        public static Shipment Retrieve(string id)
+        {
             Request request = new Request("v2/shipments/{id}");
             request.AddUrlSegment("id", id);
 
@@ -95,7 +99,8 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static Shipment Create(Dictionary<string, object> parameters = null) {
+        public static Shipment Create(Dictionary<string, object> parameters = null)
+        {
             return SendCreate(parameters ?? new Dictionary<string, object>());
         }
 
@@ -103,13 +108,15 @@ namespace EasyPost {
         /// Create this Shipment.
         /// </summary>
         /// <exception cref="ResourceAlreadyCreated">Shipment already has an id.</exception>
-        public void Create() {
+        public void Create()
+        {
             if (id != null)
                 throw new ResourceAlreadyCreated();
             Merge(SendCreate(this.AsDictionary()));
         }
 
-        private static Shipment SendCreate(Dictionary<string, object> parameters) {
+        private static Shipment SendCreate(Dictionary<string, object> parameters)
+        {
             Request request = new Request("v2/shipments", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "shipment", parameters } });
 
@@ -119,7 +126,8 @@ namespace EasyPost {
         /// <summary>
         /// Populate the rates property for this Shipment.
         /// </summary>
-        public void GetRates() {
+        public void GetRates()
+        {
             if (id == null)
                 Create();
 
@@ -147,13 +155,15 @@ namespace EasyPost {
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
 
-        public void Buy(string rateId, string insuranceValue = null) {
+        public void Buy(string rateId, string insuranceValue = null)
+        {
             Request request = new Request("v2/shipments/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
 
             Dictionary<string, object> body = new Dictionary<string, object>() { { "rate", new Dictionary<string, object>() { { "id", rateId } } } };
 
-            if (insuranceValue != null) {
+            if (insuranceValue != null)
+            {
                 body["insurance"] = insuranceValue;
             }
 
@@ -176,7 +186,8 @@ namespace EasyPost {
         /// </summary>
         /// <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
-        public void Buy(Rate rate, string insuranceValue = null) {
+        public void Buy(Rate rate, string insuranceValue = null)
+        {
             Buy(rate.id, insuranceValue);
         }
 
@@ -184,7 +195,8 @@ namespace EasyPost {
         /// Insure shipment for the given amount.
         /// </summary>
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
-        public void Insure(double amount) {
+        public void Insure(double amount)
+        {
             Request request = new Request("v2/shipments/{id}/insure", Method.POST);
             request.AddUrlSegment("id", id);
             request.AddQueryString(new Dictionary<string, object>() { { "amount", amount } });
@@ -196,7 +208,8 @@ namespace EasyPost {
         /// Generate a postage label for this shipment.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
-        public void GenerateLabel(string fileFormat) {
+        public void GenerateLabel(string fileFormat)
+        {
             Request request = new Request("v2/shipments/{id}/label");
             request.AddUrlSegment("id", id);
             // This is a GET, but uses the request body, so use ParameterType.GetOrPost instead.
@@ -208,7 +221,8 @@ namespace EasyPost {
         /// <summary>
         /// Send a refund request to the carrier the shipment was purchased from.
         /// </summary>
-        public void Refund() {
+        public void Refund()
+        {
             Request request = new Request("v2/shipments/{id}/refund");
             request.AddUrlSegment("id", id);
 
@@ -224,7 +238,8 @@ namespace EasyPost {
         /// <param name="excludeServices">Services blacklist.</param>
         /// <returns>EasyPost.Rate instance or null if no rate was found.</returns>
         public Rate LowestRate(IEnumerable<string> includeCarriers = null, IEnumerable<string> includeServices = null,
-                               IEnumerable<string> excludeCarriers = null, IEnumerable<string> excludeServices = null) {
+                               IEnumerable<string> excludeCarriers = null, IEnumerable<string> excludeServices = null)
+        {
             if (rates == null)
                 GetRates();
 
@@ -242,7 +257,8 @@ namespace EasyPost {
             return result.OrderBy(rate => double.Parse(rate.rate)).FirstOrDefault();
         }
 
-        private void FilterRates(ref List<Rate> rates, Func<Rate, bool> filter) {
+        private void FilterRates(ref List<Rate> rates, Func<Rate, bool> filter)
+        {
             rates = rates.Where(filter).ToList();
         }
     }
