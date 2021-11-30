@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## NEXT RELEASE
+
+* Adds support for one-call-buys on shipments and orders via adding the `service` key to both objects
+
 ## 2.7.0 (2021-11-24)
 
 * Adds support for tax identifiers (PR #181)
