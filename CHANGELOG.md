@@ -3,6 +3,7 @@
 ## NEXT RELEASE
 
 * Adds support for one-call-buys on shipments and orders via adding the `service` key to both objects
+* Removes the unused `orderBy` parameter from the `Batch` object
 
 ## 2.7.0 (2021-11-24)
 
