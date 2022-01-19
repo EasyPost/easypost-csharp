@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
-namespace EasyPostTest {
+namespace EasyPost.Tests {
     [TestClass]
     public class ReportTest {
         [TestInitialize]

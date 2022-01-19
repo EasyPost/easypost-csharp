@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace EasyPostTest {
+namespace EasyPost.Tests {
     [TestClass]
     public class TrackerTest {
         [TestInitialize]

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPostTest {
+namespace EasyPost.Tests {
     [TestClass]
     public class BatchTest {
         Dictionary<string, object> fromAddress;

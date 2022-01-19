@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace EasyPostTest {
+namespace EasyPost.Tests {
     [TestClass]
     public class ResourceTest {
         class Inner : Resource {

@@ -2,7 +2,7 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPostTest {
+namespace EasyPost.Tests {
     [TestClass]
     public class EventTest {
         [TestInitialize]
