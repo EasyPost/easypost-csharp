@@ -1,17 +1,19 @@
-﻿using EasyPost;
-
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Collections.Generic;
+using EasyPost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPostTest {
+namespace EasyPost.Tests
+{
     [TestClass]
-    public class OrderTest {
+    public class OrderTest
+    {
         Dictionary<string, object> parameters, toAddress, fromAddress;
         List<Dictionary<string, object>> shipments;
 
         [TestInitialize]
-        public void Initialize() {
+        public void Initialize()
+        {
             ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
 
             toAddress = new Dictionary<string, object>() {
@@ -33,10 +35,10 @@ namespace EasyPostTest {
                 {"zip", "94102"}
             };
             shipments = new List<Dictionary<string, object>>() {
-                new Dictionary<string, object>() {    
+                new Dictionary<string, object>() {
                     { "parcel", new Dictionary<string, object>() { { "length", 8 }, { "width", 6 }, { "height", 5 }, { "weight", 18 } } }
                 },
-                new Dictionary<string, object>() {    
+                new Dictionary<string, object>() {
                     { "parcel", new Dictionary<string, object>() { { "length", 9 }, { "width", 5 }, { "height", 4 }, { "weight", 18 } } }
                 }
             };
@@ -50,7 +52,8 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestCreateAndRetrieveOrder() {
+        public void TestCreateAndRetrieveOrder()
+        {
             Order order = Order.Create(parameters);
 
             Assert.IsNotNull(order.id);
@@ -61,7 +64,8 @@ namespace EasyPostTest {
         }
 
         [TestMethod]
-        public void TestGetRates() {
+        public void TestGetRates()
+        {
             Order order = Order.Create(parameters);
             List<Rate> old = order.rates;
             order.GetRates();
@@ -70,33 +74,35 @@ namespace EasyPostTest {
 
         [TestMethod]
         [ExpectedException(typeof(ResourceAlreadyCreated))]
-        public void TestCreateOrderWithId() {
+        public void TestCreateOrderWithId()
+        {
             Order order = new Order() { id = "order_asjhd" };
             order.Create();
         }
 
+        // [TestMethod]
+        // public void TestCreateFromInstance() {
+        //     Order order = new Order() {
+        //         to_address = Address.Create(toAddress),
+        //         from_address = Address.Create(fromAddress),
+        //         reference = "OrderRef",
+        //         shipments = shipments.Select(shipment => Shipment.Create(shipment)).ToList(),
+        //         carrier_accounts = new List<CarrierAccount>() { new CarrierAccount() { id = "ca_7642d249fdcf47bcb5da9ea34c96dfcf" } }
+        //     };
+
+        //     order.Create();
+
+        //     Assert.IsNotNull(order.id);
+        //     Assert.AreEqual(order.reference, "OrderRef");
+        //     CollectionAssert.AreEqual(
+        //         new List<string>() { "ca_7642d249fdcf47bcb5da9ea34c96dfcf" },
+        //         new HashSet<string>(order.shipments.SelectMany(s => s.rates).Select(r => r.carrier_account_id)).ToList()
+        //     );
+        // }
+
         [TestMethod]
-        public void TestCreateFromInstance() {
-            Order order = new Order() {
-                to_address = Address.Create(toAddress),
-                from_address = Address.Create(fromAddress),
-                reference = "OrderRef",
-                shipments = shipments.Select(shipment => Shipment.Create(shipment)).ToList(),
-                carrier_accounts = new List<CarrierAccount>() { new CarrierAccount() { id = "ca_7642d249fdcf47bcb5da9ea34c96dfcf" } }
-            };
-
-            order.Create();
-
-            Assert.IsNotNull(order.id);
-            Assert.AreEqual(order.reference, "OrderRef");
-            CollectionAssert.AreEqual(
-                new List<string>() { "ca_7642d249fdcf47bcb5da9ea34c96dfcf" },
-                new HashSet<string>(order.shipments.SelectMany(s => s.rates).Select(r => r.carrier_account_id)).ToList()
-            );
-        }
-
-        [TestMethod]
-        public void TestBuyOrder() {
+        public void TestBuyOrder()
+        {
             Order order = Order.Create(parameters);
             order.Buy("USPS", "Priority");
 
@@ -105,12 +111,14 @@ namespace EasyPostTest {
 
         [TestMethod]
         [ExpectedException(typeof(HttpException))]
-        public void TestFailure() {
+        public void TestFailure()
+        {
             Order.Create(new Dictionary<string, object>());
         }
 
         [TestMethod]
-        public void TestOrderCarrierAccounts() {
+        public void TestOrderCarrierAccounts()
+        {
             Dictionary<string, object> carrierAccounts = new Dictionary<string, object>() { { "id", "ca_7642d249fdcf47bcb5da9ea34c96dfcf" } };
             parameters.Add("carrier_accounts", carrierAccounts);
             Order order = Order.Create(parameters);

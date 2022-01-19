@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace EasyPostTest {
+namespace EasyPost.Tests {
     [TestClass]
     public class ErrorTest {
         string error;

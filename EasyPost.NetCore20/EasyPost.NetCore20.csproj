@@ -5,12 +5,13 @@
     <OutputType>Library</OutputType>
     <RootNamespace>EasyPost.NetCore20</RootNamespace>
     <AssemblyName>EasyPost.NetCore20</AssemblyName>
+    <Configurations>Release;Debug</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\lib</OutputPath>
+    <OutputPath>..\lib\netcoreapp2.0</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>

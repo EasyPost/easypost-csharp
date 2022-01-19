@@ -1,40 +1,44 @@
-﻿using EasyPost;
-
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using EasyPost;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestSharp;
 
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace EasyPostTest {
+namespace EasyPost.Tests
+{
     [TestClass]
-    public class RequestTest {
+    public class RequestTest
+    {
         [TestInitialize]
-        public void Initialize() {
+        public void Initialize()
+        {
             ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
         }
 
-        [TestMethod]
-        public void TestRestRequest() {
-            Request request = new Request("resource");
-            Assert.IsInstanceOfType(request.restRequest, typeof(RestRequest));
-        }
+        // [TestMethod]
+        // public void TestRestRequest() {
+        //     Request request = new Request("resource");
+        //     Assert.IsInstanceOfType(request.restRequest, typeof(RestRequest));
+        // }
 
         [TestMethod]
-        public void TestRootElement() {
+        public void TestRootElement()
+        {
             Request request = new Request("resource");
             request.RootElement = "root";
             Assert.AreEqual(request.RootElement, "root");
         }
 
         [TestMethod]
-        public void TestCastToRestRequest() {
+        public void TestCastToRestRequest()
+        {
             RestRequest request = (RestRequest)new Request("resource");
         }
 
         [TestMethod]
-        public void TestAddBody() {
+        public void TestAddBody()
+        {
             Request request = new Request("resource");
             request.AddBody(new Dictionary<string, object>() { { "foo", "bar" } });
 
