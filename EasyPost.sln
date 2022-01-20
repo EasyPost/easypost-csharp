@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyPost.NetCore31", "EasyP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPost.Tests", "EasyPost.Tests\EasyPost.Tests.csproj", "{5FD0A21A-1A0A-4776-B54C-23F61450363A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scratch", "Scratch\Scratch.csproj", "{0BCFDDB4-FCF1-412D-967A-0DDCEBCCEF72}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
