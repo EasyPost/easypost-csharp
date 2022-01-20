@@ -78,11 +78,11 @@ namespace EasyPost
             if (dotNetVersion == "4.0.30319.42000")
             {
                 /*
-                 * We're on a v4.5+ version (or pre-.NET Core 3.0, which we don't support),
+                 * We're on a v4.6+ version (or pre-.NET Core 3.0, which we don't support),
                  * but we can't get the exact version.
                  * See: https://docs.microsoft.com/en-us/dotnet/api/system.environment.version?view=net-6.0#remarks
                  */
-                dotNetVersion = "4.5+ or Core 2.2-";
+                dotNetVersion = "4.6+";
             }
 
             _dotNetVersion = dotNetVersion;
