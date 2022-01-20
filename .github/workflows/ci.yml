@@ -72,6 +72,6 @@ jobs:
       - name: Restore NuGet Packages
         run: nuget restore EasyPost.sln
       - name: Build Solution
-        run: msbuild EasyPost.sln /p:platform="Any CPU" /p:configuration="Release" /p:outputPath="bin/Release" /p:target="Rebuild"
+        run: msbuild EasyPost.sln /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
         run: vstest.console.exe .\tests\EasyPost.Tests\bin\Release\EasyPost.Tests.dll
