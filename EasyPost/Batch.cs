@@ -111,15 +111,11 @@ namespace EasyPost {
         /// Asynchronously generate a label containing all of the Shimpent labels belonging to the batch.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
-        /// <param name="orderBy">Optional parameter to order the generated label. Ex: "reference DESC"</param>
-        public void GenerateLabel(string fileFormat, string orderBy = null) {
+        public void GenerateLabel(string fileFormat) {
             Request request = new Request("v2/batches/{id}/label", Method.POST);
             request.AddUrlSegment("id", id);
 
             Dictionary<string, object> parameters = new Dictionary<string, object>() { { "file_format", fileFormat } };
-
-            if (orderBy != null)
-                parameters["order_by"] = orderBy;
 
             request.AddQueryString(parameters);
             Merge(request.Execute<Batch>());

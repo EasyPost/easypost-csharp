@@ -114,18 +114,5 @@ namespace EasyPost.Tests {
 
             batch.GenerateScanForm();
         }
-
-        [TestMethod]
-        public void TestGenerateLabelWithOrderBy() {
-            Batch batch = CreateBatch();
-
-            while (batch.state == "creating") { batch = Batch.Retrieve(batch.id); }
-            batch.Buy();
-
-            while (batch.state == "created") { batch = Batch.Retrieve(batch.id); }
-            batch.GenerateLabel("pdf", orderBy: "reference DESC");
-
-            Assert.AreEqual(batch.state, "label_generating");
-        }
     }
 }
