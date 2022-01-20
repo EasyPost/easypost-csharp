@@ -17,12 +17,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        if: always()
         uses: actions/setup-dotnet@v1.7.2
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
         run: dotnet restore
       - name: Build
+        if: always()
         run: dotnet build --configuration Test --no-restore
       - name: Test
         run: dotnet test --no-restore --verbosity normal
@@ -45,6 +47,7 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
+        if: always()
         run: dotnet build --configuration Test --no-restore
       - name: Test
         run: dotnet test --no-restore --verbosity normal
@@ -55,6 +58,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Setup MSBuild
+        if: always()
         uses: warrenbuckley/Setup-MSBuild@v1
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
