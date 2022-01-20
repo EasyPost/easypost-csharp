@@ -74,4 +74,4 @@ jobs:
       - name: Build Solution
         run: msbuild EasyPost.sln /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
-        run: vstest.console.exe .\tests\EasyPost.Tests\bin\Release\EasyPost.Tests.dll
+        run: vstest.console.exe EasyPost.Tests\bin\Test\EasyPost.Tests.dll
