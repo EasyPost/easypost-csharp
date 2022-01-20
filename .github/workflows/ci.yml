@@ -59,7 +59,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Setup MSBuild
         if: always()
-        uses: warrenbuckley/Setup-MSBuild@v1
+        uses: microsoft/setup-msbuild@v1.1
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
       - name: Setup VSTest
@@ -68,7 +68,6 @@ jobs:
       - name: Restore NuGet Packages
         run: nuget restore EasyPost.sln
       - name: Build Solution
-        run: |
-          msbuild.exe EasyPost.sln /p:platform="Any CPU" /p:configuration="Release" /p:outputPath="bin/Release" /p:target="Rebuild"
+        run: msbuild EasyPost.sln /p:platform="Any CPU" /p:configuration="Release" /p:outputPath="bin/Release" /p:target="Rebuild"
       - name: Run Tests
         run: vstest.console.exe .\tests\EasyPost.Tests\bin\Release\EasyPost.Tests.dll
