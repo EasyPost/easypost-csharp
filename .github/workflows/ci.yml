@@ -21,8 +21,10 @@ jobs:
         uses: actions/setup-dotnet@v1.7.2
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-      - name: Install dependencies
-        run: dotnet restore
+      - name: Setup Nuget
+        uses: NuGet/setup-nuget@v1.0.5
+      - name: Restore NuGet Packages
+        run: nuget restore EasyPost.sln
       - name: Build
         if: always()
         run: dotnet build --configuration Test --no-restore
@@ -44,8 +46,10 @@ jobs:
         uses: actions/setup-dotnet@v1.7.2
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-      - name: Install dependencies
-        run: dotnet restore
+      - name: Setup Nuget
+        uses: NuGet/setup-nuget@v1.0.5
+      - name: Restore NuGet Packages
+        run: nuget restore EasyPost.sln
       - name: Build
         if: always()
         run: dotnet build --configuration Test --no-restore
