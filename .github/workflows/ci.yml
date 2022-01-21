@@ -18,25 +18,17 @@ jobs:
         id: test_file
         run: echo "::set-output name=test_file::EasyPost.Tests.Net${{ matrix.dotnet-version }}"
       - name: Setup MSBuild
-        if: always()
         uses: microsoft/setup-msbuild@v1.1
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
       - name: Setup VSTest
         uses: darenm/Setup-VSTest@v1
-      - name: Navigate to project root
-        run: cd $GITHUB_WORKSPACE
       - name: Restore NuGet Packages
         run: nuget restore EasyPost.sln
       - name: Build Solution
         run: msbuild ${{ steps.test_file.outputs.test_file }}\${{ steps.test_file.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
         run: vstest.console.exe ${{ steps.test_file.outputs.test_file }}\bin\Test\${{ steps.test_file.outputs.test_file }}.dll
-        # delete the current DLL to guarantee that the next test will generate and use a new one
-      - name: Remove Test DLL
-        uses: JesseTG/rm@v1.0.2
-        with:
-          path: ${{ steps.test_file.outputs.test_file }}\bin\Test\${{ steps.test_file.outputs.test_file }}.dll
   NET_Core_Tests:
     runs-on: windows-2019
     strategy:
@@ -48,22 +40,14 @@ jobs:
         id: test_file
         run: echo "::set-output name=test_file::EasyPost.Tests.NetCore${{ matrix.dotnetcore-version }}"
       - name: Setup MSBuild
-        if: always()
         uses: microsoft/setup-msbuild@v1.1
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
       - name: Setup VSTest
         uses: darenm/Setup-VSTest@v1
-      - name: Navigate to project root
-        run: cd $GITHUB_WORKSPACE
       - name: Restore NuGet Packages
         run: nuget restore EasyPost.sln 
       - name: Build Solution
         run: msbuild ${{ steps.test_file.outputs.test_file }}\${{ steps.test_file.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
         run: vstest.console.exe ${{ steps.test_file.outputs.test_file }}\bin\Test\${{ steps.test_file.outputs.test_file }}.dll
-        # delete the current DLL to guarantee that the next test will generate and use a new one
-      - name: Remove Test DLL
-        uses: JesseTG/rm@v1.0.2
-        with:
-          path: ${{ steps.test_file.outputs.test_file }}\bin\Test\${{ steps.test_file.outputs.test_file }}.dll
