@@ -29,7 +29,7 @@ jobs:
       - name: Restore NuGet Packages
         run: nuget restore EasyPost.sln
       - name: Build Solution
-        run: msbuild EasyPost.sln /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
+        run: msbuild ${{ steps.test_file.outputs.test_file }}\${{ steps.test_file.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
         run: vstest.console.exe ${{ steps.test_file.outputs.test_file }}\bin\Test\${{ steps.test_file.outputs.test_file }}.dll
         # delete the current DLL to guarantee that the next test will generate and use a new one
@@ -59,7 +59,7 @@ jobs:
       - name: Restore NuGet Packages
         run: nuget restore EasyPost.sln 
       - name: Build Solution
-        run: msbuild EasyPost.sln /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
+        run: msbuild ${{ steps.test_file.outputs.test_file }}\${{ steps.test_file.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
         run: vstest.console.exe ${{ steps.test_file.outputs.test_file }}\bin\Test\${{ steps.test_file.outputs.test_file }}.dll
         # delete the current DLL to guarantee that the next test will generate and use a new one
