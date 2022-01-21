@@ -26,8 +26,10 @@ jobs:
         uses: darenm/Setup-VSTest@v1
       - name: Navigate to project root
         run: cd $GITHUB_WORKSPACE
+      - name: Restore NuGet Packages
+        run: nuget restore EasyPost.sln
       - name: Build Solution
-        run: msbuild ${{ steps.test_file.outputs.test_file }}\${{ steps.test_file.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild" -t:restore
+        run: msbuild EasyPost.sln /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
         run: vstest.console.exe ${{ steps.test_file.outputs.test_file }}\bin\Test\${{ steps.test_file.outputs.test_file }}.dll
         # delete the current DLL to guarantee that the next test will generate and use a new one
@@ -51,11 +53,13 @@ jobs:
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
       - name: Setup VSTest
-        uses: darenm/Setup-VSTest@v1  
+        uses: darenm/Setup-VSTest@v1
       - name: Navigate to project root
         run: cd $GITHUB_WORKSPACE
+      - name: Restore NuGet Packages
+        run: nuget restore EasyPost.sln 
       - name: Build Solution
-        run: msbuild ${{ steps.test_file.outputs.test_file }}\${{ steps.test_file.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild" -t:restore
+        run: msbuild EasyPost.sln /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
         run: vstest.console.exe ${{ steps.test_file.outputs.test_file }}\bin\Test\${{ steps.test_file.outputs.test_file }}.dll
         # delete the current DLL to guarantee that the next test will generate and use a new one
