@@ -14,6 +14,9 @@ jobs:
         dotnet-version: [ '35', '40' ]
     steps:
       - uses: actions/checkout@v1
+      - name: Setup variables
+        id: test_file
+        run: echo "::set-output name=test_file::EasyPost.Tests.Net${{ matrix.dotnet-version }}"
       - name: Setup MSBuild
         if: always()
         uses: microsoft/setup-msbuild@v1.1
@@ -21,18 +24,19 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
       - name: Setup VSTest
         uses: darenm/Setup-VSTest@v1
-      - run: cd $GITHUB_WORKSPACE
+      - name: Navigate to project root
+        run: cd $GITHUB_WORKSPACE
       - name: Restore NuGet Packages
         run: nuget restore EasyPost.sln
       - name: Build Solution
-        run: msbuild EasyPost.Tests.Net${{ matrix.dotnet-version }}\EasyPost.Tests.Net${{ matrix.dotnet-version }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
+        run: msbuild ${{ steps.test_file.outputs.test_file }}\${{ steps.test_file.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
-        run: vstest.console.exe EasyPost.TestsNet${{ matrix.dotnet-version }}\bin\Test\EasyPost.TestsNet.dll
+        run: vstest.console.exe ${{ steps.test_file.outputs.test_file }}\bin\Test\${{ steps.test_file.outputs.test_file }}.dll
         # delete the current DLL to guarantee that the next test will generate and use a new one
       - name: Remove Test DLL
         uses: JesseTG/rm@v1.0.2
         with:
-          path: EasyPost.TestsNet${{ matrix.dotnet-version }}\bin\Test\EasyPost.TestsNet.dll
+          path: ${{ steps.test_file.outputs.test_file }}\bin\Test\${{ steps.test_file.outputs.test_file }}.dll
   NET_Core_Tests:
     runs-on: windows-2019
     strategy:
@@ -40,6 +44,9 @@ jobs:
         dotnetcore-version: [ '31' ]
     steps:
       - uses: actions/checkout@v1
+      - name: Setup variables
+        id: test_file
+        run: echo "::set-output name=test_file::EasyPost.Tests.NetCore${{ matrix.dotnetcore-version }}"
       - name: Setup MSBuild
         if: always()
         uses: microsoft/setup-msbuild@v1.1
@@ -47,15 +54,16 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
       - name: Setup VSTest
         uses: darenm/Setup-VSTest@v1  
-      - run: cd $GITHUB_WORKSPACE
+      - name: Navigate to project root
+        run: cd $GITHUB_WORKSPACE
       - name: Restore NuGet Packages
         run: nuget restore EasyPost.sln
       - name: Build Solution
-        run: msbuild EasyPost.Tests.NetCore${{ matrix.dotnetcore-version }}\EasyPost.Tests.NetCore${{ matrix.dotnetcore-version }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
+        run: msbuild ${{ steps.test_file.outputs.test_file }}\${{ steps.test_file.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
-        run: vstest.console.exe EasyPost.TestsNetCore${{ matrix.dotnetcore-version }}\bin\Test\EasyPost.TestsNetCore.dll
+        run: vstest.console.exe ${{ steps.test_file.outputs.test_file }}\bin\Test\${{ steps.test_file.outputs.test_file }}.dll
         # delete the current DLL to guarantee that the next test will generate and use a new one
       - name: Remove Test DLL
         uses: JesseTG/rm@v1.0.2
         with:
-          path: EasyPost.TestsNetCore${{ matrix.dotnetcore-version }}\bin\Test\EasyPost.TestsNetCore.dll
+          path: ${{ steps.test_file.outputs.test_file }}\bin\Test\${{ steps.test_file.outputs.test_file }}.dll
