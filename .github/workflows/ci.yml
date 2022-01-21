@@ -15,6 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Setup variables
+        id: library_file
+        run: echo "::set-output name=library_file::EasyPost.Net${{ matrix.dotnet-version }}"
+      - name: Setup variables
         id: test_file
         run: echo "::set-output name=test_file::EasyPost.Tests.Net${{ matrix.dotnet-version }}"
       - name: Setup MSBuild
@@ -27,7 +30,9 @@ jobs:
       - name: Navigate to project root
         run: cd $GITHUB_WORKSPACE
       - name: Restore NuGet Packages
-        run: nuget restore EasyPost.sln
+        run: nuget restore ${{ steps.library_file.outputs.library_file }}\${{ steps.library_file.outputs.library_file }}.csproj
+      - name: Restore Test NuGet Packages
+        run: nuget restore ${{ steps.test_file.outputs.test_file }}\${{ steps.test_file.outputs.test_file }}.csproj
       - name: Build Solution
         run: msbuild ${{ steps.test_file.outputs.test_file }}\${{ steps.test_file.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
@@ -45,6 +50,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Setup variables
+        id: library_file
+        run: echo "::set-output name=library_file::EasyPost.NetCore${{ matrix.dotnetcore-version }}"
+      - name: Setup variables
         id: test_file
         run: echo "::set-output name=test_file::EasyPost.Tests.NetCore${{ matrix.dotnetcore-version }}"
       - name: Setup MSBuild
@@ -57,7 +65,9 @@ jobs:
       - name: Navigate to project root
         run: cd $GITHUB_WORKSPACE
       - name: Restore NuGet Packages
-        run: nuget restore EasyPost.sln 
+        run: nuget restore ${{ steps.library_file.outputs.library_file }}\${{ steps.library_file.outputs.library_file }}.csproj
+      - name: Restore Test NuGet Packages
+        run: nuget restore ${{ steps.test_file.outputs.test_file }}\${{ steps.test_file.outputs.test_file }}.csproj
       - name: Build Solution
         run: msbuild ${{ steps.test_file.outputs.test_file }}\${{ steps.test_file.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
