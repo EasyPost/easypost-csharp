@@ -7,7 +7,7 @@ on:
 
 jobs:
   # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
-  net_tests:
+  NET_Tests:
     runs-on: windows-2019
     strategy:
       matrix:
@@ -25,7 +25,7 @@ jobs:
       - name: Restore NuGet Packages
         run: nuget restore EasyPost.sln
       - name: Build Solution
-        run: msbuild EasyPost.Net${{ matrix.dotnet-version }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
+        run: msbuild EasyPost.Tests.Net${{ matrix.dotnet-version }}\EasyPost.Tests.Net${{ matrix.dotnet-version }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
         run: vstest.console.exe EasyPost.TestsNet${{ matrix.dotnet-version }}\bin\Test\EasyPost.TestsNet.dll
         # delete the current DLL to guarantee that the next test will generate and use a new one
@@ -33,7 +33,7 @@ jobs:
         uses: JesseTG/rm@v1.0.2
         with:
           path: EasyPost.TestsNet${{ matrix.dotnet-version }}\bin\Test\EasyPost.TestsNet.dll
-  net_core_tests:
+  NET_Core_Tests:
     runs-on: windows-2019
     strategy:
       matrix:
@@ -46,12 +46,12 @@ jobs:
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
       - name: Setup VSTest
-        uses: darenm/Setup-VSTest@v1
+        uses: darenm/Setup-VSTest@v1  
       - run: cd $GITHUB_WORKSPACE
       - name: Restore NuGet Packages
         run: nuget restore EasyPost.sln
       - name: Build Solution
-        run: msbuild EasyPost.NetCore${{ matrix.dotnetcore-version }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
+        run: msbuild EasyPost.Tests.NetCore${{ matrix.dotnetcore-version }}\EasyPost.Tests.NetCore${{ matrix.dotnetcore-version }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
       - name: Run Tests
         run: vstest.console.exe EasyPost.TestsNetCore${{ matrix.dotnetcore-version }}\bin\Test\EasyPost.TestsNetCore.dll
         # delete the current DLL to guarantee that the next test will generate and use a new one
