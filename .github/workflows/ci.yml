@@ -18,7 +18,6 @@ jobs:
         id: test_file
         run: echo "::set-output name=test_file::EasyPost.Tests.Net${{ matrix.dotnet-version }}"
       - name: Setup MSBuild
-        if: always()
         uses: microsoft/setup-msbuild@v1.1
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
@@ -41,7 +40,6 @@ jobs:
         id: test_file
         run: echo "::set-output name=test_file::EasyPost.Tests.NetCore${{ matrix.dotnetcore-version }}"
       - name: Setup MSBuild
-        if: always()
         uses: microsoft/setup-msbuild@v1.1
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
