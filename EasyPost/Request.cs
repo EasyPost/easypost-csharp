@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace EasyPost {
     public class Request {
         internal RestRequest restRequest;
-
+        
         public string RootElement {
             get { return this.restRequest.RootElement; }
             set { this.restRequest.RootElement = value; }
