@@ -19,16 +19,16 @@ namespace EasyPost {
 #pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
-        /// Resend the last Event for a specific EasyPost object.
+        /// Resend the last Event for a specific EasyPost object instance.
         /// </summary>
-        /// <param name="id">String representing an EasyPost object.</param>
+        /// <param name="id">String representing an EasyPost object instance.</param>
         public static void Create(string id) {
             Request request = new Request("v2/events", Method.POST);
             request.AddQueryString(new Dictionary<string, object>() { { "result_id", id } });
         }
 
         /// <summary>
-        /// Retrieve a Event from its id.
+        /// Retrieve an Event from its id.
         /// </summary>
         /// <param name="id">String representing a Event. Starts with "evt_".</param>
         /// <returns>EasyPost.Event instance.</returns>

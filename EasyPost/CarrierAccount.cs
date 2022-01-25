@@ -17,6 +17,10 @@ namespace EasyPost {
         public Dictionary<string, object> test_credentials { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
+        /// <summary>
+        /// List all available carrier accounts.
+        /// </summary>
+        /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
         public static List<CarrierAccount> List() {
             Request request = new Request("v2/carrier_accounts");
             return request.Execute<List<CarrierAccount>>();

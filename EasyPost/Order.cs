@@ -89,7 +89,7 @@ namespace EasyPost
 
             rates = request.Execute<Order>().rates;
         }
-
+        
         private static Order SendCreate(Dictionary<string, object> parameters)
         {
             Request request = new Request("v2/orders", Method.POST);
@@ -115,7 +115,7 @@ namespace EasyPost
         /// <summary>
         /// Purchase a label for this shipment with the given rate.
         /// </summary>
-        /// <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
+        /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
         public void Buy(Rate rate)
         {
             Buy(rate.carrier, rate.service);

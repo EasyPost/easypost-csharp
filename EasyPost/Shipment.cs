@@ -46,6 +46,7 @@ namespace EasyPost
         /// <summary>
         /// Get a paginated list of shipments.
         /// </summary>
+        /// <param name="parameters">
         /// Optional dictionary containing parameters to filter the list with. Valid pairs:
         ///   * {"before_id", string} String representing a Shipment. Starts with "shp_". Only retrieve shipments created before this id. Takes precedence over after_id.
         ///   * {"after_id", string} String representing a Shipment. Starts with "shp_". Only retrieve shipments created after this id.
@@ -54,9 +55,8 @@ namespace EasyPost
         ///   * {"page_size", int} Size of page. Default to 20.
         ///   * {"purchased", bool} If true only display purchased shipments.
         /// All invalid keys will be ignored.
-        /// <param name="parameters">
         /// </param>
-        /// <returns>Instance of EasyPost.ShipmentList</returns>
+        /// <returns>Instance of EasyPost.ShipmentList.</returns>
         public static ShipmentList List(Dictionary<string, object> parameters = null)
         {
             Request request = new Request("v2/shipments");
@@ -137,6 +137,10 @@ namespace EasyPost
             rates = request.Execute<Shipment>().rates;
         }
 
+        /// <summary>
+        /// Get the Smartrates for this shipment.
+        /// </summary>
+        /// <returns>A list of EasyPost.Smartrate instances.</returns>
         public List<Smartrate> GetSmartrates()
         {
             if (id == null)
@@ -184,7 +188,7 @@ namespace EasyPost
         /// <summary>
         /// Purchase a label for this shipment with the given rate.
         /// </summary>
-        /// <param name="rate">EasyPost.Rate object to puchase the shipment with.</param>
+        /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         public void Buy(Rate rate, string insuranceValue = null)
         {
@@ -230,7 +234,7 @@ namespace EasyPost
         }
 
         /// <summary>
-        /// Get the lowest rate for the shipment. Optionally whitelist/blacklist carriers and servies from the search.
+        /// Get the lowest rate for the shipment. Optionally whitelist/blacklist carriers and services from the search.
         /// </summary>
         /// <param name="includeCarriers">Carriers whitelist.</param>
         /// <param name="includeServices">Services whitelist.</param>

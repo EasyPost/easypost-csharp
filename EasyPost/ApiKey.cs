@@ -13,6 +13,11 @@ namespace EasyPost {
         public DateTime? created_at { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
+        /// <summary>
+        /// Get a list of all API keys.
+        /// </summary>
+        /// <returns>A list of EasyPost.ApiKey instances.</returns>
+        /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
         public static List<ApiKey> All() {
             Request request = new Request("/v2/api_keys");
             Dictionary<string, object> response = request.Execute<Dictionary<string, object>>();
