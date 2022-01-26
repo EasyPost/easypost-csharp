@@ -1,10 +1,11 @@
 ﻿using RestSharp;
-
 using System;
 using System.Collections.Generic;
 
-namespace EasyPost {
-    public class CustomsInfo : Resource {
+namespace EasyPost
+{
+    public class CustomsInfo : Resource
+    {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
@@ -26,7 +27,8 @@ namespace EasyPost {
         /// </summary>
         /// <param name="id">String representing a CustomsInfo. Starts with "cstinfo_".</param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
-        public static CustomsInfo Retrieve(string id) {
+        public static CustomsInfo Retrieve(string id)
+        {
             Request request = new Request("v2/customs_infos/{id}");
             request.AddUrlSegment("id", id);
 
@@ -48,7 +50,8 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
-        public static CustomsInfo Create(Dictionary<string, object> parameters) {
+        public static CustomsInfo Create(Dictionary<string, object> parameters)
+        {
             Request request = new Request("v2/customs_infos", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "customs_info", parameters } });
 

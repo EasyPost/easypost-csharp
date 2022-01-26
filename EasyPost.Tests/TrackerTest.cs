@@ -2,16 +2,20 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace EasyPost.Tests {
+namespace EasyPost.Tests
+{
     [TestClass]
-    public class TrackerTest {
+    public class TrackerTest
+    {
         [TestInitialize]
-        public void Initialize() {
+        public void Initialize()
+        {
             ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
         }
 
         [TestMethod]
-        public void TestCreateAndRetrieve() {
+        public void TestCreateAndRetrieve()
+        {
             string carrier = "USPS";
             string trackingCode = "EZ1000000001";
 
@@ -25,7 +29,8 @@ namespace EasyPost.Tests {
         }
 
         [TestMethod]
-        public void TestList() {
+        public void TestList()
+        {
             TrackerList trackerList = Tracker.List(new Dictionary<string, object>() { { "page_size", 1 } });
             Assert.AreNotEqual(0, trackerList.trackers.Count);
 

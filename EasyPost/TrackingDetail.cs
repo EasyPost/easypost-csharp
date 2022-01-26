@@ -1,7 +1,9 @@
 ﻿using System;
 
-namespace EasyPost {
-    public class TrackingDetail : Resource {
+namespace EasyPost
+{
+    public class TrackingDetail : Resource
+    {
 #pragma warning disable IDE1006 // Naming Styles
         public DateTime? datetime { get; set; }
         public string message { get; set; }

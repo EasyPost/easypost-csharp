@@ -43,7 +43,8 @@ namespace EasyPost.Tests
             request.AddBody(new Dictionary<string, object>() { { "foo", "bar" } });
 
             RestRequest restRequest = (RestRequest)request;
-            CollectionAssert.Contains(restRequest.Parameters.Select(parameter => parameter.ToString()).ToList(), "application/json={\"foo\":\"bar\"}");
+            CollectionAssert.Contains(restRequest.Parameters.Select(parameter => parameter.ToString()).ToList(),
+                "application/json={\"foo\":\"bar\"}");
         }
     }
 }

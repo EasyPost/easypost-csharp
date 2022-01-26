@@ -1,10 +1,11 @@
 ﻿using RestSharp;
-
 using System;
 using System.Collections.Generic;
 
-namespace EasyPost {
-    public class Pickup : Resource {
+namespace EasyPost
+{
+    public class Pickup : Resource
+    {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public string mode { get; set; }
@@ -29,7 +30,8 @@ namespace EasyPost {
         /// </summary>
         /// <param name="id">String representing a Pickup. Starts with "pickup_".</param>
         /// <returns>EasyPost.Pickup instance.</returns>
-        public static Pickup Retrieve(string id) {
+        public static Pickup Retrieve(string id)
+        {
             Request request = new Request("v2/pickups/{id}");
             request.AddUrlSegment("id", id);
 
@@ -53,7 +55,8 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Pickup instance.</returns>
-        public static Pickup Create(Dictionary<string, object> parameters = null) {
+        public static Pickup Create(Dictionary<string, object> parameters = null)
+        {
             return SendCreate(parameters ?? new Dictionary<string, object>());
         }
 
@@ -61,13 +64,15 @@ namespace EasyPost {
         /// Create this Pickup.
         /// </summary>
         /// <exception cref="ResourceAlreadyCreated">Pickup already has an id.</exception>
-        public void Create() {
+        public void Create()
+        {
             if (id != null)
                 throw new ResourceAlreadyCreated();
             Merge(SendCreate(this.AsDictionary()));
         }
 
-        private static Pickup SendCreate(Dictionary<string, object> parameters) {
+        private static Pickup SendCreate(Dictionary<string, object> parameters)
+        {
             Request request = new Request("v2/pickups", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "pickup", parameters } });
 
@@ -79,7 +84,8 @@ namespace EasyPost {
         /// </summary>
         /// <param name="carrier">The name of the carrier to purchase with.</param>
         /// <param name="service">The name of the service to purchase.</param>
-        public void Buy(string carrier, string service) {
+        public void Buy(string carrier, string service)
+        {
             Request request = new Request("v2/pickups/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
             request.AddQueryString(new Dictionary<string, object>() { { "carrier", carrier }, { "service", service } });
@@ -90,7 +96,8 @@ namespace EasyPost {
         /// <summary>
         /// Cancel this pickup.
         /// </summary>
-        public void Cancel() {
+        public void Cancel()
+        {
             Request request = new Request("v2/pickups/{id}/cancel", Method.POST);
             request.AddUrlSegment("id", id);
 

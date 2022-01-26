@@ -1,12 +1,13 @@
 ﻿using Newtonsoft.Json;
-
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace EasyPost {
-    public class ApiKey : Resource {
+namespace EasyPost
+{
+    public class ApiKey : Resource
+    {
 #pragma warning disable IDE1006 // Naming Styles
         public string key { get; set; }
         public string mode { get; set; }
@@ -18,13 +19,17 @@ namespace EasyPost {
         /// </summary>
         /// <returns>A list of EasyPost.ApiKey instances.</returns>
         /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
-        public static List<ApiKey> All() {
+        public static List<ApiKey> All()
+        {
             Request request = new Request("/v2/api_keys");
             Dictionary<string, object> response = request.Execute<Dictionary<string, object>>();
             List<object> keys = (List<object>)response["keys"];
-            foreach (Dictionary<string, object>key in keys) {
-                key["created_at"] = DateTime.ParseExact((string)key["created_at"], "yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture);
+            foreach (Dictionary<string, object> key in keys)
+            {
+                key["created_at"] = DateTime.ParseExact((string)key["created_at"], "yyyy-MM-ddTHH:mm:ssZ",
+                    CultureInfo.InvariantCulture);
             }
+
             return keys.Select(key => LoadFromDictionary<ApiKey>((Dictionary<string, object>)key)).ToList();
         }
     }

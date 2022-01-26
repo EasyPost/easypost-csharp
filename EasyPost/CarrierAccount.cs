@@ -1,10 +1,11 @@
 ﻿using RestSharp;
-
 using System;
 using System.Collections.Generic;
 
-namespace EasyPost {
-    public class CarrierAccount : Resource {
+namespace EasyPost
+{
+    public class CarrierAccount : Resource
+    {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
@@ -21,7 +22,8 @@ namespace EasyPost {
         /// List all available carrier accounts.
         /// </summary>
         /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
-        public static List<CarrierAccount> List() {
+        public static List<CarrierAccount> List()
+        {
             Request request = new Request("v2/carrier_accounts");
             return request.Execute<List<CarrierAccount>>();
         }
@@ -31,7 +33,8 @@ namespace EasyPost {
         /// </summary>
         /// <param name="id">String representing a carrier account. Starts with "ca_".</param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
-        public static CarrierAccount Retrieve(string id) {
+        public static CarrierAccount Retrieve(string id)
+        {
             Request request = new Request("v2/carrier_accounts/{id}");
             request.AddUrlSegment("id", id);
 
@@ -51,7 +54,8 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
-        public static CarrierAccount Create(Dictionary<string, object> parameters) {
+        public static CarrierAccount Create(Dictionary<string, object> parameters)
+        {
             Request request = new Request("v2/carrier_accounts", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "carrier_account", parameters } });
 
@@ -61,7 +65,8 @@ namespace EasyPost {
         /// <summary>
         /// Remove this CarrierAccount from your account.
         /// </summary>
-        public void Destroy() {
+        public void Destroy()
+        {
             Request request = new Request("v2/carrier_accounts/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
 
@@ -72,7 +77,8 @@ namespace EasyPost {
         /// Update this CarrierAccount.
         /// </summary>
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
-        public void Update(Dictionary<string, object> parameters) {
+        public void Update(Dictionary<string, object> parameters)
+        {
             Request request = new Request("v2/carrier_accounts/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
             request.AddBody(new Dictionary<string, object>() { { "carrier_account", parameters } });

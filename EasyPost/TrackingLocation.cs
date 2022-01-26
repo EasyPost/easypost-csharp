@@ -1,7 +1,9 @@
 ﻿using System;
 
-namespace EasyPost {
-    public class TrackingLocation {
+namespace EasyPost
+{
+    public class TrackingLocation
+    {
 #pragma warning disable IDE1006 // Naming Styles
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }

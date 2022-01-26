@@ -158,13 +158,13 @@ namespace EasyPost
         /// </summary>
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
-
         public void Buy(string rateId, string insuranceValue = null)
         {
             Request request = new Request("v2/shipments/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
 
-            Dictionary<string, object> body = new Dictionary<string, object>() { { "rate", new Dictionary<string, object>() { { "id", rateId } } } };
+            Dictionary<string, object> body = new Dictionary<string, object>()
+                { { "rate", new Dictionary<string, object>() { { "id", rateId } } } };
 
             if (insuranceValue != null)
             {
@@ -242,7 +242,7 @@ namespace EasyPost
         /// <param name="excludeServices">Services blacklist.</param>
         /// <returns>EasyPost.Rate instance or null if no rate was found.</returns>
         public Rate LowestRate(IEnumerable<string> includeCarriers = null, IEnumerable<string> includeServices = null,
-                               IEnumerable<string> excludeCarriers = null, IEnumerable<string> excludeServices = null)
+            IEnumerable<string> excludeCarriers = null, IEnumerable<string> excludeServices = null)
         {
             if (rates == null)
                 GetRates();

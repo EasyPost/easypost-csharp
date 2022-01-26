@@ -1,10 +1,11 @@
 ﻿using RestSharp;
-
 using System;
 using System.Collections.Generic;
 
-namespace EasyPost {
-    public class Address : Resource {
+namespace EasyPost
+{
+    public class Address : Resource
+    {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
@@ -36,7 +37,8 @@ namespace EasyPost {
         /// </summary>
         /// <param name="id">String representing an Address. Starts with "adr_".</param>
         /// <returns>EasyPost.Address instance.</returns>
-        public static Address Retrieve(string id) {
+        public static Address Retrieve(string id)
+        {
             Request request = new Request("v2/addresses/{id}");
             request.AddUrlSegment("id", id);
 
@@ -63,16 +65,19 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
-        public static Address Create(Dictionary<string, object> parameters = null) {
+        public static Address Create(Dictionary<string, object> parameters = null)
+        {
             List<string> verifications = null, strictVerifications = null;
             parameters = parameters ?? new Dictionary<string, object>();
 
-            if (parameters.ContainsKey("verifications")) {
+            if (parameters.ContainsKey("verifications"))
+            {
                 verifications = (List<string>)parameters["verifications"];
                 parameters.Remove("verifications");
             }
 
-            if (parameters.ContainsKey("strict_verifications")) {
+            if (parameters.ContainsKey("strict_verifications"))
+            {
                 strictVerifications = (List<string>)parameters["strict_verifications"];
                 parameters.Remove("strict_verifications");
             }
@@ -84,7 +89,8 @@ namespace EasyPost {
         /// Create this Address.
         /// </summary>
         /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
-        public void Create() {
+        public void Create()
+        {
             Create(verify, verify_strict);
         }
 
@@ -101,21 +107,26 @@ namespace EasyPost {
         /// Possible items are "delivery" and "zip4".
         /// </param>
         /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
-        public void Create(List<string> verifications = null, List<string> strictVerifications = null) {
+        public void Create(List<string> verifications = null, List<string> strictVerifications = null)
+        {
             if (id != null)
                 throw new ResourceAlreadyCreated();
             Merge(SendCreate(this.AsDictionary(), verifications, strictVerifications));
         }
 
-        private static Address SendCreate(Dictionary<string, object> parameters, List<string> verifications = null, List<string> strictVerifications = null) {
+        private static Address SendCreate(Dictionary<string, object> parameters, List<string> verifications = null,
+            List<string> strictVerifications = null)
+        {
             Request request = new Request("v2/addresses", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "address", parameters } });
 
-            foreach (string verification in verifications ?? new List<string>()) {
+            foreach (string verification in verifications ?? new List<string>())
+            {
                 request.AddParameter("verify[]", verification, ParameterType.QueryString);
             }
 
-            foreach (string verification in strictVerifications ?? new List<string>()) {
+            foreach (string verification in strictVerifications ?? new List<string>())
+            {
                 request.AddParameter("verify_strict[]", verification, ParameterType.QueryString);
             }
 
@@ -126,11 +137,13 @@ namespace EasyPost {
         /// Verify an address.
         /// </summary>
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
-        public void Verify(string carrier = null) {
+        public void Verify(string carrier = null)
+        {
             if (id == null)
                 Create();
 
-            Request request = new Request("v2/addresses/{id}/verify") {
+            Request request = new Request("v2/addresses/{id}/verify")
+            {
                 RootElement = "address"
             };
             request.AddUrlSegment("id", id);
@@ -158,7 +171,8 @@ namespace EasyPost {
         ///   * {"email", string}
         /// All invalid keys will be ignored.
         /// </param>
-        public static Address CreateAndVerify(Dictionary<string, object> parameters = null) {
+        public static Address CreateAndVerify(Dictionary<string, object> parameters = null)
+        {
             parameters["strict_verifications"] = new List<string>() { "delivery" };
             return Address.Create(parameters);
         }
