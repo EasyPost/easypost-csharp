@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using RestSharp;
 
 namespace EasyPost {
     public class Address : Resource {

@@ -2,7 +2,6 @@
 // Copyright (c) EasyPost. All rights reserved.
 // </copyright>
 
-using EasyPost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests

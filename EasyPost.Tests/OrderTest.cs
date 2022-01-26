@@ -3,8 +3,6 @@
 // </copyright>
 
 using System.Collections.Generic;
-using System.Linq;
-using EasyPost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests

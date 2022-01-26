@@ -5,8 +5,6 @@
 // using System.Net;
 // using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-// using EasyPost;
-
 // namespace EasyPost.Tests {
 //     [TestClass]
 //     public class SecurityTest {

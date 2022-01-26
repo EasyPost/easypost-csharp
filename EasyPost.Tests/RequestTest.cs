@@ -2,10 +2,8 @@
 // Copyright (c) EasyPost. All rights reserved.
 // </copyright>
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using EasyPost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestSharp;
 

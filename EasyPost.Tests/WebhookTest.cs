@@ -6,8 +6,6 @@
 // using System.Linq;
 // using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-// using EasyPost;
-
 // namespace EasyPost.Tests {
 //     [TestClass]
 //     public class WebhookTest {

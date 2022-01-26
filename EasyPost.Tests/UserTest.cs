@@ -2,8 +2,6 @@
 // Copyright (c) EasyPost. All rights reserved.
 // </copyright>
 
-using System.Collections.Generic;
-using EasyPost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests

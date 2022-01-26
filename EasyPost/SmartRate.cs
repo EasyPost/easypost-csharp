@@ -2,10 +2,8 @@
 // Copyright (c) EasyPost. All rights reserved.
 // </copyright>
 
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using RestSharp.Deserializers;
 
 namespace EasyPost
 {

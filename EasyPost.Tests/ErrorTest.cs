@@ -2,12 +2,7 @@
 // Copyright (c) EasyPost. All rights reserved.
 // </copyright>
 
-using EasyPost;
-using System.Linq;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace EasyPost.Tests
 {
