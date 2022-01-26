@@ -78,10 +78,8 @@ namespace EasyPost {
         ///   * {"page_size", int} Max size of list. Default to 20.
         /// All invalid keys will be ignored.
         /// </param>
-        /// <param name="type">
-        /// The type of report, e.g. "shipment", "tracker", "payment_log", etc.
-        /// </param>
-        /// <returns>Instance of EasyPost.ScanForm</returns>
+        /// <param name="type">The type of report, e.g. "shipment", "tracker", "payment_log", etc.</param>
+        /// <returns>Instance of EasyPost.ScanForm.</returns>
         public static ReportList List(string type, Dictionary<string, object> parameters = null) {
             Request request = new Request("v2/reports/{type}");
             request.AddUrlSegment("type", type);

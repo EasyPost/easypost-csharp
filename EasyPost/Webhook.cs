@@ -15,7 +15,7 @@ namespace EasyPost {
         /// <summary>
         /// Get a list of scan forms.
         /// </summary>
-        /// <returns>List of EasyPost.Webhook insteances.</returns>
+        /// <returns>List of EasyPost.Webhook instances.</returns>
         public static List<Webhook> List(Dictionary<string, object> parameters = null) {
             Request request = new Request("v2/webhooks");
 
@@ -61,6 +61,9 @@ namespace EasyPost {
             Merge(request.Execute<Webhook>());
         }
 
+        /// <summary>
+        /// Delete this webhook.
+        /// </summary>
         public void Destroy() {
             Request request = new Request("v2/webhooks/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);

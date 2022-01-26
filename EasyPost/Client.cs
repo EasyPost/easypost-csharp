@@ -15,6 +15,11 @@ namespace EasyPost
         private readonly ClientConfiguration _configuration;
         private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
 
+        /// <summary>
+        /// Prepare a request for execution by attaching required headers.
+        /// </summary>
+        /// <param name="request">EasyPost.Request object instance to prepare.</param>
+        /// <returns>RestSharp.RestRequest object instance to execute.</returns>
         private RestRequest PrepareRequest(Request request)
         {
             var restRequest = (RestRequest)request;
@@ -26,11 +31,23 @@ namespace EasyPost
             return restRequest;
         }
 
+        /// <summary>
+        /// Execute a request against the EasyPost API.
+        /// </summary>
+        /// <param name="request">EasyPost.Request object instance to execute.</param>
+        /// <returns>RestSharp.IRestResponse instance.</returns>
         internal IRestResponse Execute(Request request)
         {
             return _restClient.Execute(PrepareRequest(request));
         }
 
+        /// <summary>
+        /// Execute a request against the EasyPost API.
+        /// </summary>
+        /// <param name="request">EasyPost.Request object instance to execute.</param>
+        /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
+        /// <returns>An instance of a T type object.</returns>
+        /// <exception cref="HttpException">An error occurred during the API request.</exception>
         internal T Execute<T>(Request request) where T : new()
         {
             var response = (RestResponse<T>)_restClient.Execute<T>(PrepareRequest(request));
@@ -63,6 +80,10 @@ namespace EasyPost
             );
         }
 
+        /// <summary>
+        ///  Constructor for the EasyPost client.
+        /// </summary>
+        /// <param name="clientConfiguration">EasyPost.ClientConfiguration object instance to use to configure this client.</param>
         public Client(ClientConfiguration clientConfiguration)
         {
             System.Net.ServicePointManager.SecurityProtocol |= Security.GetProtocol();

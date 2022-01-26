@@ -13,7 +13,9 @@ namespace EasyPost {
         public List<Object> ratings { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
-        /// <summary>Create Rating.</summary>
+        /// <summary>
+        /// Create Rating.
+        /// </summary>
         /// <param name="parameters">
         /// dictionary containing parameters to create the shipment with. Valid pairs:
         ///   * {"from_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.

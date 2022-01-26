@@ -54,7 +54,7 @@ namespace EasyPost {
         }
 
         /// <summary>
-        /// Add shipments to the batch.
+        /// Add shipments to this batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be added.</param>
         public void AddShipments(IEnumerable<string> shipmentIds) {
@@ -68,7 +68,7 @@ namespace EasyPost {
         }
 
         /// <summary>
-        /// Add shipments to the batch.
+        /// Add shipments to this batch.
         /// </summary>
         /// <param name="shipments">List of Shipment objects to be added.</param>
         public void AddShipments(IEnumerable<Shipment> shipments) {
@@ -76,7 +76,7 @@ namespace EasyPost {
         }
 
         /// <summary>
-        /// Remove shipments from the batch.
+        /// Remove shipments from this batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be removed.</param>
         public void RemoveShipments(IEnumerable<string> shipmentIds) {
@@ -90,7 +90,7 @@ namespace EasyPost {
         }
 
         /// <summary>
-        /// Remove shipments from the batch.
+        /// Remove shipments from this batch.
         /// </summary>
         /// <param name="shipments">List of Shipment objects to be removed.</param>
         public void RemoveShipments(IEnumerable<Shipment> shipments) {
@@ -98,7 +98,7 @@ namespace EasyPost {
         }
 
         /// <summary>
-        /// Purchase all shipments within a batch. The Batch's state must be "created" before purchasing.
+        /// Purchase all shipments within this batch. The Batch's state must be "created" before purchasing.
         /// </summary>
         public void Buy() {
             Request request = new Request("v2/batches/{id}/buy", Method.POST);
@@ -108,7 +108,7 @@ namespace EasyPost {
         }
 
         /// <summary>
-        /// Asynchronously generate a label containing all of the Shimpent labels belonging to the batch.
+        /// Asynchronously generate a label containing all of the Shipment labels belonging to this batch.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         public void GenerateLabel(string fileFormat) {
@@ -122,7 +122,7 @@ namespace EasyPost {
         }
 
         /// <summary>
-        /// Asychronously generate a scan from for the batch.
+        /// Asynchronously generate a scan from for this batch.
         /// </summary>
         public void GenerateScanForm() {
             Request request = new Request("v2/batches/{id}/scan_form", Method.POST);

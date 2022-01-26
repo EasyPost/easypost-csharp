@@ -11,6 +11,12 @@ namespace EasyPost {
         public List<Error> errors { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
+        /// <summary>
+        /// Create an Error from JSON.
+        /// </summary>
+        /// <param name="json">JSON data to use for Error creation.</param>
+        /// <typeparam name="T">The type of object to deserialize the JSON data into.</typeparam>
+        /// <returns>An instance of a T type object.</returns>
         public static new T Load<T>(string json) where T : Resource {
             return JsonConvert.DeserializeObject<T>(json);
         }
