@@ -14,6 +14,8 @@ namespace EasyPost
         private readonly RestClient _restClient;
         private readonly ClientConfiguration _configuration;
         private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
+        private readonly int DEFAULT_CONNECT_TIMEOUT_MILLISECONDS = 30000;
+        private readonly int DEFAULT_REQUEST_TIMEOUT_MILLISECONDS = 60000;
 
         /// <summary>
         /// Prepare a request for execution by attaching required headers.
@@ -23,7 +25,7 @@ namespace EasyPost
         private RestRequest PrepareRequest(Request request)
         {
             var restRequest = (RestRequest)request;
-
+            restRequest.Timeout = DEFAULT_REQUEST_TIMEOUT_MILLISECONDS;
             restRequest.AddHeader("user_agent", UserAgent);
             restRequest.AddHeader("authorization", "Bearer " + _configuration.ApiKey);
             restRequest.AddHeader("content_type", "application/json");
@@ -86,10 +88,12 @@ namespace EasyPost
         /// <param name="clientConfiguration">EasyPost.ClientConfiguration object instance to use to configure this client.</param>
         public Client(ClientConfiguration clientConfiguration)
         {
+            
             System.Net.ServicePointManager.SecurityProtocol |= Security.GetProtocol();
             _configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
 
             _restClient = new RestClient(clientConfiguration.ApiBase);
+            _restClient.Timeout = DEFAULT_CONNECT_TIMEOUT_MILLISECONDS;
 
             var assembly = Assembly.GetExecutingAssembly();
             var info = FileVersionInfo.GetVersionInfo(assembly.Location);
