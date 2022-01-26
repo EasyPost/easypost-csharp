@@ -5,7 +5,8 @@
     <OutputType>Library</OutputType>
     <RootNamespace>EasyPost.NetCore20</RootNamespace>
     <AssemblyName>EasyPost.NetCore20</AssemblyName>
-    <Configurations>Release;Debug</Configurations>
+    <Configurations>Release;Debug;Test</Configurations>
+    <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
@@ -18,7 +19,20 @@
     <DocumentationFile>..\lib\netcoreapp2.0\EasyPost.NetCore20.XML</DocumentationFile>
     <NoWarn>1701;1702;1591;1570</NoWarn>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Test|AnyCPU' ">
+    <OutputPath>bin\Test\</OutputPath>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Test\EasyPost.NetCore20.XML</DocumentationFile>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Test' ">
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
