@@ -1,31 +1,34 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace EasyPost {
-    public class Client {
-        public string version;
-
-        internal RestClient client;
-        internal ClientConfiguration configuration;
+namespace EasyPost
+{
+    public class Client
+    {
+        private readonly string _libraryVersion;
+        private readonly string _dotNetVersion;
+        private readonly RestClient _restClient;
+        private readonly ClientConfiguration _configuration;
+        private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
 
         /// <summary>
-        ///  Constructor for the EasyPost client.
+        /// Prepare a request for execution by attaching required headers.
         /// </summary>
-        /// <param name="clientConfiguration">EasyPost.ClientConfiguration object instance to use to configure this client.</param>
-        public Client(ClientConfiguration clientConfiguration) {
-            System.Net.ServicePointManager.SecurityProtocol |= Security.GetProtocol();
-            configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
+        /// <param name="request">EasyPost.Request object instance to prepare.</param>
+        /// <returns>RestSharp.RestRequest object instance to execute.</returns>
+        private RestRequest PrepareRequest(Request request)
+        {
+            var restRequest = (RestRequest)request;
 
-            client = new RestClient(clientConfiguration.ApiBase);
+            restRequest.AddHeader("user_agent", UserAgent);
+            restRequest.AddHeader("authorization", "Bearer " + _configuration.ApiKey);
+            restRequest.AddHeader("content_type", "application/json");
 
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
-            version = info.FileVersion;
+            return restRequest;
         }
 
         /// <summary>
@@ -33,8 +36,9 @@ namespace EasyPost {
         /// </summary>
         /// <param name="request">EasyPost.Request object instance to execute.</param>
         /// <returns>RestSharp.IRestResponse instance.</returns>
-        internal IRestResponse Execute(Request request) {
-            return client.Execute(PrepareRequest(request));
+        internal IRestResponse Execute(Request request)
+        {
+            return _restClient.Execute(PrepareRequest(request));
         }
 
         /// <summary>
@@ -44,46 +48,65 @@ namespace EasyPost {
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
         /// <returns>An instance of a T type object.</returns>
         /// <exception cref="HttpException">An error occurred during the API request.</exception>
-        internal T Execute<T>(Request request) where T : new() {
-            RestResponse<T> response = (RestResponse<T>)client.Execute<T>(PrepareRequest(request));
-            int StatusCode = Convert.ToInt32(response.StatusCode);
+        internal T Execute<T>(Request request) where T : new()
+        {
+            var response = (RestResponse<T>)_restClient.Execute<T>(PrepareRequest(request));
+            var statusCode = Convert.ToInt32(response.StatusCode);
 
-            if (StatusCode > 399) {
-                Dictionary<string, Dictionary<string, object>> Body;
-                List<Error> Errors;
-
-                try {
-                    Body = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
-                    Errors = JsonConvert.DeserializeObject<List<Error>>(JsonConvert.SerializeObject(Body["error"]["errors"]));
-                }
-                catch {
-                    throw new HttpException(StatusCode, "RESPONSE.PARSE_ERROR", response.Content, new List<Error>());
-                }
-
-                throw new HttpException(
-                    StatusCode,
-                    (string)Body["error"]["code"],
-                    (string)Body["error"]["message"],
-                    Errors
-                );
+            if (statusCode < 400)
+            {
+                return response.Data;
             }
 
-            return response.Data;
+            Dictionary<string, Dictionary<string, object>> body;
+            List<Error> errors;
+
+            try
+            {
+                body = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
+                errors = JsonConvert.DeserializeObject<List<Error>>(
+                    JsonConvert.SerializeObject(body["error"]["errors"]));
+            }
+            catch
+            {
+                throw new HttpException(statusCode, "RESPONSE.PARSE_ERROR", response.Content, new List<Error>());
+            }
+
+            throw new HttpException(
+                statusCode,
+                (string)body["error"]["code"],
+                (string)body["error"]["message"],
+                errors
+            );
         }
 
         /// <summary>
-        /// Prepare a request for execution by attaching required headers.
+        ///  Constructor for the EasyPost client.
         /// </summary>
-        /// <param name="request">EasyPost.Request object instance to prepare.</param>
-        /// <returns>RestSharp.RestRequest object instance to execute.</returns>
-        internal RestRequest PrepareRequest(Request request) {
-            RestRequest restRequest = (RestRequest)request;
+        /// <param name="clientConfiguration">EasyPost.ClientConfiguration object instance to use to configure this client.</param>
+        public Client(ClientConfiguration clientConfiguration)
+        {
+            System.Net.ServicePointManager.SecurityProtocol |= Security.GetProtocol();
+            _configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
 
-            restRequest.AddHeader("user_agent", string.Concat("EasyPost/v2 CSharp/", version));
-            restRequest.AddHeader("authorization", "Bearer " + this.configuration.ApiKey);
-            restRequest.AddHeader("content_type", "application/json");
+            _restClient = new RestClient(clientConfiguration.ApiBase);
 
-            return restRequest;
+            var assembly = Assembly.GetExecutingAssembly();
+            var info = FileVersionInfo.GetVersionInfo(assembly.Location);
+            _libraryVersion = info.FileVersion;
+
+            var dotNetVersion = Environment.Version.ToString();
+            if (dotNetVersion == "4.0.30319.42000")
+            {
+                /*
+                 * We're on a v4.6+ version (or pre-.NET Core 3.0, which we don't support),
+                 * but we can't get the exact version.
+                 * See: https://docs.microsoft.com/en-us/dotnet/api/system.environment.version?view=net-6.0#remarks
+                 */
+                dotNetVersion = "4.6 or higher";
+            }
+
+            _dotNetVersion = dotNetVersion;
         }
     }
 }
