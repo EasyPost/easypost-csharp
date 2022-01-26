@@ -13,6 +13,7 @@ namespace EasyPost
     {
         internal RestRequest restRequest;
 
+        [Obsolete]
         public string RootElement
         {
             get { return this.restRequest.RootElement; }
