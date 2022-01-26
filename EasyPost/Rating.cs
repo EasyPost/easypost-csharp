@@ -1,4 +1,8 @@
-﻿using RestSharp;
+﻿// <copyright file="Rating.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using RestSharp;
 using System;
 using System.Collections.Generic;
 

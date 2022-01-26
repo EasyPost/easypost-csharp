@@ -1,4 +1,8 @@
-﻿using EasyPost;
+﻿// <copyright file="PickupTest.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using EasyPost;
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

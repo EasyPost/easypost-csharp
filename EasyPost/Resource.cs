@@ -1,4 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿// <copyright file="Resource.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;

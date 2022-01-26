@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿// <copyright file="TrackerList.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EasyPost

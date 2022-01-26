@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="Order.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using RestSharp;
 

@@ -1,4 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿// <copyright file="Error.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace EasyPost

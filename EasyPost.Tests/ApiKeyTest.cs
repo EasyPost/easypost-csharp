@@ -1,4 +1,8 @@
-﻿using EasyPost;
+﻿// <copyright file="ApiKeyTest.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using EasyPost;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -1,3 +1,7 @@
+// <copyright file="Request.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
 using RestSharp;
 using Newtonsoft.Json;
 using System;

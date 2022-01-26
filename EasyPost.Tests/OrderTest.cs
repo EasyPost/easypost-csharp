@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿// <copyright file="OrderTest.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using System.Collections.Generic;
 using System.Linq;
 using EasyPost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

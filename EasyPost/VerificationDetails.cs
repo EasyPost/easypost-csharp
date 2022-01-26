@@ -1,3 +1,7 @@
+// <copyright file="VerificationDetails.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
 using Newtonsoft.Json;
 using System.Collections.Generic;
 

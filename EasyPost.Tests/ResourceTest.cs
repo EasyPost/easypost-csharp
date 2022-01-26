@@ -1,4 +1,8 @@
-﻿using EasyPost;
+﻿// <copyright file="ResourceTest.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using EasyPost;
 using Newtonsoft.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;

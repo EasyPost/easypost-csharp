@@ -1,4 +1,8 @@
-﻿using System.Reflection;
+﻿// <copyright file="VersionInfo.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using System.Reflection;
 
 // Version information for an assembly consists of the following four values:
 //

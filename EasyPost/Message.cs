@@ -1,4 +1,8 @@
-﻿namespace EasyPost
+﻿// <copyright file="Message.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+namespace EasyPost
 {
     public class Message : Resource
     {

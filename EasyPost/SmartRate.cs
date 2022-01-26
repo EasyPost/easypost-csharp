@@ -1,4 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿// <copyright file="Smartrate.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using RestSharp.Deserializers;

@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="CarrierDetail.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using System;
 
 namespace EasyPost
 {

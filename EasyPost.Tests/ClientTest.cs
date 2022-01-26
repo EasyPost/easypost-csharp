@@ -1,4 +1,8 @@
-﻿//using EasyPost;
+﻿// <copyright file="ClientTest.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+//using EasyPost;
 
 //using System;
 //using System.Linq;

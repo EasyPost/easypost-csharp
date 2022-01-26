@@ -1,4 +1,8 @@
-﻿// using System.Collections.Generic;
+﻿// <copyright file="WebhookTest.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+// using System.Collections.Generic;
 // using System.Linq;
 // using Microsoft.VisualStudio.TestTools.UnitTesting;
 
