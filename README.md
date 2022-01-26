@@ -1,5 +1,8 @@
 # EasyPost .Net Client Library
 
+[![CI](https://github.com/EasyPost/easypost-csharp/workflows/CI/badge.svg)](https://github.com/EasyPost/easypost-csharp/actions?query=workflow%3ACI)
+[![NuGet](https://img.shields.io/nuget/v/EasyPost-Official)](https://www.nuget.org/packages/EasyPost-Official)
+
 EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com
 
 ## Documentation
