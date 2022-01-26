@@ -1,4 +1,8 @@
-﻿using System.Net;
+﻿// <copyright file="Security.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using System.Net;
 
 namespace EasyPost
 {

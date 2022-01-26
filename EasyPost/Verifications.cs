@@ -1,4 +1,8 @@
-﻿namespace EasyPost
+﻿// <copyright file="Verifications.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+namespace EasyPost
 {
     public class Verifications : Resource
     {
