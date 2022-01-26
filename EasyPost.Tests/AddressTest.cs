@@ -1,17 +1,20 @@
 ﻿using EasyPost;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace EasyPost.Tests {
+namespace EasyPost.Tests
+{
     [TestClass]
-    public class AddressTest {
+    public class AddressTest
+    {
         Address address;
 
         [TestInitialize]
-        public void Initialize() {
+        public void Initialize()
+        {
             ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
-            address = new Address() {
+            address = new Address()
+            {
                 company = "Simpler Postage Inc",
                 street1 = "164 Townsend Street",
                 street2 = "Unit 1",
@@ -24,13 +27,16 @@ namespace EasyPost.Tests {
 
         [TestMethod]
         [ExpectedException(typeof(HttpException))]
-        public void TestRetrieveInvalidId() {
+        public void TestRetrieveInvalidId()
+        {
             Address.Retrieve("not-an-id");
         }
 
         [TestMethod]
-        public void TestCreateAndRetrieve() {
-            Dictionary<string, object> parameters = new Dictionary<string, object>() {
+        public void TestCreateAndRetrieve()
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
                 { "company", "Simpler Postage Inc" },
                 { "street1", "164 Townsend Street" },
                 { "street2", "Unit 1" },
@@ -49,8 +55,10 @@ namespace EasyPost.Tests {
         }
 
         [TestMethod]
-        public void TestCreateWithVerifications() {
-            Dictionary<string, object> parameters = new Dictionary<string, object>() {
+        public void TestCreateWithVerifications()
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
                 { "company", "Simpler Postage Inc" },
                 { "street1", "164 Townsend Street" },
                 { "street2", "Unit 1" },
@@ -65,7 +73,8 @@ namespace EasyPost.Tests {
             Assert.IsNotNull(address.verifications.delivery);
             Assert.IsNotNull(address.verifications.zip4);
 
-            parameters = new Dictionary<string, object>() {
+            parameters = new Dictionary<string, object>()
+            {
                 { "company", "Simpler Postage Inc" },
                 { "street1", "123 Fake Street" },
                 { "zip", "94107" },
@@ -77,8 +86,10 @@ namespace EasyPost.Tests {
         }
 
         [TestMethod]
-        public void TestInstanceCreateWithVerifications() {
-            Address address = new Address() {
+        public void TestInstanceCreateWithVerifications()
+        {
+            Address address = new Address()
+            {
                 company = "Simpler Postage Inc",
                 street1 = "164 Townsend Street",
                 street2 = "Unit 1",
@@ -96,8 +107,10 @@ namespace EasyPost.Tests {
 
         [TestMethod]
         [ExpectedException(typeof(HttpException))]
-        public void TestCreateWithStrictVerifications() {
-            Dictionary<string, object> parameters = new Dictionary<string, object>() {
+        public void TestCreateWithStrictVerifications()
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
                 { "company", "Simpler Postage Inc" },
                 { "street1", "123 Fake Street" },
                 { "zip", "94107" },
@@ -108,13 +121,15 @@ namespace EasyPost.Tests {
         }
 
         [TestMethod]
-        public void TestCreateInstance() {
+        public void TestCreateInstance()
+        {
             address.Create();
             Assert.IsNotNull(address.id);
         }
 
         [TestMethod]
-        public void TestInstanceCreateWithVerificationParams() {
+        public void TestInstanceCreateWithVerificationParams()
+        {
             address.Create(new List<string>() { "delivery", "zip4" });
             Assert.IsNotNull(address.verifications.delivery);
             Assert.IsNotNull(address.verifications.zip4);
@@ -122,16 +137,20 @@ namespace EasyPost.Tests {
 
         [TestMethod]
         [ExpectedException(typeof(HttpException))]
-        public void TestInstanceCreateWithStrictVerifications() {
-            address = new Address() {
+        public void TestInstanceCreateWithStrictVerifications()
+        {
+            address = new Address()
+            {
                 company = "Simpler Postage Inc"
             };
             address.Create(strictVerifications: new List<string> { "delivery", "zip4" });
         }
 
         [TestMethod]
-        public void TestVerify() {
-            Dictionary<string, object> parameters = new Dictionary<string, object>() {
+        public void TestVerify()
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
                 { "company", "Simpler Postage Inc" },
                 { "street1", "164 Townsend Street" },
                 { "street2", "Unit 1" },
@@ -150,8 +169,10 @@ namespace EasyPost.Tests {
         }
 
         [TestMethod]
-        public void TestVerifyCarrier() {
-            Dictionary<string, object> parameters = new Dictionary<string, object>() {
+        public void TestVerifyCarrier()
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
                 { "company", "Simpler Postage Inc" },
                 { "street1", "164 Townsend Street" },
                 { "street2", "Unit 1" },
@@ -170,14 +191,17 @@ namespace EasyPost.Tests {
         }
 
         [TestMethod]
-        public void TestVerifyBeforeCreate() {
+        public void TestVerifyBeforeCreate()
+        {
             address.Verify();
             Assert.IsNotNull(address.id);
         }
 
         [TestMethod]
-        public void TestCreateAndVerify() {
-            Dictionary<string, object> parameters = new Dictionary<string, object>() {
+        public void TestCreateAndVerify()
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
                 { "company", "Simpler Postage Inc" },
                 { "street1", "164 Townsend Street" },
                 { "street2", "Unit 1" },
@@ -194,8 +218,10 @@ namespace EasyPost.Tests {
         }
 
         [TestMethod]
-        public void TestVerificationFailure() {
-            Address address = new Address() {
+        public void TestVerificationFailure()
+        {
+            Address address = new Address()
+            {
                 company = "Simpler Postage Inc",
                 street1 = "1645456 Townsend Street",
                 street2 = "Unit 1",
@@ -207,10 +233,12 @@ namespace EasyPost.Tests {
 
             address.Create();
 
-            try {
+            try
+            {
                 address.Verify();
             }
-            catch (HttpException e) {
+            catch (HttpException e)
+            {
                 Assert.AreEqual("ADDRESS.VERIFY.FAILURE", e.Code);
                 Assert.AreEqual("Unable to verify address.", e.Message);
                 Assert.AreEqual("E.ADDRESS.NOT_FOUND", e.Errors[0].code);
