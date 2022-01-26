@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using RestSharp;
 
-namespace EasyPost
-{
-    public class Report : Resource
-    {
+namespace EasyPost {
+    public class Report : Resource {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
@@ -24,8 +23,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a report.</param>
         /// <returns>EasyPost.Report instance.</returns>
-        public static Report Retrieve(string id)
-        {
+        public static Report Retrieve(string id) {
             Request request = new Request("v2/reports/{id}");
             request.AddUrlSegment("id", id);
 
@@ -38,8 +36,7 @@ namespace EasyPost
         /// <param name="type">Type of report, e.g. shipment, tracker, payment_log, etc.</param>
         /// <param name="id">String representing a report.</param>
         /// <returns>EasyPost.Report instance.</returns>
-        public static Report Retrieve(string type, string id)
-        {
+        public static Report Retrieve(string type, string id) {
             Request request = new Request("v2/reports/{type}/{id}");
             request.AddUrlSegment("id", id);
             request.AddUrlSegment("type", type);
@@ -61,8 +58,7 @@ namespace EasyPost
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Report instance.</returns>
-        public static Report Create(string type, Dictionary<string, object> parameters = null)
-        {
+        public static Report Create(string type, Dictionary<string, object> parameters = null) {
             Request request = new Request("v2/reports/{type}", Method.POST);
             request.AddUrlSegment("type", type);
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
@@ -84,8 +80,7 @@ namespace EasyPost
         /// </param>
         /// <param name="type">The type of report, e.g. "shipment", "tracker", "payment_log", etc.</param>
         /// <returns>Instance of EasyPost.ScanForm.</returns>
-        public static ReportList List(string type, Dictionary<string, object> parameters = null)
-        {
+        public static ReportList List(string type, Dictionary<string, object> parameters = null) {
             Request request = new Request("v2/reports/{type}");
             request.AddUrlSegment("type", type);
             request.AddQueryString(parameters ?? new Dictionary<string, object>());

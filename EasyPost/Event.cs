@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using RestSharp;
 
-namespace EasyPost
-{
-    public class Event : Resource
-    {
+namespace EasyPost {
+    public class Event : Resource {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
@@ -23,8 +22,7 @@ namespace EasyPost
         /// Resend the last Event for a specific EasyPost object instance.
         /// </summary>
         /// <param name="id">String representing an EasyPost object instance.</param>
-        public static void Create(string id)
-        {
+        public static void Create(string id) {
             Request request = new Request("v2/events", Method.POST);
             request.AddQueryString(new Dictionary<string, object>() { { "result_id", id } });
         }
@@ -34,8 +32,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a Event. Starts with "evt_".</param>
         /// <returns>EasyPost.Event instance.</returns>
-        public static Event Retrieve(string id)
-        {
+        public static Event Retrieve(string id) {
             Request request = new Request("v2/events/{id}");
             request.AddUrlSegment("id", id);
 

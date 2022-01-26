@@ -1,29 +1,25 @@
 ﻿using EasyPost;
+
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPost.Tests
-{
+namespace EasyPost.Tests {
     [TestClass]
-    public class CustomsItemTest
-    {
+    public class CustomsItemTest {
         [TestInitialize]
-        public void Initialize()
-        {
+        public void Initialize() {
             ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
         }
 
         [TestMethod]
-        public void TestCreateAndRetrieve()
-        {
-            CustomsItem item = CustomsItem.Create(new Dictionary<string, object>()
-            {
-                { "description", "TShirt" },
-                { "quantity", 1 },
-                { "weight", 8 },
-                { "value", 10.0 },
-                { "currency", "USD" }
+        public void TestCreateAndRetrieve() {
+            CustomsItem item = CustomsItem.Create(new Dictionary<string, object>() {
+                {"description", "TShirt"},
+                {"quantity", 1},
+                {"weight", 8},
+                {"value", 10.0},
+                {"currency", "USD"}
             });
             CustomsItem retrieved = CustomsItem.Retrieve(item.id);
             Assert.AreEqual(item.id, retrieved.id);

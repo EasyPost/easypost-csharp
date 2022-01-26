@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using RestSharp;
 
-namespace EasyPost
-{
-    public class ScanForm : Resource
-    {
+namespace EasyPost {
+    public class ScanForm : Resource {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }
@@ -33,8 +32,7 @@ namespace EasyPost
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>Instance of EasyPost.ScanForm.</returns>
-        public static ScanFormList List(Dictionary<string, object> parameters = null)
-        {
+        public static ScanFormList List(Dictionary<string, object> parameters = null) {
             Request request = new Request("v2/scan_forms");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
@@ -48,10 +46,8 @@ namespace EasyPost
         /// </summary>
         /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-        public static ScanForm Create(List<Shipment> shipments)
-        {
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
+        public static ScanForm Create(List<Shipment> shipments) {
+            Dictionary<string, object> parameters = new Dictionary<string, object> {
                 { "shipments", shipments }
             };
 
@@ -66,8 +62,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a scan form, starts with "sf_".</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-        public static ScanForm Retrieve(string id)
-        {
+        public static ScanForm Retrieve(string id) {
             Request request = new Request("v2/scan_forms/{id}");
             request.AddUrlSegment("id", id);
 

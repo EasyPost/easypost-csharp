@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace EasyPost
-{
-    public class CarrierDetail
-    {
+namespace EasyPost {
+    public class CarrierDetail {
 #pragma warning disable IDE1006 // Naming Styles
         public string service { set; get; }
         public string container_type { set; get; }

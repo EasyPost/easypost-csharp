@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace EasyPost
-{
-    public class Form : Resource
-    {
+namespace EasyPost {
+    public class Form : Resource {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public DateTime? created_at { get; set; }

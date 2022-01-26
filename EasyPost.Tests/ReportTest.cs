@@ -1,22 +1,19 @@
 ﻿using EasyPost;
+
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
-namespace EasyPost.Tests
-{
+namespace EasyPost.Tests {
     [TestClass]
-    public class ReportTest
-    {
+    public class ReportTest {
         [TestInitialize]
-        public void Initialize()
-        {
+        public void Initialize() {
             ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
         }
 
         [TestMethod]
-        public void TestCreateAndRetrieve()
-        {
+        public void TestCreateAndRetrieve() {
             Dictionary<string, object> parameters = new Dictionary<string, object>() { };
             Report report = Report.Create("shipment", parameters);
             Assert.IsNotNull(report.id);
@@ -29,8 +26,7 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
-        public void TestList()
-        {
+        public void TestList() {
             ReportList reportList = Report.List("shipment", new Dictionary<string, object>() { { "page_size", 1 } });
             Assert.AreNotEqual(0, reportList.reports.Count);
 

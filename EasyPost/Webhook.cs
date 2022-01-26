@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using RestSharp;
 
-namespace EasyPost
-{
-    public class Webhook : Resource
-    {
+namespace EasyPost {
+    public class Webhook : Resource {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public string mode { get; set; }
@@ -17,8 +16,7 @@ namespace EasyPost
         /// Get a list of scan forms.
         /// </summary>
         /// <returns>List of EasyPost.Webhook instances.</returns>
-        public static List<Webhook> List(Dictionary<string, object> parameters = null)
-        {
+        public static List<Webhook> List(Dictionary<string, object> parameters = null) {
             Request request = new Request("v2/webhooks");
 
             WebhookList webhookList = request.Execute<WebhookList>();
@@ -30,8 +28,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a webhook. Starts with "hook_".</param>
         /// <returns>EasyPost.User instance.</returns>
-        public static Webhook Retrieve(string id)
-        {
+        public static Webhook Retrieve(string id) {
             Request request = new Request("v2/webhooks/{id}");
             request.AddUrlSegment("id", id);
 
@@ -47,8 +44,7 @@ namespace EasyPost
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Webhook instance.</returns>
-        public static Webhook Create(Dictionary<string, object> parameters)
-        {
+        public static Webhook Create(Dictionary<string, object> parameters) {
             Request request = new Request("v2/webhooks", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "webhook", parameters } });
 
@@ -58,8 +54,7 @@ namespace EasyPost
         /// <summary>
         /// Enable a Webhook that has been disabled previously.
         /// </summary>
-        public void Update()
-        {
+        public void Update() {
             Request request = new Request("v2/webhooks/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
 
@@ -69,8 +64,7 @@ namespace EasyPost
         /// <summary>
         /// Delete this webhook.
         /// </summary>
-        public void Destroy()
-        {
+        public void Destroy() {
             Request request = new Request("v2/webhooks/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
             request.Execute();

@@ -1,11 +1,10 @@
 ﻿using RestSharp;
+
 using System;
 using System.Collections.Generic;
 
-namespace EasyPost
-{
-    public class User : Resource
-    {
+namespace EasyPost {
+    public class User : Resource {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
         public string parent_id { get; set; }
@@ -30,16 +29,12 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a user. Starts with "user_".</param>
         /// <returns>EasyPost.User instance.</returns>
-        public static User Retrieve(string id = null)
-        {
+        public static User Retrieve(string id = null) {
             Request request;
 
-            if (id == null)
-            {
+            if (id == null) {
                 request = new Request("v2/users");
-            }
-            else
-            {
+            } else {
                 request = new Request("v2/users/{id}");
                 request.AddUrlSegment("id", id);
             }
@@ -56,8 +51,7 @@ namespace EasyPost
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
-        public static User Create(Dictionary<string, object> parameters)
-        {
+        public static User Create(Dictionary<string, object> parameters) {
             Request request = new Request("v2/users", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "user", parameters } });
 
@@ -77,8 +71,7 @@ namespace EasyPost
         ///   * {"recharge_threshold", int} Recharge threshold for the account in cents. Can only be updated on the parent account.
         /// All invalid keys will be ignored.
         /// </param>
-        public void Update(Dictionary<string, object> parameters)
-        {
+        public void Update(Dictionary<string, object> parameters) {
             Request request = new Request("v2/users/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
             request.AddBody(new Dictionary<string, object>() { { "user", parameters } });
@@ -89,8 +82,7 @@ namespace EasyPost
         /// <summary>
         /// Delete the user.
         /// </summary>
-        public void Destroy()
-        {
+        public void Destroy() {
             Request request = new Request("v2/users/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
             request.Execute();

@@ -89,7 +89,7 @@ namespace EasyPost
 
             rates = request.Execute<Order>().rates;
         }
-
+        
         private static Order SendCreate(Dictionary<string, object> parameters)
         {
             Request request = new Request("v2/orders", Method.POST);

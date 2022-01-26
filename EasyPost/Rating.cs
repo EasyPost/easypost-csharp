@@ -1,11 +1,10 @@
 ﻿using RestSharp;
+
 using System;
 using System.Collections.Generic;
 
-namespace EasyPost
-{
-    public class Rating : Resource
-    {
+namespace EasyPost {
+    public class Rating : Resource {
 #pragma warning disable IDE1006 // Naming Styles
         public Address from_address { get; set; }
         public Address to_address { get; set; }
@@ -26,8 +25,7 @@ namespace EasyPost
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Rating instance.</returns>
-        public static Rating Create(Dictionary<string, object> parameters)
-        {
+        public static Rating Create(Dictionary<string, object> parameters) {
             Request request = new Request("rating/v1/rates", Method.POST);
             request.AddBody(parameters);
 

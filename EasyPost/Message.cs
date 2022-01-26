@@ -1,7 +1,5 @@
-﻿namespace EasyPost
-{
-    public class Message : Resource
-    {
+﻿namespace EasyPost {
+  public class Message : Resource {
 #pragma warning disable IDE1006 // Naming Styles
         public string type { get; set; }
         public string carrier { get; set; }
