@@ -3,7 +3,7 @@ namespace EasyPost {
     /// Provides configuration options for the REST client.
     /// </summary>
     public class ClientConfiguration {
-        internal const string DefaultBaseUrl = "https://api.easypost.com";
+        internal const string DefaultBaseUrl = "https://api.easypost.com/v2";
 
         /// <summary>
         /// The API key to use on per-request basis.
