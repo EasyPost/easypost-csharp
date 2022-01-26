@@ -13,7 +13,7 @@ namespace EasyPost.Tests
             ClientConfiguration config = new ClientConfiguration("someApiKey");
 
             Assert.AreEqual("someApiKey", config.ApiKey);
-            Assert.AreEqual("https://api.easypost.com", config.ApiBase);
+            Assert.AreEqual("https://api.easypost.com/v2", config.ApiBase);
         }
 
         [TestMethod]

@@ -33,7 +33,7 @@ namespace EasyPost {
         /// </param>
         /// <returns>Instance of EasyPost.ScanForm.</returns>
         public static ScanFormList List(Dictionary<string, object> parameters = null) {
-            Request request = new Request("v2/scan_forms");
+            Request request = new Request("scan_forms");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
             ScanFormList scanFormList = request.Execute<ScanFormList>();
@@ -51,7 +51,7 @@ namespace EasyPost {
                 { "shipments", shipments }
             };
 
-            Request request = new Request("v2/scan_forms", Method.POST);
+            Request request = new Request("scan_forms", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "scan_form", parameters } });
 
             return request.Execute<ScanForm>();
@@ -63,7 +63,7 @@ namespace EasyPost {
         /// <param name="id">String representing a scan form, starts with "sf_".</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
         public static ScanForm Retrieve(string id) {
-            Request request = new Request("v2/scan_forms/{id}");
+            Request request = new Request("scan_forms/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<ScanForm>();

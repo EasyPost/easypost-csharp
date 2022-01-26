@@ -33,9 +33,9 @@ namespace EasyPost {
             Request request;
 
             if (id == null) {
-                request = new Request("v2/users");
+                request = new Request("users");
             } else {
-                request = new Request("v2/users/{id}");
+                request = new Request("users/{id}");
                 request.AddUrlSegment("id", id);
             }
 
@@ -52,7 +52,7 @@ namespace EasyPost {
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
         public static User Create(Dictionary<string, object> parameters) {
-            Request request = new Request("v2/users", Method.POST);
+            Request request = new Request("users", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "user", parameters } });
 
             return request.Execute<User>();
@@ -72,7 +72,7 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         public void Update(Dictionary<string, object> parameters) {
-            Request request = new Request("v2/users/{id}", Method.PUT);
+            Request request = new Request("users/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
             request.AddBody(new Dictionary<string, object>() { { "user", parameters } });
 
@@ -83,7 +83,7 @@ namespace EasyPost {
         /// Delete the user.
         /// </summary>
         public void Destroy() {
-            Request request = new Request("v2/users/{id}", Method.DELETE);
+            Request request = new Request("users/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
             request.Execute();
         }
