@@ -2,6 +2,7 @@
 // Copyright (c) 2022 EasyPost
 // All rights reserved.
 
+// This is an example class file to demonstrate a file header (above) and the layout and order of a class file (below).
 namespace EasyPost
 {
     public class LayoutExample
