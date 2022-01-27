@@ -25,7 +25,7 @@ namespace EasyPost
         /// <returns>EasyPost.Rating instance.</returns>
         public static Rating Create(Dictionary<string, object> parameters)
         {
-            var request = new Request("rating/v1/rates", Method.POST);
+            Request request = new Request("rating/v1/rates", Method.POST);
             request.AddBody(parameters);
 
             return request.Execute<Rating>();
