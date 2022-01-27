@@ -14,8 +14,8 @@ namespace EasyPost
         private readonly RestClient _restClient;
         private readonly ClientConfiguration _configuration;
         private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
-        private int _defaultConnectTimeoutMilliseconds = 30000;
-        private int _defaultRequestTimeoutMilliseconds = 60000;
+        private int _connectTimeoutMilliseconds = 30000;
+        private int _requestTimeoutMilliseconds = 60000;
 
         /// <summary>
         /// Prepare a request for execution by attaching required headers.
@@ -25,7 +25,7 @@ namespace EasyPost
         private RestRequest PrepareRequest(Request request)
         {
             var restRequest = (RestRequest)request;
-            restRequest.Timeout = _defaultRequestTimeoutMilliseconds;
+            restRequest.Timeout = _requestTimeoutMilliseconds;
             restRequest.AddHeader("user_agent", UserAgent);
             restRequest.AddHeader("authorization", "Bearer " + _configuration.ApiKey);
             restRequest.AddHeader("content_type", "application/json");
@@ -93,7 +93,7 @@ namespace EasyPost
             _configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
 
             _restClient = new RestClient(clientConfiguration.ApiBase);
-            _restClient.Timeout = _defaultConnectTimeoutMilliseconds;
+            _restClient.Timeout = _connectTimeoutMilliseconds;
 
             var assembly = Assembly.GetExecutingAssembly();
             var info = FileVersionInfo.GetVersionInfo(assembly.Location);
@@ -116,8 +116,9 @@ namespace EasyPost
         /// <summary>
         /// Return the request time from the client object.
         /// </summary>
+        /// <returns> connection timeout in milliseconds</returns>
         public int getConnectionTimeout(){
-            return _defaultConnectTimeoutMilliseconds;
+            return _connectTimeoutMilliseconds;
         }
 
         /// <summary>
@@ -125,14 +126,15 @@ namespace EasyPost
         /// </summary>
         /// <param name="connectionTimeoutMilliseconds">connection time in milliseconds.</param>
         public void setConnectionTimeout(int connectionTimeoutMilliseconds){
-            _defaultConnectTimeoutMilliseconds = connectionTimeoutMilliseconds;
+            _connectTimeoutMilliseconds = connectionTimeoutMilliseconds;
         }
 
         /// <summary>
         /// Return the request time from the client object.
         /// </summary>
+        /// <returns> request timeout in milliseconds</returns>
         public int getRequestTimeout(){
-            return _defaultRequestTimeoutMilliseconds;
+            return _requestTimeoutMilliseconds;
         }
 
         /// <summary>
@@ -140,7 +142,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="requestTimeoutMilliseconds">request time in milliseconds.</param>
         public void setRequestTimeout(int requestTimeoutMilliseconds){
-            _defaultRequestTimeoutMilliseconds = requestTimeoutMilliseconds;
+            _requestTimeoutMilliseconds = requestTimeoutMilliseconds;
         }
     }
 }
