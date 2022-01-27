@@ -2,7 +2,6 @@
 // Copyright (c) EasyPost. All rights reserved.
 // </copyright>
 
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -19,7 +18,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestAll()
         {
-            List<CarrierType> types = CarrierType.All();
+            var types = CarrierType.All();
             Assert.AreNotEqual(0, types.Count);
         }
     }

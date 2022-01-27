@@ -20,7 +20,7 @@ namespace EasyPost
         /// <param name="json">JSON data to use for object creation.</param>
         /// <typeparam name="T">Type of object to generate.</typeparam>
         /// <returns>An instance of a T type object.</returns>
-        public static new T Load<T>(string json) where T : Resource
+        public new static T Load<T>(string json) where T : Resource
         {
             return JsonConvert.DeserializeObject<T>(json);
         }

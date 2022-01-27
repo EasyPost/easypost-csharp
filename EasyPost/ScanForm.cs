@@ -4,22 +4,33 @@
 
 using System;
 using System.Collections.Generic;
-
 using RestSharp;
 
-namespace EasyPost {
-    public class ScanForm : Resource {
+namespace EasyPost
+{
+    public class ScanForm : Resource
+    {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
+
         public DateTime? created_at { get; set; }
+
         public DateTime? updated_at { get; set; }
+
         public List<string> tracking_codes { get; set; }
+
         public Address address { get; set; }
+
         public string form_url { get; set; }
+
         public string form_file_type { get; set; }
+
         public string mode { get; set; }
+
         public string status { get; set; }
+
         public string message { get; set; }
+
         public string batch_id { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
@@ -36,8 +47,9 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>Instance of EasyPost.ScanForm.</returns>
-        public static ScanFormList List(Dictionary<string, object> parameters = null) {
-            Request request = new Request("scan_forms");
+        public static ScanFormList List(Dictionary<string, object> parameters = null)
+        {
+            var request = new Request("scan_forms");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
             ScanFormList scanFormList = request.Execute<ScanFormList>();
@@ -50,12 +62,14 @@ namespace EasyPost {
         /// </summary>
         /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-        public static ScanForm Create(List<Shipment> shipments) {
-            Dictionary<string, object> parameters = new Dictionary<string, object> {
+        public static ScanForm Create(List<Shipment> shipments)
+        {
+            var parameters = new Dictionary<string, object>
+            {
                 { "shipments", shipments }
             };
 
-            Request request = new Request("scan_forms", Method.POST);
+            var request = new Request("scan_forms", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "scan_form", parameters } });
 
             return request.Execute<ScanForm>();
@@ -66,8 +80,9 @@ namespace EasyPost {
         /// </summary>
         /// <param name="id">String representing a scan form, starts with "sf_".</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-        public static ScanForm Retrieve(string id) {
-            Request request = new Request("scan_forms/{id}");
+        public static ScanForm Retrieve(string id)
+        {
+            var request = new Request("scan_forms/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<ScanForm>();

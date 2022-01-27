@@ -20,11 +20,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>() { };
-            Report report = Report.Create("shipment", parameters);
+            var parameters = new Dictionary<string, object>();
+            var report = Report.Create("shipment", parameters);
             Assert.IsNotNull(report.id);
 
-            Report retrieved = Report.Retrieve("shipment", report.id);
+            var retrieved = Report.Retrieve("shipment", report.id);
             Assert.AreEqual(report.id, retrieved.id);
 
             retrieved = Report.Retrieve(report.id);
@@ -34,10 +34,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            ReportList reportList = Report.List("shipment", new Dictionary<string, object>() { { "page_size", 1 } });
+            var reportList = Report.List("shipment", new Dictionary<string, object>() { { "page_size", 1 } });
             Assert.AreNotEqual(0, reportList.reports.Count);
 
-            ReportList nextReportList = reportList.Next();
+            var nextReportList = reportList.Next();
             Assert.AreNotEqual(reportList.reports[0].id, nextReportList.reports[0].id);
         }
     }

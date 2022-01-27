@@ -4,15 +4,19 @@
 
 using System;
 using System.Collections.Generic;
-
 using RestSharp;
 
-namespace EasyPost {
-    public class Webhook : Resource {
+namespace EasyPost
+{
+    public class Webhook : Resource
+    {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
+
         public string mode { get; set; }
+
         public string url { get; set; }
+
         public DateTime? disabled_at { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
@@ -20,10 +24,11 @@ namespace EasyPost {
         /// Get a list of scan forms.
         /// </summary>
         /// <returns>List of EasyPost.Webhook instances.</returns>
-        public static List<Webhook> List(Dictionary<string, object> parameters = null) {
-            Request request = new Request("webhooks");
+        public static List<Webhook> List(Dictionary<string, object> parameters = null)
+        {
+            var request = new Request("webhooks");
 
-            WebhookList webhookList = request.Execute<WebhookList>();
+            var webhookList = request.Execute<WebhookList>();
             return webhookList.webhooks;
         }
 
@@ -32,8 +37,9 @@ namespace EasyPost {
         /// </summary>
         /// <param name="id">String representing a webhook. Starts with "hook_".</param>
         /// <returns>EasyPost.User instance.</returns>
-        public static Webhook Retrieve(string id) {
-            Request request = new Request("webhooks/{id}");
+        public static Webhook Retrieve(string id)
+        {
+            var request = new Request("webhooks/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Webhook>();
@@ -48,8 +54,9 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Webhook instance.</returns>
-        public static Webhook Create(Dictionary<string, object> parameters) {
-            Request request = new Request("webhooks", Method.POST);
+        public static Webhook Create(Dictionary<string, object> parameters)
+        {
+            var request = new Request("webhooks", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "webhook", parameters } });
 
             return request.Execute<Webhook>();
@@ -58,8 +65,9 @@ namespace EasyPost {
         /// <summary>
         /// Enable a Webhook that has been disabled previously.
         /// </summary>
-        public void Update() {
-            Request request = new Request("webhooks/{id}", Method.PUT);
+        public void Update()
+        {
+            var request = new Request("webhooks/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
 
             Merge(request.Execute<Webhook>());
@@ -68,8 +76,9 @@ namespace EasyPost {
         /// <summary>
         /// Delete this webhook.
         /// </summary>
-        public void Destroy() {
-            Request request = new Request("webhooks/{id}", Method.DELETE);
+        public void Destroy()
+        {
+            var request = new Request("webhooks/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
             request.Execute();
         }

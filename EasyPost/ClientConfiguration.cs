@@ -2,11 +2,13 @@
 // Copyright (c) EasyPost. All rights reserved.
 // </copyright>
 
-namespace EasyPost {
+namespace EasyPost
+{
     /// <summary>
     /// Provides configuration options for the REST client.
     /// </summary>
-    public class ClientConfiguration {
+    public class ClientConfiguration
+    {
         internal const string DefaultBaseUrl = "https://api.easypost.com/v2";
 
         /// <summary>
@@ -23,14 +25,17 @@ namespace EasyPost {
         /// Create an EasyPost.ClientConfiguration instance.
         /// </summary>
         /// <param name="apiKey">The API key to use for the client connection.</param>
-        public ClientConfiguration(string apiKey) : this(apiKey, DefaultBaseUrl) { }
+        public ClientConfiguration(string apiKey) : this(apiKey, DefaultBaseUrl)
+        {
+        }
 
         /// <summary>
         /// Create an EasyPost.ClientConfiguration instance.
         /// </summary>
         /// <param name="apiKey">The API key to use for the client connection.</param>
         /// <param name="apiBase">The base API url to use for the client connection.</param>
-        public ClientConfiguration(string apiKey, string apiBase) {
+        public ClientConfiguration(string apiKey, string apiBase)
+        {
             ApiKey = apiKey;
             ApiBase = apiBase;
         }

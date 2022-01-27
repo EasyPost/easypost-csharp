@@ -19,18 +19,18 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            Parcel parcel = Parcel.Create(new Dictionary<string, object>()
+            var parcel = Parcel.Create(new Dictionary<string, object>()
             {
                 { "length", 10 }, { "width", 20 }, { "height", 5 }, { "weight", 1.8 }
             });
-            Parcel retrieved = Parcel.Retrieve(parcel.id);
+            var retrieved = Parcel.Retrieve(parcel.id);
             Assert.AreEqual(parcel.id, retrieved.id);
         }
 
         // [TestMethod]
         // public void TestPredefinedPackage() {
-        //     Parcel parcel = new Parcel() { weight = 1.8, predefined_package = "SMALLFLATRATEBOX" };
-        //     Shipment shipment = new Shipment() { parcel = parcel };
+        //     var parcel = new Parcel() { weight = 1.8, predefined_package = "SMALLFLATRATEBOX" };
+        //     var shipment = new Shipment() { parcel = parcel };
         //     shipment.Create();
 
         //     Assert.AreEqual(null, shipment.parcel.height);

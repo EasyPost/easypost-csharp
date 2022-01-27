@@ -3,7 +3,6 @@
 // </copyright>
 
 using RestSharp;
-using System;
 using System.Collections.Generic;
 
 namespace EasyPost
@@ -19,7 +18,7 @@ namespace EasyPost
 
         public List<CarrierAccount> carrier_accounts { get; set; }
 
-        public List<Object> ratings { get; set; }
+        public List<object> ratings { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>

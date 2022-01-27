@@ -3,28 +3,44 @@
 // </copyright>
 
 using RestSharp;
-
 using System;
 using System.Collections.Generic;
 
-namespace EasyPost {
-    public class User : Resource {
+namespace EasyPost
+{
+    public class User : Resource
+    {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
+
         public string parent_id { get; set; }
+
         public DateTime? created_at { get; set; }
+
         public DateTime? updated_at { get; set; }
+
         public string password { get; set; }
+
         public string password_confirmation { get; set; }
+
         public string name { get; set; }
+
         public string email { get; set; }
+
         public string phone_number { get; set; }
+
         public string balance { get; set; }
+
         public string price_per_shipment { get; set; }
+
         public string recharge_amount { get; set; }
+
         public string secondary_recharge_amount { get; set; }
+
         public string recharge_threshold { get; set; }
+
         public List<User> children { get; set; }
+
         public List<ApiKey> api_keys { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
@@ -33,12 +49,16 @@ namespace EasyPost {
         /// </summary>
         /// <param name="id">String representing a user. Starts with "user_".</param>
         /// <returns>EasyPost.User instance.</returns>
-        public static User Retrieve(string id = null) {
+        public static User Retrieve(string id = null)
+        {
             Request request;
 
-            if (id == null) {
+            if (id == null)
+            {
                 request = new Request("users");
-            } else {
+            }
+            else
+            {
                 request = new Request("users/{id}");
                 request.AddUrlSegment("id", id);
             }
@@ -55,8 +75,9 @@ namespace EasyPost {
         /// All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
-        public static User Create(Dictionary<string, object> parameters) {
-            Request request = new Request("users", Method.POST);
+        public static User Create(Dictionary<string, object> parameters)
+        {
+            var request = new Request("users", Method.POST);
             request.AddBody(new Dictionary<string, object>() { { "user", parameters } });
 
             return request.Execute<User>();
@@ -75,8 +96,9 @@ namespace EasyPost {
         ///   * {"recharge_threshold", int} Recharge threshold for the account in cents. Can only be updated on the parent account.
         /// All invalid keys will be ignored.
         /// </param>
-        public void Update(Dictionary<string, object> parameters) {
-            Request request = new Request("users/{id}", Method.PUT);
+        public void Update(Dictionary<string, object> parameters)
+        {
+            var request = new Request("users/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
             request.AddBody(new Dictionary<string, object>() { { "user", parameters } });
 
@@ -86,8 +108,9 @@ namespace EasyPost {
         /// <summary>
         /// Delete the user.
         /// </summary>
-        public void Destroy() {
-            Request request = new Request("users/{id}", Method.DELETE);
+        public void Destroy()
+        {
+            var request = new Request("users/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
             request.Execute();
         }

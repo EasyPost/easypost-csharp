@@ -19,7 +19,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            CustomsItem item = CustomsItem.Create(new Dictionary<string, object>()
+            var item = CustomsItem.Create(new Dictionary<string, object>()
             {
                 { "description", "TShirt" },
                 { "quantity", 1 },
@@ -27,7 +27,7 @@ namespace EasyPost.Tests
                 { "value", 10.0 },
                 { "currency", "USD" }
             });
-            CustomsItem retrieved = CustomsItem.Retrieve(item.id);
+            var retrieved = CustomsItem.Retrieve(item.id);
             Assert.AreEqual(item.id, retrieved.id);
             Assert.AreEqual(retrieved.value, 10.0);
             Assert.AreEqual(retrieved.currency, "USD");

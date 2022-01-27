@@ -32,33 +32,33 @@ namespace EasyPost
         /// <returns>An instance of a T type object.</returns>
         public static T LoadFromDictionary<T>(Dictionary<string, object> attributes) where T : Resource
         {
-            Type type = typeof(T);
-            T resource = (T)Activator.CreateInstance(type);
+            var type = typeof(T);
+            var resource = (T)Activator.CreateInstance(type);
 
-            foreach (PropertyInfo property in type.GetProperties())
+            foreach (var property in type.GetProperties())
             {
                 if (attributes.TryGetValue(property.Name, out object attribute) == false)
                     continue;
 
                 if (property.PropertyType.GetInterfaces().Contains(typeof(IResource)))
                 {
-                    MethodInfo method = property.PropertyType
+                    var method = property.PropertyType
                         .GetMethod("LoadFromDictionary",
                             BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.Public)
-                        .MakeGenericMethod(new Type[] { property.PropertyType });
+                        .MakeGenericMethod(property.PropertyType);
 
-                    property.SetValue(resource, method.Invoke(resource, new object[] { attribute }), null);
+                    property.SetValue(resource, method.Invoke(resource, new[] { attribute }), null);
                 }
                 else if (typeof(IEnumerable<IResource>).IsAssignableFrom(property.PropertyType))
                 {
                     property.SetValue(resource, Activator.CreateInstance(property.PropertyType), null);
 
-                    Type genericType = property.PropertyType.GetGenericArguments()[0];
-                    MethodInfo method = genericType.GetMethod("LoadFromDictionary",
+                    var genericType = property.PropertyType.GetGenericArguments()[0];
+                    var method = genericType.GetMethod("LoadFromDictionary",
                             BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.Public)
                         .MakeGenericMethod(new Type[] { genericType });
 
-                    foreach (Dictionary<string, object> attr in (List<Dictionary<string, object>>)attribute)
+                    foreach (var attr in (List<Dictionary<string, object>>)attribute)
                     {
                         ((IList)property.GetValue(resource, null)).Add(method.Invoke(resource, new object[] { attr }));
                     }
@@ -79,7 +79,7 @@ namespace EasyPost
         /// <param name="source">Object instance to extract properties from to merge into this object instance.</param>
         public void Merge(object source)
         {
-            foreach (PropertyInfo property in source.GetType().GetProperties())
+            foreach (var property in source.GetType().GetProperties())
             {
                 property.SetValue(this, property.GetValue(source, null), null);
             }
@@ -98,7 +98,7 @@ namespace EasyPost
 
         private object GetValue(PropertyInfo info)
         {
-            object value = info.GetValue(this, null);
+            var value = info.GetValue(this, null);
 
             if (value is IResource)
             {
@@ -106,9 +106,9 @@ namespace EasyPost
             }
             else if (value is IEnumerable<IResource>)
             {
-                List<Dictionary<string, object>> values = new List<Dictionary<string, object>>();
+                var values = new List<Dictionary<string, object>>();
 
-                foreach (IResource IResource in (IEnumerable<IResource>)value)
+                foreach (var IResource in (IEnumerable<IResource>)value)
                 {
                     values.Add(IResource.AsDictionary());
                 }

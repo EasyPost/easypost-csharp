@@ -16,12 +16,12 @@
 
 //         [TestMethod]
 //         public void TestCRUD() {
-//             Webhook webhook = Webhook.Create(new Dictionary<string, object>() { { "url", "https://www.foobar.com" } });
+//             var webhook = Webhook.Create(new Dictionary<string, object>() { { "url", "https://www.foobar.com" } });
 //             Assert.AreEqual(webhook.url, "https://www.foobar.com");
 
 //             webhook.Update();
 
-//             List<Webhook> webhooks = Webhook.List();
+//             var webhooks = Webhook.List();
 //             CollectionAssert.Contains(webhooks.Select(w => w.id).ToList(), webhook.id);
 
 //             webhook.Destroy();
@@ -33,3 +33,6 @@
 //         }
 //     }
 // }
+
+
+

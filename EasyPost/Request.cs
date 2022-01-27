@@ -16,8 +16,8 @@ namespace EasyPost
         [Obsolete]
         public string RootElement
         {
-            get { return restRequest.RootElement; }
-            set { restRequest.RootElement = value; }
+            get => restRequest.RootElement;
+            set => restRequest.RootElement = value;
         }
 
         public static explicit operator RestRequest(Request request)
@@ -38,7 +38,7 @@ namespace EasyPost
         /// <returns>An instance of a T type object.</returns>
         public T Execute<T>() where T : new()
         {
-            Client client = ClientManager.Build();
+            var client = ClientManager.Build();
             return client.Execute<T>(this);
         }
 
@@ -79,9 +79,9 @@ namespace EasyPost
         /// <param name="parameters">Dictionary of key-value pairs for creating URL query parameters.</param>
         public void AddQueryString(IDictionary<string, object> parameters)
         {
-            foreach (KeyValuePair<string, object> pair in parameters)
+            foreach (var pair in parameters)
             {
-                AddParameter((string)pair.Key, Convert.ToString(pair.Value), ParameterType.QueryString);
+                AddParameter(pair.Key, Convert.ToString(pair.Value), ParameterType.QueryString);
             }
         }
 

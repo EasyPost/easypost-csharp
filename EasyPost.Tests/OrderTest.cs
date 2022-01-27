@@ -11,6 +11,7 @@ namespace EasyPost.Tests
     public class OrderTest
     {
         Dictionary<string, object> parameters, toAddress, fromAddress;
+
         List<Dictionary<string, object>> shipments;
 
         [TestInitialize]
@@ -70,20 +71,20 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndRetrieveOrder()
         {
-            Order order = Order.Create(parameters);
+            var order = Order.Create(parameters);
 
             Assert.IsNotNull(order.id);
             Assert.AreEqual(order.reference, "OrderRef");
 
-            Order retrieved = Order.Retrieve(order.id);
+            var retrieved = Order.Retrieve(order.id);
             Assert.AreEqual(order.id, retrieved.id);
         }
 
         [TestMethod]
         public void TestGetRates()
         {
-            Order order = Order.Create(parameters);
-            List<Rate> old = order.rates;
+            var order = Order.Create(parameters);
+            var old = order.rates;
             order.GetRates();
             Assert.AreNotEqual(old, order.rates);
         }
@@ -92,13 +93,13 @@ namespace EasyPost.Tests
         [ExpectedException(typeof(ResourceAlreadyCreated))]
         public void TestCreateOrderWithId()
         {
-            Order order = new Order() { id = "order_asjhd" };
+            var order = new Order() { id = "order_asjhd" };
             order.Create();
         }
 
         // [TestMethod]
         // public void TestCreateFromInstance() {
-        //     Order order = new Order() {
+        //     var order = new Order() {
         //         to_address = Address.Create(toAddress),
         //         from_address = Address.Create(fromAddress),
         //         reference = "OrderRef",
@@ -119,7 +120,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestBuyOrder()
         {
-            Order order = Order.Create(parameters);
+            var order = Order.Create(parameters);
             order.Buy("USPS", "Priority");
 
             Assert.IsNotNull(order.shipments[0].postage_label);
@@ -135,13 +136,13 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestOrderCarrierAccounts()
         {
-            Dictionary<string, object> carrierAccounts = new Dictionary<string, object>()
+            var carrierAccounts = new Dictionary<string, object>()
                 { { "id", "ca_7642d249fdcf47bcb5da9ea34c96dfcf" } };
             parameters.Add("carrier_accounts", carrierAccounts);
-            Order order = Order.Create(parameters);
+            var order = Order.Create(parameters);
 
             parameters.Remove("carrier_accounts");
-            Order largeOrder = Order.Create(parameters);
+            var largeOrder = Order.Create(parameters);
 
             Assert.IsTrue(order.rates.Count < largeOrder.rates.Count);
         }
