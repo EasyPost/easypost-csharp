@@ -1,6 +1,6 @@
-// <copyright file="ClientManager.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+// ClientManager.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System;
 

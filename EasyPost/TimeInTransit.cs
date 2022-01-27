@@ -1,6 +1,6 @@
-﻿// <copyright file="TimeInTransit.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// TimeInTransit.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 namespace EasyPost
 {

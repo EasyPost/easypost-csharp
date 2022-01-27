@@ -1,6 +1,6 @@
-﻿// <copyright file="TrackerDetail.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// TrackingDetail.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System;
 

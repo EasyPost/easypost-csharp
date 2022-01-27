@@ -1,6 +1,6 @@
-﻿// <copyright file="Security.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// Security.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System.Net;
 

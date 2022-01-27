@@ -1,6 +1,6 @@
-// <copyright file="VerificationDetails.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+// VerificationDetails.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using Newtonsoft.Json;
 

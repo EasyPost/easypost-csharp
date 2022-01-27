@@ -1,6 +1,6 @@
-﻿// <copyright file="Exception.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// Exception.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System;
 using System.Collections.Generic;

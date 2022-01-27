@@ -1,6 +1,6 @@
-﻿// <copyright file="WebhookTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// WebhookTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 // using System.Collections.Generic;
 // using System.Linq;
