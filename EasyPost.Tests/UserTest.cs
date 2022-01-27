@@ -11,10 +11,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestRetrieveSelf()
         {
-            User user = User.Retrieve();
+            var user = User.Retrieve();
             Assert.IsNotNull(user.id);
 
-            User user2 = User.Retrieve(user.id);
+            var user2 = User.Retrieve(user.id);
             Assert.AreEqual(user.id, user2.id);
         }
 
@@ -31,11 +31,11 @@ namespace EasyPost.Tests
         //         Assert.AreEqual("First and last name required.", e.Errors[0].message);
         //     }
 
-        //     User user = User.Create(new Dictionary<string, object>() { { "name", "Test Name" } });
+        //     var user = User.Create(new Dictionary<string, object>() { { "name", "Test Name" } });
         //     Assert.AreEqual(user.api_keys.Count, 2);
         //     Assert.IsNotNull(user.id);
 
-        //     User other = User.Retrieve(user.id);
+        //     var other = User.Retrieve(user.id);
         //     Assert.AreEqual(user.id, other.id);
 
         //     user.Update(new Dictionary<string, object>() { { "name", "NewTest Name" } });

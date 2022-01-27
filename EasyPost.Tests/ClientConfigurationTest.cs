@@ -8,7 +8,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestApiKeyConstructor()
         {
-            ClientConfiguration config = new ClientConfiguration("someApiKey");
+            var config = new ClientConfiguration("someApiKey");
 
             Assert.AreEqual("someApiKey", config.ApiKey);
             Assert.AreEqual("https://api.easypost.com/v2", config.ApiBase);
@@ -17,7 +17,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestApiKeyPlusBaseUrlConstructor()
         {
-            ClientConfiguration config = new ClientConfiguration("someApiKey", "http://foobar.com");
+            var config = new ClientConfiguration("someApiKey", "http://foobar.com");
 
             Assert.AreEqual("someApiKey", config.ApiKey);
             Assert.AreEqual("http://foobar.com", config.ApiBase);
