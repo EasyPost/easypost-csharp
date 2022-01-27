@@ -1,6 +1,6 @@
-﻿// <copyright file="ErrorTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// ErrorTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -23,7 +23,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestErrorLoad()
         {
-            var e = Error.Load<Error>(_error);
+            Error e = Error.Load<Error>(_error);
             Assert.AreEqual("E.ADDRESS.NOT_FOUND", e.code);
             Assert.AreEqual("Address not found", e.message);
             Assert.AreEqual("address", e.field);

@@ -1,9 +1,9 @@
-﻿// <copyright file="TrackerTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// TrackerTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
 {
@@ -11,10 +11,7 @@ namespace EasyPost.Tests
     public class TrackerTest
     {
         [TestInitialize]
-        public void Initialize()
-        {
-            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
-        }
+        public void Initialize() => ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
 
         [Ignore]
         [TestMethod]
@@ -23,7 +20,7 @@ namespace EasyPost.Tests
             const string carrier = "USPS";
             const string trackingCode = "EZ1000000001";
 
-            var tracker = Tracker.Create(carrier, trackingCode);
+            Tracker tracker = Tracker.Create(carrier, trackingCode);
             Assert.AreEqual(tracker.tracking_code, trackingCode);
             Assert.IsNotNull(tracker.est_delivery_date);
             Assert.IsNotNull(tracker.carrier);
@@ -35,10 +32,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            var trackerList = Tracker.List(new Dictionary<string, object>() { { "page_size", 1 } });
+            TrackerList trackerList = Tracker.List(new Dictionary<string, object> { { "page_size", 1 } });
             Assert.AreNotEqual(0, trackerList.trackers.Count);
 
-            var nextTrackerList = trackerList.Next();
+            TrackerList nextTrackerList = trackerList.Next();
             Assert.AreNotEqual(trackerList.trackers[0].id, nextTrackerList.trackers[0].id);
         }
     }

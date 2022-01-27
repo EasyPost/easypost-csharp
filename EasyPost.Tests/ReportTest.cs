@@ -1,10 +1,9 @@
-﻿// <copyright file="ReportTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// ReportTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 
 namespace EasyPost.Tests
 {
@@ -12,19 +11,16 @@ namespace EasyPost.Tests
     public class ReportTest
     {
         [TestInitialize]
-        public void Initialize()
-        {
-            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
-        }
+        public void Initialize() => ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
 
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            var parameters = new Dictionary<string, object>();
-            var report = Report.Create("shipment", parameters);
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            Report report = Report.Create("shipment", parameters);
             Assert.IsNotNull(report.id);
 
-            var retrieved = Report.Retrieve("shipment", report.id);
+            Report retrieved = Report.Retrieve("shipment", report.id);
             Assert.AreEqual(report.id, retrieved.id);
 
             retrieved = Report.Retrieve(report.id);
@@ -34,10 +30,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            var reportList = Report.List("shipment", new Dictionary<string, object>() { { "page_size", 1 } });
+            ReportList reportList = Report.List("shipment", new Dictionary<string, object> { { "page_size", 1 } });
             Assert.AreNotEqual(0, reportList.reports.Count);
 
-            var nextReportList = reportList.Next();
+            ReportList nextReportList = reportList.Next();
             Assert.AreNotEqual(reportList.reports[0].id, nextReportList.reports[0].id);
         }
     }

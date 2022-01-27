@@ -1,6 +1,6 @@
-﻿// <copyright file="SecurityTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// SecurityTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 // using System.Net;
 // using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -14,3 +14,6 @@
 //         }
 //     }
 // }
+
+
+

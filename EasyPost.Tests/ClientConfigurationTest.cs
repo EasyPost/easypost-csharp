@@ -1,6 +1,6 @@
-﻿// <copyright file="ClientConfigurationTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// ClientConfigurationTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -12,7 +12,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestApiKeyConstructor()
         {
-            var config = new ClientConfiguration("someApiKey");
+            ClientConfiguration config = new ClientConfiguration("someApiKey");
 
             Assert.AreEqual("someApiKey", config.ApiKey);
             Assert.AreEqual("https://api.easypost.com/v2", config.ApiBase);
@@ -21,7 +21,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestApiKeyPlusBaseUrlConstructor()
         {
-            var config = new ClientConfiguration("someApiKey", "http://foobar.com");
+            ClientConfiguration config = new ClientConfiguration("someApiKey", "http://foobar.com");
 
             Assert.AreEqual("someApiKey", config.ApiKey);
             Assert.AreEqual("http://foobar.com", config.ApiBase);

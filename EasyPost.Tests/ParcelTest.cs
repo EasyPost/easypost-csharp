@@ -1,6 +1,6 @@
-﻿// <copyright file="ParcelTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// ParcelTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -11,19 +11,16 @@ namespace EasyPost.Tests
     public class ParcelTest
     {
         [TestInitialize]
-        public void Initialize()
-        {
-            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
-        }
+        public void Initialize() => ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
 
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            var parcel = Parcel.Create(new Dictionary<string, object>()
+            Parcel parcel = Parcel.Create(new Dictionary<string, object>
             {
                 { "length", 10 }, { "width", 20 }, { "height", 5 }, { "weight", 1.8 }
             });
-            var retrieved = Parcel.Retrieve(parcel.id);
+            Parcel retrieved = Parcel.Retrieve(parcel.id);
             Assert.AreEqual(parcel.id, retrieved.id);
         }
 

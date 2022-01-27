@@ -1,6 +1,6 @@
-﻿// <copyright file="Exception.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// Exception.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System;
 using System.Collections.Generic;
@@ -12,14 +12,14 @@ namespace EasyPost
     [Serializable]
     public class HttpException : Exception
     {
-        public int StatusCode;
-
         public string Code;
 
         public List<Error> Errors;
 
+        public int StatusCode;
+
         /// <summary>
-        /// Constructor for an HttpException.
+        ///     Constructor for an HttpException.
         /// </summary>
         /// <param name="statusCode">Status code.</param>
         /// <param name="code">Error code.</param>
@@ -33,7 +33,7 @@ namespace EasyPost
         }
 
         /// <summary>
-        /// Load the exception data into a SerializationInfo object instance.
+        ///     Load the exception data into a SerializationInfo object instance.
         /// </summary>
         /// <param name="info">SerializationInfo object instance to load data into.</param>
         /// <param name="context">StreamingContext to use for base GetObjectData call.</param>

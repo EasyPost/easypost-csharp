@@ -1,6 +1,6 @@
-﻿// <copyright file="TrackerDetail.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// TrackingDetail.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System;
 
@@ -8,7 +8,6 @@ namespace EasyPost
 {
     public class TrackingDetail : Resource
     {
-#pragma warning disable IDE1006 // Naming Styles
         public DateTime? datetime { get; set; }
 
         public string message { get; set; }
@@ -16,6 +15,5 @@ namespace EasyPost
         public string status { get; set; }
 
         public TrackingLocation tracking_location { get; set; }
-#pragma warning restore IDE1006 // Naming Styles
     }
 }

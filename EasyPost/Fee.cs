@@ -1,19 +1,17 @@
-﻿// <copyright file="Fee.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// Fee.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 namespace EasyPost
 {
     public class Fee : Resource
     {
-#pragma warning disable IDE1006 // Naming Styles
-        public string type { get; set; }
-
         public double amount { get; set; }
 
         public bool charged { get; set; }
 
         public bool refunded { get; set; }
-#pragma warning restore IDE1006 // Naming Styles
+
+        public string type { get; set; }
     }
 }

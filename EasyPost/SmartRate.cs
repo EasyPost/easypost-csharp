@@ -1,6 +1,6 @@
-﻿// <copyright file="Smartrate.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// Smartrate.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System;
 using System.Collections.Generic;
@@ -9,14 +9,11 @@ namespace EasyPost
 {
     public class SmartrateResult : Resource
     {
-#pragma warning disable IDE1006 // Naming Styles
         public List<Smartrate> result { get; set; }
-#pragma warning restore IDE1006 // Naming Styles
     }
 
     public class Smartrate : Resource
     {
-#pragma warning disable IDE1006 // Naming Styles
         public string carrier { get; set; }
 
         public string carrier_account_id { get; set; }
@@ -54,6 +51,5 @@ namespace EasyPost
         public TimeInTransit time_in_transit { get; set; }
 
         public DateTime updated_at { get; set; }
-#pragma warning restore IDE1006 // Naming Styles
     }
 }

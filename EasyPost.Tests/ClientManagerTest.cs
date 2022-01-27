@@ -1,6 +1,6 @@
-﻿// <copyright file="ClientManagerTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// ClientManagerTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 // using Microsoft.VisualStudio.TestTools.UnitTesting;
 

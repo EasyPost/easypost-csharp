@@ -1,6 +1,6 @@
-﻿// <copyright file="CustomsInfoTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// CustomsInfoTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -11,26 +11,24 @@ namespace EasyPost.Tests
     public class CustomsInfoTest
     {
         [TestInitialize]
-        public void Initialize()
-        {
-            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
-        }
+        public void Initialize() => ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
 
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            var item = new Dictionary<string, object>()
+            Dictionary<string, object> item = new Dictionary<string, object>
             {
                 { "description", "TShirt" }, { "quantity", 1 }, { "weight", 8 }, { "origin_country", "US" }
             };
 
-            var info = CustomsInfo.Create(new Dictionary<string, object>()
+            CustomsInfo info = CustomsInfo.Create(new Dictionary<string, object>
             {
-                { "customs_certify", true }, { "eel_pfc", "NOEEI 30.37(a)" },
-                { "customs_items", new List<Dictionary<string, object>>() { item } }
+                { "customs_certify", true },
+                { "eel_pfc", "NOEEI 30.37(a)" },
+                { "customs_items", new List<Dictionary<string, object>> { item } }
             });
 
-            var retrieved = CustomsInfo.Retrieve(info.id);
+            CustomsInfo retrieved = CustomsInfo.Retrieve(info.id);
             Assert.AreEqual(info.id, retrieved.id);
             Assert.IsNotNull(retrieved.customs_items);
         }
@@ -38,13 +36,13 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateWithIResource()
         {
-            var item = new CustomsItem() { description = "description", quantity = 1 };
-            var info = CustomsInfo.Create(
-                new Dictionary<string, object>()
+            CustomsItem item = new CustomsItem { description = "description", quantity = 1 };
+            CustomsInfo info = CustomsInfo.Create(
+                new Dictionary<string, object>
                 {
                     { "customs_certify", true },
                     { "eel_pfc", "NOEEI 30.37(a)" },
-                    { "customs_items", new List<IResource>() { item } }
+                    { "customs_items", new List<IResource> { item } }
                 }
             );
 

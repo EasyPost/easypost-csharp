@@ -1,6 +1,6 @@
-﻿// <copyright file="Security.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// Security.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System.Net;
 
@@ -9,7 +9,7 @@ namespace EasyPost
     internal class Security
     {
         /// <summary>
-        /// Get the TLS protocol version to use for the request.
+        ///     Get the TLS protocol version to use for the request.
         /// </summary>
         /// <returns>SecurityProtocolType TLS version enum.</returns>
         public static SecurityProtocolType GetProtocol()

@@ -1,5 +1,8 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿// AssemblyInfo.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
+
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following

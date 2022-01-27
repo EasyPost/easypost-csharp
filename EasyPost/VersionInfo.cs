@@ -1,6 +1,6 @@
-﻿// <copyright file="VersionInfo.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// VersionInfo.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System.Reflection;
 

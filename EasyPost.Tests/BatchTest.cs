@@ -1,9 +1,9 @@
-﻿// <copyright file="BatchTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// BatchTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -11,20 +11,31 @@ namespace EasyPost.Tests
     [TestClass]
     public class BatchTest
     {
-        Dictionary<string, object> fromAddress;
+        private Dictionary<string, object> batchShipmentParameters;
 
-        Dictionary<string, object> toAddress;
+        private Dictionary<string, object> fromAddress;
 
-        Dictionary<string, object> shipmentParameters;
+        private Dictionary<string, object> shipmentParameters;
 
-        Dictionary<string, object> batchShipmentParameters;
+        private Dictionary<string, object> toAddress;
+
+        public Batch CreateBatch()
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "reference", "EasyPostCSharpTest" },
+                { "shipments", new List<Dictionary<string, object>> { batchShipmentParameters } }
+            };
+
+            return Batch.Create(parameters);
+        }
 
         [TestInitialize]
         public void Initialize()
         {
             ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
 
-            fromAddress = new Dictionary<string, object>()
+            fromAddress = new Dictionary<string, object>
             {
                 { "name", "Andrew Tribone" },
                 { "street1", "480 Fell St" },
@@ -34,7 +45,7 @@ namespace EasyPost.Tests
                 { "country", "US" },
                 { "zip", "94102" }
             };
-            toAddress = new Dictionary<string, object>()
+            toAddress = new Dictionary<string, object>
             {
                 { "company", "Simpler Postage Inc" },
                 { "street1", "164 Townsend Street" },
@@ -44,29 +55,25 @@ namespace EasyPost.Tests
                 { "country", "US" },
                 { "zip", "94107" }
             };
-            shipmentParameters = new Dictionary<string, object>()
+            shipmentParameters = new Dictionary<string, object>
             {
                 {
-                    "parcel", new Dictionary<string, object>()
+                    "parcel",
+                    new Dictionary<string, object>
                     {
-                        { "length", 8 },
-                        { "width", 6 },
-                        { "height", 5 },
-                        { "weight", 10 }
+                        { "length", 8 }, { "width", 6 }, { "height", 5 }, { "weight", 10 }
                     }
                 },
                 { "to_address", toAddress },
                 { "from_address", fromAddress }
             };
-            batchShipmentParameters = new Dictionary<string, object>()
+            batchShipmentParameters = new Dictionary<string, object>
             {
                 {
-                    "parcel", new Dictionary<string, object>()
+                    "parcel",
+                    new Dictionary<string, object>
                     {
-                        { "length", 8 },
-                        { "width", 6 },
-                        { "height", 5 },
-                        { "weight", 10 }
+                        { "length", 8 }, { "width", 6 }, { "height", 5 }, { "weight", 10 }
                     }
                 },
                 { "to_address", toAddress },
@@ -77,53 +84,37 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
-        public void TestRetrieve()
-        {
-            var batch = Batch.Create();
-            var retrieved = Batch.Retrieve(batch.id);
-            Assert.AreEqual(batch.id, retrieved.id);
-        }
-
-        [TestMethod]
         public void TestAddRemoveShipments()
         {
-            var batch = Batch.Create();
-            var shipment = Shipment.Create(shipmentParameters);
-            var otherShipment = Shipment.Create(shipmentParameters);
+            Batch batch = Batch.Create();
+            Shipment shipment = Shipment.Create(shipmentParameters);
+            Shipment otherShipment = Shipment.Create(shipmentParameters);
 
             while (batch.state != "created")
+            {
                 batch = Batch.Retrieve(batch.id);
-            batch.AddShipments(new List<Shipment>() { shipment, otherShipment });
+            }
+
+            batch.AddShipments(new List<Shipment> { shipment, otherShipment });
 
             while (batch.shipments == null)
             {
                 batch = Batch.Retrieve(batch.id);
             }
 
-            var shipmentIds = batch.shipments.Select(ship => ship.id).ToList();
+            List<string> shipmentIds = batch.shipments.Select(ship => ship.id).ToList();
             Assert.AreEqual(batch.num_shipments, 2);
             CollectionAssert.Contains(shipmentIds, shipment.id);
             CollectionAssert.Contains(shipmentIds, otherShipment.id);
 
-            batch.RemoveShipments(new List<Shipment>() { shipment, otherShipment });
+            batch.RemoveShipments(new List<Shipment> { shipment, otherShipment });
             Assert.AreEqual(batch.num_shipments, 0);
-        }
-
-        public Batch CreateBatch()
-        {
-            var parameters = new Dictionary<string, object>()
-            {
-                { "reference", "EasyPostCSharpTest" },
-                { "shipments", new List<Dictionary<string, object>>() { batchShipmentParameters } }
-            };
-
-            return Batch.Create(parameters);
         }
 
         [TestMethod]
         public void TestCreateThenBuyThenGenerateLabelAndScanForm()
         {
-            var batch = CreateBatch();
+            Batch batch = CreateBatch();
 
             Assert.IsNotNull(batch.id);
             Assert.AreEqual(batch.reference, "EasyPostCSharpTest");
@@ -147,6 +138,14 @@ namespace EasyPost.Tests
             Assert.AreEqual(batch.state, "label_generating");
 
             batch.GenerateScanForm();
+        }
+
+        [TestMethod]
+        public void TestRetrieve()
+        {
+            Batch batch = Batch.Create();
+            Batch retrieved = Batch.Retrieve(batch.id);
+            Assert.AreEqual(batch.id, retrieved.id);
         }
     }
 }

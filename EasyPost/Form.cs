@@ -1,6 +1,6 @@
-﻿// <copyright file="Form.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// Form.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System;
 
@@ -8,20 +8,18 @@ namespace EasyPost
 {
     public class Form : Resource
     {
-#pragma warning disable IDE1006 // Naming Styles
-        public string id { get; set; }
-
         public DateTime? created_at { get; set; }
 
-        public DateTime? updated_at { get; set; }
+        public string form_type { get; set; }
 
         public string form_url { get; set; }
 
-        public string form_type { get; set; }
+        public string id { get; set; }
 
         public string mode { get; set; }
 
         public bool submitted_electronically { get; set; }
-#pragma warning restore IDE1006 // Naming Styles
+
+        public DateTime? updated_at { get; set; }
     }
 }

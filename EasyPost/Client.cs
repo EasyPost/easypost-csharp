@@ -99,7 +99,7 @@ namespace EasyPost
         /// <param name="clientConfiguration">EasyPost.ClientConfiguration object instance to use to configure this client.</param>
         public Client(ClientConfiguration clientConfiguration)
         {
-            
+
             System.Net.ServicePointManager.SecurityProtocol |= Security.GetProtocol();
             _configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
 

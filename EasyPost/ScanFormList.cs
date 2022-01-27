@@ -1,6 +1,6 @@
-﻿// <copyright file="ScanFormList.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// ScanFormList.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +9,15 @@ namespace EasyPost
 {
     public class ScanFormList : Resource
     {
-#pragma warning disable IDE1006 // Naming Styles
-        public List<ScanForm> scan_forms { get; set; }
+        public Dictionary<string, object> filters { get; set; }
 
         public bool has_more { get; set; }
 
-        public Dictionary<string, object> filters { get; set; }
-#pragma warning restore IDE1006 // Naming Styles
+        public List<ScanForm> scan_forms { get; set; }
+
 
         /// <summary>
-        /// Get the next page of scan forms based on the original parameters passed to ScanForm.List().
+        ///     Get the next page of scan forms based on the original parameters passed to ScanForm.List().
         /// </summary>
         /// <returns>A new EasyPost.ScanFormList instance.</returns>
         public ScanFormList Next()

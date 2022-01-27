@@ -1,6 +1,6 @@
-﻿// <copyright file="CarrierAccountTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// CarrierAccountTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -11,32 +11,21 @@ namespace EasyPost.Tests
     public class CarrierAccountTest
     {
         [TestInitialize]
-        public void Initialize()
-        {
-            ClientManager.SetCurrent("GxhY479LTioDWsGcEtSAfQ");
-        }
-
-        [TestMethod]
-        public void TestRetrieve()
-        {
-            var account = CarrierAccount.Retrieve("ca_7642d249fdcf47bcb5da9ea34c96dfcf");
-            Assert.AreEqual("ca_7642d249fdcf47bcb5da9ea34c96dfcf", account.id);
-        }
+        public void Initialize() => ClientManager.SetCurrent("GxhY479LTioDWsGcEtSAfQ");
 
         [Ignore]
         [TestMethod]
         public void TestCRUD()
         {
-            var account = CarrierAccount.Create(new Dictionary<string, object>()
+            CarrierAccount account = CarrierAccount.Create(new Dictionary<string, object>
             {
-                { "type", "DhlExpressAccount" },
-                { "description", "description" }
+                { "type", "DhlExpressAccount" }, { "description", "description" }
             });
 
             Assert.IsNotNull(account.id);
             Assert.AreEqual(account.type, "DhlExpressAccount");
 
-            account.Update(new Dictionary<string, object>() { { "reference", "new-reference" } });
+            account.Update(new Dictionary<string, object> { { "reference", "new-reference" } });
             Assert.AreEqual("new-reference", account.reference);
 
             account.Destroy();
@@ -53,8 +42,15 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            var accounts = CarrierAccount.List();
+            List<CarrierAccount> accounts = CarrierAccount.List();
             Assert.AreEqual(accounts[0].id, "ca_7642d249fdcf47bcb5da9ea34c96dfcf");
+        }
+
+        [TestMethod]
+        public void TestRetrieve()
+        {
+            CarrierAccount account = CarrierAccount.Retrieve("ca_7642d249fdcf47bcb5da9ea34c96dfcf");
+            Assert.AreEqual("ca_7642d249fdcf47bcb5da9ea34c96dfcf", account.id);
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿// <copyright file="OrderTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// OrderTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,16 +10,16 @@ namespace EasyPost.Tests
     [TestClass]
     public class OrderTest
     {
-        Dictionary<string, object> parameters, toAddress, fromAddress;
+        private Dictionary<string, object> parameters, toAddress, fromAddress;
 
-        List<Dictionary<string, object>> shipments;
+        private List<Dictionary<string, object>> shipments;
 
         [TestInitialize]
         public void Initialize()
         {
             ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
 
-            toAddress = new Dictionary<string, object>()
+            toAddress = new Dictionary<string, object>
             {
                 { "company", "Simpler Postage Inc" },
                 { "street1", "164 Townsend Street" },
@@ -27,9 +27,9 @@ namespace EasyPost.Tests
                 { "city", "San Francisco" },
                 { "state", "CA" },
                 { "country", "US" },
-                { "zip", "94107" },
+                { "zip", "94107" }
             };
-            fromAddress = new Dictionary<string, object>()
+            fromAddress = new Dictionary<string, object>
             {
                 { "name", "Andrew Tribone" },
                 { "street1", "480 Fell St" },
@@ -39,62 +39,37 @@ namespace EasyPost.Tests
                 { "country", "US" },
                 { "zip", "94102" }
             };
-            shipments = new List<Dictionary<string, object>>()
+            shipments = new List<Dictionary<string, object>>
             {
-                new Dictionary<string, object>()
+                new Dictionary<string, object>
                 {
                     {
                         "parcel",
-                        new Dictionary<string, object>()
-                            { { "length", 8 }, { "width", 6 }, { "height", 5 }, { "weight", 18 } }
+                        new Dictionary<string, object>
+                        {
+                            { "length", 8 }, { "width", 6 }, { "height", 5 }, { "weight", 18 }
+                        }
                     }
                 },
-                new Dictionary<string, object>()
+                new Dictionary<string, object>
                 {
                     {
                         "parcel",
-                        new Dictionary<string, object>()
-                            { { "length", 9 }, { "width", 5 }, { "height", 4 }, { "weight", 18 } }
+                        new Dictionary<string, object>
+                        {
+                            { "length", 9 }, { "width", 5 }, { "height", 4 }, { "weight", 18 }
+                        }
                     }
                 }
             };
 
-            parameters = new Dictionary<string, object>()
+            parameters = new Dictionary<string, object>
             {
                 { "to_address", toAddress },
                 { "from_address", fromAddress },
                 { "reference", "OrderRef" },
                 { "shipments", shipments }
             };
-        }
-
-        [TestMethod]
-        public void TestCreateAndRetrieveOrder()
-        {
-            var order = Order.Create(parameters);
-
-            Assert.IsNotNull(order.id);
-            Assert.AreEqual(order.reference, "OrderRef");
-
-            var retrieved = Order.Retrieve(order.id);
-            Assert.AreEqual(order.id, retrieved.id);
-        }
-
-        [TestMethod]
-        public void TestGetRates()
-        {
-            var order = Order.Create(parameters);
-            var old = order.rates;
-            order.GetRates();
-            Assert.AreNotEqual(old, order.rates);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ResourceAlreadyCreated))]
-        public void TestCreateOrderWithId()
-        {
-            var order = new Order() { id = "order_asjhd" };
-            order.Create();
         }
 
         // [TestMethod]
@@ -120,29 +95,55 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestBuyOrder()
         {
-            var order = Order.Create(parameters);
+            Order order = Order.Create(parameters);
             order.Buy("USPS", "Priority");
 
             Assert.IsNotNull(order.shipments[0].postage_label);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(HttpException))]
-        public void TestFailure()
+        public void TestCreateAndRetrieveOrder()
         {
-            Order.Create(new Dictionary<string, object>());
+            Order order = Order.Create(parameters);
+
+            Assert.IsNotNull(order.id);
+            Assert.AreEqual(order.reference, "OrderRef");
+
+            Order retrieved = Order.Retrieve(order.id);
+            Assert.AreEqual(order.id, retrieved.id);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ResourceAlreadyCreated))]
+        public void TestCreateOrderWithId()
+        {
+            Order order = new Order { id = "order_asjhd" };
+            order.Create();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(HttpException))]
+        public void TestFailure() => Order.Create(new Dictionary<string, object>());
+
+        [TestMethod]
+        public void TestGetRates()
+        {
+            Order order = Order.Create(parameters);
+            List<Rate> old = order.rates;
+            order.GetRates();
+            Assert.AreNotEqual(old, order.rates);
         }
 
         [TestMethod]
         public void TestOrderCarrierAccounts()
         {
-            var carrierAccounts = new Dictionary<string, object>()
-                { { "id", "ca_7642d249fdcf47bcb5da9ea34c96dfcf" } };
+            Dictionary<string, object> carrierAccounts =
+                new Dictionary<string, object> { { "id", "ca_7642d249fdcf47bcb5da9ea34c96dfcf" } };
             parameters.Add("carrier_accounts", carrierAccounts);
-            var order = Order.Create(parameters);
+            Order order = Order.Create(parameters);
 
             parameters.Remove("carrier_accounts");
-            var largeOrder = Order.Create(parameters);
+            Order largeOrder = Order.Create(parameters);
 
             Assert.IsTrue(order.rates.Count < largeOrder.rates.Count);
         }

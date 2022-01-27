@@ -1,6 +1,6 @@
-﻿// <copyright file="ClientTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// ClientTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 //using System;
 //using System.Linq;

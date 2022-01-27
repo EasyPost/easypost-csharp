@@ -1,7 +1,8 @@
-﻿// <copyright file="ApiKeyTest.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// ApiKeyTest.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -10,15 +11,12 @@ namespace EasyPost.Tests
     public class ApiKeyTest
     {
         [TestInitialize]
-        public void Initialize()
-        {
-            ClientManager.SetCurrent("GxhY479LTioDWsGcEtSAfQ");
-        }
+        public void Initialize() => ClientManager.SetCurrent("GxhY479LTioDWsGcEtSAfQ");
 
         [TestMethod]
         public void TestList()
         {
-            var keys = ApiKey.All();
+            List<ApiKey> keys = ApiKey.All();
             Assert.AreEqual(keys.Count, 2);
         }
     }

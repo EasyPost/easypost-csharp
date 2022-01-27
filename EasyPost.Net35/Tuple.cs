@@ -1,14 +1,14 @@
-﻿// <copyright file="Tuple.cs" company="EasyPost">
-// Copyright (c) EasyPost. All rights reserved.
-// </copyright>
+﻿// Tuple.cs
+// Copyright (c) 2022 EasyPost
+// All rights reserved.
 
 namespace EasyPost.Net35
 {
     public class Tuple<T1, T2>
     {
-        public T1 Item1 { get; private set; }
+        public T1 Item1 { get; }
 
-        public T2 Item2 { get; private set; }
+        public T2 Item2 { get; }
 
         internal Tuple(T1 first, T2 second)
         {
