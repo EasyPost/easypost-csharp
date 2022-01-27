@@ -18,9 +18,9 @@ namespace EasyPost
         /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
         public static List<ApiKey> All()
         {
-            Request request = new Request("api_keys");
-            Dictionary<string, object> response = request.Execute<Dictionary<string, object>>();
-            List<object> keys = (List<object>)response["keys"];
+            var request = new Request("api_keys");
+            var response = request.Execute<Dictionary<string, object>>();
+            var keys = (List<object>)response["keys"];
             foreach (Dictionary<string, object> key in keys)
             {
                 key["created_at"] = DateTime.ParseExact((string)key["created_at"], "yyyy-MM-ddTHH:mm:ssZ",

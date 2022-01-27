@@ -15,7 +15,7 @@ namespace EasyPost
         /// <returns>A list of EasyPost.CarrierType instances.</returns>
         public static List<CarrierType> All()
         {
-            Request request = new Request("carrier_types");
+            var request = new Request("carrier_types");
             return request.Execute<List<CarrierType>>();
         }
     }

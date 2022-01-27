@@ -12,7 +12,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            Parcel parcel = Parcel.Create(new Dictionary<string, object>
+            var parcel = Parcel.Create(new Dictionary<string, object>
             {
                 {
                     "length", 10
@@ -27,7 +27,7 @@ namespace EasyPost.Tests
                     "weight", 1.8
                 }
             });
-            Parcel retrieved = Parcel.Retrieve(parcel.id);
+            var retrieved = Parcel.Retrieve(parcel.id);
             Assert.AreEqual(parcel.id, retrieved.id);
         }
 
