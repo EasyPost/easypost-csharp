@@ -11,14 +11,23 @@ namespace EasyPost {
     public class Report : Resource {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
+
         public DateTime? created_at { get; set; }
+
         public DateTime? updated_at { get; set; }
+
         public DateTime? start_date { get; set; }
+
         public DateTime? end_date { get; set; }
+
         public string mode { get; set; }
+
         public string status { get; set; }
+
         public Boolean include_children { get; set; }
+
         public string url { get; set; }
+
         public DateTime? url_expires_at { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
@@ -89,7 +98,7 @@ namespace EasyPost {
             request.AddUrlSegment("type", type);
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            ReportList reportList = request.Execute<ReportList>();
+            var reportList = request.Execute<ReportList>();
             reportList.filters = parameters;
             reportList.type = type;
             return reportList;

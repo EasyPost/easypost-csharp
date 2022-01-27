@@ -16,8 +16,8 @@ namespace EasyPost
         [Obsolete]
         public string RootElement
         {
-            get { return this.restRequest.RootElement; }
-            set { this.restRequest.RootElement = value; }
+            get { return restRequest.RootElement; }
+            set { restRequest.RootElement = value; }
         }
 
         public static explicit operator RestRequest(Request request)

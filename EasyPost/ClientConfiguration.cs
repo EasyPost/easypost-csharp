@@ -1,3 +1,7 @@
+// <copyright file="ClientConfiguration.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
 namespace EasyPost {
     /// <summary>
     /// Provides configuration options for the REST client.

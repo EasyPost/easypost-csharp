@@ -11,7 +11,9 @@ namespace EasyPost
     {
 #pragma warning disable IDE1006 // Naming Styles
         public List<ScanForm> scan_forms { get; set; }
+
         public bool has_more { get; set; }
+
         public Dictionary<string, object> filters { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 

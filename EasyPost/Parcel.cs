@@ -1,4 +1,8 @@
-﻿using RestSharp;
+﻿// <copyright file="Parcel.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
+
+using RestSharp;
 
 using System;
 using System.Collections.Generic;
@@ -7,13 +11,21 @@ namespace EasyPost {
     public class Parcel : Resource {
 #pragma warning disable IDE1006 // Naming Styles
         public string id { get; set; }
+
         public string mode { get; set; }
+
         public DateTime? created_at { get; set; }
+
         public DateTime? updated_at { get; set; }
+
         public double? length { get; set; }
+
         public double? width { get; set; }
+
         public double? height { get; set; }
+
         public double weight { get; set; }
+
         public string predefined_package { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 

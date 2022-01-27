@@ -13,7 +13,9 @@ namespace EasyPost
     public class HttpException : Exception
     {
         public int StatusCode;
+
         public string Code;
+
         public List<Error> Errors;
 
         /// <summary>

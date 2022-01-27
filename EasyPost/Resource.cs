@@ -91,7 +91,7 @@ namespace EasyPost
         /// <returns>A key-value dictionary representation of this object instance's attributes.</returns>
         public Dictionary<string, object> AsDictionary()
         {
-            return this.GetType()
+            return GetType()
                 .GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
                 .ToDictionary(info => info.Name, info => GetValue(info));
         }

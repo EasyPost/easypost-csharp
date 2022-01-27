@@ -1,4 +1,6 @@
-﻿using RestSharp;
+﻿// <copyright file="Rate.cs" company="EasyPost">
+// Copyright (c) EasyPost. All rights reserved.
+// </copyright>
 
 using System;
 
