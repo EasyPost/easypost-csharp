@@ -19,7 +19,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestErrorLoad()
         {
-            Error e = Error.Load<Error>(_error);
+            var e = Error.Load<Error>(_error);
             Assert.AreEqual("E.ADDRESS.NOT_FOUND", e.code);
             Assert.AreEqual("Address not found", e.message);
             Assert.AreEqual("address", e.field);

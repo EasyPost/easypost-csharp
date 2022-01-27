@@ -62,7 +62,7 @@ namespace EasyPost
         /// <returns>An instance of a T type object.</returns>
         public T Execute<T>() where T : new()
         {
-            Client client = ClientManager.Build();
+            var client = ClientManager.Build();
             return client.Execute<T>(this);
         }
 
@@ -72,7 +72,7 @@ namespace EasyPost
         /// <returns>An IRestResponse object instance.</returns>
         public IRestResponse Execute()
         {
-            Client client = ClientManager.Build();
+            var client = ClientManager.Build();
             return client.Execute(this);
         }
 

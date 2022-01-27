@@ -12,7 +12,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestAll()
         {
-            List<CarrierType> types = CarrierType.All();
+            var types = CarrierType.All();
             Assert.AreNotEqual(0, types.Count);
         }
     }

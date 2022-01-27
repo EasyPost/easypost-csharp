@@ -34,8 +34,8 @@ namespace EasyPost
         /// <returns>An EasyPost.Tracker instance.</returns>
         public static Tracker Create(string carrier, string trackingCode)
         {
-            Request request = new Request("trackers", Method.POST);
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            var request = new Request("trackers", Method.POST);
+            var parameters = new Dictionary<string, object>
             {
                 {
                     "tracking_code", trackingCode
@@ -77,10 +77,10 @@ namespace EasyPost
         /// <returns>Instance of EasyPost.ShipmentList.</returns>
         public static TrackerList List(Dictionary<string, object> parameters = null)
         {
-            Request request = new Request("trackers");
+            var request = new Request("trackers");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            TrackerList trackerList = request.Execute<TrackerList>();
+            var trackerList = request.Execute<TrackerList>();
             trackerList.filters = parameters;
             return trackerList;
         }
@@ -92,7 +92,7 @@ namespace EasyPost
         /// <returns>EasyPost.Tracker instance.</returns>
         public static Tracker Retrieve(string id)
         {
-            Request request = new Request("trackers/{id}");
+            var request = new Request("trackers/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Tracker>();

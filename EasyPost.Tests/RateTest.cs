@@ -12,7 +12,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestRetrieve()
         {
-            Dictionary<string, object> fromAddress = new Dictionary<string, object>
+            var fromAddress = new Dictionary<string, object>
             {
                 {
                     "name", "Andrew Tribone"
@@ -36,7 +36,7 @@ namespace EasyPost.Tests
                     "zip", "94102"
                 }
             };
-            Dictionary<string, object> toAddress = new Dictionary<string, object>
+            var toAddress = new Dictionary<string, object>
             {
                 {
                     "company", "Simpler Postage Inc"
@@ -60,7 +60,7 @@ namespace EasyPost.Tests
                     "zip", "94107"
                 }
             };
-            Shipment shipment = Shipment.Create(new Dictionary<string, object>
+            var shipment = Shipment.Create(new Dictionary<string, object>
             {
                 {
                     "parcel", new Dictionary<string, object>
@@ -91,7 +91,7 @@ namespace EasyPost.Tests
             });
 
             shipment.GetRates();
-            Rate rate = Rate.Retrieve(shipment.rates[0].id);
+            var rate = Rate.Retrieve(shipment.rates[0].id);
             Assert.AreEqual(rate.id, shipment.rates[0].id);
 
             Assert.IsNotNull(rate.rate);
