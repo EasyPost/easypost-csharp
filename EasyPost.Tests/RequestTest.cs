@@ -19,7 +19,12 @@ namespace EasyPost.Tests
         public void TestAddBody()
         {
             var request = new Request("resource");
-            request.AddBody(new Dictionary<string, object> { { "foo", "bar" } });
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "foo", "bar"
+                }
+            });
 
             var restRequest = (RestRequest)request;
             CollectionAssert.Contains(restRequest.Parameters.Select(parameter => parameter.ToString()).ToList(),

@@ -11,21 +11,13 @@ namespace EasyPost
     public class Parcel : Resource
     {
         public DateTime? created_at { get; set; }
-
         public double? height { get; set; }
-
         public string id { get; set; }
-
         public double? length { get; set; }
-
         public string mode { get; set; }
-
         public string predefined_package { get; set; }
-
         public DateTime? updated_at { get; set; }
-
         public double weight { get; set; }
-
         public double? width { get; set; }
 
         /// <summary>
@@ -43,8 +35,13 @@ namespace EasyPost
         /// <returns>EasyPost.Parcel instance.</returns>
         public static Parcel Create(Dictionary<string, object> parameters)
         {
-            var request = new Request("parcels", Method.POST);
-            request.AddBody(new Dictionary<string, object> { { "parcel", parameters } });
+            Request request = new Request("parcels", Method.POST);
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "parcel", parameters
+                }
+            });
 
             return request.Execute<Parcel>();
         }
@@ -57,7 +54,7 @@ namespace EasyPost
         /// <returns>EasyPost.Parcel instance.</returns>
         public static Parcel Retrieve(string id)
         {
-            var request = new Request("parcels/{id}");
+            Request request = new Request("parcels/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Parcel>();

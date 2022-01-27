@@ -10,15 +10,10 @@ namespace EasyPost
     public class Error : Resource
     {
         public string code { get; set; }
-
         public List<Error> errors { get; set; }
-
         public string field { get; set; }
-
         public string message { get; set; }
-
         public string suggestion { get; set; }
-
 
         /// <summary>
         ///     Create an Error from JSON.

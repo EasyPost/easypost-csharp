@@ -10,11 +10,8 @@ namespace EasyPost
     public class TrackerList
     {
         public Dictionary<string, object> filters { get; set; }
-
         public bool has_more { get; set; }
-
         public List<Tracker> trackers { get; set; }
-
 
         /// <summary>
         ///     Get the next page of shipments based on the original parameters passed to Shipment.List().

@@ -18,11 +18,21 @@ namespace EasyPost.Tests
         {
             var item = CustomsItem.Create(new Dictionary<string, object>
             {
-                { "description", "TShirt" },
-                { "quantity", 1 },
-                { "weight", 8 },
-                { "value", 10.0 },
-                { "currency", "USD" }
+                {
+                    "description", "TShirt"
+                },
+                {
+                    "quantity", 1
+                },
+                {
+                    "weight", 8
+                },
+                {
+                    "value", 10.0
+                },
+                {
+                    "currency", "USD"
+                }
             });
             var retrieved = CustomsItem.Retrieve(item.id);
             Assert.AreEqual(item.id, retrieved.id);

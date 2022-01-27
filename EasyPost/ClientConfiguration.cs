@@ -15,7 +15,6 @@ namespace EasyPost
         ///     The API base URI to use on a per-request basis.
         /// </summary>
         public string ApiBase { get; set; }
-
         /// <summary>
         ///     The API key to use on per-request basis.
         /// </summary>

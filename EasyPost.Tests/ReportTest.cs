@@ -30,7 +30,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            var reportList = Report.List("shipment", new Dictionary<string, object> { { "page_size", 1 } });
+            var reportList = Report.List("shipment", new Dictionary<string, object>
+            {
+                {
+                    "page_size", 1
+                }
+            });
             Assert.AreNotEqual(0, reportList.reports.Count);
 
             var nextReportList = reportList.Next();

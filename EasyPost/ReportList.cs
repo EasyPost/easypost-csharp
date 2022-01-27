@@ -10,13 +10,9 @@ namespace EasyPost
     public class ReportList
     {
         public Dictionary<string, object> filters { get; set; }
-
         public bool has_more { get; set; }
-
         public List<Report> reports { get; set; }
-
         public string type { get; set; }
-
 
         /// <summary>
         ///     Get the next page of reports based on the original parameters passed to ReportList.List().

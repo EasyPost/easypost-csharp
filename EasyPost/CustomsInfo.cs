@@ -11,29 +11,17 @@ namespace EasyPost
     public class CustomsInfo : Resource
     {
         public string contents_explanation { get; set; }
-
         public string contents_type { get; set; }
-
         public DateTime? created_at { get; set; }
-
         public string customs_certify { get; set; }
-
         public List<CustomsItem> customs_items { get; set; }
-
         public string customs_signer { get; set; }
-
         public string eel_pfc { get; set; }
-
         public string id { get; set; }
-
         public string mode { get; set; }
-
         public string non_delivery_option { get; set; }
-
         public string restriction_comments { get; set; }
-
         public string restriction_type { get; set; }
-
         public DateTime? updated_at { get; set; }
 
         /// <summary>
@@ -54,8 +42,13 @@ namespace EasyPost
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         public static CustomsInfo Create(Dictionary<string, object> parameters)
         {
-            var request = new Request("customs_infos", Method.POST);
-            request.AddBody(new Dictionary<string, object> { { "customs_info", parameters } });
+            Request request = new Request("customs_infos", Method.POST);
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "customs_info", parameters
+                }
+            });
 
             return request.Execute<CustomsInfo>();
         }
@@ -68,7 +61,7 @@ namespace EasyPost
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         public static CustomsInfo Retrieve(string id)
         {
-            var request = new Request("customs_infos/{id}");
+            Request request = new Request("customs_infos/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<CustomsInfo>();

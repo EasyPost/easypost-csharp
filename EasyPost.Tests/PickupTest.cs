@@ -36,45 +36,104 @@ namespace EasyPost.Tests
 
             parcel = new Dictionary<string, object>
             {
-                { "length", 8 }, { "width", 6 }, { "height", 5 }, { "weight", 10 }
+                {
+                    "length", 8
+                },
+                {
+                    "width", 6
+                },
+                {
+                    "height", 5
+                },
+                {
+                    "weight", 10
+                }
             };
             toAddress = new Dictionary<string, object>
             {
-                { "company", "Simpler Postage Inc" },
-                { "street1", "164 Townsend Street" },
-                { "street2", "Unit 1" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94107" }
+                {
+                    "company", "Simpler Postage Inc"
+                },
+                {
+                    "street1", "164 Townsend Street"
+                },
+                {
+                    "street2", "Unit 1"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94107"
+                }
             };
             fromAddress = new Dictionary<string, object>
             {
-                { "name", "Andrew Tribone" },
-                { "street1", "480 Fell St" },
-                { "street2", "#3" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94102" }
+                {
+                    "name", "Andrew Tribone"
+                },
+                {
+                    "street1", "480 Fell St"
+                },
+                {
+                    "street2", "#3"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94102"
+                }
             };
             shipment = Shipment.Create(new Dictionary<string, object>
             {
-                { "parcel", parcel },
-                { "to_address", toAddress },
-                { "from_address", fromAddress },
-                { "reference", "ShipmentRef" }
+                {
+                    "parcel", parcel
+                },
+                {
+                    "to_address", toAddress
+                },
+                {
+                    "from_address", fromAddress
+                },
+                {
+                    "reference", "ShipmentRef"
+                }
             });
             shipment.Buy(shipment.LowestRate());
 
             parameters = new Dictionary<string, object>
             {
-                { "is_account_address", false },
-                { "instructions", "In mailbox." },
-                { "address", address },
-                { "shipment", shipment },
-                { "min_datetime", DateTime.Now.AddDays(1) },
-                { "max_datetime", DateTime.Now.AddDays(1) }
+                {
+                    "is_account_address", false
+                },
+                {
+                    "instructions", "In mailbox."
+                },
+                {
+                    "address", address
+                },
+                {
+                    "shipment", shipment
+                },
+                {
+                    "min_datetime", DateTime.Now.AddDays(1)
+                },
+                {
+                    "max_datetime", DateTime.Now.AddDays(1)
+                }
             };
         }
 

@@ -30,38 +30,84 @@ namespace EasyPost.Tests
 
             toAddress = new Dictionary<string, object>
             {
-                { "company", "Simpler Postage Inc" },
-                { "street1", "164 Townsend Street" },
-                { "street2", "Unit 1" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94107" }
+                {
+                    "company", "Simpler Postage Inc"
+                },
+                {
+                    "street1", "164 Townsend Street"
+                },
+                {
+                    "street2", "Unit 1"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94107"
+                }
             };
             fromAddress = new Dictionary<string, object>
             {
-                { "name", "Andrew Tribone" },
-                { "street1", "480 Fell St" },
-                { "street2", "#3" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94102" }
+                {
+                    "name", "Andrew Tribone"
+                },
+                {
+                    "street1", "480 Fell St"
+                },
+                {
+                    "street2", "#3"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94102"
+                }
             };
             options = new Dictionary<string, object>();
             parameters = new Dictionary<string, object>
             {
                 {
-                    "parcel",
-                    new Dictionary<string, object>
+                    "parcel", new Dictionary<string, object>
                     {
-                        { "length", 8 }, { "width", 6 }, { "height", 5 }, { "weight", 10 }
+                        {
+                            "length", 8
+                        },
+                        {
+                            "width", 6
+                        },
+                        {
+                            "height", 5
+                        },
+                        {
+                            "weight", 10
+                        }
                     }
                 },
-                { "to_address", toAddress },
-                { "from_address", fromAddress },
-                { "reference", "ShipmentRef" },
-                { "options", options }
+                {
+                    "to_address", toAddress
+                },
+                {
+                    "from_address", fromAddress
+                },
+                {
+                    "reference", "ShipmentRef"
+                },
+                {
+                    "options", options
+                }
             };
         }
 
@@ -82,12 +128,31 @@ namespace EasyPost.Tests
             var from = Address.Create(fromAddress);
             var parcel = Parcel.Create(new Dictionary<string, object>
             {
-                { "length", 8 }, { "width", 6 }, { "height", 5 }, { "weight", 10 }
+                {
+                    "length", 8
+                },
+                {
+                    "width", 6
+                },
+                {
+                    "height", 5
+                },
+                {
+                    "weight", 10
+                }
             });
-            var item = new CustomsItem { description = "description", quantity = 1 };
+            var item = new CustomsItem
+            {
+                description = "description", quantity = 1
+            };
             var info = new CustomsInfo
             {
-                customs_certify = "TRUE", eel_pfc = "NOEEI 30.37(a)", customs_items = new List<CustomsItem> { item }
+                customs_certify = "TRUE",
+                eel_pfc = "NOEEI 30.37(a)",
+                customs_items = new List<CustomsItem>
+                {
+                    item
+                }
             };
 
             var shipment = new Shipment
@@ -97,7 +162,10 @@ namespace EasyPost.Tests
                 parcel = parcel,
                 carrier_accounts = new List<CarrierAccount>
                 {
-                    new CarrierAccount { id = "ca_7642d249fdcf47bcb5da9ea34c96dfcf" }
+                    new CarrierAccount
+                    {
+                        id = "ca_7642d249fdcf47bcb5da9ea34c96dfcf"
+                    }
                 }
             };
             shipment.Create();
@@ -112,7 +180,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCarrierAccountsString()
         {
-            parameters["carrier_accounts"] = new List<string> { "ca_7642d249fdcf47bcb5da9ea34c96dfcf" };
+            parameters["carrier_accounts"] = new List<string>
+            {
+                "ca_7642d249fdcf47bcb5da9ea34c96dfcf"
+            };
             var shipment = Shipment.Create(parameters);
 
             foreach (Rate rate in shipment.rates)
@@ -153,7 +224,10 @@ namespace EasyPost.Tests
         [ExpectedException(typeof(ResourceAlreadyCreated))]
         public void TestCreateWithId()
         {
-            var shipment = new Shipment { id = "shp_asdlf" };
+            var shipment = new Shipment
+            {
+                id = "shp_asdlf"
+            };
             shipment.Create();
         }
 
@@ -199,7 +273,10 @@ namespace EasyPost.Tests
             var tomorrow = DateTime.SpecifyKind(DateTime.Now.AddDays(1), DateTimeKind.Utc);
 
             var shipment = CreateShipmentResource();
-            shipment.options = new Options { label_date = tomorrow };
+            shipment.options = new Options
+            {
+                label_date = tomorrow
+            };
             shipment.Create();
 
             Assert.AreEqual(tomorrow.ToString("yyyy-MM-ddTHH:mm:ssZ"),
@@ -209,7 +286,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            var shipmentList = Shipment.List(new Dictionary<string, object> { { "page_size", 1 } });
+            var shipmentList = Shipment.List(new Dictionary<string, object>
+            {
+                {
+                    "page_size", 1
+                }
+            });
             Assert.AreNotEqual(0, shipmentList.shipments.Count);
 
             var nextShipmentList = shipmentList.Next();
@@ -219,30 +301,63 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestLowestRate()
         {
-            var lowestUSPS = new Rate { rate = "1.0", carrier = "USPS", service = "ParcelSelect" };
-            var highestUSPS = new Rate { rate = "10.0", carrier = "USPS", service = "Priority" };
-            var lowestUPS = new Rate { rate = "2.0", carrier = "UPS", service = "ParcelSelect" };
-            var highestUPS = new Rate { rate = "20.0", carrier = "UPS", service = "Priority" };
+            var lowestUSPS = new Rate
+            {
+                rate = "1.0", carrier = "USPS", service = "ParcelSelect"
+            };
+            var highestUSPS = new Rate
+            {
+                rate = "10.0", carrier = "USPS", service = "Priority"
+            };
+            var lowestUPS = new Rate
+            {
+                rate = "2.0", carrier = "UPS", service = "ParcelSelect"
+            };
+            var highestUPS = new Rate
+            {
+                rate = "20.0", carrier = "UPS", service = "Priority"
+            };
 
             var shipment =
-                new Shipment { rates = new List<Rate> { highestUSPS, lowestUSPS, highestUPS, lowestUPS } };
+                new Shipment
+                {
+                    rates = new List<Rate>
+                    {
+                        highestUSPS, lowestUSPS, highestUPS, lowestUPS
+                    }
+                };
 
             var rate = shipment.LowestRate();
             Assert.AreEqual(rate, lowestUSPS);
 
-            rate = shipment.LowestRate(new List<string> { "UPS" });
+            rate = shipment.LowestRate(new List<string>
+            {
+                "UPS"
+            });
             Assert.AreEqual(rate, lowestUPS);
 
-            rate = shipment.LowestRate(includeServices: new List<string> { "Priority" });
+            rate = shipment.LowestRate(includeServices: new List<string>
+            {
+                "Priority"
+            });
             Assert.AreEqual(rate, highestUSPS);
 
-            rate = shipment.LowestRate(excludeCarriers: new List<string> { "USPS" });
+            rate = shipment.LowestRate(excludeCarriers: new List<string>
+            {
+                "USPS"
+            });
             Assert.AreEqual(rate, lowestUPS);
 
-            rate = shipment.LowestRate(excludeServices: new List<string> { "ParcelSelect" });
+            rate = shipment.LowestRate(excludeServices: new List<string>
+            {
+                "ParcelSelect"
+            });
             Assert.AreEqual(rate, highestUSPS);
 
-            rate = shipment.LowestRate(new List<string> { "FedEx" });
+            rate = shipment.LowestRate(new List<string>
+            {
+                "FedEx"
+            });
             Assert.IsNull(rate);
         }
 
@@ -253,11 +368,33 @@ namespace EasyPost.Tests
             options["label_date"] = tomorrow;
             options["print_custom"] = new List<Dictionary<string, object>>
             {
-                new Dictionary<string, object> { { "value", "value" }, { "name", "name" }, { "barcode", true } }
+                new Dictionary<string, object>
+                {
+                    {
+                        "value", "value"
+                    },
+                    {
+                        "name", "name"
+                    },
+                    {
+                        "barcode", true
+                    }
+                }
             };
             options["payment"] = new Dictionary<string, string>
             {
-                { "type", "THIRD_PARTY" }, { "account", "12345" }, { "postal_code", "54321" }, { "country", "US" }
+                {
+                    "type", "THIRD_PARTY"
+                },
+                {
+                    "account", "12345"
+                },
+                {
+                    "postal_code", "54321"
+                },
+                {
+                    "country", "US"
+                }
             };
 
             var shipment = Shipment.Create(parameters);
@@ -285,11 +422,22 @@ namespace EasyPost.Tests
         {
             parameters = new Dictionary<string, object>
             {
-                { "to_address", toAddress },
-                { "from_address", fromAddress },
                 {
-                    "parcel",
-                    new Dictionary<string, object> { { "weight", 10 }, { "predefined_package", "FEDEXBOX" } }
+                    "to_address", toAddress
+                },
+                {
+                    "from_address", fromAddress
+                },
+                {
+                    "parcel", new Dictionary<string, object>
+                    {
+                        {
+                            "weight", 10
+                        },
+                        {
+                            "predefined_package", "FEDEXBOX"
+                        }
+                    }
                 }
             };
             var shipment = Shipment.Create(parameters);
@@ -383,15 +531,29 @@ namespace EasyPost.Tests
                 country = "US",
                 zip = "94102"
             };
-            var parcel = new Parcel { length = 8, width = 6, height = 5, weight = 10 };
-            var item = new CustomsItem { description = "description", quantity = 1 };
+            var parcel = new Parcel
+            {
+                length = 8, width = 6, height = 5, weight = 10
+            };
+            var item = new CustomsItem
+            {
+                description = "description", quantity = 1
+            };
             var info = new CustomsInfo
             {
-                customs_certify = "TRUE", eel_pfc = "NOEEI 30.37(a)", customs_items = new List<CustomsItem> { item }
+                customs_certify = "TRUE",
+                eel_pfc = "NOEEI 30.37(a)",
+                customs_items = new List<CustomsItem>
+                {
+                    item
+                }
             };
 
 
-            return new Shipment { to_address = to, from_address = from, parcel = parcel, customs_info = info };
+            return new Shipment
+            {
+                to_address = to, from_address = from, parcel = parcel, customs_info = info
+            };
         }
     }
 }

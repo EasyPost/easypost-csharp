@@ -18,7 +18,18 @@ namespace EasyPost.Tests
         {
             var parcel = Parcel.Create(new Dictionary<string, object>
             {
-                { "length", 10 }, { "width", 20 }, { "height", 5 }, { "weight", 1.8 }
+                {
+                    "length", 10
+                },
+                {
+                    "width", 20
+                },
+                {
+                    "height", 5
+                },
+                {
+                    "weight", 1.8
+                }
             });
             var retrieved = Parcel.Retrieve(parcel.id);
             Assert.AreEqual(parcel.id, retrieved.id);

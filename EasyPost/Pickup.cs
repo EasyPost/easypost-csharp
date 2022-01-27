@@ -11,35 +11,20 @@ namespace EasyPost
     public class Pickup : Resource
     {
         public Address address { get; set; }
-
         public List<CarrierAccount> carrier_accounts { get; set; }
-
         public string confirmation { get; set; }
-
         public DateTime? created_at { get; set; }
-
         public string id { get; set; }
-
         public string instructions { get; set; }
-
         public bool is_account_address { get; set; }
-
         public DateTime max_datetime { get; set; }
-
         public List<string> messages { get; set; }
-
         public DateTime min_datetime { get; set; }
-
         public string mode { get; set; }
-
         public string name { get; set; }
-
         public List<Rate> pickup_rates { get; set; }
-
         public string reference { get; set; }
-
         public string status { get; set; }
-
         public DateTime? updated_at { get; set; }
 
         /// <summary>
@@ -49,9 +34,17 @@ namespace EasyPost
         /// <param name="service">The name of the service to purchase.</param>
         public void Buy(string carrier, string service)
         {
-            var request = new Request("pickups/{id}/buy", Method.POST);
+            Request request = new Request("pickups/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
-            request.AddQueryString(new Dictionary<string, object> { { "carrier", carrier }, { "service", service } });
+            request.AddQueryString(new Dictionary<string, object>
+            {
+                {
+                    "carrier", carrier
+                },
+                {
+                    "service", service
+                }
+            });
 
             Merge(request.Execute<Pickup>());
         }
@@ -61,7 +54,7 @@ namespace EasyPost
         /// </summary>
         public void Cancel()
         {
-            var request = new Request("pickups/{id}/cancel", Method.POST);
+            Request request = new Request("pickups/{id}/cancel", Method.POST);
             request.AddUrlSegment("id", id);
 
             Merge(request.Execute<Pickup>());
@@ -98,8 +91,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Pickup instance.</returns>
-        public static Pickup Create(Dictionary<string, object> parameters = null) =>
-            SendCreate(parameters ?? new Dictionary<string, object>());
+        public static Pickup Create(Dictionary<string, object> parameters = null) => SendCreate(parameters ?? new Dictionary<string, object>());
 
 
         /// <summary>
@@ -109,7 +101,7 @@ namespace EasyPost
         /// <returns>EasyPost.Pickup instance.</returns>
         public static Pickup Retrieve(string id)
         {
-            var request = new Request("pickups/{id}");
+            Request request = new Request("pickups/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Pickup>();
@@ -117,8 +109,13 @@ namespace EasyPost
 
         private static Pickup SendCreate(Dictionary<string, object> parameters)
         {
-            var request = new Request("pickups", Method.POST);
-            request.AddBody(new Dictionary<string, object> { { "pickup", parameters } });
+            Request request = new Request("pickups", Method.POST);
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "pickup", parameters
+                }
+            });
 
             return request.Execute<Pickup>();
         }

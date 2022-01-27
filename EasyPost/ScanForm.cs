@@ -11,25 +11,15 @@ namespace EasyPost
     public class ScanForm : Resource
     {
         public Address address { get; set; }
-
         public string batch_id { get; set; }
-
         public DateTime? created_at { get; set; }
-
         public string form_file_type { get; set; }
-
         public string form_url { get; set; }
-
         public string id { get; set; }
-
         public string message { get; set; }
-
         public string mode { get; set; }
-
         public string status { get; set; }
-
         public List<string> tracking_codes { get; set; }
-
         public DateTime? updated_at { get; set; }
 
         /// <summary>
@@ -39,10 +29,20 @@ namespace EasyPost
         /// <returns>EasyPost.ScanForm instance.</returns>
         public static ScanForm Create(List<Shipment> shipments)
         {
-            var parameters = new Dictionary<string, object> { { "shipments", shipments } };
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                {
+                    "shipments", shipments
+                }
+            };
 
-            var request = new Request("scan_forms", Method.POST);
-            request.AddBody(new Dictionary<string, object> { { "scan_form", parameters } });
+            Request request = new Request("scan_forms", Method.POST);
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "scan_form", parameters
+                }
+            });
 
             return request.Execute<ScanForm>();
         }
@@ -65,10 +65,10 @@ namespace EasyPost
         /// <returns>Instance of EasyPost.ScanForm.</returns>
         public static ScanFormList List(Dictionary<string, object> parameters = null)
         {
-            var request = new Request("scan_forms");
+            Request request = new Request("scan_forms");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            var scanFormList = request.Execute<ScanFormList>();
+            ScanFormList scanFormList = request.Execute<ScanFormList>();
             scanFormList.filters = parameters;
             return scanFormList;
         }
@@ -80,7 +80,7 @@ namespace EasyPost
         /// <returns>EasyPost.ScanForm instance.</returns>
         public static ScanForm Retrieve(string id)
         {
-            var request = new Request("scan_forms/{id}");
+            Request request = new Request("scan_forms/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<ScanForm>();

@@ -10,11 +10,8 @@ namespace EasyPost
     public class ScanFormList : Resource
     {
         public Dictionary<string, object> filters { get; set; }
-
         public bool has_more { get; set; }
-
         public List<ScanForm> scan_forms { get; set; }
-
 
         /// <summary>
         ///     Get the next page of scan forms based on the original parameters passed to ScanForm.List().

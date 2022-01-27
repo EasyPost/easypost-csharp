@@ -23,8 +23,15 @@ namespace EasyPost.Tests
         {
             var parameters = new Dictionary<string, object>
             {
-                { "reference", "EasyPostCSharpTest" },
-                { "shipments", new List<Dictionary<string, object>> { batchShipmentParameters } }
+                {
+                    "reference", "EasyPostCSharpTest"
+                },
+                {
+                    "shipments", new List<Dictionary<string, object>>
+                    {
+                        batchShipmentParameters
+                    }
+                }
             };
 
             return Batch.Create(parameters);
@@ -37,49 +44,109 @@ namespace EasyPost.Tests
 
             fromAddress = new Dictionary<string, object>
             {
-                { "name", "Andrew Tribone" },
-                { "street1", "480 Fell St" },
-                { "street2", "#3" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94102" }
+                {
+                    "name", "Andrew Tribone"
+                },
+                {
+                    "street1", "480 Fell St"
+                },
+                {
+                    "street2", "#3"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94102"
+                }
             };
             toAddress = new Dictionary<string, object>
             {
-                { "company", "Simpler Postage Inc" },
-                { "street1", "164 Townsend Street" },
-                { "street2", "Unit 1" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94107" }
+                {
+                    "company", "Simpler Postage Inc"
+                },
+                {
+                    "street1", "164 Townsend Street"
+                },
+                {
+                    "street2", "Unit 1"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94107"
+                }
             };
             shipmentParameters = new Dictionary<string, object>
             {
                 {
-                    "parcel",
-                    new Dictionary<string, object>
+                    "parcel", new Dictionary<string, object>
                     {
-                        { "length", 8 }, { "width", 6 }, { "height", 5 }, { "weight", 10 }
+                        {
+                            "length", 8
+                        },
+                        {
+                            "width", 6
+                        },
+                        {
+                            "height", 5
+                        },
+                        {
+                            "weight", 10
+                        }
                     }
                 },
-                { "to_address", toAddress },
-                { "from_address", fromAddress }
+                {
+                    "to_address", toAddress
+                },
+                {
+                    "from_address", fromAddress
+                }
             };
             batchShipmentParameters = new Dictionary<string, object>
             {
                 {
-                    "parcel",
-                    new Dictionary<string, object>
+                    "parcel", new Dictionary<string, object>
                     {
-                        { "length", 8 }, { "width", 6 }, { "height", 5 }, { "weight", 10 }
+                        {
+                            "length", 8
+                        },
+                        {
+                            "width", 6
+                        },
+                        {
+                            "height", 5
+                        },
+                        {
+                            "weight", 10
+                        }
                     }
                 },
-                { "to_address", toAddress },
-                { "from_address", fromAddress },
-                { "carrier", "USPS" },
-                { "service", "Priority" }
+                {
+                    "to_address", toAddress
+                },
+                {
+                    "from_address", fromAddress
+                },
+                {
+                    "carrier", "USPS"
+                },
+                {
+                    "service", "Priority"
+                }
             };
         }
 
@@ -95,7 +162,10 @@ namespace EasyPost.Tests
                 batch = Batch.Retrieve(batch.id);
             }
 
-            batch.AddShipments(new List<Shipment> { shipment, otherShipment });
+            batch.AddShipments(new List<Shipment>
+            {
+                shipment, otherShipment
+            });
 
             while (batch.shipments == null)
             {
@@ -107,7 +177,10 @@ namespace EasyPost.Tests
             CollectionAssert.Contains(shipmentIds, shipment.id);
             CollectionAssert.Contains(shipmentIds, otherShipment.id);
 
-            batch.RemoveShipments(new List<Shipment> { shipment, otherShipment });
+            batch.RemoveShipments(new List<Shipment>
+            {
+                shipment, otherShipment
+            });
             Assert.AreEqual(batch.num_shipments, 0);
         }
 

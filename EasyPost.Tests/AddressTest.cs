@@ -33,13 +33,27 @@ namespace EasyPost.Tests
         {
             var parameters = new Dictionary<string, object>
             {
-                { "company", "Simpler Postage Inc" },
-                { "street1", "164 Townsend Street" },
-                { "street2", "Unit 1" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94107" }
+                {
+                    "company", "Simpler Postage Inc"
+                },
+                {
+                    "street1", "164 Townsend Street"
+                },
+                {
+                    "street2", "Unit 1"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94107"
+                }
             };
             var address = Address.Create(parameters);
             Assert.IsNotNull(address.id);
@@ -55,13 +69,27 @@ namespace EasyPost.Tests
         {
             var parameters = new Dictionary<string, object>
             {
-                { "company", "Simpler Postage Inc" },
-                { "street1", "164 Townsend Street" },
-                { "street2", "Unit 1" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94107" }
+                {
+                    "company", "Simpler Postage Inc"
+                },
+                {
+                    "street1", "164 Townsend Street"
+                },
+                {
+                    "street2", "Unit 1"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94107"
+                }
             };
             var address = Address.CreateAndVerify(parameters);
             Assert.IsNotNull(address.id);
@@ -83,10 +111,21 @@ namespace EasyPost.Tests
         {
             var parameters = new Dictionary<string, object>
             {
-                { "company", "Simpler Postage Inc" },
-                { "street1", "123 Fake Street" },
-                { "zip", "94107" },
-                { "strict_verifications", new List<string> { "delivery", "zip4" } }
+                {
+                    "company", "Simpler Postage Inc"
+                },
+                {
+                    "street1", "123 Fake Street"
+                },
+                {
+                    "zip", "94107"
+                },
+                {
+                    "strict_verifications", new List<string>
+                    {
+                        "delivery", "zip4"
+                    }
+                }
             };
 
             var address = Address.Create(parameters);
@@ -97,14 +136,33 @@ namespace EasyPost.Tests
         {
             var parameters = new Dictionary<string, object>
             {
-                { "company", "Simpler Postage Inc" },
-                { "street1", "164 Townsend Street" },
-                { "street2", "Unit 1" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94107" },
-                { "verifications", new List<string> { "delivery", "zip4" } }
+                {
+                    "company", "Simpler Postage Inc"
+                },
+                {
+                    "street1", "164 Townsend Street"
+                },
+                {
+                    "street2", "Unit 1"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94107"
+                },
+                {
+                    "verifications", new List<string>
+                    {
+                        "delivery", "zip4"
+                    }
+                }
             };
 
             var address = Address.Create(parameters);
@@ -113,10 +171,21 @@ namespace EasyPost.Tests
 
             parameters = new Dictionary<string, object>
             {
-                { "company", "Simpler Postage Inc" },
-                { "street1", "123 Fake Street" },
-                { "zip", "94107" },
-                { "verifications", new List<string> { "delivery", "zip4" } }
+                {
+                    "company", "Simpler Postage Inc"
+                },
+                {
+                    "street1", "123 Fake Street"
+                },
+                {
+                    "zip", "94107"
+                },
+                {
+                    "verifications", new List<string>
+                    {
+                        "delivery", "zip4"
+                    }
+                }
             };
 
             address = Address.Create(parameters);
@@ -127,14 +196,23 @@ namespace EasyPost.Tests
         [ExpectedException(typeof(HttpException))]
         public void TestInstanceCreateWithStrictVerifications()
         {
-            _address = new Address { company = "Simpler Postage Inc" };
-            _address.Create(strictVerifications: new List<string> { "delivery", "zip4" });
+            _address = new Address
+            {
+                company = "Simpler Postage Inc"
+            };
+            _address.Create(strictVerifications: new List<string>
+            {
+                "delivery", "zip4"
+            });
         }
 
         [TestMethod]
         public void TestInstanceCreateWithVerificationParams()
         {
-            _address.Create(new List<string> { "delivery", "zip4" });
+            _address.Create(new List<string>
+            {
+                "delivery", "zip4"
+            });
             Assert.IsNotNull(_address.verifications.delivery);
             Assert.IsNotNull(_address.verifications.zip4);
         }
@@ -151,7 +229,10 @@ namespace EasyPost.Tests
                 state = "CA",
                 country = "US",
                 zip = "94107",
-                verify = new List<string> { "delivery", "zip4" }
+                verify = new List<string>
+                {
+                    "delivery", "zip4"
+                }
             };
 
             address.Create();
@@ -198,14 +279,30 @@ namespace EasyPost.Tests
         {
             var parameters = new Dictionary<string, object>
             {
-                { "company", "Simpler Postage Inc" },
-                { "street1", "164 Townsend Street" },
-                { "street2", "Unit 1" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94107" },
-                { "residential", true }
+                {
+                    "company", "Simpler Postage Inc"
+                },
+                {
+                    "street1", "164 Townsend Street"
+                },
+                {
+                    "street2", "Unit 1"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94107"
+                },
+                {
+                    "residential", true
+                }
             };
             var address = Address.Create(parameters);
             address.Verify();
@@ -228,14 +325,30 @@ namespace EasyPost.Tests
         {
             var parameters = new Dictionary<string, object>
             {
-                { "company", "Simpler Postage Inc" },
-                { "street1", "164 Townsend Street" },
-                { "street2", "Unit 1" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94107" },
-                { "residential", true }
+                {
+                    "company", "Simpler Postage Inc"
+                },
+                {
+                    "street1", "164 Townsend Street"
+                },
+                {
+                    "street2", "Unit 1"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94107"
+                },
+                {
+                    "residential", true
+                }
             };
             var address = Address.Create(parameters);
             address.Verify("usps");

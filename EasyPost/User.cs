@@ -11,35 +11,20 @@ namespace EasyPost
     public class User : Resource
     {
         public List<ApiKey> api_keys { get; set; }
-
         public string balance { get; set; }
-
         public List<User> children { get; set; }
-
         public DateTime? created_at { get; set; }
-
         public string email { get; set; }
-
         public string id { get; set; }
-
         public string name { get; set; }
-
         public string parent_id { get; set; }
-
         public string password { get; set; }
-
         public string password_confirmation { get; set; }
-
         public string phone_number { get; set; }
-
         public string price_per_shipment { get; set; }
-
         public string recharge_amount { get; set; }
-
         public string recharge_threshold { get; set; }
-
         public string secondary_recharge_amount { get; set; }
-
         public DateTime? updated_at { get; set; }
 
         /// <summary>
@@ -47,7 +32,7 @@ namespace EasyPost
         /// </summary>
         public void Destroy()
         {
-            var request = new Request("users/{id}", Method.DELETE);
+            Request request = new Request("users/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
             request.Execute();
         }
@@ -69,9 +54,14 @@ namespace EasyPost
         /// </param>
         public void Update(Dictionary<string, object> parameters)
         {
-            var request = new Request("users/{id}", Method.PUT);
+            Request request = new Request("users/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
-            request.AddBody(new Dictionary<string, object> { { "user", parameters } });
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "user", parameters
+                }
+            });
 
             Merge(request.Execute<User>());
         }
@@ -87,8 +77,13 @@ namespace EasyPost
         /// <returns>EasyPost.User instance.</returns>
         public static User Create(Dictionary<string, object> parameters)
         {
-            var request = new Request("users", Method.POST);
-            request.AddBody(new Dictionary<string, object> { { "user", parameters } });
+            Request request = new Request("users", Method.POST);
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "user", parameters
+                }
+            });
 
             return request.Execute<User>();
         }

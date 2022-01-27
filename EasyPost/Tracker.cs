@@ -11,33 +11,19 @@ namespace EasyPost
     public class Tracker : Resource
     {
         public string carrier { get; set; }
-
         public CarrierDetail carrier_detail { get; set; }
-
         public DateTime? created_at { get; set; }
-
         public DateTime? est_delivery_date { get; set; }
-
         public string id { get; set; }
-
         public string mode { get; set; }
-
         public string public_url { get; set; }
-
         public string shipment_id { get; set; }
-
         public string signed_by { get; set; }
-
         public string status { get; set; }
-
         public string tracking_code { get; set; }
-
         public List<TrackingDetail> tracking_details { get; set; }
-
         public DateTime tracking_updated_at { get; set; }
-
         public DateTime? updated_at { get; set; }
-
         public double? weight { get; set; }
 
         /// <summary>
@@ -48,13 +34,23 @@ namespace EasyPost
         /// <returns>An EasyPost.Tracker instance.</returns>
         public static Tracker Create(string carrier, string trackingCode)
         {
-            var request = new Request("trackers", Method.POST);
-            var parameters = new Dictionary<string, object>
+            Request request = new Request("trackers", Method.POST);
+            Dictionary<string, object> parameters = new Dictionary<string, object>
             {
-                { "tracking_code", trackingCode }, { "carrier", carrier }
+                {
+                    "tracking_code", trackingCode
+                },
+                {
+                    "carrier", carrier
+                }
             };
 
-            request.AddBody(new Dictionary<string, object> { { "tracker", parameters } });
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "tracker", parameters
+                }
+            });
 
             return request.Execute<Tracker>();
         }
@@ -81,10 +77,10 @@ namespace EasyPost
         /// <returns>Instance of EasyPost.ShipmentList.</returns>
         public static TrackerList List(Dictionary<string, object> parameters = null)
         {
-            var request = new Request("trackers");
+            Request request = new Request("trackers");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            var trackerList = request.Execute<TrackerList>();
+            TrackerList trackerList = request.Execute<TrackerList>();
             trackerList.filters = parameters;
             return trackerList;
         }
@@ -96,7 +92,7 @@ namespace EasyPost
         /// <returns>EasyPost.Tracker instance.</returns>
         public static Tracker Retrieve(string id)
         {
-            var request = new Request("trackers/{id}");
+            Request request = new Request("trackers/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Tracker>();

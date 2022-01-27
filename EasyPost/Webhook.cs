@@ -11,11 +11,8 @@ namespace EasyPost
     public class Webhook : Resource
     {
         public DateTime? disabled_at { get; set; }
-
         public string id { get; set; }
-
         public string mode { get; set; }
-
         public string url { get; set; }
 
         /// <summary>
@@ -23,7 +20,7 @@ namespace EasyPost
         /// </summary>
         public void Destroy()
         {
-            var request = new Request("webhooks/{id}", Method.DELETE);
+            Request request = new Request("webhooks/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
             request.Execute();
         }
@@ -33,7 +30,7 @@ namespace EasyPost
         /// </summary>
         public void Update()
         {
-            var request = new Request("webhooks/{id}", Method.PUT);
+            Request request = new Request("webhooks/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
 
             Merge(request.Execute<Webhook>());
@@ -50,8 +47,13 @@ namespace EasyPost
         /// <returns>EasyPost.Webhook instance.</returns>
         public static Webhook Create(Dictionary<string, object> parameters)
         {
-            var request = new Request("webhooks", Method.POST);
-            request.AddBody(new Dictionary<string, object> { { "webhook", parameters } });
+            Request request = new Request("webhooks", Method.POST);
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "webhook", parameters
+                }
+            });
 
             return request.Execute<Webhook>();
         }
@@ -63,9 +65,9 @@ namespace EasyPost
         /// <returns>List of EasyPost.Webhook instances.</returns>
         public static List<Webhook> List(Dictionary<string, object> parameters = null)
         {
-            var request = new Request("webhooks");
+            Request request = new Request("webhooks");
 
-            var webhookList = request.Execute<WebhookList>();
+            WebhookList webhookList = request.Execute<WebhookList>();
             return webhookList.webhooks;
         }
 
@@ -76,7 +78,7 @@ namespace EasyPost
         /// <returns>EasyPost.User instance.</returns>
         public static Webhook Retrieve(string id)
         {
-            var request = new Request("webhooks/{id}");
+            Request request = new Request("webhooks/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Webhook>();

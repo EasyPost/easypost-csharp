@@ -30,8 +30,7 @@ namespace EasyPost
         ///     Add a body to the request.
         /// </summary>
         /// <param name="parameters">Dictionary of key-value pairs for creating request body.</param>
-        public void AddBody(Dictionary<string, object> parameters) =>
-            AddParameter("application/json", JsonConvert.SerializeObject(parameters), ParameterType.RequestBody);
+        public void AddBody(Dictionary<string, object> parameters) => AddParameter("application/json", JsonConvert.SerializeObject(parameters), ParameterType.RequestBody);
 
         /// <summary>
         ///     Add a parameter to the request.
@@ -39,8 +38,7 @@ namespace EasyPost
         /// <param name="name">Name of parameter.</param>
         /// <param name="value">Value of parameter.</param>
         /// <param name="type">Type of parameter.</param>
-        public void AddParameter(string name, string value, ParameterType type) =>
-            restRequest.AddParameter(name, value, type);
+        public void AddParameter(string name, string value, ParameterType type) => restRequest.AddParameter(name, value, type);
 
         /// <summary>
         ///     Add a query string parameter to the request.
@@ -68,7 +66,7 @@ namespace EasyPost
         /// <returns>An instance of a T type object.</returns>
         public T Execute<T>() where T : new()
         {
-            var client = ClientManager.Build();
+            Client client = ClientManager.Build();
             return client.Execute<T>(this);
         }
 
@@ -78,7 +76,7 @@ namespace EasyPost
         /// <returns>An IRestResponse object instance.</returns>
         public IRestResponse Execute()
         {
-            var client = ClientManager.Build();
+            Client client = ClientManager.Build();
             return client.Execute(this);
         }
 

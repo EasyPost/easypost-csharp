@@ -33,8 +33,30 @@ namespace EasyPost.Tests
             [TestInitialize]
             public void Initialize()
             {
-                dest = new Data { foo = "foo", bar = 10, baz = new List<Inner> { new Inner { qux = "qux" } } };
-                source = new Data { foo = "oof", bar = 42, baz = new List<Inner> { new Inner { qux = "xuq" } } };
+                dest = new Data
+                {
+                    foo = "foo",
+                    bar = 10,
+                    baz = new List<Inner>
+                    {
+                        new Inner
+                        {
+                            qux = "qux"
+                        }
+                    }
+                };
+                source = new Data
+                {
+                    foo = "oof",
+                    bar = 42,
+                    baz = new List<Inner>
+                    {
+                        new Inner
+                        {
+                            qux = "xuq"
+                        }
+                    }
+                };
             }
 
             [TestMethod]

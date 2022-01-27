@@ -11,35 +11,20 @@ namespace EasyPost
     public class Order : Resource
     {
         public Address buyer_address { get; set; }
-
         public List<CarrierAccount> carrier_accounts { get; set; }
-
         public DateTime? created_at { get; set; }
-
         public CustomsInfo customs_info { get; set; }
-
         public Address from_address { get; set; }
-
         public string id { get; set; }
-
         public bool? is_return { get; set; }
-
         public List<Message> messages { get; set; }
-
         public string mode { get; set; }
-
         public List<Rate> rates { get; set; }
-
         public string reference { get; set; }
-
         public Address return_address { get; set; }
-
         public string service { get; set; }
-
         public List<Shipment> shipments { get; set; }
-
         public Address to_address { get; set; }
-
         public DateTime? updated_at { get; set; }
 
         /// <summary>
@@ -49,9 +34,17 @@ namespace EasyPost
         /// <param name="service">The service to purchase.</param>
         public void Buy(string carrier, string service)
         {
-            var request = new Request("orders/{id}/buy", Method.POST);
+            Request request = new Request("orders/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
-            request.AddQueryString(new Dictionary<string, object> { { "carrier", carrier }, { "service", service } });
+            request.AddQueryString(new Dictionary<string, object>
+            {
+                {
+                    "carrier", carrier
+                },
+                {
+                    "service", service
+                }
+            });
 
             Merge(request.Execute<Order>());
         }
@@ -86,7 +79,7 @@ namespace EasyPost
                 Create();
             }
 
-            var request = new Request("orders/{id}/rates");
+            Request request = new Request("orders/{id}/rates");
             request.AddUrlSegment("id", id);
 
             rates = request.Execute<Order>().rates;
@@ -113,8 +106,13 @@ namespace EasyPost
         /// <returns>EasyPost.Order instance.</returns>
         public static Order Create(Dictionary<string, object> parameters)
         {
-            var request = new Request("orders", Method.POST);
-            request.AddBody(new Dictionary<string, object> { { "order", parameters } });
+            Request request = new Request("orders", Method.POST);
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "order", parameters
+                }
+            });
 
             return request.Execute<Order>();
         }
@@ -127,7 +125,7 @@ namespace EasyPost
         /// <returns>EasyPost.Order instance.</returns>
         public static Order Retrieve(string id)
         {
-            var request = new Request("orders/{id}");
+            Request request = new Request("orders/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Order>();
@@ -135,8 +133,13 @@ namespace EasyPost
 
         private static Order SendCreate(Dictionary<string, object> parameters)
         {
-            var request = new Request("orders", Method.POST);
-            request.AddBody(new Dictionary<string, object> { { "order", parameters } });
+            Request request = new Request("orders", Method.POST);
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "order", parameters
+                }
+            });
 
             return request.Execute<Order>();
         }

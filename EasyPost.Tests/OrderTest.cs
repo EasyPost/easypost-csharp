@@ -21,43 +21,91 @@ namespace EasyPost.Tests
 
             toAddress = new Dictionary<string, object>
             {
-                { "company", "Simpler Postage Inc" },
-                { "street1", "164 Townsend Street" },
-                { "street2", "Unit 1" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94107" }
+                {
+                    "company", "Simpler Postage Inc"
+                },
+                {
+                    "street1", "164 Townsend Street"
+                },
+                {
+                    "street2", "Unit 1"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94107"
+                }
             };
             fromAddress = new Dictionary<string, object>
             {
-                { "name", "Andrew Tribone" },
-                { "street1", "480 Fell St" },
-                { "street2", "#3" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94102" }
+                {
+                    "name", "Andrew Tribone"
+                },
+                {
+                    "street1", "480 Fell St"
+                },
+                {
+                    "street2", "#3"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94102"
+                }
             };
             shipments = new List<Dictionary<string, object>>
             {
                 new Dictionary<string, object>
                 {
                     {
-                        "parcel",
-                        new Dictionary<string, object>
+                        "parcel", new Dictionary<string, object>
                         {
-                            { "length", 8 }, { "width", 6 }, { "height", 5 }, { "weight", 18 }
+                            {
+                                "length", 8
+                            },
+                            {
+                                "width", 6
+                            },
+                            {
+                                "height", 5
+                            },
+                            {
+                                "weight", 18
+                            }
                         }
                     }
                 },
                 new Dictionary<string, object>
                 {
                     {
-                        "parcel",
-                        new Dictionary<string, object>
+                        "parcel", new Dictionary<string, object>
                         {
-                            { "length", 9 }, { "width", 5 }, { "height", 4 }, { "weight", 18 }
+                            {
+                                "length", 9
+                            },
+                            {
+                                "width", 5
+                            },
+                            {
+                                "height", 4
+                            },
+                            {
+                                "weight", 18
+                            }
                         }
                     }
                 }
@@ -65,10 +113,18 @@ namespace EasyPost.Tests
 
             parameters = new Dictionary<string, object>
             {
-                { "to_address", toAddress },
-                { "from_address", fromAddress },
-                { "reference", "OrderRef" },
-                { "shipments", shipments }
+                {
+                    "to_address", toAddress
+                },
+                {
+                    "from_address", fromAddress
+                },
+                {
+                    "reference", "OrderRef"
+                },
+                {
+                    "shipments", shipments
+                }
             };
         }
 
@@ -117,7 +173,10 @@ namespace EasyPost.Tests
         [ExpectedException(typeof(ResourceAlreadyCreated))]
         public void TestCreateOrderWithId()
         {
-            var order = new Order { id = "order_asjhd" };
+            var order = new Order
+            {
+                id = "order_asjhd"
+            };
             order.Create();
         }
 
@@ -138,7 +197,12 @@ namespace EasyPost.Tests
         public void TestOrderCarrierAccounts()
         {
             var carrierAccounts =
-                new Dictionary<string, object> { { "id", "ca_7642d249fdcf47bcb5da9ea34c96dfcf" } };
+                new Dictionary<string, object>
+                {
+                    {
+                        "id", "ca_7642d249fdcf47bcb5da9ea34c96dfcf"
+                    }
+                };
             parameters.Add("carrier_accounts", carrierAccounts);
             var order = Order.Create(parameters);
 

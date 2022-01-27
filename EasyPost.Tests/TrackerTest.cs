@@ -32,7 +32,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            var trackerList = Tracker.List(new Dictionary<string, object> { { "page_size", 1 } });
+            var trackerList = Tracker.List(new Dictionary<string, object>
+            {
+                {
+                    "page_size", 1
+                }
+            });
             Assert.AreNotEqual(0, trackerList.trackers.Count);
 
             var nextTrackerList = trackerList.Next();

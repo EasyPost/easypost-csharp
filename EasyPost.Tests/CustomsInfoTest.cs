@@ -18,14 +18,34 @@ namespace EasyPost.Tests
         {
             var item = new Dictionary<string, object>
             {
-                { "description", "TShirt" }, { "quantity", 1 }, { "weight", 8 }, { "origin_country", "US" }
+                {
+                    "description", "TShirt"
+                },
+                {
+                    "quantity", 1
+                },
+                {
+                    "weight", 8
+                },
+                {
+                    "origin_country", "US"
+                }
             };
 
             var info = CustomsInfo.Create(new Dictionary<string, object>
             {
-                { "customs_certify", true },
-                { "eel_pfc", "NOEEI 30.37(a)" },
-                { "customs_items", new List<Dictionary<string, object>> { item } }
+                {
+                    "customs_certify", true
+                },
+                {
+                    "eel_pfc", "NOEEI 30.37(a)"
+                },
+                {
+                    "customs_items", new List<Dictionary<string, object>>
+                    {
+                        item
+                    }
+                }
             });
 
             var retrieved = CustomsInfo.Retrieve(info.id);
@@ -36,13 +56,25 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateWithIResource()
         {
-            var item = new CustomsItem { description = "description", quantity = 1 };
+            var item = new CustomsItem
+            {
+                description = "description", quantity = 1
+            };
             var info = CustomsInfo.Create(
                 new Dictionary<string, object>
                 {
-                    { "customs_certify", true },
-                    { "eel_pfc", "NOEEI 30.37(a)" },
-                    { "customs_items", new List<IResource> { item } }
+                    {
+                        "customs_certify", true
+                    },
+                    {
+                        "eel_pfc", "NOEEI 30.37(a)"
+                    },
+                    {
+                        "customs_items", new List<IResource>
+                        {
+                            item
+                        }
+                    }
                 }
             );
 

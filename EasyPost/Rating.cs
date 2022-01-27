@@ -10,15 +10,10 @@ namespace EasyPost
     public class Rating : Resource
     {
         public List<CarrierAccount> carrier_accounts { get; set; }
-
         public Address from_address { get; set; }
-
         public List<Parcel> parcels { get; set; }
-
         public List<object> ratings { get; set; }
-
         public Address to_address { get; set; }
-
 
         /// <summary>
         ///     Create Rating.
@@ -34,7 +29,7 @@ namespace EasyPost
         /// <returns>EasyPost.Rating instance.</returns>
         public static Rating Create(Dictionary<string, object> parameters)
         {
-            var request = new Request("rating/v1/rates", Method.POST);
+            Request request = new Request("rating/v1/rates", Method.POST);
             request.AddBody(parameters);
 
             return request.Execute<Rating>();

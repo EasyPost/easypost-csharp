@@ -23,7 +23,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestScanFormList()
         {
-            var dict = new Dictionary<string, object> { { "page_size", 1 } };
+            var dict = new Dictionary<string, object>
+            {
+                {
+                    "page_size", 1
+                }
+            };
             var scanFormList = ScanForm.List(dict);
             Assert.AreNotEqual(null, scanFormList.scan_forms[0].batch_id);
             Assert.AreNotEqual(0, scanFormList.scan_forms.Count);

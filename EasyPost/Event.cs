@@ -11,25 +11,15 @@ namespace EasyPost
     public class Event : Resource
     {
         public List<string> completed_urls { get; set; }
-
         public DateTime? created_at { get; set; }
-
         public string description { get; set; }
-
         public string id { get; set; }
-
         public string mode { get; set; }
-
         public List<string> pending_urls { get; set; }
-
         public Dictionary<string, object> previous_attributes { get; set; }
-
         public Dictionary<string, object> result { get; set; }
-
         public string status { get; set; }
-
         public DateTime? updated_at { get; set; }
-
 
         /// <summary>
         ///     Resend the last Event for a specific EasyPost object instance.
@@ -37,8 +27,13 @@ namespace EasyPost
         /// <param name="id">String representing an EasyPost object instance.</param>
         public static void Create(string id)
         {
-            var request = new Request("events", Method.POST);
-            request.AddQueryString(new Dictionary<string, object> { { "result_id", id } });
+            Request request = new Request("events", Method.POST);
+            request.AddQueryString(new Dictionary<string, object>
+            {
+                {
+                    "result_id", id
+                }
+            });
         }
 
         /// <summary>
@@ -48,7 +43,7 @@ namespace EasyPost
         /// <returns>EasyPost.Event instance.</returns>
         public static Event Retrieve(string id)
         {
-            var request = new Request("events/{id}");
+            Request request = new Request("events/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Event>();

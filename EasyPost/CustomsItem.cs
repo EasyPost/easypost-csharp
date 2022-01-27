@@ -11,27 +11,16 @@ namespace EasyPost
     public class CustomsItem : Resource
     {
         public string code { get; set; }
-
         public DateTime? created_at { get; set; }
-
         public string currency { get; set; }
-
         public string description { get; set; }
-
         public string hs_tariff_number { get; set; }
-
         public string id { get; set; }
-
         public string mode { get; set; }
-
         public string origin_country { get; set; }
-
         public int quantity { get; set; }
-
         public DateTime? updated_at { get; set; }
-
         public double value { get; set; }
-
         public double weight { get; set; }
 
         /// <summary>
@@ -50,8 +39,13 @@ namespace EasyPost
         /// <returns>EasyPost.CustomsItem instance.</returns>
         public static CustomsItem Create(Dictionary<string, object> parameters)
         {
-            var request = new Request("customs_items", Method.POST);
-            request.AddBody(new Dictionary<string, object> { { "customs_item", parameters } });
+            Request request = new Request("customs_items", Method.POST);
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "customs_item", parameters
+                }
+            });
 
             return request.Execute<CustomsItem>();
         }
@@ -64,7 +58,7 @@ namespace EasyPost
         /// <returns>EasyPost.CustomsItem instance.</returns>
         public static CustomsItem Retrieve(string id)
         {
-            var request = new Request("customs_items/{id}");
+            Request request = new Request("customs_items/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<CustomsItem>();

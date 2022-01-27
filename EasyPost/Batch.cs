@@ -12,29 +12,17 @@ namespace EasyPost
     public class Batch : Resource
     {
         public DateTime? created_at { get; set; }
-
         public string error { get; set; }
-
         public string id { get; set; }
-
         public string label_url { get; set; }
-
         public string message { get; set; }
-
         public string mode { get; set; }
-
         public int num_shipments { get; set; }
-
         public string reference { get; set; }
-
         public ScanForm scan_form { get; set; }
-
         public List<BatchShipment> shipments { get; set; }
-
         public string state { get; set; }
-
         public Dictionary<string, int> status { get; set; }
-
         public DateTime? updated_at { get; set; }
 
         /// <summary>
@@ -43,12 +31,22 @@ namespace EasyPost
         /// <param name="shipmentIds">List of shipment ids to be added.</param>
         public void AddShipments(IEnumerable<string> shipmentIds)
         {
-            var request = new Request("batches/{id}/add_shipments", Method.POST);
+            Request request = new Request("batches/{id}/add_shipments", Method.POST);
             request.AddUrlSegment("id", id);
 
-            var lShipments = shipmentIds
-                .Select(shipmentId => new Dictionary<string, object> { { "id", shipmentId } }).ToList();
-            request.AddBody(new Dictionary<string, object> { { "shipments", lShipments } });
+            List<Dictionary<string, object>> lShipments = shipmentIds
+                .Select(shipmentId => new Dictionary<string, object>
+                {
+                    {
+                        "id", shipmentId
+                    }
+                }).ToList();
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "shipments", lShipments
+                }
+            });
 
             Merge(request.Execute<Batch>());
         }
@@ -57,15 +55,14 @@ namespace EasyPost
         ///     Add shipments to this batch.
         /// </summary>
         /// <param name="shipments">List of Shipment objects to be added.</param>
-        public void AddShipments(IEnumerable<Shipment> shipments) =>
-            AddShipments(shipments.Select(shipment => shipment.id).ToList());
+        public void AddShipments(IEnumerable<Shipment> shipments) => AddShipments(shipments.Select(shipment => shipment.id).ToList());
 
         /// <summary>
         ///     Purchase all shipments within this batch. The Batch's state must be "created" before purchasing.
         /// </summary>
         public void Buy()
         {
-            var request = new Request("batches/{id}/buy", Method.POST);
+            Request request = new Request("batches/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
 
             Merge(request.Execute<Batch>());
@@ -77,10 +74,15 @@ namespace EasyPost
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         public void GenerateLabel(string fileFormat)
         {
-            var request = new Request("batches/{id}/label", Method.POST);
+            Request request = new Request("batches/{id}/label", Method.POST);
             request.AddUrlSegment("id", id);
 
-            var parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                {
+                    "file_format", fileFormat
+                }
+            };
 
             request.AddQueryString(parameters);
             Merge(request.Execute<Batch>());
@@ -91,7 +93,7 @@ namespace EasyPost
         /// </summary>
         public void GenerateScanForm()
         {
-            var request = new Request("batches/{id}/scan_form", Method.POST);
+            Request request = new Request("batches/{id}/scan_form", Method.POST);
             request.AddUrlSegment("id", id);
 
             Merge(request.Execute<Batch>());
@@ -103,12 +105,22 @@ namespace EasyPost
         /// <param name="shipmentIds">List of shipment ids to be removed.</param>
         public void RemoveShipments(IEnumerable<string> shipmentIds)
         {
-            var request = new Request("batches/{id}/remove_shipments", Method.POST);
+            Request request = new Request("batches/{id}/remove_shipments", Method.POST);
             request.AddUrlSegment("id", id);
 
-            var lShipments = shipmentIds
-                .Select(shipmentId => new Dictionary<string, object> { { "id", shipmentId } }).ToList();
-            request.AddBody(new Dictionary<string, object> { { "shipments", lShipments } });
+            List<Dictionary<string, object>> lShipments = shipmentIds
+                .Select(shipmentId => new Dictionary<string, object>
+                {
+                    {
+                        "id", shipmentId
+                    }
+                }).ToList();
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "shipments", lShipments
+                }
+            });
 
             Merge(request.Execute<Batch>());
         }
@@ -117,8 +129,7 @@ namespace EasyPost
         ///     Remove shipments from this batch.
         /// </summary>
         /// <param name="shipments">List of Shipment objects to be removed.</param>
-        public void RemoveShipments(IEnumerable<Shipment> shipments) =>
-            RemoveShipments(shipments.Select(shipment => shipment.id).ToList());
+        public void RemoveShipments(IEnumerable<Shipment> shipments) => RemoveShipments(shipments.Select(shipment => shipment.id).ToList());
 
         /// <summary>
         ///     Create a Batch.
@@ -134,8 +145,13 @@ namespace EasyPost
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
-            var request = new Request("batches", Method.POST);
-            request.AddBody(new Dictionary<string, object> { { "batch", parameters } });
+            Request request = new Request("batches", Method.POST);
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "batch", parameters
+                }
+            });
 
             return request.Execute<Batch>();
         }
@@ -148,7 +164,7 @@ namespace EasyPost
         /// <returns>EasyPost.Batch instance.</returns>
         public static Batch Retrieve(string id)
         {
-            var request = new Request("batches/{id}");
+            Request request = new Request("batches/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Batch>();
