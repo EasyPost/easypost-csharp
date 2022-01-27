@@ -14,7 +14,7 @@ namespace EasyPost
         private readonly RestClient _restClient;
         private readonly ClientConfiguration _configuration;
         private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
-        private int _defaultConnectTimeoutMilliseconds = 30000; 
+        private int _defaultConnectTimeoutMilliseconds = 30000;
         private int _defaultRequestTimeoutMilliseconds = 60000;
 
         /// <summary>
