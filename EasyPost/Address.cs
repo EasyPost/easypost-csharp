@@ -166,6 +166,7 @@ namespace EasyPost
         /// </param>
         public static Address CreateAndVerify(Dictionary<string, object> parameters = null)
         {
+            parameters = parameters ?? new Dictionary<string, object>();
             parameters["strict_verifications"] = new List<string> { "delivery" };
             return Create(parameters);
         }
