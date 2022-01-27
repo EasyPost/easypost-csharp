@@ -116,7 +116,7 @@ namespace EasyPost
         /// <summary>
         /// Return the request time from the client object.
         /// </summary>
-        /// <returns> connection timeout in milliseconds</returns>
+        /// <returns> connection timeout in milliseconds.</returns>
         public int getConnectionTimeout(){
             return _connectTimeoutMilliseconds;
         }
@@ -132,7 +132,7 @@ namespace EasyPost
         /// <summary>
         /// Return the request time from the client object.
         /// </summary>
-        /// <returns> request timeout in milliseconds</returns>
+        /// <returns> request timeout in milliseconds.</returns>
         public int getRequestTimeout(){
             return _requestTimeoutMilliseconds;
         }
