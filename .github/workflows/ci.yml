@@ -8,7 +8,7 @@ on:
 jobs:
   # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
   NET_Tests:
-    runs-on: windows-latest 
+    runs-on: windows-2016
     strategy:
       matrix:
         dotnet-version: [ 'Net35', 'Net40', 'NetCore31' ]
