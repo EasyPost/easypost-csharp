@@ -14,8 +14,11 @@ namespace EasyPost
         private readonly RestClient _restClient;
         private readonly ClientConfiguration _configuration;
         private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
-        private int _connectTimeoutMilliseconds = 30000;
-        private int _requestTimeoutMilliseconds = 60000;
+
+        private readonly int _defaultConnectTimeoutMilliseconds = 30000;
+        private int? _connectTimeoutMilliseconds;
+        private readonly int _defaultRequestTimeoutMilliseconds = 60000;
+        private int? _requestTimeoutMilliseconds;
 
         /// <summary>
         /// Prepare a request for execution by attaching required headers.
@@ -25,7 +28,7 @@ namespace EasyPost
         private RestRequest PrepareRequest(Request request)
         {
             var restRequest = (RestRequest)request;
-            restRequest.Timeout = _requestTimeoutMilliseconds;
+            restRequest.Timeout = getRequestTimeout();
             restRequest.AddHeader("user_agent", UserAgent);
             restRequest.AddHeader("authorization", "Bearer " + _configuration.ApiKey);
             restRequest.AddHeader("content_type", "application/json");
@@ -93,7 +96,7 @@ namespace EasyPost
             _configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
 
             _restClient = new RestClient(clientConfiguration.ApiBase);
-            _restClient.Timeout = _connectTimeoutMilliseconds;
+            _restClient.Timeout = getConnectionTimeout();
 
             var assembly = Assembly.GetExecutingAssembly();
             var info = FileVersionInfo.GetVersionInfo(assembly.Location);
@@ -118,7 +121,7 @@ namespace EasyPost
         /// </summary>
         /// <returns> connection timeout in milliseconds.</returns>
         public int getConnectionTimeout(){
-            return _connectTimeoutMilliseconds;
+            return _connectTimeoutMilliseconds ?? _defaultConnectTimeoutMilliseconds;
         }
 
         /// <summary>
@@ -134,7 +137,7 @@ namespace EasyPost
         /// </summary>
         /// <returns> request timeout in milliseconds.</returns>
         public int getRequestTimeout(){
-            return _requestTimeoutMilliseconds;
+            return _requestTimeoutMilliseconds ?? _defaultRequestTimeoutMilliseconds;
         }
 
         /// <summary>
