@@ -42,14 +42,14 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            List<CarrierAccount> accounts = CarrierAccount.List();
+            var accounts = CarrierAccount.List();
             Assert.AreEqual(accounts[0].id, "ca_7642d249fdcf47bcb5da9ea34c96dfcf");
         }
 
         [TestMethod]
         public void TestRetrieve()
         {
-            CarrierAccount account = CarrierAccount.Retrieve("ca_7642d249fdcf47bcb5da9ea34c96dfcf");
+            var account = CarrierAccount.Retrieve("ca_7642d249fdcf47bcb5da9ea34c96dfcf");
             Assert.AreEqual("ca_7642d249fdcf47bcb5da9ea34c96dfcf", account.id);
         }
     }

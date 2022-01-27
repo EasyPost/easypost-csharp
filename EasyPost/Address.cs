@@ -96,7 +96,7 @@ namespace EasyPost
                 Create();
             }
 
-            Request request = new Request("addresses/{id}/verify") { RootElement = "address" };
+            var request = new Request("addresses/{id}/verify") { RootElement = "address" };
             request.AddUrlSegment("id", id);
 
             if (carrier != null)
@@ -178,7 +178,7 @@ namespace EasyPost
         /// <returns>EasyPost.Address instance.</returns>
         public static Address Retrieve(string id)
         {
-            Request request = new Request("addresses/{id}");
+            var request = new Request("addresses/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Address>();
@@ -187,7 +187,7 @@ namespace EasyPost
         private static Address SendCreate(Dictionary<string, object> parameters, List<string> verifications = null,
             List<string> strictVerifications = null)
         {
-            Request request = new Request("addresses", Method.POST);
+            var request = new Request("addresses", Method.POST);
             request.AddBody(new Dictionary<string, object> { { "address", parameters } });
 
             foreach (string verification in verifications ?? new List<string>())

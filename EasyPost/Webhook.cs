@@ -23,7 +23,7 @@ namespace EasyPost
         /// </summary>
         public void Destroy()
         {
-            Request request = new Request("webhooks/{id}", Method.DELETE);
+            var request = new Request("webhooks/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
             request.Execute();
         }
@@ -33,7 +33,7 @@ namespace EasyPost
         /// </summary>
         public void Update()
         {
-            Request request = new Request("webhooks/{id}", Method.PUT);
+            var request = new Request("webhooks/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
 
             Merge(request.Execute<Webhook>());
@@ -50,7 +50,7 @@ namespace EasyPost
         /// <returns>EasyPost.Webhook instance.</returns>
         public static Webhook Create(Dictionary<string, object> parameters)
         {
-            Request request = new Request("webhooks", Method.POST);
+            var request = new Request("webhooks", Method.POST);
             request.AddBody(new Dictionary<string, object> { { "webhook", parameters } });
 
             return request.Execute<Webhook>();
@@ -63,9 +63,9 @@ namespace EasyPost
         /// <returns>List of EasyPost.Webhook instances.</returns>
         public static List<Webhook> List(Dictionary<string, object> parameters = null)
         {
-            Request request = new Request("webhooks");
+            var request = new Request("webhooks");
 
-            WebhookList webhookList = request.Execute<WebhookList>();
+            var webhookList = request.Execute<WebhookList>();
             return webhookList.webhooks;
         }
 
@@ -76,7 +76,7 @@ namespace EasyPost
         /// <returns>EasyPost.User instance.</returns>
         public static Webhook Retrieve(string id)
         {
-            Request request = new Request("webhooks/{id}");
+            var request = new Request("webhooks/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Webhook>();

@@ -18,10 +18,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestAddBody()
         {
-            Request request = new Request("resource");
+            var request = new Request("resource");
             request.AddBody(new Dictionary<string, object> { { "foo", "bar" } });
 
-            RestRequest restRequest = (RestRequest)request;
+            var restRequest = (RestRequest)request;
             CollectionAssert.Contains(restRequest.Parameters.Select(parameter => parameter.ToString()).ToList(),
                 "application/json={\"foo\":\"bar\"}");
         }
@@ -29,19 +29,19 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCastToRestRequest()
         {
-            RestRequest request = (RestRequest)new Request("resource");
+            var request = (RestRequest)new Request("resource");
         }
 
         // [TestMethod]
         // public void TestRestRequest() {
-        //     Request request = new Request("resource");
+        //     var request = new Request("resource");
         //     Assert.IsInstanceOfType(request.restRequest, typeof(RestRequest));
         // }
 
         [TestMethod]
         public void TestRootElement()
         {
-            Request request = new Request("resource");
+            var request = new Request("resource");
             request.RootElement = "root";
             Assert.AreEqual(request.RootElement, "root");
         }

@@ -20,7 +20,7 @@ namespace EasyPost.Tests
             const string carrier = "USPS";
             const string trackingCode = "EZ1000000001";
 
-            Tracker tracker = Tracker.Create(carrier, trackingCode);
+            var tracker = Tracker.Create(carrier, trackingCode);
             Assert.AreEqual(tracker.tracking_code, trackingCode);
             Assert.IsNotNull(tracker.est_delivery_date);
             Assert.IsNotNull(tracker.carrier);
@@ -32,10 +32,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            TrackerList trackerList = Tracker.List(new Dictionary<string, object> { { "page_size", 1 } });
+            var trackerList = Tracker.List(new Dictionary<string, object> { { "page_size", 1 } });
             Assert.AreNotEqual(0, trackerList.trackers.Count);
 
-            TrackerList nextTrackerList = trackerList.Next();
+            var nextTrackerList = trackerList.Next();
             Assert.AreNotEqual(trackerList.trackers[0].id, nextTrackerList.trackers[0].id);
         }
     }

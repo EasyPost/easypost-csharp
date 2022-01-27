@@ -49,7 +49,7 @@ namespace EasyPost
         /// <param name="service">The name of the service to purchase.</param>
         public void Buy(string carrier, string service)
         {
-            Request request = new Request("pickups/{id}/buy", Method.POST);
+            var request = new Request("pickups/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
             request.AddQueryString(new Dictionary<string, object> { { "carrier", carrier }, { "service", service } });
 
@@ -61,7 +61,7 @@ namespace EasyPost
         /// </summary>
         public void Cancel()
         {
-            Request request = new Request("pickups/{id}/cancel", Method.POST);
+            var request = new Request("pickups/{id}/cancel", Method.POST);
             request.AddUrlSegment("id", id);
 
             Merge(request.Execute<Pickup>());
@@ -109,7 +109,7 @@ namespace EasyPost
         /// <returns>EasyPost.Pickup instance.</returns>
         public static Pickup Retrieve(string id)
         {
-            Request request = new Request("pickups/{id}");
+            var request = new Request("pickups/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Pickup>();
@@ -117,7 +117,7 @@ namespace EasyPost
 
         private static Pickup SendCreate(Dictionary<string, object> parameters)
         {
-            Request request = new Request("pickups", Method.POST);
+            var request = new Request("pickups", Method.POST);
             request.AddBody(new Dictionary<string, object> { { "pickup", parameters } });
 
             return request.Execute<Pickup>();

@@ -52,7 +52,7 @@ namespace EasyPost
         /// <returns>EasyPost.Rate instance.</returns>
         public static Rate Retrieve(string id)
         {
-            Request request = new Request("rates/{id}");
+            var request = new Request("rates/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<Rate>();

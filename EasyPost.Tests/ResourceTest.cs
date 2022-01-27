@@ -40,7 +40,7 @@ namespace EasyPost.Tests
             [TestMethod]
             public void TestAsDictionary()
             {
-                Dictionary<string, object> dictionary = source.AsDictionary();
+                var dictionary = source.AsDictionary();
 
                 Assert.AreEqual(dictionary["foo"], "oof");
                 Assert.AreEqual(dictionary["bar"], 42);

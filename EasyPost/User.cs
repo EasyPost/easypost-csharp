@@ -47,7 +47,7 @@ namespace EasyPost
         /// </summary>
         public void Destroy()
         {
-            Request request = new Request("users/{id}", Method.DELETE);
+            var request = new Request("users/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
             request.Execute();
         }
@@ -69,7 +69,7 @@ namespace EasyPost
         /// </param>
         public void Update(Dictionary<string, object> parameters)
         {
-            Request request = new Request("users/{id}", Method.PUT);
+            var request = new Request("users/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
             request.AddBody(new Dictionary<string, object> { { "user", parameters } });
 
@@ -87,7 +87,7 @@ namespace EasyPost
         /// <returns>EasyPost.User instance.</returns>
         public static User Create(Dictionary<string, object> parameters)
         {
-            Request request = new Request("users", Method.POST);
+            var request = new Request("users", Method.POST);
             request.AddBody(new Dictionary<string, object> { { "user", parameters } });
 
             return request.Execute<User>();

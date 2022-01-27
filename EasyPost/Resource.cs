@@ -46,7 +46,7 @@ namespace EasyPost
 
             if (value is IEnumerable<IResource>)
             {
-                List<Dictionary<string, object>> values = new List<Dictionary<string, object>>();
+                var values = new List<Dictionary<string, object>>();
 
                 foreach (IResource IResource in (IEnumerable<IResource>)value)
                 {
@@ -75,8 +75,8 @@ namespace EasyPost
         /// <returns>An instance of a T type object.</returns>
         public static T LoadFromDictionary<T>(Dictionary<string, object> attributes) where T : Resource
         {
-            Type type = typeof(T);
-            T resource = (T)Activator.CreateInstance(type);
+            var type = typeof(T);
+            var resource = (T)Activator.CreateInstance(type);
 
             foreach (PropertyInfo property in type.GetProperties())
             {
@@ -87,7 +87,7 @@ namespace EasyPost
 
                 if (property.PropertyType.GetInterfaces().Contains(typeof(IResource)))
                 {
-                    MethodInfo method = property.PropertyType
+                    var method = property.PropertyType
                         .GetMethod("LoadFromDictionary",
                             BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.Public)
                         .MakeGenericMethod(property.PropertyType);
@@ -98,8 +98,8 @@ namespace EasyPost
                 {
                     property.SetValue(resource, Activator.CreateInstance(property.PropertyType), null);
 
-                    Type genericType = property.PropertyType.GetGenericArguments()[0];
-                    MethodInfo method = genericType.GetMethod("LoadFromDictionary",
+                    var genericType = property.PropertyType.GetGenericArguments()[0];
+                    var method = genericType.GetMethod("LoadFromDictionary",
                             BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.Public)
                         .MakeGenericMethod(genericType);
 

@@ -33,7 +33,7 @@ namespace EasyPost
         /// </summary>
         public void Destroy()
         {
-            Request request = new Request("carrier_accounts/{id}", Method.DELETE);
+            var request = new Request("carrier_accounts/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
 
             request.Execute();
@@ -45,7 +45,7 @@ namespace EasyPost
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
         public void Update(Dictionary<string, object> parameters)
         {
-            Request request = new Request("carrier_accounts/{id}", Method.PUT);
+            var request = new Request("carrier_accounts/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
             request.AddBody(new Dictionary<string, object> { { "carrier_account", parameters } });
 
@@ -67,7 +67,7 @@ namespace EasyPost
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         public static CarrierAccount Create(Dictionary<string, object> parameters)
         {
-            Request request = new Request("carrier_accounts", Method.POST);
+            var request = new Request("carrier_accounts", Method.POST);
             request.AddBody(new Dictionary<string, object> { { "carrier_account", parameters } });
 
             return request.Execute<CarrierAccount>();
@@ -80,7 +80,7 @@ namespace EasyPost
         /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
         public static List<CarrierAccount> List()
         {
-            Request request = new Request("carrier_accounts");
+            var request = new Request("carrier_accounts");
             return request.Execute<List<CarrierAccount>>();
         }
 
@@ -91,7 +91,7 @@ namespace EasyPost
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         public static CarrierAccount Retrieve(string id)
         {
-            Request request = new Request("carrier_accounts/{id}");
+            var request = new Request("carrier_accounts/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<CarrierAccount>();

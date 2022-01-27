@@ -54,7 +54,7 @@ namespace EasyPost
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         public static CustomsInfo Create(Dictionary<string, object> parameters)
         {
-            Request request = new Request("customs_infos", Method.POST);
+            var request = new Request("customs_infos", Method.POST);
             request.AddBody(new Dictionary<string, object> { { "customs_info", parameters } });
 
             return request.Execute<CustomsInfo>();
@@ -68,7 +68,7 @@ namespace EasyPost
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         public static CustomsInfo Retrieve(string id)
         {
-            Request request = new Request("customs_infos/{id}");
+            var request = new Request("customs_infos/{id}");
             request.AddUrlSegment("id", id);
 
             return request.Execute<CustomsInfo>();

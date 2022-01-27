@@ -81,7 +81,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestBuyAndCancel()
         {
-            Pickup pickup = Pickup.Create(parameters);
+            var pickup = Pickup.Create(parameters);
 
             pickup.Buy(pickup.pickup_rates[0].carrier, pickup.pickup_rates[0].service);
             Assert.IsNotNull(pickup.confirmation);
@@ -94,12 +94,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            Pickup pickup = Pickup.Create(parameters);
+            var pickup = Pickup.Create(parameters);
 
             Assert.IsNotNull(pickup.id);
             Assert.AreEqual(pickup.address.street1, "164 Townsend Street");
 
-            Pickup retrieved = Pickup.Retrieve(pickup.id);
+            var retrieved = Pickup.Retrieve(pickup.id);
             Assert.AreEqual(pickup.id, retrieved.id);
         }
     }
