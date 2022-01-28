@@ -11,28 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet-version: [ 'Net35', 'Net40', 'NetCore31' ]
+        dotnet-version: ['Net35', 'Net40' ]
+
     steps:
-      - uses: actions/checkout@v1
-        # Set the project name, based on .NET version currently selected
-      - name: Set up variables
-        id: test_project
-        run: echo "::set-output name=test_file::EasyPost.Tests.${{ matrix.dotnet-version }}"
-        # install MSBuild, used to build the test project
-      # - name: Setup MSBuild
-      #   uses: microsoft/setup-msbuild@v1.1
-      #   # install NuGet.exe to restore required NuGet packages
-      # - name: Setup Nuget
-      #   uses: NuGet/setup-nuget@v1.0.5
-      #   # install Visual Studio's console test application, to execute tests
-      # - name: Setup VSTest
-      #   uses: darenm/Setup-VSTest@v1
-        # Restore required NuGet packages
-      - name: Restore NuGet Packages
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Install dependencies
         run: dotnet restore
-        # Build the test project
-      - name: Build Solution
+      - name: Build
         run: dotnet build --configuration Release --no-restore
-        # Run the tests
-      - name: Run Tests
+      - name: Test
         run: dotnet test --no-restore --verbosity normal
