@@ -8,7 +8,7 @@ on:
 jobs:
   # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
   NET_Tests:
-    runs-on: windows-2019
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         dotnet-version: [ 'Net35', 'Net40', 'NetCore31' ]
@@ -29,10 +29,10 @@ jobs:
         uses: darenm/Setup-VSTest@v1
         # Restore required NuGet packages
       - name: Restore NuGet Packages
-        run: nuget restore EasyPost.sln
+        run: dotnet restore
         # Build the test project
       - name: Build Solution
-        run: msbuild ${{ steps.test_project.outputs.test_file }}\${{ steps.test_project.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" 
+        run: dotnet build --configuration Release --no-restore
         # Run the tests
       - name: Run Tests
-        run: vstest.console.exe ${{ steps.test_project.outputs.test_file }}\bin\Test\${{ steps.test_project.outputs.test_file }}.dll
+        run: dotnet test --no-restore --verbosity normal
