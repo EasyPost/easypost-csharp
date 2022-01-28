@@ -15,6 +15,11 @@ namespace EasyPost
         private readonly ClientConfiguration _configuration;
         private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
 
+        private readonly int _defaultConnectTimeoutMilliseconds = 30000;
+        private int? _connectTimeoutMilliseconds;
+        private readonly int _defaultRequestTimeoutMilliseconds = 60000;
+        private int? _requestTimeoutMilliseconds;
+
         /// <summary>
         /// Prepare a request for execution by attaching required headers.
         /// </summary>
@@ -23,7 +28,7 @@ namespace EasyPost
         private RestRequest PrepareRequest(Request request)
         {
             var restRequest = (RestRequest)request;
-
+            restRequest.Timeout = getRequestTimeout();
             restRequest.AddHeader("user_agent", UserAgent);
             restRequest.AddHeader("authorization", "Bearer " + _configuration.ApiKey);
             restRequest.AddHeader("content_type", "application/json");
@@ -86,10 +91,12 @@ namespace EasyPost
         /// <param name="clientConfiguration">EasyPost.ClientConfiguration object instance to use to configure this client.</param>
         public Client(ClientConfiguration clientConfiguration)
         {
+            
             System.Net.ServicePointManager.SecurityProtocol |= Security.GetProtocol();
             _configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
 
             _restClient = new RestClient(clientConfiguration.ApiBase);
+            _restClient.Timeout = getConnectionTimeout();
 
             var assembly = Assembly.GetExecutingAssembly();
             var info = FileVersionInfo.GetVersionInfo(assembly.Location);
@@ -107,6 +114,38 @@ namespace EasyPost
             }
 
             _dotNetVersion = dotNetVersion;
+        }
+
+        /// <summary>
+        /// Return the request time from the client object.
+        /// </summary>
+        /// <returns> connection timeout in milliseconds.</returns>
+        public int getConnectionTimeout(){
+            return _connectTimeoutMilliseconds ?? _defaultConnectTimeoutMilliseconds;
+        }
+
+        /// <summary>
+        /// Set the connection timeout with a time in milliseconds.
+        /// </summary>
+        /// <param name="connectionTimeoutMilliseconds">connection time in milliseconds.</param>
+        public void setConnectionTimeout(int connectionTimeoutMilliseconds){
+            _connectTimeoutMilliseconds = connectionTimeoutMilliseconds;
+        }
+
+        /// <summary>
+        /// Return the request time from the client object.
+        /// </summary>
+        /// <returns> request timeout in milliseconds.</returns>
+        public int getRequestTimeout(){
+            return _requestTimeoutMilliseconds ?? _defaultRequestTimeoutMilliseconds;
+        }
+
+        /// <summary>
+        /// Set the request timeout with a time in milliseconds.
+        /// </summary>
+        /// <param name="requestTimeoutMilliseconds">request time in milliseconds.</param>
+        public void setRequestTimeout(int requestTimeoutMilliseconds){
+            _requestTimeoutMilliseconds = requestTimeoutMilliseconds;
         }
     }
 }
