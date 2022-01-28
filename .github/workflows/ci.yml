@@ -7,7 +7,7 @@ on:
 
 jobs:
   # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
-  NET_Tests:
+  NET_Tests: 
     runs-on: windows-latest
     strategy:
       matrix:
