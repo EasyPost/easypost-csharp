@@ -33,8 +33,8 @@ namespace EasyPost.Tests
 
         // [TestMethod]
         // public void TestPredefinedPackage() {
-        //     var parcel = new Parcel() { weight = 1.8, predefined_package = "SMALLFLATRATEBOX" };
-        //     var shipment = new Shipment() { parcel = parcel };
+        //     Parcel parcel = new Parcel() { weight = 1.8, predefined_package = "SMALLFLATRATEBOX" };
+        //     Shipment shipment = new Shipment() { parcel = parcel };
         //     shipment.Create();
 
         //     Assert.AreEqual(null, shipment.parcel.height);

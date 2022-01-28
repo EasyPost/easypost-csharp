@@ -35,7 +35,7 @@ namespace EasyPost.Tests
 
         // [TestMethod]
         // public void TestRestRequest() {
-        //     var request = new Request("resource");
+        //     Request request = new Request("resource");
         //     Assert.IsInstanceOfType(request.restRequest, typeof(RestRequest));
         // }
 

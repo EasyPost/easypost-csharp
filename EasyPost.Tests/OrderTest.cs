@@ -126,7 +126,7 @@ namespace EasyPost.Tests
 
         // [TestMethod]
         // public void TestCreateFromInstance() {
-        //     var order = new Order() {
+        //     Order order = new Order() {
         //         to_address = Address.Create(toAddress),
         //         from_address = Address.Create(fromAddress),
         //         reference = "OrderRef",

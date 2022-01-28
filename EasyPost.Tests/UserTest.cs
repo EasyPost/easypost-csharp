@@ -31,11 +31,11 @@ namespace EasyPost.Tests
         //         Assert.AreEqual("First and last name required.", e.Errors[0].message);
         //     }
 
-        //     var user = User.Create(new Dictionary<string, object>() { { "name", "Test Name" } });
+        //     User user = User.Create(new Dictionary<string, object>() { { "name", "Test Name" } });
         //     Assert.AreEqual(user.api_keys.Count, 2);
         //     Assert.IsNotNull(user.id);
 
-        //     var other = User.Retrieve(user.id);
+        //     User other = User.Retrieve(user.id);
         //     Assert.AreEqual(user.id, other.id);
 
         //     user.Update(new Dictionary<string, object>() { { "name", "NewTest Name" } });
