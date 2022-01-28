@@ -1,6 +1,5 @@
 ﻿// CustomsInfo.cs
-// Copyright (c) 2022 EasyPost
-// All rights reserved.
+// See LICENSE for licensing info.
 
 using System;
 using System.Collections.Generic;
