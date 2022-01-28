@@ -1,7 +1,4 @@
-﻿// VersionInfo.cs
-// See LICENSE for licensing info.
-
-using System.Reflection;
+﻿using System.Reflection;
 
 // Version information for an assembly consists of the following four values:
 //

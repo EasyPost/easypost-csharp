@@ -12,7 +12,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            var keys = ApiKey.All();
+            List<ApiKey> keys = ApiKey.All();
             Assert.AreEqual(keys.Count, 2);
         }
     }

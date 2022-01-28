@@ -11,10 +11,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestRetrieveSelf()
         {
-            var user = User.Retrieve();
+            User user = User.Retrieve();
             Assert.IsNotNull(user.id);
 
-            var user2 = User.Retrieve(user.id);
+            User user2 = User.Retrieve(user.id);
             Assert.AreEqual(user.id, user2.id);
         }
 

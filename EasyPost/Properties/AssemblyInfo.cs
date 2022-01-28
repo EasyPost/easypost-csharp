@@ -1,7 +1,4 @@
-﻿// AssemblyInfo.cs
-// See LICENSE for licensing info.
-
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
