@@ -90,7 +90,7 @@ namespace EasyPost.Tests
                 }
             });
 
-            shipment.GetRates();
+            shipment.GenerateRates();
             Rate rate = Rate.Retrieve(shipment.rates[0].id);
             Assert.AreEqual(rate.id, shipment.rates[0].id);
 

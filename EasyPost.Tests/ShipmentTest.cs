@@ -15,7 +15,8 @@ namespace EasyPost.Tests
         public void ApiCallIsNotNull()
         {
             Shipment shipment = Shipment.Create(parameters);
-            List<Smartrate> smartrateResult = shipment.GetSmartrates();
+            shipment.GenerateSmartrates();
+            List<Smartrate> smartrateResult = shipment.smartrates;
             Assert.IsNotNull(smartrateResult);
         }
 
@@ -111,7 +112,7 @@ namespace EasyPost.Tests
         public void TestBuyWithInsurance()
         {
             Shipment shipment = Shipment.Create(parameters);
-            shipment.GetRates();
+            shipment.GenerateRates();
             shipment.Buy(shipment.rates.First(), "100.00");
 
             Assert.AreEqual(shipment.insurance, "100.00");
@@ -248,7 +249,7 @@ namespace EasyPost.Tests
         public void TestGetRatesWithoutCreate()
         {
             Shipment shipment = CreateShipmentResource();
-            shipment.GetRates();
+            shipment.GenerateRates();
             Assert.IsNotNull(shipment.id);
             Assert.IsNotNull(shipment.rates);
         }
@@ -257,7 +258,8 @@ namespace EasyPost.Tests
         public void TestGetSmartrates()
         {
             Shipment shipment = Shipment.Create(parameters);
-            List<Smartrate> smartrateResult = shipment.GetSmartrates();
+            shipment.GenerateSmartrates();
+            List<Smartrate> smartrateResult = shipment.smartrates;
             //Make sure shipment id from smartrate is the same as the created one
             Assert.AreEqual(shipment.rates[0].id, smartrateResult[0].id);
             Assert.IsNotNull(shipment.rates);
@@ -487,7 +489,8 @@ namespace EasyPost.Tests
         public void TestTimeInTransitData()
         {
             Shipment shipment = Shipment.Create(parameters);
-            List<Smartrate> smartrateResult = shipment.GetSmartrates();
+            shipment.GenerateSmartrates();
+            List<Smartrate> smartrateResult = shipment.smartrates;
             Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_50, typeof(int));
             Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_75, typeof(int));
             Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_85, typeof(int));
@@ -500,7 +503,7 @@ namespace EasyPost.Tests
         private Shipment BuyShipment()
         {
             Shipment shipment = Shipment.Create(parameters);
-            shipment.GetRates();
+            shipment.GenerateRates();
             shipment.Buy(shipment.rates.First());
             return shipment;
         }

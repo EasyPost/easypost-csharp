@@ -68,7 +68,7 @@ namespace EasyPost
         /// <summary>
         ///     Populate the rates property for this Order.
         /// </summary>
-        public void GetRates()
+        public void GenerateRates()
         {
             if (id == null)
             {

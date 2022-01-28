@@ -184,7 +184,7 @@ namespace EasyPost.Tests
         {
             Order order = Order.Create(parameters);
             List<Rate> old = order.rates;
-            order.GetRates();
+            order.GenerateRates();
             Assert.AreNotEqual(old, order.rates);
         }
 

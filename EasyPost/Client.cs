@@ -42,7 +42,7 @@ namespace EasyPost
         /// <param name="clientConfiguration">EasyPost.ClientConfiguration object instance to use to configure this client.</param>
         public Client(ClientConfiguration clientConfiguration)
         {
-            ServicePointManager.SecurityProtocol |= Security.GetProtocol();
+            ServicePointManager.SecurityProtocol |= Security.Protocol;
             _configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
 
             _restClient = new RestClient(clientConfiguration.ApiBase);
