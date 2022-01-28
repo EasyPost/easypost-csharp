@@ -19,8 +19,8 @@ jobs:
         id: test_project
         run: echo "::set-output name=test_file::EasyPost.Tests.${{ matrix.dotnet-version }}"
         # install MSBuild, used to build the test project
-      # - name: Setup MSBuild
-      #   uses: microsoft/setup-msbuild@v1.1
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
         # install NuGet.exe to restore required NuGet packages
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
