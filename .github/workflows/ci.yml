@@ -8,7 +8,7 @@ on:
 jobs:
   # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
   NET_Tests:
-    runs-on: windows-2016
+    runs-on: windows-2019
     strategy:
       matrix:
         dotnet-version: [ 'Net35', 'Net40', 'NetCore31' ]
@@ -32,7 +32,7 @@ jobs:
         run: nuget restore EasyPost.sln
         # Build the test project
       - name: Build Solution
-        run: msbuild ${{ steps.test_project.outputs.test_file }}\${{ steps.test_project.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild"
+        run: msbuild ${{ steps.test_project.outputs.test_file }}\${{ steps.test_project.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Release" /p:outputPath="bin/Test" /p:target="Rebuild"
         # Run the tests
       - name: Run Tests
         run: vstest.console.exe ${{ steps.test_project.outputs.test_file }}\bin\Test\${{ steps.test_project.outputs.test_file }}.dll
