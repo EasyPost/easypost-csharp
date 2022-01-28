@@ -98,6 +98,9 @@
     <Compile Include="..\EasyPost.Tests\ShipmentTest.cs">
       <Link>ShipmentTest.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost.Tests\TimeoutTest.cs">
+      <Link>TimeoutTest.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost.Tests\TrackerTest.cs">
       <Link>TrackerTest.cs</Link>
     </Compile>
