@@ -1,8 +1,4 @@
-﻿// AssemblyInfo.cs
-// Copyright (c) 2022 EasyPost
-// All rights reserved.
-
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 

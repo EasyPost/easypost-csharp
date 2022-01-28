@@ -17,7 +17,7 @@ namespace EasyPost.Tests
 
         public Batch CreateBatch()
         {
-            var parameters = new Dictionary<string, object>
+            Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 {
                     "reference", "EasyPostCSharpTest"
@@ -149,9 +149,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestAddRemoveShipments()
         {
-            var batch = Batch.Create();
-            var shipment = Shipment.Create(shipmentParameters);
-            var otherShipment = Shipment.Create(shipmentParameters);
+            Batch batch = Batch.Create();
+            Shipment shipment = Shipment.Create(shipmentParameters);
+            Shipment otherShipment = Shipment.Create(shipmentParameters);
 
             while (batch.state != "created")
             {
@@ -168,7 +168,7 @@ namespace EasyPost.Tests
                 batch = Batch.Retrieve(batch.id);
             }
 
-            var shipmentIds = batch.shipments.Select(ship => ship.id).ToList();
+            List<string> shipmentIds = batch.shipments.Select(ship => ship.id).ToList();
             Assert.AreEqual(batch.num_shipments, 2);
             CollectionAssert.Contains(shipmentIds, shipment.id);
             CollectionAssert.Contains(shipmentIds, otherShipment.id);
@@ -183,7 +183,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateThenBuyThenGenerateLabelAndScanForm()
         {
-            var batch = CreateBatch();
+            Batch batch = CreateBatch();
 
             Assert.IsNotNull(batch.id);
             Assert.AreEqual(batch.reference, "EasyPostCSharpTest");
@@ -212,8 +212,8 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestRetrieve()
         {
-            var batch = Batch.Create();
-            var retrieved = Batch.Retrieve(batch.id);
+            Batch batch = Batch.Create();
+            Batch retrieved = Batch.Retrieve(batch.id);
             Assert.AreEqual(batch.id, retrieved.id);
         }
     }

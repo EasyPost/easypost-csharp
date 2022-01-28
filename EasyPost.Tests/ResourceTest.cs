@@ -58,7 +58,7 @@ namespace EasyPost.Tests
             [TestMethod]
             public void TestAsDictionary()
             {
-                var dictionary = source.AsDictionary();
+                Dictionary<string, object> dictionary = source.AsDictionary();
 
                 Assert.AreEqual(dictionary["foo"], "oof");
                 Assert.AreEqual(dictionary["bar"], 42);
