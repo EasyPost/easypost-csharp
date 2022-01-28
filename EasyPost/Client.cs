@@ -28,7 +28,7 @@ namespace EasyPost
         private RestRequest PrepareRequest(Request request)
         {
             var restRequest = (RestRequest)request;
-            restRequest.Timeout = 60000;
+            //restRequest.Timeout = 100;
             restRequest.AddHeader("user_agent", UserAgent);
             restRequest.AddHeader("authorization", "Bearer " + _configuration.ApiKey);
             restRequest.AddHeader("content_type", "application/json");
@@ -96,7 +96,7 @@ namespace EasyPost
             _configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
 
             _restClient = new RestClient(clientConfiguration.ApiBase);
-            _restClient.Timeout = 30000;
+            //_restClient.Timeout = 30000;
             var assembly = Assembly.GetExecutingAssembly();
             var info = FileVersionInfo.GetVersionInfo(assembly.Location);
             _libraryVersion = info.FileVersion;
