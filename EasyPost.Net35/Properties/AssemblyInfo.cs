@@ -1,7 +1,4 @@
-﻿// AssemblyInfo.cs
-// See LICENSE for licensing info.
-
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following

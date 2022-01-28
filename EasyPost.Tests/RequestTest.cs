@@ -1,7 +1,4 @@
-﻿// RequestTest.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestSharp;
@@ -17,7 +14,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestAddBody()
         {
-            var request = new Request("resource");
+            Request request = new Request("resource");
             request.AddBody(new Dictionary<string, object>
             {
                 {
@@ -25,7 +22,7 @@ namespace EasyPost.Tests
                 }
             });
 
-            var restRequest = (RestRequest)request;
+            RestRequest restRequest = (RestRequest)request;
             CollectionAssert.Contains(restRequest.Parameters.Select(parameter => parameter.ToString()).ToList(),
                 "application/json={\"foo\":\"bar\"}");
         }
@@ -33,7 +30,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCastToRestRequest()
         {
-            var request = (RestRequest)new Request("resource");
+            RestRequest request = (RestRequest)new Request("resource");
         }
 
         // [TestMethod]
@@ -45,7 +42,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestRootElement()
         {
-            var request = new Request("resource");
+            Request request = new Request("resource");
             request.RootElement = "root";
             Assert.AreEqual(request.RootElement, "root");
         }

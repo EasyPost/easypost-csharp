@@ -1,7 +1,4 @@
-﻿// OrderTest.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -150,7 +147,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestBuyOrder()
         {
-            var order = Order.Create(parameters);
+            Order order = Order.Create(parameters);
             order.Buy("USPS", "Priority");
 
             Assert.IsNotNull(order.shipments[0].postage_label);
@@ -159,12 +156,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndRetrieveOrder()
         {
-            var order = Order.Create(parameters);
+            Order order = Order.Create(parameters);
 
             Assert.IsNotNull(order.id);
             Assert.AreEqual(order.reference, "OrderRef");
 
-            var retrieved = Order.Retrieve(order.id);
+            Order retrieved = Order.Retrieve(order.id);
             Assert.AreEqual(order.id, retrieved.id);
         }
 
@@ -172,7 +169,7 @@ namespace EasyPost.Tests
         [ExpectedException(typeof(ResourceAlreadyCreated))]
         public void TestCreateOrderWithId()
         {
-            var order = new Order
+            Order order = new Order
             {
                 id = "order_asjhd"
             };
@@ -186,8 +183,8 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestGetRates()
         {
-            var order = Order.Create(parameters);
-            var old = order.rates;
+            Order order = Order.Create(parameters);
+            List<Rate> old = order.rates;
             order.GetRates();
             Assert.AreNotEqual(old, order.rates);
         }
@@ -195,7 +192,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestOrderCarrierAccounts()
         {
-            var carrierAccounts =
+            Dictionary<string, object> carrierAccounts =
                 new Dictionary<string, object>
                 {
                     {
@@ -203,10 +200,10 @@ namespace EasyPost.Tests
                     }
                 };
             parameters.Add("carrier_accounts", carrierAccounts);
-            var order = Order.Create(parameters);
+            Order order = Order.Create(parameters);
 
             parameters.Remove("carrier_accounts");
-            var largeOrder = Order.Create(parameters);
+            Order largeOrder = Order.Create(parameters);
 
             Assert.IsTrue(order.rates.Count < largeOrder.rates.Count);
         }

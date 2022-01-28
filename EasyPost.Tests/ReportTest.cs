@@ -1,7 +1,4 @@
-﻿// ReportTest.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -15,11 +12,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            var parameters = new Dictionary<string, object>();
-            var report = Report.Create("shipment", parameters);
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            Report report = Report.Create("shipment", parameters);
             Assert.IsNotNull(report.id);
 
-            var retrieved = Report.Retrieve("shipment", report.id);
+            Report retrieved = Report.Retrieve("shipment", report.id);
             Assert.AreEqual(report.id, retrieved.id);
 
             retrieved = Report.Retrieve(report.id);
@@ -29,7 +26,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            var reportList = Report.List("shipment", new Dictionary<string, object>
+            ReportList reportList = Report.List("shipment", new Dictionary<string, object>
             {
                 {
                     "page_size", 1
@@ -37,7 +34,7 @@ namespace EasyPost.Tests
             });
             Assert.AreNotEqual(0, reportList.reports.Count);
 
-            var nextReportList = reportList.Next();
+            ReportList nextReportList = reportList.Next();
             Assert.AreNotEqual(reportList.reports[0].id, nextReportList.reports[0].id);
         }
     }

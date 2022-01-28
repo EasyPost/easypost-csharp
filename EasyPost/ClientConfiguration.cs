@@ -1,6 +1,3 @@
-// ClientConfiguration.cs
-// See LICENSE for licensing info.
-
 namespace EasyPost
 {
     /// <summary>

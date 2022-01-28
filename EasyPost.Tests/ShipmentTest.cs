@@ -1,7 +1,4 @@
-﻿// ShipmentTest.cs
-// See LICENSE for licensing info.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,8 +14,8 @@ namespace EasyPost.Tests
         [TestMethod]
         public void ApiCallIsNotNull()
         {
-            var shipment = Shipment.Create(parameters);
-            var smartrateResult = shipment.GetSmartrates();
+            Shipment shipment = Shipment.Create(parameters);
+            List<Smartrate> smartrateResult = shipment.GetSmartrates();
             Assert.IsNotNull(smartrateResult);
         }
 
@@ -113,7 +110,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestBuyWithInsurance()
         {
-            var shipment = Shipment.Create(parameters);
+            Shipment shipment = Shipment.Create(parameters);
             shipment.GetRates();
             shipment.Buy(shipment.rates.First(), "100.00");
 
@@ -123,9 +120,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCarrierAccounts()
         {
-            var to = Address.Create(toAddress);
-            var from = Address.Create(fromAddress);
-            var parcel = Parcel.Create(new Dictionary<string, object>
+            Address to = Address.Create(toAddress);
+            Address from = Address.Create(fromAddress);
+            Parcel parcel = Parcel.Create(new Dictionary<string, object>
             {
                 {
                     "length", 8
@@ -140,11 +137,11 @@ namespace EasyPost.Tests
                     "weight", 10
                 }
             });
-            var item = new CustomsItem
+            CustomsItem item = new CustomsItem
             {
                 description = "description", quantity = 1
             };
-            var info = new CustomsInfo
+            CustomsInfo info = new CustomsInfo
             {
                 customs_certify = "TRUE",
                 eel_pfc = "NOEEI 30.37(a)",
@@ -154,7 +151,7 @@ namespace EasyPost.Tests
                 }
             };
 
-            var shipment = new Shipment
+            Shipment shipment = new Shipment
             {
                 to_address = to,
                 from_address = from,
@@ -183,7 +180,7 @@ namespace EasyPost.Tests
             {
                 "ca_7642d249fdcf47bcb5da9ea34c96dfcf"
             };
-            var shipment = Shipment.Create(parameters);
+            Shipment shipment = Shipment.Create(parameters);
 
             foreach (Rate rate in shipment.rates)
             {
@@ -194,7 +191,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndBuyPlusInsurance()
         {
-            var shipment = Shipment.Create(parameters);
+            Shipment shipment = Shipment.Create(parameters);
             Assert.IsNotNull(shipment.rates);
             Assert.AreNotEqual(shipment.rates.Count, 0);
 
@@ -210,12 +207,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            var shipment = Shipment.Create(parameters);
+            Shipment shipment = Shipment.Create(parameters);
 
             Assert.IsNotNull(shipment.id);
             Assert.AreEqual(shipment.reference, "ShipmentRef");
 
-            var retrieved = Shipment.Retrieve(shipment.id);
+            Shipment retrieved = Shipment.Retrieve(shipment.id);
             Assert.AreEqual(shipment.id, retrieved.id);
         }
 
@@ -223,7 +220,7 @@ namespace EasyPost.Tests
         [ExpectedException(typeof(ResourceAlreadyCreated))]
         public void TestCreateWithId()
         {
-            var shipment = new Shipment
+            Shipment shipment = new Shipment
             {
                 id = "shp_asdlf"
             };
@@ -233,7 +230,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateWithPreCreatedAttributes()
         {
-            var shipment = CreateShipmentResource();
+            Shipment shipment = CreateShipmentResource();
             shipment.Create();
             Assert.IsNotNull(shipment.id);
         }
@@ -241,7 +238,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestGenerateLabel()
         {
-            var shipment = BuyShipment();
+            Shipment shipment = BuyShipment();
 
             shipment.GenerateLabel("pdf");
             Assert.IsNotNull(shipment.postage_label);
@@ -250,7 +247,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestGetRatesWithoutCreate()
         {
-            var shipment = CreateShipmentResource();
+            Shipment shipment = CreateShipmentResource();
             shipment.GetRates();
             Assert.IsNotNull(shipment.id);
             Assert.IsNotNull(shipment.rates);
@@ -259,8 +256,8 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestGetSmartrates()
         {
-            var shipment = Shipment.Create(parameters);
-            var smartrateResult = shipment.GetSmartrates();
+            Shipment shipment = Shipment.Create(parameters);
+            List<Smartrate> smartrateResult = shipment.GetSmartrates();
             //Make sure shipment id from smartrate is the same as the created one
             Assert.AreEqual(shipment.rates[0].id, smartrateResult[0].id);
             Assert.IsNotNull(shipment.rates);
@@ -269,9 +266,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestInstanceOptions()
         {
-            var tomorrow = DateTime.SpecifyKind(DateTime.Now.AddDays(1), DateTimeKind.Utc);
+            DateTime tomorrow = DateTime.SpecifyKind(DateTime.Now.AddDays(1), DateTimeKind.Utc);
 
-            var shipment = CreateShipmentResource();
+            Shipment shipment = CreateShipmentResource();
             shipment.options = new Options
             {
                 label_date = tomorrow
@@ -285,7 +282,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            var shipmentList = Shipment.List(new Dictionary<string, object>
+            ShipmentList shipmentList = Shipment.List(new Dictionary<string, object>
             {
                 {
                     "page_size", 1
@@ -293,31 +290,31 @@ namespace EasyPost.Tests
             });
             Assert.AreNotEqual(0, shipmentList.shipments.Count);
 
-            var nextShipmentList = shipmentList.Next();
+            ShipmentList nextShipmentList = shipmentList.Next();
             Assert.AreNotEqual(shipmentList.shipments[0].id, nextShipmentList.shipments[0].id);
         }
 
         [TestMethod]
         public void TestLowestRate()
         {
-            var lowestUSPS = new Rate
+            Rate lowestUSPS = new Rate
             {
                 rate = "1.0", carrier = "USPS", service = "ParcelSelect"
             };
-            var highestUSPS = new Rate
+            Rate highestUSPS = new Rate
             {
                 rate = "10.0", carrier = "USPS", service = "Priority"
             };
-            var lowestUPS = new Rate
+            Rate lowestUPS = new Rate
             {
                 rate = "2.0", carrier = "UPS", service = "ParcelSelect"
             };
-            var highestUPS = new Rate
+            Rate highestUPS = new Rate
             {
                 rate = "20.0", carrier = "UPS", service = "Priority"
             };
 
-            var shipment =
+            Shipment shipment =
                 new Shipment
                 {
                     rates = new List<Rate>
@@ -326,7 +323,7 @@ namespace EasyPost.Tests
                     }
                 };
 
-            var rate = shipment.LowestRate();
+            Rate rate = shipment.LowestRate();
             Assert.AreEqual(rate, lowestUSPS);
 
             rate = shipment.LowestRate(new List<string>
@@ -363,7 +360,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestOptions()
         {
-            var tomorrow = DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm:ssZ");
+            string tomorrow = DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm:ssZ");
             options["label_date"] = tomorrow;
             options["print_custom"] = new List<Dictionary<string, object>>
             {
@@ -396,7 +393,7 @@ namespace EasyPost.Tests
                 }
             };
 
-            var shipment = Shipment.Create(parameters);
+            Shipment shipment = Shipment.Create(parameters);
 
             Assert.AreEqual(((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:ssZ"), tomorrow);
             Assert.AreEqual(shipment.options.print_custom[0]["value"], "value");
@@ -412,7 +409,7 @@ namespace EasyPost.Tests
         public void TestPostageInline()
         {
             options["postage_label_inline"] = true;
-            var shipment = BuyShipment();
+            Shipment shipment = BuyShipment();
             Assert.IsNotNull(shipment.postage_label.label_file);
         }
 
@@ -439,7 +436,7 @@ namespace EasyPost.Tests
                     }
                 }
             };
-            var shipment = Shipment.Create(parameters);
+            Shipment shipment = Shipment.Create(parameters);
 
             Assert.IsNotNull(shipment.id);
             Assert.AreEqual(shipment.messages[0].carrier, "USPS");
@@ -451,7 +448,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestRefund()
         {
-            var shipment = BuyShipment();
+            Shipment shipment = BuyShipment();
             shipment.Refund();
             Assert.IsNotNull(shipment.refund_status);
         }
@@ -467,18 +464,18 @@ namespace EasyPost.Tests
                     entity = "SENDER", tax_id = "12345", tax_id_type = "EORI", issuing_country = "GB"
                 }
             };
-            var shipment = Shipment.Create(parameters);
+            Shipment shipment = Shipment.Create(parameters);
             Assert.IsNotNull(shipment.id);
             Assert.IsNotNull(shipment.rates);
-            var taxIdentifier = shipment.tax_identifiers[0];
+            TaxIdentifier taxIdentifier = shipment.tax_identifiers[0];
             Assert.AreEqual("SENDER", taxIdentifier.entity);
             Assert.AreEqual("HIDDEN", taxIdentifier.tax_id);
             Assert.AreEqual("EORI", taxIdentifier.tax_id_type);
             Assert.AreEqual("GB", taxIdentifier.issuing_country);
 
-            var retrieved = Shipment.Retrieve(shipment.id);
+            Shipment retrieved = Shipment.Retrieve(shipment.id);
 
-            var retrievedTaxIdentifier = retrieved.tax_identifiers[0];
+            TaxIdentifier retrievedTaxIdentifier = retrieved.tax_identifiers[0];
             Assert.AreEqual("SENDER", retrievedTaxIdentifier.entity);
             Assert.AreEqual("HIDDEN", retrievedTaxIdentifier.tax_id);
             Assert.AreEqual("EORI", retrievedTaxIdentifier.tax_id_type);
@@ -489,8 +486,8 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestTimeInTransitData()
         {
-            var shipment = Shipment.Create(parameters);
-            var smartrateResult = shipment.GetSmartrates();
+            Shipment shipment = Shipment.Create(parameters);
+            List<Smartrate> smartrateResult = shipment.GetSmartrates();
             Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_50, typeof(int));
             Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_75, typeof(int));
             Assert.IsInstanceOfType(smartrateResult[0].time_in_transit.percentile_85, typeof(int));
@@ -502,7 +499,7 @@ namespace EasyPost.Tests
 
         private Shipment BuyShipment()
         {
-            var shipment = Shipment.Create(parameters);
+            Shipment shipment = Shipment.Create(parameters);
             shipment.GetRates();
             shipment.Buy(shipment.rates.First());
             return shipment;
@@ -510,7 +507,7 @@ namespace EasyPost.Tests
 
         private Shipment CreateShipmentResource()
         {
-            var to = new Address
+            Address to = new Address
             {
                 company = "Simpler Postage Inc",
                 street1 = "164 Townsend Street",
@@ -520,7 +517,7 @@ namespace EasyPost.Tests
                 country = "US",
                 zip = "94107"
             };
-            var from = new Address
+            Address from = new Address
             {
                 name = "Andrew Tribone",
                 street1 = "480 Fell St",
@@ -530,15 +527,15 @@ namespace EasyPost.Tests
                 country = "US",
                 zip = "94102"
             };
-            var parcel = new Parcel
+            Parcel parcel = new Parcel
             {
                 length = 8, width = 6, height = 5, weight = 10
             };
-            var item = new CustomsItem
+            CustomsItem item = new CustomsItem
             {
                 description = "description", quantity = 1
             };
-            var info = new CustomsInfo
+            CustomsInfo info = new CustomsInfo
             {
                 customs_certify = "TRUE",
                 eel_pfc = "NOEEI 30.37(a)",

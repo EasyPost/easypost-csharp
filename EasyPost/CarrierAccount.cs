@@ -1,7 +1,4 @@
-﻿// CarrierAccount.cs
-// See LICENSE for licensing info.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using RestSharp;
 

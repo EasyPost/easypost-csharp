@@ -1,7 +1,4 @@
-﻿// ResourceTest.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
@@ -61,7 +58,7 @@ namespace EasyPost.Tests
             [TestMethod]
             public void TestAsDictionary()
             {
-                var dictionary = source.AsDictionary();
+                Dictionary<string, object> dictionary = source.AsDictionary();
 
                 Assert.AreEqual(dictionary["foo"], "oof");
                 Assert.AreEqual(dictionary["bar"], 42);

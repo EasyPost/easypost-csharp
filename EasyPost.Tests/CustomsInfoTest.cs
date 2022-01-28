@@ -1,7 +1,4 @@
-﻿// CustomsInfoTest.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -15,7 +12,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            var item = new Dictionary<string, object>
+            Dictionary<string, object> item = new Dictionary<string, object>
             {
                 {
                     "description", "TShirt"
@@ -31,7 +28,7 @@ namespace EasyPost.Tests
                 }
             };
 
-            var info = CustomsInfo.Create(new Dictionary<string, object>
+            CustomsInfo info = CustomsInfo.Create(new Dictionary<string, object>
             {
                 {
                     "customs_certify", true
@@ -47,7 +44,7 @@ namespace EasyPost.Tests
                 }
             });
 
-            var retrieved = CustomsInfo.Retrieve(info.id);
+            CustomsInfo retrieved = CustomsInfo.Retrieve(info.id);
             Assert.AreEqual(info.id, retrieved.id);
             Assert.IsNotNull(retrieved.customs_items);
         }
@@ -55,11 +52,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateWithIResource()
         {
-            var item = new CustomsItem
+            CustomsItem item = new CustomsItem
             {
                 description = "description", quantity = 1
             };
-            var info = CustomsInfo.Create(
+            CustomsInfo info = CustomsInfo.Create(
                 new Dictionary<string, object>
                 {
                     {

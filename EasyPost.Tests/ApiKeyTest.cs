@@ -1,7 +1,4 @@
-﻿// ApiKeyTest.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -15,7 +12,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            var keys = ApiKey.All();
+            List<ApiKey> keys = ApiKey.All();
             Assert.AreEqual(keys.Count, 2);
         }
     }

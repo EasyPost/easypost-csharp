@@ -1,7 +1,4 @@
-﻿// CustomsItemTest.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -15,7 +12,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            var item = CustomsItem.Create(new Dictionary<string, object>
+            CustomsItem item = CustomsItem.Create(new Dictionary<string, object>
             {
                 {
                     "description", "TShirt"
@@ -33,7 +30,7 @@ namespace EasyPost.Tests
                     "currency", "USD"
                 }
             });
-            var retrieved = CustomsItem.Retrieve(item.id);
+            CustomsItem retrieved = CustomsItem.Retrieve(item.id);
             Assert.AreEqual(item.id, retrieved.id);
             Assert.AreEqual(retrieved.value, 10.0);
             Assert.AreEqual(retrieved.currency, "USD");

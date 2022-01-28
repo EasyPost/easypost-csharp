@@ -1,7 +1,4 @@
-﻿// CarrierTypeTest.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -15,7 +12,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestAll()
         {
-            var types = CarrierType.All();
+            List<CarrierType> types = CarrierType.All();
             Assert.AreNotEqual(0, types.Count);
         }
     }

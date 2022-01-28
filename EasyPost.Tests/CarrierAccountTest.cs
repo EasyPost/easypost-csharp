@@ -1,7 +1,4 @@
-﻿// CarrierAccountTest.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -51,14 +48,14 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            var accounts = CarrierAccount.List();
+            List<CarrierAccount> accounts = CarrierAccount.List();
             Assert.AreEqual(accounts[0].id, "ca_7642d249fdcf47bcb5da9ea34c96dfcf");
         }
 
         [TestMethod]
         public void TestRetrieve()
         {
-            var account = CarrierAccount.Retrieve("ca_7642d249fdcf47bcb5da9ea34c96dfcf");
+            CarrierAccount account = CarrierAccount.Retrieve("ca_7642d249fdcf47bcb5da9ea34c96dfcf");
             Assert.AreEqual("ca_7642d249fdcf47bcb5da9ea34c96dfcf", account.id);
         }
     }

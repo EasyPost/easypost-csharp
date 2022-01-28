@@ -1,7 +1,4 @@
-﻿// Rating.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using RestSharp;
 
 namespace EasyPost

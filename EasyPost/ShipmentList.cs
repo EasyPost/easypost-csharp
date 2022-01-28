@@ -1,7 +1,4 @@
-﻿// ShipmentList.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace EasyPost

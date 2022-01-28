@@ -1,6 +1,3 @@
-// VerificationDetails.cs
-// See LICENSE for licensing info.
-
 using Newtonsoft.Json;
 
 namespace EasyPost

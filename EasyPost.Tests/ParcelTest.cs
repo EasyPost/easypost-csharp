@@ -1,7 +1,4 @@
-﻿// ParcelTest.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -15,7 +12,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            var parcel = Parcel.Create(new Dictionary<string, object>
+            Parcel parcel = Parcel.Create(new Dictionary<string, object>
             {
                 {
                     "length", 10
@@ -30,7 +27,7 @@ namespace EasyPost.Tests
                     "weight", 1.8
                 }
             });
-            var retrieved = Parcel.Retrieve(parcel.id);
+            Parcel retrieved = Parcel.Retrieve(parcel.id);
             Assert.AreEqual(parcel.id, retrieved.id);
         }
 

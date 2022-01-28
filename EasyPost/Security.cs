@@ -1,7 +1,4 @@
-﻿// Security.cs
-// See LICENSE for licensing info.
-
-using System.Net;
+﻿using System.Net;
 
 namespace EasyPost
 {

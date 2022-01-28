@@ -1,7 +1,4 @@
-﻿// BatchShipment.cs
-// See LICENSE for licensing info.
-
-namespace EasyPost
+﻿namespace EasyPost
 {
     public class BatchShipment : Resource
     {

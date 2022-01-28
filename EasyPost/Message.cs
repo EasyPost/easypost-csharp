@@ -1,7 +1,4 @@
-﻿// Message.cs
-// See LICENSE for licensing info.
-
-namespace EasyPost
+﻿namespace EasyPost
 {
     public class Message : Resource
     {

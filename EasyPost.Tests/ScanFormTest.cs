@@ -1,7 +1,4 @@
-﻿// ScanFormTest.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -15,23 +12,23 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestScanFormCreateAndRetrieve()
         {
-            var scanForm = ScanForm.Retrieve("sf_e35ae7fc59bb4482ae32efc663267104");
+            ScanForm scanForm = ScanForm.Retrieve("sf_e35ae7fc59bb4482ae32efc663267104");
             Assert.AreEqual("sf_e35ae7fc59bb4482ae32efc663267104", scanForm.id);
         }
 
         [TestMethod]
         public void TestScanFormList()
         {
-            var dict = new Dictionary<string, object>
+            Dictionary<string, object> dict = new Dictionary<string, object>
             {
                 {
                     "page_size", 1
                 }
             };
-            var scanFormList = ScanForm.List(dict);
+            ScanFormList scanFormList = ScanForm.List(dict);
             Assert.AreNotEqual(null, scanFormList.scan_forms[0].batch_id);
             Assert.AreNotEqual(0, scanFormList.scan_forms.Count);
-            var nextScanFormList = scanFormList.Next();
+            ScanFormList nextScanFormList = scanFormList.Next();
             Assert.AreNotEqual(scanFormList.scan_forms[0].id, nextScanFormList.scan_forms[0].id);
         }
     }

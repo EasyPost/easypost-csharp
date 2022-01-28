@@ -1,7 +1,4 @@
-﻿// Error.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace EasyPost

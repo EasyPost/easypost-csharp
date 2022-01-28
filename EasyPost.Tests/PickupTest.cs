@@ -1,7 +1,4 @@
-﻿// PickupTest.cs
-// See LICENSE for licensing info.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -139,7 +136,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestBuyAndCancel()
         {
-            var pickup = Pickup.Create(parameters);
+            Pickup pickup = Pickup.Create(parameters);
 
             pickup.Buy(pickup.pickup_rates[0].carrier, pickup.pickup_rates[0].service);
             Assert.IsNotNull(pickup.confirmation);
@@ -152,12 +149,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            var pickup = Pickup.Create(parameters);
+            Pickup pickup = Pickup.Create(parameters);
 
             Assert.IsNotNull(pickup.id);
             Assert.AreEqual(pickup.address.street1, "164 Townsend Street");
 
-            var retrieved = Pickup.Retrieve(pickup.id);
+            Pickup retrieved = Pickup.Retrieve(pickup.id);
             Assert.AreEqual(pickup.id, retrieved.id);
         }
     }

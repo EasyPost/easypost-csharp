@@ -1,7 +1,4 @@
-﻿// TrackerTest.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -19,7 +16,7 @@ namespace EasyPost.Tests
             const string carrier = "USPS";
             const string trackingCode = "EZ1000000001";
 
-            var tracker = Tracker.Create(carrier, trackingCode);
+            Tracker tracker = Tracker.Create(carrier, trackingCode);
             Assert.AreEqual(tracker.tracking_code, trackingCode);
             Assert.IsNotNull(tracker.est_delivery_date);
             Assert.IsNotNull(tracker.carrier);
@@ -31,7 +28,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestList()
         {
-            var trackerList = Tracker.List(new Dictionary<string, object>
+            TrackerList trackerList = Tracker.List(new Dictionary<string, object>
             {
                 {
                     "page_size", 1
@@ -39,7 +36,7 @@ namespace EasyPost.Tests
             });
             Assert.AreNotEqual(0, trackerList.trackers.Count);
 
-            var nextTrackerList = trackerList.Next();
+            TrackerList nextTrackerList = trackerList.Next();
             Assert.AreNotEqual(trackerList.trackers[0].id, nextTrackerList.trackers[0].id);
         }
     }

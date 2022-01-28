@@ -1,7 +1,4 @@
-﻿// RateTest.cs
-// See LICENSE for licensing info.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -15,7 +12,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestRetrieve()
         {
-            var fromAddress = new Dictionary<string, object>
+            Dictionary<string, object> fromAddress = new Dictionary<string, object>
             {
                 {
                     "name", "Andrew Tribone"
@@ -39,7 +36,7 @@ namespace EasyPost.Tests
                     "zip", "94102"
                 }
             };
-            var toAddress = new Dictionary<string, object>
+            Dictionary<string, object> toAddress = new Dictionary<string, object>
             {
                 {
                     "company", "Simpler Postage Inc"
@@ -63,7 +60,7 @@ namespace EasyPost.Tests
                     "zip", "94107"
                 }
             };
-            var shipment = Shipment.Create(new Dictionary<string, object>
+            Shipment shipment = Shipment.Create(new Dictionary<string, object>
             {
                 {
                     "parcel", new Dictionary<string, object>
@@ -94,7 +91,7 @@ namespace EasyPost.Tests
             });
 
             shipment.GetRates();
-            var rate = Rate.Retrieve(shipment.rates[0].id);
+            Rate rate = Rate.Retrieve(shipment.rates[0].id);
             Assert.AreEqual(rate.id, shipment.rates[0].id);
 
             Assert.IsNotNull(rate.rate);

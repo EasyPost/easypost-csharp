@@ -1,7 +1,4 @@
-﻿// ClientManagerTest.cs
-// See LICENSE for licensing info.
-
-// using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 // namespace EasyPost.Tests {
 //     [TestClass]
@@ -46,3 +43,8 @@
 //         }
 //     }
 // }
+
+
+
+
+
