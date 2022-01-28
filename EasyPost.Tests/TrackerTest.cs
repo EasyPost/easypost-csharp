@@ -9,6 +9,7 @@ namespace EasyPost.Tests {
         public void Initialize() {
             ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
         }
+
         [Ignore]
         [TestMethod]
         public void TestCreateAndRetrieve() {
