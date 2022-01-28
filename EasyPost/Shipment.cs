@@ -31,6 +31,7 @@ namespace EasyPost
         public Parcel parcel { get; set; }
         public PostageLabel postage_label { get; set; }
         public List<Rate> rates { get; set; }
+        public List<Smartrate> smartrates { get; set; }
         public string reference { get; set; }
         public string refund_status { get; set; }
         public Address return_address { get; set; }
@@ -125,7 +126,7 @@ namespace EasyPost
         /// <summary>
         ///     Populate the rates property for this Shipment.
         /// </summary>
-        public void GetRates()
+        public void GenerateRates()
         {
             if (id == null)
             {
@@ -139,10 +140,9 @@ namespace EasyPost
         }
 
         /// <summary>
-        ///     Get the Smartrates for this shipment.
+        ///     Populate the smartrates property for this shipment.
         /// </summary>
-        /// <returns>A list of EasyPost.Smartrate instances.</returns>
-        public List<Smartrate> GetSmartrates()
+        public void GenerateSmartrates()
         {
             if (id == null)
             {
@@ -152,8 +152,7 @@ namespace EasyPost
             Request request = new Request("shipments/{id}/smartrate");
             request.AddUrlSegment("id", id);
             request.RootElement = "result";
-            List<Smartrate> smartrates = request.Execute<List<Smartrate>>();
-            return smartrates;
+            smartrates = request.Execute<List<Smartrate>>();
         }
 
         /// <summary>
@@ -187,7 +186,7 @@ namespace EasyPost
         {
             if (rates == null)
             {
-                GetRates();
+                GenerateRates();
             }
 
             List<Rate> result = new List<Rate>(rates);
