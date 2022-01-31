@@ -6,6 +6,7 @@
 * Removes the unused `orderBy` parameter from the `Batch` object
 * Update the `DefaultApiBase` to include `v2` and remove `v2` from every request url string
 * Add a 30 second connection timeout and a 60 second request timeout for all HTTP requests
+* Add CreateList in Tracker class that support creating trackers in bulk
 
 ## 2.7.0 (2021-11-24)
 
