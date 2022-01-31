@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace EasyPost.Tests
 {
@@ -38,6 +38,25 @@ namespace EasyPost.Tests
 
             TrackerList nextTrackerList = trackerList.Next();
             Assert.AreNotEqual(trackerList.trackers[0].id, nextTrackerList.trackers[0].id);
+        }
+
+        [TestMethod]
+        public void TestCreateTrackerList()
+        {
+            string[] trackingCodes = {"EZ1000000001", "EZ1000000002", "EZ1000000003"};
+            Dictionary<string, object> trackers = new Dictionary<string, object>();
+
+            for (var i = 0; i < trackingCodes.Length; i++)
+            {
+                trackers.Add(i.ToString(), new Dictionary<string, object>()
+                {
+                    {"tracking_code", trackingCodes[i]},
+                    {"carrier", "USPS"}
+                });
+            }
+
+            bool response = Tracker.CreateList(trackers);
+            Assert.IsTrue(response);
         }
     }
 }
