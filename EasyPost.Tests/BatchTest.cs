@@ -8,11 +8,8 @@ namespace EasyPost.Tests
     public class BatchTest
     {
         private Dictionary<string, object> batchShipmentParameters;
-
         private Dictionary<string, object> fromAddress;
-
         private Dictionary<string, object> shipmentParameters;
-
         private Dictionary<string, object> toAddress;
 
         public Batch CreateBatch()

@@ -8,9 +8,7 @@ namespace EasyPost.Tests
     public class PickupTest
     {
         private Address address;
-
         private Dictionary<string, object> parameters, parcel, toAddress, fromAddress;
-
         private Shipment shipment;
 
         [TestInitialize]

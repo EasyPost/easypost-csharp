@@ -15,9 +15,7 @@ namespace EasyPost.Tests
         private class Data : Resource
         {
             public int bar { get; set; }
-
             public List<Inner> baz { get; set; }
-
             public string foo { get; set; }
         }
 

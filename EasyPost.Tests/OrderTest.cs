@@ -7,7 +7,6 @@ namespace EasyPost.Tests
     public class OrderTest
     {
         private Dictionary<string, object> parameters, toAddress, fromAddress;
-
         private List<Dictionary<string, object>> shipments;
 
         [TestInitialize]
