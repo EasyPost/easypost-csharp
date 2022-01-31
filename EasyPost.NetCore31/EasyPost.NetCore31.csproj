@@ -195,10 +195,10 @@
     <None Include="..\EasyPost\EasyPost.pfx">
       <Link>EasyPost.pfx</Link>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config"/>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="RestSharp" Version="106.13.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2"/>
+    <PackageReference Include="RestSharp" Version="106.13.0"/>
   </ItemGroup>
 </Project>

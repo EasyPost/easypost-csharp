@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using EasyPost;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
 {
@@ -8,10 +6,7 @@ namespace EasyPost.Tests
     public class UserTest
     {
         [TestInitialize]
-        public void Initialize()
-        {
-            ClientManager.SetCurrent("GxhY479LTioDWsGcEtSAfQ");
-        }
+        public void Initialize() => ClientManager.SetCurrent("GxhY479LTioDWsGcEtSAfQ");
 
         [TestMethod]
         public void TestRetrieveSelf()

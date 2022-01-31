@@ -1,12 +1,10 @@
-﻿using EasyPost;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
 {
     [TestClass]
     public class ClientConfigurationTest
     {
-
         [TestMethod]
         public void TestApiKeyConstructor()
         {

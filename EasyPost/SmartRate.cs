@@ -1,19 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using RestSharp.Deserializers;
 
 namespace EasyPost
 {
-    public class SmartrateResult:Resource
+    public class SmartrateResult : Resource
     {
-#pragma warning disable IDE1006 // Naming Styles
         public List<Smartrate> result { get; set; }
-#pragma warning restore IDE1006 // Naming Styles
     }
-    public class Smartrate:Resource
+
+    public class Smartrate : Resource
     {
-#pragma warning disable IDE1006 // Naming Styles
         public string carrier { get; set; }
         public string carrier_account_id { get; set; }
         public DateTime created_at { get; set; }
@@ -33,6 +29,5 @@ namespace EasyPost
         public string shipment_id { get; set; }
         public TimeInTransit time_in_transit { get; set; }
         public DateTime updated_at { get; set; }
-#pragma warning restore IDE1006 // Naming Styles
     }
 }

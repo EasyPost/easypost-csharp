@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 
-namespace EasyPost {
-    public class WebhookList : Resource {
-#pragma warning disable IDE1006 // Naming Styles
+namespace EasyPost
+{
+    public class WebhookList : Resource
+    {
         public List<Webhook> webhooks { get; set; }
-#pragma warning restore IDE1006 // Naming Styles
     }
 }

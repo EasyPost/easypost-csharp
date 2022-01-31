@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using EasyPost;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -9,16 +7,25 @@ namespace EasyPost.Tests
     public class ParcelTest
     {
         [TestInitialize]
-        public void Initialize()
-        {
-            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
-        }
+        public void Initialize() => ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
 
         [TestMethod]
         public void TestCreateAndRetrieve()
         {
-            Parcel parcel = Parcel.Create(new Dictionary<string, object>() {
-                {"length", 10}, {"width", 20}, {"height", 5}, {"weight", 1.8}
+            Parcel parcel = Parcel.Create(new Dictionary<string, object>
+            {
+                {
+                    "length", 10
+                },
+                {
+                    "width", 20
+                },
+                {
+                    "height", 5
+                },
+                {
+                    "weight", 1.8
+                }
             });
             Parcel retrieved = Parcel.Retrieve(parcel.id);
             Assert.AreEqual(parcel.id, retrieved.id);

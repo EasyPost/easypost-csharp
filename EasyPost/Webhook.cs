@@ -1,60 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using RestSharp;
 
-namespace EasyPost {
-    public class Webhook : Resource {
-#pragma warning disable IDE1006 // Naming Styles
+namespace EasyPost
+{
+    public class Webhook : Resource
+    {
+        public DateTime? disabled_at { get; set; }
         public string id { get; set; }
         public string mode { get; set; }
         public string url { get; set; }
-        public DateTime? disabled_at { get; set; }
-#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
-        /// Get a list of scan forms.
+        ///     Delete this webhook.
         /// </summary>
-        /// <returns>List of EasyPost.Webhook instances.</returns>
-        public static List<Webhook> List(Dictionary<string, object> parameters = null) {
-            Request request = new Request("webhooks");
-
-            WebhookList webhookList = request.Execute<WebhookList>();
-            return webhookList.webhooks;
-        }
-
-        /// <summary>
-        /// Retrieve a Webhook from its id.
-        /// </summary>
-        /// <param name="id">String representing a webhook. Starts with "hook_".</param>
-        /// <returns>EasyPost.User instance.</returns>
-        public static Webhook Retrieve(string id) {
-            Request request = new Request("webhooks/{id}");
+        public void Destroy()
+        {
+            Request request = new Request("webhooks/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);
-
-            return request.Execute<Webhook>();
+            request.Execute();
         }
 
         /// <summary>
-        /// Create a Webhook.
+        ///     Enable a Webhook that has been disabled previously.
         /// </summary>
-        /// <param name="parameters">
-        /// Dictionary containing parameters to create the carrier account with. Valid pairs:
-        ///   * { "url", string } Url of the webhook that events will be sent to.
-        /// All invalid keys will be ignored.
-        /// </param>
-        /// <returns>EasyPost.Webhook instance.</returns>
-        public static Webhook Create(Dictionary<string, object> parameters) {
-            Request request = new Request("webhooks", Method.POST);
-            request.AddBody(new Dictionary<string, object>() { { "webhook", parameters } });
-
-            return request.Execute<Webhook>();
-        }
-
-        /// <summary>
-        /// Enable a Webhook that has been disabled previously.
-        /// </summary>
-        public void Update() {
+        public void Update()
+        {
             Request request = new Request("webhooks/{id}", Method.PUT);
             request.AddUrlSegment("id", id);
 
@@ -62,12 +33,51 @@ namespace EasyPost {
         }
 
         /// <summary>
-        /// Delete this webhook.
+        ///     Create a Webhook.
         /// </summary>
-        public void Destroy() {
-            Request request = new Request("webhooks/{id}", Method.DELETE);
+        /// <param name="parameters">
+        ///     Dictionary containing parameters to create the carrier account with. Valid pairs:
+        ///     * { "url", string } Url of the webhook that events will be sent to.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>EasyPost.Webhook instance.</returns>
+        public static Webhook Create(Dictionary<string, object> parameters)
+        {
+            Request request = new Request("webhooks", Method.POST);
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "webhook", parameters
+                }
+            });
+
+            return request.Execute<Webhook>();
+        }
+
+
+        /// <summary>
+        ///     Get a list of scan forms.
+        /// </summary>
+        /// <returns>List of EasyPost.Webhook instances.</returns>
+        public static List<Webhook> List(Dictionary<string, object> parameters = null)
+        {
+            Request request = new Request("webhooks");
+
+            WebhookList webhookList = request.Execute<WebhookList>();
+            return webhookList.webhooks;
+        }
+
+        /// <summary>
+        ///     Retrieve a Webhook from its id.
+        /// </summary>
+        /// <param name="id">String representing a webhook. Starts with "hook_".</param>
+        /// <returns>EasyPost.User instance.</returns>
+        public static Webhook Retrieve(string id)
+        {
+            Request request = new Request("webhooks/{id}");
             request.AddUrlSegment("id", id);
-            request.Execute();
+
+            return request.Execute<Webhook>();
         }
     }
 }

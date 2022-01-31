@@ -1,24 +1,22 @@
-using EasyPost;
-
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPost.Tests {
+namespace EasyPost.Tests
+{
     [TestClass]
-    public class TimeoutTest {
+    public class TimeoutTest
+    {
         [TestInitialize]
-        public void Initialize() {
-            ClientManager.SetCurrent("GxhY479LTioDWsGcEtSAfQ");
-        }
+        public void Initialize() => ClientManager.SetCurrent("GxhY479LTioDWsGcEtSAfQ");
 
         [TestMethod]
-        public void TestTimeout() {
-            var client = new Client(new ClientConfiguration("apikey"));
-            client.setConnectionTimeout(5000);
-            client.setRequestTimeout(5000);
+        public void TestTimeout()
+        {
+            Client client = new Client(new ClientConfiguration("apikey"));
+            client.ConnectTimeoutMilliseconds = 5000;
+            client.RequestTimeoutMilliseconds = 5000;
 
-            Assert.AreEqual(5000, client.getConnectionTimeout());
-            Assert.AreEqual(5000, client.getRequestTimeout());
+            Assert.AreEqual(5000, client.ConnectTimeoutMilliseconds);
+            Assert.AreEqual(5000, client.RequestTimeoutMilliseconds);
         }
     }
 }

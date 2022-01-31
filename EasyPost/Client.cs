@@ -1,53 +1,80 @@
-﻿using Newtonsoft.Json;
-using RestSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
 using System.Reflection;
+using Newtonsoft.Json;
+using RestSharp;
 
 namespace EasyPost
 {
     public class Client
     {
-        private readonly string _libraryVersion;
-        private readonly string _dotNetVersion;
-        private readonly RestClient _restClient;
-        private readonly ClientConfiguration _configuration;
-        private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
+        private const int DefaultConnectTimeoutMilliseconds = 30000;
+        private const int DefaultRequestTimeoutMilliseconds = 60000;
 
-        private readonly int _defaultConnectTimeoutMilliseconds = 30000;
+        private readonly ClientConfiguration _configuration;
+
+        private readonly string _dotNetVersion;
+        private readonly string _libraryVersion;
+
+        private readonly RestClient _restClient;
         private int? _connectTimeoutMilliseconds;
-        private readonly int _defaultRequestTimeoutMilliseconds = 60000;
         private int? _requestTimeoutMilliseconds;
 
-        /// <summary>
-        /// Prepare a request for execution by attaching required headers.
-        /// </summary>
-        /// <param name="request">EasyPost.Request object instance to prepare.</param>
-        /// <returns>RestSharp.RestRequest object instance to execute.</returns>
-        private RestRequest PrepareRequest(Request request)
+        public int ConnectTimeoutMilliseconds
         {
-            var restRequest = (RestRequest)request;
-            restRequest.Timeout = getRequestTimeout();
-            restRequest.AddHeader("user_agent", UserAgent);
-            restRequest.AddHeader("authorization", "Bearer " + _configuration.ApiKey);
-            restRequest.AddHeader("content_type", "application/json");
+            get => _connectTimeoutMilliseconds ?? DefaultConnectTimeoutMilliseconds;
+            set => _connectTimeoutMilliseconds = value;
+        }
 
-            return restRequest;
+        public int RequestTimeoutMilliseconds
+        {
+            get => _requestTimeoutMilliseconds ?? DefaultRequestTimeoutMilliseconds;
+            set => _requestTimeoutMilliseconds = value;
+        }
+
+        private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
+
+        /// <summary>
+        ///     Constructor for the EasyPost client.
+        /// </summary>
+        /// <param name="clientConfiguration">EasyPost.ClientConfiguration object instance to use to configure this client.</param>
+        public Client(ClientConfiguration clientConfiguration)
+        {
+            ServicePointManager.SecurityProtocol |= Security.GetProtocol();
+            _configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
+
+            _restClient = new RestClient(clientConfiguration.ApiBase);
+            _restClient.Timeout = ConnectTimeoutMilliseconds;
+
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
+            _libraryVersion = info.FileVersion;
+
+            string dotNetVersion = Environment.Version.ToString();
+            if (dotNetVersion == "4.0.30319.42000")
+            {
+                /*
+                 * We're on a v4.6+ version (or pre-.NET Core 3.0, which we don't support),
+                 * but we can't get the exact version.
+                 * See: https://docs.microsoft.com/en-us/dotnet/api/system.environment.version?view=net-6.0#remarks
+                 */
+                dotNetVersion = "4.6 or higher";
+            }
+
+            _dotNetVersion = dotNetVersion;
         }
 
         /// <summary>
-        /// Execute a request against the EasyPost API.
+        ///     Execute a request against the EasyPost API.
         /// </summary>
         /// <param name="request">EasyPost.Request object instance to execute.</param>
         /// <returns>RestSharp.IRestResponse instance.</returns>
-        internal IRestResponse Execute(Request request)
-        {
-            return _restClient.Execute(PrepareRequest(request));
-        }
+        internal IRestResponse Execute(Request request) => _restClient.Execute(PrepareRequest(request));
 
         /// <summary>
-        /// Execute a request against the EasyPost API.
+        ///     Execute a request against the EasyPost API.
         /// </summary>
         /// <param name="request">EasyPost.Request object instance to execute.</param>
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
@@ -55,8 +82,8 @@ namespace EasyPost
         /// <exception cref="HttpException">An error occurred during the API request.</exception>
         internal T Execute<T>(Request request) where T : new()
         {
-            var response = (RestResponse<T>)_restClient.Execute<T>(PrepareRequest(request));
-            var statusCode = Convert.ToInt32(response.StatusCode);
+            RestResponse<T> response = (RestResponse<T>)_restClient.Execute<T>(PrepareRequest(request));
+            int statusCode = Convert.ToInt32(response.StatusCode);
 
             if (statusCode < 400)
             {
@@ -86,66 +113,19 @@ namespace EasyPost
         }
 
         /// <summary>
-        ///  Constructor for the EasyPost client.
+        ///     Prepare a request for execution by attaching required headers.
         /// </summary>
-        /// <param name="clientConfiguration">EasyPost.ClientConfiguration object instance to use to configure this client.</param>
-        public Client(ClientConfiguration clientConfiguration)
+        /// <param name="request">EasyPost.Request object instance to prepare.</param>
+        /// <returns>RestSharp.RestRequest object instance to execute.</returns>
+        private RestRequest PrepareRequest(Request request)
         {
-            
-            System.Net.ServicePointManager.SecurityProtocol |= Security.GetProtocol();
-            _configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
+            RestRequest restRequest = (RestRequest)request;
+            restRequest.Timeout = RequestTimeoutMilliseconds;
+            restRequest.AddHeader("user_agent", UserAgent);
+            restRequest.AddHeader("authorization", "Bearer " + _configuration.ApiKey);
+            restRequest.AddHeader("content_type", "application/json");
 
-            _restClient = new RestClient(clientConfiguration.ApiBase);
-            _restClient.Timeout = getConnectionTimeout();
-
-            var assembly = Assembly.GetExecutingAssembly();
-            var info = FileVersionInfo.GetVersionInfo(assembly.Location);
-            _libraryVersion = info.FileVersion;
-
-            var dotNetVersion = Environment.Version.ToString();
-            if (dotNetVersion == "4.0.30319.42000")
-            {
-                /*
-                 * We're on a v4.6+ version (or pre-.NET Core 3.0, which we don't support),
-                 * but we can't get the exact version.
-                 * See: https://docs.microsoft.com/en-us/dotnet/api/system.environment.version?view=net-6.0#remarks
-                 */
-                dotNetVersion = "4.6 or higher";
-            }
-
-            _dotNetVersion = dotNetVersion;
-        }
-
-        /// <summary>
-        /// Return the request time from the client object.
-        /// </summary>
-        /// <returns> connection timeout in milliseconds.</returns>
-        public int getConnectionTimeout(){
-            return _connectTimeoutMilliseconds ?? _defaultConnectTimeoutMilliseconds;
-        }
-
-        /// <summary>
-        /// Set the connection timeout with a time in milliseconds.
-        /// </summary>
-        /// <param name="connectionTimeoutMilliseconds">connection time in milliseconds.</param>
-        public void setConnectionTimeout(int connectionTimeoutMilliseconds){
-            _connectTimeoutMilliseconds = connectionTimeoutMilliseconds;
-        }
-
-        /// <summary>
-        /// Return the request time from the client object.
-        /// </summary>
-        /// <returns> request timeout in milliseconds.</returns>
-        public int getRequestTimeout(){
-            return _requestTimeoutMilliseconds ?? _defaultRequestTimeoutMilliseconds;
-        }
-
-        /// <summary>
-        /// Set the request timeout with a time in milliseconds.
-        /// </summary>
-        /// <param name="requestTimeoutMilliseconds">request time in milliseconds.</param>
-        public void setRequestTimeout(int requestTimeoutMilliseconds){
-            _requestTimeoutMilliseconds = requestTimeoutMilliseconds;
+            return restRequest;
         }
     }
 }
