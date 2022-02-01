@@ -139,7 +139,8 @@ namespace EasyPost.Tests
             });
             CustomsItem item = new CustomsItem
             {
-                description = "description", quantity = 1
+                description = "description",
+                quantity = 1
             };
             CustomsInfo info = new CustomsInfo
             {
@@ -299,19 +300,27 @@ namespace EasyPost.Tests
         {
             Rate lowestUSPS = new Rate
             {
-                rate = "1.0", carrier = "USPS", service = "ParcelSelect"
+                rate = "1.0",
+                carrier = "USPS",
+                service = "ParcelSelect"
             };
             Rate highestUSPS = new Rate
             {
-                rate = "10.0", carrier = "USPS", service = "Priority"
+                rate = "10.0",
+                carrier = "USPS",
+                service = "Priority"
             };
             Rate lowestUPS = new Rate
             {
-                rate = "2.0", carrier = "UPS", service = "ParcelSelect"
+                rate = "2.0",
+                carrier = "UPS",
+                service = "ParcelSelect"
             };
             Rate highestUPS = new Rate
             {
-                rate = "20.0", carrier = "UPS", service = "Priority"
+                rate = "20.0",
+                carrier = "UPS",
+                service = "Priority"
             };
 
             Shipment shipment =
@@ -319,7 +328,10 @@ namespace EasyPost.Tests
                 {
                     rates = new List<Rate>
                     {
-                        highestUSPS, lowestUSPS, highestUPS, lowestUPS
+                        highestUSPS,
+                        lowestUSPS,
+                        highestUPS,
+                        lowestUPS
                     }
                 };
 
@@ -461,7 +473,10 @@ namespace EasyPost.Tests
             {
                 new TaxIdentifier
                 {
-                    entity = "SENDER", tax_id = "12345", tax_id_type = "EORI", issuing_country = "GB"
+                    entity = "SENDER",
+                    tax_id = "12345",
+                    tax_id_type = "EORI",
+                    issuing_country = "GB"
                 }
             };
             Shipment shipment = Shipment.Create(parameters);
@@ -529,11 +544,15 @@ namespace EasyPost.Tests
             };
             Parcel parcel = new Parcel
             {
-                length = 8, width = 6, height = 5, weight = 10
+                length = 8,
+                width = 6,
+                height = 5,
+                weight = 10
             };
             CustomsItem item = new CustomsItem
             {
-                description = "description", quantity = 1
+                description = "description",
+                quantity = 1
             };
             CustomsInfo info = new CustomsInfo
             {
@@ -548,7 +567,10 @@ namespace EasyPost.Tests
 
             return new Shipment
             {
-                to_address = to, from_address = from, parcel = parcel, customs_info = info
+                to_address = to,
+                from_address = from,
+                parcel = parcel,
+                customs_info = info
             };
         }
     }

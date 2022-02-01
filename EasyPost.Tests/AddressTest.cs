@@ -119,7 +119,8 @@ namespace EasyPost.Tests
                 {
                     "strict_verifications", new List<string>
                     {
-                        "delivery", "zip4"
+                        "delivery",
+                        "zip4"
                     }
                 }
             };
@@ -156,7 +157,8 @@ namespace EasyPost.Tests
                 {
                     "verifications", new List<string>
                     {
-                        "delivery", "zip4"
+                        "delivery",
+                        "zip4"
                     }
                 }
             };
@@ -179,7 +181,8 @@ namespace EasyPost.Tests
                 {
                     "verifications", new List<string>
                     {
-                        "delivery", "zip4"
+                        "delivery",
+                        "zip4"
                     }
                 }
             };
@@ -198,7 +201,8 @@ namespace EasyPost.Tests
             };
             _address.Create(strictVerifications: new List<string>
             {
-                "delivery", "zip4"
+                "delivery",
+                "zip4"
             });
         }
 
@@ -207,7 +211,8 @@ namespace EasyPost.Tests
         {
             _address.Create(new List<string>
             {
-                "delivery", "zip4"
+                "delivery",
+                "zip4"
             });
             Assert.IsNotNull(_address.verifications.delivery);
             Assert.IsNotNull(_address.verifications.zip4);
@@ -227,7 +232,8 @@ namespace EasyPost.Tests
                 zip = "94107",
                 verify = new List<string>
                 {
-                    "delivery", "zip4"
+                    "delivery",
+                    "zip4"
                 }
             };
 

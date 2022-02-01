@@ -54,7 +54,8 @@ namespace EasyPost.Tests
         {
             CustomsItem item = new CustomsItem
             {
-                description = "description", quantity = 1
+                description = "description",
+                quantity = 1
             };
             CustomsInfo info = CustomsInfo.Create(
                 new Dictionary<string, object>
