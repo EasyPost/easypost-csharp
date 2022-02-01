@@ -6,9 +6,11 @@ on:
   pull_request: ~
 
 jobs:
-  Style:
+  lint:
     runs-on: windows-2019
     steps:
+      - name: Install dotnet-format
+        run: dotnet tool install -g dotnet-format
       - uses: actions/checkout@v2
       - name: Check dotnet Style
         run: dotnet-format --check --exclude /
