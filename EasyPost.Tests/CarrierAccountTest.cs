@@ -46,17 +46,22 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
-        public void TestList()
-        {
-            List<CarrierAccount> accounts = CarrierAccount.List();
-            Assert.AreEqual(accounts[0].id, "ca_7642d249fdcf47bcb5da9ea34c96dfcf");
-        }
-
-        [TestMethod]
         public void TestRetrieve()
         {
             CarrierAccount account = CarrierAccount.Retrieve("ca_7642d249fdcf47bcb5da9ea34c96dfcf");
             Assert.AreEqual("ca_7642d249fdcf47bcb5da9ea34c96dfcf", account.id);
+        }
+
+        [TestMethod]
+        public void TestRetrieveAll()
+        {
+            List<CarrierAccount> accounts = CarrierAccount.All();
+            Assert.IsNotNull(accounts);
+            if (accounts.Count > 0)
+            {
+                Assert.IsNotNull(accounts[0].id);
+                Assert.AreEqual(accounts[0].id.Substring(0, 3), "ca_");
+            }
         }
     }
 }
