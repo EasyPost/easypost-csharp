@@ -215,5 +215,17 @@ namespace EasyPost.Tests
             Batch retrieved = Batch.Retrieve(batch.id);
             Assert.AreEqual(batch.id, retrieved.id);
         }
+
+        [TestMethod]
+        public void TestRetrieveAll()
+        {
+            BatchCollection batchCollection = Batch.All();
+            Assert.IsNotNull(batchCollection);
+            if (batchCollection.batches.Count > 0)
+            {
+                Assert.IsNotNull(batchCollection.batches[0].id);
+                Assert.AreEqual(batchCollection.batches[0].id.Substring(0, 6), "batch_");
+            }
+        }
     }
 }

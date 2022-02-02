@@ -165,5 +165,20 @@ namespace EasyPost
 
             return request.Execute<Batch>();
         }
+
+        /// <summary>
+        ///     List all Batch objects.
+        /// </summary>
+        /// <param name="parameters">Optional dictionary containing parameters for request.</param>
+        /// <returns>EasyPost.BatchCollection instance.</returns>
+        public static BatchCollection All(Dictionary<string, object> parameters = null)
+        {
+            parameters = parameters ?? new Dictionary<string, object>();
+
+            Request request = new Request("batches");
+            request.AddQueryString(parameters);
+
+            return request.Execute<BatchCollection>();
+        }
     }
 }

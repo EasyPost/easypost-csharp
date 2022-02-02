@@ -3,6 +3,7 @@
 ## NEXT RELEASE
 
 * Adds support for one-call-buys on shipments and orders via adding the `service` key to both objects
+* Adds support for retrieving all batches
 * Adds support for retrieving all addresses
 * Adds support for retrieving all events
 * Removes the unused `orderBy` parameter from the `Batch` object
