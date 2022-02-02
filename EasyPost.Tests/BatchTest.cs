@@ -157,7 +157,8 @@ namespace EasyPost.Tests
 
             batch.AddShipments(new List<Shipment>
             {
-                shipment, otherShipment
+                shipment,
+                otherShipment
             });
 
             while (batch.shipments == null)
@@ -172,7 +173,8 @@ namespace EasyPost.Tests
 
             batch.RemoveShipments(new List<Shipment>
             {
-                shipment, otherShipment
+                shipment,
+                otherShipment
             });
             Assert.AreEqual(batch.num_shipments, 0);
         }
