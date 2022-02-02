@@ -169,8 +169,10 @@ namespace EasyPost
         /// </summary>
         /// <param name="parameters">Dictionary containing parameters for request.</param>
         /// <returns>EasyPost.AddressCollection instance.</returns>
-        public static AddressCollection All(Dictionary<string, object> parameters)
+        public static AddressCollection All(Dictionary<string, object> parameters = null)
         {
+            if (parameters == null)
+                parameters = new Dictionary<string, object>();
             Request request = new Request("addresses");
             request.AddQueryString(parameters);
 

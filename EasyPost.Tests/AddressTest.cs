@@ -249,7 +249,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestRetrieveAll()
         {
-            AddressCollection addressCollection = Address.All(new Dictionary<string, object>());
+            AddressCollection addressCollection = Address.All();
             Assert.IsNotNull(addressCollection);
             if (addressCollection.addresses.Count > 0)
             {
