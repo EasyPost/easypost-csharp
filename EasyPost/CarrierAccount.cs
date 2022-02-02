@@ -75,6 +75,7 @@ namespace EasyPost
         /// <summary>
         ///     List all available carrier accounts.
         /// </summary>
+        /// <param name="parameters">Optional dictionary containing parameters for request.</param>
         /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
         public static List<CarrierAccount> All(Dictionary<string, object> parameters = null)
         {
