@@ -164,6 +164,19 @@ namespace EasyPost
             return request.Execute<Address>();
         }
 
+        /// <summary>
+        ///     List all Address objects.
+        /// </summary>
+        /// <param name="parameters">Dictionary containing parameters for request.</param>
+        /// <returns>EasyPost.AddressCollection instance.</returns>
+        public static AddressCollection All(Dictionary<string, object> parameters)
+        {
+            Request request = new Request("addresses");
+            request.AddQueryString(parameters);
+
+            return request.Execute<AddressCollection>();
+        }
+
         private static Address SendCreate(Dictionary<string, object> parameters, List<string> verifications = null,
             List<string> strictVerifications = null)
         {
