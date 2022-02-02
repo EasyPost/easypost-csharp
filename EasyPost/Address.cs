@@ -167,7 +167,7 @@ namespace EasyPost
         /// <summary>
         ///     List all Address objects.
         /// </summary>
-        /// <param name="parameters">Dictionary containing parameters for request.</param>
+        /// <param name="parameters">Optional dictionary containing parameters for request.</param>
         /// <returns>EasyPost.AddressCollection instance.</returns>
         public static AddressCollection All(Dictionary<string, object> parameters = null)
         {
