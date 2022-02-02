@@ -44,5 +44,20 @@ namespace EasyPost
 
             return request.Execute<Event>();
         }
+
+        /// <summary>
+        ///     List all Event objects.
+        /// </summary>
+        /// <param name="parameters">Optional dictionary containing parameters for request.</param>
+        /// <returns>EasyPost.EventCollection instance.</returns>
+        public static EventCollection All(Dictionary<string, object> parameters = null)
+        {
+            parameters = parameters ?? new Dictionary<string, object>();
+
+            Request request = new Request("events");
+            request.AddQueryString(parameters);
+
+            return request.Execute<EventCollection>();
+        }
     }
 }

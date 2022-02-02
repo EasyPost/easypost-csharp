@@ -107,6 +107,9 @@
     <Compile Include="..\EasyPost\Event.cs">
       <Link>Event.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\EventCollection.cs">
+      <Link>EventCollection.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\Exception.cs">
       <Link>Exception.cs</Link>
     </Compile>
