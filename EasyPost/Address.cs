@@ -164,6 +164,30 @@ namespace EasyPost
             return request.Execute<Address>();
         }
 
+        /// <summary>
+        ///     List all Address objects.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
+        ///     * {"before_id", string} String representing an Address ID. Starts with "adr_". Only retrieve addresses created
+        ///     before this id. Takes precedence over after_id.
+        ///     * {"after_id", string} String representing an Address ID. Starts with "adr". Only retrieve addresses created after
+        ///     this id.
+        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve addresses created after this datetime.
+        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve addresses created before this datetime.
+        ///     * {"page_size", int} Max size of list. Default to 20.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>EasyPost.AddressCollection instance.</returns>
+        public static AddressCollection All(Dictionary<string, object> parameters = null)
+        {
+            parameters = parameters ?? new Dictionary<string, object>();
+            Request request = new Request("addresses");
+            request.AddQueryString(parameters);
+
+            return request.Execute<AddressCollection>();
+        }
+
         private static Address SendCreate(Dictionary<string, object> parameters, List<string> verifications = null,
             List<string> strictVerifications = null)
         {

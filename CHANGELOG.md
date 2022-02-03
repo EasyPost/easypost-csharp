@@ -3,6 +3,7 @@
 ## NEXT RELEASE
 
 * Adds support for one-call-buys on shipments and orders via adding the `service` key to both objects
+* Adds support for retrieving all addresses
 * Adds support for retrieving all events
 * Removes the unused `orderBy` parameter from the `Batch` object
 * Update the `DefaultApiBase` to include `v2` and remove `v2` from every request url string

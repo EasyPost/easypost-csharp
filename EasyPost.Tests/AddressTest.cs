@@ -247,6 +247,18 @@ namespace EasyPost.Tests
         public void TestRetrieveInvalidId() => Address.Retrieve("not-an-id");
 
         [TestMethod]
+        public void TestRetrieveAll()
+        {
+            AddressCollection addressCollection = Address.All();
+            Assert.IsNotNull(addressCollection);
+            foreach (var address in addressCollection.addresses)
+            {
+                Assert.IsNotNull(address.id);
+                Assert.AreEqual(address.id.Substring(0, 4), "adr_");
+            }
+        }
+
+        [TestMethod]
         public void TestVerificationFailure()
         {
             Address address = new Address
