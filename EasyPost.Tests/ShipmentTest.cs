@@ -268,7 +268,7 @@ namespace EasyPost.Tests
 
         [ExpectedException(typeof(ResourceNotCreated))]
         [TestMethod]
-        public void TestRerateShipmentWithoutFirstCreating()
+        public void TestRerateShipmentWithoutCreate()
         {
             Shipment shipment = CreateShipmentResource();
             shipment.RefreshRates();
