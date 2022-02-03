@@ -138,6 +138,7 @@ namespace EasyPost
         ///     Refresh the rates for this Shipment.
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
+        /// <exception cref="ResourceAlreadyCreated">Shipment has not be created server-side yet.</exception>
         public void RefreshRates(Dictionary<string, object> parameters = null)
         {
             if (id == null)
