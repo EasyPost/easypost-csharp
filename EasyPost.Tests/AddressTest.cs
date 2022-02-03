@@ -251,10 +251,10 @@ namespace EasyPost.Tests
         {
             AddressCollection addressCollection = Address.All();
             Assert.IsNotNull(addressCollection);
-            if (addressCollection.addresses.Count > 0)
+            foreach (var address in addressCollection.addresses)
             {
-                Assert.IsNotNull(addressCollection.addresses[0].id);
-                Assert.AreEqual(addressCollection.addresses[0].id.Substring(0, 4), "adr_");
+                Assert.IsNotNull(address.id);
+                Assert.AreEqual(address.id.Substring(0, 4), "adr_");
             }
         }
 
