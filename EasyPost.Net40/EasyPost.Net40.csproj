@@ -81,6 +81,9 @@
     <Compile Include="..\EasyPost\Batch.cs">
       <Link>Batch.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\BatchCollection.cs">
+      <Link>BatchCollection.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\BatchShipment.cs">
       <Link>BatchShipment.cs</Link>
     </Compile>

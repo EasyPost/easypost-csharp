@@ -80,6 +80,7 @@
     <Compile Include="AddressCollection.cs" />
     <Compile Include="ApiKey.cs" />
     <Compile Include="Batch.cs" />
+    <Compile Include="BatchCollection.cs" />
     <Compile Include="BatchShipment.cs" />
     <Compile Include="CarrierAccount.cs" />
     <Compile Include="CarrierDetail.cs" />
