@@ -153,8 +153,7 @@ namespace EasyPost
                 request.AddBody(parameters);
             }
 
-            Shipment _shipment = request.Execute<Shipment>();
-            rates = _shipment.rates;
+            rates = request.Execute<Shipment>().rates;
         }
 
         /// <summary>
