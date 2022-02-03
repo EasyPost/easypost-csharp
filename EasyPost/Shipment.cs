@@ -138,12 +138,11 @@ namespace EasyPost
         ///     Refresh the rates for this Shipment.
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
-        /// <exception cref="ResourceAlreadyCreated">Shipment has not be created server-side yet.</exception>
-        public void RefreshRates(Dictionary<string, object> parameters = null)
+        public void RegenerateRates(Dictionary<string, object> parameters = null)
         {
             if (id == null)
             {
-                throw new ResourceNotCreated("Shipment must be created before refreshing rates. Try running `shipment.Create()` first.");
+                Create();
             }
 
             Request request = new Request("shipments/{id}/rerate", Method.POST);

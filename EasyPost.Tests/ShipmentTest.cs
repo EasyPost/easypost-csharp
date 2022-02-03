@@ -261,17 +261,19 @@ namespace EasyPost.Tests
             shipment.Create();
             shipment.rates = new List<Rate>();
             Assert.AreEqual(shipment.rates.Count, 0);
-            shipment.RefreshRates();
+            shipment.RegenerateRates();
             Assert.IsNotNull(shipment.rates);
             Assert.AreNotEqual(shipment.rates.Count, 0);
         }
 
-        [ExpectedException(typeof(ResourceNotCreated))]
         [TestMethod]
         public void TestRerateShipmentWithoutCreate()
         {
             Shipment shipment = CreateShipmentResource();
-            shipment.RefreshRates();
+            Assert.IsNull(shipment.id);
+            shipment.RegenerateRates();
+            Assert.IsNotNull(shipment.id);
+            Assert.IsNotNull(shipment.rates);
         }
 
         [TestMethod]
