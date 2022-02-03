@@ -52,4 +52,12 @@ namespace EasyPost
     public class ClientNotConfigured : Exception
     {
     }
+
+    [Serializable]
+    public class ResourceNotCreated : Exception
+    {
+        public ResourceNotCreated(string message) : base(message)
+        {
+        }
+    }
 }

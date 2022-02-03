@@ -135,6 +135,28 @@ namespace EasyPost
         }
 
         /// <summary>
+        ///     Refresh the rates for this Shipment.
+        /// </summary>
+        /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
+        public void RefreshRates(Dictionary<string, object> parameters = null)
+        {
+            if (id == null)
+            {
+                throw new ResourceNotCreated("Shipment must be created before refreshing rates. Try running `shipment.Create()` first.");
+            }
+
+            Request request = new Request("shipments/{id}/rerate", Method.POST);
+            request.AddUrlSegment("id", id);
+            if (parameters != null)
+            {
+                request.AddBody(parameters);
+            }
+
+            Shipment _shipment = request.Execute<Shipment>();
+            rates = _shipment.rates;
+        }
+
+        /// <summary>
         ///     Get the Smartrates for this shipment.
         /// </summary>
         /// <returns>A list of EasyPost.Smartrate instances.</returns>
