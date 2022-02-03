@@ -24,10 +24,10 @@ namespace EasyPost.Tests
         {
             EventCollection eventCollection = Event.All();
             Assert.IsNotNull(eventCollection);
-            if (eventCollection.events.Count > 0)
+            foreach (var tEvent in eventCollection.events)
             {
-                Assert.IsNotNull(eventCollection.events[0].id);
-                Assert.AreEqual(eventCollection.events[0].id.Substring(0, 4), "evt_");
+                Assert.IsNotNull(tEvent.id);
+                Assert.AreEqual(tEvent.id.Substring(0, 4), "evt_");
             }
         }
     }
