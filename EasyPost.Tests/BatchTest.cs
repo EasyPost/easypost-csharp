@@ -221,10 +221,10 @@ namespace EasyPost.Tests
         {
             BatchCollection batchCollection = Batch.All();
             Assert.IsNotNull(batchCollection);
-            if (batchCollection.batches.Count > 0)
+            foreach (var batch in batchCollection.batches)
             {
-                Assert.IsNotNull(batchCollection.batches[0].id);
-                Assert.AreEqual(batchCollection.batches[0].id.Substring(0, 6), "batch_");
+                Assert.IsNotNull(batch.id);
+                Assert.AreEqual(batch.id.Substring(0, 6), "batch_");
             }
         }
     }
