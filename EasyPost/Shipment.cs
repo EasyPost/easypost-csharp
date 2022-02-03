@@ -135,6 +135,27 @@ namespace EasyPost
         }
 
         /// <summary>
+        ///     Refresh the rates for this Shipment.
+        /// </summary>
+        /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
+        public void RegenerateRates(Dictionary<string, object> parameters = null)
+        {
+            if (id == null)
+            {
+                Create();
+            }
+
+            Request request = new Request("shipments/{id}/rerate", Method.POST);
+            request.AddUrlSegment("id", id);
+            if (parameters != null)
+            {
+                request.AddBody(parameters);
+            }
+
+            rates = request.Execute<Shipment>().rates;
+        }
+
+        /// <summary>
         ///     Get the Smartrates for this shipment.
         /// </summary>
         /// <returns>A list of EasyPost.Smartrate instances.</returns>

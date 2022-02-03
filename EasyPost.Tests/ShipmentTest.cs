@@ -255,6 +255,28 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
+        public void TestRerateShipment()
+        {
+            Shipment shipment = CreateShipmentResource();
+            shipment.Create();
+            shipment.rates = new List<Rate>();
+            Assert.AreEqual(shipment.rates.Count, 0);
+            shipment.RegenerateRates();
+            Assert.IsNotNull(shipment.rates);
+            Assert.AreNotEqual(shipment.rates.Count, 0);
+        }
+
+        [TestMethod]
+        public void TestRerateShipmentWithoutCreate()
+        {
+            Shipment shipment = CreateShipmentResource();
+            Assert.IsNull(shipment.id);
+            shipment.RegenerateRates();
+            Assert.IsNotNull(shipment.id);
+            Assert.IsNotNull(shipment.rates);
+        }
+
+        [TestMethod]
         public void TestGetSmartrates()
         {
             Shipment shipment = Shipment.Create(parameters);
