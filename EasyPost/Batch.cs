@@ -169,7 +169,17 @@ namespace EasyPost
         /// <summary>
         ///     List all Batch objects.
         /// </summary>
-        /// <param name="parameters">Optional dictionary containing parameters for request.</param>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
+        ///     * {"before_id", string} String representing a Batch ID. Starts with "batch_". Only retrieve batches created
+        ///     before this id. Takes precedence over after_id.
+        ///     * {"after_id", string} String representing a Batch ID. Starts with "batch_". Only retrieve batches created after
+        ///     this id.
+        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve batches created after this datetime.
+        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve batches created before this datetime.
+        ///     * {"page_size", int} Max size of list. Default to 20.
+        ///     All invalid keys will be ignored.
+        /// </param>
         /// <returns>EasyPost.BatchCollection instance.</returns>
         public static BatchCollection All(Dictionary<string, object> parameters = null)
         {
