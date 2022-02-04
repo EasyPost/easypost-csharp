@@ -110,5 +110,8 @@
     <Compile Include="..\EasyPost.Tests\WebhookTest.cs">
       <Link>WebhookTest.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost.Tests\InsuranceTest.cs">
+      <Link>InsuranceTest.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>
