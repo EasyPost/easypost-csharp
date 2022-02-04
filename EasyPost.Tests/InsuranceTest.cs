@@ -6,14 +6,17 @@ namespace EasyPost.Tests
     [TestClass]
     public class InsuranceTest
     {
+        private Dictionary<string, object> _fromAddressData { get; set; }
         private Insurance _insurance { get; set; }
+        private Dictionary<string, object> _parcelData { get; set; }
+        private Dictionary<string, object> _toAddressData { get; set; }
         private Dictionary<string, object> InsuranceData { get; set; }
 
         [TestInitialize]
         public void Initialize()
         {
             ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
-            Address fromAddress = Address.Create(new Dictionary<string, object>
+            _fromAddressData = new Dictionary<string, object>
             {
                 {
                     "company", "Simpler Postage Inc"
@@ -36,8 +39,8 @@ namespace EasyPost.Tests
                 {
                     "country", "US"
                 }
-            });
-            Address toAddress = Address.Create(new Dictionary<string, object>()
+            };
+            _toAddressData = new Dictionary<string, object>()
             {
                 {
                     "company", "The White House"
@@ -60,34 +63,55 @@ namespace EasyPost.Tests
                 {
                     "country", "US"
                 }
+            };
+            _parcelData = new Dictionary<string, object>
+            {
+                {
+                    "weight", 8.0
+                }
+            };
+
+            Shipment shipment = Shipment.Create(new Dictionary<string, object>
+            {
+                {
+                    "from_address", _fromAddressData
+                },
+                {
+                    "to_address", _toAddressData
+                },
+                {
+                    "parcel", _parcelData
+                },
+                {
+                    "service", "First"
+                },
+                {
+                    "carrier_accounts", new List<string>
+                    {
+                        {
+                            "ca_7642d249fdcf47bcb5da9ea34c96dfcf"
+                        }
+                    }
+                }
             });
-            Tracker tracker = Tracker.Create(trackingCode: "EZ1000000001", carrier: "USPS");
 
             InsuranceData = new Dictionary<string, object>
             {
                 {
-                    "to_address", toAddress
+                    "to_address", _toAddressData
                 },
                 {
-                    "from_address", fromAddress
+                    "from_address", _fromAddressData
                 },
                 {
-                    "tracker", tracker
+                    "tracking_code", shipment.tracking_code
                 },
                 {
                     "amount", (float)100
                 },
                 {
-                    "currency", "USD"
+                    "carrier", "USPS"
                 }
-            };
-            _insurance = new Insurance
-            {
-                from_address = toAddress,
-                to_address = fromAddress,
-                tracker = tracker,
-                amount = (float)100.00,
-                provider = "USPS"
             };
         }
 
@@ -96,17 +120,10 @@ namespace EasyPost.Tests
         {
             Insurance insurance = Insurance.Create(InsuranceData);
             Assert.IsNotNull(insurance.id);
-            Assert.AreEqual(insurance.from_address, _insurance.from_address);
+            Assert.AreEqual("SAN FRANCISCO", insurance.from_address.city);
 
             Insurance retrieved = Insurance.Retrieve(insurance.id);
             Assert.AreEqual(insurance.id, retrieved.id);
-        }
-
-        [TestMethod]
-        public void TestCreateInstance()
-        {
-            _insurance.Create();
-            Assert.IsNotNull(_insurance.id);
         }
 
         [TestMethod]

@@ -20,19 +20,6 @@ namespace EasyPost
         public string tracking_code { get; set; }
 
         /// <summary>
-        ///     Create this Insurance.
-        /// </summary>
-        /// <exception cref="ResourceAlreadyCreated">Insurance has already been created server-side.</exception>
-        public void Create()
-        {
-            if (id != null)
-            {
-                throw new ResourceAlreadyCreated();
-            }
-            Merge(SendCreate(AsDictionary()));
-        }
-
-        /// <summary>
         ///     Refresh this Insurance.
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters to use when refreshing this insurance.</param>
@@ -90,7 +77,7 @@ namespace EasyPost
         public static Insurance Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("insurances", Method.POST);
-            request.AddBody(new Dictionary<string, object>()
+            request.AddBody(new Dictionary<string, object>
             {
                 {
                     "insurance", parameters
@@ -116,7 +103,7 @@ namespace EasyPost
         private static Insurance SendCreate(Dictionary<string, object> parameters)
         {
             Request request = new Request("insurances", Method.POST);
-            request.AddBody(new Dictionary<string, object>()
+            request.AddBody(new Dictionary<string, object>
             {
                 {
                     "insurance", parameters
