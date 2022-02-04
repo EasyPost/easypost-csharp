@@ -82,6 +82,7 @@
     <Compile Include="Batch.cs" />
     <Compile Include="BatchCollection.cs" />
     <Compile Include="BatchShipment.cs" />
+    <Compile Include="Brand.cs" />
     <Compile Include="CarrierAccount.cs" />
     <Compile Include="CarrierDetail.cs" />
     <Compile Include="CarrierType.cs" />
