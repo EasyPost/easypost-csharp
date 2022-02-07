@@ -112,7 +112,6 @@ namespace EasyPost.Tests.Net
         public void TestBuyWithInsurance()
         {
             Shipment shipment = Shipment.Create(parameters);
-            shipment.GetRates();
             shipment.Buy(shipment.rates.First(), "100.00");
 
             Assert.AreEqual(shipment.insurance, "100.00");
@@ -247,34 +246,11 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestGetRatesWithoutCreate()
-        {
-            Shipment shipment = CreateShipmentResource();
-            shipment.GetRates();
-            Assert.IsNotNull(shipment.id);
-            Assert.IsNotNull(shipment.rates);
-        }
-
-        [TestMethod]
-        public void TestRerateShipment()
-        {
-            Shipment shipment = CreateShipmentResource();
-            shipment.Create();
-            shipment.rates = new List<Rate>();
-            Assert.AreEqual(shipment.rates.Count, 0);
-            shipment.RegenerateRates();
-            Assert.IsNotNull(shipment.rates);
-            Assert.AreNotEqual(shipment.rates.Count, 0);
-        }
-
-        [TestMethod]
-        public void TestRerateShipmentWithoutCreate()
+        public void TestCheckRatesWithoutCreate()
         {
             Shipment shipment = CreateShipmentResource();
             Assert.IsNull(shipment.id);
-            shipment.RegenerateRates();
-            Assert.IsNotNull(shipment.id);
-            Assert.IsNotNull(shipment.rates);
+            Assert.IsNull(shipment.rates);
         }
 
         [TestMethod]
@@ -488,6 +464,28 @@ namespace EasyPost.Tests.Net
             Assert.IsNotNull(shipment.refund_status);
         }
 
+        [TestMethod]
+        public void TestRerateShipment()
+        {
+            Shipment shipment = CreateShipmentResource();
+            shipment.Create();
+            shipment.rates = new List<Rate>();
+            Assert.AreEqual(shipment.rates.Count, 0);
+            shipment.RegenerateRates();
+            Assert.IsNotNull(shipment.rates);
+            Assert.AreNotEqual(shipment.rates.Count, 0);
+        }
+
+        [TestMethod]
+        public void TestRerateShipmentWithoutCreate()
+        {
+            Shipment shipment = CreateShipmentResource();
+            Assert.IsNull(shipment.id);
+            shipment.RegenerateRates();
+            Assert.IsNotNull(shipment.id);
+            Assert.IsNotNull(shipment.rates);
+        }
+
         //Tax Identifiers
         [TestMethod]
         public void TestTaxIdentifiers()
@@ -538,7 +536,6 @@ namespace EasyPost.Tests.Net
         private Shipment BuyShipment()
         {
             Shipment shipment = Shipment.Create(parameters);
-            shipment.GetRates();
             shipment.Buy(shipment.rates.First());
             return shipment;
         }
