@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
 {
@@ -16,6 +17,23 @@ namespace EasyPost.Tests
 
             User user2 = User.Retrieve(user.id);
             Assert.AreEqual(user.id, user2.id);
+        }
+
+        [TestMethod]
+        public void TestUpdateBrand()
+        {
+            User user = User.Retrieve();
+            Assert.IsNotNull(user.id);
+
+            const string color = "#AA4A44";
+            Dictionary<string, object> details = new Dictionary<string, object>()
+            {
+                { "color", color }
+            };
+            Brand brand = user.UpdateBrand(parameters: details);
+            Assert.IsNotNull(brand);
+            Assert.AreEqual(user.id, brand.user_id);
+            Assert.AreEqual(color, brand.color);
         }
 
         // [TestMethod]

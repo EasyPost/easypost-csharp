@@ -63,6 +63,37 @@ namespace EasyPost
         }
 
         /// <summary>
+        ///     Update the User's brand.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Dictionary containing parameters to update the brand with. Valid pairs:
+        ///     * {"ad", string} Base64 encoded string for a png, gif, jpeg, or svg.
+        ///     * {"ad_href", string} Valid URL under 255 characters
+        ///     * {"background_color", string} Valid hex code
+        ///     * {"color", string} Valid hex code
+        ///     * {"logo", string} Base64 encoded string for a png, gif, jpeg, or svg
+        ///     * {"logo_href", string} Valid URL under 255 characters
+        ///     * {"theme", string} "theme1" or "theme2"
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>EasyPost.Brand instance.</returns>
+        public Brand UpdateBrand(Dictionary<string, object> parameters)
+        {
+            Dictionary<string, object> wrappedParameters = new Dictionary<string, object>
+            {
+                {
+                    "brand", parameters
+                }
+            };
+
+            Request request = new Request("users/{id}/brand", Method.PUT);
+            request.AddUrlSegment("id", id);
+            request.AddBody(wrappedParameters);
+
+            return request.Execute<Brand>();
+        }
+
+        /// <summary>
         ///     Create a child user for the account associated with the api_key specified.
         /// </summary>
         /// <param name="parameters">
