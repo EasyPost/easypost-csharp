@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <OutputType>Library</OutputType>
+        <AssemblyCopyright>Copyright © 2018</AssemblyCopyright>
+        <PackageId>Scotch</PackageId>
+        <AssemblyVersion>0.1.2.0</AssemblyVersion>
+        <AssemblyFileVersion>0.1.2.0</AssemblyFileVersion>
+        <RootNamespace>Scotch</RootNamespace>
+        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="HttpInteraction.cs" />
+        <Compile Include="Cassette.cs" />
+        <Compile Include="RecordingHandler.cs" />
+        <Compile Include="ReplayingHandler.cs" />
+        <Compile Include="Scotch.cs" />
+        <Compile Include="VCRException.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
+        <PackageReference Include="RestSharp" Version="107.2.1" />
+    </ItemGroup>
+</Project>

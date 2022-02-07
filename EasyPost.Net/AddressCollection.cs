@@ -6,7 +6,7 @@ namespace EasyPost
     public class AddressCollection : Resource
     {
         [JsonProperty("addresses")]
-        public List<Batch> addresses { get; set; }
+        public List<Address> addresses { get; set; }
         [JsonProperty("has_more")]
         public bool has_more { get; set; }
     }

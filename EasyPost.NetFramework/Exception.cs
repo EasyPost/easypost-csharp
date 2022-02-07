@@ -20,7 +20,7 @@ namespace EasyPost
         /// <param name="statusCode">Status code.</param>
         /// <param name="code">Error code.</param>
         /// <param name="message">Error message.</param>
-        /// <param name="errors">A list of EasyPost.Error instances.</param>
+        /// <param name="errors">An EasyPost.Error instances.</param>
         public HttpException(int statusCode, string code, string message, List<Error> errors) : base(message)
         {
             StatusCode = statusCode;

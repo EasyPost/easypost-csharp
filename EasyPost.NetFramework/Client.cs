@@ -34,7 +34,7 @@ namespace EasyPost
             set => _requestTimeoutMilliseconds = value;
         }
 
-        private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
+        private string UserAgent => $"EasyPost/v2,CSharpClient/{_libraryVersion},.NET/{_dotNetVersion}";
 
         /// <summary>
         ///     Constructor for the EasyPost client.
@@ -47,10 +47,18 @@ namespace EasyPost
 
             _restClient = new RestClient(clientConfiguration.ApiBase);
             _restClient.Timeout = ConnectTimeoutMilliseconds;
+            _restClient.UserAgent = UserAgent;
 
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
-            _libraryVersion = info.FileVersion;
+            try
+            {
+                Assembly assembly = typeof(Client).Assembly;
+                FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
+                _libraryVersion = info.FileVersion;
+            }
+            catch (Exception)
+            {
+                _libraryVersion = "Unknown";
+            }
 
             string dotNetVersion = Environment.Version.ToString();
             if (dotNetVersion == "4.0.30319.42000")
@@ -69,8 +77,12 @@ namespace EasyPost
         ///     Execute a request against the EasyPost API.
         /// </summary>
         /// <param name="request">EasyPost.Request object instance to execute.</param>
-        /// <returns>RestSharp.IRestResponse instance.</returns>
-        internal IRestResponse Execute(Request request) => _restClient.Execute(PrepareRequest(request));
+        /// <returns>Whether request was successful.</returns>
+        internal bool Execute(Request request)
+        {
+            IRestResponse response = _restClient.Execute(PrepareRequest(request));
+            return response.ResponseStatus == ResponseStatus.Completed || response.ResponseStatus == ResponseStatus.None;
+        }
 
         /// <summary>
         ///     Execute a request against the EasyPost API.
@@ -120,7 +132,6 @@ namespace EasyPost
         {
             RestRequest restRequest = (RestRequest)request;
             restRequest.Timeout = RequestTimeoutMilliseconds;
-            restRequest.AddHeader("user_agent", UserAgent);
             restRequest.AddHeader("authorization", "Bearer " + _configuration.ApiKey);
             restRequest.AddHeader("content_type", "application/json");
 

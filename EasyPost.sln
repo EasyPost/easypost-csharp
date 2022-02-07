@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPost.Tests.Net50", "Eas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPost.Tests.Net60", "EasyPost.Tests.Net60\EasyPost.Tests.Net60.csproj", "{D7D73ECC-7DA6-4EDA-97AD-D9AAB29A4895}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotch", "Scotch\Scotch.csproj", "{0760BEC5-5629-4B1D-9B1F-BF84AC34D0F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{D7D73ECC-7DA6-4EDA-97AD-D9AAB29A4895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D7D73ECC-7DA6-4EDA-97AD-D9AAB29A4895}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7D73ECC-7DA6-4EDA-97AD-D9AAB29A4895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0760BEC5-5629-4B1D-9B1F-BF84AC34D0F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0760BEC5-5629-4B1D-9B1F-BF84AC34D0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0760BEC5-5629-4B1D-9B1F-BF84AC34D0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0760BEC5-5629-4B1D-9B1F-BF84AC34D0F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,98 @@
+[
+  {
+    "Request": {
+      "Method": "POST",
+      "URI": "https://api.easypost.com/v2/reports/payment_log?start_date=2022-02-01&end_date=2022-02-03",
+      "RequestHeaders": {
+        "Accept": "application/json",
+        "Authorization": "********",
+        "content_type": "application/json",
+        "User-Agent": "EasyPost/v2,CSharpClient/2.8.1,.NET/5.0.13"
+      },
+      "ContentHeaders": {},
+      "Body": ""
+    },
+    "Response": {
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      },
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "5f596082621d5dc8e4d1744100a409ba",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"26b0618a772e4c87c989a7a21cc809d7\"",
+        "X-Request-ID": "ca5eb674-4865-4d6e-905f-c599c585e75a",
+        "x-runtime": "0.040045",
+        "x-node": "bigweb4nuq",
+        "x-version-label": "easypost-202202282222-e6cd2b4eed-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq 88c34981dc,extlb2nuq 88c34981dc",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "259"
+      },
+      "Body": "{\"id\":\"plrep_c722371abc714356a218aebfffe162af\",\"object\":\"PaymentLogReport\",\"created_at\":\"2022-02-28T23:42:00Z\",\"updated_at\":\"2022-02-28T23:42:00Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null}",
+      "RequestMessage": null,
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2022-02-28T15:42:00.393621-08:00"
+  },
+  {
+    "Request": {
+      "Method": "GET",
+      "URI": "https://api.easypost.com/v2/reports/plrep_c722371abc714356a218aebfffe162af",
+      "RequestHeaders": {
+        "Accept": "application/json",
+        "Authorization": "********",
+        "content_type": "application/json",
+        "User-Agent": "EasyPost/v2,CSharpClient/2.8.1,.NET/5.0.13"
+      },
+      "ContentHeaders": {},
+      "Body": ""
+    },
+    "Response": {
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      },
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "5f596086621d5dc8e4d1744200a409cd",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"455868b1390157d29dea235276328bd5\"",
+        "X-Request-ID": "054ea6b2-5349-45c7-b3b6-39d16c36b267",
+        "x-runtime": "0.033075",
+        "x-node": "bigweb8nuq",
+        "x-version-label": "easypost-202202282222-e6cd2b4eed-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb2nuq 88c34981dc,extlb2nuq 88c34981dc",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "261"
+      },
+      "Body": "{\"id\":\"plrep_c722371abc714356a218aebfffe162af\",\"object\":\"PaymentLogReport\",\"created_at\":\"2022-02-28T23:42:00Z\",\"updated_at\":\"2022-02-28T23:42:00Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"empty\",\"url\":null,\"url_expires_at\":null}",
+      "RequestMessage": null,
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2022-02-28T15:42:00.813107-08:00"
+  }
+]

@@ -138,11 +138,31 @@ namespace EasyPost
                 verifications = (List<string>)parameters["verifications"];
                 parameters.Remove("verifications");
             }
+            else if (parameters.ContainsKey("verify"))
+            {
+                verifications = new List<string>();
+                foreach (bool val in (List<bool>)parameters["verify"])
+                {
+                    verifications.Add(val.ToString());
+                }
+
+                parameters.Remove("verify");
+            }
 
             if (parameters.ContainsKey("strict_verifications"))
             {
                 strictVerifications = (List<string>)parameters["strict_verifications"];
                 parameters.Remove("strict_verifications");
+            }
+            else if (parameters.ContainsKey("verify_strict"))
+            {
+                strictVerifications = new List<string>();
+                foreach (bool val in (List<bool>)parameters["verify_strict"])
+                {
+                    strictVerifications.Add(val.ToString());
+                }
+
+                parameters.Remove("verify_strict");
             }
 
             return SendCreate(parameters, verifications, strictVerifications);

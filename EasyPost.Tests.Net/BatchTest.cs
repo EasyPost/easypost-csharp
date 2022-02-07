@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -8,225 +7,167 @@ namespace EasyPost.Tests.Net
     [TestClass]
     public class BatchTest
     {
-        private Dictionary<string, object> batchShipmentParameters;
-        private Dictionary<string, object> fromAddress;
-        private Dictionary<string, object> shipmentParameters;
-        private Dictionary<string, object> toAddress;
-
-        public Batch CreateBatch()
-        {
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                {
-                    "reference", "EasyPostCSharpTest"
-                },
-                {
-                    "shipments", new List<Dictionary<string, object>>
-                    {
-                        batchShipmentParameters
-                    }
-                }
-            };
-
-            return Batch.Create(parameters);
-        }
-
         [TestInitialize]
         public void Initialize()
         {
-            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
+            VCR.SetUp(VCRApiKey.Test, "batch", true);
+        }
 
-            fromAddress = new Dictionary<string, object>
+        private static Batch CreateBasicBatch()
+        {
+            return Batch.Create(new Dictionary<string, object>
             {
                 {
-                    "name", "Andrew Tribone"
-                },
-                {
-                    "street1", "480 Fell St"
-                },
-                {
-                    "street2", "#3"
-                },
-                {
-                    "city", "San Francisco"
-                },
-                {
-                    "state", "CA"
-                },
-                {
-                    "country", "US"
-                },
-                {
-                    "zip", "94102"
-                }
-            };
-            toAddress = new Dictionary<string, object>
-            {
-                {
-                    "company", "Simpler Postage Inc"
-                },
-                {
-                    "street1", "164 Townsend Street"
-                },
-                {
-                    "street2", "Unit 1"
-                },
-                {
-                    "city", "San Francisco"
-                },
-                {
-                    "state", "CA"
-                },
-                {
-                    "country", "US"
-                },
-                {
-                    "zip", "94107"
-                }
-            };
-            shipmentParameters = new Dictionary<string, object>
-            {
-                {
-                    "parcel", new Dictionary<string, object>
+                    "shipments", new List<Dictionary<string, object>>
                     {
-                        {
-                            "length", 8
-                        },
-                        {
-                            "width", 6
-                        },
-                        {
-                            "height", 5
-                        },
-                        {
-                            "weight", 10
-                        }
+                        Fixture.BasicShipment
                     }
-                },
-                {
-                    "to_address", toAddress
-                },
-                {
-                    "from_address", fromAddress
                 }
-            };
-            batchShipmentParameters = new Dictionary<string, object>
+            });
+        }
+
+        private static Batch CreateOneCallBuyBatch()
+        {
+            return Batch.Create(new Dictionary<string, object>
             {
                 {
-                    "parcel", new Dictionary<string, object>
+                    "shipments", new List<Dictionary<string, object>>
                     {
-                        {
-                            "length", 8
-                        },
-                        {
-                            "width", 6
-                        },
-                        {
-                            "height", 5
-                        },
-                        {
-                            "weight", 10
-                        }
+                        Fixture.OneCallBuyShipment
                     }
-                },
-                {
-                    "to_address", toAddress
-                },
-                {
-                    "from_address", fromAddress
-                },
-                {
-                    "carrier", "USPS"
-                },
-                {
-                    "service", "Priority"
                 }
-            };
+            });
         }
 
         [TestMethod]
-        public void TestAddRemoveShipments()
+        public void TestCreate()
         {
-            Batch batch = Batch.Create();
-            Shipment shipment = Shipment.Create(shipmentParameters);
-            Shipment otherShipment = Shipment.Create(shipmentParameters);
+            VCR.Replay("create");
 
-            while (batch.state != "created")
-            {
-                batch = Batch.Retrieve(batch.id);
-            }
+            Batch batch = CreateBasicBatch();
 
-            batch.AddShipments(new List<Shipment>
-            {
-                shipment,
-                otherShipment
-            });
-
-            while (batch.shipments == null)
-            {
-                batch = Batch.Retrieve(batch.id);
-            }
-
-            List<string> shipmentIds = batch.shipments.Select(ship => ship.id).ToList();
-            Assert.AreEqual(batch.num_shipments, 2);
-            CollectionAssert.Contains(shipmentIds, shipment.id);
-            CollectionAssert.Contains(shipmentIds, otherShipment.id);
-
-            batch.RemoveShipments(new List<Shipment>
-            {
-                shipment,
-                otherShipment
-            });
-            Assert.AreEqual(batch.num_shipments, 0);
-        }
-
-        [TestMethod]
-        public void TestCreateThenBuyThenGenerateLabelAndScanForm()
-        {
-            Batch batch = CreateBatch();
-
-            Assert.IsNotNull(batch.id);
-            Assert.AreEqual(batch.reference, "EasyPostCSharpTest");
-            Assert.AreEqual(batch.state, "creating");
-
-            while (batch.state == "creating")
-            {
-                batch = Batch.Retrieve(batch.id);
-            }
-
-            batch.Buy();
-
-            while (batch.state == "created")
-            {
-                batch = Batch.Retrieve(batch.id);
-            }
-
-            Assert.AreEqual(batch.state, "purchased");
-
-            batch.GenerateLabel("pdf");
-            Assert.AreEqual(batch.state, "label_generating");
-
-            batch.GenerateScanForm();
+            Assert.IsInstanceOfType(batch, typeof(Batch));
+            Assert.IsTrue(batch.id.StartsWith("batch_"));
+            Assert.IsNotNull(batch.shipments);
         }
 
         [TestMethod]
         public void TestRetrieve()
         {
-            Batch batch = Batch.Create();
-            Batch retrieved = Batch.Retrieve(batch.id);
-            Assert.AreEqual(batch.id, retrieved.id);
+            VCR.Replay("retrieve");
+
+
+            Batch batch = CreateBasicBatch();
+
+            Batch retrievedBatch = Batch.Retrieve(batch.id);
+
+            Assert.IsInstanceOfType(retrievedBatch, typeof(Batch));
+            Assert.AreEqual(batch.id, retrievedBatch.id);
         }
 
         [TestMethod]
-        public void TestRetrieveAll()
+        public void TestAll()
         {
-            BatchCollection batchCollection = Batch.All();
-            Assert.IsNotNull(batchCollection);
-            foreach (Batch batch in batchCollection.batches)
+            VCR.Replay("all");
+
+            BatchCollection batchCollection = Batch.All(new Dictionary<string, object>
             {
-                Assert.IsNotNull(batch.id);
-                Assert.AreEqual(batch.id.Substring(0, 6), "batch_");
+                {
+                    "page_size", Fixture.PageSize
+                }
+            });
+
+            List<Batch> batches = batchCollection.batches;
+
+            Assert.IsTrue(batches.Count <= Fixture.PageSize);
+            Assert.IsNotNull(batchCollection.has_more);
+            foreach (var item in batches)
+            {
+                Assert.IsInstanceOfType(item, typeof(Batch));
             }
+        }
+
+        // TODO: C# doesn't have a CreateAndBuy method for Batch
+        [Ignore]
+        [TestMethod]
+        public void TestCreateAndBuy()
+        {
+            VCR.Replay("create_and_buy");
+        }
+
+        [TestMethod]
+        public void TestBuy()
+        {
+            VCR.Replay("buy");
+
+            var data = Fixture.OneCallBuyShipment;
+
+            Batch batch = CreateOneCallBuyBatch();
+
+            batch.Buy();
+
+            Assert.IsInstanceOfType(batch, typeof(Batch));
+            Assert.AreEqual(1, batch.num_shipments);
+        }
+
+        [TestMethod]
+        public void TestCreateScanForm()
+        {
+            VCR.Replay("create_scan_form");
+
+
+            Batch batch = CreateOneCallBuyBatch();
+            batch.Buy();
+
+            // Uncomment the following line if you need to re-record the cassette
+            // Thread.Sleep(2000); // Wait enough time for the batch to process buying the shipment
+
+            batch.GenerateScanForm();
+
+            // We can't assert anything meaningful here because the scanform gets queued for generation and may not be immediately available
+            Assert.IsInstanceOfType(batch, typeof(Batch));
+        }
+
+        [TestMethod]
+        public void TestAddRemoveShipment()
+        {
+            VCR.Replay("add_remove_shipment");
+
+            Shipment shipment = Shipment.Create(Fixture.OneCallBuyShipment);
+
+            Batch batch = Batch.Create();
+
+            batch.AddShipments(new List<Shipment>
+            {
+                shipment
+            });
+
+            Assert.AreEqual(1, batch.num_shipments);
+
+            batch.RemoveShipments(new List<Shipment>
+            {
+                shipment
+            });
+
+            Assert.AreEqual(0, batch.num_shipments);
+        }
+
+        [TestMethod]
+        public void TestLabel()
+        {
+            VCR.Replay("label");
+
+
+            Batch batch = CreateOneCallBuyBatch();
+            batch.Buy();
+
+            // Uncomment the following line if you need to re-record the cassette
+            // Thread.Sleep(2000); // Wait enough time for the batch to process buying the shipment
+
+            batch.GenerateLabel("ZPL");
+
+            // We can't assert anything meaningful here because the label gets queued for generation and may not be immediately available
+            Assert.IsInstanceOfType(batch, typeof(Batch));
         }
     }
 }

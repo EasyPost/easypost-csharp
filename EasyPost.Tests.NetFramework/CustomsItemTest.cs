@@ -1,40 +1,40 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace EasyPost.Tests.Net
+namespace EasyPost.Tests.NetFramework
 {
     [TestClass]
     public class CustomsItemTest
     {
         [TestInitialize]
-        public void Initialize() => ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
+        public void Initialize()
+        {
+            TestSuite.SetUp(TestSuiteApiKey.Test);
+        }
+
+        private static CustomsItem CreateBasicCustomsItem()
+        {
+            return CustomsItem.Create(Fixture.BasicCustomsItem);
+        }
 
         [TestMethod]
-        public void TestCreateAndRetrieve()
+        public void TestCreate()
         {
-            CustomsItem item = CustomsItem.Create(new Dictionary<string, object>
-            {
-                {
-                    "description", "TShirt"
-                },
-                {
-                    "quantity", 1
-                },
-                {
-                    "weight", 8
-                },
-                {
-                    "value", 10.0
-                },
-                {
-                    "currency", "USD"
-                }
-            });
-            CustomsItem retrieved = CustomsItem.Retrieve(item.id);
-            Assert.AreEqual(item.id, retrieved.id);
-            Assert.AreEqual(retrieved.value, 10.0);
-            Assert.AreEqual(retrieved.currency, "USD");
+            CustomsItem customsItem = CreateBasicCustomsItem();
+
+            Assert.IsInstanceOfType(customsItem, typeof(CustomsItem));
+            Assert.IsTrue(customsItem.id.StartsWith("cstitem_"));
+            Assert.AreEqual(23.0, customsItem.value);
+        }
+
+        [TestMethod]
+        public void TestRetrieve()
+        {
+            CustomsItem customsItem = CreateBasicCustomsItem();
+
+            CustomsItem retrievedCustomsItem = CustomsItem.Retrieve(customsItem.id);
+
+            Assert.IsInstanceOfType(retrievedCustomsItem, typeof(CustomsItem));
+            Assert.AreEqual(customsItem.id, retrievedCustomsItem.id);
         }
     }
 }

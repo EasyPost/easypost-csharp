@@ -1,0 +1,49 @@
+[
+  {
+    "Request": {
+      "Method": "GET",
+      "URI": "https://api.easypost.com/v2/events/bad input",
+      "RequestHeaders": {
+        "Accept": "application/json",
+        "Authorization": "********",
+        "content_type": "application/json",
+        "User-Agent": "EasyPost/v2,CSharpClient/2.8.1,.NET/5.0.13"
+      },
+      "ContentHeaders": {},
+      "Body": ""
+    },
+    "Response": {
+      "Status": {
+        "Code": 422,
+        "Message": "Unprocessable Entity"
+      },
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "5f596083621d5da7e4d1739d00a40095",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "X-Request-ID": "308f595f-cc82-4b41-bd5f-906efedac265",
+        "x-runtime": "0.039762",
+        "x-node": "bigweb6nuq",
+        "x-version-label": "easypost-202202282222-e6cd2b4eed-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb2nuq 88c34981dc,extlb2nuq 88c34981dc",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "201"
+      },
+      "Body": "{\"error\":{\"code\":\"PARAMETER.INVALID_TYPE\",\"message\":\"Wrong parameter type.\",\"errors\":[{\"field\":\"id\",\"message\":\"expected a evt ID. See https://www.easypost.com/docs/api#objects for more information\"}]}}",
+      "RequestMessage": null,
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2022-02-28T15:41:27.239963-08:00"
+  }
+]
