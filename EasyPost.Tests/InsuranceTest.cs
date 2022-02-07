@@ -6,17 +6,16 @@ namespace EasyPost.Tests
     [TestClass]
     public class InsuranceTest
     {
-        private Dictionary<string, object> _fromAddressData { get; set; }
-        private Insurance _insurance { get; set; }
-        private Dictionary<string, object> _parcelData { get; set; }
-        private Dictionary<string, object> _toAddressData { get; set; }
+        private Dictionary<string, object> FromAddressData { get; set; }
+        private Dictionary<string, object> ParcelData { get; set; }
+        private Dictionary<string, object> ToAddressData { get; set; }
         private Dictionary<string, object> InsuranceData { get; set; }
 
         [TestInitialize]
         public void Initialize()
         {
             ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
-            _fromAddressData = new Dictionary<string, object>
+            FromAddressData = new Dictionary<string, object>
             {
                 {
                     "company", "Simpler Postage Inc"
@@ -40,7 +39,7 @@ namespace EasyPost.Tests
                     "country", "US"
                 }
             };
-            _toAddressData = new Dictionary<string, object>()
+            ToAddressData = new Dictionary<string, object>()
             {
                 {
                     "company", "The White House"
@@ -64,7 +63,7 @@ namespace EasyPost.Tests
                     "country", "US"
                 }
             };
-            _parcelData = new Dictionary<string, object>
+            ParcelData = new Dictionary<string, object>
             {
                 {
                     "weight", 8.0
@@ -74,13 +73,13 @@ namespace EasyPost.Tests
             Shipment shipment = Shipment.Create(new Dictionary<string, object>
             {
                 {
-                    "from_address", _fromAddressData
+                    "from_address", FromAddressData
                 },
                 {
-                    "to_address", _toAddressData
+                    "to_address", ToAddressData
                 },
                 {
-                    "parcel", _parcelData
+                    "parcel", ParcelData
                 },
                 {
                     "service", "First"
@@ -98,16 +97,16 @@ namespace EasyPost.Tests
             InsuranceData = new Dictionary<string, object>
             {
                 {
-                    "to_address", _toAddressData
+                    "to_address", ToAddressData
                 },
                 {
-                    "from_address", _fromAddressData
+                    "from_address", FromAddressData
                 },
                 {
                     "tracking_code", shipment.tracking_code
                 },
                 {
-                    "amount", (float)100
+                    "amount", 100.00
                 },
                 {
                     "carrier", "USPS"

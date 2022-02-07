@@ -5,7 +5,7 @@ namespace EasyPost
 {
     public class Insurance : Resource
     {
-        public float amount { get; set; }
+        public decimal amount { get; set; }
         public Address from_address { get; set; }
         public string id { get; set; }
         public List<string> messages { get; set; }
@@ -69,7 +69,7 @@ namespace EasyPost
         ///     * {"from_address", Address} The actual origin of the package to be insured
         ///     * {"tracking_code", string} The tracking code associated with the non-EasyPost-purchased package you'd like to insure
         ///     * {"reference", string} Optional. A unique value that may be used in place of ID when doing Retrieve calls for this insurance
-        ///     * {"amount", float} The USD value of contents you would like to insure. Currently the maximum is $5000
+        ///     * {"amount", decimal} The USD value of contents you would like to insure. Currently the maximum is $5000
         ///     * {"carrier", string} Optional. The carrier associated with the tracking_code you provided. The carrier will get auto-detected if none is provided
         ///     All invalid keys will be ignored.
         /// </param>
