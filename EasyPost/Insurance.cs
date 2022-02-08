@@ -5,7 +5,7 @@ namespace EasyPost
 {
     public class Insurance : Resource
     {
-        public decimal amount { get; set; }
+        public string amount { get; set; }
         public Address from_address { get; set; }
         public string id { get; set; }
         public List<string> messages { get; set; }

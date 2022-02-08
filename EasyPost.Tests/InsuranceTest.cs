@@ -106,7 +106,7 @@ namespace EasyPost.Tests
                     "tracking_code", shipment.tracking_code
                 },
                 {
-                    "amount", 100.00
+                    "amount", "100.00"
                 },
                 {
                     "carrier", "USPS"
