@@ -25,9 +25,9 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestList()
+        public void TestAll()
         {
-            ReportList reportList = Report.List("shipment", new Dictionary<string, object>
+            ReportList reportList = Report.All("shipment", new Dictionary<string, object>
             {
                 {
                     "page_size", 1

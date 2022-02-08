@@ -17,7 +17,7 @@
 
 //             webhook.Update();
 
-//             WebhookList webhooks = Webhook.List();
+//             WebhookList webhooks = Webhook.All();
 //             CollectionAssert.Contains(webhooks.Select(w => w.id).ToList(), webhook.id);
 
 //             webhook.Destroy();

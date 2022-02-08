@@ -10,7 +10,7 @@ namespace EasyPost
         public List<Tracker> trackers { get; set; }
 
         /// <summary>
-        ///     Get the next page of shipments based on the original parameters passed to Shipment.List().
+        ///     Get the next page of shipments based on the original parameters passed to Shipment.All().
         /// </summary>
         /// <returns>A new EasyPost.ShipmentList instance.</returns>
         public TrackerList Next()
@@ -18,7 +18,7 @@ namespace EasyPost
             filters = filters ?? new Dictionary<string, object>();
             filters["before_id"] = trackers.Last().id;
 
-            return Tracker.List(filters);
+            return Tracker.All(filters);
         }
     }
 }

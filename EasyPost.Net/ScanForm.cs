@@ -59,7 +59,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>Instance of EasyPost.ScanForm.</returns>
-        public static ScanFormList List(Dictionary<string, object> parameters = null)
+        public static ScanFormList All(Dictionary<string, object> parameters = null)
         {
             Request request = new Request("scan_forms");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());

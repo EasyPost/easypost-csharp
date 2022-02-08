@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next release
+
+* Rename method from List() to All() to make our library consistent
+
 ## v2.8.1 (2022-02-17)
 
 * Repackaged the project which contains all the changes made from `2.6.0` - `2.8.0` (see details below)
