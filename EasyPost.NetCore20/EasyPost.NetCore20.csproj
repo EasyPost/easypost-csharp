@@ -97,6 +97,12 @@
     <Compile Include="..\EasyPost\Exception.cs">
       <Link>Exception.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\Insurance.cs">
+      <Link>Insurance.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost\InsuranceCollection.cs">
+      <Link>InsuranceCollection.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\IResource.cs">
       <Link>IResource.cs</Link>
     </Compile>

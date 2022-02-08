@@ -89,6 +89,8 @@
     <Compile Include="Error.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="EventCollection.cs" />
+    <Compile Include="Insurance.cs" />
+    <Compile Include="InsuranceCollection.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="ClientConfiguration.cs" />

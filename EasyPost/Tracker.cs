@@ -97,12 +97,17 @@ namespace EasyPost
         /// <summary>
         ///     Create a list of trackers
         /// </summary>
-        /// <param name="param">A dictionary of tracking codes and carriers</param>
+        /// <param name="parameters">A dictionary of tracking codes and carriers</param>
         /// <returns>True</returns>
-        public static bool CreateList(Dictionary<string, object> param)
+        public static bool CreateList(Dictionary<string, object> parameters)
         {
             Request request = new Request("trackers/create_list", RestSharp.Method.POST);
-            request.AddBody(new Dictionary<string, object>() { { "trackers", param } });
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "trackers", parameters
+                }
+            });
             request.Execute<Tracker>();
             // This endpoint does not return a response so we return true here
             return true;
