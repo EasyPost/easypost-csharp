@@ -1,24 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace EasyPost
 {
     public class Batch : Resource
     {
+        [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
+        [JsonProperty("error")]
         public string error { get; set; }
+        [JsonProperty("id")]
         public string id { get; set; }
+        [JsonProperty("label_url")]
         public string label_url { get; set; }
+        [JsonProperty("message")]
         public string message { get; set; }
+        [JsonProperty("mode")]
         public string mode { get; set; }
+        [JsonProperty("num_shipments")]
         public int num_shipments { get; set; }
+        [JsonProperty("reference")]
         public string reference { get; set; }
+        [JsonProperty("scan_form")]
         public ScanForm scan_form { get; set; }
+        [JsonProperty("shipments")]
         public List<BatchShipment> shipments { get; set; }
+        [JsonProperty("state")]
         public string state { get; set; }
+        [JsonProperty("status")]
         public Dictionary<string, int> status { get; set; }
+        [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
 
         /// <summary>
@@ -27,7 +41,7 @@ namespace EasyPost
         /// <param name="shipmentIds">List of shipment ids to be added.</param>
         public void AddShipments(IEnumerable<string> shipmentIds)
         {
-            Request request = new Request("batches/{id}/add_shipments", Method.POST);
+            Request request = new Request("batches/{id}/add_shipments", Method.Post);
             request.AddUrlSegment("id", id);
 
             List<Dictionary<string, object>> lShipments = shipmentIds
@@ -58,7 +72,7 @@ namespace EasyPost
         /// </summary>
         public void Buy()
         {
-            Request request = new Request("batches/{id}/buy", Method.POST);
+            Request request = new Request("batches/{id}/buy", Method.Post);
             request.AddUrlSegment("id", id);
 
             Merge(request.Execute<Batch>());
@@ -70,7 +84,7 @@ namespace EasyPost
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         public void GenerateLabel(string fileFormat)
         {
-            Request request = new Request("batches/{id}/label", Method.POST);
+            Request request = new Request("batches/{id}/label", Method.Post);
             request.AddUrlSegment("id", id);
 
             Dictionary<string, object> parameters = new Dictionary<string, object>
@@ -89,7 +103,7 @@ namespace EasyPost
         /// </summary>
         public void GenerateScanForm()
         {
-            Request request = new Request("batches/{id}/scan_form", Method.POST);
+            Request request = new Request("batches/{id}/scan_form", Method.Post);
             request.AddUrlSegment("id", id);
 
             Merge(request.Execute<Batch>());
@@ -101,7 +115,7 @@ namespace EasyPost
         /// <param name="shipmentIds">List of shipment ids to be removed.</param>
         public void RemoveShipments(IEnumerable<string> shipmentIds)
         {
-            Request request = new Request("batches/{id}/remove_shipments", Method.POST);
+            Request request = new Request("batches/{id}/remove_shipments", Method.Post);
             request.AddUrlSegment("id", id);
 
             List<Dictionary<string, object>> lShipments = shipmentIds
@@ -141,7 +155,7 @@ namespace EasyPost
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
-            Request request = new Request("batches", Method.POST);
+            Request request = new Request("batches", Method.Post);
             request.AddBody(new Dictionary<string, object>
             {
                 {

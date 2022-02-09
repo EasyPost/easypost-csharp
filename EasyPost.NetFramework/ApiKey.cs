@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace EasyPost
 {
     public class ApiKey : Resource
     {
+        [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
+        [JsonProperty("key")]
         public string key { get; set; }
+        [JsonProperty("mode")]
         public string mode { get; set; }
 
         /// <summary>

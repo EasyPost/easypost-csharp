@@ -4,7 +4,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <Configurations>Debug;Release;Test</Configurations>
+    <Configurations>Release;Debug</Configurations>
 
     <Platforms>AnyCPU</Platforms>
 
@@ -30,7 +30,7 @@
     <None Remove="MSTest.TestFramework" />
     <None Remove="MSTest.TestAdapter" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <Compile Include="..\EasyPost.Tests.NetFramework\AddressTest.cs">
       <Link>AddressTest.cs</Link>

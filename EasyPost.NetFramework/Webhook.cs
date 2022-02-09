@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace EasyPost
 {
     public class Webhook : Resource
     {
+        [JsonProperty("disabled_at")]
         public DateTime? disabled_at { get; set; }
+        [JsonProperty("id")]
         public string id { get; set; }
+        [JsonProperty("mode")]
         public string mode { get; set; }
+        [JsonProperty("url")]
         public string url { get; set; }
 
         /// <summary>

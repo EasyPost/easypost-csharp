@@ -54,7 +54,7 @@
 //            Request request = new Request("resource");
 
 //            List<String> parameters = client.PrepareRequest(request).Parameters.Select(parameter => parameter.ToString()).ToList();
-//            CollectionAssert.Contains(parameters, "user_agent=EasyPost.NetFramework/v2 CSharp/" + client.version);
+//            CollectionAssert.Contains(parameters, "user_agent=EasyPost/v2 CSharp/" + client.version);
 //            CollectionAssert.Contains(parameters, "authorization=Bearer someapikey");
 //            CollectionAssert.Contains(parameters, "content_type=application/json");
 //        }
