@@ -6,7 +6,7 @@
         <version>2.8.1</version>
         <authors>EasyPost</authors>
         <owners>EasyPost</owners>
-        <projectUrl>http://www.easypost.com</projectUrl>
+        <projectUrl>https://www.easypost.com</projectUrl>
         <license type="expression">MIT</license>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>EasyPost Shipping API Client Library for .NET https://easypost.com/docs</description>
@@ -16,34 +16,28 @@
                 <dependency id="Newtonsoft.Json" version="11.0.2" />
                 <dependency id="RestSharpSigned" version="105.2.3" />
             </group>
-            <group targetFramework="net40">
-                <dependency id="Newtonsoft.Json" version="11.0.2" />
-                <dependency id="RestSharpSigned" version="105.2.3" />
-            </group>
-            <group targetFramework="net45">
-                <dependency id="Newtonsoft.Json" version="11.0.2" />
-                <dependency id="RestSharp" version="106.4.2" />
-            </group>
-            <group targetFramework="netcoreapp2.0">
-                <dependency id="Newtonsoft.Json" version="11.0.2" />
-                <dependency id="RestSharp" version="106.4.2" />
-            </group>
             <group targetFramework="netcoreapp3.1">
+                <dependency id="Newtonsoft.Json" version="11.0.2" />
+                <dependency id="RestSharp" version="106.4.2" />
+            </group>
+            <group targetFramework="net5.0">
+                <dependency id="Newtonsoft.Json" version="11.0.2" />
+                <dependency id="RestSharp" version="106.4.2" />
+            </group>
+            <group targetFramework="net6.0">
                 <dependency id="Newtonsoft.Json" version="11.0.2" />
                 <dependency id="RestSharp" version="106.4.2" />
             </group>
         </dependencies>
     </metadata>
     <files>
-        <file src="lib\net35\EasyPost.Net35.dll" target="lib\net35" />
-        <file src="lib\net35\EasyPost.Net35.xml" target="lib\net35" />
-        <file src="lib\net40\EasyPost.Net40.dll" target="lib\net40" />
-        <file src="lib\net40\EasyPost.Net40.xml" target="lib\net40" />
-        <file src="lib\net45\EasyPost.dll" target="lib\net45" />
-        <file src="lib\net45\EasyPost.xml" target="lib\net45" />
-        <file src="lib\netcoreapp2.0\netcoreapp2.0\EasyPost.NetCore20.dll" target="lib\netcoreapp2.0" />
-        <file src="lib\netcoreapp2.0\EasyPost.NetCore20.xml" target="lib\netcoreapp2.0" />
-        <file src="lib\netcoreapp3.1\netcoreapp3.1\EasyPost.NetCore31.dll" target="lib\netcoreapp3.1" />
-        <file src="lib\netcoreapp3.1\EasyPost.NetCore31.xml" target="lib\netcoreapp3.1" />
+        <file src="lib\netframework\EasyPost.NetFramework.dll" target="lib\net3.5" />
+        <file src="lib\netframework\EasyPost.NetFramework.XML" target="lib\net3.5" />
+        <file src="lib\net\netcoreapp3.1\EasyPost.Net.dll" target="lib\netcoreapp3.1" />
+        <file src="lib\net\netcoreapp3.1\EasyPost.Net.XML" target="lib\netcoreapp3.1" />
+        <file src="lib\net\net5.0\EasyPost.Net.dll" target="lib\net5.0" />
+        <file src="lib\net\net5.0\EasyPost.Net.XML" target="lib\net5.0" />
+        <file src="lib\net\net6.0\EasyPost.Net.dll" target="lib\net6.0" />
+        <file src="lib\net\net6.0\EasyPost.Net.XML" target="lib\net6.0" />
     </files>
 </package>
