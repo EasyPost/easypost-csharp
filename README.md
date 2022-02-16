@@ -178,14 +178,6 @@ foreach (Form form in shipment.forms) {
 
 NOTE: The EasyPost .NET client library (in particular, the `ClientManager` global object) is not threadsafe; do not attempt to perform requests from multiple threads in parallel. This can be particularly problematic if using multiple API keys; make sure to always use a Mutex, Monitor, or other synchronization method to ensure that concurrent requests do not enter the EasyPost library from different threads.
 
-### Releasing
-
-1. Update the [CHANGELOG](CHANGELOG.md).
-1. Bump `version` in `EasyPost.nuspec` and `AssemblyVersion` in all `csproj` files.
-1. Rebuild the library to update `dll`s in `lib` directory.
-1. Create a git tag named the version number, e.g. `2.1.2.1`, and push it.
-1. Publish new version on Nuget.
-
 ### Reporting Issues
 
 If you have an issue with the client feel free to open an issue on [GitHub](https://github.com/EasyPost/easypost-csharp/issues). If you have a general shipping question or a questions about EasyPost's service please contact support@easypost.com for additional assitance.
