@@ -1,6 +1,13 @@
 # CHANGELOG
 
+## v2.8.1 (2022-02-17)
+
+* Repackaged the project which contains all the changes made from `2.6.0` - `2.8.0`
+* Added .NET Core 3.1 in the package (was previously built but not packaged starting in `2.6.0`)
+
 ## v2.8.0 (2022-02-16)
+
+**NOTE:** This release does not contain these changes due to an error in how it was packaged and released. Please use `v2.8.1` or newer.
 
 * Adds the missing Insurance object and associated actions (closes #47)
 * Adds support for updating a user's brand
@@ -19,9 +26,13 @@
 
 ## v2.7.0 (2021-11-24)
 
+**NOTE:** This release does not contain these changes due to an error in how it was packaged and released. Please use `v2.8.1` or newer.
+
 * Adds support for tax identifiers (PR #181)
 
 ## v2.6.0 (2021-11-03)
+
+**NOTE:** This release does not contain these changes due to an error in how it was packaged and released. Please use `v2.8.1` or newer.
 
 * Adds missing `commercial_invoice_letterhead` option (closes #142)
 * Adds missing `license_number` option
@@ -31,6 +42,7 @@
 * Updates various information in the README related to thread-safety, examples, releasing, etc
 * Adds all missing dates and versions to the CHANGELOG
 * Bumps RestSharp from 106.4.2 to 106.13.0
+* Adds support for .NET Core 3.1
 * Includes SmartRate handling.
 * Updated Code Signing Identity.
 
