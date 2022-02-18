@@ -2,12 +2,10 @@
 
 ## v2.8.1 (2022-02-17)
 
-* Repackaged the project which contains all the changes made from `2.6.0` - `2.8.0`
-* Added .NET Core 3.1 in the package (was previously built but not packaged starting in `2.6.0`)
+* Repackaged the project which contains all the changes made from `2.6.0` - `2.8.0` (see details below)
+* Added .NET Core 3.1 to the released package (was previously built but not included starting in `2.6.0`)
 
-## v2.8.0 (2022-02-16)
-
-**NOTE:** This release does not contain these changes due to an error in how it was packaged and released. Please use `v2.8.1` or newer.
+**This release includes changes intended for v2.8.0**
 
 * Adds the missing Insurance object and associated actions (closes #47)
 * Adds support for updating a user's brand
@@ -24,15 +22,11 @@
 * Lints the entire project and adds/updates docstrings throughout
 * Fixes the test suite for the project making it runnable once again
 
-## v2.7.0 (2021-11-24)
-
-**NOTE:** This release does not contain these changes due to an error in how it was packaged and released. Please use `v2.8.1` or newer.
+**This release includes changes intended for v2.7.0**
 
 * Adds support for tax identifiers (PR #181)
 
-## v2.6.0 (2021-11-03)
-
-**NOTE:** This release does not contain these changes due to an error in how it was packaged and released. Please use `v2.8.1` or newer.
+**This release includes changes intended for v2.6.0 & v2.6.1**
 
 * Adds missing `commercial_invoice_letterhead` option (closes #142)
 * Adds missing `license_number` option
@@ -45,6 +39,18 @@
 * Adds support for .NET Core 3.1
 * Includes SmartRate handling.
 * Updated Code Signing Identity.
+
+## v2.8.0 (2022-02-16)
+
+This release was mispackaged, please use `v2.8.1` or newer.
+
+## v2.7.0 (2021-11-24)
+
+This release was mispackaged, please use `v2.8.1` or newer.
+
+## v2.6.0 & v2.6.1 (2021-11-03)
+
+This release was mispackaged, please use `v2.8.1` or newer.
 
 ## v2.5.1.3 (2020-01-07)
 
