@@ -16,10 +16,10 @@ jobs:
         run: dotnet-format --check --exclude /
   NET_Tests:
     # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
-    runs-on: windows-2019
+    runs-on: windows-2022
     strategy:
       matrix:
-        dotnet-version: [ 'Net35', 'Net40', 'NetCore31' ]
+        dotnet-version: [ 'NetFramework35', 'NetCore31', 'Net50', 'Net60' ]
     steps:
       - uses: actions/checkout@v2
         # Set the project name, based on .NET version currently selected
@@ -40,7 +40,7 @@ jobs:
         run: nuget restore EasyPost.sln
         # Build the test project
       - name: Build Solution
-        run: msbuild ${{ steps.test_project.outputs.test_file }}\${{ steps.test_project.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Test" /p:outputPath="bin/Test" /p:target="Rebuild" -restore
+        run: msbuild ${{ steps.test_project.outputs.test_file }}\${{ steps.test_project.outputs.test_file }}.csproj /p:platform="Any CPU" /p:configuration="Debug" /p:outputPath="bin/Test" /p:target="Rebuild" -restore
         # Run the tests
       - name: Run Tests
         run: vstest.console.exe ${{ steps.test_project.outputs.test_file }}\bin\Test\${{ steps.test_project.outputs.test_file }}.dll
