@@ -11,7 +11,7 @@ namespace EasyPost.Tests.Net
         public void Initialize() => ClientManager.SetCurrent("GxhY479LTioDWsGcEtSAfQ");
 
         [TestMethod]
-        public void TestList()
+        public void TestAll()
         {
             List<ApiKey> keys = ApiKey.All();
             Assert.AreEqual(keys.Count, 2);

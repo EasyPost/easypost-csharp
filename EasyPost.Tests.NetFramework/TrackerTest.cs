@@ -53,9 +53,9 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestList()
+        public void TestAll()
         {
-            TrackerList trackerList = Tracker.List(new Dictionary<string, object>
+            TrackerList trackerList = Tracker.All(new Dictionary<string, object>
             {
                 {
                     "page_size", 1

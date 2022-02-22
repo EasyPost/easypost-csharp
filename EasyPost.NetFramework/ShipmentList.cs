@@ -10,7 +10,7 @@ namespace EasyPost
         public List<Shipment> shipments { get; set; }
 
         /// <summary>
-        ///     Get the next page of shipments based on the original parameters passed to Shipment.List().
+        ///     Get the next page of shipments based on the original parameters passed to Shipment.All().
         /// </summary>
         /// <returns>A new EasyPost.ShipmentList instance.</returns>
         public ShipmentList Next()
@@ -18,7 +18,7 @@ namespace EasyPost
             filters = filters ?? new Dictionary<string, object>();
             filters["before_id"] = shipments.Last().id;
 
-            return Shipment.List(filters);
+            return Shipment.All(filters);
         }
     }
 }

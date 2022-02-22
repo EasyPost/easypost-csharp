@@ -47,9 +47,9 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestList()
+        public void TestAll()
         {
-            List<CarrierAccount> accounts = CarrierAccount.List();
+            List<CarrierAccount> accounts = CarrierAccount.All();
             Assert.AreEqual(accounts[0].id, "ca_7642d249fdcf47bcb5da9ea34c96dfcf");
         }
 
