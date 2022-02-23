@@ -24,8 +24,8 @@ namespace EasyPost.Tests.Net
             });
 
             RestRequest restRequest = (RestRequest)request;
-            CollectionAssert.Contains(restRequest.Parameters.Select(parameter => parameter.ToString()).ToList(),
-                "application/json={\"foo\":\"bar\"}");
+            List<string> parameters = restRequest.Parameters.Select(p => p.Value.ToString()).ToList();
+            CollectionAssert.Contains(parameters, "{\"foo\":\"bar\"}");
         }
 
         [TestMethod]

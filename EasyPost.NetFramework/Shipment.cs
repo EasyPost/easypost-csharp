@@ -1,44 +1,78 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace EasyPost
 {
     public class Shipment : Resource
     {
+        [JsonProperty("batch_id")]
         public string batch_id { get; set; }
+        [JsonProperty("batch_message")]
         public string batch_message { get; set; }
+        [JsonProperty("batch_status")]
         public string batch_status { get; set; }
+        [JsonProperty("buyer_address")]
         public Address buyer_address { get; set; }
+        [JsonProperty("carrier_accounts")]
         public List<CarrierAccount> carrier_accounts { get; set; }
+        [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
+        [JsonProperty("customs_info")]
         public CustomsInfo customs_info { get; set; }
+        [JsonProperty("fees")]
         public List<Fee> fees { get; set; }
+        [JsonProperty("forms")]
         public List<Form> forms { get; set; }
+        [JsonProperty("from_address")]
         public Address from_address { get; set; }
+        [JsonProperty("id")]
         public string id { get; set; }
+        [JsonProperty("insurance")]
         public string insurance { get; set; }
+        [JsonProperty("is_return")]
         public bool? is_return { get; set; }
+        [JsonProperty("messages")]
         public List<Message> messages { get; set; }
+        [JsonProperty("mode")]
         public string mode { get; set; }
+        [JsonProperty("options")]
         public Options options { get; set; }
+        [JsonProperty("order_id")]
         public string order_id { get; set; }
+        [JsonProperty("parcel")]
         public Parcel parcel { get; set; }
+        [JsonProperty("postage_label")]
         public PostageLabel postage_label { get; set; }
+        [JsonProperty("rates")]
         public List<Rate> rates { get; set; }
+        [JsonProperty("reference")]
         public string reference { get; set; }
+        [JsonProperty("refund_status")]
         public string refund_status { get; set; }
+        [JsonProperty("return_address")]
         public Address return_address { get; set; }
+        [JsonProperty("scan_form")]
         public ScanForm scan_form { get; set; }
+        [JsonProperty("selected_rate")]
         public Rate selected_rate { get; set; }
+        [JsonProperty("service")]
         public string service { get; set; }
+        [JsonProperty("status")]
         public string status { get; set; }
+        [JsonProperty("tax_identifiers")]
         public List<TaxIdentifier> tax_identifiers { get; set; }
+        [JsonProperty("to_address")]
         public Address to_address { get; set; }
+        [JsonProperty("tracker")]
         public Tracker tracker { get; set; }
+        [JsonProperty("tracking_code")]
         public string tracking_code { get; set; }
+        [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
+        [JsonProperty("usps_zone")]
         public string usps_zone { get; set; }
 
         /// <summary>

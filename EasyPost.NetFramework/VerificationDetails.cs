@@ -4,8 +4,11 @@ namespace EasyPost
 {
     public class VerificationDetails : Resource
     {
-        public string latitude { get; set; }
-        public string longitude { get; set; }
+        [JsonProperty("latitude")]
+        public float latitude { get; set; }
+        [JsonProperty("longitude")]
+        public float longitude { get; set; }
+        [JsonProperty("time_zone")]
         public string time_zone { get; set; }
 
         /// <summary>

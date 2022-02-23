@@ -2,12 +2,16 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>
     <RootNamespace>EasyPost</RootNamespace>
     <AssemblyName>EasyPost.Net</AssemblyName>
-    <Configurations>Release;Debug;Test</Configurations>
+    <Configurations>Release;Debug</Configurations>
     <Platforms>AnyCPU</Platforms>
     <PackageId>EasyPost.Net</PackageId>
+    <LangVersion>8.0</LangVersion>
+    <ImplicitUsings>disable</ImplicitUsings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,7 +49,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2"/>
-    <PackageReference Include="RestSharp" Version="106.15.0"/>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="RestSharp" Version="107.3.0" />
   </ItemGroup>
+
 </Project>

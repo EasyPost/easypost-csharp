@@ -1,25 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace EasyPost
 {
     public class Batch : Resource
     {
+        [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
+        [JsonProperty("error")]
         public string error { get; set; }
+        [JsonProperty("id")]
         public string id { get; set; }
+        [JsonProperty("label_url")]
         public string label_url { get; set; }
+        [JsonProperty("message")]
         public string message { get; set; }
+        [JsonProperty("mode")]
         public string mode { get; set; }
+        [JsonProperty("num_shipments")]
         public int num_shipments { get; set; }
+        [JsonProperty("reference")]
         public string reference { get; set; }
+        [JsonProperty("scan_form")]
         public ScanForm scan_form { get; set; }
+        [JsonProperty("shipments")]
         public List<BatchShipment> shipments { get; set; }
+        [JsonProperty("state")]
         public string state { get; set; }
+        [JsonProperty("status")]
         public Dictionary<string, int> status { get; set; }
+        [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
+
 
         /// <summary>
         ///     Add shipments to this batch.

@@ -1,26 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace EasyPost
 {
     public class Pickup : Resource
     {
+        [JsonProperty("address")]
         public Address address { get; set; }
+        [JsonProperty("carrier_accounts")]
         public List<CarrierAccount> carrier_accounts { get; set; }
+        [JsonProperty("confirmation")]
         public string confirmation { get; set; }
+        [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
+        [JsonProperty("id")]
         public string id { get; set; }
+        [JsonProperty("instructions")]
         public string instructions { get; set; }
+        [JsonProperty("is_account_address")]
         public bool is_account_address { get; set; }
+        [JsonProperty("max_datetime")]
         public DateTime max_datetime { get; set; }
+        [JsonProperty("messages")]
         public List<string> messages { get; set; }
+        [JsonProperty("min_datetime")]
         public DateTime min_datetime { get; set; }
+        [JsonProperty("mode")]
         public string mode { get; set; }
+        [JsonProperty("name")]
         public string name { get; set; }
+        [JsonProperty("pickup_rates")]
         public List<Rate> pickup_rates { get; set; }
+        [JsonProperty("reference")]
         public string reference { get; set; }
+        [JsonProperty("status")]
         public string status { get; set; }
+        [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
 
         /// <summary>
@@ -30,7 +47,7 @@ namespace EasyPost
         /// <param name="service">The name of the service to purchase.</param>
         public void Buy(string carrier, string service)
         {
-            Request request = new Request("pickups/{id}/buy", Method.POST);
+            Request request = new Request("pickups/{id}/buy", Method.Post);
             request.AddUrlSegment("id", id);
             request.AddQueryString(new Dictionary<string, object>
             {
@@ -50,7 +67,7 @@ namespace EasyPost
         /// </summary>
         public void Cancel()
         {
-            Request request = new Request("pickups/{id}/cancel", Method.POST);
+            Request request = new Request("pickups/{id}/cancel", Method.Post);
             request.AddUrlSegment("id", id);
 
             Merge(request.Execute<Pickup>());
@@ -105,7 +122,7 @@ namespace EasyPost
 
         private static Pickup SendCreate(Dictionary<string, object> parameters)
         {
-            Request request = new Request("pickups", Method.POST);
+            Request request = new Request("pickups", Method.Post);
             request.AddBody(new Dictionary<string, object>
             {
                 {

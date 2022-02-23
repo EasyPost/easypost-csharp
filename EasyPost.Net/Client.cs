@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Reflection;
-using Newtonsoft.Json;
+using EasyPost.Utilities;
 using RestSharp;
 
 namespace EasyPost
@@ -43,40 +43,59 @@ namespace EasyPost
         public Client(ClientConfiguration clientConfiguration)
         {
             ServicePointManager.SecurityProtocol |= Security.GetProtocol();
-            _configuration = clientConfiguration ?? throw new ArgumentNullException("clientConfiguration");
-
-            _restClient = new RestClient(clientConfiguration.ApiBase);
-            _restClient.Timeout = ConnectTimeoutMilliseconds;
+            _configuration = clientConfiguration ?? throw new ArgumentNullException(nameof(clientConfiguration));
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
             _libraryVersion = info.FileVersion;
 
             _dotNetVersion = Environment.Version.ToString();
+
+            RestClientOptions clientOptions = new RestClientOptions()
+            {
+                Timeout = ConnectTimeoutMilliseconds,
+                BaseUrl = new Uri(clientConfiguration.ApiBase)
+            };
+
+            _restClient = new RestClient(clientOptions);
         }
 
         /// <summary>
         ///     Execute a request against the EasyPost API.
         /// </summary>
         /// <param name="request">EasyPost.Request object instance to execute.</param>
-        /// <returns>RestSharp.IRestResponse instance.</returns>
-        internal IRestResponse Execute(Request request) => _restClient.Execute(PrepareRequest(request));
+        /// <returns>RestSharp.RestResponse instance.</returns>
+        internal bool Execute(Request request)
+        {
+            RestResponse response = _restClient.ExecuteAsync(PrepareRequest(request)).GetAwaiter().GetResult();
+            return response.IsSuccessful;
+        }
 
         /// <summary>
         ///     Execute a request against the EasyPost API.
         /// </summary>
         /// <param name="request">EasyPost.Request object instance to execute.</param>
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
+        /// <param name="rootElement">Key of root element of the JSON response. Used while deserializing.</param>
         /// <returns>An instance of a T type object.</returns>
         /// <exception cref="HttpException">An error occurred during the API request.</exception>
-        internal T Execute<T>(Request request) where T : new()
+        internal T Execute<T>(Request request, string rootElement = null) where T : new()
         {
-            RestResponse<T> response = (RestResponse<T>)_restClient.Execute<T>(PrepareRequest(request));
+            RestResponse<T> response = (RestResponse<T>)_restClient.ExecuteAsync<T>(PrepareRequest(request)).GetAwaiter().GetResult();
             int statusCode = Convert.ToInt32(response.StatusCode);
+
+            List<string> rootElements = null;
+            if (rootElement != null)
+            {
+                rootElements = new List<string>
+                {
+                    rootElement
+                };
+            }
 
             if (statusCode < 400)
             {
-                return response.Data;
+                return JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
             }
 
             Dictionary<string, Dictionary<string, object>> body;
@@ -84,9 +103,9 @@ namespace EasyPost
 
             try
             {
-                body = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
-                errors = JsonConvert.DeserializeObject<List<Error>>(
-                    JsonConvert.SerializeObject(body["error"]["errors"]));
+                body = JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
+                string errorsSerialized = JsonSerialization.ConvertObjectToJson(body["error"]["errors"]);
+                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(errorsSerialized);
             }
             catch
             {

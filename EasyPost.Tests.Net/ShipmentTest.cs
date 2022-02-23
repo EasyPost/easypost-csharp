@@ -268,7 +268,7 @@ namespace EasyPost.Tests.Net
         [TestMethod]
         public void TestInstanceOptions()
         {
-            DateTime tomorrow = DateTime.SpecifyKind(DateTime.Now.AddDays(1), DateTimeKind.Utc);
+            DateTime tomorrow = DateTime.Now.AddDays(1).ToUniversalTime();
 
             Shipment shipment = CreateShipmentResource();
             shipment.options = new Options
@@ -277,8 +277,7 @@ namespace EasyPost.Tests.Net
             };
             shipment.Create();
 
-            Assert.AreEqual(tomorrow.ToString("yyyy-MM-ddTHH:mm:ssZ"),
-                ((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            Assert.AreEqual(tomorrow.ToString(), shipment.options.label_date.ToString());
         }
 
         [TestMethod]
@@ -373,8 +372,8 @@ namespace EasyPost.Tests.Net
         [TestMethod]
         public void TestOptions()
         {
-            string tomorrow = DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm:ssZ");
-            options["label_date"] = tomorrow;
+            DateTime tomorrow = DateTime.Now.AddDays(1);
+            options["label_date"] = tomorrow.ToString("yyyy-MM-ddTHH:mm:ssZ");
             options["print_custom"] = new List<Dictionary<string, object>>
             {
                 new Dictionary<string, object>
@@ -408,14 +407,14 @@ namespace EasyPost.Tests.Net
 
             Shipment shipment = Shipment.Create(parameters);
 
-            Assert.AreEqual(((DateTime)shipment.options.label_date).ToString("yyyy-MM-ddTHH:mm:ssZ"), tomorrow);
-            Assert.AreEqual(shipment.options.print_custom[0]["value"], "value");
-            Assert.AreEqual(shipment.options.print_custom[0]["name"], "name");
-            Assert.AreEqual(shipment.options.print_custom[0]["barcode"], true);
-            Assert.AreEqual(shipment.options.payment["type"], "THIRD_PARTY");
-            Assert.AreEqual(shipment.options.payment["account"], "12345");
-            Assert.AreEqual(shipment.options.payment["postal_code"], "54321");
-            Assert.AreEqual(shipment.options.payment["country"], "US");
+            Assert.AreEqual(tomorrow.ToString(), shipment.options.label_date.ToString());
+            Assert.AreEqual("value", shipment.options.print_custom[0]["value"]);
+            Assert.AreEqual("name", shipment.options.print_custom[0]["name"]);
+            Assert.AreEqual(true, shipment.options.print_custom[0]["barcode"]);
+            Assert.AreEqual("THIRD_PARTY", shipment.options.payment["type"]);
+            Assert.AreEqual("12345", shipment.options.payment["account"]);
+            Assert.AreEqual("54321", shipment.options.payment["postal_code"]);
+            Assert.AreEqual("US", shipment.options.payment["country"]);
         }
 
         [TestMethod]

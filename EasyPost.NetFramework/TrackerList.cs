@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace EasyPost
 {
     public class TrackerList
     {
+        [JsonProperty("filters")]
         public Dictionary<string, object> filters { get; set; }
+        [JsonProperty("has_more")]
         public bool has_more { get; set; }
+        [JsonProperty("trackers")]
         public List<Tracker> trackers { get; set; }
 
         /// <summary>

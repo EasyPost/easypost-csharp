@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace EasyPost
 {
     public class ShipmentList : Resource
     {
+        [JsonProperty("filters")]
         public Dictionary<string, object> filters { get; set; }
+        [JsonProperty("has_more")]
         public bool has_more { get; set; }
+        [JsonProperty("shipments")]
         public List<Shipment> shipments { get; set; }
 
         /// <summary>
