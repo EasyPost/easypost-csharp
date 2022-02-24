@@ -48,9 +48,15 @@ namespace EasyPost
             _restClient = new RestClient(clientConfiguration.ApiBase);
             _restClient.Timeout = ConnectTimeoutMilliseconds;
 
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
-            _libraryVersion = info.FileVersion;
+            try
+            {
+                // ref Example 1: https://docs.microsoft.com/en-us/dotnet/api/system.reflection.assemblyname.version?view=netframework-4.8#examples
+                _libraryVersion = typeof(Client).Assembly.GetName().Version.ToString();
+            } catch (Exception)
+            {
+                _libraryVersion = "Unknown";
+            }
+
 
             string dotNetVersion = Environment.Version.ToString();
             if (dotNetVersion == "4.0.30319.42000")
