@@ -3,6 +3,7 @@
 ## Next release
 
 * Rename method from List() to All() to make our library consistent
+* Remove `Rating` class since it's not being used in anywhere
 
 ## v2.8.1 (2022-02-17)
 
