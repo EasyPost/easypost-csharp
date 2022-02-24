@@ -4,6 +4,7 @@
 
 * Rename method from List() to All() to make our library consistent
 * Remove `Rating` class since it's not being used in anywhere
+* Add `RetrieveMe()` convenience function that allow users to retrieve without specifying an ID.
 
 ## v2.8.1 (2022-02-17)
 
