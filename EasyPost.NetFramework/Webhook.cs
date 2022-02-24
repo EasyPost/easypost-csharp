@@ -64,7 +64,7 @@ namespace EasyPost
         ///     Get a list of scan forms.
         /// </summary>
         /// <returns>List of EasyPost.Webhook instances.</returns>
-        public static List<Webhook> List(Dictionary<string, object> parameters = null)
+        public static List<Webhook> All(Dictionary<string, object> parameters = null)
         {
             Request request = new Request("webhooks");
 

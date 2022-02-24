@@ -16,7 +16,7 @@ namespace EasyPost
         public string type { get; set; }
 
         /// <summary>
-        ///     Get the next page of reports based on the original parameters passed to ReportList.List().
+        ///     Get the next page of reports based on the original parameters passed to ReportList.All().
         /// </summary>
         /// <returns>A new EasyPost.ScanFormList instance.</returns>
         public ReportList Next()
@@ -24,7 +24,7 @@ namespace EasyPost
             filters = filters ?? new Dictionary<string, object>();
             filters["before_id"] = reports.Last().id;
 
-            return Report.List(type, filters);
+            return Report.All(type, filters);
         }
     }
 }

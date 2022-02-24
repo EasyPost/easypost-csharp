@@ -87,7 +87,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>Instance of EasyPost.ShipmentList.</returns>
-        public static TrackerList List(Dictionary<string, object> parameters = null)
+        public static TrackerList All(Dictionary<string, object> parameters = null)
         {
             Request request = new Request("trackers");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());

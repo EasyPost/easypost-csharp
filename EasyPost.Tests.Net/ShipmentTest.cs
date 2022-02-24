@@ -281,9 +281,9 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestList()
+        public void TestAll()
         {
-            ShipmentList shipmentList = Shipment.List(new Dictionary<string, object>
+            ShipmentList shipmentList = Shipment.All(new Dictionary<string, object>
             {
                 {
                     "page_size", 1

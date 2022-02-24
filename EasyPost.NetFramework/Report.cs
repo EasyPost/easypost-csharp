@@ -66,7 +66,7 @@ namespace EasyPost
         /// </param>
         /// <param name="type">The type of report, e.g. "shipment", "tracker", "payment_log", etc.</param>
         /// <returns>Instance of EasyPost.ScanForm.</returns>
-        public static ReportList List(string type, Dictionary<string, object> parameters = null)
+        public static ReportList All(string type, Dictionary<string, object> parameters = null)
         {
             Request request = new Request("reports/{type}");
             request.AddUrlSegment("type", type);

@@ -316,7 +316,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>Instance of EasyPost.ShipmentList.</returns>
-        public static ShipmentList List(Dictionary<string, object> parameters = null)
+        public static ShipmentList All(Dictionary<string, object> parameters = null)
         {
             Request request = new Request("shipments");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());

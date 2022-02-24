@@ -26,7 +26,7 @@ namespace EasyPost.Tests.Net
                     "page_size", 1
                 }
             };
-            ScanFormList scanFormList = ScanForm.List(dict);
+            ScanFormList scanFormList = ScanForm.All(dict);
             Assert.AreNotEqual(null, scanFormList.scan_forms[0].batch_id);
             Assert.AreNotEqual(0, scanFormList.scan_forms.Count);
             ScanFormList nextScanFormList = scanFormList.Next();

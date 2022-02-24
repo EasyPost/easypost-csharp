@@ -87,7 +87,7 @@ namespace EasyPost
         ///     List all available carrier accounts.
         /// </summary>
         /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
-        public static List<CarrierAccount> List()
+        public static List<CarrierAccount> All()
         {
             Request request = new Request("carrier_accounts");
             return request.Execute<List<CarrierAccount>>();
