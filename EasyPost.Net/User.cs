@@ -155,5 +155,19 @@ namespace EasyPost
 
             return request.Execute<User>();
         }
+
+
+        /// <summary>
+        ///     Retrieve the current user.
+        /// </summary>
+        /// <returns>EasyPost.User instance.</returns>
+        public static User RetrieveMe()
+        {
+            Request request;
+
+            request = new Request("users");
+
+            return request.Execute<User>();
+        }
     }
 }

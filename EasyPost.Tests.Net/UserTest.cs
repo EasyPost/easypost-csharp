@@ -11,6 +11,13 @@ namespace EasyPost.Tests.Net
         public void Initialize() => ClientManager.SetCurrent("GxhY479LTioDWsGcEtSAfQ");
 
         [TestMethod]
+        public void TestRetrieveMe()
+        {
+            User user = User.RetrieveMe();
+            Assert.IsNotNull(user.id);
+        }
+
+        [TestMethod]
         public void TestRetrieveSelf()
         {
             User user = User.Retrieve();

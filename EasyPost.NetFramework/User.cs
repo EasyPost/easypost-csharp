@@ -132,7 +132,6 @@ namespace EasyPost
             return request.Execute<User>();
         }
 
-
         /// <summary>
         ///     Retrieve a User from its id. If no id is specified, it returns the user for the api_key specified.
         /// </summary>
@@ -151,6 +150,19 @@ namespace EasyPost
                 request = new Request("users/{id}");
                 request.AddUrlSegment("id", id);
             }
+
+            return request.Execute<User>();
+        }
+
+        /// <summary>
+        ///     Retrieve the current user.
+        /// </summary>
+        /// <returns>EasyPost.User instance.</returns>
+        public static User RetrieveMe()
+        {
+            Request request;
+
+            request = new Request("users");
 
             return request.Execute<User>();
         }
