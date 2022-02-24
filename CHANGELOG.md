@@ -4,6 +4,7 @@
 
 * Rename method from List() to All() to make our library consistent
 * Remove `Rating` class since it's not being used in anywhere
+* Removes `shipment.GetRates()` method since the shipment object already has rates. If you need to get new rates for a shipment, please use the `shipment.RegenerateRates()` method.
 
 ## v2.8.1 (2022-02-17)
 

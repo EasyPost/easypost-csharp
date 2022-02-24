@@ -112,7 +112,6 @@ namespace EasyPost.Tests.Net
         public void TestBuyWithInsurance()
         {
             Shipment shipment = Shipment.Create(parameters);
-            shipment.GetRates();
             shipment.Buy(shipment.rates.First(), "100.00");
 
             Assert.AreEqual(shipment.insurance, "100.00");
@@ -250,9 +249,8 @@ namespace EasyPost.Tests.Net
         public void TestGetRatesWithoutCreate()
         {
             Shipment shipment = CreateShipmentResource();
-            shipment.GetRates();
             Assert.IsNotNull(shipment.id);
-            Assert.IsNotNull(shipment.rates);
+            Assert.IsNull(shipment.rates);
         }
 
         [TestMethod]
@@ -537,7 +535,6 @@ namespace EasyPost.Tests.Net
         private Shipment BuyShipment()
         {
             Shipment shipment = Shipment.Create(parameters);
-            shipment.GetRates();
             shipment.Buy(shipment.rates.First());
             return shipment;
         }

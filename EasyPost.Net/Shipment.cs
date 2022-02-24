@@ -153,43 +153,6 @@ namespace EasyPost
         }
 
         /// <summary>
-        ///     Populate the rates property for this Shipment.
-        /// </summary>
-        public void GetRates()
-        {
-            if (id == null)
-            {
-                Create();
-            }
-
-            Request request = new Request("shipments/{id}/rates");
-            request.AddUrlSegment("id", id);
-
-            rates = request.Execute<Shipment>().rates;
-        }
-
-        /// <summary>
-        ///     Refresh the rates for this Shipment.
-        /// </summary>
-        /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
-        public void RegenerateRates(Dictionary<string, object> parameters = null)
-        {
-            if (id == null)
-            {
-                Create();
-            }
-
-            Request request = new Request("shipments/{id}/rerate", Method.Post);
-            request.AddUrlSegment("id", id);
-            if (parameters != null)
-            {
-                request.AddBody(parameters);
-            }
-
-            rates = request.Execute<Shipment>().rates;
-        }
-
-        /// <summary>
         ///     Get the Smartrates for this shipment.
         /// </summary>
         /// <returns>A list of EasyPost.Smartrate instances.</returns>
@@ -238,7 +201,7 @@ namespace EasyPost
         {
             if (rates == null)
             {
-                GetRates();
+                return null;
             }
 
             List<Rate> result = new List<Rate>(rates);
@@ -264,6 +227,27 @@ namespace EasyPost
             }
 
             return result.OrderBy(rate => double.Parse(rate.rate)).FirstOrDefault();
+        }
+
+        /// <summary>
+        ///     Refresh the rates for this Shipment.
+        /// </summary>
+        /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
+        public void RegenerateRates(Dictionary<string, object> parameters = null)
+        {
+            if (id == null)
+            {
+                Create();
+            }
+
+            Request request = new Request("shipments/{id}/rerate", Method.Post);
+            request.AddUrlSegment("id", id);
+            if (parameters != null)
+            {
+                request.AddBody(parameters);
+            }
+
+            rates = request.Execute<Shipment>().rates;
         }
 
         /// <summary>
