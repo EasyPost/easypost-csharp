@@ -52,11 +52,11 @@ namespace EasyPost
             {
                 // ref Example 1: https://docs.microsoft.com/en-us/dotnet/api/system.reflection.assemblyname.version?view=netframework-4.8#examples
                 _libraryVersion = typeof(Client).Assembly.GetName().Version.ToString();
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 _libraryVersion = "Unknown";
             }
-
 
             string dotNetVersion = Environment.Version.ToString();
             if (dotNetVersion == "4.0.30319.42000")
