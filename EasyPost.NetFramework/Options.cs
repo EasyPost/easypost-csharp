@@ -64,6 +64,8 @@ namespace EasyPost
         public string delivery_confirmation { get; set; }
         [JsonProperty("delivery_time_preference")]
         public string delivery_time_preference { get; set; }
+        [JsonProperty("dropoff_type")]
+        public string dropoff_type { get; set; }
         [JsonProperty("dry_ice")]
         public bool? dry_ice { get; set; }
         [JsonProperty("dry_ice_medical")]
@@ -166,6 +168,8 @@ namespace EasyPost
         public string smartpost_hub { get; set; }
         [JsonProperty("smartpost_manifest")]
         public string smartpost_manifest { get; set; }
+        [JsonProperty("billing_ref")]
+        public string billing_ref { get; set; }
         [JsonProperty("special_rates_eligibility")]
         public string special_rates_eligibility { get; set; }
         [JsonProperty("suppress_etd")]
