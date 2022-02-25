@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v2.8.2 (2022-02-25)
+
+* Fixes a bug where failure to retrieve Assembly information to populate the `User-Agent` header on some platforms/versions would result in the inability to make HTTP requests
+
 ## v2.8.1 (2022-02-17)
 
 * Repackaged the project which contains all the changes made from `2.6.0` - `2.8.0`
