@@ -181,6 +181,15 @@ namespace EasyPost.Tests.Net
         public void TestFailure() => Order.Create(new Dictionary<string, object>());
 
         [TestMethod]
+        public void TestGetRates()
+        {
+            Order order = Order.Create(parameters);
+            List<Rate> old = order.rates;
+            order.GetRates();
+            Assert.AreNotEqual(old, order.rates);
+        }
+
+        [TestMethod]
         public void TestOrderCarrierAccounts()
         {
             Dictionary<string, object> carrierAccounts =

@@ -85,7 +85,7 @@ namespace EasyPost
         /// <summary>
         ///     Populate the rates property for this Order.
         /// </summary>
-        public void RegenerateRates(Dictionary<string, object> parameters = null)
+        public void GetRates()
         {
             if (id == null)
             {
@@ -94,10 +94,6 @@ namespace EasyPost
 
             Request request = new Request("orders/{id}/rates");
             request.AddUrlSegment("id", id);
-            if (parameters != null)
-            {
-                request.AddBody(parameters);
-            }
 
             rates = request.Execute<Order>().rates;
         }
