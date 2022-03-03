@@ -89,6 +89,8 @@
     <Compile Include="Options.cs" />
     <Compile Include="ClientConfiguration.cs" />
     <Compile Include="ClientManager.cs" />
+    <Compile Include="Refund.cs" />
+    <Compile Include="RefundCollection.cs" />
     <Compile Include="Report.cs" />
     <Compile Include="ReportList.cs" />
     <Compile Include="Resource.cs" />
