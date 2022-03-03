@@ -190,6 +190,10 @@ A report will be generated for each version of the library (.NET Core 3.1, .NET 
 
 Final reports will be stored in the `coveragereport` folder in the root of the repository following generation.
 
+The script requires the following tools installed in your PATH:
+- `dotnet`
+- [`reportgenerator`](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?tabs=linux#generate-reports)
+
 ### Warning about Threads
 
 NOTE: The EasyPost .NET client library (in particular, the `ClientManager` global object) is not threadsafe; do not attempt to perform requests from multiple threads in parallel. This can be particularly problematic if using multiple API keys; make sure to always use a Mutex, Monitor, or other synchronization method to ensure that concurrent requests do not enter the EasyPost library from different threads.

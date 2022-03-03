@@ -1,11 +1,23 @@
 #!/bin/sh
 
-tests=(NetCore31 Net50 Net60 NetFramework35)
+# check requirements
+set -- dotnet reportgenerator
+for req in "$@"; do
+    if ! command -v "$req" > /dev/null 2>&1
+    then
+        echo "$req could not be found"
+        exit
+    fi
+done
 
-for test in "${tests[@]}"; do
+# generate reports for each version
+set -- NetCore31 Net50 Net60 NetFramework35
+
+for test in "$@"; do
+    (
     test_folder="EasyPost.Tests.$test"
-    cd "$test_folder"
+    cd "$test_folder" || exit
     dotnet test --collect:"XPlat Code Coverage"
-    reportgenerator -reports:TestResults/*/coverage.cobertura.xml -targetdir:../coveragereport/$test -reporttypes:Html
-    cd ..
+    reportgenerator -reports:TestResults/*/coverage.cobertura.xml -targetdir:../coveragereport/"$test" -reporttypes:Html
+    )
 done
