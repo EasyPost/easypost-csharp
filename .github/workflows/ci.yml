@@ -17,6 +17,9 @@ jobs:
   NET_Tests:
     # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
     runs-on: windows-2022
+    env:
+      EASYPOST_TEST_API_KEY: ${{ secrets.EASYPOST_TEST_API_KEY }}
+      EASYPOST_PROD_API_KEY: ${{ secrets.EASYPOST_PROD_API_KEY }}
     strategy:
       matrix:
         dotnet-version: [ 'NetFramework35', 'NetCore31', 'Net50', 'Net60' ]

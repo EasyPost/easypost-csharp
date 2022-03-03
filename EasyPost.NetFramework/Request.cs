@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using RestSharp;
+using RestSharp.Extensions;
 
 namespace EasyPost
 {
@@ -53,7 +54,15 @@ namespace EasyPost
         /// </summary>
         /// <param name="name">Name of segment.</param>
         /// <param name="value">Value of segment.</param>
-        public void AddUrlSegment(string name, string value) => restRequest.AddUrlSegment(name, value);
+        public void AddUrlSegment(string name, string value)
+        {
+            if (!value.HasValue())
+            {
+                throw new ArgumentNullException(name);
+            }
+
+            restRequest.AddUrlSegment(name, value);
+        }
 
         /// <summary>
         ///     Execute the request.
@@ -69,8 +78,8 @@ namespace EasyPost
         /// <summary>
         ///     Execute the request.
         /// </summary>
-        /// <returns>An IRestResponse object instance.</returns>
-        public IRestResponse Execute()
+        /// <returns>Whether the request was successful or not.</returns>
+        public bool Execute()
         {
             Client client = ClientManager.Build();
             return client.Execute(this);

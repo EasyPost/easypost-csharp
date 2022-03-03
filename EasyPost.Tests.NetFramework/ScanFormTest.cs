@@ -1,36 +1,64 @@
 ﻿using System.Collections.Generic;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPost.Tests.Net
+namespace EasyPost.Tests.NetFramework
 {
     [TestClass]
     public class ScanFormTest
     {
         [TestInitialize]
-        public void Initialize() => ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
-
-        [TestMethod]
-        public void TestScanFormCreateAndRetrieve()
+        public void Initialize()
         {
-            ScanForm scanForm = ScanForm.Retrieve("sf_e35ae7fc59bb4482ae32efc663267104");
-            Assert.AreEqual("sf_e35ae7fc59bb4482ae32efc663267104", scanForm.id);
+            TestSuite.SetUp(TestSuiteApiKey.Test);
+        }
+
+        private static ScanForm GetBasicScanForm()
+        {
+            Shipment shipment = Shipment.Create(Fixture.OneCallBuyShipment);
+            return ScanForm.Create(new List<Shipment>
+            {
+                shipment
+            });
         }
 
         [TestMethod]
-        public void TestScanFormList()
+        public void TestCreate()
         {
-            Dictionary<string, object> dict = new Dictionary<string, object>
+            ScanForm scanForm = GetBasicScanForm();
+
+            Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
+            Assert.IsTrue(scanForm.id.StartsWith("sf_"));
+        }
+
+        [TestMethod]
+        public void TestRetrieve()
+        {
+            ScanForm scanForm = GetBasicScanForm();
+
+            ScanForm retrievedScanForm = ScanForm.Retrieve(scanForm.id);
+
+            Assert.IsInstanceOfType(retrievedScanForm, typeof(ScanForm));
+            Assert.AreEqual(scanForm.id, retrievedScanForm.id);
+        }
+
+        [TestMethod]
+        public void TestAll()
+        {
+            ScanFormList scanFormList = ScanForm.All(new Dictionary<string, object>
             {
                 {
-                    "page_size", 1
+                    "page_size", Fixture.PageSize
                 }
-            };
-            ScanFormList scanFormList = ScanForm.All(dict);
-            Assert.AreNotEqual(null, scanFormList.scan_forms[0].batch_id);
-            Assert.AreNotEqual(0, scanFormList.scan_forms.Count);
-            ScanFormList nextScanFormList = scanFormList.Next();
-            Assert.AreNotEqual(scanFormList.scan_forms[0].id, nextScanFormList.scan_forms[0].id);
+            });
+
+            List<ScanForm> scanForms = scanFormList.scan_forms;
+
+            Assert.IsTrue(scanForms.Count <= Fixture.PageSize);
+            Assert.IsNotNull(scanFormList.has_more);
+            foreach (var scanForm in scanForms)
+            {
+                Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
+            }
         }
     }
 }

@@ -174,6 +174,14 @@ foreach (Form form in shipment.forms) {
 }
 ```
 
+### Testing
+
+All .NET/.NET Core versions of the library utilize a VCR tool (`Scotch`) to record and replay HTTP requests and responses via cassettes. These cassettes are used by our .NET/.NET Core unit tests; no live API calls are made once a cassette is recorded and the test is set to "replay" mode.
+
+The .NET Framework version of our library is incompatible with `Scotch`. As a result, live API calls are made during .NET Framework unit testing.
+
+Most unit tests can use a `Test` API key. Unit tests for `CarrierAccount` and `User` classes require `Production` API keys.
+
 ### Warning about Threads
 
 NOTE: The EasyPost .NET client library (in particular, the `ClientManager` global object) is not threadsafe; do not attempt to perform requests from multiple threads in parallel. This can be particularly problematic if using multiple API keys; make sure to always use a Mutex, Monitor, or other synchronization method to ensure that concurrent requests do not enter the EasyPost library from different threads.

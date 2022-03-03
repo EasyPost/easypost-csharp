@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
 {
@@ -8,38 +6,40 @@ namespace EasyPost.Tests.Net
     public class ParcelTest
     {
         [TestInitialize]
-        public void Initialize() => ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
-
-        [TestMethod]
-        public void TestCreateAndRetrieve()
+        public void Initialize()
         {
-            Parcel parcel = Parcel.Create(new Dictionary<string, object>
-            {
-                {
-                    "length", 10
-                },
-                {
-                    "width", 20
-                },
-                {
-                    "height", 5
-                },
-                {
-                    "weight", 1.8
-                }
-            });
-            Parcel retrieved = Parcel.Retrieve(parcel.id);
-            Assert.AreEqual(parcel.id, retrieved.id);
+            VCR.SetUp(VCRApiKey.Test, "parcel", true);
         }
 
-        // [TestMethod]
-        // public void TestPredefinedPackage() {
-        //     Parcel parcel = new Parcel() { weight = 1.8, predefined_package = "SMALLFLATRATEBOX" };
-        //     Shipment shipment = new Shipment() { parcel = parcel };
-        //     shipment.Create();
+        private static Parcel CreateBasicParcel()
+        {
+            return Parcel.Create(Fixture.BasicParcel);
+        }
 
-        //     Assert.AreEqual(null, shipment.parcel.height);
-        //     Assert.AreEqual("SMALLFLATRATEBOX", shipment.parcel.predefined_package);
-        // }
+        [TestMethod]
+        public void TestCreate()
+        {
+            VCR.Replay("create");
+
+            Parcel parcel = CreateBasicParcel();
+
+            Assert.IsInstanceOfType(parcel, typeof(Parcel));
+            Assert.IsTrue(parcel.id.StartsWith("prcl_"));
+            Assert.AreEqual(15.4, parcel.weight);
+        }
+
+        [TestMethod]
+        public void TestRetrieve()
+        {
+            VCR.Replay("retrieve");
+
+
+            Parcel parcel = CreateBasicParcel();
+
+            Parcel retrievedParcel = Parcel.Retrieve(parcel.id);
+
+            Assert.IsInstanceOfType(retrievedParcel, typeof(Parcel));
+            Assert.AreEqual(parcel.id, retrievedParcel.id);
+        }
     }
 }

@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EasyPost.Net\EasyPost.Net.csproj" />
+    <ProjectReference Include="..\Scotch\Scotch.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,32 +36,20 @@
     <Compile Include="..\EasyPost.Tests.Net\AddressTest.cs">
       <Link>AddressTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\ApiKeyTest.cs">
-      <Link>ApiKeyTest.cs</Link>
-    </Compile>
     <Compile Include="..\EasyPost.Tests.Net\BatchTest.cs">
       <Link>BatchTest.cs</Link>
     </Compile>
     <Compile Include="..\EasyPost.Tests.Net\CarrierAccountTest.cs">
       <Link>CarrierAccountTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\CarrierTypeTest.cs">
-      <Link>CarrierTypeTest.cs</Link>
-    </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\ClientConfigurationTest.cs">
-      <Link>ClientConfigurationTest.cs</Link>
-    </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\ClientManagerTest.cs">
-      <Link>ClientManagerTest.cs</Link>
-    </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\ClientTest.cs">
-      <Link>ClientTest.cs</Link>
-    </Compile>
     <Compile Include="..\EasyPost.Tests.Net\CustomsInfoTest.cs">
       <Link>CustomsInfoTest.cs</Link>
     </Compile>
     <Compile Include="..\EasyPost.Tests.Net\CustomsItemTest.cs">
       <Link>CustomsItemTest.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost.Tests.Net\EasyPostTest.cs">
+      <Link>EasyPostTest.cs</Link>
     </Compile>
     <Compile Include="..\EasyPost.Tests.Net\ErrorTest.cs">
       <Link>ErrorTest.cs</Link>
@@ -83,26 +72,17 @@
     <Compile Include="..\EasyPost.Tests.Net\RateTest.cs">
       <Link>RateTest.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost.Tests.Net\RefundTest.cs">
+      <Link>RefundTest.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost.Tests.Net\ReportTest.cs">
       <Link>ReportTest.cs</Link>
-    </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\RequestTest.cs">
-      <Link>RequestTest.cs</Link>
-    </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\ResourceTest.cs">
-      <Link>ResourceTest.cs</Link>
     </Compile>
     <Compile Include="..\EasyPost.Tests.Net\ScanFormTest.cs">
       <Link>ScanFormTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\SecurityTest.cs">
-      <Link>SecurityTest.cs</Link>
-    </Compile>
     <Compile Include="..\EasyPost.Tests.Net\ShipmentTest.cs">
       <Link>ShipmentTest.cs</Link>
-    </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\TimeoutTest.cs">
-      <Link>TimeoutTest.cs</Link>
     </Compile>
     <Compile Include="..\EasyPost.Tests.Net\TrackerTest.cs">
       <Link>TrackerTest.cs</Link>
@@ -112,6 +92,12 @@
     </Compile>
     <Compile Include="..\EasyPost.Tests.Net\WebhookTest.cs">
       <Link>WebhookTest.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost.Tests.Net\VCR.cs">
+      <Link>VCR.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost.Tests.Net\Fixture.cs">
+      <Link>Fixture.cs</Link>
     </Compile>
   </ItemGroup>
 

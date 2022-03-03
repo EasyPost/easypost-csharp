@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -7,29 +8,65 @@ namespace EasyPost.Tests.Net
     public class EventTest
     {
         [TestInitialize]
-        public void Initialize() => ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
-
-        [TestMethod]
-        public void TestLoad() => Assert.AreEqual(Resource.Load<Event>("{'id': 'barfoo'}").id, "barfoo");
-
-        [TestMethod]
-        [ExpectedException(typeof(HttpException))]
-        public void TestRetrieve()
+        public void Initialize()
         {
-            // Events are archived after some time. Lets at least make sure we get a 404.
-            Event e = Event.Retrieve("evt_d0000c1a9c6c4614949af6931ea9fac8");
+            VCR.SetUp(VCRApiKey.Test, "event", true);
+        }
+
+        private static EventCollection GetBasicEventCollection()
+        {
+            return Event.All(new Dictionary<string, object>
+            {
+                {
+                    "page_size", Fixture.PageSize
+                }
+            });
         }
 
         [TestMethod]
-        public void TestRetrieveAll()
+        public void TestAll()
         {
-            EventCollection eventCollection = Event.All();
-            Assert.IsNotNull(eventCollection);
-            foreach (Event tEvent in eventCollection.events)
+            VCR.Replay("all");
+
+            EventCollection eventCollection = GetBasicEventCollection();
+
+            List<Event> events = eventCollection.events;
+
+            Assert.IsTrue(events.Count <= Fixture.PageSize);
+            Assert.IsNotNull(eventCollection.has_more);
+            foreach (var item in events)
             {
-                Assert.IsNotNull(tEvent.id);
-                Assert.AreEqual(tEvent.id.Substring(0, 4), "evt_");
+                Assert.IsInstanceOfType(item, typeof(Event));
             }
+        }
+
+        [TestMethod]
+        public void TestRetrieve()
+        {
+            VCR.Replay("retrieve");
+
+
+            EventCollection eventCollection = GetBasicEventCollection();
+            Event _event = eventCollection.events[0];
+
+            Event retrievedEvent = Event.Retrieve(_event.id);
+
+            Assert.IsInstanceOfType(retrievedEvent, typeof(Event));
+            Assert.AreEqual(_event.id, retrievedEvent.id);
+        }
+
+        [TestMethod]
+        public void TestRetrieveBadInput()
+        {
+            VCR.Replay("retrieve_bad_input");
+
+            Assert.ThrowsException<HttpException>(() => Event.Retrieve("bad input"));
+        }
+
+        [TestMethod]
+        public void TestRetrieveNoInput()
+        {
+            Assert.ThrowsException<ArgumentNullException>(() => Event.Retrieve(""));
         }
     }
 }

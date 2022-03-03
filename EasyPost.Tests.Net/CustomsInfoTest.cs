@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
 {
@@ -8,77 +6,40 @@ namespace EasyPost.Tests.Net
     public class CustomsInfoTest
     {
         [TestInitialize]
-        public void Initialize() => ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
-
-        [TestMethod]
-        public void TestCreateAndRetrieve()
+        public void Initialize()
         {
-            Dictionary<string, object> item = new Dictionary<string, object>
-            {
-                {
-                    "description", "TShirt"
-                },
-                {
-                    "quantity", 1
-                },
-                {
-                    "weight", 8
-                },
-                {
-                    "origin_country", "US"
-                }
-            };
+            VCR.SetUp(VCRApiKey.Test, "customs_info", true);
+        }
 
-            CustomsInfo info = CustomsInfo.Create(new Dictionary<string, object>
-            {
-                {
-                    "customs_certify", true
-                },
-                {
-                    "eel_pfc", "NOEEI 30.37(a)"
-                },
-                {
-                    "customs_items", new List<Dictionary<string, object>>
-                    {
-                        item
-                    }
-                }
-            });
-
-            CustomsInfo retrieved = CustomsInfo.Retrieve(info.id);
-            Assert.AreEqual(info.id, retrieved.id);
-            Assert.IsNotNull(retrieved.customs_items);
+        private static CustomsInfo CreateBasicCustomsInfo()
+        {
+            return CustomsInfo.Create(Fixture.BasicCustomsInfo);
         }
 
         [TestMethod]
-        public void TestCreateWithIResource()
+        public void TestCreate()
         {
-            CustomsItem item = new CustomsItem
-            {
-                description = "description",
-                quantity = 1
-            };
-            CustomsInfo info = CustomsInfo.Create(
-                new Dictionary<string, object>
-                {
-                    {
-                        "customs_certify", true
-                    },
-                    {
-                        "eel_pfc", "NOEEI 30.37(a)"
-                    },
-                    {
-                        "customs_items", new List<IResource>
-                        {
-                            item
-                        }
-                    }
-                }
-            );
+            VCR.Replay("create");
 
-            Assert.IsNotNull(info.id);
-            Assert.AreEqual(info.customs_items.Count, 1);
-            Assert.AreEqual(info.customs_items[0].description, item.description);
+            CustomsInfo customsInfo = CreateBasicCustomsInfo();
+
+            Assert.IsInstanceOfType(customsInfo, typeof(CustomsInfo));
+            Assert.IsTrue(customsInfo.id.StartsWith("cstinfo_"));
+            Assert.AreEqual("NOEEI 30.37(a)", customsInfo.eel_pfc);
+        }
+
+        [TestMethod]
+        public void TestRetrieve()
+        {
+            VCR.Replay("retrieve");
+
+
+            CustomsInfo customsInfo = CreateBasicCustomsInfo();
+
+            CustomsInfo retrievedCustomsInfo = CustomsInfo.Retrieve(customsInfo.id);
+
+            Assert.IsInstanceOfType(retrievedCustomsInfo, typeof(CustomsInfo));
+            Assert.AreEqual(customsInfo.id, retrievedCustomsInfo.id);
         }
     }
 }

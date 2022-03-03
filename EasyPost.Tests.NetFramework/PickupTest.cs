@@ -1,160 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPost.Tests.Net
+namespace EasyPost.Tests.NetFramework
 {
     [TestClass]
     public class PickupTest
     {
-        private Address address;
-        private Dictionary<string, object> parameters, parcel, toAddress, fromAddress;
-        private Shipment shipment;
-
         [TestInitialize]
         public void Initialize()
         {
-            ClientManager.SetCurrent("NvBX2hFF44SVvTPtYjF0zQ");
+            TestSuite.SetUp(TestSuiteApiKey.Test);
+        }
 
-            address = new Address
-            {
-                company = "Simpler Postage Inc",
-                street1 = "164 Townsend Street",
-                street2 = "Unit 1",
-                city = "San Francisco",
-                state = "CA",
-                country = "US",
-                zip = "94107",
-                phone = "1234567890"
-            };
-
-            parcel = new Dictionary<string, object>
-            {
-                {
-                    "length", 8
-                },
-                {
-                    "width", 6
-                },
-                {
-                    "height", 5
-                },
-                {
-                    "weight", 10
-                }
-            };
-            toAddress = new Dictionary<string, object>
-            {
-                {
-                    "company", "Simpler Postage Inc"
-                },
-                {
-                    "street1", "164 Townsend Street"
-                },
-                {
-                    "street2", "Unit 1"
-                },
-                {
-                    "city", "San Francisco"
-                },
-                {
-                    "state", "CA"
-                },
-                {
-                    "country", "US"
-                },
-                {
-                    "zip", "94107"
-                }
-            };
-            fromAddress = new Dictionary<string, object>
-            {
-                {
-                    "name", "Andrew Tribone"
-                },
-                {
-                    "street1", "480 Fell St"
-                },
-                {
-                    "street2", "#3"
-                },
-                {
-                    "city", "San Francisco"
-                },
-                {
-                    "state", "CA"
-                },
-                {
-                    "country", "US"
-                },
-                {
-                    "zip", "94102"
-                }
-            };
-            shipment = Shipment.Create(new Dictionary<string, object>
-            {
-                {
-                    "parcel", parcel
-                },
-                {
-                    "to_address", toAddress
-                },
-                {
-                    "from_address", fromAddress
-                },
-                {
-                    "reference", "ShipmentRef"
-                }
-            });
-            shipment.Buy(shipment.LowestRate());
-
-            parameters = new Dictionary<string, object>
-            {
-                {
-                    "is_account_address", false
-                },
-                {
-                    "instructions", "In mailbox."
-                },
-                {
-                    "address", address
-                },
-                {
-                    "shipment", shipment
-                },
-                {
-                    "min_datetime", DateTime.Now.AddDays(1)
-                },
-                {
-                    "max_datetime", DateTime.Now.AddDays(1)
-                }
-            };
+        private static Pickup CreateBasicPickup()
+        {
+            Shipment shipment = Shipment.Create(Fixture.OneCallBuyShipment);
+            Dictionary<string, object> pickupData = Fixture.BasicPickup;
+            pickupData["shipment"] = shipment;
+            return Pickup.Create(pickupData);
         }
 
         [TestMethod]
-        public void TestBuyAndCancel()
+        public void TestCreate()
         {
-            Pickup pickup = Pickup.Create(parameters);
+            Pickup pickup = CreateBasicPickup();
 
-            pickup.Buy(pickup.pickup_rates[0].carrier, pickup.pickup_rates[0].service);
+            Assert.IsInstanceOfType(pickup, typeof(Pickup));
+            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
+            Assert.IsNotNull(pickup.pickup_rates);
+        }
+
+        [TestMethod]
+        public void TestRetrieve()
+        {
+            Pickup pickup = CreateBasicPickup();
+
+            Pickup retrievedPickup = Pickup.Retrieve(pickup.id);
+
+            Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
+            Assert.AreEqual(pickup.id, retrievedPickup.id);
+        }
+
+        [TestMethod]
+        public void TestBuy()
+        {
+            //use "TestCreate"
+            Pickup pickup = CreateBasicPickup();
+
+            pickup.Buy(Fixture.Usps, Fixture.NextDayService);
+
+            Assert.IsInstanceOfType(pickup, typeof(Pickup));
+            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
             Assert.IsNotNull(pickup.confirmation);
-
-            // XXX: This isn't working.
-            //pickup.Cancel();
-            //Assert.AreEqual(pickup.status, "canceled");
+            Assert.AreEqual("scheduled", pickup.status);
         }
 
         [TestMethod]
-        public void TestCreateAndRetrieve()
+        public void TestCancel()
         {
-            Pickup pickup = Pickup.Create(parameters);
+            //use "TestCreate"
+            Pickup pickup = CreateBasicPickup();
 
-            Assert.IsNotNull(pickup.id);
-            Assert.AreEqual(pickup.address.street1, "164 Townsend Street");
+            pickup.Buy(Fixture.Usps, Fixture.NextDayService);
 
-            Pickup retrieved = Pickup.Retrieve(pickup.id);
-            Assert.AreEqual(pickup.id, retrieved.id);
+            pickup.Cancel();
+
+            Assert.IsInstanceOfType(pickup, typeof(Pickup));
+            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
+            Assert.AreEqual("canceled", pickup.status);
         }
     }
 }

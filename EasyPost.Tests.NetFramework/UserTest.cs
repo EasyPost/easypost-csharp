@@ -1,79 +1,131 @@
 ﻿using System.Collections.Generic;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPost.Tests.Net
+namespace EasyPost.Tests.NetFramework
 {
     [TestClass]
     public class UserTest
     {
         [TestInitialize]
-        public void Initialize() => ClientManager.SetCurrent("GxhY479LTioDWsGcEtSAfQ");
+        public void Initialize()
+        {
+            TestSuite.SetUp(TestSuiteApiKey.Production);
+        }
+
+        private static User RetrieveMe()
+        {
+            return User.RetrieveMe();
+        }
+
+        private static User CreateUser()
+        {
+            return User.Create(new Dictionary<string, object>
+            {
+                {
+                    "name", "Test User"
+                }
+            });
+        }
+
+        // This endpoint returns the child user keys in plain text, do not run this test.
+        [Ignore]
+        [TestMethod]
+        public void TestCreate()
+        {
+            User user = CreateUser();
+
+            Assert.IsInstanceOfType(user, typeof(User));
+            Assert.IsTrue(user.id.StartsWith("user_"));
+            Assert.AreEqual("Test User", user.name);
+        }
+
+        [TestMethod]
+        public void TestRetrieve()
+        {
+            User user = User.Retrieve(Fixture.ChildUserId);
+
+            Assert.IsInstanceOfType(user, typeof(User));
+            Assert.IsTrue(user.id.StartsWith("user_"));
+            Assert.AreEqual(Fixture.ChildUserId, user.id);
+        }
+
 
         [TestMethod]
         public void TestRetrieveMe()
         {
-            User user = User.RetrieveMe();
-            Assert.IsNotNull(user.id);
+            User user = RetrieveMe();
+
+            Assert.IsInstanceOfType(user, typeof(User));
+            Assert.IsTrue(user.id.StartsWith("user_"));
         }
 
         [TestMethod]
-        public void TestRetrieveSelf()
+        public void TestUpdate()
         {
-            User user = User.Retrieve();
-            Assert.IsNotNull(user.id);
+            User user = RetrieveMe();
 
-            User user2 = User.Retrieve(user.id);
-            Assert.AreEqual(user.id, user2.id);
+            string testPhone = "5555555555";
+
+            Dictionary<string, object> userDict = new Dictionary<string, object>
+            {
+                {
+                    "phone_number", testPhone
+                }
+            };
+            user.Update(userDict);
+
+            Assert.IsInstanceOfType(user, typeof(User));
+            Assert.IsTrue(user.id.StartsWith("user_"));
+            Assert.AreEqual(testPhone, user.phone_number);
+        }
+
+        // Due to our inability to create child users securely, we must also skip deleting them as we cannot replace the deleted ones easily.
+        [Ignore]
+        [TestMethod]
+        public void TestDelete()
+        {
+            User user = CreateUser();
+
+            user.Destroy();
+        }
+
+        // API keys are returned as plaintext, do not run this test.
+        [Ignore]
+        [TestMethod]
+        public void TestAllApiKeys()
+        {
+            User user = RetrieveMe();
+
+            // TODO: User doesn't have a .all_api_keys() method
+            List<ApiKey> apiKeys = user.api_keys;
+        }
+
+        // API keys are returned as plaintext, do not run this test.
+        [Ignore]
+        [TestMethod]
+        public void TestApiKeys()
+        {
+            User user = RetrieveMe();
+
+            List<ApiKey> apiKeys = user.api_keys;
         }
 
         [TestMethod]
         public void TestUpdateBrand()
         {
-            User user = User.Retrieve();
-            Assert.IsNotNull(user.id);
+            User user = RetrieveMe();
 
-            const string color = "#AA4A44";
-            Dictionary<string, object> details = new Dictionary<string, object>()
+            string color = "#123456";
+            Brand brand = user.UpdateBrand(new Dictionary<string, object>
             {
                 {
                     "color", color
                 }
-            };
-            Brand brand = user.UpdateBrand(parameters: details);
-            Assert.IsNotNull(brand);
-            Assert.AreEqual(user.id, brand.user_id);
+            });
+
+            Assert.IsInstanceOfType(brand, typeof(Brand));
+            // TODO: Brand doesn't have an ID
             Assert.AreEqual(color, brand.color);
         }
-
-        // [TestMethod]
-        // public void TestCRUD() {
-        //     try {
-        //         User.Create(new Dictionary<string, object>() { { "name", "foo" } });
-        //         Assert.Fail();
-        //     } catch (HttpException e) {
-        //         Assert.AreEqual("USER.INVALID", e.Code);
-        //         Assert.AreEqual("The user record was invalid and could not be saved.", e.Message);
-        //         Assert.AreEqual(1, e.Errors.Count);
-        //         Assert.AreEqual("name", e.Errors[0].field);
-        //         Assert.AreEqual("First and last name required.", e.Errors[0].message);
-        //     }
-
-        //     User user = User.Create(new Dictionary<string, object>() { { "name", "Test Name" } });
-        //     Assert.AreEqual(user.api_keys.Count, 2);
-        //     Assert.IsNotNull(user.id);
-
-        //     User other = User.Retrieve(user.id);
-        //     Assert.AreEqual(user.id, other.id);
-
-        //     user.Update(new Dictionary<string, object>() { { "name", "NewTest Name" } });
-        //     Assert.AreEqual("NewTest Name", user.name);
-
-        //     user.Destroy();
-        //     try {
-        //         User.Retrieve(user.id);
-        //         Assert.Fail();
-        //     } catch (HttpException) { }
-        // }
     }
 }

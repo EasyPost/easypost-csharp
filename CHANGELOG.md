@@ -4,8 +4,13 @@
 
 * Rename method from List() to All() to make our library consistent
 * Remove `Rating` class since it's not being used in anywhere
+* Removes `shipment.GetRates()` method since the shipment object already has rates. If you need to get new rates for a shipment, please use the `shipment.RegenerateRates()` method.
 * Add `RetrieveMe()` convenience function that allow users to retrieve without specifying an ID.
 * Adds missing `billing_ref` and `dropoff_type` options
+* Adds full test suite for .NET/.NET Core (using VCR) and .NET Framework versions
+* Fix bug where AddressCollection was storing Batch objects rather than Address objects
+* Adds option to pass in a custom `HttpClient` to the Client constructor (.NET/.NET Core only)
+* Fix Address creation respecting `verify` and `verify_strict` parameters
 
 ## v2.8.1 (2022-02-17)
 
