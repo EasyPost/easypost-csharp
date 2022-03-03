@@ -11,6 +11,7 @@
 * Fix bug where AddressCollection was storing Batch objects rather than Address objects
 * Adds option to pass in a custom `HttpClient` to the Client constructor (.NET/.NET Core only)
 * Fix Address creation respecting `verify` and `verify_strict` parameters
+* Add missing `id` property to `Brand` class
 
 ## v2.8.1 (2022-02-17)
 

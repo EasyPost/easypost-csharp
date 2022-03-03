@@ -145,7 +145,7 @@ namespace EasyPost.Tests.Net
             });
 
             Assert.IsInstanceOfType(brand, typeof(Brand));
-            // TODO: Brand doesn't have an ID
+            Assert.IsTrue(brand.id.StartsWith("brd_"));
             Assert.AreEqual(color, brand.color);
         }
     }
