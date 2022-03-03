@@ -47,17 +47,17 @@ namespace EasyPost.Tests.Net
         {
             VCR.Replay("all");
 
-            ShipmentList shipmentList = Shipment.All(new Dictionary<string, object>
+            ShipmentCollection shipmentCollection = Shipment.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
                 }
             });
 
-            List<Shipment> shipments = shipmentList.shipments;
+            List<Shipment> shipments = shipmentCollection.shipments;
 
             Assert.IsTrue(shipments.Count <= Fixture.PageSize);
-            Assert.IsNotNull(shipmentList.has_more);
+            Assert.IsNotNull(shipmentCollection.has_more);
             foreach (var shipment in shipments)
             {
                 Assert.IsInstanceOfType(shipment, typeof(Shipment));

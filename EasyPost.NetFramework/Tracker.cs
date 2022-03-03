@@ -86,15 +86,15 @@ namespace EasyPost
         ///     * {"page_size", int} Size of page. Default to 30.
         ///     All invalid keys will be ignored.
         /// </param>
-        /// <returns>Instance of EasyPost.ShipmentList.</returns>
-        public static TrackerList All(Dictionary<string, object> parameters = null)
+        /// <returns>An EasyPost.TrackerCollection instance.</returns>
+        public static TrackerCollection All(Dictionary<string, object> parameters = null)
         {
             Request request = new Request("trackers");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            TrackerList trackerList = request.Execute<TrackerList>();
-            trackerList.filters = parameters;
-            return trackerList;
+            TrackerCollection trackerCollection = request.Execute<TrackerCollection>();
+            trackerCollection.filters = parameters;
+            return trackerCollection;
         }
 
         /// <summary>

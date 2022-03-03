@@ -51,17 +51,17 @@ namespace EasyPost.Tests.Net
         {
             VCR.Replay("all");
 
-            ScanFormList scanFormList = ScanForm.All(new Dictionary<string, object>
+            ScanFormCollection scanFormCollection = ScanForm.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
                 }
             });
 
-            List<ScanForm> scanForms = scanFormList.scan_forms;
+            List<ScanForm> scanForms = scanFormCollection.scan_forms;
 
             Assert.IsTrue(scanForms.Count <= Fixture.PageSize);
-            Assert.IsNotNull(scanFormList.has_more);
+            Assert.IsNotNull(scanFormCollection.has_more);
             foreach (var scanForm in scanForms)
             {
                 Assert.IsInstanceOfType(scanForm, typeof(ScanForm));

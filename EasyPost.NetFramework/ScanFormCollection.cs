@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost
 {
-    public class ScanFormList : Resource
+    public class ScanFormCollection : Resource
     {
         [JsonProperty("filters")]
         public Dictionary<string, object> filters { get; set; }
@@ -16,8 +16,8 @@ namespace EasyPost
         /// <summary>
         ///     Get the next page of scan forms based on the original parameters passed to ScanForm.All().
         /// </summary>
-        /// <returns>A new EasyPost.ScanFormList instance.</returns>
-        public ScanFormList Next()
+        /// <returns>An EasyPost.ScanFormCollection instance.</returns>
+        public ScanFormCollection Next()
         {
             filters = filters ?? new Dictionary<string, object>();
             filters["before_id"] = scan_forms.Last().id;

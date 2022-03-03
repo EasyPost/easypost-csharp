@@ -194,7 +194,7 @@ namespace EasyPost
         ///     * {"page_size", int} Max size of list. Default to 20.
         ///     All invalid keys will be ignored.
         /// </param>
-        /// <returns>EasyPost.BatchCollection instance.</returns>
+        /// <returns>An EasyPost.BatchCollection instance.</returns>
         public static BatchCollection All(Dictionary<string, object> parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();

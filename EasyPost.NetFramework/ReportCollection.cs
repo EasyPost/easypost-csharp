@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost
 {
-    public class ReportList
+    public class ReportCollection : Resource
     {
         [JsonProperty("filters")]
         public Dictionary<string, object> filters { get; set; }
@@ -18,8 +18,8 @@ namespace EasyPost
         /// <summary>
         ///     Get the next page of reports based on the original parameters passed to ReportList.All().
         /// </summary>
-        /// <returns>A new EasyPost.ScanFormList instance.</returns>
-        public ReportList Next()
+        /// <returns>An EasyPost.ReportCollection instance.</returns>
+        public ReportCollection Next()
         {
             filters = filters ?? new Dictionary<string, object>();
             filters["before_id"] = reports.Last().id;
