@@ -6,26 +6,26 @@ using System.Security.Permissions;
 namespace EasyPost
 {
     [Serializable]
-    public class HttpException : Exception
+    public class ApiException : Exception
     {
-        public string Code;
+        public string? Code;
 
-        public List<Error> Errors;
+        public ApiError ApiError;
 
         public int StatusCode;
 
         /// <summary>
-        ///     Constructor for an HttpException.
+        ///     Constructor for an ApiException.
         /// </summary>
         /// <param name="statusCode">Status code.</param>
         /// <param name="code">Error code.</param>
         /// <param name="message">Error message.</param>
-        /// <param name="errors">A list of EasyPost.Error instances.</param>
-        public HttpException(int statusCode, string code, string message, List<Error> errors) : base(message)
+        /// <param name="apiError">An EasyPost.ApiError instance.</param>
+        public ApiException(int statusCode, string? code, string message, ApiError apiError) : base(message)
         {
             StatusCode = statusCode;
             Code = code;
-            Errors = errors;
+            ApiError = apiError;
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace EasyPost
             base.GetObjectData(info, context);
             info.AddValue("StatusCode", StatusCode);
             info.AddValue("Code", Code);
-            info.AddValue("Errors", Errors);
+            info.AddValue("Error", ApiError);
         }
     }
 

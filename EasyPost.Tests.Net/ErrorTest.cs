@@ -22,12 +22,12 @@ namespace EasyPost.Tests.Net
             {
                 var _ = Shipment.Create();
             }
-            catch (HttpException error)
+            catch (ApiException error)
             {
                 Assert.AreEqual(422, error.StatusCode);
                 Assert.AreEqual("SHIPMENT.INVALID_PARAMS", error.Code);
                 Assert.AreEqual("Unable to create shipment, one or more parameters were invalid.", error.Message);
-                Assert.IsTrue(error.Errors.Count == 2);
+                Assert.IsTrue(error.ApiError.suggestions.Count == 2);
             }
         }
     }

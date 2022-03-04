@@ -88,7 +88,7 @@ namespace EasyPost
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
         /// <param name="rootElement">Key of root element of the JSON response. Used while deserializing.</param>
         /// <returns>An instance of a T type object.</returns>
-        /// <exception cref="HttpException">An error occurred during the API request.</exception>
+        /// <exception cref="ApiException">An error occurred during the API request.</exception>
         internal T Execute<T>(Request request, string rootElement = null) where T : new()
         {
             RestResponse<T> response = _restClient.ExecuteAsync<T>(PrepareRequest(request)).GetAwaiter().GetResult();
@@ -109,24 +109,23 @@ namespace EasyPost
             }
 
             Dictionary<string, Dictionary<string, object>> body;
-            List<Error> errors;
+            ApiError error;
 
             try
             {
-                body = JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
-                string errorsSerialized = JsonSerialization.ConvertObjectToJson(body["error"]["errors"]);
-                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(errorsSerialized);
+                error = new ApiError(response.Content ?? "");
             }
             catch
             {
-                throw new HttpException(statusCode, "RESPONSE.PARSE_ERROR", response.Content, new List<Error>());
+                error = new ApiError("RESPONSE.PARSE_ERROR", response.Content ?? "");
+                throw new ApiException(statusCode, error.code, error.message, error);
             }
 
-            throw new HttpException(
+            throw new ApiException(
                 statusCode,
-                (string)body["error"]["code"],
-                (string)body["error"]["message"],
-                errors
+                error.code,
+                error.message,
+                error
             );
         }
 

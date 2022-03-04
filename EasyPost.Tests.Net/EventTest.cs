@@ -60,7 +60,7 @@ namespace EasyPost.Tests.Net
         {
             VCR.Replay("retrieve_bad_input");
 
-            Assert.ThrowsException<HttpException>(() => Event.Retrieve("bad input"));
+            Assert.ThrowsException<ApiException>(() => Event.Retrieve("bad input"));
         }
 
         [TestMethod]

@@ -9,7 +9,7 @@ namespace EasyPost
         public VerificationDetails details { get; set; }
         [JsonProperty("errors")]
         // TODO: handle refactor of Error
-        public List<Error> errors { get; set; }
+        public List<ApiError> errors { get; set; }
         [JsonProperty("success")]
         public bool success { get; set; }
     }
