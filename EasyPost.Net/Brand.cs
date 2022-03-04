@@ -12,6 +12,8 @@ namespace EasyPost
         public string background_color { get; set; }
         [JsonProperty("color")]
         public string color { get; set; }
+        [JsonProperty("id")]
+        public string id { get; set; }
         [JsonProperty("logo")]
         public string logo { get; set; }
         [JsonProperty("logo_href")]
