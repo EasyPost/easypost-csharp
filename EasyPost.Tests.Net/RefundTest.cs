@@ -34,7 +34,7 @@ namespace EasyPost.Tests.Net
         [TestMethod]
         public void TestCreate()
         {
-            VCR.Record("create");
+            VCR.Replay("create");
 
             List<Refund> refunds = CreateBasicRefund();
 
@@ -51,7 +51,7 @@ namespace EasyPost.Tests.Net
         [TestMethod]
         public void TestAll()
         {
-            VCR.Record("all");
+            VCR.Replay("all");
 
             RefundCollection refundCollection = Refund.All(new Dictionary<string, object>
             {
@@ -73,7 +73,7 @@ namespace EasyPost.Tests.Net
         [TestMethod]
         public void TestRetrieve()
         {
-            VCR.Record("retrieve");
+            VCR.Replay("retrieve");
 
             RefundCollection refundCollection = Refund.All(new Dictionary<string, object>
             {
