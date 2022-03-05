@@ -115,17 +115,17 @@ namespace EasyPost.Tests.Net
         {
             VCR.Replay("all");
 
-            ReportList reportList = Report.All("shipment", new Dictionary<string, object>
+            ReportCollection reportCollection = Report.All("shipment", new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
                 }
             });
 
-            List<Report> reports = reportList.reports;
+            List<Report> reports = reportCollection.reports;
 
             Assert.IsTrue(reports.Count <= Fixture.PageSize);
-            Assert.IsNotNull(reportList.has_more);
+            Assert.IsNotNull(reportCollection.has_more);
             foreach (var report in reports)
             {
                 Assert.IsInstanceOfType(report, typeof(Report));

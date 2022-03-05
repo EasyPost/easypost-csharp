@@ -299,15 +299,15 @@ namespace EasyPost
         ///     * {"purchased", bool} If true only display purchased shipments.
         ///     All invalid keys will be ignored.
         /// </param>
-        /// <returns>Instance of EasyPost.ShipmentList.</returns>
-        public static ShipmentList All(Dictionary<string, object> parameters = null)
+        /// <returns>An EasyPost.ShipmentCollection instance.</returns>
+        public static ShipmentCollection All(Dictionary<string, object> parameters = null)
         {
             Request request = new Request("shipments");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            ShipmentList shipmentList = request.Execute<ShipmentList>();
-            shipmentList.filters = parameters;
-            return shipmentList;
+            ShipmentCollection shipmentCollection = request.Execute<ShipmentCollection>();
+            shipmentCollection.filters = parameters;
+            return shipmentCollection;
         }
 
         /// <summary>

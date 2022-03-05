@@ -67,7 +67,7 @@ namespace EasyPost
         ///     Optional dictionary containing parameters to filter the list with.
         ///     All invalid keys will be ignored.
         /// </param>
-        /// <returns>EasyPost.RefundCollection instance.</returns>
+        /// <returns>An EasyPost.RefundCollection instance.</returns>
         public static RefundCollection All(Dictionary<string, object> parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();

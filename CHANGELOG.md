@@ -12,6 +12,8 @@
 * Adds option to pass in a custom `HttpClient` to the Client constructor (.NET/.NET Core only)
 * Fix Address creation respecting `verify` and `verify_strict` parameters
 * Add missing `id` property to `Brand` class
+* Clarify XList vs XCollection distinction:
+  * `ReportList`, `ScanFormList`, `ShipmentList` and `TrackerList` renamed to `ReportCollection`, `ScanFormCollection`, `ShipmentCollection` and `TrackerCollection`
 
 ## v2.8.1 (2022-02-17)
 

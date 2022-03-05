@@ -70,7 +70,7 @@ namespace EasyPost
         ///     * {"page_size", int} Max size of list. Default to 20.
         ///     All invalid keys will be ignored.
         /// </param>
-        /// <returns>EasyPost.EventCollection instance.</returns>
+        /// <returns>An EasyPost.EventCollection instance.</returns>
         public static EventCollection All(Dictionary<string, object> parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();

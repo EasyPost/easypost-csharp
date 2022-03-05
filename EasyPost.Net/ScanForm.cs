@@ -70,15 +70,15 @@ namespace EasyPost
         ///     * {"page_size", int} Max size of list. Default to 20.
         ///     All invalid keys will be ignored.
         /// </param>
-        /// <returns>Instance of EasyPost.ScanForm.</returns>
-        public static ScanFormList All(Dictionary<string, object> parameters = null)
+        /// <returns>An EasyPost.ScanFormCollection instance.</returns>
+        public static ScanFormCollection All(Dictionary<string, object> parameters = null)
         {
             Request request = new Request("scan_forms");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            ScanFormList scanFormList = request.Execute<ScanFormList>();
-            scanFormList.filters = parameters;
-            return scanFormList;
+            ScanFormCollection scanFormCollection = request.Execute<ScanFormCollection>();
+            scanFormCollection.filters = parameters;
+            return scanFormCollection;
         }
 
         /// <summary>

@@ -42,17 +42,17 @@ namespace EasyPost.Tests.NetFramework
         [TestMethod]
         public void TestAll()
         {
-            TrackerList trackerList = Tracker.All(new Dictionary<string, object>
+            TrackerCollection trackerCollection = Tracker.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
                 }
             });
 
-            List<Tracker> trackers = trackerList.trackers;
+            List<Tracker> trackers = trackerCollection.trackers;
 
             Assert.IsTrue(trackers.Count <= Fixture.PageSize);
-            Assert.IsNotNull(trackerList.has_more);
+            Assert.IsNotNull(trackerCollection.has_more);
             foreach (var tracker in trackers)
             {
                 Assert.IsInstanceOfType(tracker, typeof(Tracker));
