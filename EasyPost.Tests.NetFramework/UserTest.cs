@@ -86,7 +86,7 @@ namespace EasyPost.Tests.NetFramework
         {
             User user = CreateUser();
 
-            user.Destroy();
+            user.Delete();
         }
 
         // API keys are returned as plaintext, do not run this test.

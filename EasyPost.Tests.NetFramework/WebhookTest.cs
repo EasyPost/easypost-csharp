@@ -28,7 +28,7 @@ namespace EasyPost.Tests.NetFramework
                 try
                 {
                     Webhook retrievedWebhook = Webhook.Retrieve(webhookId);
-                    retrievedWebhook.Destroy();
+                    retrievedWebhook.Delete();
                     webhookId = null;
                 }
                 catch
@@ -104,7 +104,7 @@ namespace EasyPost.Tests.NetFramework
             Webhook webhook = CreateBasicWebhook(url);
             Webhook retrievedWebhook = Webhook.Retrieve(webhook.id);
 
-            bool success = retrievedWebhook.Destroy();
+            bool success = retrievedWebhook.Delete();
 
             // This endpoint/method does not return anything, just make sure the request doesn't fail
             Assert.IsTrue(success);

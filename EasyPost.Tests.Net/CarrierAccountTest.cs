@@ -86,7 +86,7 @@ namespace EasyPost.Tests.Net
 
             CarrierAccount carrierAccount = CreateBasicCarrierAccount();
 
-            bool success = carrierAccount.Destroy();
+            bool success = carrierAccount.Delete();
 
             Assert.IsTrue(success);
         }
