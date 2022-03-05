@@ -30,7 +30,7 @@ namespace EasyPost
         ///     Remove this CarrierAccount from your account.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
-        public bool Destroy()
+        public bool Delete()
         {
             Request request = new Request("carrier_accounts/{id}", Method.Delete);
             request.AddUrlSegment("id", id);

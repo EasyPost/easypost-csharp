@@ -44,7 +44,7 @@ namespace EasyPost
         ///     Delete the user.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
-        public bool Destroy()
+        public bool Delete()
         {
             Request request = new Request("users/{id}", Method.DELETE);
             request.AddUrlSegment("id", id);

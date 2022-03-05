@@ -20,7 +20,7 @@ namespace EasyPost
         ///     Delete this webhook.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
-        public bool Destroy()
+        public bool Delete()
         {
             Request request = new Request("webhooks/{id}", Method.Delete);
             request.AddUrlSegment("id", id);
