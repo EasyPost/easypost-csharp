@@ -87,20 +87,30 @@ namespace EasyPost.Tests.Net
             }
         }
 
-        // TODO: C# doesn't have a CreateAndBuy method for Batch
-        [Ignore]
         [TestMethod]
         public void TestCreateAndBuy()
         {
             VCR.Replay("create_and_buy");
+
+            Batch batch = Batch.CreateAndBuy(new Dictionary<string, object>
+            {
+                {
+                    "shipments", new List<Dictionary<string, object>>
+                    {
+                        Fixture.OneCallBuyShipment
+                    }
+                }
+            });
+
+            Assert.IsInstanceOfType(batch, typeof(Batch));
+            Assert.IsTrue(batch.id.StartsWith("batch_"));
+            Assert.AreEqual(1, batch.num_shipments);
         }
 
         [TestMethod]
         public void TestBuy()
         {
             VCR.Replay("buy");
-
-            var data = Fixture.OneCallBuyShipment;
 
             Batch batch = CreateOneCallBuyBatch();
 
