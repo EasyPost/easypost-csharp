@@ -166,6 +166,30 @@ namespace EasyPost
             return request.Execute<Batch>();
         }
 
+        /// <summary>
+        ///     Create and buy a Batch in one step.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to create the batch with. Valid pairs:
+        ///     * {"shipments", List&lt;Dictionary&lt;string, object&gt;&gt;} See Shipment.Create for a list of valid keys.
+        ///     * {"reference", string}
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>EasyPost.Batch instance.</returns>
+        public static Batch CreateAndBuy(Dictionary<string, object> parameters = null)
+        {
+            parameters = parameters ?? new Dictionary<string, object>();
+
+            Request request = new Request("batches/create_and_buy", Method.Post);
+            request.AddBody(new Dictionary<string, object>
+            {
+                {
+                    "batch", parameters
+                }
+            });
+
+            return request.Execute<Batch>();
+        }
 
         /// <summary>
         ///     Retrieve a Batch from its id.
