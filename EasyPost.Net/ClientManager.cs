@@ -7,7 +7,22 @@ namespace EasyPost
     /// </summary>
     public static class ClientManager
     {
-        private static Func<Client> getCurrent;
+        private static bool Multithreaded { get; set; }
+
+        public static bool RunMultiThreaded
+        {
+            get { return Multithreaded; }
+            set
+            {
+                if (!value && Multithreaded) // if we're turning off multithreading, clear the cache
+                {
+                    ThreadManager.DeregisterAllThreads();
+                }
+                Multithreaded = value;
+            }
+        }
+
+        private static Func<Client>? GetCurrent { get; set; }
 
         /// <summary>
         ///     Set/Reset the client with a new API key.
@@ -19,12 +34,12 @@ namespace EasyPost
         ///     Configure the function used to retrieve the current client.
         /// </summary>
         /// <param name="getClient">A function used to retrieve the current client.</param>
-        public static void SetCurrent(Func<Client> getClient) => getCurrent = getClient;
+        public static void SetCurrent(Func<Client> getClient) => GetCurrent = getClient;
 
         /// <summary>
         ///     Remove the function used to retrieve the current client.
         /// </summary>
-        public static void Unconfigure() => getCurrent = null;
+        public static void Unconfigure() => GetCurrent = null;
 
         /// <summary>
         ///     Build an EasyPost.Client.
@@ -33,12 +48,17 @@ namespace EasyPost
         /// <exception cref="ClientNotConfigured">No function set to retrieve the current client.</exception>
         internal static Client Build()
         {
-            if (getCurrent == null)
+            if (Multithreaded)
+            {
+                return new Client(new ClientConfiguration(ThreadManager.GetApiKeyForCurrentThread()));
+            }
+
+            if (GetCurrent == null)
             {
                 throw new ClientNotConfigured();
             }
 
-            return getCurrent();
+            return GetCurrent();
         }
     }
 }
