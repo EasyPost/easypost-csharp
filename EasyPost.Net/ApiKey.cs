@@ -17,7 +17,6 @@ namespace EasyPost
         ///     Get a list of all API keys.
         /// </summary>
         /// <returns>A list of EasyPost.ApiKey instances.</returns>
-        /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
         public static List<ApiKey> All()
         {
             Request request = new Request("api_keys")
