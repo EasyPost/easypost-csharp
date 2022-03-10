@@ -125,20 +125,6 @@ namespace EasyPost
         public void Buy(Rate rate, string insuranceValue = null) => Buy(rate.id, insuranceValue);
 
         /// <summary>
-        ///     Create this Shipment.
-        /// </summary>
-        /// <exception cref="ResourceAlreadyCreated">Shipment already has an id.</exception>
-        public void Create()
-        {
-            if (id != null)
-            {
-                throw new ResourceAlreadyCreated();
-            }
-
-            Merge(SendCreate(AsDictionary()));
-        }
-
-        /// <summary>
         ///     Generate a postage label for this shipment.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
@@ -158,11 +144,6 @@ namespace EasyPost
         /// <returns>A list of EasyPost.Smartrate instances.</returns>
         public List<Smartrate> GetSmartrates()
         {
-            if (id == null)
-            {
-                Create();
-            }
-
             Request request = new Request("shipments/{id}/smartrate");
             request.AddUrlSegment("id", id);
             request.RootElement = "result";
@@ -235,11 +216,6 @@ namespace EasyPost
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
         public void RegenerateRates(Dictionary<string, object> parameters = null)
         {
-            if (id == null)
-            {
-                Create();
-            }
-
             Request request = new Request("shipments/{id}/rerate", Method.Post);
             request.AddUrlSegment("id", id);
             if (parameters != null)

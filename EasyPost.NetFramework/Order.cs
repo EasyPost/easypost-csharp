@@ -69,29 +69,10 @@ namespace EasyPost
         public void Buy(Rate rate) => Buy(rate.carrier, rate.service);
 
         /// <summary>
-        ///     Create this Order.
-        /// </summary>
-        /// <exception cref="ResourceAlreadyCreated">Order already has an id.</exception>
-        public void Create()
-        {
-            if (id != null)
-            {
-                throw new ResourceAlreadyCreated();
-            }
-
-            Merge(SendCreate(AsDictionary()));
-        }
-
-        /// <summary>
         ///     Populate the rates property for this Order.
         /// </summary>
         public void GetRates()
         {
-            if (id == null)
-            {
-                Create();
-            }
-
             Request request = new Request("orders/{id}/rates");
             request.AddUrlSegment("id", id);
 

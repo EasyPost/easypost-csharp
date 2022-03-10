@@ -74,20 +74,6 @@ namespace EasyPost
         }
 
         /// <summary>
-        ///     Create this Pickup.
-        /// </summary>
-        /// <exception cref="ResourceAlreadyCreated">Pickup already has an id.</exception>
-        public void Create()
-        {
-            if (id != null)
-            {
-                throw new ResourceAlreadyCreated();
-            }
-
-            Merge(SendCreate(AsDictionary()));
-        }
-
-        /// <summary>
         ///     Create a Pickup.
         /// </summary>
         /// <param name="parameters">

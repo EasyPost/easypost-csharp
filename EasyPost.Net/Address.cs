@@ -55,45 +55,11 @@ namespace EasyPost
         public string zip { get; set; }
 
         /// <summary>
-        ///     Create this Address.
-        /// </summary>
-        /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
-        public void Create() => Create(verify, verify_strict);
-
-        /// <summary>
-        ///     Create this Address.
-        /// </summary>
-        /// <param name="verifications">
-        ///     A list of verifications to perform on the address.
-        ///     Possible items are "delivery" and "zip4".
-        /// </param>
-        /// <param name="strictVerifications">
-        ///     A list of verifications to perform on the address.
-        ///     Will cause an HttpException to be raised if unsuccessful.
-        ///     Possible items are "delivery" and "zip4".
-        /// </param>
-        /// <exception cref="ResourceAlreadyCreated">Address already has an id.</exception>
-        public void Create(List<string> verifications = null, List<string> strictVerifications = null)
-        {
-            if (id != null)
-            {
-                throw new ResourceAlreadyCreated();
-            }
-
-            Merge(SendCreate(AsDictionary(), verifications, strictVerifications));
-        }
-
-        /// <summary>
         ///     Verify an address.
         /// </summary>
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
         public void Verify(string carrier = null)
         {
-            if (id == null)
-            {
-                Create();
-            }
-
             Request request = new Request("addresses/{id}/verify")
             {
                 RootElement = "address"
