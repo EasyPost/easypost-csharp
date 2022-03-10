@@ -47,6 +47,11 @@ namespace EasyPost
         /// <param name="service">The name of the service to purchase.</param>
         public void Buy(string carrier, string service)
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("pickups/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
             request.AddQueryString(new Dictionary<string, object>
@@ -67,6 +72,11 @@ namespace EasyPost
         /// </summary>
         public void Cancel()
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("pickups/{id}/cancel", Method.POST);
             request.AddUrlSegment("id", id);
 

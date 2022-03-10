@@ -60,6 +60,11 @@ namespace EasyPost
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
         public void Verify(string carrier = null)
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("addresses/{id}/verify")
             {
                 RootElement = "address"

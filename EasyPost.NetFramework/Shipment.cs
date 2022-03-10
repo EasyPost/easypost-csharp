@@ -82,6 +82,11 @@ namespace EasyPost
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         public void Buy(string rateId, string insuranceValue = null)
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("shipments/{id}/buy", Method.POST);
             request.AddUrlSegment("id", id);
 
@@ -130,6 +135,11 @@ namespace EasyPost
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         public void GenerateLabel(string fileFormat)
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("shipments/{id}/label");
             request.AddUrlSegment("id", id);
             // This is a GET, but uses the request body, so use ParameterType.GetOrPost instead.
@@ -144,6 +154,11 @@ namespace EasyPost
         /// <returns>A list of EasyPost.Smartrate instances.</returns>
         public List<Smartrate> GetSmartrates()
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("shipments/{id}/smartrate");
             request.AddUrlSegment("id", id);
             request.RootElement = "result";
@@ -157,6 +172,11 @@ namespace EasyPost
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
         public void Insure(double amount)
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("shipments/{id}/insure", Method.POST);
             request.AddUrlSegment("id", id);
             request.AddQueryString(new Dictionary<string, object>
@@ -216,6 +236,11 @@ namespace EasyPost
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
         public void RegenerateRates(Dictionary<string, object> parameters = null)
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("shipments/{id}/rerate", Method.POST);
             request.AddUrlSegment("id", id);
             if (parameters != null)
@@ -231,6 +256,11 @@ namespace EasyPost
         /// </summary>
         public void Refund()
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("shipments/{id}/refund");
             request.AddUrlSegment("id", id);
 

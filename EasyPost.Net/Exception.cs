@@ -49,6 +49,22 @@ namespace EasyPost
     }
 
     [Serializable]
+    public class PropertyMissing : Exception
+    {
+        private readonly string _property;
+
+        public PropertyMissing(string property)
+        {
+            _property = property;
+        }
+
+        public override string Message
+        {
+            get { return $"Missing {_property}"; }
+        }
+    }
+
+    [Serializable]
     public class ClientNotConfigured : Exception
     {
     }
