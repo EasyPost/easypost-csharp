@@ -30,6 +30,9 @@ namespace EasyPost.Tests.NetFramework
         public static void SetUp(string apiKey)
         {
             ClientManager.SetCurrent(GetClientFunction(apiKey));
+
+            // Allow TLS 1.2 for the tests to work
+            System.Net.ServicePointManager.SecurityProtocol |= System.Net.SecurityProtocolType.Tls12;
         }
 
         public static void SetUp(TestSuiteApiKey apiKey)
