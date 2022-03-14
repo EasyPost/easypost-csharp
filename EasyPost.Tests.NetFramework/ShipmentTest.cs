@@ -192,10 +192,10 @@ namespace EasyPost.Tests.NetFramework
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.id.StartsWith("shp_"));
-            Assert.IsTrue(shipment.id.StartsWith("adr_"));
-            Assert.IsTrue(shipment.id.StartsWith("adr_"));
-            Assert.IsTrue(shipment.id.StartsWith("prcl_"));
-            Assert.AreEqual("388 Townsend St", shipment.address.street1);
+            Assert.IsTrue(shipment.from_address.id.StartsWith("adr_"));
+            Assert.IsTrue(shipment.to_address.id.StartsWith("adr_"));
+            Assert.IsTrue(shipment.parcel.id.StartsWith("prcl_"));
+            Assert.AreEqual("388 Townsend St", shipment.from_address.street1);
         }
     }
 }
