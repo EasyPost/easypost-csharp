@@ -17,14 +17,17 @@ namespace EasyPost
             string cacheKey = options.BaseUrl!.ToString();
 
             // If we have an existing instance of this client, return it outside of the lock
-            if (_clients.TryGetValue(cacheKey, out var client)) {
+            if (_clients.TryGetValue(cacheKey, out var client))
+            {
                 return client;
             }
 
             // Create a new instance, but make sure only one thread can create it
-            lock (_clients) {
+            lock (_clients)
+            {
                 // Try again to get it, as it might have just been created by another thread
-                if (_clients.TryGetValue(cacheKey, out client)) {
+                if (_clients.TryGetValue(cacheKey, out client))
+                {
                     return client;
                 }
 

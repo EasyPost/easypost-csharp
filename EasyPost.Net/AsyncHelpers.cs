@@ -21,10 +21,13 @@ namespace EasyPost
         {
             var currentContext = SynchronizationContext.Current;
             var customContext = new CustomSynchronizationContext(task);
-            try {
+            try
+            {
                 SynchronizationContext.SetSynchronizationContext(customContext);
                 customContext.Run();
-            } finally {
+            }
+            finally
+            {
                 SynchronizationContext.SetSynchronizationContext(currentContext);
             }
         }
@@ -39,9 +42,7 @@ namespace EasyPost
             Func<Task<T>> task)
         {
             T result = default;
-            RunSync(async () => {
-                result = await task();
-            });
+            RunSync(async () => { result = await task(); });
             return result;
         }
 
@@ -85,26 +86,38 @@ namespace EasyPost
             /// </summary>
             public void Run()
             {
-                Post(async _ => {
-                        try {
+                Post(async _ =>
+                    {
+                        try
+                        {
                             await _task().ConfigureAwait(false);
-                        } catch (Exception exception) {
+                        }
+                        catch (Exception exception)
+                        {
                             _caughtException = ExceptionDispatchInfo.Capture(exception);
                             throw;
-                        } finally {
+                        }
+                        finally
+                        {
                             Post(state => _done = true, null);
                         }
                     },
                     null);
 
-                while (!_done) {
-                    if (_items.TryDequeue(out var task)) {
+                while (!_done)
+                {
+                    if (_items.TryDequeue(out var task))
+                    {
                         task.Item1(task.Item2);
-                        if (_caughtException == null) {
+                        if (_caughtException == null)
+                        {
                             continue;
                         }
+
                         _caughtException.Throw();
-                    } else {
+                    }
+                    else
+                    {
                         _workItemsWaiting.WaitOne();
                     }
                 }
