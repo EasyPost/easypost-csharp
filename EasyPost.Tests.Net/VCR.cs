@@ -1,9 +1,8 @@
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
-using Scotch;
+using EasyPost.Scotch;
 
 namespace EasyPost.Tests.Net
 {
@@ -77,8 +76,18 @@ namespace EasyPost.Tests.Net
             ClientManager.SetCurrent(GetRecordingClientFunction(apiKey ?? GlobalApiKey, cassetteName, hideCredentials.GetValueOrDefault(_HideCredentials)));
         }
 
-        public static void Replay(string cassetteName, string apiKey = null, bool? hideCredentials = null)
+        public static void Replay(string cassetteName, string apiKey = null, bool recordIfCassetteMissing = true, bool? hideCredentials = null)
         {
+            if (!File.Exists(GetCassettePath(cassetteName)))
+            {
+                if (!recordIfCassetteMissing)
+                {
+                    throw new FileNotFoundException($"Cassette {cassetteName} not found. Please record it first.");
+                }
+
+                Record(cassetteName, apiKey, hideCredentials);
+            }
+
             ClientManager.SetCurrent(GetReplayingClientFunction(apiKey ?? GlobalApiKey, cassetteName, hideCredentials.GetValueOrDefault(_HideCredentials)));
         }
 

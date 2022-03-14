@@ -1,0 +1,3 @@
+[submodule "Scotch"]
+	path = Scotch
+	url = https://github.com/EasyPost/scotch.git
