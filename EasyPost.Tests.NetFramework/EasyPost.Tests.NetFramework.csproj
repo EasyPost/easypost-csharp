@@ -16,7 +16,7 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharpSigned" Version="105.2.3" />
   </ItemGroup>
 
