@@ -25,6 +25,8 @@ jobs:
         platform: [ 'NetFramework35', 'NetCore31', 'Net50', 'Net60' ]
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: true
         # Set the project name, based on platform version currently selected
       - name: Set up variables
         id: test_project
@@ -59,6 +61,8 @@ jobs:
             ext: fsproj
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: true
         # Set the project name, based on platform version currently selected
       - name: Set up variables
         id: test_project
