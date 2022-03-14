@@ -176,5 +176,26 @@ namespace EasyPost.Tests.NetFramework
             Assert.IsTrue(shipment.id.StartsWith("shp_"));
             Assert.AreEqual("IOSS", shipment.tax_identifiers[0].tax_id_type);
         }
+
+        [TestMethod]
+        public void TestCreateWithIds()
+        {
+            Address fromAddress = Address.Create(Fixture.BasicAddress);
+            Address toAddress = Address.Create(Fixture.BasicAddress);
+            Parcel parcel = Parcel.Create(Fixture.BasicParcel);
+
+            Shipment shipment = Shipment.Create(new Dictionary<string, object> {
+                { "from_address", new Dictionary<string, object> { { "id", fromAddress.id } } },
+                { "to_address", new Dictionary<string, object> { { "id", toAddress.id } } },
+                { "parcel", new Dictionary<string, object> { { "id", parcel.id } } },
+            });
+
+            Assert.IsInstanceOfType(shipment, typeof(Shipment));
+            Assert.IsTrue(shipment.id.StartsWith("shp_"));
+            Assert.IsTrue(shipment.from_address.id.StartsWith("adr_"));
+            Assert.IsTrue(shipment.to_address.id.StartsWith("adr_"));
+            Assert.IsTrue(shipment.parcel.id.StartsWith("prcl_"));
+            Assert.AreEqual("388 Townsend St", shipment.from_address.street1);
+        }
     }
 }
