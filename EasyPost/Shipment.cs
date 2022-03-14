@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -80,7 +81,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
-        public void Buy(string rateId, string insuranceValue = null)
+        public async Task Buy(string rateId, string insuranceValue = null)
         {
             if (id == null)
             {
@@ -110,7 +111,7 @@ namespace EasyPost
 
             request.AddBody(body);
 
-            Shipment result = request.Execute<Shipment>();
+            Shipment result = await request.Execute<Shipment>();
 
             insurance = result.insurance;
             postage_label = result.postage_label;
@@ -127,13 +128,13 @@ namespace EasyPost
         /// </summary>
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
-        public void Buy(Rate rate, string insuranceValue = null) => Buy(rate.id, insuranceValue);
+        public async Task Buy(Rate rate, string insuranceValue = null) => await Buy(rate.id, insuranceValue);
 
         /// <summary>
         ///     Generate a postage label for this shipment.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
-        public void GenerateLabel(string fileFormat)
+        public async Task GenerateLabel(string fileFormat)
         {
             if (id == null)
             {
@@ -145,14 +146,14 @@ namespace EasyPost
             // This is a GET, but uses the request body, so use ParameterType.GetOrPost instead.
             request.AddParameter("file_format", fileFormat, ParameterType.GetOrPost);
 
-            Merge(request.Execute<Shipment>());
+            Merge(await request.Execute<Shipment>());
         }
 
         /// <summary>
         ///     Get the Smartrates for this shipment.
         /// </summary>
         /// <returns>A list of EasyPost.Smartrate instances.</returns>
-        public List<Smartrate> GetSmartrates()
+        public async Task<List<Smartrate>> GetSmartrates()
         {
             if (id == null)
             {
@@ -162,7 +163,7 @@ namespace EasyPost
             Request request = new Request("shipments/{id}/smartrate");
             request.AddUrlSegment("id", id);
             request.RootElement = "result";
-            List<Smartrate> smartrates = request.Execute<List<Smartrate>>();
+            List<Smartrate> smartrates = await request.Execute<List<Smartrate>>();
             return smartrates;
         }
 
@@ -170,7 +171,7 @@ namespace EasyPost
         ///     Insure shipment for the given amount.
         /// </summary>
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
-        public void Insure(double amount)
+        public async Task Insure(double amount)
         {
             if (id == null)
             {
@@ -186,7 +187,7 @@ namespace EasyPost
                 }
             });
 
-            Merge(request.Execute<Shipment>());
+            Merge(await request.Execute<Shipment>());
         }
 
         /// <summary>
@@ -234,7 +235,7 @@ namespace EasyPost
         ///     Refresh the rates for this Shipment.
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
-        public void RegenerateRates(Dictionary<string, object> parameters = null)
+        public async Task RegenerateRates(Dictionary<string, object> parameters = null)
         {
             if (id == null)
             {
@@ -248,13 +249,13 @@ namespace EasyPost
                 request.AddBody(parameters);
             }
 
-            rates = request.Execute<Shipment>().rates;
+            rates = (await request.Execute<Shipment>()).rates;
         }
 
         /// <summary>
         ///     Send a refund request to the carrier the shipment was purchased from.
         /// </summary>
-        public void Refund()
+        public async Task Refund()
         {
             if (id == null)
             {
@@ -264,7 +265,7 @@ namespace EasyPost
             Request request = new Request("shipments/{id}/refund");
             request.AddUrlSegment("id", id);
 
-            Merge(request.Execute<Shipment>());
+            Merge(await request.Execute<Shipment>());
         }
 
         /// <summary>
@@ -287,7 +288,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static Shipment Create(Dictionary<string, object> parameters = null) => SendCreate(parameters ?? new Dictionary<string, object>());
+        public static async Task<Shipment> Create(Dictionary<string, object> parameters = null) => await SendCreate(parameters ?? new Dictionary<string, object>());
 
 
         /// <summary>
@@ -306,12 +307,12 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.ShipmentCollection instance.</returns>
-        public static ShipmentCollection All(Dictionary<string, object> parameters = null)
+        public static async Task<ShipmentCollection> All(Dictionary<string, object> parameters = null)
         {
             Request request = new Request("shipments");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            ShipmentCollection shipmentCollection = request.Execute<ShipmentCollection>();
+            ShipmentCollection shipmentCollection = await request.Execute<ShipmentCollection>();
             shipmentCollection.filters = parameters;
             return shipmentCollection;
         }
@@ -321,17 +322,17 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
         /// <returns>EasyPost.Shipment instance.</returns>
-        public static Shipment Retrieve(string id)
+        public static async Task<Shipment> Retrieve(string id)
         {
             Request request = new Request("shipments/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Shipment>();
+            return await request.Execute<Shipment>();
         }
 
         private static void FilterRates(ref List<Rate> rates, Func<Rate, bool> filter) => rates = rates.Where(filter).ToList();
 
-        private static Shipment SendCreate(Dictionary<string, object> parameters)
+        private static async Task<Shipment> SendCreate(Dictionary<string, object> parameters)
         {
             Request request = new Request("shipments", Method.Post);
             request.AddBody(new Dictionary<string, object>
@@ -341,7 +342,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<Shipment>();
+            return await request.Execute<Shipment>();
         }
     }
 }

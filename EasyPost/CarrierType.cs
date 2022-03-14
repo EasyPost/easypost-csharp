@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace EasyPost
@@ -18,10 +19,10 @@ namespace EasyPost
         ///     Get all available carrier types.
         /// </summary>
         /// <returns>A list of EasyPost.CarrierType instances.</returns>
-        public static List<CarrierType> All()
+        public static async Task<List<CarrierType>> All()
         {
             Request request = new Request("carrier_types");
-            return request.Execute<List<CarrierType>>();
+            return await request.Execute<List<CarrierType>>();
         }
     }
 }

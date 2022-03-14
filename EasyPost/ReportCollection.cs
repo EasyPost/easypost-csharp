@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace EasyPost
@@ -19,12 +20,12 @@ namespace EasyPost
         ///     Get the next page of reports based on the original parameters passed to ReportList.All().
         /// </summary>
         /// <returns>An EasyPost.ReportCollection instance.</returns>
-        public ReportCollection Next()
+        public async Task<ReportCollection> Next()
         {
             filters = filters ?? new Dictionary<string, object>();
             filters["before_id"] = reports.Last().id;
 
-            return Report.All(type, filters);
+            return await Report.All(type, filters);
         }
     }
 }

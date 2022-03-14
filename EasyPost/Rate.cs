@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace EasyPost
@@ -47,12 +48,12 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a Rate. Starts with "rate_".</param>
         /// <returns>EasyPost.Rate instance.</returns>
-        public static Rate Retrieve(string id)
+        public static async Task<Rate> Retrieve(string id)
         {
             Request request = new Request("rates/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Rate>();
+            return await request.Execute<Rate>();
         }
     }
 }

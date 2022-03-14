@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace EasyPost
@@ -17,12 +18,12 @@ namespace EasyPost
         ///     Get the next page of scan forms based on the original parameters passed to ScanForm.All().
         /// </summary>
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
-        public ScanFormCollection Next()
+        public async Task<ScanFormCollection> Next()
         {
             filters = filters ?? new Dictionary<string, object>();
             filters["before_id"] = scan_forms.Last().id;
 
-            return ScanForm.All(filters);
+            return await ScanForm.All(filters);
         }
     }
 }

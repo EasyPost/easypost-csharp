@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -30,19 +31,19 @@ namespace EasyPost
         ///     Remove this CarrierAccount from your account.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
-        public bool Delete()
+        public async Task<bool> Delete()
         {
             Request request = new Request("carrier_accounts/{id}", Method.Delete);
             request.AddUrlSegment("id", id);
 
-            return request.Execute();
+            return await request.Execute();
         }
 
         /// <summary>
         ///     Update this CarrierAccount.
         /// </summary>
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
-        public void Update(Dictionary<string, object> parameters)
+        public async Task Update(Dictionary<string, object> parameters)
         {
             Request request = new Request("carrier_accounts/{id}", Method.Put);
             request.AddUrlSegment("id", id);
@@ -53,7 +54,7 @@ namespace EasyPost
                 }
             });
 
-            Merge(request.Execute<CarrierAccount>());
+            Merge(await request.Execute<CarrierAccount>());
         }
 
         /// <summary>
@@ -69,7 +70,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
-        public static CarrierAccount Create(Dictionary<string, object> parameters)
+        public static async Task<CarrierAccount> Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("carrier_accounts", Method.Post);
             request.AddBody(new Dictionary<string, object>
@@ -79,7 +80,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<CarrierAccount>();
+            return await request.Execute<CarrierAccount>();
         }
 
 
@@ -87,10 +88,10 @@ namespace EasyPost
         ///     List all available carrier accounts.
         /// </summary>
         /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
-        public static List<CarrierAccount> All()
+        public static async Task<List<CarrierAccount>> All()
         {
             Request request = new Request("carrier_accounts");
-            return request.Execute<List<CarrierAccount>>();
+            return await request.Execute<List<CarrierAccount>>();
         }
 
         /// <summary>
@@ -98,12 +99,12 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a carrier account. Starts with "ca_".</param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
-        public static CarrierAccount Retrieve(string id)
+        public static async Task<CarrierAccount> Retrieve(string id)
         {
             Request request = new Request("carrier_accounts/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<CarrierAccount>();
+            return await request.Execute<CarrierAccount>();
         }
     }
 }

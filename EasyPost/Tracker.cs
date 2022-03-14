@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -44,7 +45,7 @@ namespace EasyPost
         /// <param name="carrier">Carrier for the tracker.</param>
         /// <param name="trackingCode">Tracking code for the tracker.</param>
         /// <returns>An EasyPost.Tracker instance.</returns>
-        public static Tracker Create(string carrier, string trackingCode)
+        public static async Task<Tracker> Create(string carrier, string trackingCode)
         {
             Request request = new Request("trackers", Method.Post);
             Dictionary<string, object> parameters = new Dictionary<string, object>
@@ -64,7 +65,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<Tracker>();
+            return await request.Execute<Tracker>();
         }
 
 
@@ -87,12 +88,12 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>A EasyPost.TrackerCollection instance.</returns>
-        public static TrackerCollection All(Dictionary<string, object> parameters = null)
+        public static async Task<TrackerCollection> All(Dictionary<string, object> parameters = null)
         {
             Request request = new Request("trackers");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            TrackerCollection trackerCollection = request.Execute<TrackerCollection>();
+            TrackerCollection trackerCollection = await request.Execute<TrackerCollection>();
             trackerCollection.filters = parameters;
             return trackerCollection;
         }
@@ -102,12 +103,12 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
         /// <returns>EasyPost.Tracker instance.</returns>
-        public static Tracker Retrieve(string id)
+        public static async Task<Tracker> Retrieve(string id)
         {
             Request request = new Request("trackers/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Tracker>();
+            return await request.Execute<Tracker>();
         }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="parameters">A dictionary of tracking codes and carriers</param>
         /// <returns>True</returns>
-        public static bool CreateList(Dictionary<string, object> parameters)
+        public static async Task<bool> CreateList(Dictionary<string, object> parameters)
         {
             Request request = new Request("trackers/create_list", RestSharp.Method.Post);
             request.AddBody(new Dictionary<string, object>
@@ -124,9 +125,8 @@ namespace EasyPost
                     "trackers", parameters
                 }
             });
-            request.Execute<Tracker>();
+            return await request.Execute();
             // This endpoint does not return a response so we return true here
-            return true;
         }
     }
 }

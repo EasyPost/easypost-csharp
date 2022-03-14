@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -39,7 +40,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Parcel instance.</returns>
-        public static Parcel Create(Dictionary<string, object> parameters)
+        public static async Task<Parcel> Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("parcels", Method.Post);
             request.AddBody(new Dictionary<string, object>
@@ -49,7 +50,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<Parcel>();
+            return await request.Execute<Parcel>();
         }
 
 
@@ -58,12 +59,12 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
         /// <returns>EasyPost.Parcel instance.</returns>
-        public static Parcel Retrieve(string id)
+        public static async Task<Parcel> Retrieve(string id)
         {
             Request request = new Request("parcels/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Parcel>();
+            return await request.Execute<Parcel>();
         }
     }
 }

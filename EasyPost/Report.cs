@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -42,13 +43,13 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Report instance.</returns>
-        public static Report Create(string type, Dictionary<string, object> parameters = null)
+        public static async Task<Report> Create(string type, Dictionary<string, object> parameters = null)
         {
             Request request = new Request("reports/{type}", Method.Post);
             request.AddUrlSegment("type", type);
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            return request.Execute<Report>();
+            return await request.Execute<Report>();
         }
 
         /// <summary>
@@ -66,13 +67,13 @@ namespace EasyPost
         /// </param>
         /// <param name="type">The type of report, e.g. "shipment", "tracker", "payment_log", etc.</param>
         /// <returns>An EasyPost.ReportCollection instance.</returns>
-        public static ReportCollection All(string type, Dictionary<string, object> parameters = null)
+        public static async Task<ReportCollection> All(string type, Dictionary<string, object> parameters = null)
         {
             Request request = new Request("reports/{type}");
             request.AddUrlSegment("type", type);
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
-            ReportCollection reportCollection = request.Execute<ReportCollection>();
+            ReportCollection reportCollection = await request.Execute<ReportCollection>();
             reportCollection.filters = parameters;
             reportCollection.type = type;
             return reportCollection;
@@ -84,12 +85,12 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a report.</param>
         /// <returns>EasyPost.Report instance.</returns>
-        public static Report Retrieve(string id)
+        public static async Task<Report> Retrieve(string id)
         {
             Request request = new Request("reports/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Report>();
+            return await request.Execute<Report>();
         }
 
         /// <summary>
@@ -98,13 +99,13 @@ namespace EasyPost
         /// <param name="type">Type of report, e.g. shipment, tracker, payment_log, etc.</param>
         /// <param name="id">String representing a report.</param>
         /// <returns>EasyPost.Report instance.</returns>
-        public static Report Retrieve(string type, string id)
+        public static async Task<Report> Retrieve(string type, string id)
         {
             Request request = new Request("reports/{type}/{id}");
             request.AddUrlSegment("id", id);
             request.AddUrlSegment("type", type);
 
-            return request.Execute<Report>();
+            return await request.Execute<Report>();
         }
     }
 }

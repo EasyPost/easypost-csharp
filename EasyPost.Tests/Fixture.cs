@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EasyPost.Utilities;
 
 namespace EasyPost.Tests.Net
@@ -361,30 +362,27 @@ namespace EasyPost.Tests.Net
             }
         }
 
-        public static Dictionary<string, object> BasicInsurance
+        public static async Task<Dictionary<string, object>> BasicInsurance()
         {
-            get
+            Shipment shipment = await Shipment.Create(OneCallBuyShipment);
+            return new Dictionary<string, object>
             {
-                Shipment shipment = Shipment.Create(OneCallBuyShipment);
-                return new Dictionary<string, object>
                 {
-                    {
-                        "to_address", BasicAddress
-                    },
-                    {
-                        "from_address", BasicAddress
-                    },
-                    {
-                        "tracking_code", shipment.tracking_code
-                    },
-                    {
-                        "carrier", Usps
-                    },
-                    {
-                        "amount", 100
-                    }
-                };
-            }
+                    "to_address", BasicAddress
+                },
+                {
+                    "from_address", BasicAddress
+                },
+                {
+                    "tracking_code", shipment.tracking_code
+                },
+                {
+                    "carrier", Usps
+                },
+                {
+                    "amount", 100
+                }
+            };
         }
 
         // This fixture will require you to add a `shipment` key with a Shipment object from a test.

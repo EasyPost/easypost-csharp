@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -32,7 +33,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>A list of EasyPost.Refund instances.</returns>
-        public static List<Refund> Create(Dictionary<string, object> parameters = null)
+        public static async Task<List<Refund>> Create(Dictionary<string, object> parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
@@ -44,7 +45,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<List<Refund>>();
+            return await request.Execute<List<Refund>>();
         }
 
         /// <summary>
@@ -52,12 +53,12 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a Refund. Starts with "rfnd_".</param>
         /// <returns>EasyPost.Refund instance.</returns>
-        public static Refund Retrieve(string id)
+        public static async Task<Refund> Retrieve(string id)
         {
             Request request = new Request("refunds/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Refund>();
+            return await request.Execute<Refund>();
         }
 
         /// <summary>
@@ -68,14 +69,14 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.RefundCollection instance.</returns>
-        public static RefundCollection All(Dictionary<string, object> parameters = null)
+        public static async Task<RefundCollection> All(Dictionary<string, object> parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
             Request request = new Request("refunds");
             request.AddQueryString(parameters);
 
-            return request.Execute<RefundCollection>();
+            return await request.Execute<RefundCollection>();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace EasyPost
@@ -17,12 +18,12 @@ namespace EasyPost
         ///     Get the next page of shipments based on the original parameters passed to Shipment.All().
         /// </summary>
         /// <returns>An EasyPost.ShipmentCollection instance.</returns>
-        public ShipmentCollection Next()
+        public async Task<ShipmentCollection> Next()
         {
             filters = filters ?? new Dictionary<string, object>();
             filters["before_id"] = shipments.Last().id;
 
-            return Shipment.All(filters);
+            return await Shipment.All(filters);
         }
     }
 }

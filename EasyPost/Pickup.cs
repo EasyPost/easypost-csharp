@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -45,7 +46,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="carrier">The name of the carrier to purchase with.</param>
         /// <param name="service">The name of the service to purchase.</param>
-        public void Buy(string carrier, string service)
+        public async Task Buy(string carrier, string service)
         {
             if (id == null)
             {
@@ -64,13 +65,13 @@ namespace EasyPost
                 }
             });
 
-            Merge(request.Execute<Pickup>());
+            Merge(await request.Execute<Pickup>());
         }
 
         /// <summary>
         ///     Cancel this pickup.
         /// </summary>
-        public void Cancel()
+        public async Task Cancel()
         {
             if (id == null)
             {
@@ -80,7 +81,7 @@ namespace EasyPost
             Request request = new Request("pickups/{id}/cancel", Method.Post);
             request.AddUrlSegment("id", id);
 
-            Merge(request.Execute<Pickup>());
+            Merge(await request.Execute<Pickup>());
         }
 
         /// <summary>
@@ -100,7 +101,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Pickup instance.</returns>
-        public static Pickup Create(Dictionary<string, object> parameters = null) => SendCreate(parameters ?? new Dictionary<string, object>());
+        public static async Task<Pickup> Create(Dictionary<string, object> parameters = null) => await SendCreate(parameters ?? new Dictionary<string, object>());
 
 
         /// <summary>
@@ -108,15 +109,15 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a Pickup. Starts with "pickup_".</param>
         /// <returns>EasyPost.Pickup instance.</returns>
-        public static Pickup Retrieve(string id)
+        public static async Task<Pickup> Retrieve(string id)
         {
             Request request = new Request("pickups/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Pickup>();
+            return await request.Execute<Pickup>();
         }
 
-        private static Pickup SendCreate(Dictionary<string, object> parameters)
+        private static async Task<Pickup> SendCreate(Dictionary<string, object> parameters)
         {
             Request request = new Request("pickups", Method.Post);
             request.AddBody(new Dictionary<string, object>
@@ -126,7 +127,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<Pickup>();
+            return await request.Execute<Pickup>();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -44,11 +45,11 @@ namespace EasyPost
         ///     Delete the user.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
-        public bool Delete()
+        public async Task<bool> Delete()
         {
             Request request = new Request("users/{id}", Method.Delete);
             request.AddUrlSegment("id", id);
-            return request.Execute();
+            return await request.Execute();
         }
 
         /// <summary>
@@ -66,7 +67,7 @@ namespace EasyPost
         ///     account.
         ///     All invalid keys will be ignored.
         /// </param>
-        public void Update(Dictionary<string, object> parameters)
+        public async Task Update(Dictionary<string, object> parameters)
         {
             Request request = new Request("users/{id}", Method.Put);
             request.AddUrlSegment("id", id);
@@ -77,7 +78,7 @@ namespace EasyPost
                 }
             });
 
-            Merge(request.Execute<User>());
+            Merge(await request.Execute<User>());
         }
 
         /// <summary>
@@ -95,7 +96,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Brand instance.</returns>
-        public Brand UpdateBrand(Dictionary<string, object> parameters)
+        public async Task<Brand> UpdateBrand(Dictionary<string, object> parameters)
         {
             Dictionary<string, object> wrappedParameters = new Dictionary<string, object>
             {
@@ -108,7 +109,7 @@ namespace EasyPost
             request.AddUrlSegment("id", id);
             request.AddBody(wrappedParameters);
 
-            return request.Execute<Brand>();
+            return await request.Execute<Brand>();
         }
 
         /// <summary>
@@ -120,7 +121,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
-        public static User Create(Dictionary<string, object> parameters)
+        public static async Task<User> Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("users", Method.Post);
             request.AddBody(new Dictionary<string, object>
@@ -130,7 +131,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<User>();
+            return await request.Execute<User>();
         }
 
 
@@ -139,7 +140,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a user. Starts with "user_".</param>
         /// <returns>EasyPost.User instance.</returns>
-        public static User Retrieve(string id = null)
+        public static async Task<User> Retrieve(string id = null)
         {
             Request request;
 
@@ -153,7 +154,7 @@ namespace EasyPost
                 request.AddUrlSegment("id", id);
             }
 
-            return request.Execute<User>();
+            return await request.Execute<User>();
         }
 
 
@@ -161,13 +162,13 @@ namespace EasyPost
         ///     Retrieve the current user.
         /// </summary>
         /// <returns>EasyPost.User instance.</returns>
-        public static User RetrieveMe()
+        public static async Task<User> RetrieveMe()
         {
             Request request;
 
             request = new Request("users");
 
-            return request.Execute<User>();
+            return await request.Execute<User>();
         }
     }
 }

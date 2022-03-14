@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -45,7 +46,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="carrier">The carrier to purchase a shipment from.</param>
         /// <param name="service">The service to purchase.</param>
-        public void Buy(string carrier, string service)
+        public async Task Buy(string carrier, string service)
         {
             if (id == null)
             {
@@ -64,7 +65,7 @@ namespace EasyPost
                 }
             });
 
-            Merge(request.Execute<Order>());
+            Merge(await request.Execute<Order>());
         }
 
         /// <summary>
@@ -76,7 +77,7 @@ namespace EasyPost
         /// <summary>
         ///     Populate the rates property for this Order.
         /// </summary>
-        public void GetRates()
+        public async Task GetRates()
         {
             if (id == null)
             {
@@ -86,7 +87,7 @@ namespace EasyPost
             Request request = new Request("orders/{id}/rates");
             request.AddUrlSegment("id", id);
 
-            rates = request.Execute<Order>().rates;
+            rates = (await request.Execute<Order>()).rates;
         }
 
         /// <summary>
@@ -108,7 +109,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Order instance.</returns>
-        public static Order Create(Dictionary<string, object> parameters)
+        public static async Task<Order> Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("orders", Method.Post);
             request.AddBody(new Dictionary<string, object>
@@ -118,7 +119,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<Order>();
+            return await request.Execute<Order>();
         }
 
 
@@ -127,15 +128,15 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a Order. Starts with "order_" if passing an id.</param>
         /// <returns>EasyPost.Order instance.</returns>
-        public static Order Retrieve(string id)
+        public static async Task<Order> Retrieve(string id)
         {
             Request request = new Request("orders/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Order>();
+            return await request.Execute<Order>();
         }
 
-        private static Order SendCreate(Dictionary<string, object> parameters)
+        private static async Task<Order> SendCreate(Dictionary<string, object> parameters)
         {
             Request request = new Request("orders", Method.Post);
             request.AddBody(new Dictionary<string, object>
@@ -145,7 +146,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<Order>();
+            return await request.Execute<Order>();
         }
     }
 }
