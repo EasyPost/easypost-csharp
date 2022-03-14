@@ -62,12 +62,14 @@ namespace EasyPost
 
             RestClientOptions clientOptions = new RestClientOptions
             {
-                Timeout = ConnectTimeoutMilliseconds,
                 BaseUrl = new Uri(clientConfiguration.ApiBase),
                 UserAgent = UserAgent
             };
 
-            _restClient = customHttpClient != null ? new RestClient(customHttpClient, clientOptions) : new RestClient(clientOptions);
+            // If we are not using a custom httpClient (used for mocking and unit testing), get a single instance of the RestClient
+            // we need from a cache, as these need to be singleton instances per API endpoint as mentioned here:
+            // https://restsharp.dev/v107/#restclient-lifecycle
+            _restClient = customHttpClient != null ? new RestClient(customHttpClient, clientOptions) : RestClientFactory.GetClient(clientOptions);
         }
 
         /// <summary>
@@ -77,7 +79,7 @@ namespace EasyPost
         /// <returns>Whether request was successful.</returns>
         internal bool Execute(Request request)
         {
-            RestResponse response = _restClient.ExecuteAsync(PrepareRequest(request)).GetAwaiter().GetResult();
+            RestResponse response = AsyncHelpers.RunSync(() => _restClient.ExecuteAsync(PrepareRequest(request)));
             return response.IsSuccessful;
         }
 
@@ -91,7 +93,7 @@ namespace EasyPost
         /// <exception cref="HttpException">An error occurred during the API request.</exception>
         internal T Execute<T>(Request request, string rootElement = null) where T : new()
         {
-            RestResponse<T> response = _restClient.ExecuteAsync<T>(PrepareRequest(request)).GetAwaiter().GetResult();
+            RestResponse<T> response = AsyncHelpers.RunSync(() => _restClient.ExecuteAsync<T>(PrepareRequest(request)));
             int statusCode = Convert.ToInt32(response.StatusCode);
 
             List<string> rootElements = null;
