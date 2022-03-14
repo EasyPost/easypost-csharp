@@ -205,7 +205,7 @@ namespace EasyPost.Tests.Net
         [TestMethod]
         public void TestCreateWithIds()
         {
-            VCR.Replay("createWithIds");
+            VCR.Replay("create_with_ids");
 
             Address fromAddress = Address.Create(Fixture.BasicAddress);
             Address toAddress = Address.Create(Fixture.BasicAddress);
