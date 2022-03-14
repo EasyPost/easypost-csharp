@@ -82,6 +82,11 @@ namespace EasyPost
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         public void Buy(string rateId, string insuranceValue = null)
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("shipments/{id}/buy", Method.Post);
             request.AddUrlSegment("id", id);
 
@@ -125,25 +130,16 @@ namespace EasyPost
         public void Buy(Rate rate, string insuranceValue = null) => Buy(rate.id, insuranceValue);
 
         /// <summary>
-        ///     Create this Shipment.
-        /// </summary>
-        /// <exception cref="ResourceAlreadyCreated">Shipment already has an id.</exception>
-        public void Create()
-        {
-            if (id != null)
-            {
-                throw new ResourceAlreadyCreated();
-            }
-
-            Merge(SendCreate(AsDictionary()));
-        }
-
-        /// <summary>
         ///     Generate a postage label for this shipment.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         public void GenerateLabel(string fileFormat)
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("shipments/{id}/label");
             request.AddUrlSegment("id", id);
             // This is a GET, but uses the request body, so use ParameterType.GetOrPost instead.
@@ -160,7 +156,7 @@ namespace EasyPost
         {
             if (id == null)
             {
-                Create();
+                throw new PropertyMissing("id");
             }
 
             Request request = new Request("shipments/{id}/smartrate");
@@ -176,6 +172,11 @@ namespace EasyPost
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
         public void Insure(double amount)
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("shipments/{id}/insure", Method.Post);
             request.AddUrlSegment("id", id);
             request.AddQueryString(new Dictionary<string, object>
@@ -237,7 +238,7 @@ namespace EasyPost
         {
             if (id == null)
             {
-                Create();
+                throw new PropertyMissing("id");
             }
 
             Request request = new Request("shipments/{id}/rerate", Method.Post);
@@ -255,6 +256,11 @@ namespace EasyPost
         /// </summary>
         public void Refund()
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("shipments/{id}/refund");
             request.AddUrlSegment("id", id);
 

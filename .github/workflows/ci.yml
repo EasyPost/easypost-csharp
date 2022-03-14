@@ -22,13 +22,13 @@ jobs:
       EASYPOST_PROD_API_KEY: ${{ secrets.EASYPOST_PROD_API_KEY }}
     strategy:
       matrix:
-        dotnet-version: [ 'NetFramework35', 'NetCore31', 'Net50', 'Net60' ]
+        platform: [ 'NetFramework35', 'NetCore31', 'Net50', 'Net60' ]
     steps:
       - uses: actions/checkout@v2
-        # Set the project name, based on .NET version currently selected
+        # Set the project name, based on platform version currently selected
       - name: Set up variables
         id: test_project
-        run: echo "::set-output name=test_file::EasyPost.Tests.${{ matrix.dotnet-version }}"
+        run: echo "::set-output name=test_file::EasyPost.Tests.${{ matrix.platform }}"
         # install MSBuild, used to build the test project
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
@@ -47,3 +47,34 @@ jobs:
         # Run the tests
       - name: Run Tests
         run: vstest.console.exe ${{ steps.test_project.outputs.test_file }}\bin\Test\${{ steps.test_project.outputs.test_file }}.dll
+  Compatibility_Tests:
+    runs-on: windows-2022
+    strategy:
+      matrix:
+        platform: [ 'VB', 'FSharp' ]
+        include:
+          - platform: VB
+            ext: vbproj
+          - platform: FSharp
+            ext: fsproj
+    steps:
+      - uses: actions/checkout@v2
+        # Set the project name, based on platform version currently selected
+      - name: Set up variables
+        id: test_project
+        run: echo "::set-output name=test_file::EasyPost.Tests.${{ matrix.platform }}"
+        # install MSBuild, used to build the test project
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+        # install NuGet.exe to restore required NuGet packages
+      - name: Setup Nuget
+        uses: NuGet/setup-nuget@v1.0.5
+        # install Visual Studio's console test application, to execute tests
+      - name: Setup VSTest
+        uses: darenm/Setup-VSTest@v1
+        # Restore required NuGet packages
+      - name: Restore NuGet Packages
+        run: nuget restore EasyPost.sln
+        # Build the test project
+      - name: Build Solution
+        run: msbuild ${{ steps.test_project.outputs.test_file }}\${{ steps.test_project.outputs.test_file }}.${{ matrix.ext }} /p:platform="Any CPU" /p:configuration="Debug" /p:outputPath="bin/Test" /p:target="Rebuild" -restore

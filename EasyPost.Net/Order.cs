@@ -47,6 +47,11 @@ namespace EasyPost
         /// <param name="service">The service to purchase.</param>
         public void Buy(string carrier, string service)
         {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
             Request request = new Request("orders/{id}/buy", Method.Post);
             request.AddUrlSegment("id", id);
             request.AddQueryString(new Dictionary<string, object>
@@ -69,27 +74,13 @@ namespace EasyPost
         public void Buy(Rate rate) => Buy(rate.carrier, rate.service);
 
         /// <summary>
-        ///     Create this Order.
-        /// </summary>
-        /// <exception cref="ResourceAlreadyCreated">Order already has an id.</exception>
-        public void Create()
-        {
-            if (id != null)
-            {
-                throw new ResourceAlreadyCreated();
-            }
-
-            Merge(SendCreate(AsDictionary()));
-        }
-
-        /// <summary>
         ///     Populate the rates property for this Order.
         /// </summary>
         public void GetRates()
         {
             if (id == null)
             {
-                Create();
+                throw new PropertyMissing("id");
             }
 
             Request request = new Request("orders/{id}/rates");
