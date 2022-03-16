@@ -1,22 +1,29 @@
 [
   {
+    "RecordedAt": "2022-03-23T14:55:26.016123-06:00",
     "Request": {
+      "Body": "{\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\"}",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "51"
+      },
       "Method": "POST",
-      "URI": "https://api.easypost.com/v2/reports/shipment_invoice?start_date=2022-02-01&end_date=2022-02-03",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "********",
         "content_type": "application/json",
         "User-Agent": "EasyPost/v2,CSharpClient/2.8.1,.NET/5.0.13"
       },
-      "ContentHeaders": {},
-      "Body": ""
+      "Uri": "https://api.easypost.com/v2/reports/shipment_invoice"
     },
     "Response": {
-      "Status": {
-        "Code": 201,
-        "Message": "Created"
+      "Body": "{\"id\":\"shpinvrep_ad9cadbe3a4c43018266489c2e42612f\",\"object\":\"ShipmentInvoiceReport\",\"created_at\":\"2022-03-23T20:55:26Z\",\"updated_at\":\"2022-03-23T20:55:26Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null,\"include_children\":false}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "293"
       },
+      "HttpVersion": "1.1",
       "ResponseHeaders": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -24,27 +31,21 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "5f596080621d5dc7e4d1742700a40992",
+        "x-ep-request-uuid": "4aee9dd0623b893ee78b9ee8000bcced",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"2358b4753765272b9ad2b99147b52e44\"",
-        "X-Request-ID": "3bdd3e11-d7e4-4357-91b0-f4a42a9a657c",
-        "x-runtime": "0.036418",
-        "x-node": "bigweb8nuq",
-        "x-version-label": "easypost-202202282222-e6cd2b4eed-master",
+        "ETag": "W/\"53aa1c8e9681791dc222be81438d18be\"",
+        "x-runtime": "0.035022",
+        "x-node": "bigweb6nuq",
+        "x-version-label": "easypost-202203231943-61a988cd70-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 88c34981dc,extlb2nuq 88c34981dc",
+        "x-proxied": "intlb2nuq 3e97db20d4,extlb1nuq 3e97db20d4",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
-      "ContentHeaders": {
-        "Expires": "0",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "293"
-      },
-      "Body": "{\"id\":\"shpinvrep_07bb830737054dcf829b7d84ddafc348\",\"object\":\"ShipmentInvoiceReport\",\"created_at\":\"2022-02-28T23:41:59Z\",\"updated_at\":\"2022-02-28T23:41:59Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null,\"include_children\":false}",
-      "RequestMessage": null,
-      "HttpVersion": "1.1"
-    },
-    "RecordedAt": "2022-02-28T15:41:59.559424-08:00"
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
   }
 ]

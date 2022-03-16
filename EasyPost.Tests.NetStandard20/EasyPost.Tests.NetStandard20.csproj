@@ -9,6 +9,8 @@
     <Platforms>AnyCPU</Platforms>
 
     <RootNamespace>EasyPost.Tests.NetStandard20;</RootNamespace>
+
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

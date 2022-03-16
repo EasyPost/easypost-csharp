@@ -1,70 +1,75 @@
 [
   {
+    "RecordedAt": "2022-03-23T14:55:27.57885-06:00",
     "Request": {
+      "Body": "{\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\"}",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "51"
+      },
       "Method": "POST",
-      "URI": "https://api.easypost.com/v2/reports/refund?start_date=2022-02-01&end_date=2022-02-03",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "********",
         "content_type": "application/json",
         "User-Agent": "EasyPost/v2,CSharpClient/2.8.1,.NET/5.0.13"
       },
-      "ContentHeaders": {},
-      "Body": ""
+      "Uri": "https://api.easypost.com/v2/reports/refund"
     },
     "Response": {
+      "Body": "{\"id\":\"refrep_886600bb8dec4d27a33cfdee380d6232\",\"object\":\"RefundReport\",\"created_at\":\"2022-03-23T20:55:27Z\",\"updated_at\":\"2022-03-23T20:55:27Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "256"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "4aee9dcf623b893fe78b9f05000bcd6d",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"dd8590472ab36dabe4ea8c6e51ddaa05\"",
+        "x-runtime": "0.039156",
+        "x-node": "bigweb6nuq",
+        "x-version-label": "easypost-202203231943-61a988cd70-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb2nuq 3e97db20d4,extlb1nuq 3e97db20d4",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
       "Status": {
         "Code": 201,
         "Message": "Created"
-      },
-      "ResponseHeaders": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "X-XSS-Protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "x-download-options": "noopen",
-        "x-permitted-cross-domain-policies": "none",
-        "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "5f596084621d5dc9e4d1744300a409e1",
-        "Cache-Control": "no-store, no-cache",
-        "Pragma": "no-cache",
-        "ETag": "W/\"107f117b2ed736583e49dadb8441f26b\"",
-        "X-Request-ID": "a66edee9-3afb-43a9-852f-5f263bea3cac",
-        "x-runtime": "0.043398",
-        "x-node": "bigweb4nuq",
-        "x-version-label": "easypost-202202282222-e6cd2b4eed-master",
-        "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 88c34981dc,extlb2nuq 88c34981dc",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-      },
-      "ContentHeaders": {
-        "Expires": "0",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "256"
-      },
-      "Body": "{\"id\":\"refrep_d72c976ea61347dca9c9ceec8af22947\",\"object\":\"RefundReport\",\"created_at\":\"2022-02-28T23:42:01Z\",\"updated_at\":\"2022-02-28T23:42:01Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null}",
-      "RequestMessage": null,
-      "HttpVersion": "1.1"
-    },
-    "RecordedAt": "2022-02-28T15:42:01.223926-08:00"
+      }
+    }
   },
   {
+    "RecordedAt": "2022-03-23T14:55:27.910881-06:00",
     "Request": {
+      "Body": "",
+      "ContentHeaders": {},
       "Method": "GET",
-      "URI": "https://api.easypost.com/v2/reports/refrep_d72c976ea61347dca9c9ceec8af22947",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "********",
         "content_type": "application/json",
         "User-Agent": "EasyPost/v2,CSharpClient/2.8.1,.NET/5.0.13"
       },
-      "ContentHeaders": {},
-      "Body": ""
+      "Uri": "https://api.easypost.com/v2/reports/refrep_886600bb8dec4d27a33cfdee380d6232"
     },
     "Response": {
-      "Status": {
-        "Code": 200,
-        "Message": "OK"
+      "Body": "{\"id\":\"refrep_886600bb8dec4d27a33cfdee380d6232\",\"object\":\"RefundReport\",\"created_at\":\"2022-03-23T20:55:27Z\",\"updated_at\":\"2022-03-23T20:55:27Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "256"
       },
+      "HttpVersion": "1.1",
       "ResponseHeaders": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -72,27 +77,21 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "5f596081621d5dc9e4d1744400a409ea",
+        "x-ep-request-uuid": "4aee9dd2623b893fe78b9f06000bcd7f",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"107f117b2ed736583e49dadb8441f26b\"",
-        "X-Request-ID": "13de1519-191f-437c-84ce-7cae07ab318b",
-        "x-runtime": "0.036613",
-        "x-node": "bigweb8nuq",
-        "x-version-label": "easypost-202202282222-e6cd2b4eed-master",
+        "ETag": "W/\"dd8590472ab36dabe4ea8c6e51ddaa05\"",
+        "x-runtime": "0.109255",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202203231943-61a988cd70-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 88c34981dc,extlb2nuq 88c34981dc",
+        "x-proxied": "intlb2nuq 3e97db20d4,extlb1nuq 3e97db20d4",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
-      "ContentHeaders": {
-        "Expires": "0",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "256"
-      },
-      "Body": "{\"id\":\"refrep_d72c976ea61347dca9c9ceec8af22947\",\"object\":\"RefundReport\",\"created_at\":\"2022-02-28T23:42:01Z\",\"updated_at\":\"2022-02-28T23:42:01Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null}",
-      "RequestMessage": null,
-      "HttpVersion": "1.1"
-    },
-    "RecordedAt": "2022-02-28T15:42:01.636266-08:00"
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
   }
 ]

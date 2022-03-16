@@ -86,6 +86,7 @@ namespace EasyPost.Tests.Net
                 }
 
                 Record(cassetteName, apiKey, hideCredentials);
+                return;
             }
 
             ClientManager.SetCurrent(GetReplayingClientFunction(apiKey ?? GlobalApiKey, cassetteName, hideCredentials.GetValueOrDefault(_HideCredentials)));

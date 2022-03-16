@@ -1,70 +1,75 @@
 [
   {
+    "RecordedAt": "2022-03-23T14:55:29.168987-06:00",
     "Request": {
+      "Body": "{\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\"}",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "51"
+      },
       "Method": "POST",
-      "URI": "https://api.easypost.com/v2/reports/tracker?start_date=2022-02-01&end_date=2022-02-03",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "********",
         "content_type": "application/json",
         "User-Agent": "EasyPost/v2,CSharpClient/2.8.1,.NET/5.0.13"
       },
-      "ContentHeaders": {},
-      "Body": ""
+      "Uri": "https://api.easypost.com/v2/reports/tracker"
     },
     "Response": {
+      "Body": "{\"id\":\"trkrep_391a27d3e52c4eb9bf150830dce0759a\",\"object\":\"TrackerReport\",\"created_at\":\"2022-02-25T19:32:58Z\",\"updated_at\":\"2022-03-23T18:29:51Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"available\",\"url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/tracker_report/20220323/a74587592fac437b99ef1bb8a27684ea.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQS5SPYTWI%2F20220323%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220323T205529Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=58cb81dc9b61353e8fe98a2d6472a830f3d72ceff8110a8fec38b02090654863\",\"url_expires_at\":\"2022-03-23T20:55:59Z\",\"include_children\":false}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "685"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "4aee9dd5623b8941e78b9f22000bcdd7",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"31f7f38ae033f8f6a16566017e73f7d1\"",
+        "x-runtime": "0.043747",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202203231943-61a988cd70-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb2nuq 3e97db20d4,extlb1nuq 3e97db20d4",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
       "Status": {
         "Code": 201,
         "Message": "Created"
-      },
-      "ResponseHeaders": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "X-XSS-Protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "x-download-options": "noopen",
-        "x-permitted-cross-domain-policies": "none",
-        "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "5f596080621d5dcbe4d1746000a40a74",
-        "Cache-Control": "no-store, no-cache",
-        "Pragma": "no-cache",
-        "ETag": "W/\"9981fe77ff35ec2a33f29269b2ee95a0\"",
-        "X-Request-ID": "4c74dddb-db7e-471d-a319-be89e5f6f3a1",
-        "x-runtime": "0.117855",
-        "x-node": "bigweb8nuq",
-        "x-version-label": "easypost-202202282222-e6cd2b4eed-master",
-        "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 88c34981dc,extlb2nuq 88c34981dc",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-      },
-      "ContentHeaders": {
-        "Expires": "0",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "685"
-      },
-      "Body": "{\"id\":\"trkrep_391a27d3e52c4eb9bf150830dce0759a\",\"object\":\"TrackerReport\",\"created_at\":\"2022-02-25T19:32:58Z\",\"updated_at\":\"2022-02-28T22:01:13Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"available\",\"url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/tracker_report/20220228/978946e53f5146c89ffa64224827c679.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQVHEFDONM%2F20220228%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220228T234203Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=3ce048fde566929919d82cff1e0e90de845aa3997cd46e8b8ad6aa232eaad815\",\"url_expires_at\":\"2022-02-28T23:42:33Z\",\"include_children\":false}",
-      "RequestMessage": null,
-      "HttpVersion": "1.1"
-    },
-    "RecordedAt": "2022-02-28T15:42:03.794745-08:00"
+      }
+    }
   },
   {
+    "RecordedAt": "2022-03-23T14:55:29.428667-06:00",
     "Request": {
+      "Body": "",
+      "ContentHeaders": {},
       "Method": "GET",
-      "URI": "https://api.easypost.com/v2/reports/trkrep_391a27d3e52c4eb9bf150830dce0759a",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "********",
         "content_type": "application/json",
         "User-Agent": "EasyPost/v2,CSharpClient/2.8.1,.NET/5.0.13"
       },
-      "ContentHeaders": {},
-      "Body": ""
+      "Uri": "https://api.easypost.com/v2/reports/trkrep_391a27d3e52c4eb9bf150830dce0759a"
     },
     "Response": {
-      "Status": {
-        "Code": 200,
-        "Message": "OK"
+      "Body": "{\"id\":\"trkrep_391a27d3e52c4eb9bf150830dce0759a\",\"object\":\"TrackerReport\",\"created_at\":\"2022-02-25T19:32:58Z\",\"updated_at\":\"2022-03-23T18:29:51Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"available\",\"url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/tracker_report/20220323/a74587592fac437b99ef1bb8a27684ea.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQS5SPYTWI%2F20220323%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220323T205529Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=58cb81dc9b61353e8fe98a2d6472a830f3d72ceff8110a8fec38b02090654863\",\"url_expires_at\":\"2022-03-23T20:55:59Z\",\"include_children\":false}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "685"
       },
+      "HttpVersion": "1.1",
       "ResponseHeaders": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -72,27 +77,21 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "5f596082621d5dcce4d1746100a40a91",
+        "x-ep-request-uuid": "4aee9dd2623b8941e78b9f23000bcdee",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"80a104f1a0680e0ea71313bb20e2ad3c\"",
-        "X-Request-ID": "deb52c61-88a0-4de3-be83-15220e176039",
-        "x-runtime": "0.034136",
-        "x-node": "bigweb1nuq",
-        "x-version-label": "easypost-202202282222-e6cd2b4eed-master",
+        "ETag": "W/\"31f7f38ae033f8f6a16566017e73f7d1\"",
+        "x-runtime": "0.034944",
+        "x-node": "bigweb5nuq",
+        "x-version-label": "easypost-202203231943-61a988cd70-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 88c34981dc,extlb2nuq 88c34981dc",
+        "x-proxied": "intlb1nuq 3e97db20d4,extlb1nuq 3e97db20d4",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
-      "ContentHeaders": {
-        "Expires": "0",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "685"
-      },
-      "Body": "{\"id\":\"trkrep_391a27d3e52c4eb9bf150830dce0759a\",\"object\":\"TrackerReport\",\"created_at\":\"2022-02-25T19:32:58Z\",\"updated_at\":\"2022-02-28T22:01:13Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"available\",\"url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/tracker_report/20220228/978946e53f5146c89ffa64224827c679.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQVHEFDONM%2F20220228%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220228T234204Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=b8e929e62f147bf09a23cd0149f765a811055aa40b8957f693a392042e295cc6\",\"url_expires_at\":\"2022-02-28T23:42:34Z\",\"include_children\":false}",
-      "RequestMessage": null,
-      "HttpVersion": "1.1"
-    },
-    "RecordedAt": "2022-02-28T15:42:04.189101-08:00"
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
   }
 ]

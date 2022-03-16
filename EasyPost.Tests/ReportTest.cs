@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -27,10 +26,16 @@ namespace EasyPost.Tests.Net
             });
         }
 
-        private static async Task TestCreateReport(string cassetteName, string reportType, string idPrefix)
+        private static async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters)
+        {
+            parameters["start_date"] = Fixture.ReportStartDate;
+            parameters["end_date"] = Fixture.ReportEndDate;
+            return await Report.Create(reportType, parameters);
+        }
+
+        private static async Task TestCreateBasicReport(string cassetteName, string reportType, string idPrefix)
         {
             VCR.Replay(cassetteName);
-
             Report report = await CreateBasicReport(reportType);
 
             Assert.IsInstanceOfType(report, typeof(Report));
@@ -41,12 +46,11 @@ namespace EasyPost.Tests.Net
         {
             VCR.Replay(cassetteName);
 
-
             Report report = await CreateBasicReport(reportType);
 
             Report retrievedReport = await Report.Retrieve(report.id);
 
-            Assert.IsInstanceOfType(report, typeof(Report));
+            Assert.IsInstanceOfType(retrievedReport, typeof(Report));
             Assert.AreEqual(report.start_date, retrievedReport.start_date);
             Assert.AreEqual(report.end_date, retrievedReport.end_date);
         }
@@ -54,31 +58,80 @@ namespace EasyPost.Tests.Net
         [TestMethod]
         public async Task TestCreatePaymentLogReport()
         {
-            await TestCreateReport("create_payment_log_report", "payment_log", "plrep_");
+            await TestCreateBasicReport("create_payment_log_report", "payment_log", "plrep_");
         }
 
         [TestMethod]
         public async Task TestCreateRefundReport()
         {
-            await TestCreateReport("create_refund_report", "refund", "refrep_");
+            await TestCreateBasicReport("create_refund_report", "refund", "refrep_");
         }
 
         [TestMethod]
         public async Task TestCreateShipmentReport()
         {
-            await TestCreateReport("create_shipment_report", "shipment", "shprep_");
+            await TestCreateBasicReport("create_shipment_report", "shipment", "shprep_");
         }
 
         [TestMethod]
         public async Task TestCreateShipmentInvoiceReport()
         {
-            await TestCreateReport("create_shipment_invoice_report", "shipment_invoice", "shpinvrep_");
+            await TestCreateBasicReport("create_shipment_invoice_report", "shipment_invoice", "shpinvrep_");
         }
 
         [TestMethod]
         public async Task TestCreateTrackerReport()
         {
-            await TestCreateReport("create_tracker_report", "tracker", "trkrep_");
+            await TestCreateBasicReport("create_tracker_report", "tracker", "trkrep_");
+        }
+
+        [TestMethod]
+        public async Task TestCreateReportWithColumns()
+        {
+            VCR.Replay("create_report_with_columns");
+
+            List<string> columns = new List<string>
+            {
+                "usps_zone"
+            };
+            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object>
+            {
+                {
+                    "columns", columns
+                }
+            });
+
+            // verify parameters by checking VCR cassette for correct URL
+            // Some reports take a long time to generate, so we won't be able to consistently pull the report
+            // There's unfortunately no way to check if the columns were included in the final report without parsing the CSV
+            // so we assume, if we haven't gotten an error by this point, we've made the API calls correctly
+            // any failure at this point is a server-side issue
+            Assert.IsInstanceOfType(report, typeof(Report));
+        }
+
+        [TestMethod]
+        public async Task TestCreateReportWithAdditionalColumns()
+        {
+            VCR.Replay("create_report_with_additional_columns");
+
+            List<string> additionalColumns = new List<string>
+            {
+                "from_name",
+                "from_company",
+            };
+            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object>
+            {
+                {
+                    "additional_columns", additionalColumns
+                }
+            });
+
+            // verify parameters by checking VCR cassette for correct URL
+            // Some reports take a long time to generate, so we won't be able to consistently pull the report
+            // There's unfortunately no way to check if the columns were included in the final report without parsing the CSV
+            // so we assume, if we haven't gotten an error by this point, we've made the API calls correctly
+            // any failure at this point is a server-side issue
+            Assert.IsInstanceOfType(report, typeof(Report));
         }
 
         [TestMethod]

@@ -1,22 +1,29 @@
 [
   {
+    "RecordedAt": "2022-03-23T14:55:26.286472-06:00",
     "Request": {
+      "Body": "{\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\"}",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "51"
+      },
       "Method": "POST",
-      "URI": "https://api.easypost.com/v2/reports/tracker?start_date=2022-02-01&end_date=2022-02-03",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "********",
         "content_type": "application/json",
         "User-Agent": "EasyPost/v2,CSharpClient/2.8.1,.NET/5.0.13"
       },
-      "ContentHeaders": {},
-      "Body": ""
+      "Uri": "https://api.easypost.com/v2/reports/tracker"
     },
     "Response": {
-      "Status": {
-        "Code": 201,
-        "Message": "Created"
+      "Body": "{\"id\":\"trkrep_391a27d3e52c4eb9bf150830dce0759a\",\"object\":\"TrackerReport\",\"created_at\":\"2022-02-25T19:32:58Z\",\"updated_at\":\"2022-03-23T18:29:51Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"available\",\"url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/tracker_report/20220323/a74587592fac437b99ef1bb8a27684ea.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQS5SPYTWI%2F20220323%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220323T205526Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=4f275336d3453434bd52ce016a78a7fdebc52873ba863fa91a5269fe55aa67f4\",\"url_expires_at\":\"2022-03-23T20:55:56Z\",\"include_children\":false}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "685"
       },
+      "HttpVersion": "1.1",
       "ResponseHeaders": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -24,27 +31,21 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "5f596080621d5dc8e4d1744000a409a9",
+        "x-ep-request-uuid": "4aee9dd1623b893ee78b9f00000bccff",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"ea6b85038538c7bd45ca2d3a8535e72f\"",
-        "X-Request-ID": "b60d4fec-a03a-4e4c-b2cb-371ec2b91412",
-        "x-runtime": "0.048293",
-        "x-node": "bigweb6nuq",
-        "x-version-label": "easypost-202202282222-e6cd2b4eed-master",
+        "ETag": "W/\"614f3163128a3590bdf0af04f3ec55e4\"",
+        "x-runtime": "0.057424",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202203231943-61a988cd70-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 88c34981dc,extlb2nuq 88c34981dc",
+        "x-proxied": "intlb1nuq 3e97db20d4,extlb1nuq 3e97db20d4",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
-      "ContentHeaders": {
-        "Expires": "0",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "685"
-      },
-      "Body": "{\"id\":\"trkrep_391a27d3e52c4eb9bf150830dce0759a\",\"object\":\"TrackerReport\",\"created_at\":\"2022-02-25T19:32:58Z\",\"updated_at\":\"2022-02-28T22:01:13Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"available\",\"url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/tracker_report/20220228/978946e53f5146c89ffa64224827c679.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQVHEFDONM%2F20220228%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220228T234200Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=9a57c43eca7f267c2ce58a458a49f7b58cd5e88700a1b979c3184e8176c10cbb\",\"url_expires_at\":\"2022-02-28T23:42:30Z\",\"include_children\":false}",
-      "RequestMessage": null,
-      "HttpVersion": "1.1"
-    },
-    "RecordedAt": "2022-02-28T15:41:59.982273-08:00"
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
   }
 ]

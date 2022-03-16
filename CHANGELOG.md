@@ -14,6 +14,7 @@
 * Add missing `id` property to `Brand` class
 * Clarify XList vs XCollection distinction:
   * `ReportList`, `ScanFormList`, `ShipmentList` and `TrackerList` renamed to `ReportCollection`, `ScanFormCollection`, `ShipmentCollection` and `TrackerCollection`
+* Add support for `columns` and `additional_columns` on Report creation
 
 ## v2.8.1 (2022-02-17)
 

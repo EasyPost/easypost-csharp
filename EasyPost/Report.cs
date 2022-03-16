@@ -40,6 +40,9 @@ namespace EasyPost
         ///     * {"start_date", string} Date to start the report at.
         ///     * {"end_date", string} Date to end the report at.
         ///     * {"include_children", string} Whether or not to include child objects in the report.
+        ///     * {"send_email", string} Whether or not to send the report via email.
+        ///     * {"columns", List&lt;string&gt;} Specify the exact columns you want in your report.
+        ///     * {"additional_columns", List&lt;string&gt;} Request additional columns (if any) outside of the defaults.
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Report instance.</returns>
@@ -47,7 +50,7 @@ namespace EasyPost
         {
             Request request = new Request("reports/{type}", Method.Post);
             request.AddUrlSegment("type", type);
-            request.AddQueryString(parameters ?? new Dictionary<string, object>());
+            request.AddBody(parameters ?? new Dictionary<string, object>());
 
             return await request.Execute<Report>();
         }
