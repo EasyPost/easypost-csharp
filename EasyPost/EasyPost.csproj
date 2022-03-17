@@ -6,10 +6,10 @@
     <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>
     <RootNamespace>EasyPost</RootNamespace>
-    <AssemblyName>EasyPost.Net</AssemblyName>
+    <AssemblyName>EasyPost</AssemblyName>
     <Configurations>Release;Debug</Configurations>
     <Platforms>AnyCPU</Platforms>
-    <PackageId>EasyPost.Net</PackageId>
+    <PackageId>EasyPost</PackageId>
     <LangVersion>8.0</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
   </PropertyGroup>
@@ -30,7 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\lib\net\EasyPost.Net.XML</DocumentationFile>
+    <DocumentationFile>..\lib\net\EasyPost.XML</DocumentationFile>
     <NoWarn>1701;1702;1591;1570</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

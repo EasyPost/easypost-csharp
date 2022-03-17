@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EasyPost.Net\EasyPost.Net.csproj" />
+    <ProjectReference Include="..\EasyPost\EasyPost.csproj" />
     <ProjectReference Include="..\Scotch\EasyPost.Scotch\EasyPost.Scotch.csproj" />
   </ItemGroup>
 

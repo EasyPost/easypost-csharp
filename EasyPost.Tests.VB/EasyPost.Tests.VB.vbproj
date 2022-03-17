@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\EasyPost.Net\EasyPost.Net.csproj" />
+      <ProjectReference Include="..\EasyPost\EasyPost.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -22,7 +22,7 @@ jobs:
       EASYPOST_PROD_API_KEY: ${{ secrets.EASYPOST_PROD_API_KEY }}
     strategy:
       matrix:
-        platform: [ 'NetFramework35', 'NetCore31', 'Net50', 'Net60' ]
+        platform: [ 'NetStandard20', 'NetCore31', 'Net50', 'Net60' ]
     steps:
       - uses: actions/checkout@v2
         with:
