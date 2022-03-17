@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json.Linq;
 
 namespace EasyPost.Tests.Net
 {
@@ -52,7 +53,7 @@ namespace EasyPost.Tests.Net
 
             Request request = new Request("");
             dynamic response = request.Execute<dynamic>();
-            Assert.AreEqual(HttpBinUrl, response.url.ToString());
+            Assert.AreEqual(HttpBinUrl, (response as JObject).Property("url").Value.ToString());
         }
 
         [TestMethod]

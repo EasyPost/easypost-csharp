@@ -174,11 +174,11 @@ namespace EasyPost.Utilities
         /// <returns>The value of the JSON sub-element key path</returns>
         private static string? GoToRootElement(string? data, List<string> rootElementKeys)
         {
-            object json = JsonConvert.DeserializeObject(data);
+            dynamic json = JsonConvert.DeserializeObject(data);
             try
             {
-                rootElementKeys.ForEach(key => { json = (json as JObject).Property(key).Value; });
-                return (json as JToken).ToString();
+                rootElementKeys.ForEach(key => { json = json[key]; });
+                return (json as JObject).ToString();
             }
             catch (Exception)
             {

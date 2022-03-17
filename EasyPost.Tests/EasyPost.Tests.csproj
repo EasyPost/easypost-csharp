@@ -8,7 +8,7 @@
 
     <Platforms>AnyCPU</Platforms>
 
-    <RootNamespace>EasyPost.Tests.Net</RootNamespace>
+    <RootNamespace>EasyPost.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
