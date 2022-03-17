@@ -3,13 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPost.NetFramework", "EasyPost.NetFramework\EasyPost.NetFramework.csproj", "{69683F8C-9306-4ED3-90BD-1F5C2F6977E1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPost.Tests.NetFramework35", "EasyPost.Tests.NetFramework35\EasyPost.Tests.NetFramework35.csproj", "{5FD0A21A-1A0A-4776-B54C-23F61450363A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPost.Tests.NetCore31", "EasyPost.Tests.NetCore31\EasyPost.Tests.NetCore31.csproj", "{6D9AEFF0-1D27-438B-9652-2B79D0A685DD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPost.Tests.NetFramework", "EasyPost.Tests.NetFramework\EasyPost.Tests.NetFramework.csproj", "{4A3399DC-0658-4D01-B6EA-7F3EB70E4EF3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPost.Net", "EasyPost.Net\EasyPost.Net.csproj", "{DE6D4585-6A4E-4637-A67F-EDF1B51F0E6B}"
 EndProject
@@ -33,19 +27,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{69683F8C-9306-4ED3-90BD-1F5C2F6977E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69683F8C-9306-4ED3-90BD-1F5C2F6977E1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69683F8C-9306-4ED3-90BD-1F5C2F6977E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69683F8C-9306-4ED3-90BD-1F5C2F6977E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FD0A21A-1A0A-4776-B54C-23F61450363A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FD0A21A-1A0A-4776-B54C-23F61450363A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FD0A21A-1A0A-4776-B54C-23F61450363A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D9AEFF0-1D27-438B-9652-2B79D0A685DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6D9AEFF0-1D27-438B-9652-2B79D0A685DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D9AEFF0-1D27-438B-9652-2B79D0A685DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A3399DC-0658-4D01-B6EA-7F3EB70E4EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A3399DC-0658-4D01-B6EA-7F3EB70E4EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A3399DC-0658-4D01-B6EA-7F3EB70E4EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE6D4585-6A4E-4637-A67F-EDF1B51F0E6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DE6D4585-6A4E-4637-A67F-EDF1B51F0E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE6D4585-6A4E-4637-A67F-EDF1B51F0E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
