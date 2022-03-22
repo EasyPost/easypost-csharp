@@ -140,7 +140,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a user. Starts with "user_".</param>
         /// <returns>EasyPost.User instance.</returns>
-        public static async Task<User> Retrieve(string id = null)
+        public static async Task<User> Retrieve(string? id = null)
         {
             Request request;
 

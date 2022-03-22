@@ -88,7 +88,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>A EasyPost.TrackerCollection instance.</returns>
-        public static async Task<TrackerCollection> All(Dictionary<string, object> parameters = null)
+        public static async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
         {
             Request request = new Request("trackers");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
@@ -118,7 +118,7 @@ namespace EasyPost
         /// <returns>True</returns>
         public static async Task<bool> CreateList(Dictionary<string, object> parameters)
         {
-            Request request = new Request("trackers/create_list", RestSharp.Method.Post);
+            Request request = new Request("trackers/create_list", Method.Post);
             request.AddBody(new Dictionary<string, object>
             {
                 {

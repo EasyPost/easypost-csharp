@@ -115,8 +115,7 @@ namespace EasyPost
             try
             {
                 body = JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
-                string errorsSerialized = JsonSerialization.ConvertObjectToJson(body["error"]["errors"]);
-                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(errorsSerialized);
+                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string> { "error", "errors" });
             }
             catch
             {

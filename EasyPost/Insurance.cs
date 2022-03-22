@@ -39,7 +39,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters to use when refreshing this insurance.</param>
         /// <returns>This refreshed EasyPost.Insurance object.</returns>
-        public async Task<Insurance> Refresh(Dictionary<string, object> parameters = null)
+        public async Task<Insurance> Refresh(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
             Request request = new Request("insurances/{id}");
@@ -66,7 +66,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.InsuranceCollection instance.</returns>
-        public static async Task<InsuranceCollection> All(Dictionary<string, object> parameters = null)
+        public static async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
             Request request = new Request("insurances");
@@ -111,19 +111,6 @@ namespace EasyPost
         {
             Request request = new Request("insurances/{id}");
             request.AddUrlSegment("id", id);
-
-            return await request.Execute<Insurance>();
-        }
-
-        private static async Task<Insurance> SendCreate(Dictionary<string, object> parameters)
-        {
-            Request request = new Request("insurances", Method.Post);
-            request.AddBody(new Dictionary<string, object>
-            {
-                {
-                    "insurance", parameters
-                }
-            });
 
             return await request.Execute<Insurance>();
         }

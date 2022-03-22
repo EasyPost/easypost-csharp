@@ -33,7 +33,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>A list of EasyPost.Refund instances.</returns>
-        public static async Task<List<Refund>> Create(Dictionary<string, object> parameters = null)
+        public static async Task<List<Refund>> Create(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
@@ -69,7 +69,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.RefundCollection instance.</returns>
-        public static async Task<RefundCollection> All(Dictionary<string, object> parameters = null)
+        public static async Task<RefundCollection> All(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
 

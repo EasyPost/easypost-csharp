@@ -72,7 +72,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
-        public static async Task<ScanFormCollection> All(Dictionary<string, object> parameters = null)
+        public static async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
         {
             Request request = new Request("scan_forms");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());

@@ -101,7 +101,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Pickup instance.</returns>
-        public static async Task<Pickup> Create(Dictionary<string, object> parameters = null) => await SendCreate(parameters ?? new Dictionary<string, object>());
+        public static async Task<Pickup> Create(Dictionary<string, object>? parameters = null) => await SendCreate(parameters ?? new Dictionary<string, object>());
 
 
         /// <summary>

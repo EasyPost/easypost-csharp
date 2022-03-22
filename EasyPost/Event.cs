@@ -33,7 +33,7 @@ namespace EasyPost
         ///     Resend the last Event for a specific EasyPost object instance.
         /// </summary>
         /// <param name="id">String representing an EasyPost object instance.</param>
-        public static void Create(string id)
+        public async Task<bool> Create(string id)
         {
             Request request = new Request("events", Method.Post);
             request.AddQueryString(new Dictionary<string, object>
@@ -42,6 +42,7 @@ namespace EasyPost
                     "result_id", id
                 }
             });
+            return await request.Execute();
         }
 
         /// <summary>
@@ -72,7 +73,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.EventCollection instance.</returns>
-        public static async Task<EventCollection> All(Dictionary<string, object> parameters = null)
+        public static async Task<EventCollection> All(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
 

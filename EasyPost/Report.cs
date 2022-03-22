@@ -43,7 +43,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Report instance.</returns>
-        public static async Task<Report> Create(string type, Dictionary<string, object> parameters = null)
+        public static async Task<Report> Create(string type, Dictionary<string, object>? parameters = null)
         {
             Request request = new Request("reports/{type}", Method.Post);
             request.AddUrlSegment("type", type);
@@ -67,7 +67,7 @@ namespace EasyPost
         /// </param>
         /// <param name="type">The type of report, e.g. "shipment", "tracker", "payment_log", etc.</param>
         /// <returns>An EasyPost.ReportCollection instance.</returns>
-        public static async Task<ReportCollection> All(string type, Dictionary<string, object> parameters = null)
+        public static async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
         {
             Request request = new Request("reports/{type}");
             request.AddUrlSegment("type", type);

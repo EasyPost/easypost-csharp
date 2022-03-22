@@ -72,7 +72,7 @@ namespace EasyPost
         ///     Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
-        public void Buy(Rate rate) => Buy(rate.carrier, rate.service);
+        public async Task Buy(Rate rate) => await Buy(rate.carrier, rate.service);
 
         /// <summary>
         ///     Populate the rates property for this Order.
@@ -132,19 +132,6 @@ namespace EasyPost
         {
             Request request = new Request("orders/{id}");
             request.AddUrlSegment("id", id);
-
-            return await request.Execute<Order>();
-        }
-
-        private static async Task<Order> SendCreate(Dictionary<string, object> parameters)
-        {
-            Request request = new Request("orders", Method.Post);
-            request.AddBody(new Dictionary<string, object>
-            {
-                {
-                    "order", parameters
-                }
-            });
 
             return await request.Execute<Order>();
         }

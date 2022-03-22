@@ -1,4 +1,6 @@
+using System.Dynamic;
 using System.Threading.Tasks;
+using EasyPost.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -52,8 +54,8 @@ namespace EasyPost.Tests.Net
             // Client should now be configured to hit httpbin.org instead of EasyPost's API
 
             Request request = new Request("");
-            dynamic response = await request.Execute<dynamic>();
-            Assert.AreEqual(HttpBinUrl, response.url.ToString());
+            ExpandoObject response = await request.Execute<ExpandoObject>();
+            Assert.AreEqual(HttpBinUrl, JsonSerialization.GetValueOfExpandoObjectProperty(response, "url")?.ToString());
         }
     }
 }

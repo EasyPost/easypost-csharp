@@ -8,7 +8,7 @@ namespace EasyPost
     public class ShipmentCollection : Resource
     {
         [JsonProperty("filters")]
-        public Dictionary<string, object> filters { get; set; }
+        public Dictionary<string, object>? filters { get; set; }
         [JsonProperty("has_more")]
         public bool has_more { get; set; }
         [JsonProperty("shipments")]

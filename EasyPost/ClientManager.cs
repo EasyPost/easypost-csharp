@@ -7,7 +7,7 @@ namespace EasyPost
     /// </summary>
     public static class ClientManager
     {
-        private static Func<Client> getCurrent;
+        private static Func<Client>? getCurrent;
 
         /// <summary>
         ///     Set/Reset the client with a new API key.

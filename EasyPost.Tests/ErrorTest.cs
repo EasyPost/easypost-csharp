@@ -6,8 +6,6 @@ namespace EasyPost.Tests.Net
     [TestClass]
     public class ErrorTest
     {
-        private string _error;
-
         [TestInitialize]
         public void Initialize()
         {

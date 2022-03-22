@@ -59,7 +59,7 @@ namespace EasyPost
         ///     Verify an address.
         /// </summary>
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
-        public async Task Verify(string carrier = null)
+        public async Task Verify(string? carrier = null)
         {
             if (id == null)
             {
@@ -100,9 +100,9 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
-        public static async Task<Address> Create(Dictionary<string, object> parameters = null)
+        public static async Task<Address> Create(Dictionary<string, object>? parameters = null)
         {
-            List<string> verifications = null, strictVerifications = null;
+            List<string>? verifications = null, strictVerifications = null;
             parameters = parameters ?? new Dictionary<string, object>();
 
             if (parameters.ContainsKey("verifications"))
@@ -157,7 +157,7 @@ namespace EasyPost
         ///     * {"email", string}
         ///     All invalid keys will be ignored.
         /// </param>
-        public static async Task<Address> CreateAndVerify(Dictionary<string, object> parameters = null)
+        public static async Task<Address> CreateAndVerify(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
             parameters["strict_verifications"] = new List<string>
@@ -195,7 +195,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.AddressCollection instance.</returns>
-        public static async Task<AddressCollection> All(Dictionary<string, object> parameters = null)
+        public static async Task<AddressCollection> All(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
             Request request = new Request("addresses");
@@ -204,8 +204,8 @@ namespace EasyPost
             return await request.Execute<AddressCollection>();
         }
 
-        private static async Task<Address> SendCreate(Dictionary<string, object> parameters, List<string> verifications = null,
-            List<string> strictVerifications = null)
+        private static async Task<Address> SendCreate(Dictionary<string, object> parameters, List<string>? verifications = null,
+            List<string>? strictVerifications = null)
         {
             Request request = new Request("addresses", Method.Post);
             request.AddBody(new Dictionary<string, object>

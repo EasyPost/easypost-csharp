@@ -152,7 +152,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static async Task<Batch> Create(Dictionary<string, object> parameters = null)
+        public static async Task<Batch> Create(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
@@ -177,7 +177,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static async Task<Batch> CreateAndBuy(Dictionary<string, object> parameters = null)
+        public static async Task<Batch> CreateAndBuy(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
@@ -220,7 +220,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.BatchCollection instance.</returns>
-        public static async Task<BatchCollection> All(Dictionary<string, object> parameters = null)
+        public static async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
 

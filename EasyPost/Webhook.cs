@@ -66,10 +66,13 @@ namespace EasyPost
         ///     Get a list of scan forms.
         /// </summary>
         /// <returns>List of EasyPost.Webhook instances.</returns>
-        public static async Task<List<Webhook>> All(Dictionary<string, object> parameters = null)
+        public static async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
         {
             Request request = new Request("webhooks");
-
+            if (parameters != null)
+            {
+                request.AddBody(parameters);
+            }
             WebhookList webhookList = await request.Execute<WebhookList>();
             return webhookList.webhooks;
         }

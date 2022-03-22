@@ -81,7 +81,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
-        public async Task Buy(string rateId, string insuranceValue = null)
+        public async Task Buy(string rateId, string? insuranceValue = null)
         {
             if (id == null)
             {
@@ -128,7 +128,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
-        public async Task Buy(Rate rate, string insuranceValue = null) => await Buy(rate.id, insuranceValue);
+        public async Task Buy(Rate rate, string? insuranceValue = null) => await Buy(rate.id, insuranceValue);
 
         /// <summary>
         ///     Generate a postage label for this shipment.
@@ -198,8 +198,8 @@ namespace EasyPost
         /// <param name="excludeCarriers">Carriers blacklist.</param>
         /// <param name="excludeServices">Services blacklist.</param>
         /// <returns>EasyPost.Rate instance or null if no rate was found.</returns>
-        public Rate LowestRate(IEnumerable<string> includeCarriers = null, IEnumerable<string> includeServices = null,
-            IEnumerable<string> excludeCarriers = null, IEnumerable<string> excludeServices = null)
+        public Rate? LowestRate(IEnumerable<string>? includeCarriers = null, IEnumerable<string>? includeServices = null,
+            IEnumerable<string>? excludeCarriers = null, IEnumerable<string>? excludeServices = null)
         {
             if (rates == null)
             {
@@ -235,7 +235,7 @@ namespace EasyPost
         ///     Refresh the rates for this Shipment.
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
-        public async Task RegenerateRates(Dictionary<string, object> parameters = null)
+        public async Task RegenerateRates(Dictionary<string, object>? parameters = null)
         {
             if (id == null)
             {
@@ -288,7 +288,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static async Task<Shipment> Create(Dictionary<string, object> parameters = null) => await SendCreate(parameters ?? new Dictionary<string, object>());
+        public static async Task<Shipment> Create(Dictionary<string, object>? parameters = null) => await SendCreate(parameters ?? new Dictionary<string, object>());
 
 
         /// <summary>
@@ -307,7 +307,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.ShipmentCollection instance.</returns>
-        public static async Task<ShipmentCollection> All(Dictionary<string, object> parameters = null)
+        public static async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
             Request request = new Request("shipments");
             request.AddQueryString(parameters ?? new Dictionary<string, object>());
