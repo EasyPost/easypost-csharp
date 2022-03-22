@@ -37,9 +37,9 @@ namespace EasyPost
         /// <param name="parameters">Dictionary of key-value pairs for creating URL query parameters.</param>
         public void AddQueryString(IDictionary<string, object> parameters)
         {
-            foreach ((string key, object value) in parameters)
+            foreach (KeyValuePair<string, object> pair in parameters)
             {
-                AddParameter(key, Convert.ToString(value), ParameterType.QueryString);
+                AddParameter(pair.Key, Convert.ToString(pair.Value), ParameterType.QueryString);
             }
         }
 

@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EasyPost.Net\EasyPost.Net.csproj" />
+    <ProjectReference Include="..\EasyPost\EasyPost.csproj" />
     <ProjectReference Include="..\Scotch\EasyPost.Scotch\EasyPost.Scotch.csproj" />
   </ItemGroup>
 
@@ -33,71 +33,71 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\EasyPost.Tests.Net\AddressTest.cs">
+    <Compile Include="..\EasyPost.Tests\AddressTest.cs">
       <Link>AddressTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\BatchTest.cs">
+    <Compile Include="..\EasyPost.Tests\BatchTest.cs">
       <Link>BatchTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\CarrierAccountTest.cs">
+    <Compile Include="..\EasyPost.Tests\CarrierAccountTest.cs">
       <Link>CarrierAccountTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\CustomsInfoTest.cs">
+    <Compile Include="..\EasyPost.Tests\CustomsInfoTest.cs">
       <Link>CustomsInfoTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\CustomsItemTest.cs">
+    <Compile Include="..\EasyPost.Tests\CustomsItemTest.cs">
       <Link>CustomsItemTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\EasyPostTest.cs">
+    <Compile Include="..\EasyPost.Tests\EasyPostTest.cs">
       <Link>EasyPostTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\ErrorTest.cs">
+    <Compile Include="..\EasyPost.Tests\ErrorTest.cs">
       <Link>ErrorTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\EventTest.cs">
+    <Compile Include="..\EasyPost.Tests\EventTest.cs">
       <Link>EventTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\InsuranceTest.cs">
+    <Compile Include="..\EasyPost.Tests\Fixture.cs">
+      <Link>Fixture.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyPost.Tests\InsuranceTest.cs">
       <Link>InsuranceTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\OrderTest.cs">
+    <Compile Include="..\EasyPost.Tests\OrderTest.cs">
       <Link>OrderTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\ParcelTest.cs">
+    <Compile Include="..\EasyPost.Tests\ParcelTest.cs">
       <Link>ParcelTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\PickupTest.cs">
+    <Compile Include="..\EasyPost.Tests\PickupTest.cs">
       <Link>PickupTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\RateTest.cs">
+    <Compile Include="..\EasyPost.Tests\RateTest.cs">
       <Link>RateTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\RefundTest.cs">
+    <Compile Include="..\EasyPost.Tests\RefundTest.cs">
       <Link>RefundTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\ReportTest.cs">
+    <Compile Include="..\EasyPost.Tests\ReportTest.cs">
       <Link>ReportTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\ScanFormTest.cs">
+    <Compile Include="..\EasyPost.Tests\ScanFormTest.cs">
       <Link>ScanFormTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\ShipmentTest.cs">
+    <Compile Include="..\EasyPost.Tests\ShipmentTest.cs">
       <Link>ShipmentTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\TrackerTest.cs">
+    <Compile Include="..\EasyPost.Tests\TrackerTest.cs">
       <Link>TrackerTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\UserTest.cs">
+    <Compile Include="..\EasyPost.Tests\UserTest.cs">
       <Link>UserTest.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\WebhookTest.cs">
-      <Link>WebhookTest.cs</Link>
-    </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\VCR.cs">
+    <Compile Include="..\EasyPost.Tests\VCR.cs">
       <Link>VCR.cs</Link>
     </Compile>
-    <Compile Include="..\EasyPost.Tests.Net\Fixture.cs">
-      <Link>Fixture.cs</Link>
+    <Compile Include="..\EasyPost.Tests\WebhookTest.cs">
+      <Link>WebhookTest.cs</Link>
     </Compile>
   </ItemGroup>
 

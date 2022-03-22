@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 
 namespace EasyPost.Utilities
@@ -173,11 +174,11 @@ namespace EasyPost.Utilities
         /// <returns>The value of the JSON sub-element key path</returns>
         private static string? GoToRootElement(string? data, List<string> rootElementKeys)
         {
-            dynamic json = JsonConvert.DeserializeObject(data);
+            object json = JsonConvert.DeserializeObject(data);
             try
             {
-                rootElementKeys.ForEach(key => { json = json[key]; });
-                return json.ToString();
+                rootElementKeys.ForEach(key => { json = (json as JObject).Property(key).Value; });
+                return (json as JToken).ToString();
             }
             catch (Exception)
             {

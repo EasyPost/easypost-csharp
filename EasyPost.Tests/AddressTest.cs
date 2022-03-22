@@ -32,7 +32,7 @@ namespace EasyPost.Tests.Net
         [TestMethod]
         public void TestCreateVerifyStrict()
         {
-            VCR.Replay("createVerifyStrict");
+            VCR.Replay("create_verify_strict");
 
             Dictionary<string, object> addressData = Fixture.BasicAddress;
             addressData.Add("verify_strict", new List<bool>

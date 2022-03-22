@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net461</TargetFramework>
 
     <IsPackable>false</IsPackable>
 
@@ -8,15 +8,15 @@
 
     <Platforms>AnyCPU</Platforms>
 
-    <RootNamespace>EasyPost.Tests.Net50;</RootNamespace>
+    <RootNamespace>EasyPost.Tests.NetStandard20;</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
     <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />
     <PackageReference Include="RestSharp" Version="[107.3.0, 108.0.0)" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
   </ItemGroup>
 
