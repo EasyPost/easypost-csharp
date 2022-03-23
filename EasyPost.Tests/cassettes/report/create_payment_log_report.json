@@ -1,22 +1,29 @@
 [
   {
+    "RecordedAt": "2022-03-23T14:55:25.084273-06:00",
     "Request": {
+      "Body": "{\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\"}",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "51"
+      },
       "Method": "POST",
-      "URI": "https://api.easypost.com/v2/reports/payment_log?start_date=2022-02-01&end_date=2022-02-03",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "********",
         "content_type": "application/json",
         "User-Agent": "EasyPost/v2,CSharpClient/2.8.1,.NET/5.0.13"
       },
-      "ContentHeaders": {},
-      "Body": ""
+      "Uri": "https://api.easypost.com/v2/reports/payment_log"
     },
     "Response": {
-      "Status": {
-        "Code": 201,
-        "Message": "Created"
+      "Body": "{\"id\":\"plrep_68bdbd442caf47fba4b356c592f56632\",\"object\":\"PaymentLogReport\",\"created_at\":\"2022-03-23T20:55:25Z\",\"updated_at\":\"2022-03-23T20:55:25Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "259"
       },
+      "HttpVersion": "1.1",
       "ResponseHeaders": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -24,27 +31,21 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "5f596087621d5dc6e4d1742400a40949",
+        "x-ep-request-uuid": "4aee9dd5623b893de78b9ee4000bccb2",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"4811ef014e2a11c186d107e58e2759c3\"",
-        "X-Request-ID": "3747fc57-ea29-4ac5-a9b2-8ec1b5d85942",
-        "x-runtime": "0.043317",
-        "x-node": "bigweb3nuq",
-        "x-version-label": "easypost-202202282222-e6cd2b4eed-master",
+        "ETag": "W/\"8595a1619c55b50a6fa4718982e5a5e9\"",
+        "x-runtime": "0.040805",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202203231943-61a988cd70-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 88c34981dc,extlb2nuq 88c34981dc",
+        "x-proxied": "intlb2nuq 3e97db20d4,extlb1nuq 3e97db20d4",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
-      "ContentHeaders": {
-        "Expires": "0",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "259"
-      },
-      "Body": "{\"id\":\"plrep_1a42ae5e8ecf490d9c6155bbc7beb93f\",\"object\":\"PaymentLogReport\",\"created_at\":\"2022-02-28T23:41:58Z\",\"updated_at\":\"2022-02-28T23:41:58Z\",\"start_date\":\"2022-02-01\",\"end_date\":\"2022-02-03\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null}",
-      "RequestMessage": null,
-      "HttpVersion": "1.1"
-    },
-    "RecordedAt": "2022-02-28T15:41:58.333714-08:00"
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
   }
 ]
