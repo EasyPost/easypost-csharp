@@ -17,7 +17,7 @@ namespace EasyPost.Tests.Net
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Record("create");
+            VCR.Replay("create");
 
             Shipment shipment = await Shipment.Create(Fixture.FullShipment);
 
