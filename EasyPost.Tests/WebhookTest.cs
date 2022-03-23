@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -12,7 +13,7 @@ namespace EasyPost.Tests.Net
     [TestClass]
     public class WebhookTest
     {
-        private string webhookId = null;
+        private string _webhookId = null;
 
         [TestInitialize]
         public void Initialize()
@@ -21,15 +22,15 @@ namespace EasyPost.Tests.Net
         }
 
         [TestCleanup]
-        public void Cleanup()
+        public async Task Cleanup()
         {
-            if (webhookId != null)
+            if (_webhookId != null)
             {
                 try
                 {
-                    Webhook retrievedWebhook = Webhook.Retrieve(webhookId);
-                    retrievedWebhook.Delete();
-                    webhookId = null;
+                    Webhook retrievedWebhook = await Webhook.Retrieve(_webhookId);
+                    await retrievedWebhook.Delete();
+                    _webhookId = null;
                 }
                 catch
                 {
@@ -37,9 +38,9 @@ namespace EasyPost.Tests.Net
             }
         }
 
-        private static Webhook CreateBasicWebhook(string url)
+        private static async Task<Webhook> CreateBasicWebhook(string url)
         {
-            return Webhook.Create(new Dictionary<string, object>
+            return await Webhook.Create(new Dictionary<string, object>
             {
                 {
                     "url", url
@@ -48,45 +49,45 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestCreate()
+        public async Task TestCreate()
         {
             VCR.Replay("create");
 
             string url = "https://testcreate.com";
 
-            Webhook webhook = CreateBasicWebhook(url);
+            Webhook webhook = await CreateBasicWebhook(url);
 
             Assert.IsInstanceOfType(webhook, typeof(Webhook));
             Assert.IsTrue(webhook.id.StartsWith("hook_"));
             Assert.AreEqual(url, webhook.url);
 
-            webhookId = webhook.id; // trigger deletion
+            _webhookId = webhook.id; // trigger deletion
         }
 
         [TestMethod]
-        public void TestRetrieve()
+        public async Task TestRetrieve()
         {
             VCR.Replay("retrieve");
 
             string url = "https://testretrieve.com";
 
 
-            Webhook webhook = CreateBasicWebhook(url);
+            Webhook webhook = await CreateBasicWebhook(url);
 
-            Webhook retrievedWebhook = Webhook.Retrieve(webhook.id);
+            Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
 
             Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
             Assert.AreEqual(webhook.id, retrievedWebhook.id);
 
-            webhookId = webhook.id; // trigger deletion
+            _webhookId = webhook.id; // trigger deletion
         }
 
         [TestMethod]
-        public void TestAll()
+        public async Task TestAll()
         {
             VCR.Replay("all");
 
-            List<Webhook> webhooks = Webhook.All();
+            List<Webhook> webhooks = await Webhook.All();
 
             foreach (var item in webhooks)
             {
@@ -97,23 +98,23 @@ namespace EasyPost.Tests.Net
         // Cannot be easily tested - requires a disabled webhook
         [Ignore]
         [TestMethod]
-        public void TestUpdate()
+        public async Task TestUpdate()
         {
             VCR.Replay("update");
         }
 
         [TestMethod]
-        public void TestDelete()
+        public async Task TestDelete()
         {
             VCR.Replay("delete");
 
             string url = "https://testdelete.com";
 
 
-            Webhook webhook = CreateBasicWebhook(url);
-            Webhook retrievedWebhook = Webhook.Retrieve(webhook.id);
+            Webhook webhook = await CreateBasicWebhook(url);
+            Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
 
-            bool success = retrievedWebhook.Delete();
+            bool success = await retrievedWebhook.Delete();
 
             // This endpoint/method does not return anything, just make sure the request doesn't fail
             Assert.IsTrue(success);

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -12,17 +13,17 @@ namespace EasyPost.Tests.Net
             VCR.SetUp(VCRApiKey.Test, "address", true);
         }
 
-        private static Address CreateBasicAddress()
+        private static async Task<Address> CreateBasicAddress()
         {
-            return Address.Create(Fixture.BasicAddress);
+            return await Address.Create(Fixture.BasicAddress);
         }
 
         [TestMethod]
-        public void TestCreate()
+        public async Task TestCreate()
         {
             VCR.Replay("create");
 
-            Address address = CreateBasicAddress();
+            Address address = await CreateBasicAddress();
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.id.StartsWith("adr_"));
@@ -30,7 +31,7 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestCreateVerifyStrict()
+        public async Task TestCreateVerifyStrict()
         {
             VCR.Replay("create_verify_strict");
 
@@ -40,7 +41,7 @@ namespace EasyPost.Tests.Net
                 true
             });
 
-            Address address = Address.Create(addressData);
+            Address address = await Address.Create(addressData);
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.id.StartsWith("adr_"));
@@ -49,25 +50,25 @@ namespace EasyPost.Tests.Net
 
 
         [TestMethod]
-        public void TestRetrieve()
+        public async Task TestRetrieve()
         {
             VCR.Replay("retrieve");
 
 
-            Address address = Address.Create(Fixture.BasicAddress);
+            Address address = await Address.Create(Fixture.BasicAddress);
 
-            Address retrievedAddress = Address.Retrieve(address.id);
+            Address retrievedAddress = await Address.Retrieve(address.id);
 
             Assert.IsInstanceOfType(retrievedAddress, typeof(Address));
             Assert.AreEqual(address.id, retrievedAddress.id);
         }
 
         [TestMethod]
-        public void TestAll()
+        public async Task TestAll()
         {
             VCR.Replay("all");
 
-            AddressCollection addressCollection = Address.All(new Dictionary<string, object>
+            AddressCollection addressCollection = await Address.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -85,11 +86,11 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestCreateVerify()
+        public async Task TestCreateVerify()
         {
             VCR.Replay("create_verify");
 
-            Address address = Address.Create(Fixture.IncorrectAddressToVerify);
+            Address address = await Address.Create(Fixture.IncorrectAddressToVerify);
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.id.StartsWith("adr_"));
@@ -97,7 +98,7 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestCreateAndVerify()
+        public async Task TestCreateAndVerify()
         {
             VCR.Replay("create_and_verify");
 
@@ -107,7 +108,7 @@ namespace EasyPost.Tests.Net
                 true
             });
 
-            Address address = Address.CreateAndVerify(addressData);
+            Address address = await Address.CreateAndVerify(addressData);
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.id.StartsWith("adr_"));
@@ -115,14 +116,14 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestVerify()
+        public async Task TestVerify()
         {
             VCR.Replay("verify");
 
 
-            Address address = CreateBasicAddress();
+            Address address = await CreateBasicAddress();
 
-            address.Verify();
+            await address.Verify();
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.id.StartsWith("adr_"));

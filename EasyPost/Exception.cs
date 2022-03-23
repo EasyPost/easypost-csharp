@@ -21,7 +21,7 @@ namespace EasyPost
         /// <param name="code">Error code.</param>
         /// <param name="message">Error message.</param>
         /// <param name="errors">A list of EasyPost.Error instances.</param>
-        public HttpException(int statusCode, string code, string message, List<Error> errors) : base(message)
+        public HttpException(int statusCode, string code, string? message, List<Error> errors) : base(message)
         {
             StatusCode = statusCode;
             Code = code;
@@ -33,7 +33,6 @@ namespace EasyPost
         /// </summary>
         /// <param name="info">SerializationInfo object instance to load data into.</param>
         /// <param name="context">StreamingContext to use for base GetObjectData call.</param>
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             base.GetObjectData(info, context);

@@ -1,12 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
 {
     [TestClass]
     public class ErrorTest
     {
-        private string _error;
-
         [TestInitialize]
         public void Initialize()
         {
@@ -14,13 +13,13 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestError()
+        public async Task TestError()
         {
             VCR.Replay("error");
 
             try
             {
-                var _ = Shipment.Create();
+                var _ = await Shipment.Create();
             }
             catch (HttpException error)
             {

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
 {
@@ -11,17 +12,17 @@ namespace EasyPost.Tests.Net
             VCR.SetUp(VCRApiKey.Test, "parcel", true);
         }
 
-        private static Parcel CreateBasicParcel()
+        private static async Task<Parcel> CreateBasicParcel()
         {
-            return Parcel.Create(Fixture.BasicParcel);
+            return await Parcel.Create(Fixture.BasicParcel);
         }
 
         [TestMethod]
-        public void TestCreate()
+        public async Task TestCreate()
         {
             VCR.Replay("create");
 
-            Parcel parcel = CreateBasicParcel();
+            Parcel parcel = await CreateBasicParcel();
 
             Assert.IsInstanceOfType(parcel, typeof(Parcel));
             Assert.IsTrue(parcel.id.StartsWith("prcl_"));
@@ -29,14 +30,14 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestRetrieve()
+        public async Task TestRetrieve()
         {
             VCR.Replay("retrieve");
 
 
-            Parcel parcel = CreateBasicParcel();
+            Parcel parcel = await CreateBasicParcel();
 
-            Parcel retrievedParcel = Parcel.Retrieve(parcel.id);
+            Parcel retrievedParcel = await Parcel.Retrieve(parcel.id);
 
             Assert.IsInstanceOfType(retrievedParcel, typeof(Parcel));
             Assert.AreEqual(parcel.id, retrievedParcel.id);

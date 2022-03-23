@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -38,14 +39,14 @@ namespace EasyPost
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters to use when refreshing this insurance.</param>
         /// <returns>This refreshed EasyPost.Insurance object.</returns>
-        public Insurance Refresh(Dictionary<string, object> parameters = null)
+        public async Task<Insurance> Refresh(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
             Request request = new Request("insurances/{id}");
             request.AddUrlSegment("id", id);
             request.AddQueryString(parameters);
 
-            Insurance refreshedInsurance = request.Execute<Insurance>();
+            Insurance refreshedInsurance = await request.Execute<Insurance>();
             Merge(refreshedInsurance);
             return this;
         }
@@ -65,13 +66,13 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.InsuranceCollection instance.</returns>
-        public static InsuranceCollection All(Dictionary<string, object> parameters = null)
+        public static async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
             Request request = new Request("insurances");
             request.AddQueryString(parameters);
 
-            return request.Execute<InsuranceCollection>();
+            return await request.Execute<InsuranceCollection>();
         }
 
         /// <summary>
@@ -88,7 +89,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Insurance instance.</returns>
-        public static Insurance Create(Dictionary<string, object> parameters)
+        public static async Task<Insurance> Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("insurances", Method.Post);
             request.AddBody(new Dictionary<string, object>
@@ -98,7 +99,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<Insurance>();
+            return await request.Execute<Insurance>();
         }
 
         /// <summary>
@@ -106,25 +107,12 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing an Insurance. Starts with "ins_".</param>
         /// <returns>EasyPost.Insurance instance.</returns>
-        public static Insurance Retrieve(string id)
+        public static async Task<Insurance> Retrieve(string id)
         {
             Request request = new Request("insurances/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Insurance>();
-        }
-
-        private static Insurance SendCreate(Dictionary<string, object> parameters)
-        {
-            Request request = new Request("insurances", Method.Post);
-            request.AddBody(new Dictionary<string, object>
-            {
-                {
-                    "insurance", parameters
-                }
-            });
-
-            return request.Execute<Insurance>();
+            return await request.Execute<Insurance>();
         }
     }
 }

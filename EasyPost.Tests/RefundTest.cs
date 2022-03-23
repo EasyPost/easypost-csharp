@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -12,12 +13,12 @@ namespace EasyPost.Tests.Net
             VCR.SetUp(VCRApiKey.Test, "refund", true);
         }
 
-        private static List<Refund> CreateBasicRefund()
+        private static async Task<List<Refund>> CreateBasicRefund()
         {
-            Shipment shipment = Shipment.Create(Fixture.OneCallBuyShipment);
-            Shipment retrievedShipment = Shipment.Retrieve(shipment.id); // We need to retrieve the shipment so that the tracking_code has time to populate
+            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
+            Shipment retrievedShipment = await Shipment.Retrieve(shipment.id); // We need to retrieve the shipment so that the tracking_code has time to populate
 
-            return Refund.Create(new Dictionary<string, object>
+            return await Refund.Create(new Dictionary<string, object>
             {
                 {
                     "carrier", Fixture.Usps
@@ -32,11 +33,11 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestCreate()
+        public async Task TestCreate()
         {
             VCR.Replay("create");
 
-            List<Refund> refunds = CreateBasicRefund();
+            List<Refund> refunds = await CreateBasicRefund();
 
             foreach (var item in refunds)
             {
@@ -49,11 +50,11 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestAll()
+        public async Task TestAll()
         {
             VCR.Replay("all");
 
-            RefundCollection refundCollection = Refund.All(new Dictionary<string, object>
+            RefundCollection refundCollection = await Refund.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -71,20 +72,20 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestRetrieve()
+        public async Task TestRetrieve()
         {
             VCR.Replay("retrieve");
 
-            RefundCollection refundCollection = Refund.All(new Dictionary<string, object>
+            RefundCollection refundCollection = await Refund.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
                 }
             });
 
-            Refund refund = CreateBasicRefund()[0];
+            Refund refund = (await CreateBasicRefund())[0];
 
-            Refund retrievedRefund = Refund.Retrieve(refund.id);
+            Refund retrievedRefund = await Refund.Retrieve(refund.id);
 
             Assert.IsInstanceOfType(retrievedRefund, typeof(Refund));
             Assert.AreEqual(refund.id, retrievedRefund.id);

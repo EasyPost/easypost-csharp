@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -13,9 +14,9 @@ namespace EasyPost.Tests.Net
             VCR.SetUp(VCRApiKey.Test, "event", true);
         }
 
-        private static EventCollection GetBasicEventCollection()
+        private static async Task<EventCollection> GetBasicEventCollection()
         {
-            return Event.All(new Dictionary<string, object>
+            return await Event.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -24,11 +25,11 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestAll()
+        public async Task TestAll()
         {
             VCR.Replay("all");
 
-            EventCollection eventCollection = GetBasicEventCollection();
+            EventCollection eventCollection = await GetBasicEventCollection();
 
             List<Event> events = eventCollection.events;
 
@@ -41,32 +42,18 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestRetrieve()
+        public async Task TestRetrieve()
         {
             VCR.Replay("retrieve");
 
 
-            EventCollection eventCollection = GetBasicEventCollection();
+            EventCollection eventCollection = await GetBasicEventCollection();
             Event _event = eventCollection.events[0];
 
-            Event retrievedEvent = Event.Retrieve(_event.id);
+            Event retrievedEvent = await Event.Retrieve(_event.id);
 
             Assert.IsInstanceOfType(retrievedEvent, typeof(Event));
             Assert.AreEqual(_event.id, retrievedEvent.id);
-        }
-
-        [TestMethod]
-        public void TestRetrieveBadInput()
-        {
-            VCR.Replay("retrieve_bad_input");
-
-            Assert.ThrowsException<HttpException>(() => Event.Retrieve("bad input"));
-        }
-
-        [TestMethod]
-        public void TestRetrieveNoInput()
-        {
-            Assert.ThrowsException<ArgumentNullException>(() => Event.Retrieve(""));
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -32,7 +33,7 @@ namespace EasyPost
         ///     Resend the last Event for a specific EasyPost object instance.
         /// </summary>
         /// <param name="id">String representing an EasyPost object instance.</param>
-        public static void Create(string id)
+        public async Task<bool> Create(string id)
         {
             Request request = new Request("events", Method.Post);
             request.AddQueryString(new Dictionary<string, object>
@@ -41,6 +42,7 @@ namespace EasyPost
                     "result_id", id
                 }
             });
+            return await request.Execute();
         }
 
         /// <summary>
@@ -48,12 +50,12 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a Event. Starts with "evt_".</param>
         /// <returns>EasyPost.Event instance.</returns>
-        public static Event Retrieve(string id)
+        public static async Task<Event> Retrieve(string id)
         {
             Request request = new Request("events/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Event>();
+            return await request.Execute<Event>();
         }
 
         /// <summary>
@@ -71,14 +73,14 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.EventCollection instance.</returns>
-        public static EventCollection All(Dictionary<string, object> parameters = null)
+        public static async Task<EventCollection> All(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
             Request request = new Request("events");
             request.AddQueryString(parameters);
 
-            return request.Execute<EventCollection>();
+            return await request.Execute<EventCollection>();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using EasyPost.Utilities;
 using Newtonsoft.Json;
 
 namespace EasyPost
@@ -13,7 +14,7 @@ namespace EasyPost
         ///     Get the dictionary representation of this object instance.
         /// </summary>
         /// <returns>A key-value dictionary representation of this object instance's attributes.</returns>
-        public Dictionary<string, object> AsDictionary() =>
+        public Dictionary<string, object?> AsDictionary() =>
             GetType()
                 .GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
                 .ToDictionary(info => info.Name, info => GetValue(info));
@@ -31,28 +32,24 @@ namespace EasyPost
             }
         }
 
-        private object GetValue(PropertyInfo info)
+        private object? GetValue(PropertyInfo info)
         {
-            object value = info.GetValue(this, null);
+            object? value = info.GetValue(this, null);
 
-            if (value is IResource)
+            switch (value)
             {
-                return ((IResource)value).AsDictionary();
+                case IResource resource:
+                    return resource.AsDictionary();
+                case IEnumerable<IResource> enumerable:
+                    List<Dictionary<string, object?>> values = new List<Dictionary<string, object?>>();
+                    foreach (IResource resource in enumerable)
+                    {
+                        values.Add(resource.AsDictionary());
+                    }
+                    return values;
+                default:
+                    return value;
             }
-
-            if (value is IEnumerable<IResource>)
-            {
-                List<Dictionary<string, object>> values = new List<Dictionary<string, object>>();
-
-                foreach (IResource IResource in (IEnumerable<IResource>)value)
-                {
-                    values.Add(IResource.AsDictionary());
-                }
-
-                return values;
-            }
-
-            return value;
         }
 
         /// <summary>
@@ -61,7 +58,7 @@ namespace EasyPost
         /// <param name="json">The JSON to deserialize.</param>
         /// <typeparam name="T">The type of object to generate.</typeparam>
         /// <returns>An instance of a T type object.</returns>
-        public static T Load<T>(string json) where T : Resource => JsonConvert.DeserializeObject<T>(json);
+        public static T Load<T>(string json) where T : Resource => JsonSerialization.ConvertJsonToObject<T>(json);
 
         /// <summary>
         ///     Load a dictionary of properties into an object instance.
@@ -76,7 +73,7 @@ namespace EasyPost
 
             foreach (PropertyInfo property in type.GetProperties())
             {
-                if (attributes.TryGetValue(property.Name, out object attribute) == false)
+                if (attributes.TryGetValue(property.Name, out object? attribute) == false)
                 {
                     continue;
                 }

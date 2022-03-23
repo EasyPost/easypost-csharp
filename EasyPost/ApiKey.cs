@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace EasyPost
@@ -17,13 +18,13 @@ namespace EasyPost
         ///     Get a list of all API keys.
         /// </summary>
         /// <returns>A list of EasyPost.ApiKey instances.</returns>
-        public static List<ApiKey> All()
+        public static async Task<List<ApiKey>> All()
         {
             Request request = new Request("api_keys")
             {
                 RootElement = "keys"
             };
-            return request.Execute<List<ApiKey>>();
+            return await request.Execute<List<ApiKey>>();
         }
     }
 }

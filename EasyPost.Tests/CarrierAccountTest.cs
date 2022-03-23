@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -12,42 +13,42 @@ namespace EasyPost.Tests.Net
             VCR.SetUp(VCRApiKey.Production, "carrier_account", true);
         }
 
-        private static CarrierAccount CreateBasicCarrierAccount()
+        private static async Task<CarrierAccount> CreateBasicCarrierAccount()
         {
-            return CarrierAccount.Create(Fixture.BasicCarrierAccount);
+            return await CarrierAccount.Create(Fixture.BasicCarrierAccount);
         }
 
         [TestMethod]
-        public void TestCreate()
+        public async Task TestCreate()
         {
             VCR.Replay("create");
 
-            CarrierAccount carrierAccount = CreateBasicCarrierAccount();
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
             Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
             Assert.IsTrue(carrierAccount.id.StartsWith("ca_"));
         }
 
         [TestMethod]
-        public void TestRetrieve()
+        public async Task TestRetrieve()
         {
             VCR.Replay("retrieve");
 
 
-            CarrierAccount carrierAccount = CreateBasicCarrierAccount();
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
-            CarrierAccount retrievedCarrierAccount = CarrierAccount.Retrieve(carrierAccount.id);
+            CarrierAccount retrievedCarrierAccount = await CarrierAccount.Retrieve(carrierAccount.id);
 
             Assert.IsInstanceOfType(retrievedCarrierAccount, typeof(CarrierAccount));
             Assert.AreEqual(carrierAccount.id, retrievedCarrierAccount.id);
         }
 
         [TestMethod]
-        public void TestAll()
+        public async Task TestAll()
         {
             VCR.Replay("all");
 
-            List<CarrierAccount> carrierAccounts = CarrierAccount.All();
+            List<CarrierAccount> carrierAccounts = await CarrierAccount.All();
 
             foreach (var item in carrierAccounts)
             {
@@ -56,12 +57,12 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestUpdate()
+        public async Task TestUpdate()
         {
             VCR.Replay("update");
 
 
-            CarrierAccount carrierAccount = CreateBasicCarrierAccount();
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
             string testDescription = "my custom description";
 
@@ -71,7 +72,7 @@ namespace EasyPost.Tests.Net
                     "description", testDescription
                 }
             };
-            carrierAccount.Update(carrierAccountData);
+            await carrierAccount.Update(carrierAccountData);
 
             Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
             Assert.IsTrue(carrierAccount.id.StartsWith("ca_"));
@@ -79,24 +80,24 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestDelete()
+        public async Task TestDelete()
         {
             VCR.Replay("delete");
 
 
-            CarrierAccount carrierAccount = CreateBasicCarrierAccount();
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
-            bool success = carrierAccount.Delete();
+            bool success = await carrierAccount.Delete();
 
             Assert.IsTrue(success);
         }
 
         [TestMethod]
-        public void TestTypes()
+        public async Task TestTypes()
         {
             VCR.Replay("types");
 
-            List<CarrierType> types = CarrierType.All();
+            List<CarrierType> types = await CarrierType.All();
 
             foreach (var item in types)
             {

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -14,11 +15,11 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestCreate()
+        public async Task TestCreate()
         {
             VCR.Replay("create");
 
-            Shipment shipment = Shipment.Create(Fixture.FullShipment);
+            Shipment shipment = await Shipment.Create(Fixture.FullShipment);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.id.StartsWith("shp_"));
@@ -29,25 +30,25 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestRetrieve()
+        public async Task TestRetrieve()
         {
             VCR.Replay("retrieve");
 
 
-            Shipment shipment = Shipment.Create(Fixture.FullShipment);
+            Shipment shipment = await Shipment.Create(Fixture.FullShipment);
 
-            Shipment retrievedShipment = Shipment.Retrieve(shipment.id);
+            Shipment retrievedShipment = await Shipment.Retrieve(shipment.id);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.AreEqual(shipment.id, retrievedShipment.id);
         }
 
         [TestMethod]
-        public void TestAll()
+        public async Task TestAll()
         {
             VCR.Replay("all");
 
-            ShipmentCollection shipmentCollection = Shipment.All(new Dictionary<string, object>
+            ShipmentCollection shipmentCollection = await Shipment.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -65,27 +66,27 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestBuy()
+        public async Task TestBuy()
         {
             VCR.Replay("buy");
 
 
-            Shipment shipment = Shipment.Create(Fixture.FullShipment);
+            Shipment shipment = await Shipment.Create(Fixture.FullShipment);
 
-            shipment.Buy(shipment.LowestRate());
+            await shipment.Buy(shipment.LowestRate());
 
             Assert.IsNotNull(shipment.postage_label);
         }
 
         [TestMethod]
-        public void TestRegenerateRates()
+        public async Task TestRegenerateRates()
         {
             VCR.Replay("regenerate_rates");
 
 
-            Shipment shipment = Shipment.Create(Fixture.FullShipment);
+            Shipment shipment = await Shipment.Create(Fixture.FullShipment);
 
-            shipment.RegenerateRates();
+            await shipment.RegenerateRates();
 
             List<Rate> rates = shipment.rates;
 
@@ -97,13 +98,13 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestConvertLabel()
+        public async Task TestConvertLabel()
         {
             VCR.Replay("convert_label");
 
-            Shipment shipment = Shipment.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
 
-            shipment.GenerateLabel("ZPL");
+            await shipment.GenerateLabel("ZPL");
 
             Assert.IsNotNull(shipment.postage_label.label_zpl_url);
         }
@@ -111,7 +112,7 @@ namespace EasyPost.Tests.Net
         // If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
         // so that USPS doesn't automatically insure it so we could manually insure it here.
         [TestMethod]
-        public void TestInsure()
+        public async Task TestInsure()
         {
             VCR.Replay("insure");
 
@@ -119,9 +120,9 @@ namespace EasyPost.Tests.Net
             // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
             shipmentData["insurance"] = 0;
 
-            Shipment shipment = Shipment.Create(shipmentData);
+            Shipment shipment = await Shipment.Create(shipmentData);
 
-            shipment.Insure(100);
+            await shipment.Insure(100);
 
             Assert.AreEqual("100.00", shipment.insurance);
         }
@@ -130,27 +131,27 @@ namespace EasyPost.Tests.Net
         // follow a flow of created -> delivered to cycle through tracking events in test mode - as such anything older
         // than a few seconds in test mode may not be refundable.
         [TestMethod]
-        public void TestRefund()
+        public async Task TestRefund()
         {
             VCR.Replay("refund");
 
-            Shipment shipment = Shipment.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
 
-            shipment.Refund();
+            await shipment.Refund();
 
             Assert.AreEqual("submitted", shipment.refund_status);
         }
 
         [TestMethod]
-        public void TestSmartrate()
+        public async Task TestSmartrate()
         {
             VCR.Replay("smartrate");
 
-            Shipment shipment = Shipment.Create(Fixture.BasicShipment);
+            Shipment shipment = await Shipment.Create(Fixture.BasicShipment);
 
             Assert.IsNotNull(shipment.rates);
 
-            List<Smartrate> smartRates = shipment.GetSmartrates();
+            List<Smartrate> smartRates = await shipment.GetSmartrates();
             Smartrate smartrate = smartRates.First();
             Assert.AreEqual(shipment.rates[0].id, smartrate.id);
             Assert.IsNotNull(smartrate.time_in_transit.percentile_50);
@@ -163,19 +164,20 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestCreateEmptyObjects()
+        public async Task TestCreateEmptyObjects()
         {
             VCR.Replay("create_empty_objects");
 
             Dictionary<string, object> shipmentData = Fixture.BasicShipment;
 
             shipmentData.Add("customs_info", new Dictionary<string, object>());
+            Assert.IsNotNull(shipmentData["customs_info"]);
             (shipmentData["customs_info"] as Dictionary<string, object>).Add("customs_items", new List<object>());
             shipmentData["options"] = null;
             shipmentData["tax_identifiers"] = null;
             shipmentData["reference"] = "";
 
-            Shipment shipment = Shipment.Create(shipmentData);
+            Shipment shipment = await Shipment.Create(shipmentData);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.id.StartsWith("shp_"));
@@ -185,7 +187,7 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestCreateTaxIdentifiers()
+        public async Task TestCreateTaxIdentifiers()
         {
             VCR.Replay("create_tax_identifiers");
 
@@ -195,7 +197,7 @@ namespace EasyPost.Tests.Net
                 Fixture.TaxIdentifier
             };
 
-            Shipment shipment = Shipment.Create(shipmentData);
+            Shipment shipment = await Shipment.Create(shipmentData);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.id.StartsWith("shp_"));
@@ -203,15 +205,15 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestCreateWithIds()
+        public async Task TestCreateWithIds()
         {
             VCR.Replay("create_with_ids");
 
-            Address fromAddress = Address.Create(Fixture.BasicAddress);
-            Address toAddress = Address.Create(Fixture.BasicAddress);
-            Parcel parcel = Parcel.Create(Fixture.BasicParcel);
+            Address fromAddress = await Address.Create(Fixture.BasicAddress);
+            Address toAddress = await Address.Create(Fixture.BasicAddress);
+            Parcel parcel = await Parcel.Create(Fixture.BasicParcel);
 
-            Shipment shipment = Shipment.Create(new Dictionary<string, object>() {
+            Shipment shipment = await Shipment.Create(new Dictionary<string, object>() {
                 { "from_address", new Dictionary<string, object> { { "id", fromAddress.id } } },
                 { "to_address", new Dictionary<string, object> { { "id", toAddress.id } } },
                 { "parcel", new Dictionary<string, object> { { "id", parcel.id } } },

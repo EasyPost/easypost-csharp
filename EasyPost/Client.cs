@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.Threading.Tasks;
 using EasyPost.Utilities;
 using RestSharp;
 
@@ -51,7 +52,7 @@ namespace EasyPost
             {
                 Assembly assembly = typeof(Client).Assembly;
                 FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
-                _libraryVersion = info.FileVersion;
+                _libraryVersion = info.FileVersion ?? "Unknown";
             }
             catch (Exception)
             {
@@ -75,9 +76,9 @@ namespace EasyPost
         /// </summary>
         /// <param name="request">EasyPost.Request object instance to execute.</param>
         /// <returns>Whether request was successful.</returns>
-        internal bool Execute(Request request)
+        internal async Task<bool> Execute(Request request)
         {
-            RestResponse response = _restClient.ExecuteAsync(PrepareRequest(request)).GetAwaiter().GetResult();
+            RestResponse response = await _restClient.ExecuteAsync(PrepareRequest(request));
             return response.IsSuccessful;
         }
 
@@ -89,12 +90,12 @@ namespace EasyPost
         /// <param name="rootElement">Key of root element of the JSON response. Used while deserializing.</param>
         /// <returns>An instance of a T type object.</returns>
         /// <exception cref="HttpException">An error occurred during the API request.</exception>
-        internal T Execute<T>(Request request, string rootElement = null) where T : new()
+        internal async Task<T> Execute<T>(Request request, string? rootElement = null) where T : new()
         {
-            RestResponse<T> response = _restClient.ExecuteAsync<T>(PrepareRequest(request)).GetAwaiter().GetResult();
+            RestResponse<T> response = await _restClient.ExecuteAsync<T>(PrepareRequest(request));
             int statusCode = Convert.ToInt32(response.StatusCode);
 
-            List<string> rootElements = null;
+            List<string>? rootElements = null;
             if (rootElement != null)
             {
                 rootElements = new List<string>
@@ -114,8 +115,7 @@ namespace EasyPost
             try
             {
                 body = JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
-                string errorsSerialized = JsonSerialization.ConvertObjectToJson(body["error"]["errors"]);
-                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(errorsSerialized);
+                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string> { "error", "errors" });
             }
             catch
             {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -12,17 +13,17 @@ namespace EasyPost.Tests.Net
             VCR.SetUp(VCRApiKey.Test, "order", true);
         }
 
-        private static Order CreateBasicOrder()
+        private static async Task<Order> CreateBasicOrder()
         {
-            return Order.Create(Fixture.BasicOrder);
+            return await Order.Create(Fixture.BasicOrder);
         }
 
         [TestMethod]
-        public void TestCreate()
+        public async Task TestCreate()
         {
             VCR.Replay("create");
 
-            Order order = CreateBasicOrder();
+            Order order = await CreateBasicOrder();
 
             Assert.IsInstanceOfType(order, typeof(Order));
             Assert.IsTrue(order.id.StartsWith("order_"));
@@ -30,28 +31,28 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestRetrieve()
+        public async Task TestRetrieve()
         {
             VCR.Replay("retrieve");
 
-            Order order = CreateBasicOrder();
+            Order order = await CreateBasicOrder();
 
 
-            Order retrievedOrder = Order.Retrieve(order.id);
+            Order retrievedOrder = await Order.Retrieve(order.id);
 
             Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
             Assert.AreEqual(order.id, retrievedOrder.id);
         }
 
         [TestMethod]
-        public void TestGetRates()
+        public async Task TestGetRates()
         {
             VCR.Replay("get_rates");
 
 
-            Order order = CreateBasicOrder();
+            Order order = await CreateBasicOrder();
 
-            order.GetRates();
+            await order.GetRates();
 
             List<Rate> rates = order.rates;
 
@@ -63,14 +64,14 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestBuy()
+        public async Task TestBuy()
         {
             VCR.Replay("buy");
 
 
-            Order order = CreateBasicOrder();
+            Order order = await CreateBasicOrder();
 
-            order.Buy(Fixture.Usps, Fixture.UspsService);
+            await order.Buy(Fixture.Usps, Fixture.UspsService);
 
             List<Shipment> shipments = order.shipments;
 

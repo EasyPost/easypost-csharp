@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -12,20 +13,20 @@ namespace EasyPost.Tests.Net
             VCR.SetUp(VCRApiKey.Test, "pickup", true);
         }
 
-        private static Pickup CreateBasicPickup()
+        private static async Task<Pickup> CreateBasicPickup()
         {
-            Shipment shipment = Shipment.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
             Dictionary<string, object> pickupData = Fixture.BasicPickup;
             pickupData["shipment"] = shipment;
-            return Pickup.Create(pickupData);
+            return await Pickup.Create(pickupData);
         }
 
         [TestMethod]
-        public void TestCreate()
+        public async Task TestCreate()
         {
             VCR.Replay("create");
 
-            Pickup pickup = CreateBasicPickup();
+            Pickup pickup = await CreateBasicPickup();
 
             Assert.IsInstanceOfType(pickup, typeof(Pickup));
             Assert.IsTrue(pickup.id.StartsWith("pickup_"));
@@ -33,28 +34,28 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestRetrieve()
+        public async Task TestRetrieve()
         {
             VCR.Replay("retrieve");
 
 
-            Pickup pickup = CreateBasicPickup();
+            Pickup pickup = await CreateBasicPickup();
 
-            Pickup retrievedPickup = Pickup.Retrieve(pickup.id);
+            Pickup retrievedPickup = await Pickup.Retrieve(pickup.id);
 
             Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
             Assert.AreEqual(pickup.id, retrievedPickup.id);
         }
 
         [TestMethod]
-        public void TestBuy()
+        public async Task TestBuy()
         {
             VCR.Replay("buy");
 
             //use "TestCreate"
-            Pickup pickup = CreateBasicPickup();
+            Pickup pickup = await CreateBasicPickup();
 
-            pickup.Buy(Fixture.Usps, Fixture.NextDayService);
+            await pickup.Buy(Fixture.Usps, Fixture.NextDayService);
 
             Assert.IsInstanceOfType(pickup, typeof(Pickup));
             Assert.IsTrue(pickup.id.StartsWith("pickup_"));
@@ -63,16 +64,16 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestCancel()
+        public async Task TestCancel()
         {
             VCR.Replay("cancel");
 
             //use "TestCreate"
-            Pickup pickup = CreateBasicPickup();
+            Pickup pickup = await CreateBasicPickup();
 
-            pickup.Buy(Fixture.Usps, Fixture.NextDayService);
+            await pickup.Buy(Fixture.Usps, Fixture.NextDayService);
 
-            pickup.Cancel();
+            await pickup.Cancel();
 
             Assert.IsInstanceOfType(pickup, typeof(Pickup));
             Assert.IsTrue(pickup.id.StartsWith("pickup_"));

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -12,14 +13,14 @@ namespace EasyPost.Tests.Net
             VCR.SetUp(VCRApiKey.Production, "user", true);
         }
 
-        private static User RetrieveMe()
+        private static async Task<User> RetrieveMe()
         {
-            return User.RetrieveMe();
+            return await User.RetrieveMe();
         }
 
-        private static User CreateUser()
+        private static async Task<User> CreateUser()
         {
-            return User.Create(new Dictionary<string, object>
+            return await User.Create(new Dictionary<string, object>
             {
                 {
                     "name", "Test User"
@@ -30,11 +31,11 @@ namespace EasyPost.Tests.Net
         // This endpoint returns the child user keys in plain text, do not run this test.
         [Ignore]
         [TestMethod]
-        public void TestCreate()
+        public async Task TestCreate()
         {
             VCR.Replay("create");
 
-            User user = CreateUser();
+            User user = await CreateUser();
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
@@ -42,11 +43,11 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestRetrieve()
+        public async Task TestRetrieve()
         {
             VCR.Replay("retrieve");
 
-            User user = User.Retrieve(Fixture.ChildUserId);
+            User user = await User.Retrieve(Fixture.ChildUserId);
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
@@ -55,23 +56,23 @@ namespace EasyPost.Tests.Net
 
 
         [TestMethod]
-        public void TestRetrieveMe()
+        public async Task TestRetrieveMe()
         {
             VCR.Replay("retrieve_me");
 
-            User user = RetrieveMe();
+            User user = await RetrieveMe();
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
         }
 
         [TestMethod]
-        public void TestUpdate()
+        public async Task TestUpdate()
         {
             VCR.Replay("update");
 
 
-            User user = RetrieveMe();
+            User user = await RetrieveMe();
 
             string testPhone = "5555555555";
 
@@ -81,7 +82,7 @@ namespace EasyPost.Tests.Net
                     "phone_number", testPhone
                 }
             };
-            user.Update(userDict);
+            await user.Update(userDict);
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
@@ -91,25 +92,25 @@ namespace EasyPost.Tests.Net
         // Due to our inability to create child users securely, we must also skip deleting them as we cannot replace the deleted ones easily.
         [Ignore]
         [TestMethod]
-        public void TestDelete()
+        public async Task TestDelete()
         {
             VCR.Replay("delete");
 
 
-            User user = CreateUser();
+            User user = await CreateUser();
 
-            user.Delete();
+            await user.Delete();
         }
 
         // API keys are returned as plaintext, do not run this test.
         [Ignore]
         [TestMethod]
-        public void TestAllApiKeys()
+        public async Task TestAllApiKeys()
         {
             VCR.Replay("all_api_keys");
 
 
-            User user = RetrieveMe();
+            User user = await RetrieveMe();
 
             // TODO: User doesn't have a .all_api_keys() method
             List<ApiKey> apiKeys = user.api_keys;
@@ -118,26 +119,26 @@ namespace EasyPost.Tests.Net
         // API keys are returned as plaintext, do not run this test.
         [Ignore]
         [TestMethod]
-        public void TestApiKeys()
+        public async Task TestApiKeys()
         {
             VCR.Replay("api_keys");
 
 
-            User user = RetrieveMe();
+            User user = await RetrieveMe();
 
             List<ApiKey> apiKeys = user.api_keys;
         }
 
         [TestMethod]
-        public void TestUpdateBrand()
+        public async Task TestUpdateBrand()
         {
             VCR.Replay("update_brand");
 
 
-            User user = RetrieveMe();
+            User user = await RetrieveMe();
 
             string color = "#123456";
-            Brand brand = user.UpdateBrand(new Dictionary<string, object>
+            Brand brand = await user.UpdateBrand(new Dictionary<string, object>
             {
                 {
                     "color", color

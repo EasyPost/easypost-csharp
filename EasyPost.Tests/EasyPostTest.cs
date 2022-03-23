@@ -1,5 +1,7 @@
+using System.Dynamic;
+using System.Threading.Tasks;
+using EasyPost.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 
 namespace EasyPost.Tests.Net
 {
@@ -45,22 +47,15 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestClientManagerGetCurrent()
+        public async Task TestClientManagerGetCurrent()
         {
             ClientManager.SetCurrent(delegate { return new Client(new ClientConfiguration(FakeApikey, HttpBinUrl)); });
 
             // Client should now be configured to hit httpbin.org instead of EasyPost's API
 
             Request request = new Request("");
-            dynamic response = request.Execute<dynamic>();
-            Assert.AreEqual(HttpBinUrl, (response as JObject).Property("url").Value.ToString());
-        }
-
-        [TestMethod]
-        public void TestNotConfigured()
-        {
-            ClientManager.Unconfigure();
-            Assert.ThrowsException<ClientNotConfigured>(() => new Request("resource").Execute<dynamic>());
+            ExpandoObject response = await request.Execute<ExpandoObject>();
+            Assert.AreEqual(HttpBinUrl, JsonSerialization.GetValueOfExpandoObjectProperty(response, "url")?.ToString());
         }
     }
 }

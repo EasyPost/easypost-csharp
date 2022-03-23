@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -12,46 +13,46 @@ namespace EasyPost.Tests.Net
             VCR.SetUp(VCRApiKey.Test, "scan_form", true);
         }
 
-        private static ScanForm GetBasicScanForm()
+        private static async Task<ScanForm> GetBasicScanForm()
         {
-            Shipment shipment = Shipment.Create(Fixture.OneCallBuyShipment);
-            return ScanForm.Create(new List<Shipment>
+            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
+            return await ScanForm.Create(new List<Shipment>
             {
                 shipment
             });
         }
 
         [TestMethod]
-        public void TestCreate()
+        public async Task TestCreate()
         {
             VCR.Replay("create");
 
-            ScanForm scanForm = GetBasicScanForm();
+            ScanForm scanForm = await GetBasicScanForm();
 
             Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
             Assert.IsTrue(scanForm.id.StartsWith("sf_"));
         }
 
         [TestMethod]
-        public void TestRetrieve()
+        public async Task TestRetrieve()
         {
             VCR.Replay("retrieve");
 
 
-            ScanForm scanForm = GetBasicScanForm();
+            ScanForm scanForm = await GetBasicScanForm();
 
-            ScanForm retrievedScanForm = ScanForm.Retrieve(scanForm.id);
+            ScanForm retrievedScanForm = await ScanForm.Retrieve(scanForm.id);
 
             Assert.IsInstanceOfType(retrievedScanForm, typeof(ScanForm));
             Assert.AreEqual(scanForm.id, retrievedScanForm.id);
         }
 
         [TestMethod]
-        public void TestAll()
+        public async Task TestAll()
         {
             VCR.Replay("all");
 
-            ScanFormCollection scanFormCollection = ScanForm.All(new Dictionary<string, object>
+            ScanFormCollection scanFormCollection = await ScanForm.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize

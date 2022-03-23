@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -12,17 +13,17 @@ namespace EasyPost.Tests.Net
             VCR.SetUp(VCRApiKey.Test, "insurance", true);
         }
 
-        private static Insurance CreateBasicInsurance()
+        private static async Task<Insurance> CreateBasicInsurance()
         {
-            return Insurance.Create(Fixture.BasicInsurance);
+            return await Insurance.Create(await Fixture.BasicInsurance());
         }
 
         [TestMethod]
-        public void TestCreate()
+        public async Task TestCreate()
         {
             VCR.Replay("create");
 
-            Insurance insurance = CreateBasicInsurance();
+            Insurance insurance = await CreateBasicInsurance();
 
             Assert.IsInstanceOfType(insurance, typeof(Insurance));
             Assert.IsTrue(insurance.id.StartsWith("ins_"));
@@ -31,24 +32,24 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestRetrieve()
+        public async Task TestRetrieve()
         {
             VCR.Replay("retrieve");
 
 
-            Insurance insurance = CreateBasicInsurance();
+            Insurance insurance = await CreateBasicInsurance();
 
-            Insurance retrievedInsurance = Insurance.Retrieve(insurance.id);
+            Insurance retrievedInsurance = await Insurance.Retrieve(insurance.id);
             Assert.IsInstanceOfType(retrievedInsurance, typeof(Insurance));
             Assert.AreEqual(insurance.id, retrievedInsurance.id);
         }
 
         [TestMethod]
-        public void TestAll()
+        public async Task TestAll()
         {
             VCR.Replay("all");
 
-            InsuranceCollection insuranceCollection = Insurance.All(new Dictionary<string, object>
+            InsuranceCollection insuranceCollection = await Insurance.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize

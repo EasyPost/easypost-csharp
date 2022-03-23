@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -39,7 +40,7 @@ namespace EasyPost
         ///     Add shipments to this batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be added.</param>
-        public void AddShipments(IEnumerable<string> shipmentIds)
+        public async Task AddShipments(IEnumerable<string> shipmentIds)
         {
             Request request = new Request("batches/{id}/add_shipments", Method.Post);
             request.AddUrlSegment("id", id);
@@ -58,31 +59,31 @@ namespace EasyPost
                 }
             });
 
-            Merge(request.Execute<Batch>());
+            Merge(await request.Execute<Batch>());
         }
 
         /// <summary>
         ///     Add shipments to this batch.
         /// </summary>
         /// <param name="shipments">List of Shipment objects to be added.</param>
-        public void AddShipments(IEnumerable<Shipment> shipments) => AddShipments(shipments.Select(shipment => shipment.id).ToList());
+        public async Task AddShipments(IEnumerable<Shipment> shipments) => await AddShipments(shipments.Select(shipment => shipment.id).ToList());
 
         /// <summary>
         ///     Purchase all shipments within this batch. The Batch's state must be "created" before purchasing.
         /// </summary>
-        public void Buy()
+        public async Task Buy()
         {
             Request request = new Request("batches/{id}/buy", Method.Post);
             request.AddUrlSegment("id", id);
 
-            Merge(request.Execute<Batch>());
+            Merge(await request.Execute<Batch>());
         }
 
         /// <summary>
         ///     Asynchronously generate a label containing all of the Shipment labels belonging to this batch.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
-        public void GenerateLabel(string fileFormat)
+        public async Task GenerateLabel(string fileFormat)
         {
             Request request = new Request("batches/{id}/label", Method.Post);
             request.AddUrlSegment("id", id);
@@ -95,25 +96,25 @@ namespace EasyPost
             };
 
             request.AddQueryString(parameters);
-            Merge(request.Execute<Batch>());
+            Merge(await request.Execute<Batch>());
         }
 
         /// <summary>
         ///     Asynchronously generate a scan from for this batch.
         /// </summary>
-        public void GenerateScanForm()
+        public async Task GenerateScanForm()
         {
             Request request = new Request("batches/{id}/scan_form", Method.Post);
             request.AddUrlSegment("id", id);
 
-            Merge(request.Execute<Batch>());
+            Merge(await request.Execute<Batch>());
         }
 
         /// <summary>
         ///     Remove shipments from this batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be removed.</param>
-        public void RemoveShipments(IEnumerable<string> shipmentIds)
+        public async Task RemoveShipments(IEnumerable<string> shipmentIds)
         {
             Request request = new Request("batches/{id}/remove_shipments", Method.Post);
             request.AddUrlSegment("id", id);
@@ -132,14 +133,14 @@ namespace EasyPost
                 }
             });
 
-            Merge(request.Execute<Batch>());
+            Merge(await request.Execute<Batch>());
         }
 
         /// <summary>
         ///     Remove shipments from this batch.
         /// </summary>
         /// <param name="shipments">List of Shipment objects to be removed.</param>
-        public void RemoveShipments(IEnumerable<Shipment> shipments) => RemoveShipments(shipments.Select(shipment => shipment.id).ToList());
+        public async Task RemoveShipments(IEnumerable<Shipment> shipments) => await RemoveShipments(shipments.Select(shipment => shipment.id).ToList());
 
         /// <summary>
         ///     Create a Batch.
@@ -151,7 +152,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static Batch Create(Dictionary<string, object> parameters = null)
+        public static async Task<Batch> Create(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
@@ -163,7 +164,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<Batch>();
+            return await request.Execute<Batch>();
         }
 
         /// <summary>
@@ -176,7 +177,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static Batch CreateAndBuy(Dictionary<string, object> parameters = null)
+        public static async Task<Batch> CreateAndBuy(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
@@ -188,7 +189,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<Batch>();
+            return await request.Execute<Batch>();
         }
 
         /// <summary>
@@ -196,12 +197,12 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a Batch. Starts with "batch_".</param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public static Batch Retrieve(string id)
+        public static async Task<Batch> Retrieve(string id)
         {
             Request request = new Request("batches/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Batch>();
+            return await request.Execute<Batch>();
         }
 
         /// <summary>
@@ -219,14 +220,14 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.BatchCollection instance.</returns>
-        public static BatchCollection All(Dictionary<string, object> parameters = null)
+        public static async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
             Request request = new Request("batches");
             request.AddQueryString(parameters);
 
-            return request.Execute<BatchCollection>();
+            return await request.Execute<BatchCollection>();
         }
     }
 }

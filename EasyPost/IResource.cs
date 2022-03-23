@@ -4,7 +4,7 @@ namespace EasyPost
 {
     public interface IResource
     {
-        Dictionary<string, object> AsDictionary();
+        Dictionary<string, object?> AsDictionary();
 
         void Merge(object source);
     }

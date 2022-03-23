@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -20,22 +21,22 @@ namespace EasyPost
         ///     Delete this webhook.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
-        public bool Delete()
+        public async Task<bool> Delete()
         {
             Request request = new Request("webhooks/{id}", Method.Delete);
             request.AddUrlSegment("id", id);
-            return request.Execute();
+            return await request.Execute();
         }
 
         /// <summary>
         ///     Enable a Webhook that has been disabled previously.
         /// </summary>
-        public void Update()
+        public async Task Update()
         {
             Request request = new Request("webhooks/{id}", Method.Put);
             request.AddUrlSegment("id", id);
 
-            Merge(request.Execute<Webhook>());
+            Merge(await request.Execute<Webhook>());
         }
 
         /// <summary>
@@ -47,7 +48,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Webhook instance.</returns>
-        public static Webhook Create(Dictionary<string, object> parameters)
+        public static async Task<Webhook> Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("webhooks", Method.Post);
             request.AddBody(new Dictionary<string, object>
@@ -57,7 +58,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<Webhook>();
+            return await request.Execute<Webhook>();
         }
 
 
@@ -65,11 +66,14 @@ namespace EasyPost
         ///     Get a list of scan forms.
         /// </summary>
         /// <returns>List of EasyPost.Webhook instances.</returns>
-        public static List<Webhook> All(Dictionary<string, object> parameters = null)
+        public static async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
         {
             Request request = new Request("webhooks");
-
-            WebhookList webhookList = request.Execute<WebhookList>();
+            if (parameters != null)
+            {
+                request.AddBody(parameters);
+            }
+            WebhookList webhookList = await request.Execute<WebhookList>();
             return webhookList.webhooks;
         }
 
@@ -78,12 +82,12 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a webhook. Starts with "hook_".</param>
         /// <returns>EasyPost.User instance.</returns>
-        public static Webhook Retrieve(string id)
+        public static async Task<Webhook> Retrieve(string id)
         {
             Request request = new Request("webhooks/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<Webhook>();
+            return await request.Execute<Webhook>();
         }
     }
 }

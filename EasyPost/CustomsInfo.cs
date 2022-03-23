@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -50,7 +51,7 @@ namespace EasyPost
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
-        public static CustomsInfo Create(Dictionary<string, object> parameters)
+        public static async Task<CustomsInfo> Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("customs_infos", Method.Post);
             request.AddBody(new Dictionary<string, object>
@@ -60,7 +61,7 @@ namespace EasyPost
                 }
             });
 
-            return request.Execute<CustomsInfo>();
+            return await request.Execute<CustomsInfo>();
         }
 
 
@@ -69,12 +70,12 @@ namespace EasyPost
         /// </summary>
         /// <param name="id">String representing a CustomsInfo. Starts with "cstinfo_".</param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
-        public static CustomsInfo Retrieve(string id)
+        public static async Task<CustomsInfo> Retrieve(string id)
         {
             Request request = new Request("customs_infos/{id}");
             request.AddUrlSegment("id", id);
 
-            return request.Execute<CustomsInfo>();
+            return await request.Execute<CustomsInfo>();
         }
     }
 }

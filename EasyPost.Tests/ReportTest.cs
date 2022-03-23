@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests.Net
@@ -13,9 +14,9 @@ namespace EasyPost.Tests.Net
             VCR.SetUp(VCRApiKey.Test, "report", true);
         }
 
-        private static Report CreateBasicReport(string reportType)
+        private static async Task<Report> CreateBasicReport(string reportType)
         {
-            return Report.Create(reportType, new Dictionary<string, object>
+            return await Report.Create(reportType, new Dictionary<string, object>
             {
                 {
                     "start_date", Fixture.ReportStartDate
@@ -26,24 +27,24 @@ namespace EasyPost.Tests.Net
             });
         }
 
-        private static void TestCreateReport(string cassetteName, string reportType, string idPrefix)
+        private static async Task TestCreateReport(string cassetteName, string reportType, string idPrefix)
         {
             VCR.Replay(cassetteName);
 
-            Report report = CreateBasicReport(reportType);
+            Report report = await CreateBasicReport(reportType);
 
             Assert.IsInstanceOfType(report, typeof(Report));
             Assert.IsTrue(report.id.StartsWith(idPrefix));
         }
 
-        private static void TestRetrieveReport(string cassetteName, string reportType)
+        private static async Task TestRetrieveReport(string cassetteName, string reportType)
         {
             VCR.Replay(cassetteName);
 
 
-            Report report = CreateBasicReport(reportType);
+            Report report = await CreateBasicReport(reportType);
 
-            Report retrievedReport = Report.Retrieve(report.id);
+            Report retrievedReport = await Report.Retrieve(report.id);
 
             Assert.IsInstanceOfType(report, typeof(Report));
             Assert.AreEqual(report.start_date, retrievedReport.start_date);
@@ -51,71 +52,71 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public void TestCreatePaymentLogReport()
+        public async Task TestCreatePaymentLogReport()
         {
-            TestCreateReport("create_payment_log_report", "payment_log", "plrep_");
+            await TestCreateReport("create_payment_log_report", "payment_log", "plrep_");
         }
 
         [TestMethod]
-        public void TestCreateRefundReport()
+        public async Task TestCreateRefundReport()
         {
-            TestCreateReport("create_refund_report", "refund", "refrep_");
+            await TestCreateReport("create_refund_report", "refund", "refrep_");
         }
 
         [TestMethod]
-        public void TestCreateShipmentReport()
+        public async Task TestCreateShipmentReport()
         {
-            TestCreateReport("create_shipment_report", "shipment", "shprep_");
+            await TestCreateReport("create_shipment_report", "shipment", "shprep_");
         }
 
         [TestMethod]
-        public void TestCreateShipmentInvoiceReport()
+        public async Task TestCreateShipmentInvoiceReport()
         {
-            TestCreateReport("create_shipment_invoice_report", "shipment_invoice", "shpinvrep_");
+            await TestCreateReport("create_shipment_invoice_report", "shipment_invoice", "shpinvrep_");
         }
 
         [TestMethod]
-        public void TestCreateTrackerReport()
+        public async Task TestCreateTrackerReport()
         {
-            TestCreateReport("create_tracker_report", "tracker", "trkrep_");
+            await TestCreateReport("create_tracker_report", "tracker", "trkrep_");
         }
 
         [TestMethod]
-        public void TestRetrievePaymentLogReport()
+        public async Task TestRetrievePaymentLogReport()
         {
-            TestRetrieveReport("retrieve_payment_log_report", "payment_log");
+            await TestRetrieveReport("retrieve_payment_log_report", "payment_log");
         }
 
         [TestMethod]
-        public void TestRetrieveRefundReport()
+        public async Task TestRetrieveRefundReport()
         {
-            TestRetrieveReport("retrieve_refund_report", "refund");
+            await TestRetrieveReport("retrieve_refund_report", "refund");
         }
 
         [TestMethod]
-        public void TestRetrieveShipmentReport()
+        public async Task TestRetrieveShipmentReport()
         {
-            TestRetrieveReport("retrieve_shipment_report", "shipment");
+            await TestRetrieveReport("retrieve_shipment_report", "shipment");
         }
 
         [TestMethod]
-        public void TestRetrieveShipmentInvoiceReport()
+        public async Task TestRetrieveShipmentInvoiceReport()
         {
-            TestRetrieveReport("retrieve_shipment_invoice_report", "shipment_invoice");
+            await TestRetrieveReport("retrieve_shipment_invoice_report", "shipment_invoice");
         }
 
         [TestMethod]
-        public void TestRetrieveTrackerReport()
+        public async Task TestRetrieveTrackerReport()
         {
-            TestRetrieveReport("retrieve_tracker_report", "tracker");
+            await TestRetrieveReport("retrieve_tracker_report", "tracker");
         }
 
         [TestMethod]
-        public void TestAll()
+        public async Task TestAll()
         {
             VCR.Replay("all");
 
-            ReportCollection reportCollection = Report.All("shipment", new Dictionary<string, object>
+            ReportCollection reportCollection = await Report.All("shipment", new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -130,18 +131,6 @@ namespace EasyPost.Tests.Net
             {
                 Assert.IsInstanceOfType(report, typeof(Report));
             }
-        }
-
-        [TestMethod]
-        public void TestCreateNoType()
-        {
-            Assert.ThrowsException<ArgumentNullException>(() => Report.Create(""));
-        }
-
-        [TestMethod]
-        public void TestAllNoType()
-        {
-            Assert.ThrowsException<ArgumentNullException>(() => Report.All(""));
         }
     }
 }
