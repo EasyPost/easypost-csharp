@@ -11,7 +11,7 @@ for req in "$@"; do
 done
 
 # generate reports for each version
-set -- NetCore31 Net50 Net60 NetFramework35
+set -- NetCore31 Net50 Net60 NetStandard20
 
 for test in "$@"; do
     (
