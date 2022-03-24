@@ -37,7 +37,7 @@ namespace EasyPost
         /// <param name="name">Name of parameter.</param>
         /// <param name="value">Value of parameter.</param>
         /// <param name="type">Type of parameter.</param>
-        public void AddParameter(string name, string? value, ParameterType type)
+        public void AddParameter(string name, string? value, ParameterType type = ParameterType.QueryString)
         {
             if (value == null)
             {
