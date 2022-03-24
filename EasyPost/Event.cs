@@ -36,7 +36,7 @@ namespace EasyPost
         public async Task<bool> Create(string id)
         {
             Request request = new Request("events", Method.Post);
-            request.AddQueryString(new Dictionary<string, object>
+            request.AddBody(new Dictionary<string, object>
             {
                 {
                     "result_id", id

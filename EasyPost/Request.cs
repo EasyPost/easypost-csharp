@@ -37,7 +37,7 @@ namespace EasyPost
         /// <param name="name">Name of parameter.</param>
         /// <param name="value">Value of parameter.</param>
         /// <param name="type">Type of parameter.</param>
-        public void AddParameter(string name, string? value, ParameterType type)
+        public void AddParameter(string name, string? value, ParameterType type = ParameterType.QueryString)
         {
             if (value == null)
             {
@@ -53,9 +53,31 @@ namespace EasyPost
         /// <param name="parameters">Dictionary of key-value pairs for creating URL query parameters.</param>
         public void AddQueryString(IDictionary<string, object> parameters)
         {
+            if (_restRequest.Method != Method.Get)
+            {
+                throw new ArgumentException("Query string parameters can only be added to GET requests.");
+            }
+
             foreach (KeyValuePair<string, object> pair in parameters)
             {
-                AddParameter(pair.Key, Convert.ToString(pair.Value), ParameterType.QueryString);
+                AddParameter(pair.Key, Convert.ToString(pair.Value));
+            }
+        }
+
+        /// <summary>
+        ///     Add multiple parameters under the same key (i.e. list of values) to the query string.
+        /// </summary>
+        /// <param name="key">Key for parameters</param>
+        /// <param name="values">List of parameter values</param>
+        public void AddQueryStringList(string key, IEnumerable<object>? values)
+        {
+            if (values == null)
+            {
+                return;
+            }
+            foreach (string value in values)
+            {
+                AddParameter($"{key}[]", value);
             }
         }
 

@@ -1,52 +1,50 @@
 [
   {
+    "RecordedAt": "2022-03-24T13:00:01.59684-06:00",
     "Request": {
-      "Method": "POST",
-      "URI": "https://api.easypost.com/v2/shipments",
-      "RequestHeaders": {
-        "Accept": "application/json",
-        "Authorization": "********",
-        "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/2.8.1,.NET/5.0.13"
-      },
+      "Body": "{\"shipment\":{}}",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
         "Content-Length": "15"
       },
-      "Body": "{\"shipment\":{}}"
+      "Method": "POST",
+      "RequestHeaders": {
+        "Accept": "application/json",
+        "Authorization": "********",
+        "content_type": "application/json",
+        "User-Agent": "EasyPost/v2,CSharpClient/2.8.2,.NET/4.0.30319.42000"
+      },
+      "Uri": "https://api.easypost.com/v2/shipments"
     },
     "Response": {
-      "Status": {
-        "Code": 422,
-        "Message": "Unprocessable Entity"
-      },
-      "ResponseHeaders": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "X-XSS-Protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "x-download-options": "noopen",
-        "x-permitted-cross-domain-policies": "none",
-        "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "5f596087621d5da5e4d1737d00a3ffff",
-        "Cache-Control": "no-store, no-cache",
-        "Pragma": "no-cache",
-        "X-Request-ID": "7d331066-3b66-4bcc-8b16-236e45b1403d",
-        "x-runtime": "0.016677",
-        "x-node": "bigweb9nuq",
-        "x-version-label": "easypost-202202282222-e6cd2b4eed-master",
-        "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 88c34981dc,extlb2nuq 88c34981dc",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-      },
+      "Body": "{\"error\":{\"code\":\"SHIPMENT.INVALID_PARAMS\",\"message\":\"Unable to create shipment, one or more parameters were invalid.\",\"errors\":[{\"to_address\":\"Required and missing.\"},{\"from_address\":\"Required and missing.\"}]}}",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
         "Content-Length": "211"
       },
-      "Body": "{\"error\":{\"code\":\"SHIPMENT.INVALID_PARAMS\",\"message\":\"Unable to create shipment, one or more parameters were invalid.\",\"errors\":[{\"to_address\":\"Required and missing.\"},{\"from_address\":\"Required and missing.\"}]}}",
-      "RequestMessage": null,
-      "HttpVersion": "1.1"
-    },
-    "RecordedAt": "2022-02-28T15:41:25.115692-08:00"
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "eb7f2773623cbfb1f1d745db0050b04e",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "x-runtime": "0.015495",
+        "x-node": "bigweb4nuq",
+        "x-version-label": "easypost-202203232220-83a361b07a-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq 3e97db20d4,extlb2nuq 3e97db20d4",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 422,
+        "Message": "Unprocessable Entity"
+      }
+    }
   }
 ]

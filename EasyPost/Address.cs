@@ -74,7 +74,7 @@ namespace EasyPost
 
             if (carrier != null)
             {
-                request.AddParameter("carrier", carrier, ParameterType.QueryString);
+                request.AddParameter("carrier", carrier);
             }
 
             Merge(await request.Execute<Address>());

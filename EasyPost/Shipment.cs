@@ -143,8 +143,7 @@ namespace EasyPost
 
             Request request = new Request("shipments/{id}/label");
             request.AddUrlSegment("id", id);
-            // This is a GET, but uses the request body, so use ParameterType.GetOrPost instead.
-            request.AddParameter("file_format", fileFormat, ParameterType.GetOrPost);
+            request.AddParameter("file_format", fileFormat);
 
             Merge(await request.Execute<Shipment>());
         }
@@ -180,7 +179,7 @@ namespace EasyPost
 
             Request request = new Request("shipments/{id}/insure", Method.Post);
             request.AddUrlSegment("id", id);
-            request.AddQueryString(new Dictionary<string, object>
+            request.AddBody(new Dictionary<string, object>
             {
                 {
                     "amount", amount
