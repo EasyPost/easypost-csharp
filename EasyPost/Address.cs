@@ -177,12 +177,14 @@ namespace EasyPost
             if (parameters.ContainsKey("verify"))
             {
                 body.Add("verify", parameters["verify"]);
+                // removing verify from the address data parameters, since it needs to be one key above
                 parameters.Remove("verify");
             }
 
             if (parameters.ContainsKey("verify_strict"))
             {
                 body.Add("verify_strict", parameters["verify_strict"]);
+                // removing verify_strict from the address data parameters, since it needs to be one key above
                 parameters.Remove("verify_strict");
             }
 
