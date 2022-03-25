@@ -7,11 +7,11 @@ on:
 
 jobs:
   lint:
-    runs-on: windows-2019
+    runs-on: windows-2022
     steps:
       - name: Install dotnet-format
         run: dotnet tool install -g dotnet-format
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Check dotnet Style
         run: dotnet-format --check --exclude /
   NET_Tests:
@@ -24,7 +24,7 @@ jobs:
       matrix:
         platform: [ 'NetStandard20', 'NetCore31', 'Net50', 'Net60' ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: true
         # Set the project name, based on platform version currently selected
@@ -60,7 +60,7 @@ jobs:
           - platform: FSharp
             ext: fsproj
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: true
         # Set the project name, based on platform version currently selected
