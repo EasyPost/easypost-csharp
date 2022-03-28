@@ -15,6 +15,7 @@
 * Clarify XList vs XCollection distinction:
   * `ReportList`, `ScanFormList`, `ShipmentList` and `TrackerList` renamed to `ReportCollection`, `ScanFormCollection`, `ShipmentCollection` and `TrackerCollection`
 * Add support for `columns` and `additional_columns` on Report creation
+* Must use `verify` and `verify_strict` parameters to verify addresses during creation, per our API docs; `verification` and `strict_verification` will no longer work
 
 ## v2.8.1 (2022-02-17)
 

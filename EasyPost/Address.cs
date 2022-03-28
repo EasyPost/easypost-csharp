@@ -74,7 +74,7 @@ namespace EasyPost
 
             if (carrier != null)
             {
-                request.AddParameter("carrier", carrier, ParameterType.QueryString);
+                request.AddParameter("carrier", carrier);
             }
 
             Merge(await request.Execute<Address>());
@@ -102,42 +102,8 @@ namespace EasyPost
         /// <returns>EasyPost.Address instance.</returns>
         public static async Task<Address> Create(Dictionary<string, object>? parameters = null)
         {
-            List<string>? verifications = null, strictVerifications = null;
-            parameters = parameters ?? new Dictionary<string, object>();
-
-            if (parameters.ContainsKey("verifications"))
-            {
-                verifications = (List<string>)parameters["verifications"];
-                parameters.Remove("verifications");
-            }
-            else if (parameters.ContainsKey("verify"))
-            {
-                verifications = new List<string>();
-                foreach (bool val in (List<bool>)parameters["verify"])
-                {
-                    verifications.Add(val.ToString());
-                }
-
-                parameters.Remove("verify");
-            }
-
-            if (parameters.ContainsKey("strict_verifications"))
-            {
-                strictVerifications = (List<string>)parameters["strict_verifications"];
-                parameters.Remove("strict_verifications");
-            }
-            else if (parameters.ContainsKey("verify_strict"))
-            {
-                strictVerifications = new List<string>();
-                foreach (bool val in (List<bool>)parameters["verify_strict"])
-                {
-                    strictVerifications.Add(val.ToString());
-                }
-
-                parameters.Remove("verify_strict");
-            }
-
-            return await SendCreate(parameters, verifications, strictVerifications);
+            Request request = new Request("addresses", Method.Post);
+            return await SendCreate(request, parameters);
         }
 
         /// <summary>
@@ -159,12 +125,11 @@ namespace EasyPost
         /// </param>
         public static async Task<Address> CreateAndVerify(Dictionary<string, object>? parameters = null)
         {
-            parameters = parameters ?? new Dictionary<string, object>();
-            parameters["strict_verifications"] = new List<string>
+            Request request = new Request("addresses/create_and_verify", Method.Post)
             {
-                "delivery"
+                RootElement = "address"
             };
-            return await Create(parameters);
+            return await SendCreate(request, parameters);
         }
 
         /// <summary>
@@ -204,26 +169,28 @@ namespace EasyPost
             return await request.Execute<AddressCollection>();
         }
 
-        private static async Task<Address> SendCreate(Dictionary<string, object> parameters, List<string>? verifications = null,
-            List<string>? strictVerifications = null)
+        private static async Task<Address> SendCreate(Request request, Dictionary<string, object>? parameters = null)
         {
-            Request request = new Request("addresses", Method.Post);
-            request.AddBody(new Dictionary<string, object>
-            {
-                {
-                    "address", parameters
-                }
-            });
+            parameters ??= new Dictionary<string, object>();
+            Dictionary<string, object> body = new Dictionary<string, object>();
 
-            foreach (string verification in verifications ?? new List<string>())
+            if (parameters.ContainsKey("verify"))
             {
-                request.AddParameter("verify[]", verification, ParameterType.QueryString);
+                body.Add("verify", parameters["verify"]);
+                // removing verify from the address data parameters, since it needs to be one key above
+                parameters.Remove("verify");
             }
 
-            foreach (string verification in strictVerifications ?? new List<string>())
+            if (parameters.ContainsKey("verify_strict"))
             {
-                request.AddParameter("verify_strict[]", verification, ParameterType.QueryString);
+                body.Add("verify_strict", parameters["verify_strict"]);
+                // removing verify_strict from the address data parameters, since it needs to be one key above
+                parameters.Remove("verify_strict");
             }
+
+            body.Add("address", parameters);
+
+            request.AddBody(body);
 
             return await request.Execute<Address>();
         }
