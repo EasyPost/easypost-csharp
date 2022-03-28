@@ -55,7 +55,7 @@ namespace EasyPost
 
             Request request = new Request("orders/{id}/buy", Method.Post);
             request.AddUrlSegment("id", id);
-            request.AddQueryString(new Dictionary<string, object>
+            request.AddBody(new Dictionary<string, object>
             {
                 {
                     "carrier", carrier

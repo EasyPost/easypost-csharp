@@ -95,7 +95,7 @@ namespace EasyPost
                 }
             };
 
-            request.AddQueryString(parameters);
+            request.AddBody(parameters);
             Merge(await request.Execute<Batch>());
         }
 

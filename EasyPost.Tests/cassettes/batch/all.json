@@ -1,50 +1,49 @@
 [
   {
+    "RecordedAt": "2022-03-24T13:11:56.148849-06:00",
     "Request": {
+      "Body": "",
+      "ContentHeaders": {},
       "Method": "GET",
-      "URI": "https://api.easypost.com/v2/batches?page_size=5",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "********",
         "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/2.8.1,.NET/5.0.13"
+        "User-Agent": "EasyPost/v2,CSharpClient/2.8.2,.NET/4.0.30319.42000"
       },
-      "ContentHeaders": {},
-      "Body": ""
+      "Uri": "https://api.easypost.com/v2/batches?page_size=5"
     },
     "Response": {
-      "Status": {
-        "Code": 200,
-        "Message": "OK"
-      },
-      "ResponseHeaders": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "X-XSS-Protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "x-download-options": "noopen",
-        "x-permitted-cross-domain-policies": "none",
-        "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "5f596083621d5d93e4d1700500a3fadf",
-        "Cache-Control": "no-store, no-cache",
-        "Pragma": "no-cache",
-        "ETag": "W/\"360bb9b03f57117c1589d6a698fbf86e\"",
-        "X-Request-ID": "ba9cc871-9746-44af-b6d5-b485fcd8d929",
-        "x-runtime": "0.178400",
-        "x-node": "bigweb3nuq",
-        "x-version-label": "easypost-202202282222-e6cd2b4eed-master",
-        "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 88c34981dc,extlb2nuq 88c34981dc",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-      },
+      "Body": "{\"batches\":[{\"id\":\"batch_71b61df724da42a099e3d47cfa82c894\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"created\",\"num_shipments\":0,\"reference\":null,\"created_at\":\"2022-02-25T16:58:18Z\",\"updated_at\":\"2022-02-25T16:58:18Z\",\"scan_form\":null,\"shipments\":[],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null},{\"id\":\"batch_4a0dda6247f043e1ab91ec3322bde1fa\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"created\",\"num_shipments\":0,\"reference\":null,\"created_at\":\"2022-02-25T16:58:19Z\",\"updated_at\":\"2022-02-25T16:58:19Z\",\"scan_form\":null,\"shipments\":[],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null},{\"id\":\"batch_871184d9cd1a4fdb80fc2591c0a129f8\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"label_generated\",\"num_shipments\":1,\"reference\":\"EasyPostCSharpTest\",\"created_at\":\"2022-02-25T16:58:25Z\",\"updated_at\":\"2022-02-25T16:58:30Z\",\"scan_form\":{\"id\":\"sf_bb3089d185644bfcbc4a77a414e4f0cf\",\"object\":\"ScanForm\",\"created_at\":\"2022-02-25T16:58:29Z\",\"updated_at\":\"2022-02-25T16:58:30Z\",\"tracking_codes\":[\"9405500897846108997197\"],\"address\":{\"id\":\"adr_25b0bc3d965c11ec8b2fac1f6bc7bdc6\",\"object\":\"Address\",\"created_at\":\"2022-02-25T16:58:25+00:00\",\"updated_at\":\"2022-02-25T16:58:25+00:00\",\"name\":\"Andrew Tribone\",\"company\":null,\"street1\":\"480 Fell St\",\"street2\":\"#3\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94102\",\"country\":\"US\",\"phone\":null,\"email\":null,\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"status\":\"created\",\"message\":null,\"form_url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20220225/33155ebb80574e24abe839457a3d9b66.pdf\",\"form_file_type\":null,\"batch_id\":\"batch_871184d9cd1a4fdb80fc2591c0a129f8\",\"confirmation\":null},\"shipments\":[{\"batch_status\":\"postage_purchased\",\"batch_message\":null,\"reference\":null,\"tracking_code\":\"9405500897846108997197\",\"id\":\"shp_466d1542529d46d5acbd721dbd30397e\"}],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":1,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/batch/20220225/1e0cb01633d94876afa38c5bd3868a34.pdf\"},{\"id\":\"batch_ca297c62a65045478c99bfcafcb3af56\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"label_generated\",\"num_shipments\":1,\"reference\":\"EasyPostCSharpTest\",\"created_at\":\"2022-02-25T16:58:25Z\",\"updated_at\":\"2022-02-25T16:58:30Z\",\"scan_form\":{\"id\":\"sf_a9bd4b3cc352470fad53248acef2b32f\",\"object\":\"ScanForm\",\"created_at\":\"2022-02-25T16:58:29Z\",\"updated_at\":\"2022-02-25T16:58:29Z\",\"tracking_codes\":[\"9405500897846108997203\"],\"address\":{\"id\":\"adr_25e8d28b965c11ecb52aac1f6bc7b362\",\"object\":\"Address\",\"created_at\":\"2022-02-25T16:58:25+00:00\",\"updated_at\":\"2022-02-25T16:58:25+00:00\",\"name\":\"Andrew Tribone\",\"company\":null,\"street1\":\"480 Fell St\",\"street2\":\"#3\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94102\",\"country\":\"US\",\"phone\":null,\"email\":null,\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"status\":\"created\",\"message\":null,\"form_url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20220225/0a266a872bad4a58bce383b22791fe11.pdf\",\"form_file_type\":null,\"batch_id\":\"batch_ca297c62a65045478c99bfcafcb3af56\",\"confirmation\":null},\"shipments\":[{\"batch_status\":\"postage_purchased\",\"batch_message\":null,\"reference\":null,\"tracking_code\":\"9405500897846108997203\",\"id\":\"shp_1df8feee28b047fab587112921f490fb\"}],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":1,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/batch/20220225/8ea99f577d734d57b9056be45f00a857.pdf\"},{\"id\":\"batch_980402af77a34b2fa115fdde7888b6a2\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"created\",\"num_shipments\":0,\"reference\":null,\"created_at\":\"2022-02-25T16:58:27Z\",\"updated_at\":\"2022-02-25T16:58:27Z\",\"scan_form\":null,\"shipments\":[],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null}],\"has_more\":true}",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "5741"
+        "Content-Length": "4271"
       },
-      "Body": "{\"batches\":[{\"id\":\"batch_f734e06ea77a4391b1ee5a1a5e9107c4\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"created\",\"num_shipments\":0,\"reference\":null,\"created_at\":\"2022-01-31T02:15:49Z\",\"updated_at\":\"2022-01-31T02:15:49Z\",\"scan_form\":null,\"shipments\":[],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null},{\"id\":\"batch_c5c356992c12484c9ca533de513a8e39\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"created\",\"num_shipments\":0,\"reference\":null,\"created_at\":\"2022-01-31T02:15:50Z\",\"updated_at\":\"2022-01-31T02:15:50Z\",\"scan_form\":null,\"shipments\":[],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null},{\"id\":\"batch_826380ae7ebe4e1bbd6180a9dd9f440f\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"label_generated\",\"num_shipments\":1,\"reference\":\"EasyPostCSharpTest\",\"created_at\":\"2022-01-31T02:15:55Z\",\"updated_at\":\"2022-01-31T02:16:00Z\",\"scan_form\":{\"id\":\"sf_64243969744e4f78bbff482a6b7418ca\",\"object\":\"ScanForm\",\"created_at\":\"2022-01-31T02:15:59Z\",\"updated_at\":\"2022-01-31T02:16:00Z\",\"tracking_codes\":[\"9405500895232104640120\"],\"address\":{\"id\":\"adr_b8c4c0b5823b11ecb836ac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2022-01-31T02:15:55+00:00\",\"updated_at\":\"2022-01-31T02:15:55+00:00\",\"name\":\"Andrew Tribone\",\"company\":null,\"street1\":\"480 Fell St\",\"street2\":\"#3\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94102\",\"country\":\"US\",\"phone\":null,\"email\":null,\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"status\":\"created\",\"message\":null,\"form_url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20220131/8fe1283e1ce4491fb5f33459edb805ec.pdf\",\"form_file_type\":null,\"batch_id\":\"batch_826380ae7ebe4e1bbd6180a9dd9f440f\",\"confirmation\":null},\"shipments\":[{\"batch_status\":\"postage_purchased\",\"batch_message\":null,\"reference\":null,\"tracking_code\":\"9405500895232104640120\",\"id\":\"shp_df2da5481f4d4f91854479eafd091db3\"}],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":1,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/batch/20220131/ba518fafb8d443dda1d97cfc2d64cb4a.pdf\"},{\"id\":\"batch_48fc40ac244343668ffff150fe3b5829\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"creating\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2022-01-31T02:16:24Z\",\"updated_at\":\"2022-01-31T02:16:24Z\",\"scan_form\":null,\"shipments\":[{\"batch_status\":\"postage_purchased\",\"batch_message\":null,\"reference\":\"ShipmentRef\",\"tracking_code\":\"9400100895232104640189\",\"id\":\"shp_24d0d20990334cff9148b03807c0472d\"}],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":1,\"postage_purchase_failed\":0},\"pickup\":{\"id\":\"pickup_0796ef7e8deb4fd3ab7e56d0b62d38fa\",\"object\":\"Pickup\",\"created_at\":\"2022-01-31T02:16:24Z\",\"updated_at\":\"2022-01-31T02:16:24Z\",\"mode\":\"test\",\"status\":\"unknown\",\"reference\":null,\"min_datetime\":\"2022-02-01T02:16:24Z\",\"max_datetime\":\"2022-02-01T02:16:24Z\",\"is_account_address\":false,\"instructions\":\"In mailbox.\",\"messages\":[],\"confirmation\":null,\"address\":{\"id\":\"adr_ca3c48a0823b11ecafcbac1f6bc7bdc6\",\"object\":\"Address\",\"created_at\":\"2022-01-31T02:16:24+00:00\",\"updated_at\":\"2022-01-31T02:16:24+00:00\",\"name\":null,\"company\":\"Simpler Postage Inc\",\"street1\":\"164 Townsend Street\",\"street2\":\"Unit 1\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"1234567890\",\"email\":null,\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"carrier_accounts\":[],\"pickup_rates\":[{\"mode\":\"test\",\"service\":\"NextDay\",\"rate\":\"0.00\",\"currency\":\"USD\",\"created_at\":\"2022-01-31T02:16:26Z\",\"updated_at\":\"2022-01-31T02:16:26Z\",\"carrier\":\"USPS\",\"pickup_id\":\"pickup_0796ef7e8deb4fd3ab7e56d0b62d38fa\",\"id\":\"pickuprate_01b52359e27a43018fc62876930c1ca1\",\"object\":\"PickupRate\"}]},\"label_url\":null},{\"id\":\"batch_5adad6752a9d4b2e8b23ca41eaa8047b\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"creating\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2022-01-31T02:16:29Z\",\"updated_at\":\"2022-01-31T02:16:29Z\",\"scan_form\":null,\"shipments\":[{\"batch_status\":\"postage_purchased\",\"batch_message\":null,\"reference\":\"ShipmentRef\",\"tracking_code\":\"9400100895232104640196\",\"id\":\"shp_e7673da7a0334f488c937e2ef0583e19\"}],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":1,\"postage_purchase_failed\":0},\"pickup\":{\"id\":\"pickup_b7e8780d31f144238a9fbb5e2267c055\",\"object\":\"Pickup\",\"created_at\":\"2022-01-31T02:16:29Z\",\"updated_at\":\"2022-01-31T02:16:32Z\",\"mode\":\"test\",\"status\":\"scheduled\",\"reference\":null,\"min_datetime\":\"2022-02-01T02:16:29Z\",\"max_datetime\":\"2022-02-01T02:16:29Z\",\"is_account_address\":false,\"instructions\":\"In mailbox.\",\"messages\":[],\"confirmation\":\"WTC61766216\",\"address\":{\"id\":\"adr_cd20af94823b11ecaff9ac1f6bc7bdc6\",\"object\":\"Address\",\"created_at\":\"2022-01-31T02:16:29+00:00\",\"updated_at\":\"2022-01-31T02:16:29+00:00\",\"name\":null,\"company\":\"Simpler Postage Inc\",\"street1\":\"164 Townsend Street\",\"street2\":\"Unit 1\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"1234567890\",\"email\":null,\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"carrier_accounts\":[],\"pickup_rates\":[{\"mode\":\"test\",\"service\":\"NextDay\",\"rate\":\"0.00\",\"currency\":\"USD\",\"created_at\":\"2022-01-31T02:16:30Z\",\"updated_at\":\"2022-01-31T02:16:30Z\",\"carrier\":\"USPS\",\"pickup_id\":\"pickup_b7e8780d31f144238a9fbb5e2267c055\",\"id\":\"pickuprate_3d862ea6bdc54bfa969072d536b416ac\",\"object\":\"PickupRate\"}]},\"label_url\":null}],\"has_more\":true}",
-      "RequestMessage": null,
-      "HttpVersion": "1.1"
-    },
-    "RecordedAt": "2022-02-28T15:41:07.177837-08:00"
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "cc5c3cac623cc27cf1ff37fd00365966",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"21bfd5a4378edd40b4433214dc2cd5b3\"",
+        "x-runtime": "0.079711",
+        "x-node": "bigweb7nuq",
+        "x-version-label": "easypost-202203241857-291f1fbb26-master",
+        "x-backend": "easypost",
+        "x-canary": "direct",
+        "x-proxied": "intlb1nuq 3e97db20d4,extlb1nuq 3e97db20d4",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
   }
 ]
