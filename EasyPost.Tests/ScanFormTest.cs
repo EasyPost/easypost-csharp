@@ -44,7 +44,7 @@ namespace EasyPost.Tests.Net
             ScanForm retrievedScanForm = await ScanForm.Retrieve(scanForm.id);
 
             Assert.IsInstanceOfType(retrievedScanForm, typeof(ScanForm));
-            Assert.AreEqual(scanForm.id, retrievedScanForm.id);
+            Assert.AreEqual(scanForm, retrievedScanForm);
         }
 
         [TestMethod]

@@ -63,6 +63,7 @@ namespace EasyPost.Tests.Net
             Batch retrievedBatch = await Batch.Retrieve(batch.id);
 
             Assert.IsInstanceOfType(retrievedBatch, typeof(Batch));
+            // Must compare IDs since elements of batch (i.e. status) may be different
             Assert.AreEqual(batch.id, retrievedBatch.id);
         }
 

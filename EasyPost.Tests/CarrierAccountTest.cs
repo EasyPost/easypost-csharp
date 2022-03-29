@@ -40,7 +40,7 @@ namespace EasyPost.Tests.Net
             CarrierAccount retrievedCarrierAccount = await CarrierAccount.Retrieve(carrierAccount.id);
 
             Assert.IsInstanceOfType(retrievedCarrierAccount, typeof(CarrierAccount));
-            Assert.AreEqual(carrierAccount.id, retrievedCarrierAccount.id);
+            Assert.AreEqual(carrierAccount, retrievedCarrierAccount);
         }
 
         [TestMethod]

@@ -41,6 +41,7 @@ namespace EasyPost.Tests.Net
             Order retrievedOrder = await Order.Retrieve(order.id);
 
             Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
+            // Must compare IDs since other elements of objects may be different
             Assert.AreEqual(order.id, retrievedOrder.id);
         }
 

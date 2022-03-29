@@ -53,6 +53,7 @@ namespace EasyPost.Tests.Net
             Event retrievedEvent = await Event.Retrieve(_event.id);
 
             Assert.IsInstanceOfType(retrievedEvent, typeof(Event));
+            // Must compare IDs because other elements of objects may be different
             Assert.AreEqual(_event.id, retrievedEvent.id);
         }
     }

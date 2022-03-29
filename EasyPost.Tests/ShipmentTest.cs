@@ -40,7 +40,7 @@ namespace EasyPost.Tests.Net
             Shipment retrievedShipment = await Shipment.Retrieve(shipment.id);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
-            Assert.AreEqual(shipment.id, retrievedShipment.id);
+            Assert.AreEqual(shipment, retrievedShipment);
         }
 
         [TestMethod]
@@ -153,6 +153,7 @@ namespace EasyPost.Tests.Net
 
             List<Smartrate> smartRates = await shipment.GetSmartrates();
             Smartrate smartrate = smartRates.First();
+            // Must compare IDs because one is a Rate object and one is a Smartrate object
             Assert.AreEqual(shipment.rates[0].id, smartrate.id);
             Assert.IsNotNull(smartrate.time_in_transit.percentile_50);
             Assert.IsNotNull(smartrate.time_in_transit.percentile_75);

@@ -44,7 +44,7 @@ namespace EasyPost.Tests.Net
             Pickup retrievedPickup = await Pickup.Retrieve(pickup.id);
 
             Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
-            Assert.AreEqual(pickup.id, retrievedPickup.id);
+            Assert.AreEqual(pickup, retrievedPickup);
         }
 
         [TestMethod]

@@ -40,7 +40,7 @@ namespace EasyPost.Tests.Net
             CustomsItem retrievedCustomsItem = await CustomsItem.Retrieve(customsItem.id);
 
             Assert.IsInstanceOfType(retrievedCustomsItem, typeof(CustomsItem));
-            Assert.AreEqual(customsItem.id, retrievedCustomsItem.id);
+            Assert.AreEqual(customsItem, retrievedCustomsItem);
         }
     }
 }
