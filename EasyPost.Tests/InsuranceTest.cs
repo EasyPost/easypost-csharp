@@ -41,6 +41,7 @@ namespace EasyPost.Tests.Net
 
             Insurance retrievedInsurance = await Insurance.Retrieve(insurance.id);
             Assert.IsInstanceOfType(retrievedInsurance, typeof(Insurance));
+            // Must compare IDs since other elements of object may be different
             Assert.AreEqual(insurance.id, retrievedInsurance.id);
         }
 

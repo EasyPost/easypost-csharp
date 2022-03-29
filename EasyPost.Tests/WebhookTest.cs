@@ -77,7 +77,7 @@ namespace EasyPost.Tests.Net
             Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
 
             Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
-            Assert.AreEqual(webhook.id, retrievedWebhook.id);
+            Assert.AreEqual(webhook, retrievedWebhook);
 
             _webhookId = webhook.id; // trigger deletion
         }

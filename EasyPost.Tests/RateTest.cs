@@ -23,7 +23,7 @@ namespace EasyPost.Tests.Net
 
             Assert.IsInstanceOfType(rate, typeof(Rate));
             Assert.IsTrue(rate.id.StartsWith("rate_"));
-            Assert.AreEqual(shipment.rates[0].id, rate.id);
+            Assert.AreEqual(shipment.rates[0], rate);
         }
     }
 }

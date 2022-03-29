@@ -42,6 +42,7 @@ namespace EasyPost.Tests.Net
             Tracker retrievedTracker = await Tracker.Retrieve(tracker.id);
 
             Assert.IsInstanceOfType(retrievedTracker, typeof(Tracker));
+            // Must compare IDs because other elements of objects may be different
             Assert.AreEqual(tracker.id, retrievedTracker.id);
         }
 

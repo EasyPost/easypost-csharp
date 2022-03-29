@@ -40,7 +40,7 @@ namespace EasyPost.Tests.Net
             Parcel retrievedParcel = await Parcel.Retrieve(parcel.id);
 
             Assert.IsInstanceOfType(retrievedParcel, typeof(Parcel));
-            Assert.AreEqual(parcel.id, retrievedParcel.id);
+            Assert.AreEqual(parcel, retrievedParcel);
         }
     }
 }

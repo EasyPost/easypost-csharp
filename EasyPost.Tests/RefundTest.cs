@@ -88,7 +88,7 @@ namespace EasyPost.Tests.Net
             Refund retrievedRefund = await Refund.Retrieve(refund.id);
 
             Assert.IsInstanceOfType(retrievedRefund, typeof(Refund));
-            Assert.AreEqual(refund.id, retrievedRefund.id);
+            Assert.AreEqual(refund, retrievedRefund);
         }
     }
 }

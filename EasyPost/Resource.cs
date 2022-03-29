@@ -10,6 +10,23 @@ namespace EasyPost
 {
     public class Resource : IResource
     {
+        public override bool Equals(object obj)
+        {
+            if (this.GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            string? thisJson = AsJson();
+            string? otherJson = ((Resource)obj).AsJson();
+            if (thisJson == null || otherJson == null)
+            {
+                // can't do proper comparison if either or both could not be serialized
+                return false;
+            }
+            return thisJson == otherJson;
+        }
+
         /// <summary>
         ///     Get the dictionary representation of this object instance.
         /// </summary>
@@ -18,6 +35,15 @@ namespace EasyPost
             GetType()
                 .GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
                 .ToDictionary(info => info.Name, info => GetValue(info));
+
+        /// <summary>
+        ///     Get the JSON representation of this object instance.
+        /// </summary>
+        /// <returns>A JSON string representation of this object instance's attributes</returns>
+        public string? AsJson()
+        {
+            return JsonSerialization.ConvertObjectToJson(this);
+        }
 
         /// <summary>
         ///     Merge the properties of this object instance with the properties of another object instance.

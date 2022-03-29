@@ -6,6 +6,8 @@ namespace EasyPost
     {
         Dictionary<string, object?> AsDictionary();
 
+        string? AsJson();
+
         void Merge(object source);
     }
 }

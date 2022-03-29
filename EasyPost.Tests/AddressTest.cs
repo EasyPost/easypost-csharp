@@ -60,7 +60,7 @@ namespace EasyPost.Tests.Net
             Address retrievedAddress = await Address.Retrieve(address.id);
 
             Assert.IsInstanceOfType(retrievedAddress, typeof(Address));
-            Assert.AreEqual(address.id, retrievedAddress.id);
+            Assert.AreEqual(address, retrievedAddress);
         }
 
         [TestMethod]
