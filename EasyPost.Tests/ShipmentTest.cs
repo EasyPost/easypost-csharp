@@ -185,6 +185,7 @@ namespace EasyPost.Tests.Net
             Assert.IsNotNull(shipment.options); // The EasyPost API populates some default values here
             Assert.IsTrue(shipment.customs_info.customs_items.Count == 0);
             Assert.IsNull(shipment.reference);
+            Assert.IsNull(shipment.tax_identifiers);
         }
 
         [TestMethod]
