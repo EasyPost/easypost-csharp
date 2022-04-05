@@ -34,6 +34,8 @@ namespace EasyPost
         public string restriction_type { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
+        [JsonProperty("declaration")]
+        public string declaration { get; set; }
 
         /// <summary>
         ///     Create a CustomsInfo.
