@@ -27,7 +27,7 @@ namespace shipments
 {
     class createShipment
     {
-        static void Main()
+        static async void Main()
         {
             EasyPost.ClientManager.SetCurrent(Environment.GetEnvironmentVariable("EASYPOST_API_KEY"));
 
@@ -60,13 +60,13 @@ namespace shipments
                 { "weight", 10 },
             }
 
-            Shipment shipment = Shipment.Create(new Dictionary<string, object>() {
+            Shipment shipment = await Shipment.Create(new Dictionary<string, object>() {
                 { "from_address", fromAddress },
                 { "to_address", toAddress },
                 { "parcel", parcel },
             });
 
-            shipment.Buy(shipment.LowestRate());
+            await shipment.Buy(shipment.LowestRate());
 
             Console.WriteLine(JsonConvert.SerializeObject(shipment, Formatting.Indented));
         }
