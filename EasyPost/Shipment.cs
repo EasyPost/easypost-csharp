@@ -286,7 +286,7 @@ namespace EasyPost
         ///     * {"carrier_accounts", List&lt;string&gt;} List of CarrierAccount.id to limit rating.
         ///     All invalid keys will be ignored.
         /// </param>
-        /// <returns>EasyPost.Batch instance.</returns>
+        /// <returns>An EasyPost.Shipment instance.</returns>
         public static async Task<Shipment> Create(Dictionary<string, object>? parameters = null) => await SendCreate(parameters ?? new Dictionary<string, object>());
 
 
@@ -320,7 +320,7 @@ namespace EasyPost
         ///     Retrieve a Shipment from its id.
         /// </summary>
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
-        /// <returns>EasyPost.Shipment instance.</returns>
+        /// <returns>An EasyPost.Shipment instance.</returns>
         public static async Task<Shipment> Retrieve(string id)
         {
             Request request = new Request("shipments/{id}");
