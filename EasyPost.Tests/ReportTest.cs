@@ -18,18 +18,18 @@ namespace EasyPost.Tests.Net
             return await Report.Create(reportType, new Dictionary<string, object>
             {
                 {
-                    "start_date", Fixture.ReportStartDate
+                    "start_date", Fixture.ReportDate
                 },
                 {
-                    "end_date", Fixture.ReportEndDate
+                    "end_date", Fixture.ReportDate
                 }
             });
         }
 
         private static async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters)
         {
-            parameters["start_date"] = Fixture.ReportStartDate;
-            parameters["end_date"] = Fixture.ReportEndDate;
+            parameters["start_date"] = Fixture.ReportDate;
+            parameters["end_date"] = Fixture.ReportDate;
             return await Report.Create(reportType, parameters);
         }
 

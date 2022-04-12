@@ -10,24 +10,22 @@ namespace EasyPost.Tests.Net
         // We keep the page_size of retrieving `all` records small so cassettes stay small
         public const int PageSize = 5;
 
-        // This is the carrier account ID for the default USPS account that comes by default. All tests should use this carrier account
+        // This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
+        // TODO: Have this be the fallback method and use an env var called `USPS_CARRIER_ACCOUNT_ID`
         public const string UspsCarrierAccountId = "ca_7642d249fdcf47bcb5da9ea34c96dfcf";
-
-        public const string ChildUserId = "user_608a91d0487e419bb465e5acbc999056";
 
         public const string Usps = "USPS";
 
         public const string UspsService = "First";
 
-        public const string NextDayService = "NextDay";
+        public const string PickupService = "NextDay";
 
-        // If ever these need to change due to re-recording cassettes, simply increment this date by 1
-        public const string ReportStartDate = "2022-02-01";
+        public const string ReportType = "shipment";
 
-        // If ever these need to change due to re-recording cassettes, simply increment this date by 1
-        public const string ReportEndDate = "2022-02-03";
+        // If you need to re-record cassettes, increment this date by 1
+        public const string ReportDate = "2022-04-12";
 
-        public static string RandomUrl => $"https://{Guid.NewGuid().ToString().Substring(0, 8)}.com";
+        public static string WebhookUrl => "http://example.com";
 
         public static Dictionary<string, object> BasicAddress
         {
@@ -393,6 +391,7 @@ namespace EasyPost.Tests.Net
             get
             {
                 return new Dictionary<string, object>
+                // TODO: Consolidate the date to a variable and reuse the same date variable in both fields below
                 {
                     {
                         "address", BasicAddress
