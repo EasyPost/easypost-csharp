@@ -1,6 +1,6 @@
 [
   {
-    "RecordedAt": "2022-03-24T12:59:59.528273-06:00",
+    "RecordedAt": "2022-04-14T16:26:37.935824-06:00",
     "Request": {
       "Body": "{\"customs_item\":{\"description\":\"Sweet shirts\",\"quantity\":2,\"weight\":11,\"value\":23.0,\"hs_tariff_number\":654321,\"origin_country\":\"US\"}}",
       "ContentHeaders": {
@@ -12,59 +12,12 @@
         "Accept": "application/json",
         "Authorization": "********",
         "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/2.8.2,.NET/4.0.30319.42000"
+        "User-Agent": "EasyPost/v2,CSharpClient/2.8.2,.NET/5.0.13"
       },
       "Uri": "https://api.easypost.com/v2/customs_items"
     },
     "Response": {
-      "Body": "{\"id\":\"cstitem_ea6181786b2645f8b94064d8ca80ce4d\",\"object\":\"CustomsItem\",\"created_at\":\"2022-03-24T18:59:59Z\",\"updated_at\":\"2022-03-24T18:59:59Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}",
-      "ContentHeaders": {
-        "Expires": "0",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "375"
-      },
-      "HttpVersion": "1.1",
-      "ResponseHeaders": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "x-xss-protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "x-download-options": "noopen",
-        "x-permitted-cross-domain-policies": "none",
-        "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "eb7f2772623cbfaff9c0b79d0050afac",
-        "Cache-Control": "no-store, no-cache",
-        "Pragma": "no-cache",
-        "Location": "/api/v2/customs_items/cstitem_ea6181786b2645f8b94064d8ca80ce4d",
-        "ETag": "W/\"8f84247807757cb5aa445fa53acc2fd7\"",
-        "x-runtime": "0.026465",
-        "x-node": "bigweb6nuq",
-        "x-version-label": "easypost-202203232220-83a361b07a-master",
-        "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 3e97db20d4,extlb2nuq 3e97db20d4",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-      },
-      "Status": {
-        "Code": 201,
-        "Message": "Created"
-      }
-    }
-  },
-  {
-    "RecordedAt": "2022-03-24T11:12:50.726705-06:00",
-    "Request": {
-      "Body": "",
-      "ContentHeaders": {},
-      "Method": "GET",
-      "RequestHeaders": {
-        "Accept": "application/json",
-        "Authorization": "********",
-        "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/2.8.2,.NET/5.0.13"
-      },
-      "Uri": "https://api.easypost.com/v2/customs_items/cstitem_2d0d52bf23a34754a198a62efc5019dd"
-    },
-    "Response": {
-      "Body": "{\"id\":\"cstitem_2d0d52bf23a34754a198a62efc5019dd\",\"object\":\"CustomsItem\",\"created_at\":\"2022-03-24T17:12:50Z\",\"updated_at\":\"2022-03-24T17:12:50Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}",
+      "Body": "{\"id\":\"cstitem_63f5930fd3a04a18bb189a8d4b190ac4\",\"object\":\"CustomsItem\",\"created_at\":\"2022-04-14T22:26:37Z\",\"updated_at\":\"2022-04-14T22:26:37Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
@@ -78,25 +31,26 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "eb7f2774623ca692f1ffb35d0048f95a",
+        "x-ep-request-uuid": "b8f5271362589f9de2e23b29005c65c3",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"2c44a28ef175c3c6692dc79e32eaff71\"",
-        "x-runtime": "0.025918",
-        "x-node": "bigweb6nuq",
-        "x-version-label": "easypost-202203232220-83a361b07a-master",
+        "Location": "/api/v2/customs_items/cstitem_63f5930fd3a04a18bb189a8d4b190ac4",
+        "ETag": "W/\"fff77931963592d1205c05bda91f4ff3\"",
+        "x-runtime": "0.025635",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202204142017-962a9659b5-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 3e97db20d4,extlb2nuq 3e97db20d4",
+        "x-proxied": "intlb1nuq fde591f008,extlb2nuq fde591f008",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
-        "Code": 200,
-        "Message": "OK"
+        "Code": 201,
+        "Message": "Created"
       }
     }
   },
   {
-    "RecordedAt": "2022-03-24T12:59:59.689435-06:00",
+    "RecordedAt": "2022-04-14T16:26:38.114779-06:00",
     "Request": {
       "Body": "",
       "ContentHeaders": {},
@@ -105,12 +59,12 @@
         "Accept": "application/json",
         "Authorization": "********",
         "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/2.8.2,.NET/4.0.30319.42000"
+        "User-Agent": "EasyPost/v2,CSharpClient/2.8.2,.NET/5.0.13"
       },
-      "Uri": "https://api.easypost.com/v2/customs_items/cstitem_ea6181786b2645f8b94064d8ca80ce4d"
+      "Uri": "https://api.easypost.com/v2/customs_items/cstitem_63f5930fd3a04a18bb189a8d4b190ac4"
     },
     "Response": {
-      "Body": "{\"id\":\"cstitem_ea6181786b2645f8b94064d8ca80ce4d\",\"object\":\"CustomsItem\",\"created_at\":\"2022-03-24T18:59:59Z\",\"updated_at\":\"2022-03-24T18:59:59Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}",
+      "Body": "{\"id\":\"cstitem_63f5930fd3a04a18bb189a8d4b190ac4\",\"object\":\"CustomsItem\",\"created_at\":\"2022-04-14T22:26:37Z\",\"updated_at\":\"2022-04-14T22:26:37Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
@@ -119,21 +73,20 @@
       "HttpVersion": "1.1",
       "ResponseHeaders": {
         "X-Frame-Options": "SAMEORIGIN",
-        "x-xss-protection": "1; mode=block",
+        "X-XSS-Protection": "1; mode=block",
         "X-Content-Type-Options": "nosniff",
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
-        "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "eb7f2771623cbfaff1c969d70050afbc",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "b8f5270f62589f9eff04ebbd005c65d1",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"8f84247807757cb5aa445fa53acc2fd7\"",
-        "x-runtime": "0.019107",
-        "x-node": "bigweb7nuq",
-        "x-version-label": "easypost-202203232220-83a361b07a-master",
+        "ETag": "W/\"fff77931963592d1205c05bda91f4ff3\"",
+        "x-runtime": "0.021604",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202204142017-962a9659b5-master",
         "x-backend": "easypost",
-        "x-canary": "direct",
-        "x-proxied": "intlb2nuq 3e97db20d4,extlb2nuq 3e97db20d4",
+        "x-proxied": "intlb2nuq fde591f008,extlb2nuq fde591f008",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

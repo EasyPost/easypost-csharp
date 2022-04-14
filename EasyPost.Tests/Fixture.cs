@@ -10,6 +10,17 @@ namespace EasyPost.Tests.Net
         // We keep the page_size of retrieving `all` records small so cassettes stay small
         public const int PageSize = 5;
 
+        // This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
+        public static string UspsCarrierAccountId
+        {
+            get
+            {
+                string envVar = Environment.GetEnvironmentVariable("USPS_CARRIER_ACCOUNT_ID");
+                // Fallback to the EasyPost C# Client Library Test User USPS carrier account
+                return envVar ?? "ca_7642d249fdcf47bcb5da9ea34c96dfcf";
+            }
+        }
+
         public const string Usps = "USPS";
 
         public const string UspsService = "First";
@@ -24,17 +35,6 @@ namespace EasyPost.Tests.Net
         public const string ReportDate = "2022-04-12";
 
         public static string WebhookUrl => "http://example.com";
-
-        // This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
-        public static string UspsCarrierAccountId
-        {
-            get
-            {
-                string envVar = Environment.GetEnvironmentVariable("USPS_CARRIER_ACCOUNT_ID");
-                // Fallback to the EasyPost C# Client Library Test User USPS carrier account
-                return envVar ?? "ca_7642d249fdcf47bcb5da9ea34c96dfcf";
-            }
-        }
 
         public static Dictionary<string, object> BasicAddress
         {
@@ -86,7 +86,7 @@ namespace EasyPost.Tests.Net
                         }
                     },
                     {
-                        "street1", "417 montgomery streat"
+                        "street1", "417 montgomery street"
                     },
                     {
                         "street2", "FL 5"
@@ -399,22 +399,22 @@ namespace EasyPost.Tests.Net
         {
             get
             {
+                const string pickupDate = "2022-04-15";
                 return new Dictionary<string, object>
-                // TODO: Consolidate the date to a variable and reuse the same date variable in both fields below
                 {
-                    {
-                        "address", BasicAddress
-                    },
-                    {
-                        "min_datetime", (DateTime.Today.Date + TimeSpan.FromDays(1)).ToString("yyyy-MM-dd")
-                    },
-                    {
-                        "max_datetime", (DateTime.Today.Date + TimeSpan.FromDays(2)).ToString("yyyy-MM-dd")
-                    },
-                    {
-                        "instructions", "Pickup at front door"
-                    }
-                };
+                        {
+                            "address", BasicAddress
+                        },
+                        {
+                            "min_datetime", pickupDate
+                        },
+                        {
+                            "max_datetime", pickupDate
+                        },
+                        {
+                            "instructions", "Pickup at front door"
+                        }
+                    };
             }
         }
 

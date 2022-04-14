@@ -49,11 +49,13 @@ namespace EasyPost.Tests.Net
 
             User authenticatedUser = await RetrieveMe();
 
-            User user = await User.Retrieve(authenticatedUser.children[0].id);
+            string childId = authenticatedUser.children[0].id;
+
+            User user = await User.Retrieve(childId);
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual(authenticatedUser.id, user.id);
+            Assert.AreEqual(childId, user.id);
         }
 
 
