@@ -33,56 +33,14 @@ namespace EasyPost.Tests.Net
             return await Report.Create(reportType, parameters);
         }
 
-        private static async Task TestCreateBasicReport(string cassetteName, string reportType, string idPrefix)
+        [TestMethod]
+        public async Task TestCreateReport()
         {
-            VCR.Replay(cassetteName);
-            Report report = await CreateBasicReport(reportType);
+            VCR.Replay("create_report");
+            Report report = await CreateBasicReport(Fixture.ReportType);
 
             Assert.IsInstanceOfType(report, typeof(Report));
-            Assert.IsTrue(report.id.StartsWith(idPrefix));
-        }
-
-        private static async Task TestRetrieveReport(string cassetteName, string reportType)
-        {
-            VCR.Replay(cassetteName);
-
-            Report report = await CreateBasicReport(reportType);
-
-            Report retrievedReport = await Report.Retrieve(report.id);
-
-            Assert.IsInstanceOfType(retrievedReport, typeof(Report));
-            Assert.AreEqual(report.start_date, retrievedReport.start_date);
-            Assert.AreEqual(report.end_date, retrievedReport.end_date);
-        }
-
-        [TestMethod]
-        public async Task TestCreatePaymentLogReport()
-        {
-            await TestCreateBasicReport("create_payment_log_report", "payment_log", "plrep_");
-        }
-
-        [TestMethod]
-        public async Task TestCreateRefundReport()
-        {
-            await TestCreateBasicReport("create_refund_report", "refund", "refrep_");
-        }
-
-        [TestMethod]
-        public async Task TestCreateShipmentReport()
-        {
-            await TestCreateBasicReport("create_shipment_report", "shipment", "shprep_");
-        }
-
-        [TestMethod]
-        public async Task TestCreateShipmentInvoiceReport()
-        {
-            await TestCreateBasicReport("create_shipment_invoice_report", "shipment_invoice", "shpinvrep_");
-        }
-
-        [TestMethod]
-        public async Task TestCreateTrackerReport()
-        {
-            await TestCreateBasicReport("create_tracker_report", "tracker", "trkrep_");
+            Assert.IsTrue(report.id.StartsWith(Fixture.ReportIdPrefix));
         }
 
         [TestMethod]
@@ -135,33 +93,17 @@ namespace EasyPost.Tests.Net
         }
 
         [TestMethod]
-        public async Task TestRetrievePaymentLogReport()
+        public async Task TestRetrieveReport()
         {
-            await TestRetrieveReport("retrieve_payment_log_report", "payment_log");
-        }
+            VCR.Replay("retrieve_report");
 
-        [TestMethod]
-        public async Task TestRetrieveRefundReport()
-        {
-            await TestRetrieveReport("retrieve_refund_report", "refund");
-        }
+            Report report = await CreateBasicReport(Fixture.ReportType);
 
-        [TestMethod]
-        public async Task TestRetrieveShipmentReport()
-        {
-            await TestRetrieveReport("retrieve_shipment_report", "shipment");
-        }
+            Report retrievedReport = await Report.Retrieve(report.id);
 
-        [TestMethod]
-        public async Task TestRetrieveShipmentInvoiceReport()
-        {
-            await TestRetrieveReport("retrieve_shipment_invoice_report", "shipment_invoice");
-        }
-
-        [TestMethod]
-        public async Task TestRetrieveTrackerReport()
-        {
-            await TestRetrieveReport("retrieve_tracker_report", "tracker");
+            Assert.IsInstanceOfType(retrievedReport, typeof(Report));
+            Assert.AreEqual(report.start_date, retrievedReport.start_date);
+            Assert.AreEqual(report.end_date, retrievedReport.end_date);
         }
 
         [TestMethod]

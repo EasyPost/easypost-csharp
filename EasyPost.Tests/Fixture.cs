@@ -10,10 +10,6 @@ namespace EasyPost.Tests.Net
         // We keep the page_size of retrieving `all` records small so cassettes stay small
         public const int PageSize = 5;
 
-        // This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
-        // TODO: Have this be the fallback method and use an env var called `USPS_CARRIER_ACCOUNT_ID`
-        public const string UspsCarrierAccountId = "ca_7642d249fdcf47bcb5da9ea34c96dfcf";
-
         public const string Usps = "USPS";
 
         public const string UspsService = "First";
@@ -22,10 +18,23 @@ namespace EasyPost.Tests.Net
 
         public const string ReportType = "shipment";
 
+        public const string ReportIdPrefix = "shprep_";
+
         // If you need to re-record cassettes, increment this date by 1
         public const string ReportDate = "2022-04-12";
 
         public static string WebhookUrl => "http://example.com";
+
+        // This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
+        public static string UspsCarrierAccountId
+        {
+            get
+            {
+                string envVar = Environment.GetEnvironmentVariable("USPS_CARRIER_ACCOUNT_ID");
+                // Fallback to the EasyPost C# Client Library Test User USPS carrier account
+                return envVar ?? "ca_7642d249fdcf47bcb5da9ea34c96dfcf";
+            }
+        }
 
         public static Dictionary<string, object> BasicAddress
         {
