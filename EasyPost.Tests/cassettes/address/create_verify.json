@@ -1,8 +1,8 @@
 [
   {
-    "RecordedAt": "2022-03-24T16:30:14.310828-06:00",
+    "RecordedAt": "2022-04-14T16:42:28.69902-06:00",
     "Request": {
-      "Body": "{\"verify\":[true],\"address\":{\"street1\":\"417 montgomery streat\",\"street2\":\"FL 5\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94104\",\"country\":\"US\",\"company\":\"EasyPost\",\"phone\":\"415-123-4567\"}}",
+      "Body": "{\"verify\":[true],\"address\":{\"street1\":\"417 montgomery street\",\"street2\":\"FL 5\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94104\",\"country\":\"US\",\"company\":\"EasyPost\",\"phone\":\"415-123-4567\"}}",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
         "Content-Length": "189"
@@ -17,11 +17,11 @@
       "Uri": "https://api.easypost.com/v2/addresses"
     },
     "Response": {
-      "Body": "{\"id\":\"adr_f9721f63abc111ecb572ac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2022-03-24T22:30:14+00:00\",\"updated_at\":\"2022-03-24T22:30:14+00:00\",\"name\":null,\"company\":\"EASYPOST\",\"street1\":\"417 MONTGOMERY ST STE 500\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94104-1100\",\"country\":\"US\",\"phone\":\"4151234567\",\"email\":null,\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.79342,\"longitude\":-122.40288,\"time_zone\":\"America/Los_Angeles\"}}}}",
+      "Body": "{\"id\":\"adr_29d4f175bc4411eca37cac1f6bc7bdc6\",\"object\":\"Address\",\"created_at\":\"2022-04-14T22:42:28+00:00\",\"updated_at\":\"2022-04-14T22:42:28+00:00\",\"name\":null,\"company\":\"EASYPOST\",\"street1\":\"417 MONTGOMERY ST FL 5\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94104-1129\",\"country\":\"US\",\"phone\":\"4151234567\",\"email\":null,\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":{\"latitude\":37.79342,\"longitude\":-122.40288,\"time_zone\":\"America/Los_Angeles\"}}}}",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "632"
+        "Content-Length": "893"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -31,16 +31,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "13fb283e623cf0f6f2005e470009f53f",
+        "x-ep-request-uuid": "202c23836258a354ff0715aa0054d2f3",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "Location": "/api/v2/addresses/adr_f9721f63abc111ecb572ac1f6b0a0d1e",
-        "ETag": "W/\"4075b5931cd4a730622042d61d3eec99\"",
-        "x-runtime": "0.058123",
-        "x-node": "bigweb5nuq",
-        "x-version-label": "easypost-202203241927-abcb1ab508-master",
+        "Location": "/api/v2/addresses/adr_29d4f175bc4411eca37cac1f6bc7bdc6",
+        "ETag": "W/\"5fd93d89ca43542703e1aa657c424143\"",
+        "x-runtime": "0.042574",
+        "x-node": "bigweb9nuq",
+        "x-version-label": "easypost-202204142017-962a9659b5-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 3e97db20d4,extlb1nuq 3e97db20d4",
+        "x-proxied": "intlb1nuq fde591f008,intlb1wdc fde591f008,extlb3wdc fde591f008",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

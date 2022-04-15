@@ -94,7 +94,7 @@ namespace EasyPost.Tests.Net
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.id.StartsWith("adr_"));
-            Assert.AreEqual("417 MONTGOMERY ST STE 500", address.street1);
+            Assert.AreEqual("417 MONTGOMERY ST FL 5", address.street1);
         }
 
         [TestMethod]

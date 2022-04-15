@@ -10,24 +10,31 @@ namespace EasyPost.Tests.Net
         // We keep the page_size of retrieving `all` records small so cassettes stay small
         public const int PageSize = 5;
 
-        // This is the carrier account ID for the default USPS account that comes by default. All tests should use this carrier account
-        public const string UspsCarrierAccountId = "ca_7642d249fdcf47bcb5da9ea34c96dfcf";
-
-        public const string ChildUserId = "user_608a91d0487e419bb465e5acbc999056";
+        // This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
+        public static string UspsCarrierAccountId
+        {
+            get
+            {
+                string envVar = Environment.GetEnvironmentVariable("USPS_CARRIER_ACCOUNT_ID");
+                // Fallback to the EasyPost C# Client Library Test User USPS carrier account
+                return envVar ?? "ca_7642d249fdcf47bcb5da9ea34c96dfcf";
+            }
+        }
 
         public const string Usps = "USPS";
 
         public const string UspsService = "First";
 
-        public const string NextDayService = "NextDay";
+        public const string PickupService = "NextDay";
 
-        // If ever these need to change due to re-recording cassettes, simply increment this date by 1
-        public const string ReportStartDate = "2022-02-01";
+        public const string ReportType = "shipment";
 
-        // If ever these need to change due to re-recording cassettes, simply increment this date by 1
-        public const string ReportEndDate = "2022-02-03";
+        public const string ReportIdPrefix = "shprep_";
 
-        public static string RandomUrl => $"https://{Guid.NewGuid().ToString().Substring(0, 8)}.com";
+        // If you need to re-record cassettes, increment this date by 1
+        public const string ReportDate = "2022-04-12";
+
+        public static string WebhookUrl => "http://example.com";
 
         public static Dictionary<string, object> BasicAddress
         {
@@ -79,7 +86,7 @@ namespace EasyPost.Tests.Net
                         }
                     },
                     {
-                        "street1", "417 montgomery streat"
+                        "street1", "417 montgomery street"
                     },
                     {
                         "street2", "FL 5"
@@ -392,21 +399,22 @@ namespace EasyPost.Tests.Net
         {
             get
             {
+                const string pickupDate = "2022-04-15";
                 return new Dictionary<string, object>
                 {
-                    {
-                        "address", BasicAddress
-                    },
-                    {
-                        "min_datetime", (DateTime.Today.Date + TimeSpan.FromDays(1)).ToString("yyyy-MM-dd")
-                    },
-                    {
-                        "max_datetime", (DateTime.Today.Date + TimeSpan.FromDays(2)).ToString("yyyy-MM-dd")
-                    },
-                    {
-                        "instructions", "Pickup at front door"
-                    }
-                };
+                        {
+                            "address", BasicAddress
+                        },
+                        {
+                            "min_datetime", pickupDate
+                        },
+                        {
+                            "max_datetime", pickupDate
+                        },
+                        {
+                            "instructions", "Pickup at front door"
+                        }
+                    };
             }
         }
 

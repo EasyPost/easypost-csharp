@@ -47,11 +47,15 @@ namespace EasyPost.Tests.Net
         {
             VCR.Replay("retrieve");
 
-            User user = await User.Retrieve(Fixture.ChildUserId);
+            User authenticatedUser = await RetrieveMe();
+
+            string childId = authenticatedUser.children[0].id;
+
+            User user = await User.Retrieve(childId);
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual(Fixture.ChildUserId, user.id);
+            Assert.AreEqual(childId, user.id);
         }
 
 

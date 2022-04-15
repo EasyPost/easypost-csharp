@@ -31,8 +31,4 @@
     <None Remove="MSTest.TestFramework" />
     <None Remove="MSTest.TestAdapter" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="cassettes" />
-  </ItemGroup>
 </Project>
