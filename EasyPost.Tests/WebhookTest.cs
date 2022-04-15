@@ -3,12 +3,11 @@
 // using Microsoft.VisualStudio.TestTools.UnitTesting;
 // using EasyPost;
 
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPost.Tests.Net
+namespace EasyPost.Tests
 {
     [TestClass]
     public class WebhookTest
@@ -67,6 +66,7 @@ namespace EasyPost.Tests.Net
         {
             VCR.Replay("retrieve");
 
+
             Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl);
 
             Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
@@ -96,16 +96,13 @@ namespace EasyPost.Tests.Net
         public async Task TestUpdate()
         {
             VCR.Replay("update");
-
-            Webhook webhook = await Webhook.Retrieve("123...");
-
-            await webhook.Update();
         }
 
         [TestMethod]
         public async Task TestDelete()
         {
             VCR.Replay("delete");
+
 
             Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl);
             Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);

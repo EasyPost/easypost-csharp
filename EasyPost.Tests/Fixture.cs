@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Utilities;
 
-namespace EasyPost.Tests.Net
+namespace EasyPost.Tests
 {
     public static class Fixture
     {

@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using EasyPost.Scotch;
 
-namespace EasyPost.Tests.Net
+namespace EasyPost.Tests
 {
     public enum VCRApiKey
     {
