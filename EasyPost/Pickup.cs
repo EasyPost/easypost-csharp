@@ -25,7 +25,7 @@ namespace EasyPost
         [JsonProperty("max_datetime")]
         public DateTime max_datetime { get; set; }
         [JsonProperty("messages")]
-        public List<string> messages { get; set; }
+        public List<Message> messages { get; set; }
         [JsonProperty("min_datetime")]
         public DateTime min_datetime { get; set; }
         [JsonProperty("mode")]
