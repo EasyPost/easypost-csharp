@@ -3,7 +3,7 @@
     <metadata>
         <id>EasyPost-Official</id>
         <title>EasyPost (Official)</title>
-        <version>2.8.2</version>
+        <version>3.0.0</version>
         <authors>EasyPost</authors>
         <owners>EasyPost</owners>
         <projectUrl>https://www.easypost.com</projectUrl>
@@ -13,26 +13,26 @@
         <tags>EasyPost ShippingAPI USPS UPS FedEx</tags>
         <dependencies>
             <group targetFramework="netstandard2.0">
-                <dependency id="Newtonsoft.Json" version="11.0.2" />
+                <dependency id="Newtonsoft.Json" version="13.0.1" />
                 <dependency id="RestSharp" version="107.3.0" />
             </group>
             <group targetFramework="netcoreapp3.1">
-                <dependency id="Newtonsoft.Json" version="11.0.2" />
+                <dependency id="Newtonsoft.Json" version="13.0.1" />
                 <dependency id="RestSharp" version="107.3.0" />
             </group>
             <group targetFramework="net5.0">
-                <dependency id="Newtonsoft.Json" version="11.0.2" />
+                <dependency id="Newtonsoft.Json" version="13.0.1" />
                 <dependency id="RestSharp" version="107.3.0" />
             </group>
             <group targetFramework="net6.0">
-                <dependency id="Newtonsoft.Json" version="11.0.2" />
+                <dependency id="Newtonsoft.Json" version="13.0.1" />
                 <dependency id="RestSharp" version="107.3.0" />
             </group>
         </dependencies>
     </metadata>
     <files>
         <file src="lib\net\netstandard2.0\EasyPost.dll" target="lib\netstandard2.0" />
-        <file src="lib\netstandard2.0\EasyPost.XML" target="lib\netstandard2.0" />
+        <file src="lib\net\netstandard2.0\EasyPost.XML" target="lib\netstandard2.0" />
         <file src="lib\net\netcoreapp3.1\EasyPost.dll" target="lib\netcoreapp3.1" />
         <file src="lib\net\netcoreapp3.1\EasyPost.XML" target="lib\netcoreapp3.1" />
         <file src="lib\net\net5.0\EasyPost.dll" target="lib\net5.0" />
