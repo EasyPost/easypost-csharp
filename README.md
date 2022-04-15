@@ -23,11 +23,11 @@ using System.Collections.Generic;
 using EasyPost;
 using Newtonsoft.Json;
 
-namespace shipments
+namespace example
 {
-    class createShipment
+    class exampleClass
     {
-        static async void Main()
+        static async Task Main()
         {
             EasyPost.ClientManager.SetCurrent(Environment.GetEnvironmentVariable("EASYPOST_API_KEY"));
 
@@ -103,6 +103,8 @@ NOTE: The EasyPost .NET client library (in particular, the `ClientManager` globa
 ## Documentation
 
 API Documentation can be found at: https://easypost.com/docs/api.
+
+Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
 
 ## Development
 
