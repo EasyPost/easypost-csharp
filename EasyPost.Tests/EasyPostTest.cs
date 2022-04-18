@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using EasyPost.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EasyPost.Tests.Net
+namespace EasyPost.Tests
 {
     [TestClass]
     public class EasyPostTest
