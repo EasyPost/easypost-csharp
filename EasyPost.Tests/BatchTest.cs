@@ -7,10 +7,12 @@ namespace EasyPost.Tests
     [TestClass]
     public class BatchTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "batch", true);
+            _vcr = new TestUtils.VCR("batch");
         }
 
         private static async Task<Batch> CreateBasicBatch()
@@ -42,7 +44,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Replay("create");
+            _vcr.SetUpTest("create");
 
             Batch batch = await CreateBasicBatch();
 
@@ -54,7 +56,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
 
             Batch batch = await CreateBasicBatch();
@@ -69,7 +71,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            VCR.Replay("all");
+            _vcr.SetUpTest("all");
 
             BatchCollection batchCollection = await Batch.All(new Dictionary<string, object>
             {
@@ -91,7 +93,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateAndBuy()
         {
-            VCR.Replay("create_and_buy");
+            _vcr.SetUpTest("create_and_buy");
 
             Batch batch = await Batch.CreateAndBuy(new Dictionary<string, object>
             {
@@ -111,7 +113,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestBuy()
         {
-            VCR.Replay("buy");
+            _vcr.SetUpTest("buy");
 
             Batch batch = await CreateOneCallBuyBatch();
 
@@ -124,7 +126,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateScanForm()
         {
-            VCR.Replay("create_scan_form");
+            _vcr.SetUpTest("create_scan_form");
 
 
             Batch batch = await CreateOneCallBuyBatch();
@@ -142,7 +144,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAddRemoveShipment()
         {
-            VCR.Replay("add_remove_shipment");
+            _vcr.SetUpTest("add_remove_shipment");
 
             Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
 
@@ -166,7 +168,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestLabel()
         {
-            VCR.Replay("label");
+            _vcr.SetUpTest("label");
 
 
             Batch batch = await CreateOneCallBuyBatch();

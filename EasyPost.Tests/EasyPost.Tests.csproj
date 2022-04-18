@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EasyPost\EasyPost.csproj" />
-    <ProjectReference Include="..\Scotch\EasyPost.Scotch\EasyPost.Scotch.csproj" />
+    <ProjectReference Include="..\Scotch\EasyPost.EasyVCR\EasyPost.EasyVCR.csproj" />
   </ItemGroup>
 
   <ItemGroup>

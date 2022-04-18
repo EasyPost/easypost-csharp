@@ -6,16 +6,18 @@ namespace EasyPost.Tests
     [TestClass]
     public class RateTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "rate", true);
+            _vcr = new TestUtils.VCR("rate");
         }
 
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
             Shipment shipment = await Shipment.Create(Fixture.BasicShipment);
 

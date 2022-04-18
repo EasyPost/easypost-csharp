@@ -7,10 +7,12 @@ namespace EasyPost.Tests
     [TestClass]
     public class AddressTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "address", true);
+            _vcr = new TestUtils.VCR("addresses");
         }
 
         private static async Task<Address> CreateBasicAddress()
@@ -21,7 +23,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Replay("create");
+            _vcr.SetUpTest("create");
 
             Address address = await CreateBasicAddress();
 
@@ -33,7 +35,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateVerifyStrict()
         {
-            VCR.Replay("create_verify_strict");
+            _vcr.SetUpTest("create_verify_strict");
 
             Dictionary<string, object> addressData = Fixture.BasicAddress;
             addressData.Add("verify_strict", new List<bool>
@@ -52,7 +54,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
 
             Address address = await Address.Create(Fixture.BasicAddress);
@@ -66,7 +68,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            VCR.Replay("all");
+            _vcr.SetUpTest("all");
 
             AddressCollection addressCollection = await Address.All(new Dictionary<string, object>
             {
@@ -88,7 +90,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateVerify()
         {
-            VCR.Replay("create_verify");
+            _vcr.SetUpTest("create_verify");
 
             Address address = await Address.Create(Fixture.IncorrectAddressToVerify);
 
@@ -100,7 +102,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateAndVerify()
         {
-            VCR.Replay("create_and_verify");
+            _vcr.SetUpTest("create_and_verify");
 
             Dictionary<string, object> addressData = Fixture.BasicAddress;
             addressData.Add("verify_strict", new List<bool>
@@ -118,7 +120,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestVerify()
         {
-            VCR.Replay("verify");
+            _vcr.SetUpTest("verify");
 
 
             Address address = await CreateBasicAddress();

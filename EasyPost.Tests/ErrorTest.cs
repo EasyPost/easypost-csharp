@@ -6,16 +6,18 @@ namespace EasyPost.Tests
     [TestClass]
     public class ErrorTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "error", true);
+            _vcr = new TestUtils.VCR("error");
         }
 
         [TestMethod]
         public async Task TestError()
         {
-            VCR.Replay("error");
+            _vcr.SetUpTest("error");
 
             try
             {

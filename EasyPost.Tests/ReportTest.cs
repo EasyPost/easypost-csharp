@@ -7,10 +7,12 @@ namespace EasyPost.Tests
     [TestClass]
     public class ReportTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "report", true);
+            _vcr = new TestUtils.VCR("report");
         }
 
         private static async Task<Report> CreateBasicReport(string reportType)
@@ -36,7 +38,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateReport()
         {
-            VCR.Replay("create_report");
+            _vcr.SetUpTest("create_report");
             Report report = await CreateBasicReport(Fixture.ReportType);
 
             Assert.IsInstanceOfType(report, typeof(Report));
@@ -46,7 +48,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateReportWithColumns()
         {
-            VCR.Replay("create_report_with_columns");
+            _vcr.SetUpTest("create_report_with_columns");
 
             List<string> columns = new List<string>
             {
@@ -70,7 +72,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateReportWithAdditionalColumns()
         {
-            VCR.Replay("create_report_with_additional_columns");
+            _vcr.SetUpTest("create_report_with_additional_columns");
 
             List<string> additionalColumns = new List<string>
             {
@@ -95,7 +97,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieveReport()
         {
-            VCR.Replay("retrieve_report");
+            _vcr.SetUpTest("retrieve_report");
 
             Report report = await CreateBasicReport(Fixture.ReportType);
 
@@ -109,7 +111,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            VCR.Replay("all");
+            _vcr.SetUpTest("all");
 
             ReportCollection reportCollection = await Report.All("shipment", new Dictionary<string, object>
             {

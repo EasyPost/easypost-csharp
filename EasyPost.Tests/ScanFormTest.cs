@@ -7,10 +7,12 @@ namespace EasyPost.Tests
     [TestClass]
     public class ScanFormTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "scan_form", true);
+            _vcr = new TestUtils.VCR("scan_form");
         }
 
         private static async Task<ScanForm> GetBasicScanForm()
@@ -25,7 +27,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Replay("create");
+            _vcr.SetUpTest("create");
 
             ScanForm scanForm = await GetBasicScanForm();
 
@@ -36,7 +38,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
 
             ScanForm scanForm = await GetBasicScanForm();
@@ -50,7 +52,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            VCR.Replay("all");
+            _vcr.SetUpTest("all");
 
             ScanFormCollection scanFormCollection = await ScanForm.All(new Dictionary<string, object>
             {

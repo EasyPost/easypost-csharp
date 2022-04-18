@@ -8,16 +8,18 @@ namespace EasyPost.Tests
     [TestClass]
     public class ShipmentTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "shipment", true);
+            _vcr = new TestUtils.VCR("shipment");
         }
 
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Replay("create");
+            _vcr.SetUpTest("create");
 
             Shipment shipment = await Shipment.Create(Fixture.FullShipment);
 
@@ -32,7 +34,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
 
             Shipment shipment = await Shipment.Create(Fixture.FullShipment);
@@ -46,7 +48,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            VCR.Replay("all");
+            _vcr.SetUpTest("all");
 
             ShipmentCollection shipmentCollection = await Shipment.All(new Dictionary<string, object>
             {
@@ -68,7 +70,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestBuy()
         {
-            VCR.Replay("buy");
+            _vcr.SetUpTest("buy");
 
 
             Shipment shipment = await Shipment.Create(Fixture.FullShipment);
@@ -81,7 +83,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRegenerateRates()
         {
-            VCR.Replay("regenerate_rates");
+            _vcr.SetUpTest("regenerate_rates");
 
 
             Shipment shipment = await Shipment.Create(Fixture.FullShipment);
@@ -100,7 +102,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestConvertLabel()
         {
-            VCR.Replay("convert_label");
+            _vcr.SetUpTest("convert_label");
 
             Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
 
@@ -114,7 +116,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestInsure()
         {
-            VCR.Replay("insure");
+            _vcr.SetUpTest("insure");
 
             Dictionary<string, object> shipmentData = Fixture.OneCallBuyShipment;
             // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
@@ -133,7 +135,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRefund()
         {
-            VCR.Replay("refund");
+            _vcr.SetUpTest("refund");
 
             Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
 
@@ -145,7 +147,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestSmartrate()
         {
-            VCR.Replay("smartrate");
+            _vcr.SetUpTest("smartrate");
 
             Shipment shipment = await Shipment.Create(Fixture.BasicShipment);
 
@@ -167,7 +169,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateEmptyObjects()
         {
-            VCR.Replay("create_empty_objects");
+            _vcr.SetUpTest("create_empty_objects");
 
             Dictionary<string, object> shipmentData = Fixture.BasicShipment;
 
@@ -191,7 +193,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateTaxIdentifiers()
         {
-            VCR.Replay("create_tax_identifiers");
+            _vcr.SetUpTest("create_tax_identifiers");
 
             Dictionary<string, object> shipmentData = Fixture.BasicShipment;
             shipmentData["tax_identifiers"] = new List<Dictionary<string, object>>
@@ -209,7 +211,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateWithIds()
         {
-            VCR.Replay("create_with_ids");
+            _vcr.SetUpTest("create_with_ids");
 
             Address fromAddress = await Address.Create(Fixture.BasicAddress);
             Address toAddress = await Address.Create(Fixture.BasicAddress);
