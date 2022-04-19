@@ -7,10 +7,12 @@ namespace EasyPost.Tests
     [TestClass]
     public class TrackerTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "tracker", true);
+            _vcr = new TestUtils.VCR("tracker");
         }
 
         private static async Task<Tracker> CreateBasicTracker()
@@ -21,7 +23,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Replay("create");
+            _vcr.SetUpTest("create");
 
             Tracker tracker = await CreateBasicTracker();
 
@@ -33,7 +35,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
 
             // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
@@ -49,7 +51,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            VCR.Replay("all");
+            _vcr.SetUpTest("all");
 
             TrackerCollection trackerCollection = await Tracker.All(new Dictionary<string, object>
             {
@@ -71,7 +73,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateList()
         {
-            VCR.Replay("create_list");
+            _vcr.SetUpTest("create_list");
 
             bool success = await Tracker.CreateList(new Dictionary<string, object>
             {

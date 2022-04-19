@@ -6,10 +6,12 @@ namespace EasyPost.Tests
     [TestClass]
     public class CustomsInfoTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "customs_info", true);
+            _vcr = new TestUtils.VCR("customs_info");
         }
 
         private static async Task<CustomsInfo> CreateBasicCustomsInfo()
@@ -20,7 +22,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Replay("create");
+            _vcr.SetUpTest("create");
 
             CustomsInfo customsInfo = await CreateBasicCustomsInfo();
 
@@ -32,7 +34,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
 
             CustomsInfo customsInfo = await CreateBasicCustomsInfo();

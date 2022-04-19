@@ -7,10 +7,12 @@ namespace EasyPost.Tests
     [TestClass]
     public class UserTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Production, "user", true);
+            _vcr = new TestUtils.VCR("user", TestUtils.ApiKey.Production);
         }
 
         private static async Task<User> RetrieveMe()
@@ -33,7 +35,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Replay("create");
+            _vcr.SetUpTest("create");
 
             User user = await CreateUser();
 
@@ -45,7 +47,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
             User authenticatedUser = await RetrieveMe();
 
@@ -62,7 +64,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieveMe()
         {
-            VCR.Replay("retrieve_me");
+            _vcr.SetUpTest("retrieve_me");
 
             User user = await RetrieveMe();
 
@@ -73,7 +75,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestUpdate()
         {
-            VCR.Replay("update");
+            _vcr.SetUpTest("update");
 
 
             User user = await RetrieveMe();
@@ -98,7 +100,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestDelete()
         {
-            VCR.Replay("delete");
+            _vcr.SetUpTest("delete");
 
 
             User user = await CreateUser();
@@ -111,7 +113,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAllApiKeys()
         {
-            VCR.Replay("all_api_keys");
+            _vcr.SetUpTest("all_api_keys");
 
 
             User user = await RetrieveMe();
@@ -125,7 +127,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestApiKeys()
         {
-            VCR.Replay("api_keys");
+            _vcr.SetUpTest("api_keys");
 
 
             User user = await RetrieveMe();
@@ -136,7 +138,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestUpdateBrand()
         {
-            VCR.Replay("update_brand");
+            _vcr.SetUpTest("update_brand");
 
 
             User user = await RetrieveMe();

@@ -7,10 +7,12 @@ namespace EasyPost.Tests
     [TestClass]
     public class OrderTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "order", true);
+            _vcr = new TestUtils.VCR("order");
         }
 
         private static async Task<Order> CreateBasicOrder()
@@ -21,7 +23,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Replay("create");
+            _vcr.SetUpTest("create");
 
             Order order = await CreateBasicOrder();
 
@@ -33,7 +35,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
             Order order = await CreateBasicOrder();
 
@@ -48,7 +50,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestGetRates()
         {
-            VCR.Replay("get_rates");
+            _vcr.SetUpTest("get_rates");
 
 
             Order order = await CreateBasicOrder();
@@ -67,7 +69,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestBuy()
         {
-            VCR.Replay("buy");
+            _vcr.SetUpTest("buy");
 
 
             Order order = await CreateBasicOrder();

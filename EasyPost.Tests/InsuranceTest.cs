@@ -7,10 +7,12 @@ namespace EasyPost.Tests
     [TestClass]
     public class InsuranceTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "insurance", true);
+            _vcr = new TestUtils.VCR("insurance");
         }
 
         private static async Task<Insurance> CreateBasicInsurance()
@@ -21,7 +23,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Replay("create");
+            _vcr.SetUpTest("create");
 
             Insurance insurance = await CreateBasicInsurance();
 
@@ -34,7 +36,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
 
             Insurance insurance = await CreateBasicInsurance();
@@ -48,7 +50,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            VCR.Replay("all");
+            _vcr.SetUpTest("all");
 
             InsuranceCollection insuranceCollection = await Insurance.All(new Dictionary<string, object>
             {

@@ -7,10 +7,12 @@ namespace EasyPost.Tests
     [TestClass]
     public class EventTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "event", true);
+            _vcr = new TestUtils.VCR("event");
         }
 
         private static async Task<EventCollection> GetBasicEventCollection()
@@ -26,7 +28,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            VCR.Replay("all");
+            _vcr.SetUpTest("all");
 
             EventCollection eventCollection = await GetBasicEventCollection();
 
@@ -43,7 +45,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
 
             EventCollection eventCollection = await GetBasicEventCollection();

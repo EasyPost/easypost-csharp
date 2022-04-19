@@ -7,10 +7,12 @@ namespace EasyPost.Tests
     [TestClass]
     public class CarrierAccountTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Production, "carrier_account", true);
+            _vcr = new TestUtils.VCR("carrier_account", TestUtils.ApiKey.Production);
         }
 
         private static async Task<CarrierAccount> CreateBasicCarrierAccount()
@@ -21,7 +23,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Replay("create");
+            _vcr.SetUpTest("create");
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
@@ -32,7 +34,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
@@ -46,7 +48,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            VCR.Replay("all");
+            _vcr.SetUpTest("all");
 
             List<CarrierAccount> carrierAccounts = await CarrierAccount.All();
 
@@ -59,7 +61,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestUpdate()
         {
-            VCR.Replay("update");
+            _vcr.SetUpTest("update");
 
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
@@ -82,7 +84,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestDelete()
         {
-            VCR.Replay("delete");
+            _vcr.SetUpTest("delete");
 
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
@@ -95,7 +97,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestTypes()
         {
-            VCR.Replay("types");
+            _vcr.SetUpTest("types");
 
             List<CarrierType> types = await CarrierType.All();
 

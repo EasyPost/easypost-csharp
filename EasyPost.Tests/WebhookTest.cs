@@ -14,10 +14,12 @@ namespace EasyPost.Tests
     {
         private string _webhookId = null;
 
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "webhook", true);
+            _vcr = new TestUtils.VCR("webhook");
         }
 
         [TestCleanup]
@@ -50,7 +52,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Replay("create");
+            _vcr.SetUpTest("create");
 
             Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl);
 
@@ -64,8 +66,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
-
+            _vcr.SetUpTest("retrieve");
 
             Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl);
 
@@ -80,7 +81,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            VCR.Replay("all");
+            _vcr.SetUpTest("all");
 
             List<Webhook> webhooks = await Webhook.All();
 
@@ -95,14 +96,17 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestUpdate()
         {
-            VCR.Replay("update");
+            _vcr.SetUpTest("update");
+
+            Webhook webhook = await Webhook.Retrieve("123...");
+
+            await webhook.Update();
         }
 
         [TestMethod]
         public async Task TestDelete()
         {
-            VCR.Replay("delete");
-
+            _vcr.SetUpTest("delete");
 
             Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl);
             Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);

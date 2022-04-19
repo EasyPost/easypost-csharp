@@ -6,10 +6,12 @@ namespace EasyPost.Tests
     [TestClass]
     public class ParcelTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "parcel", true);
+            _vcr = new TestUtils.VCR("parcel");
         }
 
         private static async Task<Parcel> CreateBasicParcel()
@@ -20,7 +22,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Replay("create");
+            _vcr.SetUpTest("create");
 
             Parcel parcel = await CreateBasicParcel();
 
@@ -32,7 +34,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
 
             Parcel parcel = await CreateBasicParcel();

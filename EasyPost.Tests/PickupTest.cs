@@ -7,10 +7,12 @@ namespace EasyPost.Tests
     [TestClass]
     public class PickupTest
     {
+        private TestUtils.VCR _vcr;
+
         [TestInitialize]
         public void Initialize()
         {
-            VCR.SetUp(VCRApiKey.Test, "pickup", true);
+            _vcr = new TestUtils.VCR("pickup");
         }
 
         private static async Task<Pickup> CreateBasicPickup()
@@ -24,7 +26,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            VCR.Replay("create");
+            _vcr.SetUpTest("create");
 
             Pickup pickup = await CreateBasicPickup();
 
@@ -36,7 +38,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            VCR.Replay("retrieve");
+            _vcr.SetUpTest("retrieve");
 
 
             Pickup pickup = await CreateBasicPickup();
@@ -50,7 +52,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestBuy()
         {
-            VCR.Replay("buy");
+            _vcr.SetUpTest("buy");
 
             //use "TestCreate"
             Pickup pickup = await CreateBasicPickup();
@@ -66,7 +68,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCancel()
         {
-            VCR.Replay("cancel");
+            _vcr.SetUpTest("cancel");
 
             //use "TestCreate"
             Pickup pickup = await CreateBasicPickup();
