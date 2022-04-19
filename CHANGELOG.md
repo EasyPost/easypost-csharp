@@ -6,17 +6,18 @@ Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_G
 
 ### Breaking Changes
 
--   Dropped explicit support for .NET Framework, replaced with .NET Standard 2.0
--   Upgrades RestSharp from v106 to v107
--   Project was built with C# 8.0
--   Project is now entirely asynchronous which will require the addition of async/await on function calls
--   Renames methods from `List()` to `All()` to make our library consistent (previously we had methods calling the `/all` endpoint with both names)
--   Removes the unusable `Rating` class
--   Removes `shipment.GetRates()` method since the shipment object already has rates. If you need to get new rates for a shipment, please use the `shipment.RegenerateRates()` method.
--   Must use `verify` and `verify_strict` parameters to verify addresses during creation, per our API docs; `verification` and `strict_verification` will no longer work
--   Clarify XList vs XCollection distinction:
+- Dropped explicit support for .NET Framework, replaced with .NET Standard 2.0
+- Upgrades RestSharp from v106 to v107
+- Project was built with C# 8.0
+- Project is now entirely asynchronous which will require the addition of async/await on function calls
+- Renames methods from `List()` to `All()` to make our library consistent (previously we had methods calling the `/all` endpoint with both names)
+- Removes the unusable `Rating` class
+- Removes `shipment.GetRates()` method since the shipment object already has rates. If you need to get new rates for a shipment, please use the `shipment.RegenerateRates()` method.
+- Must use `verify` and `verify_strict` parameters to verify addresses during creation, per our API docs; `verification` and `strict_verification` will no longer work
+- Clarify XList vs XCollection distinction:
     -   `ReportList`, `ScanFormList`, `ShipmentList` and `TrackerList` renamed to `ReportCollection`, `ScanFormCollection`, `ShipmentCollection` and `TrackerCollection` to match the other names throughout the project
--   Functions previously called `Destroy` are now called `Delete` for consistency (eg: deleting a carrier account)
+- Functions previously called `Destroy` are now called `Delete` for consistency (eg: deleting a carrier account)
+- Removes non-static `Create()` functions on `Address`, `Order`, `Pickup` and `Shipment` classes for Visual Basic compatibility.
 
 ### Features
 

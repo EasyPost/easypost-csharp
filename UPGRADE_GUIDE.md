@@ -8,11 +8,12 @@ Use the following guide to assist in the upgrade process of the `easypost-csharp
 
 ### 3.0 High Impact Changes
 
--   [Updating Dependencies](#30-updating-dependencies)
--   [Project is Now Asynchronous](#30-project-is-now-asynchronous)
--   [Address Verification Parameter Changes](#30-address-verification-parameter-changes)
--   [Renames `List()` Functions to `All()`](#30-renames-list-functions-to-all)
--   [Clarify XList vs XCollection Distinctions](#30-clarify-xlist-vs-xcollection-distinctions)
+- [Updating Dependencies](#30-updating-dependencies)
+- [Project is Now Asynchronous](#30-project-is-now-asynchronous)
+- [Address Verification Parameter Changes](#30-address-verification-parameter-changes)
+- [Non-Static `Create()` Methods Removed](#30-removes-non-static-create-functions)
+- [Renames `List()` Functions to `All()`](#30-renames-list-functions-to-all)
+- [Clarify XList vs XCollection Distinctions](#30-clarify-xlist-vs-xcollection-distinctions)
 
 ### 3.0 Medium Impact Changes
 
@@ -78,6 +79,30 @@ addressData.Add("verifications_strict", new List<bool> { true });
 
 // New
 addressData.Add("verify_strict", new List<bool> { true });
+```
+
+## 3.0 Removes Non-Static `Create()` Functions
+
+Likelihood of Impact: High
+
+In order to make this library [Visual Basic-compatible](https://github.com/EasyPost/easypost-csharp/pull/230), non-static `Create()` functions are no longer supported.
+
+This affects the `Address`, `Order`, `Pickup` and `Shipment` classes.
+
+Previously, users could create, i.e., an `Address` object (`myAddress`) locally, set its attributes, and then call `myAddress.Create()` to send the address data to EasyPost's API.
+
+Now, users must call `Address.Create()` to create an `Address` object, passing in the address attributes as a dictionary. This will send the data to EasyPost's API and return a local `Address` object.
+
+```csharp
+// Old
+Address myAddress = new Address();
+myAddress.company = "EasyPost";
+await myAddress.Create();
+
+// New
+Address myAddress = await Address.Create(new Dictionary<string, object>() {
+    { "company", "EasyPost" },
+});
 ```
 
 ## 3.0 Renames `List()` Functions to `All()`
