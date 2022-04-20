@@ -55,7 +55,7 @@ namespace EasyPost
 
             Request request = new Request("orders/{id}/buy", Method.Post);
             request.AddUrlSegment("id", id);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "carrier", carrier
@@ -84,7 +84,7 @@ namespace EasyPost
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("orders/{id}/rates");
+            Request request = new Request("orders/{id}/rates", Method.Get);
             request.AddUrlSegment("id", id);
 
             rates = (await request.Execute<Order>()).rates;
@@ -112,7 +112,7 @@ namespace EasyPost
         public static async Task<Order> Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("orders", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "order", parameters
@@ -130,7 +130,7 @@ namespace EasyPost
         /// <returns>EasyPost.Order instance.</returns>
         public static async Task<Order> Retrieve(string id)
         {
-            Request request = new Request("orders/{id}");
+            Request request = new Request("orders/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Order>();

@@ -1,5 +1,6 @@
 [
   {
+    "Duration": 0,
     "RecordedAt": "2022-04-14T16:27:42.510848-06:00",
     "Request": {
       "Body": "",
@@ -38,6 +39,53 @@
         "x-backend": "easypost",
         "x-canary": "direct",
         "x-proxied": "intlb2nuq fde591f008,extlb2nuq fde591f008",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  },
+  {
+    "Duration": 237,
+    "RecordedAt": "2022-04-20T12:14:52.085049-06:00",
+    "Request": {
+      "Body": "",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Accept": "application/json",
+        "Authorization": "*****",
+        "content_type": "application/json",
+        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+      },
+      "Uri": "https://api.easypost.com/v2/refunds"
+    },
+    "Response": {
+      "Body": "{\n  \"refunds\": [\n    {\n      \"id\": \"rfnd_f78943722c074741adfea275f4f8d3b7\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-18T22:54:37Z\",\n      \"updated_at\": \"2022-04-19T22:54:40Z\",\n      \"tracking_code\": \"9400100109361115625479\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_548e2517a3374814b60db1a515cd8986\"\n    },\n    {\n      \"id\": \"rfnd_2909d3ee76804aa49c0f803d49cedb97\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-18T22:53:50Z\",\n      \"updated_at\": \"2022-04-19T22:54:19Z\",\n      \"tracking_code\": \"9400100109361115625295\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_9525955a9ea744728c4cd7959f5a8820\"\n    },\n    {\n      \"id\": \"rfnd_c51624a11a5346488e7fc57c4fd608ac\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-18T22:53:48Z\",\n      \"updated_at\": \"2022-04-18T23:03:25Z\",\n      \"tracking_code\": \"9400100109361115625288\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_8b657bed64d64e678b40a08b66c8991f\"\n    },\n    {\n      \"id\": \"rfnd_a2fe074a661f4388a6f2e545dd8cf00e\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:54:25Z\",\n      \"updated_at\": \"2022-04-14T22:59:40Z\",\n      \"tracking_code\": \"9400100109361115081336\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_45555a3e856a4c3188793bdff1166438\"\n    },\n    {\n      \"id\": \"rfnd_adadaa43b233480eb482a9bbd1b762a3\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:54:24Z\",\n      \"updated_at\": \"2022-04-14T22:59:40Z\",\n      \"tracking_code\": \"9400100109361115081329\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_286c9ea7b90a428b8b8cb4d06d6292f8\"\n    },\n    {\n      \"id\": \"rfnd_f7a58aef12034804a2bb890e9e760a8c\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:54:18Z\",\n      \"updated_at\": \"2022-04-14T22:59:39Z\",\n      \"tracking_code\": \"9400100109361115081268\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_d09e082e93474fa388d71a0121b1acb9\"\n    },\n    {\n      \"id\": \"rfnd_2db2a3a4e0ff481caf9d6a3a490f697b\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:53:48Z\",\n      \"updated_at\": \"2022-04-15T22:53:48Z\",\n      \"tracking_code\": \"9400100109361115081206\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_46ed2423ce0743c39c93dc8c340b1ea5\"\n    },\n    {\n      \"id\": \"rfnd_4afbe08690a44df28c62960374548d7a\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:53:34Z\",\n      \"updated_at\": \"2022-04-15T22:53:39Z\",\n      \"tracking_code\": \"9400100109361115081145\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_9f65a16bcc9a4674af97ba9d907544f9\"\n    },\n    {\n      \"id\": \"rfnd_3dc5e4f11718441d87c6f09ab9d0eb9b\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:53:32Z\",\n      \"updated_at\": \"2022-04-15T22:53:34Z\",\n      \"tracking_code\": \"9400100109361115081121\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_145e853e67bf4bafbe74b4dbd3fc34c4\"\n    },\n    {\n      \"id\": \"rfnd_f2216972b9a34ea7a1b5ecefd38f417b\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:53:29Z\",\n      \"updated_at\": \"2022-04-15T22:53:29Z\",\n      \"tracking_code\": \"9400100109361115081107\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_e9a62764d3a14be8adc4bf4a45f576fa\"\n    },\n    {\n      \"id\": \"rfnd_35a5667d67414174b4964e3e6fa1a94b\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:53:26Z\",\n      \"updated_at\": \"2022-04-15T22:53:34Z\",\n      \"tracking_code\": \"9400100109361115081077\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_3d8d8391295049548a5e9672763c6707\"\n    },\n    {\n      \"id\": \"rfnd_ff27342ab85d438b8163cf4c0dc9e6f8\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:53:24Z\",\n      \"updated_at\": \"2022-04-15T22:53:34Z\",\n      \"tracking_code\": \"9400100109361115081046\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_4afd68abe2e34bde98f28384b883aef6\"\n    },\n    {\n      \"id\": \"rfnd_2eb034f8dbab4ba4bb43f1f408088fca\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:53:20Z\",\n      \"updated_at\": \"2022-04-14T22:59:39Z\",\n      \"tracking_code\": \"9400100109361115081022\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_1ea8834ad2e140ab98c916d38fcf4fed\"\n    },\n    {\n      \"id\": \"rfnd_740cb1265bef453082e3c6137bc4d01b\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:53:05Z\",\n      \"updated_at\": \"2022-04-14T22:59:39Z\",\n      \"tracking_code\": \"9400100109361115080919\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_7e7fe6a143704c53bdd670030b379481\"\n    },\n    {\n      \"id\": \"rfnd_7478fd4e7af94f9680df8671d0b43409\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:53:04Z\",\n      \"updated_at\": \"2022-04-14T22:59:39Z\",\n      \"tracking_code\": \"9400100109361115080896\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_be793436dd7e4bc9a67cdae334146834\"\n    },\n    {\n      \"id\": \"rfnd_7c90d7a1ad2d4c15b62373a512d03431\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:28:28Z\",\n      \"updated_at\": \"2022-04-15T22:35:37Z\",\n      \"tracking_code\": \"9400100109361115079005\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_4caa13955f2d4fb7a8ffd712588c419a\"\n    },\n    {\n      \"id\": \"rfnd_c6a2f84eadc949e185ce2f908748236c\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:27:44Z\",\n      \"updated_at\": \"2022-04-15T22:32:01Z\",\n      \"tracking_code\": \"9400100109361115078930\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_5d712b26d2624ba7a9e30a2a7445029c\"\n    },\n    {\n      \"id\": \"rfnd_2f556f779729426285f3243a8ba574fa\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-04-14T22:27:42Z\",\n      \"updated_at\": \"2022-04-15T22:32:07Z\",\n      \"tracking_code\": \"9400100109361115078923\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_4d7c00bd867343faab475391e1283797\"\n    },\n    {\n      \"id\": \"rfnd_cbf5f8d07e0343a2a3e14048e63a7d3a\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-03-24T19:02:15Z\",\n      \"updated_at\": \"2022-03-25T19:02:15Z\",\n      \"tracking_code\": \"9400100109361112195449\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_94cc134bb4754d6ca928281f67db2bf7\"\n    },\n    {\n      \"id\": \"rfnd_6c3ae525b62c44bb86ad97671b9b7642\",\n      \"object\": \"Refund\",\n      \"created_at\": \"2022-03-24T19:01:16Z\",\n      \"updated_at\": \"2022-03-25T19:01:16Z\",\n      \"tracking_code\": \"9400100109361112195296\",\n      \"confirmation_number\": null,\n      \"status\": \"rejected\",\n      \"carrier\": \"USPS\",\n      \"shipment_id\": \"shp_81942c409f344dbb8cbc77d3e0193295\"\n    }\n  ],\n  \"has_more\": true\n}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "5929"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "f6c5a4e862604d9cefa6bb4f00222f8a",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"d91611034d93855786c4f87b519839eb\"",
+        "x-runtime": "0.093202",
+        "x-node": "bigweb5nuq",
+        "x-version-label": "easypost-202204201711-cf6c4e6664-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq fde591f008,extlb1nuq fde591f008",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

@@ -36,7 +36,7 @@ namespace EasyPost
         public async Task<bool> Create(string id)
         {
             Request request = new Request("events", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "result_id", id
@@ -52,7 +52,7 @@ namespace EasyPost
         /// <returns>EasyPost.Event instance.</returns>
         public static async Task<Event> Retrieve(string id)
         {
-            Request request = new Request("events/{id}");
+            Request request = new Request("events/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Event>();
@@ -77,8 +77,7 @@ namespace EasyPost
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
-            Request request = new Request("events");
-            request.AddQueryString(parameters);
+            Request request = new Request("events", Method.Get, parameters);
 
             return await request.Execute<EventCollection>();
         }

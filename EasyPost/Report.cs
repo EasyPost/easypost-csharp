@@ -50,7 +50,7 @@ namespace EasyPost
         {
             Request request = new Request("reports/{type}", Method.Post);
             request.AddUrlSegment("type", type);
-            request.AddBody(parameters ?? new Dictionary<string, object>());
+            request.AddParameters(parameters ?? new Dictionary<string, object>());
 
             return await request.Execute<Report>();
         }
@@ -72,9 +72,8 @@ namespace EasyPost
         /// <returns>An EasyPost.ReportCollection instance.</returns>
         public static async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
         {
-            Request request = new Request("reports/{type}");
+            Request request = new Request("reports/{type}", Method.Get, parameters);
             request.AddUrlSegment("type", type);
-            request.AddQueryString(parameters ?? new Dictionary<string, object>());
 
             ReportCollection reportCollection = await request.Execute<ReportCollection>();
             reportCollection.filters = parameters;
@@ -90,7 +89,7 @@ namespace EasyPost
         /// <returns>EasyPost.Report instance.</returns>
         public static async Task<Report> Retrieve(string id)
         {
-            Request request = new Request("reports/{id}");
+            Request request = new Request("reports/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Report>();
@@ -104,7 +103,7 @@ namespace EasyPost
         /// <returns>EasyPost.Report instance.</returns>
         public static async Task<Report> Retrieve(string type, string id)
         {
-            Request request = new Request("reports/{type}/{id}");
+            Request request = new Request("reports/{type}/{id}", Method.Get);
             request.AddUrlSegment("id", id);
             request.AddUrlSegment("type", type);
 

@@ -55,7 +55,7 @@ namespace EasyPost
 
             Request request = new Request("pickups/{id}/buy", Method.Post);
             request.AddUrlSegment("id", id);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "carrier", carrier
@@ -111,7 +111,7 @@ namespace EasyPost
         /// <returns>EasyPost.Pickup instance.</returns>
         public static async Task<Pickup> Retrieve(string id)
         {
-            Request request = new Request("pickups/{id}");
+            Request request = new Request("pickups/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Pickup>();
@@ -120,7 +120,7 @@ namespace EasyPost
         private static async Task<Pickup> SendCreate(Dictionary<string, object> parameters)
         {
             Request request = new Request("pickups", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "pickup", parameters

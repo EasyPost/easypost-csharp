@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace EasyPost
 {
@@ -21,7 +22,7 @@ namespace EasyPost
         /// <returns>A list of EasyPost.CarrierType instances.</returns>
         public static async Task<List<CarrierType>> All()
         {
-            Request request = new Request("carrier_types");
+            Request request = new Request("carrier_types", Method.Get);
             return await request.Execute<List<CarrierType>>();
         }
     }

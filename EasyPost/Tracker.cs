@@ -58,7 +58,7 @@ namespace EasyPost
                 }
             };
 
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "tracker", parameters
@@ -90,8 +90,7 @@ namespace EasyPost
         /// <returns>A EasyPost.TrackerCollection instance.</returns>
         public static async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
         {
-            Request request = new Request("trackers");
-            request.AddQueryString(parameters ?? new Dictionary<string, object>());
+            Request request = new Request("trackers", Method.Get, parameters);
 
             TrackerCollection trackerCollection = await request.Execute<TrackerCollection>();
             trackerCollection.filters = parameters;
@@ -105,7 +104,7 @@ namespace EasyPost
         /// <returns>EasyPost.Tracker instance.</returns>
         public static async Task<Tracker> Retrieve(string id)
         {
-            Request request = new Request("trackers/{id}");
+            Request request = new Request("trackers/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Tracker>();
@@ -119,7 +118,7 @@ namespace EasyPost
         public static async Task<bool> CreateList(Dictionary<string, object> parameters)
         {
             Request request = new Request("trackers/create_list", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "trackers", parameters

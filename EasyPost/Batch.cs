@@ -52,7 +52,7 @@ namespace EasyPost
                         "id", shipmentId
                     }
                 }).ToList();
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "shipments", lShipments
@@ -95,7 +95,7 @@ namespace EasyPost
                 }
             };
 
-            request.AddBody(parameters);
+            request.AddParameters(parameters);
             Merge(await request.Execute<Batch>());
         }
 
@@ -126,7 +126,7 @@ namespace EasyPost
                         "id", shipmentId
                     }
                 }).ToList();
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "shipments", lShipments
@@ -157,7 +157,7 @@ namespace EasyPost
             parameters = parameters ?? new Dictionary<string, object>();
 
             Request request = new Request("batches", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "batch", parameters
@@ -182,7 +182,7 @@ namespace EasyPost
             parameters = parameters ?? new Dictionary<string, object>();
 
             Request request = new Request("batches/create_and_buy", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "batch", parameters
@@ -199,7 +199,7 @@ namespace EasyPost
         /// <returns>EasyPost.Batch instance.</returns>
         public static async Task<Batch> Retrieve(string id)
         {
-            Request request = new Request("batches/{id}");
+            Request request = new Request("batches/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Batch>();
@@ -224,8 +224,7 @@ namespace EasyPost
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
-            Request request = new Request("batches");
-            request.AddQueryString(parameters);
+            Request request = new Request("batches", Method.Get, parameters);
 
             return await request.Execute<BatchCollection>();
         }

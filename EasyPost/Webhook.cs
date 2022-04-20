@@ -51,7 +51,7 @@ namespace EasyPost
         public static async Task<Webhook> Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("webhooks", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "webhook", parameters
@@ -68,11 +68,8 @@ namespace EasyPost
         /// <returns>List of EasyPost.Webhook instances.</returns>
         public static async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
         {
-            Request request = new Request("webhooks");
-            if (parameters != null)
-            {
-                request.AddBody(parameters);
-            }
+            Request request = new Request("webhooks", Method.Get, parameters);
+
             WebhookList webhookList = await request.Execute<WebhookList>();
             return webhookList.webhooks;
         }
@@ -84,7 +81,7 @@ namespace EasyPost
         /// <returns>EasyPost.User instance.</returns>
         public static async Task<Webhook> Retrieve(string id)
         {
-            Request request = new Request("webhooks/{id}");
+            Request request = new Request("webhooks/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Webhook>();

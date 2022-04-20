@@ -1,5 +1,6 @@
 [
   {
+    "Duration": 0,
     "RecordedAt": "2022-04-14T16:28:24.071404-06:00",
     "Request": {
       "Body": "{\"shipment\":{\"to_address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"5555555555\"},\"from_address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"5555555555\"},\"parcel\":{\"length\":\"10\",\"width\":\"8\",\"height\":\"4\",\"weight\":\"15.4\"},\"service\":\"First\",\"carrier_accounts\":[\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\"],\"carrier\":\"USPS\"}}",
@@ -50,6 +51,7 @@
     }
   },
   {
+    "Duration": 0,
     "RecordedAt": "2022-04-14T16:28:25.905003-06:00",
     "Request": {
       "Body": "",
@@ -92,6 +94,52 @@
       "Status": {
         "Code": 200,
         "Message": "OK"
+      }
+    }
+  },
+  {
+    "Duration": 512,
+    "RecordedAt": "2022-04-20T15:45:21.406228-06:00",
+    "Request": {
+      "Body": "",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Accept": "application/json",
+        "Authorization": "*****",
+        "content_type": "application/json",
+        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+      },
+      "Uri": "https://api.easypost.com/v2/shipments/shp_2fa885dfba864263b99a4cdf40847c6d/label"
+    },
+    "Response": {
+      "Body": "{\n  \"error\": {\n    \"code\": \"BAD_REQUEST\",\n    \"message\": \"Missing required param: file_format.\",\n    \"errors\": []\n  }\n}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "93"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "326a20d562607ef1efb3e4d300302b7c",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "x-runtime": "0.093787",
+        "x-node": "bigweb4nuq",
+        "x-version-label": "easypost-202204201907-3f5a844a4c-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq fde591f008,intlb2wdc fde591f008,extlb1wdc fde591f008",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 400,
+        "Message": "Bad Request"
       }
     }
   }

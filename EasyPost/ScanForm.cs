@@ -46,7 +46,7 @@ namespace EasyPost
             };
 
             Request request = new Request("scan_forms", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "scan_form", parameters
@@ -74,8 +74,7 @@ namespace EasyPost
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
         public static async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
         {
-            Request request = new Request("scan_forms");
-            request.AddQueryString(parameters ?? new Dictionary<string, object>());
+            Request request = new Request("scan_forms", Method.Get, parameters);
 
             ScanFormCollection scanFormCollection = await request.Execute<ScanFormCollection>();
             scanFormCollection.filters = parameters;
@@ -89,7 +88,7 @@ namespace EasyPost
         /// <returns>EasyPost.ScanForm instance.</returns>
         public static async Task<ScanForm> Retrieve(string id)
         {
-            Request request = new Request("scan_forms/{id}");
+            Request request = new Request("scan_forms/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<ScanForm>();

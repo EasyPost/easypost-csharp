@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace EasyPost
 {
@@ -50,7 +51,7 @@ namespace EasyPost
         /// <returns>EasyPost.Rate instance.</returns>
         public static async Task<Rate> Retrieve(string id)
         {
-            Request request = new Request("rates/{id}");
+            Request request = new Request("rates/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Rate>();

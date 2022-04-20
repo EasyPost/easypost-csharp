@@ -43,7 +43,7 @@ namespace EasyPost
         public static async Task<Parcel> Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("parcels", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "parcel", parameters
@@ -61,7 +61,7 @@ namespace EasyPost
         /// <returns>EasyPost.Parcel instance.</returns>
         public static async Task<Parcel> Retrieve(string id)
         {
-            Request request = new Request("parcels/{id}");
+            Request request = new Request("parcels/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Parcel>();
