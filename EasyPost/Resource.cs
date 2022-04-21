@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost
 {
-    public class Resource : IResource
+    public class Resource
     {
         public override bool Equals(object obj)
         {
@@ -64,11 +64,11 @@ namespace EasyPost
 
             switch (value)
             {
-                case IResource resource:
+                case Resource resource:
                     return resource.AsDictionary();
-                case IEnumerable<IResource> enumerable:
+                case IEnumerable<Resource> enumerable:
                     List<Dictionary<string, object?>> values = new List<Dictionary<string, object?>>();
-                    foreach (IResource resource in enumerable)
+                    foreach (Resource resource in enumerable)
                     {
                         values.Add(resource.AsDictionary());
                     }
@@ -104,7 +104,7 @@ namespace EasyPost
                     continue;
                 }
 
-                if (property.PropertyType.GetInterfaces().Contains(typeof(IResource)))
+                if (property.PropertyType.GetInterfaces().Contains(typeof(Resource)))
                 {
                     MethodInfo method = property.PropertyType
                         .GetMethod("LoadFromDictionary",
@@ -116,7 +116,7 @@ namespace EasyPost
                         attribute
                     }), null);
                 }
-                else if (typeof(IEnumerable<IResource>).IsAssignableFrom(property.PropertyType))
+                else if (typeof(IEnumerable<Resource>).IsAssignableFrom(property.PropertyType))
                 {
                     property.SetValue(resource, Activator.CreateInstance(property.PropertyType), null);
 
