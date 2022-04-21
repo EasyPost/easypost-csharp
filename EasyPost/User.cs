@@ -71,7 +71,7 @@ namespace EasyPost
         {
             Request request = new Request("users/{id}", Method.Put);
             request.AddUrlSegment("id", id);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "user", parameters
@@ -105,9 +105,8 @@ namespace EasyPost
                 }
             };
 
-            Request request = new Request("users/{id}/brand", Method.Put);
+            Request request = new Request("users/{id}/brand", Method.Put, wrappedParameters);
             request.AddUrlSegment("id", id);
-            request.AddBody(wrappedParameters);
 
             return await request.Execute<Brand>();
         }
@@ -124,7 +123,7 @@ namespace EasyPost
         public static async Task<User> Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("users", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "user", parameters
@@ -146,11 +145,11 @@ namespace EasyPost
 
             if (id == null)
             {
-                request = new Request("users");
+                request = new Request("users", Method.Get);
             }
             else
             {
-                request = new Request("users/{id}");
+                request = new Request("users/{id}", Method.Get);
                 request.AddUrlSegment("id", id);
             }
 
@@ -166,7 +165,7 @@ namespace EasyPost
         {
             Request request;
 
-            request = new Request("users");
+            request = new Request("users", Method.Get);
 
             return await request.Execute<User>();
         }

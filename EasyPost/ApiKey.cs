@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace EasyPost
 {
@@ -20,7 +21,7 @@ namespace EasyPost
         /// <returns>A list of EasyPost.ApiKey instances.</returns>
         public static async Task<List<ApiKey>> All()
         {
-            Request request = new Request("api_keys")
+            Request request = new Request("api_keys", Method.Get)
             {
                 RootElement = "keys"
             };

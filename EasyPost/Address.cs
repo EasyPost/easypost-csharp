@@ -66,7 +66,7 @@ namespace EasyPost
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("addresses/{id}/verify")
+            Request request = new Request("addresses/{id}/verify", Method.Get)
             {
                 RootElement = "address"
             };
@@ -139,7 +139,7 @@ namespace EasyPost
         /// <returns>EasyPost.Address instance.</returns>
         public static async Task<Address> Retrieve(string id)
         {
-            Request request = new Request("addresses/{id}");
+            Request request = new Request("addresses/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Address>();
@@ -163,8 +163,7 @@ namespace EasyPost
         public static async Task<AddressCollection> All(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
-            Request request = new Request("addresses");
-            request.AddQueryString(parameters);
+            Request request = new Request("addresses", Method.Get, parameters);
 
             return await request.Execute<AddressCollection>();
         }
@@ -190,7 +189,7 @@ namespace EasyPost
 
             body.Add("address", parameters);
 
-            request.AddBody(body);
+            request.AddParameters(body);
 
             return await request.Execute<Address>();
         }

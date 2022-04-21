@@ -1,5 +1,6 @@
 [
   {
+    "Duration": 0,
     "RecordedAt": "2022-04-14T16:26:39.432538-06:00",
     "Request": {
       "Body": "",
@@ -37,6 +38,53 @@
         "x-version-label": "easypost-202204142017-962a9659b5-master",
         "x-backend": "easypost",
         "x-proxied": "intlb2nuq fde591f008,extlb2nuq fde591f008",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  },
+  {
+    "Duration": 483,
+    "RecordedAt": "2022-04-20T12:14:49.140489-06:00",
+    "Request": {
+      "Body": "",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Accept": "application/json",
+        "Authorization": "*****",
+        "content_type": "application/json",
+        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+      },
+      "Uri": "https://api.easypost.com/v2/events"
+    },
+    "Response": {
+      "Body": "{\n  \"events\": [\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_9c6b98e6bf6b11ec889677b42ec2c272\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T23:02:24.834Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_9c60e7d4bf6b11eca82943d5332244d7\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T23:02:24.764Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.created\",\n      \"id\": \"evt_8a808ec0bf6b11ecbf1917cb017acd19\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T23:01:54.772Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_14ef11c2bf6b11ec912c39ab8bf12127\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:58:37.526Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_13e487a8bf6b11ec94054d29bb416737\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:58:35.779Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_120adc3ebf6b11ecab5d3b241dac2384\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:58:32.675Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_09965d80bf6b11ec95ea7da7c89cb15c\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:58:18.489Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_fb5cfbcabf6a11eca0287dde63e31c6f\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:57:54.625Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_fa6c5ac6bf6a11ec8b3513dd69c725ef\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:57:53.048Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_f8b9fc10bf6a11ec9e532303fa975502\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:57:50.201Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_f756ea7cbf6a11ec827d275af4321072\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:57:47.874Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_f1d90fdabf6a11ec9c45152da6f7dfdd\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:57:38.661Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_f11e4632bf6a11ec89772b3f0097c6ad\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:57:37.437Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_f0a0a70ebf6a11eca3457beb5a168b3c\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:57:36.614Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_f0158fe8bf6a11ec8ab255a9aa2898d6\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:57:35.702Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_ef898bf6bf6a11ec9e2d7b7135f4ec75\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:57:34.785Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_ee59700cbf6a11ec90de05cdb15d689c\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:57:32.792Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_ee3a9f88bf6a11ec8f3e210811b8350f\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:57:32.59Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_ed3983cebf6a11ecad5445752336c008\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:57:30.905Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_e5c65400bf6a11ec82664b49c1665e91\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"completed\",\n      \"created_at\": \"2022-04-18T22:57:18.406Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    }\n  ],\n  \"has_more\": true\n}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "4428"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "f6c5a4e662604d98efa6bb3400222e00",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"4a4d9d2afc5b414b9a2fe997f9a94bbb\"",
+        "x-runtime": "0.277929",
+        "x-node": "bigweb6nuq",
+        "x-version-label": "easypost-202204201711-cf6c4e6664-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq fde591f008,extlb1nuq fde591f008",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

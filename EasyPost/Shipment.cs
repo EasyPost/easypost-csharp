@@ -109,7 +109,7 @@ namespace EasyPost
                 body["insurance"] = insuranceValue;
             }
 
-            request.AddBody(body);
+            request.AddParameters(body);
 
             Shipment result = await request.Execute<Shipment>();
 
@@ -141,7 +141,7 @@ namespace EasyPost
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("shipments/{id}/label");
+            Request request = new Request("shipments/{id}/label", Method.Get);
             request.AddUrlSegment("id", id);
             request.AddParameter("file_format", fileFormat);
 
@@ -159,7 +159,7 @@ namespace EasyPost
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("shipments/{id}/smartrate");
+            Request request = new Request("shipments/{id}/smartrate", Method.Get);
             request.AddUrlSegment("id", id);
             request.RootElement = "result";
             List<Smartrate> smartrates = await request.Execute<List<Smartrate>>();
@@ -179,7 +179,7 @@ namespace EasyPost
 
             Request request = new Request("shipments/{id}/insure", Method.Post);
             request.AddUrlSegment("id", id);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "amount", amount
@@ -241,12 +241,8 @@ namespace EasyPost
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("shipments/{id}/rerate", Method.Post);
+            Request request = new Request("shipments/{id}/rerate", Method.Post, parameters);
             request.AddUrlSegment("id", id);
-            if (parameters != null)
-            {
-                request.AddBody(parameters);
-            }
 
             rates = (await request.Execute<Shipment>()).rates;
         }
@@ -261,7 +257,7 @@ namespace EasyPost
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("shipments/{id}/refund");
+            Request request = new Request("shipments/{id}/refund", Method.Get);
             request.AddUrlSegment("id", id);
 
             Merge(await request.Execute<Shipment>());
@@ -308,8 +304,7 @@ namespace EasyPost
         /// <returns>An EasyPost.ShipmentCollection instance.</returns>
         public static async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
-            Request request = new Request("shipments");
-            request.AddQueryString(parameters ?? new Dictionary<string, object>());
+            Request request = new Request("shipments", Method.Get, parameters);
 
             ShipmentCollection shipmentCollection = await request.Execute<ShipmentCollection>();
             shipmentCollection.filters = parameters;
@@ -323,7 +318,7 @@ namespace EasyPost
         /// <returns>An EasyPost.Shipment instance.</returns>
         public static async Task<Shipment> Retrieve(string id)
         {
-            Request request = new Request("shipments/{id}");
+            Request request = new Request("shipments/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Shipment>();
@@ -334,7 +329,7 @@ namespace EasyPost
         private static async Task<Shipment> SendCreate(Dictionary<string, object> parameters)
         {
             Request request = new Request("shipments", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "shipment", parameters

@@ -38,7 +38,7 @@ namespace EasyPost
             parameters = parameters ?? new Dictionary<string, object>();
 
             Request request = new Request("refunds", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "refund", parameters
@@ -55,7 +55,7 @@ namespace EasyPost
         /// <returns>EasyPost.Refund instance.</returns>
         public static async Task<Refund> Retrieve(string id)
         {
-            Request request = new Request("refunds/{id}");
+            Request request = new Request("refunds/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Refund>();
@@ -73,8 +73,7 @@ namespace EasyPost
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
-            Request request = new Request("refunds");
-            request.AddQueryString(parameters);
+            Request request = new Request("refunds", Method.Get, parameters);
 
             return await request.Execute<RefundCollection>();
         }

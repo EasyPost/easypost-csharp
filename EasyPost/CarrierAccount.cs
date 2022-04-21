@@ -47,7 +47,7 @@ namespace EasyPost
         {
             Request request = new Request("carrier_accounts/{id}", Method.Put);
             request.AddUrlSegment("id", id);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "carrier_account", parameters
@@ -73,7 +73,7 @@ namespace EasyPost
         public static async Task<CarrierAccount> Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("carrier_accounts", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "carrier_account", parameters
@@ -90,7 +90,7 @@ namespace EasyPost
         /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
         public static async Task<List<CarrierAccount>> All()
         {
-            Request request = new Request("carrier_accounts");
+            Request request = new Request("carrier_accounts", Method.Get);
             return await request.Execute<List<CarrierAccount>>();
         }
 
@@ -101,7 +101,7 @@ namespace EasyPost
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         public static async Task<CarrierAccount> Retrieve(string id)
         {
-            Request request = new Request("carrier_accounts/{id}");
+            Request request = new Request("carrier_accounts/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<CarrierAccount>();

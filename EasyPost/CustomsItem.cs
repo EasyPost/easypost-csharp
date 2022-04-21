@@ -50,7 +50,7 @@ namespace EasyPost
         public static async Task<CustomsItem> Create(Dictionary<string, object> parameters)
         {
             Request request = new Request("customs_items", Method.Post);
-            request.AddBody(new Dictionary<string, object>
+            request.AddParameters(new Dictionary<string, object>
             {
                 {
                     "customs_item", parameters
@@ -68,7 +68,7 @@ namespace EasyPost
         /// <returns>EasyPost.CustomsItem instance.</returns>
         public static async Task<CustomsItem> Retrieve(string id)
         {
-            Request request = new Request("customs_items/{id}");
+            Request request = new Request("customs_items/{id}", Method.Get);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<CustomsItem>();

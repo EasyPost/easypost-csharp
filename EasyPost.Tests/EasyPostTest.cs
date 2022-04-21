@@ -2,6 +2,7 @@ using System.Dynamic;
 using System.Threading.Tasks;
 using EasyPost.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RestSharp;
 
 namespace EasyPost.Tests
 {
@@ -53,7 +54,7 @@ namespace EasyPost.Tests
 
             // Client should now be configured to hit httpbin.org instead of EasyPost's API
 
-            Request request = new Request("");
+            Request request = new Request("", Method.Get);
             ExpandoObject response = await request.Execute<ExpandoObject>();
             Assert.AreEqual(HttpBinUrl, JsonSerialization.GetValueOfExpandoObjectProperty(response, "url")?.ToString());
         }
