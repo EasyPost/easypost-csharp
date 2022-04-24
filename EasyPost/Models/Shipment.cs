@@ -90,10 +90,7 @@ namespace EasyPost.Models
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("shipments/{id}/buy", Method.Post);
-            request.AddUrlSegment("id", id);
-
-            Dictionary<string, object> body =
+            Dictionary<string, object> parameters =
                 new Dictionary<string, object>
                 {
                     {
@@ -108,21 +105,19 @@ namespace EasyPost.Models
 
             if (insuranceValue != null)
             {
-                body["insurance"] = insuranceValue;
+                parameters.Add("insurance", insuranceValue);
             }
 
-            request.AddParameters(body);
+            Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{id}/buy", parameters);
 
-            Shipment result = await request.Execute<Shipment>();
-
-            insurance = result.insurance;
-            postage_label = result.postage_label;
-            tracking_code = result.tracking_code;
-            tracker = result.tracker;
-            selected_rate = result.selected_rate;
-            forms = result.forms;
-            messages = result.messages;
-            fees = result.fees;
+            insurance = shipment.insurance;
+            postage_label = shipment.postage_label;
+            tracking_code = shipment.tracking_code;
+            tracker = shipment.tracker;
+            selected_rate = shipment.selected_rate;
+            forms = shipment.forms;
+            messages = shipment.messages;
+            fees = shipment.fees;
         }
 
         /// <summary>
@@ -143,11 +138,12 @@ namespace EasyPost.Models
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("shipments/{id}/label", Method.Get);
-            request.AddUrlSegment("id", id);
-            request.AddParameter("file_format", fileFormat);
-
-            Merge(await request.Execute<Shipment>());
+            await Update<Shipment>(Method.Get, $"shipments/{id}/label", new Dictionary<string, object>
+            {
+                {
+                    "file_format", fileFormat
+                }
+            });
         }
 
         /// <summary>
@@ -161,11 +157,7 @@ namespace EasyPost.Models
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("shipments/{id}/smartrate", Method.Get);
-            request.AddUrlSegment("id", id);
-            request.RootElement = "result";
-            List<Smartrate> smartrates = await request.Execute<List<Smartrate>>();
-            return smartrates;
+            return await Request<List<Smartrate>>(Method.Get, $"shipments/{id}/smartrate", null, "result");
         }
 
         /// <summary>
@@ -179,16 +171,12 @@ namespace EasyPost.Models
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("shipments/{id}/insure", Method.Post);
-            request.AddUrlSegment("id", id);
-            request.AddParameters(new Dictionary<string, object>
+            await Update<Shipment>(Method.Post, $"shipments/{id}/insure", new Dictionary<string, object>
             {
                 {
                     "amount", amount
                 }
             });
-
-            Merge(await request.Execute<Shipment>());
         }
 
         /// <summary>
@@ -233,6 +221,19 @@ namespace EasyPost.Models
         }
 
         /// <summary>
+        ///     Send a refund request to the carrier the shipment was purchased from.
+        /// </summary>
+        public async Task Refund()
+        {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
+            await Update<Shipment>(Method.Get, $"shipments/{id}/refund");
+        }
+
+        /// <summary>
         ///     Refresh the rates for this Shipment.
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
@@ -243,26 +244,8 @@ namespace EasyPost.Models
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("shipments/{id}/rerate", Method.Post, parameters);
-            request.AddUrlSegment("id", id);
-
-            rates = (await request.Execute<Shipment>()).rates;
-        }
-
-        /// <summary>
-        ///     Send a refund request to the carrier the shipment was purchased from.
-        /// </summary>
-        public async Task Refund()
-        {
-            if (id == null)
-            {
-                throw new PropertyMissing("id");
-            }
-
-            Request request = new Request("shipments/{id}/refund", Method.Get);
-            request.AddUrlSegment("id", id);
-
-            Merge(await request.Execute<Shipment>());
+            Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{id}/rerate", parameters);
+            rates = shipment.rates;
         }
 
         private static void FilterRates(ref List<Rate> rates, Func<Rate, bool> filter) => rates = rates.Where(filter).ToList();

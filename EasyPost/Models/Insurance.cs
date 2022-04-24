@@ -40,16 +40,9 @@ namespace EasyPost.Models
         ///     Refresh this Insurance.
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters to use when refreshing this insurance.</param>
-        /// <returns>This refreshed EasyPost.Insurance object.</returns>
-        public async Task<Insurance> Refresh(Dictionary<string, object>? parameters = null)
+        public async Task Refresh(Dictionary<string, object>? parameters = null)
         {
-            parameters = parameters ?? new Dictionary<string, object>();
-            Request request = new Request("insurances/{id}", Method.Get, parameters);
-            request.AddUrlSegment("id", id);
-
-            Insurance refreshedInsurance = await request.Execute<Insurance>();
-            Merge(refreshedInsurance);
-            return this;
+            await Update<Insurance>(Method.Put, $"insurances/{id}", parameters);
         }
     }
 }

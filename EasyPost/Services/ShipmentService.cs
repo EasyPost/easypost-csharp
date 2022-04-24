@@ -9,7 +9,7 @@ namespace EasyPost.Services
 {
     public class ShipmentService : Service
     {
-        public ShipmentService(ApiClient client) : base(client)
+        public ShipmentService(Client client) : base(client)
         {
         }
 

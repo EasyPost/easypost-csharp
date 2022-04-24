@@ -19,6 +19,8 @@ namespace EasyPost.Models
         public List<CustomsItem> customs_items { get; set; }
         [JsonProperty("customs_signer")]
         public string customs_signer { get; set; }
+        [JsonProperty("declaration")]
+        public string declaration { get; set; }
         [JsonProperty("eel_pfc")]
         public string eel_pfc { get; set; }
         [JsonProperty("id")]
@@ -33,7 +35,5 @@ namespace EasyPost.Models
         public string restriction_type { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
-        [JsonProperty("declaration")]
-        public string declaration { get; set; }
     }
 }

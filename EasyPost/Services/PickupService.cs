@@ -8,7 +8,7 @@ namespace EasyPost.Services
 {
     public class PickupService : Service
     {
-        public PickupService(ApiClient client) : base(client)
+        public PickupService(Client client) : base(client)
         {
         }
 

@@ -49,9 +49,7 @@ namespace EasyPost.Models
         /// <returns>Whether the request was successful or not.</returns>
         public async Task<bool> Delete()
         {
-            Request request = new Request("users/{id}", Method.Delete);
-            request.AddUrlSegment("id", id);
-            return await request.Execute();
+            return await Request(Method.Delete, $"users/{id}");
         }
 
         /// <summary>
@@ -71,16 +69,12 @@ namespace EasyPost.Models
         /// </param>
         public async Task Update(Dictionary<string, object> parameters)
         {
-            Request request = new Request("users/{id}", Method.Put);
-            request.AddUrlSegment("id", id);
-            request.AddParameters(new Dictionary<string, object>
+            await Update<User>(Method.Put, "users/{id}", new Dictionary<string, object>
             {
                 {
                     "user", parameters
                 }
             });
-
-            Merge(await request.Execute<User>());
         }
 
         /// <summary>
@@ -100,17 +94,12 @@ namespace EasyPost.Models
         /// <returns>EasyPost.Brand instance.</returns>
         public async Task<Brand> UpdateBrand(Dictionary<string, object> parameters)
         {
-            Dictionary<string, object> wrappedParameters = new Dictionary<string, object>
+            return await Request<Brand>(Method.Put, $"users/{id}/brand", new Dictionary<string, object>
             {
                 {
                     "brand", parameters
                 }
-            };
-
-            Request request = new Request("users/{id}/brand", Method.Put, wrappedParameters);
-            request.AddUrlSegment("id", id);
-
-            return await request.Execute<Brand>();
+            });
         }
     }
 }

@@ -7,7 +7,7 @@ namespace EasyPost.Services
 {
     public class ApiKeyService : Service
     {
-        public ApiKeyService(ApiClient client) : base(client)
+        public ApiKeyService(Client client) : base(client)
         {
         }
 

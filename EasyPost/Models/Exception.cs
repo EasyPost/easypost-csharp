@@ -43,27 +43,25 @@ namespace EasyPost.Models
 
     [Serializable]
     public class ResourceAlreadyCreated : Exception
-    {
-    }
+    {}
 
     [Serializable]
     public class PropertyMissing : Exception
     {
         private readonly string _property;
 
-        public PropertyMissing(string property)
-        {
-            _property = property;
-        }
-
         public override string Message
         {
             get { return $"Missing {_property}"; }
+        }
+
+        public PropertyMissing(string property)
+        {
+            _property = property;
         }
     }
 
     [Serializable]
     public class ClientNotConfigured : Exception
-    {
-    }
+    {}
 }

@@ -5,7 +5,7 @@ namespace EasyPost.Models
 {
     public class Rates : Service
     {
-        public Rates(ApiClient client) : base(client)
+        public Rates(Client client) : base(client)
         {
         }
 

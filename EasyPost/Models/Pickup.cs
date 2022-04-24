@@ -55,19 +55,16 @@ namespace EasyPost.Models
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("pickups/{id}/buy", Method.Post);
-            request.AddUrlSegment("id", id);
-            request.AddParameters(new Dictionary<string, object>
-            {
+            await Update<Pickup>(Method.Post, $"pickups/{id}/buy",
+                new Dictionary<string, object>
                 {
-                    "carrier", carrier
-                },
-                {
-                    "service", service
-                }
-            });
-
-            Merge(await request.Execute<Pickup>());
+                    {
+                        "carrier", carrier
+                    },
+                    {
+                        "service", service
+                    }
+                });
         }
 
         /// <summary>
@@ -80,10 +77,7 @@ namespace EasyPost.Models
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("pickups/{id}/cancel", Method.Post);
-            request.AddUrlSegment("id", id);
-
-            Merge(await request.Execute<Pickup>());
+            await Update<Pickup>(Method.Post, $"pickups/{id}/cancel");
         }
     }
 }

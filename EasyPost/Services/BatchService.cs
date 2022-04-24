@@ -7,8 +7,28 @@ namespace EasyPost.Services
 {
     public class BatchService : Service
     {
-        public BatchService(ApiClient client) : base(client)
+        public BatchService(Client client) : base(client)
         {
+        }
+
+        /// <summary>
+        ///     List all Batch objects.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
+        ///     * {"before_id", string} String representing a Batch ID. Starts with "batch_". Only retrieve batches created
+        ///     before this id. Takes precedence over after_id.
+        ///     * {"after_id", string} String representing a Batch ID. Starts with "batch_". Only retrieve batches created after
+        ///     this id.
+        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve batches created after this datetime.
+        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve batches created before this datetime.
+        ///     * {"page_size", int} Max size of list. Default to 20.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>An EasyPost.BatchCollection instance.</returns>
+        public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
+        {
+            return await List<BatchCollection>("batches", parameters);
         }
 
         /// <summary>
@@ -59,26 +79,6 @@ namespace EasyPost.Services
         public async Task<Batch> Retrieve(string id)
         {
             return await Get<Batch>($"batches/{id}");
-        }
-
-        /// <summary>
-        ///     List all Batch objects.
-        /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
-        ///     * {"before_id", string} String representing a Batch ID. Starts with "batch_". Only retrieve batches created
-        ///     before this id. Takes precedence over after_id.
-        ///     * {"after_id", string} String representing a Batch ID. Starts with "batch_". Only retrieve batches created after
-        ///     this id.
-        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve batches created after this datetime.
-        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve batches created before this datetime.
-        ///     * {"page_size", int} Max size of list. Default to 20.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>An EasyPost.BatchCollection instance.</returns>
-        public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
-        {
-            return await List<BatchCollection>("batches", parameters);
         }
     }
 }

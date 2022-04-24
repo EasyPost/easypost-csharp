@@ -68,18 +68,13 @@ namespace EasyPost.Models
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("addresses/{id}/verify", Method.Get)
-            {
-                RootElement = "address"
-            };
-            request.AddUrlSegment("id", id);
-
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
             if (carrier != null)
             {
-                request.AddParameter("carrier", carrier);
+                parameters.Add("carrier", carrier);
             }
 
-            Merge(await request.Execute<Address>());
+            await Update<Address>(Method.Get,$"addresses/{id}/verify", parameters, "address");
         }
     }
 }

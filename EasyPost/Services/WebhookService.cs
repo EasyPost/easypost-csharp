@@ -8,8 +8,18 @@ namespace EasyPost.Services
 {
     public class WebhookService : Service
     {
-        public WebhookService(ApiClient client) : base(client)
+        public WebhookService(Client client) : base(client)
         {
+        }
+
+
+        /// <summary>
+        ///     Get a list of scan forms.
+        /// </summary>
+        /// <returns>List of EasyPost.Webhook instances.</returns>
+        public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
+        {
+            return await List<List<Webhook>>("webhooks", parameters);
         }
 
         /// <summary>
@@ -29,16 +39,6 @@ namespace EasyPost.Services
                     "webhook", parameters
                 }
             });
-        }
-
-
-        /// <summary>
-        ///     Get a list of scan forms.
-        /// </summary>
-        /// <returns>List of EasyPost.Webhook instances.</returns>
-        public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
-        {
-            return await List<List<Webhook>>("webhooks", parameters);
         }
 
         /// <summary>

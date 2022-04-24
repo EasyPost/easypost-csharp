@@ -5,6 +5,6 @@ namespace EasyPost.Interfaces
     public class PaginatedCollection : Resource
     {
         [JsonIgnore]
-        public ApiClient Client { get; set; }
+        public Client Client { get; set; }
     }
 }

@@ -24,9 +24,7 @@ namespace EasyPost.Models
         /// <returns>Whether the request was successful or not.</returns>
         public async Task<bool> Delete()
         {
-            Request request = new Request("webhooks/{id}", Method.Delete);
-            request.AddUrlSegment("id", id);
-            return await request.Execute();
+            return await Request(Method.Delete, $"webhooks/{id}");
         }
 
         /// <summary>
@@ -34,10 +32,7 @@ namespace EasyPost.Models
         /// </summary>
         public async Task Update()
         {
-            Request request = new Request("webhooks/{id}", Method.Put);
-            request.AddUrlSegment("id", id);
-
-            Merge(await request.Execute<Webhook>());
+            await Update<Webhook>(Method.Put, $"webhooks/{id}");
         }
     }
 }

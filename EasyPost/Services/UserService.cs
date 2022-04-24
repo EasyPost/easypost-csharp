@@ -8,7 +8,7 @@ namespace EasyPost.Services
 {
     public class UserService : Service
     {
-        public UserService(ApiClient client) : base(client)
+        public UserService(Client client) : base(client)
         {
         }
 

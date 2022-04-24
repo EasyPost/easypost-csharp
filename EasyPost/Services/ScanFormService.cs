@@ -8,28 +8,8 @@ namespace EasyPost.Services
 {
     public class ScanFormService : Service
     {
-        public ScanFormService(ApiClient client) : base(client)
+        public ScanFormService(Client client) : base(client)
         {
-        }
-
-        /// <summary>
-        ///     Create a ScanForm.
-        /// </summary>
-        /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
-        /// <returns>EasyPost.ScanForm instance.</returns>
-        public async Task<ScanForm> Create(List<Shipment> shipments)
-        {
-            return await Create<ScanForm>("scan_forms", new Dictionary<string, object>
-            {
-                {
-                    "scan_form", new Dictionary<string, object>
-                    {
-                        {
-                            "shipments", shipments
-                        }
-                    }
-                }
-            });
         }
 
 
@@ -54,6 +34,26 @@ namespace EasyPost.Services
             scanFormCollection.filters = parameters;
             scanFormCollection.Client = Client;
             return scanFormCollection;
+        }
+
+        /// <summary>
+        ///     Create a ScanForm.
+        /// </summary>
+        /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
+        /// <returns>EasyPost.ScanForm instance.</returns>
+        public async Task<ScanForm> Create(List<Shipment> shipments)
+        {
+            return await Create<ScanForm>("scan_forms", new Dictionary<string, object>
+            {
+                {
+                    "scan_form", new Dictionary<string, object>
+                    {
+                        {
+                            "shipments", shipments
+                        }
+                    }
+                }
+            });
         }
 
         /// <summary>

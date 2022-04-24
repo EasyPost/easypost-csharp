@@ -7,30 +7,8 @@ namespace EasyPost.Services
 {
     public class ReportService : Service
     {
-        public ReportService(ApiClient client) : base(client)
+        public ReportService(Client client) : base(client)
         {
-        }
-
-        /// <summary>
-        ///     Create a Report.
-        /// </summary>
-        /// <param name="type">
-        ///     The type of report, e.g. "shipment", "tracker", "payment_log", etc.
-        /// </param>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to create the carrier account with. Valid pairs:
-        ///     * {"start_date", string} Date to start the report at.
-        ///     * {"end_date", string} Date to end the report at.
-        ///     * {"include_children", string} Whether or not to include child objects in the report.
-        ///     * {"send_email", string} Whether or not to send the report via email.
-        ///     * {"columns", List&lt;string&gt;} Specify the exact columns you want in your report.
-        ///     * {"additional_columns", List&lt;string&gt;} Request additional columns (if any) outside of the defaults.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>EasyPost.Report instance.</returns>
-        public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null)
-        {
-            return await Create<Report>($"reports/{type}", parameters);
         }
 
         /// <summary>
@@ -55,6 +33,28 @@ namespace EasyPost.Services
             reportCollection.type = type;
             reportCollection.Client = Client;
             return reportCollection;
+        }
+
+        /// <summary>
+        ///     Create a Report.
+        /// </summary>
+        /// <param name="type">
+        ///     The type of report, e.g. "shipment", "tracker", "payment_log", etc.
+        /// </param>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to create the carrier account with. Valid pairs:
+        ///     * {"start_date", string} Date to start the report at.
+        ///     * {"end_date", string} Date to end the report at.
+        ///     * {"include_children", string} Whether or not to include child objects in the report.
+        ///     * {"send_email", string} Whether or not to send the report via email.
+        ///     * {"columns", List&lt;string&gt;} Specify the exact columns you want in your report.
+        ///     * {"additional_columns", List&lt;string&gt;} Request additional columns (if any) outside of the defaults.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>EasyPost.Report instance.</returns>
+        public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null)
+        {
+            return await Create<Report>($"reports/{type}", parameters);
         }
 
 

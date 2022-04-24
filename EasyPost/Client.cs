@@ -1,15 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
+using EasyPost.Http;
+using EasyPost.Interfaces;
 using EasyPost.Models;
+using EasyPost.Services;
 using EasyPost.Utilities;
 using RestSharp;
 
-namespace EasyPost.Http
+namespace EasyPost
 {
     public class Client
     {
@@ -25,16 +28,116 @@ namespace EasyPost.Http
         private int? _connectTimeoutMilliseconds;
         private int? _requestTimeoutMilliseconds;
 
+        public AddressService AddressService
+        {
+            get { return new AddressService(this); }
+        }
+
+        public ApiKeyService ApiKeyService
+        {
+            get { return new ApiKeyService(this); }
+        }
+
+        public BatchService BatchService
+        {
+            get { return new BatchService(this); }
+        }
+
+        public CarrierAccountService CarrierAccountService
+        {
+            get { return new CarrierAccountService(this); }
+        }
+
+        public CarrierTypeService CarrierTypeService
+        {
+            get { return new CarrierTypeService(this); }
+        }
+
         public int ConnectTimeoutMilliseconds
         {
             get => _connectTimeoutMilliseconds ?? DefaultConnectTimeoutMilliseconds;
             set => _connectTimeoutMilliseconds = value;
         }
 
+        public CustomsInfoService CustomsInfoService
+        {
+            get { return new CustomsInfoService(this); }
+        }
+
+        public CustomsItemService CustomsItemService
+        {
+            get { return new CustomsItemService(this); }
+        }
+
+        public EventService EventService
+        {
+            get { return new EventService(this); }
+        }
+
+        public InsuranceService InsuranceService
+        {
+            get { return new InsuranceService(this); }
+        }
+
+        public OrderService OrderService
+        {
+            get { return new OrderService(this); }
+        }
+
+        public ParcelService ParcelService
+        {
+            get { return new ParcelService(this); }
+        }
+
+        public PickupService PickupService
+        {
+            get { return new PickupService(this); }
+        }
+
+        public Rates Rates
+        {
+            get { return new Rates(this); }
+        }
+
+        public RefundService RefundService
+        {
+            get { return new RefundService(this); }
+        }
+
+        public ReportService ReportService
+        {
+            get { return new ReportService(this); }
+        }
+
         public int RequestTimeoutMilliseconds
         {
             get => _requestTimeoutMilliseconds ?? DefaultRequestTimeoutMilliseconds;
             set => _requestTimeoutMilliseconds = value;
+        }
+
+        public ScanFormService ScanFormService
+        {
+            get { return new ScanFormService(this); }
+        }
+
+        public ShipmentService ShipmentService
+        {
+            get { return new ShipmentService(this); }
+        }
+
+        public TrackerService TrackerService
+        {
+            get { return new TrackerService(this); }
+        }
+
+        public UserService UserService
+        {
+            get { return new UserService(this); }
+        }
+
+        public WebhookService WebhookService
+        {
+            get { return new WebhookService(this); }
         }
 
         private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
@@ -72,42 +175,36 @@ namespace EasyPost.Http
             _restClient = customHttpClient != null ? new RestClient(customHttpClient, clientOptions) : new RestClient(clientOptions);
         }
 
-        /// <summary>
-        ///     Execute a request against the EasyPost API.
-        /// </summary>
-        /// <param name="request">EasyPost.Request object instance to execute.</param>
-        /// <returns>Whether request was successful.</returns>
-        internal async Task<bool> Execute(Request request)
+        public Client(string apiKey, HttpClient? customHttpClient = null) : this(new ClientConfiguration(apiKey), customHttpClient)
         {
-            RestResponse response = await _restClient.ExecuteAsync(PrepareRequest(request));
-            return response.IsSuccessful;
         }
 
         /// <summary>
         ///     Execute a request against the EasyPost API.
         /// </summary>
-        /// <param name="request">EasyPost.Request object instance to execute.</param>
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
-        /// <param name="rootElement">Key of root element of the JSON response. Used while deserializing.</param>
         /// <returns>An instance of a T type object.</returns>
         /// <exception cref="HttpException">An error occurred during the API request.</exception>
-        internal async Task<T> Execute<T>(Request request, string? rootElement = null) where T : new()
+        internal async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
         {
-            RestResponse<T> response = await _restClient.ExecuteAsync<T>(PrepareRequest(request));
+            Request request = new Request(url, method, parameters, rootElement);
+            RestRequest restRequest = PrepareRequest(request);
+            RestResponse<T> response = await _restClient.ExecuteAsync<T>(restRequest);
             int statusCode = Convert.ToInt32(response.StatusCode);
 
             List<string>? rootElements = null;
-            if (rootElement != null)
+            if (request.RootElement != null)
             {
                 rootElements = new List<string>
                 {
-                    rootElement
+                    request.RootElement
                 };
             }
 
             if (statusCode < 400)
             {
                 var resource = JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
+                ((resource as Resource)!).Client = this;
                 return resource;
             }
 
@@ -117,7 +214,11 @@ namespace EasyPost.Http
             try
             {
                 body = JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
-                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string> { "error", "errors" });
+                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string>
+                {
+                    "error",
+                    "errors"
+                });
             }
             catch
             {
@@ -133,12 +234,26 @@ namespace EasyPost.Http
         }
 
         /// <summary>
+        ///     Execute a request against the EasyPost API.
+        /// </summary>
+        /// <returns>Whether request was successful.</returns>
+        internal async Task<bool> Request(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null)
+        {
+            Request request = new Request(url, method, parameters, rootElement);
+            RestRequest restRequest = PrepareRequest(request);
+            RestResponse response = await _restClient.ExecuteAsync(restRequest);
+            return response.IsSuccessful;
+        }
+
+        /// <summary>
         ///     Prepare a request for execution by attaching required headers.
         /// </summary>
         /// <param name="request">EasyPost.Request object instance to prepare.</param>
         /// <returns>RestSharp.RestRequest object instance to execute.</returns>
         private RestRequest PrepareRequest(Request request)
         {
+            request.Build();
+
             RestRequest restRequest = (RestRequest)request;
             restRequest.Timeout = RequestTimeoutMilliseconds;
             restRequest.AddHeader("authorization", "Bearer " + _configuration.ApiKey);

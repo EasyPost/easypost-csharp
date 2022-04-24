@@ -44,24 +44,18 @@ namespace EasyPost.Models
         /// <param name="shipmentIds">List of shipment ids to be added.</param>
         public async Task AddShipments(IEnumerable<string> shipmentIds)
         {
-            Request request = new Request("batches/{id}/add_shipments", Method.Post);
-            request.AddUrlSegment("id", id);
-
-            List<Dictionary<string, object>> lShipments = shipmentIds
-                .Select(shipmentId => new Dictionary<string, object>
-                {
-                    {
-                        "id", shipmentId
-                    }
-                }).ToList();
-            request.AddParameters(new Dictionary<string, object>
+            await Update<Batch>(Method.Post, $"batches/{id}/add_shipments", new Dictionary<string, object>
             {
                 {
-                    "shipments", lShipments
+                    "shipments", shipmentIds
+                        .Select(shipmentId => new Dictionary<string, object>
+                        {
+                            {
+                                "id", shipmentId
+                            }
+                        }).ToList()
                 }
             });
-
-            Merge(await request.Execute<Batch>());
         }
 
         /// <summary>
@@ -75,10 +69,7 @@ namespace EasyPost.Models
         /// </summary>
         public async Task Buy()
         {
-            Request request = new Request("batches/{id}/buy", Method.Post);
-            request.AddUrlSegment("id", id);
-
-            Merge(await request.Execute<Batch>());
+            await Update<Batch>(Method.Post, $"batches/{id}/buy");
         }
 
         /// <summary>
@@ -87,18 +78,12 @@ namespace EasyPost.Models
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         public async Task GenerateLabel(string fileFormat)
         {
-            Request request = new Request("batches/{id}/label", Method.Post);
-            request.AddUrlSegment("id", id);
-
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            await Update<Batch>(Method.Post, $"batches/{id}/label", new Dictionary<string, object>
             {
                 {
                     "file_format", fileFormat
                 }
-            };
-
-            request.AddParameters(parameters);
-            Merge(await request.Execute<Batch>());
+            });
         }
 
         /// <summary>
@@ -106,10 +91,7 @@ namespace EasyPost.Models
         /// </summary>
         public async Task GenerateScanForm()
         {
-            Request request = new Request("batches/{id}/scan_form", Method.Post);
-            request.AddUrlSegment("id", id);
-
-            Merge(await request.Execute<Batch>());
+            await Update<Batch>(Method.Post, $"batches/{id}/scan_form");
         }
 
         /// <summary>
@@ -118,24 +100,18 @@ namespace EasyPost.Models
         /// <param name="shipmentIds">List of shipment ids to be removed.</param>
         public async Task RemoveShipments(IEnumerable<string> shipmentIds)
         {
-            Request request = new Request("batches/{id}/remove_shipments", Method.Post);
-            request.AddUrlSegment("id", id);
-
-            List<Dictionary<string, object>> lShipments = shipmentIds
-                .Select(shipmentId => new Dictionary<string, object>
-                {
-                    {
-                        "id", shipmentId
-                    }
-                }).ToList();
-            request.AddParameters(new Dictionary<string, object>
+            await Update<Batch>(Method.Post, $"batches/{id}/remove_shipments", new Dictionary<string, object>
             {
                 {
-                    "shipments", lShipments
+                    "shipments", shipmentIds
+                        .Select(shipmentId => new Dictionary<string, object>
+                        {
+                            {
+                                "id", shipmentId
+                            }
+                        }).ToList()
                 }
             });
-
-            Merge(await request.Execute<Batch>());
         }
 
         /// <summary>

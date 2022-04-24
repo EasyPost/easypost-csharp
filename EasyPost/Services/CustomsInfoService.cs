@@ -8,7 +8,7 @@ namespace EasyPost.Services
 {
     public class CustomsInfoService : Service
     {
-        public CustomsInfoService(ApiClient client) : base(client)
+        public CustomsInfoService(Client client) : base(client)
         {
         }
 

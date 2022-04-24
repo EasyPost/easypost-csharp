@@ -7,8 +7,18 @@ namespace EasyPost.Services
 {
     public class CarrierAccountService : Service
     {
-        public CarrierAccountService(ApiClient client) : base(client)
+        public CarrierAccountService(Client client) : base(client)
         {
+        }
+
+
+        /// <summary>
+        ///     List all available carrier accounts.
+        /// </summary>
+        /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
+        public async Task<List<CarrierAccount>> All()
+        {
+            return await List<List<CarrierAccount>>("carrier_accounts");
         }
 
         /// <summary>
@@ -32,16 +42,6 @@ namespace EasyPost.Services
                     "carrier_account", parameters
                 }
             });
-        }
-
-
-        /// <summary>
-        ///     List all available carrier accounts.
-        /// </summary>
-        /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
-        public async Task<List<CarrierAccount>> All()
-        {
-            return await List<List<CarrierAccount>>("carrier_accounts");
         }
 
         /// <summary>

@@ -3,14 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using EasyPost.Utilities;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace EasyPost.Interfaces
 {
     public class Resource
     {
-        [JsonIgnore] public ApiClient? Client;
+        [JsonIgnore] internal Client? Client;
 
         public override bool Equals(object obj)
         {
@@ -34,7 +36,7 @@ namespace EasyPost.Interfaces
         ///     Get the dictionary representation of this object instance.
         /// </summary>
         /// <returns>A key-value dictionary representation of this object instance's attributes.</returns>
-        public Dictionary<string, object?> AsDictionary() =>
+        internal Dictionary<string, object?> AsDictionary() =>
             GetType()
                 .GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
                 .ToDictionary(info => info.Name, info => GetValue(info));
@@ -43,22 +45,40 @@ namespace EasyPost.Interfaces
         ///     Get the JSON representation of this object instance.
         /// </summary>
         /// <returns>A JSON string representation of this object instance's attributes</returns>
-        public string? AsJson()
+        internal string? AsJson()
         {
             return JsonSerialization.ConvertObjectToJson(this);
         }
 
-        /// <summary>
-        ///     Merge the properties of this object instance with the properties of another object instance.
-        ///     Adds properties from the input object instance into this object instance.
-        /// </summary>
-        /// <param name="source">Object instance to extract properties from to merge into this object instance.</param>
-        public void Merge(object source)
+        internal async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
         {
-            foreach (PropertyInfo property in source.GetType().GetProperties())
+            if (Client == null)
             {
-                property.SetValue(this, property.GetValue(source, null), null);
+                throw new Exception("Client is null");
             }
+
+            return await Client.Request<T>(method, url, parameters, rootElement);
+        }
+
+        internal async Task<bool> Request(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null)
+        {
+            if (Client == null)
+            {
+                throw new Exception("Client is null");
+            }
+
+            return await Client.Request(method, url, parameters, rootElement);
+        }
+
+        internal async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
+        {
+            var updatedObject = await Request<T>(method, url, parameters, rootElement);
+            if (updatedObject == null)
+            {
+                throw new Exception("Failed to update object");
+            }
+
+            Merge(updatedObject);
         }
 
         private object? GetValue(PropertyInfo info)
@@ -83,67 +103,16 @@ namespace EasyPost.Interfaces
         }
 
         /// <summary>
-        ///     Deserialize a JSON string into an object instance.
+        ///     Merge the properties of this object instance with the properties of another object instance.
+        ///     Adds properties from the input object instance into this object instance.
         /// </summary>
-        /// <param name="json">The JSON to deserialize.</param>
-        /// <typeparam name="T">The type of object to generate.</typeparam>
-        /// <returns>An instance of a T type object.</returns>
-        public static T Load<T>(string json) where T : Resource => JsonSerialization.ConvertJsonToObject<T>(json);
-
-        /// <summary>
-        ///     Load a dictionary of properties into an object instance.
-        /// </summary>
-        /// <param name="attributes">A dictionary of key-value pairs of attributes for the object instance.</param>
-        /// <typeparam name="T">The type of object to create.</typeparam>
-        /// <returns>An instance of a T type object.</returns>
-        public static T LoadFromDictionary<T>(Dictionary<string, object> attributes) where T : Resource
+        /// <param name="source">Object instance to extract properties from to merge into this object instance.</param>
+        private void Merge(object source)
         {
-            Type type = typeof(T);
-            T resource = (T)Activator.CreateInstance(type);
-
-            foreach (PropertyInfo property in type.GetProperties())
+            foreach (PropertyInfo property in source.GetType().GetProperties())
             {
-                if (attributes.TryGetValue(property.Name, out object? attribute) == false)
-                {
-                    continue;
-                }
-
-                if (property.PropertyType.GetInterfaces().Contains(typeof(Resource)))
-                {
-                    MethodInfo method = property.PropertyType
-                        .GetMethod("LoadFromDictionary",
-                            BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.Public)
-                        .MakeGenericMethod(property.PropertyType);
-
-                    property.SetValue(resource, method.Invoke(resource, new[]
-                    {
-                        attribute
-                    }), null);
-                }
-                else if (typeof(IEnumerable<Resource>).IsAssignableFrom(property.PropertyType))
-                {
-                    property.SetValue(resource, Activator.CreateInstance(property.PropertyType), null);
-
-                    Type genericType = property.PropertyType.GetGenericArguments()[0];
-                    MethodInfo method = genericType.GetMethod("LoadFromDictionary",
-                            BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.Public)
-                        .MakeGenericMethod(genericType);
-
-                    foreach (Dictionary<string, object> attr in (List<Dictionary<string, object>>)attribute)
-                    {
-                        ((IList)property.GetValue(resource, null)).Add(method.Invoke(resource, new object[]
-                        {
-                            attr
-                        }));
-                    }
-                }
-                else
-                {
-                    property.SetValue(resource, attribute, null);
-                }
+                property.SetValue(this, property.GetValue(source, null), null);
             }
-
-            return resource;
         }
     }
 }

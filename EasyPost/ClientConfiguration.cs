@@ -5,7 +5,7 @@ namespace EasyPost
     /// </summary>
     public class ClientConfiguration
     {
-        internal const string DefaultBaseUrl = "https://api.easypost.com/v2";
+        private const string DefaultBaseUrl = "https://api.easypost.com/v2";
 
         /// <summary>
         ///     The API base URI to use on a per-request basis.
@@ -20,19 +20,11 @@ namespace EasyPost
         ///     Create an EasyPost.ClientConfiguration instance.
         /// </summary>
         /// <param name="apiKey">The API key to use for the client connection.</param>
-        public ClientConfiguration(string apiKey) : this(apiKey, DefaultBaseUrl)
-        {
-        }
-
-        /// <summary>
-        ///     Create an EasyPost.ClientConfiguration instance.
-        /// </summary>
-        /// <param name="apiKey">The API key to use for the client connection.</param>
         /// <param name="apiBase">The base API url to use for the client connection.</param>
-        public ClientConfiguration(string apiKey, string apiBase)
+        public ClientConfiguration(string apiKey, string? apiBase = null)
         {
             ApiKey = apiKey;
-            ApiBase = apiBase;
+            ApiBase = apiBase ?? DefaultBaseUrl;
         }
     }
 }

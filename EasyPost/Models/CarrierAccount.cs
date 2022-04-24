@@ -35,10 +35,7 @@ namespace EasyPost.Models
         /// <returns>Whether the request was successful or not.</returns>
         public async Task<bool> Delete()
         {
-            Request request = new Request("carrier_accounts/{id}", Method.Delete);
-            request.AddUrlSegment("id", id);
-
-            return await request.Execute();
+            return await Request(Method.Delete, $"carrier_accounts/{id}");
         }
 
         /// <summary>
@@ -47,16 +44,7 @@ namespace EasyPost.Models
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
         public async Task Update(Dictionary<string, object> parameters)
         {
-            Request request = new Request("carrier_accounts/{id}", Method.Put);
-            request.AddUrlSegment("id", id);
-            request.AddParameters(new Dictionary<string, object>
-            {
-                {
-                    "carrier_account", parameters
-                }
-            });
-
-            Merge(await request.Execute<CarrierAccount>());
+            await Update<Webhook>(Method.Put, $"carrier_accounts/{id}", parameters);
         }
     }
 }

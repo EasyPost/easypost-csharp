@@ -55,19 +55,16 @@ namespace EasyPost.Models
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("orders/{id}/buy", Method.Post);
-            request.AddUrlSegment("id", id);
-            request.AddParameters(new Dictionary<string, object>
-            {
+            await Update<Order>(Method.Post, $"orders/{id}/buy",
+                new Dictionary<string, object>
                 {
-                    "carrier", carrier
-                },
-                {
-                    "service", service
-                }
-            });
-
-            Merge(await request.Execute<Order>());
+                    {
+                        "carrier", carrier
+                    },
+                    {
+                        "service", service
+                    }
+                });
         }
 
         /// <summary>
@@ -86,10 +83,8 @@ namespace EasyPost.Models
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("orders/{id}/rates", Method.Get);
-            request.AddUrlSegment("id", id);
-
-            rates = (await request.Execute<Order>()).rates;
+            Order order = await Request<Order>(Method.Get, $"orders/{id}/rates");
+            rates = order.rates;
         }
     }
 }

@@ -8,8 +8,21 @@ namespace EasyPost.Services
 {
     public class RefundService : Service
     {
-        public RefundService(ApiClient client) : base(client)
+        public RefundService(Client client) : base(client)
         {
+        }
+
+        /// <summary>
+        ///     List all Refund objects.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to filter the list with.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>An EasyPost.RefundCollection instance.</returns>
+        public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null)
+        {
+            return await List<RefundCollection>("refunds", parameters);
         }
 
         /// <summary>
@@ -38,19 +51,6 @@ namespace EasyPost.Services
         public async Task<Refund> Retrieve(string id)
         {
             return await Get<Refund>($"refunds/{id}");
-        }
-
-        /// <summary>
-        ///     List all Refund objects.
-        /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>An EasyPost.RefundCollection instance.</returns>
-        public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null)
-        {
-            return await List<RefundCollection>("refunds", parameters);
         }
     }
 }

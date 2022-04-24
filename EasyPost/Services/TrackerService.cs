@@ -8,32 +8,8 @@ namespace EasyPost.Services
 {
     public class TrackerService : Service
     {
-        public TrackerService(ApiClient client) : base(client)
+        public TrackerService(Client client) : base(client)
         {
-        }
-
-        /// <summary>
-        ///     Create a tracker.
-        /// </summary>
-        /// <param name="carrier">Carrier for the tracker.</param>
-        /// <param name="trackingCode">Tracking code for the tracker.</param>
-        /// <returns>An EasyPost.Tracker instance.</returns>
-        public async Task<Tracker> Create(string carrier, string trackingCode)
-        {
-            return await Create<Tracker>("trackers", new Dictionary<string, object>
-            {
-                {
-                    "tracker", new Dictionary<string, object>
-                    {
-                        {
-                            "tracking_code", trackingCode
-                        },
-                        {
-                            "carrier", carrier
-                        }
-                    }
-                }
-            });
         }
 
 
@@ -65,13 +41,27 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Retrieve a Tracker from its id.
+        ///     Create a tracker.
         /// </summary>
-        /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
-        /// <returns>EasyPost.Tracker instance.</returns>
-        public async Task<Tracker> Retrieve(string id)
+        /// <param name="carrier">Carrier for the tracker.</param>
+        /// <param name="trackingCode">Tracking code for the tracker.</param>
+        /// <returns>An EasyPost.Tracker instance.</returns>
+        public async Task<Tracker> Create(string carrier, string trackingCode)
         {
-            return await Get<Tracker>($"trackers/{id}");
+            return await Create<Tracker>("trackers", new Dictionary<string, object>
+            {
+                {
+                    "tracker", new Dictionary<string, object>
+                    {
+                        {
+                            "tracking_code", trackingCode
+                        },
+                        {
+                            "carrier", carrier
+                        }
+                    }
+                }
+            });
         }
 
         /// <summary>
@@ -88,6 +78,16 @@ namespace EasyPost.Services
                 }
             });
             // This endpoint does not return a response so we return the request was successful
+        }
+
+        /// <summary>
+        ///     Retrieve a Tracker from its id.
+        /// </summary>
+        /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
+        /// <returns>EasyPost.Tracker instance.</returns>
+        public async Task<Tracker> Retrieve(string id)
+        {
+            return await Get<Tracker>($"trackers/{id}");
         }
     }
 }
