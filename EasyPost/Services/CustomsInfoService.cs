@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Interfaces;
 using EasyPost.Models;
 using RestSharp;
 
 namespace EasyPost.Services
 {
-    public class CustomsInfos : Service
+    public class CustomsInfoService : Service
     {
-        public CustomsInfos(ApiClient client) : base(client)
+        public CustomsInfoService(ApiClient client) : base(client)
         {
         }
 

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 using EasyPost.EasyVCR;
+using EasyPost.Http;
 
 namespace EasyPost.Tests
 {

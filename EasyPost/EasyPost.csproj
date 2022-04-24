@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EasyPost.pfx">
-      <Link>Models\EasyPost.pfx</Link>
+      <Link>EasyPost.pfx</Link>
     </None>
   </ItemGroup>
 

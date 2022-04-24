@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using EasyPost.Interfaces;
 using EasyPost.Utilities;
 using Newtonsoft.Json;
 

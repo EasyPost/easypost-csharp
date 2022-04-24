@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace EasyPost.Models
+namespace EasyPost.Interfaces
 {
     public class PaginatedCollection : Resource
     {

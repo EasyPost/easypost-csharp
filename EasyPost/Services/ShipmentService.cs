@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EasyPost.Interfaces;
 using EasyPost.Models;
 
 namespace EasyPost.Services
 {
-    public class Shipments : Service
+    public class ShipmentService : Service
     {
-        public Shipments(ApiClient client) : base(client)
+        public ShipmentService(ApiClient client) : base(client)
         {
         }
 

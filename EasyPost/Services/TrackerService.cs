@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Interfaces;
 using EasyPost.Models;
 using RestSharp;
 
 namespace EasyPost.Services
 {
-    public class Trackers : Service
+    public class TrackerService : Service
     {
-        public Trackers(ApiClient client) : base(client)
+        public TrackerService(ApiClient client) : base(client)
         {
         }
 

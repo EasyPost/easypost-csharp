@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Interfaces;
 using EasyPost.Models;
 
 namespace EasyPost.Services
 {
-    public class CarrierAccounts : Service
+    public class CarrierAccountService : Service
     {
-        public CarrierAccounts(ApiClient client) : base(client)
+        public CarrierAccountService(ApiClient client) : base(client)
         {
         }
 

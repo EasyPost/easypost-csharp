@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using EasyPost.Utilities;
+using Newtonsoft.Json;
 
-namespace EasyPost.Models
+namespace EasyPost.Interfaces
 {
     public class Resource
     {
+        [JsonIgnore] public ApiClient? Client;
+
         public override bool Equals(object obj)
         {
             if (this.GetType() != obj.GetType())
@@ -23,6 +26,7 @@ namespace EasyPost.Models
                 // can't do proper comparison if either or both could not be serialized
                 return false;
             }
+
             return thisJson == otherJson;
         }
 
@@ -71,6 +75,7 @@ namespace EasyPost.Models
                     {
                         values.Add(resource.AsDictionary());
                     }
+
                     return values;
                 default:
                     return value;

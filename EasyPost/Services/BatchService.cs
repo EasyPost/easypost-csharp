@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Interfaces;
 using EasyPost.Models;
 
 namespace EasyPost.Services
 {
-    public class Batches : Service
+    public class BatchService : Service
     {
-        public Batches(ApiClient client) : base(client)
+        public BatchService(ApiClient client) : base(client)
         {
         }
 

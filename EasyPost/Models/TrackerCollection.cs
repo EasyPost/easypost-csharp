@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EasyPost.Interfaces;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models
@@ -23,7 +24,7 @@ namespace EasyPost.Models
             filters = filters ?? new Dictionary<string, object>();
             filters["before_id"] = trackers.Last().id;
 
-            return await Client.Trackers.All(filters);
+            return await Client.TrackerService.All(filters);
         }
     }
 }

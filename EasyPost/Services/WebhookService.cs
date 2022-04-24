@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Interfaces;
 using EasyPost.Models;
 using RestSharp;
 
 namespace EasyPost.Services
 {
-    public class Webhooks : Service
+    public class WebhookService : Service
     {
-        public Webhooks(ApiClient client) : base(client)
+        public WebhookService(ApiClient client) : base(client)
         {
         }
 

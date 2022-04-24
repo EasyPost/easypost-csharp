@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Interfaces;
 using EasyPost.Models;
 
 namespace EasyPost.Services
 {
-    public class Insurances : Service
+    public class InsuranceService : Service
     {
-        public Insurances(ApiClient client) : base(client)
+        public InsuranceService(ApiClient client) : base(client)
         {
         }
 

@@ -9,7 +9,7 @@ using EasyPost.Models;
 using EasyPost.Utilities;
 using RestSharp;
 
-namespace EasyPost
+namespace EasyPost.Http
 {
     public class Client
     {
@@ -107,7 +107,8 @@ namespace EasyPost
 
             if (statusCode < 400)
             {
-                return JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
+                var resource = JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
+                return resource;
             }
 
             Dictionary<string, Dictionary<string, object>> body;

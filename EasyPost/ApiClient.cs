@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using EasyPost.Http;
+using EasyPost.Models;
 using EasyPost.Services;
 
 namespace EasyPost
@@ -22,84 +24,104 @@ namespace EasyPost
             return await _client.Execute(request);
         }
 
-        public Addresses Addresses
+        public AddressService AddressService
         {
-            get { return new Addresses(this); }
+            get { return new AddressService(this); }
         }
 
-        public Batches Batches
+        public ApiKeyService ApiKeyService
         {
-            get { return new Batches(this); }
+            get { return new ApiKeyService(this); }
         }
 
-        public CarrierAccounts CarrierAccounts
+        public BatchService BatchService
         {
-            get { return new CarrierAccounts(this); }
+            get { return new BatchService(this); }
         }
 
-        public CustomsInfos CustomsInfos
+        public CarrierAccountService CarrierAccountService
         {
-            get { return new CustomsInfos(this); }
+            get { return new CarrierAccountService(this); }
         }
 
-        public CustomsItems CustomsItems
+        public CarrierTypeService CarrierTypeService
         {
-            get { return new CustomsItems(this); }
+            get { return new CarrierTypeService(this); }
         }
 
-        public Insurances Insurances
+        public CustomsInfoService CustomsInfoService
         {
-            get { return new Insurances(this); }
+            get { return new CustomsInfoService(this); }
         }
 
-        public Orders Orders
+        public CustomsItemService CustomsItemService
         {
-            get { return new Orders(this); }
+            get { return new CustomsItemService(this); }
         }
 
-        public Parcels Parcels
+        public EventService EventService
         {
-            get { return new Parcels(this); }
+            get { return new EventService(this); }
         }
 
-        public Pickups Pickups
+        public InsuranceService InsuranceService
         {
-            get { return new Pickups(this); }
+            get { return new InsuranceService(this); }
         }
 
-        public Refunds Refunds
+        public OrderService OrderService
         {
-            get { return new Refunds(this); }
+            get { return new OrderService(this); }
         }
 
-        public Reports Reports
+        public ParcelService ParcelService
         {
-            get { return new Reports(this); }
+            get { return new ParcelService(this); }
         }
 
-        public ScanForms ScanForms
+        public PickupService PickupService
         {
-            get { return new ScanForms(this); }
+            get { return new PickupService(this); }
         }
 
-        public Shipments Shipments
+        public Rates Rates
         {
-            get { return new Shipments(this); }
+            get { return new Rates(this); }
         }
 
-        public Trackers Trackers
+        public RefundService RefundService
         {
-            get { return new Trackers(this); }
+            get { return new RefundService(this); }
         }
 
-        public Users Users
+        public ReportService ReportService
         {
-            get { return new Users(this); }
+            get { return new ReportService(this); }
         }
 
-        public Webhooks Webhooks
+        public ScanFormService ScanFormService
         {
-            get { return new Webhooks(this); }
+            get { return new ScanFormService(this); }
+        }
+
+        public ShipmentService ShipmentService
+        {
+            get { return new ShipmentService(this); }
+        }
+
+        public TrackerService TrackerService
+        {
+            get { return new TrackerService(this); }
+        }
+
+        public UserService UserService
+        {
+            get { return new UserService(this); }
+        }
+
+        public WebhookService WebhookService
+        {
+            get { return new WebhookService(this); }
         }
     }
 }

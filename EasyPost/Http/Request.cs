@@ -5,7 +5,7 @@ using EasyPost.Utilities;
 using RestSharp;
 using RestSharp.Serializers;
 
-namespace EasyPost
+namespace EasyPost.Http
 {
     public class Request
     {
@@ -71,9 +71,9 @@ namespace EasyPost
         /// </summary>
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
         /// <returns>An instance of a T type object.</returns>
-        public async Task<T> Execute<T>() where T : new()
+        public async Task<T> Execute<T>(Client client) where T : new()
         {
-            Client client = BuildClient();
+            BuildRequest();
             return await client.Execute<T>(this, RootElement);
         }
 
@@ -81,9 +81,9 @@ namespace EasyPost
         ///     Execute the request.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
-        public async Task<bool> Execute()
+        public async Task<bool> Execute(Client client)
         {
-            Client client = BuildClient();
+            BuildRequest();
             return await client.Execute(this);
         }
 
@@ -91,12 +91,10 @@ namespace EasyPost
         ///     Build the client and prepare request parameters.
         /// </summary>
         /// <returns>An EasyPost.Client instance.</returns>
-        private Client BuildClient()
+        private void BuildRequest()
         {
-            Client client = ClientManager.Build();
             BuildParameters();
             BuildUrlSegments();
-            return client;
         }
 
         /// <summary>

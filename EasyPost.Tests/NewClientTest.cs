@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -11,9 +12,9 @@ namespace EasyPost.Tests
         public async Task Test()
         {
             ApiClient client = new ApiClient("api_key");
-            AddressCollection addressCollection = await client.Addresses.All();
+            AddressCollection addressCollection = await client.AddressService.All();
 
-            Shipment shipment = await client.Shipments.Create();
+            bool succeeded = await client.TrackerService.CreateList(new Dictionary<string, object>());
         }
     }
 }

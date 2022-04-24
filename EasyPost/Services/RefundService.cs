@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Interfaces;
 using EasyPost.Models;
 using RestSharp;
 
 namespace EasyPost.Services
 {
-    public class Refunds : Service
+    public class RefundService : Service
     {
-        public Refunds(ApiClient client) : base(client)
+        public RefundService(ApiClient client) : base(client)
         {
         }
 

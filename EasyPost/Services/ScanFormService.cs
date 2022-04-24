@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Interfaces;
 using EasyPost.Models;
 using RestSharp;
 
 namespace EasyPost.Services
 {
-    public class ScanForms : Service
+    public class ScanFormService : Service
     {
-        public ScanForms(ApiClient client) : base(client)
+        public ScanFormService(ApiClient client) : base(client)
         {
         }
 

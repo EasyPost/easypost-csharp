@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Http;
+using EasyPost.Interfaces;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -14,18 +16,5 @@ namespace EasyPost.Models
         public string key { get; set; }
         [JsonProperty("mode")]
         public string mode { get; set; }
-
-        /// <summary>
-        ///     Get a list of all API keys.
-        /// </summary>
-        /// <returns>A list of EasyPost.ApiKey instances.</returns>
-        public static async Task<List<ApiKey>> All()
-        {
-            Request request = new Request("api_keys", Method.Get)
-            {
-                RootElement = "keys"
-            };
-            return await request.Execute<List<ApiKey>>();
-        }
     }
 }

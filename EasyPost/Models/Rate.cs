@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using EasyPost.Http;
+using EasyPost.Interfaces;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -43,18 +45,5 @@ namespace EasyPost.Models
         public string shipment_id { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
-
-        /// <summary>
-        ///     Retrieve a Rate from its id.
-        /// </summary>
-        /// <param name="id">String representing a Rate. Starts with "rate_".</param>
-        /// <returns>EasyPost.Rate instance.</returns>
-        public static async Task<Rate> Retrieve(string id)
-        {
-            Request request = new Request("rates/{id}", Method.Get);
-            request.AddUrlSegment("id", id);
-
-            return await request.Execute<Rate>();
-        }
     }
 }

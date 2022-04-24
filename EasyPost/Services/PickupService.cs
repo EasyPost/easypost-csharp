@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Interfaces;
 using EasyPost.Models;
 using RestSharp;
 
 namespace EasyPost.Services
 {
-    public class Pickups : Service
+    public class PickupService : Service
     {
-        public Pickups(ApiClient client) : base(client)
+        public PickupService(ApiClient client) : base(client)
         {
         }
 

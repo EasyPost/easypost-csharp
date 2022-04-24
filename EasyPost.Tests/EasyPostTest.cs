@@ -1,5 +1,6 @@
 using System.Dynamic;
 using System.Threading.Tasks;
+using EasyPost.Http;
 using EasyPost.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestSharp;

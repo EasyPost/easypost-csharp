@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Http;
+using EasyPost.Interfaces;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -15,15 +17,5 @@ namespace EasyPost.Models
         public string readable { get; set; }
         [JsonProperty("type")]
         public string type { get; set; }
-
-        /// <summary>
-        ///     Get all available carrier types.
-        /// </summary>
-        /// <returns>A list of EasyPost.CarrierType instances.</returns>
-        public static async Task<List<CarrierType>> All()
-        {
-            Request request = new Request("carrier_types", Method.Get);
-            return await request.Execute<List<CarrierType>>();
-        }
     }
 }

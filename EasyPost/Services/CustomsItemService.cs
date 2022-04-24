@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Interfaces;
 using EasyPost.Models;
 
 namespace EasyPost.Services
 {
-    public class CustomsItems : Service
+    public class CustomsItemService : Service
     {
-        public CustomsItems(ApiClient client) : base(client)
+        public CustomsItemService(ApiClient client) : base(client)
         {
         }
 
