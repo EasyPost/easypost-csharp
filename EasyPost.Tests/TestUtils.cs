@@ -77,7 +77,7 @@ namespace EasyPost.Tests
                 }
             }
 
-            public void SetUpTest(string cassetteName, string overrideApiKey = null)
+            public Client SetUpTest(string cassetteName, string overrideApiKey = null)
             {
                 // override api key if needed
                 string apiKey = overrideApiKey ?? _apiKey;
@@ -88,8 +88,8 @@ namespace EasyPost.Tests
                 // add cassette to vcr
                 _vcr.Insert(cassette);
 
-                // set up EasyPost client
-                ClientManager.SetCurrent(() => new Client(new ClientConfiguration(apiKey), _vcr.Client));
+                // get EasyPost client
+                return new Client(new ClientConfiguration(apiKey), _vcr.Client);
             }
         }
     }

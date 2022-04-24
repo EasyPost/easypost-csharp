@@ -16,9 +16,9 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("batch");
         }
 
-        private static async Task<Batch> CreateBasicBatch()
+        private static async Task<Batch> CreateBasicBatch(Client client)
         {
-            return await Batch.Create(new Dictionary<string, object>
+            return await client.Batches.Create(new Dictionary<string, object>
             {
                 {
                     "shipments", new List<Dictionary<string, object>>
@@ -29,9 +29,9 @@ namespace EasyPost.Tests
             });
         }
 
-        private static async Task<Batch> CreateOneCallBuyBatch()
+        private static async Task<Batch> CreateOneCallBuyBatch(Client client)
         {
-            return await Batch.Create(new Dictionary<string, object>
+            return await client.Batches.Create(new Dictionary<string, object>
             {
                 {
                     "shipments", new List<Dictionary<string, object>>
@@ -45,9 +45,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            Client client = _vcr.SetUpTest("create");
 
-            Batch batch = await CreateBasicBatch();
+            Batch batch = await CreateBasicBatch(client);
 
             Assert.IsInstanceOfType(batch, typeof(Batch));
             Assert.IsTrue(batch.id.StartsWith("batch_"));
@@ -57,12 +57,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
+            Client client = _vcr.SetUpTest("retrieve");
 
 
-            Batch batch = await CreateBasicBatch();
+            Batch batch = await CreateBasicBatch(client);
 
-            Batch retrievedBatch = await Batch.Retrieve(batch.id);
+            Batch retrievedBatch = await client.Batches.Retrieve(batch.id);
 
             Assert.IsInstanceOfType(retrievedBatch, typeof(Batch));
             // Must compare IDs since elements of batch (i.e. status) may be different
@@ -72,9 +72,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            _vcr.SetUpTest("all");
+            Client client = _vcr.SetUpTest("all");
 
-            BatchCollection batchCollection = await Batch.All(new Dictionary<string, object>
+            BatchCollection batchCollection = await client.Batches.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -94,9 +94,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateAndBuy()
         {
-            _vcr.SetUpTest("create_and_buy");
+            Client client = _vcr.SetUpTest("create_and_buy");
 
-            Batch batch = await Batch.CreateAndBuy(new Dictionary<string, object>
+            Batch batch = await client.Batches.CreateAndBuy(new Dictionary<string, object>
             {
                 {
                     "shipments", new List<Dictionary<string, object>>
@@ -114,9 +114,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestBuy()
         {
-            _vcr.SetUpTest("buy");
+            Client client = _vcr.SetUpTest("buy");
 
-            Batch batch = await CreateOneCallBuyBatch();
+            Batch batch = await CreateOneCallBuyBatch(client);
 
             await batch.Buy();
 
@@ -127,10 +127,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateScanForm()
         {
-            _vcr.SetUpTest("create_scan_form");
+            Client client = _vcr.SetUpTest("create_scan_form");
 
 
-            Batch batch = await CreateOneCallBuyBatch();
+            Batch batch = await CreateOneCallBuyBatch(client);
             await batch.Buy();
 
             // Uncomment the following line if you need to re-record the cassette
@@ -145,11 +145,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAddRemoveShipment()
         {
-            _vcr.SetUpTest("add_remove_shipment");
+            Client client = _vcr.SetUpTest("add_remove_shipment");
 
-            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await client.Shipments.Create(Fixture.OneCallBuyShipment);
 
-            Batch batch = await Batch.Create();
+            Batch batch = await client.Batches.Create();
 
             await batch.AddShipments(new List<Shipment>
             {
@@ -169,10 +169,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestLabel()
         {
-            _vcr.SetUpTest("label");
+            Client client = _vcr.SetUpTest("label");
 
 
-            Batch batch = await CreateOneCallBuyBatch();
+            Batch batch = await CreateOneCallBuyBatch(client);
 
             // Uncomment the following line if you need to re-record the cassette
             // Thread.Sleep(2000); // Wait enough time for the batch to process buying the shipment

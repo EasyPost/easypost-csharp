@@ -41,14 +41,14 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public async Task<Batch> Create(Dictionary<string, object> parameters)
+        public async Task<Batch> Create(Dictionary<string, object>? parameters = null)
         {
-            return await Create<Batch>("batches", new Dictionary<string, object>
+            Dictionary<string, object> requestParameters = new Dictionary<string, object>();
+            if (parameters != null)
             {
-                {
-                    "batch", parameters
-                }
-            });
+                requestParameters.Add("batch", parameters);
+            }
+            return await Create<Batch>("batches", requestParameters);
         }
 
         /// <summary>

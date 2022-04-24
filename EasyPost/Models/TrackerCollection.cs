@@ -24,7 +24,7 @@ namespace EasyPost.Models
             filters = filters ?? new Dictionary<string, object>();
             filters["before_id"] = trackers.Last().id;
 
-            return await Client.TrackerService.All(filters);
+            return await Client.Trackers.All(filters);
         }
     }
 }

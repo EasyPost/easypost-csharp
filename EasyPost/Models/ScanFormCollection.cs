@@ -24,7 +24,7 @@ namespace EasyPost.Models
             filters = filters ?? new Dictionary<string, object>();
             filters["before_id"] = scan_forms.Last().id;
 
-            return await Client.ScanFormService.All(filters);
+            return await Client.ScanForms.All(filters);
         }
     }
 }

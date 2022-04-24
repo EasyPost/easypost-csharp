@@ -28,27 +28,27 @@ namespace EasyPost
         private int? _connectTimeoutMilliseconds;
         private int? _requestTimeoutMilliseconds;
 
-        public AddressService AddressService
+        public AddressService Addresses
         {
             get { return new AddressService(this); }
         }
 
-        public ApiKeyService ApiKeyService
+        public ApiKeyService ApiKeys
         {
             get { return new ApiKeyService(this); }
         }
 
-        public BatchService BatchService
+        public BatchService Batches
         {
             get { return new BatchService(this); }
         }
 
-        public CarrierAccountService CarrierAccountService
+        public CarrierAccountService CarrierAccounts
         {
             get { return new CarrierAccountService(this); }
         }
 
-        public CarrierTypeService CarrierTypeService
+        public CarrierTypeService CarrierTypes
         {
             get { return new CarrierTypeService(this); }
         }
@@ -59,52 +59,47 @@ namespace EasyPost
             set => _connectTimeoutMilliseconds = value;
         }
 
-        public CustomsInfoService CustomsInfoService
+        public CustomsInfoService CustomsInfo
         {
             get { return new CustomsInfoService(this); }
         }
 
-        public CustomsItemService CustomsItemService
+        public CustomsItemService CustomsItems
         {
             get { return new CustomsItemService(this); }
         }
 
-        public EventService EventService
+        public EventService Events
         {
             get { return new EventService(this); }
         }
 
-        public InsuranceService InsuranceService
+        public InsuranceService Insurance
         {
             get { return new InsuranceService(this); }
         }
 
-        public OrderService OrderService
+        public OrderService Orders
         {
             get { return new OrderService(this); }
         }
 
-        public ParcelService ParcelService
+        public ParcelService Parcels
         {
             get { return new ParcelService(this); }
         }
 
-        public PickupService PickupService
+        public PickupService Pickups
         {
             get { return new PickupService(this); }
         }
 
-        public Rates Rates
-        {
-            get { return new Rates(this); }
-        }
-
-        public RefundService RefundService
+        public RefundService Refunds
         {
             get { return new RefundService(this); }
         }
 
-        public ReportService ReportService
+        public ReportService Reports
         {
             get { return new ReportService(this); }
         }
@@ -115,27 +110,27 @@ namespace EasyPost
             set => _requestTimeoutMilliseconds = value;
         }
 
-        public ScanFormService ScanFormService
+        public ScanFormService ScanForms
         {
             get { return new ScanFormService(this); }
         }
 
-        public ShipmentService ShipmentService
+        public ShipmentService Shipments
         {
             get { return new ShipmentService(this); }
         }
 
-        public TrackerService TrackerService
+        public TrackerService Trackers
         {
             get { return new TrackerService(this); }
         }
 
-        public UserService UserService
+        public UserService Users
         {
             get { return new UserService(this); }
         }
 
-        public WebhookService WebhookService
+        public WebhookService Webhooks
         {
             get { return new WebhookService(this); }
         }
