@@ -44,11 +44,6 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\EasyPost.pfx">
-      <Link>EasyPost.pfx</Link>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />
     <PackageReference Include="RestSharp" Version="[107.3.0, 108.0.0)" />
   </ItemGroup>
@@ -56,7 +51,9 @@
     <Compile Remove="IResource.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models" />
+    <None Include="..\EasyPost.pfx">
+      <Link>Models\EasyPost.pfx</Link>
+    </None>
   </ItemGroup>
 
 </Project>

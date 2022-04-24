@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
+using EasyPost.Models;
 using EasyPost.Utilities;
 using RestSharp;
 

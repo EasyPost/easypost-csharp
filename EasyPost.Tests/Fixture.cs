@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Models;
 using EasyPost.Utilities;
 
 namespace EasyPost.Tests

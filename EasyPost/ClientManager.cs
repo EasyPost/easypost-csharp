@@ -1,4 +1,5 @@
 using System;
+using EasyPost.Models;
 
 namespace EasyPost
 {

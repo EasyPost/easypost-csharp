@@ -19,6 +19,12 @@ namespace EasyPost.Services
             return await Client.Execute<T>(request);
         }
 
+        protected async Task<bool> CreateBlind(string url, Dictionary<string, object>? parameters = null)
+        {
+            Request request = new Request(url, Method.Post, parameters);
+            return await Client.Execute(request);
+        }
+
         protected async Task<T> Get<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
         {
             Request request = new Request(url, Method.Get, parameters);
@@ -37,10 +43,22 @@ namespace EasyPost.Services
             return await Client.Execute<T>(request);
         }
 
+        protected async Task<bool> UpdateBlind(string url, Dictionary<string, object>? parameters = null)
+        {
+            Request request = new Request(url, Method.Put, parameters);
+            return await Client.Execute(request);
+        }
+
         protected async Task<T> Delete<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
         {
             Request request = new Request(url, Method.Delete, parameters);
             return await Client.Execute<T>(request);
+        }
+
+        protected async Task<bool> DeleteBlind(string url, Dictionary<string, object>? parameters = null)
+        {
+            Request request = new Request(url, Method.Delete, parameters);
+            return await Client.Execute(request);
         }
     }
 }
