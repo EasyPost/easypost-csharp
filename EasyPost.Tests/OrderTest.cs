@@ -16,17 +16,17 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("order");
         }
 
-        private static async Task<Order> CreateBasicOrder()
+        private static async Task<Order> CreateBasicOrder(Client client)
         {
-            return await Order.Create(Fixture.BasicOrder);
+            return await client.Orders.Create(Fixture.BasicOrder);
         }
 
         [TestMethod]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            Client client = _vcr.SetUpTest("create");
 
-            Order order = await CreateBasicOrder();
+            Order order = await CreateBasicOrder(client);
 
             Assert.IsInstanceOfType(order, typeof(Order));
             Assert.IsTrue(order.id.StartsWith("order_"));
@@ -36,12 +36,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
+            Client client = _vcr.SetUpTest("retrieve");
 
-            Order order = await CreateBasicOrder();
+            Order order = await CreateBasicOrder(client);
 
 
-            Order retrievedOrder = await Order.Retrieve(order.id);
+            Order retrievedOrder = await client.Orders.Retrieve(order.id);
 
             Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
             // Must compare IDs since other elements of objects may be different
@@ -51,10 +51,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestGetRates()
         {
-            _vcr.SetUpTest("get_rates");
+            Client client = _vcr.SetUpTest("get_rates");
 
-
-            Order order = await CreateBasicOrder();
+            Order order = await CreateBasicOrder(client);
 
             await order.GetRates();
 
@@ -70,10 +69,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestBuy()
         {
-            _vcr.SetUpTest("buy");
+            Client client = _vcr.SetUpTest("buy");
 
-
-            Order order = await CreateBasicOrder();
+            Order order = await CreateBasicOrder(client);
 
             await order.Buy(Fixture.Usps, Fixture.UspsService);
 

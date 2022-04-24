@@ -16,9 +16,9 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("report");
         }
 
-        private static async Task<Report> CreateBasicReport(string reportType)
+        private static async Task<Report> CreateBasicReport(string reportType, Client client)
         {
-            return await Report.Create(reportType, new Dictionary<string, object>
+            return await client.Reports.Create(reportType, new Dictionary<string, object>
             {
                 {
                     "start_date", Fixture.ReportDate
@@ -29,18 +29,18 @@ namespace EasyPost.Tests
             });
         }
 
-        private static async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters)
+        private static async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters, Client client)
         {
             parameters["start_date"] = Fixture.ReportDate;
             parameters["end_date"] = Fixture.ReportDate;
-            return await Report.Create(reportType, parameters);
+            return await client.Reports.Create(reportType, parameters);
         }
 
         [TestMethod]
         public async Task TestCreateReport()
         {
-            _vcr.SetUpTest("create_report");
-            Report report = await CreateBasicReport(Fixture.ReportType);
+            Client client = _vcr.SetUpTest("create_report");
+            Report report = await CreateBasicReport(Fixture.ReportType, client);
 
             Assert.IsInstanceOfType(report, typeof(Report));
             Assert.IsTrue(report.id.StartsWith(Fixture.ReportIdPrefix));
@@ -49,7 +49,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateReportWithColumns()
         {
-            _vcr.SetUpTest("create_report_with_columns");
+            Client client = _vcr.SetUpTest("create_report_with_columns");
 
             List<string> columns = new List<string>
             {
@@ -60,7 +60,7 @@ namespace EasyPost.Tests
                 {
                     "columns", columns
                 }
-            });
+            }, client);
 
             // verify parameters by checking VCR cassette for correct URL
             // Some reports take a long time to generate, so we won't be able to consistently pull the report
@@ -73,7 +73,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateReportWithAdditionalColumns()
         {
-            _vcr.SetUpTest("create_report_with_additional_columns");
+            Client client = _vcr.SetUpTest("create_report_with_additional_columns");
 
             List<string> additionalColumns = new List<string>
             {
@@ -85,7 +85,7 @@ namespace EasyPost.Tests
                 {
                     "additional_columns", additionalColumns
                 }
-            });
+            }, client);
 
             // verify parameters by checking VCR cassette for correct URL
             // Some reports take a long time to generate, so we won't be able to consistently pull the report
@@ -98,11 +98,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieveReport()
         {
-            _vcr.SetUpTest("retrieve_report");
+            Client client = _vcr.SetUpTest("retrieve_report");
 
-            Report report = await CreateBasicReport(Fixture.ReportType);
+            Report report = await CreateBasicReport(Fixture.ReportType, client);
 
-            Report retrievedReport = await Report.Retrieve(report.id);
+            Report retrievedReport = await client.Reports.Retrieve(report.id);
 
             Assert.IsInstanceOfType(retrievedReport, typeof(Report));
             Assert.AreEqual(report.start_date, retrievedReport.start_date);
@@ -112,9 +112,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            _vcr.SetUpTest("all");
+            Client client = _vcr.SetUpTest("all");
 
-            ReportCollection reportCollection = await Report.All("shipment", new Dictionary<string, object>
+            ReportCollection reportCollection = await client.Reports.All("shipment", new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize

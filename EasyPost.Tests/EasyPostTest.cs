@@ -47,17 +47,5 @@ namespace EasyPost.Tests
             Assert.AreEqual(5000, client.ConnectTimeoutMilliseconds);
             Assert.AreEqual(5000, client.RequestTimeoutMilliseconds);
         }
-
-        [TestMethod]
-        public async Task TestClientManagerGetCurrent()
-        {
-            ClientManager.SetCurrent(delegate { return new Client(new ClientConfiguration(FakeApikey, HttpBinUrl)); });
-
-            // Client should now be configured to hit httpbin.org instead of EasyPost's API
-
-            Request request = new Request("", Method.Get);
-            ExpandoObject response = await request.Execute<ExpandoObject>();
-            Assert.AreEqual(HttpBinUrl, JsonSerialization.GetValueOfExpandoObjectProperty(response, "url")?.ToString());
-        }
     }
 }

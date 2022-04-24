@@ -18,9 +18,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
+            Client client = _vcr.SetUpTest("retrieve");
 
-            Shipment shipment = await Shipment.Create(Fixture.BasicShipment);
+            Shipment shipment = await client.Shipments.Create(Fixture.BasicShipment);
 
             Rate rate = await Rate.Retrieve(shipment.rates[0].id);
 

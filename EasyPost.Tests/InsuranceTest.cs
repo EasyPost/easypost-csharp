@@ -16,17 +16,18 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("insurance");
         }
 
-        private static async Task<Insurance> CreateBasicInsurance()
+        private static async Task<Insurance> CreateBasicInsurance(Client client)
         {
-            return await Insurance.Create(await Fixture.BasicInsurance());
+            Dictionary<string, object> basicInsurance = await Fixture.BasicInsurance(client);
+            return await client.Insurance.Create(basicInsurance);
         }
 
         [TestMethod]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            Client client = _vcr.SetUpTest("create");
 
-            Insurance insurance = await CreateBasicInsurance();
+            Insurance insurance = await CreateBasicInsurance(client);
 
             Assert.IsInstanceOfType(insurance, typeof(Insurance));
             Assert.IsTrue(insurance.id.StartsWith("ins_"));
@@ -37,12 +38,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
+            Client client = _vcr.SetUpTest("retrieve");
 
+            Insurance insurance = await CreateBasicInsurance(client);
 
-            Insurance insurance = await CreateBasicInsurance();
-
-            Insurance retrievedInsurance = await Insurance.Retrieve(insurance.id);
+            Insurance retrievedInsurance = await client.Insurance.Retrieve(insurance.id);
             Assert.IsInstanceOfType(retrievedInsurance, typeof(Insurance));
             // Must compare IDs since other elements of object may be different
             Assert.AreEqual(insurance.id, retrievedInsurance.id);
@@ -51,9 +51,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            _vcr.SetUpTest("all");
+            Client client = _vcr.SetUpTest("all");
 
-            InsuranceCollection insuranceCollection = await Insurance.All(new Dictionary<string, object>
+            InsuranceCollection insuranceCollection = await client.Insurance.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize

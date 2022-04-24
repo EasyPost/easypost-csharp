@@ -16,9 +16,9 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("event");
         }
 
-        private static async Task<EventCollection> GetBasicEventCollection()
+        private static async Task<EventCollection> GetBasicEventCollection(Client client)
         {
-            return await Event.All(new Dictionary<string, object>
+            return await client.Events.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -29,9 +29,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            _vcr.SetUpTest("all");
+            Client client = _vcr.SetUpTest("all");
 
-            EventCollection eventCollection = await GetBasicEventCollection();
+            EventCollection eventCollection = await GetBasicEventCollection(client);
 
             List<Event> events = eventCollection.events;
 
@@ -46,13 +46,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
+            Client client = _vcr.SetUpTest("retrieve");
 
-
-            EventCollection eventCollection = await GetBasicEventCollection();
+            EventCollection eventCollection = await GetBasicEventCollection(client);
             Event _event = eventCollection.events[0];
 
-            Event retrievedEvent = await Event.Retrieve(_event.id);
+            Event retrievedEvent = await client.Events.Retrieve(_event.id);
 
             Assert.IsInstanceOfType(retrievedEvent, typeof(Event));
             // Must compare IDs because other elements of objects may be different

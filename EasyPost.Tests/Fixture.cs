@@ -370,9 +370,9 @@ namespace EasyPost.Tests
             }
         }
 
-        public static async Task<Dictionary<string, object>> BasicInsurance()
+        public static async Task<Dictionary<string, object>> BasicInsurance(Client client)
         {
-            Shipment shipment = await Shipment.Create(OneCallBuyShipment);
+            Shipment shipment = await client.Shipments.Create(OneCallBuyShipment);
             return new Dictionary<string, object>
             {
                 {

@@ -16,10 +16,10 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("scan_form");
         }
 
-        private static async Task<ScanForm> GetBasicScanForm()
+        private static async Task<ScanForm> GetBasicScanForm(Client client)
         {
-            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
-            return await ScanForm.Create(new List<Shipment>
+            Shipment shipment = await client.Shipments.Create(Fixture.OneCallBuyShipment);
+            return await client.ScanForms.Create(new List<Shipment>
             {
                 shipment
             });
@@ -28,9 +28,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            Client client = _vcr.SetUpTest("create");
 
-            ScanForm scanForm = await GetBasicScanForm();
+            ScanForm scanForm = await GetBasicScanForm(client);
 
             Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
             Assert.IsTrue(scanForm.id.StartsWith("sf_"));
@@ -39,12 +39,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
+            Client client = _vcr.SetUpTest("retrieve");
 
+            ScanForm scanForm = await GetBasicScanForm(client);
 
-            ScanForm scanForm = await GetBasicScanForm();
-
-            ScanForm retrievedScanForm = await ScanForm.Retrieve(scanForm.id);
+            ScanForm retrievedScanForm = await client.ScanForms.Retrieve(scanForm.id);
 
             Assert.IsInstanceOfType(retrievedScanForm, typeof(ScanForm));
             Assert.AreEqual(scanForm, retrievedScanForm);
@@ -53,9 +52,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            _vcr.SetUpTest("all");
+            Client client = _vcr.SetUpTest("all");
 
-            ScanFormCollection scanFormCollection = await ScanForm.All(new Dictionary<string, object>
+            ScanFormCollection scanFormCollection = await client.ScanForms.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize

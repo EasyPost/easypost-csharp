@@ -16,17 +16,17 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("tracker");
         }
 
-        private static async Task<Tracker> CreateBasicTracker()
+        private static async Task<Tracker> CreateBasicTracker(Client client)
         {
-            return await Tracker.Create(Fixture.Usps, "EZ1000000001");
+            return await client.Trackers.Create(Fixture.Usps, "EZ1000000001");
         }
 
         [TestMethod]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            Client client = _vcr.SetUpTest("create");
 
-            Tracker tracker = await CreateBasicTracker();
+            Tracker tracker = await CreateBasicTracker(client);
 
             Assert.IsInstanceOfType(tracker, typeof(Tracker));
             Assert.IsTrue(tracker.id.StartsWith("trk_"));
@@ -36,13 +36,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
-
+            Client client = _vcr.SetUpTest("retrieve");
 
             // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
-            Tracker tracker = await CreateBasicTracker();
+            Tracker tracker = await CreateBasicTracker(client);
 
-            Tracker retrievedTracker = await Tracker.Retrieve(tracker.id);
+            Tracker retrievedTracker = await client.Trackers.Retrieve(tracker.id);
 
             Assert.IsInstanceOfType(retrievedTracker, typeof(Tracker));
             // Must compare IDs because other elements of objects may be different
@@ -52,9 +51,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            _vcr.SetUpTest("all");
+            Client client = _vcr.SetUpTest("all");
 
-            TrackerCollection trackerCollection = await Tracker.All(new Dictionary<string, object>
+            TrackerCollection trackerCollection = await client.Trackers.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -74,9 +73,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateList()
         {
-            _vcr.SetUpTest("create_list");
+            Client client = _vcr.SetUpTest("create_list");
 
-            bool success = await Tracker.CreateList(new Dictionary<string, object>
+            bool success = await client.Trackers.CreateList(new Dictionary<string, object>
             {
                 {
                     "0", new Dictionary<string, object>

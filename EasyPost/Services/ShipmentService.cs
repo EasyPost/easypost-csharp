@@ -57,14 +57,14 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.Shipment instance.</returns>
-        public async Task<Shipment> Create(Dictionary<string, object> parameters)
+        public async Task<Shipment> Create(Dictionary<string, object>? parameters = null)
         {
-            return await Create<Shipment>("shipments", new Dictionary<string, object>
+            Dictionary<string, object> requestParameters = new Dictionary<string, object>();
+            if (parameters != null)
             {
-                {
-                    "shipment", parameters
-                }
-            });
+                requestParameters.Add("shipment", parameters);
+            }
+            return await Create<Shipment>("shipments", requestParameters);
         }
 
         /// <summary>
