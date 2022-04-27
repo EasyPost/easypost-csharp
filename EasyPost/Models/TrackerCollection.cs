@@ -13,7 +13,7 @@ namespace EasyPost.Models
         [JsonProperty("trackers")]
         public List<Tracker>? trackers { get; set; }
 
-        public new V2Client V2Client { get; set; } // override the BaseClient property with a v2Client property
+        public new V2Client V2Client { get; set; } // override the BaseClient property with a client property
 
         /// <summary>
         ///     Get the next page of trackers based on the original parameters passed to Tracker.All().

@@ -19,11 +19,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            V2Client v2Client = _vcr.SetUpTest("retrieve");
+            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
 
-            Shipment shipment = await v2Client.Shipments.Create(Fixture.BasicShipment);
+            Shipment shipment = await client.Shipments.Create(Fixture.BasicShipment);
 
-            Rate rate = await v2Client.Rates.Retrieve(shipment.rates[0].id);
+            Rate rate = await client.Rates.Retrieve(shipment.rates[0].id);
 
             Assert.IsInstanceOfType(rate, typeof(Rate));
             Assert.IsTrue(rate.id.StartsWith("rate_"));

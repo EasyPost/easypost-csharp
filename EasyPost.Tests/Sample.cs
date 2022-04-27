@@ -10,9 +10,9 @@ namespace EasyPost.Tests
     {
         public async Task Main()
         {
-            V2Client v2Client = new V2Client("my_api_key");
+            V2Client client = new V2Client("my_api_key");
 
-            var c = v2Client.CarrierTypes;
+            var c = client.CarrierTypes;
 
         }
     }

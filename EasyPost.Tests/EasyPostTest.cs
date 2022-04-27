@@ -16,12 +16,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public void TestTimeout()
         {
-            V2Client v2Client = new V2Client(FakeApikey);
-            v2Client.ConnectTimeoutMilliseconds = 5000;
-            v2Client.RequestTimeoutMilliseconds = 5000;
+            V2Client client = new V2Client(FakeApikey);
+            client.ConnectTimeoutMilliseconds = 5000;
+            client.RequestTimeoutMilliseconds = 5000;
 
-            Assert.AreEqual(5000, v2Client.ConnectTimeoutMilliseconds);
-            Assert.AreEqual(5000, v2Client.RequestTimeoutMilliseconds);
+            Assert.AreEqual(5000, client.ConnectTimeoutMilliseconds);
+            Assert.AreEqual(5000, client.RequestTimeoutMilliseconds);
         }
     }
 }

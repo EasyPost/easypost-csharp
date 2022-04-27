@@ -14,7 +14,7 @@ namespace EasyPost.Models
         public List<Report> reports { get; set; }
         [JsonProperty("type")]
         public string type { get; set; }
-        public new V2Client V2Client { get; set; } // override the BaseClient property with a v2Client property
+        public new V2Client V2Client { get; set; } // override the BaseClient property with a client property
 
         /// <summary>
         ///     Get the next page of reports based on the original parameters passed to ReportList.All().

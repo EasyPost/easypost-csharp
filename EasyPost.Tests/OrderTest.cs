@@ -17,17 +17,17 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("order");
         }
 
-        private static async Task<Order> CreateBasicOrder(V2Client v2Client)
+        private static async Task<Order> CreateBasicOrder(V2Client client)
         {
-            return await v2Client.Orders.Create(Fixture.BasicOrder);
+            return await client.Orders.Create(Fixture.BasicOrder);
         }
 
         [TestMethod]
         public async Task TestCreate()
         {
-            V2Client v2Client = _vcr.SetUpTest("create");
+            V2Client client = (V2Client)_vcr.SetUpTest("create");
 
-            Order order = await CreateBasicOrder(v2Client);
+            Order order = await CreateBasicOrder(client);
 
             Assert.IsInstanceOfType(order, typeof(Order));
             Assert.IsTrue(order.id.StartsWith("order_"));
@@ -37,12 +37,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            V2Client v2Client = _vcr.SetUpTest("retrieve");
+            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
 
-            Order order = await CreateBasicOrder(v2Client);
+            Order order = await CreateBasicOrder(client);
 
 
-            Order retrievedOrder = await v2Client.Orders.Retrieve(order.id);
+            Order retrievedOrder = await client.Orders.Retrieve(order.id);
 
             Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
             // Must compare IDs since other elements of objects may be different
@@ -52,9 +52,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestGetRates()
         {
-            V2Client v2Client = _vcr.SetUpTest("get_rates");
+            V2Client client = (V2Client)_vcr.SetUpTest("get_rates");
 
-            Order order = await CreateBasicOrder(v2Client);
+            Order order = await CreateBasicOrder(client);
 
             await order.GetRates();
 
@@ -70,9 +70,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestBuy()
         {
-            V2Client v2Client = _vcr.SetUpTest("buy");
+            V2Client client = (V2Client)_vcr.SetUpTest("buy");
 
-            Order order = await CreateBasicOrder(v2Client);
+            Order order = await CreateBasicOrder(client);
 
             await order.Buy(Fixture.Usps, Fixture.UspsService);
 

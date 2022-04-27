@@ -25,13 +25,13 @@ namespace EasyPost.Tests
         }
 
         [TestCleanup]
-        public async Task Cleanup(V2Client v2Client)
+        public async Task Cleanup(V2Client client)
         {
             if (_webhookId != null)
             {
                 try
                 {
-                    Webhook retrievedWebhook = await v2Client.Webhooks.Retrieve(_webhookId);
+                    Webhook retrievedWebhook = await client.Webhooks.Retrieve(_webhookId);
                     await retrievedWebhook.Delete();
                     _webhookId = null;
                 }
@@ -41,9 +41,9 @@ namespace EasyPost.Tests
             }
         }
 
-        private static async Task<Webhook> CreateBasicWebhook(string url, V2Client v2Client)
+        private static async Task<Webhook> CreateBasicWebhook(string url, V2Client client)
         {
-            return await v2Client.Webhooks.Create(new Dictionary<string, object>
+            return await client.Webhooks.Create(new Dictionary<string, object>
             {
                 {
                     "url", url
@@ -54,9 +54,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            V2Client v2Client = _vcr.SetUpTest("create");
+            V2Client client = (V2Client)_vcr.SetUpTest("create");
 
-            Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl, v2Client);
+            Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl, client);
 
             Assert.IsInstanceOfType(webhook, typeof(Webhook));
             Assert.IsTrue(webhook.id.StartsWith("hook_"));
@@ -68,11 +68,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            V2Client v2Client = _vcr.SetUpTest("retrieve");
+            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
 
-            Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl, v2Client);
+            Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl, client);
 
-            Webhook retrievedWebhook = await v2Client.Webhooks.Retrieve(webhook.id);
+            Webhook retrievedWebhook = await client.Webhooks.Retrieve(webhook.id);
 
             Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
             Assert.AreEqual(webhook, retrievedWebhook);
@@ -83,9 +83,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            V2Client v2Client = _vcr.SetUpTest("all");
+            V2Client client = (V2Client)_vcr.SetUpTest("all");
 
-            List<Webhook> webhooks = await v2Client.Webhooks.All();
+            List<Webhook> webhooks = await client.Webhooks.All();
 
             foreach (var item in webhooks)
             {
@@ -98,9 +98,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestUpdate()
         {
-            V2Client v2Client = _vcr.SetUpTest("update");
+            V2Client client = (V2Client)_vcr.SetUpTest("update");
 
-            Webhook webhook = await v2Client.Webhooks.Retrieve("123...");
+            Webhook webhook = await client.Webhooks.Retrieve("123...");
 
             await webhook.Update();
         }
@@ -108,10 +108,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestDelete()
         {
-            V2Client v2Client = _vcr.SetUpTest("delete");
+            V2Client client = (V2Client)_vcr.SetUpTest("delete");
 
-            Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl, v2Client);
-            Webhook retrievedWebhook = await v2Client.Webhooks.Retrieve(webhook.id);
+            Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl, client);
+            Webhook retrievedWebhook = await client.Webhooks.Retrieve(webhook.id);
 
             bool success = await retrievedWebhook.Delete();
 

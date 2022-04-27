@@ -1,5 +1,6 @@
 using System.Net.Http;
 using EasyPost.Interfaces;
+using EasyPost.Services.Beta;
 
 namespace EasyPost.Clients
 {
@@ -7,7 +8,12 @@ namespace EasyPost.Clients
     {
         private const string ApiVersion = "beta";
 
-        /// <summary>
+        public PartnerService Partners
+        {
+            get { return new PartnerService(this); }
+        }
+
+            /// <summary>
         ///     Constructor for the Beta EasyPost client.
         /// </summary>
         /// <param name="apiKey">API key to use with this client.</param>

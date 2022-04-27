@@ -17,18 +17,18 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("insurance");
         }
 
-        private static async Task<Insurance> CreateBasicInsurance(V2Client v2Client)
+        private static async Task<Insurance> CreateBasicInsurance(V2Client client)
         {
-            Dictionary<string, object> basicInsurance = await Fixture.BasicInsurance(v2Client);
-            return await v2Client.Insurance.Create(basicInsurance);
+            Dictionary<string, object> basicInsurance = await Fixture.BasicInsurance(client);
+            return await client.Insurance.Create(basicInsurance);
         }
 
         [TestMethod]
         public async Task TestCreate()
         {
-            V2Client v2Client = _vcr.SetUpTest("create");
+            V2Client client = (V2Client)_vcr.SetUpTest("create");
 
-            Insurance insurance = await CreateBasicInsurance(v2Client);
+            Insurance insurance = await CreateBasicInsurance(client);
 
             Assert.IsInstanceOfType(insurance, typeof(Insurance));
             Assert.IsTrue(insurance.id.StartsWith("ins_"));
@@ -39,11 +39,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            V2Client v2Client = _vcr.SetUpTest("retrieve");
+            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
 
-            Insurance insurance = await CreateBasicInsurance(v2Client);
+            Insurance insurance = await CreateBasicInsurance(client);
 
-            Insurance retrievedInsurance = await v2Client.Insurance.Retrieve(insurance.id);
+            Insurance retrievedInsurance = await client.Insurance.Retrieve(insurance.id);
             Assert.IsInstanceOfType(retrievedInsurance, typeof(Insurance));
             // Must compare IDs since other elements of object may be different
             Assert.AreEqual(insurance.id, retrievedInsurance.id);
@@ -52,9 +52,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            V2Client v2Client = _vcr.SetUpTest("all");
+            V2Client client = (V2Client)_vcr.SetUpTest("all");
 
-            InsuranceCollection insuranceCollection = await v2Client.Insurance.All(new Dictionary<string, object>
+            InsuranceCollection insuranceCollection = await client.Insurance.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize

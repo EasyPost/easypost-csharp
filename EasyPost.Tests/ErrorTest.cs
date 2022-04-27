@@ -19,11 +19,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestError()
         {
-            V2Client v2Client = _vcr.SetUpTest("error");
+            V2Client client = (V2Client)_vcr.SetUpTest("error");
 
             try
             {
-                var _ = await v2Client.Shipments.Create();
+                var _ = await client.Shipments.Create();
             }
             catch (HttpException error)
             {

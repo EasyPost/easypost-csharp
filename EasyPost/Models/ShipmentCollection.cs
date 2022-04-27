@@ -13,7 +13,7 @@ namespace EasyPost.Models
         [JsonProperty("shipments")]
         public List<Shipment> shipments { get; set; }
 
-        public new V2Client V2Client { get; set; } // override the BaseClient property with a v2Client property
+        public new V2Client V2Client { get; set; } // override the BaseClient property with a client property
 
         /// <summary>
         ///     Get the next page of shipments based on the original parameters passed to Shipment.All().

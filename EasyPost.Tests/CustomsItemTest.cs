@@ -16,17 +16,17 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("customs_item");
         }
 
-        private static async Task<CustomsItem> CreateBasicCustomsItem(V2Client v2Client)
+        private static async Task<CustomsItem> CreateBasicCustomsItem(V2Client client)
         {
-            return await v2Client.CustomsItems.Create(Fixture.BasicCustomsItem);
+            return await client.CustomsItems.Create(Fixture.BasicCustomsItem);
         }
 
         [TestMethod]
         public async Task TestCreate()
         {
-            V2Client v2Client = _vcr.SetUpTest("create");
+            V2Client client = (V2Client)_vcr.SetUpTest("create");
 
-            CustomsItem customsItem = await CreateBasicCustomsItem(v2Client);
+            CustomsItem customsItem = await CreateBasicCustomsItem(client);
 
             Assert.IsInstanceOfType(customsItem, typeof(CustomsItem));
             Assert.IsTrue(customsItem.id.StartsWith("cstitem_"));
@@ -36,11 +36,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            V2Client v2Client = _vcr.SetUpTest("retrieve");
+            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
 
-            CustomsItem customsItem = await CreateBasicCustomsItem(v2Client);
+            CustomsItem customsItem = await CreateBasicCustomsItem(client);
 
-            CustomsItem retrievedCustomsItem = await v2Client.CustomsItems.Retrieve(customsItem.id);
+            CustomsItem retrievedCustomsItem = await client.CustomsItems.Retrieve(customsItem.id);
 
             Assert.IsInstanceOfType(retrievedCustomsItem, typeof(CustomsItem));
             Assert.AreEqual(customsItem, retrievedCustomsItem);
