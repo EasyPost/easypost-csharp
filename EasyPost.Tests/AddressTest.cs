@@ -12,7 +12,7 @@ namespace EasyPost.Tests
         [TestInitialize]
         public void Initialize()
         {
-            _vcr = new TestUtils.VCR("addresses");
+            _vcr = new TestUtils.VCR("address");
         }
 
         private static async Task<Address> CreateBasicAddress()
