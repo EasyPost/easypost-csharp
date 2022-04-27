@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models;
-using RestSharp;
 
 namespace EasyPost.Services
 {

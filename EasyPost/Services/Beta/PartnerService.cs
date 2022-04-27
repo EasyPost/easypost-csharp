@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Interfaces;
-using EasyPost.Models;
 using EasyPost.Models.Beta;
 
 namespace EasyPost.Services.Beta

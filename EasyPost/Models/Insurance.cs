@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Http;
 using EasyPost.Interfaces;
 using Newtonsoft.Json;
 using RestSharp;

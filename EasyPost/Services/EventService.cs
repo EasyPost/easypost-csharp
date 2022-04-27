@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Http;
 using EasyPost.Interfaces;
 using EasyPost.Models;
-using RestSharp;
 
 namespace EasyPost.Services
 {
