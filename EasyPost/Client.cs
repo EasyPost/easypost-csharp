@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
@@ -204,7 +205,18 @@ namespace EasyPost
             if (statusCode < 400)
             {
                 var resource = JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
-                ((resource as Resource)!).Client = this;
+                if (resource is IList list)
+                {
+                    foreach (object element in list)
+                    {
+                        ((element as Resource)!).Client = this;
+                    }
+                }
+                else
+                {
+                    ((resource as Resource)!).Client = this;
+                }
+
                 return resource;
             }
 

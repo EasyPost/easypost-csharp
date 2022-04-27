@@ -71,7 +71,7 @@ namespace EasyPost.Services
         /// <returns>True</returns>
         public async Task<bool> CreateList(Dictionary<string, object> parameters)
         {
-            return await CreateBlind("trackers", new Dictionary<string, object>
+            return await CreateBlind("trackers/create_list", new Dictionary<string, object>
             {
                 {
                     "trackers", parameters

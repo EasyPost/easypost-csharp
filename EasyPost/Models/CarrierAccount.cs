@@ -44,7 +44,7 @@ namespace EasyPost.Models
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
         public async Task Update(Dictionary<string, object> parameters)
         {
-            await Update<Webhook>(Method.Put, $"carrier_accounts/{id}", parameters);
+            await Update<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", parameters);
         }
     }
 }

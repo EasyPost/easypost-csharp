@@ -69,7 +69,7 @@ namespace EasyPost.Models
         /// </param>
         public async Task Update(Dictionary<string, object> parameters)
         {
-            await Update<User>(Method.Put, "users/{id}", new Dictionary<string, object>
+            await Update<User>(Method.Put, $"users/{id}", new Dictionary<string, object>
             {
                 {
                     "user", parameters
