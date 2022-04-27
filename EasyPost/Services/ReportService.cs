@@ -7,7 +7,7 @@ namespace EasyPost.Services
 {
     public class ReportService : Service
     {
-        public ReportService(Client client) : base(client)
+        internal ReportService(Client client) : base(client)
         {
         }
 

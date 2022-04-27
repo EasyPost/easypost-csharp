@@ -11,7 +11,7 @@ namespace EasyPost.Models
         [JsonProperty("longitude")]
         public float longitude { get; set; }
         [JsonProperty("time_zone")]
-        public string time_zone { get; set; }
+        public string? time_zone { get; set; }
 
         /// <summary>
         ///     Deserialize JSON data into an object instance.

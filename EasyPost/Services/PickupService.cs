@@ -8,7 +8,7 @@ namespace EasyPost.Services
 {
     public class PickupService : Service
     {
-        public PickupService(Client client) : base(client)
+        internal PickupService(Client client) : base(client)
         {
         }
 

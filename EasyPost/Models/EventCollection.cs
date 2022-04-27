@@ -4,11 +4,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models
 {
-    public class EventCollection : Resource
+    public class EventCollection : Collection
     {
         [JsonProperty("events")]
         public List<Event> events { get; set; }
-        [JsonProperty("has_more")]
-        public bool has_more { get; set; }
     }
 }

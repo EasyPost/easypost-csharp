@@ -8,7 +8,7 @@ namespace EasyPost.Services
 {
     public class TrackerService : Service
     {
-        public TrackerService(Client client) : base(client)
+        internal TrackerService(Client client) : base(client)
         {
         }
 

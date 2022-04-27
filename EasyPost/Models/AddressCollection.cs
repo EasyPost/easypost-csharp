@@ -4,11 +4,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models
 {
-    public class AddressCollection : Resource
+    public class AddressCollection : Collection
     {
         [JsonProperty("addresses")]
         public List<Address> addresses { get; set; }
-        [JsonProperty("has_more")]
-        public bool has_more { get; set; }
     }
 }

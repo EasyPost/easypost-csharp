@@ -7,22 +7,11 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Public Class VbCompileTest
     <TestMethod>
     Public Sub TestCompile()
-        'API key is not set, so calling CarrierType.All() will produce an error. But if this runs, then the code compiled properly.
-        Assert.ThrowsException(Of ClientNotConfigured)(Function() CarrierType.All())
-    End Sub
-
-    <TestMethod>
-    Public Sub TestAddress()
-        Dim addressData As New Dictionary(Of String, Object)()
-
-        addressData.Add("name", "John Smith")
-        addressData.Add("street1", "123 Main St")
-        addressData.Add("city", "San Francisco")
-        addressData.Add("state", "CA")
-        addressData.Add("zip", "94107")
-        addressData.Add("country", "US")
-
-        'Without an API key, this will throw an error. But as long as it's a ClientNotConfigured exception, it's a success.
-        Assert.ThrowsException(Of ClientNotConfigured)(Function() Address.Create(addressData))
+        'MSTest does not seem to support asynchronous tests in VB, so we can't attempt any API calls.'
+        'We'll work off the assumption that if this code compiles, then we have VB compatibility.'
+        Dim client = New Client(apiKey:="")
+        Dim carrierTypesService = client.CarrierTypes
+        Assert.IsNotNull(carrierTypesService)
+        Assert.IsInstanceOfType(carrierTypesService.All(), GetType(Task(Of List(Of CarrierType))))
     End Sub
 End Class

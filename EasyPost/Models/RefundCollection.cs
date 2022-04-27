@@ -4,10 +4,8 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models
 {
-    public class RefundCollection : Resource
+    public class RefundCollection : Collection
     {
-        [JsonProperty("has_more")]
-        public bool has_more { get; set; }
         [JsonProperty("refunds")]
         public List<Refund> refunds { get; set; }
     }

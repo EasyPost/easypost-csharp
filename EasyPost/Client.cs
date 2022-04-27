@@ -94,6 +94,11 @@ namespace EasyPost
             get { return new PickupService(this); }
         }
 
+        public RateService Rates
+        {
+            get { return new RateService(this); }
+        }
+
         public RefundService Refunds
         {
             get { return new RefundService(this); }

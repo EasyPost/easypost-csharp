@@ -8,7 +8,7 @@ namespace EasyPost.Services
 {
     public class WebhookService : Service
     {
-        public WebhookService(Client client) : base(client)
+        internal WebhookService(Client client) : base(client)
         {
         }
 

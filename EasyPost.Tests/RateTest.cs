@@ -22,7 +22,7 @@ namespace EasyPost.Tests
 
             Shipment shipment = await client.Shipments.Create(Fixture.BasicShipment);
 
-            Rate rate = await Rate.Retrieve(shipment.rates[0].id);
+            Rate rate = await client.Rates.Retrieve(shipment.rates[0].id);
 
             Assert.IsInstanceOfType(rate, typeof(Rate));
             Assert.IsTrue(rate.id.StartsWith("rate_"));

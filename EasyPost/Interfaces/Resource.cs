@@ -12,7 +12,7 @@ namespace EasyPost.Interfaces
 {
     public class Resource
     {
-        [JsonIgnore] internal Client? Client;
+        [JsonIgnore] internal Client Client;
 
         public override bool Equals(object obj)
         {
@@ -36,7 +36,7 @@ namespace EasyPost.Interfaces
         ///     Get the dictionary representation of this object instance.
         /// </summary>
         /// <returns>A key-value dictionary representation of this object instance's attributes.</returns>
-        internal Dictionary<string, object?> AsDictionary() =>
+        protected Dictionary<string, object?> AsDictionary() =>
             GetType()
                 .GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
                 .ToDictionary(info => info.Name, info => GetValue(info));
@@ -45,12 +45,12 @@ namespace EasyPost.Interfaces
         ///     Get the JSON representation of this object instance.
         /// </summary>
         /// <returns>A JSON string representation of this object instance's attributes</returns>
-        internal string? AsJson()
+        protected string? AsJson()
         {
             return JsonSerialization.ConvertObjectToJson(this);
         }
 
-        internal async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
+        protected async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
         {
             if (Client == null)
             {
@@ -60,7 +60,7 @@ namespace EasyPost.Interfaces
             return await Client.Request<T>(method, url, parameters, rootElement);
         }
 
-        internal async Task<bool> Request(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null)
+        protected async Task<bool> Request(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null)
         {
             if (Client == null)
             {
@@ -70,7 +70,7 @@ namespace EasyPost.Interfaces
             return await Client.Request(method, url, parameters, rootElement);
         }
 
-        internal async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
+        protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
         {
             var updatedObject = await Request<T>(method, url, parameters, rootElement);
             if (updatedObject == null)

@@ -8,7 +8,7 @@ namespace EasyPost.Services
 {
     public class ScanFormService : Service
     {
-        public ScanFormService(Client client) : base(client)
+        internal ScanFormService(Client client) : base(client)
         {
         }
 

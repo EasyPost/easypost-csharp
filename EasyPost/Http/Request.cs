@@ -7,7 +7,7 @@ using RestSharp.Serializers;
 
 namespace EasyPost.Http
 {
-    public class Request
+    internal class Request
     {
         public readonly string? RootElement;
 

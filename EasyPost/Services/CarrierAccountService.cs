@@ -7,7 +7,7 @@ namespace EasyPost.Services
 {
     public class CarrierAccountService : Service
     {
-        public CarrierAccountService(Client client) : base(client)
+        internal CarrierAccountService(Client client) : base(client)
         {
         }
 

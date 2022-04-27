@@ -60,8 +60,4 @@ namespace EasyPost.Models
             _property = property;
         }
     }
-
-    [Serializable]
-    public class ClientNotConfigured : Exception
-    {}
 }

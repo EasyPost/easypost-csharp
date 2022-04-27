@@ -4,11 +4,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models
 {
-    public class BatchCollection : Resource
+    public class BatchCollection : Collection
     {
         [JsonProperty("batches")]
         public List<Batch> batches { get; set; }
-        [JsonProperty("has_more")]
-        public bool has_more { get; set; }
     }
 }
