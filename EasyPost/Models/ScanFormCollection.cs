@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Interfaces;
 using Newtonsoft.Json;
 
@@ -12,6 +13,8 @@ namespace EasyPost.Models
         [JsonProperty("scan_forms")]
         public List<ScanForm> scan_forms { get; set; }
 
+        public new V2Client V2Client { get; set; } // override the BaseClient property with a v2Client property
+
         /// <summary>
         ///     Get the next page of scan forms based on the original parameters passed to ScanForm.All().
         /// </summary>
@@ -21,12 +24,12 @@ namespace EasyPost.Models
             filters = filters ?? new Dictionary<string, object>();
             filters["before_id"] = scan_forms.Last().id;
 
-            if (Client == null)
+            if (V2Client == null)
             {
                 throw new Exception("Client is null");
             }
 
-            return await Client.ScanForms.All(filters);
+            return await V2Client.ScanForms.All(filters);
         }
     }
 }

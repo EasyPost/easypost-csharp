@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,17 +17,17 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("addresses");
         }
 
-        private static async Task<Address> CreateBasicAddress(Client client)
+        private static async Task<Address> CreateBasicAddress(V2Client v2Client)
         {
-            return await client.Addresses.Create(Fixture.BasicAddress);
+            return await v2Client.Addresses.Create(Fixture.BasicAddress);
         }
 
         [TestMethod]
         public async Task TestCreate()
         {
-            Client client = _vcr.SetUpTest("create");
+            V2Client v2Client = _vcr.SetUpTest("create");
 
-            Address address = await CreateBasicAddress(client);
+            Address address = await CreateBasicAddress(v2Client);
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.id.StartsWith("adr_"));
@@ -36,7 +37,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateVerifyStrict()
         {
-            Client client = _vcr.SetUpTest("create_verify_strict");
+            V2Client v2Client = _vcr.SetUpTest("create_verify_strict");
 
             Dictionary<string, object> addressData = Fixture.BasicAddress;
             addressData.Add("verify_strict", new List<bool>
@@ -44,7 +45,7 @@ namespace EasyPost.Tests
                 true
             });
 
-            Address address = await client.Addresses.Create(addressData);
+            Address address = await v2Client.Addresses.Create(addressData);
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.id.StartsWith("adr_"));
@@ -55,12 +56,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            Client client = _vcr.SetUpTest("retrieve");
+            V2Client v2Client = _vcr.SetUpTest("retrieve");
 
 
-            Address address = await client.Addresses.Create(Fixture.BasicAddress);
+            Address address = await v2Client.Addresses.Create(Fixture.BasicAddress);
 
-            Address retrievedAddress = await client.Addresses.Retrieve(address.id);
+            Address retrievedAddress = await v2Client.Addresses.Retrieve(address.id);
 
             Assert.IsInstanceOfType(retrievedAddress, typeof(Address));
             Assert.AreEqual(address, retrievedAddress);
@@ -69,9 +70,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            Client client = _vcr.SetUpTest("all");
+            V2Client v2Client = _vcr.SetUpTest("all");
 
-            AddressCollection addressCollection = await client.Addresses.All(new Dictionary<string, object>
+            AddressCollection addressCollection = await v2Client.Addresses.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -91,9 +92,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateVerify()
         {
-            Client client = _vcr.SetUpTest("create_verify");
+            V2Client v2Client = _vcr.SetUpTest("create_verify");
 
-            Address address = await client.Addresses.Create(Fixture.IncorrectAddressToVerify);
+            Address address = await v2Client.Addresses.Create(Fixture.IncorrectAddressToVerify);
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.id.StartsWith("adr_"));
@@ -103,7 +104,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateAndVerify()
         {
-            Client client = _vcr.SetUpTest("create_and_verify");
+            V2Client v2Client = _vcr.SetUpTest("create_and_verify");
 
             Dictionary<string, object> addressData = Fixture.BasicAddress;
             addressData.Add("verify_strict", new List<bool>
@@ -111,7 +112,7 @@ namespace EasyPost.Tests
                 true
             });
 
-            Address address = await client.Addresses.CreateAndVerify(addressData);
+            Address address = await v2Client.Addresses.CreateAndVerify(addressData);
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.id.StartsWith("adr_"));
@@ -121,10 +122,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestVerify()
         {
-            Client client = _vcr.SetUpTest("verify");
+            V2Client v2Client = _vcr.SetUpTest("verify");
 
 
-            Address address = await CreateBasicAddress(client);
+            Address address = await CreateBasicAddress(v2Client);
 
             await address.Verify();
 

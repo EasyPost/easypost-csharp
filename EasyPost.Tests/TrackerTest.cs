@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,17 +17,17 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("tracker");
         }
 
-        private static async Task<Tracker> CreateBasicTracker(Client client)
+        private static async Task<Tracker> CreateBasicTracker(V2Client v2Client)
         {
-            return await client.Trackers.Create(Fixture.Usps, "EZ1000000001");
+            return await v2Client.Trackers.Create(Fixture.Usps, "EZ1000000001");
         }
 
         [TestMethod]
         public async Task TestCreate()
         {
-            Client client = _vcr.SetUpTest("create");
+            V2Client v2Client = _vcr.SetUpTest("create");
 
-            Tracker tracker = await CreateBasicTracker(client);
+            Tracker tracker = await CreateBasicTracker(v2Client);
 
             Assert.IsInstanceOfType(tracker, typeof(Tracker));
             Assert.IsTrue(tracker.id.StartsWith("trk_"));
@@ -36,12 +37,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            Client client = _vcr.SetUpTest("retrieve");
+            V2Client v2Client = _vcr.SetUpTest("retrieve");
 
             // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
-            Tracker tracker = await CreateBasicTracker(client);
+            Tracker tracker = await CreateBasicTracker(v2Client);
 
-            Tracker retrievedTracker = await client.Trackers.Retrieve(tracker.id);
+            Tracker retrievedTracker = await v2Client.Trackers.Retrieve(tracker.id);
 
             Assert.IsInstanceOfType(retrievedTracker, typeof(Tracker));
             // Must compare IDs because other elements of objects may be different
@@ -51,9 +52,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            Client client = _vcr.SetUpTest("all");
+            V2Client v2Client = _vcr.SetUpTest("all");
 
-            TrackerCollection trackerCollection = await client.Trackers.All(new Dictionary<string, object>
+            TrackerCollection trackerCollection = await v2Client.Trackers.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -73,9 +74,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateList()
         {
-            Client client = _vcr.SetUpTest("create_list");
+            V2Client v2Client = _vcr.SetUpTest("create_list");
 
-            bool success = await client.Trackers.CreateList(new Dictionary<string, object>
+            bool success = await v2Client.Trackers.CreateList(new Dictionary<string, object>
             {
                 {
                     "0", new Dictionary<string, object>

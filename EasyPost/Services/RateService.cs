@@ -6,7 +6,7 @@ namespace EasyPost.Services
 {
     public class RateService : Service
     {
-        internal RateService(Client client) : base(client)
+        internal RateService(BaseClient client) : base(client)
         {
         }
 

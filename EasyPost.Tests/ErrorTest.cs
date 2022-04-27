@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -18,11 +19,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestError()
         {
-            Client client = _vcr.SetUpTest("error");
+            V2Client v2Client = _vcr.SetUpTest("error");
 
             try
             {
-                var _ = await client.Shipments.Create();
+                var _ = await v2Client.Shipments.Create();
             }
             catch (HttpException error)
             {

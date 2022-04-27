@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,17 +17,17 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("carrier_account", TestUtils.ApiKey.Production);
         }
 
-        private static async Task<CarrierAccount> CreateBasicCarrierAccount(Client client)
+        private static async Task<CarrierAccount> CreateBasicCarrierAccount(V2Client v2Client)
         {
-            return await client.CarrierAccounts.Create(Fixture.BasicCarrierAccount);
+            return await v2Client.CarrierAccounts.Create(Fixture.BasicCarrierAccount);
         }
 
         [TestMethod]
         public async Task TestCreate()
         {
-            Client client = _vcr.SetUpTest("create");
+            V2Client v2Client = _vcr.SetUpTest("create");
 
-            CarrierAccount carrierAccount = await CreateBasicCarrierAccount(client);
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount(v2Client);
 
             Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
             Assert.IsTrue(carrierAccount.id.StartsWith("ca_"));
@@ -35,11 +36,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            Client client = _vcr.SetUpTest("retrieve");
+            V2Client v2Client = _vcr.SetUpTest("retrieve");
 
-            CarrierAccount carrierAccount = await CreateBasicCarrierAccount(client);
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount(v2Client);
 
-            CarrierAccount retrievedCarrierAccount = await client.CarrierAccounts.Retrieve(carrierAccount.id);
+            CarrierAccount retrievedCarrierAccount = await v2Client.CarrierAccounts.Retrieve(carrierAccount.id);
 
             Assert.IsInstanceOfType(retrievedCarrierAccount, typeof(CarrierAccount));
             Assert.AreEqual(carrierAccount, retrievedCarrierAccount);
@@ -48,9 +49,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            Client client = _vcr.SetUpTest("all");
+            V2Client v2Client = _vcr.SetUpTest("all");
 
-            List<CarrierAccount> carrierAccounts = await client.CarrierAccounts.All();
+            List<CarrierAccount> carrierAccounts = await v2Client.CarrierAccounts.All();
 
             foreach (var item in carrierAccounts)
             {
@@ -61,10 +62,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestUpdate()
         {
-            Client client = _vcr.SetUpTest("update");
+            V2Client v2Client = _vcr.SetUpTest("update");
 
 
-            CarrierAccount carrierAccount = await CreateBasicCarrierAccount(client);
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount(v2Client);
 
             string testDescription = "my custom description";
 
@@ -84,10 +85,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestDelete()
         {
-            Client client = _vcr.SetUpTest("delete");
+            V2Client v2Client = _vcr.SetUpTest("delete");
 
 
-            CarrierAccount carrierAccount = await CreateBasicCarrierAccount(client);
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount(v2Client);
 
             bool success = await carrierAccount.Delete();
 
@@ -97,9 +98,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestTypes()
         {
-            Client client = _vcr.SetUpTest("types");
+            V2Client v2Client = _vcr.SetUpTest("types");
 
-            List<CarrierType> types = await client.CarrierTypes.All();
+            List<CarrierType> types = await v2Client.CarrierTypes.All();
 
             foreach (var item in types)
             {

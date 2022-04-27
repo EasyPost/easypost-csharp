@@ -12,7 +12,7 @@ namespace EasyPost.Interfaces
 {
     public class Resource
     {
-        [JsonIgnore] internal Client Client;
+        [JsonIgnore] internal BaseClient Client;
 
         public override bool Equals(object obj)
         {

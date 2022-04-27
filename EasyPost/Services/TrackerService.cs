@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models;
 using RestSharp;
@@ -8,7 +9,7 @@ namespace EasyPost.Services
 {
     public class TrackerService : Service
     {
-        internal TrackerService(Client client) : base(client)
+        internal TrackerService(BaseClient client) : base(client)
         {
         }
 
@@ -36,7 +37,7 @@ namespace EasyPost.Services
         {
             TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters);
             trackerCollection.filters = parameters;
-            trackerCollection.Client = Client;
+            trackerCollection.V2Client = (V2Client)Client; // specifically needs a v2 client
             return trackerCollection;
         }
 

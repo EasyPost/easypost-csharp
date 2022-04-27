@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -9,9 +10,9 @@ namespace EasyPost.Tests
     {
         public async Task Main()
         {
-            Client client = new Client("my_api_key");
+            V2Client v2Client = new V2Client("my_api_key");
 
-            var c = client.CarrierTypes;
+            var c = v2Client.CarrierTypes;
 
         }
     }

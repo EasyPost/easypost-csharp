@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,10 +17,10 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("scan_form");
         }
 
-        private static async Task<ScanForm> GetBasicScanForm(Client client)
+        private static async Task<ScanForm> GetBasicScanForm(V2Client v2Client)
         {
-            Shipment shipment = await client.Shipments.Create(Fixture.OneCallBuyShipment);
-            return await client.ScanForms.Create(new List<Shipment>
+            Shipment shipment = await v2Client.Shipments.Create(Fixture.OneCallBuyShipment);
+            return await v2Client.ScanForms.Create(new List<Shipment>
             {
                 shipment
             });
@@ -28,9 +29,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            Client client = _vcr.SetUpTest("create");
+            V2Client v2Client = _vcr.SetUpTest("create");
 
-            ScanForm scanForm = await GetBasicScanForm(client);
+            ScanForm scanForm = await GetBasicScanForm(v2Client);
 
             Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
             Assert.IsTrue(scanForm.id.StartsWith("sf_"));
@@ -39,11 +40,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            Client client = _vcr.SetUpTest("retrieve");
+            V2Client v2Client = _vcr.SetUpTest("retrieve");
 
-            ScanForm scanForm = await GetBasicScanForm(client);
+            ScanForm scanForm = await GetBasicScanForm(v2Client);
 
-            ScanForm retrievedScanForm = await client.ScanForms.Retrieve(scanForm.id);
+            ScanForm retrievedScanForm = await v2Client.ScanForms.Retrieve(scanForm.id);
 
             Assert.IsInstanceOfType(retrievedScanForm, typeof(ScanForm));
             Assert.AreEqual(scanForm, retrievedScanForm);
@@ -52,9 +53,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            Client client = _vcr.SetUpTest("all");
+            V2Client v2Client = _vcr.SetUpTest("all");
 
-            ScanFormCollection scanFormCollection = await client.ScanForms.All(new Dictionary<string, object>
+            ScanFormCollection scanFormCollection = await v2Client.ScanForms.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize

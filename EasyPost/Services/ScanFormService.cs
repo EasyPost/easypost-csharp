@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models;
 using RestSharp;
@@ -8,7 +9,7 @@ namespace EasyPost.Services
 {
     public class ScanFormService : Service
     {
-        internal ScanFormService(Client client) : base(client)
+        internal ScanFormService(BaseClient client) : base(client)
         {
         }
 
@@ -32,7 +33,7 @@ namespace EasyPost.Services
         {
             ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
             scanFormCollection.filters = parameters;
-            scanFormCollection.Client = Client;
+            scanFormCollection.V2Client = (V2Client)Client; // specifically needs a v2 client
             return scanFormCollection;
         }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -20,9 +21,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            Client client = _vcr.SetUpTest("create");
+            V2Client v2Client = _vcr.SetUpTest("create");
 
-            Shipment shipment = await client.Shipments.Create(Fixture.FullShipment);
+            Shipment shipment = await v2Client.Shipments.Create(Fixture.FullShipment);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.id.StartsWith("shp_"));
@@ -35,11 +36,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            Client client = _vcr.SetUpTest("retrieve");
+            V2Client v2Client = _vcr.SetUpTest("retrieve");
 
-            Shipment shipment = await client.Shipments.Create(Fixture.FullShipment);
+            Shipment shipment = await v2Client.Shipments.Create(Fixture.FullShipment);
 
-            Shipment retrievedShipment = await client.Shipments.Retrieve(shipment.id);
+            Shipment retrievedShipment = await v2Client.Shipments.Retrieve(shipment.id);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.AreEqual(shipment, retrievedShipment);
@@ -48,9 +49,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            Client client = _vcr.SetUpTest("all");
+            V2Client v2Client = _vcr.SetUpTest("all");
 
-            ShipmentCollection shipmentCollection = await client.Shipments.All(new Dictionary<string, object>
+            ShipmentCollection shipmentCollection = await v2Client.Shipments.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -70,9 +71,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestBuy()
         {
-            Client client = _vcr.SetUpTest("buy");
+            V2Client v2Client = _vcr.SetUpTest("buy");
 
-            Shipment shipment = await client.Shipments.Create(Fixture.FullShipment);
+            Shipment shipment = await v2Client.Shipments.Create(Fixture.FullShipment);
 
             await shipment.Buy(shipment.LowestRate());
 
@@ -82,9 +83,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRegenerateRates()
         {
-            Client client = _vcr.SetUpTest("regenerate_rates");
+            V2Client v2Client = _vcr.SetUpTest("regenerate_rates");
 
-            Shipment shipment = await client.Shipments.Create(Fixture.FullShipment);
+            Shipment shipment = await v2Client.Shipments.Create(Fixture.FullShipment);
 
             await shipment.RegenerateRates();
 
@@ -100,9 +101,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestConvertLabel()
         {
-            Client client = _vcr.SetUpTest("convert_label");
+            V2Client v2Client = _vcr.SetUpTest("convert_label");
 
-            Shipment shipment = await client.Shipments.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await v2Client.Shipments.Create(Fixture.OneCallBuyShipment);
 
             await shipment.GenerateLabel("ZPL");
 
@@ -114,13 +115,13 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestInsure()
         {
-            Client client = _vcr.SetUpTest("insure");
+            V2Client v2Client = _vcr.SetUpTest("insure");
 
             Dictionary<string, object> shipmentData = Fixture.OneCallBuyShipment;
             // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
             shipmentData["insurance"] = 0;
 
-            Shipment shipment = await client.Shipments.Create(shipmentData);
+            Shipment shipment = await v2Client.Shipments.Create(shipmentData);
 
             await shipment.Insure(100);
 
@@ -133,9 +134,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRefund()
         {
-            Client client = _vcr.SetUpTest("refund");
+            V2Client v2Client = _vcr.SetUpTest("refund");
 
-            Shipment shipment = await client.Shipments.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await v2Client.Shipments.Create(Fixture.OneCallBuyShipment);
 
             await shipment.Refund();
 
@@ -145,9 +146,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestSmartrate()
         {
-            Client client = _vcr.SetUpTest("smartrate");
+            V2Client v2Client = _vcr.SetUpTest("smartrate");
 
-            Shipment shipment = await client.Shipments.Create(Fixture.BasicShipment);
+            Shipment shipment = await v2Client.Shipments.Create(Fixture.BasicShipment);
 
             Assert.IsNotNull(shipment.rates);
 
@@ -167,7 +168,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateEmptyObjects()
         {
-            Client client = _vcr.SetUpTest("create_empty_objects");
+            V2Client v2Client = _vcr.SetUpTest("create_empty_objects");
 
             Dictionary<string, object> shipmentData = Fixture.BasicShipment;
 
@@ -178,7 +179,7 @@ namespace EasyPost.Tests
             shipmentData["tax_identifiers"] = null;
             shipmentData["reference"] = "";
 
-            Shipment shipment = await client.Shipments.Create(shipmentData);
+            Shipment shipment = await v2Client.Shipments.Create(shipmentData);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.id.StartsWith("shp_"));
@@ -191,7 +192,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateTaxIdentifiers()
         {
-            Client client = _vcr.SetUpTest("create_tax_identifiers");
+            V2Client v2Client = _vcr.SetUpTest("create_tax_identifiers");
 
             Dictionary<string, object> shipmentData = Fixture.BasicShipment;
             shipmentData["tax_identifiers"] = new List<Dictionary<string, object>>
@@ -199,7 +200,7 @@ namespace EasyPost.Tests
                 Fixture.TaxIdentifier
             };
 
-            Shipment shipment = await client.Shipments.Create(shipmentData);
+            Shipment shipment = await v2Client.Shipments.Create(shipmentData);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.id.StartsWith("shp_"));
@@ -209,13 +210,13 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateWithIds()
         {
-            Client client = _vcr.SetUpTest("create_with_ids");
+            V2Client v2Client = _vcr.SetUpTest("create_with_ids");
 
-            Address fromAddress = await client.Addresses.Create(Fixture.BasicAddress);
-            Address toAddress = await client.Addresses.Create(Fixture.BasicAddress);
-            Parcel parcel = await client.Parcels.Create(Fixture.BasicParcel);
+            Address fromAddress = await v2Client.Addresses.Create(Fixture.BasicAddress);
+            Address toAddress = await v2Client.Addresses.Create(Fixture.BasicAddress);
+            Parcel parcel = await v2Client.Parcels.Create(Fixture.BasicParcel);
 
-            Shipment shipment = await client.Shipments.Create(new Dictionary<string, object>() {
+            Shipment shipment = await v2Client.Shipments.Create(new Dictionary<string, object>() {
                 { "from_address", new Dictionary<string, object> { { "id", fromAddress.id } } },
                 { "to_address", new Dictionary<string, object> { { "id", toAddress.id } } },
                 { "parcel", new Dictionary<string, object> { { "id", parcel.id } } },

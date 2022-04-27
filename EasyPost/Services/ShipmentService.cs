@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models;
 
@@ -9,7 +10,7 @@ namespace EasyPost.Services
 {
     public class ShipmentService : Service
     {
-        internal ShipmentService(Client client) : base(client)
+        internal ShipmentService(BaseClient client) : base(client)
         {
         }
 
@@ -33,7 +34,7 @@ namespace EasyPost.Services
         {
             ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
             shipmentCollection.filters = parameters;
-            shipmentCollection.Client = Client;
+            shipmentCollection.V2Client = (V2Client)Client; // specifically needs a v2 client
             return shipmentCollection;
         }
 

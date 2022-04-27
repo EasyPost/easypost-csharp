@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using EasyPost.Clients;
 using EasyPost.EasyVCR;
 using EasyPost.Http;
 
@@ -77,7 +78,7 @@ namespace EasyPost.Tests
                 }
             }
 
-            public Client SetUpTest(string cassetteName, string overrideApiKey = null)
+            public V2Client SetUpTest(string cassetteName, string overrideApiKey = null)
             {
                 // override api key if needed
                 string apiKey = overrideApiKey ?? _apiKey;
@@ -89,7 +90,7 @@ namespace EasyPost.Tests
                 _vcr.Insert(cassette);
 
                 // get EasyPost client
-                return new Client(new ClientConfiguration(apiKey), _vcr.Client);
+                return new V2Client(apiKey, _vcr.Client);
             }
         }
     }

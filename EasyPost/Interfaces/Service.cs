@@ -1,15 +1,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Http;
 using RestSharp;
 
 namespace EasyPost.Interfaces
 {
     public class Service
     {
-        protected readonly Client Client;
+        protected readonly BaseClient Client;
 
-        protected Service(Client client)
+        protected Service(BaseClient client)
         {
             Client = client;
         }

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,17 +16,17 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("customs_info");
         }
 
-        private static async Task<CustomsInfo> CreateBasicCustomsInfo(Client client)
+        private static async Task<CustomsInfo> CreateBasicCustomsInfo(V2Client v2Client)
         {
-            return await client.CustomsInfo.Create(Fixture.BasicCustomsInfo);
+            return await v2Client.CustomsInfo.Create(Fixture.BasicCustomsInfo);
         }
 
         [TestMethod]
         public async Task TestCreate()
         {
-            Client client = _vcr.SetUpTest("create");
+            V2Client v2Client = _vcr.SetUpTest("create");
 
-            CustomsInfo customsInfo = await CreateBasicCustomsInfo(client);
+            CustomsInfo customsInfo = await CreateBasicCustomsInfo(v2Client);
 
             Assert.IsInstanceOfType(customsInfo, typeof(CustomsInfo));
             Assert.IsTrue(customsInfo.id.StartsWith("cstinfo_"));
@@ -35,11 +36,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            Client client = _vcr.SetUpTest("retrieve");
+            V2Client v2Client = _vcr.SetUpTest("retrieve");
 
-            CustomsInfo customsInfo = await CreateBasicCustomsInfo(client);
+            CustomsInfo customsInfo = await CreateBasicCustomsInfo(v2Client);
 
-            CustomsInfo retrievedCustomsInfo = await client.CustomsInfo.Retrieve(customsInfo.id);
+            CustomsInfo retrievedCustomsInfo = await v2Client.CustomsInfo.Retrieve(customsInfo.id);
 
             Assert.IsInstanceOfType(retrievedCustomsInfo, typeof(CustomsInfo));
             Assert.AreEqual(customsInfo, retrievedCustomsInfo);

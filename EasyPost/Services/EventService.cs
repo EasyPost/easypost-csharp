@@ -9,7 +9,7 @@ namespace EasyPost.Services
 {
     public class EventService : Service
     {
-        internal EventService(Client client) : base(client)
+        internal EventService(BaseClient client) : base(client)
         {
         }
 

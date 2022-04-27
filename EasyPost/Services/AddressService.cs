@@ -7,7 +7,7 @@ namespace EasyPost.Services
 {
     public class AddressService : Service
     {
-        internal AddressService(Client client) : base(client)
+        internal AddressService(BaseClient client) : base(client)
         {
         }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,9 +17,9 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("report");
         }
 
-        private static async Task<Report> CreateBasicReport(string reportType, Client client)
+        private static async Task<Report> CreateBasicReport(string reportType, V2Client v2Client)
         {
-            return await client.Reports.Create(reportType, new Dictionary<string, object>
+            return await v2Client.Reports.Create(reportType, new Dictionary<string, object>
             {
                 {
                     "start_date", Fixture.ReportDate
@@ -29,18 +30,18 @@ namespace EasyPost.Tests
             });
         }
 
-        private static async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters, Client client)
+        private static async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters, V2Client v2Client)
         {
             parameters["start_date"] = Fixture.ReportDate;
             parameters["end_date"] = Fixture.ReportDate;
-            return await client.Reports.Create(reportType, parameters);
+            return await v2Client.Reports.Create(reportType, parameters);
         }
 
         [TestMethod]
         public async Task TestCreateReport()
         {
-            Client client = _vcr.SetUpTest("create_report");
-            Report report = await CreateBasicReport(Fixture.ReportType, client);
+            V2Client v2Client = _vcr.SetUpTest("create_report");
+            Report report = await CreateBasicReport(Fixture.ReportType, v2Client);
 
             Assert.IsInstanceOfType(report, typeof(Report));
             Assert.IsTrue(report.id.StartsWith(Fixture.ReportIdPrefix));
@@ -49,7 +50,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateReportWithColumns()
         {
-            Client client = _vcr.SetUpTest("create_report_with_columns");
+            V2Client v2Client = _vcr.SetUpTest("create_report_with_columns");
 
             List<string> columns = new List<string>
             {
@@ -60,7 +61,7 @@ namespace EasyPost.Tests
                 {
                     "columns", columns
                 }
-            }, client);
+            }, v2Client);
 
             // verify parameters by checking VCR cassette for correct URL
             // Some reports take a long time to generate, so we won't be able to consistently pull the report
@@ -73,7 +74,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreateReportWithAdditionalColumns()
         {
-            Client client = _vcr.SetUpTest("create_report_with_additional_columns");
+            V2Client v2Client = _vcr.SetUpTest("create_report_with_additional_columns");
 
             List<string> additionalColumns = new List<string>
             {
@@ -85,7 +86,7 @@ namespace EasyPost.Tests
                 {
                     "additional_columns", additionalColumns
                 }
-            }, client);
+            }, v2Client);
 
             // verify parameters by checking VCR cassette for correct URL
             // Some reports take a long time to generate, so we won't be able to consistently pull the report
@@ -98,11 +99,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieveReport()
         {
-            Client client = _vcr.SetUpTest("retrieve_report");
+            V2Client v2Client = _vcr.SetUpTest("retrieve_report");
 
-            Report report = await CreateBasicReport(Fixture.ReportType, client);
+            Report report = await CreateBasicReport(Fixture.ReportType, v2Client);
 
-            Report retrievedReport = await client.Reports.Retrieve(report.id);
+            Report retrievedReport = await v2Client.Reports.Retrieve(report.id);
 
             Assert.IsInstanceOfType(retrievedReport, typeof(Report));
             Assert.AreEqual(report.start_date, retrievedReport.start_date);
@@ -112,9 +113,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAll()
         {
-            Client client = _vcr.SetUpTest("all");
+            V2Client v2Client = _vcr.SetUpTest("all");
 
-            ReportCollection reportCollection = await client.Reports.All("shipment", new Dictionary<string, object>
+            ReportCollection reportCollection = await v2Client.Reports.All("shipment", new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize

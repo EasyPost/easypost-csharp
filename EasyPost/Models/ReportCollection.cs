@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Interfaces;
 using Newtonsoft.Json;
 
@@ -13,6 +14,7 @@ namespace EasyPost.Models
         public List<Report> reports { get; set; }
         [JsonProperty("type")]
         public string type { get; set; }
+        public new V2Client V2Client { get; set; } // override the BaseClient property with a v2Client property
 
         /// <summary>
         ///     Get the next page of reports based on the original parameters passed to ReportList.All().
@@ -23,12 +25,12 @@ namespace EasyPost.Models
             filters = filters ?? new Dictionary<string, object>();
             filters["before_id"] = reports.Last().id;
 
-            if (Client == null)
+            if (V2Client == null)
             {
                 throw new Exception("Client is null");
             }
 
-            return await Client.Reports.All(type, filters);
+            return await V2Client.Reports.All(type, filters);
         }
     }
 }

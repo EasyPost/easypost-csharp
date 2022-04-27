@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,17 +17,17 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("order");
         }
 
-        private static async Task<Order> CreateBasicOrder(Client client)
+        private static async Task<Order> CreateBasicOrder(V2Client v2Client)
         {
-            return await client.Orders.Create(Fixture.BasicOrder);
+            return await v2Client.Orders.Create(Fixture.BasicOrder);
         }
 
         [TestMethod]
         public async Task TestCreate()
         {
-            Client client = _vcr.SetUpTest("create");
+            V2Client v2Client = _vcr.SetUpTest("create");
 
-            Order order = await CreateBasicOrder(client);
+            Order order = await CreateBasicOrder(v2Client);
 
             Assert.IsInstanceOfType(order, typeof(Order));
             Assert.IsTrue(order.id.StartsWith("order_"));
@@ -36,12 +37,12 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            Client client = _vcr.SetUpTest("retrieve");
+            V2Client v2Client = _vcr.SetUpTest("retrieve");
 
-            Order order = await CreateBasicOrder(client);
+            Order order = await CreateBasicOrder(v2Client);
 
 
-            Order retrievedOrder = await client.Orders.Retrieve(order.id);
+            Order retrievedOrder = await v2Client.Orders.Retrieve(order.id);
 
             Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
             // Must compare IDs since other elements of objects may be different
@@ -51,9 +52,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestGetRates()
         {
-            Client client = _vcr.SetUpTest("get_rates");
+            V2Client v2Client = _vcr.SetUpTest("get_rates");
 
-            Order order = await CreateBasicOrder(client);
+            Order order = await CreateBasicOrder(v2Client);
 
             await order.GetRates();
 
@@ -69,9 +70,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestBuy()
         {
-            Client client = _vcr.SetUpTest("buy");
+            V2Client v2Client = _vcr.SetUpTest("buy");
 
-            Order order = await CreateBasicOrder(client);
+            Order order = await CreateBasicOrder(v2Client);
 
             await order.Buy(Fixture.Usps, Fixture.UspsService);
 

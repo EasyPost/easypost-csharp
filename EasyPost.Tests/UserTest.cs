@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,14 +17,14 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("user", TestUtils.ApiKey.Production);
         }
 
-        private static async Task<User> RetrieveMe(Client client)
+        private static async Task<User> RetrieveMe(V2Client v2Client)
         {
-            return await client.Users.RetrieveMe();
+            return await v2Client.Users.RetrieveMe();
         }
 
-        private static async Task<User> CreateUser(Client client)
+        private static async Task<User> CreateUser(V2Client v2Client)
         {
-            return await client.Users.Create(new Dictionary<string, object>
+            return await v2Client.Users.Create(new Dictionary<string, object>
             {
                 {
                     "name", "Test User"
@@ -36,9 +37,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCreate()
         {
-            Client client = _vcr.SetUpTest("create");
+            V2Client v2Client = _vcr.SetUpTest("create");
 
-            User user = await CreateUser(client);
+            User user = await CreateUser(v2Client);
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
@@ -48,13 +49,13 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            Client client = _vcr.SetUpTest("retrieve");
+            V2Client v2Client = _vcr.SetUpTest("retrieve");
 
-            User authenticatedUser = await RetrieveMe(client);
+            User authenticatedUser = await RetrieveMe(v2Client);
 
             string childId = authenticatedUser.children[0].id;
 
-            User user = await client.Users.Retrieve(childId);
+            User user = await v2Client.Users.Retrieve(childId);
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
@@ -65,9 +66,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieveMe()
         {
-            Client client = _vcr.SetUpTest("retrieve_me");
+            V2Client v2Client = _vcr.SetUpTest("retrieve_me");
 
-            User user = await RetrieveMe(client);
+            User user = await RetrieveMe(v2Client);
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
@@ -76,9 +77,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestUpdate()
         {
-            Client client = _vcr.SetUpTest("update");
+            V2Client v2Client = _vcr.SetUpTest("update");
 
-            User user = await RetrieveMe(client);
+            User user = await RetrieveMe(v2Client);
 
             string testPhone = "5555555555";
 
@@ -100,10 +101,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestDelete()
         {
-            Client client = _vcr.SetUpTest("delete");
+            V2Client v2Client = _vcr.SetUpTest("delete");
 
 
-            User user = await CreateUser(client);
+            User user = await CreateUser(v2Client);
 
             await user.Delete();
         }
@@ -113,10 +114,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestAllApiKeys()
         {
-            Client client = _vcr.SetUpTest("all_api_keys");
+            V2Client v2Client = _vcr.SetUpTest("all_api_keys");
 
 
-            User user = await RetrieveMe(client);
+            User user = await RetrieveMe(v2Client);
 
             // TODO: User doesn't have a .all_api_keys() method
             List<ApiKey> apiKeys = user.api_keys;
@@ -127,9 +128,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestApiKeys()
         {
-            Client client = _vcr.SetUpTest("api_keys");
+            V2Client v2Client = _vcr.SetUpTest("api_keys");
 
-            User user = await RetrieveMe(client);
+            User user = await RetrieveMe(v2Client);
 
             List<ApiKey> apiKeys = user.api_keys;
         }
@@ -137,9 +138,9 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestUpdateBrand()
         {
-            Client client = _vcr.SetUpTest("update_brand");
+            V2Client v2Client = _vcr.SetUpTest("update_brand");
 
-            User user = await RetrieveMe(client);
+            User user = await RetrieveMe(v2Client);
 
             string color = "#123456";
             Brand brand = await user.UpdateBrand(new Dictionary<string, object>

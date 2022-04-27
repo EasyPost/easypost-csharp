@@ -7,7 +7,7 @@ namespace EasyPost.Services
 {
     public class CustomsItemService : Service
     {
-        internal CustomsItemService(Client client) : base(client)
+        internal CustomsItemService(BaseClient client) : base(client)
         {
         }
 

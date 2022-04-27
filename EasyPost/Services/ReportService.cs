@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models;
 
@@ -7,7 +8,7 @@ namespace EasyPost.Services
 {
     public class ReportService : Service
     {
-        internal ReportService(Client client) : base(client)
+        internal ReportService(BaseClient client) : base(client)
         {
         }
 
@@ -31,7 +32,7 @@ namespace EasyPost.Services
             ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters);
             reportCollection.filters = parameters;
             reportCollection.type = type;
-            reportCollection.Client = Client;
+            reportCollection.V2Client = (V2Client)Client; // specifically needs a v2 client
             return reportCollection;
         }
 

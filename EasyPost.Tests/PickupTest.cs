@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,20 +17,20 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("pickup");
         }
 
-        private static async Task<Pickup> CreateBasicPickup(Client client)
+        private static async Task<Pickup> CreateBasicPickup(V2Client v2Client)
         {
-            Shipment shipment = await client.Shipments.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await v2Client.Shipments.Create(Fixture.OneCallBuyShipment);
             Dictionary<string, object> pickupData = Fixture.BasicPickup;
             pickupData["shipment"] = shipment;
-            return await client.Pickups.Create(pickupData);
+            return await v2Client.Pickups.Create(pickupData);
         }
 
         [TestMethod]
         public async Task TestCreate()
         {
-            Client client = _vcr.SetUpTest("create");
+            V2Client v2Client = _vcr.SetUpTest("create");
 
-            Pickup pickup = await CreateBasicPickup(client);
+            Pickup pickup = await CreateBasicPickup(v2Client);
 
             Assert.IsInstanceOfType(pickup, typeof(Pickup));
             Assert.IsTrue(pickup.id.StartsWith("pickup_"));
@@ -39,11 +40,11 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestRetrieve()
         {
-            Client client = _vcr.SetUpTest("retrieve");
+            V2Client v2Client = _vcr.SetUpTest("retrieve");
 
-            Pickup pickup = await CreateBasicPickup(client);
+            Pickup pickup = await CreateBasicPickup(v2Client);
 
-            Pickup retrievedPickup = await client.Pickups.Retrieve(pickup.id);
+            Pickup retrievedPickup = await v2Client.Pickups.Retrieve(pickup.id);
 
             Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
             Assert.AreEqual(pickup, retrievedPickup);
@@ -52,10 +53,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestBuy()
         {
-            Client client = _vcr.SetUpTest("buy");
+            V2Client v2Client = _vcr.SetUpTest("buy");
 
             //use "TestCreate"
-            Pickup pickup = await CreateBasicPickup(client);
+            Pickup pickup = await CreateBasicPickup(v2Client);
 
             await pickup.Buy(Fixture.Usps, Fixture.PickupService);
 
@@ -68,10 +69,10 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestCancel()
         {
-            Client client = _vcr.SetUpTest("cancel");
+            V2Client v2Client = _vcr.SetUpTest("cancel");
 
             //use "TestCreate"
-            Pickup pickup = await CreateBasicPickup(client);
+            Pickup pickup = await CreateBasicPickup(v2Client);
 
             await pickup.Buy(Fixture.Usps, Fixture.PickupService);
 

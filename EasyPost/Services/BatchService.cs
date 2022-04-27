@@ -7,7 +7,7 @@ namespace EasyPost.Services
 {
     public class BatchService : Service
     {
-        internal BatchService(Client client) : base(client)
+        internal BatchService(BaseClient client) : base(client)
         {
         }
 
