@@ -124,7 +124,7 @@ git submodule update --recursive
 
 ### Testing
 
-The test suite in this project was specifically built to produce consistent results on every run, regardless of when they run or who is running them. This project uses [EasyVCR](https://github.com/easypost/scotch) to record and replay HTTP requests and responses via "cassettes". When the suite is run, the HTTP requests and responses for each test function will be saved to a cassette if they do not exist already and replayed from this saved file if they do, which saves the need to make live API calls on every test run.
+The test suite in this project was specifically built to produce consistent results on every run, regardless of when they run or who is running them. This project uses [EasyVCR](https://www.nuget.org/packages/EasyVCR/) to record and replay HTTP requests and responses via "cassettes". When the suite is run, the HTTP requests and responses for each test function will be saved to a cassette if they do not exist already and replayed from this saved file if they do, which saves the need to make live API calls on every test run.
 
 If you make an addition to this project, the request/response will get recorded automatically for you if a `_vcr.SetUpTest("testName");` is included in the test function. When making changes to this project, you'll need to re-record the associated cassette to force a new live API call for that test which will then record the request/response used on the next run.
 

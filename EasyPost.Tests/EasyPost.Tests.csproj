@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EasyVCR" Version="0.1.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />
@@ -22,7 +23,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EasyPost\EasyPost.csproj" />
-    <ProjectReference Include="..\Scotch\EasyPost.EasyVCR\EasyPost.EasyVCR.csproj" />
   </ItemGroup>
 
   <ItemGroup>
