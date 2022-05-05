@@ -1,0 +1,100 @@
+[
+  {
+    "Duration": 174,
+    "RecordedAt": "2022-05-05T16:53:03.015158-06:00",
+    "Request": {
+      "Body": "{\n  \"customs_info\": {\n    \"eel_pfc\": \"NOEEI 30.37(a)\",\n    \"customs_certify\": true,\n    \"customs_signer\": \"Dr. Steve Brule\",\n    \"contents_type\": \"merchandise\",\n    \"contents_explanation\": \"\",\n    \"restriction_type\": \"none\",\n    \"non_delivery_option\": \"return\",\n    \"customs_items\": [\n      {\n        \"description\": \"Sweet shirts\",\n        \"quantity\": 2,\n        \"weight\": 11,\n        \"value\": 23.0,\n        \"hs_tariff_number\": 654321,\n        \"origin_country\": \"US\"\n      }\n    ]\n  }\n}",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "351"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Accept": "application/json",
+        "Authorization": "*****",
+        "content_type": "application/json",
+        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/3.1.24"
+      },
+      "Uri": "https://api.easypost.com/v2/customs_infos"
+    },
+    "Response": {
+      "Body": "{\n  \"id\": \"cstinfo_6b049cee4e4f4b6992f9f07e7484b1e0\",\n  \"object\": \"CustomsInfo\",\n  \"created_at\": \"2022-05-05T22:53:03Z\",\n  \"updated_at\": \"2022-05-05T22:53:03Z\",\n  \"contents_explanation\": \"\",\n  \"contents_type\": \"merchandise\",\n  \"customs_certify\": true,\n  \"customs_signer\": \"Dr. Steve Brule\",\n  \"eel_pfc\": \"NOEEI 30.37(a)\",\n  \"non_delivery_option\": \"return\",\n  \"restriction_comments\": null,\n  \"restriction_type\": \"none\",\n  \"mode\": \"test\",\n  \"declaration\": null,\n  \"customs_items\": [\n    {\n      \"id\": \"cstitem_2d0cb696c90f4cb6b73522c23bb1ddc4\",\n      \"object\": \"CustomsItem\",\n      \"created_at\": \"2022-05-05T22:53:03Z\",\n      \"updated_at\": \"2022-05-05T22:53:03Z\",\n      \"description\": \"Sweet shirts\",\n      \"hs_tariff_number\": \"654321\",\n      \"origin_country\": \"US\",\n      \"quantity\": 2,\n      \"value\": \"23.0\",\n      \"weight\": 11.0,\n      \"code\": null,\n      \"mode\": \"test\",\n      \"manufacturer\": null,\n      \"currency\": null,\n      \"eccn\": null,\n      \"printed_commodity_identifier\": null\n    }\n  ]\n}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "797"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "c20cf1816274554ff19781a0004658bc",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "Location": "/api/v2/customs_infos/cstinfo_6b049cee4e4f4b6992f9f07e7484b1e0",
+        "ETag": "W/\"6827df94859f4cd98a14dff1582becd1\"",
+        "x-runtime": "0.034418",
+        "x-node": "bigweb6nuq",
+        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb2nuq fde591f008,extlb1nuq c51cdb8bf2",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  },
+  {
+    "Duration": 162,
+    "RecordedAt": "2022-05-05T16:53:03.217135-06:00",
+    "Request": {
+      "Body": "",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Accept": "application/json",
+        "Authorization": "*****",
+        "content_type": "application/json",
+        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/3.1.24"
+      },
+      "Uri": "https://api.easypost.com/v2/customs_infos/cstinfo_6b049cee4e4f4b6992f9f07e7484b1e0"
+    },
+    "Response": {
+      "Body": "{\n  \"id\": \"cstinfo_6b049cee4e4f4b6992f9f07e7484b1e0\",\n  \"object\": \"CustomsInfo\",\n  \"created_at\": \"2022-05-05T22:53:03Z\",\n  \"updated_at\": \"2022-05-05T22:53:03Z\",\n  \"contents_explanation\": \"\",\n  \"contents_type\": \"merchandise\",\n  \"customs_certify\": true,\n  \"customs_signer\": \"Dr. Steve Brule\",\n  \"eel_pfc\": \"NOEEI 30.37(a)\",\n  \"non_delivery_option\": \"return\",\n  \"restriction_comments\": null,\n  \"restriction_type\": \"none\",\n  \"mode\": \"test\",\n  \"declaration\": null,\n  \"customs_items\": [\n    {\n      \"id\": \"cstitem_2d0cb696c90f4cb6b73522c23bb1ddc4\",\n      \"object\": \"CustomsItem\",\n      \"created_at\": \"2022-05-05T22:53:03Z\",\n      \"updated_at\": \"2022-05-05T22:53:03Z\",\n      \"description\": \"Sweet shirts\",\n      \"hs_tariff_number\": \"654321\",\n      \"origin_country\": \"US\",\n      \"quantity\": 2,\n      \"value\": \"23.0\",\n      \"weight\": 11.0,\n      \"code\": null,\n      \"mode\": \"test\",\n      \"manufacturer\": null,\n      \"currency\": null,\n      \"eccn\": null,\n      \"printed_commodity_identifier\": null\n    }\n  ]\n}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "797"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "c20cf1826274554ff198a76c004658c9",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"6827df94859f4cd98a14dff1582becd1\"",
+        "x-runtime": "0.021583",
+        "x-node": "bigweb6nuq",
+        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq fde591f008,extlb1nuq c51cdb8bf2",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  }
+]
