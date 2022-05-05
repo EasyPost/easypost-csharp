@@ -1,9 +1,9 @@
 [
   {
-    "Duration": 384,
-    "RecordedAt": "2022-05-05T17:02:58.852568-06:00",
+    "Duration": 464,
+    "RecordedAt": "2022-05-09T14:00:29.439245-06:00",
     "Request": {
-      "Body": "{\n  \"columns\": [\n    \"usps_zone\"\n  ],\n  \"start_date\": \"2022-05-05\",\n  \"end_date\": \"2022-05-05\"\n}",
+      "Body": "{\n  \"columns\": [\n    \"usps_zone\"\n  ],\n  \"start_date\": \"2022-04-12\",\n  \"end_date\": \"2022-04-12\"\n}",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
         "Content-Length": "75"
@@ -18,7 +18,7 @@
       "Uri": "https://api.easypost.com/v2/reports/shipment"
     },
     "Response": {
-      "Body": "{\n  \"id\": \"shprep_fcdea72a539b4700ab0309684e0e6f76\",\n  \"object\": \"ShipmentReport\",\n  \"created_at\": \"2022-05-05T23:02:58Z\",\n  \"updated_at\": \"2022-05-05T23:02:58Z\",\n  \"start_date\": \"2022-05-05\",\n  \"end_date\": \"2022-05-05\",\n  \"mode\": \"test\",\n  \"status\": \"new\",\n  \"url\": null,\n  \"url_expires_at\": null,\n  \"include_children\": false\n}",
+      "Body": "{\n  \"id\": \"shprep_fa329667691c4e2db5eee11da2035d0e\",\n  \"object\": \"ShipmentReport\",\n  \"created_at\": \"2022-05-09T20:00:29Z\",\n  \"updated_at\": \"2022-05-09T20:00:29Z\",\n  \"start_date\": \"2022-04-12\",\n  \"end_date\": \"2022-04-12\",\n  \"mode\": \"test\",\n  \"status\": \"new\",\n  \"url\": null,\n  \"url_expires_at\": null,\n  \"include_children\": false\n}",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
@@ -32,15 +32,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "4d354246627457a2f1cb1e46003f0cbd",
+        "x-ep-request-uuid": "019379c1627972ddf184f6ca004ebe3a",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"3ec140028bf3c8fdebeb3f2d3218ca9d\"",
-        "x-runtime": "0.054860",
-        "x-node": "bigweb4nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "ETag": "W/\"20ac0802ca1f6823d1051f7bffb717ea\"",
+        "x-runtime": "0.318539",
+        "x-node": "bigweb7nuq",
+        "x-version-label": "easypost-202205091927-33319f932d-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq fde591f008,intlb1wdc fde591f008,extlb1wdc c51cdb8bf2",
+        "x-canary": "direct",
+        "x-proxied": "intlb2nuq fde591f008,extlb1nuq c51cdb8bf2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

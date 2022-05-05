@@ -1,0 +1,52 @@
+[
+  {
+    "Duration": 193,
+    "RecordedAt": "2022-05-17T17:43:19.859283-06:00",
+    "Request": {
+      "Body": "{\n  \"address\": {\n    \"name\": \"Jack Sparrow\",\n    \"company\": \"EasyPost\",\n    \"street1\": \"388 Townsend St\",\n    \"street2\": \"Apt 20\",\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\",\n    \"zip\": \"94107\",\n    \"country\": \"US\",\n    \"phone\": \"5555555555\",\n    \"email\": \"test@example.com\"\n  }\n}",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "216"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Accept": "application/json",
+        "Authorization": "*****",
+        "content_type": "application/json",
+        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/5.0.16,EasyPost/v2,CSharpClient/3.0.0,.NET/5.0.16"
+      },
+      "Uri": "https://api.easypost.com/beta/end_shippers"
+    },
+    "Response": {
+      "Body": "{\n  \"id\": \"es_e591f790ddeb497a9469eb9104d9a90b\",\n  \"object\": \"EndShipper\",\n  \"created_at\": \"2022-05-17T17:43:19-06:00\",\n  \"updated_at\": \"2022-05-17T17:43:19-06:00\",\n  \"name\": \"JACK SPARROW\",\n  \"company\": \"EASYPOST\",\n  \"street1\": \"388 TOWNSEND ST APT 20\",\n  \"street2\": \"\",\n  \"city\": \"SAN FRANCISCO\",\n  \"state\": \"CA\",\n  \"zip\": \"94107-1670\",\n  \"country\": \"US\",\n  \"phone\": \"5555555555\",\n  \"email\": \"TEST@EXAMPLE.COM\"\n}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "357"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "6b1613b962843317e39aad930019487b",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"b2e0eba595f2eb0a985aaf26bc1c8a94\"",
+        "x-runtime": "0.040133",
+        "x-node": "bigweb9nuq",
+        "x-version-label": "easypost-202205172029-e0b28eb62c-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb2nuq 570dfcbc0a,extlb1nuq c51cdb8bf2",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  }
+]
