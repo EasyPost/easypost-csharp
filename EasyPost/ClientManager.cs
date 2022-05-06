@@ -35,7 +35,7 @@ namespace EasyPost
         {
             if (getCurrent == null)
             {
-                throw new ClientNotConfigured();
+                throw new ClientNotConfigured("No function set to retrieve the current client.");
             }
 
             return getCurrent();
