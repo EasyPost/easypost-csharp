@@ -22,13 +22,87 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EasyPost\EasyPost.csproj" />
+    <ProjectReference Include="..\EasyPost\EasyPost.csproj"/>
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Microsoft.VisualStudio.UnitTesting" />
-    <None Remove="RestSharp" />
-    <None Remove="MSTest.TestFramework" />
-    <None Remove="MSTest.TestAdapter" />
+    <None Remove="Microsoft.VisualStudio.UnitTesting"/>
+    <None Remove="RestSharp"/>
+    <None Remove="MSTest.TestFramework"/>
+    <None Remove="MSTest.TestAdapter"/>
+    <None Remove="cassettes\refund\retrieve.json"/>
+    <None Remove="cassettes\pickup\buy.json"/>
+    <None Remove="cassettes\batch\all.json"/>
+    <None Remove="cassettes\address\all.json"/>
+    <None Remove="cassettes\refund\create.json"/>
+    <None Remove="cassettes\carrier_account\all.json"/>
+    <None Remove="cassettes\shipment\create_tax_identifiers.json"/>
+    <None Remove="cassettes\event\retrieve.json"/>
+    <None Remove="cassettes\customs_item\create.json"/>
+    <None Remove="cassettes\address\create_verify.json"/>
+    <None Remove="cassettes\scan_form\all.json"/>
+    <None Remove="cassettes\shipment\create_empty_objects.json"/>
+    <None Remove="cassettes\batch\add_remove_shipment.json"/>
+    <None Remove="cassettes\batch\create_scan_form.json"/>
+    <None Remove="cassettes\address\retrieve.json"/>
+    <None Remove="cassettes\address\create_verify_strict.json"/>
+    <None Remove="cassettes\batch\label.json"/>
+    <None Remove="cassettes\shipment\refund.json"/>
+    <None Remove="cassettes\carrier_account\create.json"/>
+    <None Remove="cassettes\tracker\create.json"/>
+    <None Remove="cassettes\address\create.json"/>
+    <None Remove="cassettes\shipment\regenerate_rates.json"/>
+    <None Remove="cassettes\carrier_account\retrieve.json"/>
+    <None Remove="cassettes\report\retrieve_report.json"/>
+    <None Remove="cassettes\tracker\all.json"/>
+    <None Remove="cassettes\webhook\create.json"/>
+    <None Remove="cassettes\order\buy.json"/>
+    <None Remove="cassettes\scan_form\retrieve.json"/>
+    <None Remove="cassettes\shipment\create.json"/>
+    <None Remove="cassettes\shipment\smartrate.json"/>
+    <None Remove="cassettes\batch\create_and_buy.json"/>
+    <None Remove="cassettes\shipment\all.json"/>
+    <None Remove="cassettes\pickup\cancel.json"/>
+    <None Remove="cassettes\address\verify.json"/>
+    <None Remove="cassettes\report\create_report.json"/>
+    <None Remove="cassettes\tracker\create_list.json"/>
+    <None Remove="cassettes\parcel\retrieve.json"/>
+    <None Remove="cassettes\shipment\retrieve.json"/>
+    <None Remove="cassettes\pickup\create.json"/>
+    <None Remove="cassettes\carrier_account\update.json"/>
+    <None Remove="cassettes\insurance\all.json"/>
+    <None Remove="cassettes\shipment\insure.json"/>
+    <None Remove="cassettes\order\retrieve.json"/>
+    <None Remove="cassettes\batch\create.json"/>
+    <None Remove="cassettes\shipment\convert_label.json"/>
+    <None Remove="cassettes\insurance\create.json"/>
+    <None Remove="cassettes\batch\buy.json"/>
+    <None Remove="cassettes\customs_info\create.json"/>
+    <None Remove="cassettes\user\retrieve.json"/>
+    <None Remove="cassettes\order\create.json"/>
+    <None Remove="cassettes\carrier_account\delete.json"/>
+    <None Remove="cassettes\user\retrieve_me.json"/>
+    <None Remove="cassettes\user\update_brand.json"/>
+    <None Remove="cassettes\shipment\create_with_ids.json"/>
+    <None Remove="cassettes\report\all.json"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="cassettes\address"/>
+    <Folder Include="cassettes\batch"/>
+    <Folder Include="cassettes\carrier_account"/>
+    <Folder Include="cassettes\customs_info"/>
+    <Folder Include="cassettes\customs_item"/>
+    <Folder Include="cassettes\event"/>
+    <Folder Include="cassettes\insurance"/>
+    <Folder Include="cassettes\order"/>
+    <Folder Include="cassettes\pickup"/>
+    <Folder Include="cassettes\rate"/>
+    <Folder Include="cassettes\refund"/>
+    <Folder Include="cassettes\report"/>
+    <Folder Include="cassettes\scan_form"/>
+    <Folder Include="cassettes\shipment"/>
+    <Folder Include="cassettes\tracker"/>
+    <Folder Include="cassettes\user"/>
   </ItemGroup>
 </Project>

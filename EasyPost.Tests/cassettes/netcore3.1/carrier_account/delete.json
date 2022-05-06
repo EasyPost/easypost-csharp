@@ -1,0 +1,99 @@
+[
+    {
+        "Duration": 278,
+        "RecordedAt": "2022-05-05T16:52:41.652994-06:00",
+        "Request": {
+            "Body": "{\n  \"carrier_account\": {\n    \"type\": \"UpsAccount\",\n    \"credentials\": {\n      \"account_number\": \"A1A1A1\",\n      \"user_id\": \"USERID\",\n      \"password\": \"PASSWORD\",\n      \"access_license_number\": \"ALN\"\n    }\n  }\n}",
+            "ContentHeaders": {
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "154"
+            },
+            "Method": "POST",
+            "RequestHeaders": {
+                "Accept": "application/json",
+                "Authorization": "*****",
+                "content_type": "application/json",
+                "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/3.1.24"
+            },
+            "Uri": "https://api.easypost.com/v2/carrier_accounts"
+        },
+        "Response": {
+            "Body": "{\n  \"id\": \"ca_1c6ed9e501324afea631e604d1812465\",\n  \"object\": \"CarrierAccount\",\n  \"type\": \"UpsAccount\",\n  \"clone\": false,\n  \"created_at\": \"2022-05-05T22:52:41Z\",\n  \"updated_at\": \"2022-05-05T22:52:41Z\",\n  \"description\": \"UPS Account\",\n  \"reference\": null,\n  \"readable\": \"UPS\",\n  \"logo\": null,\n  \"fields\": {\n    \"credentials\": {\n      \"account_number\": {\n        \"visibility\": \"readonly\",\n        \"label\": \"UPS Account Number\",\n        \"value\": \"A1A1A1\"\n      }\n    }\n  },\n  \"credentials\": {\n    \"account_number\": \"A1A1A1\"\n  },\n  \"test_credentials\": null\n}",
+            "ContentHeaders": {
+                "Expires": "0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "432"
+            },
+            "HttpVersion": "1.1",
+            "ResponseHeaders": {
+                "X-Frame-Options": "SAMEORIGIN",
+                "x-xss-protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "x-download-options": "noopen",
+                "x-permitted-cross-domain-policies": "none",
+                "referrer-policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "c20cf18262745539f198afcd0046532b",
+                "Cache-Control": "no-store, no-cache",
+                "Pragma": "no-cache",
+                "ETag": "W/\"123f91c01114f0dff00ba7b45d33ad80\"",
+                "x-runtime": "0.132632",
+                "x-node": "bigweb8nuq",
+                "x-version-label": "easypost-202205052025-12b8594e25-master",
+                "x-backend": "easypost",
+                "x-proxied": "intlb1nuq fde591f008,extlb1nuq c51cdb8bf2",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+            },
+            "Status": {
+                "Code": 201,
+                "Message": "Created"
+            }
+        }
+    },
+    {
+        "Duration": 267,
+        "RecordedAt": "2022-05-05T16:52:41.939224-06:00",
+        "Request": {
+            "Body": "",
+            "ContentHeaders": {},
+            "Method": "DELETE",
+            "RequestHeaders": {
+                "Accept": "application/json",
+                "Authorization": "*****",
+                "content_type": "application/json",
+                "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/3.1.24"
+            },
+            "Uri": "https://api.easypost.com/v2/carrier_accounts/ca_1c6ed9e501324afea631e604d1812465"
+        },
+        "Response": {
+            "Body": "{}",
+            "ContentHeaders": {
+                "Expires": "0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "2"
+            },
+            "HttpVersion": "1.1",
+            "ResponseHeaders": {
+                "X-Frame-Options": "SAMEORIGIN",
+                "x-xss-protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "x-download-options": "noopen",
+                "x-permitted-cross-domain-policies": "none",
+                "referrer-policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "c20cf1856274553af1aa1ecd00465339",
+                "Cache-Control": "no-store, no-cache",
+                "Pragma": "no-cache",
+                "ETag": "W/\"44136fa355b3678a1146ad16f7e8649e\"",
+                "x-runtime": "0.119403",
+                "x-node": "bigweb6nuq",
+                "x-version-label": "easypost-202205052025-12b8594e25-master",
+                "x-backend": "easypost",
+                "x-proxied": "intlb1nuq fde591f008,extlb1nuq c51cdb8bf2",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+            },
+            "Status": {
+                "Code": 200,
+                "Message": "OK"
+            }
+        }
+    }
+]

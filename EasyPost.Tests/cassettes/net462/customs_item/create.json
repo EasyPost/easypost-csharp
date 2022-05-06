@@ -1,0 +1,53 @@
+[
+    {
+        "Duration": 552,
+        "RecordedAt": "2022-05-05T16:53:23.5823-06:00",
+        "Request": {
+            "Body": "{\n  \"customs_item\": {\n    \"description\": \"Sweet shirts\",\n    \"quantity\": 2,\n    \"weight\": 11,\n    \"value\": 23.0,\n    \"hs_tariff_number\": 654321,\n    \"origin_country\": \"US\"\n  }\n}",
+            "ContentHeaders": {
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "133"
+            },
+            "Method": "POST",
+            "RequestHeaders": {
+                "Accept": "application/json",
+                "Authorization": "*****",
+                "content_type": "application/json",
+                "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+            },
+            "Uri": "https://api.easypost.com/v2/customs_items"
+        },
+        "Response": {
+            "Body": "{\n  \"id\": \"cstitem_c74393f810cb45348740898421eaae96\",\n  \"object\": \"CustomsItem\",\n  \"created_at\": \"2022-05-05T22:53:23Z\",\n  \"updated_at\": \"2022-05-05T22:53:23Z\",\n  \"description\": \"Sweet shirts\",\n  \"hs_tariff_number\": \"654321\",\n  \"origin_country\": \"US\",\n  \"quantity\": 2,\n  \"value\": \"23.0\",\n  \"weight\": 11.0,\n  \"code\": null,\n  \"mode\": \"test\",\n  \"manufacturer\": null,\n  \"currency\": null,\n  \"eccn\": null,\n  \"printed_commodity_identifier\": null\n}",
+            "ContentHeaders": {
+                "Expires": "0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "375"
+            },
+            "HttpVersion": "1.1",
+            "ResponseHeaders": {
+                "X-Frame-Options": "SAMEORIGIN",
+                "x-xss-protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "x-download-options": "noopen",
+                "x-permitted-cross-domain-policies": "none",
+                "referrer-policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "4d35424062745563f1dd2604003e9387",
+                "Cache-Control": "no-store, no-cache",
+                "Pragma": "no-cache",
+                "Location": "/api/v2/customs_items/cstitem_c74393f810cb45348740898421eaae96",
+                "ETag": "W/\"32c4f644502d138b5cb9b325a4689180\"",
+                "x-runtime": "0.027080",
+                "x-node": "bigweb3nuq",
+                "x-version-label": "easypost-202205052025-12b8594e25-master",
+                "x-backend": "easypost",
+                "x-proxied": "intlb2nuq fde591f008,intlb2wdc fde591f008,extlb1wdc c51cdb8bf2",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+            },
+            "Status": {
+                "Code": 201,
+                "Message": "Created"
+            }
+        }
+    }
+]

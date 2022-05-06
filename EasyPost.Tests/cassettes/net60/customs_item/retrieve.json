@@ -1,0 +1,101 @@
+[
+    {
+        "Duration": 222,
+        "RecordedAt": "2022-05-05T16:53:26.453526-06:00",
+        "Request": {
+            "Body": "{\n  \"customs_item\": {\n    \"description\": \"Sweet shirts\",\n    \"quantity\": 2,\n    \"weight\": 11,\n    \"value\": 23.0,\n    \"hs_tariff_number\": 654321,\n    \"origin_country\": \"US\"\n  }\n}",
+            "ContentHeaders": {
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "133"
+            },
+            "Method": "POST",
+            "RequestHeaders": {
+                "Accept": "application/json",
+                "Authorization": "*****",
+                "content_type": "application/json",
+                "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/6.0.4"
+            },
+            "Uri": "https://api.easypost.com/v2/customs_items"
+        },
+        "Response": {
+            "Body": "{\n  \"id\": \"cstitem_fd0971575fd34b4789a0957d73357fc4\",\n  \"object\": \"CustomsItem\",\n  \"created_at\": \"2022-05-05T22:53:26Z\",\n  \"updated_at\": \"2022-05-05T22:53:26Z\",\n  \"description\": \"Sweet shirts\",\n  \"hs_tariff_number\": \"654321\",\n  \"origin_country\": \"US\",\n  \"quantity\": 2,\n  \"value\": \"23.0\",\n  \"weight\": 11.0,\n  \"code\": null,\n  \"mode\": \"test\",\n  \"manufacturer\": null,\n  \"currency\": null,\n  \"eccn\": null,\n  \"printed_commodity_identifier\": null\n}",
+            "ContentHeaders": {
+                "Expires": "0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "375"
+            },
+            "HttpVersion": "1.1",
+            "ResponseHeaders": {
+                "X-Frame-Options": "SAMEORIGIN",
+                "X-XSS-Protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "x-download-options": "noopen",
+                "x-permitted-cross-domain-policies": "none",
+                "Referrer-Policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "844d31c562745566f1cb230900442330",
+                "Cache-Control": "no-store, no-cache",
+                "Pragma": "no-cache",
+                "Location": "/api/v2/customs_items/cstitem_fd0971575fd34b4789a0957d73357fc4",
+                "ETag": "W/\"8620d4acf9dfbfbe47a04c24b3837000\"",
+                "x-runtime": "0.082251",
+                "x-node": "bigweb7nuq",
+                "x-version-label": "easypost-202205052025-12b8594e25-master",
+                "x-backend": "easypost",
+                "x-canary": "direct",
+                "x-proxied": "intlb2nuq fde591f008,extlb2nuq c51cdb8bf2",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+            },
+            "Status": {
+                "Code": 201,
+                "Message": "Created"
+            }
+        }
+    },
+    {
+        "Duration": 155,
+        "RecordedAt": "2022-05-05T16:53:26.642627-06:00",
+        "Request": {
+            "Body": "",
+            "ContentHeaders": {},
+            "Method": "GET",
+            "RequestHeaders": {
+                "Accept": "application/json",
+                "Authorization": "*****",
+                "content_type": "application/json",
+                "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/6.0.4"
+            },
+            "Uri": "https://api.easypost.com/v2/customs_items/cstitem_fd0971575fd34b4789a0957d73357fc4"
+        },
+        "Response": {
+            "Body": "{\n  \"id\": \"cstitem_fd0971575fd34b4789a0957d73357fc4\",\n  \"object\": \"CustomsItem\",\n  \"created_at\": \"2022-05-05T22:53:26Z\",\n  \"updated_at\": \"2022-05-05T22:53:26Z\",\n  \"description\": \"Sweet shirts\",\n  \"hs_tariff_number\": \"654321\",\n  \"origin_country\": \"US\",\n  \"quantity\": 2,\n  \"value\": \"23.0\",\n  \"weight\": 11.0,\n  \"code\": null,\n  \"mode\": \"test\",\n  \"manufacturer\": null,\n  \"currency\": null,\n  \"eccn\": null,\n  \"printed_commodity_identifier\": null\n}",
+            "ContentHeaders": {
+                "Expires": "0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "375"
+            },
+            "HttpVersion": "1.1",
+            "ResponseHeaders": {
+                "X-Frame-Options": "SAMEORIGIN",
+                "X-XSS-Protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "x-download-options": "noopen",
+                "x-permitted-cross-domain-policies": "none",
+                "Referrer-Policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "844d31ca62745566f18723ea00442342",
+                "Cache-Control": "no-store, no-cache",
+                "Pragma": "no-cache",
+                "ETag": "W/\"8620d4acf9dfbfbe47a04c24b3837000\"",
+                "x-runtime": "0.017819",
+                "x-node": "bigweb5nuq",
+                "x-version-label": "easypost-202205052025-12b8594e25-master",
+                "x-backend": "easypost",
+                "x-proxied": "intlb2nuq fde591f008,extlb2nuq c51cdb8bf2",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+            },
+            "Status": {
+                "Code": 200,
+                "Message": "OK"
+            }
+        }
+    }
+]

@@ -1,0 +1,49 @@
+[
+    {
+        "Duration": 386,
+        "RecordedAt": "2022-05-05T16:50:52.235755-06:00",
+        "Request": {
+            "Body": "",
+            "ContentHeaders": {},
+            "Method": "GET",
+            "RequestHeaders": {
+                "Accept": "application/json",
+                "Authorization": "*****",
+                "content_type": "application/json",
+                "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+            },
+            "Uri": "https://api.easypost.com/v2/batches?page_size=5"
+        },
+        "Response": {
+            "Body": "{\n  \"batches\": [\n    {\n      \"id\": \"batch_2ffd46a7ff974336b00ec8634a0dd13f\",\n      \"object\": \"Batch\",\n      \"mode\": \"test\",\n      \"state\": \"created\",\n      \"num_shipments\": 1,\n      \"reference\": null,\n      \"created_at\": \"2022-04-14T22:26:27Z\",\n      \"updated_at\": \"2022-04-14T22:26:27Z\",\n      \"scan_form\": null,\n      \"shipments\": [\n        {\n          \"batch_status\": \"created\",\n          \"batch_message\": null,\n          \"reference\": null,\n          \"tracking_code\": null,\n          \"id\": \"shp_236a942a58e3481086ab2224810531f0\"\n        }\n      ],\n      \"status\": {\n        \"created\": 1,\n        \"queued_for_purchase\": 0,\n        \"creation_failed\": 0,\n        \"postage_purchased\": 0,\n        \"postage_purchase_failed\": 0\n      },\n      \"pickup\": null,\n      \"label_url\": null\n    },\n    {\n      \"id\": \"batch_f969bae970c54972baef2bd22baac296\",\n      \"object\": \"Batch\",\n      \"mode\": \"test\",\n      \"state\": \"created\",\n      \"num_shipments\": 1,\n      \"reference\": null,\n      \"created_at\": \"2022-04-14T22:26:27Z\",\n      \"updated_at\": \"2022-04-14T22:26:27Z\",\n      \"scan_form\": null,\n      \"shipments\": [\n        {\n          \"batch_status\": \"created\",\n          \"batch_message\": null,\n          \"reference\": null,\n          \"tracking_code\": null,\n          \"id\": \"shp_ba025db5c16b4cd399f7bdb62da3ac09\"\n        }\n      ],\n      \"status\": {\n        \"created\": 1,\n        \"queued_for_purchase\": 0,\n        \"creation_failed\": 0,\n        \"postage_purchased\": 0,\n        \"postage_purchase_failed\": 0\n      },\n      \"pickup\": null,\n      \"label_url\": null\n    },\n    {\n      \"id\": \"batch_e75c34e479bd4423985d2df4a7d5cd3b\",\n      \"object\": \"Batch\",\n      \"mode\": \"test\",\n      \"state\": \"purchased\",\n      \"num_shipments\": 1,\n      \"reference\": null,\n      \"created_at\": \"2022-04-14T22:26:28Z\",\n      \"updated_at\": \"2022-04-14T22:26:29Z\",\n      \"scan_form\": null,\n      \"shipments\": [\n        {\n          \"batch_status\": \"postage_purchased\",\n          \"batch_message\": null,\n          \"reference\": null,\n          \"tracking_code\": \"9400100109361115078725\",\n          \"id\": \"shp_54405649998249d998c1dc5df5c34c74\"\n        }\n      ],\n      \"status\": {\n        \"created\": 0,\n        \"queued_for_purchase\": 0,\n        \"creation_failed\": 0,\n        \"postage_purchased\": 1,\n        \"postage_purchase_failed\": 0\n      },\n      \"pickup\": null,\n      \"label_url\": null\n    },\n    {\n      \"id\": \"batch_4b9ce6a60ff648248782f1b684f78e16\",\n      \"object\": \"Batch\",\n      \"mode\": \"test\",\n      \"state\": \"purchased\",\n      \"num_shipments\": 1,\n      \"reference\": null,\n      \"created_at\": \"2022-04-14T22:26:28Z\",\n      \"updated_at\": \"2022-04-14T22:26:29Z\",\n      \"scan_form\": null,\n      \"shipments\": [\n        {\n          \"batch_status\": \"postage_purchased\",\n          \"batch_message\": null,\n          \"reference\": null,\n          \"tracking_code\": \"9400100109361115078732\",\n          \"id\": \"shp_ae3264b198e84e7f9597c075fec7a867\"\n        }\n      ],\n      \"status\": {\n        \"created\": 0,\n        \"queued_for_purchase\": 0,\n        \"creation_failed\": 0,\n        \"postage_purchased\": 1,\n        \"postage_purchase_failed\": 0\n      },\n      \"pickup\": null,\n      \"label_url\": null\n    },\n    {\n      \"id\": \"batch_c2fb9a3272ba4e43817e465cd713ffdc\",\n      \"object\": \"Batch\",\n      \"mode\": \"test\",\n      \"state\": \"purchased\",\n      \"num_shipments\": 1,\n      \"reference\": null,\n      \"created_at\": \"2022-04-14T22:26:28Z\",\n      \"updated_at\": \"2022-04-14T22:26:30Z\",\n      \"scan_form\": null,\n      \"shipments\": [\n        {\n          \"batch_status\": \"postage_purchased\",\n          \"batch_message\": null,\n          \"reference\": null,\n          \"tracking_code\": \"9400100109361115078749\",\n          \"id\": \"shp_4f9cd9582eb642f2923ba57f8645428e\"\n        }\n      ],\n      \"status\": {\n        \"created\": 0,\n        \"queued_for_purchase\": 0,\n        \"creation_failed\": 0,\n        \"postage_purchased\": 1,\n        \"postage_purchase_failed\": 0\n      },\n      \"pickup\": null,\n      \"label_url\": null\n    }\n  ],\n  \"has_more\": true\n}",
+            "ContentHeaders": {
+                "Expires": "0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "2690"
+            },
+            "HttpVersion": "1.1",
+            "ResponseHeaders": {
+                "X-Frame-Options": "SAMEORIGIN",
+                "x-xss-protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "x-download-options": "noopen",
+                "x-permitted-cross-domain-policies": "none",
+                "referrer-policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "4d354243627454ccf1956522003e77e2",
+                "Cache-Control": "no-store, no-cache",
+                "Pragma": "no-cache",
+                "ETag": "W/\"6e06504fc94ac412248736a28dad73df\"",
+                "x-runtime": "0.055733",
+                "x-node": "bigweb8nuq",
+                "x-version-label": "easypost-202205052025-12b8594e25-master",
+                "x-backend": "easypost",
+                "x-proxied": "intlb1nuq fde591f008,intlb2wdc fde591f008,extlb1wdc c51cdb8bf2",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+            },
+            "Status": {
+                "Code": 200,
+                "Message": "OK"
+            }
+        }
+    }
+]
