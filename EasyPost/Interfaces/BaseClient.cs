@@ -40,12 +40,7 @@ namespace EasyPost.Interfaces
             set => _requestTimeoutMilliseconds = value;
         }
 
-        private static string GetApiUrl(string version)
-        {
-            return $"https://api.easypost.com/{version}";
-        }
-
-        private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
+        private string UserAgent => $"EasyPost/{_configuration.ApiVersion} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
 
         /// <summary>
         ///     Constructor for the EasyPost client.
@@ -57,7 +52,7 @@ namespace EasyPost.Interfaces
         {
             ServicePointManager.SecurityProtocol |= Security.GetProtocol();
             string apiBase = GetApiUrl(version);
-            _configuration = new ClientConfiguration(apiKey, apiBase);
+            _configuration = new ClientConfiguration(apiKey, apiBase, version);
 
             try
             {
@@ -174,6 +169,11 @@ namespace EasyPost.Interfaces
             restRequest.AddHeader("content_type", "application/json");
 
             return restRequest;
+        }
+
+        private static string GetApiUrl(string version)
+        {
+            return $"https://api.easypost.com/{version}";
         }
     }
 }

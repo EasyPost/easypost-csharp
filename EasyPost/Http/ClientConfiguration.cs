@@ -15,14 +15,20 @@ namespace EasyPost.Http
         internal readonly string ApiKey;
 
         /// <summary>
+        ///     The API version.
+        /// </summary>
+        internal readonly string ApiVersion;
+
+        /// <summary>
         ///     Create an EasyPost.ClientConfiguration instance.
         /// </summary>
         /// <param name="apiKey">The API key to use for the client connection.</param>
         /// <param name="apiBase">The base API url to use for the client connection.</param>
-        internal ClientConfiguration(string apiKey, string apiBase)
+        internal ClientConfiguration(string apiKey, string apiBase, string apiVersion)
         {
             ApiKey = apiKey;
             ApiBase = apiBase;
+            ApiVersion = apiVersion;
         }
     }
 }
