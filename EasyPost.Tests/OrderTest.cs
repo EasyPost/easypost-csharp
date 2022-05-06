@@ -39,7 +39,6 @@ namespace EasyPost.Tests
 
             Order order = await CreateBasicOrder();
 
-
             Order retrievedOrder = await Order.Retrieve(order.id);
 
             Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
@@ -51,7 +50,6 @@ namespace EasyPost.Tests
         public async Task TestGetRates()
         {
             _vcr.SetUpTest("get_rates");
-
 
             Order order = await CreateBasicOrder();
 
@@ -71,7 +69,6 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("buy");
 
-
             Order order = await CreateBasicOrder();
 
             await order.Buy(Fixture.Usps, Fixture.UspsService);
@@ -83,6 +80,37 @@ namespace EasyPost.Tests
                 Assert.IsInstanceOfType(shipment, typeof(Shipment));
                 Assert.IsNotNull(shipment.postage_label);
             }
+        }
+
+        [TestMethod]
+        public async Task TestLowestRate()
+        {
+            _vcr.SetUpTest("lowest_rate");
+
+            Order order = await CreateBasicOrder();
+
+            // test lowest rate with no filters
+            Rate lowestRate = order.LowestRate();
+            Assert.AreEqual("First", lowestRate.service);
+            Assert.AreEqual("5.49", lowestRate.rate);
+            Assert.AreEqual("USPS", lowestRate.carrier);
+
+            // test lowest rate with service filter (this rate is higher than the lowest but should filter)
+            List<string> services = new List<string>
+            {
+                "Priority"
+            };
+            lowestRate = order.LowestRate(null, services, null, null);
+            Assert.AreEqual("Priority", lowestRate.service);
+            Assert.AreEqual("7.37", lowestRate.rate);
+            Assert.AreEqual("USPS", lowestRate.carrier);
+
+            // test lowest rate with carrier filter (should error due to bad carrier)
+            List<string> carriers = new List<string>
+            {
+                "BAD_CARRIER"
+            };
+            Assert.ThrowsException<FilterFailure>(() => order.LowestRate(carriers, null, null, null));
         }
     }
 }
