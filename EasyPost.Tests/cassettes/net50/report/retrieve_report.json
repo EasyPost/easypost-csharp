@@ -1,0 +1,99 @@
+[
+  {
+    "Duration": 196,
+    "RecordedAt": "2022-05-05T17:03:02.078504-06:00",
+    "Request": {
+      "Body": "{\n  \"start_date\": \"2022-05-05\",\n  \"end_date\": \"2022-05-05\"\n}",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "51"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Accept": "application/json",
+        "Authorization": "*****",
+        "content_type": "application/json",
+        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/5.0.16"
+      },
+      "Uri": "https://api.easypost.com/v2/reports/shipment"
+    },
+    "Response": {
+      "Body": "{\n  \"id\": \"shprep_ca1113c1557d49d283b16f53a40af070\",\n  \"object\": \"ShipmentReport\",\n  \"created_at\": \"2022-05-05T23:03:02Z\",\n  \"updated_at\": \"2022-05-05T23:03:02Z\",\n  \"start_date\": \"2022-05-05\",\n  \"end_date\": \"2022-05-05\",\n  \"mode\": \"test\",\n  \"status\": \"new\",\n  \"url\": null,\n  \"url_expires_at\": null,\n  \"include_children\": false\n}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "283"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "844d31cc627457a6f1a80ace0044b1d8",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"575061b338af63cc8cb3ac1a309420bf\"",
+        "x-runtime": "0.050691",
+        "x-node": "bigweb3nuq",
+        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq fde591f008,extlb2nuq c51cdb8bf2",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  },
+  {
+    "Duration": 156,
+    "RecordedAt": "2022-05-05T17:03:02.276183-06:00",
+    "Request": {
+      "Body": "",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Accept": "application/json",
+        "Authorization": "*****",
+        "content_type": "application/json",
+        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/5.0.16"
+      },
+      "Uri": "https://api.easypost.com/v2/reports/shprep_ca1113c1557d49d283b16f53a40af070"
+    },
+    "Response": {
+      "Body": "{\n  \"id\": \"shprep_ca1113c1557d49d283b16f53a40af070\",\n  \"object\": \"ShipmentReport\",\n  \"created_at\": \"2022-05-05T23:03:02Z\",\n  \"updated_at\": \"2022-05-05T23:03:02Z\",\n  \"start_date\": \"2022-05-05\",\n  \"end_date\": \"2022-05-05\",\n  \"mode\": \"test\",\n  \"status\": \"new\",\n  \"url\": null,\n  \"url_expires_at\": null,\n  \"include_children\": false\n}",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "283"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "844d31cc627457a6f1ca9a030044b1e4",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"575061b338af63cc8cb3ac1a309420bf\"",
+        "x-runtime": "0.017868",
+        "x-node": "bigweb4nuq",
+        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq fde591f008,extlb2nuq c51cdb8bf2",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  }
+]
