@@ -1,10 +1,9 @@
 using System;
+using EasyPost.Clients;
+using EasyPost.Interfaces;
 using System.IO;
 using System.Runtime.CompilerServices;
-using EasyPost.Clients;
-using EasyPost.EasyVCR;
-using EasyPost.Http;
-using EasyPost.Interfaces;
+using EasyVCR;
 
 namespace EasyPost.Tests
 {
@@ -14,9 +13,10 @@ namespace EasyPost.Tests
 
         private const string CassettesFolder = "cassettes";
 
-        private static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "")
+        public enum ApiKey
         {
-            return Path.GetDirectoryName(sourceFilePath);
+            Test,
+            Production
         }
 
         private static string GetApiKey(ApiKey apiKey)
@@ -37,19 +37,17 @@ namespace EasyPost.Tests
             return Environment.GetEnvironmentVariable(keyName) ?? ApiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.
         }
 
-        public enum ApiKey
+        private static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "")
         {
-            Test,
-            Production
+            return Path.GetDirectoryName(sourceFilePath);
         }
 
         public class VCR
         {
-            private readonly EasyVCR.VCR _vcr;
-
             private readonly string _apiKey;
 
             private readonly string _testCassettesFolder;
+            private readonly EasyVCR.VCR _vcr;
 
             public VCR(string testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
             {
@@ -65,11 +63,27 @@ namespace EasyPost.Tests
 
                 _apiKey = GetApiKey(apiKey);
 
-                _testCassettesFolder = Path.Combine(GetSourceFileDirectory(), CassettesFolder);
+                _testCassettesFolder = Path.Combine(GetSourceFileDirectory(), CassettesFolder); // create "cassettes" folder in same directory as test files
+
+                string netVersionFolder = null;
+#if NET6_0
+                    netVersionFolder = "net60";
+#elif NET5_0
+                    netVersionFolder = "net50";
+#elif NETCOREAPP3_1
+                    netVersionFolder = "netcore3.1";
+#elif NET462
+                netVersionFolder = "net462";
+#endif
+
+                if (netVersionFolder != null)
+                {
+                    _testCassettesFolder = Path.Combine(_testCassettesFolder, netVersionFolder); // create .NET version-specific folder in "cassettes" folder
+                }
 
                 if (testCassettesFolder != null)
                 {
-                    _testCassettesFolder = Path.Combine(_testCassettesFolder, testCassettesFolder);
+                    _testCassettesFolder = Path.Combine(_testCassettesFolder, testCassettesFolder); // create test group folder in .NET version-specific folder
                 }
 
                 // if folder doesn't exist, create it
