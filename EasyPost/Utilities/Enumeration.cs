@@ -7,20 +7,12 @@ namespace EasyPost.Utilities
 {
     public abstract class Enumeration : IComparable
     {
-        internal string Name { get; private set; }
-
         internal int Id { get; private set; }
+        internal string Name { get; private set; }
 
         protected Enumeration(int id, string name) => (Id, Name) = (id, name);
 
-        public override string ToString() => Name;
-
-        internal static IEnumerable<T> GetAll<T>() where T : Enumeration =>
-            typeof(T).GetFields(BindingFlags.Public |
-                                BindingFlags.Static |
-                                BindingFlags.DeclaredOnly)
-                .Select(f => f.GetValue(null))
-                .Cast<T>();
+        public int CompareTo(object other) => Id.CompareTo(((Enumeration)other).Id);
 
         public override bool Equals(object obj)
         {
@@ -31,15 +23,24 @@ namespace EasyPost.Utilities
                     // types are not the same
                     return false;
                 }
+
                 Enumeration objEnum = (Enumeration)obj;
                 return objEnum.Id == Id && objEnum.Name == Name;
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 // casting likely failed
                 return false;
             }
         }
 
-        public int CompareTo(object other) => Id.CompareTo(((Enumeration)other).Id);
+        public override string ToString() => Name;
+
+        internal static IEnumerable<T> GetAll<T>() where T : Enumeration =>
+            typeof(T).GetFields(BindingFlags.Public |
+                                BindingFlags.Static |
+                                BindingFlags.DeclaredOnly)
+                .Select(f => f.GetValue(null))
+                .Cast<T>();
     }
 }
