@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EasyPost.Utilities;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -190,44 +191,28 @@ namespace EasyPost
         }
 
         /// <summary>
-        ///     Get the lowest rate for the shipment. Optionally whitelist/blacklist carriers and services from the search.
+        ///     Get the lowest rate for this Shipment.
         /// </summary>
-        /// <param name="includeCarriers">Carriers whitelist.</param>
-        /// <param name="includeServices">Services whitelist.</param>
-        /// <param name="excludeCarriers">Carriers blacklist.</param>
-        /// <param name="excludeServices">Services blacklist.</param>
-        /// <returns>EasyPost.Rate instance or null if no rate was found.</returns>
-        public Rate? LowestRate(IEnumerable<string>? includeCarriers = null, IEnumerable<string>? includeServices = null,
-            IEnumerable<string>? excludeCarriers = null, IEnumerable<string>? excludeServices = null)
+        /// <param name="includeCarriers">Carriers to include in the filter.</param>
+        /// <param name="includeServices">Services to include in the filter.</param>
+        /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
+        /// <param name="excludeServices">Services to exclude in the filter.</param>
+        /// <returns>Lowest EasyPost.Rate object instance.</returns>
+        public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
-            if (rates == null)
-            {
-                return null;
-            }
+            return Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+        }
 
-            List<Rate> result = new List<Rate>(rates);
-
-            if (includeCarriers != null)
-            {
-                FilterRates(ref result, rate => includeCarriers.Contains(rate.carrier));
-            }
-
-            if (includeServices != null)
-            {
-                FilterRates(ref result, rate => includeServices.Contains(rate.service));
-            }
-
-            if (excludeCarriers != null)
-            {
-                FilterRates(ref result, rate => !excludeCarriers.Contains(rate.carrier));
-            }
-
-            if (excludeServices != null)
-            {
-                FilterRates(ref result, rate => !excludeServices.Contains(rate.service));
-            }
-
-            return result.OrderBy(rate => double.Parse(rate.rate)).FirstOrDefault();
+        /// <summary>
+        ///     Get the lowest smartrate for this Shipment.
+        /// </summary>
+        /// <param name="deliveryDays">Delivery days restriction to use when filtering.</param>
+        /// <param name="deliveryAccuracy">Delivery days accuracy restriction to use when filtering.</param>
+        /// <returns>Lowest EasyPost.Smartrate object instance.</returns>
+        public async Task<Smartrate> LowestSmartrate(int deliveryDays, SmartrateAccuracy deliveryAccuracy)
+        {
+            List<Smartrate> smartrates = await GetSmartrates();
+            return Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
         }
 
         /// <summary>
@@ -323,8 +308,6 @@ namespace EasyPost
 
             return await request.Execute<Shipment>();
         }
-
-        private static void FilterRates(ref List<Rate> rates, Func<Rate, bool> filter) => rates = rates.Where(filter).ToList();
 
         private static async Task<Shipment> SendCreate(Dictionary<string, object> parameters)
         {

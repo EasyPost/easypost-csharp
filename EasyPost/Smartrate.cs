@@ -1,9 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using EasyPost.Utilities;
 using Newtonsoft.Json;
 
 namespace EasyPost
 {
+    public class SmartrateAccuracy : Enumeration
+    {
+        public static SmartrateAccuracy Percentile50 = new SmartrateAccuracy(1, "percentile_50");
+        public static SmartrateAccuracy Percentile75 = new SmartrateAccuracy(2, "percentile_75");
+        public static SmartrateAccuracy Percentile85 = new SmartrateAccuracy(2, "percentile_85");
+        public static SmartrateAccuracy Percentile90 = new SmartrateAccuracy(3, "percentile_90");
+        public static SmartrateAccuracy Percentile95 = new SmartrateAccuracy(4, "percentile_95");
+        public static SmartrateAccuracy Percentile97 = new SmartrateAccuracy(2, "percentile_97");
+        public static SmartrateAccuracy Percentile99 = new SmartrateAccuracy(5, "percentile_99");
+
+        private SmartrateAccuracy(int id, string name)
+            : base(id, name)
+        {
+        }
+    }
+
     public class SmartrateResult : Resource
     {
         [JsonProperty("result")]
