@@ -1,0 +1,51 @@
+[
+    {
+        "Duration": 179,
+        "RecordedAt": "2022-05-06T14:56:03.141515-06:00",
+        "Request": {
+            "Body": "{\n  \"user\": {\n    \"name\": \"Test Referral\",\n    \"email\": \"me@email.com\",\n    \"phone\": \"1234567890\"\n  }\n}",
+            "ContentHeaders": {
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "77"
+            },
+            "Method": "POST",
+            "RequestHeaders": {
+                "Authorization": "*****",
+                "content_type": "application/json",
+                "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+                "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/6.0.4"
+            },
+            "Uri": "https://api.easypost.com/beta/referral_customers"
+        },
+        "Response": {
+            "Body": "{\n  \"error\": {\n    \"code\": \"MODE.UNAUTHORIZED\",\n    \"message\": \"This resource requires a production API Key to access.\",\n    \"errors\": []\n  }\n}",
+            "ContentHeaders": {
+                "Expires": "0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "117"
+            },
+            "HttpVersion": "1.1",
+            "ResponseHeaders": {
+                "X-Frame-Options": "SAMEORIGIN",
+                "X-XSS-Protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "x-download-options": "noopen",
+                "x-permitted-cross-domain-policies": "none",
+                "Referrer-Policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "3ad198ff62758b63f6d8b88d00281955",
+                "Cache-Control": "no-store, no-cache",
+                "Pragma": "no-cache",
+                "x-runtime": "0.029961",
+                "x-node": "bigweb1nuq",
+                "x-version-label": "easypost-202205061907-a972424ccc-master",
+                "x-backend": "easypost",
+                "x-proxied": "intlb2nuq fde591f008,extlb1nuq c51cdb8bf2",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+            },
+            "Status": {
+                "Code": 403,
+                "Message": "Forbidden"
+            }
+        }
+    }
+]

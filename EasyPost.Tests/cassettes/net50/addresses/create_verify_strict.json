@@ -1,0 +1,53 @@
+[
+    {
+        "Duration": 191,
+        "RecordedAt": "2022-05-06T14:56:07.266131-06:00",
+        "Request": {
+            "Body": "{\n  \"verify_strict\": [\n    true\n  ],\n  \"address\": {\n    \"name\": \"Jack Sparrow\",\n    \"company\": \"EasyPost\",\n    \"street1\": \"388 Townsend St\",\n    \"street2\": \"Apt 20\",\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\",\n    \"zip\": \"94107\",\n    \"country\": \"US\",\n    \"phone\": \"5555555555\"\n  }\n}",
+            "ContentHeaders": {
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "212"
+            },
+            "Method": "POST",
+            "RequestHeaders": {
+                "Authorization": "*****",
+                "content_type": "application/json",
+                "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+                "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/5.0.16"
+            },
+            "Uri": "https://api.easypost.com/v2/addresses"
+        },
+        "Response": {
+            "Body": "{\n  \"id\": \"adr_f352729ccd7e11ecb2ceac1f6b0a0d1e\",\n  \"object\": \"Address\",\n  \"created_at\": \"2022-05-06T14:56:07-06:00\",\n  \"updated_at\": \"2022-05-06T14:56:07-06:00\",\n  \"name\": \"JACK SPARROW\",\n  \"company\": \"EASYPOST\",\n  \"street1\": \"388 TOWNSEND ST APT 20\",\n  \"street2\": \"\",\n  \"city\": \"SAN FRANCISCO\",\n  \"state\": \"CA\",\n  \"zip\": \"94107-1670\",\n  \"country\": \"US\",\n  \"phone\": \"5555555555\",\n  \"email\": null,\n  \"mode\": \"test\",\n  \"carrier_facility\": null,\n  \"residential\": true,\n  \"federal_tax_id\": null,\n  \"state_tax_id\": null,\n  \"verifications\": {\n    \"zip4\": {\n      \"success\": true,\n      \"errors\": [],\n      \"details\": null\n    },\n    \"delivery\": {\n      \"success\": true,\n      \"errors\": [],\n      \"details\": {\n        \"latitude\": 37.77551,\n        \"longitude\": -122.39697,\n        \"time_zone\": \"America/Los_Angeles\"\n      }\n    }\n  }\n}",
+            "ContentHeaders": {
+                "Expires": "0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "638"
+            },
+            "HttpVersion": "1.1",
+            "ResponseHeaders": {
+                "X-Frame-Options": "SAMEORIGIN",
+                "X-XSS-Protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "x-download-options": "noopen",
+                "x-permitted-cross-domain-policies": "none",
+                "Referrer-Policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "3ad1990162758b67f1dd21a200281b76",
+                "Cache-Control": "no-store, no-cache",
+                "Pragma": "no-cache",
+                "Location": "/api/v2/addresses/adr_f352729ccd7e11ecb2ceac1f6b0a0d1e",
+                "ETag": "W/\"b4acc1f0f247294045c78fc7212c1eec\"",
+                "x-runtime": "0.042733",
+                "x-node": "bigweb1nuq",
+                "x-version-label": "easypost-202205061907-a972424ccc-master",
+                "x-backend": "easypost",
+                "x-proxied": "intlb2nuq fde591f008,extlb1nuq c51cdb8bf2",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+            },
+            "Status": {
+                "Code": 201,
+                "Message": "Created"
+            }
+        }
+    }
+]
