@@ -10,14 +10,19 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize()
-        {
-            _vcr = new TestUtils.VCR("carrier_account", TestUtils.ApiKey.Production);
-        }
+        public void Initialize() => _vcr = new TestUtils.VCR("carrier_account", TestUtils.ApiKey.Production);
 
-        private static async Task<CarrierAccount> CreateBasicCarrierAccount()
+        [TestMethod]
+        public async Task TestAll()
         {
-            return await CarrierAccount.Create(Fixture.BasicCarrierAccount);
+            _vcr.SetUpTest("all");
+
+            List<CarrierAccount> carrierAccounts = await CarrierAccount.All();
+
+            foreach (CarrierAccount item in carrierAccounts)
+            {
+                Assert.IsInstanceOfType(item, typeof(CarrierAccount));
+            }
         }
 
         [TestMethod]
@@ -29,6 +34,19 @@ namespace EasyPost.Tests
 
             Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
             Assert.IsTrue(carrierAccount.id.StartsWith("ca_"));
+        }
+
+        [TestMethod]
+        public async Task TestDelete()
+        {
+            _vcr.SetUpTest("delete");
+
+
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
+
+            bool success = await carrierAccount.Delete();
+
+            Assert.IsTrue(success);
         }
 
         [TestMethod]
@@ -46,15 +64,15 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
-        public async Task TestAll()
+        public async Task TestTypes()
         {
-            _vcr.SetUpTest("all");
+            _vcr.SetUpTest("types");
 
-            List<CarrierAccount> carrierAccounts = await CarrierAccount.All();
+            List<CarrierType> types = await CarrierType.All();
 
-            foreach (var item in carrierAccounts)
+            foreach (CarrierType item in types)
             {
-                Assert.IsInstanceOfType(item, typeof(CarrierAccount));
+                Assert.IsInstanceOfType(item, typeof(CarrierType));
             }
         }
 
@@ -81,30 +99,6 @@ namespace EasyPost.Tests
             Assert.AreEqual(testDescription, carrierAccount.description);
         }
 
-        [TestMethod]
-        public async Task TestDelete()
-        {
-            _vcr.SetUpTest("delete");
-
-
-            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
-
-            bool success = await carrierAccount.Delete();
-
-            Assert.IsTrue(success);
-        }
-
-        [TestMethod]
-        public async Task TestTypes()
-        {
-            _vcr.SetUpTest("types");
-
-            List<CarrierType> types = await CarrierType.All();
-
-            foreach (var item in types)
-            {
-                Assert.IsInstanceOfType(item, typeof(CarrierType));
-            }
-        }
+        private static async Task<CarrierAccount> CreateBasicCarrierAccount() => await CarrierAccount.Create(Fixture.BasicCarrierAccount);
     }
 }

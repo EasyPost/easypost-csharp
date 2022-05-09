@@ -57,6 +57,17 @@ namespace EasyPost
             Merge(await request.Execute<CarrierAccount>());
         }
 
+
+        /// <summary>
+        ///     List all available carrier accounts.
+        /// </summary>
+        /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
+        public static async Task<List<CarrierAccount>> All()
+        {
+            Request request = new Request("carrier_accounts", Method.Get);
+            return await request.Execute<List<CarrierAccount>>();
+        }
+
         /// <summary>
         ///     Create a CarrierAccount.
         /// </summary>
@@ -81,17 +92,6 @@ namespace EasyPost
             });
 
             return await request.Execute<CarrierAccount>();
-        }
-
-
-        /// <summary>
-        ///     List all available carrier accounts.
-        /// </summary>
-        /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
-        public static async Task<List<CarrierAccount>> All()
-        {
-            Request request = new Request("carrier_accounts", Method.Get);
-            return await request.Execute<List<CarrierAccount>>();
         }
 
         /// <summary>

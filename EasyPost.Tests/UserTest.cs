@@ -10,24 +10,33 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize()
+        public void Initialize() => _vcr = new TestUtils.VCR("user", TestUtils.ApiKey.Production);
+
+        // API keys are returned as plaintext, do not run this test.
+        [Ignore]
+        [TestMethod]
+        public async Task TestAllApiKeys()
         {
-            _vcr = new TestUtils.VCR("user", TestUtils.ApiKey.Production);
+            _vcr.SetUpTest("all_api_keys");
+
+
+            User user = await RetrieveMe();
+
+            // TODO: User doesn't have a .all_api_keys() method
+            List<ApiKey> apiKeys = user.api_keys;
         }
 
-        private static async Task<User> RetrieveMe()
+        // API keys are returned as plaintext, do not run this test.
+        [Ignore]
+        [TestMethod]
+        public async Task TestApiKeys()
         {
-            return await User.RetrieveMe();
-        }
+            _vcr.SetUpTest("api_keys");
 
-        private static async Task<User> CreateUser()
-        {
-            return await User.Create(new Dictionary<string, object>
-            {
-                {
-                    "name", "Test User"
-                }
-            });
+
+            User user = await RetrieveMe();
+
+            List<ApiKey> apiKeys = user.api_keys;
         }
 
         // This endpoint returns the child user keys in plain text, do not run this test.
@@ -42,6 +51,19 @@ namespace EasyPost.Tests
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
             Assert.AreEqual("Test User", user.name);
+        }
+
+        // Due to our inability to create child users securely, we must also skip deleting them as we cannot replace the deleted ones easily.
+        [Ignore]
+        [TestMethod]
+        public async Task TestDelete()
+        {
+            _vcr.SetUpTest("delete");
+
+
+            User user = await CreateUser();
+
+            await user.Delete();
         }
 
         [TestMethod]
@@ -95,46 +117,6 @@ namespace EasyPost.Tests
             Assert.AreEqual(testPhone, user.phone_number);
         }
 
-        // Due to our inability to create child users securely, we must also skip deleting them as we cannot replace the deleted ones easily.
-        [Ignore]
-        [TestMethod]
-        public async Task TestDelete()
-        {
-            _vcr.SetUpTest("delete");
-
-
-            User user = await CreateUser();
-
-            await user.Delete();
-        }
-
-        // API keys are returned as plaintext, do not run this test.
-        [Ignore]
-        [TestMethod]
-        public async Task TestAllApiKeys()
-        {
-            _vcr.SetUpTest("all_api_keys");
-
-
-            User user = await RetrieveMe();
-
-            // TODO: User doesn't have a .all_api_keys() method
-            List<ApiKey> apiKeys = user.api_keys;
-        }
-
-        // API keys are returned as plaintext, do not run this test.
-        [Ignore]
-        [TestMethod]
-        public async Task TestApiKeys()
-        {
-            _vcr.SetUpTest("api_keys");
-
-
-            User user = await RetrieveMe();
-
-            List<ApiKey> apiKeys = user.api_keys;
-        }
-
         [TestMethod]
         public async Task TestUpdateBrand()
         {
@@ -155,5 +137,15 @@ namespace EasyPost.Tests
             Assert.IsTrue(brand.id.StartsWith("brd_"));
             Assert.AreEqual(color, brand.color);
         }
+
+        private static async Task<User> CreateUser() =>
+            await User.Create(new Dictionary<string, object>
+            {
+                {
+                    "name", "Test User"
+                }
+            });
+
+        private static async Task<User> RetrieveMe() => await User.RetrieveMe();
     }
 }

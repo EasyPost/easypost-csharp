@@ -31,31 +31,6 @@ namespace EasyPost
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
 
-        /// <summary>
-        ///     Create a ScanForm.
-        /// </summary>
-        /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
-        /// <returns>EasyPost.ScanForm instance.</returns>
-        public static async Task<ScanForm> Create(List<Shipment> shipments)
-        {
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                {
-                    "shipments", shipments
-                }
-            };
-
-            Request request = new Request("scan_forms", Method.Post);
-            request.AddParameters(new Dictionary<string, object>
-            {
-                {
-                    "scan_form", parameters
-                }
-            });
-
-            return await request.Execute<ScanForm>();
-        }
-
 
         /// <summary>
         ///     Get a paginated list of scan forms.
@@ -79,6 +54,31 @@ namespace EasyPost
             ScanFormCollection scanFormCollection = await request.Execute<ScanFormCollection>();
             scanFormCollection.filters = parameters;
             return scanFormCollection;
+        }
+
+        /// <summary>
+        ///     Create a ScanForm.
+        /// </summary>
+        /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
+        /// <returns>EasyPost.ScanForm instance.</returns>
+        public static async Task<ScanForm> Create(List<Shipment> shipments)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                {
+                    "shipments", shipments
+                }
+            };
+
+            Request request = new Request("scan_forms", Method.Post);
+            request.AddParameters(new Dictionary<string, object>
+            {
+                {
+                    "scan_form", parameters
+                }
+            });
+
+            return await request.Execute<ScanForm>();
         }
 
         /// <summary>
