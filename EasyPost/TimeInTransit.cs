@@ -19,6 +19,11 @@ namespace EasyPost
         [JsonProperty("percentile_99")]
         public int? percentile_99 { get; set; }
 
+        /// <summary>
+        ///     Get the value of a specific percentile by its corresponding SmartrateAccuracy enum.
+        /// </summary>
+        /// <param name="accuracy">SmartrateAccuracy enum to find associated value for.</param>
+        /// <returns>Corresponding percentile int value.</returns>
         public int? GetBySmartrateAccuracy(SmartrateAccuracy accuracy)
         {
             if (accuracy.Equals(SmartrateAccuracy.Percentile50))
