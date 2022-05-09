@@ -20,6 +20,7 @@ A simple create & buy shipment example:
 ```csharp
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EasyPost;
 using Newtonsoft.Json;
 
