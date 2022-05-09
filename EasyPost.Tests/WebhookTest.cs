@@ -12,8 +12,15 @@ namespace EasyPost.Tests
     [TestClass]
     public class WebhookTest
     {
-        private TestUtils.VCR _vcr;
         private string _webhookId = null;
+
+        private TestUtils.VCR _vcr;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            _vcr = new TestUtils.VCR("webhook");
+        }
 
         [TestCleanup]
         public async Task Cleanup()
@@ -32,20 +39,14 @@ namespace EasyPost.Tests
             }
         }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("webhook");
-
-        [TestMethod]
-        public async Task TestAll()
+        private static async Task<Webhook> CreateBasicWebhook(string url)
         {
-            _vcr.SetUpTest("all");
-
-            List<Webhook> webhooks = await Webhook.All();
-
-            foreach (Webhook item in webhooks)
+            return await Webhook.Create(new Dictionary<string, object>
             {
-                Assert.IsInstanceOfType(item, typeof(Webhook));
-            }
+                {
+                    "url", url
+                }
+            });
         }
 
         [TestMethod]
@@ -63,20 +64,6 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
-        public async Task TestDelete()
-        {
-            _vcr.SetUpTest("delete");
-
-            Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl);
-            Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
-
-            bool success = await retrievedWebhook.Delete();
-
-            // This endpoint/method does not return anything, just make sure the request doesn't fail
-            Assert.IsTrue(success);
-        }
-
-        [TestMethod]
         public async Task TestRetrieve()
         {
             _vcr.SetUpTest("retrieve");
@@ -91,6 +78,19 @@ namespace EasyPost.Tests
             _webhookId = webhook.id; // trigger deletion
         }
 
+        [TestMethod]
+        public async Task TestAll()
+        {
+            _vcr.SetUpTest("all");
+
+            List<Webhook> webhooks = await Webhook.All();
+
+            foreach (var item in webhooks)
+            {
+                Assert.IsInstanceOfType(item, typeof(Webhook));
+            }
+        }
+
         // Cannot be easily tested - requires a disabled webhook
         [Ignore]
         [TestMethod]
@@ -103,12 +103,18 @@ namespace EasyPost.Tests
             await webhook.Update();
         }
 
-        private static async Task<Webhook> CreateBasicWebhook(string url) =>
-            await Webhook.Create(new Dictionary<string, object>
-            {
-                {
-                    "url", url
-                }
-            });
+        [TestMethod]
+        public async Task TestDelete()
+        {
+            _vcr.SetUpTest("delete");
+
+            Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl);
+            Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
+
+            bool success = await retrievedWebhook.Delete();
+
+            // This endpoint/method does not return anything, just make sure the request doesn't fail
+            Assert.IsTrue(success);
+        }
     }
 }

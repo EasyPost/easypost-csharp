@@ -39,6 +39,35 @@ namespace EasyPost
         [JsonProperty("weight")]
         public double? weight { get; set; }
 
+        /// <summary>
+        ///     Create a tracker.
+        /// </summary>
+        /// <param name="carrier">Carrier for the tracker.</param>
+        /// <param name="trackingCode">Tracking code for the tracker.</param>
+        /// <returns>An EasyPost.Tracker instance.</returns>
+        public static async Task<Tracker> Create(string carrier, string trackingCode)
+        {
+            Request request = new Request("trackers", Method.Post);
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                {
+                    "tracking_code", trackingCode
+                },
+                {
+                    "carrier", carrier
+                }
+            };
+
+            request.AddParameters(new Dictionary<string, object>
+            {
+                {
+                    "tracker", parameters
+                }
+            });
+
+            return await request.Execute<Tracker>();
+        }
+
 
         /// <summary>
         ///     Get a paginated list of trackers.
@@ -69,30 +98,14 @@ namespace EasyPost
         }
 
         /// <summary>
-        ///     Create a tracker.
+        ///     Retrieve a Tracker from its id.
         /// </summary>
-        /// <param name="carrier">Carrier for the tracker.</param>
-        /// <param name="trackingCode">Tracking code for the tracker.</param>
-        /// <returns>An EasyPost.Tracker instance.</returns>
-        public static async Task<Tracker> Create(string carrier, string trackingCode)
+        /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
+        /// <returns>EasyPost.Tracker instance.</returns>
+        public static async Task<Tracker> Retrieve(string id)
         {
-            Request request = new Request("trackers", Method.Post);
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                {
-                    "tracking_code", trackingCode
-                },
-                {
-                    "carrier", carrier
-                }
-            };
-
-            request.AddParameters(new Dictionary<string, object>
-            {
-                {
-                    "tracker", parameters
-                }
-            });
+            Request request = new Request("trackers/{id}", Method.Get);
+            request.AddUrlSegment("id", id);
 
             return await request.Execute<Tracker>();
         }
@@ -113,19 +126,6 @@ namespace EasyPost
             });
             return await request.Execute();
             // This endpoint does not return a response so we return true here
-        }
-
-        /// <summary>
-        ///     Retrieve a Tracker from its id.
-        /// </summary>
-        /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
-        /// <returns>EasyPost.Tracker instance.</returns>
-        public static async Task<Tracker> Retrieve(string id)
-        {
-            Request request = new Request("trackers/{id}", Method.Get);
-            request.AddUrlSegment("id", id);
-
-            return await request.Execute<Tracker>();
         }
     }
 }

@@ -10,7 +10,43 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("tracker");
+        public void Initialize()
+        {
+            _vcr = new TestUtils.VCR("tracker");
+        }
+
+        private static async Task<Tracker> CreateBasicTracker()
+        {
+            return await Tracker.Create(Fixture.Usps, "EZ1000000001");
+        }
+
+        [TestMethod]
+        public async Task TestCreate()
+        {
+            _vcr.SetUpTest("create");
+
+            Tracker tracker = await CreateBasicTracker();
+
+            Assert.IsInstanceOfType(tracker, typeof(Tracker));
+            Assert.IsTrue(tracker.id.StartsWith("trk_"));
+            Assert.AreEqual("pre_transit", tracker.status);
+        }
+
+        [TestMethod]
+        public async Task TestRetrieve()
+        {
+            _vcr.SetUpTest("retrieve");
+
+
+            // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
+            Tracker tracker = await CreateBasicTracker();
+
+            Tracker retrievedTracker = await Tracker.Retrieve(tracker.id);
+
+            Assert.IsInstanceOfType(retrievedTracker, typeof(Tracker));
+            // Must compare IDs because other elements of objects may be different
+            Assert.AreEqual(tracker.id, retrievedTracker.id);
+        }
 
         [TestMethod]
         public async Task TestAll()
@@ -28,22 +64,10 @@ namespace EasyPost.Tests
 
             Assert.IsTrue(trackers.Count <= Fixture.PageSize);
             Assert.IsNotNull(trackerCollection.has_more);
-            foreach (Tracker tracker in trackers)
+            foreach (var tracker in trackers)
             {
                 Assert.IsInstanceOfType(tracker, typeof(Tracker));
             }
-        }
-
-        [TestMethod]
-        public async Task TestCreate()
-        {
-            _vcr.SetUpTest("create");
-
-            Tracker tracker = await CreateBasicTracker();
-
-            Assert.IsInstanceOfType(tracker, typeof(Tracker));
-            Assert.IsTrue(tracker.id.StartsWith("trk_"));
-            Assert.AreEqual("pre_transit", tracker.status);
         }
 
         [TestMethod]
@@ -76,29 +100,11 @@ namespace EasyPost.Tests
                             "tracking_code", "EZ1000000003"
                         }
                     }
-                }
+                },
             });
 
             // This endpoint returns nothing so we assert the function returns true
             Assert.IsTrue(success);
         }
-
-        [TestMethod]
-        public async Task TestRetrieve()
-        {
-            _vcr.SetUpTest("retrieve");
-
-
-            // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
-            Tracker tracker = await CreateBasicTracker();
-
-            Tracker retrievedTracker = await Tracker.Retrieve(tracker.id);
-
-            Assert.IsInstanceOfType(retrievedTracker, typeof(Tracker));
-            // Must compare IDs because other elements of objects may be different
-            Assert.AreEqual(tracker.id, retrievedTracker.id);
-        }
-
-        private static async Task<Tracker> CreateBasicTracker() => await Tracker.Create(Fixture.Usps, "EZ1000000001");
     }
 }

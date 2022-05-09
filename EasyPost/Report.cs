@@ -30,32 +30,6 @@ namespace EasyPost
         public DateTime? url_expires_at { get; set; }
 
         /// <summary>
-        ///     Get a paginated list of reports.
-        /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
-        ///     * {"before_id", string} String representing a Report ID. Only retrieve ScanForms created before this id. Takes
-        ///     precedence over after_id.
-        ///     * {"after_id", string} String representing a Report ID. Only retrieve ScanForms created after this id.
-        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created after this datetime.
-        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created before this datetime.
-        ///     * {"page_size", int} Max size of list. Default to 20.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <param name="type">The type of report, e.g. "shipment", "tracker", "payment_log", etc.</param>
-        /// <returns>An EasyPost.ReportCollection instance.</returns>
-        public static async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
-        {
-            Request request = new Request("reports/{type}", Method.Get, parameters);
-            request.AddUrlSegment("type", type);
-
-            ReportCollection reportCollection = await request.Execute<ReportCollection>();
-            reportCollection.filters = parameters;
-            reportCollection.type = type;
-            return reportCollection;
-        }
-
-        /// <summary>
         ///     Create a Report.
         /// </summary>
         /// <param name="type">
@@ -79,6 +53,32 @@ namespace EasyPost
             request.AddParameters(parameters ?? new Dictionary<string, object>());
 
             return await request.Execute<Report>();
+        }
+
+        /// <summary>
+        ///     Get a paginated list of reports.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
+        ///     * {"before_id", string} String representing a Report ID. Only retrieve ScanForms created before this id. Takes
+        ///     precedence over after_id.
+        ///     * {"after_id", string} String representing a Report ID. Only retrieve ScanForms created after this id.
+        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created after this datetime.
+        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created before this datetime.
+        ///     * {"page_size", int} Max size of list. Default to 20.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <param name="type">The type of report, e.g. "shipment", "tracker", "payment_log", etc.</param>
+        /// <returns>An EasyPost.ReportCollection instance.</returns>
+        public static async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
+        {
+            Request request = new Request("reports/{type}", Method.Get, parameters);
+            request.AddUrlSegment("type", type);
+
+            ReportCollection reportCollection = await request.Execute<ReportCollection>();
+            reportCollection.filters = parameters;
+            reportCollection.type = type;
+            return reportCollection;
         }
 
 

@@ -10,7 +10,46 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("refund");
+        public void Initialize()
+        {
+            _vcr = new TestUtils.VCR("refund");
+        }
+
+        private static async Task<List<Refund>> CreateBasicRefund()
+        {
+            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
+            Shipment retrievedShipment = await Shipment.Retrieve(shipment.id); // We need to retrieve the shipment so that the tracking_code has time to populate
+
+            return await Refund.Create(new Dictionary<string, object>
+            {
+                {
+                    "carrier", Fixture.Usps
+                },
+                {
+                    "tracking_codes", new List<string>
+                    {
+                        retrievedShipment.tracking_code
+                    }
+                }
+            });
+        }
+
+        [TestMethod]
+        public async Task TestCreate()
+        {
+            _vcr.SetUpTest("create");
+
+            List<Refund> refunds = await CreateBasicRefund();
+
+            foreach (var item in refunds)
+            {
+                Assert.IsInstanceOfType(item, typeof(Refund));
+            }
+
+            Refund refund = refunds[0];
+            Assert.IsTrue(refund.id.StartsWith("rfnd_"));
+            Assert.AreEqual("submitted", refund.status);
+        }
 
         [TestMethod]
         public async Task TestAll()
@@ -28,27 +67,10 @@ namespace EasyPost.Tests
 
             Assert.IsTrue(refunds.Count <= Fixture.PageSize);
             Assert.IsNotNull(refundCollection.has_more);
-            foreach (Refund item in refunds)
+            foreach (var item in refunds)
             {
                 Assert.IsInstanceOfType(item, typeof(Refund));
             }
-        }
-
-        [TestMethod]
-        public async Task TestCreate()
-        {
-            _vcr.SetUpTest("create");
-
-            List<Refund> refunds = await CreateBasicRefund();
-
-            foreach (Refund item in refunds)
-            {
-                Assert.IsInstanceOfType(item, typeof(Refund));
-            }
-
-            Refund refund = refunds[0];
-            Assert.IsTrue(refund.id.StartsWith("rfnd_"));
-            Assert.AreEqual("submitted", refund.status);
         }
 
         [TestMethod]
@@ -69,25 +91,6 @@ namespace EasyPost.Tests
 
             Assert.IsInstanceOfType(retrievedRefund, typeof(Refund));
             Assert.AreEqual(refund, retrievedRefund);
-        }
-
-        private static async Task<List<Refund>> CreateBasicRefund()
-        {
-            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
-            Shipment retrievedShipment = await Shipment.Retrieve(shipment.id); // We need to retrieve the shipment so that the tracking_code has time to populate
-
-            return await Refund.Create(new Dictionary<string, object>
-            {
-                {
-                    "carrier", Fixture.Usps
-                },
-                {
-                    "tracking_codes", new List<string>
-                    {
-                        retrievedShipment.tracking_code
-                    }
-                }
-            });
         }
     }
 }

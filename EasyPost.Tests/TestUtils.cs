@@ -11,10 +11,9 @@ namespace EasyPost.Tests
 
         private const string CassettesFolder = "cassettes";
 
-        public enum ApiKey
+        private static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "")
         {
-            Test,
-            Production
+            return Path.GetDirectoryName(sourceFilePath);
         }
 
         private static string GetApiKey(ApiKey apiKey)
@@ -35,14 +34,19 @@ namespace EasyPost.Tests
             return Environment.GetEnvironmentVariable(keyName) ?? ApiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.
         }
 
-        private static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath);
+        public enum ApiKey
+        {
+            Test,
+            Production
+        }
 
         public class VCR
         {
+            private readonly EasyVCR.VCR _vcr;
+
             private readonly string _apiKey;
 
             private readonly string _testCassettesFolder;
-            private readonly EasyVCR.VCR _vcr;
 
             public VCR(string testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
             {
@@ -51,7 +55,7 @@ namespace EasyPost.Tests
                     MatchRules = MatchRules.Default,
                     Censors = Censors.DefaultSensitive,
                     SimulateDelay = false,
-                    ManualDelay = 0
+                    ManualDelay = 0,
                 };
                 _vcr = new EasyVCR.VCR(advancedSettings);
                 _vcr.RecordIfNeeded(); // always in auto mode

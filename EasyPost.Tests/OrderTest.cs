@@ -10,24 +10,14 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("order");
-
-        [TestMethod]
-        public async Task TestBuy()
+        public void Initialize()
         {
-            _vcr.SetUpTest("buy");
+            _vcr = new TestUtils.VCR("order");
+        }
 
-            Order order = await CreateBasicOrder();
-
-            await order.Buy(Fixture.Usps, Fixture.UspsService);
-
-            List<Shipment> shipments = order.shipments;
-
-            foreach (Shipment shipment in shipments)
-            {
-                Assert.IsInstanceOfType(shipment, typeof(Shipment));
-                Assert.IsNotNull(shipment.postage_label);
-            }
+        private static async Task<Order> CreateBasicOrder()
+        {
+            return await Order.Create(Fixture.BasicOrder);
         }
 
         [TestMethod]
@@ -43,6 +33,20 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
+        public async Task TestRetrieve()
+        {
+            _vcr.SetUpTest("retrieve");
+
+            Order order = await CreateBasicOrder();
+
+            Order retrievedOrder = await Order.Retrieve(order.id);
+
+            Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
+            // Must compare IDs since other elements of objects may be different
+            Assert.AreEqual(order.id, retrievedOrder.id);
+        }
+
+        [TestMethod]
         public async Task TestGetRates()
         {
             _vcr.SetUpTest("get_rates");
@@ -54,9 +58,27 @@ namespace EasyPost.Tests
             List<Rate> rates = order.rates;
 
             Assert.IsNotNull(rates);
-            foreach (Rate rate in rates)
+            foreach (var rate in rates)
             {
                 Assert.IsInstanceOfType(rate, typeof(Rate));
+            }
+        }
+
+        [TestMethod]
+        public async Task TestBuy()
+        {
+            _vcr.SetUpTest("buy");
+
+            Order order = await CreateBasicOrder();
+
+            await order.Buy(Fixture.Usps, Fixture.UspsService);
+
+            List<Shipment> shipments = order.shipments;
+
+            foreach (var shipment in shipments)
+            {
+                Assert.IsInstanceOfType(shipment, typeof(Shipment));
+                Assert.IsNotNull(shipment.postage_label);
             }
         }
 
@@ -90,21 +112,5 @@ namespace EasyPost.Tests
             };
             Assert.ThrowsException<FilterFailure>(() => order.LowestRate(carriers, null, null, null));
         }
-
-        [TestMethod]
-        public async Task TestRetrieve()
-        {
-            _vcr.SetUpTest("retrieve");
-
-            Order order = await CreateBasicOrder();
-
-            Order retrievedOrder = await Order.Retrieve(order.id);
-
-            Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
-            // Must compare IDs since other elements of objects may be different
-            Assert.AreEqual(order.id, retrievedOrder.id);
-        }
-
-        private static async Task<Order> CreateBasicOrder() => await Order.Create(Fixture.BasicOrder);
     }
 }

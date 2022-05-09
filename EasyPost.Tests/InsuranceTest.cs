@@ -10,28 +10,14 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("insurance");
-
-        [TestMethod]
-        public async Task TestAll()
+        public void Initialize()
         {
-            _vcr.SetUpTest("all");
+            _vcr = new TestUtils.VCR("insurance");
+        }
 
-            InsuranceCollection insuranceCollection = await Insurance.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
-
-            List<Insurance> insurances = insuranceCollection.insurances;
-
-            Assert.IsTrue(insurances.Count <= Fixture.PageSize);
-            Assert.IsNotNull(insuranceCollection.has_more);
-            foreach (Insurance item in insurances)
-            {
-                Assert.IsInstanceOfType(item, typeof(Insurance));
-            }
+        private static async Task<Insurance> CreateBasicInsurance()
+        {
+            return await Insurance.Create(await Fixture.BasicInsurance());
         }
 
         [TestMethod]
@@ -61,6 +47,26 @@ namespace EasyPost.Tests
             Assert.AreEqual(insurance.id, retrievedInsurance.id);
         }
 
-        private static async Task<Insurance> CreateBasicInsurance() => await Insurance.Create(await Fixture.BasicInsurance());
+        [TestMethod]
+        public async Task TestAll()
+        {
+            _vcr.SetUpTest("all");
+
+            InsuranceCollection insuranceCollection = await Insurance.All(new Dictionary<string, object>
+            {
+                {
+                    "page_size", Fixture.PageSize
+                }
+            });
+
+            List<Insurance> insurances = insuranceCollection.insurances;
+
+            Assert.IsTrue(insurances.Count <= Fixture.PageSize);
+            Assert.IsNotNull(insuranceCollection.has_more);
+            foreach (var item in insurances)
+            {
+                Assert.IsInstanceOfType(item, typeof(Insurance));
+            }
+        }
     }
 }

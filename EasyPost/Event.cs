@@ -46,6 +46,19 @@ namespace EasyPost
         }
 
         /// <summary>
+        ///     Retrieve an Event from its id.
+        /// </summary>
+        /// <param name="id">String representing a Event. Starts with "evt_".</param>
+        /// <returns>EasyPost.Event instance.</returns>
+        public static async Task<Event> Retrieve(string id)
+        {
+            Request request = new Request("events/{id}", Method.Get);
+            request.AddUrlSegment("id", id);
+
+            return await request.Execute<Event>();
+        }
+
+        /// <summary>
         ///     List all Event objects.
         /// </summary>
         /// <param name="parameters">
@@ -67,19 +80,6 @@ namespace EasyPost
             Request request = new Request("events", Method.Get, parameters);
 
             return await request.Execute<EventCollection>();
-        }
-
-        /// <summary>
-        ///     Retrieve an Event from its id.
-        /// </summary>
-        /// <param name="id">String representing a Event. Starts with "evt_".</param>
-        /// <returns>EasyPost.Event instance.</returns>
-        public static async Task<Event> Retrieve(string id)
-        {
-            Request request = new Request("events/{id}", Method.Get);
-            request.AddUrlSegment("id", id);
-
-            return await request.Execute<Event>();
         }
     }
 }

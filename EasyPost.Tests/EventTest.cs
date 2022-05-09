@@ -10,7 +10,20 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("event");
+        public void Initialize()
+        {
+            _vcr = new TestUtils.VCR("event");
+        }
+
+        private static async Task<EventCollection> GetBasicEventCollection()
+        {
+            return await Event.All(new Dictionary<string, object>
+            {
+                {
+                    "page_size", Fixture.PageSize
+                }
+            });
+        }
 
         [TestMethod]
         public async Task TestAll()
@@ -23,7 +36,7 @@ namespace EasyPost.Tests
 
             Assert.IsTrue(events.Count <= Fixture.PageSize);
             Assert.IsNotNull(eventCollection.has_more);
-            foreach (Event item in events)
+            foreach (var item in events)
             {
                 Assert.IsInstanceOfType(item, typeof(Event));
             }
@@ -44,13 +57,5 @@ namespace EasyPost.Tests
             // Must compare IDs because other elements of objects may be different
             Assert.AreEqual(_event.id, retrievedEvent.id);
         }
-
-        private static async Task<EventCollection> GetBasicEventCollection() =>
-            await Event.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
     }
 }

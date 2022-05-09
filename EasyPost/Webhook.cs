@@ -39,19 +39,6 @@ namespace EasyPost
             Merge(await request.Execute<Webhook>());
         }
 
-
-        /// <summary>
-        ///     Get a list of scan forms.
-        /// </summary>
-        /// <returns>List of EasyPost.Webhook instances.</returns>
-        public static async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
-        {
-            Request request = new Request("webhooks", Method.Get, parameters);
-
-            WebhookList webhookList = await request.Execute<WebhookList>();
-            return webhookList.webhooks;
-        }
-
         /// <summary>
         ///     Create a Webhook.
         /// </summary>
@@ -72,6 +59,19 @@ namespace EasyPost
             });
 
             return await request.Execute<Webhook>();
+        }
+
+
+        /// <summary>
+        ///     Get a list of scan forms.
+        /// </summary>
+        /// <returns>List of EasyPost.Webhook instances.</returns>
+        public static async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
+        {
+            Request request = new Request("webhooks", Method.Get, parameters);
+
+            WebhookList webhookList = await request.Execute<WebhookList>();
+            return webhookList.webhooks;
         }
 
         /// <summary>

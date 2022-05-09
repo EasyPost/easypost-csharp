@@ -9,7 +9,10 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("error");
+        public void Initialize()
+        {
+            _vcr = new TestUtils.VCR("error");
+        }
 
         [TestMethod]
         public async Task TestError()
@@ -18,7 +21,7 @@ namespace EasyPost.Tests
 
             try
             {
-                Shipment _ = await Shipment.Create();
+                var _ = await Shipment.Create();
             }
             catch (HttpException error)
             {
