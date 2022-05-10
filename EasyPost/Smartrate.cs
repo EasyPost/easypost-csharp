@@ -19,6 +19,11 @@ namespace EasyPost
             : base(id, name)
         {
         }
+
+        public static IEnumerable<SmartrateAccuracy> All()
+        {
+            return GetAll<SmartrateAccuracy>();
+        }
     }
 
     public class SmartrateResult : Resource

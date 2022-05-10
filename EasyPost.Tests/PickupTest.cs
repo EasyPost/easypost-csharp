@@ -15,40 +15,6 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("pickup");
         }
 
-        private static async Task<Pickup> CreateBasicPickup()
-        {
-            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
-            Dictionary<string, object> pickupData = Fixture.BasicPickup;
-            pickupData["shipment"] = shipment;
-            return await Pickup.Create(pickupData);
-        }
-
-        [TestMethod]
-        public async Task TestCreate()
-        {
-            _vcr.SetUpTest("create");
-
-            Pickup pickup = await CreateBasicPickup();
-
-            Assert.IsInstanceOfType(pickup, typeof(Pickup));
-            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
-            Assert.IsNotNull(pickup.pickup_rates);
-        }
-
-        [TestMethod]
-        public async Task TestRetrieve()
-        {
-            _vcr.SetUpTest("retrieve");
-
-
-            Pickup pickup = await CreateBasicPickup();
-
-            Pickup retrievedPickup = await Pickup.Retrieve(pickup.id);
-
-            Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
-            Assert.AreEqual(pickup, retrievedPickup);
-        }
-
         [TestMethod]
         public async Task TestBuy()
         {
@@ -83,6 +49,18 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
+        public async Task TestCreate()
+        {
+            _vcr.SetUpTest("create");
+
+            Pickup pickup = await CreateBasicPickup();
+
+            Assert.IsInstanceOfType(pickup, typeof(Pickup));
+            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
+            Assert.IsNotNull(pickup.pickup_rates);
+        }
+
+        [TestMethod]
         public async Task TestLowestRate()
         {
             _vcr.SetUpTest("lowest_rate");
@@ -102,13 +80,34 @@ namespace EasyPost.Tests
             };
             Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(null, services, null, null));
 
-
             // test lowest rate with carrier filter (should error due to bad carrier)
             List<string> carriers = new List<string>
             {
                 "BAD_CARRIER"
             };
             Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(carriers, null, null, null));
+        }
+
+        [TestMethod]
+        public async Task TestRetrieve()
+        {
+            _vcr.SetUpTest("retrieve");
+
+
+            Pickup pickup = await CreateBasicPickup();
+
+            Pickup retrievedPickup = await Pickup.Retrieve(pickup.id);
+
+            Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
+            Assert.AreEqual(pickup, retrievedPickup);
+        }
+
+        private static async Task<Pickup> CreateBasicPickup()
+        {
+            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
+            Dictionary<string, object> pickupData = Fixture.BasicPickup;
+            pickupData["shipment"] = shipment;
+            return await Pickup.Create(pickupData);
         }
     }
 }

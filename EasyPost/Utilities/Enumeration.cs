@@ -36,7 +36,7 @@ namespace EasyPost.Utilities
 
         public override string ToString() => Name;
 
-        internal static IEnumerable<T> GetAll<T>() where T : Enumeration =>
+        protected static IEnumerable<T> GetAll<T>() where T : Enumeration =>
             typeof(T).GetFields(BindingFlags.Public |
                                 BindingFlags.Static |
                                 BindingFlags.DeclaredOnly)
