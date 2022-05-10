@@ -212,24 +212,7 @@ namespace EasyPost
         public async Task<Smartrate> LowestSmartrate(int deliveryDays, SmartrateAccuracy deliveryAccuracy)
         {
             List<Smartrate> smartrates = await GetSmartrates();
-            return Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
-        }
-
-        /// <summary>
-        ///     Refresh the rates for this Shipment.
-        /// </summary>
-        /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
-        public async Task RegenerateRates(Dictionary<string, object>? parameters = null)
-        {
-            if (id == null)
-            {
-                throw new PropertyMissing("id");
-            }
-
-            Request request = new Request("shipments/{id}/rerate", Method.Post, parameters);
-            request.AddUrlSegment("id", id);
-
-            rates = (await request.Execute<Shipment>()).rates;
+            return GetLowestSmartrate(smartrates, deliveryDays, deliveryAccuracy);
         }
 
         /// <summary>
@@ -249,26 +232,21 @@ namespace EasyPost
         }
 
         /// <summary>
-        ///     Create a Shipment.
+        ///     Refresh the rates for this Shipment.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to create the shipment with. Valid pairs:
-        ///     * {"from_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"to_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"buyer_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"return_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"parcel", Dictionary&lt;string, object&gt;} See Parcel.Create for list of valid keys.
-        ///     * {"customs_info", Dictionary&lt;string, object&gt;} See CustomsInfo.Create for lsit of valid keys.
-        ///     * {"options", Dictionary&lt;string, object&gt;} See https://www.easypost.com/docs/api#shipments for list of
-        ///     options.
-        ///     * {"is_return", bool}
-        ///     * {"currency", string} Defaults to "USD".
-        ///     * {"reference", string}
-        ///     * {"carrier_accounts", List&lt;string&gt;} List of CarrierAccount.id to limit rating.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>An EasyPost.Shipment instance.</returns>
-        public static async Task<Shipment> Create(Dictionary<string, object>? parameters = null) => await SendCreate(parameters ?? new Dictionary<string, object>());
+        /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
+        public async Task RegenerateRates(Dictionary<string, object>? parameters = null)
+        {
+            if (id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
+            Request request = new Request("shipments/{id}/rerate", Method.Post, parameters);
+            request.AddUrlSegment("id", id);
+
+            rates = (await request.Execute<Shipment>()).rates;
+        }
 
 
         /// <summary>
@@ -294,6 +272,40 @@ namespace EasyPost
             ShipmentCollection shipmentCollection = await request.Execute<ShipmentCollection>();
             shipmentCollection.filters = parameters;
             return shipmentCollection;
+        }
+
+        /// <summary>
+        ///     Create a Shipment.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to create the shipment with. Valid pairs:
+        ///     * {"from_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
+        ///     * {"to_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
+        ///     * {"buyer_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
+        ///     * {"return_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
+        ///     * {"parcel", Dictionary&lt;string, object&gt;} See Parcel.Create for list of valid keys.
+        ///     * {"customs_info", Dictionary&lt;string, object&gt;} See CustomsInfo.Create for lsit of valid keys.
+        ///     * {"options", Dictionary&lt;string, object&gt;} See https://www.easypost.com/docs/api#shipments for list of
+        ///     options.
+        ///     * {"is_return", bool}
+        ///     * {"currency", string} Defaults to "USD".
+        ///     * {"reference", string}
+        ///     * {"carrier_accounts", List&lt;string&gt;} List of CarrierAccount.id to limit rating.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>An EasyPost.Shipment instance.</returns>
+        public static async Task<Shipment> Create(Dictionary<string, object>? parameters = null) => await SendCreate(parameters ?? new Dictionary<string, object>());
+
+        /// <summary>
+        ///     Get the lowest smartrate from a list of smartrates.
+        /// </summary>
+        /// <param name="smartrates">List of smartrates to filter.</param>
+        /// <param name="deliveryDays">Delivery days restriction to use when filtering.</param>
+        /// <param name="deliveryAccuracy">Delivery days accuracy restriction to use when filtering.</param>
+        /// <returns>Lowest EasyPost.Smartrate object instance.</returns>
+        public static Smartrate GetLowestSmartrate(List<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy)
+        {
+            return Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
         }
 
         /// <summary>
