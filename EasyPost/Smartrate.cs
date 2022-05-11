@@ -20,10 +20,7 @@ namespace EasyPost
         {
         }
 
-        public static IEnumerable<SmartrateAccuracy> All()
-        {
-            return GetAll<SmartrateAccuracy>();
-        }
+        public static IEnumerable<SmartrateAccuracy> All() => GetAll<SmartrateAccuracy>();
     }
 
     public class SmartrateResult : Resource

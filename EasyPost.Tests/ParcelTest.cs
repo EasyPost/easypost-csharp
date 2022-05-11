@@ -9,15 +9,7 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize()
-        {
-            _vcr = new TestUtils.VCR("parcel");
-        }
-
-        private static async Task<Parcel> CreateBasicParcel()
-        {
-            return await Parcel.Create(Fixture.BasicParcel);
-        }
+        public void Initialize() => _vcr = new TestUtils.VCR("parcel");
 
         [TestMethod]
         public async Task TestCreate()
@@ -44,5 +36,7 @@ namespace EasyPost.Tests
             Assert.IsInstanceOfType(retrievedParcel, typeof(Parcel));
             Assert.AreEqual(parcel, retrievedParcel);
         }
+
+        private static async Task<Parcel> CreateBasicParcel() => await Parcel.Create(Fixture.BasicParcel);
     }
 }

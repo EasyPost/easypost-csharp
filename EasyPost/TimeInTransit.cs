@@ -27,19 +27,40 @@ namespace EasyPost
         public int? GetBySmartrateAccuracy(SmartrateAccuracy accuracy)
         {
             if (accuracy.Equals(SmartrateAccuracy.Percentile50))
+            {
                 return percentile_50;
+            }
+
             if (accuracy.Equals(SmartrateAccuracy.Percentile75))
+            {
                 return percentile_75;
+            }
+
             if (accuracy.Equals(SmartrateAccuracy.Percentile85))
+            {
                 return percentile_85;
+            }
+
             if (accuracy.Equals(SmartrateAccuracy.Percentile90))
+            {
                 return percentile_90;
+            }
+
             if (accuracy.Equals(SmartrateAccuracy.Percentile95))
+            {
                 return percentile_95;
+            }
+
             if (accuracy.Equals(SmartrateAccuracy.Percentile97))
+            {
                 return percentile_97;
+            }
+
             if (accuracy.Equals(SmartrateAccuracy.Percentile99))
+            {
                 return percentile_99;
+            }
+
             return null;
         }
     }

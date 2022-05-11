@@ -6,17 +6,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="FSharpCompileTest.fs" />
+        <Compile Include="FSharpCompileTest.fs"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\EasyPost\EasyPost.csproj" />
+        <ProjectReference Include="..\EasyPost\EasyPost.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
-      <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
-      <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0"/>
+        <PackageReference Include="MSTest.TestAdapter" Version="2.2.8"/>
+        <PackageReference Include="MSTest.TestFramework" Version="2.2.8"/>
     </ItemGroup>
 
 </Project>

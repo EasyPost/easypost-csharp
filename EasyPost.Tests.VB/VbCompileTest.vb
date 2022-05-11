@@ -7,7 +7,7 @@ Public Class VbCompileTest
     <TestMethod>
     Public Sub TestCompile()
         'API key is not set, so calling CarrierType.All() will produce an error. But if this runs, then the code compiled properly.
-        Assert.ThrowsException(Of ClientNotConfigured)(Function() CarrierType.All())
+        Assert.ThrowsException (Of ClientNotConfigured)(Function() CarrierType.All())
     End Sub
 
     <TestMethod>
@@ -22,6 +22,6 @@ Public Class VbCompileTest
         addressData.Add("country", "US")
 
         'Without an API key, this will throw an error. But as long as it's a ClientNotConfigured exception, it's a success.
-        Assert.ThrowsException(Of ClientNotConfigured)(Function() Address.Create(addressData))
+        Assert.ThrowsException (Of ClientNotConfigured)(Function() Address.Create(addressData))
     End Sub
 End Class

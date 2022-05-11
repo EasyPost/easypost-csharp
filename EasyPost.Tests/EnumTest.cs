@@ -42,7 +42,7 @@ namespace EasyPost.Tests
                 "percentile_99"
             };
             IEnumerable<SmartrateAccuracy> accuracies = SmartrateAccuracy.All();
-            foreach (var accuracy in accuracies)
+            foreach (SmartrateAccuracy accuracy in accuracies)
             {
                 Assert.IsInstanceOfType(accuracy, typeof(SmartrateAccuracy));
                 Assert.IsTrue(enumValues.Contains(accuracy.Name));

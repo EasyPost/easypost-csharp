@@ -57,7 +57,8 @@ namespace EasyPost
         ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
         ///     * {"before_id", string} String representing an Insurance ID. Starts with "ins_". Only retrieve insurances created
         ///     before this id. Takes precedence over after_id.
-        ///     * {"after_id", string} String representing an Insurance ID. Starts with "ins_". Only retrieve insurances created after
+        ///     * {"after_id", string} String representing an Insurance ID. Starts with "ins_". Only retrieve insurances created
+        ///     after
         ///     this id.
         ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve insurances created after this datetime.
         ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve insurances created before this datetime.
@@ -80,10 +81,13 @@ namespace EasyPost
         ///     Dictionary containing parameters to create the insurance with. Valid pairs:
         ///     * {"to_address", Address} The actual destination of the package to be insured
         ///     * {"from_address", Address} The actual origin of the package to be insured
-        ///     * {"tracking_code", string} The tracking code associated with the non-EasyPost-purchased package you'd like to insure
-        ///     * {"reference", string} Optional. A unique value that may be used in place of ID when doing Retrieve calls for this insurance
+        ///     * {"tracking_code", string} The tracking code associated with the non-EasyPost-purchased package you'd like to
+        ///     insure
+        ///     * {"reference", string} Optional. A unique value that may be used in place of ID when doing Retrieve calls for this
+        ///     insurance
         ///     * {"amount", decimal} The USD value of contents you would like to insure. Currently the maximum is $5000
-        ///     * {"carrier", string} Optional. The carrier associated with the tracking_code you provided. The carrier will get auto-detected if none is provided
+        ///     * {"carrier", string} Optional. The carrier associated with the tracking_code you provided. The carrier will get
+        ///     auto-detected if none is provided
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Insurance instance.</returns>

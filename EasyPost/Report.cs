@@ -30,32 +30,6 @@ namespace EasyPost
         public DateTime? url_expires_at { get; set; }
 
         /// <summary>
-        ///     Create a Report.
-        /// </summary>
-        /// <param name="type">
-        ///     The type of report, e.g. "shipment", "tracker", "payment_log", etc.
-        /// </param>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to create the carrier account with. Valid pairs:
-        ///     * {"start_date", string} Date to start the report at.
-        ///     * {"end_date", string} Date to end the report at.
-        ///     * {"include_children", string} Whether or not to include child objects in the report.
-        ///     * {"send_email", string} Whether or not to send the report via email.
-        ///     * {"columns", List&lt;string&gt;} Specify the exact columns you want in your report.
-        ///     * {"additional_columns", List&lt;string&gt;} Request additional columns (if any) outside of the defaults.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>EasyPost.Report instance.</returns>
-        public static async Task<Report> Create(string type, Dictionary<string, object>? parameters = null)
-        {
-            Request request = new Request("reports/{type}", Method.Post);
-            request.AddUrlSegment("type", type);
-            request.AddParameters(parameters ?? new Dictionary<string, object>());
-
-            return await request.Execute<Report>();
-        }
-
-        /// <summary>
         ///     Get a paginated list of reports.
         /// </summary>
         /// <param name="parameters">
@@ -79,6 +53,32 @@ namespace EasyPost
             reportCollection.filters = parameters;
             reportCollection.type = type;
             return reportCollection;
+        }
+
+        /// <summary>
+        ///     Create a Report.
+        /// </summary>
+        /// <param name="type">
+        ///     The type of report, e.g. "shipment", "tracker", "payment_log", etc.
+        /// </param>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to create the carrier account with. Valid pairs:
+        ///     * {"start_date", string} Date to start the report at.
+        ///     * {"end_date", string} Date to end the report at.
+        ///     * {"include_children", string} Whether or not to include child objects in the report.
+        ///     * {"send_email", string} Whether or not to send the report via email.
+        ///     * {"columns", List&lt;string&gt;} Specify the exact columns you want in your report.
+        ///     * {"additional_columns", List&lt;string&gt;} Request additional columns (if any) outside of the defaults.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>EasyPost.Report instance.</returns>
+        public static async Task<Report> Create(string type, Dictionary<string, object>? parameters = null)
+        {
+            Request request = new Request("reports/{type}", Method.Post);
+            request.AddUrlSegment("type", type);
+            request.AddParameters(parameters ?? new Dictionary<string, object>());
+
+            return await request.Execute<Report>();
         }
 
 

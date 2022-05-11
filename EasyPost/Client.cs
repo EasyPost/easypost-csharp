@@ -42,7 +42,10 @@ namespace EasyPost
         ///     Constructor for the EasyPost client.
         /// </summary>
         /// <param name="clientConfiguration">EasyPost.ClientConfiguration object instance to use to configure this client.</param>
-        /// <param name="customHttpClient">Custom HttpClient to pass into RestSharp if needed. Mostly for debug purposes, not advised for general use.</param>
+        /// <param name="customHttpClient">
+        ///     Custom HttpClient to pass into RestSharp if needed. Mostly for debug purposes, not
+        ///     advised for general use.
+        /// </param>
         public Client(ClientConfiguration clientConfiguration, HttpClient? customHttpClient = null)
         {
             ServicePointManager.SecurityProtocol |= Security.GetProtocol();
@@ -115,7 +118,11 @@ namespace EasyPost
             try
             {
                 body = JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
-                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string> { "error", "errors" });
+                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string>
+                {
+                    "error",
+                    "errors"
+                });
             }
             catch
             {

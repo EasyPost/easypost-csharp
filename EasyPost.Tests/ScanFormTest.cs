@@ -10,18 +10,28 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize()
-        {
-            _vcr = new TestUtils.VCR("scan_form");
-        }
+        public void Initialize() => _vcr = new TestUtils.VCR("scan_form");
 
-        private static async Task<ScanForm> GetBasicScanForm()
+        [TestMethod]
+        public async Task TestAll()
         {
-            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
-            return await ScanForm.Create(new List<Shipment>
+            _vcr.SetUpTest("all");
+
+            ScanFormCollection scanFormCollection = await ScanForm.All(new Dictionary<string, object>
             {
-                shipment
+                {
+                    "page_size", Fixture.PageSize
+                }
             });
+
+            List<ScanForm> scanForms = scanFormCollection.scan_forms;
+
+            Assert.IsTrue(scanForms.Count <= Fixture.PageSize);
+            Assert.IsNotNull(scanFormCollection.has_more);
+            foreach (ScanForm scanForm in scanForms)
+            {
+                Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
+            }
         }
 
         [TestMethod]
@@ -49,26 +59,13 @@ namespace EasyPost.Tests
             Assert.AreEqual(scanForm, retrievedScanForm);
         }
 
-        [TestMethod]
-        public async Task TestAll()
+        private static async Task<ScanForm> GetBasicScanForm()
         {
-            _vcr.SetUpTest("all");
-
-            ScanFormCollection scanFormCollection = await ScanForm.All(new Dictionary<string, object>
+            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
+            return await ScanForm.Create(new List<Shipment>
             {
-                {
-                    "page_size", Fixture.PageSize
-                }
+                shipment
             });
-
-            List<ScanForm> scanForms = scanFormCollection.scan_forms;
-
-            Assert.IsTrue(scanForms.Count <= Fixture.PageSize);
-            Assert.IsNotNull(scanFormCollection.has_more);
-            foreach (var scanForm in scanForms)
-            {
-                Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
-            }
         }
     }
 }
