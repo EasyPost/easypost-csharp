@@ -68,7 +68,6 @@ namespace EasyPost.Utilities
                 if (rateValue < lowestRateValue)
                 {
                     lowestRate = rate;
-                    continue;
                 }
             }
 
@@ -111,7 +110,6 @@ namespace EasyPost.Utilities
                 if (smartrate.rate < lowestSmartrate.rate)
                 {
                     lowestSmartrate = smartrate;
-                    continue;
                 }
             }
 

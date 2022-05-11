@@ -7,8 +7,8 @@ namespace EasyPost.Utilities
 {
     public abstract class Enumeration : IComparable
     {
-        internal int Id { get; private set; }
-        internal string Name { get; private set; }
+        internal int Id { get; }
+        internal string Name { get; }
 
         protected Enumeration(int id, string name) => (Id, Name) = (id, name);
 

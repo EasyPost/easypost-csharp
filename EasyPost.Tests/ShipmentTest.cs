@@ -126,7 +126,7 @@ namespace EasyPost.Tests
             Address toAddress = await Address.Create(Fixture.BasicAddress);
             Parcel parcel = await Parcel.Create(Fixture.BasicParcel);
 
-            Shipment shipment = await Shipment.Create(new Dictionary<string, object>()
+            Shipment shipment = await Shipment.Create(new Dictionary<string, object>
             {
                 {
                     "from_address", new Dictionary<string, object>
@@ -218,7 +218,7 @@ namespace EasyPost.Tests
             {
                 "Priority"
             };
-            lowestRate = shipment.LowestRate(null, services, null, null);
+            lowestRate = shipment.LowestRate(null, services);
             Assert.AreEqual("Priority", lowestRate.service);
             Assert.AreEqual("7.37", lowestRate.rate);
             Assert.AreEqual("USPS", lowestRate.carrier);
@@ -228,7 +228,7 @@ namespace EasyPost.Tests
             {
                 "BAD_CARRIER"
             };
-            Assert.ThrowsException<FilterFailure>(() => shipment.LowestRate(carriers, null, null, null));
+            Assert.ThrowsException<FilterFailure>(() => shipment.LowestRate(carriers));
         }
 
         // Refunding a test shipment must happen within seconds of the shipment being created as test shipments naturally

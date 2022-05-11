@@ -75,14 +75,14 @@ namespace EasyPost.Tests
             {
                 "BAD_SERVICE"
             };
-            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(null, services, null, null));
+            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(null, services));
 
             // test lowest rate with carrier filter (should error due to bad carrier)
             List<string> carriers = new List<string>
             {
                 "BAD_CARRIER"
             };
-            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(carriers, null, null, null));
+            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(carriers));
         }
 
         [TestMethod]

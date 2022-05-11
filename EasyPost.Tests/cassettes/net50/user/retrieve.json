@@ -1,96 +1,96 @@
 [
-  {
-    "Duration": 455,
-    "RecordedAt": "2022-05-05T17:10:25.747929-06:00",
-    "Request": {
-      "Body": "",
-      "ContentHeaders": {},
-      "Method": "GET",
-      "RequestHeaders": {
-        "Accept": "application/json",
-        "Authorization": "*****",
-        "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/5.0.16"
-      },
-      "Uri": "https://api.easypost.com/v2/users"
+    {
+        "Duration": 455,
+        "RecordedAt": "2022-05-05T17:10:25.747929-06:00",
+        "Request": {
+            "Body": "",
+            "ContentHeaders": {},
+            "Method": "GET",
+            "RequestHeaders": {
+                "Accept": "application/json",
+                "Authorization": "*****",
+                "content_type": "application/json",
+                "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/5.0.16"
+            },
+            "Uri": "https://api.easypost.com/v2/users"
+        },
+        "Response": {
+            "Body": "{\n  \"id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n  \"object\": \"User\",\n  \"parent_id\": null,\n  \"name\": \"EasyPost C# Client Library Tests\",\n  \"phone_number\": \"5555555555\",\n  \"verified\": true,\n  \"created_at\": \"2018-04-20T16:42:21Z\",\n  \"balance\": \"0.00000\",\n  \"price_per_shipment\": \"0.01000\",\n  \"recharge_amount\": null,\n  \"secondary_recharge_amount\": null,\n  \"recharge_threshold\": null,\n  \"has_billing_method\": null,\n  \"cc_fee_rate\": \"0.0\",\n  \"default_insurance_amount\": null,\n  \"insurance_fee_rate\": \"0.01\",\n  \"insurance_fee_minimum\": \"1.00\",\n  \"email\": \"dev+easypost-csharp@easypost.com\",\n  \"children\": [\n    {\n      \"id\": \"user_3be0e8a06f1b425ba90d7fdbf2c78997\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Child Account Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2020-03-08T07:05:43Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_07c1506ed5da42ebb9135a1e97ad82c0\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"foo first\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-18T20:23:06Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_49b4891132d74199aad14ac83a3750ef\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"NewTest Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-18T20:29:50Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_a36909cecad24438abb5cb4b53b3ff73\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"NewTest Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-18T20:31:27Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_75e78b527f1f4f9da025aecb77b76832\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Test Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-19T14:49:55Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_f4d92abebea4483d899d7dcd2e21bae1\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Test Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-19T15:07:34Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_1038109a904244e5a9263b3f9446e321\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Test Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-19T15:07:49Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_b56c49ba47dc4e11aa7882fe2c49a20c\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Test Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-19T15:08:38Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_790e63c3403043628cf0bd601f11dd4d\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Test Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-09-30T07:11:00Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_608a91d0487e419bb465e5acbc999056\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Test User\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2022-02-28T18:34:59Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_46ebe99e19204a2e85c937cfd759ea06\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Python All-Things-Tested\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2022-03-15T21:44:31Z\",\n      \"children\": []\n    }\n  ]\n}",
+            "ContentHeaders": {
+                "Expires": "0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "3065"
+            },
+            "HttpVersion": "1.1",
+            "ResponseHeaders": {
+                "X-Frame-Options": "SAMEORIGIN",
+                "X-XSS-Protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "x-download-options": "noopen",
+                "x-permitted-cross-domain-policies": "none",
+                "Referrer-Policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "844d31c662745961f1a88a29004523a7",
+                "Cache-Control": "no-store, no-cache",
+                "Pragma": "no-cache",
+                "ETag": "W/\"317e4ccfd83993d8eebf8d4bce0c2a71\"",
+                "x-runtime": "0.214484",
+                "x-node": "bigweb5nuq",
+                "x-version-label": "easypost-202205052025-12b8594e25-master",
+                "x-backend": "easypost",
+                "x-proxied": "intlb1nuq fde591f008,extlb2nuq c51cdb8bf2",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+            },
+            "Status": {
+                "Code": 200,
+                "Message": "OK"
+            }
+        }
     },
-    "Response": {
-      "Body": "{\n  \"id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n  \"object\": \"User\",\n  \"parent_id\": null,\n  \"name\": \"EasyPost C# Client Library Tests\",\n  \"phone_number\": \"5555555555\",\n  \"verified\": true,\n  \"created_at\": \"2018-04-20T16:42:21Z\",\n  \"balance\": \"0.00000\",\n  \"price_per_shipment\": \"0.01000\",\n  \"recharge_amount\": null,\n  \"secondary_recharge_amount\": null,\n  \"recharge_threshold\": null,\n  \"has_billing_method\": null,\n  \"cc_fee_rate\": \"0.0\",\n  \"default_insurance_amount\": null,\n  \"insurance_fee_rate\": \"0.01\",\n  \"insurance_fee_minimum\": \"1.00\",\n  \"email\": \"dev+easypost-csharp@easypost.com\",\n  \"children\": [\n    {\n      \"id\": \"user_3be0e8a06f1b425ba90d7fdbf2c78997\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Child Account Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2020-03-08T07:05:43Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_07c1506ed5da42ebb9135a1e97ad82c0\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"foo first\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-18T20:23:06Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_49b4891132d74199aad14ac83a3750ef\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"NewTest Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-18T20:29:50Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_a36909cecad24438abb5cb4b53b3ff73\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"NewTest Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-18T20:31:27Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_75e78b527f1f4f9da025aecb77b76832\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Test Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-19T14:49:55Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_f4d92abebea4483d899d7dcd2e21bae1\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Test Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-19T15:07:34Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_1038109a904244e5a9263b3f9446e321\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Test Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-19T15:07:49Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_b56c49ba47dc4e11aa7882fe2c49a20c\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Test Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-01-19T15:08:38Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_790e63c3403043628cf0bd601f11dd4d\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Test Name\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2021-09-30T07:11:00Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_608a91d0487e419bb465e5acbc999056\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Test User\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2022-02-28T18:34:59Z\",\n      \"children\": []\n    },\n    {\n      \"id\": \"user_46ebe99e19204a2e85c937cfd759ea06\",\n      \"object\": \"User\",\n      \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"name\": \"Python All-Things-Tested\",\n      \"phone_number\": \"8005550100\",\n      \"verified\": true,\n      \"created_at\": \"2022-03-15T21:44:31Z\",\n      \"children\": []\n    }\n  ]\n}",
-      "ContentHeaders": {
-        "Expires": "0",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "3065"
-      },
-      "HttpVersion": "1.1",
-      "ResponseHeaders": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "X-XSS-Protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "x-download-options": "noopen",
-        "x-permitted-cross-domain-policies": "none",
-        "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "844d31c662745961f1a88a29004523a7",
-        "Cache-Control": "no-store, no-cache",
-        "Pragma": "no-cache",
-        "ETag": "W/\"317e4ccfd83993d8eebf8d4bce0c2a71\"",
-        "x-runtime": "0.214484",
-        "x-node": "bigweb5nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
-        "x-backend": "easypost",
-        "x-proxied": "intlb1nuq fde591f008,extlb2nuq c51cdb8bf2",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-      },
-      "Status": {
-        "Code": 200,
-        "Message": "OK"
-      }
+    {
+        "Duration": 196,
+        "RecordedAt": "2022-05-05T17:10:26.641584-06:00",
+        "Request": {
+            "Body": "",
+            "ContentHeaders": {},
+            "Method": "GET",
+            "RequestHeaders": {
+                "Accept": "application/json",
+                "Authorization": "*****",
+                "content_type": "application/json",
+                "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/5.0.16"
+            },
+            "Uri": "https://api.easypost.com/v2/users/user_3be0e8a06f1b425ba90d7fdbf2c78997"
+        },
+        "Response": {
+            "Body": "{\n  \"id\": \"user_3be0e8a06f1b425ba90d7fdbf2c78997\",\n  \"object\": \"User\",\n  \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n  \"name\": \"Child Account Name\",\n  \"phone_number\": \"8005550100\",\n  \"verified\": true,\n  \"created_at\": \"2020-03-08T07:05:43Z\",\n  \"children\": []\n}",
+            "ContentHeaders": {
+                "Expires": "0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "236"
+            },
+            "HttpVersion": "1.1",
+            "ResponseHeaders": {
+                "X-Frame-Options": "SAMEORIGIN",
+                "X-XSS-Protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "x-download-options": "noopen",
+                "x-permitted-cross-domain-policies": "none",
+                "Referrer-Policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "844d31c562745962f1baa6820045240e",
+                "Cache-Control": "no-store, no-cache",
+                "Pragma": "no-cache",
+                "ETag": "W/\"5bf69915d9c1525b3feef9f1b8175c35\"",
+                "x-runtime": "0.048423",
+                "x-node": "bigweb6nuq",
+                "x-version-label": "easypost-202205052025-12b8594e25-master",
+                "x-backend": "easypost",
+                "x-proxied": "intlb2nuq fde591f008,extlb2nuq c51cdb8bf2",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+            },
+            "Status": {
+                "Code": 200,
+                "Message": "OK"
+            }
+        }
     }
-  },
-  {
-    "Duration": 196,
-    "RecordedAt": "2022-05-05T17:10:26.641584-06:00",
-    "Request": {
-      "Body": "",
-      "ContentHeaders": {},
-      "Method": "GET",
-      "RequestHeaders": {
-        "Accept": "application/json",
-        "Authorization": "*****",
-        "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/5.0.16"
-      },
-      "Uri": "https://api.easypost.com/v2/users/user_3be0e8a06f1b425ba90d7fdbf2c78997"
-    },
-    "Response": {
-      "Body": "{\n  \"id\": \"user_3be0e8a06f1b425ba90d7fdbf2c78997\",\n  \"object\": \"User\",\n  \"parent_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n  \"name\": \"Child Account Name\",\n  \"phone_number\": \"8005550100\",\n  \"verified\": true,\n  \"created_at\": \"2020-03-08T07:05:43Z\",\n  \"children\": []\n}",
-      "ContentHeaders": {
-        "Expires": "0",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "236"
-      },
-      "HttpVersion": "1.1",
-      "ResponseHeaders": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "X-XSS-Protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "x-download-options": "noopen",
-        "x-permitted-cross-domain-policies": "none",
-        "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "844d31c562745962f1baa6820045240e",
-        "Cache-Control": "no-store, no-cache",
-        "Pragma": "no-cache",
-        "ETag": "W/\"5bf69915d9c1525b3feef9f1b8175c35\"",
-        "x-runtime": "0.048423",
-        "x-node": "bigweb6nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
-        "x-backend": "easypost",
-        "x-proxied": "intlb2nuq fde591f008,extlb2nuq c51cdb8bf2",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-      },
-      "Status": {
-        "Code": 200,
-        "Message": "OK"
-      }
-    }
-  }
 ]

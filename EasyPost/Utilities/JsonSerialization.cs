@@ -13,7 +13,7 @@ namespace EasyPost.Utilities
     /// </summary>
     public class JsonSerializer
     {
-        private JsonSerializerSettings JsonSerializerSettings { get; set; }
+        private JsonSerializerSettings JsonSerializerSettings { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonSerializer" /> class.

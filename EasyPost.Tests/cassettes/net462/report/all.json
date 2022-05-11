@@ -1,49 +1,49 @@
 [
-  {
-    "Duration": 397,
-    "RecordedAt": "2022-05-05T17:02:56.36757-06:00",
-    "Request": {
-      "Body": "",
-      "ContentHeaders": {},
-      "Method": "GET",
-      "RequestHeaders": {
-        "Accept": "application/json",
-        "Authorization": "*****",
-        "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
-      },
-      "Uri": "https://api.easypost.com/v2/reports/shipment?page_size=5"
-    },
-    "Response": {
-      "Body": "{\n  \"reports\": [\n    {\n      \"id\": \"shprep_a89fffd7d61642d9819432e38415fa92\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-05T23:02:55Z\",\n      \"updated_at\": \"2022-05-05T23:02:55Z\",\n      \"start_date\": \"2022-05-05\",\n      \"end_date\": \"2022-05-05\",\n      \"mode\": \"test\",\n      \"status\": \"new\",\n      \"url\": null,\n      \"url_expires_at\": null,\n      \"include_children\": false\n    },\n    {\n      \"id\": \"shprep_433ccabc5fe6448688fafa0e31d2ee82\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-05T23:02:55Z\",\n      \"updated_at\": \"2022-05-05T23:02:55Z\",\n      \"start_date\": \"2022-05-05\",\n      \"end_date\": \"2022-05-05\",\n      \"mode\": \"test\",\n      \"status\": \"available\",\n      \"url\": \"https://easypost-files.s3.us-west-2.amazonaws.com/files/shipment_report/20220505/34b114577f734b88acb456e9032168da.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQS5SPYTWI%2F20220505%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220505T230256Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=8efe8dd254d2abf29ac1b174ab4ad9042b533e9cccca861458c55c71b7699e1c\",\n      \"url_expires_at\": \"2022-05-05T23:03:26Z\",\n      \"include_children\": false\n    },\n    {\n      \"id\": \"shprep_9aee78cd2afd4267947ccd3ce09cc761\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-05T23:02:54Z\",\n      \"updated_at\": \"2022-05-05T23:02:55Z\",\n      \"start_date\": \"2022-05-05\",\n      \"end_date\": \"2022-05-05\",\n      \"mode\": \"test\",\n      \"status\": \"available\",\n      \"url\": \"https://easypost-files.s3.us-west-2.amazonaws.com/files/shipment_report/20220505/df2081de47944102b22b7c2c0826ee00.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQS5SPYTWI%2F20220505%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220505T230256Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=88bc325194f4657d30953d3b2595fe21fd8250b46cdaea206792b41c9f435af9\",\n      \"url_expires_at\": \"2022-05-05T23:03:26Z\",\n      \"include_children\": false\n    },\n    {\n      \"id\": \"shprep_f44e936c2d14481383ff4c1bf1b50746\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-05T23:02:54Z\",\n      \"updated_at\": \"2022-05-05T23:02:55Z\",\n      \"start_date\": \"2022-05-05\",\n      \"end_date\": \"2022-05-05\",\n      \"mode\": \"test\",\n      \"status\": \"available\",\n      \"url\": \"https://easypost-files.s3.us-west-2.amazonaws.com/files/shipment_report/20220505/3f078b3b7aad4d6aa14a3dcfac7f8f2f.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQS5SPYTWI%2F20220505%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220505T230256Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=57ce9aa770b61b9a5fb5a21f60c8d5825563494fe987859eb78497e0685fde3a\",\n      \"url_expires_at\": \"2022-05-05T23:03:26Z\",\n      \"include_children\": false\n    },\n    {\n      \"id\": \"shprep_9bfee1ec130d4754928d40d5c8930747\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-05T21:48:10Z\",\n      \"updated_at\": \"2022-05-05T21:48:11Z\",\n      \"start_date\": \"2022-05-05\",\n      \"end_date\": \"2022-05-05\",\n      \"mode\": \"test\",\n      \"status\": \"available\",\n      \"url\": \"https://easypost-files.s3.us-west-2.amazonaws.com/files/shipment_report/20220505/03bd4e09010c46c2b629325237a121a0.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQS5SPYTWI%2F20220505%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220505T230256Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=18d6863c911da2a35cbdeae7874a507fef5f3d7789fdcef28778893a0d6709b3\",\n      \"url_expires_at\": \"2022-05-05T23:03:26Z\",\n      \"include_children\": false\n    }\n  ],\n  \"has_more\": true\n}",
-      "ContentHeaders": {
-        "Expires": "0",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "3065"
-      },
-      "HttpVersion": "1.1",
-      "ResponseHeaders": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "x-xss-protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "x-download-options": "noopen",
-        "x-permitted-cross-domain-policies": "none",
-        "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "a5f22c54627457a0f187280d003f8f88",
-        "Cache-Control": "no-store, no-cache",
-        "Pragma": "no-cache",
-        "ETag": "W/\"a1f954ffb1d492304b2011e3cdde8d83\"",
-        "x-runtime": "0.040928",
-        "x-node": "bigweb1nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
-        "x-backend": "easypost",
-        "x-proxied": "intlb1nuq fde591f008,intlb1wdc fde591f008,extlb3wdc c51cdb8bf2",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-      },
-      "Status": {
-        "Code": 200,
-        "Message": "OK"
-      }
+    {
+        "Duration": 397,
+        "RecordedAt": "2022-05-05T17:02:56.36757-06:00",
+        "Request": {
+            "Body": "",
+            "ContentHeaders": {},
+            "Method": "GET",
+            "RequestHeaders": {
+                "Accept": "application/json",
+                "Authorization": "*****",
+                "content_type": "application/json",
+                "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+            },
+            "Uri": "https://api.easypost.com/v2/reports/shipment?page_size=5"
+        },
+        "Response": {
+            "Body": "{\n  \"reports\": [\n    {\n      \"id\": \"shprep_a89fffd7d61642d9819432e38415fa92\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-05T23:02:55Z\",\n      \"updated_at\": \"2022-05-05T23:02:55Z\",\n      \"start_date\": \"2022-05-05\",\n      \"end_date\": \"2022-05-05\",\n      \"mode\": \"test\",\n      \"status\": \"new\",\n      \"url\": null,\n      \"url_expires_at\": null,\n      \"include_children\": false\n    },\n    {\n      \"id\": \"shprep_433ccabc5fe6448688fafa0e31d2ee82\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-05T23:02:55Z\",\n      \"updated_at\": \"2022-05-05T23:02:55Z\",\n      \"start_date\": \"2022-05-05\",\n      \"end_date\": \"2022-05-05\",\n      \"mode\": \"test\",\n      \"status\": \"available\",\n      \"url\": \"https://easypost-files.s3.us-west-2.amazonaws.com/files/shipment_report/20220505/34b114577f734b88acb456e9032168da.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQS5SPYTWI%2F20220505%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220505T230256Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=8efe8dd254d2abf29ac1b174ab4ad9042b533e9cccca861458c55c71b7699e1c\",\n      \"url_expires_at\": \"2022-05-05T23:03:26Z\",\n      \"include_children\": false\n    },\n    {\n      \"id\": \"shprep_9aee78cd2afd4267947ccd3ce09cc761\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-05T23:02:54Z\",\n      \"updated_at\": \"2022-05-05T23:02:55Z\",\n      \"start_date\": \"2022-05-05\",\n      \"end_date\": \"2022-05-05\",\n      \"mode\": \"test\",\n      \"status\": \"available\",\n      \"url\": \"https://easypost-files.s3.us-west-2.amazonaws.com/files/shipment_report/20220505/df2081de47944102b22b7c2c0826ee00.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQS5SPYTWI%2F20220505%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220505T230256Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=88bc325194f4657d30953d3b2595fe21fd8250b46cdaea206792b41c9f435af9\",\n      \"url_expires_at\": \"2022-05-05T23:03:26Z\",\n      \"include_children\": false\n    },\n    {\n      \"id\": \"shprep_f44e936c2d14481383ff4c1bf1b50746\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-05T23:02:54Z\",\n      \"updated_at\": \"2022-05-05T23:02:55Z\",\n      \"start_date\": \"2022-05-05\",\n      \"end_date\": \"2022-05-05\",\n      \"mode\": \"test\",\n      \"status\": \"available\",\n      \"url\": \"https://easypost-files.s3.us-west-2.amazonaws.com/files/shipment_report/20220505/3f078b3b7aad4d6aa14a3dcfac7f8f2f.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQS5SPYTWI%2F20220505%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220505T230256Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=57ce9aa770b61b9a5fb5a21f60c8d5825563494fe987859eb78497e0685fde3a\",\n      \"url_expires_at\": \"2022-05-05T23:03:26Z\",\n      \"include_children\": false\n    },\n    {\n      \"id\": \"shprep_9bfee1ec130d4754928d40d5c8930747\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-05T21:48:10Z\",\n      \"updated_at\": \"2022-05-05T21:48:11Z\",\n      \"start_date\": \"2022-05-05\",\n      \"end_date\": \"2022-05-05\",\n      \"mode\": \"test\",\n      \"status\": \"available\",\n      \"url\": \"https://easypost-files.s3.us-west-2.amazonaws.com/files/shipment_report/20220505/03bd4e09010c46c2b629325237a121a0.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQS5SPYTWI%2F20220505%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220505T230256Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=18d6863c911da2a35cbdeae7874a507fef5f3d7789fdcef28778893a0d6709b3\",\n      \"url_expires_at\": \"2022-05-05T23:03:26Z\",\n      \"include_children\": false\n    }\n  ],\n  \"has_more\": true\n}",
+            "ContentHeaders": {
+                "Expires": "0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "3065"
+            },
+            "HttpVersion": "1.1",
+            "ResponseHeaders": {
+                "X-Frame-Options": "SAMEORIGIN",
+                "x-xss-protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "x-download-options": "noopen",
+                "x-permitted-cross-domain-policies": "none",
+                "referrer-policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "a5f22c54627457a0f187280d003f8f88",
+                "Cache-Control": "no-store, no-cache",
+                "Pragma": "no-cache",
+                "ETag": "W/\"a1f954ffb1d492304b2011e3cdde8d83\"",
+                "x-runtime": "0.040928",
+                "x-node": "bigweb1nuq",
+                "x-version-label": "easypost-202205052025-12b8594e25-master",
+                "x-backend": "easypost",
+                "x-proxied": "intlb1nuq fde591f008,intlb1wdc fde591f008,extlb3wdc c51cdb8bf2",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+            },
+            "Status": {
+                "Code": 200,
+                "Message": "OK"
+            }
+        }
     }
-  }
 ]

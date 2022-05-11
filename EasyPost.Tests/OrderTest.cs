@@ -78,7 +78,7 @@ namespace EasyPost.Tests
             {
                 "Priority"
             };
-            lowestRate = order.LowestRate(null, services, null, null);
+            lowestRate = order.LowestRate(null, services);
             Assert.AreEqual("Priority", lowestRate.service);
             Assert.AreEqual("7.37", lowestRate.rate);
             Assert.AreEqual("USPS", lowestRate.carrier);
@@ -88,7 +88,7 @@ namespace EasyPost.Tests
             {
                 "BAD_CARRIER"
             };
-            Assert.ThrowsException<FilterFailure>(() => order.LowestRate(carriers, null, null, null));
+            Assert.ThrowsException<FilterFailure>(() => order.LowestRate(carriers));
         }
 
         [TestMethod]

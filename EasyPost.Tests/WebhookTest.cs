@@ -13,7 +13,7 @@ namespace EasyPost.Tests
     public class WebhookTest
     {
         private TestUtils.VCR _vcr;
-        private string _webhookId = null;
+        private string _webhookId;
 
         [TestCleanup]
         public async Task Cleanup()
