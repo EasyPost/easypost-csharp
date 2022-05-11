@@ -10,72 +10,77 @@ Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_G
 - Upgrades RestSharp from v106 to v107
 - Project was built with C# 8.0
 - Project is now entirely asynchronous which will require the addition of async/await on function calls
-- Renames methods from `List()` to `All()` to make our library consistent (previously we had methods calling the `/all` endpoint with both names)
+- Renames methods from `List()` to `All()` to make our library consistent (previously we had methods calling the `/all`
+  endpoint with both names)
 - Removes the unusable `Rating` class
-- Removes `shipment.GetRates()` method since the shipment object already has rates. If you need to get new rates for a shipment, please use the `shipment.RegenerateRates()` method.
-- Must use `verify` and `verify_strict` parameters to verify addresses during creation, per our API docs; `verification` and `strict_verification` will no longer work
+- Removes `shipment.GetRates()` method since the shipment object already has rates. If you need to get new rates for a
+  shipment, please use the `shipment.RegenerateRates()` method.
+- Must use `verify` and `verify_strict` parameters to verify addresses during creation, per our API docs; `verification`
+  and `strict_verification` will no longer work
 - Clarify XList vs XCollection distinction:
-    -   `ReportList`, `ScanFormList`, `ShipmentList` and `TrackerList` renamed to `ReportCollection`, `ScanFormCollection`, `ShipmentCollection` and `TrackerCollection` to match the other names throughout the project
+    - `ReportList`, `ScanFormList`, `ShipmentList` and `TrackerList` renamed to `ReportCollection`, `ScanFormCollection`
+      , `ShipmentCollection` and `TrackerCollection` to match the other names throughout the project
 - Functions previously called `Destroy` are now called `Delete` for consistency (eg: deleting a carrier account)
-- Removes non-static `Create()` functions on `Address`, `Order`, `Pickup` and `Shipment` classes for Visual Basic compatibility.
+- Removes non-static `Create()` functions on `Address`, `Order`, `Pickup` and `Shipment` classes for Visual Basic
+  compatibility.
 
 ### Features
 
--   Adds explicit support for .NET 5.0 & 6.0
--   Adds F# & Visual Basic compatibility
--   Adds `RetrieveMe()` which retrieves the authenticated user without the need to pass an ID
--   Adds missing `billing_ref` and `dropoff_type` Shipment options
--   Adds comprehensive test suite for .NET/.NET Core
--   Adds `declaration` attribute to `CustomsInfo` class
--   Adds missing `id` property to the `Brand` class
--   Adds option to pass in a custom `HttpClient` to the Client constructor (.NET/.NET Core only)
--   Adds `CreateAndBuy` function to the Batch class
+- Adds explicit support for .NET 5.0 & 6.0
+- Adds F# & Visual Basic compatibility
+- Adds `RetrieveMe()` which retrieves the authenticated user without the need to pass an ID
+- Adds missing `billing_ref` and `dropoff_type` Shipment options
+- Adds comprehensive test suite for .NET/.NET Core
+- Adds `declaration` attribute to `CustomsInfo` class
+- Adds missing `id` property to the `Brand` class
+- Adds option to pass in a custom `HttpClient` to the Client constructor (.NET/.NET Core only)
+- Adds `CreateAndBuy` function to the Batch class
 
 ### Bug Fixes
 
--   Fixes bug where `AddressCollection` was storing `Batch` objects rather than `Address` objects
--   Fixes Address creation respecting `verify` and `verify_strict` parameters
--   Fixes a bug where Pickup error messages were not deserializing properly
+- Fixes bug where `AddressCollection` was storing `Batch` objects rather than `Address` objects
+- Fixes Address creation respecting `verify` and `verify_strict` parameters
+- Fixes a bug where Pickup error messages were not deserializing properly
 
 ## v2.8.1 (2022-02-17)
 
--   Repackaged the project which contains all the changes made from `2.6.0` - `2.8.0` (see details below)
--   Added .NET Core 3.1 to the released package (was previously built but not included starting in `2.6.0`)
+- Repackaged the project which contains all the changes made from `2.6.0` - `2.8.0` (see details below)
+- Added .NET Core 3.1 to the released package (was previously built but not included starting in `2.6.0`)
 
 **This release includes changes intended for v2.8.0**
 
--   Adds the missing Insurance object and associated actions (closes #47)
--   Adds support for updating a user's brand
--   Adds support to one-call buy shipments and orders via the `service` key
--   Adds support for retrieving all Batch objects
--   Adds support for retrieving all Address objects
--   Adds support for retrieving all Event objects
--   Adds support to regenerate Shipment rates via the `RegenerateRates` method
--   Adds support for creating trackers in bulk via the `CreateList` Tracker method
--   Removes the unused `orderBy` parameter from the `Batch` object
--   Update the `DefaultApiBase` to include `v2` and remove `v2` from every request url string
--   Adds the .NET version in use to the User-Agent header
--   Add a 30 second connection timeout and a 60 second request timeout for all HTTP requests
--   Lints the entire project and adds/updates docstrings throughout
--   Fixes the test suite for the project making it runnable once again
+- Adds the missing Insurance object and associated actions (closes #47)
+- Adds support for updating a user's brand
+- Adds support to one-call buy shipments and orders via the `service` key
+- Adds support for retrieving all Batch objects
+- Adds support for retrieving all Address objects
+- Adds support for retrieving all Event objects
+- Adds support to regenerate Shipment rates via the `RegenerateRates` method
+- Adds support for creating trackers in bulk via the `CreateList` Tracker method
+- Removes the unused `orderBy` parameter from the `Batch` object
+- Update the `DefaultApiBase` to include `v2` and remove `v2` from every request url string
+- Adds the .NET version in use to the User-Agent header
+- Add a 30 second connection timeout and a 60 second request timeout for all HTTP requests
+- Lints the entire project and adds/updates docstrings throughout
+- Fixes the test suite for the project making it runnable once again
 
 **This release includes changes intended for v2.7.0**
 
--   Adds support for tax identifiers (PR #181)
+- Adds support for tax identifiers (PR #181)
 
 **This release includes changes intended for v2.6.0 & v2.6.1**
 
--   Adds missing `commercial_invoice_letterhead` option (closes #142)
--   Adds missing `license_number` option
--   Adds missing `receiver_liquor_license` option
--   Adds missing `VerificationDetails` object (closes #140, #141, #162)
--   Changes the Client delegate constructor from `internal` to `public`
--   Updates various information in the README related to thread-safety, examples, releasing, etc
--   Adds all missing dates and versions to the CHANGELOG
--   Bumps RestSharp from 106.4.2 to 106.13.0
--   Adds support for .NET Core 3.1
--   Includes SmartRate handling.
--   Updated Code Signing Identity.
+- Adds missing `commercial_invoice_letterhead` option (closes #142)
+- Adds missing `license_number` option
+- Adds missing `receiver_liquor_license` option
+- Adds missing `VerificationDetails` object (closes #140, #141, #162)
+- Changes the Client delegate constructor from `internal` to `public`
+- Updates various information in the README related to thread-safety, examples, releasing, etc
+- Adds all missing dates and versions to the CHANGELOG
+- Bumps RestSharp from 106.4.2 to 106.13.0
+- Adds support for .NET Core 3.1
+- Includes SmartRate handling.
+- Updated Code Signing Identity.
 
 ## v2.8.0 (2022-02-16)
 
@@ -91,20 +96,20 @@ This release was mispackaged, please use `v2.8.1` or newer.
 
 ## v2.5.1.3 (2020-01-07)
 
--   Add restricted delivery shipment option
--   Correct certified mail type
+- Add restricted delivery shipment option
+- Correct certified mail type
 
 ## v2.5.1.2 (2019-09-29)
 
--   Add certified mail, registered mail, and return receipt shipment options
+- Add certified mail, registered mail, and return receipt shipment options
 
 ## v2.5.1.1 (2019-07-05)
 
--   Added suppress etd option
+- Added suppress etd option
 
 ## v2.5.1 (2018-10-09)
 
--   Added overlabel shipment options
+- Added overlabel shipment options
 
 ## v2.5.0.1 (2018-10-03)
 

@@ -11,7 +11,9 @@ EasyPost, the simple shipping solution. You can sign up for an account at https:
 Install-Package EasyPost-Official
 ```
 
-See NuGet docs for additional instructions on installing via the [dialog](http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog) or the [console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console).
+See NuGet docs for additional instructions on installing via
+the [dialog](http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog) or
+the [console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console).
 
 ## Usage
 
@@ -79,7 +81,8 @@ namespace example
 
 **Single API Key**
 
-If you are operating with a single EasyPost API key, during the initialization of your application add the following to configure EasyPost.
+If you are operating with a single EasyPost API key, during the initialization of your application add the following to
+configure EasyPost.
 
 ```cs
 using EasyPost;
@@ -89,7 +92,8 @@ ClientManager.SetCurrent("ApiKey");
 
 **Multiple API Keys**
 
-If you are operating with multiple EasyPost API keys, or wish to delegate the construction of the client requests, configure the `ClientManager` with a delegate at application initialization.
+If you are operating with multiple EasyPost API keys, or wish to delegate the construction of the client requests,
+configure the `ClientManager` with a delegate at application initialization.
 
 ```cs
 using EasyPost;
@@ -99,7 +103,10 @@ ClientManager.SetCurrent(() => new Client(new ClientConfiguration("yourApiKeyHer
 
 ### Warning about Threads
 
-NOTE: The EasyPost .NET client library (in particular, the `ClientManager` global object) is not threadsafe; do not attempt to perform requests from multiple threads in parallel. This can be particularly problematic if using multiple API keys; make sure to always use a Mutex, Monitor, or other synchronization method to ensure that concurrent requests do not enter the EasyPost library from different threads.
+NOTE: The EasyPost .NET client library (in particular, the `ClientManager` global object) is not threadsafe; do not
+attempt to perform requests from multiple threads in parallel. This can be particularly problematic if using multiple
+API keys; make sure to always use a Mutex, Monitor, or other synchronization method to ensure that concurrent requests
+do not enter the EasyPost library from different threads.
 
 ## Documentation
 
@@ -109,7 +116,8 @@ Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_G
 
 ## Development
 
-It is highly recommended to use a purpose-built IDE when working with this project such as `Visual Studio`. Most actions such as building, cleaning, and testing can be done via the GUI.
+It is highly recommended to use a purpose-built IDE when working with this project such as `Visual Studio`. Most actions
+such as building, cleaning, and testing can be done via the GUI.
 
 ```bash
 # Lint project
@@ -125,21 +133,35 @@ git submodule update --recursive
 
 ### Testing
 
-The test suite in this project was specifically built to produce consistent results on every run, regardless of when they run or who is running them. This project uses [EasyVCR](https://www.nuget.org/packages/EasyVCR/) to record and replay HTTP requests and responses via "cassettes". When the suite is run, the HTTP requests and responses for each test function will be saved to a cassette if they do not exist already and replayed from this saved file if they do, which saves the need to make live API calls on every test run.
+The test suite in this project was specifically built to produce consistent results on every run, regardless of when
+they run or who is running them. This project uses [EasyVCR](https://www.nuget.org/packages/EasyVCR/) to record and
+replay HTTP requests and responses via "cassettes". When the suite is run, the HTTP requests and responses for each test
+function will be saved to a cassette if they do not exist already and replayed from this saved file if they do, which
+saves the need to make live API calls on every test run.
 
-If you make an addition to this project, the request/response will get recorded automatically for you if a `_vcr.SetUpTest("testName");` is included in the test function. When making changes to this project, you'll need to re-record the associated cassette to force a new live API call for that test which will then record the request/response used on the next run.
+If you make an addition to this project, the request/response will get recorded automatically for you if
+a `_vcr.SetUpTest("testName");` is included in the test function. When making changes to this project, you'll need to
+re-record the associated cassette to force a new live API call for that test which will then record the request/response
+used on the next run.
 
-The test suite has been populated with various helpful fixtures that are available for use, each completely independent from a particular user **with the exception of the USPS carrier account ID** which has a fallback value to our internal testing user's ID. If you are a non-EasyPost employee and are re-recording cassettes, you may need to provide the `USPS_CARRIER_ACCOUNT_ID` environment variable with the ID associated with your USPS account (which will be associated with your API keys in use) for tests that use this fixture.
+The test suite has been populated with various helpful fixtures that are available for use, each completely independent
+from a particular user **with the exception of the USPS carrier account ID** which has a fallback value to our internal
+testing user's ID. If you are a non-EasyPost employee and are re-recording cassettes, you may need to provide
+the `USPS_CARRIER_ACCOUNT_ID` environment variable with the ID associated with your USPS account (which will be
+associated with your API keys in use) for tests that use this fixture.
 
-**Note on dates:** Some fixtures use hard-coded dates that may need to be incremented if cassettes get re-recorded (such as reports or pickups).
+**Note on dates:** Some fixtures use hard-coded dates that may need to be incremented if cassettes get re-recorded (such
+as reports or pickups).
 
 #### Test Coverage
 
-Unit test coverage reports can be generated by running the `generate_test_reports.sh` Bash script from the root of this repository.
+Unit test coverage reports can be generated by running the `generate_test_reports.sh` Bash script from the root of this
+repository.
 
-A report will be generated for each version of the library. Final reports will be stored in the `coveragereport` folder in the root of the repository following generation.
+A report will be generated for each version of the library. Final reports will be stored in the `coveragereport` folder
+in the root of the repository following generation.
 
 The script requires the following tools installed in your PATH:
 
--   `dotnet`
--   [`reportgenerator`](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?tabs=linux#generate-reports)
+- `dotnet`
+- [`reportgenerator`](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?tabs=linux#generate-reports)

@@ -13,4 +13,5 @@
 
 ## Failure to Follow Standards
 
-If there is a failure to follow the standards laid out above, the user will first be warned. If the offending behavior continues, the user may be blocked entirely.
+If there is a failure to follow the standards laid out above, the user will first be warned. If the offending behavior
+continues, the user may be blocked entirely.
