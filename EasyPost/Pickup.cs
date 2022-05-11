@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Utilities;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -33,13 +34,31 @@ namespace EasyPost
         [JsonProperty("name")]
         public string name { get; set; }
         [JsonProperty("pickup_rates")]
-        public List<Rate> pickup_rates { get; set; }
+        public List<PickupRate> pickup_rates { get; set; }
         [JsonProperty("reference")]
         public string reference { get; set; }
         [JsonProperty("status")]
         public string status { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
+
+        /// <summary>
+        ///     Get the pickup rates as a list of Rate objects.
+        /// </summary>
+        /// <returns>List of Rate objects.</returns>
+        internal List<Rate> Rates
+        {
+            get
+            {
+                List<Rate> rates = new List<Rate>();
+                foreach (PickupRate pickupRate in pickup_rates)
+                {
+                    rates.Add(pickupRate);
+                }
+
+                return rates;
+            }
+        }
 
         /// <summary>
         ///     Purchase this pickup.
@@ -82,6 +101,19 @@ namespace EasyPost
             request.AddUrlSegment("id", id);
 
             Merge(await request.Execute<Pickup>());
+        }
+
+        /// <summary>
+        ///     Get the lowest rate for this Pickup.
+        /// </summary>
+        /// <param name="includeCarriers">Carriers to include in the filter.</param>
+        /// <param name="includeServices">Services to include in the filter.</param>
+        /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
+        /// <param name="excludeServices">Services to exclude in the filter.</param>
+        /// <returns>Lowest EasyPost.PickupRate object instance.</returns>
+        public PickupRate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
+        {
+            return (PickupRate)Utilities.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
 
         /// <summary>

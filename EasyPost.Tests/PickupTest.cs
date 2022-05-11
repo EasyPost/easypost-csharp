@@ -81,5 +81,33 @@ namespace EasyPost.Tests
             Assert.IsTrue(pickup.id.StartsWith("pickup_"));
             Assert.AreEqual("canceled", pickup.status);
         }
+
+        [TestMethod]
+        public async Task TestLowestRate()
+        {
+            _vcr.SetUpTest("lowest_rate");
+
+            Pickup pickup = await CreateBasicPickup();
+
+            // test lowest rate with no filters
+            Rate lowestRate = pickup.LowestRate();
+            Assert.AreEqual("NextDay", lowestRate.service);
+            Assert.AreEqual("0.00", lowestRate.rate);
+            Assert.AreEqual("USPS", lowestRate.carrier);
+
+            // test lowest rate with service filter (should error due to bad service)
+            List<string> services = new List<string>
+            {
+                "BAD_SERVICE"
+            };
+            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(null, services, null, null));
+
+            // test lowest rate with carrier filter (should error due to bad carrier)
+            List<string> carriers = new List<string>
+            {
+                "BAD_CARRIER"
+            };
+            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(carriers, null, null, null));
+        }
     }
 }

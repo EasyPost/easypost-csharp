@@ -16,12 +16,27 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("shipment");
         }
 
+        public static async Task<Shipment> CreateBasicShipment()
+        {
+            return await Shipment.Create(Fixture.BasicShipment);
+        }
+
+        public static async Task<Shipment> CreateFullShipment()
+        {
+            return await Shipment.Create(Fixture.FullShipment);
+        }
+
+        public static async Task<Shipment> CreateOneCallBuyShipment()
+        {
+            return await Shipment.Create(Fixture.OneCallBuyShipment);
+        }
+
         [TestMethod]
         public async Task TestCreate()
         {
             _vcr.SetUpTest("create");
 
-            Shipment shipment = await Shipment.Create(Fixture.FullShipment);
+            Shipment shipment = await CreateFullShipment();
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.id.StartsWith("shp_"));
@@ -37,7 +52,7 @@ namespace EasyPost.Tests
             _vcr.SetUpTest("retrieve");
 
 
-            Shipment shipment = await Shipment.Create(Fixture.FullShipment);
+            Shipment shipment = await CreateFullShipment();
 
             Shipment retrievedShipment = await Shipment.Retrieve(shipment.id);
 
@@ -73,7 +88,7 @@ namespace EasyPost.Tests
             _vcr.SetUpTest("buy");
 
 
-            Shipment shipment = await Shipment.Create(Fixture.FullShipment);
+            Shipment shipment = await CreateFullShipment();
 
             await shipment.Buy(shipment.LowestRate());
 
@@ -86,7 +101,7 @@ namespace EasyPost.Tests
             _vcr.SetUpTest("regenerate_rates");
 
 
-            Shipment shipment = await Shipment.Create(Fixture.FullShipment);
+            Shipment shipment = await CreateFullShipment();
 
             await shipment.RegenerateRates();
 
@@ -104,7 +119,7 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("convert_label");
 
-            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await CreateOneCallBuyShipment();
 
             await shipment.GenerateLabel("ZPL");
 
@@ -137,7 +152,7 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("refund");
 
-            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await CreateOneCallBuyShipment();
 
             await shipment.Refund();
 
@@ -149,7 +164,7 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("smartrate");
 
-            Shipment shipment = await Shipment.Create(Fixture.BasicShipment);
+            Shipment shipment = await CreateBasicShipment();
 
             Assert.IsNotNull(shipment.rates);
 
@@ -217,10 +232,32 @@ namespace EasyPost.Tests
             Address toAddress = await Address.Create(Fixture.BasicAddress);
             Parcel parcel = await Parcel.Create(Fixture.BasicParcel);
 
-            Shipment shipment = await Shipment.Create(new Dictionary<string, object>() {
-                { "from_address", new Dictionary<string, object> { { "id", fromAddress.id } } },
-                { "to_address", new Dictionary<string, object> { { "id", toAddress.id } } },
-                { "parcel", new Dictionary<string, object> { { "id", parcel.id } } },
+            Shipment shipment = await Shipment.Create(new Dictionary<string, object>()
+            {
+                {
+                    "from_address", new Dictionary<string, object>
+                    {
+                        {
+                            "id", fromAddress.id
+                        }
+                    }
+                },
+                {
+                    "to_address", new Dictionary<string, object>
+                    {
+                        {
+                            "id", toAddress.id
+                        }
+                    }
+                },
+                {
+                    "parcel", new Dictionary<string, object>
+                    {
+                        {
+                            "id", parcel.id
+                        }
+                    }
+                },
             });
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
@@ -229,6 +266,78 @@ namespace EasyPost.Tests
             Assert.IsTrue(shipment.to_address.id.StartsWith("adr_"));
             Assert.IsTrue(shipment.parcel.id.StartsWith("prcl_"));
             Assert.AreEqual("388 Townsend St", shipment.from_address.street1);
+        }
+
+        [TestMethod]
+        public async Task TestInstanceLowestSmartrate()
+        {
+            _vcr.SetUpTest("lowest_smartrate_instance");
+
+            Shipment shipment = await CreateBasicShipment();
+
+            // test lowest smartrate with valid filters
+            Smartrate lowestSmartrate = await shipment.LowestSmartrate(1, SmartrateAccuracy.Percentile90);
+            Assert.AreEqual("Priority", lowestSmartrate.service);
+            Assert.AreEqual(7.37, lowestSmartrate.rate);
+            Assert.AreEqual("USPS", lowestSmartrate.carrier);
+
+            // test lowest smartrate with invalid filters (should error due to strict delivery_days)
+            await Assert.ThrowsExceptionAsync<FilterFailure>(async () => await shipment.LowestSmartrate(0, SmartrateAccuracy.Percentile90));
+
+            // test lowest smartrate with invalid filters (should error due to bad delivery_accuracy)
+            // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
+        }
+
+        [TestMethod]
+        public async Task TestLowestRate()
+        {
+            _vcr.SetUpTest("lowest_rate");
+
+            Shipment shipment = await CreateFullShipment();
+
+            // test lowest rate with no filters
+            Rate lowestRate = shipment.LowestRate();
+            Assert.AreEqual("First", lowestRate.service);
+            Assert.AreEqual("5.49", lowestRate.rate);
+            Assert.AreEqual("USPS", lowestRate.carrier);
+
+            // test lowest rate with service filter (this rate is higher than the lowest but should filter)
+            List<string> services = new List<string>
+            {
+                "Priority"
+            };
+            lowestRate = shipment.LowestRate(null, services, null, null);
+            Assert.AreEqual("Priority", lowestRate.service);
+            Assert.AreEqual("7.37", lowestRate.rate);
+            Assert.AreEqual("USPS", lowestRate.carrier);
+
+            // test lowest rate with carrier filter (should error due to bad carrier)
+            List<string> carriers = new List<string>
+            {
+                "BAD_CARRIER"
+            };
+            Assert.ThrowsException<FilterFailure>(() => shipment.LowestRate(carriers, null, null, null));
+        }
+
+        [TestMethod]
+        public async Task TestStaticLowestSmartrate()
+        {
+            _vcr.SetUpTest("lowest_smartrate_static");
+
+            Shipment shipment = await CreateBasicShipment();
+
+            // test lowest smartrate with valid filters
+            List<Smartrate> smartrates = await shipment.GetSmartrates();
+            Smartrate lowestSmartrate = Shipment.GetLowestSmartrate(smartrates, 1, SmartrateAccuracy.Percentile90);
+            Assert.AreEqual("Priority", lowestSmartrate.service);
+            Assert.AreEqual(7.37, lowestSmartrate.rate);
+            Assert.AreEqual("USPS", lowestSmartrate.carrier);
+
+            // test lowest smartrate with invalid filters (should error due to strict delivery_days)
+            Assert.ThrowsException<FilterFailure>(() => Shipment.GetLowestSmartrate(smartrates, 0, SmartrateAccuracy.Percentile90));
+
+            // test lowest smartrate with invalid filters (should error due to bad delivery_accuracy)
+            // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
         }
     }
 }

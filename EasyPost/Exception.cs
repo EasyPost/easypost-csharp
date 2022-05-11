@@ -66,5 +66,16 @@ namespace EasyPost
     [Serializable]
     public class ClientNotConfigured : Exception
     {
+        public ClientNotConfigured(string message) : base(message)
+        {
+        }
+    }
+
+    [Serializable]
+    public class FilterFailure : Exception
+    {
+        public FilterFailure(string message) : base(message)
+        {
+        }
     }
 }
