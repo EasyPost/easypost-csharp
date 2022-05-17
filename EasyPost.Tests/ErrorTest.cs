@@ -34,10 +34,9 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
-        public async Task TestNoApiKey()
+        public async Task TestEmptyApiKey()
         {
-            _vcr = new TestUtils.VCR("no_api_key");
-            _vcr.SetUpTest("empty", "");
+            ClientManager.SetCurrent("");
 
             try
             {

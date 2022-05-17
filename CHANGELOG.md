@@ -1,6 +1,7 @@
 # CHANGELOG
 
 # Next Release
+
 Requests will now fail fast with an error if an API key is not provided instead of making a live API call with no key.
 
 ## v3.0.0

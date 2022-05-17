@@ -18,8 +18,8 @@ jobs:
     # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
     runs-on: windows-2022
     env:
-      EASYPOST_TEST_API_KEY: ${{ 123 }}
-      EASYPOST_PROD_API_KEY: ${{ 123 }}
+      EASYPOST_TEST_API_KEY: "123"
+      EASYPOST_PROD_API_KEY: "123"
     strategy:
       matrix:
         name: [ 'NetStandard20', 'NetCore31', 'Net50', 'Net60' ]
