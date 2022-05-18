@@ -1,3 +1,5 @@
+using System;
+
 namespace EasyPost
 {
     /// <summary>
@@ -10,11 +12,11 @@ namespace EasyPost
         /// <summary>
         ///     The API base URI to use on a per-request basis.
         /// </summary>
-        public string ApiBase { get; set; }
+        internal string ApiBase { get; set; }
         /// <summary>
         ///     The API key to use on per-request basis.
         /// </summary>
-        public string ApiKey { get; set; }
+        internal string ApiKey { get; set; }
 
         /// <summary>
         ///     Create an EasyPost.ClientConfiguration instance.
@@ -31,6 +33,10 @@ namespace EasyPost
         /// <param name="apiBase">The base API url to use for the client connection.</param>
         public ClientConfiguration(string apiKey, string apiBase)
         {
+            if (String.IsNullOrEmpty(apiKey))
+            {
+                throw new ClientNotConfigured("API key is required.");
+            }
             ApiKey = apiKey;
             ApiBase = apiBase;
         }
