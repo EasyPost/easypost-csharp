@@ -15,7 +15,7 @@ namespace EasyPost
         private const int DefaultConnectTimeoutMilliseconds = 30000;
         private const int DefaultRequestTimeoutMilliseconds = 60000;
 
-        private readonly ClientConfiguration _configuration;
+        internal readonly ClientConfiguration Configuration;
 
         private readonly string _dotNetVersion;
         private readonly string _libraryVersion;
@@ -46,7 +46,7 @@ namespace EasyPost
         public Client(ClientConfiguration clientConfiguration, HttpClient? customHttpClient = null)
         {
             ServicePointManager.SecurityProtocol |= Security.GetProtocol();
-            _configuration = clientConfiguration ?? throw new ArgumentNullException(nameof(clientConfiguration));
+            Configuration = clientConfiguration ?? throw new ArgumentNullException(nameof(clientConfiguration));
 
             try
             {
@@ -139,7 +139,7 @@ namespace EasyPost
         {
             RestRequest restRequest = (RestRequest)request;
             restRequest.Timeout = RequestTimeoutMilliseconds;
-            restRequest.AddHeader("authorization", "Bearer " + _configuration.ApiKey);
+            restRequest.AddHeader("authorization", "Bearer " + Configuration.ApiKey);
             restRequest.AddHeader("content_type", "application/json");
 
             return restRequest;
