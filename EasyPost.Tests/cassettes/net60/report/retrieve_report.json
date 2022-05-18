@@ -1,9 +1,9 @@
 [
   {
-    "Duration": 174,
-    "RecordedAt": "2022-05-05T17:02:59.237671-06:00",
+    "Duration": 221,
+    "RecordedAt": "2022-05-09T14:00:29.882363-06:00",
     "Request": {
-      "Body": "{\n  \"start_date\": \"2022-05-05\",\n  \"end_date\": \"2022-05-05\"\n}",
+      "Body": "{\n  \"start_date\": \"2022-04-12\",\n  \"end_date\": \"2022-04-12\"\n}",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
         "Content-Length": "51"
@@ -18,7 +18,7 @@
       "Uri": "https://api.easypost.com/v2/reports/shipment"
     },
     "Response": {
-      "Body": "{\n  \"id\": \"shprep_0888fcb00bf442379874305ade8b2c39\",\n  \"object\": \"ShipmentReport\",\n  \"created_at\": \"2022-05-05T23:02:59Z\",\n  \"updated_at\": \"2022-05-05T23:02:59Z\",\n  \"start_date\": \"2022-05-05\",\n  \"end_date\": \"2022-05-05\",\n  \"mode\": \"test\",\n  \"status\": \"new\",\n  \"url\": null,\n  \"url_expires_at\": null,\n  \"include_children\": false\n}",
+      "Body": "{\n  \"id\": \"shprep_819badb231734fabb68e27bba78ec421\",\n  \"object\": \"ShipmentReport\",\n  \"created_at\": \"2022-05-09T20:00:29Z\",\n  \"updated_at\": \"2022-05-09T20:00:29Z\",\n  \"start_date\": \"2022-04-12\",\n  \"end_date\": \"2022-04-12\",\n  \"mode\": \"test\",\n  \"status\": \"new\",\n  \"url\": null,\n  \"url_expires_at\": null,\n  \"include_children\": false\n}",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
@@ -32,16 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "844d31c9627457a3f187176c0044b121",
+        "x-ep-request-uuid": "019379c0627972ddf1dec23f004ebe85",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"ca0974d2c88ef2df710d37e83b4c8428\"",
-        "x-runtime": "0.037242",
-        "x-node": "bigweb7nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "ETag": "W/\"914198c663a26089701cf946a7e80789\"",
+        "x-runtime": "0.071095",
+        "x-node": "bigweb2nuq",
+        "x-version-label": "easypost-202205062128-ead761c527-master",
         "x-backend": "easypost",
-        "x-canary": "direct",
-        "x-proxied": "intlb1nuq fde591f008,extlb2nuq c51cdb8bf2",
+        "x-proxied": "intlb2nuq fde591f008,extlb1nuq c51cdb8bf2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -51,8 +50,8 @@
     }
   },
   {
-    "Duration": 240,
-    "RecordedAt": "2022-05-05T17:02:59.516672-06:00",
+    "Duration": 164,
+    "RecordedAt": "2022-05-09T14:00:30.058558-06:00",
     "Request": {
       "Body": "",
       "ContentHeaders": {},
@@ -63,14 +62,14 @@
         "content_type": "application/json",
         "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/6.0.4"
       },
-      "Uri": "https://api.easypost.com/v2/reports/shprep_0888fcb00bf442379874305ade8b2c39"
+      "Uri": "https://api.easypost.com/v2/reports/shprep_819badb231734fabb68e27bba78ec421"
     },
     "Response": {
-      "Body": "{\n  \"id\": \"shprep_0888fcb00bf442379874305ade8b2c39\",\n  \"object\": \"ShipmentReport\",\n  \"created_at\": \"2022-05-05T23:02:59Z\",\n  \"updated_at\": \"2022-05-05T23:02:59Z\",\n  \"start_date\": \"2022-05-05\",\n  \"end_date\": \"2022-05-05\",\n  \"mode\": \"test\",\n  \"status\": \"new\",\n  \"url\": null,\n  \"url_expires_at\": null,\n  \"include_children\": false\n}",
+      "Body": "{\n  \"id\": \"shprep_819badb231734fabb68e27bba78ec421\",\n  \"object\": \"ShipmentReport\",\n  \"created_at\": \"2022-05-09T20:00:29Z\",\n  \"updated_at\": \"2022-05-09T20:00:30Z\",\n  \"start_date\": \"2022-04-12\",\n  \"end_date\": \"2022-04-12\",\n  \"mode\": \"test\",\n  \"status\": \"empty\",\n  \"url\": null,\n  \"url_expires_at\": null,\n  \"include_children\": false\n}",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "283"
+        "Content-Length": "285"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -80,15 +79,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "844d31c6627457a3f18569a50044b132",
+        "x-ep-request-uuid": "019379bb627972def6d67eed004ebe9e",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"ca0974d2c88ef2df710d37e83b4c8428\"",
-        "x-runtime": "0.030722",
-        "x-node": "bigweb5nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "ETag": "W/\"e9b1febc4b2a3d01290d1ac75c8dd61a\"",
+        "x-runtime": "0.021343",
+        "x-node": "bigweb3nuq",
+        "x-version-label": "easypost-202205062128-ead761c527-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq fde591f008,extlb2nuq c51cdb8bf2",
+        "x-proxied": "intlb1nuq fde591f008,extlb1nuq c51cdb8bf2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
