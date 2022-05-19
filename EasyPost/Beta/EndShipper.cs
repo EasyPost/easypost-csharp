@@ -87,7 +87,6 @@ namespace EasyPost.Beta
         public static async Task<EndShipper> Retrieve(string id)
         {
             Request request = new Request($"end_shippers/{id}", Method.Get);
-            // request.AddUrlSegment("id", id);
 
             return await request.Execute<EndShipper>(true);
         }

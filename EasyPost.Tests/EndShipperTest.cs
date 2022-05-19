@@ -18,11 +18,11 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("end_shipper", TestUtils.ApiKey.Production);
         }
 
+        [Ignore]
         [TestMethod]
         public async Task TestAll()
         {
-            // _vcr.SetUpTest("all");
-            ClientManager.SetCurrent(TestUtils.GetApiKey(TestUtils.ApiKey.Production));
+            _vcr.SetUpTest("all");
 
             List<EndShipper> endShippers = await EndShipper.All(new Dictionary<string, object>
             {
@@ -38,11 +38,11 @@ namespace EasyPost.Tests
             }
         }
 
+        [Ignore]
         [TestMethod]
         public async Task TestCreate()
         {
-            // _vcr.SetUpTest("create");
-            ClientManager.SetCurrent(TestUtils.GetApiKey(TestUtils.ApiKey.Production));
+            _vcr.SetUpTest("create");
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
@@ -51,13 +51,13 @@ namespace EasyPost.Tests
             Assert.AreEqual("388 TOWNSEND ST APT 20", endShipper.street1);
         }
 
+        [Ignore]
         [TestMethod]
         public async Task TestRetrieve()
         {
-            // _vcr.SetUpTest("retrieve");
-            ClientManager.SetCurrent(TestUtils.GetApiKey(TestUtils.ApiKey.Production));
+            _vcr.SetUpTest("retrieve");
 
-            EndShipper endShipper = await EndShipper.Create(Fixture.BasicEndShipper);
+            EndShipper endShipper = await CreateBasicEndShipper();
 
             EndShipper retrievedEndShipper = await EndShipper.Retrieve(endShipper.id);
 
@@ -65,17 +65,17 @@ namespace EasyPost.Tests
             Assert.AreEqual(endShipper.street1, retrievedEndShipper.street1);
         }
 
+        [Ignore]
         [TestMethod]
         public async Task TestUpdate()
         {
-            // _vcr.SetUpTest("update");
-            ClientManager.SetCurrent(TestUtils.GetApiKey(TestUtils.ApiKey.Production));
+            _vcr.SetUpTest("update");
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
             string newPhoneNumber = "9999999999";
 
-            Dictionary<string, object> endShipperData = Fixture.BasicEndShipper;
+            Dictionary<string, object> endShipperData = Fixture.EndShipperAddress;
             endShipperData["phone"] = newPhoneNumber;
 
             await endShipper.Update(endShipperData);
@@ -87,7 +87,7 @@ namespace EasyPost.Tests
 
         private static async Task<EndShipper> CreateBasicEndShipper()
         {
-            return await EndShipper.Create(Fixture.BasicEndShipper);
+            return await EndShipper.Create(Fixture.EndShipperAddress);
         }
     }
 }

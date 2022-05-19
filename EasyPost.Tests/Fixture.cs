@@ -558,7 +558,7 @@ namespace EasyPost.Tests
             }
         }
 
-        public static Dictionary<string, object> BasicEndShipper
+        public static Dictionary<string, object> EndShipperAddress
         {
             get
             {
