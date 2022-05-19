@@ -2,6 +2,7 @@
 'This test project is running on .NET 6.0, although a success here should mean a success in all versions of .NET.
 Imports EasyPost.Clients
 Imports EasyPost.Models
+Imports EasyPost.Models.V2
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
 
 <TestClass>

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models;
+using EasyPost.Models.V2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests

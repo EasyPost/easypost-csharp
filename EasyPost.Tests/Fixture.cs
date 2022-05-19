@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models;
+using EasyPost.Models.V2;
 using EasyPost.Utilities;
 
 namespace EasyPost.Tests
@@ -557,6 +558,46 @@ namespace EasyPost.Tests
                     }
                 };
                 return JsonSerialization.ConvertObjectToJson(data);
+            }
+        }
+
+        public static Dictionary<string, object> EndShipperAddress
+        {
+            get
+            {
+                return new Dictionary<string, object>
+                {
+                    {
+                        "name", "Jack Sparrow"
+                    },
+                    {
+                        "company", "EasyPost"
+                    },
+                    {
+                        "street1", "388 Townsend St"
+                    },
+                    {
+                        "street2", "Apt 20"
+                    },
+                    {
+                        "city", "San Francisco"
+                    },
+                    {
+                        "state", "CA"
+                    },
+                    {
+                        "zip", "94107"
+                    },
+                    {
+                        "country", "US"
+                    },
+                    {
+                        "phone", "5555555555"
+                    },
+                    {
+                        "email", "test@example.com"
+                    }
+                };
             }
         }
     }

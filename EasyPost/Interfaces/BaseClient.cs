@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Http;
 using EasyPost.Models;
+using EasyPost.Models.V2;
 using EasyPost.Utilities;
 using RestSharp;
 

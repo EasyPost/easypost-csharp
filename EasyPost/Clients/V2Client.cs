@@ -1,6 +1,6 @@
 using System.Net.Http;
 using EasyPost.Interfaces;
-using EasyPost.Services;
+using EasyPost.Services.V2;
 
 namespace EasyPost.Clients
 {

@@ -13,6 +13,11 @@ namespace EasyPost.Clients
             get { return new PartnerService(this); }
         }
 
+        public EndShipperService EndShippers
+        {
+            get { return new EndShipperService(this); }
+        }
+
             /// <summary>
         ///     Constructor for the Beta EasyPost client.
         /// </summary>
