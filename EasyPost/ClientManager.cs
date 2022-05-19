@@ -31,14 +31,23 @@ namespace EasyPost
         /// </summary>
         /// <returns>An EasyPost.Client instance.</returns>
         /// <exception cref="ClientNotConfigured">No function set to retrieve the current client.</exception>
-        internal static Client Build()
+        internal static Client Build(bool betaFeature = false)
         {
             if (getCurrent == null)
             {
                 throw new ClientNotConfigured("No function set to retrieve the current client.");
             }
 
-            return getCurrent();
+            Client client = getCurrent();
+
+            if (!betaFeature)
+            {
+                return client;
+            }
+
+            ClientConfiguration clientConfiguration = new ClientConfiguration(client.Configuration.ApiKey, ClientConfiguration.BetaBaseUrl);
+            // beta features cannot use VCR/custom HTTP clients due to an issue with RestSharp's constructor
+            return new Client(clientConfiguration);
         }
     }
 }

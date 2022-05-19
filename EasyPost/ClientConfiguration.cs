@@ -7,6 +7,7 @@ namespace EasyPost
     /// </summary>
     public class ClientConfiguration
     {
+        internal const string BetaBaseUrl = "https://api.easypost.com/beta";
         internal const string DefaultBaseUrl = "https://api.easypost.com/v2";
 
         /// <summary>

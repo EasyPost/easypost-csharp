@@ -1,9 +1,10 @@
 [
   {
-    "Duration": 185,
-    "RecordedAt": "2022-05-05T16:50:16.081966-06:00",
+    "Duration": 194,
+    "RecordedAt": "2022-05-19T14:41:11.353491-06:00",
     "Request": {
-      "Body": "{\n  \"verify_strict\": [\n    true\n  ],\n  \"address\": {\n    \"name\": \"Jack Sparrow\",\n    \"company\": \"EasyPost\",\n    \"street1\": \"388 Townsend St\",\n    \"street2\": \"Apt 20\",\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\",\n    \"zip\": \"94107\",\n    \"country\": \"US\",\n    \"phone\": \"5555555555\"\n  }\n}",
+      "Body": "{\"verify_strict\":[true],\"address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"5555555555\"}}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
         "Content-Length": "212"
@@ -18,7 +19,8 @@
       "Uri": "https://api.easypost.com/v2/addresses"
     },
     "Response": {
-      "Body": "{\n  \"id\": \"adr_bb2aa0e1ccc511ec9a15ac1f6bc7bdc6\",\n  \"object\": \"Address\",\n  \"created_at\": \"2022-05-05T16:50:16-06:00\",\n  \"updated_at\": \"2022-05-05T16:50:16-06:00\",\n  \"name\": \"JACK SPARROW\",\n  \"company\": \"EASYPOST\",\n  \"street1\": \"388 TOWNSEND ST APT 20\",\n  \"street2\": \"\",\n  \"city\": \"SAN FRANCISCO\",\n  \"state\": \"CA\",\n  \"zip\": \"94107-1670\",\n  \"country\": \"US\",\n  \"phone\": \"5555555555\",\n  \"email\": null,\n  \"mode\": \"test\",\n  \"carrier_facility\": null,\n  \"residential\": true,\n  \"federal_tax_id\": null,\n  \"state_tax_id\": null,\n  \"verifications\": {\n    \"zip4\": {\n      \"success\": true,\n      \"errors\": [],\n      \"details\": null\n    },\n    \"delivery\": {\n      \"success\": true,\n      \"errors\": [],\n      \"details\": {\n        \"latitude\": 37.77551,\n        \"longitude\": -122.39697,\n        \"time_zone\": \"America/Los_Angeles\"\n      }\n    }\n  }\n}",
+      "Body": "{\"id\":\"adr_04b38628d7b411ec80deac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2022-05-19T14:41:11-06:00\",\"updated_at\":\"2022-05-19T14:41:11-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"5555555555\",\"email\":null,\"mode\":\"test\",\"carrier_facility\":null,\"residential\":true,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.77551,\"longitude\":-122.39697,\"time_zone\":\"America/Los_Angeles\"}}}}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
@@ -32,17 +34,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "844d31c8627454a8f1cc25e60043e3fe",
+        "x-ep-request-uuid": "e193beed6286ab67e3bf7c9f003f9563",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "Location": "/api/v2/addresses/adr_bb2aa0e1ccc511ec9a15ac1f6bc7bdc6",
-        "ETag": "W/\"af94a4c836b1af73f34eebf801dc3e9f\"",
-        "x-runtime": "0.046417",
-        "x-node": "bigweb7nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "Location": "/api/v2/addresses/adr_04b38628d7b411ec80deac1f6bc72124",
+        "ETag": "W/\"16d9eb8ce01e4765bf073d7d02889916\"",
+        "x-runtime": "0.045220",
+        "x-node": "bigweb5nuq",
+        "x-version-label": "easypost-202205191856-f47f64ff93-master",
         "x-backend": "easypost",
-        "x-canary": "direct",
-        "x-proxied": "intlb1nuq fde591f008,extlb2nuq c51cdb8bf2",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb2nuq c51cdb8bf2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

@@ -17,7 +17,7 @@ namespace EasyPost.Tests
             Production
         }
 
-        private static string GetApiKey(ApiKey apiKey)
+        internal static string GetApiKey(ApiKey apiKey)
         {
             string keyName = "";
             switch (apiKey)

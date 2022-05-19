@@ -70,30 +70,33 @@ namespace EasyPost
         ///     Execute the request.
         /// </summary>
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
+        /// <param name="betaFeature">Whether this request needs to use the beta endpoint.</param>
         /// <returns>An instance of a T type object.</returns>
-        public async Task<T> Execute<T>() where T : new()
+        public async Task<T> Execute<T>(bool betaFeature = false) where T : new()
         {
-            Client client = BuildClient();
+            Client client = BuildClient(betaFeature);
             return await client.Execute<T>(this, RootElement);
         }
 
         /// <summary>
         ///     Execute the request.
         /// </summary>
+        /// <param name="betaFeature">Whether this request needs to use the beta endpoint.</param>
         /// <returns>Whether the request was successful or not.</returns>
-        public async Task<bool> Execute()
+        public async Task<bool> Execute(bool betaFeature = false)
         {
-            Client client = BuildClient();
+            Client client = BuildClient(betaFeature);
             return await client.Execute(this);
         }
 
         /// <summary>
         ///     Build the client and prepare request parameters.
         /// </summary>
+        /// <param name="betaFeature">Whether this client needs to use the beta endpoint.</param>
         /// <returns>An EasyPost.Client instance.</returns>
-        private Client BuildClient()
+        private Client BuildClient(bool betaFeature = false)
         {
-            Client client = ClientManager.Build();
+            Client client = ClientManager.Build(betaFeature);
             BuildParameters();
             BuildUrlSegments();
             return client;
