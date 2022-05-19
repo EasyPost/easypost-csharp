@@ -20,15 +20,13 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
-        public async Task<User> Create(Dictionary<string, object> parameters)
-        {
-            return await Create<User>("users", new Dictionary<string, object>
+        public async Task<User> Create(Dictionary<string, object> parameters) =>
+            await Create<User>("users", new Dictionary<string, object>
             {
                 {
                     "user", parameters
                 }
             });
-        }
 
 
         /// <summary>
@@ -51,9 +49,6 @@ namespace EasyPost.Services.V2
         ///     Retrieve the current user.
         /// </summary>
         /// <returns>EasyPost.User instance.</returns>
-        public async Task<User> RetrieveMe()
-        {
-            return await Retrieve();
-        }
+        public async Task<User> RetrieveMe() => await Retrieve();
     }
 }

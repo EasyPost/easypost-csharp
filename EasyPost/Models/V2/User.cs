@@ -46,10 +46,7 @@ namespace EasyPost.Models.V2
         ///     Delete the user.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
-        public async Task<bool> Delete()
-        {
-            return await Request(Method.Delete, $"users/{id}");
-        }
+        public async Task<bool> Delete() => await Request(Method.Delete, $"users/{id}");
 
         /// <summary>
         ///     Update the User associated with the api_key specified.
@@ -66,15 +63,13 @@ namespace EasyPost.Models.V2
         ///     account.
         ///     All invalid keys will be ignored.
         /// </param>
-        public async Task Update(Dictionary<string, object> parameters)
-        {
+        public async Task Update(Dictionary<string, object> parameters) =>
             await Update<User>(Method.Put, $"users/{id}", new Dictionary<string, object>
             {
                 {
                     "user", parameters
                 }
             });
-        }
 
         /// <summary>
         ///     Update the User's brand.
@@ -91,14 +86,12 @@ namespace EasyPost.Models.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Brand instance.</returns>
-        public async Task<Brand> UpdateBrand(Dictionary<string, object> parameters)
-        {
-            return await Request<Brand>(Method.Put, $"users/{id}/brand", new Dictionary<string, object>
+        public async Task<Brand> UpdateBrand(Dictionary<string, object> parameters) =>
+            await Request<Brand>(Method.Put, $"users/{id}/brand", new Dictionary<string, object>
             {
                 {
                     "brand", parameters
                 }
             });
-        }
     }
 }

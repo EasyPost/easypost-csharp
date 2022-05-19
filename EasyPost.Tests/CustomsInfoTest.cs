@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using EasyPost.Clients;
-using EasyPost.Models;
 using EasyPost.Models.V2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -12,15 +11,7 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize()
-        {
-            _vcr = new TestUtils.VCR("customs_info");
-        }
-
-        private static async Task<CustomsInfo> CreateBasicCustomsInfo(V2Client client)
-        {
-            return await client.CustomsInfo.Create(Fixture.BasicCustomsInfo);
-        }
+        public void Initialize() => _vcr = new TestUtils.VCR("customs_info");
 
         [TestMethod]
         public async Task TestCreate()
@@ -46,5 +37,7 @@ namespace EasyPost.Tests
             Assert.IsInstanceOfType(retrievedCustomsInfo, typeof(CustomsInfo));
             Assert.AreEqual(customsInfo, retrievedCustomsInfo);
         }
+
+        private static async Task<CustomsInfo> CreateBasicCustomsInfo(V2Client client) => await client.CustomsInfo.Create(Fixture.BasicCustomsInfo);
     }
 }

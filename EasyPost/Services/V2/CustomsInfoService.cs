@@ -27,10 +27,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
-        public async Task<CustomsInfo> Create(Dictionary<string, object> parameters)
-        {
-            return await Create<CustomsInfo>("customs_infos", parameters);
-        }
+        public async Task<CustomsInfo> Create(Dictionary<string, object> parameters) => await Create<CustomsInfo>("customs_infos", parameters);
 
 
         /// <summary>
@@ -38,9 +35,6 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a CustomsInfo. Starts with "cstinfo_".</param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
-        public async Task<CustomsInfo> Retrieve(string id)
-        {
-            return await Get<CustomsInfo>($"customs_infos/{id}");
-        }
+        public async Task<CustomsInfo> Retrieve(string id) => await Get<CustomsInfo>($"customs_infos/{id}");
     }
 }

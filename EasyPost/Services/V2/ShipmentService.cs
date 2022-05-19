@@ -63,6 +63,7 @@ namespace EasyPost.Services.V2
             {
                 requestParameters.Add("shipment", parameters);
             }
+
             return await Create<Shipment>("shipments", requestParameters);
         }
 
@@ -71,9 +72,6 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
         /// <returns>An EasyPost.Shipment instance.</returns>
-        public async Task<Shipment> Retrieve(string id)
-        {
-            return await Get<Shipment>($"shipments/{id}");
-        }
+        public async Task<Shipment> Retrieve(string id) => await Get<Shipment>($"shipments/{id}");
     }
 }

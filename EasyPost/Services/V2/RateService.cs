@@ -15,9 +15,6 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a rate. Starts with `rate_`.</param>
         /// <returns>EasyPost.Rate instance.</returns>
-        public async Task<Rate> Retrieve(string id)
-        {
-            return await Get<Rate>($"rates/{id}");
-        }
+        public async Task<Rate> Retrieve(string id) => await Get<Rate>($"rates/{id}");
     }
 }

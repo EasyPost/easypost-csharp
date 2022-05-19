@@ -16,10 +16,7 @@ namespace EasyPost.Services.V2
         ///     List all available carrier accounts.
         /// </summary>
         /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
-        public async Task<List<CarrierAccount>> All()
-        {
-            return await List<List<CarrierAccount>>("carrier_accounts");
-        }
+        public async Task<List<CarrierAccount>> All() => await List<List<CarrierAccount>>("carrier_accounts");
 
         /// <summary>
         ///     Create a CarrierAccount.
@@ -34,24 +31,19 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
-        public async Task<CarrierAccount> Create(Dictionary<string, object> parameters)
-        {
-            return await Create<CarrierAccount>("carrier_accounts", new Dictionary<string, object>
+        public async Task<CarrierAccount> Create(Dictionary<string, object> parameters) =>
+            await Create<CarrierAccount>("carrier_accounts", new Dictionary<string, object>
             {
                 {
                     "carrier_account", parameters
                 }
             });
-        }
 
         /// <summary>
         ///     Retrieve a CarrierAccount from its id.
         /// </summary>
         /// <param name="id">String representing a carrier account. Starts with "ca_".</param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
-        public async Task<CarrierAccount> Retrieve(string id)
-        {
-            return await Get<CarrierAccount>($"carrier_accounts/{id}");
-        }
+        public async Task<CarrierAccount> Retrieve(string id) => await Get<CarrierAccount>($"carrier_accounts/{id}");
     }
 }

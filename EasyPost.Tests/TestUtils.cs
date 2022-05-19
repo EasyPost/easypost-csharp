@@ -1,8 +1,8 @@
 using System;
-using EasyPost.Clients;
-using EasyPost.Interfaces;
 using System.IO;
 using System.Runtime.CompilerServices;
+using EasyPost.Clients;
+using EasyPost.Interfaces;
 using EasyVCR;
 
 namespace EasyPost.Tests
@@ -37,10 +37,7 @@ namespace EasyPost.Tests
             return Environment.GetEnvironmentVariable(keyName) ?? ApiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.
         }
 
-        private static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "")
-        {
-            return Path.GetDirectoryName(sourceFilePath);
-        }
+        private static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath);
 
         public class VCR
         {
@@ -56,7 +53,7 @@ namespace EasyPost.Tests
                     MatchRules = MatchRules.Default,
                     Censors = Censors.DefaultSensitive,
                     SimulateDelay = false,
-                    ManualDelay = 0,
+                    ManualDelay = 0
                 };
                 _vcr = new EasyVCR.VCR(advancedSettings);
                 _vcr.RecordIfNeeded(); // always in auto mode

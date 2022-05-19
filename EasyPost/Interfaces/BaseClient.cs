@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Http;
-using EasyPost.Models;
 using EasyPost.Models.V2;
 using EasyPost.Utilities;
 using RestSharp;
@@ -48,7 +47,10 @@ namespace EasyPost.Interfaces
         /// </summary>
         /// <param name="apiKey">API key to use with this client.</param>
         /// <param name="version">What version of the API to use.</param>
-        /// <param name="customHttpClient">Custom HttpClient to pass into RestSharp if needed. Mostly for debug purposes, not advised for general use.</param>
+        /// <param name="customHttpClient">
+        ///     Custom HttpClient to pass into RestSharp if needed. Mostly for debug purposes, not
+        ///     advised for general use.
+        /// </param>
         protected BaseClient(string apiKey, string version, HttpClient? customHttpClient = null)
         {
             ServicePointManager.SecurityProtocol |= Security.GetProtocol();
@@ -102,17 +104,17 @@ namespace EasyPost.Interfaces
 
             if (statusCode < 400)
             {
-                var resource = JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
+                T resource = JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
                 if (resource is IList list)
                 {
                     foreach (object element in list)
                     {
-                        ((element as Resource)!).Client = this;
+                        (element as Resource)!.Client = this;
                     }
                 }
                 else
                 {
-                    ((resource as Resource)!).Client = this;
+                    (resource as Resource)!.Client = this;
                 }
 
                 return resource;
@@ -172,9 +174,6 @@ namespace EasyPost.Interfaces
             return restRequest;
         }
 
-        private static string GetApiUrl(string version)
-        {
-            return $"https://api.easypost.com/{version}";
-        }
+        private static string GetApiUrl(string version) => $"https://api.easypost.com/{version}";
     }
 }

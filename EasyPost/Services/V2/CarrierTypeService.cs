@@ -15,9 +15,6 @@ namespace EasyPost.Services.V2
         ///     Get all available carrier types.
         /// </summary>
         /// <returns>A list of EasyPost.CarrierType instances.</returns>
-        public async Task<List<CarrierType>> All()
-        {
-            return await List<List<CarrierType>>("carrier_types");
-        }
+        public async Task<List<CarrierType>> All() => await List<List<CarrierType>>("carrier_types");
     }
 }

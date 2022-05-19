@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Clients;
-using EasyPost.Models;
 using EasyPost.Models.V2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,24 +12,32 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize()
+        public void Initialize() => _vcr = new TestUtils.VCR("user", TestUtils.ApiKey.Production);
+
+        // API keys are returned as plaintext, do not run this test.
+        [Ignore]
+        [TestMethod]
+        public async Task TestAllApiKeys()
         {
-            _vcr = new TestUtils.VCR("user", TestUtils.ApiKey.Production);
+            V2Client client = (V2Client)_vcr.SetUpTest("all_api_keys");
+
+
+            User user = await RetrieveMe(client);
+
+            // TODO: User doesn't have a .all_api_keys() method
+            List<ApiKey> apiKeys = user.api_keys;
         }
 
-        private static async Task<User> RetrieveMe(V2Client client)
+        // API keys are returned as plaintext, do not run this test.
+        [Ignore]
+        [TestMethod]
+        public async Task TestApiKeys()
         {
-            return await client.Users.RetrieveMe();
-        }
+            V2Client client = (V2Client)_vcr.SetUpTest("api_keys");
 
-        private static async Task<User> CreateUser(V2Client client)
-        {
-            return await client.Users.Create(new Dictionary<string, object>
-            {
-                {
-                    "name", "Test User"
-                }
-            });
+            User user = await RetrieveMe(client);
+
+            List<ApiKey> apiKeys = user.api_keys;
         }
 
         // This endpoint returns the child user keys in plain text, do not run this test.
@@ -45,6 +52,19 @@ namespace EasyPost.Tests
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
             Assert.AreEqual("Test User", user.name);
+        }
+
+        // Due to our inability to create child users securely, we must also skip deleting them as we cannot replace the deleted ones easily.
+        [Ignore]
+        [TestMethod]
+        public async Task TestDelete()
+        {
+            V2Client client = (V2Client)_vcr.SetUpTest("delete");
+
+
+            User user = await CreateUser(client);
+
+            await user.Delete();
         }
 
         [TestMethod]
@@ -97,45 +117,6 @@ namespace EasyPost.Tests
             Assert.AreEqual(testPhone, user.phone_number);
         }
 
-        // Due to our inability to create child users securely, we must also skip deleting them as we cannot replace the deleted ones easily.
-        [Ignore]
-        [TestMethod]
-        public async Task TestDelete()
-        {
-            V2Client client = (V2Client)_vcr.SetUpTest("delete");
-
-
-            User user = await CreateUser(client);
-
-            await user.Delete();
-        }
-
-        // API keys are returned as plaintext, do not run this test.
-        [Ignore]
-        [TestMethod]
-        public async Task TestAllApiKeys()
-        {
-            V2Client client = (V2Client)_vcr.SetUpTest("all_api_keys");
-
-
-            User user = await RetrieveMe(client);
-
-            // TODO: User doesn't have a .all_api_keys() method
-            List<ApiKey> apiKeys = user.api_keys;
-        }
-
-        // API keys are returned as plaintext, do not run this test.
-        [Ignore]
-        [TestMethod]
-        public async Task TestApiKeys()
-        {
-            V2Client client = (V2Client)_vcr.SetUpTest("api_keys");
-
-            User user = await RetrieveMe(client);
-
-            List<ApiKey> apiKeys = user.api_keys;
-        }
-
         [TestMethod]
         public async Task TestUpdateBrand()
         {
@@ -155,5 +136,15 @@ namespace EasyPost.Tests
             Assert.IsTrue(brand.id.StartsWith("brd_"));
             Assert.AreEqual(color, brand.color);
         }
+
+        private static async Task<User> CreateUser(V2Client client) =>
+            await client.Users.Create(new Dictionary<string, object>
+            {
+                {
+                    "name", "Test User"
+                }
+            });
+
+        private static async Task<User> RetrieveMe(V2Client client) => await client.Users.RetrieveMe();
     }
 }

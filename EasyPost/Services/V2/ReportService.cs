@@ -53,10 +53,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Report instance.</returns>
-        public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null)
-        {
-            return await Create<Report>($"reports/{type}", parameters);
-        }
+        public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null) => await Create<Report>($"reports/{type}", parameters);
 
 
         /// <summary>
@@ -64,10 +61,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a report.</param>
         /// <returns>EasyPost.Report instance.</returns>
-        public async Task<Report> Retrieve(string id)
-        {
-            return await Get<Report>($"reports/{id}");
-        }
+        public async Task<Report> Retrieve(string id) => await Get<Report>($"reports/{id}");
 
         /// <summary>
         ///     Retrieve a Report from its id and type.
@@ -75,9 +69,6 @@ namespace EasyPost.Services.V2
         /// <param name="type">Type of report, e.g. shipment, tracker, payment_log, etc.</param>
         /// <param name="id">String representing a report.</param>
         /// <returns>EasyPost.Report instance.</returns>
-        public async Task<Report> Retrieve(string type, string id)
-        {
-            return await Get<Report>($"reports/{type}/{id}");
-        }
+        public async Task<Report> Retrieve(string type, string id) => await Get<Report>($"reports/{type}/{id}");
     }
 }

@@ -26,10 +26,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.AddressCollection instance.</returns>
-        public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null)
-        {
-            return await List<AddressCollection>("addresses", parameters);
-        }
+        public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null) => await List<AddressCollection>("addresses", parameters);
 
         /// <summary>
         ///     Create an Address.
@@ -51,10 +48,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
-        public async Task<Address> Create(Dictionary<string, object>? parameters = null)
-        {
-            return await SendCreate("addresses", parameters);
-        }
+        public async Task<Address> Create(Dictionary<string, object>? parameters = null) => await SendCreate("addresses", parameters);
 
         /// <summary>
         ///     Create and verify an Address.
@@ -73,20 +67,14 @@ namespace EasyPost.Services.V2
         ///     * {"email", string}
         ///     All invalid keys will be ignored.
         /// </param>
-        public async Task<Address> CreateAndVerify(Dictionary<string, object>? parameters = null)
-        {
-            return await SendCreate("addresses/create_and_verify", parameters, "address");
-        }
+        public async Task<Address> CreateAndVerify(Dictionary<string, object>? parameters = null) => await SendCreate("addresses/create_and_verify", parameters, "address");
 
         /// <summary>
         ///     Retrieve an Address from its id.
         /// </summary>
         /// <param name="id">String representing an Address. Starts with "adr_".</param>
         /// <returns>EasyPost.Address instance.</returns>
-        public async Task<Address> Retrieve(string id)
-        {
-            return await Get<Address>($"addresses/{id}");
-        }
+        public async Task<Address> Retrieve(string id) => await Get<Address>($"addresses/{id}");
 
         private async Task<Address> SendCreate(string endpoint, Dictionary<string, object>? parameters = null, string? rootElement = null)
         {

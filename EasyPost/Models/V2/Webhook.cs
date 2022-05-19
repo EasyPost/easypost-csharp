@@ -21,17 +21,11 @@ namespace EasyPost.Models.V2
         ///     Delete this webhook.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
-        public async Task<bool> Delete()
-        {
-            return await Request(Method.Delete, $"webhooks/{id}");
-        }
+        public async Task<bool> Delete() => await Request(Method.Delete, $"webhooks/{id}");
 
         /// <summary>
         ///     Enable a Webhook that has been disabled previously.
         /// </summary>
-        public async Task Update()
-        {
-            await Update<Webhook>(Method.Put, $"webhooks/{id}");
-        }
+        public async Task Update() => await Update<Webhook>(Method.Put, $"webhooks/{id}");
     }
 }

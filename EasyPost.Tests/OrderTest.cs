@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Clients;
-using EasyPost.Models;
 using EasyPost.Models.V2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,14 +12,24 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize()
-        {
-            _vcr = new TestUtils.VCR("order");
-        }
+        public void Initialize() => _vcr = new TestUtils.VCR("order");
 
-        private static async Task<Order> CreateBasicOrder(V2Client client)
+        [TestMethod]
+        public async Task TestBuy()
         {
-            return await client.Orders.Create(Fixture.BasicOrder);
+            V2Client client = (V2Client)_vcr.SetUpTest("buy");
+
+            Order order = await CreateBasicOrder(client);
+
+            await order.Buy(Fixture.Usps, Fixture.UspsService);
+
+            List<Shipment> shipments = order.shipments;
+
+            foreach (Shipment shipment in shipments)
+            {
+                Assert.IsInstanceOfType(shipment, typeof(Shipment));
+                Assert.IsNotNull(shipment.postage_label);
+            }
         }
 
         [TestMethod]
@@ -33,6 +42,24 @@ namespace EasyPost.Tests
             Assert.IsInstanceOfType(order, typeof(Order));
             Assert.IsTrue(order.id.StartsWith("order_"));
             Assert.IsNotNull(order.rates);
+        }
+
+        [TestMethod]
+        public async Task TestGetRates()
+        {
+            V2Client client = (V2Client)_vcr.SetUpTest("get_rates");
+
+            Order order = await CreateBasicOrder(client);
+
+            await order.GetRates();
+
+            List<Rate> rates = order.rates;
+
+            Assert.IsNotNull(rates);
+            foreach (Rate rate in rates)
+            {
+                Assert.IsInstanceOfType(rate, typeof(Rate));
+            }
         }
 
         [TestMethod]
@@ -50,40 +77,6 @@ namespace EasyPost.Tests
             Assert.AreEqual(order.id, retrievedOrder.id);
         }
 
-        [TestMethod]
-        public async Task TestGetRates()
-        {
-            V2Client client = (V2Client)_vcr.SetUpTest("get_rates");
-
-            Order order = await CreateBasicOrder(client);
-
-            await order.GetRates();
-
-            List<Rate> rates = order.rates;
-
-            Assert.IsNotNull(rates);
-            foreach (var rate in rates)
-            {
-                Assert.IsInstanceOfType(rate, typeof(Rate));
-            }
-        }
-
-        [TestMethod]
-        public async Task TestBuy()
-        {
-            V2Client client = (V2Client)_vcr.SetUpTest("buy");
-
-            Order order = await CreateBasicOrder(client);
-
-            await order.Buy(Fixture.Usps, Fixture.UspsService);
-
-            List<Shipment> shipments = order.shipments;
-
-            foreach (var shipment in shipments)
-            {
-                Assert.IsInstanceOfType(shipment, typeof(Shipment));
-                Assert.IsNotNull(shipment.postage_label);
-            }
-        }
+        private static async Task<Order> CreateBasicOrder(V2Client client) => await client.Orders.Create(Fixture.BasicOrder);
     }
 }

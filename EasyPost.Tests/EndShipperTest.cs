@@ -12,27 +12,7 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize()
-        {
-            _vcr = new TestUtils.VCR("end_shipper", TestUtils.ApiKey.Production);
-        }
-
-        private static async Task<EndShipper> CreateBasicEndShipper(BetaClient client)
-        {
-            return await client.EndShippers.Create(Fixture.EndShipperAddress);
-        }
-
-        [TestMethod]
-        public async Task TestCreate()
-        {
-            BetaClient client = (BetaClient)_vcr.SetUpTest("create", null, ClientVersion.Beta);
-
-            EndShipper endShipper = await CreateBasicEndShipper(client);
-
-            Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
-            Assert.IsTrue(endShipper.id.StartsWith("es_"));
-            Assert.AreEqual("388 TOWNSEND ST APT 20", endShipper.street1);
-        }
+        public void Initialize() => _vcr = new TestUtils.VCR("end_shipper", TestUtils.ApiKey.Production);
 
         [TestMethod]
         public async Task TestAll()
@@ -47,10 +27,22 @@ namespace EasyPost.Tests
             });
 
             Assert.IsTrue(endShippers.Count <= Fixture.PageSize);
-            foreach (var item in endShippers)
+            foreach (EndShipper item in endShippers)
             {
                 Assert.IsInstanceOfType(item, typeof(EndShipper));
             }
+        }
+
+        [TestMethod]
+        public async Task TestCreate()
+        {
+            BetaClient client = (BetaClient)_vcr.SetUpTest("create", null, ClientVersion.Beta);
+
+            EndShipper endShipper = await CreateBasicEndShipper(client);
+
+            Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
+            Assert.IsTrue(endShipper.id.StartsWith("es_"));
+            Assert.AreEqual("388 TOWNSEND ST APT 20", endShipper.street1);
         }
 
         [TestMethod]
@@ -84,5 +76,7 @@ namespace EasyPost.Tests
             Assert.IsTrue(endShipper.id.StartsWith("es_"));
             Assert.AreEqual(newPhoneNumber, endShipper.phone);
         }
+
+        private static async Task<EndShipper> CreateBasicEndShipper(BetaClient client) => await client.EndShippers.Create(Fixture.EndShipperAddress);
     }
 }

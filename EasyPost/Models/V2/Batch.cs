@@ -41,8 +41,7 @@ namespace EasyPost.Models.V2
         ///     Add shipments to this batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be added.</param>
-        public async Task AddShipments(IEnumerable<string> shipmentIds)
-        {
+        public async Task AddShipments(IEnumerable<string> shipmentIds) =>
             await Update<Batch>(Method.Post, $"batches/{id}/add_shipments", new Dictionary<string, object>
             {
                 {
@@ -55,7 +54,6 @@ namespace EasyPost.Models.V2
                         }).ToList()
                 }
             });
-        }
 
         /// <summary>
         ///     Add shipments to this batch.
@@ -66,39 +64,30 @@ namespace EasyPost.Models.V2
         /// <summary>
         ///     Purchase all shipments within this batch. The Batch's state must be "created" before purchasing.
         /// </summary>
-        public async Task Buy()
-        {
-            await Update<Batch>(Method.Post, $"batches/{id}/buy");
-        }
+        public async Task Buy() => await Update<Batch>(Method.Post, $"batches/{id}/buy");
 
         /// <summary>
         ///     Asynchronously generate a label containing all of the Shipment labels belonging to this batch.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
-        public async Task GenerateLabel(string fileFormat)
-        {
+        public async Task GenerateLabel(string fileFormat) =>
             await Update<Batch>(Method.Post, $"batches/{id}/label", new Dictionary<string, object>
             {
                 {
                     "file_format", fileFormat
                 }
             });
-        }
 
         /// <summary>
         ///     Asynchronously generate a scan from for this batch.
         /// </summary>
-        public async Task GenerateScanForm()
-        {
-            await Update<Batch>(Method.Post, $"batches/{id}/scan_form");
-        }
+        public async Task GenerateScanForm() => await Update<Batch>(Method.Post, $"batches/{id}/scan_form");
 
         /// <summary>
         ///     Remove shipments from this batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be removed.</param>
-        public async Task RemoveShipments(IEnumerable<string> shipmentIds)
-        {
+        public async Task RemoveShipments(IEnumerable<string> shipmentIds) =>
             await Update<Batch>(Method.Post, $"batches/{id}/remove_shipments", new Dictionary<string, object>
             {
                 {
@@ -111,7 +100,6 @@ namespace EasyPost.Models.V2
                         }).ToList()
                 }
             });
-        }
 
         /// <summary>
         ///     Remove shipments from this batch.

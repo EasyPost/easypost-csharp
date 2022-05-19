@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Clients;
-using EasyPost.Interfaces;
 using EasyPost.Models.Base;
 using Newtonsoft.Json;
 

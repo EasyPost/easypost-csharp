@@ -41,7 +41,7 @@ namespace EasyPost.Models.V2
                 parameters.Add("carrier", carrier);
             }
 
-            await Update<Address>(Method.Get,$"addresses/{id}/verify", parameters, "address");
+            await Update<Address>(Method.Get, $"addresses/{id}/verify", parameters, "address");
         }
     }
 }

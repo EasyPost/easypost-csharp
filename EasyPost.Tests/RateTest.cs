@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using EasyPost.Clients;
-using EasyPost.Models;
 using EasyPost.Models.V2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -12,10 +11,7 @@ namespace EasyPost.Tests
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
-        public void Initialize()
-        {
-            _vcr = new TestUtils.VCR("rate");
-        }
+        public void Initialize() => _vcr = new TestUtils.VCR("rate");
 
         [TestMethod]
         public async Task TestRetrieve()

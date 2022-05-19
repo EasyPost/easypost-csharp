@@ -22,14 +22,12 @@ namespace EasyPost.Services.Beta
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
-        public async Task<Referral> CreateReferral(Dictionary<string, object> parameters)
-        {
-            return await Create<Referral>("referral_customers", new Dictionary<string, object>
+        public async Task<Referral> CreateReferral(Dictionary<string, object> parameters) =>
+            await Create<Referral>("referral_customers", new Dictionary<string, object>
             {
                 {
                     "user", parameters
                 }
             });
-        }
     }
 }

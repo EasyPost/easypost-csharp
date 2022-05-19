@@ -1,10 +1,5 @@
-using System.Dynamic;
-using System.Threading.Tasks;
 using EasyPost.Clients;
-using EasyPost.Http;
-using EasyPost.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RestSharp;
 
 namespace EasyPost.Tests
 {

@@ -8,21 +8,18 @@ namespace EasyPost.Clients
     {
         private const string ApiVersion = "beta";
 
-        public PartnerService Partners
-        {
-            get { return new PartnerService(this); }
-        }
+        public EndShipperService EndShippers => new EndShipperService(this);
 
-        public EndShipperService EndShippers
-        {
-            get { return new EndShipperService(this); }
-        }
+        public PartnerService Partners => new PartnerService(this);
 
-            /// <summary>
+        /// <summary>
         ///     Constructor for the Beta EasyPost client.
         /// </summary>
         /// <param name="apiKey">API key to use with this client.</param>
-        /// <param name="customHttpClient">Custom HttpClient to pass into RestSharp if needed. Mostly for debug purposes, not advised for general use.</param>
+        /// <param name="customHttpClient">
+        ///     Custom HttpClient to pass into RestSharp if needed. Mostly for debug purposes, not
+        ///     advised for general use.
+        /// </param>
         public BetaClient(string apiKey, HttpClient? customHttpClient = null) : base(apiKey, ApiVersion, customHttpClient)
         {
         }

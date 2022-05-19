@@ -28,15 +28,13 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Pickup instance.</returns>
-        public async Task<Pickup> Create(Dictionary<string, object> parameters)
-        {
-            return await Create<Pickup>("pickups", new Dictionary<string, object>
+        public async Task<Pickup> Create(Dictionary<string, object> parameters) =>
+            await Create<Pickup>("pickups", new Dictionary<string, object>
             {
                 {
                     "pickup", parameters
                 }
             });
-        }
 
 
         /// <summary>
@@ -44,9 +42,6 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Pickup. Starts with "pickup_".</param>
         /// <returns>EasyPost.Pickup instance.</returns>
-        public async Task<Pickup> Retrieve(string id)
-        {
-            return await Get<Pickup>($"pickups/{id}");
-        }
+        public async Task<Pickup> Retrieve(string id) => await Get<Pickup>($"pickups/{id}");
     }
 }

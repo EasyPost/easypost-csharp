@@ -41,9 +41,8 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-        public async Task<ScanForm> Create(List<Shipment> shipments)
-        {
-            return await Create<ScanForm>("scan_forms", new Dictionary<string, object>
+        public async Task<ScanForm> Create(List<Shipment> shipments) =>
+            await Create<ScanForm>("scan_forms", new Dictionary<string, object>
             {
                 {
                     "scan_form", new Dictionary<string, object>
@@ -54,16 +53,12 @@ namespace EasyPost.Services.V2
                     }
                 }
             });
-        }
 
         /// <summary>
         ///     Retrieve a ScanForm from its id.
         /// </summary>
         /// <param name="id">String representing a scan form, starts with "sf_".</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-        public async Task<ScanForm> Retrieve(string id)
-        {
-            return await Get<ScanForm>($"scan_forms/{id}");
-        }
+        public async Task<ScanForm> Retrieve(string id) => await Get<ScanForm>($"scan_forms/{id}");
     }
 }

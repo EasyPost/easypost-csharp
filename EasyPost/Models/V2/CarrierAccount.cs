@@ -32,18 +32,12 @@ namespace EasyPost.Models.V2
         ///     Remove this CarrierAccount from your account.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
-        public async Task<bool> Delete()
-        {
-            return await Request(Method.Delete, $"carrier_accounts/{id}");
-        }
+        public async Task<bool> Delete() => await Request(Method.Delete, $"carrier_accounts/{id}");
 
         /// <summary>
         ///     Update this CarrierAccount.
         /// </summary>
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
-        public async Task Update(Dictionary<string, object> parameters)
-        {
-            await Update<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", parameters);
-        }
+        public async Task Update(Dictionary<string, object> parameters) => await Update<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", parameters);
     }
 }

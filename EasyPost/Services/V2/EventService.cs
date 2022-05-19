@@ -26,33 +26,25 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.EventCollection instance.</returns>
-        public async Task<EventCollection> All(Dictionary<string, object>? parameters = null)
-        {
-            return await Get<EventCollection>("events", parameters);
-        }
+        public async Task<EventCollection> All(Dictionary<string, object>? parameters = null) => await Get<EventCollection>("events", parameters);
 
         /// <summary>
         ///     Resend the last Event for a specific EasyPost object instance.
         /// </summary>
         /// <param name="id">String representing an EasyPost object instance.</param>
-        public async Task<bool> Create(string id)
-        {
-            return await CreateBlind("events", new Dictionary<string, object>
+        public async Task<bool> Create(string id) =>
+            await CreateBlind("events", new Dictionary<string, object>
             {
                 {
                     "result_id", id
                 }
             });
-        }
 
         /// <summary>
         ///     Retrieve an Event from its id.
         /// </summary>
         /// <param name="id">String representing a Event. Starts with "evt_".</param>
         /// <returns>EasyPost.Event instance.</returns>
-        public async Task<Event> Retrieve(string id)
-        {
-            return await Get<Event>($"events/{id}");
-        }
+        public async Task<Event> Retrieve(string id) => await Get<Event>($"events/{id}");
     }
 }

@@ -15,7 +15,7 @@ namespace EasyPost.Interfaces
 
         public override bool Equals(object obj)
         {
-            if (this.GetType() != obj.GetType())
+            if (GetType() != obj.GetType())
             {
                 return false;
             }
@@ -44,10 +44,7 @@ namespace EasyPost.Interfaces
         ///     Get the JSON representation of this object instance.
         /// </summary>
         /// <returns>A JSON string representation of this object instance's attributes</returns>
-        protected string? AsJson()
-        {
-            return JsonSerialization.ConvertObjectToJson(this);
-        }
+        protected string? AsJson() => JsonSerialization.ConvertObjectToJson(this);
 
         protected async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
         {
@@ -71,7 +68,7 @@ namespace EasyPost.Interfaces
 
         protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
         {
-            var updatedObject = await Request<T>(method, url, parameters, rootElement);
+            T updatedObject = await Request<T>(method, url, parameters, rootElement);
             if (updatedObject == null)
             {
                 throw new Exception("Failed to update object");
