@@ -50,13 +50,12 @@ namespace EasyPost.Tests
             {
                 AdvancedSettings advancedSettings = new AdvancedSettings
                 {
-                    MatchRules = MatchRules.Default,
+                    MatchRules = MatchRules.DefaultStrict,
                     Censors = Censors.DefaultSensitive,
                     SimulateDelay = false,
-                    ManualDelay = 0
+                    ManualDelay = 0,
                 };
                 _vcr = new EasyVCR.VCR(advancedSettings);
-                _vcr.RecordIfNeeded(); // always in auto mode
 
                 _apiKey = GetApiKey(apiKey);
 
@@ -100,6 +99,18 @@ namespace EasyPost.Tests
 
                 // add cassette to vcr
                 _vcr.Insert(cassette);
+
+                string filePath = Path.Combine(_testCassettesFolder, cassetteName + ".json");
+                if (!File.Exists(filePath))
+                {
+                    // if cassette doesn't exist, switch to record mode
+                    _vcr.Record();
+                }
+                else
+                {
+                    // if cassette exists, switch to replay mode
+                    _vcr.Replay();
+                }
 
                 // get EasyPost client
                 switch (clientVersion)

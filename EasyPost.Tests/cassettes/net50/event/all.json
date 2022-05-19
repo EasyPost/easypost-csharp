@@ -1,49 +1,51 @@
 [
-    {
-        "Duration": 437,
-        "RecordedAt": "2022-05-05T16:54:37.07259-06:00",
-        "Request": {
-            "Body": "",
-            "ContentHeaders": {},
-            "Method": "GET",
-            "RequestHeaders": {
-                "Accept": "application/json",
-                "Authorization": "*****",
-                "content_type": "application/json",
-                "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/5.0.16"
-            },
-            "Uri": "https://api.easypost.com/v2/events?page_size=5"
-        },
-        "Response": {
-            "Body": "{\n  \"events\": [\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_560d3c2accc611ecaa07157a81469cb9\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"pending\",\n      \"created_at\": \"2022-05-05T22:54:36.094Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_54c6647cccc611ec996b0d34745c3d29\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"pending\",\n      \"created_at\": \"2022-05-05T22:54:33.952Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_516781f8ccc611ec8a6a0f940e56ac5f\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"pending\",\n      \"created_at\": \"2022-05-05T22:54:28.297Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_5134abb6ccc611ecbd42559f833e83c6\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"pending\",\n      \"created_at\": \"2022-05-05T22:54:27.963Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    },\n    {\n      \"description\": \"tracker.updated\",\n      \"id\": \"evt_510295ccccc611ec83433f89f104b204\",\n      \"user_id\": \"user_4d78588f2f744bf6886aa67ddb870865\",\n      \"status\": \"pending\",\n      \"created_at\": \"2022-05-05T22:54:27.635Z\",\n      \"mode\": \"test\",\n      \"object\": \"Event\"\n    }\n  ],\n  \"has_more\": true\n}",
-            "ContentHeaders": {
-                "Expires": "0",
-                "Content-Type": "application/json; charset=utf-8",
-                "Content-Length": "1118"
-            },
-            "HttpVersion": "1.1",
-            "ResponseHeaders": {
-                "X-Frame-Options": "SAMEORIGIN",
-                "X-XSS-Protection": "1; mode=block",
-                "X-Content-Type-Options": "nosniff",
-                "x-download-options": "noopen",
-                "x-permitted-cross-domain-policies": "none",
-                "Referrer-Policy": "strict-origin-when-cross-origin",
-                "x-ep-request-uuid": "c20cf17f627455acf19558ff00466fe3",
-                "Cache-Control": "no-store, no-cache",
-                "Pragma": "no-cache",
-                "ETag": "W/\"88b19e7c38eb45ecfa178df908710fd3\"",
-                "x-runtime": "0.194590",
-                "x-node": "bigweb4nuq",
-                "x-version-label": "easypost-202205052025-12b8594e25-master",
-                "x-backend": "easypost",
-                "x-proxied": "intlb1nuq fde591f008,extlb1nuq c51cdb8bf2",
-                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-            },
-            "Status": {
-                "Code": 200,
-                "Message": "OK"
-            }
-        }
+  {
+    "Duration": 335,
+    "RecordedAt": "2022-05-19T15:01:48.324866-06:00",
+    "Request": {
+      "Body": "",
+      "BodyContentType": "Text",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Authorization": "*****",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/5.0.16"
+      },
+      "Uri": "https://api.easypost.com/v2/events?page_size=5"
+    },
+    "Response": {
+      "Body": "{\"events\":[{\"description\":\"tracker.created\",\"id\":\"evt_e49c4d82d7b611ec9c631956b70f5e2f\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-19T21:01:46.111Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"batch.updated\",\"id\":\"evt_e0da3506d7b611ecb476097cb84c3500\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-19T21:01:39.805Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.created\",\"id\":\"evt_e08178d0d7b611ec961529b33e836a2a\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-19T21:01:39.224Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.created\",\"id\":\"evt_e02cdac8d7b611ec91e2253bf07cd0f7\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-19T21:01:38.669Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_e02841b6d7b611eca7ef7ba7c97c39ac\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-19T21:01:38.639Z\",\"mode\":\"test\",\"object\":\"Event\"}],\"has_more\":true}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "1116"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "169e51f66286b03cfe2ed9ed003e2a37",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"0485a29e8c249d7e6e3be1230b080b4b\"",
+        "x-runtime": "0.177695",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202205191856-f47f64ff93-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb2nuq 570dfcbc0a,extlb1nuq c51cdb8bf2",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
     }
+  }
 ]

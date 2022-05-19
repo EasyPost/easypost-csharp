@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.V2;
@@ -67,6 +68,8 @@ namespace EasyPost.Tests
 
             Batch batch = await CreateOneCallBuyBatch(client);
 
+            // Uncomment the following line if you need to re-record the cassette
+            // Thread.Sleep(5000); // Wait enough time for the batch to process buying the shipment
             await batch.Buy();
 
             Assert.IsInstanceOfType(batch, typeof(Batch));
@@ -112,10 +115,13 @@ namespace EasyPost.Tests
 
 
             Batch batch = await CreateOneCallBuyBatch(client);
+
+            // Uncomment the following line if you need to re-record the cassette
+            // Thread.Sleep(5000); // Wait enough time for the batch to process buying the shipment
             await batch.Buy();
 
             // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(2000); // Wait enough time for the batch to process
+            // Thread.Sleep(5000); // Wait enough time for the batch to process
 
             await batch.GenerateScanForm();
 
@@ -132,11 +138,11 @@ namespace EasyPost.Tests
             Batch batch = await CreateOneCallBuyBatch(client);
 
             // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(2000); // Wait enough time for the batch to process buying the shipment
+            // hread.Sleep(5000); // Wait enough time for the batch to process buying the shipment
             await batch.Buy();
 
             // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(2000); // Wait enough time for the batch to process
+            // Thread.Sleep(5000); // Wait enough time for the batch to process
 
             await batch.GenerateLabel("ZPL");
 
