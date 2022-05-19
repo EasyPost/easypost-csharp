@@ -118,6 +118,7 @@ namespace EasyPost.Tests
             Assert.AreEqual("IOSS", shipment.tax_identifiers[0].tax_id_type);
         }
 
+        [Ignore]
         [TestMethod]
         public async Task TestCreateWithIds()
         {
