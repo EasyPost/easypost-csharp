@@ -1,9 +1,10 @@
 [
   {
-    "Duration": 461,
-    "RecordedAt": "2022-05-05T17:10:52.302172-06:00",
+    "Duration": 284,
+    "RecordedAt": "2022-05-20T15:09:11.63379-06:00",
     "Request": {
-      "Body": "{\n  \"webhook\": {\n    \"url\": \"http://example.com\"\n  }\n}",
+      "Body": "{\"webhook\":{\"url\":\"http://example.com\"}}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
         "Content-Length": "40"
@@ -13,12 +14,13 @@
         "Accept": "application/json",
         "Authorization": "*****",
         "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+        "User-Agent": "*****"
       },
       "Uri": "https://api.easypost.com/v2/webhooks"
     },
     "Response": {
-      "Body": "{\n  \"id\": \"hook_9be6ccd2ccc811ecbe5767d11377cd49\",\n  \"object\": \"Webhook\",\n  \"mode\": \"test\",\n  \"url\": \"http://example.com\",\n  \"created_at\": \"2022-05-05T23:10:52Z\",\n  \"disabled_at\": null\n}",
+      "Body": "{\"id\":\"hook_1883810ed88111ec88216d828b60212a\",\"object\":\"Webhook\",\"mode\":\"test\",\"url\":\"http://example.com\",\"created_at\":\"2022-05-20T21:09:12Z\",\"disabled_at\":null}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
@@ -32,15 +34,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "844d31c56274597cf6d6a55a00452c99",
+        "x-ep-request-uuid": "9b422d7262880377e3b0be840027a4bf",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"014c2ec82874379de2266dd9e209b318\"",
-        "x-runtime": "0.117911",
-        "x-node": "bigweb6nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "ETag": "W/\"d26c0770fbf37247f5f921c36dac3bb5\"",
+        "x-runtime": "0.136452",
+        "x-node": "bigweb7nuq",
+        "x-version-label": "easypost-202205191856-f47f64ff93-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq fde591f008,extlb2nuq c51cdb8bf2",
+        "x-canary": "direct",
+        "x-proxied": "intlb2nuq 570dfcbc0a,extlb2nuq c51cdb8bf2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -50,22 +53,24 @@
     }
   },
   {
-    "Duration": 184,
-    "RecordedAt": "2022-05-05T17:10:52.667302-06:00",
+    "Duration": 176,
+    "RecordedAt": "2022-05-20T15:09:11.830288-06:00",
     "Request": {
       "Body": "",
+      "BodyContentType": "Text",
       "ContentHeaders": {},
       "Method": "GET",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "*****",
         "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+        "User-Agent": "*****"
       },
-      "Uri": "https://api.easypost.com/v2/webhooks/hook_9be6ccd2ccc811ecbe5767d11377cd49"
+      "Uri": "https://api.easypost.com/v2/webhooks/hook_1883810ed88111ec88216d828b60212a"
     },
     "Response": {
-      "Body": "{\n  \"id\": \"hook_9be6ccd2ccc811ecbe5767d11377cd49\",\n  \"object\": \"Webhook\",\n  \"mode\": \"test\",\n  \"url\": \"http://example.com\",\n  \"created_at\": \"2022-05-05T23:10:52Z\",\n  \"disabled_at\": null\n}",
+      "Body": "{\"id\":\"hook_1883810ed88111ec88216d828b60212a\",\"object\":\"Webhook\",\"mode\":\"test\",\"url\":\"http://example.com\",\"created_at\":\"2022-05-20T21:09:12Z\",\"disabled_at\":null}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
@@ -79,16 +84,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "844d31c66274597cf1ba126800452cbd",
+        "x-ep-request-uuid": "9b422d7462880377e3ae70180027a4d2",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"014c2ec82874379de2266dd9e209b318\"",
-        "x-runtime": "0.023316",
-        "x-node": "bigweb7nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "ETag": "W/\"d26c0770fbf37247f5f921c36dac3bb5\"",
+        "x-runtime": "0.029223",
+        "x-node": "bigweb4nuq",
+        "x-version-label": "easypost-202205191856-f47f64ff93-master",
         "x-backend": "easypost",
-        "x-canary": "direct",
-        "x-proxied": "intlb2nuq fde591f008,extlb2nuq c51cdb8bf2",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb2nuq c51cdb8bf2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -98,22 +102,24 @@
     }
   },
   {
-    "Duration": 438,
-    "RecordedAt": "2022-05-05T17:10:53.120908-06:00",
+    "Duration": 529,
+    "RecordedAt": "2022-05-20T15:09:12.373741-06:00",
     "Request": {
       "Body": "",
+      "BodyContentType": "Text",
       "ContentHeaders": {},
       "Method": "DELETE",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "*****",
         "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+        "User-Agent": "*****"
       },
-      "Uri": "https://api.easypost.com/v2/webhooks/hook_9be6ccd2ccc811ecbe5767d11377cd49"
+      "Uri": "https://api.easypost.com/v2/webhooks/hook_1883810ed88111ec88216d828b60212a"
     },
     "Response": {
       "Body": "{}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
@@ -127,15 +133,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "844d31cb6274597cf195edc300452cc8",
+        "x-ep-request-uuid": "9b422d7162880378e3acc5b20027a4db",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
         "ETag": "W/\"44136fa355b3678a1146ad16f7e8649e\"",
-        "x-runtime": "0.297758",
-        "x-node": "bigweb5nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "x-runtime": "0.314979",
+        "x-node": "bigweb9nuq",
+        "x-version-label": "easypost-202205191856-f47f64ff93-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq fde591f008,extlb2nuq c51cdb8bf2",
+        "x-proxied": "intlb2nuq 570dfcbc0a,extlb2nuq c51cdb8bf2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

@@ -1,9 +1,10 @@
 [
   {
-    "Duration": 273,
-    "RecordedAt": "2022-05-05T16:53:30.957993-06:00",
+    "Duration": 165,
+    "RecordedAt": "2022-05-20T15:22:30.382034-06:00",
     "Request": {
-      "Body": "{\n  \"customs_item\": {\n    \"description\": \"Sweet shirts\",\n    \"quantity\": 2,\n    \"weight\": 11,\n    \"value\": 23.0,\n    \"hs_tariff_number\": 654321,\n    \"origin_country\": \"US\"\n  }\n}",
+      "Body": "{\"customs_item\":{\"description\":\"Sweet shirts\",\"quantity\":2,\"weight\":11,\"value\":23.0,\"hs_tariff_number\":654321,\"origin_country\":\"US\"}}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
         "Content-Length": "133"
@@ -13,12 +14,13 @@
         "Accept": "application/json",
         "Authorization": "*****",
         "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/3.1.24"
+        "User-Agent": "*****"
       },
       "Uri": "https://api.easypost.com/v2/customs_items"
     },
     "Response": {
-      "Body": "{\n  \"id\": \"cstitem_39c62913dafa4b43a6b0d11ec12f2dd1\",\n  \"object\": \"CustomsItem\",\n  \"created_at\": \"2022-05-05T22:53:31Z\",\n  \"updated_at\": \"2022-05-05T22:53:31Z\",\n  \"description\": \"Sweet shirts\",\n  \"hs_tariff_number\": \"654321\",\n  \"origin_country\": \"US\",\n  \"quantity\": 2,\n  \"value\": \"23.0\",\n  \"weight\": 11.0,\n  \"code\": null,\n  \"mode\": \"test\",\n  \"manufacturer\": null,\n  \"currency\": null,\n  \"eccn\": null,\n  \"printed_commodity_identifier\": null\n}",
+      "Body": "{\"id\":\"cstitem_1df65d6ed5e44aa586de8ee45618c197\",\"object\":\"CustomsItem\",\"created_at\":\"2022-05-20T21:22:30Z\",\"updated_at\":\"2022-05-20T21:22:30Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
@@ -32,16 +34,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "c20cf1826274556bf1b8f540004660b6",
+        "x-ep-request-uuid": "ce62d3af62880696e39ab191002a4309",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "Location": "/api/v2/customs_items/cstitem_39c62913dafa4b43a6b0d11ec12f2dd1",
-        "ETag": "W/\"f3b1cb4c52e5ff86f57bfe4e77ca8e2d\"",
-        "x-runtime": "0.026246",
-        "x-node": "bigweb9nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "Location": "/api/v2/customs_items/cstitem_1df65d6ed5e44aa586de8ee45618c197",
+        "ETag": "W/\"880a0e5f3da8072ef5c167607cab6b52\"",
+        "x-runtime": "0.024440",
+        "x-node": "bigweb6nuq",
+        "x-version-label": "easypost-202205191856-f47f64ff93-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq fde591f008,extlb1nuq c51cdb8bf2",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb1nuq c51cdb8bf2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

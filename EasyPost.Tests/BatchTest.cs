@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -130,10 +131,14 @@ namespace EasyPost.Tests
 
 
             Batch batch = await CreateOneCallBuyBatch();
+
+            // Uncomment the following line if you need to re-record the cassette
+            // Thread.Sleep(10000); // Wait enough time to process
+
             await batch.Buy();
 
             // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(2000); // Wait enough time for the batch to process
+            // Thread.Sleep(10000); // Wait enough time to process
 
             await batch.GenerateScanForm();
 
@@ -174,11 +179,12 @@ namespace EasyPost.Tests
             Batch batch = await CreateOneCallBuyBatch();
 
             // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(2000); // Wait enough time for the batch to process buying the shipment
+            // Thread.Sleep(10000); // Wait enough time to process
+
             await batch.Buy();
 
             // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(2000); // Wait enough time for the batch to process
+            // Thread.Sleep(10000); // Wait enough time to process
 
             await batch.GenerateLabel("ZPL");
 

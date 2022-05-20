@@ -1,9 +1,10 @@
 [
   {
-    "Duration": 257,
-    "RecordedAt": "2022-05-05T16:54:11.444539-06:00",
+    "Duration": 171,
+    "RecordedAt": "2022-05-20T15:10:14.181085-06:00",
     "Request": {
-      "Body": "{\n  \"shipment\": {}\n}",
+      "Body": "{\"shipment\":{}}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
         "Content-Length": "15"
@@ -13,12 +14,13 @@
         "Accept": "application/json",
         "Authorization": "*****",
         "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/6.0.4"
+        "User-Agent": "*****"
       },
       "Uri": "https://api.easypost.com/v2/shipments"
     },
     "Response": {
-      "Body": "{\n  \"error\": {\n    \"code\": \"SHIPMENT.INVALID_PARAMS\",\n    \"message\": \"Unable to create shipment, one or more parameters were invalid.\",\n    \"errors\": [\n      {\n        \"to_address\": \"Required and missing.\"\n      },\n      {\n        \"from_address\": \"Required and missing.\"\n      }\n    ]\n  }\n}",
+      "Body": "{\"error\":{\"code\":\"SHIPMENT.INVALID_PARAMS\",\"message\":\"Unable to create shipment, one or more parameters were invalid.\",\"errors\":[{\"to_address\":\"Required and missing.\"},{\"from_address\":\"Required and missing.\"}]}}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
@@ -32,14 +34,14 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "c20cf18362745593f1cf6767004669fc",
+        "x-ep-request-uuid": "9b422d73628803b6e3c019df0027b2fa",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "x-runtime": "0.018663",
+        "x-runtime": "0.016653",
         "x-node": "bigweb3nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "x-version-label": "easypost-202205191856-f47f64ff93-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq fde591f008,extlb1nuq c51cdb8bf2",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb2nuq c51cdb8bf2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

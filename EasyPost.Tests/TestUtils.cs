@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 using EasyVCR;
@@ -10,6 +11,33 @@ namespace EasyPost.Tests
         private const string ApiKeyFailedToPull = "couldnotpullapikey";
 
         private const string CassettesFolder = "cassettes";
+
+        private static readonly List<string> HeaderCensors = new List<string>
+        {
+            "Authorization",
+            "User-Agent",
+            "X-Client-User-Agent"
+        };
+
+        private static readonly List<string> QueryCensors = new List<string>
+        {
+            "card[number]",
+            "card[cvc]"
+        };
+
+        private static readonly List<string> BodyCensors = new List<string>
+        {
+            "api_keys",
+            "children",
+            "client_ip",
+            "credentials",
+            "email",
+            "key",
+            "keys",
+            "phone_number",
+            "phone",
+            "test_credentials"
+        };
 
         public enum ApiKey
         {
@@ -49,10 +77,24 @@ namespace EasyPost.Tests
 
             public VCR(string testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
             {
+                Censors censors = new Censors("<REDACTED>");
+                foreach (string key in HeaderCensors)
+                {
+                    censors.HideHeader(key);
+                }
+                foreach (string key in QueryCensors)
+                {
+                    censors.HideQueryParameter(key);
+                }
+                foreach (string key in BodyCensors)
+                {
+                    censors.HideBodyParameter(key);
+                }
+
                 AdvancedSettings advancedSettings = new AdvancedSettings
                 {
                     MatchRules = MatchRules.DefaultStrict,
-                    Censors = Censors.DefaultSensitive,
+                    Censors = censors,
                     SimulateDelay = false,
                     ManualDelay = 0,
                 };
