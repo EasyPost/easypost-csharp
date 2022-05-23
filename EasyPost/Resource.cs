@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost
 {
-    public class Resource : IResource
+    public class Resource
     {
         public override bool Equals(object obj)
         {
@@ -31,6 +31,7 @@ namespace EasyPost
         ///     Get the dictionary representation of this object instance.
         /// </summary>
         /// <returns>A key-value dictionary representation of this object instance's attributes.</returns>
+        [Obsolete("This method is not intended for end-user use, and will be made inaccessible in a future update.")]
         public Dictionary<string, object?> AsDictionary() =>
             GetType()
                 .GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
@@ -40,6 +41,7 @@ namespace EasyPost
         ///     Get the JSON representation of this object instance.
         /// </summary>
         /// <returns>A JSON string representation of this object instance's attributes</returns>
+        [Obsolete("This method is not intended for end-user use, and will be made inaccessible in a future update.")]
         public string? AsJson()
         {
             return JsonSerialization.ConvertObjectToJson(this);
@@ -50,6 +52,7 @@ namespace EasyPost
         ///     Adds properties from the input object instance into this object instance.
         /// </summary>
         /// <param name="source">Object instance to extract properties from to merge into this object instance.</param>
+        [Obsolete("This method is not intended for end-user use, and will be made inaccessible in a future update.")]
         public void Merge(object source)
         {
             foreach (PropertyInfo property in source.GetType().GetProperties())
@@ -64,11 +67,11 @@ namespace EasyPost
 
             switch (value)
             {
-                case IResource resource:
+                case Resource resource:
                     return resource.AsDictionary();
-                case IEnumerable<IResource> enumerable:
+                case IEnumerable<Resource> enumerable:
                     List<Dictionary<string, object?>> values = new List<Dictionary<string, object?>>();
-                    foreach (IResource resource in enumerable)
+                    foreach (Resource resource in enumerable)
                     {
                         values.Add(resource.AsDictionary());
                     }
@@ -84,6 +87,7 @@ namespace EasyPost
         /// <param name="json">The JSON to deserialize.</param>
         /// <typeparam name="T">The type of object to generate.</typeparam>
         /// <returns>An instance of a T type object.</returns>
+        [Obsolete("This method is not intended for end-user use, and will be made inaccessible in a future update.")]
         public static T Load<T>(string json) where T : Resource => JsonSerialization.ConvertJsonToObject<T>(json);
 
         /// <summary>
@@ -92,6 +96,7 @@ namespace EasyPost
         /// <param name="attributes">A dictionary of key-value pairs of attributes for the object instance.</param>
         /// <typeparam name="T">The type of object to create.</typeparam>
         /// <returns>An instance of a T type object.</returns>
+        [Obsolete("This method is not intended for end-user use, and will be made inaccessible in a future update.")]
         public static T LoadFromDictionary<T>(Dictionary<string, object> attributes) where T : Resource
         {
             Type type = typeof(T);
@@ -104,7 +109,7 @@ namespace EasyPost
                     continue;
                 }
 
-                if (property.PropertyType.GetInterfaces().Contains(typeof(IResource)))
+                if (property.PropertyType.GetInterfaces().Contains(typeof(Resource)))
                 {
                     MethodInfo method = property.PropertyType
                         .GetMethod("LoadFromDictionary",
@@ -116,7 +121,7 @@ namespace EasyPost
                         attribute
                     }), null);
                 }
-                else if (typeof(IEnumerable<IResource>).IsAssignableFrom(property.PropertyType))
+                else if (typeof(IEnumerable<Resource>).IsAssignableFrom(property.PropertyType))
                 {
                     property.SetValue(resource, Activator.CreateInstance(property.PropertyType), null);
 
