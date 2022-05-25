@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 327,
-    "RecordedAt": "2022-05-20T15:22:32.826227-06:00",
+    "Duration": 350,
+    "RecordedAt": "2022-05-25T14:17:59.2714-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -9,19 +9,19 @@
       "Method": "GET",
       "RequestHeaders": {
         "Accept": "application/json",
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
-        "User-Agent": "*****"
+        "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/events?page_size=5"
     },
     "Response": {
-      "Body": "{\"events\":[{\"description\":\"tracker.updated\",\"id\":\"evt_f5cdd716d88211ecb7d225c16dc8fe1a\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-20T21:22:32.289Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_f52fdd72d88211ec8aa40f79735f9be5\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-20T21:22:31.254Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.created\",\"id\":\"evt_f3c181cad88211ecb4f12722a2ab4314\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-20T21:22:28.853Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_f1a6bfa4d88211ec9e49693a2de952ad\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-20T21:22:25.322Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_f1937890d88211ecb97a1b10d1e1817d\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-20T21:22:25.196Z\",\"mode\":\"test\",\"object\":\"Event\"}],\"has_more\":true}",
+      "Body": "{\"events\":[{\"description\":\"tracker.updated\",\"id\":\"evt_c4dd9edcdc6711ec8d1b0be4fd463f86\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-25T20:17:58.424Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_c3fce054dc6711ecaee801708c45787f\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-25T20:17:56.951Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"batch.updated\",\"id\":\"evt_c2256832dc6711ecbff3534552c3195a\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-25T20:17:53.861Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_c2190600dc6711ec83720b63cc0e924d\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-25T20:17:53.78Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_c1f81684dc6711ecbb9431b66aee860b\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-25T20:17:53.564Z\",\"mode\":\"test\",\"object\":\"Event\"}],\"has_more\":true}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "1118"
+        "Content-Length": "1116"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -31,15 +31,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "ce62d3af62880698e3af047d002a4398",
+        "x-ep-request-uuid": "dc458af8628e8ef7e3d20c5f0029ea3b",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"86a677b87a1086f91bc22ea0c9598ab5\"",
-        "x-runtime": "0.168682",
-        "x-node": "bigweb6nuq",
-        "x-version-label": "easypost-202205191856-f47f64ff93-master",
+        "ETag": "W/\"d19bd5a57b3ff82abe160cd5f08d8f45\"",
+        "x-runtime": "0.195132",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202205241740-79aa1a2e75-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 570dfcbc0a,extlb1nuq c51cdb8bf2",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb2nuq fc4d5d217f",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

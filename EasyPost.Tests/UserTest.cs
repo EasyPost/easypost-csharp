@@ -7,12 +7,32 @@ namespace EasyPost.Tests
     [TestClass]
     public class UserTest
     {
+        private static string _userId = null;
+
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
         public void Initialize()
         {
             _vcr = new TestUtils.VCR("user", TestUtils.ApiKey.Production);
+        }
+
+        [TestCleanup]
+        public async Task Cleanup()
+        {
+            if (_userId != null)
+            {
+                try
+                {
+                    User retrievedUser = await User.Retrieve(_userId);
+                    await retrievedUser.Delete();
+                    _userId = null;
+                }
+                catch
+                {
+                    // in case we try to delete something that's already been deleted
+                }
+            }
         }
 
         private static async Task<User> RetrieveMe()
@@ -22,16 +42,17 @@ namespace EasyPost.Tests
 
         private static async Task<User> CreateUser()
         {
-            return await User.Create(new Dictionary<string, object>
+            User user = await User.Create(new Dictionary<string, object>
             {
                 {
                     "name", "Test User"
                 }
             });
+            _userId = user.id; // trigger deletion after test
+            return user;
         }
 
         // This endpoint returns the child user keys in plain text, do not run this test.
-        [Ignore]
         [TestMethod]
         public async Task TestCreate()
         {
@@ -77,62 +98,60 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("update");
 
+            User user = await CreateUser();
 
-            User user = await RetrieveMe();
-
-            string testPhone = "5555555555";
+            string testName = "New Name";
 
             Dictionary<string, object> userDict = new Dictionary<string, object>
             {
                 {
-                    "phone_number", testPhone
+                    "name", testName
                 }
             };
             await user.Update(userDict);
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual(testPhone, user.phone_number);
+            Assert.AreEqual(testName, user.name);
         }
 
-        // Due to our inability to create child users securely, we must also skip deleting them as we cannot replace the deleted ones easily.
-        [Ignore]
         [TestMethod]
         public async Task TestDelete()
         {
             _vcr.SetUpTest("delete");
 
-
             User user = await CreateUser();
 
             await user.Delete();
+
+            _userId = null; // skip deletion cleanup
         }
 
-        // API keys are returned as plaintext, do not run this test.
         [Ignore]
         [TestMethod]
+        // retrieve me is not returning a list of all api keys
         public async Task TestAllApiKeys()
         {
             _vcr.SetUpTest("all_api_keys");
 
-
             User user = await RetrieveMe();
 
             // TODO: User doesn't have a .all_api_keys() method
-            List<ApiKey> apiKeys = user.api_keys;
+            // API keys will be censored, so we'll just check for the existence of the `children` element
+            List<User> children = user.children;
+            Assert.IsNotNull(children);
         }
 
-        // API keys are returned as plaintext, do not run this test.
-        [Ignore]
         [TestMethod]
         public async Task TestApiKeys()
         {
             _vcr.SetUpTest("api_keys");
 
-
             User user = await RetrieveMe();
 
-            List<ApiKey> apiKeys = user.api_keys;
+            // API keys will be censored, so we'll just check for the existence of the `children` element
+            List<User> children = user.children;
+            Assert.IsNotNull(children);
         }
 
         [TestMethod]
@@ -140,8 +159,7 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("update_brand");
 
-
-            User user = await RetrieveMe();
+            User user = await CreateUser();
 
             string color = "#123456";
             Brand brand = await user.UpdateBrand(new Dictionary<string, object>

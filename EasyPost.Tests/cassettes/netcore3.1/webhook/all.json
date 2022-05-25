@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 162,
-    "RecordedAt": "2022-05-20T15:27:40.508025-06:00",
+    "Duration": 167,
+    "RecordedAt": "2022-05-25T14:19:39.005882-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -9,9 +9,9 @@
       "Method": "GET",
       "RequestHeaders": {
         "Accept": "application/json",
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
-        "User-Agent": "*****"
+        "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/webhooks"
     },
@@ -31,15 +31,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "ce62d3b3628807cce38bdb14002a984d",
+        "x-ep-request-uuid": "dc458af3628e8f5be377b777002a08ce",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
         "ETag": "W/\"d03ff1e2df7ad33907b2086ec5f9e0a9\"",
-        "x-runtime": "0.021513",
-        "x-node": "bigweb4nuq",
-        "x-version-label": "easypost-202205191856-f47f64ff93-master",
+        "x-runtime": "0.025871",
+        "x-node": "bigweb3nuq",
+        "x-version-label": "easypost-202205241740-79aa1a2e75-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 570dfcbc0a,extlb1nuq c51cdb8bf2",
+        "x-proxied": "intlb2nuq 570dfcbc0a,extlb2nuq fc4d5d217f",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

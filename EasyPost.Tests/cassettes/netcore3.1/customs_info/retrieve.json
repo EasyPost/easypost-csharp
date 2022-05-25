@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 260,
-    "RecordedAt": "2022-05-20T15:22:29.988981-06:00",
+    "Duration": 184,
+    "RecordedAt": "2022-05-25T14:17:56.712007-06:00",
     "Request": {
       "Body": "{\"customs_info\":{\"eel_pfc\":\"NOEEI 30.37(a)\",\"customs_certify\":true,\"customs_signer\":\"Dr. Steve Brule\",\"contents_type\":\"merchandise\",\"contents_explanation\":\"\",\"restriction_type\":\"none\",\"non_delivery_option\":\"return\",\"customs_items\":[{\"description\":\"Sweet shirts\",\"quantity\":2,\"weight\":11,\"value\":23.0,\"hs_tariff_number\":654321,\"origin_country\":\"US\"}]}}",
       "BodyContentType": "Json",
@@ -12,14 +12,14 @@
       "Method": "POST",
       "RequestHeaders": {
         "Accept": "application/json",
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
-        "User-Agent": "*****"
+        "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/customs_infos"
     },
     "Response": {
-      "Body": "{\"id\":\"cstinfo_1bead44af4a94949a1b8a49fc437cece\",\"object\":\"CustomsInfo\",\"created_at\":\"2022-05-20T21:22:29Z\",\"updated_at\":\"2022-05-20T21:22:29Z\",\"contents_explanation\":\"\",\"contents_type\":\"merchandise\",\"customs_certify\":true,\"customs_signer\":\"Dr. Steve Brule\",\"eel_pfc\":\"NOEEI 30.37(a)\",\"non_delivery_option\":\"return\",\"restriction_comments\":null,\"restriction_type\":\"none\",\"mode\":\"test\",\"declaration\":null,\"customs_items\":[{\"id\":\"cstitem_19968d85301e479f841b2f79a2fb2389\",\"object\":\"CustomsItem\",\"created_at\":\"2022-05-20T21:22:29Z\",\"updated_at\":\"2022-05-20T21:22:29Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}]}",
+      "Body": "{\"id\":\"cstinfo_3ecbd36ee29344d89a9b29e45ae47f55\",\"object\":\"CustomsInfo\",\"created_at\":\"2022-05-25T20:17:56Z\",\"updated_at\":\"2022-05-25T20:17:56Z\",\"contents_explanation\":\"\",\"contents_type\":\"merchandise\",\"customs_certify\":true,\"customs_signer\":\"Dr. Steve Brule\",\"eel_pfc\":\"NOEEI 30.37(a)\",\"non_delivery_option\":\"return\",\"restriction_comments\":null,\"restriction_type\":\"none\",\"mode\":\"test\",\"declaration\":null,\"customs_items\":[{\"id\":\"cstitem_89b7a1a5972445d2b2f7afbc01018ac3\",\"object\":\"CustomsItem\",\"created_at\":\"2022-05-25T20:17:56Z\",\"updated_at\":\"2022-05-25T20:17:56Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}]}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -34,17 +34,17 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "ce62d3b562880695e3892ed6002a42e6",
+        "x-ep-request-uuid": "dc458af3628e8ef4fe2e344f0029e991",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "Location": "/api/v2/customs_infos/cstinfo_1bead44af4a94949a1b8a49fc437cece",
-        "ETag": "W/\"d1d1314583e82f816fa1ba735fcb7179\"",
-        "x-runtime": "0.119523",
+        "Location": "/api/v2/customs_infos/cstinfo_3ecbd36ee29344d89a9b29e45ae47f55",
+        "ETag": "W/\"c55c82ff7d91242b8099e7a6f2bf7b0c\"",
+        "x-runtime": "0.030560",
         "x-node": "bigweb7nuq",
-        "x-version-label": "easypost-202205191856-f47f64ff93-master",
+        "x-version-label": "easypost-202205241740-79aa1a2e75-master",
         "x-backend": "easypost",
         "x-canary": "direct",
-        "x-proxied": "intlb2nuq 570dfcbc0a,extlb1nuq c51cdb8bf2",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb2nuq fc4d5d217f",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -54,8 +54,8 @@
     }
   },
   {
-    "Duration": 172,
-    "RecordedAt": "2022-05-20T15:22:30.176828-06:00",
+    "Duration": 168,
+    "RecordedAt": "2022-05-25T14:17:56.89509-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -63,14 +63,14 @@
       "Method": "GET",
       "RequestHeaders": {
         "Accept": "application/json",
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
-        "User-Agent": "*****"
+        "User-Agent": "<REDACTED>"
       },
-      "Uri": "https://api.easypost.com/v2/customs_infos/cstinfo_1bead44af4a94949a1b8a49fc437cece"
+      "Uri": "https://api.easypost.com/v2/customs_infos/cstinfo_3ecbd36ee29344d89a9b29e45ae47f55"
     },
     "Response": {
-      "Body": "{\"id\":\"cstinfo_1bead44af4a94949a1b8a49fc437cece\",\"object\":\"CustomsInfo\",\"created_at\":\"2022-05-20T21:22:29Z\",\"updated_at\":\"2022-05-20T21:22:29Z\",\"contents_explanation\":\"\",\"contents_type\":\"merchandise\",\"customs_certify\":true,\"customs_signer\":\"Dr. Steve Brule\",\"eel_pfc\":\"NOEEI 30.37(a)\",\"non_delivery_option\":\"return\",\"restriction_comments\":null,\"restriction_type\":\"none\",\"mode\":\"test\",\"declaration\":null,\"customs_items\":[{\"id\":\"cstitem_19968d85301e479f841b2f79a2fb2389\",\"object\":\"CustomsItem\",\"created_at\":\"2022-05-20T21:22:29Z\",\"updated_at\":\"2022-05-20T21:22:29Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}]}",
+      "Body": "{\"id\":\"cstinfo_3ecbd36ee29344d89a9b29e45ae47f55\",\"object\":\"CustomsInfo\",\"created_at\":\"2022-05-25T20:17:56Z\",\"updated_at\":\"2022-05-25T20:17:56Z\",\"contents_explanation\":\"\",\"contents_type\":\"merchandise\",\"customs_certify\":true,\"customs_signer\":\"Dr. Steve Brule\",\"eel_pfc\":\"NOEEI 30.37(a)\",\"non_delivery_option\":\"return\",\"restriction_comments\":null,\"restriction_type\":\"none\",\"mode\":\"test\",\"declaration\":null,\"customs_items\":[{\"id\":\"cstitem_89b7a1a5972445d2b2f7afbc01018ac3\",\"object\":\"CustomsItem\",\"created_at\":\"2022-05-25T20:17:56Z\",\"updated_at\":\"2022-05-25T20:17:56Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}]}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -85,16 +85,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "ce62d3b362880696e3783adb002a42fe",
+        "x-ep-request-uuid": "dc458af9628e8ef5e3c2c1fe0029e99e",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"d1d1314583e82f816fa1ba735fcb7179\"",
-        "x-runtime": "0.023690",
+        "ETag": "W/\"c55c82ff7d91242b8099e7a6f2bf7b0c\"",
+        "x-runtime": "0.022346",
         "x-node": "bigweb7nuq",
-        "x-version-label": "easypost-202205191856-f47f64ff93-master",
+        "x-version-label": "easypost-202205241740-79aa1a2e75-master",
         "x-backend": "easypost",
         "x-canary": "direct",
-        "x-proxied": "intlb1nuq 570dfcbc0a,extlb1nuq c51cdb8bf2",
+        "x-proxied": "intlb2nuq 570dfcbc0a,extlb2nuq fc4d5d217f",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

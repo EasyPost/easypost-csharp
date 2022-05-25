@@ -1,9 +1,9 @@
 [
   {
-    "Duration": 205,
-    "RecordedAt": "2022-05-20T15:15:12.976011-06:00",
+    "Duration": 184,
+    "RecordedAt": "2022-05-25T14:14:28.673914-06:00",
     "Request": {
-      "Body": "{\"verify\":[true],\"address\":{\"street1\":\"417 montgomery street\",\"street2\":\"FL 5\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94104\",\"country\":\"US\",\"company\":\"EasyPost\",\"phone\":\"415-123-4567\"}}",
+      "Body": "{\"verify\":[true],\"address\":{\"street1\":\"417 montgomery street\",\"street2\":\"FL 5\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94104\",\"country\":\"US\",\"company\":\"EasyPost\",\"phone\":\"<REDACTED>\"}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
@@ -12,14 +12,14 @@
       "Method": "POST",
       "RequestHeaders": {
         "Accept": "application/json",
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
-        "User-Agent": "*****"
+        "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/addresses"
     },
     "Response": {
-      "Body": "{\"id\":\"adr_eff364b4d88111ecacf6ac1f6bc7bdc6\",\"object\":\"Address\",\"created_at\":\"2022-05-20T15:15:12-06:00\",\"updated_at\":\"2022-05-20T15:15:12-06:00\",\"name\":null,\"company\":\"EASYPOST\",\"street1\":\"417 MONTGOMERY ST FL 5\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94104-1129\",\"country\":\"US\",\"phone\":\"*****\",\"email\":\"*****\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":{\"latitude\":37.79342,\"longitude\":-122.40288,\"time_zone\":\"America/Los_Angeles\"}}}}",
+      "Body": "{\"id\":\"adr_47f38351dc6711ecbc1cac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2022-05-25T14:14:28-06:00\",\"updated_at\":\"2022-05-25T14:14:28-06:00\",\"name\":null,\"company\":\"EASYPOST\",\"street1\":\"417 MONTGOMERY ST FL 5\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94104-1129\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":{\"latitude\":37.79342,\"longitude\":-122.40288,\"time_zone\":\"America/Los_Angeles\"}}}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -34,16 +34,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "9b422d70628804e0e38a4b5c0027f40f",
+        "x-ep-request-uuid": "dc458af8628e8e24e39995790029af3f",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "Location": "/api/v2/addresses/adr_eff364b4d88111ecacf6ac1f6bc7bdc6",
-        "ETag": "W/\"987e62f6013a5c0170d01bae77082ad1\"",
-        "x-runtime": "0.045487",
-        "x-node": "bigweb4nuq",
-        "x-version-label": "easypost-202205191856-f47f64ff93-master",
+        "Location": "/api/v2/addresses/adr_47f38351dc6711ecbc1cac1f6bc72124",
+        "ETag": "W/\"3f6f9a08a89b12af8ce949474f126ba8\"",
+        "x-runtime": "0.041870",
+        "x-node": "bigweb3nuq",
+        "x-version-label": "easypost-202205241740-79aa1a2e75-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 570dfcbc0a,extlb2nuq c51cdb8bf2",
+        "x-proxied": "intlb2nuq 570dfcbc0a,extlb2nuq fc4d5d217f",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

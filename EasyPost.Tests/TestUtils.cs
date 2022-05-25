@@ -78,18 +78,9 @@ namespace EasyPost.Tests
             public VCR(string testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
             {
                 Censors censors = new Censors("<REDACTED>");
-                foreach (string key in HeaderCensors)
-                {
-                    censors.HideHeader(key);
-                }
-                foreach (string key in QueryCensors)
-                {
-                    censors.HideQueryParameter(key);
-                }
-                foreach (string key in BodyCensors)
-                {
-                    censors.HideBodyParameter(key);
-                }
+                censors.HideHeaders(HeaderCensors);
+                censors.HideQueryParameters(QueryCensors);
+                censors.HideBodyParameters(BodyCensors);
 
                 AdvancedSettings advancedSettings = new AdvancedSettings
                 {

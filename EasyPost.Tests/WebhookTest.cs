@@ -12,7 +12,7 @@ namespace EasyPost.Tests
     [TestClass]
     public class WebhookTest
     {
-        private string _webhookId = null;
+        private static string _webhookId = null;
 
         private TestUtils.VCR _vcr;
 
@@ -35,18 +35,21 @@ namespace EasyPost.Tests
                 }
                 catch
                 {
+                    // in case we try to delete something that's already been deleted
                 }
             }
         }
 
         private static async Task<Webhook> CreateBasicWebhook(string url)
         {
-            return await Webhook.Create(new Dictionary<string, object>
+            Webhook webhook = await Webhook.Create(new Dictionary<string, object>
             {
                 {
                     "url", url
                 }
             });
+            _webhookId = webhook.id;  // trigger deletion after test
+            return webhook;
         }
 
         [TestMethod]
@@ -59,8 +62,6 @@ namespace EasyPost.Tests
             Assert.IsInstanceOfType(webhook, typeof(Webhook));
             Assert.IsTrue(webhook.id.StartsWith("hook_"));
             Assert.AreEqual(Fixture.WebhookUrl, webhook.url);
-
-            _webhookId = webhook.id; // trigger deletion
         }
 
         [TestMethod]
@@ -74,8 +75,6 @@ namespace EasyPost.Tests
 
             Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
             Assert.AreEqual(webhook, retrievedWebhook);
-
-            _webhookId = webhook.id; // trigger deletion
         }
 
         [TestMethod]
@@ -115,6 +114,8 @@ namespace EasyPost.Tests
 
             // This endpoint/method does not return anything, just make sure the request doesn't fail
             Assert.IsTrue(success);
+
+            _webhookId = null; // skip deletion cleanup
         }
     }
 }
