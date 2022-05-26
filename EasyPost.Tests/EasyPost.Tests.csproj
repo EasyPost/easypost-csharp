@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyVCR" Version="0.3.0" />
+    <PackageReference Include="EasyVCR" Version="0.3.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />
