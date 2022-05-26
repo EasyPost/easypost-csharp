@@ -189,7 +189,6 @@ namespace EasyPost.Tests
             Dictionary<string, object> shipmentData = Fixture.BasicShipment;
 
             shipmentData.Add("customs_info", new Dictionary<string, object>());
-            Assert.IsNotNull(shipmentData["customs_info"]);
             (shipmentData["customs_info"] as Dictionary<string, object>).Add("customs_items", new List<object>());
             shipmentData["options"] = null;
             shipmentData["tax_identifiers"] = null;

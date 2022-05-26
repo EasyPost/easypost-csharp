@@ -75,6 +75,11 @@ namespace EasyPost.Tests
             private readonly string _testCassettesFolder;
             private readonly EasyVCR.VCR _vcr;
 
+            internal bool IsRecording()
+            {
+                return _vcr.Mode == Mode.Record;
+            }
+
             public VCR(string testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
             {
                 Censors censors = new Censors("<REDACTED>");

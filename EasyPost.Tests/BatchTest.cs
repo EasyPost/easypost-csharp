@@ -132,13 +132,12 @@ namespace EasyPost.Tests
 
             Batch batch = await CreateOneCallBuyBatch();
 
-            // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(10000); // Wait enough time to process
-
             await batch.Buy();
 
-            // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(10000); // Wait enough time to process
+            if (_vcr.IsRecording())
+            {
+                Thread.Sleep(10000); // Wait enough time to process
+            }
 
             await batch.GenerateScanForm();
 
@@ -178,13 +177,12 @@ namespace EasyPost.Tests
 
             Batch batch = await CreateOneCallBuyBatch();
 
-            // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(10000); // Wait enough time to process
-
             await batch.Buy();
 
-            // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(10000); // Wait enough time to process
+            if (_vcr.IsRecording())
+            {
+                Thread.Sleep(10000); // Wait enough time to process
+            }
 
             await batch.GenerateLabel("ZPL");
 

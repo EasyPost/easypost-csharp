@@ -122,24 +122,21 @@ namespace EasyPost.Tests
 
             User user = await CreateUser();
 
-            await user.Delete();
+            bool success = await user.Delete();
+            Assert.IsTrue(success);
 
             _userId = null; // skip deletion cleanup
         }
 
-        [Ignore]
         [TestMethod]
-        // retrieve me is not returning a list of all api keys
         public async Task TestAllApiKeys()
         {
             _vcr.SetUpTest("all_api_keys");
 
-            User user = await RetrieveMe();
+            List<ApiKey> apiKeys = await ApiKey.All();
 
-            // TODO: User doesn't have a .all_api_keys() method
-            // API keys will be censored, so we'll just check for the existence of the `children` element
-            List<User> children = user.children;
-            Assert.IsNotNull(children);
+            // API keys will be censored, so we'll just check for the existence of the list
+            Assert.IsNotNull(apiKeys);
         }
 
         [TestMethod]

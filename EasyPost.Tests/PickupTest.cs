@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -54,16 +53,9 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("buy");
 
-            //use "TestCreate"
             Pickup pickup = await CreateBasicPickup();
 
-            // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(10000); // Wait enough time to process
-
             await pickup.Buy(Fixture.Usps, Fixture.PickupService);
-
-            // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(10000); // Wait enough time to process
 
             Assert.IsInstanceOfType(pickup, typeof(Pickup));
             Assert.IsTrue(pickup.id.StartsWith("pickup_"));
@@ -76,16 +68,9 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("cancel");
 
-            //use "TestCreate"
             Pickup pickup = await CreateBasicPickup();
 
-            // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(10000); // Wait enough time to process
-
             await pickup.Buy(Fixture.Usps, Fixture.PickupService);
-
-            // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(10000); // Wait enough time to process
 
             await pickup.Cancel();
 
