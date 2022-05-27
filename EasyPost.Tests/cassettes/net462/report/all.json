@@ -1,25 +1,27 @@
 [
   {
-    "Duration": 183,
-    "RecordedAt": "2022-05-09T14:00:10.856296-06:00",
+    "Duration": 170,
+    "RecordedAt": "2022-05-25T14:11:18.739972-06:00",
     "Request": {
       "Body": "",
+      "BodyContentType": "Text",
       "ContentHeaders": {},
       "Method": "GET",
       "RequestHeaders": {
         "Accept": "application/json",
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+        "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/reports/shipment?page_size=5"
     },
     "Response": {
-      "Body": "{\n  \"reports\": [\n    {\n      \"id\": \"shprep_b294659b39c44ebd9761ea7b42c0436f\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-09T20:00:10Z\",\n      \"updated_at\": \"2022-05-09T20:00:10Z\",\n      \"start_date\": \"2022-04-12\",\n      \"end_date\": \"2022-04-12\",\n      \"mode\": \"test\",\n      \"status\": \"new\",\n      \"url\": null,\n      \"url_expires_at\": null,\n      \"include_children\": false\n    },\n    {\n      \"id\": \"shprep_bf3d175d0ade4ba38a3bc14d7d353bb8\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-09T20:00:10Z\",\n      \"updated_at\": \"2022-05-09T20:00:10Z\",\n      \"start_date\": \"2022-04-12\",\n      \"end_date\": \"2022-04-12\",\n      \"mode\": \"test\",\n      \"status\": \"empty\",\n      \"url\": null,\n      \"url_expires_at\": null,\n      \"include_children\": false\n    },\n    {\n      \"id\": \"shprep_8a50deb000eb41a6b79e61d8e9645f64\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-09T20:00:10Z\",\n      \"updated_at\": \"2022-05-09T20:00:10Z\",\n      \"start_date\": \"2022-04-12\",\n      \"end_date\": \"2022-04-12\",\n      \"mode\": \"test\",\n      \"status\": \"empty\",\n      \"url\": null,\n      \"url_expires_at\": null,\n      \"include_children\": false\n    },\n    {\n      \"id\": \"shprep_4b2950967b46400e9277e5f46ecb07ed\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-09T20:00:09Z\",\n      \"updated_at\": \"2022-05-09T20:00:10Z\",\n      \"start_date\": \"2022-04-12\",\n      \"end_date\": \"2022-04-12\",\n      \"mode\": \"test\",\n      \"status\": \"empty\",\n      \"url\": null,\n      \"url_expires_at\": null,\n      \"include_children\": false\n    },\n    {\n      \"id\": \"shprep_9edbb15672d54abd9c935998c1fe75a7\",\n      \"object\": \"ShipmentReport\",\n      \"created_at\": \"2022-05-09T19:57:04Z\",\n      \"updated_at\": \"2022-05-09T19:57:04Z\",\n      \"start_date\": \"2022-04-12\",\n      \"end_date\": \"2022-04-12\",\n      \"mode\": \"test\",\n      \"status\": \"empty\",\n      \"url\": null,\n      \"url_expires_at\": null,\n      \"include_children\": false\n    }\n  ],\n  \"has_more\": true\n}",
+      "Body": "{\"reports\":[{\"id\":\"shprep_ca2018a8af4446a18c6eed378049c995\",\"object\":\"ShipmentReport\",\"created_at\":\"2022-05-25T20:11:18Z\",\"updated_at\":\"2022-05-25T20:11:18Z\",\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\",\"mode\":\"test\",\"status\":\"empty\",\"url\":null,\"url_expires_at\":null,\"include_children\":false},{\"id\":\"shprep_2056ca56ceb4476a9e067b6437149e1b\",\"object\":\"ShipmentReport\",\"created_at\":\"2022-05-25T20:11:18Z\",\"updated_at\":\"2022-05-25T20:11:18Z\",\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\",\"mode\":\"test\",\"status\":\"empty\",\"url\":null,\"url_expires_at\":null,\"include_children\":false},{\"id\":\"shprep_8d61f30e37c94fbb8ebffc446e8fe6fd\",\"object\":\"ShipmentReport\",\"created_at\":\"2022-05-25T20:11:18Z\",\"updated_at\":\"2022-05-25T20:11:18Z\",\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\",\"mode\":\"test\",\"status\":\"empty\",\"url\":null,\"url_expires_at\":null,\"include_children\":false},{\"id\":\"shprep_7bd95f0aebb24c1a81bd93b065d3c959\",\"object\":\"ShipmentReport\",\"created_at\":\"2022-05-25T20:11:17Z\",\"updated_at\":\"2022-05-25T20:11:18Z\",\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\",\"mode\":\"test\",\"status\":\"empty\",\"url\":null,\"url_expires_at\":null,\"include_children\":false},{\"id\":\"shprep_6c4e2037ebec486da16fbf36fe70161c\",\"object\":\"ShipmentReport\",\"created_at\":\"2022-05-25T19:55:54Z\",\"updated_at\":\"2022-05-25T19:55:54Z\",\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\",\"mode\":\"test\",\"status\":\"empty\",\"url\":null,\"url_expires_at\":null,\"include_children\":false}],\"has_more\":true}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "1457"
+        "Content-Length": "1459"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -29,16 +31,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "019379c0627972caf1966542004eb4fd",
+        "x-ep-request-uuid": "dc458af7628e8d66e379d3f80029765d",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"1c7d4a2fbd86a504cd6cfe078959715b\"",
-        "x-runtime": "0.034862",
-        "x-node": "bigweb7nuq",
-        "x-version-label": "easypost-202205091927-33319f932d-master",
+        "ETag": "W/\"9bedfdb1de36f4c2e481482756709782\"",
+        "x-runtime": "0.030968",
+        "x-node": "bigweb2nuq",
+        "x-version-label": "easypost-202205241740-79aa1a2e75-master",
         "x-backend": "easypost",
-        "x-canary": "direct",
-        "x-proxied": "intlb1nuq fde591f008,extlb1nuq c51cdb8bf2",
+        "x-proxied": "intlb2nuq 570dfcbc0a,extlb2nuq fc4d5d217f",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

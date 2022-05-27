@@ -12,7 +12,7 @@ namespace EasyPost.Tests
     [TestClass]
     public class WebhookTest
     {
-        private string _webhookId = null;
+        private static string _webhookId = null;
 
         private TestUtils.VCR _vcr;
 
@@ -35,18 +35,21 @@ namespace EasyPost.Tests
                 }
                 catch
                 {
+                    // in case we try to delete something that's already been deleted
                 }
             }
         }
 
-        private static async Task<Webhook> CreateBasicWebhook(string url)
+        private static async Task<Webhook> CreateBasicWebhook()
         {
-            return await Webhook.Create(new Dictionary<string, object>
+            Webhook webhook = await Webhook.Create(new Dictionary<string, object>
             {
                 {
-                    "url", url
+                    "url", Fixture.WebhookUrl
                 }
             });
+            _webhookId = webhook.id;  // trigger deletion after test
+            return webhook;
         }
 
         [TestMethod]
@@ -54,13 +57,11 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("create");
 
-            Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl);
+            Webhook webhook = await CreateBasicWebhook();
 
             Assert.IsInstanceOfType(webhook, typeof(Webhook));
             Assert.IsTrue(webhook.id.StartsWith("hook_"));
             Assert.AreEqual(Fixture.WebhookUrl, webhook.url);
-
-            _webhookId = webhook.id; // trigger deletion
         }
 
         [TestMethod]
@@ -68,14 +69,12 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("retrieve");
 
-            Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl);
+            Webhook webhook = await CreateBasicWebhook();
 
             Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
 
             Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
             Assert.AreEqual(webhook, retrievedWebhook);
-
-            _webhookId = webhook.id; // trigger deletion
         }
 
         [TestMethod]
@@ -91,16 +90,15 @@ namespace EasyPost.Tests
             }
         }
 
-        // Cannot be easily tested - requires a disabled webhook
-        [Ignore]
         [TestMethod]
         public async Task TestUpdate()
         {
             _vcr.SetUpTest("update");
 
-            Webhook webhook = await Webhook.Retrieve("123...");
+            Webhook webhook = await CreateBasicWebhook();
 
             await webhook.Update();
+            // TODO: We should call this something more intuitive in the future, since it doesn't work like the other Update function
         }
 
         [TestMethod]
@@ -108,13 +106,13 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("delete");
 
-            Webhook webhook = await CreateBasicWebhook(Fixture.WebhookUrl);
+            Webhook webhook = await CreateBasicWebhook();
             Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
 
             bool success = await retrievedWebhook.Delete();
-
-            // This endpoint/method does not return anything, just make sure the request doesn't fail
             Assert.IsTrue(success);
+
+            _webhookId = null; // skip deletion cleanup
         }
     }
 }

@@ -1,9 +1,10 @@
 [
   {
-    "Duration": 274,
-    "RecordedAt": "2022-05-05T17:09:47.598483-06:00",
+    "Duration": 285,
+    "RecordedAt": "2022-05-25T14:11:38.301161-06:00",
     "Request": {
-      "Body": "{\n  \"tracker\": {\n    \"tracking_code\": \"EZ1000000001\",\n    \"carrier\": \"USPS\"\n  }\n}",
+      "Body": "{\"tracker\":{\"tracking_code\":\"EZ1000000001\",\"carrier\":\"USPS\"}}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
         "Content-Length": "61"
@@ -11,14 +12,15 @@
       "Method": "POST",
       "RequestHeaders": {
         "Accept": "application/json",
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+        "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/trackers"
     },
     "Response": {
-      "Body": "{\n  \"id\": \"trk_64f1f07d5b124704a2139fe3174eb7b3\",\n  \"object\": \"Tracker\",\n  \"mode\": \"test\",\n  \"tracking_code\": \"EZ1000000001\",\n  \"status\": \"pre_transit\",\n  \"status_detail\": \"status_update\",\n  \"created_at\": \"2022-05-05T23:09:47Z\",\n  \"updated_at\": \"2022-05-05T23:09:47Z\",\n  \"signed_by\": null,\n  \"weight\": null,\n  \"est_delivery_date\": \"2022-05-05T23:09:47Z\",\n  \"shipment_id\": null,\n  \"carrier\": \"USPS\",\n  \"tracking_details\": [\n    {\n      \"object\": \"TrackingDetail\",\n      \"message\": \"Pre-Shipment Info Sent to USPS\",\n      \"description\": null,\n      \"status\": \"pre_transit\",\n      \"status_detail\": \"status_update\",\n      \"datetime\": \"2022-04-05T23:09:47Z\",\n      \"source\": \"USPS\",\n      \"carrier_code\": null,\n      \"tracking_location\": {\n        \"object\": \"TrackingLocation\",\n        \"city\": null,\n        \"state\": null,\n        \"country\": null,\n        \"zip\": null\n      }\n    },\n    {\n      \"object\": \"TrackingDetail\",\n      \"message\": \"Shipping Label Created\",\n      \"description\": null,\n      \"status\": \"pre_transit\",\n      \"status_detail\": \"status_update\",\n      \"datetime\": \"2022-04-06T11:46:47Z\",\n      \"source\": \"USPS\",\n      \"carrier_code\": null,\n      \"tracking_location\": {\n        \"object\": \"TrackingLocation\",\n        \"city\": \"HOUSTON\",\n        \"state\": \"TX\",\n        \"country\": null,\n        \"zip\": \"77063\"\n      }\n    }\n  ],\n  \"carrier_detail\": {\n    \"object\": \"CarrierDetail\",\n    \"service\": \"First-Class Package Service\",\n    \"container_type\": null,\n    \"est_delivery_date_local\": null,\n    \"est_delivery_time_local\": null,\n    \"origin_location\": \"HOUSTON TX, 77001\",\n    \"origin_tracking_location\": {\n      \"object\": \"TrackingLocation\",\n      \"city\": \"HOUSTON\",\n      \"state\": \"TX\",\n      \"country\": null,\n      \"zip\": \"77063\"\n    },\n    \"destination_location\": \"CHARLESTON SC, 29401\",\n    \"destination_tracking_location\": null,\n    \"guaranteed_delivery_date\": null,\n    \"alternate_identifier\": null,\n    \"initial_delivery_attempt\": null\n  },\n  \"finalized\": true,\n  \"is_return\": false,\n  \"public_url\": \"https://track.easypost.com/djE6dHJrXzY0ZjFmMDdkNWIxMjQ3MDRhMjEzOWZlMzE3NGViN2Iz\",\n  \"fees\": [\n    {\n      \"object\": \"Fee\",\n      \"type\": \"TrackerFee\",\n      \"amount\": \"0.00000\",\n      \"charged\": false,\n      \"refunded\": false\n    }\n  ]\n}",
+      "Body": "{\"id\":\"trk_36f41a853e0d46ef9d7d739dca2dbb6f\",\"object\":\"Tracker\",\"mode\":\"test\",\"tracking_code\":\"EZ1000000001\",\"status\":\"pre_transit\",\"status_detail\":\"status_update\",\"created_at\":\"2022-05-25T20:11:38Z\",\"updated_at\":\"2022-05-25T20:11:38Z\",\"signed_by\":null,\"weight\":null,\"est_delivery_date\":\"2022-05-25T20:11:38Z\",\"shipment_id\":null,\"carrier\":\"USPS\",\"tracking_details\":[{\"object\":\"TrackingDetail\",\"message\":\"Pre-Shipment Info Sent to USPS\",\"description\":null,\"status\":\"pre_transit\",\"status_detail\":\"status_update\",\"datetime\":\"2022-04-25T20:11:38Z\",\"source\":\"USPS\",\"carrier_code\":null,\"tracking_location\":{\"object\":\"TrackingLocation\",\"city\":null,\"state\":null,\"country\":null,\"zip\":null}},{\"object\":\"TrackingDetail\",\"message\":\"Shipping Label Created\",\"description\":null,\"status\":\"pre_transit\",\"status_detail\":\"status_update\",\"datetime\":\"2022-04-26T08:48:38Z\",\"source\":\"USPS\",\"carrier_code\":null,\"tracking_location\":{\"object\":\"TrackingLocation\",\"city\":\"HOUSTON\",\"state\":\"TX\",\"country\":null,\"zip\":\"77063\"}}],\"carrier_detail\":{\"object\":\"CarrierDetail\",\"service\":\"First-Class Package Service\",\"container_type\":null,\"est_delivery_date_local\":null,\"est_delivery_time_local\":null,\"origin_location\":\"HOUSTON TX, 77001\",\"origin_tracking_location\":{\"object\":\"TrackingLocation\",\"city\":\"HOUSTON\",\"state\":\"TX\",\"country\":null,\"zip\":\"77063\"},\"destination_location\":\"CHARLESTON SC, 29401\",\"destination_tracking_location\":null,\"guaranteed_delivery_date\":null,\"alternate_identifier\":null,\"initial_delivery_attempt\":null},\"finalized\":true,\"is_return\":false,\"public_url\":\"https://track.easypost.com/djE6dHJrXzM2ZjQxYTg1M2UwZDQ2ZWY5ZDdkNzM5ZGNhMmRiYjZm\",\"fees\":[{\"object\":\"Fee\",\"type\":\"TrackerFee\",\"amount\":\"0.00000\",\"charged\":false,\"refunded\":false}]}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
@@ -32,16 +34,17 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "844d31ca6274593bf1a64b9f0045185e",
+        "x-ep-request-uuid": "dc458afa628e8d7ae38a3a9600297b2c",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "Location": "/api/v2/trackers/trk_64f1f07d5b124704a2139fe3174eb7b3",
-        "ETag": "W/\"32fcef94dcd38aeb749230a54912528e\"",
-        "x-runtime": "0.131653",
-        "x-node": "bigweb9nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "Location": "/api/v2/trackers/trk_36f41a853e0d46ef9d7d739dca2dbb6f",
+        "ETag": "W/\"09c10fe173399f118f218e5401aa543d\"",
+        "x-runtime": "0.142697",
+        "x-node": "bigweb7nuq",
+        "x-version-label": "easypost-202205241740-79aa1a2e75-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq fde591f008,extlb2nuq c51cdb8bf2",
+        "x-canary": "direct",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb2nuq fc4d5d217f",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -51,22 +54,24 @@
     }
   },
   {
-    "Duration": 193,
-    "RecordedAt": "2022-05-05T17:09:47.838647-06:00",
+    "Duration": 191,
+    "RecordedAt": "2022-05-25T14:11:38.513054-06:00",
     "Request": {
       "Body": "",
+      "BodyContentType": "Text",
       "ContentHeaders": {},
       "Method": "GET",
       "RequestHeaders": {
         "Accept": "application/json",
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+        "User-Agent": "<REDACTED>"
       },
-      "Uri": "https://api.easypost.com/v2/trackers/trk_64f1f07d5b124704a2139fe3174eb7b3"
+      "Uri": "https://api.easypost.com/v2/trackers/trk_36f41a853e0d46ef9d7d739dca2dbb6f"
     },
     "Response": {
-      "Body": "{\n  \"id\": \"trk_64f1f07d5b124704a2139fe3174eb7b3\",\n  \"object\": \"Tracker\",\n  \"mode\": \"test\",\n  \"tracking_code\": \"EZ1000000001\",\n  \"status\": \"pre_transit\",\n  \"status_detail\": \"status_update\",\n  \"created_at\": \"2022-05-05T23:09:47Z\",\n  \"updated_at\": \"2022-05-05T23:09:47Z\",\n  \"signed_by\": null,\n  \"weight\": null,\n  \"est_delivery_date\": \"2022-05-05T23:09:47Z\",\n  \"shipment_id\": null,\n  \"carrier\": \"USPS\",\n  \"tracking_details\": [\n    {\n      \"object\": \"TrackingDetail\",\n      \"message\": \"Pre-Shipment Info Sent to USPS\",\n      \"description\": null,\n      \"status\": \"pre_transit\",\n      \"status_detail\": \"status_update\",\n      \"datetime\": \"2022-04-05T23:09:47Z\",\n      \"source\": \"USPS\",\n      \"carrier_code\": null,\n      \"tracking_location\": {\n        \"object\": \"TrackingLocation\",\n        \"city\": null,\n        \"state\": null,\n        \"country\": null,\n        \"zip\": null\n      }\n    },\n    {\n      \"object\": \"TrackingDetail\",\n      \"message\": \"Shipping Label Created\",\n      \"description\": null,\n      \"status\": \"pre_transit\",\n      \"status_detail\": \"status_update\",\n      \"datetime\": \"2022-04-06T11:46:47Z\",\n      \"source\": \"USPS\",\n      \"carrier_code\": null,\n      \"tracking_location\": {\n        \"object\": \"TrackingLocation\",\n        \"city\": \"HOUSTON\",\n        \"state\": \"TX\",\n        \"country\": null,\n        \"zip\": \"77063\"\n      }\n    }\n  ],\n  \"fees\": [\n    {\n      \"object\": \"Fee\",\n      \"type\": \"TrackerFee\",\n      \"amount\": \"0.00000\",\n      \"charged\": false,\n      \"refunded\": false\n    }\n  ],\n  \"carrier_detail\": {\n    \"object\": \"CarrierDetail\",\n    \"service\": \"First-Class Package Service\",\n    \"container_type\": null,\n    \"est_delivery_date_local\": null,\n    \"est_delivery_time_local\": null,\n    \"origin_location\": \"HOUSTON TX, 77001\",\n    \"origin_tracking_location\": {\n      \"object\": \"TrackingLocation\",\n      \"city\": \"HOUSTON\",\n      \"state\": \"TX\",\n      \"country\": null,\n      \"zip\": \"77063\"\n    },\n    \"destination_location\": \"CHARLESTON SC, 29401\",\n    \"destination_tracking_location\": null,\n    \"guaranteed_delivery_date\": null,\n    \"alternate_identifier\": null,\n    \"initial_delivery_attempt\": null\n  },\n  \"public_url\": \"https://track.easypost.com/djE6dHJrXzY0ZjFmMDdkNWIxMjQ3MDRhMjEzOWZlMzE3NGViN2Iz\"\n}",
+      "Body": "{\"id\":\"trk_36f41a853e0d46ef9d7d739dca2dbb6f\",\"object\":\"Tracker\",\"mode\":\"test\",\"tracking_code\":\"EZ1000000001\",\"status\":\"pre_transit\",\"status_detail\":\"status_update\",\"created_at\":\"2022-05-25T20:11:38Z\",\"updated_at\":\"2022-05-25T20:11:38Z\",\"signed_by\":null,\"weight\":null,\"est_delivery_date\":\"2022-05-25T20:11:38Z\",\"shipment_id\":null,\"carrier\":\"USPS\",\"tracking_details\":[{\"object\":\"TrackingDetail\",\"message\":\"Pre-Shipment Info Sent to USPS\",\"description\":null,\"status\":\"pre_transit\",\"status_detail\":\"status_update\",\"datetime\":\"2022-04-25T20:11:38Z\",\"source\":\"USPS\",\"carrier_code\":null,\"tracking_location\":{\"object\":\"TrackingLocation\",\"city\":null,\"state\":null,\"country\":null,\"zip\":null}},{\"object\":\"TrackingDetail\",\"message\":\"Shipping Label Created\",\"description\":null,\"status\":\"pre_transit\",\"status_detail\":\"status_update\",\"datetime\":\"2022-04-26T08:48:38Z\",\"source\":\"USPS\",\"carrier_code\":null,\"tracking_location\":{\"object\":\"TrackingLocation\",\"city\":\"HOUSTON\",\"state\":\"TX\",\"country\":null,\"zip\":\"77063\"}}],\"fees\":[{\"object\":\"Fee\",\"type\":\"TrackerFee\",\"amount\":\"0.00000\",\"charged\":false,\"refunded\":false}],\"carrier_detail\":{\"object\":\"CarrierDetail\",\"service\":\"First-Class Package Service\",\"container_type\":null,\"est_delivery_date_local\":null,\"est_delivery_time_local\":null,\"origin_location\":\"HOUSTON TX, 77001\",\"origin_tracking_location\":{\"object\":\"TrackingLocation\",\"city\":\"HOUSTON\",\"state\":\"TX\",\"country\":null,\"zip\":\"77063\"},\"destination_location\":\"CHARLESTON SC, 29401\",\"destination_tracking_location\":null,\"guaranteed_delivery_date\":null,\"alternate_identifier\":null,\"initial_delivery_attempt\":null},\"public_url\":\"https://track.easypost.com/djE6dHJrXzM2ZjQxYTg1M2UwZDQ2ZWY5ZDdkNzM5ZGNhMmRiYjZm\"}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
@@ -80,15 +85,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "c20cf1826274593bf1967ecc0047769a",
+        "x-ep-request-uuid": "dc458afa628e8d7ae3ae6b9600297b40",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"2456749573f708024eddc06bf328b334\"",
-        "x-runtime": "0.051141",
-        "x-node": "bigweb1nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "ETag": "W/\"9c0f8db147600f8771fd402f99f7ef8b\"",
+        "x-runtime": "0.045998",
+        "x-node": "bigweb3nuq",
+        "x-version-label": "easypost-202205241740-79aa1a2e75-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq fde591f008,extlb1nuq c51cdb8bf2",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb2nuq fc4d5d217f",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

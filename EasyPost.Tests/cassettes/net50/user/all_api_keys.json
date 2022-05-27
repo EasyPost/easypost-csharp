@@ -1,25 +1,27 @@
 [
   {
-    "Duration": 504,
-    "RecordedAt": "2022-05-17T17:43:09.046422-06:00",
+    "Duration": 267,
+    "RecordedAt": "2022-05-26T17:36:03.345922-06:00",
     "Request": {
       "Body": "",
+      "BodyContentType": "Text",
       "ContentHeaders": {},
       "Method": "GET",
       "RequestHeaders": {
         "Accept": "application/json",
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/5.0.16,EasyPost/v2,CSharpClient/3.0.0,.NET/5.0.16"
+        "User-Agent": "<REDACTED>"
       },
-      "Uri": "https://api.easypost.com/beta/end_shippers?page_size=5"
+      "Uri": "https://api.easypost.com/v2/api_keys"
     },
     "Response": {
-      "Body": "[]",
+      "Body": "{\"id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"keys\":[],\"children\":[]}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "2"
+        "Content-Length": "6030"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -29,15 +31,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "6886a1026284330ce378baf60016e25a",
+        "x-ep-request-uuid": "1c7311f262900ee3e38795fb00187f13",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"4f53cda18c2baa0c0354bb5f9a3ecbe5\"",
-        "x-runtime": "0.090482",
-        "x-node": "bigweb5nuq",
-        "x-version-label": "easypost-202205172029-e0b28eb62c-master",
+        "ETag": "W/\"242db34447c064462622e3c215475cd7\"",
+        "x-runtime": "0.124693",
+        "x-node": "bigweb8nuq",
+        "x-version-label": "easypost-202205262146-0562c799aa-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 570dfcbc0a,intlb1wdc 570dfcbc0a,extlb1wdc c51cdb8bf2",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb1nuq fc4d5d217f",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

@@ -40,7 +40,6 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("retrieve");
 
-
             Pickup pickup = await CreateBasicPickup();
 
             Pickup retrievedPickup = await Pickup.Retrieve(pickup.id);
@@ -54,7 +53,6 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("buy");
 
-            //use "TestCreate"
             Pickup pickup = await CreateBasicPickup();
 
             await pickup.Buy(Fixture.Usps, Fixture.PickupService);
@@ -70,7 +68,6 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("cancel");
 
-            //use "TestCreate"
             Pickup pickup = await CreateBasicPickup();
 
             await pickup.Buy(Fixture.Usps, Fixture.PickupService);

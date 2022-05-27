@@ -1,9 +1,10 @@
 [
   {
-    "Duration": 265,
-    "RecordedAt": "2022-05-05T16:54:14.989617-06:00",
+    "Duration": 170,
+    "RecordedAt": "2022-05-25T14:17:58.897821-06:00",
     "Request": {
-      "Body": "{\n  \"shipment\": {}\n}",
+      "Body": "{\"shipment\":{}}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
         "Content-Length": "15"
@@ -11,14 +12,15 @@
       "Method": "POST",
       "RequestHeaders": {
         "Accept": "application/json",
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/3.1.24"
+        "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/shipments"
     },
     "Response": {
-      "Body": "{\n  \"error\": {\n    \"code\": \"SHIPMENT.INVALID_PARAMS\",\n    \"message\": \"Unable to create shipment, one or more parameters were invalid.\",\n    \"errors\": [\n      {\n        \"to_address\": \"Required and missing.\"\n      },\n      {\n        \"from_address\": \"Required and missing.\"\n      }\n    ]\n  }\n}",
+      "Body": "{\"error\":{\"code\":\"SHIPMENT.INVALID_PARAMS\",\"message\":\"Unable to create shipment, one or more parameters were invalid.\",\"errors\":[{\"to_address\":\"Required and missing.\"},{\"from_address\":\"Required and missing.\"}]}}",
+      "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
@@ -32,14 +34,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "c20cf18062745597f1967a8800466b6a",
+        "x-ep-request-uuid": "dc458af5628e8ef7e3beded70029ea2b",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "x-runtime": "0.015331",
-        "x-node": "bigweb9nuq",
-        "x-version-label": "easypost-202205052025-12b8594e25-master",
+        "x-runtime": "0.018019",
+        "x-node": "bigweb7nuq",
+        "x-version-label": "easypost-202205241740-79aa1a2e75-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq fde591f008,extlb1nuq c51cdb8bf2",
+        "x-canary": "direct",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb2nuq fc4d5d217f",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
