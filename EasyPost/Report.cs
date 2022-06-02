@@ -72,7 +72,8 @@ namespace EasyPost
         /// <returns>An EasyPost.ReportCollection instance.</returns>
         public static async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
         {
-            Request request = new Request("reports/{type}", Method.Get, parameters);
+            Request request = new Request("reports/{type}", Method.Get);
+            request.AddParameters(parameters);
             request.AddUrlSegment("type", type);
 
             ReportCollection reportCollection = await request.Execute<ReportCollection>();

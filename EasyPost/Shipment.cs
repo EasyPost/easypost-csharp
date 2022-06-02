@@ -242,7 +242,8 @@ namespace EasyPost
                 throw new PropertyMissing("id");
             }
 
-            Request request = new Request("shipments/{id}/rerate", Method.Post, parameters);
+            Request request = new Request("shipments/{id}/rerate", Method.Post);
+            request.AddParameters(parameters);
             request.AddUrlSegment("id", id);
 
             rates = (await request.Execute<Shipment>()).rates;
@@ -267,7 +268,8 @@ namespace EasyPost
         /// <returns>An EasyPost.ShipmentCollection instance.</returns>
         public static async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
-            Request request = new Request("shipments", Method.Get, parameters);
+            Request request = new Request("shipments", Method.Get);
+            request.AddParameters(parameters);
 
             ShipmentCollection shipmentCollection = await request.Execute<ShipmentCollection>();
             shipmentCollection.filters = parameters;

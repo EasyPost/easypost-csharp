@@ -41,7 +41,8 @@ namespace EasyPost.Beta
         public static async Task<List<EndShipper>> All(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
-            Request request = new Request("end_shippers", Method.Get, parameters);
+            Request request = new Request("end_shippers", Method.Get);
+            request.AddParameters(parameters);
 
             return await request.Execute<List<EndShipper>>(true);
         }

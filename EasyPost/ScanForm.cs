@@ -74,7 +74,8 @@ namespace EasyPost
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
         public static async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
         {
-            Request request = new Request("scan_forms", Method.Get, parameters);
+            Request request = new Request("scan_forms", Method.Get);
+            request.AddParameters(parameters);
 
             ScanFormCollection scanFormCollection = await request.Execute<ScanFormCollection>();
             scanFormCollection.filters = parameters;

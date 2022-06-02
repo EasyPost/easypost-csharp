@@ -73,7 +73,8 @@ namespace EasyPost
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
-            Request request = new Request("refunds", Method.Get, parameters);
+            Request request = new Request("refunds", Method.Get);
+            request.AddParameters(parameters);
 
             return await request.Execute<RefundCollection>();
         }

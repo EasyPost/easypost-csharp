@@ -90,7 +90,8 @@ namespace EasyPost
         /// <returns>A EasyPost.TrackerCollection instance.</returns>
         public static async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
         {
-            Request request = new Request("trackers", Method.Get, parameters);
+            Request request = new Request("trackers", Method.Get);
+            request.AddParameters(parameters);
 
             TrackerCollection trackerCollection = await request.Execute<TrackerCollection>();
             trackerCollection.filters = parameters;

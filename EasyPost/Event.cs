@@ -77,7 +77,8 @@ namespace EasyPost
         {
             parameters = parameters ?? new Dictionary<string, object>();
 
-            Request request = new Request("events", Method.Get, parameters);
+            Request request = new Request("events", Method.Get);
+            request.AddParameters(parameters);
 
             return await request.Execute<EventCollection>();
         }

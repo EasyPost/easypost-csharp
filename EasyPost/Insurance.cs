@@ -42,7 +42,8 @@ namespace EasyPost
         public async Task<Insurance> Refresh(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
-            Request request = new Request("insurances/{id}", Method.Get, parameters);
+            Request request = new Request("insurances/{id}", Method.Get);
+            request.AddParameters(parameters);
             request.AddUrlSegment("id", id);
 
             Insurance refreshedInsurance = await request.Execute<Insurance>();
@@ -68,7 +69,8 @@ namespace EasyPost
         public static async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
-            Request request = new Request("insurances", Method.Get, parameters);
+            Request request = new Request("insurances", Method.Get);
+            request.AddParameters(parameters);
 
             return await request.Execute<InsuranceCollection>();
         }
