@@ -9,6 +9,8 @@ namespace EasyPost.Models.V2
 {
     public class CarrierAccount : Resource
     {
+        [JsonProperty("billing_type")]
+        public string billing_type { get; set; }
         [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
         [JsonProperty("credentials")]
