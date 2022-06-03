@@ -22,8 +22,8 @@ namespace EasyPost.Interfaces
 
         protected async Task<T> List<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new() => await Client.Request<T>(Method.Get, url, parameters, rootElement);
 
-        protected async Task<T> Update<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new() => await Client.Request<T>(Method.Put, url, parameters, rootElement);
+        protected async Task<T> Update<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new() => await Client.Request<T>(Method.Patch, url, parameters, rootElement);
 
-        protected async Task<bool> UpdateBlind(string url, Dictionary<string, object>? parameters = null) => await Client.Request(Method.Put, url, parameters);
+        protected async Task<bool> UpdateBlind(string url, Dictionary<string, object>? parameters = null) => await Client.Request(Method.Patch, url, parameters);
     }
 }

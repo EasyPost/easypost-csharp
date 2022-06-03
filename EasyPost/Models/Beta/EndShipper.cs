@@ -18,5 +18,6 @@ namespace EasyPost.Models.Beta
                     "address", parameters
                 }
             });
+        // EndShipper needs Put, not Patch
     }
 }

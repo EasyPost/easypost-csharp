@@ -38,6 +38,6 @@ namespace EasyPost.Models.V2
         ///     Update this CarrierAccount.
         /// </summary>
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
-        public async Task Update(Dictionary<string, object> parameters) => await Update<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", parameters);
+        public async Task Update(Dictionary<string, object> parameters) => await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{id}", parameters);
     }
 }

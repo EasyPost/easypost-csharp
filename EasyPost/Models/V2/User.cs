@@ -64,7 +64,7 @@ namespace EasyPost.Models.V2
         ///     All invalid keys will be ignored.
         /// </param>
         public async Task Update(Dictionary<string, object> parameters) =>
-            await Update<User>(Method.Put, $"users/{id}", new Dictionary<string, object>
+            await Update<User>(Method.Patch, $"users/{id}", new Dictionary<string, object>
             {
                 {
                     "user", parameters
@@ -87,7 +87,7 @@ namespace EasyPost.Models.V2
         /// </param>
         /// <returns>EasyPost.Brand instance.</returns>
         public async Task<Brand> UpdateBrand(Dictionary<string, object> parameters) =>
-            await Request<Brand>(Method.Put, $"users/{id}/brand", new Dictionary<string, object>
+            await Request<Brand>(Method.Patch, $"users/{id}/brand", new Dictionary<string, object>
             {
                 {
                     "brand", parameters

@@ -26,6 +26,6 @@ namespace EasyPost.Models.V2
         /// <summary>
         ///     Enable a Webhook that has been disabled previously.
         /// </summary>
-        public async Task Update() => await Update<Webhook>(Method.Put, $"webhooks/{id}");
+        public async Task Update() => await Update<Webhook>(Method.Patch, $"webhooks/{id}");
     }
 }
