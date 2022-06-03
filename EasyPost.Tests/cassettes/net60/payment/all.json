@@ -1,0 +1,51 @@
+[
+  {
+    "Duration": 411,
+    "RecordedAt": "2022-06-03T15:15:22.288768-06:00",
+    "Request": {
+      "Body": "",
+      "BodyContentType": "Text",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Authorization": "*****",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/6.0.4"
+      },
+      "Uri": "https://api.easypost.com/v2/payment_methods"
+    },
+    "Response": {
+      "Body": "{\"id\":\"cust_80136e399c704966a7f9917461878b80\",\"object\":\"PaymentMethods\",\"primary_payment_method\":{\"id\":\"card_fd9cb38f70a7429f960af808774f886e\",\"disabled_at\":null,\"object\":\"CreditCard\",\"name\":null,\"last4\":\"6170\",\"exp_month\":5,\"exp_year\":2028,\"brand\":\"Visa\"},\"secondary_payment_method\":null}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "289"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "a5a9f7c6629a79e9e664b78e0004dbbc",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"d47d5f281b89672e6ab9b7adff01621f\"",
+        "x-runtime": "0.783517",
+        "x-node": "bigweb2nuq",
+        "x-version-label": "easypost-202206030043-0fd9609f83-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq 570dfcbc0a,intlb2wdc 570dfcbc0a,extlb1wdc 0910011e7e",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  }
+]

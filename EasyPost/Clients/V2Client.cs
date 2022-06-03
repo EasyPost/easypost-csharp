@@ -28,6 +28,8 @@ namespace EasyPost.Clients
 
         public OrderService Orders => new OrderService(this);
 
+        public PaymentService Payments => new PaymentService(this);
+
         public ParcelService Parcels => new ParcelService(this);
 
         public PickupService Pickups => new PickupService(this);
