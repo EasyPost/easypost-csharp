@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds `billing_type` attribute in CarrierAccount and Rate classes.
+
 ## v3.1.0 (2022-05-19)
 
 - Adds the `EndShipper` class with the ability to create, retrieve, and update EndShipper objects

@@ -26,6 +26,8 @@ namespace EasyPost
         public string type { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
+        [JsonProperty("billing_type")]
+        public string billing_type { get; set; }
 
         /// <summary>
         ///     Remove this CarrierAccount from your account.
