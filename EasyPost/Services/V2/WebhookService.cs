@@ -16,7 +16,7 @@ namespace EasyPost.Services.V2
         ///     Get a list of scan forms.
         /// </summary>
         /// <returns>List of EasyPost.Webhook instances.</returns>
-        public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null) => await List<List<Webhook>>("webhooks", parameters);
+        public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null) => await List<List<Webhook>>("webhooks", parameters, "webhooks");
 
         /// <summary>
         ///     Create a Webhook.

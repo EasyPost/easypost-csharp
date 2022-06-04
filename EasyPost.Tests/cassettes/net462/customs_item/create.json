@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 175,
-    "RecordedAt": "2022-05-19T14:53:40.282706-06:00",
+    "Duration": 634,
+    "RecordedAt": "2022-06-03T18:21:53.121493-06:00",
     "Request": {
       "Body": "{\"description\":\"Sweet shirts\",\"quantity\":2,\"weight\":11,\"value\":23.0,\"hs_tariff_number\":654321,\"origin_country\":\"US\"}",
       "BodyContentType": "Json",
@@ -11,15 +11,15 @@
       },
       "Method": "POST",
       "RequestHeaders": {
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
         "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+        "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/customs_items"
     },
     "Response": {
-      "Body": "{\"id\":\"cstitem_98e5d8135a914ea0b512d312e11e8ca2\",\"object\":\"CustomsItem\",\"created_at\":\"2022-05-19T20:53:40Z\",\"updated_at\":\"2022-05-19T20:53:40Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}",
+      "Body": "{\"id\":\"cstitem_4c44f2dd60004f0c8de6ae180c1bcad1\",\"object\":\"CustomsItem\",\"created_at\":\"2022-06-04T00:21:53Z\",\"updated_at\":\"2022-06-04T00:21:53Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -34,16 +34,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "169e51f76286ae54e38bf87f003d822d",
+        "x-ep-request-uuid": "a5a9f7c6629aa5a0e62f0bd000122e2e",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "Location": "/api/v2/customs_items/cstitem_98e5d8135a914ea0b512d312e11e8ca2",
-        "ETag": "W/\"2332c0cc1ebace7cb04a2831ad07a53f\"",
-        "x-runtime": "0.033491",
-        "x-node": "bigweb5nuq",
-        "x-version-label": "easypost-202205191856-f47f64ff93-master",
+        "Location": "/api/v2/customs_items/cstitem_4c44f2dd60004f0c8de6ae180c1bcad1",
+        "ETag": "W/\"4bf5c1f88d2a7d8fd7afbaee9b55f18e\"",
+        "x-runtime": "0.022314",
+        "x-node": "bigweb4nuq",
+        "x-version-label": "easypost-202206030043-0fd9609f83-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 570dfcbc0a,extlb1nuq c51cdb8bf2",
+        "x-proxied": "intlb1nuq 570dfcbc0a,intlb1wdc 570dfcbc0a,extlb1wdc 0910011e7e",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

@@ -1,41 +1,37 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Clients;
-using EasyPost.Interfaces;
 using EasyPost.Models.V2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class PaymentTest
+
+    public class PaymentTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
+        public PaymentTest() : base("payment", TestUtils.ApiKey.Production)
+        {
+        }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("payment", TestUtils.ApiKey.Production);
+        private async Task<PaymentMethodSummary> GetPaymentMethodSummary() => await V2Client.Payments.All();
 
-        private static async Task<PaymentMethodSummary> GetPaymentMethodSummary(V2Client client) => await client.Payments.All();
-
-        [TestMethod]
+        [Fact]
         // need to manually add details via dashboard when recording
         public async Task TestAll()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("all");
+            UseVCR("all");
 
-            PaymentMethodSummary summary = await GetPaymentMethodSummary(client);
+            PaymentMethodSummary summary = await GetPaymentMethodSummary();
 
             Assert.IsNotNull(summary.primary_payment_method);
         }
 
-        [Ignore]
-        [TestMethod]
-        // Skipping due to the lack of an available real credit card in tests.
+        [Fact(Skip = "Lack of an available real credit card in tests.")]
         public async Task TestDelete()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("delete");
+            UseVCR("delete");
 
-            PaymentMethodSummary summary = await GetPaymentMethodSummary(client);
+            PaymentMethodSummary summary = await GetPaymentMethodSummary();
 
             CreditCard creditCard = summary.primary_payment_method;
 
@@ -44,14 +40,13 @@ namespace EasyPost.Tests
             Assert.IsTrue(success);
         }
 
-        [TestMethod]
-        [Ignore]
+        [Fact(Skip = "Lack of an available real credit card in tests.")]
         // Skipping due to the lack of an available real credit card in tests.
         public async Task TestFund()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("fund");
+            UseVCR("fund");
 
-            PaymentMethodSummary summary = await GetPaymentMethodSummary(client);
+            PaymentMethodSummary summary = await GetPaymentMethodSummary();
 
             CreditCard creditCard = summary.primary_payment_method;
 

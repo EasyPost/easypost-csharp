@@ -1,26 +1,25 @@
 ﻿using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class RateTest
+
+    public class RateTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
+        public RateTest() : base("rate", TestUtils.ApiKey.Test)
+        {
+        }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("rate");
-
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
-            Shipment shipment = await client.Shipments.Create(Fixture.BasicShipment);
+            Shipment shipment = await V2Client.Shipments.Create(Fixture.BasicShipment);
 
-            Rate rate = await client.Rates.Retrieve(shipment.rates[0].id);
+            Rate rate = await V2Client.Rates.Retrieve(shipment.rates[0].id);
 
             Assert.IsInstanceOfType(rate, typeof(Rate));
             Assert.IsTrue(rate.id.StartsWith("rate_"));

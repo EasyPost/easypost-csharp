@@ -1,25 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class ScanFormTest
+
+    public class ScanFormTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
+        public ScanFormTest() : base("scan_form", TestUtils.ApiKey.Test)
+        {
+        }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("scan_form");
-
-        [TestMethod]
+        [Fact]
         public async Task TestAll()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("all");
+            UseVCR("all");
 
-            ScanFormCollection scanFormCollection = await client.ScanForms.All(new Dictionary<string, object>
+            ScanFormCollection scanFormCollection = await V2Client.ScanForms.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -36,34 +35,34 @@ namespace EasyPost.Tests
             }
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("create");
+            UseVCR("create");
 
-            ScanForm scanForm = await GetBasicScanForm(client);
+            ScanForm scanForm = await GetBasicScanForm();
 
             Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
             Assert.IsTrue(scanForm.id.StartsWith("sf_"));
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
-            ScanForm scanForm = await GetBasicScanForm(client);
+            ScanForm scanForm = await GetBasicScanForm();
 
-            ScanForm retrievedScanForm = await client.ScanForms.Retrieve(scanForm.id);
+            ScanForm retrievedScanForm = await V2Client.ScanForms.Retrieve(scanForm.id);
 
             Assert.IsInstanceOfType(retrievedScanForm, typeof(ScanForm));
             Assert.AreEqual(scanForm, retrievedScanForm);
         }
 
-        private static async Task<ScanForm> GetBasicScanForm(V2Client client)
+        private async Task<ScanForm> GetBasicScanForm()
         {
-            Shipment shipment = await client.Shipments.Create(Fixture.OneCallBuyShipment);
-            return await client.ScanForms.Create(new List<Shipment>
+            Shipment shipment = await V2Client.Shipments.Create(Fixture.OneCallBuyShipment);
+            return await V2Client.ScanForms.Create(new List<Shipment>
             {
                 shipment
             });

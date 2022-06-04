@@ -1,27 +1,27 @@
 [
   {
-    "Duration": 343,
-    "RecordedAt": "2022-05-19T15:05:53.377682-06:00",
+    "Duration": 624,
+    "RecordedAt": "2022-06-03T18:22:40.271258-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
       "ContentHeaders": {},
       "Method": "GET",
       "RequestHeaders": {
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
         "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/3.1.24"
+        "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/events?page_size=5"
     },
     "Response": {
-      "Body": "{\"events\":[{\"description\":\"tracker.created\",\"id\":\"evt_7794c7ead7b711ecab274958033e2125\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-19T21:05:52.686Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_7744b336d7b711ec806b73e93e8d88e8\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-19T21:05:52.162Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.created\",\"id\":\"evt_770a3db4d7b711ecbf256388fd9ef64a\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-19T21:05:51.778Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_7675a12cd7b711ec825a5d053338cd36\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-19T21:05:50.805Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.created\",\"id\":\"evt_75f0770ed7b711ec85555f1514b5bb1d\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-05-19T21:05:49.932Z\",\"mode\":\"test\",\"object\":\"Event\"}],\"has_more\":true}",
+      "Body": "{\"events\":[{\"description\":\"batch.created\",\"id\":\"evt_71aef51ce39c11ecb9ca73fab4b98b38\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-06-04T00:22:40.333Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"report.new\",\"id\":\"evt_71adb1a2e39c11ec9bdc479298fa9d87\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-06-04T00:22:40.325Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.created\",\"id\":\"evt_71394150e39c11ecacf51f234976f165\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-06-04T00:22:39.562Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.created\",\"id\":\"evt_6fda0042e39c11ec83090df7678155e0\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-06-04T00:22:37.26Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.created\",\"id\":\"evt_6f8f2d92e39c11ecaf791d5e781df214\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-06-04T00:22:36.77Z\",\"mode\":\"test\",\"object\":\"Event\"}],\"has_more\":true}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "1118"
+        "Content-Length": "1111"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -31,15 +31,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "169e51f96286b131e3783694003e7d61",
+        "x-ep-request-uuid": "457b28bb629aa5d0e655e57300146ee9",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"bd0c9e42909226671e97f8ece48bce7e\"",
-        "x-runtime": "0.190266",
-        "x-node": "bigweb3nuq",
-        "x-version-label": "easypost-202205191856-f47f64ff93-master",
+        "ETag": "W/\"409c9a274a8ca564b851bb9ae66ca901\"",
+        "x-runtime": "0.177605",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202206030043-0fd9609f83-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 570dfcbc0a,extlb1nuq c51cdb8bf2",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb1nuq 0910011e7e",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -49,28 +49,28 @@
     }
   },
   {
-    "Duration": 62,
-    "RecordedAt": "2022-05-19T15:05:53.456597-06:00",
+    "Duration": 63,
+    "RecordedAt": "2022-06-03T18:22:40.417439-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
       "ContentHeaders": {},
       "Method": "GET",
       "RequestHeaders": {
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
         "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/3.1.24"
+        "User-Agent": "<REDACTED>"
       },
-      "Uri": "https://api.easypost.com/v2/events/evt_7794c7ead7b711ecab274958033e2125"
+      "Uri": "https://api.easypost.com/v2/events/evt_71aef51ce39c11ecb9ca73fab4b98b38"
     },
     "Response": {
-      "Body": "{\"description\":\"tracker.created\",\"mode\":\"test\",\"previous_attributes\":{},\"created_at\":\"2022-05-19T21:05:53Z\",\"pending_urls\":[],\"completed_urls\":[],\"updated_at\":\"2022-05-19T21:05:53Z\",\"id\":\"evt_7794c7ead7b711ecab274958033e2125\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"object\":\"Event\"}",
+      "Body": "{\"description\":\"batch.created\",\"mode\":\"test\",\"previous_attributes\":{},\"created_at\":\"2022-06-04T00:22:40Z\",\"pending_urls\":[\"http://example.com\"],\"completed_urls\":[],\"updated_at\":\"2022-06-04T00:22:40Z\",\"id\":\"evt_71aef51ce39c11ecb9ca73fab4b98b38\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"object\":\"Event\"}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "320"
+        "Content-Length": "338"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -80,15 +80,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "169e51f96286b131e3783694003e7d74",
+        "x-ep-request-uuid": "457b28bb629aa5d0e655e57300146f0d",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"b38bc0b5c9d2374b0df6a58eca8390c3\"",
-        "x-runtime": "0.028174",
-        "x-node": "bigweb1nuq",
-        "x-version-label": "easypost-202205191856-f47f64ff93-master",
+        "ETag": "W/\"e979283e55f4f502c21073d07e6a2e7e\"",
+        "x-runtime": "0.025029",
+        "x-node": "bigweb6nuq",
+        "x-version-label": "easypost-202206030043-0fd9609f83-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 570dfcbc0a,extlb1nuq c51cdb8bf2",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb1nuq 0910011e7e",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

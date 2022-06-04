@@ -1,26 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class PickupTest
+
+    public class PickupTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
+        public PickupTest() : base("pickup", TestUtils.ApiKey.Test)
+        {
+        }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("pickup");
-
-        [TestMethod]
+        [Fact]
         public async Task TestBuy()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("buy");
+            UseVCR("buy");
 
-            //use "TestCreate"
-            Pickup pickup = await CreateBasicPickup(client);
+            Pickup pickup = await CreateBasicPickup();
 
             await pickup.Buy(Fixture.Usps, Fixture.PickupService);
 
@@ -30,13 +28,12 @@ namespace EasyPost.Tests
             Assert.AreEqual("scheduled", pickup.status);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestCancel()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("cancel");
+            UseVCR("cancel");
 
-            //use "TestCreate"
-            Pickup pickup = await CreateBasicPickup(client);
+            Pickup pickup = await CreateBasicPickup();
 
             await pickup.Buy(Fixture.Usps, Fixture.PickupService);
 
@@ -47,37 +44,37 @@ namespace EasyPost.Tests
             Assert.AreEqual("canceled", pickup.status);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("create");
+            UseVCR("create");
 
-            Pickup pickup = await CreateBasicPickup(client);
+            Pickup pickup = await CreateBasicPickup();
 
             Assert.IsInstanceOfType(pickup, typeof(Pickup));
             Assert.IsTrue(pickup.id.StartsWith("pickup_"));
             Assert.IsNotNull(pickup.pickup_rates);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
-            Pickup pickup = await CreateBasicPickup(client);
+            Pickup pickup = await CreateBasicPickup();
 
-            Pickup retrievedPickup = await client.Pickups.Retrieve(pickup.id);
+            Pickup retrievedPickup = await V2Client.Pickups.Retrieve(pickup.id);
 
             Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
             Assert.AreEqual(pickup, retrievedPickup);
         }
 
-        private static async Task<Pickup> CreateBasicPickup(V2Client client)
+        private async Task<Pickup> CreateBasicPickup()
         {
-            Shipment shipment = await client.Shipments.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await V2Client.Shipments.Create(Fixture.OneCallBuyShipment);
             Dictionary<string, object> pickupData = Fixture.BasicPickup;
             pickupData["shipment"] = shipment;
-            return await client.Pickups.Create(pickupData);
+            return await V2Client.Pickups.Create(pickupData);
         }
     }
 }

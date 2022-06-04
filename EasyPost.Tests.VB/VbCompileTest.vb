@@ -4,16 +4,16 @@ Imports EasyPost.Clients
 Imports EasyPost.Models
 Imports EasyPost.Models.V2
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
+Imports Xunit
 
-<TestClass>
 Public Class VbCompileTest
-    <TestMethod>
+    <Fact>
     Public Sub TestCompile()
         'MSTest does not seem to support asynchronous tests in VB, so we can't attempt any API calls.'
         'We'll work off the assumption that if this code compiles, then we have VB compatibility.'
         Dim client = New V2Client(apiKey := "")
         Dim carrierTypesService = client.CarrierTypes
-        Assert.IsNotNull(carrierTypesService)
-        Assert.IsInstanceOfType(carrierTypesService.All(), GetType(Task(Of List(Of CarrierType))))
+        Assert.NotNull(carrierTypesService)
+        Assert.IsType(GetType(Task(Of List(Of CarrierType))), carrierTypesService.All())
     End Sub
 End Class

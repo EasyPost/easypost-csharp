@@ -1,25 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class OrderTest
+
+    public class OrderTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
+        public OrderTest() : base("order", TestUtils.ApiKey.Test)
+        {
+        }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("order");
-
-        [TestMethod]
+        [Fact]
         public async Task TestBuy()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("buy");
+            UseVCR("buy");
 
-            Order order = await CreateBasicOrder(client);
+            Order order = await CreateBasicOrder();
 
             await order.Buy(Fixture.Usps, Fixture.UspsService);
 
@@ -32,24 +31,24 @@ namespace EasyPost.Tests
             }
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("create");
+            UseVCR("create");
 
-            Order order = await CreateBasicOrder(client);
+            Order order = await CreateBasicOrder();
 
             Assert.IsInstanceOfType(order, typeof(Order));
             Assert.IsTrue(order.id.StartsWith("order_"));
             Assert.IsNotNull(order.rates);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestGetRates()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("get_rates");
+            UseVCR("get_rates");
 
-            Order order = await CreateBasicOrder(client);
+            Order order = await CreateBasicOrder();
 
             await order.GetRates();
 
@@ -62,21 +61,21 @@ namespace EasyPost.Tests
             }
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
-            Order order = await CreateBasicOrder(client);
+            Order order = await CreateBasicOrder();
 
 
-            Order retrievedOrder = await client.Orders.Retrieve(order.id);
+            Order retrievedOrder = await V2Client.Orders.Retrieve(order.id);
 
             Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
             // Must compare IDs since other elements of objects may be different
             Assert.AreEqual(order.id, retrievedOrder.id);
         }
 
-        private static async Task<Order> CreateBasicOrder(V2Client client) => await client.Orders.Create(Fixture.BasicOrder);
+        private async Task<Order> CreateBasicOrder() => await V2Client.Orders.Create(Fixture.BasicOrder);
     }
 }

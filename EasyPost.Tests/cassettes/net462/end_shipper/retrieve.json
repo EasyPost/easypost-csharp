@@ -1,9 +1,9 @@
 [
   {
-    "Duration": 188,
-    "RecordedAt": "2022-05-19T14:53:41.227463-06:00",
+    "Duration": 194,
+    "RecordedAt": "2022-06-03T23:02:16.396266-06:00",
     "Request": {
-      "Body": "{\"address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"5555555555\",\"email\":\"test@example.com\"}}",
+      "Body": "{\"address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
@@ -11,15 +11,15 @@
       },
       "Method": "POST",
       "RequestHeaders": {
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
         "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
-        "User-Agent": "EasyPost/beta,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+        "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/beta/end_shippers"
     },
     "Response": {
-      "Body": "{\"id\":\"es_637455f424d44b95afe9a9c2a919d4f5\",\"object\":\"EndShipper\",\"created_at\":\"2022-05-19T14:53:41-06:00\",\"updated_at\":\"2022-05-19T14:53:41-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"5555555555\",\"email\":\"TEST@EXAMPLE.COM\"}",
+      "Body": "{\"id\":\"es_a3c261562d4d4a3b829d992b57d1b923\",\"object\":\"EndShipper\",\"created_at\":\"2022-06-03T23:02:16-06:00\",\"updated_at\":\"2022-06-03T23:02:16-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -34,15 +34,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "169e51f76286ae55fe2dab63003d8287",
+        "x-ep-request-uuid": "457b28be629ae758e64086a8002539e7",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"e0b69072c804ad00dc2e9f03bad53b18\"",
-        "x-runtime": "0.044674",
-        "x-node": "bigweb3nuq",
-        "x-version-label": "easypost-202205191856-f47f64ff93-master",
+        "ETag": "W/\"ced5b1bfdd16d6aa291c7f62f1dccce2\"",
+        "x-runtime": "0.041778",
+        "x-node": "bigweb7nuq",
+        "x-version-label": "easypost-202206030043-0fd9609f83-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 570dfcbc0a,extlb1nuq c51cdb8bf2",
+        "x-canary": "direct",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb1nuq 0910011e7e",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -52,23 +53,23 @@
     }
   },
   {
-    "Duration": 152,
-    "RecordedAt": "2022-05-19T14:53:41.398623-06:00",
+    "Duration": 78,
+    "RecordedAt": "2022-06-03T23:02:16.492963-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
       "ContentHeaders": {},
       "Method": "GET",
       "RequestHeaders": {
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
         "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
-        "User-Agent": "EasyPost/beta,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+        "User-Agent": "<REDACTED>"
       },
-      "Uri": "https://api.easypost.com/beta/end_shippers/es_637455f424d44b95afe9a9c2a919d4f5"
+      "Uri": "https://api.easypost.com/beta/end_shippers/es_a3c261562d4d4a3b829d992b57d1b923"
     },
     "Response": {
-      "Body": "{\"id\":\"es_637455f424d44b95afe9a9c2a919d4f5\",\"object\":\"EndShipper\",\"created_at\":\"2022-05-19T14:53:41-06:00\",\"updated_at\":\"2022-05-19T14:53:41-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"5555555555\",\"email\":\"TEST@EXAMPLE.COM\"}",
+      "Body": "{\"id\":\"es_a3c261562d4d4a3b829d992b57d1b923\",\"object\":\"EndShipper\",\"created_at\":\"2022-06-03T23:02:16-06:00\",\"updated_at\":\"2022-06-03T23:02:16-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -83,15 +84,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "169e51f76286ae55fe2dab63003d8297",
+        "x-ep-request-uuid": "457b28be629ae758e64086a8002539e9",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"d197225c82a077283830df56bd0f4423\"",
-        "x-runtime": "0.119009",
-        "x-node": "bigweb1nuq",
-        "x-version-label": "easypost-202205191856-f47f64ff93-master",
+        "ETag": "W/\"08342a1747a51635654b7b60ccb7c3aa\"",
+        "x-runtime": "0.036212",
+        "x-node": "bigweb6nuq",
+        "x-version-label": "easypost-202206030043-0fd9609f83-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 570dfcbc0a,extlb1nuq c51cdb8bf2",
+        "x-proxied": "intlb1nuq 570dfcbc0a,extlb1nuq 0910011e7e",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

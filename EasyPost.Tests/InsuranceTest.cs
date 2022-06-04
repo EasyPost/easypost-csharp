@@ -1,25 +1,24 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class InsuranceTest
+
+    public class InsuranceTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
+        public InsuranceTest() : base("insurance", TestUtils.ApiKey.Test)
+        {
+        }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("insurance");
-
-        [TestMethod]
+        [Fact]
         public async Task TestAll()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("all");
+            UseVCR("all");
 
-            InsuranceCollection insuranceCollection = await client.Insurance.All(new Dictionary<string, object>
+            InsuranceCollection insuranceCollection = await V2Client.Insurance.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -36,12 +35,12 @@ namespace EasyPost.Tests
             }
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("create");
+            UseVCR("create");
 
-            Insurance insurance = await CreateBasicInsurance(client);
+            Insurance insurance = await CreateBasicInsurance();
 
             Assert.IsInstanceOfType(insurance, typeof(Insurance));
             Assert.IsTrue(insurance.id.StartsWith("ins_"));
@@ -49,23 +48,23 @@ namespace EasyPost.Tests
             Assert.AreEqual("100.00000", insurance.amount);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
-            Insurance insurance = await CreateBasicInsurance(client);
+            Insurance insurance = await CreateBasicInsurance();
 
-            Insurance retrievedInsurance = await client.Insurance.Retrieve(insurance.id);
+            Insurance retrievedInsurance = await V2Client.Insurance.Retrieve(insurance.id);
             Assert.IsInstanceOfType(retrievedInsurance, typeof(Insurance));
             // Must compare IDs since other elements of object may be different
             Assert.AreEqual(insurance.id, retrievedInsurance.id);
         }
 
-        private static async Task<Insurance> CreateBasicInsurance(V2Client client)
+        private async Task<Insurance> CreateBasicInsurance()
         {
-            Dictionary<string, object> basicInsurance = await Fixture.BasicInsurance(client);
-            return await client.Insurance.Create(basicInsurance);
+            Dictionary<string, object> basicInsurance = await Fixture.BasicInsurance(V2Client);
+            return await V2Client.Insurance.Create(basicInsurance);
         }
     }
 }

@@ -1,25 +1,24 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Models.Beta;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class EndShipperTest
+
+    public class EndShipperTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
+        public EndShipperTest() : base("end_shipper", TestUtils.ApiKey.Production)
+        {
+        }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("end_shipper", TestUtils.ApiKey.Production);
-
-        [TestMethod]
+        [Fact]
         public async Task TestAll()
         {
-            BetaClient client = (BetaClient)_vcr.SetUpTest("all", null, ClientVersion.Beta);
+            UseVCR("all");
 
-            List<EndShipper> endShippers = await client.EndShippers.All(new Dictionary<string, object>
+            List<EndShipper> endShippers = await BetaClient.EndShippers.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -33,50 +32,50 @@ namespace EasyPost.Tests
             }
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            BetaClient client = (BetaClient)_vcr.SetUpTest("create", null, ClientVersion.Beta);
+            UseVCR("create");
 
-            EndShipper endShipper = await CreateBasicEndShipper(client);
+            EndShipper endShipper = await CreateBasicEndShipper();
 
             Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
             Assert.IsTrue(endShipper.id.StartsWith("es_"));
             Assert.AreEqual("388 TOWNSEND ST APT 20", endShipper.street1);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            BetaClient client = (BetaClient)_vcr.SetUpTest("retrieve", null, ClientVersion.Beta);
+            UseVCR("retrieve");
 
-            EndShipper endShipper = await CreateBasicEndShipper(client);
+            EndShipper endShipper = await CreateBasicEndShipper();
 
-            EndShipper retrievedEndShipper = await client.EndShippers.Retrieve(endShipper.id);
+            EndShipper retrievedEndShipper = await BetaClient.EndShippers.Retrieve(endShipper.id);
 
             Assert.IsInstanceOfType(retrievedEndShipper, typeof(EndShipper));
             Assert.AreEqual(endShipper.street1, retrievedEndShipper.street1);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestUpdate()
         {
-            BetaClient client = (BetaClient)_vcr.SetUpTest("update", null, ClientVersion.Beta);
+            UseVCR("update");
 
-            EndShipper endShipper = await CreateBasicEndShipper(client);
+            EndShipper endShipper = await CreateBasicEndShipper();
 
-            string newPhoneNumber = "9999999999";
+            string testName = "NEW NAME";
 
             Dictionary<string, object> endShipperData = Fixture.EndShipperAddress;
-            endShipperData["phone"] = newPhoneNumber;
+            endShipperData["name"] = testName;
 
             await endShipper.Update(endShipperData);
 
             Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
             Assert.IsTrue(endShipper.id.StartsWith("es_"));
-            Assert.AreEqual(newPhoneNumber, endShipper.phone);
+            Assert.AreEqual(testName, endShipper.name);
         }
 
-        private static async Task<EndShipper> CreateBasicEndShipper(BetaClient client) => await client.EndShippers.Create(Fixture.EndShipperAddress);
+        private async Task<EndShipper> CreateBasicEndShipper() => await BetaClient.EndShippers.Create(Fixture.EndShipperAddress);
     }
 }

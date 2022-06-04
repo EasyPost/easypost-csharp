@@ -1,22 +1,22 @@
 [
   {
-    "Duration": 208,
-    "RecordedAt": "2022-05-19T14:57:49.325333-06:00",
+    "Duration": 386,
+    "RecordedAt": "2022-06-03T23:02:20.333756-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
       "ContentHeaders": {},
       "Method": "GET",
       "RequestHeaders": {
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
         "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
-        "User-Agent": "EasyPost/beta,CSharpClient/3.0.0,.NET/6.0.4"
+        "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/beta/end_shippers?page_size=5"
     },
     "Response": {
-      "Body": "[{\"id\":\"es_1c5d0739799f408e9943383c639b30f2\",\"object\":\"EndShipper\",\"created_at\":\"2022-05-17T23:43:19+00:00\",\"updated_at\":\"2022-05-17T23:43:19+00:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"5555555555\",\"email\":\"TEST@EXAMPLE.COM\"},{\"id\":\"es_e591f790ddeb497a9469eb9104d9a90b\",\"object\":\"EndShipper\",\"created_at\":\"2022-05-17T23:43:19+00:00\",\"updated_at\":\"2022-05-17T23:43:19+00:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"5555555555\",\"email\":\"TEST@EXAMPLE.COM\"},{\"id\":\"es_3e5d2c14d0c24434b2809058fe9bf764\",\"object\":\"EndShipper\",\"created_at\":\"2022-05-17T23:43:20+00:00\",\"updated_at\":\"2022-05-17T23:43:20+00:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"5555555555\",\"email\":\"TEST@EXAMPLE.COM\"},{\"id\":\"es_042fc0f4620d472c888fcac88065ef2d\",\"object\":\"EndShipper\",\"created_at\":\"2022-05-18T21:55:08+00:00\",\"updated_at\":\"2022-05-18T21:55:08+00:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"5555555555\",\"email\":\"TEST@EXAMPLE.COM\"},{\"id\":\"es_aa2adbe577ff40bb9e64c082062c0f3c\",\"object\":\"EndShipper\",\"created_at\":\"2022-05-18T21:55:09+00:00\",\"updated_at\":\"2022-05-18T21:55:09+00:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"5555555555\",\"email\":\"TEST@EXAMPLE.COM\"}]",
+      "Body": "[{\"id\":\"es_1c5d0739799f408e9943383c639b30f2\",\"object\":\"EndShipper\",\"created_at\":\"2022-05-17T17:43:19-06:00\",\"updated_at\":\"2022-05-17T17:43:19-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"},{\"id\":\"es_e591f790ddeb497a9469eb9104d9a90b\",\"object\":\"EndShipper\",\"created_at\":\"2022-05-17T17:43:19-06:00\",\"updated_at\":\"2022-05-17T17:43:19-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"},{\"id\":\"es_3e5d2c14d0c24434b2809058fe9bf764\",\"object\":\"EndShipper\",\"created_at\":\"2022-05-17T17:43:20-06:00\",\"updated_at\":\"2022-05-17T17:43:20-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"},{\"id\":\"es_042fc0f4620d472c888fcac88065ef2d\",\"object\":\"EndShipper\",\"created_at\":\"2022-05-18T15:55:08-06:00\",\"updated_at\":\"2022-05-18T15:55:08-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"},{\"id\":\"es_aa2adbe577ff40bb9e64c082062c0f3c\",\"object\":\"EndShipper\",\"created_at\":\"2022-05-18T15:55:09-06:00\",\"updated_at\":\"2022-05-18T15:55:09-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}]",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -31,15 +31,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "169e51f96286af4de3d225e7003dc75e",
+        "x-ep-request-uuid": "a5a9f7ca629ae75ce652b8f10025025f",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
         "ETag": "W/\"00c862705e26113b8ffeb007f410f95f\"",
-        "x-runtime": "0.063968",
-        "x-node": "bigweb8nuq",
-        "x-version-label": "easypost-202205191856-f47f64ff93-master",
+        "x-runtime": "0.055548",
+        "x-node": "bigweb3nuq",
+        "x-version-label": "easypost-202206030043-0fd9609f83-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 570dfcbc0a,extlb1nuq c51cdb8bf2",
+        "x-proxied": "intlb2nuq 570dfcbc0a,intlb1wdc 570dfcbc0a,extlb1wdc 0910011e7e",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

@@ -1,43 +1,42 @@
 ﻿using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class ParcelTest
+
+    public class ParcelTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
+        public ParcelTest() : base("parcel", TestUtils.ApiKey.Test)
+        {
+        }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("parcel");
-
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("create");
+            UseVCR("create");
 
-            Parcel parcel = await CreateBasicParcel(client);
+            Parcel parcel = await CreateBasicParcel();
 
             Assert.IsInstanceOfType(parcel, typeof(Parcel));
             Assert.IsTrue(parcel.id.StartsWith("prcl_"));
             Assert.AreEqual(15.4, parcel.weight);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
-            Parcel parcel = await CreateBasicParcel(client);
+            Parcel parcel = await CreateBasicParcel();
 
-            Parcel retrievedParcel = await client.Parcels.Retrieve(parcel.id);
+            Parcel retrievedParcel = await V2Client.Parcels.Retrieve(parcel.id);
 
             Assert.IsInstanceOfType(retrievedParcel, typeof(Parcel));
             Assert.AreEqual(parcel, retrievedParcel);
         }
 
-        private static async Task<Parcel> CreateBasicParcel(V2Client client) => await client.Parcels.Create(Fixture.BasicParcel);
+        private async Task<Parcel> CreateBasicParcel() => await V2Client.Parcels.Create(Fixture.BasicParcel);
     }
 }

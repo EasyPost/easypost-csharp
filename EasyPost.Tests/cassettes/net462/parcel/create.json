@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 372,
-    "RecordedAt": "2022-05-19T14:54:51.87895-06:00",
+    "Duration": 645,
+    "RecordedAt": "2022-06-03T18:21:53.121099-06:00",
     "Request": {
       "Body": "{\"parcel\":{\"length\":\"10\",\"width\":\"8\",\"height\":\"4\",\"weight\":\"15.4\"}}",
       "BodyContentType": "Json",
@@ -11,15 +11,15 @@
       },
       "Method": "POST",
       "RequestHeaders": {
-        "Authorization": "*****",
+        "Authorization": "<REDACTED>",
         "content_type": "application/json",
         "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
-        "User-Agent": "EasyPost/v2,CSharpClient/3.0.0,.NET/4.0.30319.42000"
+        "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/parcels"
     },
     "Response": {
-      "Body": "{\"id\":\"prcl_8ff954410c58432eab05c1927a11b75d\",\"object\":\"Parcel\",\"created_at\":\"2022-05-19T20:54:51Z\",\"updated_at\":\"2022-05-19T20:54:51Z\",\"length\":10.0,\"width\":8.0,\"height\":4.0,\"predefined_package\":null,\"weight\":15.4,\"mode\":\"test\"}",
+      "Body": "{\"id\":\"prcl_ea9d03326b3f40e4823410db08474037\",\"object\":\"Parcel\",\"created_at\":\"2022-06-04T00:21:53Z\",\"updated_at\":\"2022-06-04T00:21:53Z\",\"length\":10.0,\"width\":8.0,\"height\":4.0,\"predefined_package\":null,\"weight\":15.4,\"mode\":\"test\"}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -34,16 +34,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "05c890bd6286ae9be3adf43e0037bf37",
+        "x-ep-request-uuid": "a5a9f7c5629aa5a1e653d63400122e34",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "Location": "/api/v2/parcels.prcl_8ff954410c58432eab05c1927a11b75d",
-        "ETag": "W/\"d220db498bba9d8032d876b69445760b\"",
-        "x-runtime": "0.021236",
+        "Location": "/api/v2/parcels.prcl_ea9d03326b3f40e4823410db08474037",
+        "ETag": "W/\"fd7ffec262634df71232d8e98689457f\"",
+        "x-runtime": "0.021196",
         "x-node": "bigweb5nuq",
-        "x-version-label": "easypost-202205191856-f47f64ff93-master",
+        "x-version-label": "easypost-202206030043-0fd9609f83-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 570dfcbc0a,intlb2wdc 570dfcbc0a,extlb3wdc c51cdb8bf2",
+        "x-proxied": "intlb2nuq 570dfcbc0a,intlb1wdc 570dfcbc0a,extlb1wdc 0910011e7e",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

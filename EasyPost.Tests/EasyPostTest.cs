@@ -1,14 +1,15 @@
 using EasyPost.Clients;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
+
     public class EasyPostTest
     {
         private const string FakeApikey = "fake_api_key";
 
-        [TestMethod]
+        [Fact]
         public void TestTimeout()
         {
             V2Client client = new V2Client(FakeApikey);

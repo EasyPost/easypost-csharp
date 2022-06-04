@@ -1,25 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class EventTest
+
+    public class EventTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
+        public EventTest() : base("event", TestUtils.ApiKey.Test)
+        {
+        }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("event");
-
-        [TestMethod]
+        [Fact]
         public async Task TestAll()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("all");
+            UseVCR("all");
 
-            EventCollection eventCollection = await GetBasicEventCollection(client);
+            EventCollection eventCollection = await GetBasicEventCollection();
 
             List<Event> events = eventCollection.events;
 
@@ -31,23 +30,23 @@ namespace EasyPost.Tests
             }
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
-            EventCollection eventCollection = await GetBasicEventCollection(client);
+            EventCollection eventCollection = await GetBasicEventCollection();
             Event _event = eventCollection.events[0];
 
-            Event retrievedEvent = await client.Events.Retrieve(_event.id);
+            Event retrievedEvent = await V2Client.Events.Retrieve(_event.id);
 
             Assert.IsInstanceOfType(retrievedEvent, typeof(Event));
             // Must compare IDs because other elements of objects may be different
             Assert.AreEqual(_event.id, retrievedEvent.id);
         }
 
-        private static async Task<EventCollection> GetBasicEventCollection(V2Client client) =>
-            await client.Events.All(new Dictionary<string, object>
+        private async Task<EventCollection> GetBasicEventCollection() =>
+            await V2Client.Events.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize

@@ -39,6 +39,7 @@ namespace EasyPost.Http
                     break;
                 case Method.Post:
                 case Method.Put:
+                case Method.Patch:
                     BuildBodyParameters();
                     break;
                 case Method.Head:
@@ -46,7 +47,6 @@ namespace EasyPost.Http
                 case Method.Merge:
                 case Method.Copy:
                 case Method.Search:
-                case Method.Patch:
                 default:
                     break;
             }

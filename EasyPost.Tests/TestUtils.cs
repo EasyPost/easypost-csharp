@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
@@ -13,10 +15,51 @@ namespace EasyPost.Tests
 
         private const string CassettesFolder = "cassettes";
 
+        private static readonly List<string> HeaderCensors = new List<string>
+        {
+            "Authorization",
+            "User-Agent",
+            "X-Client-User-Agent"
+        };
+
+        private static readonly List<string> QueryCensors = new List<string>
+        {
+            "card[number]",
+            "card[cvc]"
+        };
+
+        private static readonly List<string> BodyCensors = new List<string>
+        {
+            "api_keys",
+            "children",
+            "client_ip",
+            "credentials",
+            "email",
+            "key",
+            "keys",
+            "phone_number",
+            "phone",
+            "test_credentials"
+        };
+
+
         public enum ApiKey
         {
             Test,
             Production
+        }
+
+        internal static BaseClient GetClient(string apiKey, ClientVersion clientVersion, HttpClient vcrClient = null)
+        {
+            switch (clientVersion)
+            {
+                case ClientVersion.V2:
+                    return new V2Client(apiKey, vcrClient);
+                case ClientVersion.Beta:
+                    return new BetaClient(apiKey, vcrClient);
+                default:
+                    throw new Exception("Invalid client version");
+            }
         }
 
         private static string GetApiKey(ApiKey apiKey)
@@ -39,19 +82,29 @@ namespace EasyPost.Tests
 
         private static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath);
 
-        public class VCR
+        internal class VCR
         {
             private readonly string _apiKey;
 
             private readonly string _testCassettesFolder;
             private readonly EasyVCR.VCR _vcr;
 
-            public VCR(string testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
+            internal bool IsRecording()
             {
+                return _vcr.Mode == Mode.Record;
+            }
+
+            internal VCR(string testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
+            {
+                Censors censors = new Censors("<REDACTED>");
+                censors.HideHeaders(HeaderCensors);
+                censors.HideQueryParameters(QueryCensors);
+                censors.HideBodyParameters(BodyCensors);
+
                 AdvancedSettings advancedSettings = new AdvancedSettings
                 {
                     MatchRules = MatchRules.DefaultStrict,
-                    Censors = Censors.DefaultSensitive,
+                    Censors = censors,
                     SimulateDelay = false,
                     ManualDelay = 0,
                 };
@@ -89,7 +142,7 @@ namespace EasyPost.Tests
                 }
             }
 
-            public BaseClient SetUpTest(string cassetteName, string overrideApiKey = null, ClientVersion clientVersion = ClientVersion.V2)
+            internal BaseClient SetUpTest(string cassetteName, ClientVersion clientVersion, string overrideApiKey = null)
             {
                 // override api key if needed
                 string apiKey = overrideApiKey ?? _apiKey;
@@ -113,15 +166,7 @@ namespace EasyPost.Tests
                 }
 
                 // get EasyPost client
-                switch (clientVersion)
-                {
-                    case ClientVersion.V2:
-                        return new V2Client(apiKey, _vcr.Client);
-                    case ClientVersion.Beta:
-                        return new BetaClient(apiKey, _vcr.Client);
-                    default:
-                        throw new Exception("Invalid client version");
-                }
+                return GetClient(apiKey, clientVersion, _vcr.Client);
             }
         }
     }

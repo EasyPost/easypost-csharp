@@ -1,128 +1,134 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class UserTest
+    public class UserTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("user", TestUtils.ApiKey.Production);
-
-        // API keys are returned as plaintext, do not run this test.
-        [Ignore]
-        [TestMethod]
-        public async Task TestAllApiKeys()
+        public UserTest() : base("user", TestUtils.ApiKey.Production)
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("all_api_keys");
-
-
-            User user = await RetrieveMe(client);
-
-            // TODO: User doesn't have a .all_api_keys() method
-            List<ApiKey> apiKeys = user.api_keys;
+            CleanupFunction = async id =>
+            {
+                try
+                {
+                    User retrievedUser = await V2Client.Users.Retrieve(id);
+                    return await retrievedUser.Delete();
+                }
+                catch
+                {
+                    // trying to delete something that doesn't exist, pass
+                    return false;
+                }
+            };
         }
 
-        // API keys are returned as plaintext, do not run this test.
-        [Ignore]
-        [TestMethod]
-        public async Task TestApiKeys()
-        {
-            V2Client client = (V2Client)_vcr.SetUpTest("api_keys");
-
-            User user = await RetrieveMe(client);
-
-            List<ApiKey> apiKeys = user.api_keys;
-        }
-
-        // This endpoint returns the child user keys in plain text, do not run this test.
-        [Ignore]
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("create");
+            UseVCR("create");
 
-            User user = await CreateUser(client);
+            User user = await CreateUser();
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
             Assert.AreEqual("Test User", user.name);
         }
 
-        // Due to our inability to create child users securely, we must also skip deleting them as we cannot replace the deleted ones easily.
-        [Ignore]
-        [TestMethod]
-        public async Task TestDelete()
-        {
-            V2Client client = (V2Client)_vcr.SetUpTest("delete");
-
-
-            User user = await CreateUser(client);
-
-            await user.Delete();
-        }
-
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
-            User authenticatedUser = await RetrieveMe(client);
+            User authenticatedUser = await RetrieveMe();
 
-            string childId = authenticatedUser.children[0].id;
+            string id = authenticatedUser.id;
 
-            User user = await client.Users.Retrieve(childId);
+            User user = await V2Client.Users.Retrieve(id);
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual(childId, user.id);
+            Assert.AreEqual(id, user.id);
         }
 
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieveMe()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("retrieve_me");
+            UseVCR("retrieve_me");
 
-            User user = await RetrieveMe(client);
+            User user = await RetrieveMe();
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestUpdate()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("update");
+            UseVCR("update");
 
-            User user = await RetrieveMe(client);
+            User user = await CreateUser();
 
-            string testPhone = "5555555555";
+            string testName = "New Name";
 
             Dictionary<string, object> userDict = new Dictionary<string, object>
             {
                 {
-                    "phone_number", testPhone
+                    "name", testName
                 }
             };
             await user.Update(userDict);
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual(testPhone, user.phone_number);
+            Assert.AreEqual(testName, user.name);
         }
 
-        [TestMethod]
+        [Fact]
+        public async Task TestDelete()
+        {
+            UseVCR("delete");
+
+            User user = await CreateUser();
+
+            bool success = await user.Delete();
+            Assert.IsTrue(success);
+
+            SkipCleanUpAfterTest();
+        }
+
+        [Fact]
+        public async Task TestAllApiKeys()
+        {
+            UseVCR("all_api_keys");
+
+            List<ApiKey> apiKeys = await V2Client.ApiKeys.All();
+
+            // API keys will be censored, so we'll just check for the existence of the list
+            Assert.IsNotNull(apiKeys);
+        }
+
+        [Fact]
+        public async Task TestApiKeys()
+        {
+            UseVCR("api_keys");
+
+            User user = await RetrieveMe();
+
+            // API keys will be censored, so we'll just check for the existence of the `children` element
+            List<User> children = user.children;
+            Assert.IsNotNull(children);
+        }
+
+        [Fact]
         public async Task TestUpdateBrand()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("update_brand");
+            UseVCR("update_brand");
 
-            User user = await RetrieveMe(client);
+            User user = await CreateUser();
 
             string color = "#123456";
             Brand brand = await user.UpdateBrand(new Dictionary<string, object>
@@ -137,14 +143,19 @@ namespace EasyPost.Tests
             Assert.AreEqual(color, brand.color);
         }
 
-        private static async Task<User> CreateUser(V2Client client) =>
-            await client.Users.Create(new Dictionary<string, object>
+        private async Task<User> CreateUser()
+        {
+            User user = await V2Client.Users.Create(new Dictionary<string, object>
             {
                 {
                     "name", "Test User"
                 }
             });
+            CleanUpAfterTest(user.id);
 
-        private static async Task<User> RetrieveMe(V2Client client) => await client.Users.RetrieveMe();
+            return user;
+        }
+
+        private async Task<User> RetrieveMe() => await V2Client.Users.RetrieveMe();
     }
 }

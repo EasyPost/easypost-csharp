@@ -1,43 +1,42 @@
 ﻿using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class CustomsItemTest
+
+    public class CustomsItemTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
+        public CustomsItemTest() : base("customs_item", TestUtils.ApiKey.Test)
+        {
+        }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("customs_item");
-
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("create");
+            UseVCR("create");
 
-            CustomsItem customsItem = await CreateBasicCustomsItem(client);
+            CustomsItem customsItem = await CreateBasicCustomsItem();
 
             Assert.IsInstanceOfType(customsItem, typeof(CustomsItem));
             Assert.IsTrue(customsItem.id.StartsWith("cstitem_"));
             Assert.AreEqual(23.0, customsItem.value);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
-            CustomsItem customsItem = await CreateBasicCustomsItem(client);
+            CustomsItem customsItem = await CreateBasicCustomsItem();
 
-            CustomsItem retrievedCustomsItem = await client.CustomsItems.Retrieve(customsItem.id);
+            CustomsItem retrievedCustomsItem = await V2Client.CustomsItems.Retrieve(customsItem.id);
 
             Assert.IsInstanceOfType(retrievedCustomsItem, typeof(CustomsItem));
             Assert.AreEqual(customsItem, retrievedCustomsItem);
         }
 
-        private static async Task<CustomsItem> CreateBasicCustomsItem(V2Client client) => await client.CustomsItems.Create(Fixture.BasicCustomsItem);
+        private async Task<CustomsItem> CreateBasicCustomsItem() => await V2Client.CustomsItems.Create(Fixture.BasicCustomsItem);
     }
 }

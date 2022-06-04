@@ -1,43 +1,42 @@
 ﻿using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class CustomsInfoTest
+
+    public class CustomsInfoTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
+        public CustomsInfoTest() : base("customs_info", TestUtils.ApiKey.Test)
+        {
+        }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("customs_info");
-
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("create");
+            UseVCR("create");
 
-            CustomsInfo customsInfo = await CreateBasicCustomsInfo(client);
+            CustomsInfo customsInfo = await CreateBasicCustomsInfo();
 
             Assert.IsInstanceOfType(customsInfo, typeof(CustomsInfo));
             Assert.IsTrue(customsInfo.id.StartsWith("cstinfo_"));
             Assert.AreEqual("NOEEI 30.37(a)", customsInfo.eel_pfc);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
-            CustomsInfo customsInfo = await CreateBasicCustomsInfo(client);
+            CustomsInfo customsInfo = await CreateBasicCustomsInfo();
 
-            CustomsInfo retrievedCustomsInfo = await client.CustomsInfo.Retrieve(customsInfo.id);
+            CustomsInfo retrievedCustomsInfo = await V2Client.CustomsInfo.Retrieve(customsInfo.id);
 
             Assert.IsInstanceOfType(retrievedCustomsInfo, typeof(CustomsInfo));
             Assert.AreEqual(customsInfo, retrievedCustomsInfo);
         }
 
-        private static async Task<CustomsInfo> CreateBasicCustomsInfo(V2Client client) => await client.CustomsInfo.Create(Fixture.BasicCustomsInfo);
+        private async Task<CustomsInfo> CreateBasicCustomsInfo() => await V2Client.CustomsInfo.Create(Fixture.BasicCustomsInfo);
     }
 }

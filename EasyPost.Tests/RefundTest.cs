@@ -1,25 +1,24 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class RefundTest
+
+    public class RefundTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
+        public RefundTest() : base("refund", TestUtils.ApiKey.Test)
+        {
+        }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("refund");
-
-        [TestMethod]
+        [Fact]
         public async Task TestAll()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("all");
+            UseVCR("all");
 
-            RefundCollection refundCollection = await client.Refunds.All(new Dictionary<string, object>
+            RefundCollection refundCollection = await V2Client.Refunds.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -36,12 +35,12 @@ namespace EasyPost.Tests
             }
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("create");
+            UseVCR("create");
 
-            List<Refund> refunds = await CreateBasicRefund(client);
+            List<Refund> refunds = await CreateBasicRefund();
 
             foreach (Refund item in refunds)
             {
@@ -53,32 +52,32 @@ namespace EasyPost.Tests
             Assert.AreEqual("submitted", refund.status);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
-            RefundCollection refundCollection = await client.Refunds.All(new Dictionary<string, object>
+            RefundCollection refundCollection = await V2Client.Refunds.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
                 }
             });
 
-            Refund refund = (await CreateBasicRefund(client))[0];
+            Refund refund = (await CreateBasicRefund())[0];
 
-            Refund retrievedRefund = await client.Refunds.Retrieve(refund.id);
+            Refund retrievedRefund = await V2Client.Refunds.Retrieve(refund.id);
 
             Assert.IsInstanceOfType(retrievedRefund, typeof(Refund));
             Assert.AreEqual(refund, retrievedRefund);
         }
 
-        private static async Task<List<Refund>> CreateBasicRefund(V2Client client)
+        private async Task<List<Refund>> CreateBasicRefund()
         {
-            Shipment shipment = await client.Shipments.Create(Fixture.OneCallBuyShipment);
-            Shipment retrievedShipment = await client.Shipments.Retrieve(shipment.id); // We need to retrieve the shipment so that the tracking_code has time to populate
+            Shipment shipment = await V2Client.Shipments.Create(Fixture.OneCallBuyShipment);
+            Shipment retrievedShipment = await V2Client.Shipments.Retrieve(shipment.id); // We need to retrieve the shipment so that the tracking_code has time to populate
 
-            return await client.Refunds.Create(new Dictionary<string, object>
+            return await V2Client.Refunds.Create(new Dictionary<string, object>
             {
                 {
                     "carrier", Fixture.Usps

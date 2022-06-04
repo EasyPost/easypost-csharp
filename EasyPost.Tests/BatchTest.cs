@@ -1,28 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class BatchTest
+
+    public class BatchTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
+        public BatchTest() : base("batch", TestUtils.ApiKey.Test)
+        {
+        }
 
-        [TestInitialize]
-        public void Initialize() => _vcr = new TestUtils.VCR("batch");
-
-        [TestMethod]
+        [Fact]
         public async Task TestAddRemoveShipment()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("add_remove_shipment");
+            UseVCR("add_remove_shipment");
 
-            Shipment shipment = await client.Shipments.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await V2Client.Shipments.Create(Fixture.OneCallBuyShipment);
 
-            Batch batch = await client.Batches.Create();
+            Batch batch = await V2Client.Batches.Create();
 
             await batch.AddShipments(new List<Shipment>
             {
@@ -39,12 +38,12 @@ namespace EasyPost.Tests
             Assert.AreEqual(0, batch.num_shipments);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestAll()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("all");
+            UseVCR("all");
 
-            BatchCollection batchCollection = await client.Batches.All(new Dictionary<string, object>
+            BatchCollection batchCollection = await V2Client.Batches.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -61,12 +60,12 @@ namespace EasyPost.Tests
             }
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestBuy()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("buy");
+            UseVCR("buy");
 
-            Batch batch = await CreateOneCallBuyBatch(client);
+            Batch batch = await CreateOneCallBuyBatch();
 
             // Uncomment the following line if you need to re-record the cassette
             // Thread.Sleep(5000); // Wait enough time for the batch to process buying the shipment
@@ -76,24 +75,24 @@ namespace EasyPost.Tests
             Assert.AreEqual(1, batch.num_shipments);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("create");
+            UseVCR("create");
 
-            Batch batch = await CreateBasicBatch(client);
+            Batch batch = await CreateBasicBatch();
 
             Assert.IsInstanceOfType(batch, typeof(Batch));
             Assert.IsTrue(batch.id.StartsWith("batch_"));
             Assert.IsNotNull(batch.shipments);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestCreateAndBuy()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("create_and_buy");
+            UseVCR("create_and_buy");
 
-            Batch batch = await client.Batches.CreateAndBuy(new Dictionary<string, object>
+            Batch batch = await V2Client.Batches.CreateAndBuy(new Dictionary<string, object>
             {
                 {
                     "shipments", new List<Dictionary<string, object>>
@@ -108,20 +107,20 @@ namespace EasyPost.Tests
             Assert.AreEqual(1, batch.num_shipments);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestCreateScanForm()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("create_scan_form");
+            UseVCR("create_scan_form");
 
 
-            Batch batch = await CreateOneCallBuyBatch(client);
+            Batch batch = await CreateOneCallBuyBatch();
 
-            // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(5000); // Wait enough time for the batch to process buying the shipment
             await batch.Buy();
 
-            // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(5000); // Wait enough time for the batch to process
+            if (IsRecording())
+            {
+                Thread.Sleep(15000); // Wait enough time to process
+            }
 
             await batch.GenerateScanForm();
 
@@ -129,20 +128,19 @@ namespace EasyPost.Tests
             Assert.IsInstanceOfType(batch, typeof(Batch));
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestLabel()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("label");
+            UseVCR("label");
 
+            Batch batch = await CreateOneCallBuyBatch();
 
-            Batch batch = await CreateOneCallBuyBatch(client);
-
-            // Uncomment the following line if you need to re-record the cassette
-            // hread.Sleep(5000); // Wait enough time for the batch to process buying the shipment
             await batch.Buy();
 
-            // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(5000); // Wait enough time for the batch to process
+            if (IsRecording())
+            {
+                Thread.Sleep(15000); // Wait enough time to process
+            }
 
             await batch.GenerateLabel("ZPL");
 
@@ -150,23 +148,22 @@ namespace EasyPost.Tests
             Assert.IsInstanceOfType(batch, typeof(Batch));
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            V2Client client = (V2Client)_vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
+            Batch batch = await CreateBasicBatch();
 
-            Batch batch = await CreateBasicBatch(client);
-
-            Batch retrievedBatch = await client.Batches.Retrieve(batch.id);
+            Batch retrievedBatch = await V2Client.Batches.Retrieve(batch.id);
 
             Assert.IsInstanceOfType(retrievedBatch, typeof(Batch));
             // Must compare IDs since elements of batch (i.e. status) may be different
             Assert.AreEqual(batch.id, retrievedBatch.id);
         }
 
-        private static async Task<Batch> CreateBasicBatch(V2Client client) =>
-            await client.Batches.Create(new Dictionary<string, object>
+        private async Task<Batch> CreateBasicBatch() =>
+            await V2Client.Batches.Create(new Dictionary<string, object>
             {
                 {
                     "shipments", new List<Dictionary<string, object>>
@@ -176,8 +173,8 @@ namespace EasyPost.Tests
                 }
             });
 
-        private static async Task<Batch> CreateOneCallBuyBatch(V2Client client) =>
-            await client.Batches.Create(new Dictionary<string, object>
+        private async Task<Batch> CreateOneCallBuyBatch() =>
+            await V2Client.Batches.Create(new Dictionary<string, object>
             {
                 {
                     "shipments", new List<Dictionary<string, object>>
