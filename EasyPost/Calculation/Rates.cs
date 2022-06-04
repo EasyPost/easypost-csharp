@@ -39,6 +39,11 @@ namespace EasyPost.Calculation
                     continue;
                 }
 
+                if (rate.rate == null || lowestRate.rate == null)
+                {
+                    throw new FilterFailure("Could not compare null elements.");
+                }
+
                 float rateValue = float.Parse(rate.rate);
                 float lowestRateValue = float.Parse(lowestRate.rate);
 
@@ -49,7 +54,6 @@ namespace EasyPost.Calculation
                 }
 
                 lowestRate = rate;
-                continue;
             }
 
             if (lowestRate == null)
@@ -69,9 +73,9 @@ namespace EasyPost.Calculation
         /// <returns>Lowest rate matching the filter.</returns>
         public static Smartrate GetLowestShipmentSmartrate(IEnumerable<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy)
         {
-            Smartrate lowestSmartrate = null;
+            Smartrate? lowestSmartrate = null;
 
-            foreach (Smartrate smartrate in from smartrate in smartrates let smartrateAccuracy = smartrate.time_in_transit.GetBySmartrateAccuracy(deliveryAccuracy) where smartrateAccuracy != null where !(smartrateAccuracy > deliveryDays) select smartrate)
+            foreach (Smartrate? smartrate in from smartrate in smartrates let smartrateAccuracy = smartrate.time_in_transit.GetBySmartrateAccuracy(deliveryAccuracy) where smartrateAccuracy != null where !(smartrateAccuracy > deliveryDays) select smartrate)
             {
                 // if lowest smartrate is null, set it to this smartrate
                 if (lowestSmartrate == null)
@@ -87,7 +91,6 @@ namespace EasyPost.Calculation
                 }
 
                 lowestSmartrate = smartrate;
-                continue;
             }
 
             if (lowestSmartrate == null)

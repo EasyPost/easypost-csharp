@@ -40,6 +40,6 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a webhook. Starts with "hook_".</param>
         /// <returns>EasyPost.User instance.</returns>
-        public async Task<Webhook> Retrieve(string id) => await Get<Webhook>($"webhooks/{id}");
+        public async Task<Webhook> Retrieve(string? id) => await Get<Webhook>($"webhooks/{id}");
     }
 }

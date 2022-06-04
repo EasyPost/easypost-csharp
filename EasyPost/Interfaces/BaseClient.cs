@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using EasyPost.Clients;
+using EasyPost.Exceptions;
 using EasyPost.Http;
 using EasyPost.Models.V2;
 using EasyPost.Utilities;
@@ -85,7 +86,7 @@ namespace EasyPost.Interfaces
         /// </summary>
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
         /// <returns>An instance of a T type object.</returns>
-        /// <exception cref="HttpException">An error occurred during the API request.</exception>
+        /// <exception cref="ApiException">An error occurred during the API request.</exception>
         internal async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
         {
             Request request = new Request(url, method, parameters, rootElement);
@@ -134,10 +135,10 @@ namespace EasyPost.Interfaces
             }
             catch
             {
-                throw new HttpException(statusCode, "RESPONSE.PARSE_ERROR", response.Content, new List<Error>());
+                throw new ApiException(statusCode, "RESPONSE.PARSE_ERROR", response.Content, new List<Error>());
             }
 
-            throw new HttpException(
+            throw new ApiException(
                 statusCode,
                 (string)body["error"]["code"],
                 (string)body["error"]["message"],

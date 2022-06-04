@@ -9,10 +9,10 @@ namespace EasyPost.Models.V2
         [JsonProperty("datetime")]
         public DateTime? datetime { get; set; }
         [JsonProperty("message")]
-        public string message { get; set; }
+        public string? message { get; set; }
         [JsonProperty("status")]
-        public string status { get; set; }
+        public string? status { get; set; }
         [JsonProperty("tracking_location")]
-        public TrackingLocation tracking_location { get; set; }
+        public TrackingLocation? tracking_location { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace EasyPost.Models.V2
     public class InsuranceCollection : Collection
     {
         [JsonProperty("insurances")]
-        public List<Insurance> insurances { get; set; }
+        public List<Insurance>? insurances { get; set; }
     }
 }

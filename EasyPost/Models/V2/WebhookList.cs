@@ -7,6 +7,6 @@ namespace EasyPost.Models.V2
     internal class WebhookList : Resource
     {
         [JsonProperty("webhooks")]
-        public List<Webhook> webhooks { get; set; }
+        public List<Webhook>? webhooks { get; set; }
     }
 }

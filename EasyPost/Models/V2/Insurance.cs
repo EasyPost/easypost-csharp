@@ -9,31 +9,31 @@ namespace EasyPost.Models.V2
     public class Insurance : Resource
     {
         [JsonProperty("amount")]
-        public string amount { get; set; }
+        public string? amount { get; set; }
         [JsonProperty("from_address")]
-        public Address from_address { get; set; }
+        public Address? from_address { get; set; }
         [JsonProperty("id")]
-        public string id { get; set; }
+        public string? id { get; set; }
         [JsonProperty("messages")]
-        public List<string> messages { get; set; }
+        public List<string>? messages { get; set; }
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public string? mode { get; set; }
         [JsonProperty("provider")]
-        public string provider { get; set; }
+        public string? provider { get; set; }
         [JsonProperty("provider_id")]
-        public string provider_id { get; set; }
+        public string? provider_id { get; set; }
         [JsonProperty("reference")]
-        public string reference { get; set; }
+        public string? reference { get; set; }
         [JsonProperty("shipment_id")]
-        public string shipment_id { get; set; }
+        public string? shipment_id { get; set; }
         [JsonProperty("status")]
-        public string status { get; set; }
+        public string? status { get; set; }
         [JsonProperty("to_address")]
-        public Address to_address { get; set; }
+        public Address? to_address { get; set; }
         [JsonProperty("tracker")]
-        public Tracker tracker { get; set; }
+        public Tracker? tracker { get; set; }
         [JsonProperty("tracking_code")]
-        public string tracking_code { get; set; }
+        public string? tracking_code { get; set; }
 
         /// <summary>
         ///     Refresh this Insurance.

@@ -10,23 +10,23 @@ namespace EasyPost.Models.V2
     public class CarrierAccount : Resource
     {
         [JsonProperty("billing_type")]
-        public string billing_type { get; set; }
+        public string? billing_type { get; set; }
         [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
         [JsonProperty("credentials")]
-        public Dictionary<string, object> credentials { get; set; }
+        public Dictionary<string, object>? credentials { get; set; }
         [JsonProperty("description")]
-        public string description { get; set; }
+        public string? description { get; set; }
         [JsonProperty("id")]
-        public string id { get; set; }
+        public string? id { get; set; }
         [JsonProperty("readable")]
-        public string readable { get; set; }
+        public string? readable { get; set; }
         [JsonProperty("reference")]
-        public string reference { get; set; }
+        public string? reference { get; set; }
         [JsonProperty("test_credentials")]
-        public Dictionary<string, object> test_credentials { get; set; }
+        public Dictionary<string, object>? test_credentials { get; set; }
         [JsonProperty("type")]
-        public string type { get; set; }
+        public string? type { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
 

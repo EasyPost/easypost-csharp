@@ -11,11 +11,11 @@ namespace EasyPost.Models.V2
         [JsonProperty("disabled_at")]
         public DateTime? disabled_at { get; set; }
         [JsonProperty("id")]
-        public string id { get; set; }
+        public string? id { get; set; }
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public string? mode { get; set; }
         [JsonProperty("url")]
-        public string url { get; set; }
+        public string? url { get; set; }
 
         /// <summary>
         ///     Delete this webhook.

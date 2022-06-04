@@ -109,11 +109,12 @@ namespace EasyPost.Utilities
 
             try
             {
-                return JsonConvert.DeserializeObject<T>(data, jsonSerializerSettings ?? DefaultJsonSerializerSettings);
+                var obj = JsonConvert.DeserializeObject<T>(data, jsonSerializerSettings ?? DefaultJsonSerializerSettings);
+                return (obj ?? default)!;
             }
             catch (Exception)
             {
-                return default;
+                return default!;
             }
         }
 
@@ -211,11 +212,11 @@ namespace EasyPost.Utilities
                 return null;
             }
 
-            object json = JsonConvert.DeserializeObject(data);
+            object? json = JsonConvert.DeserializeObject(data);
             try
             {
-                rootElementKeys.ForEach(key => { json = (json as JObject).Property(key).Value; });
-                return (json as JToken).ToString();
+                rootElementKeys.ForEach(key => { json = (json as JObject)?.Property(key)?.Value; });
+                return (json as JToken)?.ToString();
             }
             catch (Exception)
             {

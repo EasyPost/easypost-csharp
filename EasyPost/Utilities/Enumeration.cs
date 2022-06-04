@@ -12,7 +12,7 @@ namespace EasyPost.Utilities
 
         protected Enumeration(int id, string name) => (Id, Name) = (id, name);
 
-        public int CompareTo(object? other) => Id.CompareTo((((Enumeration)other!)).Id);
+        public int CompareTo(object? other) => Id.CompareTo(((Enumeration)other!).Id);
 
         protected bool Equals(Enumeration other) => Id == other.Id && Name == other.Name;
 
@@ -33,6 +33,14 @@ namespace EasyPost.Utilities
             {
                 // casting likely failed
                 return false;
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (Id * 397) ^ Name.GetHashCode();
             }
         }
 

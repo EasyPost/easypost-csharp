@@ -12,6 +12,6 @@ namespace EasyPost.Models.V2
         [JsonProperty("refunded")]
         public bool refunded { get; set; }
         [JsonProperty("type")]
-        public string type { get; set; }
+        public string? type { get; set; }
     }
 }

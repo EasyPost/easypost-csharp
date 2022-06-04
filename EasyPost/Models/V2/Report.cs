@@ -11,19 +11,19 @@ namespace EasyPost.Models.V2
         [JsonProperty("end_date")]
         public DateTime? end_date { get; set; }
         [JsonProperty("id")]
-        public string id { get; set; }
+        public string? id { get; set; }
         [JsonProperty("include_children")]
         public bool include_children { get; set; }
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public string? mode { get; set; }
         [JsonProperty("start_date")]
         public DateTime? start_date { get; set; }
         [JsonProperty("status")]
-        public string status { get; set; }
+        public string? status { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
         [JsonProperty("url")]
-        public string url { get; set; }
+        public string? url { get; set; }
         [JsonProperty("url_expires_at")]
         public DateTime? url_expires_at { get; set; }
     }

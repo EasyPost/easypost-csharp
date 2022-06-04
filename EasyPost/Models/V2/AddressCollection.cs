@@ -7,6 +7,6 @@ namespace EasyPost.Models.V2
     public class AddressCollection : Collection
     {
         [JsonProperty("addresses")]
-        public List<Address> addresses { get; set; }
+        public List<Address>? addresses { get; set; }
     }
 }

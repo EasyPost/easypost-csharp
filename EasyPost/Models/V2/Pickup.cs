@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EasyPost.Exceptions;
 using EasyPost.Interfaces;
 using Newtonsoft.Json;
 using RestSharp;
@@ -11,35 +12,35 @@ namespace EasyPost.Models.V2
     public class Pickup : Resource
     {
         [JsonProperty("address")]
-        public Address address { get; set; }
+        public Address? address { get; set; }
         [JsonProperty("carrier_accounts")]
-        public List<CarrierAccount> carrier_accounts { get; set; }
+        public List<CarrierAccount>? carrier_accounts { get; set; }
         [JsonProperty("confirmation")]
-        public string confirmation { get; set; }
+        public string? confirmation { get; set; }
         [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
         [JsonProperty("id")]
-        public string id { get; set; }
+        public string? id { get; set; }
         [JsonProperty("instructions")]
-        public string instructions { get; set; }
+        public string? instructions { get; set; }
         [JsonProperty("is_account_address")]
         public bool is_account_address { get; set; }
         [JsonProperty("max_datetime")]
         public DateTime max_datetime { get; set; }
         [JsonProperty("messages")]
-        public List<Message> messages { get; set; }
+        public List<Message>? messages { get; set; }
         [JsonProperty("min_datetime")]
         public DateTime min_datetime { get; set; }
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public string? mode { get; set; }
         [JsonProperty("name")]
-        public string name { get; set; }
+        public string? name { get; set; }
         [JsonProperty("pickup_rates")]
-        public List<PickupRate> pickup_rates { get; set; }
+        public List<PickupRate>? pickup_rates { get; set; }
         [JsonProperty("reference")]
-        public string reference { get; set; }
+        public string? reference { get; set; }
         [JsonProperty("status")]
-        public string status { get; set; }
+        public string? status { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
 
@@ -86,10 +87,7 @@ namespace EasyPost.Models.V2
         /// <returns>List of Rate objects.</returns>
         internal IEnumerable<Rate> Rates
         {
-            get
-            {
-                return pickup_rates.Cast<Rate>().ToList();
-            }
+            get { return pickup_rates != null ? pickup_rates.Cast<Rate>().ToList() : new List<Rate>(); }
         }
 
         /// <summary>

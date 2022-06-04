@@ -9,8 +9,8 @@ namespace EasyPost.Models.V2
         [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
         [JsonProperty("key")]
-        public string key { get; set; }
+        public string? key { get; set; }
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public string? mode { get; set; }
     }
 }

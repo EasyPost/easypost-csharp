@@ -11,7 +11,7 @@ namespace EasyPost.Interfaces
 {
     public class Resource
     {
-        [JsonIgnore] internal BaseClient Client;
+        [JsonIgnore] internal BaseClient? Client;
 
         public override bool Equals(object? obj)
         {
@@ -31,7 +31,10 @@ namespace EasyPost.Interfaces
             return thisJson == otherJson;
         }
 
-        public override int GetHashCode() => Client.GetHashCode();
+        public override int GetHashCode()
+        {
+            return AsDictionary().GetHashCode();
+        }
 
         /// <summary>
         ///     Get the dictionary representation of this object instance.
