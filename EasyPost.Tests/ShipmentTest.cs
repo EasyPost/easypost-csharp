@@ -2,16 +2,14 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class ShipmentTest : UnitTest
     {
-        public ShipmentTest() : base("shipment", TestUtils.ApiKey.Test)
+        public ShipmentTest() : base("shipment")
         {
         }
 

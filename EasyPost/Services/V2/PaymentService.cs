@@ -21,37 +21,6 @@ namespace EasyPost.Services.V2
         }
 
         /// <summary>
-        ///     Get a payment method (credit card) by priority.
-        /// </summary>
-        /// <param name="priority">Which priority payment method to get.</param>
-        /// <returns>An EasyPost.CreditCard instance.</returns>
-        /// <exception cref="Exception">Billing has not been set up yet, or the Priority provided is invalid.</exception>
-        private async Task<CreditCard> GetPaymentMethodByPriority(Priority priority)
-        {
-            PaymentMethodSummary summary = await All();
-
-            CreditCard? paymentMethod = null;
-            switch (priority)
-            {
-                case Priority.Primary:
-                    paymentMethod = summary.primary_payment_method;
-                    break;
-                case Priority.Secondary:
-                    paymentMethod = summary.secondary_payment_method;
-                    break;
-                default:
-                    break;
-            }
-
-            if (paymentMethod == null)
-            {
-                throw new Exception("The chosen payment method is not a valid method. Please try again.");
-            }
-
-            return paymentMethod;
-        }
-
-        /// <summary>
         ///     List all payment methods for this account.
         /// </summary>
         /// <returns>An EasyPost.PaymentMethod summary object.</returns>
@@ -91,6 +60,35 @@ namespace EasyPost.Services.V2
             CreditCard paymentMethod = await GetPaymentMethodByPriority(priority);
 
             return await paymentMethod.Fund(amount);
+        }
+
+        /// <summary>
+        ///     Get a payment method (credit card) by priority.
+        /// </summary>
+        /// <param name="priority">Which priority payment method to get.</param>
+        /// <returns>An EasyPost.CreditCard instance.</returns>
+        /// <exception cref="Exception">Billing has not been set up yet, or the Priority provided is invalid.</exception>
+        private async Task<CreditCard> GetPaymentMethodByPriority(Priority priority)
+        {
+            PaymentMethodSummary summary = await All();
+
+            CreditCard? paymentMethod = null;
+            switch (priority)
+            {
+                case Priority.Primary:
+                    paymentMethod = summary.primary_payment_method;
+                    break;
+                case Priority.Secondary:
+                    paymentMethod = summary.secondary_payment_method;
+                    break;
+            }
+
+            if (paymentMethod == null)
+            {
+                throw new Exception("The chosen payment method is not a valid method. Please try again.");
+            }
+
+            return paymentMethod;
         }
     }
 }

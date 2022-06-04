@@ -6,10 +6,9 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class PickupTest : UnitTest
     {
-        public PickupTest() : base("pickup", TestUtils.ApiKey.Test)
+        public PickupTest() : base("pickup")
         {
         }
 

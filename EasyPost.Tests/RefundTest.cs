@@ -6,10 +6,9 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class RefundTest : UnitTest
     {
-        public RefundTest() : base("refund", TestUtils.ApiKey.Test)
+        public RefundTest() : base("refund")
         {
         }
 

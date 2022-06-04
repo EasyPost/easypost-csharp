@@ -44,11 +44,11 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />
-    <PackageReference Include="RestSharp" Version="[107.3.0, 108.0.0)" />
+    <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)"/>
+    <PackageReference Include="RestSharp" Version="[107.3.0, 108.0.0)"/>
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="IResource.cs" />
+    <Compile Remove="IResource.cs"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EasyPost.pfx">

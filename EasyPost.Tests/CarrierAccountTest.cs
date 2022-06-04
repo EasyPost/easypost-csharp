@@ -8,8 +8,7 @@ namespace EasyPost.Tests
 {
     public class CarrierAccountTest : UnitTest
     {
-        public CarrierAccountTest() : base("carrier_account", TestUtils.ApiKey.Production)
-        {
+        public CarrierAccountTest() : base("carrier_account", TestUtils.ApiKey.Production) =>
             CleanupFunction = async id =>
             {
                 try
@@ -23,7 +22,6 @@ namespace EasyPost.Tests
                     return false;
                 }
             };
-        }
 
         [Fact]
         public async Task TestAll()
@@ -99,10 +97,11 @@ namespace EasyPost.Tests
 
             string testDescription = "my custom description";
 
-            Dictionary<string, object> carrierAccountData = new Dictionary<string, object>
+            Dictionary<string, object> carrierAccountData = new Dictionary<string, object>()
             {
                 {
-                    "description", testDescription
+                    "description",
+                    testDescription
                 }
             };
             await carrierAccount.Update(carrierAccountData);

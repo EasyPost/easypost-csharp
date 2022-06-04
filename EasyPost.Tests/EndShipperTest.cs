@@ -6,7 +6,6 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class EndShipperTest : UnitTest
     {
         public EndShipperTest() : base("end_shipper", TestUtils.ApiKey.Production)

@@ -15,20 +15,7 @@ namespace EasyPost.Tests
 
         private const string CassettesFolder = "cassettes";
 
-        private static readonly List<string> HeaderCensors = new List<string>
-        {
-            "Authorization",
-            "User-Agent",
-            "X-Client-User-Agent"
-        };
-
-        private static readonly List<string> QueryCensors = new List<string>
-        {
-            "card[number]",
-            "card[cvc]"
-        };
-
-        private static readonly List<string> BodyCensors = new List<string>
+        private static readonly List<string> BodyCensors = new List<string>()
         {
             "api_keys",
             "children",
@@ -40,6 +27,19 @@ namespace EasyPost.Tests
             "phone_number",
             "phone",
             "test_credentials"
+        };
+
+        private static readonly List<string> HeaderCensors = new List<string>()
+        {
+            "Authorization",
+            "User-Agent",
+            "X-Client-User-Agent"
+        };
+
+        private static readonly List<string> QueryCensors = new List<string>()
+        {
+            "card[number]",
+            "card[cvc]"
         };
 
 
@@ -89,11 +89,6 @@ namespace EasyPost.Tests
             private readonly string _testCassettesFolder;
             private readonly EasyVCR.VCR _vcr;
 
-            internal bool IsRecording()
-            {
-                return _vcr.Mode == Mode.Record;
-            }
-
             internal VCR(string testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
             {
                 Censors censors = new Censors("<REDACTED>");
@@ -101,12 +96,12 @@ namespace EasyPost.Tests
                 censors.HideQueryParameters(QueryCensors);
                 censors.HideBodyParameters(BodyCensors);
 
-                AdvancedSettings advancedSettings = new AdvancedSettings
+                AdvancedSettings advancedSettings = new AdvancedSettings()
                 {
                     MatchRules = MatchRules.DefaultStrict,
                     Censors = censors,
                     SimulateDelay = false,
-                    ManualDelay = 0,
+                    ManualDelay = 0
                 };
                 _vcr = new EasyVCR.VCR(advancedSettings);
 
@@ -118,7 +113,7 @@ namespace EasyPost.Tests
 #if NET6_0
                     netVersionFolder = "net60";
 #elif NET5_0
-                    netVersionFolder = "net50";
+                netVersionFolder = "net50";
 #elif NETCOREAPP3_1
                     netVersionFolder = "netcore3.1";
 #elif NET462
@@ -141,6 +136,8 @@ namespace EasyPost.Tests
                     Directory.CreateDirectory(_testCassettesFolder);
                 }
             }
+
+            internal bool IsRecording() => _vcr.Mode == Mode.Record;
 
             internal BaseClient SetUpTest(string cassetteName, ClientVersion clientVersion, string overrideApiKey = null)
             {

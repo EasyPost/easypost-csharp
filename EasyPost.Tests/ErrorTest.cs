@@ -5,10 +5,9 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class ErrorTest : UnitTest
     {
-        public ErrorTest() : base("error", TestUtils.ApiKey.Test)
+        public ErrorTest() : base("error")
         {
         }
 

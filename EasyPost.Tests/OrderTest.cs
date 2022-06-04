@@ -6,10 +6,9 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class OrderTest : UnitTest
     {
-        public OrderTest() : base("order", TestUtils.ApiKey.Test)
+        public OrderTest() : base("order")
         {
         }
 

@@ -6,10 +6,9 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class ScanFormTest : UnitTest
     {
-        public ScanFormTest() : base("scan_form", TestUtils.ApiKey.Test)
+        public ScanFormTest() : base("scan_form")
         {
         }
 

@@ -5,10 +5,9 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class RateTest : UnitTest
     {
-        public RateTest() : base("rate", TestUtils.ApiKey.Test)
+        public RateTest() : base("rate")
         {
         }
 

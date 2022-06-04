@@ -7,10 +7,9 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class BatchTest : UnitTest
     {
-        public BatchTest() : base("batch", TestUtils.ApiKey.Test)
+        public BatchTest() : base("batch")
         {
         }
 

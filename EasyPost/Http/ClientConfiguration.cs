@@ -24,6 +24,7 @@ namespace EasyPost.Http
         /// </summary>
         /// <param name="apiKey">The API key to use for the client connection.</param>
         /// <param name="apiBase">The base API url to use for the client connection.</param>
+        /// <param name="apiVersion">Which version of the API to use.</param>
         internal ClientConfiguration(string apiKey, string apiBase, string apiVersion)
         {
             ApiKey = apiKey;

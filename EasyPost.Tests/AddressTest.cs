@@ -8,7 +8,7 @@ namespace EasyPost.Tests
 {
     public class AddressTest : UnitTest
     {
-        public AddressTest() : base("address", TestUtils.ApiKey.Test)
+        public AddressTest() : base("address")
         {
         }
 

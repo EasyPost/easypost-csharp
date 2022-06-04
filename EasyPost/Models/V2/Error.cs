@@ -24,6 +24,6 @@ namespace EasyPost.Models.V2
         /// <param name="json">JSON data to use for Error creation.</param>
         /// <typeparam name="T">The type of object to deserialize the JSON data into.</typeparam>
         /// <returns>An instance of a T type object.</returns>
-        public static new T Load<T>(string json) where T : Resource => JsonSerialization.ConvertJsonToObject<T>(json);
+        public static T Load<T>(string json) where T : Resource => JsonSerialization.ConvertJsonToObject<T>(json);
     }
 }

@@ -6,10 +6,9 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class ReportTest : UnitTest
     {
-        public ReportTest() : base("report", TestUtils.ApiKey.Test)
+        public ReportTest() : base("report")
         {
         }
 
@@ -51,7 +50,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create_report_with_additional_columns");
 
-            List<string> additionalColumns = new List<string>
+            List<string> additionalColumns = new List<string>()
             {
                 "from_name",
                 "from_company"
@@ -76,7 +75,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create_report_with_columns");
 
-            List<string> columns = new List<string>
+            List<string> columns = new List<string>()
             {
                 "usps_zone"
             };

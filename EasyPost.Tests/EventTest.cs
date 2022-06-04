@@ -6,10 +6,9 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class EventTest : UnitTest
     {
-        public EventTest() : base("event", TestUtils.ApiKey.Test)
+        public EventTest() : base("event")
         {
         }
 

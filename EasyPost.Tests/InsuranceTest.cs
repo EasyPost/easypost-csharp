@@ -6,10 +6,9 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class InsuranceTest : UnitTest
     {
-        public InsuranceTest() : base("insurance", TestUtils.ApiKey.Test)
+        public InsuranceTest() : base("insurance")
         {
         }
 

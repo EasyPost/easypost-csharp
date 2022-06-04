@@ -6,10 +6,9 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class TrackerTest : UnitTest
     {
-        public TrackerTest() : base("tracker", TestUtils.ApiKey.Test)
+        public TrackerTest() : base("tracker")
         {
         }
 

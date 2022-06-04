@@ -1,19 +1,15 @@
 using System.Threading.Tasks;
 using EasyPost.Models.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class PaymentTest : UnitTest
     {
         public PaymentTest() : base("payment", TestUtils.ApiKey.Production)
         {
         }
-
-        private async Task<PaymentMethodSummary> GetPaymentMethodSummary() => await V2Client.Payments.All();
 
         [Fact]
         // need to manually add details via dashboard when recording
@@ -55,5 +51,7 @@ namespace EasyPost.Tests
             Assert.IsNotNull(funding);
             Assert.IsInstanceOfType(funding, typeof(CreditCardFunding));
         }
+
+        private async Task<PaymentMethodSummary> GetPaymentMethodSummary() => await V2Client.Payments.All();
     }
 }

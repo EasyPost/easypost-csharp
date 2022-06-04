@@ -4,7 +4,6 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class EasyPostTest
     {
         private const string FakeApikey = "fake_api_key";

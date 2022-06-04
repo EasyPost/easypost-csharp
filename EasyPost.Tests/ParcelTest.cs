@@ -5,10 +5,9 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-
     public class ParcelTest : UnitTest
     {
-        public ParcelTest() : base("parcel", TestUtils.ApiKey.Test)
+        public ParcelTest() : base("parcel")
         {
         }
 

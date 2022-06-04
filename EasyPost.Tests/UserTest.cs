@@ -8,8 +8,7 @@ namespace EasyPost.Tests
 {
     public class UserTest : UnitTest
     {
-        public UserTest() : base("user", TestUtils.ApiKey.Production)
-        {
+        public UserTest() : base("user", TestUtils.ApiKey.Production) =>
             CleanupFunction = async id =>
             {
                 try
@@ -23,6 +22,28 @@ namespace EasyPost.Tests
                     return false;
                 }
             };
+
+        [Fact]
+        public async Task TestAllApiKeys()
+        {
+            UseVCR("all_api_keys");
+
+            List<ApiKey> apiKeys = await V2Client.ApiKeys.All();
+
+            // API keys will be censored, so we'll just check for the existence of the list
+            Assert.IsNotNull(apiKeys);
+        }
+
+        [Fact]
+        public async Task TestApiKeys()
+        {
+            UseVCR("api_keys");
+
+            User user = await RetrieveMe();
+
+            // API keys will be censored, so we'll just check for the existence of the `children` element
+            List<User> children = user.children;
+            Assert.IsNotNull(children);
         }
 
         [Fact]
@@ -35,6 +56,19 @@ namespace EasyPost.Tests
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
             Assert.AreEqual("Test User", user.name);
+        }
+
+        [Fact]
+        public async Task TestDelete()
+        {
+            UseVCR("delete");
+
+            User user = await CreateUser();
+
+            bool success = await user.Delete();
+            Assert.IsTrue(success);
+
+            SkipCleanUpAfterTest();
         }
 
         [Fact]
@@ -74,10 +108,11 @@ namespace EasyPost.Tests
 
             string testName = "New Name";
 
-            Dictionary<string, object> userDict = new Dictionary<string, object>
+            Dictionary<string, object> userDict = new Dictionary<string, object>()
             {
                 {
-                    "name", testName
+                    "name",
+                    testName
                 }
             };
             await user.Update(userDict);
@@ -85,42 +120,6 @@ namespace EasyPost.Tests
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
             Assert.AreEqual(testName, user.name);
-        }
-
-        [Fact]
-        public async Task TestDelete()
-        {
-            UseVCR("delete");
-
-            User user = await CreateUser();
-
-            bool success = await user.Delete();
-            Assert.IsTrue(success);
-
-            SkipCleanUpAfterTest();
-        }
-
-        [Fact]
-        public async Task TestAllApiKeys()
-        {
-            UseVCR("all_api_keys");
-
-            List<ApiKey> apiKeys = await V2Client.ApiKeys.All();
-
-            // API keys will be censored, so we'll just check for the existence of the list
-            Assert.IsNotNull(apiKeys);
-        }
-
-        [Fact]
-        public async Task TestApiKeys()
-        {
-            UseVCR("api_keys");
-
-            User user = await RetrieveMe();
-
-            // API keys will be censored, so we'll just check for the existence of the `children` element
-            List<User> children = user.children;
-            Assert.IsNotNull(children);
         }
 
         [Fact]

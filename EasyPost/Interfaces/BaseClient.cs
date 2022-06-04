@@ -107,7 +107,7 @@ namespace EasyPost.Interfaces
                 T resource = JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
                 if (resource is IList list)
                 {
-                    foreach (object element in list)
+                    foreach (object? element in list)
                     {
                         (element as Resource)!.Client = this;
                     }
