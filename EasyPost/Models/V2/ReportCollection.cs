@@ -22,7 +22,7 @@ namespace EasyPost.Models.V2
         /// <returns>An EasyPost.ReportCollection instance.</returns>
         public async Task<ReportCollection> Next()
         {
-            filters = filters ?? new Dictionary<string, object>();
+            filters ??= new Dictionary<string, object>();
             filters["before_id"] = reports.Last().id;
 
             if (V2Client == null)

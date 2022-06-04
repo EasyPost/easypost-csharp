@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Interfaces;
 using Newtonsoft.Json;
@@ -83,17 +84,11 @@ namespace EasyPost.Models.V2
         ///     Get the pickup rates as a list of Rate objects.
         /// </summary>
         /// <returns>List of Rate objects.</returns>
-        internal List<Rate> Rates
+        internal IEnumerable<Rate> Rates
         {
             get
             {
-                List<Rate> rates = new List<Rate>();
-                foreach (PickupRate pickupRate in pickup_rates)
-                {
-                    rates.Add(pickupRate);
-                }
-
-                return rates;
+                return pickup_rates.Cast<Rate>().ToList();
             }
         }
 

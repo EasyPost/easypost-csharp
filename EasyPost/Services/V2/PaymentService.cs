@@ -72,16 +72,12 @@ namespace EasyPost.Services.V2
         {
             PaymentMethodSummary summary = await All();
 
-            CreditCard? paymentMethod = null;
-            switch (priority)
+            CreditCard? paymentMethod = priority switch
             {
-                case Priority.Primary:
-                    paymentMethod = summary.primary_payment_method;
-                    break;
-                case Priority.Secondary:
-                    paymentMethod = summary.secondary_payment_method;
-                    break;
-            }
+                Priority.Primary => summary.primary_payment_method,
+                Priority.Secondary => summary.secondary_payment_method,
+                var _ => null
+            };
 
             if (paymentMethod == null)
             {

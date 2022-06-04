@@ -21,7 +21,7 @@ namespace EasyPost.Models.V2
         /// <returns>An EasyPost.TrackerCollection instance.</returns>
         public async Task<TrackerCollection> Next()
         {
-            filters = filters ?? new Dictionary<string, object>();
+            filters ??= new Dictionary<string, object>();
             filters["before_id"] = trackers.Last().id;
 
             if (V2Client == null)

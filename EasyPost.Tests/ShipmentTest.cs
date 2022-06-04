@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Exceptions;
 using EasyPost.Models.V2;
+using EasyPost.Services.V2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -324,13 +325,13 @@ namespace EasyPost.Tests
 
             // test lowest smartrate with valid filters
             List<Smartrate> smartrates = await shipment.GetSmartrates();
-            Smartrate lowestSmartrate = V2Client.Shipments.GetLowestSmartrate(smartrates, 1, SmartrateAccuracy.Percentile90);
+            Smartrate lowestSmartrate = ShipmentService.GetLowestSmartrate(smartrates, 1, SmartrateAccuracy.Percentile90);
             Assert.AreEqual("First", lowestSmartrate.service);
             Assert.AreEqual(5.49, lowestSmartrate.rate);
             Assert.AreEqual("USPS", lowestSmartrate.carrier);
 
             // test lowest smartrate with invalid filters (should error due to strict delivery_days)
-            Assert.ThrowsException<FilterFailure>(() => V2Client.Shipments.GetLowestSmartrate(smartrates, 0, SmartrateAccuracy.Percentile90));
+            Assert.ThrowsException<FilterFailure>(() => ShipmentService.GetLowestSmartrate(smartrates, 0, SmartrateAccuracy.Percentile90));
 
             // test lowest smartrate with invalid filters (should error due to bad delivery_accuracy)
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)

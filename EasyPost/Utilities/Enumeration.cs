@@ -7,25 +7,27 @@ namespace EasyPost.Utilities
 {
     public abstract class Enumeration : IComparable
     {
-        internal int Id { get; private set; }
-        internal string Name { get; private set; }
+        private int Id { get; }
+        internal string Name { get; }
 
         protected Enumeration(int id, string name) => (Id, Name) = (id, name);
 
-        public int CompareTo(object other) => Id.CompareTo(((Enumeration)other).Id);
+        public int CompareTo(object? other) => Id.CompareTo((((Enumeration)other!)).Id);
 
-        public override bool Equals(object obj)
+        protected bool Equals(Enumeration other) => Id == other.Id && Name == other.Name;
+
+        public override bool Equals(object? obj)
         {
             try
             {
-                if (!GetType().Equals(obj.GetType()))
+                if (GetType() != obj!.GetType())
                 {
                     // types are not the same
                     return false;
                 }
 
                 Enumeration objEnum = (Enumeration)obj;
-                return objEnum.Id == Id && objEnum.Name == Name;
+                return objEnum == this;
             }
             catch (Exception)
             {

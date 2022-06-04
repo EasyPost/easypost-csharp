@@ -196,7 +196,7 @@ namespace EasyPost.Utilities
         /// <param name="obj">JObject object</param>
         /// <param name="key">Key of the JSON element to retrieve a value from</param>
         /// <returns>A T-type object</returns>
-        internal static T GetValueOfJsonObjectKey<T>(JObject obj, string key) => obj.TryGetValue(key, out JToken? value) ? value.ToObject<T>() : default;
+        internal static T GetValueOfJsonObjectKey<T>(JObject obj, string key) => (obj.TryGetValue(key, out JToken? value) ? value.ToObject<T>() : default)!;
 
         /// <summary>
         ///     Venture through the root element keys to find the root element of the JSON string.

@@ -13,9 +13,9 @@ namespace EasyPost.Interfaces
     {
         [JsonIgnore] internal BaseClient Client;
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (GetType() != obj.GetType())
+            if (GetType() != obj?.GetType())
             {
                 return false;
             }
@@ -31,20 +31,22 @@ namespace EasyPost.Interfaces
             return thisJson == otherJson;
         }
 
+        public override int GetHashCode() => Client.GetHashCode();
+
         /// <summary>
         ///     Get the dictionary representation of this object instance.
         /// </summary>
         /// <returns>A key-value dictionary representation of this object instance's attributes.</returns>
-        protected Dictionary<string, object?> AsDictionary() =>
+        private Dictionary<string, object?> AsDictionary() =>
             GetType()
                 .GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
-                .ToDictionary(info => info.Name, info => GetValue(info));
+                .ToDictionary(info => info.Name, GetValue);
 
         /// <summary>
         ///     Get the JSON representation of this object instance.
         /// </summary>
         /// <returns>A JSON string representation of this object instance's attributes</returns>
-        protected string? AsJson() => JsonSerialization.ConvertObjectToJson(this);
+        private string? AsJson() => JsonSerialization.ConvertObjectToJson(this);
 
         protected async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
         {
@@ -86,11 +88,7 @@ namespace EasyPost.Interfaces
                 case Resource resource:
                     return resource.AsDictionary();
                 case IEnumerable<Resource> enumerable:
-                    List<Dictionary<string, object?>> values = new List<Dictionary<string, object?>>();
-                    foreach (Resource resource in enumerable)
-                    {
-                        values.Add(resource.AsDictionary());
-                    }
+                    List<Dictionary<string, object?>> values = enumerable.Select(resource => resource.AsDictionary()).ToList();
 
                     return values;
                 default:

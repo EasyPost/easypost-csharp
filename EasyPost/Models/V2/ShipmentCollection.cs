@@ -21,7 +21,7 @@ namespace EasyPost.Models.V2
         /// <returns>An EasyPost.ShipmentCollection instance.</returns>
         public async Task<ShipmentCollection> Next()
         {
-            filters = filters ?? new Dictionary<string, object>();
+            filters ??= new Dictionary<string, object>();
             filters["before_id"] = shipments.Last().id;
 
             if (V2Client == null)

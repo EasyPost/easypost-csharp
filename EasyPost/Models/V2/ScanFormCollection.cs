@@ -21,7 +21,7 @@ namespace EasyPost.Models.V2
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
         public async Task<ScanFormCollection> Next()
         {
-            filters = filters ?? new Dictionary<string, object>();
+            filters ??= new Dictionary<string, object>();
             filters["before_id"] = scan_forms.Last().id;
 
             if (V2Client == null)

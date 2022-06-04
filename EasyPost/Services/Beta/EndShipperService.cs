@@ -52,9 +52,12 @@ namespace EasyPost.Services.Beta
         public async Task<EndShipper> Create(Dictionary<string, object>? parameters = null)
         {
             parameters ??= new Dictionary<string, object>();
-            Dictionary<string, object> body = new Dictionary<string, object>();
-
-            body.Add("address", parameters);
+            Dictionary<string, object> body = new Dictionary<string, object>
+            {
+                {
+                    "address", parameters
+                }
+            };
 
             return await Create<EndShipper>("end_shippers", body);
         }

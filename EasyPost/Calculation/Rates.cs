@@ -16,7 +16,7 @@ namespace EasyPost.Calculation
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest rate matching the filter.</returns>
-        public static Rate GetLowestObjectRate(List<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
+        public static Rate GetLowestObjectRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
             includeCarriers ??= new List<string>();
             excludeCarriers ??= new List<string>();
@@ -30,32 +30,8 @@ namespace EasyPost.Calculation
 
             Rate? lowestRate = null;
 
-            foreach (Rate rate in rates)
+            foreach (Rate rate in from rate in rates where includeCarriers.Count <= 0 || includeCarriers.Contains(rate.carrier.ToLower()) where excludeCarriers.Count <= 0 || !excludeCarriers.Contains(rate.carrier.ToLower()) where includeServices.Count <= 0 || includeServices.Contains(rate.service.ToLower()) where excludeServices.Count <= 0 || !excludeServices.Contains(rate.service.ToLower()) select rate)
             {
-                // If the rate's carrier is not in the include list, don't consider it
-                if (includeCarriers.Count > 0 && !includeCarriers.Contains(rate.carrier.ToLower()))
-                {
-                    continue;
-                }
-
-                // If the rate's carrier is in the exclude list, don't consider it
-                if (excludeCarriers.Count > 0 && excludeCarriers.Contains(rate.carrier.ToLower()))
-                {
-                    continue;
-                }
-
-                // If the rate's service is not in the include list, don't consider it
-                if (includeServices.Count > 0 && !includeServices.Contains(rate.service.ToLower()))
-                {
-                    continue;
-                }
-
-                // If the rate's service is in the exclude list, don't consider it
-                if (excludeServices.Count > 0 && excludeServices.Contains(rate.service.ToLower()))
-                {
-                    continue;
-                }
-
                 // if lowest rate is null, set it to this rate
                 if (lowestRate == null)
                 {
@@ -67,11 +43,13 @@ namespace EasyPost.Calculation
                 float lowestRateValue = float.Parse(lowestRate.rate);
 
                 // if this rate is lower than the lowest rate, set it to this rate
-                if (rateValue < lowestRateValue)
+                if (!(rateValue < lowestRateValue))
                 {
-                    lowestRate = rate;
                     continue;
                 }
+
+                lowestRate = rate;
+                continue;
             }
 
             if (lowestRate == null)
@@ -89,26 +67,12 @@ namespace EasyPost.Calculation
         /// <param name="deliveryDays">Delivery days to include in the filter.</param>
         /// <param name="deliveryAccuracy">Delivery accuracy to include in the filter.</param>
         /// <returns>Lowest rate matching the filter.</returns>
-        public static Smartrate GetLowestShipmentSmartrate(List<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy)
+        public static Smartrate GetLowestShipmentSmartrate(IEnumerable<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy)
         {
             Smartrate lowestSmartrate = null;
 
-            foreach (Smartrate smartrate in smartrates)
+            foreach (Smartrate smartrate in from smartrate in smartrates let smartrateAccuracy = smartrate.time_in_transit.GetBySmartrateAccuracy(deliveryAccuracy) where smartrateAccuracy != null where !(smartrateAccuracy > deliveryDays) select smartrate)
             {
-                int? smartrateAccuracy = smartrate.time_in_transit.GetBySmartrateAccuracy(deliveryAccuracy);
-
-                // this smartrate does not have a value for the delivery accuracy we're looking for
-                if (smartrateAccuracy == null)
-                {
-                    continue;
-                }
-
-                // this smartrate is not within the accuracy range we're looking for
-                if (smartrateAccuracy > deliveryDays)
-                {
-                    continue;
-                }
-
                 // if lowest smartrate is null, set it to this smartrate
                 if (lowestSmartrate == null)
                 {
@@ -117,11 +81,13 @@ namespace EasyPost.Calculation
                 }
 
                 // if this smartrate is lower than the lowest smartrate, set it to this smartrate
-                if (smartrate.rate < lowestSmartrate.rate)
+                if (!(smartrate.rate < lowestSmartrate.rate))
                 {
-                    lowestSmartrate = smartrate;
                     continue;
                 }
+
+                lowestSmartrate = smartrate;
+                continue;
             }
 
             if (lowestSmartrate == null)

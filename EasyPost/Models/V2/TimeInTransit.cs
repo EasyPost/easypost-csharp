@@ -38,6 +38,7 @@ namespace EasyPost.Models.V2
                 return percentile_95;
             if (accuracy.Equals(SmartrateAccuracy.Percentile97))
                 return percentile_97;
+            // ReSharper disable once ConvertIfStatementToReturnStatement
             if (accuracy.Equals(SmartrateAccuracy.Percentile99))
                 return percentile_99;
             return null;
