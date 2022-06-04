@@ -115,7 +115,7 @@ namespace EasyPost.Tests
 #elif NET5_0
                 netVersionFolder = "net50";
 #elif NETCOREAPP3_1
-                    netVersionFolder = "netcore3.1";
+                netVersionFolder = "netcore3.1";
 #elif NET462
                 netVersionFolder = "net462";
 #endif
