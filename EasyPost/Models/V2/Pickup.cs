@@ -34,7 +34,7 @@ namespace EasyPost.Models.V2
         [JsonProperty("name")]
         public string name { get; set; }
         [JsonProperty("pickup_rates")]
-        public List<Rate> pickup_rates { get; set; }
+        public List<PickupRate> pickup_rates { get; set; }
         [JsonProperty("reference")]
         public string reference { get; set; }
         [JsonProperty("status")]
@@ -77,6 +77,37 @@ namespace EasyPost.Models.V2
             }
 
             await Update<Pickup>(Method.Post, $"pickups/{id}/cancel");
+        }
+
+        /// <summary>
+        ///     Get the pickup rates as a list of Rate objects.
+        /// </summary>
+        /// <returns>List of Rate objects.</returns>
+        internal List<Rate> Rates
+        {
+            get
+            {
+                List<Rate> rates = new List<Rate>();
+                foreach (PickupRate pickupRate in pickup_rates)
+                {
+                    rates.Add(pickupRate);
+                }
+
+                return rates;
+            }
+        }
+
+        /// <summary>
+        ///     Get the lowest rate for this Pickup.
+        /// </summary>
+        /// <param name="includeCarriers">Carriers to include in the filter.</param>
+        /// <param name="includeServices">Services to include in the filter.</param>
+        /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
+        /// <param name="excludeServices">Services to exclude in the filter.</param>
+        /// <returns>Lowest EasyPost.PickupRate object instance.</returns>
+        public PickupRate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
+        {
+            return (PickupRate)Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
     }
 }

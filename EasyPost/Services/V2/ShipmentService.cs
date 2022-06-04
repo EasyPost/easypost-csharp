@@ -73,5 +73,17 @@ namespace EasyPost.Services.V2
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
         /// <returns>An EasyPost.Shipment instance.</returns>
         public async Task<Shipment> Retrieve(string id) => await Get<Shipment>($"shipments/{id}");
+
+        /// <summary>
+        ///     Get the lowest smartrate from a list of smartrates.
+        /// </summary>
+        /// <param name="smartrates">List of smartrates to filter.</param>
+        /// <param name="deliveryDays">Delivery days restriction to use when filtering.</param>
+        /// <param name="deliveryAccuracy">Delivery days accuracy restriction to use when filtering.</param>
+        /// <returns>Lowest EasyPost.Smartrate object instance.</returns>
+        public Smartrate GetLowestSmartrate(List<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy)
+        {
+            return Calculation.Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
+        }
     }
 }

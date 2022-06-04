@@ -85,5 +85,18 @@ namespace EasyPost.Models.V2
             Order order = await Request<Order>(Method.Get, $"orders/{id}/rates");
             rates = order.rates;
         }
+
+        /// <summary>
+        ///     Get the lowest rate for this Order.
+        /// </summary>
+        /// <param name="includeCarriers">Carriers to include in the filter.</param>
+        /// <param name="includeServices">Services to include in the filter.</param>
+        /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
+        /// <param name="excludeServices">Services to exclude in the filter.</param>
+        /// <returns>Lowest EasyPost.Rate object instance.</returns>
+        public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
+        {
+            return Calculation.Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Exceptions;
 using EasyPost.Models.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -76,5 +77,36 @@ namespace EasyPost.Tests
         }
 
         private async Task<Order> CreateBasicOrder() => await V2Client.Orders.Create(Fixture.BasicOrder);
+
+        [Fact]
+        public async Task TestLowestRate()
+        {
+            UseVCR("lowest_rate");
+
+            Order order = await CreateBasicOrder();
+
+            // test lowest rate with no filters
+            Rate lowestRate = order.LowestRate();
+            Assert.AreEqual("First", lowestRate.service);
+            Assert.AreEqual("5.49", lowestRate.rate);
+            Assert.AreEqual("USPS", lowestRate.carrier);
+
+            // test lowest rate with service filter (this rate is higher than the lowest but should filter)
+            List<string> services = new List<string>
+            {
+                "Priority"
+            };
+            lowestRate = order.LowestRate(null, services, null, null);
+            Assert.AreEqual("Priority", lowestRate.service);
+            Assert.AreEqual("7.37", lowestRate.rate);
+            Assert.AreEqual("USPS", lowestRate.carrier);
+
+            // test lowest rate with carrier filter (should error due to bad carrier)
+            List<string> carriers = new List<string>
+            {
+                "BAD_CARRIER"
+            };
+            Assert.ThrowsException<FilterFailure>(() => order.LowestRate(carriers, null, null, null));
+        }
     }
 }

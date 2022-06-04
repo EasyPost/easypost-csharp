@@ -32,6 +32,8 @@ namespace EasyPost.Models.V2
         public string list_rate { get; set; }
         [JsonProperty("mode")]
         public string mode { get; set; }
+        [JsonProperty("object")]
+        public string Object { get; set; }
         [JsonProperty("rate")]
         public string rate { get; set; }
         [JsonProperty("retail_currency")]
