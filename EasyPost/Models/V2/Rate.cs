@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class Rate : Resource
+    public class Rate : EasyPostObject
     {
         [JsonProperty("billing_type")]
         public string? billing_type { get; set; }
@@ -12,8 +12,7 @@ namespace EasyPost.Models.V2
         public string? carrier { get; set; }
         [JsonProperty("carrier_account_id")]
         public string? carrier_account_id { get; set; }
-        [JsonProperty("created_at")]
-        public DateTime? created_at { get; set; }
+
         [JsonProperty("currency")]
         public string? currency { get; set; }
         [JsonProperty("delivery_date")]
@@ -24,16 +23,12 @@ namespace EasyPost.Models.V2
         public int? delivery_days { get; set; }
         [JsonProperty("est_delivery_days")]
         public int? est_delivery_days { get; set; }
-        [JsonProperty("id")]
-        public string? id { get; set; }
+
         [JsonProperty("list_currency")]
         public string? list_currency { get; set; }
         [JsonProperty("list_rate")]
         public string? list_rate { get; set; }
-        [JsonProperty("mode")]
-        public string? mode { get; set; }
-        [JsonProperty("object")]
-        public string? Object { get; set; }
+
         [JsonProperty("rate")]
         public string? rate { get; set; }
         [JsonProperty("retail_currency")]
@@ -44,7 +39,5 @@ namespace EasyPost.Models.V2
         public string? service { get; set; }
         [JsonProperty("shipment_id")]
         public string? shipment_id { get; set; }
-        [JsonProperty("updated_at")]
-        public DateTime? updated_at { get; set; }
     }
 }

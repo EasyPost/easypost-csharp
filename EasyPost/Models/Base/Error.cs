@@ -2,9 +2,9 @@
 using EasyPost.Interfaces;
 using Newtonsoft.Json;
 
-namespace EasyPost.Models.V2
+namespace EasyPost.Models.Base
 {
-    public class Error : Resource
+    public class Error : EasyPostObject
     {
         [JsonProperty("code")]
         public string? code { get; set; }

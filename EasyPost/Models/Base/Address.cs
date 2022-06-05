@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.Base
 {
-    public class Address : Resource
+    public class Address : EasyPostObject
     {
         [JsonProperty("city")]
         public string? city { get; set; }
@@ -12,14 +12,10 @@ namespace EasyPost.Models.Base
         public string? company { get; set; }
         [JsonProperty("country")]
         public string? country { get; set; }
-        [JsonProperty("created_at")]
-        public DateTime? created_at { get; set; }
         [JsonProperty("email")]
         public string? email { get; set; }
         [JsonProperty("error")]
         public string? error { get; set; }
-        [JsonProperty("id")]
-        public string? id { get; set; }
         [JsonProperty("message")]
         public string? message { get; set; }
         [JsonProperty("name")]
@@ -32,8 +28,6 @@ namespace EasyPost.Models.Base
         public string? street1 { get; set; }
         [JsonProperty("street2")]
         public string? street2 { get; set; }
-        [JsonProperty("updated_at")]
-        public DateTime? updated_at { get; set; }
         [JsonProperty("zip")]
         public string? zip { get; set; }
     }

@@ -5,18 +5,15 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class Event : Resource
+    public class Event : EasyPostObject
     {
         [JsonProperty("completed_urls")]
         public List<string>? completed_urls { get; set; }
-        [JsonProperty("created_at")]
-        public DateTime? created_at { get; set; }
+
         [JsonProperty("description")]
         public string? description { get; set; }
-        [JsonProperty("id")]
-        public string? id { get; set; }
-        [JsonProperty("mode")]
-        public string? mode { get; set; }
+
+
         [JsonProperty("pending_urls")]
         public List<string>? pending_urls { get; set; }
         [JsonProperty("previous_attributes")]

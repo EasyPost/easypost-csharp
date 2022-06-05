@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class Message : Resource
+    public class Message : EasyPostObject
     {
         [JsonProperty("carrier")]
         public string? carrier { get; set; }

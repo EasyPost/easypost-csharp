@@ -7,7 +7,7 @@ using RestSharp;
 
 namespace EasyPost.Models.V2
 {
-    public class User : Resource
+    public class User : EasyPostObject
     {
         [JsonProperty("api_keys")]
         public List<ApiKey>? api_keys { get; set; }
@@ -15,12 +15,10 @@ namespace EasyPost.Models.V2
         public string? balance { get; set; }
         [JsonProperty("children")]
         public List<User>? children { get; set; }
-        [JsonProperty("created_at")]
-        public DateTime? created_at { get; set; }
+
         [JsonProperty("email")]
         public string? email { get; set; }
-        [JsonProperty("id")]
-        public string? id { get; set; }
+
         [JsonProperty("name")]
         public string? name { get; set; }
         [JsonProperty("parent_id")]
@@ -39,8 +37,7 @@ namespace EasyPost.Models.V2
         public string? recharge_threshold { get; set; }
         [JsonProperty("secondary_recharge_amount")]
         public string? secondary_recharge_amount { get; set; }
-        [JsonProperty("updated_at")]
-        public DateTime? updated_at { get; set; }
+
 
         /// <summary>
         ///     Delete the user.

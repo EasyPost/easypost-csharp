@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    internal class WebhookList : Resource
+    internal class WebhookList : EasyPostObject
     {
         [JsonProperty("webhooks")]
         public List<Webhook>? webhooks { get; set; }

@@ -6,14 +6,12 @@ using RestSharp;
 
 namespace EasyPost.Models.V2
 {
-    public class Webhook : Resource
+    public class Webhook : EasyPostObject
     {
         [JsonProperty("disabled_at")]
         public DateTime? disabled_at { get; set; }
-        [JsonProperty("id")]
-        public string? id { get; set; }
-        [JsonProperty("mode")]
-        public string? mode { get; set; }
+
+
         [JsonProperty("url")]
         public string? url { get; set; }
 

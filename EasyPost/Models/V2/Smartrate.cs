@@ -27,13 +27,13 @@ namespace EasyPost.Models.V2
         }
     }
 
-    public class SmartrateResult : Resource
+    public class SmartrateResult : EasyPostObject
     {
         [JsonProperty("result")]
         public List<Smartrate>? result { get; set; }
     }
 
-    public class Smartrate : Resource
+    public class Smartrate : EasyPostObject
     {
         [JsonProperty("carrier")]
         public string? carrier { get; set; }
@@ -57,8 +57,7 @@ namespace EasyPost.Models.V2
         public string? list_currency { get; set; }
         [JsonProperty("list_rate")]
         public double list_rate { get; set; }
-        [JsonProperty("mode")]
-        public string? mode { get; set; }
+
         [JsonProperty("rate")]
         public double rate { get; set; }
         [JsonProperty("retail_currency")]

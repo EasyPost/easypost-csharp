@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class Options : Resource
+    public class Options : EasyPostObject
     {
         [JsonProperty("additional_handling")]
         public bool? additional_handling { get; set; }

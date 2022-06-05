@@ -6,18 +6,16 @@ using RestSharp;
 
 namespace EasyPost.Models.V2
 {
-    public class Insurance : Resource
+    public class Insurance : EasyPostObject
     {
         [JsonProperty("amount")]
         public string? amount { get; set; }
         [JsonProperty("from_address")]
         public Address? from_address { get; set; }
-        [JsonProperty("id")]
-        public string? id { get; set; }
+
         [JsonProperty("messages")]
         public List<string>? messages { get; set; }
-        [JsonProperty("mode")]
-        public string? mode { get; set; }
+
         [JsonProperty("provider")]
         public string? provider { get; set; }
         [JsonProperty("provider_id")]

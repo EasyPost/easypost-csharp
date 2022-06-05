@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class Fee : Resource
+    public class Fee : EasyPostObject
     {
         [JsonProperty("amount")]
         public double amount { get; set; }

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using EasyPost.Interfaces;
+using EasyPost.Models.Base;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class Verification : Resource
+    public class Verification : EasyPostObject
     {
         [JsonProperty("details")]
         public VerificationDetails? details { get; set; }

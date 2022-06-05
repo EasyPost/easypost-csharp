@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class CarrierType : Resource
+    public class CarrierType : EasyPostObject
     {
         [JsonProperty("fields")]
         public Dictionary<string, object>? fields { get; set; }

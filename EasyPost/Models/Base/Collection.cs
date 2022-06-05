@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.Base
 {
-    public class Collection : Resource
+    public class Collection : EasyPostObject
     {
         [JsonProperty("filters")]
         public Dictionary<string, object>? filters { get; set; }

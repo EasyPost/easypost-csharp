@@ -7,18 +7,16 @@ using RestSharp;
 
 namespace EasyPost.Models.V2
 {
-    public class CarrierAccount : Resource
+    public class CarrierAccount : EasyPostObject
     {
         [JsonProperty("billing_type")]
         public string? billing_type { get; set; }
-        [JsonProperty("created_at")]
-        public DateTime? created_at { get; set; }
+
         [JsonProperty("credentials")]
         public Dictionary<string, object>? credentials { get; set; }
         [JsonProperty("description")]
         public string? description { get; set; }
-        [JsonProperty("id")]
-        public string? id { get; set; }
+
         [JsonProperty("readable")]
         public string? readable { get; set; }
         [JsonProperty("reference")]
@@ -27,8 +25,7 @@ namespace EasyPost.Models.V2
         public Dictionary<string, object>? test_credentials { get; set; }
         [JsonProperty("type")]
         public string? type { get; set; }
-        [JsonProperty("updated_at")]
-        public DateTime? updated_at { get; set; }
+
 
         /// <summary>
         ///     Remove this CarrierAccount from your account.

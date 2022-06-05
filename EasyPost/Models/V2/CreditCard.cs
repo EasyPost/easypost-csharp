@@ -6,7 +6,7 @@ using RestSharp;
 
 namespace EasyPost.Models.V2
 {
-    public class CreditCard : Resource
+    public class CreditCard : EasyPostObject
     {
         [JsonProperty("brand")]
         public string? brand { get; set; }
@@ -16,14 +16,11 @@ namespace EasyPost.Models.V2
         public string? exp_month { get; set; }
         [JsonProperty("exp_year")]
         public string? exp_year { get; set; }
-        [JsonProperty("id")]
-        public string? id { get; set; }
+
         [JsonProperty("last4")]
         public string? last4 { get; set; }
         [JsonProperty("name")]
         public string? name { get; set; }
-        [JsonProperty("object")]
-        public string? Object { get; set; }
 
         /// <summary>
         ///     Delete this credit card from your account.

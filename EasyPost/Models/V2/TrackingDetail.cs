@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class TrackingDetail : Resource
+    public class TrackingDetail : EasyPostObject
     {
         [JsonProperty("datetime")]
         public DateTime? datetime { get; set; }

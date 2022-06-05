@@ -11,6 +11,7 @@ using EasyPost.Exceptions;
 using EasyPost.Http;
 using EasyPost.Models.V2;
 using EasyPost.Utilities;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace EasyPost.Interfaces
@@ -89,11 +90,25 @@ namespace EasyPost.Interfaces
         /// <exception cref="ApiException">An error occurred during the API request.</exception>
         internal async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
         {
+            // Build the request
             Request request = new Request(url, method, parameters, rootElement);
             RestRequest restRequest = PrepareRequest(request);
-            RestResponse<T> response = await _restClient.ExecuteAsync<T>(restRequest);
-            int statusCode = Convert.ToInt32(response.StatusCode);
 
+            // Execute the request
+            RestResponse<T> response = await _restClient.ExecuteAsync<T>(restRequest);
+
+            // Check the response's status code
+            if (!response.IsSuccessful)
+            {
+                // HTTP request threw an error (non-2xx response)
+                // RestSharp utilizes .NET HttpStatusCode internally:
+                // https://docs.microsoft.com/en-us/uwp/api/windows.web.http.httpresponsemessage.issuccessstatuscode?view=winrt-22621
+
+                ApiException apiException = ApiException.FromRestResponse(response);
+                throw apiException;
+            }
+
+            // Prepare the list of root elements to use during deserialization
             List<string>? rootElements = null;
             if (request.RootElement != null)
             {
@@ -103,47 +118,23 @@ namespace EasyPost.Interfaces
                 };
             }
 
-            if (statusCode < 400)
+            // Deserialize the response into an object
+            T resource = JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
+
+            // Copy this client to the object
+            if (resource is IList list)
             {
-                T resource = JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
-                if (resource is IList list)
+                foreach (object? element in list)
                 {
-                    foreach (object? element in list)
-                    {
-                        (element as Resource)!.Client = this;
-                    }
+                    (element as EasyPostObject)!.Client = this;
                 }
-                else
-                {
-                    (resource as Resource)!.Client = this;
-                }
-
-                return resource;
             }
-
-            Dictionary<string, Dictionary<string, object>> body;
-            List<Error> errors;
-
-            try
+            else
             {
-                body = JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
-                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string>
-                {
-                    "error",
-                    "errors"
-                });
-            }
-            catch
-            {
-                throw new ApiException(statusCode, "RESPONSE.PARSE_ERROR", response.Content, new List<Error>());
+                (resource as EasyPostObject)!.Client = this;
             }
 
-            throw new ApiException(
-                statusCode,
-                (string)body["error"]["code"],
-                (string)body["error"]["message"],
-                errors
-            );
+            return resource;
         }
 
         /// <summary>
@@ -152,9 +143,14 @@ namespace EasyPost.Interfaces
         /// <returns>Whether request was successful.</returns>
         internal async Task<bool> Request(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null)
         {
+            // Build the request
             Request request = new Request(url, method, parameters, rootElement);
             RestRequest restRequest = PrepareRequest(request);
+
+            // Execute the request
             RestResponse response = await _restClient.ExecuteAsync(restRequest);
+
+            // Return whether the HTTP request produced an error (non-2xx response) or not
             return response.IsSuccessful;
         }
 
@@ -169,7 +165,7 @@ namespace EasyPost.Interfaces
 
             RestRequest restRequest = (RestRequest)request;
             restRequest.Timeout = RequestTimeoutMilliseconds;
-            restRequest.AddHeader("authorization", "Bearer " + _configuration.ApiKey);
+            restRequest.AddHeader("authorization", $"Bearer {_configuration.ApiKey}");
             restRequest.AddHeader("content_type", "application/json");
 
             return restRequest;

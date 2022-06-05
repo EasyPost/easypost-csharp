@@ -24,9 +24,9 @@ namespace EasyPost.Tests
             catch (ApiException error)
             {
                 Assert.AreEqual(422, error.StatusCode);
-                Assert.AreEqual("SHIPMENT.INVALID_PARAMS", error.Code);
+                Assert.AreEqual("SHIPMENT.INVALID_PARAMS", error.ApiCode);
                 Assert.AreEqual("Unable to create shipment, one or more parameters were invalid.", error.Message);
-                Assert.IsTrue(error.Errors.Count == 2);
+                Assert.IsTrue(error.ApiErrors != null && error.ApiErrors.Count == 2);
             }
         }
     }

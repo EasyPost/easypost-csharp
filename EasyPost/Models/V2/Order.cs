@@ -9,26 +9,23 @@ using RestSharp;
 
 namespace EasyPost.Models.V2
 {
-    public class Order : Resource
+    public class Order : EasyPostObject
     {
         [JsonProperty("buyer_address")]
         public Address? buyer_address { get; set; }
         [JsonProperty("carrier_accounts")]
         public List<CarrierAccount>? carrier_accounts { get; set; }
-        [JsonProperty("created_at")]
-        public DateTime? created_at { get; set; }
+
         [JsonProperty("customs_info")]
         public CustomsInfo? customs_info { get; set; }
         [JsonProperty("from_address")]
         public Address? from_address { get; set; }
-        [JsonProperty("id")]
-        public string? id { get; set; }
+
         [JsonProperty("is_return")]
         public bool? is_return { get; set; }
         [JsonProperty("messages")]
         public List<Message>? messages { get; set; }
-        [JsonProperty("mode")]
-        public string? mode { get; set; }
+
         [JsonProperty("rates")]
         public List<Rate>? rates { get; set; }
         [JsonProperty("reference")]
@@ -41,8 +38,7 @@ namespace EasyPost.Models.V2
         public List<Shipment>? shipments { get; set; }
         [JsonProperty("to_address")]
         public Address? to_address { get; set; }
-        [JsonProperty("updated_at")]
-        public DateTime? updated_at { get; set; }
+
 
         /// <summary>
         ///     Purchase the shipments within this order with a carrier and service.

@@ -3,12 +3,8 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class PaymentMethodSummary : Resource
+    public class PaymentMethodSummary : EasyPostObject
     {
-        [JsonProperty("id")]
-        public string? id { get; set; }
-        [JsonProperty("object")]
-        public string? Object { get; set; }
         [JsonProperty("primary_payment_method")]
         public CreditCard? primary_payment_method { get; set; }
         [JsonProperty("secondary_payment_method")]

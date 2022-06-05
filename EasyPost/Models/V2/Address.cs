@@ -12,8 +12,7 @@ namespace EasyPost.Models.V2
         public string? carrier_facility { get; set; }
         [JsonProperty("federal_tax_id")]
         public string? federal_tax_id { get; set; }
-        [JsonProperty("mode")]
-        public string? mode { get; set; }
+
         [JsonProperty("residential")]
         public bool? residential { get; set; }
         [JsonProperty("state_tax_id")]

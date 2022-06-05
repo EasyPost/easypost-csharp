@@ -9,7 +9,7 @@ using RestSharp;
 
 namespace EasyPost.Models.V2
 {
-    public class Pickup : Resource
+    public class Pickup : EasyPostObject
     {
         [JsonProperty("address")]
         public Address? address { get; set; }
@@ -17,10 +17,8 @@ namespace EasyPost.Models.V2
         public List<CarrierAccount>? carrier_accounts { get; set; }
         [JsonProperty("confirmation")]
         public string? confirmation { get; set; }
-        [JsonProperty("created_at")]
-        public DateTime? created_at { get; set; }
-        [JsonProperty("id")]
-        public string? id { get; set; }
+
+
         [JsonProperty("instructions")]
         public string? instructions { get; set; }
         [JsonProperty("is_account_address")]
@@ -31,8 +29,7 @@ namespace EasyPost.Models.V2
         public List<Message>? messages { get; set; }
         [JsonProperty("min_datetime")]
         public DateTime min_datetime { get; set; }
-        [JsonProperty("mode")]
-        public string? mode { get; set; }
+
         [JsonProperty("name")]
         public string? name { get; set; }
         [JsonProperty("pickup_rates")]
@@ -41,8 +38,7 @@ namespace EasyPost.Models.V2
         public string? reference { get; set; }
         [JsonProperty("status")]
         public string? status { get; set; }
-        [JsonProperty("updated_at")]
-        public DateTime? updated_at { get; set; }
+
 
         /// <summary>
         ///     Purchase this pickup.

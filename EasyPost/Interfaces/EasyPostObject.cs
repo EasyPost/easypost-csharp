@@ -9,9 +9,19 @@ using RestSharp;
 
 namespace EasyPost.Interfaces
 {
-    public class Resource
+    public class EasyPostObject
     {
         [JsonIgnore] internal BaseClient? Client;
+        [JsonProperty("created_at")]
+        public DateTime? created_at { get; set; }
+        [JsonProperty("id")]
+        public string? id { get; set; }
+        [JsonProperty("mode")]
+        public string? mode { get; set; }
+        [JsonProperty("object")]
+        public string? Object { get; set; }
+        [JsonProperty("updated_at")]
+        public DateTime? updated_at { get; set; }
 
         public override bool Equals(object? obj)
         {
@@ -21,7 +31,7 @@ namespace EasyPost.Interfaces
             }
 
             string? thisJson = AsJson();
-            string? otherJson = ((Resource)obj).AsJson();
+            string? otherJson = ((EasyPostObject)obj).AsJson();
             if (thisJson == null || otherJson == null)
             {
                 // can't do proper comparison if either or both could not be serialized
@@ -35,21 +45,6 @@ namespace EasyPost.Interfaces
         {
             return AsDictionary().GetHashCode();
         }
-
-        /// <summary>
-        ///     Get the dictionary representation of this object instance.
-        /// </summary>
-        /// <returns>A key-value dictionary representation of this object instance's attributes.</returns>
-        private Dictionary<string, object?> AsDictionary() =>
-            GetType()
-                .GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
-                .ToDictionary(info => info.Name, GetValue);
-
-        /// <summary>
-        ///     Get the JSON representation of this object instance.
-        /// </summary>
-        /// <returns>A JSON string representation of this object instance's attributes</returns>
-        private string? AsJson() => JsonSerialization.ConvertObjectToJson(this);
 
         protected async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
         {
@@ -82,17 +77,31 @@ namespace EasyPost.Interfaces
             Merge(updatedObject);
         }
 
+        /// <summary>
+        ///     Get the dictionary representation of this object instance.
+        /// </summary>
+        /// <returns>A key-value dictionary representation of this object instance's attributes.</returns>
+        private Dictionary<string, object?> AsDictionary() =>
+            GetType()
+                .GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+                .ToDictionary(info => info.Name, GetValue);
+
+        /// <summary>
+        ///     Get the JSON representation of this object instance.
+        /// </summary>
+        /// <returns>A JSON string representation of this object instance's attributes</returns>
+        private string? AsJson() => JsonSerialization.ConvertObjectToJson(this);
+
         private object? GetValue(PropertyInfo info)
         {
             object? value = info.GetValue(this, null);
 
             switch (value)
             {
-                case Resource resource:
+                case EasyPostObject resource:
                     return resource.AsDictionary();
-                case IEnumerable<Resource> enumerable:
+                case IEnumerable<EasyPostObject> enumerable:
                     List<Dictionary<string, object?>> values = enumerable.Select(resource => resource.AsDictionary()).ToList();
-
                     return values;
                 default:
                     return value;

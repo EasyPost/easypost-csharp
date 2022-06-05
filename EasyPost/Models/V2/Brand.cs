@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class Brand : Resource
+    public class Brand : EasyPostObject
     {
         [JsonProperty("ad")]
         public string? ad { get; set; }
@@ -13,8 +13,7 @@ namespace EasyPost.Models.V2
         public string? background_color { get; set; }
         [JsonProperty("color")]
         public string? color { get; set; }
-        [JsonProperty("id")]
-        public string? id { get; set; }
+
         [JsonProperty("logo")]
         public string? logo { get; set; }
         [JsonProperty("logo_href")]

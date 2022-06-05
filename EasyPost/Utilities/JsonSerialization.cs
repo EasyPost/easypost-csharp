@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using EasyPost.Exceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -95,6 +96,7 @@ namespace EasyPost.Utilities
         /// <param name="rootElementKeys">List, in order, of sub-keys path to follow to deserialization starting position.</param>
         /// <typeparam name="T">Type of object to deserialize to</typeparam>
         /// <returns>A T-type object</returns>
+        /// <exception cref="BaseJsonException">When the data could not be deserialized.</exception>
         internal static T ConvertJsonToObject<T>(string? data, JsonSerializerSettings? jsonSerializerSettings = null, List<string>? rootElementKeys = null)
         {
             if (rootElementKeys != null && rootElementKeys.Any())
@@ -104,7 +106,7 @@ namespace EasyPost.Utilities
 
             if (data == null || string.IsNullOrWhiteSpace(data))
             {
-                throw new Exception("No data to deserialize");
+                throw new Exceptions.DeserializationException("No data to deserialize.");
             }
 
             try
@@ -114,7 +116,7 @@ namespace EasyPost.Utilities
             }
             catch (Exception)
             {
-                return default!;
+                throw new Exceptions.DeserializationException("Could not deserialize data.");
             }
         }
 
@@ -128,6 +130,7 @@ namespace EasyPost.Utilities
         /// </param>
         /// <param name="rootElementKeys">List, in order, of sub-keys path to follow to deserialization starting position.</param>
         /// <returns>An ExpandoObject object</returns>
+        /// <exception cref="BaseJsonException">When the data could not be deserialized.</exception>
         internal static ExpandoObject ConvertJsonToObject(string? data, JsonSerializerSettings? jsonSerializerSettings = null, List<string>? rootElementKeys = null) => ConvertJsonToObject<ExpandoObject>(data, jsonSerializerSettings, rootElementKeys);
 
         /// <summary>
@@ -142,8 +145,8 @@ namespace EasyPost.Utilities
         /// <param name="rootElementKeys">List, in order, of sub-keys path to follow to deserialization starting position.</param>
         /// <typeparam name="T">Type of object to deserialize to</typeparam>
         /// <returns>A T-type object</returns>
+        /// <exception cref="JsonException">When the data could not be deserialized.</exception>
         internal static T ConvertJsonToObject<T>(RestResponse response, JsonSerializerSettings? jsonSerializerSettings = null, List<string>? rootElementKeys = null) => ConvertJsonToObject<T>(response.Content, jsonSerializerSettings, rootElementKeys);
-
 
         /// <summary>
         ///     Deserialize data from a RestSharp.RestResponse into a dynamic object, using this instance's
@@ -156,6 +159,7 @@ namespace EasyPost.Utilities
         /// </param>
         /// <param name="rootElementKeys">List, in order, of sub-keys path to follow to deserialization starting position.</param>
         /// <returns>An ExpandoObject object</returns>
+        /// <exception cref="BaseJsonException">When the data could not be deserialized.</exception>
         internal static ExpandoObject ConvertJsonToObject(RestResponse response, JsonSerializerSettings? jsonSerializerSettings = null, List<string>? rootElementKeys = null) => ConvertJsonToObject(response.Content, jsonSerializerSettings, rootElementKeys);
 
         /// <summary>
@@ -167,6 +171,7 @@ namespace EasyPost.Utilities
         ///     serialization. Defaults to <see cref="DefaultJsonSerializerSettings" /> if not provided.
         /// </param>
         /// <returns>A string of JSON data</returns>
+        /// <exception cref="BaseJsonException">When the data could not be serialized.</exception>
         internal static string? ConvertObjectToJson(object data, JsonSerializerSettings? jsonSerializerSettings = null)
         {
             try
@@ -175,7 +180,7 @@ namespace EasyPost.Utilities
             }
             catch (Exception)
             {
-                return null;
+                throw new Exceptions.SerializationException("Could not serialize object.");
             }
         }
 

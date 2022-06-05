@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class CarrierDetail : Resource
+    public class CarrierDetail : EasyPostObject
     {
         [JsonProperty("alternate_identifier")]
         public string? alternate_identifier { get; set; }

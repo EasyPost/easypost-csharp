@@ -8,20 +8,15 @@ using RestSharp;
 
 namespace EasyPost.Models.V2
 {
-    public class Batch : Resource
+    public class Batch : EasyPostObject
     {
-        [JsonProperty("created_at")]
-        public DateTime? created_at { get; set; }
         [JsonProperty("error")]
         public string? error { get; set; }
-        [JsonProperty("id")]
-        public string? id { get; set; }
         [JsonProperty("label_url")]
         public string? label_url { get; set; }
         [JsonProperty("message")]
         public string? message { get; set; }
-        [JsonProperty("mode")]
-        public string? mode { get; set; }
+
         [JsonProperty("num_shipments")]
         public int num_shipments { get; set; }
         [JsonProperty("reference")]
@@ -34,8 +29,6 @@ namespace EasyPost.Models.V2
         public string? state { get; set; }
         [JsonProperty("status")]
         public Dictionary<string, int>? status { get; set; }
-        [JsonProperty("updated_at")]
-        public DateTime? updated_at { get; set; }
 
         /// <summary>
         ///     Add shipments to this batch.
@@ -44,8 +37,8 @@ namespace EasyPost.Models.V2
         public async Task AddShipments(IEnumerable<string?> shipmentIds)
         {
             List<Dictionary<string, object>> realShipmentIds = (from shipmentId in shipmentIds
-                                                                where shipmentId != null
-                                                                select new Dictionary<string, object>
+                where shipmentId != null
+                select new Dictionary<string, object>
                 {
                     {
                         "id", shipmentId
@@ -94,8 +87,8 @@ namespace EasyPost.Models.V2
         public async Task RemoveShipments(IEnumerable<string?> shipmentIds)
         {
             List<Dictionary<string, object>> realShipmentIds = (from shipmentId in shipmentIds
-                                                                where shipmentId != null
-                                                                select new Dictionary<string, object>
+                where shipmentId != null
+                select new Dictionary<string, object>
                 {
                     {
                         "id", shipmentId

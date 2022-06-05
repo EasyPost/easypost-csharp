@@ -73,5 +73,11 @@ namespace EasyPost.Http
         }
 
         public static explicit operator RestRequest(Request request) => request._restRequest;
+
+        private static bool StatusCodeBetween(RestResponse response, int min, int max)
+        {
+            int statusCode = (int) response.StatusCode;
+            return statusCode >= min && statusCode <= max;
+        }
     }
 }

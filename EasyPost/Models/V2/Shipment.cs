@@ -9,7 +9,7 @@ using RestSharp;
 
 namespace EasyPost.Models.V2
 {
-    public class Shipment : Resource
+    public class Shipment : EasyPostObject
     {
         [JsonProperty("batch_id")]
         public string? batch_id { get; set; }
@@ -21,8 +21,7 @@ namespace EasyPost.Models.V2
         public Address? buyer_address { get; set; }
         [JsonProperty("carrier_accounts")]
         public List<CarrierAccount>? carrier_accounts { get; set; }
-        [JsonProperty("created_at")]
-        public DateTime? created_at { get; set; }
+
         [JsonProperty("customs_info")]
         public CustomsInfo? customs_info { get; set; }
         [JsonProperty("fees")]
@@ -31,16 +30,14 @@ namespace EasyPost.Models.V2
         public List<Form>? forms { get; set; }
         [JsonProperty("from_address")]
         public Address? from_address { get; set; }
-        [JsonProperty("id")]
-        public string? id { get; set; }
+
         [JsonProperty("insurance")]
         public string? insurance { get; set; }
         [JsonProperty("is_return")]
         public bool? is_return { get; set; }
         [JsonProperty("messages")]
         public List<Message>? messages { get; set; }
-        [JsonProperty("mode")]
-        public string? mode { get; set; }
+
         [JsonProperty("options")]
         public Options? options { get; set; }
         [JsonProperty("order_id")]
@@ -73,8 +70,7 @@ namespace EasyPost.Models.V2
         public Tracker? tracker { get; set; }
         [JsonProperty("tracking_code")]
         public string? tracking_code { get; set; }
-        [JsonProperty("updated_at")]
-        public DateTime? updated_at { get; set; }
+
         [JsonProperty("usps_zone")]
         public string? usps_zone { get; set; }
 

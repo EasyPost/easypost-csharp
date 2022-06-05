@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class Verifications : Resource
+    public class Verifications : EasyPostObject
     {
         [JsonProperty("delivery")]
         public Verification? delivery { get; set; }
