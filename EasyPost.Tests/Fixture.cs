@@ -584,8 +584,6 @@ namespace EasyPost.Tests
             }
         }
 
-        public static string WebhookUrl => "http://example.com";
-
         public static async Task<Dictionary<string, object>> BasicInsurance(V2Client client)
         {
             Shipment shipment = await client.Shipments.Create(OneCallBuyShipment);
