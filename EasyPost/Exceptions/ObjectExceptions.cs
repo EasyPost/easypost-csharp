@@ -3,18 +3,18 @@ using System;
 namespace EasyPost.Exceptions
 {
     [Serializable]
-    internal class PropertyMissing : Exception
+    internal class ObjectException : Exception
     {
-        private readonly string _property;
-
-        public override string Message
+        internal ObjectException(string message) : base(message)
         {
-            get { return $"Missing {_property}"; }
         }
+    }
 
-        internal PropertyMissing(string property)
+    [Serializable]
+    internal class PropertyMissing : ObjectException
+    {
+        internal PropertyMissing(string property) : base($"Missing {property}")
         {
-            _property = property;
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using EasyPost.Exceptions;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
 
@@ -31,7 +32,7 @@ namespace EasyPost.Services.V2
 
             if (summary.id == null)
             {
-                throw new Exception("Billing has not been setup for this user. Please add a payment method.");
+                throw new PaymentNotSetUp("Billing has not been setup for this user. Please add a payment method.");
             }
 
             return summary;
@@ -81,7 +82,7 @@ namespace EasyPost.Services.V2
 
             if (paymentMethod == null)
             {
-                throw new Exception("The chosen payment method is not a valid method. Please try again.");
+                throw new InvalidOption(priority.ToString(), "Priority");
             }
 
             return paymentMethod;

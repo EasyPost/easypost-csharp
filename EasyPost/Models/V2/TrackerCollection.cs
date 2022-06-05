@@ -27,7 +27,7 @@ namespace EasyPost.Models.V2
 
             if (V2Client == null)
             {
-                throw new Exception("Client is null");
+                throw new ClientNotConfigured();
             }
 
             return await V2Client.Trackers.All(filters);

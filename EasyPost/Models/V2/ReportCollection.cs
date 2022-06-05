@@ -31,7 +31,7 @@ namespace EasyPost.Models.V2
 
             if (V2Client == null)
             {
-                throw new Exception("Client is null");
+                throw new ClientNotConfigured();
             }
 
             if (type != null)

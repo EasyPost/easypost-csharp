@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using EasyPost.Exceptions;
 using EasyPost.Utilities;
 using Newtonsoft.Json;
 using RestSharp;
@@ -50,7 +51,7 @@ namespace EasyPost.Interfaces
         {
             if (Client == null)
             {
-                throw new Exception("Client is null");
+                throw new ClientNotConfigured();
             }
 
             return await Client.Request<T>(method, url, parameters, rootElement);
@@ -60,7 +61,7 @@ namespace EasyPost.Interfaces
         {
             if (Client == null)
             {
-                throw new Exception("Client is null");
+                throw new ClientNotConfigured();
             }
 
             return await Client.Request(method, url, parameters, rootElement);
@@ -71,7 +72,7 @@ namespace EasyPost.Interfaces
             T updatedObject = await Request<T>(method, url, parameters, rootElement);
             if (updatedObject == null)
             {
-                throw new Exception("Failed to update object");
+                throw new ObjectException("Failed to update object");
             }
 
             Merge(updatedObject);
