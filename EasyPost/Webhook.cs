@@ -33,7 +33,7 @@ namespace EasyPost
         /// </summary>
         public async Task Update()
         {
-            Request request = new Request("webhooks/{id}", Method.Put);
+            Request request = new Request("webhooks/{id}", Method.Patch);
             request.AddUrlSegment("id", id);
 
             Merge(await request.Execute<Webhook>());
