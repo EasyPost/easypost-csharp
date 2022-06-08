@@ -73,7 +73,7 @@ namespace EasyPost
         /// <returns>An EasyPost.CreditCardFund instance.</returns>
         private static async Task<CreditCardFund> Fund(string amount, string paymentMethodId)
         {
-            Request request = new Request($"credit_cards/{paymentMethodId}/charge", Method.Post);
+            Request request = new Request($"credit_cards/{paymentMethodId}/charges", Method.Post);
             request.AddParameters(new Dictionary<string, object>
             {
                 {
