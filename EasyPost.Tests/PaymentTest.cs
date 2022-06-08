@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -15,7 +16,7 @@ namespace EasyPost.Tests
         // need to manually add details via dashboard when recording
         public async Task TestAll()
         {
-            UseVCR("all");
+            UseVCR("all", ApiVersion.V2);
 
             PaymentMethodSummary summary = await GetPaymentMethodSummary();
 
@@ -25,7 +26,7 @@ namespace EasyPost.Tests
         [Fact(Skip = "Lack of an available real credit card in tests.")]
         public async Task TestDelete()
         {
-            UseVCR("delete");
+            UseVCR("delete", ApiVersion.V2);
 
             PaymentMethodSummary summary = await GetPaymentMethodSummary();
 
@@ -40,7 +41,7 @@ namespace EasyPost.Tests
         // Skipping due to the lack of an available real credit card in tests.
         public async Task TestFund()
         {
-            UseVCR("fund");
+            UseVCR("fund", ApiVersion.V2);
 
             PaymentMethodSummary summary = await GetPaymentMethodSummary();
 
@@ -52,6 +53,6 @@ namespace EasyPost.Tests
             Assert.IsInstanceOfType(funding, typeof(CreditCardFunding));
         }
 
-        private async Task<PaymentMethodSummary> GetPaymentMethodSummary() => await V2Client.Payments.All();
+        private async Task<PaymentMethodSummary> GetPaymentMethodSummary() => await Client.Payments.All();
     }
 }

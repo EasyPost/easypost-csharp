@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Models.V2;
 using Xunit;
@@ -15,11 +16,11 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestError()
         {
-            UseVCR("error");
+            UseVCR("error", ApiVersion.V2);
 
             try
             {
-                Shipment _ = await V2Client.Shipments.Create();
+                Shipment _ = await Client.Shipments.Create();
             }
             catch (ApiException error)
             {

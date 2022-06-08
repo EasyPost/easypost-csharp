@@ -49,17 +49,9 @@ namespace EasyPost.Tests
             Production
         }
 
-        internal static BaseClient GetClient(string apiKey, ClientVersion clientVersion, HttpClient vcrClient = null)
+        internal static Client GetClient(string apiKey, ApiVersion apiVersion, HttpClient vcrClient = null)
         {
-            switch (clientVersion)
-            {
-                case ClientVersion.V2:
-                    return new V2Client(apiKey, vcrClient);
-                case ClientVersion.Beta:
-                    return new BetaClient(apiKey, vcrClient);
-                default:
-                    throw new Exception("Invalid client version");
-            }
+            return new Client(apiKey, apiVersion, vcrClient);
         }
 
         private static string GetApiKey(ApiKey apiKey)
@@ -139,7 +131,7 @@ namespace EasyPost.Tests
 
             internal bool IsRecording() => _vcr.Mode == Mode.Record;
 
-            internal BaseClient SetUpTest(string cassetteName, ClientVersion clientVersion, string overrideApiKey = null)
+            internal Client SetUpTest(string cassetteName, ApiVersion apiVersion, string overrideApiKey = null)
             {
                 // override api key if needed
                 string apiKey = overrideApiKey ?? _apiKey;
@@ -163,7 +155,7 @@ namespace EasyPost.Tests
                 }
 
                 // get EasyPost client
-                return GetClient(apiKey, clientVersion, _vcr.Client);
+                return GetClient(apiKey, apiVersion, _vcr.Client);
             }
         }
     }

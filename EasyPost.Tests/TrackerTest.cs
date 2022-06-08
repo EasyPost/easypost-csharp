@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -15,9 +16,9 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all");
+            UseVCR("all", ApiVersion.V2);
 
-            TrackerCollection trackerCollection = await V2Client.Trackers.All(new Dictionary<string, object>
+            TrackerCollection trackerCollection = await Client.Trackers.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -37,7 +38,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create");
+            UseVCR("create", ApiVersion.V2);
 
             Tracker tracker = await CreateBasicTracker();
 
@@ -49,9 +50,9 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateList()
         {
-            UseVCR("create_list");
+            UseVCR("create_list", ApiVersion.V2);
 
-            bool success = await V2Client.Trackers.CreateList(new Dictionary<string, object>
+            bool success = await Client.Trackers.CreateList(new Dictionary<string, object>
             {
                 {
                     "0", new Dictionary<string, object>
@@ -86,18 +87,18 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.V2);
 
             // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
             Tracker tracker = await CreateBasicTracker();
 
-            Tracker retrievedTracker = await V2Client.Trackers.Retrieve(tracker.id);
+            Tracker retrievedTracker = await Client.Trackers.Retrieve(tracker.id);
 
             Assert.IsInstanceOfType(retrievedTracker, typeof(Tracker));
             // Must compare IDs because other elements of objects may be different
             Assert.AreEqual(tracker.id, retrievedTracker.id);
         }
 
-        private async Task<Tracker> CreateBasicTracker() => await V2Client.Trackers.Create(Fixture.Usps, "EZ1000000001");
+        private async Task<Tracker> CreateBasicTracker() => await Client.Trackers.Create(Fixture.Usps, "EZ1000000001");
     }
 }

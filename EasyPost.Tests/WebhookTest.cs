@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -16,7 +17,7 @@ namespace EasyPost.Tests
             {
                 try
                 {
-                    Webhook retrievedWebhook = await V2Client.Webhooks.Retrieve(id);
+                    Webhook retrievedWebhook = await Client.Webhooks.Retrieve(id);
                     return await retrievedWebhook.Delete();
                 }
                 catch
@@ -29,9 +30,9 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all");
+            UseVCR("all", ApiVersion.V2);
 
-            List<Webhook> webhooks = await V2Client.Webhooks.All();
+            List<Webhook> webhooks = await Client.Webhooks.All();
 
             foreach (Webhook item in webhooks)
             {
@@ -42,7 +43,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create");
+            UseVCR("create", ApiVersion.V2);
 
             const string url = "https://example.com/create";
 
@@ -56,12 +57,12 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestDelete()
         {
-            UseVCR("delete");
+            UseVCR("delete", ApiVersion.V2);
 
             const string url = "https://example.com/delete";
 
             Webhook webhook = await CreateBasicWebhook(url);
-            Webhook retrievedWebhook = await V2Client.Webhooks.Retrieve(webhook.id);
+            Webhook retrievedWebhook = await Client.Webhooks.Retrieve(webhook.id);
 
             bool success = await retrievedWebhook.Delete();
             Assert.IsTrue(success);
@@ -72,13 +73,13 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.V2);
 
             const string url = "https://example.com/retrieve";
 
             Webhook webhook = await CreateBasicWebhook(url);
 
-            Webhook retrievedWebhook = await V2Client.Webhooks.Retrieve(webhook.id);
+            Webhook retrievedWebhook = await Client.Webhooks.Retrieve(webhook.id);
 
             Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
             Assert.AreEqual(webhook, retrievedWebhook);
@@ -87,7 +88,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestUpdate()
         {
-            UseVCR("update");
+            UseVCR("update", ApiVersion.V2);
 
             const string url = "https://example.com/update";
 
@@ -99,7 +100,7 @@ namespace EasyPost.Tests
 
         private async Task<Webhook> CreateBasicWebhook(string url)
         {
-            Webhook webhook = await V2Client.Webhooks.Create(new Dictionary<string, object>
+            Webhook webhook = await Client.Webhooks.Create(new Dictionary<string, object>
             {
                 {
                     "url", url

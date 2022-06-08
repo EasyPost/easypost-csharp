@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -16,11 +17,11 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAddRemoveShipment()
         {
-            UseVCR("add_remove_shipment");
+            UseVCR("add_remove_shipment", ApiVersion.V2);
 
-            Shipment shipment = await V2Client.Shipments.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await Client.Shipments.Create(Fixture.OneCallBuyShipment);
 
-            Batch batch = await V2Client.Batches.Create();
+            Batch batch = await Client.Batches.Create();
 
             await batch.AddShipments(new List<Shipment>
             {
@@ -40,9 +41,9 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all");
+            UseVCR("all", ApiVersion.V2);
 
-            BatchCollection batchCollection = await V2Client.Batches.All(new Dictionary<string, object>
+            BatchCollection batchCollection = await Client.Batches.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -62,7 +63,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestBuy()
         {
-            UseVCR("buy");
+            UseVCR("buy", ApiVersion.V2);
 
             Batch batch = await CreateOneCallBuyBatch();
 
@@ -77,7 +78,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create");
+            UseVCR("create", ApiVersion.V2);
 
             Batch batch = await CreateBasicBatch();
 
@@ -89,9 +90,9 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateAndBuy()
         {
-            UseVCR("create_and_buy");
+            UseVCR("create_and_buy", ApiVersion.V2);
 
-            Batch batch = await V2Client.Batches.CreateAndBuy(new Dictionary<string, object>
+            Batch batch = await Client.Batches.CreateAndBuy(new Dictionary<string, object>
             {
                 {
                     "shipments", new List<Dictionary<string, object>>
@@ -109,7 +110,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateScanForm()
         {
-            UseVCR("create_scan_form");
+            UseVCR("create_scan_form", ApiVersion.V2);
 
 
             Batch batch = await CreateOneCallBuyBatch();
@@ -130,7 +131,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestLabel()
         {
-            UseVCR("label");
+            UseVCR("label", ApiVersion.V2);
 
             Batch batch = await CreateOneCallBuyBatch();
 
@@ -150,11 +151,11 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.V2);
 
             Batch batch = await CreateBasicBatch();
 
-            Batch retrievedBatch = await V2Client.Batches.Retrieve(batch.id);
+            Batch retrievedBatch = await Client.Batches.Retrieve(batch.id);
 
             Assert.IsInstanceOfType(retrievedBatch, typeof(Batch));
             // Must compare IDs since elements of batch (i.e. status) may be different
@@ -162,7 +163,7 @@ namespace EasyPost.Tests
         }
 
         private async Task<Batch> CreateBasicBatch() =>
-            await V2Client.Batches.Create(new Dictionary<string, object>
+            await Client.Batches.Create(new Dictionary<string, object>
             {
                 {
                     "shipments", new List<Dictionary<string, object>>
@@ -173,7 +174,7 @@ namespace EasyPost.Tests
             });
 
         private async Task<Batch> CreateOneCallBuyBatch() =>
-            await V2Client.Batches.Create(new Dictionary<string, object>
+            await Client.Batches.Create(new Dictionary<string, object>
             {
                 {
                     "shipments", new List<Dictionary<string, object>>

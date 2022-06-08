@@ -8,7 +8,7 @@ namespace EasyPost.Services.V2
 {
     public class ScanFormService : Service
     {
-        internal ScanFormService(BaseClient client) : base(client)
+        internal ScanFormService(Client client) : base(client)
         {
         }
 
@@ -32,7 +32,7 @@ namespace EasyPost.Services.V2
         {
             ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
             scanFormCollection.filters = parameters;
-            scanFormCollection.V2Client = (V2Client)Client; // specifically needs a v2 client
+            scanFormCollection.Client = Client; // specifically needs a v2 client
             return scanFormCollection;
         }
 

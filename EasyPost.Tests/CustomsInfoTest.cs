@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -14,7 +15,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create");
+            UseVCR("create", ApiVersion.V2);
 
             CustomsInfo customsInfo = await CreateBasicCustomsInfo();
 
@@ -26,16 +27,16 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.V2);
 
             CustomsInfo customsInfo = await CreateBasicCustomsInfo();
 
-            CustomsInfo retrievedCustomsInfo = await V2Client.CustomsInfo.Retrieve(customsInfo.id);
+            CustomsInfo retrievedCustomsInfo = await Client.CustomsInfo.Retrieve(customsInfo.id);
 
             Assert.IsInstanceOfType(retrievedCustomsInfo, typeof(CustomsInfo));
             Assert.AreEqual(customsInfo, retrievedCustomsInfo);
         }
 
-        private async Task<CustomsInfo> CreateBasicCustomsInfo() => await V2Client.CustomsInfo.Create(Fixture.BasicCustomsInfo);
+        private async Task<CustomsInfo> CreateBasicCustomsInfo() => await Client.CustomsInfo.Create(Fixture.BasicCustomsInfo);
     }
 }

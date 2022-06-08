@@ -8,7 +8,7 @@ namespace EasyPost.Services.V2
 {
     public class TrackerService : Service
     {
-        internal TrackerService(BaseClient client) : base(client)
+        internal TrackerService(Client client) : base(client)
         {
         }
 
@@ -36,7 +36,7 @@ namespace EasyPost.Services.V2
         {
             TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters);
             trackerCollection.filters = parameters;
-            trackerCollection.V2Client = (V2Client)Client; // specifically needs a v2 client
+            trackerCollection.Client = Client; // specifically needs a v2 client
             return trackerCollection;
         }
 

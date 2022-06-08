@@ -11,9 +11,8 @@ namespace EasyPost.Tests
     public class UnitTest : IDisposable
     {
         private readonly TestUtils.VCR _vcr;
-        protected BetaClient BetaClient;
 
-        protected V2Client V2Client;
+        protected Client Client;
 
         private string _cleanupId;
 
@@ -66,10 +65,10 @@ namespace EasyPost.Tests
         ///     Set up all clients to make live calls.
         /// </summary>
         /// <param name="apiKey"></param>
-        protected void UseLive(string apiKey)
+        /// <param name="apiVersion"></param>
+        protected void UseLive(string apiKey, ApiVersion apiVersion)
         {
-            V2Client = (V2Client)TestUtils.GetClient(apiKey, ClientVersion.V2);
-            BetaClient = (BetaClient)TestUtils.GetClient(apiKey, ClientVersion.Beta);
+            Client = (Client)TestUtils.GetClient(apiKey, apiVersion);
         }
 
         /// <summary>
@@ -77,10 +76,10 @@ namespace EasyPost.Tests
         /// </summary>
         /// <param name="cassetteName"></param>
         /// <param name="overrideApiKey"></param>
-        protected void UseVCR(string cassetteName, string overrideApiKey = null)
+        /// <param name="apiVersion"></param>
+        protected void UseVCR(string cassetteName, ApiVersion apiVersion, string overrideApiKey = null)
         {
-            V2Client = (V2Client)_vcr.SetUpTest(cassetteName, ClientVersion.V2, overrideApiKey);
-            BetaClient = (BetaClient)_vcr.SetUpTest(cassetteName, ClientVersion.Beta, overrideApiKey);
+            Client = (Client)_vcr.SetUpTest(cassetteName, apiVersion, overrideApiKey);
         }
     }
 }

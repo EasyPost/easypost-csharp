@@ -1,3 +1,8 @@
+using System;
+using System.Diagnostics;
+using System.Reflection;
+using EasyPost.Clients;
+
 namespace EasyPost.Http
 {
     /// <summary>
@@ -5,6 +10,9 @@ namespace EasyPost.Http
     /// </summary>
     internal class ClientConfiguration
     {
+        private readonly string _dotNetVersion;
+        private readonly string _libraryVersion;
+
         /// <summary>
         ///     The API base URI.
         /// </summary>
@@ -17,19 +25,38 @@ namespace EasyPost.Http
         /// <summary>
         ///     The API version.
         /// </summary>
-        internal readonly string ApiVersion;
+        internal readonly ApiVersion ApiVersion;
+
+        /// <summary>
+        ///     The API version string.
+        /// </summary>
+        private string ApiVersionString => ApiVersionDetails.FromEnum(ApiVersion);
+
+        internal string UserAgent => $"EasyPost/{ApiVersion} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
 
         /// <summary>
         ///     Create an EasyPost.ClientConfiguration instance.
         /// </summary>
         /// <param name="apiKey">The API key to use for the client connection.</param>
-        /// <param name="apiBase">The base API url to use for the client connection.</param>
         /// <param name="apiVersion">Which version of the API to use.</param>
-        internal ClientConfiguration(string apiKey, string apiBase, string apiVersion)
+        internal ClientConfiguration(string apiKey, ApiVersion apiVersion)
         {
             ApiKey = apiKey;
-            ApiBase = apiBase;
             ApiVersion = apiVersion;
+            ApiBase = $"https://api.easypost.com/{ApiVersionString}";
+
+            try
+            {
+                Assembly assembly = typeof(Client).Assembly;
+                FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
+                _libraryVersion = info.FileVersion ?? "Unknown";
+            }
+            catch (Exception)
+            {
+                _libraryVersion = "Unknown";
+            }
+
+            _dotNetVersion = Environment.Version.ToString();
         }
     }
 }

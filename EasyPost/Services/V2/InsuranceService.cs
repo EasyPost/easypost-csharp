@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
 
@@ -7,7 +8,7 @@ namespace EasyPost.Services.V2
 {
     public class InsuranceService : Service
     {
-        internal InsuranceService(BaseClient client) : base(client)
+        internal InsuranceService(Client client) : base(client)
         {
         }
 

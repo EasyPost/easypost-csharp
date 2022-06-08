@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models.Beta;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -15,9 +16,9 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all");
+            UseVCR("all", ApiVersion.Beta);
 
-            List<EndShipper> endShippers = await BetaClient.EndShippers.All(new Dictionary<string, object>
+            List<EndShipper> endShippers = await Client.EndShippers.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -34,7 +35,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create");
+            UseVCR("create", ApiVersion.Beta);
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
@@ -46,11 +47,11 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.Beta);
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
-            EndShipper retrievedEndShipper = await BetaClient.EndShippers.Retrieve(endShipper.id);
+            EndShipper retrievedEndShipper = await Client.EndShippers.Retrieve(endShipper.id);
 
             Assert.IsInstanceOfType(retrievedEndShipper, typeof(EndShipper));
             Assert.AreEqual(endShipper.street1, retrievedEndShipper.street1);
@@ -59,7 +60,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestUpdate()
         {
-            UseVCR("update");
+            UseVCR("update", ApiVersion.Beta);
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
@@ -75,6 +76,6 @@ namespace EasyPost.Tests
             Assert.AreEqual(testName, endShipper.name);
         }
 
-        private async Task<EndShipper> CreateBasicEndShipper() => await BetaClient.EndShippers.Create(Fixture.EndShipperAddress);
+        private async Task<EndShipper> CreateBasicEndShipper() => await Client.EndShippers.Create(Fixture.EndShipperAddress);
     }
 }

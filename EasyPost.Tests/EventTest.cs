@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -15,7 +16,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all");
+            UseVCR("all", ApiVersion.V2);
 
             EventCollection eventCollection = await GetBasicEventCollection();
 
@@ -32,12 +33,12 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.V2);
 
             EventCollection eventCollection = await GetBasicEventCollection();
             Event _event = eventCollection.events[0];
 
-            Event retrievedEvent = await V2Client.Events.Retrieve(_event.id);
+            Event retrievedEvent = await Client.Events.Retrieve(_event.id);
 
             Assert.IsInstanceOfType(retrievedEvent, typeof(Event));
             // Must compare IDs because other elements of objects may be different
@@ -45,7 +46,7 @@ namespace EasyPost.Tests
         }
 
         private async Task<EventCollection> GetBasicEventCollection() =>
-            await V2Client.Events.All(new Dictionary<string, object>
+            await Client.Events.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize

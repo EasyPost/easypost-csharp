@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -15,9 +16,9 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all");
+            UseVCR("all", ApiVersion.V2);
 
-            RefundCollection refundCollection = await V2Client.Refunds.All(new Dictionary<string, object>
+            RefundCollection refundCollection = await Client.Refunds.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -37,7 +38,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create");
+            UseVCR("create", ApiVersion.V2);
 
             List<Refund> refunds = await CreateBasicRefund();
 
@@ -54,9 +55,9 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.V2);
 
-            RefundCollection refundCollection = await V2Client.Refunds.All(new Dictionary<string, object>
+            RefundCollection refundCollection = await Client.Refunds.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -65,7 +66,7 @@ namespace EasyPost.Tests
 
             Refund refund = (await CreateBasicRefund())[0];
 
-            Refund retrievedRefund = await V2Client.Refunds.Retrieve(refund.id);
+            Refund retrievedRefund = await Client.Refunds.Retrieve(refund.id);
 
             Assert.IsInstanceOfType(retrievedRefund, typeof(Refund));
             Assert.AreEqual(refund, retrievedRefund);
@@ -73,10 +74,10 @@ namespace EasyPost.Tests
 
         private async Task<List<Refund>> CreateBasicRefund()
         {
-            Shipment shipment = await V2Client.Shipments.Create(Fixture.OneCallBuyShipment);
-            Shipment retrievedShipment = await V2Client.Shipments.Retrieve(shipment.id); // We need to retrieve the shipment so that the tracking_code has time to populate
+            Shipment shipment = await Client.Shipments.Create(Fixture.OneCallBuyShipment);
+            Shipment retrievedShipment = await Client.Shipments.Retrieve(shipment.id); // We need to retrieve the shipment so that the tracking_code has time to populate
 
-            return await V2Client.Refunds.Create(new Dictionary<string, object>
+            return await Client.Refunds.Create(new Dictionary<string, object>
             {
                 {
                     "carrier", Fixture.Usps

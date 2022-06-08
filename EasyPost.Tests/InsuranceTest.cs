@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -15,9 +16,9 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all");
+            UseVCR("all", ApiVersion.V2);
 
-            InsuranceCollection insuranceCollection = await V2Client.Insurance.All(new Dictionary<string, object>
+            InsuranceCollection insuranceCollection = await Client.Insurance.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -37,7 +38,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create");
+            UseVCR("create", ApiVersion.V2);
 
             Insurance insurance = await CreateBasicInsurance();
 
@@ -50,11 +51,11 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.V2);
 
             Insurance insurance = await CreateBasicInsurance();
 
-            Insurance retrievedInsurance = await V2Client.Insurance.Retrieve(insurance.id);
+            Insurance retrievedInsurance = await Client.Insurance.Retrieve(insurance.id);
             Assert.IsInstanceOfType(retrievedInsurance, typeof(Insurance));
             // Must compare IDs since other elements of object may be different
             Assert.AreEqual(insurance.id, retrievedInsurance.id);
@@ -62,8 +63,8 @@ namespace EasyPost.Tests
 
         private async Task<Insurance> CreateBasicInsurance()
         {
-            Dictionary<string, object> basicInsurance = await Fixture.BasicInsurance(V2Client);
-            return await V2Client.Insurance.Create(basicInsurance);
+            Dictionary<string, object> basicInsurance = await Fixture.BasicInsurance(Client);
+            return await Client.Insurance.Create(basicInsurance);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Models.V2;
 using EasyPost.Services.V2;
@@ -18,25 +19,25 @@ namespace EasyPost.Tests
 
         private async Task<Shipment> CreateBasicShipment()
         {
-            return await V2Client.Shipments.Create(Fixture.BasicShipment);
+            return await Client.Shipments.Create(Fixture.BasicShipment);
         }
 
         private async Task<Shipment> CreateFullShipment()
         {
-            return await V2Client.Shipments.Create(Fixture.FullShipment);
+            return await Client.Shipments.Create(Fixture.FullShipment);
         }
 
         private async Task<Shipment> CreateOneCallBuyShipment()
         {
-            return await V2Client.Shipments.Create(Fixture.OneCallBuyShipment);
+            return await Client.Shipments.Create(Fixture.OneCallBuyShipment);
         }
 
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all");
+            UseVCR("all", ApiVersion.V2);
 
-            ShipmentCollection shipmentCollection = await V2Client.Shipments.All(new Dictionary<string, object>
+            ShipmentCollection shipmentCollection = await Client.Shipments.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -56,7 +57,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestBuy()
         {
-            UseVCR("buy");
+            UseVCR("buy", ApiVersion.V2);
 
             Shipment shipment = await CreateFullShipment();
 
@@ -68,7 +69,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestConvertLabel()
         {
-            UseVCR("convert_label");
+            UseVCR("convert_label", ApiVersion.V2);
 
             Shipment shipment = await CreateOneCallBuyShipment();
 
@@ -80,7 +81,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create");
+            UseVCR("create", ApiVersion.V2);
 
             Shipment shipment = await CreateFullShipment();
 
@@ -95,7 +96,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateEmptyObjects()
         {
-            UseVCR("create_empty_objects");
+            UseVCR("create_empty_objects", ApiVersion.V2);
 
             Dictionary<string, object> shipmentData = Fixture.BasicShipment;
 
@@ -106,7 +107,7 @@ namespace EasyPost.Tests
             shipmentData["tax_identifiers"] = null;
             shipmentData["reference"] = "";
 
-            Shipment shipment = await V2Client.Shipments.Create(shipmentData);
+            Shipment shipment = await Client.Shipments.Create(shipmentData);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.id.StartsWith("shp_"));
@@ -119,7 +120,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateTaxIdentifiers()
         {
-            UseVCR("create_tax_identifiers");
+            UseVCR("create_tax_identifiers", ApiVersion.V2);
 
             Dictionary<string, object> shipmentData = Fixture.BasicShipment;
             shipmentData["tax_identifiers"] = new List<Dictionary<string, object>>
@@ -127,7 +128,7 @@ namespace EasyPost.Tests
                 Fixture.TaxIdentifier
             };
 
-            Shipment shipment = await V2Client.Shipments.Create(shipmentData);
+            Shipment shipment = await Client.Shipments.Create(shipmentData);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.id.StartsWith("shp_"));
@@ -137,13 +138,13 @@ namespace EasyPost.Tests
         [Fact(Skip = "Test does not play well with VCR")]
         public async Task TestCreateWithIds()
         {
-            UseVCR("create_with_ids");
+            UseVCR("create_with_ids", ApiVersion.V2);
 
-            Address fromAddress = await V2Client.Addresses.Create(Fixture.BasicAddress);
-            Address toAddress = await V2Client.Addresses.Create(Fixture.BasicAddress);
-            Parcel parcel = await V2Client.Parcels.Create(Fixture.BasicParcel);
+            Address fromAddress = await Client.Addresses.Create(Fixture.BasicAddress);
+            Address toAddress = await Client.Addresses.Create(Fixture.BasicAddress);
+            Parcel parcel = await Client.Parcels.Create(Fixture.BasicParcel);
 
-            Shipment shipment = await V2Client.Shipments.Create(new Dictionary<string, object>
+            Shipment shipment = await Client.Shipments.Create(new Dictionary<string, object>
             {
                 {
                     "from_address", new Dictionary<string, object>
@@ -184,13 +185,13 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestInsure()
         {
-            UseVCR("insure");
+            UseVCR("insure", ApiVersion.V2);
 
             Dictionary<string, object> shipmentData = Fixture.OneCallBuyShipment;
             // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
             shipmentData["insurance"] = 0;
 
-            Shipment shipment = await V2Client.Shipments.Create(shipmentData);
+            Shipment shipment = await Client.Shipments.Create(shipmentData);
 
             await shipment.Insure(100);
 
@@ -203,7 +204,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRefund()
         {
-            UseVCR("refund");
+            UseVCR("refund", ApiVersion.V2);
 
             Shipment shipment = await CreateOneCallBuyShipment();
 
@@ -215,7 +216,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRegenerateRates()
         {
-            UseVCR("regenerate_rates");
+            UseVCR("regenerate_rates", ApiVersion.V2);
 
             Shipment shipment = await CreateFullShipment();
 
@@ -233,11 +234,11 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.V2);
 
             Shipment shipment = await CreateFullShipment();
 
-            Shipment retrievedShipment = await V2Client.Shipments.Retrieve(shipment.id);
+            Shipment retrievedShipment = await Client.Shipments.Retrieve(shipment.id);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.AreEqual(shipment, retrievedShipment);
@@ -246,7 +247,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestSmartrate()
         {
-            UseVCR("smartrate");
+            UseVCR("smartrate", ApiVersion.V2);
 
             Shipment shipment = await CreateBasicShipment();
 
@@ -268,7 +269,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestInstanceLowestSmartrate()
         {
-            UseVCR("lowest_smartrate_instance");
+            UseVCR("lowest_smartrate_instance", ApiVersion.V2);
 
             Shipment shipment = await CreateBasicShipment();
 
@@ -288,7 +289,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestLowestRate()
         {
-            UseVCR("lowest_rate");
+            UseVCR("lowest_rate", ApiVersion.V2);
 
             Shipment shipment = await CreateFullShipment();
 
@@ -319,7 +320,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestStaticLowestSmartrate()
         {
-            UseVCR("lowest_smartrate_static");
+            UseVCR("lowest_smartrate_static", ApiVersion.V2);
 
             Shipment shipment = await CreateBasicShipment();
 

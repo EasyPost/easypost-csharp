@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -14,11 +15,11 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.V2);
 
-            Shipment shipment = await V2Client.Shipments.Create(Fixture.BasicShipment);
+            Shipment shipment = await Client.Shipments.Create(Fixture.BasicShipment);
 
-            Rate rate = await V2Client.Rates.Retrieve(shipment.rates[0].id);
+            Rate rate = await Client.Rates.Retrieve(shipment.rates[0].id);
 
             Assert.IsInstanceOfType(rate, typeof(Rate));
             Assert.IsTrue(rate.id.StartsWith("rate_"));

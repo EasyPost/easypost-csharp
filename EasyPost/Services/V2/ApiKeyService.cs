@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
 
@@ -7,7 +8,7 @@ namespace EasyPost.Services.V2
 {
     public class ApiKeyService : Service
     {
-        internal ApiKeyService(BaseClient client) : base(client)
+        internal ApiKeyService(Client client) : base(client)
         {
         }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
+using EasyPost.Interfaces;
 using EasyPost.Models.Base;
 using Newtonsoft.Json;
 
@@ -15,7 +16,7 @@ namespace EasyPost.Models.V2
         public List<Report>? reports { get; set; }
         [JsonProperty("type")]
         public string? type { get; set; }
-        public V2Client? V2Client { get; set; } // override the BaseClient property with a client property
+        public BaseClient? V2Client { get; set; } // override the BaseClient property with a client property
 
         /// <summary>
         ///     Get the next page of reports based on the original parameters passed to ReportList.All().
@@ -29,14 +30,14 @@ namespace EasyPost.Models.V2
                 filters["before_id"] = reports.Last().id ?? throw new PropertyMissing("reports");
             }
 
-            if (V2Client == null)
+            if (Client == null)
             {
                 throw new ClientNotConfigured();
             }
 
             if (type != null)
             {
-                return await V2Client.Reports.All(type, filters);
+                return await Client.Reports.All(type, filters);
             }
 
             throw new PropertyMissing("type");

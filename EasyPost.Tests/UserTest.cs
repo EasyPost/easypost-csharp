@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -13,7 +14,7 @@ namespace EasyPost.Tests
             {
                 try
                 {
-                    User retrievedUser = await V2Client.Users.Retrieve(id);
+                    User retrievedUser = await Client.Users.Retrieve(id);
                     return await retrievedUser.Delete();
                 }
                 catch
@@ -26,9 +27,9 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAllApiKeys()
         {
-            UseVCR("all_api_keys");
+            UseVCR("all_api_keys", ApiVersion.V2);
 
-            List<ApiKey> apiKeys = await V2Client.ApiKeys.All();
+            List<ApiKey> apiKeys = await Client.ApiKeys.All();
 
             // API keys will be censored, so we'll just check for the existence of the list
             Assert.IsNotNull(apiKeys);
@@ -37,7 +38,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestApiKeys()
         {
-            UseVCR("api_keys");
+            UseVCR("api_keys", ApiVersion.V2);
 
             User user = await RetrieveMe();
 
@@ -49,7 +50,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create");
+            UseVCR("create", ApiVersion.V2);
 
             User user = await CreateUser();
 
@@ -61,7 +62,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestDelete()
         {
-            UseVCR("delete");
+            UseVCR("delete", ApiVersion.V2);
 
             User user = await CreateUser();
 
@@ -74,13 +75,13 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.V2);
 
             User authenticatedUser = await RetrieveMe();
 
             string id = authenticatedUser.id;
 
-            User user = await V2Client.Users.Retrieve(id);
+            User user = await Client.Users.Retrieve(id);
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));
@@ -91,7 +92,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieveMe()
         {
-            UseVCR("retrieve_me");
+            UseVCR("retrieve_me", ApiVersion.V2);
 
             User user = await RetrieveMe();
 
@@ -102,7 +103,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestUpdate()
         {
-            UseVCR("update");
+            UseVCR("update", ApiVersion.V2);
 
             User user = await CreateUser();
 
@@ -125,7 +126,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestUpdateBrand()
         {
-            UseVCR("update_brand");
+            UseVCR("update_brand", ApiVersion.V2);
 
             User user = await CreateUser();
 
@@ -144,7 +145,7 @@ namespace EasyPost.Tests
 
         private async Task<User> CreateUser()
         {
-            User user = await V2Client.Users.Create(new Dictionary<string, object>
+            User user = await Client.Users.Create(new Dictionary<string, object>
             {
                 {
                     "name", "Test User"
@@ -155,6 +156,6 @@ namespace EasyPost.Tests
             return user;
         }
 
-        private async Task<User> RetrieveMe() => await V2Client.Users.RetrieveMe();
+        private async Task<User> RetrieveMe() => await Client.Users.RetrieveMe();
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class SmartrateAccuracy : Enumeration
+    public class SmartrateAccuracy : ValueEnum
     {
         public static readonly SmartrateAccuracy Percentile50 = new SmartrateAccuracy(1, "percentile_50");
         public static readonly SmartrateAccuracy Percentile75 = new SmartrateAccuracy(2, "percentile_75");

@@ -584,7 +584,7 @@ namespace EasyPost.Tests
             }
         }
 
-        public static async Task<Dictionary<string, object>> BasicInsurance(V2Client client)
+        public static async Task<Dictionary<string, object>> BasicInsurance(Client client)
         {
             Shipment shipment = await client.Shipments.Create(OneCallBuyShipment);
             return new Dictionary<string, object>

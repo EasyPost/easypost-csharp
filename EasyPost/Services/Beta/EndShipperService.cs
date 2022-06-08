@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.Beta;
 
@@ -7,7 +8,7 @@ namespace EasyPost.Services.Beta
 {
     public class EndShipperService : Service
     {
-        internal EndShipperService(BaseClient client) : base(client)
+        internal EndShipperService(Client client) : base(client)
         {
         }
 

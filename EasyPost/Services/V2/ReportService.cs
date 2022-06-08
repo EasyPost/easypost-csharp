@@ -8,7 +8,7 @@ namespace EasyPost.Services.V2
 {
     public class ReportService : Service
     {
-        internal ReportService(BaseClient client) : base(client)
+        internal ReportService(Client client) : base(client)
         {
         }
 
@@ -32,7 +32,7 @@ namespace EasyPost.Services.V2
             ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters);
             reportCollection.filters = parameters;
             reportCollection.type = type;
-            reportCollection.V2Client = (V2Client)Client; // specifically needs a v2 client
+            reportCollection.Client = Client; // specifically needs a v2 client
             return reportCollection;
         }
 

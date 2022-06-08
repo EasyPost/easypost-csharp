@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Calculation;
+using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
 
@@ -8,7 +9,7 @@ namespace EasyPost.Services.V2
 {
     public class RateService : Service
     {
-        internal RateService(BaseClient client) : base(client)
+        internal RateService(Client client) : base(client)
         {
         }
 

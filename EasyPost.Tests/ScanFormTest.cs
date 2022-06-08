@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Models.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -15,9 +16,9 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all");
+            UseVCR("all", ApiVersion.V2);
 
-            ScanFormCollection scanFormCollection = await V2Client.ScanForms.All(new Dictionary<string, object>
+            ScanFormCollection scanFormCollection = await Client.ScanForms.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -37,7 +38,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create");
+            UseVCR("create", ApiVersion.V2);
 
             ScanForm scanForm = await GetBasicScanForm();
 
@@ -48,11 +49,11 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.V2);
 
             ScanForm scanForm = await GetBasicScanForm();
 
-            ScanForm retrievedScanForm = await V2Client.ScanForms.Retrieve(scanForm.id);
+            ScanForm retrievedScanForm = await Client.ScanForms.Retrieve(scanForm.id);
 
             Assert.IsInstanceOfType(retrievedScanForm, typeof(ScanForm));
             Assert.AreEqual(scanForm, retrievedScanForm);
@@ -60,8 +61,8 @@ namespace EasyPost.Tests
 
         private async Task<ScanForm> GetBasicScanForm()
         {
-            Shipment shipment = await V2Client.Shipments.Create(Fixture.OneCallBuyShipment);
-            return await V2Client.ScanForms.Create(new List<Shipment>
+            Shipment shipment = await Client.Shipments.Create(Fixture.OneCallBuyShipment);
+            return await Client.ScanForms.Create(new List<Shipment>
             {
                 shipment
             });

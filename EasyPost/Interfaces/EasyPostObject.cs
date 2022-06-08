@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Utilities;
 using Newtonsoft.Json;
@@ -12,7 +13,7 @@ namespace EasyPost.Interfaces
 {
     public class EasyPostObject
     {
-        [JsonIgnore] internal BaseClient? Client;
+        [JsonIgnore] internal Client? Client;
         [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
         [JsonProperty("id")]

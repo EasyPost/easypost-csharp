@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Models.V2;
 using Xunit;
@@ -16,7 +17,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestBuy()
         {
-            UseVCR("buy");
+            UseVCR("buy", ApiVersion.V2);
 
             Order order = await CreateBasicOrder();
 
@@ -34,7 +35,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create");
+            UseVCR("create", ApiVersion.V2);
 
             Order order = await CreateBasicOrder();
 
@@ -46,7 +47,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestGetRates()
         {
-            UseVCR("get_rates");
+            UseVCR("get_rates", ApiVersion.V2);
 
             Order order = await CreateBasicOrder();
 
@@ -64,24 +65,24 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.V2);
 
             Order order = await CreateBasicOrder();
 
 
-            Order retrievedOrder = await V2Client.Orders.Retrieve(order.id);
+            Order retrievedOrder = await Client.Orders.Retrieve(order.id);
 
             Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
             // Must compare IDs since other elements of objects may be different
             Assert.AreEqual(order.id, retrievedOrder.id);
         }
 
-        private async Task<Order> CreateBasicOrder() => await V2Client.Orders.Create(Fixture.BasicOrder);
+        private async Task<Order> CreateBasicOrder() => await Client.Orders.Create(Fixture.BasicOrder);
 
         [Fact]
         public async Task TestLowestRate()
         {
-            UseVCR("lowest_rate");
+            UseVCR("lowest_rate", ApiVersion.V2);
 
             Order order = await CreateBasicOrder();
 

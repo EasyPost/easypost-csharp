@@ -10,6 +10,6 @@ type FSharpCompileTest() =
     [<Fact>]
     member this.TestCompile() =
         // The assert doesn't really do anything, but as long as this test can run, then the code is compiling correctly.
-        let client = new V2Client("")
+        let client = new Client("", ApiVersion.V2)
         let carrierTypesService = client.CarrierTypes
         Assert.NotNull(carrierTypesService)

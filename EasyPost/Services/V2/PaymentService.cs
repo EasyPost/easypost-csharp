@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
@@ -17,7 +18,7 @@ namespace EasyPost.Services.V2
             Secondary
         }
 
-        internal PaymentService(BaseClient client) : base(client)
+        internal PaymentService(Client client) : base(client)
         {
         }
 

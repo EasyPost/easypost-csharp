@@ -5,16 +5,25 @@ using System.Reflection;
 
 namespace EasyPost.Utilities
 {
-    public abstract class Enumeration : IComparable
+    public abstract class Enum : IComparable
     {
         private int Id { get; }
-        internal string Name { get; }
 
-        protected Enumeration(int id, string name) => (Id, Name) = (id, name);
+        protected Enum(int id)
+        {
+            Id = id;
+        }
 
-        public int CompareTo(object? other) => Id.CompareTo(((Enumeration)other!).Id);
+        public int CompareTo(object? other) => Id.CompareTo(((Enum)other!).Id);
 
-        protected bool Equals(Enumeration other) => Id == other.Id && Name == other.Name;
+        protected bool Equals(Enum other) => Id == other.Id;
+
+        protected static IEnumerable<T> GetAll<T>() where T : Enum =>
+            typeof(T).GetFields(BindingFlags.Public |
+                                BindingFlags.Static |
+                                BindingFlags.DeclaredOnly)
+                .Select(f => f.GetValue(null))
+                .Cast<T>();
 
         public override bool Equals(object? obj)
         {
@@ -26,7 +35,7 @@ namespace EasyPost.Utilities
                     return false;
                 }
 
-                Enumeration objEnum = (Enumeration)obj;
+                Enum objEnum = (Enum)obj;
                 return objEnum == this;
             }
             catch (Exception)
@@ -38,19 +47,34 @@ namespace EasyPost.Utilities
 
         public override int GetHashCode()
         {
-            unchecked
             {
-                return (Id * 397) ^ Name.GetHashCode();
+                return (new Dictionary<string, int>
+                {
+                    {
+                        GetType().ToString(), Id
+                    }
+                }).GetHashCode();
             }
         }
+    }
 
-        public override string ToString() => Name;
+    public abstract class ValueEnum : Enum
+    {
+        internal object Value { get; }
 
-        protected static IEnumerable<T> GetAll<T>() where T : Enumeration =>
-            typeof(T).GetFields(BindingFlags.Public |
-                                BindingFlags.Static |
-                                BindingFlags.DeclaredOnly)
-                .Select(f => f.GetValue(null))
-                .Cast<T>();
+        protected ValueEnum(int id, object value) : base(id)
+        {
+            Value = value;
+        }
+    }
+
+    public abstract class MultiValueEnum : Enum
+    {
+        internal object[] Values { get; }
+
+        protected MultiValueEnum(int id, params object[] values) : base(id)
+        {
+            Values = values;
+        }
     }
 }

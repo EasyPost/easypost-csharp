@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
 
@@ -7,7 +8,7 @@ namespace EasyPost.Services.V2
 {
     public class PickupService : Service
     {
-        internal PickupService(BaseClient client) : base(client)
+        internal PickupService(Client client) : base(client)
         {
         }
 

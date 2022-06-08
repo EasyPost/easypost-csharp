@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
@@ -11,7 +10,6 @@ using EasyPost.Exceptions;
 using EasyPost.Http;
 using EasyPost.Models.V2;
 using EasyPost.Utilities;
-using Newtonsoft.Json;
 using RestSharp;
 
 namespace EasyPost.Interfaces
@@ -22,9 +20,6 @@ namespace EasyPost.Interfaces
         private const int DefaultRequestTimeoutMilliseconds = 60000;
 
         private readonly ClientConfiguration _configuration;
-
-        private readonly string _dotNetVersion;
-        private readonly string _libraryVersion;
 
         private readonly RestClient _restClient;
         private int? _connectTimeoutMilliseconds;
@@ -42,8 +37,6 @@ namespace EasyPost.Interfaces
             set => _requestTimeoutMilliseconds = value;
         }
 
-        private string UserAgent => $"EasyPost/{_configuration.ApiVersion} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
-
         /// <summary>
         ///     Constructor for the EasyPost client.
         /// </summary>
@@ -53,30 +46,18 @@ namespace EasyPost.Interfaces
         ///     Custom HttpClient to pass into RestSharp if needed. Mostly for debug purposes, not
         ///     advised for general use.
         /// </param>
-        protected BaseClient(string apiKey, string version, HttpClient? customHttpClient = null)
+        protected BaseClient(string apiKey, ApiVersion version, HttpClient? customHttpClient = null)
         {
             ServicePointManager.SecurityProtocol |= Security.GetProtocol();
-            string apiBase = GetApiUrl(version);
-            _configuration = new ClientConfiguration(apiKey, apiBase, version);
+            _configuration = new ClientConfiguration(apiKey, version);
 
-            try
-            {
-                Assembly assembly = typeof(V2Client).Assembly;
-                FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
-                _libraryVersion = info.FileVersion ?? "Unknown";
-            }
-            catch (Exception)
-            {
-                _libraryVersion = "Unknown";
-            }
 
-            _dotNetVersion = Environment.Version.ToString();
 
             RestClientOptions clientOptions = new RestClientOptions
             {
                 Timeout = ConnectTimeoutMilliseconds,
                 BaseUrl = new Uri(_configuration.ApiBase),
-                UserAgent = UserAgent
+                UserAgent = _configuration.UserAgent
             };
 
             _restClient = customHttpClient != null ? new RestClient(customHttpClient, clientOptions) : new RestClient(clientOptions);
@@ -126,12 +107,12 @@ namespace EasyPost.Interfaces
             {
                 foreach (object? element in list)
                 {
-                    (element as EasyPostObject)!.Client = this;
+                    (element as EasyPostObject)!.Client = (Client)this;
                 }
             }
             else
             {
-                (resource as EasyPostObject)!.Client = this;
+                (resource as EasyPostObject)!.Client = (Client)this;
             }
 
             return resource;
@@ -155,6 +136,47 @@ namespace EasyPost.Interfaces
         }
 
         /// <summary>
+        ///     Get a service instance if the selected API version supports it.
+        /// </summary>
+        /// <param name="propertyName">Name of the property to get the service.</param>
+        /// <param name="client">Client to pass into the service instance constructor.</param>
+        /// <typeparam name="T">Type of service class to instantiate.</typeparam>
+        /// <returns>A T-type instance.</returns>
+        /// <exception cref="Exception">Failed to verify API compatibility.</exception>
+        /// <exception cref="ApiVersionNotSupported">Resource not available on the selected API version.</exception>
+        protected T GetService<T>(string propertyName, BaseClient client) where T : class
+        {
+            // check attribute for API compatibility first
+            PropertyInfo? propertyInfo = client.GetType().GetProperty(propertyName) ?? null;
+            if (propertyInfo == null)
+            {
+                throw new Exception($"Property {propertyName} not found on {client.GetType().Name}");
+            }
+
+            ApiCompatibilityAttribute[]? apiCompatibilityAttributes = BaseAttribute.GetPropertyAttributes<ApiCompatibilityAttribute>(propertyInfo);
+            if (apiCompatibilityAttributes == null || apiCompatibilityAttributes.Length == 0)
+            {
+                throw new Exception($"Property {propertyName} on {client.GetType().Name} does not have an ApiCompatibilityAttribute");
+            }
+
+            // can only have one ApiCompatibilityAttribute on a property, so just use the first one
+            ApiCompatibilityAttribute apiCompatibilityAttribute = apiCompatibilityAttributes[0];
+
+            // check if the API version is supported
+            if (!apiCompatibilityAttribute.IsCompatible(_configuration.ApiVersion))
+            {
+                throw new ApiVersionNotSupported(propertyName, _configuration.ApiVersion);
+            }
+
+            // construct a new service
+            var cons = (typeof(T)).GetConstructors(BindingFlags.NonPublic|BindingFlags.Instance);
+            return (T)cons[0].Invoke(new object[]
+            {
+                client
+            });
+        }
+
+        /// <summary>
         ///     Prepare a request for execution by attaching required headers.
         /// </summary>
         /// <param name="request">EasyPost.Request object instance to prepare.</param>
@@ -170,7 +192,5 @@ namespace EasyPost.Interfaces
 
             return restRequest;
         }
-
-        private static string GetApiUrl(string version) => $"https://api.easypost.com/{version}";
     }
 }

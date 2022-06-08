@@ -9,7 +9,7 @@ namespace EasyPost.Services.V2
 {
     public class ShipmentService : Service
     {
-        internal ShipmentService(BaseClient client) : base(client)
+        internal ShipmentService(Client client) : base(client)
         {
         }
 
@@ -33,7 +33,7 @@ namespace EasyPost.Services.V2
         {
             ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
             shipmentCollection.filters = parameters;
-            shipmentCollection.V2Client = (V2Client)Client; // specifically needs a v2 client
+            shipmentCollection.Client = Client;
             return shipmentCollection;
         }
 

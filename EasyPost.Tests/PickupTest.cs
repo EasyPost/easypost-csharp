@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Models.V2;
 using Xunit;
@@ -16,7 +17,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestBuy()
         {
-            UseVCR("buy");
+            UseVCR("buy", ApiVersion.V2);
 
             Pickup pickup = await CreateBasicPickup();
 
@@ -31,7 +32,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCancel()
         {
-            UseVCR("cancel");
+            UseVCR("cancel", ApiVersion.V2);
 
             Pickup pickup = await CreateBasicPickup();
 
@@ -47,7 +48,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create");
+            UseVCR("create", ApiVersion.V2);
 
             Pickup pickup = await CreateBasicPickup();
 
@@ -59,11 +60,11 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve", ApiVersion.V2);
 
             Pickup pickup = await CreateBasicPickup();
 
-            Pickup retrievedPickup = await V2Client.Pickups.Retrieve(pickup.id);
+            Pickup retrievedPickup = await Client.Pickups.Retrieve(pickup.id);
 
             Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
             Assert.AreEqual(pickup, retrievedPickup);
@@ -71,16 +72,16 @@ namespace EasyPost.Tests
 
         private async Task<Pickup> CreateBasicPickup()
         {
-            Shipment shipment = await V2Client.Shipments.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await Client.Shipments.Create(Fixture.OneCallBuyShipment);
             Dictionary<string, object> pickupData = Fixture.BasicPickup;
             pickupData["shipment"] = shipment;
-            return await V2Client.Pickups.Create(pickupData);
+            return await Client.Pickups.Create(pickupData);
         }
 
         [Fact]
         public async Task TestLowestRate()
         {
-            UseVCR("lowest_rate");
+            UseVCR("lowest_rate", ApiVersion.V2);
 
             Pickup pickup = await CreateBasicPickup();
 
