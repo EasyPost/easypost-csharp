@@ -69,7 +69,7 @@ namespace EasyPost
         /// </param>
         public async Task Update(Dictionary<string, object> parameters)
         {
-            Request request = new Request("users/{id}", Method.Put);
+            Request request = new Request("users/{id}", Method.Patch);
             request.AddUrlSegment("id", id);
             request.AddParameters(new Dictionary<string, object>
             {
@@ -105,7 +105,8 @@ namespace EasyPost
                 }
             };
 
-            Request request = new Request("users/{id}/brand", Method.Put);
+
+            Request request = new Request("users/{id}/brand", Method.Patch);
             request.AddParameters(wrappedParameters);
             request.AddUrlSegment("id", id);
 

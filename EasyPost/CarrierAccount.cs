@@ -47,7 +47,7 @@ namespace EasyPost
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
         public async Task Update(Dictionary<string, object> parameters)
         {
-            Request request = new Request("carrier_accounts/{id}", Method.Put);
+            Request request = new Request("carrier_accounts/{id}", Method.Patch);
             request.AddUrlSegment("id", id);
             request.AddParameters(new Dictionary<string, object>
             {
