@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 280,
-    "RecordedAt": "2022-05-26T17:35:50.400744-06:00",
+    "Duration": 304,
+    "RecordedAt": "2022-06-09T11:40:26.02541-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -16,12 +16,12 @@
       "Uri": "https://api.easypost.com/v2/users"
     },
     "Response": {
-      "Body": "{\"id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"object\":\"User\",\"parent_id\":null,\"name\":\"EasyPost C# Client Library Tests\",\"phone_number\":\"<REDACTED>\",\"verified\":true,\"created_at\":\"2018-04-20T16:42:21Z\",\"balance\":\"0.00000\",\"price_per_shipment\":\"0.01000\",\"recharge_amount\":null,\"secondary_recharge_amount\":null,\"recharge_threshold\":null,\"has_billing_method\":null,\"cc_fee_rate\":\"0.0\",\"default_insurance_amount\":null,\"insurance_fee_rate\":\"0.01\",\"insurance_fee_minimum\":\"1.00\",\"email\":\"<REDACTED>\",\"children\":[]}",
+      "Body": "{\"id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"object\":\"User\",\"parent_id\":null,\"name\":\"EasyPost C# Client Library Tests\",\"phone_number\":\"<REDACTED>\",\"verified\":true,\"created_at\":\"2018-04-20T16:42:21Z\",\"balance\":\"0.00000\",\"price_per_shipment\":\"0.01000\",\"recharge_amount\":\"100.00\",\"secondary_recharge_amount\":\"100.00\",\"recharge_threshold\":\"0.00\",\"has_billing_method\":true,\"cc_fee_rate\":\"0.0\",\"default_insurance_amount\":null,\"insurance_fee_rate\":\"0.01\",\"insurance_fee_minimum\":\"1.00\",\"email\":\"<REDACTED>\",\"children\":[]}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "3293"
+        "Content-Length": "3303"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -31,15 +31,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "1c7311f362900ed6e37726db00187914",
+        "x-ep-request-uuid": "4f3afc3d62a23089e620bceb0024ef80",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"53c2b4ef970de59e12e71f947c558b08\"",
-        "x-runtime": "0.138056",
+        "ETag": "W/\"5faad186307417ad26029e96e0c5ae6f\"",
+        "x-runtime": "0.153058",
         "x-node": "bigweb8nuq",
-        "x-version-label": "easypost-202205262146-0562c799aa-master",
+        "x-version-label": "easypost-202206090041-73f986ccd8-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 570dfcbc0a,extlb1nuq fc4d5d217f",
+        "x-proxied": "intlb1nuq 0910011e7e,extlb2nuq 0910011e7e",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -49,8 +49,8 @@
     }
   },
   {
-    "Duration": 268,
-    "RecordedAt": "2022-05-26T17:35:50.68495-06:00",
+    "Duration": 298,
+    "RecordedAt": "2022-06-09T11:40:26.340948-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -65,12 +65,12 @@
       "Uri": "https://api.easypost.com/v2/users/user_4d78588f2f744bf6886aa67ddb870865"
     },
     "Response": {
-      "Body": "{\"id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"object\":\"User\",\"parent_id\":null,\"name\":\"EasyPost C# Client Library Tests\",\"phone_number\":\"<REDACTED>\",\"verified\":true,\"created_at\":\"2018-04-20T16:42:21Z\",\"balance\":\"0.00000\",\"price_per_shipment\":\"0.01000\",\"recharge_amount\":null,\"secondary_recharge_amount\":null,\"recharge_threshold\":null,\"has_billing_method\":null,\"cc_fee_rate\":\"0.0\",\"default_insurance_amount\":null,\"insurance_fee_rate\":\"0.01\",\"insurance_fee_minimum\":\"1.00\",\"email\":\"<REDACTED>\",\"children\":[]}",
+      "Body": "{\"id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"object\":\"User\",\"parent_id\":null,\"name\":\"EasyPost C# Client Library Tests\",\"phone_number\":\"<REDACTED>\",\"verified\":true,\"created_at\":\"2018-04-20T16:42:21Z\",\"balance\":\"0.00000\",\"price_per_shipment\":\"0.01000\",\"recharge_amount\":\"100.00\",\"secondary_recharge_amount\":\"100.00\",\"recharge_threshold\":\"0.00\",\"has_billing_method\":true,\"cc_fee_rate\":\"0.0\",\"default_insurance_amount\":null,\"insurance_fee_rate\":\"0.01\",\"insurance_fee_minimum\":\"1.00\",\"email\":\"<REDACTED>\",\"children\":[]}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "3293"
+        "Content-Length": "3303"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -80,15 +80,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "1c7311f262900ed6e3c0150000187936",
+        "x-ep-request-uuid": "4f3afc3c62a2308ae62031500024efab",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "ETag": "W/\"53c2b4ef970de59e12e71f947c558b08\"",
-        "x-runtime": "0.123831",
-        "x-node": "bigweb4nuq",
-        "x-version-label": "easypost-202205262146-0562c799aa-master",
+        "ETag": "W/\"5faad186307417ad26029e96e0c5ae6f\"",
+        "x-runtime": "0.144780",
+        "x-node": "bigweb7nuq",
+        "x-version-label": "easypost-202206090041-73f986ccd8-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 570dfcbc0a,extlb1nuq fc4d5d217f",
+        "x-canary": "direct",
+        "x-proxied": "intlb1nuq 0910011e7e,extlb2nuq 0910011e7e",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
