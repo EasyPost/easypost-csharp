@@ -173,7 +173,7 @@ namespace EasyPost.Utilities
         /// <returns>An object or null</returns>
         public static object? GetValueOfExpandoObjectProperty(ExpandoObject obj, string propertyName)
         {
-            IDictionary<string, object> propertyValues = obj;
+            IDictionary<string, object> propertyValues = obj!;
             return propertyValues.TryGetValue(propertyName, out object? value) ? value : null;
         }
 
@@ -201,7 +201,7 @@ namespace EasyPost.Utilities
                 return null;
             }
 
-            object json = JsonConvert.DeserializeObject(data);
+            object? json = JsonConvert.DeserializeObject(data);
             try
             {
                 rootElementKeys.ForEach(key => { json = (json as JObject).Property(key).Value; });

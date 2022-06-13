@@ -12,9 +12,9 @@ namespace EasyPost.Utilities
 
         protected Enumeration(int id, string name) => (Id, Name) = (id, name);
 
-        public int CompareTo(object other) => Id.CompareTo(((Enumeration)other).Id);
+        public int CompareTo(object? other) => other == null ? 1 : Id.CompareTo(((Enumeration)other).Id);
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             try
             {

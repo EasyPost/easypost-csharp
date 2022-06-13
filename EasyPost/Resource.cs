@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using EasyPost.Utilities;
-using Newtonsoft.Json;
 
 namespace EasyPost
 {
     public class Resource
     {
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (this.GetType() != obj.GetType())
             {
@@ -100,7 +99,7 @@ namespace EasyPost
         public static T LoadFromDictionary<T>(Dictionary<string, object> attributes) where T : Resource
         {
             Type type = typeof(T);
-            T resource = (T)Activator.CreateInstance(type);
+            T? resource = (T)Activator.CreateInstance(type)!;
 
             foreach (PropertyInfo property in type.GetProperties())
             {
@@ -132,7 +131,7 @@ namespace EasyPost
 
                     foreach (Dictionary<string, object> attr in (List<Dictionary<string, object>>)attribute)
                     {
-                        ((IList)property.GetValue(resource, null)).Add(method.Invoke(resource, new object[]
+                        ((IList)property.GetValue(resource, null)!).Add(method.Invoke(resource, new object[]
                         {
                             attr
                         }));
