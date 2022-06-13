@@ -105,7 +105,9 @@ namespace EasyPost
                 }
             };
 
-            Request request = new Request("users/{id}/brand", Method.Patch, wrappedParameters);
+
+            Request request = new Request("users/{id}/brand", Method.Patch);
+            request.AddParameters(wrappedParameters);
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Brand>();

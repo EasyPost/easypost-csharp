@@ -68,7 +68,8 @@ namespace EasyPost
         /// <returns>List of EasyPost.Webhook instances.</returns>
         public static async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
         {
-            Request request = new Request("webhooks", Method.Get, parameters);
+            Request request = new Request("webhooks", Method.Get);
+            request.AddParameters(parameters);
 
             WebhookList webhookList = await request.Execute<WebhookList>();
             return webhookList.webhooks;

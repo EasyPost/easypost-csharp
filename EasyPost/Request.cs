@@ -16,11 +16,11 @@ namespace EasyPost
         private readonly Dictionary<string, object> _urlSegments;
         public string? RootElement { get; set; }
 
-        public Request(string iResource, Method method, Dictionary<string, object>? parameters = null)
+        public Request(string iResource, Method method)
         {
             _restRequest = new RestRequest(iResource, method);
             _restRequest.AddHeader("Accept", "application/json");
-            _parameters = parameters ?? new Dictionary<string, object>();
+            _parameters = new Dictionary<string, object>();
             _urlSegments = new Dictionary<string, object>();
         }
 

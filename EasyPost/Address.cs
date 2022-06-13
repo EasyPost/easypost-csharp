@@ -67,7 +67,8 @@ namespace EasyPost
         public static async Task<AddressCollection> All(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
-            Request request = new Request("addresses", Method.Get, parameters);
+            Request request = new Request("addresses", Method.Get);
+            request.AddParameters(parameters);
 
             return await request.Execute<AddressCollection>();
         }
