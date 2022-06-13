@@ -64,13 +64,12 @@ namespace EasyPost.Utilities
                 float rateValue = float.Parse(rate.rate);
                 float lowestRateValue = float.Parse(lowestRate.rate);
 
-                // if this rate is higher than or the same as the lowest rate, skip it
-                if (lowestRateValue <= rateValue)
+                // if this rate is lower than the lowest rate, set it to this rate
+                if (rateValue < lowestRateValue)
                 {
+                    lowestRate = rate;
                     continue;
                 }
-
-                lowestRate = rate;
             }
 
             if (lowestRate == null)
@@ -108,13 +107,12 @@ namespace EasyPost.Utilities
                     continue;
                 }
 
-                // if this smartrate is higher or the same as the lowest smartrate, skip it
-                if (lowestSmartrate.rate <= smartrate.rate)
+                // if this smartrate is lower than the lowest smartrate, set it to this smartrate
+                if (smartrate.rate < lowestSmartrate.rate)
                 {
+                    lowestSmartrate = smartrate;
                     continue;
                 }
-
-                lowestSmartrate = smartrate;
             }
 
             if (lowestSmartrate == null)
