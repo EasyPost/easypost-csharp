@@ -37,15 +37,15 @@ namespace EasyPost
         /// <summary>
         ///     Get a payment method (credit card) by priority.
         /// </summary>
-        /// <param name="priority">Which priority payment method to get.</param>
+        /// <param name="primaryOrSecondary">Which priority payment method to get.</param>
         /// <returns>An EasyPost.CreditCard instance.</returns>
         /// <exception cref="Exception">Billing has not been set up yet, or the Priority provided is invalid.</exception>
-        private static async Task<CreditCard> GetPaymentMethodByPriority(Priority priority)
+        private static async Task<CreditCard> GetPaymentMethodByPriority(Priority primaryOrSecondary)
         {
             PaymentMethod paymentMethods = await PaymentMethod.All();
 
             CreditCard? paymentMethod = null;
-            switch (priority)
+            switch (primaryOrSecondary)
             {
                 case Priority.Primary:
                     paymentMethod = paymentMethods.primary_payment_method;
@@ -88,11 +88,11 @@ namespace EasyPost
         ///     Fund a credit card.
         /// </summary>
         /// <param name="amount">Amount to fund.</param>
-        /// <param name="priority">Which type of payment method to fund.</param>
+        /// <param name="primaryOrSecondary">Which type of payment method to fund.</param>
         /// <returns>An EasyPost.CreditCardFund instance.</returns>
-        public static async Task<CreditCardFund> Fund(string amount, Priority priority)
+        public static async Task<CreditCardFund> Fund(string amount, Priority primaryOrSecondary)
         {
-            CreditCard paymentMethod = await GetPaymentMethodByPriority(priority);
+            CreditCard paymentMethod = await GetPaymentMethodByPriority(primaryOrSecondary);
 
             return await Fund(amount, paymentMethod.id);
         }
