@@ -59,7 +59,7 @@ namespace EasyPost
 
             if (paymentMethod == null || !paymentMethod.id.StartsWith("card_"))
             {
-                throw new Exception("The chosen payment method is not a valid method. Please try again.");
+                throw new Exception("The chosen payment method is not a credit card. Please try again.");
             }
 
             return paymentMethod;
