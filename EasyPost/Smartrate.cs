@@ -35,7 +35,7 @@ namespace EasyPost
     public class Smartrate : Resource
     {
         [JsonProperty("billing_type")]
-        public string billing_type {get; set;}
+        public string billing_type { get; set; }
         [JsonProperty("carrier")]
         public string carrier { get; set; }
         [JsonProperty("carrier_account_id")]
