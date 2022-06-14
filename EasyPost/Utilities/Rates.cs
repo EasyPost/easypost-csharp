@@ -82,7 +82,7 @@ namespace EasyPost.Utilities
 
         public static Smartrate GetLowestShipmentSmartrate(List<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy)
         {
-            Smartrate lowestSmartrate = null;
+            Smartrate? lowestSmartrate = null;
 
             foreach (Smartrate smartrate in smartrates)
             {
