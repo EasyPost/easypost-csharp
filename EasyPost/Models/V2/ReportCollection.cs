@@ -20,6 +20,8 @@ namespace EasyPost.Models.V2
         /// <returns>An EasyPost.ReportCollection instance.</returns>
         public async Task<IPaginatedCollection> Next()
         {
+            CheckFunctionalityCompatible(nameof(Next));
+
             filters ??= new Dictionary<string, object>();
             if (reports != null)
             {

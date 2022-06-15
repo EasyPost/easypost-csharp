@@ -116,7 +116,7 @@ namespace EasyPost.Tests
                     testName
                 }
             };
-            await user.Update(userDict);
+            user = await user.Update(userDict);
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.id.StartsWith("user_"));

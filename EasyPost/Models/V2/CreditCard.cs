@@ -26,7 +26,12 @@ namespace EasyPost.Models.V2
         ///     Delete this credit card from your account.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
-        public async Task<bool> Delete() => await Request(Method.Delete, $"credit_cards/{id}");
+        public async Task<bool> Delete()
+        {
+            CheckFunctionalityCompatible(nameof(Delete));
+
+            return await Request(Method.Delete, $"credit_cards/{id}");
+        }
 
 
         /// <summary>
@@ -36,6 +41,8 @@ namespace EasyPost.Models.V2
         /// <returns>An EasyPost.CreditCardFund instance.</returns>
         public async Task<CreditCardFunding> Fund(string amount)
         {
+            CheckFunctionalityCompatible(nameof(Fund));
+
             Dictionary<string, object> requestParameters = new Dictionary<string, object>
             {
                 {

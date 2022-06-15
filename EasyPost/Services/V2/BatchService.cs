@@ -27,7 +27,12 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.BatchCollection instance.</returns>
-        public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null) => await List<BatchCollection>("batches", parameters);
+        public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
+        {
+            CheckFunctionalityCompatible(nameof(All));
+
+            return await List<BatchCollection>("batches", parameters);
+        }
 
         /// <summary>
         ///     Create a Batch.
@@ -41,6 +46,8 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Batch instance.</returns>
         public async Task<Batch> Create(Dictionary<string, object>? parameters = null)
         {
+            CheckFunctionalityCompatible(nameof(Create));
+
             Dictionary<string, object> requestParameters = new Dictionary<string, object>();
             if (parameters != null)
             {
@@ -60,19 +67,28 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public async Task<Batch> CreateAndBuy(Dictionary<string, object> parameters) =>
-            await Create<Batch>("batches/create_and_buy", new Dictionary<string, object>
+        public async Task<Batch> CreateAndBuy(Dictionary<string, object> parameters)
+        {
+            CheckFunctionalityCompatible(nameof(CreateAndBuy));
+
+            return await Create<Batch>("batches/create_and_buy", new Dictionary<string, object>
             {
                 {
                     "batch", parameters
                 }
             });
+        }
 
         /// <summary>
         ///     Retrieve a Batch from its id.
         /// </summary>
         /// <param name="id">String representing a Batch. Starts with "batch_".</param>
         /// <returns>EasyPost.Batch instance.</returns>
-        public async Task<Batch> Retrieve(string id) => await Get<Batch>($"batches/{id}");
+        public async Task<Batch> Retrieve(string id)
+        {
+            CheckFunctionalityCompatible(nameof(Retrieve));
+
+            return await Get<Batch>($"batches/{id}");
+        }
     }
 }

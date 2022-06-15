@@ -21,14 +21,17 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
-        public async Task<User> Create(Dictionary<string, object> parameters) =>
-            await Create<User>("users", new Dictionary<string, object>
+        public async Task<User> Create(Dictionary<string, object> parameters)
+        {
+            CheckFunctionalityCompatible(nameof(Create));
+
+            return await Create<User>("users", new Dictionary<string, object>
             {
                 {
                     "user", parameters
                 }
             });
-
+        }
 
         /// <summary>
         ///     Retrieve a User from its id. If no id is specified, it returns the user for the api_key specified.
@@ -37,6 +40,8 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.User instance.</returns>
         public async Task<User> Retrieve(string? id = null)
         {
+            CheckFunctionalityCompatible(nameof(Retrieve));
+
             if (id == null)
             {
                 return await Get<User>("users");
@@ -50,6 +55,11 @@ namespace EasyPost.Services.V2
         ///     Retrieve the current user.
         /// </summary>
         /// <returns>EasyPost.User instance.</returns>
-        public async Task<User> RetrieveMe() => await Retrieve();
+        public async Task<User> RetrieveMe()
+        {
+            CheckFunctionalityCompatible(nameof(RetrieveMe));
+
+            return await Retrieve();
+        }
     }
 }

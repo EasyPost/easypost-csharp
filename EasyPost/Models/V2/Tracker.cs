@@ -27,7 +27,6 @@ namespace EasyPost.Models.V2
         public List<TrackingDetail>? tracking_details { get; set; }
         [JsonProperty("tracking_updated_at")]
         public DateTime tracking_updated_at { get; set; }
-
         [JsonProperty("weight")]
         public double? weight { get; set; }
     }

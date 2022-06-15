@@ -12,10 +12,8 @@ namespace EasyPost.Models.V2
         public string? amount { get; set; }
         [JsonProperty("from_address")]
         public Address? from_address { get; set; }
-
         [JsonProperty("messages")]
         public List<string>? messages { get; set; }
-
         [JsonProperty("provider")]
         public string? provider { get; set; }
         [JsonProperty("provider_id")]
@@ -37,6 +35,11 @@ namespace EasyPost.Models.V2
         ///     Refresh this Insurance.
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters to use when refreshing this insurance.</param>
-        public async Task Refresh(Dictionary<string, object>? parameters = null) => await Update<Insurance>(Method.Patch, $"insurances/{id}", parameters);
+        public async Task<Insurance> Refresh(Dictionary<string, object>? parameters = null)
+        {
+            CheckFunctionalityCompatible(nameof(Refresh));
+
+            return await Update<Insurance>(Method.Patch, $"insurances/{id}", parameters);
+        }
     }
 }

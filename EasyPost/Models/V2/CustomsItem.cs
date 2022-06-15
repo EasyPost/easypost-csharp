@@ -8,15 +8,12 @@ namespace EasyPost.Models.V2
     {
         [JsonProperty("code")]
         public string? code { get; set; }
-
         [JsonProperty("currency")]
         public string? currency { get; set; }
         [JsonProperty("description")]
         public string? description { get; set; }
         [JsonProperty("hs_tariff_number")]
         public string? hs_tariff_number { get; set; }
-
-
         [JsonProperty("origin_country")]
         public string? origin_country { get; set; }
         [JsonProperty("quantity")]

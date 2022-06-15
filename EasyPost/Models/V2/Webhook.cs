@@ -10,8 +10,6 @@ namespace EasyPost.Models.V2
     {
         [JsonProperty("disabled_at")]
         public DateTime? disabled_at { get; set; }
-
-
         [JsonProperty("url")]
         public string? url { get; set; }
 
@@ -19,11 +17,21 @@ namespace EasyPost.Models.V2
         ///     Delete this webhook.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
-        public async Task<bool> Delete() => await Request(Method.Delete, $"webhooks/{id}");
+        public async Task<bool> Delete()
+        {
+            CheckFunctionalityCompatible(nameof(Delete));
+
+            return await Request(Method.Delete, $"webhooks/{id}");
+        }
 
         /// <summary>
         ///     Enable a Webhook that has been disabled previously.
         /// </summary>
-        public async Task Update() => await Update<Webhook>(Method.Patch, $"webhooks/{id}");
+        public async Task<Webhook> Update()
+        {
+            CheckFunctionalityCompatible(nameof(Update));
+
+            return await Update<Webhook>(Method.Patch, $"webhooks/{id}");
+        }
     }
 }

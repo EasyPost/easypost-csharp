@@ -73,12 +73,51 @@ namespace EasyPost.Utilities
             return (T[])attributes;
         }
 
+        /// <summary>
+        ///     Get the attributes for a method.
+        /// </summary>
+        /// <param name="method">Method to get attribute of.</param>
+        /// <typeparam name="T">Type of attribute to retrieve.</typeparam>
+        /// <returns>T-type attribute for the method.</returns>
+        public static T? GetCustomAttribute<T>(MethodBase method) where T : BaseCustomAttribute
+        {
+            try
+            {
+                return method.GetCustomAttribute<T>(true);
+            } catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        ///     Get the attributes for a method.
+        /// </summary>
+        /// <param name="method">Method to get attributes of.</param>
+        /// <typeparam name="T">Type of attribute to retrieve.</typeparam>
+        /// <returns>All T-type attributes for the method.</returns>
+        public static T[]? GetCustomAttributes<T>(MethodBase method) where T : BaseCustomAttribute
+        {
+            object[] attributes = method.GetCustomAttributes(typeof(T), false);
+            if (attributes.Length == 0)
+            {
+                return null;
+            }
+
+            return (T[])attributes;
+        }
+
         public static bool HasCustomAttribute<T>(PropertyInfo property) where T : BaseCustomAttribute
         {
             return property.GetCustomAttribute<T>(true) != null;
         }
 
         public static bool HasCustomAttribute<T>(MethodInfo method) where T : BaseCustomAttribute
+        {
+            return method.GetCustomAttribute<T>(true) != null;
+        }
+
+        public static bool HasCustomAttribute<T>(MethodBase method) where T : BaseCustomAttribute
         {
             return method.GetCustomAttribute<T>(true) != null;
         }

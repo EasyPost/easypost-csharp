@@ -14,8 +14,40 @@ namespace EasyPost.ApiCompatibility
         /// <param name="function">Method attempting to execute.</param>
         /// <param name="client">API client used to execute this method.</param>
         /// <exception cref="ApiVersionNotSupported">When the function is not compatible with the client's API version.</exception>
-        internal static void CheckFunctionalityCompatible(MethodInfo function, BaseClient client)
+        internal static void CheckFunctionalityCompatible(MethodInfo function, BaseClient? client)
         {
+            if (client == null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
+            ApiCompatibilityAttribute? apiCompatibilityAttribute = BaseCustomAttribute.GetCustomAttribute<ApiCompatibilityAttribute>(function);
+            if (apiCompatibilityAttribute == null)
+            {
+                // if property does not have an API compatibility attribute, it is compatible with all API versions
+                return;
+            }
+
+            // throw exception if property is not compatible with this API version
+            if (!apiCompatibilityAttribute.IsCompatible(client.ApiVersion))
+            {
+                throw new ApiVersionNotSupported(function.Name, client.ApiVersion);
+            }
+        }
+
+        /// <summary>
+        ///     Check if a function (i.e. ShipmentService.Create) is compatible with the current API version.
+        /// </summary>
+        /// <param name="function">Method attempting to execute.</param>
+        /// <param name="client">API client used to execute this method.</param>
+        /// <exception cref="ApiVersionNotSupported">When the function is not compatible with the client's API version.</exception>
+        internal static void CheckFunctionalityCompatible(MethodBase function, BaseClient? client)
+        {
+            if (client == null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
             ApiCompatibilityAttribute? apiCompatibilityAttribute = BaseCustomAttribute.GetCustomAttribute<ApiCompatibilityAttribute>(function);
             if (apiCompatibilityAttribute == null)
             {
@@ -36,10 +68,25 @@ namespace EasyPost.ApiCompatibility
         /// <param name="functionName">Name of method attempting to execute.</param>
         /// <param name="functionSourceType">Type of object the function is being executed on.</param>
         /// <param name="client">API client used to execute this method.</param>
+        /// <param name="functionArgs">List of function parameter types. Useful to solve ambiguity.</param>
         /// <exception cref="ApiVersionNotSupported">When the function is not compatible with the client's API version.</exception>
-        internal static void CheckFunctionalityCompatible(string functionName, Type functionSourceType, BaseClient client)
+        internal static void CheckFunctionalityCompatible(string functionName, Type functionSourceType, BaseClient? client, Type[]? functionArgs = null)
         {
-            MethodInfo? function = functionSourceType.GetMethod(functionName);
+            if (client == null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
+            MethodInfo? function = null;
+            if (functionArgs == null)
+            {
+                function = functionSourceType.GetMethod(functionName);
+            }
+            else
+            {
+                function = functionSourceType.GetMethod(functionName, functionArgs);
+            }
+
             if (function == null)
             {
                 throw new ArgumentException($"Could not find method {functionName} on type {functionSourceType.Name}");
@@ -54,8 +101,13 @@ namespace EasyPost.ApiCompatibility
         /// <param name="service">Service attempting to retrieve.</param>
         /// <param name="client">API client used to retrieve this service.</param>
         /// <exception cref="ApiVersionNotSupported">When the service is not compatible with the client's API version.</exception>
-        internal static void CheckServiceCompatible(PropertyInfo service, BaseClient client)
+        internal static void CheckServiceCompatible(PropertyInfo service, BaseClient? client)
         {
+            if (client == null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
             ApiCompatibilityAttribute? apiCompatibilityAttribute = BaseCustomAttribute.GetCustomAttribute<ApiCompatibilityAttribute>(service);
             if (apiCompatibilityAttribute == null)
             {
@@ -77,8 +129,13 @@ namespace EasyPost.ApiCompatibility
         /// <param name="serviceSourceType">Type of object the service is being retrieved from.</param>
         /// <param name="client">API client used to execute this method.</param>
         /// <exception cref="ApiVersionNotSupported">When the service is not compatible with the client's API version.</exception>
-        internal static void CheckServiceCompatible(string serviceName, Type serviceSourceType, BaseClient client)
+        internal static void CheckServiceCompatible(string serviceName, Type serviceSourceType, BaseClient? client)
         {
+            if (client == null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
             PropertyInfo? property = serviceSourceType.GetProperty(serviceName);
             if (property == null)
             {

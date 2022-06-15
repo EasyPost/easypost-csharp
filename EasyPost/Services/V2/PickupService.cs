@@ -29,20 +29,28 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Pickup instance.</returns>
-        public async Task<Pickup> Create(Dictionary<string, object> parameters) =>
-            await Create<Pickup>("pickups", new Dictionary<string, object>
+        public async Task<Pickup> Create(Dictionary<string, object> parameters)
+        {
+            CheckFunctionalityCompatible(nameof(Create));
+
+            return await Create<Pickup>("pickups", new Dictionary<string, object>
             {
                 {
                     "pickup", parameters
                 }
             });
-
+        }
 
         /// <summary>
         ///     Retrieve a Pickup from its id.
         /// </summary>
         /// <param name="id">String representing a Pickup. Starts with "pickup_".</param>
         /// <returns>EasyPost.Pickup instance.</returns>
-        public async Task<Pickup> Retrieve(string id) => await Get<Pickup>($"pickups/{id}");
+        public async Task<Pickup> Retrieve(string id)
+        {
+            CheckFunctionalityCompatible(nameof(Retrieve));
+
+            return await Get<Pickup>($"pickups/{id}");
+        }
     }
 }

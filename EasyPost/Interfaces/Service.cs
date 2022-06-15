@@ -10,10 +10,8 @@ using RestSharp;
 
 namespace EasyPost.Interfaces
 {
-    public class Service : IService
+    public class Service : ApiCompatibleFunctions, IService
     {
-        internal readonly Client Client;
-
         internal Service(Client client)
         {
             Client = client;

@@ -30,6 +30,8 @@ namespace EasyPost.Services.V2
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
         public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
         {
+            CheckFunctionalityCompatible(nameof(All));
+
             ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
             scanFormCollection.filters = parameters;
             scanFormCollection.Client = Client; // specifically needs a v2 client
@@ -41,8 +43,11 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-        public async Task<ScanForm> Create(List<Shipment> shipments) =>
-            await Create<ScanForm>("scan_forms", new Dictionary<string, object>
+        public async Task<ScanForm> Create(List<Shipment> shipments)
+        {
+            CheckFunctionalityCompatible(nameof(Create));
+
+            return await Create<ScanForm>("scan_forms", new Dictionary<string, object>
             {
                 {
                     "scan_form", new Dictionary<string, object>
@@ -53,12 +58,18 @@ namespace EasyPost.Services.V2
                     }
                 }
             });
+        }
 
         /// <summary>
         ///     Retrieve a ScanForm from its id.
         /// </summary>
         /// <param name="id">String representing a scan form, starts with "sf_".</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-        public async Task<ScanForm> Retrieve(string id) => await Get<ScanForm>($"scan_forms/{id}");
+        public async Task<ScanForm> Retrieve(string id)
+        {
+            CheckFunctionalityCompatible(nameof(Retrieve));
+
+            return await Get<ScanForm>($"scan_forms/{id}");
+        }
     }
 }

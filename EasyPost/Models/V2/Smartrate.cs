@@ -57,7 +57,6 @@ namespace EasyPost.Models.V2
         public string? list_currency { get; set; }
         [JsonProperty("list_rate")]
         public double list_rate { get; set; }
-
         [JsonProperty("rate")]
         public double rate { get; set; }
         [JsonProperty("retail_currency")]

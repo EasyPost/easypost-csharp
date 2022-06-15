@@ -118,7 +118,7 @@ namespace EasyPost.Tests
 
             Address address = await CreateBasicAddress();
 
-            await address.Verify();
+            address = await address.Verify();
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.id.StartsWith("adr_"));

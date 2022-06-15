@@ -11,7 +11,6 @@ namespace EasyPost.Models.V2
         public string? contents_explanation { get; set; }
         [JsonProperty("contents_type")]
         public string? contents_type { get; set; }
-
         [JsonProperty("customs_certify")]
         public string? customs_certify { get; set; }
         [JsonProperty("customs_items")]
@@ -22,8 +21,6 @@ namespace EasyPost.Models.V2
         public string? declaration { get; set; }
         [JsonProperty("eel_pfc")]
         public string? eel_pfc { get; set; }
-
-
         [JsonProperty("non_delivery_option")]
         public string? non_delivery_option { get; set; }
         [JsonProperty("restriction_comments")]

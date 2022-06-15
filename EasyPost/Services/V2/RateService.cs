@@ -18,7 +18,12 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a rate. Starts with `rate_`.</param>
         /// <returns>EasyPost.Rate instance.</returns>
-        public async Task<Rate> Retrieve(string id) => await Get<Rate>($"rates/{id}");
+        public async Task<Rate> Retrieve(string id)
+        {
+            CheckFunctionalityCompatible(nameof(Retrieve));
+
+            return await Get<Rate>($"rates/{id}");
+        }
 
         /// <summary>
         ///     Get the lowest rate from a list of rates.
@@ -31,6 +36,8 @@ namespace EasyPost.Services.V2
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
         public Rate GetLowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
+            CheckFunctionalityCompatible(nameof(GetLowestRate));
+
             return Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
     }

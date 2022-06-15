@@ -23,14 +23,14 @@ namespace EasyPost.Tests
 
             Batch batch = await Client.Batches.Create();
 
-            await batch.AddShipments(new List<Shipment>
+            batch = await batch.AddShipments(new List<Shipment>
             {
                 shipment
             });
 
             Assert.AreEqual(1, batch.num_shipments);
 
-            await batch.RemoveShipments(new List<Shipment>
+            batch = await batch.RemoveShipments(new List<Shipment>
             {
                 shipment
             });
@@ -67,9 +67,7 @@ namespace EasyPost.Tests
 
             Batch batch = await CreateOneCallBuyBatch();
 
-            // Uncomment the following line if you need to re-record the cassette
-            // Thread.Sleep(5000); // Wait enough time for the batch to process buying the shipment
-            await batch.Buy();
+            batch = await batch.Buy();
 
             Assert.IsInstanceOfType(batch, typeof(Batch));
             Assert.AreEqual(1, batch.num_shipments);
@@ -115,14 +113,14 @@ namespace EasyPost.Tests
 
             Batch batch = await CreateOneCallBuyBatch();
 
-            await batch.Buy();
+            batch = await batch.Buy();
 
             if (IsRecording())
             {
                 Thread.Sleep(15000); // Wait enough time to process
             }
 
-            await batch.GenerateScanForm();
+            batch = await batch.GenerateScanForm();
 
             // We can't assert anything meaningful here because the scanform gets queued for generation and may not be immediately available
             Assert.IsInstanceOfType(batch, typeof(Batch));
@@ -135,7 +133,7 @@ namespace EasyPost.Tests
 
             Batch batch = await CreateOneCallBuyBatch();
 
-            await batch.Buy();
+            batch = await batch.Buy();
 
             if (IsRecording())
             {

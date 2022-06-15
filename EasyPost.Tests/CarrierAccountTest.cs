@@ -105,7 +105,7 @@ namespace EasyPost.Tests
                     testDescription
                 }
             };
-            await carrierAccount.Update(carrierAccountData);
+            carrierAccount = await carrierAccount.Update(carrierAccountData);
 
             Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
             Assert.IsTrue(carrierAccount.id.StartsWith("ca_"));

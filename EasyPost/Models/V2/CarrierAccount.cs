@@ -11,12 +11,10 @@ namespace EasyPost.Models.V2
     {
         [JsonProperty("billing_type")]
         public string? billing_type { get; set; }
-
         [JsonProperty("credentials")]
         public Dictionary<string, object>? credentials { get; set; }
         [JsonProperty("description")]
         public string? description { get; set; }
-
         [JsonProperty("readable")]
         public string? readable { get; set; }
         [JsonProperty("reference")]
@@ -31,12 +29,22 @@ namespace EasyPost.Models.V2
         ///     Remove this CarrierAccount from your account.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
-        public async Task<bool> Delete() => await Request(Method.Delete, $"carrier_accounts/{id}");
+        public async Task<bool> Delete()
+        {
+            CheckFunctionalityCompatible(nameof(Delete));
+
+            return await Request(Method.Delete, $"carrier_accounts/{id}");
+        }
 
         /// <summary>
         ///     Update this CarrierAccount.
         /// </summary>
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
-        public async Task Update(Dictionary<string, object> parameters) => await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{id}", parameters);
+        public async Task<CarrierAccount> Update(Dictionary<string, object> parameters)
+        {
+            CheckFunctionalityCompatible(nameof(Update));
+
+            return await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{id}", parameters);
+        }
     }
 }

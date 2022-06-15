@@ -69,7 +69,7 @@ namespace EasyPost.Tests
             Dictionary<string, object> endShipperData = Fixture.EndShipperAddress;
             endShipperData["name"] = testName;
 
-            await endShipper.Update(endShipperData);
+            endShipper = await endShipper.Update(endShipperData);
 
             Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
             Assert.IsTrue(endShipper.id.StartsWith("es_"));

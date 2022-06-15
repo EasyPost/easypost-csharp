@@ -73,7 +73,7 @@ namespace EasyPost.Tests
 
             Shipment shipment = await CreateOneCallBuyShipment();
 
-            await shipment.GenerateLabel("ZPL");
+            shipment = await shipment.GenerateLabel("ZPL");
 
             Assert.IsNotNull(shipment.postage_label.label_zpl_url);
         }
@@ -193,7 +193,7 @@ namespace EasyPost.Tests
 
             Shipment shipment = await Client.Shipments.Create(shipmentData);
 
-            await shipment.Insure(100);
+            shipment = await shipment.Insure(100);
 
             Assert.AreEqual("100.00", shipment.insurance);
         }
@@ -208,7 +208,7 @@ namespace EasyPost.Tests
 
             Shipment shipment = await CreateOneCallBuyShipment();
 
-            await shipment.Refund();
+            shipment = await shipment.Refund();
 
             Assert.AreEqual("submitted", shipment.refund_status);
         }

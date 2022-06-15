@@ -24,7 +24,7 @@ namespace EasyPost.Models.V2
         /// </summary>
         /// <param name="accuracy">SmartrateAccuracy enum to find associated value for.</param>
         /// <returns>Corresponding percentile int value.</returns>
-        public int? GetBySmartrateAccuracy(SmartrateAccuracy accuracy)
+        internal int? GetBySmartrateAccuracy(SmartrateAccuracy accuracy)
         {
             if (accuracy.Equals(SmartrateAccuracy.Percentile50))
                 return percentile_50;

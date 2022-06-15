@@ -17,8 +17,6 @@ namespace EasyPost.Models.V2
         public List<CarrierAccount>? carrier_accounts { get; set; }
         [JsonProperty("confirmation")]
         public string? confirmation { get; set; }
-
-
         [JsonProperty("instructions")]
         public string? instructions { get; set; }
         [JsonProperty("is_account_address")]
@@ -29,7 +27,6 @@ namespace EasyPost.Models.V2
         public List<Message>? messages { get; set; }
         [JsonProperty("min_datetime")]
         public DateTime min_datetime { get; set; }
-
         [JsonProperty("name")]
         public string? name { get; set; }
         [JsonProperty("pickup_rates")]
@@ -39,20 +36,31 @@ namespace EasyPost.Models.V2
         [JsonProperty("status")]
         public string? status { get; set; }
 
+        /// <summary>
+        ///     Get the pickup rates as a list of Rate objects.
+        /// </summary>
+        /// <returns>List of Rate objects.</returns>
+        private IEnumerable<Rate> Rates
+        {
+            get { return pickup_rates != null ? pickup_rates.Cast<Rate>().ToList() : new List<Rate>(); }
+        }
+
 
         /// <summary>
         ///     Purchase this pickup.
         /// </summary>
         /// <param name="carrier">The name of the carrier to purchase with.</param>
         /// <param name="service">The name of the service to purchase.</param>
-        public async Task Buy(string carrier, string service)
+        public async Task<Pickup> Buy(string carrier, string service)
         {
+            CheckFunctionalityCompatible(nameof(Buy));
+
             if (id == null)
             {
                 throw new PropertyMissing("id");
             }
 
-            await Update<Pickup>(Method.Post, $"pickups/{id}/buy",
+            return await Update<Pickup>(Method.Post, $"pickups/{id}/buy",
                 new Dictionary<string, object>
                 {
                     {
@@ -67,23 +75,16 @@ namespace EasyPost.Models.V2
         /// <summary>
         ///     Cancel this pickup.
         /// </summary>
-        public async Task Cancel()
+        public async Task<Pickup> Cancel()
         {
+            CheckFunctionalityCompatible(nameof(Cancel));
+
             if (id == null)
             {
                 throw new PropertyMissing("id");
             }
 
-            await Update<Pickup>(Method.Post, $"pickups/{id}/cancel");
-        }
-
-        /// <summary>
-        ///     Get the pickup rates as a list of Rate objects.
-        /// </summary>
-        /// <returns>List of Rate objects.</returns>
-        internal IEnumerable<Rate> Rates
-        {
-            get { return pickup_rates != null ? pickup_rates.Cast<Rate>().ToList() : new List<Rate>(); }
+            return await Update<Pickup>(Method.Post, $"pickups/{id}/cancel");
         }
 
         /// <summary>
@@ -96,6 +97,8 @@ namespace EasyPost.Models.V2
         /// <returns>Lowest EasyPost.PickupRate object instance.</returns>
         public PickupRate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
+            CheckFunctionalityCompatible(nameof(LowestRate));
+
             return (PickupRate)Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
     }

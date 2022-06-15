@@ -29,6 +29,8 @@ namespace EasyPost.Services.V2
         /// <exception cref="Exception"></exception>
         public async Task<PaymentMethodSummary> All()
         {
+            CheckFunctionalityCompatible(nameof(All));
+
             PaymentMethodSummary summary = await Get<PaymentMethodSummary>("payment_methods");
 
             if (summary.id == null)
@@ -46,6 +48,8 @@ namespace EasyPost.Services.V2
         /// <returns>Whether the request was successful or not.</returns>
         public async Task<bool> DeletePaymentMethod(Priority priority)
         {
+            CheckFunctionalityCompatible(nameof(DeletePaymentMethod));
+
             CreditCard paymentMethod = await GetPaymentMethodByPriority(priority);
 
             return await paymentMethod.Delete();
@@ -59,6 +63,8 @@ namespace EasyPost.Services.V2
         /// <returns>Whether the request was successful or not.</returns>
         public async Task<CreditCardFunding> FundPaymentMethod(string amount, Priority priority)
         {
+            CheckFunctionalityCompatible(nameof(FundPaymentMethod));
+
             CreditCard paymentMethod = await GetPaymentMethodByPriority(priority);
 
             return await paymentMethod.Fund(amount);
@@ -72,6 +78,8 @@ namespace EasyPost.Services.V2
         /// <exception cref="Exception">Billing has not been set up yet, or the Priority provided is invalid.</exception>
         private async Task<CreditCard> GetPaymentMethodByPriority(Priority priority)
         {
+            CheckFunctionalityCompatible(nameof(GetPaymentMethodByPriority));
+
             PaymentMethodSummary summary = await All();
 
             CreditCard? paymentMethod = priority switch

@@ -31,20 +31,28 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Order instance.</returns>
-        public async Task<Order> Create(Dictionary<string, object> parameters) =>
-            await Create<Order>("orders", new Dictionary<string, object>
+        public async Task<Order> Create(Dictionary<string, object> parameters)
+        {
+            CheckFunctionalityCompatible(nameof(Create));
+
+            return await Create<Order>("orders", new Dictionary<string, object>
             {
                 {
                     "order", parameters
                 }
             });
-
+        }
 
         /// <summary>
         ///     Retrieve a Order from its id or reference.
         /// </summary>
         /// <param name="id">String representing a Order. Starts with "order_" if passing an id.</param>
         /// <returns>EasyPost.Order instance.</returns>
-        public async Task<Order> Retrieve(string id) => await Get<Order>($"orders/{id}");
+        public async Task<Order> Retrieve(string id)
+        {
+            CheckFunctionalityCompatible(nameof(Retrieve));
+
+            return await Get<Order>($"orders/{id}");
+        }
     }
 }

@@ -31,6 +31,8 @@ namespace EasyPost.Services.V2
         /// <returns>An EasyPost.ShipmentCollection instance.</returns>
         public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
+            CheckFunctionalityCompatible(nameof(All));
+
             ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
             shipmentCollection.filters = parameters;
             shipmentCollection.Client = Client;
@@ -59,6 +61,8 @@ namespace EasyPost.Services.V2
         /// <returns>An EasyPost.Shipment instance.</returns>
         public async Task<Shipment> Create(Dictionary<string, object>? parameters = null)
         {
+            CheckFunctionalityCompatible(nameof(Create));
+
             Dictionary<string, object> requestParameters = new Dictionary<string, object>();
             if (parameters != null)
             {
@@ -73,7 +77,12 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
         /// <returns>An EasyPost.Shipment instance.</returns>
-        public async Task<Shipment> Retrieve(string id) => await Get<Shipment>($"shipments/{id}");
+        public async Task<Shipment> Retrieve(string id)
+        {
+            CheckFunctionalityCompatible(nameof(Retrieve));
+
+            return await Get<Shipment>($"shipments/{id}");
+        }
 
         /// <summary>
         ///     Get the lowest smartrate from a list of smartrates.

@@ -21,7 +21,7 @@ namespace EasyPost.Tests
 
             Pickup pickup = await CreateBasicPickup();
 
-            await pickup.Buy(Fixture.Usps, Fixture.PickupService);
+            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
 
             Assert.IsInstanceOfType(pickup, typeof(Pickup));
             Assert.IsTrue(pickup.id.StartsWith("pickup_"));
@@ -36,9 +36,9 @@ namespace EasyPost.Tests
 
             Pickup pickup = await CreateBasicPickup();
 
-            await pickup.Buy(Fixture.Usps, Fixture.PickupService);
+            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
 
-            await pickup.Cancel();
+            pickup = await pickup.Cancel();
 
             Assert.IsInstanceOfType(pickup, typeof(Pickup));
             Assert.IsTrue(pickup.id.StartsWith("pickup_"));

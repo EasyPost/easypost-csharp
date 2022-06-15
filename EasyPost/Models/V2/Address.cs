@@ -28,8 +28,10 @@ namespace EasyPost.Models.V2
         ///     Verify this address.
         /// </summary>
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
-        public async Task Verify(string? carrier = null)
+        public async Task<Address> Verify(string? carrier = null)
         {
+            CheckFunctionalityCompatible(nameof(Verify));
+
             if (id == null)
             {
                 throw new PropertyMissing("id");
@@ -41,7 +43,7 @@ namespace EasyPost.Models.V2
                 parameters.Add("carrier", carrier);
             }
 
-            await Update<Address>(Method.Get, $"addresses/{id}/verify", parameters, "address");
+            return await Update<Address>(Method.Get, $"addresses/{id}/verify", parameters, "address");
         }
     }
 }

@@ -28,7 +28,12 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.InsuranceCollection instance.</returns>
-        public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null) => await List<InsuranceCollection>("insurances", parameters);
+        public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null)
+        {
+            CheckFunctionalityCompatible(nameof(All));
+
+            return await List<InsuranceCollection>("insurances", parameters);
+        }
 
         /// <summary>
         ///     Create an Insurance.
@@ -47,19 +52,28 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Insurance instance.</returns>
-        public async Task<Insurance> Create(Dictionary<string, object> parameters) =>
-            await Create<Insurance>("insurances", new Dictionary<string, object>
+        public async Task<Insurance> Create(Dictionary<string, object> parameters)
+        {
+            CheckFunctionalityCompatible(nameof(Create));
+
+            return await Create<Insurance>("insurances", new Dictionary<string, object>
             {
                 {
                     "insurance", parameters
                 }
             });
+        }
 
         /// <summary>
         ///     Retrieve an Insurance from its id.
         /// </summary>
         /// <param name="id">String representing an Insurance. Starts with "ins_".</param>
         /// <returns>EasyPost.Insurance instance.</returns>
-        public async Task<Insurance> Retrieve(string id) => await Get<Insurance>($"insurances/{id}");
+        public async Task<Insurance> Retrieve(string id)
+        {
+            CheckFunctionalityCompatible(nameof(Retrieve));
+
+            return await Get<Insurance>($"insurances/{id}");
+        }
     }
 }

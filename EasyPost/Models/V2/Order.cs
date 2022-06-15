@@ -15,17 +15,14 @@ namespace EasyPost.Models.V2
         public Address? buyer_address { get; set; }
         [JsonProperty("carrier_accounts")]
         public List<CarrierAccount>? carrier_accounts { get; set; }
-
         [JsonProperty("customs_info")]
         public CustomsInfo? customs_info { get; set; }
         [JsonProperty("from_address")]
         public Address? from_address { get; set; }
-
         [JsonProperty("is_return")]
         public bool? is_return { get; set; }
         [JsonProperty("messages")]
         public List<Message>? messages { get; set; }
-
         [JsonProperty("rates")]
         public List<Rate>? rates { get; set; }
         [JsonProperty("reference")]
@@ -45,14 +42,16 @@ namespace EasyPost.Models.V2
         /// </summary>
         /// <param name="withCarrier">The carrier to purchase a shipment from.</param>
         /// <param name="withService">The service to purchase.</param>
-        public async Task Buy(string withCarrier, string withService)
+        public async Task<Order> Buy(string withCarrier, string withService)
         {
+            CheckFunctionalityCompatible(nameof(Buy), new []{typeof(string), typeof(string)});
+
             if (id == null)
             {
                 throw new PropertyMissing("id");
             }
 
-            await Update<Order>(Method.Post, $"orders/{id}/buy",
+            return await Update<Order>(Method.Post, $"orders/{id}/buy",
                 new Dictionary<string, object>
                 {
                     {
@@ -70,6 +69,8 @@ namespace EasyPost.Models.V2
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
         public async Task Buy(Rate rate)
         {
+            CheckFunctionalityCompatible(nameof(Buy), new []{typeof(Rate)});
+
             if (rate.carrier != null)
             {
                 if (rate.service != null)
@@ -92,6 +93,8 @@ namespace EasyPost.Models.V2
         /// </summary>
         public async Task GetRates()
         {
+            CheckFunctionalityCompatible(nameof(GetRates));
+
             if (id == null)
             {
                 throw new PropertyMissing("id");
@@ -111,6 +114,8 @@ namespace EasyPost.Models.V2
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
         public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
+            CheckFunctionalityCompatible(nameof(LowestRate));
+
             if (rates == null)
             {
                 throw new PropertyMissing("rates");

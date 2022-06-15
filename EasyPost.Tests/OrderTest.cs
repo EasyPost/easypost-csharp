@@ -21,7 +21,7 @@ namespace EasyPost.Tests
 
             Order order = await CreateBasicOrder();
 
-            await order.Buy(Fixture.Usps, Fixture.UspsService);
+            order = await order.Buy(Fixture.Usps, Fixture.UspsService);
 
             List<Shipment> shipments = order.shipments;
 
@@ -51,7 +51,7 @@ namespace EasyPost.Tests
 
             Order order = await CreateBasicOrder();
 
-            await order.GetRates();
+            await order.GetRates(); // this does not return anything, does actually update in-place
 
             List<Rate> rates = order.rates;
 

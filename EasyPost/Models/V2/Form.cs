@@ -10,8 +10,6 @@ namespace EasyPost.Models.V2
         public string? form_type { get; set; }
         [JsonProperty("form_url")]
         public string? form_url { get; set; }
-
-
         [JsonProperty("submitted_electronically")]
         public bool submitted_electronically { get; set; }
     }
