@@ -43,12 +43,7 @@ namespace EasyPost.Interfaces
             return thisJson == otherJson;
         }
 
-        public override int GetHashCode()
-        {
-            return AsDictionary().GetHashCode();
-        }
-
-        protected async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
+        protected async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : class
         {
             if (Client == null)
             {
@@ -68,7 +63,7 @@ namespace EasyPost.Interfaces
             return await Client.Request(method, url, parameters, rootElement);
         }
 
-        protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
+        protected async Task<T> Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : class
         {
             T updatedObject = await Request<T>(method, url, parameters, rootElement);
             if (updatedObject == null)
@@ -76,7 +71,7 @@ namespace EasyPost.Interfaces
                 throw new ObjectException("Failed to update object");
             }
 
-            Merge(updatedObject);
+            return updatedObject;
         }
 
         /// <summary>
@@ -107,19 +102,6 @@ namespace EasyPost.Interfaces
                     return values;
                 default:
                     return value;
-            }
-        }
-
-        /// <summary>
-        ///     Merge the properties of this object instance with the properties of another object instance.
-        ///     Adds properties from the input object instance into this object instance.
-        /// </summary>
-        /// <param name="source">Object instance to extract properties from to merge into this object instance.</param>
-        private void Merge(object source)
-        {
-            foreach (PropertyInfo property in source.GetType().GetProperties())
-            {
-                property.SetValue(this, property.GetValue(source, null), null);
             }
         }
     }

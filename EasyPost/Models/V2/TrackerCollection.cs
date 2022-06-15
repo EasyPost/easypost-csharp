@@ -10,18 +10,16 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
 {
-    public class TrackerCollection : Collection
+    public class TrackerCollection : Collection, IPaginatedCollection
     {
         [JsonProperty("trackers")]
         public List<Tracker>? trackers { get; set; }
-
-        public BaseClient? V2Client { get; set; } // override the BaseClient property with a client property
 
         /// <summary>
         ///     Get the next page of trackers based on the original parameters passed to Tracker.All().
         /// </summary>
         /// <returns>An EasyPost.TrackerCollection instance.</returns>
-        public async Task<TrackerCollection> Next()
+        public async Task<IPaginatedCollection> Next()
         {
             filters ??= new Dictionary<string, object>();
             filters["before_id"] = (trackers ?? throw new PropertyMissing("trackers")).Last().id ?? throw new PropertyMissing("id");

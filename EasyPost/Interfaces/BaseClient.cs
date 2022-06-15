@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Http;
@@ -24,6 +25,11 @@ namespace EasyPost.Interfaces
         private readonly RestClient _restClient;
         private int? _connectTimeoutMilliseconds;
         private int? _requestTimeoutMilliseconds;
+
+        public ApiVersion ApiVersion
+        {
+            get { return _configuration.ApiVersion; }
+        }
 
         public int ConnectTimeoutMilliseconds
         {
@@ -52,7 +58,6 @@ namespace EasyPost.Interfaces
             _configuration = new ClientConfiguration(apiKey, version);
 
 
-
             RestClientOptions clientOptions = new RestClientOptions
             {
                 Timeout = ConnectTimeoutMilliseconds,
@@ -69,7 +74,7 @@ namespace EasyPost.Interfaces
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
         /// <returns>An instance of a T type object.</returns>
         /// <exception cref="ApiException">An error occurred during the API request.</exception>
-        internal async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : new()
+        internal async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : class
         {
             // Build the request
             Request request = new Request(url, method, parameters, rootElement);
@@ -138,41 +143,20 @@ namespace EasyPost.Interfaces
         /// <summary>
         ///     Get a service instance if the selected API version supports it.
         /// </summary>
-        /// <param name="propertyName">Name of the property to get the service.</param>
-        /// <param name="client">Client to pass into the service instance constructor.</param>
+        /// <param name="servicePropertyName">Name of the property to get the service.</param>
         /// <typeparam name="T">Type of service class to instantiate.</typeparam>
         /// <returns>A T-type instance.</returns>
         /// <exception cref="Exception">Failed to verify API compatibility.</exception>
         /// <exception cref="ApiVersionNotSupported">Resource not available on the selected API version.</exception>
-        protected T GetService<T>(string propertyName, BaseClient client) where T : class
+        protected T GetService<T>(string servicePropertyName) where T : class
         {
-            // check attribute for API compatibility first
-            PropertyInfo? propertyInfo = client.GetType().GetProperty(propertyName) ?? null;
-            if (propertyInfo == null)
-            {
-                throw new Exception($"Property {propertyName} not found on {client.GetType().Name}");
-            }
-
-            ApiCompatibilityAttribute[]? apiCompatibilityAttributes = BaseAttribute.GetPropertyAttributes<ApiCompatibilityAttribute>(propertyInfo);
-            if (apiCompatibilityAttributes == null || apiCompatibilityAttributes.Length == 0)
-            {
-                throw new Exception($"Property {propertyName} on {client.GetType().Name} does not have an ApiCompatibilityAttribute");
-            }
-
-            // can only have one ApiCompatibilityAttribute on a property, so just use the first one
-            ApiCompatibilityAttribute apiCompatibilityAttribute = apiCompatibilityAttributes[0];
-
-            // check if the API version is supported
-            if (!apiCompatibilityAttribute.IsCompatible(_configuration.ApiVersion))
-            {
-                throw new ApiVersionNotSupported(propertyName, _configuration.ApiVersion);
-            }
+            ApiCompatibilityUtilities.CheckServiceCompatible(servicePropertyName, GetType(), this);
 
             // construct a new service
             var cons = (typeof(T)).GetConstructors(BindingFlags.NonPublic|BindingFlags.Instance);
             return (T)cons[0].Invoke(new object[]
             {
-                client
+                this
             });
         }
 
