@@ -25,10 +25,10 @@ namespace EasyPost.Tests
                 }
             });
 
-            List<Report> reports = reportCollection.reports;
+            List<Report> reports = reportCollection.Reports;
 
             Assert.IsTrue(reports.Count <= Fixture.PageSize);
-            Assert.IsNotNull(reportCollection.has_more);
+            Assert.IsNotNull(reportCollection.HasMore);
             foreach (Report report in reports)
             {
                 Assert.IsInstanceOfType(report, typeof(Report));
@@ -43,7 +43,7 @@ namespace EasyPost.Tests
             Report report = await CreateBasicReport(Fixture.ReportType);
 
             Assert.IsInstanceOfType(report, typeof(Report));
-            Assert.IsTrue(report.id.StartsWith(Fixture.ReportIdPrefix));
+            Assert.IsTrue(report.Id.StartsWith(Fixture.ReportIdPrefix));
         }
 
         [Fact]
@@ -102,11 +102,11 @@ namespace EasyPost.Tests
 
             Report report = await CreateBasicReport(Fixture.ReportType);
 
-            Report retrievedReport = await Client.Reports.Retrieve(report.id);
+            Report retrievedReport = await Client.Reports.Retrieve(report.Id);
 
             Assert.IsInstanceOfType(retrievedReport, typeof(Report));
-            Assert.AreEqual(report.start_date, retrievedReport.start_date);
-            Assert.AreEqual(report.end_date, retrievedReport.end_date);
+            Assert.AreEqual(report.StartDate, retrievedReport.StartDate);
+            Assert.AreEqual(report.EndDate, retrievedReport.EndDate);
         }
 
         private async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters)

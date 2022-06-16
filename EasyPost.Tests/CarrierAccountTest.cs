@@ -45,7 +45,7 @@ namespace EasyPost.Tests
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
             Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
-            Assert.IsTrue(carrierAccount.id.StartsWith("ca_"));
+            Assert.IsTrue(carrierAccount.Id.StartsWith("ca_"));
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace EasyPost.Tests
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
-            CarrierAccount retrievedCarrierAccount = await Client.CarrierAccounts.Retrieve(carrierAccount.id);
+            CarrierAccount retrievedCarrierAccount = await Client.CarrierAccounts.Retrieve(carrierAccount.Id);
 
             Assert.IsInstanceOfType(retrievedCarrierAccount, typeof(CarrierAccount));
             Assert.AreEqual(carrierAccount, retrievedCarrierAccount);
@@ -108,14 +108,14 @@ namespace EasyPost.Tests
             carrierAccount = await carrierAccount.Update(carrierAccountData);
 
             Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
-            Assert.IsTrue(carrierAccount.id.StartsWith("ca_"));
-            Assert.AreEqual(testDescription, carrierAccount.description);
+            Assert.IsTrue(carrierAccount.Id.StartsWith("ca_"));
+            Assert.AreEqual(testDescription, carrierAccount.Description);
         }
 
         private async Task<CarrierAccount> CreateBasicCarrierAccount()
         {
             CarrierAccount carrierAccount = await Client.CarrierAccounts.Create(Fixture.BasicCarrierAccount);
-            CleanUpAfterTest(carrierAccount.id);
+            CleanUpAfterTest(carrierAccount.Id);
 
             return carrierAccount;
         }

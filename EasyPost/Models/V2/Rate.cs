@@ -7,34 +7,34 @@ namespace EasyPost.Models.V2
     public class Rate : EasyPostObject
     {
         [JsonProperty("billing_type")]
-        public string? billing_type { get; set; }
+        public string? BillingType { get; set; }
         [JsonProperty("carrier")]
-        public string? carrier { get; set; }
+        public string? Carrier { get; set; }
         [JsonProperty("carrier_account_id")]
-        public string? carrier_account_id { get; set; }
+        public string? CarrierAccountId { get; set; }
         [JsonProperty("currency")]
-        public string? currency { get; set; }
+        public string? Currency { get; set; }
         [JsonProperty("delivery_date")]
-        public DateTime? delivery_date { get; set; }
+        public DateTime? DeliveryDate { get; set; }
         [JsonProperty("delivery_date_guaranteed")]
-        public bool delivery_date_guaranteed { get; set; }
+        public bool DeliveryDateGuaranteed { get; set; }
         [JsonProperty("delivery_days")]
-        public int? delivery_days { get; set; }
+        public int? DeliveryDays { get; set; }
         [JsonProperty("est_delivery_days")]
-        public int? est_delivery_days { get; set; }
+        public int? EstDeliveryDays { get; set; }
         [JsonProperty("list_currency")]
-        public string? list_currency { get; set; }
+        public string? ListCurrency { get; set; }
         [JsonProperty("list_rate")]
-        public string? list_rate { get; set; }
+        public string? ListPrice { get; set; }
         [JsonProperty("rate")]
-        public string? rate { get; set; }
+        public string? Price { get; set; }
         [JsonProperty("retail_currency")]
-        public string? retail_currency { get; set; }
+        public string? RetailCurrency { get; set; }
         [JsonProperty("retail_rate")]
-        public string? retail_rate { get; set; }
+        public string? RetailPrice { get; set; }
         [JsonProperty("service")]
-        public string? service { get; set; }
+        public string? Service { get; set; }
         [JsonProperty("shipment_id")]
-        public string? shipment_id { get; set; }
+        public string? ShipmentId { get; set; }
     }
 }

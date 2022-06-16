@@ -8,11 +8,11 @@ namespace EasyPost.Models.V2
     public class Verification : EasyPostObject
     {
         [JsonProperty("details")]
-        public VerificationDetails? details { get; set; }
+        public VerificationDetails? Details { get; set; }
         [JsonProperty("errors")]
         // TODO: handle refactor of Error
-        public List<Error>? errors { get; set; }
+        public List<Error>? Errors { get; set; }
         [JsonProperty("success")]
-        public bool success { get; set; }
+        public bool Success { get; set; }
     }
 }

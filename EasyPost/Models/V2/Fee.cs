@@ -6,12 +6,12 @@ namespace EasyPost.Models.V2
     public class Fee : EasyPostObject
     {
         [JsonProperty("amount")]
-        public double amount { get; set; }
+        public double Amount { get; set; }
         [JsonProperty("charged")]
-        public bool charged { get; set; }
+        public bool Charged { get; set; }
         [JsonProperty("refunded")]
-        public bool refunded { get; set; }
+        public bool Refunded { get; set; }
         [JsonProperty("type")]
-        public string? type { get; set; }
+        public string? Type { get; set; }
     }
 }

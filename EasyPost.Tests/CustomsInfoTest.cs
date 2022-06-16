@@ -20,8 +20,8 @@ namespace EasyPost.Tests
             CustomsInfo customsInfo = await CreateBasicCustomsInfo();
 
             Assert.IsInstanceOfType(customsInfo, typeof(CustomsInfo));
-            Assert.IsTrue(customsInfo.id.StartsWith("cstinfo_"));
-            Assert.AreEqual("NOEEI 30.37(a)", customsInfo.eel_pfc);
+            Assert.IsTrue(customsInfo.Id.StartsWith("cstinfo_"));
+            Assert.AreEqual("NOEEI 30.37(a)", customsInfo.EelPfc);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace EasyPost.Tests
 
             CustomsInfo customsInfo = await CreateBasicCustomsInfo();
 
-            CustomsInfo retrievedCustomsInfo = await Client.CustomsInfo.Retrieve(customsInfo.id);
+            CustomsInfo retrievedCustomsInfo = await Client.CustomsInfo.Retrieve(customsInfo.Id);
 
             Assert.IsInstanceOfType(retrievedCustomsInfo, typeof(CustomsInfo));
             Assert.AreEqual(customsInfo, retrievedCustomsInfo);

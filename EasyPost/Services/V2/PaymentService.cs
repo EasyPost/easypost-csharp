@@ -33,7 +33,7 @@ namespace EasyPost.Services.V2
         {
             PaymentMethodSummary summary = await Get<PaymentMethodSummary>("payment_methods");
 
-            if (summary.id == null)
+            if (summary.Id == null)
             {
                 throw new PaymentNotSetUp("Billing has not been setup for this user. Please add a payment method.");
             }
@@ -80,8 +80,8 @@ namespace EasyPost.Services.V2
 
             CreditCard? paymentMethod = priority switch
             {
-                Priority.Primary => summary.primary_payment_method,
-                Priority.Secondary => summary.secondary_payment_method,
+                Priority.Primary => summary.PrimaryPaymentMethod,
+                Priority.Secondary => summary.SecondaryPaymentMethod,
                 var _ => null
             };
 

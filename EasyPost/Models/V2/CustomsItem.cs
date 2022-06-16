@@ -7,22 +7,22 @@ namespace EasyPost.Models.V2
     public class CustomsItem : EasyPostObject
     {
         [JsonProperty("code")]
-        public string? code { get; set; }
+        public string? Code { get; set; }
         [JsonProperty("currency")]
-        public string? currency { get; set; }
+        public string? Currency { get; set; }
         [JsonProperty("description")]
-        public string? description { get; set; }
+        public string? Description { get; set; }
         [JsonProperty("hs_tariff_number")]
-        public string? hs_tariff_number { get; set; }
+        public string? HsTariffNumber { get; set; }
         [JsonProperty("origin_country")]
-        public string? origin_country { get; set; }
+        public string? OriginCountry { get; set; }
         [JsonProperty("quantity")]
-        public int quantity { get; set; }
+        public int Quantity { get; set; }
         [JsonProperty("updated_at")]
-        public DateTime? updated_at { get; set; }
+        public DateTime? UpdatedAt { get; set; }
         [JsonProperty("value")]
-        public double? value { get; set; }
+        public double? Value { get; set; }
         [JsonProperty("weight")]
-        public double weight { get; set; }
+        public double Weight { get; set; }
     }
 }

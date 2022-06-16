@@ -43,7 +43,7 @@ namespace EasyPost.Tests
             User user = await RetrieveMe();
 
             // API keys will be censored, so we'll just check for the existence of the `children` element
-            List<User> children = user.children;
+            List<User> children = user.Children;
             Assert.IsNotNull(children);
         }
 
@@ -55,8 +55,8 @@ namespace EasyPost.Tests
             User user = await CreateUser();
 
             Assert.IsInstanceOfType(user, typeof(User));
-            Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual("Test User", user.name);
+            Assert.IsTrue(user.Id.StartsWith("user_"));
+            Assert.AreEqual("Test User", user.Name);
         }
 
         [Fact]
@@ -79,13 +79,13 @@ namespace EasyPost.Tests
 
             User authenticatedUser = await RetrieveMe();
 
-            string id = authenticatedUser.id;
+            string id = authenticatedUser.Id;
 
             User user = await Client.Users.Retrieve(id);
 
             Assert.IsInstanceOfType(user, typeof(User));
-            Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual(id, user.id);
+            Assert.IsTrue(user.Id.StartsWith("user_"));
+            Assert.AreEqual(id, user.Id);
         }
 
 
@@ -97,7 +97,7 @@ namespace EasyPost.Tests
             User user = await RetrieveMe();
 
             Assert.IsInstanceOfType(user, typeof(User));
-            Assert.IsTrue(user.id.StartsWith("user_"));
+            Assert.IsTrue(user.Id.StartsWith("user_"));
         }
 
         [Fact]
@@ -119,8 +119,8 @@ namespace EasyPost.Tests
             user = await user.Update(userDict);
 
             Assert.IsInstanceOfType(user, typeof(User));
-            Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual(testName, user.name);
+            Assert.IsTrue(user.Id.StartsWith("user_"));
+            Assert.AreEqual(testName, user.Name);
         }
 
         [Fact]
@@ -139,8 +139,8 @@ namespace EasyPost.Tests
             });
 
             Assert.IsInstanceOfType(brand, typeof(Brand));
-            Assert.IsTrue(brand.id.StartsWith("brd_"));
-            Assert.AreEqual(color, brand.color);
+            Assert.IsTrue(brand.Id.StartsWith("brd_"));
+            Assert.AreEqual(color, brand.Color);
         }
 
         private async Task<User> CreateUser()
@@ -151,7 +151,7 @@ namespace EasyPost.Tests
                     "name", "Test User"
                 }
             });
-            CleanUpAfterTest(user.id);
+            CleanUpAfterTest(user.Id);
 
             return user;
         }

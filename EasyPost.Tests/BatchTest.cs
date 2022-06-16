@@ -28,14 +28,14 @@ namespace EasyPost.Tests
                 shipment
             });
 
-            Assert.AreEqual(1, batch.num_shipments);
+            Assert.AreEqual(1, batch.NumShipments);
 
             batch = await batch.RemoveShipments(new List<Shipment>
             {
                 shipment
             });
 
-            Assert.AreEqual(0, batch.num_shipments);
+            Assert.AreEqual(0, batch.NumShipments);
         }
 
         [Fact]
@@ -50,10 +50,10 @@ namespace EasyPost.Tests
                 }
             });
 
-            List<Batch> batches = batchCollection.batches;
+            List<Batch> batches = batchCollection.Batches;
 
             Assert.IsTrue(batches.Count <= Fixture.PageSize);
-            Assert.IsNotNull(batchCollection.has_more);
+            Assert.IsNotNull(batchCollection.HasMore);
             foreach (Batch item in batches)
             {
                 Assert.IsInstanceOfType(item, typeof(Batch));
@@ -70,7 +70,7 @@ namespace EasyPost.Tests
             batch = await batch.Buy();
 
             Assert.IsInstanceOfType(batch, typeof(Batch));
-            Assert.AreEqual(1, batch.num_shipments);
+            Assert.AreEqual(1, batch.NumShipments);
         }
 
         [Fact]
@@ -81,8 +81,8 @@ namespace EasyPost.Tests
             Batch batch = await CreateBasicBatch();
 
             Assert.IsInstanceOfType(batch, typeof(Batch));
-            Assert.IsTrue(batch.id.StartsWith("batch_"));
-            Assert.IsNotNull(batch.shipments);
+            Assert.IsTrue(batch.Id.StartsWith("batch_"));
+            Assert.IsNotNull(batch.Shipments);
         }
 
         [Fact]
@@ -101,8 +101,8 @@ namespace EasyPost.Tests
             });
 
             Assert.IsInstanceOfType(batch, typeof(Batch));
-            Assert.IsTrue(batch.id.StartsWith("batch_"));
-            Assert.AreEqual(1, batch.num_shipments);
+            Assert.IsTrue(batch.Id.StartsWith("batch_"));
+            Assert.AreEqual(1, batch.NumShipments);
         }
 
         [Fact]
@@ -153,11 +153,11 @@ namespace EasyPost.Tests
 
             Batch batch = await CreateBasicBatch();
 
-            Batch retrievedBatch = await Client.Batches.Retrieve(batch.id);
+            Batch retrievedBatch = await Client.Batches.Retrieve(batch.Id);
 
             Assert.IsInstanceOfType(retrievedBatch, typeof(Batch));
             // Must compare IDs since elements of batch (i.e. status) may be different
-            Assert.AreEqual(batch.id, retrievedBatch.id);
+            Assert.AreEqual(batch.Id, retrievedBatch.Id);
         }
 
         private async Task<Batch> CreateBasicBatch() =>

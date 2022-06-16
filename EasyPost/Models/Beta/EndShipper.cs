@@ -16,7 +16,7 @@ namespace EasyPost.Models.Beta
         [ApiCompatibility(ApiVersion.Beta)]
         public async Task<EndShipper> Update(Dictionary<string, object> parameters)
         {
-            return await Update<EndShipper>(Method.Put, $"end_shippers/{id}", new Dictionary<string, object>
+            return await Update<EndShipper>(Method.Put, $"end_shippers/{Id}", new Dictionary<string, object>
             {
                 {
                     "address", parameters

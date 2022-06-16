@@ -6,12 +6,12 @@ namespace EasyPost.Models.V2
     public class Message : EasyPostObject
     {
         [JsonProperty("carrier")]
-        public string? carrier { get; set; }
+        public string? Carrier { get; set; }
         [JsonProperty("carrier_account_id")]
-        public string? carrier_account_id { get; set; }
+        public string? CarrierAccountId { get; set; }
         [JsonProperty("message")]
-        public string? message { get; set; }
+        public string? Comment { get; set; }
         [JsonProperty("type")]
-        public string? type { get; set; }
+        public string? Type { get; set; }
     }
 }

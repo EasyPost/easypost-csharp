@@ -6,22 +6,22 @@ namespace EasyPost.Models.V2
     public class Brand : EasyPostObject
     {
         [JsonProperty("ad")]
-        public string? ad { get; set; }
+        public string? Ad { get; set; }
         [JsonProperty("ad_href")]
-        public string? ad_href { get; set; }
+        public string? AdHref { get; set; }
         [JsonProperty("background_color")]
-        public string? background_color { get; set; }
+        public string? BackgroundColor { get; set; }
         [JsonProperty("color")]
-        public string? color { get; set; }
+        public string? Color { get; set; }
         [JsonProperty("logo")]
-        public string? logo { get; set; }
+        public string? Logo { get; set; }
         [JsonProperty("logo_href")]
-        public string? logo_href { get; set; }
+        public string? LogoHref { get; set; }
         [JsonProperty("name")]
-        public string? name { get; set; }
+        public string? Name { get; set; }
         [JsonProperty("theme")]
-        public string? theme { get; set; }
+        public string? Theme { get; set; }
         [JsonProperty("user_id")]
-        public string? user_id { get; set; }
+        public string? UserId { get; set; }
     }
 }

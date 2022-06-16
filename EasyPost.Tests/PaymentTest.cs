@@ -20,7 +20,7 @@ namespace EasyPost.Tests
 
             PaymentMethodSummary summary = await GetPaymentMethodSummary();
 
-            Assert.IsNotNull(summary.primary_payment_method);
+            Assert.IsNotNull(summary.PrimaryPaymentMethod);
         }
 
         [Fact(Skip = "Lack of an available real credit card in tests.")]
@@ -30,7 +30,7 @@ namespace EasyPost.Tests
 
             PaymentMethodSummary summary = await GetPaymentMethodSummary();
 
-            CreditCard creditCard = summary.primary_payment_method;
+            CreditCard creditCard = summary.PrimaryPaymentMethod;
 
             bool success = await creditCard.Delete();
 
@@ -45,7 +45,7 @@ namespace EasyPost.Tests
 
             PaymentMethodSummary summary = await GetPaymentMethodSummary();
 
-            CreditCard creditCard = summary.primary_payment_method;
+            CreditCard creditCard = summary.PrimaryPaymentMethod;
 
             CreditCardFunding funding = await creditCard.Fund("20");
 

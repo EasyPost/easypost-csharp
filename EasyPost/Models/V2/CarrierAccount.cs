@@ -12,19 +12,19 @@ namespace EasyPost.Models.V2
     public class CarrierAccount : EasyPostObject
     {
         [JsonProperty("billing_type")]
-        public string? billing_type { get; set; }
+        public string? BillingType { get; set; }
         [JsonProperty("credentials")]
-        public Dictionary<string, object>? credentials { get; set; }
+        public Dictionary<string, object>? Credentials { get; set; }
         [JsonProperty("description")]
-        public string? description { get; set; }
+        public string? Description { get; set; }
         [JsonProperty("readable")]
-        public string? readable { get; set; }
+        public string? Readable { get; set; }
         [JsonProperty("reference")]
-        public string? reference { get; set; }
+        public string? Reference { get; set; }
         [JsonProperty("test_credentials")]
-        public Dictionary<string, object>? test_credentials { get; set; }
+        public Dictionary<string, object>? TestCredentials { get; set; }
         [JsonProperty("type")]
-        public string? type { get; set; }
+        public string? Type { get; set; }
 
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<bool> Delete()
         {
-            return await Request(Method.Delete, $"carrier_accounts/{id}");
+            return await Request(Method.Delete, $"carrier_accounts/{Id}");
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<CarrierAccount> Update(Dictionary<string, object> parameters)
         {
-            return await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{id}", parameters);
+            return await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{Id}", parameters);
         }
     }
 }

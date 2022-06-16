@@ -14,7 +14,7 @@ namespace EasyPost.Models.V2
     public class TrackerCollection : Collection, IPaginatedCollection
     {
         [JsonProperty("trackers")]
-        public List<Tracker>? trackers { get; set; }
+        public List<Tracker>? Trackers { get; set; }
 
         /// <summary>
         ///     Get the next page of trackers based on the original parameters passed to Tracker.All().
@@ -23,15 +23,15 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<IPaginatedCollection> Next()
         {
-            filters ??= new Dictionary<string, object>();
-            filters["before_id"] = (trackers ?? throw new PropertyMissing("trackers")).Last().id ?? throw new PropertyMissing("id");
+            Filters ??= new Dictionary<string, object>();
+            Filters["before_id"] = (Trackers ?? throw new PropertyMissing("trackers")).Last().Id ?? throw new PropertyMissing("id");
 
             if (Client == null)
             {
                 throw new ClientNotConfigured();
             }
 
-            return await Client.Trackers.All(filters);
+            return await Client.Trackers.All(Filters);
         }
     }
 }

@@ -7,6 +7,6 @@ namespace EasyPost.Models.V2
     public class BatchCollection : Collection
     {
         [JsonProperty("batches")]
-        public List<Batch>? batches { get; set; }
+        public List<Batch>? Batches { get; set; }
     }
 }

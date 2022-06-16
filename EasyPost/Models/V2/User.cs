@@ -12,31 +12,31 @@ namespace EasyPost.Models.V2
     public class User : EasyPostObject
     {
         [JsonProperty("api_keys")]
-        public List<ApiKey>? api_keys { get; set; }
+        public List<ApiKey>? ApiKeys { get; set; }
         [JsonProperty("balance")]
-        public string? balance { get; set; }
+        public string? Balance { get; set; }
         [JsonProperty("children")]
-        public List<User>? children { get; set; }
+        public List<User>? Children { get; set; }
         [JsonProperty("email")]
-        public string? email { get; set; }
+        public string? Email { get; set; }
         [JsonProperty("name")]
-        public string? name { get; set; }
+        public string? Name { get; set; }
         [JsonProperty("parent_id")]
-        public string? parent_id { get; set; }
+        public string? ParentId { get; set; }
         [JsonProperty("password")]
-        public string? password { get; set; }
+        public string? Password { get; set; }
         [JsonProperty("password_confirmation")]
-        public string? password_confirmation { get; set; }
+        public string? PasswordConfirmation { get; set; }
         [JsonProperty("phone_number")]
-        public string? phone_number { get; set; }
+        public string? PhoneNumber { get; set; }
         [JsonProperty("price_per_shipment")]
-        public string? price_per_shipment { get; set; }
+        public string? PricePerShipment { get; set; }
         [JsonProperty("recharge_amount")]
-        public string? recharge_amount { get; set; }
+        public string? RechargeAmount { get; set; }
         [JsonProperty("recharge_threshold")]
-        public string? recharge_threshold { get; set; }
+        public string? RechargeThreshold { get; set; }
         [JsonProperty("secondary_recharge_amount")]
-        public string? secondary_recharge_amount { get; set; }
+        public string? SecondaryRechargeAmount { get; set; }
 
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<bool> Delete()
         {
-            return await Request(Method.Delete, $"users/{id}");
+            return await Request(Method.Delete, $"users/{Id}");
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<User> Update(Dictionary<string, object> parameters)
         {
-            return await Update<User>(Method.Patch, $"users/{id}", new Dictionary<string, object>
+            return await Update<User>(Method.Patch, $"users/{Id}", new Dictionary<string, object>
             {
                 {
                     "user", parameters
@@ -93,7 +93,7 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<Brand> UpdateBrand(Dictionary<string, object> parameters)
         {
-            return await Request<Brand>(Method.Patch, $"users/{id}/brand", new Dictionary<string, object>
+            return await Request<Brand>(Method.Patch, $"users/{Id}/brand", new Dictionary<string, object>
             {
                 {
                     "brand", parameters

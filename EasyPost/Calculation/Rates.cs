@@ -30,7 +30,7 @@ namespace EasyPost.Calculation
 
             Rate? lowestRate = null;
 
-            foreach (Rate rate in from rate in rates where includeCarriers.Count <= 0 || includeCarriers.Contains(rate.carrier.ToLower()) where excludeCarriers.Count <= 0 || !excludeCarriers.Contains(rate.carrier.ToLower()) where includeServices.Count <= 0 || includeServices.Contains(rate.service.ToLower()) where excludeServices.Count <= 0 || !excludeServices.Contains(rate.service.ToLower()) select rate)
+            foreach (Rate rate in from rate in rates where includeCarriers.Count <= 0 || includeCarriers.Contains(rate.Carrier.ToLower()) where excludeCarriers.Count <= 0 || !excludeCarriers.Contains(rate.Carrier.ToLower()) where includeServices.Count <= 0 || includeServices.Contains(rate.Service.ToLower()) where excludeServices.Count <= 0 || !excludeServices.Contains(rate.Service.ToLower()) select rate)
             {
                 // if lowest rate is null, set it to this rate
                 if (lowestRate == null)
@@ -39,13 +39,13 @@ namespace EasyPost.Calculation
                     continue;
                 }
 
-                if (rate.rate == null || lowestRate.rate == null)
+                if (rate.Price == null || lowestRate.Price == null)
                 {
                     throw new FilterFailure("Could not compare null elements.");
                 }
 
-                float rateValue = float.Parse(rate.rate);
-                float lowestRateValue = float.Parse(lowestRate.rate);
+                float rateValue = float.Parse(rate.Price);
+                float lowestRateValue = float.Parse(lowestRate.Price);
 
                 // if this rate is lower than the lowest rate, set it to this rate
                 if (!(rateValue < lowestRateValue))
@@ -75,7 +75,7 @@ namespace EasyPost.Calculation
         {
             Smartrate? lowestSmartrate = null;
 
-            foreach (Smartrate? smartrate in from smartrate in smartrates let smartrateAccuracy = smartrate.time_in_transit.GetBySmartrateAccuracy(deliveryAccuracy) where smartrateAccuracy != null where !(smartrateAccuracy > deliveryDays) select smartrate)
+            foreach (Smartrate? smartrate in from smartrate in smartrates let smartrateAccuracy = smartrate.TimeInTransit.GetBySmartrateAccuracy(deliveryAccuracy) where smartrateAccuracy != null where !(smartrateAccuracy > deliveryDays) select smartrate)
             {
                 // if lowest smartrate is null, set it to this smartrate
                 if (lowestSmartrate == null)
@@ -85,7 +85,7 @@ namespace EasyPost.Calculation
                 }
 
                 // if this smartrate is lower than the lowest smartrate, set it to this smartrate
-                if (!(smartrate.rate < lowestSmartrate.rate))
+                if (!(smartrate.Rate < lowestSmartrate.Rate))
                 {
                     continue;
                 }

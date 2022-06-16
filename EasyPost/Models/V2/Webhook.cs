@@ -11,9 +11,9 @@ namespace EasyPost.Models.V2
     public class Webhook : EasyPostObject
     {
         [JsonProperty("disabled_at")]
-        public DateTime? disabled_at { get; set; }
+        public DateTime? DisabledAt { get; set; }
         [JsonProperty("url")]
-        public string? url { get; set; }
+        public string? Url { get; set; }
 
         /// <summary>
         ///     Delete this webhook.
@@ -22,7 +22,7 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<bool> Delete()
         {
-            return await Request(Method.Delete, $"webhooks/{id}");
+            return await Request(Method.Delete, $"webhooks/{Id}");
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<Webhook> Update()
         {
-            return await Update<Webhook>(Method.Patch, $"webhooks/{id}");
+            return await Update<Webhook>(Method.Patch, $"webhooks/{Id}");
         }
     }
 }

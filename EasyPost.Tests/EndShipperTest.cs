@@ -40,8 +40,8 @@ namespace EasyPost.Tests
             EndShipper endShipper = await CreateBasicEndShipper();
 
             Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
-            Assert.IsTrue(endShipper.id.StartsWith("es_"));
-            Assert.AreEqual("388 TOWNSEND ST APT 20", endShipper.street1);
+            Assert.IsTrue(endShipper.Id.StartsWith("es_"));
+            Assert.AreEqual("388 TOWNSEND ST APT 20", endShipper.Street1);
         }
 
         [Fact]
@@ -51,10 +51,10 @@ namespace EasyPost.Tests
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
-            EndShipper retrievedEndShipper = await Client.EndShippers.Retrieve(endShipper.id);
+            EndShipper retrievedEndShipper = await Client.EndShippers.Retrieve(endShipper.Id);
 
             Assert.IsInstanceOfType(retrievedEndShipper, typeof(EndShipper));
-            Assert.AreEqual(endShipper.street1, retrievedEndShipper.street1);
+            Assert.AreEqual(endShipper.Street1, retrievedEndShipper.Street1);
         }
 
         [Fact]
@@ -72,8 +72,8 @@ namespace EasyPost.Tests
             endShipper = await endShipper.Update(endShipperData);
 
             Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
-            Assert.IsTrue(endShipper.id.StartsWith("es_"));
-            Assert.AreEqual(testName, endShipper.name);
+            Assert.IsTrue(endShipper.Id.StartsWith("es_"));
+            Assert.AreEqual(testName, endShipper.Name);
         }
 
         private async Task<EndShipper> CreateBasicEndShipper() => await Client.EndShippers.Create(Fixture.EndShipperAddress);

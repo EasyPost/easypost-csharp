@@ -14,23 +14,23 @@ namespace EasyPost.Models.V2
     public class Batch : EasyPostObject
     {
         [JsonProperty("error")]
-        public string? error { get; set; }
+        public string? Error { get; set; }
         [JsonProperty("label_url")]
-        public string? label_url { get; set; }
+        public string? LabelUrl { get; set; }
         [JsonProperty("message")]
-        public string? message { get; set; }
+        public string? Message { get; set; }
         [JsonProperty("num_shipments")]
-        public int num_shipments { get; set; }
+        public int NumShipments { get; set; }
         [JsonProperty("reference")]
-        public string? reference { get; set; }
+        public string? Reference { get; set; }
         [JsonProperty("scan_form")]
-        public ScanForm? scan_form { get; set; }
+        public ScanForm? ScanForm { get; set; }
         [JsonProperty("shipments")]
-        public List<BatchShipment>? shipments { get; set; }
+        public List<BatchShipment>? Shipments { get; set; }
         [JsonProperty("state")]
-        public string? state { get; set; }
+        public string? State { get; set; }
         [JsonProperty("status")]
-        public Dictionary<string, int>? status { get; set; }
+        public Dictionary<string, int>? Status { get; set; }
 
         /// <summary>
         ///     Add shipments to this batch.
@@ -47,7 +47,7 @@ namespace EasyPost.Models.V2
                         "id", shipmentId
                     }
                 }).ToList();
-            return await Update<Batch>(Method.Post, $"batches/{id}/add_shipments", new Dictionary<string, object>
+            return await Update<Batch>(Method.Post, $"batches/{Id}/add_shipments", new Dictionary<string, object>
             {
                 {
                     "shipments", realShipmentIds
@@ -60,7 +60,7 @@ namespace EasyPost.Models.V2
         /// </summary>
         /// <param name="shipmentsToAdd">List of Shipment objects to be added.</param>
         [ApiCompatibility(ApiVersion.V2)]
-        public async Task<Batch> AddShipments(IEnumerable<Shipment> shipmentsToAdd) => await AddShipments(shipmentsToAdd.Select(shipment => shipment.id).ToList());
+        public async Task<Batch> AddShipments(IEnumerable<Shipment> shipmentsToAdd) => await AddShipments(shipmentsToAdd.Select(shipment => shipment.Id).ToList());
 
         /// <summary>
         ///     Purchase all shipments within this batch. The Batch's state must be "created" before purchasing.
@@ -68,7 +68,7 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<Batch> Buy()
         {
-            return await Update<Batch>(Method.Post, $"batches/{id}/buy");
+            return await Update<Batch>(Method.Post, $"batches/{Id}/buy");
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<Batch> GenerateLabel(string fileFormat)
         {
-            return await Update<Batch>(Method.Post, $"batches/{id}/label", new Dictionary<string, object>
+            return await Update<Batch>(Method.Post, $"batches/{Id}/label", new Dictionary<string, object>
             {
                 {
                     "file_format", fileFormat
@@ -92,7 +92,7 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<Batch> GenerateScanForm()
         {
-            return await Update<Batch>(Method.Post, $"batches/{id}/scan_form");
+            return await Update<Batch>(Method.Post, $"batches/{Id}/scan_form");
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace EasyPost.Models.V2
                         "id", shipmentId
                     }
                 }).ToList();
-            return await Update<Batch>(Method.Post, $"batches/{id}/remove_shipments", new Dictionary<string, object>
+            return await Update<Batch>(Method.Post, $"batches/{Id}/remove_shipments", new Dictionary<string, object>
             {
                 {
                     "shipments", realShipmentIds
@@ -123,6 +123,6 @@ namespace EasyPost.Models.V2
         /// </summary>
         /// <param name="shipmentsToRemove">List of Shipment objects to be removed.</param>
         [ApiCompatibility(ApiVersion.V2)]
-        public async Task<Batch> RemoveShipments(IEnumerable<Shipment> shipmentsToRemove) => await RemoveShipments(shipmentsToRemove.Select(shipment => shipment.id).ToList());
+        public async Task<Batch> RemoveShipments(IEnumerable<Shipment> shipmentsToRemove) => await RemoveShipments(shipmentsToRemove.Select(shipment => shipment.Id).ToList());
     }
 }

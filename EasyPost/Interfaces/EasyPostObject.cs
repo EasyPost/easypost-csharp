@@ -14,15 +14,15 @@ namespace EasyPost.Interfaces
     public abstract class EasyPostObject : WithClient, IEasyPostObject
     {
         [JsonProperty("created_at")]
-        public DateTime? created_at { get; set; }
+        public DateTime? CreatedAt { get; set; }
         [JsonProperty("id")]
-        public string? id { get; set; }
+        public string? Id { get; set; }
         [JsonProperty("mode")]
-        public string? mode { get; set; }
+        public string? Mode { get; set; }
         [JsonProperty("object")]
         public string? Object { get; set; }
         [JsonProperty("updated_at")]
-        public DateTime? updated_at { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         public override bool Equals(object? obj)
         {

@@ -20,8 +20,8 @@ namespace EasyPost.Tests
             CustomsItem customsItem = await CreateBasicCustomsItem();
 
             Assert.IsInstanceOfType(customsItem, typeof(CustomsItem));
-            Assert.IsTrue(customsItem.id.StartsWith("cstitem_"));
-            Assert.AreEqual(23.0, customsItem.value);
+            Assert.IsTrue(customsItem.Id.StartsWith("cstitem_"));
+            Assert.AreEqual(23.0, customsItem.Value);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace EasyPost.Tests
 
             CustomsItem customsItem = await CreateBasicCustomsItem();
 
-            CustomsItem retrievedCustomsItem = await Client.CustomsItems.Retrieve(customsItem.id);
+            CustomsItem retrievedCustomsItem = await Client.CustomsItems.Retrieve(customsItem.Id);
 
             Assert.IsInstanceOfType(retrievedCustomsItem, typeof(CustomsItem));
             Assert.AreEqual(customsItem, retrievedCustomsItem);

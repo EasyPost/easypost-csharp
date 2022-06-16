@@ -50,8 +50,8 @@ namespace EasyPost.Tests
             Webhook webhook = await CreateBasicWebhook(url);
 
             Assert.IsInstanceOfType(webhook, typeof(Webhook));
-            Assert.IsTrue(webhook.id.StartsWith("hook_"));
-            Assert.AreEqual(url, webhook.url);
+            Assert.IsTrue(webhook.Id.StartsWith("hook_"));
+            Assert.AreEqual(url, webhook.Url);
         }
 
         [Fact]
@@ -62,7 +62,7 @@ namespace EasyPost.Tests
             const string url = "https://example.com/delete";
 
             Webhook webhook = await CreateBasicWebhook(url);
-            Webhook retrievedWebhook = await Client.Webhooks.Retrieve(webhook.id);
+            Webhook retrievedWebhook = await Client.Webhooks.Retrieve(webhook.Id);
 
             bool success = await retrievedWebhook.Delete();
             Assert.IsTrue(success);
@@ -79,7 +79,7 @@ namespace EasyPost.Tests
 
             Webhook webhook = await CreateBasicWebhook(url);
 
-            Webhook retrievedWebhook = await Client.Webhooks.Retrieve(webhook.id);
+            Webhook retrievedWebhook = await Client.Webhooks.Retrieve(webhook.Id);
 
             Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
             Assert.AreEqual(webhook, retrievedWebhook);
@@ -106,7 +106,7 @@ namespace EasyPost.Tests
                     "url", url
                 }
             });
-            CleanUpAfterTest(webhook.id);
+            CleanUpAfterTest(webhook.Id);
 
             return webhook;
         }

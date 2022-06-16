@@ -25,10 +25,10 @@ namespace EasyPost.Tests
                 }
             });
 
-            List<ScanForm> scanForms = scanFormCollection.scan_forms;
+            List<ScanForm> scanForms = scanFormCollection.ScanForms;
 
             Assert.IsTrue(scanForms.Count <= Fixture.PageSize);
-            Assert.IsNotNull(scanFormCollection.has_more);
+            Assert.IsNotNull(scanFormCollection.HasMore);
             foreach (ScanForm scanForm in scanForms)
             {
                 Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
@@ -43,7 +43,7 @@ namespace EasyPost.Tests
             ScanForm scanForm = await GetBasicScanForm();
 
             Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
-            Assert.IsTrue(scanForm.id.StartsWith("sf_"));
+            Assert.IsTrue(scanForm.Id.StartsWith("sf_"));
         }
 
         [Fact]
@@ -53,7 +53,7 @@ namespace EasyPost.Tests
 
             ScanForm scanForm = await GetBasicScanForm();
 
-            ScanForm retrievedScanForm = await Client.ScanForms.Retrieve(scanForm.id);
+            ScanForm retrievedScanForm = await Client.ScanForms.Retrieve(scanForm.Id);
 
             Assert.IsInstanceOfType(retrievedScanForm, typeof(ScanForm));
             Assert.AreEqual(scanForm, retrievedScanForm);

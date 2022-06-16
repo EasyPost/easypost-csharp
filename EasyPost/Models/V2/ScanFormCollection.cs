@@ -13,7 +13,7 @@ namespace EasyPost.Models.V2
     public class ScanFormCollection : Collection, IPaginatedCollection
     {
         [JsonProperty("scan_forms")]
-        public List<ScanForm>? scan_forms { get; set; }
+        public List<ScanForm>? ScanForms { get; set; }
 
         /// <summary>
         ///     Get the next page of scan forms based on the original parameters passed to ScanForm.All().
@@ -22,15 +22,15 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<IPaginatedCollection> Next()
         {
-            filters ??= new Dictionary<string, object>();
-            filters["before_id"] = (scan_forms ?? throw new PropertyMissing("scan_forms")).Last().id ?? throw new PropertyMissing("id");
+            Filters ??= new Dictionary<string, object>();
+            Filters["before_id"] = (ScanForms ?? throw new PropertyMissing("scan_forms")).Last().Id ?? throw new PropertyMissing("id");
 
             if (Client == null)
             {
                 throw new ClientNotConfigured();
             }
 
-            return await Client.ScanForms.All(filters);
+            return await Client.ScanForms.All(Filters);
         }
     }
 }

@@ -6,8 +6,8 @@ namespace EasyPost.Models.V2
     public class Verifications : EasyPostObject
     {
         [JsonProperty("delivery")]
-        public Verification? delivery { get; set; }
+        public Verification? Delivery { get; set; }
         [JsonProperty("zip4")]
-        public Verification? zip4 { get; set; }
+        public Verification? Zip4 { get; set; }
     }
 }

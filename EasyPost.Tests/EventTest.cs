@@ -20,10 +20,10 @@ namespace EasyPost.Tests
 
             EventCollection eventCollection = await GetBasicEventCollection();
 
-            List<Event> events = eventCollection.events;
+            List<Event> events = eventCollection.Events;
 
             Assert.IsTrue(events.Count <= Fixture.PageSize);
-            Assert.IsNotNull(eventCollection.has_more);
+            Assert.IsNotNull(eventCollection.HasMore);
             foreach (Event item in events)
             {
                 Assert.IsInstanceOfType(item, typeof(Event));
@@ -36,13 +36,13 @@ namespace EasyPost.Tests
             UseVCR("retrieve", ApiVersion.V2);
 
             EventCollection eventCollection = await GetBasicEventCollection();
-            Event _event = eventCollection.events[0];
+            Event _event = eventCollection.Events[0];
 
-            Event retrievedEvent = await Client.Events.Retrieve(_event.id);
+            Event retrievedEvent = await Client.Events.Retrieve(_event.Id);
 
             Assert.IsInstanceOfType(retrievedEvent, typeof(Event));
             // Must compare IDs because other elements of objects may be different
-            Assert.AreEqual(_event.id, retrievedEvent.id);
+            Assert.AreEqual(_event.Id, retrievedEvent.Id);
         }
 
         private async Task<EventCollection> GetBasicEventCollection() =>

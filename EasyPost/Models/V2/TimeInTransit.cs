@@ -5,19 +5,19 @@ namespace EasyPost.Models.V2
     public class TimeInTransit
     {
         [JsonProperty("percentile_50")]
-        public int? percentile_50 { get; set; }
+        public int? Percentile50 { get; set; }
         [JsonProperty("percentile_75")]
-        public int? percentile_75 { get; set; }
+        public int? Percentile75 { get; set; }
         [JsonProperty("percentile_85")]
-        public int? percentile_85 { get; set; }
+        public int? Percentile85 { get; set; }
         [JsonProperty("percentile_90")]
-        public int? percentile_90 { get; set; }
+        public int? Percentile90 { get; set; }
         [JsonProperty("percentile_95")]
-        public int? percentile_95 { get; set; }
+        public int? Percentile95 { get; set; }
         [JsonProperty("percentile_97")]
-        public int? percentile_97 { get; set; }
+        public int? Percentile97 { get; set; }
         [JsonProperty("percentile_99")]
-        public int? percentile_99 { get; set; }
+        public int? Percentile99 { get; set; }
 
         /// <summary>
         ///     Get the value of a specific percentile by its corresponding SmartrateAccuracy enum.
@@ -27,20 +27,20 @@ namespace EasyPost.Models.V2
         internal int? GetBySmartrateAccuracy(SmartrateAccuracy accuracy)
         {
             if (accuracy.Equals(SmartrateAccuracy.Percentile50))
-                return percentile_50;
+                return Percentile50;
             if (accuracy.Equals(SmartrateAccuracy.Percentile75))
-                return percentile_75;
+                return Percentile75;
             if (accuracy.Equals(SmartrateAccuracy.Percentile85))
-                return percentile_85;
+                return Percentile85;
             if (accuracy.Equals(SmartrateAccuracy.Percentile90))
-                return percentile_90;
+                return Percentile90;
             if (accuracy.Equals(SmartrateAccuracy.Percentile95))
-                return percentile_95;
+                return Percentile95;
             if (accuracy.Equals(SmartrateAccuracy.Percentile97))
-                return percentile_97;
+                return Percentile97;
             // ReSharper disable once ConvertIfStatementToReturnStatement
             if (accuracy.Equals(SmartrateAccuracy.Percentile99))
-                return percentile_99;
+                return Percentile99;
             return null;
         }
     }

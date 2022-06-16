@@ -20,8 +20,8 @@ namespace EasyPost.Tests
             Parcel parcel = await CreateBasicParcel();
 
             Assert.IsInstanceOfType(parcel, typeof(Parcel));
-            Assert.IsTrue(parcel.id.StartsWith("prcl_"));
-            Assert.AreEqual(15.4, parcel.weight);
+            Assert.IsTrue(parcel.Id.StartsWith("prcl_"));
+            Assert.AreEqual(15.4, parcel.Weight);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace EasyPost.Tests
 
             Parcel parcel = await CreateBasicParcel();
 
-            Parcel retrievedParcel = await Client.Parcels.Retrieve(parcel.id);
+            Parcel retrievedParcel = await Client.Parcels.Retrieve(parcel.Id);
 
             Assert.IsInstanceOfType(retrievedParcel, typeof(Parcel));
             Assert.AreEqual(parcel, retrievedParcel);

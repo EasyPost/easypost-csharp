@@ -7,8 +7,8 @@ namespace EasyPost.Models.Base
     public class Collection : EasyPostObject
     {
         [JsonProperty("filters")]
-        public Dictionary<string, object>? filters { get; set; }
+        public Dictionary<string, object>? Filters { get; set; }
         [JsonProperty("has_more")]
-        public bool has_more { get; set; }
+        public bool HasMore { get; set; }
     }
 }

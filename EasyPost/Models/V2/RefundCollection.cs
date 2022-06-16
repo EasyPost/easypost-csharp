@@ -7,6 +7,6 @@ namespace EasyPost.Models.V2
     public class RefundCollection : Collection
     {
         [JsonProperty("refunds")]
-        public List<Refund>? refunds { get; set; }
+        public List<Refund>? Refunds { get; set; }
     }
 }

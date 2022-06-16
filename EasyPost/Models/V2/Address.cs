@@ -11,19 +11,19 @@ namespace EasyPost.Models.V2
     public class Address : Base.Address
     {
         [JsonProperty("carrier_facility")]
-        public string? carrier_facility { get; set; }
+        public string? CarrierFacility { get; set; }
         [JsonProperty("federal_tax_id")]
-        public string? federal_tax_id { get; set; }
+        public string? FederalTaxId { get; set; }
         [JsonProperty("residential")]
-        public bool? residential { get; set; }
+        public bool? Residential { get; set; }
         [JsonProperty("state_tax_id")]
-        public string? state_tax_id { get; set; }
+        public string? StateTaxId { get; set; }
         [JsonProperty("verifications")]
-        public Verifications? verifications { get; set; }
+        public Verifications? Verifications { get; set; }
         [JsonProperty("verify")]
-        public List<string>? verify { get; set; }
+        public List<string>? ToVerify { get; set; }
         [JsonProperty("verify_strict")]
-        public List<string>? verify_strict { get; set; }
+        public List<string>? ToVerifyStrict { get; set; }
 
         /// <summary>
         ///     Verify this address.
@@ -32,7 +32,7 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<Address> Verify(string? carrier = null)
         {
-            if (id == null)
+            if (Id == null)
             {
                 throw new PropertyMissing("id");
             }
@@ -43,7 +43,7 @@ namespace EasyPost.Models.V2
                 parameters.Add("carrier", carrier);
             }
 
-            return await Update<Address>(Method.Get, $"addresses/{id}/verify", parameters, "address");
+            return await Update<Address>(Method.Get, $"addresses/{Id}/verify", parameters, "address");
         }
     }
 }

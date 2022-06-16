@@ -24,9 +24,9 @@ namespace EasyPost.Tests
             pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
 
             Assert.IsInstanceOfType(pickup, typeof(Pickup));
-            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
-            Assert.IsNotNull(pickup.confirmation);
-            Assert.AreEqual("scheduled", pickup.status);
+            Assert.IsTrue(pickup.Id.StartsWith("pickup_"));
+            Assert.IsNotNull(pickup.Confirmation);
+            Assert.AreEqual("scheduled", pickup.Status);
         }
 
         [Fact]
@@ -41,8 +41,8 @@ namespace EasyPost.Tests
             pickup = await pickup.Cancel();
 
             Assert.IsInstanceOfType(pickup, typeof(Pickup));
-            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
-            Assert.AreEqual("canceled", pickup.status);
+            Assert.IsTrue(pickup.Id.StartsWith("pickup_"));
+            Assert.AreEqual("canceled", pickup.Status);
         }
 
         [Fact]
@@ -53,8 +53,8 @@ namespace EasyPost.Tests
             Pickup pickup = await CreateBasicPickup();
 
             Assert.IsInstanceOfType(pickup, typeof(Pickup));
-            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
-            Assert.IsNotNull(pickup.pickup_rates);
+            Assert.IsTrue(pickup.Id.StartsWith("pickup_"));
+            Assert.IsNotNull(pickup.PickupRates);
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace EasyPost.Tests
 
             Pickup pickup = await CreateBasicPickup();
 
-            Pickup retrievedPickup = await Client.Pickups.Retrieve(pickup.id);
+            Pickup retrievedPickup = await Client.Pickups.Retrieve(pickup.Id);
 
             Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
             Assert.AreEqual(pickup, retrievedPickup);
@@ -87,9 +87,9 @@ namespace EasyPost.Tests
 
             // test lowest rate with no filters
             Rate lowestRate = pickup.LowestRate();
-            Assert.AreEqual("NextDay", lowestRate.service);
-            Assert.AreEqual("0.00", lowestRate.rate);
-            Assert.AreEqual("USPS", lowestRate.carrier);
+            Assert.AreEqual("NextDay", lowestRate.Service);
+            Assert.AreEqual("0.00", lowestRate.Price);
+            Assert.AreEqual("USPS", lowestRate.Carrier);
 
             // test lowest rate with service filter (should error due to bad service)
             List<string> services = new List<string>

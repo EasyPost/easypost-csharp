@@ -25,10 +25,10 @@ namespace EasyPost.Tests
                 }
             });
 
-            List<Refund> refunds = refundCollection.refunds;
+            List<Refund> refunds = refundCollection.Refunds;
 
             Assert.IsTrue(refunds.Count <= Fixture.PageSize);
-            Assert.IsNotNull(refundCollection.has_more);
+            Assert.IsNotNull(refundCollection.HasMore);
             foreach (Refund item in refunds)
             {
                 Assert.IsInstanceOfType(item, typeof(Refund));
@@ -48,8 +48,8 @@ namespace EasyPost.Tests
             }
 
             Refund refund = refunds[0];
-            Assert.IsTrue(refund.id.StartsWith("rfnd_"));
-            Assert.AreEqual("submitted", refund.status);
+            Assert.IsTrue(refund.Id.StartsWith("rfnd_"));
+            Assert.AreEqual("submitted", refund.Status);
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace EasyPost.Tests
 
             Refund refund = (await CreateBasicRefund())[0];
 
-            Refund retrievedRefund = await Client.Refunds.Retrieve(refund.id);
+            Refund retrievedRefund = await Client.Refunds.Retrieve(refund.Id);
 
             Assert.IsInstanceOfType(retrievedRefund, typeof(Refund));
             Assert.AreEqual(refund, retrievedRefund);
@@ -75,7 +75,7 @@ namespace EasyPost.Tests
         private async Task<List<Refund>> CreateBasicRefund()
         {
             Shipment shipment = await Client.Shipments.Create(Fixture.OneCallBuyShipment);
-            Shipment retrievedShipment = await Client.Shipments.Retrieve(shipment.id); // We need to retrieve the shipment so that the tracking_code has time to populate
+            Shipment retrievedShipment = await Client.Shipments.Retrieve(shipment.Id); // We need to retrieve the shipment so that the tracking_code has time to populate
 
             return await Client.Refunds.Create(new Dictionary<string, object>
             {
@@ -85,7 +85,7 @@ namespace EasyPost.Tests
                 {
                     "tracking_codes", new List<string>
                     {
-                        retrievedShipment.tracking_code
+                        retrievedShipment.TrackingCode
                     }
                 }
             });

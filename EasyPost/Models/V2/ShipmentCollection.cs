@@ -14,7 +14,7 @@ namespace EasyPost.Models.V2
     public class ShipmentCollection : Collection, IPaginatedCollection
     {
         [JsonProperty("shipments")]
-        public List<Shipment>? shipments { get; set; }
+        public List<Shipment>? Shipments { get; set; }
 
         /// <summary>
         ///     Get the next page of shipments based on the original parameters passed to Shipment.All().
@@ -23,15 +23,15 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<IPaginatedCollection> Next()
         {
-            filters ??= new Dictionary<string, object>();
-            filters["before_id"] = (shipments ?? throw new PropertyMissing("shipments")).Last().id ?? throw new PropertyMissing("id");
+            Filters ??= new Dictionary<string, object>();
+            Filters["before_id"] = (Shipments ?? throw new PropertyMissing("shipments")).Last().Id ?? throw new PropertyMissing("id");
 
             if (Client == null)
             {
                 throw new ClientNotConfigured();
             }
 
-            return await Client.Shipments.All(filters);
+            return await Client.Shipments.All(Filters);
         }
     }
 }

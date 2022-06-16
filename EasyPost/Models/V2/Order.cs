@@ -14,29 +14,29 @@ namespace EasyPost.Models.V2
     public class Order : EasyPostObject
     {
         [JsonProperty("buyer_address")]
-        public Address? buyer_address { get; set; }
+        public Address? BuyerAddress { get; set; }
         [JsonProperty("carrier_accounts")]
-        public List<CarrierAccount>? carrier_accounts { get; set; }
+        public List<CarrierAccount>? CarrierAccounts { get; set; }
         [JsonProperty("customs_info")]
-        public CustomsInfo? customs_info { get; set; }
+        public CustomsInfo? CustomsInfo { get; set; }
         [JsonProperty("from_address")]
-        public Address? from_address { get; set; }
+        public Address? FromAddress { get; set; }
         [JsonProperty("is_return")]
-        public bool? is_return { get; set; }
+        public bool? IsReturn { get; set; }
         [JsonProperty("messages")]
-        public List<Message>? messages { get; set; }
+        public List<Message>? Messages { get; set; }
         [JsonProperty("rates")]
-        public List<Rate>? rates { get; set; }
+        public List<Rate>? Rates { get; set; }
         [JsonProperty("reference")]
-        public string? reference { get; set; }
+        public string? Reference { get; set; }
         [JsonProperty("return_address")]
-        public Address? return_address { get; set; }
+        public Address? ReturnAddress { get; set; }
         [JsonProperty("service")]
-        public string? service { get; set; }
+        public string? Service { get; set; }
         [JsonProperty("shipments")]
-        public List<Shipment>? shipments { get; set; }
+        public List<Shipment>? Shipments { get; set; }
         [JsonProperty("to_address")]
-        public Address? to_address { get; set; }
+        public Address? ToAddress { get; set; }
 
 
         /// <summary>
@@ -47,12 +47,12 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<Order> Buy(string withCarrier, string withService)
         {
-            if (id == null)
+            if (Id == null)
             {
                 throw new PropertyMissing("id");
             }
 
-            return await Update<Order>(Method.Post, $"orders/{id}/buy",
+            return await Update<Order>(Method.Post, $"orders/{Id}/buy",
                 new Dictionary<string, object>
                 {
                     {
@@ -71,11 +71,11 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task Buy(Rate rate)
         {
-            if (rate.carrier != null)
+            if (rate.Carrier != null)
             {
-                if (rate.service != null)
+                if (rate.Service != null)
                 {
-                    await Buy(rate.carrier, rate.service);
+                    await Buy(rate.Carrier, rate.Service);
                 }
                 else
                 {
@@ -94,13 +94,13 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task GetRates()
         {
-            if (id == null)
+            if (Id == null)
             {
                 throw new PropertyMissing("id");
             }
 
-            Order order = await Request<Order>(Method.Get, $"orders/{id}/rates");
-            rates = order.rates;
+            Order order = await Request<Order>(Method.Get, $"orders/{Id}/rates");
+            Rates = order.Rates;
         }
 
         /// <summary>
@@ -114,12 +114,12 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
-            if (rates == null)
+            if (Rates == null)
             {
                 throw new PropertyMissing("rates");
             }
 
-            return Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+            return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
     }
 }

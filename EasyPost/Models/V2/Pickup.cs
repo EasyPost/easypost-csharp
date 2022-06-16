@@ -14,29 +14,29 @@ namespace EasyPost.Models.V2
     public class Pickup : EasyPostObject
     {
         [JsonProperty("address")]
-        public Address? address { get; set; }
+        public Address? Address { get; set; }
         [JsonProperty("carrier_accounts")]
-        public List<CarrierAccount>? carrier_accounts { get; set; }
+        public List<CarrierAccount>? CarrierAccounts { get; set; }
         [JsonProperty("confirmation")]
-        public string? confirmation { get; set; }
+        public string? Confirmation { get; set; }
         [JsonProperty("instructions")]
-        public string? instructions { get; set; }
+        public string? Instructions { get; set; }
         [JsonProperty("is_account_address")]
-        public bool is_account_address { get; set; }
+        public bool IsAccountAddress { get; set; }
         [JsonProperty("max_datetime")]
-        public DateTime max_datetime { get; set; }
+        public DateTime MaxDatetime { get; set; }
         [JsonProperty("messages")]
-        public List<Message>? messages { get; set; }
+        public List<Message>? Messages { get; set; }
         [JsonProperty("min_datetime")]
-        public DateTime min_datetime { get; set; }
+        public DateTime MinDatetime { get; set; }
         [JsonProperty("name")]
-        public string? name { get; set; }
+        public string? Name { get; set; }
         [JsonProperty("pickup_rates")]
-        public List<PickupRate>? pickup_rates { get; set; }
+        public List<PickupRate>? PickupRates { get; set; }
         [JsonProperty("reference")]
-        public string? reference { get; set; }
+        public string? Reference { get; set; }
         [JsonProperty("status")]
-        public string? status { get; set; }
+        public string? Status { get; set; }
 
         /// <summary>
         ///     Get the pickup rates as a list of Rate objects.
@@ -44,7 +44,7 @@ namespace EasyPost.Models.V2
         /// <returns>List of Rate objects.</returns>
         private IEnumerable<Rate> Rates
         {
-            get { return pickup_rates != null ? pickup_rates.Cast<Rate>().ToList() : new List<Rate>(); }
+            get { return PickupRates != null ? PickupRates.Cast<Rate>().ToList() : new List<Rate>(); }
         }
 
 
@@ -56,12 +56,12 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<Pickup> Buy(string carrier, string service)
         {
-            if (id == null)
+            if (Id == null)
             {
                 throw new PropertyMissing("id");
             }
 
-            return await Update<Pickup>(Method.Post, $"pickups/{id}/buy",
+            return await Update<Pickup>(Method.Post, $"pickups/{Id}/buy",
                 new Dictionary<string, object>
                 {
                     {
@@ -79,12 +79,12 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<Pickup> Cancel()
         {
-            if (id == null)
+            if (Id == null)
             {
                 throw new PropertyMissing("id");
             }
 
-            return await Update<Pickup>(Method.Post, $"pickups/{id}/cancel");
+            return await Update<Pickup>(Method.Post, $"pickups/{Id}/cancel");
         }
 
         /// <summary>

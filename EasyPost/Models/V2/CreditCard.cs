@@ -11,18 +11,18 @@ namespace EasyPost.Models.V2
     public class CreditCard : EasyPostObject
     {
         [JsonProperty("brand")]
-        public string? brand { get; set; }
+        public string? Brand { get; set; }
         [JsonProperty("disabled_at")]
-        public string? disabled_at { get; set; }
+        public string? DisabledAt { get; set; }
         [JsonProperty("exp_month")]
-        public string? exp_month { get; set; }
+        public string? ExpMonth { get; set; }
         [JsonProperty("exp_year")]
-        public string? exp_year { get; set; }
+        public string? ExpYear { get; set; }
 
         [JsonProperty("last4")]
-        public string? last4 { get; set; }
+        public string? Last4 { get; set; }
         [JsonProperty("name")]
-        public string? name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Delete this credit card from your account.
@@ -31,7 +31,7 @@ namespace EasyPost.Models.V2
         [ApiCompatibility(ApiVersion.V2)]
         public async Task<bool> Delete()
         {
-            return await Request(Method.Delete, $"credit_cards/{id}");
+            return await Request(Method.Delete, $"credit_cards/{Id}");
         }
 
 
@@ -50,7 +50,7 @@ namespace EasyPost.Models.V2
                 }
             };
 
-            return await Request<CreditCardFunding>(Method.Post, $"credit_cards/{id}/charge", requestParameters);
+            return await Request<CreditCardFunding>(Method.Post, $"credit_cards/{Id}/charge", requestParameters);
         }
     }
 }

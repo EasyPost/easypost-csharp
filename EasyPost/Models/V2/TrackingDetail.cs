@@ -7,12 +7,12 @@ namespace EasyPost.Models.V2
     public class TrackingDetail : EasyPostObject
     {
         [JsonProperty("datetime")]
-        public DateTime? datetime { get; set; }
+        public DateTime? Datetime { get; set; }
         [JsonProperty("message")]
-        public string? message { get; set; }
+        public string? Message { get; set; }
         [JsonProperty("status")]
-        public string? status { get; set; }
+        public string? Status { get; set; }
         [JsonProperty("tracking_location")]
-        public TrackingLocation? tracking_location { get; set; }
+        public TrackingLocation? TrackingLocation { get; set; }
     }
 }

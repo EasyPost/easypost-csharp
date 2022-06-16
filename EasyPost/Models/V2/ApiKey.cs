@@ -7,6 +7,6 @@ namespace EasyPost.Models.V2
     public class ApiKey : EasyPostObject
     {
         [JsonProperty("key")]
-        public string? key { get; set; }
+        public string? Key { get; set; }
     }
 }

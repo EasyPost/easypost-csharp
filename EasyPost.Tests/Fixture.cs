@@ -596,7 +596,7 @@ namespace EasyPost.Tests
                     "from_address", BasicAddress
                 },
                 {
-                    "tracking_code", shipment.tracking_code
+                    "tracking_code", shipment.TrackingCode
                 },
                 {
                     "carrier", Usps
