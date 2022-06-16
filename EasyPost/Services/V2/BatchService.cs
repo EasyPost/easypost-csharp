@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
@@ -27,9 +28,10 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.BatchCollection instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
         {
-                        return await List<BatchCollection>("batches", parameters);
+            return await List<BatchCollection>("batches", parameters);
         }
 
         /// <summary>
@@ -42,9 +44,10 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Batch> Create(Dictionary<string, object>? parameters = null)
         {
-                        Dictionary<string, object> requestParameters = new Dictionary<string, object>();
+            Dictionary<string, object> requestParameters = new Dictionary<string, object>();
             if (parameters != null)
             {
                 requestParameters.Add("batch", parameters);
@@ -63,9 +66,10 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Batch> CreateAndBuy(Dictionary<string, object> parameters)
         {
-                        return await Create<Batch>("batches/create_and_buy", new Dictionary<string, object>
+            return await Create<Batch>("batches/create_and_buy", new Dictionary<string, object>
             {
                 {
                     "batch", parameters
@@ -78,9 +82,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Batch. Starts with "batch_".</param>
         /// <returns>EasyPost.Batch instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Batch> Retrieve(string id)
         {
-                        return await Get<Batch>($"batches/{id}");
+            return await Get<Batch>($"batches/{id}");
         }
     }
 }

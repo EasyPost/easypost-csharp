@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Calculation;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
@@ -18,9 +19,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a rate. Starts with `rate_`.</param>
         /// <returns>EasyPost.Rate instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Rate> Retrieve(string id)
         {
-                        return await Get<Rate>($"rates/{id}");
+            return await Get<Rate>($"rates/{id}");
         }
 
         /// <summary>
@@ -32,9 +34,10 @@ namespace EasyPost.Services.V2
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public Rate GetLowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
-                        return Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+            return Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
     }
 }

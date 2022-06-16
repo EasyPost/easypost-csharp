@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
+using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Models.Base;
 using Newtonsoft.Json;
@@ -17,6 +19,7 @@ namespace EasyPost.Models.V2
         ///     Get the next page of scan forms based on the original parameters passed to ScanForm.All().
         /// </summary>
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<IPaginatedCollection> Next()
         {
             filters ??= new Dictionary<string, object>();

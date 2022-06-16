@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
@@ -32,9 +33,10 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>A EasyPost.TrackerCollection instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
         {
-                        TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters);
+            TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters);
             trackerCollection.filters = parameters;
             trackerCollection.Client = Client; // specifically needs a v2 client
             return trackerCollection;
@@ -46,9 +48,10 @@ namespace EasyPost.Services.V2
         /// <param name="carrier">Carrier for the tracker.</param>
         /// <param name="trackingCode">Tracking code for the tracker.</param>
         /// <returns>An EasyPost.Tracker instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Tracker> Create(string carrier, string trackingCode)
         {
-                        return await Create<Tracker>("trackers", new Dictionary<string, object>
+            return await Create<Tracker>("trackers", new Dictionary<string, object>
             {
                 {
                     "tracker", new Dictionary<string, object>
@@ -69,9 +72,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="parameters">A dictionary of tracking codes and carriers</param>
         /// <returns>True</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<bool> CreateList(Dictionary<string, object> parameters)
         {
-                        return await CreateBlind("trackers/create_list", new Dictionary<string, object>
+            return await CreateBlind("trackers/create_list", new Dictionary<string, object>
             {
                 {
                     "trackers", parameters
@@ -85,9 +89,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
         /// <returns>EasyPost.Tracker instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Tracker> Retrieve(string id)
         {
-                        return await Get<Tracker>($"trackers/{id}");
+            return await Get<Tracker>($"trackers/{id}");
         }
     }
 }

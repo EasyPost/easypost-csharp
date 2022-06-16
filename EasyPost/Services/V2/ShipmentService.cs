@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Calculation;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
@@ -29,9 +30,10 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.ShipmentCollection instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
-                        ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
+            ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
             shipmentCollection.filters = parameters;
             shipmentCollection.Client = Client;
             return shipmentCollection;
@@ -57,9 +59,10 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.Shipment instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Shipment> Create(Dictionary<string, object>? parameters = null)
         {
-                        Dictionary<string, object> requestParameters = new Dictionary<string, object>();
+            Dictionary<string, object> requestParameters = new Dictionary<string, object>();
             if (parameters != null)
             {
                 requestParameters.Add("shipment", parameters);
@@ -73,9 +76,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
         /// <returns>An EasyPost.Shipment instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Shipment> Retrieve(string id)
         {
-                        return await Get<Shipment>($"shipments/{id}");
+            return await Get<Shipment>($"shipments/{id}");
         }
 
         /// <summary>

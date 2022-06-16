@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
@@ -21,9 +22,10 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<User> Create(Dictionary<string, object> parameters)
         {
-                        return await Create<User>("users", new Dictionary<string, object>
+            return await Create<User>("users", new Dictionary<string, object>
             {
                 {
                     "user", parameters
@@ -36,9 +38,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a user. Starts with "user_".</param>
         /// <returns>EasyPost.User instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<User> Retrieve(string? id = null)
         {
-                        if (id == null)
+            if (id == null)
             {
                 return await Get<User>("users");
             }
@@ -51,9 +54,10 @@ namespace EasyPost.Services.V2
         ///     Retrieve the current user.
         /// </summary>
         /// <returns>EasyPost.User instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<User> RetrieveMe()
         {
-                        return await Retrieve();
+            return await Retrieve();
         }
     }
 }

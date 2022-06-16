@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
+using EasyPost.Clients;
 using EasyPost.Interfaces;
 using Newtonsoft.Json;
 using RestSharp;
@@ -41,6 +43,7 @@ namespace EasyPost.Models.V2
         ///     Delete the user.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<bool> Delete()
         {
             return await Request(Method.Delete, $"users/{id}");
@@ -61,6 +64,7 @@ namespace EasyPost.Models.V2
         ///     account.
         ///     All invalid keys will be ignored.
         /// </param>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<User> Update(Dictionary<string, object> parameters)
         {
             return await Update<User>(Method.Patch, $"users/{id}", new Dictionary<string, object>
@@ -86,6 +90,7 @@ namespace EasyPost.Models.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Brand instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Brand> UpdateBrand(Dictionary<string, object> parameters)
         {
             return await Request<Brand>(Method.Patch, $"users/{id}/brand", new Dictionary<string, object>

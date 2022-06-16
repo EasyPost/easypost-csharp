@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
@@ -28,9 +29,10 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<CustomsInfo> Create(Dictionary<string, object> parameters)
         {
-                        return await Create<CustomsInfo>("customs_infos", parameters);
+            return await Create<CustomsInfo>("customs_infos", parameters);
         }
 
 
@@ -39,9 +41,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a CustomsInfo. Starts with "cstinfo_".</param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<CustomsInfo> Retrieve(string id)
         {
-                        return await Get<CustomsInfo>($"customs_infos/{id}");
+            return await Get<CustomsInfo>($"customs_infos/{id}");
         }
     }
 }

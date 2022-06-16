@@ -65,7 +65,7 @@ namespace EasyPost.ApiCompatibility
         /// <exception cref="ApiVersionNotSupported">Function is not compatible with the client's API version.</exception>
         private void CheckFunctionCompatible(object instance, MemberInfo method)
         {
-            Client? client = ((EasyPostObject)instance).Client;
+            Client? client = ((WithClient)instance).Client;
             if (client == null)
             {
                 throw new ArgumentNullException(nameof(client));
@@ -74,7 +74,7 @@ namespace EasyPost.ApiCompatibility
             // throw exception if property is not compatible with this API version
             if (!IsCompatible(client.ApiVersion))
             {
-                throw new ApiVersionNotSupported(method.Name, client.ApiVersion);
+                throw new ApiVersionNotSupported($"{instance.GetType().Name}.{method.Name}", client.ApiVersion);
             }
         }
 

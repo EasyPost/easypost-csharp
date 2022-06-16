@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
@@ -25,9 +26,10 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Parcel instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Parcel> Create(Dictionary<string, object> parameters)
         {
-                        return await Create<Parcel>("parcels", new Dictionary<string, object>
+            return await Create<Parcel>("parcels", new Dictionary<string, object>
             {
                 {
                     "parcel", parameters
@@ -40,9 +42,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
         /// <returns>EasyPost.Parcel instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Parcel> Retrieve(string id)
         {
-                        return await Get<Parcel>($"parcels/{id}");
+            return await Get<Parcel>($"parcels/{id}");
         }
     }
 }

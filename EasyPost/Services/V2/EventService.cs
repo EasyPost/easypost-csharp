@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
@@ -27,18 +28,20 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.EventCollection instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<EventCollection> All(Dictionary<string, object>? parameters = null)
         {
-                        return await Get<EventCollection>("events", parameters);
+            return await Get<EventCollection>("events", parameters);
         }
 
         /// <summary>
         ///     Resend the last Event for a specific EasyPost object instance.
         /// </summary>
         /// <param name="id">String representing an EasyPost object instance.</param>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<bool> Create(string id)
         {
-                        return await CreateBlind("events", new Dictionary<string, object>
+            return await CreateBlind("events", new Dictionary<string, object>
             {
                 {
                     "result_id", id
@@ -51,9 +54,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Event. Starts with "evt_".</param>
         /// <returns>EasyPost.Event instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Event> Retrieve(string id)
         {
-                        return await Get<Event>($"events/{id}");
+            return await Get<Event>($"events/{id}");
         }
     }
 }

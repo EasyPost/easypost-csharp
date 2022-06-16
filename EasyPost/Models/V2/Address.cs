@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
+using EasyPost.Clients;
 using EasyPost.Exceptions;
 using Newtonsoft.Json;
 using RestSharp;
@@ -12,7 +14,6 @@ namespace EasyPost.Models.V2
         public string? carrier_facility { get; set; }
         [JsonProperty("federal_tax_id")]
         public string? federal_tax_id { get; set; }
-
         [JsonProperty("residential")]
         public bool? residential { get; set; }
         [JsonProperty("state_tax_id")]
@@ -28,6 +29,7 @@ namespace EasyPost.Models.V2
         ///     Verify this address.
         /// </summary>
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Address> Verify(string? carrier = null)
         {
             if (id == null)

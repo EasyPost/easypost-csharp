@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Interfaces;
@@ -27,9 +28,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <returns>An EasyPost.PaymentMethod summary object.</returns>
         /// <exception cref="Exception"></exception>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<PaymentMethodSummary> All()
         {
-                        PaymentMethodSummary summary = await Get<PaymentMethodSummary>("payment_methods");
+            PaymentMethodSummary summary = await Get<PaymentMethodSummary>("payment_methods");
 
             if (summary.id == null)
             {
@@ -44,9 +46,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="priority">Which payment method to delete.</param>
         /// <returns>Whether the request was successful or not.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<bool> DeletePaymentMethod(Priority priority)
         {
-                        CreditCard paymentMethod = await GetPaymentMethodByPriority(priority);
+            CreditCard paymentMethod = await GetPaymentMethodByPriority(priority);
 
             return await paymentMethod.Delete();
         }
@@ -57,9 +60,10 @@ namespace EasyPost.Services.V2
         /// <param name="amount">Amount to fund.</param>
         /// <param name="priority">Which payment method to fund.</param>
         /// <returns>Whether the request was successful or not.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<CreditCardFunding> FundPaymentMethod(string amount, Priority priority)
         {
-                        CreditCard paymentMethod = await GetPaymentMethodByPriority(priority);
+            CreditCard paymentMethod = await GetPaymentMethodByPriority(priority);
 
             return await paymentMethod.Fund(amount);
         }
@@ -72,7 +76,7 @@ namespace EasyPost.Services.V2
         /// <exception cref="Exception">Billing has not been set up yet, or the Priority provided is invalid.</exception>
         private async Task<CreditCard> GetPaymentMethodByPriority(Priority priority)
         {
-                        PaymentMethodSummary summary = await All();
+            PaymentMethodSummary summary = await All();
 
             CreditCard? paymentMethod = priority switch
             {

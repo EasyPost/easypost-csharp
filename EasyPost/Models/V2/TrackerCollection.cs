@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Interfaces;
@@ -19,6 +20,7 @@ namespace EasyPost.Models.V2
         ///     Get the next page of trackers based on the original parameters passed to Tracker.All().
         /// </summary>
         /// <returns>An EasyPost.TrackerCollection instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<IPaginatedCollection> Next()
         {
             filters ??= new Dictionary<string, object>();

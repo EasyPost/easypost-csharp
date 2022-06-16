@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
@@ -28,9 +29,10 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
         {
-                        ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
+            ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
             scanFormCollection.filters = parameters;
             scanFormCollection.Client = Client; // specifically needs a v2 client
             return scanFormCollection;
@@ -41,9 +43,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<ScanForm> Create(List<Shipment> shipments)
         {
-                        return await Create<ScanForm>("scan_forms", new Dictionary<string, object>
+            return await Create<ScanForm>("scan_forms", new Dictionary<string, object>
             {
                 {
                     "scan_form", new Dictionary<string, object>
@@ -61,9 +64,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a scan form, starts with "sf_".</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<ScanForm> Retrieve(string id)
         {
-                        return await Get<ScanForm>($"scan_forms/{id}");
+            return await Get<ScanForm>($"scan_forms/{id}");
         }
     }
 }

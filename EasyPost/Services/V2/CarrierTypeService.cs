@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
@@ -16,9 +17,10 @@ namespace EasyPost.Services.V2
         ///     Get all available carrier types.
         /// </summary>
         /// <returns>A list of EasyPost.CarrierType instances.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<List<CarrierType>> All()
         {
-                        return await List<List<CarrierType>>("carrier_types");
+            return await List<List<CarrierType>>("carrier_types");
         }
     }
 }

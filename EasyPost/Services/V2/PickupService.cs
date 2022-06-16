@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
@@ -29,9 +30,10 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Pickup instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Pickup> Create(Dictionary<string, object> parameters)
         {
-                        return await Create<Pickup>("pickups", new Dictionary<string, object>
+            return await Create<Pickup>("pickups", new Dictionary<string, object>
             {
                 {
                     "pickup", parameters
@@ -44,9 +46,10 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Pickup. Starts with "pickup_".</param>
         /// <returns>EasyPost.Pickup instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Pickup> Retrieve(string id)
         {
-                        return await Get<Pickup>($"pickups/{id}");
+            return await Get<Pickup>($"pickups/{id}");
         }
     }
 }

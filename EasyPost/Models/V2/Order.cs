@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
 using EasyPost.Calculation;
+using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Interfaces;
 using Newtonsoft.Json;
@@ -42,6 +44,7 @@ namespace EasyPost.Models.V2
         /// </summary>
         /// <param name="withCarrier">The carrier to purchase a shipment from.</param>
         /// <param name="withService">The service to purchase.</param>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Order> Buy(string withCarrier, string withService)
         {
             if (id == null)
@@ -65,6 +68,7 @@ namespace EasyPost.Models.V2
         ///     Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task Buy(Rate rate)
         {
             if (rate.carrier != null)
@@ -87,6 +91,7 @@ namespace EasyPost.Models.V2
         /// <summary>
         ///     Populate the rates property for this Order.
         /// </summary>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task GetRates()
         {
             if (id == null)
@@ -106,6 +111,7 @@ namespace EasyPost.Models.V2
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
+        [ApiCompatibility(ApiVersion.V2)]
         public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
             if (rates == null)
