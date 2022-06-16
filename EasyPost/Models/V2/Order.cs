@@ -44,8 +44,6 @@ namespace EasyPost.Models.V2
         /// <param name="withService">The service to purchase.</param>
         public async Task<Order> Buy(string withCarrier, string withService)
         {
-            CheckFunctionalityCompatible(nameof(Buy), new []{typeof(string), typeof(string)});
-
             if (id == null)
             {
                 throw new PropertyMissing("id");
@@ -69,8 +67,6 @@ namespace EasyPost.Models.V2
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
         public async Task Buy(Rate rate)
         {
-            CheckFunctionalityCompatible(nameof(Buy), new []{typeof(Rate)});
-
             if (rate.carrier != null)
             {
                 if (rate.service != null)
@@ -93,8 +89,6 @@ namespace EasyPost.Models.V2
         /// </summary>
         public async Task GetRates()
         {
-            CheckFunctionalityCompatible(nameof(GetRates));
-
             if (id == null)
             {
                 throw new PropertyMissing("id");
@@ -114,8 +108,6 @@ namespace EasyPost.Models.V2
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
         public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
-            CheckFunctionalityCompatible(nameof(LowestRate));
-
             if (rates == null)
             {
                 throw new PropertyMissing("rates");

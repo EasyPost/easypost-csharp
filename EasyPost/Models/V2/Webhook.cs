@@ -19,8 +19,6 @@ namespace EasyPost.Models.V2
         /// <returns>Whether the request was successful or not.</returns>
         public async Task<bool> Delete()
         {
-            CheckFunctionalityCompatible(nameof(Delete));
-
             return await Request(Method.Delete, $"webhooks/{id}");
         }
 
@@ -29,8 +27,6 @@ namespace EasyPost.Models.V2
         /// </summary>
         public async Task<Webhook> Update()
         {
-            CheckFunctionalityCompatible(nameof(Update));
-
             return await Update<Webhook>(Method.Patch, $"webhooks/{id}");
         }
     }

@@ -19,8 +19,6 @@ namespace EasyPost.Models.V2
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
         public async Task<IPaginatedCollection> Next()
         {
-            CheckFunctionalityCompatible(nameof(Next));
-
             filters ??= new Dictionary<string, object>();
             filters["before_id"] = (scan_forms ?? throw new PropertyMissing("scan_forms")).Last().id ?? throw new PropertyMissing("id");
 

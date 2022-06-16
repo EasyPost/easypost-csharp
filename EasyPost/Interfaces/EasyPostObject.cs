@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Utilities;
 using Newtonsoft.Json;
@@ -10,9 +11,8 @@ using RestSharp;
 
 namespace EasyPost.Interfaces
 {
-    public abstract class EasyPostObject : ApiCompatibleFunctions
+    public abstract class EasyPostObject : WithClient, IEasyPostObject
     {
-
         [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
         [JsonProperty("id")]
@@ -103,5 +103,9 @@ namespace EasyPost.Interfaces
                     return value;
             }
         }
+    }
+
+    public interface IEasyPostObject
+    {
     }
 }

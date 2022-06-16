@@ -29,9 +29,7 @@ namespace EasyPost.Services.V2
         /// <returns>An EasyPost.EventCollection instance.</returns>
         public async Task<EventCollection> All(Dictionary<string, object>? parameters = null)
         {
-            CheckFunctionalityCompatible(nameof(All));
-
-            return await Get<EventCollection>("events", parameters);
+                        return await Get<EventCollection>("events", parameters);
         }
 
         /// <summary>
@@ -40,9 +38,7 @@ namespace EasyPost.Services.V2
         /// <param name="id">String representing an EasyPost object instance.</param>
         public async Task<bool> Create(string id)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            return await CreateBlind("events", new Dictionary<string, object>
+                        return await CreateBlind("events", new Dictionary<string, object>
             {
                 {
                     "result_id", id
@@ -57,9 +53,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Event instance.</returns>
         public async Task<Event> Retrieve(string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            return await Get<Event>($"events/{id}");
+                        return await Get<Event>($"events/{id}");
         }
     }
 }

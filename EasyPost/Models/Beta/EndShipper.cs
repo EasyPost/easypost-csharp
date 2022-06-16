@@ -13,8 +13,6 @@ namespace EasyPost.Models.Beta
         /// <param name="parameters">See EndShipper.Create for more details.</param>
         public async Task<EndShipper> Update(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(Update));
-
             return await Update<EndShipper>(Method.Put, $"end_shippers/{id}", new Dictionary<string, object>
             {
                 {

@@ -18,9 +18,7 @@ namespace EasyPost.Services.V2
         /// <returns>A list of EasyPost.ApiKey instances.</returns>
         public async Task<List<ApiKey>> All()
         {
-            CheckFunctionalityCompatible(nameof(All));
-
-            return await List<List<ApiKey>>("api_keys", null, "keys");
+                        return await List<List<ApiKey>>("api_keys", null, "keys");
         }
     }
 }

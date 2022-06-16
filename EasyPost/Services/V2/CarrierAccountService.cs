@@ -19,9 +19,7 @@ namespace EasyPost.Services.V2
         /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
         public async Task<List<CarrierAccount>> All()
         {
-            CheckFunctionalityCompatible(nameof(All));
-
-            return await List<List<CarrierAccount>>("carrier_accounts");
+                        return await List<List<CarrierAccount>>("carrier_accounts");
         }
 
         /// <summary>
@@ -39,9 +37,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         public async Task<CarrierAccount> Create(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            return await Create<CarrierAccount>("carrier_accounts", new Dictionary<string, object>
+                        return await Create<CarrierAccount>("carrier_accounts", new Dictionary<string, object>
             {
                 {
                     "carrier_account", parameters
@@ -56,9 +52,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         public async Task<CarrierAccount> Retrieve(string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            return await Get<CarrierAccount>($"carrier_accounts/{id}");
+                        return await Get<CarrierAccount>($"carrier_accounts/{id}");
         }
     }
 }

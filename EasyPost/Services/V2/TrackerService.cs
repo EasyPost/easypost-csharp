@@ -34,9 +34,7 @@ namespace EasyPost.Services.V2
         /// <returns>A EasyPost.TrackerCollection instance.</returns>
         public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
         {
-            CheckFunctionalityCompatible(nameof(All));
-
-            TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters);
+                        TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters);
             trackerCollection.filters = parameters;
             trackerCollection.Client = Client; // specifically needs a v2 client
             return trackerCollection;
@@ -50,9 +48,7 @@ namespace EasyPost.Services.V2
         /// <returns>An EasyPost.Tracker instance.</returns>
         public async Task<Tracker> Create(string carrier, string trackingCode)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            return await Create<Tracker>("trackers", new Dictionary<string, object>
+                        return await Create<Tracker>("trackers", new Dictionary<string, object>
             {
                 {
                     "tracker", new Dictionary<string, object>
@@ -75,9 +71,7 @@ namespace EasyPost.Services.V2
         /// <returns>True</returns>
         public async Task<bool> CreateList(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(CreateList));
-
-            return await CreateBlind("trackers/create_list", new Dictionary<string, object>
+                        return await CreateBlind("trackers/create_list", new Dictionary<string, object>
             {
                 {
                     "trackers", parameters
@@ -93,9 +87,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Tracker instance.</returns>
         public async Task<Tracker> Retrieve(string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            return await Get<Tracker>($"trackers/{id}");
+                        return await Get<Tracker>($"trackers/{id}");
         }
     }
 }

@@ -30,9 +30,7 @@ namespace EasyPost.Services.V2
         /// <returns>An EasyPost.InsuranceCollection instance.</returns>
         public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null)
         {
-            CheckFunctionalityCompatible(nameof(All));
-
-            return await List<InsuranceCollection>("insurances", parameters);
+                        return await List<InsuranceCollection>("insurances", parameters);
         }
 
         /// <summary>
@@ -54,9 +52,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Insurance instance.</returns>
         public async Task<Insurance> Create(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            return await Create<Insurance>("insurances", new Dictionary<string, object>
+                        return await Create<Insurance>("insurances", new Dictionary<string, object>
             {
                 {
                     "insurance", parameters
@@ -71,9 +67,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Insurance instance.</returns>
         public async Task<Insurance> Retrieve(string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            return await Get<Insurance>($"insurances/{id}");
+                        return await Get<Insurance>($"insurances/{id}");
         }
     }
 }

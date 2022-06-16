@@ -23,9 +23,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.User instance.</returns>
         public async Task<User> Create(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            return await Create<User>("users", new Dictionary<string, object>
+                        return await Create<User>("users", new Dictionary<string, object>
             {
                 {
                     "user", parameters
@@ -40,9 +38,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.User instance.</returns>
         public async Task<User> Retrieve(string? id = null)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            if (id == null)
+                        if (id == null)
             {
                 return await Get<User>("users");
             }
@@ -57,9 +53,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.User instance.</returns>
         public async Task<User> RetrieveMe()
         {
-            CheckFunctionalityCompatible(nameof(RetrieveMe));
-
-            return await Retrieve();
+                        return await Retrieve();
         }
     }
 }

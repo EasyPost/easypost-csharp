@@ -53,8 +53,6 @@ namespace EasyPost.Models.V2
         /// <param name="service">The name of the service to purchase.</param>
         public async Task<Pickup> Buy(string carrier, string service)
         {
-            CheckFunctionalityCompatible(nameof(Buy));
-
             if (id == null)
             {
                 throw new PropertyMissing("id");
@@ -77,8 +75,6 @@ namespace EasyPost.Models.V2
         /// </summary>
         public async Task<Pickup> Cancel()
         {
-            CheckFunctionalityCompatible(nameof(Cancel));
-
             if (id == null)
             {
                 throw new PropertyMissing("id");
@@ -97,8 +93,6 @@ namespace EasyPost.Models.V2
         /// <returns>Lowest EasyPost.PickupRate object instance.</returns>
         public PickupRate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
-            CheckFunctionalityCompatible(nameof(LowestRate));
-
             return (PickupRate)Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
     }

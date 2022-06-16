@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using EasyPost.ApiCompatibility;
+using EasyPost.Clients;
 using EasyPost.Interfaces;
 using Newtonsoft.Json;
 using RestSharp;
@@ -36,8 +38,6 @@ namespace EasyPost.Models.V2
         /// <param name="shipmentIds">List of shipment ids to be added.</param>
         public async Task<Batch> AddShipments(IEnumerable<string?> shipmentIds)
         {
-            CheckFunctionalityCompatible(nameof(AddShipments), new []{typeof(List<string>)});
-
             List<Dictionary<string, object>> realShipmentIds = (from shipmentId in shipmentIds
                 where shipmentId != null
                 select new Dictionary<string, object>
@@ -63,10 +63,9 @@ namespace EasyPost.Models.V2
         /// <summary>
         ///     Purchase all shipments within this batch. The Batch's state must be "created" before purchasing.
         /// </summary>
+        [ApiCompatibility(ApiVersion.V2)]
         public async Task<Batch> Buy()
         {
-            CheckFunctionalityCompatible(nameof(Buy));
-
             return await Update<Batch>(Method.Post, $"batches/{id}/buy");
         }
 
@@ -76,8 +75,6 @@ namespace EasyPost.Models.V2
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         public async Task<Batch> GenerateLabel(string fileFormat)
         {
-            CheckFunctionalityCompatible(nameof(GenerateLabel));
-
             return await Update<Batch>(Method.Post, $"batches/{id}/label", new Dictionary<string, object>
             {
                 {
@@ -91,8 +88,6 @@ namespace EasyPost.Models.V2
         /// </summary>
         public async Task<Batch> GenerateScanForm()
         {
-            CheckFunctionalityCompatible(nameof(GenerateScanForm));
-
             return await Update<Batch>(Method.Post, $"batches/{id}/scan_form");
         }
 
@@ -102,8 +97,6 @@ namespace EasyPost.Models.V2
         /// <param name="shipmentIds">List of shipment ids to be removed.</param>
         public async Task<Batch> RemoveShipments(IEnumerable<string?> shipmentIds)
         {
-            CheckFunctionalityCompatible(nameof(RemoveShipments), new []{typeof(List<string>)});
-
             List<Dictionary<string, object>> realShipmentIds = (from shipmentId in shipmentIds
                 where shipmentId != null
                 select new Dictionary<string, object>

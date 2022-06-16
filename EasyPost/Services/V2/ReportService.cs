@@ -29,9 +29,7 @@ namespace EasyPost.Services.V2
         /// <returns>An EasyPost.ReportCollection instance.</returns>
         public async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
         {
-            CheckFunctionalityCompatible(nameof(All));
-
-            ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters);
+                        ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters);
             reportCollection.filters = parameters;
             reportCollection.type = type;
             reportCollection.Client = Client; // specifically needs a v2 client
@@ -57,9 +55,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Report instance.</returns>
         public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            return await Create<Report>($"reports/{type}", parameters);
+                        return await Create<Report>($"reports/{type}", parameters);
         }
 
 
@@ -70,11 +66,6 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Report instance.</returns>
         public async Task<Report> Retrieve(string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve), new[]
-            {
-                typeof(string)
-            });
-
             return await Get<Report>($"reports/{id}");
         }
 
@@ -86,11 +77,6 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Report instance.</returns>
         public async Task<Report> Retrieve(string type, string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve), new[]
-            {
-                typeof(string), typeof(string)
-            });
-
             return await Get<Report>($"reports/{type}/{id}");
         }
     }

@@ -31,9 +31,7 @@ namespace EasyPost.Services.V2
         /// <returns>An EasyPost.ShipmentCollection instance.</returns>
         public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
-            CheckFunctionalityCompatible(nameof(All));
-
-            ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
+                        ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
             shipmentCollection.filters = parameters;
             shipmentCollection.Client = Client;
             return shipmentCollection;
@@ -61,9 +59,7 @@ namespace EasyPost.Services.V2
         /// <returns>An EasyPost.Shipment instance.</returns>
         public async Task<Shipment> Create(Dictionary<string, object>? parameters = null)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            Dictionary<string, object> requestParameters = new Dictionary<string, object>();
+                        Dictionary<string, object> requestParameters = new Dictionary<string, object>();
             if (parameters != null)
             {
                 requestParameters.Add("shipment", parameters);
@@ -79,9 +75,7 @@ namespace EasyPost.Services.V2
         /// <returns>An EasyPost.Shipment instance.</returns>
         public async Task<Shipment> Retrieve(string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            return await Get<Shipment>($"shipments/{id}");
+                        return await Get<Shipment>($"shipments/{id}");
         }
 
         /// <summary>

@@ -27,9 +27,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Parcel instance.</returns>
         public async Task<Parcel> Create(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            return await Create<Parcel>("parcels", new Dictionary<string, object>
+                        return await Create<Parcel>("parcels", new Dictionary<string, object>
             {
                 {
                     "parcel", parameters
@@ -44,9 +42,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Parcel instance.</returns>
         public async Task<Parcel> Retrieve(string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            return await Get<Parcel>($"parcels/{id}");
+                        return await Get<Parcel>($"parcels/{id}");
         }
     }
 }

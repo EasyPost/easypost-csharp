@@ -21,8 +21,6 @@ namespace EasyPost.Models.V2
         /// <returns>An EasyPost.TrackerCollection instance.</returns>
         public async Task<IPaginatedCollection> Next()
         {
-            CheckFunctionalityCompatible(nameof(Next));
-
             filters ??= new Dictionary<string, object>();
             filters["before_id"] = (trackers ?? throw new PropertyMissing("trackers")).Last().id ?? throw new PropertyMissing("id");
 

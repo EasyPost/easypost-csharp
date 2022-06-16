@@ -77,8 +77,6 @@ namespace EasyPost.Models.V2
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         public async Task Buy(string rateId, string? insuranceValue = null)
         {
-            CheckFunctionalityCompatible(nameof(Buy), new []{typeof(string), typeof(string)});
-
             if (id == null)
             {
                 throw new PropertyMissing("id");
@@ -121,8 +119,6 @@ namespace EasyPost.Models.V2
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         public async Task Buy(Rate rate, string? insuranceValue = null)
         {
-            CheckFunctionalityCompatible(nameof(Buy), new []{typeof(Rate), typeof(string)});
-
             if (rate.id == null)
             {
                 throw new PropertyMissing("id");
@@ -137,8 +133,6 @@ namespace EasyPost.Models.V2
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         public async Task<Shipment> GenerateLabel(string fileFormat)
         {
-            CheckFunctionalityCompatible(nameof(GenerateLabel));
-
             if (id == null)
             {
                 throw new PropertyMissing("id");
@@ -158,8 +152,6 @@ namespace EasyPost.Models.V2
         /// <returns>A list of EasyPost.Smartrate instances.</returns>
         public async Task<List<Smartrate>> GetSmartrates()
         {
-            CheckFunctionalityCompatible(nameof(GetSmartrates));
-
             if (id == null)
             {
                 throw new PropertyMissing("id");
@@ -174,8 +166,6 @@ namespace EasyPost.Models.V2
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
         public async Task<Shipment> Insure(double amount)
         {
-            CheckFunctionalityCompatible(nameof(Insure));
-
             if (id == null)
             {
                 throw new PropertyMissing("id");
@@ -194,8 +184,6 @@ namespace EasyPost.Models.V2
         /// </summary>
         public async Task<Shipment> Refund()
         {
-            CheckFunctionalityCompatible(nameof(Refund));
-
             if (id == null)
             {
                 throw new PropertyMissing("id");
@@ -210,8 +198,6 @@ namespace EasyPost.Models.V2
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
         public async Task RegenerateRates(Dictionary<string, object>? parameters = null)
         {
-            CheckFunctionalityCompatible(nameof(RegenerateRates));
-
             if (id == null)
             {
                 throw new PropertyMissing("id");
@@ -231,8 +217,6 @@ namespace EasyPost.Models.V2
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
         public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
-            CheckFunctionalityCompatible(nameof(LowestRate));
-
             if (rates == null)
             {
                 throw new PropertyMissing("rates");
@@ -249,8 +233,6 @@ namespace EasyPost.Models.V2
         /// <returns>Lowest EasyPost.Smartrate object instance.</returns>
         public async Task<Smartrate?> LowestSmartrate(int deliveryDays, SmartrateAccuracy deliveryAccuracy)
         {
-            CheckFunctionalityCompatible(nameof(LowestSmartrate));
-
             List<Smartrate> smartrates = await GetSmartrates();
             return Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
         }

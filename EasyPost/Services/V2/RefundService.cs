@@ -22,9 +22,7 @@ namespace EasyPost.Services.V2
         /// <returns>An EasyPost.RefundCollection instance.</returns>
         public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null)
         {
-            CheckFunctionalityCompatible(nameof(All));
-
-            return await List<RefundCollection>("refunds", parameters);
+                        return await List<RefundCollection>("refunds", parameters);
         }
 
         /// <summary>
@@ -37,9 +35,7 @@ namespace EasyPost.Services.V2
         /// <returns>A list of EasyPost.Refund instances.</returns>
         public async Task<List<Refund>> Create(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            return await Create<List<Refund>>("refunds", new Dictionary<string, object>
+                        return await Create<List<Refund>>("refunds", new Dictionary<string, object>
             {
                 {
                     "refund", parameters
@@ -54,9 +50,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Refund instance.</returns>
         public async Task<Refund> Retrieve(string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            return await Get<Refund>($"refunds/{id}");
+                        return await Get<Refund>($"refunds/{id}");
         }
     }
 }

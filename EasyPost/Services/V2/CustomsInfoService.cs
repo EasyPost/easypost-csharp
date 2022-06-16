@@ -30,9 +30,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         public async Task<CustomsInfo> Create(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            return await Create<CustomsInfo>("customs_infos", parameters);
+                        return await Create<CustomsInfo>("customs_infos", parameters);
         }
 
 
@@ -43,9 +41,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         public async Task<CustomsInfo> Retrieve(string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            return await Get<CustomsInfo>($"customs_infos/{id}");
+                        return await Get<CustomsInfo>($"customs_infos/{id}");
         }
     }
 }

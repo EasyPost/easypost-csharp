@@ -19,9 +19,7 @@ namespace EasyPost.Services.V2
         /// <returns>List of EasyPost.Webhook instances.</returns>
         public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
         {
-            CheckFunctionalityCompatible(nameof(All));
-
-            return await List<List<Webhook>>("webhooks", parameters, "webhooks");
+                        return await List<List<Webhook>>("webhooks", parameters, "webhooks");
         }
 
         /// <summary>
@@ -35,9 +33,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Webhook instance.</returns>
         public async Task<Webhook> Create(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            return await Create<Webhook>("webhooks", new Dictionary<string, object>
+                        return await Create<Webhook>("webhooks", new Dictionary<string, object>
             {
                 {
                     "webhook", parameters
@@ -52,9 +48,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.User instance.</returns>
         public async Task<Webhook> Retrieve(string? id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            return await Get<Webhook>($"webhooks/{id}");
+                        return await Get<Webhook>($"webhooks/{id}");
         }
     }
 }

@@ -30,8 +30,6 @@ namespace EasyPost.Models.V2
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
         public async Task<Address> Verify(string? carrier = null)
         {
-            CheckFunctionalityCompatible(nameof(Verify));
-
             if (id == null)
             {
                 throw new PropertyMissing("id");

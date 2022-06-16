@@ -30,6 +30,5 @@ namespace EasyPost.Models.V2
         public string? label_url { get; set; }
         [JsonProperty("label_zpl_url")]
         public string? label_zpl_url { get; set; }
-
     }
 }

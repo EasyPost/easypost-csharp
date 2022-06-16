@@ -8,6 +8,5 @@ namespace EasyPost.Models.V2
     {
         [JsonProperty("key")]
         public string? key { get; set; }
-
     }
 }

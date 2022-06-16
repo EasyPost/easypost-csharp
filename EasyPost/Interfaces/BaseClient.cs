@@ -15,7 +15,7 @@ using RestSharp;
 
 namespace EasyPost.Interfaces
 {
-    public class BaseClient
+    public abstract class BaseClient
     {
         private const int DefaultConnectTimeoutMilliseconds = 30000;
         private const int DefaultRequestTimeoutMilliseconds = 60000;
@@ -150,7 +150,7 @@ namespace EasyPost.Interfaces
         /// <exception cref="ApiVersionNotSupported">Resource not available on the selected API version.</exception>
         protected T GetService<T>(string servicePropertyName) where T : class
         {
-            ApiCompatibilityUtilities.CheckServiceCompatible(servicePropertyName, GetType(), this);
+            ApiCompatibilityAttribute.CheckServiceCompatible(servicePropertyName, GetType(), this);
 
             // construct a new service
             var cons = (typeof(T)).GetConstructors(BindingFlags.NonPublic|BindingFlags.Instance);

@@ -43,8 +43,6 @@ namespace EasyPost.Models.V2
         /// <returns>Whether the request was successful or not.</returns>
         public async Task<bool> Delete()
         {
-            CheckFunctionalityCompatible(nameof(Delete));
-
             return await Request(Method.Delete, $"users/{id}");
         }
 
@@ -65,8 +63,6 @@ namespace EasyPost.Models.V2
         /// </param>
         public async Task<User> Update(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(Update));
-
             return await Update<User>(Method.Patch, $"users/{id}", new Dictionary<string, object>
             {
                 {
@@ -92,8 +88,6 @@ namespace EasyPost.Models.V2
         /// <returns>EasyPost.Brand instance.</returns>
         public async Task<Brand> UpdateBrand(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(UpdateBrand));
-
             return await Request<Brand>(Method.Patch, $"users/{id}/brand", new Dictionary<string, object>
             {
                 {
@@ -101,6 +95,5 @@ namespace EasyPost.Models.V2
                 }
             });
         }
-
     }
 }

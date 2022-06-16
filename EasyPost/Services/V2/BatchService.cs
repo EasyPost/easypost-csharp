@@ -29,9 +29,7 @@ namespace EasyPost.Services.V2
         /// <returns>An EasyPost.BatchCollection instance.</returns>
         public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
         {
-            CheckFunctionalityCompatible(nameof(All));
-
-            return await List<BatchCollection>("batches", parameters);
+                        return await List<BatchCollection>("batches", parameters);
         }
 
         /// <summary>
@@ -46,9 +44,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Batch instance.</returns>
         public async Task<Batch> Create(Dictionary<string, object>? parameters = null)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            Dictionary<string, object> requestParameters = new Dictionary<string, object>();
+                        Dictionary<string, object> requestParameters = new Dictionary<string, object>();
             if (parameters != null)
             {
                 requestParameters.Add("batch", parameters);
@@ -69,9 +65,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Batch instance.</returns>
         public async Task<Batch> CreateAndBuy(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(CreateAndBuy));
-
-            return await Create<Batch>("batches/create_and_buy", new Dictionary<string, object>
+                        return await Create<Batch>("batches/create_and_buy", new Dictionary<string, object>
             {
                 {
                     "batch", parameters
@@ -86,9 +80,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Batch instance.</returns>
         public async Task<Batch> Retrieve(string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            return await Get<Batch>($"batches/{id}");
+                        return await Get<Batch>($"batches/{id}");
         }
     }
 }

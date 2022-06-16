@@ -31,8 +31,6 @@ namespace EasyPost.Models.V2
         /// <returns>Whether the request was successful or not.</returns>
         public async Task<bool> Delete()
         {
-            CheckFunctionalityCompatible(nameof(Delete));
-
             return await Request(Method.Delete, $"carrier_accounts/{id}");
         }
 
@@ -42,8 +40,6 @@ namespace EasyPost.Models.V2
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
         public async Task<CarrierAccount> Update(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(Update));
-
             return await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{id}", parameters);
         }
     }

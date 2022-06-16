@@ -30,9 +30,7 @@ namespace EasyPost.Services.V2
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
         public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
         {
-            CheckFunctionalityCompatible(nameof(All));
-
-            ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
+                        ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
             scanFormCollection.filters = parameters;
             scanFormCollection.Client = Client; // specifically needs a v2 client
             return scanFormCollection;
@@ -45,9 +43,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.ScanForm instance.</returns>
         public async Task<ScanForm> Create(List<Shipment> shipments)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            return await Create<ScanForm>("scan_forms", new Dictionary<string, object>
+                        return await Create<ScanForm>("scan_forms", new Dictionary<string, object>
             {
                 {
                     "scan_form", new Dictionary<string, object>
@@ -67,9 +63,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.ScanForm instance.</returns>
         public async Task<ScanForm> Retrieve(string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            return await Get<ScanForm>($"scan_forms/{id}");
+                        return await Get<ScanForm>($"scan_forms/{id}");
         }
     }
 }

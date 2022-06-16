@@ -31,9 +31,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Pickup instance.</returns>
         public async Task<Pickup> Create(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            return await Create<Pickup>("pickups", new Dictionary<string, object>
+                        return await Create<Pickup>("pickups", new Dictionary<string, object>
             {
                 {
                     "pickup", parameters
@@ -48,9 +46,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Pickup instance.</returns>
         public async Task<Pickup> Retrieve(string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            return await Get<Pickup>($"pickups/{id}");
+                        return await Get<Pickup>($"pickups/{id}");
         }
     }
 }

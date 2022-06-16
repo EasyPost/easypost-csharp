@@ -33,9 +33,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Order instance.</returns>
         public async Task<Order> Create(Dictionary<string, object> parameters)
         {
-            CheckFunctionalityCompatible(nameof(Create));
-
-            return await Create<Order>("orders", new Dictionary<string, object>
+                        return await Create<Order>("orders", new Dictionary<string, object>
             {
                 {
                     "order", parameters
@@ -50,9 +48,7 @@ namespace EasyPost.Services.V2
         /// <returns>EasyPost.Order instance.</returns>
         public async Task<Order> Retrieve(string id)
         {
-            CheckFunctionalityCompatible(nameof(Retrieve));
-
-            return await Get<Order>($"orders/{id}");
+                        return await Get<Order>($"orders/{id}");
         }
     }
 }
