@@ -14,15 +14,15 @@ namespace EasyPost.Interfaces
     public abstract class EasyPostObject : WithClient, IEasyPostObject
     {
         [JsonProperty("created_at")]
-        public DateTime? CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; internal set; }
         [JsonProperty("id")]
-        public string? Id { get; set; }
+        public string? Id { get; internal set; }
         [JsonProperty("mode")]
-        public string? Mode { get; set; }
+        public string? Mode { get; internal set; }
         [JsonProperty("object")]
-        public string? Object { get; set; }
+        public string? Object { get; internal set; }
         [JsonProperty("updated_at")]
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; internal set; }
 
         public override bool Equals(object? obj)
         {
@@ -40,6 +40,11 @@ namespace EasyPost.Interfaces
             }
 
             return thisJson == otherJson;
+        }
+
+        public override int GetHashCode()
+        {
+            return AsDictionary().GetHashCode();
         }
 
         protected async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : class
