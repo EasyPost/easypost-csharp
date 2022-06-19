@@ -68,7 +68,7 @@ namespace EasyPost.Tests
         /// <param name="apiVersion"></param>
         protected void UseLive(string apiKey, ApiVersion apiVersion)
         {
-            Client = (Client)TestUtils.GetClient(apiKey, apiVersion);
+            Client = TestUtils.GetClient(apiKey, apiVersion);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace EasyPost.Tests
         /// <param name="apiVersion"></param>
         protected void UseVCR(string cassetteName, ApiVersion apiVersion, string overrideApiKey = null)
         {
-            Client = (Client)_vcr.SetUpTest(cassetteName, apiVersion, overrideApiKey);
+            Client = _vcr.SetUpTest(cassetteName, apiVersion, overrideApiKey);
         }
     }
 }

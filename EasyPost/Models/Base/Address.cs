@@ -1,4 +1,3 @@
-using System;
 using EasyPost.Interfaces;
 using Newtonsoft.Json;
 

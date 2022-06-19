@@ -1,5 +1,4 @@
 using EasyPost.Interfaces;
-using EasyPost.Utilities;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2

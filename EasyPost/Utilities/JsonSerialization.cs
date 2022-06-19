@@ -6,6 +6,7 @@ using EasyPost.Exceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
+using DeserializationException = EasyPost.Exceptions.DeserializationException;
 
 namespace EasyPost.Utilities
 {
@@ -66,7 +67,7 @@ namespace EasyPost.Utilities
         /// </summary>
         /// <param name="data">An object to serialize into a string</param>
         /// <returns>A string of JSON data</returns>
-        internal string? ConvertObjectToJson(object data) => JsonSerialization.ConvertObjectToJson(data, JsonSerializerSettings);
+        internal string ConvertObjectToJson(object data) => JsonSerialization.ConvertObjectToJson(data, JsonSerializerSettings);
     }
 
     /// <summary>
@@ -106,7 +107,7 @@ namespace EasyPost.Utilities
 
             if (data == null || string.IsNullOrWhiteSpace(data))
             {
-                throw new Exceptions.DeserializationException("No data to deserialize.");
+                throw new DeserializationException("No data to deserialize.");
             }
 
             try
@@ -116,7 +117,7 @@ namespace EasyPost.Utilities
             }
             catch (Exception)
             {
-                throw new Exceptions.DeserializationException("Could not deserialize data.");
+                throw new DeserializationException("Could not deserialize data.");
             }
         }
 
@@ -172,7 +173,7 @@ namespace EasyPost.Utilities
         /// </param>
         /// <returns>A string of JSON data</returns>
         /// <exception cref="BaseJsonException">When the data could not be serialized.</exception>
-        internal static string? ConvertObjectToJson(object data, JsonSerializerSettings? jsonSerializerSettings = null)
+        internal static string ConvertObjectToJson(object data, JsonSerializerSettings? jsonSerializerSettings = null)
         {
             try
             {
@@ -180,7 +181,7 @@ namespace EasyPost.Utilities
             }
             catch (Exception)
             {
-                throw new Exceptions.SerializationException("Could not serialize object.");
+                throw new SerializationException("Could not serialize object.");
             }
         }
 

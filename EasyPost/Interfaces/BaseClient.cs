@@ -9,7 +9,6 @@ using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Http;
-using EasyPost.Models.V2;
 using EasyPost.Utilities;
 using RestSharp;
 
@@ -153,7 +152,7 @@ namespace EasyPost.Interfaces
             ApiCompatibilityAttribute.CheckServiceCompatible(servicePropertyName, GetType(), this);
 
             // construct a new service
-            var cons = (typeof(T)).GetConstructors(BindingFlags.NonPublic|BindingFlags.Instance);
+            var cons = typeof(T).GetConstructors(BindingFlags.NonPublic|BindingFlags.Instance);
             return (T)cons[0].Invoke(new object[]
             {
                 this

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Runtime.Serialization;
 using EasyPost.Models.Base;
-using EasyPost.Models.V2;
 using EasyPost.Utilities;
 using RestSharp;
 

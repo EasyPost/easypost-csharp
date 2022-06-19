@@ -5,7 +5,6 @@ using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Models.V2;
 using EasyPost.Services.V2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 

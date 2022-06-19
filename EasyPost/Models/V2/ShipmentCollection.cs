@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
-using EasyPost.Interfaces;
 using EasyPost.Models.Base;
 using Newtonsoft.Json;
 

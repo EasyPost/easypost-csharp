@@ -4,7 +4,6 @@ using System.IO;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using EasyPost.Clients;
-using EasyPost.Interfaces;
 using EasyVCR;
 
 namespace EasyPost.Tests

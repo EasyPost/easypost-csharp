@@ -5,6 +5,6 @@ namespace EasyPost.Interfaces
 {
     public abstract class WithClient
     {
-        [JsonIgnore] internal Client? Client;
+        [JsonIgnore] internal Client? Client { get; set; }
     }
 }

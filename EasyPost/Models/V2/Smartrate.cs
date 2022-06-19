@@ -39,8 +39,6 @@ namespace EasyPost.Models.V2
         public string? Carrier { get; set; }
         [JsonProperty("carrier_account_id")]
         public string? CarrierAccountId { get; set; }
-        [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
         [JsonProperty("currency")]
         public string? Currency { get; set; }
         [JsonProperty("delivery_date")]
@@ -51,8 +49,6 @@ namespace EasyPost.Models.V2
         public int? DeliveryDays { get; set; }
         [JsonProperty("est_delivery_days")]
         public int? EstDeliveryDays { get; set; }
-        [JsonProperty("id")]
-        public string? Id { get; set; }
         [JsonProperty("list_currency")]
         public string? ListCurrency { get; set; }
         [JsonProperty("list_rate")]
@@ -69,7 +65,5 @@ namespace EasyPost.Models.V2
         public string? ShipmentId { get; set; }
         [JsonProperty("time_in_transit")]
         public TimeInTransit? TimeInTransit { get; set; }
-        [JsonProperty("updated_at")]
-        public DateTime UpdatedAt { get; set; }
     }
 }

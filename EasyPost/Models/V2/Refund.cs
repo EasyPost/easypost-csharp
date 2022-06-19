@@ -9,8 +9,6 @@ namespace EasyPost.Models.V2
         public string? Carrier { get; set; }
         [JsonProperty("confirmation_number")]
         public string? ConfirmationNumber { get; set; }
-        [JsonProperty("id")]
-        public string? Id { get; set; }
         [JsonProperty("shipment_id")]
         public string? ShipmentId { get; set; }
         [JsonProperty("status")]

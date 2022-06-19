@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using EasyPost.Interfaces;
 using Newtonsoft.Json;
 
@@ -19,7 +18,5 @@ namespace EasyPost.Models.V2
         public Dictionary<string, object>? Result { get; set; }
         [JsonProperty("status")]
         public string? Status { get; set; }
-        [JsonProperty("updated_at")]
-        public DateTime? UpdatedAt { get; set; }
     }
 }

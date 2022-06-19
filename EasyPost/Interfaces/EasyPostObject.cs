@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Utilities;
 using Newtonsoft.Json;
@@ -91,7 +90,7 @@ namespace EasyPost.Interfaces
         ///     Get the JSON representation of this object instance.
         /// </summary>
         /// <returns>A JSON string representation of this object instance's attributes</returns>
-        private string? AsJson() => JsonSerialization.ConvertObjectToJson(this);
+        private string AsJson() => JsonSerialization.ConvertObjectToJson(this);
 
         private object? GetValue(PropertyInfo info)
         {

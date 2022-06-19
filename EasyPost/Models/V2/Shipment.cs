@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
-using EasyPost.Calculation;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Interfaces;

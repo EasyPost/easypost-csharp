@@ -1,5 +1,4 @@
-﻿using System;
-using EasyPost.Interfaces;
+﻿using EasyPost.Interfaces;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.V2
@@ -18,8 +17,6 @@ namespace EasyPost.Models.V2
         public string? OriginCountry { get; set; }
         [JsonProperty("quantity")]
         public int Quantity { get; set; }
-        [JsonProperty("updated_at")]
-        public DateTime? UpdatedAt { get; set; }
         [JsonProperty("value")]
         public double? Value { get; set; }
         [JsonProperty("weight")]
