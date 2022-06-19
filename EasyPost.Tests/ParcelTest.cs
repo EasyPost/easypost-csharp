@@ -15,7 +15,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create", ApiVersion.V2);
+            UseVCR("create", ApiVersion.Latest);
 
             Parcel parcel = await CreateBasicParcel();
 
@@ -27,7 +27,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve", ApiVersion.V2);
+            UseVCR("retrieve", ApiVersion.Latest);
 
             Parcel parcel = await CreateBasicParcel();
 

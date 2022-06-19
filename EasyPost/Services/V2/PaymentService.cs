@@ -28,7 +28,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <returns>An EasyPost.PaymentMethod summary object.</returns>
         /// <exception cref="Exception"></exception>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<PaymentMethodSummary> All()
         {
             PaymentMethodSummary summary = await Get<PaymentMethodSummary>("payment_methods");
@@ -46,7 +46,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="priority">Which payment method to delete.</param>
         /// <returns>Whether the request was successful or not.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<bool> DeletePaymentMethod(Priority priority)
         {
             CreditCard paymentMethod = await GetPaymentMethodByPriority(priority);
@@ -60,7 +60,7 @@ namespace EasyPost.Services.V2
         /// <param name="amount">Amount to fund.</param>
         /// <param name="priority">Which payment method to fund.</param>
         /// <returns>Whether the request was successful or not.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<CreditCardFunding> FundPaymentMethod(string amount, Priority priority)
         {
             CreditCard paymentMethod = await GetPaymentMethodByPriority(priority);

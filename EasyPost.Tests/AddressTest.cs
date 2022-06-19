@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all", ApiVersion.V2);
+            UseVCR("all", ApiVersion.Latest);
 
             AddressCollection addressCollection = await Client.Addresses.All(new Dictionary<string, object>
             {
@@ -38,7 +38,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create", ApiVersion.V2);
+            UseVCR("create", ApiVersion.Latest);
 
             Address address = await CreateBasicAddress();
 
@@ -50,7 +50,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateAndVerify()
         {
-            UseVCR("create_and_verify", ApiVersion.V2);
+            UseVCR("create_and_verify", ApiVersion.Latest);
 
             Dictionary<string, object> addressData = Fixture.BasicAddress;
             addressData.Add("verify_strict", new List<bool>
@@ -68,7 +68,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateVerify()
         {
-            UseVCR("create_verify", ApiVersion.V2);
+            UseVCR("create_verify", ApiVersion.Latest);
 
             Address address = await Client.Addresses.Create(Fixture.IncorrectAddressToVerify);
 
@@ -80,7 +80,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateVerifyStrict()
         {
-            UseVCR("create_verify_strict", ApiVersion.V2);
+            UseVCR("create_verify_strict", ApiVersion.Latest);
 
             Dictionary<string, object> addressData = Fixture.BasicAddress;
             addressData.Add("verify_strict", new List<bool>
@@ -99,7 +99,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve", ApiVersion.V2);
+            UseVCR("retrieve", ApiVersion.Latest);
 
 
             Address address = await Client.Addresses.Create(Fixture.BasicAddress);
@@ -113,7 +113,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestVerify()
         {
-            UseVCR("verify", ApiVersion.V2);
+            UseVCR("verify", ApiVersion.Latest);
 
 
             Address address = await CreateBasicAddress();

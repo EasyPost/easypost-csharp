@@ -17,7 +17,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestBuy()
         {
-            UseVCR("buy", ApiVersion.V2);
+            UseVCR("buy", ApiVersion.Latest);
 
             Order order = await CreateBasicOrder();
 
@@ -35,7 +35,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create", ApiVersion.V2);
+            UseVCR("create", ApiVersion.Latest);
 
             Order order = await CreateBasicOrder();
 
@@ -47,7 +47,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestGetRates()
         {
-            UseVCR("get_rates", ApiVersion.V2);
+            UseVCR("get_rates", ApiVersion.Latest);
 
             Order order = await CreateBasicOrder();
 
@@ -65,7 +65,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve", ApiVersion.V2);
+            UseVCR("retrieve", ApiVersion.Latest);
 
             Order order = await CreateBasicOrder();
 
@@ -82,7 +82,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestLowestRate()
         {
-            UseVCR("lowest_rate", ApiVersion.V2);
+            UseVCR("lowest_rate", ApiVersion.Latest);
 
             Order order = await CreateBasicOrder();
 

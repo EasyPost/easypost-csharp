@@ -28,7 +28,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.BatchCollection instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
         {
             return await List<BatchCollection>("batches", parameters);
@@ -44,7 +44,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Batch> Create(Dictionary<string, object>? parameters = null)
         {
             Dictionary<string, object> requestParameters = new Dictionary<string, object>();
@@ -66,7 +66,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Batch> CreateAndBuy(Dictionary<string, object> parameters)
         {
             return await Create<Batch>("batches/create_and_buy", new Dictionary<string, object>
@@ -82,7 +82,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Batch. Starts with "batch_".</param>
         /// <returns>EasyPost.Batch instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Batch> Retrieve(string id)
         {
             return await Get<Batch>($"batches/{id}");

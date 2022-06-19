@@ -19,7 +19,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a rate. Starts with `rate_`.</param>
         /// <returns>EasyPost.Rate instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Rate> Retrieve(string id)
         {
             return await Get<Rate>($"rates/{id}");
@@ -34,7 +34,7 @@ namespace EasyPost.Services.V2
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public Rate GetLowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
             return Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);

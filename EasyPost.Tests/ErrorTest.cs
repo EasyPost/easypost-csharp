@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestError()
         {
-            UseVCR("error", ApiVersion.V2);
+            UseVCR("error", ApiVersion.Latest);
 
             try
             {

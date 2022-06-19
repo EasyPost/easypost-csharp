@@ -34,7 +34,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all", ApiVersion.V2);
+            UseVCR("all", ApiVersion.Latest);
 
             ShipmentCollection shipmentCollection = await Client.Shipments.All(new Dictionary<string, object>
             {
@@ -56,7 +56,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestBuy()
         {
-            UseVCR("buy", ApiVersion.V2);
+            UseVCR("buy", ApiVersion.Latest);
 
             Shipment shipment = await CreateFullShipment();
 
@@ -68,7 +68,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestConvertLabel()
         {
-            UseVCR("convert_label", ApiVersion.V2);
+            UseVCR("convert_label", ApiVersion.Latest);
 
             Shipment shipment = await CreateOneCallBuyShipment();
 
@@ -80,7 +80,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create", ApiVersion.V2);
+            UseVCR("create", ApiVersion.Latest);
 
             Shipment shipment = await CreateFullShipment();
 
@@ -95,7 +95,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateEmptyObjects()
         {
-            UseVCR("create_empty_objects", ApiVersion.V2);
+            UseVCR("create_empty_objects", ApiVersion.Latest);
 
             Dictionary<string, object> shipmentData = Fixture.BasicShipment;
 
@@ -119,7 +119,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateTaxIdentifiers()
         {
-            UseVCR("create_tax_identifiers", ApiVersion.V2);
+            UseVCR("create_tax_identifiers", ApiVersion.Latest);
 
             Dictionary<string, object> shipmentData = Fixture.BasicShipment;
             shipmentData["tax_identifiers"] = new List<Dictionary<string, object>>
@@ -137,7 +137,7 @@ namespace EasyPost.Tests
         [Fact(Skip = "Test does not play well with VCR")]
         public async Task TestCreateWithIds()
         {
-            UseVCR("create_with_ids", ApiVersion.V2);
+            UseVCR("create_with_ids", ApiVersion.Latest);
 
             Address fromAddress = await Client.Addresses.Create(Fixture.BasicAddress);
             Address toAddress = await Client.Addresses.Create(Fixture.BasicAddress);
@@ -184,7 +184,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestInsure()
         {
-            UseVCR("insure", ApiVersion.V2);
+            UseVCR("insure", ApiVersion.Latest);
 
             Dictionary<string, object> shipmentData = Fixture.OneCallBuyShipment;
             // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
@@ -203,7 +203,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRefund()
         {
-            UseVCR("refund", ApiVersion.V2);
+            UseVCR("refund", ApiVersion.Latest);
 
             Shipment shipment = await CreateOneCallBuyShipment();
 
@@ -215,7 +215,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRegenerateRates()
         {
-            UseVCR("regenerate_rates", ApiVersion.V2);
+            UseVCR("regenerate_rates", ApiVersion.Latest);
 
             Shipment shipment = await CreateFullShipment();
 
@@ -233,7 +233,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve", ApiVersion.V2);
+            UseVCR("retrieve", ApiVersion.Latest);
 
             Shipment shipment = await CreateFullShipment();
 
@@ -246,7 +246,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestSmartrate()
         {
-            UseVCR("smartrate", ApiVersion.V2);
+            UseVCR("smartrate", ApiVersion.Latest);
 
             Shipment shipment = await CreateBasicShipment();
 
@@ -268,7 +268,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestInstanceLowestSmartrate()
         {
-            UseVCR("lowest_smartrate_instance", ApiVersion.V2);
+            UseVCR("lowest_smartrate_instance", ApiVersion.Latest);
 
             Shipment shipment = await CreateBasicShipment();
 
@@ -288,7 +288,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestLowestRate()
         {
-            UseVCR("lowest_rate", ApiVersion.V2);
+            UseVCR("lowest_rate", ApiVersion.Latest);
 
             Shipment shipment = await CreateFullShipment();
 
@@ -319,7 +319,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestStaticLowestSmartrate()
         {
-            UseVCR("lowest_smartrate_static", ApiVersion.V2);
+            UseVCR("lowest_smartrate_static", ApiVersion.Latest);
 
             Shipment shipment = await CreateBasicShipment();
 

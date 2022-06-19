@@ -27,7 +27,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<CustomsItem> Create(Dictionary<string, object> parameters)
         {
             return await Create<CustomsItem>("customs_items", parameters);
@@ -39,7 +39,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a CustomsItem. Starts with "cstitem_".</param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<CustomsItem> Retrieve(string id)
         {
             return await Get<CustomsItem>($"customs_items/{id}");

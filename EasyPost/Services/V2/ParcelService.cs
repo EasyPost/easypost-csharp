@@ -26,7 +26,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Parcel instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Parcel> Create(Dictionary<string, object> parameters)
         {
             return await Create<Parcel>("parcels", new Dictionary<string, object>
@@ -42,7 +42,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
         /// <returns>EasyPost.Parcel instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Parcel> Retrieve(string id)
         {
             return await Get<Parcel>($"parcels/{id}");

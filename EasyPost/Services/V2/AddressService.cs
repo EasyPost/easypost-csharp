@@ -28,7 +28,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.AddressCollection instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null)
         {
             return await List<AddressCollection>("addresses", parameters);
@@ -54,7 +54,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Address> Create(Dictionary<string, object>? parameters = null)
         {
             return await SendCreate("addresses", parameters);
@@ -77,7 +77,7 @@ namespace EasyPost.Services.V2
         ///     * {"email", string}
         ///     All invalid keys will be ignored.
         /// </param>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Address> CreateAndVerify(Dictionary<string, object>? parameters = null)
         {
             return await SendCreate("addresses/create_and_verify", parameters, "address");
@@ -88,7 +88,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing an Address. Starts with "adr_".</param>
         /// <returns>EasyPost.Address instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Address> Retrieve(string id)
         {
             return await Get<Address>($"addresses/{id}");

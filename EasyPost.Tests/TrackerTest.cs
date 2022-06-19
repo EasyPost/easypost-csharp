@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all", ApiVersion.V2);
+            UseVCR("all", ApiVersion.Latest);
 
             TrackerCollection trackerCollection = await Client.Trackers.All(new Dictionary<string, object>
             {
@@ -38,7 +38,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create", ApiVersion.V2);
+            UseVCR("create", ApiVersion.Latest);
 
             Tracker tracker = await CreateBasicTracker();
 
@@ -50,7 +50,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateList()
         {
-            UseVCR("create_list", ApiVersion.V2);
+            UseVCR("create_list", ApiVersion.Latest);
 
             bool success = await Client.Trackers.CreateList(new Dictionary<string, object>
             {
@@ -87,7 +87,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve", ApiVersion.V2);
+            UseVCR("retrieve", ApiVersion.Latest);
 
             // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
             Tracker tracker = await CreateBasicTracker();

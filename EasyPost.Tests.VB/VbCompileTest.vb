@@ -9,7 +9,7 @@ Public Class VbCompileTest
     Public Sub TestCompile()
         'MSTest does not seem to support asynchronous tests in VB, so we can't attempt any API calls.'
         'We'll work off the assumption that if this code compiles, then we have VB compatibility.'
-        Dim client = New Client(apiKey:="", apiVersion := ApiVersion.V2)
+        Dim client = New Client(apiKey:="", apiVersion := ApiVersion.Latest)
         Dim carrierTypesService = client.CarrierTypes
         Assert.NotNull(carrierTypesService)
         Assert.IsType(GetType(Task(Of List(Of CarrierType))), carrierTypesService.All())

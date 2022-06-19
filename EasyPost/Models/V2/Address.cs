@@ -29,7 +29,7 @@ namespace EasyPost.Models.V2
         ///     Verify this address.
         /// </summary>
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Address> Verify(string? carrier = null)
         {
             if (Id == null)

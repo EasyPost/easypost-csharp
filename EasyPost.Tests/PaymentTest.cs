@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         // need to manually add details via dashboard when recording
         public async Task TestAll()
         {
-            UseVCR("all", ApiVersion.V2);
+            UseVCR("all", ApiVersion.Latest);
 
             PaymentMethodSummary summary = await GetPaymentMethodSummary();
 
@@ -26,7 +26,7 @@ namespace EasyPost.Tests
         [Fact(Skip = "Lack of an available real credit card in tests.")]
         public async Task TestDelete()
         {
-            UseVCR("delete", ApiVersion.V2);
+            UseVCR("delete", ApiVersion.Latest);
 
             PaymentMethodSummary summary = await GetPaymentMethodSummary();
 
@@ -41,7 +41,7 @@ namespace EasyPost.Tests
         // Skipping due to the lack of an available real credit card in tests.
         public async Task TestFund()
         {
-            UseVCR("fund", ApiVersion.V2);
+            UseVCR("fund", ApiVersion.Latest);
 
             PaymentMethodSummary summary = await GetPaymentMethodSummary();
 

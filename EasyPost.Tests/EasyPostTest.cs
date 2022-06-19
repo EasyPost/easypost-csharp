@@ -11,7 +11,7 @@ namespace EasyPost.Tests
         [Fact]
         public void TestTimeout()
         {
-            Client client = new Client(FakeApikey, ApiVersion.V2);
+            Client client = new Client(FakeApikey, ApiVersion.Latest);
             client.ConnectTimeoutMilliseconds = 5000;
             client.RequestTimeoutMilliseconds = 5000;
 

@@ -21,7 +21,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.RefundCollection instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null)
         {
             return await List<RefundCollection>("refunds", parameters);
@@ -35,7 +35,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>A list of EasyPost.Refund instances.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<List<Refund>> Create(Dictionary<string, object> parameters)
         {
             return await Create<List<Refund>>("refunds", new Dictionary<string, object>
@@ -51,7 +51,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Refund. Starts with "rfnd_".</param>
         /// <returns>EasyPost.Refund instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Refund> Retrieve(string id)
         {
             return await Get<Refund>($"refunds/{id}");

@@ -20,7 +20,7 @@ namespace EasyPost.Models.V2
         ///     Get the next page of reports based on the original parameters passed to ReportList.All().
         /// </summary>
         /// <returns>An EasyPost.ReportCollection instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<IPaginatedCollection> Next()
         {
             Filters ??= new Dictionary<string, object>();

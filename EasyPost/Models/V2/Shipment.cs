@@ -75,7 +75,7 @@ namespace EasyPost.Models.V2
         /// </summary>
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task Buy(string rateId, string? insuranceValue = null)
         {
             if (Id == null)
@@ -118,7 +118,7 @@ namespace EasyPost.Models.V2
         /// </summary>
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task Buy(Rate rate, string? insuranceValue = null)
         {
             if (rate.Id == null)
@@ -133,7 +133,7 @@ namespace EasyPost.Models.V2
         ///     Generate a postage label for this shipment.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Shipment> GenerateLabel(string fileFormat)
         {
             if (Id == null)
@@ -153,7 +153,7 @@ namespace EasyPost.Models.V2
         ///     Get the Smartrates for this shipment.
         /// </summary>
         /// <returns>A list of EasyPost.Smartrate instances.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<List<Smartrate>> GetSmartrates()
         {
             if (Id == null)
@@ -168,7 +168,7 @@ namespace EasyPost.Models.V2
         ///     Insure shipment for the given amount.
         /// </summary>
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Shipment> Insure(double amount)
         {
             if (Id == null)
@@ -187,7 +187,7 @@ namespace EasyPost.Models.V2
         /// <summary>
         ///     Send a refund request to the carrier the shipment was purchased from.
         /// </summary>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Shipment> Refund()
         {
             if (Id == null)
@@ -202,7 +202,7 @@ namespace EasyPost.Models.V2
         ///     Refresh the rates for this Shipment.
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task RegenerateRates(Dictionary<string, object>? parameters = null)
         {
             if (Id == null)
@@ -222,7 +222,7 @@ namespace EasyPost.Models.V2
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
             if (Rates == null)
@@ -239,7 +239,7 @@ namespace EasyPost.Models.V2
         /// <param name="deliveryDays">Delivery days restriction to use when filtering.</param>
         /// <param name="deliveryAccuracy">Delivery days accuracy restriction to use when filtering.</param>
         /// <returns>Lowest EasyPost.Smartrate object instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Smartrate?> LowestSmartrate(int deliveryDays, SmartrateAccuracy deliveryAccuracy)
         {
             List<Smartrate> smartrates = await GetSmartrates();

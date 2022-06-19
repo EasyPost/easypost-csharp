@@ -17,7 +17,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAddRemoveShipment()
         {
-            UseVCR("add_remove_shipment", ApiVersion.V2);
+            UseVCR("add_remove_shipment", ApiVersion.Latest);
 
             Shipment shipment = await Client.Shipments.Create(Fixture.OneCallBuyShipment);
 
@@ -41,7 +41,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all", ApiVersion.V2);
+            UseVCR("all", ApiVersion.Latest);
 
             BatchCollection batchCollection = await Client.Batches.All(new Dictionary<string, object>
             {
@@ -63,7 +63,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestBuy()
         {
-            UseVCR("buy", ApiVersion.V2);
+            UseVCR("buy", ApiVersion.Latest);
 
             Batch batch = await CreateOneCallBuyBatch();
 
@@ -76,7 +76,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create", ApiVersion.V2);
+            UseVCR("create", ApiVersion.Latest);
 
             Batch batch = await CreateBasicBatch();
 
@@ -88,7 +88,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateAndBuy()
         {
-            UseVCR("create_and_buy", ApiVersion.V2);
+            UseVCR("create_and_buy", ApiVersion.Latest);
 
             Batch batch = await Client.Batches.CreateAndBuy(new Dictionary<string, object>
             {
@@ -108,7 +108,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateScanForm()
         {
-            UseVCR("create_scan_form", ApiVersion.V2);
+            UseVCR("create_scan_form", ApiVersion.Latest);
 
 
             Batch batch = await CreateOneCallBuyBatch();
@@ -129,7 +129,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestLabel()
         {
-            UseVCR("label", ApiVersion.V2);
+            UseVCR("label", ApiVersion.Latest);
 
             Batch batch = await CreateOneCallBuyBatch();
 
@@ -149,7 +149,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve", ApiVersion.V2);
+            UseVCR("retrieve", ApiVersion.Latest);
 
             Batch batch = await CreateBasicBatch();
 

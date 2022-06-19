@@ -17,7 +17,7 @@ namespace EasyPost.Services.V2
         ///     Get a list of scan forms.
         /// </summary>
         /// <returns>List of EasyPost.Webhook instances.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
         {
             return await List<List<Webhook>>("webhooks", parameters, "webhooks");
@@ -32,7 +32,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Webhook instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Webhook> Create(Dictionary<string, object> parameters)
         {
             return await Create<Webhook>("webhooks", new Dictionary<string, object>
@@ -48,7 +48,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a webhook. Starts with "hook_".</param>
         /// <returns>EasyPost.User instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Webhook> Retrieve(string? id)
         {
             return await Get<Webhook>($"webhooks/{id}");

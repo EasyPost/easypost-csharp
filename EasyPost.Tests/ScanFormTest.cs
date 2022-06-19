@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all", ApiVersion.V2);
+            UseVCR("all", ApiVersion.Latest);
 
             ScanFormCollection scanFormCollection = await Client.ScanForms.All(new Dictionary<string, object>
             {
@@ -38,7 +38,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create", ApiVersion.V2);
+            UseVCR("create", ApiVersion.Latest);
 
             ScanForm scanForm = await GetBasicScanForm();
 
@@ -49,7 +49,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve", ApiVersion.V2);
+            UseVCR("retrieve", ApiVersion.Latest);
 
             ScanForm scanForm = await GetBasicScanForm();
 

@@ -18,7 +18,7 @@ namespace EasyPost.Models.V2
         ///     Get the next page of scan forms based on the original parameters passed to ScanForm.All().
         /// </summary>
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<IPaginatedCollection> Next()
         {
             Filters ??= new Dictionary<string, object>();

@@ -29,7 +29,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
         {
             ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
@@ -43,7 +43,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<ScanForm> Create(List<Shipment> shipments)
         {
             return await Create<ScanForm>("scan_forms", new Dictionary<string, object>
@@ -64,7 +64,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a scan form, starts with "sf_".</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<ScanForm> Retrieve(string id)
         {
             return await Get<ScanForm>($"scan_forms/{id}");

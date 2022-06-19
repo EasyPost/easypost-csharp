@@ -22,7 +22,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<User> Create(Dictionary<string, object> parameters)
         {
             return await Create<User>("users", new Dictionary<string, object>
@@ -38,7 +38,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a user. Starts with "user_".</param>
         /// <returns>EasyPost.User instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<User> Retrieve(string? id = null)
         {
             if (id == null)
@@ -54,7 +54,7 @@ namespace EasyPost.Services.V2
         ///     Retrieve the current user.
         /// </summary>
         /// <returns>EasyPost.User instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<User> RetrieveMe()
         {
             return await Retrieve();

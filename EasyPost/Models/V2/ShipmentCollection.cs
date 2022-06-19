@@ -18,7 +18,7 @@ namespace EasyPost.Models.V2
         ///     Get the next page of shipments based on the original parameters passed to Shipment.All().
         /// </summary>
         /// <returns>An EasyPost.ShipmentCollection instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<IPaginatedCollection> Next()
         {
             Filters ??= new Dictionary<string, object>();

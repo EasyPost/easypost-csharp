@@ -27,7 +27,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all", ApiVersion.V2);
+            UseVCR("all", ApiVersion.Latest);
 
             List<CarrierAccount> carrierAccounts = await Client.CarrierAccounts.All();
 
@@ -40,7 +40,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create", ApiVersion.V2);
+            UseVCR("create", ApiVersion.Latest);
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
@@ -51,7 +51,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestDelete()
         {
-            UseVCR("delete", ApiVersion.V2);
+            UseVCR("delete", ApiVersion.Latest);
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
@@ -65,7 +65,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve", ApiVersion.V2);
+            UseVCR("retrieve", ApiVersion.Latest);
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
@@ -78,7 +78,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestTypes()
         {
-            UseVCR("types", ApiVersion.V2);
+            UseVCR("types", ApiVersion.Latest);
 
             List<CarrierType> types = await Client.CarrierTypes.All();
 
@@ -91,7 +91,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestUpdate()
         {
-            UseVCR("update", ApiVersion.V2);
+            UseVCR("update", ApiVersion.Latest);
 
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();

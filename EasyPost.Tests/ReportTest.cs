@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all", ApiVersion.V2);
+            UseVCR("all", ApiVersion.Latest);
 
             ReportCollection reportCollection = await Client.Reports.All("shipment", new Dictionary<string, object>
             {
@@ -38,7 +38,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateReport()
         {
-            UseVCR("create_report", ApiVersion.V2);
+            UseVCR("create_report", ApiVersion.Latest);
 
             Report report = await CreateBasicReport(Fixture.ReportType);
 
@@ -49,7 +49,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateReportWithAdditionalColumns()
         {
-            UseVCR("create_report_with_additional_columns", ApiVersion.V2);
+            UseVCR("create_report_with_additional_columns", ApiVersion.Latest);
 
             List<string> additionalColumns = new List<string>()
             {
@@ -74,7 +74,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreateReportWithColumns()
         {
-            UseVCR("create_report_with_columns", ApiVersion.V2);
+            UseVCR("create_report_with_columns", ApiVersion.Latest);
 
             List<string> columns = new List<string>()
             {
@@ -98,7 +98,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieveReport()
         {
-            UseVCR("retrieve_report", ApiVersion.V2);
+            UseVCR("retrieve_report", ApiVersion.Latest);
 
             Report report = await CreateBasicReport(Fixture.ReportType);
 

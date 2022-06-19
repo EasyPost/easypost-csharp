@@ -27,7 +27,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAllApiKeys()
         {
-            UseVCR("all_api_keys", ApiVersion.V2);
+            UseVCR("all_api_keys", ApiVersion.Latest);
 
             List<ApiKey> apiKeys = await Client.ApiKeys.All();
 
@@ -38,7 +38,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestApiKeys()
         {
-            UseVCR("api_keys", ApiVersion.V2);
+            UseVCR("api_keys", ApiVersion.Latest);
 
             User user = await RetrieveMe();
 
@@ -50,7 +50,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create", ApiVersion.V2);
+            UseVCR("create", ApiVersion.Latest);
 
             User user = await CreateUser();
 
@@ -62,7 +62,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestDelete()
         {
-            UseVCR("delete", ApiVersion.V2);
+            UseVCR("delete", ApiVersion.Latest);
 
             User user = await CreateUser();
 
@@ -75,7 +75,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve", ApiVersion.V2);
+            UseVCR("retrieve", ApiVersion.Latest);
 
             User authenticatedUser = await RetrieveMe();
 
@@ -92,7 +92,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieveMe()
         {
-            UseVCR("retrieve_me", ApiVersion.V2);
+            UseVCR("retrieve_me", ApiVersion.Latest);
 
             User user = await RetrieveMe();
 
@@ -103,7 +103,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestUpdate()
         {
-            UseVCR("update", ApiVersion.V2);
+            UseVCR("update", ApiVersion.Latest);
 
             User user = await CreateUser();
 
@@ -126,7 +126,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestUpdateBrand()
         {
-            UseVCR("update_brand", ApiVersion.V2);
+            UseVCR("update_brand", ApiVersion.Latest);
 
             User user = await CreateUser();
 

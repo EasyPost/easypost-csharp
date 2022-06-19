@@ -8,6 +8,7 @@ namespace EasyPost.Clients
     public enum ApiVersion
     {
         V2,
+        Latest,
         Beta
     }
 
@@ -24,6 +25,7 @@ namespace EasyPost.Clients
             switch (apiVersion)
             {
                 case ApiVersion.V2:
+                case ApiVersion.Latest:
                     return "v2";
                 case ApiVersion.Beta:
                     return "beta";

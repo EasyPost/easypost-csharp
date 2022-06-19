@@ -18,7 +18,7 @@ namespace EasyPost.Models.V2
         ///     Get the next page of trackers based on the original parameters passed to Tracker.All().
         /// </summary>
         /// <returns>An EasyPost.TrackerCollection instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<IPaginatedCollection> Next()
         {
             Filters ??= new Dictionary<string, object>();

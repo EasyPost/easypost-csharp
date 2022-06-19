@@ -53,7 +53,7 @@ namespace EasyPost.Models.V2
         /// </summary>
         /// <param name="carrier">The name of the carrier to purchase with.</param>
         /// <param name="service">The name of the service to purchase.</param>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Pickup> Buy(string carrier, string service)
         {
             if (Id == null)
@@ -76,7 +76,7 @@ namespace EasyPost.Models.V2
         /// <summary>
         ///     Cancel this pickup.
         /// </summary>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Pickup> Cancel()
         {
             if (Id == null)
@@ -95,7 +95,7 @@ namespace EasyPost.Models.V2
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest EasyPost.PickupRate object instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public PickupRate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
             return (PickupRate)Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);

@@ -15,7 +15,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve", ApiVersion.V2);
+            UseVCR("retrieve", ApiVersion.Latest);
 
             Shipment shipment = await Client.Shipments.Create(Fixture.BasicShipment);
 

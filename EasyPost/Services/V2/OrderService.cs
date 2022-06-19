@@ -32,7 +32,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Order instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Order> Create(Dictionary<string, object> parameters)
         {
             return await Create<Order>("orders", new Dictionary<string, object>
@@ -48,7 +48,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Order. Starts with "order_" if passing an id.</param>
         /// <returns>EasyPost.Order instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Order> Retrieve(string id)
         {
             return await Get<Order>($"orders/{id}");

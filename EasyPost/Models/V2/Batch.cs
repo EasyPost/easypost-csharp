@@ -34,7 +34,7 @@ namespace EasyPost.Models.V2
         ///     Add shipments to this batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be added.</param>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Batch> AddShipments(IEnumerable<string?> shipmentIds)
         {
             List<Dictionary<string, object>> realShipmentIds = (from shipmentId in shipmentIds
@@ -57,13 +57,13 @@ namespace EasyPost.Models.V2
         ///     Add shipments to this batch.
         /// </summary>
         /// <param name="shipmentsToAdd">List of Shipment objects to be added.</param>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Batch> AddShipments(IEnumerable<Shipment> shipmentsToAdd) => await AddShipments(shipmentsToAdd.Select(shipment => shipment.Id).ToList());
 
         /// <summary>
         ///     Purchase all shipments within this batch. The Batch's state must be "created" before purchasing.
         /// </summary>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Batch> Buy()
         {
             return await Update<Batch>(Method.Post, $"batches/{Id}/buy");
@@ -73,7 +73,7 @@ namespace EasyPost.Models.V2
         ///     Asynchronously generate a label containing all of the Shipment labels belonging to this batch.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Batch> GenerateLabel(string fileFormat)
         {
             return await Update<Batch>(Method.Post, $"batches/{Id}/label", new Dictionary<string, object>
@@ -87,7 +87,7 @@ namespace EasyPost.Models.V2
         /// <summary>
         ///     Asynchronously generate a scan from for this batch.
         /// </summary>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Batch> GenerateScanForm()
         {
             return await Update<Batch>(Method.Post, $"batches/{Id}/scan_form");
@@ -97,7 +97,7 @@ namespace EasyPost.Models.V2
         ///     Remove shipments from this batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be removed.</param>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Batch> RemoveShipments(IEnumerable<string?> shipmentIds)
         {
             List<Dictionary<string, object>> realShipmentIds = (from shipmentId in shipmentIds
@@ -120,7 +120,7 @@ namespace EasyPost.Models.V2
         ///     Remove shipments from this batch.
         /// </summary>
         /// <param name="shipmentsToRemove">List of Shipment objects to be removed.</param>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Batch> RemoveShipments(IEnumerable<Shipment> shipmentsToRemove) => await RemoveShipments(shipmentsToRemove.Select(shipment => shipment.Id).ToList());
     }
 }

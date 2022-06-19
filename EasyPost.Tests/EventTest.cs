@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all", ApiVersion.V2);
+            UseVCR("all", ApiVersion.Latest);
 
             EventCollection eventCollection = await GetBasicEventCollection();
 
@@ -33,7 +33,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve", ApiVersion.V2);
+            UseVCR("retrieve", ApiVersion.Latest);
 
             EventCollection eventCollection = await GetBasicEventCollection();
             Event _event = eventCollection.Events[0];

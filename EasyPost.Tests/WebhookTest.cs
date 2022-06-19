@@ -30,7 +30,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestAll()
         {
-            UseVCR("all", ApiVersion.V2);
+            UseVCR("all", ApiVersion.Latest);
 
             List<Webhook> webhooks = await Client.Webhooks.All();
 
@@ -43,7 +43,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCreate()
         {
-            UseVCR("create", ApiVersion.V2);
+            UseVCR("create", ApiVersion.Latest);
 
             const string url = "https://example.com/create";
 
@@ -57,7 +57,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestDelete()
         {
-            UseVCR("delete", ApiVersion.V2);
+            UseVCR("delete", ApiVersion.Latest);
 
             const string url = "https://example.com/delete";
 
@@ -73,7 +73,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRetrieve()
         {
-            UseVCR("retrieve", ApiVersion.V2);
+            UseVCR("retrieve", ApiVersion.Latest);
 
             const string url = "https://example.com/retrieve";
 
@@ -88,7 +88,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestUpdate()
         {
-            UseVCR("update", ApiVersion.V2);
+            UseVCR("update", ApiVersion.Latest);
 
             const string url = "https://example.com/update";
 

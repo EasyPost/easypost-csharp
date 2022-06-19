@@ -30,7 +30,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.ShipmentCollection instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
             ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
@@ -59,7 +59,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.Shipment instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Shipment> Create(Dictionary<string, object>? parameters = null)
         {
             Dictionary<string, object> requestParameters = new Dictionary<string, object>();
@@ -76,7 +76,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
         /// <returns>An EasyPost.Shipment instance.</returns>
-        [ApiCompatibility(ApiVersion.V2)]
+        [ApiCompatibility(ApiVersion.Latest)]
         public async Task<Shipment> Retrieve(string id)
         {
             return await Get<Shipment>($"shipments/{id}");
