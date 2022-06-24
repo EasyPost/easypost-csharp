@@ -65,20 +65,20 @@ namespace EasyPost.ApiCompatibility
             }
 
             // throw exception if property is not compatible with this API version
-            if (!IsCompatible(client.ApiVersion))
+            if (!IsCompatible(client.ApiVersionDetails))
             {
-                throw new ApiVersionNotSupported($"{instance.GetType().Name}.{method.Name}", client.ApiVersion);
+                throw new ApiVersionNotSupported($"{instance.GetType().Name}.{method.Name}", client.ApiVersionDetails);
             }
         }
 
         /// <summary>
         ///     Get whether the property is compatible with the specified API version.
         /// </summary>
-        /// <param name="apiVersion">Attempted API version.</param>
+        /// <param name="apiVersionDetails">Attempted API version.</param>
         /// <returns>True if the property is compatible with the provided API version.</returns>
-        private bool IsCompatible(ApiVersion apiVersion)
+        private bool IsCompatible(ApiVersionDetails apiVersionDetails)
         {
-            return ((IList)ApiVersions).Contains(apiVersion);
+            return ((IList)ApiVersions).Contains(apiVersionDetails.ApiVersionEnum);
         }
 
         /// <summary>
@@ -102,9 +102,9 @@ namespace EasyPost.ApiCompatibility
             }
 
             // throw exception if property is not compatible with this API version
-            if (!apiCompatibilityAttribute.IsCompatible(client.ApiVersion))
+            if (!apiCompatibilityAttribute.IsCompatible(client.ApiVersionDetails))
             {
-                throw new ApiVersionNotSupported(service.Name, client.ApiVersion);
+                throw new ApiVersionNotSupported(service.Name, client.ApiVersionDetails);
             }
         }
 

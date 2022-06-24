@@ -25,11 +25,6 @@ namespace EasyPost.Interfaces
         private int? _connectTimeoutMilliseconds;
         private int? _requestTimeoutMilliseconds;
 
-        public ApiVersion ApiVersion
-        {
-            get { return _configuration.ApiVersion; }
-        }
-
         public int ConnectTimeoutMilliseconds
         {
             get => _connectTimeoutMilliseconds ?? DefaultConnectTimeoutMilliseconds;
@@ -40,6 +35,11 @@ namespace EasyPost.Interfaces
         {
             get => _requestTimeoutMilliseconds ?? DefaultRequestTimeoutMilliseconds;
             set => _requestTimeoutMilliseconds = value;
+        }
+
+        internal ApiVersionDetails ApiVersionDetails
+        {
+            get { return _configuration.ApiVersionDetails; }
         }
 
         /// <summary>

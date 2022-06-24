@@ -1,9 +1,10 @@
+using EasyPost.ApiCompatibility.Migration;
 using EasyPost.Interfaces;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.Base
 {
-    public class Address : EasyPostObject
+    public class Address : EasyPostObject, IMigratable
     {
         [JsonProperty("city")]
         public string? City { get; set; }
@@ -17,6 +18,8 @@ namespace EasyPost.Models.Base
         public string? Error { get; set; }
         [JsonProperty("message")]
         public string? Message { get; set; }
+        [JsonIgnore]
+        public MigrationGroup MigrationGroup => MigrationGroup.Sample;
         [JsonProperty("name")]
         public string? Name { get; set; }
         [JsonProperty("phone")]

@@ -22,16 +22,16 @@ namespace EasyPost.Http
         /// <summary>
         ///     The API version.
         /// </summary>
-        internal readonly ApiVersion ApiVersion;
+        internal readonly ApiVersionDetails ApiVersionDetails;
         private readonly string _dotNetVersion;
         private readonly string _libraryVersion;
 
-        internal string UserAgent => $"EasyPost/{ApiVersion} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
+        internal string UserAgent => $"EasyPost/{ApiVersionString} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
 
         /// <summary>
         ///     The API version string.
         /// </summary>
-        private string ApiVersionString => ApiVersionDetails.FromEnum(ApiVersion);
+        private string ApiVersionString => ApiVersionDetails.Prefix;
 
         /// <summary>
         ///     Create an EasyPost.ClientConfiguration instance.
@@ -41,7 +41,7 @@ namespace EasyPost.Http
         internal ClientConfiguration(string apiKey, ApiVersion apiVersion)
         {
             ApiKey = apiKey;
-            ApiVersion = apiVersion;
+            ApiVersionDetails = ApiVersionDetails.GetApiVersionDetails(apiVersion);
             ApiBase = $"https://api.easypost.com/{ApiVersionString}";
 
             try

@@ -14,8 +14,7 @@ namespace EasyPost.Exceptions
     [Serializable]
     internal class ApiVersionNotSupported : Exception
     {
-        internal ApiVersionNotSupported(string elementName, ApiVersion apiVersion)
-            : base($"{elementName} incompatible with API version {ApiVersionDetails.FromEnum(apiVersion)}.")
+        internal ApiVersionNotSupported(string elementName, ApiVersionDetails apiVersionDetails) : base($"{elementName} incompatible with API version {apiVersionDetails.Prefix}.")
         {
         }
     }
