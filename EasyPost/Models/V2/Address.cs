@@ -18,12 +18,12 @@ namespace EasyPost.Models.V2
         public bool? Residential { get; set; }
         [JsonProperty("state_tax_id")]
         public string? StateTaxId { get; set; }
-        [JsonProperty("verifications")]
-        public Verifications? Verifications { get; set; }
         [JsonProperty("verify")]
         public List<string>? ToVerify { get; set; }
         [JsonProperty("verify_strict")]
         public List<string>? ToVerifyStrict { get; set; }
+        [JsonProperty("verifications")]
+        public Verifications? Verifications { get; set; }
 
         /// <summary>
         ///     Verify this address.

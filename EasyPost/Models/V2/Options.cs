@@ -13,6 +13,8 @@ namespace EasyPost.Models.V2
         public string? AddressValidationLevel { get; set; }
         [JsonProperty("alcohol")]
         public bool? Alcohol { get; set; }
+        [JsonProperty("billing_ref")]
+        public string? BillingRef { get; set; }
         [JsonProperty("bill_receiver_account")]
         public string? BillReceiverAccount { get; set; }
         [JsonProperty("bill_receiver_postal_code")]
@@ -23,8 +25,6 @@ namespace EasyPost.Models.V2
         public string? BillThirdPartyCountry { get; set; }
         [JsonProperty("bill_third_party_postal_code")]
         public string? BillThirdPartyPostalCode { get; set; }
-        [JsonProperty("billing_ref")]
-        public string? BillingRef { get; set; }
         [JsonProperty("by_drone")]
         public bool? ByDrone { get; set; }
         [JsonProperty("carbon_neutral")]
@@ -91,12 +91,12 @@ namespace EasyPost.Models.V2
         public bool? HoldForPickup { get; set; }
         [JsonProperty("image_format")]
         public string? ImageFormat { get; set; }
+        [JsonProperty("importer_address_id")]
+        public string? ImporterAddressId { get; set; }
         [JsonProperty("import_federal_tax_id")]
         public string? ImportFederalTaxId { get; set; }
         [JsonProperty("import_state_tax_id")]
         public string? ImportStateTaxId { get; set; }
-        [JsonProperty("importer_address_id")]
-        public string? ImporterAddressId { get; set; }
         [JsonProperty("incoterm")]
         public string? Incoterm { get; set; }
         [JsonProperty("invoice_number")]

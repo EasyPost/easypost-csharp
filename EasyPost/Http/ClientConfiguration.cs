@@ -10,9 +10,6 @@ namespace EasyPost.Http
     /// </summary>
     internal class ClientConfiguration
     {
-        private readonly string _dotNetVersion;
-        private readonly string _libraryVersion;
-
         /// <summary>
         ///     The API base URI.
         /// </summary>
@@ -26,13 +23,15 @@ namespace EasyPost.Http
         ///     The API version.
         /// </summary>
         internal readonly ApiVersion ApiVersion;
+        private readonly string _dotNetVersion;
+        private readonly string _libraryVersion;
+
+        internal string UserAgent => $"EasyPost/{ApiVersion} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
 
         /// <summary>
         ///     The API version string.
         /// </summary>
         private string ApiVersionString => ApiVersionDetails.FromEnum(ApiVersion);
-
-        internal string UserAgent => $"EasyPost/{ApiVersion} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
 
         /// <summary>
         ///     Create an EasyPost.ClientConfiguration instance.

@@ -1,16 +1,18 @@
 using System.Threading.Tasks;
 using EasyPost.Clients;
-using EasyPost.Services.V2;
+using EasyPost.Services.Beta;
+using Xunit;
 
 namespace EasyPost.Tests
 {
     public class Sample
     {
+        [Fact]
         public async Task Main()
         {
             Client client = new Client("my_api_key", ApiVersion.Latest);
 
-            CarrierTypeService c = client.CarrierTypes;
+            EndShipperService service = client.EndShippers;
         }
     }
 }

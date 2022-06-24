@@ -16,15 +16,6 @@ namespace EasyPost.Utilities
 
         public int CompareTo(object? other) => Id.CompareTo(((Enum)other!).Id);
 
-        protected bool Equals(Enum other) => Id == other.Id;
-
-        protected static IEnumerable<T> GetAll<T>() where T : Enum =>
-            typeof(T).GetFields(BindingFlags.Public |
-                                BindingFlags.Static |
-                                BindingFlags.DeclaredOnly)
-                .Select(f => f.GetValue(null))
-                .Cast<T>();
-
         public override bool Equals(object? obj)
         {
             try
@@ -56,6 +47,15 @@ namespace EasyPost.Utilities
                 }.GetHashCode();
             }
         }
+
+        protected bool Equals(Enum other) => Id == other.Id;
+
+        protected static IEnumerable<T> GetAll<T>() where T : Enum =>
+            typeof(T).GetFields(BindingFlags.Public |
+                                BindingFlags.Static |
+                                BindingFlags.DeclaredOnly)
+                .Select(f => f.GetValue(null))
+                .Cast<T>();
     }
 
     public abstract class ValueEnum : Enum

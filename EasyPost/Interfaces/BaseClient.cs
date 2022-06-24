@@ -56,7 +56,6 @@ namespace EasyPost.Interfaces
             ServicePointManager.SecurityProtocol |= Security.GetProtocol();
             _configuration = new ClientConfiguration(apiKey, version);
 
-
             RestClientOptions clientOptions = new RestClientOptions
             {
                 Timeout = ConnectTimeoutMilliseconds,
@@ -152,7 +151,7 @@ namespace EasyPost.Interfaces
             ApiCompatibilityAttribute.CheckServiceCompatible(servicePropertyName, GetType(), this);
 
             // construct a new service
-            var cons = typeof(T).GetConstructors(BindingFlags.NonPublic|BindingFlags.Instance);
+            var cons = typeof(T).GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
             return (T)cons[0].Invoke(new object[]
             {
                 this

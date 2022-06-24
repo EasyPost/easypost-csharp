@@ -12,7 +12,7 @@ using MethodDecorator.Fody.Interfaces;
 
 namespace EasyPost.ApiCompatibility
 {
-    [AttributeUsage(AttributeTargets.Method  | AttributeTargets.Module | AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Module | AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
     internal class ApiCompatibilityAttribute : BaseCustomAttribute, IMethodDecorator
     {
         /// <summary>
@@ -37,23 +37,16 @@ namespace EasyPost.ApiCompatibility
             CheckFunctionCompatible(instance, method);
         }
 
-        public void OnEntry() {
-        }
-
-        public void OnException(Exception exception) {
-        }
-
-        public void OnExit() {
-        }
-
-        /// <summary>
-        ///     Get whether the property is compatible with the specified API version.
-        /// </summary>
-        /// <param name="apiVersion">Attempted API version.</param>
-        /// <returns>True if the property is compatible with the provided API version.</returns>
-        private bool IsCompatible(ApiVersion apiVersion)
+        public void OnEntry()
         {
-            return ((IList)ApiVersions).Contains(apiVersion);
+        }
+
+        public void OnException(Exception exception)
+        {
+        }
+
+        public void OnExit()
+        {
         }
 
         /// <summary>
@@ -76,6 +69,16 @@ namespace EasyPost.ApiCompatibility
             {
                 throw new ApiVersionNotSupported($"{instance.GetType().Name}.{method.Name}", client.ApiVersion);
             }
+        }
+
+        /// <summary>
+        ///     Get whether the property is compatible with the specified API version.
+        /// </summary>
+        /// <param name="apiVersion">Attempted API version.</param>
+        /// <returns>True if the property is compatible with the provided API version.</returns>
+        private bool IsCompatible(ApiVersion apiVersion)
+        {
+            return ((IList)ApiVersions).Contains(apiVersion);
         }
 
         /// <summary>

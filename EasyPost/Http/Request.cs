@@ -76,7 +76,7 @@ namespace EasyPost.Http
 
         private static bool StatusCodeBetween(RestResponseBase response, int min, int max)
         {
-            int statusCode = (int) response.StatusCode;
+            int statusCode = (int)response.StatusCode;
             return statusCode >= min && statusCode <= max;
         }
     }

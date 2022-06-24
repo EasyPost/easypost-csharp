@@ -15,17 +15,6 @@ namespace EasyPost.Services.V2
         }
 
         /// <summary>
-        ///     Retrieve a Rate from its id.
-        /// </summary>
-        /// <param name="id">String representing a rate. Starts with `rate_`.</param>
-        /// <returns>EasyPost.Rate instance.</returns>
-        [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Rate> Retrieve(string id)
-        {
-            return await Get<Rate>($"rates/{id}");
-        }
-
-        /// <summary>
         ///     Get the lowest rate from a list of rates.
         /// </summary>
         /// <param name="rates">List of rates to filter.</param>
@@ -38,6 +27,17 @@ namespace EasyPost.Services.V2
         public Rate GetLowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
             return Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+        }
+
+        /// <summary>
+        ///     Retrieve a Rate from its id.
+        /// </summary>
+        /// <param name="id">String representing a rate. Starts with `rate_`.</param>
+        /// <returns>EasyPost.Rate instance.</returns>
+        [ApiCompatibility(ApiVersion.Latest)]
+        public async Task<Rate> Retrieve(string id)
+        {
+            return await Get<Rate>($"rates/{id}");
         }
     }
 }

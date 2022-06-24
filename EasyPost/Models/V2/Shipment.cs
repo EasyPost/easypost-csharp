@@ -185,36 +185,6 @@ namespace EasyPost.Models.V2
         }
 
         /// <summary>
-        ///     Send a refund request to the carrier the shipment was purchased from.
-        /// </summary>
-        [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Shipment> Refund()
-        {
-            if (Id == null)
-            {
-                throw new PropertyMissing("id");
-            }
-
-            return await Update<Shipment>(Method.Get, $"shipments/{Id}/refund");
-        }
-
-        /// <summary>
-        ///     Refresh the rates for this Shipment.
-        /// </summary>
-        /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
-        [ApiCompatibility(ApiVersion.Latest)]
-        public async Task RegenerateRates(Dictionary<string, object>? parameters = null)
-        {
-            if (Id == null)
-            {
-                throw new PropertyMissing("id");
-            }
-
-            Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{Id}/rerate", parameters);
-            Rates = shipment.Rates;
-        }
-
-        /// <summary>
         ///     Get the lowest rate for this Shipment.
         /// </summary>
         /// <param name="includeCarriers">Carriers to include in the filter.</param>
@@ -244,6 +214,36 @@ namespace EasyPost.Models.V2
         {
             List<Smartrate> smartrates = await GetSmartrates();
             return Calculation.Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
+        }
+
+        /// <summary>
+        ///     Send a refund request to the carrier the shipment was purchased from.
+        /// </summary>
+        [ApiCompatibility(ApiVersion.Latest)]
+        public async Task<Shipment> Refund()
+        {
+            if (Id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
+            return await Update<Shipment>(Method.Get, $"shipments/{Id}/refund");
+        }
+
+        /// <summary>
+        ///     Refresh the rates for this Shipment.
+        /// </summary>
+        /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
+        [ApiCompatibility(ApiVersion.Latest)]
+        public async Task RegenerateRates(Dictionary<string, object>? parameters = null)
+        {
+            if (Id == null)
+            {
+                throw new PropertyMissing("id");
+            }
+
+            Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{Id}/rerate", parameters);
+            Rates = shipment.Rates;
         }
     }
 }
