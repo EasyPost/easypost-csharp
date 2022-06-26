@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
-using EasyPost.ApiCompatibility.Migration;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using Newtonsoft.Json;
@@ -9,7 +8,7 @@ using RestSharp;
 
 namespace EasyPost.Models.V2
 {
-    public class User : EasyPostObject, IMigratable
+    public class User : EasyPostObject
     {
         [JsonProperty("api_keys")]
         public List<ApiKey>? ApiKeys { get; set; }
@@ -19,8 +18,7 @@ namespace EasyPost.Models.V2
         public List<User>? Children { get; set; }
         [JsonProperty("email")]
         public string? Email { get; set; }
-        [JsonIgnore]
-        public MigrationGroup MigrationGroup => MigrationGroup.Sample;
+
         [JsonProperty("name")]
         public string? Name { get; set; }
         [JsonProperty("parent_id")]
