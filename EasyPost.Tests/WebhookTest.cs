@@ -1,9 +1,4 @@
-﻿// using System.Collections.Generic;
-// using System.Linq;
-// using Microsoft.VisualStudio.TestTools.UnitTesting;
-// using EasyPost;
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -12,26 +7,19 @@ namespace EasyPost.Tests
     [TestClass]
     public class WebhookTest
     {
-        private static string _webhookId = null;
-
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
-        {
-            _vcr = new TestUtils.VCR("webhook");
-        }
+        private static string _easypostWebhookId = null;
+        private static TestUtils.VCR _vcr;
 
         [TestCleanup]
         public async Task Cleanup()
         {
-            if (_webhookId != null)
+            if (_easypostWebhookId != null)
             {
                 try
                 {
-                    Webhook retrievedWebhook = await Webhook.Retrieve(_webhookId);
+                    Webhook retrievedWebhook = await Webhook.Retrieve(_easypostWebhookId);
                     await retrievedWebhook.Delete();
-                    _webhookId = null;
+                    _easypostWebhookId = null;
                 }
                 catch
                 {
@@ -40,41 +28,10 @@ namespace EasyPost.Tests
             }
         }
 
-        private static async Task<Webhook> CreateBasicWebhook()
+        [TestInitialize]
+        public void Initialize()
         {
-            Webhook webhook = await Webhook.Create(new Dictionary<string, object>
-            {
-                {
-                    "url", Fixture.WebhookUrl
-                }
-            });
-            _webhookId = webhook.id;  // trigger deletion after test
-            return webhook;
-        }
-
-        [TestMethod]
-        public async Task TestCreate()
-        {
-            _vcr.SetUpTest("create");
-
-            Webhook webhook = await CreateBasicWebhook();
-
-            Assert.IsInstanceOfType(webhook, typeof(Webhook));
-            Assert.IsTrue(webhook.id.StartsWith("hook_"));
-            Assert.AreEqual(Fixture.WebhookUrl, webhook.url);
-        }
-
-        [TestMethod]
-        public async Task TestRetrieve()
-        {
-            _vcr.SetUpTest("retrieve");
-
-            Webhook webhook = await CreateBasicWebhook();
-
-            Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
-
-            Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
-            Assert.AreEqual(webhook, retrievedWebhook);
+            _vcr = new TestUtils.VCR("webhook");
         }
 
         [TestMethod]
@@ -91,14 +48,15 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
-        public async Task TestUpdate()
+        public async Task TestCreate()
         {
-            _vcr.SetUpTest("update");
+            _vcr.SetUpTest("create");
 
             Webhook webhook = await CreateBasicWebhook();
 
-            await webhook.Update();
-            // TODO: We should call this something more intuitive in the future, since it doesn't work like the other Update function
+            Assert.IsInstanceOfType(webhook, typeof(Webhook));
+            Assert.IsTrue(webhook.id.StartsWith("hook_"));
+            Assert.AreEqual(Fixture.WebhookUrl, webhook.url);
         }
 
         [TestMethod]
@@ -112,7 +70,43 @@ namespace EasyPost.Tests
             bool success = await retrievedWebhook.Delete();
             Assert.IsTrue(success);
 
-            _webhookId = null; // skip deletion cleanup
+            _easypostWebhookId = null; // skip deletion cleanup
+        }
+
+        [TestMethod]
+        public async Task TestEnableDisable()
+        {
+            _vcr.SetUpTest("update");
+
+            Webhook webhook = await CreateBasicWebhook();
+
+            await webhook.Update();
+            // TODO: We should call this something more intuitive in the future, since it doesn't work like the other Update function
+        }
+
+        [TestMethod]
+        public async Task TestRetrieve()
+        {
+            _vcr.SetUpTest("retrieve");
+
+            Webhook webhook = await CreateBasicWebhook();
+
+            Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
+
+            Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
+            Assert.AreEqual(webhook, retrievedWebhook);
+        }
+
+        private static async Task<Webhook> CreateBasicWebhook()
+        {
+            Webhook webhook = await Webhook.Create(new Dictionary<string, object>
+            {
+                {
+                    "url", Fixture.WebhookUrl
+                }
+            });
+            _easypostWebhookId = webhook.id; // trigger deletion after test
+            return webhook;
         }
     }
 }

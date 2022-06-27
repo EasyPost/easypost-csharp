@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
 using EasyVCR;
 
@@ -11,19 +12,6 @@ namespace EasyPost.Tests
         private const string ApiKeyFailedToPull = "couldnotpullapikey";
 
         private const string CassettesFolder = "cassettes";
-
-        private static readonly List<string> HeaderCensors = new List<string>
-        {
-            "Authorization",
-            "User-Agent",
-            "X-Client-User-Agent"
-        };
-
-        private static readonly List<string> QueryCensors = new List<string>
-        {
-            "card[number]",
-            "card[cvc]"
-        };
 
         private static readonly List<string> BodyCensors = new List<string>
         {
@@ -37,6 +25,19 @@ namespace EasyPost.Tests
             "phone_number",
             "phone",
             "test_credentials"
+        };
+
+        private static readonly List<string> HeaderCensors = new List<string>
+        {
+            "Authorization",
+            "User-Agent",
+            "X-Client-User-Agent"
+        };
+
+        private static readonly List<string> QueryCensors = new List<string>
+        {
+            "card[number]",
+            "card[cvc]"
         };
 
         public enum ApiKey
@@ -75,9 +76,9 @@ namespace EasyPost.Tests
             private readonly string _testCassettesFolder;
             private readonly EasyVCR.VCR _vcr;
 
-            internal bool IsRecording()
+            internal HttpClient Client
             {
-                return _vcr.Mode == Mode.Record;
+                get { return _vcr.Client; }
             }
 
             public VCR(string testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
@@ -106,7 +107,7 @@ namespace EasyPost.Tests
 #elif NET5_0
                     netVersionFolder = "net50";
 #elif NETCOREAPP3_1
-                    netVersionFolder = "netcore3.1";
+                netVersionFolder = "netcore3.1";
 #elif NET462
                 netVersionFolder = "net462";
 #endif
@@ -153,7 +154,12 @@ namespace EasyPost.Tests
                 }
 
                 // set up EasyPost client
-                ClientManager.SetCurrent(() => new Client(new ClientConfiguration(apiKey), _vcr.Client));
+                ClientManager.SetCurrent(() => new Client(new ClientConfiguration(apiKey), Client));
+            }
+
+            internal bool IsRecording()
+            {
+                return _vcr.Mode == Mode.Record;
             }
         }
     }

@@ -29,21 +29,42 @@ namespace EasyPost
         }
 
         /// <summary>
-        ///     Enable a Webhook that has been disabled previously.
+        ///     Update a Webhook. A disabled webhook will be enabled.
+        /// <param name="parameters">
+        ///     Dictionary containing parameters to update the webhook with. Valid pairs:
+        ///     * { "url", string } Url of the webhook that events will be sent to.
+        ///     * { "webhook_secret", string } Secret token to include as a header when sending a webhook.
+        ///     All invalid keys will be ignored.
+        /// </param>
         /// </summary>
-        public async Task Update()
+        public async Task Update(Dictionary<string, object>? parameters = null)
         {
             Request request = new Request("webhooks/{id}", Method.Patch);
             request.AddUrlSegment("id", id);
+            request.AddParameters(parameters);
 
             Merge(await request.Execute<Webhook>());
+        }
+
+
+        /// <summary>
+        ///     Get a list of webhooks.
+        /// </summary>
+        /// <returns>List of EasyPost.Webhook instances.</returns>
+        public static async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
+        {
+            Request request = new Request("webhooks", Method.Get);
+            request.AddParameters(parameters);
+
+            WebhookList webhookList = await request.Execute<WebhookList>();
+            return webhookList.webhooks;
         }
 
         /// <summary>
         ///     Create a Webhook.
         /// </summary>
         /// <param name="parameters">
-        ///     Dictionary containing parameters to create the carrier account with. Valid pairs:
+        ///     Dictionary containing parameters to create the webhook with. Valid pairs:
         ///     * { "url", string } Url of the webhook that events will be sent to.
         ///     All invalid keys will be ignored.
         /// </param>
@@ -59,20 +80,6 @@ namespace EasyPost
             });
 
             return await request.Execute<Webhook>();
-        }
-
-
-        /// <summary>
-        ///     Get a list of scan forms.
-        /// </summary>
-        /// <returns>List of EasyPost.Webhook instances.</returns>
-        public static async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
-        {
-            Request request = new Request("webhooks", Method.Get);
-            request.AddParameters(parameters);
-
-            WebhookList webhookList = await request.Execute<WebhookList>();
-            return webhookList.webhooks;
         }
 
         /// <summary>
