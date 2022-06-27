@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
-using EasyPost.Tests.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -12,8 +9,6 @@ namespace EasyPost.Tests
     {
         private static string _easypostWebhookId = null;
         private static TestUtils.VCR _vcr;
-
-        private static WebhookTestService _webhookTestService;
 
         [TestCleanup]
         public async Task Cleanup()
@@ -37,7 +32,6 @@ namespace EasyPost.Tests
         public void Initialize()
         {
             _vcr = new TestUtils.VCR("webhook");
-            _webhookTestService = new WebhookTestService(_vcr);
         }
 
         [TestMethod]
@@ -58,11 +52,11 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("create");
 
-            Webhook webhook = await CreateBasicWebhook(_webhookTestService);
+            Webhook webhook = await CreateBasicWebhook();
 
             Assert.IsInstanceOfType(webhook, typeof(Webhook));
             Assert.IsTrue(webhook.id.StartsWith("hook_"));
-            Assert.AreEqual(_webhookTestService.WebhookUrl, webhook.url);
+            Assert.AreEqual(Fixture.WebhookUrl, webhook.url);
         }
 
         [TestMethod]
@@ -70,7 +64,7 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("delete");
 
-            Webhook webhook = await CreateBasicWebhook(_webhookTestService);
+            Webhook webhook = await CreateBasicWebhook();
             Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
 
             bool success = await retrievedWebhook.Delete();
@@ -84,7 +78,7 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("update");
 
-            Webhook webhook = await CreateBasicWebhook(_webhookTestService);
+            Webhook webhook = await CreateBasicWebhook();
 
             await webhook.Update();
             // TODO: We should call this something more intuitive in the future, since it doesn't work like the other Update function
@@ -95,7 +89,7 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("retrieve");
 
-            Webhook webhook = await CreateBasicWebhook(_webhookTestService);
+            Webhook webhook = await CreateBasicWebhook();
 
             Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
 
@@ -103,84 +97,16 @@ namespace EasyPost.Tests
             Assert.AreEqual(webhook, retrievedWebhook);
         }
 
-        [Ignore] // webhooks can take a while to be triggered and sent to the webhook url, so we can't reliably test this
-        [TestMethod]
-        public async Task TestWebhookSecret()
+        private static async Task<Webhook> CreateBasicWebhook()
         {
-            _vcr.SetUpTest("webhook_secret");
-
-            const string webhookField = "x-hmac-signature";
-
-            Webhook webhook = await CreateBasicWebhook(_webhookTestService);
-
-            // set the webhook secret
-            await webhook.Update(new Dictionary<string, object>
-            {
-                {
-                    "webhook_secret", "secret"
-                }
-            });
-
-            // verify the webhook secret is set
-            Assert.IsTrue(await TriggerAndVerifyWebhook(_webhookTestService, null, new List<string>
-            {
-                webhookField
-            }));
-        }
-
-        private static async Task<Webhook> CreateBasicWebhook(WebhookTestService webhookTestService)
-        {
-            await webhookTestService.SetUp();
             Webhook webhook = await Webhook.Create(new Dictionary<string, object>
             {
                 {
-                    "url", webhookTestService.WebhookUrl
+                    "url", Fixture.WebhookUrl
                 }
             });
             _easypostWebhookId = webhook.id; // trigger deletion after test
             return webhook;
-        }
-
-        private static async Task<bool> TriggerAndVerifyWebhook(WebhookTestService testService, IEnumerable<string> presentBodyFields, IEnumerable<string> presentHeaderFields)
-        {
-            // reset the stored webhook data
-            await testService.Reset();
-
-            // trigger the webhook by buying a shipment in test mode
-            Shipment shipment = await ShipmentTest.CreateFullShipment();
-            await shipment.Buy(shipment.LowestRate());
-
-            // wait for the webhook to be triggered
-            if (_vcr.IsRecording())
-            {
-                Thread.Sleep(60000); // wait a whole minute for the webhook to be triggered
-            }
-
-            // verify the webhook data
-            Dictionary<string, object> lastEvent = await testService.GetLatestEvent();
-            if (lastEvent == null)
-            {
-                return false;
-            }
-
-            if (presentBodyFields != null)
-            {
-                if (presentBodyFields.Any(field => !lastEvent.ContainsKey(field)))
-                {
-                    return false;
-                }
-            }
-
-            if (presentHeaderFields != null)
-            {
-                Dictionary<string, object> headers = WebhookTestService.GetHeadersForWebhook(lastEvent);
-                if (presentHeaderFields.Any(field => headers.ContainsKey(field)))
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
     }
 }

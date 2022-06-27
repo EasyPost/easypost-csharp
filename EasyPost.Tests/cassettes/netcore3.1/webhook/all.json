@@ -1,7 +1,7 @@
 [
   {
-      "Duration": 183,
-      "RecordedAt": "2022-06-27T13:37:51.94497-06:00",
+      "Duration": 182,
+      "RecordedAt": "2022-06-27T13:57:23.191248-06:00",
       "Request": {
           "Body": "",
           "BodyContentType": "Text",
@@ -12,16 +12,16 @@
               "Authorization": "<REDACTED>",
               "content_type": "application/json",
               "User-Agent": "<REDACTED>"
+          },
+          "Uri": "https://api.easypost.com/v2/webhooks"
       },
-      "Uri": "https://api.easypost.com/v2/webhooks"
-    },
-    "Response": {
-      "Body": "{\"webhooks\":[]}",
-      "BodyContentType": "Json",
-      "ContentHeaders": {
-        "Expires": "0",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "15"
+      "Response": {
+          "Body": "{\"webhooks\":[]}",
+          "BodyContentType": "Json",
+          "ContentHeaders": {
+              "Expires": "0",
+              "Content-Type": "application/json; charset=utf-8",
+              "Content-Length": "15"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -31,15 +31,16 @@
           "x-download-options": "noopen",
           "x-permitted-cross-domain-policies": "none",
           "referrer-policy": "strict-origin-when-cross-origin",
-          "x-ep-request-uuid": "e071565a62ba0710e0fd3f95006ca669",
+          "x-ep-request-uuid": "4b5298fa62ba0ba3e0fb9697006cf405",
           "Cache-Control": "no-store, no-cache",
           "Pragma": "no-cache",
           "ETag": "W/\"d03ff1e2df7ad33907b2086ec5f9e0a9\"",
-          "x-runtime": "0.019897",
-          "x-node": "bigweb6nuq",
+          "x-runtime": "0.022769",
+          "x-node": "bigweb7nuq",
           "x-version-label": "easypost-202206271821-107417450a-master",
           "x-backend": "easypost",
-          "x-proxied": "intlb1nuq a732742a48,extlb2nuq 403f17ff97",
+          "x-canary": "direct",
+          "x-proxied": "intlb2nuq a732742a48,extlb1nuq 403f17ff97",
           "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
