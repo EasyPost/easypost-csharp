@@ -30,7 +30,7 @@ namespace EasyPost
 
         /// <summary>
         ///     Update a Webhook. A disabled webhook will be enabled.
-        /// /// <param name="parameters">
+        /// <param name="parameters">
         ///     Dictionary containing parameters to update the webhook with. Valid pairs:
         ///     * { "url", string } Url of the webhook that events will be sent to.
         ///     * { "webhook_secret", string } Secret token to include as a header when sending a webhook.
