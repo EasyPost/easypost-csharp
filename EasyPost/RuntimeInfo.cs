@@ -45,7 +45,7 @@ namespace EasyPost
                          * but we can't get the exact version.
                          * See: https://docs.microsoft.com/en-us/dotnet/api/system.environment.version?view=net-6.0#remarks
                          */
-                        dotNetVersion = "4.6 or higher";
+                        dotNetVersion = "4.6+";
                     }
 
                     return dotNetVersion;
