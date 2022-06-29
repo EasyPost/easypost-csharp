@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
-using System.Reflection;
 using System.Threading.Tasks;
 using EasyPost.Utilities;
 using RestSharp;
@@ -19,6 +17,9 @@ namespace EasyPost
 
         private readonly string _dotNetVersion;
         private readonly string _libraryVersion;
+        private readonly string _osArch;
+        private readonly string _osName;
+        private readonly string _osVersion;
 
         private readonly RestClient _restClient;
         private int? _connectTimeoutMilliseconds;
@@ -36,7 +37,7 @@ namespace EasyPost
             set => _requestTimeoutMilliseconds = value;
         }
 
-        private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
+        private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
 
         /// <summary>
         ///     Constructor for the EasyPost client.
@@ -48,18 +49,11 @@ namespace EasyPost
             ServicePointManager.SecurityProtocol |= Security.GetProtocol();
             Configuration = clientConfiguration ?? throw new ArgumentNullException(nameof(clientConfiguration));
 
-            try
-            {
-                Assembly assembly = typeof(Client).Assembly;
-                FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
-                _libraryVersion = info.FileVersion ?? "Unknown";
-            }
-            catch (Exception)
-            {
-                _libraryVersion = "Unknown";
-            }
-
-            _dotNetVersion = Environment.Version.ToString();
+            _libraryVersion = RuntimeInfo.ApplicationInfo.ApplicationVersion;
+            _dotNetVersion = RuntimeInfo.ApplicationInfo.DotNetVersion;
+            _osName = RuntimeInfo.OperationSystemInfo.Name;
+            _osVersion = RuntimeInfo.OperationSystemInfo.Version;
+            _osArch = RuntimeInfo.OperationSystemInfo.Architecture;
 
             RestClientOptions clientOptions = new RestClientOptions
             {
@@ -115,7 +109,11 @@ namespace EasyPost
             try
             {
                 body = JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
-                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string> { "error", "errors" });
+                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string>
+                {
+                    "error",
+                    "errors"
+                });
             }
             catch
             {

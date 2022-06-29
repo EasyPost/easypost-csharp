@@ -3,6 +3,7 @@
 ## Next Release
 
 - Adds `billing_type` attribute in CarrierAccount and Rate classes.
+- Collect OS details in User-Agent header.
 
 ## v3.1.0 (2022-05-19)
 
