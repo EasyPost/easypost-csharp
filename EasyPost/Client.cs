@@ -17,7 +17,9 @@ namespace EasyPost
 
         private readonly string _dotNetVersion;
         private readonly string _libraryVersion;
-        private readonly string _osDetails;
+        private readonly string _osArch;
+        private readonly string _osName;
+        private readonly string _osVersion;
 
         private readonly RestClient _restClient;
         private int? _connectTimeoutMilliseconds;
@@ -35,7 +37,7 @@ namespace EasyPost
             set => _requestTimeoutMilliseconds = value;
         }
 
-        private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} {_osDetails}";
+        private string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
 
         /// <summary>
         ///     Constructor for the EasyPost client.
@@ -49,7 +51,9 @@ namespace EasyPost
 
             _libraryVersion = RuntimeInfo.ApplicationInfo.ApplicationVersion;
             _dotNetVersion = RuntimeInfo.ApplicationInfo.DotNetVersion;
-            _osDetails = $"OS/{RuntimeInfo.OperationSystemInfo.Name} OSVersion/{RuntimeInfo.OperationSystemInfo.Version} OSArch/{RuntimeInfo.OperationSystemInfo.Architecture}";
+            _osName = RuntimeInfo.OperationSystemInfo.Name;
+            _osVersion = RuntimeInfo.OperationSystemInfo.Version;
+            _osArch = RuntimeInfo.OperationSystemInfo.Architecture;
 
             RestClientOptions clientOptions = new RestClientOptions
             {
