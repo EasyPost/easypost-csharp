@@ -36,10 +36,10 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("fund");
 
-            CreditCardFund funding = await CreditCard.Fund("20", CreditCard.Priority.Primary);
+            bool funding = await CreditCard.Fund("20000", CreditCard.Priority.Primary);
 
             Assert.IsNotNull(funding);
-            Assert.IsInstanceOfType(funding, typeof(CreditCardFund));
+            Assert.IsInstanceOfType(funding, typeof(bool));
         }
     }
 }

@@ -71,7 +71,7 @@ namespace EasyPost
         /// <param name="amount">Amount to fund.</param>
         /// <param name="paymentMethodId">ID of payment method to fund.</param>
         /// <returns>An EasyPost.CreditCardFund instance.</returns>
-        private static async Task<CreditCardFund> Fund(string amount, string paymentMethodId)
+        private static async Task<bool> Fund(string amount, string paymentMethodId)
         {
             Request request = new Request($"credit_cards/{paymentMethodId}/charges", Method.Post);
             request.AddParameters(new Dictionary<string, object>
@@ -81,7 +81,8 @@ namespace EasyPost
                 }
             });
 
-            return await request.Execute<CreditCardFund>();
+            await request.Execute<CreditCard>();
+            return true;
         }
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace EasyPost
         /// <param name="amount">Amount to fund.</param>
         /// <param name="primaryOrSecondary">Which type of payment method to fund.</param>
         /// <returns>An EasyPost.CreditCardFund instance.</returns>
-        public static async Task<CreditCardFund> Fund(string amount, Priority primaryOrSecondary)
+        public static async Task<bool> Fund(string amount, Priority primaryOrSecondary)
         {
             CreditCard paymentMethod = await GetPaymentMethodByPriority(primaryOrSecondary);
 
