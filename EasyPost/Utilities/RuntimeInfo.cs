@@ -72,7 +72,7 @@ namespace EasyPost.Utilities
                         case PlatformID.MacOSX: // in newer versions, Mac OS X is PlatformID.Unix unfortunately
                             return "Darwin";
                         default:
-                            return "NA";
+                            return "Unknown";
                     }
 #else
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
@@ -127,7 +127,7 @@ namespace EasyPost.Utilities
                         case System.Runtime.InteropServices.Architecture.X86:
                             return "x86";
                         default:
-                            return "NA";
+                            return "Unknown";
                     }
 #endif
                 }
