@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace EasyPost
 {
-    internal static class RuntimeInfo
+    public static class RuntimeInfo
     {
         internal struct ApplicationInfo
         {
@@ -106,8 +106,8 @@ namespace EasyPost
             {
                 get
                 {
-                    // Sorry, Windows ARM users (if you exist), best we can do is determine if we are running on a 64-bit or 32-bit
-                    return Environment.Is64BitOperatingSystem ? "x64" : "x86";
+                    // Because of how this library uses parent files, we can't easily target different frameworks and use different functions to get the architecture.
+                    return "Unknown";
                 }
             }
         }
