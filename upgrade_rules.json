@@ -1,0 +1,266 @@
+{
+    "file_ext": "cs",
+    "versions": {
+        "4.0.0": {
+            "additions": [
+                "EasyPost.Clients.Client easypostClient = new EasyPost.Clients.Client(\"<EASYPOST_API_KEY>\", EasyPost.Clients.ApiVersion.Latest);"
+            ],
+            "replacements": [
+                {
+                    "old": "Address.Create(",
+                    "new": "easypostClient.Addresses.Create("
+                },
+                {
+                    "old": "Address.All(",
+                    "new": "easypostClient.Addresses.All("
+                },
+                {
+                    "old": "Address.CreateAndVerify(",
+                    "new": "easypostClient.Addresses.CreateAndVerify("
+                },
+                {
+                    "old": "Address.Retrieve(",
+                    "new": "easypostClient.Addresses.Retrieve("
+                },
+                {
+                    "old": "Address.Create(",
+                    "new": "easypostClient.Addresses.Create("
+                },
+                {
+                    "old": "ApiKey.All(",
+                    "new": "easypostClient.ApiKeys.All("
+                },
+                {
+                    "old": "Batch.Create(",
+                    "new": "easypostClient.Batches.Create("
+                },
+                {
+                    "old": "Batch.All(",
+                    "new": "easypostClient.Batches.All("
+                },
+                {
+                    "old": "Batch.CreateAndBuy(",
+                    "new": "easypostClient.Batches.CreateAndBuy("
+                },
+                {
+                    "old": "Batch.Retrieve(",
+                    "new": "easypostClient.Batches.Retrieve("
+                },
+                {
+                    "old": "CarrierAccount.Create(",
+                    "new": "easypostClient.CarrierAccounts.Create("
+                },
+                {
+                    "old": "CarrierAccount.All(",
+                    "new": "easypostClient.CarrierAccounts.All("
+                },
+                {
+                    "old": "CarrierAccount.Retrieve(",
+                    "new": "easypostClient.CarrierAccounts.Retrieve("
+                },
+                {
+                    "old": "CarrierType.All(",
+                    "new": "easypostClient.CarrierTypes.All("
+                },
+                {
+                    "old": "CustomsInfo.Create(",
+                    "new": "easypostClient.CustomsInfo.Create("
+                },
+                {
+                    "old": "CustomsInfo.Retrieve(",
+                    "new": "easypostClient.CustomsInfo.Retrieve("
+                },
+                {
+                    "old": "CustomsItem.Create(",
+                    "new": "easypostClient.CustomsItems.Create("
+                },
+                {
+                    "old": "CustomsItem.Retrieve(",
+                    "new": "easypostClient.CustomsItems.Retrieve("
+                },
+                {
+                    "old": "EndShipper.All(",
+                    "new": "easypostClient.EndShippers.All("
+                },
+                {
+                    "old": "EndShipper.Create(",
+                    "new": "easypostClient.EndShippers.Create("
+                },
+                {
+                    "old": "EndShipper.Retrieve(",
+                    "new": "easypostClient.EndShippers.Retrieve("
+                },
+                {
+                    "old": "Event.Create(",
+                    "new": "easypostClient.Events.Create("
+                },
+                {
+                    "old": "Event.All(",
+                    "new": "easypostClient.Events.All("
+                },
+                {
+                    "old": "Event.Retrieve(",
+                    "new": "easypostClient.Events.Retrieve("
+                },
+                {
+                    "old": "Insurance.All(",
+                    "new": "easypostClient.Insurance.All("
+                },
+                {
+                    "old": "Insurance.Create(",
+                    "new": "easypostClient.Insurance.Create("
+                },
+                {
+                    "old": "Insurance.Retrieve(",
+                    "new": "easypostClient.Insurance.Retrieve("
+                },
+                {
+                    "old": "Order.Create(",
+                    "new": "easypostClient.Orders.Create("
+                },
+                {
+                    "old": "Insurance.Retrieve(",
+                    "new": "easypostClient.Insurance.Retrieve("
+                },
+                {
+                    "old": "Parcel.Create(",
+                    "new": "easypostClient.Parcels.Create("
+                },
+                {
+                    "old": "Parcel.Retrieve(",
+                    "new": "easypostClient.Parcels.Retrieve("
+                },
+                {
+                    "old": "Partner.CreateReferral(",
+                    "new": "easypostClient.Partners.CreateReferral("
+                },
+                {
+                    "old": "PaymentMethod.All(",
+                    "new": "easypostClient.Payments.All("
+                },
+                {
+                    "old": "PaymentMethod.Delete(",
+                    "new": "easypostClient.Payments.DeletePaymentMethod("
+                },
+                {
+                    "old": "PaymentMethod.Fund(",
+                    "new": "easypostClient.Payments.FundPaymentMethod("
+                },
+                {
+                    "old": "Pickup.Create(",
+                    "new": "easypostClient.Pickups.Create("
+                },
+                {
+                    "old": "Pickup.Retrieve(",
+                    "new": "easypostClient.Pickups.Retrieve("
+                },
+                {
+                    "old": "Rate.Retrieve(",
+                    "new": "easypostClient.Rates.Retrieve("
+                },
+                {
+                    "old": "Rate.GetLowestRate(",
+                    "new": "easypostClient.Rates.GetLowestRate("
+                },
+                {
+                    "old": "Refund.All(",
+                    "new": "easypostClient.Refunds.All("
+                },
+                {
+                    "old": "Refund.Create(",
+                    "new": "easypostClient.Refunds.Create("
+                },
+                {
+                    "old": "Refund.Retrieve(",
+                    "new": "easypostClient.Refunds.Retrieve("
+                },
+                {
+                    "old": "Report.All(",
+                    "new": "easypostClient.Reports.All("
+                },
+                {
+                    "old": "Report.Create(",
+                    "new": "easypostClient.Reports.Create("
+                },
+                {
+                    "old": "Report.Retrieve(",
+                    "new": "easypostClient.Reports.Retrieve("
+                },
+                {
+                    "old": "ScanForm.All(",
+                    "new": "easypostClient.ScanForms.All("
+                },
+                {
+                    "old": "ScanForm.Create(",
+                    "new": "easypostClient.ScanForms.Create("
+                },
+                {
+                    "old": "ScanForm.Retrieve(",
+                    "new": "easypostClient.ScanForms.Retrieve("
+                },
+                {
+                    "old": "Shipment.Create(",
+                    "new": "easypostClient.Shipments.Create("
+                },
+                {
+                    "old": "Shipment.All(",
+                    "new": "easypostClient.Shipments.All("
+                },
+                {
+                    "old": "Shipment.Retrieve(",
+                    "new": "easypostClient.Shipments.Retrieve("
+                },
+                {
+                    "old": "Shipment.GetLowestSmartrate(",
+                    "new": "EasyPost.Services.V2.ShipmentService.GetLowestSmartrate("
+                },
+                {
+                    "old": "Tracker.All(",
+                    "new": "easypostClient.Trackers.All("
+                },
+                {
+                    "old": "Tracker.Create(",
+                    "new": "easypostClient.Trackers.Create("
+                },
+                {
+                    "old": "Tracker.Retrieve(",
+                    "new": "easypostClient.Trackers.Retrieve("
+                },
+                {
+                    "old": "Tracker.CreateList(",
+                    "new": "easypostClient.Trackers.CreateList("
+                },
+                {
+                    "old": "Tracker.All(",
+                    "new": "easypostClient.Trackers.All("
+                },
+                {
+                    "old": "User.Create(",
+                    "new": "easypostClient.Users.Create("
+                },
+                {
+                    "old": "User.Retrieve(",
+                    "new": "easypostClient.Users.Retrieve("
+                },
+                {
+                    "old": "User.RetrieveMe(",
+                    "new": "easypostClient.Users.RetrieveMe("
+                },
+                {
+                    "old": "Webhook.Create(",
+                    "new": "easypostClient.Webhooks.Create("
+                },
+                {
+                    "old": "Webhook.All(",
+                    "new": "easypostClient.Webhooks.All("
+                },
+                {
+                    "old": "Webhook.Retrieve(",
+                    "new": "easypostClient.Webhooks.Retrieve("
+                }
+            ],
+            "deletions": [
+            ]
+        }
+    }
+}
