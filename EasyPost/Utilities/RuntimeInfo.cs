@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace EasyPost.Utilities
 {
@@ -51,15 +52,6 @@ namespace EasyPost.Utilities
             }
 
             /// <summary>
-            ///     Get user-agent pre-formatted operating system details.
-            /// </summary>
-            /// <returns>Operating system details pre-formatted for the User-Agent header.</returns>
-            internal static string UserAgentOsDetails
-            {
-                get { return $"OS/{Name} OSVersion/{Version} OSArch/{Architecture}"; }
-            }
-
-            /// <summary>
             ///     Get the name of the operating system.
             /// </summary>
             /// <returns>Name of the operating system.</returns>
@@ -67,7 +59,7 @@ namespace EasyPost.Utilities
             {
                 get
                 {
-#if NET45
+#if NET462
                     switch (OperatingSystem.Platform)
                     {
                         case PlatformID.Win32S:
@@ -75,8 +67,6 @@ namespace EasyPost.Utilities
                         case PlatformID.Win32NT:
                         case PlatformID.WinCE:
                             return "Windows";
-                        case PlatformID.Xbox:
-                            return "Xbox"; // yes, really
                         case PlatformID.Unix:
                             return "Linux";
                         case PlatformID.MacOSX: // in newer versions, Mac OS X is PlatformID.Unix unfortunately
@@ -85,19 +75,22 @@ namespace EasyPost.Utilities
                             return "NA";
                     }
 #else
-                            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                            {
-                                return "Linux";
-                            }
-                            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                            {
-                                return "Darwin";
-                            }
-                            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                            {
-                                return "Windows";
-                            }
-                            return "Unknown";
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                    {
+                        return "Linux";
+                    }
+
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                    {
+                        return "Darwin";
+                    }
+
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    {
+                        return "Windows";
+                    }
+
+                    return "Unknown";
 #endif
                 }
             }
@@ -119,8 +112,24 @@ namespace EasyPost.Utilities
             {
                 get
                 {
-                    // sorry, ARM users
+#if NET462
+                    // Sorry, Windows ARM users (if you exist), best we can do is determine if we are running on a 64-bit or 32-bit
                     return Environment.Is64BitOperatingSystem ? "x64" : "x86";
+#else
+                    switch (RuntimeInformation.OSArchitecture)
+                    {
+                        case System.Runtime.InteropServices.Architecture.Arm:
+                            return "arm";
+                        case System.Runtime.InteropServices.Architecture.Arm64:
+                            return "arm64";
+                        case System.Runtime.InteropServices.Architecture.X64:
+                            return "x64";
+                        case System.Runtime.InteropServices.Architecture.X86:
+                            return "x86";
+                        default:
+                            return "NA";
+                    }
+#endif
                 }
             }
         }

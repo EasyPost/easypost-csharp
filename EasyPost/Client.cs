@@ -49,7 +49,7 @@ namespace EasyPost
 
             _libraryVersion = RuntimeInfo.ApplicationInfo.ApplicationVersion;
             _dotNetVersion = RuntimeInfo.ApplicationInfo.DotNetVersion;
-            _osDetails = RuntimeInfo.OperationSystemInfo.UserAgentOsDetails;
+            _osDetails = $"OS/{RuntimeInfo.OperationSystemInfo.Name} OSVersion/{RuntimeInfo.OperationSystemInfo.Version} OSArch/{RuntimeInfo.OperationSystemInfo.Architecture}";
 
             RestClientOptions clientOptions = new RestClientOptions
             {
