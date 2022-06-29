@@ -81,8 +81,7 @@ namespace EasyPost
                 }
             });
 
-            await request.Execute<CreditCard>();
-            return true;
+            return await request.Execute();
         }
 
         /// <summary>
