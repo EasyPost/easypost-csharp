@@ -1,3 +1,7 @@
+:: This script will build a .NET project in Release mode, sign the generated DLLs with a provided PFX certificate,
+:: package the DLLs into a NuGet package, and sign the NuGet package with the provided PFX certificate.
+:: This script also handles pre-run cleanup (will delete old DLLs and NuGet package files)
+
 :: Requirements:
 :: - NuGet is installed on the machine and is accessible everywhere (added to PATH)
 :: - dotnet is installed on the machine and is accessible everywhere (added to PATH) (might be in C:\Program Files\dotnet)
@@ -7,9 +11,8 @@
 
 :: Parse command line arguments
 SET projectName=%1
-SET /A versionCount=%2
-SET certFile=%3
-SET certPass=%4
+SET certFile=%2
+SET certPass=%3
 SET containerName=EasyPost
 
 :: Delete old files
@@ -37,21 +40,6 @@ dotnet restore || GOTO :commandFailed
 @ECHO Building project for release...
 dotnet msbuild -property:Configuration="Release" -property:Platform="Any CPU" -target:Rebuild -restore || GOTO :commandFailed
 
-:: Verify lib folder and DLL count
-@ECHO:
-@ECHO Verifying DLLs...
-SET /A dllCount=0
-FOR /R lib %%a IN (*.dll) DO (
-    SET /A dllCount+=1
-)
-:: Might find additional ref DLLs made by the build, that's fine
-@ECHO DLL Count: %dllCount%
-@ECHO Expected DLL Count: %versionCount%
-IF %dllCount% LSS %versionCount% (
-    @ECHO Could not find expected number of DLLs.
-    GOTO :exitWithError
-)
-
 :: Sign the DLLs
 @ECHO:
 @ECHO Signing DLLs with certificate...
@@ -61,7 +49,7 @@ FOR /R lib %%F IN (*.dll) DO (
     signtool sign /f "%certFile%" /p "%certPass%" /v /tr http://timestamp.digicert.com?alg=sha256 /td SHA256 /fd SHA256 "%%F" || GOTO :commandFailed
 )
 
-:: Package the DLLs in a NuGet package
+:: Package the DLLs in a NuGet package (will fail if DLLs missing)
 @ECHO:
 @ECHO Generating NuGet package...
 nuget pack %projectName%.nuspec || GOTO :commandFailed
