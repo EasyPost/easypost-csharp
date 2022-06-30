@@ -13,7 +13,11 @@
 SET projectName=%1
 SET certFile=%2
 SET certPass=%3
+
+:: Constants
 SET containerName=EasyPost
+SET buildMode="Release"
+SET buildPlatform="Any CPU"
 
 :: Delete old files
 @ECHO:
@@ -27,29 +31,21 @@ DEL /S /Q /F *.nupkg
 sn -d "%containerName%"
 SnInstallPfx "%certFile%" "%certPass%" "%containerName%" || GOTO :commandFailed
 
-:: Restore NuGet packages and dependencies
+:: Restore dependencies and build solution
 @ECHO:
-@ECHO Restoring dependencies...
-:: Runs nuget restore under the hood
-:: Not really necessary, since restore is run as part of build below
-dotnet restore || GOTO :commandFailed
-
-:: Build solution in Release mode
-:: Configuration details are hard-coded
-@ECHO:
-@ECHO Building project for release...
-dotnet msbuild -property:Configuration="Release" -property:Platform="Any CPU" -target:Rebuild -restore || GOTO :commandFailed
+@ECHO Restoring and building project...
+dotnet msbuild -property:Configuration="%buildMode%" -property:Platform="%buildPlatform" -target:Rebuild -restore || GOTO :commandFailed
 
 :: Sign the DLLs
 @ECHO:
 @ECHO Signing DLLs with certificate...
 FOR /R lib %%F IN (*.dll) DO (
-    REM Don't ask why we need to do both, I don't know, we just do
+    REM ¯\_(ツ)_/¯
     sn -Rca "%%F" "%containerName%" || GOTO :commandFailed
     signtool sign /f "%certFile%" /p "%certPass%" /v /tr http://timestamp.digicert.com?alg=sha256 /td SHA256 /fd SHA256 "%%F" || GOTO :commandFailed
 )
 
-:: Package the DLLs in a NuGet package (will fail if DLLs missing)
+:: Package the DLLs in a NuGet package (will fail if DLLs are missing)
 @ECHO:
 @ECHO Generating NuGet package...
 nuget pack %projectName%.nuspec || GOTO :commandFailed
