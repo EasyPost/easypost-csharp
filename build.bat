@@ -56,7 +56,7 @@ IF %dllCount% LSS %versionCount% (
 @ECHO:
 @ECHO Signing DLLs with certificate...
 FOR /R lib %%F IN (*.dll) DO (
-    :: Don't ask why we need to do both, I don't know, we just do
+    REM Don't ask why we need to do both, I don't know, we just do
     sn -Rca "%%F" "%containerName%" || GOTO :commandFailed
     signtool sign /f "%certFile%" /p "%certPass%" /v /tr http://timestamp.digicert.com?alg=sha256 /td SHA256 /fd SHA256 "%%F" || GOTO :commandFailed
 )
@@ -89,7 +89,7 @@ GOTO :eof
 
 :usage
 @ECHO:
-@ECHO Usage: %0 "<PROJECT_NAME>" "<VERSION_COUNT>" "<PATH_TO_CERTIFICATE>" "<CERTIFICATE_PASSWORD>"
+@ECHO Usage: %0 <PROJECT_NAME> <VERSION_COUNT> <PATH_TO_CERTIFICATE> <CERTIFICATE_PASSWORD>
 GOTO :exitWithError
 
 :commandFailed
