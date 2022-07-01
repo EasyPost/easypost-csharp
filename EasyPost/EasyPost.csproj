@@ -47,14 +47,15 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\EasyPost.pfx</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>..\EasyPost.pub</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\EasyPost.pfx">
-      <Link>EasyPost.pfx</Link>
+    <None Include="..\EasyPost.pub">
+      <Link>EasyPost.pub</Link>
     </None>
   </ItemGroup>
   <ItemGroup>
