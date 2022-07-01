@@ -37,18 +37,27 @@ namespace EasyPost
             {
                 get
                 {
-                    string dotNetVersion = Environment.Version.ToString();
-                    if (dotNetVersion == "4.0.30319.42000")
+                    Version dotNetVersion = Environment.Version;
+                    if (dotNetVersion == null)
+                    {
+                        /*
+                         * We're on a pre-4.0 .NET Framework version, where Environment.Version is null.
+                         */
+                        return "3.5-";
+                    }
+
+                    string versionString = dotNetVersion.ToString();
+                    if (versionString == "4.0.30319.42000")
                     {
                         /*
                          * We're on a v4.6+ version (or pre-.NET Core 3.0, which we don't support),
                          * but we can't get the exact version.
                          * See: https://docs.microsoft.com/en-us/dotnet/api/system.environment.version?view=net-6.0#remarks
                          */
-                        dotNetVersion = "4.6+";
+                        versionString = "4.6+";
                     }
 
-                    return dotNetVersion;
+                    return versionString;
                 }
             }
         }
