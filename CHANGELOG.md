@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v2.8.3 (TBD)
+## v2.8.3 (2022-07-01)
 
 * Backport improved User-Agent to collect OS details.
 
