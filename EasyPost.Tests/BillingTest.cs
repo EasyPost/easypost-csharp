@@ -4,14 +4,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace EasyPost.Tests
 {
     [TestClass]
-    public class PaymentMethodTest
+    public class BillingTest
     {
         private TestUtils.VCR _vcr;
 
         [TestInitialize]
         public void Initialize()
         {
-            _vcr = new TestUtils.VCR("payment_method", TestUtils.ApiKey.Production);
+            _vcr = new TestUtils.VCR("billing", TestUtils.ApiKey.Production);
         }
 
         [Ignore]
