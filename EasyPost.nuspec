@@ -37,10 +37,6 @@
     <files>
         <file src="lib\net35\EasyPost.Net35.dll" target="lib\net35" />
         <file src="lib\net35\EasyPost.Net35.xml" target="lib\net35" />
-        <file src="lib\net40\EasyPost.Net40.dll" target="lib\net40" />
-        <file src="lib\net40\EasyPost.Net40.xml" target="lib\net40" />
-        <file src="lib\net45\EasyPost.dll" target="lib\net45" />
-        <file src="lib\net45\EasyPost.xml" target="lib\net45" />
         <file src="lib\netcoreapp2.0\netcoreapp2.0\EasyPost.NetCore20.dll" target="lib\netcoreapp2.0" />
         <file src="lib\netcoreapp2.0\EasyPost.NetCore20.xml" target="lib\netcoreapp2.0" />
         <file src="lib\netcoreapp3.1\netcoreapp3.1\EasyPost.NetCore31.dll" target="lib\netcoreapp3.1" />

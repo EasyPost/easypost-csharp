@@ -3,6 +3,7 @@
 ## v2.8.3 (2022-07-01)
 
 * Backport improved User-Agent to collect OS details.
+* Built for .NET Framework 3.5, .NET Core 2.0 and .NET 3.0. Users on .NET Framework 4.X should be able to use the .NET Framework 3.5 version.
 
 ## v2.8.2 (2022-02-25)
 
