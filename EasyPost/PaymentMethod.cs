@@ -107,9 +107,9 @@ namespace EasyPost
                 switch (Type)
                 {
                     case PaymentMethodType.BankAccount:
-                        return "bank_account";
+                        return "bank_accounts";
                     case PaymentMethodType.CreditCard:
-                        return "credit_card";
+                        return "credit_cards";
                     default:
                         throw new Exception("Unknown payment method type");
                 }
