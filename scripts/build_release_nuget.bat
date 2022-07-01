@@ -13,54 +13,33 @@
 SET projectName=%1
 SET certFile=%2
 SET certPass=%3
-
-:: Constants
-SET containerName=EasyPost
-SET buildMode="Release"
-SET buildPlatform="Any CPU"
+SET containerName=%4
+SET buildMode=%5
+SET buildPlatform=%6
 
 :: Delete old files
-@ECHO:
-@ECHO Cleaning old files...
-@RD /S /Q lib
-DEL /S /Q /F *.nupkg
+CALL delete_old_assemblies.bat
 
 :: Install certificate (needed to automate signing later on)
-@ECHO:
-@ECHO (Re-)Installing certificate to system...
-sn -d "%containerName%"
-SnInstallPfx "%certFile%" "%certPass%" "%containerName%" || GOTO :commandFailed
+CALL install_cert.bat "%certFile%" "%certPass%" "%containerName%"
 
 :: Restore dependencies and build solution
-@ECHO:
-@ECHO Restoring and building project...
-dotnet msbuild -property:Configuration="%buildMode%" -property:Platform="%buildPlatform" -target:Rebuild -restore || GOTO :commandFailed
+CALL build_project.bat "%buildMode%" "%buildPlatform%"
 
 :: Sign the DLLs
-@ECHO:
-@ECHO Signing DLLs with certificate...
-FOR /R lib %%F IN (*.dll) DO (
-    REM We need to run the DLLs through both sn.exe and signtool to get complete the signing process
-    sn -Rca "%%F" "%containerName%" || GOTO :commandFailed
-    signtool sign /f "%certFile%" /p "%certPass%" /v /tr http://timestamp.digicert.com?alg=sha256 /td SHA256 /fd SHA256 "%%F" || GOTO :commandFailed
-)
+CALL sign_dlls.bat "%certFile%" "%certPass%" "%containerName%"
 
 :: Package the DLLs in a NuGet package (will fail if DLLs are missing)
-@ECHO:
-@ECHO Generating NuGet package...
-nuget pack %projectName%.nuspec || GOTO :commandFailed
+CALL pack_nuget.bat "%projectName%"
 
 :: Sign the NuGet package
-@ECHO:
-@ECHO Signing NuGet package with certificate...
-:: Should only be one .nupkg file at this point, since we deleted the old ones
+CALL sign_nuget.bat "%certFile%" "%certPass%"
 SET nugetFileName=
 FOR /R %%F IN (*.nupkg) DO (
     SET nugetFileName="%%F"
-    nuget sign "%%F" -Timestamper http://timestamp.digicert.com -CertificatePath "%certFile%" -CertificatePassword "%certPass%" || GOTO :commandFailed
 )
 IF [%nugetFileName%]==[] (
-    ECHO Could not find NuGet package to sign.
+    ECHO Could not find NuGet package.
     GOTO :exitWithError
 )
 
