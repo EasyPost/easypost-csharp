@@ -40,7 +40,7 @@ dotnet msbuild -property:Configuration="%buildMode%" -property:Platform="%buildP
 @ECHO:
 @ECHO Signing DLLs with certificate...
 FOR /R lib %%F IN (*.dll) DO (
-    REM ¯\_(ツ)_/¯
+    REM We need to run the DLLs through both sn.exe and signtool to get complete the signing process
     sn -Rca "%%F" "%containerName%" || GOTO :commandFailed
     signtool sign /f "%certFile%" /p "%certPass%" /v /tr http://timestamp.digicert.com?alg=sha256 /td SHA256 /fd SHA256 "%%F" || GOTO :commandFailed
 )
