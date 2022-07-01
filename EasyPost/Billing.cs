@@ -10,11 +10,23 @@ namespace EasyPost
         /// <summary>
         ///     Delete a payment method.
         /// </summary>
-        /// <param name="paymentMethodId">ID of the payment method to delete.</param>
+        /// <param name="priority">Which type of payment method to delete.</param>
         /// <returns>Whether the request was successful or not.</returns>
-        public static async Task<bool> DeletePaymentMethod(string paymentMethodId)
+        public static async Task<bool> DeletePaymentMethod(PaymentMethod.Priority priority)
         {
-            Request request = new Request($"credit_cards/{paymentMethodId}", Method.Delete);
+            PaymentMethodObject paymentMethod = await GetPaymentMethodByPriority(priority);
+
+            return await DeletePaymentMethod(paymentMethod);
+        }
+
+        /// <summary>
+        ///     Delete a payment method.
+        /// </summary>
+        /// <param name="paymentMethodObject">Payment method to delete.</param>
+        /// <returns>Whether the request was successful or not.</returns>
+        public static async Task<bool> DeletePaymentMethod(PaymentMethodObject paymentMethodObject)
+        {
+            Request request = new Request($"{paymentMethodObject.Endpoint}/{paymentMethodObject.id}", Method.Delete);
 
             return await request.Execute();
         }
@@ -23,13 +35,24 @@ namespace EasyPost
         ///     Fund your wallet from a specific payment method.
         /// </summary>
         /// <param name="amount">Amount to fund.</param>
-        /// <param name="primaryOrSecondary">Which type of payment method to use to fund.</param>
+        /// <param name="priority">Which type of payment method to use to fund the wallet.</param>
         /// <returns>True if successful, false otherwise.</returns>
-        public static async Task<bool> FundWallet(string amount, PaymentMethod.Priority primaryOrSecondary)
+        public static async Task<bool> FundWallet(string amount, PaymentMethod.Priority priority)
         {
-            PaymentMethodObject paymentMethod = await GetPaymentMethodByPriority(primaryOrSecondary);
+            PaymentMethodObject paymentMethod = await GetPaymentMethodByPriority(priority);
 
-            Request request = new Request($"credit_cards/{paymentMethod.id}/charges", Method.Post);
+            return await FundWallet(amount, paymentMethod);
+        }
+
+        /// <summary>
+        ///     Fund your wallet from a specific payment method.
+        /// </summary>
+        /// <param name="amount">Amount to fund.</param>
+        /// <param name="paymentMethodObject">Payment method to use to fund the wallet.</param>
+        /// <returns>True if successful, false otherwise.</returns>
+        public static async Task<bool> FundWallet(string amount, PaymentMethodObject paymentMethodObject)
+        {
+            Request request = new Request($"{paymentMethodObject.Endpoint}/{paymentMethodObject.id}/charges", Method.Post);
             request.AddParameters(new Dictionary<string, object>
             {
                 {
@@ -82,9 +105,9 @@ namespace EasyPost
                     break;
             }
 
-            if (paymentMethod == null || !paymentMethod.id.StartsWith("card_"))
+            if (paymentMethod?.id == null)
             {
-                throw new Exception("The chosen payment method is not a credit card. Please try again.");
+                throw new Exception("The chosen payment method is not set up yet.");
             }
 
             return paymentMethod;
