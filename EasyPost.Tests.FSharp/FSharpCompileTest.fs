@@ -3,6 +3,7 @@
 
 namespace EasyPost.Tests.FSharp
 
+open EasyPost
 open Microsoft.VisualStudio.TestTools.UnitTesting
 
 [<TestClass>]
