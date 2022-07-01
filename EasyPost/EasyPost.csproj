@@ -98,6 +98,7 @@
     <Compile Include="Report.cs" />
     <Compile Include="ReportList.cs" />
     <Compile Include="Resource.cs" />
+    <Compile Include="RuntimeInfo.cs"/>
     <Compile Include="Smartrate.cs" />
     <Compile Include="TimeInTransit.cs" />
     <Compile Include="TrackerList.cs" />

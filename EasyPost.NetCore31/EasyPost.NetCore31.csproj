@@ -208,6 +208,9 @@
     <Compile Include="..\EasyPost\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\RuntimeInfo.cs">
+      <Link>RuntimeInfo.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EasyPost\EasyPost.pfx">

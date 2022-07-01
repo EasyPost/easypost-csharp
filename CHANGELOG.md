@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v2.8.3 (TBD)
+
+* Backport improved User-Agent to collect OS details.
+
 ## v2.8.2 (2022-02-25)
 
 * Fixes a bug where failure to retrieve Assembly information to populate the `User-Agent` header on some platforms/versions would result in the inability to make HTTP requests

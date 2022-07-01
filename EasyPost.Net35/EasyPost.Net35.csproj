@@ -164,6 +164,9 @@
     <Compile Include="..\EasyPost\Resource.cs">
       <Link>Resource.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\RuntimeInfo.cs">
+      <Link>RuntimeInfo.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\Message.cs">
       <Link>Message.cs</Link>
     </Compile>

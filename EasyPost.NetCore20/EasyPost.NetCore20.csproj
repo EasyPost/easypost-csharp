@@ -205,6 +205,9 @@
     <Compile Include="..\EasyPost\Error.cs">
       <Link>Error.cs</Link>
     </Compile>
+    <Compile Include="..\EasyPost\RuntimeInfo.cs">
+      <Link>RuntimeInfo.cs</Link>
+    </Compile>
     <Compile Include="..\EasyPost\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
