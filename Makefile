@@ -52,4 +52,8 @@ lint-check:
 test:
 	dotnet test
 
-.PHONY: help release build-dev build install-cert sign clean restore lint lint-check test
+## validate-batch - Validate the Batch scripts (Windows only)
+validate-batch:
+	scripts\check_scripts.bat
+
+.PHONY: help release build-dev build install-cert sign clean restore lint lint-check test validate-batch

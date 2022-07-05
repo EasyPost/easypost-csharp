@@ -17,22 +17,22 @@ SET containerName=%4
 SET buildMode=%5
 
 :: Delete old files
-CALL scripts\delete_old_assemblies.bat
+CALL "scripts\delete_old_assemblies.bat"
 
 :: Install certificate (needed to automate signing later on)
-CALL scripts\install_cert.bat %certFile% %certPass% %containerName% || GOTO :commandFailed
+CALL "scripts\install_cert.bat" %certFile% %certPass% %containerName% || GOTO :commandFailed
 
 :: Restore dependencies and build solution
-CALL scripts\build_project.bat %buildMode% || GOTO :commandFailed
+CALL "scripts\build_project.bat" %buildMode% || GOTO :commandFailed
 
 :: Sign the DLLs
-CALL scripts\sign_dlls.bat %certFile% %certPass% %containerName% || GOTO :commandFailed
+CALL "scripts\sign_dlls.bat" %certFile% %certPass% %containerName% || GOTO :commandFailed
 
 :: Package the DLLs in a NuGet package (will fail if DLLs are missing)
-CALL scripts\pack_nuget.bat %projectName% || GOTO :commandFailed
+CALL "scripts\pack_nuget.bat" %projectName% || GOTO :commandFailed
 
 :: Sign the NuGet package
-CALL scripts\sign_nuget.bat %certFile% %certPass% || GOTO :commandFailed
+CALL "scripts\sign_nuget.bat" %certFile% %certPass% || GOTO :commandFailed
 SET nugetFileName=
 FOR /R %%F IN (*.nupkg) DO (
     SET nugetFileName="%%F"
