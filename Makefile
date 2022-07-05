@@ -7,30 +7,30 @@ help:
 # cert= - The certificate to use for signing the built assets.
 # pass= - The password for the certificate.
 release:
-	scripts/build_release_nuget EasyPost ${cert} ${pass} EasyPost "Release" "Any CPU"
+	scripts\build_release_nuget.bat EasyPost ${cert} ${pass} EasyPost Release
 
 ## build-dev - Build the project in Debug mode
 build-dev:
-	dotnet msbuild -property:Configuration="Debug" -property:Platform="Any CPU" -target:Rebuild -restore
+	dotnet msbuild -property:Configuration="Debug" -target:Rebuild -restore
 
 ## build - Build the project in Release mode
 build:
-	dotnet msbuild -property:Configuration="Release" -property:Platform="Any CPU" -target:Rebuild -restore
+	dotnet msbuild -property:Configuration="Release" -target:Rebuild -restore
 
 ## install-cert - Install the PFX certificate to your system (Windows only)
 # @parameters:
 # cert= - The certificate to use for signing the built assets.
 # pass= - The password for the certificate.
 install-cert:
-	scripts/install_cert ${cert} ${pass}
+	scripts\install_cert.bat ${cert} ${pass}
 
 ## sign - Sign all generated DLLs and NuGet packages with the provided certificate (Windows only)
 # @parameters:
 # cert= - The certificate to use for signing the built assets.
 # pass= - The password for the certificate.
 sign:
-	install-cert ${cert} ${pass}
-	scripts/sign_assemblies ${cert} ${pass} EasyPost
+	install-cert cert=${cert} pass=${pass}
+	scripts\sign_assemblies.bat ${cert} ${pass} EasyPost
 
 ## clean - Clean the project
 clean:

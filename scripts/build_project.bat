@@ -7,12 +7,12 @@
 
 :: Parse command line arguments
 SET buildMode=%1
-SET buildPlatform=%2
 
 :: Restore dependencies and build solution
 @ECHO:
 @ECHO Restoring and building project...
-dotnet msbuild -property:Configuration="%buildMode%" -property:Platform="%buildPlatform%" -target:Rebuild -restore || GOTO :commandFailed
+@ECHO %buildMode%
+dotnet msbuild -property:Configuration="%buildMode%" -target:Rebuild -restore || GOTO :commandFailed
 
 :commandFailed
 @ECHO Command failed.
