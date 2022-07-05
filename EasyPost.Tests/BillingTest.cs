@@ -21,10 +21,7 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("delete_payment_method");
 
-            PaymentMethod paymentMethod = await Billing.RetrievePaymentMethods();
-            PaymentMethodObject creditCardOrBankAccount = paymentMethod.primary_payment_method;
-
-            bool success = await Billing.DeletePaymentMethod(creditCardOrBankAccount);
+            bool success = await Billing.DeletePaymentMethod(PaymentMethod.Priority.Primary);
 
             Assert.IsTrue(success);
         }
