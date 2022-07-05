@@ -20,7 +20,7 @@ curl https://www.robvanderwoude.com/files/batcodecheck.zip --output batcodecheck
 @ECHO:
 @ECHO Verifying Batch files...
 FOR /R scripts %%F IN (*.bat) DO (
-    BatCodeCheck.exe "%%F" /L /W
+    BatCodeCheck.exe "%%F" /LS
 )
 
 :commandFailed
