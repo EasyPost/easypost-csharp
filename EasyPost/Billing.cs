@@ -16,17 +16,7 @@ namespace EasyPost
         {
             PaymentMethodObject paymentMethod = await GetPaymentMethodByPriority(priority);
 
-            return await DeletePaymentMethod(paymentMethod);
-        }
-
-        /// <summary>
-        ///     Delete a payment method.
-        /// </summary>
-        /// <param name="paymentMethodObject">Payment method to delete.</param>
-        /// <returns>Whether the request was successful or not.</returns>
-        public static async Task<bool> DeletePaymentMethod(PaymentMethodObject paymentMethodObject)
-        {
-            Request request = new Request($"{paymentMethodObject.Endpoint}/{paymentMethodObject.id}", Method.Delete);
+            Request request = new Request($"{paymentMethod.Endpoint}/{paymentMethod.id}", Method.Delete);
 
             return await request.Execute();
         }
@@ -35,24 +25,13 @@ namespace EasyPost
         ///     Fund your wallet from a specific payment method.
         /// </summary>
         /// <param name="amount">Amount to fund.</param>
-        /// <param name="priority">Which type of payment method to use to fund the wallet.</param>
+        /// <param name="priority">Which type of payment method to use to fund the wallet. Defaults to primary.</param>
         /// <returns>True if successful, false otherwise.</returns>
-        public static async Task<bool> FundWallet(string amount, PaymentMethod.Priority priority)
+        public static async Task<bool> FundWallet(string amount, PaymentMethod.Priority priority = PaymentMethod.Priority.Primary)
         {
             PaymentMethodObject paymentMethod = await GetPaymentMethodByPriority(priority);
 
-            return await FundWallet(amount, paymentMethod);
-        }
-
-        /// <summary>
-        ///     Fund your wallet from a specific payment method.
-        /// </summary>
-        /// <param name="amount">Amount to fund.</param>
-        /// <param name="paymentMethodObject">Payment method to use to fund the wallet.</param>
-        /// <returns>True if successful, false otherwise.</returns>
-        public static async Task<bool> FundWallet(string amount, PaymentMethodObject paymentMethodObject)
-        {
-            Request request = new Request($"{paymentMethodObject.Endpoint}/{paymentMethodObject.id}/charges", Method.Post);
+            Request request = new Request($"{paymentMethod.Endpoint}/{paymentMethod.id}/charges", Method.Post);
             request.AddParameters(new Dictionary<string, object>
             {
                 {
