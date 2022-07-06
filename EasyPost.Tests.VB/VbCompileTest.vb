@@ -6,22 +6,9 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Public Class VbCompileTest
     <TestMethod>
     Public Sub TestCompile()
-        'API key is not set, so calling CarrierType.All() will produce an error. But if this runs, then the code compiled properly.
-        Assert.ThrowsException(Of ClientNotConfigured)(Function() CarrierType.All())
-    End Sub
+        Dim address = New Address()
 
-    <TestMethod>
-    Public Sub TestAddress()
-        Dim addressData As New Dictionary(Of String, Object)()
-
-        addressData.Add("name", "John Smith")
-        addressData.Add("street1", "123 Main St")
-        addressData.Add("city", "San Francisco")
-        addressData.Add("state", "CA")
-        addressData.Add("zip", "94107")
-        addressData.Add("country", "US")
-
-        'Without an API key, this will throw an error. But as long as it's a ClientNotConfigured exception, it's a success.
-        Assert.ThrowsException(Of ClientNotConfigured)(Function() Address.Create(addressData))
+        'Do not need to actually assert anything here. If it runs, it means it compiled successfully.
+        Assert.IsNotNull(address)
     End Sub
 End Class
