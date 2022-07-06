@@ -24,6 +24,10 @@ build:
 install-cert:
 	scripts\install_cert.bat ${cert} ${pass}
 
+## install-scanner - Install SecurityCodeScan to your system
+install-scanner:
+	dotnet tool install -g security-scan
+
 ## sign - Sign all generated DLLs and NuGet packages with the provided certificate (Windows only)
 # @parameters:
 # cert= - The certificate to use for signing the built assets.
@@ -56,4 +60,10 @@ test:
 lint-scripts:
 	scripts\lint_scripts.bat
 
-.PHONY: help release build-dev build install-cert sign clean restore lint lint-check test lint-scripts
+## scan - Scan the project for security issues (must run install-scanner first)
+# Makefile cannot access global dotnet tools, so you need to run the below command manually.
+scan:
+	security-scan --verbose --no-banner --ignore-msbuild-errors EasyPost.sln
+	# "--ignore-msbuild-errors" needed since MSBuild does not like F#: https://github.com/security-code-scan/security-code-scan/issues/235
+
+.PHONY: help release build-dev build install-cert sign clean restore lint lint-check test lint-scripts install-scanner scan

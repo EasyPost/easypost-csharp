@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Security.Permissions;
 
 namespace EasyPost
 {
@@ -52,14 +51,14 @@ namespace EasyPost
     {
         private readonly string _property;
 
-        public PropertyMissing(string property)
-        {
-            _property = property;
-        }
-
         public override string Message
         {
             get { return $"Missing {_property}"; }
+        }
+
+        public PropertyMissing(string property)
+        {
+            _property = property;
         }
     }
 
