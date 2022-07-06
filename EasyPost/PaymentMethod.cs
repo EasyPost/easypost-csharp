@@ -46,6 +46,7 @@ namespace EasyPost
         {
             get
             {
+                PaymentMethodType? type = null;
                 if (id == null)
                 {
                     return null;
@@ -53,15 +54,15 @@ namespace EasyPost
 
                 if (id.StartsWith("card_"))
                 {
-                    return PaymentMethodType.CreditCard;
+                    type = PaymentMethodType.CreditCard;
                 }
 
-                if (id.StartsWith("bank_"))
+                else if (id.StartsWith("bank_"))
                 {
-                    return PaymentMethodType.BankAccount;
+                    type = PaymentMethodType.BankAccount;
                 }
 
-                return null;
+                return type;
             }
         }
 
@@ -69,15 +70,20 @@ namespace EasyPost
         {
             get
             {
+                string endpoint;
                 switch (Type)
                 {
                     case PaymentMethodType.BankAccount:
-                        return "bank_accounts";
+                        endpoint = "bank_accounts";
+                        break;
                     case PaymentMethodType.CreditCard:
-                        return "credit_cards";
+                        endpoint = "credit_cards";
+                        break;
                     default:
                         throw new Exception("Unknown payment method type");
                 }
+
+                return endpoint;
             }
         }
 
