@@ -19,7 +19,7 @@
     <PackageReference Include="RestSharp" Version="[107.3.0, 108.0.0)"/>
     <PackageReference Include="MSTest.TestFramework" Version="2.2.8"/>
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.8"/>
-    <PackageReference Include="SecurityCodeScan.VS2019" Version="5.6.3">
+    <PackageReference Include="SecurityCodeScan.VS2019" Version="[5.0.0, 6.0.0)">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
