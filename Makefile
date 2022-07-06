@@ -64,5 +64,6 @@ lint-scripts:
 # Makefile cannot access global dotnet tools, so you need to run the below command manually.
 scan:
 	security-scan --verbose --no-banner --ignore-msbuild-errors EasyPost.sln
+	# "--ignore-msbuild-errors" needed since MSBuild does not like F#: https://github.com/security-code-scan/security-code-scan/issues/235
 
 .PHONY: help release build-dev build install-cert sign clean restore lint lint-check test lint-scripts install-scanner scan
