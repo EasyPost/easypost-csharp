@@ -2,7 +2,6 @@
 
 
 :: Requirements:
-:: - Chocolatey is installed on the machine and is accessible everywhere (added to PATH)
 :: - 7Zip is installed on the machine and is accessible everywhere (added to PATH)
 :: - Might need to run with elevated privileges
 
