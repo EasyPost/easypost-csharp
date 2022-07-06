@@ -39,6 +39,50 @@ namespace EasyPost
             BankAccount
         }
 
+        /// <summary>
+        ///     Get what type of payment method this is (credit card, bank account, etc.)
+        /// </summary>
+        public PaymentMethodType? Type
+        {
+            get
+            {
+                if (id == null)
+                {
+                    return null;
+                }
+
+                if (id.StartsWith("card_"))
+                {
+                    return PaymentMethodType.CreditCard;
+                }
+
+                if (id.StartsWith("bank_"))
+                {
+                    return PaymentMethodType.BankAccount;
+                }
+
+                return null;
+            }
+        }
+
+        internal string Endpoint
+        {
+            get
+            {
+                switch (Type)
+                {
+                    case PaymentMethodType.BankAccount:
+                        return "bank_accounts";
+                    case PaymentMethodType.CreditCard:
+                        return "credit_cards";
+                    default:
+                        throw new Exception("Unknown payment method type");
+                }
+            }
+        }
+
+        #region JSON Properties
+
         // bank_account
         [JsonProperty("bank_name")]
         public string bank_name { get; set; }
@@ -69,51 +113,10 @@ namespace EasyPost
         // both
         [JsonProperty("object")]
         public string Object { get; set; }
-
-        /// <summary>
-        ///     Get what type of payment method this is (credit card, bank account, etc.)
-        /// </summary>
-        public PaymentMethodType? Type
-        {
-            get
-            {
-                if (id == null)
-                {
-                    return null;
-                }
-
-                if (id.StartsWith("card_"))
-                {
-                    return PaymentMethodType.CreditCard;
-                }
-
-                if (id.StartsWith("bank_"))
-                {
-                    return PaymentMethodType.BankAccount;
-                }
-
-                return null;
-            }
-        }
-
         // bank_account
         [JsonProperty("verified")]
         public bool verified { get; set; }
 
-        internal string Endpoint
-        {
-            get
-            {
-                switch (Type)
-                {
-                    case PaymentMethodType.BankAccount:
-                        return "bank_accounts";
-                    case PaymentMethodType.CreditCard:
-                        return "credit_cards";
-                    default:
-                        throw new Exception("Unknown payment method type");
-                }
-            }
-        }
+        #endregion JSON Properties
     }
 }
