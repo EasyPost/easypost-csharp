@@ -1,4 +1,5 @@
 using System;
+using EasyPost.Utilities;
 using Newtonsoft.Json;
 
 namespace EasyPost
@@ -33,12 +34,6 @@ namespace EasyPost
     /// </summary>
     public class PaymentMethodObject : Resource
     {
-        public enum PaymentMethodType
-        {
-            CreditCard,
-            BankAccount
-        }
-
         /// <summary>
         ///     Get what type of payment method this is (credit card, bank account, etc.)
         /// </summary>
@@ -70,20 +65,24 @@ namespace EasyPost
         {
             get
             {
-                string endpoint;
-                switch (Type)
+                if (Type == null)
                 {
-                    case PaymentMethodType.BankAccount:
-                        endpoint = "bank_accounts";
-                        break;
-                    case PaymentMethodType.CreditCard:
-                        endpoint = "credit_cards";
-                        break;
-                    default:
-                        throw new Exception("Unknown payment method type");
+                    throw new Exception("Unknown payment method type");
                 }
 
-                return endpoint;
+                return Type.EndPoint;
+            }
+        }
+
+        public class PaymentMethodType : Enumeration
+        {
+            public static readonly PaymentMethodType BankAccount = new PaymentMethodType(2, "bank_accounts");
+            public static readonly PaymentMethodType CreditCard = new PaymentMethodType(1, "credit_cards");
+
+            internal string EndPoint => Name;
+
+            private PaymentMethodType(int id, string name) : base(id, name)
+            {
             }
         }
 
