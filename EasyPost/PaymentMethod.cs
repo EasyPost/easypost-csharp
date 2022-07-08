@@ -102,10 +102,10 @@ namespace EasyPost
         public string disabled_at { get; set; }
         // credit_card
         [JsonProperty("exp_month")]
-        public string exp_month { get; set; }
+        public int exp_month { get; set; }
         // credit_card
         [JsonProperty("exp_year")]
-        public string exp_year { get; set; }
+        public int exp_year { get; set; }
         // both
         [JsonProperty("id")]
         public string id { get; set; }
