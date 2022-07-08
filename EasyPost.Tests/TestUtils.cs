@@ -32,7 +32,6 @@ namespace EasyPost.Tests
         {
             "Authorization",
             "User-Agent",
-            "X-Client-User-Agent"
         };
 
         private static readonly List<string> QueryCensors = new List<string>()

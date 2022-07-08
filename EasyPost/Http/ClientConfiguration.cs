@@ -1,7 +1,5 @@
-using System;
-using System.Diagnostics;
-using System.Reflection;
 using EasyPost.Clients;
+using EasyPost.Utilities;
 
 namespace EasyPost.Http
 {
@@ -23,10 +21,33 @@ namespace EasyPost.Http
         ///     The API version.
         /// </summary>
         internal readonly ApiVersionDetails ApiVersionDetails;
+
+        /// <summary>
+        ///    The .NET version of the current application.
+        /// </summary>
         private readonly string _dotNetVersion;
+
+        /// <summary>
+        ///    The version of this library.
+        /// </summary>
         private readonly string _libraryVersion;
 
-        internal string UserAgent => $"EasyPost/{ApiVersionString} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion}";
+        /// <summary>
+        ///    The architecture of the current application's operating system.
+        /// </summary>
+        private readonly string _osArch;
+
+        /// <summary>
+        ///     The name of the current application's operating system.
+        /// </summary>
+        private readonly string _osName;
+
+        /// <summary>
+        ///     The version of the current application's operating system.
+        /// </summary>
+        private readonly string _osVersion;
+
+        internal string UserAgent => $"EasyPost/v2 CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
 
         /// <summary>
         ///     The API version string.
@@ -44,18 +65,11 @@ namespace EasyPost.Http
             ApiVersionDetails = ApiVersionDetails.GetApiVersionDetails(apiVersion);
             ApiBase = $"https://api.easypost.com/{ApiVersionString}";
 
-            try
-            {
-                Assembly assembly = typeof(Client).Assembly;
-                FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
-                _libraryVersion = info.FileVersion ?? "Unknown";
-            }
-            catch (Exception)
-            {
-                _libraryVersion = "Unknown";
-            }
-
-            _dotNetVersion = Environment.Version.ToString();
+            _libraryVersion = RuntimeInfo.ApplicationInfo.ApplicationVersion;
+            _dotNetVersion = RuntimeInfo.ApplicationInfo.DotNetVersion;
+            _osName = RuntimeInfo.OperationSystemInfo.Name;
+            _osVersion = RuntimeInfo.OperationSystemInfo.Version;
+            _osArch = RuntimeInfo.OperationSystemInfo.Architecture;
         }
     }
 }
