@@ -50,7 +50,7 @@ namespace EasyPost.Tests
             Webhook webhook = await CreateBasicWebhook(url);
 
             Assert.IsInstanceOfType(webhook, typeof(Webhook));
-            Assert.IsTrue(webhook.Id.StartsWith("hook_"));
+            Assert.IsTrue(webhook.Id?.StartsWith("hook_"));
             Assert.AreEqual(url, webhook.Url);
         }
 
@@ -94,8 +94,10 @@ namespace EasyPost.Tests
 
             Webhook webhook = await CreateBasicWebhook(url);
 
-            await webhook.Update();
-            // TODO: We should call this something more intuitive in the future, since it doesn't work like the other Update function
+            webhook = await webhook.Update();
+
+            Assert.IsInstanceOfType(webhook, typeof(Webhook));
+            Assert.IsTrue(webhook.Id?.StartsWith("hook_"));
         }
 
         private async Task<Webhook> CreateBasicWebhook(string url)

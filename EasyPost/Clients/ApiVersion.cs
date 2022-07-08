@@ -53,7 +53,7 @@ namespace EasyPost.Clients
             }
 
             ApiVersionDetails other = (obj as ApiVersionDetails)!; // avoid double casting
-            if (other! == null!)
+            if (other == null!)
             {
                 throw new ArgumentException("An ApiVersionDetails object is required for comparison", nameof(obj));
             }

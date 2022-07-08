@@ -58,6 +58,34 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        public async Task TestLowestRate()
+        {
+            UseVCR("lowest_rate", ApiVersion.Latest);
+
+            Pickup pickup = await CreateBasicPickup();
+
+            // test lowest rate with no filters
+            Rate lowestRate = pickup.LowestRate();
+            Assert.AreEqual("NextDay", lowestRate.Service);
+            Assert.AreEqual("0.00", lowestRate.Price);
+            Assert.AreEqual("USPS", lowestRate.Carrier);
+
+            // test lowest rate with service filter (should error due to bad service)
+            List<string> services = new List<string>
+            {
+                "BAD_SERVICE"
+            };
+            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(null, services));
+
+            // test lowest rate with carrier filter (should error due to bad carrier)
+            List<string> carriers = new List<string>
+            {
+                "BAD_CARRIER"
+            };
+            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(carriers));
+        }
+
+        [Fact]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve", ApiVersion.Latest);
@@ -76,34 +104,6 @@ namespace EasyPost.Tests
             Dictionary<string, object> pickupData = Fixture.BasicPickup;
             pickupData["shipment"] = shipment;
             return await Client.Pickups.Create(pickupData);
-        }
-
-        [Fact]
-        public async Task TestLowestRate()
-        {
-            UseVCR("lowest_rate", ApiVersion.Latest);
-
-            Pickup pickup = await CreateBasicPickup();
-
-            // test lowest rate with no filters
-            Rate lowestRate = pickup.LowestRate();
-            Assert.AreEqual("NextDay", lowestRate.Service);
-            Assert.AreEqual("0.00", lowestRate.Price);
-            Assert.AreEqual("USPS", lowestRate.Carrier);
-
-            // test lowest rate with service filter (should error due to bad service)
-            List<string> services = new List<string>
-            {
-                "BAD_SERVICE"
-            };
-            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(null, services, null, null));
-
-            // test lowest rate with carrier filter (should error due to bad carrier)
-            List<string> carriers = new List<string>
-            {
-                "BAD_CARRIER"
-            };
-            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(carriers, null, null, null));
         }
     }
 }

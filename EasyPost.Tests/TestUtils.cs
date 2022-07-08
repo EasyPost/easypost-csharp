@@ -79,6 +79,11 @@ namespace EasyPost.Tests
             private readonly string _testCassettesFolder;
             private readonly EasyVCR.VCR _vcr;
 
+            internal HttpClient Client
+            {
+                get { return _vcr.Client; }
+            }
+
             internal VCR(string testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
             {
                 Censors censors = new Censors("<REDACTED>");
@@ -153,7 +158,7 @@ namespace EasyPost.Tests
                 }
 
                 // get EasyPost client
-                return GetClient(apiKey, apiVersion, _vcr.Client);
+                return GetClient(apiKey, apiVersion, Client);
             }
         }
     }

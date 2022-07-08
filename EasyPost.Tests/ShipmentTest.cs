@@ -16,21 +16,6 @@ namespace EasyPost.Tests
         {
         }
 
-        private async Task<Shipment> CreateBasicShipment()
-        {
-            return await Client.Shipments.Create(Fixture.BasicShipment);
-        }
-
-        private async Task<Shipment> CreateFullShipment()
-        {
-            return await Client.Shipments.Create(Fixture.FullShipment);
-        }
-
-        private async Task<Shipment> CreateOneCallBuyShipment()
-        {
-            return await Client.Shipments.Create(Fixture.OneCallBuyShipment);
-        }
-
         [Fact]
         public async Task TestAll()
         {
@@ -179,6 +164,26 @@ namespace EasyPost.Tests
             Assert.AreEqual("388 Townsend St", shipment.FromAddress.Street1);
         }
 
+        [Fact]
+        public async Task TestInstanceLowestSmartrate()
+        {
+            UseVCR("lowest_smartrate_instance", ApiVersion.Latest);
+
+            Shipment shipment = await CreateBasicShipment();
+
+            // test lowest smartrate with valid filters
+            Smartrate lowestSmartrate = await shipment.LowestSmartrate(1, SmartrateAccuracy.Percentile90);
+            Assert.AreEqual("First", lowestSmartrate.Service);
+            Assert.AreEqual(5.49, lowestSmartrate.Rate);
+            Assert.AreEqual("USPS", lowestSmartrate.Carrier);
+
+            // test lowest smartrate with invalid filters (should error due to strict delivery_days)
+            await Assert.ThrowsExceptionAsync<FilterFailure>(async () => await shipment.LowestSmartrate(0, SmartrateAccuracy.Percentile90));
+
+            // test lowest smartrate with invalid filters (should error due to bad delivery_accuracy)
+            // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
+        }
+
         // If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
         // so that USPS doesn't automatically insure it so we could manually insure it here.
         [Fact]
@@ -195,6 +200,37 @@ namespace EasyPost.Tests
             shipment = await shipment.Insure(100);
 
             Assert.AreEqual("100.00", shipment.Insurance);
+        }
+
+        [Fact]
+        public async Task TestLowestRate()
+        {
+            UseVCR("lowest_rate", ApiVersion.Latest);
+
+            Shipment shipment = await CreateFullShipment();
+
+            // test lowest rate with no filters
+            Rate lowestRate = shipment.LowestRate();
+            Assert.AreEqual("First", lowestRate.Service);
+            Assert.AreEqual("5.49", lowestRate.Price);
+            Assert.AreEqual("USPS", lowestRate.Carrier);
+
+            // test lowest rate with service filter (this rate is higher than the lowest but should filter)
+            List<string> services = new List<string>
+            {
+                "Priority"
+            };
+            lowestRate = shipment.LowestRate(null, services);
+            Assert.AreEqual("Priority", lowestRate.Service);
+            Assert.AreEqual("7.37", lowestRate.Price);
+            Assert.AreEqual("USPS", lowestRate.Carrier);
+
+            // test lowest rate with carrier filter (should error due to bad carrier)
+            List<string> carriers = new List<string>
+            {
+                "BAD_CARRIER"
+            };
+            Assert.ThrowsException<FilterFailure>(() => shipment.LowestRate(carriers));
         }
 
         // Refunding a test shipment must happen within seconds of the shipment being created as test shipments naturally
@@ -266,57 +302,6 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public async Task TestInstanceLowestSmartrate()
-        {
-            UseVCR("lowest_smartrate_instance", ApiVersion.Latest);
-
-            Shipment shipment = await CreateBasicShipment();
-
-            // test lowest smartrate with valid filters
-            Smartrate lowestSmartrate = await shipment.LowestSmartrate(1, SmartrateAccuracy.Percentile90);
-            Assert.AreEqual("First", lowestSmartrate.Service);
-            Assert.AreEqual(5.49, lowestSmartrate.Rate);
-            Assert.AreEqual("USPS", lowestSmartrate.Carrier);
-
-            // test lowest smartrate with invalid filters (should error due to strict delivery_days)
-            await Assert.ThrowsExceptionAsync<FilterFailure>(async () => await shipment.LowestSmartrate(0, SmartrateAccuracy.Percentile90));
-
-            // test lowest smartrate with invalid filters (should error due to bad delivery_accuracy)
-            // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
-        }
-
-        [Fact]
-        public async Task TestLowestRate()
-        {
-            UseVCR("lowest_rate", ApiVersion.Latest);
-
-            Shipment shipment = await CreateFullShipment();
-
-            // test lowest rate with no filters
-            Rate lowestRate = shipment.LowestRate();
-            Assert.AreEqual("First", lowestRate.Service);
-            Assert.AreEqual("5.49", lowestRate.Price);
-            Assert.AreEqual("USPS", lowestRate.Carrier);
-
-            // test lowest rate with service filter (this rate is higher than the lowest but should filter)
-            List<string> services = new List<string>
-            {
-                "Priority"
-            };
-            lowestRate = shipment.LowestRate(null, services, null, null);
-            Assert.AreEqual("Priority", lowestRate.Service);
-            Assert.AreEqual("7.37", lowestRate.Price);
-            Assert.AreEqual("USPS", lowestRate.Carrier);
-
-            // test lowest rate with carrier filter (should error due to bad carrier)
-            List<string> carriers = new List<string>
-            {
-                "BAD_CARRIER"
-            };
-            Assert.ThrowsException<FilterFailure>(() => shipment.LowestRate(carriers, null, null, null));
-        }
-
-        [Fact]
         public async Task TestStaticLowestSmartrate()
         {
             UseVCR("lowest_smartrate_static", ApiVersion.Latest);
@@ -335,6 +320,21 @@ namespace EasyPost.Tests
 
             // test lowest smartrate with invalid filters (should error due to bad delivery_accuracy)
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
+        }
+
+        private async Task<Shipment> CreateBasicShipment()
+        {
+            return await Client.Shipments.Create(Fixture.BasicShipment);
+        }
+
+        private async Task<Shipment> CreateFullShipment()
+        {
+            return await Client.Shipments.Create(Fixture.FullShipment);
+        }
+
+        private async Task<Shipment> CreateOneCallBuyShipment()
+        {
+            return await Client.Shipments.Create(Fixture.OneCallBuyShipment);
         }
     }
 }

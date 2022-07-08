@@ -63,23 +63,6 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public async Task TestRetrieve()
-        {
-            UseVCR("retrieve", ApiVersion.Latest);
-
-            Order order = await CreateBasicOrder();
-
-
-            Order retrievedOrder = await Client.Orders.Retrieve(order.Id);
-
-            Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
-            // Must compare IDs since other elements of objects may be different
-            Assert.AreEqual(order.Id, retrievedOrder.Id);
-        }
-
-        private async Task<Order> CreateBasicOrder() => await Client.Orders.Create(Fixture.BasicOrder);
-
-        [Fact]
         public async Task TestLowestRate()
         {
             UseVCR("lowest_rate", ApiVersion.Latest);
@@ -97,7 +80,7 @@ namespace EasyPost.Tests
             {
                 "Priority"
             };
-            lowestRate = order.LowestRate(null, services, null, null);
+            lowestRate = order.LowestRate(null, services);
             Assert.AreEqual("Priority", lowestRate.Service);
             Assert.AreEqual("7.37", lowestRate.Price);
             Assert.AreEqual("USPS", lowestRate.Carrier);
@@ -107,7 +90,24 @@ namespace EasyPost.Tests
             {
                 "BAD_CARRIER"
             };
-            Assert.ThrowsException<FilterFailure>(() => order.LowestRate(carriers, null, null, null));
+            Assert.ThrowsException<FilterFailure>(() => order.LowestRate(carriers));
         }
+
+        [Fact]
+        public async Task TestRetrieve()
+        {
+            UseVCR("retrieve", ApiVersion.Latest);
+
+            Order order = await CreateBasicOrder();
+
+
+            Order retrievedOrder = await Client.Orders.Retrieve(order.Id);
+
+            Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
+            // Must compare IDs since other elements of objects may be different
+            Assert.AreEqual(order.Id, retrievedOrder.Id);
+        }
+
+        private async Task<Order> CreateBasicOrder() => await Client.Orders.Create(Fixture.BasicOrder);
     }
 }

@@ -23,6 +23,20 @@ namespace EasyPost.Interfaces
         [JsonProperty("updated_at")]
         public DateTime? UpdatedAt { get; internal set; }
 
+        internal string? Prefix
+        {
+            get
+            {
+                if (Id == null)
+                {
+                    return null;
+                }
+
+                string? prefix = Id.Split('_').First() ?? null;
+                return prefix;
+            }
+        }
+
         public override bool Equals(object? obj)
         {
             if (GetType() != obj?.GetType())
@@ -109,7 +123,7 @@ namespace EasyPost.Interfaces
         }
     }
 
-    public interface IEasyPostObject
+    internal interface IEasyPostObject
     {
     }
 }

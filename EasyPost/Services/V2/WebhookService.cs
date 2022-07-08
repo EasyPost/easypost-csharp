@@ -27,7 +27,7 @@ namespace EasyPost.Services.V2
         ///     Create a Webhook.
         /// </summary>
         /// <param name="parameters">
-        ///     Dictionary containing parameters to create the carrier account with. Valid pairs:
+        ///     Dictionary containing parameters to create the webhook with. Valid pairs:
         ///     * { "url", string } Url of the webhook that events will be sent to.
         ///     All invalid keys will be ignored.
         /// </param>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
@@ -26,12 +27,18 @@ namespace EasyPost.Models.V2
         }
 
         /// <summary>
-        ///     Enable a Webhook that has been disabled previously.
+        ///     Update a Webhook. A disabled webhook will be enabled.
+        /// <param name="parameters">
+        ///     Dictionary containing parameters to update the webhook with. Valid pairs:
+        ///     * { "url", string } Url of the webhook that events will be sent to.
+        ///     * { "webhook_secret", string } Secret token to include as a header when sending a webhook.
+        ///     All invalid keys will be ignored.
+        /// </param>
         /// </summary>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Webhook> Update()
+        public async Task<Webhook> Update(Dictionary<string, object>? parameters = null)
         {
-            return await Update<Webhook>(Method.Patch, $"webhooks/{Id}");
+            return await Update<Webhook>(Method.Patch, $"webhooks/{Id}", parameters);
         }
     }
 }
