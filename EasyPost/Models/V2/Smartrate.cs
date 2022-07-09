@@ -35,6 +35,8 @@ namespace EasyPost.Models.V2
 
     public class Smartrate : EasyPostObject
     {
+        [JsonProperty("billing_type")]
+        public string? BillingType { get; set; }
         [JsonProperty("carrier")]
         public string? Carrier { get; set; }
         [JsonProperty("carrier_account_id")]

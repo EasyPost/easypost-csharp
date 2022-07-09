@@ -5,6 +5,10 @@ using System.Linq;
 
 namespace EasyPost.Utilities
 {
+    // Thanks to https://stackoverflow.com/a/34388226/13343799
+    /// <summary>
+    ///     A custom switch-case implementation that can handle non-constants and custom enums.
+    /// </summary>
     internal class SwitchCase : IEnumerable<SwitchCase.Case>
     {
         private readonly List<Case> _list = new List<Case>();
