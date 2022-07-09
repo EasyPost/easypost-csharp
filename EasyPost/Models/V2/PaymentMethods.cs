@@ -69,10 +69,10 @@ namespace EasyPost.Models.V2
         public string? Disabled { get; set; }
         // credit_card
         [JsonProperty("exp_month")]
-        public string? ExpirationMonth { get; set; }
+        public int? ExpirationMonth { get; set; }
         // credit_card
         [JsonProperty("exp_year")]
-        public string? ExpirationYear { get; set; }
+        public int? ExpirationYear { get; set; }
         // both
         [JsonProperty("last4")]
         public string? LastFour { get; set; }
