@@ -18,6 +18,9 @@ namespace EasyPost.Clients
         public BatchService Batches => GetService<BatchService>(nameof(Batches));
 
         [ApiCompatibility(ApiVersion.Latest)]
+        public BillingService Billing => GetService<BillingService>(nameof(Billing));
+
+        [ApiCompatibility(ApiVersion.Latest)]
         public CarrierAccountService CarrierAccounts => GetService<CarrierAccountService>(nameof(CarrierAccounts));
 
         [ApiCompatibility(ApiVersion.Latest)]
@@ -46,9 +49,6 @@ namespace EasyPost.Clients
 
         [ApiCompatibility(ApiVersion.Beta)]
         public PartnerService Partners => GetService<PartnerService>(nameof(Partners));
-
-        [ApiCompatibility(ApiVersion.Latest)]
-        public PaymentService Payments => GetService<PaymentService>(nameof(Payments));
 
         [ApiCompatibility(ApiVersion.Latest)]
         public PickupService Pickups => GetService<PickupService>(nameof(Pickups));
