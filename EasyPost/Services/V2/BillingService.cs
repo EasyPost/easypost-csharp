@@ -89,9 +89,12 @@ namespace EasyPost.Services.V2
                 {
                     PaymentMethodPriority.Secondary, () => { paymentMethod = paymentMethodsSummary.SecondaryPaymentMethod; }
                 },
+                {
+                    SwitchCaseScenario.Default, () => throw new Exception("Invalid priority provided.")
+                }
             };
 
-            @switch.Execute(priority);
+            @switch.Match(priority);
 
             if (paymentMethod?.Id == null)
             {
