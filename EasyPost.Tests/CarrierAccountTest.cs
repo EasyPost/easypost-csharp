@@ -101,8 +101,7 @@ namespace EasyPost.Tests
             Dictionary<string, object> carrierAccountData = new Dictionary<string, object>()
             {
                 {
-                    "description",
-                    testDescription
+                    "description", testDescription
                 }
             };
             carrierAccount = await carrierAccount.Update(carrierAccountData);

@@ -7,7 +7,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class CustomsInfoService : Service
+    public class CustomsInfoService : EasyPostService
     {
         internal CustomsInfoService(Client client) : base(client)
         {

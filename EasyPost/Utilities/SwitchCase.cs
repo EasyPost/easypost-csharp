@@ -93,6 +93,8 @@ namespace EasyPost.Utilities
         /// <param name="action">Action to trigger on match.</param>
         internal void Add(SwitchCaseScenario switchCaseScenario, Action? action)
         {
+            // ironically, we can't use our custom switch-case here, because it would be recursive.
+            // instead, back to good ol' if-else statements.
             if (switchCaseScenario == SwitchCaseScenario.Default)
             {
                 // set the default action to trigger if no match(es) found

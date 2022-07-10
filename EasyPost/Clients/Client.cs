@@ -6,76 +6,76 @@ using EasyPost.Services.V2;
 
 namespace EasyPost.Clients
 {
-    public class Client : BaseClient
+    public class Client : EasyPostClient
     {
         [ApiCompatibility(ApiVersion.Latest)]
-        public AddressService Addresses => GetService<AddressService>(nameof(Addresses));
+        public AddressService AddressesEasyPost => GetService<AddressService>(nameof(AddressesEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public ApiKeyService ApiKeys => GetService<ApiKeyService>(nameof(ApiKeys));
+        public ApiKeyService ApiKeysEasyPost => GetService<ApiKeyService>(nameof(ApiKeysEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public BatchService Batches => GetService<BatchService>(nameof(Batches));
+        public BatchService BatchesEasyPost => GetService<BatchService>(nameof(BatchesEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public BillingService Billing => GetService<BillingService>(nameof(Billing));
+        public BillingService BillingEasyPost => GetService<BillingService>(nameof(BillingEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public CarrierAccountService CarrierAccounts => GetService<CarrierAccountService>(nameof(CarrierAccounts));
+        public CarrierAccountService CarrierAccountsEasyPost => GetService<CarrierAccountService>(nameof(CarrierAccountsEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public CarrierTypeService CarrierTypes => GetService<CarrierTypeService>(nameof(CarrierTypes));
+        public CarrierTypeService CarrierTypesEasyPost => GetService<CarrierTypeService>(nameof(CarrierTypesEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public CustomsInfoService CustomsInfo => GetService<CustomsInfoService>(nameof(CustomsInfo));
+        public CustomsInfoService CustomsInfoEasyPost => GetService<CustomsInfoService>(nameof(CustomsInfoEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public CustomsItemService CustomsItems => GetService<CustomsItemService>(nameof(CustomsItems));
+        public CustomsItemService CustomsItemsEasyPost => GetService<CustomsItemService>(nameof(CustomsItemsEasyPost));
 
         [ApiCompatibility(ApiVersion.Beta)]
-        public EndShipperService EndShippers => GetService<EndShipperService>(nameof(EndShippers));
+        public EndShipperService EndShippersEasyPost => GetService<EndShipperService>(nameof(EndShippersEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public EventService Events => GetService<EventService>(nameof(Events));
+        public EventService EventsEasyPost => GetService<EventService>(nameof(EventsEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public InsuranceService Insurance => GetService<InsuranceService>(nameof(Insurance));
+        public InsuranceService InsuranceEasyPost => GetService<InsuranceService>(nameof(InsuranceEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public OrderService Orders => GetService<OrderService>(nameof(Orders));
+        public OrderService OrdersEasyPost => GetService<OrderService>(nameof(OrdersEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public ParcelService Parcels => GetService<ParcelService>(nameof(Parcels));
+        public ParcelService ParcelsEasyPost => GetService<ParcelService>(nameof(ParcelsEasyPost));
 
         [ApiCompatibility(ApiVersion.Beta)]
-        public PartnerService Partners => GetService<PartnerService>(nameof(Partners));
+        public PartnerService PartnersEasyPost => GetService<PartnerService>(nameof(PartnersEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public PickupService Pickups => GetService<PickupService>(nameof(Pickups));
+        public PickupService PickupsEasyPost => GetService<PickupService>(nameof(PickupsEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public RateService Rates => GetService<RateService>(nameof(Rates));
+        public RateService RatesEasyPost => GetService<RateService>(nameof(RatesEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public RefundService Refunds => GetService<RefundService>(nameof(Refunds));
+        public RefundService RefundsEasyPost => GetService<RefundService>(nameof(RefundsEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public ReportService Reports => GetService<ReportService>(nameof(Reports));
+        public ReportService ReportsEasyPost => GetService<ReportService>(nameof(ReportsEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public ScanFormService ScanForms => GetService<ScanFormService>(nameof(ScanForms));
+        public ScanFormService ScanFormsEasyPost => GetService<ScanFormService>(nameof(ScanFormsEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public ShipmentService Shipments => GetService<ShipmentService>(nameof(Shipments));
+        public ShipmentService ShipmentsEasyPost => GetService<ShipmentService>(nameof(ShipmentsEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public TrackerService Trackers => GetService<TrackerService>(nameof(Trackers));
+        public TrackerService TrackersEasyPost => GetService<TrackerService>(nameof(TrackersEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public UserService Users => GetService<UserService>(nameof(Users));
+        public UserService UsersEasyPost => GetService<UserService>(nameof(UsersEasyPost));
 
         [ApiCompatibility(ApiVersion.Latest)]
-        public WebhookService Webhooks => GetService<WebhookService>(nameof(Webhooks));
+        public WebhookService WebhooksEasyPost => GetService<WebhookService>(nameof(WebhooksEasyPost));
 
         /// <summary>
         ///     Constructor for the EasyPost client.

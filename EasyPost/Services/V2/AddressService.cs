@@ -7,7 +7,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class AddressService : Service
+    public class AddressService : EasyPostService
     {
         internal AddressService(Client client) : base(client)
         {
@@ -29,7 +29,7 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>An EasyPost.AddressCollection instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null)
+        public async Task<AddressCollection> All(Parameters.V2.Addresses.All? parameters = null)
         {
             return await List<AddressCollection>("addresses", parameters);
         }

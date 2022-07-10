@@ -8,7 +8,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class RateService : Service
+    public class RateService : EasyPostService
     {
         internal RateService(Client client) : base(client)
         {

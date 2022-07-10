@@ -8,7 +8,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class ShipmentService : Service
+    public class ShipmentService : EasyPostService
     {
         internal ShipmentService(Client client) : base(client)
         {

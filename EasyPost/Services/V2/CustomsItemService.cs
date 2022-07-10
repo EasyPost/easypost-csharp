@@ -7,7 +7,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class CustomsItemService : Service
+    public class CustomsItemService : EasyPostService
     {
         internal CustomsItemService(Client client) : base(client)
         {

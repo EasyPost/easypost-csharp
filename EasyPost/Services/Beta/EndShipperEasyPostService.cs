@@ -6,7 +6,7 @@ using EasyPost.Models.Beta;
 
 namespace EasyPost.Services.Beta
 {
-    public class EndShipperService : Service
+    public class EndShipperService : EasyPostService
     {
         internal EndShipperService(Client client) : base(client)
         {

@@ -7,7 +7,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class PickupService : Service
+    public class PickupService : EasyPostService
     {
         internal PickupService(Client client) : base(client)
         {

@@ -7,7 +7,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class InsuranceService : Service
+    public class InsuranceService : EasyPostService
     {
         internal InsuranceService(Client client) : base(client)
         {

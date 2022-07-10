@@ -112,8 +112,7 @@ namespace EasyPost.Tests
             Dictionary<string, object> userDict = new Dictionary<string, object>()
             {
                 {
-                    "name",
-                    testName
+                    "name", testName
                 }
             };
             user = await user.Update(userDict);

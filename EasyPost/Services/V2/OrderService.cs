@@ -7,7 +7,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class OrderService : Service
+    public class OrderService : EasyPostService
     {
         internal OrderService(Client client) : base(client)
         {

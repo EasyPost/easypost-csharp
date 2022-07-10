@@ -7,7 +7,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class RefundService : Service
+    public class RefundService : EasyPostService
     {
         internal RefundService(Client client) : base(client)
         {

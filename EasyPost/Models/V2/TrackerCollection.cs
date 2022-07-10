@@ -29,7 +29,7 @@ namespace EasyPost.Models.V2
                 throw new ClientNotConfigured();
             }
 
-            return await Client.Trackers.All(Filters);
+            return await Client.TrackersEasyPost.All(Filters);
         }
     }
 }

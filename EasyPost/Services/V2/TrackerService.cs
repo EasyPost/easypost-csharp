@@ -7,7 +7,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class TrackerService : Service
+    public class TrackerService : EasyPostService
     {
         internal TrackerService(Client client) : base(client)
         {

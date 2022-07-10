@@ -7,7 +7,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class WebhookService : Service
+    public class WebhookService : EasyPostService
     {
         internal WebhookService(Client client) : base(client)
         {

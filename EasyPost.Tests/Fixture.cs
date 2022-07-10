@@ -28,52 +28,41 @@ namespace EasyPost.Tests
         public static Dictionary<string, object> BasicAddress => new Dictionary<string, object>()
         {
             {
-                "name",
-                "Jack Sparrow"
+                "name", "Jack Sparrow"
             },
             {
-                "company",
-                "EasyPost"
+                "company", "EasyPost"
             },
             {
-                "street1",
-                "388 Townsend St"
+                "street1", "388 Townsend St"
             },
             {
-                "street2",
-                "Apt 20"
+                "street2", "Apt 20"
             },
             {
-                "city",
-                "San Francisco"
+                "city", "San Francisco"
             },
             {
-                "state",
-                "CA"
+                "state", "CA"
             },
             {
-                "zip",
-                "94107"
+                "zip", "94107"
             },
             {
-                "country",
-                "US"
+                "country", "US"
             },
             {
-                "phone",
-                "5555555555"
+                "phone", "5555555555"
             }
         };
 
         public static Dictionary<string, object> BasicCarrierAccount => new Dictionary<string, object>()
         {
             {
-                "type",
-                "UpsAccount"
+                "type", "UpsAccount"
             },
             {
-                "credentials",
-                new Dictionary<string, object>
+                "credentials", new Dictionary<string, object>
                 {
                     {
                         "account_number", "A1A1A1"
@@ -94,36 +83,28 @@ namespace EasyPost.Tests
         public static Dictionary<string, object> BasicCustomsInfo => new Dictionary<string, object>()
         {
             {
-                "eel_pfc",
-                "NOEEI 30.37(a)"
+                "eel_pfc", "NOEEI 30.37(a)"
             },
             {
-                "customs_certify",
-                true
+                "customs_certify", true
             },
             {
-                "customs_signer",
-                "Dr. Steve Brule"
+                "customs_signer", "Dr. Steve Brule"
             },
             {
-                "contents_type",
-                "merchandise"
+                "contents_type", "merchandise"
             },
             {
-                "contents_explanation",
-                ""
+                "contents_explanation", ""
             },
             {
-                "restriction_type",
-                "none"
+                "restriction_type", "none"
             },
             {
-                "non_delivery_option",
-                "return"
+                "non_delivery_option", "return"
             },
             {
-                "customs_items",
-                new List<object>
+                "customs_items", new List<object>
                 {
                     BasicCustomsItem
                 }
@@ -133,44 +114,35 @@ namespace EasyPost.Tests
         public static Dictionary<string, object> BasicCustomsItem => new Dictionary<string, object>()
         {
             {
-                "description",
-                "Sweet shirts"
+                "description", "Sweet shirts"
             },
             {
-                "quantity",
-                2
+                "quantity", 2
             },
             {
-                "weight",
-                11
+                "weight", 11
             },
             {
-                "value",
-                23.00
+                "value", 23.00
             },
             {
-                "hs_tariff_number",
-                654321
+                "hs_tariff_number", 654321
             },
             {
-                "origin_country",
-                "US"
+                "origin_country", "US"
             }
         };
 
         public static Dictionary<string, object> BasicOrder => new Dictionary<string, object>()
         {
             {
-                "to_address",
-                BasicAddress
+                "to_address", BasicAddress
             },
             {
-                "from_address",
-                BasicAddress
+                "from_address", BasicAddress
             },
             {
-                "shipments",
-                new List<Dictionary<string, object>>
+                "shipments", new List<Dictionary<string, object>>
                 {
                     BasicShipment
                 }
@@ -180,20 +152,16 @@ namespace EasyPost.Tests
         public static Dictionary<string, object> BasicParcel => new Dictionary<string, object>()
         {
             {
-                "length",
-                "10"
+                "length", "10"
             },
             {
-                "width",
-                "8"
+                "width", "8"
             },
             {
-                "height",
-                "4"
+                "height", "4"
             },
             {
-                "weight",
-                "15.4"
+                "weight", "15.4"
             }
         };
 
@@ -226,60 +194,47 @@ namespace EasyPost.Tests
         public static Dictionary<string, object> BasicShipment => new Dictionary<string, object>()
         {
             {
-                "to_address",
-                BasicAddress
+                "to_address", BasicAddress
             },
             {
-                "from_address",
-                BasicAddress
+                "from_address", BasicAddress
             },
             {
-                "parcel",
-                BasicParcel
+                "parcel", BasicParcel
             }
         };
 
         public static Dictionary<string, object> EndShipperAddress => new Dictionary<string, object>()
         {
             {
-                "name",
-                "Jack Sparrow"
+                "name", "Jack Sparrow"
             },
             {
-                "company",
-                "EasyPost"
+                "company", "EasyPost"
             },
             {
-                "street1",
-                "388 Townsend St"
+                "street1", "388 Townsend St"
             },
             {
-                "street2",
-                "Apt 20"
+                "street2", "Apt 20"
             },
             {
-                "city",
-                "San Francisco"
+                "city", "San Francisco"
             },
             {
-                "state",
-                "CA"
+                "state", "CA"
             },
             {
-                "zip",
-                "94107"
+                "zip", "94107"
             },
             {
-                "country",
-                "US"
+                "country", "US"
             },
             {
-                "phone",
-                "5555555555"
+                "phone", "5555555555"
             },
             {
-                "email",
-                "test@example.com"
+                "email", "test@example.com"
             }
         };
 
@@ -290,16 +245,13 @@ namespace EasyPost.Tests
                 Dictionary<string, object> data = new Dictionary<string, object>()
                 {
                     {
-                        "mode",
-                        "production"
+                        "mode", "production"
                     },
                     {
-                        "description",
-                        "batch.created"
+                        "description", "batch.created"
                     },
                     {
-                        "previous_attributes",
-                        new Dictionary<string, object>
+                        "previous_attributes", new Dictionary<string, object>
                         {
                             {
                                 "state", "purchasing"
@@ -307,27 +259,22 @@ namespace EasyPost.Tests
                         }
                     },
                     {
-                        "pending_urls",
-                        new List<string>
+                        "pending_urls", new List<string>
                         {
                             "example.com/easypost-webhook"
                         }
                     },
                     {
-                        "completed_urls",
-                        new List<string>()
+                        "completed_urls", new List<string>()
                     },
                     {
-                        "created_at",
-                        "2015-12-03T19:09:19Z"
+                        "created_at", "2015-12-03T19:09:19Z"
                     },
                     {
-                        "updated_at",
-                        "2015-12-03T19:09:19Z"
+                        "updated_at", "2015-12-03T19:09:19Z"
                     },
                     {
-                        "result",
-                        new Dictionary<string, object>
+                        "result", new Dictionary<string, object>
                         {
                             {
                                 "id", "batch_..."
@@ -399,12 +346,10 @@ namespace EasyPost.Tests
                         }
                     },
                     {
-                        "id",
-                        "evt_..."
+                        "id", "evt_..."
                     },
                     {
-                        "object",
-                        "Event"
+                        "object", "Event"
                     }
                 };
                 return JsonSerialization.ConvertObjectToJson(data);
@@ -414,24 +359,19 @@ namespace EasyPost.Tests
         public static Dictionary<string, object> FullShipment => new Dictionary<string, object>()
         {
             {
-                "to_address",
-                BasicAddress
+                "to_address", BasicAddress
             },
             {
-                "from_address",
-                BasicAddress
+                "from_address", BasicAddress
             },
             {
-                "parcel",
-                BasicParcel
+                "parcel", BasicParcel
             },
             {
-                "customs_info",
-                BasicCustomsInfo
+                "customs_info", BasicCustomsInfo
             },
             {
-                "options",
-                new Dictionary<string, object>
+                "options", new Dictionary<string, object>
                 {
                     {
                         "label_format", "PNG" // Must be PNG so we can convert to ZPL later
@@ -442,134 +382,107 @@ namespace EasyPost.Tests
                 }
             },
             {
-                "reference",
-                "123"
+                "reference", "123"
             }
         };
 
         public static Dictionary<string, object> IncorrectAddressToVerify => new Dictionary<string, object>()
         {
             {
-                "verify",
-                new List<bool>
+                "verify", new List<bool>
                 {
                     true
                 }
             },
             {
-                "street1",
-                "417 montgomery street"
+                "street1", "417 montgomery street"
             },
             {
-                "street2",
-                "FL 5"
+                "street2", "FL 5"
             },
             {
-                "city",
-                "San Francisco"
+                "city", "San Francisco"
             },
             {
-                "state",
-                "CA"
+                "state", "CA"
             },
             {
-                "zip",
-                "94104"
+                "zip", "94104"
             },
             {
-                "country",
-                "US"
+                "country", "US"
             },
             {
-                "company",
-                "EasyPost"
+                "company", "EasyPost"
             },
             {
-                "phone",
-                "415-123-4567"
+                "phone", "415-123-4567"
             }
         };
 
         public static Dictionary<string, object> OneCallBuyShipment => new Dictionary<string, object>()
         {
             {
-                "to_address",
-                BasicAddress
+                "to_address", BasicAddress
             },
             {
-                "from_address",
-                BasicAddress
+                "from_address", BasicAddress
             },
             {
-                "parcel",
-                BasicParcel
+                "parcel", BasicParcel
             },
             {
-                "service",
-                UspsService
+                "service", UspsService
             },
             {
-                "carrier_accounts",
-                new List<string>
+                "carrier_accounts", new List<string>
                 {
                     UspsCarrierAccountId
                 }
             },
             {
-                "carrier",
-                Usps
+                "carrier", Usps
             }
         };
 
         public static Dictionary<string, object> PickupAddress => new Dictionary<string, object>()
         {
             {
-                "name",
-                "Dr. Steve Brule"
+                "name", "Dr. Steve Brule"
             },
             {
-                "street1",
-                "179 N Harbor Dr"
+                "street1", "179 N Harbor Dr"
             },
             {
-                "city",
-                "Redondo Beach"
+                "city", "Redondo Beach"
             },
             {
-                "state",
-                "CA"
+                "state", "CA"
             },
             {
-                "zip",
-                "90277"
+                "zip", "90277"
             },
             {
-                "country",
-                "US"
+                "country", "US"
             },
             {
-                "phone",
-                "3331114444"
+                "phone", "3331114444"
             }
         };
 
         public static Dictionary<string, object> TaxIdentifier => new Dictionary<string, object>()
         {
             {
-                "entity",
-                "SENDER"
+                "entity", "SENDER"
             },
             {
-                "tax_id_type",
-                "IOSS"
+                "tax_id_type", "IOSS"
             },
             {
-                "tax_id",
-                "12345"
+                "tax_id", "12345"
             },
             {
-                "issuing_country",
-                "GB"
+                "issuing_country", "GB"
             }
         };
 

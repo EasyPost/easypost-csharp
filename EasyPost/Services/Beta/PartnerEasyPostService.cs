@@ -6,7 +6,7 @@ using EasyPost.Models.Beta;
 
 namespace EasyPost.Services.Beta
 {
-    public class PartnerService : Service
+    public class PartnerService : EasyPostService
     {
         internal PartnerService(Client client) : base(client)
         {

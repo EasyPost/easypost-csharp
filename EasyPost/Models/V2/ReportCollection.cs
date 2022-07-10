@@ -36,7 +36,7 @@ namespace EasyPost.Models.V2
 
             if (Type != null)
             {
-                return await Client.Reports.All(Type, Filters);
+                return await Client.ReportsEasyPost.All(Type, Filters);
             }
 
             throw new PropertyMissing("type");

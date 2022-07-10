@@ -7,7 +7,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class ScanFormService : Service
+    public class ScanFormService : EasyPostService
     {
         internal ScanFormService(Client client) : base(client)
         {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using EasyPost.Interfaces;
 using EasyPost.Utilities;
 using RestSharp;
 using RestSharp.Serializers;
@@ -12,11 +13,11 @@ namespace EasyPost.Http
         private readonly Dictionary<string, object> _parameters;
         private readonly RestRequest _restRequest;
 
-        public Request(string endpoint, Method method, Dictionary<string, object>? parameters = null, string? rootElement = null)
+        public Request(string endpoint, Method method, EasyPostParameters? parameters = null, string? rootElement = null)
         {
             _restRequest = new RestRequest(endpoint, method);
 
-            _parameters = parameters ?? new Dictionary<string, object>();
+            _parameters = parameters?.ToDictionary() ?? new Dictionary<string, object>();
 
             RootElement = rootElement;
         }

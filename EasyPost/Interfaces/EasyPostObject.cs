@@ -60,7 +60,7 @@ namespace EasyPost.Interfaces
             return AsDictionary().GetHashCode();
         }
 
-        protected async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : class
+        protected async Task<T> Request<T>(Method method, string url, EasyPostParameters? parameters = null, string? rootElement = null) where T : class
         {
             if (Client == null)
             {
@@ -70,7 +70,7 @@ namespace EasyPost.Interfaces
             return await Client.Request<T>(method, url, parameters, rootElement);
         }
 
-        protected async Task<bool> Request(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null)
+        protected async Task<bool> Request(Method method, string url, EasyPostParameters? parameters = null, string? rootElement = null)
         {
             if (Client == null)
             {
@@ -80,7 +80,7 @@ namespace EasyPost.Interfaces
             return await Client.Request(method, url, parameters, rootElement);
         }
 
-        protected async Task<T> Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : class
+        protected async Task<T> Update<T>(Method method, string url, EasyPostParameters? parameters = null, string? rootElement = null) where T : class
         {
             T updatedObject = await Request<T>(method, url, parameters, rootElement);
             if (updatedObject == null)

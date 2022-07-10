@@ -7,7 +7,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class EventService : Service
+    public class EventService : EasyPostService
     {
         internal EventService(Client client) : base(client)
         {

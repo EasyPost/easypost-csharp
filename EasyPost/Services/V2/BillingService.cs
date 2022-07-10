@@ -11,7 +11,7 @@ using RestSharp;
 
 namespace EasyPost.Services.V2
 {
-    public class BillingService : Service
+    public class BillingService : EasyPostService
     {
         internal BillingService(Client client) : base(client)
         {

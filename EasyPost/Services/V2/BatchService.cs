@@ -7,7 +7,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class BatchService : Service
+    public class BatchService : EasyPostService
     {
         internal BatchService(Client client) : base(client)
         {

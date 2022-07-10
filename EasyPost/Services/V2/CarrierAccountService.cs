@@ -7,7 +7,7 @@ using EasyPost.Models.V2;
 
 namespace EasyPost.Services.V2
 {
-    public class CarrierAccountService : Service
+    public class CarrierAccountService : EasyPostService
     {
         internal CarrierAccountService(Client client) : base(client)
         {
