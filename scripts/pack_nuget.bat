@@ -10,6 +10,8 @@
 @ECHO Generating NuGet package...
 nuget pack %projectName%.nuspec || GOTO :commandFailed
 
+EXIT /B 0
+
 :commandFailed
 @ECHO Command failed.
 GOTO :exitWithError

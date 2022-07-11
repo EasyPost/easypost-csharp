@@ -14,6 +14,8 @@ SET buildMode=%1
 @ECHO %buildMode%
 dotnet msbuild -property:Configuration="%buildMode%" -target:Rebuild -restore || GOTO :commandFailed
 
+EXIT /B 0
+
 :commandFailed
 @ECHO Command failed.
 GOTO :exitWithError
