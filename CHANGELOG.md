@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v3.2.0 (2022-07-11)
 
 - Adds `DeletePaymentMethod`, `FundWallet`, and `RetrievePaymentMethods` functions
 - Adds `billing_type` attribute in CarrierAccount and Rate classes
