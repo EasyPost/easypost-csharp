@@ -11,7 +11,6 @@ SET buildMode=%1
 :: Restore dependencies and build solution
 @ECHO:
 @ECHO Restoring and building project...
-@ECHO %buildMode%
 dotnet msbuild -property:Configuration="%buildMode%" -target:Rebuild -restore || GOTO :commandFailed
 
 EXIT /B 0
