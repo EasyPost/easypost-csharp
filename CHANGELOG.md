@@ -2,8 +2,11 @@
 
 ## Next Release
 
-- Adds `billing_type` attribute in CarrierAccount and Rate classes.
-- Collect OS details in User-Agent header.
+- Adds `DeletePaymentMethod`, `FundWallet`, and `RetrievePaymentMethods` functions
+- Adds `billing_type` attribute in CarrierAccount and Rate classes
+- Adds support for webhook secrets
+- Collect OS details in User-Agent header
+- Update functions now use `patch` instead of `put` under the hood to better match the API behavior and documentation. Behavior of these functions should remain the same
 
 ## v3.1.0 (2022-05-19)
 
