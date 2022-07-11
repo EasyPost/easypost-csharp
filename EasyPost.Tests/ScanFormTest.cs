@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -18,11 +20,9 @@ namespace EasyPost.Tests
         {
             UseVCR("all", ApiVersion.Latest);
 
-            ScanFormCollection scanFormCollection = await Client.ScanForms.All(new Dictionary<string, object>
+            ScanFormCollection scanFormCollection = await Client.ScanForms.All(new All
             {
-                {
-                    "page_size", Fixture.PageSize
-                }
+                PageSize = Fixture.PageSize
             });
 
             List<ScanForm> scanForms = scanFormCollection.ScanForms;
@@ -61,7 +61,7 @@ namespace EasyPost.Tests
 
         private async Task<ScanForm> GetBasicScanForm()
         {
-            Shipment shipment = await Client.Shipments.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(Fixture.OneCallBuyShipment));
             return await Client.ScanForms.Create(new List<Shipment>
             {
                 shipment

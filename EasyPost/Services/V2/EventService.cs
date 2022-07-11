@@ -1,9 +1,10 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 
 namespace EasyPost.Services.V2
 {
@@ -29,7 +30,7 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>An EasyPost.EventCollection instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<EventCollection> All(Dictionary<string, object>? parameters = null)
+        public async Task<EventCollection> All(All? parameters = null)
         {
             return await Get<EventCollection>("events", parameters);
         }
@@ -41,12 +42,7 @@ namespace EasyPost.Services.V2
         [ApiCompatibility(ApiVersion.Latest)]
         public async Task<bool> Create(string id)
         {
-            return await CreateBlind("events", new Dictionary<string, object>
-            {
-                {
-                    "result_id", id
-                }
-            });
+            return await CreateBlind("events", new Events.Create());
         }
 
         /// <summary>

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.V2;
+using EasyPost.Parameters.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -104,7 +105,7 @@ namespace EasyPost.Tests
                     "description", testDescription
                 }
             };
-            carrierAccount = await carrierAccount.Update(carrierAccountData);
+            carrierAccount = await carrierAccount.Update(new CarrierAccounts.Update(carrierAccountData));
 
             Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
             Assert.IsTrue(carrierAccount.Id.StartsWith("ca_"));
@@ -113,7 +114,7 @@ namespace EasyPost.Tests
 
         private async Task<CarrierAccount> CreateBasicCarrierAccount()
         {
-            CarrierAccount carrierAccount = await Client.CarrierAccounts.Create(Fixture.BasicCarrierAccount);
+            CarrierAccount carrierAccount = await Client.CarrierAccounts.Create(new CarrierAccounts.Create(Fixture.BasicCarrierAccount));
             CleanUpAfterTest(carrierAccount.Id);
 
             return carrierAccount;

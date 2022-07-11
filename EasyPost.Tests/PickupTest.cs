@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Models.V2;
+using EasyPost.Parameters.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -21,7 +22,11 @@ namespace EasyPost.Tests
 
             Pickup pickup = await CreateBasicPickup();
 
-            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
+            pickup = await pickup.Buy(new Pickups.Buy
+            {
+                Carrier = Fixture.Usps,
+                Service = Fixture.PickupService
+            });
 
             Assert.IsInstanceOfType(pickup, typeof(Pickup));
             Assert.IsTrue(pickup.Id.StartsWith("pickup_"));
@@ -36,7 +41,11 @@ namespace EasyPost.Tests
 
             Pickup pickup = await CreateBasicPickup();
 
-            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
+            pickup = await pickup.Buy(new Pickups.Buy
+            {
+                Carrier = Fixture.Usps,
+                Service = Fixture.PickupService
+            });
 
             pickup = await pickup.Cancel();
 
@@ -100,10 +109,10 @@ namespace EasyPost.Tests
 
         private async Task<Pickup> CreateBasicPickup()
         {
-            Shipment shipment = await Client.Shipments.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(Fixture.OneCallBuyShipment));
             Dictionary<string, object> pickupData = Fixture.BasicPickup;
             pickupData["shipment"] = shipment;
-            return await Client.Pickups.Create(pickupData);
+            return await Client.Pickups.Create(new Pickups.Create(pickupData));
         }
     }
 }

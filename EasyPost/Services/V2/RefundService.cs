@@ -4,6 +4,8 @@ using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 
 namespace EasyPost.Services.V2
 {
@@ -22,7 +24,7 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>An EasyPost.RefundCollection instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null)
+        public async Task<RefundCollection> All(All? parameters = null)
         {
             return await List<RefundCollection>("refunds", parameters);
         }
@@ -36,14 +38,9 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>A list of EasyPost.Refund instances.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<List<Refund>> Create(Dictionary<string, object> parameters)
+        public async Task<List<Refund>> Create(Refunds.Create parameters)
         {
-            return await Create<List<Refund>>("refunds", new Dictionary<string, object>
-            {
-                {
-                    "refund", parameters
-                }
-            });
+            return await Create<List<Refund>>("refunds", parameters);
         }
 
         /// <summary>

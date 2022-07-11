@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -18,11 +20,9 @@ namespace EasyPost.Tests
         {
             UseVCR("all", ApiVersion.Latest);
 
-            AddressCollection addressCollection = await Client.Addresses.All(new Dictionary<string, object>
+            AddressCollection addressCollection = await Client.Addresses.All(new All
             {
-                {
-                    "page_size", Fixture.PageSize
-                }
+                PageSize = Fixture.PageSize
             });
 
             List<Address> addresses = addressCollection.Addresses;
@@ -58,7 +58,7 @@ namespace EasyPost.Tests
                 true
             });
 
-            Address address = await Client.Addresses.CreateAndVerify(addressData);
+            Address address = await Client.Addresses.CreateAndVerify(new Addresses.Create(addressData));
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.Id.StartsWith("adr_"));
@@ -70,7 +70,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create_verify", ApiVersion.Latest);
 
-            Address address = await Client.Addresses.Create(Fixture.IncorrectAddressToVerify);
+            Address address = await Client.Addresses.Create(new Addresses.Create(Fixture.IncorrectAddressToVerify));
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.Id.StartsWith("adr_"));
@@ -88,7 +88,7 @@ namespace EasyPost.Tests
                 true
             });
 
-            Address address = await Client.Addresses.Create(addressData);
+            Address address = await Client.Addresses.Create(new Addresses.Create(addressData));
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.Id.StartsWith("adr_"));
@@ -102,7 +102,7 @@ namespace EasyPost.Tests
             UseVCR("retrieve", ApiVersion.Latest);
 
 
-            Address address = await Client.Addresses.Create(Fixture.BasicAddress);
+            Address address = await Client.Addresses.Create(new Addresses.Create(Fixture.BasicAddress));
 
             Address retrievedAddress = await Client.Addresses.Retrieve(address.Id);
 
@@ -125,6 +125,11 @@ namespace EasyPost.Tests
             Assert.AreEqual("388 TOWNSEND ST APT 20", address.Street1);
         }
 
-        private async Task<Address> CreateBasicAddress() => await Client.Addresses.Create(Fixture.BasicAddress);
+        private async Task<Address> CreateBasicAddress() => await Client.Addresses.Create(new Addresses.Create(new Dictionary<string, object>
+        {
+            {
+                "address", Fixture.BasicAddress
+            }
+        }));
     }
 }

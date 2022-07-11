@@ -4,6 +4,7 @@ using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Interfaces;
+using EasyPost.Parameters.V2;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -11,6 +12,8 @@ namespace EasyPost.Models.V2
 {
     public class Order : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("buyer_address")]
         public Address? BuyerAddress { get; set; }
         [JsonProperty("carrier_accounts")]
@@ -36,6 +39,8 @@ namespace EasyPost.Models.V2
         [JsonProperty("to_address")]
         public Address? ToAddress { get; set; }
 
+        #endregion
+
 
         /// <summary>
         ///     Purchase the shipments within this order with a carrier and service.
@@ -43,23 +48,14 @@ namespace EasyPost.Models.V2
         /// <param name="withCarrier">The carrier to purchase a shipment from.</param>
         /// <param name="withService">The service to purchase.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Order> Buy(string withCarrier, string withService)
+        public async Task<Order> Buy(Orders.Buy parameters)
         {
             if (Id == null)
             {
                 throw new PropertyMissing("id");
             }
 
-            return await Update<Order>(Method.Post, $"orders/{Id}/buy",
-                new Dictionary<string, object>
-                {
-                    {
-                        "carrier", withCarrier
-                    },
-                    {
-                        "service", withService
-                    }
-                });
+            return await Update<Order>(Method.Post, $"orders/{Id}/buy", parameters);
         }
 
         /// <summary>
@@ -73,7 +69,10 @@ namespace EasyPost.Models.V2
             {
                 if (rate.Service != null)
                 {
-                    await Buy(rate.Carrier, rate.Service);
+                    var parameters = new Orders.Buy
+                    {
+                    };
+                    await Buy(parameters);
                 }
                 else
                 {

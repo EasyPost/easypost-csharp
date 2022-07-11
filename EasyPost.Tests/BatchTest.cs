@@ -3,6 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -19,7 +21,7 @@ namespace EasyPost.Tests
         {
             UseVCR("add_remove_shipment", ApiVersion.Latest);
 
-            Shipment shipment = await Client.Shipments.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(Fixture.OneCallBuyShipment));
 
             Batch batch = await Client.Batches.Create();
 
@@ -43,11 +45,9 @@ namespace EasyPost.Tests
         {
             UseVCR("all", ApiVersion.Latest);
 
-            BatchCollection batchCollection = await Client.Batches.All(new Dictionary<string, object>
+            BatchCollection batchCollection = await Client.Batches.All(new All
             {
-                {
-                    "page_size", Fixture.PageSize
-                }
+                PageSize = Fixture.PageSize
             });
 
             List<Batch> batches = batchCollection.Batches;
@@ -90,7 +90,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create_and_buy", ApiVersion.Latest);
 
-            Batch batch = await Client.Batches.CreateAndBuy(new Dictionary<string, object>
+            Batch batch = await Client.Batches.CreateAndBuy(new Batches.Create(new Dictionary<string, object>
             {
                 {
                     "shipments", new List<Dictionary<string, object>>
@@ -98,7 +98,7 @@ namespace EasyPost.Tests
                         Fixture.OneCallBuyShipment
                     }
                 }
-            });
+            }));
 
             Assert.IsInstanceOfType(batch, typeof(Batch));
             Assert.IsTrue(batch.Id.StartsWith("batch_"));
@@ -140,7 +140,10 @@ namespace EasyPost.Tests
                 Thread.Sleep(15000); // Wait enough time to process
             }
 
-            await batch.GenerateLabel("ZPL");
+            await batch.GenerateLabel(new Batches.Label
+            {
+                FileFormat = "ZPL"
+            });
 
             // We can't assert anything meaningful here because the label gets queued for generation and may not be immediately available
             Assert.IsInstanceOfType(batch, typeof(Batch));
@@ -161,7 +164,7 @@ namespace EasyPost.Tests
         }
 
         private async Task<Batch> CreateBasicBatch() =>
-            await Client.Batches.Create(new Dictionary<string, object>
+            await Client.Batches.Create(new Batches.Create(new Dictionary<string, object>
             {
                 {
                     "shipments", new List<Dictionary<string, object>>
@@ -169,10 +172,10 @@ namespace EasyPost.Tests
                         Fixture.BasicShipment
                     }
                 }
-            });
+            }));
 
         private async Task<Batch> CreateOneCallBuyBatch() =>
-            await Client.Batches.Create(new Dictionary<string, object>
+            await Client.Batches.Create(new Batches.Create(new Dictionary<string, object>
             {
                 {
                     "shipments", new List<Dictionary<string, object>>
@@ -180,6 +183,6 @@ namespace EasyPost.Tests
                         Fixture.OneCallBuyShipment
                     }
                 }
-            });
+            }));
     }
 }

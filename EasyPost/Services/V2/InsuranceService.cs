@@ -1,9 +1,9 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
 
 namespace EasyPost.Services.V2
 {
@@ -30,7 +30,7 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>An EasyPost.InsuranceCollection instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null)
+        public async Task<InsuranceCollection> All(All? parameters = null)
         {
             return await List<InsuranceCollection>("insurances", parameters);
         }
@@ -53,14 +53,9 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>EasyPost.Insurance instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Insurance> Create(Dictionary<string, object> parameters)
+        public async Task<Insurance> Create(Parameters.V2.Insurance.Create parameters)
         {
-            return await Create<Insurance>("insurances", new Dictionary<string, object>
-            {
-                {
-                    "insurance", parameters
-                }
-            });
+            return await Create<Insurance>("insurances", parameters);
         }
 
         /// <summary>

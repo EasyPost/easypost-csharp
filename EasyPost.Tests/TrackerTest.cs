@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -18,11 +20,9 @@ namespace EasyPost.Tests
         {
             UseVCR("all", ApiVersion.Latest);
 
-            TrackerCollection trackerCollection = await Client.Trackers.All(new Dictionary<string, object>
+            TrackerCollection trackerCollection = await Client.Trackers.All(new All
             {
-                {
-                    "page_size", Fixture.PageSize
-                }
+                PageSize = Fixture.PageSize
             });
 
             List<Tracker> trackers = trackerCollection.Trackers;
@@ -52,7 +52,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create_list", ApiVersion.Latest);
 
-            bool success = await Client.Trackers.CreateList(new Dictionary<string, object>
+            bool success = await Client.Trackers.CreateList(new Trackers.Create(new Dictionary<string, object>
             {
                 {
                     "0", new Dictionary<string, object>
@@ -78,7 +78,7 @@ namespace EasyPost.Tests
                         }
                     }
                 }
-            });
+            }));
 
             // This endpoint returns nothing so we assert the function returns true
             Assert.IsTrue(success);
@@ -99,6 +99,10 @@ namespace EasyPost.Tests
             Assert.AreEqual(tracker.Id, retrievedTracker.Id);
         }
 
-        private async Task<Tracker> CreateBasicTracker() => await Client.Trackers.Create(Fixture.Usps, "EZ1000000001");
+        private async Task<Tracker> CreateBasicTracker() => await Client.Trackers.Create(new Trackers.Create
+        {
+            Carrier = Fixture.Usps,
+            TrackingCode = "EZ1000000001"
+        });
     }
 }

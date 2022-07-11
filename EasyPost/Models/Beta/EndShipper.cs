@@ -1,8 +1,8 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Models.Base;
+using EasyPost.Parameters.Beta;
 using RestSharp;
 
 namespace EasyPost.Models.Beta
@@ -14,14 +14,9 @@ namespace EasyPost.Models.Beta
         /// </summary>
         /// <param name="parameters">See EndShipper.Create for more details.</param>
         [ApiCompatibility(ApiVersion.Beta)]
-        public async Task<EndShipper> Update(Dictionary<string, object> parameters)
+        public async Task<EndShipper> Update(EndShippers.Update parameters)
         {
-            return await Update<EndShipper>(Method.Put, $"end_shippers/{Id}", new Dictionary<string, object>
-            {
-                {
-                    "address", parameters
-                }
-            });
+            return await Update<EndShipper>(Method.Put, $"end_shippers/{Id}", parameters);
         }
         // EndShipper needs Put, not Patch
     }

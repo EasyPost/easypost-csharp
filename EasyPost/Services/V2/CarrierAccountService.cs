@@ -4,6 +4,7 @@ using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters.V2;
 
 namespace EasyPost.Services.V2
 {
@@ -38,14 +39,9 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<CarrierAccount> Create(Dictionary<string, object> parameters)
+        public async Task<CarrierAccount> Create(CarrierAccounts.Create parameters)
         {
-            return await Create<CarrierAccount>("carrier_accounts", new Dictionary<string, object>
-            {
-                {
-                    "carrier_account", parameters
-                }
-            });
+            return await Create<CarrierAccount>("carrier_accounts", parameters);
         }
 
         /// <summary>

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
+using EasyPost.Parameters.V2;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -33,24 +33,22 @@ namespace EasyPost.Models.V2
         /// <summary>
         ///     Add shipments to this batch.
         /// </summary>
+        /// <param name="parameters">UpdateShipmentParameters</param>
+        [ApiCompatibility(ApiVersion.Latest)]
+        public async Task<Batch> AddShipments(Batches.UpdateShipments parameters) => await Update<Batch>(Method.Post, $"batches/{Id}/add_shipments", parameters);
+
+        /// <summary>
+        ///     Add shipments to this batch.
+        /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be added.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Batch> AddShipments(IEnumerable<string?> shipmentIds)
+        public async Task<Batch> AddShipments(List<string> shipmentIds)
         {
-            List<Dictionary<string, object>> realShipmentIds = (from shipmentId in shipmentIds
-                where shipmentId != null
-                select new Dictionary<string, object>
-                {
-                    {
-                        "id", shipmentId
-                    }
-                }).ToList();
-            return await Update<Batch>(Method.Post, $"batches/{Id}/add_shipments", new Dictionary<string, object>
+            var parameters = new Batches.UpdateShipments
             {
-                {
-                    "shipments", realShipmentIds
-                }
-            });
+                ShipmentIds = shipmentIds
+            };
+            return await AddShipments(parameters);
         }
 
         /// <summary>
@@ -58,7 +56,21 @@ namespace EasyPost.Models.V2
         /// </summary>
         /// <param name="shipmentsToAdd">List of Shipment objects to be added.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Batch> AddShipments(IEnumerable<Shipment> shipmentsToAdd) => await AddShipments(shipmentsToAdd.Select(shipment => shipment.Id).ToList());
+        public async Task<Batch> AddShipments(IEnumerable<Shipment> shipmentsToAdd)
+        {
+            List<string> shipmentIds = new List<string>();
+            foreach (Shipment shipment in shipmentsToAdd)
+            {
+                if (shipment.Id == null)
+                {
+                    continue;
+                }
+
+                shipmentIds.Add(shipment.Id);
+            }
+
+            return await AddShipments(shipmentIds);
+        }
 
         /// <summary>
         ///     Purchase all shipments within this batch. The Batch's state must be "created" before purchasing.
@@ -74,14 +86,9 @@ namespace EasyPost.Models.V2
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Batch> GenerateLabel(string fileFormat)
+        public async Task<Batch> GenerateLabel(Batches.Label parameters)
         {
-            return await Update<Batch>(Method.Post, $"batches/{Id}/label", new Dictionary<string, object>
-            {
-                {
-                    "file_format", fileFormat
-                }
-            });
+            return await Update<Batch>(Method.Post, $"batches/{Id}/label", parameters);
         }
 
         /// <summary>
@@ -94,33 +101,45 @@ namespace EasyPost.Models.V2
         }
 
         /// <summary>
-        ///     Remove shipments from this batch.
+        ///     Remove shipments to this batch.
+        /// </summary>
+        /// <param name="parameters">UpdateShipmentParameters</param>
+        [ApiCompatibility(ApiVersion.Latest)]
+        public async Task<Batch> RemoveShipments(Batches.UpdateShipments parameters) => await Update<Batch>(Method.Post, $"batches/{Id}/remove_shipments", parameters);
+
+        /// <summary>
+        ///     Remove shipments to this batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be removed.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Batch> RemoveShipments(IEnumerable<string?> shipmentIds)
+        public async Task<Batch> RemoveShipments(List<string> shipmentIds)
         {
-            List<Dictionary<string, object>> realShipmentIds = (from shipmentId in shipmentIds
-                where shipmentId != null
-                select new Dictionary<string, object>
-                {
-                    {
-                        "id", shipmentId
-                    }
-                }).ToList();
-            return await Update<Batch>(Method.Post, $"batches/{Id}/remove_shipments", new Dictionary<string, object>
+            var parameters = new Batches.UpdateShipments
             {
-                {
-                    "shipments", realShipmentIds
-                }
-            });
+                ShipmentIds = shipmentIds
+            };
+            return await RemoveShipments(parameters);
         }
 
         /// <summary>
-        ///     Remove shipments from this batch.
+        ///     Remove shipments to this batch.
         /// </summary>
-        /// <param name="shipmentsToRemove">List of Shipment objects to be removed.</param>
+        /// <param name="shipmentsToAdd">List of Shipment objects to be removed.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Batch> RemoveShipments(IEnumerable<Shipment> shipmentsToRemove) => await RemoveShipments(shipmentsToRemove.Select(shipment => shipment.Id).ToList());
+        public async Task<Batch> RemoveShipments(IEnumerable<Shipment> shipmentsToAdd)
+        {
+            List<string> shipmentIds = new List<string>();
+            foreach (Shipment shipment in shipmentsToAdd)
+            {
+                if (shipment.Id == null)
+                {
+                    continue;
+                }
+
+                shipmentIds.Add(shipment.Id);
+            }
+
+            return await RemoveShipments(shipmentIds);
+        }
     }
 }

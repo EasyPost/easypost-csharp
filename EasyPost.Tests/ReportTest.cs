@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -18,11 +20,9 @@ namespace EasyPost.Tests
         {
             UseVCR("all", ApiVersion.Latest);
 
-            ReportCollection reportCollection = await Client.Reports.All("shipment", new Dictionary<string, object>
+            ReportCollection reportCollection = await Client.Reports.All("shipment", new All
             {
-                {
-                    "page_size", Fixture.PageSize
-                }
+                PageSize = Fixture.PageSize
             });
 
             List<Report> reports = reportCollection.Reports;
@@ -111,20 +111,18 @@ namespace EasyPost.Tests
 
         private async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters)
         {
-            parameters["start_date"] = Fixture.ReportDate;
-            parameters["end_date"] = Fixture.ReportDate;
-            return await Client.Reports.Create(reportType, parameters);
+            return await Client.Reports.Create(reportType, new Reports.Create(parameters)
+            {
+                StartDate = Fixture.ReportDate,
+                EndDate = Fixture.ReportDate,
+            });
         }
 
         private async Task<Report> CreateBasicReport(string reportType) =>
-            await Client.Reports.Create(reportType, new Dictionary<string, object>
+            await Client.Reports.Create(reportType, new Reports.Create
             {
-                {
-                    "start_date", Fixture.ReportDate
-                },
-                {
-                    "end_date", Fixture.ReportDate
-                }
+                StartDate = Fixture.ReportDate,
+                EndDate = Fixture.ReportDate,
             });
     }
 }

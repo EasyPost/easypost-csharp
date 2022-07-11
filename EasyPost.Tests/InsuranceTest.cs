@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -18,11 +19,9 @@ namespace EasyPost.Tests
         {
             UseVCR("all", ApiVersion.Latest);
 
-            InsuranceCollection insuranceCollection = await Client.Insurance.All(new Dictionary<string, object>
+            InsuranceCollection insuranceCollection = await Client.Insurance.All(new All
             {
-                {
-                    "page_size", Fixture.PageSize
-                }
+                PageSize = Fixture.PageSize
             });
 
             List<Insurance> insurances = insuranceCollection.Insurances;
@@ -64,7 +63,7 @@ namespace EasyPost.Tests
         private async Task<Insurance> CreateBasicInsurance()
         {
             Dictionary<string, object> basicInsurance = await Fixture.BasicInsurance(Client);
-            return await Client.Insurance.Create(basicInsurance);
+            return await Client.Insurance.Create(new Parameters.V2.Insurance.Create(basicInsurance));
         }
     }
 }

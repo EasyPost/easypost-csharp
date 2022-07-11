@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
+using EasyPost.Parameters.V2;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -11,10 +11,14 @@ namespace EasyPost.Models.V2
 {
     public class Webhook : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("disabled_at")]
         public DateTime? DisabledAt { get; set; }
         [JsonProperty("url")]
         public string? Url { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Delete this webhook.
@@ -36,7 +40,7 @@ namespace EasyPost.Models.V2
         /// </param>
         /// </summary>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Webhook> Update(Dictionary<string, object>? parameters = null)
+        public async Task<Webhook> Update(Webhooks.Update? parameters = null)
         {
             return await Update<Webhook>(Method.Patch, $"webhooks/{Id}", parameters);
         }

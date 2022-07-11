@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.V2;
+using EasyPost.Parameters.V2;
 using EasyPost.Utilities;
 
 namespace EasyPost.Tests
@@ -499,7 +500,7 @@ namespace EasyPost.Tests
 
         public static async Task<Dictionary<string, object>> BasicInsurance(Client client)
         {
-            Shipment shipment = await client.Shipments.Create(OneCallBuyShipment);
+            Shipment shipment = await client.Shipments.Create(new Shipments.Create(OneCallBuyShipment));
             return new Dictionary<string, object>
             {
                 {

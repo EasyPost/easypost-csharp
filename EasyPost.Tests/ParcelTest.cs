@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.V2;
+using EasyPost.Parameters.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -37,6 +38,6 @@ namespace EasyPost.Tests
             Assert.AreEqual(parcel, retrievedParcel);
         }
 
-        private async Task<Parcel> CreateBasicParcel() => await Client.Parcels.Create(Fixture.BasicParcel);
+        private async Task<Parcel> CreateBasicParcel() => await Client.Parcels.Create(new Parcels.Create(Fixture.BasicParcel));
     }
 }

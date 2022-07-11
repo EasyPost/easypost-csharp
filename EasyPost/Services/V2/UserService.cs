@@ -1,9 +1,9 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters.V2;
 
 namespace EasyPost.Services.V2
 {
@@ -23,14 +23,9 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<User> Create(Dictionary<string, object> parameters)
+        public async Task<User> Create(Users.Create parameters)
         {
-            return await Create<User>("users", new Dictionary<string, object>
-            {
-                {
-                    "user", parameters
-                }
-            });
+            return await Create<User>("users", parameters);
         }
 
         /// <summary>

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
@@ -30,7 +29,7 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<CustomsInfo> Create(Dictionary<string, object> parameters)
+        public async Task<CustomsInfo> Create(Parameters.V2.CustomsInfo.Create parameters)
         {
             return await Create<CustomsInfo>("customs_infos", parameters);
         }

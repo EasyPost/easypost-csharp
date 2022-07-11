@@ -7,30 +7,36 @@ namespace EasyPost.Parameters.V2
     {
         public class Create : EasyPostParameters
         {
-            [Parameter("name")]
-            public string? Name { get; set; }
+            [Parameter("address", "name")]
+            public string? Name { internal get; set; }
 
-            public Create(Dictionary<string, object>? overrideParameters = null) : base(overrideParameters)
+            [Parameter("verify_strict")]
+            public List<string>? ToStrictVerify { internal get; set; }
+
+            [Parameter("verify")]
+            public List<string>? ToVerify { internal get; set; }
+
+            public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
             }
 
-            internal override Dictionary<string, object> ToDictionary()
+            internal override Dictionary<string, object?>? ToDictionary()
             {
                 RegisterParameters(this);
                 return ParameterDictionary;
             }
         }
 
-        public class All : EasyPostParameters
+        public class Verify : EasyPostParameters
         {
-            [Parameter("name")]
-            public string? Name { get; set; }
+            [Parameter("carrier")]
+            public string? Carrier { internal get; set; }
 
-            public All(Dictionary<string, object>? overrideParameters = null) : base(overrideParameters)
+            public Verify(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
             }
 
-            internal override Dictionary<string, object> ToDictionary()
+            internal override Dictionary<string, object?>? ToDictionary()
             {
                 RegisterParameters(this);
                 return ParameterDictionary;

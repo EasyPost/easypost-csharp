@@ -1,9 +1,9 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters.V2;
 
 namespace EasyPost.Services.V2
 {
@@ -28,7 +28,7 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<CustomsItem> Create(Dictionary<string, object> parameters)
+        public async Task<CustomsItem> Create(CustomsItems.Create parameters)
         {
             return await Create<CustomsItem>("customs_items", parameters);
         }

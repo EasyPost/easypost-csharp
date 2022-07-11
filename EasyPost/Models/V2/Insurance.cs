@@ -10,6 +10,8 @@ namespace EasyPost.Models.V2
 {
     public class Insurance : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("amount")]
         public string? Amount { get; set; }
         [JsonProperty("from_address")]
@@ -33,12 +35,14 @@ namespace EasyPost.Models.V2
         [JsonProperty("tracking_code")]
         public string? TrackingCode { get; set; }
 
+        #endregion
+
         /// <summary>
         ///     Refresh this Insurance.
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters to use when refreshing this insurance.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Insurance> Refresh(Dictionary<string, object>? parameters = null)
+        public async Task<Insurance> Refresh(Parameters.V2.Insurance.Refresh? parameters = null)
         {
             return await Update<Insurance>(Method.Patch, $"insurances/{Id}", parameters);
         }

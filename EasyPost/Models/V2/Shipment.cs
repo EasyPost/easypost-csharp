@@ -4,6 +4,7 @@ using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Interfaces;
+using EasyPost.Parameters.V2;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -11,6 +12,8 @@ namespace EasyPost.Models.V2
 {
     public class Shipment : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("batch_id")]
         public string? BatchId { get; set; }
         [JsonProperty("batch_message")]
@@ -70,35 +73,19 @@ namespace EasyPost.Models.V2
         [JsonProperty("usps_zone")]
         public string? UspsZone { get; set; }
 
+        #endregion
+
         /// <summary>
         ///     Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task Buy(string rateId, string? insuranceValue = null)
+        public async Task Buy(Shipments.Buy parameters)
         {
             if (Id == null)
             {
                 throw new PropertyMissing("id");
-            }
-
-            Dictionary<string, object> parameters =
-                new Dictionary<string, object>
-                {
-                    {
-                        "rate", new Dictionary<string, object>
-                        {
-                            {
-                                "id", rateId
-                            }
-                        }
-                    }
-                };
-
-            if (insuranceValue != null)
-            {
-                parameters.Add("insurance", insuranceValue);
             }
 
             Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{Id}/buy", parameters);
@@ -114,22 +101,6 @@ namespace EasyPost.Models.V2
         }
 
         /// <summary>
-        ///     Purchase a label for this shipment with the given rate.
-        /// </summary>
-        /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
-        /// <param name="insuranceValue">The value to insure the shipment for.</param>
-        [ApiCompatibility(ApiVersion.Latest)]
-        public async Task Buy(Rate rate, string? insuranceValue = null)
-        {
-            if (rate.Id == null)
-            {
-                throw new PropertyMissing("id");
-            }
-
-            await Buy(rate.Id, insuranceValue);
-        }
-
-        /// <summary>
         ///     Generate a postage label for this shipment.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
@@ -141,12 +112,12 @@ namespace EasyPost.Models.V2
                 throw new PropertyMissing("id");
             }
 
-            return await Update<Shipment>(Method.Get, $"shipments/{Id}/label", new Dictionary<string, object>
+            Shipments.Label parameters = new Shipments.Label
             {
-                {
-                    "file_format", fileFormat
-                }
-            });
+                FileFormat = fileFormat
+            };
+
+            return await Update<Shipment>(Method.Get, $"shipments/{Id}/label", parameters);
         }
 
         /// <summary>
@@ -176,12 +147,12 @@ namespace EasyPost.Models.V2
                 throw new PropertyMissing("id");
             }
 
-            return await Update<Shipment>(Method.Post, $"shipments/{Id}/insure", new Dictionary<string, object>
+            Shipments.Insure parameters = new Shipments.Insure
             {
-                {
-                    "amount", amount
-                }
-            });
+                Amount = amount
+            };
+
+            return await Update<Shipment>(Method.Post, $"shipments/{Id}/insure", parameters);
         }
 
         /// <summary>
@@ -235,7 +206,7 @@ namespace EasyPost.Models.V2
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task RegenerateRates(Dictionary<string, object>? parameters = null)
+        public async Task RegenerateRates(Shipments.GenerateRates? parameters = null)
         {
             if (Id == null)
             {

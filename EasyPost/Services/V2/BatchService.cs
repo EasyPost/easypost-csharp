@@ -1,9 +1,10 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 
 namespace EasyPost.Services.V2
 {
@@ -29,7 +30,7 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>An EasyPost.BatchCollection instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
+        public async Task<BatchCollection> All(All? parameters = null)
         {
             return await List<BatchCollection>("batches", parameters);
         }
@@ -45,15 +46,9 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Batch> Create(Dictionary<string, object>? parameters = null)
+        public async Task<Batch> Create(Batches.Create? parameters = null)
         {
-            Dictionary<string, object> requestParameters = new Dictionary<string, object>();
-            if (parameters != null)
-            {
-                requestParameters.Add("batch", parameters);
-            }
-
-            return await Create<Batch>("batches", requestParameters);
+            return await Create<Batch>("batches", parameters);
         }
 
         /// <summary>
@@ -67,14 +62,9 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Batch> CreateAndBuy(Dictionary<string, object> parameters)
+        public async Task<Batch> CreateAndBuy(Batches.Create parameters)
         {
-            return await Create<Batch>("batches/create_and_buy", new Dictionary<string, object>
-            {
-                {
-                    "batch", parameters
-                }
-            });
+            return await Create<Batch>("batches/create_and_buy", parameters);
         }
 
         /// <summary>

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.V2;
+using EasyPost.Parameters.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -115,7 +116,7 @@ namespace EasyPost.Tests
                     "name", testName
                 }
             };
-            user = await user.Update(userDict);
+            user = await user.Update(new Users.Update(userDict));
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.Id.StartsWith("user_"));
@@ -130,12 +131,12 @@ namespace EasyPost.Tests
             User user = await CreateUser();
 
             string color = "#123456";
-            Brand brand = await user.UpdateBrand(new Dictionary<string, object>
+            Brand brand = await user.UpdateBrand(new Users.UpdateBrand(new Dictionary<string, object>
             {
                 {
                     "color", color
                 }
-            });
+            }));
 
             Assert.IsInstanceOfType(brand, typeof(Brand));
             Assert.IsTrue(brand.Id.StartsWith("brd_"));
@@ -144,12 +145,12 @@ namespace EasyPost.Tests
 
         private async Task<User> CreateUser()
         {
-            User user = await Client.Users.Create(new Dictionary<string, object>
+            User user = await Client.Users.Create(new Users.Create(new Dictionary<string, object>
             {
                 {
                     "name", "Test User"
                 }
-            });
+            }));
             CleanUpAfterTest(user.Id);
 
             return user;

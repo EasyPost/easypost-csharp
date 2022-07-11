@@ -1,9 +1,10 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 
 namespace EasyPost.Services.V2
 {
@@ -29,7 +30,7 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>An EasyPost.AddressCollection instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<AddressCollection> All(Parameters.V2.Addresses.All? parameters = null)
+        public async Task<AddressCollection> All(All? parameters = null)
         {
             return await List<AddressCollection>("addresses", parameters);
         }
@@ -55,7 +56,7 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Address> Create(Dictionary<string, object>? parameters = null)
+        public async Task<Address> Create(Addresses.Create parameters)
         {
             return await SendCreate("addresses", parameters);
         }
@@ -78,7 +79,7 @@ namespace EasyPost.Services.V2
         ///     All invalid keys will be ignored.
         /// </param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Address> CreateAndVerify(Dictionary<string, object>? parameters = null)
+        public async Task<Address> CreateAndVerify(Addresses.Create parameters)
         {
             return await SendCreate("addresses/create_and_verify", parameters, "address");
         }
@@ -94,28 +95,9 @@ namespace EasyPost.Services.V2
             return await Get<Address>($"addresses/{id}");
         }
 
-        private async Task<Address> SendCreate(string endpoint, Dictionary<string, object>? parameters = null, string? rootElement = null)
+        private async Task<Address> SendCreate(string endpoint, Addresses.Create parameters, string? rootElement = null)
         {
-            parameters ??= new Dictionary<string, object>();
-            Dictionary<string, object> body = new Dictionary<string, object>();
-
-            if (parameters.ContainsKey("verify"))
-            {
-                body.Add("verify", parameters["verify"]);
-                // removing verify from the address data parameters, since it needs to be one key above
-                parameters.Remove("verify");
-            }
-
-            if (parameters.ContainsKey("verify_strict"))
-            {
-                body.Add("verify_strict", parameters["verify_strict"]);
-                // removing verify_strict from the address data parameters, since it needs to be one key above
-                parameters.Remove("verify_strict");
-            }
-
-            body.Add("address", parameters);
-
-            return await Create<Address>(endpoint, body, rootElement);
+            return await Create<Address>(endpoint, parameters, rootElement);
         }
     }
 }

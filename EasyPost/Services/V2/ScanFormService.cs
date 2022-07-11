@@ -4,6 +4,8 @@ using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 
 namespace EasyPost.Services.V2
 {
@@ -30,7 +32,7 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
+        public async Task<ScanFormCollection> All(All? parameters = null)
         {
             ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
             scanFormCollection.Filters = parameters;
@@ -46,17 +48,11 @@ namespace EasyPost.Services.V2
         [ApiCompatibility(ApiVersion.Latest)]
         public async Task<ScanForm> Create(List<Shipment> shipments)
         {
-            return await Create<ScanForm>("scan_forms", new Dictionary<string, object>
+            var parameters = new ScanForms.Create
             {
-                {
-                    "scan_form", new Dictionary<string, object>
-                    {
-                        {
-                            "shipments", shipments
-                        }
-                    }
-                }
-            });
+                Shipments = shipments
+            };
+            return await Create<ScanForm>("scan_forms", parameters);
         }
 
         /// <summary>

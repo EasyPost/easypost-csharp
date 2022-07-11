@@ -6,6 +6,7 @@ using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Interfaces;
+using EasyPost.Parameters.V2;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -13,6 +14,8 @@ namespace EasyPost.Models.V2
 {
     public class Pickup : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("address")]
         public Address? Address { get; set; }
         [JsonProperty("carrier_accounts")]
@@ -38,6 +41,8 @@ namespace EasyPost.Models.V2
         [JsonProperty("status")]
         public string? Status { get; set; }
 
+        #endregion
+
         /// <summary>
         ///     Get the pickup rates as a list of Rate objects.
         /// </summary>
@@ -54,23 +59,14 @@ namespace EasyPost.Models.V2
         /// <param name="carrier">The name of the carrier to purchase with.</param>
         /// <param name="service">The name of the service to purchase.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Pickup> Buy(string carrier, string service)
+        public async Task<Pickup> Buy(Pickups.Buy parameters)
         {
             if (Id == null)
             {
                 throw new PropertyMissing("id");
             }
 
-            return await Update<Pickup>(Method.Post, $"pickups/{Id}/buy",
-                new Dictionary<string, object>
-                {
-                    {
-                        "carrier", carrier
-                    },
-                    {
-                        "service", service
-                    }
-                });
+            return await Update<Pickup>(Method.Post, $"pickups/{Id}/buy", parameters);
         }
 
         /// <summary>

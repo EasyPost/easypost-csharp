@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 using EasyPost.Services.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -21,11 +23,9 @@ namespace EasyPost.Tests
         {
             UseVCR("all", ApiVersion.Latest);
 
-            ShipmentCollection shipmentCollection = await Client.Shipments.All(new Dictionary<string, object>
+            ShipmentCollection shipmentCollection = await Client.Shipments.All(new All
             {
-                {
-                    "page_size", Fixture.PageSize
-                }
+                PageSize = Fixture.PageSize
             });
 
             List<Shipment> shipments = shipmentCollection.Shipments;
@@ -45,7 +45,10 @@ namespace EasyPost.Tests
 
             Shipment shipment = await CreateFullShipment();
 
-            await shipment.Buy(shipment.LowestRate());
+            await shipment.Buy(new Shipments.Buy
+            {
+                RateId = shipment.LowestRate().Id
+            });
 
             Assert.IsNotNull(shipment.PostageLabel);
         }
@@ -91,7 +94,7 @@ namespace EasyPost.Tests
             shipmentData["tax_identifiers"] = null;
             shipmentData["reference"] = "";
 
-            Shipment shipment = await Client.Shipments.Create(shipmentData);
+            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(shipmentData));
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.Id.StartsWith("shp_"));
@@ -112,7 +115,7 @@ namespace EasyPost.Tests
                 Fixture.TaxIdentifier
             };
 
-            Shipment shipment = await Client.Shipments.Create(shipmentData);
+            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(shipmentData));
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.Id.StartsWith("shp_"));
@@ -124,11 +127,11 @@ namespace EasyPost.Tests
         {
             UseVCR("create_with_ids", ApiVersion.Latest);
 
-            Address fromAddress = await Client.Addresses.Create(Fixture.BasicAddress);
-            Address toAddress = await Client.Addresses.Create(Fixture.BasicAddress);
-            Parcel parcel = await Client.Parcels.Create(Fixture.BasicParcel);
+            Address fromAddress = await Client.Addresses.Create(new Addresses.Create(Fixture.BasicAddress));
+            Address toAddress = await Client.Addresses.Create(new Addresses.Create(Fixture.BasicAddress));
+            Parcel parcel = await Client.Parcels.Create(new Parcels.Create(Fixture.BasicParcel));
 
-            Shipment shipment = await Client.Shipments.Create(new Dictionary<string, object>
+            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(new Dictionary<string, object>
             {
                 {
                     "from_address", new Dictionary<string, object>
@@ -154,7 +157,7 @@ namespace EasyPost.Tests
                         }
                     }
                 }
-            });
+            }));
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.Id.StartsWith("shp_"));
@@ -195,7 +198,7 @@ namespace EasyPost.Tests
             // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
             shipmentData["insurance"] = 0;
 
-            Shipment shipment = await Client.Shipments.Create(shipmentData);
+            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(shipmentData));
 
             shipment = await shipment.Insure(100);
 
@@ -324,17 +327,17 @@ namespace EasyPost.Tests
 
         private async Task<Shipment> CreateBasicShipment()
         {
-            return await Client.Shipments.Create(Fixture.BasicShipment);
+            return await Client.Shipments.Create(new Shipments.Create(Fixture.BasicShipment));
         }
 
         private async Task<Shipment> CreateFullShipment()
         {
-            return await Client.Shipments.Create(Fixture.FullShipment);
+            return await Client.Shipments.Create(new Shipments.Create(Fixture.FullShipment));
         }
 
         private async Task<Shipment> CreateOneCallBuyShipment()
         {
-            return await Client.Shipments.Create(Fixture.OneCallBuyShipment);
+            return await Client.Shipments.Create(new Shipments.Create(Fixture.OneCallBuyShipment));
         }
     }
 }

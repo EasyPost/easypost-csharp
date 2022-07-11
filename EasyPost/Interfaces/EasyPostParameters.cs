@@ -9,9 +9,9 @@ namespace EasyPost.Interfaces
 {
     public abstract class EasyPostParameters : IEasyPostParameters
     {
-        protected Dictionary<string, object> ParameterDictionary = new Dictionary<string, object>();
+        protected Dictionary<string, object?>? ParameterDictionary = new Dictionary<string, object?>();
 
-        protected EasyPostParameters(Dictionary<string, object>? overrideParameters = null)
+        protected EasyPostParameters(Dictionary<string, object?>? overrideParameters = null)
         {
             if (overrideParameters == null)
             {
@@ -24,20 +24,20 @@ namespace EasyPost.Interfaces
             }
         }
 
-        internal abstract Dictionary<string, object> ToDictionary();
+        internal abstract Dictionary<string, object?>? ToDictionary();
 
         protected void RegisterParameters(EasyPostParameters obj)
         {
-            PropertyInfo[] propertyInfos = obj.GetType().GetProperties();
-            foreach (var propertyInfo in propertyInfos)
+            PropertyInfo[] properties = obj.GetType().GetProperties();
+            foreach (var property in properties)
             {
-                ParameterAttribute? parameterAttribute = BaseCustomAttribute.GetCustomAttribute<ParameterAttribute>(propertyInfo);
+                ParameterAttribute? parameterAttribute = BaseCustomAttribute.GetCustomAttribute<ParameterAttribute>(property);
                 if (parameterAttribute == null)
                 {
                     continue;
                 }
 
-                Add(parameterAttribute, propertyInfo, obj);
+                Add(parameterAttribute, property, obj);
             }
         }
 
@@ -48,8 +48,11 @@ namespace EasyPost.Interfaces
             ParameterDictionary = UpdateDictionary(ParameterDictionary, parameterAttribute.JsonPath, propertyInfo.GetValue(obj));
         }
 
-        private Dictionary<string, object> UpdateDictionary(Dictionary<string, object> dictionary, string[] keys, object value)
+        private Dictionary<string, object?>? UpdateDictionary(Dictionary<string, object?>? dictionary, string[] keys, object? value)
         {
+            // TODO: Check this line if issues arise.
+            dictionary ??= new Dictionary<string, object?>();
+
             switch (keys.Length)
             {
                 // Don't need to go down
@@ -57,6 +60,7 @@ namespace EasyPost.Interfaces
                     return dictionary;
                 // Last key left
                 case 1:
+                    // TODO: Check this line if issues arise.
                     dictionary[keys[0]] = value;
                     return dictionary;
             }
@@ -67,11 +71,11 @@ namespace EasyPost.Interfaces
             keys = keys.Skip(1).ToArray();
             if (!dictionary.ContainsKey(key))
             {
-                dictionary[key] = UpdateDictionary(new Dictionary<string, object>(), keys, value);
+                dictionary[key] = UpdateDictionary(new Dictionary<string, object?>(), keys, value);
             }
 
-            object subDirectory = dictionary[key];
-            if (subDirectory is Dictionary<string, object> subDictionary)
+            object? subDirectory = dictionary[key];
+            if (subDirectory is Dictionary<string, object?> subDictionary)
             {
                 dictionary[key] = UpdateDictionary(subDictionary, keys, value);
             }

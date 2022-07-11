@@ -37,6 +37,6 @@ namespace EasyPost.Tests
             Assert.AreEqual(customsInfo, retrievedCustomsInfo);
         }
 
-        private async Task<CustomsInfo> CreateBasicCustomsInfo() => await Client.CustomsInfo.Create(Fixture.BasicCustomsInfo);
+        private async Task<CustomsInfo> CreateBasicCustomsInfo() => await Client.CustomsInfo.Create(new Parameters.V2.CustomsInfo.Create(Fixture.BasicCustomsInfo));
     }
 }

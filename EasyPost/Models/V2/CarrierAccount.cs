@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
+using EasyPost.Parameters.V2;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -10,6 +11,8 @@ namespace EasyPost.Models.V2
 {
     public class CarrierAccount : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("billing_type")]
         public string? BillingType { get; set; }
         [JsonProperty("credentials")]
@@ -24,6 +27,8 @@ namespace EasyPost.Models.V2
         public Dictionary<string, object>? TestCredentials { get; set; }
         [JsonProperty("type")]
         public string? Type { get; set; }
+
+        #endregion
 
 
         /// <summary>
@@ -41,7 +46,7 @@ namespace EasyPost.Models.V2
         /// </summary>
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<CarrierAccount> Update(Dictionary<string, object> parameters)
+        public async Task<CarrierAccount> Update(CarrierAccounts.Update parameters)
         {
             return await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{Id}", parameters);
         }

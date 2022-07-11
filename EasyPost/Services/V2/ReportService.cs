@@ -1,9 +1,10 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 
 namespace EasyPost.Services.V2
 {
@@ -29,7 +30,7 @@ namespace EasyPost.Services.V2
         /// <param name="type">The type of report, e.g. "shipment", "tracker", "payment_log", etc.</param>
         /// <returns>An EasyPost.ReportCollection instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
+        public async Task<ReportCollection> All(string type, All? parameters = null)
         {
             ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters);
             reportCollection.Filters = parameters;
@@ -56,7 +57,7 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>EasyPost.Report instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null)
+        public async Task<Report> Create(string type, Reports.Create? parameters = null)
         {
             return await Create<Report>($"reports/{type}", parameters);
         }

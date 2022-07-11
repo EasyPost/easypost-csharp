@@ -1,9 +1,10 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 
 namespace EasyPost.Services.V2
 {
@@ -34,7 +35,7 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>A EasyPost.TrackerCollection instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
+        public async Task<TrackerCollection> All(All? parameters = null)
         {
             TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters);
             trackerCollection.Filters = parameters;
@@ -49,22 +50,9 @@ namespace EasyPost.Services.V2
         /// <param name="trackingCode">Tracking code for the tracker.</param>
         /// <returns>An EasyPost.Tracker instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Tracker> Create(string carrier, string trackingCode)
+        public async Task<Tracker> Create(Trackers.Create parameters)
         {
-            return await Create<Tracker>("trackers", new Dictionary<string, object>
-            {
-                {
-                    "tracker", new Dictionary<string, object>
-                    {
-                        {
-                            "tracking_code", trackingCode
-                        },
-                        {
-                            "carrier", carrier
-                        }
-                    }
-                }
-            });
+            return await Create<Tracker>("trackers", parameters);
         }
 
         /// <summary>
@@ -73,14 +61,9 @@ namespace EasyPost.Services.V2
         /// <param name="parameters">A dictionary of tracking codes and carriers</param>
         /// <returns>True</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<bool> CreateList(Dictionary<string, object> parameters)
+        public async Task<bool> CreateList(Trackers.Create parameters)
         {
-            return await CreateBlind("trackers/create_list", new Dictionary<string, object>
-            {
-                {
-                    "trackers", parameters
-                }
-            });
+            return await CreateBlind("trackers/create_list", parameters);
         }
 
         // This endpoint does not return a response so we return the request was successful

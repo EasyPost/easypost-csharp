@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Models.V2;
+using EasyPost.Parameters.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -21,7 +22,11 @@ namespace EasyPost.Tests
 
             Order order = await CreateBasicOrder();
 
-            order = await order.Buy(Fixture.Usps, Fixture.UspsService);
+            order = await order.Buy(new Orders.Buy
+            {
+                Carrier = Fixture.Usps,
+                Service = Fixture.UspsService
+            });
 
             List<Shipment> shipments = order.Shipments;
 
@@ -108,6 +113,6 @@ namespace EasyPost.Tests
             Assert.AreEqual(order.Id, retrievedOrder.Id);
         }
 
-        private async Task<Order> CreateBasicOrder() => await Client.Orders.Create(Fixture.BasicOrder);
+        private async Task<Order> CreateBasicOrder() => await Client.Orders.Create(new Orders.Create(Fixture.BasicOrder));
     }
 }

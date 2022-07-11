@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.V2;
+using EasyPost.Parameters.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -102,12 +103,12 @@ namespace EasyPost.Tests
 
         private async Task<Webhook> CreateBasicWebhook(string url)
         {
-            Webhook webhook = await Client.Webhooks.Create(new Dictionary<string, object>
+            Webhook webhook = await Client.Webhooks.Create(new Webhooks.Create(new Dictionary<string, object>
             {
                 {
                     "url", url
                 }
-            });
+            }));
             CleanUpAfterTest(webhook.Id);
 
             return webhook;

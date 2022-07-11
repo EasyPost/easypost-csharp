@@ -4,6 +4,8 @@ using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 
 namespace EasyPost.Services.V2
 {
@@ -18,7 +20,7 @@ namespace EasyPost.Services.V2
         /// </summary>
         /// <returns>List of EasyPost.Webhook instances.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
+        public async Task<List<Webhook>> All(All? parameters = null)
         {
             return await List<List<Webhook>>("webhooks", parameters, "webhooks");
         }
@@ -33,14 +35,9 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>EasyPost.Webhook instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Webhook> Create(Dictionary<string, object> parameters)
+        public async Task<Webhook> Create(Webhooks.Create parameters)
         {
-            return await Create<Webhook>("webhooks", new Dictionary<string, object>
-            {
-                {
-                    "webhook", parameters
-                }
-            });
+            return await Create<Webhook>("webhooks", parameters);
         }
 
         /// <summary>

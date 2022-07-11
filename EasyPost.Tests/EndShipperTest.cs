@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.Beta;
+using EasyPost.Parameters;
+using EasyPost.Parameters.Beta;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -18,11 +20,9 @@ namespace EasyPost.Tests
         {
             UseVCR("all", ApiVersion.Beta);
 
-            List<EndShipper> endShippers = await Client.EndShippers.All(new Dictionary<string, object>
+            List<EndShipper> endShippers = await Client.EndShippers.All(new All
             {
-                {
-                    "page_size", Fixture.PageSize
-                }
+                PageSize = Fixture.PageSize
             });
 
             Assert.IsTrue(endShippers.Count <= Fixture.PageSize);
@@ -69,13 +69,13 @@ namespace EasyPost.Tests
             Dictionary<string, object> endShipperData = Fixture.EndShipperAddress;
             endShipperData["name"] = testName;
 
-            endShipper = await endShipper.Update(endShipperData);
+            endShipper = await endShipper.Update(new EndShippers.Update(endShipperData));
 
             Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
             Assert.IsTrue(endShipper.Id.StartsWith("es_"));
             Assert.AreEqual(testName, endShipper.Name);
         }
 
-        private async Task<EndShipper> CreateBasicEndShipper() => await Client.EndShippers.Create(Fixture.EndShipperAddress);
+        private async Task<EndShipper> CreateBasicEndShipper() => await Client.EndShippers.Create(new EndShippers.Create(Fixture.EndShipperAddress));
     }
 }

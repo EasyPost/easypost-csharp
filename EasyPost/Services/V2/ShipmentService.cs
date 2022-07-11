@@ -5,6 +5,8 @@ using EasyPost.Calculation;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 
 namespace EasyPost.Services.V2
 {
@@ -31,7 +33,7 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>An EasyPost.ShipmentCollection instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
+        public async Task<ShipmentCollection> All(All? parameters = null)
         {
             ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
             shipmentCollection.Filters = parameters;
@@ -60,15 +62,9 @@ namespace EasyPost.Services.V2
         /// </param>
         /// <returns>An EasyPost.Shipment instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Shipment> Create(Dictionary<string, object>? parameters = null)
+        public async Task<Shipment> Create(Shipments.Create parameters)
         {
-            Dictionary<string, object> requestParameters = new Dictionary<string, object>();
-            if (parameters != null)
-            {
-                requestParameters.Add("shipment", parameters);
-            }
-
-            return await Create<Shipment>("shipments", requestParameters);
+            return await Create<Shipment>("shipments", parameters);
         }
 
         /// <summary>

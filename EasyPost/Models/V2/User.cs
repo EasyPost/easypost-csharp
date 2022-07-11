@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Interfaces;
+using EasyPost.Parameters.V2;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -10,6 +11,8 @@ namespace EasyPost.Models.V2
 {
     public class User : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("api_keys")]
         public List<ApiKey>? ApiKeys { get; set; }
         [JsonProperty("balance")]
@@ -38,6 +41,8 @@ namespace EasyPost.Models.V2
         [JsonProperty("secondary_recharge_amount")]
         public string? SecondaryRechargeAmount { get; set; }
 
+        #endregion
+
 
         /// <summary>
         ///     Delete the user.
@@ -65,14 +70,9 @@ namespace EasyPost.Models.V2
         ///     All invalid keys will be ignored.
         /// </param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<User> Update(Dictionary<string, object> parameters)
+        public async Task<User> Update(Users.Update parameters)
         {
-            return await Update<User>(Method.Patch, $"users/{Id}", new Dictionary<string, object>
-            {
-                {
-                    "user", parameters
-                }
-            });
+            return await Update<User>(Method.Patch, $"users/{Id}", parameters);
         }
 
         /// <summary>
@@ -91,14 +91,9 @@ namespace EasyPost.Models.V2
         /// </param>
         /// <returns>EasyPost.Brand instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Brand> UpdateBrand(Dictionary<string, object> parameters)
+        public async Task<Brand> UpdateBrand(Users.UpdateBrand parameters)
         {
-            return await Request<Brand>(Method.Patch, $"users/{Id}/brand", new Dictionary<string, object>
-            {
-                {
-                    "brand", parameters
-                }
-            });
+            return await Request<Brand>(Method.Patch, $"users/{Id}/brand", parameters);
         }
     }
 }

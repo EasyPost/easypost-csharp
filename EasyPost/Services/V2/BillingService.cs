@@ -1,11 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
 using EasyPost.Interfaces;
 using EasyPost.Models.V2;
+using EasyPost.Parameters.V2;
 using EasyPost.Utilities;
 using RestSharp;
 
@@ -43,14 +43,12 @@ namespace EasyPost.Services.V2
 
             PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
 
-            Dictionary<string, object> requestParameters = new Dictionary<string, object>
+            var parameters = new Billing.Fund
             {
-                {
-                    "amount", amount
-                }
+                Amount = amount
             };
 
-            return await Request(Method.Post, $"{paymentMethod.Endpoint}/{paymentMethod.Id}/charge", requestParameters);
+            return await Request(Method.Post, $"{paymentMethod.Endpoint}/{paymentMethod.Id}/charge", parameters);
         }
 
         /// <summary>

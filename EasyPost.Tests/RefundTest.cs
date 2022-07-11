@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.V2;
+using EasyPost.Parameters;
+using EasyPost.Parameters.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -18,11 +20,9 @@ namespace EasyPost.Tests
         {
             UseVCR("all", ApiVersion.Latest);
 
-            RefundCollection refundCollection = await Client.Refunds.All(new Dictionary<string, object>
+            RefundCollection refundCollection = await Client.Refunds.All(new All
             {
-                {
-                    "page_size", Fixture.PageSize
-                }
+                PageSize = Fixture.PageSize
             });
 
             List<Refund> refunds = refundCollection.Refunds;
@@ -57,11 +57,9 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve", ApiVersion.Latest);
 
-            RefundCollection refundCollection = await Client.Refunds.All(new Dictionary<string, object>
+            RefundCollection refundCollection = await Client.Refunds.All(new All
             {
-                {
-                    "page_size", Fixture.PageSize
-                }
+                PageSize = Fixture.PageSize
             });
 
             Refund refund = (await CreateBasicRefund())[0];
@@ -74,20 +72,16 @@ namespace EasyPost.Tests
 
         private async Task<List<Refund>> CreateBasicRefund()
         {
-            Shipment shipment = await Client.Shipments.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(Fixture.OneCallBuyShipment));
             Shipment retrievedShipment = await Client.Shipments.Retrieve(shipment.Id); // We need to retrieve the shipment so that the tracking_code has time to populate
 
-            return await Client.Refunds.Create(new Dictionary<string, object>
+            return await Client.Refunds.Create(new Refunds.Create
             {
+                Carrier = Fixture.Usps,
+                TrackingCodes = new List<string>
                 {
-                    "carrier", Fixture.Usps
+                    retrievedShipment.TrackingCode
                 },
-                {
-                    "tracking_codes", new List<string>
-                    {
-                        retrievedShipment.TrackingCode
-                    }
-                }
             });
         }
     }
