@@ -22,6 +22,8 @@ FOR /R scripts %%F IN (*.bat) DO (
     BatCodeCheck.exe "%%F" /LS
 )
 
+EXIT /B 0
+
 :commandFailed
 @ECHO Command failed.
 GOTO :exitWithError

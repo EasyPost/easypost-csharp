@@ -16,6 +16,7 @@ SET containerName=%3
 @ECHO (Re-)Installing certificate to system...
 sn -d %containerName%
 SnInstallPfx %certFile% %certPass% %containerName% || GOTO :commandFailed
+EXIT /B 0
 
 :commandFailed
 @ECHO Command failed.

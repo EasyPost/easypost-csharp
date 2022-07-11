@@ -19,6 +19,8 @@ FOR /R "lib" %%F IN (*.dll) DO (
     signtool sign /f %certFile% /p %certPass% /v /tr http://timestamp.digicert.com?alg=sha256 /td SHA256 /fd SHA256 "%%F" || GOTO :commandFailed
 )
 
+EXIT /B 0
+
 :commandFailed
 @ECHO Command failed.
 GOTO :exitWithError

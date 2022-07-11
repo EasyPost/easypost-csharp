@@ -22,6 +22,8 @@ FOR /R %%F IN (*.nupkg) DO (
     nuget sign "%%F" -Timestamper http://timestamp.digicert.com -CertificatePath "%certFile%" -CertificatePassword "%certPass%" || GOTO :commandFailed
 )
 
+EXIT /B 0
+
 :commandFailed
 @ECHO Command failed.
 GOTO :exitWithError

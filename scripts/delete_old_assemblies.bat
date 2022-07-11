@@ -7,3 +7,5 @@
 @ECHO Cleaning old files...
 @RD /S /Q lib
 DEL /S /Q /F *.nupkg
+
+EXIT /B 0
