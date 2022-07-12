@@ -9,16 +9,11 @@
 SET certFile=%1
 SET certPass=%2
 
-@ECHO %certFile%
-@ECHO %certPass%
-
 :: Sign all NuGet packages found
 @ECHO:
 @ECHO Signing NuGet package with %certFile%...
 :: Should only be one .nupkg file at this point, since we deleted the old ones
-SET nugetFileName=
 FOR /R %%F IN (*.nupkg) DO (
-    SET nugetFileName="%%F"
     nuget sign "%%F" -Timestamper http://timestamp.digicert.com -CertificatePath "%certFile%" -CertificatePassword "%certPass%" || GOTO :commandFailed
 )
 

@@ -11,6 +11,8 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>EasyPost Shipping API Client Library for .NET https://easypost.com/docs</description>
         <tags>EasyPost ShippingAPI USPS UPS FedEx</tags>
+        <readme>docs\README.md</readme>
+        <icon>images\icon.png</icon>
         <dependencies>
             <group targetFramework="netstandard2.0">
                 <dependency id="Newtonsoft.Json" version="13.0.1" />
@@ -39,5 +41,7 @@
         <file src="lib\net\net5.0\EasyPost.XML" target="lib\net5.0" />
         <file src="lib\net\net6.0\EasyPost.dll" target="lib\net6.0" />
         <file src="lib\net\net6.0\EasyPost.XML" target="lib\net6.0" />
+        <file src="README.md" target="docs\" />
+        <file src="icon.png" target="images\" />
     </files>
 </package>

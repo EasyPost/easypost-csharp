@@ -2,12 +2,26 @@
 help:
 	@cat Makefile | grep '^## ' --color=never | cut -c4- | sed -e "`printf 's/ - /\t- /;'`" | column -s "`printf '\t'`" -t
 
-## release - Build, sign and package the project for distribution, signing with the provided certificate (Windows only)
+## prep-release - Build, sign and package the project for distribution, signing with the provided certificate (Windows only)
 # @parameters:
 # cert= - The certificate to use for signing the built assets.
 # pass= - The password for the certificate.
-release:
+prep-release:
 	scripts\build_release_nuget.bat EasyPost ${cert} ${pass} EasyPost Release
+
+## publish-all - Publish all NuGet files to nuget.org.
+# WARNING: Will publish ALL discovered NuGet files.
+# @parameters:
+# key= - The API key for nuget.org
+publish-all:
+	scripts\publish_all_nuget.bat ${key}
+
+## publish - Publish a specific NuGet file to nuget.org (Windows only)
+# @parameters:
+# file= - The NuGet file to publish
+# key= - The API key for nuget.org
+publish:
+	scripts\publish_nuget.bat ${file} ${key}
 
 ## build-dev - Build the project in Debug mode
 build-dev:

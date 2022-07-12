@@ -40,6 +40,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\lib\net\EasyPost.XML</DocumentationFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <NoWarn>1701;1702;1591;1570;CS8618;CS8603;CS8602;CS8765;CS8767;CS0659;CS0618</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -59,12 +60,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)"/>
-    <PackageReference Include="RestSharp" Version="[107.3.0, 108.0.0)"/>
+    <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />
+    <PackageReference Include="RestSharp" Version="[107.3.0, 108.0.0)" />
     <PackageReference Include="SecurityCodeScan.VS2019" Version="[5.0.0, 6.0.0)">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
