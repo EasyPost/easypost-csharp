@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## Next Release
+- Adds `generate_form` function for Shipment object
+
 ## v3.2.0 (2022-07-11)
 
 - Adds `DeletePaymentMethod`, `FundWallet`, and `RetrievePaymentMethods` functions
