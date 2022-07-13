@@ -7,6 +7,8 @@ namespace EasyPost
 {
     public class CarrierType : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("fields")]
         public Dictionary<string, object> fields { get; set; }
         [JsonProperty("logo")]
@@ -15,6 +17,8 @@ namespace EasyPost
         public string readable { get; set; }
         [JsonProperty("type")]
         public string type { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Get all available carrier types.

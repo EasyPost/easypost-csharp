@@ -10,6 +10,8 @@ namespace EasyPost
 {
     public class Shipment : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("batch_id")]
         public string batch_id { get; set; }
         [JsonProperty("batch_message")]
@@ -76,6 +78,8 @@ namespace EasyPost
         public DateTime? updated_at { get; set; }
         [JsonProperty("usps_zone")]
         public string usps_zone { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Purchase a label for this shipment with the given rate.

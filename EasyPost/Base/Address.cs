@@ -5,6 +5,8 @@ namespace EasyPost.Base
 {
     public abstract class Address : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("city")]
         public string city { get; set; }
         [JsonProperty("company")]
@@ -35,5 +37,7 @@ namespace EasyPost.Base
         public DateTime? updated_at { get; set; }
         [JsonProperty("zip")]
         public string zip { get; set; }
+
+        #endregion
     }
 }

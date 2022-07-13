@@ -8,6 +8,8 @@ namespace EasyPost
 {
     public class CustomsItem : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("code")]
         public string code { get; set; }
         [JsonProperty("created_at")]
@@ -32,6 +34,8 @@ namespace EasyPost
         public double? value { get; set; }
         [JsonProperty("weight")]
         public double weight { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Create a CustomsItem.

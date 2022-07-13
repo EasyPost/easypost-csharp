@@ -8,6 +8,8 @@ namespace EasyPost
 {
     public class CustomsInfo : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("contents_explanation")]
         public string contents_explanation { get; set; }
         [JsonProperty("contents_type")]
@@ -36,6 +38,8 @@ namespace EasyPost
         public DateTime? updated_at { get; set; }
         [JsonProperty("declaration")]
         public string declaration { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Create a CustomsInfo.

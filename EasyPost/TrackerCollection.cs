@@ -7,12 +7,16 @@ namespace EasyPost
 {
     public class TrackerCollection
     {
+        #region JSON Properties
+
         [JsonProperty("filters")]
         public Dictionary<string, object>? filters { get; set; }
         [JsonProperty("has_more")]
         public bool has_more { get; set; }
         [JsonProperty("trackers")]
         public List<Tracker> trackers { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Get the next page of trackers based on the original parameters passed to Tracker.All().

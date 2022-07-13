@@ -4,8 +4,12 @@ namespace EasyPost
 {
     public class PickupRate : Rate
     {
+        #region JSON Properties
+
         [JsonProperty("pickup_id")]
         public string pickup_id { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Convert this PickupRate object to a Rate object.

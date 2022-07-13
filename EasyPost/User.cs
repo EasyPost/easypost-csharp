@@ -8,6 +8,8 @@ namespace EasyPost
 {
     public class User : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("api_keys")]
         public List<ApiKey> api_keys { get; set; }
         [JsonProperty("balance")]
@@ -40,6 +42,8 @@ namespace EasyPost
         public string secondary_recharge_amount { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Delete the user.

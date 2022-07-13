@@ -4,6 +4,8 @@ namespace EasyPost
 {
     public class Brand
     {
+        #region JSON Properties
+
         [JsonProperty("ad")]
         public string ad { get; set; }
         [JsonProperty("ad_href")]
@@ -24,5 +26,7 @@ namespace EasyPost
         public string theme { get; set; }
         [JsonProperty("user_id")]
         public string user_id { get; set; }
+
+        #endregion
     }
 }

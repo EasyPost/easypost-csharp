@@ -8,6 +8,8 @@ namespace EasyPost
 {
     public class Parcel : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
         [JsonProperty("height")]
@@ -26,6 +28,8 @@ namespace EasyPost
         public double weight { get; set; }
         [JsonProperty("width")]
         public double? width { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Create a Parcel.

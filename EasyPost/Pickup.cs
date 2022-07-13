@@ -8,6 +8,8 @@ namespace EasyPost
 {
     public class Pickup : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("address")]
         public Address address { get; set; }
         [JsonProperty("carrier_accounts")]
@@ -40,6 +42,8 @@ namespace EasyPost
         public string status { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Get the pickup rates as a list of Rate objects.

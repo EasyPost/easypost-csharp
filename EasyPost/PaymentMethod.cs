@@ -9,14 +9,7 @@ namespace EasyPost
     /// </summary>
     public class PaymentMethod : Resource
     {
-        /// <summary>
-        ///     Payment method priority
-        /// </summary>
-        public enum Priority
-        {
-            Primary,
-            Secondary
-        }
+        #region JSON Properties
 
         [JsonProperty("id")]
         public string id { get; set; }
@@ -26,6 +19,17 @@ namespace EasyPost
         public PaymentMethodObject primary_payment_method { get; set; }
         [JsonProperty("secondary_payment_method")]
         public PaymentMethodObject secondary_payment_method { get; set; }
+
+        #endregion
+
+        /// <summary>
+        ///     Payment method priority
+        /// </summary>
+        public enum Priority
+        {
+            Primary,
+            Secondary
+        }
     }
 
     /// <summary>
@@ -34,6 +38,44 @@ namespace EasyPost
     /// </summary>
     public class PaymentMethodObject : Resource
     {
+        #region JSON Properties
+
+        // bank_account
+        [JsonProperty("bank_name")]
+        public string bank_name { get; set; }
+        // credit_card
+        [JsonProperty("brand")]
+        public string brand { get; set; }
+        // bank_account
+        [JsonProperty("country")]
+        public string country { get; set; }
+        // both
+        [JsonProperty("disabled_at")]
+        public string disabled_at { get; set; }
+        // credit_card
+        [JsonProperty("exp_month")]
+        public int exp_month { get; set; }
+        // credit_card
+        [JsonProperty("exp_year")]
+        public int exp_year { get; set; }
+        // both
+        [JsonProperty("id")]
+        public string id { get; set; }
+        // both
+        [JsonProperty("last4")]
+        public string last4 { get; set; }
+        // credit_card
+        [JsonProperty("name")]
+        public string name { get; set; }
+        // both
+        [JsonProperty("object")]
+        public string Object { get; set; }
+        // bank_account
+        [JsonProperty("verified")]
+        public bool verified { get; set; }
+
+        #endregion
+
         /// <summary>
         ///     Get what type of payment method this is (credit card, bank account, etc.)
         /// </summary>
@@ -85,43 +127,5 @@ namespace EasyPost
             {
             }
         }
-
-        #region JSON Properties
-
-        // bank_account
-        [JsonProperty("bank_name")]
-        public string bank_name { get; set; }
-        // credit_card
-        [JsonProperty("brand")]
-        public string brand { get; set; }
-        // bank_account
-        [JsonProperty("country")]
-        public string country { get; set; }
-        // both
-        [JsonProperty("disabled_at")]
-        public string disabled_at { get; set; }
-        // credit_card
-        [JsonProperty("exp_month")]
-        public int exp_month { get; set; }
-        // credit_card
-        [JsonProperty("exp_year")]
-        public int exp_year { get; set; }
-        // both
-        [JsonProperty("id")]
-        public string id { get; set; }
-        // both
-        [JsonProperty("last4")]
-        public string last4 { get; set; }
-        // credit_card
-        [JsonProperty("name")]
-        public string name { get; set; }
-        // both
-        [JsonProperty("object")]
-        public string Object { get; set; }
-        // bank_account
-        [JsonProperty("verified")]
-        public bool verified { get; set; }
-
-        #endregion JSON Properties
     }
 }

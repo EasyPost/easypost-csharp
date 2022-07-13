@@ -9,9 +9,8 @@ namespace EasyPost
 {
     public class Request
     {
-        private readonly RestRequest _restRequest;
-
         private readonly Dictionary<string, object> _parameters;
+        private readonly RestRequest _restRequest;
 
         private readonly Dictionary<string, object> _urlSegments;
         public string? RootElement { get; set; }
@@ -22,6 +21,21 @@ namespace EasyPost
             _restRequest.AddHeader("Accept", "application/json");
             _parameters = new Dictionary<string, object>();
             _urlSegments = new Dictionary<string, object>();
+        }
+
+        /// <summary>
+        ///     Add a parameter to the request.
+        /// </summary>
+        /// <param name="name">Name of parameter.</param>
+        /// <param name="value">Value of parameter.</param>
+        public void AddParameter(string name, object? value)
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            _parameters.Add(name, value);
         }
 
         /// <summary>
@@ -39,21 +53,6 @@ namespace EasyPost
             {
                 _parameters.Add(parameter.Key, parameter.Value);
             }
-        }
-
-        /// <summary>
-        ///     Add a parameter to the request.
-        /// </summary>
-        /// <param name="name">Name of parameter.</param>
-        /// <param name="value">Value of parameter.</param>
-        public void AddParameter(string name, object? value)
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            _parameters.Add(name, value);
         }
 
         /// <summary>
@@ -90,6 +89,15 @@ namespace EasyPost
         }
 
         /// <summary>
+        ///     Build request body.
+        /// </summary>
+        private void BuildBodyParameters()
+        {
+            string body = JsonSerialization.ConvertObjectToJson(_parameters) ?? string.Empty;
+            _restRequest.AddStringBody(body, ContentType.Json);
+        }
+
+        /// <summary>
         ///     Build the client and prepare request parameters.
         /// </summary>
         /// <param name="betaFeature">Whether this client needs to use the beta endpoint.</param>
@@ -100,17 +108,6 @@ namespace EasyPost
             BuildParameters();
             BuildUrlSegments();
             return client;
-        }
-
-        /// <summary>
-        ///     Build the request URL segments.
-        /// </summary>
-        private void BuildUrlSegments()
-        {
-            foreach (KeyValuePair<string, object> segment in _urlSegments)
-            {
-                _restRequest.AddUrlSegment(segment.Key, Convert.ToString(segment.Value) ?? string.Empty);
-            }
         }
 
         /// <summary>
@@ -141,17 +138,7 @@ namespace EasyPost
                 case Method.Search:
                 default:
                     break;
-
             }
-        }
-
-        /// <summary>
-        ///     Build request body.
-        /// </summary>
-        private void BuildBodyParameters()
-        {
-            string body = JsonSerialization.ConvertObjectToJson(_parameters) ?? string.Empty;
-            _restRequest.AddStringBody(body, ContentType.Json);
         }
 
         /// <summary>
@@ -162,6 +149,17 @@ namespace EasyPost
             foreach (KeyValuePair<string, object> pair in _parameters)
             {
                 _restRequest.AddParameter(pair.Key, pair.Value, ParameterType.QueryString);
+            }
+        }
+
+        /// <summary>
+        ///     Build the request URL segments.
+        /// </summary>
+        private void BuildUrlSegments()
+        {
+            foreach (KeyValuePair<string, object> segment in _urlSegments)
+            {
+                _restRequest.AddUrlSegment(segment.Key, Convert.ToString(segment.Value) ?? string.Empty);
             }
         }
 

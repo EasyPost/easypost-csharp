@@ -7,6 +7,8 @@ namespace EasyPost
 {
     public class Address : Base.Address
     {
+        #region JSON Properties
+
         [JsonProperty("carrier_facility")]
         public string carrier_facility { get; set; }
         [JsonProperty("federal_tax_id")]
@@ -23,6 +25,8 @@ namespace EasyPost
         public List<string> verify { get; set; }
         [JsonProperty("verify_strict")]
         public List<string> verify_strict { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Verify an address.

@@ -8,6 +8,8 @@ namespace EasyPost
 {
     public class Event : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("completed_urls")]
         public List<string> completed_urls { get; set; }
         [JsonProperty("created_at")]
@@ -29,6 +31,8 @@ namespace EasyPost
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
 
+        #endregion
+
         /// <summary>
         ///     Resend the last Event for a specific EasyPost object instance.
         /// </summary>
@@ -43,19 +47,6 @@ namespace EasyPost
                 }
             });
             return await request.Execute();
-        }
-
-        /// <summary>
-        ///     Retrieve an Event from its id.
-        /// </summary>
-        /// <param name="id">String representing a Event. Starts with "evt_".</param>
-        /// <returns>EasyPost.Event instance.</returns>
-        public static async Task<Event> Retrieve(string id)
-        {
-            Request request = new Request("events/{id}", Method.Get);
-            request.AddUrlSegment("id", id);
-
-            return await request.Execute<Event>();
         }
 
         /// <summary>
@@ -81,6 +72,19 @@ namespace EasyPost
             request.AddParameters(parameters);
 
             return await request.Execute<EventCollection>();
+        }
+
+        /// <summary>
+        ///     Retrieve an Event from its id.
+        /// </summary>
+        /// <param name="id">String representing a Event. Starts with "evt_".</param>
+        /// <returns>EasyPost.Event instance.</returns>
+        public static async Task<Event> Retrieve(string id)
+        {
+            Request request = new Request("events/{id}", Method.Get);
+            request.AddUrlSegment("id", id);
+
+            return await request.Execute<Event>();
         }
     }
 }

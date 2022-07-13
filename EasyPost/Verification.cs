@@ -5,6 +5,8 @@ namespace EasyPost
 {
     public class Verification : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("details")]
         public VerificationDetails details { get; set; }
         [JsonProperty("errors")]
@@ -12,5 +14,7 @@ namespace EasyPost
         public List<Error> errors { get; set; }
         [JsonProperty("success")]
         public bool success { get; set; }
+
+        #endregion
     }
 }
