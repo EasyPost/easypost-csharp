@@ -1,4 +1,4 @@
-﻿:: This script will find and publish any NuGet packages to Nuget.org
+:: This script will find and publish any NuGet packages to Nuget.org
 
 :: Requirements:
 :: - NuGet is installed on the machine and is accessible everywhere (added to PATH)
