@@ -85,7 +85,7 @@ namespace EasyPost.Models.V2
         {
             if (Id == null)
             {
-                throw new PropertyMissing("id");
+                throw new PropertyMissingException("id");
             }
 
             Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{Id}/buy", parameters);
@@ -109,7 +109,7 @@ namespace EasyPost.Models.V2
         {
             if (Id == null)
             {
-                throw new PropertyMissing("id");
+                throw new PropertyMissingException("id");
             }
 
             Shipments.Label parameters = new Shipments.Label
@@ -129,7 +129,7 @@ namespace EasyPost.Models.V2
         {
             if (Id == null)
             {
-                throw new PropertyMissing("id");
+                throw new PropertyMissingException("id");
             }
 
             return await Request<List<Smartrate>>(Method.Get, $"shipments/{Id}/smartrate", null, "result");
@@ -144,7 +144,7 @@ namespace EasyPost.Models.V2
         {
             if (Id == null)
             {
-                throw new PropertyMissing("id");
+                throw new PropertyMissingException("id");
             }
 
             Shipments.Insure parameters = new Shipments.Insure
@@ -168,7 +168,7 @@ namespace EasyPost.Models.V2
         {
             if (Rates == null)
             {
-                throw new PropertyMissing("rates");
+                throw new PropertyMissingException("rates");
             }
 
             return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
@@ -195,7 +195,7 @@ namespace EasyPost.Models.V2
         {
             if (Id == null)
             {
-                throw new PropertyMissing("id");
+                throw new PropertyMissingException("id");
             }
 
             return await Update<Shipment>(Method.Get, $"shipments/{Id}/refund");
@@ -210,7 +210,7 @@ namespace EasyPost.Models.V2
         {
             if (Id == null)
             {
-                throw new PropertyMissing("id");
+                throw new PropertyMissingException("id");
             }
 
             Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{Id}/rerate", parameters);

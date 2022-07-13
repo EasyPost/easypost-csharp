@@ -4,17 +4,29 @@ using EasyPost.Clients;
 namespace EasyPost.Exceptions
 {
     [Serializable]
-    internal class ClientNotConfigured : Exception
+    internal class ClientNotConfiguredException : BaseException
     {
-        internal ClientNotConfigured() : base("Client is not configured.")
+        public static string MessageTemplate => "Client is not configured.";
+
+        internal ClientNotConfiguredException() : base(PopulateMessage(MessageTemplate))
+        {
+        }
+
+        internal ClientNotConfiguredException(Exception innerException) : base(PopulateMessage(MessageTemplate), innerException)
         {
         }
     }
 
     [Serializable]
-    internal class ApiVersionNotSupported : Exception
+    internal class ApiVersionNotSupportedException : BaseException
     {
-        internal ApiVersionNotSupported(string elementName, ApiVersionDetails apiVersionDetails) : base($"{elementName} incompatible with API version {apiVersionDetails.Prefix}.")
+        public static string MessageTemplate => "{0} incompatible with API version {1}.";
+
+        internal ApiVersionNotSupportedException(string elementName, ApiVersionDetails apiVersionDetails) : base(PopulateMessage(MessageTemplate, elementName, apiVersionDetails.Prefix))
+        {
+        }
+
+        internal ApiVersionNotSupportedException(Exception innerException, string elementName, ApiVersionDetails apiVersionDetails) : base(PopulateMessage(MessageTemplate, elementName, apiVersionDetails.Prefix), innerException)
         {
         }
     }

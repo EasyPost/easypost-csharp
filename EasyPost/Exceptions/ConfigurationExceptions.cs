@@ -3,9 +3,15 @@ using System;
 namespace EasyPost.Exceptions
 {
     [Serializable]
-    internal class ServerSideConfigurationException : Exception
+    internal class ServerSideConfigurationException : BaseException
     {
-        internal ServerSideConfigurationException(string element, string? followup = "") : base($"{element} is not configured on the server. {followup}")
+        public static string MessageTemplate => "{0} is not configured on the server. {1}";
+
+        internal ServerSideConfigurationException(string element, string? followup = "") : base(PopulateMessage(MessageTemplate, element, followup))
+        {
+        }
+
+        internal ServerSideConfigurationException(Exception innerException, string element, string? followup = "") : base(PopulateMessage(MessageTemplate, element, followup), innerException)
         {
         }
     }

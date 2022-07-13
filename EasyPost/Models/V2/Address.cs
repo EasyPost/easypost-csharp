@@ -39,7 +39,7 @@ namespace EasyPost.Models.V2
         {
             if (Id == null)
             {
-                throw new PropertyMissing("id");
+                throw new PropertyMissingException("id");
             }
 
             return await Update<Address>(Method.Get, $"addresses/{Id}/verify", parameters, "address");

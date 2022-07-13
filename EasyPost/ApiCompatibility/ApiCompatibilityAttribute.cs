@@ -55,7 +55,7 @@ namespace EasyPost.ApiCompatibility
         /// <param name="instance">Instance calling this method.</param>
         /// <param name="method">Method being called.</param>
         /// <exception cref="ArgumentNullException">Instance does not have a Client.</exception>
-        /// <exception cref="ApiVersionNotSupported">Function is not compatible with the client's API version.</exception>
+        /// <exception cref="ApiVersionNotSupportedException">Function is not compatible with the client's API version.</exception>
         private void CheckFunctionCompatible(object instance, MemberInfo method)
         {
             Client? client = ((WithClient)instance).Client;
@@ -67,7 +67,7 @@ namespace EasyPost.ApiCompatibility
             // throw exception if property is not compatible with this API version
             if (!IsCompatible(client.ApiVersionDetails))
             {
-                throw new ApiVersionNotSupported($"{instance.GetType().Name}.{method.Name}", client.ApiVersionDetails);
+                throw new ApiVersionNotSupportedException($"{instance.GetType().Name}.{method.Name}", client.ApiVersionDetails);
             }
         }
 
@@ -86,7 +86,7 @@ namespace EasyPost.ApiCompatibility
         /// </summary>
         /// <param name="service">Service attempting to retrieve.</param>
         /// <param name="client">API client used to retrieve this service.</param>
-        /// <exception cref="ApiVersionNotSupported">Service is not compatible with the client's API version.</exception>
+        /// <exception cref="ApiVersionNotSupportedException">Service is not compatible with the client's API version.</exception>
         internal static void CheckServiceCompatible(PropertyInfo service, EasyPostClient? client)
         {
             if (client == null)
@@ -104,7 +104,7 @@ namespace EasyPost.ApiCompatibility
             // throw exception if property is not compatible with this API version
             if (!apiCompatibilityAttribute.IsCompatible(client.ApiVersionDetails))
             {
-                throw new ApiVersionNotSupported(service.Name, client.ApiVersionDetails);
+                throw new ApiVersionNotSupportedException(service.Name, client.ApiVersionDetails);
             }
         }
 
@@ -114,7 +114,7 @@ namespace EasyPost.ApiCompatibility
         /// <param name="serviceName">Name of service attempting to retrieve.</param>
         /// <param name="serviceSourceType">Type of object the service is being retrieved from.</param>
         /// <param name="client">API client used to execute this method.</param>
-        /// <exception cref="ApiVersionNotSupported">Service is not compatible with the client's API version.</exception>
+        /// <exception cref="ApiVersionNotSupportedException">Service is not compatible with the client's API version.</exception>
         internal static void CheckServiceCompatible(string serviceName, Type serviceSourceType, EasyPostClient? client)
         {
             if (client == null)

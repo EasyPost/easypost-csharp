@@ -20,11 +20,11 @@ namespace EasyPost.Models.Base
         protected void UpdateFilters(IEnumerable<EasyPostObject>? elements, string propertyName)
         {
             Filters ??= new Parameters.All();
-            Filters.BeforeId = (elements ?? throw new PropertyMissing(propertyName)).Last().Id ?? throw new PropertyMissing("id");
+            Filters.BeforeId = (elements ?? throw new PropertyMissingException(propertyName)).Last().Id ?? throw new PropertyMissingException("id");
 
             if (Client == null)
             {
-                throw new ClientNotConfigured();
+                throw new ClientNotConfiguredException();
             }
         }
     }

@@ -68,7 +68,7 @@ namespace EasyPost.Interfaces
         {
             if (Client == null)
             {
-                throw new ClientNotConfigured();
+                throw new ClientNotConfiguredException();
             }
 
             return await Client.Request<T>(method, url, parameters, rootElement);
@@ -78,7 +78,7 @@ namespace EasyPost.Interfaces
         {
             if (Client == null)
             {
-                throw new ClientNotConfigured();
+                throw new ClientNotConfiguredException();
             }
 
             return await Client.Request(method, url, parameters, rootElement);

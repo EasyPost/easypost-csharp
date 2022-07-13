@@ -4,9 +4,15 @@ using System.Reflection;
 namespace EasyPost.Exceptions
 {
     [Serializable]
-    internal class MissingRequiredParameter : Exception
+    internal class MissingRequiredParameterException : BaseException
     {
-        internal MissingRequiredParameter(PropertyInfo property) : base($"{property.Name} is a required parameter.")
+        public static string MessageTemplate => "{0} is a required parameter.";
+
+        internal MissingRequiredParameterException(PropertyInfo property) : base(PopulateMessage(MessageTemplate, property.Name))
+        {
+        }
+
+        internal MissingRequiredParameterException(Exception innerException, PropertyInfo property) : base(PopulateMessage(MessageTemplate, property.Name), innerException)
         {
         }
     }

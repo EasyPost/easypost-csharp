@@ -41,7 +41,7 @@ namespace EasyPost.Calculation
 
                 if (rate.Price == null || lowestRate.Price == null)
                 {
-                    throw new FilterFailure("Could not compare null elements.");
+                    throw new FilterFailureException("Could not compare null elements.");
                 }
 
                 float rateValue = float.Parse(rate.Price);
@@ -58,7 +58,7 @@ namespace EasyPost.Calculation
 
             if (lowestRate == null)
             {
-                throw new FilterFailure("No rates found.");
+                throw new FilterFailureException("No rates found.");
             }
 
             return lowestRate;
@@ -95,7 +95,7 @@ namespace EasyPost.Calculation
 
             if (lowestSmartrate == null)
             {
-                throw new FilterFailure("No smartrates found.");
+                throw new FilterFailureException("No smartrates found.");
             }
 
             return lowestSmartrate;

@@ -95,7 +95,7 @@ namespace EasyPost.Tests
             {
                 "BAD_CARRIER"
             };
-            Assert.ThrowsException<FilterFailure>(() => order.LowestRate(carriers));
+            Assert.ThrowsException<FilterFailureException>(() => order.LowestRate(carriers));
         }
 
         [Fact]

@@ -145,7 +145,7 @@ namespace EasyPost.Interfaces
         /// <typeparam name="T">Type of service class to instantiate.</typeparam>
         /// <returns>A T-type instance.</returns>
         /// <exception cref="Exception">Failed to verify API compatibility.</exception>
-        /// <exception cref="ApiVersionNotSupported">Resource not available on the selected API version.</exception>
+        /// <exception cref="ApiVersionNotSupportedException">Resource not available on the selected API version.</exception>
         protected T GetService<T>(string servicePropertyName) where T : class
         {
             ApiCompatibilityAttribute.CheckServiceCompatible(servicePropertyName, GetType(), this);

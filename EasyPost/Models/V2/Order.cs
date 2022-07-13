@@ -52,7 +52,7 @@ namespace EasyPost.Models.V2
         {
             if (Id == null)
             {
-                throw new PropertyMissing("id");
+                throw new PropertyMissingException("id");
             }
 
             return await Update<Order>(Method.Post, $"orders/{Id}/buy", parameters);
@@ -76,12 +76,12 @@ namespace EasyPost.Models.V2
                 }
                 else
                 {
-                    throw new PropertyMissing("service");
+                    throw new PropertyMissingException("service");
                 }
             }
             else
             {
-                throw new PropertyMissing("carrier");
+                throw new PropertyMissingException("carrier");
             }
         }
 
@@ -93,7 +93,7 @@ namespace EasyPost.Models.V2
         {
             if (Id == null)
             {
-                throw new PropertyMissing("id");
+                throw new PropertyMissingException("id");
             }
 
             Order order = await Request<Order>(Method.Get, $"orders/{Id}/rates");
@@ -113,7 +113,7 @@ namespace EasyPost.Models.V2
         {
             if (Rates == null)
             {
-                throw new PropertyMissing("rates");
+                throw new PropertyMissingException("rates");
             }
 
             return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);

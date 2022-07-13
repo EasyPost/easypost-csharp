@@ -152,7 +152,7 @@ namespace EasyPost.Interfaces
         ///     Check that all required parameters are set.
         /// </summary>
         /// <param name="obj">Parameter collection to verify.</param>
-        /// <exception cref="MissingRequiredParameter">If a required parameter is missing.</exception>
+        /// <exception cref="MissingRequiredParameterException">If a required parameter is missing.</exception>
         private static void VerifyParameters(EasyPostParameters obj)
         {
             PropertyInfo[] properties = obj.GetType().GetProperties();
@@ -166,7 +166,7 @@ namespace EasyPost.Interfaces
 
                 if (parameterAttribute.Necessity == Necessity.Required && !ValueExistsInDictionary(obj._parameterDictionary, parameterAttribute.JsonPath))
                 {
-                    throw new MissingRequiredParameter(property);
+                    throw new MissingRequiredParameterException(property);
                 }
             }
         }

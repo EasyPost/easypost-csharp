@@ -63,7 +63,7 @@ namespace EasyPost.Models.V2
         {
             if (Id == null)
             {
-                throw new PropertyMissing("id");
+                throw new PropertyMissingException("id");
             }
 
             return await Update<Pickup>(Method.Post, $"pickups/{Id}/buy", parameters);
@@ -77,7 +77,7 @@ namespace EasyPost.Models.V2
         {
             if (Id == null)
             {
-                throw new PropertyMissing("id");
+                throw new PropertyMissingException("id");
             }
 
             return await Update<Pickup>(Method.Post, $"pickups/{Id}/cancel");

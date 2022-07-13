@@ -3,25 +3,43 @@ using System;
 namespace EasyPost.Exceptions
 {
     [Serializable]
-    internal class ServerObjectAlreadyExists : Exception
+    internal class ServerObjectAlreadyExistsException : BaseException
     {
-        internal ServerObjectAlreadyExists() : base("This object already exists on the server.")
+        public static string MessageTemplate => "This object already exists on the server.";
+
+        internal ServerObjectAlreadyExistsException() : base(PopulateMessage(MessageTemplate))
+        {
+        }
+
+        internal ServerObjectAlreadyExistsException(Exception innerException) : base(PopulateMessage(MessageTemplate), innerException)
         {
         }
     }
 
     [Serializable]
-    internal class ServerObjectDoesNotExists : Exception
+    internal class ServerObjectDoesNotExistsException : BaseException
     {
-        internal ServerObjectDoesNotExists() : base("This object does not exist on the server.")
+        public static string MessageTemplate => "This object does not exists on the server.";
+
+        internal ServerObjectDoesNotExistsException() : base(PopulateMessage(MessageTemplate))
+        {
+        }
+
+        internal ServerObjectDoesNotExistsException(Exception innerException) : base(PopulateMessage(MessageTemplate), innerException)
         {
         }
     }
 
     [Serializable]
-    internal class ServerLocalObjectMismatch : Exception
+    internal class ServerLocalObjectMismatchException : BaseException
     {
-        internal ServerLocalObjectMismatch() : base("The local object and the server object are not the same.")
+        public static string MessageTemplate => "The local object and the server object are not the same.";
+
+        internal ServerLocalObjectMismatchException() : base(PopulateMessage(MessageTemplate))
+        {
+        }
+
+        internal ServerLocalObjectMismatchException(Exception innerException) : base(PopulateMessage(MessageTemplate), innerException)
         {
         }
     }

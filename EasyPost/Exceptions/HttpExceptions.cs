@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace EasyPost.Exceptions
 {
     [Serializable]
-    internal class HttpException : Exception
+    internal class HttpException : BaseException
     {
         public readonly int StatusCode;
         public readonly string StatusMessage;
@@ -16,6 +16,18 @@ namespace EasyPost.Exceptions
         /// <param name="statusCode">HttpStatusCode object.</param>
         /// <param name="message">Custom exception message.</param>
         internal HttpException(HttpStatusCode statusCode, string? message) : base(message)
+        {
+            StatusCode = (int)statusCode;
+            StatusMessage = statusCode.ToString();
+        }
+
+        /// <summary>
+        ///     Constructor for an HttpException.
+        /// </summary>
+        /// <param name="statusCode">HttpStatusCode object.</param>
+        /// <param name="message">Custom exception message.</param>
+        /// <param name="innerException">Inner exception.</param>
+        internal HttpException(Exception innerException, HttpStatusCode statusCode, string? message) : base(message, innerException)
         {
             StatusCode = (int)statusCode;
             StatusMessage = statusCode.ToString();

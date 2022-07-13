@@ -181,7 +181,7 @@ namespace EasyPost.Tests
             Assert.AreEqual("USPS", lowestSmartrate.Carrier);
 
             // test lowest smartrate with invalid filters (should error due to strict delivery_days)
-            await Assert.ThrowsExceptionAsync<FilterFailure>(async () => await shipment.LowestSmartrate(0, SmartrateAccuracy.Percentile90));
+            await Assert.ThrowsExceptionAsync<FilterFailureException>(async () => await shipment.LowestSmartrate(0, SmartrateAccuracy.Percentile90));
 
             // test lowest smartrate with invalid filters (should error due to bad delivery_accuracy)
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
@@ -233,7 +233,7 @@ namespace EasyPost.Tests
             {
                 "BAD_CARRIER"
             };
-            Assert.ThrowsException<FilterFailure>(() => shipment.LowestRate(carriers));
+            Assert.ThrowsException<FilterFailureException>(() => shipment.LowestRate(carriers));
         }
 
         // Refunding a test shipment must happen within seconds of the shipment being created as test shipments naturally
@@ -319,7 +319,7 @@ namespace EasyPost.Tests
             Assert.AreEqual("USPS", lowestSmartrate.Carrier);
 
             // test lowest smartrate with invalid filters (should error due to strict delivery_days)
-            Assert.ThrowsException<FilterFailure>(() => ShipmentService.GetLowestSmartrate(smartrates, 0, SmartrateAccuracy.Percentile90));
+            Assert.ThrowsException<FilterFailureException>(() => ShipmentService.GetLowestSmartrate(smartrates, 0, SmartrateAccuracy.Percentile90));
 
             // test lowest smartrate with invalid filters (should error due to bad delivery_accuracy)
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
