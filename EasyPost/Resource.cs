@@ -9,23 +9,6 @@ namespace EasyPost
 {
     public class Resource
     {
-        public override bool Equals(object? obj)
-        {
-            if (this.GetType() != obj.GetType())
-            {
-                return false;
-            }
-
-            string? thisJson = AsJson();
-            string? otherJson = ((Resource)obj).AsJson();
-            if (thisJson == null || otherJson == null)
-            {
-                // can't do proper comparison if either or both could not be serialized
-                return false;
-            }
-            return thisJson == otherJson;
-        }
-
         /// <summary>
         ///     Get the dictionary representation of this object instance.
         /// </summary>
@@ -44,6 +27,24 @@ namespace EasyPost
         public string? AsJson()
         {
             return JsonSerialization.ConvertObjectToJson(this);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (this.GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            string? thisJson = AsJson();
+            string? otherJson = ((Resource)obj).AsJson();
+            if (thisJson == null || otherJson == null)
+            {
+                // can't do proper comparison if either or both could not be serialized
+                return false;
+            }
+
+            return thisJson == otherJson;
         }
 
         /// <summary>
@@ -74,6 +75,7 @@ namespace EasyPost
                     {
                         values.Add(resource.AsDictionary());
                     }
+
                     return values;
                 default:
                     return value;

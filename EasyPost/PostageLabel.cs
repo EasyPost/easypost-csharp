@@ -5,6 +5,8 @@ namespace EasyPost
 {
     public class PostageLabel : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
         [JsonProperty("date_advance")]
@@ -37,5 +39,7 @@ namespace EasyPost
         public string mode { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
+
+        #endregion
     }
 }

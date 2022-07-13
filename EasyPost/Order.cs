@@ -9,6 +9,8 @@ namespace EasyPost
 {
     public class Order : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("buyer_address")]
         public Address buyer_address { get; set; }
         [JsonProperty("carrier_accounts")]
@@ -41,6 +43,8 @@ namespace EasyPost
         public Address to_address { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Purchase the shipments within this order with a carrier and service.

@@ -7,23 +7,40 @@ namespace EasyPost
 {
     public class Refund : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("id")]
         public string id { get; set; }
-
         [JsonProperty("tracking_code")]
         public string tracking_code { get; set; }
-
         [JsonProperty("confirmation_number")]
         public string confirmation_number { get; set; }
-
         [JsonProperty("status")]
         public string status { get; set; }
-
         [JsonProperty("carrier")]
         public string carrier { get; set; }
-
         [JsonProperty("shipment_id")]
         public string shipment_id { get; set; }
+
+        #endregion
+
+        /// <summary>
+        ///     List all Refund objects.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to filter the list with.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>An EasyPost.RefundCollection instance.</returns>
+        public static async Task<RefundCollection> All(Dictionary<string, object>? parameters = null)
+        {
+            parameters = parameters ?? new Dictionary<string, object>();
+
+            Request request = new Request("refunds", Method.Get);
+            request.AddParameters(parameters);
+
+            return await request.Execute<RefundCollection>();
+        }
 
         /// <summary>
         ///     Create a Refund.
@@ -59,24 +76,6 @@ namespace EasyPost
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Refund>();
-        }
-
-        /// <summary>
-        ///     List all Refund objects.
-        /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>An EasyPost.RefundCollection instance.</returns>
-        public static async Task<RefundCollection> All(Dictionary<string, object>? parameters = null)
-        {
-            parameters = parameters ?? new Dictionary<string, object>();
-
-            Request request = new Request("refunds", Method.Get);
-            request.AddParameters(parameters);
-
-            return await request.Execute<RefundCollection>();
         }
     }
 }

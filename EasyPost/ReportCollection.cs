@@ -7,6 +7,8 @@ namespace EasyPost
 {
     public class ReportCollection : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("filters")]
         public Dictionary<string, object>? filters { get; set; }
         [JsonProperty("has_more")]
@@ -15,6 +17,8 @@ namespace EasyPost
         public List<Report> reports { get; set; }
         [JsonProperty("type")]
         public string type { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Get the next page of reports based on the original parameters passed to ReportList.All().

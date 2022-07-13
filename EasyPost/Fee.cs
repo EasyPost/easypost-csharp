@@ -4,6 +4,8 @@ namespace EasyPost
 {
     public class Fee : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("amount")]
         public double amount { get; set; }
         [JsonProperty("charged")]
@@ -12,5 +14,7 @@ namespace EasyPost
         public bool refunded { get; set; }
         [JsonProperty("type")]
         public string type { get; set; }
+
+        #endregion
     }
 }

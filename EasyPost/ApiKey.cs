@@ -8,12 +8,16 @@ namespace EasyPost
 {
     public class ApiKey : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
         [JsonProperty("key")]
         public string key { get; set; }
         [JsonProperty("mode")]
         public string mode { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Get a list of all API keys.

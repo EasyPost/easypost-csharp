@@ -7,6 +7,8 @@ namespace EasyPost
 {
     public class Insurance : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("amount")]
         public string amount { get; set; }
         [JsonProperty("from_address")]
@@ -33,6 +35,8 @@ namespace EasyPost
         public Tracker tracker { get; set; }
         [JsonProperty("tracking_code")]
         public string tracking_code { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Refresh this Insurance.

@@ -5,6 +5,8 @@ namespace EasyPost
 {
     public class CarrierDetail
     {
+        #region JSON Properties
+
         [JsonProperty("alternate_identifier")]
         public string alternate_identifier { get; set; }
         [JsonProperty("container_type")]
@@ -23,5 +25,7 @@ namespace EasyPost
         public string origin_location { get; set; }
         [JsonProperty("service")]
         public string service { get; set; }
+
+        #endregion
     }
 }

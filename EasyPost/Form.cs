@@ -5,6 +5,8 @@ namespace EasyPost
 {
     public class Form : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
         [JsonProperty("form_type")]
@@ -19,5 +21,7 @@ namespace EasyPost
         public bool submitted_electronically { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
+
+        #endregion
     }
 }

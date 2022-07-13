@@ -5,6 +5,8 @@ namespace EasyPost
 {
     public class TrackingLocation
     {
+        #region JSON Properties
+
         [JsonProperty("city")]
         public string city { get; set; }
         [JsonProperty("country")]
@@ -17,5 +19,7 @@ namespace EasyPost
         public DateTime? updated_at { get; set; }
         [JsonProperty("zip")]
         public string zip { get; set; }
+
+        #endregion
     }
 }

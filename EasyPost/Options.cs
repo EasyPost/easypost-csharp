@@ -6,6 +6,8 @@ namespace EasyPost
 {
     public class Options : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("additional_handling")]
         public bool? additional_handling { get; set; }
         [JsonProperty("address_validation_level")]
@@ -174,5 +176,7 @@ namespace EasyPost
         public string special_rates_eligibility { get; set; }
         [JsonProperty("suppress_etd")]
         public bool? suppress_etd { get; set; }
+
+        #endregion
     }
 }

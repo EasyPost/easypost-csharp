@@ -7,12 +7,16 @@ namespace EasyPost
 {
     public class ScanFormCollection : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("filters")]
         public Dictionary<string, object>? filters { get; set; }
         [JsonProperty("has_more")]
         public bool has_more { get; set; }
         [JsonProperty("scan_forms")]
         public List<ScanForm> scan_forms { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Get the next page of scan forms based on the original parameters passed to ScanForm.All().

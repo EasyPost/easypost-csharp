@@ -6,6 +6,8 @@ namespace EasyPost
 {
     public class Error : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("code")]
         public string code { get; set; }
         [JsonProperty("errors")]
@@ -16,6 +18,8 @@ namespace EasyPost
         public string message { get; set; }
         [JsonProperty("suggestion")]
         public string suggestion { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Create an Error from JSON.

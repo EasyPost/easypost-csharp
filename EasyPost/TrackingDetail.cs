@@ -5,6 +5,8 @@ namespace EasyPost
 {
     public class TrackingDetail : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("datetime")]
         public DateTime? datetime { get; set; }
         [JsonProperty("message")]
@@ -13,5 +15,7 @@ namespace EasyPost
         public string status { get; set; }
         [JsonProperty("tracking_location")]
         public TrackingLocation tracking_location { get; set; }
+
+        #endregion
     }
 }

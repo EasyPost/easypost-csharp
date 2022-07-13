@@ -8,6 +8,8 @@ namespace EasyPost
 {
     public class Webhook : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("disabled_at")]
         public DateTime? disabled_at { get; set; }
         [JsonProperty("id")]
@@ -16,6 +18,8 @@ namespace EasyPost
         public string mode { get; set; }
         [JsonProperty("url")]
         public string url { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Delete this webhook.

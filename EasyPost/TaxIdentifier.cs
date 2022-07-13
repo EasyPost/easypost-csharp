@@ -4,6 +4,8 @@ namespace EasyPost
 {
     public class TaxIdentifier
     {
+        #region JSON Properties
+
         [JsonProperty("entity")]
         public string entity { get; set; }
         [JsonProperty("issuing_country")]
@@ -12,5 +14,7 @@ namespace EasyPost
         public string tax_id { get; set; }
         [JsonProperty("tax_id_type")]
         public string tax_id_type { get; set; }
+
+        #endregion
     }
 }

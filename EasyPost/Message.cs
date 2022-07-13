@@ -4,6 +4,8 @@ namespace EasyPost
 {
     public class Message : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("carrier")]
         public string carrier { get; set; }
         [JsonProperty("type")]
@@ -12,5 +14,7 @@ namespace EasyPost
         public string carrier_account_id { get; set; }
         [JsonProperty("message")]
         public string message { get; set; }
+
+        #endregion
     }
 }

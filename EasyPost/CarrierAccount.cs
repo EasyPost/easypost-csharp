@@ -8,6 +8,8 @@ namespace EasyPost
 {
     public class CarrierAccount : Resource
     {
+        #region JSON Properties
+
         [JsonProperty("created_at")]
         public DateTime? created_at { get; set; }
         [JsonProperty("credentials")]
@@ -28,6 +30,8 @@ namespace EasyPost
         public DateTime? updated_at { get; set; }
         [JsonProperty("billing_type")]
         public string billing_type { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Remove this CarrierAccount from your account.
@@ -59,6 +63,17 @@ namespace EasyPost
             Merge(await request.Execute<CarrierAccount>());
         }
 
+
+        /// <summary>
+        ///     List all available carrier accounts.
+        /// </summary>
+        /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
+        public static async Task<List<CarrierAccount>> All()
+        {
+            Request request = new Request("carrier_accounts", Method.Get);
+            return await request.Execute<List<CarrierAccount>>();
+        }
+
         /// <summary>
         ///     Create a CarrierAccount.
         /// </summary>
@@ -83,17 +98,6 @@ namespace EasyPost
             });
 
             return await request.Execute<CarrierAccount>();
-        }
-
-
-        /// <summary>
-        ///     List all available carrier accounts.
-        /// </summary>
-        /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
-        public static async Task<List<CarrierAccount>> All()
-        {
-            Request request = new Request("carrier_accounts", Method.Get);
-            return await request.Execute<List<CarrierAccount>>();
         }
 
         /// <summary>
