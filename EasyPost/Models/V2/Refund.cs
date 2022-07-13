@@ -5,6 +5,8 @@ namespace EasyPost.Models.V2
 {
     public class Refund : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("carrier")]
         public string? Carrier { get; set; }
         [JsonProperty("confirmation_number")]
@@ -15,5 +17,7 @@ namespace EasyPost.Models.V2
         public string? Status { get; set; }
         [JsonProperty("tracking_code")]
         public string? TrackingCode { get; set; }
+
+        #endregion
     }
 }

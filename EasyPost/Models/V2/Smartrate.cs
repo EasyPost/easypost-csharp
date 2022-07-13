@@ -29,12 +29,18 @@ namespace EasyPost.Models.V2
 
     public class SmartrateResult : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("result")]
         public List<Smartrate>? Result { get; set; }
+
+        #endregion
     }
 
     public class Smartrate : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("billing_type")]
         public string? BillingType { get; set; }
         [JsonProperty("carrier")]
@@ -67,5 +73,7 @@ namespace EasyPost.Models.V2
         public string? ShipmentId { get; set; }
         [JsonProperty("time_in_transit")]
         public TimeInTransit? TimeInTransit { get; set; }
+
+        #endregion
     }
 }

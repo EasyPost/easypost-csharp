@@ -5,6 +5,8 @@ namespace EasyPost.Models.Base
 {
     public class Address : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("city")]
         public string? City { get; set; }
         [JsonProperty("company")]
@@ -30,5 +32,7 @@ namespace EasyPost.Models.Base
         public string? Street2 { get; set; }
         [JsonProperty("zip")]
         public string? Zip { get; set; }
+
+        #endregion
     }
 }

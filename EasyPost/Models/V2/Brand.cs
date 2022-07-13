@@ -5,6 +5,8 @@ namespace EasyPost.Models.V2
 {
     public class Brand : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("ad")]
         public string? Ad { get; set; }
         [JsonProperty("ad_href")]
@@ -23,5 +25,7 @@ namespace EasyPost.Models.V2
         public string? Theme { get; set; }
         [JsonProperty("user_id")]
         public string? UserId { get; set; }
+
+        #endregion
     }
 }

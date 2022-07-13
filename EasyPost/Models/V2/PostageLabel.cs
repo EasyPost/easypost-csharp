@@ -6,6 +6,8 @@ namespace EasyPost.Models.V2
 {
     public class PostageLabel : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("date_advance")]
         public int DateAdvance { get; set; }
         [JsonProperty("integrated_form")]
@@ -30,5 +32,7 @@ namespace EasyPost.Models.V2
         public string? LabelUrl { get; set; }
         [JsonProperty("label_zpl_url")]
         public string? LabelZplUrl { get; set; }
+
+        #endregion
     }
 }

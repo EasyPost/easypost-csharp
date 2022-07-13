@@ -6,7 +6,11 @@ namespace EasyPost.Models.V2
 {
     public class BatchCollection : Collection
     {
+        #region JSON Properties
+
         [JsonProperty("batches")]
         public List<Batch>? Batches { get; set; }
+
+        #endregion
     }
 }

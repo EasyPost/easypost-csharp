@@ -5,6 +5,8 @@ namespace EasyPost.Models.V2
 {
     public class Parcel : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("height")]
         public double? Height { get; set; }
         [JsonProperty("length")]
@@ -15,5 +17,7 @@ namespace EasyPost.Models.V2
         public double Weight { get; set; }
         [JsonProperty("width")]
         public double? Width { get; set; }
+
+        #endregion
     }
 }

@@ -6,6 +6,8 @@ namespace EasyPost.Models.V2
 {
     public class Event : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("completed_urls")]
         public List<string>? CompletedUrls { get; set; }
         [JsonProperty("description")]
@@ -18,5 +20,7 @@ namespace EasyPost.Models.V2
         public Dictionary<string, object>? Result { get; set; }
         [JsonProperty("status")]
         public string? Status { get; set; }
+
+        #endregion
     }
 }

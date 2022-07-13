@@ -6,6 +6,8 @@ namespace EasyPost.Models.V2
 {
     public class CustomsInfo : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("contents_explanation")]
         public string? ContentsExplanation { get; set; }
         [JsonProperty("contents_type")]
@@ -26,5 +28,7 @@ namespace EasyPost.Models.V2
         public string? RestrictionComments { get; set; }
         [JsonProperty("restriction_type")]
         public string? RestrictionType { get; set; }
+
+        #endregion
     }
 }

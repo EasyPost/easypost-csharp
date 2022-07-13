@@ -12,6 +12,8 @@ namespace EasyPost.Interfaces
 {
     public abstract class EasyPostObject : WithClient, IEasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("created_at")]
         public DateTime? CreatedAt { get; internal set; }
         [JsonProperty("id")]
@@ -19,9 +21,11 @@ namespace EasyPost.Interfaces
         [JsonProperty("mode")]
         public string? Mode { get; internal set; }
         [JsonProperty("object")]
-        public string? Object { get; internal set; }
+        internal string? Object { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? UpdatedAt { get; internal set; }
+
+        #endregion
 
         internal string? Prefix
         {

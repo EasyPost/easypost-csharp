@@ -6,6 +6,8 @@ namespace EasyPost.Models.V2
 {
     public class ScanForm : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("address")]
         public Address? Address { get; set; }
         [JsonProperty("batch_id")]
@@ -20,5 +22,7 @@ namespace EasyPost.Models.V2
         public string? Status { get; set; }
         [JsonProperty("tracking_codes")]
         public List<string>? TrackingCodes { get; set; }
+
+        #endregion
     }
 }

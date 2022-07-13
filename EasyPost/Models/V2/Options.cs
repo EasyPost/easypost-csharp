@@ -7,6 +7,8 @@ namespace EasyPost.Models.V2
 {
     public class Options : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("additional_handling")]
         public bool? AdditionalHandling { get; set; }
         [JsonProperty("address_validation_level")]
@@ -175,5 +177,7 @@ namespace EasyPost.Models.V2
         public string? SpecialRatesEligibility { get; set; }
         [JsonProperty("suppress_etd")]
         public bool? SuppressEtd { get; set; }
+
+        #endregion
     }
 }

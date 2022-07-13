@@ -5,6 +5,8 @@ namespace EasyPost.Models.V2
 {
     public class CustomsItem : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("code")]
         public string? Code { get; set; }
         [JsonProperty("currency")]
@@ -21,5 +23,7 @@ namespace EasyPost.Models.V2
         public double? Value { get; set; }
         [JsonProperty("weight")]
         public double Weight { get; set; }
+
+        #endregion
     }
 }

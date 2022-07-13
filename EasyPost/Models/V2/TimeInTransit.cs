@@ -4,6 +4,8 @@ namespace EasyPost.Models.V2
 {
     public class TimeInTransit
     {
+        #region JSON Properties
+
         [JsonProperty("percentile_50")]
         public int? Percentile50 { get; set; }
         [JsonProperty("percentile_75")]
@@ -18,6 +20,8 @@ namespace EasyPost.Models.V2
         public int? Percentile97 { get; set; }
         [JsonProperty("percentile_99")]
         public int? Percentile99 { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Get the value of a specific percentile by its corresponding SmartrateAccuracy enum.

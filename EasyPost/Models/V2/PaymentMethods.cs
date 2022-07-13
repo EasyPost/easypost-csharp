@@ -9,10 +9,14 @@ namespace EasyPost.Models.V2
     /// </summary>
     public class PaymentMethodsSummary : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("primary_payment_method")]
         public PaymentMethod? PrimaryPaymentMethod { get; set; }
         [JsonProperty("secondary_payment_method")]
         public PaymentMethod? SecondaryPaymentMethod { get; set; }
+
+        #endregion
     }
 
     /// <summary>
@@ -21,6 +25,38 @@ namespace EasyPost.Models.V2
     /// </summary>
     public class PaymentMethod : EasyPostObject
     {
+        #region JSON Properties
+
+        // bank_account
+        [JsonProperty("bank_name")]
+        public string? BankName { get; set; }
+        // credit_card
+        [JsonProperty("brand")]
+        public string? Brand { get; set; }
+        // bank_account
+        [JsonProperty("country")]
+        public string? Country { get; set; }
+        // both
+        [JsonProperty("disabled_at")]
+        public string? Disabled { get; set; }
+        // credit_card
+        [JsonProperty("exp_month")]
+        public int? ExpirationMonth { get; set; }
+        // credit_card
+        [JsonProperty("exp_year")]
+        public int? ExpirationYear { get; set; }
+        // both
+        [JsonProperty("last4")]
+        public string? LastFour { get; set; }
+        // credit_card
+        [JsonProperty("name")]
+        public string? Name { get; set; }
+        // bank_account
+        [JsonProperty("verified")]
+        public bool Verified { get; set; }
+
+        #endregion
+
         internal string Endpoint
         {
             get
@@ -52,37 +88,5 @@ namespace EasyPost.Models.V2
                 }
             }
         }
-
-        #region JSON Properties
-
-        // bank_account
-        [JsonProperty("bank_name")]
-        public string? BankName { get; set; }
-        // credit_card
-        [JsonProperty("brand")]
-        public string? Brand { get; set; }
-        // bank_account
-        [JsonProperty("country")]
-        public string? Country { get; set; }
-        // both
-        [JsonProperty("disabled_at")]
-        public string? Disabled { get; set; }
-        // credit_card
-        [JsonProperty("exp_month")]
-        public int? ExpirationMonth { get; set; }
-        // credit_card
-        [JsonProperty("exp_year")]
-        public int? ExpirationYear { get; set; }
-        // both
-        [JsonProperty("last4")]
-        public string? LastFour { get; set; }
-        // credit_card
-        [JsonProperty("name")]
-        public string? Name { get; set; }
-        // bank_account
-        [JsonProperty("verified")]
-        public bool Verified { get; set; }
-
-        #endregion JSON Properties
     }
 }

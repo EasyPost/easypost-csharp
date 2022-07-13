@@ -6,6 +6,8 @@ namespace EasyPost.Models.V2
 {
     public class Report : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("end_date")]
         public DateTime? EndDate { get; set; }
         [JsonProperty("include_children")]
@@ -18,5 +20,7 @@ namespace EasyPost.Models.V2
         public string? Url { get; set; }
         [JsonProperty("url_expires_at")]
         public DateTime? UrlExpiresAt { get; set; }
+
+        #endregion
     }
 }

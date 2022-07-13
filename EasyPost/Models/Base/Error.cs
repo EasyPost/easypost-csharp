@@ -6,6 +6,8 @@ namespace EasyPost.Models.Base
 {
     public class Error : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("code")]
         public string? Code { get; set; }
         [JsonProperty("errors")]
@@ -16,5 +18,7 @@ namespace EasyPost.Models.Base
         public string? Message { get; set; }
         [JsonProperty("suggestion")]
         public string? Suggestion { get; set; }
+
+        #endregion
     }
 }

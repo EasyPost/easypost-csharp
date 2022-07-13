@@ -6,6 +6,8 @@ namespace EasyPost.Models.V2
 {
     public class TrackingDetail : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("datetime")]
         public DateTime? Datetime { get; set; }
         [JsonProperty("message")]
@@ -14,5 +16,7 @@ namespace EasyPost.Models.V2
         public string? Status { get; set; }
         [JsonProperty("tracking_location")]
         public TrackingLocation? TrackingLocation { get; set; }
+
+        #endregion
     }
 }

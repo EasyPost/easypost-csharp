@@ -5,6 +5,8 @@ namespace EasyPost.Models.V2
 {
     public class TrackingLocation : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("city")]
         public string? City { get; set; }
         [JsonProperty("country")]
@@ -13,5 +15,7 @@ namespace EasyPost.Models.V2
         public string? State { get; set; }
         [JsonProperty("zip")]
         public string? Zip { get; set; }
+
+        #endregion
     }
 }

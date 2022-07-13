@@ -5,6 +5,8 @@ namespace EasyPost.Models.V2
 {
     public class Fee : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("amount")]
         public double Amount { get; set; }
         [JsonProperty("charged")]
@@ -13,5 +15,7 @@ namespace EasyPost.Models.V2
         public bool Refunded { get; set; }
         [JsonProperty("type")]
         public string? Type { get; set; }
+
+        #endregion
     }
 }

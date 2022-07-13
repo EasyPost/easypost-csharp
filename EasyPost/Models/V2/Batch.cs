@@ -11,6 +11,8 @@ namespace EasyPost.Models.V2
 {
     public class Batch : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("error")]
         public string? Error { get; set; }
         [JsonProperty("label_url")]
@@ -29,6 +31,8 @@ namespace EasyPost.Models.V2
         public string? State { get; set; }
         [JsonProperty("status")]
         public Dictionary<string, int>? Status { get; set; }
+
+        #endregion
 
         /// <summary>
         ///     Add shipments to this batch.

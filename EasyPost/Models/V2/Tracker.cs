@@ -7,6 +7,8 @@ namespace EasyPost.Models.V2
 {
     public class Tracker : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("carrier")]
         public string? Carrier { get; set; }
         [JsonProperty("carrier_detail")]
@@ -29,5 +31,7 @@ namespace EasyPost.Models.V2
         public DateTime TrackingUpdatedAt { get; set; }
         [JsonProperty("weight")]
         public double? Weight { get; set; }
+
+        #endregion
     }
 }

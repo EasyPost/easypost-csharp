@@ -7,6 +7,8 @@ namespace EasyPost.Models.V2
 {
     public class Verification : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("details")]
         public VerificationDetails? Details { get; set; }
         [JsonProperty("errors")]
@@ -14,5 +16,7 @@ namespace EasyPost.Models.V2
         public List<Error>? Errors { get; set; }
         [JsonProperty("success")]
         public bool Success { get; set; }
+
+        #endregion
     }
 }

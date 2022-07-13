@@ -6,6 +6,8 @@ namespace EasyPost.Models.V2
 {
     public class Rate : EasyPostObject
     {
+        #region JSON Properties
+
         [JsonProperty("billing_type")]
         public string? BillingType { get; set; }
         [JsonProperty("carrier")]
@@ -36,5 +38,7 @@ namespace EasyPost.Models.V2
         public string? Service { get; set; }
         [JsonProperty("shipment_id")]
         public string? ShipmentId { get; set; }
+
+        #endregion
     }
 }
