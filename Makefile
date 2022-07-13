@@ -80,4 +80,8 @@ scan:
 	security-scan --verbose --no-banner --ignore-msbuild-errors EasyPost.sln
 	# "--ignore-msbuild-errors" needed since MSBuild does not like F#: https://github.com/security-code-scan/security-code-scan/issues/235
 
+## setup - Install required .NET versions and tools (Windows only)5
+setup:
+	scripts\setup.bat
+
 .PHONY: help release build-dev build install-cert sign clean restore lint lint-check test lint-scripts install-scanner scan
