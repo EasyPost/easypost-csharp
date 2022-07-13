@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Utilities;
 using Newtonsoft.Json;
@@ -320,6 +321,37 @@ namespace EasyPost
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Shipment>();
+        }
+
+        /// <summary>
+        ///     Generate a form for the shipment.
+        /// </summary>
+        /// <param name="formType">type of the form.</param>
+        /// <param name="formOptions">options of the form.</param>
+        /// <returns>An EasyPost.Shipment instance.</returns>
+        public async Task GenerateForm(string formType, Dictionary<string, object>? formOptions = null)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                {
+                    "type", formType
+                },
+            };
+
+            formOptions?.ToList().ForEach(option => parameters.Add(option.Key, option.Value));
+
+            Dictionary<string, object> wrappedParameters = new Dictionary<string, object>
+            {
+                {
+                    "form", parameters
+                }
+            };
+
+            Request request = new Request("shipments/{id}/forms", Method.Post);
+            request.AddParameters(wrappedParameters);
+            request.AddUrlSegment("id", id);
+
+            Merge(await request.Execute<Shipment>());
         }
 
         private static async Task<Shipment> SendCreate(Dictionary<string, object> parameters)

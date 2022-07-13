@@ -402,19 +402,19 @@ namespace EasyPost.Tests
                 const string pickupDate = "2022-06-4";
                 return new Dictionary<string, object>
                 {
-                        {
-                            "address", BasicAddress
-                        },
-                        {
-                            "min_datetime", pickupDate
-                        },
-                        {
-                            "max_datetime", pickupDate
-                        },
-                        {
-                            "instructions", "Pickup at front door"
-                        }
-                    };
+                    {
+                        "address", BasicAddress
+                    },
+                    {
+                        "min_datetime", pickupDate
+                    },
+                    {
+                        "max_datetime", pickupDate
+                    },
+                    {
+                        "instructions", "Pickup at front door"
+                    }
+                };
             }
         }
 
@@ -593,6 +593,41 @@ namespace EasyPost.Tests
                     },
                     {
                         "email", "test@example.com"
+                    }
+                };
+            }
+        }
+
+        public static Dictionary<string, object> RmaFormOptions
+        {
+            get
+            {
+                return new Dictionary<string, object>
+                {
+                    {
+                        "barcode", "RMA12345678900"
+                    },
+                    {
+                        "line_items", new List<object>
+                        {
+                            new Dictionary<string, object>
+                            {
+                                {
+                                    "product", new Dictionary<string, object>
+                                    {
+                                        {
+                                            "title", "Square Reader"
+                                        },
+                                        {
+                                            "barcode", "855658003251"
+                                        }
+                                    }
+                                },
+                                {
+                                    "units", 8
+                                }
+                            }
+                        }
                     }
                 };
             }
