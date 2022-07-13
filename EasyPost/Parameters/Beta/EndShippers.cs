@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.Beta
     {
         public class Update : EasyPostParameters
         {
-            [Parameter("name")]
+            [Parameter(Necessity.Optional, "name")]
             public string? Name { internal get; set; }
 
             public Update(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
@@ -16,14 +16,13 @@ namespace EasyPost.Parameters.Beta
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
 
         public class Create : EasyPostParameters
         {
-            [Parameter("name")]
+            [Parameter(Necessity.Required, "name")]
             public string? Name { internal get; set; }
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
@@ -32,8 +31,7 @@ namespace EasyPost.Parameters.Beta
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
     }

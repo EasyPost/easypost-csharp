@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.V2
     {
         public class Create : EasyPostParameters
         {
-            [Parameter("scan_form", "shipments")]
+            [Parameter(Necessity.Required, "scan_form", "shipments")]
             public List<Shipment>? Shipments { internal get; set; }
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
@@ -17,8 +17,7 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
     }

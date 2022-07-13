@@ -13,8 +13,7 @@ namespace EasyPost.Parameters.Beta
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
     }

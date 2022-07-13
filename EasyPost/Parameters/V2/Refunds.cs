@@ -7,10 +7,10 @@ namespace EasyPost.Parameters.V2
     {
         public class Create : EasyPostParameters
         {
-            [Parameter("carrier")]
+            [Parameter(Necessity.Required, "carrier")]
             public string? Carrier { internal get; set; }
 
-            [Parameter("tracking_codes")]
+            [Parameter(Necessity.Required, "tracking_codes")]
             public List<string>? TrackingCodes { internal get; set; }
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
@@ -19,8 +19,7 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
     }

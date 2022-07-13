@@ -7,9 +7,9 @@ namespace EasyPost.Parameters.V2
     {
         public class Create : EasyPostParameters
         {
-            [Parameter("end_date")]
+            [Parameter(Necessity.Required, "end_date")]
             public string? EndDate { internal get; set; }
-            [Parameter("start_date")]
+            [Parameter(Necessity.Required, "start_date")]
             public string? StartDate { internal get; set; }
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
@@ -18,8 +18,7 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
     }

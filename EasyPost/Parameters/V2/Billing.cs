@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.V2
     {
         public class Fund : EasyPostParameters
         {
-            [Parameter("amount")]
+            [Parameter(Necessity.Required, "amount")]
             public string? Amount { internal get; set; }
 
             public Fund(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
@@ -16,8 +16,7 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
     }

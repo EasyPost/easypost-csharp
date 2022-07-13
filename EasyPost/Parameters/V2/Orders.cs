@@ -13,17 +13,16 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
 
         public class Buy : EasyPostParameters
         {
-            [Parameter("carrier")]
+            [Parameter(Necessity.Required, "carrier")]
             public string? Carrier { internal get; set; }
 
-            [Parameter("service")]
+            [Parameter(Necessity.Required, "service")]
             public string? Service { internal get; set; }
 
             public Buy(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
@@ -32,8 +31,7 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
     }

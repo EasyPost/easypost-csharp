@@ -13,8 +13,7 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
 
@@ -26,14 +25,13 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
 
         public class Insure : EasyPostParameters
         {
-            [Parameter("amount")]
+            [Parameter(Necessity.Required, "amount")]
             public double? Amount { internal get; set; }
 
             public Insure(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
@@ -42,14 +40,13 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
 
         public class Label : EasyPostParameters
         {
-            [Parameter("file_format")]
+            [Parameter(Necessity.Required, "file_format")]
             public string? FileFormat { internal get; set; }
 
             public Label(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
@@ -58,16 +55,15 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
 
         public class Buy : EasyPostParameters
         {
-            [Parameter("insurance")]
+            [Parameter(Necessity.Optional, "insurance")]
             public string? InsuranceValue { internal get; set; }
-            [Parameter("rate", "id")]
+            [Parameter(Necessity.Required, "rate", "id")]
             public string? RateId { internal get; set; }
 
             public Buy(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
@@ -76,8 +72,7 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
     }

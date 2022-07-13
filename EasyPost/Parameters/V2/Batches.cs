@@ -13,14 +13,13 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
 
         public class UpdateShipments : EasyPostParameters
         {
-            [Parameter("shipments")]
+            [Parameter(Necessity.Required, "shipments")]
             public List<string>? ShipmentIds { internal get; set; }
 
             public UpdateShipments(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
@@ -29,14 +28,13 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
 
         public class Label : EasyPostParameters
         {
-            [Parameter("file_format")]
+            [Parameter(Necessity.Required, "file_format")]
             public string? FileFormat { internal get; set; }
 
             public Label(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
@@ -45,8 +43,7 @@ namespace EasyPost.Parameters.V2
 
             internal override Dictionary<string, object?>? ToDictionary()
             {
-                RegisterParameters(this);
-                return ParameterDictionary;
+                return ToDictionary(this);
             }
         }
     }
