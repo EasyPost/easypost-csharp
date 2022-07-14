@@ -5,7 +5,7 @@ namespace EasyPost.Parameters
 {
     public static class Refunds
     {
-        public class Create : ApiParameters
+        public sealed class Create : ApiParameters
         {
             [Parameter(Necessity.Required, "carrier")]
             public string? Carrier { internal get; set; }

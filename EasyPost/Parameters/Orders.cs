@@ -5,7 +5,7 @@ namespace EasyPost.Parameters
 {
     public static class Orders
     {
-        public class Create : ApiParameters
+        public sealed class Create : ApiParameters
         {
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
@@ -17,7 +17,7 @@ namespace EasyPost.Parameters
             }
         }
 
-        public class Buy : ApiParameters
+        public sealed class Buy : ApiParameters
         {
             [Parameter(Necessity.Required, "carrier")]
             public string? Carrier { internal get; set; }

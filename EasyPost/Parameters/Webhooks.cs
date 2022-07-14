@@ -5,7 +5,7 @@ namespace EasyPost.Parameters
 {
     public static class Webhooks
     {
-        public class Update : ApiParameters
+        public sealed class Update : ApiParameters
         {
             public Update(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
@@ -17,7 +17,7 @@ namespace EasyPost.Parameters
             }
         }
 
-        public class Create : ApiParameters
+        public sealed class Create : ApiParameters
         {
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {

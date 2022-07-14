@@ -3,7 +3,7 @@ using EasyPost._base;
 
 namespace EasyPost.Parameters
 {
-    public class All : ApiParameters
+    public sealed class All : ApiParameters
     {
         [Parameter(Necessity.Optional, "after_id")]
         public string? AfterId { get; set; }

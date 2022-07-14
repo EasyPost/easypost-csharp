@@ -5,7 +5,7 @@ namespace EasyPost.Parameters
 {
     public static class Shipments
     {
-        public class Create : ApiParameters
+        public sealed class Create : ApiParameters
         {
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
@@ -17,7 +17,7 @@ namespace EasyPost.Parameters
             }
         }
 
-        public class GenerateRates : ApiParameters
+        public sealed class GenerateRates : ApiParameters
         {
             public GenerateRates(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
@@ -29,7 +29,7 @@ namespace EasyPost.Parameters
             }
         }
 
-        public class Insure : ApiParameters
+        public sealed class Insure : ApiParameters
         {
             [Parameter(Necessity.Required, "amount")]
             public double? Amount { internal get; set; }
@@ -44,7 +44,7 @@ namespace EasyPost.Parameters
             }
         }
 
-        public class Label : ApiParameters
+        public sealed class Label : ApiParameters
         {
             [Parameter(Necessity.Required, "file_format")]
             public string? FileFormat { internal get; set; }
@@ -59,7 +59,7 @@ namespace EasyPost.Parameters
             }
         }
 
-        public class Buy : ApiParameters
+        public sealed class Buy : ApiParameters
         {
             [Parameter(Necessity.Optional, "insurance")]
             public string? InsuranceValue { internal get; set; }

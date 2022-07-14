@@ -5,7 +5,7 @@ namespace EasyPost.Parameters
 {
     public static class Billing
     {
-        public class Fund : ApiParameters
+        public sealed class Fund : ApiParameters
         {
             [Parameter(Necessity.Required, "amount")]
             public string? Amount { internal get; set; }

@@ -5,7 +5,7 @@ namespace EasyPost.Parameters.Beta
 {
     public static class Partners
     {
-        public class CreateReferral : ApiParameters
+        public sealed class CreateReferral : ApiParameters
         {
             public CreateReferral(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {

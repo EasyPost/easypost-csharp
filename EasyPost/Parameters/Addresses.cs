@@ -5,7 +5,7 @@ namespace EasyPost.Parameters
 {
     public static class Addresses
     {
-        public class Create : ApiParameters
+        public sealed class Create : ApiParameters
         {
             [Parameter(Necessity.Optional, "address", "name")]
             public string? Name { internal get; set; }
@@ -26,7 +26,7 @@ namespace EasyPost.Parameters
             }
         }
 
-        public class Verify : ApiParameters
+        public sealed class Verify : ApiParameters
         {
             [Parameter(Necessity.Optional, "carrier")]
             public string? Carrier { internal get; set; }

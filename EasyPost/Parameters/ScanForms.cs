@@ -6,7 +6,7 @@ namespace EasyPost.Parameters
 {
     public static class ScanForms
     {
-        public class Create : ApiParameters
+        public sealed class Create : ApiParameters
         {
             [Parameter(Necessity.Required, "scan_form", "shipments")]
             public List<Shipment>? Shipments { internal get; set; }

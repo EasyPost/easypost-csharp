@@ -3,9 +3,9 @@ using EasyPost._base;
 
 namespace EasyPost.Parameters
 {
-    public class CarrierAccounts
+    public static class CarrierAccounts
     {
-        public class Create : ApiParameters
+        public sealed class Create : ApiParameters
         {
             [Parameter(Necessity.Optional, "address", "name")]
             public string? Name { internal get; set; }
@@ -26,7 +26,7 @@ namespace EasyPost.Parameters
             }
         }
 
-        public class Update : ApiParameters
+        public sealed class Update : ApiParameters
         {
             public Update(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {

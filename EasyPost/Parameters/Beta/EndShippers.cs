@@ -5,7 +5,7 @@ namespace EasyPost.Parameters.Beta
 {
     public static class EndShippers
     {
-        public class Update : ApiParameters
+        public sealed class Update : ApiParameters
         {
             [Parameter(Necessity.Optional, "name")]
             public string? Name { internal get; set; }
@@ -20,7 +20,7 @@ namespace EasyPost.Parameters.Beta
             }
         }
 
-        public class Create : ApiParameters
+        public sealed class Create : ApiParameters
         {
             [Parameter(Necessity.Required, "name")]
             public string? Name { internal get; set; }

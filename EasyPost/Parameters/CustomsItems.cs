@@ -5,7 +5,7 @@ namespace EasyPost.Parameters
 {
     public static class CustomsItems
     {
-        public class Create : ApiParameters
+        public sealed class Create : ApiParameters
         {
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {

@@ -5,7 +5,7 @@ namespace EasyPost.Parameters
 {
     public static class Reports
     {
-        public class Create : ApiParameters
+        public sealed class Create : ApiParameters
         {
             [Parameter(Necessity.Required, "end_date")]
             public string? EndDate { internal get; set; }

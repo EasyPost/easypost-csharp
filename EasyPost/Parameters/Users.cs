@@ -5,7 +5,7 @@ namespace EasyPost.Parameters
 {
     public static class Users
     {
-        public class Update : ApiParameters
+        public sealed class Update : ApiParameters
         {
             public Update(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
@@ -17,7 +17,7 @@ namespace EasyPost.Parameters
             }
         }
 
-        public class UpdateBrand : ApiParameters
+        public sealed class UpdateBrand : ApiParameters
         {
             public UpdateBrand(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
@@ -29,7 +29,7 @@ namespace EasyPost.Parameters
             }
         }
 
-        public class Create : ApiParameters
+        public sealed class Create : ApiParameters
         {
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
