@@ -12,9 +12,11 @@ namespace EasyPost.Parameters
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "address", "name")]
             public string? Name { internal get; set; }
+
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "verify_strict")]
             public List<string>? ToStrictVerify { internal get; set; }
+
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "verify")]
             public List<string>? ToVerify { internal get; set; }

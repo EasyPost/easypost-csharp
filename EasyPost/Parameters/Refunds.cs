@@ -12,6 +12,7 @@ namespace EasyPost.Parameters
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "carrier")]
             public string? Carrier { internal get; set; }
+
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "tracking_codes")]
             public List<string>? TrackingCodes { internal get; set; }

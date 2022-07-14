@@ -12,6 +12,7 @@ namespace EasyPost.Parameters
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "end_date")]
             public string? EndDate { internal get; set; }
+
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "start_date")]
             public string? StartDate { internal get; set; }

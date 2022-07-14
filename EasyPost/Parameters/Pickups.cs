@@ -24,6 +24,7 @@ namespace EasyPost.Parameters
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "carrier")]
             public string? Carrier { internal get; set; }
+
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "service")]
             public string? Service { internal get; set; }
