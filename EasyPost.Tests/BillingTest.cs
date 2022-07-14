@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.API;
+using EasyPost.Parameters;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -27,7 +28,10 @@ namespace EasyPost.Tests
         {
             UseVCR("fund_wallet", ApiVersion.Latest);
 
-            bool success = await Client.Billing.FundWallet("2000", PaymentMethodPriority.Primary);
+            bool success = await Client.Billing.FundWallet(new Billing.Fund
+            {
+                Amount = "2000"
+            }, PaymentMethodPriority.Primary);
 
             Assert.IsTrue(success);
         }

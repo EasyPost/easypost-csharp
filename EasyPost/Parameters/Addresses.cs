@@ -9,17 +9,21 @@ namespace EasyPost.Parameters
     {
         public sealed class Create : RequestParameters
         {
+            #region Request Parameters
+
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "address", "name")]
-            public string? Name { internal get; set; }
+            [RequestParameter(Necessity.Required, "address")]
+            public Models.API.Address? Address { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "verify_strict")]
-            public List<string>? ToStrictVerify { internal get; set; }
+            public List<string>? ToStrictVerify { internal get; set; } = null;
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "verify")]
-            public List<string>? ToVerify { internal get; set; }
+            public List<string>? ToVerify { internal get; set; } = null;
+
+            #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
@@ -33,9 +37,17 @@ namespace EasyPost.Parameters
 
         public sealed class Verify : RequestParameters
         {
+            #region Request Parameters
+
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "carrier")]
-            public string? Carrier { internal get; set; }
+            [RequestParameter(Necessity.Optional, "verify_strict")]
+            public List<string>? ToStrictVerify { internal get; set; } = null;
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "verify")]
+            public List<string>? ToVerify { internal get; set; } = null;
+
+            #endregion
 
             public Verify(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {

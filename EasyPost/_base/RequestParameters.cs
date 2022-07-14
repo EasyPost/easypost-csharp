@@ -18,14 +18,9 @@ namespace EasyPost._base
 
         protected RequestParameters(Dictionary<string, object?>? overrideParameters = null)
         {
-            if (overrideParameters == null)
+            if (overrideParameters != null)
             {
-                return;
-            }
-
-            foreach (var kvp in overrideParameters)
-            {
-                _parameterDictionary[kvp.Key] = kvp.Value;
+                _parameterDictionary = overrideParameters;
             }
         }
 
@@ -40,11 +35,11 @@ namespace EasyPost._base
             return obj._parameterDictionary;
         }
 
-        private static void Add(RequestParameterAttribute requestParameterAttribute, PropertyInfo propertyInfo, RequestParameters obj)
+        private static void Add(RequestParameterAttribute requestParameterAttribute, RequestParameters obj, object? value)
         {
             // If a given property is an EasyPostObject, the JsonProperty attributes will serialize the object as a dictionary (later, during RestRequest)
             // Otherwise, simply add the primitive value to the dictionary.
-            obj._parameterDictionary = UpdateDictionary(obj._parameterDictionary, requestParameterAttribute.JsonPath, propertyInfo.GetValue(obj));
+            obj._parameterDictionary = UpdateDictionary(obj._parameterDictionary, requestParameterAttribute.JsonPath, value);
         }
 
         /// <summary>
@@ -70,7 +65,14 @@ namespace EasyPost._base
                     continue;
                 }
 
-                Add(parameterAttribute, property, obj);
+                object? value = property.GetValue(obj);
+                if (value == null && parameterAttribute.Necessity == Necessity.Optional)
+                {
+                    // Ignore any optional parameters that are null
+                    continue;
+                }
+
+                Add(parameterAttribute, obj, value);
             }
         }
 
@@ -86,8 +88,16 @@ namespace EasyPost._base
                     return dictionary;
                 // Last key left
                 case 1:
-                    // TODO: Check this line if issues arise.
-                    dictionary[keys[0]] = value;
+                    string soloKey = keys[0];
+                    if (dictionary.ContainsKey(soloKey))
+                    {
+                        dictionary[soloKey] ??= value;
+                    }
+                    else
+                    {
+                        dictionary.Add(soloKey, value);
+                    }
+
                     return dictionary;
             }
 

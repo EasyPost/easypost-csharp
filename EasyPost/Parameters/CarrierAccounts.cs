@@ -9,17 +9,13 @@ namespace EasyPost.Parameters
     {
         public sealed class Create : RequestParameters
         {
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "address", "name")]
-            public string? Name { internal get; set; }
+            #region Request Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "verify_strict")]
-            public List<string>? ToStrictVerify { internal get; set; }
+            [RequestParameter(Necessity.Required, "carrier_account")]
+            public Models.API.CarrierAccount? CarrierAccount { internal get; set; }
 
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "verify")]
-            public List<string>? ToVerify { internal get; set; }
+            #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
@@ -33,6 +29,14 @@ namespace EasyPost.Parameters
 
         public sealed class Update : RequestParameters
         {
+            #region Request Parameters
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Required, "carrier_account")]
+            public Models.API.CarrierAccount? CarrierAccount { internal get; set; }
+
+            #endregion
+
             public Update(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
             }

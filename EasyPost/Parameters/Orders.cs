@@ -9,6 +9,18 @@ namespace EasyPost.Parameters
     {
         public sealed class Create : RequestParameters
         {
+            #region Request Parameters
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Required, "order")]
+            public Models.API.Order? Order { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Required, "order", "carrier_accounts")]
+            public List<Models.API.CarrierAccount>? CarrierAccounts { internal get; set; }
+
+            #endregion
+
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
             }
@@ -21,6 +33,8 @@ namespace EasyPost.Parameters
 
         public sealed class Buy : RequestParameters
         {
+            #region Request Parameters
+
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "carrier")]
             public string? Carrier { internal get; set; }
@@ -28,6 +42,8 @@ namespace EasyPost.Parameters
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "service")]
             public string? Service { internal get; set; }
+
+            #endregion
 
             public Buy(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {

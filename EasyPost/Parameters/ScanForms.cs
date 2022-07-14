@@ -10,9 +10,13 @@ namespace EasyPost.Parameters
     {
         public sealed class Create : RequestParameters
         {
+            #region Request Parameters
+
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Required, "scan_form", "shipments")]
+            [RequestParameter(Necessity.Required, "shipments")]
             public List<Shipment>? Shipments { internal get; set; }
+
+            #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {

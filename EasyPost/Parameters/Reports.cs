@@ -9,13 +9,19 @@ namespace EasyPost.Parameters
     {
         public sealed class Create : RequestParameters
         {
+            #region Request Parameters
+
+            // TODO: What are the other report options?
+
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Required, "end_date")]
+            [RequestParameter(Necessity.Required, "report", "end_date")]
             public string? EndDate { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Required, "start_date")]
+            [RequestParameter(Necessity.Required, "report", "start_date")]
             public string? StartDate { internal get; set; }
+
+            #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {

@@ -90,7 +90,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Batch> GenerateLabel(Batches.Label parameters)
+        public async Task<Batch> GenerateLabel(Batches.CreateDocument parameters)
         {
             return await Update<Batch>(Method.Post, $"batches/{Id}/label", parameters);
         }
@@ -98,10 +98,11 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Asynchronously generate a scan from for this batch.
         /// </summary>
+        /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Batch> GenerateScanForm()
+        public async Task<Batch> GenerateScanForm(Batches.CreateDocument parameters)
         {
-            return await Update<Batch>(Method.Post, $"batches/{Id}/scan_form");
+            return await Update<Batch>(Method.Post, $"batches/{Id}/scan_form", parameters);
         }
 
         /// <summary>

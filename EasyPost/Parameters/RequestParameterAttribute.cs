@@ -5,6 +5,11 @@ namespace EasyPost.Parameters
 {
     internal enum Necessity
     {
+        /**
+         * * @brief
+         * Required parameters are required for a request. They do not need a default value, since they are required to be set.
+         * Optional parameters are optional for a request. Default value for these should be null.
+        */
         Required,
         Optional
     }

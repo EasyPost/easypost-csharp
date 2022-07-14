@@ -9,6 +9,14 @@ namespace EasyPost.Parameters
     {
         public sealed class Create : RequestParameters
         {
+            #region Request Parameters
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Required, "pickup")]
+            public Models.API.Pickup? Pickup { internal get; set; }
+
+            #endregion
+
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
             }
@@ -21,6 +29,8 @@ namespace EasyPost.Parameters
 
         public sealed class Buy : RequestParameters
         {
+            #region Request Parameters
+
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "carrier")]
             public string? Carrier { internal get; set; }
@@ -28,6 +38,8 @@ namespace EasyPost.Parameters
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "service")]
             public string? Service { internal get; set; }
+
+            #endregion
 
             public Buy(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {

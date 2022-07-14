@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using EasyPost._base;
+using EasyPost.ApiCompatibility;
+using EasyPost.Clients;
 
 namespace EasyPost.Parameters
 {
@@ -7,6 +9,18 @@ namespace EasyPost.Parameters
     {
         public sealed class Update : RequestParameters
         {
+            #region Request Parameters
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "url")]
+            public string? Url { internal get; set; } = null;
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "webhook_secret")]
+            public string? Secret { internal get; set; } = null;
+
+            #endregion
+
             public Update(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
             }
@@ -19,6 +33,18 @@ namespace EasyPost.Parameters
 
         public sealed class Create : RequestParameters
         {
+            #region Request Parameters
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Required, "url")]
+            public string? Url { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "webhook_secret")]
+            public string? Secret { internal get; set; } = null;
+
+            #endregion
+
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
             }

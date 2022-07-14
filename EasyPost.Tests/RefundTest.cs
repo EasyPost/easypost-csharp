@@ -76,11 +76,11 @@ namespace EasyPost.Tests
 
             return await Client.Refunds.Create(new Refunds.Create
             {
-                Carrier = Fixture.Usps,
-                TrackingCodes = new List<string>
+                Refund = new Refund
                 {
-                    retrievedShipment.TrackingCode
-                },
+                    Carrier = Fixture.Usps,
+                    TrackingCode = retrievedShipment.TrackingCode
+                }
             });
         }
     }

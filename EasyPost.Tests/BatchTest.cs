@@ -119,7 +119,10 @@ namespace EasyPost.Tests
                 Thread.Sleep(15000); // Wait enough time to process
             }
 
-            batch = await batch.GenerateScanForm();
+            batch = await batch.GenerateScanForm(new Batches.CreateDocument
+            {
+                FileFormat = "PDF"
+            });
 
             // We can't assert anything meaningful here because the scanform gets queued for generation and may not be immediately available
             Assert.IsInstanceOfType(batch, typeof(Batch));
@@ -139,7 +142,7 @@ namespace EasyPost.Tests
                 Thread.Sleep(15000); // Wait enough time to process
             }
 
-            await batch.GenerateLabel(new Batches.Label
+            await batch.GenerateLabel(new Batches.CreateDocument
             {
                 FileFormat = "ZPL"
             });

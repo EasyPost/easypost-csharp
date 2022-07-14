@@ -9,6 +9,8 @@ namespace EasyPost.Parameters
     {
         public sealed class Create : RequestParameters
         {
+            #region Request Parameters
+
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "tracker", "carrier")]
             public string? Carrier { internal get; set; }
@@ -16,6 +18,24 @@ namespace EasyPost.Parameters
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "tracker", "tracking_code")]
             public string? TrackingCode { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Required, "tracker", "amount")]
+            public string? Amount { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Required, "options", "carrier_account")]
+            public string? CarrierAccount { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Required, "options", "is_return")]
+            public bool IsReturn { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Required, "options", "full_test_tracker")]
+            public bool FullTestTracker { internal get; set; }
+
+            #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {

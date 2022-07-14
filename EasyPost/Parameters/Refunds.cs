@@ -9,13 +9,13 @@ namespace EasyPost.Parameters
     {
         public sealed class Create : RequestParameters
         {
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Required, "carrier")]
-            public string? Carrier { internal get; set; }
+            #region Request Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Required, "tracking_codes")]
-            public List<string>? TrackingCodes { internal get; set; }
+            [RequestParameter(Necessity.Required, "refund")]
+            public Models.API.Refund? Refund { internal get; set; }
+
+            #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {

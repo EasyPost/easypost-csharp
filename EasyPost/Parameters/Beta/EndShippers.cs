@@ -9,9 +9,13 @@ namespace EasyPost.Parameters.Beta
     {
         public sealed class Update : RequestParameters
         {
+            #region Request Parameters
+
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "name")]
-            public string? Name { internal get; set; }
+            public string? Name { internal get; set; } = null;
+
+            #endregion
 
             public Update(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
@@ -25,9 +29,13 @@ namespace EasyPost.Parameters.Beta
 
         public sealed class Create : RequestParameters
         {
+            #region Request Parameters
+
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "name")]
-            public string? Name { internal get; set; }
+            public string? Name { internal get; set; } = string.Empty;
+
+            #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {

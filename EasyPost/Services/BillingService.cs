@@ -37,16 +37,11 @@ namespace EasyPost.Services
         /// <param name="priority">Which type of payment method to use to fund the wallet. Defaults to primary.</param>
         /// <returns>True if successful, false otherwise.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<bool> FundWallet(string amount, PaymentMethodPriority? priority = null)
+        public async Task<bool> FundWallet(Billing.Fund parameters, PaymentMethodPriority? priority = null)
         {
             priority ??= PaymentMethodPriority.Primary;
 
             PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
-
-            var parameters = new Billing.Fund
-            {
-                Amount = amount
-            };
 
             return await Request(Method.Post, $"{paymentMethod.Endpoint}/{paymentMethod.Id}/charge", parameters);
         }
