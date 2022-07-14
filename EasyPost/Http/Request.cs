@@ -13,11 +13,11 @@ namespace EasyPost.Http
         private readonly Dictionary<string, object?> _parameters;
         private readonly RestRequest _restRequest;
 
-        public Request(string endpoint, Method method, ApiParameters? parameters = null, string? rootElement = null)
+        public Request(EasyPostClient client, string endpoint, Method method, RequestParameters? parameters = null, string? rootElement = null)
         {
             _restRequest = new RestRequest(endpoint, method);
 
-            _parameters = parameters?.ToDictionary() ?? new Dictionary<string, object?>();
+            _parameters = parameters?.ToDictionary(client) ?? new Dictionary<string, object?>();
 
             RootElement = rootElement;
         }

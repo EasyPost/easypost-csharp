@@ -1,24 +1,28 @@
 using System.Collections.Generic;
 using EasyPost._base;
+using EasyPost.ApiCompatibility;
+using EasyPost.Clients;
 
 namespace EasyPost.Parameters
 {
     public static class Trackers
     {
-        public sealed class Create : ApiParameters
+        public sealed class Create : RequestParameters
         {
-            [Parameter(Necessity.Required, "tracker", "carrier")]
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Required, "tracker", "carrier")]
             public string? Carrier { internal get; set; }
-            [Parameter(Necessity.Required, "tracker", "tracking_code")]
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Required, "tracker", "tracking_code")]
             public string? TrackingCode { internal get; set; }
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
             }
 
-            internal override Dictionary<string, object?>? ToDictionary()
+            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
             {
-                return ToDictionary(this);
+                return ToDictionary(this, client);
             }
         }
     }

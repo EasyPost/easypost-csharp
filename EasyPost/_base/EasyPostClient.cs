@@ -72,10 +72,10 @@ namespace EasyPost._base
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
         /// <returns>An instance of a T type object.</returns>
         /// <exception cref="ApiException">An error occurred during the API request.</exception>
-        internal async Task<T> Request<T>(Method method, string url, ApiParameters? parameters = null, string? rootElement = null) where T : class
+        internal async Task<T> Request<T>(Method method, string url, RequestParameters? parameters = null, string? rootElement = null) where T : class
         {
             // Build the request
-            Request request = new Request(url, method, parameters, rootElement);
+            Request request = new Request(this, url, method, parameters, rootElement);
             RestRequest restRequest = PrepareRequest(request);
 
             // TODO: Prepare the version converter
@@ -127,10 +127,10 @@ namespace EasyPost._base
         ///     Execute a request against the EasyPost API.
         /// </summary>
         /// <returns>Whether request was successful.</returns>
-        internal async Task<bool> Request(Method method, string url, ApiParameters? parameters = null, string? rootElement = null)
+        internal async Task<bool> Request(Method method, string url, RequestParameters? parameters = null, string? rootElement = null)
         {
             // Build the request
-            Request request = new Request(url, method, parameters, rootElement);
+            Request request = new Request(this, url, method, parameters, rootElement);
             RestRequest restRequest = PrepareRequest(request);
 
             // Execute the request

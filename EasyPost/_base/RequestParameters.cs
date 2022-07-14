@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using EasyPost.ApiCompatibility;
 using EasyPost.Exceptions;
 using EasyPost.Parameters;
 using EasyPost.Utilities;
@@ -11,11 +12,11 @@ namespace EasyPost._base
     /// <summary>
     ///     Class for parameters for EasyPost API calls.
     /// </summary>
-    public abstract class ApiParameters : IApiParameters
+    public abstract class RequestParameters : IRequestParameters
     {
         private Dictionary<string, object?>? _parameterDictionary = new Dictionary<string, object?>();
 
-        protected ApiParameters(Dictionary<string, object?>? overrideParameters = null)
+        protected RequestParameters(Dictionary<string, object?>? overrideParameters = null)
         {
             if (overrideParameters == null)
             {
@@ -28,36 +29,44 @@ namespace EasyPost._base
             }
         }
 
-        internal abstract Dictionary<string, object?>? ToDictionary();
+        internal abstract Dictionary<string, object?>? ToDictionary(EasyPostClient client);
 
-        protected static Dictionary<string, object?>? ToDictionary(ApiParameters obj)
+        protected static Dictionary<string, object?>? ToDictionary(RequestParameters obj, EasyPostClient client)
         {
-            // Construct the dictionary of all parameters
-            RegisterParameters(obj);
+            // Construct the dictionary of all parameters for this API version
+            RegisterParameters(obj, client);
             // Verify that all required parameters are set in the dictionary
             VerifyParameters(obj);
             return obj._parameterDictionary;
         }
 
-        private static void Add(ParameterAttribute parameterAttribute, PropertyInfo propertyInfo, ApiParameters obj)
+        private static void Add(RequestParameterAttribute requestParameterAttribute, PropertyInfo propertyInfo, RequestParameters obj)
         {
             // If a given property is an EasyPostObject, the JsonProperty attributes will serialize the object as a dictionary (later, during RestRequest)
             // Otherwise, simply add the primitive value to the dictionary.
-            obj._parameterDictionary = UpdateDictionary(obj._parameterDictionary, parameterAttribute.JsonPath, propertyInfo.GetValue(obj));
+            obj._parameterDictionary = UpdateDictionary(obj._parameterDictionary, requestParameterAttribute.JsonPath, propertyInfo.GetValue(obj));
         }
 
         /// <summary>
         ///     Build a dictionary from the parameters.
         /// </summary>
         /// <param name="obj">Parameters collection to construct a dictionary from.</param>
-        private static void RegisterParameters(ApiParameters obj)
+        /// <param name="client">EasyPost client being used for the request these parameters are for.</param>
+        private static void RegisterParameters(RequestParameters obj, EasyPostClient client)
         {
             PropertyInfo[] properties = obj.GetType().GetProperties();
             foreach (var property in properties)
             {
-                ParameterAttribute? parameterAttribute = BaseCustomAttribute.GetCustomAttribute<ParameterAttribute>(property);
+                RequestParameterAttribute? parameterAttribute = BaseCustomAttribute.GetCustomAttribute<RequestParameterAttribute>(property);
                 if (parameterAttribute == null)
                 {
+                    // Ignore any properties that are not annotated with a ParameterAttribute
+                    continue;
+                }
+
+                if (!ApiCompatibilityAttribute.CheckParameterCompatible(property.Name, obj.GetType(), client))
+                {
+                    // Ignore any parameters that are not compatible with this API version
                     continue;
                 }
 
@@ -156,12 +165,12 @@ namespace EasyPost._base
         /// </summary>
         /// <param name="obj">Parameter collection to verify.</param>
         /// <exception cref="MissingRequiredParameterException">If a required parameter is missing.</exception>
-        private static void VerifyParameters(ApiParameters obj)
+        private static void VerifyParameters(RequestParameters obj)
         {
             PropertyInfo[] properties = obj.GetType().GetProperties();
             foreach (var property in properties)
             {
-                ParameterAttribute? parameterAttribute = BaseCustomAttribute.GetCustomAttribute<ParameterAttribute>(property);
+                RequestParameterAttribute? parameterAttribute = BaseCustomAttribute.GetCustomAttribute<RequestParameterAttribute>(property);
                 if (parameterAttribute == null)
                 {
                     continue;
@@ -175,7 +184,7 @@ namespace EasyPost._base
         }
     }
 
-    internal interface IApiParameters
+    internal interface IRequestParameters
     {
     }
 }

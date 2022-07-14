@@ -10,13 +10,13 @@ namespace EasyPost.Parameters
     }
 
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
-    internal class ParameterAttribute : BaseCustomAttribute
+    internal class RequestParameterAttribute : BaseCustomAttribute
     {
-        internal string[] JsonPath { get; set; }
+        internal string[] JsonPath { get; }
 
-        internal Necessity Necessity { get; set; }
+        internal Necessity Necessity { get; }
 
-        internal ParameterAttribute(Necessity necessity, params string[] jsonPath)
+        internal RequestParameterAttribute(Necessity necessity, params string[] jsonPath)
         {
             Necessity = necessity;
             JsonPath = jsonPath;

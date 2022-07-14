@@ -82,6 +82,37 @@ namespace EasyPost.ApiCompatibility
         }
 
         /// <summary>
+        ///     Check if a parameter is compatible with the current API version.
+        /// </summary>
+        /// <param name="parameterName">Name of parameter attempting to retrieve.</param>
+        /// <param name="parameterSourceType">Type of object the parameter is being retrieved from.</param>
+        /// <param name="client">API client used to execute this method.</param>
+        /// <returns>Whether the parameter is compatible with the current API version.</returns>
+        internal static bool CheckParameterCompatible(string parameterName, Type parameterSourceType, EasyPostClient? client)
+        {
+            if (client == null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
+            PropertyInfo? property = parameterSourceType.GetProperty(parameterName);
+            if (property == null)
+            {
+                throw new ArgumentException($"Could not find method {property} on type {parameterSourceType.Name}");
+            }
+
+            ApiCompatibilityAttribute? apiCompatibilityAttribute = GetCustomAttribute<ApiCompatibilityAttribute>(property);
+            // ReSharper disable once ConvertIfStatementToReturnStatement
+            if (apiCompatibilityAttribute == null)
+            {
+                // if property does not have an API compatibility attribute, it is compatible with all API versions
+                return true;
+            }
+
+            return apiCompatibilityAttribute.IsCompatible(client.ApiVersionDetails);
+        }
+
+        /// <summary>
         ///     Check if a service (i.e. ShipmentService) is compatible with the current API version.
         /// </summary>
         /// <param name="service">Service attempting to retrieve.</param>
