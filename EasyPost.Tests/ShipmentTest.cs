@@ -3,10 +3,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
-using EasyPost.Models.V2;
+using EasyPost.Models.API;
 using EasyPost.Parameters;
-using EasyPost.Parameters.V2;
-using EasyPost.Services.V2;
+using EasyPost.Services;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 

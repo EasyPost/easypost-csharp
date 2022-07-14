@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using EasyPost.Interfaces;
+using EasyPost._base;
 
 namespace EasyPost.Parameters.Beta
 {
     public static class Partners
     {
-        public class CreateReferral : EasyPostParameters
+        public class CreateReferral : ApiParameters
         {
             public CreateReferral(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {

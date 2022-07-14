@@ -5,7 +5,11 @@ using System.Reflection;
 
 namespace EasyPost.Utilities
 {
-    public abstract class Enum : IComparable
+    public interface IEnum
+    {
+    }
+
+    public abstract class Enum : IComparable, IEnum
     {
         private int Id { get; }
 
@@ -70,7 +74,7 @@ namespace EasyPost.Utilities
             return !(one == two);
         }
 
-        protected static IEnumerable<T> GetAll<T>() where T : Enum =>
+        protected static IEnumerable<T> GetAll<T>() where T : IEnum =>
             typeof(T).GetFields(BindingFlags.Public |
                                 BindingFlags.Static |
                                 BindingFlags.DeclaredOnly)

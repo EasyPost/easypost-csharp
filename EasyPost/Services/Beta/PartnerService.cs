@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
+using EasyPost._base;
 using EasyPost.Clients;
-using EasyPost.Interfaces;
-using EasyPost.Models.Beta;
+using EasyPost.Models.API.Beta;
 using EasyPost.Parameters.Beta;
 
 namespace EasyPost.Services.Beta

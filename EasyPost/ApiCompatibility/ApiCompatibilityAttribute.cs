@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Reflection;
+using EasyPost._base;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
-using EasyPost.Interfaces;
 using EasyPost.Utilities;
 using MethodDecorator.Fody.Interfaces;
 

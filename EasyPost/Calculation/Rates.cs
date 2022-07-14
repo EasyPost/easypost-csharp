@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using EasyPost.Exceptions;
-using EasyPost.Models.V2;
+using EasyPost.Models.API;
 
 namespace EasyPost.Calculation
 {

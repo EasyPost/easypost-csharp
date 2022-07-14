@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using EasyPost.Models.V2;
+using EasyPost.Models.API;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests

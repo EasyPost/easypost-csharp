@@ -1,8 +1,8 @@
 using System.Net.Http;
+using EasyPost._base;
 using EasyPost.ApiCompatibility;
-using EasyPost.Interfaces;
+using EasyPost.Services;
 using EasyPost.Services.Beta;
-using EasyPost.Services.V2;
 
 namespace EasyPost.Clients
 {

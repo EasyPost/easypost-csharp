@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Runtime.Serialization;
-using EasyPost.Models.Base;
+using EasyPost.Models.Shared;
 using EasyPost.Utilities;
 using RestSharp;
 

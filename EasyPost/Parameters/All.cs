@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using EasyPost.Interfaces;
+using EasyPost._base;
 
 namespace EasyPost.Parameters
 {
-    public class All : EasyPostParameters
+    public class All : ApiParameters
     {
         [Parameter(Necessity.Optional, "after_id")]
         public string? AfterId { get; set; }

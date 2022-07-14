@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Clients;
-using EasyPost.Models.V2;
+using EasyPost.Models.API;
 using EasyPost.Parameters;
-using EasyPost.Parameters.V2;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 

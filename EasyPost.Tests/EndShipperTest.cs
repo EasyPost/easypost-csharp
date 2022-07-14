@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Clients;
-using EasyPost.Models.Beta;
+using EasyPost.Models.API.Beta;
 using EasyPost.Parameters;
 using EasyPost.Parameters.Beta;
 using Xunit;

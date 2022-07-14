@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using EasyPost.Clients;
-using EasyPost.Models.V2;
+using EasyPost.Models.API;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -37,6 +37,6 @@ namespace EasyPost.Tests
             Assert.AreEqual(customsInfo, retrievedCustomsInfo);
         }
 
-        private async Task<CustomsInfo> CreateBasicCustomsInfo() => await Client.CustomsInfo.Create(new Parameters.V2.CustomsInfo.Create(Fixture.BasicCustomsInfo));
+        private async Task<CustomsInfo> CreateBasicCustomsInfo() => await Client.CustomsInfo.Create(new Parameters.CustomsInfo.Create(Fixture.BasicCustomsInfo));
     }
 }

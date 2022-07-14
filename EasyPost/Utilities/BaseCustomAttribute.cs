@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace EasyPost.Utilities
 {
-    internal abstract class BaseCustomAttribute : Attribute
+    internal abstract class BaseCustomAttribute : Attribute, IBaseCustomAttribute
     {
         /// <summary>
         ///     Get the attribute for a property.
@@ -124,5 +124,9 @@ namespace EasyPost.Utilities
         {
             return method.GetCustomAttribute<T>(true) != null;
         }
+    }
+
+    internal interface IBaseCustomAttribute
+    {
     }
 }

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost._base;
 using EasyPost.Clients;
-using EasyPost.Interfaces;
-using EasyPost.Models.Beta;
+using EasyPost.Models.API.Beta;
 using EasyPost.Parameters;
 using EasyPost.Parameters.Beta;
 

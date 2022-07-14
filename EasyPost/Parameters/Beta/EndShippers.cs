@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using EasyPost.Interfaces;
+using EasyPost._base;
 
 namespace EasyPost.Parameters.Beta
 {
     public static class EndShippers
     {
-        public class Update : EasyPostParameters
+        public class Update : ApiParameters
         {
             [Parameter(Necessity.Optional, "name")]
             public string? Name { internal get; set; }
@@ -20,7 +20,7 @@ namespace EasyPost.Parameters.Beta
             }
         }
 
-        public class Create : EasyPostParameters
+        public class Create : ApiParameters
         {
             [Parameter(Necessity.Required, "name")]
             public string? Name { internal get; set; }

@@ -100,6 +100,29 @@ namespace EasyPost.Utilities
         /// <exception cref="BaseJsonException">When the data could not be deserialized.</exception>
         internal static T ConvertJsonToObject<T>(string? data, JsonSerializerSettings? jsonSerializerSettings = null, List<string>? rootElementKeys = null)
         {
+            object obj = ConvertJsonToObject(data, typeof(T), jsonSerializerSettings, rootElementKeys);
+            if (obj is T t)
+            {
+                return t;
+            }
+
+            throw new DeserializationException($"Could not deserialize JSON data into type {typeof(T).Name}");
+        }
+
+        /// <summary>
+        ///     Deserialize a JSON string into a T-type object
+        /// </summary>
+        /// <param name="data">A string of JSON data</param>
+        /// <param name="jsonSerializerSettings">
+        ///     The <see cref="Newtonsoft.Json.JsonSerializerSettings" /> to use for
+        ///     deserialization. Defaults to <see cref="DefaultJsonSerializerSettings" /> if not provided.
+        /// </param>
+        /// <param name="rootElementKeys">List, in order, of sub-keys path to follow to deserialization starting position.</param>
+        /// <param name="type">Type of object to deserialize to</param>
+        /// <returns>A T-type object</returns>
+        /// <exception cref="BaseJsonException">When the data could not be deserialized.</exception>
+        internal static object ConvertJsonToObject(string? data, Type type, JsonSerializerSettings? jsonSerializerSettings = null, List<string>? rootElementKeys = null)
+        {
             if (rootElementKeys != null && rootElementKeys.Any())
             {
                 data = GoToRootElement(data, rootElementKeys);
@@ -112,7 +135,7 @@ namespace EasyPost.Utilities
 
             try
             {
-                var obj = JsonConvert.DeserializeObject<T>(data, jsonSerializerSettings ?? DefaultJsonSerializerSettings);
+                object? obj = JsonConvert.DeserializeObject(data, type, jsonSerializerSettings ?? DefaultJsonSerializerSettings);
                 return (obj ?? default)!;
             }
             catch (Exception)
