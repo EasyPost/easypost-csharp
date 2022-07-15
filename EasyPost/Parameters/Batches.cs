@@ -50,7 +50,7 @@ namespace EasyPost.Parameters
                 Dictionary<string, object> shipmentsDictionary = new Dictionary<string, object>
                 {
                 };
-                ShipmentIds?.Each((shipmentId, index) => { shipmentsDictionary.Add(index.ToString(), shipmentId); });
+                ShipmentIds?.Each((index, shipmentId) => { shipmentsDictionary.Add(index.ToString(), shipmentId); });
                 return new Dictionary<string, object?>
                 {
                     {

@@ -20,7 +20,7 @@ namespace EasyPost.Tests
         {
             UseVCR("buy", ApiVersion.Latest);
 
-            Order order = await CreateBasicOrder();
+            Order order = await Client.CreateBasicOrder();
 
             order = await order.Buy(new Orders.Buy
             {
@@ -42,7 +42,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create", ApiVersion.Latest);
 
-            Order order = await CreateBasicOrder();
+            Order order = await Client.CreateBasicOrder();
 
             Assert.IsInstanceOfType(order, typeof(Order));
             Assert.IsTrue(order.Id.StartsWith("order_"));
@@ -54,7 +54,7 @@ namespace EasyPost.Tests
         {
             UseVCR("get_rates", ApiVersion.Latest);
 
-            Order order = await CreateBasicOrder();
+            Order order = await Client.CreateBasicOrder();
 
             await order.GetRates(); // this does not return anything, does actually update in-place
 
@@ -72,7 +72,7 @@ namespace EasyPost.Tests
         {
             UseVCR("lowest_rate", ApiVersion.Latest);
 
-            Order order = await CreateBasicOrder();
+            Order order = await Client.CreateBasicOrder();
 
             // test lowest rate with no filters
             Rate lowestRate = order.LowestRate();
@@ -103,8 +103,7 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve", ApiVersion.Latest);
 
-            Order order = await CreateBasicOrder();
-
+            Order order = await Client.CreateBasicOrder();
 
             Order retrievedOrder = await Client.Orders.Retrieve(order.Id);
 
@@ -112,7 +111,5 @@ namespace EasyPost.Tests
             // Must compare IDs since other elements of objects may be different
             Assert.AreEqual(order.Id, retrievedOrder.Id);
         }
-
-        private async Task<Order> CreateBasicOrder() => await Client.Orders.Create(new Orders.Create(Fixture.BasicOrder));
     }
 }

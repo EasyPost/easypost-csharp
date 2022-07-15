@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using EasyPost._base;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
+using EasyPost.Models.API.Beta;
 
 namespace EasyPost.Parameters.Beta
 {
@@ -11,9 +12,9 @@ namespace EasyPost.Parameters.Beta
         {
             #region Request Parameters
 
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "name")]
-            public string? Name { internal get; set; } = null;
+            [ApiCompatibility(ApiVersion.Beta)]
+            [RequestParameter(Necessity.Required, "address")]
+            public EndShipper? EndShipper { internal get; set; }
 
             #endregion
 
@@ -31,9 +32,9 @@ namespace EasyPost.Parameters.Beta
         {
             #region Request Parameters
 
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Required, "name")]
-            public string? Name { internal get; set; } = string.Empty;
+            [ApiCompatibility(ApiVersion.Beta)]
+            [RequestParameter(Necessity.Required, "address")]
+            public EndShipper? EndShipper { internal get; set; }
 
             #endregion
 

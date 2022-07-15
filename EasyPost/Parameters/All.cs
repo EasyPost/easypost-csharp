@@ -9,21 +9,21 @@ namespace EasyPost.Parameters
     {
         #region Request Parameters
 
-        [ApiCompatibility(ApiVersion.Latest)]
+        [ApiCompatibility(ApiVersion.Latest, ApiVersion.Beta)]
         [RequestParameter(Necessity.Optional, "after_id")]
-        public string? AfterId { internal get; set; } = null;
-        [ApiCompatibility(ApiVersion.Latest)]
+        public string? AfterId { internal get; set; }
+        [ApiCompatibility(ApiVersion.Latest, ApiVersion.Beta)]
         [RequestParameter(Necessity.Optional, "before_id")]
-        public string? BeforeId { internal get; set; } = null;
-        [ApiCompatibility(ApiVersion.Latest)]
+        public string? BeforeId { internal get; set; }
+        [ApiCompatibility(ApiVersion.Latest, ApiVersion.Beta)]
         [RequestParameter(Necessity.Optional, "end_datetime")]
-        public string? EndDatetime { internal get; set; } = null;
-        [ApiCompatibility(ApiVersion.Latest)]
+        public string? EndDatetime { internal get; set; }
+        [ApiCompatibility(ApiVersion.Latest, ApiVersion.Beta)]
         [RequestParameter(Necessity.Optional, "page_size")]
-        public int? PageSize { internal get; set; } = null;
-        [ApiCompatibility(ApiVersion.Latest)]
+        public int? PageSize { internal get; set; }
+        [ApiCompatibility(ApiVersion.Latest, ApiVersion.Beta)]
         [RequestParameter(Necessity.Optional, "start_datetime")]
-        public string? StartDatetime { internal get; set; } = null;
+        public string? StartDatetime { internal get; set; }
 
         #endregion
 

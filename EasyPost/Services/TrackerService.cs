@@ -60,7 +60,7 @@ namespace EasyPost.Services
         /// <param name="parameters">A dictionary of tracking codes and carriers</param>
         /// <returns>True</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<bool> CreateList(Trackers.Create parameters)
+        public async Task<bool> CreateList(Trackers.CreateList parameters)
         {
             return await CreateBlind("trackers/create_list", parameters);
         }

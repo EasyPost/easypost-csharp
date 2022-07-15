@@ -41,7 +41,7 @@ namespace EasyPost.Tests
         {
             UseVCR("api_keys", ApiVersion.Latest);
 
-            User user = await RetrieveMe();
+            User user = await Client.RetrieveMe();
 
             // API keys will be censored, so we'll just check for the existence of the `children` element
             List<User> children = user.Children;
@@ -78,7 +78,7 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve", ApiVersion.Latest);
 
-            User authenticatedUser = await RetrieveMe();
+            User authenticatedUser = await Client.RetrieveMe();
 
             string id = authenticatedUser.Id;
 
@@ -95,7 +95,7 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve_me", ApiVersion.Latest);
 
-            User user = await RetrieveMe();
+            User user = await Client.RetrieveMe();
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.Id.StartsWith("user_"));
@@ -108,15 +108,12 @@ namespace EasyPost.Tests
 
             User user = await CreateUser();
 
-            string testName = "New Name";
+            const string testName = "New Name";
 
-            Dictionary<string, object> userDict = new Dictionary<string, object>()
+            user = await user.Update(new Users.Update
             {
-                {
-                    "name", testName
-                }
-            };
-            user = await user.Update(new Users.Update(userDict));
+                Name = testName
+            });
 
             Assert.IsInstanceOfType(user, typeof(User));
             Assert.IsTrue(user.Id.StartsWith("user_"));
@@ -145,17 +142,14 @@ namespace EasyPost.Tests
 
         private async Task<User> CreateUser()
         {
-            User user = await Client.Users.Create(new Users.Create(new Dictionary<string, object>
+            User user = await Client.Users.Create(new Users.Create
             {
-                {
-                    "name", "Test User"
-                }
-            }));
+                Name = "Test User"
+            });
+
             CleanUpAfterTest(user.Id);
 
             return user;
         }
-
-        private async Task<User> RetrieveMe() => await Client.Users.RetrieveMe();
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
@@ -49,9 +48,9 @@ namespace EasyPost.Models.API
         [JsonProperty("state_tax_id")]
         public string? StateTaxId { get; set; }
         [JsonProperty("verify")]
-        public List<string>? ToVerify { get; set; }
+        public bool ToVerify { get; set; }
         [JsonProperty("verify_strict")]
-        public List<string>? ToVerifyStrict { get; set; }
+        public bool ToVerifyStrict { get; set; }
         [JsonProperty("verifications")]
         public Verifications? Verifications { get; set; }
 

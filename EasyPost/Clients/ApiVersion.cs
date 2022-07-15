@@ -25,11 +25,14 @@ namespace EasyPost.Clients
         private static readonly List<ApiVersionDetails> ApiVersionDetailsList = new List<ApiVersionDetails>
         {
             {
+                new ApiVersionDetails(ApiVersion.Beta, "beta", 0, "Beta")
+            },
+            {
                 new ApiVersionDetails(ApiVersion.V2, "v2", 2, "V2")
             },
             {
                 new ApiVersionDetails(ApiVersion.Latest, "v2", 2, "Latest")
-            }
+            },
         };
         internal ApiVersion ApiVersionEnum { get; }
 

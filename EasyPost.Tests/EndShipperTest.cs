@@ -37,7 +37,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create", ApiVersion.Beta);
 
-            EndShipper endShipper = await CreateBasicEndShipper();
+            EndShipper endShipper = await Client.CreateBasicEndShipper();
 
             Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
             Assert.IsTrue(endShipper.Id.StartsWith("es_"));
@@ -49,7 +49,7 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve", ApiVersion.Beta);
 
-            EndShipper endShipper = await CreateBasicEndShipper();
+            EndShipper endShipper = await Client.CreateBasicEndShipper();
 
             EndShipper retrievedEndShipper = await Client.EndShippers.Retrieve(endShipper.Id);
 
@@ -62,20 +62,19 @@ namespace EasyPost.Tests
         {
             UseVCR("update", ApiVersion.Beta);
 
-            EndShipper endShipper = await CreateBasicEndShipper();
+            EndShipper endShipper = await Client.CreateBasicEndShipper();
 
-            string testName = "NEW NAME";
+            const string testName = "NEW NAME";
+            endShipper.Name = testName;
 
-            Dictionary<string, object> endShipperData = Fixture.EndShipperAddress;
-            endShipperData["name"] = testName;
-
-            endShipper = await endShipper.Update(new EndShippers.Update(endShipperData));
+            endShipper = await endShipper.Update(new EndShippers.Update
+            {
+                EndShipper = endShipper
+            });
 
             Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
             Assert.IsTrue(endShipper.Id.StartsWith("es_"));
             Assert.AreEqual(testName, endShipper.Name);
         }
-
-        private async Task<EndShipper> CreateBasicEndShipper() => await Client.EndShippers.Create(new EndShippers.Create(Fixture.EndShipperAddress));
     }
 }

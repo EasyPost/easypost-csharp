@@ -64,7 +64,7 @@ namespace EasyPost.Tests
         {
             UseVCR("buy", ApiVersion.Latest);
 
-            Batch batch = await CreateOneCallBuyBatch();
+            Batch batch = await Client.CreateOneCallBuyBatch();
 
             batch = await batch.Buy();
 
@@ -77,7 +77,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create", ApiVersion.Latest);
 
-            Batch batch = await CreateBasicBatch();
+            Batch batch = await Client.CreateBasicBatch();
 
             Assert.IsInstanceOfType(batch, typeof(Batch));
             Assert.IsTrue(batch.Id.StartsWith("batch_"));
@@ -110,7 +110,7 @@ namespace EasyPost.Tests
             UseVCR("create_scan_form", ApiVersion.Latest);
 
 
-            Batch batch = await CreateOneCallBuyBatch();
+            Batch batch = await Client.CreateOneCallBuyBatch();
 
             batch = await batch.Buy();
 
@@ -133,7 +133,7 @@ namespace EasyPost.Tests
         {
             UseVCR("label", ApiVersion.Latest);
 
-            Batch batch = await CreateOneCallBuyBatch();
+            Batch batch = await Client.CreateOneCallBuyBatch();
 
             batch = await batch.Buy();
 
@@ -156,7 +156,7 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve", ApiVersion.Latest);
 
-            Batch batch = await CreateBasicBatch();
+            Batch batch = await Client.CreateBasicBatch();
 
             Batch retrievedBatch = await Client.Batches.Retrieve(batch.Id);
 
@@ -164,27 +164,5 @@ namespace EasyPost.Tests
             // Must compare IDs since elements of batch (i.e. status) may be different
             Assert.AreEqual(batch.Id, retrievedBatch.Id);
         }
-
-        private async Task<Batch> CreateBasicBatch() =>
-            await Client.Batches.Create(new Batches.Create(new Dictionary<string, object>
-            {
-                {
-                    "shipments", new List<Dictionary<string, object>>
-                    {
-                        Fixture.BasicShipment
-                    }
-                }
-            }));
-
-        private async Task<Batch> CreateOneCallBuyBatch() =>
-            await Client.Batches.Create(new Batches.Create(new Dictionary<string, object>
-            {
-                {
-                    "shipments", new List<Dictionary<string, object>>
-                    {
-                        Fixture.OneCallBuyShipment
-                    }
-                }
-            }));
     }
 }

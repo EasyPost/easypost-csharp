@@ -39,7 +39,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create", ApiVersion.Latest);
 
-            Address address = await CreateBasicAddress();
+            Address address = await Client.CreateBasicAddress();
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.Id.StartsWith("adr_"));
@@ -51,13 +51,13 @@ namespace EasyPost.Tests
         {
             UseVCR("create_and_verify", ApiVersion.Latest);
 
-            Dictionary<string, object> addressData = Fixture.BasicAddress;
-            addressData.Add("verify_strict", new List<bool>
-            {
-                true
-            });
+            Address addressData = Fixture.BasicAddress;
+            addressData.ToVerifyStrict = true;
 
-            Address address = await Client.Addresses.CreateAndVerify(new Addresses.Create(addressData));
+            Address address = await Client.Addresses.CreateAndVerify(new Addresses.Create
+            {
+                // Address = addressData
+            });
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.Id.StartsWith("adr_"));
@@ -69,7 +69,11 @@ namespace EasyPost.Tests
         {
             UseVCR("create_verify", ApiVersion.Latest);
 
-            Address address = await Client.Addresses.Create(new Addresses.Create(Fixture.IncorrectAddressToVerify));
+            Address addressData = Fixture.IncorrectAddressToVerify;
+            Address address = await Client.Addresses.Create(new Addresses.Create
+            {
+                // Address = addressData
+            });
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.Id.StartsWith("adr_"));
@@ -81,13 +85,13 @@ namespace EasyPost.Tests
         {
             UseVCR("create_verify_strict", ApiVersion.Latest);
 
-            Dictionary<string, object> addressData = Fixture.BasicAddress;
-            addressData.Add("verify_strict", new List<bool>
-            {
-                true
-            });
+            Address addressData = Fixture.BasicAddress;
+            addressData.ToVerifyStrict = true;
 
-            Address address = await Client.Addresses.Create(new Addresses.Create(addressData));
+            Address address = await Client.Addresses.Create(new Addresses.Create
+            {
+                // Address = addressData
+            });
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.Id.StartsWith("adr_"));
@@ -100,8 +104,7 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve", ApiVersion.Latest);
 
-
-            Address address = await Client.Addresses.Create(new Addresses.Create(Fixture.BasicAddress));
+            Address address = await Client.CreateBasicAddress();
 
             Address retrievedAddress = await Client.Addresses.Retrieve(address.Id);
 
@@ -114,8 +117,7 @@ namespace EasyPost.Tests
         {
             UseVCR("verify", ApiVersion.Latest);
 
-
-            Address address = await CreateBasicAddress();
+            Address address = await Client.CreateBasicAddress();
 
             address = await address.Verify();
 
@@ -123,12 +125,5 @@ namespace EasyPost.Tests
             Assert.IsTrue(address.Id.StartsWith("adr_"));
             Assert.AreEqual("388 TOWNSEND ST APT 20", address.Street1);
         }
-
-        private async Task<Address> CreateBasicAddress() => await Client.Addresses.Create(new Addresses.Create(new Dictionary<string, object>
-        {
-            {
-                "address", Fixture.BasicAddress
-            }
-        }));
     }
 }

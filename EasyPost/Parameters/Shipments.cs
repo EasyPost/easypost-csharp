@@ -87,7 +87,7 @@ namespace EasyPost.Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "insurance")]
-            public string? InsuranceValue { internal get; set; } = null;
+            public string? InsuranceValue { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "rate", "id")]

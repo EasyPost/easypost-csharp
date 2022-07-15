@@ -13,11 +13,11 @@ namespace EasyPost.Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "url")]
-            public string? Url { internal get; set; } = null;
+            public string? Url { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "webhook_secret")]
-            public string? Secret { internal get; set; } = null;
+            public string? Secret { internal get; set; }
 
             #endregion
 
@@ -41,7 +41,7 @@ namespace EasyPost.Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "webhook_secret")]
-            public string? Secret { internal get; set; } = null;
+            public string? Secret { internal get; set; }
 
             #endregion
 

@@ -39,7 +39,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create", ApiVersion.Latest);
 
-            List<Refund> refunds = await CreateBasicRefund();
+            List<Refund> refunds = await Client.CreateBasicRefund();
 
             foreach (Refund item in refunds)
             {
@@ -61,27 +61,12 @@ namespace EasyPost.Tests
                 PageSize = Fixture.PageSize
             });
 
-            Refund refund = (await CreateBasicRefund())[0];
+            Refund refund = (await Client.CreateBasicRefund())[0];
 
             Refund retrievedRefund = await Client.Refunds.Retrieve(refund.Id);
 
             Assert.IsInstanceOfType(retrievedRefund, typeof(Refund));
             Assert.AreEqual(refund, retrievedRefund);
-        }
-
-        private async Task<List<Refund>> CreateBasicRefund()
-        {
-            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(Fixture.OneCallBuyShipment));
-            Shipment retrievedShipment = await Client.Shipments.Retrieve(shipment.Id); // We need to retrieve the shipment so that the tracking_code has time to populate
-
-            return await Client.Refunds.Create(new Refunds.Create
-            {
-                Refund = new Refund
-                {
-                    Carrier = Fixture.Usps,
-                    TrackingCode = retrievedShipment.TrackingCode
-                }
-            });
         }
     }
 }

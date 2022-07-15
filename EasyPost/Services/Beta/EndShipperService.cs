@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Models.API.Beta;
 using EasyPost.Parameters;
@@ -30,6 +31,7 @@ namespace EasyPost.Services.Beta
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>A list of EasyPost.EndShipper instances.</returns>
+        [ApiCompatibility(ApiVersion.Beta)]
         public async Task<List<EndShipper>> All(All? parameters = null) => await List<List<EndShipper>>("end_shippers", parameters);
 
         /// <summary>
@@ -52,6 +54,7 @@ namespace EasyPost.Services.Beta
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.EndShipper instance.</returns>
+        [ApiCompatibility(ApiVersion.Beta)]
         public async Task<EndShipper> Create(EndShippers.Create? parameters = null)
         {
             return await Create<EndShipper>("end_shippers", parameters);
@@ -62,6 +65,7 @@ namespace EasyPost.Services.Beta
         /// </summary>
         /// <param name="id">String representing an EndShipper. Starts with "es_".</param>
         /// <returns>EasyPost.EndShipper instance.</returns>
+        [ApiCompatibility(ApiVersion.Beta)]
         public async Task<EndShipper> Retrieve(string id) => await Get<EndShipper>($"end_shippers/{id}");
     }
 }

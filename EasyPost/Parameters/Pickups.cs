@@ -15,6 +15,10 @@ namespace EasyPost.Parameters
             [RequestParameter(Necessity.Required, "pickup")]
             public Models.API.Pickup? Pickup { internal get; set; }
 
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Required, "pickup", "shipment")]
+            public Models.API.Shipment? Shipment { internal get; set; }
+
             #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)

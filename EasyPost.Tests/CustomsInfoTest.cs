@@ -17,7 +17,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create", ApiVersion.Latest);
 
-            CustomsInfo customsInfo = await CreateBasicCustomsInfo();
+            CustomsInfo customsInfo = await Client.CreateBasicCustomsInfo();
 
             Assert.IsInstanceOfType(customsInfo, typeof(CustomsInfo));
             Assert.IsTrue(customsInfo.Id.StartsWith("cstinfo_"));
@@ -29,14 +29,12 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve", ApiVersion.Latest);
 
-            CustomsInfo customsInfo = await CreateBasicCustomsInfo();
+            CustomsInfo customsInfo = await Client.CreateBasicCustomsInfo();
 
             CustomsInfo retrievedCustomsInfo = await Client.CustomsInfo.Retrieve(customsInfo.Id);
 
             Assert.IsInstanceOfType(retrievedCustomsInfo, typeof(CustomsInfo));
             Assert.AreEqual(customsInfo, retrievedCustomsInfo);
         }
-
-        private async Task<CustomsInfo> CreateBasicCustomsInfo() => await Client.CustomsInfo.Create(new Parameters.CustomsInfo.Create(Fixture.BasicCustomsInfo));
     }
 }

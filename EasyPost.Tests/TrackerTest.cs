@@ -39,7 +39,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create", ApiVersion.Latest);
 
-            Tracker tracker = await CreateBasicTracker();
+            Tracker tracker = await Client.CreateBasicTracker();
 
             Assert.IsInstanceOfType(tracker, typeof(Tracker));
             Assert.IsTrue(tracker.Id.StartsWith("trk_"));
@@ -51,33 +51,24 @@ namespace EasyPost.Tests
         {
             UseVCR("create_list", ApiVersion.Latest);
 
-            bool success = await Client.Trackers.CreateList(new Trackers.Create(new Dictionary<string, object>
+            bool success = await Client.Trackers.CreateList(new Trackers.CreateList
             {
+                Trackers = new List<Tracker>
                 {
-                    "0", new Dictionary<string, object>
+                    new Tracker
                     {
-                        {
-                            "tracking_code", "EZ1000000001"
-                        }
-                    }
-                },
-                {
-                    "1", new Dictionary<string, object>
+                        TrackingCode = "EZ1000000001"
+                    },
+                    new Tracker
                     {
-                        {
-                            "tracking_code", "EZ1000000002"
-                        }
-                    }
-                },
-                {
-                    "2", new Dictionary<string, object>
+                        TrackingCode = "EZ1000000002"
+                    },
+                    new Tracker
                     {
-                        {
-                            "tracking_code", "EZ1000000003"
-                        }
+                        TrackingCode = "EZ1000000003"
                     }
                 }
-            }));
+            });
 
             // This endpoint returns nothing so we assert the function returns true
             Assert.IsTrue(success);
@@ -89,7 +80,7 @@ namespace EasyPost.Tests
             UseVCR("retrieve", ApiVersion.Latest);
 
             // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
-            Tracker tracker = await CreateBasicTracker();
+            Tracker tracker = await Client.CreateBasicTracker();
 
             Tracker retrievedTracker = await Client.Trackers.Retrieve(tracker.Id);
 
@@ -97,11 +88,5 @@ namespace EasyPost.Tests
             // Must compare IDs because other elements of objects may be different
             Assert.AreEqual(tracker.Id, retrievedTracker.Id);
         }
-
-        private async Task<Tracker> CreateBasicTracker() => await Client.Trackers.Create(new Trackers.Create
-        {
-            Carrier = Fixture.Usps,
-            TrackingCode = "EZ1000000001"
-        });
     }
 }

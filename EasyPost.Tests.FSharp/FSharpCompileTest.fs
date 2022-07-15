@@ -3,7 +3,7 @@
 
 namespace EasyPost.Tests.FSharp
 
-open EasyPost
+open EasyPost.Models.API
 open Xunit
 
 type FSharpCompileTest() =

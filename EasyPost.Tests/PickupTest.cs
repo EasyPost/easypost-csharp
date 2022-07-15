@@ -20,7 +20,7 @@ namespace EasyPost.Tests
         {
             UseVCR("buy", ApiVersion.Latest);
 
-            Pickup pickup = await CreateBasicPickup();
+            Pickup pickup = await Client.CreateBasicPickup();
 
             pickup = await pickup.Buy(new Pickups.Buy
             {
@@ -39,7 +39,7 @@ namespace EasyPost.Tests
         {
             UseVCR("cancel", ApiVersion.Latest);
 
-            Pickup pickup = await CreateBasicPickup();
+            Pickup pickup = await Client.CreateBasicPickup();
 
             pickup = await pickup.Buy(new Pickups.Buy
             {
@@ -59,7 +59,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create", ApiVersion.Latest);
 
-            Pickup pickup = await CreateBasicPickup();
+            Pickup pickup = await Client.CreateBasicPickup();
 
             Assert.IsInstanceOfType(pickup, typeof(Pickup));
             Assert.IsTrue(pickup.Id.StartsWith("pickup_"));
@@ -71,7 +71,7 @@ namespace EasyPost.Tests
         {
             UseVCR("lowest_rate", ApiVersion.Latest);
 
-            Pickup pickup = await CreateBasicPickup();
+            Pickup pickup = await Client.CreateBasicPickup();
 
             // test lowest rate with no filters
             Rate lowestRate = pickup.LowestRate();
@@ -99,20 +99,12 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve", ApiVersion.Latest);
 
-            Pickup pickup = await CreateBasicPickup();
+            Pickup pickup = await Client.CreateBasicPickup();
 
             Pickup retrievedPickup = await Client.Pickups.Retrieve(pickup.Id);
 
             Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
             Assert.AreEqual(pickup, retrievedPickup);
-        }
-
-        private async Task<Pickup> CreateBasicPickup()
-        {
-            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(Fixture.OneCallBuyShipment));
-            Dictionary<string, object> pickupData = Fixture.BasicPickup;
-            pickupData["shipment"] = shipment;
-            return await Client.Pickups.Create(new Pickups.Create(pickupData));
         }
     }
 }

@@ -97,15 +97,13 @@ namespace EasyPost.Tests
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
-            string testDescription = "my custom description";
+            const string testDescription = "my custom description";
+            carrierAccount.Description = testDescription;
 
-            Dictionary<string, object> carrierAccountData = new Dictionary<string, object>()
+            carrierAccount = await carrierAccount.Update(new CarrierAccounts.Update
             {
-                {
-                    "description", testDescription
-                }
-            };
-            carrierAccount = await carrierAccount.Update(new CarrierAccounts.Update(carrierAccountData));
+                CarrierAccount = carrierAccount
+            });
 
             Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
             Assert.IsTrue(carrierAccount.Id.StartsWith("ca_"));
@@ -114,7 +112,10 @@ namespace EasyPost.Tests
 
         private async Task<CarrierAccount> CreateBasicCarrierAccount()
         {
-            CarrierAccount carrierAccount = await Client.CarrierAccounts.Create(new CarrierAccounts.Create(Fixture.BasicCarrierAccount));
+            CarrierAccount carrierAccount = await Client.CarrierAccounts.Create(new CarrierAccounts.Create
+            {
+                CarrierAccount = Fixture.BasicCarrierAccount
+            });
             CleanUpAfterTest(carrierAccount.Id);
 
             return carrierAccount;

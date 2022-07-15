@@ -39,7 +39,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create", ApiVersion.Latest);
 
-            ScanForm scanForm = await GetBasicScanForm();
+            ScanForm scanForm = await Client.GetBasicScanForm();
 
             Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
             Assert.IsTrue(scanForm.Id.StartsWith("sf_"));
@@ -50,21 +50,12 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve", ApiVersion.Latest);
 
-            ScanForm scanForm = await GetBasicScanForm();
+            ScanForm scanForm = await Client.GetBasicScanForm();
 
             ScanForm retrievedScanForm = await Client.ScanForms.Retrieve(scanForm.Id);
 
             Assert.IsInstanceOfType(retrievedScanForm, typeof(ScanForm));
             Assert.AreEqual(scanForm, retrievedScanForm);
-        }
-
-        private async Task<ScanForm> GetBasicScanForm()
-        {
-            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(Fixture.OneCallBuyShipment));
-            return await Client.ScanForms.Create(new List<Shipment>
-            {
-                shipment
-            });
         }
     }
 }

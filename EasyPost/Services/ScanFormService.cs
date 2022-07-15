@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.ApiCompatibility;
@@ -45,12 +44,8 @@ namespace EasyPost.Services
         /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<ScanForm> Create(List<Shipment> shipments)
+        public async Task<ScanForm> Create(ScanForms.Create parameters)
         {
-            var parameters = new ScanForms.Create
-            {
-                Shipments = shipments
-            };
             return await Create<ScanForm>("scan_forms", parameters);
         }
 

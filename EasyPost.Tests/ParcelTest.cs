@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using EasyPost.Clients;
 using EasyPost.Models.API;
-using EasyPost.Parameters;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -18,7 +17,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create", ApiVersion.Latest);
 
-            Parcel parcel = await CreateBasicParcel();
+            Parcel parcel = await Client.CreateBasicParcel();
 
             Assert.IsInstanceOfType(parcel, typeof(Parcel));
             Assert.IsTrue(parcel.Id.StartsWith("prcl_"));
@@ -30,14 +29,12 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve", ApiVersion.Latest);
 
-            Parcel parcel = await CreateBasicParcel();
+            Parcel parcel = await Client.CreateBasicParcel();
 
             Parcel retrievedParcel = await Client.Parcels.Retrieve(parcel.Id);
 
             Assert.IsInstanceOfType(retrievedParcel, typeof(Parcel));
             Assert.AreEqual(parcel, retrievedParcel);
         }
-
-        private async Task<Parcel> CreateBasicParcel() => await Client.Parcels.Create(new Parcels.Create(Fixture.BasicParcel));
     }
 }
