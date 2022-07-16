@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using EasyPost._base;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
+using EasyPost.Models.API;
 
 namespace EasyPost.Parameters
 {
@@ -12,22 +13,29 @@ namespace EasyPost.Parameters
             #region Request Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Required, "order")]
-            public Models.API.Order? Order { internal get; set; }
+            [RequestParameter(Necessity.Optional, "order", "reference")]
+            public string? Reference { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Required, "order", "carrier_accounts")]
-            public List<Models.API.CarrierAccount>? CarrierAccounts { internal get; set; }
+            [RequestParameter(Necessity.Optional, "order", "to_address")]
+            public Address? ToAddress { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "order", "from_address")]
+            public Address? FromAddress { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "order", "shipments")]
+            public List<Shipment>? Shipments { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "order", "carrier_accounts")]
+            public List<CarrierAccount>? CarrierAccounts { internal get; set; }
 
             #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
-            }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
             }
         }
 
@@ -47,11 +55,6 @@ namespace EasyPost.Parameters
 
             public Buy(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
-            }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
             }
         }
     }

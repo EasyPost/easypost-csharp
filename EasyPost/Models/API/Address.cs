@@ -3,7 +3,6 @@ using EasyPost._base;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
 using EasyPost.Exceptions;
-using EasyPost.Parameters;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -61,14 +60,14 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Address> Verify(Addresses.Verify? parameters = null)
+        public async Task<Address> Verify()
         {
             if (Id == null)
             {
                 throw new PropertyMissingException("id");
             }
 
-            return await Update<Address>(Method.Get, $"addresses/{Id}/verify", parameters, "address");
+            return await Update<Address>(Method.Get, $"addresses/{Id}/verify", null, "address");
         }
     }
 }

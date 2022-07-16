@@ -40,11 +40,10 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Refresh this Insurance.
         /// </summary>
-        /// <param name="parameters">Optional dictionary of parameters to use when refreshing this insurance.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Insurance> Refresh(Parameters.Insurance.Refresh? parameters = null)
+        public async Task<Insurance> Refresh()
         {
-            return await Update<Insurance>(Method.Patch, $"insurances/{Id}", parameters);
+            return await Update<Insurance>(Method.Patch, $"insurances/{Id}");
         }
     }
 }

@@ -140,7 +140,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Shipment> Insure(double amount)
+        public async Task<Shipment> Insure(decimal amount)
         {
             if (Id == null)
             {
@@ -215,6 +215,23 @@ namespace EasyPost.Models.API
 
             Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{Id}/rerate", parameters);
             Rates = shipment.Rates;
+        }
+
+        /// <summary>
+        ///     Return this shipment.
+        /// </summary>
+        /// <returns>A return shipment.</returns>
+        /// <exception cref="ServerLocalObjectMismatchException">Object was not pulled from the server.</exception>
+        [ApiCompatibility(ApiVersion.Latest)]
+        public async Task<Shipment> Return()
+        {
+            if (Id == null)
+            {
+                // This is a local object, not one pulled from the server.
+                throw new PropertyMissingException("id");
+            }
+
+            return await Client!.Shipments.CreateReturn(this);
         }
     }
 }

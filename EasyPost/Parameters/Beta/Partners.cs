@@ -10,11 +10,6 @@ namespace EasyPost.Parameters.Beta
             public CreateReferral(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
             }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
-            }
         }
     }
 }

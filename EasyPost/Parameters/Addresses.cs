@@ -60,50 +60,33 @@ namespace EasyPost.Parameters
             public string? Email { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "address", "street2")]
+            [RequestParameter(Necessity.Optional, "address", "residential")]
             public bool? Residential { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "verify_strict")]
-            public bool? ToStrictVerify { internal get; set; }
+            [RequestParameter(Necessity.Optional, "address", "carrier_facility")]
+            public string? CarrierFacility { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "address", "federal_tax_id")]
+            public string? FederalTaxId { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "address", "state_tax_id")]
+            public string? StateTaxId { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "verify")]
             public bool? ToVerify { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "verify_strict")]
+            public bool? ToStrictVerify { internal get; set; }
 
             #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
-            }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
-            }
-        }
-
-        public sealed class Verify : RequestParameters
-        {
-            #region Request Parameters
-
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "verify_strict")]
-            public bool? ToStrictVerify { internal get; set; }
-
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "verify")]
-            public bool? ToVerify { internal get; set; }
-
-            #endregion
-
-            public Verify(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
-            {
-            }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
             }
         }
     }

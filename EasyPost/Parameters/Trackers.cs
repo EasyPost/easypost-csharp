@@ -31,21 +31,16 @@ namespace EasyPost.Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "options", "is_return")]
-            public bool IsReturn { internal get; set; }
+            public bool? IsReturn { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "options", "full_test_tracker")]
-            public bool FullTestTracker { internal get; set; }
+            public bool? FullTestTracker { internal get; set; }
 
             #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
-            }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
             }
         }
 
@@ -63,7 +58,7 @@ namespace EasyPost.Parameters
             {
             }
 
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
+            internal new Dictionary<string, object?>? ToDictionary(EasyPostClient client)
             {
                 // TODO: This custom overload does not check for API compatibility.
 
@@ -78,6 +73,25 @@ namespace EasyPost.Parameters
                         "trackers", trackersDictionary
                     }
                 };
+            }
+        }
+
+        public sealed class All : Parameters.All
+        {
+            #region Request Parameters
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "tracking_code")]
+            public string? TrackingCode { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "carrier")]
+            public string? Carrier { internal get; set; }
+
+            #endregion
+
+            public All(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
+            {
             }
         }
     }

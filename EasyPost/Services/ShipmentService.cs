@@ -4,6 +4,7 @@ using EasyPost._base;
 using EasyPost.ApiCompatibility;
 using EasyPost.Calculation;
 using EasyPost.Clients;
+using EasyPost.Exceptions;
 using EasyPost.Models.API;
 using EasyPost.Parameters;
 
@@ -64,6 +65,29 @@ namespace EasyPost.Services
         public async Task<Shipment> Create(Shipments.Create parameters)
         {
             return await Create<Shipment>("shipments", parameters);
+        }
+
+        /// <summary>
+        ///     Create a return shipment for a shipment.
+        /// </summary>
+        /// <param name="shipment">Shipment to return.</param>
+        /// <returns>A return shipment.</returns>
+        /// <exception cref="PropertyMissingException">Required properties of the object are missing.</exception>
+        [ApiCompatibility(ApiVersion.Latest)]
+        public async Task<Shipment> CreateReturn(Shipment shipment)
+        {
+            if (shipment.Id == null)
+            {
+                throw new PropertyMissingException("id");
+            }
+
+            return await Create(new Shipments.Create
+            {
+                ToAddress = shipment.FromAddress,
+                FromAddress = shipment.ToAddress,
+                Parcel = shipment.Parcel,
+                IsReturn = true
+            });
         }
 
         /// <summary>

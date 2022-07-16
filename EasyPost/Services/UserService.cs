@@ -23,7 +23,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<User> Create(Users.Create parameters)
+        public async Task<User> CreateChild(Users.Create parameters)
         {
             return await Create<User>("users", parameters);
         }

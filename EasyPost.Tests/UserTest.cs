@@ -142,7 +142,7 @@ namespace EasyPost.Tests
 
         private async Task<User> CreateUser()
         {
-            User user = await Client.Users.Create(new Users.Create
+            User user = await Client.Users.CreateChild(new Users.Create
             {
                 Name = "Test User"
             });

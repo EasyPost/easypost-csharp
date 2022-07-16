@@ -24,32 +24,39 @@ namespace EasyPost._base
             }
         }
 
-        internal abstract Dictionary<string, object?>? ToDictionary(EasyPostClient client);
-
-        protected static Dictionary<string, object?>? ToDictionary(RequestParameters obj, EasyPostClient client)
+        /// <summary>
+        ///     Convert the parameters to a dictionary for an HTTP request.
+        /// </summary>
+        /// <param name="client">Client that will be making this HTTP request. Needed to check API compatibility.</param>
+        /// <returns>Dictionary of parameters.</returns>
+        internal Dictionary<string, object?>? ToDictionary(EasyPostClient client)
         {
             // Construct the dictionary of all parameters for this API version
-            RegisterParameters(obj, client);
+            RegisterParameters(client);
             // Verify that all required parameters are set in the dictionary
-            VerifyParameters(obj);
-            return obj._parameterDictionary;
+            VerifyParameters();
+            return this._parameterDictionary;
         }
 
-        private static void Add(RequestParameterAttribute requestParameterAttribute, RequestParameters obj, object? value)
+        /// <summary>
+        ///     Add a parameter to the dictionary.
+        /// </summary>
+        /// <param name="requestParameterAttribute">Attribute of parameter.</param>
+        /// <param name="value">Value of parameter.</param>
+        private void Add(RequestParameterAttribute requestParameterAttribute, object? value)
         {
             // If a given property is an EasyPostObject, the JsonProperty attributes will serialize the object as a dictionary (later, during RestRequest)
             // Otherwise, simply add the primitive value to the dictionary.
-            obj._parameterDictionary = UpdateDictionary(obj._parameterDictionary, requestParameterAttribute.JsonPath, value);
+            this._parameterDictionary = UpdateDictionary(this._parameterDictionary, requestParameterAttribute.JsonPath, value);
         }
 
         /// <summary>
         ///     Build a dictionary from the parameters.
         /// </summary>
-        /// <param name="obj">Parameters collection to construct a dictionary from.</param>
         /// <param name="client">EasyPost client being used for the request these parameters are for.</param>
-        private static void RegisterParameters(RequestParameters obj, EasyPostClient client)
+        private void RegisterParameters(EasyPostClient client)
         {
-            PropertyInfo[] properties = obj.GetType().GetProperties();
+            PropertyInfo[] properties = this.GetType().GetProperties();
             foreach (var property in properties)
             {
                 RequestParameterAttribute? parameterAttribute = BaseCustomAttribute.GetCustomAttribute<RequestParameterAttribute>(property);
@@ -59,23 +66,53 @@ namespace EasyPost._base
                     continue;
                 }
 
-                if (!ApiCompatibilityAttribute.CheckParameterCompatible(property.Name, obj.GetType(), client))
+                if (!ApiCompatibilityAttribute.CheckParameterCompatible(property.Name, this.GetType(), client))
                 {
                     // Ignore any parameters that are not compatible with this API version
                     continue;
                 }
 
-                object? value = property.GetValue(obj);
+                object? value = property.GetValue(this);
                 if (value == null && parameterAttribute.Necessity == Necessity.Optional)
                 {
                     // Ignore any optional parameters that are null
                     continue;
                 }
 
-                Add(parameterAttribute, obj, value);
+                Add(parameterAttribute, value);
             }
         }
 
+        /// <summary>
+        ///     Check that all required parameters are set.
+        /// </summary>
+        /// <exception cref="MissingRequiredParameterException">If a required parameter is missing.</exception>
+        private void VerifyParameters()
+        {
+            PropertyInfo[] properties = this.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                RequestParameterAttribute? parameterAttribute = BaseCustomAttribute.GetCustomAttribute<RequestParameterAttribute>(property);
+                if (parameterAttribute == null)
+                {
+                    continue;
+                }
+
+                if (parameterAttribute.Necessity == Necessity.Required && !ValueExistsInDictionary(this._parameterDictionary, parameterAttribute.JsonPath))
+                {
+                    throw new MissingRequiredParameterException(property);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Update a dictionary with a new value.
+        /// </summary>
+        /// <param name="dictionary">Dictionary to update.</param>
+        /// <param name="keys">Path of new value to add.</param>
+        /// <param name="value">New value to add.</param>
+        /// <returns>Updated dictionary.</returns>
+        /// <exception cref="Exception">Could not add value to dictionary.</exception>
         private static Dictionary<string, object?> UpdateDictionary(Dictionary<string, object?>? dictionary, string[] keys, object? value)
         {
             // TODO: Check this line if issues arise.
@@ -124,11 +161,11 @@ namespace EasyPost._base
         }
 
         /// <summary>
-        ///     Check that a value
+        ///     Check that a value exists in the dictionary at a given path.
         /// </summary>
-        /// <param name="dictionary"></param>
-        /// <param name="keys"></param>
-        /// <returns></returns>
+        /// <param name="dictionary">Dictionary to check.</param>
+        /// <param name="keys">Path to look for.</param>
+        /// <returns>True if value exists, false otherwise.</returns>
         private static bool ValueExistsInDictionary(IReadOnlyDictionary<string, object?>? dictionary, IReadOnlyList<string> keys)
         {
             if (keys.Count == 0)
@@ -168,29 +205,6 @@ namespace EasyPost._base
 
             // If we haven't failed yet, then the key exists, the value is not null and we have no more keys to check
             return true;
-        }
-
-        /// <summary>
-        ///     Check that all required parameters are set.
-        /// </summary>
-        /// <param name="obj">Parameter collection to verify.</param>
-        /// <exception cref="MissingRequiredParameterException">If a required parameter is missing.</exception>
-        private static void VerifyParameters(RequestParameters obj)
-        {
-            PropertyInfo[] properties = obj.GetType().GetProperties();
-            foreach (var property in properties)
-            {
-                RequestParameterAttribute? parameterAttribute = BaseCustomAttribute.GetCustomAttribute<RequestParameterAttribute>(property);
-                if (parameterAttribute == null)
-                {
-                    continue;
-                }
-
-                if (parameterAttribute.Necessity == Necessity.Required && !ValueExistsInDictionary(obj._parameterDictionary, parameterAttribute.JsonPath))
-                {
-                    throw new MissingRequiredParameterException(property);
-                }
-            }
         }
     }
 

@@ -35,16 +35,6 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Resend the last Event for a specific EasyPost object instance.
-        /// </summary>
-        /// <param name="id">String representing an EasyPost object instance.</param>
-        [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<bool> Create(string id)
-        {
-            return await CreateBlind("events", new Events.Create());
-        }
-
-        /// <summary>
         ///     Retrieve an Event from its id.
         /// </summary>
         /// <param name="id">String representing a Event. Starts with "evt_".</param>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.ApiCompatibility;
@@ -44,13 +45,13 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Add shipments to this batch.
         /// </summary>
-        /// <param name="shipmentIds">List of shipment ids to be added.</param>
+        /// <param name="shipmentsToAdd">List of Shipment objects to be added.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Batch> AddShipments(List<string> shipmentIds)
+        public async Task<Batch> AddShipments(List<Shipment> shipmentsToAdd)
         {
             var parameters = new Batches.UpdateShipments
             {
-                ShipmentIds = shipmentIds
+                Shipments = shipmentsToAdd
             };
             return await AddShipments(parameters);
         }
@@ -58,22 +59,17 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Add shipments to this batch.
         /// </summary>
-        /// <param name="shipmentsToAdd">List of Shipment objects to be added.</param>
+        /// <param name="shipmentIds">List of shipment ids to be added.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Batch> AddShipments(IEnumerable<Shipment> shipmentsToAdd)
+        public async Task<Batch> AddShipments(IEnumerable<string> shipmentIds)
         {
-            List<string> shipmentIds = new List<string>();
-            foreach (Shipment shipment in shipmentsToAdd)
-            {
-                if (shipment.Id == null)
+            List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment
                 {
-                    continue;
-                }
+                    Id = shipmentId
+                })
+                .ToList();
 
-                shipmentIds.Add(shipment.Id);
-            }
-
-            return await AddShipments(shipmentIds);
+            return await AddShipments(shipments);
         }
 
         /// <summary>
@@ -115,13 +111,13 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Remove shipments to this batch.
         /// </summary>
-        /// <param name="shipmentIds">List of shipment ids to be removed.</param>
+        /// <param name="shipmentsToAdd">List of Shipment objects to be removed.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Batch> RemoveShipments(List<string> shipmentIds)
+        public async Task<Batch> RemoveShipments(List<Shipment> shipmentsToAdd)
         {
             var parameters = new Batches.UpdateShipments
             {
-                ShipmentIds = shipmentIds
+                Shipments = shipmentsToAdd
             };
             return await RemoveShipments(parameters);
         }
@@ -129,22 +125,17 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Remove shipments to this batch.
         /// </summary>
-        /// <param name="shipmentsToAdd">List of Shipment objects to be removed.</param>
+        /// <param name="shipmentIds">List of shipment ids to be removed.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Batch> RemoveShipments(IEnumerable<Shipment> shipmentsToAdd)
+        public async Task<Batch> RemoveShipments(IEnumerable<string> shipmentIds)
         {
-            List<string> shipmentIds = new List<string>();
-            foreach (Shipment shipment in shipmentsToAdd)
-            {
-                if (shipment.Id == null)
+            List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment
                 {
-                    continue;
-                }
+                    Id = shipmentId
+                })
+                .ToList();
 
-                shipmentIds.Add(shipment.Id);
-            }
-
-            return await RemoveShipments(shipmentIds);
+            return await RemoveShipments(shipments);
         }
     }
 }

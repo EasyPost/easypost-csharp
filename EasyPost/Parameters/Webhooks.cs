@@ -24,11 +24,6 @@ namespace EasyPost.Parameters
             public Update(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
             }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
-            }
         }
 
         public sealed class Create : RequestParameters
@@ -47,11 +42,6 @@ namespace EasyPost.Parameters
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
-            }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
             }
         }
     }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using EasyPost._base;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
+using EasyPost.Models.API;
 
 namespace EasyPost.Parameters
 {
@@ -12,18 +13,49 @@ namespace EasyPost.Parameters
             #region Request Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Required, "shipment")]
-            public Models.API.Shipment? Shipment { internal get; set; }
+            [RequestParameter(Necessity.Optional, "shipment", "reference")]
+            public string? Reference { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "to_address")]
+            public Address? ToAddress { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "from_address")]
+            public Address? FromAddress { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "parcel")]
+            public Parcel? Parcel { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "carrier_accounts")]
+            public List<CarrierAccount>? CarrierAccounts { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "is_return")]
+            public bool? IsReturn { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "customs_info")]
+            public Models.API.CustomsInfo? CustomsInfo { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "options")]
+            public Options? Options { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "service")]
+            public string? Service { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "tax_identifiers")]
+            public List<TaxIdentifier>? TaxIdentifiers { internal get; set; }
 
             #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
-            }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
             }
         }
 
@@ -34,11 +66,6 @@ namespace EasyPost.Parameters
             public GenerateRates(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
             }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
-            }
         }
 
         public sealed class Insure : RequestParameters
@@ -47,17 +74,12 @@ namespace EasyPost.Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "amount")]
-            public double? Amount { internal get; set; }
+            public decimal? Amount { internal get; set; }
 
             #endregion
 
             public Insure(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
-            }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
             }
         }
 
@@ -74,11 +96,6 @@ namespace EasyPost.Parameters
             public Label(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
             }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
-            }
         }
 
         public sealed class Buy : RequestParameters
@@ -90,18 +107,13 @@ namespace EasyPost.Parameters
             public string? InsuranceValue { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Required, "rate", "id")]
-            public string? RateId { internal get; set; }
+            [RequestParameter(Necessity.Required, "rate")]
+            public Rate? Rate { internal get; set; }
 
             #endregion
 
             public Buy(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
-            }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
             }
         }
     }

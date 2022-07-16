@@ -267,18 +267,23 @@ namespace EasyPost.Tests
     {
         internal static async Task<Address> CreateBasicAddress(this Client client) => await client.Addresses.Create(new Addresses.Create
         {
-            // Address = Fixture.BasicAddress
+            Name = "Jack Sparrow",
+            Company = "EasyPost",
+            Street1 = "388 Townsend St",
+            Street2 = "Apt 20",
+            City = "San Francisco",
+            State = "CA",
+            Zip = "94107",
+            Country = "US",
+            Phone = "5555555555"
         });
 
         internal static async Task<Batch> CreateBasicBatch(this Client client) =>
             await client.Batches.Create(new Batches.Create
             {
-                Batch = new Batch
+                Shipments = new List<Shipment>
                 {
-                    Shipments = new List<BatchShipment>
-                    {
-                        // TODO: Difference between shipment and batch shipment?
-                    }
+                    // TODO: Difference between shipment and batch shipment?
                 }
             });
 
@@ -354,12 +359,9 @@ namespace EasyPost.Tests
         internal static async Task<Batch> CreateOneCallBuyBatch(this Client client) =>
             await client.Batches.Create(new Batches.Create
             {
-                Batch = new Batch
+                Shipments = new List<Shipment>
                 {
-                    Shipments = new List<BatchShipment>
-                    {
-                        // TODO: Difference between shipment and batch shipment?
-                    }
+                    // TODO: Difference between shipment and batch shipment?
                 }
             });
 

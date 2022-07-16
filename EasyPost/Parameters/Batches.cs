@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using EasyPost._base;
 using EasyPost.ApiCompatibility;
 using EasyPost.Clients;
-using EasyPost.Utilities;
+using EasyPost.Models.API;
 
 namespace EasyPost.Parameters
 {
@@ -13,18 +13,13 @@ namespace EasyPost.Parameters
             #region Request Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Required, "batch")]
-            public Models.API.Batch? Batch { internal get; set; }
+            [RequestParameter(Necessity.Required, "batch", "shipments")]
+            public List<Shipment>? Shipments { internal get; set; }
 
             #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
-            }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
             }
         }
 
@@ -33,30 +28,13 @@ namespace EasyPost.Parameters
             #region Request Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Required, "shipments")]
-            public List<string>? ShipmentIds { internal get; set; }
+            [RequestParameter(Necessity.Required, "batch", "shipments")]
+            public List<Shipment>? Shipments { internal get; set; }
 
             #endregion
 
             public UpdateShipments(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
-            }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                // TODO: This custom overload does not check for API compatibility.
-
-                // TODO: Please, can we fix this hack in the API?
-                Dictionary<string, object> shipmentsDictionary = new Dictionary<string, object>
-                {
-                };
-                ShipmentIds?.Each((index, shipmentId) => { shipmentsDictionary.Add(index.ToString(), shipmentId); });
-                return new Dictionary<string, object?>
-                {
-                    {
-                        "shipments", shipmentsDictionary
-                    }
-                };
             }
         }
 
@@ -72,11 +50,6 @@ namespace EasyPost.Parameters
 
             public CreateDocument(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
             {
-            }
-
-            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
-            {
-                return ToDictionary(this, client);
             }
         }
     }

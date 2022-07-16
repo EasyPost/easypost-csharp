@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using EasyPost._base;
 using EasyPost.Exceptions;
+using EasyPost.Parameters;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.Shared
@@ -11,7 +12,7 @@ namespace EasyPost.Models.Shared
         #region JSON Properties
 
         [JsonProperty("filters")]
-        public Parameters.All? Filters { get; set; }
+        public All? Filters { get; set; }
         [JsonProperty("has_more")]
         public bool HasMore { get; set; }
 
