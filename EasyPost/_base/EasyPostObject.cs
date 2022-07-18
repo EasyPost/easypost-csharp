@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using EasyPost.Exceptions;
-using EasyPost.Types.Conversion;
 using EasyPost.Utilities;
 using Newtonsoft.Json;
 using RestSharp;
@@ -133,10 +132,5 @@ namespace EasyPost._base
 
     public interface IEasyPostObject
     {
-    }
-
-    public interface IConvertible
-    {
-        public abstract BiDirectionalConversionRuleSet ConversionRuleSet { get; }
     }
 }

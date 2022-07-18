@@ -9,7 +9,6 @@ namespace EasyPost.Clients
     /// </summary>
     public enum ApiVersion
     {
-        V2,
         Latest,
         Beta
     }
@@ -22,18 +21,16 @@ namespace EasyPost.Clients
         // ApiVersion enum above needed since attributes can only take in enums (due to compilation)
         // We derive these "fake" enums below from the real enum
         // We need a matching "enum" below for each ApiVersion enum.
+        private static readonly ApiVersionDetails Beta = new ApiVersionDetails(ApiVersion.Beta, "beta", 0, "Beta");
+        private static readonly ApiVersionDetails Latest = new ApiVersionDetails(ApiVersion.Latest, "v2", 2, "Latest");
         private static readonly List<ApiVersionDetails> ApiVersionDetailsList = new List<ApiVersionDetails>
         {
-            {
-                new ApiVersionDetails(ApiVersion.Beta, "beta", 0, "Beta")
-            },
-            {
-                new ApiVersionDetails(ApiVersion.V2, "v2", 2, "V2")
-            },
-            {
-                new ApiVersionDetails(ApiVersion.Latest, "v2", 2, "Latest")
-            },
+            Beta,
+            Latest
         };
+
+
+
         internal ApiVersion ApiVersionEnum { get; }
 
         internal string Name { get; }
