@@ -20,5 +20,7 @@ namespace EasyPost.Models.Shared
         public string? Suggestion { get; set; }
 
         #endregion
+
+        public string FullMessage => $"{Field} {Message}";
     }
 }

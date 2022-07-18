@@ -30,7 +30,7 @@ namespace EasyPost.Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "insurance", "amount")]
-            public string? Amount { internal get; set; }
+            public double? Amount { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "insurance", "carrier")]

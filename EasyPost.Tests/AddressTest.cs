@@ -51,13 +51,10 @@ namespace EasyPost.Tests
         {
             UseVCR("create_and_verify", ApiVersion.Latest);
 
-            Address addressData = Fixture.BasicAddress;
-            addressData.ToVerifyStrict = true;
+            Addresses.Create parameters = Fixture.CreateBasicAddressParams;
+            parameters.ToVerify = true;
 
-            Address address = await Client.Addresses.CreateAndVerify(new Addresses.Create
-            {
-                // Address = addressData
-            });
+            Address address = await Client.Addresses.CreateAndVerify(parameters);
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.Id.StartsWith("adr_"));
@@ -69,11 +66,8 @@ namespace EasyPost.Tests
         {
             UseVCR("create_verify", ApiVersion.Latest);
 
-            Address addressData = Fixture.IncorrectAddressToVerify;
-            Address address = await Client.Addresses.Create(new Addresses.Create
-            {
-                // Address = addressData
-            });
+            Addresses.Create parameters = Fixture.CreateIncorrectAddressToVerifyParams;
+            Address address = await Client.Addresses.Create(parameters);
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.Id.StartsWith("adr_"));
@@ -85,13 +79,10 @@ namespace EasyPost.Tests
         {
             UseVCR("create_verify_strict", ApiVersion.Latest);
 
-            Address addressData = Fixture.BasicAddress;
-            addressData.ToVerifyStrict = true;
+            Addresses.Create parameters = Fixture.CreateBasicAddressParams;
+            parameters.ToStrictVerify = true;
 
-            Address address = await Client.Addresses.Create(new Addresses.Create
-            {
-                // Address = addressData
-            });
+            Address address = await Client.Addresses.Create(parameters);
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.Id.StartsWith("adr_"));

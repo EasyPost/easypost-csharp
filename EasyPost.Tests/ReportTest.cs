@@ -50,15 +50,14 @@ namespace EasyPost.Tests
         {
             UseVCR("create_report_with_additional_columns", ApiVersion.Latest);
 
-            List<string> additionalColumns = new List<string>()
+            Report report = await Client.Reports.Create("shipment", new Reports.Create
             {
-                "from_name",
-                "from_company"
-            };
-            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object>
-            {
+                StartDate = Fixture.ReportDate,
+                EndDate = Fixture.ReportDate,
+                AdditionalColumns = new List<string>
                 {
-                    "additional_columns", additionalColumns
+                    "from_name",
+                    "from_company"
                 }
             });
 
@@ -75,14 +74,13 @@ namespace EasyPost.Tests
         {
             UseVCR("create_report_with_columns", ApiVersion.Latest);
 
-            List<string> columns = new List<string>()
+            Report report = await Client.Reports.Create("shipment", new Reports.Create
             {
-                "usps_zone"
-            };
-            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object>
-            {
+                StartDate = Fixture.ReportDate,
+                EndDate = Fixture.ReportDate,
+                Columns = new List<string>
                 {
-                    "columns", columns
+                    "usps_zone"
                 }
             });
 
@@ -106,15 +104,6 @@ namespace EasyPost.Tests
             Assert.IsInstanceOfType(retrievedReport, typeof(Report));
             Assert.AreEqual(report.StartDate, retrievedReport.StartDate);
             Assert.AreEqual(report.EndDate, retrievedReport.EndDate);
-        }
-
-        private async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters)
-        {
-            return await Client.Reports.Create(reportType, new Reports.Create(parameters)
-            {
-                StartDate = Fixture.ReportDate,
-                EndDate = Fixture.ReportDate,
-            });
         }
 
         private async Task<Report> CreateBasicReport(string reportType) =>

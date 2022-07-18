@@ -13,19 +13,19 @@ namespace EasyPost.Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "parcel", "length")]
-            public decimal? Length { internal get; set; }
+            public double? Length { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "parcel", "width")]
-            public decimal? Width { internal get; set; }
+            public double? Width { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "parcel", "height")]
-            public decimal? Height { internal get; set; }
+            public double? Height { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "parcel", "weight")]
-            public decimal? Weight { internal get; set; }
+            public double? Weight { internal get; set; }
 
             #endregion
 

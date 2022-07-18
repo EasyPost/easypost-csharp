@@ -43,10 +43,11 @@ namespace EasyPost.Tests
             UseVCR("buy", ApiVersion.Latest);
 
             Shipment shipment = await Client.CreateFullShipment();
+            Rate lowestRate = shipment.LowestRate();
 
             await shipment.Buy(new Shipments.Buy
             {
-                RateId = shipment.LowestRate().Id
+                Rate = lowestRate
             });
 
             Assert.IsNotNull(shipment.PostageLabel);
@@ -84,19 +85,19 @@ namespace EasyPost.Tests
         {
             UseVCR("create_empty_objects", ApiVersion.Latest);
 
-            Shipment shipmentData = Fixture.BasicShipment;
+            Shipments.Create parameters = Fixture.CreateBasicShipmentParams;
 
-            shipmentData.CustomsInfo = null;
+            Address address = await Client.CreateBasicAddress();
+            parameters.FromAddress = address;
+            parameters.ToAddress = address;
+            parameters.CustomsInfo = null;
 
-            Shipment shipment = await Client.Shipments.Create(new Shipments.Create
-            {
-                Shipment = shipmentData
-            });
+            Shipment shipment = await Client.Shipments.Create(parameters);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
-            Assert.IsTrue(shipment.Id.StartsWith("shp_"));
+            Assert.IsTrue(shipment.Id?.StartsWith("shp_"));
             Assert.IsNotNull(shipment.Options); // The EasyPost API populates some default values here
-            Assert.IsTrue(shipment.CustomsInfo.CustomsItems.Count == 0);
+            Assert.IsNull(shipment.CustomsInfo);
             Assert.IsNull(shipment.Reference);
             Assert.IsNull(shipment.TaxIdentifiers);
         }
@@ -106,16 +107,17 @@ namespace EasyPost.Tests
         {
             UseVCR("create_tax_identifiers", ApiVersion.Latest);
 
-            Shipment shipmentData = Fixture.BasicShipment;
-            shipmentData.TaxIdentifiers = new List<TaxIdentifier>
+            Shipments.Create parameters = Fixture.CreateBasicShipmentParams;
+
+            Address address = await Client.CreateBasicAddress();
+            parameters.FromAddress = address;
+            parameters.ToAddress = address;
+            parameters.TaxIdentifiers = new List<TaxIdentifier>
             {
                 Fixture.TaxIdentifier
             };
 
-            Shipment shipment = await Client.Shipments.Create(new Shipments.Create
-            {
-                Shipment = shipmentData
-            });
+            Shipment shipment = await Client.Shipments.Create(parameters);
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.Id.StartsWith("shp_"));
@@ -127,37 +129,26 @@ namespace EasyPost.Tests
         {
             UseVCR("create_with_ids", ApiVersion.Latest);
 
-            Address fromAddress = await Client.CreateBasicAddress();
-            Address toAddress = fromAddress;
+            Address address = await Client.CreateBasicAddress();
             Parcel parcel = await Client.CreateBasicParcel();
 
-            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(new Dictionary<string, object>
-            {
+            Shipment shipment = await Client.Shipments.Create(
+                new Shipments.Create
                 {
-                    "from_address", new Dictionary<string, object>
+                    FromAddress = new Address
                     {
-                        {
-                            "id", fromAddress.Id
-                        }
-                    }
-                },
-                {
-                    "to_address", new Dictionary<string, object>
+                        Id = address.Id
+                    },
+                    ToAddress = new Address
                     {
-                        {
-                            "id", toAddress.Id
-                        }
-                    }
-                },
-                {
-                    "parcel", new Dictionary<string, object>
+                        Id = address.Id
+                    },
+                    Parcel = new Parcel
                     {
-                        {
-                            "id", parcel.Id
-                        }
+                        Id = parcel.Id
                     }
                 }
-            }));
+            );
 
             Assert.IsInstanceOfType(shipment, typeof(Shipment));
             Assert.IsTrue(shipment.Id.StartsWith("shp_"));
@@ -175,10 +166,10 @@ namespace EasyPost.Tests
             Shipment shipment = await Client.CreateBasicShipment();
 
             // test lowest smartrate with valid filters
-            Smartrate lowestSmartrate = await shipment.LowestSmartrate(1, SmartrateAccuracy.Percentile90);
-            Assert.AreEqual("First", lowestSmartrate.Service);
-            Assert.AreEqual(5.49, lowestSmartrate.Rate);
-            Assert.AreEqual("USPS", lowestSmartrate.Carrier);
+            Smartrate? lowestSmartrate = await shipment.LowestSmartrate(1, SmartrateAccuracy.Percentile90);
+            Assert.AreEqual("First", lowestSmartrate?.Service);
+            Assert.AreEqual(5.49, lowestSmartrate?.Rate);
+            Assert.AreEqual("USPS", lowestSmartrate?.Carrier);
 
             // test lowest smartrate with invalid filters (should error due to strict delivery_days)
             await Assert.ThrowsExceptionAsync<FilterFailureException>(async () => await shipment.LowestSmartrate(0, SmartrateAccuracy.Percentile90));
@@ -194,15 +185,22 @@ namespace EasyPost.Tests
         {
             UseVCR("insure", ApiVersion.Latest);
 
-            Dictionary<string, object> shipmentData = Fixture.OneCallBuyShipment;
-            // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
-            shipmentData["insurance"] = 0;
+            Shipments.Create parameters = Fixture.CreateOneCallBuyShipmentParams;
 
-            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(shipmentData));
+            Address fromAddress = await Client.CreateBasicAddress();
+            parameters.FromAddress = fromAddress;
+            parameters.ToAddress = fromAddress;
+            Parcel parcel = await Client.CreateBasicParcel();
+            parameters.Parcel = parcel;
+
+            // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
+            parameters.Insurance = 0.00;
+
+            Shipment shipment = await Client.Shipments.Create(parameters);
 
             shipment = await shipment.Insure(100);
 
-            Assert.AreEqual("100.00", shipment.Insurance);
+            Assert.AreEqual(100, shipment.Insurance);
         }
 
         [Fact]

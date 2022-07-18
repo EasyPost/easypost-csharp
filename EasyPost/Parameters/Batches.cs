@@ -28,7 +28,7 @@ namespace EasyPost.Parameters
             #region Request Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Required, "batch", "shipments")]
+            [RequestParameter(Necessity.Required, "shipments")]
             public List<Shipment>? Shipments { internal get; set; }
 
             #endregion

@@ -36,6 +36,18 @@ namespace EasyPost.Parameters
             [RequestParameter(Necessity.Optional, "customs_info", "customs_items")]
             public List<CustomsItem>? CustomsItems { internal get; set; }
 
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "customs_info", "contents_explanation")]
+            public string? ContentsExplanation { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "customs_info", "restriction_type")]
+            public string? RestrictionType { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "customs_info", "non_delivery_option")]
+            public string? NonDeliveryOption { internal get; set; }
+
             #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)

@@ -20,7 +20,8 @@ namespace EasyPost.Tests
         {
             UseVCR("add_remove_shipment", ApiVersion.Latest);
 
-            Shipment shipment = await Client.Shipments.Create(new Shipments.Create(Fixture.OneCallBuyShipment));
+
+            Shipment shipment = await Client.CreateOneCallBuyShipment();
 
             Batch batch = await Client.Batches.Create();
 
@@ -89,15 +90,13 @@ namespace EasyPost.Tests
         {
             UseVCR("create_and_buy", ApiVersion.Latest);
 
-            Batch batch = await Client.Batches.CreateAndBuy(new Batches.Create(new Dictionary<string, object>
+            Batches.Create parameters = Fixture.CreateBatchParams;
+            Shipment shipment = await Client.CreateOneCallBuyShipment();
+            parameters.Shipments = new List<Shipment>
             {
-                {
-                    "shipments", new List<Dictionary<string, object>>
-                    {
-                        Fixture.OneCallBuyShipment
-                    }
-                }
-            }));
+                shipment
+            };
+            Batch batch = await Client.Batches.CreateAndBuy(parameters);
 
             Assert.IsInstanceOfType(batch, typeof(Batch));
             Assert.IsTrue(batch.Id.StartsWith("batch_"));

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Runtime.Serialization;
 using EasyPost.Models.Shared;
@@ -81,6 +82,13 @@ namespace EasyPost.Exceptions
             catch (DeserializationException)
             {
                 apiErrorMessage = "The EasyPost API threw an error, but the error could not be parsed.";
+            }
+
+            string errorDetails = "";
+            if (errors != null)
+            {
+                errorDetails = errors.Aggregate(errorDetails, (current, error) => current + $"{error.FullMessage}\n");
+                apiErrorMessage = $"{apiErrorMessage}\n{errorDetails}";
             }
 
             return innerException != null ? new ApiException(innerException, response.StatusCode, apiCode, errors, apiErrorMessage) : new ApiException(response.StatusCode, apiCode, errors, apiErrorMessage);

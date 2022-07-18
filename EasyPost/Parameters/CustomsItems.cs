@@ -16,23 +16,23 @@ namespace EasyPost.Parameters
             public string? Description { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "customs_info", "quantity")]
+            [RequestParameter(Necessity.Optional, "customs_item", "quantity")]
             public int? Quantity { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "customs_info", "weight")]
-            public decimal? Weight { internal get; set; }
+            [RequestParameter(Necessity.Optional, "customs_item", "weight")]
+            public double? Weight { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "customs_info", "value")]
-            public decimal? Value { internal get; set; }
+            [RequestParameter(Necessity.Optional, "customs_item", "value")]
+            public double? Value { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "customs_info", "hs_tariff_number")]
+            [RequestParameter(Necessity.Optional, "customs_item", "hs_tariff_number")]
             public string? HsTariffNumber { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "customs_info", "origin_country")]
+            [RequestParameter(Necessity.Optional, "customs_item", "origin_country")]
             public string? OriginCountry { internal get; set; }
 
             #endregion

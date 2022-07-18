@@ -5,7 +5,6 @@ using EasyPost.Models.API;
 using EasyPost.Parameters;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
-using Insurance = EasyPost.Parameters.Insurance;
 
 namespace EasyPost.Tests
 {
@@ -31,7 +30,7 @@ namespace EasyPost.Tests
             Assert.IsNotNull(insuranceCollection.HasMore);
             foreach (Models.API.Insurance item in insurances)
             {
-                Assert.IsInstanceOfType(item, typeof(Insurance));
+                Assert.IsInstanceOfType(item, typeof(Models.API.Insurance));
             }
         }
 
@@ -40,9 +39,9 @@ namespace EasyPost.Tests
         {
             UseVCR("create", ApiVersion.Latest);
 
-            Models.API.Insurance insurance = await CreateBasicInsurance();
+            Models.API.Insurance insurance = await Client.CreateBasicInsurance();
 
-            Assert.IsInstanceOfType(insurance, typeof(Insurance));
+            Assert.IsInstanceOfType(insurance, typeof(Models.API.Insurance));
             Assert.IsTrue(insurance.Id.StartsWith("ins_"));
             // TODO: amount really should be a number, not a string
             Assert.AreEqual("100.00000", insurance.Amount);
@@ -53,18 +52,12 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve", ApiVersion.Latest);
 
-            Models.API.Insurance insurance = await CreateBasicInsurance();
+            Models.API.Insurance insurance = await Client.CreateBasicInsurance();
 
             Models.API.Insurance retrievedInsurance = await Client.Insurance.Retrieve(insurance.Id);
-            Assert.IsInstanceOfType(retrievedInsurance, typeof(Insurance));
+            Assert.IsInstanceOfType(retrievedInsurance, typeof(Models.API.Insurance));
             // Must compare IDs since other elements of object may be different
             Assert.AreEqual(insurance.Id, retrievedInsurance.Id);
-        }
-
-        private async Task<Models.API.Insurance> CreateBasicInsurance()
-        {
-            Dictionary<string, object> basicInsurance = await Fixture.BasicInsurance(Client);
-            return await Client.Insurance.Create(new Insurance.Create(basicInsurance));
         }
     }
 }

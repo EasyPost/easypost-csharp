@@ -94,15 +94,13 @@ namespace EasyPost.Tests
         {
             UseVCR("update", ApiVersion.Latest);
 
-
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
             const string testDescription = "my custom description";
-            carrierAccount.Description = testDescription;
 
             carrierAccount = await carrierAccount.Update(new CarrierAccounts.Update
             {
-                CarrierAccount = carrierAccount
+                Description = testDescription
             });
 
             Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
@@ -112,10 +110,8 @@ namespace EasyPost.Tests
 
         private async Task<CarrierAccount> CreateBasicCarrierAccount()
         {
-            CarrierAccount carrierAccount = await Client.CarrierAccounts.Create(new CarrierAccounts.Create
-            {
-                CarrierAccount = Fixture.BasicCarrierAccount
-            });
+            CarrierAccounts.Create parameters = Fixture.CreateBasicCarrierAccountParams;
+            CarrierAccount carrierAccount = await Client.CarrierAccounts.Create(parameters);
             CleanUpAfterTest(carrierAccount.Id);
 
             return carrierAccount;

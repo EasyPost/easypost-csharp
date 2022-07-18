@@ -127,13 +127,13 @@ namespace EasyPost.Tests
 
             User user = await CreateUser();
 
-            string color = "#123456";
-            Brand brand = await user.UpdateBrand(new Users.UpdateBrand(new Dictionary<string, object>
-            {
+            const string color = "#123456";
+            Brand brand = await user.UpdateBrand(
+                new Users.UpdateBrand
                 {
-                    "color", color
+                    ColorHexCode = color
                 }
-            }));
+            );
 
             Assert.IsInstanceOfType(brand, typeof(Brand));
             Assert.IsTrue(brand.Id.StartsWith("brd_"));

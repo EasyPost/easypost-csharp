@@ -65,11 +65,19 @@ namespace EasyPost.Tests
             EndShipper endShipper = await Client.CreateBasicEndShipper();
 
             const string testName = "NEW NAME";
-            endShipper.Name = testName;
 
             endShipper = await endShipper.Update(new EndShippers.Update
             {
-                EndShipper = endShipper
+                Name = testName,
+                Street1 = endShipper.Street1,
+                Street2 = endShipper.Street2,
+                City = endShipper.City,
+                State = endShipper.State,
+                Zip = endShipper.Zip,
+                Country = endShipper.Country,
+                Phone = endShipper.Phone,
+                Email = endShipper.Email,
+                Company = endShipper.Company
             });
 
             Assert.IsInstanceOfType(endShipper, typeof(EndShipper));

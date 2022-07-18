@@ -49,8 +49,16 @@ namespace EasyPost.Parameters
             public string? Service { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "carrier")]
+            public string? Carrier { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "shipment", "tax_identifiers")]
             public List<TaxIdentifier>? TaxIdentifiers { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "insurance")]
+            public double Insurance { internal get; set; }
 
             #endregion
 
@@ -74,7 +82,7 @@ namespace EasyPost.Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Required, "amount")]
-            public decimal? Amount { internal get; set; }
+            public double? Amount { internal get; set; }
 
             #endregion
 

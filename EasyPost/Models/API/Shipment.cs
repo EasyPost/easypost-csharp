@@ -33,7 +33,7 @@ namespace EasyPost.Models.API
         [JsonProperty("from_address")]
         public Address? FromAddress { get; set; }
         [JsonProperty("insurance")]
-        public string? Insurance { get; set; }
+        public double? Insurance { get; set; }
         [JsonProperty("is_return")]
         public bool? IsReturn { get; set; }
         [JsonProperty("messages")]
@@ -140,7 +140,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
         [ApiCompatibility(ApiVersion.Latest)]
-        public async Task<Shipment> Insure(decimal amount)
+        public async Task<Shipment> Insure(double amount)
         {
             if (Id == null)
             {

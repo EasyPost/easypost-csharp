@@ -58,7 +58,7 @@ namespace EasyPost.Parameters
             {
             }
 
-            internal new Dictionary<string, object?>? ToDictionary(EasyPostClient client)
+            internal override Dictionary<string, object?>? ToDictionary(EasyPostClient client)
             {
                 // TODO: This custom overload does not check for API compatibility.
 

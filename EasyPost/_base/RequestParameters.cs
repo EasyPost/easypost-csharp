@@ -14,14 +14,16 @@ namespace EasyPost._base
     /// </summary>
     public abstract class RequestParameters : IRequestParameters
     {
-        private Dictionary<string, object?>? _parameterDictionary = new Dictionary<string, object?>();
+        private Dictionary<string, object?>? _parameterDictionary;
 
+        /// <summary>
+        ///     Create a new set of request parameters.
+        /// </summary>
+        /// <param name="overrideParameters">Use a dictionary of parameters as a base for these parameters, optional.
+        /// Parameters in this dictionary take precedence over explicitly-defined parameters.</param>
         protected RequestParameters(Dictionary<string, object?>? overrideParameters = null)
         {
-            if (overrideParameters != null)
-            {
-                _parameterDictionary = overrideParameters;
-            }
+            _parameterDictionary = overrideParameters ?? new Dictionary<string, object?>();
         }
 
         /// <summary>
@@ -29,7 +31,7 @@ namespace EasyPost._base
         /// </summary>
         /// <param name="client">Client that will be making this HTTP request. Needed to check API compatibility.</param>
         /// <returns>Dictionary of parameters.</returns>
-        internal Dictionary<string, object?>? ToDictionary(EasyPostClient client)
+        internal virtual Dictionary<string, object?>? ToDictionary(EasyPostClient client)
         {
             // Construct the dictionary of all parameters for this API version
             RegisterParameters(client);
@@ -115,7 +117,6 @@ namespace EasyPost._base
         /// <exception cref="Exception">Could not add value to dictionary.</exception>
         private static Dictionary<string, object?> UpdateDictionary(Dictionary<string, object?>? dictionary, string[] keys, object? value)
         {
-            // TODO: Check this line if issues arise.
             dictionary ??= new Dictionary<string, object?>();
 
             switch (keys.Length)
@@ -128,6 +129,8 @@ namespace EasyPost._base
                     string soloKey = keys[0];
                     if (dictionary.ContainsKey(soloKey))
                     {
+                        // Key-value pair already exists in dictionary (likely because of override parameters)
+                        // Only change the value if the existing value is null
                         dictionary[soloKey] ??= value;
                     }
                     else
