@@ -67,6 +67,11 @@ namespace EasyPost.Tests
 
             Batch batch = await Client.CreateOneCallBuyBatch();
 
+            if (IsRecording())
+            {
+                Thread.Sleep(15000); // Wait enough time to process
+            }
+
             batch = await batch.Buy();
 
             Assert.IsInstanceOfType(batch, typeof(Batch));
@@ -108,8 +113,14 @@ namespace EasyPost.Tests
         {
             UseVCR("create_scan_form", ApiVersion.Latest);
 
+            // TODO: Fix this unit test
 
             Batch batch = await Client.CreateOneCallBuyBatch();
+
+            if (IsRecording())
+            {
+                Thread.Sleep(15000); // Wait enough time to process
+            }
 
             batch = await batch.Buy();
 
@@ -132,7 +143,14 @@ namespace EasyPost.Tests
         {
             UseVCR("label", ApiVersion.Latest);
 
+            // TODO: Fix this unit test
+
             Batch batch = await Client.CreateOneCallBuyBatch();
+
+            if (IsRecording())
+            {
+                Thread.Sleep(15000); // Wait enough time to process
+            }
 
             batch = await batch.Buy();
 

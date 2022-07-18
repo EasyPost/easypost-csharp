@@ -66,6 +66,15 @@ namespace EasyPost.Tests
 
         internal static Batches.Create CreateBatchParams => new Batches.Create
         {
+            CarrierAccounts = new List<CarrierAccount>
+            {
+                new CarrierAccount
+                {
+                    Id = Fixture.UspsCarrierAccountId
+                }
+            },
+            Carrier = Fixture.Usps,
+            Service = Fixture.UspsService
         };
 
         internal static Parameters.CustomsInfo.Create CreateCustomsInfoParams => new Parameters.CustomsInfo.Create
@@ -408,7 +417,7 @@ namespace EasyPost.Tests
 
             if (parameters.Shipments == null)
             {
-                Shipment shipment = await client.CreateOneCallBuyShipment();
+                Shipment shipment = await client.CreateBasicShipment();
                 parameters.Shipments = new List<Shipment>
                 {
                     shipment

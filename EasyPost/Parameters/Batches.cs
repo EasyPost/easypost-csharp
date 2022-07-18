@@ -16,6 +16,18 @@ namespace EasyPost.Parameters
             [RequestParameter(Necessity.Required, "batch", "shipments")]
             public List<Shipment>? Shipments { internal get; set; }
 
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "carrier_accounts")]
+            public List<CarrierAccount>? CarrierAccounts { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "service")]
+            public string? Service { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "carrier")]
+            public string? Carrier { internal get; set; }
+
             #endregion
 
             public Create(Dictionary<string, object?>? overrideParameters = null) : base(overrideParameters)
