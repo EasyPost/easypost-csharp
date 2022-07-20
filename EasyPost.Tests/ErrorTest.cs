@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,13 +17,28 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
+        public async Task TestEmptyApiKey()
+        {
+            ClientManager.SetCurrent("");
+
+            try
+            {
+                var _ = await Shipment.Create(new Dictionary<string, object>());
+            }
+            catch (Exception error)
+            {
+                Assert.AreEqual("API key is required.", error.Message);
+            }
+        }
+
+        [TestMethod]
         public async Task TestError()
         {
             _vcr.SetUpTest("error");
 
             try
             {
-                var _ = await Shipment.Create();
+                var _ = await Shipment.Create(new Dictionary<string, object>());
             }
             catch (HttpException error)
             {
@@ -30,21 +46,6 @@ namespace EasyPost.Tests
                 Assert.AreEqual("SHIPMENT.INVALID_PARAMS", error.Code);
                 Assert.AreEqual("Unable to create shipment, one or more parameters were invalid.", error.Message);
                 Assert.IsTrue(error.Errors.Count == 2);
-            }
-        }
-
-        [TestMethod]
-        public async Task TestEmptyApiKey()
-        {
-            ClientManager.SetCurrent("");
-
-            try
-            {
-                var _ = await Shipment.Create();
-            }
-            catch (Exception error)
-            {
-                Assert.AreEqual("API key is required.", error.Message);
             }
         }
     }

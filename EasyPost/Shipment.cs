@@ -136,6 +136,37 @@ namespace EasyPost
         public async Task Buy(Rate rate, string? insuranceValue = null) => await Buy(rate.id, insuranceValue);
 
         /// <summary>
+        ///     Generate a form for the shipment.
+        /// </summary>
+        /// <param name="formType">type of the form.</param>
+        /// <param name="formOptions">options of the form.</param>
+        /// <returns>An EasyPost.Shipment instance.</returns>
+        public async Task GenerateForm(string formType, Dictionary<string, object>? formOptions = null)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                {
+                    "type", formType
+                },
+            };
+
+            formOptions?.ToList().ForEach(option => parameters.Add(option.Key, option.Value));
+
+            Dictionary<string, object> wrappedParameters = new Dictionary<string, object>
+            {
+                {
+                    "form", parameters
+                }
+            };
+
+            Request request = new Request("shipments/{id}/forms", Method.Post);
+            request.AddParameters(wrappedParameters);
+            request.AddUrlSegment("id", id);
+
+            Merge(await request.Execute<Shipment>());
+        }
+
+        /// <summary>
         ///     Generate a postage label for this shipment.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
@@ -299,8 +330,23 @@ namespace EasyPost
         ///     * {"carrier_accounts", List&lt;string&gt;} List of CarrierAccount.id to limit rating.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="carbonOffset">Whether to use carbon offset when creating the shipment.</param>
         /// <returns>An EasyPost.Shipment instance.</returns>
-        public static async Task<Shipment> Create(Dictionary<string, object>? parameters = null) => await SendCreate(parameters ?? new Dictionary<string, object>());
+        public static async Task<Shipment> Create(Dictionary<string, object>? parameters, bool carbonOffset = false)
+        {
+            Request request = new Request("shipments", Method.Post);
+            request.AddParameters(new Dictionary<string, object>
+            {
+                {
+                    "shipment", parameters ?? new Dictionary<string, object>()
+                },
+                {
+                    "carbon_offset", carbonOffset
+                }
+            });
+
+            return await request.Execute<Shipment>();
+        }
 
         /// <summary>
         ///     Get the lowest smartrate from a list of smartrates.
@@ -323,50 +369,6 @@ namespace EasyPost
         {
             Request request = new Request("shipments/{id}", Method.Get);
             request.AddUrlSegment("id", id);
-
-            return await request.Execute<Shipment>();
-        }
-
-        /// <summary>
-        ///     Generate a form for the shipment.
-        /// </summary>
-        /// <param name="formType">type of the form.</param>
-        /// <param name="formOptions">options of the form.</param>
-        /// <returns>An EasyPost.Shipment instance.</returns>
-        public async Task GenerateForm(string formType, Dictionary<string, object>? formOptions = null)
-        {
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                {
-                    "type", formType
-                },
-            };
-
-            formOptions?.ToList().ForEach(option => parameters.Add(option.Key, option.Value));
-
-            Dictionary<string, object> wrappedParameters = new Dictionary<string, object>
-            {
-                {
-                    "form", parameters
-                }
-            };
-
-            Request request = new Request("shipments/{id}/forms", Method.Post);
-            request.AddParameters(wrappedParameters);
-            request.AddUrlSegment("id", id);
-
-            Merge(await request.Execute<Shipment>());
-        }
-
-        private static async Task<Shipment> SendCreate(Dictionary<string, object> parameters)
-        {
-            Request request = new Request("shipments", Method.Post);
-            request.AddParameters(new Dictionary<string, object>
-            {
-                {
-                    "shipment", parameters
-                }
-            });
 
             return await request.Execute<Shipment>();
         }
