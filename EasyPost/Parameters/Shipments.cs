@@ -13,52 +13,56 @@ namespace EasyPost.Parameters
             #region Request Parameters
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "shipment", "reference")]
-            public string? Reference { internal get; set; }
-
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "shipment", "to_address")]
-            public Address? ToAddress { internal get; set; }
-
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "shipment", "from_address")]
-            public Address? FromAddress { internal get; set; }
-
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "shipment", "parcel")]
-            public Parcel? Parcel { internal get; set; }
-
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "shipment", "carrier_accounts")]
-            public List<CarrierAccount>? CarrierAccounts { internal get; set; }
-
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "shipment", "is_return")]
-            public bool? IsReturn { internal get; set; }
-
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "shipment", "customs_info")]
-            public Models.API.CustomsInfo? CustomsInfo { internal get; set; }
-
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "shipment", "options")]
-            public Options? Options { internal get; set; }
-
-            [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "shipment", "service")]
-            public string? Service { internal get; set; }
+            [RequestParameter(Necessity.Optional, "carbon_offset")]
+            public bool CarbonOffset { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "shipment", "carrier")]
             public string? Carrier { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
-            [RequestParameter(Necessity.Optional, "shipment", "tax_identifiers")]
-            public List<TaxIdentifier>? TaxIdentifiers { internal get; set; }
+            [RequestParameter(Necessity.Optional, "shipment", "carrier_accounts")]
+            public List<CarrierAccount>? CarrierAccounts { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "customs_info")]
+            public Models.API.CustomsInfo? CustomsInfo { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "from_address")]
+            public Address? FromAddress { internal get; set; }
 
             [ApiCompatibility(ApiVersion.Latest)]
             [RequestParameter(Necessity.Optional, "shipment", "insurance")]
             public double Insurance { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "is_return")]
+            public bool? IsReturn { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "options")]
+            public Options? Options { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "parcel")]
+            public Parcel? Parcel { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "reference")]
+            public string? Reference { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "service")]
+            public string? Service { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "tax_identifiers")]
+            public List<TaxIdentifier>? TaxIdentifiers { internal get; set; }
+
+            [ApiCompatibility(ApiVersion.Latest)]
+            [RequestParameter(Necessity.Optional, "shipment", "to_address")]
+            public Address? ToAddress { internal get; set; }
 
             #endregion
 
