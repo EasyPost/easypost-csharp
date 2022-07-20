@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -23,7 +22,7 @@ namespace EasyPost.Tests
 
             try
             {
-                var _ = await Shipment.Create(new Dictionary<string, object>());
+                var _ = await Shipment.Create();
             }
             catch (Exception error)
             {
@@ -38,7 +37,7 @@ namespace EasyPost.Tests
 
             try
             {
-                var _ = await Shipment.Create(new Dictionary<string, object>());
+                var _ = await Shipment.Create();
             }
             catch (HttpException error)
             {

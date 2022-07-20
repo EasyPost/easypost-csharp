@@ -332,7 +332,7 @@ namespace EasyPost
         /// </param>
         /// <param name="carbonOffset">Whether to use carbon offset when creating the shipment.</param>
         /// <returns>An EasyPost.Shipment instance.</returns>
-        public static async Task<Shipment> Create(Dictionary<string, object>? parameters, bool carbonOffset = false)
+        public static async Task<Shipment> Create(Dictionary<string, object>? parameters = null, bool carbonOffset = false)
         {
             Request request = new Request("shipments", Method.Post);
             request.AddParameters(new Dictionary<string, object>
