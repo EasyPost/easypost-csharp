@@ -87,7 +87,6 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("buy");
 
-
             Shipment shipment = await CreateFullShipment();
 
             await shipment.Buy(shipment.LowestRate());
@@ -339,43 +338,6 @@ namespace EasyPost.Tests
 
             // test lowest smartrate with invalid filters (should error due to bad delivery_accuracy)
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
-        }
-
-        [TestMethod]
-        public async Task TestGenerateForm()
-        {
-            _vcr.SetUpTest("generating_form");
-
-            Shipment shipment = await CreateOneCallBuyShipment();
-            const string formType = "return_packing_slip";
-
-            await shipment.GenerateForm(formType, Fixture.RmaFormOptions);
-
-            Assert.IsTrue(shipment.forms.Count > 0);
-
-            Form form = shipment.forms[0];
-
-            Assert.AreEqual(formType, form.form_type);
-            Assert.IsTrue(form.form_url != null);
-        }
-
-        [Ignore]
-        [TestMethod]
-        // Skipped because carbon offset property of a rate is not live yet.
-        public async Task TestCarbonOffset()
-        {
-            _vcr.SetUpTest("carbon_offset");
-
-            Dictionary<string, object> shipmentData = Fixture.BasicShipment;
-            Shipment shipment = await Shipment.Create(shipmentData, true);
-
-            Assert.IsInstanceOfType(shipment, typeof(Shipment));
-
-            Rate rate = shipment.LowestRate();
-            CarbonOffset carbonOffset = rate.carbon_offset;
-
-            Assert.IsNotNull(carbonOffset);
-            Assert.IsNotNull(carbonOffset.price);
         }
     }
 }

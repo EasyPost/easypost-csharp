@@ -86,7 +86,8 @@ namespace EasyPost
         /// </summary>
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
-        public async Task Buy(string rateId, string? insuranceValue = null)
+        /// <param name="carbonOffset">Whether to apply carbon offset to this purchase.</param>
+        public async Task Buy(string rateId, string? insuranceValue = null, bool carbonOffset = false)
         {
             if (id == null)
             {
@@ -114,6 +115,11 @@ namespace EasyPost
                 body["insurance"] = insuranceValue;
             }
 
+            if (carbonOffset)
+            {
+                body["carbon_offset"] = true;
+            }
+
             request.AddParameters(body);
 
             Shipment result = await request.Execute<Shipment>();
@@ -133,7 +139,8 @@ namespace EasyPost
         /// </summary>
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
-        public async Task Buy(Rate rate, string? insuranceValue = null) => await Buy(rate.id, insuranceValue);
+        /// <param name="carbonOffset">Whether to apply carbon offset to this purchase.</param>
+        public async Task Buy(Rate rate, string? insuranceValue = null, bool carbonOffset = false) => await Buy(rate.id, insuranceValue, carbonOffset);
 
         /// <summary>
         ///     Generate a form for the shipment.
