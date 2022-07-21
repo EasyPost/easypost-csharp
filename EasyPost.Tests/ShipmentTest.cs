@@ -16,50 +16,6 @@ namespace EasyPost.Tests
             _vcr = new TestUtils.VCR("shipment");
         }
 
-        public static async Task<Shipment> CreateBasicShipment()
-        {
-            return await Shipment.Create(Fixture.BasicShipment);
-        }
-
-        public static async Task<Shipment> CreateFullShipment()
-        {
-            return await Shipment.Create(Fixture.FullShipment);
-        }
-
-        public static async Task<Shipment> CreateOneCallBuyShipment()
-        {
-            return await Shipment.Create(Fixture.OneCallBuyShipment);
-        }
-
-        [TestMethod]
-        public async Task TestCreate()
-        {
-            _vcr.SetUpTest("create");
-
-            Shipment shipment = await CreateFullShipment();
-
-            Assert.IsInstanceOfType(shipment, typeof(Shipment));
-            Assert.IsTrue(shipment.id.StartsWith("shp_"));
-            Assert.IsNotNull(shipment.rates);
-            Assert.AreEqual("PNG", shipment.options.label_format);
-            Assert.AreEqual("123", shipment.options.invoice_number);
-            Assert.AreEqual("123", shipment.reference);
-        }
-
-        [TestMethod]
-        public async Task TestRetrieve()
-        {
-            _vcr.SetUpTest("retrieve");
-
-
-            Shipment shipment = await CreateFullShipment();
-
-            Shipment retrievedShipment = await Shipment.Retrieve(shipment.id);
-
-            Assert.IsInstanceOfType(shipment, typeof(Shipment));
-            Assert.AreEqual(shipment, retrievedShipment);
-        }
-
         [TestMethod]
         public async Task TestAll()
         {
@@ -95,23 +51,23 @@ namespace EasyPost.Tests
             Assert.IsNotNull(shipment.postage_label);
         }
 
+        [Ignore]
         [TestMethod]
-        public async Task TestRegenerateRates()
+        // Skipped because carbon offset property of a rate is not live yet.
+        public async Task TestCarbonOffset()
         {
-            _vcr.SetUpTest("regenerate_rates");
+            _vcr.SetUpTest("carbon_offset");
 
+            Dictionary<string, object> shipmentData = Fixture.BasicShipment;
+            Shipment shipment = await Shipment.Create(shipmentData, true);
 
-            Shipment shipment = await CreateFullShipment();
+            Assert.IsInstanceOfType(shipment, typeof(Shipment));
 
-            await shipment.RegenerateRates();
+            Rate rate = shipment.LowestRate();
+            CarbonOffset carbonOffset = rate.carbon_offset;
 
-            List<Rate> rates = shipment.rates;
-
-            Assert.IsNotNull(rates);
-            foreach (var rate in rates)
-            {
-                Assert.IsInstanceOfType(rate, typeof(Rate));
-            }
+            Assert.IsNotNull(carbonOffset);
+            Assert.IsNotNull(carbonOffset.price);
         }
 
         [TestMethod]
@@ -126,59 +82,19 @@ namespace EasyPost.Tests
             Assert.IsNotNull(shipment.postage_label.label_zpl_url);
         }
 
-        // If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
-        // so that USPS doesn't automatically insure it so we could manually insure it here.
         [TestMethod]
-        public async Task TestInsure()
+        public async Task TestCreate()
         {
-            _vcr.SetUpTest("insure");
+            _vcr.SetUpTest("create");
 
-            Dictionary<string, object> shipmentData = Fixture.OneCallBuyShipment;
-            // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
-            shipmentData["insurance"] = 0;
+            Shipment shipment = await CreateFullShipment();
 
-            Shipment shipment = await Shipment.Create(shipmentData);
-
-            await shipment.Insure(100);
-
-            Assert.AreEqual("100.00", shipment.insurance);
-        }
-
-        // Refunding a test shipment must happen within seconds of the shipment being created as test shipments naturally
-        // follow a flow of created -> delivered to cycle through tracking events in test mode - as such anything older
-        // than a few seconds in test mode may not be refundable.
-        [TestMethod]
-        public async Task TestRefund()
-        {
-            _vcr.SetUpTest("refund");
-
-            Shipment shipment = await CreateOneCallBuyShipment();
-
-            await shipment.Refund();
-
-            Assert.AreEqual("submitted", shipment.refund_status);
-        }
-
-        [TestMethod]
-        public async Task TestSmartrate()
-        {
-            _vcr.SetUpTest("smartrate");
-
-            Shipment shipment = await CreateBasicShipment();
-
+            Assert.IsInstanceOfType(shipment, typeof(Shipment));
+            Assert.IsTrue(shipment.id.StartsWith("shp_"));
             Assert.IsNotNull(shipment.rates);
-
-            List<Smartrate> smartRates = await shipment.GetSmartrates();
-            Smartrate smartrate = smartRates.First();
-            // Must compare IDs because one is a Rate object and one is a Smartrate object
-            Assert.AreEqual(shipment.rates[0].id, smartrate.id);
-            Assert.IsNotNull(smartrate.time_in_transit.percentile_50);
-            Assert.IsNotNull(smartrate.time_in_transit.percentile_75);
-            Assert.IsNotNull(smartrate.time_in_transit.percentile_85);
-            Assert.IsNotNull(smartrate.time_in_transit.percentile_90);
-            Assert.IsNotNull(smartrate.time_in_transit.percentile_95);
-            Assert.IsNotNull(smartrate.time_in_transit.percentile_97);
-            Assert.IsNotNull(smartrate.time_in_transit.percentile_99);
+            Assert.AreEqual("PNG", shipment.options.label_format);
+            Assert.AreEqual("123", shipment.options.invoice_number);
+            Assert.AreEqual("123", shipment.reference);
         }
 
         [TestMethod]
@@ -270,6 +186,24 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
+        public async Task TestGenerateForm()
+        {
+            _vcr.SetUpTest("generating_form");
+
+            Shipment shipment = await CreateOneCallBuyShipment();
+            const string formType = "return_packing_slip";
+
+            await shipment.GenerateForm(formType, Fixture.RmaFormOptions);
+
+            Assert.IsTrue(shipment.forms.Count > 0);
+
+            Form form = shipment.forms[0];
+
+            Assert.AreEqual(formType, form.form_type);
+            Assert.IsTrue(form.form_url != null);
+        }
+
+        [TestMethod]
         public async Task TestInstanceLowestSmartrate()
         {
             _vcr.SetUpTest("lowest_smartrate_instance");
@@ -287,6 +221,24 @@ namespace EasyPost.Tests
 
             // test lowest smartrate with invalid filters (should error due to bad delivery_accuracy)
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
+        }
+
+        // If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
+        // so that USPS doesn't automatically insure it so we could manually insure it here.
+        [TestMethod]
+        public async Task TestInsure()
+        {
+            _vcr.SetUpTest("insure");
+
+            Dictionary<string, object> shipmentData = Fixture.OneCallBuyShipment;
+            // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
+            shipmentData["insurance"] = 0;
+
+            Shipment shipment = await Shipment.Create(shipmentData);
+
+            await shipment.Insure(100);
+
+            Assert.AreEqual("100.00", shipment.insurance);
         }
 
         [TestMethod]
@@ -320,6 +272,76 @@ namespace EasyPost.Tests
             Assert.ThrowsException<FilterFailure>(() => shipment.LowestRate(carriers, null, null, null));
         }
 
+        // Refunding a test shipment must happen within seconds of the shipment being created as test shipments naturally
+        // follow a flow of created -> delivered to cycle through tracking events in test mode - as such anything older
+        // than a few seconds in test mode may not be refundable.
+        [TestMethod]
+        public async Task TestRefund()
+        {
+            _vcr.SetUpTest("refund");
+
+            Shipment shipment = await CreateOneCallBuyShipment();
+
+            await shipment.Refund();
+
+            Assert.AreEqual("submitted", shipment.refund_status);
+        }
+
+        [TestMethod]
+        public async Task TestRegenerateRates()
+        {
+            _vcr.SetUpTest("regenerate_rates");
+
+
+            Shipment shipment = await CreateFullShipment();
+
+            await shipment.RegenerateRates();
+
+            List<Rate> rates = shipment.rates;
+
+            Assert.IsNotNull(rates);
+            foreach (var rate in rates)
+            {
+                Assert.IsInstanceOfType(rate, typeof(Rate));
+            }
+        }
+
+        [TestMethod]
+        public async Task TestRetrieve()
+        {
+            _vcr.SetUpTest("retrieve");
+
+
+            Shipment shipment = await CreateFullShipment();
+
+            Shipment retrievedShipment = await Shipment.Retrieve(shipment.id);
+
+            Assert.IsInstanceOfType(shipment, typeof(Shipment));
+            Assert.AreEqual(shipment, retrievedShipment);
+        }
+
+        [TestMethod]
+        public async Task TestSmartrate()
+        {
+            _vcr.SetUpTest("smartrate");
+
+            Shipment shipment = await CreateBasicShipment();
+
+            Assert.IsNotNull(shipment.rates);
+
+            List<Smartrate> smartRates = await shipment.GetSmartrates();
+            Smartrate smartrate = smartRates.First();
+            // Must compare IDs because one is a Rate object and one is a Smartrate object
+            Assert.AreEqual(shipment.rates[0].id, smartrate.id);
+            Assert.IsNotNull(smartrate.time_in_transit.percentile_50);
+            Assert.IsNotNull(smartrate.time_in_transit.percentile_75);
+            Assert.IsNotNull(smartrate.time_in_transit.percentile_85);
+            Assert.IsNotNull(smartrate.time_in_transit.percentile_90);
+            Assert.IsNotNull(smartrate.time_in_transit.percentile_95);
+            Assert.IsNotNull(smartrate.time_in_transit.percentile_97);
+            Assert.IsNotNull(smartrate.time_in_transit.percentile_99);
+        }
+
         [TestMethod]
         public async Task TestStaticLowestSmartrate()
         {
@@ -341,22 +363,19 @@ namespace EasyPost.Tests
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
         }
 
-        [TestMethod]
-        public async Task TestGenerateForm()
+        public static async Task<Shipment> CreateBasicShipment()
         {
-            _vcr.SetUpTest("generating_form");
+            return await Shipment.Create(Fixture.BasicShipment);
+        }
 
-            Shipment shipment = await CreateOneCallBuyShipment();
-            const string formType = "return_packing_slip";
+        public static async Task<Shipment> CreateFullShipment()
+        {
+            return await Shipment.Create(Fixture.FullShipment);
+        }
 
-            await shipment.GenerateForm(formType, Fixture.RmaFormOptions);
-
-            Assert.IsTrue(shipment.forms.Count > 0);
-
-            Form form = shipment.forms[0];
-
-            Assert.AreEqual(formType, form.form_type);
-            Assert.IsTrue(form.form_url != null);
+        public static async Task<Shipment> CreateOneCallBuyShipment()
+        {
+            return await Shipment.Create(Fixture.OneCallBuyShipment);
         }
     }
 }
