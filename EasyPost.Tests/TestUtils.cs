@@ -63,7 +63,7 @@ namespace EasyPost.Tests
             return Environment.GetEnvironmentVariable(keyName) ?? ApiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.
         }
 
-        private static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "")
+        public static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "")
         {
             return Path.GetDirectoryName(sourceFilePath);
         }

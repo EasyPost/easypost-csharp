@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>
     <RootNamespace>EasyPost</RootNamespace>
@@ -58,6 +57,7 @@
     <None Include="..\EasyPost.pub">
       <Link>EasyPost.pub</Link>
     </None>
+    <None Remove="FodyWeavers.xsd" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />
@@ -68,7 +68,11 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ApiCompatibility" />
+    <Folder Include="Calculation" />
   </ItemGroup>
 
 </Project>

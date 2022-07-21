@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using EasyPost.Utilities;
 
@@ -627,6 +628,7 @@ namespace EasyPost.Tests
             }
         }
 
+<<<<<<< HEAD
         public static Dictionary<string, object> BasicCarbonOffsetShipment
         {
             get
@@ -704,6 +706,22 @@ namespace EasyPost.Tests
                         "carrier", Usps
                     }
                 };
+=======
+        public static byte[] EventBody
+        {
+            get
+            {
+                const string relativePath = "eventBody.json";
+                string fullPath = Path.Combine(TestUtils.GetSourceFileDirectory(), relativePath);
+
+                try
+                {
+                    return File.ReadAllBytes(fullPath);
+                } catch (Exception e)
+                {
+                    throw new Exception($"Unable to read {fullPath}", e);
+                }
+>>>>>>> 283338c (- WIP Webhook validation)
             }
         }
     }

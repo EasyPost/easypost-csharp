@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#nullable enable
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -95,6 +96,24 @@ namespace EasyPost.Tests
 
             Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
             Assert.AreEqual(webhook, retrievedWebhook);
+        }
+
+        [TestMethod]
+        public void TestValidate()
+        {
+            byte[] data = Fixture.EventBody;
+
+            // ReSharper disable once StringLiteralTypo
+            const string webhookSecret = "sécret";
+            Dictionary<string, object?> headers = new Dictionary<string, object?>
+            {
+                {
+                    "X-Hmac-Signature", "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b"
+                }
+            };
+
+            Event @event = Webhook.ValidateWebhook(data, headers, webhookSecret);
+            Assert.IsNotNull(@event);
         }
 
         private static async Task<Webhook> CreateBasicWebhook()
