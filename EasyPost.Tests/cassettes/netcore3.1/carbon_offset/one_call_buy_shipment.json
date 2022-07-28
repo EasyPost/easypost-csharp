@@ -1,0 +1,55 @@
+[
+  {
+    "Duration": 473,
+    "RecordedAt": "2022-07-27T15:16:17.397881-06:00",
+    "Request": {
+      "Body": "{\"shipment\":{\"to_address\":{\"name\":\"Dr. Steve Brule\",\"street1\":\"179 N Harbor Dr\",\"city\":\"Redondo Beach\",\"state\":\"CA\",\"zip\":\"90277\",\"country\":\"US\",\"phone\":\"<REDACTED>\"},\"from_address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\"},\"parcel\":{\"length\":\"10\",\"width\":\"8\",\"height\":\"4\",\"weight\":\"15.4\"},\"service\":\"First\",\"carrier_accounts\":[\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\"],\"carrier\":\"USPS\"},\"carbon_offset\":true}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "542"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Accept": "application/json",
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/shipments"
+    },
+    "Response": {
+      "Body": "{\"created_at\":\"2022-07-27T21:16:16Z\",\"is_return\":false,\"messages\":[],\"mode\":\"test\",\"options\":{\"currency\":\"USD\",\"payment\":{\"type\":\"SENDER\"},\"date_advance\":0},\"reference\":null,\"status\":\"unknown\",\"tracking_code\":\"9400100109361130319643\",\"updated_at\":\"2022-07-27T21:16:17Z\",\"batch_id\":null,\"batch_status\":null,\"batch_message\":null,\"customs_info\":null,\"from_address\":{\"id\":\"adr_59b1f9ee0df111edbe3dac1f6bc7bdc6\",\"object\":\"Address\",\"created_at\":\"2022-07-27T15:16:16-06:00\",\"updated_at\":\"2022-07-27T15:16:16-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"insurance\":null,\"order_id\":null,\"parcel\":{\"id\":\"prcl_fbd9fbd2c75d450b93aacba27dbdb5da\",\"object\":\"Parcel\",\"created_at\":\"2022-07-27T21:16:16Z\",\"updated_at\":\"2022-07-27T21:16:16Z\",\"length\":10.0,\"width\":8.0,\"height\":4.0,\"predefined_package\":null,\"weight\":15.4,\"mode\":\"test\"},\"postage_label\":{\"object\":\"PostageLabel\",\"id\":\"pl_77608b19a81f4c57b7274bf0fc66fe2a\",\"created_at\":\"2022-07-27T21:16:16Z\",\"updated_at\":\"2022-07-27T21:16:17Z\",\"date_advance\":0,\"integrated_form\":\"none\",\"label_date\":\"2022-07-27T21:16:16Z\",\"label_resolution\":300,\"label_size\":\"4x6\",\"label_type\":\"default\",\"label_file_type\":\"image/png\",\"label_url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/postage_label/20220727/f96e7069d9b849c09a65a54079998792.png\",\"label_pdf_url\":null,\"label_zpl_url\":null,\"label_epl2_url\":null,\"label_file\":null},\"rates\":[{\"id\":\"rate_915ceb2aeae746e8bf4b5e0fd2f12e4a\",\"object\":\"Rate\",\"created_at\":\"2022-07-27T21:16:16Z\",\"updated_at\":\"2022-07-27T21:16:16Z\",\"mode\":\"test\",\"service\":\"Priority\",\"carrier\":\"USPS\",\"rate\":\"7.90\",\"currency\":\"USD\",\"retail_rate\":\"9.45\",\"retail_currency\":\"USD\",\"list_rate\":\"7.90\",\"list_currency\":\"USD\",\"billing_type\":\"easypost\",\"delivery_days\":2,\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"est_delivery_days\":2,\"shipment_id\":\"shp_21d31173128544049e9c1f92f13a6136\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\",\"carbon_offset\":{\"object\":\"CarbonOffset\",\"grams\":36,\"price\":\"0.11\",\"currency\":\"USD\"}},{\"id\":\"rate_30106bad7f1f44518ac90193a4b79e89\",\"object\":\"Rate\",\"created_at\":\"2022-07-27T21:16:16Z\",\"updated_at\":\"2022-07-27T21:16:16Z\",\"mode\":\"test\",\"service\":\"Express\",\"carrier\":\"USPS\",\"rate\":\"29.50\",\"currency\":\"USD\",\"retail_rate\":\"33.55\",\"retail_currency\":\"USD\",\"list_rate\":\"29.50\",\"list_currency\":\"USD\",\"billing_type\":\"easypost\",\"delivery_days\":null,\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"est_delivery_days\":null,\"shipment_id\":\"shp_21d31173128544049e9c1f92f13a6136\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\",\"carbon_offset\":{\"object\":\"CarbonOffset\",\"grams\":36,\"price\":\"0.11\",\"currency\":\"USD\"}},{\"id\":\"rate_373e27af9f274d05861e60bb965fb5d8\",\"object\":\"Rate\",\"created_at\":\"2022-07-27T21:16:16Z\",\"updated_at\":\"2022-07-27T21:16:16Z\",\"mode\":\"test\",\"service\":\"ParcelSelect\",\"carrier\":\"USPS\",\"rate\":\"7.75\",\"currency\":\"USD\",\"retail_rate\":\"7.75\",\"retail_currency\":\"USD\",\"list_rate\":\"7.75\",\"list_currency\":\"USD\",\"billing_type\":\"easypost\",\"delivery_days\":5,\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"est_delivery_days\":5,\"shipment_id\":\"shp_21d31173128544049e9c1f92f13a6136\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\",\"carbon_offset\":{\"object\":\"CarbonOffset\",\"grams\":36,\"price\":\"0.11\",\"currency\":\"USD\"}},{\"id\":\"rate_1ad6688557a54c3a9235fdc70fd3b490\",\"object\":\"Rate\",\"created_at\":\"2022-07-27T21:16:16Z\",\"updated_at\":\"2022-07-27T21:16:16Z\",\"mode\":\"test\",\"service\":\"First\",\"carrier\":\"USPS\",\"rate\":\"5.57\",\"currency\":\"USD\",\"retail_rate\":\"5.57\",\"retail_currency\":\"USD\",\"list_rate\":\"5.57\",\"list_currency\":\"USD\",\"billing_type\":\"easypost\",\"delivery_days\":3,\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"est_delivery_days\":3,\"shipment_id\":\"shp_21d31173128544049e9c1f92f13a6136\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\",\"carbon_offset\":{\"object\":\"CarbonOffset\",\"grams\":36,\"price\":\"0.11\",\"currency\":\"USD\"}}],\"refund_status\":null,\"scan_form\":null,\"selected_rate\":{\"id\":\"rate_1ad6688557a54c3a9235fdc70fd3b490\",\"object\":\"Rate\",\"created_at\":\"2022-07-27T21:16:16Z\",\"updated_at\":\"2022-07-27T21:16:16Z\",\"mode\":\"test\",\"service\":\"First\",\"carrier\":\"USPS\",\"rate\":\"5.57\",\"currency\":\"USD\",\"retail_rate\":\"5.57\",\"retail_currency\":\"USD\",\"list_rate\":\"5.57\",\"list_currency\":\"USD\",\"billing_type\":\"easypost\",\"delivery_days\":3,\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"est_delivery_days\":3,\"shipment_id\":\"shp_21d31173128544049e9c1f92f13a6136\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\"},\"tracker\":{\"id\":\"trk_0070e95ad1f148048d0e124a759c8f9d\",\"object\":\"Tracker\",\"mode\":\"test\",\"tracking_code\":\"9400100109361130319643\",\"status\":\"unknown\",\"status_detail\":\"unknown\",\"created_at\":\"2022-07-27T21:16:17Z\",\"updated_at\":\"2022-07-27T21:16:17Z\",\"signed_by\":null,\"weight\":null,\"est_delivery_date\":null,\"shipment_id\":\"shp_21d31173128544049e9c1f92f13a6136\",\"carrier\":\"USPS\",\"tracking_details\":[],\"fees\":[],\"carrier_detail\":null,\"public_url\":\"https://track.easypost.com/djE6dHJrXzAwNzBlOTVhZDFmMTQ4MDQ4ZDBlMTI0YTc1OWM4Zjlk\"},\"to_address\":{\"id\":\"adr_59b011540df111edbe3cac1f6bc7bdc6\",\"object\":\"Address\",\"created_at\":\"2022-07-27T15:16:16-06:00\",\"updated_at\":\"2022-07-27T15:16:16-06:00\",\"name\":\"DR. STEVE BRULE\",\"company\":null,\"street1\":\"179 N HARBOR DR\",\"street2\":null,\"city\":\"REDONDO BEACH\",\"state\":\"CA\",\"zip\":\"90277-2506\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":33.8436,\"longitude\":-118.39177,\"time_zone\":\"America/Los_Angeles\"}}}},\"usps_zone\":4,\"return_address\":{\"id\":\"adr_59b1f9ee0df111edbe3dac1f6bc7bdc6\",\"object\":\"Address\",\"created_at\":\"2022-07-27T15:16:16-06:00\",\"updated_at\":\"2022-07-27T15:16:16-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"buyer_address\":{\"id\":\"adr_59b011540df111edbe3cac1f6bc7bdc6\",\"object\":\"Address\",\"created_at\":\"2022-07-27T15:16:16-06:00\",\"updated_at\":\"2022-07-27T15:16:16-06:00\",\"name\":\"DR. STEVE BRULE\",\"company\":null,\"street1\":\"179 N HARBOR DR\",\"street2\":null,\"city\":\"REDONDO BEACH\",\"state\":\"CA\",\"zip\":\"90277-2506\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":33.8436,\"longitude\":-118.39177,\"time_zone\":\"America/Los_Angeles\"}}}},\"forms\":[],\"fees\":[{\"object\":\"Fee\",\"type\":\"LabelFee\",\"amount\":\"0.01000\",\"charged\":true,\"refunded\":false},{\"object\":\"Fee\",\"type\":\"PostageFee\",\"amount\":\"5.57000\",\"charged\":true,\"refunded\":false},{\"object\":\"Fee\",\"type\":\"CarbonOffsetFee\",\"amount\":\"0.11000\",\"charged\":true,\"refunded\":false}],\"id\":\"shp_21d31173128544049e9c1f92f13a6136\",\"object\":\"Shipment\"}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "7369"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "e1ce24f762e1ab20ec639561000513c5",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "Location": "/api/v2/shipments/shp_21d31173128544049e9c1f92f13a6136",
+        "ETag": "W/\"739f056598e9ac3ec924fa2ab7d7c9c4\"",
+        "x-runtime": "1.257186",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202207272030-717cb56530-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq 403f17ff97,extlb1nuq 403f17ff97",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  }
+]

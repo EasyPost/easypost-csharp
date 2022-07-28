@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -31,9 +32,7 @@ namespace EasyPost.Tests
             Assert.IsNotNull(carbonOffset.price);
         }
 
-        [Ignore]
         [TestMethod]
-        // Functionality not live yet.
         public async Task TestBuyShipment()
         {
             _vcr.SetUpTest("buy_shipment");
@@ -47,9 +46,7 @@ namespace EasyPost.Tests
             Assert.IsTrue(carbonOffsetIncluded);
         }
 
-        [Ignore]
         [TestMethod]
-        // Functionality not live yet.
         public async Task TestOneCallBuyShipment()
         {
             _vcr.SetUpTest("one_call_buy_shipment");
@@ -59,6 +56,29 @@ namespace EasyPost.Tests
             Assert.IsNotNull(shipment.fees);
             bool carbonOffsetIncluded = shipment.fees.Any(fee => fee.type == "CarbonOffsetFee");
             Assert.IsTrue(carbonOffsetIncluded);
+        }
+
+        [TestMethod]
+        public async Task TestRegenerateRates()
+        {
+            _vcr.SetUpTest("regenerate_rates");
+
+            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyCarbonOffsetShipment);
+            List<Rate> baseRates = shipment.rates;
+
+            await shipment.RegenerateRates(null, true);
+            List<Rate> newRatesWithCarbon = shipment.rates;
+
+            await shipment.RegenerateRates(null, false);
+            List<Rate> newRatesWithoutCarbon = shipment.rates;
+
+            Rate baseRate = baseRates.First();
+            Rate newRateWithCarbon = newRatesWithCarbon.First();
+            Rate newRateWithoutCarbon = newRatesWithoutCarbon.First();
+
+            Assert.IsNull(baseRate.carbon_offset);
+            Assert.IsNotNull(newRateWithCarbon.carbon_offset);
+            Assert.IsNull(newRateWithoutCarbon.carbon_offset);
         }
     }
 }

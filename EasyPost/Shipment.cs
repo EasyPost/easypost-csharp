@@ -86,8 +86,8 @@ namespace EasyPost
         /// </summary>
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
-        /// <param name="carbonOffset">Whether to apply carbon offset to this purchase.</param>
-        public async Task Buy(string rateId, string? insuranceValue = null, bool carbonOffset = false)
+        /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
+        public async Task Buy(string rateId, string? insuranceValue = null, bool withCarbonOffset = false)
         {
             if (id == null)
             {
@@ -107,17 +107,15 @@ namespace EasyPost
                                 "id", rateId
                             }
                         }
+                    },
+                    {
+                        "carbon_offset", withCarbonOffset
                     }
                 };
 
             if (insuranceValue != null)
             {
                 body["insurance"] = insuranceValue;
-            }
-
-            if (carbonOffset)
-            {
-                body["carbon_offset"] = true;
             }
 
             request.AddParameters(body);
@@ -277,12 +275,16 @@ namespace EasyPost
         ///     Refresh the rates for this Shipment.
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
-        public async Task RegenerateRates(Dictionary<string, object>? parameters = null)
+        /// <param name="withCarbonOffset">Whether to use carbon offset when re-rating the shipment.</param>
+        public async Task RegenerateRates(Dictionary<string, object>? parameters = null, bool withCarbonOffset = false)
         {
             if (id == null)
             {
                 throw new PropertyMissing("id");
             }
+
+            parameters ??= new Dictionary<string, object>();
+            parameters.Add("carbon_offset", withCarbonOffset);
 
             Request request = new Request("shipments/{id}/rerate", Method.Post);
             request.AddParameters(parameters);
@@ -337,9 +339,9 @@ namespace EasyPost
         ///     * {"carrier_accounts", List&lt;string&gt;} List of CarrierAccount.id to limit rating.
         ///     All invalid keys will be ignored.
         /// </param>
-        /// <param name="carbonOffset">Whether to use carbon offset when creating the shipment.</param>
+        /// <param name="withCarbonOffset">Whether to use carbon offset when creating the shipment.</param>
         /// <returns>An EasyPost.Shipment instance.</returns>
-        public static async Task<Shipment> Create(Dictionary<string, object>? parameters = null, bool carbonOffset = false)
+        public static async Task<Shipment> Create(Dictionary<string, object>? parameters = null, bool withCarbonOffset = false)
         {
             Request request = new Request("shipments", Method.Post);
             request.AddParameters(new Dictionary<string, object>
@@ -348,7 +350,7 @@ namespace EasyPost
                     "shipment", parameters ?? new Dictionary<string, object>()
                 },
                 {
-                    "carbon_offset", carbonOffset
+                    "carbon_offset", withCarbonOffset
                 }
             });
 
