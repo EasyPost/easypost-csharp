@@ -1,13 +1,13 @@
 [
   {
-    "Duration": 183,
-    "RecordedAt": "2022-05-25T14:11:51.543404-06:00",
+    "Duration": 215,
+    "RecordedAt": "2022-07-29T13:55:27.835963-06:00",
     "Request": {
-      "Body": "{\"verify_strict\":[true],\"address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\"}}",
+      "Body": "{\"verify_strict\":true,\"address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\"}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "212"
+        "Content-Length": "210"
       },
       "Method": "POST",
       "RequestHeaders": {
@@ -19,7 +19,7 @@
       "Uri": "https://api.easypost.com/v2/addresses"
     },
     "Response": {
-      "Body": "{\"id\":\"adr_ea495c02dc6611ecbdbdac1f6bc7bdc6\",\"object\":\"Address\",\"created_at\":\"2022-05-25T14:11:51-06:00\",\"updated_at\":\"2022-05-25T14:11:51-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":true,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.77551,\"longitude\":-122.39697,\"time_zone\":\"America/Los_Angeles\"}}}}",
+      "Body": "{\"id\":\"adr_64be44810f7811eda80fac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2022-07-29T13:55:27-06:00\",\"updated_at\":\"2022-07-29T13:55:27-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":true,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.77551,\"longitude\":-122.39697,\"time_zone\":\"America/Los_Angeles\"}}}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -34,16 +34,17 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "dc458af3628e8d87e3be52d600297e57",
+        "x-ep-request-uuid": "999d146b62e43b2fec3e31d90007b7f2",
         "Cache-Control": "no-store, no-cache",
         "Pragma": "no-cache",
-        "Location": "/api/v2/addresses/adr_ea495c02dc6611ecbdbdac1f6bc7bdc6",
-        "ETag": "W/\"5cdbff5005faa706ceba621c4913921b\"",
-        "x-runtime": "0.042597",
-        "x-node": "bigweb3nuq",
-        "x-version-label": "easypost-202205241740-79aa1a2e75-master",
+        "Location": "/api/v2/addresses/adr_64be44810f7811eda80fac1f6b0a0d1e",
+        "ETag": "W/\"1b1b9bdf584903cb443c25c30afc9a18\"",
+        "x-runtime": "0.053320",
+        "x-node": "bigweb7nuq",
+        "x-version-label": "easypost-202207291722-ecd5579616-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 570dfcbc0a,extlb2nuq fc4d5d217f",
+        "x-canary": "direct",
+        "x-proxied": "intlb1nuq 403f17ff97,extlb2nuq 403f17ff97",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

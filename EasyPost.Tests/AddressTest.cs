@@ -33,15 +33,27 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
+        public async Task TestCreateVerify()
+        {
+            _vcr.SetUpTest("create_verify");
+
+            Dictionary<string, object> addressData = Fixture.IncorrectAddressToVerify;
+            addressData.Add("verify", true);
+
+            Address address = await Address.Create(addressData);
+
+            Assert.IsInstanceOfType(address, typeof(Address));
+            Assert.IsTrue(address.id.StartsWith("adr_"));
+            Assert.AreEqual("417 MONTGOMERY ST FL 5", address.street1);
+        }
+
+        [TestMethod]
         public async Task TestCreateVerifyStrict()
         {
             _vcr.SetUpTest("create_verify_strict");
 
             Dictionary<string, object> addressData = Fixture.BasicAddress;
-            addressData.Add("verify_strict", new List<bool>
-            {
-                true
-            });
+            addressData.Add("verify_strict", true);
 
             Address address = await Address.Create(addressData);
 
@@ -50,6 +62,23 @@ namespace EasyPost.Tests
             Assert.AreEqual("388 TOWNSEND ST APT 20", address.street1);
         }
 
+        [TestMethod]
+        public async Task TestCreateVerifyArray()
+        {
+            _vcr.SetUpTest("create_verify_array");
+
+            Dictionary<string, object> addressData = Fixture.IncorrectAddressToVerify;
+            addressData.Add("verify", new List<bool>
+            {
+                true
+            });
+
+            Address address = await Address.Create(addressData);
+
+            Assert.IsInstanceOfType(address, typeof(Address));
+            Assert.IsTrue(address.id.StartsWith("adr_"));
+            Assert.AreEqual("417 MONTGOMERY ST FL 5", address.street1);
+        }
 
         [TestMethod]
         public async Task TestRetrieve()
@@ -88,27 +117,11 @@ namespace EasyPost.Tests
         }
 
         [TestMethod]
-        public async Task TestCreateVerify()
-        {
-            _vcr.SetUpTest("create_verify");
-
-            Address address = await Address.Create(Fixture.IncorrectAddressToVerify);
-
-            Assert.IsInstanceOfType(address, typeof(Address));
-            Assert.IsTrue(address.id.StartsWith("adr_"));
-            Assert.AreEqual("417 MONTGOMERY ST FL 5", address.street1);
-        }
-
-        [TestMethod]
         public async Task TestCreateAndVerify()
         {
             _vcr.SetUpTest("create_and_verify");
 
             Dictionary<string, object> addressData = Fixture.BasicAddress;
-            addressData.Add("verify_strict", new List<bool>
-            {
-                true
-            });
 
             Address address = await Address.CreateAndVerify(addressData);
 
@@ -121,7 +134,6 @@ namespace EasyPost.Tests
         public async Task TestVerify()
         {
             _vcr.SetUpTest("verify");
-
 
             Address address = await CreateBasicAddress();
 
