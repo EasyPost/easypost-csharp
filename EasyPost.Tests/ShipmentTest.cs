@@ -408,7 +408,7 @@ namespace EasyPost.Tests
             Shipment shipment = await Shipment.Create(Fixture.OneCallBuyCarbonOffsetShipment);
             List<Rate> baseRates = shipment.rates;
 
-            await shipment.RegenerateRates(null, true);
+            await shipment.RegenerateRates(withCarbonOffset: true);
             List<Rate> newRatesWithCarbon = shipment.rates;
 
             Rate baseRate = baseRates.First();
