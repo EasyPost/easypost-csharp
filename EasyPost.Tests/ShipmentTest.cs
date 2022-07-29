@@ -381,7 +381,7 @@ namespace EasyPost.Tests
 
             Shipment shipment = await Shipment.Create(Fixture.FullCarbonOffsetShipment);
 
-            await shipment.Buy(shipment.LowestRate(), null, true);
+            await shipment.Buy(shipment.LowestRate(), withCarbonOffset: true);
 
             Assert.IsNotNull(shipment.fees);
             bool carbonOffsetIncluded = shipment.fees.Any(fee => fee.type == "CarbonOffsetFee");

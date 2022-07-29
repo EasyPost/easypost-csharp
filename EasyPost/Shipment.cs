@@ -137,8 +137,8 @@ namespace EasyPost
         /// </summary>
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
-        /// <param name="carbonOffset">Whether to apply carbon offset to this purchase.</param>
-        public async Task Buy(Rate rate, string? insuranceValue = null, bool carbonOffset = false) => await Buy(rate.id, insuranceValue, carbonOffset);
+        /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
+        public async Task Buy(Rate rate, string? insuranceValue = null, bool withCarbonOffset = false) => await Buy(rate.id, insuranceValue, withCarbonOffset);
 
         /// <summary>
         ///     Generate a form for the shipment.
