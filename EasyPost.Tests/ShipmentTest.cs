@@ -357,5 +357,65 @@ namespace EasyPost.Tests
             Assert.AreEqual(formType, form.form_type);
             Assert.IsTrue(form.form_url != null);
         }
+
+        [TestMethod]
+        public async Task TestCreateShipmentWithCarbonOffset()
+        {
+            _vcr.SetUpTest("create_shipment_with_carbon_offset");
+
+            Shipment shipment = await Shipment.Create(Fixture.BasicCarbonOffsetShipment, true);
+
+            Assert.IsInstanceOfType(shipment, typeof(Shipment));
+
+            Rate rate = shipment.LowestRate();
+            CarbonOffset carbonOffset = rate.carbon_offset;
+
+            Assert.IsNotNull(carbonOffset);
+            Assert.IsNotNull(carbonOffset.price);
+        }
+
+        [TestMethod]
+        public async Task TestBuyShipmentWithCarbonOffset()
+        {
+            _vcr.SetUpTest("buy_shipment_with_carbon_offset");
+
+            Shipment shipment = await Shipment.Create(Fixture.FullCarbonOffsetShipment);
+
+            await shipment.Buy(shipment.LowestRate(), null, true);
+
+            Assert.IsNotNull(shipment.fees);
+            bool carbonOffsetIncluded = shipment.fees.Any(fee => fee.type == "CarbonOffsetFee");
+            Assert.IsTrue(carbonOffsetIncluded);
+        }
+
+        [TestMethod]
+        public async Task TestOneCallBuyShipmentWithCarbonOffset()
+        {
+            _vcr.SetUpTest("one_call_buy_shipment_with_carbon_offset");
+
+            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyCarbonOffsetShipment, true);
+
+            Assert.IsNotNull(shipment.fees);
+            bool carbonOffsetIncluded = shipment.fees.Any(fee => fee.type == "CarbonOffsetFee");
+            Assert.IsTrue(carbonOffsetIncluded);
+        }
+
+        [TestMethod]
+        public async Task TestRegenerateRatesWithCarbonOffset()
+        {
+            _vcr.SetUpTest("regenerate_rates_with_carbon_offset");
+
+            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyCarbonOffsetShipment);
+            List<Rate> baseRates = shipment.rates;
+
+            await shipment.RegenerateRates(null, true);
+            List<Rate> newRatesWithCarbon = shipment.rates;
+
+            Rate baseRate = baseRates.First();
+            Rate newRateWithCarbon = newRatesWithCarbon.First();
+
+            Assert.IsNull(baseRate.carbon_offset);
+            Assert.IsNotNull(newRateWithCarbon.carbon_offset);
+        }
     }
 }
