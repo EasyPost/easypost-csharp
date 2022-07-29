@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## NEXT RELEASE
+
+- Removes the unusable `carrier` param from the `verify` function on an Address
+
 ## v3.3.0 (2022-07-18)
 
 - Adds ability to generate shipment forms via `GenerateForm` function

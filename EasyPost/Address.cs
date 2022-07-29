@@ -32,7 +32,7 @@ namespace EasyPost
         ///     Verify an address.
         /// </summary>
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
-        public async Task Verify(string? carrier = null)
+        public async Task Verify()
         {
             if (id == null)
             {
@@ -44,11 +44,6 @@ namespace EasyPost
                 RootElement = "address"
             };
             request.AddUrlSegment("id", id);
-
-            if (carrier != null)
-            {
-                request.AddParameter("carrier", carrier);
-            }
 
             Merge(await request.Execute<Address>());
         }
@@ -92,8 +87,8 @@ namespace EasyPost
         ///     * {"country", string}
         ///     * {"phone", string}
         ///     * {"email", string}
-        ///     * {"verifications", List&lt;string&gt;} Possible items are "delivery" and "zip4".
-        ///     * {"strict_verifications", List&lt;string&gt;} Possible items are "delivery" and "zip4".
+        ///     * {"verifications", List&lt;Any&gt;} Possible items are true, "delivery" and "zip4".
+        ///     * {"strict_verifications", List&lt;Any&gt;} Possible items are true, "delivery" and "zip4".
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>

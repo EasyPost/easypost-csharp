@@ -80,12 +80,6 @@ namespace EasyPost.Tests
                 return new Dictionary<string, object>
                 {
                     {
-                        "verify", new List<bool>
-                        {
-                            true
-                        }
-                    },
-                    {
                         "street1", "417 montgomery street"
                     },
                     {
