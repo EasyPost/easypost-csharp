@@ -10,7 +10,6 @@ namespace EasyPost
         public string currency { get; set; }
         [JsonProperty("grams")]
         public int grams { get; set; }
-
         [JsonProperty("object")]
         public string @object { get; set; }
         [JsonProperty("price")]
