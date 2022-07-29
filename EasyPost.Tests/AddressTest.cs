@@ -37,8 +37,10 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("create_verify");
 
-            Address address = await Address.Create(Fixture.IncorrectAddressToVerify);
+            Dictionary<string, object> addressData = Fixture.IncorrectAddressToVerify;
             addressData.Add("verify", true);
+
+            Address address = await Address.Create(addressData);
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.id.StartsWith("adr_"));
@@ -65,11 +67,13 @@ namespace EasyPost.Tests
         {
             _vcr.SetUpTest("create_verify_array");
 
-            Address address = await Address.Create(Fixture.IncorrectAddressToVerify);
+            Dictionary<string, object> addressData = Fixture.IncorrectAddressToVerify;
             addressData.Add("verify", new List<bool>
             {
                 true
             });
+
+            Address address = await Address.Create(addressData);
 
             Assert.IsInstanceOfType(address, typeof(Address));
             Assert.IsTrue(address.id.StartsWith("adr_"));

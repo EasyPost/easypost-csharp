@@ -87,8 +87,8 @@ namespace EasyPost
         ///     * {"country", string}
         ///     * {"phone", string}
         ///     * {"email", string}
-        ///     * {"verifications", List&lt;Any&gt;} Possible items are true, "delivery" and "zip4".
-        ///     * {"strict_verifications", List&lt;Any&gt;} Possible items are true, "delivery" and "zip4".
+        ///     * {"verifications", object} Possible items are true, "delivery" and "zip4".
+        ///     * {"strict_verifications", object} Possible items are true, "delivery" and "zip4".
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
