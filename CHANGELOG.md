@@ -1,7 +1,10 @@
 # CHANGELOG
 
-## NEXT RELEASE
-
+## Next Release
+- Adds the ability to create a shipment with carbon offset
+- Adds the ability to buy a shipment with carbon offset
+- Adds the ability to one-call-buy a shipment with carbon offset
+- Adds the ability to re-rate a shipment with carbon offset
 - Removes the unusable `carrier` param from the `verify` function on an Address
 
 ## v3.3.0 (2022-07-18)

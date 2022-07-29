@@ -9,6 +9,10 @@ namespace EasyPost
     {
         #region JSON Properties
 
+        [JsonProperty("billing_type")]
+        public string billing_type { get; set; }
+        [JsonProperty("carbon_offset")]
+        public CarbonOffset carbon_offset { get; set; }
         [JsonProperty("carrier")]
         public string carrier { get; set; }
         [JsonProperty("carrier_account_id")]
@@ -47,8 +51,6 @@ namespace EasyPost
         public string shipment_id { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; set; }
-        [JsonProperty("billing_type")]
-        public string billing_type { get; set; }
 
         #endregion
 
