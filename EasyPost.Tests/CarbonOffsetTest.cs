@@ -69,16 +69,11 @@ namespace EasyPost.Tests
             await shipment.RegenerateRates(null, true);
             List<Rate> newRatesWithCarbon = shipment.rates;
 
-            await shipment.RegenerateRates(null, false);
-            List<Rate> newRatesWithoutCarbon = shipment.rates;
-
             Rate baseRate = baseRates.First();
             Rate newRateWithCarbon = newRatesWithCarbon.First();
-            Rate newRateWithoutCarbon = newRatesWithoutCarbon.First();
 
             Assert.IsNull(baseRate.carbon_offset);
             Assert.IsNotNull(newRateWithCarbon.carbon_offset);
-            Assert.IsNull(newRateWithoutCarbon.carbon_offset);
         }
     }
 }
