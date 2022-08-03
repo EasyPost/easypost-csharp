@@ -9,21 +9,18 @@ jobs:
   lint:
     runs-on: windows-2022
     steps:
-      - name: Install dotnet-format
-        run: dotnet tool install -g dotnet-format
       - uses: actions/checkout@v3
       - name: Check dotnet Style
-        run: dotnet-format --check --exclude /
+        run: make lint
   security:
     runs-on: windows-2022
     steps:
-      - name: Install security-code-scan
-        run: dotnet tool install -g security-scan
       - uses: actions/checkout@v3
+      - name: Install security-code-scan
+        run: make install-scanner
       - name: Run security analysis
-        run: security-scan EasyPost.sln --ignore-msbuild-errors --verbose
-        # "--ignore-msbuild-errors" needed since MSBuild does not like F#: https://github.com/security-code-scan/security-code-scan/issues/235
-        # In the future, we can collect the output logs by enabling Code Scanning and using the pre-built GitHub Action: https://github.com/marketplace/actions/securitycodescan
+        run: make scan
+        # TODO: In the future, we can collect the output logs by enabling Code Scanning and using the pre-built GitHub Action: https://github.com/marketplace/actions/securitycodescan
         # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github#uploading-a-code-scanning-analysis-with-github-actions
   NET_Tests:
     # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
@@ -61,7 +58,7 @@ jobs:
         uses: darenm/Setup-VSTest@v1
         # Restore required NuGet packages
       - name: Restore NuGet Packages
-        run: nuget restore EasyPost.sln
+        run: make restore
         # Build the test project, targeting the specific framework
       - name: Build Solution
         run: msbuild EasyPost.Tests\EasyPost.Tests.csproj /p:platform="Any CPU" /p:configuration="Debug" /p:target="Rebuild" /p:TargetFramework="${{ matrix.framework }}" /p:outputPath="bin/GitHubCI/${{ matrix.framework }}" -restore
@@ -97,7 +94,7 @@ jobs:
         uses: darenm/Setup-VSTest@v1
         # Restore required NuGet packages
       - name: Restore NuGet Packages
-        run: nuget restore EasyPost.sln
+        run: make restore
         # Build the test project
       - name: Build Solution
         run: msbuild ${{ steps.test_project.outputs.test_file }}\${{ steps.test_project.outputs.test_file }}.${{ matrix.ext }} /p:platform="Any CPU" /p:configuration="Debug" /p:outputPath="bin/Test" /p:target="Rebuild" -restore

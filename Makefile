@@ -2,6 +2,46 @@
 help:
 	@cat Makefile | grep '^## ' --color=never | cut -c4- | sed -e "`printf 's/ - /\t- /;'`" | column -s "`printf '\t'`" -t
 
+## build - Build the project in Debug mode
+build:
+	dotnet msbuild -property:Configuration="Debug" -target:Rebuild -restore
+
+## build-prod - Build the project in Release mode
+build-prod:
+	dotnet msbuild -property:Configuration="Release" -target:Rebuild -restore
+
+## clean - Clean the project
+clean:
+	dotnet clean
+	rm -rf *.nupkg
+
+## coverage - Generate coverage reports for the project
+coverage:
+	./generate_test_reports.sh
+
+## format - Formats the project
+format:
+	dotnet format
+
+## install-cert - Install the PFX certificate to your system (Windows only)
+# @parameters:
+# cert= - The certificate to use for signing the built assets.
+# pass= - The password for the certificate.
+install-cert:
+	scripts\install_cert.bat ${cert} ${pass}
+
+## install-scanner - Install SecurityCodeScan to your system
+install-scanner:
+	dotnet tool install -g security-scan
+
+## lint - Lints the project
+lint:
+	dotnet format --verify-no-changes
+
+## lint-scripts - Lint and validate the Batch scripts (Windows only)
+lint-scripts:
+	scripts\lint_scripts.bat
+
 ## prep-release - Build, sign and package the project for distribution, signing with the provided certificate (Windows only)
 # @parameters:
 # cert= - The certificate to use for signing the built assets.
@@ -23,56 +63,14 @@ publish-all:
 publish:
 	scripts\publish_nuget.bat ${file} ${key}
 
-## build-dev - Build the project in Debug mode
-build-dev:
-	dotnet msbuild -property:Configuration="Debug" -target:Rebuild -restore
-
-## build - Build the project in Release mode
-build:
-	dotnet msbuild -property:Configuration="Release" -target:Rebuild -restore
-
-## install-cert - Install the PFX certificate to your system (Windows only)
-# @parameters:
-# cert= - The certificate to use for signing the built assets.
-# pass= - The password for the certificate.
-install-cert:
-	scripts\install_cert.bat ${cert} ${pass}
-
-## install-scanner - Install SecurityCodeScan to your system
-install-scanner:
-	dotnet tool install -g security-scan
-
-## sign - Sign all generated DLLs and NuGet packages with the provided certificate (Windows only)
-# @parameters:
-# cert= - The certificate to use for signing the built assets.
-# pass= - The password for the certificate.
-sign:
-	install-cert cert=${cert} pass=${pass}
-	scripts\sign_assemblies.bat ${cert} ${pass} EasyPost
-
-## clean - Clean the project
-clean:
-	dotnet clean
+## release - Cuts a release for the project on GitHub (requires GitHub CLI)
+# tag = The associated tag title of the release
+release:
+	gh release create ${tag} *.nupkg
 
 ## restore - Restore the project
 restore:
 	dotnet restore
-
-## lint - Lint the project
-lint:
-	dotnet format
-
-## lint-check - Check lint issues in the project (does not make any changes)
-lint-check:
-	dotnet format --verify-no-changes
-
-## test - Test the project
-test:
-	dotnet test
-
-## lint-scripts - Lint and validate the Batch scripts (Windows only)
-lint-scripts:
-	scripts\lint_scripts.bat
 
 ## scan - Scan the project for security issues (must run install-scanner first)
 # Makefile cannot access global dotnet tools, so you need to run the below command manually.
@@ -84,4 +82,16 @@ scan:
 setup:
 	scripts\setup.bat
 
-.PHONY: help release build-dev build install-cert sign clean restore lint lint-check test lint-scripts install-scanner scan
+## sign - Sign all generated DLLs and NuGet packages with the provided certificate (Windows only)
+# @parameters:
+# cert= - The certificate to use for signing the built assets.
+# pass= - The password for the certificate.
+sign:
+	install-cert cert=${cert} pass=${pass}
+	scripts\sign_assemblies.bat ${cert} ${pass} EasyPost
+
+## test - Test the project
+test:
+	dotnet test
+
+.PHONY: help build build-prod clean format install-cert install-scanner lint lint-scripts pre-release publish-all publish release restore scan setup sign test
