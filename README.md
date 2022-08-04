@@ -112,15 +112,23 @@ Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_G
 It is highly recommended to use a purpose-built IDE when working with this project such as `Visual Studio`. Most actions such as building, cleaning, and testing can be done via the GUI.
 
 ```bash
+# Build project
+make build
+
 # Lint project
-dotnet-format
+make lint
+
+# Format project
+make format
 
 # Run tests (recommended to instead run via an IDE like Visual Studio)
-EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... dotnet test
+EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make test
 
-# Pull EasyVCR submodule
-git submodule init
-git submodule update --recursive
+# Generate coverage reports
+EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make coverage
+
+# Run security analysis
+make scan
 ```
 
 ### Testing
