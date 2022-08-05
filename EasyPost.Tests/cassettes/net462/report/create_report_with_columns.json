@@ -1,0 +1,54 @@
+[
+  {
+    "Duration": 193,
+    "RecordedAt": "2022-08-05T15:16:54.979683-06:00",
+    "Request": {
+      "Body": "{\"columns\":[\"usps_zone\"],\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\"}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "75"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/reports/shipment"
+    },
+    "Response": {
+      "Body": "{\"id\":\"shprep_0ec5de0f383a4362ae7c9c5ec8021b3e\",\"object\":\"ShipmentReport\",\"created_at\":\"2022-08-05T21:16:54Z\",\"updated_at\":\"2022-08-05T21:16:54Z\",\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null,\"include_children\":false}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "283"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "6e23ee7462ed88c6ec70a8b000038cae",
+        "Cache-Control": "no-store, no-cache",
+        "Pragma": "no-cache",
+        "ETag": "W/\"4c3b757883993c00a8aebf3ae15c4834\"",
+        "x-runtime": "0.035844",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202208051947-e76b58206c-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq 403f17ff97,extlb2nuq 9ce216bfac",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  }
+]
