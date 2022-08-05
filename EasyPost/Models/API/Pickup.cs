@@ -31,7 +31,7 @@ namespace EasyPost.Models.API
         [JsonProperty("min_datetime")]
         public DateTime min_datetime { get; set; }
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public new string mode { get; set; }
         [JsonProperty("name")]
         public string name { get; set; }
         [JsonProperty("pickup_rates")]

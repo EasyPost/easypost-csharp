@@ -43,7 +43,7 @@ namespace EasyPost.Models.API
         [JsonProperty("federal_tax_id")]
         public string federal_tax_id { get; set; }
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public new string mode { get; set; }
         [JsonProperty("residential")]
         public bool? residential { get; set; }
         [JsonProperty("state_tax_id")]

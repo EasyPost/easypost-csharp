@@ -33,7 +33,7 @@ namespace EasyPost.Models.API
         [JsonProperty("list_rate")]
         public string list_rate { get; set; }
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public new string mode { get; set; }
 
         [JsonProperty("rate")]
         public string rate { get; set; }

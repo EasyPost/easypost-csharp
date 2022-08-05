@@ -27,7 +27,7 @@ namespace EasyPost.Models.API
         [JsonProperty("messages")]
         public List<Message> messages { get; set; }
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public new string mode { get; set; }
         [JsonProperty("rates")]
         public List<Rate> rates { get; set; }
         [JsonProperty("reference")]

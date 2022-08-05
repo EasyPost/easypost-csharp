@@ -18,7 +18,7 @@ namespace EasyPost.Models.API
         public DateTime? est_delivery_date { get; set; }
 
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public new string mode { get; set; }
         [JsonProperty("public_url")]
         public string public_url { get; set; }
         [JsonProperty("shipment_id")]

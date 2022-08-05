@@ -18,7 +18,7 @@ namespace EasyPost.Models.API
         public string hs_tariff_number { get; set; }
 
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public new string mode { get; set; }
         [JsonProperty("origin_country")]
         public string origin_country { get; set; }
         [JsonProperty("quantity")]

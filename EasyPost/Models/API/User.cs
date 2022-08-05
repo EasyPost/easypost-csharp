@@ -47,7 +47,7 @@ namespace EasyPost.Models.API
         /// <returns>Whether the request was successful or not.</returns>
         public async Task Delete()
         {
-            await Delete( $"users/{id}");
+            await Delete($"users/{id}");
         }
 
         /// <summary>

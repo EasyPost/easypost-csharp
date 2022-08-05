@@ -15,7 +15,7 @@ namespace EasyPost.Models.API
         [JsonProperty("carrier_account_id")]
         public string carrier_account_id { get; set; }
         [JsonProperty("created_at")]
-        public DateTime created_at { get; set; }
+        public new DateTime created_at { get; set; }
         [JsonProperty("currency")]
         public string currency { get; set; }
         [JsonProperty("delivery_date")]
@@ -32,7 +32,7 @@ namespace EasyPost.Models.API
         [JsonProperty("list_rate")]
         public double list_rate { get; set; }
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public new string mode { get; set; }
         [JsonProperty("rate")]
         public double rate { get; set; }
         [JsonProperty("retail_currency")]
@@ -46,7 +46,7 @@ namespace EasyPost.Models.API
         [JsonProperty("time_in_transit")]
         public TimeInTransit time_in_transit { get; set; }
         [JsonProperty("updated_at")]
-        public DateTime updated_at { get; set; }
+        public new DateTime updated_at { get; set; }
 
         #endregion
     }

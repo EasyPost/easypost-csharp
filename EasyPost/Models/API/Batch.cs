@@ -19,7 +19,7 @@ namespace EasyPost.Models.API
         [JsonProperty("message")]
         public string message { get; set; }
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public new string mode { get; set; }
         [JsonProperty("num_shipments")]
         public int num_shipments { get; set; }
         [JsonProperty("reference")]
@@ -63,9 +63,9 @@ namespace EasyPost.Models.API
         public async Task<Batch> AddShipments(IEnumerable<string> shipmentIds)
         {
             List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment
-                {
-                    id = shipmentId
-                })
+            {
+                id = shipmentId
+            })
                 .ToList();
 
             return await AddShipments(shipments);
@@ -137,9 +137,9 @@ namespace EasyPost.Models.API
         public async Task<Batch> RemoveShipments(IEnumerable<string> shipmentIds)
         {
             List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment
-                {
-                    id = shipmentId
-                })
+            {
+                id = shipmentId
+            })
                 .ToList();
 
             return await RemoveShipments(shipments);

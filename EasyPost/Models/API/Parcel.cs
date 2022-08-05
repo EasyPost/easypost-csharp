@@ -13,7 +13,7 @@ namespace EasyPost.Models.API
         [JsonProperty("length")]
         public double? length { get; set; }
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public new string mode { get; set; }
         [JsonProperty("predefined_package")]
         public string predefined_package { get; set; }
 

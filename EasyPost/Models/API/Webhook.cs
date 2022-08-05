@@ -15,7 +15,7 @@ namespace EasyPost.Models.API
         public DateTime? disabled_at { get; set; }
 
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public new string mode { get; set; }
         [JsonProperty("url")]
         public string url { get; set; }
 

@@ -39,7 +39,7 @@ namespace EasyPost.Models.API
         [JsonProperty("messages")]
         public List<Message> messages { get; set; }
         [JsonProperty("mode")]
-        public string mode { get; set; }
+        public new string mode { get; set; }
         [JsonProperty("options")]
         public Options options { get; set; }
         [JsonProperty("order_id")]
