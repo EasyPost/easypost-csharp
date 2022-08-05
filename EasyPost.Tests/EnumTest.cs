@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using EasyPost.Models.API;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -45,7 +46,7 @@ namespace EasyPost.Tests
             foreach (var accuracy in accuracies)
             {
                 Assert.IsInstanceOfType(accuracy, typeof(SmartrateAccuracy));
-                Assert.IsTrue(enumValues.Contains(accuracy.Name));
+                Assert.IsTrue(enumValues.Contains((string)accuracy.Value));
             }
         }
     }

@@ -32,7 +32,7 @@ namespace example
         {
             EasyPost.ClientManager.SetCurrent(Environment.GetEnvironmentVariable("EASYPOST_API_KEY"));
 
-            Dictionary<string, object> fromAddress = new Dictionary<string, object>() {
+            Dictionary<string, object?> fromAddress = new Dictionary<string, object?>() {
                 { "name", "Dr. Steve Brule" },
                 { "street1", "417 Montgomery Street" },
                 { "street2", "5th Floor" },
@@ -43,7 +43,7 @@ namespace example
                 { "phone", "4153334444" }
             };
 
-            Dictionary<string, object> toAddress = new Dictionary<string, object>() {
+            Dictionary<string, object?> toAddress = new Dictionary<string, object?>() {
                 { "company", "EasyPost" },
                 { "street1", "417 Montgomery Street" },
                 { "street2", "Floor 5" },
@@ -54,14 +54,14 @@ namespace example
                 { "phone", "415-379-7678" }
             };
 
-            Dictionary<string, object> parcel = new Dictionary<string, object>() {
+            Dictionary<string, object?> parcel = new Dictionary<string, object?>() {
                 { "length", 8 },
                 { "width", 6 },
                 { "height", 5 },
                 { "weight", 10 },
             }
 
-            Shipment shipment = await Shipment.Create(new Dictionary<string, object>() {
+            Shipment shipment = await Shipment.Create(new Dictionary<string, object?>() {
                 { "from_address", fromAddress },
                 { "to_address", toAddress },
                 { "parcel", parcel },

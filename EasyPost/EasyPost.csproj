@@ -55,11 +55,6 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\EasyPost.pub">
-      <Link>EasyPost.pub</Link>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />
     <PackageReference Include="RestSharp" Version="[107.3.0, 108.0.0)" />
     <PackageReference Include="SecurityCodeScan.VS2019" Version="[5.0.0, 6.0.0)">
@@ -68,7 +63,14 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    <None Include="..\EasyPost.pub">
+      <Link>EasyPost.pub</Link>
+    </None>
+    <None Include="..\README.md">
+      <Pack>true</Pack>
+      <PackagePath>/</PackagePath>
+      <Link>README.md</Link>
+    </None>
   </ItemGroup>
 
 </Project>

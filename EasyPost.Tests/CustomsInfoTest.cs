@@ -1,28 +1,20 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class CustomsInfoTest
+    public class CustomsInfoTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
+        public CustomsInfoTest() : base("customs_info")
         {
-            _vcr = new TestUtils.VCR("customs_info");
         }
 
-        private static async Task<CustomsInfo> CreateBasicCustomsInfo()
-        {
-            return await CustomsInfo.Create(Fixture.BasicCustomsInfo);
-        }
-
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            UseVCR("create");
 
             CustomsInfo customsInfo = await CreateBasicCustomsInfo();
 
@@ -31,18 +23,19 @@ namespace EasyPost.Tests
             Assert.AreEqual("NOEEI 30.37(a)", customsInfo.eel_pfc);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
-
+            UseVCR("retrieve");
 
             CustomsInfo customsInfo = await CreateBasicCustomsInfo();
 
-            CustomsInfo retrievedCustomsInfo = await CustomsInfo.Retrieve(customsInfo.id);
+            CustomsInfo retrievedCustomsInfo = await Client.CustomsInfo.Retrieve(customsInfo.id);
 
             Assert.IsInstanceOfType(retrievedCustomsInfo, typeof(CustomsInfo));
             Assert.AreEqual(customsInfo, retrievedCustomsInfo);
         }
+
+        private async Task<CustomsInfo> CreateBasicCustomsInfo() => await Client.CustomsInfo.Create(Fixture.BasicCustomsInfo);
     }
 }

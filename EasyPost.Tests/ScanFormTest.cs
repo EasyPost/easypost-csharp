@@ -1,60 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class ScanFormTest
+    public class ScanFormTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
+        public ScanFormTest() : base("scan_form")
         {
-            _vcr = new TestUtils.VCR("scan_form");
         }
 
-        private static async Task<ScanForm> GetBasicScanForm()
-        {
-            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
-            return await ScanForm.Create(new List<Shipment>
-            {
-                shipment
-            });
-        }
-
-        [TestMethod]
-        public async Task TestCreate()
-        {
-            _vcr.SetUpTest("create");
-
-            ScanForm scanForm = await GetBasicScanForm();
-
-            Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
-            Assert.IsTrue(scanForm.id.StartsWith("sf_"));
-        }
-
-        [TestMethod]
-        public async Task TestRetrieve()
-        {
-            _vcr.SetUpTest("retrieve");
-
-
-            ScanForm scanForm = await GetBasicScanForm();
-
-            ScanForm retrievedScanForm = await ScanForm.Retrieve(scanForm.id);
-
-            Assert.IsInstanceOfType(retrievedScanForm, typeof(ScanForm));
-            Assert.AreEqual(scanForm, retrievedScanForm);
-        }
-
-        [TestMethod]
+        [Fact]
         public async Task TestAll()
         {
-            _vcr.SetUpTest("all");
+            UseVCR("all");
 
-            ScanFormCollection scanFormCollection = await ScanForm.All(new Dictionary<string, object>
+            ScanFormCollection scanFormCollection = await Client.ScanForm.All(new Dictionary<string, object?>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -64,11 +27,44 @@ namespace EasyPost.Tests
             List<ScanForm> scanForms = scanFormCollection.scan_forms;
 
             Assert.IsTrue(scanForms.Count <= Fixture.PageSize);
-            Assert.IsNotNull(scanFormCollection.has_more);
-            foreach (var scanForm in scanForms)
+            Assert.IsNotNull(scanFormCollection.HasMore);
+            foreach (ScanForm scanForm in scanForms)
             {
                 Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
             }
+        }
+
+        [Fact]
+        public async Task TestCreate()
+        {
+            UseVCR("create");
+
+            ScanForm scanForm = await GetBasicScanForm();
+
+            Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
+            Assert.IsTrue(scanForm.id.StartsWith("sf_"));
+        }
+
+        [Fact]
+        public async Task TestRetrieve()
+        {
+            UseVCR("retrieve");
+
+            ScanForm scanForm = await GetBasicScanForm();
+
+            ScanForm retrievedScanForm = await Client.ScanForm.Retrieve(scanForm.id);
+
+            Assert.IsInstanceOfType(retrievedScanForm, typeof(ScanForm));
+            Assert.AreEqual(scanForm, retrievedScanForm);
+        }
+
+        private async Task<ScanForm> GetBasicScanForm()
+        {
+            Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyShipment);
+            return await Client.ScanForm.Create(new List<Shipment>
+            {
+                shipment
+            });
         }
     }
 }

@@ -1,29 +1,40 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class OrderTest
+    public class OrderTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
+        public OrderTest() : base("order")
         {
-            _vcr = new TestUtils.VCR("order");
         }
 
-        private static async Task<Order> CreateBasicOrder()
+        [Fact]
+        public async Task TestBuy()
         {
-            return await Order.Create(Fixture.BasicOrder);
+            UseVCR("buy");
+
+            Order order = await CreateBasicOrder();
+
+            order = await order.Buy(Fixture.Usps, Fixture.UspsService);
+
+            List<Shipment> shipments = order.shipments;
+
+            foreach (Shipment shipment in shipments)
+            {
+                Assert.IsInstanceOfType(shipment, typeof(Shipment));
+                Assert.IsNotNull(shipment.postage_label);
+            }
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            UseVCR("create");
 
             Order order = await CreateBasicOrder();
 
@@ -32,60 +43,28 @@ namespace EasyPost.Tests
             Assert.IsNotNull(order.rates);
         }
 
-        [TestMethod]
-        public async Task TestRetrieve()
-        {
-            _vcr.SetUpTest("retrieve");
-
-            Order order = await CreateBasicOrder();
-
-            Order retrievedOrder = await Order.Retrieve(order.id);
-
-            Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
-            // Must compare IDs since other elements of objects may be different
-            Assert.AreEqual(order.id, retrievedOrder.id);
-        }
-
-        [TestMethod]
+        [Fact]
         public async Task TestGetRates()
         {
-            _vcr.SetUpTest("get_rates");
+            UseVCR("get_rates");
 
             Order order = await CreateBasicOrder();
 
-            await order.GetRates();
+            await order.GetRates(); // this does not return anything, does actually update in-place
 
             List<Rate> rates = order.rates;
 
             Assert.IsNotNull(rates);
-            foreach (var rate in rates)
+            foreach (Rate rate in rates)
             {
                 Assert.IsInstanceOfType(rate, typeof(Rate));
             }
         }
 
-        [TestMethod]
-        public async Task TestBuy()
-        {
-            _vcr.SetUpTest("buy");
-
-            Order order = await CreateBasicOrder();
-
-            await order.Buy(Fixture.Usps, Fixture.UspsService);
-
-            List<Shipment> shipments = order.shipments;
-
-            foreach (var shipment in shipments)
-            {
-                Assert.IsInstanceOfType(shipment, typeof(Shipment));
-                Assert.IsNotNull(shipment.postage_label);
-            }
-        }
-
-        [TestMethod]
+        [Fact]
         public async Task TestLowestRate()
         {
-            _vcr.SetUpTest("lowest_rate");
+            UseVCR("lowest_rate");
 
             Order order = await CreateBasicOrder();
 
@@ -100,7 +79,7 @@ namespace EasyPost.Tests
             {
                 "Priority"
             };
-            lowestRate = order.LowestRate(null, services, null, null);
+            lowestRate = order.LowestRate(null, services);
             Assert.AreEqual("Priority", lowestRate.service);
             Assert.AreEqual("7.37", lowestRate.rate);
             Assert.AreEqual("USPS", lowestRate.carrier);
@@ -110,7 +89,24 @@ namespace EasyPost.Tests
             {
                 "BAD_CARRIER"
             };
-            Assert.ThrowsException<FilterFailure>(() => order.LowestRate(carriers, null, null, null));
+            Assert.ThrowsException<Exception>(() => order.LowestRate(carriers));
         }
+
+        [Fact]
+        public async Task TestRetrieve()
+        {
+            UseVCR("retrieve");
+
+            Order order = await CreateBasicOrder();
+
+
+            Order retrievedOrder = await Client.Order.Retrieve(order.id);
+
+            Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
+            // Must compare IDs since other elements of objects may be different
+            Assert.AreEqual(order.id, retrievedOrder.id);
+        }
+
+        private async Task<Order> CreateBasicOrder() => await Client.Order.Create(Fixture.BasicOrder);
     }
 }

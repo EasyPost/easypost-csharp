@@ -1,32 +1,53 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class PickupTest
+    public class PickupTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
+        public PickupTest() : base("pickup")
         {
-            _vcr = new TestUtils.VCR("pickup");
         }
 
-        private static async Task<Pickup> CreateBasicPickup()
+        [Fact]
+        public async Task TestBuy()
         {
-            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
-            Dictionary<string, object> pickupData = Fixture.BasicPickup;
-            pickupData["shipment"] = shipment;
-            return await Pickup.Create(pickupData);
+            UseVCR("buy");
+
+            Pickup pickup = await CreateBasicPickup();
+
+            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
+
+            Assert.IsInstanceOfType(pickup, typeof(Pickup));
+            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
+            Assert.IsNotNull(pickup.confirmation);
+            Assert.AreEqual("scheduled", pickup.status);
         }
 
-        [TestMethod]
+        [Fact]
+        public async Task TestCancel()
+        {
+            UseVCR("cancel");
+
+            Pickup pickup = await CreateBasicPickup();
+
+            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
+
+            pickup = await pickup.Cancel();
+
+            Assert.IsInstanceOfType(pickup, typeof(Pickup));
+            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
+            Assert.AreEqual("canceled", pickup.status);
+        }
+
+        [Fact]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            UseVCR("create");
 
             Pickup pickup = await CreateBasicPickup();
 
@@ -35,54 +56,10 @@ namespace EasyPost.Tests
             Assert.IsNotNull(pickup.pickup_rates);
         }
 
-        [TestMethod]
-        public async Task TestRetrieve()
-        {
-            _vcr.SetUpTest("retrieve");
-
-            Pickup pickup = await CreateBasicPickup();
-
-            Pickup retrievedPickup = await Pickup.Retrieve(pickup.id);
-
-            Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
-            Assert.AreEqual(pickup, retrievedPickup);
-        }
-
-        [TestMethod]
-        public async Task TestBuy()
-        {
-            _vcr.SetUpTest("buy");
-
-            Pickup pickup = await CreateBasicPickup();
-
-            await pickup.Buy(Fixture.Usps, Fixture.PickupService);
-
-            Assert.IsInstanceOfType(pickup, typeof(Pickup));
-            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
-            Assert.IsNotNull(pickup.confirmation);
-            Assert.AreEqual("scheduled", pickup.status);
-        }
-
-        [TestMethod]
-        public async Task TestCancel()
-        {
-            _vcr.SetUpTest("cancel");
-
-            Pickup pickup = await CreateBasicPickup();
-
-            await pickup.Buy(Fixture.Usps, Fixture.PickupService);
-
-            await pickup.Cancel();
-
-            Assert.IsInstanceOfType(pickup, typeof(Pickup));
-            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
-            Assert.AreEqual("canceled", pickup.status);
-        }
-
-        [TestMethod]
+        [Fact]
         public async Task TestLowestRate()
         {
-            _vcr.SetUpTest("lowest_rate");
+            UseVCR("lowest_rate");
 
             Pickup pickup = await CreateBasicPickup();
 
@@ -97,14 +74,35 @@ namespace EasyPost.Tests
             {
                 "BAD_SERVICE"
             };
-            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(null, services, null, null));
+            Assert.ThrowsException<Exception>(() => pickup.LowestRate(null, services));
 
             // test lowest rate with carrier filter (should error due to bad carrier)
             List<string> carriers = new List<string>
             {
                 "BAD_CARRIER"
             };
-            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(carriers, null, null, null));
+            Assert.ThrowsException<Exception>(() => pickup.LowestRate(carriers));
+        }
+
+        [Fact]
+        public async Task TestRetrieve()
+        {
+            UseVCR("retrieve");
+
+            Pickup pickup = await CreateBasicPickup();
+
+            Pickup retrievedPickup = await Client.Pickup.Retrieve(pickup.id);
+
+            Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
+            Assert.AreEqual(pickup.id, retrievedPickup.id);
+        }
+
+        private async Task<Pickup> CreateBasicPickup()
+        {
+            Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyShipment);
+            Dictionary<string, object?> pickupData = Fixture.BasicPickup;
+            pickupData["shipment"] = shipment;
+            return await Client.Pickup.Create(pickupData);
         }
     }
 }

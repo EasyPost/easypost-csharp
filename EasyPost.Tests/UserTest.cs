@@ -1,148 +1,44 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class UserTest
+    public class UserTest : UnitTest
     {
-        private static string _userId = null;
-
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
-        {
-            _vcr = new TestUtils.VCR("user", TestUtils.ApiKey.Production);
-        }
-
-        [TestCleanup]
-        public async Task Cleanup()
-        {
-            if (_userId != null)
+        public UserTest() : base("user", TestUtils.ApiKey.Production) =>
+            CleanupFunction = async id =>
             {
                 try
                 {
-                    User retrievedUser = await User.Retrieve(_userId);
+                    User retrievedUser = await Client.User.Retrieve(id);
                     await retrievedUser.Delete();
-                    _userId = null;
+                    return true;
                 }
                 catch
                 {
-                    // in case we try to delete something that's already been deleted
-                }
-            }
-        }
-
-        private static async Task<User> RetrieveMe()
-        {
-            return await User.RetrieveMe();
-        }
-
-        private static async Task<User> CreateUser()
-        {
-            User user = await User.Create(new Dictionary<string, object>
-            {
-                {
-                    "name", "Test User"
-                }
-            });
-            _userId = user.id; // trigger deletion after test
-            return user;
-        }
-
-        // This endpoint returns the child user keys in plain text, do not run this test.
-        [TestMethod]
-        public async Task TestCreate()
-        {
-            _vcr.SetUpTest("create");
-
-            User user = await CreateUser();
-
-            Assert.IsInstanceOfType(user, typeof(User));
-            Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual("Test User", user.name);
-        }
-
-        [TestMethod]
-        public async Task TestRetrieve()
-        {
-            _vcr.SetUpTest("retrieve");
-
-            User authenticatedUser = await RetrieveMe();
-
-            string id = authenticatedUser.id;
-
-            User user = await User.Retrieve(id);
-
-            Assert.IsInstanceOfType(user, typeof(User));
-            Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual(id, user.id);
-        }
-
-
-        [TestMethod]
-        public async Task TestRetrieveMe()
-        {
-            _vcr.SetUpTest("retrieve_me");
-
-            User user = await RetrieveMe();
-
-            Assert.IsInstanceOfType(user, typeof(User));
-            Assert.IsTrue(user.id.StartsWith("user_"));
-        }
-
-        [TestMethod]
-        public async Task TestUpdate()
-        {
-            _vcr.SetUpTest("update");
-
-            User user = await CreateUser();
-
-            string testName = "New Name";
-
-            Dictionary<string, object> userDict = new Dictionary<string, object>
-            {
-                {
-                    "name", testName
+                    // trying to delete something that doesn't exist, pass
+                    return false;
                 }
             };
-            await user.Update(userDict);
 
-            Assert.IsInstanceOfType(user, typeof(User));
-            Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual(testName, user.name);
-        }
-
-        [TestMethod]
-        public async Task TestDelete()
-        {
-            _vcr.SetUpTest("delete");
-
-            User user = await CreateUser();
-
-            bool success = await user.Delete();
-            Assert.IsTrue(success);
-
-            _userId = null; // skip deletion cleanup
-        }
-
-        [TestMethod]
+        [Fact]
         public async Task TestAllApiKeys()
         {
-            _vcr.SetUpTest("all_api_keys");
+            UseVCR("all_api_keys");
 
-            List<ApiKey> apiKeys = await ApiKey.All();
+            List<ApiKey> apiKeys = await Client.ApiKey.All();
 
             // API keys will be censored, so we'll just check for the existence of the list
             Assert.IsNotNull(apiKeys);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestApiKeys()
         {
-            _vcr.SetUpTest("api_keys");
+            UseVCR("api_keys");
 
             User user = await RetrieveMe();
 
@@ -151,15 +47,92 @@ namespace EasyPost.Tests
             Assert.IsNotNull(children);
         }
 
-        [TestMethod]
+        [Fact]
+        public async Task TestCreate()
+        {
+            UseVCR("create");
+
+            User user = await CreateUser();
+
+            Assert.IsInstanceOfType(user, typeof(User));
+            Assert.IsTrue(user.id.StartsWith("user_"));
+            Assert.AreEqual("Test User", user.name);
+        }
+
+        [Fact]
+        public async Task TestDelete()
+        {
+            UseVCR("delete");
+
+            User user = await CreateUser();
+
+            await user.Delete();
+
+            // TODO: Assert something
+
+            SkipCleanUpAfterTest();
+        }
+
+        [Fact]
+        public async Task TestRetrieve()
+        {
+            UseVCR("retrieve");
+
+            User authenticatedUser = await RetrieveMe();
+
+            string id = authenticatedUser.id;
+
+            User user = await Client.User.Retrieve(id);
+
+            Assert.IsInstanceOfType(user, typeof(User));
+            Assert.IsTrue(user.id.StartsWith("user_"));
+            Assert.AreEqual(id, user.id);
+        }
+
+
+        [Fact]
+        public async Task TestRetrieveMe()
+        {
+            UseVCR("retrieve_me");
+
+            User user = await RetrieveMe();
+
+            Assert.IsInstanceOfType(user, typeof(User));
+            Assert.IsTrue(user.id.StartsWith("user_"));
+        }
+
+        [Fact]
+        public async Task TestUpdate()
+        {
+            UseVCR("update");
+
+            User user = await CreateUser();
+
+            string testName = "New Name";
+
+            Dictionary<string, object?> userDict = new Dictionary<string, object?>
+            {
+                {
+                    "name",
+                    testName
+                }
+            };
+            user = await user.Update(userDict);
+
+            Assert.IsInstanceOfType(user, typeof(User));
+            Assert.IsTrue(user.id.StartsWith("user_"));
+            Assert.AreEqual(testName, user.name);
+        }
+
+        [Fact]
         public async Task TestUpdateBrand()
         {
-            _vcr.SetUpTest("update_brand");
+            UseVCR("update_brand");
 
             User user = await CreateUser();
 
             string color = "#123456";
-            Brand brand = await user.UpdateBrand(new Dictionary<string, object>
+            Brand brand = await user.UpdateBrand(new Dictionary<string, object?>
             {
                 {
                     "color", color
@@ -170,5 +143,20 @@ namespace EasyPost.Tests
             Assert.IsTrue(brand.id.StartsWith("brd_"));
             Assert.AreEqual(color, brand.color);
         }
+
+        private async Task<User> CreateUser()
+        {
+            User user = await Client.User.CreateChild(new Dictionary<string, object?>
+            {
+                {
+                    "name", "Test User"
+                }
+            });
+            CleanUpAfterTest(user.id);
+
+            return user;
+        }
+
+        private async Task<User> RetrieveMe() => await Client.User.RetrieveMe();
     }
 }

@@ -1,28 +1,20 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class CustomsItemTest
+    public class CustomsItemTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
+        public CustomsItemTest() : base("customs_item")
         {
-            _vcr = new TestUtils.VCR("customs_item");
         }
 
-        private static async Task<CustomsItem> CreateBasicCustomsItem()
-        {
-            return await CustomsItem.Create(Fixture.BasicCustomsItem);
-        }
-
-        [TestMethod]
+        [Fact]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            UseVCR("create");
 
             CustomsItem customsItem = await CreateBasicCustomsItem();
 
@@ -31,18 +23,19 @@ namespace EasyPost.Tests
             Assert.AreEqual(23.0, customsItem.value);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
-
+            UseVCR("retrieve");
 
             CustomsItem customsItem = await CreateBasicCustomsItem();
 
-            CustomsItem retrievedCustomsItem = await CustomsItem.Retrieve(customsItem.id);
+            CustomsItem retrievedCustomsItem = await Client.CustomsItem.Retrieve(customsItem.id);
 
             Assert.IsInstanceOfType(retrievedCustomsItem, typeof(CustomsItem));
             Assert.AreEqual(customsItem, retrievedCustomsItem);
         }
+
+        private async Task<CustomsItem> CreateBasicCustomsItem() => await Client.CustomsItem.Create(Fixture.BasicCustomsItem);
     }
 }
