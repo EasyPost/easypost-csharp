@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -26,11 +25,10 @@ namespace EasyPost.Tests
 
             List<Insurance> insurances = insuranceCollection.insurances;
 
-            Assert.IsTrue(insurances.Count <= Fixture.PageSize);
-            Assert.IsNotNull(insuranceCollection.HasMore);
+            Assert.True(insurances.Count <= Fixture.PageSize);
             foreach (Insurance item in insurances)
             {
-                Assert.IsInstanceOfType(item, typeof(Insurance));
+                Assert.IsType<Insurance>(item);
             }
         }
 
@@ -41,10 +39,10 @@ namespace EasyPost.Tests
 
             Insurance insurance = await CreateBasicInsurance();
 
-            Assert.IsInstanceOfType(insurance, typeof(Insurance));
-            Assert.IsTrue(insurance.id.StartsWith("ins_"));
+            Assert.IsType<Insurance>(insurance);
+            Assert.StartsWith("ins_", insurance.id);
             // TODO: amount really should be a number, not a string
-            Assert.AreEqual("100.00000", insurance.amount);
+            Assert.Equal("100.00000", insurance.amount);
         }
 
         [Fact]
@@ -55,9 +53,9 @@ namespace EasyPost.Tests
             Insurance insurance = await CreateBasicInsurance();
 
             Insurance retrievedInsurance = await Client.Insurance.Retrieve(insurance.id);
-            Assert.IsInstanceOfType(retrievedInsurance, typeof(Insurance));
+            Assert.IsType<Insurance>(retrievedInsurance);
             // Must compare IDs since other elements of object may be different
-            Assert.AreEqual(insurance.id, retrievedInsurance.id);
+            Assert.Equal(insurance.id, retrievedInsurance.id);
         }
 
         private async Task<Insurance> CreateBasicInsurance()

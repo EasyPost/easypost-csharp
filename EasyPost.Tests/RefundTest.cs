@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -26,11 +25,10 @@ namespace EasyPost.Tests
 
             List<Refund> refunds = refundCollection.refunds;
 
-            Assert.IsTrue(refunds.Count <= Fixture.PageSize);
-            Assert.IsNotNull(refundCollection.HasMore);
+            Assert.True(refunds.Count <= Fixture.PageSize);
             foreach (Refund item in refunds)
             {
-                Assert.IsInstanceOfType(item, typeof(Refund));
+                Assert.IsType<Refund>(item);
             }
         }
 
@@ -43,12 +41,12 @@ namespace EasyPost.Tests
 
             foreach (Refund item in refunds)
             {
-                Assert.IsInstanceOfType(item, typeof(Refund));
+                Assert.IsType<Refund>(item);
             }
 
             Refund refund = refunds[0];
-            Assert.IsTrue(refund.id.StartsWith("rfnd_"));
-            Assert.AreEqual("submitted", refund.status);
+            Assert.StartsWith("rfnd_", refund.id);
+            Assert.Equal("submitted", refund.status);
         }
 
         [Fact]
@@ -67,8 +65,8 @@ namespace EasyPost.Tests
 
             Refund retrievedRefund = await Client.Refund.Retrieve(refund.id);
 
-            Assert.IsInstanceOfType(retrievedRefund, typeof(Refund));
-            Assert.AreEqual(refund, retrievedRefund);
+            Assert.IsType<Refund>(retrievedRefund);
+            Assert.Equal(refund, retrievedRefund);
         }
 
         private async Task<List<Refund>> CreateBasicRefund()

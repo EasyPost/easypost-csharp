@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -36,7 +35,7 @@ namespace EasyPost.Tests
 
             foreach (Webhook item in webhooks)
             {
-                Assert.IsInstanceOfType(item, typeof(Webhook));
+                Assert.IsType<Webhook>(item);
             }
         }
 
@@ -49,9 +48,9 @@ namespace EasyPost.Tests
 
             Webhook webhook = await CreateBasicWebhook(url);
 
-            Assert.IsInstanceOfType(webhook, typeof(Webhook));
-            Assert.IsTrue(webhook.id?.StartsWith("hook_"));
-            Assert.AreEqual(url, webhook.url);
+            Assert.IsType<Webhook>(webhook);
+            Assert.StartsWith("hook_", webhook.id);
+            Assert.Equal(url, webhook.url);
         }
 
         [Fact]
@@ -82,8 +81,8 @@ namespace EasyPost.Tests
 
             Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.id);
 
-            Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
-            Assert.AreEqual(webhook, retrievedWebhook);
+            Assert.IsType<Webhook>(retrievedWebhook);
+            Assert.Equal(webhook, retrievedWebhook);
         }
 
         [Fact]
@@ -97,8 +96,8 @@ namespace EasyPost.Tests
 
             webhook = await webhook.Update();
 
-            Assert.IsInstanceOfType(webhook, typeof(Webhook));
-            Assert.IsTrue(webhook.id?.StartsWith("hook_"));
+            Assert.IsType<Webhook>(webhook);
+            Assert.StartsWith("hook_", webhook.id);
         }
 
         private async Task<Webhook> CreateBasicWebhook(string url)

@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -26,11 +25,10 @@ namespace EasyPost.Tests
 
             List<ScanForm> scanForms = scanFormCollection.scan_forms;
 
-            Assert.IsTrue(scanForms.Count <= Fixture.PageSize);
-            Assert.IsNotNull(scanFormCollection.HasMore);
+            Assert.True(scanForms.Count <= Fixture.PageSize);
             foreach (ScanForm scanForm in scanForms)
             {
-                Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
+                Assert.IsType<ScanForm>(scanForm);
             }
         }
 
@@ -41,8 +39,8 @@ namespace EasyPost.Tests
 
             ScanForm scanForm = await GetBasicScanForm();
 
-            Assert.IsInstanceOfType(scanForm, typeof(ScanForm));
-            Assert.IsTrue(scanForm.id.StartsWith("sf_"));
+            Assert.IsType<ScanForm>(scanForm);
+            Assert.StartsWith("sf_", scanForm.id);
         }
 
         [Fact]
@@ -54,8 +52,8 @@ namespace EasyPost.Tests
 
             ScanForm retrievedScanForm = await Client.ScanForm.Retrieve(scanForm.id);
 
-            Assert.IsInstanceOfType(retrievedScanForm, typeof(ScanForm));
-            Assert.AreEqual(scanForm, retrievedScanForm);
+            Assert.IsType<ScanForm>(retrievedScanForm);
+            Assert.Equal(scanForm, retrievedScanForm);
         }
 
         private async Task<ScanForm> GetBasicScanForm()

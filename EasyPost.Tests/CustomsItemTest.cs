@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -18,9 +17,9 @@ namespace EasyPost.Tests
 
             CustomsItem customsItem = await CreateBasicCustomsItem();
 
-            Assert.IsInstanceOfType(customsItem, typeof(CustomsItem));
-            Assert.IsTrue(customsItem.id.StartsWith("cstitem_"));
-            Assert.AreEqual(23.0, customsItem.value);
+            Assert.IsType<CustomsItem>(customsItem);
+            Assert.StartsWith("cstitem_", customsItem.id);
+            Assert.Equal(23.0, customsItem.value);
         }
 
         [Fact]
@@ -32,8 +31,8 @@ namespace EasyPost.Tests
 
             CustomsItem retrievedCustomsItem = await Client.CustomsItem.Retrieve(customsItem.id);
 
-            Assert.IsInstanceOfType(retrievedCustomsItem, typeof(CustomsItem));
-            Assert.AreEqual(customsItem, retrievedCustomsItem);
+            Assert.IsType<CustomsItem>(retrievedCustomsItem);
+            Assert.Equal(customsItem, retrievedCustomsItem);
         }
 
         private async Task<CustomsItem> CreateBasicCustomsItem() => await Client.CustomsItem.Create(Fixture.BasicCustomsItem);

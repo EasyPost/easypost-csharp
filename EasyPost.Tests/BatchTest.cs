@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -27,14 +26,14 @@ namespace EasyPost.Tests
                 shipment
             });
 
-            Assert.AreEqual(1, batch.num_shipments);
+            Assert.Equal(1, batch.num_shipments);
 
             batch = await batch.RemoveShipments(new List<Shipment>
             {
                 shipment
             });
 
-            Assert.AreEqual(0, batch.num_shipments);
+            Assert.Equal(0, batch.num_shipments);
         }
 
         [Fact]
@@ -51,11 +50,10 @@ namespace EasyPost.Tests
 
             List<Batch> batches = batchCollection.batches;
 
-            Assert.IsTrue(batches.Count <= Fixture.PageSize);
-            Assert.IsNotNull(batchCollection.HasMore);
+            Assert.True(batches.Count <= Fixture.PageSize);
             foreach (Batch item in batches)
             {
-                Assert.IsInstanceOfType(item, typeof(Batch));
+                Assert.IsType<Batch>(item);
             }
         }
 
@@ -68,8 +66,8 @@ namespace EasyPost.Tests
 
             batch = await batch.Buy();
 
-            Assert.IsInstanceOfType(batch, typeof(Batch));
-            Assert.AreEqual(1, batch.num_shipments);
+            Assert.IsType<Batch>(batch);
+            Assert.Equal(1, batch.num_shipments);
         }
 
         [Fact]
@@ -79,9 +77,9 @@ namespace EasyPost.Tests
 
             Batch batch = await CreateBasicBatch();
 
-            Assert.IsInstanceOfType(batch, typeof(Batch));
-            Assert.IsTrue(batch.id.StartsWith("batch_"));
-            Assert.IsNotNull(batch.shipments);
+            Assert.IsType<Batch>(batch);
+            Assert.StartsWith("batch_", batch.id);
+            Assert.NotNull(batch.shipments);
         }
 
         [Fact]
@@ -99,9 +97,9 @@ namespace EasyPost.Tests
                 }
             });
 
-            Assert.IsInstanceOfType(batch, typeof(Batch));
-            Assert.IsTrue(batch.id.StartsWith("batch_"));
-            Assert.AreEqual(1, batch.num_shipments);
+            Assert.IsType<Batch>(batch);
+            Assert.StartsWith("batch_", batch.id);
+            Assert.Equal(1, batch.num_shipments);
         }
 
         [Fact]
@@ -122,7 +120,7 @@ namespace EasyPost.Tests
             batch = await batch.GenerateScanForm();
 
             // We can't assert anything meaningful here because the scanform gets queued for generation and may not be immediately available
-            Assert.IsInstanceOfType(batch, typeof(Batch));
+            Assert.IsType<Batch>(batch);
         }
 
         [Fact]
@@ -142,7 +140,7 @@ namespace EasyPost.Tests
             await batch.GenerateLabel("ZPL");
 
             // We can't assert anything meaningful here because the label gets queued for generation and may not be immediately available
-            Assert.IsInstanceOfType(batch, typeof(Batch));
+            Assert.IsType<Batch>(batch);
         }
 
         [Fact]
@@ -154,9 +152,9 @@ namespace EasyPost.Tests
 
             Batch retrievedBatch = await Client.Batch.Retrieve(batch.id);
 
-            Assert.IsInstanceOfType(retrievedBatch, typeof(Batch));
+            Assert.IsType<Batch>(retrievedBatch);
             // Must compare IDs since elements of batch (i.e. status) may be different
-            Assert.AreEqual(batch.id, retrievedBatch.id);
+            Assert.Equal(batch.id, retrievedBatch.id);
         }
 
         private async Task<Batch> CreateBasicBatch() =>

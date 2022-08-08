@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -32,7 +31,7 @@ namespace EasyPost.Tests
             List<ApiKey> apiKeys = await Client.ApiKey.All();
 
             // API keys will be censored, so we'll just check for the existence of the list
-            Assert.IsNotNull(apiKeys);
+            Assert.NotNull(apiKeys);
         }
 
         [Fact]
@@ -44,7 +43,7 @@ namespace EasyPost.Tests
 
             // API keys will be censored, so we'll just check for the existence of the `children` element
             List<User> children = user.children;
-            Assert.IsNotNull(children);
+            Assert.NotNull(children);
         }
 
         [Fact]
@@ -54,9 +53,9 @@ namespace EasyPost.Tests
 
             User user = await CreateUser();
 
-            Assert.IsInstanceOfType(user, typeof(User));
-            Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual("Test User", user.name);
+            Assert.IsType<User>(user);
+            Assert.StartsWith("user_", user.id);
+            Assert.Equal("Test User", user.name);
         }
 
         [Fact]
@@ -84,9 +83,9 @@ namespace EasyPost.Tests
 
             User user = await Client.User.Retrieve(id);
 
-            Assert.IsInstanceOfType(user, typeof(User));
-            Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual(id, user.id);
+            Assert.IsType<User>(user);
+            Assert.StartsWith("user_", user.id);
+            Assert.Equal(id, user.id);
         }
 
 
@@ -97,8 +96,8 @@ namespace EasyPost.Tests
 
             User user = await RetrieveMe();
 
-            Assert.IsInstanceOfType(user, typeof(User));
-            Assert.IsTrue(user.id.StartsWith("user_"));
+            Assert.IsType<User>(user);
+            Assert.StartsWith("user_", user.id);
         }
 
         [Fact]
@@ -119,9 +118,9 @@ namespace EasyPost.Tests
             };
             user = await user.Update(userDict);
 
-            Assert.IsInstanceOfType(user, typeof(User));
-            Assert.IsTrue(user.id.StartsWith("user_"));
-            Assert.AreEqual(testName, user.name);
+            Assert.IsType<User>(user);
+            Assert.StartsWith("user_", user.id);
+            Assert.Equal(testName, user.name);
         }
 
         [Fact]
@@ -139,9 +138,9 @@ namespace EasyPost.Tests
                 }
             });
 
-            Assert.IsInstanceOfType(brand, typeof(Brand));
-            Assert.IsTrue(brand.id.StartsWith("brd_"));
-            Assert.AreEqual(color, brand.color);
+            Assert.IsType<Brand>(brand);
+            Assert.StartsWith("brd_", brand.id);
+            Assert.Equal(color, brand.color);
         }
 
         private async Task<User> CreateUser()

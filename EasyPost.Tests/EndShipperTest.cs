@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API.Beta;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -24,10 +23,10 @@ namespace EasyPost.Tests
                 }
             });
 
-            Assert.IsTrue(endShippers.Count <= Fixture.PageSize);
+            Assert.True(endShippers.Count <= Fixture.PageSize);
             foreach (EndShipper item in endShippers)
             {
-                Assert.IsInstanceOfType(item, typeof(EndShipper));
+                Assert.IsType<EndShipper>(item);
             }
         }
 
@@ -38,9 +37,9 @@ namespace EasyPost.Tests
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
-            Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
-            Assert.IsTrue(endShipper.id.StartsWith("es_"));
-            Assert.AreEqual("388 TOWNSEND ST APT 20", endShipper.street1);
+            Assert.IsType<EndShipper>(endShipper);
+            Assert.StartsWith("es_", endShipper.id);
+            Assert.Equal("388 TOWNSEND ST APT 20", endShipper.street1);
         }
 
         [Fact]
@@ -52,8 +51,8 @@ namespace EasyPost.Tests
 
             EndShipper retrievedEndShipper = await Client.EndShipper.Retrieve(endShipper.id);
 
-            Assert.IsInstanceOfType(retrievedEndShipper, typeof(EndShipper));
-            Assert.AreEqual(endShipper.street1, retrievedEndShipper.street1);
+            Assert.IsType<EndShipper>(retrievedEndShipper);
+            Assert.Equal(endShipper.street1, retrievedEndShipper.street1);
         }
 
         [Fact]
@@ -70,9 +69,9 @@ namespace EasyPost.Tests
 
             endShipper = await endShipper.Update(endShipperData);
 
-            Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
-            Assert.IsTrue(endShipper.id.StartsWith("es_"));
-            Assert.AreEqual(testName, endShipper.name);
+            Assert.IsType<EndShipper>(endShipper);
+            Assert.StartsWith("es_", endShipper.id);
+            Assert.Equal(testName, endShipper.name);
         }
 
         private async Task<EndShipper> CreateBasicEndShipper() => await Client.EndShipper.Create(Fixture.EndShipperAddress);

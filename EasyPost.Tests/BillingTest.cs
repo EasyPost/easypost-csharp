@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -38,8 +37,8 @@ namespace EasyPost.Tests
 
             PaymentMethodsSummary paymentMethodsSummary = await Client.Billing.RetrievePaymentMethodsSummary();
 
-            Assert.IsNotNull(paymentMethodsSummary.primary_payment_method);
-            Assert.IsNotNull(paymentMethodsSummary.secondary_payment_method);
+            Assert.NotNull(paymentMethodsSummary.primary_payment_method);
+            Assert.NotNull(paymentMethodsSummary.secondary_payment_method);
         }
     }
 }

@@ -1,13 +1,14 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EasyPost.Models.API;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
     public class EnumTest
     {
-        [TestMethod]
+        [Fact]
+        [SuppressMessage("Assertions", "xUnit2017:Do not use Contains() to check if a value exists in a collection")]
         public void TestEnumeration()
         {
             // going to use SmartrateAccuracy enums for this test,
@@ -17,19 +18,19 @@ namespace EasyPost.Tests
             SmartrateAccuracy accuracy1 = SmartrateAccuracy.Percentile50;
             SmartrateAccuracy accuracy2 = SmartrateAccuracy.Percentile50;
 
-            Assert.IsTrue(accuracy1.Equals(accuracy2));
+            Assert.True(accuracy1.Equals(accuracy2));
             // compareTo checks if accuracy1 comes before accuracy2
             // since they are the same, it should return 0
-            Assert.IsTrue(accuracy1.CompareTo(accuracy2) == 0);
+            Assert.True(accuracy1.CompareTo(accuracy2) == 0);
 
             // two different enums
             SmartrateAccuracy accuracy3 = SmartrateAccuracy.Percentile50;
             SmartrateAccuracy accuracy4 = SmartrateAccuracy.Percentile95;
 
-            Assert.IsFalse(accuracy3.Equals(accuracy4));
+            Assert.False(accuracy3.Equals(accuracy4));
             // compareTo checks if accuracy3 comes before accuracy4
             // since accuracy3 is before accuracy4, it should return -1
-            Assert.IsTrue(accuracy3.CompareTo(accuracy4) == -1);
+            Assert.True(accuracy3.CompareTo(accuracy4) == -1);
 
             // get a list of all the enum values
             List<string> enumValues = new List<string>
@@ -45,8 +46,8 @@ namespace EasyPost.Tests
             IEnumerable<SmartrateAccuracy> accuracies = SmartrateAccuracy.All();
             foreach (var accuracy in accuracies)
             {
-                Assert.IsInstanceOfType(accuracy, typeof(SmartrateAccuracy));
-                Assert.IsTrue(enumValues.Contains((string)accuracy.Value));
+                Assert.IsType<SmartrateAccuracy>(accuracy);
+                Assert.True(enumValues.Contains((string)accuracy.Value));
             }
         }
     }

@@ -1,6 +1,5 @@
 
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -15,8 +14,8 @@ namespace EasyPost.Tests
             client.ConnectTimeoutMilliseconds = 5000;
             client.RequestTimeoutMilliseconds = 5000;
 
-            Assert.AreEqual(5000, client.ConnectTimeoutMilliseconds);
-            Assert.AreEqual(5000, client.RequestTimeoutMilliseconds);
+            Assert.Equal(5000, client.ConnectTimeoutMilliseconds);
+            Assert.Equal(5000, client.RequestTimeoutMilliseconds);
         }
     }
 }

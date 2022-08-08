@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -26,11 +25,10 @@ namespace EasyPost.Tests
 
             List<Address> addresses = addressCollection.addresses;
 
-            Assert.IsTrue(addresses.Count <= Fixture.PageSize);
-            Assert.IsNotNull(addressCollection.HasMore);
+            Assert.True(addresses.Count <= Fixture.PageSize);
             foreach (Address item in addresses)
             {
-                Assert.IsInstanceOfType(item, typeof(Address));
+                Assert.IsType<Address>(item);
             }
         }
 
@@ -41,9 +39,9 @@ namespace EasyPost.Tests
 
             Address address = await CreateBasicAddress();
 
-            Assert.IsInstanceOfType(address, typeof(Address));
-            Assert.IsTrue(address.id.StartsWith("adr_"));
-            Assert.AreEqual("388 Townsend St", address.street1);
+            Assert.IsType<Address>(address);
+            Assert.StartsWith("adr_", address.id);
+            Assert.Equal("388 Townsend St", address.street1);
         }
 
         [Fact]
@@ -59,9 +57,9 @@ namespace EasyPost.Tests
 
             Address address = await Client.Address.CreateAndVerify(addressData);
 
-            Assert.IsInstanceOfType(address, typeof(Address));
-            Assert.IsTrue(address.id.StartsWith("adr_"));
-            Assert.AreEqual("388 TOWNSEND ST APT 20", address.street1);
+            Assert.IsType<Address>(address);
+            Assert.StartsWith("adr_", address.id);
+            Assert.Equal("388 TOWNSEND ST APT 20", address.street1);
         }
 
         [Fact]
@@ -71,9 +69,9 @@ namespace EasyPost.Tests
 
             Address address = await Client.Address.Create(Fixture.IncorrectAddressToVerify);
 
-            Assert.IsInstanceOfType(address, typeof(Address));
-            Assert.IsTrue(address.id.StartsWith("adr_"));
-            Assert.AreEqual("417 MONTGOMERY ST FL 5", address.street1);
+            Assert.IsType<Address>(address);
+            Assert.StartsWith("adr_", address.id);
+            Assert.Equal("417 MONTGOMERY ST FL 5", address.street1);
         }
 
         [Fact]
@@ -89,9 +87,9 @@ namespace EasyPost.Tests
 
             Address address = await Client.Address.Create(addressData);
 
-            Assert.IsInstanceOfType(address, typeof(Address));
-            Assert.IsTrue(address.id.StartsWith("adr_"));
-            Assert.AreEqual("388 TOWNSEND ST APT 20", address.street1);
+            Assert.IsType<Address>(address);
+            Assert.StartsWith("adr_", address.id);
+            Assert.Equal("388 TOWNSEND ST APT 20", address.street1);
         }
 
 
@@ -105,8 +103,8 @@ namespace EasyPost.Tests
 
             Address retrievedAddress = await Client.Address.Retrieve(address.id);
 
-            Assert.IsInstanceOfType(retrievedAddress, typeof(Address));
-            Assert.AreEqual(address, retrievedAddress);
+            Assert.IsType<Address>(retrievedAddress);
+            Assert.Equal(address, retrievedAddress);
         }
 
         [Fact]
@@ -119,9 +117,9 @@ namespace EasyPost.Tests
 
             address = await address.Verify();
 
-            Assert.IsInstanceOfType(address, typeof(Address));
-            Assert.IsTrue(address.id.StartsWith("adr_"));
-            Assert.AreEqual("388 TOWNSEND ST APT 20", address.street1);
+            Assert.IsType<Address>(address);
+            Assert.StartsWith("adr_", address.id);
+            Assert.Equal("388 TOWNSEND ST APT 20", address.street1);
         }
 
         private async Task<Address> CreateBasicAddress() => await Client.Address.Create(Fixture.BasicAddress);

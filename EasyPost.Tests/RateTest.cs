@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -20,9 +19,9 @@ namespace EasyPost.Tests
 
             Rate rate = await Client.Rate.Retrieve(shipment.rates[0].id);
 
-            Assert.IsInstanceOfType(rate, typeof(Rate));
-            Assert.IsTrue(rate.id.StartsWith("rate_"));
-            Assert.AreEqual(shipment.rates[0], rate);
+            Assert.IsType<Rate>(rate);
+            Assert.StartsWith("rate_", rate.id);
+            Assert.Equal(shipment.rates[0], rate);
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -22,10 +21,10 @@ namespace EasyPost.Tests
 
             pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
 
-            Assert.IsInstanceOfType(pickup, typeof(Pickup));
-            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
-            Assert.IsNotNull(pickup.confirmation);
-            Assert.AreEqual("scheduled", pickup.status);
+            Assert.IsType<Pickup>(pickup);
+            Assert.StartsWith("pickup_", pickup.id);
+            Assert.NotNull(pickup.confirmation);
+            Assert.Equal("scheduled", pickup.status);
         }
 
         [Fact]
@@ -39,9 +38,9 @@ namespace EasyPost.Tests
 
             pickup = await pickup.Cancel();
 
-            Assert.IsInstanceOfType(pickup, typeof(Pickup));
-            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
-            Assert.AreEqual("canceled", pickup.status);
+            Assert.IsType<Pickup>(pickup);
+            Assert.StartsWith("pickup_", pickup.id);
+            Assert.Equal("canceled", pickup.status);
         }
 
         [Fact]
@@ -51,9 +50,9 @@ namespace EasyPost.Tests
 
             Pickup pickup = await CreateBasicPickup();
 
-            Assert.IsInstanceOfType(pickup, typeof(Pickup));
-            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
-            Assert.IsNotNull(pickup.pickup_rates);
+            Assert.IsType<Pickup>(pickup);
+            Assert.StartsWith("pickup_", pickup.id);
+            Assert.NotNull(pickup.pickup_rates);
         }
 
         [Fact]
@@ -65,23 +64,23 @@ namespace EasyPost.Tests
 
             // test lowest rate with no filters
             Rate lowestRate = pickup.LowestRate();
-            Assert.AreEqual("NextDay", lowestRate.service);
-            Assert.AreEqual("0.00", lowestRate.rate);
-            Assert.AreEqual("USPS", lowestRate.carrier);
+            Assert.Equal("NextDay", lowestRate.service);
+            Assert.Equal("0.00", lowestRate.rate);
+            Assert.Equal("USPS", lowestRate.carrier);
 
             // test lowest rate with service filter (should error due to bad service)
             List<string> services = new List<string>
             {
                 "BAD_SERVICE"
             };
-            Assert.ThrowsException<Exception>(() => pickup.LowestRate(null, services));
+            Assert.Throws<Exception>(() => pickup.LowestRate(null, services));
 
             // test lowest rate with carrier filter (should error due to bad carrier)
             List<string> carriers = new List<string>
             {
                 "BAD_CARRIER"
             };
-            Assert.ThrowsException<Exception>(() => pickup.LowestRate(carriers));
+            Assert.Throws<Exception>(() => pickup.LowestRate(carriers));
         }
 
         [Fact]
@@ -93,8 +92,8 @@ namespace EasyPost.Tests
 
             Pickup retrievedPickup = await Client.Pickup.Retrieve(pickup.id);
 
-            Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
-            Assert.AreEqual(pickup.id, retrievedPickup.id);
+            Assert.IsType<Pickup>(retrievedPickup);
+            Assert.Equal(pickup.id, retrievedPickup.id);
         }
 
         private async Task<Pickup> CreateBasicPickup()

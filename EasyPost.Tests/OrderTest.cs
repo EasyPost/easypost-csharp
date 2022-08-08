@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -26,8 +25,8 @@ namespace EasyPost.Tests
 
             foreach (Shipment shipment in shipments)
             {
-                Assert.IsInstanceOfType(shipment, typeof(Shipment));
-                Assert.IsNotNull(shipment.postage_label);
+                Assert.IsType<Shipment>(shipment);
+                Assert.NotNull(shipment.postage_label);
             }
         }
 
@@ -38,9 +37,9 @@ namespace EasyPost.Tests
 
             Order order = await CreateBasicOrder();
 
-            Assert.IsInstanceOfType(order, typeof(Order));
-            Assert.IsTrue(order.id.StartsWith("order_"));
-            Assert.IsNotNull(order.rates);
+            Assert.IsType<Order>(order);
+            Assert.StartsWith("order_", order.id);
+            Assert.NotNull(order.rates);
         }
 
         [Fact]
@@ -54,10 +53,10 @@ namespace EasyPost.Tests
 
             List<Rate> rates = order.rates;
 
-            Assert.IsNotNull(rates);
+            Assert.NotNull(rates);
             foreach (Rate rate in rates)
             {
-                Assert.IsInstanceOfType(rate, typeof(Rate));
+                Assert.IsType<Rate>(rate);
             }
         }
 
@@ -70,9 +69,9 @@ namespace EasyPost.Tests
 
             // test lowest rate with no filters
             Rate lowestRate = order.LowestRate();
-            Assert.AreEqual("First", lowestRate.service);
-            Assert.AreEqual("5.49", lowestRate.rate);
-            Assert.AreEqual("USPS", lowestRate.carrier);
+            Assert.Equal("First", lowestRate.service);
+            Assert.Equal("5.49", lowestRate.rate);
+            Assert.Equal("USPS", lowestRate.carrier);
 
             // test lowest rate with service filter (this rate is higher than the lowest but should filter)
             List<string> services = new List<string>
@@ -80,16 +79,16 @@ namespace EasyPost.Tests
                 "Priority"
             };
             lowestRate = order.LowestRate(null, services);
-            Assert.AreEqual("Priority", lowestRate.service);
-            Assert.AreEqual("7.37", lowestRate.rate);
-            Assert.AreEqual("USPS", lowestRate.carrier);
+            Assert.Equal("Priority", lowestRate.service);
+            Assert.Equal("7.37", lowestRate.rate);
+            Assert.Equal("USPS", lowestRate.carrier);
 
             // test lowest rate with carrier filter (should error due to bad carrier)
             List<string> carriers = new List<string>
             {
                 "BAD_CARRIER"
             };
-            Assert.ThrowsException<Exception>(() => order.LowestRate(carriers));
+            Assert.Throws<Exception>(() => order.LowestRate(carriers));
         }
 
         [Fact]
@@ -102,9 +101,9 @@ namespace EasyPost.Tests
 
             Order retrievedOrder = await Client.Order.Retrieve(order.id);
 
-            Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
+            Assert.IsType<Order>(retrievedOrder);
             // Must compare IDs since other elements of objects may be different
-            Assert.AreEqual(order.id, retrievedOrder.id);
+            Assert.Equal(order.id, retrievedOrder.id);
         }
 
         private async Task<Order> CreateBasicOrder() => await Client.Order.Create(Fixture.BasicOrder);

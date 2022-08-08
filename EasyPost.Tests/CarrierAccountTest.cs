@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -33,7 +32,7 @@ namespace EasyPost.Tests
 
             foreach (CarrierAccount item in carrierAccounts)
             {
-                Assert.IsInstanceOfType(item, typeof(CarrierAccount));
+                Assert.IsType<CarrierAccount>(item);
             }
         }
 
@@ -44,8 +43,8 @@ namespace EasyPost.Tests
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
-            Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
-            Assert.IsTrue(carrierAccount.id.StartsWith("ca_"));
+            Assert.IsType<CarrierAccount>(carrierAccount);
+            Assert.StartsWith("ca_", carrierAccount.id);
         }
 
         [Fact]
@@ -71,8 +70,8 @@ namespace EasyPost.Tests
 
             CarrierAccount retrievedCarrierAccount = await Client.CarrierAccount.Retrieve(carrierAccount.id);
 
-            Assert.IsInstanceOfType(retrievedCarrierAccount, typeof(CarrierAccount));
-            Assert.AreEqual(carrierAccount, retrievedCarrierAccount);
+            Assert.IsType<CarrierAccount>(retrievedCarrierAccount);
+            Assert.Equal(carrierAccount, retrievedCarrierAccount);
         }
 
         [Fact]
@@ -84,7 +83,7 @@ namespace EasyPost.Tests
 
             foreach (CarrierType item in types)
             {
-                Assert.IsInstanceOfType(item, typeof(CarrierType));
+                Assert.IsType<CarrierType>(item);
             }
         }
 
@@ -107,9 +106,9 @@ namespace EasyPost.Tests
             };
             carrierAccount = await carrierAccount.Update(carrierAccountData);
 
-            Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
-            Assert.IsTrue(carrierAccount.id.StartsWith("ca_"));
-            Assert.AreEqual(testDescription, carrierAccount.description);
+            Assert.IsType<CarrierAccount>(carrierAccount);
+            Assert.StartsWith("ca_", carrierAccount.id);
+            Assert.Equal(testDescription, carrierAccount.description);
         }
 
         private async Task<CarrierAccount> CreateBasicCarrierAccount()

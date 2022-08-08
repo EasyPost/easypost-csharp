@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -26,11 +25,10 @@ namespace EasyPost.Tests
 
             List<Tracker> trackers = trackerCollection.trackers;
 
-            Assert.IsTrue(trackers.Count <= Fixture.PageSize);
-            Assert.IsNotNull(trackerCollection.HasMore);
+            Assert.True(trackers.Count <= Fixture.PageSize);
             foreach (Tracker tracker in trackers)
             {
-                Assert.IsInstanceOfType(tracker, typeof(Tracker));
+                Assert.IsType<Tracker>(tracker);
             }
         }
 
@@ -41,9 +39,9 @@ namespace EasyPost.Tests
 
             Tracker tracker = await CreateBasicTracker();
 
-            Assert.IsInstanceOfType(tracker, typeof(Tracker));
-            Assert.IsTrue(tracker.id.StartsWith("trk_"));
-            Assert.AreEqual("pre_transit", tracker.status);
+            Assert.IsType<Tracker>(tracker);
+            Assert.StartsWith("trk_", tracker.id);
+            Assert.Equal("pre_transit", tracker.status);
         }
 
         [Fact]
@@ -92,9 +90,9 @@ namespace EasyPost.Tests
 
             Tracker retrievedTracker = await Client.Tracker.Retrieve(tracker.id);
 
-            Assert.IsInstanceOfType(retrievedTracker, typeof(Tracker));
+            Assert.IsType<Tracker>(retrievedTracker);
             // Must compare IDs because other elements of objects may be different
-            Assert.AreEqual(tracker.id, retrievedTracker.id);
+            Assert.Equal(tracker.id, retrievedTracker.id);
         }
 
         private async Task<Tracker> CreateBasicTracker() => await Client.Tracker.Create(Fixture.Usps, "EZ1000000001");

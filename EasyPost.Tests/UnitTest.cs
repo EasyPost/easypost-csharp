@@ -21,7 +21,9 @@ namespace EasyPost.Tests
         /// </summary>
         protected Func<string, Task<bool>>? CleanupFunction { get; set; }
 
+#pragma warning disable CS8618
         protected UnitTest(string groupName, TestUtils.ApiKey apiKey = TestUtils.ApiKey.Test) => _vcr = new TestUtils.VCR(groupName, apiKey);
+#pragma warning restore CS8618
 
         public void Dispose()
         {
@@ -74,6 +76,7 @@ namespace EasyPost.Tests
         /// </summary>
         /// <param name="cassetteName"></param>
         /// <param name="overrideApiKey"></param>
+        // ReSharper disable once InconsistentNaming
         protected void UseVCR(string cassetteName, string? overrideApiKey = null)
         {
             Client = _vcr?.SetUpTest(cassetteName, overrideApiKey)!;

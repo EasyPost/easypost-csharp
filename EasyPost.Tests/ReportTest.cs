@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -26,11 +25,10 @@ namespace EasyPost.Tests
 
             List<Report> reports = reportCollection.reports;
 
-            Assert.IsTrue(reports.Count <= Fixture.PageSize);
-            Assert.IsNotNull(reportCollection.HasMore);
+            Assert.True(reports.Count <= Fixture.PageSize);
             foreach (Report report in reports)
             {
-                Assert.IsInstanceOfType(report, typeof(Report));
+                Assert.IsType<Report>(report);
             }
         }
 
@@ -41,8 +39,8 @@ namespace EasyPost.Tests
 
             Report report = await CreateBasicReport(Fixture.ReportType);
 
-            Assert.IsInstanceOfType(report, typeof(Report));
-            Assert.IsTrue(report.id.StartsWith(Fixture.ReportIdPrefix));
+            Assert.IsType<Report>(report);
+            Assert.StartsWith(Fixture.ReportIdPrefix, report.id);
         }
 
         [Fact]
@@ -67,7 +65,7 @@ namespace EasyPost.Tests
             // There's unfortunately no way to check if the columns were included in the final report without parsing the CSV
             // so we assume, if we haven't gotten an error by this point, we've made the API calls correctly
             // any failure at this point is a server-side issue
-            Assert.IsInstanceOfType(report, typeof(Report));
+            Assert.IsType<Report>(report);
         }
 
         [Fact]
@@ -91,7 +89,7 @@ namespace EasyPost.Tests
             // There's unfortunately no way to check if the columns were included in the final report without parsing the CSV
             // so we assume, if we haven't gotten an error by this point, we've made the API calls correctly
             // any failure at this point is a server-side issue
-            Assert.IsInstanceOfType(report, typeof(Report));
+            Assert.IsType<Report>(report);
         }
 
         [Fact]
@@ -103,9 +101,9 @@ namespace EasyPost.Tests
 
             Report retrievedReport = await Client.Report.Retrieve(report.id);
 
-            Assert.IsInstanceOfType(retrievedReport, typeof(Report));
-            Assert.AreEqual(report.start_date, retrievedReport.start_date);
-            Assert.AreEqual(report.end_date, retrievedReport.end_date);
+            Assert.IsType<Report>(retrievedReport);
+            Assert.Equal(report.start_date, retrievedReport.start_date);
+            Assert.Equal(report.end_date, retrievedReport.end_date);
         }
 
         private async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object?> parameters)

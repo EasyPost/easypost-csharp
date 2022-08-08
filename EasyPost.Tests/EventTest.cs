@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using Xunit;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace EasyPost.Tests
 {
@@ -21,11 +20,10 @@ namespace EasyPost.Tests
 
             List<Event> events = eventCollection.events;
 
-            Assert.IsTrue(events.Count <= Fixture.PageSize);
-            Assert.IsNotNull(eventCollection.HasMore);
+            Assert.True(events.Count <= Fixture.PageSize);
             foreach (Event item in events)
             {
-                Assert.IsInstanceOfType(item, typeof(Event));
+                Assert.IsType<Event>(item);
             }
         }
 
@@ -39,9 +37,9 @@ namespace EasyPost.Tests
 
             Event retrievedEvent = await Client.Event.Retrieve(_event.id);
 
-            Assert.IsInstanceOfType(retrievedEvent, typeof(Event));
+            Assert.IsType<Event>(retrievedEvent);
             // Must compare IDs because other elements of objects may be different
-            Assert.AreEqual(_event.id, retrievedEvent.id);
+            Assert.Equal(_event.id, retrievedEvent.id);
         }
 
         private async Task<EventCollection> GetBasicEventCollection() =>
