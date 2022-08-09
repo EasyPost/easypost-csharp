@@ -100,21 +100,12 @@ namespace EasyPost.Tests
 
                 _testCassettesFolder = Path.Combine(GetSourceFileDirectory(), CassettesFolder); // create "cassettes" folder in same directory as test files
 
-                string netVersionFolder = null;
-#if NET6_0
-                    netVersionFolder = "net60";
-#elif NET5_0
-                    netVersionFolder = "net50";
-#elif NETCOREAPP3_1
-                netVersionFolder = "netcore3.1";
-#elif NET462
-                netVersionFolder = "net462";
+                string netVersionFolder = "net";
+#if NET462
+                netVersionFolder = "netstandard";
 #endif
 
-                if (netVersionFolder != null)
-                {
-                    _testCassettesFolder = Path.Combine(_testCassettesFolder, netVersionFolder); // create .NET version-specific folder in "cassettes" folder
-                }
+                _testCassettesFolder = Path.Combine(_testCassettesFolder, netVersionFolder); // create .NET version-specific folder in "cassettes" folder
 
                 if (testCassettesFolder != null)
                 {
