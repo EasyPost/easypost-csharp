@@ -1,25 +1,25 @@
 [
   {
-    "Duration": 195,
-    "RecordedAt": "2022-07-29T13:55:17.209881-06:00",
+    "Duration": 201,
+    "RecordedAt": "2022-08-10T10:20:14.316044-06:00",
     "Request": {
-      "Body": "{\"address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\"}}",
+      "Body": "{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"verify_strict\":[true]}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "189"
+        "Content-Length": "200"
       },
       "Method": "POST",
       "RequestHeaders": {
-        "Accept": "application/json",
         "Authorization": "<REDACTED>",
         "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
         "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/addresses/create_and_verify"
     },
     "Response": {
-      "Body": "{\"address\":{\"id\":\"adr_5e6a2fe80f7811edaed2ac1f6bc7b362\",\"object\":\"Address\",\"created_at\":\"2022-07-29T13:55:17-06:00\",\"updated_at\":\"2022-07-29T13:55:17-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":true,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.77551,\"longitude\":-122.39697,\"time_zone\":\"America/Los_Angeles\"}}}}}",
+      "Body": "{\"address\":{\"id\":\"adr_50b940e218c811ed9181ac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2022-08-10T10:20:14-06:00\",\"updated_at\":\"2022-08-10T10:20:14-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":true,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.77551,\"longitude\":-122.39697,\"time_zone\":\"America/Los_Angeles\"}}}}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -34,16 +34,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "3b422afc62e43b25fa8d71010007efa6",
-        "Cache-Control": "no-store, no-cache",
+        "x-ep-request-uuid": "127423b262f3dabefec687e600011044",
+        "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "Location": "/api/v2/addresses/adr_5e6a2fe80f7811edaed2ac1f6bc7b362",
-        "ETag": "W/\"a1d9c9adb8d5c87c9af546dafc86aa2b\"",
-        "x-runtime": "0.039038",
-        "x-node": "bigweb4nuq",
-        "x-version-label": "easypost-202207291722-ecd5579616-master",
+        "Location": "/api/v2/addresses/adr_50b940e218c811ed9181ac1f6bc72124",
+        "ETag": "W/\"e3f868d6bb80a4ea3a5e95fb34460174\"",
+        "x-runtime": "0.039918",
+        "x-node": "bigweb8nuq",
+        "x-version-label": "easypost-202208101612-4eaa48a0da-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 403f17ff97,extlb1nuq 403f17ff97",
+        "x-proxied": "intlb1nuq 403f17ff97,extlb1nuq 9ce216bfac",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

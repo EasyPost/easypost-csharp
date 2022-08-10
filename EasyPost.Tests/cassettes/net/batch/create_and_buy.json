@@ -1,54 +1,54 @@
 [
-    {
-        "Duration": 206,
-        "RecordedAt": "2022-07-20T22:01:33.310289-06:00",
-        "Request": {
-            "Body": "{\"batch\":{\"shipments\":[{\"to_address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\"},\"from_address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\"},\"parcel\":{\"length\":\"10\",\"width\":\"8\",\"height\":\"4\",\"weight\":\"15.4\"},\"service\":\"First\",\"carrier_accounts\":[\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\"],\"carrier\":\"USPS\"}]}}",
-            "BodyContentType": "Json",
-            "ContentHeaders": {
-                "Content-Type": "application/json; charset=utf-8",
-                "Content-Length": "571"
-            },
-            "Method": "POST",
-            "RequestHeaders": {
-                "Accept": "application/json",
-                "Authorization": "<REDACTED>",
-                "content_type": "application/json",
-                "User-Agent": "<REDACTED>"
-            },
-            "Uri": "https://api.easypost.com/v2/batches/create_and_buy"
-        },
-        "Response": {
-            "Body": "{\"id\":\"batch_a1804e017fe74e77a99ed236eadc6f5d\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"creating\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2022-07-21T04:01:33Z\",\"updated_at\":\"2022-07-21T04:01:33Z\",\"scan_form\":null,\"shipments\":[],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null}",
-            "BodyContentType": "Json",
-            "ContentHeaders": {
-                "Expires": "0",
-                "Content-Type": "application/json; charset=utf-8",
-                "Content-Length": "384"
-            },
-            "HttpVersion": "1.1",
-            "ResponseHeaders": {
-                "X-Frame-Options": "SAMEORIGIN",
-                "X-XSS-Protection": "1; mode=block",
-                "X-Content-Type-Options": "nosniff",
-                "x-download-options": "noopen",
-                "x-permitted-cross-domain-policies": "none",
-                "Referrer-Policy": "strict-origin-when-cross-origin",
-                "x-ep-request-uuid": "2733d52c62d8cf9dec63041c000d392c",
-                "Cache-Control": "no-store, no-cache",
-                "Pragma": "no-cache",
-                "ETag": "W/\"167edc745eb2d4648312bd43786a2a48\"",
-                "x-runtime": "0.039250",
-                "x-node": "bigweb4nuq",
-                "x-version-label": "easypost-202207201843-d4617192e3-master",
-                "x-backend": "easypost",
-                "x-proxied": "intlb1nuq 403f17ff97,extlb1nuq 403f17ff97",
-                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-            },
-            "Status": {
-                "Code": 200,
-                "Message": "OK"
-            }
-        }
+  {
+    "Duration": 233,
+    "RecordedAt": "2022-08-10T10:22:04.410394-06:00",
+    "Request": {
+      "Body": "{\"batch\":{\"shipments\":[{\"to_address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\"},\"from_address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\"},\"parcel\":{\"length\":\"10\",\"width\":\"8\",\"height\":\"4\",\"weight\":\"15.4\"},\"service\":\"First\",\"carrier_accounts\":[\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\"],\"carrier\":\"USPS\"}]}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "571"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/batches/create_and_buy"
+    },
+    "Response": {
+      "Body": "{\"id\":\"batch_a3305b838f134d8c8603cf4d91bb3fc8\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"creating\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2022-08-10T16:22:04Z\",\"updated_at\":\"2022-08-10T16:22:04Z\",\"scan_form\":null,\"shipments\":[],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "384"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "61a5c40962f3db2cfec68baa002a5586",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "ETag": "W/\"ffac7e5d63153e18d7219d4a4b651c28\"",
+        "x-runtime": "0.065714",
+        "x-node": "bigweb4nuq",
+        "x-version-label": "easypost-202208101612-4eaa48a0da-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb2nuq 403f17ff97,extlb2nuq 9ce216bfac",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
     }
+  }
 ]

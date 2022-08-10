@@ -1,51 +1,51 @@
 [
-    {
-        "Duration": 238,
-        "RecordedAt": "2022-07-20T22:00:06.916446-06:00",
-        "Request": {
-            "Body": "",
-            "BodyContentType": "Text",
-            "ContentHeaders": {},
-            "Method": "GET",
-            "RequestHeaders": {
-                "Accept": "application/json",
-                "Authorization": "<REDACTED>",
-                "content_type": "application/json",
-                "User-Agent": "<REDACTED>"
-            },
-            "Uri": "https://api.easypost.com/v2/carrier_accounts"
-        },
-        "Response": {
-            "Body": "[{\"id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\",\"object\":\"CarrierAccount\",\"type\":\"UspsAccount\",\"clone\":false,\"created_at\":\"2018-04-20T16:42:21Z\",\"updated_at\":\"2018-04-20T17:05:01Z\",\"description\":\"USPS Account\",\"reference\":null,\"billing_type\":\"easypost\",\"readable\":\"USPS\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}},{\"id\":\"ca_fd8b148e541d4163b02cc21afe2aaac8\",\"object\":\"CarrierAccount\",\"type\":\"DhlExpressDefaultAccount\",\"clone\":false,\"created_at\":\"2022-05-25T18:59:02Z\",\"updated_at\":\"2022-05-25T18:59:02Z\",\"description\":\"DHL Express Account\",\"reference\":null,\"billing_type\":\"easypost\",\"readable\":\"DHL Express\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}},{\"id\":\"ca_06c27c7bc8484ff299ec84bdc2a5be38\",\"object\":\"CarrierAccount\",\"type\":\"LsoDefaultAccount\",\"clone\":false,\"created_at\":\"2022-05-25T18:59:04Z\",\"updated_at\":\"2022-05-25T18:59:04Z\",\"description\":\"LSO Account\",\"reference\":null,\"billing_type\":\"easypost\",\"readable\":\"LSO\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}},{\"id\":\"ca_ba94eaaacddb4bf2b135953b3067e817\",\"object\":\"CarrierAccount\",\"type\":\"UpsAccount\",\"clone\":false,\"created_at\":\"2022-05-26T19:03:31Z\",\"updated_at\":\"2022-05-26T19:03:31Z\",\"description\":\"UPS Account\",\"reference\":null,\"billing_type\":\"carrier\",\"readable\":\"UPS\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}},{\"id\":\"ca_0b351eb47cac405dadaf54c659c0a0eb\",\"object\":\"CarrierAccount\",\"type\":\"UpsAccount\",\"clone\":false,\"created_at\":\"2022-05-26T19:03:32Z\",\"updated_at\":\"2022-05-26T19:03:33Z\",\"description\":\"My custom description\",\"reference\":null,\"billing_type\":\"carrier\",\"readable\":\"UPS\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}},{\"id\":\"ca_34d97dc9d5df46e48c088455935bc518\",\"object\":\"CarrierAccount\",\"type\":\"UpsAccount\",\"clone\":false,\"created_at\":\"2022-06-04T00:17:14Z\",\"updated_at\":\"2022-06-04T00:17:15Z\",\"description\":\"my custom description\",\"reference\":null,\"billing_type\":\"carrier\",\"readable\":\"UPS\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}}]",
-            "BodyContentType": "Json",
-            "ContentHeaders": {
-                "Expires": "0",
-                "Content-Type": "application/json; charset=utf-8",
-                "Content-Length": "3191"
-            },
-            "HttpVersion": "1.1",
-            "ResponseHeaders": {
-                "X-Frame-Options": "SAMEORIGIN",
-                "x-xss-protection": "1; mode=block",
-                "X-Content-Type-Options": "nosniff",
-                "x-download-options": "noopen",
-                "x-permitted-cross-domain-policies": "none",
-                "referrer-policy": "strict-origin-when-cross-origin",
-                "x-ep-request-uuid": "2733d53062d8cf46ec3b8090000d06cb",
-                "Cache-Control": "no-store, no-cache",
-                "Pragma": "no-cache",
-                "ETag": "W/\"da4a827c91b0a4c71d2fd21f58ae5fbb\"",
-                "x-runtime": "0.094405",
-                "x-node": "bigweb9nuq",
-                "x-version-label": "easypost-202207201843-d4617192e3-master",
-                "x-backend": "easypost",
-                "x-proxied": "intlb1nuq 403f17ff97,extlb1nuq 403f17ff97",
-                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-            },
-            "Status": {
-                "Code": 200,
-                "Message": "OK"
-            }
-        }
+  {
+    "Duration": 370,
+    "RecordedAt": "2022-08-10T10:20:13.241055-06:00",
+    "Request": {
+      "Body": "",
+      "BodyContentType": "Text",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/carrier_accounts"
+    },
+    "Response": {
+      "Body": "[{\"id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\",\"object\":\"CarrierAccount\",\"type\":\"UspsAccount\",\"clone\":false,\"created_at\":\"2018-04-20T16:42:21Z\",\"updated_at\":\"2018-04-20T17:05:01Z\",\"description\":\"USPS Account\",\"reference\":null,\"billing_type\":\"easypost\",\"readable\":\"USPS\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}},{\"id\":\"ca_fd8b148e541d4163b02cc21afe2aaac8\",\"object\":\"CarrierAccount\",\"type\":\"DhlExpressDefaultAccount\",\"clone\":false,\"created_at\":\"2022-05-25T18:59:02Z\",\"updated_at\":\"2022-05-25T18:59:02Z\",\"description\":\"DHL Express Account\",\"reference\":null,\"billing_type\":\"easypost\",\"readable\":\"DHL Express\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}},{\"id\":\"ca_06c27c7bc8484ff299ec84bdc2a5be38\",\"object\":\"CarrierAccount\",\"type\":\"LsoDefaultAccount\",\"clone\":false,\"created_at\":\"2022-05-25T18:59:04Z\",\"updated_at\":\"2022-05-25T18:59:04Z\",\"description\":\"LSO Account\",\"reference\":null,\"billing_type\":\"easypost\",\"readable\":\"LSO\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}},{\"id\":\"ca_ba94eaaacddb4bf2b135953b3067e817\",\"object\":\"CarrierAccount\",\"type\":\"UpsAccount\",\"clone\":false,\"created_at\":\"2022-05-26T19:03:31Z\",\"updated_at\":\"2022-05-26T19:03:31Z\",\"description\":\"UPS Account\",\"reference\":null,\"billing_type\":\"carrier\",\"readable\":\"UPS\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}},{\"id\":\"ca_0b351eb47cac405dadaf54c659c0a0eb\",\"object\":\"CarrierAccount\",\"type\":\"UpsAccount\",\"clone\":false,\"created_at\":\"2022-05-26T19:03:32Z\",\"updated_at\":\"2022-05-26T19:03:33Z\",\"description\":\"My custom description\",\"reference\":null,\"billing_type\":\"carrier\",\"readable\":\"UPS\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}},{\"id\":\"ca_34d97dc9d5df46e48c088455935bc518\",\"object\":\"CarrierAccount\",\"type\":\"UpsAccount\",\"clone\":false,\"created_at\":\"2022-06-04T00:17:14Z\",\"updated_at\":\"2022-06-04T00:17:15Z\",\"description\":\"my custom description\",\"reference\":null,\"billing_type\":\"carrier\",\"readable\":\"UPS\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}}]",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "3191"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "127423b162f3dabdfec6878400010fa6",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "ETag": "W/\"da4a827c91b0a4c71d2fd21f58ae5fbb\"",
+        "x-runtime": "0.145866",
+        "x-node": "bigweb8nuq",
+        "x-version-label": "easypost-202208101612-4eaa48a0da-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq 403f17ff97,extlb1nuq 9ce216bfac",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
     }
+  }
 ]

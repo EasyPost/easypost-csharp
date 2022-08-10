@@ -134,7 +134,7 @@ namespace EasyPost.Tests
 
             if (IsRecording())
             {
-                Thread.Sleep(15000); // Wait enough time to process
+                Thread.Sleep(30000); // Wait enough time to process
             }
 
             await batch.GenerateLabel("ZPL");

@@ -63,16 +63,19 @@ namespace EasyPost.Tests
             return Environment.GetEnvironmentVariable(keyName) ?? ApiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.
         }
 
-        private static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "")
+        internal static Client GetClient(string apiKey, HttpClient? vcrClient = null)
         {
-            return Path.GetDirectoryName(sourceFilePath);
+            return new Client(apiKey, vcrClient);
         }
+
+        private static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath);
 
         public class VCR
         {
             private readonly string _apiKey;
 
             private readonly string _testCassettesFolder;
+
             private readonly EasyVCR.VCR _vcr;
 
             internal HttpClient Client
@@ -80,7 +83,7 @@ namespace EasyPost.Tests
                 get { return _vcr.Client; }
             }
 
-            public VCR(string testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
+            public VCR(string? testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
             {
                 Censors censors = new Censors("<REDACTED>");
                 censors.HideHeaders(HeaderCensors);
@@ -119,7 +122,7 @@ namespace EasyPost.Tests
                 }
             }
 
-            public void SetUpTest(string cassetteName, string overrideApiKey = null)
+            internal Client SetUpTest(string cassetteName, string? overrideApiKey = null)
             {
                 // override api key if needed
                 string apiKey = overrideApiKey ?? _apiKey;
@@ -127,11 +130,10 @@ namespace EasyPost.Tests
                 // set up cassette
                 Cassette cassette = new Cassette(_testCassettesFolder, cassetteName, new CassetteOrder.Alphabetical());
 
-                string filePath = Path.Combine(_testCassettesFolder, cassetteName + ".json");
-
                 // add cassette to vcr
                 _vcr.Insert(cassette);
 
+                string filePath = Path.Combine(_testCassettesFolder, cassetteName + ".json");
                 if (!File.Exists(filePath))
                 {
                     // if cassette doesn't exist, switch to record mode
@@ -143,14 +145,11 @@ namespace EasyPost.Tests
                     _vcr.Replay();
                 }
 
-                // set up EasyPost client
-                ClientManager.SetCurrent(() => new Client(new ClientConfiguration(apiKey), Client));
+                // get EasyPost client
+                return GetClient(apiKey, Client);
             }
 
-            internal bool IsRecording()
-            {
-                return _vcr.Mode == Mode.Record;
-            }
+            internal bool IsRecording() =>_vcr.Mode == Mode.Record;
         }
     }
 }

@@ -202,7 +202,7 @@ namespace EasyPost.Tests
         {
             get
             {
-                const string pickupDate = "2022-08-09";
+                const string pickupDate = "2022-08-11";
                 return new Dictionary<string, object?>
                 {
                     {
