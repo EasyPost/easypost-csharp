@@ -11,10 +11,9 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("credentials")]
-        public Dictionary<string, object?> credentials { get; set; }
+        public Dictionary<string, object> credentials { get; set; }
         [JsonProperty("description")]
         public string description { get; set; }
-
         [JsonProperty("readable")]
         public string readable { get; set; }
         [JsonProperty("reference")]
@@ -23,7 +22,6 @@ namespace EasyPost.Models.API
         public Dictionary<string, object?> test_credentials { get; set; }
         [JsonProperty("type")]
         public string type { get; set; }
-
         [JsonProperty("billing_type")]
         public string billing_type { get; set; }
 

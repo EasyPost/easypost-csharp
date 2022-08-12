@@ -26,7 +26,6 @@ namespace EasyPost.Models.API
         public int? delivery_days { get; set; }
         [JsonProperty("est_delivery_days")]
         public int? est_delivery_days { get; set; }
-
         [JsonProperty("list_currency")]
         public string list_currency { get; set; }
         [JsonProperty("list_rate")]

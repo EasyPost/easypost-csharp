@@ -71,7 +71,7 @@ namespace EasyPost.Services
         public async Task CreateList(Dictionary<string, object?> parameters)
         {
             parameters = parameters.Wrap("trackers");
-            await CreateBlind("trackers/create_list", parameters);
+            await CreateNoResponse("trackers/create_list", parameters);
         }
 
         // This endpoint does not return a response so we return the request was successful

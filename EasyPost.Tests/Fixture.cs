@@ -23,7 +23,7 @@ namespace EasyPost.Tests
 
         public const string UspsService = "First";
 
-        public static Dictionary<string, object?> BasicAddress => new Dictionary<string, object?>()
+        public static Dictionary<string, object> BasicAddress => new Dictionary<string, object>()
         {
             {
                 "name",
@@ -63,7 +63,7 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object?> BasicCarrierAccount => new Dictionary<string, object?>()
+        public static Dictionary<string, object> BasicCarrierAccount => new Dictionary<string, object>()
         {
             {
                 "type",
@@ -71,7 +71,7 @@ namespace EasyPost.Tests
             },
             {
                 "credentials",
-                new Dictionary<string, object?>
+                new Dictionary<string, object>
                 {
                     {
                         "account_number", "A1A1A1"
@@ -89,7 +89,7 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object?> BasicCustomsInfo => new Dictionary<string, object?>()
+        public static Dictionary<string, object> BasicCustomsInfo => new Dictionary<string, object>()
         {
             {
                 "eel_pfc",
@@ -128,7 +128,7 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object?> BasicCustomsItem => new Dictionary<string, object?>()
+        public static Dictionary<string, object> BasicCustomsItem => new Dictionary<string, object>()
         {
             {
                 "description",
@@ -156,7 +156,7 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object?> BasicOrder => new Dictionary<string, object?>()
+        public static Dictionary<string, object> BasicOrder => new Dictionary<string, object>()
         {
             {
                 "to_address",
@@ -168,14 +168,14 @@ namespace EasyPost.Tests
             },
             {
                 "shipments",
-                new List<Dictionary<string, object?>>
+                new List<Dictionary<string, object>>
                 {
                     BasicShipment
                 }
             }
         };
 
-        public static Dictionary<string, object?> BasicParcel => new Dictionary<string, object?>()
+        public static Dictionary<string, object> BasicParcel => new Dictionary<string, object>()
         {
             {
                 "length",
@@ -198,12 +198,12 @@ namespace EasyPost.Tests
         // This fixture will require you to add a `shipment` key with a Shipment object from a test.
         // If you need to re-record cassettes, simply iterate the dates below and ensure they're one day in the future,
         // USPS only does "next-day" pickups including Saturday but not Sunday or Holidays.
-        public static Dictionary<string, object?> BasicPickup
+        public static Dictionary<string, object> BasicPickup
         {
             get
             {
                 const string pickupDate = "2022-08-11";
-                return new Dictionary<string, object?>
+                return new Dictionary<string, object>
                 {
                     {
                         "address", BasicAddress
@@ -221,7 +221,7 @@ namespace EasyPost.Tests
             }
         }
 
-        public static Dictionary<string, object?> BasicShipment => new Dictionary<string, object?>()
+        public static Dictionary<string, object> BasicShipment => new Dictionary<string, object>()
         {
             {
                 "to_address",
@@ -237,7 +237,7 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object?> EndShipperAddress => new Dictionary<string, object?>()
+        public static Dictionary<string, object> EndShipperAddress => new Dictionary<string, object>()
         {
             {
                 "name",
@@ -285,7 +285,7 @@ namespace EasyPost.Tests
         {
             get
             {
-                Dictionary<string, object?> data = new Dictionary<string, object?>()
+                Dictionary<string, object> data = new Dictionary<string, object?>()
                 {
                     {
                         "mode",

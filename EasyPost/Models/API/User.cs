@@ -16,10 +16,8 @@ namespace EasyPost.Models.API
         public string balance { get; set; }
         [JsonProperty("children")]
         public List<User> children { get; set; }
-
         [JsonProperty("email")]
         public string email { get; set; }
-
         [JsonProperty("name")]
         public string name { get; set; }
         [JsonProperty("parent_id")]
@@ -65,7 +63,7 @@ namespace EasyPost.Models.API
         ///     account.
         ///     All invalid keys will be ignored.
         /// </param>
-        public async Task<User> Update(Dictionary<string, object?> parameters)
+        public async Task<User> Update(Dictionary<string, object> parameters)
         {
             return await Update<User>(Method.Patch, $"users/{id}", parameters);
         }

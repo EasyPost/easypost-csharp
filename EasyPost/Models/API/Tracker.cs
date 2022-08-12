@@ -13,10 +13,8 @@ namespace EasyPost.Models.API
         public string carrier { get; set; }
         [JsonProperty("carrier_detail")]
         public CarrierDetail carrier_detail { get; set; }
-
         [JsonProperty("est_delivery_date")]
         public DateTime? est_delivery_date { get; set; }
-
         [JsonProperty("mode")]
         public new string mode { get; set; }
         [JsonProperty("public_url")]
@@ -33,7 +31,6 @@ namespace EasyPost.Models.API
         public List<TrackingDetail> tracking_details { get; set; }
         [JsonProperty("tracking_updated_at")]
         public DateTime tracking_updated_at { get; set; }
-
         [JsonProperty("weight")]
         public double? weight { get; set; }
 

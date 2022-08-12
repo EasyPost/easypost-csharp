@@ -16,12 +16,10 @@ namespace EasyPost.Models.API
         public Address buyer_address { get; set; }
         [JsonProperty("carrier_accounts")]
         public List<CarrierAccount> carrier_accounts { get; set; }
-
         [JsonProperty("customs_info")]
         public CustomsInfo customs_info { get; set; }
         [JsonProperty("from_address")]
         public Address from_address { get; set; }
-
         [JsonProperty("is_return")]
         public bool? is_return { get; set; }
         [JsonProperty("messages")]
@@ -55,7 +53,7 @@ namespace EasyPost.Models.API
                 throw new Exception("id is null");
             }
 
-            Dictionary<string, object?> parameters = new Dictionary<string, object?>
+            Dictionary<string, object> parameters = new Dictionary<string, object?>
             {
                 {
                     "carrier", withCarrier

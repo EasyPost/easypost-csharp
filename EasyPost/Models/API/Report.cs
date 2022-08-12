@@ -10,7 +10,6 @@ namespace EasyPost.Models.API
 
         [JsonProperty("end_date")]
         public DateTime? end_date { get; set; }
-
         [JsonProperty("include_children")]
         public bool include_children { get; set; }
         [JsonProperty("mode")]
@@ -19,7 +18,6 @@ namespace EasyPost.Models.API
         public DateTime? start_date { get; set; }
         [JsonProperty("status")]
         public string status { get; set; }
-
         [JsonProperty("url")]
         public string url { get; set; }
         [JsonProperty("url_expires_at")]

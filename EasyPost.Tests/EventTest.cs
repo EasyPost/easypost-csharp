@@ -43,7 +43,7 @@ namespace EasyPost.Tests
         }
 
         private async Task<EventCollection> GetBasicEventCollection() =>
-            await Client.Event.All(new Dictionary<string, object?>
+            await Client.Event.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize

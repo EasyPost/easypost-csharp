@@ -22,7 +22,6 @@ namespace EasyPost.Models.API
         public Address buyer_address { get; set; }
         [JsonProperty("carrier_accounts")]
         public List<CarrierAccount> carrier_accounts { get; set; }
-
         [JsonProperty("customs_info")]
         public CustomsInfo customs_info { get; set; }
         [JsonProperty("fees")]
@@ -31,7 +30,6 @@ namespace EasyPost.Models.API
         public List<Form> forms { get; set; }
         [JsonProperty("from_address")]
         public Address from_address { get; set; }
-
         [JsonProperty("insurance")]
         public string insurance { get; set; }
         [JsonProperty("is_return")]
@@ -72,7 +70,6 @@ namespace EasyPost.Models.API
         public Tracker tracker { get; set; }
         [JsonProperty("tracking_code")]
         public string tracking_code { get; set; }
-
         [JsonProperty("usps_zone")]
         public string usps_zone { get; set; }
 
@@ -91,10 +88,10 @@ namespace EasyPost.Models.API
                 throw new Exception("id is null. Cannot buy a shipment without an id.");
             }
 
-            Dictionary<string, object?> parameters = new Dictionary<string, object?>
+            Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 {
-                    "rate", new Dictionary<string, object?>
+                    "rate", new Dictionary<string, object>
                     {
                         { "id", rateId }
                     }
@@ -138,7 +135,7 @@ namespace EasyPost.Models.API
                 throw new Exception("id is null");
             }
 
-            Dictionary<string, object?> parameters = new Dictionary<string, object?>
+            Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 {
                     "file_format", fileFormat
@@ -173,7 +170,7 @@ namespace EasyPost.Models.API
                 throw new Exception("id is null");
             }
 
-            Dictionary<string, object?> parameters = new Dictionary<string, object?>
+            Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 {
                     "amount", amount
@@ -231,9 +228,9 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
         /// <param name="withCarbonOffset">Whether to use carbon offset when re-rating the shipment.</param>
-        public async Task RegenerateRates(Dictionary<string, object?>? parameters = null, bool withCarbonOffset = false)
+        public async Task RegenerateRates(Dictionary<string, object>? parameters = null, bool withCarbonOffset = false)
         {
-            parameters ??= new Dictionary<string, object?>();
+            parameters ??= new Dictionary<string, object>();
 
             if (id == null)
             {

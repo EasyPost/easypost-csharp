@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object?>
+            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -54,7 +54,7 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve");
 
-            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object?>
+            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -74,7 +74,7 @@ namespace EasyPost.Tests
             Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyShipment);
             Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.id); // We need to retrieve the shipment so that the tracking_code has time to populate
 
-            return await Client.Refund.Create(new Dictionary<string, object?>
+            return await Client.Refund.Create(new Dictionary<string, object>
             {
                 {
                     "carrier", Fixture.Usps

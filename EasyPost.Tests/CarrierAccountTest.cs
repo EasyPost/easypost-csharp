@@ -97,7 +97,7 @@ namespace EasyPost.Tests
 
             string testDescription = "my custom description";
 
-            Dictionary<string, object?> carrierAccountData = new Dictionary<string, object?>()
+            Dictionary<string, object> carrierAccountData = new Dictionary<string, object>()
             {
                 {
                     "description",

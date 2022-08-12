@@ -17,12 +17,10 @@ namespace EasyPost.Models.API
         public string company { get; set; }
         [JsonProperty("country")]
         public string country { get; set; }
-
         [JsonProperty("email")]
         public string email { get; set; }
         [JsonProperty("error")]
         public string error { get; set; }
-
         [JsonProperty("message")]
         public string message { get; set; }
         [JsonProperty("name")]
@@ -35,7 +33,6 @@ namespace EasyPost.Models.API
         public string street1 { get; set; }
         [JsonProperty("street2")]
         public string street2 { get; set; }
-
         [JsonProperty("zip")]
         public string zip { get; set; }
         [JsonProperty("carrier_facility")]

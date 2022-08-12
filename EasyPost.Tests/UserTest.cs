@@ -109,7 +109,7 @@ namespace EasyPost.Tests
 
             string testName = "New Name";
 
-            Dictionary<string, object?> userDict = new Dictionary<string, object?>
+            Dictionary<string, object> userDict = new Dictionary<string, object>
             {
                 {
                     "name",
@@ -131,7 +131,7 @@ namespace EasyPost.Tests
             User user = await CreateUser();
 
             string color = "#123456";
-            Brand brand = await user.UpdateBrand(new Dictionary<string, object?>
+            Brand brand = await user.UpdateBrand(new Dictionary<string, object>
             {
                 {
                     "color", color
@@ -145,7 +145,7 @@ namespace EasyPost.Tests
 
         private async Task<User> CreateUser()
         {
-            User user = await Client.User.CreateChild(new Dictionary<string, object?>
+            User user = await Client.User.CreateChild(new Dictionary<string, object>
             {
                 {
                     "name", "Test User"

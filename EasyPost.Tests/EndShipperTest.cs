@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            List<EndShipper> endShippers = await Client.EndShipper.All(new Dictionary<string, object?>
+            List<EndShipper> endShippers = await Client.EndShipper.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -64,7 +64,7 @@ namespace EasyPost.Tests
 
             string testName = "NEW NAME";
 
-            Dictionary<string, object?> endShipperData = Fixture.EndShipperAddress;
+            Dictionary<string, object> endShipperData = Fixture.EndShipperAddress;
             endShipperData["name"] = testName;
 
             endShipper = await endShipper.Update(endShipperData);

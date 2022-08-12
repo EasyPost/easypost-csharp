@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            AddressCollection addressCollection = await Client.Address.All(new Dictionary<string, object?>
+            AddressCollection addressCollection = await Client.Address.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -49,7 +49,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create_and_verify");
 
-            Dictionary<string, object?> addressData = Fixture.BasicAddress;
+            Dictionary<string, object> addressData = Fixture.BasicAddress;
             addressData.Add("verify_strict", new List<bool>
             {
                 true
@@ -79,7 +79,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create_verify_strict");
 
-            Dictionary<string, object?> addressData = Fixture.BasicAddress;
+            Dictionary<string, object> addressData = Fixture.BasicAddress;
             addressData.Add("verify_strict", new List<bool>
             {
                 true

@@ -14,7 +14,6 @@ namespace EasyPost.Models.API
         public string amount { get; set; }
         [JsonProperty("from_address")]
         public Address from_address { get; set; }
-
         [JsonProperty("messages")]
         public List<string> messages { get; set; }
         [JsonProperty("mode")]

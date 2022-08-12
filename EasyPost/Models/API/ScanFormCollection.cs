@@ -10,8 +10,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("filters")]
-        public Dictionary<string, object?>? filters { get; set; }
-
+        public Dictionary<string, object>? filters { get; set; }
         [JsonProperty("scan_forms")]
         public List<ScanForm> scan_forms { get; set; }
 

@@ -21,7 +21,7 @@ namespace EasyPost.Services
         {
             PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
 
-            await DeleteBlind($"{paymentMethod.Endpoint}/{paymentMethod.id}");
+            await DeleteNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.id}");
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace EasyPost.Services
                 }
             };
 
-            await CreateBlind($"{paymentMethod.Endpoint}/{paymentMethod.id}/charge", parameters);
+            await CreateNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.id}/charge", parameters);
         }
 
         /// <summary>

@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            ScanFormCollection scanFormCollection = await Client.ScanForm.All(new Dictionary<string, object?>
+            ScanFormCollection scanFormCollection = await Client.ScanForm.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize

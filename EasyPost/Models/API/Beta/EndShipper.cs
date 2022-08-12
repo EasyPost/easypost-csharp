@@ -15,12 +15,10 @@ namespace EasyPost.Models.API.Beta
         public string company { get; set; }
         [JsonProperty("country")]
         public string country { get; set; }
-
         [JsonProperty("email")]
         public string email { get; set; }
         [JsonProperty("error")]
         public string error { get; set; }
-
         [JsonProperty("message")]
         public string message { get; set; }
         [JsonProperty("name")]
@@ -33,7 +31,6 @@ namespace EasyPost.Models.API.Beta
         public string street1 { get; set; }
         [JsonProperty("street2")]
         public string street2 { get; set; }
-
         [JsonProperty("zip")]
         public string zip { get; set; }
 
@@ -41,7 +38,7 @@ namespace EasyPost.Models.API.Beta
         ///     Update this EndShipper. Must pass in all properties (new and existing).
         /// </summary>
         /// <param name="parameters">See EndShipper.Create for more details.</param>
-        public async Task<EndShipper> Update(Dictionary<string, object?> parameters)
+        public async Task<EndShipper> Update(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("address");
 

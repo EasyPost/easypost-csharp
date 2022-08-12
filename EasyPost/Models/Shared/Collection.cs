@@ -11,7 +11,7 @@ namespace EasyPost.Models.Shared
         #region JSON Properties
 
         [JsonProperty("filters")]
-        internal Dictionary<string, object?>? Filters { get; set; }
+        internal Dictionary<string, object>? Filters { get; set; }
         [JsonProperty("has_more")]
         public bool HasMore { get; set; }
 
@@ -19,7 +19,7 @@ namespace EasyPost.Models.Shared
 
         protected void UpdateFilters(IEnumerable<EasyPostObject>? elements, string propertyName)
         {
-            Filters ??= new Dictionary<string, object?>();
+            Filters ??= new Dictionary<string, object>();
             Filters["before_id"] = (elements ?? throw new Exception($"{propertyName} is null")).Last().id ?? throw new Exception("id is null");
 
             if (Client == null)

@@ -13,7 +13,6 @@ namespace EasyPost.Models.API
 
         [JsonProperty("error")]
         public string error { get; set; }
-
         [JsonProperty("label_url")]
         public string label_url { get; set; }
         [JsonProperty("message")]

@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            InsuranceCollection insuranceCollection = await Client.Insurance.All(new Dictionary<string, object?>
+            InsuranceCollection insuranceCollection = await Client.Insurance.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -60,7 +60,7 @@ namespace EasyPost.Tests
 
         private async Task<Insurance> CreateBasicInsurance()
         {
-            Dictionary<string, object?> basicInsurance = await Fixture.BasicInsurance(Client);
+            Dictionary<string, object> basicInsurance = await Fixture.BasicInsurance(Client);
             return await Client.Insurance.Create(basicInsurance);
         }
     }

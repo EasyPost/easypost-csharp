@@ -11,7 +11,6 @@ namespace EasyPost.Models.API
         public string form_type { get; set; }
         [JsonProperty("form_url")]
         public string form_url { get; set; }
-
         [JsonProperty("mode")]
         public new string mode { get; set; }
         [JsonProperty("submitted_electronically")]

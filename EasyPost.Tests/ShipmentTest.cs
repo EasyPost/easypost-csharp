@@ -19,7 +19,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            ShipmentCollection shipmentCollection = await Client.Shipment.All(new Dictionary<string, object?>
+            ShipmentCollection shipmentCollection = await Client.Shipment.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -79,11 +79,11 @@ namespace EasyPost.Tests
         {
             UseVCR("create_empty_objects");
 
-            Dictionary<string, object?> shipmentData = Fixture.BasicShipment;
+            Dictionary<string, object> shipmentData = Fixture.BasicShipment;
 
-            shipmentData.Add("customs_info", new Dictionary<string, object?>());
+            shipmentData.Add("customs_info", new Dictionary<string, object>());
             Assert.NotNull(shipmentData["customs_info"]);
-            (shipmentData["customs_info"] as Dictionary<string, object?>).Add("customs_items", new List<object>());
+            (shipmentData["customs_info"] as Dictionary<string, object>).Add("customs_items", new List<object>());
             shipmentData["options"] = null;
             shipmentData["tax_identifiers"] = null;
             shipmentData["reference"] = "";
@@ -103,8 +103,8 @@ namespace EasyPost.Tests
         {
             UseVCR("create_tax_identifiers");
 
-            Dictionary<string, object?> shipmentData = Fixture.BasicShipment;
-            shipmentData["tax_identifiers"] = new List<Dictionary<string, object?>>
+            Dictionary<string, object> shipmentData = Fixture.BasicShipment;
+            shipmentData["tax_identifiers"] = new List<Dictionary<string, object>>
             {
                 Fixture.TaxIdentifier
             };
@@ -125,10 +125,10 @@ namespace EasyPost.Tests
             Address toAddress = await Client.Address.Create(Fixture.BasicAddress);
             Parcel parcel = await Client.Parcel.Create(Fixture.BasicParcel);
 
-            Shipment shipment = await Client.Shipment.Create(new Dictionary<string, object?>
+            Shipment shipment = await Client.Shipment.Create(new Dictionary<string, object>
             {
                 {
-                    "from_address", new Dictionary<string, object?>
+                    "from_address", new Dictionary<string, object>
                     {
                         {
                             "id", fromAddress.id
@@ -136,7 +136,7 @@ namespace EasyPost.Tests
                     }
                 },
                 {
-                    "to_address", new Dictionary<string, object?>
+                    "to_address", new Dictionary<string, object>
                     {
                         {
                             "id", toAddress.id
@@ -144,7 +144,7 @@ namespace EasyPost.Tests
                     }
                 },
                 {
-                    "parcel", new Dictionary<string, object?>
+                    "parcel", new Dictionary<string, object>
                     {
                         {
                             "id", parcel.id
@@ -188,7 +188,7 @@ namespace EasyPost.Tests
         {
             UseVCR("insure");
 
-            Dictionary<string, object?> shipmentData = Fixture.OneCallBuyShipment;
+            Dictionary<string, object> shipmentData = Fixture.OneCallBuyShipment;
             // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
             shipmentData["insurance"] = 0;
 

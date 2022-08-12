@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            TrackerCollection trackerCollection = await Client.Tracker.All(new Dictionary<string, object?>
+            TrackerCollection trackerCollection = await Client.Tracker.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -49,10 +49,10 @@ namespace EasyPost.Tests
         {
             UseVCR("create_list");
 
-            await Client.Tracker.CreateList(new Dictionary<string, object?>
+            await Client.Tracker.CreateList(new Dictionary<string, object>
             {
                 {
-                    "0", new Dictionary<string, object?>
+                    "0", new Dictionary<string, object>
                     {
                         {
                             "tracking_code", "EZ1000000001"
@@ -60,7 +60,7 @@ namespace EasyPost.Tests
                     }
                 },
                 {
-                    "1", new Dictionary<string, object?>
+                    "1", new Dictionary<string, object>
                     {
                         {
                             "tracking_code", "EZ1000000002"
@@ -68,7 +68,7 @@ namespace EasyPost.Tests
                     }
                 },
                 {
-                    "2", new Dictionary<string, object?>
+                    "2", new Dictionary<string, object>
                     {
                         {
                             "tracking_code", "EZ1000000003"

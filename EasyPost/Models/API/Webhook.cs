@@ -13,7 +13,6 @@ namespace EasyPost.Models.API
 
         [JsonProperty("disabled_at")]
         public DateTime? disabled_at { get; set; }
-
         [JsonProperty("mode")]
         public new string mode { get; set; }
         [JsonProperty("url")]
@@ -39,7 +38,7 @@ namespace EasyPost.Models.API
         ///     All invalid keys will be ignored.
         /// </param>
         /// </summary>
-        public async Task<Webhook> Update(Dictionary<string, object?>? parameters = null)
+        public async Task<Webhook> Update(Dictionary<string, object>? parameters = null)
         {
             return await Update<Webhook>(Method.Patch, $"webhooks/{id}", parameters);
         }

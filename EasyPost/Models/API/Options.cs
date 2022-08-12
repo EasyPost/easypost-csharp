@@ -122,7 +122,7 @@ namespace EasyPost.Models.API
         [JsonProperty("parties_to_transaction_are_related")]
         public string parties_to_transaction_are_related { get; set; }
         [JsonProperty("payment")]
-        public Dictionary<string, object?> payment { get; set; }
+        public Dictionary<string, object> payment { get; set; }
         [JsonProperty("peel_and_return")]
         public bool peel_and_return { get; set; }
         [JsonProperty("pickup_min_datetime")]

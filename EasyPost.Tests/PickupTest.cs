@@ -99,7 +99,7 @@ namespace EasyPost.Tests
         private async Task<Pickup> CreateBasicPickup()
         {
             Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyShipment);
-            Dictionary<string, object?> pickupData = Fixture.BasicPickup;
+            Dictionary<string, object> pickupData = Fixture.BasicPickup;
             pickupData["shipment"] = shipment;
             return await Client.Pickup.Create(pickupData);
         }

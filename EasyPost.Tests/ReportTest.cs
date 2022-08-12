@@ -16,7 +16,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            ReportCollection reportCollection = await Client.Report.All("shipment", new Dictionary<string, object?>
+            ReportCollection reportCollection = await Client.Report.All("shipment", new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
@@ -53,7 +53,7 @@ namespace EasyPost.Tests
                 "from_name",
                 "from_company"
             };
-            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object?>
+            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object>
             {
                 {
                     "additional_columns", additionalColumns
@@ -77,7 +77,7 @@ namespace EasyPost.Tests
             {
                 "usps_zone"
             };
-            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object?>
+            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object>
             {
                 {
                     "columns", columns
@@ -106,7 +106,7 @@ namespace EasyPost.Tests
             Assert.Equal(report.end_date, retrievedReport.end_date);
         }
 
-        private async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object?> parameters)
+        private async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters)
         {
             parameters["start_date"] = Fixture.ReportDate;
             parameters["end_date"] = Fixture.ReportDate;
@@ -114,7 +114,7 @@ namespace EasyPost.Tests
         }
 
         private async Task<Report> CreateBasicReport(string reportType) =>
-            await Client.Report.Create(reportType, new Dictionary<string, object?>
+            await Client.Report.Create(reportType, new Dictionary<string, object>
             {
                 {
                     "start_date", Fixture.ReportDate

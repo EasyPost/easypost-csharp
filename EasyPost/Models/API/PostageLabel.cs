@@ -10,7 +10,6 @@ namespace EasyPost.Models.API
 
         [JsonProperty("date_advance")]
         public int date_advance { get; set; }
-
         [JsonProperty("integrated_form")]
         public string integrated_form { get; set; }
         [JsonProperty("label_date")]

@@ -12,12 +12,10 @@ namespace EasyPost.Models.API
         public Address address { get; set; }
         [JsonProperty("batch_id")]
         public string batch_id { get; set; }
-
         [JsonProperty("form_file_type")]
         public string form_file_type { get; set; }
         [JsonProperty("form_url")]
         public string form_url { get; set; }
-
         [JsonProperty("message")]
         public string message { get; set; }
         [JsonProperty("mode")]
