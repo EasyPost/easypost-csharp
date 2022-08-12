@@ -122,7 +122,7 @@ namespace EasyPost.Tests
                 }
             }
 
-            internal bool IsRecording() =>_vcr.Mode == Mode.Record;
+            internal bool IsRecording() => _vcr.Mode == Mode.Record;
 
             internal Client SetUpTest(string cassetteName, string? overrideApiKey = null)
             {
