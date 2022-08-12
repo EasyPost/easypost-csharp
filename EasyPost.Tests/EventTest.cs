@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -11,7 +12,10 @@ namespace EasyPost.Tests
         {
         }
 
+        #region CRUD Operations
+
         [Fact]
+        [CrudOperations.Read]
         public async Task TestAll()
         {
             UseVCR("all");
@@ -28,6 +32,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -41,6 +46,8 @@ namespace EasyPost.Tests
             // Must compare IDs because other elements of objects may be different
             Assert.Equal(_event.id, retrievedEvent.id);
         }
+
+        #endregion
 
         private async Task<EventCollection> GetBasicEventCollection() =>
             await Client.Event.All(new Dictionary<string, object>

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
@@ -11,26 +12,7 @@ namespace EasyPost.Services
         {
         }
 
-        /// <summary>
-        ///     List all Address objects.
-        /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
-        ///     * {"before_id", string} String representing an Address ID. Starts with "adr_". Only retrieve addresses created
-        ///     before this id. Takes precedence over after_id.
-        ///     * {"after_id", string} String representing an Address ID. Starts with "adr". Only retrieve addresses created after
-        ///     this id.
-        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve addresses created after this datetime.
-        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve addresses created before this datetime.
-        ///     * {"page_size", int} Max size of list. Default to 20.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>An EasyPost.AddressCollection instance.</returns>
-
-        public async Task<AddressCollection> All(Dictionary<string, object?>? parameters = null)
-        {
-            return await List<AddressCollection>("addresses", parameters);
-        }
+        #region CRUD Operations
 
         /// <summary>
         ///     Create an Address.
@@ -52,7 +34,7 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
-
+        [CrudOperations.Create]
         public async Task<Address> Create(Dictionary<string, object?> parameters)
         {
             return await SendCreate("addresses", parameters);
@@ -75,10 +57,31 @@ namespace EasyPost.Services
         ///     * {"email", string}
         ///     All invalid keys will be ignored.
         /// </param>
-
+        [CrudOperations.Create]
         public async Task<Address> CreateAndVerify(Dictionary<string, object?> parameters)
         {
             return await SendCreate("addresses/create_and_verify", parameters, "address");
+        }
+
+        /// <summary>
+        ///     List all Address objects.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
+        ///     * {"before_id", string} String representing an Address ID. Starts with "adr_". Only retrieve addresses created
+        ///     before this id. Takes precedence over after_id.
+        ///     * {"after_id", string} String representing an Address ID. Starts with "adr". Only retrieve addresses created after
+        ///     this id.
+        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve addresses created after this datetime.
+        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve addresses created before this datetime.
+        ///     * {"page_size", int} Max size of list. Default to 20.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>An EasyPost.AddressCollection instance.</returns>
+        [CrudOperations.Read]
+        public async Task<AddressCollection> All(Dictionary<string, object?>? parameters = null)
+        {
+            return await List<AddressCollection>("addresses", parameters);
         }
 
         /// <summary>
@@ -86,11 +89,13 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="id">String representing an Address. Starts with "adr_".</param>
         /// <returns>EasyPost.Address instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<Address> Retrieve(string id)
         {
             return await Get<Address>($"addresses/{id}");
         }
+
+        #endregion
 
         private async Task<Address> SendCreate(string endpoint, Dictionary<string, object?> parameters, string? rootElement = null)
         {

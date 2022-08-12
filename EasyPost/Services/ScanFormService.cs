@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
@@ -10,6 +11,26 @@ namespace EasyPost.Services
     {
         internal ScanFormService(Client client) : base(client)
         {
+        }
+
+        #region CRUD Operations
+
+        /// <summary>
+        ///     Create a ScanForm.
+        /// </summary>
+        /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
+        /// <returns>EasyPost.ScanForm instance.</returns>
+        [CrudOperations.Create]
+        public async Task<ScanForm> Create(List<Shipment> shipments)
+        {
+            Dictionary<string, object?> parameters = new Dictionary<string, object?>
+            {
+                {
+                    "shipments", shipments
+                }
+            };
+            parameters = parameters.Wrap("scan_form");
+            return await Create<ScanForm>("scan_forms", parameters);
         }
 
 
@@ -28,7 +49,7 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<ScanFormCollection> All(Dictionary<string, object?>? parameters = null)
         {
             ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
@@ -38,32 +59,16 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Create a ScanForm.
-        /// </summary>
-        /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
-        /// <returns>EasyPost.ScanForm instance.</returns>
-
-        public async Task<ScanForm> Create(List<Shipment> shipments)
-        {
-            Dictionary<string, object?> parameters = new Dictionary<string, object?>
-            {
-                {
-                    "shipments", shipments
-                }
-            };
-            parameters = parameters.Wrap("scan_form");
-            return await Create<ScanForm>("scan_forms", parameters);
-        }
-
-        /// <summary>
         ///     Retrieve a ScanForm from its id.
         /// </summary>
         /// <param name="id">String representing a scan form, starts with "sf_".</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<ScanForm> Retrieve(string id)
         {
             return await Get<ScanForm>($"scan_forms/{id}");
         }
+
+        #endregion
     }
 }

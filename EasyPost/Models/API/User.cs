@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -39,13 +40,27 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        #region CRUD Operations
+
         /// <summary>
-        ///     Delete the user.
+        ///     Update the User's brand.
         /// </summary>
-        /// <returns>Whether the request was successful or not.</returns>
-        public async Task Delete()
+        /// <param name="parameters">
+        ///     Dictionary containing parameters to update the brand with. Valid pairs:
+        ///     * {"ad", string} Base64 encoded string for a png, gif, jpeg, or svg.
+        ///     * {"ad_href", string} Valid URL under 255 characters
+        ///     * {"background_color", string} Valid hex code
+        ///     * {"color", string} Valid hex code
+        ///     * {"logo", string} Base64 encoded string for a png, gif, jpeg, or svg
+        ///     * {"logo_href", string} Valid URL under 255 characters
+        ///     * {"theme", string} "theme1" or "theme2"
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>EasyPost.Brand instance.</returns>
+        [CrudOperations.Create]
+        public async Task<Brand> UpdateBrand(Dictionary<string, object?> parameters)
         {
-            await Delete($"users/{id}");
+            return await Request<Brand>(Method.Patch, $"users/{id}/brand", parameters);
         }
 
         /// <summary>
@@ -63,29 +78,22 @@ namespace EasyPost.Models.API
         ///     account.
         ///     All invalid keys will be ignored.
         /// </param>
+        [CrudOperations.Update]
         public async Task<User> Update(Dictionary<string, object> parameters)
         {
             return await Update<User>(Method.Patch, $"users/{id}", parameters);
         }
 
         /// <summary>
-        ///     Update the User's brand.
+        ///     Delete the user.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to update the brand with. Valid pairs:
-        ///     * {"ad", string} Base64 encoded string for a png, gif, jpeg, or svg.
-        ///     * {"ad_href", string} Valid URL under 255 characters
-        ///     * {"background_color", string} Valid hex code
-        ///     * {"color", string} Valid hex code
-        ///     * {"logo", string} Base64 encoded string for a png, gif, jpeg, or svg
-        ///     * {"logo_href", string} Valid URL under 255 characters
-        ///     * {"theme", string} "theme1" or "theme2"
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>EasyPost.Brand instance.</returns>
-        public async Task<Brand> UpdateBrand(Dictionary<string, object?> parameters)
+        /// <returns>Whether the request was successful or not.</returns>
+        [CrudOperations.Delete]
+        public async Task Delete()
         {
-            return await Request<Brand>(Method.Patch, $"users/{id}/brand", parameters);
+            await Delete($"users/{id}");
         }
+
+        #endregion
     }
 }

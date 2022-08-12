@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -11,7 +12,22 @@ namespace EasyPost.Tests
         {
         }
 
+        #region CRUD Operations
+
         [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreate()
+        {
+            UseVCR("create");
+
+            ScanForm scanForm = await GetBasicScanForm();
+
+            Assert.IsType<ScanForm>(scanForm);
+            Assert.StartsWith("sf_", scanForm.id);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestAll()
         {
             UseVCR("all");
@@ -33,17 +49,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public async Task TestCreate()
-        {
-            UseVCR("create");
-
-            ScanForm scanForm = await GetBasicScanForm();
-
-            Assert.IsType<ScanForm>(scanForm);
-            Assert.StartsWith("sf_", scanForm.id);
-        }
-
-        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -55,6 +61,8 @@ namespace EasyPost.Tests
             Assert.IsType<ScanForm>(retrievedScanForm);
             Assert.Equal(scanForm, retrievedScanForm);
         }
+
+        #endregion
 
         private async Task<ScanForm> GetBasicScanForm()
         {

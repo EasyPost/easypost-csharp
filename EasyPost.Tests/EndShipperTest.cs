@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API.Beta;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -11,7 +12,23 @@ namespace EasyPost.Tests
         {
         }
 
+        #region CRUD Operations
+
         [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreate()
+        {
+            UseVCR("create");
+
+            EndShipper endShipper = await CreateBasicEndShipper();
+
+            Assert.IsType<EndShipper>(endShipper);
+            Assert.StartsWith("es_", endShipper.id);
+            Assert.Equal("388 TOWNSEND ST APT 20", endShipper.street1);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestAll()
         {
             UseVCR("all");
@@ -31,18 +48,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public async Task TestCreate()
-        {
-            UseVCR("create");
-
-            EndShipper endShipper = await CreateBasicEndShipper();
-
-            Assert.IsType<EndShipper>(endShipper);
-            Assert.StartsWith("es_", endShipper.id);
-            Assert.Equal("388 TOWNSEND ST APT 20", endShipper.street1);
-        }
-
-        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -56,6 +62,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Update]
         public async Task TestUpdate()
         {
             UseVCR("update");
@@ -73,6 +80,8 @@ namespace EasyPost.Tests
             Assert.StartsWith("es_", endShipper.id);
             Assert.Equal(testName, endShipper.name);
         }
+
+        #endregion
 
         private async Task<EndShipper> CreateBasicEndShipper() => await Client.EndShipper.Create(Fixture.EndShipperAddress);
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -12,38 +13,10 @@ namespace EasyPost.Tests
         {
         }
 
-        [Fact]
-        public async Task TestBuy()
-        {
-            UseVCR("buy");
-
-            Pickup pickup = await CreateBasicPickup();
-
-            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
-
-            Assert.IsType<Pickup>(pickup);
-            Assert.StartsWith("pickup_", pickup.id);
-            Assert.NotNull(pickup.confirmation);
-            Assert.Equal("scheduled", pickup.status);
-        }
+        #region CRUD Operations
 
         [Fact]
-        public async Task TestCancel()
-        {
-            UseVCR("cancel");
-
-            Pickup pickup = await CreateBasicPickup();
-
-            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
-
-            pickup = await pickup.Cancel();
-
-            Assert.IsType<Pickup>(pickup);
-            Assert.StartsWith("pickup_", pickup.id);
-            Assert.Equal("canceled", pickup.status);
-        }
-
-        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
             UseVCR("create");
@@ -56,6 +29,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Read] // not really?
         public async Task TestLowestRate()
         {
             UseVCR("lowest_rate");
@@ -84,6 +58,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -95,6 +70,41 @@ namespace EasyPost.Tests
             Assert.IsType<Pickup>(retrievedPickup);
             Assert.Equal(pickup.id, retrievedPickup.id);
         }
+
+        [Fact]
+        [CrudOperations.Update]
+        public async Task TestBuy()
+        {
+            UseVCR("buy");
+
+            Pickup pickup = await CreateBasicPickup();
+
+            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
+
+            Assert.IsType<Pickup>(pickup);
+            Assert.StartsWith("pickup_", pickup.id);
+            Assert.NotNull(pickup.confirmation);
+            Assert.Equal("scheduled", pickup.status);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        public async Task TestCancel()
+        {
+            UseVCR("cancel");
+
+            Pickup pickup = await CreateBasicPickup();
+
+            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
+
+            pickup = await pickup.Cancel();
+
+            Assert.IsType<Pickup>(pickup);
+            Assert.StartsWith("pickup_", pickup.id);
+            Assert.Equal("canceled", pickup.status);
+        }
+
+        #endregion
 
         private async Task<Pickup> CreateBasicPickup()
         {

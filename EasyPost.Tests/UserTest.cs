@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -23,30 +24,10 @@ namespace EasyPost.Tests
                 }
             };
 
-        [Fact]
-        public async Task TestAllApiKeys()
-        {
-            UseVCR("all_api_keys");
-
-            List<ApiKey> apiKeys = await Client.ApiKey.All();
-
-            // API keys will be censored, so we'll just check for the existence of the list
-            Assert.NotNull(apiKeys);
-        }
+        #region CRUD Operations
 
         [Fact]
-        public async Task TestApiKeys()
-        {
-            UseVCR("api_keys");
-
-            User user = await RetrieveMe();
-
-            // API keys will be censored, so we'll just check for the existence of the `children` element
-            List<User> children = user.children;
-            Assert.NotNull(children);
-        }
-
-        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
             UseVCR("create");
@@ -59,20 +40,53 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public async Task TestDelete()
+        [CrudOperations.Create]
+        public async Task TestUpdateBrand()
         {
-            UseVCR("delete");
+            UseVCR("update_brand");
 
             User user = await CreateUser();
 
-            await user.Delete();
+            string color = "#123456";
+            Brand brand = await user.UpdateBrand(new Dictionary<string, object>
+            {
+                {
+                    "color", color
+                }
+            });
 
-            // TODO: Assert something
-
-            SkipCleanUpAfterTest();
+            Assert.IsType<Brand>(brand);
+            Assert.StartsWith("brd_", brand.id);
+            Assert.Equal(color, brand.color);
         }
 
         [Fact]
+        [CrudOperations.Read]
+        public async Task TestAllApiKeys()
+        {
+            UseVCR("all_api_keys");
+
+            List<ApiKey> apiKeys = await Client.ApiKey.All();
+
+            // API keys will be censored, so we'll just check for the existence of the list
+            Assert.NotNull(apiKeys);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestApiKeys()
+        {
+            UseVCR("api_keys");
+
+            User user = await RetrieveMe();
+
+            // API keys will be censored, so we'll just check for the existence of the `children` element
+            List<User> children = user.children;
+            Assert.NotNull(children);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -90,6 +104,7 @@ namespace EasyPost.Tests
 
 
         [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieveMe()
         {
             UseVCR("retrieve_me");
@@ -101,6 +116,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Update]
         public async Task TestUpdate()
         {
             UseVCR("update");
@@ -124,24 +140,21 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public async Task TestUpdateBrand()
+        [CrudOperations.Delete]
+        public async Task TestDelete()
         {
-            UseVCR("update_brand");
+            UseVCR("delete");
 
             User user = await CreateUser();
 
-            string color = "#123456";
-            Brand brand = await user.UpdateBrand(new Dictionary<string, object>
-            {
-                {
-                    "color", color
-                }
-            });
+            await user.Delete();
 
-            Assert.IsType<Brand>(brand);
-            Assert.StartsWith("brd_", brand.id);
-            Assert.Equal(color, brand.color);
+            // TODO: Assert something
+
+            SkipCleanUpAfterTest();
         }
+
+        #endregion
 
         private async Task<User> CreateUser()
         {

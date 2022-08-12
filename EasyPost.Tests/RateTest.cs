@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -10,7 +11,10 @@ namespace EasyPost.Tests
         {
         }
 
+        #region CRUD Operations
+
         [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -23,5 +27,7 @@ namespace EasyPost.Tests
             Assert.StartsWith("rate_", rate.id);
             Assert.Equal(shipment.rates[0], rate);
         }
+
+        #endregion
     }
 }

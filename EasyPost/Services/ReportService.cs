@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
@@ -11,30 +12,7 @@ namespace EasyPost.Services
         {
         }
 
-        /// <summary>
-        ///     Get a paginated list of reports.
-        /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
-        ///     * {"before_id", string} String representing a Report ID. Only retrieve ScanForms created before this id. Takes
-        ///     precedence over after_id.
-        ///     * {"after_id", string} String representing a Report ID. Only retrieve ScanForms created after this id.
-        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created after this datetime.
-        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created before this datetime.
-        ///     * {"page_size", int} Max size of list. Default to 20.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <param name="type">The type of report, e.g. "shipment", "tracker", "payment_log", etc.</param>
-        /// <returns>An EasyPost.ReportCollection instance.</returns>
-
-        public async Task<ReportCollection> All(string type, Dictionary<string, object?>? parameters = null)
-        {
-            ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters);
-            reportCollection.Filters = parameters;
-            reportCollection.type = type;
-            reportCollection.Client = Client; // specifically needs a v2 client
-            return reportCollection;
-        }
+        #region CRUD Operations
 
         /// <summary>
         ///     Create a Report.
@@ -53,10 +31,35 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Report instance.</returns>
-
+        [CrudOperations.Create]
         public async Task<Report> Create(string type, Dictionary<string, object?>? parameters = null)
         {
             return await Create<Report>($"reports/{type}", parameters);
+        }
+
+        /// <summary>
+        ///     Get a paginated list of reports.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
+        ///     * {"before_id", string} String representing a Report ID. Only retrieve ScanForms created before this id. Takes
+        ///     precedence over after_id.
+        ///     * {"after_id", string} String representing a Report ID. Only retrieve ScanForms created after this id.
+        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created after this datetime.
+        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created before this datetime.
+        ///     * {"page_size", int} Max size of list. Default to 20.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <param name="type">The type of report, e.g. "shipment", "tracker", "payment_log", etc.</param>
+        /// <returns>An EasyPost.ReportCollection instance.</returns>
+        [CrudOperations.Read]
+        public async Task<ReportCollection> All(string type, Dictionary<string, object?>? parameters = null)
+        {
+            ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters);
+            reportCollection.Filters = parameters;
+            reportCollection.type = type;
+            reportCollection.Client = Client; // specifically needs a v2 client
+            return reportCollection;
         }
 
 
@@ -65,7 +68,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="id">String representing a report.</param>
         /// <returns>EasyPost.Report instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<Report> Retrieve(string id)
         {
             return await Get<Report>($"reports/{id}");
@@ -77,10 +80,12 @@ namespace EasyPost.Services
         /// <param name="type">Type of report, e.g. shipment, tracker, payment_log, etc.</param>
         /// <param name="id">String representing a report.</param>
         /// <returns>EasyPost.Report instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<Report> Retrieve(string type, string id)
         {
             return await Get<Report>($"reports/{type}/{id}");
         }
+
+        #endregion
     }
 }

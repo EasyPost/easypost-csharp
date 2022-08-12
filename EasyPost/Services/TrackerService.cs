@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
@@ -10,6 +11,41 @@ namespace EasyPost.Services
     {
         internal TrackerService(Client client) : base(client)
         {
+        }
+
+        #region CRUD Operations
+
+        /// <summary>
+        ///     Create a tracker.
+        /// </summary>
+        /// <param name="carrier">Carrier for the tracker.</param>
+        /// <param name="trackingCode">Tracking code for the tracker.</param>
+        /// <returns>An EasyPost.Tracker instance.</returns>
+        [CrudOperations.Create]
+        public async Task<Tracker> Create(string carrier, string trackingCode)
+        {
+            Dictionary<string, object?> parameters = new Dictionary<string, object?>
+            {
+                {
+                    "carrier", carrier
+                },
+                {
+                    "tracking_code", trackingCode
+                }
+            };
+            return await Create<Tracker>("trackers", parameters);
+        }
+
+        /// <summary>
+        ///     Create a list of trackers
+        /// </summary>
+        /// <param name="parameters">A dictionary of tracking codes and carriers</param>
+        /// <returns>True</returns>
+        [CrudOperations.Create]
+        public async Task CreateList(Dictionary<string, object?> parameters)
+        {
+            parameters = parameters.Wrap("trackers");
+            await CreateNoResponse("trackers/create_list", parameters);
         }
 
 
@@ -32,7 +68,7 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>A EasyPost.TrackerCollection instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<TrackerCollection> All(Dictionary<string, object?>? parameters = null)
         {
             TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters);
@@ -41,49 +77,18 @@ namespace EasyPost.Services
             return trackerCollection;
         }
 
-        /// <summary>
-        ///     Create a tracker.
-        /// </summary>
-        /// <param name="carrier">Carrier for the tracker.</param>
-        /// <param name="trackingCode">Tracking code for the tracker.</param>
-        /// <returns>An EasyPost.Tracker instance.</returns>
-
-        public async Task<Tracker> Create(string carrier, string trackingCode)
-        {
-            Dictionary<string, object?> parameters = new Dictionary<string, object?>
-            {
-                {
-                    "carrier", carrier
-                },
-                {
-                    "tracking_code", trackingCode
-                }
-            };
-            return await Create<Tracker>("trackers", parameters);
-        }
-
-        /// <summary>
-        ///     Create a list of trackers
-        /// </summary>
-        /// <param name="parameters">A dictionary of tracking codes and carriers</param>
-        /// <returns>True</returns>
-
-        public async Task CreateList(Dictionary<string, object?> parameters)
-        {
-            parameters = parameters.Wrap("trackers");
-            await CreateNoResponse("trackers/create_list", parameters);
-        }
-
         // This endpoint does not return a response so we return the request was successful
         /// <summary>
         ///     Retrieve a Tracker from its id.
         /// </summary>
         /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
         /// <returns>EasyPost.Tracker instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<Tracker> Retrieve(string id)
         {
             return await Get<Tracker>($"trackers/{id}");
         }
+
+        #endregion
     }
 }

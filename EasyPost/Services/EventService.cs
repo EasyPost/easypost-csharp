@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
@@ -10,6 +11,8 @@ namespace EasyPost.Services
         internal EventService(Client client) : base(client)
         {
         }
+
+        #region CRUD Operations
 
         /// <summary>
         ///     List all Event objects.
@@ -26,7 +29,7 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>An EasyPost.EventCollection instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<EventCollection> All(Dictionary<string, object?>? parameters = null)
         {
             return await Get<EventCollection>("events", parameters);
@@ -37,10 +40,12 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="id">String representing a Event. Starts with "evt_".</param>
         /// <returns>EasyPost.Event instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<Event> Retrieve(string id)
         {
             return await Get<Event>($"events/{id}");
         }
+
+        #endregion
     }
 }

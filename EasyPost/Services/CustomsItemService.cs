@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
@@ -10,6 +11,8 @@ namespace EasyPost.Services
         internal CustomsItemService(Client client) : base(client)
         {
         }
+
+        #region CRUD Operations
 
         /// <summary>
         ///     Create a CustomsItem.
@@ -25,7 +28,7 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
-
+        [CrudOperations.Create]
         public async Task<CustomsItem> Create(Dictionary<string, object?> parameters)
         {
             return await Create<CustomsItem>("customs_items", parameters);
@@ -37,10 +40,12 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="id">String representing a CustomsItem. Starts with "cstitem_".</param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<CustomsItem> Retrieve(string id)
         {
             return await Get<CustomsItem>($"customs_items/{id}");
         }
+
+        #endregion
     }
 }

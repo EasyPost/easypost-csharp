@@ -18,6 +18,8 @@ namespace EasyPost.Models.API
         public List<CustomsItem> customs_items { get; set; }
         [JsonProperty("customs_signer")]
         public string customs_signer { get; set; }
+        [JsonProperty("declaration")]
+        public string declaration { get; set; }
         [JsonProperty("eel_pfc")]
         public string eel_pfc { get; set; }
         [JsonProperty("mode")]
@@ -28,8 +30,6 @@ namespace EasyPost.Models.API
         public string restriction_comments { get; set; }
         [JsonProperty("restriction_type")]
         public string restriction_type { get; set; }
-        [JsonProperty("declaration")]
-        public string declaration { get; set; }
 
         #endregion
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -20,14 +21,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Delete this webhook.
-        /// </summary>
-        /// <returns>Whether the request was successful or not.</returns>
-        public async Task Delete()
-        {
-            await Delete($"webhooks/{id}");
-        }
+        #region CRUD Operations
 
         /// <summary>
         ///     Update a Webhook. A disabled webhook will be enabled.
@@ -38,9 +32,22 @@ namespace EasyPost.Models.API
         ///     All invalid keys will be ignored.
         /// </param>
         /// </summary>
+        [CrudOperations.Update]
         public async Task<Webhook> Update(Dictionary<string, object>? parameters = null)
         {
             return await Update<Webhook>(Method.Patch, $"webhooks/{id}", parameters);
         }
+
+        /// <summary>
+        ///     Delete this webhook.
+        /// </summary>
+        /// <returns>Whether the request was successful or not.</returns>
+        [CrudOperations.Delete]
+        public async Task Delete()
+        {
+            await Delete($"webhooks/{id}");
+        }
+
+        #endregion
     }
 }

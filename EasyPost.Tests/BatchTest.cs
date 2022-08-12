@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -12,7 +13,66 @@ namespace EasyPost.Tests
         {
         }
 
+        #region CRUD Operations
+
         [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreate()
+        {
+            UseVCR("create");
+
+            Batch batch = await CreateBasicBatch();
+
+            Assert.IsType<Batch>(batch);
+            Assert.StartsWith("batch_", batch.id);
+            Assert.NotNull(batch.shipments);
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreateAndBuy()
+        {
+            UseVCR("create_and_buy");
+
+            Batch batch = await Client.Batch.CreateAndBuy(new Dictionary<string, object>
+            {
+                {
+                    "shipments", new List<Dictionary<string, object>>
+                    {
+                        Fixture.OneCallBuyShipment
+                    }
+                }
+            });
+
+            Assert.IsType<Batch>(batch);
+            Assert.StartsWith("batch_", batch.id);
+            Assert.Equal(1, batch.num_shipments);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestAll()
+        {
+            UseVCR("all");
+
+            BatchCollection batchCollection = await Client.Batch.All(new Dictionary<string, object>
+            {
+                {
+                    "page_size", Fixture.PageSize
+                }
+            });
+
+            List<Batch> batches = batchCollection.batches;
+
+            Assert.True(batches.Count <= Fixture.PageSize);
+            foreach (Batch item in batches)
+            {
+                Assert.IsType<Batch>(item);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Update]
         public async Task TestAddRemoveShipment()
         {
             UseVCR("add_remove_shipment");
@@ -37,27 +97,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public async Task TestAll()
-        {
-            UseVCR("all");
-
-            BatchCollection batchCollection = await Client.Batch.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
-
-            List<Batch> batches = batchCollection.batches;
-
-            Assert.True(batches.Count <= Fixture.PageSize);
-            foreach (Batch item in batches)
-            {
-                Assert.IsType<Batch>(item);
-            }
-        }
-
-        [Fact]
+        [CrudOperations.Update]
         public async Task TestBuy()
         {
             UseVCR("buy");
@@ -71,38 +111,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public async Task TestCreate()
-        {
-            UseVCR("create");
-
-            Batch batch = await CreateBasicBatch();
-
-            Assert.IsType<Batch>(batch);
-            Assert.StartsWith("batch_", batch.id);
-            Assert.NotNull(batch.shipments);
-        }
-
-        [Fact]
-        public async Task TestCreateAndBuy()
-        {
-            UseVCR("create_and_buy");
-
-            Batch batch = await Client.Batch.CreateAndBuy(new Dictionary<string, object>
-            {
-                {
-                    "shipments", new List<Dictionary<string, object>>
-                    {
-                        Fixture.OneCallBuyShipment
-                    }
-                }
-            });
-
-            Assert.IsType<Batch>(batch);
-            Assert.StartsWith("batch_", batch.id);
-            Assert.Equal(1, batch.num_shipments);
-        }
-
-        [Fact]
+        [CrudOperations.Update]
         public async Task TestCreateScanForm()
         {
             UseVCR("create_scan_form");
@@ -124,6 +133,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Update]
         public async Task TestLabel()
         {
             UseVCR("label");
@@ -144,6 +154,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Update]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -156,6 +167,8 @@ namespace EasyPost.Tests
             // Must compare IDs since elements of batch (i.e. status) may be different
             Assert.Equal(batch.id, retrievedBatch.id);
         }
+
+        #endregion
 
         private async Task<Batch> CreateBasicBatch() =>
             await Client.Batch.Create(new Dictionary<string, object>

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
@@ -10,6 +11,8 @@ namespace EasyPost.Services
         internal UserService(Client client) : base(client)
         {
         }
+
+        #region CRUD Operations
 
         /// <summary>
         ///     Create a child user for the account associated with the api_key specified.
@@ -20,7 +23,7 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
-
+        [CrudOperations.Create]
         public async Task<User> CreateChild(Dictionary<string, object?> parameters)
         {
             return await Create<User>("users", parameters);
@@ -31,7 +34,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="id">String representing a user. Starts with "user_".</param>
         /// <returns>EasyPost.User instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<User> Retrieve(string? id = null)
         {
             if (id == null)
@@ -47,10 +50,12 @@ namespace EasyPost.Services
         ///     Retrieve the current user.
         /// </summary>
         /// <returns>EasyPost.User instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<User> RetrieveMe()
         {
             return await Retrieve();
         }
+
+        #endregion
     }
 }

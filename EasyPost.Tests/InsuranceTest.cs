@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -11,7 +12,24 @@ namespace EasyPost.Tests
         {
         }
 
+        #region CRUD Operations
+
         [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreate()
+        {
+            UseVCR("create");
+
+            Insurance insurance = await CreateBasicInsurance();
+
+            Assert.IsType<Insurance>(insurance);
+            Assert.StartsWith("ins_", insurance.id);
+            // TODO: amount really should be a number, not a string
+            Assert.Equal("100.00000", insurance.amount);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestAll()
         {
             UseVCR("all");
@@ -33,19 +51,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public async Task TestCreate()
-        {
-            UseVCR("create");
-
-            Insurance insurance = await CreateBasicInsurance();
-
-            Assert.IsType<Insurance>(insurance);
-            Assert.StartsWith("ins_", insurance.id);
-            // TODO: amount really should be a number, not a string
-            Assert.Equal("100.00000", insurance.amount);
-        }
-
-        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -57,6 +63,8 @@ namespace EasyPost.Tests
             // Must compare IDs since other elements of object may be different
             Assert.Equal(insurance.id, retrievedInsurance.id);
         }
+
+        #endregion
 
         private async Task<Insurance> CreateBasicInsurance()
         {

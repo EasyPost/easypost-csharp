@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
@@ -12,27 +13,7 @@ namespace EasyPost.Services
         {
         }
 
-        /// <summary>
-        ///     List all Insurance objects.
-        /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
-        ///     * {"before_id", string} String representing an Insurance ID. Starts with "ins_". Only retrieve insurances created
-        ///     before this id. Takes precedence over after_id.
-        ///     * {"after_id", string} String representing an Insurance ID. Starts with "ins_". Only retrieve insurances created
-        ///     after
-        ///     this id.
-        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve insurances created after this datetime.
-        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve insurances created before this datetime.
-        ///     * {"page_size", int} Max size of list. Default to 20.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>An EasyPost.InsuranceCollection instance.</returns>
-
-        public async Task<InsuranceCollection> All(Dictionary<string, object?>? parameters = null)
-        {
-            return await List<InsuranceCollection>("insurances", parameters);
-        }
+        #region CRUD Operations
 
         /// <summary>
         ///     Create an Insurance.
@@ -51,7 +32,7 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Insurance instance.</returns>
-
+        [CrudOperations.Create]
         public async Task<Insurance> Create(Dictionary<string, object?> parameters)
         {
             parameters = parameters.Wrap("insurance");
@@ -59,14 +40,38 @@ namespace EasyPost.Services
         }
 
         /// <summary>
+        ///     List all Insurance objects.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
+        ///     * {"before_id", string} String representing an Insurance ID. Starts with "ins_". Only retrieve insurances created
+        ///     before this id. Takes precedence over after_id.
+        ///     * {"after_id", string} String representing an Insurance ID. Starts with "ins_". Only retrieve insurances created
+        ///     after
+        ///     this id.
+        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve insurances created after this datetime.
+        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve insurances created before this datetime.
+        ///     * {"page_size", int} Max size of list. Default to 20.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>An EasyPost.InsuranceCollection instance.</returns>
+        [CrudOperations.Read]
+        public async Task<InsuranceCollection> All(Dictionary<string, object?>? parameters = null)
+        {
+            return await List<InsuranceCollection>("insurances", parameters);
+        }
+
+        /// <summary>
         ///     Retrieve an Insurance from its id.
         /// </summary>
         /// <param name="id">String representing an Insurance. Starts with "ins_".</param>
         /// <returns>EasyPost.Insurance instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<Insurance> Retrieve(string id)
         {
             return await Get<Insurance>($"insurances/{id}");
         }
+
+        #endregion
     }
 }

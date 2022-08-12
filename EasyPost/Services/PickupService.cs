@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
@@ -11,6 +12,8 @@ namespace EasyPost.Services
         internal PickupService(Client client) : base(client)
         {
         }
+
+        #region CRUD Operations
 
         /// <summary>
         ///     Create a Pickup.
@@ -29,7 +32,7 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Pickup instance.</returns>
-
+        [CrudOperations.Create]
         public async Task<Pickup> Create(Dictionary<string, object?> parameters)
         {
             parameters = parameters.Wrap("pickup");
@@ -41,10 +44,12 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="id">String representing a Pickup. Starts with "pickup_".</param>
         /// <returns>EasyPost.Pickup instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<Pickup> Retrieve(string id)
         {
             return await Get<Pickup>($"pickups/{id}");
         }
+
+        #endregion
     }
 }

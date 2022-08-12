@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -37,14 +38,19 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        #region CRUD Operations
+
         /// <summary>
         ///     Refresh this Insurance.
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters to use when refreshing this insurance.</param>
         /// <returns>This refreshed EasyPost.Insurance object.</returns>
+        [CrudOperations.Update]
         public async Task<Insurance> Refresh(Dictionary<string, object?>? parameters = null)
         {
             return await Update<Insurance>(Method.Patch, $"insurances/{id}", parameters);
         }
+
+        #endregion
     }
 }

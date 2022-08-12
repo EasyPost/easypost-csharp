@@ -63,6 +63,19 @@ namespace EasyPost.Tests
             }
         };
 
+        public static Dictionary<string, object?> BasicCarbonOffsetShipment
+        {
+            get
+            {
+                return new Dictionary<string, object?>
+                {
+                    { "to_address", PickupAddress },
+                    {"from_address", BasicAddress },
+                    {"parcel", BasicParcel },
+                };
+            }
+        }
+
         public static Dictionary<string, object> BasicCarrierAccount => new Dictionary<string, object>()
         {
             {
@@ -409,6 +422,42 @@ namespace EasyPost.Tests
             }
         }
 
+        public static Dictionary<string, object?> FullCarbonOffsetShipment
+        {
+            get
+            {
+                return new Dictionary<string, object?>
+                {
+                    {
+                        "to_address", PickupAddress
+                    },
+                    {
+                        "from_address", BasicAddress
+                    },
+                    {
+                        "parcel", BasicParcel
+                    },
+                    {
+                        "customs_info", BasicCustomsInfo
+                    },
+                    {
+                        "options", new Dictionary<string, object>
+                        {
+                            {
+                                "label_format", "PNG" // Must be PNG so we can convert to ZPL later
+                            },
+                            {
+                                "invoice_number", "123"
+                            }
+                        }
+                    },
+                    {
+                        "reference", "123"
+                    }
+                };
+            }
+        }
+
         public static Dictionary<string, object?> FullShipment => new Dictionary<string, object?>()
         {
             {
@@ -487,6 +536,37 @@ namespace EasyPost.Tests
                 "415-123-4567"
             }
         };
+
+        public static Dictionary<string, object?> OneCallBuyCarbonOffsetShipment
+        {
+            get
+            {
+                return new Dictionary<string, object?>
+                {
+                    {
+                        "to_address", PickupAddress
+                    },
+                    {
+                        "from_address", BasicAddress
+                    },
+                    {
+                        "parcel", BasicParcel
+                    },
+                    {
+                        "service", UspsService
+                    },
+                    {
+                        "carrier_accounts", new List<string>
+                        {
+                            UspsCarrierAccountId
+                        }
+                    },
+                    {
+                        "carrier", Usps
+                    }
+                };
+            }
+        }
 
         public static Dictionary<string, object?> OneCallBuyShipment => new Dictionary<string, object?>()
         {
@@ -603,86 +683,6 @@ namespace EasyPost.Tests
                     "amount", 100
                 }
             };
-        }
-
-        public static Dictionary<string, object?> BasicCarbonOffsetShipment
-        {
-            get
-            {
-                return new Dictionary<string, object?>
-                {
-                    { "to_address", PickupAddress },
-                    {"from_address", BasicAddress },
-                    {"parcel", BasicParcel },
-                };
-            }
-        }
-
-        public static Dictionary<string, object?> FullCarbonOffsetShipment
-        {
-            get
-            {
-                return new Dictionary<string, object?>
-                {
-                    {
-                        "to_address", PickupAddress
-                    },
-                    {
-                        "from_address", BasicAddress
-                    },
-                    {
-                        "parcel", BasicParcel
-                    },
-                    {
-                        "customs_info", BasicCustomsInfo
-                    },
-                    {
-                        "options", new Dictionary<string, object>
-                        {
-                            {
-                                "label_format", "PNG" // Must be PNG so we can convert to ZPL later
-                            },
-                            {
-                                "invoice_number", "123"
-                            }
-                        }
-                    },
-                    {
-                        "reference", "123"
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object?> OneCallBuyCarbonOffsetShipment
-        {
-            get
-            {
-                return new Dictionary<string, object?>
-                {
-                    {
-                        "to_address", PickupAddress
-                    },
-                    {
-                        "from_address", BasicAddress
-                    },
-                    {
-                        "parcel", BasicParcel
-                    },
-                    {
-                        "service", UspsService
-                    },
-                    {
-                        "carrier_accounts", new List<string>
-                        {
-                            UspsCarrierAccountId
-                        }
-                    },
-                    {
-                        "carrier", Usps
-                    }
-                };
-            }
         }
     }
 }

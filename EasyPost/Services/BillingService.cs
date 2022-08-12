@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
@@ -13,22 +14,14 @@ namespace EasyPost.Services
         {
         }
 
-        /// <summary>
-        ///     Delete a payment method from the user's account.
-        /// </summary>
-        /// <param name="priority">Which type of payment method to delete.</param>
-        public async Task DeletePaymentMethod(PaymentMethod.Priority priority)
-        {
-            PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
-
-            await DeleteNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.id}");
-        }
+        #region CRUD Operations
 
         /// <summary>
         ///     Fund your wallet from a specific payment method.
         /// </summary>
         /// <param name="amount">Amount to fund.</param>
         /// <param name="priority">Which type of payment method to use to fund the wallet. Defaults to primary.</param>
+        [CrudOperations.Create]
         public async Task FundWallet(string amount, PaymentMethod.Priority? priority = null)
         {
             priority ??= PaymentMethod.Priority.Primary;
@@ -49,6 +42,7 @@ namespace EasyPost.Services
         ///     List all payment methods for this account.
         /// </summary>
         /// <returns>An EasyPost.PaymentMethodSummary summary object.</returns>
+        [CrudOperations.Read]
         public async Task<PaymentMethodsSummary> RetrievePaymentMethodsSummary()
         {
             PaymentMethodsSummary paymentMethodsSummary = await Get<PaymentMethodsSummary>("payment_methods");
@@ -59,6 +53,20 @@ namespace EasyPost.Services
 
             return paymentMethodsSummary;
         }
+
+        /// <summary>
+        ///     Delete a payment method from the user's account.
+        /// </summary>
+        /// <param name="priority">Which type of payment method to delete.</param>
+        [CrudOperations.Delete]
+        public async Task DeletePaymentMethod(PaymentMethod.Priority priority)
+        {
+            PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
+
+            await DeleteNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.id}");
+        }
+
+        #endregion
 
         /// <summary>
         ///     Get a payment method by priority.

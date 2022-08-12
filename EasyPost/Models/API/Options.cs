@@ -25,6 +25,8 @@ namespace EasyPost.Models.API
         public string bill_third_party_country { get; set; }
         [JsonProperty("bill_third_party_postal_code")]
         public string bill_third_party_postal_code { get; set; }
+        [JsonProperty("billing_ref")]
+        public string billing_ref { get; set; }
         [JsonProperty("by_drone")]
         public bool? by_drone { get; set; }
         [JsonProperty("carbon_neutral")]
@@ -171,8 +173,6 @@ namespace EasyPost.Models.API
         public string smartpost_hub { get; set; }
         [JsonProperty("smartpost_manifest")]
         public string smartpost_manifest { get; set; }
-        [JsonProperty("billing_ref")]
-        public string billing_ref { get; set; }
         [JsonProperty("special_rates_eligibility")]
         public string special_rates_eligibility { get; set; }
         [JsonProperty("suppress_etd")]

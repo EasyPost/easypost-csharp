@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -12,25 +13,10 @@ namespace EasyPost.Tests
         {
         }
 
-        [Fact]
-        public async Task TestBuy()
-        {
-            UseVCR("buy");
-
-            Order order = await CreateBasicOrder();
-
-            order = await order.Buy(Fixture.Usps, Fixture.UspsService);
-
-            List<Shipment> shipments = order.shipments;
-
-            foreach (Shipment shipment in shipments)
-            {
-                Assert.IsType<Shipment>(shipment);
-                Assert.NotNull(shipment.postage_label);
-            }
-        }
+        #region CRUD Operations
 
         [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
             UseVCR("create");
@@ -43,6 +29,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Read]
         public async Task TestGetRates()
         {
             UseVCR("get_rates");
@@ -61,6 +48,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Read] // not really?
         public async Task TestLowestRate()
         {
             UseVCR("lowest_rate");
@@ -92,6 +80,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -105,6 +94,27 @@ namespace EasyPost.Tests
             // Must compare IDs since other elements of objects may be different
             Assert.Equal(order.id, retrievedOrder.id);
         }
+
+        [Fact]
+        [CrudOperations.Update]
+        public async Task TestBuy()
+        {
+            UseVCR("buy");
+
+            Order order = await CreateBasicOrder();
+
+            order = await order.Buy(Fixture.Usps, Fixture.UspsService);
+
+            List<Shipment> shipments = order.shipments;
+
+            foreach (Shipment shipment in shipments)
+            {
+                Assert.IsType<Shipment>(shipment);
+                Assert.NotNull(shipment.postage_label);
+            }
+        }
+
+        #endregion
 
         private async Task<Order> CreateBasicOrder() => await Client.Order.Create(Fixture.BasicOrder);
     }

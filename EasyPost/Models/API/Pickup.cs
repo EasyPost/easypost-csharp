@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -18,8 +19,6 @@ namespace EasyPost.Models.API
         public List<CarrierAccount> carrier_accounts { get; set; }
         [JsonProperty("confirmation")]
         public string confirmation { get; set; }
-
-
         [JsonProperty("instructions")]
         public string instructions { get; set; }
         [JsonProperty("is_account_address")]
@@ -52,12 +51,14 @@ namespace EasyPost.Models.API
             get { return pickup_rates != null ? pickup_rates.Cast<Rate>().ToList() : new List<Rate>(); }
         }
 
+        #region CRUD Operations
 
         /// <summary>
         ///     Purchase this pickup.
         /// </summary>
         /// <param name="withCarrier">The name of the carrier to purchase with.</param>
         /// <param name="withService">The name of the service to purchase.</param>
+        [CrudOperations.Update]
         public async Task<Pickup> Buy(string withCarrier, string withService)
         {
             if (id == null)
@@ -81,6 +82,7 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Cancel this pickup.
         /// </summary>
+        [CrudOperations.Update]
         public async Task<Pickup> Cancel()
         {
             if (id == null)
@@ -90,6 +92,8 @@ namespace EasyPost.Models.API
 
             return await Update<Pickup>(Method.Post, $"pickups/{id}/cancel");
         }
+
+        #endregion
 
         /// <summary>
         ///     Get the lowest rate for this Pickup.

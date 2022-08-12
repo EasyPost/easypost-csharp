@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -23,7 +24,22 @@ namespace EasyPost.Tests
                 }
             };
 
+        #region CRUD Operations
+
         [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreate()
+        {
+            UseVCR("create");
+
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
+
+            Assert.IsType<CarrierAccount>(carrierAccount);
+            Assert.StartsWith("ca_", carrierAccount.id);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestAll()
         {
             UseVCR("all");
@@ -37,31 +53,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public async Task TestCreate()
-        {
-            UseVCR("create");
-
-            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
-
-            Assert.IsType<CarrierAccount>(carrierAccount);
-            Assert.StartsWith("ca_", carrierAccount.id);
-        }
-
-        [Fact]
-        public async Task TestDelete()
-        {
-            UseVCR("delete");
-
-            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
-
-            await carrierAccount.Delete();
-
-            // TODO: Assert something
-
-            SkipCleanUpAfterTest();
-        }
-
-        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -75,6 +67,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Read]
         public async Task TestTypes()
         {
             UseVCR("types");
@@ -88,6 +81,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Update]
         public async Task TestUpdate()
         {
             UseVCR("update");
@@ -110,6 +104,23 @@ namespace EasyPost.Tests
             Assert.StartsWith("ca_", carrierAccount.id);
             Assert.Equal(testDescription, carrierAccount.description);
         }
+
+        [Fact]
+        [CrudOperations.Delete]
+        public async Task TestDelete()
+        {
+            UseVCR("delete");
+
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
+
+            await carrierAccount.Delete();
+
+            // TODO: Assert something
+
+            SkipCleanUpAfterTest();
+        }
+
+        #endregion
 
         private async Task<CarrierAccount> CreateBasicCarrierAccount()
         {

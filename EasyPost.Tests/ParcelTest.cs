@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -10,7 +11,10 @@ namespace EasyPost.Tests
         {
         }
 
+        #region CRUD Operations
+
         [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
             UseVCR("create");
@@ -23,6 +27,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -34,6 +39,8 @@ namespace EasyPost.Tests
             Assert.IsType<Parcel>(retrievedParcel);
             Assert.Equal(parcel, retrievedParcel);
         }
+
+        #endregion
 
         private async Task<Parcel> CreateBasicParcel() => await Client.Parcel.Create(Fixture.BasicParcel);
     }

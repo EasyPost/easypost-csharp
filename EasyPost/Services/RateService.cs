@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Calculation;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
@@ -11,6 +12,21 @@ namespace EasyPost.Services
         internal RateService(Client client) : base(client)
         {
         }
+
+        #region CRUD Operations
+
+        /// <summary>
+        ///     Retrieve a Rate from its id.
+        /// </summary>
+        /// <param name="id">String representing a rate. Starts with `rate_`.</param>
+        /// <returns>EasyPost.Rate instance.</returns>
+        [CrudOperations.Read]
+        public async Task<Rate> Retrieve(string id)
+        {
+            return await Get<Rate>($"rates/{id}");
+        }
+
+        #endregion
 
         /// <summary>
         ///     Get the lowest rate from a list of rates.
@@ -25,17 +41,6 @@ namespace EasyPost.Services
         public Rate GetLowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
             return Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
-        }
-
-        /// <summary>
-        ///     Retrieve a Rate from its id.
-        /// </summary>
-        /// <param name="id">String representing a rate. Starts with `rate_`.</param>
-        /// <returns>EasyPost.Rate instance.</returns>
-
-        public async Task<Rate> Retrieve(string id)
-        {
-            return await Get<Rate>($"rates/{id}");
         }
     }
 }

@@ -47,6 +47,15 @@ namespace EasyPost.Models.API
         #endregion
 
         /// <summary>
+        ///     Payment method priority
+        /// </summary>
+        public enum Priority
+        {
+            Primary,
+            Secondary
+        }
+
+        /// <summary>
         ///     Get what type of payment method this is (credit card, bank account, etc.)
         /// </summary>
         public PaymentMethodType? Type
@@ -84,15 +93,6 @@ namespace EasyPost.Models.API
 
                 return Type.EndPoint;
             }
-        }
-
-        /// <summary>
-        ///     Payment method priority
-        /// </summary>
-        public enum Priority
-        {
-            Primary,
-            Secondary
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API.Beta;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services.Beta
 {
@@ -10,6 +11,8 @@ namespace EasyPost.Services.Beta
         internal PartnerService(Client client) : base(client)
         {
         }
+
+        #region CRUD Operations
 
         /// <summary>
         ///     Create a referral user for the account associated with the api_key specified.
@@ -22,7 +25,10 @@ namespace EasyPost.Services.Beta
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
+        [CrudOperations.Create]
         public async Task<Referral> CreateReferral(Dictionary<string, object?> parameters) =>
             await Create<Referral>("referral_customers", parameters);
+
+        #endregion
     }
 }

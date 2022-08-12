@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
@@ -10,6 +11,8 @@ namespace EasyPost.Services
         internal OrderService(Client client) : base(client)
         {
         }
+
+        #region CRUD Operations
 
         /// <summary>
         ///     Create a Order.
@@ -30,7 +33,7 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Order instance.</returns>
-
+        [CrudOperations.Create]
         public async Task<Order> Create(Dictionary<string, object?> parameters)
         {
             parameters = new Dictionary<string, object?>
@@ -47,10 +50,12 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="id">String representing a Order. Starts with "order_" if passing an id.</param>
         /// <returns>EasyPost.Order instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<Order> Retrieve(string id)
         {
             return await Get<Order>($"orders/{id}");
         }
+
+        #endregion
     }
 }

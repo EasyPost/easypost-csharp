@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -11,28 +12,10 @@ namespace EasyPost.Tests
         {
         }
 
-        [Fact]
-        public async Task TestAll()
-        {
-            UseVCR("all");
-
-            TrackerCollection trackerCollection = await Client.Tracker.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
-
-            List<Tracker> trackers = trackerCollection.trackers;
-
-            Assert.True(trackers.Count <= Fixture.PageSize);
-            foreach (Tracker tracker in trackers)
-            {
-                Assert.IsType<Tracker>(tracker);
-            }
-        }
+        #region CRUD Operations
 
         [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
             UseVCR("create");
@@ -45,6 +28,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Create]
         public async Task TestCreateList()
         {
             UseVCR("create_list");
@@ -81,6 +65,29 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Read]
+        public async Task TestAll()
+        {
+            UseVCR("all");
+
+            TrackerCollection trackerCollection = await Client.Tracker.All(new Dictionary<string, object>
+            {
+                {
+                    "page_size", Fixture.PageSize
+                }
+            });
+
+            List<Tracker> trackers = trackerCollection.trackers;
+
+            Assert.True(trackers.Count <= Fixture.PageSize);
+            foreach (Tracker tracker in trackers)
+            {
+                Assert.IsType<Tracker>(tracker);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -94,6 +101,8 @@ namespace EasyPost.Tests
             // Must compare IDs because other elements of objects may be different
             Assert.Equal(tracker.id, retrievedTracker.id);
         }
+
+        #endregion
 
         private async Task<Tracker> CreateBasicTracker() => await Client.Tracker.Create(Fixture.Usps, "EZ1000000001");
     }

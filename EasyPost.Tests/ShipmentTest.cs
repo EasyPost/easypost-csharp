@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Services;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -14,52 +15,10 @@ namespace EasyPost.Tests
         {
         }
 
-        [Fact]
-        public async Task TestAll()
-        {
-            UseVCR("all");
-
-            ShipmentCollection shipmentCollection = await Client.Shipment.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
-
-            List<Shipment> shipments = shipmentCollection.shipments;
-
-            Assert.True(shipments.Count <= Fixture.PageSize);
-            foreach (Shipment shipment in shipments)
-            {
-                Assert.IsType<Shipment>(shipment);
-            }
-        }
+        #region CRUD Operations
 
         [Fact]
-        public async Task TestBuy()
-        {
-            UseVCR("buy");
-
-            Shipment shipment = await CreateFullShipment();
-
-            await shipment.Buy(shipment.LowestRate().id);
-
-            Assert.NotNull(shipment.postage_label);
-        }
-
-        [Fact]
-        public async Task TestConvertLabel()
-        {
-            UseVCR("convert_label");
-
-            Shipment shipment = await CreateOneCallBuyShipment();
-
-            shipment = await shipment.GenerateLabel("ZPL");
-
-            Assert.NotNull(shipment.postage_label.label_zpl_url);
-        }
-
-        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
             UseVCR("create");
@@ -75,6 +34,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Create]
         public async Task TestCreateEmptyObjects()
         {
             UseVCR("create_empty_objects");
@@ -99,6 +59,24 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreateShipmentWithCarbonOffset()
+        {
+            UseVCR("create_shipment_with_carbon_offset");
+
+            Shipment shipment = await Client.Shipment.Create(Fixture.BasicCarbonOffsetShipment, true);
+
+            Assert.IsType<Shipment>(shipment);
+
+            Rate rate = shipment.LowestRate();
+            CarbonOffset carbonOffset = rate.carbon_offset;
+
+            Assert.NotNull(carbonOffset);
+            Assert.NotNull(carbonOffset.price);
+        }
+
+        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreateTaxIdentifiers()
         {
             UseVCR("create_tax_identifiers");
@@ -117,6 +95,7 @@ namespace EasyPost.Tests
         }
 
         [Fact(Skip = "Test does not play well with VCR")]
+        [CrudOperations.Create]
         public async Task TestCreateWithIds()
         {
             UseVCR("create_with_ids");
@@ -161,7 +140,62 @@ namespace EasyPost.Tests
             Assert.Equal("388 Townsend St", shipment.from_address.street1);
         }
 
+        // If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
+        // so that USPS doesn't automatically insure it so we could manually insure it here.
         [Fact]
+        [CrudOperations.Create]
+        public async Task TestInsure()
+        {
+            UseVCR("insure");
+
+            Dictionary<string, object> shipmentData = Fixture.OneCallBuyShipment;
+            // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
+            shipmentData["insurance"] = 0;
+
+            Shipment shipment = await Client.Shipment.Create(shipmentData);
+
+            shipment = await shipment.Insure(100);
+
+            Assert.Equal("100.00", shipment.insurance);
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        public async Task TestOneCallBuyShipmentWithCarbonOffset()
+        {
+            UseVCR("one_call_buy_shipment_with_carbon_offset");
+
+            Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyCarbonOffsetShipment, true);
+
+            Assert.NotNull(shipment.fees);
+            bool carbonOffsetIncluded = shipment.fees.Any(fee => fee.type == "CarbonOffsetFee");
+            Assert.True(carbonOffsetIncluded);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestAll()
+        {
+            UseVCR("all");
+
+            ShipmentCollection shipmentCollection = await Client.Shipment.All(new Dictionary<string, object>
+            {
+                {
+                    "page_size", Fixture.PageSize
+                }
+            });
+
+            List<Shipment> shipments = shipmentCollection.shipments;
+
+            Assert.True(shipments.Count <= Fixture.PageSize);
+            foreach (Shipment shipment in shipments)
+            {
+                Assert.IsType<Shipment>(shipment);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Read] // not really?
         public async Task TestInstanceLowestSmartrate()
         {
             UseVCR("lowest_smartrate_instance");
@@ -181,25 +215,8 @@ namespace EasyPost.Tests
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
         }
 
-        // If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
-        // so that USPS doesn't automatically insure it so we could manually insure it here.
         [Fact]
-        public async Task TestInsure()
-        {
-            UseVCR("insure");
-
-            Dictionary<string, object> shipmentData = Fixture.OneCallBuyShipment;
-            // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
-            shipmentData["insurance"] = 0;
-
-            Shipment shipment = await Client.Shipment.Create(shipmentData);
-
-            shipment = await shipment.Insure(100);
-
-            Assert.Equal("100.00", shipment.insurance);
-        }
-
-        [Fact]
+        [CrudOperations.Read]
         public async Task TestLowestRate()
         {
             UseVCR("lowest_rate");
@@ -230,40 +247,8 @@ namespace EasyPost.Tests
             Assert.Throws<Exception>(() => shipment.LowestRate(carriers));
         }
 
-        // Refunding a test shipment must happen within seconds of the shipment being created as test shipments naturally
-        // follow a flow of created -> delivered to cycle through tracking events in test mode - as such anything older
-        // than a few seconds in test mode may not be refundable.
         [Fact]
-        public async Task TestRefund()
-        {
-            UseVCR("refund");
-
-            Shipment shipment = await CreateOneCallBuyShipment();
-
-            shipment = await shipment.Refund();
-
-            Assert.Equal("submitted", shipment.refund_status);
-        }
-
-        [Fact]
-        public async Task TestRegenerateRates()
-        {
-            UseVCR("regenerate_rates");
-
-            Shipment shipment = await CreateFullShipment();
-
-            await shipment.RegenerateRates();
-
-            List<Rate> rates = shipment.rates;
-
-            Assert.NotNull(rates);
-            foreach (Rate rate in rates)
-            {
-                Assert.IsType<Rate>(rate);
-            }
-        }
-
-        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -277,6 +262,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Read]
         public async Task TestSmartrate()
         {
             UseVCR("smartrate");
@@ -299,6 +285,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Read]
         public async Task TestStaticLowestSmartrate()
         {
             UseVCR("lowest_smartrate_static");
@@ -320,22 +307,20 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public async Task TestCreateShipmentWithCarbonOffset()
+        [CrudOperations.Update]
+        public async Task TestBuy()
         {
-            UseVCR("create_shipment_with_carbon_offset");
+            UseVCR("buy");
 
-            Shipment shipment = await Client.Shipment.Create(Fixture.BasicCarbonOffsetShipment, true);
+            Shipment shipment = await CreateFullShipment();
 
-            Assert.IsType<Shipment>(shipment);
+            await shipment.Buy(shipment.LowestRate().id);
 
-            Rate rate = shipment.LowestRate();
-            CarbonOffset carbonOffset = rate.carbon_offset;
-
-            Assert.NotNull(carbonOffset);
-            Assert.NotNull(carbonOffset.price);
+            Assert.NotNull(shipment.postage_label);
         }
 
         [Fact]
+        [CrudOperations.Update]
         public async Task TestBuyShipmentWithCarbonOffset()
         {
             UseVCR("buy_shipment_with_carbon_offset");
@@ -350,18 +335,55 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public async Task TestOneCallBuyShipmentWithCarbonOffset()
+        [CrudOperations.Update]
+        public async Task TestConvertLabel()
         {
-            UseVCR("one_call_buy_shipment_with_carbon_offset");
+            UseVCR("convert_label");
 
-            Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyCarbonOffsetShipment, true);
+            Shipment shipment = await CreateOneCallBuyShipment();
 
-            Assert.NotNull(shipment.fees);
-            bool carbonOffsetIncluded = shipment.fees.Any(fee => fee.type == "CarbonOffsetFee");
-            Assert.True(carbonOffsetIncluded);
+            shipment = await shipment.GenerateLabel("ZPL");
+
+            Assert.NotNull(shipment.postage_label.label_zpl_url);
+        }
+
+        // Refunding a test shipment must happen within seconds of the shipment being created as test shipments naturally
+        // follow a flow of created -> delivered to cycle through tracking events in test mode - as such anything older
+        // than a few seconds in test mode may not be refundable.
+        [Fact]
+        [CrudOperations.Update]
+        public async Task TestRefund()
+        {
+            UseVCR("refund");
+
+            Shipment shipment = await CreateOneCallBuyShipment();
+
+            shipment = await shipment.Refund();
+
+            Assert.Equal("submitted", shipment.refund_status);
         }
 
         [Fact]
+        [CrudOperations.Update]
+        public async Task TestRegenerateRates()
+        {
+            UseVCR("regenerate_rates");
+
+            Shipment shipment = await CreateFullShipment();
+
+            await shipment.RegenerateRates();
+
+            List<Rate> rates = shipment.rates;
+
+            Assert.NotNull(rates);
+            foreach (Rate rate in rates)
+            {
+                Assert.IsType<Rate>(rate);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Update]
         public async Task TestRegenerateRatesWithCarbonOffset()
         {
             UseVCR("regenerate_rates_with_carbon_offset");
@@ -378,6 +400,8 @@ namespace EasyPost.Tests
             Assert.Null(baseRate.carbon_offset);
             Assert.NotNull(newRateWithCarbon.carbon_offset);
         }
+
+        #endregion
 
         private async Task<Shipment> CreateBasicShipment()
         {

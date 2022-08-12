@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -11,28 +12,10 @@ namespace EasyPost.Tests
         {
         }
 
-        [Fact]
-        public async Task TestAll()
-        {
-            UseVCR("all");
-
-            ReportCollection reportCollection = await Client.Report.All("shipment", new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
-
-            List<Report> reports = reportCollection.reports;
-
-            Assert.True(reports.Count <= Fixture.PageSize);
-            foreach (Report report in reports)
-            {
-                Assert.IsType<Report>(report);
-            }
-        }
+        #region CRUD Operations
 
         [Fact]
+        [CrudOperations.Create]
         public async Task TestCreateReport()
         {
             UseVCR("create_report");
@@ -44,6 +27,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Create]
         public async Task TestCreateReportWithAdditionalColumns()
         {
             UseVCR("create_report_with_additional_columns");
@@ -69,6 +53,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Create]
         public async Task TestCreateReportWithColumns()
         {
             UseVCR("create_report_with_columns");
@@ -93,6 +78,29 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Read]
+        public async Task TestAll()
+        {
+            UseVCR("all");
+
+            ReportCollection reportCollection = await Client.Report.All("shipment", new Dictionary<string, object>
+            {
+                {
+                    "page_size", Fixture.PageSize
+                }
+            });
+
+            List<Report> reports = reportCollection.reports;
+
+            Assert.True(reports.Count <= Fixture.PageSize);
+            foreach (Report report in reports)
+            {
+                Assert.IsType<Report>(report);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieveReport()
         {
             UseVCR("retrieve_report");
@@ -105,6 +113,8 @@ namespace EasyPost.Tests
             Assert.Equal(report.start_date, retrievedReport.start_date);
             Assert.Equal(report.end_date, retrievedReport.end_date);
         }
+
+        #endregion
 
         private async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters)
         {

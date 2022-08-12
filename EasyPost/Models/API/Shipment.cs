@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Calculation;
+using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -75,12 +76,46 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        #region CRUD Operations
+
+        /// <summary>
+        ///     Return this shipment.
+        /// </summary>
+        /// <returns>A return shipment.</returns>
+        [CrudOperations.Create]
+        public async Task<Shipment> Return()
+        {
+            if (id == null)
+            {
+                // This is a local object, not one pulled from the server.
+                throw new Exception("id is null");
+            }
+
+            return await (Client as Client)!.Shipment.CreateReturn(this);
+        }
+
+        /// <summary>
+        ///     Get the Smartrates for this shipment.
+        /// </summary>
+        /// <returns>A list of EasyPost.Smartrate instances.</returns>
+        [CrudOperations.Read]
+        public async Task<List<Smartrate>> GetSmartrates()
+        {
+            if (id == null)
+            {
+                throw new Exception("id is null");
+            }
+
+            return await Request<List<Smartrate>>(Method.Get, $"shipments/{id}/smartrate", null, "result");
+        }
+
         /// <summary>
         ///     Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
+        [CrudOperations.Update]
         public async Task Buy(string rateId, string? insuranceValue = null, bool withCarbonOffset = false)
         {
             if (id == null)
@@ -122,12 +157,14 @@ namespace EasyPost.Models.API
         /// <param name="rate">The Rate to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
+        [CrudOperations.Update]
         public async Task Buy(Rate rate, string? insuranceValue = null, bool withCarbonOffset = false) => await Buy(rate.id, insuranceValue, withCarbonOffset);
 
         /// <summary>
         ///     Generate a postage label for this shipment.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
+        [CrudOperations.Update]
         public async Task<Shipment> GenerateLabel(string fileFormat)
         {
             if (id == null)
@@ -146,23 +183,10 @@ namespace EasyPost.Models.API
         }
 
         /// <summary>
-        ///     Get the Smartrates for this shipment.
-        /// </summary>
-        /// <returns>A list of EasyPost.Smartrate instances.</returns>
-        public async Task<List<Smartrate>> GetSmartrates()
-        {
-            if (id == null)
-            {
-                throw new Exception("id is null");
-            }
-
-            return await Request<List<Smartrate>>(Method.Get, $"shipments/{id}/smartrate", null, "result");
-        }
-
-        /// <summary>
         ///     Insure shipment for the given amount.
         /// </summary>
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
+        [CrudOperations.Update]
         public async Task<Shipment> Insure(double amount)
         {
             if (id == null)
@@ -179,6 +203,43 @@ namespace EasyPost.Models.API
 
             return await Update<Shipment>(Method.Post, $"shipments/{id}/insure", parameters);
         }
+
+        /// <summary>
+        ///     Send a refund request to the carrier the shipment was purchased from.
+        /// </summary>
+        [CrudOperations.Update]
+        public async Task<Shipment> Refund()
+        {
+            if (id == null)
+            {
+                throw new Exception("id is required");
+            }
+
+            return await Update<Shipment>(Method.Get, $"shipments/{id}/refund");
+        }
+
+        /// <summary>
+        ///     Refresh the rates for this Shipment.
+        /// </summary>
+        /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
+        /// <param name="withCarbonOffset">Whether to use carbon offset when re-rating the shipment.</param>
+        [CrudOperations.Update]
+        public async Task RegenerateRates(Dictionary<string, object>? parameters = null, bool withCarbonOffset = false)
+        {
+            parameters ??= new Dictionary<string, object>();
+
+            if (id == null)
+            {
+                throw new Exception("id is required");
+            }
+
+            parameters.Add("carbon_offset", withCarbonOffset);
+
+            Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{id}/rerate", parameters);
+            rates = shipment.rates;
+        }
+
+        #endregion
 
         /// <summary>
         ///     Get the lowest rate for this Shipment.
@@ -208,54 +269,6 @@ namespace EasyPost.Models.API
         {
             List<Smartrate> smartrates = await GetSmartrates();
             return Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
-        }
-
-        /// <summary>
-        ///     Send a refund request to the carrier the shipment was purchased from.
-        /// </summary>
-        public async Task<Shipment> Refund()
-        {
-            if (id == null)
-            {
-                throw new Exception("id is required");
-            }
-
-            return await Update<Shipment>(Method.Get, $"shipments/{id}/refund");
-        }
-
-        /// <summary>
-        ///     Refresh the rates for this Shipment.
-        /// </summary>
-        /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
-        /// <param name="withCarbonOffset">Whether to use carbon offset when re-rating the shipment.</param>
-        public async Task RegenerateRates(Dictionary<string, object>? parameters = null, bool withCarbonOffset = false)
-        {
-            parameters ??= new Dictionary<string, object>();
-
-            if (id == null)
-            {
-                throw new Exception("id is required");
-            }
-
-            parameters.Add("carbon_offset", withCarbonOffset);
-
-            Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{id}/rerate", parameters);
-            rates = shipment.rates;
-        }
-
-        /// <summary>
-        ///     Return this shipment.
-        /// </summary>
-        /// <returns>A return shipment.</returns>
-        public async Task<Shipment> Return()
-        {
-            if (id == null)
-            {
-                // This is a local object, not one pulled from the server.
-                throw new Exception("id is null");
-            }
-
-            return await (Client as Client)!.Shipment.CreateReturn(this);
         }
     }
 }

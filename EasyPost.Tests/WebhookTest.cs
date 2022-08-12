@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -26,20 +27,10 @@ namespace EasyPost.Tests
                 }
             };
 
-        [Fact]
-        public async Task TestAll()
-        {
-            UseVCR("all");
-
-            List<Webhook> webhooks = await Client.Webhook.All();
-
-            foreach (Webhook item in webhooks)
-            {
-                Assert.IsType<Webhook>(item);
-            }
-        }
+        #region CRUD Operations
 
         [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
             UseVCR("create");
@@ -54,6 +45,53 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        [CrudOperations.Read]
+        public async Task TestAll()
+        {
+            UseVCR("all");
+
+            List<Webhook> webhooks = await Client.Webhook.All();
+
+            foreach (Webhook item in webhooks)
+            {
+                Assert.IsType<Webhook>(item);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestRetrieve()
+        {
+            UseVCR("retrieve");
+
+            const string url = "https://example.com/retrieve";
+
+            Webhook webhook = await CreateBasicWebhook(url);
+
+            Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.id);
+
+            Assert.IsType<Webhook>(retrievedWebhook);
+            Assert.Equal(webhook, retrievedWebhook);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        public async Task TestUpdate()
+        {
+            UseVCR("update");
+
+            const string url = "https://example.com/update";
+
+            Webhook webhook = await CreateBasicWebhook(url);
+
+            webhook = await webhook.Update();
+
+            Assert.IsType<Webhook>(webhook);
+            Assert.StartsWith("hook_", webhook.id);
+        }
+
+        [Fact]
+        [CrudOperations.Delete]
         public async Task TestDelete()
         {
             UseVCR("delete");
@@ -70,35 +108,7 @@ namespace EasyPost.Tests
             SkipCleanUpAfterTest();
         }
 
-        [Fact]
-        public async Task TestRetrieve()
-        {
-            UseVCR("retrieve");
-
-            const string url = "https://example.com/retrieve";
-
-            Webhook webhook = await CreateBasicWebhook(url);
-
-            Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.id);
-
-            Assert.IsType<Webhook>(retrievedWebhook);
-            Assert.Equal(webhook, retrievedWebhook);
-        }
-
-        [Fact]
-        public async Task TestUpdate()
-        {
-            UseVCR("update");
-
-            const string url = "https://example.com/update";
-
-            Webhook webhook = await CreateBasicWebhook(url);
-
-            webhook = await webhook.Update();
-
-            Assert.IsType<Webhook>(webhook);
-            Assert.StartsWith("hook_", webhook.id);
-        }
+        #endregion
 
         private async Task<Webhook> CreateBasicWebhook(string url)
         {

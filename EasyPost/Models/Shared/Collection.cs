@@ -10,10 +10,11 @@ namespace EasyPost.Models.Shared
     {
         #region JSON Properties
 
-        [JsonProperty("filters")]
-        internal Dictionary<string, object>? Filters { get; set; }
         [JsonProperty("has_more")]
         public bool HasMore { get; set; }
+
+        [JsonProperty("filters")]
+        internal Dictionary<string, object>? Filters { get; set; }
 
         #endregion
 

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
@@ -10,6 +11,8 @@ namespace EasyPost.Services
         internal ParcelService(Client client) : base(client)
         {
         }
+
+        #region CRUD Operations
 
         /// <summary>
         ///     Create a Parcel.
@@ -24,7 +27,7 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Parcel instance.</returns>
-
+        [CrudOperations.Create]
         public async Task<Parcel> Create(Dictionary<string, object?> parameters)
         {
             return await Create<Parcel>("parcels", parameters);
@@ -35,10 +38,12 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
         /// <returns>EasyPost.Parcel instance.</returns>
-
+        [CrudOperations.Read]
         public async Task<Parcel> Retrieve(string id)
         {
             return await Get<Parcel>($"parcels/{id}");
         }
+
+        #endregion
     }
 }

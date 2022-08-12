@@ -5,6 +5,7 @@ namespace EasyPost.Models.API
     public class CarbonOffset
     {
         #region JSON Properties
+
         [JsonProperty("currency")]
         public string currency { get; set; }
         [JsonProperty("grams")]

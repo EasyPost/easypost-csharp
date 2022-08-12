@@ -122,6 +122,8 @@ namespace EasyPost.Tests
                 }
             }
 
+            internal bool IsRecording() =>_vcr.Mode == Mode.Record;
+
             internal Client SetUpTest(string cassetteName, string? overrideApiKey = null)
             {
                 // override api key if needed
@@ -148,8 +150,6 @@ namespace EasyPost.Tests
                 // get EasyPost client
                 return GetClient(apiKey, Client);
             }
-
-            internal bool IsRecording() =>_vcr.Mode == Mode.Record;
         }
     }
 }

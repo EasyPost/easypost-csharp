@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Calculation;
+using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -41,11 +42,14 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        #region CRUD Operations
+
         /// <summary>
         ///     Purchase the shipments within this order with a carrier and service.
         /// </summary>
         /// <param name="withCarrier">The carrier to purchase a shipment from.</param>
         /// <param name="withService">The service to purchase.</param>
+        [CrudOperations.Update]
         public async Task<Order> Buy(string withCarrier, string withService)
         {
             if (id == null)
@@ -70,6 +74,7 @@ namespace EasyPost.Models.API
         ///     Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
+        [CrudOperations.Update]
         public async Task Buy(Rate rate)
         {
             if (rate.carrier != null)
@@ -92,6 +97,7 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Populate the rates property for this Order.
         /// </summary>
+        [CrudOperations.Update]
         public async Task GetRates()
         {
             if (id == null)
@@ -102,6 +108,8 @@ namespace EasyPost.Models.API
             Order order = await Request<Order>(Method.Get, $"orders/{id}/rates");
             rates = order.rates;
         }
+
+        #endregion
 
         /// <summary>
         ///     Get the lowest rate for this Order.

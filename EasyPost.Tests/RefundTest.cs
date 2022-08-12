@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests
@@ -11,7 +12,28 @@ namespace EasyPost.Tests
         {
         }
 
+        #region CRUD Operations
+
         [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreate()
+        {
+            UseVCR("create");
+
+            List<Refund> refunds = await CreateBasicRefund();
+
+            foreach (Refund item in refunds)
+            {
+                Assert.IsType<Refund>(item);
+            }
+
+            Refund refund = refunds[0];
+            Assert.StartsWith("rfnd_", refund.id);
+            Assert.Equal("submitted", refund.status);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestAll()
         {
             UseVCR("all");
@@ -33,23 +55,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public async Task TestCreate()
-        {
-            UseVCR("create");
-
-            List<Refund> refunds = await CreateBasicRefund();
-
-            foreach (Refund item in refunds)
-            {
-                Assert.IsType<Refund>(item);
-            }
-
-            Refund refund = refunds[0];
-            Assert.StartsWith("rfnd_", refund.id);
-            Assert.Equal("submitted", refund.status);
-        }
-
-        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -68,6 +74,8 @@ namespace EasyPost.Tests
             Assert.IsType<Refund>(retrievedRefund);
             Assert.Equal(refund, retrievedRefund);
         }
+
+        #endregion
 
         private async Task<List<Refund>> CreateBasicRefund()
         {
