@@ -10,17 +10,17 @@ namespace EasyPost.Http
     {
         public readonly string? RootElement;
 
-        private readonly Dictionary<string, object?> _parameters;
+        private readonly Dictionary<string, object> _parameters;
         private readonly RestRequest _restRequest;
 
-        public Request(string endpoint, Method method, Dictionary<string, object?>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null)
+        public Request(string endpoint, Method method, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null)
         {
             apiVersion ??= ApiVersion.General;
             endpoint = $"{apiVersion.Value}/{endpoint}";
 
             _restRequest = new RestRequest(endpoint, method);
 
-            _parameters = parameters ?? new Dictionary<string, object?>();
+            _parameters = parameters ?? new Dictionary<string, object>();
 
             RootElement = rootElement;
         }
@@ -70,7 +70,7 @@ namespace EasyPost.Http
         /// </summary>
         private void BuildQueryParameters()
         {
-            foreach (KeyValuePair<string, object?> pair in _parameters)
+            foreach (KeyValuePair<string, object> pair in _parameters)
             {
                 if (pair.Value == null)
                 {

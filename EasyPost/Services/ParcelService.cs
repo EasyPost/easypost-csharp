@@ -28,7 +28,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.Parcel instance.</returns>
         [CrudOperations.Create]
-        public async Task<Parcel> Create(Dictionary<string, object?> parameters)
+        public async Task<Parcel> Create(Dictionary<string, object> parameters)
         {
             return await Create<Parcel>("parcels", parameters);
         }

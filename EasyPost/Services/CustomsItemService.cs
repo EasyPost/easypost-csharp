@@ -29,7 +29,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
         [CrudOperations.Create]
-        public async Task<CustomsItem> Create(Dictionary<string, object?> parameters)
+        public async Task<CustomsItem> Create(Dictionary<string, object> parameters)
         {
             return await Create<CustomsItem>("customs_items", parameters);
         }

@@ -134,7 +134,7 @@ namespace EasyPost.Models.API
         [JsonProperty("postage_label_inline")]
         public bool? postage_label_inline { get; set; }
         [JsonProperty("print_custom")]
-        public List<Dictionary<string, object?>> print_custom { get; set; }
+        public List<Dictionary<string, object>> print_custom { get; set; }
         [JsonProperty("print_custom_1")]
         public string print_custom_1 { get; set; }
         [JsonProperty("print_custom_1_barcode")]

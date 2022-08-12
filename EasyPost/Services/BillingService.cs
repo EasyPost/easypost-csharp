@@ -28,7 +28,7 @@ namespace EasyPost.Services
 
             PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
 
-            Dictionary<string, object?> parameters = new Dictionary<string, object?>
+            Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 {
                     "amount", amount

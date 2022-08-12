@@ -30,7 +30,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.EventCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<EventCollection> All(Dictionary<string, object?>? parameters = null)
+        public async Task<EventCollection> All(Dictionary<string, object>? parameters = null)
         {
             return await Get<EventCollection>("events", parameters);
         }

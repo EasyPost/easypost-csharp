@@ -35,7 +35,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
         [CrudOperations.Create]
-        public async Task<Address> Create(Dictionary<string, object?> parameters)
+        public async Task<Address> Create(Dictionary<string, object> parameters)
         {
             return await SendCreate("addresses", parameters);
         }
@@ -58,7 +58,7 @@ namespace EasyPost.Services
         ///     All invalid keys will be ignored.
         /// </param>
         [CrudOperations.Create]
-        public async Task<Address> CreateAndVerify(Dictionary<string, object?> parameters)
+        public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters)
         {
             return await SendCreate("addresses/create_and_verify", parameters, "address");
         }
@@ -79,7 +79,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.AddressCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<AddressCollection> All(Dictionary<string, object?>? parameters = null)
+        public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null)
         {
             return await List<AddressCollection>("addresses", parameters);
         }
@@ -97,7 +97,7 @@ namespace EasyPost.Services
 
         #endregion
 
-        private async Task<Address> SendCreate(string endpoint, Dictionary<string, object?> parameters, string? rootElement = null)
+        private async Task<Address> SendCreate(string endpoint, Dictionary<string, object> parameters, string? rootElement = null)
         {
             return await Create<Address>(endpoint, parameters, rootElement);
         }

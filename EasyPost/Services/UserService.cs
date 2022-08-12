@@ -24,7 +24,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Create]
-        public async Task<User> CreateChild(Dictionary<string, object?> parameters)
+        public async Task<User> CreateChild(Dictionary<string, object> parameters)
         {
             return await Create<User>("users", parameters);
         }

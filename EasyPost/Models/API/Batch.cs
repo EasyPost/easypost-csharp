@@ -42,7 +42,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="parameters">UpdateShipmentParameters</param>
         [CrudOperations.Update]
-        public async Task<Batch> AddShipments(Dictionary<string, object?> parameters) => await Update<Batch>(Method.Post, $"batches/{id}/add_shipments", parameters);
+        public async Task<Batch> AddShipments(Dictionary<string, object> parameters) => await Update<Batch>(Method.Post, $"batches/{id}/add_shipments", parameters);
 
         /// <summary>
         ///     Add shipments to this batch.
@@ -51,7 +51,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(List<Shipment> shipmentsToAdd)
         {
-            var parameters = new Dictionary<string, object?>
+            var parameters = new Dictionary<string, object>
             {
                 {
                     "shipments", shipmentsToAdd
@@ -92,7 +92,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> GenerateLabel(string fileFormat = "pdf")
         {
-            Dictionary<string, object?> parameters = new Dictionary<string, object?>
+            Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 {
                     "file_format", fileFormat
@@ -108,7 +108,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> GenerateScanForm(string fileFormat = "pdf")
         {
-            Dictionary<string, object?> parameters = new Dictionary<string, object?>
+            Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 {
                     "file_format", fileFormat
@@ -122,7 +122,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="parameters">UpdateShipmentParameters</param>
         [CrudOperations.Update]
-        public async Task<Batch> RemoveShipments(Dictionary<string, object?> parameters) => await Update<Batch>(Method.Post, $"batches/{id}/remove_shipments", parameters);
+        public async Task<Batch> RemoveShipments(Dictionary<string, object> parameters) => await Update<Batch>(Method.Post, $"batches/{id}/remove_shipments", parameters);
 
         /// <summary>
         ///     Remove shipments to this batch.
@@ -131,7 +131,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(List<Shipment> shipmentsToAdd)
         {
-            var parameters = new Dictionary<string, object?>
+            var parameters = new Dictionary<string, object>
             {
                 {
                     "shipments", shipmentsToAdd

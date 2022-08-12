@@ -26,7 +26,7 @@ namespace EasyPost.Services.Beta
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Create]
-        public async Task<Referral> CreateReferral(Dictionary<string, object?> parameters) =>
+        public async Task<Referral> CreateReferral(Dictionary<string, object> parameters) =>
             await Create<Referral>("referral_customers", parameters);
 
         #endregion

@@ -34,9 +34,9 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.Order instance.</returns>
         [CrudOperations.Create]
-        public async Task<Order> Create(Dictionary<string, object?> parameters)
+        public async Task<Order> Create(Dictionary<string, object> parameters)
         {
-            parameters = new Dictionary<string, object?>
+            parameters = new Dictionary<string, object>
             {
                 {
                     "order", parameters

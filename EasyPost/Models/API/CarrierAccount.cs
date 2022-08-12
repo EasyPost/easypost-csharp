@@ -23,7 +23,7 @@ namespace EasyPost.Models.API
         [JsonProperty("reference")]
         public string reference { get; set; }
         [JsonProperty("test_credentials")]
-        public Dictionary<string, object?> test_credentials { get; set; }
+        public Dictionary<string, object> test_credentials { get; set; }
         [JsonProperty("type")]
         public string type { get; set; }
 
@@ -36,7 +36,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
         [CrudOperations.Update]
-        public async Task<CarrierAccount> Update(Dictionary<string, object?> parameters)
+        public async Task<CarrierAccount> Update(Dictionary<string, object> parameters)
         {
             return await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{id}", parameters);
         }

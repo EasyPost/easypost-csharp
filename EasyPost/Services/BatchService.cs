@@ -26,7 +26,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
         [CrudOperations.Create]
-        public async Task<Batch> Create(Dictionary<string, object?>? parameters = null)
+        public async Task<Batch> Create(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters?.Wrap("batch");
             return await Create<Batch>("batches", parameters);
@@ -43,7 +43,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.Batch instance.</returns>
         [CrudOperations.Create]
-        public async Task<Batch> CreateAndBuy(Dictionary<string, object?> parameters)
+        public async Task<Batch> CreateAndBuy(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("batch");
             return await Create<Batch>("batches/create_and_buy", parameters);
@@ -65,7 +65,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.BatchCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<BatchCollection> All(Dictionary<string, object?>? parameters = null)
+        public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
         {
             return await List<BatchCollection>("batches", parameters);
         }

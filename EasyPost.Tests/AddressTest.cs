@@ -71,7 +71,7 @@ namespace EasyPost.Tests
                     "page_size", Fixture.PageSize
                 }
             });
-
+            Assert.True(addressCollection.HasMore);
             List<Address> addresses = addressCollection.addresses;
 
             Assert.True(addresses.Count <= Fixture.PageSize);

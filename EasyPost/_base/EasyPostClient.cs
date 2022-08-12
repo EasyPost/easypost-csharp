@@ -64,7 +64,7 @@ namespace EasyPost._base
         /// </summary>
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
         /// <returns>An instance of a T type object.</returns>
-        internal async Task<T> Request<T>(Method method, string url, Dictionary<string, object?>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null) where T : class
+        internal async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null) where T : class
         {
             // Build the request
             Request request = new Request(url, method, parameters, rootElement, apiVersion);
@@ -116,7 +116,7 @@ namespace EasyPost._base
         ///     Execute a request against the EasyPost API.
         /// </summary>
         /// <returns>Whether request was successful.</returns>
-        internal async Task<bool> Request(Method method, string url, Dictionary<string, object?>? parameters = null, ApiVersion? apiVersion = null)
+        internal async Task<bool> Request(Method method, string url, Dictionary<string, object>? parameters = null, ApiVersion? apiVersion = null)
         {
             // Build the request
             Request request = new Request(url, method, parameters, null, apiVersion);

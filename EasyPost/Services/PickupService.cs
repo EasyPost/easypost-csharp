@@ -33,7 +33,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.Pickup instance.</returns>
         [CrudOperations.Create]
-        public async Task<Pickup> Create(Dictionary<string, object?> parameters)
+        public async Task<Pickup> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("pickup");
             return await Create<Pickup>("pickups", parameters);

@@ -23,7 +23,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<ScanForm> Create(List<Shipment> shipments)
         {
-            Dictionary<string, object?> parameters = new Dictionary<string, object?>
+            Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 {
                     "shipments", shipments
@@ -50,7 +50,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<ScanFormCollection> All(Dictionary<string, object?>? parameters = null)
+        public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
         {
             ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
             scanFormCollection.Filters = parameters;

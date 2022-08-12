@@ -57,7 +57,7 @@ namespace EasyPost.Models.API
                 throw new Exception("id is null");
             }
 
-            Dictionary<string, object> parameters = new Dictionary<string, object?>
+            Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 {
                     "carrier", withCarrier

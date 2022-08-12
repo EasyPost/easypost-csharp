@@ -36,7 +36,7 @@ namespace EasyPost.Services.Beta
         /// </param>
         /// <returns>EasyPost.EndShipper instance.</returns>
         [CrudOperations.Create]
-        public async Task<EndShipper> Create(Dictionary<string, object?> parameters)
+        public async Task<EndShipper> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("address");
             return await Create<EndShipper>("end_shippers", parameters, apiVersion: ApiVersion.Beta);
@@ -59,7 +59,7 @@ namespace EasyPost.Services.Beta
         /// </param>
         /// <returns>A list of EasyPost.EndShipper instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<EndShipper>> All(Dictionary<string, object?>? parameters = null) => await List<List<EndShipper>>("end_shippers", parameters, apiVersion: ApiVersion.Beta);
+        public async Task<List<EndShipper>> All(Dictionary<string, object>? parameters = null) => await List<List<EndShipper>>("end_shippers", parameters, apiVersion: ApiVersion.Beta);
 
         /// <summary>
         ///     Retrieve an EndShipper from its id.

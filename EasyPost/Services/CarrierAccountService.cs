@@ -28,7 +28,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         [CrudOperations.Create]
-        public async Task<CarrierAccount> Create(Dictionary<string, object?> parameters)
+        public async Task<CarrierAccount> Create(Dictionary<string, object> parameters)
         {
             return await Create<CarrierAccount>("carrier_accounts", parameters);
         }

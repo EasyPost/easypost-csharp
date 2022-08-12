@@ -22,6 +22,7 @@ namespace EasyPost.Tests
 
             EventCollection eventCollection = await GetBasicEventCollection();
 
+            Assert.True(eventCollection.HasMore);
             List<Event> events = eventCollection.events;
 
             Assert.True(events.Count <= Fixture.PageSize);

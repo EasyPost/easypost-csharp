@@ -24,7 +24,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Tracker> Create(string carrier, string trackingCode)
         {
-            Dictionary<string, object?> parameters = new Dictionary<string, object?>
+            Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 {
                     "carrier", carrier
@@ -42,7 +42,7 @@ namespace EasyPost.Services
         /// <param name="parameters">A dictionary of tracking codes and carriers</param>
         /// <returns>True</returns>
         [CrudOperations.Create]
-        public async Task CreateList(Dictionary<string, object?> parameters)
+        public async Task CreateList(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("trackers");
             await CreateNoResponse("trackers/create_list", parameters);
@@ -69,7 +69,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>A EasyPost.TrackerCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<TrackerCollection> All(Dictionary<string, object?>? parameters = null)
+        public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
         {
             TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters);
             trackerCollection.Filters = parameters;

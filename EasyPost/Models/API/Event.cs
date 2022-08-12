@@ -19,7 +19,7 @@ namespace EasyPost.Models.API
         [JsonProperty("previous_attributes")]
         public Dictionary<string, object> previous_attributes { get; set; }
         [JsonProperty("result")]
-        public Dictionary<string, object?> result { get; set; }
+        public Dictionary<string, object> result { get; set; }
         [JsonProperty("status")]
         public string status { get; set; }
 

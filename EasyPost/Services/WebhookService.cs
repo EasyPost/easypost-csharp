@@ -24,7 +24,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.Webhook instance.</returns>
         [CrudOperations.Create]
-        public async Task<Webhook> Create(Dictionary<string, object?> parameters)
+        public async Task<Webhook> Create(Dictionary<string, object> parameters)
         {
             return await Create<Webhook>("webhooks", parameters);
         }
@@ -34,7 +34,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>List of EasyPost.Webhook instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<Webhook>> All(Dictionary<string, object?>? parameters = null)
+        public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
         {
             return await List<List<Webhook>>("webhooks", parameters, "webhooks");
         }

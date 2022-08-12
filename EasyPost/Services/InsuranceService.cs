@@ -33,7 +33,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.Insurance instance.</returns>
         [CrudOperations.Create]
-        public async Task<Insurance> Create(Dictionary<string, object?> parameters)
+        public async Task<Insurance> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("insurance");
             return await Create<Insurance>("insurances", parameters);
@@ -56,7 +56,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.InsuranceCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<InsuranceCollection> All(Dictionary<string, object?>? parameters = null)
+        public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null)
         {
             return await List<InsuranceCollection>("insurances", parameters);
         }

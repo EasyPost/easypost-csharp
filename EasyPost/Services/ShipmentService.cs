@@ -39,7 +39,7 @@ namespace EasyPost.Services
         /// <param name="withCarbonOffset">Whether to use carbon offset when creating the shipment.</param>
         /// <returns>An EasyPost.Shipment instance.</returns>
         [CrudOperations.Create]
-        public async Task<Shipment> Create(Dictionary<string, object?> parameters, bool withCarbonOffset = false)
+        public async Task<Shipment> Create(Dictionary<string, object> parameters, bool withCarbonOffset = false)
         {
             parameters = parameters.Wrap("shipment");
             parameters.Add("carbon_offset", withCarbonOffset);
@@ -60,7 +60,7 @@ namespace EasyPost.Services
             }
 
             return await Create(
-                new Dictionary<string, object?>
+                new Dictionary<string, object>
                 {
                     {
                         "to_address", shipment.from_address
@@ -94,7 +94,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.ShipmentCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<ShipmentCollection> All(Dictionary<string, object?>? parameters = null)
+        public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
             ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
             shipmentCollection.Filters = parameters;

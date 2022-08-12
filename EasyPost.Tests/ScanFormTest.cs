@@ -39,6 +39,7 @@ namespace EasyPost.Tests
                 }
             });
 
+            Assert.True(scanFormCollection.HasMore);
             List<ScanForm> scanForms = scanFormCollection.scan_forms;
 
             Assert.True(scanForms.Count <= Fixture.PageSize);

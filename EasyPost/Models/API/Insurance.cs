@@ -46,7 +46,7 @@ namespace EasyPost.Models.API
         /// <param name="parameters">Optional dictionary of parameters to use when refreshing this insurance.</param>
         /// <returns>This refreshed EasyPost.Insurance object.</returns>
         [CrudOperations.Update]
-        public async Task<Insurance> Refresh(Dictionary<string, object?>? parameters = null)
+        public async Task<Insurance> Refresh(Dictionary<string, object>? parameters = null)
         {
             return await Update<Insurance>(Method.Patch, $"insurances/{id}", parameters);
         }

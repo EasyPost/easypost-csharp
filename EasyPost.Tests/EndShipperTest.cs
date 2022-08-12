@@ -39,7 +39,6 @@ namespace EasyPost.Tests
                     "page_size", Fixture.PageSize
                 }
             });
-
             Assert.True(endShippers.Count <= Fixture.PageSize);
             foreach (EndShipper item in endShippers)
             {

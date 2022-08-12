@@ -32,7 +32,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.Report instance.</returns>
         [CrudOperations.Create]
-        public async Task<Report> Create(string type, Dictionary<string, object?>? parameters = null)
+        public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null)
         {
             return await Create<Report>($"reports/{type}", parameters);
         }
@@ -53,7 +53,7 @@ namespace EasyPost.Services
         /// <param name="type">The type of report, e.g. "shipment", "tracker", "payment_log", etc.</param>
         /// <returns>An EasyPost.ReportCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<ReportCollection> All(string type, Dictionary<string, object?>? parameters = null)
+        public async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
         {
             ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters);
             reportCollection.Filters = parameters;

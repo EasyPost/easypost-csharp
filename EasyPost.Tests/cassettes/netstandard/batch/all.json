@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 223,
-    "RecordedAt": "2022-08-10T10:20:29.650269-06:00",
+    "Duration": 245,
+    "RecordedAt": "2022-08-12T12:34:32.828117-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -31,15 +31,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "127423b662f3dacdfec68b60000115cf",
+        "x-ep-request-uuid": "37578ab562f69d38e0a1e97d0045f561",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
         "ETag": "W/\"dfd40ef9fb6ed596cc599769b596636b\"",
-        "x-runtime": "0.072664",
-        "x-node": "bigweb9nuq",
-        "x-version-label": "easypost-202208100003-36f4f324df-master",
+        "x-runtime": "0.066989",
+        "x-node": "bigweb3nuq",
+        "x-version-label": "easypost-202208112233-fa1b0d9f37-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 403f17ff97,extlb1nuq 9ce216bfac",
+        "x-proxied": "intlb2nuq 403f17ff97,extlb2nuq 9ce216bfac",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

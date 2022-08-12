@@ -90,6 +90,7 @@ namespace EasyPost.Tests
                 }
             });
 
+            Assert.True(reportCollection.HasMore);
             List<Report> reports = reportCollection.reports;
 
             Assert.True(reports.Count <= Fixture.PageSize);

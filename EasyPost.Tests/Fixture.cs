@@ -23,7 +23,7 @@ namespace EasyPost.Tests
 
         public const string UspsService = "First";
 
-        public static Dictionary<string, object> BasicAddress => new Dictionary<string, object>()
+        public static Dictionary<string, object> BasicAddress => new Dictionary<string, object>
         {
             {
                 "name",
@@ -63,11 +63,11 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object?> BasicCarbonOffsetShipment
+        public static Dictionary<string, object> BasicCarbonOffsetShipment
         {
             get
             {
-                return new Dictionary<string, object?>
+                return new Dictionary<string, object>
                 {
                     { "to_address", PickupAddress },
                     {"from_address", BasicAddress },
@@ -76,7 +76,7 @@ namespace EasyPost.Tests
             }
         }
 
-        public static Dictionary<string, object> BasicCarrierAccount => new Dictionary<string, object>()
+        public static Dictionary<string, object> BasicCarrierAccount => new Dictionary<string, object>
         {
             {
                 "type",
@@ -102,7 +102,7 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object> BasicCustomsInfo => new Dictionary<string, object>()
+        public static Dictionary<string, object> BasicCustomsInfo => new Dictionary<string, object>
         {
             {
                 "eel_pfc",
@@ -141,7 +141,7 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object> BasicCustomsItem => new Dictionary<string, object>()
+        public static Dictionary<string, object> BasicCustomsItem => new Dictionary<string, object>
         {
             {
                 "description",
@@ -169,7 +169,7 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object> BasicOrder => new Dictionary<string, object>()
+        public static Dictionary<string, object> BasicOrder => new Dictionary<string, object>
         {
             {
                 "to_address",
@@ -188,7 +188,7 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object> BasicParcel => new Dictionary<string, object>()
+        public static Dictionary<string, object> BasicParcel => new Dictionary<string, object>
         {
             {
                 "length",
@@ -215,7 +215,7 @@ namespace EasyPost.Tests
         {
             get
             {
-                const string pickupDate = "2022-08-11";
+                const string pickupDate = "2022-08-15";
                 return new Dictionary<string, object>
                 {
                     {
@@ -234,7 +234,7 @@ namespace EasyPost.Tests
             }
         }
 
-        public static Dictionary<string, object> BasicShipment => new Dictionary<string, object>()
+        public static Dictionary<string, object> BasicShipment => new Dictionary<string, object>
         {
             {
                 "to_address",
@@ -250,7 +250,7 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object> EndShipperAddress => new Dictionary<string, object>()
+        public static Dictionary<string, object> EndShipperAddress => new Dictionary<string, object>
         {
             {
                 "name",
@@ -298,7 +298,7 @@ namespace EasyPost.Tests
         {
             get
             {
-                Dictionary<string, object> data = new Dictionary<string, object?>()
+                Dictionary<string, object?> data = new Dictionary<string, object?>
                 {
                     {
                         "mode",
@@ -310,7 +310,7 @@ namespace EasyPost.Tests
                     },
                     {
                         "previous_attributes",
-                        new Dictionary<string, object?>
+                        new Dictionary<string, object>
                         {
                             {
                                 "state", "purchasing"
@@ -382,7 +382,7 @@ namespace EasyPost.Tests
                                 }
                             },
                             {
-                                "status", new Dictionary<string, object?>
+                                "status", new Dictionary<string, object>
                                 {
                                     {
                                         "created", 0
@@ -422,11 +422,11 @@ namespace EasyPost.Tests
             }
         }
 
-        public static Dictionary<string, object?> FullCarbonOffsetShipment
+        public static Dictionary<string, object> FullCarbonOffsetShipment
         {
             get
             {
-                return new Dictionary<string, object?>
+                return new Dictionary<string, object>
                 {
                     {
                         "to_address", PickupAddress
@@ -458,7 +458,7 @@ namespace EasyPost.Tests
             }
         }
 
-        public static Dictionary<string, object?> FullShipment => new Dictionary<string, object?>()
+        public static Dictionary<string, object> FullShipment => new Dictionary<string, object>()
         {
             {
                 "to_address",
@@ -478,7 +478,7 @@ namespace EasyPost.Tests
             },
             {
                 "options",
-                new Dictionary<string, object?>
+                new Dictionary<string, object>
                 {
                     {
                         "label_format", "PNG" // Must be PNG so we can convert to ZPL later
@@ -494,7 +494,7 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object?> IncorrectAddressToVerify => new Dictionary<string, object?>()
+        public static Dictionary<string, object> IncorrectAddressToVerify => new Dictionary<string, object>()
         {
             {
                 "verify",
@@ -537,11 +537,11 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object?> OneCallBuyCarbonOffsetShipment
+        public static Dictionary<string, object> OneCallBuyCarbonOffsetShipment
         {
             get
             {
-                return new Dictionary<string, object?>
+                return new Dictionary<string, object>
                 {
                     {
                         "to_address", PickupAddress
@@ -568,7 +568,7 @@ namespace EasyPost.Tests
             }
         }
 
-        public static Dictionary<string, object?> OneCallBuyShipment => new Dictionary<string, object?>()
+        public static Dictionary<string, object> OneCallBuyShipment => new Dictionary<string, object>()
         {
             {
                 "to_address",
@@ -599,7 +599,7 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object?> PickupAddress => new Dictionary<string, object?>()
+        public static Dictionary<string, object> PickupAddress => new Dictionary<string, object>()
         {
             {
                 "name",
@@ -631,7 +631,7 @@ namespace EasyPost.Tests
             }
         };
 
-        public static Dictionary<string, object?> TaxIdentifier => new Dictionary<string, object?>()
+        public static Dictionary<string, object> TaxIdentifier => new Dictionary<string, object>()
         {
             {
                 "entity",
@@ -656,16 +656,16 @@ namespace EasyPost.Tests
         {
             get
             {
-                string envVar = Environment.GetEnvironmentVariable("USPS_CARRIER_ACCOUNT_ID");
+                string? envVar = Environment.GetEnvironmentVariable("USPS_CARRIER_ACCOUNT_ID");
                 // Fallback to the EasyPost C# Client Library Test User USPS carrier account
                 return envVar ?? "ca_7642d249fdcf47bcb5da9ea34c96dfcf";
             }
         }
 
-        public static async Task<Dictionary<string, object?>> BasicInsurance(Client client)
+        public static async Task<Dictionary<string, object>> BasicInsurance(Client client)
         {
             Shipment shipment = await client.Shipment.Create(OneCallBuyShipment);
-            return new Dictionary<string, object?>
+            return new Dictionary<string, object>
             {
                 {
                     "to_address", BasicAddress

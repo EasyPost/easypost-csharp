@@ -62,6 +62,7 @@ namespace EasyPost.Tests
                 }
             });
 
+            Assert.True(batchCollection.HasMore);
             List<Batch> batches = batchCollection.batches;
 
             Assert.True(batches.Count <= Fixture.PageSize);
@@ -123,7 +124,7 @@ namespace EasyPost.Tests
 
             if (IsRecording())
             {
-                Thread.Sleep(15000); // Wait enough time to process
+                Thread.Sleep(30000); // Wait enough time to process
             }
 
             batch = await batch.GenerateScanForm();

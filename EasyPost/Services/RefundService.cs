@@ -24,7 +24,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>A list of EasyPost.Refund instances.</returns>
         [CrudOperations.Create]
-        public async Task<List<Refund>> Create(Dictionary<string, object?> parameters)
+        public async Task<List<Refund>> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("refund");
             return await Create<List<Refund>>("refunds", parameters);
@@ -39,7 +39,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.RefundCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<RefundCollection> All(Dictionary<string, object?>? parameters = null)
+        public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null)
         {
             return await List<RefundCollection>("refunds", parameters);
         }

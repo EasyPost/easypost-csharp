@@ -58,7 +58,7 @@ namespace EasyPost.Models.API
         /// </param>
         /// <returns>EasyPost.Brand instance.</returns>
         [CrudOperations.Create]
-        public async Task<Brand> UpdateBrand(Dictionary<string, object?> parameters)
+        public async Task<Brand> UpdateBrand(Dictionary<string, object> parameters)
         {
             return await Request<Brand>(Method.Patch, $"users/{id}/brand", parameters);
         }
