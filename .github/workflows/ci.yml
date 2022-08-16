@@ -55,18 +55,12 @@ jobs:
         # install NuGet.exe to restore required NuGet packages
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
-        # install Visual Studio's console test application, to execute tests
-      - name: Setup VSTest
-        uses: darenm/Setup-VSTest@v1
         # Restore required NuGet packages
       - name: Restore NuGet Packages
         run: make restore
-        # Build the test project, targeting the specific framework
-      - name: Build Solution
-        run: msbuild EasyPost.Tests\EasyPost.Tests.csproj /p:platform="Any CPU" /p:configuration="Debug" /p:target="Rebuild" /p:TargetFramework="${{ matrix.framework }}" /p:outputPath="bin/GitHubCI/${{ matrix.framework }}" -restore
         # Run the framework-specific tests
       - name: Run Tests
-        run: vstest.console.exe "EasyPost.Tests\bin\GitHubCI\${{ matrix.framework }}\EasyPost.Tests.dll"
+        run: make test-fw fw=${{ matrix.framework }}
   Compatibility_Tests:
     runs-on: windows-2022
     strategy:

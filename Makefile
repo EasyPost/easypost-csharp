@@ -6,6 +6,12 @@ help:
 build:
 	dotnet msbuild -property:Configuration="Debug" -target:Rebuild -restore
 
+## build-test-fw - Build the project for unit testing in Debug mode for a specific framework
+# @parameters:
+# fw= - The framework to build for.
+build-test-fw:
+	dotnet msbuild EasyPost.Tests/EasyPost.Tests.csproj -property:Configuration="Debug" -target:Rebuild -restore -property:TargetFramework=${fw}
+
 ## build-prod - Build the project in Release mode
 build-prod:
 	dotnet msbuild -property:Configuration="Release" -target:Rebuild -restore
@@ -98,8 +104,14 @@ sign:
 test:
 	dotnet test
 
+## test-fw - Run the unit tests for a specific framework
+# @parameters:
+# fw= - The framework to build for.
+test-fw:
+	dotnet test EasyPost.Tests/EasyPost.Tests.csproj -f ${fw}
+
 ## uninstall-scanner - Uninstall SecurityCodeScan from your system
 uninstall-scanner:
 	dotnet tool uninstall security-scan
 
-.PHONY: help build build-prod clean format install-cert install-scanner lint lint-scripts pre-release publish-all publish release restore scan setup setup-tools sign test uninstall-scanner
+.PHONY: help build build-test-fw build-prod clean format install-cert install-scanner lint lint-scripts pre-release publish-all publish release restore scan setup setup-tools sign test test-fw uninstall-scanner
