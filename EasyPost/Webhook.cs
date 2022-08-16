@@ -103,10 +103,12 @@ namespace EasyPost
 
         public static Event ValidateWebhook(byte[] data, Dictionary<string, object?> headers, string secret)
         {
-            // Extract the signature from the headers
-            string? providedSignature = headers["X-Hmac-Signature"]?.ToString();
-
-            if (providedSignature == null)
+            string? providedSignature = string.Empty;
+            if (headers.ContainsKey("X-Hmac-Signature"))
+            {
+                providedSignature = headers["X-Hmac-Signature"]?.ToString();
+            }
+            else
             {
                 throw new Exception("Webhook received does not contain an HMAC signature.");
             }

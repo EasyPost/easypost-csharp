@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -75,21 +77,21 @@ namespace EasyPost.Utilities
         ///     Calculate the HMAC-SHA256 hex digest of a byte array.
         /// </summary>
         /// <param name="data">Data to calculate hex digest for.</param>
-        /// <param name="key">Key used to calculate data hex digest.</param>
+        /// <param name="secret">Key used to calculate data hex digest.</param>
         /// <param name="normalizationForm">Normalization type to use when normalizing key. Default: No normalization.</param>
         /// <returns>Hex digest of data.</returns>
-        public static string CalculateHMACSHA256HexDigest(this byte[] data, string key, NormalizationForm? normalizationForm = null)
+        public static string CalculateHMACSHA256HexDigest(this byte[] data, string secret, NormalizationForm? normalizationForm = null)
         {
             if (normalizationForm != null)
             {
-                key = key.Normalize(normalizationForm.Value); // normalize key
+                secret = secret.Normalize(normalizationForm.Value);
             }
 
-            byte[] keyBytes = key.AsByteArray(); // convert key to UTF-8 bytes
+            byte[] keyBytes = Encoding.UTF8.GetBytes(secret);
 
-            using var hmac = new HMACSHA256(keyBytes); // create HMAC-SHA256 generator with key
-            byte[] hash = hmac.ComputeHash(data); // compute hash of data
-            return hash.AsHexString(); // convert hash to hex string
+            using HMACSHA256 hmac = new HMACSHA256(keyBytes);
+            byte[] hash = hmac.ComputeHash(data);
+            return hash.AsHexString();
         }
 
         /// <summary>
@@ -101,9 +103,9 @@ namespace EasyPost.Utilities
         /// <returns>Hex digest of data.</returns>
         public static string CalculateHMACSHA256HexDigest(this string data, string key, NormalizationForm? normalizationForm = null)
         {
-            byte[] dataBytes = data.AsByteArray(); // convert data to UTF-8 bytes
+            byte[] dataBytes = data.Replace("\n", "").Replace(" ", string.Empty).AsByteArray();
 
-            return dataBytes.CalculateHMACSHA256HexDigest(key, normalizationForm); // call other overload
+            return dataBytes.CalculateHMACSHA256HexDigest(key, normalizationForm);
         }
 
         /// <summary>
