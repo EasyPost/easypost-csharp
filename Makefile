@@ -32,7 +32,7 @@ install-cert:
 
 ## install-scanner - Install SecurityCodeScan to your system
 install-scanner:
-	dotnet tool install -g security-scan
+	dotnet tool install --local security-scan --version 5.6.3
 
 ## lint - Lints the project
 lint:
@@ -75,12 +75,16 @@ restore:
 ## scan - Scan the project for security issues (must run install-scanner first)
 # Makefile cannot access global dotnet tools, so you need to run the below command manually.
 scan:
-	security-scan --verbose --no-banner --ignore-msbuild-errors EasyPost.sln
+	dotnet tool run security-scan --verbose --no-banner --ignore-msbuild-errors EasyPost.sln
 	# "--ignore-msbuild-errors" needed since MSBuild does not like F#: https://github.com/security-code-scan/security-code-scan/issues/235
 
-## setup - Install required .NET versions and tools (Windows only)5
+## setup - Install required .NET versions and tools (Windows only)
 setup:
 	scripts\setup.bat
+
+## setup-tools - Set up the manifest files for dotnet tools
+setup-tools:
+	dotnet new tool-manifest
 
 ## sign - Sign all generated DLLs and NuGet packages with the provided certificate (Windows only)
 # @parameters:
@@ -94,4 +98,8 @@ sign:
 test:
 	dotnet test
 
-.PHONY: help build build-prod clean format install-cert install-scanner lint lint-scripts pre-release publish-all publish release restore scan setup sign test
+## uninstall-scanner - Uninstall SecurityCodeScan from your system
+uninstall-scanner:
+	dotnet tool uninstall security-scan
+
+.PHONY: help build build-prod clean format install-cert install-scanner lint lint-scripts pre-release publish-all publish release restore scan setup setup-tools sign test uninstall-scanner
