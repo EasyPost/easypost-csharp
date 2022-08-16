@@ -82,7 +82,7 @@ restore:
 # Makefile cannot access global dotnet tools, so you need to run the below command manually.
 scan:
 	dotnet tool run security-scan --verbose --no-banner --ignore-msbuild-errors EasyPost.sln
-	# "--ignore-msbuild-errors" needed since MSBuild does not like F#: https://github.com/security-code-scan/security-code-scan/issues/235
+    # "--ignore-msbuild-errors" needed since MSBuild does not like F#: https://github.com/security-code-scan/security-code-scan/issues/235
 
 ## setup - Install required .NET versions and tools (Windows only)
 setup:
@@ -108,6 +108,7 @@ test:
 # @parameters:
 # fw= - The framework to build for.
 test-fw:
+    # Note, running .NET Framework tests on a non-Windows machine may cause issues: https://xunit.net/docs/getting-started/netfx/cmdline
 	dotnet test EasyPost.Tests/EasyPost.Tests.csproj -f ${fw}
 
 ## uninstall-scanner - Uninstall SecurityCodeScan from your system
