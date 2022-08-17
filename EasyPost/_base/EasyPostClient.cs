@@ -40,11 +40,12 @@ namespace EasyPost._base
         /// </summary>
         /// <param name="apiKey">API key to use with this client.</param>
         /// <param name="apiVersion">API version to use with this client.</param>
+        /// <param name="proxy">Optional proxy to use with this client.</param>
         /// <param name="customHttpClient">
         ///     Custom HttpClient to pass into RestSharp if needed. Mostly for debug purposes, not
         ///     advised for general use.
         /// </param>
-        protected EasyPostClient(string apiKey, ApiVersion? apiVersion = null, HttpClient? customHttpClient = null)
+        protected EasyPostClient(string apiKey, ApiVersion? apiVersion = null, IWebProxy? proxy = null, HttpClient? customHttpClient = null)
         {
             ServicePointManager.SecurityProtocol |= Security.GetProtocol();
             Configuration = new ClientConfiguration(apiKey, apiVersion ?? ApiVersion.General, customHttpClient);
@@ -53,7 +54,8 @@ namespace EasyPost._base
             {
                 Timeout = ConnectTimeoutMilliseconds,
                 BaseUrl = new Uri(ClientConfiguration.ApiBase),
-                UserAgent = Configuration.UserAgent
+                UserAgent = Configuration.UserAgent,
+                Proxy = proxy
             };
 
             _restClient = customHttpClient != null ? new RestClient(customHttpClient, clientOptions) : new RestClient(clientOptions);

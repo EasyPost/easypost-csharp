@@ -65,7 +65,7 @@ namespace EasyPost.Tests
 
         internal static Client GetClient(string apiKey, HttpClient? vcrClient = null)
         {
-            return new Client(apiKey, vcrClient);
+            return new Client(apiKey, customHttpClient: vcrClient);
         }
 
         private static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath);
