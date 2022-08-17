@@ -1,10 +1,5 @@
-using System;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-
-// ReSharper disable InconsistentNaming
-// ReSharper disable IdentifierTypo
 
 namespace EasyPost.Utilities
 {
@@ -18,7 +13,7 @@ namespace EasyPost.Utilities
         /// <param name="str">String to convert to byte array.</param>
         /// <param name="encoding">Encoding to use. Default: UTF-8</param>
         /// <returns>Byte array</returns>
-        public static byte[] AsByteArray(this string str, Encoding? encoding = null)
+        private static byte[] AsByteArray(this string str, Encoding? encoding = null)
         {
             encoding ??= Encoding.UTF8;
 
@@ -30,7 +25,7 @@ namespace EasyPost.Utilities
         /// </summary>
         /// <param name="bytes">Byte array to convert to hex string.</param>
         /// <returns>Hex string</returns>
-        public static string AsHexString(this byte[] bytes)
+        private static string AsHexString(this byte[] bytes)
         {
             // Fastest safe way to convert a byte array to hex string,
             // per https://stackoverflow.com/a/624379/13343799
@@ -94,19 +89,6 @@ namespace EasyPost.Utilities
             return hash.AsHexString();
         }
 
-        /// <summary>
-        ///     Calculate the HMAC-SHA256 hex digest of a string.
-        /// </summary>
-        /// <param name="data">Data to calculate hex digest for.</param>
-        /// <param name="key">Key used to calculate data hex digest.</param>
-        /// <param name="normalizationForm">Normalization type to use when normalizing key. Default: No normalization.</param>
-        /// <returns>Hex digest of data.</returns>
-        public static string CalculateHMACSHA256HexDigest(this string data, string key, NormalizationForm? normalizationForm = null)
-        {
-            byte[] dataBytes = data.Replace("\n", "").Replace(" ", string.Empty).AsByteArray();
-
-            return dataBytes.CalculateHMACSHA256HexDigest(key, normalizationForm);
-        }
 
         /// <summary>
         ///     Check whether two signatures match. This is safe against timing attacks.

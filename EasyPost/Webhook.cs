@@ -113,14 +113,10 @@ namespace EasyPost
                 throw new Exception("Webhook received does not contain an HMAC signature.");
             }
 
-            // https://stackoverflow.com/a/12253723/13343799
-            // ReSharper disable once CommentTypo
             string computedHexDigest = data.CalculateHMACSHA256HexDigest(secret, NormalizationForm.FormKD); // normalize with NFKD profile
 
-            // Add prefix to the hex digest.
             string computedHashSignature = $"hmac-sha256-hex={computedHexDigest}";
 
-            // compare the computed signature with the provided signature
             if (!Cryptography.SignaturesMatch(computedHashSignature, providedSignature))
             {
                 throw new Exception("Webhook received did not originate from EasyPost or had a webhook secret mismatch.");
