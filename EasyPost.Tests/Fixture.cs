@@ -718,7 +718,7 @@ namespace EasyPost.Tests
 
                 try
                 {
-                    string jsonString = File.ReadAllText(fullPath).Replace("\n", "").Replace(" ", string.Empty);
+                    string jsonString = File.ReadAllText(fullPath).Replace("\n", string.Empty).Replace(" ", string.Empty);
                     return Encoding.UTF8.GetBytes(jsonString);
                 }
                 catch (Exception e)
