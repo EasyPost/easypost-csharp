@@ -9,12 +9,6 @@
     <Platforms>AnyCPU</Platforms>
 
     <RootNamespace>EasyPost.Tests</RootNamespace>
-
-    <Nullable>enable</Nullable>
-
-    <LangVersion>8.0</LangVersion>
-
-    <ImplicitUsings>disable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
