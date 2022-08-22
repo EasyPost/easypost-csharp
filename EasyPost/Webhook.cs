@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
+using EasyPost.Utilities;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -97,6 +99,30 @@ namespace EasyPost
             request.AddUrlSegment("id", id);
 
             return await request.Execute<Webhook>();
+        }
+
+        public static Event ValidateWebhook(byte[] data, Dictionary<string, object?> headers, string secret)
+        {
+            string? providedSignature = string.Empty;
+            if (headers.ContainsKey("X-Hmac-Signature"))
+            {
+                providedSignature = headers["X-Hmac-Signature"]?.ToString();
+            }
+            else
+            {
+                throw new Exception("Webhook received does not contain an HMAC signature.");
+            }
+
+            string computedHexDigest = data.CalculateHMACSHA256HexDigest(secret, NormalizationForm.FormKD);
+
+            string computedHashSignature = $"hmac-sha256-hex={computedHexDigest}";
+
+            if (!Cryptography.SignaturesMatch(computedHashSignature, providedSignature))
+            {
+                throw new Exception("Webhook received did not originate from EasyPost or had a webhook secret mismatch.");
+            }
+
+            return JsonSerialization.ConvertJsonToObject<Event>(data.AsString());
         }
     }
 }

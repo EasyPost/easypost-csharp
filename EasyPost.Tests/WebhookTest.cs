@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -7,8 +8,8 @@ namespace EasyPost.Tests
     [TestClass]
     public class WebhookTest
     {
-        private static string _easypostWebhookId = null;
-        private static TestUtils.VCR _vcr;
+        private static string? _easypostWebhookId = null;
+        private static TestUtils.VCR? _vcr;
 
         [TestCleanup]
         public async Task Cleanup()
@@ -95,6 +96,70 @@ namespace EasyPost.Tests
 
             Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
             Assert.AreEqual(webhook, retrievedWebhook);
+        }
+
+        [TestMethod]
+        public void TestValidateWebHook()
+        {
+            byte[] data = Fixture.EventBody;
+
+            // ReSharper disable once StringLiteralTypo
+            const string webhookSecret = "sécret";
+            Dictionary<string, object?> headers = new Dictionary<string, object?>
+            {
+                {
+                    "X-Hmac-Signature", "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b"
+                }
+            };
+
+            Event @event = Webhook.ValidateWebhook(data, headers, webhookSecret);
+
+            Assert.AreEqual("batch.created", @event.description);
+        }
+        [TestMethod]
+        public void TestValidateWebhookInvalidSecret()
+        {
+            byte[] data = Fixture.EventBody;
+
+            const string webhookSecret = "invalid_secret";
+            Dictionary<string, object?> headers = new Dictionary<string, object?>
+            {
+                {
+                    "X-Hmac-Signature", "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b"
+                }
+            };
+
+            try
+            {
+                Event _ = Webhook.ValidateWebhook(data, headers, webhookSecret);
+            }
+            catch (Exception error)
+            {
+                Assert.AreEqual("Webhook received did not originate from EasyPost or had a webhook secret mismatch.", error.Message);
+            }
+        }
+
+        [TestMethod]
+        public void TestValidateWebhookMissingSecret()
+        {
+            byte[] data = Fixture.EventBody;
+
+            const string webhookSecret = "123";
+            Dictionary<string, object?> headers = new Dictionary<string, object?>
+            {
+                {
+                    "some-header", "some-value"
+                }
+            };
+
+            try
+            {
+                Event _ = Webhook.ValidateWebhook(data, headers, webhookSecret);
+            }
+            catch (Exception error)
+            {
+                Assert.AreEqual("Webhook received does not contain an HMAC signature.", error.Message);
+            }
         }
 
         private static async Task<Webhook> CreateBasicWebhook()

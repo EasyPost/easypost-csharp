@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using EasyPost.Utilities;
 
@@ -704,6 +707,24 @@ namespace EasyPost.Tests
                         "carrier", Usps
                     }
                 };
+            }
+        }
+        public static byte[] EventBody
+        {
+            get
+            {
+                const string relativePath = "eventBody.json";
+                string fullPath = Path.Combine(TestUtils.GetSourceFileDirectory(), relativePath);
+
+                try
+                {
+                    string jsonString = File.ReadLines(fullPath).First();
+                    return Encoding.UTF8.GetBytes(jsonString);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception($"Unable to read {fullPath}", e);
+                }
             }
         }
     }
