@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using EasyPost.Http;
 using EasyPost.Utilities;
+using Polly;
 using RestSharp;
 using Security = EasyPost.Models.API.Security;
 
@@ -16,12 +17,14 @@ namespace EasyPost._base
     {
         internal const int DefaultConnectTimeoutMilliseconds = 30000;
         internal const int DefaultRequestTimeoutMilliseconds = 60000;
+        internal const int DefaultRetryCount = 3;
 
         internal readonly ClientConfiguration Configuration;
 
         private readonly RestClient _restClient;
         private int? _connectTimeoutMilliseconds;
         private int? _requestTimeoutMilliseconds;
+        private int? _retryCount;
 
         public int ConnectTimeoutMilliseconds
         {
@@ -33,6 +36,12 @@ namespace EasyPost._base
         {
             get => _requestTimeoutMilliseconds ?? DefaultRequestTimeoutMilliseconds;
             set => _requestTimeoutMilliseconds = value;
+        }
+
+        public int RetryCount
+        {
+            get => _retryCount ?? DefaultRetryCount;
+            set => _retryCount = value;
         }
 
         /// <summary>
@@ -53,7 +62,7 @@ namespace EasyPost._base
             {
                 Timeout = ConnectTimeoutMilliseconds,
                 BaseUrl = new Uri(ClientConfiguration.ApiBase),
-                UserAgent = Configuration.UserAgent
+                UserAgent = Configuration.UserAgent,
             };
 
             _restClient = customHttpClient != null ? new RestClient(customHttpClient, clientOptions) : new RestClient(clientOptions);
@@ -68,10 +77,9 @@ namespace EasyPost._base
         {
             // Build the request
             Request request = new Request(url, method, parameters, rootElement, apiVersion);
-            RestRequest restRequest = PrepareRequest(request);
 
             // Execute the request
-            RestResponse<T> response = await _restClient.ExecuteAsync<T>(restRequest);
+            RestResponse response = await ExecuteRequest(request);
 
             // Check the response's status code
             if (!response.IsSuccessful)
@@ -120,10 +128,9 @@ namespace EasyPost._base
         {
             // Build the request
             Request request = new Request(url, method, parameters, null, apiVersion);
-            RestRequest restRequest = PrepareRequest(request);
 
             // Execute the request
-            RestResponse response = await _restClient.ExecuteAsync(restRequest);
+            RestResponse response = await ExecuteRequest(request);
 
             // Return whether the HTTP request produced an error (non-2xx response) or not
             return response.IsSuccessful;
@@ -144,6 +151,27 @@ namespace EasyPost._base
             });
         }
 
+        private async Task<RestResponse> ExecuteRequest(Request request)
+        {
+            // Prepare the request
+            RestRequest restRequest = PrepareRequest(request);
+
+            // Establish retry policy, via https://github.com/restsharp/RestSharp/issues/735
+            var policy = Policy.HandleResult<RestResponse>(response => response.ShouldRetry()).WaitAndRetryAsync(
+                RetryCount,
+                retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+                RetryDelegateAsync
+            );
+
+
+            return await policy.ExecuteAsync(async () =>
+            {
+                // Execute the request
+                RestResponse response = await _restClient.ExecuteAsync(restRequest);
+                return response;
+            });
+        }
+
         /// <summary>
         ///     Prepare a request for execution by attaching required headers.
         /// </summary>
@@ -159,6 +187,12 @@ namespace EasyPost._base
             restRequest.AddHeader("content_type", "application/json");
 
             return restRequest;
+        }
+
+        private static async Task RetryDelegateAsync<T>(DelegateResult<T> result, TimeSpan calculatedWaitDuration, int retryCount, Context context)
+        {
+            // Can log some information about the retry here if we want.
+            Console.WriteLine("Retrying after {0}", calculatedWaitDuration);
         }
     }
 }

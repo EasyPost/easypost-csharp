@@ -56,6 +56,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />
+    <PackageReference Include="Polly" Version="7.2.3"/>
     <PackageReference Include="RestSharp" Version="[107.3.0, 108.0.0)" />
     <PackageReference Include="SecurityCodeScan.VS2019" Version="[5.0.0, 6.0.0)">
       <PrivateAssets>all</PrivateAssets>
