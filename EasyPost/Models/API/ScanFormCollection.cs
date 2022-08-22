@@ -27,7 +27,7 @@ namespace EasyPost.Models.API
         public async Task<IPaginatedCollection> Next()
         {
             UpdateFilters(scan_forms, "scan_forms");
-            return await (Client as Client)!.ScanForm.All(Filters);
+            return await (Client as Client)!.ScanForm.All(filters);
         }
 
         #endregion

@@ -62,7 +62,7 @@ namespace EasyPost.Tests
                 }
             });
 
-            Assert.True(batchCollection.HasMore);
+            Assert.True(batchCollection.has_more);
             List<Batch> batches = batchCollection.batches;
 
             Assert.True(batches.Count <= Fixture.PageSize);

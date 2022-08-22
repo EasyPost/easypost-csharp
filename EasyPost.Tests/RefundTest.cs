@@ -45,7 +45,7 @@ namespace EasyPost.Tests
                 }
             });
 
-            Assert.True(refundCollection.HasMore);
+            Assert.True(refundCollection.has_more);
             List<Refund> refunds = refundCollection.refunds;
 
             Assert.True(refunds.Count <= Fixture.PageSize);

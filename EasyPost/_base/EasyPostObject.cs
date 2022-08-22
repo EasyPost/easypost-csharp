@@ -22,10 +22,10 @@ namespace EasyPost._base
         public string? id { get; internal set; }
         [JsonProperty("mode")]
         public string? mode { get; internal set; }
-        [JsonProperty("object")]
-        internal string? Object { get; set; }
         [JsonProperty("updated_at")]
         public DateTime? updated_at { get; internal set; }
+        [JsonProperty("object")]
+        internal string? Object { get; set; }
 
         #endregion
 
@@ -66,7 +66,12 @@ namespace EasyPost._base
             return AsDictionary().GetHashCode();
         }
 
-        protected async Task<T> Request<T>(Method method, string url, Dictionary<string, object?>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null) where T : class
+        protected async Task Delete(string url, Dictionary<string, object>? parameters = null, ApiVersion? apiVersion = null)
+        {
+            await Request(Method.Delete, url, parameters, apiVersion);
+        }
+
+        protected async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null) where T : class
         {
             if (Client == null)
             {
@@ -76,7 +81,7 @@ namespace EasyPost._base
             return await Client.Request<T>(method, url, parameters, rootElement, apiVersion);
         }
 
-        protected async Task Request(Method method, string url, Dictionary<string, object?>? parameters = null, ApiVersion? apiVersion = null)
+        protected async Task Request(Method method, string url, Dictionary<string, object>? parameters = null, ApiVersion? apiVersion = null)
         {
             if (Client == null)
             {
@@ -86,7 +91,7 @@ namespace EasyPost._base
             await Client.Request(method, url, parameters, apiVersion);
         }
 
-        protected async Task<T> Update<T>(Method method, string url, Dictionary<string, object?>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null) where T : class
+        protected async Task<T> Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null) where T : class
         {
             T updatedObject = await Request<T>(method, url, parameters, rootElement, apiVersion);
             if (updatedObject == null)
@@ -95,11 +100,6 @@ namespace EasyPost._base
             }
 
             return updatedObject;
-        }
-
-        protected async Task Delete(string url, Dictionary<string, object?>? parameters = null, ApiVersion? apiVersion = null)
-        {
-            await Request(Method.Delete, url, parameters, apiVersion);
         }
 
         /// <summary>

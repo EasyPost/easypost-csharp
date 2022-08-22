@@ -27,7 +27,7 @@ namespace EasyPost.Models.API
         public async Task<IPaginatedCollection> Next()
         {
             UpdateFilters(shipments, "shipments");
-            return await (Client as Client)!.Shipment.All(Filters);
+            return await (Client as Client)!.Shipment.All(filters);
         }
 
         #endregion

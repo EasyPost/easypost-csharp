@@ -56,7 +56,7 @@ namespace EasyPost.Services
         public async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
         {
             ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters);
-            reportCollection.Filters = parameters;
+            reportCollection.filters = parameters;
             reportCollection.type = type;
             reportCollection.Client = Client; // specifically needs a v2 client
             return reportCollection;

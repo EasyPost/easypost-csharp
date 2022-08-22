@@ -41,7 +41,7 @@ namespace EasyPost.Tests
                 }
             });
 
-            Assert.True(insuranceCollection.HasMore);
+            Assert.True(insuranceCollection.has_more);
             List<Insurance> insurances = insuranceCollection.insurances;
 
             Assert.True(insurances.Count <= Fixture.PageSize);

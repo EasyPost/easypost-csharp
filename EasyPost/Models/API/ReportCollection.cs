@@ -27,7 +27,7 @@ namespace EasyPost.Models.API
         public async Task<IPaginatedCollection> Next()
         {
             UpdateFilters(reports, "reports");
-            return await (Client as Client)!.Report.All(type!, Filters);
+            return await (Client as Client)!.Report.All(type!, filters);
         }
 
         #endregion

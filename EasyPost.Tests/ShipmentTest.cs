@@ -185,7 +185,7 @@ namespace EasyPost.Tests
                 }
             });
 
-            Assert.True(shipmentCollection.HasMore);
+            Assert.True(shipmentCollection.has_more);
             List<Shipment> shipments = shipmentCollection.shipments;
 
             Assert.True(shipments.Count <= Fixture.PageSize);
