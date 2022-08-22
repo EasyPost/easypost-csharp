@@ -8,41 +8,6 @@ namespace EasyPost.Utilities
         private static readonly uint[] Lookup32 = CreateLookup32();
 
         /// <summary>
-        ///     Convert a string to a byte array using a specific encoding (defaults to UTF-8)
-        /// </summary>
-        /// <param name="str">String to convert to byte array.</param>
-        /// <param name="encoding">Encoding to use. Default: UTF-8</param>
-        /// <returns>Byte array</returns>
-        private static byte[] AsByteArray(this string str, Encoding? encoding = null)
-        {
-            encoding ??= Encoding.UTF8;
-
-            return encoding.GetBytes(str);
-        }
-
-        /// <summary>
-        ///     Convert a byte array to a hex string.
-        /// </summary>
-        /// <param name="bytes">Byte array to convert to hex string.</param>
-        /// <returns>Hex string</returns>
-        private static string AsHexString(this byte[] bytes)
-        {
-            // Fastest safe way to convert a byte array to hex string,
-            // per https://stackoverflow.com/a/624379/13343799
-
-            uint[] lookup32 = Lookup32;
-            char[] result = new char[bytes.Length * 2];
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                uint val = lookup32[bytes[i]];
-                result[2 * i] = (char)val;
-                result[2 * i + 1] = (char)(val >> 16);
-            }
-
-            return new string(result).ToLower();
-        }
-
-        /// <summary>
         ///     Convert a string to a hex string using a specific encoding (defaults to UTF-8)
         /// </summary>
         /// <param name="str">String to convert to hex string.</param>
@@ -124,13 +89,45 @@ namespace EasyPost.Utilities
         /// <returns>Whether the two signatures match.</returns>
         public static bool SignaturesMatch(string signature1, string signature2)
         {
-            signature1 = signature1.ToLower();
-            signature2 = signature2.ToLower();
-
             byte[] signatureBytes1 = signature1.AsByteArray();
             byte[] signatureBytes2 = signature2.AsByteArray();
 
             return SignaturesMatch(signatureBytes1, signatureBytes2);
+        }
+
+        /// <summary>
+        ///     Convert a string to a byte array using a specific encoding (defaults to UTF-8)
+        /// </summary>
+        /// <param name="str">String to convert to byte array.</param>
+        /// <param name="encoding">Encoding to use. Default: UTF-8</param>
+        /// <returns>Byte array</returns>
+        private static byte[] AsByteArray(this string str, Encoding? encoding = null)
+        {
+            encoding ??= Encoding.UTF8;
+
+            return encoding.GetBytes(str);
+        }
+
+        /// <summary>
+        ///     Convert a byte array to a hex string.
+        /// </summary>
+        /// <param name="bytes">Byte array to convert to hex string.</param>
+        /// <returns>Hex string</returns>
+        private static string AsHexString(this byte[] bytes)
+        {
+            // Fastest safe way to convert a byte array to hex string,
+            // per https://stackoverflow.com/a/624379/13343799
+
+            uint[] lookup32 = Lookup32;
+            char[] result = new char[bytes.Length * 2];
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                uint val = lookup32[bytes[i]];
+                result[2 * i] = (char)val;
+                result[2 * i + 1] = (char)(val >> 16);
+            }
+
+            return new string(result).ToLower();
         }
 
         /// <summary>
