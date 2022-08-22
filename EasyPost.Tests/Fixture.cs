@@ -718,7 +718,7 @@ namespace EasyPost.Tests
 
                 try
                 {
-                    string jsonString = File.ReadAllText(fullPath).Replace("\n", string.Empty).Replace(" ", string.Empty);
+                    string jsonString = File.ReadAllText(fullPath).Replace("\n", "").Replace("\r", ""); // remove potential newline at end of JSON file, it works, don't touch it :)
                     return Encoding.UTF8.GetBytes(jsonString);
                 }
                 catch (Exception e)
