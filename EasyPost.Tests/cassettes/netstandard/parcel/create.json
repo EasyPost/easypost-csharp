@@ -1,17 +1,17 @@
 [
   {
-    "Duration": 464,
-    "RecordedAt": "2022-08-10T10:20:12.663414-06:00",
-    "Request": {
-      "Body": "{\"length\":\"10\",\"width\":\"8\",\"height\":\"4\",\"weight\":\"15.4\"}",
-      "BodyContentType": "Json",
-      "ContentHeaders": {
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "56"
-      },
-      "Method": "POST",
-      "RequestHeaders": {
-        "Authorization": "<REDACTED>",
+      "Duration": 469,
+      "RecordedAt": "2022-08-22T16:08:41.543113-06:00",
+      "Request": {
+          "Body": "{\"length\":\"10\",\"width\":\"8\",\"height\":\"4\",\"weight\":\"15.4\"}",
+          "BodyContentType": "Json",
+          "ContentHeaders": {
+              "Content-Type": "application/json; charset=utf-8",
+              "Content-Length": "56"
+          },
+          "Method": "POST",
+          "RequestHeaders": {
+              "Authorization": "<REDACTED>",
         "content_type": "application/json",
         "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
         "User-Agent": "<REDACTED>"
@@ -19,33 +19,33 @@
       "Uri": "https://api.easypost.com/v2/parcels"
     },
     "Response": {
-      "Body": "{\"id\":\"prcl_bed84b7d15f04d1b9bc1a3a8cf5e8677\",\"object\":\"Parcel\",\"created_at\":\"2022-08-10T16:20:12Z\",\"updated_at\":\"2022-08-10T16:20:12Z\",\"length\":10.0,\"width\":8.0,\"height\":4.0,\"predefined_package\":null,\"weight\":15.4,\"mode\":\"test\"}",
-      "BodyContentType": "Json",
-      "ContentHeaders": {
-        "Expires": "0",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "229"
-      },
-      "HttpVersion": "1.1",
-      "ResponseHeaders": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "x-xss-protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "x-download-options": "noopen",
-        "x-permitted-cross-domain-policies": "none",
-        "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "127423b462f3dabcfec6876800010f6b",
-        "Cache-Control": "no-store, no-cache, private",
-        "Pragma": "no-cache",
-        "Location": "/api/v2/parcels.prcl_bed84b7d15f04d1b9bc1a3a8cf5e8677",
-        "ETag": "W/\"1b44374fc152c8a1f569d1d87e0c500b\"",
-        "x-runtime": "0.027519",
-        "x-node": "bigweb1nuq",
-        "x-version-label": "easypost-202208100003-36f4f324df-master",
-        "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 403f17ff97,extlb1nuq 9ce216bfac",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-      },
+        "Body": "{\"id\":\"prcl_06e7209b98dd44489c9d8fbf3ac094e5\",\"object\":\"Parcel\",\"created_at\":\"2022-08-22T22:08:41Z\",\"updated_at\":\"2022-08-22T22:08:41Z\",\"length\":10.0,\"width\":8.0,\"height\":4.0,\"predefined_package\":null,\"weight\":15.4,\"mode\":\"test\"}",
+        "BodyContentType": "Json",
+        "ContentHeaders": {
+            "Expires": "0",
+            "Content-Type": "application/json; charset=utf-8",
+            "Content-Length": "229"
+        },
+        "HttpVersion": "1.1",
+        "ResponseHeaders": {
+            "X-Frame-Options": "SAMEORIGIN",
+            "x-xss-protection": "1; mode=block",
+            "X-Content-Type-Options": "nosniff",
+            "x-download-options": "noopen",
+            "x-permitted-cross-domain-policies": "none",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-ep-request-uuid": "dc58f3b86303fe69e68bbde9000ad802",
+            "Cache-Control": "no-store, no-cache, private",
+            "Pragma": "no-cache",
+            "Location": "/api/v2/parcels.prcl_06e7209b98dd44489c9d8fbf3ac094e5",
+            "ETag": "W/\"d466cdce56ca88e1b2a955f8c8f4c78c\"",
+            "x-runtime": "0.021987",
+            "x-node": "bigweb8nuq",
+            "x-version-label": "easypost-202208221725-fc32be9ffa-master",
+            "x-backend": "easypost",
+            "x-proxied": "intlb1nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
+            "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+        },
       "Status": {
         "Code": 201,
         "Message": "Created"

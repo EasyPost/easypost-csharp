@@ -1,17 +1,17 @@
 [
   {
-    "Duration": 311,
-    "RecordedAt": "2022-08-10T10:19:34.813361-06:00",
-    "Request": {
-      "Body": "",
-      "BodyContentType": "Text",
-      "ContentHeaders": {},
-      "Method": "GET",
-      "RequestHeaders": {
-        "Authorization": "<REDACTED>",
-        "content_type": "application/json",
-        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
-        "User-Agent": "<REDACTED>"
+      "Duration": 364,
+      "RecordedAt": "2022-08-22T16:07:22.408585-06:00",
+      "Request": {
+          "Body": "",
+          "BodyContentType": "Text",
+          "ContentHeaders": {},
+          "Method": "GET",
+          "RequestHeaders": {
+              "Authorization": "<REDACTED>",
+              "content_type": "application/json",
+              "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+              "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/users"
     },
@@ -25,22 +25,22 @@
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "x-xss-protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "x-download-options": "noopen",
-        "x-permitted-cross-domain-policies": "none",
-        "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "127423b162f3da96feb985370001039f",
-        "Cache-Control": "no-store, no-cache, private",
-        "Pragma": "no-cache",
-        "ETag": "W/\"c2ab39970a271ca6c19101af8d02b729\"",
-        "x-runtime": "0.163948",
-        "x-node": "bigweb1nuq",
-        "x-version-label": "easypost-202208100003-36f4f324df-master",
-        "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 403f17ff97,extlb1nuq 9ce216bfac",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+          "X-Frame-Options": "SAMEORIGIN",
+          "x-xss-protection": "1; mode=block",
+          "X-Content-Type-Options": "nosniff",
+          "x-download-options": "noopen",
+          "x-permitted-cross-domain-policies": "none",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "x-ep-request-uuid": "dc58f3b56303fe1af7eea059000ab862",
+          "Cache-Control": "no-store, no-cache, private",
+          "Pragma": "no-cache",
+          "ETag": "W/\"c2ab39970a271ca6c19101af8d02b729\"",
+          "x-runtime": "0.176976",
+          "x-node": "bigweb2nuq",
+          "x-version-label": "easypost-202208221725-fc32be9ffa-master",
+          "x-backend": "easypost",
+          "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
+          "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
         "Code": 200,

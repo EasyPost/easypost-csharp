@@ -205,8 +205,8 @@ namespace EasyPost.Tests
 
             // test lowest smartrate with valid filters
             Smartrate lowestSmartrate = await shipment.LowestSmartrate(1, SmartrateAccuracy.Percentile90);
-            Assert.Equal("Express", lowestSmartrate.service);
-            Assert.Equal(23.75, lowestSmartrate.rate);
+            Assert.Equal("First", lowestSmartrate.service);
+            Assert.Equal(5.49, lowestSmartrate.rate);
             Assert.Equal("USPS", lowestSmartrate.carrier);
 
             // test lowest smartrate with invalid filters (should error due to strict delivery_days)
@@ -296,8 +296,8 @@ namespace EasyPost.Tests
             // test lowest smartrate with valid filters
             List<Smartrate> smartrates = await shipment.GetSmartrates();
             Smartrate lowestSmartrate = ShipmentService.GetLowestSmartrate(smartrates, 1, SmartrateAccuracy.Percentile90);
-            Assert.Equal("Express", lowestSmartrate.service);
-            Assert.Equal(23.75, lowestSmartrate.rate);
+            Assert.Equal("First", lowestSmartrate.service);
+            Assert.Equal(5.49, lowestSmartrate.rate);
             Assert.Equal("USPS", lowestSmartrate.carrier);
 
             // test lowest smartrate with invalid filters (should error due to strict delivery_days)

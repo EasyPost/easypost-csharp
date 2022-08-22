@@ -33,7 +33,9 @@ namespace EasyPost.Tests
         {
             UseVCR("create_verify");
 
-            Address address = await Client.Address.Create(Fixture.IncorrectAddressToVerify);
+            Dictionary<string, object> addressData = Fixture.IncorrectAddressToVerify;
+
+            Address address = await Client.Address.Create(addressData);
 
             Assert.IsType<Address>(address);
             Assert.StartsWith("adr_", address.id);
@@ -87,7 +89,6 @@ namespace EasyPost.Tests
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
-
 
             Address address = await Client.Address.Create(Fixture.BasicAddress);
 
