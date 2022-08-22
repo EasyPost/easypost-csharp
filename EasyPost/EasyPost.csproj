@@ -57,7 +57,6 @@
     <None Include="..\EasyPost.pub">
       <Link>EasyPost.pub</Link>
     </None>
-    <None Remove="FodyWeavers.xsd" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />

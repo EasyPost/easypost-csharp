@@ -113,7 +113,7 @@ namespace EasyPost
                 throw new Exception("Webhook received does not contain an HMAC signature.");
             }
 
-            string computedHexDigest = data.CalculateHMACSHA256HexDigest(secret, NormalizationForm.FormKD); // normalize with NFKD profile
+            string computedHexDigest = data.CalculateHMACSHA256HexDigest(secret, NormalizationForm.FormKD);
 
             string computedHashSignature = $"hmac-sha256-hex={computedHexDigest}";
 

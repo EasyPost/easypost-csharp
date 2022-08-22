@@ -86,9 +86,9 @@ namespace EasyPost.Utilities
 
             using HMACSHA256 hmac = new HMACSHA256(keyBytes);
             byte[] hash = hmac.ComputeHash(data);
+
             return hash.AsHexString();
         }
-
 
         /// <summary>
         ///     Check whether two signatures match. This is safe against timing attacks.
