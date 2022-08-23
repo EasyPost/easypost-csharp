@@ -41,9 +41,9 @@ namespace EasyPost.Tests
                 }
             });
 
-            Assert.True(insuranceCollection.has_more);
             List<Insurance> insurances = insuranceCollection.insurances;
 
+            Assert.True(insuranceCollection.has_more);
             Assert.True(insurances.Count <= Fixture.PageSize);
             foreach (Insurance item in insurances)
             {

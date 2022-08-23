@@ -1,4 +1,3 @@
-
 using Xunit;
 
 namespace EasyPost.Tests
@@ -10,6 +9,8 @@ namespace EasyPost.Tests
         [Fact]
         public void TestTimeout()
         {
+            // ReSharper disable once UseObjectOrCollectionInitializer
+            // we specifically want to test the getters/setters
             Client client = new Client(FakeApikey);
             client.ConnectTimeoutMilliseconds = 5000;
             client.RequestTimeoutMilliseconds = 5000;

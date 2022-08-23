@@ -185,9 +185,9 @@ namespace EasyPost.Tests
                 }
             });
 
-            Assert.True(shipmentCollection.has_more);
             List<Shipment> shipments = shipmentCollection.shipments;
 
+            Assert.True(shipmentCollection.has_more);
             Assert.True(shipments.Count <= Fixture.PageSize);
             foreach (Shipment shipment in shipments)
             {
@@ -196,7 +196,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        [CrudOperations.Read] // not really?
+        [CrudOperations.Read] // not really a read operation, since the only HTTP calls we're making are create and update methods
         public async Task TestInstanceLowestSmartrate()
         {
             UseVCR("lowest_smartrate_instance");

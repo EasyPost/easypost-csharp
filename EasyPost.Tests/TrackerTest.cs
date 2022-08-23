@@ -77,9 +77,9 @@ namespace EasyPost.Tests
                 }
             });
 
-            Assert.True(trackerCollection.has_more);
             List<Tracker> trackers = trackerCollection.trackers;
 
+            Assert.True(trackerCollection.has_more);
             Assert.True(trackers.Count <= Fixture.PageSize);
             foreach (Tracker tracker in trackers)
             {

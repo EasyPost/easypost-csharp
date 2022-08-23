@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using EasyPost.Models.API;
 using Xunit;
 
@@ -8,7 +7,6 @@ namespace EasyPost.Tests
     public class EnumTest
     {
         [Fact]
-        [SuppressMessage("Assertions", "xUnit2017:Do not use Contains() to check if a value exists in a collection")]
         public void TestEnumeration()
         {
             // going to use SmartrateAccuracy enums for this test,
@@ -47,7 +45,7 @@ namespace EasyPost.Tests
             foreach (var accuracy in accuracies)
             {
                 Assert.IsType<SmartrateAccuracy>(accuracy);
-                Assert.True(enumValues.Contains((string)accuracy.Value));
+                Assert.Contains(enumValues, x => x == (string)accuracy.Value);
             }
         }
     }

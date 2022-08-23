@@ -62,9 +62,9 @@ namespace EasyPost.Tests
                 }
             });
 
-            Assert.True(batchCollection.has_more);
             List<Batch> batches = batchCollection.batches;
 
+            Assert.True(batchCollection.has_more);
             Assert.True(batches.Count <= Fixture.PageSize);
             foreach (Batch item in batches)
             {
@@ -74,9 +74,9 @@ namespace EasyPost.Tests
 
         [Fact]
         [CrudOperations.Update]
-        public async Task TestAddRemoveShipment()
+        public async Task TestAddRemoveShipments()
         {
-            UseVCR("add_remove_shipment");
+            UseVCR("add_remove_shipments");
 
             Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyShipment);
 
@@ -117,7 +117,6 @@ namespace EasyPost.Tests
         {
             UseVCR("create_scan_form");
 
-
             Batch batch = await CreateOneCallBuyBatch();
 
             if (IsRecording())
@@ -129,7 +128,7 @@ namespace EasyPost.Tests
 
             if (IsRecording())
             {
-                Thread.Sleep(30000); // Wait enough time to process
+                Thread.Sleep(10000); // Wait enough time to process
             }
 
             batch = await batch.GenerateScanForm();
@@ -150,7 +149,7 @@ namespace EasyPost.Tests
 
             if (IsRecording())
             {
-                Thread.Sleep(30000); // Wait enough time to process
+                Thread.Sleep(10000); // Wait enough time to process
             }
 
             await batch.GenerateLabel("ZPL");

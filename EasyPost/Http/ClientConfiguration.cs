@@ -12,11 +12,14 @@ namespace EasyPost.Http
         /// <summary>
         ///     The API base URI.
         /// </summary>
-        internal const string ApiBase = "https://api.easypost.com";
+        private const string DefaultBaseUrl = "https://api.easypost.com";
+
         /// <summary>
         ///     The API key.
         /// </summary>
         internal readonly string ApiKey;
+
+        private readonly string? _apiBase;
 
         /// <summary>
         ///    The .NET version of the current application.
@@ -43,6 +46,11 @@ namespace EasyPost.Http
         /// </summary>
         private readonly string _osVersion;
 
+        internal string ApiBase
+        {
+            get { return _apiBase ?? DefaultBaseUrl; }
+        }
+
         // User-Agent will not show beta vs GA, will always show latest GA version, even when using beta endpoint
         internal string UserAgent => $"EasyPost/{ApiVersion.General.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
 
@@ -50,10 +58,13 @@ namespace EasyPost.Http
         ///     Create an EasyPost.ClientConfiguration instance.
         /// </summary>
         /// <param name="apiKey">The API key to use for the client connection.</param>
+        /// <param name="apiVersion">API version to use with this client.</param>
+        /// <param name="baseUrl">Base URL to use with this client. This will override `apiVersion`</param>
         /// <param name="customHttpClient">The custom HTTP client to use for the client connection.</param>
-        internal ClientConfiguration(string apiKey, ApiVersion apiVersion, HttpClient? customHttpClient = null)
+        internal ClientConfiguration(string apiKey, ApiVersion apiVersion, string? baseUrl, HttpClient? customHttpClient = null)
         {
             ApiKey = apiKey;
+            _apiBase = baseUrl;
 
             _libraryVersion = RuntimeInfo.ApplicationInfo.ApplicationVersion;
             _dotNetVersion = RuntimeInfo.ApplicationInfo.DotNetVersion;

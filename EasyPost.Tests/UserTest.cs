@@ -102,7 +102,6 @@ namespace EasyPost.Tests
             Assert.Equal(id, user.id);
         }
 
-
         [Fact]
         [CrudOperations.Read]
         public async Task TestRetrieveMe()
@@ -128,8 +127,7 @@ namespace EasyPost.Tests
             Dictionary<string, object> userDict = new Dictionary<string, object>
             {
                 {
-                    "name",
-                    testName
+                    "name", testName
                 }
             };
             user = await user.Update(userDict);

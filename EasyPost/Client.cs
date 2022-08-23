@@ -7,10 +7,6 @@ namespace EasyPost
 {
     public class Client : EasyPostClient
     {
-        private readonly string _apiKey;
-
-        private readonly HttpClient? _customHttpClient;
-
         public AddressService Address => GetService<AddressService>();
 
         public ApiKeyService ApiKey => GetService<ApiKeyService>();
@@ -61,14 +57,13 @@ namespace EasyPost
         ///     Constructor for the EasyPost client.
         /// </summary>
         /// <param name="apiKey">API key to use with this client.</param>
+        /// <param name="baseUrl">Base URL to use with this client. Must include API version.</param>
         /// <param name="customHttpClient">
         ///     Custom HttpClient to pass into RestSharp if needed. Mostly for debug purposes, not
         ///     advised for general use.
         /// </param>
-        public Client(string apiKey, HttpClient? customHttpClient = null) : base(apiKey, ApiVersion.General, customHttpClient)
+        public Client(string apiKey, string? baseUrl = null, HttpClient? customHttpClient = null) : base(apiKey, ApiVersion.General, baseUrl, customHttpClient)
         {
-            _apiKey = apiKey;
-            _customHttpClient = customHttpClient;
         }
     }
 }

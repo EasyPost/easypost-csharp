@@ -73,16 +73,15 @@ namespace EasyPost.Tests
                     "page_size", Fixture.PageSize
                 }
             });
-            Assert.True(addressCollection.has_more);
             List<Address> addresses = addressCollection.addresses;
 
+            Assert.True(addressCollection.has_more);
             Assert.True(addresses.Count <= Fixture.PageSize);
             foreach (Address item in addresses)
             {
                 Assert.IsType<Address>(item);
             }
         }
-
 
         [Fact]
         [CrudOperations.Read]
@@ -122,7 +121,6 @@ namespace EasyPost.Tests
         public async Task TestVerify()
         {
             UseVCR("verify");
-
 
             Address address = await CreateBasicAddress();
 

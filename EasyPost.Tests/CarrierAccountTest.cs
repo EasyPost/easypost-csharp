@@ -86,7 +86,6 @@ namespace EasyPost.Tests
         {
             UseVCR("update");
 
-
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
             string testDescription = "my custom description";
@@ -94,8 +93,7 @@ namespace EasyPost.Tests
             Dictionary<string, object> carrierAccountData = new Dictionary<string, object>()
             {
                 {
-                    "description",
-                    testDescription
+                    "description", testDescription
                 }
             };
             carrierAccount = await carrierAccount.Update(carrierAccountData);

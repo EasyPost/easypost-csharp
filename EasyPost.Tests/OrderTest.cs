@@ -48,7 +48,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        [CrudOperations.Read] // not really?
+        [CrudOperations.Read] // not really a read operation, since the only HTTP calls we're making are create and update methods
         public async Task TestLowestRate()
         {
             UseVCR("lowest_rate");
@@ -86,7 +86,6 @@ namespace EasyPost.Tests
             UseVCR("retrieve");
 
             Order order = await CreateBasicOrder();
-
 
             Order retrievedOrder = await Client.Order.Retrieve(order.id);
 

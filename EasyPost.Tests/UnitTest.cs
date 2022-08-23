@@ -25,6 +25,11 @@ namespace EasyPost.Tests
         protected UnitTest(string groupName, TestUtils.ApiKey apiKey = TestUtils.ApiKey.Test) => _vcr = new TestUtils.VCR(groupName, apiKey);
 #pragma warning restore CS8618
 
+        /// <summary>
+        ///     Called automatically by xUnit after each unit test is run.
+        ///     Executes the CleanupFunction (passes in the _cleanupId) if set.
+        /// </summary>
+        /// <exception cref="Exception">Could not execute the declared clean-up function.</exception>
         public void Dispose()
         {
             if (CleanupFunction == null)
