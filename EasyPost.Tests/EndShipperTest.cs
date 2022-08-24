@@ -69,16 +69,16 @@ namespace EasyPost.Tests
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
-            string newPhoneNumber = "9999999999";
+            string newName = "NEW NAME"; // purposely all caps since the API validation will capitalize it in the reponse
 
             Dictionary<string, object> endShipperData = Fixture.EndShipperAddress;
-            endShipperData["phone"] = newPhoneNumber;
+            endShipperData["name"] = newName;
 
             await endShipper.Update(endShipperData);
 
             Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
             Assert.IsTrue(endShipper.id.StartsWith("es_"));
-            Assert.AreEqual(newPhoneNumber, endShipper.phone);
+            Assert.AreEqual(newName, endShipper.name);
         }
 
         private static async Task<EndShipper> CreateBasicEndShipper()
