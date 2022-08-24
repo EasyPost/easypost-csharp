@@ -1,13 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Utilities.Attributes;
 using RestSharp;
 
-namespace EasyPost.Beta
+namespace EasyPost
 {
-    [Obsolete]
-    [DeprecationDetails("This feature has been moved to general availability.", "3.5.0", "4.0.0", typeof(EasyPost.EndShipper))]
     public class EndShipper : Base.Address
     {
         /// <summary>
@@ -24,7 +20,7 @@ namespace EasyPost.Beta
                 }
             });
 
-            Merge(await request.Execute<EndShipper>(true));
+            Merge(await request.Execute<EndShipper>());
         }
 
         /// <summary>
@@ -41,14 +37,14 @@ namespace EasyPost.Beta
         ///     * {"page_size", int} Max size of list. Default to 20.
         ///     All invalid keys will be ignored.
         /// </param>
-        /// <returns>A list of EasyPost.EndShipper instances.</returns>
-        public static async Task<List<EndShipper>> All(Dictionary<string, object>? parameters = null)
+        /// <returns>An EasyPost.EndShipperCollection instance.</returns>
+        public static async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters ?? new Dictionary<string, object>();
             Request request = new Request("end_shippers", Method.Get);
             request.AddParameters(parameters);
 
-            return await request.Execute<List<EndShipper>>(true);
+            return await request.Execute<EndShipperCollection>();
         }
 
         /// <summary>
@@ -81,7 +77,7 @@ namespace EasyPost.Beta
 
             request.AddParameters(body);
 
-            return await request.Execute<EndShipper>(true);
+            return await request.Execute<EndShipper>();
         }
 
         /// <summary>
@@ -93,7 +89,7 @@ namespace EasyPost.Beta
         {
             Request request = new Request($"end_shippers/{id}", Method.Get);
 
-            return await request.Execute<EndShipper>(true);
+            return await request.Execute<EndShipper>();
         }
     }
 }

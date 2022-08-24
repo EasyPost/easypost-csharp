@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Beta;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EasyPost.Tests
@@ -10,35 +9,34 @@ namespace EasyPost.Tests
     {
         private TestUtils.VCR _vcr;
 
-        // This (and all Beta features) cannot use VCR because of a known conflict between using a VCR/custom HttpClient and re-constructing RestSharp.
-
         [TestInitialize]
         public void Initialize()
         {
             _vcr = new TestUtils.VCR("end_shipper", TestUtils.ApiKey.Production);
         }
 
-        [Ignore]
         [TestMethod]
         public async Task TestAll()
         {
             _vcr.SetUpTest("all");
 
-            List<EndShipper> endShippers = await EndShipper.All(new Dictionary<string, object>
+            EndShipperCollection endShipperCollection = await EndShipper.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
                 }
             });
 
+            List<EndShipper> endShippers = endShipperCollection.end_shippers;
+
             Assert.IsTrue(endShippers.Count <= Fixture.PageSize);
+            Assert.IsNotNull(endShipperCollection.has_more);
             foreach (var item in endShippers)
             {
                 Assert.IsInstanceOfType(item, typeof(EndShipper));
             }
         }
 
-        [Ignore]
         [TestMethod]
         public async Task TestCreate()
         {
@@ -51,7 +49,6 @@ namespace EasyPost.Tests
             Assert.AreEqual("388 TOWNSEND ST APT 20", endShipper.street1);
         }
 
-        [Ignore]
         [TestMethod]
         public async Task TestRetrieve()
         {
@@ -65,7 +62,6 @@ namespace EasyPost.Tests
             Assert.AreEqual(endShipper.street1, retrievedEndShipper.street1);
         }
 
-        [Ignore]
         [TestMethod]
         public async Task TestUpdate()
         {
@@ -73,16 +69,16 @@ namespace EasyPost.Tests
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
-            string newPhoneNumber = "9999999999";
+            string newName = "NEW NAME"; // purposely all caps since the API validation will capitalize it in the reponse
 
             Dictionary<string, object> endShipperData = Fixture.EndShipperAddress;
-            endShipperData["phone"] = newPhoneNumber;
+            endShipperData["name"] = newName;
 
             await endShipper.Update(endShipperData);
 
             Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
             Assert.IsTrue(endShipper.id.StartsWith("es_"));
-            Assert.AreEqual(newPhoneNumber, endShipper.phone);
+            Assert.AreEqual(newName, endShipper.name);
         }
 
         private static async Task<EndShipper> CreateBasicEndShipper()
