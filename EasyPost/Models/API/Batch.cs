@@ -66,10 +66,9 @@ namespace EasyPost.Models.API
         public async Task<Batch> AddShipments(IEnumerable<string> shipmentIds)
         {
             List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment
-                {
-                    id = shipmentId
-                })
-                .ToList();
+            {
+                id = shipmentId
+            }).ToList();
 
             return await AddShipments(shipments);
         }
@@ -146,10 +145,9 @@ namespace EasyPost.Models.API
         public async Task<Batch> RemoveShipments(IEnumerable<string> shipmentIds)
         {
             List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment
-                {
-                    id = shipmentId
-                })
-                .ToList();
+            {
+                id = shipmentId
+            }).ToList();
 
             return await RemoveShipments(shipments);
         }

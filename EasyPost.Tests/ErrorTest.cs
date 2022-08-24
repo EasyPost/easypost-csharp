@@ -29,9 +29,10 @@ namespace EasyPost.Tests
         }
 
         [Fact(Skip = "Test is no longer valid")]
-        public async Task TestEmptyApiKey()
+        public Task TestEmptyApiKey()
         {
             // No longer possible to have an empty API key
+            return Task.CompletedTask;
         }
     }
 }
