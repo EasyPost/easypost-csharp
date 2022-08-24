@@ -53,7 +53,6 @@ namespace EasyPost.Services
         public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
         {
             ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
-            scanFormCollection.filters = parameters;
             scanFormCollection.Client = Client; // specifically needs a v2 client
             return scanFormCollection;
         }

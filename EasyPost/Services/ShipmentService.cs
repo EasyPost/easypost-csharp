@@ -97,7 +97,6 @@ namespace EasyPost.Services
         public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
             ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
-            shipmentCollection.filters = parameters;
             shipmentCollection.Client = Client;
             return shipmentCollection;
         }
