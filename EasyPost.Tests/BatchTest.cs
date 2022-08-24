@@ -119,11 +119,6 @@ namespace EasyPost.Tests
 
             Batch batch = await CreateOneCallBuyBatch();
 
-            if (IsRecording())
-            {
-                Thread.Sleep(10000); // Wait enough time to process
-            }
-
             batch = await batch.Buy();
 
             if (IsRecording())

@@ -32,8 +32,6 @@ namespace EasyPost.Models.API
         public string label_url { get; set; }
         [JsonProperty("label_zpl_url")]
         public string label_zpl_url { get; set; }
-        [JsonProperty("mode")]
-        public new string mode { get; set; }
 
         #endregion
     }

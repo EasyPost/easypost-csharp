@@ -31,15 +31,11 @@ namespace EasyPost.Models.API
         [JsonProperty("exp_year")]
         public int exp_year { get; set; }
         // both
-
-        // both
         [JsonProperty("last4")]
         public string last4 { get; set; }
         // credit_card
         [JsonProperty("name")]
         public string name { get; set; }
-        // both
-
         // bank_account
         [JsonProperty("verified")]
         public bool verified { get; set; }

@@ -15,7 +15,6 @@ namespace EasyPost.Models.API
         public string shipment_id { get; set; }
         [JsonProperty("status")]
         public string status { get; set; }
-
         [JsonProperty("tracking_code")]
         public string tracking_code { get; set; }
 

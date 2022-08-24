@@ -13,7 +13,6 @@ namespace EasyPost.Models.API
 
         [JsonProperty("billing_type")]
         public string billing_type { get; set; }
-
         [JsonProperty("credentials")]
         public Dictionary<string, object> credentials { get; set; }
         [JsonProperty("description")]

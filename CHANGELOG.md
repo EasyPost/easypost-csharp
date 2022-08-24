@@ -13,6 +13,7 @@
   - Improved accessibility levels of internal functions, to prevent accidental use by end users.
   - Files have been organized into a more logical structure.
   - Methods and properties have been organized (e.g. methods ordered by CRUD, properties ordered alphabetically).
+- Dependencies updated to latest versions, including `RestSharp` v108
 - `EndShipper` moved from beta to general availability.
 
 ## v3.4.0 (2022-08-02)

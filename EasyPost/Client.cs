@@ -58,10 +58,7 @@ namespace EasyPost
         /// </summary>
         /// <param name="apiKey">API key to use with this client.</param>
         /// <param name="baseUrl">Base URL to use with this client. Must include API version.</param>
-        /// <param name="customHttpClient">
-        ///     Custom HttpClient to pass into RestSharp if needed. Mostly for debug purposes, not
-        ///     advised for general use.
-        /// </param>
+        /// <param name="customHttpClient">Custom HttpClient to pass into RestSharp if needed.</param>
         public Client(string apiKey, string? baseUrl = null, HttpClient? customHttpClient = null) : base(apiKey, ApiVersion.General, baseUrl, customHttpClient)
         {
         }

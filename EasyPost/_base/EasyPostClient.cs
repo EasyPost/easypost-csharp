@@ -6,34 +6,17 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using EasyPost.Http;
+using EasyPost.Models.API;
 using EasyPost.Utilities;
 using RestSharp;
-using Security = EasyPost.Models.API.Security;
 
 namespace EasyPost._base
 {
     public abstract class EasyPostClient
     {
-        private const int DefaultConnectTimeoutMilliseconds = 30000;
-        private const int DefaultRequestTimeoutMilliseconds = 60000;
-
-        private readonly ClientConfiguration _configuration;
+        public readonly ClientConfiguration Configuration;
 
         private readonly RestClient _restClient;
-        private int? _connectTimeoutMilliseconds;
-        private int? _requestTimeoutMilliseconds;
-
-        public int ConnectTimeoutMilliseconds
-        {
-            get => _connectTimeoutMilliseconds ?? DefaultConnectTimeoutMilliseconds;
-            set => _connectTimeoutMilliseconds = value;
-        }
-
-        public int RequestTimeoutMilliseconds
-        {
-            get => _requestTimeoutMilliseconds ?? DefaultRequestTimeoutMilliseconds;
-            set => _requestTimeoutMilliseconds = value;
-        }
 
         // TODO: Revisit ApiVersion here vs in Request() when we decide how we want to handle accessing beta features
         /// <summary>
@@ -49,13 +32,13 @@ namespace EasyPost._base
         protected EasyPostClient(string apiKey, ApiVersion? apiVersion = null, string? baseUrl = null, HttpClient? customHttpClient = null)
         {
             ServicePointManager.SecurityProtocol |= Security.GetProtocol();
-            _configuration = new ClientConfiguration(apiKey, apiVersion ?? ApiVersion.General, baseUrl, customHttpClient);
+            Configuration = new ClientConfiguration(apiKey, apiVersion ?? ApiVersion.General, baseUrl, customHttpClient);
 
             RestClientOptions clientOptions = new RestClientOptions
             {
-                Timeout = ConnectTimeoutMilliseconds,
-                BaseUrl = new Uri(_configuration.ApiBase),
-                UserAgent = _configuration.UserAgent
+                Timeout = Configuration.ConnectTimeoutMilliseconds,
+                BaseUrl = new Uri(Configuration.ApiBase),
+                UserAgent = Configuration.UserAgent
             };
 
             _restClient = customHttpClient != null ? new RestClient(customHttpClient, clientOptions) : new RestClient(clientOptions);
@@ -82,7 +65,8 @@ namespace EasyPost._base
                 // RestSharp utilizes .NET HttpStatusCode internally:
                 // https://docs.microsoft.com/en-us/uwp/api/windows.web.http.httpresponsemessage.issuccessstatuscode?view=winrt-22621
 
-                throw new Exception("Request failed with status code " + response.StatusCode);
+                HttpException httpException = HttpException.FromResponse(response);
+                throw httpException;
             }
 
             // Prepare the list of root elements to use during deserialization
@@ -153,11 +137,11 @@ namespace EasyPost._base
         /// <returns>RestSharp.RestRequest object instance to execute.</returns>
         private RestRequest PrepareRequest(Request request)
         {
-            request.Build();
+            request.BuildParameters();
 
             RestRequest restRequest = (RestRequest)request;
-            restRequest.Timeout = RequestTimeoutMilliseconds;
-            restRequest.AddHeader("authorization", $"Bearer {_configuration.ApiKey}");
+            restRequest.Timeout = Configuration.RequestTimeoutMilliseconds;
+            restRequest.AddHeader("authorization", $"Bearer {Configuration.ApiKey}");
             restRequest.AddHeader("content_type", "application/json");
 
             return restRequest;

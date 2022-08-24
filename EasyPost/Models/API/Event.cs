@@ -12,8 +12,6 @@ namespace EasyPost.Models.API
         public List<string> completed_urls { get; set; }
         [JsonProperty("description")]
         public string description { get; set; }
-        [JsonProperty("mode")]
-        public new string mode { get; set; }
         [JsonProperty("pending_urls")]
         public List<string> pending_urls { get; set; }
         [JsonProperty("previous_attributes")]

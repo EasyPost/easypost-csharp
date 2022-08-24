@@ -28,7 +28,7 @@ namespace EasyPost.Http
         /// <summary>
         ///     Build the request parameters.
         /// </summary>
-        internal void Build()
+        internal void BuildParameters()
         {
             if (_parameters.Count == 0)
             {

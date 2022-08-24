@@ -12,7 +12,6 @@ namespace EasyPost.Models.Shared
 
         [JsonProperty("has_more")]
         public bool has_more { get; set; }
-
         [JsonProperty("filters")]
         internal Dictionary<string, object>? filters { get; set; }
 

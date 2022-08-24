@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
-using EasyPost.Models.API;
+using EasyPost.Models.API.Beta;
 using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
@@ -39,7 +39,7 @@ namespace EasyPost.Services
         public async Task<EndShipper> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("address");
-            return await Create<EndShipper>("end_shippers", parameters);
+            return await Create<EndShipper>("end_shippers", parameters, apiVersion: ApiVersion.Beta);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing an EndShipper. Starts with "es_".</param>
         /// <returns>EasyPost.EndShipper instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipper> Retrieve(string id) => await Get<EndShipper>($"end_shippers/{id}");
+        public async Task<EndShipper> Retrieve(string id) => await Get<EndShipper>($"end_shippers/{id}", apiVersion: ApiVersion.Beta);
 
         #endregion
     }

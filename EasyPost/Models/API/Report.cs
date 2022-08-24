@@ -12,8 +12,6 @@ namespace EasyPost.Models.API
         public DateTime? end_date { get; set; }
         [JsonProperty("include_children")]
         public bool include_children { get; set; }
-        [JsonProperty("mode")]
-        public new string mode { get; set; }
         [JsonProperty("start_date")]
         public DateTime? start_date { get; set; }
         [JsonProperty("status")]

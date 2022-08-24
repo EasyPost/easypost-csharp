@@ -101,9 +101,9 @@ namespace EasyPost.Tests
             Webhook webhook = await CreateBasicWebhook(url);
             Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.id);
 
-            await retrievedWebhook.Delete();
+            var possibleException = await Record.ExceptionAsync(async () => await retrievedWebhook.Delete());
 
-            // TODO: Assert something
+            Assert.Null(possibleException);
 
             SkipCleanUpAfterTest();
         }

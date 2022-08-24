@@ -36,7 +36,7 @@ namespace EasyPost.Tests
 
             Order order = await CreateBasicOrder();
 
-            await order.GetRates(); // this does not return anything, does actually update in-place
+            await order.GetRates();
 
             List<Rate> rates = order.rates;
 

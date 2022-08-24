@@ -22,6 +22,10 @@ namespace EasyPost.Tests
         protected Func<string, Task<bool>>? CleanupFunction { get; set; }
 
 #pragma warning disable CS8618
+        // Warning is disabled because the IDE will warn the Client is not initialized and should be nullable.
+        // Client is set later in the process, and will not be null when used by the unit tests execution.
+        // To do it the way the IDE wants would require a lot of null checks in the unit tests.
+        // This is not worth the effort, as the IDE warning is not a real issue.
         protected UnitTest(string groupName, TestUtils.ApiKey apiKey = TestUtils.ApiKey.Test) => _vcr = new TestUtils.VCR(groupName, apiKey);
 #pragma warning restore CS8618
 

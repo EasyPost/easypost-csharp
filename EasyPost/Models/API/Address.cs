@@ -14,7 +14,6 @@ namespace EasyPost.Models.API
 
         [JsonProperty("carrier_facility")]
         public string carrier_facility { get; set; }
-
         [JsonProperty("city")]
         public string city { get; set; }
         [JsonProperty("company")]
@@ -29,8 +28,6 @@ namespace EasyPost.Models.API
         public string federal_tax_id { get; set; }
         [JsonProperty("message")]
         public string message { get; set; }
-        [JsonProperty("mode")]
-        public new string mode { get; set; }
         [JsonProperty("name")]
         public string name { get; set; }
         [JsonProperty("phone")]

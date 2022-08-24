@@ -1,7 +1,7 @@
 [
   {
-      "Duration": 229,
-      "RecordedAt": "2022-08-22T16:07:19.414809-06:00",
+      "Duration": 234,
+      "RecordedAt": "2022-08-24T13:53:32.516007-06:00",
       "Request": {
           "Body": "{\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\"}",
           "BodyContentType": "Json",
@@ -12,43 +12,43 @@
           "Method": "POST",
           "RequestHeaders": {
               "Authorization": "<REDACTED>",
-        "content_type": "application/json",
-        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
-        "User-Agent": "<REDACTED>"
+              "content_type": "application/json",
+              "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+              "User-Agent": "<REDACTED>"
+          },
+          "Uri": "https://api.easypost.com/v2/reports/shipment"
       },
-      "Uri": "https://api.easypost.com/v2/reports/shipment"
-    },
-    "Response": {
-        "Body": "{\"id\":\"shprep_79f7153713e143c5941c64d62c9052da\",\"object\":\"ShipmentReport\",\"created_at\":\"2022-08-22T22:07:19Z\",\"updated_at\":\"2022-08-22T22:07:19Z\",\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null,\"include_children\":false}",
-        "BodyContentType": "Json",
-        "ContentHeaders": {
-            "Expires": "0",
-            "Content-Type": "application/json; charset=utf-8",
-            "Content-Length": "283"
-        },
-        "HttpVersion": "1.1",
-        "ResponseHeaders": {
-            "X-Frame-Options": "SAMEORIGIN",
-            "x-xss-protection": "1; mode=block",
-            "X-Content-Type-Options": "nosniff",
-            "x-download-options": "noopen",
-            "x-permitted-cross-domain-policies": "none",
-            "referrer-policy": "strict-origin-when-cross-origin",
-            "x-ep-request-uuid": "dc58f3b86303fe17f7c94dee000ab754",
-            "Cache-Control": "no-store, no-cache, private",
-            "Pragma": "no-cache",
-            "ETag": "W/\"74da4e0a5a1b36ced02ac1aaa11a56d4\"",
-            "x-runtime": "0.038005",
-            "x-node": "bigweb3nuq",
-            "x-version-label": "easypost-202208221725-fc32be9ffa-master",
-            "x-backend": "easypost",
-            "x-proxied": "intlb1nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
-            "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-        },
-      "Status": {
-        "Code": 201,
-        "Message": "Created"
+      "Response": {
+          "Body": "{\"id\":\"shprep_7cbb52f140c845cbbb8928985c185b10\",\"object\":\"ShipmentReport\",\"created_at\":\"2022-08-24T19:53:32Z\",\"updated_at\":\"2022-08-24T19:53:32Z\",\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null,\"include_children\":false}",
+          "BodyContentType": "Json",
+          "ContentHeaders": {
+              "Expires": "0",
+              "Content-Type": "application/json; charset=utf-8",
+              "Content-Length": "283"
+          },
+          "HttpVersion": "1.1",
+          "ResponseHeaders": {
+              "X-Frame-Options": "SAMEORIGIN",
+              "X-XSS-Protection": "1; mode=block",
+              "X-Content-Type-Options": "nosniff",
+              "x-download-options": "noopen",
+              "x-permitted-cross-domain-policies": "none",
+              "Referrer-Policy": "strict-origin-when-cross-origin",
+              "x-ep-request-uuid": "bffd75b4630681bcf7dec21c00794ad4",
+              "Cache-Control": "no-store, no-cache, private",
+              "Pragma": "no-cache",
+              "ETag": "W/\"3ff6d5c28f81694aa52901ae989db2d8\"",
+              "x-runtime": "0.036873",
+              "x-node": "bigweb4nuq",
+              "x-version-label": "easypost-202208241853-b300c23ebd-master",
+              "x-backend": "easypost",
+              "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
+              "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+          },
+          "Status": {
+              "Code": 201,
+              "Message": "Created"
+          }
       }
-    }
   }
 ]

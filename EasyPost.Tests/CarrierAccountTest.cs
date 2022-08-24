@@ -111,9 +111,9 @@ namespace EasyPost.Tests
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
-            await carrierAccount.Delete();
+            var possibleException = await Record.ExceptionAsync(async () => await carrierAccount.Delete());
 
-            // TODO: Assert something
+            Assert.Null(possibleException);
 
             SkipCleanUpAfterTest();
         }

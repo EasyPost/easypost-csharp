@@ -30,8 +30,6 @@ namespace EasyPost.Models.API
         public string list_currency { get; set; }
         [JsonProperty("list_rate")]
         public string list_rate { get; set; }
-        [JsonProperty("mode")]
-        public new string mode { get; set; }
         [JsonProperty("rate")]
         public string rate { get; set; }
         [JsonProperty("retail_currency")]

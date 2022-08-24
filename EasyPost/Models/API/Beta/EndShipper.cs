@@ -6,7 +6,7 @@ using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace EasyPost.Models.API
+namespace EasyPost.Models.API.Beta
 {
     public class EndShipper : EasyPostObject
     {
@@ -51,7 +51,7 @@ namespace EasyPost.Models.API
             parameters = parameters.Wrap("address");
 
             // EndShipper needs Put, not Patch
-            return await Update<EndShipper>(Method.Put, $"end_shippers/{id}", parameters);
+            return await Update<EndShipper>(Method.Put, $"end_shippers/{id}", parameters, apiVersion: ApiVersion.Beta);
         }
 
         #endregion

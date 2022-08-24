@@ -1,7 +1,7 @@
 [
   {
-      "Duration": 443,
-      "RecordedAt": "2022-08-22T16:08:41.544252-06:00",
+      "Duration": 595,
+      "RecordedAt": "2022-08-24T13:53:04.182036-06:00",
       "Request": {
           "Body": "{\"eel_pfc\":\"NOEEI 30.37(a)\",\"customs_certify\":true,\"customs_signer\":\"Dr. Steve Brule\",\"contents_type\":\"merchandise\",\"contents_explanation\":\"\",\"restriction_type\":\"none\",\"non_delivery_option\":\"return\",\"customs_items\":[{\"description\":\"Sweet shirts\",\"quantity\":2,\"weight\":11,\"value\":23.0,\"hs_tariff_number\":654321,\"origin_country\":\"US\"}]}",
           "BodyContentType": "Json",
@@ -12,44 +12,44 @@
           "Method": "POST",
           "RequestHeaders": {
               "Authorization": "<REDACTED>",
-        "content_type": "application/json",
-        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
-        "User-Agent": "<REDACTED>"
+              "content_type": "application/json",
+              "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+              "User-Agent": "<REDACTED>"
+          },
+          "Uri": "https://api.easypost.com/v2/customs_infos"
       },
-      "Uri": "https://api.easypost.com/v2/customs_infos"
-    },
-    "Response": {
-        "Body": "{\"id\":\"cstinfo_642f4edc507746a8a5bf3d0b14a8c01f\",\"object\":\"CustomsInfo\",\"created_at\":\"2022-08-22T22:08:41Z\",\"updated_at\":\"2022-08-22T22:08:41Z\",\"contents_explanation\":\"\",\"contents_type\":\"merchandise\",\"customs_certify\":true,\"customs_signer\":\"Dr. Steve Brule\",\"eel_pfc\":\"NOEEI 30.37(a)\",\"non_delivery_option\":\"return\",\"restriction_comments\":null,\"restriction_type\":\"none\",\"mode\":\"test\",\"declaration\":null,\"customs_items\":[]}",
-        "BodyContentType": "Json",
-        "ContentHeaders": {
-            "Expires": "0",
-            "Content-Type": "application/json; charset=utf-8",
-            "Content-Length": "422"
-        },
-        "HttpVersion": "1.1",
-        "ResponseHeaders": {
-            "X-Frame-Options": "SAMEORIGIN",
-            "x-xss-protection": "1; mode=block",
-            "X-Content-Type-Options": "nosniff",
-            "x-download-options": "noopen",
-            "x-permitted-cross-domain-policies": "none",
-            "referrer-policy": "strict-origin-when-cross-origin",
-            "x-ep-request-uuid": "dc58f3b56303fe69f7dc87b0000ad817",
-            "Cache-Control": "no-store, no-cache, private",
-            "Pragma": "no-cache",
-            "Location": "/api/v2/customs_infos/cstinfo_642f4edc507746a8a5bf3d0b14a8c01f",
-            "ETag": "W/\"354226b922d34d3e535610f854b867e1\"",
-            "x-runtime": "0.025323",
-            "x-node": "bigweb6nuq",
-            "x-version-label": "easypost-202208221725-fc32be9ffa-master",
-            "x-backend": "easypost",
-            "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
-            "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-        },
-      "Status": {
-        "Code": 201,
-        "Message": "Created"
+      "Response": {
+          "Body": "{\"id\":\"cstinfo_6218f4005f1a42e8a38a495e62752a70\",\"object\":\"CustomsInfo\",\"created_at\":\"2022-08-24T19:53:04Z\",\"updated_at\":\"2022-08-24T19:53:04Z\",\"contents_explanation\":\"\",\"contents_type\":\"merchandise\",\"customs_certify\":true,\"customs_signer\":\"Dr. Steve Brule\",\"eel_pfc\":\"NOEEI 30.37(a)\",\"non_delivery_option\":\"return\",\"restriction_comments\":null,\"restriction_type\":\"none\",\"mode\":\"test\",\"declaration\":null,\"customs_items\":[]}",
+          "BodyContentType": "Json",
+          "ContentHeaders": {
+              "Expires": "0",
+              "Content-Type": "application/json; charset=utf-8",
+              "Content-Length": "422"
+          },
+          "HttpVersion": "1.1",
+          "ResponseHeaders": {
+              "X-Frame-Options": "SAMEORIGIN",
+              "x-xss-protection": "1; mode=block",
+              "X-Content-Type-Options": "nosniff",
+              "x-download-options": "noopen",
+              "x-permitted-cross-domain-policies": "none",
+              "referrer-policy": "strict-origin-when-cross-origin",
+              "x-ep-request-uuid": "70da33d9630681a0f7de35e0007ed256",
+              "Cache-Control": "no-store, no-cache, private",
+              "Pragma": "no-cache",
+              "Location": "/api/v2/customs_infos/cstinfo_6218f4005f1a42e8a38a495e62752a70",
+              "ETag": "W/\"3193e53f4362474cd94a472f0973bd5f\"",
+              "x-runtime": "0.102061",
+              "x-node": "bigweb3nuq",
+              "x-version-label": "easypost-202208241853-b300c23ebd-master",
+              "x-backend": "easypost",
+              "x-proxied": "intlb2nuq 6aa9972c1e,extlb2nuq 9ce216bfac",
+              "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+          },
+          "Status": {
+              "Code": 201,
+              "Message": "Created"
+          }
       }
-    }
   }
 ]

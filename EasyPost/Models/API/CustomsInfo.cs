@@ -22,8 +22,6 @@ namespace EasyPost.Models.API
         public string declaration { get; set; }
         [JsonProperty("eel_pfc")]
         public string eel_pfc { get; set; }
-        [JsonProperty("mode")]
-        public new string mode { get; set; }
         [JsonProperty("non_delivery_option")]
         public string non_delivery_option { get; set; }
         [JsonProperty("restriction_comments")]

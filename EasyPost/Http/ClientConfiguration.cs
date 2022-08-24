@@ -7,19 +7,19 @@ namespace EasyPost.Http
     /// <summary>
     ///     Provides configuration options for the REST client. Used internally to store API key and other configuration
     /// </summary>
-    internal class ClientConfiguration
+    public class ClientConfiguration
     {
         /// <summary>
         ///     The API base URI.
+        ///     This cannot be changed after the client has been initialized.
         /// </summary>
-        private const string DefaultBaseUrl = "https://api.easypost.com";
+        public readonly string ApiBase;
 
         /// <summary>
         ///     The API key.
+        ///     This cannot be changed after the client has been initialized.
         /// </summary>
-        internal readonly string ApiKey;
-
-        private readonly string? _apiBase;
+        public readonly string ApiKey;
 
         /// <summary>
         ///    The .NET version of the current application.
@@ -46,12 +46,35 @@ namespace EasyPost.Http
         /// </summary>
         private readonly string _osVersion;
 
-        internal string ApiBase
+        /// <summary>
+        ///     The connect timeout in milliseconds set by the user.
+        /// </summary>
+        private int? _connectTimeoutMilliseconds;
+
+        /// <summary>
+        ///     The request timeout in milliseconds set by the user.
+        /// </summary>
+        private int? _requestTimeoutMilliseconds;
+
+        /// <summary>
+        ///     The connect timeout in milliseconds.
+        /// </summary>
+        public int ConnectTimeoutMilliseconds
         {
-            get { return _apiBase ?? DefaultBaseUrl; }
+            get => _connectTimeoutMilliseconds ?? Defaults.DefaultConnectTimeoutMilliseconds;
+            set => _connectTimeoutMilliseconds = value;
         }
 
-        // User-Agent will not show beta vs GA, will always show latest GA version, even when using beta endpoint
+        /// <summary>
+        ///     The request timeout in milliseconds.
+        /// </summary>
+        public int RequestTimeoutMilliseconds
+        {
+            get => _requestTimeoutMilliseconds ?? Defaults.DefaultRequestTimeoutMilliseconds;
+            set => _requestTimeoutMilliseconds = value;
+        }
+
+        //TODO: User-Agent will not show beta vs GA, will always show latest GA version, even when using beta endpoint
         internal string UserAgent => $"EasyPost/{ApiVersion.General.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
 
         /// <summary>
@@ -64,13 +87,31 @@ namespace EasyPost.Http
         internal ClientConfiguration(string apiKey, ApiVersion apiVersion, string? baseUrl, HttpClient? customHttpClient = null)
         {
             ApiKey = apiKey;
-            _apiBase = baseUrl;
+            ApiBase = baseUrl ?? Defaults.DefaultBaseUrl;
 
             _libraryVersion = RuntimeInfo.ApplicationInfo.ApplicationVersion;
             _dotNetVersion = RuntimeInfo.ApplicationInfo.DotNetVersion;
             _osName = RuntimeInfo.OperationSystemInfo.Name;
             _osVersion = RuntimeInfo.OperationSystemInfo.Version;
             _osArch = RuntimeInfo.OperationSystemInfo.Architecture;
+        }
+
+        private abstract class Defaults
+        {
+            /// <summary>
+            ///     The default API base URI.
+            /// </summary>
+            internal const string DefaultBaseUrl = "https://api.easypost.com";
+
+            /// <summary>
+            ///     The default connection timeout in milliseconds.
+            /// </summary>
+            internal const int DefaultConnectTimeoutMilliseconds = 30000;
+
+            /// <summary>
+            ///     The default request timeout in milliseconds.
+            /// </summary>
+            internal const int DefaultRequestTimeoutMilliseconds = 60000;
         }
     }
 }

@@ -19,9 +19,9 @@ namespace EasyPost.Tests
         {
             UseVCR("fund_wallet");
 
-            await Client.Billing.FundWallet("2000", PaymentMethod.Priority.Primary);
+            var possibleException = await Record.ExceptionAsync(async () => await Client.Billing.FundWallet("2000", PaymentMethod.Priority.Primary));
 
-            // TODO: Assert something here
+            Assert.Null(possibleException);
         }
 
         [Fact(Skip = "Skipping due to having to manually add and remove a payment method from the account.")]
@@ -42,9 +42,9 @@ namespace EasyPost.Tests
         {
             UseVCR("delete_payment_method");
 
-            await Client.Billing.DeletePaymentMethod(PaymentMethod.Priority.Primary);
+            var possibleException = await Record.ExceptionAsync(async () => await Client.Billing.DeletePaymentMethod(PaymentMethod.Priority.Primary));
 
-            // TODO: Assert something here
+            Assert.Null(possibleException);
         }
 
         #endregion

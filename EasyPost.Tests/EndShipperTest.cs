@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Models.API;
+using EasyPost.Models.API.Beta;
 using EasyPost.Utilities.Annotations;
 using Xunit;
 

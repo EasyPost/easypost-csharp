@@ -145,9 +145,9 @@ namespace EasyPost.Tests
 
             User user = await CreateUser();
 
-            await user.Delete();
+            var possibleException = await Record.ExceptionAsync(async () => await user.Delete());
 
-            // TODO: Assert something
+            Assert.Null(possibleException);
 
             SkipCleanUpAfterTest();
         }

@@ -17,8 +17,6 @@ namespace EasyPost.Models.API
         public Address from_address { get; set; }
         [JsonProperty("messages")]
         public List<string> messages { get; set; }
-        [JsonProperty("mode")]
-        public new string mode { get; set; }
         [JsonProperty("provider")]
         public string provider { get; set; }
         [JsonProperty("provider_id")]

@@ -18,8 +18,6 @@ namespace EasyPost.Models.API
         public string form_url { get; set; }
         [JsonProperty("message")]
         public string message { get; set; }
-        [JsonProperty("mode")]
-        public new string mode { get; set; }
         [JsonProperty("status")]
         public string status { get; set; }
         [JsonProperty("tracking_codes")]

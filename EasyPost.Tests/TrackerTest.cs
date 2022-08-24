@@ -33,7 +33,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create_list");
 
-            await Client.Tracker.CreateList(new Dictionary<string, object>
+            var possibleException = await Record.ExceptionAsync(async () => await Client.Tracker.CreateList(new Dictionary<string, object>
             {
                 {
                     "0", new Dictionary<string, object>
@@ -59,9 +59,9 @@ namespace EasyPost.Tests
                         }
                     }
                 }
-            });
+            }));
 
-            // TODO: Assert something here
+            Assert.Null(possibleException);
         }
 
         [Fact]

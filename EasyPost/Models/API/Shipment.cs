@@ -37,8 +37,6 @@ namespace EasyPost.Models.API
         public bool? is_return { get; set; }
         [JsonProperty("messages")]
         public List<Message> messages { get; set; }
-        [JsonProperty("mode")]
-        public new string mode { get; set; }
         [JsonProperty("options")]
         public Options options { get; set; }
         [JsonProperty("order_id")]
@@ -128,7 +126,9 @@ namespace EasyPost.Models.API
                 {
                     "rate", new Dictionary<string, object>
                     {
-                        { "id", rateId }
+                        {
+                            "id", rateId
+                        }
                     }
                 },
                 {

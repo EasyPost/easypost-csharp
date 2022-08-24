@@ -11,8 +11,6 @@ namespace EasyPost.Models.API
         public double? height { get; set; }
         [JsonProperty("length")]
         public double? length { get; set; }
-        [JsonProperty("mode")]
-        public new string mode { get; set; }
         [JsonProperty("predefined_package")]
         public string predefined_package { get; set; }
         [JsonProperty("weight")]
