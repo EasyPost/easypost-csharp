@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v3.5.0 (2022-08-25)
+
+- Adds `ValidateWebhook` function
+- Adds `duty_payment` shipment option
+- Moves `EndShipper` out of beta to the general namespace
+
 ## v3.4.0 (2022-08-02)
 
 - Adds Carbon Offset support
