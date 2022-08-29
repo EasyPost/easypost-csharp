@@ -91,14 +91,4 @@ namespace EasyPost.Utilities
             Value = value;
         }
     }
-
-    public abstract class MultiValueEnum : Enum
-    {
-        internal object[] Values { get; }
-
-        protected MultiValueEnum(int id, params object[] values) : base(id)
-        {
-            Values = values;
-        }
-    }
 }

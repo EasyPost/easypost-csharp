@@ -77,16 +77,6 @@ namespace EasyPost.Utilities
         }
 
         /// <summary>
-        ///     Add a case where matching the result of an expression triggers an Action
-        /// </summary>
-        /// <param name="expression">Expression, output of which to match.</param>
-        /// <param name="action">Action to trigger on match.</param>
-        internal void Add(Func<object> expression, Action? action)
-        {
-            _list.Add(new ExpressionCase(expression, action));
-        }
-
-        /// <summary>
         ///     Add a case to store Actions in special scenarios. Overrides any previously-set actions for the same scenario.
         /// </summary>
         /// <param name="switchCaseScenario">CaseEnum to trigger special storage.</param>
@@ -116,26 +106,6 @@ namespace EasyPost.Utilities
             else
             {
                 matchingCase.Action?.Invoke();
-            }
-        }
-
-        /// <summary>
-        ///     Execute the action of all matching cases. If no match is found, execute the default case if set.
-        /// </summary>
-        /// <param name="value">Value to match.</param>
-        internal void MatchAll(object value)
-        {
-            List<ICase> matchingCases = _list.FindAll(c => c.Value == value);
-            if (matchingCases.Count == 0)
-            {
-                _defaultCaseAction?.Invoke();
-            }
-            else
-            {
-                foreach (var matchingCase in matchingCases)
-                {
-                    matchingCase.Action?.Invoke();
-                }
             }
         }
 

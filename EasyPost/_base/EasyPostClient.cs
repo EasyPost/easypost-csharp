@@ -59,7 +59,7 @@ namespace EasyPost._base
             RestResponse<T> response = await _restClient.ExecuteAsync<T>(restRequest);
 
             // Check the response's status code
-            if (!response.IsSuccessful)
+            if (response.ReturnedError())
             {
                 // HTTP request threw an error (non-2xx response)
                 // RestSharp utilizes .NET HttpStatusCode internally:
@@ -112,7 +112,7 @@ namespace EasyPost._base
             RestResponse response = await _restClient.ExecuteAsync(restRequest);
 
             // Return whether the HTTP request produced an error (non-2xx response) or not
-            return response.IsSuccessful;
+            return response.ReturnedNoError();
         }
 
         /// <summary>
