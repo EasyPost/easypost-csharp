@@ -34,7 +34,6 @@ namespace EasyPost.Services
             return await Create<CustomsItem>("customs_items", parameters);
         }
 
-
         /// <summary>
         ///     Retrieve a CustomsItem from its id.
         /// </summary>

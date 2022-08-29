@@ -36,7 +36,6 @@ namespace EasyPost.Services
             return await Create<CustomsInfo>("customs_infos", parameters);
         }
 
-
         /// <summary>
         ///     Retrieve a CustomsInfo from its id.
         /// </summary>

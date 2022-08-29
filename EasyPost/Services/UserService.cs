@@ -45,7 +45,6 @@ namespace EasyPost.Services
             return await Get<User>($"users/{id}");
         }
 
-
         /// <summary>
         ///     Retrieve the current user.
         /// </summary>

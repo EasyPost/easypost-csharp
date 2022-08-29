@@ -61,7 +61,6 @@ namespace EasyPost.Services
             return reportCollection;
         }
 
-
         /// <summary>
         ///     Retrieve a Report from its id.
         /// </summary>

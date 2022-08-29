@@ -48,7 +48,6 @@ namespace EasyPost.Services
             await CreateNoResponse("trackers/create_list", parameters);
         }
 
-
         /// <summary>
         ///     Get a paginated list of trackers.
         /// </summary>

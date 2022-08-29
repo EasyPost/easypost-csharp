@@ -48,7 +48,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        [CrudOperations.Read] // not really a read operation, since the only HTTP calls we're making are create and update methods
+        [CrudOperations.Read] // not really a Read operation, but most logical attribute to maintain CRUD placement
         public async Task TestLowestRate()
         {
             UseVCR("lowest_rate");

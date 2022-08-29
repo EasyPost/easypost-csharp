@@ -33,7 +33,6 @@ namespace EasyPost.Services
             return await Create<ScanForm>("scan_forms", parameters);
         }
 
-
         /// <summary>
         ///     Get a paginated list of scan forms.
         /// </summary>

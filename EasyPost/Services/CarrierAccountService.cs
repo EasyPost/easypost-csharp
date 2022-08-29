@@ -33,7 +33,6 @@ namespace EasyPost.Services
             return await Create<CarrierAccount>("carrier_accounts", parameters);
         }
 
-
         /// <summary>
         ///     List all available carrier accounts.
         /// </summary>
