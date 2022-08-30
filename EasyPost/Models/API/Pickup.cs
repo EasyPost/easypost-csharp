@@ -74,7 +74,8 @@ namespace EasyPost.Models.API
                 }
             };
 
-            return await Update<Pickup>(Method.Post, $"pickups/{id}/buy", parameters);
+            await Update<Pickup>(Method.Post, $"pickups/{id}/buy", parameters);
+            return this;
         }
 
         /// <summary>
@@ -88,7 +89,8 @@ namespace EasyPost.Models.API
                 throw new Exception("id is required");
             }
 
-            return await Update<Pickup>(Method.Post, $"pickups/{id}/cancel");
+            await Update<Pickup>(Method.Post, $"pickups/{id}/cancel");
+            return this;
         }
 
         #endregion

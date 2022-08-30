@@ -40,8 +40,6 @@ namespace EasyPost.Models.API
         public string shipment_id { get; set; }
         [JsonProperty("time_in_transit")]
         public TimeInTransit time_in_transit { get; set; }
-        [JsonProperty("updated_at")]
-        public new DateTime updated_at { get; set; }
 
         #endregion
     }

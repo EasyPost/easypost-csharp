@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
@@ -17,11 +16,11 @@ namespace EasyPost.Services
         /// <summary>
         ///     Get a list of all API keys.
         /// </summary>
-        /// <returns>A list of EasyPost.ApiKey instances.</returns>
+        /// <returns>An EasyPost.ApiKeyCollection instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<ApiKey>> All()
+        public async Task<ApiKeyCollection> All()
         {
-            return await List<List<ApiKey>>("api_keys", null, "keys");
+            return await List<ApiKeyCollection>("api_keys");
         }
 
         #endregion

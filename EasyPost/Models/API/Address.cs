@@ -67,7 +67,8 @@ namespace EasyPost.Models.API
                 throw new Exception("Missing id. Can't verify an address without an id.");
             }
 
-            return await Update<Address>(Method.Get, $"addresses/{id}/verify", null, "address");
+            await Update<Address>(Method.Get, $"addresses/{id}/verify", null, "address");
+            return this;
         }
 
         #endregion

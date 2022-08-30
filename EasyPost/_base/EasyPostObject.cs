@@ -66,6 +66,19 @@ namespace EasyPost._base
             return AsDictionary().GetHashCode();
         }
 
+        /// <summary>
+        ///     Merge the properties of this object instance with the properties of another object instance.
+        ///     Adds properties from the input object instance into this object instance.
+        /// </summary>
+        /// <param name="source">Object instance to extract properties from to merge into this object instance.</param
+        internal void Merge(object source)
+        {
+            foreach (PropertyInfo property in source.GetType().GetProperties())
+            {
+                property.SetValue(this, property.GetValue(source, null), null);
+            }
+        }
+
         protected async Task Delete(string url, Dictionary<string, object>? parameters = null, ApiVersion? apiVersion = null)
         {
             await Request(Method.Delete, url, parameters, apiVersion);
@@ -91,7 +104,7 @@ namespace EasyPost._base
             await Client.Request(method, url, parameters, apiVersion);
         }
 
-        protected async Task<T> Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null) where T : class
+        protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null) where T : class
         {
             T updatedObject = await Request<T>(method, url, parameters, rootElement, apiVersion);
             if (updatedObject == null)
@@ -99,7 +112,7 @@ namespace EasyPost._base
                 throw new Exception("Failed to update object");
             }
 
-            return updatedObject;
+            Merge(updatedObject);
         }
 
         /// <summary>

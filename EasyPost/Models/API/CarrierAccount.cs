@@ -37,7 +37,8 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<CarrierAccount> Update(Dictionary<string, object> parameters)
         {
-            return await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{id}", parameters);
+            await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{id}", parameters);
+            return this;
         }
 
         /// <summary>

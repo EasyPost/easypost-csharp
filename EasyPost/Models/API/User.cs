@@ -81,7 +81,8 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<User> Update(Dictionary<string, object> parameters)
         {
-            return await Update<User>(Method.Patch, $"users/{id}", parameters);
+            await Update<User>(Method.Patch, $"users/{id}", parameters);
+            return this;
         }
 
         /// <summary>

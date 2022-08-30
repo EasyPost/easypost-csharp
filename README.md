@@ -30,41 +30,91 @@ namespace example
     {
         static async Task Main()
         {
-            EasyPost.ClientManager.SetCurrent(Environment.GetEnvironmentVariable("EASYPOST_API_KEY"));
+            Client client = new Client("EASYPOST_API_KEY");
 
-            Dictionary<string, object> fromAddress = new Dictionary<string, object>() {
-                { "name", "Dr. Steve Brule" },
-                { "street1", "417 Montgomery Street" },
-                { "street2", "5th Floor" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94104" },
-                { "phone", "4153334444" }
+            Dictionary<string, object> fromAddress = new Dictionary<string, object>()
+            {
+                {
+                    "name", "Dr. Steve Brule"
+                },
+                {
+                    "street1", "417 Montgomery Street"
+                },
+                {
+                    "street2", "5th Floor"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94104"
+                },
+                {
+                    "phone", "4153334444"
+                }
             };
 
-            Dictionary<string, object> toAddress = new Dictionary<string, object>() {
-                { "company", "EasyPost" },
-                { "street1", "417 Montgomery Street" },
-                { "street2", "Floor 5" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94104" },
-                { "phone", "415-379-7678" }
+            Dictionary<string, object> toAddress = new Dictionary<string, object>()
+            {
+                {
+                    "company", "EasyPost"
+                },
+                {
+                    "street1", "417 Montgomery Street"
+                },
+                {
+                    "street2", "Floor 5"
+                },
+                {
+                    "city", "San Francisco"
+                },
+                {
+                    "state", "CA"
+                },
+                {
+                    "country", "US"
+                },
+                {
+                    "zip", "94104"
+                },
+                {
+                    "phone", "415-379-7678"
+                }
             };
 
-            Dictionary<string, object> parcel = new Dictionary<string, object>() {
-                { "length", 8 },
-                { "width", 6 },
-                { "height", 5 },
-                { "weight", 10 },
-            }
+            Dictionary<string, object> parcel = new Dictionary<string, object>()
+            {
+                {
+                    "length", 8
+                },
+                {
+                    "width", 6
+                },
+                {
+                    "height", 5
+                },
+                {
+                    "weight", 10
+                },
+            };
 
-            Shipment shipment = await Shipment.Create(new Dictionary<string, object>() {
-                { "from_address", fromAddress },
-                { "to_address", toAddress },
-                { "parcel", parcel },
+            Shipment shipment = await client.Shipment.Create(new Dictionary<string, object>
+            {
+                {
+                    "from_address", fromAddress
+                },
+                {
+                    "to_address", toAddress
+                },
+                {
+                    "parcel", parcel
+                },
             });
 
             await shipment.Buy(shipment.LowestRate());
@@ -77,29 +127,19 @@ namespace example
 
 ### Configuration
 
-**Single API Key**
+A `Client` object is the entry point into the EasyPost API. It is instantiated with your API key:
 
-If you are operating with a single EasyPost API key, during the initialization of your application add the following to configure EasyPost.
-
-```cs
+```csharp
 using EasyPost;
 
-ClientManager.SetCurrent("ApiKey");
+Client myClient = new Client("EASYPOST_API_KEY");
 ```
 
-**Multiple API Keys**
+An API key is required for all requests. You can find your API key in
+your [EasyPost dashboard](https://easypost.com/account/api-keys).
 
-If you are operating with multiple EasyPost API keys, or wish to delegate the construction of the client requests, configure the `ClientManager` with a delegate at application initialization.
-
-```cs
-using EasyPost;
-
-ClientManager.SetCurrent(() => new Client(new ClientConfiguration("yourApiKeyHere")));
-```
-
-### Warning about Threads
-
-NOTE: The EasyPost .NET client library (in particular, the `ClientManager` global object) is not threadsafe; do not attempt to perform requests from multiple threads in parallel. This can be particularly problematic if using multiple API keys; make sure to always use a Mutex, Monitor, or other synchronization method to ensure that concurrent requests do not enter the EasyPost library from different threads.
+Once declared, a client's API key cannot be changed. If you are using multiple API keys, you can create multiple client
+objects.
 
 ## Documentation
 

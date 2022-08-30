@@ -65,7 +65,8 @@ namespace EasyPost.Models.API
                 }
             };
 
-            return await Update<Order>(Method.Post, $"orders/{id}/buy", parameters);
+            await Update<Order>(Method.Post, $"orders/{id}/buy", parameters);
+            return this;
         }
 
         /// <summary>
@@ -98,13 +99,13 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task GetRates()
         {
+            // TODO: Should this return the updated Order object?
             if (id == null)
             {
                 throw new Exception("id is null");
             }
 
-            Order order = await Request<Order>(Method.Get, $"orders/{id}/rates");
-            rates = order.rates;
+            await Update<Order>(Method.Get, $"orders/{id}/rates");
         }
 
         #endregion

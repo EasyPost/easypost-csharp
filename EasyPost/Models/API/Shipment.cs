@@ -116,6 +116,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task Buy(string rateId, string? insuranceValue = null, bool withCarbonOffset = false)
         {
+            // TODO: Should this function return the updated Shipment like Order.Buy?
             if (id == null)
             {
                 throw new Exception("id is null. Cannot buy a shipment without an id.");
@@ -132,23 +133,14 @@ namespace EasyPost.Models.API
                     }
                 },
                 {
-                    "insurance", insuranceValue
+                    "insurance", insuranceValue ?? string.Empty
                 },
                 {
                     "carbon_offset", withCarbonOffset
                 }
             };
 
-            Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{id}/buy", parameters);
-
-            insurance = shipment.insurance;
-            postage_label = shipment.postage_label;
-            tracking_code = shipment.tracking_code;
-            tracker = shipment.tracker;
-            selected_rate = shipment.selected_rate;
-            forms = shipment.forms;
-            messages = shipment.messages;
-            fees = shipment.fees;
+            await Update<Shipment>(Method.Post, $"shipments/{id}/buy", parameters);
         }
 
         /// <summary>
@@ -179,7 +171,8 @@ namespace EasyPost.Models.API
                 }
             };
 
-            return await Update<Shipment>(Method.Get, $"shipments/{id}/label", parameters);
+            await Update<Shipment>(Method.Get, $"shipments/{id}/label", parameters);
+            return this;
         }
 
         /// <summary>
@@ -201,7 +194,8 @@ namespace EasyPost.Models.API
                 }
             };
 
-            return await Update<Shipment>(Method.Post, $"shipments/{id}/insure", parameters);
+            await Update<Shipment>(Method.Post, $"shipments/{id}/insure", parameters);
+            return this;
         }
 
         /// <summary>
@@ -215,7 +209,8 @@ namespace EasyPost.Models.API
                 throw new Exception("id is required");
             }
 
-            return await Update<Shipment>(Method.Get, $"shipments/{id}/refund");
+            await Update<Shipment>(Method.Get, $"shipments/{id}/refund");
+            return this;
         }
 
         /// <summary>

@@ -62,31 +62,6 @@ namespace EasyPost.Tests
 
         [Fact]
         [CrudOperations.Read]
-        public async Task TestAllApiKeys()
-        {
-            UseVCR("all_api_keys");
-
-            List<ApiKey> apiKeys = await Client.ApiKey.All();
-
-            // API keys will be censored, so we'll just check for the existence of the list
-            Assert.NotNull(apiKeys);
-        }
-
-        [Fact]
-        [CrudOperations.Read]
-        public async Task TestApiKeys()
-        {
-            UseVCR("api_keys");
-
-            User user = await RetrieveMe();
-
-            // API keys will be censored, so we'll just check for the existence of the `children` element
-            List<User> children = user.children;
-            Assert.NotNull(children);
-        }
-
-        [Fact]
-        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");

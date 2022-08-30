@@ -61,10 +61,7 @@ namespace EasyPost._base
             // Check the response's status code
             if (response.ReturnedError())
             {
-                // HTTP request threw an error (non-2xx response)
-                // RestSharp utilizes .NET HttpStatusCode internally:
-                // https://docs.microsoft.com/en-us/uwp/api/windows.web.http.httpresponsemessage.issuccessstatuscode?view=winrt-22621
-
+                // HTTP request threw an error (4xx or 5xx status code)
                 HttpException httpException = HttpException.FromResponse(response);
                 throw httpException;
             }
@@ -111,7 +108,7 @@ namespace EasyPost._base
             // Execute the request
             RestResponse response = await _restClient.ExecuteAsync(restRequest);
 
-            // Return whether the HTTP request produced an error (non-2xx response) or not
+            // Return whether the HTTP request produced an error (4xx or 5xx status code) or not
             return response.ReturnedNoError();
         }
 

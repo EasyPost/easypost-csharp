@@ -33,7 +33,8 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Webhook> Update(Dictionary<string, object>? parameters = null)
         {
-            return await Update<Webhook>(Method.Patch, $"webhooks/{id}", parameters);
+            await Update<Webhook>(Method.Patch, $"webhooks/{id}", parameters);
+            return this;
         }
 
         /// <summary>

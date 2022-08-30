@@ -24,6 +24,13 @@ namespace EasyPost.Utilities
             return StatusCodeBetween(response, 100, 399);
         }
 
+        /// <summary>
+        ///     Return whether the given response has a status code in the given range.
+        /// </summary>
+        /// <param name="response">Response to check.</param>
+        /// <param name="min">Minimum valid status code.</param>
+        /// <param name="max">Maximum valid status code.</param>
+        /// <returns>Whether the given response has a status code in the given range.</returns>
         private static bool StatusCodeBetween(RestResponseBase response, int min, int max)
         {
             int statusCode = (int)response.StatusCode;

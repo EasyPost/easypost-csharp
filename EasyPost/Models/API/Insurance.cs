@@ -46,7 +46,8 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Insurance> Refresh(Dictionary<string, object>? parameters = null)
         {
-            return await Update<Insurance>(Method.Patch, $"insurances/{id}", parameters);
+            await Update<Insurance>(Method.Patch, $"insurances/{id}", parameters);
+            return this;
         }
 
         #endregion
