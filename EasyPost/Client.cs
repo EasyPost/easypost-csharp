@@ -1,7 +1,6 @@
 using System.Net.Http;
 using EasyPost._base;
 using EasyPost.Services;
-using EasyPost.Services.Beta;
 
 namespace EasyPost
 {
@@ -13,6 +12,8 @@ namespace EasyPost
 
         public BatchService Batch => GetService<BatchService>();
 
+        public BetaClient Beta { get; }
+
         public BillingService Billing => GetService<BillingService>();
 
         public CarrierAccountService CarrierAccount => GetService<CarrierAccountService>();
@@ -23,8 +24,6 @@ namespace EasyPost
 
         public CustomsItemService CustomsItem => GetService<CustomsItemService>();
 
-        public EndShipperService EndShipper => GetService<EndShipperService>();
-
         public EventService Event => GetService<EventService>();
 
         public InsuranceService Insurance => GetService<InsuranceService>();
@@ -32,8 +31,6 @@ namespace EasyPost
         public OrderService Order => GetService<OrderService>();
 
         public ParcelService Parcel => GetService<ParcelService>();
-
-        public PartnerService Partner => GetService<PartnerService>();
 
         public PickupService Pickup => GetService<PickupService>();
 
@@ -61,6 +58,18 @@ namespace EasyPost
         /// <param name="customHttpClient">Custom HttpClient to pass into RestSharp if needed.</param>
         public Client(string apiKey, string? baseUrl = null, HttpClient? customHttpClient = null) : base(apiKey, ApiVersion.General, baseUrl, customHttpClient)
         {
+            // We go ahead and initialize the Beta client internally here as well, since initializing a new one on each property call is expensive and causes lockups with the HttpClient library.
+            Beta = new BetaClient(apiKey, baseUrl, customHttpClient);
+
+            /*
+             * NOTE: The current architecture of beta support is solid enough.
+             * Technically, any service or model can have a beta or GA client (since they all accept the base EasyPostClient abstract class).
+             * Whenever a service is used to generate a model, the client is passed into the model so that the model can use it for instance methods.
+             * Currently, EndShipper and Partner are the only models that have beta support, and the only types of models that they can generate expect a beta client.
+             * A future issue might come when a beta endpoint call (made using a beta client) returns a GA model. In that case, the GA model would inherit the beta client,
+             * potentially causing bad things to happen. I (Nate) have a few ideas about how to mitigate this if it were to appear, but since that's not currently the case,
+             * it's hard to predict how this would play out.
+             */
         }
     }
 }

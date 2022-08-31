@@ -9,7 +9,7 @@ namespace EasyPost.Services
 {
     public class InsuranceService : EasyPostService
     {
-        internal InsuranceService(Client client) : base(client)
+        internal InsuranceService(EasyPostClient client) : base(client)
         {
         }
 

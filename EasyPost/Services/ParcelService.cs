@@ -8,7 +8,7 @@ namespace EasyPost.Services
 {
     public class ParcelService : EasyPostService
     {
-        internal ParcelService(Client client) : base(client)
+        internal ParcelService(EasyPostClient client) : base(client)
         {
         }
 

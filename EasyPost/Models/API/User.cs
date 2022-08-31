@@ -92,7 +92,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Delete]
         public async Task Delete()
         {
-            await Delete($"users/{id}");
+            await DeleteNoResponse($"users/{id}");
         }
 
         #endregion

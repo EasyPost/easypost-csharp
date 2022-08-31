@@ -9,7 +9,7 @@ namespace EasyPost.Services
 {
     public class TrackerService : EasyPostService
     {
-        internal TrackerService(Client client) : base(client)
+        internal TrackerService(EasyPostClient client) : base(client)
         {
         }
 
@@ -71,7 +71,7 @@ namespace EasyPost.Services
         public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
         {
             TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters);
-            trackerCollection.Client = Client; // specifically needs a v2 client
+            trackerCollection.Client = Client;
             return trackerCollection;
         }
 

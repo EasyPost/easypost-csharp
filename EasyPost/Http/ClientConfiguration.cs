@@ -22,6 +22,18 @@ namespace EasyPost.Http
         public readonly string ApiKey;
 
         /// <summary>
+        ///     The API version.
+        ///     This cannot be changed after the client has been initialized.
+        /// </summary>
+        public readonly ApiVersion ApiVersion;
+
+        /// <summary>
+        ///     A custom HttpClient to use for requests.
+        ///     This cannot be changed after the client has been initialized.
+        /// </summary>
+        public readonly HttpClient? HttpClient;
+
+        /// <summary>
         ///    The .NET version of the current application.
         /// </summary>
         private readonly string _dotNetVersion;
@@ -75,7 +87,7 @@ namespace EasyPost.Http
         }
 
         //TODO: User-Agent will not show beta vs GA, will always show latest GA version, even when using beta endpoint
-        internal string UserAgent => $"EasyPost/{ApiVersion.General.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
+        internal string UserAgent => $"EasyPost/{ApiVersion.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
 
         /// <summary>
         ///     Create an EasyPost.ClientConfiguration instance.
@@ -88,6 +100,8 @@ namespace EasyPost.Http
         {
             ApiKey = apiKey;
             ApiBase = baseUrl ?? Defaults.DefaultBaseUrl;
+            ApiVersion = apiVersion;
+            HttpClient = customHttpClient;
 
             _libraryVersion = RuntimeInfo.ApplicationInfo.ApplicationVersion;
             _dotNetVersion = RuntimeInfo.ApplicationInfo.DotNetVersion;

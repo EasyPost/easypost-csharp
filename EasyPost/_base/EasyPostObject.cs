@@ -70,7 +70,7 @@ namespace EasyPost._base
         ///     Merge the properties of this object instance with the properties of another object instance.
         ///     Adds properties from the input object instance into this object instance.
         /// </summary>
-        /// <param name="source">Object instance to extract properties from to merge into this object instance.</param
+        /// <param name="source">Object instance to extract properties from to merge into this object instance.</param>
         internal void Merge(object source)
         {
             foreach (PropertyInfo property in source.GetType().GetProperties())
@@ -79,34 +79,9 @@ namespace EasyPost._base
             }
         }
 
-        protected async Task Delete(string url, Dictionary<string, object>? parameters = null, ApiVersion? apiVersion = null)
+        protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : class
         {
-            await Request(Method.Delete, url, parameters, apiVersion);
-        }
-
-        protected async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null) where T : class
-        {
-            if (Client == null)
-            {
-                throw new Exception("Client not configured");
-            }
-
-            return await Client.Request<T>(method, url, parameters, rootElement, apiVersion);
-        }
-
-        protected async Task Request(Method method, string url, Dictionary<string, object>? parameters = null, ApiVersion? apiVersion = null)
-        {
-            if (Client == null)
-            {
-                throw new Exception("Client not configured");
-            }
-
-            await Client.Request(method, url, parameters, apiVersion);
-        }
-
-        protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null) where T : class
-        {
-            T updatedObject = await Request<T>(method, url, parameters, rootElement, apiVersion);
+            T updatedObject = await Request<T>(method, url, parameters, rootElement);
             if (updatedObject == null)
             {
                 throw new Exception("Failed to update object");

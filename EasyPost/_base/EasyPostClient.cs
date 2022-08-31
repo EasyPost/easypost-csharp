@@ -18,7 +18,6 @@ namespace EasyPost._base
 
         private readonly RestClient _restClient;
 
-        // TODO: Revisit ApiVersion here vs in Request() when we decide how we want to handle accessing beta features
         /// <summary>
         ///     Constructor for the EasyPost client.
         /// </summary>
@@ -29,10 +28,10 @@ namespace EasyPost._base
         ///     Custom HttpClient to pass into RestSharp if needed. Mostly for debug purposes, not
         ///     advised for general use.
         /// </param>
-        protected EasyPostClient(string apiKey, ApiVersion? apiVersion = null, string? baseUrl = null, HttpClient? customHttpClient = null)
+        protected EasyPostClient(string apiKey, ApiVersion apiVersion, string? baseUrl = null, HttpClient? customHttpClient = null)
         {
             ServicePointManager.SecurityProtocol |= Security.GetProtocol();
-            Configuration = new ClientConfiguration(apiKey, apiVersion ?? ApiVersion.General, baseUrl, customHttpClient);
+            Configuration = new ClientConfiguration(apiKey, apiVersion, baseUrl, customHttpClient);
 
             RestClientOptions clientOptions = new RestClientOptions
             {
@@ -41,7 +40,7 @@ namespace EasyPost._base
                 UserAgent = Configuration.UserAgent
             };
 
-            _restClient = customHttpClient != null ? new RestClient(customHttpClient, clientOptions) : new RestClient(clientOptions);
+            _restClient = Configuration.HttpClient != null ? new RestClient(Configuration.HttpClient, clientOptions) : new RestClient(clientOptions);
         }
 
         /// <summary>
@@ -49,10 +48,10 @@ namespace EasyPost._base
         /// </summary>
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
         /// <returns>An instance of a T type object.</returns>
-        internal async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null) where T : class
+        internal async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : class
         {
             // Build the request
-            Request request = new Request(url, method, parameters, rootElement, apiVersion);
+            Request request = new Request(url, method, Configuration.ApiVersion, parameters, rootElement);
             RestRequest restRequest = PrepareRequest(request);
 
             // Execute the request
@@ -84,12 +83,12 @@ namespace EasyPost._base
             {
                 foreach (object? element in list)
                 {
-                    (element as EasyPostObject)!.Client = (Client)this;
+                    (element as EasyPostObject)!.Client = this;
                 }
             }
             else
             {
-                (resource as EasyPostObject)!.Client = (Client)this;
+                (resource as EasyPostObject)!.Client = this;
             }
 
             return resource;
@@ -99,10 +98,10 @@ namespace EasyPost._base
         ///     Execute a request against the EasyPost API.
         /// </summary>
         /// <returns>Whether request was successful.</returns>
-        internal async Task<bool> Request(Method method, string url, Dictionary<string, object>? parameters = null, ApiVersion? apiVersion = null)
+        internal async Task<bool> Request(Method method, string url, Dictionary<string, object>? parameters = null)
         {
             // Build the request
-            Request request = new Request(url, method, parameters, null, apiVersion);
+            Request request = new Request(url, method, Configuration.ApiVersion, parameters, null);
             RestRequest restRequest = PrepareRequest(request);
 
             // Execute the request

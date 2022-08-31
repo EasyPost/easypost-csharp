@@ -9,7 +9,7 @@ namespace EasyPost.Services
 {
     public class RefundService : EasyPostService
     {
-        internal RefundService(Client client) : base(client)
+        internal RefundService(EasyPostClient client) : base(client)
         {
         }
 

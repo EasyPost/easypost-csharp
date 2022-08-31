@@ -5,11 +5,11 @@ using EasyPost.Http;
 using EasyPost.Models.API.Beta;
 using EasyPost.Utilities.Annotations;
 
-namespace EasyPost.Services
+namespace EasyPost.Services.Beta
 {
     public class EndShipperService : EasyPostService
     {
-        internal EndShipperService(Client client) : base(client)
+        internal EndShipperService(EasyPostClient client) : base(client)
         {
         }
 
@@ -39,7 +39,7 @@ namespace EasyPost.Services
         public async Task<EndShipper> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("address");
-            return await Create<EndShipper>("end_shippers", parameters, apiVersion: ApiVersion.Beta);
+            return await Create<EndShipper>("end_shippers", parameters);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>A list of EasyPost.EndShipper instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<EndShipper>> All(Dictionary<string, object>? parameters = null) => await List<List<EndShipper>>("end_shippers", parameters, apiVersion: ApiVersion.Beta);
+        public async Task<List<EndShipper>> All(Dictionary<string, object>? parameters = null) => await List<List<EndShipper>>("end_shippers", parameters);
 
         /// <summary>
         ///     Retrieve an EndShipper from its id.
@@ -67,7 +67,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing an EndShipper. Starts with "es_".</param>
         /// <returns>EasyPost.EndShipper instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipper> Retrieve(string id) => await Get<EndShipper>($"end_shippers/{id}", apiVersion: ApiVersion.Beta);
+        public async Task<EndShipper> Retrieve(string id) => await Get<EndShipper>($"end_shippers/{id}");
 
         #endregion
     }

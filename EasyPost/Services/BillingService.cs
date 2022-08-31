@@ -10,7 +10,7 @@ namespace EasyPost.Services
 {
     public class BillingService : EasyPostService
     {
-        internal BillingService(Client client) : base(client)
+        internal BillingService(EasyPostClient client) : base(client)
         {
         }
 

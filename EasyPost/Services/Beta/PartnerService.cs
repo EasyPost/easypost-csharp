@@ -8,7 +8,7 @@ namespace EasyPost.Services.Beta
 {
     public class PartnerService : EasyPostService
     {
-        internal PartnerService(Client client) : base(client)
+        internal PartnerService(EasyPostClient client) : base(client)
         {
         }
 

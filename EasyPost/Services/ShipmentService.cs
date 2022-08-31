@@ -11,7 +11,7 @@ namespace EasyPost.Services
 {
     public class ShipmentService : EasyPostService
     {
-        internal ShipmentService(Client client) : base(client)
+        internal ShipmentService(EasyPostClient client) : base(client)
         {
         }
 

@@ -13,9 +13,8 @@ namespace EasyPost.Http
         private readonly Dictionary<string, object> _parameters;
         private readonly RestRequest _restRequest;
 
-        public Request(string endpoint, Method method, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? apiVersion = null)
+        public Request(string endpoint, Method method, ApiVersion? apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null)
         {
-            apiVersion ??= ApiVersion.General;
             endpoint = $"{apiVersion.Value}/{endpoint}";
 
             _restRequest = new RestRequest(endpoint, method);

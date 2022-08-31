@@ -8,7 +8,7 @@ namespace EasyPost.Services
 {
     public class OrderService : EasyPostService
     {
-        internal OrderService(Client client) : base(client)
+        internal OrderService(EasyPostClient client) : base(client)
         {
         }
 

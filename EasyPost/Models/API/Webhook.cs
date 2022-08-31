@@ -44,7 +44,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Delete]
         public async Task Delete()
         {
-            await Delete($"webhooks/{id}");
+            await DeleteNoResponse($"webhooks/{id}");
         }
 
         #endregion
