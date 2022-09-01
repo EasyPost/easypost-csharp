@@ -1,22 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <RootNamespace>EasyPost.Tests.VB</RootNamespace>
-        <TargetFramework>net6.0</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>EasyPost.Tests.VB</RootNamespace>
+    <TargetFramework>net6.0</TargetFramework>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\EasyPost\EasyPost.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EasyPost\EasyPost.csproj"/>
+  </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0"/>
-      <PackageReference Include="MSTest.TestAdapter" Version="2.2.8"/>
-      <PackageReference Include="MSTest.TestFramework" Version="2.2.8"/>
-      <PackageReference Include="SecurityCodeScan.VS2019" Version="[5.0.0, 6.0.0)">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0"/>
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.8"/>
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.8"/>
+    <PackageReference Include="SecurityCodeScan.VS2019" Version="[5.0.0, 6.0.0)">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
 </Project>

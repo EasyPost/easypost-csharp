@@ -55,6 +55,14 @@ jobs:
         # install NuGet.exe to restore required NuGet packages
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
+        # Load NuGet package cache
+      - name: Load NuGet package cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ matrix.framework }}-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
         # Restore required NuGet packages
       - name: Restore NuGet Packages
         run: make restore
@@ -88,6 +96,14 @@ jobs:
         # install Visual Studio's console test application, to execute tests
       - name: Setup VSTest
         uses: darenm/Setup-VSTest@v1
+        # Load NuGet package cache
+      - name: Load NuGet package cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ matrix.lang }}-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
         # Restore required NuGet packages
       - name: Restore NuGet Packages
         run: make restore
