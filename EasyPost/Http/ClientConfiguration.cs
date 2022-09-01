@@ -22,12 +22,6 @@ namespace EasyPost.Http
         public readonly string ApiKey;
 
         /// <summary>
-        ///     The API version.
-        ///     This cannot be changed after the client has been initialized.
-        /// </summary>
-        public readonly ApiVersion ApiVersion;
-
-        /// <summary>
         ///     A custom HttpClient to use for requests.
         ///     This cannot be changed after the client has been initialized.
         /// </summary>
@@ -86,21 +80,22 @@ namespace EasyPost.Http
             set => _requestTimeoutMilliseconds = value;
         }
 
-        //TODO: User-Agent will not show beta vs GA, will always show latest GA version, even when using beta endpoint
-        internal string UserAgent => $"EasyPost/{ApiVersion.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
+        /*
+         * NOTE: User-Agent will always show the latest API version, even if the API call itself goes to a different API version.
+         * This is because the User-Agent must be set when the client is initialized, and the target API version is not known until a request is made.
+         */
+        internal string UserAgent => $"EasyPost/{ApiVersion.General.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
 
         /// <summary>
         ///     Create an EasyPost.ClientConfiguration instance.
         /// </summary>
         /// <param name="apiKey">The API key to use for the client connection.</param>
-        /// <param name="apiVersion">API version to use with this client.</param>
         /// <param name="baseUrl">Base URL to use with this client. This will override `apiVersion`</param>
         /// <param name="customHttpClient">The custom HTTP client to use for the client connection.</param>
-        internal ClientConfiguration(string apiKey, ApiVersion apiVersion, string? baseUrl, HttpClient? customHttpClient = null)
+        internal ClientConfiguration(string apiKey, string? baseUrl, HttpClient? customHttpClient = null)
         {
             ApiKey = apiKey;
             ApiBase = baseUrl ?? Defaults.DefaultBaseUrl;
-            ApiVersion = apiVersion;
             HttpClient = customHttpClient;
 
             _libraryVersion = RuntimeInfo.ApplicationInfo.ApplicationVersion;

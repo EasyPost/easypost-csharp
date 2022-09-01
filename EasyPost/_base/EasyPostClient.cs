@@ -22,16 +22,15 @@ namespace EasyPost._base
         ///     Constructor for the EasyPost client.
         /// </summary>
         /// <param name="apiKey">API key to use with this client.</param>
-        /// <param name="apiVersion">API version to use with this client.</param>
         /// <param name="baseUrl">Base URL to use with this client. This will override `apiVersion`</param>
         /// <param name="customHttpClient">
         ///     Custom HttpClient to pass into RestSharp if needed. Mostly for debug purposes, not
         ///     advised for general use.
         /// </param>
-        protected EasyPostClient(string apiKey, ApiVersion apiVersion, string? baseUrl = null, HttpClient? customHttpClient = null)
+        protected EasyPostClient(string apiKey, string? baseUrl = null, HttpClient? customHttpClient = null)
         {
             ServicePointManager.SecurityProtocol |= Security.GetProtocol();
-            Configuration = new ClientConfiguration(apiKey, apiVersion, baseUrl, customHttpClient);
+            Configuration = new ClientConfiguration(apiKey, baseUrl, customHttpClient);
 
             RestClientOptions clientOptions = new RestClientOptions
             {
@@ -48,10 +47,10 @@ namespace EasyPost._base
         /// </summary>
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
         /// <returns>An instance of a T type object.</returns>
-        internal async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : class
+        internal async Task<T> Request<T>(Method method, string url, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : class
         {
             // Build the request
-            Request request = new Request(url, method, Configuration.ApiVersion, parameters, rootElement);
+            Request request = new Request(url, method, apiVersion, parameters, rootElement);
             RestRequest restRequest = PrepareRequest(request);
 
             // Execute the request
@@ -98,10 +97,10 @@ namespace EasyPost._base
         ///     Execute a request against the EasyPost API.
         /// </summary>
         /// <returns>Whether request was successful.</returns>
-        internal async Task<bool> Request(Method method, string url, Dictionary<string, object>? parameters = null)
+        internal async Task<bool> Request(Method method, string url, ApiVersion apiVersion, Dictionary<string, object>? parameters = null)
         {
             // Build the request
-            Request request = new Request(url, method, Configuration.ApiVersion, parameters, null);
+            Request request = new Request(url, method, apiVersion, parameters, null);
             RestRequest restRequest = PrepareRequest(request);
 
             // Execute the request

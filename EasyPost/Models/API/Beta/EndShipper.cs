@@ -51,7 +51,7 @@ namespace EasyPost.Models.API.Beta
             parameters = parameters.Wrap("address");
 
             // EndShipper needs Put, not Patch
-            await Update<EndShipper>(Method.Put, $"end_shippers/{id}", parameters);
+            await Update<EndShipper>(Method.Put, $"end_shippers/{id}", parameters, overrideApiVersion: ApiVersion.Beta);
             return this;
         }
 
