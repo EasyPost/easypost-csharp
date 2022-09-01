@@ -60,19 +60,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />
-    <PackageReference Include="RestSharp" Version="[107.3.0, 108.0.0)" />
+    <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)"/>
+    <PackageReference Include="RestSharp" Version="[107.3.0, 108.0.0)"/>
     <PackageReference Include="SecurityCodeScan.VS2019" Version="[5.0.0, 6.0.0)">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ApiCompatibility" />
-    <Folder Include="Calculation" />
+    <Folder Include="ApiCompatibility"/>
+    <Folder Include="Calculation"/>
   </ItemGroup>
 
 </Project>

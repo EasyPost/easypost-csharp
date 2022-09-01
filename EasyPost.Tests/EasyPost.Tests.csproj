@@ -34,13 +34,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EasyPost\EasyPost.csproj" />
+    <ProjectReference Include="..\EasyPost\EasyPost.csproj"/>
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Microsoft.VisualStudio.UnitTesting" />
-    <None Remove="RestSharp" />
-    <None Remove="MSTest.TestFramework" />
-    <None Remove="MSTest.TestAdapter" />
+    <None Remove="Microsoft.VisualStudio.UnitTesting"/>
+    <None Remove="RestSharp"/>
+    <None Remove="MSTest.TestFramework"/>
+    <None Remove="MSTest.TestAdapter"/>
   </ItemGroup>
 </Project>
