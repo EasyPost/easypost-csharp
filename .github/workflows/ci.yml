@@ -55,20 +55,20 @@ jobs:
         # install NuGet.exe to restore required NuGet packages
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
-        # Restore required NuGet packages
-      - name: Restore NuGet Packages
-        run: make restore
-        # Run the framework-specific tests
-      - name: Run Tests
-        run: make test-fw fw=${{ matrix.framework }}
-        # Cache the NuGet packages to speed up the build next time
-      - name: Cache NuGet packages
+        # Load NuGet package cache
+      - name: Load NuGet package cache
         uses: actions/cache@v2
         with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
+        # Restore required NuGet packages
+      - name: Restore NuGet Packages
+        run: make restore
+        # Run the framework-specific tests
+      - name: Run Tests
+        run: make test-fw fw=${{ matrix.framework }}
   Compatibility_Tests:
     runs-on: windows-2022
     strategy:
@@ -96,20 +96,20 @@ jobs:
         # install Visual Studio's console test application, to execute tests
       - name: Setup VSTest
         uses: darenm/Setup-VSTest@v1
-        # Restore required NuGet packages
-      - name: Restore NuGet Packages
-        run: make restore
-        # Build the test project
-      - name: Build Solution
-        run: msbuild ${{ steps.test_project.outputs.test_file }}\${{ steps.test_project.outputs.test_file }}.${{ matrix.ext }} /p:platform="Any CPU" /p:configuration="Debug" /p:outputPath="bin/Test" /p:target="Rebuild" -restore
-        # Cache the NuGet packages to speed up the build next time
-      - name: Cache NuGet packages
+        # Load NuGet package cache
+      - name: Load NuGet package cache
         uses: actions/cache@v2
         with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
+        # Restore required NuGet packages
+      - name: Restore NuGet Packages
+        run: make restore
+        # Build the test project
+      - name: Build Solution
+        run: msbuild ${{ steps.test_project.outputs.test_file }}\${{ steps.test_project.outputs.test_file }}.${{ matrix.ext }} /p:platform="Any CPU" /p:configuration="Debug" /p:outputPath="bin/Test" /p:target="Rebuild" -restore
 
 # .NET Standard notes:
 # - NET Standard 2.0 is compatible with minimum .NET Framework 4.6.1: https://docs.microsoft.com/en-us/dotnet/standard/net-standard?tabs=net-standard-2-0
