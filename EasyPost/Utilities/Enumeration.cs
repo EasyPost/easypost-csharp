@@ -9,6 +9,9 @@ namespace EasyPost.Utilities
     {
     }
 
+    /// <summary>
+    ///     A Java-like enum implementation for C#.
+    /// </summary>
     public abstract class Enum : IComparable, IEnum
     {
         private int Id { get; }
@@ -82,6 +85,9 @@ namespace EasyPost.Utilities
                 .Cast<T>();
     }
 
+    /// <summary>
+    ///     An enum that stores a value internally.
+    /// </summary>
     public abstract class ValueEnum : Enum
     {
         internal object Value { get; }
