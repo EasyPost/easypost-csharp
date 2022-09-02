@@ -81,10 +81,10 @@ namespace EasyPost.Http
         }
 
         /*
-         * NOTE: User-Agent will always show the latest API version, even if the API call itself goes to a different API version.
+         * NOTE: User-Agent will always show the general availability API version, even if the API call itself goes to a different API version (i.e. beta).
          * This is because the User-Agent must be set when the client is initialized, and the target API version is not known until a request is made.
          */
-        internal string UserAgent => $"EasyPost/{ApiVersion.General.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
+        internal string UserAgent => $"EasyPost/{ApiVersion.Current.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
 
         /// <summary>
         ///     Create an EasyPost.ClientConfiguration instance.
