@@ -37,7 +37,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Address> Create(Dictionary<string, object> parameters)
         {
-            return await SendCreate("addresses", parameters);
+            return await Create<Address>("addresses", parameters);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters)
         {
-            return await SendCreate("addresses/create_and_verify", parameters, "address");
+            return await Create<Address>("addresses/create_and_verify", parameters, "address");
         }
 
         /// <summary>
@@ -96,10 +96,5 @@ namespace EasyPost.Services
         }
 
         #endregion
-
-        private async Task<Address> SendCreate(string endpoint, Dictionary<string, object> parameters, string? rootElement = null)
-        {
-            return await Create<Address>(endpoint, parameters, rootElement);
-        }
     }
 }
