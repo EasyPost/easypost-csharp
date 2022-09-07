@@ -9,7 +9,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("batches")]
-        public List<Batch> batches { get; set; }
+        public List<Batch>? Batches { get; set; }
 
         #endregion
     }

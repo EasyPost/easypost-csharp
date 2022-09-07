@@ -54,7 +54,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Shipment> CreateReturn(Shipment shipment)
         {
-            if (shipment.id == null)
+            if (shipment.Id == null)
             {
                 throw new Exception("Shipment.id is null.");
             }
@@ -62,9 +62,9 @@ namespace EasyPost.Services
             return await Create(
                 new Dictionary<string, object>
                 {
-                    { "to_address", shipment.from_address },
-                    { "from_address", shipment.to_address },
-                    { "parcel", shipment.parcel },
+                    { "to_address", shipment.FromAddress },
+                    { "from_address", shipment.ToAddress },
+                    { "parcel", shipment.Parcel },
                     { "is_return", true },
                 });
         }

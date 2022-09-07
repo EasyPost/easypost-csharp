@@ -8,11 +8,11 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("form_type")]
-        public string form_type { get; set; }
+        public string? FormType { get; set; }
         [JsonProperty("form_url")]
-        public string form_url { get; set; }
+        public string? FormUrl { get; set; }
         [JsonProperty("submitted_electronically")]
-        public bool submitted_electronically { get; set; }
+        public bool? SubmittedElectronically { get; set; }
 
         #endregion
     }

@@ -30,7 +30,7 @@ namespace EasyPost.Services
 
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "amount", amount } };
 
-            await CreateNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.id}/charge", parameters);
+            await CreateNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.Id}/charge", parameters);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace EasyPost.Services
         public async Task<PaymentMethodsSummary> RetrievePaymentMethodsSummary()
         {
             PaymentMethodsSummary paymentMethodsSummary = await Get<PaymentMethodsSummary>("payment_methods");
-            if (paymentMethodsSummary.id == null)
+            if (paymentMethodsSummary.Id == null)
             {
                 throw new Exception("Please add a payment method via the dashboard.");
             }
@@ -58,7 +58,7 @@ namespace EasyPost.Services
         {
             PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
 
-            await DeleteNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.id}");
+            await DeleteNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.Id}");
         }
 
         #endregion
@@ -81,14 +81,14 @@ namespace EasyPost.Services
             PaymentMethod? paymentMethod = null;
             var @switch = new SwitchCase
             {
-                { PaymentMethod.Priority.Primary, () => { paymentMethod = paymentMethodsSummarySummary.primary_payment_method; } },
-                { PaymentMethod.Priority.Secondary, () => { paymentMethod = paymentMethodsSummarySummary.secondary_payment_method; } },
+                { PaymentMethod.Priority.Primary, () => { paymentMethod = paymentMethodsSummarySummary.PrimaryPaymentMethod; } },
+                { PaymentMethod.Priority.Secondary, () => { paymentMethod = paymentMethodsSummarySummary.SecondaryPaymentMethod; } },
                 { SwitchCaseScenario.Default, () => throw new Exception("Invalid priority provided.") }
             };
 
             @switch.Match(priority);
 
-            if (paymentMethod?.id == null)
+            if (paymentMethod?.Id == null)
             {
                 throw new Exception("The chosen payment method has not been set up yet.");
             }

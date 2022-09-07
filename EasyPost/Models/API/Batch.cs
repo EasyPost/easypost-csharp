@@ -13,23 +13,23 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("error")]
-        public string error { get; set; }
+        public string? Error { get; set; }
         [JsonProperty("label_url")]
-        public string label_url { get; set; }
+        public string? LabelUrl { get; set; }
         [JsonProperty("message")]
-        public string message { get; set; }
+        public string? Message { get; set; }
         [JsonProperty("num_shipments")]
-        public int num_shipments { get; set; }
+        public int? NumShipments { get; set; }
         [JsonProperty("reference")]
-        public string reference { get; set; }
+        public string? Reference { get; set; }
         [JsonProperty("scan_form")]
-        public ScanForm scan_form { get; set; }
+        public ScanForm? ScanForm { get; set; }
         [JsonProperty("shipments")]
-        public List<BatchShipment> shipments { get; set; }
+        public List<BatchShipment>? Shipments { get; set; }
         [JsonProperty("state")]
-        public string state { get; set; }
+        public string? State { get; set; }
         [JsonProperty("status")]
-        public Dictionary<string, int> status { get; set; }
+        public Dictionary<string, int>? Status { get; set; }
 
         #endregion
 
@@ -42,7 +42,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(Dictionary<string, object> parameters)
         {
-            await Update<Batch>(Method.Post, $"batches/{id}/add_shipments", parameters);
+            await Update<Batch>(Method.Post, $"batches/{Id}/add_shipments", parameters);
             return this;
         }
 
@@ -64,7 +64,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(IEnumerable<string> shipmentIds)
         {
-            List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment { id = shipmentId }).ToList();
+            List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment { Id = shipmentId }).ToList();
 
             return await AddShipments(shipments);
         }
@@ -75,7 +75,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> Buy()
         {
-            await Update<Batch>(Method.Post, $"batches/{id}/buy");
+            await Update<Batch>(Method.Post, $"batches/{Id}/buy");
             return this;
         }
 
@@ -87,7 +87,7 @@ namespace EasyPost.Models.API
         public async Task<Batch> GenerateLabel(string fileFormat = "pdf")
         {
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
-            await Update<Batch>(Method.Post, $"batches/{id}/label", parameters);
+            await Update<Batch>(Method.Post, $"batches/{Id}/label", parameters);
             return this;
         }
 
@@ -99,7 +99,7 @@ namespace EasyPost.Models.API
         public async Task<Batch> GenerateScanForm(string fileFormat = "pdf")
         {
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
-            await Update<Batch>(Method.Post, $"batches/{id}/scan_form", parameters);
+            await Update<Batch>(Method.Post, $"batches/{Id}/scan_form", parameters);
             return this;
         }
 
@@ -110,7 +110,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(Dictionary<string, object> parameters)
         {
-            await Update<Batch>(Method.Post, $"batches/{id}/remove_shipments", parameters);
+            await Update<Batch>(Method.Post, $"batches/{Id}/remove_shipments", parameters);
             return this;
         }
 
@@ -132,7 +132,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(IEnumerable<string> shipmentIds)
         {
-            List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment { id = shipmentId }).ToList();
+            List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment { Id = shipmentId }).ToList();
 
             return await RemoveShipments(shipments);
         }

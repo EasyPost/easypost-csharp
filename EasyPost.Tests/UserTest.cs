@@ -35,8 +35,8 @@ namespace EasyPost.Tests
             User user = await CreateUser();
 
             Assert.IsType<User>(user);
-            Assert.StartsWith("user_", user.id);
-            Assert.Equal("Test User", user.name);
+            Assert.StartsWith("user_", user.Id);
+            Assert.Equal("Test User", user.Name);
         }
 
         [Fact]
@@ -51,8 +51,8 @@ namespace EasyPost.Tests
             Brand brand = await user.UpdateBrand(new Dictionary<string, object> { { "color", color } });
 
             Assert.IsType<Brand>(brand);
-            Assert.StartsWith("brd_", brand.id);
-            Assert.Equal(color, brand.color);
+            Assert.StartsWith("brd_", brand.Id);
+            Assert.Equal(color, brand.Color);
         }
 
         [Fact]
@@ -63,13 +63,13 @@ namespace EasyPost.Tests
 
             User authenticatedUser = await RetrieveMe();
 
-            string id = authenticatedUser.id;
+            string id = authenticatedUser.Id;
 
             User user = await Client.User.Retrieve(id);
 
             Assert.IsType<User>(user);
-            Assert.StartsWith("user_", user.id);
-            Assert.Equal(id, user.id);
+            Assert.StartsWith("user_", user.Id);
+            Assert.Equal(id, user.Id);
         }
 
         [Fact]
@@ -81,7 +81,7 @@ namespace EasyPost.Tests
             User user = await RetrieveMe();
 
             Assert.IsType<User>(user);
-            Assert.StartsWith("user_", user.id);
+            Assert.StartsWith("user_", user.Id);
         }
 
         [Fact]
@@ -98,8 +98,8 @@ namespace EasyPost.Tests
             user = await user.Update(userDict);
 
             Assert.IsType<User>(user);
-            Assert.StartsWith("user_", user.id);
-            Assert.Equal(testName, user.name);
+            Assert.StartsWith("user_", user.Id);
+            Assert.Equal(testName, user.Name);
         }
 
         [Fact]
@@ -122,7 +122,7 @@ namespace EasyPost.Tests
         private async Task<User> CreateUser()
         {
             User user = await Client.User.CreateChild(new Dictionary<string, object> { { "name", "Test User" } });
-            CleanUpAfterTest(user.id);
+            CleanUpAfterTest(user.Id);
 
             return user;
         }

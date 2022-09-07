@@ -21,11 +21,11 @@ namespace EasyPost.Tests
 
             Shipment shipment = await Client.Shipment.Create(Fixture.BasicShipment);
 
-            Rate rate = await Client.Rate.Retrieve(shipment.rates[0].id);
+            Rate rate = await Client.Rate.Retrieve(shipment.Rates[0].Id);
 
             Assert.IsType<Rate>(rate);
-            Assert.StartsWith("rate_", rate.id);
-            Assert.Equal(shipment.rates[0], rate);
+            Assert.StartsWith("rate_", rate.Id);
+            Assert.Equal(shipment.Rates[0], rate);
         }
 
         #endregion

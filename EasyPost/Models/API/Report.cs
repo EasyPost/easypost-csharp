@@ -9,17 +9,17 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("end_date")]
-        public DateTime? end_date { get; set; }
+        public DateTime? EndDate { get; set; }
         [JsonProperty("include_children")]
-        public bool include_children { get; set; }
+        public bool? IncludeChildren { get; set; }
         [JsonProperty("start_date")]
-        public DateTime? start_date { get; set; }
+        public DateTime? StartDate { get; set; }
         [JsonProperty("status")]
-        public string status { get; set; }
+        public string? Status { get; set; }
         [JsonProperty("url")]
-        public string url { get; set; }
+        public string? Url { get; set; }
         [JsonProperty("url_expires_at")]
-        public DateTime? url_expires_at { get; set; }
+        public DateTime? UrlExpiresAt { get; set; }
 
         #endregion
     }

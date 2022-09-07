@@ -22,9 +22,9 @@ namespace EasyPost.Tests
 
             EventCollection eventCollection = await GetBasicEventCollection();
 
-            List<Event> events = eventCollection.events;
+            List<Event> events = eventCollection.Events;
 
-            Assert.True(eventCollection.has_more);
+            Assert.True(eventCollection.HasMore);
             Assert.True(events.Count <= Fixture.PageSize);
             foreach (Event item in events)
             {
@@ -39,13 +39,13 @@ namespace EasyPost.Tests
             UseVCR("retrieve");
 
             EventCollection eventCollection = await GetBasicEventCollection();
-            Event _event = eventCollection.events[0];
+            Event _event = eventCollection.Events[0];
 
-            Event retrievedEvent = await Client.Event.Retrieve(_event.id);
+            Event retrievedEvent = await Client.Event.Retrieve(_event.Id);
 
             Assert.IsType<Event>(retrievedEvent);
             // Must compare IDs because other elements of objects may be different
-            Assert.Equal(_event.id, retrievedEvent.id);
+            Assert.Equal(_event.Id, retrievedEvent.Id);
         }
 
         #endregion

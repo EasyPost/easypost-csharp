@@ -8,15 +8,15 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("carrier")]
-        public string carrier { get; set; }
+        public string? Carrier { get; set; }
         [JsonProperty("confirmation_number")]
-        public string confirmation_number { get; set; }
+        public string? ConfirmationNumber { get; set; }
         [JsonProperty("shipment_id")]
-        public string shipment_id { get; set; }
+        public string? ShipmentId { get; set; }
         [JsonProperty("status")]
-        public string status { get; set; }
+        public string? Status { get; set; }
         [JsonProperty("tracking_code")]
-        public string tracking_code { get; set; }
+        public string? TrackingCode { get; set; }
 
         #endregion
     }

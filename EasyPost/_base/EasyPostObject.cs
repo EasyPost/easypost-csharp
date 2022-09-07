@@ -17,13 +17,13 @@ namespace EasyPost._base
         #region JSON Properties
 
         [JsonProperty("created_at")]
-        public DateTime? created_at { get; internal set; }
+        public DateTime? CreatedAt { get; internal set; }
         [JsonProperty("id")]
-        public string? id { get; internal set; }
+        public string? Id { get; internal set; }
         [JsonProperty("mode")]
-        public string? mode { get; internal set; }
+        public string? Mode { get; internal set; }
         [JsonProperty("updated_at")]
-        public DateTime? updated_at { get; internal set; }
+        public DateTime? UpdatedAt { get; internal set; }
         [JsonProperty("object")]
         internal string? Object { get; set; }
 
@@ -31,16 +31,7 @@ namespace EasyPost._base
 
         internal string? Prefix
         {
-            get
-            {
-                if (id == null)
-                {
-                    return null;
-                }
-
-                string? prefix = id.Split('_').First() ?? null;
-                return prefix;
-            }
+            get { return Id?.Split('_').First(); }
         }
 
         public override bool Equals(object? obj)

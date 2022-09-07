@@ -23,8 +23,8 @@ namespace EasyPost.Tests
             EndShipper endShipper = await CreateBasicEndShipper();
 
             Assert.IsType<EndShipper>(endShipper);
-            Assert.StartsWith("es_", endShipper.id);
-            Assert.Equal("388 TOWNSEND ST APT 20", endShipper.street1);
+            Assert.StartsWith("es_", endShipper.Id);
+            Assert.Equal("388 TOWNSEND ST APT 20", endShipper.Street1);
         }
 
         [Fact]
@@ -49,10 +49,10 @@ namespace EasyPost.Tests
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
-            EndShipper retrievedEndShipper = await Client.Beta.EndShipper.Retrieve(endShipper.id);
+            EndShipper retrievedEndShipper = await Client.Beta.EndShipper.Retrieve(endShipper.Id);
 
             Assert.IsType<EndShipper>(retrievedEndShipper);
-            Assert.Equal(endShipper.street1, retrievedEndShipper.street1);
+            Assert.Equal(endShipper.Street1, retrievedEndShipper.Street1);
         }
 
         [Fact]
@@ -71,8 +71,8 @@ namespace EasyPost.Tests
             endShipper = await endShipper.Update(endShipperData);
 
             Assert.IsType<EndShipper>(endShipper);
-            Assert.StartsWith("es_", endShipper.id);
-            Assert.Equal(testName, endShipper.name);
+            Assert.StartsWith("es_", endShipper.Id);
+            Assert.Equal(testName, endShipper.Name);
         }
 
         #endregion

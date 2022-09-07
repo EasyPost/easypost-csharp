@@ -9,7 +9,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("scan_forms")]
-        public List<ScanForm> scan_forms { get; set; }
+        public List<ScanForm>? ScanForms { get; set; }
 
         #endregion
     }

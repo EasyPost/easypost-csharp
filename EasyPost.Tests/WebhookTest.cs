@@ -40,8 +40,8 @@ namespace EasyPost.Tests
             Webhook webhook = await CreateBasicWebhook(url);
 
             Assert.IsType<Webhook>(webhook);
-            Assert.StartsWith("hook_", webhook.id);
-            Assert.Equal(url, webhook.url);
+            Assert.StartsWith("hook_", webhook.Id);
+            Assert.Equal(url, webhook.Url);
         }
 
         [Fact]
@@ -68,7 +68,7 @@ namespace EasyPost.Tests
 
             Webhook webhook = await CreateBasicWebhook(url);
 
-            Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.id);
+            Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.Id);
 
             Assert.IsType<Webhook>(retrievedWebhook);
             Assert.Equal(webhook, retrievedWebhook);
@@ -87,7 +87,7 @@ namespace EasyPost.Tests
             webhook = await webhook.Update();
 
             Assert.IsType<Webhook>(webhook);
-            Assert.StartsWith("hook_", webhook.id);
+            Assert.StartsWith("hook_", webhook.Id);
         }
 
         [Fact]
@@ -99,7 +99,7 @@ namespace EasyPost.Tests
             const string url = "https://example.com/delete";
 
             Webhook webhook = await CreateBasicWebhook(url);
-            Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.id);
+            Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.Id);
 
             var possibleException = await Record.ExceptionAsync(async () => await retrievedWebhook.Delete());
 
@@ -113,7 +113,7 @@ namespace EasyPost.Tests
         private async Task<Webhook> CreateBasicWebhook(string url)
         {
             Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
-            CleanUpAfterTest(webhook.id);
+            CleanUpAfterTest(webhook.Id);
 
             return webhook;
         }

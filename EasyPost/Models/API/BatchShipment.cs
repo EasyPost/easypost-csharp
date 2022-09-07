@@ -8,11 +8,11 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("batch_message")]
-        public string batch_message { get; set; }
+        public string? BatchMessage { get; set; }
         [JsonProperty("batch_status")]
-        public string batch_status { get; set; }
+        public string? BatchStatus { get; set; }
         [JsonProperty("tracking_code")]
-        public string tracking_code { get; set; }
+        public string? TrackingCode { get; set; }
 
         #endregion
     }

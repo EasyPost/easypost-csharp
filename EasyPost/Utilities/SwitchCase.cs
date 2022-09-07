@@ -64,7 +64,7 @@ namespace EasyPost.Utilities
     {
         private readonly List<ICase> _list = new List<ICase>();
 
-        private Action? _defaultCaseAction = null;
+        private Action? _defaultCaseAction;
 
         /// <summary>
         ///     Add a case where matching a static value triggers an Action

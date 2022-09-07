@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Calculation;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
@@ -14,63 +13,63 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("batch_id")]
-        public string batch_id { get; set; }
+        public string? BatchId { get; set; }
         [JsonProperty("batch_message")]
-        public string batch_message { get; set; }
+        public string? BatchMessage { get; set; }
         [JsonProperty("batch_status")]
-        public string batch_status { get; set; }
+        public string? BatchStatus { get; set; }
         [JsonProperty("buyer_address")]
-        public Address buyer_address { get; set; }
+        public Address? BuyerAddress { get; set; }
         [JsonProperty("carrier_accounts")]
-        public List<CarrierAccount> carrier_accounts { get; set; }
+        public List<CarrierAccount>? CarrierAccounts { get; set; }
         [JsonProperty("customs_info")]
-        public CustomsInfo customs_info { get; set; }
+        public CustomsInfo? CustomsInfo { get; set; }
         [JsonProperty("fees")]
-        public List<Fee> fees { get; set; }
+        public List<Fee>? Fees { get; set; }
         [JsonProperty("forms")]
-        public List<Form> forms { get; set; }
+        public List<Form>? Forms { get; set; }
         [JsonProperty("from_address")]
-        public Address from_address { get; set; }
+        public Address? FromAddress { get; set; }
         [JsonProperty("insurance")]
-        public string insurance { get; set; }
+        public string? Insurance { get; set; }
         [JsonProperty("is_return")]
-        public bool? is_return { get; set; }
+        public bool? IsReturn { get; set; }
         [JsonProperty("messages")]
-        public List<Message> messages { get; set; }
+        public List<Message>? Messages { get; set; }
         [JsonProperty("options")]
-        public Options options { get; set; }
+        public Options? Options { get; set; }
         [JsonProperty("order_id")]
-        public string order_id { get; set; }
+        public string? OrderId { get; set; }
         [JsonProperty("parcel")]
-        public Parcel parcel { get; set; }
+        public Parcel? Parcel { get; set; }
         [JsonProperty("postage_label")]
-        public PostageLabel postage_label { get; set; }
+        public PostageLabel? PostageLabel { get; set; }
         [JsonProperty("rates")]
-        public List<Rate> rates { get; set; }
+        public List<Rate>? Rates { get; set; }
         [JsonProperty("reference")]
-        public string reference { get; set; }
+        public string? Reference { get; set; }
         [JsonProperty("refund_status")]
-        public string refund_status { get; set; }
+        public string? RefundStatus { get; set; }
         [JsonProperty("return_address")]
-        public Address return_address { get; set; }
+        public Address? ReturnAddress { get; set; }
         [JsonProperty("scan_form")]
-        public ScanForm scan_form { get; set; }
+        public ScanForm? ScanForm { get; set; }
         [JsonProperty("selected_rate")]
-        public Rate selected_rate { get; set; }
+        public Rate? SelectedRate { get; set; }
         [JsonProperty("service")]
-        public string service { get; set; }
+        public string? Service { get; set; }
         [JsonProperty("status")]
-        public string status { get; set; }
+        public string? Status { get; set; }
         [JsonProperty("tax_identifiers")]
-        public List<TaxIdentifier> tax_identifiers { get; set; }
+        public List<TaxIdentifier>? TaxIdentifiers { get; set; }
         [JsonProperty("to_address")]
-        public Address to_address { get; set; }
+        public Address? ToAddress { get; set; }
         [JsonProperty("tracker")]
-        public Tracker tracker { get; set; }
+        public Tracker? Tracker { get; set; }
         [JsonProperty("tracking_code")]
-        public string tracking_code { get; set; }
+        public string? TrackingCode { get; set; }
         [JsonProperty("usps_zone")]
-        public string usps_zone { get; set; }
+        public string? UspsZone { get; set; }
 
         #endregion
 
@@ -83,7 +82,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Create]
         public async Task<Shipment> Return()
         {
-            if (id == null)
+            if (Id == null)
             {
                 // This is a local object, not one pulled from the server.
                 throw new Exception("id is null");
@@ -99,12 +98,12 @@ namespace EasyPost.Models.API
         [CrudOperations.Read]
         public async Task<List<Smartrate>> GetSmartrates()
         {
-            if (id == null)
+            if (Id == null)
             {
                 throw new Exception("id is null");
             }
 
-            return await Request<List<Smartrate>>(Method.Get, $"shipments/{id}/smartrate", null, "result");
+            return await Request<List<Smartrate>>(Method.Get, $"shipments/{Id}/smartrate", null, "result");
         }
 
         /// <summary>
@@ -117,7 +116,7 @@ namespace EasyPost.Models.API
         public async Task Buy(string rateId, string? insuranceValue = null, bool withCarbonOffset = false)
         {
             // TODO: Should this function return the updated Shipment like Order.Buy?
-            if (id == null)
+            if (Id == null)
             {
                 throw new Exception("id is null. Cannot buy a shipment without an id.");
             }
@@ -129,7 +128,7 @@ namespace EasyPost.Models.API
                 { "carbon_offset", withCarbonOffset }
             };
 
-            await Update<Shipment>(Method.Post, $"shipments/{id}/buy", parameters);
+            await Update<Shipment>(Method.Post, $"shipments/{Id}/buy", parameters);
         }
 
         /// <summary>
@@ -139,7 +138,7 @@ namespace EasyPost.Models.API
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
         [CrudOperations.Update]
-        public async Task Buy(Rate rate, string? insuranceValue = null, bool withCarbonOffset = false) => await Buy(rate.id, insuranceValue, withCarbonOffset);
+        public async Task Buy(Rate rate, string? insuranceValue = null, bool withCarbonOffset = false) => await Buy(rate.Id, insuranceValue, withCarbonOffset);
 
         /// <summary>
         ///     Generate a postage label for this shipment.
@@ -148,14 +147,14 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Shipment> GenerateLabel(string fileFormat)
         {
-            if (id == null)
+            if (Id == null)
             {
                 throw new Exception("id is null");
             }
 
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
 
-            await Update<Shipment>(Method.Get, $"shipments/{id}/label", parameters);
+            await Update<Shipment>(Method.Get, $"shipments/{Id}/label", parameters);
             return this;
         }
 
@@ -166,14 +165,14 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Shipment> Insure(double amount)
         {
-            if (id == null)
+            if (Id == null)
             {
                 throw new Exception("id is null");
             }
 
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "amount", amount } };
 
-            await Update<Shipment>(Method.Post, $"shipments/{id}/insure", parameters);
+            await Update<Shipment>(Method.Post, $"shipments/{Id}/insure", parameters);
             return this;
         }
 
@@ -183,12 +182,12 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Shipment> Refund()
         {
-            if (id == null)
+            if (Id == null)
             {
                 throw new Exception("id is required");
             }
 
-            await Update<Shipment>(Method.Get, $"shipments/{id}/refund");
+            await Update<Shipment>(Method.Get, $"shipments/{Id}/refund");
             return this;
         }
 
@@ -202,15 +201,15 @@ namespace EasyPost.Models.API
         {
             parameters ??= new Dictionary<string, object>();
 
-            if (id == null)
+            if (Id == null)
             {
                 throw new Exception("id is required");
             }
 
             parameters.Add("carbon_offset", withCarbonOffset);
 
-            Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{id}/rerate", parameters);
-            rates = shipment.rates;
+            Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{Id}/rerate", parameters);
+            Rates = shipment.Rates;
         }
 
         #endregion
@@ -225,12 +224,12 @@ namespace EasyPost.Models.API
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
         public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
-            if (rates == null)
+            if (Rates == null)
             {
                 throw new Exception("rates is null");
             }
 
-            return Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+            return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
 
         /// <summary>
@@ -242,7 +241,7 @@ namespace EasyPost.Models.API
         public async Task<Smartrate?> LowestSmartrate(int deliveryDays, SmartrateAccuracy deliveryAccuracy)
         {
             List<Smartrate> smartrates = await GetSmartrates();
-            return Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
+            return Calculation.Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
         }
     }
 }

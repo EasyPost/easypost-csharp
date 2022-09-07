@@ -23,7 +23,7 @@ namespace EasyPost.Tests
             Report report = await CreateBasicReport(Fixture.ReportType);
 
             Assert.IsType<Report>(report);
-            Assert.StartsWith(Fixture.ReportIdPrefix, report.id);
+            Assert.StartsWith(Fixture.ReportIdPrefix, report.Id);
         }
 
         [Fact]
@@ -72,9 +72,9 @@ namespace EasyPost.Tests
 
             ReportCollection reportCollection = await Client.Report.All("shipment", new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
 
-            List<Report> reports = reportCollection.reports;
+            List<Report> reports = reportCollection.Reports;
 
-            Assert.True(reportCollection.has_more);
+            Assert.True(reportCollection.HasMore);
             Assert.True(reports.Count <= Fixture.PageSize);
             foreach (Report report in reports)
             {
@@ -90,11 +90,11 @@ namespace EasyPost.Tests
 
             Report report = await CreateBasicReport(Fixture.ReportType);
 
-            Report retrievedReport = await Client.Report.Retrieve(report.id);
+            Report retrievedReport = await Client.Report.Retrieve(report.Id);
 
             Assert.IsType<Report>(retrievedReport);
-            Assert.Equal(report.start_date, retrievedReport.start_date);
-            Assert.Equal(report.end_date, retrievedReport.end_date);
+            Assert.Equal(report.StartDate, retrievedReport.StartDate);
+            Assert.Equal(report.EndDate, retrievedReport.EndDate);
         }
 
         #endregion

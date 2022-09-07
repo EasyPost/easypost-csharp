@@ -24,8 +24,8 @@ namespace EasyPost.Tests
             Order order = await CreateBasicOrder();
 
             Assert.IsType<Order>(order);
-            Assert.StartsWith("order_", order.id);
-            Assert.NotNull(order.rates);
+            Assert.StartsWith("order_", order.Id);
+            Assert.NotNull(order.Rates);
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace EasyPost.Tests
 
             await order.GetRates();
 
-            List<Rate> rates = order.rates;
+            List<Rate> rates = order.Rates;
 
             Assert.NotNull(rates);
             foreach (Rate rate in rates)
@@ -57,16 +57,16 @@ namespace EasyPost.Tests
 
             // test lowest rate with no filters
             Rate lowestRate = order.LowestRate();
-            Assert.Equal("First", lowestRate.service);
-            Assert.Equal("5.49", lowestRate.rate);
-            Assert.Equal("USPS", lowestRate.carrier);
+            Assert.Equal("First", lowestRate.Service);
+            Assert.Equal("5.49", lowestRate.Price);
+            Assert.Equal("USPS", lowestRate.Carrier);
 
             // test lowest rate with service filter (this rate is higher than the lowest but should filter)
             List<string> services = new List<string> { "Priority" };
             lowestRate = order.LowestRate(null, services);
-            Assert.Equal("Priority", lowestRate.service);
-            Assert.Equal("7.37", lowestRate.rate);
-            Assert.Equal("USPS", lowestRate.carrier);
+            Assert.Equal("Priority", lowestRate.Service);
+            Assert.Equal("7.37", lowestRate.Price);
+            Assert.Equal("USPS", lowestRate.Carrier);
 
             // test lowest rate with carrier filter (should error due to bad carrier)
             List<string> carriers = new List<string> { "BAD_CARRIER" };
@@ -81,11 +81,11 @@ namespace EasyPost.Tests
 
             Order order = await CreateBasicOrder();
 
-            Order retrievedOrder = await Client.Order.Retrieve(order.id);
+            Order retrievedOrder = await Client.Order.Retrieve(order.Id);
 
             Assert.IsType<Order>(retrievedOrder);
             // Must compare IDs since other elements of objects may be different
-            Assert.Equal(order.id, retrievedOrder.id);
+            Assert.Equal(order.Id, retrievedOrder.Id);
         }
 
         [Fact]
@@ -98,12 +98,12 @@ namespace EasyPost.Tests
 
             order = await order.Buy(Fixture.Usps, Fixture.UspsService);
 
-            List<Shipment> shipments = order.shipments;
+            List<Shipment> shipments = order.Shipments;
 
             foreach (Shipment shipment in shipments)
             {
                 Assert.IsType<Shipment>(shipment);
-                Assert.NotNull(shipment.postage_label);
+                Assert.NotNull(shipment.PostageLabel);
             }
         }
 

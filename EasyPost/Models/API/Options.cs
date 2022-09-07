@@ -10,173 +10,173 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("additional_handling")]
-        public bool? additional_handling { get; set; }
+        public bool? AdditionalHandling { get; set; }
         [JsonProperty("address_validation_level")]
-        public string address_validation_level { get; set; }
+        public string? AddressValidationLevel { get; set; }
         [JsonProperty("alcohol")]
-        public bool? alcohol { get; set; }
-        [JsonProperty("bill_receiver_account")]
-        public string bill_receiver_account { get; set; }
-        [JsonProperty("bill_receiver_postal_code")]
-        public string bill_receiver_postal_code { get; set; }
-        [JsonProperty("bill_third_party_account")]
-        public string bill_third_party_account { get; set; }
-        [JsonProperty("bill_third_party_country")]
-        public string bill_third_party_country { get; set; }
-        [JsonProperty("bill_third_party_postal_code")]
-        public string bill_third_party_postal_code { get; set; }
+        public bool? Alcohol { get; set; }
         [JsonProperty("billing_ref")]
-        public string billing_ref { get; set; }
+        public string? BillingRef { get; set; }
+        [JsonProperty("bill_receiver_account")]
+        public string? BillReceiverAccount { get; set; }
+        [JsonProperty("bill_receiver_postal_code")]
+        public string? BillReceiverPostalCode { get; set; }
+        [JsonProperty("bill_third_party_account")]
+        public string? BillThirdPartyAccount { get; set; }
+        [JsonProperty("bill_third_party_country")]
+        public string? BillThirdPartyCountry { get; set; }
+        [JsonProperty("bill_third_party_postal_code")]
+        public string? BillThirdPartyPostalCode { get; set; }
         [JsonProperty("by_drone")]
-        public bool? by_drone { get; set; }
+        public bool? ByDrone { get; set; }
         [JsonProperty("carbon_neutral")]
-        public bool? carbon_neutral { get; set; }
+        public bool? CarbonNeutral { get; set; }
         [JsonProperty("carrier_insurance_amount")]
-        public string carrier_insurance_amount { get; set; }
+        public string? CarrierInsuranceAmount { get; set; }
         [JsonProperty("carrier_notification_email")]
-        public string carrier_notification_email { get; set; }
+        public string? CarrierNotificationEmail { get; set; }
         [JsonProperty("carrier_notification_sms")]
-        public string carrier_notification_sms { get; set; }
+        public string? CarrierNotificationSms { get; set; }
         [JsonProperty("certified_mail")]
-        public bool? certified_mail { get; set; }
+        public bool? CertifiedMail { get; set; }
         [JsonProperty("cod_address_id")]
-        public string cod_address_id { get; set; }
+        public string? CodAddressId { get; set; }
         [JsonProperty("cod_amount")]
-        public string cod_amount { get; set; }
+        public string? CodAmount { get; set; }
         [JsonProperty("cod_method")]
-        public string cod_method { get; set; }
+        public string? CodMethod { get; set; }
         [JsonProperty("commercial_invoice_format")]
-        public string commercial_invoice_format { get; set; }
+        public string? CommercialInvoiceFormat { get; set; }
         [JsonProperty("commercial_invoice_letterhead")]
-        public string commercial_invoice_letterhead { get; set; }
+        public string? CommercialInvoiceLetterhead { get; set; }
         [JsonProperty("commercial_invoice_signature")]
-        public string commercial_invoice_signature { get; set; }
+        public string? CommercialInvoiceSignature { get; set; }
         [JsonProperty("commercial_invoice_size")]
-        public string commercial_invoice_size { get; set; }
+        public string? CommercialInvoiceSize { get; set; }
         [JsonProperty("cost_center")]
-        public string cost_center { get; set; }
+        public string? CostCenter { get; set; }
         [JsonProperty("currency")]
-        public string currency { get; set; }
+        public string? Currency { get; set; }
         [JsonProperty("customs_broker_address_id")]
-        public string customs_broker_address_id { get; set; }
+        public string? CustomsBrokerAddressId { get; set; }
         [JsonProperty("customs_include_shipping")]
-        public string customs_include_shipping { get; set; }
+        public string? CustomsIncludeShipping { get; set; }
         [JsonProperty("declared_value")]
-        public double? declared_value { get; set; }
+        public double? DeclaredValue { get; set; }
         [JsonProperty("delivered_duty_paid")]
-        public bool? delivered_duty_paid { get; set; }
+        public bool? DeliveredDutyPaid { get; set; }
         [JsonProperty("delivery_confirmation")]
-        public string delivery_confirmation { get; set; }
+        public string? DeliveryConfirmation { get; set; }
         [JsonProperty("delivery_time_preference")]
-        public string delivery_time_preference { get; set; }
+        public string? DeliveryTimePreference { get; set; }
         [JsonProperty("dropoff_type")]
-        public string dropoff_type { get; set; }
+        public string? DropoffType { get; set; }
         [JsonProperty("dry_ice")]
-        public bool? dry_ice { get; set; }
+        public bool? DryIce { get; set; }
         [JsonProperty("dry_ice_medical")]
-        public string dry_ice_medical { get; set; }
+        public string? DryIceMedical { get; set; }
         [JsonProperty("dry_ice_weight")]
-        public string dry_ice_weight { get; set; }
+        public string? DryIceWeight { get; set; }
         [JsonProperty("duty_payment_account")]
-        public string duty_payment_account { get; set; }
+        public string? DutyPaymentAccount { get; set; }
         [JsonProperty("endorsement")]
-        public string endorsement { get; set; }
+        public string? Endorsement { get; set; }
         [JsonProperty("freight_charge")]
-        public string freight_charge { get; set; }
+        public string? FreightCharge { get; set; }
         [JsonProperty("group")]
-        public string group { get; set; }
+        public string? Group { get; set; }
         [JsonProperty("handling_instructions")]
-        public string handling_instructions { get; set; }
+        public string? HandlingInstructions { get; set; }
         [JsonProperty("hazmat")]
-        public string hazmat { get; set; }
+        public string? Hazmat { get; set; }
         [JsonProperty("hold_for_pickup")]
-        public bool? hold_for_pickup { get; set; }
+        public bool? HoldForPickup { get; set; }
         [JsonProperty("image_format")]
-        public string image_format { get; set; }
-        [JsonProperty("import_federal_tax_id")]
-        public string import_federal_tax_id { get; set; }
-        [JsonProperty("import_state_tax_id")]
-        public string import_state_tax_id { get; set; }
+        public string? ImageFormat { get; set; }
         [JsonProperty("importer_address_id")]
-        public string importer_address_id { get; set; }
+        public string? ImporterAddressId { get; set; }
+        [JsonProperty("import_federal_tax_id")]
+        public string? ImportFederalTaxId { get; set; }
+        [JsonProperty("import_state_tax_id")]
+        public string? ImportStateTaxId { get; set; }
         [JsonProperty("incoterm")]
-        public string incoterm { get; set; }
+        public string? Incoterm { get; set; }
         [JsonProperty("invoice_number")]
-        public string invoice_number { get; set; }
+        public string? InvoiceNumber { get; set; }
         [JsonProperty("label_date")]
-        public DateTime? label_date { get; set; }
+        public DateTime? LabelDate { get; set; }
         [JsonProperty("label_format")]
-        public string label_format { get; set; }
+        public string? LabelFormat { get; set; }
         [JsonProperty("label_size")]
-        public string label_size { get; set; }
+        public string? LabelSize { get; set; }
         [JsonProperty("license_number")]
-        public string license_number { get; set; }
+        public string? LicenseNumber { get; set; }
         [JsonProperty("machinable")]
-        public string machinable { get; set; }
+        public string? Machinable { get; set; }
         [JsonProperty("neutral_delivery")]
-        public bool? neutral_delivery { get; set; }
+        public bool? NeutralDelivery { get; set; }
         [JsonProperty("non_contact")]
-        public bool? non_contract { get; set; }
+        public bool? NonContract { get; set; }
         [JsonProperty("overlabel_construct_code")]
-        public string overlabel_construct_code { get; set; }
+        public string? OverlabelConstructCode { get; set; }
         [JsonProperty("overlabel_construct_tracking_number")]
-        public string overlabel_original_tracking_number { get; set; }
+        public string? OverlabelOriginalTrackingNumber { get; set; }
         [JsonProperty("parties_to_transaction_are_related")]
-        public string parties_to_transaction_are_related { get; set; }
+        public string? PartiesToTransactionAreRelated { get; set; }
         [JsonProperty("payment")]
-        public Dictionary<string, object> payment { get; set; }
+        public Dictionary<string, object>? Payment { get; set; }
         [JsonProperty("peel_and_return")]
-        public bool peel_and_return { get; set; }
+        public bool? PeelAndReturn { get; set; }
         [JsonProperty("pickup_min_datetime")]
-        public DateTime? pickup_min_datetime { get; set; }
+        public DateTime? PickupMinDatetime { get; set; }
         [JsonProperty("po_sort")]
-        public string po_sort { get; set; }
+        public string? PoSort { get; set; }
         [JsonProperty("postage_label_inline")]
-        public bool? postage_label_inline { get; set; }
+        public bool? PostageLabelInline { get; set; }
         [JsonProperty("print_custom")]
-        public List<Dictionary<string, object>> print_custom { get; set; }
+        public List<Dictionary<string, object>>? PrintCustom { get; set; }
         [JsonProperty("print_custom_1")]
-        public string print_custom_1 { get; set; }
+        public string? PrintCustom1 { get; set; }
         [JsonProperty("print_custom_1_barcode")]
-        public bool? print_custom_1_barcode { get; set; }
+        public bool? PrintCustom1Barcode { get; set; }
         [JsonProperty("print_custom_1_code")]
-        public string print_custom_1_code { get; set; }
+        public string? PrintCustom1Code { get; set; }
         [JsonProperty("print_custom_2")]
-        public string print_custom_2 { get; set; }
+        public string? PrintCustom2 { get; set; }
         [JsonProperty("print_custom_2_barcode")]
-        public bool? print_custom_2_barcode { get; set; }
+        public bool? PrintCustom2Barcode { get; set; }
         [JsonProperty("print_custom_2_code")]
-        public string print_custom_2_code { get; set; }
+        public string? PrintCustom2Code { get; set; }
         [JsonProperty("print_custom_3")]
-        public string print_custom_3 { get; set; }
+        public string? PrintCustom3 { get; set; }
         [JsonProperty("print_custom_3_barcode")]
-        public bool? print_custom_3_barcode { get; set; }
+        public bool? PrintCustom3Barcode { get; set; }
         [JsonProperty("print_custom_3_code")]
-        public string print_custom_3_code { get; set; }
+        public string? PrintCustom3Code { get; set; }
         [JsonProperty("print_rate")]
-        public bool? print_rate { get; set; }
+        public bool? PrintRate { get; set; }
         [JsonProperty("receiver_liquor_license")]
-        public string receiver_liquor_license { get; set; }
+        public string? ReceiverLiquorLicense { get; set; }
         [JsonProperty("registered_mail")]
-        public bool? registered_mail { get; set; }
+        public bool? RegisteredMail { get; set; }
         [JsonProperty("registered_mail_amount")]
-        public double? registered_mail_amount { get; set; }
+        public double? RegisteredMailAmount { get; set; }
         [JsonProperty("return_receipt")]
-        public bool? return_receipt { get; set; }
+        public bool? ReturnReceipt { get; set; }
         [JsonProperty("return_service")]
-        public string return_service { get; set; }
+        public string? ReturnService { get; set; }
         [JsonProperty("saturday_delivery")]
-        public bool? saturday_delivery { get; set; }
+        public bool? SaturdayDelivery { get; set; }
         [JsonProperty("settlement_method")]
-        public string settlement_method { get; set; }
+        public string? SettlementMethod { get; set; }
         [JsonProperty("smartpost_hub")]
-        public string smartpost_hub { get; set; }
+        public string? SmartpostHub { get; set; }
         [JsonProperty("smartpost_manifest")]
-        public string smartpost_manifest { get; set; }
+        public string? SmartpostManifest { get; set; }
         [JsonProperty("special_rates_eligibility")]
-        public string special_rates_eligibility { get; set; }
+        public string? SpecialRatesEligibility { get; set; }
         [JsonProperty("suppress_etd")]
-        public bool? suppress_etd { get; set; }
+        public bool? SuppressEtd { get; set; }
 
         #endregion
     }

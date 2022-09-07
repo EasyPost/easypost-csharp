@@ -9,17 +9,17 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("completed_urls")]
-        public List<string> completed_urls { get; set; }
+        public List<string>? CompletedUrls { get; set; }
         [JsonProperty("description")]
-        public string description { get; set; }
+        public string? Description { get; set; }
         [JsonProperty("pending_urls")]
-        public List<string> pending_urls { get; set; }
+        public List<string>? PendingUrls { get; set; }
         [JsonProperty("previous_attributes")]
-        public Dictionary<string, object> previous_attributes { get; set; }
+        public Dictionary<string, object>? PreviousAttributes { get; set; }
         [JsonProperty("result")]
-        public Dictionary<string, object> result { get; set; }
+        public Dictionary<string, object>? Result { get; set; }
         [JsonProperty("status")]
-        public string status { get; set; }
+        public string? Status { get; set; }
 
         #endregion
     }

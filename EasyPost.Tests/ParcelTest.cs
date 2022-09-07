@@ -22,8 +22,8 @@ namespace EasyPost.Tests
             Parcel parcel = await CreateBasicParcel();
 
             Assert.IsType<Parcel>(parcel);
-            Assert.StartsWith("prcl_", parcel.id);
-            Assert.Equal(15.4, parcel.weight);
+            Assert.StartsWith("prcl_", parcel.Id);
+            Assert.Equal(15.4, parcel.Weight);
         }
 
         [Fact]
@@ -34,7 +34,7 @@ namespace EasyPost.Tests
 
             Parcel parcel = await CreateBasicParcel();
 
-            Parcel retrievedParcel = await Client.Parcel.Retrieve(parcel.id);
+            Parcel retrievedParcel = await Client.Parcel.Retrieve(parcel.Id);
 
             Assert.IsType<Parcel>(retrievedParcel);
             Assert.Equal(parcel, retrievedParcel);

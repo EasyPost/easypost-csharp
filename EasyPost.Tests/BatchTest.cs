@@ -24,8 +24,8 @@ namespace EasyPost.Tests
             Batch batch = await CreateBasicBatch();
 
             Assert.IsType<Batch>(batch);
-            Assert.StartsWith("batch_", batch.id);
-            Assert.NotNull(batch.shipments);
+            Assert.StartsWith("batch_", batch.Id);
+            Assert.NotNull(batch.Shipments);
         }
 
         [Fact]
@@ -37,8 +37,8 @@ namespace EasyPost.Tests
             Batch batch = await Client.Batch.CreateAndBuy(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixture.OneCallBuyShipment } } });
 
             Assert.IsType<Batch>(batch);
-            Assert.StartsWith("batch_", batch.id);
-            Assert.Equal(1, batch.num_shipments);
+            Assert.StartsWith("batch_", batch.Id);
+            Assert.Equal(1, batch.NumShipments);
         }
 
         [Fact]
@@ -49,9 +49,9 @@ namespace EasyPost.Tests
 
             BatchCollection batchCollection = await Client.Batch.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
 
-            List<Batch> batches = batchCollection.batches;
+            List<Batch> batches = batchCollection.Batches;
 
-            Assert.True(batchCollection.has_more);
+            Assert.True(batchCollection.HasMore);
             Assert.True(batches.Count <= Fixture.PageSize);
             foreach (Batch item in batches)
             {
@@ -71,11 +71,11 @@ namespace EasyPost.Tests
 
             batch = await batch.AddShipments(new List<Shipment> { shipment });
 
-            Assert.Equal(1, batch.num_shipments);
+            Assert.Equal(1, batch.NumShipments);
 
             batch = await batch.RemoveShipments(new List<Shipment> { shipment });
 
-            Assert.Equal(0, batch.num_shipments);
+            Assert.Equal(0, batch.NumShipments);
         }
 
         [Fact]
@@ -89,7 +89,7 @@ namespace EasyPost.Tests
             batch = await batch.Buy();
 
             Assert.IsType<Batch>(batch);
-            Assert.Equal(1, batch.num_shipments);
+            Assert.Equal(1, batch.NumShipments);
         }
 
         [Fact]
@@ -142,11 +142,11 @@ namespace EasyPost.Tests
 
             Batch batch = await CreateBasicBatch();
 
-            Batch retrievedBatch = await Client.Batch.Retrieve(batch.id);
+            Batch retrievedBatch = await Client.Batch.Retrieve(batch.Id);
 
             Assert.IsType<Batch>(retrievedBatch);
             // Must compare IDs since elements of batch (i.e. status) may be different
-            Assert.Equal(batch.id, retrievedBatch.id);
+            Assert.Equal(batch.Id, retrievedBatch.Id);
         }
 
         #endregion

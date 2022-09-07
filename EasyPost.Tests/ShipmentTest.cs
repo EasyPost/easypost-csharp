@@ -26,11 +26,11 @@ namespace EasyPost.Tests
             Shipment shipment = await CreateFullShipment();
 
             Assert.IsType<Shipment>(shipment);
-            Assert.StartsWith("shp_", shipment.id);
-            Assert.NotNull(shipment.rates);
-            Assert.Equal("PNG", shipment.options.label_format);
-            Assert.Equal("123", shipment.options.invoice_number);
-            Assert.Equal("123", shipment.reference);
+            Assert.StartsWith("shp_", shipment.Id);
+            Assert.NotNull(shipment.Rates);
+            Assert.Equal("PNG", shipment.Options.LabelFormat);
+            Assert.Equal("123", shipment.Options.InvoiceNumber);
+            Assert.Equal("123", shipment.Reference);
         }
 
         [Fact]
@@ -51,11 +51,11 @@ namespace EasyPost.Tests
             Shipment shipment = await Client.Shipment.Create(shipmentData);
 
             Assert.IsType<Shipment>(shipment);
-            Assert.StartsWith("shp_", shipment.id);
-            Assert.NotNull(shipment.options); // The EasyPost API populates some default values here
-            Assert.True(shipment.customs_info.customs_items.Count == 0);
-            Assert.Null(shipment.reference);
-            Assert.Null(shipment.tax_identifiers);
+            Assert.StartsWith("shp_", shipment.Id);
+            Assert.NotNull(shipment.Options); // The EasyPost API populates some default values here
+            Assert.True(shipment.CustomsInfo.CustomsItems.Count == 0);
+            Assert.Null(shipment.Reference);
+            Assert.Null(shipment.TaxIdentifiers);
         }
 
         [Fact]
@@ -69,10 +69,10 @@ namespace EasyPost.Tests
             Assert.IsType<Shipment>(shipment);
 
             Rate rate = shipment.LowestRate();
-            CarbonOffset carbonOffset = rate.carbon_offset;
+            CarbonOffset carbonOffset = rate.CarbonOffset;
 
             Assert.NotNull(carbonOffset);
-            Assert.NotNull(carbonOffset.price);
+            Assert.NotNull(carbonOffset.Price);
         }
 
         [Fact]
@@ -87,11 +87,11 @@ namespace EasyPost.Tests
             Shipment shipment = await Client.Shipment.Create(shipmentData);
 
             Assert.IsType<Shipment>(shipment);
-            Assert.StartsWith("shp_", shipment.id);
-            Assert.Equal("IOSS", shipment.tax_identifiers[0].tax_id_type);
+            Assert.StartsWith("shp_", shipment.Id);
+            Assert.Equal("IOSS", shipment.TaxIdentifiers[0].TaxIdType);
         }
 
-        [Fact(Skip = "Test does not play well with VCR")]
+        [Fact(Skip = "Test does not play well with VCR. Runs as expected when not using VCR.")]
         [CrudOperations.Create]
         public async Task TestCreateWithIds()
         {
@@ -103,17 +103,17 @@ namespace EasyPost.Tests
 
             Shipment shipment = await Client.Shipment.Create(new Dictionary<string, object>
             {
-                { "from_address", new Dictionary<string, object> { { "id", fromAddress.id } } },
-                { "to_address", new Dictionary<string, object> { { "id", toAddress.id } } },
-                { "parcel", new Dictionary<string, object> { { "id", parcel.id } } }
+                { "from_address", new Dictionary<string, object> { { "id", fromAddress.Id } } },
+                { "to_address", new Dictionary<string, object> { { "id", toAddress.Id } } },
+                { "parcel", new Dictionary<string, object> { { "id", parcel.Id } } }
             });
 
             Assert.IsType<Shipment>(shipment);
-            Assert.StartsWith("shp_", shipment.id);
-            Assert.StartsWith("adr_", shipment.from_address.id);
-            Assert.StartsWith("adr_", shipment.to_address.id);
-            Assert.StartsWith("prcl_", shipment.parcel.id);
-            Assert.Equal("388 Townsend St", shipment.from_address.street1);
+            Assert.StartsWith("shp_", shipment.Id);
+            Assert.StartsWith("adr_", shipment.FromAddress.Id);
+            Assert.StartsWith("adr_", shipment.ToAddress.Id);
+            Assert.StartsWith("prcl_", shipment.Parcel.Id);
+            Assert.Equal("388 Townsend St", shipment.FromAddress.Street1);
         }
 
         // If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
@@ -132,7 +132,7 @@ namespace EasyPost.Tests
 
             shipment = await shipment.Insure(100);
 
-            Assert.Equal("100.00", shipment.insurance);
+            Assert.Equal("100.00", shipment.Insurance);
         }
 
         [Fact]
@@ -143,8 +143,8 @@ namespace EasyPost.Tests
 
             Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyCarbonOffsetShipment, true);
 
-            Assert.NotNull(shipment.fees);
-            bool carbonOffsetIncluded = shipment.fees.Any(fee => fee.type == "CarbonOffsetFee");
+            Assert.NotNull(shipment.Fees);
+            bool carbonOffsetIncluded = shipment.Fees.Any(fee => fee.Type == "CarbonOffsetFee");
             Assert.True(carbonOffsetIncluded);
         }
 
@@ -156,9 +156,9 @@ namespace EasyPost.Tests
 
             ShipmentCollection shipmentCollection = await Client.Shipment.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
 
-            List<Shipment> shipments = shipmentCollection.shipments;
+            List<Shipment> shipments = shipmentCollection.Shipments;
 
-            Assert.True(shipmentCollection.has_more);
+            Assert.True(shipmentCollection.HasMore);
             Assert.True(shipments.Count <= Fixture.PageSize);
             foreach (Shipment shipment in shipments)
             {
@@ -176,9 +176,9 @@ namespace EasyPost.Tests
 
             // test lowest smartrate with valid filters
             Smartrate lowestSmartrate = await shipment.LowestSmartrate(1, SmartrateAccuracy.Percentile90);
-            Assert.Equal("First", lowestSmartrate.service);
-            Assert.Equal(5.49, lowestSmartrate.rate);
-            Assert.Equal("USPS", lowestSmartrate.carrier);
+            Assert.Equal("First", lowestSmartrate.Service);
+            Assert.Equal(5.49, lowestSmartrate.Rate);
+            Assert.Equal("USPS", lowestSmartrate.Carrier);
 
             // test lowest smartrate with invalid filters (should error due to strict delivery_days)
             await Assert.ThrowsAsync<Exception>(async () => await shipment.LowestSmartrate(0, SmartrateAccuracy.Percentile90));
@@ -197,16 +197,16 @@ namespace EasyPost.Tests
 
             // test lowest rate with no filters
             Rate lowestRate = shipment.LowestRate();
-            Assert.Equal("First", lowestRate.service);
-            Assert.Equal("5.49", lowestRate.rate);
-            Assert.Equal("USPS", lowestRate.carrier);
+            Assert.Equal("First", lowestRate.Service);
+            Assert.Equal("5.49", lowestRate.Price);
+            Assert.Equal("USPS", lowestRate.Carrier);
 
             // test lowest rate with service filter (this rate is higher than the lowest but should filter)
             List<string> services = new List<string> { "Priority" };
             lowestRate = shipment.LowestRate(null, services);
-            Assert.Equal("Priority", lowestRate.service);
-            Assert.Equal("7.37", lowestRate.rate);
-            Assert.Equal("USPS", lowestRate.carrier);
+            Assert.Equal("Priority", lowestRate.Service);
+            Assert.Equal("7.37", lowestRate.Price);
+            Assert.Equal("USPS", lowestRate.Carrier);
 
             // test lowest rate with carrier filter (should error due to bad carrier)
             List<string> carriers = new List<string> { "BAD_CARRIER" };
@@ -221,7 +221,7 @@ namespace EasyPost.Tests
 
             Shipment shipment = await CreateFullShipment();
 
-            Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.id);
+            Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.Id);
 
             Assert.IsType<Shipment>(shipment);
             Assert.Equal(shipment, retrievedShipment);
@@ -235,19 +235,19 @@ namespace EasyPost.Tests
 
             Shipment shipment = await CreateBasicShipment();
 
-            Assert.NotNull(shipment.rates);
+            Assert.NotNull(shipment.Rates);
 
             List<Smartrate> smartRates = await shipment.GetSmartrates();
             Smartrate smartrate = smartRates.First();
             // Must compare IDs because one is a Rate object and one is a Smartrate object
-            Assert.Equal(shipment.rates[0].id, smartrate.id);
-            Assert.NotNull(smartrate.time_in_transit.percentile_50);
-            Assert.NotNull(smartrate.time_in_transit.percentile_75);
-            Assert.NotNull(smartrate.time_in_transit.percentile_85);
-            Assert.NotNull(smartrate.time_in_transit.percentile_90);
-            Assert.NotNull(smartrate.time_in_transit.percentile_95);
-            Assert.NotNull(smartrate.time_in_transit.percentile_97);
-            Assert.NotNull(smartrate.time_in_transit.percentile_99);
+            Assert.Equal(shipment.Rates[0].Id, smartrate.Id);
+            Assert.NotNull(smartrate.TimeInTransit.Percentile50);
+            Assert.NotNull(smartrate.TimeInTransit.Percentile75);
+            Assert.NotNull(smartrate.TimeInTransit.Percentile85);
+            Assert.NotNull(smartrate.TimeInTransit.Percentile90);
+            Assert.NotNull(smartrate.TimeInTransit.Percentile95);
+            Assert.NotNull(smartrate.TimeInTransit.Percentile97);
+            Assert.NotNull(smartrate.TimeInTransit.Percentile99);
         }
 
         [Fact]
@@ -261,9 +261,9 @@ namespace EasyPost.Tests
             // test lowest smartrate with valid filters
             List<Smartrate> smartrates = await shipment.GetSmartrates();
             Smartrate lowestSmartrate = ShipmentService.GetLowestSmartrate(smartrates, 1, SmartrateAccuracy.Percentile90);
-            Assert.Equal("First", lowestSmartrate.service);
-            Assert.Equal(5.49, lowestSmartrate.rate);
-            Assert.Equal("USPS", lowestSmartrate.carrier);
+            Assert.Equal("First", lowestSmartrate.Service);
+            Assert.Equal(5.49, lowestSmartrate.Rate);
+            Assert.Equal("USPS", lowestSmartrate.Carrier);
 
             // test lowest smartrate with invalid filters (should error due to strict delivery_days)
             Assert.Throws<Exception>(() => ShipmentService.GetLowestSmartrate(smartrates, 0, SmartrateAccuracy.Percentile90));
@@ -280,9 +280,9 @@ namespace EasyPost.Tests
 
             Shipment shipment = await CreateFullShipment();
 
-            await shipment.Buy(shipment.LowestRate().id);
+            await shipment.Buy(shipment.LowestRate().Id);
 
-            Assert.NotNull(shipment.postage_label);
+            Assert.NotNull(shipment.PostageLabel);
         }
 
         [Fact]
@@ -295,8 +295,8 @@ namespace EasyPost.Tests
 
             await shipment.Buy(shipment.LowestRate(), withCarbonOffset: true);
 
-            Assert.NotNull(shipment.fees);
-            bool carbonOffsetIncluded = shipment.fees.Any(fee => fee.type == "CarbonOffsetFee");
+            Assert.NotNull(shipment.Fees);
+            bool carbonOffsetIncluded = shipment.Fees.Any(fee => fee.Type == "CarbonOffsetFee");
             Assert.True(carbonOffsetIncluded);
         }
 
@@ -310,7 +310,7 @@ namespace EasyPost.Tests
 
             shipment = await shipment.GenerateLabel("ZPL");
 
-            Assert.NotNull(shipment.postage_label.label_zpl_url);
+            Assert.NotNull(shipment.PostageLabel.LabelZplUrl);
         }
 
         // Refunding a test shipment must happen within seconds of the shipment being created as test shipments naturally
@@ -326,7 +326,7 @@ namespace EasyPost.Tests
 
             shipment = await shipment.Refund();
 
-            Assert.Equal("submitted", shipment.refund_status);
+            Assert.Equal("submitted", shipment.RefundStatus);
         }
 
         [Fact]
@@ -339,7 +339,7 @@ namespace EasyPost.Tests
 
             await shipment.RegenerateRates();
 
-            List<Rate> rates = shipment.rates;
+            List<Rate> rates = shipment.Rates;
 
             Assert.NotNull(rates);
             foreach (Rate rate in rates)
@@ -355,16 +355,16 @@ namespace EasyPost.Tests
             UseVCR("regenerate_rates_with_carbon_offset");
 
             Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyCarbonOffsetShipment);
-            List<Rate> baseRates = shipment.rates;
+            List<Rate> baseRates = shipment.Rates;
 
             await shipment.RegenerateRates(withCarbonOffset: true);
-            List<Rate> newRatesWithCarbon = shipment.rates;
+            List<Rate> newRatesWithCarbon = shipment.Rates;
 
             Rate baseRate = baseRates.First();
             Rate newRateWithCarbon = newRatesWithCarbon.First();
 
-            Assert.Null(baseRate.carbon_offset);
-            Assert.NotNull(newRateWithCarbon.carbon_offset);
+            Assert.Null(baseRate.CarbonOffset);
+            Assert.NotNull(newRateWithCarbon.CarbonOffset);
         }
 
         #endregion

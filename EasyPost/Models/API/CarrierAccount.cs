@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Utilities.Annotations;
@@ -12,19 +13,20 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("billing_type")]
-        public string billing_type { get; set; }
+        public string? BillingType { get; set; }
         [JsonProperty("credentials")]
-        public Dictionary<string, object> credentials { get; set; }
+        public Dictionary<string, object>? Credentials { get; set; }
         [JsonProperty("description")]
-        public string description { get; set; }
+        public string? Description { get; set; }
         [JsonProperty("readable")]
-        public string readable { get; set; }
+        public string? Readable { get; set; }
         [JsonProperty("reference")]
-        public string reference { get; set; }
+        public string? Reference { get; set; }
         [JsonProperty("test_credentials")]
-        public Dictionary<string, object> test_credentials { get; set; }
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
+        public Dictionary<string, object>? TestCredentials { get; set; }
         [JsonProperty("type")]
-        public string type { get; set; }
+        public string? Type { get; set; }
 
         #endregion
 
@@ -37,7 +39,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<CarrierAccount> Update(Dictionary<string, object> parameters)
         {
-            await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{id}", parameters);
+            await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{Id}", parameters);
             return this;
         }
 
@@ -48,7 +50,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Delete]
         public async Task Delete()
         {
-            await DeleteNoResponse($"carrier_accounts/{id}");
+            await DeleteNoResponse($"carrier_accounts/{Id}");
         }
 
         #endregion

@@ -311,7 +311,7 @@ namespace EasyPost.Tests
             {
                 { "to_address", BasicAddress },
                 { "from_address", BasicAddress },
-                { "tracking_code", shipment.tracking_code },
+                { "tracking_code", shipment.TrackingCode },
                 { "carrier", Usps },
                 { "amount", 100 }
             };

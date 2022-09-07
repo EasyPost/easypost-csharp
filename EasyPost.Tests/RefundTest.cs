@@ -28,8 +28,8 @@ namespace EasyPost.Tests
             }
 
             Refund refund = refunds[0];
-            Assert.StartsWith("rfnd_", refund.id);
-            Assert.Equal("submitted", refund.status);
+            Assert.StartsWith("rfnd_", refund.Id);
+            Assert.Equal("submitted", refund.Status);
         }
 
         [Fact]
@@ -40,9 +40,9 @@ namespace EasyPost.Tests
 
             RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
 
-            List<Refund> refunds = refundCollection.refunds;
+            List<Refund> refunds = refundCollection.Refunds;
 
-            Assert.True(refundCollection.has_more);
+            Assert.True(refundCollection.HasMore);
             Assert.True(refunds.Count <= Fixture.PageSize);
             foreach (Refund item in refunds)
             {
@@ -60,7 +60,7 @@ namespace EasyPost.Tests
 
             Refund refund = (await CreateBasicRefund())[0];
 
-            Refund retrievedRefund = await Client.Refund.Retrieve(refund.id);
+            Refund retrievedRefund = await Client.Refund.Retrieve(refund.Id);
 
             Assert.IsType<Refund>(retrievedRefund);
             Assert.Equal(refund, retrievedRefund);
@@ -71,12 +71,12 @@ namespace EasyPost.Tests
         private async Task<List<Refund>> CreateBasicRefund()
         {
             Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyShipment);
-            Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.id); // We need to retrieve the shipment so that the tracking_code has time to populate
+            Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.Id); // We need to retrieve the shipment so that the tracking_code has time to populate
 
             return await Client.Refund.Create(new Dictionary<string, object>
             {
                 { "carrier", Fixture.Usps },
-                { "tracking_codes", new List<string> { retrievedShipment.tracking_code } }
+                { "tracking_codes", new List<string> { retrievedShipment.TrackingCode } }
             });
         }
     }

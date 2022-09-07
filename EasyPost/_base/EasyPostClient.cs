@@ -97,7 +97,7 @@ namespace EasyPost._base
         internal async Task<bool> Request(Method method, string url, ApiVersion apiVersion, Dictionary<string, object>? parameters = null)
         {
             // Build the request
-            Request request = new Request(url, method, apiVersion, parameters, null);
+            Request request = new Request(url, method, apiVersion, parameters);
             RestRequest restRequest = PrepareRequest(request);
 
             // Execute the request
