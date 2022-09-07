@@ -1,7 +1,7 @@
 [
   {
-      "Duration": 236,
-      "RecordedAt": "2022-08-24T13:53:33.520297-06:00",
+      "Duration": 322,
+      "RecordedAt": "2022-09-07T14:53:57.99197-06:00",
       "Request": {
           "Body": "",
           "BodyContentType": "Text",
@@ -16,12 +16,12 @@
           "Uri": "https://api.easypost.com/v2/addresses?page_size=5"
       },
       "Response": {
-          "Body": "{\"addresses\":[{\"id\":\"adr_6f54480e23e611ed8ee3ac1f6bc7b362\",\"object\":\"Address\",\"created_at\":\"2022-08-24T13:53:33-06:00\",\"updated_at\":\"2022-08-24T13:53:33-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},{\"id\":\"adr_6f52717723e611eda15bac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2022-08-24T13:53:33-06:00\",\"updated_at\":\"2022-08-24T13:53:33-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},{\"id\":\"adr_6f3959d723e611ed88d9ac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2022-08-24T13:53:33-06:00\",\"updated_at\":\"2022-08-24T13:53:33-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":true,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.77551,\"longitude\":-122.39697,\"time_zone\":\"America/Los_Angeles\"}}}},{\"id\":\"adr_6f130c5923e611ed8ec7ac1f6bc7b362\",\"object\":\"Address\",\"created_at\":\"2022-08-24T13:53:33-06:00\",\"updated_at\":\"2022-08-24T13:53:33-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},{\"id\":\"adr_6f11b77f23e611eda141ac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2022-08-24T13:53:33-06:00\",\"updated_at\":\"2022-08-24T13:53:33-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":true,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.77551,\"longitude\":-122.39697,\"time_zone\":\"America/Los_Angeles\"}}}}],\"has_more\":true}",
+          "Body": "{\"addresses\":[{\"id\":\"adr_3166f4b82eef11ed9882ac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2022-09-07T14:53:57-06:00\",\"updated_at\":\"2022-09-07T14:53:57-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},{\"id\":\"adr_3166e1072eef11eda089ac1f6bc7b362\",\"object\":\"Address\",\"created_at\":\"2022-09-07T14:53:57-06:00\",\"updated_at\":\"2022-09-07T14:53:57-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},{\"id\":\"adr_3166c2082eef11ed8fd1ac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2022-09-07T14:53:57-06:00\",\"updated_at\":\"2022-09-07T14:53:57-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},{\"id\":\"adr_3164862d2eef11ed987eac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2022-09-07T14:53:57-06:00\",\"updated_at\":\"2022-09-07T14:53:57-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},{\"id\":\"adr_316495352eef11ed987fac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2022-09-07T14:53:57-06:00\",\"updated_at\":\"2022-09-07T14:53:57-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}],\"has_more\":true}",
           "BodyContentType": "Json",
           "ContentHeaders": {
               "Expires": "0",
               "Content-Type": "application/json; charset=utf-8",
-              "Content-Length": "2675"
+              "Content-Length": "2301"
           },
           "HttpVersion": "1.1",
           "ResponseHeaders": {
@@ -31,15 +31,15 @@
               "x-download-options": "noopen",
               "x-permitted-cross-domain-policies": "none",
               "Referrer-Policy": "strict-origin-when-cross-origin",
-              "x-ep-request-uuid": "bffd75b8630681bdf7a8e6ad00794b81",
+              "x-ep-request-uuid": "3bde9a27631904e6e799fa43002e0cad",
               "Cache-Control": "no-store, no-cache, private",
               "Pragma": "no-cache",
-              "ETag": "W/\"8a78bd6e6f2a6d445d76838a0f49d49b\"",
-              "x-runtime": "0.041141",
-              "x-node": "bigweb2nuq",
-              "x-version-label": "easypost-202208241853-b300c23ebd-master",
+              "ETag": "W/\"b4a0d0767afa295af1c9c8185ae67f6c\"",
+              "x-runtime": "0.037155",
+              "x-node": "bigweb1nuq",
+              "x-version-label": "easypost-202209071541-cbf5be725f-master",
               "x-backend": "easypost",
-              "x-proxied": "intlb1nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
+              "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
               "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
           },
           "Status": {

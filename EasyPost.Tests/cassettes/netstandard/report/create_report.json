@@ -1,7 +1,7 @@
 [
   {
-      "Duration": 396,
-      "RecordedAt": "2022-08-24T13:53:05.548648-06:00",
+      "Duration": 328,
+      "RecordedAt": "2022-09-07T15:01:19.05701-06:00",
       "Request": {
           "Body": "{\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\"}",
           "BodyContentType": "Json",
@@ -19,7 +19,7 @@
           "Uri": "https://api.easypost.com/v2/reports/shipment"
       },
       "Response": {
-          "Body": "{\"id\":\"shprep_ad3e576ec5c146d5a4cf0c09a0e602b7\",\"object\":\"ShipmentReport\",\"created_at\":\"2022-08-24T19:53:05Z\",\"updated_at\":\"2022-08-24T19:53:05Z\",\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null,\"include_children\":false}",
+          "Body": "{\"id\":\"shprep_502aa28db8834b13bf7e03c0d23c8967\",\"object\":\"ShipmentReport\",\"created_at\":\"2022-09-07T21:01:19Z\",\"updated_at\":\"2022-09-07T21:01:19Z\",\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null,\"include_children\":false}",
           "BodyContentType": "Json",
           "ContentHeaders": {
               "Expires": "0",
@@ -34,16 +34,16 @@
               "x-download-options": "noopen",
               "x-permitted-cross-domain-policies": "none",
               "referrer-policy": "strict-origin-when-cross-origin",
-              "x-ep-request-uuid": "7605edbe630681a1f7df4e390072f545",
+              "x-ep-request-uuid": "3bde9a266319069fe79a6124002e9124",
               "Cache-Control": "no-store, no-cache, private",
               "Pragma": "no-cache",
-              "ETag": "W/\"56d9d64aff18f479dce7c5a1f2d7b199\"",
-              "x-runtime": "0.034363",
+              "ETag": "W/\"80d30a12a0bd05391e056a17e39ec5e8\"",
+              "x-runtime": "0.045542",
               "x-node": "bigweb7nuq",
-              "x-version-label": "easypost-202208241853-b300c23ebd-master",
+              "x-version-label": "easypost-202209071541-cbf5be725f-master",
               "x-backend": "easypost",
               "x-canary": "direct",
-              "x-proxied": "intlb1nuq 6aa9972c1e,intlb2wdc 6aa9972c1e,extlb4wdc 9ce216bfac",
+              "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
               "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
           },
           "Status": {

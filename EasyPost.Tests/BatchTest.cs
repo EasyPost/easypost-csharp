@@ -100,6 +100,11 @@ namespace EasyPost.Tests
 
             Batch batch = await CreateOneCallBuyBatch();
 
+            if (IsRecording()) // Yes, this is needed. Otherwise, the API says we can't modify a batch while it's being created.
+            {
+                Thread.Sleep(10000); // Wait enough time to process
+            }
+
             batch = await batch.Buy();
 
             if (IsRecording())
@@ -120,6 +125,11 @@ namespace EasyPost.Tests
             UseVCR("label");
 
             Batch batch = await CreateOneCallBuyBatch();
+
+            if (IsRecording()) // Yes, this is needed. Otherwise, the API says we can't modify a batch while it's being created.
+            {
+                Thread.Sleep(10000); // Wait enough time to process
+            }
 
             batch = await batch.Buy();
 

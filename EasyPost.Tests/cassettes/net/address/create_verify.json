@@ -1,7 +1,7 @@
 [
   {
-      "Duration": 237,
-      "RecordedAt": "2022-08-24T13:53:32.633327-06:00",
+      "Duration": 303,
+      "RecordedAt": "2022-09-07T14:53:56.842664-06:00",
       "Request": {
           "Body": "{\"verify\":[true],\"street1\":\"417 montgomery street\",\"street2\":\"FL 5\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94104\",\"country\":\"US\",\"company\":\"EasyPost\",\"phone\":\"<REDACTED>\"}",
           "BodyContentType": "Json",
@@ -19,7 +19,7 @@
           "Uri": "https://api.easypost.com/v2/addresses"
       },
       "Response": {
-          "Body": "{\"id\":\"adr_6ed8d57f23e611ed88adac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2022-08-24T13:53:32-06:00\",\"updated_at\":\"2022-08-24T13:53:32-06:00\",\"name\":null,\"company\":\"EASYPOST\",\"street1\":\"417 MONTGOMERY ST FL 5\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94104-1129\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":{\"latitude\":37.79342,\"longitude\":-122.40288,\"time_zone\":\"America/Los_Angeles\"}}}}",
+          "Body": "{\"id\":\"adr_30cc4ea42eef11ed9841ac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2022-09-07T14:53:56-06:00\",\"updated_at\":\"2022-09-07T14:53:56-06:00\",\"name\":null,\"company\":\"EASYPOST\",\"street1\":\"417 MONTGOMERY ST FL 5\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94104-1129\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":{\"latitude\":37.79342,\"longitude\":-122.40288,\"time_zone\":\"America/Los_Angeles\"}}}}",
           "BodyContentType": "Json",
           "ContentHeaders": {
               "Expires": "0",
@@ -34,16 +34,16 @@
               "x-download-options": "noopen",
               "x-permitted-cross-domain-policies": "none",
               "Referrer-Policy": "strict-origin-when-cross-origin",
-              "x-ep-request-uuid": "bffd75b2630681bcf7eea13e00794ae6",
+              "x-ep-request-uuid": "3bde9a28631904e4e799f70a002e0c20",
               "Cache-Control": "no-store, no-cache, private",
               "Pragma": "no-cache",
-              "Location": "/api/v2/addresses/adr_6ed8d57f23e611ed88adac1f6b0a0d1e",
-              "ETag": "W/\"df69bd26928ecbfa37d88f6e0bbd6d9e\"",
-              "x-runtime": "0.042237",
-              "x-node": "bigweb2nuq",
-              "x-version-label": "easypost-202208241853-b300c23ebd-master",
+              "Location": "/api/v2/addresses/adr_30cc4ea42eef11ed9841ac1f6bc72124",
+              "ETag": "W/\"b768a7fec27bd233232ddfeb3aa72898\"",
+              "x-runtime": "0.060502",
+              "x-node": "bigweb9nuq",
+              "x-version-label": "easypost-202209071541-cbf5be725f-master",
               "x-backend": "easypost",
-              "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
+              "x-proxied": "intlb1nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
               "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
           },
           "Status": {

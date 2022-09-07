@@ -1,7 +1,7 @@
 [
   {
-      "Duration": 246,
-      "RecordedAt": "2022-08-24T13:53:32.726011-06:00",
+      "Duration": 361,
+      "RecordedAt": "2022-09-07T14:53:57.070938-06:00",
       "Request": {
           "Body": "",
           "BodyContentType": "Text",
@@ -22,26 +22,26 @@
               "Expires": "0",
               "Content-Type": "application/json; charset=utf-8",
               "Content-Length": "1801"
-      },
-      "HttpVersion": "1.1",
-      "ResponseHeaders": {
-          "X-Frame-Options": "SAMEORIGIN",
-          "X-XSS-Protection": "1; mode=block",
-          "X-Content-Type-Options": "nosniff",
-          "x-download-options": "noopen",
-          "x-permitted-cross-domain-policies": "none",
-          "Referrer-Policy": "strict-origin-when-cross-origin",
-          "x-ep-request-uuid": "bffd75b8630681bcf7f1d95000794af7",
-          "Cache-Control": "no-store, no-cache, private",
-          "Pragma": "no-cache",
-          "ETag": "W/\"00c862705e26113b8ffeb007f410f95f\"",
-          "x-runtime": "0.057809",
-          "x-node": "bigweb6nuq",
-          "x-version-label": "easypost-202208241853-b300c23ebd-master",
-          "x-backend": "easypost",
-          "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
-          "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-      },
+          },
+          "HttpVersion": "1.1",
+          "ResponseHeaders": {
+              "X-Frame-Options": "SAMEORIGIN",
+              "X-XSS-Protection": "1; mode=block",
+              "X-Content-Type-Options": "nosniff",
+              "x-download-options": "noopen",
+              "x-permitted-cross-domain-policies": "none",
+              "Referrer-Policy": "strict-origin-when-cross-origin",
+              "x-ep-request-uuid": "3bde9a29631904e5e799f70d002e0c3b",
+              "Cache-Control": "no-store, no-cache, private",
+              "Pragma": "no-cache",
+              "ETag": "W/\"00c862705e26113b8ffeb007f410f95f\"",
+              "x-runtime": "0.056605",
+              "x-node": "bigweb3nuq",
+              "x-version-label": "easypost-202209071541-cbf5be725f-master",
+              "x-backend": "easypost",
+              "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
+              "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+          },
       "Status": {
         "Code": 200,
         "Message": "OK"

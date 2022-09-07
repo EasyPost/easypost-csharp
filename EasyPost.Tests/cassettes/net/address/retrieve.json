@@ -1,7 +1,7 @@
 [
   {
-      "Duration": 254,
-      "RecordedAt": "2022-08-24T13:53:31.970482-06:00",
+      "Duration": 380,
+      "RecordedAt": "2022-09-07T14:53:56.040726-06:00",
       "Request": {
           "Body": "{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\"}",
           "BodyContentType": "Json",
@@ -19,7 +19,7 @@
           "Uri": "https://api.easypost.com/v2/addresses"
       },
       "Response": {
-          "Body": "{\"id\":\"adr_6e7373b323e611ed8889ac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2022-08-24T13:53:32-06:00\",\"updated_at\":\"2022-08-24T13:53:32-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
+          "Body": "{\"id\":\"adr_305174d12eef11ed9802ac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2022-09-07T14:53:56-06:00\",\"updated_at\":\"2022-09-07T14:53:56-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
           "BodyContentType": "Json",
           "ContentHeaders": {
               "Expires": "0",
@@ -34,16 +34,16 @@
               "x-download-options": "noopen",
               "x-permitted-cross-domain-policies": "none",
               "Referrer-Policy": "strict-origin-when-cross-origin",
-              "x-ep-request-uuid": "bffd75b7630681bcf7cb887300794a72",
+              "x-ep-request-uuid": "3bde9a2a631904e4e799f6cd002e0bcb",
               "Cache-Control": "no-store, no-cache, private",
               "Pragma": "no-cache",
-              "Location": "/api/v2/addresses/adr_6e7373b323e611ed8889ac1f6b0a0d1e",
-              "ETag": "W/\"0acd71ce610680877be49bb457d1a9b4\"",
-              "x-runtime": "0.029013",
-              "x-node": "bigweb9nuq",
-              "x-version-label": "easypost-202208241853-b300c23ebd-master",
+              "Location": "/api/v2/addresses/adr_305174d12eef11ed9802ac1f6bc72124",
+              "ETag": "W/\"e6ce679dd6ca44da9c84751d87771bc4\"",
+              "x-runtime": "0.035806",
+              "x-node": "bigweb1nuq",
+              "x-version-label": "easypost-202209071541-cbf5be725f-master",
               "x-backend": "easypost",
-              "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
+              "x-proxied": "intlb1nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
               "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
           },
           "Status": {
@@ -53,8 +53,8 @@
       }
   },
     {
-        "Duration": 61,
-        "RecordedAt": "2022-08-24T13:53:32.058776-06:00",
+        "Duration": 111,
+        "RecordedAt": "2022-09-07T14:53:56.166302-06:00",
         "Request": {
             "Body": "",
             "BodyContentType": "Text",
@@ -66,10 +66,10 @@
                 "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
                 "User-Agent": "<REDACTED>"
             },
-            "Uri": "https://api.easypost.com/v2/addresses/adr_6e7373b323e611ed8889ac1f6b0a0d1e"
+            "Uri": "https://api.easypost.com/v2/addresses/adr_305174d12eef11ed9802ac1f6bc72124"
         },
         "Response": {
-            "Body": "{\"id\":\"adr_6e7373b323e611ed8889ac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2022-08-24T13:53:32-06:00\",\"updated_at\":\"2022-08-24T13:53:32-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
+            "Body": "{\"id\":\"adr_305174d12eef11ed9802ac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2022-09-07T14:53:56-06:00\",\"updated_at\":\"2022-09-07T14:53:56-06:00\",\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
             "BodyContentType": "Json",
             "ContentHeaders": {
                 "Expires": "0",
@@ -84,15 +84,15 @@
                 "x-download-options": "noopen",
                 "x-permitted-cross-domain-policies": "none",
                 "Referrer-Policy": "strict-origin-when-cross-origin",
-                "x-ep-request-uuid": "bffd75b7630681bcf7cb887300794a83",
+                "x-ep-request-uuid": "3bde9a2a631904e4e799f6cd002e0bda",
                 "Cache-Control": "no-store, no-cache, private",
                 "Pragma": "no-cache",
-                "ETag": "W/\"0acd71ce610680877be49bb457d1a9b4\"",
-                "x-runtime": "0.024295",
-                "x-node": "bigweb9nuq",
-                "x-version-label": "easypost-202208241853-b300c23ebd-master",
+                "ETag": "W/\"e6ce679dd6ca44da9c84751d87771bc4\"",
+                "x-runtime": "0.031889",
+                "x-node": "bigweb3nuq",
+                "x-version-label": "easypost-202209071541-cbf5be725f-master",
                 "x-backend": "easypost",
-                "x-proxied": "intlb1nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
+                "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
                 "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
             },
             "Status": {
@@ -100,5 +100,5 @@
                 "Message": "OK"
             }
         }
-  }
+    }
 ]
