@@ -1,110 +1,117 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class PickupTest
+    public class PickupTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
+        public PickupTest() : base("pickup")
         {
-            _vcr = new TestUtils.VCR("pickup");
         }
 
-        private static async Task<Pickup> CreateBasicPickup()
-        {
-            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
-            Dictionary<string, object> pickupData = Fixture.BasicPickup;
-            pickupData["shipment"] = shipment;
-            return await Pickup.Create(pickupData);
-        }
+        #region CRUD Operations
 
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            UseVCR("create");
 
             Pickup pickup = await CreateBasicPickup();
 
-            Assert.IsInstanceOfType(pickup, typeof(Pickup));
-            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
-            Assert.IsNotNull(pickup.pickup_rates);
+            Assert.IsType<Pickup>(pickup);
+            Assert.StartsWith("pickup_", pickup.id);
+            Assert.NotNull(pickup.pickup_rates);
         }
 
-        [TestMethod]
-        public async Task TestRetrieve()
-        {
-            _vcr.SetUpTest("retrieve");
-
-            Pickup pickup = await CreateBasicPickup();
-
-            Pickup retrievedPickup = await Pickup.Retrieve(pickup.id);
-
-            Assert.IsInstanceOfType(retrievedPickup, typeof(Pickup));
-            Assert.AreEqual(pickup, retrievedPickup);
-        }
-
-        [TestMethod]
-        public async Task TestBuy()
-        {
-            _vcr.SetUpTest("buy");
-
-            Pickup pickup = await CreateBasicPickup();
-
-            await pickup.Buy(Fixture.Usps, Fixture.PickupService);
-
-            Assert.IsInstanceOfType(pickup, typeof(Pickup));
-            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
-            Assert.IsNotNull(pickup.confirmation);
-            Assert.AreEqual("scheduled", pickup.status);
-        }
-
-        [TestMethod]
-        public async Task TestCancel()
-        {
-            _vcr.SetUpTest("cancel");
-
-            Pickup pickup = await CreateBasicPickup();
-
-            await pickup.Buy(Fixture.Usps, Fixture.PickupService);
-
-            await pickup.Cancel();
-
-            Assert.IsInstanceOfType(pickup, typeof(Pickup));
-            Assert.IsTrue(pickup.id.StartsWith("pickup_"));
-            Assert.AreEqual("canceled", pickup.status);
-        }
-
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read] // not really a Read operation, but most logical attribute to maintain CRUD placement
         public async Task TestLowestRate()
         {
-            _vcr.SetUpTest("lowest_rate");
+            UseVCR("lowest_rate");
 
             Pickup pickup = await CreateBasicPickup();
 
             // test lowest rate with no filters
             Rate lowestRate = pickup.LowestRate();
-            Assert.AreEqual("NextDay", lowestRate.service);
-            Assert.AreEqual("0.00", lowestRate.rate);
-            Assert.AreEqual("USPS", lowestRate.carrier);
+            Assert.Equal("NextDay", lowestRate.service);
+            Assert.Equal("0.00", lowestRate.rate);
+            Assert.Equal("USPS", lowestRate.carrier);
 
             // test lowest rate with service filter (should error due to bad service)
             List<string> services = new List<string>
             {
                 "BAD_SERVICE"
             };
-            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(null, services, null, null));
+            Assert.Throws<Exception>(() => pickup.LowestRate(null, services));
 
             // test lowest rate with carrier filter (should error due to bad carrier)
             List<string> carriers = new List<string>
             {
                 "BAD_CARRIER"
             };
-            Assert.ThrowsException<FilterFailure>(() => pickup.LowestRate(carriers, null, null, null));
+            Assert.Throws<Exception>(() => pickup.LowestRate(carriers));
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestRetrieve()
+        {
+            UseVCR("retrieve");
+
+            Pickup pickup = await CreateBasicPickup();
+
+            Pickup retrievedPickup = await Client.Pickup.Retrieve(pickup.id);
+
+            Assert.IsType<Pickup>(retrievedPickup);
+            Assert.Equal(pickup.id, retrievedPickup.id);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        public async Task TestBuy()
+        {
+            UseVCR("buy");
+
+            Pickup pickup = await CreateBasicPickup();
+
+            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
+
+            Assert.IsType<Pickup>(pickup);
+            Assert.StartsWith("pickup_", pickup.id);
+            Assert.NotNull(pickup.confirmation);
+            Assert.Equal("scheduled", pickup.status);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        public async Task TestCancel()
+        {
+            UseVCR("cancel");
+
+            Pickup pickup = await CreateBasicPickup();
+
+            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
+
+            pickup = await pickup.Cancel();
+
+            Assert.IsType<Pickup>(pickup);
+            Assert.StartsWith("pickup_", pickup.id);
+            Assert.Equal("canceled", pickup.status);
+        }
+
+        #endregion
+
+        private async Task<Pickup> CreateBasicPickup()
+        {
+            Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyShipment);
+            Dictionary<string, object> pickupData = Fixture.BasicPickup;
+            pickupData["shipment"] = shipment;
+            return await Client.Pickup.Create(pickupData);
         }
     }
 }

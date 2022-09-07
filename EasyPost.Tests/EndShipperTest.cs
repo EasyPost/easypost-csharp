@@ -1,93 +1,87 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Beta;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API.Beta;
+using EasyPost.Utilities.Annotations;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class EndShipperTest
+    public class EndShipperTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        // This (and all Beta features) cannot use VCR because of a known conflict between using a VCR/custom HttpClient and re-constructing RestSharp.
-
-        [TestInitialize]
-        public void Initialize()
+        public EndShipperTest() : base("end_shipper", TestUtils.ApiKey.Production)
         {
-            _vcr = new TestUtils.VCR("end_shipper", TestUtils.ApiKey.Production);
         }
 
-        [Ignore]
-        [TestMethod]
+        #region CRUD Operations
+
+        [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreate()
+        {
+            UseVCR("create");
+
+            EndShipper endShipper = await CreateBasicEndShipper();
+
+            Assert.IsType<EndShipper>(endShipper);
+            Assert.StartsWith("es_", endShipper.id);
+            Assert.Equal("388 TOWNSEND ST APT 20", endShipper.street1);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestAll()
         {
-            _vcr.SetUpTest("all");
+            UseVCR("all");
 
-            List<EndShipper> endShippers = await EndShipper.All(new Dictionary<string, object>
+            List<EndShipper> endShippers = await Client.Beta.EndShipper.All(new Dictionary<string, object>
             {
                 {
                     "page_size", Fixture.PageSize
                 }
             });
-
-            Assert.IsTrue(endShippers.Count <= Fixture.PageSize);
-            foreach (var item in endShippers)
+            Assert.True(endShippers.Count <= Fixture.PageSize);
+            foreach (EndShipper item in endShippers)
             {
-                Assert.IsInstanceOfType(item, typeof(EndShipper));
+                Assert.IsType<EndShipper>(item);
             }
         }
 
-        [Ignore]
-        [TestMethod]
-        public async Task TestCreate()
-        {
-            _vcr.SetUpTest("create");
-
-            EndShipper endShipper = await CreateBasicEndShipper();
-
-            Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
-            Assert.IsTrue(endShipper.id.StartsWith("es_"));
-            Assert.AreEqual("388 TOWNSEND ST APT 20", endShipper.street1);
-        }
-
-        [Ignore]
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
-            EndShipper retrievedEndShipper = await EndShipper.Retrieve(endShipper.id);
+            EndShipper retrievedEndShipper = await Client.Beta.EndShipper.Retrieve(endShipper.id);
 
-            Assert.IsInstanceOfType(retrievedEndShipper, typeof(EndShipper));
-            Assert.AreEqual(endShipper.street1, retrievedEndShipper.street1);
+            Assert.IsType<EndShipper>(retrievedEndShipper);
+            Assert.Equal(endShipper.street1, retrievedEndShipper.street1);
         }
 
-        [Ignore]
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Update]
         public async Task TestUpdate()
         {
-            _vcr.SetUpTest("update");
+            UseVCR("update");
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
-            string newPhoneNumber = "9999999999";
+            string testName = "NEW NAME";
 
             Dictionary<string, object> endShipperData = Fixture.EndShipperAddress;
-            endShipperData["phone"] = newPhoneNumber;
+            endShipperData["name"] = testName;
 
-            await endShipper.Update(endShipperData);
+            endShipper = await endShipper.Update(endShipperData);
 
-            Assert.IsInstanceOfType(endShipper, typeof(EndShipper));
-            Assert.IsTrue(endShipper.id.StartsWith("es_"));
-            Assert.AreEqual(newPhoneNumber, endShipper.phone);
+            Assert.IsType<EndShipper>(endShipper);
+            Assert.StartsWith("es_", endShipper.id);
+            Assert.Equal(testName, endShipper.name);
         }
 
-        private static async Task<EndShipper> CreateBasicEndShipper()
-        {
-            return await EndShipper.Create(Fixture.EndShipperAddress);
-        }
+        #endregion
+
+        private async Task<EndShipper> CreateBasicEndShipper() => await Client.Beta.EndShipper.Create(Fixture.EndShipperAddress);
     }
 }

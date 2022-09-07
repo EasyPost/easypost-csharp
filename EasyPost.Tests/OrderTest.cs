@@ -1,55 +1,38 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class OrderTest
+    public class OrderTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
+        public OrderTest() : base("order")
         {
-            _vcr = new TestUtils.VCR("order");
         }
 
-        private static async Task<Order> CreateBasicOrder()
-        {
-            return await Order.Create(Fixture.BasicOrder);
-        }
+        #region CRUD Operations
 
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            UseVCR("create");
 
             Order order = await CreateBasicOrder();
 
-            Assert.IsInstanceOfType(order, typeof(Order));
-            Assert.IsTrue(order.id.StartsWith("order_"));
-            Assert.IsNotNull(order.rates);
+            Assert.IsType<Order>(order);
+            Assert.StartsWith("order_", order.id);
+            Assert.NotNull(order.rates);
         }
 
-        [TestMethod]
-        public async Task TestRetrieve()
-        {
-            _vcr.SetUpTest("retrieve");
-
-            Order order = await CreateBasicOrder();
-
-            Order retrievedOrder = await Order.Retrieve(order.id);
-
-            Assert.IsInstanceOfType(retrievedOrder, typeof(Order));
-            // Must compare IDs since other elements of objects may be different
-            Assert.AreEqual(order.id, retrievedOrder.id);
-        }
-
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestGetRates()
         {
-            _vcr.SetUpTest("get_rates");
+            UseVCR("get_rates");
 
             Order order = await CreateBasicOrder();
 
@@ -57,60 +40,81 @@ namespace EasyPost.Tests
 
             List<Rate> rates = order.rates;
 
-            Assert.IsNotNull(rates);
-            foreach (var rate in rates)
+            Assert.NotNull(rates);
+            foreach (Rate rate in rates)
             {
-                Assert.IsInstanceOfType(rate, typeof(Rate));
+                Assert.IsType<Rate>(rate);
             }
         }
 
-        [TestMethod]
-        public async Task TestBuy()
-        {
-            _vcr.SetUpTest("buy");
-
-            Order order = await CreateBasicOrder();
-
-            await order.Buy(Fixture.Usps, Fixture.UspsService);
-
-            List<Shipment> shipments = order.shipments;
-
-            foreach (var shipment in shipments)
-            {
-                Assert.IsInstanceOfType(shipment, typeof(Shipment));
-                Assert.IsNotNull(shipment.postage_label);
-            }
-        }
-
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read] // not really a Read operation, but most logical attribute to maintain CRUD placement
         public async Task TestLowestRate()
         {
-            _vcr.SetUpTest("lowest_rate");
+            UseVCR("lowest_rate");
 
             Order order = await CreateBasicOrder();
 
             // test lowest rate with no filters
             Rate lowestRate = order.LowestRate();
-            Assert.AreEqual("First", lowestRate.service);
-            Assert.AreEqual("5.49", lowestRate.rate);
-            Assert.AreEqual("USPS", lowestRate.carrier);
+            Assert.Equal("First", lowestRate.service);
+            Assert.Equal("5.49", lowestRate.rate);
+            Assert.Equal("USPS", lowestRate.carrier);
 
             // test lowest rate with service filter (this rate is higher than the lowest but should filter)
             List<string> services = new List<string>
             {
                 "Priority"
             };
-            lowestRate = order.LowestRate(null, services, null, null);
-            Assert.AreEqual("Priority", lowestRate.service);
-            Assert.AreEqual("7.37", lowestRate.rate);
-            Assert.AreEqual("USPS", lowestRate.carrier);
+            lowestRate = order.LowestRate(null, services);
+            Assert.Equal("Priority", lowestRate.service);
+            Assert.Equal("7.37", lowestRate.rate);
+            Assert.Equal("USPS", lowestRate.carrier);
 
             // test lowest rate with carrier filter (should error due to bad carrier)
             List<string> carriers = new List<string>
             {
                 "BAD_CARRIER"
             };
-            Assert.ThrowsException<FilterFailure>(() => order.LowestRate(carriers, null, null, null));
+            Assert.Throws<Exception>(() => order.LowestRate(carriers));
         }
+
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestRetrieve()
+        {
+            UseVCR("retrieve");
+
+            Order order = await CreateBasicOrder();
+
+            Order retrievedOrder = await Client.Order.Retrieve(order.id);
+
+            Assert.IsType<Order>(retrievedOrder);
+            // Must compare IDs since other elements of objects may be different
+            Assert.Equal(order.id, retrievedOrder.id);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        public async Task TestBuy()
+        {
+            UseVCR("buy");
+
+            Order order = await CreateBasicOrder();
+
+            order = await order.Buy(Fixture.Usps, Fixture.UspsService);
+
+            List<Shipment> shipments = order.shipments;
+
+            foreach (Shipment shipment in shipments)
+            {
+                Assert.IsType<Shipment>(shipment);
+                Assert.NotNull(shipment.postage_label);
+            }
+        }
+
+        #endregion
+
+        private async Task<Order> CreateBasicOrder() => await Client.Order.Create(Fixture.BasicOrder);
     }
 }

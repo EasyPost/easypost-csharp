@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using EasyPost.Models.API;
+using EasyPost.Utilities;
+using RestSharp;
 
 namespace EasyPost
 {
@@ -38,6 +41,32 @@ namespace EasyPost
             info.AddValue("StatusCode", StatusCode);
             info.AddValue("Code", Code);
             info.AddValue("Errors", Errors);
+        }
+
+        public static HttpException FromResponse(RestResponse response)
+        {
+            int statusCode = (int)response.StatusCode;
+
+            try
+            {
+                Dictionary<string, Dictionary<string, object>> body = JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
+                List<Error> errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string>
+                {
+                    "error",
+                    "errors"
+                });
+
+                return new HttpException(
+                    statusCode,
+                    (string)body["error"]["code"],
+                    (string)body["error"]["message"],
+                    errors
+                );
+            }
+            catch
+            {
+                return new HttpException(statusCode, "RESPONSE.PARSE_ERROR", response.Content, new List<Error>());
+            }
         }
     }
 

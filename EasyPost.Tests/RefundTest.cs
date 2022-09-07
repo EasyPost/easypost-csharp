@@ -1,26 +1,89 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class RefundTest
+    public class RefundTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
+        public RefundTest() : base("refund")
         {
-            _vcr = new TestUtils.VCR("refund");
         }
 
-        private static async Task<List<Refund>> CreateBasicRefund()
-        {
-            Shipment shipment = await Shipment.Create(Fixture.OneCallBuyShipment);
-            Shipment retrievedShipment = await Shipment.Retrieve(shipment.id); // We need to retrieve the shipment so that the tracking_code has time to populate
+        #region CRUD Operations
 
-            return await Refund.Create(new Dictionary<string, object>
+        [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreate()
+        {
+            UseVCR("create");
+
+            List<Refund> refunds = await CreateBasicRefund();
+
+            foreach (Refund item in refunds)
+            {
+                Assert.IsType<Refund>(item);
+            }
+
+            Refund refund = refunds[0];
+            Assert.StartsWith("rfnd_", refund.id);
+            Assert.Equal("submitted", refund.status);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestAll()
+        {
+            UseVCR("all");
+
+            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object>
+            {
+                {
+                    "page_size", Fixture.PageSize
+                }
+            });
+
+            List<Refund> refunds = refundCollection.refunds;
+
+            Assert.True(refundCollection.has_more);
+            Assert.True(refunds.Count <= Fixture.PageSize);
+            foreach (Refund item in refunds)
+            {
+                Assert.IsType<Refund>(item);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestRetrieve()
+        {
+            UseVCR("retrieve");
+
+            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object>
+            {
+                {
+                    "page_size", Fixture.PageSize
+                }
+            });
+
+            Refund refund = (await CreateBasicRefund())[0];
+
+            Refund retrievedRefund = await Client.Refund.Retrieve(refund.id);
+
+            Assert.IsType<Refund>(retrievedRefund);
+            Assert.Equal(refund, retrievedRefund);
+        }
+
+        #endregion
+
+        private async Task<List<Refund>> CreateBasicRefund()
+        {
+            Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyShipment);
+            Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.id); // We need to retrieve the shipment so that the tracking_code has time to populate
+
+            return await Client.Refund.Create(new Dictionary<string, object>
             {
                 {
                     "carrier", Fixture.Usps
@@ -32,58 +95,6 @@ namespace EasyPost.Tests
                     }
                 }
             });
-        }
-
-        [TestMethod]
-        public async Task TestCreate()
-        {
-            _vcr.SetUpTest("create");
-
-            List<Refund> refunds = await CreateBasicRefund();
-
-            foreach (var item in refunds)
-            {
-                Assert.IsInstanceOfType(item, typeof(Refund));
-            }
-
-            Refund refund = refunds[0];
-            Assert.IsTrue(refund.id.StartsWith("rfnd_"));
-            Assert.AreEqual("submitted", refund.status);
-        }
-
-        [TestMethod]
-        public async Task TestAll()
-        {
-            _vcr.SetUpTest("all");
-
-            RefundCollection refundCollection = await Refund.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
-
-            List<Refund> refunds = refundCollection.refunds;
-
-            Assert.IsTrue(refunds.Count <= Fixture.PageSize);
-            Assert.IsNotNull(refundCollection.has_more);
-            foreach (var item in refunds)
-            {
-                Assert.IsInstanceOfType(item, typeof(Refund));
-            }
-        }
-
-        [TestMethod]
-        public async Task TestRetrieve()
-        {
-            _vcr.SetUpTest("retrieve");
-
-            Refund refund = (await CreateBasicRefund())[0];
-
-            Refund retrievedRefund = await Refund.Retrieve(refund.id);
-
-            Assert.IsInstanceOfType(retrievedRefund, typeof(Refund));
-            Assert.AreEqual(refund, retrievedRefund);
         }
     }
 }

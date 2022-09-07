@@ -1,111 +1,125 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class WebhookTest
+    public class WebhookTest : UnitTest
     {
-        private static string _easypostWebhookId = null;
-        private static TestUtils.VCR _vcr;
+        // NOTE: Because the API does not allow two webhooks with the same URL,
+        // and these tests run in parallel, each test needs to have a unique URL.
 
-        [TestCleanup]
-        public async Task Cleanup()
-        {
-            if (_easypostWebhookId != null)
+        public WebhookTest() : base("webhook") =>
+            CleanupFunction = async id =>
             {
                 try
                 {
-                    Webhook retrievedWebhook = await Webhook.Retrieve(_easypostWebhookId);
+                    Webhook retrievedWebhook = await Client.Webhook.Retrieve(id);
                     await retrievedWebhook.Delete();
-                    _easypostWebhookId = null;
+                    return true;
                 }
                 catch
                 {
-                    // in case we try to delete something that's already been deleted
+                    // trying to delete something that doesn't exist, pass
+                    return false;
                 }
-            }
-        }
+            };
 
-        [TestInitialize]
-        public void Initialize()
-        {
-            _vcr = new TestUtils.VCR("webhook");
-        }
+        #region CRUD Operations
 
-        [TestMethod]
-        public async Task TestAll()
-        {
-            _vcr.SetUpTest("all");
-
-            List<Webhook> webhooks = await Webhook.All();
-
-            foreach (var item in webhooks)
-            {
-                Assert.IsInstanceOfType(item, typeof(Webhook));
-            }
-        }
-
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            UseVCR("create");
 
-            Webhook webhook = await CreateBasicWebhook();
+            const string url = "https://example.com/create";
 
-            Assert.IsInstanceOfType(webhook, typeof(Webhook));
-            Assert.IsTrue(webhook.id.StartsWith("hook_"));
-            Assert.AreEqual(Fixture.WebhookUrl, webhook.url);
+            Webhook webhook = await CreateBasicWebhook(url);
+
+            Assert.IsType<Webhook>(webhook);
+            Assert.StartsWith("hook_", webhook.id);
+            Assert.Equal(url, webhook.url);
         }
 
-        [TestMethod]
-        public async Task TestDelete()
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestAll()
         {
-            _vcr.SetUpTest("delete");
+            UseVCR("all");
 
-            Webhook webhook = await CreateBasicWebhook();
-            Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
+            List<Webhook> webhooks = await Client.Webhook.All();
 
-            bool success = await retrievedWebhook.Delete();
-            Assert.IsTrue(success);
-
-            _easypostWebhookId = null; // skip deletion cleanup
+            foreach (Webhook item in webhooks)
+            {
+                Assert.IsType<Webhook>(item);
+            }
         }
 
-        [TestMethod]
-        public async Task TestEnableDisable()
-        {
-            _vcr.SetUpTest("update");
-
-            Webhook webhook = await CreateBasicWebhook();
-
-            await webhook.Update();
-            // TODO: We should call this something more intuitive in the future, since it doesn't work like the other Update function
-        }
-
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
-            Webhook webhook = await CreateBasicWebhook();
+            const string url = "https://example.com/retrieve";
 
-            Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
+            Webhook webhook = await CreateBasicWebhook(url);
 
-            Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
-            Assert.AreEqual(webhook, retrievedWebhook);
+            Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.id);
+
+            Assert.IsType<Webhook>(retrievedWebhook);
+            Assert.Equal(webhook, retrievedWebhook);
         }
 
-        private static async Task<Webhook> CreateBasicWebhook()
+        [Fact]
+        [CrudOperations.Update]
+        public async Task TestUpdate()
         {
-            Webhook webhook = await Webhook.Create(new Dictionary<string, object>
+            UseVCR("update");
+
+            const string url = "https://example.com/update";
+
+            Webhook webhook = await CreateBasicWebhook(url);
+
+            webhook = await webhook.Update();
+
+            Assert.IsType<Webhook>(webhook);
+            Assert.StartsWith("hook_", webhook.id);
+        }
+
+        [Fact]
+        [CrudOperations.Delete]
+        public async Task TestDelete()
+        {
+            UseVCR("delete");
+
+            const string url = "https://example.com/delete";
+
+            Webhook webhook = await CreateBasicWebhook(url);
+            Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.id);
+
+            var possibleException = await Record.ExceptionAsync(async () => await retrievedWebhook.Delete());
+
+            Assert.Null(possibleException);
+
+            SkipCleanUpAfterTest();
+        }
+
+        #endregion
+
+        private async Task<Webhook> CreateBasicWebhook(string url)
+        {
+            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object>
             {
                 {
-                    "url", Fixture.WebhookUrl
+                    "url", url
                 }
             });
-            _easypostWebhookId = webhook.id; // trigger deletion after test
+            CleanUpAfterTest(webhook.id);
+
             return webhook;
         }
     }

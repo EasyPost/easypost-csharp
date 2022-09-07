@@ -1,48 +1,47 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class CustomsInfoTest
+    public class CustomsInfoTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
+        public CustomsInfoTest() : base("customs_info")
         {
-            _vcr = new TestUtils.VCR("customs_info");
         }
 
-        private static async Task<CustomsInfo> CreateBasicCustomsInfo()
-        {
-            return await CustomsInfo.Create(Fixture.BasicCustomsInfo);
-        }
+        #region CRUD Operations
 
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            UseVCR("create");
 
             CustomsInfo customsInfo = await CreateBasicCustomsInfo();
 
-            Assert.IsInstanceOfType(customsInfo, typeof(CustomsInfo));
-            Assert.IsTrue(customsInfo.id.StartsWith("cstinfo_"));
-            Assert.AreEqual("NOEEI 30.37(a)", customsInfo.eel_pfc);
+            Assert.IsType<CustomsInfo>(customsInfo);
+            Assert.StartsWith("cstinfo_", customsInfo.id);
+            Assert.Equal("NOEEI 30.37(a)", customsInfo.eel_pfc);
         }
 
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
-
+            UseVCR("retrieve");
 
             CustomsInfo customsInfo = await CreateBasicCustomsInfo();
 
-            CustomsInfo retrievedCustomsInfo = await CustomsInfo.Retrieve(customsInfo.id);
+            CustomsInfo retrievedCustomsInfo = await Client.CustomsInfo.Retrieve(customsInfo.id);
 
-            Assert.IsInstanceOfType(retrievedCustomsInfo, typeof(CustomsInfo));
-            Assert.AreEqual(customsInfo, retrievedCustomsInfo);
+            Assert.IsType<CustomsInfo>(retrievedCustomsInfo);
+            Assert.Equal(customsInfo, retrievedCustomsInfo);
         }
+
+        #endregion
+
+        private async Task<CustomsInfo> CreateBasicCustomsInfo() => await Client.CustomsInfo.Create(Fixture.BasicCustomsInfo);
     }
 }

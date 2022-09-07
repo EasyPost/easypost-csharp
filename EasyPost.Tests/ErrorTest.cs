@@ -1,51 +1,38 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class ErrorTest
+    public class ErrorTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
+        public ErrorTest() : base("error")
         {
-            _vcr = new TestUtils.VCR("error");
         }
 
-        [TestMethod]
-        public async Task TestError()
+        [Fact]
+        public async Task TestBadParameters()
         {
-            _vcr.SetUpTest("error");
+            UseVCR("bad_parameters");
 
             try
             {
-                var _ = await Shipment.Create();
+                var _ = await Client.Shipment.Create(new Dictionary<string, object>());
             }
             catch (HttpException error)
             {
-                Assert.AreEqual(422, error.StatusCode);
-                Assert.AreEqual("SHIPMENT.INVALID_PARAMS", error.Code);
-                Assert.AreEqual("Unable to create shipment, one or more parameters were invalid.", error.Message);
-                Assert.IsTrue(error.Errors.Count == 2);
+                Assert.Equal(422, error.StatusCode);
+                Assert.Equal("PARAMETER.REQUIRED", error.Code);
+                Assert.Equal("Missing required parameter.", error.Message);
+                Assert.True(error.Errors.Count == 1);
             }
         }
 
-        [TestMethod]
-        public async Task TestEmptyApiKey()
+        [Fact(Skip = "Test is no longer valid")]
+        public Task TestEmptyApiKey()
         {
-            ClientManager.SetCurrent("");
-
-            try
-            {
-                var _ = await Shipment.Create();
-            }
-            catch (Exception error)
-            {
-                Assert.AreEqual("API key is required.", error.Message);
-            }
+            // No longer possible to have an empty API key
+            return Task.CompletedTask;
         }
     }
 }

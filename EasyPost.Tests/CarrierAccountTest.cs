@@ -1,131 +1,131 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class CarrierAccountTest
+    public class CarrierAccountTest : UnitTest
     {
-        private static string _carrierAccountId = null;
-
-        private TestUtils.VCR _vcr;
-
-        [TestCleanup]
-        public async Task Cleanup()
-        {
-            if (_carrierAccountId != null)
+        public CarrierAccountTest() : base("carrier_account", TestUtils.ApiKey.Production) =>
+            CleanupFunction = async id =>
             {
                 try
                 {
-                    CarrierAccount retrievedCarrierAccount = await CarrierAccount.Retrieve(_carrierAccountId);
+                    CarrierAccount retrievedCarrierAccount = await Client.CarrierAccount.Retrieve(id);
                     await retrievedCarrierAccount.Delete();
-                    _carrierAccountId = null;
+                    return true;
                 }
                 catch
                 {
-                    // in case we try to delete something that's already been deleted
+                    // trying to delete something that doesn't exist, pass
+                    return false;
                 }
-            }
-        }
+            };
 
-        private static async Task<CarrierAccount> CreateBasicCarrierAccount()
-        {
-            CarrierAccount carrierAccount = await CarrierAccount.Create(Fixture.BasicCarrierAccount);
-            _carrierAccountId = carrierAccount.id; // trigger deletion after test
-            return carrierAccount;
-        }
+        #region CRUD Operations
 
-        [TestInitialize]
-        public void Initialize()
-        {
-            _vcr = new TestUtils.VCR("carrier_account", TestUtils.ApiKey.Production);
-        }
-
-        [TestMethod]
-        public async Task TestAll()
-        {
-            _vcr.SetUpTest("all");
-
-            List<CarrierAccount> carrierAccounts = await CarrierAccount.All();
-
-            foreach (var item in carrierAccounts)
-            {
-                Assert.IsInstanceOfType(item, typeof(CarrierAccount));
-            }
-        }
-
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            UseVCR("create");
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
-            Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
-            Assert.IsTrue(carrierAccount.id.StartsWith("ca_"));
+            Assert.IsType<CarrierAccount>(carrierAccount);
+            Assert.StartsWith("ca_", carrierAccount.id);
         }
 
-        [TestMethod]
-        public async Task TestDelete()
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestAll()
         {
-            _vcr.SetUpTest("delete");
+            UseVCR("all");
 
-            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
+            List<CarrierAccount> carrierAccounts = await Client.CarrierAccount.All();
 
-            bool success = await carrierAccount.Delete();
-
-            Assert.IsTrue(success);
-
-            _carrierAccountId = null; // skip deletion cleanup
-        }
-
-        [TestMethod]
-        public async Task TestRetrieve()
-        {
-            _vcr.SetUpTest("retrieve");
-
-            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
-
-            CarrierAccount retrievedCarrierAccount = await CarrierAccount.Retrieve(carrierAccount.id);
-
-            Assert.IsInstanceOfType(retrievedCarrierAccount, typeof(CarrierAccount));
-            Assert.AreEqual(carrierAccount, retrievedCarrierAccount);
-        }
-
-        [TestMethod]
-        public async Task TestTypes()
-        {
-            _vcr.SetUpTest("types");
-
-            List<CarrierType> types = await CarrierType.All();
-
-            foreach (var item in types)
+            foreach (CarrierAccount item in carrierAccounts)
             {
-                Assert.IsInstanceOfType(item, typeof(CarrierType));
+                Assert.IsType<CarrierAccount>(item);
             }
         }
 
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestRetrieve()
+        {
+            UseVCR("retrieve");
+
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
+
+            CarrierAccount retrievedCarrierAccount = await Client.CarrierAccount.Retrieve(carrierAccount.id);
+
+            Assert.IsType<CarrierAccount>(retrievedCarrierAccount);
+            Assert.Equal(carrierAccount, retrievedCarrierAccount);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestTypes()
+        {
+            UseVCR("types");
+
+            List<CarrierType> types = await Client.CarrierType.All();
+
+            foreach (CarrierType item in types)
+            {
+                Assert.IsType<CarrierType>(item);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Update]
         public async Task TestUpdate()
         {
-            _vcr.SetUpTest("update");
+            UseVCR("update");
 
             CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
 
             string testDescription = "my custom description";
 
-            Dictionary<string, object> carrierAccountData = new Dictionary<string, object>
+            Dictionary<string, object> carrierAccountData = new Dictionary<string, object>()
             {
                 {
                     "description", testDescription
                 }
             };
-            await carrierAccount.Update(carrierAccountData);
+            carrierAccount = await carrierAccount.Update(carrierAccountData);
 
-            Assert.IsInstanceOfType(carrierAccount, typeof(CarrierAccount));
-            Assert.IsTrue(carrierAccount.id.StartsWith("ca_"));
-            Assert.AreEqual(testDescription, carrierAccount.description);
+            Assert.IsType<CarrierAccount>(carrierAccount);
+            Assert.StartsWith("ca_", carrierAccount.id);
+            Assert.Equal(testDescription, carrierAccount.description);
+        }
+
+        [Fact]
+        [CrudOperations.Delete]
+        public async Task TestDelete()
+        {
+            UseVCR("delete");
+
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
+
+            var possibleException = await Record.ExceptionAsync(async () => await carrierAccount.Delete());
+
+            Assert.Null(possibleException);
+
+            SkipCleanUpAfterTest();
+        }
+
+        #endregion
+
+        private async Task<CarrierAccount> CreateBasicCarrierAccount()
+        {
+            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(Fixture.BasicCarrierAccount);
+            CleanUpAfterTest(carrierAccount.id);
+
+            return carrierAccount;
         }
     }
 }
