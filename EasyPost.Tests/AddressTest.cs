@@ -49,10 +49,7 @@ namespace EasyPost.Tests
             UseVCR("create_verify_strict");
 
             Dictionary<string, object> addressData = Fixture.BasicAddress;
-            addressData.Add("verify_strict", new List<bool>
-            {
-                true
-            });
+            addressData.Add("verify_strict", new List<bool> { true });
 
             Address address = await Client.Address.Create(addressData);
 
@@ -67,12 +64,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            AddressCollection addressCollection = await Client.Address.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
+            AddressCollection addressCollection = await Client.Address.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
             List<Address> addresses = addressCollection.addresses;
 
             Assert.True(addressCollection.has_more);
@@ -104,10 +96,7 @@ namespace EasyPost.Tests
             UseVCR("create_and_verify");
 
             Dictionary<string, object> addressData = Fixture.BasicAddress;
-            addressData.Add("verify_strict", new List<bool>
-            {
-                true
-            });
+            addressData.Add("verify_strict", new List<bool> { true });
 
             Address address = await Client.Address.CreateAndVerify(addressData);
 

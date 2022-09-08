@@ -90,12 +90,7 @@ namespace EasyPost.Tests
 
             string testDescription = "my custom description";
 
-            Dictionary<string, object> carrierAccountData = new Dictionary<string, object>()
-            {
-                {
-                    "description", testDescription
-                }
-            };
+            Dictionary<string, object> carrierAccountData = new Dictionary<string, object>() { { "description", testDescription } };
             carrierAccount = await carrierAccount.Update(carrierAccountData);
 
             Assert.IsType<CarrierAccount>(carrierAccount);

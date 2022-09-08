@@ -34,15 +34,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create_and_buy");
 
-            Batch batch = await Client.Batch.CreateAndBuy(new Dictionary<string, object>
-            {
-                {
-                    "shipments", new List<Dictionary<string, object>>
-                    {
-                        Fixture.OneCallBuyShipment
-                    }
-                }
-            });
+            Batch batch = await Client.Batch.CreateAndBuy(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixture.OneCallBuyShipment } } });
 
             Assert.IsType<Batch>(batch);
             Assert.StartsWith("batch_", batch.id);
@@ -55,12 +47,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            BatchCollection batchCollection = await Client.Batch.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
+            BatchCollection batchCollection = await Client.Batch.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
 
             List<Batch> batches = batchCollection.batches;
 
@@ -82,17 +69,11 @@ namespace EasyPost.Tests
 
             Batch batch = await Client.Batch.Create();
 
-            batch = await batch.AddShipments(new List<Shipment>
-            {
-                shipment
-            });
+            batch = await batch.AddShipments(new List<Shipment> { shipment });
 
             Assert.Equal(1, batch.num_shipments);
 
-            batch = await batch.RemoveShipments(new List<Shipment>
-            {
-                shipment
-            });
+            batch = await batch.RemoveShipments(new List<Shipment> { shipment });
 
             Assert.Equal(0, batch.num_shipments);
         }
@@ -171,25 +152,9 @@ namespace EasyPost.Tests
         #endregion
 
         private async Task<Batch> CreateBasicBatch() =>
-            await Client.Batch.Create(new Dictionary<string, object>
-            {
-                {
-                    "shipments", new List<Dictionary<string, object>>
-                    {
-                        Fixture.BasicShipment
-                    }
-                }
-            });
+            await Client.Batch.Create(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixture.BasicShipment } } });
 
         private async Task<Batch> CreateOneCallBuyBatch() =>
-            await Client.Batch.Create(new Dictionary<string, object>
-            {
-                {
-                    "shipments", new List<Dictionary<string, object>>
-                    {
-                        Fixture.OneCallBuyShipment
-                    }
-                }
-            });
+            await Client.Batch.Create(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixture.OneCallBuyShipment } } });
     }
 }

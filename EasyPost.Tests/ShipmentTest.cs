@@ -82,10 +82,7 @@ namespace EasyPost.Tests
             UseVCR("create_tax_identifiers");
 
             Dictionary<string, object> shipmentData = Fixture.BasicShipment;
-            shipmentData["tax_identifiers"] = new List<Dictionary<string, object>>
-            {
-                Fixture.TaxIdentifier
-            };
+            shipmentData["tax_identifiers"] = new List<Dictionary<string, object>> { Fixture.TaxIdentifier };
 
             Shipment shipment = await Client.Shipment.Create(shipmentData);
 
@@ -106,30 +103,9 @@ namespace EasyPost.Tests
 
             Shipment shipment = await Client.Shipment.Create(new Dictionary<string, object>
             {
-                {
-                    "from_address", new Dictionary<string, object>
-                    {
-                        {
-                            "id", fromAddress.id
-                        }
-                    }
-                },
-                {
-                    "to_address", new Dictionary<string, object>
-                    {
-                        {
-                            "id", toAddress.id
-                        }
-                    }
-                },
-                {
-                    "parcel", new Dictionary<string, object>
-                    {
-                        {
-                            "id", parcel.id
-                        }
-                    }
-                }
+                { "from_address", new Dictionary<string, object> { { "id", fromAddress.id } } },
+                { "to_address", new Dictionary<string, object> { { "id", toAddress.id } } },
+                { "parcel", new Dictionary<string, object> { { "id", parcel.id } } }
             });
 
             Assert.IsType<Shipment>(shipment);
@@ -178,12 +154,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            ShipmentCollection shipmentCollection = await Client.Shipment.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
+            ShipmentCollection shipmentCollection = await Client.Shipment.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
 
             List<Shipment> shipments = shipmentCollection.shipments;
 
@@ -231,20 +202,14 @@ namespace EasyPost.Tests
             Assert.Equal("USPS", lowestRate.carrier);
 
             // test lowest rate with service filter (this rate is higher than the lowest but should filter)
-            List<string> services = new List<string>
-            {
-                "Priority"
-            };
+            List<string> services = new List<string> { "Priority" };
             lowestRate = shipment.LowestRate(null, services);
             Assert.Equal("Priority", lowestRate.service);
             Assert.Equal("7.37", lowestRate.rate);
             Assert.Equal("USPS", lowestRate.carrier);
 
             // test lowest rate with carrier filter (should error due to bad carrier)
-            List<string> carriers = new List<string>
-            {
-                "BAD_CARRIER"
-            };
+            List<string> carriers = new List<string> { "BAD_CARRIER" };
             Assert.Throws<Exception>(() => shipment.LowestRate(carriers));
         }
 

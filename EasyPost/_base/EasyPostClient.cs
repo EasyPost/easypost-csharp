@@ -68,10 +68,7 @@ namespace EasyPost._base
             List<string>? rootElements = null;
             if (request.RootElement != null)
             {
-                rootElements = new List<string>
-                {
-                    request.RootElement
-                };
+                rootElements = new List<string> { request.RootElement };
             }
 
             // Deserialize the response into an object
@@ -119,10 +116,7 @@ namespace EasyPost._base
         {
             // construct a new service
             var cons = typeof(T).GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
-            return (T)cons[0].Invoke(new object[]
-            {
-                this
-            });
+            return (T)cons[0].Invoke(new object[] { this });
         }
 
         /// <summary>

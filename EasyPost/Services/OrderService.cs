@@ -36,12 +36,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Order> Create(Dictionary<string, object> parameters)
         {
-            parameters = new Dictionary<string, object>
-            {
-                {
-                    "order", parameters
-                }
-            };
+            parameters = new Dictionary<string, object> { { "order", parameters } };
             return await Create<Order>("orders", parameters);
         }
 

@@ -34,12 +34,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            InsuranceCollection insuranceCollection = await Client.Insurance.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
+            InsuranceCollection insuranceCollection = await Client.Insurance.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
 
             List<Insurance> insurances = insuranceCollection.insurances;
 

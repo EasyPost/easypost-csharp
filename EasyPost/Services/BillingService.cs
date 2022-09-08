@@ -28,12 +28,7 @@ namespace EasyPost.Services
 
             PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
 
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                {
-                    "amount", amount
-                }
-            };
+            Dictionary<string, object> parameters = new Dictionary<string, object> { { "amount", amount } };
 
             await CreateNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.id}/charge", parameters);
         }
@@ -86,15 +81,9 @@ namespace EasyPost.Services
             PaymentMethod? paymentMethod = null;
             var @switch = new SwitchCase
             {
-                {
-                    PaymentMethod.Priority.Primary, () => { paymentMethod = paymentMethodsSummarySummary.primary_payment_method; }
-                },
-                {
-                    PaymentMethod.Priority.Secondary, () => { paymentMethod = paymentMethodsSummarySummary.secondary_payment_method; }
-                },
-                {
-                    SwitchCaseScenario.Default, () => throw new Exception("Invalid priority provided.")
-                }
+                { PaymentMethod.Priority.Primary, () => { paymentMethod = paymentMethodsSummarySummary.primary_payment_method; } },
+                { PaymentMethod.Priority.Secondary, () => { paymentMethod = paymentMethodsSummarySummary.secondary_payment_method; } },
+                { SwitchCaseScenario.Default, () => throw new Exception("Invalid priority provided.") }
             };
 
             @switch.Match(priority);

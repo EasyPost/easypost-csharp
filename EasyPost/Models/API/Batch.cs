@@ -53,12 +53,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(List<Shipment> shipmentsToAdd)
         {
-            var parameters = new Dictionary<string, object>
-            {
-                {
-                    "shipments", shipmentsToAdd
-                }
-            };
+            var parameters = new Dictionary<string, object> { { "shipments", shipmentsToAdd } };
             return await AddShipments(parameters);
         }
 
@@ -69,10 +64,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(IEnumerable<string> shipmentIds)
         {
-            List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment
-            {
-                id = shipmentId
-            }).ToList();
+            List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment { id = shipmentId }).ToList();
 
             return await AddShipments(shipments);
         }
@@ -94,12 +86,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> GenerateLabel(string fileFormat = "pdf")
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                {
-                    "file_format", fileFormat
-                }
-            };
+            Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
             await Update<Batch>(Method.Post, $"batches/{id}/label", parameters);
             return this;
         }
@@ -111,12 +98,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> GenerateScanForm(string fileFormat = "pdf")
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                {
-                    "file_format", fileFormat
-                }
-            };
+            Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
             await Update<Batch>(Method.Post, $"batches/{id}/scan_form", parameters);
             return this;
         }
@@ -139,12 +121,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(List<Shipment> shipmentsToAdd)
         {
-            var parameters = new Dictionary<string, object>
-            {
-                {
-                    "shipments", shipmentsToAdd
-                }
-            };
+            var parameters = new Dictionary<string, object> { { "shipments", shipmentsToAdd } };
             return await RemoveShipments(parameters);
         }
 
@@ -155,10 +132,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(IEnumerable<string> shipmentIds)
         {
-            List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment
-            {
-                id = shipmentId
-            }).ToList();
+            List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment { id = shipmentId }).ToList();
 
             return await RemoveShipments(shipments);
         }
