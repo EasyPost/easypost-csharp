@@ -26,12 +26,8 @@ namespace EasyPost.Services
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
-                {
-                    "carrier", carrier
-                },
-                {
-                    "tracking_code", trackingCode
-                }
+                { "carrier", carrier },
+                { "tracking_code", trackingCode }
             };
             return await Create<Tracker>("trackers", parameters);
         }

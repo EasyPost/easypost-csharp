@@ -62,18 +62,10 @@ namespace EasyPost.Services
             return await Create(
                 new Dictionary<string, object>
                 {
-                    {
-                        "to_address", shipment.from_address
-                    },
-                    {
-                        "from_address", shipment.to_address
-                    },
-                    {
-                        "parcel", shipment.parcel
-                    },
-                    {
-                        "is_return", true
-                    },
+                    { "to_address", shipment.from_address },
+                    { "from_address", shipment.to_address },
+                    { "parcel", shipment.parcel },
+                    { "is_return", true },
                 });
         }
 

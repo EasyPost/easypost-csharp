@@ -38,12 +38,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
+            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
 
             List<Refund> refunds = refundCollection.refunds;
 
@@ -61,12 +56,7 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve");
 
-            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
+            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
 
             Refund refund = (await CreateBasicRefund())[0];
 
@@ -85,15 +75,8 @@ namespace EasyPost.Tests
 
             return await Client.Refund.Create(new Dictionary<string, object>
             {
-                {
-                    "carrier", Fixture.Usps
-                },
-                {
-                    "tracking_codes", new List<string>
-                    {
-                        retrievedShipment.tracking_code
-                    }
-                }
+                { "carrier", Fixture.Usps },
+                { "tracking_codes", new List<string> { retrievedShipment.tracking_code } }
             });
         }
     }

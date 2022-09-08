@@ -35,30 +35,9 @@ namespace EasyPost.Tests
 
             var possibleException = await Record.ExceptionAsync(async () => await Client.Tracker.CreateList(new Dictionary<string, object>
             {
-                {
-                    "0", new Dictionary<string, object>
-                    {
-                        {
-                            "tracking_code", "EZ1000000001"
-                        }
-                    }
-                },
-                {
-                    "1", new Dictionary<string, object>
-                    {
-                        {
-                            "tracking_code", "EZ1000000002"
-                        }
-                    }
-                },
-                {
-                    "2", new Dictionary<string, object>
-                    {
-                        {
-                            "tracking_code", "EZ1000000003"
-                        }
-                    }
-                }
+                { "0", new Dictionary<string, object> { { "tracking_code", "EZ1000000001" } } },
+                { "1", new Dictionary<string, object> { { "tracking_code", "EZ1000000002" } } },
+                { "2", new Dictionary<string, object> { { "tracking_code", "EZ1000000003" } } }
             }));
 
             Assert.Null(possibleException);
@@ -70,12 +49,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            TrackerCollection trackerCollection = await Client.Tracker.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
+            TrackerCollection trackerCollection = await Client.Tracker.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
 
             List<Tracker> trackers = trackerCollection.trackers;
 

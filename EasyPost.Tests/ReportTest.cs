@@ -37,12 +37,7 @@ namespace EasyPost.Tests
                 "from_name",
                 "from_company"
             };
-            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object>
-            {
-                {
-                    "additional_columns", additionalColumns
-                }
-            });
+            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object> { { "additional_columns", additionalColumns } });
 
             // verify parameters by checking VCR cassette for correct URL
             // Some reports take a long time to generate, so we won't be able to consistently pull the report
@@ -58,16 +53,8 @@ namespace EasyPost.Tests
         {
             UseVCR("create_report_with_columns");
 
-            List<string> columns = new List<string>()
-            {
-                "usps_zone"
-            };
-            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object>
-            {
-                {
-                    "columns", columns
-                }
-            });
+            List<string> columns = new List<string>() { "usps_zone" };
+            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object> { { "columns", columns } });
 
             // verify parameters by checking VCR cassette for correct URL
             // Some reports take a long time to generate, so we won't be able to consistently pull the report
@@ -83,12 +70,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            ReportCollection reportCollection = await Client.Report.All("shipment", new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
+            ReportCollection reportCollection = await Client.Report.All("shipment", new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
 
             List<Report> reports = reportCollection.reports;
 
@@ -127,12 +109,8 @@ namespace EasyPost.Tests
         private async Task<Report> CreateBasicReport(string reportType) =>
             await Client.Report.Create(reportType, new Dictionary<string, object>
             {
-                {
-                    "start_date", Fixture.ReportDate
-                },
-                {
-                    "end_date", Fixture.ReportDate
-                }
+                { "start_date", Fixture.ReportDate },
+                { "end_date", Fixture.ReportDate }
             });
     }
 }

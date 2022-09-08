@@ -124,20 +124,9 @@ namespace EasyPost.Models.API
 
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
-                {
-                    "rate", new Dictionary<string, object>
-                    {
-                        {
-                            "id", rateId
-                        }
-                    }
-                },
-                {
-                    "insurance", insuranceValue ?? string.Empty
-                },
-                {
-                    "carbon_offset", withCarbonOffset
-                }
+                { "rate", new Dictionary<string, object> { { "id", rateId } } },
+                { "insurance", insuranceValue ?? string.Empty },
+                { "carbon_offset", withCarbonOffset }
             };
 
             await Update<Shipment>(Method.Post, $"shipments/{id}/buy", parameters);
@@ -164,12 +153,7 @@ namespace EasyPost.Models.API
                 throw new Exception("id is null");
             }
 
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                {
-                    "file_format", fileFormat
-                }
-            };
+            Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
 
             await Update<Shipment>(Method.Get, $"shipments/{id}/label", parameters);
             return this;
@@ -187,12 +171,7 @@ namespace EasyPost.Models.API
                 throw new Exception("id is null");
             }
 
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                {
-                    "amount", amount
-                }
-            };
+            Dictionary<string, object> parameters = new Dictionary<string, object> { { "amount", amount } };
 
             await Update<Shipment>(Method.Post, $"shipments/{id}/insure", parameters);
             return this;

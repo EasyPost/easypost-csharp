@@ -48,12 +48,7 @@ namespace EasyPost.Tests
             User user = await CreateUser();
 
             string color = "#123456";
-            Brand brand = await user.UpdateBrand(new Dictionary<string, object>
-            {
-                {
-                    "color", color
-                }
-            });
+            Brand brand = await user.UpdateBrand(new Dictionary<string, object> { { "color", color } });
 
             Assert.IsType<Brand>(brand);
             Assert.StartsWith("brd_", brand.id);
@@ -99,12 +94,7 @@ namespace EasyPost.Tests
 
             string testName = "New Name";
 
-            Dictionary<string, object> userDict = new Dictionary<string, object>
-            {
-                {
-                    "name", testName
-                }
-            };
+            Dictionary<string, object> userDict = new Dictionary<string, object> { { "name", testName } };
             user = await user.Update(userDict);
 
             Assert.IsType<User>(user);
@@ -131,12 +121,7 @@ namespace EasyPost.Tests
 
         private async Task<User> CreateUser()
         {
-            User user = await Client.User.CreateChild(new Dictionary<string, object>
-            {
-                {
-                    "name", "Test User"
-                }
-            });
+            User user = await Client.User.CreateChild(new Dictionary<string, object> { { "name", "Test User" } });
             CleanUpAfterTest(user.id);
 
             return user;

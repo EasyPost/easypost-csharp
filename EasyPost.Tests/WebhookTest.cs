@@ -112,12 +112,7 @@ namespace EasyPost.Tests
 
         private async Task<Webhook> CreateBasicWebhook(string url)
         {
-            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object>
-            {
-                {
-                    "url", url
-                }
-            });
+            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
             CleanUpAfterTest(webhook.id);
 
             return webhook;

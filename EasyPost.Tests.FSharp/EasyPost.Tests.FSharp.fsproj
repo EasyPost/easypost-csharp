@@ -6,11 +6,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="FSharpCompileTest.fs" />
+        <Compile Include="FSharpCompileTest.fs"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\EasyPost\EasyPost.csproj" />
+        <ProjectReference Include="..\EasyPost\EasyPost.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

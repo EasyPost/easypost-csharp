@@ -11,7 +11,9 @@ EasyPost, the simple shipping solution. You can sign up for an account at <https
 Install-Package EasyPost-Official
 ```
 
-See NuGet docs for additional instructions on installing via the [dialog](http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog) or the [console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console).
+See NuGet docs for additional instructions on installing via
+the [dialog](http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog) or
+the [console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console).
 
 ## Usage
 
@@ -149,7 +151,8 @@ Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_G
 
 ## Development
 
-It is highly recommended to use a purpose-built IDE when working with this project such as `Visual Studio`. Most actions such as building, cleaning, and testing can be done via the GUI.
+It is highly recommended to use a purpose-built IDE when working with this project such as `Visual Studio`. Most actions
+such as building, cleaning, and testing can be done via the GUI.
 
 ```bash
 # Build project
@@ -173,13 +176,27 @@ make scan
 
 ### Testing
 
-The test suite in this project was specifically built to produce consistent results on every run, regardless of when they run or who is running them. This project uses [EasyVCR](https://www.nuget.org/packages/EasyVCR/) to record and replay HTTP requests and responses via "cassettes". When the suite is run, the HTTP requests and responses for each test function will be saved to a cassette if they do not exist already and replayed from this saved file if they do, which saves the need to make live API calls on every test run.
+The test suite in this project was specifically built to produce consistent results on every run, regardless of when
+they run or who is running them. This project uses [EasyVCR](https://www.nuget.org/packages/EasyVCR/) to record and
+replay HTTP requests and responses via "cassettes". When the suite is run, the HTTP requests and responses for each test
+function will be saved to a cassette if they do not exist already and replayed from this saved file if they do, which
+saves the need to make live API calls on every test run.
 
-**Sensitive Data:** We've made every attempt to include scrubbers for sensitive data when recording cassettes so that PII or sensitive info does not persist in version control; however, please ensure when recording or re-recording cassettes that prior to committing your changes, no PII or sensitive information gets persisted by inspecting the cassette.
+**Sensitive Data:** We've made every attempt to include scrubbers for sensitive data when recording cassettes so that
+PII or sensitive info does not persist in version control; however, please ensure when recording or re-recording
+cassettes that prior to committing your changes, no PII or sensitive information gets persisted by inspecting the
+cassette.
 
-**Making Changes:** If you make an addition to this project, the request/response will get recorded automatically for you if a `_vcr.SetUpTest("testName");` is included on the test function. When making changes to this project, you'll need to re-record the associated cassette to force a new live API call for that test which will then record the request/response used on the next run.
+**Making Changes:** If you make an addition to this project, the request/response will get recorded automatically for
+you if a `_vcr.SetUpTest("testName");` is included on the test function. When making changes to this project, you'll
+need to re-record the associated cassette to force a new live API call for that test which will then record the
+request/response used on the next run.
 
-**Test Data:** The test suite has been populated with various helpful fixtures that are available for use, each completely independent from a particular user **with the exception of the USPS carrier account ID** (see [Unit Test API Keys](#unit-test-api-keys) for more information) which has a fallback value of our internal testing user's ID. Some fixtures use hard-coded dates that may need to be incremented if cassettes get re-recorded (such as reports or pickups).
+**Test Data:** The test suite has been populated with various helpful fixtures that are available for use, each
+completely independent from a particular user **with the exception of the USPS carrier account ID** (
+see [Unit Test API Keys](#unit-test-api-keys) for more information) which has a fallback value of our internal testing
+user's ID. Some fixtures use hard-coded dates that may need to be incremented if cassettes get re-recorded (such as
+reports or pickups).
 
 #### Unit Test API Keys
 
@@ -188,18 +205,22 @@ The following are required on every test run:
 - `EASYPOST_TEST_API_KEY`
 - `EASYPOST_PROD_API_KEY`
 
-The following are required when you need to re-record cassettes for applicable tests (fallback values are used otherwise):
+The following are required when you need to re-record cassettes for applicable tests (fallback values are used
+otherwise):
 
 - `USPS_CARRIER_ACCOUNT_ID` (eg: one-call buying a shipment for non-EasyPost employees)
 - `REFERRAL_USER_PROD_API_KEY` (eg: adding a credit card to a referral user)
 
-Some tests may require a user with a particular set of enabled features such as a `Partner` user when creating referrals. We have attempted to call out these functions in their respective docstrings.
+Some tests may require a user with a particular set of enabled features such as a `Partner` user when creating
+referrals. We have attempted to call out these functions in their respective docstrings.
 
 #### Test Coverage
 
-Unit test coverage reports can be generated by running the `generate_test_reports.sh` Bash script from the root of this repository.
+Unit test coverage reports can be generated by running the `generate_test_reports.sh` Bash script from the root of this
+repository.
 
-A report will be generated for each version of the library. Final reports will be stored in the `coveragereport` folder in the root of the repository following generation.
+A report will be generated for each version of the library. Final reports will be stored in the `coveragereport` folder
+in the root of the repository following generation.
 
 The script requires the following tools installed in your PATH:
 

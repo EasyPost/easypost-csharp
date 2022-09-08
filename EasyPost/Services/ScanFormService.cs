@@ -23,12 +23,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<ScanForm> Create(List<Shipment> shipments)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                {
-                    "shipments", shipments
-                }
-            };
+            Dictionary<string, object> parameters = new Dictionary<string, object> { { "shipments", shipments } };
             parameters = parameters.Wrap("scan_form");
             return await Create<ScanForm>("scan_forms", parameters);
         }

@@ -57,12 +57,8 @@ namespace EasyPost.Models.API
 
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
-                {
-                    "carrier", withCarrier
-                },
-                {
-                    "service", withService
-                }
+                { "carrier", withCarrier },
+                { "service", withService }
             };
 
             await Update<Order>(Method.Post, $"orders/{id}/buy", parameters);

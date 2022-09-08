@@ -62,20 +62,14 @@ namespace EasyPost.Tests
             Assert.Equal("USPS", lowestRate.carrier);
 
             // test lowest rate with service filter (this rate is higher than the lowest but should filter)
-            List<string> services = new List<string>
-            {
-                "Priority"
-            };
+            List<string> services = new List<string> { "Priority" };
             lowestRate = order.LowestRate(null, services);
             Assert.Equal("Priority", lowestRate.service);
             Assert.Equal("7.37", lowestRate.rate);
             Assert.Equal("USPS", lowestRate.carrier);
 
             // test lowest rate with carrier filter (should error due to bad carrier)
-            List<string> carriers = new List<string>
-            {
-                "BAD_CARRIER"
-            };
+            List<string> carriers = new List<string> { "BAD_CARRIER" };
             Assert.Throws<Exception>(() => order.LowestRate(carriers));
         }
 

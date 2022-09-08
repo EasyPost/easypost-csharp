@@ -33,12 +33,7 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            List<EndShipper> endShippers = await Client.Beta.EndShipper.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
+            List<EndShipper> endShippers = await Client.Beta.EndShipper.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
             Assert.True(endShippers.Count <= Fixture.PageSize);
             foreach (EndShipper item in endShippers)
             {

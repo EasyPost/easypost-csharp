@@ -46,12 +46,7 @@ namespace EasyPost.Utilities
         public override int GetHashCode()
         {
             {
-                return new Dictionary<string, int>
-                {
-                    {
-                        GetType().ToString(), Id
-                    }
-                }.GetHashCode();
+                return new Dictionary<string, int> { { GetType().ToString(), Id } }.GetHashCode();
             }
         }
 
