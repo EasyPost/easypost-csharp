@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
+using EasyPost.Exceptions;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
@@ -59,9 +60,7 @@ namespace EasyPost._base
             // Check the response's status code
             if (response.ReturnedError())
             {
-                // HTTP request threw an error (4xx or 5xx status code)
-                HttpException httpException = HttpException.FromResponse(response);
-                throw httpException;
+                throw ApiError.DetermineError(response);
             }
 
             // Prepare the list of root elements to use during deserialization
