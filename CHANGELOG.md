@@ -12,6 +12,9 @@
   - Some properties have been renamed to avoid naming conflicts:
     - `Rate.rate` is now `Rate.Price`
     - `Message.message` is now `Message.Text`
+- All properties are now nullable.
+  - Almost all properties will be assigned a value during JSON deserialization. This is mostly to address compiler warnings.
+  - Users can proceed with the assumption that any given property will not be null.
 - All objects now share a common base set of properties, including `Id`, `CreatedAt`, `UpdatedAt`, and `Mode`.
 - Under the hood improvements:
   - Underlying `Request`-`Client`-`ClientConfiguration` relationship has been re-architected to allow for thread safety.

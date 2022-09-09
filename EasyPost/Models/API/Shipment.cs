@@ -76,22 +76,6 @@ namespace EasyPost.Models.API
         #region CRUD Operations
 
         /// <summary>
-        ///     Return this shipment.
-        /// </summary>
-        /// <returns>A return shipment.</returns>
-        [CrudOperations.Create]
-        public async Task<Shipment> Return()
-        {
-            if (Id == null)
-            {
-                // This is a local object, not one pulled from the server.
-                throw new Exception("id is null");
-            }
-
-            return await (Client as Client)!.Shipment.CreateReturn(this);
-        }
-
-        /// <summary>
         ///     Get the Smartrates for this shipment.
         /// </summary>
         /// <returns>A list of EasyPost.Smartrate instances.</returns>
