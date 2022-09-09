@@ -24,11 +24,11 @@ namespace EasyPost.Models.API
         [JsonProperty("is_account_address")]
         public bool? IsAccountAddress { get; set; }
         [JsonProperty("max_datetime")]
-        public DateTime MaxDatetime { get; set; }
+        public DateTime? MaxDatetime { get; set; }
         [JsonProperty("messages")]
         public List<Message>? Messages { get; set; }
         [JsonProperty("min_datetime")]
-        public DateTime MinDatetime { get; set; }
+        public DateTime? MinDatetime { get; set; }
         [JsonProperty("name")]
         public string? Name { get; set; }
         [JsonProperty("pickup_rates")]

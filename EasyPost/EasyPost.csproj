@@ -23,14 +23,13 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <!-- Nullability and other warnings to suppress -->
-    <!-- CS8618: Non-nullable field not initialized -->
     <!-- CS8603: Possible null reference return -->
     <!-- CS8602: Possible null reference assignment -->
     <!-- CS8765: Uninitialized field(s) -->
     <!-- CS8767: Nullable parameter -->
     <!-- CS0659: Missing GetHashCode override -->
     <!-- CS0618: Obselete method -->
-    <NoWarn>CS8618;CS8603;CS8602;CS8765;CS8767;CS0659;CS0618</NoWarn>
+    <NoWarn>CS8603;CS8602;CS8765;CS8767;CS0659;CS0618</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DebugType>pdbonly</DebugType>
@@ -55,8 +54,8 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)"/>
-    <PackageReference Include="RestSharp" Version="[108.0.1, 109.0.0)"/>
+    <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />
+    <PackageReference Include="RestSharp" Version="[108.0.1, 109.0.0)" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EasyPost.pub">

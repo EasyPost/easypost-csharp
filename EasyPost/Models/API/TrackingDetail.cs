@@ -15,7 +15,7 @@ namespace EasyPost.Models.API
         [JsonProperty("status")]
         public string? Status { get; set; }
         [JsonProperty("tracking_location")]
-        public TrackingLocation TrackingLocation { get; set; }
+        public TrackingLocation? TrackingLocation { get; set; }
 
         #endregion
     }

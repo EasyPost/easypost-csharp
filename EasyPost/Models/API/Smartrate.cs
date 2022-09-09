@@ -39,7 +39,7 @@ namespace EasyPost.Models.API
         [JsonProperty("shipment_id")]
         public string? ShipmentId { get; set; }
         [JsonProperty("time_in_transit")]
-        public TimeInTransit TimeInTransit { get; set; }
+        public TimeInTransit? TimeInTransit { get; set; }
 
         #endregion
     }

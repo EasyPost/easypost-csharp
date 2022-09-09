@@ -9,7 +9,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("address")]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
         [JsonProperty("batch_id")]
         public string? BatchId { get; set; }
         [JsonProperty("form_file_type")]

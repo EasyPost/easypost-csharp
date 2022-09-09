@@ -113,12 +113,17 @@ namespace EasyPost.Models.API
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
         [CrudOperations.Update]
-        public async Task Buy(string rateId, string? insuranceValue = null, bool withCarbonOffset = false)
+        public async Task Buy(string? rateId, string? insuranceValue = null, bool withCarbonOffset = false)
         {
             // TODO: Should this function return the updated Shipment like Order.Buy?
             if (Id == null)
             {
                 throw new Exception("id is null. Cannot buy a shipment without an id.");
+            }
+
+            if (rateId == null)
+            {
+                throw new Exception("rateId is null. Cannot buy a shipment without a rateId.");
             }
 
             Dictionary<string, object> parameters = new Dictionary<string, object>

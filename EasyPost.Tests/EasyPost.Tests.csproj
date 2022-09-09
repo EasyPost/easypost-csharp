@@ -13,6 +13,19 @@
     <Nullable>enable</Nullable>
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <!-- Nullability and other warnings to suppress -->
+    <!-- CS8600: Converting null literal or possible null value to non-nullable type -->
+    <!-- CS8602: Possible null reference assignment -->
+    <!-- CS8603: Possible null reference return -->
+    <!-- CS8604: Possible null reference argument -->
+    <!-- CS8765: Uninitialized field(s) -->
+    <!-- CS8767: Nullable parameter -->
+    <!-- CS0659: Missing GetHashCode override -->
+    <!-- CS0618: Obselete method -->
+    <NoWarn>CS8600;CS8602;CS8603;CS8604;CS8765;CS8767;CS0659;CS0618</NoWarn>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="EasyVCR" Version="[0.4.0, 1.0.0)" />

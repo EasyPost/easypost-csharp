@@ -12,7 +12,7 @@ namespace EasyPost.Models.API
         [JsonProperty("carrier")]
         public string? Carrier { get; set; }
         [JsonProperty("carrier_detail")]
-        public CarrierDetail CarrierDetail { get; set; }
+        public CarrierDetail? CarrierDetail { get; set; }
         [JsonProperty("est_delivery_date")]
         public DateTime? EstDeliveryDate { get; set; }
         [JsonProperty("public_url")]
@@ -28,7 +28,7 @@ namespace EasyPost.Models.API
         [JsonProperty("tracking_details")]
         public List<TrackingDetail>? TrackingDetails { get; set; }
         [JsonProperty("tracking_updated_at")]
-        public DateTime TrackingUpdatedAt { get; set; }
+        public DateTime? TrackingUpdatedAt { get; set; }
         [JsonProperty("weight")]
         public double? Weight { get; set; }
 

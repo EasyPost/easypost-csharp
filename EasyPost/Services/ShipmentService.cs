@@ -5,6 +5,7 @@ using EasyPost._base;
 using EasyPost.Calculation;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Utilities;
 using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
@@ -48,23 +49,35 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a return shipment for a shipment.
+        ///     Uses the same To and From addresses as the original shipment by default.
+        ///     Users can override the To and From addresses by passing in new addresses.
         /// </summary>
         /// <param name="shipment">Shipment to return.</param>
+        /// <param name="overrideToAddress">Override the To address for the return.</param>
+        /// <param name="overrideFromAddress">Override the From address for the return.</param>
         /// <returns>A return shipment.</returns>
         [CrudOperations.Create]
-        public async Task<Shipment> CreateReturn(Shipment shipment)
+        public async Task<Shipment> CreateReturn(Shipment shipment, Address? overrideToAddress = null, Address? overrideFromAddress = null)
         {
             if (shipment.Id == null)
             {
                 throw new Exception("Shipment.id is null.");
             }
 
+            overrideToAddress ??= shipment.FromAddress; // Use override address if provided, otherwise use original shipment From address as return To address.
+            overrideFromAddress ??= shipment.ToAddress; // Use override address if provided, otherwise use original shipment To address as return From address.
+
+            if (Nullability.AnyAreNull(overrideToAddress, overrideFromAddress, shipment.Parcel))
+            {
+                throw new Exception("Shipment missing required elements.");
+            }
+
             return await Create(
                 new Dictionary<string, object>
                 {
-                    { "to_address", shipment.FromAddress },
-                    { "from_address", shipment.ToAddress },
-                    { "parcel", shipment.Parcel },
+                    { "to_address", overrideToAddress! },
+                    { "from_address", overrideFromAddress! },
+                    { "parcel", shipment.Parcel! },
                     { "is_return", true },
                 });
         }

@@ -17,6 +17,7 @@ namespace EasyPost.Models.API
         /// <returns>An EasyPost.Rate object instance.</returns>
         internal Rate AsRate()
         {
+            // ReSharper disable once RedundantCast
             return (Rate)this;
         }
     }

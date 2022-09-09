@@ -28,9 +28,9 @@ namespace EasyPost.Models.API
         [JsonProperty("status")]
         public string? Status { get; set; }
         [JsonProperty("to_address")]
-        public Address ToAddress { get; set; }
+        public Address? ToAddress { get; set; }
         [JsonProperty("tracker")]
-        public Tracker Tracker { get; set; }
+        public Tracker? Tracker { get; set; }
         [JsonProperty("tracking_code")]
         public string? TrackingCode { get; set; }
 

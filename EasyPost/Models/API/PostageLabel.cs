@@ -13,7 +13,7 @@ namespace EasyPost.Models.API
         [JsonProperty("integrated_form")]
         public string? IntegratedForm { get; set; }
         [JsonProperty("label_date")]
-        public DateTime LabelDate { get; set; }
+        public DateTime? LabelDate { get; set; }
         [JsonProperty("label_epl2_url")]
         public string? LabelEpl2Url { get; set; }
         [JsonProperty("label_file")]
