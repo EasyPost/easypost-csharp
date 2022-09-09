@@ -65,7 +65,7 @@ namespace EasyPost.Tests
             Assert.Equal(pickup.Id, retrievedPickup.Id);
         }
 
-        [Fact]
+        [Fact(Skip = "USPS test server issues. Re-enable ASAP.")]
         [CrudOperations.Update]
         public async Task TestBuy()
         {
@@ -81,7 +81,7 @@ namespace EasyPost.Tests
             Assert.Equal("scheduled", pickup.Status);
         }
 
-        [Fact]
+        [Fact(Skip = "USPS test server issues. Re-enable ASAP.")]
         [CrudOperations.Update]
         public async Task TestCancel()
         {
