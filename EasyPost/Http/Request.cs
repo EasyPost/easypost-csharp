@@ -13,7 +13,8 @@ namespace EasyPost.Http
         private readonly Dictionary<string, object> _parameters;
         private readonly RestRequest _restRequest;
 
-        public Request(string endpoint, Method method, ApiVersion? apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null)
+        // ReSharper disable once SuggestBaseTypeForParameterInConstructor
+        public Request(string endpoint, Method method, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null)
         {
             endpoint = $"{apiVersion.Value}/{endpoint}";
 
@@ -71,6 +72,7 @@ namespace EasyPost.Http
         {
             foreach (KeyValuePair<string, object> pair in _parameters)
             {
+                // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
                 if (pair.Value == null)
                 {
                     continue;

@@ -22,14 +22,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <!-- Nullability and other warnings to suppress -->
-    <!-- CS8603: Possible null reference return -->
-    <!-- CS8602: Possible null reference assignment -->
-    <!-- CS8765: Uninitialized field(s) -->
-    <!-- CS8767: Nullable parameter -->
-    <!-- CS0659: Missing GetHashCode override -->
-    <!-- CS0618: Obselete method -->
-    <NoWarn>CS8603;CS8602;CS8765;CS8767;CS0659;CS0618</NoWarn>
+    <!-- Warnings to suppress -->
+    <NoWarn></NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DebugType>pdbonly</DebugType>

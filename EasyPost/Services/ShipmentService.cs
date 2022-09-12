@@ -1,15 +1,14 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Calculation;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Utilities;
 using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class ShipmentService : EasyPostService
     {
         internal ShipmentService(EasyPostClient client) : base(client)

@@ -78,7 +78,7 @@ namespace EasyPost.Models.API
             }
         }
 
-        internal string Endpoint
+        internal string? Endpoint
         {
             get
             {

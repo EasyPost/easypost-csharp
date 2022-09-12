@@ -56,8 +56,6 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve");
 
-            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
-
             Refund refund = (await CreateBasicRefund())[0];
 
             Refund retrievedRefund = await Client.Refund.Retrieve(refund.Id);

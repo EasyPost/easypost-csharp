@@ -41,13 +41,8 @@ namespace EasyPost._base
                 return false;
             }
 
-            string? thisJson = AsJson();
-            string? otherJson = ((EasyPostObject)obj).AsJson();
-            if (thisJson == null || otherJson == null)
-            {
-                // can't do proper comparison if either or both could not be serialized
-                return false;
-            }
+            string thisJson = AsJson();
+            string otherJson = ((EasyPostObject)obj).AsJson();
 
             return thisJson == otherJson;
         }
@@ -55,19 +50,6 @@ namespace EasyPost._base
         public override int GetHashCode()
         {
             return AsDictionary().GetHashCode();
-        }
-
-        /// <summary>
-        ///     Merge the properties of this object instance with the properties of another object instance.
-        ///     Adds properties from the input object instance into this object instance.
-        /// </summary>
-        /// <param name="source">Object instance to extract properties from to merge into this object instance.</param>
-        internal void Merge(object source)
-        {
-            foreach (PropertyInfo property in source.GetType().GetProperties())
-            {
-                property.SetValue(this, property.GetValue(source, null), null);
-            }
         }
 
         protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class
@@ -109,6 +91,19 @@ namespace EasyPost._base
                     return values;
                 default:
                     return value;
+            }
+        }
+
+        /// <summary>
+        ///     Merge the properties of this object instance with the properties of another object instance.
+        ///     Adds properties from the input object instance into this object instance.
+        /// </summary>
+        /// <param name="source">Object instance to extract properties from to merge into this object instance.</param>
+        private void Merge(object source)
+        {
+            foreach (PropertyInfo property in source.GetType().GetProperties())
+            {
+                property.SetValue(this, property.GetValue(source, null), null);
             }
         }
     }

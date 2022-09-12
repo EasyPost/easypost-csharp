@@ -7,6 +7,7 @@ using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class RefundService : EasyPostService
     {
         internal RefundService(EasyPostClient client) : base(client)

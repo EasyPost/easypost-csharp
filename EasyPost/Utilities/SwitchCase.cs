@@ -40,7 +40,7 @@ namespace EasyPost.Utilities
 
         private Func<object> Expression { get; }
 
-        public ExpressionCase(Func<object> expression, Action? action)
+        protected ExpressionCase(Func<object> expression, Action? action)
         {
             Expression = expression;
             Action = action;

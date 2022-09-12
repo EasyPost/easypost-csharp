@@ -7,6 +7,7 @@ using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class BatchService : EasyPostService
     {
         internal BatchService(EasyPostClient client) : base(client)

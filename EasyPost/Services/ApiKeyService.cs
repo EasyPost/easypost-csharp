@@ -5,6 +5,7 @@ using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class ApiKeyService : EasyPostService
     {
         internal ApiKeyService(EasyPostClient client) : base(client)
