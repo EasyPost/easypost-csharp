@@ -1,6 +1,4 @@
 ﻿// ReSharper disable once CheckNamespace
-using RestSharp;
-
 namespace EasyPost.Exceptions
 {
     public class TimeoutError : HttpError

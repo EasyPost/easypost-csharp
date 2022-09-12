@@ -1,9 +1,9 @@
-﻿// ReSharper disable once CheckNamespace
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
 using RestSharp;
 
+// ReSharper disable once CheckNamespace
 namespace EasyPost.Exceptions
 {
     public class ApiError : HttpError
@@ -19,6 +19,12 @@ namespace EasyPost.Exceptions
         {
             Code = code;
             Errors = errors;
+        }
+
+        public static new ApiError DetermineError(RestResponse response)
+        {
+            // TODO: Logic here to determine which type of API error to return
+            return FromResponse<ApiError>(response);
         }
 
         public static new T FromResponse<T>(RestResponse response) where T : ApiError
@@ -49,12 +55,6 @@ namespace EasyPost.Exceptions
             }
 
             return new ApiError(statusCode, errorMessage, code, errors) as T;
-        }
-
-        public static new ApiError DetermineError(RestResponse response)
-        {
-            // TODO: Logic here to determine which type of API error to return
-            return FromResponse<ApiError>(response);
         }
     }
 }

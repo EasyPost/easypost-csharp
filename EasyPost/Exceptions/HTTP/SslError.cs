@@ -1,7 +1,4 @@
 ﻿// ReSharper disable once CheckNamespace
-using System.Net;
-using RestSharp;
-
 namespace EasyPost.Exceptions
 {
     public class SslError : HttpError

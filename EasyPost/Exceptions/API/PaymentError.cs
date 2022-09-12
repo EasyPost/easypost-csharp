@@ -1,7 +1,7 @@
-﻿// ReSharper disable once CheckNamespace
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using EasyPost.Models.API;
 
+// ReSharper disable once CheckNamespace
 namespace EasyPost.Exceptions
 {
     public class PaymentError : ApiError
