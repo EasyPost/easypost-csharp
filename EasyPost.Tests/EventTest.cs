@@ -25,7 +25,7 @@ namespace EasyPost.Tests
             List<Event> events = eventCollection.Events;
 
             Assert.True(eventCollection.HasMore);
-            Assert.True(events.Count <= Fixture.PageSize);
+            Assert.True(events.Count <= Fixtures.PageSize);
             foreach (Event item in events)
             {
                 Assert.IsType<Event>(item);
@@ -51,6 +51,6 @@ namespace EasyPost.Tests
         #endregion
 
         private async Task<EventCollection> GetBasicEventCollection() =>
-            await Client.Event.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
+            await Client.Event.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
     }
 }

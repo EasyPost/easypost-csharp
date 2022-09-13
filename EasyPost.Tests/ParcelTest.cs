@@ -42,6 +42,6 @@ namespace EasyPost.Tests
 
         #endregion
 
-        private async Task<Parcel> CreateBasicParcel() => await Client.Parcel.Create(Fixture.BasicParcel);
+        private async Task<Parcel> CreateBasicParcel() => await Client.Parcel.Create(Fixtures.BasicParcel);
     }
 }

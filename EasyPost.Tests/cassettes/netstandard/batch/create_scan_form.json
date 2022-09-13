@@ -1,60 +1,59 @@
 [
-  {
-      "Duration": 321,
-      "RecordedAt": "2022-09-07T15:01:19.609843-06:00",
-      "Request": {
-          "Body": "{\"batch\":{\"shipments\":[{\"to_address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\"},\"from_address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\"},\"parcel\":{\"length\":\"10\",\"width\":\"8\",\"height\":\"4\",\"weight\":\"15.4\"},\"service\":\"First\",\"carrier_accounts\":[\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\"],\"carrier\":\"USPS\"}]}}",
-          "BodyContentType": "Json",
-          "ContentHeaders": {
-              "Content-Type": "application/json; charset=utf-8",
-              "Content-Length": "571"
-          },
-          "Method": "POST",
-          "RequestHeaders": {
-              "Authorization": "<REDACTED>",
-              "content_type": "application/json",
-              "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
-              "User-Agent": "<REDACTED>"
-          },
-          "Uri": "https://api.easypost.com/v2/batches"
-      },
-      "Response": {
-          "Body": "{\"id\":\"batch_560b69809ce240de9767ab071b83f1e9\",\"object\":\"EasyPost::Entity::Batch\",\"mode\":\"test\",\"state\":\"creating\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2022-09-07T21:01:19Z\",\"updated_at\":\"2022-09-07T21:01:19Z\",\"scan_form\":null,\"shipments\":[],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null}",
-          "BodyContentType": "Json",
-          "ContentHeaders": {
-              "Expires": "0",
-              "Content-Type": "application/json; charset=utf-8",
-              "Content-Length": "402"
-          },
-          "HttpVersion": "1.1",
-          "ResponseHeaders": {
-              "X-Frame-Options": "SAMEORIGIN",
-              "x-xss-protection": "1; mode=block",
-              "X-Content-Type-Options": "nosniff",
-              "x-download-options": "noopen",
-              "x-permitted-cross-domain-policies": "none",
-              "referrer-policy": "strict-origin-when-cross-origin",
-              "x-ep-request-uuid": "3bde9a2b6319069fe79a6147002e915f",
-              "Cache-Control": "no-store, no-cache, private",
-              "Pragma": "no-cache",
-              "ETag": "W/\"b532f913fba06593cd3a61885ea2a234\"",
-              "x-runtime": "0.040920",
-              "x-node": "bigweb7nuq",
-              "x-version-label": "easypost-202209071541-cbf5be725f-master",
-              "x-backend": "easypost",
-              "x-canary": "direct",
-              "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
-              "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-          },
-          "Status": {
-              "Code": 200,
-              "Message": "OK"
-          }
-      }
-  },
     {
-        "Duration": 336,
-        "RecordedAt": "2022-09-07T15:01:29.969003-06:00",
+        "Duration": 226,
+        "RecordedAt": "2022-09-13T13:55:18.143035-06:00",
+        "Request": {
+            "Body": "{\"batch\":{\"shipments\":[{\"to_address\":{\"name\":\"Jack Sparrow\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"},\"from_address\":{\"name\":\"Elizabeth Swan\",\"street1\":\"179 N Harbor Dr\",\"city\":\"Redondo Beach\",\"state\":\"CA\",\"zip\":\"90277\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"},\"parcel\":{\"length\":10,\"width\":8,\"height\":4,\"weight\":15.4},\"service\":\"First\",\"carrier_accounts\":[\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\"],\"carrier\":\"USPS\"}]}}",
+            "BodyContentType": "Json",
+            "ContentHeaders": {
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "558"
+            },
+            "Method": "POST",
+            "RequestHeaders": {
+                "Authorization": "<REDACTED>",
+                "content_type": "application/json",
+                "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+                "User-Agent": "<REDACTED>"
+            },
+            "Uri": "https://api.easypost.com/v2/batches"
+        },
+        "Response": {
+            "Body": "{\"id\":\"batch_41cf850b3b7d479f9450f7d6c9fc585b\",\"object\":\"EasyPost::Entity::Batch\",\"mode\":\"test\",\"state\":\"creating\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2022-09-13T19:55:18Z\",\"updated_at\":\"2022-09-13T19:55:18Z\",\"scan_form\":null,\"shipments\":[],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null}",
+            "BodyContentType": "Json",
+            "ContentHeaders": {
+                "Expires": "0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "402"
+            },
+            "HttpVersion": "1.1",
+            "ResponseHeaders": {
+                "X-Frame-Options": "SAMEORIGIN",
+                "x-xss-protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "x-download-options": "noopen",
+                "x-permitted-cross-domain-policies": "none",
+                "referrer-policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "f5e0a59e6320e026eca139a90078af75",
+                "Cache-Control": "no-store, no-cache, private",
+                "Pragma": "no-cache",
+                "ETag": "W/\"37c91f783584d7e0553534f65f0d1884\"",
+                "x-runtime": "0.038323",
+                "x-node": "bigweb8nuq",
+                "x-version-label": "easypost-202209122308-273e11ecbb-master",
+                "x-backend": "easypost",
+                "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+            },
+            "Status": {
+                "Code": 200,
+                "Message": "OK"
+            }
+        }
+    },
+    {
+        "Duration": 241,
+        "RecordedAt": "2022-09-13T13:55:28.402294-06:00",
         "Request": {
             "Body": "",
             "BodyContentType": "Text",
@@ -66,10 +65,10 @@
                 "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
                 "User-Agent": "<REDACTED>"
             },
-            "Uri": "https://api.easypost.com/v2/batches/batch_560b69809ce240de9767ab071b83f1e9/buy"
+            "Uri": "https://api.easypost.com/v2/batches/batch_41cf850b3b7d479f9450f7d6c9fc585b/buy"
         },
         "Response": {
-            "Body": "{\"id\":\"batch_560b69809ce240de9767ab071b83f1e9\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"created\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2022-09-07T21:01:19Z\",\"updated_at\":\"2022-09-07T21:01:19Z\",\"scan_form\":null,\"shipments\":[{\"batch_status\":\"queued_for_purchase\",\"batch_message\":null,\"reference\":null,\"tracking_code\":null,\"id\":\"shp_c9499ece7ffa46709663feb73d142239\"}],\"status\":{\"created\":1,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null}",
+            "Body": "{\"id\":\"batch_41cf850b3b7d479f9450f7d6c9fc585b\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"created\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2022-09-13T19:55:18Z\",\"updated_at\":\"2022-09-13T19:55:18Z\",\"scan_form\":null,\"shipments\":[{\"batch_status\":\"queued_for_purchase\",\"batch_message\":null,\"reference\":null,\"tracking_code\":null,\"id\":\"shp_5323da3970b644dabf8872fdade3b238\"}],\"status\":{\"created\":1,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null}",
             "BodyContentType": "Json",
             "ContentHeaders": {
                 "Expires": "0",
@@ -84,13 +83,13 @@
                 "x-download-options": "noopen",
                 "x-permitted-cross-domain-policies": "none",
                 "referrer-policy": "strict-origin-when-cross-origin",
-                "x-ep-request-uuid": "3bde9a28631906a9e79a64bb002e9657",
+                "x-ep-request-uuid": "f5e0a5a16320e030ec915b900078b2a6",
                 "Cache-Control": "no-store, no-cache, private",
                 "Pragma": "no-cache",
-                "ETag": "W/\"1649f8232f399d5cf5cea190c35f49cb\"",
-                "x-runtime": "0.071887",
-                "x-node": "bigweb5nuq",
-                "x-version-label": "easypost-202209071541-cbf5be725f-master",
+                "ETag": "W/\"b7ed003f529bb1fead1af8f4abd04264\"",
+                "x-runtime": "0.058850",
+                "x-node": "bigweb9nuq",
+                "x-version-label": "easypost-202209122308-273e11ecbb-master",
                 "x-backend": "easypost",
                 "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
                 "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
@@ -102,8 +101,8 @@
         }
     },
     {
-        "Duration": 414,
-        "RecordedAt": "2022-09-07T15:01:40.411583-06:00",
+        "Duration": 250,
+        "RecordedAt": "2022-09-13T13:55:38.673509-06:00",
         "Request": {
             "Body": "{\"file_format\":\"pdf\"}",
             "BodyContentType": "Json",
@@ -118,10 +117,10 @@
                 "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
                 "User-Agent": "<REDACTED>"
             },
-            "Uri": "https://api.easypost.com/v2/batches/batch_560b69809ce240de9767ab071b83f1e9/scan_form"
+            "Uri": "https://api.easypost.com/v2/batches/batch_41cf850b3b7d479f9450f7d6c9fc585b/scan_form"
         },
         "Response": {
-            "Body": "{\"id\":\"batch_560b69809ce240de9767ab071b83f1e9\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"purchased\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2022-09-07T21:01:19Z\",\"updated_at\":\"2022-09-07T21:01:40Z\",\"scan_form\":{\"id\":\"sf_220876a01d174e5689c43d4ee8f52672\",\"object\":\"ScanForm\",\"created_at\":\"2022-09-07T21:01:40Z\",\"updated_at\":\"2022-09-07T21:01:40Z\",\"tracking_codes\":[],\"address\":null,\"status\":\"creating\",\"message\":null,\"form_url\":null,\"form_file_type\":null,\"batch_id\":\"batch_560b69809ce240de9767ab071b83f1e9\",\"confirmation\":null},\"shipments\":[{\"batch_status\":\"postage_purchased\",\"batch_message\":null,\"reference\":null,\"tracking_code\":\"9400100109361136478771\",\"id\":\"shp_c9499ece7ffa46709663feb73d142239\"}],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":1,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null}",
+            "Body": "{\"id\":\"batch_41cf850b3b7d479f9450f7d6c9fc585b\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"purchased\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2022-09-13T19:55:18Z\",\"updated_at\":\"2022-09-13T19:55:38Z\",\"scan_form\":{\"id\":\"sf_ace5979dc0e346eb9d8ac3da7344b3a0\",\"object\":\"ScanForm\",\"created_at\":\"2022-09-13T19:55:38Z\",\"updated_at\":\"2022-09-13T19:55:38Z\",\"tracking_codes\":[],\"address\":null,\"status\":\"creating\",\"message\":null,\"form_url\":null,\"form_file_type\":null,\"batch_id\":\"batch_41cf850b3b7d479f9450f7d6c9fc585b\",\"confirmation\":null},\"shipments\":[{\"batch_status\":\"postage_purchased\",\"batch_message\":null,\"reference\":null,\"tracking_code\":\"9400100109361137302150\",\"id\":\"shp_5323da3970b644dabf8872fdade3b238\"}],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":1,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null}",
             "BodyContentType": "Json",
             "ContentHeaders": {
                 "Expires": "0",
@@ -136,13 +135,13 @@
                 "x-download-options": "noopen",
                 "x-permitted-cross-domain-policies": "none",
                 "referrer-policy": "strict-origin-when-cross-origin",
-                "x-ep-request-uuid": "3bde9a2c631906b4e79a64da002e9a8e",
+                "x-ep-request-uuid": "f5e0a59e6320e03aec9e6f5f0078b6ca",
                 "Cache-Control": "no-store, no-cache, private",
                 "Pragma": "no-cache",
-                "ETag": "W/\"3d0de23e0b547e333eaf6bc631dac6c7\"",
-                "x-runtime": "0.161577",
-                "x-node": "bigweb4nuq",
-                "x-version-label": "easypost-202209071541-cbf5be725f-master",
+                "ETag": "W/\"ac2ab2e68667f4e2ae5fd75ee9c9d252\"",
+                "x-runtime": "0.065579",
+                "x-node": "bigweb1nuq",
+                "x-version-label": "easypost-202209122308-273e11ecbb-master",
                 "x-backend": "easypost",
                 "x-proxied": "intlb1nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
                 "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"

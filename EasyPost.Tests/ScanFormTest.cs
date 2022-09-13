@@ -32,12 +32,12 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            ScanFormCollection scanFormCollection = await Client.ScanForm.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
+            ScanFormCollection scanFormCollection = await Client.ScanForm.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
 
             List<ScanForm> scanForms = scanFormCollection.ScanForms;
 
             Assert.True(scanFormCollection.HasMore);
-            Assert.True(scanForms.Count <= Fixture.PageSize);
+            Assert.True(scanForms.Count <= Fixtures.PageSize);
             foreach (ScanForm scanForm in scanForms)
             {
                 Assert.IsType<ScanForm>(scanForm);
@@ -62,7 +62,7 @@ namespace EasyPost.Tests
 
         private async Task<ScanForm> GetBasicScanForm()
         {
-            Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
             return await Client.ScanForm.Create(new List<Shipment> { shipment });
         }
     }

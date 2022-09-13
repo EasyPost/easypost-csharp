@@ -19,7 +19,7 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve");
 
-            Shipment shipment = await Client.Shipment.Create(Fixture.BasicShipment);
+            Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
 
             Rate rate = await Client.Rate.Retrieve(shipment.Rates[0].Id);
 

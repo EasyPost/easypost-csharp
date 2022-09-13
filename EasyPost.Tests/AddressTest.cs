@@ -33,7 +33,24 @@ namespace EasyPost.Tests
         {
             UseVCR("create_verify");
 
-            Dictionary<string, object> addressData = Fixture.IncorrectAddressToVerify;
+            Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
+            addressData.Add("verify", true);
+
+            Address address = await Client.Address.Create(addressData);
+
+            Assert.IsType<Address>(address);
+            Assert.StartsWith("adr_", address.Id);
+            Assert.Equal("417 MONTGOMERY ST FL 5", address.Street1);
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreateVerifyArray()
+        {
+            UseVCR("create_verify_array");
+
+            Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
+            addressData.Add("verify", new List<bool> { true });
 
             Address address = await Client.Address.Create(addressData);
 
@@ -48,7 +65,23 @@ namespace EasyPost.Tests
         {
             UseVCR("create_verify_strict");
 
-            Dictionary<string, object> addressData = Fixture.BasicAddress;
+            Dictionary<string, object> addressData = Fixtures.CaAddress1;
+            addressData.Add("verify_strict", true);
+
+            Address address = await Client.Address.Create(addressData);
+
+            Assert.IsType<Address>(address);
+            Assert.StartsWith("adr_", address.Id);
+            Assert.Equal("388 TOWNSEND ST APT 20", address.Street1);
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreateVerifyStrictArray()
+        {
+            UseVCR("create_verify_strict_array");
+
+            Dictionary<string, object> addressData = Fixtures.CaAddress1;
             addressData.Add("verify_strict", new List<bool> { true });
 
             Address address = await Client.Address.Create(addressData);
@@ -64,11 +97,11 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            AddressCollection addressCollection = await Client.Address.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
+            AddressCollection addressCollection = await Client.Address.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
             List<Address> addresses = addressCollection.Addresses;
 
             Assert.True(addressCollection.HasMore);
-            Assert.True(addresses.Count <= Fixture.PageSize);
+            Assert.True(addresses.Count <= Fixtures.PageSize);
             foreach (Address item in addresses)
             {
                 Assert.IsType<Address>(item);
@@ -81,7 +114,7 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve");
 
-            Address address = await Client.Address.Create(Fixture.BasicAddress);
+            Address address = await Client.Address.Create(Fixtures.CaAddress1);
 
             Address retrievedAddress = await Client.Address.Retrieve(address.Id);
 
@@ -95,8 +128,7 @@ namespace EasyPost.Tests
         {
             UseVCR("create_and_verify");
 
-            Dictionary<string, object> addressData = Fixture.BasicAddress;
-            addressData.Add("verify_strict", new List<bool> { true });
+            Dictionary<string, object> addressData = Fixtures.CaAddress1;
 
             Address address = await Client.Address.CreateAndVerify(addressData);
 
@@ -122,6 +154,6 @@ namespace EasyPost.Tests
 
         #endregion
 
-        private async Task<Address> CreateBasicAddress() => await Client.Address.Create(Fixture.BasicAddress);
+        private async Task<Address> CreateBasicAddress() => await Client.Address.Create(Fixtures.CaAddress1);
     }
 }

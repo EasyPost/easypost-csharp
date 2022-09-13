@@ -1,82 +1,30 @@
 [
-  {
-      "Duration": 712,
-      "RecordedAt": "2022-09-07T15:01:17.807312-06:00",
-      "Request": {
-          "Body": "{\"address\":{\"name\":\"Jack Sparrow\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}}",
-          "BodyContentType": "Json",
-          "ContentHeaders": {
-              "Content-Type": "application/json; charset=utf-8",
-              "Content-Length": "216"
-          },
-          "Method": "POST",
-          "RequestHeaders": {
-              "Authorization": "<REDACTED>",
-              "content_type": "application/json",
-              "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
-              "User-Agent": "<REDACTED>"
-          },
-          "Uri": "https://api.easypost.com/beta/end_shippers"
-      },
-      "Response": {
-          "Body": "{\"id\":\"es_fd38af55afec450199314e3d80479b26\",\"object\":\"EndShipper\",\"created_at\":\"2022-09-07T15:01:17-06:00\",\"updated_at\":\"2022-09-07T15:01:17-06:00\",\"name\":\"JACK SPARROW\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
-          "BodyContentType": "Json",
-          "ContentHeaders": {
-              "Expires": "0",
-              "Content-Type": "application/json; charset=utf-8",
-              "Content-Length": "357"
-          },
-          "HttpVersion": "1.1",
-          "ResponseHeaders": {
-              "X-Frame-Options": "SAMEORIGIN",
-              "x-xss-protection": "1; mode=block",
-              "X-Content-Type-Options": "nosniff",
-              "x-download-options": "noopen",
-              "x-permitted-cross-domain-policies": "none",
-              "referrer-policy": "strict-origin-when-cross-origin",
-              "x-ep-request-uuid": "3bde9a296319069de79a60e0002e907b",
-              "Cache-Control": "no-store, no-cache, private",
-              "Pragma": "no-cache",
-              "ETag": "W/\"ff6c36023281d10dd5578419adfad4b7\"",
-              "x-runtime": "0.084322",
-              "x-node": "bigweb9nuq",
-              "x-version-label": "easypost-202209071541-cbf5be725f-master",
-              "x-backend": "easypost",
-              "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
-              "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-          },
-          "Status": {
-              "Code": 201,
-              "Message": "Created"
-          }
-      }
-  },
     {
-        "Duration": 136,
-        "RecordedAt": "2022-09-07T15:01:18.157442-06:00",
+        "Duration": 398,
+        "RecordedAt": "2022-09-13T13:55:16.783933-06:00",
         "Request": {
-            "Body": "{\"address\":{\"name\":\"NEW NAME\",\"company\":\"EasyPost\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}}",
+            "Body": "{\"address\":{\"name\":\"Jack Sparrow\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"}}",
             "BodyContentType": "Json",
             "ContentHeaders": {
                 "Content-Type": "application/json; charset=utf-8",
-                "Content-Length": "212"
+                "Content-Length": "195"
             },
-            "Method": "PUT",
+            "Method": "POST",
             "RequestHeaders": {
                 "Authorization": "<REDACTED>",
                 "content_type": "application/json",
                 "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
                 "User-Agent": "<REDACTED>"
             },
-            "Uri": "https://api.easypost.com/beta/end_shippers/es_fd38af55afec450199314e3d80479b26"
+            "Uri": "https://api.easypost.com/beta/end_shippers"
         },
         "Response": {
-            "Body": "{\"id\":\"es_fd38af55afec450199314e3d80479b26\",\"object\":\"EndShipper\",\"created_at\":\"2022-09-07T15:01:17-06:00\",\"updated_at\":\"2022-09-07T15:01:18-06:00\",\"name\":\"NEW NAME\",\"company\":\"EASYPOST\",\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
+            "Body": "{\"id\":\"es_6da88dd527694daf81f3aa11f8d631b7\",\"object\":\"EndShipper\",\"created_at\":\"2022-09-13T13:55:16-06:00\",\"updated_at\":\"2022-09-13T13:55:16-06:00\",\"name\":\"JACK SPARROW\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
             "BodyContentType": "Json",
             "ContentHeaders": {
                 "Expires": "0",
                 "Content-Type": "application/json; charset=utf-8",
-                "Content-Length": "353"
+                "Content-Length": "351"
             },
             "HttpVersion": "1.1",
             "ResponseHeaders": {
@@ -86,15 +34,67 @@
                 "x-download-options": "noopen",
                 "x-permitted-cross-domain-policies": "none",
                 "referrer-policy": "strict-origin-when-cross-origin",
-                "x-ep-request-uuid": "3bde9a296319069ee79a60e0002e90ab",
+                "x-ep-request-uuid": "1d5539f66320e024f3c5c2d6007761d6",
                 "Cache-Control": "no-store, no-cache, private",
                 "Pragma": "no-cache",
-                "ETag": "W/\"28a274ad79c3cfcbbfe9a266332e3b09\"",
-                "x-runtime": "0.071206",
-                "x-node": "bigweb5nuq",
-                "x-version-label": "easypost-202209071541-cbf5be725f-master",
+                "ETag": "W/\"b875f153289fba012e47b7faf39fae30\"",
+                "x-runtime": "0.041485",
+                "x-node": "bigweb1nuq",
+                "x-version-label": "easypost-202209122308-273e11ecbb-master",
                 "x-backend": "easypost",
-                "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
+                "x-proxied": "intlb2nuq 6aa9972c1e,extlb2nuq 9ce216bfac",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+            },
+            "Status": {
+                "Code": 201,
+                "Message": "Created"
+            }
+        }
+    },
+    {
+        "Duration": 158,
+        "RecordedAt": "2022-09-13T13:55:17.06521-06:00",
+        "Request": {
+            "Body": "{\"address\":{\"name\":\"NEW NAME\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"}}",
+            "BodyContentType": "Json",
+            "ContentHeaders": {
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "191"
+            },
+            "Method": "PUT",
+            "RequestHeaders": {
+                "Authorization": "<REDACTED>",
+                "content_type": "application/json",
+                "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+                "User-Agent": "<REDACTED>"
+            },
+            "Uri": "https://api.easypost.com/beta/end_shippers/es_6da88dd527694daf81f3aa11f8d631b7"
+        },
+        "Response": {
+            "Body": "{\"id\":\"es_6da88dd527694daf81f3aa11f8d631b7\",\"object\":\"EndShipper\",\"created_at\":\"2022-09-13T13:55:16-06:00\",\"updated_at\":\"2022-09-13T13:55:17-06:00\",\"name\":\"NEW NAME\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
+            "BodyContentType": "Json",
+            "ContentHeaders": {
+                "Expires": "0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Length": "347"
+            },
+            "HttpVersion": "1.1",
+            "ResponseHeaders": {
+                "X-Frame-Options": "SAMEORIGIN",
+                "x-xss-protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "x-download-options": "noopen",
+                "x-permitted-cross-domain-policies": "none",
+                "referrer-policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "1d5539f66320e025f3c5c2d6007761f3",
+                "Cache-Control": "no-store, no-cache, private",
+                "Pragma": "no-cache",
+                "ETag": "W/\"1a8b143affb8cd28be914a55b559118e\"",
+                "x-runtime": "0.110236",
+                "x-node": "bigweb5nuq",
+                "x-version-label": "easypost-202209122308-273e11ecbb-master",
+                "x-backend": "easypost",
+                "x-proxied": "intlb1nuq 6aa9972c1e,extlb2nuq 9ce216bfac",
                 "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
             },
             "Status": {

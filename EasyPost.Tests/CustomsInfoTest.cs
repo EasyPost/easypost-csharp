@@ -42,6 +42,6 @@ namespace EasyPost.Tests
 
         #endregion
 
-        private async Task<CustomsInfo> CreateBasicCustomsInfo() => await Client.CustomsInfo.Create(Fixture.BasicCustomsInfo);
+        private async Task<CustomsInfo> CreateBasicCustomsInfo() => await Client.CustomsInfo.Create(Fixtures.BasicCustomsInfo);
     }
 }

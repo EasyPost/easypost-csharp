@@ -58,14 +58,14 @@ namespace EasyPost.Tests
             // test lowest rate with no filters
             Rate lowestRate = order.LowestRate();
             Assert.Equal("First", lowestRate.Service);
-            Assert.Equal("5.49", lowestRate.Price);
+            Assert.Equal("5.57", lowestRate.Price);
             Assert.Equal("USPS", lowestRate.Carrier);
 
             // test lowest rate with service filter (this rate is higher than the lowest but should filter)
             List<string> services = new List<string> { "Priority" };
             lowestRate = order.LowestRate(null, services);
             Assert.Equal("Priority", lowestRate.Service);
-            Assert.Equal("7.37", lowestRate.Price);
+            Assert.Equal("7.90", lowestRate.Price);
             Assert.Equal("USPS", lowestRate.Carrier);
 
             // test lowest rate with carrier filter (should error due to bad carrier)
@@ -96,7 +96,7 @@ namespace EasyPost.Tests
 
             Order order = await CreateBasicOrder();
 
-            order = await order.Buy(Fixture.Usps, Fixture.UspsService);
+            order = await order.Buy(Fixtures.Usps, Fixtures.UspsService);
 
             List<Shipment> shipments = order.Shipments;
 
@@ -109,6 +109,6 @@ namespace EasyPost.Tests
 
         #endregion
 
-        private async Task<Order> CreateBasicOrder() => await Client.Order.Create(Fixture.BasicOrder);
+        private async Task<Order> CreateBasicOrder() => await Client.Order.Create(Fixtures.BasicOrder);
     }
 }

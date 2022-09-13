@@ -34,12 +34,12 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            InsuranceCollection insuranceCollection = await Client.Insurance.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
+            InsuranceCollection insuranceCollection = await Client.Insurance.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
 
             List<Insurance> insurances = insuranceCollection.Insurances;
 
             Assert.True(insuranceCollection.HasMore);
-            Assert.True(insurances.Count <= Fixture.PageSize);
+            Assert.True(insurances.Count <= Fixtures.PageSize);
             foreach (Insurance item in insurances)
             {
                 Assert.IsType<Insurance>(item);
@@ -64,8 +64,12 @@ namespace EasyPost.Tests
 
         private async Task<Insurance> CreateBasicInsurance()
         {
-            Dictionary<string, object> basicInsurance = await Fixture.BasicInsurance(Client);
-            return await Client.Insurance.Create(basicInsurance);
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+
+            Dictionary<string, object> parameters = Fixtures.BasicInsurance;
+            parameters.Add("tracking_code", shipment.TrackingCode);
+
+            return await Client.Insurance.Create(parameters);
         }
     }
 }

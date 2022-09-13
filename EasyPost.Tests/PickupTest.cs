@@ -73,7 +73,7 @@ namespace EasyPost.Tests
 
             Pickup pickup = await CreateBasicPickup();
 
-            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
+            pickup = await pickup.Buy(Fixtures.Usps, Fixtures.PickupService);
 
             Assert.IsType<Pickup>(pickup);
             Assert.StartsWith("pickup_", pickup.Id);
@@ -89,7 +89,7 @@ namespace EasyPost.Tests
 
             Pickup pickup = await CreateBasicPickup();
 
-            pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
+            pickup = await pickup.Buy(Fixtures.Usps, Fixtures.PickupService);
 
             pickup = await pickup.Cancel();
 
@@ -102,8 +102,8 @@ namespace EasyPost.Tests
 
         private async Task<Pickup> CreateBasicPickup()
         {
-            Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyShipment);
-            Dictionary<string, object> pickupData = Fixture.BasicPickup;
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+            Dictionary<string, object> pickupData = Fixtures.BasicPickup;
             pickupData["shipment"] = shipment;
             return await Client.Pickup.Create(pickupData);
         }
