@@ -9,7 +9,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("result")]
-        public List<Smartrate> result { get; set; }
+        public List<Smartrate>? Result { get; set; }
 
         #endregion
     }

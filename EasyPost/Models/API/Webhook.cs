@@ -13,9 +13,9 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("disabled_at")]
-        public DateTime? disabled_at { get; set; }
+        public DateTime? DisabledAt { get; set; }
         [JsonProperty("url")]
-        public string url { get; set; }
+        public string? Url { get; set; }
 
         #endregion
 
@@ -33,7 +33,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Webhook> Update(Dictionary<string, object>? parameters = null)
         {
-            await Update<Webhook>(Method.Patch, $"webhooks/{id}", parameters);
+            await Update<Webhook>(Method.Patch, $"webhooks/{Id}", parameters);
             return this;
         }
 
@@ -44,7 +44,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Delete]
         public async Task Delete()
         {
-            await DeleteNoResponse($"webhooks/{id}");
+            await DeleteNoResponse($"webhooks/{Id}");
         }
 
         #endregion

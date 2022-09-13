@@ -7,7 +7,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("pickup_id")]
-        public string pickup_id { get; set; }
+        public string? PickupId { get; set; }
 
         #endregion
 
@@ -17,6 +17,7 @@ namespace EasyPost.Models.API
         /// <returns>An EasyPost.Rate object instance.</returns>
         internal Rate AsRate()
         {
+            // ReSharper disable once RedundantCast
             return (Rate)this;
         }
     }

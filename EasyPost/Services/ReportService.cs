@@ -6,6 +6,7 @@ using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class ReportService : EasyPostService
     {
         internal ReportService(EasyPostClient client) : base(client)
@@ -56,7 +57,7 @@ namespace EasyPost.Services
         public async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
         {
             ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters);
-            reportCollection.type = type;
+            reportCollection.Type = type;
             reportCollection.Client = Client;
             return reportCollection;
         }

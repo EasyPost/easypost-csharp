@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Calculation;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
@@ -14,29 +13,29 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("buyer_address")]
-        public Address buyer_address { get; set; }
+        public Address? BuyerAddress { get; set; }
         [JsonProperty("carrier_accounts")]
-        public List<CarrierAccount> carrier_accounts { get; set; }
+        public List<CarrierAccount>? CarrierAccounts { get; set; }
         [JsonProperty("customs_info")]
-        public CustomsInfo customs_info { get; set; }
+        public CustomsInfo? CustomsInfo { get; set; }
         [JsonProperty("from_address")]
-        public Address from_address { get; set; }
+        public Address? FromAddress { get; set; }
         [JsonProperty("is_return")]
-        public bool? is_return { get; set; }
+        public bool? IsReturn { get; set; }
         [JsonProperty("messages")]
-        public List<Message> messages { get; set; }
+        public List<Message>? Messages { get; set; }
         [JsonProperty("rates")]
-        public List<Rate> rates { get; set; }
+        public List<Rate>? Rates { get; set; }
         [JsonProperty("reference")]
-        public string reference { get; set; }
+        public string? Reference { get; set; }
         [JsonProperty("return_address")]
-        public Address return_address { get; set; }
+        public Address? ReturnAddress { get; set; }
         [JsonProperty("service")]
-        public string service { get; set; }
+        public string? Service { get; set; }
         [JsonProperty("shipments")]
-        public List<Shipment> shipments { get; set; }
+        public List<Shipment>? Shipments { get; set; }
         [JsonProperty("to_address")]
-        public Address to_address { get; set; }
+        public Address? ToAddress { get; set; }
 
         #endregion
 
@@ -50,7 +49,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Order> Buy(string withCarrier, string withService)
         {
-            if (id == null)
+            if (Id == null)
             {
                 throw new Exception("id is null");
             }
@@ -61,7 +60,7 @@ namespace EasyPost.Models.API
                 { "service", withService }
             };
 
-            await Update<Order>(Method.Post, $"orders/{id}/buy", parameters);
+            await Update<Order>(Method.Post, $"orders/{Id}/buy", parameters);
             return this;
         }
 
@@ -72,11 +71,11 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task Buy(Rate rate)
         {
-            if (rate.carrier != null)
+            if (rate.Carrier != null)
             {
-                if (rate.service != null)
+                if (rate.Service != null)
                 {
-                    await Buy(rate.carrier, rate.service);
+                    await Buy(rate.Carrier, rate.Service);
                 }
                 else
                 {
@@ -96,12 +95,12 @@ namespace EasyPost.Models.API
         public async Task GetRates()
         {
             // TODO: Should this return the updated Order object?
-            if (id == null)
+            if (Id == null)
             {
                 throw new Exception("id is null");
             }
 
-            await Update<Order>(Method.Get, $"orders/{id}/rates");
+            await Update<Order>(Method.Get, $"orders/{Id}/rates");
         }
 
         #endregion
@@ -116,12 +115,12 @@ namespace EasyPost.Models.API
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
         public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
-            if (rates == null)
+            if (Rates == null)
             {
                 throw new Exception("Rates not populated.  Call GetRates() first.");
             }
 
-            return Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+            return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
@@ -9,6 +8,7 @@ using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class ShipmentService : EasyPostService
     {
         internal ShipmentService(EasyPostClient client) : base(client)
@@ -44,29 +44,6 @@ namespace EasyPost.Services
             parameters = parameters.Wrap("shipment");
             parameters.Add("carbon_offset", withCarbonOffset);
             return await Create<Shipment>("shipments", parameters);
-        }
-
-        /// <summary>
-        ///     Create a return shipment for a shipment.
-        /// </summary>
-        /// <param name="shipment">Shipment to return.</param>
-        /// <returns>A return shipment.</returns>
-        [CrudOperations.Create]
-        public async Task<Shipment> CreateReturn(Shipment shipment)
-        {
-            if (shipment.id == null)
-            {
-                throw new Exception("Shipment.id is null.");
-            }
-
-            return await Create(
-                new Dictionary<string, object>
-                {
-                    { "to_address", shipment.from_address },
-                    { "from_address", shipment.to_address },
-                    { "parcel", shipment.parcel },
-                    { "is_return", true },
-                });
         }
 
         /// <summary>

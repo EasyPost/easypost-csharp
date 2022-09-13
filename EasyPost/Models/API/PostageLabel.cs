@@ -9,29 +9,29 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("date_advance")]
-        public int date_advance { get; set; }
+        public int? DateAdvance { get; set; }
         [JsonProperty("integrated_form")]
-        public string integrated_form { get; set; }
+        public string? IntegratedForm { get; set; }
         [JsonProperty("label_date")]
-        public DateTime label_date { get; set; }
+        public DateTime? LabelDate { get; set; }
         [JsonProperty("label_epl2_url")]
-        public string label_epl2_url { get; set; }
+        public string? LabelEpl2Url { get; set; }
         [JsonProperty("label_file")]
-        public string label_file { get; set; }
+        public string? LabelFile { get; set; }
         [JsonProperty("label_file_type")]
-        public string label_file_type { get; set; }
+        public string? LabelFileType { get; set; }
         [JsonProperty("label_pdf_url")]
-        public string label_pdf_url { get; set; }
+        public string? LabelPdfUrl { get; set; }
         [JsonProperty("label_resolution")]
-        public int label_resolution { get; set; }
+        public int? LabelResolution { get; set; }
         [JsonProperty("label_size")]
-        public string label_size { get; set; }
+        public string? LabelSize { get; set; }
         [JsonProperty("label_type")]
-        public string label_type { get; set; }
+        public string? LabelType { get; set; }
         [JsonProperty("label_url")]
-        public string label_url { get; set; }
+        public string? LabelUrl { get; set; }
         [JsonProperty("label_zpl_url")]
-        public string label_zpl_url { get; set; }
+        public string? LabelZplUrl { get; set; }
 
         #endregion
     }

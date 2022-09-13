@@ -8,7 +8,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("key")]
-        public string key { get; set; }
+        public string? Key { get; set; }
 
         #endregion
     }

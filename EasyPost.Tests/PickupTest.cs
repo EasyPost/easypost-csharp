@@ -24,8 +24,8 @@ namespace EasyPost.Tests
             Pickup pickup = await CreateBasicPickup();
 
             Assert.IsType<Pickup>(pickup);
-            Assert.StartsWith("pickup_", pickup.id);
-            Assert.NotNull(pickup.pickup_rates);
+            Assert.StartsWith("pickup_", pickup.Id);
+            Assert.NotNull(pickup.PickupRates);
         }
 
         [Fact]
@@ -38,9 +38,9 @@ namespace EasyPost.Tests
 
             // test lowest rate with no filters
             Rate lowestRate = pickup.LowestRate();
-            Assert.Equal("NextDay", lowestRate.service);
-            Assert.Equal("0.00", lowestRate.rate);
-            Assert.Equal("USPS", lowestRate.carrier);
+            Assert.Equal("NextDay", lowestRate.Service);
+            Assert.Equal("0.00", lowestRate.Price);
+            Assert.Equal("USPS", lowestRate.Carrier);
 
             // test lowest rate with service filter (should error due to bad service)
             List<string> services = new List<string> { "BAD_SERVICE" };
@@ -59,13 +59,13 @@ namespace EasyPost.Tests
 
             Pickup pickup = await CreateBasicPickup();
 
-            Pickup retrievedPickup = await Client.Pickup.Retrieve(pickup.id);
+            Pickup retrievedPickup = await Client.Pickup.Retrieve(pickup.Id);
 
             Assert.IsType<Pickup>(retrievedPickup);
-            Assert.Equal(pickup.id, retrievedPickup.id);
+            Assert.Equal(pickup.Id, retrievedPickup.Id);
         }
 
-        [Fact]
+        [Fact(Skip = "USPS test server issues. Re-enable ASAP.")]
         [CrudOperations.Update]
         public async Task TestBuy()
         {
@@ -76,12 +76,12 @@ namespace EasyPost.Tests
             pickup = await pickup.Buy(Fixture.Usps, Fixture.PickupService);
 
             Assert.IsType<Pickup>(pickup);
-            Assert.StartsWith("pickup_", pickup.id);
-            Assert.NotNull(pickup.confirmation);
-            Assert.Equal("scheduled", pickup.status);
+            Assert.StartsWith("pickup_", pickup.Id);
+            Assert.NotNull(pickup.Confirmation);
+            Assert.Equal("scheduled", pickup.Status);
         }
 
-        [Fact]
+        [Fact(Skip = "USPS test server issues. Re-enable ASAP.")]
         [CrudOperations.Update]
         public async Task TestCancel()
         {
@@ -94,8 +94,8 @@ namespace EasyPost.Tests
             pickup = await pickup.Cancel();
 
             Assert.IsType<Pickup>(pickup);
-            Assert.StartsWith("pickup_", pickup.id);
-            Assert.Equal("canceled", pickup.status);
+            Assert.StartsWith("pickup_", pickup.Id);
+            Assert.Equal("canceled", pickup.Status);
         }
 
         #endregion

@@ -23,7 +23,7 @@ namespace EasyPost.Tests
             ScanForm scanForm = await GetBasicScanForm();
 
             Assert.IsType<ScanForm>(scanForm);
-            Assert.StartsWith("sf_", scanForm.id);
+            Assert.StartsWith("sf_", scanForm.Id);
         }
 
         [Fact]
@@ -34,9 +34,9 @@ namespace EasyPost.Tests
 
             ScanFormCollection scanFormCollection = await Client.ScanForm.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
 
-            List<ScanForm> scanForms = scanFormCollection.scan_forms;
+            List<ScanForm> scanForms = scanFormCollection.ScanForms;
 
-            Assert.True(scanFormCollection.has_more);
+            Assert.True(scanFormCollection.HasMore);
             Assert.True(scanForms.Count <= Fixture.PageSize);
             foreach (ScanForm scanForm in scanForms)
             {
@@ -52,7 +52,7 @@ namespace EasyPost.Tests
 
             ScanForm scanForm = await GetBasicScanForm();
 
-            ScanForm retrievedScanForm = await Client.ScanForm.Retrieve(scanForm.id);
+            ScanForm retrievedScanForm = await Client.ScanForm.Retrieve(scanForm.Id);
 
             Assert.IsType<ScanForm>(retrievedScanForm);
             Assert.Equal(scanForm, retrievedScanForm);

@@ -1,7 +1,7 @@
 [
   {
-      "Duration": 386,
-      "RecordedAt": "2022-08-24T13:53:32.29806-06:00",
+      "Duration": 498,
+      "RecordedAt": "2022-09-07T14:53:56.361662-06:00",
       "Request": {
           "Body": "",
           "BodyContentType": "Text",
@@ -16,7 +16,7 @@
           "Uri": "https://api.easypost.com/v2/events?page_size=5"
       },
       "Response": {
-          "Body": "{\"events\":[{\"description\":\"batch.created\",\"id\":\"evt_6ea0c5dc23e611ed942e4b85788d0b94\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-08-24T19:53:32.383Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"report.empty\",\"id\":\"evt_6e810a6223e611ed8ba73b98d56825b2\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-08-24T19:53:32.175Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"report.new\",\"id\":\"evt_6e75d8fe23e611ed96fa07ecf13a9808\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-08-24T19:53:32.102Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"report.empty\",\"id\":\"evt_6e5c62fc23e611ed8e2b7106d362653d\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-08-24T19:53:31.935Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"batch.updated\",\"id\":\"evt_6e5461d823e611ed923d35e9546a3eaf\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-08-24T19:53:31.882Z\",\"mode\":\"test\",\"object\":\"Event\"}],\"has_more\":true}",
+          "Body": "{\"events\":[{\"description\":\"batch.updated\",\"id\":\"evt_30727d642eef11ed8d932b72bce3d6cd\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-09-07T20:53:56.322Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"batch.created\",\"id\":\"evt_306793b82eef11eda9c8516e82e85ebc\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-09-07T20:53:56.25Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"report.empty\",\"id\":\"evt_3060bb602eef11ed9f6e3d92c7a7f410\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-09-07T20:53:56.206Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"report.new\",\"id\":\"evt_3054191e2eef11ed818e03d90aa76974\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-09-07T20:53:56.123Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"report.empty\",\"id\":\"evt_30257a1e2eef11eda1db55a9f05dd70e\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-09-07T20:53:55.817Z\",\"mode\":\"test\",\"object\":\"Event\"}],\"has_more\":true}",
           "BodyContentType": "Json",
           "ContentHeaders": {
               "Expires": "0",
@@ -31,16 +31,15 @@
               "x-download-options": "noopen",
               "x-permitted-cross-domain-policies": "none",
               "Referrer-Policy": "strict-origin-when-cross-origin",
-              "x-ep-request-uuid": "bffd75b5630681bcf7dfd70300794a8d",
+              "x-ep-request-uuid": "3bde9a27631904e4e799f6e8002e0bdc",
               "Cache-Control": "no-store, no-cache, private",
               "Pragma": "no-cache",
-              "ETag": "W/\"9ae70abaed2a653d5dd416abf9ecefa0\"",
-              "x-runtime": "0.189716",
-              "x-node": "bigweb7nuq",
-              "x-version-label": "easypost-202208241853-b300c23ebd-master",
+              "ETag": "W/\"2244df193bc215bd1337c3bfb13b7393\"",
+              "x-runtime": "0.229692",
+              "x-node": "bigweb1nuq",
+              "x-version-label": "easypost-202209071541-cbf5be725f-master",
               "x-backend": "easypost",
-              "x-canary": "direct",
-              "x-proxied": "intlb1nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
+              "x-proxied": "intlb2nuq 6aa9972c1e,extlb1nuq 9ce216bfac",
               "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
           },
           "Status": {

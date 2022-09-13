@@ -9,7 +9,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("trackers")]
-        public List<Tracker> trackers { get; set; }
+        public List<Tracker>? Trackers { get; set; }
 
         #endregion
     }

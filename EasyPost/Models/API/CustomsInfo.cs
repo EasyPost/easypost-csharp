@@ -9,25 +9,25 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("contents_explanation")]
-        public string contents_explanation { get; set; }
+        public string? ContentsExplanation { get; set; }
         [JsonProperty("contents_type")]
-        public string contents_type { get; set; }
+        public string? ContentsType { get; set; }
         [JsonProperty("customs_certify")]
-        public string customs_certify { get; set; }
+        public string? CustomsCertify { get; set; }
         [JsonProperty("customs_items")]
-        public List<CustomsItem> customs_items { get; set; }
+        public List<CustomsItem>? CustomsItems { get; set; }
         [JsonProperty("customs_signer")]
-        public string customs_signer { get; set; }
+        public string? CustomsSigner { get; set; }
         [JsonProperty("declaration")]
-        public string declaration { get; set; }
+        public string? Declaration { get; set; }
         [JsonProperty("eel_pfc")]
-        public string eel_pfc { get; set; }
+        public string? EelPfc { get; set; }
         [JsonProperty("non_delivery_option")]
-        public string non_delivery_option { get; set; }
+        public string? NonDeliveryOption { get; set; }
         [JsonProperty("restriction_comments")]
-        public string restriction_comments { get; set; }
+        public string? RestrictionComments { get; set; }
         [JsonProperty("restriction_type")]
-        public string restriction_type { get; set; }
+        public string? RestrictionType { get; set; }
 
         #endregion
     }

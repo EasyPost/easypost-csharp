@@ -14,31 +14,31 @@ namespace EasyPost.Models.API
 
         // bank_account
         [JsonProperty("bank_name")]
-        public string bank_name { get; set; }
+        public string? BankName { get; set; }
         // credit_card
         [JsonProperty("brand")]
-        public string brand { get; set; }
+        public string? Brand { get; set; }
         // bank_account
         [JsonProperty("country")]
-        public string country { get; set; }
+        public string? Country { get; set; }
         // both
         [JsonProperty("disabled_at")]
-        public string disabled_at { get; set; }
+        public string? DisabledAt { get; set; }
         // credit_card
         [JsonProperty("exp_month")]
-        public int exp_month { get; set; }
+        public int? ExpMonth { get; set; }
         // credit_card
         [JsonProperty("exp_year")]
-        public int exp_year { get; set; }
+        public int? ExpYear { get; set; }
         // both
         [JsonProperty("last4")]
-        public string last4 { get; set; }
+        public string? Last4 { get; set; }
         // credit_card
         [JsonProperty("name")]
-        public string name { get; set; }
+        public string? Name { get; set; }
         // bank_account
         [JsonProperty("verified")]
-        public bool verified { get; set; }
+        public bool? Verified { get; set; }
 
         #endregion
 
@@ -59,17 +59,17 @@ namespace EasyPost.Models.API
             get
             {
                 PaymentMethodType? type = null;
-                if (id == null)
+                if (Id == null)
                 {
                     return null;
                 }
 
-                if (id.StartsWith("card_"))
+                if (Id.StartsWith("card_"))
                 {
                     type = PaymentMethodType.CreditCard;
                 }
 
-                else if (id.StartsWith("bank_"))
+                else if (Id.StartsWith("bank_"))
                 {
                     type = PaymentMethodType.BankAccount;
                 }
@@ -78,7 +78,7 @@ namespace EasyPost.Models.API
             }
         }
 
-        internal string Endpoint
+        internal string? Endpoint
         {
             get
             {

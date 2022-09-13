@@ -9,10 +9,10 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("children")]
-        public List<ApiKeyCollection>? children { get; set; }
+        public List<ApiKeyCollection>? Children { get; set; }
 
         [JsonProperty("keys")]
-        public List<ApiKey>? keys { get; set; }
+        public List<ApiKey>? Keys { get; set; }
 
         #endregion
     }

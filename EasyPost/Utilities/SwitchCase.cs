@@ -40,7 +40,7 @@ namespace EasyPost.Utilities
 
         private Func<object> Expression { get; }
 
-        public ExpressionCase(Func<object> expression, Action? action)
+        protected ExpressionCase(Func<object> expression, Action? action)
         {
             Expression = expression;
             Action = action;
@@ -64,7 +64,7 @@ namespace EasyPost.Utilities
     {
         private readonly List<ICase> _list = new List<ICase>();
 
-        private Action? _defaultCaseAction = null;
+        private Action? _defaultCaseAction;
 
         /// <summary>
         ///     Add a case where matching a static value triggers an Action

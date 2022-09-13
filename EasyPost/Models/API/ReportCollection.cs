@@ -9,9 +9,9 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("reports")]
-        public List<Report> reports { get; set; }
+        public List<Report>? Reports { get; set; }
         [JsonProperty("type")]
-        public string type { get; set; }
+        public string? Type { get; set; }
 
         #endregion
     }

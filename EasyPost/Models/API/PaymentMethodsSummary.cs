@@ -11,9 +11,9 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("primary_payment_method")]
-        public PaymentMethod primary_payment_method { get; set; }
+        public PaymentMethod? PrimaryPaymentMethod { get; set; }
         [JsonProperty("secondary_payment_method")]
-        public PaymentMethod secondary_payment_method { get; set; }
+        public PaymentMethod? SecondaryPaymentMethod { get; set; }
 
         #endregion
     }

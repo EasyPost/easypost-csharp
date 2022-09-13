@@ -9,7 +9,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("events")]
-        public List<Event> events { get; set; }
+        public List<Event>? Events { get; set; }
 
         #endregion
     }

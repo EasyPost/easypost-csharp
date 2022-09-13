@@ -9,15 +9,15 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("code")]
-        public string code { get; set; }
+        public string? Code { get; set; }
         [JsonProperty("errors")]
-        public List<Error> errors { get; set; }
+        public List<Error>? Errors { get; set; }
         [JsonProperty("field")]
-        public string field { get; set; }
+        public string? Field { get; set; }
         [JsonProperty("message")]
-        public string message { get; set; }
+        public string? Message { get; set; }
         [JsonProperty("suggestion")]
-        public string suggestion { get; set; }
+        public string? Suggestion { get; set; }
 
         #endregion
     }

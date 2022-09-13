@@ -10,27 +10,27 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("carrier")]
-        public string carrier { get; set; }
+        public string? Carrier { get; set; }
         [JsonProperty("carrier_detail")]
-        public CarrierDetail carrier_detail { get; set; }
+        public CarrierDetail? CarrierDetail { get; set; }
         [JsonProperty("est_delivery_date")]
-        public DateTime? est_delivery_date { get; set; }
+        public DateTime? EstDeliveryDate { get; set; }
         [JsonProperty("public_url")]
-        public string public_url { get; set; }
+        public string? PublicUrl { get; set; }
         [JsonProperty("shipment_id")]
-        public string shipment_id { get; set; }
+        public string? ShipmentId { get; set; }
         [JsonProperty("signed_by")]
-        public string signed_by { get; set; }
+        public string? SignedBy { get; set; }
         [JsonProperty("status")]
-        public string status { get; set; }
+        public string? Status { get; set; }
         [JsonProperty("tracking_code")]
-        public string tracking_code { get; set; }
+        public string? TrackingCode { get; set; }
         [JsonProperty("tracking_details")]
-        public List<TrackingDetail> tracking_details { get; set; }
+        public List<TrackingDetail>? TrackingDetails { get; set; }
         [JsonProperty("tracking_updated_at")]
-        public DateTime tracking_updated_at { get; set; }
+        public DateTime? TrackingUpdatedAt { get; set; }
         [JsonProperty("weight")]
-        public double? weight { get; set; }
+        public double? Weight { get; set; }
 
         #endregion
     }

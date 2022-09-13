@@ -12,27 +12,27 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("amount")]
-        public string amount { get; set; }
+        public string? Amount { get; set; }
         [JsonProperty("from_address")]
-        public Address from_address { get; set; }
+        public Address? FromAddress { get; set; }
         [JsonProperty("messages")]
-        public List<string> messages { get; set; }
+        public List<string>? Messages { get; set; }
         [JsonProperty("provider")]
-        public string provider { get; set; }
+        public string? Provider { get; set; }
         [JsonProperty("provider_id")]
-        public string provider_id { get; set; }
+        public string? ProviderId { get; set; }
         [JsonProperty("reference")]
-        public string reference { get; set; }
+        public string? Reference { get; set; }
         [JsonProperty("shipment_id")]
-        public string shipment_id { get; set; }
+        public string? ShipmentId { get; set; }
         [JsonProperty("status")]
-        public string status { get; set; }
+        public string? Status { get; set; }
         [JsonProperty("to_address")]
-        public Address to_address { get; set; }
+        public Address? ToAddress { get; set; }
         [JsonProperty("tracker")]
-        public Tracker tracker { get; set; }
+        public Tracker? Tracker { get; set; }
         [JsonProperty("tracking_code")]
-        public string tracking_code { get; set; }
+        public string? TrackingCode { get; set; }
 
         #endregion
 
@@ -46,7 +46,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Insurance> Refresh(Dictionary<string, object>? parameters = null)
         {
-            await Update<Insurance>(Method.Patch, $"insurances/{id}", parameters);
+            await Update<Insurance>(Method.Patch, $"insurances/{Id}", parameters);
             return this;
         }
 

@@ -7,6 +7,7 @@ using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class PickupService : EasyPostService
     {
         internal PickupService(EasyPostClient client) : base(client)

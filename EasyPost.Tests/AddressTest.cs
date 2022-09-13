@@ -23,8 +23,8 @@ namespace EasyPost.Tests
             Address address = await CreateBasicAddress();
 
             Assert.IsType<Address>(address);
-            Assert.StartsWith("adr_", address.id);
-            Assert.Equal("388 Townsend St", address.street1);
+            Assert.StartsWith("adr_", address.Id);
+            Assert.Equal("388 Townsend St", address.Street1);
         }
 
         [Fact]
@@ -38,8 +38,8 @@ namespace EasyPost.Tests
             Address address = await Client.Address.Create(addressData);
 
             Assert.IsType<Address>(address);
-            Assert.StartsWith("adr_", address.id);
-            Assert.Equal("417 MONTGOMERY ST FL 5", address.street1);
+            Assert.StartsWith("adr_", address.Id);
+            Assert.Equal("417 MONTGOMERY ST FL 5", address.Street1);
         }
 
         [Fact]
@@ -54,8 +54,8 @@ namespace EasyPost.Tests
             Address address = await Client.Address.Create(addressData);
 
             Assert.IsType<Address>(address);
-            Assert.StartsWith("adr_", address.id);
-            Assert.Equal("388 TOWNSEND ST APT 20", address.street1);
+            Assert.StartsWith("adr_", address.Id);
+            Assert.Equal("388 TOWNSEND ST APT 20", address.Street1);
         }
 
         [Fact]
@@ -65,9 +65,9 @@ namespace EasyPost.Tests
             UseVCR("all");
 
             AddressCollection addressCollection = await Client.Address.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
-            List<Address> addresses = addressCollection.addresses;
+            List<Address> addresses = addressCollection.Addresses;
 
-            Assert.True(addressCollection.has_more);
+            Assert.True(addressCollection.HasMore);
             Assert.True(addresses.Count <= Fixture.PageSize);
             foreach (Address item in addresses)
             {
@@ -83,7 +83,7 @@ namespace EasyPost.Tests
 
             Address address = await Client.Address.Create(Fixture.BasicAddress);
 
-            Address retrievedAddress = await Client.Address.Retrieve(address.id);
+            Address retrievedAddress = await Client.Address.Retrieve(address.Id);
 
             Assert.IsType<Address>(retrievedAddress);
             Assert.Equal(address, retrievedAddress);
@@ -101,8 +101,8 @@ namespace EasyPost.Tests
             Address address = await Client.Address.CreateAndVerify(addressData);
 
             Assert.IsType<Address>(address);
-            Assert.StartsWith("adr_", address.id);
-            Assert.Equal("388 TOWNSEND ST APT 20", address.street1);
+            Assert.StartsWith("adr_", address.Id);
+            Assert.Equal("388 TOWNSEND ST APT 20", address.Street1);
         }
 
         [Fact]
@@ -116,8 +116,8 @@ namespace EasyPost.Tests
             address = await address.Verify();
 
             Assert.IsType<Address>(address);
-            Assert.StartsWith("adr_", address.id);
-            Assert.Equal("388 TOWNSEND ST APT 20", address.street1);
+            Assert.StartsWith("adr_", address.Id);
+            Assert.Equal("388 TOWNSEND ST APT 20", address.Street1);
         }
 
         #endregion

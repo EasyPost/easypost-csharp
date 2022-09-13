@@ -12,31 +12,31 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("api_keys")]
-        public List<ApiKey> api_keys { get; set; }
+        public List<ApiKey>? ApiKeys { get; set; }
         [JsonProperty("balance")]
-        public string balance { get; set; }
+        public string? Balance { get; set; }
         [JsonProperty("children")]
-        public List<User> children { get; set; }
+        public List<User>? Children { get; set; }
         [JsonProperty("email")]
-        public string email { get; set; }
+        public string? Email { get; set; }
         [JsonProperty("name")]
-        public string name { get; set; }
+        public string? Name { get; set; }
         [JsonProperty("parent_id")]
-        public string parent_id { get; set; }
+        public string? ParentId { get; set; }
         [JsonProperty("password")]
-        public string password { get; set; }
+        public string? Password { get; set; }
         [JsonProperty("password_confirmation")]
-        public string password_confirmation { get; set; }
+        public string? PasswordConfirmation { get; set; }
         [JsonProperty("phone_number")]
-        public string phone_number { get; set; }
+        public string? PhoneNumber { get; set; }
         [JsonProperty("price_per_shipment")]
-        public string price_per_shipment { get; set; }
+        public string? PricePerShipment { get; set; }
         [JsonProperty("recharge_amount")]
-        public string recharge_amount { get; set; }
+        public string? RechargeAmount { get; set; }
         [JsonProperty("recharge_threshold")]
-        public string recharge_threshold { get; set; }
+        public string? RechargeThreshold { get; set; }
         [JsonProperty("secondary_recharge_amount")]
-        public string secondary_recharge_amount { get; set; }
+        public string? SecondaryRechargeAmount { get; set; }
 
         #endregion
 
@@ -60,7 +60,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Create]
         public async Task<Brand> UpdateBrand(Dictionary<string, object> parameters)
         {
-            return await Request<Brand>(Method.Patch, $"users/{id}/brand", parameters);
+            return await Request<Brand>(Method.Patch, $"users/{Id}/brand", parameters);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<User> Update(Dictionary<string, object> parameters)
         {
-            await Update<User>(Method.Patch, $"users/{id}", parameters);
+            await Update<User>(Method.Patch, $"users/{Id}", parameters);
             return this;
         }
 
@@ -92,7 +92,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Delete]
         public async Task Delete()
         {
-            await DeleteNoResponse($"users/{id}");
+            await DeleteNoResponse($"users/{Id}");
         }
 
         #endregion

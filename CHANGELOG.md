@@ -6,15 +6,23 @@
   - Static methods (i.e. create, retrieve, retrieve all of a resource) exist in services, accessed via property of the client (e.g. `myClient.Address.Create()`).
   - Instance methods (i.e. update, delete) accessed on instance of a resource (i.e. `myShipment.Update()`).
 - Library better supports different API versions (i.e. `v2`, `beta`).
-- All objects now share a common base set of properties, including `id`, `created_at`, `updated_at`, and `mode`.
+  - Beta features accessed via, e.g. `myClient.Beta.EndShipper.Create()`.
+- All properties are now title-cased rather than snake-cased to match standard .NET naming conventions.
+  - e.g. `myShipment.id` is now `myShipment.Id`, `myAddress.federal_tax_id` is now `myAddress.FederalTaxId`, `myTrackerCollection.has_more` is now `myTrackerCollection.HasMore`.
+  - Some properties have been renamed to avoid naming conflicts:
+    - `Rate.rate` is now `Rate.Price`
+    - `Message.message` is now `Message.Text`
+- All properties are now nullable.
+  - Almost all properties will be assigned a value during JSON deserialization. This is mostly to address compiler warnings.
+  - Users can proceed with the assumption that any given property will not be null.
+- All objects now share a common base set of properties, including `Id`, `CreatedAt`, `UpdatedAt`, and `Mode`.
 - Under the hood improvements:
   - Underlying `Request`-`Client`-`ClientConfiguration` relationship has been re-architected to allow for thread safety.
   - Process of generating an API request has been standardized and simplified.
   - Improved accessibility levels of internal functions, to prevent accidental use by end users.
   - Files have been organized into a more logical structure.
   - Methods and properties have been organized (e.g. methods ordered by CRUD, properties ordered alphabetically).
-- Dependencies updated to latest versions, including `RestSharp` v108
-- `EndShipper` moved from beta to general availability.
+- Dependencies updated to latest versions, including `RestSharp` v108.
 
 ## v3.4.0 (2022-08-02)
 

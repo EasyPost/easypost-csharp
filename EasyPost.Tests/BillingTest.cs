@@ -32,8 +32,8 @@ namespace EasyPost.Tests
 
             PaymentMethodsSummary paymentMethodsSummary = await Client.Billing.RetrievePaymentMethodsSummary();
 
-            Assert.NotNull(paymentMethodsSummary.primary_payment_method);
-            Assert.NotNull(paymentMethodsSummary.secondary_payment_method);
+            Assert.NotNull(paymentMethodsSummary.PrimaryPaymentMethod);
+            Assert.NotNull(paymentMethodsSummary.SecondaryPaymentMethod);
         }
 
         [Fact(Skip = "Skipping due to the lack of an available real payment method in tests.")]

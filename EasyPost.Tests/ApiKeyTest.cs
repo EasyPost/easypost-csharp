@@ -23,8 +23,8 @@ namespace EasyPost.Tests
 
             // API keys will be censored, so we'll just check for the existence of the list
             Assert.NotNull(collection);
-            Assert.NotNull(collection.keys);
-            Assert.NotNull(collection.children);
+            Assert.NotNull(collection.Keys);
+            Assert.NotNull(collection.Children);
         }
 
         #endregion

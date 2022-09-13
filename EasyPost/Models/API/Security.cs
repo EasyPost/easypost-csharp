@@ -2,7 +2,7 @@
 
 namespace EasyPost.Models.API
 {
-    internal class Security
+    internal static class Security
     {
         /// <summary>
         ///     Get the TLS protocol version to use for the request.

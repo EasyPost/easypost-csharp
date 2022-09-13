@@ -23,8 +23,8 @@ namespace EasyPost.Tests
             Tracker tracker = await CreateBasicTracker();
 
             Assert.IsType<Tracker>(tracker);
-            Assert.StartsWith("trk_", tracker.id);
-            Assert.Equal("pre_transit", tracker.status);
+            Assert.StartsWith("trk_", tracker.Id);
+            Assert.Equal("pre_transit", tracker.Status);
         }
 
         [Fact]
@@ -51,9 +51,9 @@ namespace EasyPost.Tests
 
             TrackerCollection trackerCollection = await Client.Tracker.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
 
-            List<Tracker> trackers = trackerCollection.trackers;
+            List<Tracker> trackers = trackerCollection.Trackers;
 
-            Assert.True(trackerCollection.has_more);
+            Assert.True(trackerCollection.HasMore);
             Assert.True(trackers.Count <= Fixture.PageSize);
             foreach (Tracker tracker in trackers)
             {
@@ -70,11 +70,11 @@ namespace EasyPost.Tests
             // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
             Tracker tracker = await CreateBasicTracker();
 
-            Tracker retrievedTracker = await Client.Tracker.Retrieve(tracker.id);
+            Tracker retrievedTracker = await Client.Tracker.Retrieve(tracker.Id);
 
             Assert.IsType<Tracker>(retrievedTracker);
             // Must compare IDs because other elements of objects may be different
-            Assert.Equal(tracker.id, retrievedTracker.id);
+            Assert.Equal(tracker.Id, retrievedTracker.Id);
         }
 
         #endregion

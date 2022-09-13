@@ -7,13 +7,13 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("entity")]
-        public string entity { get; set; }
+        public string? Entity { get; set; }
         [JsonProperty("issuing_country")]
-        public string issuing_country { get; set; }
+        public string? IssuingCountry { get; set; }
         [JsonProperty("tax_id")]
-        public string tax_id { get; set; }
+        public string? TaxId { get; set; }
         [JsonProperty("tax_id_type")]
-        public string tax_id_type { get; set; }
+        public string? TaxIdType { get; set; }
 
         #endregion
     }

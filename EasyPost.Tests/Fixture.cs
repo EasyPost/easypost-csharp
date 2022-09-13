@@ -107,7 +107,7 @@ namespace EasyPost.Tests
         {
             get
             {
-                const string pickupDate = "2022-08-25";
+                const string pickupDate = "2022-09-14";
                 return new Dictionary<string, object>
                 {
                     { "address", BasicAddress },
@@ -311,7 +311,7 @@ namespace EasyPost.Tests
             {
                 { "to_address", BasicAddress },
                 { "from_address", BasicAddress },
-                { "tracking_code", shipment.tracking_code },
+                { "tracking_code", shipment.TrackingCode },
                 { "carrier", Usps },
                 { "amount", 100 }
             };
