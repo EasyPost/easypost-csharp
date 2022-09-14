@@ -45,7 +45,6 @@ install:
 	git submodule init
 	git submodule update
 
-
 ## lint - Lints the project
 lint:
 	dotnet format --verify-no-changes
