@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Exceptions;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
 using EasyPost.Utilities.Annotations;
@@ -89,7 +89,7 @@ namespace EasyPost.Services
                 { SwitchCaseScenario.Default, () => throw new InvalidParameterError("priority") }
             };
 
-            @switch.Match(priority);
+            @switch.MatchFirst(priority);
 
             if (paymentMethod?.Id == null)
             {

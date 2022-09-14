@@ -1,8 +1,9 @@
-﻿// ReSharper disable once CheckNamespace
-namespace EasyPost.Exceptions
+﻿namespace EasyPost.Exceptions.General
 {
     public class SignatureVerificationError : EasyPostError
     {
-        public SignatureVerificationError() : base("Invalid signature") { }
+        internal SignatureVerificationError() : base("Invalid signature")
+        {
+        }
     }
 }

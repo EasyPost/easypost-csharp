@@ -1,19 +1,18 @@
 ﻿using System.Collections.Generic;
 using EasyPost.Models.API;
 
-// ReSharper disable once CheckNamespace
-namespace EasyPost.Exceptions
+namespace EasyPost.Exceptions.API
 {
     public class NotFoundError : ApiError
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="NotFoundError" /> class.
         /// </summary>
-        /// <param name="statusCode">HTTP status code to store as a property.</param>
         /// <param name="errorMessage">Error message string to print to console.</param>
+        /// <param name="statusCode">Optional HTTP status code to store as a property.</param>
         /// <param name="errorType">Optional error type string to store as a property.</param>
         /// <param name="errors">Optional list of Error objects to store as a property.</param>
-        internal NotFoundError(int statusCode, string errorMessage, string? errorType = null, List<Error>? errors = null) : base(statusCode, errorMessage, errorType, errors)
+        internal NotFoundError(string errorMessage, int statusCode, string? errorType = null, List<Error>? errors = null) : base(errorMessage, statusCode, errorType, errors)
         {
         }
     }

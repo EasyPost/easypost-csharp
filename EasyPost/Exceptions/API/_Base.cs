@@ -1,17 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Reflection;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
 using RestSharp;
 
-// ReSharper disable once CheckNamespace
-namespace EasyPost.Exceptions
+namespace EasyPost.Exceptions.API
 {
-    public class ApiError : HttpError
+    public class ApiError : EasyPostError
     {
         public readonly string? Code;
 
         public readonly List<Error>? Errors;
+        public readonly int? StatusCode;
 
         /// <summary>
         ///     Get a formatted error string with expanded details about the error.
@@ -37,12 +40,13 @@ namespace EasyPost.Exceptions
         /// <summary>
         ///     Initializes a new instance of the <see cref="ApiError" /> class.
         /// </summary>
-        /// <param name="statusCode">HTTP status code to store as a property.</param>
         /// <param name="errorMessage">Error message string to print to console.</param>
+        /// <param name="statusCode">Optional HTTP status code to store as a property.</param>
         /// <param name="errorType">Optional error type string to store as a property.</param>
         /// <param name="errors">Optional list of Error objects to store as a property.</param>
-        protected ApiError(int statusCode, string errorMessage, string? errorType = null, List<Error>? errors = null) : base(statusCode, errorMessage)
+        protected ApiError(string errorMessage, int? statusCode = null, string? errorType = null, List<Error>? errors = null) : base(errorMessage)
         {
+            StatusCode = statusCode;
             Code = errorType;
             Errors = errors;
         }
@@ -51,12 +55,17 @@ namespace EasyPost.Exceptions
 
         /// <summary>
         ///     Parse a RestResponse response object and return an instance of the appropriate exception class.
+        ///     Do not pass a non-error response to this method.
         /// </summary>
         /// <param name="response">RestResponse response to parse</param>
+        /// <raises>EasyPostError if a non-400/500 error code is extracted from the response.</raises>
         /// <returns>An instance of an HttpError-inherited exception.</returns>
-        internal static HttpError FromResponse(RestResponse response)
+        internal static ApiError FromResponse(RestResponse response)
         {
-            int statusCode = (int)response.StatusCode;
+            // NOTE: This method anticipates that the status code will be a 4xx or 5xx error code.
+            // Do not use this method to parse a successful response.
+            HttpStatusCode statusCode = response.StatusCode;
+            int statusCodeInt = (int)statusCode;
 
             string? errorMessage;
             string? errorType;
@@ -85,44 +94,16 @@ namespace EasyPost.Exceptions
                 errors = null;
             }
 
-            switch (statusCode)
+            Type? exceptionType = statusCode.EasyPostExceptionType();
+            if (exceptionType == null)
             {
-                case 401:
-                    // ApiError with extra details
-                    return new UnauthorizedError(statusCode, errorMessage, errorType, errors);
-                case 402:
-                    // ApiError with extra details
-                    return new PaymentError(statusCode, errorMessage, errorType, errors);
-                case 403:
-                    // ApiError with extra details
-                    return new UnauthorizedError(statusCode, errorMessage, errorType, errors);
-                case 404:
-                    // ApiError with extra details
-                    return new NotFoundError(statusCode, errorMessage, errorType, errors);
-                case 405:
-                    // HttpError, no extra details
-                    return new MethodNotAllowedError(statusCode, errorMessage);
-                case 408:
-                    // HttpError, no extra details
-                    return new TimeoutError(statusCode, errorMessage);
-                case 422:
-                    // ApiError with extra details
-                    return new InvalidRequestError(statusCode, errorMessage, errorType, errors);
-                case 429:
-                    // HttpError, no extra details
-                    return new RateLimitError(statusCode, errorMessage);
-                // todo: split these out?
-                case 500:
-                case 501:
-                case 502:
-                case 503:
-                    // ApiError with extra details
-                    return new InternalServerError(statusCode, errorMessage, errorType, errors);
-                default:
-                    // todo: or should we return an HttpError here?
-                    // ApiError with extra details
-                    return new UnknownApiError(statusCode, errorMessage, errorType, errors);
+                // A non-400/500 error code in the response, which is not expected.
+                throw new EasyPostError("Unexpected HTTP status code in response: " + statusCodeInt);
             }
+
+            // instantiate the exception class
+            var cons = exceptionType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
+            return (ApiError)cons[0].Invoke(new object?[] { errorMessage, statusCodeInt, errorType, errors });
         }
     }
 }

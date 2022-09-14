@@ -1,5 +1,4 @@
-﻿// ReSharper disable once CheckNamespace
-namespace EasyPost.Exceptions
+﻿namespace EasyPost.Exceptions.General
 {
     public class JsonError : EasyPostError
     {

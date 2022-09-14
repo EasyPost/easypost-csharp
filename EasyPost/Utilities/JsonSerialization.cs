@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using EasyPost.Exceptions;
+using EasyPost.Exceptions.General;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;

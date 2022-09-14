@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using EasyPost.Exceptions;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 
 namespace EasyPost.Calculation

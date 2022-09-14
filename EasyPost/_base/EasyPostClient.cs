@@ -5,7 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
-using EasyPost.Exceptions;
+using EasyPost.Exceptions.API;
+using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
@@ -89,13 +90,6 @@ namespace EasyPost._base
             if (resource is null)
             {
                 // Object deserialization failed
-                throw new InvalidObjectError("Could not deserialize response into an object.");
-            }
-
-            PropertyInfo? property = resource.GetType().GetProperty("Id");
-            if (property != null && property.GetValue(resource) == null)
-            {
-                // Object should have an ID, but it doesn't
                 throw new InvalidObjectError("Could not deserialize response into an object.");
             }
 

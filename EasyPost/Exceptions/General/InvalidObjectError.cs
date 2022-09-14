@@ -1,4 +1,4 @@
-namespace EasyPost.Exceptions
+namespace EasyPost.Exceptions.General
 {
     public class InvalidObjectError : EasyPostError
     {

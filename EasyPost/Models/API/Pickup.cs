@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Exceptions;
+using EasyPost.Exceptions.General;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;

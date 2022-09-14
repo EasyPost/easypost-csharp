@@ -40,7 +40,7 @@ namespace EasyPost.Utilities
 
         private Func<object> Expression { get; }
 
-        protected ExpressionCase(Func<object> expression, Action? action)
+        internal ExpressionCase(Func<object> expression, Action? action)
         {
             Expression = expression;
             Action = action;
@@ -52,7 +52,7 @@ namespace EasyPost.Utilities
     /// </summary>
     internal sealed class StaticCase : ExpressionCase
     {
-        public StaticCase(object value, Action? action) : base(() => value, action)
+        internal StaticCase(object value, Action? action) : base(() => value, action)
         {
         }
     }
@@ -93,20 +93,31 @@ namespace EasyPost.Utilities
         }
 
         /// <summary>
+        ///     Execute the action of all matching cases. If no matches are found, execute the default case if set.
+        /// </summary>
+        /// <param name="value">Value to match.</param>
+        internal void MatchAll(object value)
+        {
+            IEnumerable<ICase> matchingCase = _list.Where(c => c.Value == value);
+
+            ProcessMatchingCases(matchingCase.ToList());
+        }
+
+        /// <summary>
         ///     Execute the action of the first matching case. If no match is found, execute the default case if set.
         /// </summary>
         /// <param name="value">Value to match.</param>
-        internal void Match(object value)
+        internal void MatchFirst(object value)
         {
-            ICase? matchingCase = _list.FirstOrDefault(c => c.Value == value);
-            if (matchingCase == null)
+            List<ICase> matchingCases = new List<ICase>();
+
+            ICase? matchingCase = _list.FirstOrDefault(c => c.Value.Equals(value));
+            if (matchingCase != null)
             {
-                _defaultCaseAction?.Invoke();
+                matchingCases.Add(matchingCase);
             }
-            else
-            {
-                matchingCase.Action?.Invoke();
-            }
+
+            ProcessMatchingCases(matchingCases);
         }
 
         IEnumerator<ICase> IEnumerable<ICase>.GetEnumerator()
@@ -117,6 +128,24 @@ namespace EasyPost.Utilities
         IEnumerator IEnumerable.GetEnumerator()
         {
             return _list.GetEnumerator();
+        }
+
+        /// <summary>
+        ///     Execute the associated action for each matching case.
+        ///     If there are no matching cases, execute the default case if set.
+        /// </summary>
+        /// <param name="matchingCases">List of matching cases to process.</param>
+        private void ProcessMatchingCases(List<ICase> matchingCases)
+        {
+            if (matchingCases.Count == 0)
+            {
+                _defaultCaseAction?.Invoke();
+            }
+
+            foreach (var @case in matchingCases)
+            {
+                @case?.Action?.Invoke();
+            }
         }
     }
 }
