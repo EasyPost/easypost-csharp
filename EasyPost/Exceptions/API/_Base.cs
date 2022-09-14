@@ -12,7 +12,6 @@ namespace EasyPost.Exceptions.API
     public class ApiError : EasyPostError
     {
         public readonly string? Code;
-
         public readonly List<Error>? Errors;
         public readonly int? StatusCode;
 
