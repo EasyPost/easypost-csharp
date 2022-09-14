@@ -417,18 +417,5 @@ namespace EasyPost.Tests
             Assert.IsNull(baseRate.carbon_offset);
             Assert.IsNotNull(newRateWithCarbon.carbon_offset);
         }
-
-        [Ignore]
-        [TestMethod]
-        // Because we can't make a real API call here (since it requires prod keys and would spend real money), we'd have to mock this
-        // After an initial pass on researching mocking techniques, it doesn't seem possible, with the current library design, to
-        // intercept inner method calls and verify that parameters are being passed around correctly.
-        // From an earlier run of this test, I can manually confirm that the end_shipper_id parameter was included in the API call correctly.
-        public virtual async Task TestBuyShipmentWithEndShipperId()
-        {
-            _vcr.SetUpTest("buy_shipment_with_end_shipper_id");
-
-            const string fakeEndShipperId = "end_shipper_id";
-        }
     }
 }
