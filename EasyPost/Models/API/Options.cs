@@ -81,6 +81,8 @@ namespace EasyPost.Models.API
         public string? DutyPaymentAccount { get; set; }
         [JsonProperty("endorsement")]
         public string? Endorsement { get; set; }
+        [JsonProperty("end_shipper_id")]
+        public string? EndShipperId { get; set; }
         [JsonProperty("freight_charge")]
         public string? FreightCharge { get; set; }
         [JsonProperty("group")]
