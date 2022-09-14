@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
+using EasyPost.Exceptions;
 using EasyVCR;
 
 namespace EasyPost.Tests
@@ -57,7 +58,7 @@ namespace EasyPost.Tests
                     keyName = "EASYPOST_PROD_API_KEY";
                     break;
                 default:
-                    throw new Exception("Invalid ApiKey type");
+                    throw new Exception(Constants.ErrorMessages.InvalidApiKeyType);
             }
 
             return Environment.GetEnvironmentVariable(keyName) ?? ApiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.

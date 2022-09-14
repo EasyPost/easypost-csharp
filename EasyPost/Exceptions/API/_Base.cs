@@ -98,7 +98,7 @@ namespace EasyPost.Exceptions.API
             if (exceptionType == null)
             {
                 // A non-400/500 error code in the response, which is not expected.
-                throw new EasyPostError("Unexpected HTTP status code in response: " + statusCodeInt);
+                throw new EasyPostError(string.Format(Constants.ErrorMessages.UnexpectedHttpStatusCode, statusCodeInt));
             }
 
             // instantiate the exception class

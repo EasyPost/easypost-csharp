@@ -2,7 +2,11 @@
 {
     public class MissingParameterError : ValidationError
     {
-        internal MissingParameterError(string parameterName) : base($"Missing parameter: {parameterName}")
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="MissingParameterError" /> class.
+        /// </summary>
+        /// <param name="parameterName">Name of the missing parameter.</param>
+        internal MissingParameterError(string parameterName) : base(string.Format(Constants.ErrorMessages.MissingRequiredParameter, parameterName))
         {
         }
     }

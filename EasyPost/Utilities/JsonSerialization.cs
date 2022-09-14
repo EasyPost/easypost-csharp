@@ -44,7 +44,7 @@ namespace EasyPost.Utilities
                 return t;
             }
 
-            throw new JsonError($"Could not deserialize JSON data into type {typeof(T).Name}");
+            throw new JsonDeserializationError(typeof(T));
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace EasyPost.Utilities
 
             if (data == null || string.IsNullOrWhiteSpace(data))
             {
-                throw new JsonError("No data to deserialize.");
+                throw new JsonNoDataError();
             }
 
             try
@@ -77,7 +77,7 @@ namespace EasyPost.Utilities
             }
             catch (Exception)
             {
-                throw new JsonError("Could not deserialize data.");
+                throw new JsonDeserializationError(type);
             }
         }
 
@@ -124,7 +124,7 @@ namespace EasyPost.Utilities
             }
             catch (Exception)
             {
-                throw new JsonError("Could not serialize object.");
+                throw new JsonSerializationError(data.GetType());
             }
         }
 

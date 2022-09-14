@@ -62,7 +62,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new MissingParameterError("Id");
+                throw new MissingPropertyError(this, "Id");
             }
 
             Dictionary<string, object> parameters = new Dictionary<string, object>
@@ -83,7 +83,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new MissingParameterError("Id");
+                throw new MissingPropertyError(this, "Id");
             }
 
             await Update<Pickup>(Method.Post, $"pickups/{Id}/cancel");

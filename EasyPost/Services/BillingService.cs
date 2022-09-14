@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
@@ -45,8 +46,7 @@ namespace EasyPost.Services
             PaymentMethodsSummary paymentMethodsSummary = await Get<PaymentMethodsSummary>("payment_methods");
             if (paymentMethodsSummary.Id == null)
             {
-                // TODO: This is interfered with by the ID presence check when deserializing after a request.
-                throw new InvalidObjectError("No payment methods found. Please add a payment method via the dashboard.");
+                throw new InvalidObjectError(Constants.ErrorMessages.NoPaymentMethods);
             }
 
             return paymentMethodsSummary;
@@ -93,7 +93,7 @@ namespace EasyPost.Services
 
             if (paymentMethod?.Id == null)
             {
-                throw new InvalidObjectError("The chosen payment method has not been set up yet.");
+                throw new InvalidObjectError(Constants.ErrorMessages.PaymentNotSetUp);
             }
 
             return paymentMethod;

@@ -54,5 +54,23 @@ namespace EasyPost.Exceptions
         {
             return GetEasyPostExceptionType((int)statusCode);
         }
+
+        // public so end-users can access if need to (i.e. regex?)
+        public static class ErrorMessages
+        {
+            public const string InvalidApiKeyType = "Invalid API key type.";
+            public const string InvalidParameter = "Invalid parameter: {0}.";
+            public const string InvalidWebhookSignature = "Invalid webhook signature.";
+            public const string JsonDeserializationError = "Error deserializing JSON into object of type {0}.";
+            public const string JsonNoDataToDeserialize = "No data to deserialize.";
+            public const string JsonSerializationError = "Error serializing {0} object into JSON.";
+            public const string MissingProperty = "{0} object is missing attribute: {0}.";
+            public const string MissingRequiredParameter = "Missing required parameter: {0}.";
+            public const string NoObjectFound = "No {0} found.";
+            public const string NoPaymentMethods = "No payment methods are set up. Please add a payment method via the web dashboard.";
+            public const string NullObjectComparison = "Cannot compare null objects.";
+            public const string PaymentNotSetUp = "This payment method is not set up.";
+            public const string UnexpectedHttpStatusCode = "Unexpected HTTP status code: {0}.";
+        }
     }
 }

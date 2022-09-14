@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using EasyPost.Exceptions;
 using EasyPost.Exceptions.API;
+using EasyPost.Exceptions.General;
+using EasyPost.Models.API;
 using RestSharp;
 using Xunit;
 
@@ -33,10 +36,11 @@ namespace EasyPost.Tests
         }
 
         [Fact(Skip = "Test is no longer valid")]
-        public Task TestEmptyApiKey()
+        public void TestEmptyApiKey()
         {
+            UseVCR("empty_api_key");
+
             // No longer possible to have an empty API key
-            return Task.CompletedTask;
         }
 
         [Fact]
@@ -81,7 +85,7 @@ namespace EasyPost.Tests
         }
 
         [Fact]
-        public Task TestUnknownApiException4xxGeneration()
+        public void TestUnknownApiException4xxGeneration()
         {
             UseVCR("unknown_api_exception_4xx_generation");
 
@@ -99,12 +103,10 @@ namespace EasyPost.Tests
             Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
             // should be specifically of type UnknownApiError
             Assert.Equal(typeof(UnknownApiError), generatedError.GetType());
-
-            return Task.CompletedTask;
         }
 
         [Fact]
-        public Task TestUnknownApiException5xxGeneration()
+        public void TestUnknownApiException5xxGeneration()
         {
             UseVCR("unknown_api_exception_5xx_generation");
 
@@ -122,8 +124,19 @@ namespace EasyPost.Tests
             Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
             // should be specifically of type UnexpectedHttpError
             Assert.Equal(typeof(UnexpectedHttpError), generatedError.GetType());
+        }
 
-            return Task.CompletedTask;
+        [Fact]
+        public void TestExceptionMessageFormatting()
+        {
+            UseVCR("exception_message_formatting");
+
+            Type type = typeof(Address);
+            JsonError jsonError = new JsonDeserializationError(type);
+
+            string expectedMessage = string.Format(Constants.ErrorMessages.JsonDeserializationError, type.FullName);
+
+            Assert.Equal(expectedMessage, jsonError.Message);
         }
     }
 }

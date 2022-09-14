@@ -90,7 +90,7 @@ namespace EasyPost._base
             if (resource is null)
             {
                 // Object deserialization failed
-                throw new InvalidObjectError("Could not deserialize response into an object.");
+                throw new JsonDeserializationError(typeof(T));
             }
 
             return resource;

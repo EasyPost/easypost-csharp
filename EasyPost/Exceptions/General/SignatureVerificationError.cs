@@ -2,7 +2,10 @@
 {
     public class SignatureVerificationError : EasyPostError
     {
-        internal SignatureVerificationError() : base("Invalid signature")
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SignatureVerificationError" /> class.
+        /// </summary>
+        internal SignatureVerificationError() : base(Constants.ErrorMessages.InvalidWebhookSignature)
         {
         }
     }

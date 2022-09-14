@@ -1,5 +1,5 @@
 using EasyPost._base;
-using EasyPost.Exceptions;
+using EasyPost.Exceptions.General;
 using EasyPost.Utilities;
 using Newtonsoft.Json;
 
@@ -76,7 +76,9 @@ namespace EasyPost.Models.API
             {
                 if (Type == null)
                 {
-                    throw new EasyPostError("Unknown payment method type");
+#pragma warning disable CA1507 // IDE doesn't understand what I'm doing here
+                    throw new MissingPropertyError(this, "Type");
+#pragma warning restore CA1507
                 }
 
                 return Type.EndPoint;
