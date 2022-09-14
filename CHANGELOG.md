@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## NEXT RELEASE
+
+- Adds `end_shipper_id` shipment option
+
 ## v3.5.0 (2022-08-25)
 
 - Adds `ValidateWebhook` function
