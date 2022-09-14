@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using EasyPost.Exceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -43,7 +44,7 @@ namespace EasyPost.Utilities
                 return t;
             }
 
-            throw new Exception($"Could not deserialize JSON data into type {typeof(T).Name}");
+            throw new JsonError($"Could not deserialize JSON data into type {typeof(T).Name}");
         }
 
         /// <summary>
@@ -66,7 +67,7 @@ namespace EasyPost.Utilities
 
             if (data == null || string.IsNullOrWhiteSpace(data))
             {
-                throw new Exception("No data to deserialize.");
+                throw new JsonError("No data to deserialize.");
             }
 
             try
@@ -76,7 +77,7 @@ namespace EasyPost.Utilities
             }
             catch (Exception)
             {
-                throw new Exception("Could not deserialize data.");
+                throw new JsonError("Could not deserialize data.");
             }
         }
 
@@ -123,7 +124,7 @@ namespace EasyPost.Utilities
             }
             catch (Exception)
             {
-                throw new Exception("Could not serialize object.");
+                throw new JsonError("Could not serialize object.");
             }
         }
 

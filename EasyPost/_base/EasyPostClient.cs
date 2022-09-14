@@ -60,7 +60,7 @@ namespace EasyPost._base
             // Check the response's status code
             if (response.ReturnedError())
             {
-                throw ApiError.DetermineError(response);
+                throw ApiError.FromResponse(response);
             }
 
             // Prepare the list of root elements to use during deserialization
@@ -84,6 +84,19 @@ namespace EasyPost._base
             else
             {
                 (resource as EasyPostObject)!.Client = this;
+            }
+
+            if (resource is null)
+            {
+                // Object deserialization failed
+                throw new InvalidObjectError("Could not deserialize response into an object.");
+            }
+
+            PropertyInfo? property = resource.GetType().GetProperty("Id");
+            if (property != null && property.GetValue(resource) == null)
+            {
+                // Object should have an ID, but it doesn't
+                throw new InvalidObjectError("Could not deserialize response into an object.");
             }
 
             return resource;

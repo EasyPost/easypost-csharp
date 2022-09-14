@@ -1,5 +1,5 @@
-using System;
 using EasyPost._base;
+using EasyPost.Exceptions;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -84,7 +84,7 @@ namespace EasyPost.Models.API
             {
                 if (Type == null)
                 {
-                    throw new Exception("Unknown payment method type");
+                    throw new EasyPostError("Unknown payment method type");
                 }
 
                 return Type.EndPoint;

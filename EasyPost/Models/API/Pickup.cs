@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
@@ -61,7 +62,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new Exception("id is required");
+                throw new MissingParameterError("Id");
             }
 
             Dictionary<string, object> parameters = new Dictionary<string, object>
@@ -82,7 +83,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new Exception("id is required");
+                throw new MissingParameterError("Id");
             }
 
             await Update<Pickup>(Method.Post, $"pickups/{Id}/cancel");

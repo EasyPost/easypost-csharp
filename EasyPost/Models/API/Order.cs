@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
@@ -51,7 +51,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new Exception("id is null");
+                throw new MissingParameterError("Id");
             }
 
             Dictionary<string, object> parameters = new Dictionary<string, object>
@@ -79,12 +79,12 @@ namespace EasyPost.Models.API
                 }
                 else
                 {
-                    throw new Exception("service is required");
+                    throw new MissingParameterError("service is required");
                 }
             }
             else
             {
-                throw new Exception("carrier is required");
+                throw new MissingParameterError("carrier is required");
             }
         }
 
@@ -97,7 +97,7 @@ namespace EasyPost.Models.API
             // TODO: Should this return the updated Order object?
             if (Id == null)
             {
-                throw new Exception("id is null");
+                throw new MissingParameterError("Id");
             }
 
             await Update<Order>(Method.Get, $"orders/{Id}/rates");
@@ -117,7 +117,7 @@ namespace EasyPost.Models.API
         {
             if (Rates == null)
             {
-                throw new Exception("Rates not populated.  Call GetRates() first.");
+                throw new FilteringError("Rates not populated. Call GetRates() first.");
             }
 
             return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);

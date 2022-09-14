@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
 using EasyPost.Utilities.Annotations;
@@ -44,7 +45,8 @@ namespace EasyPost.Services
             PaymentMethodsSummary paymentMethodsSummary = await Get<PaymentMethodsSummary>("payment_methods");
             if (paymentMethodsSummary.Id == null)
             {
-                throw new Exception("Please add a payment method via the dashboard.");
+                // TODO: This is interfered with by the ID presence check when deserializing after a request.
+                throw new InvalidObjectError("No payment methods found. Please add a payment method via the dashboard.");
             }
 
             return paymentMethodsSummary;
@@ -74,7 +76,7 @@ namespace EasyPost.Services
         {
             if (priority == null)
             {
-                throw new Exception("Please provide a priority.");
+                throw new MissingParameterError("priority");
             }
 
             PaymentMethodsSummary paymentMethodsSummarySummary = await RetrievePaymentMethodsSummary();
@@ -84,14 +86,14 @@ namespace EasyPost.Services
             {
                 { PaymentMethod.Priority.Primary, () => { paymentMethod = paymentMethodsSummarySummary.PrimaryPaymentMethod; } },
                 { PaymentMethod.Priority.Secondary, () => { paymentMethod = paymentMethodsSummarySummary.SecondaryPaymentMethod; } },
-                { SwitchCaseScenario.Default, () => throw new Exception("Invalid priority provided.") }
+                { SwitchCaseScenario.Default, () => throw new InvalidParameterError("priority") }
             };
 
             @switch.Match(priority);
 
             if (paymentMethod?.Id == null)
             {
-                throw new Exception("The chosen payment method has not been set up yet.");
+                throw new InvalidObjectError("The chosen payment method has not been set up yet.");
             }
 
             return paymentMethod;

@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
@@ -84,7 +84,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new Exception("id is null");
+                throw new MissingParameterError("Id");
             }
 
             return await Request<List<Smartrate>>(Method.Get, $"shipments/{Id}/smartrate", null, "result");
@@ -102,12 +102,12 @@ namespace EasyPost.Models.API
             // TODO: Should this function return the updated Shipment like Order.Buy?
             if (Id == null)
             {
-                throw new Exception("id is null. Cannot buy a shipment without an id.");
+                throw new MissingParameterError("Id");
             }
 
             if (rateId == null)
             {
-                throw new Exception("rateId is null. Cannot buy a shipment without a rateId.");
+                throw new MissingParameterError("RateId");
             }
 
             Dictionary<string, object> parameters = new Dictionary<string, object>
@@ -138,7 +138,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new Exception("id is null");
+                throw new MissingParameterError("Id");
             }
 
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
@@ -156,7 +156,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new Exception("id is null");
+                throw new MissingParameterError("Id");
             }
 
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "amount", amount } };
@@ -173,7 +173,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new Exception("id is required");
+                throw new MissingParameterError("Id");
             }
 
             await Update<Shipment>(Method.Get, $"shipments/{Id}/refund");
@@ -192,7 +192,7 @@ namespace EasyPost.Models.API
 
             if (Id == null)
             {
-                throw new Exception("id is required");
+                throw new MissingParameterError("Id");
             }
 
             parameters.Add("carbon_offset", withCarbonOffset);
@@ -215,7 +215,7 @@ namespace EasyPost.Models.API
         {
             if (Rates == null)
             {
-                throw new Exception("rates is null");
+                throw new FilteringError("rates is null");
             }
 
             return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
