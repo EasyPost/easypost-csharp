@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Utilities;
@@ -89,7 +88,6 @@ namespace EasyPost
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
         /// <param name="endShipperId">The id of the end shipper to use for this purchase.</param>
-        [ExcludeFromCodeCoverage]
         public async Task Buy(string rateId, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null)
         {
             if (id == null)
@@ -147,7 +145,6 @@ namespace EasyPost
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
         /// <param name="endShipperId">The id of the end shipper to use for this purchase.</param>
-        [ExcludeFromCodeCoverage]
         public async Task Buy(Rate rate, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null) => await Buy(rate.id, insuranceValue, withCarbonOffset, endShipperId);
 
         /// <summary>
