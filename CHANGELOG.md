@@ -3,6 +3,7 @@
 ## NEXT RELEASE
 
 - Adds `end_shipper_id` shipment option
+- Can indicate an EndShipper ID when buying a shipment
 
 ## v3.5.0 (2022-08-25)
 
