@@ -88,8 +88,8 @@ namespace EasyPost.Exceptions.API
                 // could not extract error details from the API response (or API did not return data, i.e. 500) -> HttpError type rather than ApiError
                 errorMessage = response.ErrorMessage // fallback to standard HTTP error message
                                ?? response.StatusDescription // fallback to standard HTTP status description
-                               ?? "API did not return any error data"; // fallback to unknown error
-                errorType = "RESPONSE.PARSE_ERROR";
+                               ?? Constants.ErrorMessages.ApiDidNotReturnErrorDetails; // fallback to no error details
+                errorType = Constants.ErrorMessages.ApiErrorDetailsParsingError;
                 errors = null;
             }
 

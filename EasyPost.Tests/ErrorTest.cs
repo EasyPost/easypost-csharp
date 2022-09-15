@@ -152,7 +152,7 @@ namespace EasyPost.Tests
             ApiError generatedError = ApiError.FromErrorResponse(response);
 
             // unfortunately, we can't easily load error-related JSON data into the response for parsing, so the pretty print is going to fallback to default values.
-            string expectedMessage = $@"RESPONSE.PARSE_ERROR ({statusCode}): API did not return any error data";
+            string expectedMessage = $@"{Constants.ErrorMessages.ApiErrorDetailsParsingError} ({statusCode}): {Constants.ErrorMessages.ApiDidNotReturnErrorDetails}";
 
             string prettyPrintedError = generatedError.PrettyPrint;
 

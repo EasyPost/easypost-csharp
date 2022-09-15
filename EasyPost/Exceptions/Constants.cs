@@ -71,6 +71,8 @@ namespace EasyPost.Exceptions
             public const string NullObjectComparison = "Cannot compare null objects.";
             public const string PaymentNotSetUp = "This payment method is not set up.";
             public const string UnexpectedHttpStatusCode = "Unexpected HTTP status code: {0}.";
+            public const string ApiDidNotReturnErrorDetails = "API did not return error details.";
+            internal const string ApiErrorDetailsParsingError = "RESPONSE.PARSE_ERROR"; // not for public consumption
         }
     }
 }
