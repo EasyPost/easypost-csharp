@@ -38,12 +38,12 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
+            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
 
             List<Refund> refunds = refundCollection.Refunds;
 
             Assert.True(refundCollection.HasMore);
-            Assert.True(refunds.Count <= Fixture.PageSize);
+            Assert.True(refunds.Count <= Fixtures.PageSize);
             foreach (Refund item in refunds)
             {
                 Assert.IsType<Refund>(item);
@@ -68,12 +68,12 @@ namespace EasyPost.Tests
 
         private async Task<List<Refund>> CreateBasicRefund()
         {
-            Shipment shipment = await Client.Shipment.Create(Fixture.OneCallBuyShipment);
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
             Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.Id); // We need to retrieve the shipment so that the tracking_code has time to populate
 
             return await Client.Refund.Create(new Dictionary<string, object>
             {
-                { "carrier", Fixture.Usps },
+                { "carrier", Fixtures.Usps },
                 { "tracking_codes", new List<string> { retrievedShipment.TrackingCode } }
             });
         }

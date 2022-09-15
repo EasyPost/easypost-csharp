@@ -49,12 +49,12 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            TrackerCollection trackerCollection = await Client.Tracker.All(new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
+            TrackerCollection trackerCollection = await Client.Tracker.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
 
             List<Tracker> trackers = trackerCollection.Trackers;
 
             Assert.True(trackerCollection.HasMore);
-            Assert.True(trackers.Count <= Fixture.PageSize);
+            Assert.True(trackers.Count <= Fixtures.PageSize);
             foreach (Tracker tracker in trackers)
             {
                 Assert.IsType<Tracker>(tracker);
@@ -79,6 +79,6 @@ namespace EasyPost.Tests
 
         #endregion
 
-        private async Task<Tracker> CreateBasicTracker() => await Client.Tracker.Create(Fixture.Usps, "EZ1000000001");
+        private async Task<Tracker> CreateBasicTracker() => await Client.Tracker.Create(Fixtures.Usps, "EZ1000000001");
     }
 }

@@ -11,8 +11,6 @@ namespace EasyPost.Tests
     {
         private const string ApiKeyFailedToPull = "couldnotpullapikey";
 
-        private const string CassettesFolder = "cassettes";
-
         private static readonly List<string> BodyCensors = new List<string>
         {
             "api_keys",
@@ -45,6 +43,8 @@ namespace EasyPost.Tests
             Production
         }
 
+        public static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath);
+
         internal static string GetApiKey(ApiKey apiKey)
         {
             string keyName = "";
@@ -68,10 +68,16 @@ namespace EasyPost.Tests
             return new Client(apiKey, customHttpClient: vcrClient);
         }
 
-        private static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath);
+        internal static string ReadFile(string path)
+        {
+            string filePath = Path.Combine(GetSourceFileDirectory(), path);
+            return File.ReadAllText(filePath);
+        }
 
         public class VCR
         {
+            private const string CassettesFolder = "cassettes";
+
             private readonly string _apiKey;
 
             private readonly string _testCassettesFolder;

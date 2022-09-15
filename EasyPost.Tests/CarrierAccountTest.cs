@@ -117,7 +117,7 @@ namespace EasyPost.Tests
 
         private async Task<CarrierAccount> CreateBasicCarrierAccount()
         {
-            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(Fixture.BasicCarrierAccount);
+            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(Fixtures.BasicCarrierAccount);
             CleanUpAfterTest(carrierAccount.Id);
 
             return carrierAccount;

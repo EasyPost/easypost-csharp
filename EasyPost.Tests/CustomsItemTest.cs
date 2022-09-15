@@ -23,7 +23,7 @@ namespace EasyPost.Tests
 
             Assert.IsType<CustomsItem>(customsItem);
             Assert.StartsWith("cstitem_", customsItem.Id);
-            Assert.Equal(23.0, customsItem.Value);
+            Assert.Equal(23.25, customsItem.Value);
         }
 
         [Fact]
@@ -42,6 +42,6 @@ namespace EasyPost.Tests
 
         #endregion
 
-        private async Task<CustomsItem> CreateBasicCustomsItem() => await Client.CustomsItem.Create(Fixture.BasicCustomsItem);
+        private async Task<CustomsItem> CreateBasicCustomsItem() => await Client.CustomsItem.Create(Fixtures.BasicCustomsItem);
     }
 }

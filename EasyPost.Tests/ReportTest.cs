@@ -20,10 +20,10 @@ namespace EasyPost.Tests
         {
             UseVCR("create_report");
 
-            Report report = await CreateBasicReport(Fixture.ReportType);
+            Report report = await CreateBasicReport(Fixtures.ReportType);
 
             Assert.IsType<Report>(report);
-            Assert.StartsWith(Fixture.ReportIdPrefix, report.Id);
+            Assert.StartsWith(Fixtures.ReportIdPrefix, report.Id);
         }
 
         [Fact]
@@ -70,12 +70,12 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            ReportCollection reportCollection = await Client.Report.All("shipment", new Dictionary<string, object> { { "page_size", Fixture.PageSize } });
+            ReportCollection reportCollection = await Client.Report.All("shipment", new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
 
             List<Report> reports = reportCollection.Reports;
 
             Assert.True(reportCollection.HasMore);
-            Assert.True(reports.Count <= Fixture.PageSize);
+            Assert.True(reports.Count <= Fixtures.PageSize);
             foreach (Report report in reports)
             {
                 Assert.IsType<Report>(report);
@@ -88,7 +88,7 @@ namespace EasyPost.Tests
         {
             UseVCR("retrieve_report");
 
-            Report report = await CreateBasicReport(Fixture.ReportType);
+            Report report = await CreateBasicReport(Fixtures.ReportType);
 
             Report retrievedReport = await Client.Report.Retrieve(report.Id);
 
@@ -101,16 +101,16 @@ namespace EasyPost.Tests
 
         private async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters)
         {
-            parameters["start_date"] = Fixture.ReportDate;
-            parameters["end_date"] = Fixture.ReportDate;
+            parameters["start_date"] = Fixtures.ReportDate;
+            parameters["end_date"] = Fixtures.ReportDate;
             return await Client.Report.Create(reportType, parameters);
         }
 
         private async Task<Report> CreateBasicReport(string reportType) =>
             await Client.Report.Create(reportType, new Dictionary<string, object>
             {
-                { "start_date", Fixture.ReportDate },
-                { "end_date", Fixture.ReportDate }
+                { "start_date", Fixtures.ReportDate },
+                { "end_date", Fixtures.ReportDate }
             });
     }
 }
