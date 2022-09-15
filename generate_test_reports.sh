@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# install reportgenerator if not already installed
+dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.1.10 || true
+
 # check requirements
 set -- dotnet reportgenerator
 for req in "$@"; do
