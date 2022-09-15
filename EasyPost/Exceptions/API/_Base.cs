@@ -19,7 +19,7 @@ namespace EasyPost.Exceptions.API
         ///     Get a formatted error string with expanded details about the error.
         /// </summary>
         /// <returns>A formatted error string.</returns>
-        public string PrettyPrintString
+        public string PrettyPrint
         {
             get
             {
@@ -53,13 +53,13 @@ namespace EasyPost.Exceptions.API
         // great minds think alike: https://github.com/stripe/stripe-dotnet/blob/6b9513d3b938d265c7607db919ad2c536ab578c3/src/Stripe.net/Infrastructure/Public/StripeClient.cs#L171
 
         /// <summary>
-        ///     Parse a RestResponse response object and return an instance of the appropriate exception class.
+        ///     Parse a errored RestResponse response object and return an instance of the appropriate exception class.
         ///     Do not pass a non-error response to this method.
         /// </summary>
         /// <param name="response">RestResponse response to parse</param>
         /// <raises>EasyPostError if a non-400/500 error code is extracted from the response.</raises>
         /// <returns>An instance of an HttpError-inherited exception.</returns>
-        internal static ApiError FromResponse(RestResponse response)
+        internal static ApiError FromErrorResponse(RestResponse response)
         {
             // NOTE: This method anticipates that the status code will be a 4xx or 5xx error code.
             // Do not use this method to parse a successful response.
@@ -88,7 +88,7 @@ namespace EasyPost.Exceptions.API
                 // could not extract error details from the API response (or API did not return data, i.e. 500) -> HttpError type rather than ApiError
                 errorMessage = response.ErrorMessage // fallback to standard HTTP error message
                                ?? response.StatusDescription // fallback to standard HTTP status description
-                               ?? "HTTP call did not return a standard error message"; // fallback to unknown error
+                               ?? "API did not return any error data"; // fallback to unknown error
                 errorType = "RESPONSE.PARSE_ERROR";
                 errors = null;
             }

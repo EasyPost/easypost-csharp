@@ -61,7 +61,7 @@ namespace EasyPost._base
             // Check the response's status code
             if (response.ReturnedError())
             {
-                throw ApiError.FromResponse(response);
+                throw ApiError.FromErrorResponse(response);
             }
 
             // Prepare the list of root elements to use during deserialization

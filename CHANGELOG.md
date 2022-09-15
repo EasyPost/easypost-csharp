@@ -22,6 +22,11 @@
   - Improved accessibility levels of internal functions, to prevent accidental use by end users.
   - Files have been organized into a more logical structure.
   - Methods and properties have been organized (e.g. methods ordered by CRUD, properties ordered alphabetically).
+- Consistent exception handling
+  - All exceptions inherit from `EasyPostError`.
+  - API- and HTTP-related exceptions will throw an `ApiError` or inherited-type exception.
+  - API exception types can be retrieved by HTTP status code via the `EasyPost.Exceptions.Constants` class (i.e. to anticipate what error will be thrown for a 404, etc.)
+  - Common exception messages and templates can be found in the `EasyPost.Exceptions.Constants` class (i.e. for log parsing).
 - Dependencies updated to latest versions, including `RestSharp` v108.
 
 ## v3.4.0 (2022-08-02)

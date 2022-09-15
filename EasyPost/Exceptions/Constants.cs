@@ -67,7 +67,7 @@ namespace EasyPost.Exceptions
             public const string MissingProperty = "{0} object is missing attribute: {0}.";
             public const string MissingRequiredParameter = "Missing required parameter: {0}.";
             public const string NoObjectFound = "No {0} found.";
-            public const string NoPaymentMethods = "No payment methods are set up. Please add a payment method via the web dashboard.";
+            public const string NoPaymentMethods = "No payment methods are set up. Please add a payment method and try again.";
             public const string NullObjectComparison = "Cannot compare null objects.";
             public const string PaymentNotSetUp = "This payment method is not set up.";
             public const string UnexpectedHttpStatusCode = "Unexpected HTTP status code: {0}.";

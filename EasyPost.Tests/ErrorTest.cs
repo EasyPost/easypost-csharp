@@ -38,16 +38,12 @@ namespace EasyPost.Tests
         [Fact(Skip = "Test is no longer valid")]
         public void TestEmptyApiKey()
         {
-            UseVCR("empty_api_key");
-
             // No longer possible to have an empty API key
         }
 
         [Fact]
         public Task TestKnownApiExceptionGeneration()
         {
-            UseVCR("known_api_exception_generation");
-
             // all the error status codes the library should be able to handle
             Dictionary<int, Type> exceptionsMap = new Dictionary<int, Type>
             {
@@ -73,12 +69,23 @@ namespace EasyPost.Tests
                 HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCodeInt.ToString());
                 RestResponse response = new RestResponse { StatusCode = statusCode };
 
-                ApiError generatedError = ApiError.FromResponse(response);
+                ApiError generatedError = ApiError.FromErrorResponse(response);
 
                 // should be of base type ApiError
                 Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
                 // should be specifically of the type we expect
                 Assert.Equal(exceptionType, generatedError.GetType());
+                // should have the correct status code
+                Assert.Equal(statusCodeInt, generatedError.StatusCode);
+                // should have a message
+                Assert.NotNull(generatedError.Message);
+                // because we're not giving it a real API response to parse, there's no errors to extract, so the errors list should be null
+                // this inherently tests that the property exists as well
+                Assert.Null(generatedError.Errors);
+                // should have a code
+                Assert.NotNull(generatedError.Code);
+                // because we're not giving it a real API response to parse, there's no code to extract, so the code should be the default
+                Assert.Equal("RESPONSE.PARSE_ERROR", generatedError.Code);
             }
 
             return Task.CompletedTask;
@@ -87,8 +94,6 @@ namespace EasyPost.Tests
         [Fact]
         public void TestUnknownApiException4xxGeneration()
         {
-            UseVCR("unknown_api_exception_4xx_generation");
-
             // library does not have a specific exception for this status code
             // Since it's a 4xx error, it should throw an UnknownApiError
             const int unexpectedStatusCode = 418;
@@ -97,19 +102,17 @@ namespace EasyPost.Tests
             HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString());
             RestResponse response = new RestResponse { StatusCode = statusCode };
 
-            ApiError generatedError = ApiError.FromResponse(response);
+            ApiError generatedError = ApiError.FromErrorResponse(response);
 
-            // should be of base type ApiError
+            // the exception should be of base type ApiError
             Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
-            // should be specifically of type UnknownApiError
+            // specifically, the exception should be of type UnknownApiError
             Assert.Equal(typeof(UnknownApiError), generatedError.GetType());
         }
 
         [Fact]
         public void TestUnknownApiException5xxGeneration()
         {
-            UseVCR("unknown_api_exception_5xx_generation");
-
             // library does not have a specific exception for this status code
             // Since it's a 5xx error, it should throw an UnexpectedHttpError
             const int unexpectedStatusCode = 502;
@@ -118,25 +121,42 @@ namespace EasyPost.Tests
             HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString());
             RestResponse response = new RestResponse { StatusCode = statusCode };
 
-            ApiError generatedError = ApiError.FromResponse(response);
+            ApiError generatedError = ApiError.FromErrorResponse(response);
 
-            // should be of base type ApiError
+            // the exception should be of base type ApiError
             Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
-            // should be specifically of type UnexpectedHttpError
+            // specifically, the exception should be of type UnexpectedHttpError
             Assert.Equal(typeof(UnexpectedHttpError), generatedError.GetType());
         }
 
         [Fact]
         public void TestExceptionMessageFormatting()
         {
-            UseVCR("exception_message_formatting");
-
             Type type = typeof(Address);
             JsonError jsonError = new JsonDeserializationError(type);
 
             string expectedMessage = string.Format(Constants.ErrorMessages.JsonDeserializationError, type.FullName);
 
             Assert.Equal(expectedMessage, jsonError.Message);
+        }
+
+        [Fact]
+        public void TestApiExceptionPrettyPrint()
+        {
+            const int statusCode = 401;
+
+            // Generate a dummy RestResponse with the given status code to parse
+            HttpStatusCode httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString());
+            RestResponse response = new RestResponse { StatusCode = httpStatusCode };
+
+            ApiError generatedError = ApiError.FromErrorResponse(response);
+
+            // unfortunately, we can't easily load error-related JSON data into the response for parsing, so the pretty print is going to fallback to default values.
+            string expectedMessage = $@"RESPONSE.PARSE_ERROR ({statusCode}): API did not return any error data";
+
+            string prettyPrintedError = generatedError.PrettyPrint;
+
+            Assert.Equal(expectedMessage, prettyPrintedError);
         }
     }
 }
