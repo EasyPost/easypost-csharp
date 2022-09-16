@@ -77,6 +77,8 @@ namespace EasyPost.Models.API
         public string? DryIceMedical { get; set; }
         [JsonProperty("dry_ice_weight")]
         public string? DryIceWeight { get; set; }
+        [JsonProperty("duty_payment")]
+        public Dictionary<string, object?>? DutyPayment { get; set; }
         [JsonProperty("duty_payment_account")]
         public string? DutyPaymentAccount { get; set; }
         [JsonProperty("endorsement")]
