@@ -11,7 +11,6 @@ namespace EasyPost.Models.API
         [JsonProperty("details")]
         public VerificationDetails? Details { get; set; }
         [JsonProperty("errors")]
-        // TODO: handle refactor of Error
         public List<Error>? Errors { get; set; }
         [JsonProperty("success")]
         public bool? Success { get; set; }

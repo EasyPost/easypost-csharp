@@ -1,6 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
@@ -59,7 +59,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new Exception("Missing id. Can't verify an address without an id.");
+                throw new MissingPropertyError(this, "Id");
             }
 
             await Update<Address>(Method.Get, $"addresses/{Id}/verify", null, "address");

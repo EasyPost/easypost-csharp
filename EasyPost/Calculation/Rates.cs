@@ -1,6 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using EasyPost.Exceptions;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 
 namespace EasyPost.Calculation
@@ -41,7 +42,7 @@ namespace EasyPost.Calculation
 
                 if (rate.Price == null || lowestRate.Price == null)
                 {
-                    throw new Exception("Could not compare null elements.");
+                    throw new FilteringError(Constants.ErrorMessages.NullObjectComparison);
                 }
 
                 float rateValue = float.Parse(rate.Price);
@@ -58,7 +59,7 @@ namespace EasyPost.Calculation
 
             if (lowestRate == null)
             {
-                throw new Exception("No rates found.");
+                throw new FilteringError(string.Format(Constants.ErrorMessages.NoObjectFound, "rates"));
             }
 
             return lowestRate;
@@ -95,7 +96,7 @@ namespace EasyPost.Calculation
 
             if (lowestSmartrate == null)
             {
-                throw new Exception("No smartrates found.");
+                throw new FilteringError(string.Format(Constants.ErrorMessages.NoObjectFound, "smartrates"));
             }
 
             return lowestSmartrate;

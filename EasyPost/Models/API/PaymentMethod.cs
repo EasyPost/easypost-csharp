@@ -1,5 +1,6 @@
-using System;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
+using EasyPost.Utilities;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -43,15 +44,6 @@ namespace EasyPost.Models.API
         #endregion
 
         /// <summary>
-        ///     Payment method priority
-        /// </summary>
-        public enum Priority
-        {
-            Primary,
-            Secondary
-        }
-
-        /// <summary>
         ///     Get what type of payment method this is (credit card, bank account, etc.)
         /// </summary>
         public PaymentMethodType? Type
@@ -84,10 +76,25 @@ namespace EasyPost.Models.API
             {
                 if (Type == null)
                 {
-                    throw new Exception("Unknown payment method type");
+#pragma warning disable CA1507 // IDE doesn't understand what I'm doing here
+                    throw new MissingPropertyError(this, "Type");
+#pragma warning restore CA1507
                 }
 
                 return Type.EndPoint;
+            }
+        }
+
+        /// <summary>
+        ///     Payment method priority
+        /// </summary>
+        public class Priority : Enum
+        {
+            public static readonly Priority Primary = new Priority(1);
+            public static readonly Priority Secondary = new Priority(2);
+
+            private Priority(int id) : base(id)
+            {
             }
         }
     }

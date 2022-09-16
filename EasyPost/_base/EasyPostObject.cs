@@ -55,10 +55,6 @@ namespace EasyPost._base
         protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class
         {
             T updatedObject = await Request<T>(method, url, parameters, rootElement, overrideApiVersion);
-            if (updatedObject == null)
-            {
-                throw new Exception("Failed to update object");
-            }
 
             Merge(updatedObject);
         }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
@@ -70,7 +69,7 @@ namespace EasyPost.Tests
 
             // test lowest rate with carrier filter (should error due to bad carrier)
             List<string> carriers = new List<string> { "BAD_CARRIER" };
-            Assert.Throws<Exception>(() => order.LowestRate(carriers));
+            Assert.Throws<Exceptions.General.FilteringError>(() => order.LowestRate(carriers));
         }
 
         [Fact]
