@@ -37,7 +37,7 @@ namespace EasyPost._base
 
             RestClientOptions clientOptions = new RestClientOptions
             {
-                Timeout = Configuration.ConnectTimeoutMilliseconds,
+                MaxTimeout = Configuration.ConnectTimeoutMilliseconds,
                 BaseUrl = new Uri(Configuration.ApiBase),
                 UserAgent = Configuration.UserAgent
             };
