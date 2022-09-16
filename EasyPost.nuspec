@@ -12,6 +12,7 @@
         <description>EasyPost Shipping API Client Library for .NET https://easypost.com/docs</description>
         <tags>EasyPost ShippingAPI USPS UPS FedEx</tags>
         <readme>docs\README.md</readme>
+        <releaseNotes>See Release Notes at https://github.com/EasyPost/easypost-csharp/releases</releaseNotes>
         <icon>images\icon.png</icon>
         <dependencies>
             <group targetFramework="netstandard2.0">
