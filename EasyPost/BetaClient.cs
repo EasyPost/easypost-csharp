@@ -22,8 +22,6 @@ namespace EasyPost
          * When you are migrating a service from beta to general, you should remove/change the overrideApiVersion parameter from each function that is being migrated.
          */
 
-        public EndShipperService EndShipper => GetService<EndShipperService>();
-
         public PartnerService Partner => GetService<PartnerService>();
 
         /// <summary>

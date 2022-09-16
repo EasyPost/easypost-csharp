@@ -1,7 +1,7 @@
 [
     {
-        "Duration": 398,
-        "RecordedAt": "2022-09-13T13:55:16.783933-06:00",
+        "Duration": 688,
+        "RecordedAt": "2022-09-16T12:16:51.072266-06:00",
         "Request": {
             "Body": "{\"address\":{\"name\":\"Jack Sparrow\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"}}",
             "BodyContentType": "Json",
@@ -16,10 +16,10 @@
                 "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
                 "User-Agent": "<REDACTED>"
             },
-            "Uri": "https://api.easypost.com/beta/end_shippers"
+            "Uri": "https://api.easypost.com/v2/end_shippers"
         },
         "Response": {
-            "Body": "{\"id\":\"es_6da88dd527694daf81f3aa11f8d631b7\",\"object\":\"EndShipper\",\"created_at\":\"2022-09-13T13:55:16-06:00\",\"updated_at\":\"2022-09-13T13:55:16-06:00\",\"name\":\"JACK SPARROW\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
+            "Body": "{\"id\":\"es_b857d32c0c5049688d596014afee1cf0\",\"object\":\"EndShipper\",\"created_at\":\"2022-09-16T12:16:51-06:00\",\"updated_at\":\"2022-09-16T12:16:51-06:00\",\"name\":\"JACK SPARROW\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
             "BodyContentType": "Json",
             "ContentHeaders": {
                 "Expires": "0",
@@ -34,15 +34,15 @@
                 "x-download-options": "noopen",
                 "x-permitted-cross-domain-policies": "none",
                 "referrer-policy": "strict-origin-when-cross-origin",
-                "x-ep-request-uuid": "1d5539f66320e024f3c5c2d6007761d6",
+                "x-ep-request-uuid": "44ab34c36324bd92ecc43cbe00003aaf",
                 "Cache-Control": "no-store, no-cache, private",
                 "Pragma": "no-cache",
-                "ETag": "W/\"b875f153289fba012e47b7faf39fae30\"",
-                "x-runtime": "0.041485",
+                "ETag": "W/\"b0f62bbda597c6e851903f9052b45d96\"",
+                "x-runtime": "0.045702",
                 "x-node": "bigweb1nuq",
-                "x-version-label": "easypost-202209122308-273e11ecbb-master",
+                "x-version-label": "easypost-202209152244-6075a793a4-master",
                 "x-backend": "easypost",
-                "x-proxied": "intlb2nuq 6aa9972c1e,extlb2nuq 9ce216bfac",
+                "x-proxied": "intlb1nuq 6aa9972c1e,intlb2wdc 6aa9972c1e,extlb4wdc 9ce216bfac",
                 "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
             },
             "Status": {
@@ -52,8 +52,8 @@
         }
     },
     {
-        "Duration": 158,
-        "RecordedAt": "2022-09-13T13:55:17.06521-06:00",
+        "Duration": 263,
+        "RecordedAt": "2022-09-16T12:16:51.427195-06:00",
         "Request": {
             "Body": "{\"address\":{\"name\":\"NEW NAME\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"}}",
             "BodyContentType": "Json",
@@ -68,10 +68,10 @@
                 "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
                 "User-Agent": "<REDACTED>"
             },
-            "Uri": "https://api.easypost.com/beta/end_shippers/es_6da88dd527694daf81f3aa11f8d631b7"
+            "Uri": "https://api.easypost.com/v2/end_shippers/es_b857d32c0c5049688d596014afee1cf0"
         },
         "Response": {
-            "Body": "{\"id\":\"es_6da88dd527694daf81f3aa11f8d631b7\",\"object\":\"EndShipper\",\"created_at\":\"2022-09-13T13:55:16-06:00\",\"updated_at\":\"2022-09-13T13:55:17-06:00\",\"name\":\"NEW NAME\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
+            "Body": "{\"id\":\"es_b857d32c0c5049688d596014afee1cf0\",\"object\":\"EndShipper\",\"created_at\":\"2022-09-16T12:16:51-06:00\",\"updated_at\":\"2022-09-16T12:16:51-06:00\",\"name\":\"NEW NAME\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
             "BodyContentType": "Json",
             "ContentHeaders": {
                 "Expires": "0",
@@ -86,15 +86,15 @@
                 "x-download-options": "noopen",
                 "x-permitted-cross-domain-policies": "none",
                 "referrer-policy": "strict-origin-when-cross-origin",
-                "x-ep-request-uuid": "1d5539f66320e025f3c5c2d6007761f3",
+                "x-ep-request-uuid": "44ab34c36324bd93ecc43cbe00003ad0",
                 "Cache-Control": "no-store, no-cache, private",
                 "Pragma": "no-cache",
-                "ETag": "W/\"1a8b143affb8cd28be914a55b559118e\"",
-                "x-runtime": "0.110236",
-                "x-node": "bigweb5nuq",
-                "x-version-label": "easypost-202209122308-273e11ecbb-master",
+                "ETag": "W/\"1d1661e8cb7374c6e611287624e241ca\"",
+                "x-runtime": "0.054668",
+                "x-node": "bigweb8nuq",
+                "x-version-label": "easypost-202209152244-6075a793a4-master",
                 "x-backend": "easypost",
-                "x-proxied": "intlb1nuq 6aa9972c1e,extlb2nuq 9ce216bfac",
+                "x-proxied": "intlb1nuq 6aa9972c1e,intlb1wdc 6aa9972c1e,extlb4wdc 9ce216bfac",
                 "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
             },
             "Status": {

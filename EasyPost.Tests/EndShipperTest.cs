@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Models.API.Beta;
+using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 using Xunit;
 
@@ -33,7 +33,10 @@ namespace EasyPost.Tests
         {
             UseVCR("all");
 
-            List<EndShipper> endShippers = await Client.Beta.EndShipper.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
+            EndShipperCollection endShipperCollection = await Client.EndShipper.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
+            List<EndShipper> endShippers = endShipperCollection.EndShippers;
+
+            Assert.True(endShipperCollection.HasMore);
             Assert.True(endShippers.Count <= Fixtures.PageSize);
             foreach (EndShipper item in endShippers)
             {
@@ -49,7 +52,7 @@ namespace EasyPost.Tests
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
-            EndShipper retrievedEndShipper = await Client.Beta.EndShipper.Retrieve(endShipper.Id);
+            EndShipper retrievedEndShipper = await Client.EndShipper.Retrieve(endShipper.Id);
 
             Assert.IsType<EndShipper>(retrievedEndShipper);
             Assert.Equal(endShipper.Street1, retrievedEndShipper.Street1);
@@ -63,7 +66,7 @@ namespace EasyPost.Tests
 
             EndShipper endShipper = await CreateBasicEndShipper();
 
-            string testName = "NEW NAME";
+            const string testName = "NEW NAME";
 
             Dictionary<string, object> endShipperData = Fixtures.CaAddress1;
             endShipperData["name"] = testName;
@@ -77,6 +80,6 @@ namespace EasyPost.Tests
 
         #endregion
 
-        private async Task<EndShipper> CreateBasicEndShipper() => await Client.Beta.EndShipper.Create(Fixtures.CaAddress1);
+        private async Task<EndShipper> CreateBasicEndShipper() => await Client.EndShipper.Create(Fixtures.CaAddress1);
     }
 }
