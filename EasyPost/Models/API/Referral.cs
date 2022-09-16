@@ -1,4 +1,4 @@
-namespace EasyPost.Models.API.Beta
+namespace EasyPost.Models.API
 {
     public class Referral : User
     {

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Models.API.Beta;
+using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 
-namespace EasyPost.Services.Beta
+namespace EasyPost.Services
 {
     public class PartnerService : EasyPostService
     {
