@@ -174,6 +174,15 @@ EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make coverage
 make scan
 ```
 
+#### NuGet Dependencies
+
+The NuGet package dependencies for this project are listed in the `.csproj` files. This project
+uses [NuGet package locks](https://docs.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files#locking-dependencies)
+to keep specific versions of dependencies. The lock files will be used during NuGet `restore`, if present.
+
+If you need to update or alter NuGet dependencies, delete the `package.lock.json` files first. They will be regenerated
+during the next `restore`.
+
 ### Testing
 
 The test suite in this project was specifically built to produce consistent results on every run, regardless of when

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <RootNamespace>EasyPost.Tests.VB</RootNamespace>
     <TargetFramework>net6.0</TargetFramework>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
   <ItemGroup>
