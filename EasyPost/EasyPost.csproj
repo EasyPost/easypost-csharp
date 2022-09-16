@@ -10,7 +10,7 @@
     <Configurations>Release;Debug</Configurations>
     <Platforms>AnyCPU</Platforms>
     <PackageId>EasyPost</PackageId>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>9</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

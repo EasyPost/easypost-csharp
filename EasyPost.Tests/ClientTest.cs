@@ -1,11 +1,17 @@
 using System.Threading;
+using System.Threading.Tasks;
+using EasyPost.Models.API;
 using Xunit;
 
 namespace EasyPost.Tests
 {
-    public class ClientTest
+    public class ClientTest : UnitTest
     {
         private const string FakeApikey = "fake_api_key";
+
+        public ClientTest() : base("client")
+        {
+        }
 
         [Fact]
         public void TestBaseUrlOverride()
@@ -54,6 +60,42 @@ namespace EasyPost.Tests
 
             Assert.Equal(5000, client.Configuration.ConnectTimeoutMilliseconds);
             Assert.Equal(5000, client.Configuration.RequestTimeoutMilliseconds);
+        }
+
+        [Fact]
+        public async Task TestClientPassing()
+        {
+            UseVCR("client_passing");
+
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+
+            // shipment should exist
+            Assert.NotNull(shipment);
+            // shipment client should have been populated
+            Assert.NotNull(shipment.Client);
+            // shipment client should be the same as the client used to create the shipment
+            Assert.Equal(Client, shipment.Client);
+
+            // shipment from address should exist
+            Assert.NotNull(shipment.FromAddress);
+            // shipment from address client should have been populated
+            Assert.NotNull(shipment.FromAddress.Client);
+            // shipment from address client should be the same as the client used to create the shipment
+            Assert.Equal(Client, shipment.FromAddress.Client);
+
+            // shipment to address should exist
+            Assert.NotNull(shipment.ToAddress);
+            // shipment to address client should have been populated
+            Assert.NotNull(shipment.ToAddress.Client);
+            // shipment to address client should be the same as the client used to create the shipment
+            Assert.Equal(Client, shipment.ToAddress.Client);
+
+            // shipment parcel should exist
+            Assert.NotNull(shipment.Parcel);
+            // shipment parcel client should have been populated
+            Assert.NotNull(shipment.Parcel.Client);
+            // shipment parcel client should be the same as the client used to create the shipment
+            Assert.Equal(Client, shipment.Parcel.Client);
         }
     }
 }

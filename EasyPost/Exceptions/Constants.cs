@@ -73,6 +73,7 @@ namespace EasyPost.Exceptions
             public const string UnexpectedHttpStatusCode = "Unexpected HTTP status code: {0}.";
             public const string ApiDidNotReturnErrorDetails = "API did not return error details.";
             internal const string ApiErrorDetailsParsingError = "RESPONSE.PARSE_ERROR"; // not for public consumption
+            public const string CouldNotPassClient = "Could not pass client to {0}.";
         }
     }
 }

@@ -11,7 +11,7 @@
     <RootNamespace>EasyPost.Tests</RootNamespace>
 
     <Nullable>enable</Nullable>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>9</LangVersion>
   </PropertyGroup>
   
   <PropertyGroup>
