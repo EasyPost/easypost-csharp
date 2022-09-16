@@ -60,7 +60,7 @@ namespace EasyPost.Exceptions
         {
             public const string InvalidApiKeyType = "Invalid API key type.";
             public const string InvalidParameter = "Invalid parameter: {0}.";
-            public const string InvalidWebhookSignature = "Invalid webhook signature.";
+            public const string InvalidWebhookSignature = "Webhook does not contain a valid HMAC signature.";
             public const string JsonDeserializationError = "Error deserializing JSON into object of type {0}.";
             public const string JsonNoDataToDeserialize = "No data to deserialize.";
             public const string JsonSerializationError = "Error serializing {0} object into JSON.";

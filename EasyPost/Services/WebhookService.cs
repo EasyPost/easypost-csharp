@@ -1,7 +1,10 @@
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
+using EasyPost.Utilities;
 using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
@@ -49,6 +52,42 @@ namespace EasyPost.Services
         public async Task<Webhook> Retrieve(string? id)
         {
             return await Get<Webhook>($"webhooks/{id}");
+        }
+
+        /// <summary>
+        ///     Validate a received webhook's HMAC signature.
+        /// </summary>
+        /// <param name="data">Byte data of the received webhook request.</param>
+        /// <param name="headers">Dictionary of headers from the received webhook request.</param>
+        /// <param name="secret">Secret used to sign webhooks.</param>
+        /// <returns>An EasyPost.Event instance if webhook is valid.</returns>
+        /// <exception cref="SignatureVerificationError">If webhook has an invalid signature.</exception>
+        // ReSharper disable once MemberCanBeMadeStatic.Global
+        // users could technically access this method without using a Client object, but we want to discourage that.
+        public Event ValidateWebhook(byte[] data, Dictionary<string, object?> headers, string secret)
+        {
+            const string signatureHeader = "X-Hmac-Signature";
+
+            string? providedSignature;
+            if (headers.ContainsKey(signatureHeader))
+            {
+                providedSignature = headers[signatureHeader]?.ToString();
+            }
+            else
+            {
+                throw new SignatureVerificationError();
+            }
+
+            string computedHexDigest = data.CalculateHMACSHA256HexDigest(secret, NormalizationForm.FormKD);
+
+            string computedHashSignature = $"hmac-sha256-hex={computedHexDigest}";
+
+            if (!Cryptography.SignaturesMatch(computedHashSignature, providedSignature))
+            {
+                throw new SignatureVerificationError();
+            }
+
+            return JsonSerialization.ConvertJsonToObject<Event>(data.AsString());
         }
 
         #endregion
