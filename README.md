@@ -34,89 +34,44 @@ namespace example
         {
             Client client = new Client("EASYPOST_API_KEY");
 
-            Dictionary<string, object> fromAddress = new Dictionary<string, object>()
+            Shipment shipment = await client.Shipment.Create(new Dictionary<string, object>()
             {
                 {
-                    "name", "Dr. Steve Brule"
+                    "to_address", new Dictionary<string, object>()
+                    {
+                        { "name", "Dr. Steve Brule" },
+                        { "street1", "179 N Harbor Dr" },
+                        { "city", "Redondo Beach" },
+                        { "state", "CA" },
+                        { "zip", "90277" },
+                        { "country", "US" },
+                        { "phone", "8573875756" },
+                        { "email", "dr_steve_brule@gmail.com" }
+                    }
                 },
                 {
-                    "street1", "417 Montgomery Street"
+                    "from_address", new Dictionary<string, object>()
+                    {
+                        { "name", "EasyPost" },
+                        { "street1", "417 Montgomery Street" },
+                        { "street2", "5th Floor" },
+                        { "city", "San Francisco" },
+                        { "state", "CA" },
+                        { "zip", "94104" },
+                        { "country", "US" },
+                        { "phone", "4153334445" },
+                        { "email", "support@easypost.com" }
+                    }
                 },
                 {
-                    "street2", "5th Floor"
-                },
-                {
-                    "city", "San Francisco"
-                },
-                {
-                    "state", "CA"
-                },
-                {
-                    "country", "US"
-                },
-                {
-                    "zip", "94104"
-                },
-                {
-                    "phone", "4153334444"
+                    "parcel", new Dictionary<string, object>()
+                    {
+                        { "length", 20.2 },
+                        { "width", 10.9 },
+                        { "height", 5 },
+                        { "weight", 65.9 }
+                    }
                 }
-            };
-
-            Dictionary<string, object> toAddress = new Dictionary<string, object>()
-            {
-                {
-                    "company", "EasyPost"
-                },
-                {
-                    "street1", "417 Montgomery Street"
-                },
-                {
-                    "street2", "Floor 5"
-                },
-                {
-                    "city", "San Francisco"
-                },
-                {
-                    "state", "CA"
-                },
-                {
-                    "country", "US"
-                },
-                {
-                    "zip", "94104"
-                },
-                {
-                    "phone", "415-379-7678"
-                }
-            };
-
-            Dictionary<string, object> parcel = new Dictionary<string, object>()
-            {
-                {
-                    "length", 8
-                },
-                {
-                    "width", 6
-                },
-                {
-                    "height", 5
-                },
-                {
-                    "weight", 10
-                },
-            };
-
-            Shipment shipment = await client.Shipment.Create(new Dictionary<string, object>
-            {
-                {
-                    "from_address", fromAddress
-                },
-                {
-                    "to_address", toAddress
-                },
-                {
-                    "parcel", parcel
-                },
             });
 
             await shipment.Buy(shipment.LowestRate());
@@ -142,6 +97,46 @@ your [EasyPost dashboard](https://easypost.com/account/api-keys).
 
 Once declared, a client's API key cannot be changed. If you are using multiple API keys, you can create multiple client
 objects.
+
+### Services
+
+All general API services can be accessed through the `Client` object. For example, to access the `Address` service:
+
+```csharp
+AddressService addressService = myClient.Address;
+```
+
+Beta services can be accessed via the `myClient.Beta` property.
+
+```csharp
+ExampleService betaService = myClient.Beta.Example;
+```
+
+### Resources
+
+API objects cannot be created locally. All local objects are copies of server-side data, retrieved via an API call from
+a service.
+
+For example, to create a new shipment, you must use the client's Shipment service:
+
+```csharp
+Shipment myShipment = await myClient.Shipment.Create(new Dictionary<string, object>
+{
+    { "from_address", fromAddress },
+    { "to_address", toAddress },
+    { "parcel", parcel }
+});
+```
+
+Functions involving a specific resource are then enacted on that resource. For example, to buy the shipment:
+
+```csharp
+await myShipment.Buy(myShipment.LowestRate());
+```
+
+Any generated local resource will have stored internally the same client used to create or retrieve them. Any API call
+made against the resource will automatically use the same client. This will prevent potential issues of accidentally
+using the wrong API key when interacting with a resource in a multi-client environment.
 
 ## Documentation
 
@@ -174,6 +169,15 @@ EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make coverage
 make scan
 ```
 
+#### NuGet Dependencies
+
+The NuGet package dependencies for this project are listed in the `.csproj` files. This project
+uses [NuGet package locks](https://docs.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files#locking-dependencies)
+to keep specific versions of dependencies. The lock files will be used during NuGet `restore`, if present.
+
+If you need to update or alter NuGet dependencies, delete the `package.lock.json` files first. They will be regenerated
+during the next `restore`.
+
 ### Testing
 
 The test suite in this project was specifically built to produce consistent results on every run, regardless of when
@@ -188,7 +192,7 @@ cassettes that prior to committing your changes, no PII or sensitive information
 cassette.
 
 **Making Changes:** If you make an addition to this project, the request/response will get recorded automatically for
-you if a `_vcr.SetUpTest("testName");` is included on the test function. When making changes to this project, you'll
+you if `UseVCR("testName");` is included on the test function. When making changes to this project, you'll
 need to re-record the associated cassette to force a new live API call for that test which will then record the
 request/response used on the next run.
 
