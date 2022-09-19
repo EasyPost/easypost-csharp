@@ -25,10 +25,14 @@ namespace EasyPost
         /// <summary>
         ///     Payment method priority
         /// </summary>
-        public enum Priority
+        public class Priority : Enumeration
         {
-            Primary,
-            Secondary
+            public static readonly Priority Primary = new Priority(1, "primary");
+            public static readonly Priority Secondary = new Priority(2, "secondary");
+
+            private Priority(int id, string value) : base(id, value)
+            {
+            }
         }
     }
 

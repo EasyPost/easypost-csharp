@@ -636,9 +636,15 @@ namespace EasyPost.Tests
             {
                 return new Dictionary<string, object>
                 {
-                    { "to_address", PickupAddress },
-                    {"from_address", BasicAddress },
-                    {"parcel", BasicParcel },
+                    {
+                        "to_address", PickupAddress
+                    },
+                    {
+                        "from_address", BasicAddress
+                    },
+                    {
+                        "parcel", BasicParcel
+                    },
                 };
             }
         }
@@ -709,6 +715,48 @@ namespace EasyPost.Tests
                 };
             }
         }
+
+        public static Dictionary<string, object> ReferralUser
+        {
+            get
+            {
+                return new Dictionary<string, object>
+                {
+                    {
+                        "name", "Test Referral"
+                    },
+                    {
+                        "email", "test@example.com"
+                    },
+                    {
+                        "phone", "5555555555"
+                    }
+                };
+            }
+        }
+
+        public static Dictionary<string, object> CreditCardDetails
+        {
+            get
+            {
+                return new Dictionary<string, object>
+                {
+                    {
+                        "number", "4536410136126170"
+                    },
+                    {
+                        "expiration_month", "05"
+                    },
+                    {
+                        "expiration_year", "2028"
+                    },
+                    {
+                        "cvc", "778"
+                    }
+                };
+            }
+        }
+
         public static byte[] EventBody
         {
             get
