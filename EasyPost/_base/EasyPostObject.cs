@@ -52,6 +52,15 @@ namespace EasyPost._base
             return AsDictionary().GetHashCode();
         }
 
+        /// <summary>
+        ///     Update an EasyPostObject object server-side and in-place locally.
+        /// </summary>
+        /// <param name="method">HTTP method to use for update call.</param>
+        /// <param name="url">Endpoint to hit for update call.</param>
+        /// <param name="parameters">Parameters to include for update call.</param>
+        /// <param name="rootElement">Root element of JSON returned by update call.</param>
+        /// <param name="overrideApiVersion">Override the API version used for update call.</param>
+        /// <typeparam name="T">Type of object to update.</typeparam>
         protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class
         {
             T updatedObject = await Request<T>(method, url, parameters, rootElement, overrideApiVersion);

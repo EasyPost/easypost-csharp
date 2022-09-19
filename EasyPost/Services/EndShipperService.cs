@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
-using EasyPost.Models.API.Beta;
+using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 
-namespace EasyPost.Services.Beta
+namespace EasyPost.Services
 {
     public class EndShipperService : EasyPostService
     {
@@ -39,7 +39,7 @@ namespace EasyPost.Services.Beta
         public async Task<EndShipper> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("address");
-            return await Create<EndShipper>("end_shippers", parameters, overrideApiVersion: ApiVersion.Beta);
+            return await Create<EndShipper>("end_shippers", parameters);
         }
 
         /// <summary>
@@ -57,9 +57,9 @@ namespace EasyPost.Services.Beta
         ///     * {"page_size", int} Max size of list. Default to 20.
         ///     All invalid keys will be ignored.
         /// </param>
-        /// <returns>A list of EasyPost.EndShipper instances.</returns>
+        /// <returns>An EasyPost.EndShipperCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<List<EndShipper>> All(Dictionary<string, object>? parameters = null) => await List<List<EndShipper>>("end_shippers", parameters, overrideApiVersion: ApiVersion.Beta);
+        public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null) => await List<EndShipperCollection>("end_shippers", parameters);
 
         /// <summary>
         ///     Retrieve an EndShipper from its id.
@@ -67,7 +67,7 @@ namespace EasyPost.Services.Beta
         /// <param name="id">String representing an EndShipper. Starts with "es_".</param>
         /// <returns>EasyPost.EndShipper instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipper> Retrieve(string id) => await Get<EndShipper>($"end_shippers/{id}", overrideApiVersion: ApiVersion.Beta);
+        public async Task<EndShipper> Retrieve(string id) => await Get<EndShipper>($"end_shippers/{id}");
 
         #endregion
     }

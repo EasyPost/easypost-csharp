@@ -10,8 +10,9 @@
     <Configurations>Release;Debug</Configurations>
     <Platforms>AnyCPU</Platforms>
     <PackageId>EasyPost</PackageId>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>9</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

@@ -24,6 +24,8 @@ namespace EasyPost
 
         public CustomsItemService CustomsItem => GetService<CustomsItemService>();
 
+        public EndShipperService EndShipper => GetService<EndShipperService>();
+
         public EventService Event => GetService<EventService>();
 
         public InsuranceService Insurance => GetService<InsuranceService>();

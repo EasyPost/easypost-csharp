@@ -122,5 +122,21 @@ namespace EasyPost.Http
             /// </summary>
             internal const int DefaultRequestTimeoutMilliseconds = 60000;
         }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is ClientConfiguration other)
+            {
+                return ApiKey == other.ApiKey &&
+                       ApiBase == other.ApiBase;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return ApiKey.GetHashCode() ^ ApiBase.GetHashCode() ^ (HttpClient?.GetHashCode() ?? 1);
+        }
     }
 }

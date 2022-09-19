@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Exceptions;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 using Xunit;
@@ -72,6 +74,65 @@ namespace EasyPost.Tests
 
             Assert.IsType<Webhook>(retrievedWebhook);
             Assert.Equal(webhook, retrievedWebhook);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public void TestValidateWebHook()
+        {
+            UseVCR("validate");
+
+            byte[] data = Fixtures.EventBody;
+
+            // ReSharper disable once StringLiteralTypo
+            const string webhookSecret = "sécret";
+            Dictionary<string, object?> headers = new Dictionary<string, object?> { { "X-Hmac-Signature", "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b" } };
+
+            Event @event = Client.Webhook.ValidateWebhook(data, headers, webhookSecret);
+
+            Assert.Equal("batch.created", @event.Description);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public void TestValidateWebhookInvalidSecret()
+        {
+            UseVCR("validate_invalid_secret");
+
+            byte[] data = Fixtures.EventBody;
+
+            const string webhookSecret = "invalid_secret";
+            Dictionary<string, object?> headers = new Dictionary<string, object?> { { "X-Hmac-Signature", "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b" } };
+
+            try
+            {
+                Event _ = Client.Webhook.ValidateWebhook(data, headers, webhookSecret);
+            }
+            catch (SignatureVerificationError error)
+            {
+                Assert.Equal(Constants.ErrorMessages.InvalidWebhookSignature, error.Message);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public void TestValidateWebhookMissingSecret()
+        {
+            UseVCR("validate_missing_secret");
+
+            byte[] data = Fixtures.EventBody;
+
+            const string webhookSecret = "123";
+            Dictionary<string, object?> headers = new Dictionary<string, object?> { { "some-header", "some-value" } };
+
+            try
+            {
+                Event _ = Client.Webhook.ValidateWebhook(data, headers, webhookSecret);
+            }
+            catch (SignatureVerificationError error)
+            {
+                Assert.Equal(Constants.ErrorMessages.InvalidWebhookSignature, error.Message);
+            }
         }
 
         [Fact]

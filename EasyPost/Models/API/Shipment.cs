@@ -96,8 +96,9 @@ namespace EasyPost.Models.API
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
+        /// <param name="endShipperId">The id of the end shipper to use for this purchase.</param>
         [CrudOperations.Update]
-        public async Task Buy(string? rateId, string? insuranceValue = null, bool withCarbonOffset = false)
+        public async Task Buy(string? rateId, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null)
         {
             // TODO: Should this function return the updated Shipment like Order.Buy?
             if (Id == null)
@@ -117,6 +118,11 @@ namespace EasyPost.Models.API
                 { "carbon_offset", withCarbonOffset }
             };
 
+            if (endShipperId != null)
+            {
+                parameters.Add("end_shipper", endShipperId);
+            }
+
             await Update<Shipment>(Method.Post, $"shipments/{Id}/buy", parameters);
         }
 
@@ -126,8 +132,9 @@ namespace EasyPost.Models.API
         /// <param name="rate">The Rate to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
+        /// <param name="endShipperId">The id of the end shipper to use for this purchase.</param>
         [CrudOperations.Update]
-        public async Task Buy(Rate rate, string? insuranceValue = null, bool withCarbonOffset = false) => await Buy(rate.Id, insuranceValue, withCarbonOffset);
+        public async Task Buy(Rate rate, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null) => await Buy(rate.Id, insuranceValue, withCarbonOffset, endShipperId);
 
         /// <summary>
         ///     Generate a postage label for this shipment.

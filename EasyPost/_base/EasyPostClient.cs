@@ -9,6 +9,7 @@ using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Models.Shared;
 using EasyPost.Utilities;
 using RestSharp;
 
@@ -36,7 +37,7 @@ namespace EasyPost._base
 
             RestClientOptions clientOptions = new RestClientOptions
             {
-                Timeout = Configuration.ConnectTimeoutMilliseconds,
+                MaxTimeout = Configuration.ConnectTimeoutMilliseconds,
                 BaseUrl = new Uri(Configuration.ApiBase),
                 UserAgent = Configuration.UserAgent
             };
@@ -74,26 +75,69 @@ namespace EasyPost._base
             // Deserialize the response into an object
             T resource = JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
 
-            // Copy this client to the object
-            if (resource is IList list)
-            {
-                foreach (object? element in list)
-                {
-                    (element as EasyPostObject)!.Client = this;
-                }
-            }
-            else
-            {
-                (resource as EasyPostObject)!.Client = this;
-            }
-
             if (resource is null)
             {
                 // Object deserialization failed
                 throw new JsonDeserializationError(typeof(T));
             }
 
+            PassClientToEasyPostObject(resource);
+
             return resource;
+        }
+
+        private void PassClientToAllEasyPostObjectProperties<T>(T? resource) where T : EasyPostObject
+        {
+            if (resource == null)
+            {
+                return;
+            }
+
+            List<PropertyInfo> properties = new List<PropertyInfo>(resource.GetType().GetProperties());
+            foreach (PropertyInfo property in properties)
+            {
+                // Pass the Client into every EasyPostObject in the collection
+                PassClientToEasyPostObject(property.GetValue(resource));
+            }
+        }
+
+        private void PassClientToEasyPostObjectsInList<T>(T? resource) where T : IList
+        {
+            if (resource == null)
+            {
+                return;
+            }
+
+            foreach (object? item in resource)
+            {
+                // pass the Client into every EasyPostObject in the list
+                PassClientToEasyPostObject(item);
+            }
+        }
+
+        /// <summary>
+        ///     Copy this Client into a new EasyPostObject instance.
+        /// </summary>
+        /// <param name="resource">Object to add this Client to.</param>
+        /// <typeparam name="T">Type of the object.</typeparam>
+        /// <returns>Object with Client added.</returns>
+        private void PassClientToEasyPostObject<T>(T? resource) where T : class
+        {
+            switch (resource)
+            {
+                case null:
+                    break;
+                case IList list:
+                    PassClientToEasyPostObjectsInList(list);
+                    break;
+                case Collection collection:
+                    PassClientToAllEasyPostObjectProperties(collection);
+                    break;
+                case EasyPostObject easyPostObject:
+                    easyPostObject.Client = this;
+                    PassClientToAllEasyPostObjectProperties(easyPostObject);
+                    break;
+            }
         }
 
         /// <summary>
@@ -141,5 +185,9 @@ namespace EasyPost._base
 
             return restRequest;
         }
+
+        public override bool Equals(object? obj) => obj is EasyPostClient client && Configuration.Equals(client.Configuration);
+
+        public override int GetHashCode() => Configuration.GetHashCode();
     }
 }

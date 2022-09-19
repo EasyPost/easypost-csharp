@@ -29,6 +29,17 @@
   - Common exception messages and templates can be found in the `EasyPost.Exceptions.Constants` class (i.e. for log parsing).
 - Dependencies updated to latest versions, including `RestSharp` v108.
 
+## NEXT RELEASE (v3)
+
+- Adds `end_shipper_id` shipment option
+- Can indicate an EndShipper ID when buying a shipment
+
+## v3.5.0 (2022-08-25)
+
+- Adds `ValidateWebhook` function
+- Adds `duty_payment` shipment option
+- Moves `EndShipper` out of beta to the general namespace
+
 ## v3.4.0 (2022-08-02)
 
 - Adds Carbon Offset support
