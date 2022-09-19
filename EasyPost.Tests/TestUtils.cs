@@ -41,7 +41,9 @@ namespace EasyPost.Tests
         public enum ApiKey
         {
             Test,
-            Production
+            Production,
+            Partner,
+            Referral,
         }
 
         public static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath);
@@ -56,6 +58,12 @@ namespace EasyPost.Tests
                     break;
                 case ApiKey.Production:
                     keyName = "EASYPOST_PROD_API_KEY";
+                    break;
+                case ApiKey.Partner:
+                    keyName = "PARTNER_USER_PROD_API_KEY";
+                    break;
+                case ApiKey.Referral:
+                    keyName = "REFERRAL_USER_PROD_API_KEY";
                     break;
                 default:
                     throw new Exception(Constants.ErrorMessages.InvalidApiKeyType);

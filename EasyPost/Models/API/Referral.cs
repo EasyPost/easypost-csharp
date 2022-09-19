@@ -1,6 +1,8 @@
+using EasyPost.Models.Shared;
+
 namespace EasyPost.Models.API
 {
-    public class Referral : User
+    public class ReferralCustomer : BaseUser
     {
     }
 }

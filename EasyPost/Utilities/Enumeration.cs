@@ -23,6 +23,8 @@ namespace EasyPost.Utilities
 
         public int CompareTo(object? other) => Id.CompareTo(((Enum)other!).Id);
 
+        public override string ToString() => Id.ToString();
+
         public override bool Equals(object? obj)
         {
             try
@@ -91,5 +93,7 @@ namespace EasyPost.Utilities
         {
             Value = value;
         }
+
+        public override string ToString() => Value.ToString();
     }
 }

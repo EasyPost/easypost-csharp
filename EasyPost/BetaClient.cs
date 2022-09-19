@@ -1,6 +1,5 @@
 using System.Net.Http;
 using EasyPost._base;
-using EasyPost.Services;
 
 namespace EasyPost
 {
@@ -21,8 +20,6 @@ namespace EasyPost
          *
          * When you are migrating a service from beta to general, you should remove/change the overrideApiVersion parameter from each function that is being migrated.
          */
-
-        public PartnerService Partner => GetService<PartnerService>();
 
         /// <summary>
         ///     Constructor for the EasyPost beta client.

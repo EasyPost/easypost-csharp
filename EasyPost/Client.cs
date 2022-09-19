@@ -34,6 +34,8 @@ namespace EasyPost
 
         public ParcelService Parcel => GetService<ParcelService>();
 
+        public PartnerService Partner => GetService<PartnerService>();
+
         public PickupService Pickup => GetService<PickupService>();
 
         public RateService Rate => GetService<RateService>();
