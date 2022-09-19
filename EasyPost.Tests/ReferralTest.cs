@@ -78,7 +78,7 @@ namespace EasyPost.Tests
         [TestMethod]
         public async Task TestReferralAddCreditCard()
         {
-            // This test will not record the Stripe API calls, nor the EasyPost add credit card call, since both use different API clients.
+            // This test is skipped because it will not record the Stripe API calls, nor the EasyPost add credit card call, since both use different API clients.
             _vcr.SetUpTest("referral_add_credit_card");
 
             Dictionary<string, object> parameters = Fixture.CreditCardDetails;
