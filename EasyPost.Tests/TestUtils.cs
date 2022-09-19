@@ -24,8 +24,7 @@ namespace EasyPost.Tests
             "keys",
             "phone_number",
             "phone",
-            "test_credentials",
-            "public_key"
+            "test_credentials"
         };
 
         private static readonly List<string> HeaderCensors = new List<string>
