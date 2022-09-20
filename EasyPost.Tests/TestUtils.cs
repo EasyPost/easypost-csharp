@@ -42,7 +42,9 @@ namespace EasyPost.Tests
         public enum ApiKey
         {
             Test,
-            Production
+            Production,
+            Partner,
+            Referral
         }
 
         internal static string GetApiKey(ApiKey apiKey)
@@ -55,6 +57,12 @@ namespace EasyPost.Tests
                     break;
                 case ApiKey.Production:
                     keyName = "EASYPOST_PROD_API_KEY";
+                    break;
+                case ApiKey.Partner:
+                    keyName = "PARTNER_USER_PROD_API_KEY";
+                    break;
+                case ApiKey.Referral:
+                    keyName = "REFERRAL_USER_PROD_API_KEY";
                     break;
                 default:
                     throw new Exception("Invalid ApiKey type");

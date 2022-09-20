@@ -3,14 +3,14 @@ using Newtonsoft.Json;
 
 namespace EasyPost
 {
-    public class InsuranceCollection : Resource
+    public class ReferralCustomerCollection : Resource
     {
         #region JSON Properties
 
         [JsonProperty("has_more")]
         public bool has_more { get; set; }
-        [JsonProperty("insurances")]
-        public List<Insurance> insurances { get; set; }
+        [JsonProperty("referral_customers")]
+        public List<ReferralCustomer> referral_customers { get; set; }
 
         #endregion
     }

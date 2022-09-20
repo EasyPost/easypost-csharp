@@ -70,10 +70,13 @@ namespace EasyPost
         /// </summary>
         /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
         /// <param name="betaFeature">Whether this request needs to use the beta endpoint.</param>
+        /// <param name="clientOverride">Use a custom client for execution.</param>
         /// <returns>An instance of a T type object.</returns>
-        public async Task<T> Execute<T>(bool betaFeature = false) where T : new()
+        public async Task<T> Execute<T>(bool betaFeature = false, Client? clientOverride = null) where T : new()
         {
-            Client client = BuildClient(betaFeature);
+            Client client = clientOverride ?? BuildClient(betaFeature);
+            BuildParameters();
+            BuildUrlSegments();
             return await client.Execute<T>(this, RootElement);
         }
 
@@ -81,10 +84,13 @@ namespace EasyPost
         ///     Execute the request.
         /// </summary>
         /// <param name="betaFeature">Whether this request needs to use the beta endpoint.</param>
+        /// <param name="clientOverride">Use a custom client for execution.</param>
         /// <returns>Whether the request was successful or not.</returns>
-        public async Task<bool> Execute(bool betaFeature = false)
+        public async Task<bool> Execute(bool betaFeature = false, Client? clientOverride = null)
         {
-            Client client = BuildClient(betaFeature);
+            Client client = clientOverride ?? BuildClient(betaFeature);
+            BuildParameters();
+            BuildUrlSegments();
             return await client.Execute(this);
         }
 
@@ -105,8 +111,6 @@ namespace EasyPost
         private Client BuildClient(bool betaFeature = false)
         {
             Client client = ClientManager.Build(betaFeature);
-            BuildParameters();
-            BuildUrlSegments();
             return client;
         }
 

@@ -27,9 +27,9 @@ namespace EasyPost
         /// <param name="amount">Amount to fund.</param>
         /// <param name="priority">Which type of payment method to use to fund the wallet. Defaults to primary.</param>
         /// <returns>True if successful, false otherwise.</returns>
-        public static async Task<bool> FundWallet(string amount, PaymentMethod.Priority priority = PaymentMethod.Priority.Primary)
+        public static async Task<bool> FundWallet(string amount, PaymentMethod.Priority? priority = null)
         {
-            PaymentMethodObject paymentMethod = await GetPaymentMethodByPriority(priority);
+            PaymentMethodObject paymentMethod = await GetPaymentMethodByPriority(priority ?? PaymentMethod.Priority.Primary);
 
             Request request = new Request($"{paymentMethod.Endpoint}/{paymentMethod.id}/charges", Method.Post);
             request.AddParameters(new Dictionary<string, object>
@@ -72,16 +72,13 @@ namespace EasyPost
             PaymentMethod paymentMethods = await RetrievePaymentMethods();
 
             PaymentMethodObject? paymentMethod = null;
-            switch (primaryOrSecondary)
+            if (primaryOrSecondary.Equals(PaymentMethod.Priority.Primary))
             {
-                case PaymentMethod.Priority.Primary:
-                    paymentMethod = paymentMethods.primary_payment_method;
-                    break;
-                case PaymentMethod.Priority.Secondary:
-                    paymentMethod = paymentMethods.secondary_payment_method;
-                    break;
-                default:
-                    break;
+                paymentMethod = paymentMethods.primary_payment_method;
+            }
+            else if (primaryOrSecondary.Equals(PaymentMethod.Priority.Secondary))
+            {
+                paymentMethod = paymentMethods.secondary_payment_method;
             }
 
             if (paymentMethod?.id == null)
