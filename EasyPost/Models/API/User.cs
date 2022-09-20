@@ -1,45 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost._base;
+using EasyPost.Models.Shared;
 using EasyPost.Utilities.Annotations;
-using Newtonsoft.Json;
 using RestSharp;
 
 namespace EasyPost.Models.API
 {
-    public class User : EasyPostObject
+    public class User : BaseUser
     {
-        #region JSON Properties
-
-        [JsonProperty("api_keys")]
-        public List<ApiKey>? ApiKeys { get; set; }
-        [JsonProperty("balance")]
-        public string? Balance { get; set; }
-        [JsonProperty("children")]
-        public List<User>? Children { get; set; }
-        [JsonProperty("email")]
-        public string? Email { get; set; }
-        [JsonProperty("name")]
-        public string? Name { get; set; }
-        [JsonProperty("parent_id")]
-        public string? ParentId { get; set; }
-        [JsonProperty("password")]
-        public string? Password { get; set; }
-        [JsonProperty("password_confirmation")]
-        public string? PasswordConfirmation { get; set; }
-        [JsonProperty("phone_number")]
-        public string? PhoneNumber { get; set; }
-        [JsonProperty("price_per_shipment")]
-        public string? PricePerShipment { get; set; }
-        [JsonProperty("recharge_amount")]
-        public string? RechargeAmount { get; set; }
-        [JsonProperty("recharge_threshold")]
-        public string? RechargeThreshold { get; set; }
-        [JsonProperty("secondary_recharge_amount")]
-        public string? SecondaryRechargeAmount { get; set; }
-
-        #endregion
-
         #region CRUD Operations
 
         /// <summary>

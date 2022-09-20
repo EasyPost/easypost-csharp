@@ -88,12 +88,12 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Payment method priority
         /// </summary>
-        public class Priority : Enum
+        public class Priority : ValueEnum
         {
-            public static readonly Priority Primary = new Priority(1);
-            public static readonly Priority Secondary = new Priority(2);
+            public static readonly Priority Primary = new Priority(1, "Primary");
+            public static readonly Priority Secondary = new Priority(2, "Secondary");
 
-            private Priority(int id) : base(id)
+            private Priority(int id, object value) : base(id, value)
             {
             }
         }

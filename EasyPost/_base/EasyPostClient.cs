@@ -189,5 +189,24 @@ namespace EasyPost._base
         public override bool Equals(object? obj) => obj is EasyPostClient client && Configuration.Equals(client.Configuration);
 
         public override int GetHashCode() => Configuration.GetHashCode();
+
+        /// <summary>
+        ///     Make a copy of this client, with the ability to override API key, API base, and HttpClient.
+        /// </summary>
+        /// <param name="overrideApiKey">Optional alternate API key to use.</param>
+        /// <param name="overrideApiBase">Optional alternate API base to use.</param>
+        /// <param name="overrideHttpClient">Optional alternate HttpClient to use.</param>
+        /// <typeparam name="T">Type of client to duplicate.</typeparam>
+        /// <returns>A T-type client object.</returns>
+        // NOTE: If you ever need to initialize a new client (i.e. temporarily switch API keys), use this function to do so.
+        // This will preserve all other configuration options (e.g. request timeout, VCR, etc.)
+        public T Clone<T>(string? overrideApiKey = null, string? overrideApiBase = null, HttpClient? overrideHttpClient = null) where T : EasyPostClient
+        {
+            // TODO: You can't reuse the same HTTP client to re-initialize an EasyPost client, because the HTTP client is already initialized and can't be modified.
+            // From a testing perspective, this means any VCR client will not be passed into the new client.
+            // We should investigate a re-initialization/cloning process for HttpClient.
+            var cons = typeof(T).GetConstructors();
+            return (T)cons[0].Invoke(new object?[] { overrideApiKey ?? Configuration.ApiKey, overrideApiBase ?? Configuration.ApiBase, overrideHttpClient });
+        }
     }
 }
