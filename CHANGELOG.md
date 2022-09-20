@@ -4,6 +4,12 @@
 
 - Adds `end_shipper_id` shipment option
 - Can indicate an EndShipper ID when buying a shipment
+- Add White Label features:
+  - Create a referral customer
+  - Update a referral customer's email address
+  - List all referral customers
+  - Add a credit card to a referral customer's account
+
 
 ## v3.5.0 (2022-08-25)
 
