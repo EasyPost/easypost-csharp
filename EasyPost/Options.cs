@@ -180,7 +180,12 @@ namespace EasyPost
         public string special_rates_eligibility { get; set; }
         [JsonProperty("suppress_etd")]
         public bool? suppress_etd { get; set; }
-
+        [JsonProperty("dropoff_max_datetime")]
+        public string dropoff_max_datetime { get; set; }
+        [JsonProperty("pickup_max_datetime")]
+        public string pickup_max_datetime { get; set; }
+        [JsonProperty("pickup_min_datetime")]
+        public string pickup_min_datetime { get; set; }
         #endregion
     }
 }
