@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.6.1 (2022-09-22)
+
+- Adds missing `dropoff_max_datetime` and `pickup_max_datetime` Shipment options
+
 ## v3.6.0 (2022-09-21)
 
 - Adds `end_shipper_id` shipment option
