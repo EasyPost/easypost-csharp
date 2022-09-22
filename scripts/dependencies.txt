@@ -1,0 +1,5 @@
+7z.exe,1CNp7hK2e6sOg1rdB8f0iEr6CWAPAj1JD
+nuget.exe,1GdqLDyLiavrJ7A8IYSbGDJmRQQA-ld6n
+signtool.exe,1R2Ozruv6b67wVzHd6pzuS7snkJuUqB3N
+sn.exe,1kN-pj2D_PnbRqWuXgBbC6fy7k39Zpo94
+SnInstallPfx.exe,1QznnBIj4cKDLDSdYTQEAuC6SDzaqoXnP
