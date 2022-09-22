@@ -27,7 +27,7 @@ coverage:
 
 ## format - Formats the project
 format:
-	dotnet format
+	dotnet dotnet-format --no-restore
 
 ## install-cert - Install the PFX certificate to your system (Windows only)
 # @parameters:
@@ -36,18 +36,20 @@ format:
 install-cert:
 	scripts\install_cert.bat ${cert} ${pass}
 
-## install-scanner - Install SecurityCodeScan to your system
-install-scanner:
-	dotnet tool install --local security-scan --version 5.6.3
+## install-tools - Install required dotnet tools
+install-tools:
+	dotnet new tool-manifest || true
+	dotnet tool install --local security-scan --version 5.6.3 || true
+	dotnet tool install --local dotnet-format || true
 
 ## install - Install requirements
-install:
+install: | install-tools
 	git submodule init
 	git submodule update
 
 ## lint - Lints the project
 lint:
-	dotnet format --verify-no-changes
+	dotnet dotnet-format --no-restore --check
 
 ## lint-scripts - Lint and validate the Batch scripts (Windows only)
 lint-scripts:
@@ -93,10 +95,6 @@ scan:
 setup:
 	scripts\setup.bat
 
-## setup-tools - Set up the manifest files for dotnet tools
-setup-tools:
-	dotnet new tool-manifest
-
 ## sign - Sign all generated DLLs and NuGet packages with the provided certificate (Windows only)
 # @parameters:
 # cert= - The certificate to use for signing the built assets.
@@ -120,4 +118,4 @@ test-fw:
 uninstall-scanner:
 	dotnet tool uninstall security-scan
 
-.PHONY: help build build-test-fw build-prod clean format install-cert install-scanner install lint lint-scripts pre-release publish-all publish release restore scan setup setup-tools sign test test-fw uninstall-scanner
+.PHONY: help build build-test-fw build-prod clean format install-cert install-tools install lint lint-scripts pre-release publish-all publish release restore scan setup sign test test-fw uninstall-scanner
