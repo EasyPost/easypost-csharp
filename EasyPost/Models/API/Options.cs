@@ -71,6 +71,8 @@ namespace EasyPost.Models.API
         public string? DeliveryTimePreference { get; set; }
         [JsonProperty("dropoff_type")]
         public string? DropoffType { get; set; }
+        [JsonProperty("dropoff_max_datetime")]
+        public DateTime? DropoffMaxDatetime { get; set; }
         [JsonProperty("dry_ice")]
         public bool? DryIce { get; set; }
         [JsonProperty("dry_ice_medical")]
@@ -133,6 +135,8 @@ namespace EasyPost.Models.API
         public bool? PeelAndReturn { get; set; }
         [JsonProperty("pickup_min_datetime")]
         public DateTime? PickupMinDatetime { get; set; }
+        [JsonProperty("pickup_max_datetime")]
+        public DateTime? PickupMaxDatetime { get; set; }
         [JsonProperty("po_sort")]
         public string? PoSort { get; set; }
         [JsonProperty("postage_label_inline")]
