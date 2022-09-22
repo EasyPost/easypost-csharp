@@ -68,6 +68,8 @@ namespace EasyPost
         public string delivery_confirmation { get; set; }
         [JsonProperty("delivery_time_preference")]
         public string delivery_time_preference { get; set; }
+        [JsonProperty("dropoff_max_datetime")]
+        public string dropoff_max_datetime { get; set; }
         [JsonProperty("dropoff_type")]
         public string dropoff_type { get; set; }
         [JsonProperty("dry_ice")]
@@ -130,6 +132,8 @@ namespace EasyPost
         public Dictionary<string, object> payment { get; set; }
         [JsonProperty("peel_and_return")]
         public bool peel_and_return { get; set; }
+        [JsonProperty("pickup_max_datetime")]
+        public DateTime? pickup_max_datetime { get; set; }
         [JsonProperty("pickup_min_datetime")]
         public DateTime? pickup_min_datetime { get; set; }
         [JsonProperty("po_sort")]
@@ -180,7 +184,6 @@ namespace EasyPost
         public string special_rates_eligibility { get; set; }
         [JsonProperty("suppress_etd")]
         public bool? suppress_etd { get; set; }
-
         #endregion
     }
 }
