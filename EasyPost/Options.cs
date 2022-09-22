@@ -184,6 +184,7 @@ namespace EasyPost
         public string special_rates_eligibility { get; set; }
         [JsonProperty("suppress_etd")]
         public bool? suppress_etd { get; set; }
+
         #endregion
     }
 }
