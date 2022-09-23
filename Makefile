@@ -38,9 +38,9 @@ install-cert:
 
 ## install-tools - Install required dotnet tools
 install-tools:
-	dotnet new tool-manifest || true
-	dotnet tool install --local security-scan --version 5.6.3 || true
-	dotnet tool install --local dotnet-format || true
+	dotnet new tool-manifest || exit 0
+	dotnet tool install --local security-scan --version 5.6.3 || exit 0
+	dotnet tool install --local dotnet-format || exit 0
 
 ## install - Install requirements
 install: | install-tools
