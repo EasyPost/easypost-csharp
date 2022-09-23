@@ -133,10 +133,10 @@ namespace EasyPost.Models.API
         public Dictionary<string, object>? Payment { get; set; }
         [JsonProperty("peel_and_return")]
         public bool? PeelAndReturn { get; set; }
-        [JsonProperty("pickup_min_datetime")]
-        public DateTime? PickupMinDatetime { get; set; }
         [JsonProperty("pickup_max_datetime")]
         public DateTime? PickupMaxDatetime { get; set; }
+        [JsonProperty("pickup_min_datetime")]
+        public DateTime? PickupMinDatetime { get; set; }
         [JsonProperty("po_sort")]
         public string? PoSort { get; set; }
         [JsonProperty("postage_label_inline")]
