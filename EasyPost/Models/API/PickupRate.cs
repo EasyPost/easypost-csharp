@@ -11,6 +11,10 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        internal PickupRate()
+        {
+        }
+
         /// <summary>
         ///     Convert this PickupRate object to a Rate object.
         /// </summary>

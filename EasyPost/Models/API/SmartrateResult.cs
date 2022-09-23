@@ -12,5 +12,9 @@ namespace EasyPost.Models.API
         public List<Smartrate>? Result { get; set; }
 
         #endregion
+
+        internal SmartrateResult()
+        {
+        }
     }
 }

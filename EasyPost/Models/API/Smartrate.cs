@@ -42,5 +42,9 @@ namespace EasyPost.Models.API
         public TimeInTransit? TimeInTransit { get; set; }
 
         #endregion
+
+        internal Smartrate()
+        {
+        }
     }
 }

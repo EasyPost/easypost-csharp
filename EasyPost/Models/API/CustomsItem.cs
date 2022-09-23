@@ -25,5 +25,9 @@ namespace EasyPost.Models.API
         public double? Weight { get; set; }
 
         #endregion
+
+        internal CustomsItem()
+        {
+        }
     }
 }

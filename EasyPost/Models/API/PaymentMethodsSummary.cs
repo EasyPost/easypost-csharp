@@ -16,5 +16,9 @@ namespace EasyPost.Models.API
         public PaymentMethod? SecondaryPaymentMethod { get; set; }
 
         #endregion
+
+        internal PaymentMethodsSummary()
+        {
+        }
     }
 }

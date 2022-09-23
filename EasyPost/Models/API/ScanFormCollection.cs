@@ -12,5 +12,9 @@ namespace EasyPost.Models.API
         public List<ScanForm>? ScanForms { get; set; }
 
         #endregion
+
+        internal ScanFormCollection()
+        {
+        }
     }
 }

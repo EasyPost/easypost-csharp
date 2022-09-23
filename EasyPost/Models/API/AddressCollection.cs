@@ -12,5 +12,9 @@ namespace EasyPost.Models.API
         public List<Address>? Addresses { get; set; }
 
         #endregion
+
+        internal AddressCollection()
+        {
+        }
     }
 }

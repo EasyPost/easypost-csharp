@@ -24,5 +24,9 @@ namespace EasyPost.Models.API
         public List<string>? TrackingCodes { get; set; }
 
         #endregion
+
+        internal ScanForm()
+        {
+        }
     }
 }

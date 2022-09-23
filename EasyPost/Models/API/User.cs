@@ -8,6 +8,10 @@ namespace EasyPost.Models.API
 {
     public class User : BaseUser
     {
+        internal User()
+        {
+        }
+
         #region CRUD Operations
 
         /// <summary>

@@ -12,5 +12,9 @@ namespace EasyPost.Models.API
         public List<Tracker>? Trackers { get; set; }
 
         #endregion
+
+        internal TrackerCollection()
+        {
+        }
     }
 }

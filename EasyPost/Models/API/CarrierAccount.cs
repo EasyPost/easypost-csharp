@@ -30,6 +30,10 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        internal CarrierAccount()
+        {
+        }
+
         #region CRUD Operations
 
         /// <summary>

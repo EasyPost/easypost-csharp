@@ -15,5 +15,9 @@ namespace EasyPost.Models.API
         public List<ApiKey>? Keys { get; set; }
 
         #endregion
+
+        internal ApiKeyCollection()
+        {
+        }
     }
 }

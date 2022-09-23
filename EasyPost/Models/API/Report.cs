@@ -22,5 +22,9 @@ namespace EasyPost.Models.API
         public DateTime? UrlExpiresAt { get; set; }
 
         #endregion
+
+        internal Report()
+        {
+        }
     }
 }

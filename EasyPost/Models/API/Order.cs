@@ -39,6 +39,10 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        internal Order()
+        {
+        }
+
         #region CRUD Operations
 
         /// <summary>

@@ -18,5 +18,9 @@ namespace EasyPost.Models.API
         public TrackingLocation? TrackingLocation { get; set; }
 
         #endregion
+
+        internal TrackingDetail()
+        {
+        }
     }
 }

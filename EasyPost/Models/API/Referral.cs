@@ -4,5 +4,8 @@ namespace EasyPost.Models.API
 {
     public class ReferralCustomer : BaseUser
     {
+        internal ReferralCustomer()
+        {
+        }
     }
 }

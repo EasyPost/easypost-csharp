@@ -69,10 +69,10 @@ namespace EasyPost.Models.API
         public string? DeliveryConfirmation { get; set; }
         [JsonProperty("delivery_time_preference")]
         public string? DeliveryTimePreference { get; set; }
-        [JsonProperty("dropoff_type")]
-        public string? DropoffType { get; set; }
         [JsonProperty("dropoff_max_datetime")]
         public DateTime? DropoffMaxDatetime { get; set; }
+        [JsonProperty("dropoff_type")]
+        public string? DropoffType { get; set; }
         [JsonProperty("dry_ice")]
         public bool? DryIce { get; set; }
         [JsonProperty("dry_ice_medical")]
@@ -187,5 +187,9 @@ namespace EasyPost.Models.API
         public bool? SuppressEtd { get; set; }
 
         #endregion
+
+        internal Options()
+        {
+        }
     }
 }

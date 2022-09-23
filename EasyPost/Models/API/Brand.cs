@@ -27,5 +27,9 @@ namespace EasyPost.Models.API
         public string? UserId { get; set; }
 
         #endregion
+
+        internal Brand()
+        {
+        }
     }
 }

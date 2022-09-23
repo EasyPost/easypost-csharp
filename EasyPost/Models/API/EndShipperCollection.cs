@@ -12,5 +12,9 @@ namespace EasyPost.Models.API
         public List<EndShipper>? EndShippers { get; set; }
 
         #endregion
+
+        internal EndShipperCollection()
+        {
+        }
     }
 }

@@ -13,5 +13,9 @@ namespace EasyPost.Models.API
         public Verification? Zip4 { get; set; }
 
         #endregion
+
+        internal Verifications()
+        {
+        }
     }
 }

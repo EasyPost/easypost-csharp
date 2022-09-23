@@ -12,5 +12,9 @@ namespace EasyPost.Models.API
         public List<Batch>? Batches { get; set; }
 
         #endregion
+
+        internal BatchCollection()
+        {
+        }
     }
 }

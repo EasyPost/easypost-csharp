@@ -16,5 +16,9 @@ namespace EasyPost.Models.API
         public string? Price { get; set; }
 
         #endregion
+
+        internal CarbonOffset()
+        {
+        }
     }
 }

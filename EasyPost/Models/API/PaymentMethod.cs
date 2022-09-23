@@ -85,6 +85,10 @@ namespace EasyPost.Models.API
             }
         }
 
+        internal PaymentMethod()
+        {
+        }
+
         /// <summary>
         ///     Payment method priority
         /// </summary>

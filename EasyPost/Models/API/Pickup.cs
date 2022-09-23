@@ -50,6 +50,10 @@ namespace EasyPost.Models.API
             get { return PickupRates != null ? PickupRates.Cast<Rate>().ToList() : new List<Rate>(); }
         }
 
+        internal Pickup()
+        {
+        }
+
         #region CRUD Operations
 
         /// <summary>

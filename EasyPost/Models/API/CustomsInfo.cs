@@ -30,5 +30,9 @@ namespace EasyPost.Models.API
         public string? RestrictionType { get; set; }
 
         #endregion
+
+        internal CustomsInfo()
+        {
+        }
     }
 }

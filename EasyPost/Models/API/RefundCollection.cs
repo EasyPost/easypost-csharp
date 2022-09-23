@@ -12,5 +12,9 @@ namespace EasyPost.Models.API
         public List<Refund>? Refunds { get; set; }
 
         #endregion
+
+        internal RefundCollection()
+        {
+        }
     }
 }

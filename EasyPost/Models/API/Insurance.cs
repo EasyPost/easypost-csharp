@@ -36,6 +36,10 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        internal Insurance()
+        {
+        }
+
         #region CRUD Operations
 
         /// <summary>

@@ -20,5 +20,9 @@ namespace EasyPost.Models.API
         public string? Suggestion { get; set; }
 
         #endregion
+
+        internal Error()
+        {
+        }
     }
 }

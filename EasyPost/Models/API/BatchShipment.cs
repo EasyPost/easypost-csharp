@@ -15,5 +15,9 @@ namespace EasyPost.Models.API
         public string? TrackingCode { get; set; }
 
         #endregion
+
+        internal BatchShipment()
+        {
+        }
     }
 }
