@@ -13,14 +13,11 @@ Use the following guide to assist in the upgrade process of the `easypost-csharp
 - [Client Instance](#40-client-instance)
 - [Language Conventions](#40-language-conventions)
 - [Nullable Properties](#40-nullable-properties)
-
-### 4.0 Medium Impact Changes
-
 - [Error Types](#40-error-types)
-- [Beta Client](#40-beta-client)
 
 ### 4.0 Low Impact Changes
 
+- [Beta Feature Access](#40-beta-feature-access)
 - [Services and Resources](#40-services-and-resources)
 
 ## 4.0 Updating Dependencies
@@ -30,7 +27,7 @@ Use the following guide to assist in the upgrade process of the `easypost-csharp
 **Dependencies**
 
 - RestSharp was upgraded from v107 to v108
-- All dependencies had minor version bumps
+- All dependencies had minor version bumps and have been locked to the latest (at the time) major version
 
 ## 4.0 Client Instance
 
@@ -58,7 +55,7 @@ All functions are now accessed via the `Client` instance. For example, to create
 EasyPost.Shipment shipment = await EasyPost.Shipment.Create(parameters);
 
 // New
-EasyPost.Shipment shipment = awiat myClient.Shipment.Create(parameters);
+EasyPost.Shipment shipment = await myClient.Shipment.Create(parameters);
 ```
 
 ## 4.0 Language Conventions
@@ -97,21 +94,21 @@ play well with any existing null checks.
 
 ```csharp
 // Old
-string id = myAddress.id; // "id" is non-nullable, but not guaranteed to be populated
-bool correctId = id.startsWith("adr_"); // compilation warning: "id" may be null
+string name = myAddress.name; // "name" is non-nullable, but not guaranteed to be populated
+bool correctName = name.startsWith("John"); // compilation warning: "name" may be null
 
 // New
-string? id = myAddress.Id; // "id" is nullable
-bool correctId = id?.startsWith("adr_") ?? false; // no compilation warning
+string? name = myAddress.Name; // "Name" and "name" are nullable
+bool correctName = name?.startsWith("John") ?? false; // no compilation warning
 ```
 
 ## 4.0 Error Types
 
-*Likelihood of Impact: **Medium***
+*Likelihood of Impact: **High***
 
 Error handling has been overhauled and a number of specific exception types have been introduced.
 
-All exceptions inherit from `EasyPost.Exceptions.EasyPostError`. Users can catch this exception type to handle all
+All exceptions inherit from `EasyPost.Exceptions.EasyPostError` (which extends `System.Exception`). Users can catch this exception type to handle all
 errors thrown by the library.
 
 Subclasses of `EasyPostError` are grouped into two categories:
@@ -168,12 +165,15 @@ Users can better anticipate exception information through utilities in the `Easy
   using `EasyPost.Exceptions.Constants.GetEasyPostExceptionType(HttpStatusCode statusCode)`
 - Check error message strings/templates in `EasyPost.Exceptions.Constants.ErrorMessages`
 
-## 4.0 Beta Client
+## 4.0 Beta Feature Access
 
-*Likelihood of Impact: **Medium***
+*Likelihood of Impact: **Low***
 
 Following the [client instance redesign](#40-client-instance), beta features are now accessed via the `Beta` property of
 the `Client` instance.
+
+This "beta client" can only be used to access beta features. Using a beta client to access non-beta features may result
+in unexpected behavior.
 
 ```csharp
 // Old
