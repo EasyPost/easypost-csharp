@@ -32,7 +32,7 @@ namespace example
     {
         static async Task Main()
         {
-            Client client = new Client("EASYPOST_API_KEY");
+            Client client = new Client(Environment.GetEnvironmentVariable("EASYPOST_API_KEY"));
 
             Shipment shipment = await client.Shipment.Create(new Dictionary<string, object>()
             {
