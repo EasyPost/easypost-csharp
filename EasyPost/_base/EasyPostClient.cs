@@ -48,7 +48,7 @@ namespace EasyPost._base
         /// <summary>
         ///     Execute a request against the EasyPost API.
         /// </summary>
-        /// <typeparam name="T">Type of object to deserialize response data into.</typeparam>
+        /// <typeparam name="T">Type of object to deserialize response data into. Must be subclass of EasyPostObject.</typeparam>
         /// <returns>An instance of a T type object.</returns>
         internal async Task<T> Request<T>(Method method, string url, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : class
         {

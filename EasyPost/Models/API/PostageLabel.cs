@@ -34,5 +34,9 @@ namespace EasyPost.Models.API
         public string? LabelZplUrl { get; set; }
 
         #endregion
+
+        internal PostageLabel()
+        {
+        }
     }
 }

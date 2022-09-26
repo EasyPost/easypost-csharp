@@ -48,6 +48,10 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        internal Address()
+        {
+        }
+
         #region CRUD Operations
 
         /// <summary>

@@ -22,5 +22,9 @@ namespace EasyPost.Models.API
         public string? Status { get; set; }
 
         #endregion
+
+        internal Event()
+        {
+        }
     }
 }

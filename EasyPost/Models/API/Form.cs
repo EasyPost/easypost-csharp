@@ -15,5 +15,9 @@ namespace EasyPost.Models.API
         public bool? SubmittedElectronically { get; set; }
 
         #endregion
+
+        internal Form()
+        {
+        }
     }
 }

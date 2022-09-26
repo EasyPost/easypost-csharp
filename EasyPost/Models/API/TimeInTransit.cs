@@ -23,6 +23,10 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        internal TimeInTransit()
+        {
+        }
+
         /// <summary>
         ///     Get the value of a specific percentile by its corresponding SmartrateAccuracy enum.
         /// </summary>

@@ -18,5 +18,9 @@ namespace EasyPost.Models.API
         public string? Type { get; set; }
 
         #endregion
+
+        internal CarrierType()
+        {
+        }
     }
 }

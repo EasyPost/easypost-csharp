@@ -33,6 +33,10 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        internal Batch()
+        {
+        }
+
         #region CRUD Operations
 
         /// <summary>

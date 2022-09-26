@@ -12,5 +12,9 @@ namespace EasyPost.Models.API
         public List<ReferralCustomer>? ReferralCustomers { get; set; }
 
         #endregion
+
+        internal ReferralCustomerCollection()
+        {
+        }
     }
 }

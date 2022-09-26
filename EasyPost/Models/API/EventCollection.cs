@@ -12,5 +12,9 @@ namespace EasyPost.Models.API
         public List<Event>? Events { get; set; }
 
         #endregion
+
+        internal EventCollection()
+        {
+        }
     }
 }

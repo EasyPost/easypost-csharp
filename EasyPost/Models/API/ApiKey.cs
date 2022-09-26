@@ -11,5 +11,9 @@ namespace EasyPost.Models.API
         public string? Key { get; set; }
 
         #endregion
+
+        internal ApiKey()
+        {
+        }
     }
 }

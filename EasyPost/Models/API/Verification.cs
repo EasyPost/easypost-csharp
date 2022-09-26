@@ -16,5 +16,9 @@ namespace EasyPost.Models.API
         public bool? Success { get; set; }
 
         #endregion
+
+        internal Verification()
+        {
+        }
     }
 }

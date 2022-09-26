@@ -27,5 +27,9 @@ namespace EasyPost.Models.API
         public string? Service { get; set; }
 
         #endregion
+
+        internal CarrierDetail()
+        {
+        }
     }
 }

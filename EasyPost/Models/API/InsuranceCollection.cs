@@ -12,5 +12,9 @@ namespace EasyPost.Models.API
         public List<Insurance>? Insurances { get; set; }
 
         #endregion
+
+        internal InsuranceCollection()
+        {
+        }
     }
 }

@@ -19,6 +19,10 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        internal Webhook()
+        {
+        }
+
         #region CRUD Operations
 
         /// <summary>

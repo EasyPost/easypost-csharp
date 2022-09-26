@@ -16,5 +16,9 @@ namespace EasyPost.Models.API
         public string? TaxIdType { get; set; }
 
         #endregion
+
+        internal TaxIdentifier()
+        {
+        }
     }
 }

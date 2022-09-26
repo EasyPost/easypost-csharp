@@ -16,5 +16,9 @@ namespace EasyPost.Models.API
         public string? Zip { get; set; }
 
         #endregion
+
+        internal TrackingLocation()
+        {
+        }
     }
 }

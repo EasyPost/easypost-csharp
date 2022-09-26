@@ -42,5 +42,9 @@ namespace EasyPost.Models.API
         public string? ShipmentId { get; set; }
 
         #endregion
+
+        internal Rate()
+        {
+        }
     }
 }

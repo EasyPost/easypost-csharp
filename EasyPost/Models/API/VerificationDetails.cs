@@ -15,5 +15,9 @@ namespace EasyPost.Models.API
         public string? TimeZone { get; set; }
 
         #endregion
+
+        internal VerificationDetails()
+        {
+        }
     }
 }

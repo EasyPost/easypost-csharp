@@ -19,5 +19,9 @@ namespace EasyPost.Models.API
         public double? Width { get; set; }
 
         #endregion
+
+        internal Parcel()
+        {
+        }
     }
 }
