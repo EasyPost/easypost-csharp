@@ -22,11 +22,12 @@
     <!-- CS8603: Possible null reference return -->
     <!-- CS8604: Possible null reference argument -->
     <!-- CS8618: Non-nullable field is uninitialized -->
+    <!-- CS8625: Cannot convert null literal to non-nullable reference or unconstrained type parameter -->
     <!-- CS8765: Uninitialized field(s) -->
     <!-- CS8767: Nullable parameter -->
     <!-- CS0659: Missing GetHashCode override -->
     <!-- CS0618: Obselete method -->
-    <NoWarn>CS8600;CS8602;CS8603;CS8604;CS8618;CS8765;CS8767;CS0659;CS0618</NoWarn>
+    <NoWarn>CS8600;CS8602;CS8603;CS8604;CS8618;CS8625;CS8765;CS8767;CS0659;CS0618</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
