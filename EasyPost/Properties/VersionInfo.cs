@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
 // Version information for an assembly must follow semantic versioning
-[assembly: AssemblyVersion("3.4.0")]
-[assembly: AssemblyFileVersion("3.4.0")]
-[assembly: AssemblyInformationalVersion("3.4.0")]
+[assembly: AssemblyVersion("4.0.0-rc1")]
+[assembly: AssemblyFileVersion("4.0.0-rc1")]
+[assembly: AssemblyInformationalVersion("4.0.0-rc1")]
