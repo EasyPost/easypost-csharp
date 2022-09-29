@@ -21,6 +21,8 @@
   - API-related and HTTP-related exceptions will throw an `ApiError` or inherited-type exception
   - API exception types can be retrieved by HTTP status code via the `EasyPost.Exceptions.Constants` class (i.e. to anticipate what error will be thrown for a 404, etc.)
   - Common exception messages and templates can be found in the `EasyPost.Exceptions.Constants` class (i.e. for log parsing)
+- Source code files have been organized
+  - Most EasyPost-related objects (i.e. `Shipment`, `Address`, `Tracker`, etc.) are now in the `EasyPost.Model.API` namespace
 - Dependencies updated to latest versions, including `RestSharp` v108
 
 ### Misc

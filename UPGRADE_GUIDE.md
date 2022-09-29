@@ -14,6 +14,7 @@ Use the following guide to assist in the upgrade process of the `easypost-csharp
 - [Language Conventions](#40-language-conventions)
 - [Nullable Properties](#40-nullable-properties)
 - [Error Types](#40-error-types)
+- [Namespace Changes](#40-namespace-changes)
 
 ### 4.0 Low Impact Changes
 
@@ -165,6 +166,18 @@ Users can better anticipate exception information through utilities in the `Easy
   using `EasyPost.Exceptions.Constants.GetEasyPostExceptionType(HttpStatusCode statusCode)`
 - Check error message strings/templates in `EasyPost.Exceptions.Constants.ErrorMessages`
 
+## 4.0 Namespace Changes
+
+*Likelihood of Impact: **High***
+
+As a result of organizing the source code of this library, the namespace of several classes has changed.
+
+- Most EasyPost-related objects are now in the `EasyPost.Models.API` namespace
+  - e.g. `EasyPost.Address` is now `EasyPost.Models.API.Address`
+- Exceptions, as noted in [Error Types](#40-error-types), are now in the `EasyPost.Exceptions` namespace
+- Services (static functions) are now in the `EasyPost.Services` namespace (see [Services and Resources](#40-services-and-resources))
+  - This should be opaque to end users accessing services through the `EasyPost.Client` class.
+
 ## 4.0 Beta Feature Access
 
 *Likelihood of Impact: **Low***
@@ -197,7 +210,7 @@ method `myShipment.Buy` is still accessible only via a Shipment instance.
 Instances of an object cannot be initialized directly. Instead, use the service to create the instance via a `Create`
 , `Retrieve`, or `All` API call.
 
-Outside of the [new client instance change](#40-client-instance), this design change should not have any additional
+Outside of the [new client instance change](#40-client-instance) and the [namespace change](#40-namespace-changes), this design change should not have any additional
 significant impact on usage, but it is worth noting the new organizational structure.
 
 ## Upgrading from 2.x to 3.0
