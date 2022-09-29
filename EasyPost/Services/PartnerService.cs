@@ -133,19 +133,35 @@ namespace EasyPost.Services
         /// <exception cref="Exception">When the request fails.</exception>
         private async Task<string> CreateStripeToken(string number, int expirationMonth, int expirationYear, string cvc, string easypostStripeApiKey)
         {
-            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
-            {
-                new KeyValuePair<string, string>("card[number]", number),
-                new KeyValuePair<string, string>("card[exp_month]", expirationMonth.ToString()),
-                new KeyValuePair<string, string>("card[exp_year]", expirationYear.ToString()),
-                new KeyValuePair<string, string>("card[cvc]", cvc)
-            };
-
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {easypostStripeApiKey}");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
 
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.stripe.com/v1/tokens") { Content = new FormUrlEncodedContent(parameters) };
+            const string url = "https://api.stripe.com/v1/tokens";
+
+#if NET5_0
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, url)
+            {
+                Content = new FormUrlEncodedContent(new List<KeyValuePair<string?, string?>>
+                {
+                    new KeyValuePair<string?, string?>("card[number]", number),
+                    new KeyValuePair<string?, string?>("card[exp_month]", expirationMonth.ToString()),
+                    new KeyValuePair<string?, string?>("card[exp_year]", expirationYear.ToString()),
+                    new KeyValuePair<string?, string?>("card[cvc]", cvc)
+                })
+            };
+#else
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, url)
+            {
+                Content = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("card[number]", number),
+                    new KeyValuePair<string, string>("card[exp_month]", expirationMonth.ToString()),
+                    new KeyValuePair<string, string>("card[exp_year]", expirationYear.ToString()),
+                    new KeyValuePair<string, string>("card[cvc]", cvc)
+                })
+            };
+#endif
 
             HttpResponseMessage response = await client.SendAsync(request);
             string responseString = await response.Content.ReadAsStringAsync();
