@@ -1,133 +1,116 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class ReportTest
+    public class ReportTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
+        public ReportTest() : base("report")
         {
-            _vcr = new TestUtils.VCR("report");
         }
 
-        private static async Task<Report> CreateBasicReport()
-        {
-            return await Report.Create(Fixture.ReportType, new Dictionary<string, object>
-            {
-                {
-                    "start_date", Fixture.ReportDate
-                },
-                {
-                    "end_date", Fixture.ReportDate
-                }
-            });
-        }
+        #region CRUD Operations
 
-        private static async Task<Report> CreateAdvancedReport(Dictionary<string, object> parameters)
-        {
-            parameters["start_date"] = Fixture.ReportDate;
-            parameters["end_date"] = Fixture.ReportDate;
-            return await Report.Create(Fixture.ReportType, parameters);
-        }
-
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreateReport()
         {
-            _vcr.SetUpTest("create_report");
-            Report report = await CreateBasicReport();
+            UseVCR("create_report");
 
-            Assert.IsInstanceOfType(report, typeof(Report));
-            Assert.IsTrue(report.id.StartsWith(Fixture.ReportIdPrefix));
+            Report report = await CreateBasicReport(Fixtures.ReportType);
+
+            Assert.IsType<Report>(report);
+            Assert.StartsWith(Fixtures.ReportIdPrefix, report.Id);
         }
 
-        [TestMethod]
-        public async Task TestCreateReportWithColumns()
-        {
-            _vcr.SetUpTest("create_report_with_columns");
-
-            List<string> columns = new List<string>
-            {
-                "usps_zone"
-            };
-            Report report = await CreateAdvancedReport(new Dictionary<string, object>
-            {
-                {
-                    "columns", columns
-                }
-            });
-
-            // verify parameters by checking VCR cassette for correct URL
-            // Some reports take a long time to generate, so we won't be able to consistently pull the report
-            // There's unfortunately no way to check if the columns were included in the final report without parsing the CSV
-            // so we assume, if we haven't gotten an error by this point, we've made the API calls correctly
-            // any failure at this point is a server-side issue
-            Assert.IsInstanceOfType(report, typeof(Report));
-        }
-
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreateReportWithAdditionalColumns()
         {
-            _vcr.SetUpTest("create_report_with_additional_columns");
+            UseVCR("create_report_with_additional_columns");
 
-            List<string> additionalColumns = new List<string>
+            List<string> additionalColumns = new List<string>()
             {
                 "from_name",
-                "from_company",
+                "from_company"
             };
-            Report report = await CreateAdvancedReport(new Dictionary<string, object>
-            {
-                {
-                    "additional_columns", additionalColumns
-                }
-            });
+            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object> { { "additional_columns", additionalColumns } });
 
             // verify parameters by checking VCR cassette for correct URL
             // Some reports take a long time to generate, so we won't be able to consistently pull the report
             // There's unfortunately no way to check if the columns were included in the final report without parsing the CSV
             // so we assume, if we haven't gotten an error by this point, we've made the API calls correctly
             // any failure at this point is a server-side issue
-            Assert.IsInstanceOfType(report, typeof(Report));
+            Assert.IsType<Report>(report);
         }
 
-        [TestMethod]
-        public async Task TestRetrieveReport()
+        [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreateReportWithColumns()
         {
-            _vcr.SetUpTest("retrieve_report");
+            UseVCR("create_report_with_columns");
 
-            Report report = await CreateBasicReport();
+            List<string> columns = new List<string>() { "usps_zone" };
+            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object> { { "columns", columns } });
 
-            Report retrievedReport = await Report.Retrieve(report.id);
-
-            Assert.IsInstanceOfType(retrievedReport, typeof(Report));
-            Assert.AreEqual(report.start_date, retrievedReport.start_date);
-            Assert.AreEqual(report.end_date, retrievedReport.end_date);
+            // verify parameters by checking VCR cassette for correct URL
+            // Some reports take a long time to generate, so we won't be able to consistently pull the report
+            // There's unfortunately no way to check if the columns were included in the final report without parsing the CSV
+            // so we assume, if we haven't gotten an error by this point, we've made the API calls correctly
+            // any failure at this point is a server-side issue
+            Assert.IsType<Report>(report);
         }
 
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestAll()
         {
-            _vcr.SetUpTest("all");
+            UseVCR("all");
 
-            ReportCollection reportCollection = await Report.All(Fixture.ReportType, new Dictionary<string, object>
+            ReportCollection reportCollection = await Client.Report.All("shipment", new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
+
+            List<Report> reports = reportCollection.Reports;
+
+            Assert.True(reportCollection.HasMore);
+            Assert.True(reports.Count <= Fixtures.PageSize);
+            foreach (Report report in reports)
             {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
-
-            List<Report> reports = reportCollection.reports;
-
-            Assert.IsTrue(reports.Count <= Fixture.PageSize);
-            Assert.IsNotNull(reportCollection.has_more);
-            foreach (var report in reports)
-            {
-                Assert.IsInstanceOfType(report, typeof(Report));
+                Assert.IsType<Report>(report);
             }
         }
+
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestRetrieveReport()
+        {
+            UseVCR("retrieve_report");
+
+            Report report = await CreateBasicReport(Fixtures.ReportType);
+
+            Report retrievedReport = await Client.Report.Retrieve(report.Id);
+
+            Assert.IsType<Report>(retrievedReport);
+            Assert.Equal(report.StartDate, retrievedReport.StartDate);
+            Assert.Equal(report.EndDate, retrievedReport.EndDate);
+        }
+
+        #endregion
+
+        private async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters)
+        {
+            parameters["start_date"] = Fixtures.ReportDate;
+            parameters["end_date"] = Fixtures.ReportDate;
+            return await Client.Report.Create(reportType, parameters);
+        }
+
+        private async Task<Report> CreateBasicReport(string reportType) =>
+            await Client.Report.Create(reportType, new Dictionary<string, object>
+            {
+                { "start_date", Fixtures.ReportDate },
+                { "end_date", Fixtures.ReportDate }
+            });
     }
 }

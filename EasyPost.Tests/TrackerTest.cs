@@ -1,110 +1,84 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class TrackerTest
+    public class TrackerTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
+        public TrackerTest() : base("tracker")
         {
-            _vcr = new TestUtils.VCR("tracker");
         }
 
-        private static async Task<Tracker> CreateBasicTracker()
-        {
-            return await Tracker.Create(Fixture.Usps, "EZ1000000001");
-        }
+        #region CRUD Operations
 
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            UseVCR("create");
 
             Tracker tracker = await CreateBasicTracker();
 
-            Assert.IsInstanceOfType(tracker, typeof(Tracker));
-            Assert.IsTrue(tracker.id.StartsWith("trk_"));
-            Assert.AreEqual("pre_transit", tracker.status);
+            Assert.IsType<Tracker>(tracker);
+            Assert.StartsWith("trk_", tracker.Id);
+            Assert.Equal("pre_transit", tracker.Status);
         }
 
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Create]
+        public async Task TestCreateList()
+        {
+            UseVCR("create_list");
+
+            var possibleException = await Record.ExceptionAsync(async () => await Client.Tracker.CreateList(new Dictionary<string, object>
+            {
+                { "0", new Dictionary<string, object> { { "tracking_code", "EZ1000000001" } } },
+                { "1", new Dictionary<string, object> { { "tracking_code", "EZ1000000002" } } },
+                { "2", new Dictionary<string, object> { { "tracking_code", "EZ1000000003" } } }
+            }));
+
+            Assert.Null(possibleException);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestAll()
+        {
+            UseVCR("all");
+
+            TrackerCollection trackerCollection = await Client.Tracker.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
+
+            List<Tracker> trackers = trackerCollection.Trackers;
+
+            Assert.True(trackerCollection.HasMore);
+            Assert.True(trackers.Count <= Fixtures.PageSize);
+            foreach (Tracker tracker in trackers)
+            {
+                Assert.IsType<Tracker>(tracker);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
-
+            UseVCR("retrieve");
 
             // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
             Tracker tracker = await CreateBasicTracker();
 
-            Tracker retrievedTracker = await Tracker.Retrieve(tracker.id);
+            Tracker retrievedTracker = await Client.Tracker.Retrieve(tracker.Id);
 
-            Assert.IsInstanceOfType(retrievedTracker, typeof(Tracker));
+            Assert.IsType<Tracker>(retrievedTracker);
             // Must compare IDs because other elements of objects may be different
-            Assert.AreEqual(tracker.id, retrievedTracker.id);
+            Assert.Equal(tracker.Id, retrievedTracker.Id);
         }
 
-        [TestMethod]
-        public async Task TestAll()
-        {
-            _vcr.SetUpTest("all");
+        #endregion
 
-            TrackerCollection trackerCollection = await Tracker.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
-
-            List<Tracker> trackers = trackerCollection.trackers;
-
-            Assert.IsTrue(trackers.Count <= Fixture.PageSize);
-            Assert.IsNotNull(trackerCollection.has_more);
-            foreach (var tracker in trackers)
-            {
-                Assert.IsInstanceOfType(tracker, typeof(Tracker));
-            }
-        }
-
-        [TestMethod]
-        public async Task TestCreateList()
-        {
-            _vcr.SetUpTest("create_list");
-
-            bool success = await Tracker.CreateList(new Dictionary<string, object>
-            {
-                {
-                    "0", new Dictionary<string, object>
-                    {
-                        {
-                            "tracking_code", "EZ1000000001"
-                        }
-                    }
-                },
-                {
-                    "1", new Dictionary<string, object>
-                    {
-                        {
-                            "tracking_code", "EZ1000000002"
-                        }
-                    }
-                },
-                {
-                    "2", new Dictionary<string, object>
-                    {
-                        {
-                            "tracking_code", "EZ1000000003"
-                        }
-                    }
-                },
-            });
-
-            // This endpoint returns nothing so we assert the function returns true
-            Assert.IsTrue(success);
-        }
+        private async Task<Tracker> CreateBasicTracker() => await Client.Tracker.Create(Fixtures.Usps, "EZ1000000001");
     }
 }

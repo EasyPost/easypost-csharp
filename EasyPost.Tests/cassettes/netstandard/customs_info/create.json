@@ -1,30 +1,30 @@
 [
     {
-        "Duration": 209,
-        "RecordedAt": "2022-07-20T22:00:11.159259-06:00",
+        "Duration": 392,
+        "RecordedAt": "2022-09-13T13:55:16.784927-06:00",
         "Request": {
-            "Body": "{\"customs_info\":{\"eel_pfc\":\"NOEEI 30.37(a)\",\"customs_certify\":true,\"customs_signer\":\"Dr. Steve Brule\",\"contents_type\":\"merchandise\",\"contents_explanation\":\"\",\"restriction_type\":\"none\",\"non_delivery_option\":\"return\",\"customs_items\":[{\"description\":\"Sweet shirts\",\"quantity\":2,\"weight\":11,\"value\":23.0,\"hs_tariff_number\":654321,\"origin_country\":\"US\"}]}}",
+            "Body": "{\"eel_pfc\":\"NOEEI 30.37(a)\",\"customs_certify\":true,\"customs_signer\":\"Steve Brule\",\"contents_type\":\"merchandise\",\"contents_explanation\":\"\",\"restriction_type\":\"none\",\"non_delivery_option\":\"return\",\"customs_items\":[{\"description\":\"Sweet shirts\",\"quantity\":2,\"weight\":11,\"value\":23.25,\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\"}]}",
             "BodyContentType": "Json",
             "ContentHeaders": {
                 "Content-Type": "application/json; charset=utf-8",
-                "Content-Length": "351"
+                "Content-Length": "333"
             },
             "Method": "POST",
             "RequestHeaders": {
-                "Accept": "application/json",
                 "Authorization": "<REDACTED>",
                 "content_type": "application/json",
+                "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
                 "User-Agent": "<REDACTED>"
             },
             "Uri": "https://api.easypost.com/v2/customs_infos"
         },
         "Response": {
-            "Body": "{\"id\":\"cstinfo_a8937cb68d52468fbcda267024fa14a6\",\"object\":\"CustomsInfo\",\"created_at\":\"2022-07-21T04:00:11Z\",\"updated_at\":\"2022-07-21T04:00:11Z\",\"contents_explanation\":\"\",\"contents_type\":\"merchandise\",\"customs_certify\":true,\"customs_signer\":\"Dr. Steve Brule\",\"eel_pfc\":\"NOEEI 30.37(a)\",\"non_delivery_option\":\"return\",\"restriction_comments\":null,\"restriction_type\":\"none\",\"mode\":\"test\",\"declaration\":null,\"customs_items\":[{\"id\":\"cstitem_6b1c08bd825b4b1c8f22a26051091347\",\"object\":\"CustomsItem\",\"created_at\":\"2022-07-21T04:00:11Z\",\"updated_at\":\"2022-07-21T04:00:11Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}]}",
+            "Body": "{\"id\":\"cstinfo_664a5f91cce84f8ca2b06d7ac8a77776\",\"object\":\"CustomsInfo\",\"created_at\":\"2022-09-13T19:55:16Z\",\"updated_at\":\"2022-09-13T19:55:16Z\",\"contents_explanation\":\"\",\"contents_type\":\"merchandise\",\"customs_certify\":true,\"customs_signer\":\"Steve Brule\",\"eel_pfc\":\"NOEEI 30.37(a)\",\"non_delivery_option\":\"return\",\"restriction_comments\":null,\"restriction_type\":\"none\",\"mode\":\"test\",\"declaration\":null,\"customs_items\":[]}",
             "BodyContentType": "Json",
             "ContentHeaders": {
                 "Expires": "0",
                 "Content-Type": "application/json; charset=utf-8",
-                "Content-Length": "797"
+                "Content-Length": "418"
             },
             "HttpVersion": "1.1",
             "ResponseHeaders": {
@@ -34,16 +34,17 @@
                 "x-download-options": "noopen",
                 "x-permitted-cross-domain-policies": "none",
                 "referrer-policy": "strict-origin-when-cross-origin",
-                "x-ep-request-uuid": "2733d52d62d8cf4bec8741dc000d0970",
-                "Cache-Control": "no-store, no-cache",
+                "x-ep-request-uuid": "1d5539f66320e024ec90bea9007761dc",
+                "Cache-Control": "no-store, no-cache, private",
                 "Pragma": "no-cache",
-                "Location": "/api/v2/customs_infos/cstinfo_a8937cb68d52468fbcda267024fa14a6",
-                "ETag": "W/\"14fa812ae77e16aec9459964400c0e2e\"",
-                "x-runtime": "0.064249",
-                "x-node": "bigweb6nuq",
-                "x-version-label": "easypost-202207201843-d4617192e3-master",
+                "Location": "/api/v2/customs_infos/cstinfo_664a5f91cce84f8ca2b06d7ac8a77776",
+                "ETag": "W/\"285ade86b90e3ae41692632b599eb9a3\"",
+                "x-runtime": "0.026953",
+                "x-node": "bigweb7nuq",
+                "x-version-label": "easypost-202209122308-273e11ecbb-master",
                 "x-backend": "easypost",
-                "x-proxied": "intlb1nuq 403f17ff97,extlb1nuq 403f17ff97",
+                "x-canary": "direct",
+                "x-proxied": "intlb2nuq 6aa9972c1e,extlb2nuq 9ce216bfac",
                 "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
             },
             "Status": {

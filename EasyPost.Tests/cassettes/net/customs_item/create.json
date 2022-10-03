@@ -1,49 +1,49 @@
 [
     {
-        "Duration": 172,
-        "RecordedAt": "2022-07-20T22:02:03.12648-06:00",
+        "Duration": 508,
+        "RecordedAt": "2022-09-13T13:54:29.208749-06:00",
         "Request": {
-            "Body": "{\"customs_item\":{\"description\":\"Sweet shirts\",\"quantity\":2,\"weight\":11,\"value\":23.0,\"hs_tariff_number\":654321,\"origin_country\":\"US\"}}",
+            "Body": "{\"description\":\"Sweet shirts\",\"quantity\":2,\"weight\":11,\"value\":23.25,\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\"}",
             "BodyContentType": "Json",
             "ContentHeaders": {
                 "Content-Type": "application/json; charset=utf-8",
-                "Content-Length": "133"
+                "Content-Length": "119"
             },
             "Method": "POST",
             "RequestHeaders": {
-                "Accept": "application/json",
                 "Authorization": "<REDACTED>",
                 "content_type": "application/json",
+                "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
                 "User-Agent": "<REDACTED>"
             },
             "Uri": "https://api.easypost.com/v2/customs_items"
         },
         "Response": {
-            "Body": "{\"id\":\"cstitem_b8a206a0ac7d44a6b36ae01a14a062fa\",\"object\":\"CustomsItem\",\"created_at\":\"2022-07-21T04:02:03Z\",\"updated_at\":\"2022-07-21T04:02:03Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.0\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}",
+            "Body": "{\"id\":\"cstitem_6f5a0aa2b9e4412c9c3db3fb6671c667\",\"object\":\"CustomsItem\",\"created_at\":\"2022-09-13T19:54:29Z\",\"updated_at\":\"2022-09-13T19:54:29Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.25\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}",
             "BodyContentType": "Json",
             "ContentHeaders": {
                 "Expires": "0",
                 "Content-Type": "application/json; charset=utf-8",
-                "Content-Length": "375"
+                "Content-Length": "376"
             },
             "HttpVersion": "1.1",
             "ResponseHeaders": {
                 "X-Frame-Options": "SAMEORIGIN",
-                "X-XSS-Protection": "1; mode=block",
+                "x-xss-protection": "1; mode=block",
                 "X-Content-Type-Options": "nosniff",
                 "x-download-options": "noopen",
                 "x-permitted-cross-domain-policies": "none",
-                "Referrer-Policy": "strict-origin-when-cross-origin",
-                "x-ep-request-uuid": "2733d52d62d8cfbbec3d35f3000d452c",
-                "Cache-Control": "no-store, no-cache",
+                "referrer-policy": "strict-origin-when-cross-origin",
+                "x-ep-request-uuid": "42344dcc6320dff5ecb1a0ea0072aa8a",
+                "Cache-Control": "no-store, no-cache, private",
                 "Pragma": "no-cache",
-                "Location": "/api/v2/customs_items/cstitem_b8a206a0ac7d44a6b36ae01a14a062fa",
-                "ETag": "W/\"bd52b6119940c312a7508050e19a54f1\"",
-                "x-runtime": "0.026514",
-                "x-node": "bigweb1nuq",
-                "x-version-label": "easypost-202207201843-d4617192e3-master",
+                "Location": "/api/v2/customs_items/cstitem_6f5a0aa2b9e4412c9c3db3fb6671c667",
+                "ETag": "W/\"2262948c272ba79edeb1a08fb112bb3a\"",
+                "x-runtime": "0.026845",
+                "x-node": "bigweb2nuq",
+                "x-version-label": "easypost-202209122308-273e11ecbb-master",
                 "x-backend": "easypost",
-                "x-proxied": "intlb2nuq 403f17ff97,extlb1nuq 403f17ff97",
+                "x-proxied": "intlb1nuq 6aa9972c1e,intlb2wdc 6aa9972c1e,extlb4wdc 9ce216bfac",
                 "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
             },
             "Status": {

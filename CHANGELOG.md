@@ -1,5 +1,39 @@
 # CHANGELOG
 
+## v4.0.0-rc1 (2022-09-26)
+
+### Breaking Changes & New Features
+
+- Library is now thread-safe
+  - Initialize a `Client` object with an API key
+  - Static methods (i.e. `create`, `retrieve`, retrieve `all` of a resource) exist in services, accessed via property of the client (e.g. `myClient.Address.Create()`)
+  - Instance methods (i.e. `update`, `delete`) accessed on instance of a resource (i.e. `myShipment.Update()`)
+- All properties are now title-cased rather than snake-cased to match standard .NET naming conventions
+  - e.g. `myShipment.id` is now `myShipment.Id`, `myAddress.federal_tax_id` is now `myAddress.FederalTaxId`, `myTrackerCollection.has_more` is now `myTrackerCollection.HasMore`
+  - Some properties have been renamed to avoid naming conflicts:
+    - `Rate.rate` is now `Rate.Price`
+    - `Message.message` is now `Message.Text`
+- All properties are now nullable
+  - Almost all properties will be assigned a value during JSON deserialization. This is mostly to address compiler warnings
+  - Users can proceed with the assumption that any given property will not be null
+- Consistent exception handling
+  - All exceptions inherit from `EasyPostError`
+  - API-related and HTTP-related exceptions will throw an `ApiError` or inherited-type exception
+  - API exception types can be retrieved by HTTP status code via the `EasyPost.Exceptions.Constants` class (i.e. to anticipate what error will be thrown for a 404, etc.)
+  - Common exception messages and templates can be found in the `EasyPost.Exceptions.Constants` class (i.e. for log parsing)
+- Source code files have been organized
+  - Most EasyPost-related objects (i.e. `Shipment`, `Address`, `Tracker`, etc.) are now in the `EasyPost.Model.API` namespace
+- Dependencies updated to latest versions, including `RestSharp` v108
+
+### Misc
+
+- Under the hood improvements:
+  - Underlying `Request`-`Client`-`ClientConfiguration` relationship has been re-architected to allow for thread safety
+  - Process of generating an API request has been standardized and simplified
+  - Improved accessibility levels of internal functions, to prevent accidental use by end users
+  - Files have been organized into a more logical structure
+  - Methods and properties have been organized (e.g. methods ordered by CRUD, properties ordered alphabetically)
+
 ## v3.6.1 (2022-09-22)
 
 - Adds missing `dropoff_max_datetime` and `pickup_max_datetime` Shipment options

@@ -5,27 +5,38 @@ using System.Reflection;
 
 namespace EasyPost.Utilities
 {
-    public abstract class Enumeration : IComparable
+    public interface IEnum
     {
-        internal int Id { get; private set; }
-        internal string Name { get; private set; }
+    }
 
-        protected Enumeration(int id, string name) => (Id, Name) = (id, name);
+    /// <summary>
+    ///     A Java-like enum implementation for C#.
+    /// </summary>
+    public abstract class Enum : IComparable, IEnum
+    {
+        private int Id { get; }
 
-        public int CompareTo(object? other) => other == null ? 1 : Id.CompareTo(((Enumeration)other).Id);
+        protected Enum(int id)
+        {
+            Id = id;
+        }
+
+        public int CompareTo(object? other) => Id.CompareTo(((Enum)other!).Id);
+
+        public override string ToString() => Id.ToString();
 
         public override bool Equals(object? obj)
         {
             try
             {
-                if (!GetType().Equals(obj.GetType()))
+                if (GetType() != obj!.GetType())
                 {
                     // types are not the same
                     return false;
                 }
 
-                Enumeration objEnum = (Enumeration)obj;
-                return objEnum.Id == Id && objEnum.Name == Name;
+                Enum objEnum = (Enum)obj;
+                return objEnum == this;
             }
             catch (Exception)
             {
@@ -34,13 +45,55 @@ namespace EasyPost.Utilities
             }
         }
 
-        public override string ToString() => Name;
+        public override int GetHashCode()
+        {
+            {
+                return new Dictionary<string, int> { { GetType().ToString(), Id } }.GetHashCode();
+            }
+        }
 
-        protected static IEnumerable<T> GetAll<T>() where T : Enumeration =>
+        private bool Equals(Enum? other) => Id == other?.Id;
+
+        public static bool operator ==(Enum? one, Enum? two)
+        {
+            if (one is null || two is null)
+            {
+                return false;
+            }
+
+            return one.Equals(two);
+        }
+
+        public static bool operator !=(Enum? one, Enum? two)
+        {
+            if (one is null || two is null)
+            {
+                return false;
+            }
+
+            return !(one == two);
+        }
+
+        protected static IEnumerable<T> GetAll<T>() where T : IEnum =>
             typeof(T).GetFields(BindingFlags.Public |
                                 BindingFlags.Static |
                                 BindingFlags.DeclaredOnly)
                 .Select(f => f.GetValue(null))
                 .Cast<T>();
+    }
+
+    /// <summary>
+    ///     An enum that stores a value internally.
+    /// </summary>
+    public abstract class ValueEnum : Enum
+    {
+        internal object Value { get; }
+
+        protected ValueEnum(int id, object value) : base(id)
+        {
+            Value = value;
+        }
+
+        public override string ToString() => Value.ToString();
     }
 }

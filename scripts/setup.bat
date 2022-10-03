@@ -13,9 +13,8 @@
 SET NetVersions=Current 6.0 5.0 3.1
 SET InstallPath=C:\dotnet
 
-:: Dependencies for these scripts
-SET DepFiles=SnInstallPfx.exe nuget.exe 7z.exe
-SET FileHost=https://files.nateharr.is/netdeps/
+:: Dependency file
+SET DependencyFile=scripts\dependencies.txt
 
 :: Install each .NET version
 @ECHO Installing .NET SDKs ...
@@ -29,9 +28,9 @@ ENDLOCAL
 :: Download dependencies to the same directory as 'dotnet'
 @ECHO Downloading third-party tools ...
 SETLOCAL
-    for %%x IN (%DepFiles%) DO (
+    for /f "tokens=1-2 delims=," %%x in (%DependencyFile%) DO (
         @ECHO Downloading %%x ...
-        powershell -NoProfile -ExecutionPolicy unrestricted -Command "Invoke-WebRequest -Uri '%FileHost%%%x' -OutFile '%InstallPath%\%%x'"
+        powershell -NoProfile -ExecutionPolicy unrestricted -Command "Invoke-WebRequest -Uri 'https://drive.google.com/uc?export=download&id=%%y' -OutFile '%InstallPath%\%%x'"
     )
 ENDLOCAL
 

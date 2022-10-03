@@ -4,12 +4,11 @@
 namespace EasyPost.Tests.FSharp
 
 open EasyPost
-open Microsoft.VisualStudio.TestTools.UnitTesting
+open Xunit
 
-[<TestClass>]
 type FSharpCompileTest() =
-    [<TestMethod>]
+    [<Fact>]
     member this.TestCompile() =
-        let address = new Address()
+        let client = new Client("fake_api_key")
         // The assert doesn't really do anything, but as long as this test can run, then the code is compiling correctly.
-        Assert.IsNotNull(address)
+        Assert.NotNull(client)

@@ -3,765 +3,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using EasyPost.Tests.FixtureData;
 using EasyPost.Utilities;
 
 namespace EasyPost.Tests
 {
-    public static class Fixture
+    public class Fixtures
     {
-        // We keep the page_size of retrieving `all` records small so cassettes stay small
-        public const int PageSize = 5;
-
-        // This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
-        public static string UspsCarrierAccountId
-        {
-            get
-            {
-                string envVar = Environment.GetEnvironmentVariable("USPS_CARRIER_ACCOUNT_ID");
-                // Fallback to the EasyPost C# Client Library Test User USPS carrier account
-                return envVar ?? "ca_7642d249fdcf47bcb5da9ea34c96dfcf";
-            }
-        }
-
-        public const string Usps = "USPS";
-
-        public const string UspsService = "First";
-
-        public const string PickupService = "NextDay";
-
-        public const string ReportType = "shipment";
-
-        public const string ReportIdPrefix = "shprep_";
-
-        // If you need to re-record cassettes, increment this date by 1
-        public const string ReportDate = "2022-04-12";
-
-        public static string WebhookUrl => "http://example.com";
-
-        public static Dictionary<string, object> BasicAddress
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "name", "Jack Sparrow"
-                    },
-                    {
-                        "company", "EasyPost"
-                    },
-                    {
-                        "street1", "388 Townsend St"
-                    },
-                    {
-                        "street2", "Apt 20"
-                    },
-                    {
-                        "city", "San Francisco"
-                    },
-                    {
-                        "state", "CA"
-                    },
-                    {
-                        "zip", "94107"
-                    },
-                    {
-                        "country", "US"
-                    },
-                    {
-                        "phone", "5555555555"
-                    },
-                };
-            }
-        }
-
-        public static Dictionary<string, object> IncorrectAddressToVerify
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "street1", "417 montgomery street"
-                    },
-                    {
-                        "street2", "FL 5"
-                    },
-                    {
-                        "city", "San Francisco"
-                    },
-                    {
-                        "state", "CA"
-                    },
-                    {
-                        "zip", "94104"
-                    },
-                    {
-                        "country", "US"
-                    },
-                    {
-                        "company", "EasyPost"
-                    },
-                    {
-                        "phone", "415-123-4567"
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> PickupAddress
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "name", "Dr. Steve Brule"
-                    },
-                    {
-                        "street1", "179 N Harbor Dr"
-                    },
-                    {
-                        "city", "Redondo Beach"
-                    },
-                    {
-                        "state", "CA"
-                    },
-                    {
-                        "zip", "90277"
-                    },
-                    {
-                        "country", "US"
-                    },
-                    {
-                        "phone", "3331114444"
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> BasicParcel
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "length", "10"
-                    },
-                    {
-                        "width", "8"
-                    },
-                    {
-                        "height", "4"
-                    },
-                    {
-                        "weight", "15.4"
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> BasicCustomsItem
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "description", "Sweet shirts"
-                    },
-                    {
-                        "quantity", 2
-                    },
-                    {
-                        "weight", 11
-                    },
-                    {
-                        "value", 23.00
-                    },
-                    {
-                        "hs_tariff_number", 654321
-                    },
-                    {
-                        "origin_country", "US"
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> BasicCustomsInfo
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "eel_pfc", "NOEEI 30.37(a)"
-                    },
-                    {
-                        "customs_certify", true
-                    },
-                    {
-                        "customs_signer", "Dr. Steve Brule"
-                    },
-                    {
-                        "contents_type", "merchandise"
-                    },
-                    {
-                        "contents_explanation", ""
-                    },
-                    {
-                        "restriction_type", "none"
-                    },
-                    {
-                        "non_delivery_option", "return"
-                    },
-                    {
-                        "customs_items", new List<object>
-                        {
-                            BasicCustomsItem
-                        }
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> BasicCarrierAccount
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "type", "UpsAccount"
-                    },
-                    {
-                        "credentials", new Dictionary<string, object>
-                        {
-                            {
-                                "account_number", "A1A1A1"
-                            },
-                            {
-                                "user_id", "USERID"
-                            },
-                            {
-                                "password", "PASSWORD"
-                            },
-                            {
-                                "access_license_number", "ALN"
-                            }
-                        }
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> TaxIdentifier
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "entity", "SENDER"
-                    },
-                    {
-                        "tax_id_type", "IOSS"
-                    },
-                    {
-                        "tax_id", "12345"
-                    },
-                    {
-                        "issuing_country", "GB"
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> BasicShipment
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "to_address", BasicAddress
-                    },
-                    {
-                        "from_address", BasicAddress
-                    },
-                    {
-                        "parcel", BasicParcel
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> FullShipment
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "to_address", BasicAddress
-                    },
-                    {
-                        "from_address", BasicAddress
-                    },
-                    {
-                        "parcel", BasicParcel
-                    },
-                    {
-                        "customs_info", BasicCustomsInfo
-                    },
-                    {
-                        "options", new Dictionary<string, object>
-                        {
-                            {
-                                "label_format", "PNG" // Must be PNG so we can convert to ZPL later
-                            },
-                            {
-                                "invoice_number", "123"
-                            }
-                        }
-                    },
-                    {
-                        "reference", "123"
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> OneCallBuyShipment
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "to_address", BasicAddress
-                    },
-                    {
-                        "from_address", BasicAddress
-                    },
-                    {
-                        "parcel", BasicParcel
-                    },
-                    {
-                        "service", UspsService
-                    },
-                    {
-                        "carrier_accounts", new List<string>
-                        {
-                            UspsCarrierAccountId
-                        }
-                    },
-                    {
-                        "carrier", Usps
-                    }
-                };
-            }
-        }
-
-        public static async Task<Dictionary<string, object>> BasicInsurance()
-        {
-            Shipment shipment = await Shipment.Create(OneCallBuyShipment);
-            return new Dictionary<string, object>
-            {
-                {
-                    "to_address", BasicAddress
-                },
-                {
-                    "from_address", BasicAddress
-                },
-                {
-                    "tracking_code", shipment.tracking_code
-                },
-                {
-                    "carrier", Usps
-                },
-                {
-                    "amount", 100
-                }
-            };
-        }
-
-        // This fixture will require you to add a `shipment` key with a Shipment object from a test.
-        // If you need to re-record cassettes, simply iterate the dates below and ensure they're one day in the future,
-        // USPS only does "next-day" pickups including Saturday but not Sunday or Holidays.
-        public static Dictionary<string, object> BasicPickup
-        {
-            get
-            {
-                const string pickupDate = "2022-08-01";
-                return new Dictionary<string, object>
-                {
-                    {
-                        "address", BasicAddress
-                    },
-                    {
-                        "min_datetime", pickupDate
-                    },
-                    {
-                        "max_datetime", pickupDate
-                    },
-                    {
-                        "instructions", "Pickup at front door"
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> BasicOrder
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "to_address", BasicAddress
-                    },
-                    {
-                        "from_address", BasicAddress
-                    },
-                    {
-                        "shipments", new List<Dictionary<string, object>>
-                        {
-                            BasicShipment
-                        }
-                    }
-                };
-            }
-        }
-
-        public static string Event
-        {
-            get
-            {
-                Dictionary<string, object> data = new Dictionary<string, object>
-                {
-                    {
-                        "mode", "production"
-                    },
-                    {
-                        "description", "batch.created"
-                    },
-                    {
-                        "previous_attributes", new Dictionary<string, object>
-                        {
-                            {
-                                "state", "purchasing"
-                            }
-                        }
-                    },
-                    {
-                        "pending_urls", new List<string>
-                        {
-                            "example.com/easypost-webhook"
-                        }
-                    },
-                    {
-                        "completed_urls", new List<string>()
-                    },
-                    {
-                        "created_at", "2015-12-03T19:09:19Z"
-                    },
-                    {
-                        "updated_at", "2015-12-03T19:09:19Z"
-                    },
-                    {
-                        "result", new Dictionary<string, object>
-                        {
-                            {
-                                "id", "batch_..."
-                            },
-                            {
-                                "object", "Batch"
-                            },
-                            {
-                                "mode", "production"
-                            },
-                            {
-                                "state", "purchased"
-                            },
-                            {
-                                "num_shipments", 1
-                            },
-                            {
-                                "reference", null
-                            },
-                            {
-                                "created_at", "2015-12-03T19:09:19Z"
-                            },
-                            {
-                                "updated_at", "2015-12-03T19:09:19Z"
-                            },
-                            {
-                                "scan_form", null
-                            },
-                            {
-                                "shipments", new Dictionary<string, object>
-                                {
-                                    {
-                                        "batch_status", "postage_purchased"
-                                    },
-                                    {
-                                        "batch_message", null
-                                    },
-                                    {
-                                        "id", "shp_123..."
-                                    }
-                                }
-                            },
-                            {
-                                "status", new Dictionary<string, object>
-                                {
-                                    {
-                                        "created", 0
-                                    },
-                                    {
-                                        "queued_for_purchase", 0
-                                    },
-                                    {
-                                        "creation_failed", 0
-                                    },
-                                    {
-                                        "postage_purchased", 1
-                                    },
-                                    {
-                                        "postage_purchase_failed", 0
-                                    }
-                                }
-                            },
-                            {
-                                "pickup", null
-                            },
-                            {
-                                "label_url", null
-                            }
-                        }
-                    },
-                    {
-                        "id", "evt_..."
-                    },
-                    {
-                        "object", "Event"
-                    }
-                };
-                return JsonSerialization.ConvertObjectToJson(data);
-            }
-        }
-
-        public static Dictionary<string, object> EndShipperAddress
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "name", "Jack Sparrow"
-                    },
-                    {
-                        "company", "EasyPost"
-                    },
-                    {
-                        "street1", "388 Townsend St"
-                    },
-                    {
-                        "street2", "Apt 20"
-                    },
-                    {
-                        "city", "San Francisco"
-                    },
-                    {
-                        "state", "CA"
-                    },
-                    {
-                        "zip", "94107"
-                    },
-                    {
-                        "country", "US"
-                    },
-                    {
-                        "phone", "5555555555"
-                    },
-                    {
-                        "email", "test@example.com"
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> RmaFormOptions
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "barcode", "RMA12345678900"
-                    },
-                    {
-                        "line_items", new List<object>
-                        {
-                            new Dictionary<string, object>
-                            {
-                                {
-                                    "product", new Dictionary<string, object>
-                                    {
-                                        {
-                                            "title", "Square Reader"
-                                        },
-                                        {
-                                            "barcode", "855658003251"
-                                        }
-                                    }
-                                },
-                                {
-                                    "units", 8
-                                }
-                            }
-                        }
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> BasicCarbonOffsetShipment
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "to_address", PickupAddress
-                    },
-                    {
-                        "from_address", BasicAddress
-                    },
-                    {
-                        "parcel", BasicParcel
-                    },
-                };
-            }
-        }
-
-        public static Dictionary<string, object> FullCarbonOffsetShipment
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "to_address", PickupAddress
-                    },
-                    {
-                        "from_address", BasicAddress
-                    },
-                    {
-                        "parcel", BasicParcel
-                    },
-                    {
-                        "customs_info", BasicCustomsInfo
-                    },
-                    {
-                        "options", new Dictionary<string, object>
-                        {
-                            {
-                                "label_format", "PNG" // Must be PNG so we can convert to ZPL later
-                            },
-                            {
-                                "invoice_number", "123"
-                            }
-                        }
-                    },
-                    {
-                        "reference", "123"
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> OneCallBuyCarbonOffsetShipment
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "to_address", PickupAddress
-                    },
-                    {
-                        "from_address", BasicAddress
-                    },
-                    {
-                        "parcel", BasicParcel
-                    },
-                    {
-                        "service", UspsService
-                    },
-                    {
-                        "carrier_accounts", new List<string>
-                        {
-                            UspsCarrierAccountId
-                        }
-                    },
-                    {
-                        "carrier", Usps
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> ReferralUser
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "name", "Test Referral"
-                    },
-                    {
-                        "email", "test@example.com"
-                    },
-                    {
-                        "phone", "5555555555"
-                    }
-                };
-            }
-        }
-
-        public static Dictionary<string, object> CreditCardDetails
-        {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    {
-                        "number", "4536410136126170"
-                    },
-                    {
-                        "expiration_month", "05"
-                    },
-                    {
-                        "expiration_year", "2028"
-                    },
-                    {
-                        "cvc", "778"
-                    }
-                };
-            }
-        }
-
         public static byte[] EventBody
         {
             get
             {
-                const string relativePath = "eventBody.json";
+                // need to go up one level to get out of the EasyPost.Tests directory
+                const string relativePath = "../examples/official/fixtures/event-body.json";
                 string fullPath = Path.Combine(TestUtils.GetSourceFileDirectory(), relativePath);
 
                 try
@@ -773,6 +27,117 @@ namespace EasyPost.Tests
                 {
                     throw new Exception($"Unable to read {fullPath}", e);
                 }
+            }
+        }
+
+        internal static Dictionary<string, object> BasicCarrierAccount => GetFixtureStructure().CarrierAccounts.Basic;
+
+        internal static Dictionary<string, object> BasicCustomsInfo => GetFixtureStructure().CustomsInfos.Basic;
+
+        internal static Dictionary<string, object> BasicCustomsItem => GetFixtureStructure().CustomsItems.Basic;
+
+        internal static Dictionary<string, object> BasicInsurance => GetFixtureStructure().Insurances.Basic;
+
+        internal static Dictionary<string, object> BasicOrder => GetFixtureStructure().Orders.Basic;
+
+        internal static Dictionary<string, object> BasicParcel => GetFixtureStructure().Parcels.Basic;
+
+        internal static Dictionary<string, object> BasicPickup
+        {
+            get
+            {
+                Dictionary<string, object> fixture = GetFixtureStructure().Pickups.Basic;
+
+                const string pickupDate = "2022-09-14";
+
+                fixture.AddOrUpdate("min_datetime", pickupDate);
+                fixture.AddOrUpdate("max_datetime", pickupDate);
+
+                return fixture;
+            }
+        }
+
+        internal static Dictionary<string, object> BasicShipment => GetFixtureStructure().Shipments.BasicDomestic;
+
+        internal static Dictionary<string, object> CaAddress1 => GetFixtureStructure().Addresses.CaAddress1;
+
+        internal static Dictionary<string, object> CaAddress2 => GetFixtureStructure().Addresses.CaAddress2;
+
+        internal static Dictionary<string, object> CreditCardDetails => GetFixtureStructure().CreditCards.Test;
+
+        internal static Dictionary<string, object> FullShipment => GetFixtureStructure().Shipments.Full;
+
+        internal static Dictionary<string, object> IncorrectAddress => GetFixtureStructure().Addresses.IncorrectAddress;
+
+        internal static Dictionary<string, object> OneCallBuyShipment => new Dictionary<string, object>
+        {
+            { "to_address", CaAddress1 },
+            { "from_address", CaAddress2 },
+            { "parcel", BasicParcel },
+            { "service", UspsService },
+            { "carrier_accounts", new List<string> { UspsCarrierAccountId } },
+            { "carrier", Usps }
+        };
+
+        internal static int PageSize => GetFixtureStructure().PageSizes.Five;
+
+        internal static string PickupService => GetFixtureStructure().ServiceNames.Usps.PickupService;
+
+        internal static Dictionary<string, object> ReferralUser => GetFixtureStructure().Users.Referral;
+
+        internal static string ReportDate => "2022-04-12";
+
+        internal static string ReportIdPrefix => "shprep_";
+
+        internal static string ReportType => GetFixtureStructure().ReportTypes.Shipment;
+
+        internal static Dictionary<string, object> RmaFormOptions => GetFixtureStructure().FormOptions.Rma;
+
+        internal static Dictionary<string, object> TaxIdentifier => GetFixtureStructure().TaxIdentifiers.Basic;
+
+        internal static string Usps => GetFixtureStructure().CarrierStrings.Usps;
+
+        // This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
+        internal static string UspsCarrierAccountId
+        {
+            get
+            {
+                string? envVar = Environment.GetEnvironmentVariable("USPS_CARRIER_ACCOUNT_ID");
+                // Fallback to the EasyPost C# Client Library Test User USPS carrier account
+                return envVar ?? "ca_7642d249fdcf47bcb5da9ea34c96dfcf";
+            }
+        }
+
+        internal static string UspsService => GetFixtureStructure().ServiceNames.Usps.FirstService;
+
+        internal static string WebhookUrl => GetFixtureStructure().WebhookUrl;
+
+
+        private static FixtureStructure GetFixtureStructure()
+        {
+            string fixtureData = ReadFixtureData();
+            return JsonSerialization.ConvertJsonToObject<FixtureStructure>(fixtureData);
+        }
+
+        private static string ReadFixtureData()
+        {
+            // need to go up one level to get out of the EasyPost.Tests directory
+            const string path = "../examples/official/fixtures/client-library-fixtures.json";
+            return TestUtils.ReadFile(path);
+        }
+    }
+
+    internal static class DictionaryExtensions
+    {
+        internal static void AddOrUpdate(this IDictionary<string, object> dictionary, string key, object value)
+        {
+            try
+            {
+                dictionary.Add(key, value);
+            }
+            catch (ArgumentException)
+            {
+                dictionary[key] = value;
             }
         }
     }
