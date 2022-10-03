@@ -91,9 +91,13 @@ scan:
 	dotnet tool run security-scan --verbose --no-banner --ignore-msbuild-errors EasyPost.sln
     # "--ignore-msbuild-errors" needed since MSBuild does not like F#: https://github.com/security-code-scan/security-code-scan/issues/235
 
-## setup - Install required .NET versions and tools (Windows only)
-setup:
+## setup-win - Install required .NET versions and tools (Windows only)
+setup-win:
 	scripts\setup.bat
+
+## setup-unix - Install required .NET versions and tools (Unix only)
+setup-unix:
+	bash scripts/setup.sh
 
 ## sign - Sign all generated DLLs and NuGet packages with the provided certificate (Windows only)
 # @parameters:
@@ -118,4 +122,4 @@ test-fw:
 uninstall-scanner:
 	dotnet tool uninstall security-scan
 
-.PHONY: help build build-test-fw build-prod clean format install-cert install-tools install lint lint-scripts pre-release publish-all publish release restore scan setup sign test test-fw uninstall-scanner
+.PHONY: help build build-test-fw build-prod clean format install-cert install-tools install lint lint-scripts pre-release publish-all publish release restore scan setup-win setup-unix sign test test-fw uninstall-scanner
