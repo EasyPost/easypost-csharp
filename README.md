@@ -11,7 +11,9 @@ EasyPost, the simple shipping solution. You can sign up for an account at <https
 Install-Package EasyPost-Official
 ```
 
-See NuGet docs for additional instructions on installing via the [dialog](http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog) or the [console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console).
+See NuGet docs for additional instructions on installing via
+the [dialog](http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog) or
+the [console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console).
 
 ## Usage
 
@@ -30,41 +32,46 @@ namespace example
     {
         static async Task Main()
         {
-            EasyPost.ClientManager.SetCurrent(Environment.GetEnvironmentVariable("EASYPOST_API_KEY"));
+            Client client = new Client(Environment.GetEnvironmentVariable("EASYPOST_API_KEY"));
 
-            Dictionary<string, object> fromAddress = new Dictionary<string, object>() {
-                { "name", "Dr. Steve Brule" },
-                { "street1", "417 Montgomery Street" },
-                { "street2", "5th Floor" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94104" },
-                { "phone", "4153334444" }
-            };
-
-            Dictionary<string, object> toAddress = new Dictionary<string, object>() {
-                { "company", "EasyPost" },
-                { "street1", "417 Montgomery Street" },
-                { "street2", "Floor 5" },
-                { "city", "San Francisco" },
-                { "state", "CA" },
-                { "country", "US" },
-                { "zip", "94104" },
-                { "phone", "415-379-7678" }
-            };
-
-            Dictionary<string, object> parcel = new Dictionary<string, object>() {
-                { "length", 8 },
-                { "width", 6 },
-                { "height", 5 },
-                { "weight", 10 },
-            }
-
-            Shipment shipment = await Shipment.Create(new Dictionary<string, object>() {
-                { "from_address", fromAddress },
-                { "to_address", toAddress },
-                { "parcel", parcel },
+            Shipment shipment = await client.Shipment.Create(new Dictionary<string, object>()
+            {
+                {
+                    "to_address", new Dictionary<string, object>()
+                    {
+                        { "name", "Dr. Steve Brule" },
+                        { "street1", "179 N Harbor Dr" },
+                        { "city", "Redondo Beach" },
+                        { "state", "CA" },
+                        { "zip", "90277" },
+                        { "country", "US" },
+                        { "phone", "8573875756" },
+                        { "email", "dr_steve_brule@gmail.com" }
+                    }
+                },
+                {
+                    "from_address", new Dictionary<string, object>()
+                    {
+                        { "name", "EasyPost" },
+                        { "street1", "417 Montgomery Street" },
+                        { "street2", "5th Floor" },
+                        { "city", "San Francisco" },
+                        { "state", "CA" },
+                        { "zip", "94104" },
+                        { "country", "US" },
+                        { "phone", "4153334445" },
+                        { "email", "support@easypost.com" }
+                    }
+                },
+                {
+                    "parcel", new Dictionary<string, object>()
+                    {
+                        { "length", 20.2 },
+                        { "width", 10.9 },
+                        { "height", 5 },
+                        { "weight", 65.9 }
+                    }
+                }
             });
 
             await shipment.Buy(shipment.LowestRate());
@@ -77,29 +84,59 @@ namespace example
 
 ### Configuration
 
-**Single API Key**
+A `Client` object is the entry point into the EasyPost API. It is instantiated with your API key:
 
-If you are operating with a single EasyPost API key, during the initialization of your application add the following to configure EasyPost.
-
-```cs
+```csharp
 using EasyPost;
 
-ClientManager.SetCurrent("ApiKey");
+Client myClient = new Client("EASYPOST_API_KEY");
 ```
 
-**Multiple API Keys**
+An API key is required for all requests. You can find your API key in
+your [EasyPost dashboard](https://easypost.com/account/api-keys).
 
-If you are operating with multiple EasyPost API keys, or wish to delegate the construction of the client requests, configure the `ClientManager` with a delegate at application initialization.
+Once declared, a client's API key cannot be changed. If you are using multiple API keys, you can create multiple client
+objects.
 
-```cs
-using EasyPost;
+### Services
 
-ClientManager.SetCurrent(() => new Client(new ClientConfiguration("yourApiKeyHere")));
+All general API services can be accessed through the `Client` object. For example, to access the `Address` service:
+
+```csharp
+AddressService addressService = myClient.Address;
 ```
 
-### Warning about Threads
+Beta services can be accessed via the `myClient.Beta` property.
 
-NOTE: The EasyPost .NET client library (in particular, the `ClientManager` global object) is not threadsafe; do not attempt to perform requests from multiple threads in parallel. This can be particularly problematic if using multiple API keys; make sure to always use a Mutex, Monitor, or other synchronization method to ensure that concurrent requests do not enter the EasyPost library from different threads.
+```csharp
+ExampleService betaService = myClient.Beta.Example;
+```
+
+### Resources
+
+API objects cannot be created locally. All local objects are copies of server-side data, retrieved via an API call from
+a service.
+
+For example, to create a new shipment, you must use the client's Shipment service:
+
+```csharp
+Shipment myShipment = await myClient.Shipment.Create(new Dictionary<string, object>
+{
+    { "from_address", fromAddress },
+    { "to_address", toAddress },
+    { "parcel", parcel }
+});
+```
+
+Functions involving a specific resource are then enacted on that resource. For example, to buy the shipment:
+
+```csharp
+await myShipment.Buy(myShipment.LowestRate());
+```
+
+Any generated local resource will have stored internally the same client used to create or retrieve them. Any API call
+made against the resource will automatically use the same client. This will prevent potential issues of accidentally
+using the wrong API key when interacting with a resource in a multi-client environment.
 
 ## Documentation
 
@@ -109,7 +146,8 @@ Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_G
 
 ## Development
 
-It is highly recommended to use a purpose-built IDE when working with this project such as `Visual Studio`. Most actions such as building, cleaning, and testing can be done via the GUI.
+It is highly recommended to use a purpose-built IDE when working with this project such as `Visual Studio`. Most actions
+such as building, cleaning, and testing can be done via the GUI.
 
 ```bash
 # Build project
@@ -154,7 +192,7 @@ cassettes that prior to committing your changes, no PII or sensitive information
 cassette.
 
 **Making Changes:** If you make an addition to this project, the request/response will get recorded automatically for
-you if a `_vcr.SetUpTest("testName");` is included on the test function. When making changes to this project, you'll
+you if `UseVCR("testName");` is included on the test function. When making changes to this project, you'll
 need to re-record the associated cassette to force a new live API call for that test which will then record the
 request/response used on the next run.
 
@@ -171,18 +209,22 @@ The following are required on every test run:
 - `EASYPOST_TEST_API_KEY`
 - `EASYPOST_PROD_API_KEY`
 
-The following are required when you need to re-record cassettes for applicable tests (fallback values are used otherwise):
+The following are required when you need to re-record cassettes for applicable tests (fallback values are used
+otherwise):
 
 - `USPS_CARRIER_ACCOUNT_ID` (eg: one-call buying a shipment for non-EasyPost employees)
 - `REFERRAL_USER_PROD_API_KEY` (eg: adding a credit card to a referral user)
 
-Some tests may require a user with a particular set of enabled features such as a `Partner` user when creating referrals. We have attempted to call out these functions in their respective docstrings.
+Some tests may require a user with a particular set of enabled features such as a `Partner` user when creating
+referrals. We have attempted to call out these functions in their respective docstrings.
 
 #### Test Coverage
 
-Unit test coverage reports can be generated by running the `generate_test_reports.sh` Bash script from the root of this repository.
+Unit test coverage reports can be generated by running the `generate_test_reports.sh` Bash script from the root of this
+repository.
 
-A report will be generated for each version of the library. Final reports will be stored in the `coveragereport` folder in the root of the repository following generation.
+A report will be generated for each version of the library. Final reports will be stored in the `coveragereport` folder
+in the root of the repository following generation.
 
 The script requires the following tools installed in your PATH:
 

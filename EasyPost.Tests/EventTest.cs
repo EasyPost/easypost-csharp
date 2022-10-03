@@ -1,61 +1,56 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class EventTest
+    public class EventTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
-        [TestInitialize]
-        public void Initialize()
+        public EventTest() : base("event")
         {
-            _vcr = new TestUtils.VCR("event");
         }
 
-        private static async Task<EventCollection> GetBasicEventCollection()
-        {
-            return await Event.All(new Dictionary<string, object>
-            {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            });
-        }
+        #region CRUD Operations
 
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestAll()
         {
-            _vcr.SetUpTest("all");
+            UseVCR("all");
 
             EventCollection eventCollection = await GetBasicEventCollection();
 
-            List<Event> events = eventCollection.events;
+            List<Event> events = eventCollection.Events;
 
-            Assert.IsTrue(events.Count <= Fixture.PageSize);
-            Assert.IsNotNull(eventCollection.has_more);
-            foreach (var item in events)
+            Assert.True(eventCollection.HasMore);
+            Assert.True(events.Count <= Fixtures.PageSize);
+            foreach (Event item in events)
             {
-                Assert.IsInstanceOfType(item, typeof(Event));
+                Assert.IsType<Event>(item);
             }
         }
 
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
-
+            UseVCR("retrieve");
 
             EventCollection eventCollection = await GetBasicEventCollection();
-            Event _event = eventCollection.events[0];
+            Event _event = eventCollection.Events[0];
 
-            Event retrievedEvent = await Event.Retrieve(_event.id);
+            Event retrievedEvent = await Client.Event.Retrieve(_event.Id);
 
-            Assert.IsInstanceOfType(retrievedEvent, typeof(Event));
+            Assert.IsType<Event>(retrievedEvent);
             // Must compare IDs because other elements of objects may be different
-            Assert.AreEqual(_event.id, retrievedEvent.id);
+            Assert.Equal(_event.Id, retrievedEvent.Id);
         }
+
+        #endregion
+
+        private async Task<EventCollection> GetBasicEventCollection() =>
+            await Client.Event.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
     }
 }

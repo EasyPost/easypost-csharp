@@ -15,7 +15,8 @@ SET containerName=%3
 @ECHO Signing DLLs with certificate...
 FOR /R "lib" %%F IN (*.dll) DO (
     REM We need to run the DLLs through both sn.exe and signtool to get complete the signing process
-    sn -Rca "%%F" %containerName% || GOTO :commandFailed
+    REM sn erroneously triggers command failed if we put a fallback on this
+    sn -Rca "%%F" %containerName%
     signtool sign /f %certFile% /p %certPass% /v /tr http://timestamp.digicert.com?alg=sha256 /td SHA256 /fd SHA256 "%%F" || GOTO :commandFailed
 )
 

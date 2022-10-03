@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>
     <RootNamespace>EasyPost</RootNamespace>
@@ -9,8 +10,9 @@
     <Configurations>Release;Debug</Configurations>
     <Platforms>AnyCPU</Platforms>
     <PackageId>EasyPost</PackageId>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>9</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,15 +23,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <!-- Nullability and other warnings to suppress -->
-    <!-- CS8618: Non-nullable field not initialized -->
-    <!-- CS8603: Possible null reference return -->
-    <!-- CS8602: Possible null reference assignment -->
-    <!-- CS8765: Uninitialized field(s) -->
-    <!-- CS8767: Nullable parameter -->
-    <!-- CS0659: Missing GetHashCode override -->
-    <!-- CS0618: Obselete method -->
-    <NoWarn>CS8618;CS8603;CS8602;CS8765;CS8767;CS0659;CS0618</NoWarn>
+    <!-- Warnings to suppress -->
+    <NoWarn></NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DebugType>pdbonly</DebugType>
@@ -52,27 +47,20 @@
   </PropertyGroup>
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)"/>
+    <PackageReference Include="RestSharp" Version="[108.0.1, 109.0.0)"/>
+  </ItemGroup>
   <ItemGroup>
     <None Include="..\EasyPost.pub">
       <Link>EasyPost.pub</Link>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)"/>
-    <PackageReference Include="RestSharp" Version="[107.3.0, 108.0.0)"/>
-    <PackageReference Include="SecurityCodeScan.VS2019" Version="[5.0.0, 6.0.0)">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath="\"/>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ApiCompatibility"/>
-    <Folder Include="Calculation"/>
+    <None Include="..\README.md">
+      <Pack>true</Pack>
+      <PackagePath>/</PackagePath>
+      <Link>README.md</Link>
+    </None>
   </ItemGroup>
 
 </Project>

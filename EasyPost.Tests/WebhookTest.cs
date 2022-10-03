@@ -1,176 +1,181 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Exceptions;
+using EasyPost.Exceptions.General;
+using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class WebhookTest
+    public class WebhookTest : UnitTest
     {
-        private static string? _easypostWebhookId = null;
-        private static TestUtils.VCR? _vcr;
+        // NOTE: Because the API does not allow two webhooks with the same URL,
+        // and these tests run in parallel, each test needs to have a unique URL.
 
-        [TestCleanup]
-        public async Task Cleanup()
-        {
-            if (_easypostWebhookId != null)
+        public WebhookTest() : base("webhook") =>
+            CleanupFunction = async id =>
             {
                 try
                 {
-                    Webhook retrievedWebhook = await Webhook.Retrieve(_easypostWebhookId);
+                    Webhook retrievedWebhook = await Client.Webhook.Retrieve(id);
                     await retrievedWebhook.Delete();
-                    _easypostWebhookId = null;
+                    return true;
                 }
                 catch
                 {
-                    // in case we try to delete something that's already been deleted
+                    // trying to delete something that doesn't exist, pass
+                    return false;
                 }
-            }
-        }
+            };
 
-        [TestInitialize]
-        public void Initialize()
-        {
-            _vcr = new TestUtils.VCR("webhook");
-        }
+        #region CRUD Operations
 
-        [TestMethod]
-        public async Task TestAll()
-        {
-            _vcr.SetUpTest("all");
-
-            List<Webhook> webhooks = await Webhook.All();
-
-            foreach (var item in webhooks)
-            {
-                Assert.IsInstanceOfType(item, typeof(Webhook));
-            }
-        }
-
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            UseVCR("create");
 
-            Webhook webhook = await CreateBasicWebhook();
+            const string url = "https://example.com/create";
 
-            Assert.IsInstanceOfType(webhook, typeof(Webhook));
-            Assert.IsTrue(webhook.id.StartsWith("hook_"));
-            Assert.AreEqual(Fixture.WebhookUrl, webhook.url);
+            Webhook webhook = await CreateBasicWebhook(url);
+
+            Assert.IsType<Webhook>(webhook);
+            Assert.StartsWith("hook_", webhook.Id);
+            Assert.Equal(url, webhook.Url);
         }
 
-        [TestMethod]
-        public async Task TestDelete()
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestAll()
         {
-            _vcr.SetUpTest("delete");
+            UseVCR("all");
 
-            Webhook webhook = await CreateBasicWebhook();
-            Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
+            List<Webhook> webhooks = await Client.Webhook.All();
 
-            bool success = await retrievedWebhook.Delete();
-            Assert.IsTrue(success);
-
-            _easypostWebhookId = null; // skip deletion cleanup
+            foreach (Webhook item in webhooks)
+            {
+                Assert.IsType<Webhook>(item);
+            }
         }
 
-        [TestMethod]
-        public async Task TestEnableDisable()
-        {
-            _vcr.SetUpTest("update");
-
-            Webhook webhook = await CreateBasicWebhook();
-
-            await webhook.Update();
-            // TODO: We should call this something more intuitive in the future, since it doesn't work like the other Update function
-        }
-
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestRetrieve()
         {
-            _vcr.SetUpTest("retrieve");
+            UseVCR("retrieve");
 
-            Webhook webhook = await CreateBasicWebhook();
+            const string url = "https://example.com/retrieve";
 
-            Webhook retrievedWebhook = await Webhook.Retrieve(webhook.id);
+            Webhook webhook = await CreateBasicWebhook(url);
 
-            Assert.IsInstanceOfType(retrievedWebhook, typeof(Webhook));
-            Assert.AreEqual(webhook, retrievedWebhook);
+            Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.Id);
+
+            Assert.IsType<Webhook>(retrievedWebhook);
+            Assert.Equal(webhook, retrievedWebhook);
         }
 
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read]
         public void TestValidateWebHook()
         {
-            byte[] data = Fixture.EventBody;
+            UseVCR("validate");
+
+            byte[] data = Fixtures.EventBody;
 
             // ReSharper disable once StringLiteralTypo
             const string webhookSecret = "sécret";
-            Dictionary<string, object?> headers = new Dictionary<string, object?>
-            {
-                {
-                    "X-Hmac-Signature", "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b"
-                }
-            };
+            Dictionary<string, object?> headers = new Dictionary<string, object?> { { "X-Hmac-Signature", "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b" } };
 
-            Event @event = Webhook.ValidateWebhook(data, headers, webhookSecret);
+            Event @event = Client.Webhook.ValidateWebhook(data, headers, webhookSecret);
 
-            Assert.AreEqual("batch.created", @event.description);
+            Assert.Equal("batch.created", @event.Description);
         }
-        [TestMethod]
+
+        [Fact]
+        [CrudOperations.Read]
         public void TestValidateWebhookInvalidSecret()
         {
-            byte[] data = Fixture.EventBody;
+            UseVCR("validate_invalid_secret");
+
+            byte[] data = Fixtures.EventBody;
 
             const string webhookSecret = "invalid_secret";
-            Dictionary<string, object?> headers = new Dictionary<string, object?>
-            {
-                {
-                    "X-Hmac-Signature", "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b"
-                }
-            };
+            Dictionary<string, object?> headers = new Dictionary<string, object?> { { "X-Hmac-Signature", "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b" } };
 
             try
             {
-                Event _ = Webhook.ValidateWebhook(data, headers, webhookSecret);
+                Event _ = Client.Webhook.ValidateWebhook(data, headers, webhookSecret);
             }
-            catch (Exception error)
+            catch (SignatureVerificationError error)
             {
-                Assert.AreEqual("Webhook received did not originate from EasyPost or had a webhook secret mismatch.", error.Message);
+                Assert.Equal(Constants.ErrorMessages.InvalidWebhookSignature, error.Message);
             }
         }
 
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read]
         public void TestValidateWebhookMissingSecret()
         {
-            byte[] data = Fixture.EventBody;
+            UseVCR("validate_missing_secret");
+
+            byte[] data = Fixtures.EventBody;
 
             const string webhookSecret = "123";
-            Dictionary<string, object?> headers = new Dictionary<string, object?>
-            {
-                {
-                    "some-header", "some-value"
-                }
-            };
+            Dictionary<string, object?> headers = new Dictionary<string, object?> { { "some-header", "some-value" } };
 
             try
             {
-                Event _ = Webhook.ValidateWebhook(data, headers, webhookSecret);
+                Event _ = Client.Webhook.ValidateWebhook(data, headers, webhookSecret);
             }
-            catch (Exception error)
+            catch (SignatureVerificationError error)
             {
-                Assert.AreEqual("Webhook received does not contain an HMAC signature.", error.Message);
+                Assert.Equal(Constants.ErrorMessages.InvalidWebhookSignature, error.Message);
             }
         }
 
-        private static async Task<Webhook> CreateBasicWebhook()
+        [Fact]
+        [CrudOperations.Update]
+        public async Task TestUpdate()
         {
-            Webhook webhook = await Webhook.Create(new Dictionary<string, object>
-            {
-                {
-                    "url", Fixture.WebhookUrl
-                }
-            });
-            _easypostWebhookId = webhook.id; // trigger deletion after test
+            UseVCR("update");
+
+            const string url = "https://example.com/update";
+
+            Webhook webhook = await CreateBasicWebhook(url);
+
+            webhook = await webhook.Update();
+
+            Assert.IsType<Webhook>(webhook);
+            Assert.StartsWith("hook_", webhook.Id);
+        }
+
+        [Fact]
+        [CrudOperations.Delete]
+        public async Task TestDelete()
+        {
+            UseVCR("delete");
+
+            const string url = "https://example.com/delete";
+
+            Webhook webhook = await CreateBasicWebhook(url);
+            Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.Id);
+
+            var possibleException = await Record.ExceptionAsync(async () => await retrievedWebhook.Delete());
+
+            Assert.Null(possibleException);
+
+            SkipCleanUpAfterTest();
+        }
+
+        #endregion
+
+        private async Task<Webhook> CreateBasicWebhook(string url)
+        {
+            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
+            CleanUpAfterTest(webhook.Id);
+
             return webhook;
         }
     }

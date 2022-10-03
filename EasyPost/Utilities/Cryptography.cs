@@ -61,10 +61,16 @@ namespace EasyPost.Utilities
         /// <param name="signature1">First signature.</param>
         /// <param name="signature2">Second signature.</param>
         /// <returns>Whether the two signatures match.</returns>
-        public static bool SignaturesMatch(byte[] signature1, byte[] signature2)
+        public static bool SignaturesMatch(byte[] signature1, byte[]? signature2)
         {
+            // short-circuit if second signature is null
+            if (signature2 == null)
+            {
+                return false;
+            }
+
             // short-circuit if signatures are not the same length
-            if (signature1.Length != signature2.Length)
+            if (signature1.Length != signature2?.Length)
             {
                 return false;
             }
@@ -87,10 +93,10 @@ namespace EasyPost.Utilities
         /// <param name="signature1">First signature.</param>
         /// <param name="signature2">Second signature.</param>
         /// <returns>Whether the two signatures match.</returns>
-        public static bool SignaturesMatch(string signature1, string signature2)
+        public static bool SignaturesMatch(string signature1, string? signature2)
         {
             byte[] signatureBytes1 = signature1.AsByteArray();
-            byte[] signatureBytes2 = signature2.AsByteArray();
+            byte[]? signatureBytes2 = signature2?.AsByteArray();
 
             return SignaturesMatch(signatureBytes1, signatureBytes2);
         }

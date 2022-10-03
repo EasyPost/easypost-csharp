@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
+using EasyPost.Exceptions;
 using EasyVCR;
 
 namespace EasyPost.Tests
@@ -10,8 +11,6 @@ namespace EasyPost.Tests
     public class TestUtils
     {
         private const string ApiKeyFailedToPull = "couldnotpullapikey";
-
-        private const string CassettesFolder = "cassettes";
 
         private static readonly List<string> BodyCensors = new List<string>
         {
@@ -44,8 +43,10 @@ namespace EasyPost.Tests
             Test,
             Production,
             Partner,
-            Referral
+            Referral,
         }
+
+        public static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath);
 
         internal static string GetApiKey(ApiKey apiKey)
         {
@@ -65,22 +66,31 @@ namespace EasyPost.Tests
                     keyName = "REFERRAL_USER_PROD_API_KEY";
                     break;
                 default:
-                    throw new Exception("Invalid ApiKey type");
+                    throw new Exception(Constants.ErrorMessages.InvalidApiKeyType);
             }
 
             return Environment.GetEnvironmentVariable(keyName) ?? ApiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.
         }
 
-        public static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "")
+        internal static Client GetClient(string apiKey, HttpClient? vcrClient = null)
         {
-            return Path.GetDirectoryName(sourceFilePath);
+            return new Client(apiKey, customHttpClient: vcrClient);
+        }
+
+        internal static string ReadFile(string path)
+        {
+            string filePath = Path.Combine(GetSourceFileDirectory(), path);
+            return File.ReadAllText(filePath);
         }
 
         public class VCR
         {
+            private const string CassettesFolder = "cassettes";
+
             private readonly string _apiKey;
 
             private readonly string _testCassettesFolder;
+
             private readonly EasyVCR.VCR _vcr;
 
             internal HttpClient Client
@@ -88,7 +98,7 @@ namespace EasyPost.Tests
                 get { return _vcr.Client; }
             }
 
-            public VCR(string testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
+            public VCR(string? testCassettesFolder = null, ApiKey apiKey = ApiKey.Test)
             {
                 Censors censors = new Censors("<REDACTED>");
                 censors.CensorHeadersByKeys(HeaderCensors);
@@ -127,7 +137,9 @@ namespace EasyPost.Tests
                 }
             }
 
-            public void SetUpTest(string cassetteName, string overrideApiKey = null)
+            internal bool IsRecording() => _vcr.Mode == Mode.Record;
+
+            internal Client SetUpTest(string cassetteName, string? overrideApiKey = null)
             {
                 // override api key if needed
                 string apiKey = overrideApiKey ?? _apiKey;
@@ -135,11 +147,10 @@ namespace EasyPost.Tests
                 // set up cassette
                 Cassette cassette = new Cassette(_testCassettesFolder, cassetteName, new CassetteOrder.Alphabetical());
 
-                string filePath = Path.Combine(_testCassettesFolder, cassetteName + ".json");
-
                 // add cassette to vcr
                 _vcr.Insert(cassette);
 
+                string filePath = Path.Combine(_testCassettesFolder, cassetteName + ".json");
                 if (!File.Exists(filePath))
                 {
                     // if cassette doesn't exist, switch to record mode
@@ -151,13 +162,8 @@ namespace EasyPost.Tests
                     _vcr.Replay();
                 }
 
-                // set up EasyPost client
-                ClientManager.SetCurrent(() => new Client(new ClientConfiguration(apiKey), Client));
-            }
-
-            internal bool IsRecording()
-            {
-                return _vcr.Mode == Mode.Record;
+                // get EasyPost client
+                return GetClient(apiKey, Client);
             }
         }
     }

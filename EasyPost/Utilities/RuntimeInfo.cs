@@ -59,7 +59,7 @@ namespace EasyPost.Utilities
             {
                 get
                 {
-#if NETSTANDARD
+#if NETSTANDARD2_0
                     switch (OperatingSystem.Platform)
                     {
                         case PlatformID.Win32S:

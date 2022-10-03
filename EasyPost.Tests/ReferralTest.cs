@@ -1,99 +1,94 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EasyPost.Models.API;
+using EasyPost.Utilities.Annotations;
+using Xunit;
 
 namespace EasyPost.Tests
 {
-    [TestClass]
-    public class ReferralTest
+    public class ReferralTest : UnitTest
     {
-        private TestUtils.VCR _vcr;
-
         private static string ReferralUserKey
         {
             get { return TestUtils.GetApiKey(TestUtils.ApiKey.Referral); }
         }
 
-        [TestInitialize]
-        public void Initialize()
+        public ReferralTest() : base("referral", TestUtils.ApiKey.Partner)
         {
-            _vcr = new TestUtils.VCR("referral", TestUtils.ApiKey.Partner);
         }
 
-        private static async Task<ReferralCustomer> CreateReferral()
-        {
-            return await ReferralCustomer.Create(Fixture.ReferralUser);
-        }
+        #region CRUD Operations
 
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Create]
         public async Task TestCreate()
         {
-            _vcr.SetUpTest("create");
+            UseVCR("create");
 
-            ReferralCustomer referral = await CreateReferral();
+            ReferralCustomer referralCustomer = await CreateReferral();
 
-            Assert.IsNotNull(referral);
-            Assert.IsInstanceOfType(referral, typeof(ReferralCustomer));
-            Assert.IsNotNull(referral.id);
-            Assert.IsTrue(referral.id.StartsWith("user_"));
-            Assert.AreEqual("Test Referral", referral.name);
+            Assert.NotNull(referralCustomer);
+            Assert.IsType<ReferralCustomer>(referralCustomer);
+            Assert.NotNull(referralCustomer.Id);
+            Assert.StartsWith("user_", referralCustomer.Id);
+            Assert.Equal("Test Referral", referralCustomer.Name);
         }
 
-        [TestMethod]
-        public async Task TestUpdate()
-        {
-            _vcr.SetUpTest("update");
-
-            ReferralCustomer referral = await CreateReferral();
-            bool response = await ReferralCustomer.UpdateEmail("email@example.com", referral.id);
-
-            Assert.IsTrue(response);
-        }
-
-        [TestMethod]
+        [Fact]
+        [CrudOperations.Read]
         public async Task TestAll()
         {
-            _vcr.SetUpTest("all");
+            UseVCR("all");
 
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            ReferralCustomerCollection referralCustomerCollection = await Client.Partner.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
+            List<ReferralCustomer> referralCustomers = referralCustomerCollection.ReferralCustomers;
+
+            Assert.True(referralCustomerCollection.HasMore);
+            Assert.True(referralCustomers.Count <= Fixtures.PageSize);
+            foreach (ReferralCustomer item in referralCustomers)
             {
-                {
-                    "page_size", Fixture.PageSize
-                }
-            };
-
-            ReferralCustomerCollection referralCustomerCollection = await ReferralCustomer.All(parameters);
-            List<ReferralCustomer> referralCustomers = referralCustomerCollection.referral_customers;
-
-            Assert.IsNotNull(referralCustomers);
-            Assert.IsTrue(referralCustomers.Count <= Fixture.PageSize);
-            Assert.IsNotNull(referralCustomerCollection.has_more);
-            foreach (ReferralCustomer referral in referralCustomers)
-            {
-                Assert.IsInstanceOfType(referral, typeof(ReferralCustomer));
+                Assert.IsType<ReferralCustomer>(item);
             }
         }
 
-        [Ignore]
-        [TestMethod]
-        public async Task TestReferralAddCreditCard()
+        [Fact(Skip = "VCR issues prevent this from being recorded completely.")]
+        [CrudOperations.Update]
+        public async Task TestAddCreditCardToReferralCustomer()
         {
-            // This test is skipped because it will not record the Stripe API calls, nor the EasyPost add credit card call, since both use different API clients.
-            _vcr.SetUpTest("referral_add_credit_card");
+            UseVCR("add_credit_card_to_referral_customer");
 
-            Dictionary<string, object> parameters = Fixture.CreditCardDetails;
+            ReferralCustomer referralCustomer = await CreateReferral();
 
-            PaymentMethodObject creditCard = await ReferralCustomer.AddCreditCardToUser(ReferralUserKey,
-                (string)parameters["number"],
-                int.Parse((string)parameters["expiration_month"]),
-                int.Parse((string)parameters["expiration_year"]),
-                (string)parameters["cvc"],
-                PaymentMethod.Priority.Primary
-            );
+            Dictionary<string, object> creditCardDetails = Fixtures.CreditCardDetails;
 
-            Assert.IsInstanceOfType(creditCard, typeof(PaymentMethodObject));
-            Assert.IsTrue(creditCard.id.StartsWith("card_"));
-            Assert.AreEqual(((string)Fixture.CreditCardDetails["number"]).Substring(12), creditCard.last4);
+            string creditCardNumber = (string)creditCardDetails["number"];
+            int creditCardExpirationMonth = int.Parse((string)creditCardDetails["expiration_month"]);
+            int creditCardExpirationYear = int.Parse((string)creditCardDetails["expiration_year"]);
+            string creditCardCvc = (string)creditCardDetails["cvc"];
+
+            PaymentMethod paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralUserKey, creditCardNumber, creditCardExpirationMonth, creditCardExpirationYear, creditCardCvc, PaymentMethod.Priority.Primary);
+
+            Assert.NotNull(paymentMethod);
+            Assert.IsType<PaymentMethod>(paymentMethod);
+            Assert.NotNull(paymentMethod.Id);
+            Assert.EndsWith(paymentMethod.Last4, creditCardNumber);
         }
+
+        [Fact]
+        [CrudOperations.Update]
+        public async Task TestUpdateEmail()
+        {
+            UseVCR("update_email");
+
+            ReferralCustomer referralCustomer = await CreateReferral();
+
+            var possibleException = await Record.ExceptionAsync(async () => await Client.Partner.UpdateReferralEmail(referralCustomer.Id, "email@example.com"));
+
+            Assert.Null(possibleException);
+        }
+
+        #endregion
+
+        private async Task<ReferralCustomer> CreateReferral() => await Client.Partner.CreateReferral(Fixtures.ReferralUser);
     }
 }
