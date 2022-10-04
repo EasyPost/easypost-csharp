@@ -58,11 +58,11 @@ namespace EasyPost.Exceptions.API
         ///     Do not pass a non-error response to this method.
         /// </summary>
         /// <param name="response">RestResponse response to parse</param>
-        /// <raises>EasyPostError if a non-300/400/500 error code is extracted from the response.</raises>
+        /// <raises>EasyPostError if a non-1xx/3xx/4xx/5xx error code is extracted from the response.</raises>
         /// <returns>An instance of an HttpError-inherited exception.</returns>
         internal static ApiError FromErrorResponse(RestResponse response)
         {
-            // NOTE: This method anticipates that the status code will be a 3xx, 4xx or 5xx error code.
+            // NOTE: This method anticipates that the status code will be a 1xx, 3xx, 4xx or 5xx error code.
             // Do not use this method to parse a successful response.
             HttpStatusCode statusCode = response.StatusCode;
             int statusCodeInt = (int)statusCode;
@@ -93,7 +93,7 @@ namespace EasyPost.Exceptions.API
             }
             catch
             {
-                // could not extract error details from the API response (or API did not return data, i.e. 3xx or 5xx)
+                // could not extract error details from the API response (or API did not return data, i.e. 1xx, 3xx or 5xx)
                 errorMessage = response.ErrorMessage // fallback to standard HTTP error message
                                ?? response.StatusDescription // fallback to standard HTTP status description
                                ?? Constants.ErrorMessages.ApiDidNotReturnErrorDetails; // fallback to no error details
@@ -104,7 +104,7 @@ namespace EasyPost.Exceptions.API
             Type? exceptionType = statusCode.EasyPostExceptionType();
             if (exceptionType == null)
             {
-                // A non-300/400/500 error code in the response, which is not expected.
+                // A unaccounted-for status code was in the response.
                 throw new EasyPostError(string.Format(Constants.ErrorMessages.UnexpectedHttpStatusCode, statusCodeInt));
             }
 
