@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v4.0.0
+
+- Improved API error parsing
+  - API error message may be an array rather than a string. Arrays will be concatenated (by comma) and returned as a string.
+
 ## v4.0.0-rc1 (2022-09-26)
 
 ### Breaking Changes & New Features

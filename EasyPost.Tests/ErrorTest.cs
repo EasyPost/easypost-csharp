@@ -141,6 +141,42 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        public void TestExceptionErrorMessageParsing()
+        {
+            const string errorMessageStringJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": \"ERROR_MESSAGE_1\", \"errors\": []}}";
+            RestResponse response = new RestResponse
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = errorMessageStringJson
+            };
+
+            ApiError error = ApiError.FromErrorResponse(response);
+
+            Assert.Equal("ERROR_MESSAGE_1", error.Message);
+
+
+            const string errorMessageArrayJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": [\"ERROR_MESSAGE_1\", \"ERROR_MESSAGE_2\"], \"errors\": []}}";
+            response = new RestResponse
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = errorMessageArrayJson
+            };
+
+            error = ApiError.FromErrorResponse(response);
+            Assert.Equal("ERROR_MESSAGE_1, ERROR_MESSAGE_2", error.Message);
+
+            const string errorMessageBadFormatJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": {\"bad_key\": \"bad_value\"}, \"ERROR_MESSAGE_2\"], \"errors\": []}}";
+            response = new RestResponse
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = errorMessageBadFormatJson
+            };
+
+            error = ApiError.FromErrorResponse(response);
+            Assert.Equal(Constants.ErrorMessages.ApiDidNotReturnErrorDetails, error.Message);
+        }
+
+        [Fact]
         public void TestApiExceptionPrettyPrint()
         {
             const int statusCode = 401;
