@@ -76,9 +76,7 @@ namespace EasyPost.Exceptions.API
                 // try to extract error details from the API response
                 Dictionary<string, Dictionary<string, object>> body = JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
 
-                // Errors from some carriers may be an array improperly assigned to the `message` field, check for those here (eg: GSO)
-                // TODO: This is a bandage fix until the GSO service maps its error messages correctly. More details can be found here:
-                // https://github.com/EasyPost/easypost-php/pull/189
+                // Errors may be an array improperly assigned to the `message` field instead of the `errors` field, concatenate those here
                 object parsedBodyMessage = body["error"]["message"];
                 errorMessage = parsedBodyMessage switch
                 {
