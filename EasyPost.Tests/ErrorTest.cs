@@ -141,6 +141,23 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        public void TestExceptionErrorMessageParsing()
+        {
+            string json = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": [\"ERROR_MESSAGE_1\", \"ERROR_MESSAGE_2\"], \"errors\": []}}";
+
+            RestResponse response = new RestResponse
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = json
+            };
+
+            ApiError error = ApiError.FromErrorResponse(response);
+
+            Assert.Equal("ERROR_CODE", error.Code);
+            Assert.Equal("ERROR_MESSAGE_1, ERROR_MESSAGE_2", error.Message);
+        }
+
+        [Fact]
         public void TestApiExceptionPrettyPrint()
         {
             const int statusCode = 401;

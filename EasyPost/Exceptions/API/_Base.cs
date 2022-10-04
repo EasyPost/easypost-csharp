@@ -5,6 +5,7 @@ using System.Net;
 using System.Reflection;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 
 namespace EasyPost.Exceptions.API
@@ -75,7 +76,16 @@ namespace EasyPost.Exceptions.API
                 // try to extract error details from the API response
                 Dictionary<string, Dictionary<string, object>> body = JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
 
-                errorMessage = body["error"]["message"].ToString();
+                // Errors from some carriers may be an array improperly assigned to the `message` field, check for those here (eg: GSO)
+                // TODO: This is a bandage fix until the GSO service maps its error messages correctly. More details can be found here:
+                // https://github.com/EasyPost/easypost-php/pull/189
+                object parsedBodyMessage = body["error"]["message"];
+                errorMessage = parsedBodyMessage switch
+                {
+                    string bodyMessage => bodyMessage,
+                    JArray bodyMessage => string.Join(", ", bodyMessage),
+                    var _ => throw new Exception() // this will trigger the catch block below
+                };
                 errorType = body["error"]["code"].ToString();
                 errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string>
                 {
