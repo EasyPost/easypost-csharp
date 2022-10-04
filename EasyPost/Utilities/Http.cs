@@ -18,6 +18,16 @@ namespace EasyPost.Utilities
         }
 
         /// <summary>
+        ///     Return whether the given status code is a 3xx error.
+        /// </summary>
+        /// <param name="statusCode">Status code to check.</param>
+        /// <returns>True if the status code is a 3xx error, False otherwise.</returns>
+        internal static bool Is3xx(this HttpStatusCode statusCode)
+        {
+            return StatusCodeIs3xx(statusCode);
+        }
+
+        /// <summary>
         ///     Return whether the given status code is a 4xx error.
         /// </summary>
         /// <param name="statusCode">Status code to check.</param>
@@ -53,7 +63,7 @@ namespace EasyPost.Utilities
         ///     Return whether the given response has an error status code.
         /// </summary>
         /// <param name="response">Response to check.</param>
-        /// <returns>True if the response code is not in the 200-399 range, false otherwise.</returns>
+        /// <returns>True if the response code is not in the 100-299 range, false otherwise.</returns>
         internal static bool ReturnedError(this RestResponse response)
         {
             return !ReturnedNoError(response);
@@ -63,10 +73,10 @@ namespace EasyPost.Utilities
         ///     Return whether the given response has a successful status code.
         /// </summary>
         /// <param name="response">Response to check.</param>
-        /// <returns>True if the response code is in the 200-399 range, false otherwise.</returns>
+        /// <returns>True if the response code is in the 100-299 range, false otherwise.</returns>
         internal static bool ReturnedNoError(this RestResponse response)
         {
-            return StatusCodeBetween(response, 100, 399);
+            return StatusCodeBetween(response, 100, 299);
         }
 
         /// <summary>
@@ -103,6 +113,26 @@ namespace EasyPost.Utilities
         internal static bool StatusCodeBetween(RestResponseBase response, int min, int max)
         {
             return StatusCodeBetween(response.StatusCode, min, max);
+        }
+
+        /// <summary>
+        ///     Return whether the given status code is a 3xx error.
+        /// </summary>
+        /// <param name="statusCode">Status code to check.</param>
+        /// <returns>True if the status code is a 3xx error, False otherwise.</returns>
+        internal static bool StatusCodeIs3xx(int statusCode)
+        {
+            return StatusCodeBetween(statusCode, 300, 399);
+        }
+
+        /// <summary>
+        ///     Return whether the given status code is a 3xx error.
+        /// </summary>
+        /// <param name="statusCode">Status code to check.</param>
+        /// <returns>True if the status code is a 3xx error, False otherwise.</returns>
+        internal static bool StatusCodeIs3xx(HttpStatusCode statusCode)
+        {
+            return StatusCodeBetween(statusCode, 300, 399);
         }
 
         /// <summary>

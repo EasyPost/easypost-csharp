@@ -153,7 +153,7 @@ namespace EasyPost._base
             // Execute the request
             RestResponse response = await _restClient.ExecuteAsync(restRequest);
 
-            // Return whether the HTTP request produced an error (4xx or 5xx status code) or not
+            // Return whether the HTTP request produced an error (3xx, 4xx or 5xx status code) or not
             return response.ReturnedNoError();
         }
 

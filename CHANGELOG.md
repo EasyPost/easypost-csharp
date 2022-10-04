@@ -4,6 +4,9 @@
 
 - Improved API error parsing
   - API error message may be an array rather than a string. Arrays will be concatenated (by comma) and returned as a string.
+- Capture 3xx HTTP status codes as errors
+  - Any known 3xx status code from the EasyPost API will throw a `RedirectError` exception
+  - Any unknown 3xx status code will throw a `UnexpectedHttpError` exception
 
 ## v4.0.0-rc1 (2022-09-26)
 

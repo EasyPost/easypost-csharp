@@ -11,6 +11,15 @@ namespace EasyPost.Exceptions
         private static readonly Dictionary<int, Type> HttpExceptionsMap = new Dictionary<int, Type>
         {
             { 0, typeof(VcrError) }, // EasyVCR uses 0 as the status code when a recording cannot be found
+            { 300, typeof(RedirectError) },
+            { 301, typeof(RedirectError) },
+            { 302, typeof(RedirectError) },
+            { 303, typeof(RedirectError) },
+            { 304, typeof(RedirectError) },
+            { 305, typeof(RedirectError) },
+            { 306, typeof(RedirectError) },
+            { 307, typeof(RedirectError) },
+            { 308, typeof(RedirectError) },
             { 401, typeof(UnauthorizedError) },
             { 402, typeof(PaymentError) },
             { 403, typeof(UnauthorizedError) },
@@ -41,6 +50,7 @@ namespace EasyPost.Exceptions
             Type? exceptionType = null;
             var @switch = new SwitchCase
             {
+                { Utilities.Http.StatusCodeIs3xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
                 { Utilities.Http.StatusCodeIs4xx(statusCode), () => { exceptionType = typeof(UnknownApiError); } },
                 { Utilities.Http.StatusCodeIs5xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
                 { SwitchCaseScenario.Default, () => { exceptionType = null; } }
