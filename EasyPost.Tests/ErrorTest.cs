@@ -48,6 +48,19 @@ namespace EasyPost.Tests
             Dictionary<int, Type> exceptionsMap = new Dictionary<int, Type>
             {
                 { 0, typeof(VcrError) }, // EasyVCR uses 0 as the status code when a recording cannot be found
+                { 100, typeof(UnexpectedHttpError) },
+                { 101, typeof(UnexpectedHttpError) },
+                { 102, typeof(UnexpectedHttpError) },
+                { 103, typeof(UnexpectedHttpError) },
+                { 300, typeof(RedirectError) },
+                { 301, typeof(RedirectError) },
+                { 302, typeof(RedirectError) },
+                { 303, typeof(RedirectError) },
+                { 304, typeof(RedirectError) },
+                { 305, typeof(RedirectError) },
+                { 306, typeof(RedirectError) },
+                { 307, typeof(RedirectError) },
+                { 308, typeof(RedirectError) },
                 { 401, typeof(UnauthorizedError) },
                 { 402, typeof(PaymentError) },
                 { 403, typeof(UnauthorizedError) },
@@ -89,6 +102,44 @@ namespace EasyPost.Tests
             }
 
             return Task.CompletedTask;
+        }
+
+        [Fact]
+        public void TestUnknownApiException1xxGeneration()
+        {
+            // library does not have a specific exception for this status code
+            // Since it's a 1xx error, it should throw an UnexpectedHttpError
+            const int unexpectedStatusCode = 199;
+
+            // Generate a dummy RestResponse with the given status code to parse
+            HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString());
+            RestResponse response = new RestResponse { StatusCode = statusCode };
+
+            ApiError generatedError = ApiError.FromErrorResponse(response);
+
+            // the exception should be of base type ApiError
+            Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
+            // specifically, the exception should be of type UnexpectedHttpError
+            Assert.Equal(typeof(UnexpectedHttpError), generatedError.GetType());
+        }
+
+        [Fact]
+        public void TestUnknownApiException3xxGeneration()
+        {
+            // library does not have a specific exception for this status code
+            // Since it's a 3xx error, it should throw an UnexpectedHttpError
+            const int unexpectedStatusCode = 319;
+
+            // Generate a dummy RestResponse with the given status code to parse
+            HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString());
+            RestResponse response = new RestResponse { StatusCode = statusCode };
+
+            ApiError generatedError = ApiError.FromErrorResponse(response);
+
+            // the exception should be of base type ApiError
+            Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
+            // specifically, the exception should be of type UnexpectedHttpError
+            Assert.Equal(typeof(UnexpectedHttpError), generatedError.GetType());
         }
 
         [Fact]
