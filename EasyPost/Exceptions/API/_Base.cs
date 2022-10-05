@@ -58,7 +58,7 @@ namespace EasyPost.Exceptions.API
         ///     Do not pass a non-error response to this method.
         /// </summary>
         /// <param name="response">RestResponse response to parse</param>
-        /// <raises>EasyPostError if an error code outside of the 1xx, 3xx, 4xx or 5xx range is extracted from the response.</raises>
+        /// <raises>EasyPostError if an unplanned response code is found (i.e. user passed in a non-error RestResponse response object with a 2xx status code).</raises>
         /// <returns>An instance of an HttpError-inherited exception.</returns>
         internal static ApiError FromErrorResponse(RestResponse response)
         {
