@@ -31,8 +31,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyVCR" Version="0.5.0"/>
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2"/>
+    <PackageReference Include="EasyVCR" Version="0.5.1"/>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="[17.3.0, 18.0.0)"/>
     <PackageReference Include="coverlet.collector" Version="[3.1.2, 4.0.0)">
       <PrivateAssets>all</PrivateAssets>
