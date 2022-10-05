@@ -58,11 +58,11 @@ namespace EasyPost.Exceptions.API
         ///     Do not pass a non-error response to this method.
         /// </summary>
         /// <param name="response">RestResponse response to parse</param>
-        /// <raises>EasyPostError if a non-1xx/3xx/4xx/5xx error code is extracted from the response.</raises>
+        /// <raises>EasyPostError if an error code outside of the 1xx, 3xx, 4xx or 5xx range is extracted from the response.</raises>
         /// <returns>An instance of an HttpError-inherited exception.</returns>
         internal static ApiError FromErrorResponse(RestResponse response)
         {
-            // NOTE: This method anticipates that the status code will be a 1xx, 3xx, 4xx or 5xx error code.
+            // NOTE: This method anticipates that the status code will be a non-2xx code.
             // Do not use this method to parse a successful response.
             HttpStatusCode statusCode = response.StatusCode;
             int statusCodeInt = (int)statusCode;

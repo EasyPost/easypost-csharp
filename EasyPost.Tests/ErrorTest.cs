@@ -108,7 +108,7 @@ namespace EasyPost.Tests
         public void TestUnknownApiException1xxGeneration()
         {
             // library does not have a specific exception for this status code
-            // Since it's a 3xx error, it should throw an UnexpectedHttpError
+            // Since it's a 1xx error, it should throw an UnexpectedHttpError
             const int unexpectedStatusCode = 199;
 
             // Generate a dummy RestResponse with the given status code to parse
