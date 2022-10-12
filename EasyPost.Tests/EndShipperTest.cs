@@ -78,25 +78,8 @@ namespace EasyPost.Tests
             Assert.Equal(testName, endShipper.Name);
         }
 
-        [Fact]
-        [CrudOperations.Update]
-        public async Task TestBuyShipmentWithEndShipper()
-        {
-            UseVCR("buy_shipment_with_end_shipper");
-
-            EndShipper endShipper = await CreateBasicEndShipper();
-
-            Shipment shipment = await CreateFullShipment();
-
-            await shipment.Buy(shipment.LowestRate(), endShipperId: endShipper.Id);
-
-            Assert.NotNull(shipment.PostageLabel);
-        }
-
         #endregion
 
         private async Task<EndShipper> CreateBasicEndShipper() => await Client.EndShipper.Create(Fixtures.CaAddress1);
-
-        private async Task<Shipment> CreateFullShipment() => await Client.Shipment.Create(Fixtures.FullShipment);
     }
 }
