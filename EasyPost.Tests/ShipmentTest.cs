@@ -290,7 +290,7 @@ namespace EasyPost.Tests
         {
             UseVCR("buy_shipment_with_carbon_offset");
 
-            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
+            Shipment shipment = await CreateFullShipment();
 
             await shipment.Buy(shipment.LowestRate(), withCarbonOffset: true);
 
