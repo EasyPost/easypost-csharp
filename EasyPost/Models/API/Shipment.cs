@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Models.Shared;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
@@ -138,7 +139,15 @@ namespace EasyPost.Models.API
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
         /// <param name="endShipperId">The id of the end shipper to use for this purchase.</param>
         [CrudOperations.Update]
-        public async Task Buy(Rate rate, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null) => await Buy(rate.Id, insuranceValue, withCarbonOffset, endShipperId);
+        public async Task Buy(Rate rate, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null)
+        {
+            if (rate == null)
+            {
+                throw new MissingParameterError("rate");
+            }
+
+            await Buy(rate.Id, insuranceValue, withCarbonOffset, endShipperId);
+        }
 
         /// <summary>
         ///     Generate a postage label for this shipment.
@@ -242,6 +251,20 @@ namespace EasyPost.Models.API
         {
             List<Smartrate> smartrates = await GetSmartrates();
             return Calculation.Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
+        }
+    }
+
+    public class ShipmentCollection : Collection
+    {
+        #region JSON Properties
+
+        [JsonProperty("shipments")]
+        public List<Shipment>? Shipments { get; set; }
+
+        #endregion
+
+        internal ShipmentCollection()
+        {
         }
     }
 }

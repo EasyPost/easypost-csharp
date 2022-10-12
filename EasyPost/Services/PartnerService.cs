@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.API;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
@@ -65,16 +64,18 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<PaymentMethod> AddCreditCardToUser(string referralApiKey, string number, int expirationMonth, int expirationYear, string cvc, PaymentMethod.Priority? priority = null)
         {
-            string easypostStripeApiKey = await RetrieveEasypostStripeApiKey();
-            string stripeToken;
+            string? easypostStripeApiKey = await RetrieveEasypostStripeApiKey();
 
-            try
+            if (string.IsNullOrEmpty(easypostStripeApiKey))
             {
-                stripeToken = await CreateStripeToken(number, expirationMonth, expirationYear, cvc, easypostStripeApiKey);
+                throw new InternalServerError("Could not retrieve EasyPost Stripe API key.", 0);
             }
-            catch (Exception e)
+
+            string? stripeToken = await CreateStripeToken(number, expirationMonth, expirationYear, cvc, easypostStripeApiKey);
+
+            if (string.IsNullOrEmpty(stripeToken))
             {
-                throw new Exception("Could not send card details to Stripe, please try again later.", e);
+                throw new ExternalApiError("Could not create Stripe token, please try again later.", 0);
             }
 
             return await CreateEasypostCreditCard(referralApiKey, stripeToken, priority ?? PaymentMethod.Priority.Primary);
@@ -117,7 +118,8 @@ namespace EasyPost.Services
             };
 
             // Custom override client with new API key
-            Client tempClient = Client!.Clone<Client>(overrideApiKey: referralApiKey);
+            EasyPostClient tempClient = Client!;
+            tempClient.Configuration.ApiKey = referralApiKey;
             return await tempClient.Request<PaymentMethod>(Method.Post, "credit_cards", ApiVersion.Current, parameters);
         }
 
@@ -133,58 +135,43 @@ namespace EasyPost.Services
         /// <exception cref="Exception">When the request fails.</exception>
         private async Task<string> CreateStripeToken(string number, int expirationMonth, int expirationYear, string cvc, string easypostStripeApiKey)
         {
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {easypostStripeApiKey}");
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
-
             const string url = "https://api.stripe.com/v1/tokens";
 
-#if NET5_0
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, url)
-            {
-                Content = new FormUrlEncodedContent(new List<KeyValuePair<string?, string?>>
-                {
-                    new KeyValuePair<string?, string?>("card[number]", number),
-                    new KeyValuePair<string?, string?>("card[exp_month]", expirationMonth.ToString()),
-                    new KeyValuePair<string?, string?>("card[exp_year]", expirationYear.ToString()),
-                    new KeyValuePair<string?, string?>("card[cvc]", cvc)
-                })
-            };
-#else
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, url)
-            {
-                Content = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
-                {
-                    new KeyValuePair<string, string>("card[number]", number),
-                    new KeyValuePair<string, string>("card[exp_month]", expirationMonth.ToString()),
-                    new KeyValuePair<string, string>("card[exp_year]", expirationYear.ToString()),
-                    new KeyValuePair<string, string>("card[cvc]", cvc)
-                })
-            };
-#endif
+            RestRequest request = new RestRequest(url, Method.Post);
+            request.AddHeader("Authorization", $"Bearer {easypostStripeApiKey}");
+            request.AddHeader("Accept", "application/x-www-form-urlencoded");
+            request.AddParameter("card[number]", number);
+            request.AddParameter("card[exp_month]", expirationMonth.ToString());
+            request.AddParameter("card[exp_year]", expirationYear.ToString());
+            request.AddParameter("card[cvc]", cvc);
 
-            HttpResponseMessage response = await client.SendAsync(request);
-            string responseString = await response.Content.ReadAsStringAsync();
+            RestResponse<Dictionary<string, object>> response = await Client!.ExecuteRequest<Dictionary<string, object>>(request);
 
-            Dictionary<string, object> responseDictionary = JsonSerialization.ConvertJsonToObject<Dictionary<string, object>>(responseString);
-            if (!responseDictionary.ContainsKey("id"))
+            if (response.ReturnedError() || response.Data == null)
             {
-                throw new Exception("Could not create Stripe token, please try again later.");
+                throw new ExternalApiError("Could not send card details to Stripe, please try again later.", (int)response.StatusCode);
             }
 
-            return (string)responseDictionary["id"];
+            Dictionary<string, object>? data = response.Data;
+
+            if (!data.ContainsKey("id"))
+            {
+                throw new ExternalApiError("Could not create Stripe token, please try again later.", (int)response.StatusCode);
+            }
+
+            return (string)data["id"];
         }
 
         /// <summary>
         ///     Retrieve EasyPost Stripe API key.
         /// </summary>
         /// <returns>EasyPost Stripe API key.</returns>
-        private async Task<string> RetrieveEasypostStripeApiKey()
+        private async Task<string?> RetrieveEasypostStripeApiKey()
         {
             Dictionary<string, object> response = await Get<Dictionary<string, object>>("partners/stripe_public_key");
             if (!response.ContainsKey("public_key"))
             {
-                return "";
+                return null;
             }
 
             return (string)response["public_key"];

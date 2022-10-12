@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using EasyPost._base;
+using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -35,6 +36,20 @@ namespace EasyPost.Models.API
         #endregion
 
         internal Tracker()
+        {
+        }
+    }
+
+    public class TrackerCollection : Collection
+    {
+        #region JSON Properties
+
+        [JsonProperty("trackers")]
+        public List<Tracker>? Trackers { get; set; }
+
+        #endregion
+
+        internal TrackerCollection()
         {
         }
     }

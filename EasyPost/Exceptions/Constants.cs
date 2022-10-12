@@ -10,7 +10,7 @@ namespace EasyPost.Exceptions
     {
         private static readonly Dictionary<int, Type> HttpExceptionsMap = new Dictionary<int, Type>
         {
-            { 0, typeof(VcrError) }, // EasyVCR uses 0 as the status code when a recording cannot be found
+            { 0, typeof(ConnectionError) }, // RestSharp returns status code 0 when a connection cannot be established (i.e. no internet access)
             { 100, typeof(UnexpectedHttpError) },
             { 101, typeof(UnexpectedHttpError) },
             { 102, typeof(UnexpectedHttpError) },

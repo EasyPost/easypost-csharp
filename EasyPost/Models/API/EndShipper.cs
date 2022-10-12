@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
+using EasyPost.Models.Shared;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
@@ -60,5 +61,19 @@ namespace EasyPost.Models.API
         }
 
         #endregion
+    }
+
+    public class EndShipperCollection : Collection
+    {
+        #region JSON Properties
+
+        [JsonProperty("end_shippers")]
+        public List<EndShipper>? EndShippers { get; set; }
+
+        #endregion
+
+        internal EndShipperCollection()
+        {
+        }
     }
 }

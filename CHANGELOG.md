@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## Next Release
+- `myInsurance.Refresh()` function HTTP method fixed from `PATCH` to `GET`
+  - This function has been marked as obsolete and will be removed in a future release
+- Fix return type of `order.Buy()` when passing in a rate. Function will now return the updated order.
+- Fix bug where request time limits were not being copied to a cloned Client.
+- Fix bug where hashcode of any `EasyPostObject` or subtype was not consistent.
+  - Hashcode and equality now consider properties of the object, including Client. Different properties and/or different Clients will result in different hashcodes and objects will not be considered equal.
+- Fix bug where the wrong `SmartrateAccuracy` would be chosen
+  - `Percentile75` might accidentally have been chosen rather than `Percentile85` due to a bug in the `SmartrateAccuracy` enum ID.
+- Prevent users from attempting to buy a shipment with a `null` rate, avoiding a `NullReferenceException`.
+
 ## v4.0.0 (2022-10-12)
 
 The `v4.0.0` release includes all the changes from the release candidate (see `v4.0.0-rc1` below) as well as the following items:

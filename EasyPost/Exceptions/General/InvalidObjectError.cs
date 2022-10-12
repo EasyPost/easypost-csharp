@@ -6,7 +6,7 @@ namespace EasyPost.Exceptions.General
         ///     Initializes a new instance of the <see cref="InvalidObjectError" /> class.
         /// </summary>
         /// <param name="message">Error message.</param>
-        public InvalidObjectError(string message) : base(message)
+        internal InvalidObjectError(string message) : base(message)
         {
         }
     }

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using EasyPost._base;
+using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -21,6 +23,20 @@ namespace EasyPost.Models.API
         #endregion
 
         internal Refund()
+        {
+        }
+    }
+
+    public class RefundCollection : Collection
+    {
+        #region JSON Properties
+
+        [JsonProperty("refunds")]
+        public List<Refund>? Refunds { get; set; }
+
+        #endregion
+
+        internal RefundCollection()
         {
         }
     }

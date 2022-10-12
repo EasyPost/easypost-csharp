@@ -19,8 +19,8 @@ jobs:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v3
-      - name: Set up dotnet tools
-        run: make install-tools
+      - name: Set up dotnet tools and dependencies
+        run: make install
       - name: Run security analysis
         run: make scan
         # TODO: In the future, we can collect the output logs by enabling Code Scanning and using the pre-built GitHub Action: https://github.com/marketplace/actions/securitycodescan
@@ -67,6 +67,9 @@ jobs:
         # Restore required NuGet packages
       - name: Restore NuGet Packages
         run: make restore
+        # Pull in fixtures submodule
+      - name: Set up dotnet tools and dependencies
+        run: make install
         # Run the framework-specific tests
       - name: Run Tests
         run: make test-fw fw=${{ matrix.framework }}
@@ -108,6 +111,9 @@ jobs:
         # Restore required NuGet packages
       - name: Restore NuGet Packages
         run: make restore
+        # Pull in fixtures submodule
+      - name: Set up dotnet tools and dependencies
+        run: make install
         # Build the test project
       - name: Build Solution
         run: msbuild ${{ steps.test_project.outputs.test_file }}\${{ steps.test_project.outputs.test_file }}.${{ matrix.ext }} /p:platform="Any CPU" /p:configuration="Debug" /p:outputPath="bin/Test" /p:target="Rebuild" -restore

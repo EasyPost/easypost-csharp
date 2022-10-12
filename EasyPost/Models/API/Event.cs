@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using EasyPost._base;
+using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -24,6 +25,20 @@ namespace EasyPost.Models.API
         #endregion
 
         internal Event()
+        {
+        }
+    }
+
+    public class EventCollection : Collection
+    {
+        #region JSON Properties
+
+        [JsonProperty("events")]
+        public List<Event>? Events { get; set; }
+
+        #endregion
+
+        internal EventCollection()
         {
         }
     }

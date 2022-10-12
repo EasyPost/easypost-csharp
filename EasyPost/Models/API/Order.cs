@@ -73,25 +73,19 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
         [CrudOperations.Update]
-        public async Task Buy(Rate rate)
+        public async Task<Order> Buy(Rate rate)
         {
-            if (rate.Carrier != null)
-            {
-                if (rate.Service != null)
-                {
-                    await Buy(rate.Carrier, rate.Service);
-                }
-                else
-                {
-#pragma warning disable CA1507 // IDE thinks it knows better, it doesn't
-                    throw new MissingPropertyError(rate, "Service");
-#pragma warning restore CA1507
-                }
-            }
-            else
+            if (rate.Carrier == null)
             {
                 throw new MissingPropertyError(rate, "Carrier");
             }
+
+            if (rate.Service == null)
+            {
+                throw new MissingPropertyError(rate, "Service");
+            }
+
+            return await Buy(rate.Carrier, rate.Service);
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -41,15 +42,33 @@ namespace EasyPost._base
                 return false;
             }
 
-            string thisJson = AsJson();
-            string otherJson = ((EasyPostObject)obj).AsJson();
-
-            return thisJson == otherJson;
+            return GetHashCode() == ((EasyPostObject)obj).GetHashCode();
         }
 
+        [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
         public override int GetHashCode()
         {
-            return AsDictionary().GetHashCode();
+            return AsJson().GetHashCode() ^ GetType().GetHashCode() ^ (Client != null ? Client!.GetHashCode() : 1);
+        }
+
+        public static bool operator ==(EasyPostObject? one, object? two)
+        {
+            if (one is null && two is null)
+            {
+                return true;
+            }
+
+            if (one is null || two is null)
+            {
+                return false;
+            }
+
+            return one.Equals(two);
+        }
+
+        public static bool operator !=(EasyPostObject? one, object? two)
+        {
+            return !(one == two);
         }
 
         /// <summary>
@@ -69,35 +88,10 @@ namespace EasyPost._base
         }
 
         /// <summary>
-        ///     Get the dictionary representation of this object instance.
-        /// </summary>
-        /// <returns>A key-value dictionary representation of this object instance's attributes.</returns>
-        private Dictionary<string, object?> AsDictionary() =>
-            GetType()
-                .GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
-                .ToDictionary(info => info.Name, GetValue);
-
-        /// <summary>
         ///     Get the JSON representation of this object instance.
         /// </summary>
         /// <returns>A JSON string representation of this object instance's attributes</returns>
         private string AsJson() => JsonSerialization.ConvertObjectToJson(this);
-
-        private object? GetValue(PropertyInfo info)
-        {
-            object? value = info.GetValue(this, null);
-
-            switch (value)
-            {
-                case EasyPostObject resource:
-                    return resource.AsDictionary();
-                case IEnumerable<EasyPostObject> enumerable:
-                    List<Dictionary<string, object?>> values = enumerable.Select(resource => resource.AsDictionary()).ToList();
-                    return values;
-                default:
-                    return value;
-            }
-        }
 
         /// <summary>
         ///     Merge the properties of this object instance with the properties of another object instance.

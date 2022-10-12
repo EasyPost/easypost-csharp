@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Models.Shared;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
@@ -71,5 +73,19 @@ namespace EasyPost.Models.API
         }
 
         #endregion
+    }
+
+    public class AddressCollection : Collection
+    {
+        #region JSON Properties
+
+        [JsonProperty("addresses")]
+        public List<Address>? Addresses { get; set; }
+
+        #endregion
+
+        internal AddressCollection()
+        {
+        }
     }
 }

@@ -14,15 +14,5 @@ namespace EasyPost.Models.API
         internal PickupRate()
         {
         }
-
-        /// <summary>
-        ///     Convert this PickupRate object to a Rate object.
-        /// </summary>
-        /// <returns>An EasyPost.Rate object instance.</returns>
-        internal Rate AsRate()
-        {
-            // ReSharper disable once RedundantCast
-            return (Rate)this;
-        }
     }
 }

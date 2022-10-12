@@ -46,6 +46,33 @@ namespace EasyPost._base
         }
 
         /// <summary>
+        ///     Execute an HTTP request.
+        /// </summary>
+        /// <param name="request">Request to execute</param>
+        /// <typeparam name="T">Type of object to serialize response into.</typeparam>
+        /// <returns>A RestResponse containing a T-type object.</returns>
+        internal virtual async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request)
+        {
+            // This method actually executes the request and returns the response.
+            // Everything up to this point has been pre-request, and everything after this point is post-request.
+            // This method is "virtual" so it can be overriden (i.e. by a MockClient in testing to avoid making actual HTTP requests).
+            return await _restClient.ExecuteAsync<T>(request);
+        }
+
+        /// <summary>
+        ///     Execute an HTTP request.
+        /// </summary>
+        /// <param name="request">Request to execute</param>
+        /// <returns>A RestResponse object.</returns>
+        internal virtual async Task<RestResponse> ExecuteRequest(RestRequest request)
+        {
+            // This method actually executes the request and returns the response.
+            // Everything up to this point has been pre-request, and everything after this point is post-request.
+            // This method is "virtual" so it can be overriden (i.e. by a MockClient in testing to avoid making actual HTTP requests).
+            return await _restClient.ExecuteAsync(request);
+        }
+
+        /// <summary>
         ///     Execute a request against the EasyPost API.
         /// </summary>
         /// <typeparam name="T">Type of object to deserialize response data into. Must be subclass of EasyPostObject.</typeparam>
@@ -57,7 +84,7 @@ namespace EasyPost._base
             RestRequest restRequest = PrepareRequest(request);
 
             // Execute the request
-            RestResponse<T> response = await _restClient.ExecuteAsync<T>(restRequest);
+            RestResponse<T> response = await ExecuteRequest<T>(restRequest);
 
             // Check the response's status code
             if (response.ReturnedError())
@@ -151,7 +178,8 @@ namespace EasyPost._base
             RestRequest restRequest = PrepareRequest(request);
 
             // Execute the request
-            RestResponse response = await _restClient.ExecuteAsync(restRequest);
+            // RestSharp does not throw exception directly (https://restsharp.dev/error-handling.html), we'll need to check the response status code
+            RestResponse response = await ExecuteRequest(restRequest);
 
             // Return whether the HTTP request produced an error (3xx, 4xx or 5xx status code) or not
             return response.ReturnedNoError();
@@ -190,6 +218,7 @@ namespace EasyPost._base
 
         public override int GetHashCode() => Configuration.GetHashCode();
 
+
         /// <summary>
         ///     Make a copy of this client, with the ability to override API key, API base, and HttpClient.
         /// </summary>
@@ -200,13 +229,26 @@ namespace EasyPost._base
         /// <returns>A T-type client object.</returns>
         // NOTE: If you ever need to initialize a new client (i.e. temporarily switch API keys), use this function to do so.
         // This will preserve all other configuration options (e.g. request timeout, VCR, etc.)
+        [Obsolete("This method does not always function as expected. Create a new Client instead.")]
         public T Clone<T>(string? overrideApiKey = null, string? overrideApiBase = null, HttpClient? overrideHttpClient = null) where T : EasyPostClient
         {
             // TODO: You can't reuse the same HTTP client to re-initialize an EasyPost client, because the HTTP client is already initialized and can't be modified.
             // From a testing perspective, this means any VCR client will not be passed into the new client.
             // We should investigate a re-initialization/cloning process for HttpClient.
-            var cons = typeof(T).GetConstructors();
-            return (T)cons[0].Invoke(new object?[] { overrideApiKey ?? Configuration.ApiKey, overrideApiBase ?? Configuration.ApiBase, overrideHttpClient });
+            var constructors = typeof(T).GetConstructors();
+
+            if (constructors == null || constructors.Length == 0)
+            {
+                throw new Exception("Could not clone client. No constructors found.");
+            }
+
+            T clone = (T)constructors[0].Invoke(new object?[] { overrideApiKey ?? Configuration.ApiKey, overrideApiBase ?? Configuration.ApiBase, overrideHttpClient });
+
+            // We need to manually copy over other configuration options
+            clone.Configuration.ConnectTimeoutMilliseconds = Configuration.ConnectTimeoutMilliseconds;
+            clone.Configuration.RequestTimeoutMilliseconds = Configuration.RequestTimeoutMilliseconds;
+
+            return clone;
         }
     }
 }

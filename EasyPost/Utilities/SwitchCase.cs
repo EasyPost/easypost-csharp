@@ -77,6 +77,16 @@ namespace EasyPost.Utilities
         }
 
         /// <summary>
+        ///     Add a case where matching the result of an function triggers an Action
+        /// </summary>
+        /// <param name="func">Func whose return value to match.</param>
+        /// <param name="action">Action to trigger on match.</param>
+        public void Add(Func<object> func, Action? action)
+        {
+            _list.Add(new StaticCase(func.Invoke(), action));
+        }
+
+        /// <summary>
         ///     Add a case to store Actions in special scenarios. Overrides any previously-set actions for the same scenario.
         /// </summary>
         /// <param name="switchCaseScenario">CaseEnum to trigger special storage.</param>
@@ -98,9 +108,17 @@ namespace EasyPost.Utilities
         /// <param name="value">Value to match.</param>
         internal void MatchAll(object value)
         {
-            IEnumerable<ICase> matchingCase = _list.Where(c => c.Value == value);
+            List<ICase> matchingCases = new List<ICase>();
 
-            ProcessMatchingCases(matchingCase.ToList());
+            foreach (var @case in _list)
+            {
+                if (@case.Value.Equals(value))
+                {
+                    matchingCases.Add(@case);
+                }
+            }
+
+            ProcessMatchingCases(matchingCases.ToList());
         }
 
         /// <summary>
@@ -111,13 +129,18 @@ namespace EasyPost.Utilities
         {
             List<ICase> matchingCases = new List<ICase>();
 
-            ICase? matchingCase = _list.FirstOrDefault(c => c.Value.Equals(value));
-            if (matchingCase != null)
+            foreach (var @case in _list)
             {
-                matchingCases.Add(matchingCase);
+                if (!@case.Value.Equals(value))
+                {
+                    continue;
+                }
+
+                matchingCases.Add(@case);
+                break;
             }
 
-            ProcessMatchingCases(matchingCases);
+            ProcessMatchingCases(matchingCases.ToList());
         }
 
         IEnumerator<ICase> IEnumerable<ICase>.GetEnumerator()
