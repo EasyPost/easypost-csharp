@@ -8,7 +8,7 @@ namespace EasyPost.Tests
 {
     public class EndShipperTest : UnitTest
     {
-        public EndShipperTest() : base("end_shipper", TestUtils.ApiKey.Production)
+        public EndShipperTest() : base("end_shipper", TestUtils.ApiKey.Test)
         {
         }
 
