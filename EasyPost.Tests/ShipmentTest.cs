@@ -290,7 +290,7 @@ namespace EasyPost.Tests
         {
             UseVCR("buy_shipment_with_carbon_offset");
 
-            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
+            Shipment shipment = await CreateFullShipment();
 
             await shipment.Buy(shipment.LowestRate(), withCarbonOffset: true);
 
@@ -364,6 +364,21 @@ namespace EasyPost.Tests
 
             Assert.Null(baseRate.CarbonOffset);
             Assert.NotNull(newRateWithCarbon.CarbonOffset);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        public async Task TestBuyShipmentWithEndShipper()
+        {
+            UseVCR("buy_shipment_with_end_shipper");
+
+            EndShipper endShipper = await Client.EndShipper.Create(Fixtures.CaAddress1);
+
+            Shipment shipment = await CreateFullShipment();
+
+            await shipment.Buy(shipment.LowestRate(), endShipperId: endShipper.Id);
+
+            Assert.NotNull(shipment.PostageLabel);
         }
 
         #endregion
