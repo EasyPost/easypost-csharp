@@ -2,6 +2,8 @@
 
 ## v4.0.0 (2022-10-12)
 
+The `v4.0.0` release includes all the changes from the release candidate (see `v4.0.0-rc1` below) as well as the following items:
+
 - Improved API error parsing
   - API error message may be an array rather than a string. Arrays will be concatenated (by comma) and returned as a string.
 - Capture 1xx and 3xx HTTP status codes as errors
