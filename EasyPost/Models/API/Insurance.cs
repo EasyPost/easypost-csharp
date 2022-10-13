@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
@@ -47,10 +48,11 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters to use when refreshing this insurance.</param>
         /// <returns>This refreshed EasyPost.Insurance object.</returns>
+        [Obsolete("Please use the Retrieve method instead. This method will be removed in a future update.")]
         [CrudOperations.Update]
         public async Task<Insurance> Refresh(Dictionary<string, object>? parameters = null)
         {
-            await Update<Insurance>(Method.Patch, $"insurances/{Id}", parameters);
+            await Update<Insurance>(Method.Get, $"insurances/{Id}");
             return this;
         }
 

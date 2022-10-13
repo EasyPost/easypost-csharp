@@ -60,6 +60,21 @@ namespace EasyPost.Tests
             Assert.Equal(insurance.Id, retrievedInsurance.Id);
         }
 
+        [Fact]
+        [CrudOperations.Update]
+        public async Task TestRefresh()
+        {
+            UseVCR("refresh");
+
+            Insurance insurance = await CreateBasicInsurance();
+
+            Insurance retrievedInsurance = await Client.Insurance.Retrieve(insurance.Id);
+
+            retrievedInsurance = await retrievedInsurance.Refresh();
+
+            Assert.IsType<Insurance>(retrievedInsurance);
+        }
+
         #endregion
 
         private async Task<Insurance> CreateBasicInsurance()
