@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using EasyPost.Exceptions;
@@ -33,10 +34,45 @@ namespace EasyPost.Tests.ExceptionsTests
 
             ApiError generatedError = ApiError.FromErrorResponse(response);
 
-            // unfortunately, we can't easily load error-related JSON data into the response for parsing, so the pretty print is going to fallback to default values.
+            // we didn't load error-related JSON data into the response for parsing, so the pretty print is going to fallback to default values.
             string expectedMessage = $@"{Constants.ErrorMessages.ApiErrorDetailsParsingError} ({statusCode}): {Constants.ErrorMessages.ApiDidNotReturnErrorDetails}";
 
             string prettyPrintedError = generatedError.PrettyPrint;
+
+            Assert.Equal(expectedMessage, prettyPrintedError);
+
+
+            // Now test with some error-related JSON inside the response
+            string errorMessageStringJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": \"ERROR_MESSAGE\", \"errors\": []}}";
+
+            // Generate a dummy RestResponse with the given status code to parse
+            httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString());
+            response = new() { StatusCode = httpStatusCode, Content = errorMessageStringJson};
+
+            generatedError = ApiError.FromErrorResponse(response);
+
+            expectedMessage = $@"ERROR_CODE (401): ERROR_MESSAGE";
+
+            prettyPrintedError = generatedError.PrettyPrint;
+
+            Assert.Equal(expectedMessage, prettyPrintedError);
+
+            // Now test with some error-related JSON inside the response with sub-errors
+            errorMessageStringJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": \"ERROR_MESSAGE\", \"errors\": [{\"field\": \"SUB_ERROR_FIELD\", \"message\": \"SUB_ERROR_MESSAGE\"}]}}";
+            List<Error> subErrors = new() { new Error { Field = "SUB_ERROR_FIELD", Message = "SUB_ERROR_MESSAGE" } };
+
+            // Generate a dummy RestResponse with the given status code to parse
+            httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString());
+            response = new() { StatusCode = httpStatusCode, Content = errorMessageStringJson};
+
+            generatedError = ApiError.FromErrorResponse(response);
+
+            expectedMessage = subErrors.Aggregate($@"ERROR_CODE (401): ERROR_MESSAGE", (current, error) => current + $@"
+                            Field: {error.Field}
+                            Message: {error.Message}
+                    ");
+
+            prettyPrintedError = generatedError.PrettyPrint;
 
             Assert.Equal(expectedMessage, prettyPrintedError);
         }
