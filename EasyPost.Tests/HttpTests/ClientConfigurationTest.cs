@@ -20,7 +20,6 @@ namespace EasyPost.Tests.HttpTests
             Assert.Equal(apiKey, configuration1.ApiKey);
             Assert.Equal(apiBase, configuration1.ApiBase);
 
-
             ClientConfiguration configuration2 = new("key2", "https://www.example.com");
 
             // Compare the two configurations

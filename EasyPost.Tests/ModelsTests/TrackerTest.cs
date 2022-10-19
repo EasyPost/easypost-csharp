@@ -16,7 +16,7 @@ namespace EasyPost.Tests.ModelsTests
         [Testing.Properties]
         public async Task TestTrackerCarrierDetails()
         {
-            // Details can be (and most likely will be) missing or incomplete.
+            // Details can be (and most likely will be) missing or incomplete, so we can't reliably test them.
         }
 
         [Fact]

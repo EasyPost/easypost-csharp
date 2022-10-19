@@ -45,7 +45,7 @@ namespace EasyPost.Tests.CalculationTests
             };
 
             Smartrate lowestRate = Calculation.Rates.GetLowestShipmentSmartrate(rates, 1, SmartrateAccuracy.Percentile50);
-            Assert.Equal(100.00, lowestRate.Rate);
+            Assert.Equal(100.00, lowestRate.Rate); // Will choose the $100 rate because it is the only rate that meets the delivery days and accuracy requirement
         }
 
         [Fact]
