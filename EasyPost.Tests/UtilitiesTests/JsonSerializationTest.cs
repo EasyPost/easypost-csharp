@@ -89,6 +89,7 @@ namespace EasyPost.Tests.UtilitiesTests
                 };
 
                 JsonSerialization.ConvertObjectToJson(root);
+                Assert.True(true); // we got this far with no exceptions, so we're good
             }
             catch (Exception)
             {

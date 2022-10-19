@@ -33,7 +33,6 @@ namespace EasyPost.Tests.ServicesTests
 
             Assert.NotNull(referralCustomer);
             Assert.IsType<ReferralCustomer>(referralCustomer);
-            Assert.NotNull(referralCustomer.Id);
             Assert.StartsWith("user_", referralCustomer.Id);
             Assert.Equal("Test Referral", referralCustomer.Name);
         }

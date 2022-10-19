@@ -151,7 +151,6 @@ namespace EasyPost.Tests.ServicesTests
             // Now if we pass in a bad priority level, it should throw an exception as the default for the switch case
             // Because this method only accepts enums (well, the custom enum class, but one that can't be extended/modified), we can't actually pass in a bad value.
             // Therefore, something would have to be wildly unpredictable and horrible for this to actually error out for an end user.
-            // await Assert.ThrowsAsync<InvalidObjectError>(async () => await Client.Billing.DeletePaymentMethod(PaymentMethod.Priority.None));
         }
 
         [Fact]
