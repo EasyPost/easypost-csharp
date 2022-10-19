@@ -47,7 +47,7 @@ namespace EasyPost.Tests.ExceptionsTests
 
             // Generate a dummy RestResponse with the given status code to parse
             httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString());
-            response = new() { StatusCode = httpStatusCode, Content = errorMessageStringJson};
+            response = new() { StatusCode = httpStatusCode, Content = errorMessageStringJson };
 
             generatedError = ApiError.FromErrorResponse(response);
 
@@ -63,7 +63,7 @@ namespace EasyPost.Tests.ExceptionsTests
 
             // Generate a dummy RestResponse with the given status code to parse
             httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString());
-            response = new() { StatusCode = httpStatusCode, Content = errorMessageStringJson};
+            response = new() { StatusCode = httpStatusCode, Content = errorMessageStringJson };
 
             generatedError = ApiError.FromErrorResponse(response);
 
