@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Models.Shared;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
@@ -48,12 +50,27 @@ namespace EasyPost.Models.API
         /// <param name="parameters">Optional dictionary of parameters to use when refreshing this insurance.</param>
         /// <returns>This refreshed EasyPost.Insurance object.</returns>
         [CrudOperations.Update]
+        [Obsolete("Use the Retrieve method instead. This method will be removed in a future version.")]
         public async Task<Insurance> Refresh(Dictionary<string, object>? parameters = null)
         {
-            await Update<Insurance>(Method.Patch, $"insurances/{Id}", parameters);
+            await Update<Insurance>(Method.Get, $"insurances/{Id}");
             return this;
         }
 
         #endregion
+    }
+
+    public class InsuranceCollection : Collection
+    {
+        #region JSON Properties
+
+        [JsonProperty("insurances")]
+        public List<Insurance>? Insurances { get; set; }
+
+        #endregion
+
+        internal InsuranceCollection()
+        {
+        }
     }
 }

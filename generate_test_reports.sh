@@ -1,13 +1,12 @@
 #!/bin/sh
 
 # install reportgenerator if not already installed
-dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.1.10 || exit 0
+dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.1.10 || true # exit 0 will kill the script, not what we want
 
 # check requirements
 set -- dotnet reportgenerator
 for req in "$@"; do
-    if ! command -v "$req" > /dev/null 2>&1
-    then
+    if ! command -v "$req" >/dev/null 2>&1; then
         echo "$req could not be found"
         exit
     fi

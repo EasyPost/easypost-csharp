@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using EasyPost.Tests.FixtureData;
 using EasyPost.Utilities;
 
-namespace EasyPost.Tests
+namespace EasyPost.Tests._Utilities
 {
     public class Fixtures
     {
@@ -14,7 +13,8 @@ namespace EasyPost.Tests
         {
             get
             {
-                // need to go up one level to get out of the EasyPost.Tests directory
+                // need to go up levels to get out of the EasyPost.Tests directory
+                // this path will get messed up on CI vs local if you change it and/or this Fixture.cs file location
                 const string relativePath = "../examples/official/fixtures/event-body.json";
                 string fullPath = Path.Combine(TestUtils.GetSourceFileDirectory(), relativePath);
 
@@ -48,7 +48,7 @@ namespace EasyPost.Tests
             {
                 Dictionary<string, object> fixture = GetFixtureStructure().Pickups.Basic;
 
-                const string pickupDate = "2022-09-14";
+                const string pickupDate = "2022-10-15";
 
                 fixture.AddOrUpdate("min_datetime", pickupDate);
                 fixture.AddOrUpdate("max_datetime", pickupDate);
@@ -69,7 +69,7 @@ namespace EasyPost.Tests
 
         internal static Dictionary<string, object> IncorrectAddress => GetFixtureStructure().Addresses.IncorrectAddress;
 
-        internal static Dictionary<string, object> OneCallBuyShipment => new Dictionary<string, object>
+        internal static Dictionary<string, object> OneCallBuyShipment => new()
         {
             { "to_address", CaAddress1 },
             { "from_address", CaAddress2 },
@@ -121,7 +121,8 @@ namespace EasyPost.Tests
 
         private static string ReadFixtureData()
         {
-            // need to go up one level to get out of the EasyPost.Tests directory
+            // need to go up levels to get out of the EasyPost.Tests directory
+            // this path will get messed up on CI vs local if you change it and/or this Fixture.cs file location
             const string path = "../examples/official/fixtures/client-library-fixtures.json";
             return TestUtils.ReadFile(path);
         }

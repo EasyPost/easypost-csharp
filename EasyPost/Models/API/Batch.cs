@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Models.Shared;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
@@ -142,5 +143,19 @@ namespace EasyPost.Models.API
         }
 
         #endregion
+    }
+
+    public class BatchCollection : Collection
+    {
+        #region JSON Properties
+
+        [JsonProperty("batches")]
+        public List<Batch>? Batches { get; set; }
+
+        #endregion
+
+        internal BatchCollection()
+        {
+        }
     }
 }

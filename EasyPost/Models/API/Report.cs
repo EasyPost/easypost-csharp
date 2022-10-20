@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using EasyPost._base;
+using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -24,6 +26,22 @@ namespace EasyPost.Models.API
         #endregion
 
         internal Report()
+        {
+        }
+    }
+
+    public class ReportCollection : Collection
+    {
+        #region JSON Properties
+
+        [JsonProperty("reports")]
+        public List<Report>? Reports { get; set; }
+        [JsonProperty("type")]
+        public string? Type { get; set; }
+
+        #endregion
+
+        internal ReportCollection()
         {
         }
     }

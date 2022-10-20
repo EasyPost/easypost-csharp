@@ -56,6 +56,11 @@ namespace EasyPost.Utilities
 
         public static bool operator ==(Enum? one, Enum? two)
         {
+            if (one is null && two is null)
+            {
+                return true;
+            }
+
             if (one is null || two is null)
             {
                 return false;
@@ -66,15 +71,10 @@ namespace EasyPost.Utilities
 
         public static bool operator !=(Enum? one, Enum? two)
         {
-            if (one is null || two is null)
-            {
-                return false;
-            }
-
             return !(one == two);
         }
 
-        protected static IEnumerable<T> GetAll<T>() where T : IEnum =>
+        public static IEnumerable<T> GetAll<T>() where T : IEnum =>
             typeof(T).GetFields(BindingFlags.Public |
                                 BindingFlags.Static |
                                 BindingFlags.DeclaredOnly)

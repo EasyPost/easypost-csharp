@@ -72,13 +72,8 @@ namespace EasyPost.Services
         /// <param name="priority">Which priority payment method to get.</param>
         /// <returns>An EasyPost.PaymentMethodObject instance.</returns>
         /// <exception cref="Exception">Billing has not been set up yet, or the Priority provided is invalid.</exception>
-        private async Task<PaymentMethod> GetPaymentMethodByPriority(PaymentMethod.Priority? priority)
+        private async Task<PaymentMethod> GetPaymentMethodByPriority(PaymentMethod.Priority priority)
         {
-            if (priority == null)
-            {
-                throw new MissingParameterError("priority");
-            }
-
             PaymentMethodsSummary paymentMethodsSummarySummary = await RetrievePaymentMethodsSummary();
 
             PaymentMethod? paymentMethod = null;
