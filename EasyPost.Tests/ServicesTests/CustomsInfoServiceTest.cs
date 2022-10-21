@@ -29,7 +29,6 @@ namespace EasyPost.Tests.ServicesTests
             Assert.IsType<CustomsInfo>(customsInfo);
             Assert.StartsWith("cstinfo_", customsInfo.Id);
             Assert.Equal("NOEEI 30.37(a)", customsInfo.EelPfc);
-            Assert.NotEmpty(customsInfo.CustomsItems);
             foreach (CustomsItem item in customsInfo.CustomsItems)
             {
                 Assert.StartsWith("cstitem_", item.Id);

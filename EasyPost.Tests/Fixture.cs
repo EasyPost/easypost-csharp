@@ -48,7 +48,7 @@ namespace EasyPost.Tests._Utilities
             {
                 Dictionary<string, object> fixture = GetFixtureStructure().Pickups.Basic;
 
-                const string pickupDate = "2022-10-15";
+                const string pickupDate = "2022-10-24";
 
                 fixture.AddOrUpdate("min_datetime", pickupDate);
                 fixture.AddOrUpdate("max_datetime", pickupDate);

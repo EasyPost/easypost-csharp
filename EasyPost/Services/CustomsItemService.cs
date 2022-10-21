@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 
@@ -32,6 +33,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<CustomsItem> Create(Dictionary<string, object> parameters)
         {
+            parameters = parameters.Wrap("customs_item");
             return await Create<CustomsItem>("customs_items", parameters);
         }
 

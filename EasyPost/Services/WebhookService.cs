@@ -30,6 +30,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Webhook> Create(Dictionary<string, object> parameters)
         {
+            // parameters = parameters.Wrap("webhook");// TODO: Update docs to remove wrapped "webhook" key
             return await Create<Webhook>("webhooks", parameters);
         }
 

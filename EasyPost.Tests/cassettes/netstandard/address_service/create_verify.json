@@ -1,55 +1,55 @@
 [
-    {
-        "Duration": 221,
-        "RecordedAt": "2022-10-13T17:02:53.893168-06:00",
-        "Request": {
-            "Body": "{\"company\":\"EasyPost\",\"street1\":\"417 montgomery street\",\"street2\":\"FL 5\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94104\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\",\"verify\":true}",
-            "BodyContentType": "Json",
-            "ContentHeaders": {
-                "Content-Type": "application/json; charset=utf-8",
-                "Content-Length": "200"
-            },
-            "Method": "POST",
-            "RequestHeaders": {
-                "Authorization": "<REDACTED>",
-                "content_type": "application/json",
-                "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
-                "User-Agent": "<REDACTED>"
-            },
-            "Uri": "https://api.easypost.com/v2/addresses"
-        },
-        "Response": {
-            "Body": "{\"id\":\"adr_2b5884364b4b11ed9c39ac1f6bc7bdc6\",\"object\":\"Address\",\"created_at\":\"2022-10-13T17:02:54-06:00\",\"updated_at\":\"2022-10-13T17:02:54-06:00\",\"name\":null,\"company\":\"EASYPOST\",\"street1\":\"417 MONTGOMERY ST FL 5\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94104-1129\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":{\"latitude\":37.79342,\"longitude\":-122.40288,\"time_zone\":\"America/Los_Angeles\"}}}}",
-            "BodyContentType": "Json",
-            "ContentHeaders": {
-                "Expires": "0",
-                "Content-Type": "application/json; charset=utf-8",
-                "Content-Length": "907"
-            },
-            "HttpVersion": "1.1",
-            "ResponseHeaders": {
-                "X-Frame-Options": "SAMEORIGIN",
-                "x-xss-protection": "1; mode=block",
-                "X-Content-Type-Options": "nosniff",
-                "x-download-options": "noopen",
-                "x-permitted-cross-domain-policies": "none",
-                "referrer-policy": "strict-origin-when-cross-origin",
-                "x-ep-request-uuid": "93ab982d6348991deca2d60400154789",
-                "Cache-Control": "no-store, no-cache, private",
-                "Pragma": "no-cache",
-                "Location": "/api/v2/addresses/adr_2b5884364b4b11ed9c39ac1f6bc7bdc6",
-                "ETag": "W/\"5c6832797ee0d38c5c24bf2647e6589d\"",
-                "x-runtime": "0.047714",
-                "x-node": "bigweb9nuq",
-                "x-version-label": "easypost-202210132226-20feb3f9f0-master",
-                "x-backend": "easypost",
-                "x-proxied": "intlb2nuq 29913d444b,extlb2nuq 29913d444b",
-                "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-            },
-            "Status": {
-                "Code": 201,
-                "Message": "Created"
-            }
-        }
+  {
+    "Duration": 262,
+    "RecordedAt": "2022-10-21T14:45:57.759056-06:00",
+    "Request": {
+      "Body": "{\"address\":{\"company\":\"EasyPost\",\"street1\":\"417 montgomery street\",\"street2\":\"FL 5\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94104\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"},\"verify\":true}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "212"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/addresses"
+    },
+    "Response": {
+      "Body": "{\"id\":\"adr_5d720a03518111ed8145ac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2022-10-21T14:45:57-06:00\",\"updated_at\":\"2022-10-21T14:45:57-06:00\",\"name\":null,\"company\":\"EASYPOST\",\"street1\":\"417 MONTGOMERY ST FL 5\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94104-1129\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[{\"code\":\"E.SECONDARY_INFORMATION.INVALID\",\"field\":\"street2\",\"message\":\"Invalid secondary information(Apt/Suite#)\",\"suggestion\":null}],\"details\":{\"latitude\":37.79342,\"longitude\":-122.40288,\"time_zone\":\"America/Los_Angeles\"}}}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "907"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "1319927563530505f3c64b5200013678",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "Location": "/api/v2/addresses/adr_5d720a03518111ed8145ac1f6b0a0d1e",
+        "ETag": "W/\"b40c4f0d65fd2442a8967d87b9cd1e42\"",
+        "x-runtime": "0.045288",
+        "x-node": "bigweb9nuq",
+        "x-version-label": "easypost-202210211854-457dd1eef7-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq 29913d444b,extlb2nuq 29913d444b",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
     }
+  }
 ]
