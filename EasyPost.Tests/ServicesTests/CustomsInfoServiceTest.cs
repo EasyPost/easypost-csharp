@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
@@ -30,25 +29,6 @@ namespace EasyPost.Tests.ServicesTests
             Assert.IsType<CustomsInfo>(customsInfo);
             Assert.StartsWith("cstinfo_", customsInfo.Id);
             Assert.Equal("NOEEI 30.37(a)", customsInfo.EelPfc);
-        }
-
-        [Fact]
-        [CrudOperations.Create]
-        [Testing.Parameters]
-        public async Task TestCreateWithCustomsItems()
-        {
-            UseVCR("create_with_customs_items");
-
-            Dictionary<string, object> data = Fixtures.BasicCustomsInfo;
-            data["customs_items"] = new List<Dictionary<string, object>>
-            {
-                Fixtures.BasicCustomsItem,
-            };
-
-            CustomsInfo customsInfo = await Client.CustomsInfo.Create(data);
-
-            Assert.IsType<CustomsInfo>(customsInfo);
-            Assert.StartsWith("cstinfo_", customsInfo.Id);
             Assert.NotEmpty(customsInfo.CustomsItems);
             foreach (CustomsItem item in customsInfo.CustomsItems)
             {
