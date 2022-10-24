@@ -1,6 +1,7 @@
 # CHANGELOG
 
-## Next Release
+## v4.0.1 (2022-10-24)
+
 - `myInsurance.Refresh()` function HTTP method fixed from `PATCH` to `GET`
   - This function has been marked as obsolete and will be removed in a future release
 - Fix return type of `order.Buy()` when passing in a rate. Function will now return the updated order.
