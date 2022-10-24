@@ -30,6 +30,7 @@ namespace EasyPost.Services
                 { "carrier", carrier },
                 { "tracking_code", trackingCode }
             };
+            parameters = parameters.Wrap("tracker");
             return await Create<Tracker>("trackers", parameters);
         }
 

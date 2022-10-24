@@ -40,6 +40,7 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("create_verify");
 
             Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
+            // internally, we're just checking for the presence of "verify" in the dictionary, so the value doesn't matter
             addressData.Add("verify", true);
 
             Address address = await Client.Address.Create(addressData);
@@ -57,6 +58,7 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("create_verify_array");
 
             Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
+            // internally, we're just checking for the presence of "verify" in the dictionary, so the value doesn't matter
             addressData.Add("verify", new List<bool> { true });
 
             Address address = await Client.Address.Create(addressData);
@@ -74,6 +76,7 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("create_verify_strict");
 
             Dictionary<string, object> addressData = Fixtures.CaAddress1;
+            // internally, we're just checking for the presence of "verify_strict" in the dictionary, so the value doesn't matter
             addressData.Add("verify_strict", true);
 
             Address address = await Client.Address.Create(addressData);
@@ -91,7 +94,8 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("create_verify_strict_array");
 
             Dictionary<string, object> addressData = Fixtures.CaAddress1;
-            addressData.Add("verify_strict", new List<bool> { true });
+            // internally, we're just checking for the presence of "verify_strict" in the dictionary, so the value doesn't matter
+            addressData.Add("verify_strict", true);
 
             Address address = await Client.Address.Create(addressData);
 

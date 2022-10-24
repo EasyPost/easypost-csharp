@@ -3,6 +3,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
 using EasyPost.Utilities.Annotations;
@@ -30,6 +31,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Webhook> Create(Dictionary<string, object> parameters)
         {
+            parameters = parameters.Wrap("webhook");
             return await Create<Webhook>("webhooks", parameters);
         }
 

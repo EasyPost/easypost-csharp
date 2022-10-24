@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Http;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Annotations;
 using RestSharp;
@@ -32,6 +33,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Create]
         public async Task<Brand> UpdateBrand(Dictionary<string, object> parameters)
         {
+            parameters = parameters.Wrap("brand");
             return await Request<Brand>(Method.Patch, $"users/{Id}/brand", parameters);
         }
 

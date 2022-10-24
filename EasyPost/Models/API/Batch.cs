@@ -47,6 +47,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(Dictionary<string, object> parameters)
         {
+            // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
             await Update<Batch>(Method.Post, $"batches/{Id}/add_shipments", parameters);
             return this;
         }
@@ -70,7 +71,6 @@ namespace EasyPost.Models.API
         public async Task<Batch> AddShipments(IEnumerable<string> shipmentIds)
         {
             List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment { Id = shipmentId }).ToList();
-
             return await AddShipments(shipments);
         }
 
@@ -115,6 +115,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(Dictionary<string, object> parameters)
         {
+            // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
             await Update<Batch>(Method.Post, $"batches/{Id}/remove_shipments", parameters);
             return this;
         }
@@ -138,7 +139,6 @@ namespace EasyPost.Models.API
         public async Task<Batch> RemoveShipments(IEnumerable<string> shipmentIds)
         {
             List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment { Id = shipmentId }).ToList();
-
             return await RemoveShipments(shipments);
         }
 

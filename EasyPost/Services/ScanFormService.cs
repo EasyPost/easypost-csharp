@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 
@@ -25,7 +24,6 @@ namespace EasyPost.Services
         public async Task<ScanForm> Create(List<Shipment> shipments)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "shipments", shipments } };
-            parameters = parameters.Wrap("scan_form");
             return await Create<ScanForm>("scan_forms", parameters);
         }
 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 
@@ -30,14 +31,34 @@ namespace EasyPost.Services
         ///     * {"country", string}
         ///     * {"phone", string}
         ///     * {"email", string}
-        ///     * {"verifications", List&lt;string&gt;} Possible items are "delivery" and "zip4".
-        ///     * {"strict_verifications", List&lt;string&gt;} Possible items are "delivery" and "zip4".
+        ///     * {"verify", bool}
+        ///     * {"verify_strict", bool}
         ///     All invalid keys will be ignored.
         /// </param>
         /// <returns>EasyPost.Address instance.</returns>
         [CrudOperations.Create]
         public async Task<Address> Create(Dictionary<string, object> parameters)
         {
+            // Check verify and verify_strict presence in parameters
+            bool verify = parameters.ContainsKey("verify");
+            bool verifyStrict = parameters.ContainsKey("verify_strict");
+
+            // Clean and wrap parameters
+            parameters.Remove("verify");
+            parameters.Remove("verify_strict");
+            parameters = parameters.Wrap("address");
+
+            // Re-add verify and verify_strict if they were present, outside of the address wrapper
+            // Verification is trigger by key presence, not key value, so only add the key if it's true.
+            if (verify)
+            {
+                parameters.Add("verify", true);
+            }
+            if (verifyStrict)
+            {
+                parameters.Add("verify_strict", true);
+            }
+
             return await Create<Address>("addresses", parameters);
         }
 

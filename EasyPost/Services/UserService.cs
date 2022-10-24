@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 
@@ -27,6 +28,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<User> CreateChild(Dictionary<string, object> parameters)
         {
+            parameters = parameters.Wrap("user");
             return await Create<User>("users", parameters);
         }
 

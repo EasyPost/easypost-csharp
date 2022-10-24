@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 
@@ -37,7 +38,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Order> Create(Dictionary<string, object> parameters)
         {
-            parameters = new Dictionary<string, object> { { "order", parameters } };
+            parameters = parameters.Wrap("order");
             return await Create<Order>("orders", parameters);
         }
 
