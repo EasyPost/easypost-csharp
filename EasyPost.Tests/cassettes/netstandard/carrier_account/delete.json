@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 729,
-    "RecordedAt": "2022-10-21T14:45:57.575987-06:00",
+    "Duration": 728,
+    "RecordedAt": "2022-10-24T12:36:15.974298-06:00",
     "Request": {
       "Body": "{\"carrier_account\":{\"type\":\"DhlEcsAccount\",\"credentials\":{},\"test_credentials\":{}}}",
       "BodyContentType": "Json",
@@ -19,7 +19,7 @@
       "Uri": "https://api.easypost.com/v2/carrier_accounts"
     },
     "Response": {
-      "Body": "{\"id\":\"ca_efdaf7c7984b4beb82e2084aa405cfc1\",\"object\":\"CarrierAccount\",\"type\":\"DhlEcsAccount\",\"clone\":false,\"created_at\":\"2022-10-21T20:45:57Z\",\"updated_at\":\"2022-10-21T20:45:57Z\",\"description\":\"DHL eCommerce Solutions Account\",\"reference\":null,\"billing_type\":\"carrier\",\"readable\":\"DHL eCommerce Solutions\",\"logo\":null,\"fields\":{\"credentials\":{},\"test_credentials\":{}},\"credentials\":{},\"test_credentials\":{}}",
+      "Body": "{\"id\":\"ca_51277c38e6ef4a80806d916515b48914\",\"object\":\"CarrierAccount\",\"type\":\"DhlEcsAccount\",\"clone\":false,\"created_at\":\"2022-10-24T18:36:15Z\",\"updated_at\":\"2022-10-24T18:36:15Z\",\"description\":\"DHL eCommerce Solutions Account\",\"reference\":null,\"billing_type\":\"carrier\",\"readable\":\"DHL eCommerce Solutions\",\"logo\":null,\"fields\":{\"credentials\":{},\"test_credentials\":{}},\"credentials\":{},\"test_credentials\":{}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -34,13 +34,13 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "1319927763530505ec7d880400013658",
+        "x-ep-request-uuid": "bcc8f23e6356db1fec8defc700229a1c",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "ETag": "W/\"3d719dbd8eb9d02bead8278297b98407\"",
-        "x-runtime": "0.115956",
-        "x-node": "bigweb6nuq",
-        "x-version-label": "easypost-202210211854-457dd1eef7-master",
+        "ETag": "W/\"0c99b2de3b8723bf58f3716b68d00f15\"",
+        "x-runtime": "0.123850",
+        "x-node": "bigweb3nuq",
+        "x-version-label": "easypost-202210241803-ba94ab8034-master",
         "x-backend": "easypost",
         "x-proxied": "intlb1nuq 29913d444b,extlb2nuq 29913d444b",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
@@ -52,8 +52,8 @@
     }
   },
   {
-    "Duration": 162,
-    "RecordedAt": "2022-10-21T14:45:57.775747-06:00",
+    "Duration": 160,
+    "RecordedAt": "2022-10-24T12:36:16.33431-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -65,7 +65,7 @@
         "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
         "User-Agent": "<REDACTED>"
       },
-      "Uri": "https://api.easypost.com/v2/carrier_accounts/ca_efdaf7c7984b4beb82e2084aa405cfc1"
+      "Uri": "https://api.easypost.com/v2/carrier_accounts/ca_51277c38e6ef4a80806d916515b48914"
     },
     "Response": {
       "Body": "{}",
@@ -83,15 +83,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "1319927763530505ec7d88040001366c",
+        "x-ep-request-uuid": "bcc8f23e6356db20ec8defc700229a62",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
         "ETag": "W/\"44136fa355b3678a1146ad16f7e8649e\"",
-        "x-runtime": "0.126042",
-        "x-node": "bigweb6nuq",
-        "x-version-label": "easypost-202210211854-457dd1eef7-master",
+        "x-runtime": "0.126524",
+        "x-node": "bigweb4nuq",
+        "x-version-label": "easypost-202210241803-ba94ab8034-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 29913d444b,extlb2nuq 29913d444b",
+        "x-proxied": "intlb2nuq 29913d444b,extlb2nuq 29913d444b",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

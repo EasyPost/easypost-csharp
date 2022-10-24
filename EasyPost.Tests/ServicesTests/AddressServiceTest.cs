@@ -40,8 +40,10 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("create_verify");
 
             Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
+            // internally, we're just checking for the presence of "verify" in the dictionary, so the value doesn't matter
+            addressData.Add("verify", true);
 
-            Address address = await Client.Address.Create(addressData, true);
+            Address address = await Client.Address.Create(addressData);
 
             Assert.IsType<Address>(address);
             Assert.StartsWith("adr_", address.Id);
@@ -56,8 +58,10 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("create_verify_array");
 
             Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
+            // internally, we're just checking for the presence of "verify" in the dictionary, so the value doesn't matter
+            addressData.Add("verify", new List<bool> { true });
 
-            Address address = await Client.Address.Create(addressData, true);
+            Address address = await Client.Address.Create(addressData);
 
             Assert.IsType<Address>(address);
             Assert.StartsWith("adr_", address.Id);
@@ -72,8 +76,10 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("create_verify_strict");
 
             Dictionary<string, object> addressData = Fixtures.CaAddress1;
+            // internally, we're just checking for the presence of "verify_strict" in the dictionary, so the value doesn't matter
+            addressData.Add("verify_strict", true);
 
-            Address address = await Client.Address.Create(addressData, verifyStrict: true);
+            Address address = await Client.Address.Create(addressData);
 
             Assert.IsType<Address>(address);
             Assert.StartsWith("adr_", address.Id);
@@ -88,8 +94,10 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("create_verify_strict_array");
 
             Dictionary<string, object> addressData = Fixtures.CaAddress1;
+            // internally, we're just checking for the presence of "verify_strict" in the dictionary, so the value doesn't matter
+            addressData.Add("verify_strict", true);
 
-            Address address = await Client.Address.Create(addressData, verifyStrict: true);
+            Address address = await Client.Address.Create(addressData);
 
             Assert.IsType<Address>(address);
             Assert.StartsWith("adr_", address.Id);

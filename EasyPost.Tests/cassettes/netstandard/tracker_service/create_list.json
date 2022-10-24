@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 452,
-    "RecordedAt": "2022-10-21T14:45:57.343315-06:00",
+    "Duration": 501,
+    "RecordedAt": "2022-10-24T12:36:15.909063-06:00",
     "Request": {
       "Body": "{\"trackers\":{\"0\":{\"tracking_code\":\"EZ1000000001\"},\"1\":{\"tracking_code\":\"EZ1000000002\"},\"2\":{\"tracking_code\":\"EZ1000000003\"}}}",
       "BodyContentType": "Json",
@@ -34,13 +34,13 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "1319927763530505f3c6cece0001364c",
+        "x-ep-request-uuid": "bcc8f2396356db1fec7ea5aa00229a2b",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
         "ETag": "W/\"44136fa355b3678a1146ad16f7e8649e\"",
-        "x-runtime": "0.036357",
-        "x-node": "bigweb1nuq",
-        "x-version-label": "easypost-202210211854-457dd1eef7-master",
+        "x-runtime": "0.060667",
+        "x-node": "bigweb8nuq",
+        "x-version-label": "easypost-202210241803-ba94ab8034-master",
         "x-backend": "easypost",
         "x-proxied": "intlb2nuq 29913d444b,extlb2nuq 29913d444b",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
