@@ -11,7 +11,6 @@
   - `Percentile75` might accidentally have been chosen rather than `Percentile85` due to a bug in the `SmartrateAccuracy` enum ID.
 - Fix bug where some embedded elements (e.g. customs items) were not being created if included during a larger creation request (e.g. customs info create).
 - Prevent users from attempting to buy a shipment with a `null` rate, avoiding a `NullReferenceException`.
-- Address verify/verify_strict is now an explicit boolean parameter on `Address.Create()`.
 
 ## v4.0.0 (2022-10-12)
 
