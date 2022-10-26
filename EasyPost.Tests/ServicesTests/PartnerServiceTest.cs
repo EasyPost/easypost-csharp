@@ -235,6 +235,34 @@ namespace EasyPost.Tests.ServicesTests
         }
 
         [Fact]
+        [Testing.Exception]
+        public async Task TestAddCreditCardToUserEasyPostApiError()
+        {
+            UseMockClient(new List<TestUtils.MockRequest>
+            {
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"pk_test_12345\"}")
+                ),
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Post, @"^https://api.stripe.com/v1/tokens$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"id\":\"tok_12345\"}")
+                ),
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/credit_cards$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.NotFound, content: "{}")
+                )
+            });
+
+            CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
+
+            await Assert.ThrowsAsync<NotFoundError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
+
+            // Assert that the original API key was restored to the client properly even after the failed request
+            Assert.Equal(TestUtils.GetApiKey(TestUtils.ApiKey.Mock), Client.Configuration.ApiKey);
+        }
+
+        [Fact]
         [CrudOperations.Update]
         [Testing.Function]
         public async Task TestUpdateReferralEmail()
