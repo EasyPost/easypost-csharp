@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+- Fix bug where the temporary internal API key switch when adding a credit card to a referral user was not reverted after the request.
+  - After adding a credit card to a referral user, the existing Client would be misconfigured for following requests.
+
 ## v4.0.1 (2022-10-24)
 
 - `myInsurance.Refresh()` function HTTP method fixed from `PATCH` to `GET`
