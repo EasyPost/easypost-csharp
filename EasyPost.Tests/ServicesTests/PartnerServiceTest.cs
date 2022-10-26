@@ -88,6 +88,9 @@ namespace EasyPost.Tests.ServicesTests
             Assert.IsType<PaymentMethod>(paymentMethod);
             Assert.NotNull(paymentMethod.Id);
             Assert.EndsWith(paymentMethod.Last4, card.Number);
+
+            // Assert that the original API key was restored to the client properly after the request
+            Assert.Equal(TestUtils.GetApiKey(TestUtils.ApiKey.Mock), Client.Configuration.ApiKey);
         }
 
         [Fact]

@@ -117,10 +117,19 @@ namespace EasyPost.Services
                 }
             };
 
-            // Custom override client with new API key
-            EasyPostClient tempClient = Client!;
-            tempClient.Configuration.ApiKey = referralApiKey;
-            return await tempClient.Request<PaymentMethod>(Method.Post, "credit_cards", ApiVersion.Current, parameters);
+            // Store the old API key
+            string oldApiKey = Client!.Configuration.ApiKey;
+
+            // Change API key temporarily to referral user's API key.
+            Client.Configuration.ApiKey = referralApiKey;
+
+            // Make request
+            PaymentMethod paymentMethod = await Client.Request<PaymentMethod>(Method.Post, "credit_cards", ApiVersion.Current, parameters);
+
+            // Restore old API key
+            Client!.Configuration.ApiKey = oldApiKey;
+
+            return paymentMethod;
         }
 
         /// <summary>

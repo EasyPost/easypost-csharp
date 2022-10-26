@@ -17,7 +17,7 @@ namespace EasyPost.Tests._Utilities
 {
     public class TestUtils
     {
-        private const string ApiKeyFailedToPull = "couldnotpullapikey";
+        internal const string ApiKeyFailedToPull = "couldnotpullapikey";
 
         private static readonly List<string> BodyCensors = new()
         {
@@ -50,7 +50,8 @@ namespace EasyPost.Tests._Utilities
             Test,
             Production,
             Partner,
-            Referral
+            Referral,
+            Mock
         }
 
         public static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath);
@@ -71,6 +72,9 @@ namespace EasyPost.Tests._Utilities
                     break;
                 case ApiKey.Referral:
                     keyName = "REFERRAL_USER_PROD_API_KEY";
+                    break;
+                case ApiKey.Mock:
+                    keyName = "EASYPOST_MOCK_API_KEY"; // does not exist, will trigger to use ApiKeyFailedToPull
                     break;
                 default:
                     throw new Exception(Constants.ErrorMessages.InvalidApiKeyType);

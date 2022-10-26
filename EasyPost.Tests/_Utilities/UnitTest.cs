@@ -98,7 +98,7 @@ namespace EasyPost.Tests._Utilities
         protected void UseMockClient(IEnumerable<TestUtils.MockRequest>? mockRequestsOverride = null)
         {
             // set up the mock client
-            Client = new TestUtils.MockClient(new Client("mock_api_key")); // API key doesn't matter for mock client, since no real requests are made);
+            Client = new TestUtils.MockClient(new Client(TestUtils.GetApiKey(TestUtils.ApiKey.Mock))); // API key doesn't matter for mock client, since no real requests are made);
 
             // add the mock requests to the mock client
             ((TestUtils.MockClient)Client).AddMockRequests(mockRequestsOverride ?? MockRequests);
