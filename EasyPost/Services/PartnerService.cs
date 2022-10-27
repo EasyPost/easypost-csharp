@@ -123,11 +123,16 @@ namespace EasyPost.Services
             // Change API key temporarily to referral user's API key.
             Client.Configuration.ApiKey = referralApiKey;
 
-            // Make request
-            PaymentMethod paymentMethod = await Client.Request<PaymentMethod>(Method.Post, "credit_cards", ApiVersion.Current, parameters);
-
-            // Restore old API key
-            Client!.Configuration.ApiKey = oldApiKey;
+            PaymentMethod paymentMethod;
+            try
+            {
+                // Make request
+                paymentMethod = await Client.Request<PaymentMethod>(Method.Post, "credit_cards", ApiVersion.Current, parameters);
+            }
+            finally
+            {
+                Client.Configuration.ApiKey = oldApiKey;
+            }
 
             return paymentMethod;
         }
