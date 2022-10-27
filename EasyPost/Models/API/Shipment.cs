@@ -154,7 +154,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         [CrudOperations.Update]
-        public async Task<Shipment> GenerateLabel(string fileFormat)
+        public async Task<Shipment> GenerateLabel(string fileFormat = "pdf")
         {
             if (Id == null)
             {
@@ -196,7 +196,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, "Id");
             }
 
-            await Update<Shipment>(Method.Get, $"shipments/{Id}/refund");
+            await Update<Shipment>(Method.Post, $"shipments/{Id}/refund");
             return this;
         }
 

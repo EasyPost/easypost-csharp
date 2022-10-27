@@ -1,8 +1,9 @@
+using EasyPost._base;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
-    public class CarbonOffset
+    public class CarbonOffset : EasyPostObject
     {
         #region JSON Properties
 
@@ -10,8 +11,6 @@ namespace EasyPost.Models.API
         public string? Currency { get; set; }
         [JsonProperty("grams")]
         public int? Grams { get; set; }
-        [JsonProperty("object")]
-        public string? Object { get; set; }
         [JsonProperty("price")]
         public string? Price { get; set; }
 

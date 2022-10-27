@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace EasyPost.Models.API
+namespace EasyPost.Http
 {
     internal static class Security
     {

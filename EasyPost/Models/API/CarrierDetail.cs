@@ -1,9 +1,10 @@
 ﻿using System;
+using EasyPost._base;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
-    public class CarrierDetail
+    public class CarrierDetail : EasyPostObject
     {
         #region JSON Properties
 

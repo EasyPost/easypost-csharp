@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using EasyPost._base;
+using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
-    public class TrackingLocation
+    public class TrackingLocation : EasyPostObject
     {
         #region JSON Properties
 
