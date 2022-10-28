@@ -89,7 +89,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         [CrudOperations.Update]
-        public async Task<Batch> GenerateLabel(string fileFormat)
+        public async Task<Batch> GenerateLabel(string fileFormat = "pdf") // TODO: Remove default value (breaking change)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
             await Update<Batch>(Method.Post, $"batches/{Id}/label", parameters);
@@ -101,7 +101,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         [CrudOperations.Update]
-        public async Task<Batch> GenerateScanForm(string fileFormat = "pdf")
+        public async Task<Batch> GenerateScanForm(string fileFormat = "pdf") // TODO: Remove default value (breaking change)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
             await Update<Batch>(Method.Post, $"batches/{Id}/scan_form", parameters);
