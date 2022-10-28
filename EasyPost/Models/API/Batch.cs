@@ -89,7 +89,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         [CrudOperations.Update]
-        public async Task<Batch> GenerateLabel(string fileFormat = "pdf")
+        public async Task<Batch> GenerateLabel(string fileFormat)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
             await Update<Batch>(Method.Post, $"batches/{Id}/label", parameters);

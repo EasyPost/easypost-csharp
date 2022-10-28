@@ -154,7 +154,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         [CrudOperations.Update]
-        public async Task<Shipment> GenerateLabel(string fileFormat = "pdf")
+        public async Task<Shipment> GenerateLabel(string fileFormat)
         {
             if (Id == null)
             {
