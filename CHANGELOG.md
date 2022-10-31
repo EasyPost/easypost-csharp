@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v4.0.2 (2022-11-01)
 - Fix bug where the temporary internal API key switch when adding a credit card to a referral user was not reverted after the request.
   - After adding a credit card to a referral user, the existing Client would be misconfigured for following requests.
 
