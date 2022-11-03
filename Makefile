@@ -25,10 +25,6 @@ clean:
 coverage:
 	./generate_test_reports.sh
 
-## coveralls - Send coverage reports to coveralls.io
-coveralls:
-	dotnet tool run csmacnz.Coveralls --lcov -i coveragereport/lcov.info
-
 ## format - Formats the project
 format:
 	dotnet dotnet-format --no-restore
@@ -45,7 +41,6 @@ install-tools:
 	dotnet new tool-manifest || exit 0
 	dotnet tool install --local security-scan --version 5.6.3 || exit 0
 	dotnet tool install --local dotnet-format || exit 0
-	dotnet tool install --local coveralls.net || exit 0
 
 ## install - Install requirements
 install: | install-tools
