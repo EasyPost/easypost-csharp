@@ -25,6 +25,10 @@ clean:
 coverage:
 	./generate_test_reports.sh
 
+## coveralls - Send coverage reports to coveralls.io
+coveralls:
+	dotnet tool run csmacnz.Coveralls --lcov -i coveragereport/lcov.info
+
 ## format - Formats the project
 format:
 	dotnet dotnet-format --no-restore
@@ -41,6 +45,7 @@ install-tools:
 	dotnet new tool-manifest || exit 0
 	dotnet tool install --local security-scan --version 5.6.3 || exit 0
 	dotnet tool install --local dotnet-format || exit 0
+	dotnet tool install --local coveralls.net || exit 0
 
 ## install - Install requirements
 install: | install-tools
@@ -122,4 +127,4 @@ test-fw:
 uninstall-scanner:
 	dotnet tool uninstall security-scan
 
-.PHONY: help build build-test-fw build-prod clean format install-cert install-tools install lint lint-scripts pre-release publish-all publish release restore scan setup-win setup-unix sign test test-fw uninstall-scanner
+.PHONY: help build build-test-fw build-prod clean coveralls coverage format install-cert install-tools install lint lint-scripts pre-release publish-all publish release restore scan setup-win setup-unix sign test test-fw uninstall-scanner
