@@ -12,7 +12,11 @@ for req in "$@"; do
     fi
 done
 
+# Generate Cobertura report for each test project
 test_folder="EasyPost.Tests"
 cd "$test_folder" || exit
 dotnet test --collect:"XPlat Code Coverage"
+
+# Generate HTML and lcov report
 reportgenerator -reports:TestResults/*/coverage.cobertura.xml -targetdir:../coveragereport -reporttypes:Html
+reportgenerator -reports:TestResults/*/coverage.cobertura.xml -targetdir:../coveragereport -reporttypes:lcov

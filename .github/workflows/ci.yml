@@ -25,6 +25,20 @@ jobs:
         run: make scan
         # TODO: In the future, we can collect the output logs by enabling Code Scanning and using the pre-built GitHub Action: https://github.com/marketplace/actions/securitycodescan
         # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github#uploading-a-code-scanning-analysis-with-github-actions
+  coverage:
+    if: github.ref == 'refs/heads/master'
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up dotnet tools and dependencies
+        run: make install
+      - name: Generate coverage report
+        run: make coverage
+      - name: Upload lcov coverage report to Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          path-to-lcov: coveragereport/lcov.info
+          github-token: ${{ secrets.GITHUB_TOKEN }}
   NET_Tests:
     # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
     runs-on: windows-2022
