@@ -15,6 +15,8 @@ done
 # Generate Cobertura report for each test project
 test_folder="EasyPost.Tests"
 cd "$test_folder" || exit
+
+# https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-test#:~:text=To%20collect%20code%20coverage%20on%20any%20platform%20that%20is%20supported%20by%20.NET%20Core%2C
 dotnet test --collect:"XPlat Code Coverage"
 
 # Generate HTML and lcov report

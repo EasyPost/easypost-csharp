@@ -25,6 +25,10 @@ clean:
 coverage:
 	./generate_test_reports.sh
 
+## coverage-check - Check if the coverage is above the minimum threshold
+coverage-check:
+	./check_coverage.sh
+
 ## format - Formats the project
 format:
 	dotnet dotnet-format --no-restore
@@ -122,4 +126,4 @@ test-fw:
 uninstall-scanner:
 	dotnet tool uninstall security-scan
 
-.PHONY: help build build-test-fw build-prod clean coverage format install-cert install-tools install lint lint-scripts pre-release publish-all publish release restore scan setup-win setup-unix sign test test-fw uninstall-scanner
+.PHONY: help build build-test-fw build-prod clean coverage coverage-check format install-cert install-tools install lint lint-scripts pre-release publish-all publish release restore scan setup-win setup-unix sign test test-fw uninstall-scanner
