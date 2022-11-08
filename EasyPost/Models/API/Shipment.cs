@@ -196,7 +196,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, "Id");
             }
 
-            await Update<Shipment>(Method.Get, $"shipments/{Id}/refund");
+            await Update<Shipment>(Method.Post, $"shipments/{Id}/refund");
             return this;
         }
 
