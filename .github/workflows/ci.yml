@@ -26,7 +26,7 @@ jobs:
         # TODO: In the future, we can collect the output logs by enabling Code Scanning and using the pre-built GitHub Action: https://github.com/marketplace/actions/securitycodescan
         # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github#uploading-a-code-scanning-analysis-with-github-actions
   coverage_requirement:
-    runs-on: windows-2022
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: Set up dotnet tools and dependencies
@@ -35,7 +35,7 @@ jobs:
         run: make coverage-check
   coverage_upload:
     if: github.ref == 'refs/heads/master'
-    runs-on: windows-2022
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: Set up dotnet tools and dependencies
