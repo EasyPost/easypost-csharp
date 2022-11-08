@@ -55,7 +55,7 @@ jobs:
       EASYPOST_PROD_API_KEY: "123"
     strategy:
       matrix:
-        name: [ 'NetStandard20', 'NetCore31', 'Net50', 'Net60' ]
+        name: [ 'NetStandard20', 'NetCore31', 'Net50', 'Net60', 'Net70' ]
         include:
           - name: NetStandard20
             # can't run tests on .NET Standard, it's just a bridge between .NET Framework and .NET.
@@ -68,6 +68,8 @@ jobs:
             framework: net5.0
           - name: Net60
             framework: net6.0
+          - name: Net70
+            framework: net7.0
     steps:
       - uses: actions/checkout@v3
         with:
