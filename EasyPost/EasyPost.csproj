@@ -10,7 +10,7 @@
     <Configurations>Release;Debug</Configurations>
     <Platforms>AnyCPU</Platforms>
     <PackageId>EasyPost</PackageId>
-    <LangVersion>9</LangVersion>
+    <LangVersion>11</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
