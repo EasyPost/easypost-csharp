@@ -4,6 +4,7 @@ using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -39,7 +40,7 @@ namespace EasyPost.Services
         public async Task<EndShipper> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("address");
-            return await Create<EndShipper>("end_shippers", parameters);
+            return await Request<EndShipper>(Method.Post, "end_shippers", parameters);
         }
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.EndShipperCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null) => await List<EndShipperCollection>("end_shippers", parameters);
+        public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null) => await Request<EndShipperCollection>(Method.Get, "end_shippers", parameters);
 
         /// <summary>
         ///     Retrieve an EndShipper from its id.
@@ -67,7 +68,20 @@ namespace EasyPost.Services
         /// <param name="id">String representing an EndShipper. Starts with "es_".</param>
         /// <returns>EasyPost.EndShipper instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipper> Retrieve(string id) => await Get<EndShipper>($"end_shippers/{id}");
+        public async Task<EndShipper> Retrieve(string id) => await Request<EndShipper>(Method.Get, $"end_shippers/{id}");
+
+        /// <summary>
+        ///     Update this EndShipper. Must pass in all properties (new and existing).
+        /// </summary>
+        /// <param name="parameters">See EndShipper.Create for more details.</param>
+        [CrudOperations.Update]
+        public async Task<EndShipper> Update(string id, Dictionary<string, object> parameters)
+        {
+            parameters = parameters.Wrap("address");
+
+            // EndShipper needs Put, not Patch
+            return await Request<EndShipper>(Method.Put, $"end_shippers/{id}", parameters);
+        }
 
         #endregion
     }

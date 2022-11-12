@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -22,7 +23,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<List<CarrierType>> All()
         {
-            return await List<List<CarrierType>>("carrier_types");
+            return await Request<List<CarrierType>>(Method.Get, "carrier_types");
         }
 
         #endregion

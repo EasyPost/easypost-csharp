@@ -34,7 +34,7 @@ namespace EasyPost.Services
         public async Task<ReferralCustomer> CreateReferral(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("user");
-            return await Create<ReferralCustomer>("referral_customers", parameters);
+            return await Request<ReferralCustomer>(Method.Post, "referral_customers", parameters);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null)
         {
-            return await List<ReferralCustomerCollection>("referral_customers", parameters);
+            return await Request<ReferralCustomerCollection>(Method.Get, "referral_customers", parameters);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace EasyPost.Services
         {
             var parameters = new Dictionary<string, object> { { "user", new Dictionary<string, object> { { "email", email } } } };
             // NOTE: This is a PATCH request, not a PUT request.
-            await UpdateNoResponse($"referral_customers/{referralId}", parameters);
+            await Request(Method.Patch, $"referral_customers/{referralId}", parameters);
         }
 
         #endregion
@@ -118,7 +118,7 @@ namespace EasyPost.Services
             };
 
             // Store the old API key
-            string oldApiKey = Client!.Configuration.ApiKey;
+            string oldApiKey = Client.Configuration.ApiKey;
 
             // Change API key temporarily to referral user's API key.
             Client.Configuration.ApiKey = referralApiKey;
@@ -159,7 +159,7 @@ namespace EasyPost.Services
             request.AddParameter("card[exp_year]", expirationYear.ToString());
             request.AddParameter("card[cvc]", cvc);
 
-            RestResponse<Dictionary<string, object>> response = await Client!.ExecuteRequest<Dictionary<string, object>>(request);
+            RestResponse<Dictionary<string, object>> response = await Client.ExecuteRequest<Dictionary<string, object>>(request);
 
             if (response.ReturnedError() || response.Data == null)
             {
@@ -182,7 +182,7 @@ namespace EasyPost.Services
         /// <returns>EasyPost Stripe API key.</returns>
         private async Task<string?> RetrieveEasypostStripeApiKey()
         {
-            Dictionary<string, object> response = await Get<Dictionary<string, object>>("partners/stripe_public_key");
+            Dictionary<string, object> response = await Request<Dictionary<string, object>>(Method.Get, "partners/stripe_public_key");
             if (!response.ContainsKey("public_key"))
             {
                 return null;

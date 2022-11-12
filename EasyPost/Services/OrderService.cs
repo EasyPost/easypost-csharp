@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -39,7 +41,7 @@ namespace EasyPost.Services
         public async Task<Order> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("order");
-            return await Create<Order>("orders", parameters);
+            return await Request<Order>(Method.Post, "orders", parameters);
         }
 
         /// <summary>
@@ -50,7 +52,66 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<Order> Retrieve(string id)
         {
-            return await Get<Order>($"orders/{id}");
+            return await Request<Order>(Method.Get, $"orders/{id}");
+        }
+
+        /// <summary>
+        ///     Purchase the shipments within this order with a carrier and service.
+        /// </summary>
+        /// <param name="withCarrier">The carrier to purchase a shipment from.</param>
+        /// <param name="withService">The service to purchase.</param>
+        [CrudOperations.Update]
+        public async Task<Order> Buy(string id, string withCarrier, string withService)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "carrier", withCarrier },
+                { "service", withService }
+            };
+
+            return await Request<Order>(Method.Post, $"orders/{id}/buy", parameters);
+        }
+
+        /// <summary>
+        ///     Purchase a label for this shipment with the given rate.
+        /// </summary>
+        /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
+        [CrudOperations.Update]
+        public async Task<Order> Buy(string id, Rate rate)
+        {
+            if (rate.Carrier == null)
+            {
+                throw new MissingPropertyError(rate, "Carrier");
+            }
+
+            if (rate.Service == null)
+            {
+                throw new MissingPropertyError(rate, "Service");
+            }
+
+            return await Buy(id, rate.Carrier, rate.Service);
+        }
+
+        /// <summary>
+        ///     Populate the rates property for this Order.
+        /// </summary>
+        [CrudOperations.Update]
+        public async Task GetRates(string id)
+        {
+            await Request<Order>(Method.Get, $"orders/{id}/rates");
+        }
+
+        /// <summary>
+        ///     Get the lowest rate for this Order.
+        /// </summary>
+        /// <param name="includeCarriers">Carriers to include in the filter.</param>
+        /// <param name="includeServices">Services to include in the filter.</param>
+        /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
+        /// <param name="excludeServices">Services to exclude in the filter.</param>
+        /// <returns>Lowest EasyPost.Rate object instance.</returns>
+        public Rate LowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
+        {
+            return Calculation.Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
 
         #endregion

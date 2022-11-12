@@ -7,6 +7,7 @@ using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -33,7 +34,7 @@ namespace EasyPost.Services
 
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "amount", amount } };
 
-            await CreateNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.Id}/charge", parameters);
+            await Request(Method.Post, $"{paymentMethod.Endpoint}/{paymentMethod.Id}/charge", parameters);
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<PaymentMethodsSummary> RetrievePaymentMethodsSummary()
         {
-            PaymentMethodsSummary paymentMethodsSummary = await Get<PaymentMethodsSummary>("payment_methods");
+            PaymentMethodsSummary paymentMethodsSummary = await Request<PaymentMethodsSummary>(Method.Get, "payment_methods");
             if (paymentMethodsSummary.Id == null)
             {
                 throw new InvalidObjectError(Constants.ErrorMessages.NoPaymentMethods);
@@ -61,7 +62,7 @@ namespace EasyPost.Services
         {
             PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
 
-            await DeleteNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.Id}");
+            await Request(Method.Delete, $"{paymentMethod.Endpoint}/{paymentMethod.Id}");
         }
 
         #endregion

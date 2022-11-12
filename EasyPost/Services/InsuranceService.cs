@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -37,7 +39,7 @@ namespace EasyPost.Services
         public async Task<Insurance> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("insurance");
-            return await Create<Insurance>("insurances", parameters);
+            return await Request<Insurance>(Method.Post, "insurances", parameters);
         }
 
         /// <summary>
@@ -59,7 +61,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null)
         {
-            return await List<InsuranceCollection>("insurances", parameters);
+            return await Request<InsuranceCollection>(Method.Get, "insurances", parameters);
         }
 
         /// <summary>
@@ -70,7 +72,19 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<Insurance> Retrieve(string id)
         {
-            return await Get<Insurance>($"insurances/{id}");
+            return await Request<Insurance>(Method.Get, $"insurances/{id}");
+        }
+
+        /// <summary>
+        ///     Refresh this Insurance.
+        /// </summary>
+        /// <param name="parameters">Optional dictionary of parameters to use when refreshing this insurance.</param>
+        /// <returns>This refreshed EasyPost.Insurance object.</returns>
+        [CrudOperations.Update]
+        [Obsolete("Use the Retrieve method instead. This method will be removed in a future version.")]
+        public async Task<Insurance> Refresh(string id, Dictionary<string, object>? parameters = null)
+        {
+            return await Request<Insurance>(Method.Get, $"insurances/{id}");
         }
 
         #endregion

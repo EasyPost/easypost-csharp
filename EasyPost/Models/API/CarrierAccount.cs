@@ -1,11 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Http;
-using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -34,31 +30,5 @@ namespace EasyPost.Models.API
         internal CarrierAccount()
         {
         }
-
-        #region CRUD Operations
-
-        /// <summary>
-        ///     Update this CarrierAccount.
-        /// </summary>
-        /// <param name="parameters">See CarrierAccount.Create for more details.</param>
-        [CrudOperations.Update]
-        public async Task<CarrierAccount> Update(Dictionary<string, object> parameters)
-        {
-            parameters = parameters.Wrap("carrier_account");
-            await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{Id}", parameters);
-            return this;
-        }
-
-        /// <summary>
-        ///     Remove this CarrierAccount from your account.
-        /// </summary>
-        /// <returns>Whether the request was successful or not.</returns>
-        [CrudOperations.Delete]
-        public async Task Delete()
-        {
-            await DeleteNoResponse($"carrier_accounts/{Id}");
-        }
-
-        #endregion
     }
 }

@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -21,7 +22,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ApiKeyCollection> All()
         {
-            return await List<ApiKeyCollection>("api_keys");
+            return await Request<ApiKeyCollection>(Method.Get, "api_keys");
         }
 
         #endregion

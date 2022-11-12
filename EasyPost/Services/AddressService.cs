@@ -4,6 +4,7 @@ using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -59,7 +60,7 @@ namespace EasyPost.Services
                 parameters.Add("verify_strict", true);
             }
 
-            return await Create<Address>("addresses", parameters);
+            return await Request<Address>(Method.Post, "addresses", parameters);
         }
 
         /// <summary>
@@ -82,7 +83,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters)
         {
-            return await Create<Address>("addresses/create_and_verify", parameters, "address");
+            return await Request<Address>(Method.Post, "addresses/create_and_verify", parameters, "address");
         }
 
         /// <summary>
@@ -103,7 +104,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null)
         {
-            return await List<AddressCollection>("addresses", parameters);
+            return await Request<AddressCollection>(Method.Get, "addresses", parameters);
         }
 
         /// <summary>
@@ -114,7 +115,18 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<Address> Retrieve(string id)
         {
-            return await Get<Address>($"addresses/{id}");
+            return await Request<Address>(Method.Get, $"addresses/{id}");
+        }
+
+        /// <summary>
+        ///     Verify an Address.
+        /// </summary>
+        /// <param name="id">ID of the address to verify.</param>
+        /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
+        [CrudOperations.Update]
+        public async Task<Address> Verify(string id)
+        {
+            return await Request<Address>(Method.Get, $"addresses/{id}/verify", null, "address");
         }
 
         #endregion

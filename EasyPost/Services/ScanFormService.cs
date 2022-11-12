@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -24,7 +25,7 @@ namespace EasyPost.Services
         public async Task<ScanForm> Create(List<Shipment> shipments)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "shipments", shipments } };
-            return await Create<ScanForm>("scan_forms", parameters);
+            return await Request<ScanForm>(Method.Post, "scan_forms", parameters);
         }
 
         /// <summary>
@@ -45,9 +46,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
         {
-            ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
-            scanFormCollection.Client = Client;
-            return scanFormCollection;
+            return await Request<ScanFormCollection>(Method.Get, "scan_forms", parameters);
         }
 
         /// <summary>
@@ -58,7 +57,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ScanForm> Retrieve(string id)
         {
-            return await Get<ScanForm>($"scan_forms/{id}");
+            return await Request<ScanForm>(Method.Get, $"scan_forms/{id}");
         }
 
         #endregion

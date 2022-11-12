@@ -1,10 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Exceptions.General;
-using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -43,84 +39,6 @@ namespace EasyPost.Models.API
         {
         }
 
-        #region CRUD Operations
 
-        /// <summary>
-        ///     Purchase the shipments within this order with a carrier and service.
-        /// </summary>
-        /// <param name="withCarrier">The carrier to purchase a shipment from.</param>
-        /// <param name="withService">The service to purchase.</param>
-        [CrudOperations.Update]
-        public async Task<Order> Buy(string withCarrier, string withService)
-        {
-            if (Id == null)
-            {
-                throw new MissingPropertyError(this, "Id");
-            }
-
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                { "carrier", withCarrier },
-                { "service", withService }
-            };
-
-            await Update<Order>(Method.Post, $"orders/{Id}/buy", parameters);
-            return this;
-        }
-
-        /// <summary>
-        ///     Purchase a label for this shipment with the given rate.
-        /// </summary>
-        /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
-        [CrudOperations.Update]
-        public async Task<Order> Buy(Rate rate)
-        {
-            if (rate.Carrier == null)
-            {
-                throw new MissingPropertyError(rate, "Carrier");
-            }
-
-            if (rate.Service == null)
-            {
-                throw new MissingPropertyError(rate, "Service");
-            }
-
-            return await Buy(rate.Carrier, rate.Service);
-        }
-
-        /// <summary>
-        ///     Populate the rates property for this Order.
-        /// </summary>
-        [CrudOperations.Update]
-        public async Task GetRates()
-        {
-            // TODO: Should this return the updated Order object?
-            if (Id == null)
-            {
-                throw new MissingPropertyError(this, "Id");
-            }
-
-            await Update<Order>(Method.Get, $"orders/{Id}/rates");
-        }
-
-        #endregion
-
-        /// <summary>
-        ///     Get the lowest rate for this Order.
-        /// </summary>
-        /// <param name="includeCarriers">Carriers to include in the filter.</param>
-        /// <param name="includeServices">Services to include in the filter.</param>
-        /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
-        /// <param name="excludeServices">Services to exclude in the filter.</param>
-        /// <returns>Lowest EasyPost.Rate object instance.</returns>
-        public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
-        {
-            if (Rates == null)
-            {
-                throw new MissingPropertyError(this, "rates");
-            }
-
-            return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
-        }
     }
 }

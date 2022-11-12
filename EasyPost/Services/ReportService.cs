@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -35,7 +36,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null)
         {
-            return await Create<Report>($"reports/{type}", parameters);
+            return await Request<Report>(Method.Post, $"reports/{type}", parameters);
         }
 
         /// <summary>
@@ -56,9 +57,8 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
         {
-            ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters);
+            ReportCollection reportCollection = await Request<ReportCollection>(Method.Get, $"reports/{type}", parameters);
             reportCollection.Type = type;
-            reportCollection.Client = Client;
             return reportCollection;
         }
 
@@ -70,7 +70,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<Report> Retrieve(string id)
         {
-            return await Get<Report>($"reports/{id}");
+            return await Request<Report>(Method.Get, $"reports/{id}");
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<Report> Retrieve(string type, string id)
         {
-            return await Get<Report>($"reports/{type}/{id}");
+            return await Request<Report>(Method.Get, $"reports/{type}/{id}");
         }
 
         #endregion

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -33,7 +34,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<EventCollection> All(Dictionary<string, object>? parameters = null)
         {
-            return await Get<EventCollection>("events", parameters);
+            return await Request<EventCollection>(Method.Get, "events", parameters);
         }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<Event> Retrieve(string id)
         {
-            return await Get<Event>($"events/{id}");
+            return await Request<Event>(Method.Get, $"events/{id}");
         }
 
         #endregion

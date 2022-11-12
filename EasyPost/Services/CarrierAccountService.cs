@@ -4,6 +4,7 @@ using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -33,7 +34,7 @@ namespace EasyPost.Services
         public async Task<CarrierAccount> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("carrier_account");
-            return await Create<CarrierAccount>("carrier_accounts", parameters);
+            return await Request<CarrierAccount>(Method.Post, "carrier_accounts", parameters);
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<List<CarrierAccount>> All()
         {
-            return await List<List<CarrierAccount>>("carrier_accounts");
+            return await Request<List<CarrierAccount>>(Method.Get, "carrier_accounts");
         }
 
         /// <summary>
@@ -54,7 +55,28 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<CarrierAccount> Retrieve(string id)
         {
-            return await Get<CarrierAccount>($"carrier_accounts/{id}");
+            return await Request<CarrierAccount>(Method.Get, $"carrier_accounts/{id}");
+        }
+
+        /// <summary>
+        ///     Update this CarrierAccount.
+        /// </summary>
+        /// <param name="parameters">See CarrierAccount.Create for more details.</param>
+        [CrudOperations.Update]
+        public async Task<CarrierAccount> Update(string id, Dictionary<string, object> parameters)
+        {
+            parameters = parameters.Wrap("carrier_account");
+            return await Request<CarrierAccount>(Method.Patch, $"carrier_accounts/{id}", parameters);
+        }
+
+        /// <summary>
+        ///     Remove this CarrierAccount from your account.
+        /// </summary>
+        /// <returns>Whether the request was successful or not.</returns>
+        [CrudOperations.Delete]
+        public async Task Delete(string id)
+        {
+            await Request(Method.Delete, $"carrier_accounts/{id}");
         }
 
         #endregion

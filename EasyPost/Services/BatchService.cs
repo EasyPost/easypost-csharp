@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -30,7 +32,7 @@ namespace EasyPost.Services
         public async Task<Batch> Create(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters?.Wrap("batch");
-            return await Create<Batch>("batches", parameters);
+            return await Request<Batch>(Method.Post, "batches", parameters);
         }
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace EasyPost.Services
         public async Task<Batch> CreateAndBuy(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("batch");
-            return await Create<Batch>("batches/create_and_buy", parameters);
+            return await Request<Batch>(Method.Post, "batches/create_and_buy", parameters);
         }
 
         /// <summary>
@@ -68,7 +70,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
         {
-            return await List<BatchCollection>("batches", parameters);
+            return await Request<BatchCollection>(Method.Get, "batches", parameters);
         }
 
         /// <summary>
@@ -79,7 +81,104 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<Batch> Retrieve(string id)
         {
-            return await Get<Batch>($"batches/{id}");
+            return await Request<Batch>(Method.Get, $"batches/{id}");
+        }
+
+        /// <summary>
+        ///     Add shipments to this batch.
+        /// </summary>
+        /// <param name="parameters">UpdateShipmentParameters</param>
+        [CrudOperations.Update]
+        public async Task<Batch> AddShipments(string id, Dictionary<string, object> parameters)
+        {
+            // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
+            return await Request<Batch>(Method.Post, $"batches/{id}/add_shipments", parameters);
+        }
+
+        /// <summary>
+        ///     Add shipments to this batch.
+        /// </summary>
+        /// <param name="shipmentsToAdd">List of Shipment objects to be added.</param>
+        [CrudOperations.Update]
+        public async Task<Batch> AddShipments(string id, List<Shipment> shipmentsToAdd)
+        {
+            var parameters = new Dictionary<string, object> { { "shipments", shipmentsToAdd } };
+            return await AddShipments(id, parameters);
+        }
+
+        /// <summary>
+        ///     Add shipments to this batch.
+        /// </summary>
+        /// <param name="shipmentIds">List of shipment ids to be added.</param>
+        [CrudOperations.Update]
+        public async Task<Batch> AddShipments(string id, IEnumerable<string> shipmentIds)
+        {
+            List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment { Id = shipmentId }).ToList();
+            return await AddShipments(id, shipments);
+        }
+
+        /// <summary>
+        ///     Purchase all shipments within this batch. The Batch's state must be "created" before purchasing.
+        /// </summary>
+        [CrudOperations.Update]
+        public async Task<Batch> Buy(string id)
+        {
+            return await Request<Batch>(Method.Post, $"batches/{id}/buy");
+        }
+
+        /// <summary>
+        ///     Asynchronously generate a label containing all of the Shipment labels belonging to this batch.
+        /// </summary>
+        /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
+        [CrudOperations.Update]
+        public async Task<Batch> GenerateLabel(string id, string fileFormat = "pdf") // TODO: Remove default value (breaking change)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
+            return await Request<Batch>(Method.Post, $"batches/{id}/label", parameters);
+        }
+
+        /// <summary>
+        ///     Asynchronously generate a scan from for this batch.
+        /// </summary>
+        /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
+        [CrudOperations.Update]
+        public async Task<Batch> GenerateScanForm(string id, string fileFormat = "pdf") // TODO: Remove default value (breaking change)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
+            return await Request<Batch>(Method.Post, $"batches/{id}/scan_form", parameters);
+        }
+
+        /// <summary>
+        ///     Remove shipments to this batch.
+        /// </summary>
+        /// <param name="parameters">UpdateShipmentParameters</param>
+        [CrudOperations.Update]
+        public async Task<Batch> RemoveShipments(string id, Dictionary<string, object> parameters)
+        {
+            // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
+            return await Request<Batch>(Method.Post, $"batches/{id}/remove_shipments", parameters);
+        }
+
+        /// <summary>
+        ///     Remove shipments to this batch.
+        /// </summary>
+        /// <param name="shipmentsToAdd">List of Shipment objects to be removed.</param>
+        [CrudOperations.Update]
+        public async Task<Batch> RemoveShipments(string id, List<Shipment> shipmentsToAdd)
+        {
+            var parameters = new Dictionary<string, object> { { "shipments", shipmentsToAdd } };
+            return await RemoveShipments(id, parameters);
+        }
+
+        /// <summary>
+        ///     Remove shipments to this batch.
+        /// </summary>
+        /// <param name="shipmentIds">List of shipment ids to be removed.</param>
+        [CrudOperations.Update]
+        public async Task<Batch> RemoveShipments(string id, IEnumerable<string> shipmentIds)
+        {
+            List<Shipment> shipments = shipmentIds.Select(shipmentId => new Shipment { Id = shipmentId }).ToList();
+            return await RemoveShipments(id, shipments);
         }
 
         #endregion

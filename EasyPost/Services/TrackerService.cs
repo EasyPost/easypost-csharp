@@ -4,6 +4,7 @@ using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -31,7 +32,7 @@ namespace EasyPost.Services
                 { "tracking_code", trackingCode }
             };
             parameters = parameters.Wrap("tracker");
-            return await Create<Tracker>("trackers", parameters);
+            return await Request<Tracker>(Method.Post, "trackers", parameters);
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace EasyPost.Services
         public async Task CreateList(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("trackers");
-            await CreateNoResponse("trackers/create_list", parameters);
+            await Request(Method.Post, "trackers/create_list", parameters);
         }
 
         /// <summary>
@@ -68,9 +69,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
         {
-            TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters);
-            trackerCollection.Client = Client;
-            return trackerCollection;
+            return await Request<TrackerCollection>(Method.Get, "trackers", parameters);
         }
 
         // This endpoint does not return a response so we return the request was successful
@@ -82,7 +81,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<Tracker> Retrieve(string id)
         {
-            return await Get<Tracker>($"trackers/{id}");
+            return await Request<Tracker>(Method.Get, $"trackers/{id}");
         }
 
         #endregion

@@ -4,6 +4,7 @@ using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -28,7 +29,7 @@ namespace EasyPost.Services
         public async Task<List<Refund>> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("refund");
-            return await Create<List<Refund>>("refunds", parameters);
+            return await Request<List<Refund>>(Method.Post, "refunds", parameters);
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null)
         {
-            return await List<RefundCollection>("refunds", parameters);
+            return await Request<RefundCollection>(Method.Get, "refunds", parameters);
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<Refund> Retrieve(string id)
         {
-            return await Get<Refund>($"refunds/{id}");
+            return await Request<Refund>(Method.Get, $"refunds/{id}");
         }
 
         #endregion

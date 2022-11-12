@@ -4,6 +4,7 @@ using EasyPost._base;
 using EasyPost.Calculation;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -24,7 +25,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<Rate> Retrieve(string id)
         {
-            return await Get<Rate>($"rates/{id}");
+            return await Request<Rate>(Method.Get, $"rates/{id}");
         }
 
         #endregion

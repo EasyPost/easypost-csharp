@@ -4,6 +4,7 @@ using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
+using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -36,7 +37,7 @@ namespace EasyPost.Services
         public async Task<CustomsInfo> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("customs_info");
-            return await Create<CustomsInfo>("customs_infos", parameters);
+            return await Request<CustomsInfo>(Method.Post, "customs_infos", parameters);
         }
 
         /// <summary>
@@ -47,7 +48,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<CustomsInfo> Retrieve(string id)
         {
-            return await Get<CustomsInfo>($"customs_infos/{id}");
+            return await Request<CustomsInfo>(Method.Get, $"customs_infos/{id}");
         }
 
         #endregion
