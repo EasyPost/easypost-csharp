@@ -15,6 +15,8 @@ namespace EasyPost.Tests.ServicesTests
         {
         }
 
+        #region Tests
+
         #region Test CRUD Operations
 
         [Fact]
@@ -80,6 +82,8 @@ namespace EasyPost.Tests.ServicesTests
             Assert.StartsWith("pickup_", pickup.Id);
             Assert.Equal("canceled", pickup.Status);
         }
+
+        #endregion
 
         [Fact]
         [Testing.Function]

@@ -111,6 +111,43 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Create]
         [Testing.Parameters]
+        public async Task TestCreateWithTaxIdentifiers()
+        {
+            UseVCR("create_with_tax_identifiers");
+
+            Dictionary<string, object> shipmentData = Fixtures.BasicShipment;
+            shipmentData["tax_identifiers"] = new List<Dictionary<string, object>> { Fixtures.TaxIdentifier };
+
+            Shipment shipment = await Client.Shipment.Create(shipmentData);
+
+            Assert.IsType<Shipment>(shipment);
+            Assert.StartsWith("shp_", shipment.Id);
+            Assert.Equal("IOSS", shipment.TaxIdentifiers[0].TaxIdType);
+        }
+
+        // If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
+        // so that USPS doesn't automatically insure it so we could manually insure it here.
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Function]
+        public async Task TestInsure()
+        {
+            UseVCR("insure");
+
+            Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
+            // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
+            shipmentData["insurance"] = 0;
+
+            Shipment shipment = await Client.Shipment.Create(shipmentData);
+
+            shipment = await Client.Shipment.Insure(shipment.Id, 100);
+
+            Assert.Equal("100.00", shipment.Insurance);
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Parameters]
         public async Task TestOneCallBuyShipmentWithCarbonOffset()
         {
             UseVCR("one_call_buy_shipment_with_carbon_offset");
@@ -167,58 +204,6 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
-        public async Task TestRetrieve()
-        {
-            UseVCR("retrieve");
-
-            Shipment shipment = await CreateFullShipment();
-
-            Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.Id);
-
-            Assert.IsType<Shipment>(shipment);
-            Assert.Equal(shipment, retrievedShipment);
-        }
-
-        [Fact]
-        [CrudOperations.Create]
-        [Testing.Parameters]
-        public async Task TestCreateWithTaxIdentifiers()
-        {
-            UseVCR("create_with_tax_identifiers");
-
-            Dictionary<string, object> shipmentData = Fixtures.BasicShipment;
-            shipmentData["tax_identifiers"] = new List<Dictionary<string, object>> { Fixtures.TaxIdentifier };
-
-            Shipment shipment = await Client.Shipment.Create(shipmentData);
-
-            Assert.IsType<Shipment>(shipment);
-            Assert.StartsWith("shp_", shipment.Id);
-            Assert.Equal("IOSS", shipment.TaxIdentifiers[0].TaxIdType);
-        }
-
-        // If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
-        // so that USPS doesn't automatically insure it so we could manually insure it here.
-        [Fact]
-        [CrudOperations.Create]
-        [Testing.Function]
-        public async Task TestInsure()
-        {
-            UseVCR("insure");
-
-            Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
-            // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
-            shipmentData["insurance"] = 0;
-
-            Shipment shipment = await Client.Shipment.Create(shipmentData);
-
-            shipment = await Client.Shipment.Insure(shipment.Id, 100);
-
-            Assert.Equal("100.00", shipment.Insurance);
-        }
-
-        [Fact]
-        [CrudOperations.Read]
-        [Testing.Function]
         public async Task TestGetSmartrates()
         {
             UseVCR("get_smartrates");
@@ -241,6 +226,21 @@ namespace EasyPost.Tests.ServicesTests
         }
 
         [Fact]
+        [CrudOperations.Read]
+        [Testing.Function]
+        public async Task TestRetrieve()
+        {
+            UseVCR("retrieve");
+
+            Shipment shipment = await CreateFullShipment();
+
+            Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.Id);
+
+            Assert.IsType<Shipment>(shipment);
+            Assert.Equal(shipment, retrievedShipment);
+        }
+
+        [Fact]
         [CrudOperations.Update]
         [Testing.Function]
         public async Task TestBuy()
@@ -258,30 +258,6 @@ namespace EasyPost.Tests.ServicesTests
             shipment = await Client.Shipment.Buy(shipment.Id, Client.Shipment.GetLowestRate(shipment));
 
             Assert.NotNull(shipment.PostageLabel);
-        }
-
-        [Fact]
-        [CrudOperations.Update]
-        [Testing.Parameters]
-        public async Task TestBuyWithNoRate()
-        {
-            UseVCR("buy_with_no_rate");
-
-            Shipment shipment = await CreateFullShipment();
-
-            await Assert.ThrowsAsync<MissingParameterError>(async () => await Client.Shipment.Buy(shipment.Id, rate: null));
-        }
-
-        [Fact]
-        [CrudOperations.Update]
-        [Testing.Parameters]
-        public async Task TestBuyWithNoRateId()
-        {
-            UseVCR("buy_with_no_rate_id");
-
-            Shipment shipment = await CreateFullShipment();
-
-            await Assert.ThrowsAsync<MissingParameterError>(async () => await Client.Shipment.Buy(shipment.Id, rateId: null));
         }
 
         [Fact]
@@ -314,6 +290,30 @@ namespace EasyPost.Tests.ServicesTests
             shipment = await Client.Shipment.Buy(shipment.Id, Client.Shipment.GetLowestRate(shipment), endShipperId: endShipper.Id);
 
             Assert.NotNull(shipment.PostageLabel);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Parameters]
+        public async Task TestBuyWithNoRate()
+        {
+            UseVCR("buy_with_no_rate");
+
+            Shipment shipment = await CreateFullShipment();
+
+            await Assert.ThrowsAsync<MissingParameterError>(async () => await Client.Shipment.Buy(shipment.Id, rate: null));
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Parameters]
+        public async Task TestBuyWithNoRateId()
+        {
+            UseVCR("buy_with_no_rate_id");
+
+            Shipment shipment = await CreateFullShipment();
+
+            await Assert.ThrowsAsync<MissingParameterError>(async () => await Client.Shipment.Buy(shipment.Id, rateId: null));
         }
 
         [Fact]

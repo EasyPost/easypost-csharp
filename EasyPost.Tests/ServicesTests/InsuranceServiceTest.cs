@@ -54,6 +54,20 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
+        public async Task TestRefresh()
+        {
+            UseVCR("refresh");
+
+            Insurance insurance = await CreateBasicInsurance();
+
+            Insurance refreshedInsurance = await Client.Insurance.Refresh(insurance.Id);
+
+            Assert.Equal(insurance.Id, refreshedInsurance.Id);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Function]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");
@@ -64,20 +78,6 @@ namespace EasyPost.Tests.ServicesTests
             Assert.IsType<Insurance>(retrievedInsurance);
             // Must compare IDs since other elements of object may be different
             Assert.Equal(insurance.Id, retrievedInsurance.Id);
-        }
-
-        [Fact]
-        [CrudOperations.Read]
-        [Testing.Function]
-        public async Task TestRefresh()
-        {
-            UseVCR("refresh");
-
-            Insurance insurance = await CreateBasicInsurance();
-
-            Insurance refreshedInsurance = await Client.Insurance.Refresh(insurance.Id);
-
-            Assert.Equal(insurance.Id, refreshedInsurance.Id);
         }
 
         #endregion

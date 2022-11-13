@@ -47,7 +47,11 @@ namespace EasyPost.Tests.ExceptionsTests
 
             // Generate a dummy RestResponse with the given status code to parse
             httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString());
-            response = new() { StatusCode = httpStatusCode, Content = errorMessageStringJson };
+            response = new RestResponse
+            {
+                StatusCode = httpStatusCode,
+                Content = errorMessageStringJson
+            };
 
             generatedError = ApiError.FromErrorResponse(response);
 
@@ -59,11 +63,22 @@ namespace EasyPost.Tests.ExceptionsTests
 
             // Now test with some error-related JSON inside the response with sub-errors
             errorMessageStringJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": \"ERROR_MESSAGE\", \"errors\": [{\"field\": \"SUB_ERROR_FIELD\", \"message\": \"SUB_ERROR_MESSAGE\"}]}}";
-            List<Error> subErrors = new() { new Error { Field = "SUB_ERROR_FIELD", Message = "SUB_ERROR_MESSAGE" } };
+            List<Error> subErrors = new()
+            {
+                new Error
+                {
+                    Field = "SUB_ERROR_FIELD",
+                    Message = "SUB_ERROR_MESSAGE"
+                }
+            };
 
             // Generate a dummy RestResponse with the given status code to parse
             httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString());
-            response = new() { StatusCode = httpStatusCode, Content = errorMessageStringJson };
+            response = new RestResponse
+            {
+                StatusCode = httpStatusCode,
+                Content = errorMessageStringJson
+            };
 
             generatedError = ApiError.FromErrorResponse(response);
 
@@ -75,6 +90,25 @@ namespace EasyPost.Tests.ExceptionsTests
             prettyPrintedError = generatedError.PrettyPrint;
 
             Assert.Equal(expectedMessage, prettyPrintedError);
+        }
+
+        [Fact]
+        [Testing.Exception]
+        public async Task TestBadParameters()
+        {
+            UseVCR("bad_parameters");
+
+            try
+            {
+                Shipment _ = await Client.Shipment.Create(new Dictionary<string, object>());
+            }
+            catch (InvalidRequestError error)
+            {
+                Assert.Equal(422, error.StatusCode);
+                Assert.Equal("PARAMETER.REQUIRED", error.Code);
+                Assert.Equal("Missing required parameter.", error.Message);
+                Assert.True(error.Errors.Count == 1);
+            }
         }
 
         [Fact]
@@ -180,25 +214,6 @@ namespace EasyPost.Tests.ExceptionsTests
 
             SignatureVerificationError signatureVerificationError = new();
             Assert.Equal(Constants.ErrorMessages.InvalidWebhookSignature, signatureVerificationError.Message);
-        }
-
-        [Fact]
-        [Testing.Exception]
-        public async Task TestBadParameters()
-        {
-            UseVCR("bad_parameters");
-
-            try
-            {
-                Shipment _ = await Client.Shipment.Create(new Dictionary<string, object>());
-            }
-            catch (InvalidRequestError error)
-            {
-                Assert.Equal(422, error.StatusCode);
-                Assert.Equal("PARAMETER.REQUIRED", error.Code);
-                Assert.Equal("Missing required parameter.", error.Message);
-                Assert.True(error.Errors.Count == 1);
-            }
         }
 
         [Fact]

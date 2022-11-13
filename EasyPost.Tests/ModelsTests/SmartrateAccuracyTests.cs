@@ -12,6 +12,8 @@ namespace EasyPost.Tests.ModelsTests
         {
         }
 
+        #region Tests
+
         [Fact]
         [Testing.Function]
         public void TestAll()
@@ -23,5 +25,7 @@ namespace EasyPost.Tests.ModelsTests
                 Assert.IsType<string>(@enum.Value);
             }
         }
+
+        #endregion
     }
 }

@@ -7,52 +7,15 @@ namespace EasyPost.Tests.baseTests
 {
     public class EasyPostObjectTests
     {
-        [Fact]
-        [Testing.Properties]
-        public void TestPrefix()
-        {
-            Address address = new Address
-            {
-                Id = "adr_123",
-            };
-            Assert.Equal("adr", address.Prefix);
-        }
-
-        [Fact]
-        [Testing.EdgeCase]
-        public void TestPrefixWhenIdIsNull()
-        {
-            Address address = new Address();
-            address.Id = null;
-
-            Assert.Null(address.Prefix);
-        }
-
-        [Fact]
-        [Testing.Function]
-        public void TestHashCode()
-        {
-            ApiKey apiKey = new ApiKey { Id = "adr_123" };
-            ApiKey sameProperties = new ApiKey { Id = "adr_123" };
-            ApiKey differentProperties = new ApiKey { Id = "adr_456" };
-
-            // hashcode should be the same number each time
-            Assert.Equal(apiKey.GetHashCode(), apiKey.GetHashCode());
-
-            // hashcode should be the same for two objects with the same properties
-            Assert.Equal(apiKey.GetHashCode(), sameProperties.GetHashCode());
-
-            // hashcode should be different for two objects with different properties
-            Assert.NotEqual(apiKey.GetHashCode(), differentProperties.GetHashCode());
-        }
+        #region Tests
 
         [Fact]
         [Testing.Function]
         public void TestEquals()
         {
-            ApiKey apiKey = new ApiKey { Id = "adr_123" };
-            ApiKey sameProperties = new ApiKey { Id = "adr_123" };
-            ApiKey differentProperties = new ApiKey { Id = "adr_456" };
+            ApiKey apiKey = new() { Id = "adr_123" };
+            ApiKey sameProperties = new() { Id = "adr_123" };
+            ApiKey differentProperties = new() { Id = "adr_456" };
 
             // Equality under-the-hood is based on hashcode, which is based on properties/client of an object
             // so if two objects have the same properties and client, they should be equal
@@ -78,5 +41,43 @@ namespace EasyPost.Tests.baseTests
             Assert.False(apiKey == null);
             Assert.False(null == apiKey);
         }
+
+        [Fact]
+        [Testing.Function]
+        public void TestHashCode()
+        {
+            ApiKey apiKey = new() { Id = "adr_123" };
+            ApiKey sameProperties = new() { Id = "adr_123" };
+            ApiKey differentProperties = new() { Id = "adr_456" };
+
+            // hashcode should be the same number each time
+            Assert.Equal(apiKey.GetHashCode(), apiKey.GetHashCode());
+
+            // hashcode should be the same for two objects with the same properties
+            Assert.Equal(apiKey.GetHashCode(), sameProperties.GetHashCode());
+
+            // hashcode should be different for two objects with different properties
+            Assert.NotEqual(apiKey.GetHashCode(), differentProperties.GetHashCode());
+        }
+
+        [Fact]
+        [Testing.Properties]
+        public void TestPrefix()
+        {
+            Address address = new() { Id = "adr_123" };
+            Assert.Equal("adr", address.Prefix);
+        }
+
+        [Fact]
+        [Testing.EdgeCase]
+        public void TestPrefixWhenIdIsNull()
+        {
+            Address address = new();
+            address.Id = null;
+
+            Assert.Null(address.Prefix);
+        }
+
+        #endregion
     }
 }

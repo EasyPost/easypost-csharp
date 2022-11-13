@@ -45,6 +45,23 @@ namespace EasyPost.Tests.ServicesTests
         }
 
         [Fact]
+        [CrudOperations.Create]
+        [Testing.Function]
+        public async Task TestUpdateBrand()
+        {
+            UseVCR("update_brand");
+
+            User user = await CreateChildUser();
+
+            const string color = "#123456";
+            Brand brand = await Client.User.UpdateBrand(user.Id, new Dictionary<string, object> { { "color", color } });
+
+            Assert.IsType<Brand>(brand);
+            Assert.StartsWith("brd_", brand.Id);
+            Assert.Equal(color, brand.Color);
+        }
+
+        [Fact]
         [CrudOperations.Read]
         [Testing.Function]
         public async Task TestRetrieve()
@@ -65,6 +82,19 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
+        public async Task TestRetrieveMe()
+        {
+            UseVCR("retrieve_me");
+
+            User user = await RetrieveMe();
+
+            Assert.IsType<User>(user);
+            Assert.StartsWith("user_", user.Id);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Function]
         public async Task TestRetrieveWithNoId()
         {
             UseVCR("retrieve_with_no_id");
@@ -77,36 +107,6 @@ namespace EasyPost.Tests.ServicesTests
             Assert.IsType<User>(user);
             Assert.StartsWith("user_", user.Id);
             Assert.Equal(authenticatedUser.Id, user.Id);
-        }
-
-        [Fact]
-        [CrudOperations.Read]
-        [Testing.Function]
-        public async Task TestRetrieveMe()
-        {
-            UseVCR("retrieve_me");
-
-            User user = await RetrieveMe();
-
-            Assert.IsType<User>(user);
-            Assert.StartsWith("user_", user.Id);
-        }
-
-        [Fact]
-        [CrudOperations.Create]
-        [Testing.Function]
-        public async Task TestUpdateBrand()
-        {
-            UseVCR("update_brand");
-
-            User user = await CreateChildUser();
-
-            const string color = "#123456";
-            Brand brand = await Client.User.UpdateBrand(user.Id, new Dictionary<string, object> { { "color", color } });
-
-            Assert.IsType<Brand>(brand);
-            Assert.StartsWith("brd_", brand.Id);
-            Assert.Equal(color, brand.Color);
         }
 
 

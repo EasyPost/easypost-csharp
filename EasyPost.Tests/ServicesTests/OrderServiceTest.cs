@@ -36,22 +36,6 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
-        public async Task TestRetrieve()
-        {
-            UseVCR("retrieve");
-
-            Order order = await CreateBasicOrder();
-
-            Order retrievedOrder = await Client.Order.Retrieve(order.Id);
-
-            Assert.IsType<Order>(retrievedOrder);
-            // Must compare IDs since other elements of objects may be different
-            Assert.Equal(order.Id, retrievedOrder.Id);
-        }
-
-        [Fact]
-        [CrudOperations.Read]
-        [Testing.Function]
         public async Task TestGetRates()
         {
             UseVCR("get_rates");
@@ -65,6 +49,22 @@ namespace EasyPost.Tests.ServicesTests
             {
                 Assert.IsType<Rate>(rate);
             }
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Function]
+        public async Task TestRetrieve()
+        {
+            UseVCR("retrieve");
+
+            Order order = await CreateBasicOrder();
+
+            Order retrievedOrder = await Client.Order.Retrieve(order.Id);
+
+            Assert.IsType<Order>(retrievedOrder);
+            // Must compare IDs since other elements of objects may be different
+            Assert.Equal(order.Id, retrievedOrder.Id);
         }
 
         [Fact]
@@ -111,12 +111,12 @@ namespace EasyPost.Tests.ServicesTests
 
             Order order = await CreateBasicOrder();
 
-            Rate badCarrierRate = new Rate
+            Rate badCarrierRate = new()
             {
                 Carrier = null,
                 Service = "something"
             };
-            Rate badServiceRate = new Rate
+            Rate badServiceRate = new()
             {
                 Service = null,
                 Carrier = "something"
@@ -125,6 +125,8 @@ namespace EasyPost.Tests.ServicesTests
             await Assert.ThrowsAsync<MissingPropertyError>(async () => await Client.Order.Buy(order.Id, badCarrierRate));
             await Assert.ThrowsAsync<MissingPropertyError>(async () => await Client.Order.Buy(order.Id, badServiceRate));
         }
+
+        #endregion
 
         [Fact]
         [Testing.Function]
@@ -159,8 +161,6 @@ namespace EasyPost.Tests.ServicesTests
             order.Rates = null;
             Assert.Throws<MissingPropertyError>(() => Client.Order.LowestRate(order, carriers));
         }
-
-        #endregion
 
         #endregion
 

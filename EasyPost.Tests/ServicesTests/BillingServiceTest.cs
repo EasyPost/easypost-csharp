@@ -18,49 +18,6 @@ namespace EasyPost.Tests.ServicesTests
         {
         }
 
-        protected override IEnumerable<TestUtils.MockRequest> MockRequests
-        {
-            get
-            {
-                return new List<TestUtils.MockRequest>
-                {
-                    new(
-                        new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/bank_accounts\/\S*\/charge$"),
-                        new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
-                    ),
-                    new(
-                        new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/credit_cards\/\S*\/charge$"),
-                        new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
-                    ),
-                    new(
-                        new TestUtils.MockRequestMatchRules(Method.Delete, @"^v2\/bank_accounts\/\S*$"),
-                        new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
-                    ),
-                    new(
-                        new TestUtils.MockRequestMatchRules(Method.Delete, @"^v2\/credit_cards\/\S*$"),
-                        new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
-                    ),
-                    new(
-                        new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/payment_methods$"),
-                        new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new PaymentMethodsSummary
-                        {
-                            Id = "summary_123",
-                            PrimaryPaymentMethod = new PaymentMethod
-                            {
-                                Id = "card_123",
-                                Last4 = "1234",
-                            },
-                            SecondaryPaymentMethod = new PaymentMethod
-                            {
-                                Id = "bank_123",
-                                BankName = "Mock Bank",
-                            }
-                        })
-                    )
-                };
-            }
-        }
-
         #region Tests
 
         #region Test CRUD Operations
@@ -103,24 +60,6 @@ namespace EasyPost.Tests.ServicesTests
         }
 
         [Fact]
-        [Testing.Exception]
-        public async Task TestRetrievePaymentMethodsSummaryNoId()
-        {
-            UseMockClient(new List<TestUtils.MockRequest>
-            {
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/payment_methods$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new PaymentMethodsSummary
-                    {
-                        Id = null // No ID, will throw an error when we try to interact with this summary
-                    })
-                )
-            });
-
-            await Assert.ThrowsAsync<InvalidObjectError>(async () => await Client.Billing.RetrievePaymentMethodsSummary());
-        }
-
-        [Fact]
         [CrudOperations.Delete]
         [Testing.Function]
         public async Task TestDeletePaymentMethod()
@@ -131,6 +70,8 @@ namespace EasyPost.Tests.ServicesTests
 
             Assert.Null(possibleException);
         }
+
+        #endregion
 
         [Fact]
         [CrudOperations.Delete]
@@ -201,8 +142,61 @@ namespace EasyPost.Tests.ServicesTests
             await Assert.ThrowsAsync<InvalidObjectError>(async () => await Client.Billing.DeletePaymentMethod(PaymentMethod.Priority.Primary));
         }
 
-        #endregion
+        [Fact]
+        [Testing.Exception]
+        public async Task TestRetrievePaymentMethodsSummaryNoId()
+        {
+            UseMockClient(new List<TestUtils.MockRequest>
+            {
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/payment_methods$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new PaymentMethodsSummary
+                    {
+                        Id = null // No ID, will throw an error when we try to interact with this summary
+                    })
+                )
+            });
+
+            await Assert.ThrowsAsync<InvalidObjectError>(async () => await Client.Billing.RetrievePaymentMethodsSummary());
+        }
 
         #endregion
+
+        protected override IEnumerable<TestUtils.MockRequest> MockRequests => new List<TestUtils.MockRequest>
+        {
+            new(
+                new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/bank_accounts\/\S*\/charge$"),
+                new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
+            ),
+            new(
+                new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/credit_cards\/\S*\/charge$"),
+                new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
+            ),
+            new(
+                new TestUtils.MockRequestMatchRules(Method.Delete, @"^v2\/bank_accounts\/\S*$"),
+                new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
+            ),
+            new(
+                new TestUtils.MockRequestMatchRules(Method.Delete, @"^v2\/credit_cards\/\S*$"),
+                new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
+            ),
+            new(
+                new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/payment_methods$"),
+                new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new PaymentMethodsSummary
+                {
+                    Id = "summary_123",
+                    PrimaryPaymentMethod = new PaymentMethod
+                    {
+                        Id = "card_123",
+                        Last4 = "1234"
+                    },
+                    SecondaryPaymentMethod = new PaymentMethod
+                    {
+                        Id = "bank_123",
+                        BankName = "Mock Bank"
+                    }
+                })
+            )
+        };
     }
 }

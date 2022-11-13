@@ -64,23 +64,23 @@ namespace EasyPost.Tests.ServicesTests
             {
                 new(
                     new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"pk_test_12345\"}")
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, "{\"public_key\":\"pk_test_12345\"}")
                 ),
                 new(
                     new TestUtils.MockRequestMatchRules(Method.Post, @"^https://api.stripe.com/v1/tokens$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"id\":\"tok_12345\"}")
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, "{\"id\":\"tok_12345\"}")
                 ),
                 new(
                     new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/credit_cards$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new PaymentMethod
                     {
                         Id = "summary_123",
-                        Last4 = ((string)Fixtures.CreditCardDetails["number"]).Substring(12),
+                        Last4 = ((string)Fixtures.CreditCardDetails["number"]).Substring(12)
                     })
                 )
             });
 
-            CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
+            CreditCard card = new(Fixtures.CreditCardDetails);
 
             PaymentMethod paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary);
 
@@ -90,175 +90,6 @@ namespace EasyPost.Tests.ServicesTests
             Assert.EndsWith(paymentMethod.Last4, card.Number);
 
             // Assert that the original API key was restored to the client properly after the request
-            Assert.Equal(TestUtils.GetApiKey(TestUtils.ApiKey.Mock), Client.Configuration.ApiKey);
-        }
-
-        [Fact]
-        [Testing.Parameters]
-        public async Task TestAddCreditCardToUserDifferentPaymentMethodPriorities()
-        {
-            UseMockClient(new List<TestUtils.MockRequest>
-            {
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"pk_test_12345\"}")
-                ),
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Post, @"^https://api.stripe.com/v1/tokens$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"id\":\"tok_12345\"}")
-                ),
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/credit_cards$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new PaymentMethod
-                    {
-                        Id = "summary_123",
-                        Last4 = ((string)Fixtures.CreditCardDetails["number"]).Substring(12),
-                    })
-                )
-            });
-
-            CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
-
-            PaymentMethod.Priority? priority = PaymentMethod.Priority.Primary;
-
-            PaymentMethod paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, priority);
-            Assert.NotNull(paymentMethod);
-            // If we've gotten here, no internal errors occurred on the method.
-
-            // Test with other priorities.
-            priority = PaymentMethod.Priority.Secondary;
-            paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, priority);
-            Assert.NotNull(paymentMethod);
-
-            priority = null; // Should internally default to primary priority if not specified.
-            paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, priority);
-            Assert.NotNull(paymentMethod);
-        }
-
-        [Fact]
-        [Testing.Exception]
-        public async Task TestAddCreditCardToUserNoPublicKey()
-        {
-            UseMockClient(new List<TestUtils.MockRequest>
-            {
-                {
-                    new(
-                        new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
-                        new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"\"}")
-                    )
-                }
-            });
-
-            CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
-
-            await Assert.ThrowsAsync<InternalServerError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
-        }
-
-        [Fact]
-        [Testing.Exception]
-        public async Task TestAddCreditCardToUserBadPublicKeyResponse()
-        {
-            UseMockClient(new List<TestUtils.MockRequest>
-            {
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"not_public_key\":\"random\"}")
-                ),
-            });
-
-            CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
-
-            await Assert.ThrowsAsync<InternalServerError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
-        }
-
-        [Fact]
-        [Testing.Exception]
-        public async Task TestAddCreditCardToUserNoStripeToken()
-        {
-            UseMockClient(new List<TestUtils.MockRequest>
-            {
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"pk_test_12345\"}")
-                ),
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Post, @"^https://api.stripe.com/v1/tokens$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"id\":\"\"}")
-                )
-            });
-
-            CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
-
-            await Assert.ThrowsAsync<ExternalApiError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
-        }
-
-        [Fact]
-        [Testing.Exception]
-        public async Task TestAddCreditCardToUserStripeCantConnect()
-        {
-            UseMockClient(new List<TestUtils.MockRequest>
-            {
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"pk_test_12345\"}")
-                ),
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Post, @"^https://api.stripe.com/v1/tokens$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.NotFound, content: "{}")
-                )
-            });
-
-            CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
-
-            await Assert.ThrowsAsync<ExternalApiError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
-        }
-
-        [Fact]
-        [Testing.Exception]
-        public async Task TestAddCreditCardToUserStripeBadResponse()
-        {
-            UseMockClient(new List<TestUtils.MockRequest>
-            {
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"pk_test_12345\"}")
-                ),
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Post, @"^https://api.stripe.com/v1/tokens$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"not_id\":\"random\"}")
-                )
-            });
-
-            CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
-
-            await Assert.ThrowsAsync<ExternalApiError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
-        }
-
-        [Fact]
-        [Testing.Exception]
-        public async Task TestAddCreditCardToUserEasyPostApiError()
-        {
-            UseMockClient(new List<TestUtils.MockRequest>
-            {
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"pk_test_12345\"}")
-                ),
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Post, @"^https://api.stripe.com/v1/tokens$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"id\":\"tok_12345\"}")
-                ),
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/credit_cards$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.NotFound, content: "{}")
-                )
-            });
-
-            CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
-
-            await Assert.ThrowsAsync<NotFoundError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
-
-            // Assert that the original API key was restored to the client properly even after the failed request
             Assert.Equal(TestUtils.GetApiKey(TestUtils.ApiKey.Mock), Client.Configuration.ApiKey);
         }
 
@@ -278,6 +109,175 @@ namespace EasyPost.Tests.ServicesTests
 
         #endregion
 
+        [Fact]
+        [Testing.Parameters]
+        public async Task TestAddCreditCardToUserDifferentPaymentMethodPriorities()
+        {
+            UseMockClient(new List<TestUtils.MockRequest>
+            {
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, "{\"public_key\":\"pk_test_12345\"}")
+                ),
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Post, @"^https://api.stripe.com/v1/tokens$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, "{\"id\":\"tok_12345\"}")
+                ),
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/credit_cards$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new PaymentMethod
+                    {
+                        Id = "summary_123",
+                        Last4 = ((string)Fixtures.CreditCardDetails["number"]).Substring(12)
+                    })
+                )
+            });
+
+            CreditCard card = new(Fixtures.CreditCardDetails);
+
+            PaymentMethod.Priority? priority = PaymentMethod.Priority.Primary;
+
+            PaymentMethod paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, priority);
+            Assert.NotNull(paymentMethod);
+            // If we've gotten here, no internal errors occurred on the method.
+
+            // Test with other priorities.
+            priority = PaymentMethod.Priority.Secondary;
+            paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, priority);
+            Assert.NotNull(paymentMethod);
+
+            priority = null; // Should internally default to primary priority if not specified.
+            paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, priority);
+            Assert.NotNull(paymentMethod);
+        }
+
+        [Fact]
+        [Testing.Exception]
+        public async Task TestAddCreditCardToUserBadPublicKeyResponse()
+        {
+            UseMockClient(new List<TestUtils.MockRequest>
+            {
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, "{\"not_public_key\":\"random\"}")
+                )
+            });
+
+            CreditCard card = new(Fixtures.CreditCardDetails);
+
+            await Assert.ThrowsAsync<InternalServerError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
+        }
+
+        [Fact]
+        [Testing.Exception]
+        public async Task TestAddCreditCardToUserEasyPostApiError()
+        {
+            UseMockClient(new List<TestUtils.MockRequest>
+            {
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, "{\"public_key\":\"pk_test_12345\"}")
+                ),
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Post, @"^https://api.stripe.com/v1/tokens$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, "{\"id\":\"tok_12345\"}")
+                ),
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/credit_cards$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.NotFound, "{}")
+                )
+            });
+
+            CreditCard card = new(Fixtures.CreditCardDetails);
+
+            await Assert.ThrowsAsync<NotFoundError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
+
+            // Assert that the original API key was restored to the client properly even after the failed request
+            Assert.Equal(TestUtils.GetApiKey(TestUtils.ApiKey.Mock), Client.Configuration.ApiKey);
+        }
+
+        [Fact]
+        [Testing.Exception]
+        public async Task TestAddCreditCardToUserNoPublicKey()
+        {
+            UseMockClient(new List<TestUtils.MockRequest>
+            {
+                {
+                    new(
+                        new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                        new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, "{\"public_key\":\"\"}")
+                    )
+                }
+            });
+
+            CreditCard card = new(Fixtures.CreditCardDetails);
+
+            await Assert.ThrowsAsync<InternalServerError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
+        }
+
+        [Fact]
+        [Testing.Exception]
+        public async Task TestAddCreditCardToUserNoStripeToken()
+        {
+            UseMockClient(new List<TestUtils.MockRequest>
+            {
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, "{\"public_key\":\"pk_test_12345\"}")
+                ),
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Post, @"^https://api.stripe.com/v1/tokens$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, "{\"id\":\"\"}")
+                )
+            });
+
+            CreditCard card = new(Fixtures.CreditCardDetails);
+
+            await Assert.ThrowsAsync<ExternalApiError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
+        }
+
+        [Fact]
+        [Testing.Exception]
+        public async Task TestAddCreditCardToUserStripeBadResponse()
+        {
+            UseMockClient(new List<TestUtils.MockRequest>
+            {
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, "{\"public_key\":\"pk_test_12345\"}")
+                ),
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Post, @"^https://api.stripe.com/v1/tokens$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, "{\"not_id\":\"random\"}")
+                )
+            });
+
+            CreditCard card = new(Fixtures.CreditCardDetails);
+
+            await Assert.ThrowsAsync<ExternalApiError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
+        }
+
+        [Fact]
+        [Testing.Exception]
+        public async Task TestAddCreditCardToUserStripeCantConnect()
+        {
+            UseMockClient(new List<TestUtils.MockRequest>
+            {
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, "{\"public_key\":\"pk_test_12345\"}")
+                ),
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Post, @"^https://api.stripe.com/v1/tokens$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.NotFound, "{}")
+                )
+            });
+
+            CreditCard card = new(Fixtures.CreditCardDetails);
+
+            await Assert.ThrowsAsync<ExternalApiError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
+        }
+
         #endregion
 
         private static string ReferralUserKey => TestUtils.GetApiKey(TestUtils.ApiKey.Referral);
@@ -286,13 +286,12 @@ namespace EasyPost.Tests.ServicesTests
 
         private class CreditCard
         {
-            internal readonly string Number;
+            internal readonly string Cvc;
 
             internal readonly int ExpirationMonth;
 
             internal readonly int ExpirationYear;
-
-            internal readonly string Cvc;
+            internal readonly string Number;
 
             internal CreditCard(IReadOnlyDictionary<string, object> details)
             {

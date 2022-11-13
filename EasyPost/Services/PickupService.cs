@@ -76,7 +76,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Pickup> Cancel(string id)
         {
-           return await Request<Pickup>(Method.Post, $"pickups/{id}/cancel");
+            return await Request<Pickup>(Method.Post, $"pickups/{id}/cancel");
         }
 
         /// <summary>

@@ -101,21 +101,6 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Update]
         [Testing.Parameters]
-        public async Task TestAddShipmentsById()
-        {
-            UseVCR("add_shipments_by_id");
-
-            Batch batch = await Client.Batch.Create();
-
-            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
-            batch = await Client.Batch.AddShipments(batch.Id, new List<string> { shipment.Id });
-
-            Assert.Equal(1, batch.NumShipments);
-        }
-
-        [Fact]
-        [CrudOperations.Update]
-        [Testing.Parameters]
         public async Task TestAddShipmentsByDictionary()
         {
             UseVCR("add_shipments_by_dictionary");
@@ -126,6 +111,21 @@ namespace EasyPost.Tests.ServicesTests
             Dictionary<string, object> shipmentsDictionary = new() { { "shipments", new List<Dictionary<string, object>> { new() { { "id", shipment.Id } } } } };
 
             batch = await Client.Batch.AddShipments(batch.Id, shipmentsDictionary);
+
+            Assert.Equal(1, batch.NumShipments);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Parameters]
+        public async Task TestAddShipmentsById()
+        {
+            UseVCR("add_shipments_by_id");
+
+            Batch batch = await Client.Batch.Create();
+
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+            batch = await Client.Batch.AddShipments(batch.Id, new List<string> { shipment.Id });
 
             Assert.Equal(1, batch.NumShipments);
         }
@@ -225,24 +225,6 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Update]
         [Testing.Parameters]
-        public async Task TestRemoveShipmentsById()
-        {
-            UseVCR("remove_shipments_by_id");
-
-            Batch batch = await Client.Batch.Create();
-
-            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
-            batch = await Client.Batch.AddShipments(batch.Id, new List<Shipment> { shipment });
-            Assert.Equal(1, batch.NumShipments);
-
-            batch = await Client.Batch.RemoveShipments(batch.Id, new List<string> { shipment.Id });
-
-            Assert.Equal(0, batch.NumShipments);
-        }
-
-        [Fact]
-        [CrudOperations.Update]
-        [Testing.Parameters]
         public async Task TestRemoveShipmentsByDictionary()
         {
             UseVCR("remove_shipments_by_dictionary");
@@ -255,6 +237,24 @@ namespace EasyPost.Tests.ServicesTests
 
             Dictionary<string, object> shipmentsDictionary = new() { { "shipments", new List<Dictionary<string, object>> { new() { { "id", shipment.Id } } } } };
             batch = await Client.Batch.RemoveShipments(batch.Id, shipmentsDictionary);
+
+            Assert.Equal(0, batch.NumShipments);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Parameters]
+        public async Task TestRemoveShipmentsById()
+        {
+            UseVCR("remove_shipments_by_id");
+
+            Batch batch = await Client.Batch.Create();
+
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+            batch = await Client.Batch.AddShipments(batch.Id, new List<Shipment> { shipment });
+            Assert.Equal(1, batch.NumShipments);
+
+            batch = await Client.Batch.RemoveShipments(batch.Id, new List<string> { shipment.Id });
 
             Assert.Equal(0, batch.NumShipments);
         }

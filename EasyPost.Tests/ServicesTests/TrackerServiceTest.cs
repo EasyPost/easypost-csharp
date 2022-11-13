@@ -86,6 +86,8 @@ namespace EasyPost.Tests.ServicesTests
             Assert.Equal(tracker.Id, retrievedTracker.Id);
         }
 
+        #endregion
+
         [Fact]
         [Testing.Properties]
         public async Task TestTrackerCarrierDetails()
@@ -111,8 +113,6 @@ namespace EasyPost.Tests.ServicesTests
                 // TrackingLocation details will be empty, so we can't test their presence.
             }
         }
-
-        #endregion
 
         #endregion
 

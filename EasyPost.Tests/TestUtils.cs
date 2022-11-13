@@ -188,9 +188,8 @@ namespace EasyPost.Tests._Utilities
 
         public class MockRequestResponseInfo
         {
-            internal HttpStatusCode StatusCode { get; set; }
-
             internal string? Content { get; set; }
+            internal HttpStatusCode StatusCode { get; set; }
 
             public MockRequestResponseInfo(HttpStatusCode statusCode, string? content = null, object? data = null)
             {
@@ -216,11 +215,17 @@ namespace EasyPost.Tests._Utilities
         {
             private readonly List<MockRequest> _mockRequests = new();
 
-#pragma warning disable CS1998
-            internal override async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request)
-#pragma warning restore CS1998
+            internal MockClient(EasyPostClient client) : base(client.Configuration.ApiKey, client.Configuration.ApiBase, client.Configuration.HttpClient)
             {
-                var mockRequest = FindMatchingMockRequest(request);
+            }
+
+            internal void AddMockRequest(MockRequest mockRequest) => _mockRequests.Add(mockRequest);
+
+            internal void AddMockRequests(IEnumerable<MockRequest> mockRequests) => _mockRequests.AddRange(mockRequests);
+
+            internal override async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request)
+            {
+                MockRequest? mockRequest = FindMatchingMockRequest(request);
 
                 if (mockRequest == null)
                 {
@@ -235,11 +240,9 @@ namespace EasyPost.Tests._Utilities
                 };
             }
 
-#pragma warning disable CS1998
             internal override async Task<RestResponse> ExecuteRequest(RestRequest request)
-#pragma warning restore CS1998
             {
-                var mockRequest = FindMatchingMockRequest(request);
+                MockRequest? mockRequest = FindMatchingMockRequest(request);
 
                 if (mockRequest == null)
                 {
@@ -253,26 +256,10 @@ namespace EasyPost.Tests._Utilities
                 };
             }
 
-            internal MockClient(EasyPostClient client) : base(client.Configuration.ApiKey, client.Configuration.ApiBase, client.Configuration.HttpClient)
-            {
-            }
-
-            internal void AddMockRequest(MockRequest mockRequest)
-            {
-                _mockRequests.Add(mockRequest);
-            }
-
-            internal void AddMockRequests(IEnumerable<MockRequest> mockRequests)
-            {
-                _mockRequests.AddRange(mockRequests);
-            }
-
-            private MockRequest FindMatchingMockRequest(RestRequest request)
-            {
-                return _mockRequests.FirstOrDefault(
+            private MockRequest FindMatchingMockRequest(RestRequest request) =>
+                _mockRequests.FirstOrDefault(
                     mock => mock.MatchRules.Method == request.Method &&
                             EndpointMatches(request.Resource, mock.MatchRules.ResourceRegex));
-            }
 
             private static bool EndpointMatches(string endpoint, string pattern)
             {

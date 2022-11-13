@@ -22,6 +22,8 @@ namespace EasyPost.Tests._Utilities
         /// </summary>
         protected Func<string, Task<bool>>? CleanupFunction { get; set; }
 
+        protected virtual IEnumerable<TestUtils.MockRequest> MockRequests => new List<TestUtils.MockRequest>();
+
 #pragma warning disable CS8618
         // Warning is disabled because the IDE will warn the Client is not initialized and should be nullable.
         // Client is set later in the process, and will not be null when used by the unit tests execution.
@@ -79,19 +81,6 @@ namespace EasyPost.Tests._Utilities
         protected void UseLive(string apiKey) => Client = TestUtils.GetClient(apiKey);
 
         /// <summary>
-        ///     Set up all clients to use the VCR.
-        /// </summary>
-        /// <param name="cassetteName"></param>
-        /// <param name="overrideApiKey"></param>
-        // ReSharper disable once InconsistentNaming
-        protected void UseVCR(string cassetteName, string? overrideApiKey = null) => Client = _vcr?.SetUpTest(cassetteName, overrideApiKey)!;
-
-        protected virtual IEnumerable<TestUtils.MockRequest> MockRequests
-        {
-            get { return new List<TestUtils.MockRequest>(); }
-        }
-
-        /// <summary>
         ///     Set up all clients to make mock requests.
         /// </summary>
         /// <param name="mockRequestsOverride">List of mock requests to use instead of the global list.</param>
@@ -103,5 +92,13 @@ namespace EasyPost.Tests._Utilities
             // add the mock requests to the mock client
             ((TestUtils.MockClient)Client).AddMockRequests(mockRequestsOverride ?? MockRequests);
         }
+
+        /// <summary>
+        ///     Set up all clients to use the VCR.
+        /// </summary>
+        /// <param name="cassetteName"></param>
+        /// <param name="overrideApiKey"></param>
+        // ReSharper disable once InconsistentNaming
+        protected void UseVCR(string cassetteName, string? overrideApiKey = null) => Client = _vcr?.SetUpTest(cassetteName, overrideApiKey)!;
     }
 }
