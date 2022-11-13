@@ -1,11 +1,10 @@
 ﻿using System;
 
-namespace EasyPost.Exceptions
+namespace EasyPost.Exceptions;
+
+public class EasyPostError : Exception
 {
-    public class EasyPostError : Exception
+    internal EasyPostError(string message) : base(message)
     {
-        internal EasyPostError(string message) : base(message)
-        {
-        }
     }
 }

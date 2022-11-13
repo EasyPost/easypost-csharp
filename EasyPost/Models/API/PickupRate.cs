@@ -1,18 +1,17 @@
 using Newtonsoft.Json;
 
-namespace EasyPost.Models.API
+namespace EasyPost.Models.API;
+
+public class PickupRate : Rate
 {
-    public class PickupRate : Rate
+    #region JSON Properties
+
+    [JsonProperty("pickup_id")]
+    public string? PickupId { get; set; }
+
+    #endregion
+
+    internal PickupRate()
     {
-        #region JSON Properties
-
-        [JsonProperty("pickup_id")]
-        public string? PickupId { get; set; }
-
-        #endregion
-
-        internal PickupRate()
-        {
-        }
     }
 }

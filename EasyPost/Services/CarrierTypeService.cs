@@ -5,27 +5,23 @@ using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 using RestSharp;
 
-namespace EasyPost.Services
+namespace EasyPost.Services;
+
+// ReSharper disable once ClassNeverInstantiated.Global
+public class CarrierTypeService : EasyPostService
 {
-    // ReSharper disable once ClassNeverInstantiated.Global
-    public class CarrierTypeService : EasyPostService
+    internal CarrierTypeService(EasyPostClient client) : base(client)
     {
-        internal CarrierTypeService(EasyPostClient client) : base(client)
-        {
-        }
-
-        #region CRUD Operations
-
-        /// <summary>
-        ///     Get all available carrier types.
-        /// </summary>
-        /// <returns>A list of EasyPost.CarrierType instances.</returns>
-        [CrudOperations.Read]
-        public async Task<List<CarrierType>> All()
-        {
-            return await Request<List<CarrierType>>(Method.Get, "carrier_types");
-        }
-
-        #endregion
     }
+
+    #region CRUD Operations
+
+    /// <summary>
+    ///     Get all available carrier types.
+    /// </summary>
+    /// <returns>A list of EasyPost.CarrierType instances.</returns>
+    [CrudOperations.Read]
+    public async Task<List<CarrierType>> All() => await Request<List<CarrierType>>(Method.Get, "carrier_types");
+
+    #endregion
 }

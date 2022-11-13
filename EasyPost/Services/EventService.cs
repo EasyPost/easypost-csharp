@@ -5,49 +5,42 @@ using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 using RestSharp;
 
-namespace EasyPost.Services
+namespace EasyPost.Services;
+
+// ReSharper disable once ClassNeverInstantiated.Global
+public class EventService : EasyPostService
 {
-    // ReSharper disable once ClassNeverInstantiated.Global
-    public class EventService : EasyPostService
+    internal EventService(EasyPostClient client) : base(client)
     {
-        internal EventService(EasyPostClient client) : base(client)
-        {
-        }
-
-        #region CRUD Operations
-
-        /// <summary>
-        ///     List all Event objects.
-        /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
-        ///     * {"before_id", string} String representing an Event ID. Starts with "evt_". Only retrieve events created
-        ///     before this id. Takes precedence over after_id.
-        ///     * {"after_id", string} String representing an Event ID. Starts with "evt_". Only retrieve events created after
-        ///     this id.
-        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve events created after this datetime.
-        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve events created before this datetime.
-        ///     * {"page_size", int} Max size of list. Default to 20.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>An EasyPost.EventCollection instance.</returns>
-        [CrudOperations.Read]
-        public async Task<EventCollection> All(Dictionary<string, object>? parameters = null)
-        {
-            return await Request<EventCollection>(Method.Get, "events", parameters);
-        }
-
-        /// <summary>
-        ///     Retrieve an Event from its id.
-        /// </summary>
-        /// <param name="id">String representing a Event. Starts with "evt_".</param>
-        /// <returns>EasyPost.Event instance.</returns>
-        [CrudOperations.Read]
-        public async Task<Event> Retrieve(string id)
-        {
-            return await Request<Event>(Method.Get, $"events/{id}");
-        }
-
-        #endregion
     }
+
+    #region CRUD Operations
+
+    /// <summary>
+    ///     List all Event objects.
+    /// </summary>
+    /// <param name="parameters">
+    ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
+    ///     * {"before_id", string} String representing an Event ID. Starts with "evt_". Only retrieve events created
+    ///     before this id. Takes precedence over after_id.
+    ///     * {"after_id", string} String representing an Event ID. Starts with "evt_". Only retrieve events created after
+    ///     this id.
+    ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve events created after this datetime.
+    ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve events created before this datetime.
+    ///     * {"page_size", int} Max size of list. Default to 20.
+    ///     All invalid keys will be ignored.
+    /// </param>
+    /// <returns>An EasyPost.EventCollection instance.</returns>
+    [CrudOperations.Read]
+    public async Task<EventCollection> All(Dictionary<string, object>? parameters = null) => await Request<EventCollection>(Method.Get, "events", parameters);
+
+    /// <summary>
+    ///     Retrieve an Event from its id.
+    /// </summary>
+    /// <param name="id">String representing a Event. Starts with "evt_".</param>
+    /// <returns>EasyPost.Event instance.</returns>
+    [CrudOperations.Read]
+    public async Task<Event> Retrieve(string id) => await Request<Event>(Method.Get, $"events/{id}");
+
+    #endregion
 }

@@ -3,97 +3,82 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace EasyPost.Utilities
+namespace EasyPost.Utilities;
+
+public interface IEnum
 {
-    public interface IEnum
+}
+
+/// <summary>
+///     A Java-like enum implementation for C#.
+/// </summary>
+public abstract class Enum : IComparable, IEnum
+{
+    private int Id { get; }
+
+    protected Enum(int id) => Id = id;
+
+    public int CompareTo(object? other) => Id.CompareTo(((Enum)other!).Id);
+
+    public override bool Equals(object? obj)
     {
-    }
-
-    /// <summary>
-    ///     A Java-like enum implementation for C#.
-    /// </summary>
-    public abstract class Enum : IComparable, IEnum
-    {
-        private int Id { get; }
-
-        protected Enum(int id)
+        try
         {
-            Id = id;
-        }
-
-        public int CompareTo(object? other) => Id.CompareTo(((Enum)other!).Id);
-
-        public override string ToString() => Id.ToString();
-
-        public override bool Equals(object? obj)
-        {
-            try
+            if (GetType() != obj!.GetType())
             {
-                if (GetType() != obj!.GetType())
-                {
-                    // types are not the same
-                    return false;
-                }
-
-                Enum objEnum = (Enum)obj;
-                return objEnum == this;
-            }
-            catch (Exception)
-            {
-                // casting likely failed
-                return false;
-            }
-        }
-
-        public override int GetHashCode()
-        {
-            {
-                return new Dictionary<string, int> { { GetType().ToString(), Id } }.GetHashCode();
-            }
-        }
-
-        private bool Equals(Enum? other) => Id == other?.Id;
-
-        public static bool operator ==(Enum? one, Enum? two)
-        {
-            if (one is null && two is null)
-            {
-                return true;
-            }
-
-            if (one is null || two is null)
-            {
+                // types are not the same
                 return false;
             }
 
-            return one.Equals(two);
+            Enum objEnum = (Enum)obj;
+            return objEnum == this;
         }
-
-        public static bool operator !=(Enum? one, Enum? two)
+        catch (Exception)
         {
-            return !(one == two);
+            // casting likely failed
+            return false;
         }
-
-        public static IEnumerable<T> GetAll<T>() where T : IEnum =>
-            typeof(T).GetFields(BindingFlags.Public |
-                                BindingFlags.Static |
-                                BindingFlags.DeclaredOnly)
-                .Select(f => f.GetValue(null))
-                .Cast<T>();
     }
 
-    /// <summary>
-    ///     An enum that stores a value internally.
-    /// </summary>
-    public abstract class ValueEnum : Enum
+    public override int GetHashCode() => new Dictionary<string, int> { { GetType().ToString(), Id } }.GetHashCode();
+
+    public override string ToString() => Id.ToString();
+
+    private bool Equals(Enum? other) => Id == other?.Id;
+
+    public static IEnumerable<T> GetAll<T>() where T : IEnum =>
+        typeof(T).GetFields(BindingFlags.Public |
+                            BindingFlags.Static |
+                            BindingFlags.DeclaredOnly)
+            .Select(f => f.GetValue(null))
+            .Cast<T>();
+
+    public static bool operator ==(Enum? one, Enum? two)
     {
-        internal object Value { get; }
-
-        protected ValueEnum(int id, object value) : base(id)
+        if (one is null && two is null)
         {
-            Value = value;
+            return true;
         }
 
-        public override string ToString() => Value.ToString() ?? string.Empty;
+        if (one is null || two is null)
+        {
+            return false;
+        }
+
+        return one.Equals(two);
     }
+
+    public static bool operator !=(Enum? one, Enum? two) => !(one == two);
+}
+
+/// <summary>
+///     An enum that stores a value internally.
+/// </summary>
+public abstract class ValueEnum : Enum
+{
+    internal object Value { get; }
+
+    protected ValueEnum(int id, object value) : base(id) => Value = value;
+
+    public override string ToString() => Value.ToString();
 }

@@ -3,36 +3,35 @@ using EasyPost._base;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
-namespace EasyPost.Models.API
+namespace EasyPost.Models.API;
+
+public class ApiKey : EasyPostObject
 {
-    public class ApiKey : EasyPostObject
+    #region JSON Properties
+
+    [JsonProperty("key")]
+    public string? Key { get; set; }
+
+    #endregion
+
+    internal ApiKey()
     {
-        #region JSON Properties
-
-        [JsonProperty("key")]
-        public string? Key { get; set; }
-
-        #endregion
-
-        internal ApiKey()
-        {
-        }
     }
+}
 
-    public class ApiKeyCollection : Collection
+public class ApiKeyCollection : Collection
+{
+    #region JSON Properties
+
+    [JsonProperty("children")]
+    public List<ApiKeyCollection>? Children { get; set; }
+
+    [JsonProperty("keys")]
+    public List<ApiKey>? Keys { get; set; }
+
+    #endregion
+
+    internal ApiKeyCollection()
     {
-        #region JSON Properties
-
-        [JsonProperty("children")]
-        public List<ApiKeyCollection>? Children { get; set; }
-
-        [JsonProperty("keys")]
-        public List<ApiKey>? Keys { get; set; }
-
-        #endregion
-
-        internal ApiKeyCollection()
-        {
-        }
     }
 }

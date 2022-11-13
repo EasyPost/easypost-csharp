@@ -1,9 +1,8 @@
-﻿namespace EasyPost.Exceptions.General
+﻿namespace EasyPost.Exceptions.General;
+
+public class InvalidParameterError : ValidationError
 {
-    public class InvalidParameterError : ValidationError
+    internal InvalidParameterError(string parameterName) : base(string.Format(Constants.ErrorMessages.InvalidParameter, parameterName))
     {
-        internal InvalidParameterError(string parameterName) : base(string.Format(Constants.ErrorMessages.InvalidParameter, parameterName))
-        {
-        }
     }
 }

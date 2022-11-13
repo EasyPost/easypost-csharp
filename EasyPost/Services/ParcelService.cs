@@ -6,48 +6,44 @@ using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 using RestSharp;
 
-namespace EasyPost.Services
+namespace EasyPost.Services;
+
+// ReSharper disable once ClassNeverInstantiated.Global
+public class ParcelService : EasyPostService
 {
-    // ReSharper disable once ClassNeverInstantiated.Global
-    public class ParcelService : EasyPostService
+    internal ParcelService(EasyPostClient client) : base(client)
     {
-        internal ParcelService(EasyPostClient client) : base(client)
-        {
-        }
-
-        #region CRUD Operations
-
-        /// <summary>
-        ///     Create a Parcel.
-        /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to create the parcel with. Valid pairs:
-        ///     * {"length", int}
-        ///     * {"width", int}
-        ///     * {"height", int}
-        ///     * {"weight", double}
-        ///     * {"predefined_package", string}
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>EasyPost.Parcel instance.</returns>
-        [CrudOperations.Create]
-        public async Task<Parcel> Create(Dictionary<string, object> parameters)
-        {
-            parameters = parameters.Wrap("parcel");
-            return await Request<Parcel>(Method.Post, "parcels", parameters);
-        }
-
-        /// <summary>
-        ///     Retrieve a Parcel from its id.
-        /// </summary>
-        /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
-        /// <returns>EasyPost.Parcel instance.</returns>
-        [CrudOperations.Read]
-        public async Task<Parcel> Retrieve(string id)
-        {
-            return await Request<Parcel>(Method.Get, $"parcels/{id}");
-        }
-
-        #endregion
     }
+
+    #region CRUD Operations
+
+    /// <summary>
+    ///     Create a Parcel.
+    /// </summary>
+    /// <param name="parameters">
+    ///     Dictionary containing parameters to create the parcel with. Valid pairs:
+    ///     * {"length", int}
+    ///     * {"width", int}
+    ///     * {"height", int}
+    ///     * {"weight", double}
+    ///     * {"predefined_package", string}
+    ///     All invalid keys will be ignored.
+    /// </param>
+    /// <returns>EasyPost.Parcel instance.</returns>
+    [CrudOperations.Create]
+    public async Task<Parcel> Create(Dictionary<string, object> parameters)
+    {
+        parameters = parameters.Wrap("parcel");
+        return await Request<Parcel>(Method.Post, "parcels", parameters);
+    }
+
+    /// <summary>
+    ///     Retrieve a Parcel from its id.
+    /// </summary>
+    /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
+    /// <returns>EasyPost.Parcel instance.</returns>
+    [CrudOperations.Read]
+    public async Task<Parcel> Retrieve(string id) => await Request<Parcel>(Method.Get, $"parcels/{id}");
+
+    #endregion
 }

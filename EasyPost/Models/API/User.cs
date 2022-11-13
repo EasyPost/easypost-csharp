@@ -1,11 +1,10 @@
 ﻿using EasyPost.Models.Shared;
 
-namespace EasyPost.Models.API
+namespace EasyPost.Models.API;
+
+public class User : BaseUser
 {
-    public class User : BaseUser
+    internal User()
     {
-        internal User()
-        {
-        }
     }
 }

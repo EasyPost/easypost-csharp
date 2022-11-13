@@ -9,90 +9,89 @@ using EasyPost.Utilities;
 using EasyPost.Utilities.Annotations;
 using RestSharp;
 
-namespace EasyPost.Services
+namespace EasyPost.Services;
+
+// ReSharper disable once ClassNeverInstantiated.Global
+public class BillingService : EasyPostService
 {
-    // ReSharper disable once ClassNeverInstantiated.Global
-    public class BillingService : EasyPostService
+    internal BillingService(EasyPostClient client) : base(client)
     {
-        internal BillingService(EasyPostClient client) : base(client)
+    }
+
+    #region CRUD Operations
+
+    /// <summary>
+    ///     Fund your wallet from a specific payment method.
+    /// </summary>
+    /// <param name="amount">Amount to fund.</param>
+    /// <param name="priority">Which type of payment method to use to fund the wallet. Defaults to primary.</param>
+    [CrudOperations.Create]
+    public async Task FundWallet(string amount, PaymentMethod.Priority? priority = null)
+    {
+        priority ??= PaymentMethod.Priority.Primary;
+
+        PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
+
+        Dictionary<string, object> parameters = new() { { "amount", amount } };
+
+        await Request(Method.Post, $"{paymentMethod.Endpoint}/{paymentMethod.Id}/charge", parameters);
+    }
+
+    /// <summary>
+    ///     List all payment methods for this account.
+    /// </summary>
+    /// <returns>An EasyPost.PaymentMethodSummary summary object.</returns>
+    [CrudOperations.Read]
+    public async Task<PaymentMethodsSummary> RetrievePaymentMethodsSummary()
+    {
+        PaymentMethodsSummary paymentMethodsSummary = await Request<PaymentMethodsSummary>(Method.Get, "payment_methods");
+        if (paymentMethodsSummary.Id == null)
         {
+            throw new InvalidObjectError(Constants.ErrorMessages.NoPaymentMethods);
         }
 
-        #region CRUD Operations
+        return paymentMethodsSummary;
+    }
 
-        /// <summary>
-        ///     Fund your wallet from a specific payment method.
-        /// </summary>
-        /// <param name="amount">Amount to fund.</param>
-        /// <param name="priority">Which type of payment method to use to fund the wallet. Defaults to primary.</param>
-        [CrudOperations.Create]
-        public async Task FundWallet(string amount, PaymentMethod.Priority? priority = null)
+    /// <summary>
+    ///     Delete a payment method from the user's account.
+    /// </summary>
+    /// <param name="priority">Which type of payment method to delete.</param>
+    [CrudOperations.Delete]
+    public async Task DeletePaymentMethod(PaymentMethod.Priority priority)
+    {
+        PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
+
+        await Request(Method.Delete, $"{paymentMethod.Endpoint}/{paymentMethod.Id}");
+    }
+
+    #endregion
+
+    /// <summary>
+    ///     Get a payment method by priority.
+    /// </summary>
+    /// <param name="priority">Which priority payment method to get.</param>
+    /// <returns>An EasyPost.PaymentMethodObject instance.</returns>
+    /// <exception cref="Exception">Billing has not been set up yet, or the Priority provided is invalid.</exception>
+    private async Task<PaymentMethod> GetPaymentMethodByPriority(PaymentMethod.Priority priority)
+    {
+        PaymentMethodsSummary paymentMethodsSummarySummary = await RetrievePaymentMethodsSummary();
+
+        PaymentMethod? paymentMethod = null;
+        SwitchCase? @switch = new SwitchCase
         {
-            priority ??= PaymentMethod.Priority.Primary;
+            { PaymentMethod.Priority.Primary, () => { paymentMethod = paymentMethodsSummarySummary.PrimaryPaymentMethod; } },
+            { PaymentMethod.Priority.Secondary, () => { paymentMethod = paymentMethodsSummarySummary.SecondaryPaymentMethod; } },
+            { SwitchCaseScenario.Default, () => throw new InvalidParameterError("priority") }
+        };
 
-            PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
+        @switch.MatchFirst(priority);
 
-            Dictionary<string, object> parameters = new Dictionary<string, object> { { "amount", amount } };
-
-            await Request(Method.Post, $"{paymentMethod.Endpoint}/{paymentMethod.Id}/charge", parameters);
+        if (paymentMethod?.Id == null)
+        {
+            throw new InvalidObjectError(Constants.ErrorMessages.PaymentNotSetUp);
         }
 
-        /// <summary>
-        ///     List all payment methods for this account.
-        /// </summary>
-        /// <returns>An EasyPost.PaymentMethodSummary summary object.</returns>
-        [CrudOperations.Read]
-        public async Task<PaymentMethodsSummary> RetrievePaymentMethodsSummary()
-        {
-            PaymentMethodsSummary paymentMethodsSummary = await Request<PaymentMethodsSummary>(Method.Get, "payment_methods");
-            if (paymentMethodsSummary.Id == null)
-            {
-                throw new InvalidObjectError(Constants.ErrorMessages.NoPaymentMethods);
-            }
-
-            return paymentMethodsSummary;
-        }
-
-        /// <summary>
-        ///     Delete a payment method from the user's account.
-        /// </summary>
-        /// <param name="priority">Which type of payment method to delete.</param>
-        [CrudOperations.Delete]
-        public async Task DeletePaymentMethod(PaymentMethod.Priority priority)
-        {
-            PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
-
-            await Request(Method.Delete, $"{paymentMethod.Endpoint}/{paymentMethod.Id}");
-        }
-
-        #endregion
-
-        /// <summary>
-        ///     Get a payment method by priority.
-        /// </summary>
-        /// <param name="priority">Which priority payment method to get.</param>
-        /// <returns>An EasyPost.PaymentMethodObject instance.</returns>
-        /// <exception cref="Exception">Billing has not been set up yet, or the Priority provided is invalid.</exception>
-        private async Task<PaymentMethod> GetPaymentMethodByPriority(PaymentMethod.Priority priority)
-        {
-            PaymentMethodsSummary paymentMethodsSummarySummary = await RetrievePaymentMethodsSummary();
-
-            PaymentMethod? paymentMethod = null;
-            var @switch = new SwitchCase
-            {
-                { PaymentMethod.Priority.Primary, () => { paymentMethod = paymentMethodsSummarySummary.PrimaryPaymentMethod; } },
-                { PaymentMethod.Priority.Secondary, () => { paymentMethod = paymentMethodsSummarySummary.SecondaryPaymentMethod; } },
-                { SwitchCaseScenario.Default, () => throw new InvalidParameterError("priority") }
-            };
-
-            @switch.MatchFirst(priority);
-
-            if (paymentMethod?.Id == null)
-            {
-                throw new InvalidObjectError(Constants.ErrorMessages.PaymentNotSetUp);
-            }
-
-            return paymentMethod;
-        }
+        return paymentMethod;
     }
 }
