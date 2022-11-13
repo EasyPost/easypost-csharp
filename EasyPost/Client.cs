@@ -6,53 +6,53 @@ namespace EasyPost
 {
     public class Client : EasyPostClient
     {
-        public AddressService Address => GetService<AddressService>();
+        public AddressService Address { get; }
 
-        public ApiKeyService ApiKey => GetService<ApiKeyService>();
+        public ApiKeyService ApiKey { get; }
 
-        public BatchService Batch => GetService<BatchService>();
+        public BatchService Batch { get; }
 
         public BetaClient Beta { get; }
 
-        public BillingService Billing => GetService<BillingService>();
+        public BillingService Billing { get; }
 
-        public CarrierAccountService CarrierAccount => GetService<CarrierAccountService>();
+        public CarrierAccountService CarrierAccount { get; }
 
-        public CarrierTypeService CarrierType => GetService<CarrierTypeService>();
+        public CarrierTypeService CarrierType { get; }
 
-        public CustomsInfoService CustomsInfo => GetService<CustomsInfoService>();
+        public CustomsInfoService CustomsInfo { get; }
 
-        public CustomsItemService CustomsItem => GetService<CustomsItemService>();
+        public CustomsItemService CustomsItem { get; }
 
-        public EndShipperService EndShipper => GetService<EndShipperService>();
+        public EndShipperService EndShipper { get; }
 
-        public EventService Event => GetService<EventService>();
+        public EventService Event { get; }
 
-        public InsuranceService Insurance => GetService<InsuranceService>();
+        public InsuranceService Insurance { get; }
 
-        public OrderService Order => GetService<OrderService>();
+        public OrderService Order { get; }
 
-        public ParcelService Parcel => GetService<ParcelService>();
+        public ParcelService Parcel { get; }
 
-        public PartnerService Partner => GetService<PartnerService>();
+        public PartnerService Partner { get; }
 
-        public PickupService Pickup => GetService<PickupService>();
+        public PickupService Pickup { get; }
 
-        public RateService Rate => GetService<RateService>();
+        public RateService Rate { get; }
 
-        public RefundService Refund => GetService<RefundService>();
+        public RefundService Refund { get; }
 
-        public ReportService Report => GetService<ReportService>();
+        public ReportService Report { get; }
 
-        public ScanFormService ScanForm => GetService<ScanFormService>();
+        public ScanFormService ScanForm { get; }
 
-        public ShipmentService Shipment => GetService<ShipmentService>();
+        public ShipmentService Shipment { get; }
 
-        public TrackerService Tracker => GetService<TrackerService>();
+        public TrackerService Tracker { get; }
 
-        public UserService User => GetService<UserService>();
+        public UserService User { get; }
 
-        public WebhookService Webhook => GetService<WebhookService>();
+        public WebhookService Webhook { get; }
 
         /// <summary>
         ///     Constructor for the EasyPost client.
@@ -64,6 +64,31 @@ namespace EasyPost
         {
             // We go ahead and initialize the Beta client internally here as well, since initializing a new one on each property call is expensive and causes lockups with the HttpClient library.
             Beta = new BetaClient(apiKey, baseUrl, customHttpClient);
+
+            // We also initialize the services here, since they are all singletons and we don't want to create a new one each time.
+            Address = GetService<AddressService>();
+            ApiKey = GetService<ApiKeyService>();
+            Batch = GetService<BatchService>();
+            Billing = GetService<BillingService>();
+            CarrierAccount = GetService<CarrierAccountService>();
+            CarrierType = GetService<CarrierTypeService>();
+            CustomsInfo = GetService<CustomsInfoService>();
+            CustomsItem = GetService<CustomsItemService>();
+            EndShipper = GetService<EndShipperService>();
+            Event = GetService<EventService>();
+            Insurance = GetService<InsuranceService>();
+            Order = GetService<OrderService>();
+            Parcel = GetService<ParcelService>();
+            Partner = GetService<PartnerService>();
+            Pickup = GetService<PickupService>();
+            Rate = GetService<RateService>();
+            Refund = GetService<RefundService>();
+            Report = GetService<ReportService>();
+            ScanForm = GetService<ScanFormService>();
+            Shipment = GetService<ShipmentService>();
+            Tracker = GetService<TrackerService>();
+            User = GetService<UserService>();
+            Webhook = GetService<WebhookService>();
         }
     }
 }
