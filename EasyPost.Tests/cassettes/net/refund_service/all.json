@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 495,
-    "RecordedAt": "2022-10-24T12:37:26.650604-06:00",
+    "Duration": 272,
+    "RecordedAt": "2022-11-13T16:18:36.711444-07:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -16,7 +16,7 @@
       "Uri": "https://api.easypost.com/v2/refunds?page_size=5"
     },
     "Response": {
-      "Body": "{\"refunds\":[{\"id\":\"rfnd_a2d6a83b5c6848158fbc6f1dfff179df\",\"object\":\"Refund\",\"created_at\":\"2022-10-24T18:37:25Z\",\"updated_at\":\"2022-10-24T18:37:25Z\",\"tracking_code\":\"9400100106068145130906\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_973bdd23e5e04bceab70c098042c0891\"},{\"id\":\"rfnd_80f8f023e102421085c72b9c75c47f7b\",\"object\":\"Refund\",\"created_at\":\"2022-10-24T18:37:23Z\",\"updated_at\":\"2022-10-24T18:37:23Z\",\"tracking_code\":\"9400100106068145130814\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_247bcc72c7e44b9f9761cebc099d82dd\"},{\"id\":\"rfnd_6e682f2d4b2c4ee2828da7c4d6337381\",\"object\":\"Refund\",\"created_at\":\"2022-10-24T18:36:21Z\",\"updated_at\":\"2022-10-24T18:36:21Z\",\"tracking_code\":\"9400100106068145130289\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_4b9076507b414a31acc1219ea8235c24\"},{\"id\":\"rfnd_29b0994b17924897a1618f92a478867f\",\"object\":\"Refund\",\"created_at\":\"2022-10-24T18:36:19Z\",\"updated_at\":\"2022-10-24T18:36:19Z\",\"tracking_code\":\"9400100106068145130227\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_5e57c6d8d27844c0a9a3884449427777\"},{\"id\":\"rfnd_9829e3a0483344e9a24bfd2a9a225c49\",\"object\":\"Refund\",\"created_at\":\"2022-10-24T18:36:17Z\",\"updated_at\":\"2022-10-24T18:36:17Z\",\"tracking_code\":\"9400100106068145130142\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_132f8d06a56749c2a07b4fadef6055d3\"}],\"has_more\":true}",
+      "Body": "{\"refunds\":[{\"id\":\"rfnd_a25752b51f044b4599c0e49016dd8aa6\",\"object\":\"Refund\",\"created_at\":\"2022-11-13T23:18:36Z\",\"updated_at\":\"2022-11-13T23:18:36Z\",\"tracking_code\":\"9400100106068149406090\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_e8a2d8f7301345c19edf2309f84e3402\"},{\"id\":\"rfnd_6928c43d08194d3c90c0b40e7a06bccc\",\"object\":\"Refund\",\"created_at\":\"2022-11-13T23:18:34Z\",\"updated_at\":\"2022-11-13T23:18:34Z\",\"tracking_code\":\"9400100106068149406045\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_b3251a0a021c4fc3ab9a434554413631\"},{\"id\":\"rfnd_d0156992f79a4dac8b78321b232f507f\",\"object\":\"Refund\",\"created_at\":\"2022-11-13T23:17:51Z\",\"updated_at\":\"2022-11-13T23:17:51Z\",\"tracking_code\":\"9400100106068149405710\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_51e7c9bc2d08408cbf7258c8b27f1d1a\"},{\"id\":\"rfnd_4b429d6b30b04301a5fb30bfa4b483db\",\"object\":\"Refund\",\"created_at\":\"2022-11-13T23:17:24Z\",\"updated_at\":\"2022-11-13T23:17:24Z\",\"tracking_code\":\"9400100106068149405383\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_bdcfba0106aa444584cbba0f4f2c8992\"},{\"id\":\"rfnd_041ec040817f4c249e5800b2646222e1\",\"object\":\"Refund\",\"created_at\":\"2022-11-13T23:17:23Z\",\"updated_at\":\"2022-11-13T23:17:23Z\",\"tracking_code\":\"9400100106068149405338\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_6742e254a47e4c55885d28d41419e5de\"}],\"has_more\":true}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -31,15 +31,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "bcc8f2396356db66ecb4ef4d0022b368",
+        "x-ep-request-uuid": "0f19c4f663717b4cf3c645ec0011c752",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "ETag": "W/\"6053b11c1fe713be5a9628672da84ce3\"",
-        "x-runtime": "0.044039",
-        "x-node": "bigweb5nuq",
-        "x-version-label": "easypost-202210241803-ba94ab8034-master",
+        "ETag": "W/\"06a1d92048d04ac289ff60f2494636a0\"",
+        "x-runtime": "0.048158",
+        "x-node": "bigweb8nuq",
+        "x-version-label": "easypost-202211102043-5e82a6be5e-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 29913d444b,extlb2nuq 29913d444b",
+        "x-proxied": "intlb1nuq 29913d444b,extlb1nuq 29913d444b",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

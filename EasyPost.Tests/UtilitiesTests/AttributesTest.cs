@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using EasyPost.Models.API;
+using EasyPost.Services;
+using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Annotations;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
@@ -9,21 +11,27 @@ using Xunit;
 
 namespace EasyPost.Tests.UtilitiesTests
 {
-    public class AttributesTest
+    public class AttributesTest : UnitTest
     {
+        public AttributesTest() : base("attributes")
+        {
+        }
+
         #region Tests
 
         [Fact]
         [Testing.Function]
         public void TestGetMethodsWithAttributes()
         {
+            UseMockClient();
+
             // via type
-            IEnumerable<MethodInfo> methods = BaseCustomAttribute.GetMethodsWithAttribute<CrudOperations.Update>(typeof(Shipment));
+            IEnumerable<MethodInfo> methods = BaseCustomAttribute.GetMethodsWithAttribute<CrudOperations.Update>(typeof(ShipmentService));
             Assert.True(methods.Any());
 
             // via instance
-            Shipment shipment = new();
-            methods = BaseCustomAttribute.GetMethodsWithAttribute<CrudOperations.Update>(shipment);
+            ShipmentService shipmentService = Client.Shipment;
+            methods = BaseCustomAttribute.GetMethodsWithAttribute<CrudOperations.Update>(shipmentService);
             Assert.True(methods.Any());
         }
 

@@ -48,13 +48,11 @@ namespace EasyPost.Tests.ServicesTests
                             PrimaryPaymentMethod = new PaymentMethod
                             {
                                 Id = "card_123",
-                                Client = Client,
                                 Last4 = "1234",
                             },
                             SecondaryPaymentMethod = new PaymentMethod
                             {
                                 Id = "bank_123",
-                                Client = Client,
                                 BankName = "Mock Bank",
                             }
                         })

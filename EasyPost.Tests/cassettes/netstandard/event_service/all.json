@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 674,
-    "RecordedAt": "2022-10-24T12:36:17.090229-06:00",
+    "Duration": 351,
+    "RecordedAt": "2022-11-13T16:17:22.264768-07:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -16,12 +16,12 @@
       "Uri": "https://api.easypost.com/v2/events?page_size=5"
     },
     "Response": {
-      "Body": "{\"events\":[{\"description\":\"report.empty\",\"id\":\"evt_bed1762853ca11ed91c5350379d75242\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-10-24T18:36:16.825Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"report.new\",\"id\":\"evt_bebf237453ca11edb868099b5023d9a0\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-10-24T18:36:16.705Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_be86dbd653ca11ed987e77fab1928d59\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-10-24T18:36:16.336Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"insurance.cancelled\",\"id\":\"evt_be71586a53ca11edbf374de186676d11\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-10-24T18:36:16.195Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"report.empty\",\"id\":\"evt_be6f80c653ca11eda2dd0dade015b902\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-10-24T18:36:16.183Z\",\"mode\":\"test\",\"object\":\"Event\"}],\"has_more\":true}",
+      "Body": "{\"events\":[{\"description\":\"report.empty\",\"id\":\"evt_53bb658a63a911ed819e11e6e4c7f3c1\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-11-13T23:17:22.376Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"report.new\",\"id\":\"evt_539463a463a911ed929f5f9d772aaa0b\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-11-13T23:17:22.121Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"report.empty\",\"id\":\"evt_536d25dc63a911edafd515d1decbe2ee\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-11-13T23:17:21.863Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"report.new\",\"id\":\"evt_533d3ad463a911edba153bcbdfe5332f\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-11-13T23:17:21.549Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_bb0c985463a811ed93e651fba1dad25b\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2022-11-13T23:13:06.217Z\",\"mode\":\"test\",\"object\":\"Event\"}],\"has_more\":true}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "1111"
+        "Content-Length": "1102"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -31,15 +31,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "885a1bc76356db20ecb10b1a00218e1c",
+        "x-ep-request-uuid": "4495012663717b02ec8df84a001217a3",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "ETag": "W/\"ae76a076503d498fa7fd477c76863312\"",
-        "x-runtime": "0.204099",
-        "x-node": "bigweb1nuq",
-        "x-version-label": "easypost-202210241803-ba94ab8034-master",
+        "ETag": "W/\"85bfa3355a771dee775ca912d4e382b7\"",
+        "x-runtime": "0.168378",
+        "x-node": "bigweb7nuq",
+        "x-version-label": "easypost-202211102043-5e82a6be5e-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 29913d444b,intlb2wdc 29913d444b,extlb4wdc 29913d444b",
+        "x-canary": "direct",
+        "x-proxied": "intlb2nuq 29913d444b,extlb2nuq 29913d444b",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

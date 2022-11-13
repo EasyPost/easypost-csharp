@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Exceptions;
@@ -20,8 +21,7 @@ namespace EasyPost.Tests.ServicesTests
             {
                 try
                 {
-                    Webhook retrievedWebhook = await Client.Webhook.Retrieve(id);
-                    await retrievedWebhook.Delete();
+                    await Client.Webhook.Delete(id);
                     return true;
                 }
                 catch
@@ -81,6 +81,42 @@ namespace EasyPost.Tests.ServicesTests
 
             Assert.IsType<Webhook>(retrievedWebhook);
             Assert.Equal(webhook, retrievedWebhook);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestUpdate()
+        {
+            UseVCR("update");
+
+            const string url = "https://example.com/update";
+
+            Webhook webhook = await CreateBasicWebhook(url);
+
+            webhook = await Client.Webhook.Update(webhook.Id);
+
+            Assert.IsType<Webhook>(webhook);
+            Assert.StartsWith("hook_", webhook.Id);
+        }
+
+        [Fact]
+        [CrudOperations.Delete]
+        [Testing.Function]
+        public async Task TestDelete()
+        {
+            UseVCR("delete");
+
+            const string url = "https://example.com/delete";
+
+            Webhook webhook = await CreateBasicWebhook(url);
+            Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.Id);
+
+            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.Webhook.Delete(webhook.Id));
+
+            Assert.Null(possibleException);
+
+            SkipCleanUpAfterTest();
         }
 
         #endregion

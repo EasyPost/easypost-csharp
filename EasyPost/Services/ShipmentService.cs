@@ -99,8 +99,13 @@ namespace EasyPost.Services
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
         /// <param name="endShipperId">The id of the end shipper to use for this purchase.</param>
         [CrudOperations.Update]
-        public async Task Buy(string id, string rateId, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null)
+        public async Task<Shipment> Buy(string id, string rateId, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null)
         {
+            if (rateId == null)
+            {
+                throw new MissingParameterError("rateId");
+            }
+
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 { "rate", new Dictionary<string, object> { { "id", rateId } } },
@@ -113,7 +118,7 @@ namespace EasyPost.Services
                 parameters.Add("end_shipper", endShipperId);
             }
 
-            await Request<Shipment>(Method.Post, $"shipments/{id}/buy", parameters);
+            return await Request<Shipment>(Method.Post, $"shipments/{id}/buy", parameters);
         }
 
         /// <summary>
@@ -124,13 +129,17 @@ namespace EasyPost.Services
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
         /// <param name="endShipperId">The id of the end shipper to use for this purchase.</param>
         [CrudOperations.Update]
-        public async Task Buy(string id, Rate rate, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null)
+        public async Task<Shipment> Buy(string id, Rate rate, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null)
         {
+            if (rate == null)
+            {
+                throw new MissingParameterError("rate");
+            }
             if (rate.Id == null)
             {
                 throw new MissingPropertyError(rate, "Id");
             }
-            await Buy(id, rate.Id, insuranceValue, withCarbonOffset, endShipperId);
+            return await Buy(id, rate.Id, insuranceValue, withCarbonOffset, endShipperId);
         }
 
         /// <summary>
@@ -190,7 +199,7 @@ namespace EasyPost.Services
         /// <param name="deliveryDays">Delivery days restriction to use when filtering.</param>
         /// <param name="deliveryAccuracy">Delivery days accuracy restriction to use when filtering.</param>
         /// <returns>Lowest EasyPost.Smartrate object instance.</returns>
-        public static Smartrate GetLowestSmartrate(IEnumerable<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy)
+        public Smartrate GetLowestSmartrate(IEnumerable<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy)
         {
             return Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
         }
@@ -206,6 +215,23 @@ namespace EasyPost.Services
         public Rate GetLowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
             return Calculation.Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+        }
+
+        /// <summary>
+        ///     Get the lowest rate for this Shipment.
+        /// </summary>
+        /// <param name="includeCarriers">Carriers to include in the filter.</param>
+        /// <param name="includeServices">Services to include in the filter.</param>
+        /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
+        /// <param name="excludeServices">Services to exclude in the filter.</param>
+        /// <returns>Lowest EasyPost.Rate object instance.</returns>
+        public Rate GetLowestRate(Shipment shipment, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
+        {
+            if (shipment.Rates == null)
+            {
+                throw new MissingPropertyError(shipment, "Rates");
+            }
+            return Calculation.Rates.GetLowestObjectRate(shipment.Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
     }
 }

@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 301,
-    "RecordedAt": "2022-10-24T12:37:25.349048-06:00",
+    "Duration": 213,
+    "RecordedAt": "2022-11-13T16:18:36.754764-07:00",
     "Request": {
       "Body": "{\"address\":{\"name\":\"Jack Sparrow\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"}}",
       "BodyContentType": "Json",
@@ -19,7 +19,7 @@
       "Uri": "https://api.easypost.com/v2/end_shippers"
     },
     "Response": {
-      "Body": "{\"id\":\"es_ce87c60e0be048c3837bbfabb42060f0\",\"object\":\"EndShipper\",\"mode\":\"test\",\"created_at\":\"2022-10-24T12:37:25-06:00\",\"updated_at\":\"2022-10-24T12:37:25-06:00\",\"name\":\"JACK SPARROW\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
+      "Body": "{\"id\":\"es_b97c7a295cc14853a7731a2b8df53c82\",\"object\":\"EndShipper\",\"mode\":\"test\",\"created_at\":\"2022-11-13T16:18:36-07:00\",\"updated_at\":\"2022-11-13T16:18:36-07:00\",\"name\":\"JACK SPARROW\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -34,15 +34,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "bcc8f23b6356db65f3c990980022b2df",
+        "x-ep-request-uuid": "0f19c4f863717b4cec7cfc030011c757",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "ETag": "W/\"951966347274b5adab56ce15cce13376\"",
-        "x-runtime": "0.060262",
+        "ETag": "W/\"006f0703cce5f092c8ea5684ab734ed7\"",
+        "x-runtime": "0.044253",
         "x-node": "bigweb9nuq",
-        "x-version-label": "easypost-202210241803-ba94ab8034-master",
+        "x-version-label": "easypost-202211102043-5e82a6be5e-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq 29913d444b,extlb2nuq 29913d444b",
+        "x-proxied": "intlb2nuq 29913d444b,extlb1nuq 29913d444b",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

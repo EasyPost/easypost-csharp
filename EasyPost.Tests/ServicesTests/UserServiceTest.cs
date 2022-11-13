@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
@@ -15,8 +16,7 @@ namespace EasyPost.Tests.ServicesTests
             {
                 try
                 {
-                    User retrievedUser = await Client.User.Retrieve(id);
-                    await retrievedUser.Delete();
+                    await Client.User.Delete(id);
                     return true;
                 }
                 catch
@@ -90,6 +90,60 @@ namespace EasyPost.Tests.ServicesTests
 
             Assert.IsType<User>(user);
             Assert.StartsWith("user_", user.Id);
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Function]
+        public async Task TestUpdateBrand()
+        {
+            UseVCR("update_brand");
+
+            User user = await CreateChildUser();
+
+            const string color = "#123456";
+            Brand brand = await Client.User.UpdateBrand(user.Id, new Dictionary<string, object> { { "color", color } });
+
+            Assert.IsType<Brand>(brand);
+            Assert.StartsWith("brd_", brand.Id);
+            Assert.Equal(color, brand.Color);
+        }
+
+
+
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestUpdate()
+        {
+            UseVCR("update");
+
+            User user = await CreateChildUser();
+
+            string testName = "New Name";
+
+            Dictionary<string, object> userDict = new() { { "name", testName } };
+            user = await Client.User.Update(user.Id, userDict);
+
+            Assert.IsType<User>(user);
+            Assert.StartsWith("user_", user.Id);
+            Assert.Equal(testName, user.Name);
+        }
+
+        [Fact]
+        [CrudOperations.Delete]
+        [Testing.Function]
+        public async Task TestDelete()
+        {
+            UseVCR("delete");
+
+            User user = await CreateChildUser();
+
+            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.User.Delete(user.Id));
+
+            Assert.Null(possibleException);
+
+            SkipCleanUpAfterTest();
         }
 
         #endregion

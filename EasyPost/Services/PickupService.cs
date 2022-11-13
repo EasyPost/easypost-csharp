@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
@@ -89,6 +90,23 @@ namespace EasyPost.Services
         public PickupRate LowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
             return (PickupRate)Calculation.Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+        }
+
+        /// <summary>
+        ///     Get the lowest rate for this Pickup.
+        /// </summary>
+        /// <param name="includeCarriers">Carriers to include in the filter.</param>
+        /// <param name="includeServices">Services to include in the filter.</param>
+        /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
+        /// <param name="excludeServices">Services to exclude in the filter.</param>
+        /// <returns>Lowest EasyPost.PickupRate object instance.</returns>
+        public PickupRate LowestRate(Pickup pickup, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
+        {
+            if (pickup.PickupRates == null)
+            {
+                throw new MissingPropertyError(pickup, "PickupRates");
+            }
+            return LowestRate(pickup.PickupRates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
 
         #endregion

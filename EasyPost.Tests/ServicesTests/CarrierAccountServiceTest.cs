@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
@@ -15,8 +16,7 @@ namespace EasyPost.Tests.ServicesTests
             {
                 try
                 {
-                    CarrierAccount retrievedCarrierAccount = await Client.CarrierAccount.Retrieve(id);
-                    await retrievedCarrierAccount.Delete();
+                    await Client.CarrierAccount.Delete(id);
                     return true;
                 }
                 catch
@@ -71,6 +71,41 @@ namespace EasyPost.Tests.ServicesTests
 
             Assert.IsType<CarrierAccount>(retrievedCarrierAccount);
             Assert.Equal(carrierAccount, retrievedCarrierAccount);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestUpdate()
+        {
+            UseVCR("update");
+
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
+
+            const string testDescription = "my custom description";
+
+            Dictionary<string, object> carrierAccountData = new() { { "description", testDescription } };
+            carrierAccount = await Client.CarrierAccount.Update(carrierAccount.Id, carrierAccountData);
+
+            Assert.IsType<CarrierAccount>(carrierAccount);
+            Assert.StartsWith("ca_", carrierAccount.Id);
+            Assert.Equal(testDescription, carrierAccount.Description);
+        }
+
+        [Fact]
+        [CrudOperations.Delete]
+        [Testing.Function]
+        public async Task TestDelete()
+        {
+            UseVCR("delete");
+
+            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
+
+            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.CarrierAccount.Delete(carrierAccount.Id));
+
+            Assert.Null(possibleException);
+
+            SkipCleanUpAfterTest();
         }
 
         #endregion
