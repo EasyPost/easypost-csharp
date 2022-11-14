@@ -50,10 +50,6 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 7.x.x
       - name: Set up dotnet tools and dependencies
         run: make install
       - name: Generate coverage report
