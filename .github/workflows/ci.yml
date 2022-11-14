@@ -14,7 +14,11 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
+          dotnet-version: |
+            3.1.x
+            5.x.x
+            6.x.x
+            7.x.x
       - name: Set up dotnet tools
         run: make install-tools
       - name: Check dotnet Style
@@ -26,7 +30,11 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
+          dotnet-version: |
+            3.1.x
+            5.x.x
+            6.x.x
+            7.x.x
       - name: Set up dotnet tools and dependencies
         run: make install
       - name: Run security analysis
@@ -40,7 +48,11 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
+          dotnet-version: |
+            3.1.x
+            5.x.x
+            6.x.x
+            7.x.x
       - name: Set up dotnet tools and dependencies
         run: make install
       - name: Check if test suite coverage meets requirements
@@ -90,7 +102,11 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
+          dotnet-version: |
+            3.1.x
+            5.x.x
+            6.x.x
+            7.x.x
         # install MSBuild, used to build the test project
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
@@ -132,7 +148,11 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
+          dotnet-version: |
+            3.1.x
+            5.x.x
+            6.x.x
+            7.x.x
         # Set the project name, based on platform version currently selected
       - name: Set up variables
         id: test_project
