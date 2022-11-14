@@ -13,4 +13,4 @@ cd "$test_folder" || exit
 # This will fail to run on machines without MSBuild installed
 
 # If the coverage is below the threshold, exit with a non-zero exit code
-dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:Threshold=$THRESHOLD /p:ThresholdType=$THRESHOLD_TYPE /p:TargetFramework=net6.0
+dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:Threshold=$THRESHOLD /p:ThresholdType=$THRESHOLD_TYPE /p:TargetFramework=net7.0
