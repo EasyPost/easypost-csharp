@@ -27,7 +27,8 @@
     <!-- CS8767: Nullable parameter -->
     <!-- CS0659: Missing GetHashCode override -->
     <!-- CS0618: Obselete method -->
-    <NoWarn>CS8600;CS8602;CS8603;CS8604;CS8618;CS8625;CS8765;CS8767;CS0659;CS0618</NoWarn>
+    <!-- CS1717: Assignment made to same variable -->
+    <NoWarn>CS8600;CS8602;CS8603;CS8604;CS8618;CS8625;CS8765;CS8767;CS0659;CS0618;CS1718</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
