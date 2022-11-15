@@ -37,11 +37,7 @@ namespace EasyPost.Calculation
                 {
                     // we have a carrier filter
 
-                    if (rate.Carrier == null)
-                    {
-                        // If we are filtering by carrier and the rate doesn't have a carrier, skip it
-                        continue;
-                    }
+                    // rate will always have a carrier, don't need to check for null
 
                     if (includeCarriers.Count > 0 && !includeCarriers.Contains(rate.Carrier!.ToLower()))
                     {
@@ -60,11 +56,7 @@ namespace EasyPost.Calculation
                 {
                     // we have a service filter
 
-                    if (rate.Service == null)
-                    {
-                        // If we are filtering by service and the rate doesn't have a service, skip it
-                        continue;
-                    }
+                    // rate will always have a service, don't need to check for null
 
                     if (includeServices.Count > 0 && !includeServices.Contains(rate.Service!.ToLower()))
                     {
@@ -128,13 +120,9 @@ namespace EasyPost.Calculation
 
             foreach (Smartrate? smartrate in smartrates)
             {
-                if (smartrate.TimeInTransit == null)
-                {
-                    // If the smartrate doesn't have a time in transit, skip it
-                    continue;
-                }
+                // smartrate will always have a time in transit, don't need to check for null
 
-                int? smartrateAccuracy = smartrate.TimeInTransit.GetBySmartrateAccuracy(deliveryAccuracy);
+                int? smartrateAccuracy = smartrate.TimeInTransit!.GetBySmartrateAccuracy(deliveryAccuracy);
 
                 if (smartrateAccuracy == null)
                 {
