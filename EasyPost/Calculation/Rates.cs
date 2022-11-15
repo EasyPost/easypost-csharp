@@ -33,40 +33,50 @@ namespace EasyPost.Calculation
 
             foreach (Rate rate in rates)
             {
-                if ((includeCarriers.Count > 0 || excludeCarriers.Count > 0) && rate.Carrier == null)
+                if (includeCarriers.Count > 0 || excludeCarriers.Count > 0)
                 {
-                    // If we are filtering by carrier and the rate doesn't have a carrier, skip it
-                    continue;
+                    // we have a carrier filter
+
+                    if (rate.Carrier == null)
+                    {
+                        // If we are filtering by carrier and the rate doesn't have a carrier, skip it
+                        continue;
+                    }
+
+                    if (includeCarriers.Count > 0 && !includeCarriers.Contains(rate.Carrier!.ToLower()))
+                    {
+                        // If we have a list of carriers to include and the rate's carrier isn't in the list, skip it
+                        continue;
+                    }
+
+                    if (excludeCarriers.Contains(rate.Carrier!.ToLower()))
+                    {
+                        // If the rate's carrier is in the list of carriers to exclude, skip it
+                        continue;
+                    }
                 }
 
-                if ((includeServices.Count > 0 || excludeServices.Count > 0) && rate.Service == null)
+                if (includeServices.Count > 0 || excludeServices.Count > 0)
                 {
-                    // If we are filtering by service and the rate doesn't have a service, skip it
-                    continue;
-                }
+                    // we have a service filter
 
-                if (includeCarriers.Count > 0 && !includeCarriers.Contains(rate.Carrier!.ToLower()))
-                {
-                    // If we have a list of carriers to include and the rate's carrier isn't in the list, skip it
-                    continue;
-                }
+                    if (rate.Service == null)
+                    {
+                        // If we are filtering by service and the rate doesn't have a service, skip it
+                        continue;
+                    }
 
-                if (excludeCarriers.Contains(rate.Carrier!.ToLower()))
-                {
-                    // If the rate's carrier is in the list of carriers to exclude, skip it
-                    continue;
-                }
+                    if (includeServices.Count > 0 && !includeServices.Contains(rate.Service!.ToLower()))
+                    {
+                        // If we have a list of services to include and the rate's service isn't in the list, skip it
+                        continue;
+                    }
 
-                if (includeServices.Count > 0 && !includeServices.Contains(rate.Service!.ToLower()))
-                {
-                    // If we have a list of services to include and the rate's service isn't in the list, skip it
-                    continue;
-                }
-
-                if (excludeServices.Contains(rate.Service!.ToLower()))
-                {
-                    // If the rate's service is in the list of services to exclude, skip it
-                    continue;
+                    if (excludeServices.Contains(rate.Service!.ToLower()))
+                    {
+                        // If the rate's service is in the list of services to exclude, skip it
+                        continue;
+                    }
                 }
 
                 if (lowestRate == null)
