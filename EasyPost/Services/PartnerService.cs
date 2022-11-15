@@ -71,7 +71,7 @@ namespace EasyPost.Services
                 throw new InternalServerError("Could not retrieve EasyPost Stripe API key.", 0);
             }
 
-            string? stripeToken = await CreateStripeToken(number, expirationMonth, expirationYear, cvc, easypostStripeApiKey);
+            string? stripeToken = await CreateStripeToken(number, expirationMonth, expirationYear, cvc, easypostStripeApiKey!);
 
             if (string.IsNullOrEmpty(stripeToken))
             {

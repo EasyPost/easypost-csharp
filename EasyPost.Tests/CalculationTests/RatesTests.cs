@@ -6,7 +6,7 @@ using Xunit;
 
 namespace EasyPost.Tests.CalculationTests
 {
-    public class Rates
+    public class RatesTests
     {
         #region Tests
 

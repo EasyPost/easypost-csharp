@@ -31,37 +31,79 @@ namespace EasyPost.Calculation
 
             Rate? lowestRate = null;
 
-            foreach (Rate rate in from rate in rates where includeCarriers.Count <= 0 || includeCarriers.Contains(rate.Carrier.ToLower()) where excludeCarriers.Count <= 0 || !excludeCarriers.Contains(rate.Carrier.ToLower()) where includeServices.Count <= 0 || includeServices.Contains(rate.Service.ToLower()) where excludeServices.Count <= 0 || !excludeServices.Contains(rate.Service.ToLower()) select rate)
+            foreach (Rate rate in rates)
             {
-                // if lowest rate is null, set it to this rate
+                if (includeCarriers.Count > 0 || excludeCarriers.Count > 0)
+                {
+                    // we have a carrier filter
+
+                    // rate will always have a carrier, don't need to check for null
+
+                    if (includeCarriers.Count > 0 && !includeCarriers.Contains(rate.Carrier!.ToLower()))
+                    {
+                        // If we have a list of carriers to include and the rate's carrier isn't in the list, skip it
+                        continue;
+                    }
+
+                    if (excludeCarriers.Contains(rate.Carrier!.ToLower()))
+                    {
+                        // If the rate's carrier is in the list of carriers to exclude, skip it
+                        continue;
+                    }
+                }
+
+                if (includeServices.Count > 0 || excludeServices.Count > 0)
+                {
+                    // we have a service filter
+
+                    // rate will always have a service, don't need to check for null
+
+                    if (includeServices.Count > 0 && !includeServices.Contains(rate.Service!.ToLower()))
+                    {
+                        // If we have a list of services to include and the rate's service isn't in the list, skip it
+                        continue;
+                    }
+
+                    if (excludeServices.Contains(rate.Service!.ToLower()))
+                    {
+                        // If the rate's service is in the list of services to exclude, skip it
+                        continue;
+                    }
+                }
+
                 if (lowestRate == null)
                 {
+                    // if lowest rate is null, set it to this rate
                     lowestRate = rate;
                     continue;
                 }
 
                 if (rate.Price == null || lowestRate.Price == null)
                 {
+                    // if the rate or lowest rate doesn't have a price, throw an exception
                     throw new FilteringError(Constants.ErrorMessages.NullObjectComparison);
                 }
 
                 float rateValue = float.Parse(rate.Price);
                 float lowestRateValue = float.Parse(lowestRate.Price);
 
-                // if this rate is lower than the lowest rate, set it to this rate
                 if (!(rateValue < lowestRateValue))
                 {
+                    // if this rate not lower than the lowest rate, skip it
                     continue;
                 }
 
+                // if we made it this far, this rate is the lowest rate, set it to the lowest rate
                 lowestRate = rate;
             }
 
             if (lowestRate == null)
             {
+                // if we didn't find a rate, throw an exception
                 throw new FilteringError(string.Format(Constants.ErrorMessages.NoObjectFound, "rates"));
             }
 
+            // return the lowest rate
             return lowestRate;
         }
 
@@ -76,29 +118,48 @@ namespace EasyPost.Calculation
         {
             Smartrate? lowestSmartrate = null;
 
-            foreach (Smartrate? smartrate in from smartrate in smartrates let smartrateAccuracy = smartrate.TimeInTransit.GetBySmartrateAccuracy(deliveryAccuracy) where smartrateAccuracy != null where !(smartrateAccuracy > deliveryDays) select smartrate)
+            foreach (Smartrate? smartrate in smartrates)
             {
-                // if lowest smartrate is null, set it to this smartrate
+                // smartrate will always have a time in transit, don't need to check for null
+
+                int? smartrateAccuracy = smartrate.TimeInTransit!.GetBySmartrateAccuracy(deliveryAccuracy);
+
+                if (smartrateAccuracy == null)
+                {
+                    // If the smartrate doesn't have a time in transit for the specified accuracy, skip it
+                    continue;
+                }
+
+                if (smartrateAccuracy > deliveryDays)
+                {
+                    // If the smartrate's time in transit is greater than the specified delivery days, skip it
+                    continue;
+                }
+
                 if (lowestSmartrate == null)
                 {
+                    // if lowest smartrate is null, set it to this smartrate
                     lowestSmartrate = smartrate;
                     continue;
                 }
 
-                // if this smartrate is lower than the lowest smartrate, set it to this smartrate
                 if (!(smartrate.Rate < lowestSmartrate.Rate))
                 {
+                    // if this smartrate is not lower than the lowest smartrate, skip it
                     continue;
                 }
 
+                // if we made it this far, this smartrate is the lowest smartrate, set it to the lowest smartrate
                 lowestSmartrate = smartrate;
             }
 
             if (lowestSmartrate == null)
             {
+                // if we didn't find a smartrate, throw an exception
                 throw new FilteringError(string.Format(Constants.ErrorMessages.NoObjectFound, "smartrates"));
             }
 
+            // return the lowest smartrate
             return lowestSmartrate;
         }
     }
