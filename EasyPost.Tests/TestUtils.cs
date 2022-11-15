@@ -216,7 +216,9 @@ namespace EasyPost.Tests._Utilities
         {
             private readonly List<MockRequest> _mockRequests = new();
 
+#pragma warning disable CS1998
             internal override async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request)
+#pragma warning restore CS1998
             {
                 var mockRequest = FindMatchingMockRequest(request);
 
@@ -233,7 +235,9 @@ namespace EasyPost.Tests._Utilities
                 };
             }
 
+#pragma warning disable CS1998
             internal override async Task<RestResponse> ExecuteRequest(RestRequest request)
+#pragma warning restore CS1998
             {
                 var mockRequest = FindMatchingMockRequest(request);
 

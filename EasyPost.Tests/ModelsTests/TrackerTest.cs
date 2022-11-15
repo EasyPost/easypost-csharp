@@ -14,7 +14,9 @@ namespace EasyPost.Tests.ModelsTests
 
         [Fact]
         [Testing.Properties]
+#pragma warning disable CS1998
         public async Task TestTrackerCarrierDetails()
+#pragma warning restore CS1998
         {
             // Details can be (and most likely will be) missing or incomplete, so we can't reliably test them.
         }
