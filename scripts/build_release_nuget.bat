@@ -11,7 +11,7 @@
 :: Parse command line arguments
 SET projectName=%1
 SET certFile=%2
-SET buildMode=%5
+SET buildMode=%3
 
 :: Delete old files
 CALL "scripts\delete_old_assemblies.bat"
