@@ -17,8 +17,10 @@ namespace EasyPost.Tests.baseTests
             ApiKey sameProperties = new() { Id = "adr_123" };
             ApiKey differentProperties = new() { Id = "adr_456" };
 
-            // Equality under-the-hood is based on hashcode, which is based on properties/client of an object
+            // Equality under-the-hood is based on hashcode, which is based on properties of an object
             // so if two objects have the same properties and client, they should be equal
+
+            // Effectively, we've re-invented structs and records here by overriding how class equality works
 
             // two objects with the same properties should be equal
             Assert.Equal(apiKey, sameProperties);
