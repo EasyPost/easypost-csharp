@@ -1,8 +1,7 @@
-:: This script will find and sign any DLLs with a provided PFX certificate
+:: This script will find and sign any DLLs with a provided PFX certificate for authenticity
 
 :: Requirements:
 :: - dotnet is installed on the machine and is accessible everywhere (added to PATH) (might be in C:\Program Files\dotnet)
-:: - sn.exe is installed on the machine and is accessible everywhere (added to PATH)
 :: - signtool is installed on the machine and is accessible everywhere (added to PATH) (might be in C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64)
 
 @ECHO OFF
@@ -10,15 +9,11 @@
 :: Parse command line arguments
 SET certFile=%1
 SET certPass=%2
-SET containerName=%3
 
-:: Sign all DLLs found in the lib folder
+:: Sign all DLLs found in the lib folder with our certificate to guarantee authenticity
 @ECHO:
-@ECHO Signing DLLs with certificate...
+@ECHO Authenticating DLLs with %certFile%...
 FOR /R "lib" %%F IN (*.dll) DO (
-    REM We need to run the DLLs through both sn.exe and signtool to get complete the signing process
-    REM sn erroneously triggers command failed if we put a fallback on this
-    sn -Rca "%%F" %containerName%
     signtool sign /f %certFile% /p %certPass% /v /tr http://timestamp.digicert.com?alg=sha256 /td SHA256 /fd SHA256 "%%F" || GOTO :commandFailed
 )
 

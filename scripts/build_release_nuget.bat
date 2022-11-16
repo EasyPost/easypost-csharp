@@ -25,13 +25,16 @@ CALL "scripts\install_cert.bat" %certFile% %certPass% %containerName% || GOTO :c
 :: Restore dependencies and build solution
 CALL "scripts\build_project.bat" %buildMode% || GOTO :commandFailed
 
-:: Sign the DLLs
-CALL "scripts\sign_dlls.bat" %certFile% %certPass% %containerName% || GOTO :commandFailed
+:: Strong-name the DLLs
+CALL "scripts\strong_name_dlls.bat" %containerName% || GOTO :commandFailed
+
+:: Sign the DLLs for authenticity
+CALL "scripts\sign_dlls.bat" %certFile% %certPass% || GOTO :commandFailed
 
 :: Package the DLLs in a NuGet package (will fail if DLLs are missing)
 CALL "scripts\pack_nuget.bat" %projectName% || GOTO :commandFailed
 
-:: Sign the NuGet package
+:: Sign the NuGet package for authenticity
 CALL "scripts\sign_nuget.bat" %certFile% %certPass% || GOTO :commandFailed
 SET nugetFileName=
 FOR /R %%F IN (*.nupkg) DO (
