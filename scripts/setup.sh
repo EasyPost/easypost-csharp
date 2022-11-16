@@ -3,7 +3,7 @@
 # This script is used to download and install the required .NET versions
 
 # .NET versions we want to install
-declare -a NetVersions=("Current" "6.0" "5.0" "3.1")
+declare -a NetVersions=("Current" "7.0" "6.0" "5.0" "3.1")
 
 # Download dotnet-install.sh
 echo "Downloading dotnet-install.sh script..."
