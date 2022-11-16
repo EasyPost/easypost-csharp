@@ -41,9 +41,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <SignAssembly>true</SignAssembly>
-    <DelaySign>true</DelaySign>
-    <AssemblyOriginatorKeyFile>..\EasyPost.pub</AssemblyOriginatorKeyFile>
+    <SignAssembly>false</SignAssembly>
+    <!-- We manually sign the DLLs later -->
   </PropertyGroup>
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -53,9 +52,6 @@
     <PackageReference Include="RestSharp" Version="[108.0.1, 109.0.0)"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\EasyPost.pub">
-      <Link>EasyPost.pub</Link>
-    </None>
     <None Include="..\README.md">
       <Pack>true</Pack>
       <PackagePath>/</PackagePath>
