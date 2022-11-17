@@ -2,6 +2,8 @@
 
 :: Requirements:
 :: - dotnet is installed on the machine and is accessible everywhere (added to PATH) (might be in C:\Program Files\dotnet)
+:: - sn.exe is installed on the machine and is accessible everywhere (added to PATH)
+:: - signtool is installed on the machine and is accessible everywhere (added to PATH) (might be in C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64)
 
 @ECHO OFF
 
