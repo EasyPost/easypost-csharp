@@ -33,6 +33,13 @@ coverage-check:
 format:
 	dotnet dotnet-format --no-restore
 
+## install-cert - Install the PFX certificate to your system (Windows only)
+# @parameters:
+# cert= - The certificate to use for signing the built assets.
+# pass= - The password for the certificate.
+install-cert:
+	scripts\install_cert.bat ${cert} ${pass}
+
 ## install-tools - Install required dotnet tools
 install-tools:
 	dotnet new tool-manifest || exit 0
@@ -55,8 +62,9 @@ lint-scripts:
 ## prep-release - Build, sign and package the project for distribution, signing with the provided certificate (Windows only)
 # @parameters:
 # cert= - The certificate to use for signing the built assets.
+# pass= - The password for the certificate.
 prep-release:
-	scripts\build_release_nuget.bat EasyPost ${cert} Release
+	scripts\build_release_nuget.bat EasyPost ${cert} ${pass} EasyPost Release
 
 ## publish - Publish a specific NuGet file to nuget.org (Windows only)
 # @parameters:
@@ -88,6 +96,14 @@ setup-win:
 setup-unix:
 	bash scripts/setup.sh
 
+## sign - Sign all generated DLLs and NuGet packages with the provided certificate (Windows only)
+# @parameters:
+# cert= - The certificate to use for signing the built assets.
+# pass= - The password for the certificate.
+sign:
+	install-cert cert=${cert} pass=${pass}
+	scripts\sign_assemblies.bat ${cert} ${pass} EasyPost
+
 ## test - Test the project
 test:
 	dotnet test
@@ -103,4 +119,4 @@ test-fw:
 uninstall-scanner:
 	dotnet tool uninstall security-scan
 
-.PHONY: help build build-test-fw build-prod clean coverage coverage-check format install-tools install lint lint-scripts pre-release publish release restore scan setup-win setup-unix test test-fw uninstall-scanner
+.PHONY: help build build-test-fw build-prod clean coverage coverage-check format install-cert install-tools install lint lint-scripts pre-release publish-all publish release restore scan setup-win setup-unix sign test test-fw uninstall-scanner
