@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Utilities;
 using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
@@ -32,8 +34,14 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<CarrierAccount> Create(Dictionary<string, object> parameters)
         {
+            if (parameters["type"] is not string carrierType)
+                throw new MissingParameterError("CarrierAccount type is required.");
+
+            string endpoint = GenerateEndpoint(carrierType);
+
             parameters = parameters.Wrap("carrier_account");
-            return await Create<CarrierAccount>("carrier_accounts", parameters);
+
+            return await Create<CarrierAccount>(endpoint, parameters);
         }
 
         /// <summary>
@@ -58,5 +66,25 @@ namespace EasyPost.Services
         }
 
         #endregion
+
+        private static string GenerateEndpoint(string carrierAccountType)
+        {
+            var registerEndpointCarriers = new List<string>
+            {
+                "UpsAccount",
+                "FedexAccount"
+            };
+
+            string endpoint = "carrier_accounts";
+
+            var @switch = new SwitchCase
+            {
+                { registerEndpointCarriers.Contains(carrierAccountType), () => endpoint = "carrier_accounts/register" },
+                { SwitchCaseScenario.Default, () => endpoint = "carrier_accounts" }
+            };
+            @switch.MatchFirstTrue();
+
+            return endpoint;
+        }
     }
 }
