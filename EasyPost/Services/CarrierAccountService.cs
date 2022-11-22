@@ -69,19 +69,13 @@ namespace EasyPost.Services
 
         private static string SelectCarrierAccountCreationEndpoint(string carrierAccountType)
         {
-            var carriersWithCustomWorkflows = new List<string>
-            {
-                Constants.CarrierAccountTypes.FedExAccountType,
-                Constants.CarrierAccountTypes.UpsAccountType,
-            };
-
             // endpoint will always be something since the switch case's default value will kick in,
             // but we have to initialize the variable to avoid a compiler nullability error
             string endpoint = string.Empty;
 
             var @switch = new SwitchCase
             {
-                { carriersWithCustomWorkflows.Contains(carrierAccountType), () => endpoint = "carrier_accounts/register" },
+                { Constants.CarrierAccountTypes.CustomWorkflowCarrierAccountTypes.Contains(carrierAccountType), () => endpoint = "carrier_accounts/register" },
                 { SwitchCaseScenario.Default, () => endpoint = "carrier_accounts" }
             };
             @switch.MatchFirstTrue();
