@@ -37,7 +37,7 @@ namespace EasyPost.Services
             if (parameters["type"] is not string carrierType)
                 throw new MissingParameterError("CarrierAccount type is required.");
 
-            string endpoint = GenerateEndpoint(carrierType);
+            string endpoint = SelectCarrierAccountCreationEndpoint(carrierType);
 
             parameters = parameters.Wrap("carrier_account");
 
@@ -67,19 +67,21 @@ namespace EasyPost.Services
 
         #endregion
 
-        private static string GenerateEndpoint(string carrierAccountType)
+        private static string SelectCarrierAccountCreationEndpoint(string carrierAccountType)
         {
-            var registerEndpointCarriers = new List<string>
+            var carriersWithCustomWorkflows = new List<string>
             {
+                "FedexAccount",
                 "UpsAccount",
-                "FedexAccount"
             };
 
-            string endpoint = "carrier_accounts";
+            // endpoint will always be something since the switch case's default value will kick in,
+            // but we have to initialize the variable to avoid a compiler nullability error
+            string endpoint = string.Empty;
 
             var @switch = new SwitchCase
             {
-                { registerEndpointCarriers.Contains(carrierAccountType), () => endpoint = "carrier_accounts/register" },
+                { carriersWithCustomWorkflows.Contains(carrierAccountType), () => endpoint = "carrier_accounts/register" },
                 { SwitchCaseScenario.Default, () => endpoint = "carrier_accounts" }
             };
             @switch.MatchFirstTrue();

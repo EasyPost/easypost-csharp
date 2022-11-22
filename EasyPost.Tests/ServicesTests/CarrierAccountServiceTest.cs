@@ -47,11 +47,11 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Create]
         [Testing.Parameters]
-        public async Task TestCreateWithAlternateEndpoint()
+        public async Task TestCreateWithCustomWorkflow()
         {
-            UseVCR("create_with_alternate_endpoint");
+            UseVCR("create_with_custom_workflow");
 
-            // FedEx and UPS should hit a different creation endpoint
+            // Carriers like FedEx and UPS should hit the `/carrier_accounts/register` endpoint
             try
             {
                 CarrierAccount carrierAccount = await CreateSpecificCarrierAccount("FedexAccount");
@@ -60,6 +60,7 @@ namespace EasyPost.Tests.ServicesTests
             {
                 // the data we're sending is invalid, we want to check that the API error is because of malformed data and not due to the endpoint
                 Assert.Equal(400, e.StatusCode);  // 400 bad request is fine. We don't want a 404 not found
+                Assert.Equal("Malformed request. Please check the contents and retry.", e.Message);
                 // Check the cassette to make sure the endpoint is correct (it should be carrier_accounts/register)
             }
         }
