@@ -54,13 +54,15 @@ namespace EasyPost.Tests.ServicesTests
             // Carriers like FedEx and UPS should hit the `/carrier_accounts/register` endpoint
             try
             {
-                CarrierAccount carrierAccount = await CreateSpecificCarrierAccount("FedexAccount");
+                CarrierAccount carrierAccount = await CreateCarrierAccountWithCustomWorkflow("FedexAccount");
             }
-            catch (UnknownApiError e)
+            catch (InvalidRequestError e)
             {
                 // the data we're sending is invalid, we want to check that the API error is because of malformed data and not due to the endpoint
-                Assert.Equal(400, e.StatusCode);  // 400 bad request is fine. We don't want a 404 not found
-                Assert.Equal("Malformed request. Please check the contents and retry.", e.Message);
+                Assert.Equal(422, e.StatusCode);  // 422 is fine. We don't want a 404 not found
+                Assert.NotNull(e.Errors);
+                Assert.Contains(e.Errors, (error => error.Field == "account_number" && error.Message == "must be present and a string"));
+
                 // Check the cassette to make sure the endpoint is correct (it should be carrier_accounts/register)
             }
         }
@@ -107,10 +109,11 @@ namespace EasyPost.Tests.ServicesTests
             return carrierAccount;
         }
 
-        private async Task<CarrierAccount> CreateSpecificCarrierAccount(string carrierType)
+        private async Task<CarrierAccount> CreateCarrierAccountWithCustomWorkflow(string carrierType)
         {
             Dictionary<string, object> parameters = Fixtures.BasicCarrierAccount;
             parameters["type"] = carrierType;
+            parameters["registration_data"] = new Dictionary<string, object>();
 
             CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
             CleanUpAfterTest(carrierAccount.Id);
