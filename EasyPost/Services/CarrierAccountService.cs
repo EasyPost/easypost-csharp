@@ -71,8 +71,8 @@ namespace EasyPost.Services
         {
             var carriersWithCustomWorkflows = new List<string>
             {
-                "FedexAccount",
-                "UpsAccount",
+                Constants.CarrierAccountTypes.FedExAccountType,
+                Constants.CarrierAccountTypes.UpsAccountType,
             };
 
             // endpoint will always be something since the switch case's default value will kick in,

@@ -4,7 +4,7 @@ using System.Net;
 using EasyPost.Exceptions.API;
 using EasyPost.Utilities;
 
-namespace EasyPost.Exceptions
+namespace EasyPost
 {
     public static class Constants
     {
@@ -89,6 +89,12 @@ namespace EasyPost.Exceptions
             public const string ApiDidNotReturnErrorDetails = "API did not return error details.";
             internal const string ApiErrorDetailsParsingError = "RESPONSE.PARSE_ERROR"; // not for public consumption
             public const string CouldNotPassClient = "Could not pass client to {0}.";
+        }
+
+        public static class CarrierAccountTypes
+        {
+            public const string FedExAccountType = "FedExAccount";
+            public const string UpsAccountType = "UPSAccount";
         }
     }
 }
