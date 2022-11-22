@@ -57,7 +57,7 @@ namespace EasyPost.Tests.ServicesTests
                 CarrierAccount carrierAccount = await CreateSpecificCarrierAccount("FedexAccount");
             } catch (UnknownApiError e)
             {
-                // the data we're sending is invalid, we just want the API error is because of malformed data and not due to the endpoint
+                // the data we're sending is invalid, we want to check that the API error is because of malformed data and not due to the endpoint
                 Assert.Equal(400, e.StatusCode);  // 400 bad request is fine. We don't want a 404 not found
                 // Check the cassette to make sure the endpoint is correct (it should be carrier_accounts/register)
             }
