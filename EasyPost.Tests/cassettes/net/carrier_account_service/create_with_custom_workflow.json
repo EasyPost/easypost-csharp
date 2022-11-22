@@ -1,0 +1,53 @@
+[
+  {
+    "Duration": 572,
+    "RecordedAt": "2022-11-22T13:55:59.722278-07:00",
+    "Request": {
+      "Body": "{\"carrier_account\":{\"type\":\"FedexAccount\",\"credentials\":{},\"test_credentials\":{},\"registration_data\":{}}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "299"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/carrier_accounts/register"
+    },
+    "Response": {
+      "Body": "{\"error\":{\"code\":\"UNPROCESSABLE_ENTITY\",\"message\":\"The request was understood, but cannot be processed.\",\"errors\":[{\"field\":\"shipping_streets\",\"message\":\"must be present and a string\"},{\"field\":\"shipping_city\",\"message\":\"must be present and a string\"},{\"field\":\"shipping_state\",\"message\":\"must be present and a string\"},{\"field\":\"shipping_postal_code\",\"message\":\"must be present and a string\"},{\"field\":\"shipping_country_code\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_first_name\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_last_name\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_job_title\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_company_name\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_phone_number\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_email_address\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_streets\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_city\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_state\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_postal_code\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_country_code\",\"message\":\"must be present and a string\"},{\"field\":\"account_number\",\"message\":\"must be present and a string\"}]}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "1347"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "d96d15b4637d375fecb228a20054cf3c",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.034931",
+        "x-node": "bigweb11nuq",
+        "x-version-label": "easypost-202211221943-034b711ab5-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq 29913d444b,extlb2nuq 29913d444b",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 422,
+        "Message": "Unprocessable Entity"
+      }
+    }
+  }
+]

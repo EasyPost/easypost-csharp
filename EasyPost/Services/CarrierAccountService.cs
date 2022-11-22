@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Utilities;
 using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services
@@ -32,8 +34,14 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<CarrierAccount> Create(Dictionary<string, object> parameters)
         {
+            if (parameters["type"] is not string carrierType)
+                throw new MissingParameterError("CarrierAccount type is required.");
+
+            string endpoint = SelectCarrierAccountCreationEndpoint(carrierType);
+
             parameters = parameters.Wrap("carrier_account");
-            return await Create<CarrierAccount>("carrier_accounts", parameters);
+
+            return await Create<CarrierAccount>(endpoint, parameters);
         }
 
         /// <summary>
@@ -58,5 +66,27 @@ namespace EasyPost.Services
         }
 
         #endregion
+
+        private static string SelectCarrierAccountCreationEndpoint(string carrierAccountType)
+        {
+            var carriersWithCustomWorkflows = new List<string>
+            {
+                "FedexAccount",
+                "UpsAccount",
+            };
+
+            // endpoint will always be something since the switch case's default value will kick in,
+            // but we have to initialize the variable to avoid a compiler nullability error
+            string endpoint = string.Empty;
+
+            var @switch = new SwitchCase
+            {
+                { carriersWithCustomWorkflows.Contains(carrierAccountType), () => endpoint = "carrier_accounts/register" },
+                { SwitchCaseScenario.Default, () => endpoint = "carrier_accounts" }
+            };
+            @switch.MatchFirstTrue();
+
+            return endpoint;
+        }
     }
 }

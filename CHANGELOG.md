@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- [ADDED] Support for creating/registering carrier accounts that require custom workflows (e.g. FedEx, UPS)
+
 ## v4.0.2 (2022-11-01)
 
 - Fix bug where the temporary internal API key switch when adding a credit card to a referral user was not reverted after the request.

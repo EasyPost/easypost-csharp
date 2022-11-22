@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Exceptions.API;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Annotations;
@@ -44,6 +45,29 @@ namespace EasyPost.Tests.ServicesTests
         }
 
         [Fact]
+        [CrudOperations.Create]
+        [Testing.Parameters]
+        public async Task TestCreateWithCustomWorkflow()
+        {
+            UseVCR("create_with_custom_workflow");
+
+            // Carriers like FedEx and UPS should hit the `/carrier_accounts/register` endpoint
+            try
+            {
+                CarrierAccount carrierAccount = await CreateCarrierAccountWithCustomWorkflow("FedexAccount");
+            }
+            catch (InvalidRequestError e)
+            {
+                // the data we're sending is invalid, we want to check that the API error is because of malformed data and not due to the endpoint
+                Assert.Equal(422, e.StatusCode);  // 422 is fine. We don't want a 404 not found
+                Assert.NotNull(e.Errors);
+                Assert.Contains(e.Errors, (error => error.Field == "account_number" && error.Message == "must be present and a string"));
+
+                // Check the cassette to make sure the endpoint is correct (it should be carrier_accounts/register)
+            }
+        }
+
+        [Fact]
         [CrudOperations.Read]
         [Testing.Function]
         public async Task TestAll()
@@ -80,6 +104,18 @@ namespace EasyPost.Tests.ServicesTests
         private async Task<CarrierAccount> CreateBasicCarrierAccount()
         {
             CarrierAccount carrierAccount = await Client.CarrierAccount.Create(Fixtures.BasicCarrierAccount);
+            CleanUpAfterTest(carrierAccount.Id);
+
+            return carrierAccount;
+        }
+
+        private async Task<CarrierAccount> CreateCarrierAccountWithCustomWorkflow(string carrierType)
+        {
+            Dictionary<string, object> parameters = Fixtures.BasicCarrierAccount;
+            parameters["type"] = carrierType;
+            parameters["registration_data"] = new Dictionary<string, object>();
+
+            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
             CleanUpAfterTest(carrierAccount.Id);
 
             return carrierAccount;

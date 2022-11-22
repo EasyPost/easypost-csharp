@@ -143,6 +143,22 @@ namespace EasyPost.Utilities
             ProcessMatchingCases(matchingCases.ToList());
         }
 
+        /// <summary>
+        ///     Execute the action of the first case that evaluates to true. If no match is found, execute the default case if set.
+        /// </summary>
+        internal void MatchFirstTrue()
+        {
+            MatchFirst(true);
+        }
+
+        /// <summary>
+        ///     Execute the action of the first case that evaluates to false. If no match is found, execute the default case if set.
+        /// </summary>
+        internal void MatchFirstFalse()
+        {
+            MatchFirst(false);
+        }
+
         IEnumerator<ICase> IEnumerable<ICase>.GetEnumerator()
         {
             return _list.GetEnumerator();
