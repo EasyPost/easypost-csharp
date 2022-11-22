@@ -93,8 +93,8 @@ namespace EasyPost
 
         public static class CarrierAccountTypes
         {
-            public const string FedExAccountType = "FedExAccount";
-            public const string UpsAccountType = "UPSAccount";
+            public const string FedExAccountType = "FedexAccount";
+            public const string UpsAccountType = "UpsAccount";
         }
     }
 }
