@@ -54,7 +54,12 @@ namespace EasyPost.Tests.ServicesTests
             // Carriers like FedEx and UPS should hit the `/carrier_accounts/register` endpoint
             try
             {
-                CarrierAccount carrierAccount = await CreateCarrierAccountWithCustomWorkflow("FedexAccount");
+                Dictionary<string, object> parameters = Fixtures.BasicCarrierAccount;
+                parameters["type"] = "FedexAccount";
+                parameters["registration_data"] = new Dictionary<string, object>();
+
+                CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
+                CleanUpAfterTest(carrierAccount.Id);
             }
             catch (InvalidRequestError e)
             {
@@ -104,18 +109,6 @@ namespace EasyPost.Tests.ServicesTests
         private async Task<CarrierAccount> CreateBasicCarrierAccount()
         {
             CarrierAccount carrierAccount = await Client.CarrierAccount.Create(Fixtures.BasicCarrierAccount);
-            CleanUpAfterTest(carrierAccount.Id);
-
-            return carrierAccount;
-        }
-
-        private async Task<CarrierAccount> CreateCarrierAccountWithCustomWorkflow(string carrierType)
-        {
-            Dictionary<string, object> parameters = Fixtures.BasicCarrierAccount;
-            parameters["type"] = carrierType;
-            parameters["registration_data"] = new Dictionary<string, object>();
-
-            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
             CleanUpAfterTest(carrierAccount.Id);
 
             return carrierAccount;
