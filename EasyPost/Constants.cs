@@ -95,7 +95,7 @@ namespace EasyPost
         {
             internal static List<string> CarrierTypesWithCustomWorkflows => new List<string>
             {
-                "FedexAccountType", "UpsAccountType"
+                "FedexAccount", "UpsAccount"
             };
         }
     }
