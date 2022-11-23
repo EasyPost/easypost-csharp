@@ -55,7 +55,7 @@ namespace EasyPost.Tests.ServicesTests
             try
             {
                 Dictionary<string, object> parameters = Fixtures.BasicCarrierAccount;
-                parameters["type"] = Constants.CarrierAccountTypes.FedExAccountType;
+                parameters["type"] = "FedexAccount";
                 parameters["registration_data"] = new Dictionary<string, object>();
 
                 CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);

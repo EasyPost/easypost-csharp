@@ -75,7 +75,7 @@ namespace EasyPost.Services
 
             var @switch = new SwitchCase
             {
-                { Constants.CarrierAccountTypes.CustomWorkflowCarrierAccountTypes.Contains(carrierAccountType), () => endpoint = "carrier_accounts/register" },
+                { Constants.CarrierAccountTypes.CarrierTypesWithCustomWorkflows.Contains(carrierAccountType), () => endpoint = "carrier_accounts/register" },
                 { SwitchCaseScenario.Default, () => endpoint = "carrier_accounts" }
             };
             @switch.MatchFirstTrue();

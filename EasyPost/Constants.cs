@@ -93,13 +93,9 @@ namespace EasyPost
 
         public static class CarrierAccountTypes
         {
-            public const string FedExAccountType = "FedexAccount";
-            public const string UpsAccountType = "UpsAccount";
-
-            internal static List<string> CustomWorkflowCarrierAccountTypes => new List<string>
+            internal static List<string> CarrierTypesWithCustomWorkflows => new List<string>
             {
-                FedExAccountType,
-                UpsAccountType
+                "FedexAccountType", "UpsAccountType"
             };
         }
     }
