@@ -36,7 +36,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="EasyVCR" Version="0.5.1" />
+    <PackageReference Include="EasyVCR" Version="0.7.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="[17.3.0, 18.0.0)" />
     <PackageReference Include="coverlet.collector" Version="[3.1.2, 4.0.0)">
       <PrivateAssets>all</PrivateAssets>

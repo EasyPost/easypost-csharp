@@ -16,9 +16,9 @@
       },
       "EasyVCR": {
         "type": "Direct",
-        "requested": "[0.5.1, )",
-        "resolved": "0.5.1",
-        "contentHash": "rvNLrrOKVdWC3f95anMJIkhdkPO7CZpt7nC+83jVYH8pCEfdfi3QG0Nx+4+oS1OOaWue6P5tn9DDI3GCaQdbNw==",
+        "requested": "[0.7.0, )",
+        "resolved": "0.7.0",
+        "contentHash": "lvjoU1Peu5WyGVbHsBbRsTrJ5ZORp8aWiUNdg3FzWsPDTFrKCwEHqZSCAr/olD2+JmgCUCCK8QbinnuH6uA6dw==",
         "dependencies": {
           "Microsoft.Extensions.Logging": "6.0.0",
           "Newtonsoft.Json": "13.0.1"
@@ -274,9 +274,9 @@
       },
       "EasyVCR": {
         "type": "Direct",
-        "requested": "[0.5.1, )",
-        "resolved": "0.5.1",
-        "contentHash": "rvNLrrOKVdWC3f95anMJIkhdkPO7CZpt7nC+83jVYH8pCEfdfi3QG0Nx+4+oS1OOaWue6P5tn9DDI3GCaQdbNw==",
+        "requested": "[0.7.0, )",
+        "resolved": "0.7.0",
+        "contentHash": "lvjoU1Peu5WyGVbHsBbRsTrJ5ZORp8aWiUNdg3FzWsPDTFrKCwEHqZSCAr/olD2+JmgCUCCK8QbinnuH6uA6dw==",
         "dependencies": {
           "Microsoft.Extensions.Logging": "6.0.0",
           "Newtonsoft.Json": "13.0.1"
@@ -570,9 +570,9 @@
       },
       "EasyVCR": {
         "type": "Direct",
-        "requested": "[0.5.1, )",
-        "resolved": "0.5.1",
-        "contentHash": "rvNLrrOKVdWC3f95anMJIkhdkPO7CZpt7nC+83jVYH8pCEfdfi3QG0Nx+4+oS1OOaWue6P5tn9DDI3GCaQdbNw==",
+        "requested": "[0.7.0, )",
+        "resolved": "0.7.0",
+        "contentHash": "lvjoU1Peu5WyGVbHsBbRsTrJ5ZORp8aWiUNdg3FzWsPDTFrKCwEHqZSCAr/olD2+JmgCUCCK8QbinnuH6uA6dw==",
         "dependencies": {
           "Microsoft.Extensions.Logging": "6.0.0",
           "Newtonsoft.Json": "13.0.1"
@@ -827,9 +827,9 @@
       },
       "EasyVCR": {
         "type": "Direct",
-        "requested": "[0.5.1, )",
-        "resolved": "0.5.1",
-        "contentHash": "rvNLrrOKVdWC3f95anMJIkhdkPO7CZpt7nC+83jVYH8pCEfdfi3QG0Nx+4+oS1OOaWue6P5tn9DDI3GCaQdbNw==",
+        "requested": "[0.7.0, )",
+        "resolved": "0.7.0",
+        "contentHash": "lvjoU1Peu5WyGVbHsBbRsTrJ5ZORp8aWiUNdg3FzWsPDTFrKCwEHqZSCAr/olD2+JmgCUCCK8QbinnuH6uA6dw==",
         "dependencies": {
           "Microsoft.Extensions.Logging": "6.0.0",
           "Newtonsoft.Json": "13.0.1"
@@ -1062,9 +1062,9 @@
       },
       "EasyVCR": {
         "type": "Direct",
-        "requested": "[0.5.1, )",
-        "resolved": "0.5.1",
-        "contentHash": "rvNLrrOKVdWC3f95anMJIkhdkPO7CZpt7nC+83jVYH8pCEfdfi3QG0Nx+4+oS1OOaWue6P5tn9DDI3GCaQdbNw==",
+        "requested": "[0.7.0, )",
+        "resolved": "0.7.0",
+        "contentHash": "lvjoU1Peu5WyGVbHsBbRsTrJ5ZORp8aWiUNdg3FzWsPDTFrKCwEHqZSCAr/olD2+JmgCUCCK8QbinnuH6uA6dw==",
         "dependencies": {
           "Microsoft.Extensions.Logging": "6.0.0",
           "Newtonsoft.Json": "13.0.1"
