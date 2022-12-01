@@ -25,11 +25,11 @@ namespace EasyPost.Tests.ServicesTests
                 return new List<TestUtils.MockRequest>
                 {
                     new(
-                        new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/bank_accounts\/\S*\/charge$"),
+                        new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/bank_accounts\/\S*\/charges$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
                     ),
                     new(
-                        new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/credit_cards\/\S*\/charge$"),
+                        new TestUtils.MockRequestMatchRules(Method.Post, @"^v2\/credit_cards\/\S*\/charges$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
                     ),
                     new(
