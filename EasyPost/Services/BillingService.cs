@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Exceptions;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
@@ -33,7 +32,7 @@ namespace EasyPost.Services
 
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "amount", amount } };
 
-            await CreateNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.Id}/charge", parameters);
+            await CreateNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.Id}/charges", parameters);
         }
 
         /// <summary>
