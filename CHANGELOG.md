@@ -1,10 +1,10 @@
 # CHANGELOG
 
-## Next Release
+## v4.1.0 (2022-12-07)
 
-- [ADDED] Support for creating/registering carrier accounts that require custom workflows (e.g. FedEx, UPS)
-- [CHANGED] `Constants` are now stored in `EasyPost.Constants` instead of `EasyPost.Exceptions.Constants`
-- [FIXED] Typo in endpoint was causing bank/card charge requests to fail
+- Routes requests for creating a carrier account with a custom workflow (eg: FedEx, UPS) to the correct endpoint when using the `Create` function
+- `Constants` are now stored in `EasyPost.Constants` instead of `EasyPost.Exceptions.Constants`
+- Fixed a typo in `/charges` endpoint that was causing bank and credit card charge requests to fail
 
 ## v4.0.2 (2022-11-01)
 
