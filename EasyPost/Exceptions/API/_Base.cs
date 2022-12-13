@@ -17,10 +17,10 @@ namespace EasyPost.Exceptions.API
         public readonly int? StatusCode;
 
         /// <summary>
-        ///     Get a formatted error string with expanded details about the error.
+        ///     Get a formatted error string with expanded details about the EasyPost API error.
         /// </summary>
         /// <returns>A formatted error string.</returns>
-        public string PrettyPrint
+        public override string PrettyPrint
         {
             get
             {
@@ -54,16 +54,18 @@ namespace EasyPost.Exceptions.API
         // great minds think alike: https://github.com/stripe/stripe-dotnet/blob/6b9513d3b938d265c7607db919ad2c536ab578c3/src/Stripe.net/Infrastructure/Public/StripeClient.cs#L171
 
         /// <summary>
-        ///     Parse a errored RestResponse response object and return an instance of the appropriate exception class.
+        ///     Parse a errored RestResponse response object from an EasyPost API call and return an instance of the appropriate exception class.
         ///     Do not pass a non-error response to this method.
+        ///     Do not use this method for non-EasyPost API calls, use <see cref="ExternalApiError"/> instead.
         /// </summary>
         /// <param name="response">RestResponse response to parse</param>
         /// <raises>EasyPostError if an unplanned response code is found (i.e. user passed in a non-error RestResponse response object with a 2xx status code).</raises>
         /// <returns>An instance of an HttpError-inherited exception.</returns>
         internal static ApiError FromErrorResponse(RestResponse response)
         {
-            // NOTE: This method anticipates that the status code will be a non-2xx code.
+            // NOTE: This method anticipates that the status code will be a non-2xx code, and that the response comes from an EasyPost API call.
             // Do not use this method to parse a successful response.
+            // For non-EasyPost API calls, use ExternalApiError instead.
             HttpStatusCode statusCode = response.StatusCode;
             int statusCodeInt = (int)statusCode;
 
@@ -93,7 +95,7 @@ namespace EasyPost.Exceptions.API
             }
             catch
             {
-                // could not extract error details from the API response (or API did not return data, i.e. 1xx, 3xx or 5xx)
+                // could not extract error details from the EasyPost API response (or API did not return data, i.e. 1xx, 3xx or 5xx)
                 errorMessage = response.ErrorMessage // fallback to standard HTTP error message
                                ?? response.StatusDescription // fallback to standard HTTP status description
                                ?? Constants.ErrorMessages.ApiDidNotReturnErrorDetails; // fallback to no error details
@@ -105,7 +107,7 @@ namespace EasyPost.Exceptions.API
             if (exceptionType == null)
             {
                 // A unaccounted-for status code was in the response.
-                throw new EasyPostError(string.Format(Constants.ErrorMessages.UnexpectedHttpStatusCode, statusCodeInt));
+                throw new UnknownHttpError(Constants.ErrorMessages.UnexpectedHttpStatusCode, statusCodeInt);
             }
 
             // instantiate the exception class

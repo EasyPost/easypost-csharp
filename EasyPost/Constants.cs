@@ -10,11 +10,14 @@ namespace EasyPost
     {
         private static readonly Dictionary<int, Type> HttpExceptionsMap = new Dictionary<int, Type>
         {
+            // 1xx status codes are usually HTTP process-related, not server-related
+            // (mostly) everything else is related to the server being interacted with: https://httpwg.org/specs/rfc9110.html#rfc.section.15.5
+
             { 0, typeof(ConnectionError) }, // RestSharp returns status code 0 when a connection cannot be established (i.e. no internet access)
-            { 100, typeof(UnexpectedHttpError) },
-            { 101, typeof(UnexpectedHttpError) },
-            { 102, typeof(UnexpectedHttpError) },
-            { 103, typeof(UnexpectedHttpError) },
+            { 100, typeof(UnknownHttpError) },
+            { 101, typeof(UnknownHttpError) },
+            { 102, typeof(UnknownHttpError) },
+            { 103, typeof(UnknownHttpError) },
             { 300, typeof(RedirectError) },
             { 301, typeof(RedirectError) },
             { 302, typeof(RedirectError) },
@@ -42,6 +45,11 @@ namespace EasyPost
             return GetEasyPostExceptionType(statusCode);
         }
 
+        public static Type? GetEasyPostExceptionType(HttpStatusCode statusCode)
+        {
+            return GetEasyPostExceptionType((int)statusCode);
+        }
+
         public static Type? GetEasyPostExceptionType(int statusCode)
         {
             if (HttpExceptionsMap.ContainsKey(statusCode))
@@ -54,20 +62,16 @@ namespace EasyPost
             Type? exceptionType = null;
             var @switch = new SwitchCase
             {
-                { Utilities.Http.StatusCodeIs1xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
-                { Utilities.Http.StatusCodeIs3xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
-                { Utilities.Http.StatusCodeIs4xx(statusCode), () => { exceptionType = typeof(UnknownApiError); } },
-                { Utilities.Http.StatusCodeIs5xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
+                { Utilities.Http.StatusCodeIs1xx(statusCode), () => { exceptionType = typeof(UnknownHttpError); } },
+                { Utilities.Http.StatusCodeIs2xx(statusCode), () => { exceptionType = null; } },
+                { Utilities.Http.StatusCodeIs3xx(statusCode), () => { exceptionType = typeof(UnknownHttpError); } },
+                { Utilities.Http.StatusCodeIs4xx(statusCode), () => { exceptionType = typeof(UnknownHttpError); } },
+                { Utilities.Http.StatusCodeIs5xx(statusCode), () => { exceptionType = typeof(UnknownHttpError); } },
                 { SwitchCaseScenario.Default, () => { exceptionType = null; } }
             };
             @switch.MatchFirst(true); // evaluate switch case, checking which expression evaluates to "true"
 
             return exceptionType;
-        }
-
-        public static Type? GetEasyPostExceptionType(HttpStatusCode statusCode)
-        {
-            return GetEasyPostExceptionType((int)statusCode);
         }
 
         // public so end-users can access if need to (i.e. regex?)

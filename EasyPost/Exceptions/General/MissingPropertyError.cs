@@ -10,5 +10,11 @@ namespace EasyPost.Exceptions.General
         internal MissingPropertyError(object obj, string propertyName) : base(string.Format(Constants.ErrorMessages.MissingProperty, new object[] { obj.GetType().Name, propertyName }))
         {
         }
+
+        /// <summary>
+        ///     Get a formatted error string with expanded details about the error.
+        /// </summary>
+        /// <returns>A formatted error string.</returns>
+        public override string PrettyPrint => Message;
     }
 }

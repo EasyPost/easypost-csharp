@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using EasyPost.Exceptions;
 using EasyPost.Exceptions.API;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;

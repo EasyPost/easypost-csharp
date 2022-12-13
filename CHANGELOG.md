@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## NEXT RELEASE
+
+- [REMOVED] Removed `UnknownApiError` exception type.
+- [CHANGED] Renamed `UnexpectedHttpError` exception type to `UnknownHttpError` to better reflect its purpose.
+- [CHANGED] `ExternalApiError` no longer inherits from `ApiError` (`ApiError` reserved from EasyPost API errors only).
+- [IMPROVED] All `EasyPostError` exceptions and subclasses now have a `PrettyPrint` getter that returns a human-readable string representation of the error.
+  - Previously, only `ApiError` exceptions had this. Now, all exceptions thrown by the library should have this.
+- [IMPROVED] Logic for calculating exception type to throw based on API error
+  - EasyPost API failures can trigger a variety of specific exceptions, all inheriting from `ApiError`.
+  - Non-EasyPost API/HTTP failures will trigger an `ExternalApiError` exception.
+
 ## v4.1.0 (2022-12-07)
 
 - Routes requests for creating a carrier account with a custom workflow (eg: FedEx, UPS) to the correct endpoint when using the `Create` function
