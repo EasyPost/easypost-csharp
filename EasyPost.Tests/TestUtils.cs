@@ -8,7 +8,6 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Exceptions;
 using EasyPost.Utilities;
 using EasyVCR;
 using RestSharp;
@@ -71,7 +70,7 @@ namespace EasyPost.Tests._Utilities
                     keyName = "PARTNER_USER_PROD_API_KEY";
                     break;
                 case ApiKey.Referral:
-                    keyName = "REFERRAL_USER_PROD_API_KEY";
+                    keyName = "REFERRAL_CUSTOMER_PROD_API_KEY";
                     break;
                 case ApiKey.Mock:
                     keyName = "EASYPOST_MOCK_API_KEY"; // does not exist, will trigger to use ApiKeyFailedToPull
