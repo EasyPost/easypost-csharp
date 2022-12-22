@@ -41,6 +41,35 @@ jobs:
         run: make scan
         # TODO: In the future, we can collect the output logs by enabling Code Scanning and using the pre-built GitHub Action: https://github.com/marketplace/actions/securitycodescan
         # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github#uploading-a-code-scanning-analysis-with-github-actions
+  analysis:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install .NET SDK
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: |
+            3.1.x
+            5.x.x
+            6.x.x
+            7.x.x
+      # Load NuGet package cache
+      - name: Load NuGet package cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ matrix.framework }}-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+        # Restore required NuGet packages
+      - name: Restore NuGet Packages
+        run: make restore
+      - name: Run .NET Code Analysis
+        uses: dotnet/code-analysis@v1
+        id: code-analysis
+        with:
+          build-breaking: true
+          all-categories: latest-recommended
   coverage_requirement:
     runs-on: ubuntu-22.04
     steps:
