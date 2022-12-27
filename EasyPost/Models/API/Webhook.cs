@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -37,7 +36,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Webhook> Update(Dictionary<string, object>? parameters = null)
         {
-            await Update<Webhook>(Method.Patch, $"webhooks/{Id}", parameters);
+            await Update<Webhook>(Utilities.Http.Method.Patch, $"webhooks/{Id}", parameters);
             return this;
         }
 

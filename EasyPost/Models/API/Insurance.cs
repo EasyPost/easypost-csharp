@@ -5,7 +5,6 @@ using EasyPost._base;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -53,7 +52,7 @@ namespace EasyPost.Models.API
         [Obsolete("Use the Retrieve method instead. This method will be removed in a future version.")]
         public async Task<Insurance> Refresh(Dictionary<string, object>? parameters = null)
         {
-            await Update<Insurance>(Method.Get, $"insurances/{Id}");
+            await Update<Insurance>(Utilities.Http.Method.Get, $"insurances/{Id}");
             return this;
         }
 

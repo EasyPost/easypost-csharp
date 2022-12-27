@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.API;
@@ -7,7 +8,6 @@ using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
 using EasyPost.Utilities.Annotations;
-using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -127,7 +127,7 @@ namespace EasyPost.Services
             try
             {
                 // Make request
-                paymentMethod = await Client.Request<PaymentMethod>(Method.Post, "credit_cards", ApiVersion.Current, parameters);
+                paymentMethod = await Client.Request<PaymentMethod>(Utilities.Http.Method.Post, "credit_cards", ApiVersion.Current, parameters);
             }
             finally
             {
@@ -151,22 +151,38 @@ namespace EasyPost.Services
         {
             const string url = "https://api.stripe.com/v1/tokens";
 
-            RestRequest request = new RestRequest(url, Method.Post);
-            request.AddHeader("Authorization", $"Bearer {easypostStripeApiKey}");
-            request.AddHeader("Accept", "application/x-www-form-urlencoded");
-            request.AddParameter("card[number]", number);
-            request.AddParameter("card[exp_month]", expirationMonth.ToString());
-            request.AddParameter("card[exp_year]", expirationYear.ToString());
-            request.AddParameter("card[cvc]", cvc);
+            HttpRequestMessage request = new HttpRequestMessage(Utilities.Http.Method.Post.HttpMethod, url);
 
-            RestResponse<Dictionary<string, object>> response = await Client!.ExecuteRequest<Dictionary<string, object>>(request);
+            Dictionary<string, string> headers = new Dictionary<string, string>
+            {
+                { "Authorization", $"Bearer {easypostStripeApiKey}" },
+                { "Accept", "application/x-www-form-urlencoded" },
 
-            if (response.ReturnedError() || response.Data == null)
+            };
+            foreach (KeyValuePair<string, string> header in headers)
+            {
+                request.Headers.Add(header.Key, header.Value);
+            }
+
+            // add parameters
+            Dictionary<string, string> parameters = new Dictionary<string, string>
+            {
+                { "card[number]", number },
+                { "card[exp_month]", expirationMonth.ToString() },
+                { "card[exp_year]", expirationYear.ToString() },
+                { "card[cvc]", cvc },
+            };
+            request.Content = new FormUrlEncodedContent(parameters);
+
+            HttpResponseMessage response = await Client!.ExecuteRequest(request);
+
+            if (response.ReturnedError() || response.Content == null)
             {
                 throw new ExternalApiError("Could not send card details to Stripe, please try again later.", (int)response.StatusCode);
             }
 
-            Dictionary<string, object>? data = response.Data;
+            string content = await response.Content.ReadAsStringAsync();
+            Dictionary<string, object> data = JsonSerialization.ConvertJsonToObject<Dictionary<string, object>>(content);
 
             if (!data.ContainsKey("id"))
             {

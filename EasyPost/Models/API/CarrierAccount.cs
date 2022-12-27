@@ -5,7 +5,6 @@ using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -45,7 +44,7 @@ namespace EasyPost.Models.API
         public async Task<CarrierAccount> Update(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("carrier_account");
-            await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{Id}", parameters);
+            await Update<CarrierAccount>(Utilities.Http.Method.Patch, $"carrier_accounts/{Id}", parameters);
             return this;
         }
 

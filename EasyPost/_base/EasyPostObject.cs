@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using EasyPost.Utilities;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost._base
 {
@@ -80,7 +79,7 @@ namespace EasyPost._base
         /// <param name="rootElement">Root element of JSON returned by update call.</param>
         /// <param name="overrideApiVersion">Override the API version used for update call.</param>
         /// <typeparam name="T">Type of object to update.</typeparam>
-        protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class
+        protected async Task Update<T>(Utilities.Http.Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class
         {
             T updatedObject = await Request<T>(method, url, parameters, rootElement, overrideApiVersion);
 

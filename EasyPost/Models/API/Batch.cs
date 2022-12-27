@@ -5,7 +5,6 @@ using EasyPost._base;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -48,7 +47,7 @@ namespace EasyPost.Models.API
         public async Task<Batch> AddShipments(Dictionary<string, object> parameters)
         {
             // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
-            await Update<Batch>(Method.Post, $"batches/{Id}/add_shipments", parameters);
+            await Update<Batch>(Utilities.Http.Method.Post, $"batches/{Id}/add_shipments", parameters);
             return this;
         }
 
@@ -80,7 +79,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> Buy()
         {
-            await Update<Batch>(Method.Post, $"batches/{Id}/buy");
+            await Update<Batch>(Utilities.Http.Method.Post, $"batches/{Id}/buy");
             return this;
         }
 
@@ -92,7 +91,7 @@ namespace EasyPost.Models.API
         public async Task<Batch> GenerateLabel(string fileFormat = "pdf") // TODO: Remove default value (breaking change)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
-            await Update<Batch>(Method.Post, $"batches/{Id}/label", parameters);
+            await Update<Batch>(Utilities.Http.Method.Post, $"batches/{Id}/label", parameters);
             return this;
         }
 
@@ -104,7 +103,7 @@ namespace EasyPost.Models.API
         public async Task<Batch> GenerateScanForm(string fileFormat = "pdf") // TODO: Remove default value (breaking change)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
-            await Update<Batch>(Method.Post, $"batches/{Id}/scan_form", parameters);
+            await Update<Batch>(Utilities.Http.Method.Post, $"batches/{Id}/scan_form", parameters);
             return this;
         }
 
@@ -116,7 +115,7 @@ namespace EasyPost.Models.API
         public async Task<Batch> RemoveShipments(Dictionary<string, object> parameters)
         {
             // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
-            await Update<Batch>(Method.Post, $"batches/{Id}/remove_shipments", parameters);
+            await Update<Batch>(Utilities.Http.Method.Post, $"batches/{Id}/remove_shipments", parameters);
             return this;
         }
 

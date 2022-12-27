@@ -1,10 +1,26 @@
 using System.Net;
-using RestSharp;
+using System.Net.Http;
 
 namespace EasyPost.Utilities
 {
-    internal static class Http
+    public static class Http
     {
+        public class Method
+        {
+            internal HttpMethod HttpMethod { get; }
+
+            public static readonly Method Get = new Method(HttpMethod.Get);
+            public static readonly Method Post = new Method(HttpMethod.Post);
+            public static readonly Method Put = new Method(HttpMethod.Put);
+            public static readonly Method Delete = new Method(HttpMethod.Delete);
+            public static readonly Method Patch = new Method(new HttpMethod("PATCH"));
+
+            private Method(HttpMethod httpMethod)
+            {
+                HttpMethod = httpMethod;
+            }
+        }
+
         /// <summary>
         ///     Return whether the given response has a status code in the given range.
         /// </summary>
@@ -12,7 +28,7 @@ namespace EasyPost.Utilities
         /// <param name="min">Minimum valid status code.</param>
         /// <param name="max">Maximum valid status code.</param>
         /// <returns>Whether the given response has a status code in the given range.</returns>
-        internal static bool HasStatusCodeBetween(this RestResponseBase response, int min, int max)
+        internal static bool HasStatusCodeBetween(this HttpResponseMessage response, int min, int max)
         {
             return StatusCodeBetween(response, min, max);
         }
@@ -84,7 +100,7 @@ namespace EasyPost.Utilities
         /// </summary>
         /// <param name="response">Response to check.</param>
         /// <returns>True if the response code is not in the 200-299 range, false otherwise.</returns>
-        internal static bool ReturnedError(this RestResponse response)
+        internal static bool ReturnedError(this HttpResponseMessage response)
         {
             return !ReturnedNoError(response);
         }
@@ -94,7 +110,7 @@ namespace EasyPost.Utilities
         /// </summary>
         /// <param name="response">Response to check.</param>
         /// <returns>True if the response code is in the 200-299 range, false otherwise.</returns>
-        internal static bool ReturnedNoError(this RestResponse response)
+        internal static bool ReturnedNoError(this HttpResponseMessage response)
         {
             return response.StatusCode.Is2xx();
         }
@@ -130,7 +146,7 @@ namespace EasyPost.Utilities
         /// <param name="min">Minimum valid status code.</param>
         /// <param name="max">Maximum valid status code.</param>
         /// <returns>Whether the given response has a status code in the given range.</returns>
-        internal static bool StatusCodeBetween(RestResponseBase response, int min, int max)
+        internal static bool StatusCodeBetween(HttpResponseMessage response, int min, int max)
         {
             return StatusCodeBetween(response.StatusCode, min, max);
         }

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Reflection;
+using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
 using Newtonsoft.Json.Linq;
-using RestSharp;
 
 namespace EasyPost.Exceptions.API
 {
@@ -60,7 +61,7 @@ namespace EasyPost.Exceptions.API
         /// <param name="response">RestResponse response to parse</param>
         /// <raises>EasyPostError if an unplanned response code is found (i.e. user passed in a non-error RestResponse response object with a 2xx status code).</raises>
         /// <returns>An instance of an HttpError-inherited exception.</returns>
-        internal static ApiError FromErrorResponse(RestResponse response)
+        internal static async Task<ApiError> FromErrorResponse(HttpResponseMessage response)
         {
             // NOTE: This method anticipates that the status code will be a non-2xx code.
             // Do not use this method to parse a successful response.
@@ -74,7 +75,7 @@ namespace EasyPost.Exceptions.API
             try
             {
                 // try to extract error details from the API response
-                Dictionary<string, Dictionary<string, object>> body = JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
+                Dictionary<string, Dictionary<string, object>> body = await JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response);
 
                 // Errors may be an array improperly assigned to the `message` field instead of the `errors` field, concatenate those here
                 object parsedBodyMessage = body["error"]["message"];
@@ -85,7 +86,7 @@ namespace EasyPost.Exceptions.API
                     var _ => throw new Exception() // this will trigger the catch block below
                 };
                 errorType = body["error"]["code"].ToString();
-                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string>
+                errors = await JsonSerialization.ConvertJsonToObject<List<Error>>(response, null, new List<string>
                 {
                     "error",
                     "errors"
@@ -94,8 +95,7 @@ namespace EasyPost.Exceptions.API
             catch
             {
                 // could not extract error details from the API response (or API did not return data, i.e. 1xx, 3xx or 5xx)
-                errorMessage = response.ErrorMessage // fallback to standard HTTP error message
-                               ?? response.StatusDescription // fallback to standard HTTP status description
+                errorMessage = response.ReasonPhrase // fallback to standard HTTP status description
                                ?? Constants.ErrorMessages.ApiDidNotReturnErrorDetails; // fallback to no error details
                 errorType = Constants.ErrorMessages.ApiErrorDetailsParsingError;
                 errors = null;

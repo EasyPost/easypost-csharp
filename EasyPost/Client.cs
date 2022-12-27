@@ -1,10 +1,11 @@
+using System;
 using System.Net.Http;
 using EasyPost._base;
 using EasyPost.Services;
 
 namespace EasyPost
 {
-    public class Client : EasyPostClient
+    public class Client : EasyPostClient, IDisposable
     {
         public AddressService Address => GetService<AddressService>();
 
@@ -64,6 +65,18 @@ namespace EasyPost
         {
             // We go ahead and initialize the Beta client internally here as well, since initializing a new one on each property call is expensive and causes lockups with the HttpClient library.
             Beta = new BetaClient(apiKey, baseUrl, customHttpClient);
+        }
+
+        public void Dispose()
+        {
+            // Dispose of the Beta client as well.
+            Beta.Dispose();
+
+            // Dispose of the base client.
+            base.Dispose();
+
+            // TODO: Null out the services once they are redesigned to be initialized by the constructor (private setters).
+
         }
     }
 }

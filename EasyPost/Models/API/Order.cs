@@ -4,7 +4,6 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -64,7 +63,7 @@ namespace EasyPost.Models.API
                 { "service", withService }
             };
 
-            await Update<Order>(Method.Post, $"orders/{Id}/buy", parameters);
+            await Update<Order>(Utilities.Http.Method.Post, $"orders/{Id}/buy", parameters);
             return this;
         }
 
@@ -100,7 +99,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, "Id");
             }
 
-            await Update<Order>(Method.Get, $"orders/{Id}/rates");
+            await Update<Order>(Utilities.Http.Method.Get, $"orders/{Id}/rates");
         }
 
         #endregion

@@ -21,6 +21,8 @@ namespace EasyPost
          * When you are migrating a service from beta to general, you should remove/change the overrideApiVersion parameter from each function that is being migrated.
          */
 
+        // TODO: ^ Undo above, set api version as a client config and lock this client (and its services) to that version
+
         /// <summary>
         ///     Constructor for the EasyPost beta client.
         /// </summary>

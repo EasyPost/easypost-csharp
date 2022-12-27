@@ -61,26 +61,12 @@ namespace EasyPost.Http
         private int? _connectTimeoutMilliseconds;
 
         /// <summary>
-        ///     The request timeout in milliseconds set by the user.
-        /// </summary>
-        private int? _requestTimeoutMilliseconds;
-
-        /// <summary>
         ///     The connect timeout in milliseconds.
         /// </summary>
         public int ConnectTimeoutMilliseconds
         {
             get => _connectTimeoutMilliseconds ?? Defaults.DefaultConnectTimeoutMilliseconds;
             set => _connectTimeoutMilliseconds = value;
-        }
-
-        /// <summary>
-        ///     The request timeout in milliseconds.
-        /// </summary>
-        public int RequestTimeoutMilliseconds
-        {
-            get => _requestTimeoutMilliseconds ?? Defaults.DefaultRequestTimeoutMilliseconds;
-            set => _requestTimeoutMilliseconds = value;
         }
 
         /*
@@ -94,12 +80,10 @@ namespace EasyPost.Http
         /// </summary>
         /// <param name="apiKey">The API key to use for the client connection.</param>
         /// <param name="baseUrl">Base URL to use with this client. This will override `apiVersion`</param>
-        /// <param name="customHttpClient">The custom HTTP client to use for the client connection.</param>
-        internal ClientConfiguration(string apiKey, string? baseUrl, HttpClient? customHttpClient = null)
+        internal ClientConfiguration(string apiKey, string? baseUrl)
         {
             ApiKey = apiKey;
             ApiBase = baseUrl ?? Defaults.DefaultBaseUrl;
-            HttpClient = customHttpClient;
 
             _libraryVersion = RuntimeInfo.ApplicationInfo.ApplicationVersion;
             _dotNetVersion = RuntimeInfo.ApplicationInfo.DotNetVersion;
@@ -119,11 +103,6 @@ namespace EasyPost.Http
             ///     The default connection timeout in milliseconds.
             /// </summary>
             internal const int DefaultConnectTimeoutMilliseconds = 30000;
-
-            /// <summary>
-            ///     The default request timeout in milliseconds.
-            /// </summary>
-            internal const int DefaultRequestTimeoutMilliseconds = 60000;
         }
 
         public override bool Equals(object? obj)

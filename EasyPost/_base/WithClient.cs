@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost._base
 {
@@ -12,22 +11,22 @@ namespace EasyPost._base
         internal EasyPostClient? Client { get; set; }
 
         [CrudOperations.Create]
-        protected async Task<T> Create<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class => await Request<T>(Method.Post, url, parameters, rootElement, overrideApiVersion);
+        protected async Task<T> Create<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class => await Request<T>(Utilities.Http.Method.Post, url, parameters, rootElement, overrideApiVersion);
 
         [CrudOperations.Create]
-        protected async Task CreateNoResponse(string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Request(Method.Post, url, parameters, overrideApiVersion);
+        protected async Task CreateNoResponse(string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Request(Utilities.Http.Method.Post, url, parameters, overrideApiVersion);
 
         [CrudOperations.Delete]
-        protected async Task<T> Delete<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class => await Request<T>(Method.Delete, url, parameters, rootElement, overrideApiVersion);
+        protected async Task<T> Delete<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class => await Request<T>(Utilities.Http.Method.Delete, url, parameters, rootElement, overrideApiVersion);
 
         [CrudOperations.Delete]
-        protected async Task DeleteNoResponse(string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Request(Method.Delete, url, parameters, overrideApiVersion);
+        protected async Task DeleteNoResponse(string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Request(Utilities.Http.Method.Delete, url, parameters, overrideApiVersion);
 
         [CrudOperations.Read]
-        protected async Task<T> Get<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class => await Request<T>(Method.Get, url, parameters, rootElement, overrideApiVersion);
+        protected async Task<T> Get<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class => await Request<T>(Utilities.Http.Method.Get, url, parameters, rootElement, overrideApiVersion);
 
         [CrudOperations.Read]
-        protected async Task<T> List<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class => await Request<T>(Method.Get, url, parameters, rootElement, overrideApiVersion);
+        protected async Task<T> List<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class => await Request<T>(Utilities.Http.Method.Get, url, parameters, rootElement, overrideApiVersion);
 
 
         /// <summary>
@@ -40,7 +39,7 @@ namespace EasyPost._base
         /// <param name="overrideApiVersion">Override API version hit for HTTP request. Defaults to general availability.</param>
         /// <typeparam name="T">Type of object to return from request.</typeparam>
         /// <returns>A T-type object.</returns>
-        protected async Task<T> Request<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class => await Client!.Request<T>(method, url, overrideApiVersion ?? ApiVersion.Current, parameters, rootElement);
+        protected async Task<T> Request<T>(Utilities.Http.Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class => await Client!.Request<T>(method, url, overrideApiVersion ?? ApiVersion.Current, parameters, rootElement);
 
         /// <summary>
         ///     Make an HTTP request to the EasyPost API.
@@ -50,12 +49,12 @@ namespace EasyPost._base
         /// <param name="parameters">Optional parameters to include in the request.</param>
         /// <param name="overrideApiVersion">Override API version hit for HTTP request. Defaults to general availability.</param>
         /// <returns>None</returns>
-        protected async Task Request(Method method, string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Client!.Request(method, url, overrideApiVersion ?? ApiVersion.Current, parameters);
+        protected async Task Request(Utilities.Http.Method method, string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Client!.Request(method, url, overrideApiVersion ?? ApiVersion.Current, parameters);
 
         [CrudOperations.Update]
-        protected async Task<T> Update<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class => await Request<T>(Method.Patch, url, parameters, rootElement, overrideApiVersion);
+        protected async Task<T> Update<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class => await Request<T>(Utilities.Http.Method.Patch, url, parameters, rootElement, overrideApiVersion);
 
         [CrudOperations.Update]
-        protected async Task UpdateNoResponse(string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Request(Method.Patch, url, parameters, overrideApiVersion);
+        protected async Task UpdateNoResponse(string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Request(Utilities.Http.Method.Patch, url, parameters, overrideApiVersion);
     }
 }

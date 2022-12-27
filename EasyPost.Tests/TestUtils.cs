@@ -8,10 +8,8 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Exceptions;
 using EasyPost.Utilities;
 using EasyVCR;
-using RestSharp;
 
 namespace EasyPost.Tests._Utilities
 {
@@ -175,11 +173,11 @@ namespace EasyPost.Tests._Utilities
 
         public class MockRequestMatchRules
         {
-            internal Method Method { get; set; }
+            internal Utilities.Http.Method Method { get; set; }
 
             internal string ResourceRegex { get; set; }
 
-            public MockRequestMatchRules(Method method, string resourceRegex)
+            public MockRequestMatchRules(Utilities.Http.Method method, string resourceRegex)
             {
                 Method = method;
                 ResourceRegex = resourceRegex;
@@ -217,26 +215,7 @@ namespace EasyPost.Tests._Utilities
             private readonly List<MockRequest> _mockRequests = new();
 
 #pragma warning disable CS1998
-            internal override async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request)
-#pragma warning restore CS1998
-            {
-                var mockRequest = FindMatchingMockRequest(request);
-
-                if (mockRequest == null)
-                {
-                    throw new Exception($"No matching mock request found for: {request.Method.ToString().ToUpper()} {request.Resource}");
-                }
-
-                return new RestResponse<T>
-                {
-                    Content = mockRequest.ResponseInfo.Content,
-                    StatusCode = mockRequest.ResponseInfo.StatusCode,
-                    Data = mockRequest.ResponseInfo.Content != null ? JsonSerialization.ConvertJsonToObject<T>(mockRequest.ResponseInfo.Content) : default
-                };
-            }
-
-#pragma warning disable CS1998
-            internal override async Task<RestResponse> ExecuteRequest(RestRequest request)
+            internal override async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request)
 #pragma warning restore CS1998
             {
                 var mockRequest = FindMatchingMockRequest(request);
@@ -246,9 +225,9 @@ namespace EasyPost.Tests._Utilities
                     throw new Exception("No matching mock request found");
                 }
 
-                return new RestResponse
+                return new HttpResponseMessage
                 {
-                    Content = mockRequest.ResponseInfo.Content,
+                    Content = new StringContent(mockRequest.ResponseInfo.Content ?? ""),
                     StatusCode = mockRequest.ResponseInfo.StatusCode
                 };
             }
@@ -267,11 +246,11 @@ namespace EasyPost.Tests._Utilities
                 _mockRequests.AddRange(mockRequests);
             }
 
-            private MockRequest FindMatchingMockRequest(RestRequest request)
+            private MockRequest FindMatchingMockRequest(HttpRequestMessage request)
             {
                 return _mockRequests.FirstOrDefault(
-                    mock => mock.MatchRules.Method == request.Method &&
-                            EndpointMatches(request.Resource, mock.MatchRules.ResourceRegex));
+                    mock => mock.MatchRules.Method.HttpMethod == request.Method &&
+                            EndpointMatches(request.RequestUri.AbsoluteUri, mock.MatchRules.ResourceRegex));
             }
 
             private static bool EndpointMatches(string endpoint, string pattern)
