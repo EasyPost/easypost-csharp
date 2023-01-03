@@ -25,7 +25,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Tracker> Create(string carrier, string trackingCode)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            Dictionary<string, object> parameters = new()
             {
                 { "carrier", carrier },
                 { "tracking_code", trackingCode }

@@ -8,7 +8,7 @@ namespace EasyPost
 {
     public static class Constants
     {
-        private static readonly Dictionary<int, Type> HttpExceptionsMap = new Dictionary<int, Type>
+        private static readonly Dictionary<int, Type?> HttpExceptionsMap = new()
         {
             { 0, typeof(ConnectionError) }, // RestSharp returns status code 0 when a connection cannot be established (i.e. no internet access)
             { 100, typeof(UnexpectedHttpError) },
@@ -44,10 +44,10 @@ namespace EasyPost
 
         public static Type? GetEasyPostExceptionType(int statusCode)
         {
-            if (HttpExceptionsMap.ContainsKey(statusCode))
+            if (HttpExceptionsMap.TryGetValue(statusCode, out Type? value))
             {
                 // return the exception type from the map
-                return HttpExceptionsMap[statusCode];
+                return value;
             }
 
             // provided status code is not in the map, find fallback
@@ -93,7 +93,7 @@ namespace EasyPost
 
         public static class CarrierAccountTypes
         {
-            internal static List<string> CarrierTypesWithCustomWorkflows => new List<string>
+            internal static List<string> CarrierTypesWithCustomWorkflows => new()
             {
                 "FedexAccount", "UpsAccount"
             };

@@ -30,7 +30,7 @@ namespace EasyPost.Services
 
             PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
 
-            Dictionary<string, object> parameters = new Dictionary<string, object> { { "amount", amount } };
+            Dictionary<string, object> parameters = new() { { "amount", amount } };
 
             await CreateNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.Id}/charges", parameters);
         }

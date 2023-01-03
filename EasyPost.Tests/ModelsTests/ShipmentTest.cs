@@ -73,33 +73,33 @@ namespace EasyPost.Tests.ModelsTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
-        public async Task TestGetSmartrates()
+        public async Task TestGetSmartRates()
         {
-            UseVCR("get_smartrates");
+            UseVCR("get_smart_rates");
 
             Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
 
             Assert.NotNull(shipment.Rates);
 
             List<Smartrate> smartRates = await shipment.GetSmartrates();
-            Smartrate smartrate = smartRates.First();
+            Smartrate smartRate = smartRates.First();
             // Must compare IDs because one is a Rate object and one is a Smartrate object
-            Assert.Equal(shipment.Rates[0].Id, smartrate.Id);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile50);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile75);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile85);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile90);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile95);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile97);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile99);
+            Assert.Equal(shipment.Rates[0].Id, smartRate.Id);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile50);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile75);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile85);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile90);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile95);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile97);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile99);
         }
 
         [Fact]
         [CrudOperations.Update]
         [Testing.Parameters]
-        public async Task TestGetSmartratesWithNoId()
+        public async Task TestGetSmartRatesWithNoId()
         {
-            UseVCR("get_smartrates_with_no_id");
+            UseVCR("get_smart_rates_with_no_id");
 
             Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
             shipment.Id = null;
@@ -299,8 +299,8 @@ namespace EasyPost.Tests.ModelsTests
             await shipment.RegenerateRates(withCarbonOffset: true);
             List<Rate> newRatesWithCarbon = shipment.Rates;
 
-            Rate baseRate = baseRates.First();
-            Rate newRateWithCarbon = newRatesWithCarbon.First();
+            Rate baseRate = baseRates!.First();
+            Rate newRateWithCarbon = newRatesWithCarbon!.First();
 
             Assert.Null(baseRate.CarbonOffset);
             Assert.NotNull(newRateWithCarbon.CarbonOffset);
@@ -344,22 +344,22 @@ namespace EasyPost.Tests.ModelsTests
 
         [Fact]
         [Testing.Function]
-        public async Task TestLowestSmartrate()
+        public async Task TestLowestSmartRate()
         {
-            UseVCR("lowest_smartrate");
+            UseVCR("lowest_smart_rate");
 
             Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
 
-            // test lowest smartrate with valid filters
-            Smartrate lowestSmartrate = await shipment.LowestSmartrate(2, SmartrateAccuracy.Percentile90);
-            Assert.Equal("Priority", lowestSmartrate.Service);
-            Assert.Equal(8.15, lowestSmartrate.Rate);
-            Assert.Equal("USPS", lowestSmartrate.Carrier);
+            // test lowest smart rate with valid filters
+            Smartrate lowestSmartRate = await shipment.LowestSmartrate(2, SmartrateAccuracy.Percentile90);
+            Assert.Equal("Priority", lowestSmartRate.Service);
+            Assert.Equal(8.15, lowestSmartRate.Rate);
+            Assert.Equal("USPS", lowestSmartRate.Carrier);
 
-            // test lowest smartrate with invalid filters (should error due to strict delivery_days)
+            // test lowest smart rate with invalid filters (should error due to strict delivery_days)
             await Assert.ThrowsAsync<FilteringError>(async () => await shipment.LowestSmartrate(0, SmartrateAccuracy.Percentile90));
 
-            // test lowest smartrate with invalid filters (should error due to bad delivery_accuracy)
+            // test lowest smart rate with invalid filters (should error due to bad delivery_accuracy)
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
         }
 

@@ -8,11 +8,11 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Exceptions;
 using EasyPost.Utilities;
 using EasyVCR;
 using RestSharp;
 
+// ReSharper disable once CheckNamespace
 namespace EasyPost.Tests._Utilities
 {
     public class TestUtils
@@ -58,27 +58,15 @@ namespace EasyPost.Tests._Utilities
 
         internal static string GetApiKey(ApiKey apiKey)
         {
-            string keyName = "";
-            switch (apiKey)
+            string keyName = apiKey switch
             {
-                case ApiKey.Test:
-                    keyName = "EASYPOST_TEST_API_KEY";
-                    break;
-                case ApiKey.Production:
-                    keyName = "EASYPOST_PROD_API_KEY";
-                    break;
-                case ApiKey.Partner:
-                    keyName = "PARTNER_USER_PROD_API_KEY";
-                    break;
-                case ApiKey.Referral:
-                    keyName = "REFERRAL_USER_PROD_API_KEY";
-                    break;
-                case ApiKey.Mock:
-                    keyName = "EASYPOST_MOCK_API_KEY"; // does not exist, will trigger to use ApiKeyFailedToPull
-                    break;
-                default:
-                    throw new Exception(Constants.ErrorMessages.InvalidApiKeyType);
-            }
+                ApiKey.Test => "EASYPOST_TEST_API_KEY",
+                ApiKey.Production => "EASYPOST_PROD_API_KEY",
+                ApiKey.Partner => "PARTNER_USER_PROD_API_KEY",
+                ApiKey.Referral => "REFERRAL_USER_PROD_API_KEY",
+                ApiKey.Mock => "EASYPOST_MOCK_API_KEY", // does not exist, will trigger to use ApiKeyFailedToPull
+                var _ => throw new Exception(Constants.ErrorMessages.InvalidApiKeyType)
+            };
 
             return Environment.GetEnvironmentVariable(keyName) ?? ApiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.
         }

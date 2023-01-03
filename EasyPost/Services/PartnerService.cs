@@ -71,7 +71,8 @@ namespace EasyPost.Services
                 throw new InternalServerError("Could not retrieve EasyPost Stripe API key.", 0);
             }
 
-            string? stripeToken = await CreateStripeToken(number, expirationMonth, expirationYear, cvc, easypostStripeApiKey!);
+            // ReSharper disable once RedundantSuppressNullableWarningExpression
+            string stripeToken = await CreateStripeToken(number, expirationMonth, expirationYear, cvc, easypostStripeApiKey!);
 
             if (string.IsNullOrEmpty(stripeToken))
             {
@@ -106,7 +107,7 @@ namespace EasyPost.Services
         /// <returns>An EasyPost.PaymentMethod instance.</returns>
         private async Task<PaymentMethod> CreateEasypostCreditCard(string referralApiKey, string stripeObjectId, PaymentMethod.Priority priority)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            Dictionary<string, object> parameters = new()
             {
                 {
                     "credit_card", new Dictionary<string, object>
@@ -151,7 +152,7 @@ namespace EasyPost.Services
         {
             const string url = "https://api.stripe.com/v1/tokens";
 
-            RestRequest request = new RestRequest(url, Method.Post);
+            RestRequest request = new(url, Method.Post);
             request.AddHeader("Authorization", $"Bearer {easypostStripeApiKey}");
             request.AddHeader("Accept", "application/x-www-form-urlencoded");
             request.AddParameter("card[number]", number);
@@ -168,12 +169,9 @@ namespace EasyPost.Services
 
             Dictionary<string, object>? data = response.Data;
 
-            if (!data.ContainsKey("id"))
-            {
-                throw new ExternalApiError("Could not create Stripe token, please try again later.", (int)response.StatusCode);
-            }
-
-            return (string)data["id"];
+            return !data.ContainsKey("id")
+                ? throw new ExternalApiError("Could not create Stripe token, please try again later.", (int)response.StatusCode)
+                : (string)data["id"];
         }
 
         /// <summary>

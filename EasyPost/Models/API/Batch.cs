@@ -91,7 +91,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> GenerateLabel(string fileFormat = "pdf") // TODO: Remove default value (breaking change)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
+            Dictionary<string, object> parameters = new() { { "file_format", fileFormat } };
             await Update<Batch>(Method.Post, $"batches/{Id}/label", parameters);
             return this;
         }
@@ -103,7 +103,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> GenerateScanForm(string fileFormat = "pdf") // TODO: Remove default value (breaking change)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
+            Dictionary<string, object> parameters = new() { { "file_format", fileFormat } };
             await Update<Batch>(Method.Post, $"batches/{Id}/scan_form", parameters);
             return this;
         }

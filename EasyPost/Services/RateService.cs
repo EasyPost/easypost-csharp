@@ -38,9 +38,6 @@ namespace EasyPost.Services
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
-        public Rate GetLowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
-        {
-            return Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
-        }
+        public Rate GetLowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
     }
 }

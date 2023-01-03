@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
@@ -12,18 +13,17 @@ namespace EasyPost.Utilities
     /// <summary>
     ///     A Java-like enum implementation for C#.
     /// </summary>
+#pragma warning disable CA1716
     public abstract class Enum : IComparable, IEnum
+#pragma warning restore CA1716
     {
         private int Id { get; }
 
-        protected Enum(int id)
-        {
-            Id = id;
-        }
+        protected Enum(int id) => Id = id;
 
-        public int CompareTo(object? other) => Id.CompareTo(((Enum)other!).Id);
+        public int CompareTo(object? obj) => Id.CompareTo(((Enum)obj!).Id);
 
-        public override string ToString() => Id.ToString();
+        public override string ToString() => Id.ToString(CultureInfo.InvariantCulture);
 
         public override bool Equals(object? obj)
         {
@@ -69,10 +69,7 @@ namespace EasyPost.Utilities
             return one.Equals(two);
         }
 
-        public static bool operator !=(Enum? one, Enum? two)
-        {
-            return !(one == two);
-        }
+        public static bool operator !=(Enum? one, Enum? two) => !(one == two);
 
         public static IEnumerable<T> GetAll<T>() where T : IEnum =>
             typeof(T).GetFields(BindingFlags.Public |
@@ -80,6 +77,14 @@ namespace EasyPost.Utilities
                                 BindingFlags.DeclaredOnly)
                 .Select(f => f.GetValue(null))
                 .Cast<T>();
+
+        public static bool operator <(Enum left, Enum right) => left.CompareTo(right) < 0;
+
+        public static bool operator <=(Enum left, Enum right) => left.CompareTo(right) <= 0;
+
+        public static bool operator >(Enum left, Enum right) => left.CompareTo(right) > 0;
+
+        public static bool operator >=(Enum left, Enum right) => left.CompareTo(right) >= 0;
     }
 
     /// <summary>
@@ -89,10 +94,7 @@ namespace EasyPost.Utilities
     {
         internal object Value { get; }
 
-        protected ValueEnum(int id, object value) : base(id)
-        {
-            Value = value;
-        }
+        protected ValueEnum(int id, object value) : base(id) => Value = value;
 
         public override string ToString() => Value.ToString() ?? string.Empty;
     }

@@ -9,7 +9,7 @@ namespace EasyPost.Utilities
 
     internal class SwitchCaseScenario : Enum
     {
-        internal static readonly SwitchCaseScenario Default = new SwitchCaseScenario(1);
+        internal static readonly SwitchCaseScenario Default = new(1);
 
         private SwitchCaseScenario(int id) : base(id)
         {
@@ -33,10 +33,7 @@ namespace EasyPost.Utilities
     {
         public Action? Action { get; }
 
-        public object Value
-        {
-            get { return Expression.Invoke(); }
-        }
+        public object Value => Expression.Invoke();
 
         private Func<object> Expression { get; }
 
@@ -62,7 +59,7 @@ namespace EasyPost.Utilities
     /// </summary>
     internal class SwitchCase : IEnumerable<ICase>
     {
-        private readonly List<ICase> _list = new List<ICase>();
+        private readonly List<ICase> _list = new();
 
         private Action? _defaultCaseAction;
 
@@ -71,20 +68,14 @@ namespace EasyPost.Utilities
         /// </summary>
         /// <param name="value">Static value to match.</param>
         /// <param name="action">Action to trigger on match.</param>
-        internal void Add(object value, Action? action)
-        {
-            _list.Add(new StaticCase(value, action));
-        }
+        internal void Add(object value, Action? action) => _list.Add(new StaticCase(value, action));
 
         /// <summary>
         ///     Add a case where matching the result of an function triggers an Action
         /// </summary>
         /// <param name="func">Func whose return value to match.</param>
         /// <param name="action">Action to trigger on match.</param>
-        public void Add(Func<object> func, Action? action)
-        {
-            _list.Add(new StaticCase(func.Invoke(), action));
-        }
+        public void Add(Func<object> func, Action? action) => _list.Add(new StaticCase(func.Invoke(), action));
 
         /// <summary>
         ///     Add a case to store Actions in special scenarios. Overrides any previously-set actions for the same scenario.
@@ -108,9 +99,9 @@ namespace EasyPost.Utilities
         /// <param name="value">Value to match.</param>
         internal void MatchAll(object value)
         {
-            List<ICase> matchingCases = new List<ICase>();
+            List<ICase> matchingCases = new();
 
-            foreach (var @case in _list)
+            foreach (ICase @case in _list)
             {
                 if (@case.Value.Equals(value))
                 {
@@ -127,9 +118,9 @@ namespace EasyPost.Utilities
         /// <param name="value">Value to match.</param>
         internal void MatchFirst(object value)
         {
-            List<ICase> matchingCases = new List<ICase>();
+            List<ICase> matchingCases = new();
 
-            foreach (var @case in _list)
+            foreach (ICase @case in _list)
             {
                 if (!@case.Value.Equals(value))
                 {
@@ -146,28 +137,16 @@ namespace EasyPost.Utilities
         /// <summary>
         ///     Execute the action of the first case that evaluates to true. If no match is found, execute the default case if set.
         /// </summary>
-        internal void MatchFirstTrue()
-        {
-            MatchFirst(true);
-        }
+        internal void MatchFirstTrue() => MatchFirst(true);
 
         /// <summary>
         ///     Execute the action of the first case that evaluates to false. If no match is found, execute the default case if set.
         /// </summary>
-        internal void MatchFirstFalse()
-        {
-            MatchFirst(false);
-        }
+        internal void MatchFirstFalse() => MatchFirst(false);
 
-        IEnumerator<ICase> IEnumerable<ICase>.GetEnumerator()
-        {
-            return _list.GetEnumerator();
-        }
+        IEnumerator<ICase> IEnumerable<ICase>.GetEnumerator() => _list.GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return _list.GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => _list.GetEnumerator();
 
         /// <summary>
         ///     Execute the associated action for each matching case.
@@ -181,9 +160,9 @@ namespace EasyPost.Utilities
                 _defaultCaseAction?.Invoke();
             }
 
-            foreach (var @case in matchingCases)
+            foreach (ICase @case in matchingCases)
             {
-                @case?.Action?.Invoke();
+                @case.Action?.Invoke();
             }
         }
     }

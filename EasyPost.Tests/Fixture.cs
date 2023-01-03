@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using EasyPost.Utilities;
 
+// ReSharper disable once CheckNamespace
 namespace EasyPost.Tests._Utilities
 {
     public class Fixtures

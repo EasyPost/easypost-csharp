@@ -145,23 +145,23 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
-        public async Task TestGetLowestSmartrate()
+        public async Task TestGetLowestSmartRate()
         {
-            UseVCR("get_lowest_smartrate");
+            UseVCR("get_lowest_smart_rate");
 
             Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
 
-            // test lowest smartrate with valid filters
-            List<Smartrate> smartrates = await shipment.GetSmartrates();
-            Smartrate lowestSmartrate = ShipmentService.GetLowestSmartrate(smartrates, 2, SmartrateAccuracy.Percentile90);
-            Assert.Equal("Priority", lowestSmartrate.Service);
-            Assert.Equal(8.15, lowestSmartrate.Rate);
-            Assert.Equal("USPS", lowestSmartrate.Carrier);
+            // test lowest smart rate with valid filters
+            List<Smartrate> smartRates = await shipment.GetSmartrates();
+            Smartrate lowestSmartRate = ShipmentService.GetLowestSmartrate(smartRates, 2, SmartrateAccuracy.Percentile90);
+            Assert.Equal("Priority", lowestSmartRate.Service);
+            Assert.Equal(8.15, lowestSmartRate.Rate);
+            Assert.Equal("USPS", lowestSmartRate.Carrier);
 
-            // test lowest smartrate with invalid filters (should error due to strict delivery_days)
-            Assert.Throws<FilteringError>(() => ShipmentService.GetLowestSmartrate(smartrates, 0, SmartrateAccuracy.Percentile90));
+            // test lowest smart rate with invalid filters (should error due to strict delivery_days)
+            Assert.Throws<FilteringError>(() => ShipmentService.GetLowestSmartrate(smartRates, 0, SmartrateAccuracy.Percentile90));
 
-            // test lowest smartrate with invalid filters (should error due to bad delivery_accuracy)
+            // test lowest smart rate with invalid filters (should error due to bad delivery_accuracy)
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
         }
 

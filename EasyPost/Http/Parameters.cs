@@ -12,11 +12,8 @@ namespace EasyPost.Http
         /// <param name="dictionary">Dictionary to wrap.</param>
         /// <param name="keys">Path of keys to wrap the parameters in.</param>
         /// <returns>A wrapped dictionary.</returns>
-        internal static Dictionary<string, object> Wrap(this Dictionary<string, object> dictionary, params string[] keys)
-        {
-            return keys.Reverse()
+        internal static Dictionary<string, object> Wrap(this Dictionary<string, object> dictionary, params string[] keys) => keys.Reverse()
                 .Aggregate(dictionary, (current, key) => new Dictionary<string, object> { { key, current } });
-        }
 
         /// <summary>
         ///     Wrap a list into a larger dictionary.
@@ -29,7 +26,7 @@ namespace EasyPost.Http
         internal static Dictionary<string, object> Wrap<T>(this List<T> list, params string[] keys)
         {
             string firstKey = keys.Reverse().First();
-            Dictionary<string, object> dictionary = new Dictionary<string, object> { { firstKey, list } };
+            Dictionary<string, object> dictionary = new() { { firstKey, list } };
             return keys.Reverse().Skip(1).Aggregate(dictionary, (current, key) => new Dictionary<string, object> { { key, current } });
         }
     }

@@ -30,10 +30,7 @@ namespace EasyPost._base
 
         #endregion
 
-        internal string? Prefix
-        {
-            get { return Id?.Split('_').First(); }
-        }
+        internal string? Prefix => Id?.Split('_').First();
 
         public override bool Equals(object? obj)
         {
@@ -66,10 +63,7 @@ namespace EasyPost._base
             return one.Equals(two);
         }
 
-        public static bool operator !=(EasyPostObject? one, object? two)
-        {
-            return !(one == two);
-        }
+        public static bool operator !=(EasyPostObject? one, object? two) => !(one == two);
 
         /// <summary>
         ///     Update an EasyPostObject object server-side and in-place locally.

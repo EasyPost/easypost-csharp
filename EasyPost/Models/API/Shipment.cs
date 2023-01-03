@@ -116,7 +116,7 @@ namespace EasyPost.Models.API
                 throw new MissingParameterError("rateId");
             }
 
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            Dictionary<string, object> parameters = new()
             {
                 { "rate", new Dictionary<string, object> { { "id", rateId } } },
                 { "insurance", insuranceValue ?? string.Empty },
@@ -161,7 +161,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, "Id");
             }
 
-            Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
+            Dictionary<string, object> parameters = new() { { "file_format", fileFormat } };
 
             await Update<Shipment>(Method.Get, $"shipments/{Id}/label", parameters);
             return this;
@@ -179,7 +179,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, "Id");
             }
 
-            Dictionary<string, object> parameters = new Dictionary<string, object> { { "amount", amount } };
+            Dictionary<string, object> parameters = new() { { "amount", amount } };
 
             await Update<Shipment>(Method.Post, $"shipments/{Id}/insure", parameters);
             return this;

@@ -5,10 +5,10 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
+using EasyPost.Exceptions;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
-using EasyPost.Models.API;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities;
 using RestSharp;
@@ -17,7 +17,7 @@ namespace EasyPost._base
 {
     public abstract class EasyPostClient
     {
-        public readonly ClientConfiguration Configuration;
+        internal readonly ClientConfiguration Configuration;
 
         private readonly RestClient _restClient;
 
@@ -35,7 +35,7 @@ namespace EasyPost._base
             ServicePointManager.SecurityProtocol |= Security.GetProtocol();
             Configuration = new ClientConfiguration(apiKey, baseUrl, customHttpClient);
 
-            RestClientOptions clientOptions = new RestClientOptions
+            RestClientOptions clientOptions = new()
             {
                 MaxTimeout = Configuration.ConnectTimeoutMilliseconds,
                 BaseUrl = new Uri(Configuration.ApiBase),
@@ -51,26 +51,23 @@ namespace EasyPost._base
         /// <param name="request">Request to execute</param>
         /// <typeparam name="T">Type of object to serialize response into.</typeparam>
         /// <returns>A RestResponse containing a T-type object.</returns>
-        internal virtual async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request)
-        {
+        internal virtual async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request) =>
             // This method actually executes the request and returns the response.
             // Everything up to this point has been pre-request, and everything after this point is post-request.
             // This method is "virtual" so it can be overriden (i.e. by a MockClient in testing to avoid making actual HTTP requests).
-            return await _restClient.ExecuteAsync<T>(request);
-        }
+            await _restClient.ExecuteAsync<T>(request);
 
         /// <summary>
         ///     Execute an HTTP request.
         /// </summary>
         /// <param name="request">Request to execute</param>
         /// <returns>A RestResponse object.</returns>
-        internal virtual async Task<RestResponse> ExecuteRequest(RestRequest request)
-        {
+        // ReSharper disable once MemberCanBeProtected.Global
+        internal virtual async Task<RestResponse> ExecuteRequest(RestRequest request) =>
             // This method actually executes the request and returns the response.
             // Everything up to this point has been pre-request, and everything after this point is post-request.
             // This method is "virtual" so it can be overriden (i.e. by a MockClient in testing to avoid making actual HTTP requests).
-            return await _restClient.ExecuteAsync(request);
-        }
+            await _restClient.ExecuteAsync(request);
 
         /// <summary>
         ///     Execute a request against the EasyPost API.
@@ -80,7 +77,7 @@ namespace EasyPost._base
         internal async Task<T> Request<T>(Method method, string url, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : class
         {
             // Build the request
-            Request request = new Request(url, method, apiVersion, parameters, rootElement);
+            Request request = new(url, method, apiVersion, parameters, rootElement);
             RestRequest restRequest = PrepareRequest(request);
 
             // Execute the request
@@ -120,7 +117,7 @@ namespace EasyPost._base
                 return;
             }
 
-            List<PropertyInfo> properties = new List<PropertyInfo>(resource.GetType().GetProperties());
+            List<PropertyInfo> properties = new(resource.GetType().GetProperties());
             foreach (PropertyInfo property in properties)
             {
                 // Pass the Client into every EasyPostObject in the collection
@@ -174,7 +171,7 @@ namespace EasyPost._base
         internal async Task<bool> Request(Method method, string url, ApiVersion apiVersion, Dictionary<string, object>? parameters = null)
         {
             // Build the request
-            Request request = new Request(url, method, apiVersion, parameters);
+            Request request = new(url, method, apiVersion, parameters);
             RestRequest restRequest = PrepareRequest(request);
 
             // Execute the request
@@ -235,11 +232,11 @@ namespace EasyPost._base
             // TODO: You can't reuse the same HTTP client to re-initialize an EasyPost client, because the HTTP client is already initialized and can't be modified.
             // From a testing perspective, this means any VCR client will not be passed into the new client.
             // We should investigate a re-initialization/cloning process for HttpClient.
-            var constructors = typeof(T).GetConstructors();
+            ConstructorInfo[] constructors = typeof(T).GetConstructors();
 
             if (constructors == null || constructors.Length == 0)
             {
-                throw new Exception("Could not clone client. No constructors found.");
+                throw new EasyPostError("Could not clone client. No constructors found.");
             }
 
             T clone = (T)constructors[0].Invoke(new object?[] { overrideApiKey ?? Configuration.ApiKey, overrideApiBase ?? Configuration.ApiBase, overrideHttpClient });

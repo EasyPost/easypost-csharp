@@ -14,7 +14,7 @@ namespace EasyPost.Http
         ///     This cannot be changed after the client has been initialized.
         /// </summary>
         // This cannot be changed, because the internal RestClient is initialized with this value immediately.
-        public readonly string ApiBase;
+        internal readonly string ApiBase;
 
         /// <summary>
         ///     The API key.
@@ -28,7 +28,7 @@ namespace EasyPost.Http
         ///     This cannot be changed after the client has been initialized.
         /// </summary>
         // This cannot be changed, because the internal RestClient is initialized with this value immediately.
-        public readonly HttpClient? HttpClient;
+        internal readonly HttpClient? HttpClient;
 
         /// <summary>
         ///    The .NET version of the current application.
@@ -126,20 +126,9 @@ namespace EasyPost.Http
             internal const int DefaultRequestTimeoutMilliseconds = 60000;
         }
 
-        public override bool Equals(object? obj)
-        {
-            if (obj is ClientConfiguration other)
-            {
-                return ApiKey == other.ApiKey &&
-                       ApiBase == other.ApiBase;
-            }
+        public override bool Equals(object? obj) => obj is ClientConfiguration other && ApiKey == other.ApiKey && ApiBase == other.ApiBase;
 
-            return false;
-        }
-
-        public override int GetHashCode()
-        {
-            return ApiKey.GetHashCode() ^ ApiBase.GetHashCode() ^ (HttpClient?.GetHashCode() ?? 1);
-        }
+        // ReSharper disable once NonReadonlyMemberInGetHashCode
+        public override int GetHashCode() => ApiKey.GetHashCode() ^ ApiBase.GetHashCode() ^ (HttpClient?.GetHashCode() ?? 1);
     }
 }

@@ -58,7 +58,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, "Id");
             }
 
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            Dictionary<string, object> parameters = new()
             {
                 { "carrier", withCarrier },
                 { "service", withService }

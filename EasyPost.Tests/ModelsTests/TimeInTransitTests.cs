@@ -14,9 +14,9 @@ namespace EasyPost.Tests.ModelsTests
 
         [Fact]
         [Testing.Function]
-        public void TestGetBySmartrateAccuracy()
+        public void TestGetBySmartRateAccuracy()
         {
-            Dictionary<SmartrateAccuracy, int> pairs = new Dictionary<SmartrateAccuracy, int>
+            Dictionary<SmartrateAccuracy, int> pairs = new()
             {
                 { SmartrateAccuracy.Percentile50, 1 },
                 { SmartrateAccuracy.Percentile75, 2 },
@@ -27,7 +27,7 @@ namespace EasyPost.Tests.ModelsTests
                 { SmartrateAccuracy.Percentile99, 7 }
             };
 
-            TimeInTransit timeInTransit = new TimeInTransit
+            TimeInTransit timeInTransit = new()
             {
                 Percentile50 = 1,
                 Percentile75 = 2,

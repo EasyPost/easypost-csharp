@@ -40,6 +40,8 @@ namespace EasyPost.Utilities
         /// <param name="secret">Key used to calculate data hex digest.</param>
         /// <param name="normalizationForm">Normalization type to use when normalizing key. Default: No normalization.</param>
         /// <returns>Hex digest of data.</returns>
+        // ReSharper disable once IdentifierTypo
+        // ReSharper disable once InconsistentNaming
         public static string CalculateHMACSHA256HexDigest(this byte[] data, string secret, NormalizationForm? normalizationForm = null)
         {
             if (normalizationForm != null)
@@ -49,7 +51,7 @@ namespace EasyPost.Utilities
 
             byte[] keyBytes = Encoding.UTF8.GetBytes(secret);
 
-            using HMACSHA256 hmac = new HMACSHA256(keyBytes);
+            using HMACSHA256 hmac = new(keyBytes);
             byte[] hash = hmac.ComputeHash(data);
 
             return hash.AsHexString();
@@ -70,7 +72,7 @@ namespace EasyPost.Utilities
             }
 
             // short-circuit if signatures are not the same length
-            if (signature1.Length != signature2?.Length)
+            if (signature1.Length != signature2.Length)
             {
                 return false;
             }
@@ -133,7 +135,7 @@ namespace EasyPost.Utilities
                 result[2 * i + 1] = (char)(val >> 16);
             }
 
-            return new string(result).ToLower();
+            return new string(result).ToLowerInvariant();
         }
 
         /// <summary>
@@ -145,8 +147,14 @@ namespace EasyPost.Utilities
             uint[] result = new uint[256];
             for (int i = 0; i < 256; i++)
             {
+#pragma warning disable CA1305
                 string s = i.ToString("X2");
+#pragma warning restore CA1305
+                // ReSharper disable once RedundantCast
+                // ReSharper disable once ArrangeRedundantParentheses
+#pragma warning disable IDE0004
                 result[i] = ((uint)s[0]) + ((uint)s[1] << 16);
+#pragma warning restore IDE0004
             }
 
             return result;

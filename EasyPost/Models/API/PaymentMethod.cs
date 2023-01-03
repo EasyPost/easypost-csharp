@@ -94,8 +94,8 @@ namespace EasyPost.Models.API
         /// </summary>
         public class Priority : ValueEnum
         {
-            public static readonly Priority Primary = new Priority(1, "Primary");
-            public static readonly Priority Secondary = new Priority(2, "Secondary");
+            public static readonly Priority Primary = new(1, "Primary");
+            public static readonly Priority Secondary = new(2, "Secondary");
 
             private Priority(int id, object value) : base(id, value)
             {

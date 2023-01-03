@@ -17,7 +17,7 @@ namespace EasyPost.Utilities
         /// <summary>
         ///     The default <see cref="Newtonsoft.Json.JsonSerializerSettings" /> to use for de/serialization
         /// </summary>
-        private static JsonSerializerSettings DefaultJsonSerializerSettings => new JsonSerializerSettings
+        private static JsonSerializerSettings DefaultJsonSerializerSettings => new()
         {
             NullValueHandling = NullValueHandling.Ignore,
             MissingMemberHandling = MissingMemberHandling.Ignore,

@@ -50,6 +50,7 @@ namespace EasyPost._base
         /// <param name="parameters">Optional parameters to include in the request.</param>
         /// <param name="overrideApiVersion">Override API version hit for HTTP request. Defaults to general availability.</param>
         /// <returns>None</returns>
+        // ReSharper disable once MemberCanBePrivate.Global
         protected async Task Request(Method method, string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Client!.Request(method, url, overrideApiVersion ?? ApiVersion.Current, parameters);
 
         [CrudOperations.Update]
