@@ -38,7 +38,8 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("update_brand");
 
-            User user = await CreateChildUser();
+            User user = await Client.User.CreateChild(new Dictionary<string, object> { { "name", "Test User" } });
+            CleanUpAfterTest(user.Id);
 
             string color = "#123456";
             Brand brand = await user.UpdateBrand(new Dictionary<string, object> { { "color", color } });
@@ -57,9 +58,10 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("update");
 
-            User user = await CreateChildUser();
+            User user = await Client.User.CreateChild(new Dictionary<string, object> { { "name", "Test User" } });
+            CleanUpAfterTest(user.Id);
 
-            string testName = "New Name";
+            const string testName = "New Name";
 
             Dictionary<string, object> userDict = new() { { "name", testName } };
             user = await user.Update(userDict);
@@ -76,7 +78,8 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("delete");
 
-            User user = await CreateChildUser();
+            User user = await Client.User.CreateChild(new Dictionary<string, object> { { "name", "Test User" } });
+            CleanUpAfterTest(user.Id);
 
             Exception? possibleException = await Record.ExceptionAsync(async () => await user.Delete());
 
@@ -88,13 +91,5 @@ namespace EasyPost.Tests.ModelsTests
         #endregion
 
         #endregion
-
-        private async Task<User> CreateChildUser()
-        {
-            User user = await Client.User.CreateChild(new Dictionary<string, object> { { "name", "Test User" } });
-            CleanUpAfterTest(user.Id);
-
-            return user;
-        }
     }
 }

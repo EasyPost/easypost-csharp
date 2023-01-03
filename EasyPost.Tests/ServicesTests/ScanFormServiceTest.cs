@@ -25,7 +25,9 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            ScanForm scanForm = await GetBasicScanForm();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+
+            ScanForm scanForm = await Client.ScanForm.Create(new List<Shipment> { shipment });
 
             Assert.IsType<ScanForm>(scanForm);
             Assert.StartsWith("sf_", scanForm.Id);
@@ -57,7 +59,9 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            ScanForm scanForm = await GetBasicScanForm();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+
+            ScanForm scanForm = await Client.ScanForm.Create(new List<Shipment> { shipment });
 
             ScanForm retrievedScanForm = await Client.ScanForm.Retrieve(scanForm.Id);
 
@@ -68,11 +72,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<ScanForm> GetBasicScanForm()
-        {
-            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
-            return await Client.ScanForm.Create(new List<Shipment> { shipment });
-        }
     }
 }

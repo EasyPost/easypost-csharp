@@ -26,7 +26,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("get_rates");
 
-            Order order = await CreateBasicOrder();
+            Order order = await Client.Order.Create(Fixtures.BasicOrder);
 
             await order.GetRates();
 
@@ -46,7 +46,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("get_rates_with_no_id");
 
-            Order order = await CreateBasicOrder();
+            Order order = await Client.Order.Create(Fixtures.BasicOrder);
             order.Id = null;
 
             await Assert.ThrowsAsync<MissingPropertyError>(async () => await order.GetRates());
@@ -60,7 +60,7 @@ namespace EasyPost.Tests.ModelsTests
             UseVCR("buy");
 
             // buy with a carrier and service
-            Order order = await CreateBasicOrder();
+            Order order = await Client.Order.Create(Fixtures.BasicOrder);
 
             order = await order.Buy(Fixtures.Usps, Fixtures.UspsService);
 
@@ -73,7 +73,7 @@ namespace EasyPost.Tests.ModelsTests
             }
 
             // buy with a rate
-            order = await CreateBasicOrder();
+            order = await Client.Order.Create(Fixtures.BasicOrder);
             Rate rate = order.LowestRate();
 
             order = await order.Buy(rate);
@@ -94,7 +94,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("buy_with_no_id");
 
-            Order order = await CreateBasicOrder();
+            Order order = await Client.Order.Create(Fixtures.BasicOrder);
             order.Id = null;
 
             await Assert.ThrowsAsync<MissingPropertyError>(async () => await order.Buy(Fixtures.Usps, Fixtures.UspsService));
@@ -107,7 +107,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("buy_with_no_rate_details");
 
-            Order order = await CreateBasicOrder();
+            Order order = await Client.Order.Create(Fixtures.BasicOrder);
 
             Rate badCarrierRate = new Rate
             {
@@ -132,7 +132,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("lowest_rate");
 
-            Order order = await CreateBasicOrder();
+            Order order = await Client.Order.Create(Fixtures.BasicOrder);
 
             // test lowest rate with no filters
             Rate lowestRate = order.LowestRate();
@@ -161,7 +161,5 @@ namespace EasyPost.Tests.ModelsTests
         }
 
         #endregion
-
-        private async Task<Order> CreateBasicOrder() => await Client.Order.Create(Fixtures.BasicOrder);
     }
 }

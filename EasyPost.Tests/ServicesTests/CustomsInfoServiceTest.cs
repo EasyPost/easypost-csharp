@@ -24,7 +24,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            CustomsInfo customsInfo = await CreateBasicCustomsInfo();
+            CustomsInfo customsInfo = await Client.CustomsInfo.Create(Fixtures.BasicCustomsInfo);
 
             Assert.IsType<CustomsInfo>(customsInfo);
             Assert.StartsWith("cstinfo_", customsInfo.Id);
@@ -42,7 +42,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            CustomsInfo customsInfo = await CreateBasicCustomsInfo();
+            CustomsInfo customsInfo = await Client.CustomsInfo.Create(Fixtures.BasicCustomsInfo);
 
             CustomsInfo retrievedCustomsInfo = await Client.CustomsInfo.Retrieve(customsInfo.Id);
 
@@ -53,7 +53,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<CustomsInfo> CreateBasicCustomsInfo() => await Client.CustomsInfo.Create(Fixtures.BasicCustomsInfo);
     }
 }

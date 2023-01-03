@@ -24,7 +24,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            Parcel parcel = await CreateBasicParcel();
+            Parcel parcel = await Client.Parcel.Create(Fixtures.BasicParcel);
 
             Assert.IsType<Parcel>(parcel);
             Assert.StartsWith("prcl_", parcel.Id);
@@ -38,7 +38,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            Parcel parcel = await CreateBasicParcel();
+            Parcel parcel = await Client.Parcel.Create(Fixtures.BasicParcel);
 
             Parcel retrievedParcel = await Client.Parcel.Retrieve(parcel.Id);
 
@@ -49,7 +49,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<Parcel> CreateBasicParcel() => await Client.Parcel.Create(Fixtures.BasicParcel);
     }
 }

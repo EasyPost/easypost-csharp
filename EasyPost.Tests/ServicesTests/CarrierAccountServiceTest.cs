@@ -38,7 +38,8 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
+            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(Fixtures.BasicCarrierAccount);
+            CleanUpAfterTest(carrierAccount.Id);
 
             Assert.IsType<CarrierAccount>(carrierAccount);
             Assert.StartsWith("ca_", carrierAccount.Id);
@@ -94,7 +95,8 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
+            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(Fixtures.BasicCarrierAccount);
+            CleanUpAfterTest(carrierAccount.Id);
 
             CarrierAccount retrievedCarrierAccount = await Client.CarrierAccount.Retrieve(carrierAccount.Id);
 
@@ -105,13 +107,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<CarrierAccount> CreateBasicCarrierAccount()
-        {
-            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(Fixtures.BasicCarrierAccount);
-            CleanUpAfterTest(carrierAccount.Id);
-
-            return carrierAccount;
-        }
     }
 }

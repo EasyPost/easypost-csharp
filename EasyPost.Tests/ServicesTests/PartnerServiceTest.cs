@@ -29,7 +29,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create_referral");
 
-            ReferralCustomer referralCustomer = await CreateReferral();
+            ReferralCustomer referralCustomer = await Client.Partner.CreateReferral(Fixtures.ReferralUser);
 
             Assert.NotNull(referralCustomer);
             Assert.IsType<ReferralCustomer>(referralCustomer);
@@ -269,7 +269,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("update_referral_email");
 
-            ReferralCustomer referralCustomer = await CreateReferral();
+            ReferralCustomer referralCustomer = await Client.Partner.CreateReferral(Fixtures.ReferralUser);
 
             Exception? possibleException = await Record.ExceptionAsync(async () => await Client.Partner.UpdateReferralEmail(referralCustomer.Id, "email@example.com"));
 
@@ -281,8 +281,6 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         private static string ReferralUserKey => TestUtils.GetApiKey(TestUtils.ApiKey.Referral);
-
-        private async Task<ReferralCustomer> CreateReferral() => await Client.Partner.CreateReferral(Fixtures.ReferralUser);
 
         private class CreditCard
         {

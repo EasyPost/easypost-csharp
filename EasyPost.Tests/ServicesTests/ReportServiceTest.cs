@@ -25,7 +25,11 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            Report report = await CreateBasicReport(Fixtures.ReportType);
+            Report report = await Client.Report.Create(Fixtures.ReportType, new Dictionary<string, object>
+            {
+                { "start_date", Fixtures.ReportDate },
+                { "end_date", Fixtures.ReportDate }
+            });
 
             Assert.IsType<Report>(report);
             Assert.StartsWith(Fixtures.ReportIdPrefix, report.Id);
@@ -43,7 +47,14 @@ namespace EasyPost.Tests.ServicesTests
                 "from_name",
                 "from_company"
             };
-            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object> { { "additional_columns", additionalColumns } });
+
+            Dictionary<string, object> parameters = new()
+            {
+                { "additional_columns", additionalColumns },
+                { "start_date", Fixtures.ReportDate },
+                { "end_date", Fixtures.ReportDate },
+            };
+            Report report = await Client.Report.Create("shipment", parameters);
 
             // verify parameters by checking VCR cassette for correct URL
             // Some reports take a long time to generate, so we won't be able to consistently pull the report
@@ -61,7 +72,14 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("create_with_columns");
 
             List<string> columns = new() { "usps_zone" };
-            Report report = await CreateAdvancedReport("shipment", new Dictionary<string, object> { { "columns", columns } });
+
+            Dictionary<string, object> parameters = new()
+            {
+                { "columns", columns },
+                { "start_date", Fixtures.ReportDate },
+                { "end_date", Fixtures.ReportDate },
+            };
+            Report report = await Client.Report.Create("shipment", parameters);
 
             // verify parameters by checking VCR cassette for correct URL
             // Some reports take a long time to generate, so we won't be able to consistently pull the report
@@ -97,7 +115,11 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            Report report = await CreateBasicReport(Fixtures.ReportType);
+            Report report = await Client.Report.Create(Fixtures.ReportType, new Dictionary<string, object>
+            {
+                { "start_date", Fixtures.ReportDate },
+                { "end_date", Fixtures.ReportDate }
+            });
 
             // retrieve by ID
             Report retrievedReport = await Client.Report.Retrieve(report.Id);
@@ -117,19 +139,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<Report> CreateAdvancedReport(string reportType, Dictionary<string, object> parameters)
-        {
-            parameters["start_date"] = Fixtures.ReportDate;
-            parameters["end_date"] = Fixtures.ReportDate;
-            return await Client.Report.Create(reportType, parameters);
-        }
-
-        private async Task<Report> CreateBasicReport(string reportType) =>
-            await Client.Report.Create(reportType, new Dictionary<string, object>
-            {
-                { "start_date", Fixtures.ReportDate },
-                { "end_date", Fixtures.ReportDate }
-            });
     }
 }

@@ -25,7 +25,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("all");
 
-            EventCollection eventCollection = await GetBasicEventCollection();
+            EventCollection eventCollection = await Client.Event.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
 
             List<Event> events = eventCollection.Events;
 
@@ -44,7 +44,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            EventCollection eventCollection = await GetBasicEventCollection();
+            EventCollection eventCollection = await Client.Event.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
             Event @event = eventCollection.Events[0];
 
             Event retrievedEvent = await Client.Event.Retrieve(@event.Id);
@@ -57,8 +57,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<EventCollection> GetBasicEventCollection() =>
-            await Client.Event.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
     }
 }

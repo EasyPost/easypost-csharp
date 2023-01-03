@@ -25,7 +25,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            EndShipper endShipper = await CreateBasicEndShipper();
+            EndShipper endShipper = await Client.EndShipper.Create(Fixtures.CaAddress1);
 
             Assert.IsType<EndShipper>(endShipper);
             Assert.StartsWith("es_", endShipper.Id);
@@ -57,7 +57,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            EndShipper endShipper = await CreateBasicEndShipper();
+            EndShipper endShipper = await Client.EndShipper.Create(Fixtures.CaAddress1);
 
             EndShipper retrievedEndShipper = await Client.EndShipper.Retrieve(endShipper.Id);
 
@@ -68,7 +68,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<EndShipper> CreateBasicEndShipper() => await Client.EndShipper.Create(Fixtures.CaAddress1);
     }
 }

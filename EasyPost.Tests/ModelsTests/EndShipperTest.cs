@@ -25,7 +25,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("update");
 
-            EndShipper endShipper = await CreateBasicEndShipper();
+            EndShipper endShipper = await Client.EndShipper.Create(Fixtures.CaAddress1);
 
             const string testName = "NEW NAME";
 
@@ -42,7 +42,5 @@ namespace EasyPost.Tests.ModelsTests
         #endregion
 
         #endregion
-
-        private async Task<EndShipper> CreateBasicEndShipper() => await Client.EndShipper.Create(Fixtures.CaAddress1);
     }
 }

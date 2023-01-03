@@ -27,7 +27,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("tracker_tracking_details");
 
-            Tracker tracker = await CreateBasicTracker();
+            Tracker tracker = await Client.Tracker.Create(Fixtures.Usps, "EZ1000000001");
 
             Assert.NotNull(tracker.TrackingDetails);
             foreach (TrackingDetail trackingDetail in tracker.TrackingDetails)
@@ -39,7 +39,5 @@ namespace EasyPost.Tests.ModelsTests
                 // TrackingLocation details will be empty, so we can't test their presence.
             }
         }
-
-        private async Task<Tracker> CreateBasicTracker() => await Client.Tracker.Create(Fixtures.Usps, "EZ1000000001");
     }
 }

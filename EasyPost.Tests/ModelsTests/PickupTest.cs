@@ -26,7 +26,11 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("buy");
 
-            Pickup pickup = await CreateBasicPickup();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+            Dictionary<string, object> pickupData = Fixtures.BasicPickup;
+            pickupData["shipment"] = shipment;
+
+            Pickup pickup = await Client.Pickup.Create(pickupData);
 
             pickup = await pickup.Buy(Fixtures.Usps, Fixtures.PickupService);
 
@@ -43,7 +47,11 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("buy_with_no_id");
 
-            Pickup pickup = await CreateBasicPickup();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+            Dictionary<string, object> pickupData = Fixtures.BasicPickup;
+            pickupData["shipment"] = shipment;
+
+            Pickup pickup = await Client.Pickup.Create(pickupData);
             pickup.Id = null;
 
             await Assert.ThrowsAsync<MissingPropertyError>(async () => await pickup.Buy(Fixtures.Usps, Fixtures.UspsService));
@@ -56,7 +64,11 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("cancel");
 
-            Pickup pickup = await CreateBasicPickup();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+            Dictionary<string, object> pickupData = Fixtures.BasicPickup;
+            pickupData["shipment"] = shipment;
+
+            Pickup pickup = await Client.Pickup.Create(pickupData);
 
             pickup = await pickup.Buy(Fixtures.Usps, Fixtures.PickupService);
 
@@ -74,7 +86,11 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("cancel_with_no_id");
 
-            Pickup pickup = await CreateBasicPickup();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+            Dictionary<string, object> pickupData = Fixtures.BasicPickup;
+            pickupData["shipment"] = shipment;
+
+            Pickup pickup = await Client.Pickup.Create(pickupData);
             pickup.Id = null;
 
             // We don't need to buy the pickup first, since this should fail before actually hitting the API.
@@ -90,7 +106,11 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("lowest_rate");
 
-            Pickup pickup = await CreateBasicPickup();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+            Dictionary<string, object> pickupData = Fixtures.BasicPickup;
+            pickupData["shipment"] = shipment;
+
+            Pickup pickup = await Client.Pickup.Create(pickupData);
 
             // test lowest rate with no filters
             Rate lowestRate = pickup.LowestRate();
@@ -108,13 +128,5 @@ namespace EasyPost.Tests.ModelsTests
         }
 
         #endregion
-
-        private async Task<Pickup> CreateBasicPickup()
-        {
-            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
-            Dictionary<string, object> pickupData = Fixtures.BasicPickup;
-            pickupData["shipment"] = shipment;
-            return await Client.Pickup.Create(pickupData);
-        }
     }
 }

@@ -24,7 +24,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            CustomsItem customsItem = await CreateBasicCustomsItem();
+            CustomsItem customsItem = await Client.CustomsItem.Create(Fixtures.BasicCustomsItem);
 
             Assert.IsType<CustomsItem>(customsItem);
             Assert.StartsWith("cstitem_", customsItem.Id);
@@ -38,7 +38,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            CustomsItem customsItem = await CreateBasicCustomsItem();
+            CustomsItem customsItem = await Client.CustomsItem.Create(Fixtures.BasicCustomsItem);
 
             CustomsItem retrievedCustomsItem = await Client.CustomsItem.Retrieve(customsItem.Id);
 
@@ -49,7 +49,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<CustomsItem> CreateBasicCustomsItem() => await Client.CustomsItem.Create(Fixtures.BasicCustomsItem);
     }
 }

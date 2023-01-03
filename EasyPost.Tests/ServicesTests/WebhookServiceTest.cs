@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Exceptions;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
@@ -44,7 +43,8 @@ namespace EasyPost.Tests.ServicesTests
 
             const string url = "https://example.com/create";
 
-            Webhook webhook = await CreateBasicWebhook(url);
+            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
+            CleanUpAfterTest(webhook.Id);
 
             Assert.IsType<Webhook>(webhook);
             Assert.StartsWith("hook_", webhook.Id);
@@ -75,7 +75,8 @@ namespace EasyPost.Tests.ServicesTests
 
             const string url = "https://example.com/retrieve";
 
-            Webhook webhook = await CreateBasicWebhook(url);
+            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
+            CleanUpAfterTest(webhook.Id);
 
             Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.Id);
 
@@ -145,13 +146,5 @@ namespace EasyPost.Tests.ServicesTests
         }
 
         #endregion
-
-        private async Task<Webhook> CreateBasicWebhook(string url)
-        {
-            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
-            CleanUpAfterTest(webhook.Id);
-
-            return webhook;
-        }
     }
 }

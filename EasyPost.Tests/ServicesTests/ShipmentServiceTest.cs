@@ -28,7 +28,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            Shipment shipment = await CreateFullShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
 
             Assert.IsType<Shipment>(shipment);
             Assert.StartsWith("shp_", shipment.Id);
@@ -149,7 +149,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("get_lowest_smartrate");
 
-            Shipment shipment = await CreateBasicShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
 
             // test lowest smartrate with valid filters
             List<Smartrate> smartrates = await shipment.GetSmartrates();
@@ -172,7 +172,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            Shipment shipment = await CreateFullShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
 
             Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.Id);
 
@@ -183,11 +183,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<Shipment> CreateBasicShipment() => await Client.Shipment.Create(Fixtures.BasicShipment);
-
-        private async Task<Shipment> CreateFullShipment() => await Client.Shipment.Create(Fixtures.FullShipment);
-
-        private async Task<Shipment> CreateOneCallBuyShipment() => await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
     }
 }

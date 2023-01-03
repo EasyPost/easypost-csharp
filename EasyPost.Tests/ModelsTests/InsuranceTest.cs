@@ -25,7 +25,12 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("refresh");
 
-            Insurance insurance = await CreateBasicInsurance();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+
+            Dictionary<string, object> parameters = Fixtures.BasicInsurance;
+            parameters.Add("tracking_code", shipment.TrackingCode);
+
+            Insurance insurance = await Client.Insurance.Create(parameters);
 
             Insurance refreshedInsurance = await insurance.Refresh();
 
@@ -35,15 +40,5 @@ namespace EasyPost.Tests.ModelsTests
         #endregion
 
         #endregion
-
-        private async Task<Insurance> CreateBasicInsurance()
-        {
-            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
-
-            Dictionary<string, object> parameters = Fixtures.BasicInsurance;
-            parameters.Add("tracking_code", shipment.TrackingCode);
-
-            return await Client.Insurance.Create(parameters);
-        }
     }
 }

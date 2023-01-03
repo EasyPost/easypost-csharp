@@ -25,7 +25,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("verify");
 
-            Address address = await CreateBasicAddress();
+            Address address = await Client.Address.Create(Fixtures.CaAddress1);
 
             address = await address.Verify();
 
@@ -41,7 +41,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("verify_with_no_id");
 
-            Address address = await CreateBasicAddress();
+            Address address = await Client.Address.Create(Fixtures.CaAddress1);
             address.Id = null;
 
             await Assert.ThrowsAsync<MissingPropertyError>(async () => await address.Verify());
@@ -50,7 +50,5 @@ namespace EasyPost.Tests.ModelsTests
         #endregion
 
         #endregion
-
-        private async Task<Address> CreateBasicAddress() => await Client.Address.Create(Fixtures.CaAddress1);
     }
 }

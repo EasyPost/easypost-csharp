@@ -43,7 +43,8 @@ namespace EasyPost.Tests.ModelsTests
 
             const string url = "https://example.com/update";
 
-            Webhook webhook = await CreateBasicWebhook(url);
+            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
+            CleanUpAfterTest(webhook.Id);
 
             webhook = await webhook.Update();
 
@@ -60,7 +61,9 @@ namespace EasyPost.Tests.ModelsTests
 
             const string url = "https://example.com/delete";
 
-            Webhook webhook = await CreateBasicWebhook(url);
+            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
+            CleanUpAfterTest(webhook.Id);
+
             Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.Id);
 
             Exception? possibleException = await Record.ExceptionAsync(async () => await retrievedWebhook.Delete());
@@ -73,13 +76,5 @@ namespace EasyPost.Tests.ModelsTests
         #endregion
 
         #endregion
-
-        private async Task<Webhook> CreateBasicWebhook(string url)
-        {
-            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
-            CleanUpAfterTest(webhook.Id);
-
-            return webhook;
-        }
     }
 }

@@ -76,7 +76,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("buy");
 
-            Batch batch = await CreateOneCallBuyBatch();
+            Batch batch = await Client.Batch.Create(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixtures.OneCallBuyShipment } } });
 
             if (IsRecording()) // Yes, this is needed. Otherwise, the API says we can't modify a batch while it's being created.
             {
@@ -96,7 +96,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("generate_label");
 
-            Batch batch = await CreateOneCallBuyBatch();
+            Batch batch = await Client.Batch.Create(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixtures.OneCallBuyShipment } } });
 
             if (IsRecording()) // Yes, this is needed. Otherwise, the API says we can't modify a batch while it's being created.
             {
@@ -123,7 +123,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("generate_scan_form");
 
-            Batch batch = await CreateOneCallBuyBatch();
+            Batch batch = await Client.Batch.Create(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixtures.OneCallBuyShipment } } });
 
             if (IsRecording()) // Yes, this is needed. Otherwise, the API says we can't modify a batch while it's being created.
             {
@@ -201,8 +201,5 @@ namespace EasyPost.Tests.ModelsTests
         #endregion
 
         #endregion
-
-        private async Task<Batch> CreateOneCallBuyBatch() =>
-            await Client.Batch.Create(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixtures.OneCallBuyShipment } } });
     }
 }
