@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [Unreleased]
+
+- Added new beta billing functionality for referral customer users, accessible via `myClient.Beta.Referral` service.
+  - `AddPaymentMethod` to add an existing Stripe bank account or credit card to your EasyPost account.
+  - `RefundByAmount` refunds you wallet balance by a specified amount.
+  - `RefundByPaymentLog` refunds you wallet balance by a specified payment log.
+
 ## v4.1.0 (2022-12-07)
 
 - Routes requests for creating a carrier account with a custom workflow (eg: FedEx, UPS) to the correct endpoint when using the `Create` function

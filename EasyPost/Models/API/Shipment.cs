@@ -81,7 +81,7 @@ namespace EasyPost.Models.API
         #region CRUD Operations
 
         /// <summary>
-        ///     Get the Smartrates for this shipment.
+        ///     Get the SmartRates for this shipment.
         /// </summary>
         /// <returns>A list of EasyPost.Smartrate instances.</returns>
         [CrudOperations.Read]

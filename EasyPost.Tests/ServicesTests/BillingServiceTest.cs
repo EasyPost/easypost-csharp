@@ -116,7 +116,7 @@ namespace EasyPost.Tests.ServicesTests
                     {
                         Id = null, // No ID, will throw an error when we try to interact with this summary
                     })
-                )
+                ),
             });
 
             await Assert.ThrowsAsync<InvalidObjectError>(async () => await Client.Billing.RetrievePaymentMethodsSummary());
@@ -168,7 +168,7 @@ namespace EasyPost.Tests.ServicesTests
                         PrimaryPaymentMethod = null, // null, will throw an error when we try to grab this payment method from the summary
                         SecondaryPaymentMethod = null, // null, will throw an error when we try to grab this payment method from the summary
                     })
-                )
+                ),
             });
 
             // Deleting a payment method gets the payment method internally, which should execute the code that will trigger an exception.
@@ -196,7 +196,7 @@ namespace EasyPost.Tests.ServicesTests
                             Id = null, // No ID, will throw an error when we try to grab this payment method from the summary
                         },
                     })
-                )
+                ),
             });
 
             // Deleting a payment method gets the payment method internally, which should execute the code that will trigger an exception.

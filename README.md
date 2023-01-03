@@ -214,7 +214,7 @@ The following are required when you need to re-record cassettes for applicable t
 otherwise):
 
 - `USPS_CARRIER_ACCOUNT_ID` (eg: one-call buying a shipment for non-EasyPost employees)
-- `REFERRAL_USER_PROD_API_KEY` (eg: adding a credit card to a referral user)
+- `REFERRAL_CUSTOMER_PROD_API_KEY` (eg: adding a credit card to a referral customer)
 
 Some tests may require a user with a particular set of enabled features such as a `Partner` user when creating
 referrals. We have attempted to call out these functions in their respective docstrings.

@@ -22,10 +22,11 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a referral user for the account associated with the api_key specified.
+        ///     Create a referral customer for the account associated with the api_key specified.
+        ///     This function should be called against a Client configured with the white label partner's API key.
         /// </summary>
         /// <param name="parameters">
-        ///     Optional dictionary containing parameters to create the referral user with. Valid pairs:
+        ///     Optional dictionary containing parameters to create the referral customer with. Valid pairs:
         ///     * {"name", string} Name on the account.
         ///     * {"email", string} Email on the account.
         ///     * {"phone", string} Phone number on the account.
@@ -41,7 +42,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all Referral Customer objects.
-        ///     This function requires the Partner User's API key.
+        ///     This function should be called against a Client configured with the white label partner's API key.
         /// </summary>
         /// <param name="parameters">Parameters for API call.</param>
         /// <returns>An EasyPost.ReferralCustomerCollection instance.</returns>
@@ -50,9 +51,10 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Add a credit card to a Referral Customer.
-        ///     This function requires the Referral User's API key.
+        ///     This function should be called against a Client configured with the white label partner's API key.
+        ///     This function requires the target Referral Customer's API key as a parameter.
         /// </summary>
-        /// <param name="referralApiKey">API key of the referral user.</param>
+        /// <param name="referralApiKey">API key of the referral customer.</param>
         /// <param name="number">Credit card number.</param>
         /// <param name="expirationMonth">Expiration month of the credit card.</param>
         /// <param name="expirationYear">Expiration year of the credit card.</param>
@@ -85,10 +87,10 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Update a Referral Customer object email.
-        ///     This function requires the Partner User's API key.
+        ///     This function should be called against a Client configured with the white label partner's API key.
         /// </summary>
-        /// <param name="referralId">ID of the referral user to update.</param>
-        /// <param name="email">Email of the referral user to update.</param>
+        /// <param name="referralId">ID of the referral customer to update.</param>
+        /// <param name="email">Email of the referral customer to update.</param>
         /// <returns>A Task to update a referral's email.</returns>
         [CrudOperations.Update]
         public async Task UpdateReferralEmail(string referralId, string email)
@@ -102,9 +104,9 @@ namespace EasyPost.Services
         #endregion
 
         /// <summary>
-        ///     Submit Stripe credit card token to EasyPost.
+        ///     Submit Stripe credit card token to EasyPost for a specified Referral Customer.
         /// </summary>
-        /// <param name="referralApiKey">API key of the referral user.</param>
+        /// <param name="referralApiKey">API key of the referral customer.</param>
         /// <param name="stripeObjectId">Stripe token.</param>
         /// <param name="priority">Credit card priority.</param>
         /// <returns>An EasyPost.PaymentMethod instance.</returns>
@@ -125,7 +127,7 @@ namespace EasyPost.Services
             // Store the old API key
             string oldApiKey = Client!.Configuration.ApiKey;
 
-            // Change API key temporarily to referral user's API key.
+            // Change API key temporarily to referral customer's API key.
             Client.Configuration.ApiKey = referralApiKey;
 
             PaymentMethod paymentMethod;
