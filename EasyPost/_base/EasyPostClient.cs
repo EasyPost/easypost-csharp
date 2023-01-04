@@ -161,6 +161,9 @@ namespace EasyPost._base
                     easyPostObject.Client = this;
                     PassClientToAllEasyPostObjectProperties(easyPostObject);
                     break;
+                // ReSharper disable once RedundantEmptySwitchSection
+                default:
+                    break;
             }
         }
 

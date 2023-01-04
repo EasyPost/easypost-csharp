@@ -58,6 +58,8 @@ namespace EasyPost.Tests._Utilities
                 throw new Exception("Could not execute clean-up function.");
 #pragma warning restore CA2201
             }
+
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>

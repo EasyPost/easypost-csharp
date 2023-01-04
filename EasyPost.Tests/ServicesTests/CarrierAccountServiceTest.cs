@@ -67,7 +67,7 @@ namespace EasyPost.Tests.ServicesTests
                 // the data we're sending is invalid, we want to check that the API error is because of malformed data and not due to the endpoint
                 Assert.Equal(422, e.StatusCode);  // 422 is fine. We don't want a 404 not found
                 Assert.NotNull(e.Errors);
-                Assert.Contains(e.Errors, (error => error.Field == "account_number" && error.Message == "must be present and a string"));
+                Assert.Contains(e.Errors, error => error is { Field: "account_number", Message: "must be present and a string" });
 
                 // Check the cassette to make sure the endpoint is correct (it should be carrier_accounts/register)
             }

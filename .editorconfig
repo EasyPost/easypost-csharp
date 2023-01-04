@@ -524,11 +524,15 @@ dotnet_diagnostic.CA1710.severity = none
 dotnet_diagnostic.IDE0021.severity = suggestion
 ### Use expression body for methods
 dotnet_diagnostic.IDE0022.severity = suggestion
+### Use expression body for local methods
+dotnet_diagnostic.IDE0061.severity = suggestion
 ### Use expression body for properties
 dotnet_diagnostic.IDE0025.severity = suggestion
 ### Do not use incorrect suffix
 ### TODO: We should probably enable this one in the future, encroaching on reserved words: https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1711
 dotnet_diagnostic.CA1711.severity = none
+### Do not use reserved words in namespaces
+dotnet_diagnostic.CA1716.severity = none
 ### Always capture return value of function
 dotnet_diagnostic.IDE0058.severity = none
 ### Use conditional expression for return

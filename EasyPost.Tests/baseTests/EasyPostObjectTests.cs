@@ -11,7 +11,7 @@ namespace EasyPost.Tests.baseTests
         [Testing.Properties]
         public void TestPrefix()
         {
-            Address address = new Address
+            Address address = new()
             {
                 Id = "adr_123",
             };
@@ -22,7 +22,7 @@ namespace EasyPost.Tests.baseTests
         [Testing.EdgeCase]
         public void TestPrefixWhenIdIsNull()
         {
-            Address address = new Address();
+            Address address = new();
             address.Id = null;
 
             Assert.Null(address.Prefix);
@@ -32,9 +32,9 @@ namespace EasyPost.Tests.baseTests
         [Testing.Function]
         public void TestHashCode()
         {
-            ApiKey apiKey = new ApiKey { Id = "adr_123" };
-            ApiKey sameProperties = new ApiKey { Id = "adr_123" };
-            ApiKey differentProperties = new ApiKey { Id = "adr_456" };
+            ApiKey apiKey = new() { Id = "adr_123" };
+            ApiKey sameProperties = new() { Id = "adr_123" };
+            ApiKey differentProperties = new() { Id = "adr_456" };
 
             // hashcode should be the same number each time
             Assert.Equal(apiKey.GetHashCode(), apiKey.GetHashCode());
@@ -54,9 +54,9 @@ namespace EasyPost.Tests.baseTests
         [Testing.Function]
         public void TestEquals()
         {
-            ApiKey apiKey = new ApiKey { Id = "adr_123" };
-            ApiKey sameProperties = new ApiKey { Id = "adr_123" };
-            ApiKey differentProperties = new ApiKey { Id = "adr_456" };
+            ApiKey apiKey = new() { Id = "adr_123" };
+            ApiKey sameProperties = new() { Id = "adr_123" };
+            ApiKey differentProperties = new() { Id = "adr_456" };
 
             // Equality under-the-hood is based on hashcode, which is based on properties/client of an object
             // so if two objects have the same properties and client, they should be equal
@@ -81,7 +81,9 @@ namespace EasyPost.Tests.baseTests
             Assert.True(apiKey != sameProperties);
 
             // two objects of different types should not be equal
+            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.False(apiKey.Equals(new List<string>()));
+            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.False(apiKey.Equals(new Address()));
 
             // comparing an object to null should not be equal

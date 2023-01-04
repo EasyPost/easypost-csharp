@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.API;
@@ -157,8 +158,8 @@ namespace EasyPost.Services
             request.AddHeader("Authorization", $"Bearer {easypostStripeApiKey}");
             request.AddHeader("Accept", "application/x-www-form-urlencoded");
             request.AddParameter("card[number]", number);
-            request.AddParameter("card[exp_month]", expirationMonth.ToString());
-            request.AddParameter("card[exp_year]", expirationYear.ToString());
+            request.AddParameter("card[exp_month]", expirationMonth.ToString(CultureInfo.InvariantCulture));
+            request.AddParameter("card[exp_year]", expirationYear.ToString(CultureInfo.InvariantCulture));
             request.AddParameter("card[cvc]", cvc);
 
             RestResponse<Dictionary<string, object>> response = await Client!.ExecuteRequest<Dictionary<string, object>>(request);

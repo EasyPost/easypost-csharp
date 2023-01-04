@@ -1,3 +1,4 @@
+using System;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Utilities;
@@ -56,12 +57,12 @@ namespace EasyPost.Models.API
                     return null;
                 }
 
-                if (Id.StartsWith("card_"))
+                if (Id.StartsWith("card_", StringComparison.InvariantCulture))
                 {
                     type = PaymentMethodType.CreditCard;
                 }
 
-                else if (Id.StartsWith("bank_"))
+                else if (Id.StartsWith("bank_", StringComparison.InvariantCulture))
                 {
                     type = PaymentMethodType.BankAccount;
                 }
