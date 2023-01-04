@@ -26,7 +26,9 @@ namespace EasyPost.Tests._Utilities
                 }
                 catch (Exception e)
                 {
+#pragma warning disable CA2201
                     throw new Exception($"Unable to read {fullPath}", e);
+#pragma warning restore CA2201
                 }
             }
         }

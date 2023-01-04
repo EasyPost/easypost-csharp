@@ -52,7 +52,7 @@ namespace EasyPost
 
             // provided status code is not in the map, find fallback
             Type? exceptionType = null;
-            var @switch = new SwitchCase
+            SwitchCase @switch = new()
             {
                 { Utilities.Http.StatusCodeIs1xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
                 { Utilities.Http.StatusCodeIs3xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
@@ -95,7 +95,8 @@ namespace EasyPost
         {
             internal static List<string> CarrierTypesWithCustomWorkflows => new()
             {
-                "FedexAccount", "UpsAccount"
+                "FedexAccount",
+                "UpsAccount"
             };
         }
     }

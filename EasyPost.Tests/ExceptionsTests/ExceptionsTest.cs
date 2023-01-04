@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace EasyPost.Tests.ExceptionsTests
             const int statusCode = 401;
 
             // Generate a dummy RestResponse with the given status code to parse
-            HttpStatusCode httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString());
+            HttpStatusCode httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString(CultureInfo.InvariantCulture));
             RestResponse response = new() { StatusCode = httpStatusCode };
 
             ApiError generatedError = ApiError.FromErrorResponse(response);
@@ -46,7 +47,7 @@ namespace EasyPost.Tests.ExceptionsTests
             string errorMessageStringJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": \"ERROR_MESSAGE\", \"errors\": []}}";
 
             // Generate a dummy RestResponse with the given status code to parse
-            httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString());
+            httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString(CultureInfo.InvariantCulture));
             response = new() { StatusCode = httpStatusCode, Content = errorMessageStringJson };
 
             generatedError = ApiError.FromErrorResponse(response);
@@ -62,7 +63,7 @@ namespace EasyPost.Tests.ExceptionsTests
             List<Error> subErrors = new() { new Error { Field = "SUB_ERROR_FIELD", Message = "SUB_ERROR_MESSAGE" } };
 
             // Generate a dummy RestResponse with the given status code to parse
-            httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString());
+            httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString(CultureInfo.InvariantCulture));
             response = new() { StatusCode = httpStatusCode, Content = errorMessageStringJson };
 
             generatedError = ApiError.FromErrorResponse(response);
@@ -158,25 +159,27 @@ namespace EasyPost.Tests.ExceptionsTests
             Assert.Equal(testMessage, invalidObjectError.Message);
 
             InvalidParameterError invalidParameterError = new(testPropertyName);
-            Assert.Equal(string.Format(Constants.ErrorMessages.InvalidParameter, testPropertyName), invalidParameterError.Message);
+            Assert.Equal(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.InvalidParameter, testPropertyName), invalidParameterError.Message);
 
             JsonError jsonError = new(testMessage);
             Assert.Equal(testMessage, jsonError.Message);
 
             JsonDeserializationError jsonDeserializationError = new(testType);
-            Assert.Equal(string.Format(Constants.ErrorMessages.JsonDeserializationError, testType.FullName), jsonDeserializationError.Message);
+            Assert.Equal(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.JsonDeserializationError, testType.FullName), jsonDeserializationError.Message);
 
             JsonSerializationError jsonSerializationError = new(testType);
-            Assert.Equal(string.Format(Constants.ErrorMessages.JsonSerializationError, testType.FullName), jsonSerializationError.Message);
+            Assert.Equal(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.JsonSerializationError, testType.FullName), jsonSerializationError.Message);
 
             JsonNoDataError jsonNoDataError = new();
             Assert.Equal(Constants.ErrorMessages.JsonNoDataToDeserialize, jsonNoDataError.Message);
 
             MissingParameterError missingParameterError = new(testPropertyName);
-            Assert.Equal(string.Format(Constants.ErrorMessages.MissingRequiredParameter, testPropertyName), missingParameterError.Message);
+            Assert.Equal(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.MissingRequiredParameter, testPropertyName), missingParameterError.Message);
 
             MissingPropertyError missingPropertyError = new(testObj, testPropertyName);
-            Assert.Equal(string.Format(Constants.ErrorMessages.MissingProperty, new object[] { testObj.GetType().Name, testPropertyName }), missingPropertyError.Message);
+#pragma warning disable CA2241
+            Assert.Equal(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.MissingProperty, new object[] { testObj.GetType().Name, testPropertyName }), missingPropertyError.Message);
+#pragma warning restore CA2241
 
             SignatureVerificationError signatureVerificationError = new();
             Assert.Equal(Constants.ErrorMessages.InvalidWebhookSignature, signatureVerificationError.Message);
@@ -245,7 +248,7 @@ namespace EasyPost.Tests.ExceptionsTests
             Type type = typeof(Address);
             JsonError jsonError = new JsonDeserializationError(type);
 
-            string expectedMessage = string.Format(Constants.ErrorMessages.JsonDeserializationError, type.FullName);
+            string expectedMessage = string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.JsonDeserializationError, type.FullName);
 
             Assert.Equal(expectedMessage, jsonError.Message);
         }
@@ -319,7 +322,7 @@ namespace EasyPost.Tests.ExceptionsTests
                 Type exceptionType = exceptionDetails.Value;
 
                 // Generate a dummy RestResponse with the given status code to parse
-                HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCodeInt.ToString());
+                HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCodeInt.ToString(CultureInfo.InvariantCulture));
                 RestResponse response = new() { StatusCode = statusCode };
 
                 ApiError generatedError = ApiError.FromErrorResponse(response);
@@ -353,7 +356,7 @@ namespace EasyPost.Tests.ExceptionsTests
             const int unexpectedStatusCode = 199;
 
             // Generate a dummy RestResponse with the given status code to parse
-            HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString());
+            HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString(CultureInfo.InvariantCulture));
             RestResponse response = new() { StatusCode = statusCode };
 
             ApiError generatedError = ApiError.FromErrorResponse(response);
@@ -373,7 +376,7 @@ namespace EasyPost.Tests.ExceptionsTests
             const int unexpectedStatusCode = 319;
 
             // Generate a dummy RestResponse with the given status code to parse
-            HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString());
+            HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString(CultureInfo.InvariantCulture));
             RestResponse response = new() { StatusCode = statusCode };
 
             ApiError generatedError = ApiError.FromErrorResponse(response);
@@ -393,7 +396,7 @@ namespace EasyPost.Tests.ExceptionsTests
             const int unexpectedStatusCode = 418;
 
             // Generate a dummy RestResponse with the given status code to parse
-            HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString());
+            HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString(CultureInfo.InvariantCulture));
             RestResponse response = new() { StatusCode = statusCode };
 
             ApiError generatedError = ApiError.FromErrorResponse(response);
@@ -413,7 +416,7 @@ namespace EasyPost.Tests.ExceptionsTests
             const int unexpectedStatusCode = 502;
 
             // Generate a dummy RestResponse with the given status code to parse
-            HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString());
+            HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString(CultureInfo.InvariantCulture));
             RestResponse response = new() { StatusCode = statusCode };
 
             ApiError generatedError = ApiError.FromErrorResponse(response);

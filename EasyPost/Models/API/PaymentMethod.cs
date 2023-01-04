@@ -77,7 +77,7 @@ namespace EasyPost.Models.API
                 if (Type == null)
                 {
 #pragma warning disable CA1507 // IDE doesn't understand what I'm doing here
-                    throw new MissingPropertyError(this, "Type");
+                    throw new MissingPropertyError(this, nameof(Type));
 #pragma warning restore CA1507
                 }
 

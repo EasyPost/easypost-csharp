@@ -59,7 +59,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(List<Shipment> shipmentsToAdd)
         {
-            var parameters = new Dictionary<string, object> { { "shipments", shipmentsToAdd } };
+            Dictionary<string, object> parameters = new() { { "shipments", shipmentsToAdd } };
             return await AddShipments(parameters);
         }
 
@@ -127,7 +127,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(List<Shipment> shipmentsToAdd)
         {
-            var parameters = new Dictionary<string, object> { { "shipments", shipmentsToAdd } };
+            Dictionary<string, object> parameters = new() { { "shipments", shipmentsToAdd } };
             return await RemoveShipments(parameters);
         }
 

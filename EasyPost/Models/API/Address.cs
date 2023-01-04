@@ -65,7 +65,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             await Update<Address>(Method.Get, $"addresses/{Id}/verify", null, "address");

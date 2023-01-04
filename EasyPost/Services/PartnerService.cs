@@ -91,7 +91,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task UpdateReferralEmail(string referralId, string email)
         {
-            var parameters = new Dictionary<string, object> { { "user", new Dictionary<string, object> { { "email", email } } } };
+            Dictionary<string, object> parameters = new() { { "user", new Dictionary<string, object> { { "email", email } } } };
             // NOTE: This is a PATCH request, not a PUT request.
             await UpdateNoResponse($"referral_customers/{referralId}", parameters);
         }
@@ -110,10 +110,11 @@ namespace EasyPost.Services
             Dictionary<string, object> parameters = new()
             {
                 {
-                    "credit_card", new Dictionary<string, object>
+                    "credit_card",
+                    new Dictionary<string, object>
                     {
                         { "stripe_object_id", stripeObjectId },
-                        { "priority", priority.ToString().ToLower() }
+                        { "priority", priority.ToString().ToLowerInvariant() }
                     }
                 }
             };

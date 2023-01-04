@@ -76,7 +76,7 @@ namespace EasyPost.Services
             PaymentMethodsSummary paymentMethodsSummarySummary = await RetrievePaymentMethodsSummary();
 
             PaymentMethod? paymentMethod = null;
-            var @switch = new SwitchCase
+            SwitchCase @switch = new()
             {
                 { PaymentMethod.Priority.Primary, () => { paymentMethod = paymentMethodsSummarySummary.PrimaryPaymentMethod; } },
                 { PaymentMethod.Priority.Secondary, () => { paymentMethod = paymentMethodsSummarySummary.SecondaryPaymentMethod; } },

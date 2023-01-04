@@ -9,11 +9,11 @@ namespace EasyPost.Utilities.Annotations
     {
         internal static IEnumerable<PropertyInfo> GetPropertiesWithAttribute<T>(Type @type)
         {
-            var matchingProperties = new List<PropertyInfo>();
+            List<PropertyInfo> matchingProperties = new();
 
-            var properties = @type.GetProperties();
+            PropertyInfo[] properties = @type.GetProperties();
 
-            foreach (var property in properties)
+            foreach (PropertyInfo property in properties)
             {
                 object[] attributes = property.GetCustomAttributes(typeof(T), true);
 
@@ -26,18 +26,15 @@ namespace EasyPost.Utilities.Annotations
             return matchingProperties;
         }
 
-        internal static IEnumerable<PropertyInfo> GetPropertiesWithAttribute<T>(object obj) where T : Attribute
-        {
-            return GetPropertiesWithAttribute<T>(obj.GetType());
-        }
+        internal static IEnumerable<PropertyInfo> GetPropertiesWithAttribute<T>(object obj) where T : Attribute => GetPropertiesWithAttribute<T>(obj.GetType());
 
         internal static IEnumerable<MethodInfo> GetMethodsWithAttribute<T>(Type @type)
         {
-            var matchingMethods = new List<MethodInfo>();
+            List<MethodInfo> matchingMethods = new();
 
-            var methods = @type.GetMethods();
+            MethodInfo[] methods = @type.GetMethods();
 
-            foreach (var method in methods)
+            foreach (MethodInfo method in methods)
             {
                 object[] attributes = method.GetCustomAttributes(typeof(T), true);
 
@@ -50,10 +47,7 @@ namespace EasyPost.Utilities.Annotations
             return matchingMethods;
         }
 
-        internal static IEnumerable<MethodInfo> GetMethodsWithAttribute<T>(object obj) where T : Attribute
-        {
-            return GetMethodsWithAttribute<T>(obj.GetType());
-        }
+        internal static IEnumerable<MethodInfo> GetMethodsWithAttribute<T>(object obj) where T : Attribute => GetMethodsWithAttribute<T>(obj.GetType());
     }
 
     internal interface IBaseCustomAttribute

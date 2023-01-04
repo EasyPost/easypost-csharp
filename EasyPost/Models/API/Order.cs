@@ -55,7 +55,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             Dictionary<string, object> parameters = new()
@@ -77,12 +77,12 @@ namespace EasyPost.Models.API
         {
             if (rate.Carrier == null)
             {
-                throw new MissingPropertyError(rate, "Carrier");
+                throw new MissingPropertyError(rate, nameof(rate.Carrier));
             }
 
             if (rate.Service == null)
             {
-                throw new MissingPropertyError(rate, "Service");
+                throw new MissingPropertyError(rate, nameof(rate.Service));
             }
 
             return await Buy(rate.Carrier, rate.Service);
@@ -97,7 +97,7 @@ namespace EasyPost.Models.API
             // TODO: Should this return the updated Order object?
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             await Update<Order>(Method.Get, $"orders/{Id}/rates");
@@ -117,7 +117,7 @@ namespace EasyPost.Models.API
         {
             if (Rates == null)
             {
-                throw new MissingPropertyError(this, "rates");
+                throw new MissingPropertyError(this, nameof(Rates));
             }
 
             return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);

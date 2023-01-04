@@ -190,7 +190,7 @@ namespace EasyPost._base
         protected T GetService<T>() where T : IEasyPostService
         {
             // construct a new service
-            var cons = typeof(T).GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
+            ConstructorInfo[] cons = typeof(T).GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
             return (T)cons[0].Invoke(new object[] { this });
         }
 

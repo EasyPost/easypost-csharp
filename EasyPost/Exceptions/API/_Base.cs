@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -82,7 +83,9 @@ namespace EasyPost.Exceptions.API
                 {
                     string bodyMessage => bodyMessage,
                     JArray bodyMessage => string.Join(", ", bodyMessage),
+#pragma warning disable CA2201
                     var _ => throw new Exception() // this will trigger the catch block below
+#pragma warning restore CA2201
                 };
                 errorType = body["error"]["code"].ToString();
                 errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string>
@@ -105,11 +108,11 @@ namespace EasyPost.Exceptions.API
             if (exceptionType == null)
             {
                 // A unaccounted-for status code was in the response.
-                throw new EasyPostError(string.Format(Constants.ErrorMessages.UnexpectedHttpStatusCode, statusCodeInt));
+                throw new EasyPostError(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.UnexpectedHttpStatusCode, statusCodeInt));
             }
 
             // instantiate the exception class
-            var cons = exceptionType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
+            ConstructorInfo[] cons = exceptionType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
             return (ApiError)cons[0].Invoke(new object?[] { errorMessage, statusCodeInt, errorType, errors });
         }
     }

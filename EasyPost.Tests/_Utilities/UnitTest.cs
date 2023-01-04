@@ -54,7 +54,9 @@ namespace EasyPost.Tests._Utilities
             }
             catch
             {
+#pragma warning disable CA2201
                 throw new Exception("Could not execute clean-up function.");
+#pragma warning restore CA2201
             }
         }
 

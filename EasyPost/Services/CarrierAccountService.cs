@@ -73,7 +73,7 @@ namespace EasyPost.Services
             // but we have to initialize the variable to avoid a compiler nullability error
             string endpoint = string.Empty;
 
-            var @switch = new SwitchCase
+            SwitchCase @switch = new()
             {
                 { Constants.CarrierAccountTypes.CarrierTypesWithCustomWorkflows.Contains(carrierAccountType), () => endpoint = "carrier_accounts/register" },
                 { SwitchCaseScenario.Default, () => endpoint = "carrier_accounts" }

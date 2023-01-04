@@ -89,7 +89,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             return await Request<List<Smartrate>>(Method.Get, $"shipments/{Id}/smartrate", null, "result");
@@ -108,7 +108,7 @@ namespace EasyPost.Models.API
             // TODO: Should this function return the updated Shipment like Order.Buy?
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             if (rateId == null)
@@ -158,7 +158,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             Dictionary<string, object> parameters = new() { { "file_format", fileFormat } };
@@ -176,7 +176,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             Dictionary<string, object> parameters = new() { { "amount", amount } };
@@ -193,7 +193,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             await Update<Shipment>(Method.Post, $"shipments/{Id}/refund");
@@ -212,7 +212,7 @@ namespace EasyPost.Models.API
 
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             parameters.Add("carbon_offset", withCarbonOffset);
@@ -235,7 +235,7 @@ namespace EasyPost.Models.API
         {
             if (Rates == null)
             {
-                throw new MissingPropertyError(this, "rates");
+                throw new MissingPropertyError(this, nameof(Rates));
             }
 
             return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);

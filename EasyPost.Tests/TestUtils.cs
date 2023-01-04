@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions;
 using EasyPost.Utilities;
 using EasyVCR;
 using RestSharp;
@@ -65,7 +66,9 @@ namespace EasyPost.Tests._Utilities
                 ApiKey.Partner => "PARTNER_USER_PROD_API_KEY",
                 ApiKey.Referral => "REFERRAL_USER_PROD_API_KEY",
                 ApiKey.Mock => "EASYPOST_MOCK_API_KEY", // does not exist, will trigger to use ApiKeyFailedToPull
+#pragma warning disable CA2201
                 var _ => throw new Exception(Constants.ErrorMessages.InvalidApiKeyType)
+#pragma warning restore CA2201
             };
 
             return Environment.GetEnvironmentVariable(keyName) ?? ApiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.
@@ -208,11 +211,11 @@ namespace EasyPost.Tests._Utilities
             internal override async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request)
 #pragma warning restore CS1998
             {
-                var mockRequest = FindMatchingMockRequest(request);
+                MockRequest mockRequest = FindMatchingMockRequest(request);
 
                 if (mockRequest == null)
                 {
-                    throw new Exception($"No matching mock request found for: {request.Method.ToString().ToUpper()} {request.Resource}");
+                    throw new EasyPostError($"No matching mock request found for: {request.Method.ToString().ToUpperInvariant()} {request.Resource}");
                 }
 
                 return new RestResponse<T>
@@ -227,11 +230,13 @@ namespace EasyPost.Tests._Utilities
             internal override async Task<RestResponse> ExecuteRequest(RestRequest request)
 #pragma warning restore CS1998
             {
-                var mockRequest = FindMatchingMockRequest(request);
+                MockRequest mockRequest = FindMatchingMockRequest(request);
 
                 if (mockRequest == null)
                 {
+#pragma warning disable CA2201
                     throw new Exception("No matching mock request found");
+#pragma warning restore CA2201
                 }
 
                 return new RestResponse

@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace EasyPost.Exceptions.General
 {
     public class MissingPropertyError : EasyPostError
@@ -7,7 +9,9 @@ namespace EasyPost.Exceptions.General
         /// </summary>
         /// <param name="obj">Object missing the property.</param>
         /// <param name="propertyName">Name of the missing property.</param>
-        internal MissingPropertyError(object obj, string propertyName) : base(string.Format(Constants.ErrorMessages.MissingProperty, new object[] { obj.GetType().Name, propertyName }))
+#pragma warning disable CA2241
+        internal MissingPropertyError(object obj, object propertyName) : base(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.MissingProperty, new object[] { obj.GetType().Name, propertyName }))
+#pragma warning restore CA2241
         {
         }
     }
