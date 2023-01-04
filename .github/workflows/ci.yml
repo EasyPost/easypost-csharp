@@ -48,11 +48,7 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: |
-            3.1.x
-            5.x.x
-            6.x.x
-            7.x.x
+          dotnet-version: 7.x.x
       # Load NuGet package cache
       - name: Load NuGet package cache
         uses: actions/cache@v2
@@ -78,6 +74,15 @@ jobs:
           # Optional category for the results
           # Used to differentiate multiple results for one commit
           category: code-analysis
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: csharp
+          queries: +security-and-quality
+      - name: Build solution
+        run: make build-prod
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
   coverage_requirement:
     runs-on: ubuntu-22.04
     steps:
