@@ -74,7 +74,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           # Path to SARIF file relative to the root of the repository
-          sarif_file: .gdn/analysis_results.sarif
+          sarif_file: ${{ env.ANALYSIS_RESULTS_SARIF_FILE }}
           # Optional category for the results
           # Used to differentiate multiple results for one commit
           category: code-analysis
