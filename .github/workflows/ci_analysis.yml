@@ -1,0 +1,88 @@
+name: CI - Analysis
+
+on:
+  push:
+    branches: [ master ]
+  pull_request: ~
+  workflow_dispatch: ~
+
+jobs:
+  Roslyn_Static_Analysis:
+    runs-on: windows-2019  # Known issue running on windows-2022: https://github.com/dotnet/code-analysis/issues/16
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.x.x
+
+      # Load NuGet package cache
+      - name: Load NuGet package cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ matrix.framework }}-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+        # Restore required NuGet packages
+      - name: Restore NuGet Packages
+        run: make restore
+
+        # Run Roslyn analyzers
+      - name: Run Roslyn analyzers
+        uses: dotnet/code-analysis@main
+        id: code-analysis
+        with:
+          build-breaking: false
+          all-categories: latest-recommended
+
+      - name: Upload analysis results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          # Path to SARIF file relative to the root of the repository
+          sarif_file: ${{ env.ANALYSIS_RESULTS_SARIF_FILE }}
+          # Optional category for the results
+          # Used to differentiate multiple results for one commit
+          category: Roslyn
+
+  CodeQL_Static_Analysis:
+    runs-on: windows-latest
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.x.x
+
+      # Load NuGet package cache
+      - name: Load NuGet package cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ matrix.framework }}-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+        # Restore required NuGet packages
+      - name: Restore NuGet Packages
+        run: make restore
+
+        # Prep CodeQL
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: csharp
+          queries: +security-and-quality
+
+        # Build solution
+      - name: Build solution
+        run: make build-prod
+
+        # Run and upload CodeQL analysis results
+      - name: Run CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
