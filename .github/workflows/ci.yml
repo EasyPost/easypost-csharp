@@ -58,7 +58,22 @@ jobs:
         # Restore required NuGet packages
       - name: Restore NuGet Packages
         run: make restore
-        # Prep and run static analysis
+        # Prep and run Roslyn analyzers
+      - name: Run Roslyn analyzers
+        uses: dotnet/code-analysis@main
+        id: code-analysis
+        with:
+          build-breaking: false
+          all-categories: latest-recommended
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          # Path to SARIF file relative to the root of the repository
+          sarif_file: ${{ env.ANALYSIS_RESULTS_SARIF_FILE }}
+          # Optional category for the results
+          # Used to differentiate multiple results for one commit
+          category: code-analysis
+        # Prep and run CodeQL static analysis
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
@@ -66,7 +81,7 @@ jobs:
           queries: +security-and-quality
       - name: Build solution
         run: make build-prod
-      - name: Perform CodeQL Analysis
+      - name: Run CodeQL Analysis
         uses: github/codeql-action/analyze@v2
   coverage_requirement:
     runs-on: ubuntu-22.04
