@@ -103,7 +103,21 @@ namespace EasyPost.Utilities
 
         public override string ToString() => Value.ToString() ?? string.Empty;
 
-        public override bool Equals(object? obj) => Value.Equals(((ValueEnum)obj!).Value);
+        public override bool Equals(object? obj)
+        {
+            if (obj is null)
+            {
+                return false;
+            }
+
+            if (GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            ValueEnum objEnum = (ValueEnum)obj;
+            return objEnum.Value.Equals(Value);
+        }
 
         public override int GetHashCode() => base.GetHashCode();
     }
