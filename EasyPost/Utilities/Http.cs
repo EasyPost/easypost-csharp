@@ -2,7 +2,6 @@ using System.Net;
 using RestSharp;
 
 // ReSharper disable InconsistentNaming
-
 namespace EasyPost.Utilities
 {
     internal static class Http

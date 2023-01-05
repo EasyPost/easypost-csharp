@@ -11,14 +11,16 @@ using RestSharp;
 
 namespace EasyPost.Exceptions.API
 {
+#pragma warning disable SA1649
     public class ApiError : EasyPostError
+#pragma warning restore SA1649
     {
         public readonly string? Code;
         public readonly List<Error>? Errors;
         public readonly int? StatusCode;
 
         /// <summary>
-        ///     Get a formatted error string with expanded details about the error.
+        ///     Gets a formatted error string with expanded details about the error.
         /// </summary>
         /// <returns>A formatted error string.</returns>
         public string PrettyPrint
@@ -45,7 +47,8 @@ namespace EasyPost.Exceptions.API
         /// <param name="statusCode">Optional HTTP status code to store as a property.</param>
         /// <param name="errorType">Optional error type string to store as a property.</param>
         /// <param name="errors">Optional list of Error objects to store as a property.</param>
-        protected ApiError(string errorMessage, int? statusCode = null, string? errorType = null, List<Error>? errors = null) : base(errorMessage)
+        protected ApiError(string errorMessage, int? statusCode = null, string? errorType = null, List<Error>? errors = null)
+            : base(errorMessage)
         {
             StatusCode = statusCode;
             Code = errorType;
@@ -58,7 +61,7 @@ namespace EasyPost.Exceptions.API
         ///     Parse a errored RestResponse response object and return an instance of the appropriate exception class.
         ///     Do not pass a non-error response to this method.
         /// </summary>
-        /// <param name="response">RestResponse response to parse</param>
+        /// <param name="response">RestResponse response to parse.</param>
         /// <raises>EasyPostError if an unplanned response code is found (i.e. user passed in a non-error RestResponse response object with a 2xx status code).</raises>
         /// <returns>An instance of an HttpError-inherited exception.</returns>
         internal static ApiError FromErrorResponse(RestResponse response)
@@ -84,14 +87,14 @@ namespace EasyPost.Exceptions.API
                     string bodyMessage => bodyMessage,
                     JArray bodyMessage => string.Join(", ", bodyMessage),
 #pragma warning disable CA2201
-                    var _ => throw new Exception() // this will trigger the catch block below
+                    var _ => throw new Exception(), // this will trigger the catch block below
 #pragma warning restore CA2201
                 };
                 errorType = body["error"]["code"].ToString();
                 errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string>
                 {
                     "error",
-                    "errors"
+                    "errors",
                 });
             }
             catch

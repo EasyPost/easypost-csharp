@@ -8,7 +8,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ApiKeyService : EasyPostService
     {
-        internal ApiKeyService(EasyPostClient client) : base(client)
+        internal ApiKeyService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -19,10 +20,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>An EasyPost.ApiKeyCollection instances.</returns>
         [CrudOperations.Read]
-        public async Task<ApiKeyCollection> All()
-        {
-            return await List<ApiKeyCollection>("api_keys");
-        }
+        public async Task<ApiKeyCollection> All() => await List<ApiKeyCollection>("api_keys");
 
         #endregion
     }

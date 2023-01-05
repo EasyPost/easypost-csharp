@@ -545,3 +545,26 @@ dotnet_diagnostic.CA2201.severity = warning
 dotnet_diagnostic.CA1051.severity = none
 ### Identifiers should not contain underscores
 dotnet_diagnostic.CA1707.severity = none
+### Elements should be documented
+dotnet_diagnostic.SA1600.severity = none
+### Elements should be separated by blank line
+dotnet_diagnostic.SA1516.severity = none
+### Do not use regions
+dotnet_diagnostic.SA1124.severity = none
+### Files should have header
+dotnet_diagnostic.SA1633.severity = none
+### A constructor should not follow a property
+dotnet_diagnostic.SA1201.severity = none
+### Elements should be ordered properly (overriden by our custom layout rules)
+dotnet_diagnostic.SA1202.severity = none
+### Static elements should be placed before instance elements (overriden by our custom layout rules)
+dotnet_diagnostic.SA1204.severity = none
+dotnet_diagnostic.SA1202.severity = none
+### Prefix local calls with "this"
+dotnet_diagnostic.SA1101.severity = none
+### File may only contain a single type
+dotnet_diagnostic.SA1402.severity = none
+### Field should be private
+dotnet_diagnostic.SA1401.severity = none
+### Private fields should not start with underscore
+dotnet_diagnostic.SA1309.severity = none

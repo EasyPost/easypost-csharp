@@ -43,7 +43,8 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Add shipments to this batch.
         /// </summary>
-        /// <param name="parameters">UpdateShipmentParameters</param>
+        /// <param name="parameters">Update shipment parameters.</param>
+        /// <returns>The updated Batch.</returns>
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(Dictionary<string, object> parameters)
         {
@@ -56,6 +57,7 @@ namespace EasyPost.Models.API
         ///     Add shipments to this batch.
         /// </summary>
         /// <param name="shipmentsToAdd">List of Shipment objects to be added.</param>
+        /// <returns>The updated Batch.</returns>
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(List<Shipment> shipmentsToAdd)
         {
@@ -67,6 +69,7 @@ namespace EasyPost.Models.API
         ///     Add shipments to this batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be added.</param>
+        /// <returns>The updated Batch.</returns>
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(IEnumerable<string> shipmentIds)
         {
@@ -77,6 +80,7 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Purchase all shipments within this batch. The Batch's state must be "created" before purchasing.
         /// </summary>
+        /// <returns>The updated Batch.</returns>
         [CrudOperations.Update]
         public async Task<Batch> Buy()
         {
@@ -88,6 +92,7 @@ namespace EasyPost.Models.API
         ///     Asynchronously generate a label containing all of the Shipment labels belonging to this batch.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
+        /// <returns>The updated Batch.</returns>
         [CrudOperations.Update]
         public async Task<Batch> GenerateLabel(string fileFormat = "pdf") // TODO: Remove default value (breaking change)
         {
@@ -100,6 +105,7 @@ namespace EasyPost.Models.API
         ///     Asynchronously generate a scan from for this batch.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
+        /// <returns>The updated Batch.</returns>
         [CrudOperations.Update]
         public async Task<Batch> GenerateScanForm(string fileFormat = "pdf") // TODO: Remove default value (breaking change)
         {
@@ -111,7 +117,8 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Remove shipments to this batch.
         /// </summary>
-        /// <param name="parameters">UpdateShipmentParameters</param>
+        /// <param name="parameters">Update shipment parameters.</param>
+        /// <returns>The updated Batch.</returns>
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(Dictionary<string, object> parameters)
         {
@@ -124,6 +131,7 @@ namespace EasyPost.Models.API
         ///     Remove shipments to this batch.
         /// </summary>
         /// <param name="shipmentsToAdd">List of Shipment objects to be removed.</param>
+        /// <returns>The updated Batch.</returns>
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(List<Shipment> shipmentsToAdd)
         {
@@ -135,6 +143,7 @@ namespace EasyPost.Models.API
         ///     Remove shipments to this batch.
         /// </summary>
         /// <param name="shipmentIds">List of shipment ids to be removed.</param>
+        /// <returns>The updated Batch.</returns>
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(IEnumerable<string> shipmentIds)
         {

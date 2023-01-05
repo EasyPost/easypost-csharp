@@ -10,7 +10,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class RateService : EasyPostService
     {
-        internal RateService(EasyPostClient client) : base(client)
+        internal RateService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -22,10 +23,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a rate. Starts with `rate_`.</param>
         /// <returns>EasyPost.Rate instance.</returns>
         [CrudOperations.Read]
-        public async Task<Rate> Retrieve(string id)
-        {
-            return await Get<Rate>($"rates/{id}");
-        }
+        public async Task<Rate> Retrieve(string id) => await Get<Rate>($"rates/{id}");
 
         #endregion
 

@@ -36,20 +36,41 @@ namespace EasyPost.Models.API
         public int? GetBySmartrateAccuracy(SmartrateAccuracy accuracy)
         {
             if (accuracy.Equals(SmartrateAccuracy.Percentile50))
+            {
                 return Percentile50;
+            }
+
             if (accuracy.Equals(SmartrateAccuracy.Percentile75))
+            {
                 return Percentile75;
+            }
+
             if (accuracy.Equals(SmartrateAccuracy.Percentile85))
+            {
                 return Percentile85;
+            }
+
             if (accuracy.Equals(SmartrateAccuracy.Percentile90))
+            {
                 return Percentile90;
+            }
+
             if (accuracy.Equals(SmartrateAccuracy.Percentile95))
+            {
                 return Percentile95;
+            }
+
             if (accuracy.Equals(SmartrateAccuracy.Percentile97))
+            {
                 return Percentile97;
+            }
+
             // ReSharper disable once ConvertIfStatementToReturnStatement
             if (accuracy.Equals(SmartrateAccuracy.Percentile99))
+            {
                 return Percentile99;
+            }
+
             return null;
         }
     }

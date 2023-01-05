@@ -14,7 +14,8 @@ namespace EasyPost.Services
 {
     public class PartnerService : EasyPostService
     {
-        internal PartnerService(EasyPostClient client) : base(client)
+        internal PartnerService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -45,10 +46,7 @@ namespace EasyPost.Services
         /// <param name="parameters">Parameters for API call.</param>
         /// <returns>An EasyPost.ReferralCustomerCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null)
-        {
-            return await List<ReferralCustomerCollection>("referral_customers", parameters);
-        }
+        public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null) => await List<ReferralCustomerCollection>("referral_customers", parameters);
 
         /// <summary>
         ///     Add a credit card to a Referral Customer.
@@ -89,10 +87,12 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="referralId">ID of the referral user to update.</param>
         /// <param name="email">Email of the referral user to update.</param>
+        /// <returns>A Task to update a referral's email.</returns>
         [CrudOperations.Update]
         public async Task UpdateReferralEmail(string referralId, string email)
         {
             Dictionary<string, object> parameters = new() { { "user", new Dictionary<string, object> { { "email", email } } } };
+
             // NOTE: This is a PATCH request, not a PUT request.
             await UpdateNoResponse($"referral_customers/{referralId}", parameters);
         }
@@ -115,9 +115,9 @@ namespace EasyPost.Services
                     new Dictionary<string, object>
                     {
                         { "stripe_object_id", stripeObjectId },
-                        { "priority", priority.ToString().ToLowerInvariant() }
+                        { "priority", priority.ToString().ToLowerInvariant() },
                     }
-                }
+                },
             };
 
             // Store the old API key

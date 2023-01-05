@@ -55,7 +55,7 @@ namespace EasyPost.Tests._Utilities
             Mock
         }
 
-        public static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath);
+        public static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath)!;
 
         internal static string GetApiKey(ApiKey apiKey)
         {
@@ -115,6 +115,7 @@ namespace EasyPost.Tests._Utilities
 
                 _testCassettesFolder = Path.Combine(GetSourceFileDirectory(), CassettesFolder); // create "cassettes" folder in same directory as test files
 
+                // ReSharper disable once ConvertToConstant.Local
                 string netVersionFolder = "net";
 #if NET462
                 netVersionFolder = "netstandard";
@@ -211,7 +212,7 @@ namespace EasyPost.Tests._Utilities
             internal override async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request)
 #pragma warning restore CS1998
             {
-                MockRequest mockRequest = FindMatchingMockRequest(request);
+                MockRequest? mockRequest = FindMatchingMockRequest(request);
 
                 if (mockRequest == null)
                 {
@@ -230,7 +231,7 @@ namespace EasyPost.Tests._Utilities
             internal override async Task<RestResponse> ExecuteRequest(RestRequest request)
 #pragma warning restore CS1998
             {
-                MockRequest mockRequest = FindMatchingMockRequest(request);
+                MockRequest? mockRequest = FindMatchingMockRequest(request);
 
                 if (mockRequest == null)
                 {
@@ -260,7 +261,7 @@ namespace EasyPost.Tests._Utilities
                 _mockRequests.AddRange(mockRequests);
             }
 
-            private MockRequest FindMatchingMockRequest(RestRequest request)
+            private MockRequest? FindMatchingMockRequest(RestRequest request)
             {
                 return _mockRequests.FirstOrDefault(
                     mock => mock.MatchRules.Method == request.Method &&

@@ -12,7 +12,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class BillingService : EasyPostService
     {
-        internal BillingService(EasyPostClient client) : base(client)
+        internal BillingService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -23,6 +24,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="amount">Amount to fund.</param>
         /// <param name="priority">Which type of payment method to use to fund the wallet. Defaults to primary.</param>
+        /// <returns>A Task to fund the wallet.</returns>
         [CrudOperations.Create]
         public async Task FundWallet(string amount, PaymentMethod.Priority? priority = null)
         {
@@ -55,6 +57,7 @@ namespace EasyPost.Services
         ///     Delete a payment method from the user's account.
         /// </summary>
         /// <param name="priority">Which type of payment method to delete.</param>
+        /// <returns>A Task to delete a payment method.</returns>
         [CrudOperations.Delete]
         public async Task DeletePaymentMethod(PaymentMethod.Priority priority)
         {
@@ -80,7 +83,7 @@ namespace EasyPost.Services
             {
                 { PaymentMethod.Priority.Primary, () => { paymentMethod = paymentMethodsSummarySummary.PrimaryPaymentMethod; } },
                 { PaymentMethod.Priority.Secondary, () => { paymentMethod = paymentMethodsSummarySummary.SecondaryPaymentMethod; } },
-                { SwitchCaseScenario.Default, () => throw new InvalidParameterError("priority") }
+                { SwitchCaseScenario.Default, () => throw new InvalidParameterError("priority") },
             };
 
             @switch.MatchFirst(priority);

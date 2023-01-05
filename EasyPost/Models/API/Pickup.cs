@@ -42,7 +42,7 @@ namespace EasyPost.Models.API
         #endregion
 
         /// <summary>
-        ///     Get the pickup rates as a list of Rate objects.
+        ///     Gets the pickup rates as a list of Rate objects.
         /// </summary>
         /// <returns>List of Rate objects.</returns>
         private IEnumerable<Rate> Rates
@@ -61,6 +61,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="withCarrier">The name of the carrier to purchase with.</param>
         /// <param name="withService">The name of the service to purchase.</param>
+        /// <returns>The updated Pickup.</returns>
         [CrudOperations.Update]
         public async Task<Pickup> Buy(string withCarrier, string withService)
         {
@@ -72,7 +73,7 @@ namespace EasyPost.Models.API
             Dictionary<string, object> parameters = new()
             {
                 { "carrier", withCarrier },
-                { "service", withService }
+                { "service", withService },
             };
 
             await Update<Pickup>(Method.Post, $"pickups/{Id}/buy", parameters);
@@ -82,6 +83,7 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Cancel this pickup.
         /// </summary>
+        /// <returns>The updated Pickup.</returns>
         [CrudOperations.Update]
         public async Task<Pickup> Cancel()
         {

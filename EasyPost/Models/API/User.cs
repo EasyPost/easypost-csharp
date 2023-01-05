@@ -52,6 +52,7 @@ namespace EasyPost.Models.API
         ///     account.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <returns>The updated User.</returns>
         [CrudOperations.Update]
         public async Task<User> Update(Dictionary<string, object> parameters)
         {

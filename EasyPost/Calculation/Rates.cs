@@ -9,7 +9,7 @@ namespace EasyPost.Calculation
     public static class Rates
     {
         /// <summary>
-        ///     Get the lowest rate from a list of rates
+        ///     Get the lowest rate from a list of rates.
         /// </summary>
         /// <param name="rates">List of rates to parse.</param>
         /// <param name="includeCarriers">Carriers to include in the filter.</param>
@@ -38,7 +38,6 @@ namespace EasyPost.Calculation
                     // we have a carrier filter
 
                     // rate will always have a carrier, don't need to check for null
-
                     if (includeCarriers.Count > 0 && !includeCarriers.Contains(rate.Carrier!.ToLowerInvariant()))
                     {
                         // If we have a list of carriers to include and the rate's carrier isn't in the list, skip it
@@ -57,7 +56,6 @@ namespace EasyPost.Calculation
                     // we have a service filter
 
                     // rate will always have a service, don't need to check for null
-
                     if (includeServices.Count > 0 && !includeServices.Contains(rate.Service!.ToLowerInvariant()))
                     {
                         // If we have a list of services to include and the rate's service isn't in the list, skip it
@@ -108,7 +106,7 @@ namespace EasyPost.Calculation
         }
 
         /// <summary>
-        ///     Get the lowest smartRate from a list of rates
+        ///     Get the lowest smartRate from a list of rates.
         /// </summary>
         /// <param name="smartrates">List of smartrates to parse.</param>
         /// <param name="deliveryDays">Delivery days to include in the filter.</param>
@@ -122,7 +120,6 @@ namespace EasyPost.Calculation
             foreach (Smartrate? smartRate in smartrates)
             {
                 // smartRate will always have a time in transit, don't need to check for null
-
                 int? smartRateAccuracy = smartRate.TimeInTransit!.GetBySmartrateAccuracy(deliveryAccuracy);
 
                 if (smartRateAccuracy == null)

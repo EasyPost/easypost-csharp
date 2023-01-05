@@ -10,7 +10,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class RefundService : EasyPostService
     {
-        internal RefundService(EasyPostClient client) : base(client)
+        internal RefundService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -40,10 +41,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.RefundCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null)
-        {
-            return await List<RefundCollection>("refunds", parameters);
-        }
+        public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null) => await List<RefundCollection>("refunds", parameters);
 
         /// <summary>
         ///     Retrieve a Refund from its id.
@@ -51,10 +49,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Refund. Starts with "rfnd_".</param>
         /// <returns>EasyPost.Refund instance.</returns>
         [CrudOperations.Read]
-        public async Task<Refund> Retrieve(string id)
-        {
-            return await Get<Refund>($"refunds/{id}");
-        }
+        public async Task<Refund> Retrieve(string id) => await Get<Refund>($"refunds/{id}");
 
         #endregion
     }

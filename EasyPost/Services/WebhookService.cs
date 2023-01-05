@@ -13,7 +13,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class WebhookService : EasyPostService
     {
-        internal WebhookService(EasyPostClient client) : base(client)
+        internal WebhookService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -38,12 +39,10 @@ namespace EasyPost.Services
         /// <summary>
         ///     Get a list of scan forms.
         /// </summary>
+        /// <param name="parameters">A optional dictionary of parameters to include in the API request.</param>
         /// <returns>List of EasyPost.Webhook instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null)
-        {
-            return await List<List<Webhook>>("webhooks", parameters, "webhooks");
-        }
+        public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null) => await List<List<Webhook>>("webhooks", parameters, "webhooks");
 
         /// <summary>
         ///     Retrieve a Webhook from its id.
@@ -51,10 +50,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a webhook. Starts with "hook_".</param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
-        public async Task<Webhook> Retrieve(string? id)
-        {
-            return await Get<Webhook>($"webhooks/{id}");
-        }
+        public async Task<Webhook> Retrieve(string? id) => await Get<Webhook>($"webhooks/{id}");
 
         /// <summary>
         ///     Validate a received webhook's HMAC signature.
@@ -72,7 +68,7 @@ namespace EasyPost.Services
         {
             const string signatureHeader = "X-Hmac-Signature";
 
-            string? providedSignature = headers.TryGetValue(signatureHeader, out object? value) ? (value?.ToString()) : throw new SignatureVerificationError();
+            string? providedSignature = headers.TryGetValue(signatureHeader, out object? value) ? value?.ToString() : throw new SignatureVerificationError();
 
             string computedHexDigest = data.CalculateHMACSHA256HexDigest(secret, NormalizationForm.FormKD);
 

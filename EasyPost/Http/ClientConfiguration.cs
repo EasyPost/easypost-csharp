@@ -5,7 +5,7 @@ using EasyPost.Utilities;
 namespace EasyPost.Http
 {
     /// <summary>
-    ///     Provides configuration options for the REST client. Used internally to store API key and other configuration
+    ///     Provides configuration options for the REST client. Used internally to store API key and other configuration.
     /// </summary>
     public class ClientConfiguration
     {
@@ -17,7 +17,7 @@ namespace EasyPost.Http
         internal readonly string ApiBase;
 
         /// <summary>
-        ///     The API key.
+        ///     Gets the API key.
         ///     This cannot be changed after the client has been initialized.
         /// </summary>
         // This can be changed between API calls, but only by internal methods (by the library and test suite, but not by the end user).
@@ -66,7 +66,7 @@ namespace EasyPost.Http
         private int? _requestTimeoutMilliseconds;
 
         /// <summary>
-        ///     The connect timeout in milliseconds.
+        ///     Gets or sets the connect timeout in milliseconds.
         /// </summary>
         public int ConnectTimeoutMilliseconds
         {
@@ -75,7 +75,7 @@ namespace EasyPost.Http
         }
 
         /// <summary>
-        ///     The request timeout in milliseconds.
+        ///     Gets or sets the request timeout in milliseconds.
         /// </summary>
         public int RequestTimeoutMilliseconds
         {
@@ -90,10 +90,11 @@ namespace EasyPost.Http
         internal string UserAgent => $"EasyPost/{ApiVersion.Current.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ClientConfiguration"/> class.
         ///     Create an EasyPost.ClientConfiguration instance.
         /// </summary>
         /// <param name="apiKey">The API key to use for the client connection.</param>
-        /// <param name="baseUrl">Base URL to use with this client. This will override `apiVersion`</param>
+        /// <param name="baseUrl">Base URL to use with this client. This will override `apiVersion`.</param>
         /// <param name="customHttpClient">The custom HTTP client to use for the client connection.</param>
         internal ClientConfiguration(string apiKey, string? baseUrl, HttpClient? customHttpClient = null)
         {

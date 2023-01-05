@@ -21,7 +21,7 @@ jobs:
             7.x.x
       - name: Set up dotnet tools
         run: make install-tools
-      - name: Check dotnet Style
+      - name: Check style with dotnet-format
         run: make lint
   security:
     runs-on: windows-2022
@@ -39,8 +39,6 @@ jobs:
         run: make install
       - name: Run security analysis
         run: make scan
-        # TODO: In the future, we can collect the output logs by enabling Code Scanning and using the pre-built GitHub Action: https://github.com/marketplace/actions/securitycodescan
-        # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github#uploading-a-code-scanning-analysis-with-github-actions
   analysis:
     runs-on: windows-2019  # Known issue running on windows-2022: https://github.com/dotnet/code-analysis/issues/16
     steps:
@@ -60,20 +58,7 @@ jobs:
         # Restore required NuGet packages
       - name: Restore NuGet Packages
         run: make restore
-      - name: Run .NET Code Analysis
-        uses: dotnet/code-analysis@main
-        id: code-analysis
-        with:
-          build-breaking: false
-          all-categories: latest-recommended
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          # Path to SARIF file relative to the root of the repository
-          sarif_file: ${{ env.ANALYSIS_RESULTS_SARIF_FILE }}
-          # Optional category for the results
-          # Used to differentiate multiple results for one commit
-          category: code-analysis
+        # Prep and run static analysis
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:

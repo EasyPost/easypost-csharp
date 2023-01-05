@@ -9,7 +9,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class CarrierTypeService : EasyPostService
     {
-        internal CarrierTypeService(EasyPostClient client) : base(client)
+        internal CarrierTypeService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -20,10 +21,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>A list of EasyPost.CarrierType instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<CarrierType>> All()
-        {
-            return await List<List<CarrierType>>("carrier_types");
-        }
+        public async Task<List<CarrierType>> All() => await List<List<CarrierType>>("carrier_types");
 
         #endregion
     }

@@ -37,6 +37,7 @@ namespace EasyPost.Models.API
         public bool? Residential { get; set; }
         [JsonProperty("state")]
         public string? State { get; set; }
+
         [JsonProperty("state_tax_id")]
         public string? StateTaxId { get; set; }
         [JsonProperty("street1")]

@@ -102,6 +102,7 @@ namespace EasyPost.Models.API
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
         /// <param name="endShipperId">The id of the end shipper to use for this purchase.</param>
+        /// <returns>The task to buy this Shipment.</returns>
         [CrudOperations.Update]
         public async Task Buy(string? rateId, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null)
         {
@@ -120,7 +121,7 @@ namespace EasyPost.Models.API
             {
                 { "rate", new Dictionary<string, object> { { "id", rateId } } },
                 { "insurance", insuranceValue ?? string.Empty },
-                { "carbon_offset", withCarbonOffset }
+                { "carbon_offset", withCarbonOffset },
             };
 
             if (endShipperId != null)
@@ -138,6 +139,7 @@ namespace EasyPost.Models.API
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
         /// <param name="endShipperId">The id of the end shipper to use for this purchase.</param>
+        /// <returns>The task to buy this Shipment.</returns>
         [CrudOperations.Update]
         public async Task Buy(Rate rate, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null)
         {
@@ -153,6 +155,7 @@ namespace EasyPost.Models.API
         ///     Generate a postage label for this shipment.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
+        /// <returns>The updated Shipment.</returns>
         [CrudOperations.Update]
         public async Task<Shipment> GenerateLabel(string fileFormat)
         {
@@ -171,6 +174,7 @@ namespace EasyPost.Models.API
         ///     Insure shipment for the given amount.
         /// </summary>
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
+        /// <returns>The updated Shipment.</returns>
         [CrudOperations.Update]
         public async Task<Shipment> Insure(double amount)
         {
@@ -188,6 +192,7 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Send a refund request to the carrier the shipment was purchased from.
         /// </summary>
+        /// <returns>The updated Shipment.</returns>
         [CrudOperations.Update]
         public async Task<Shipment> Refund()
         {
@@ -205,6 +210,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
         /// <param name="withCarbonOffset">Whether to use carbon offset when re-rating the shipment.</param>
+        /// <returns>The task to regenerate this Shipment's rates.</returns>
         [CrudOperations.Update]
         public async Task RegenerateRates(Dictionary<string, object>? parameters = null, bool withCarbonOffset = false)
         {

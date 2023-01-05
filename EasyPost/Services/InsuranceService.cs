@@ -10,7 +10,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class InsuranceService : EasyPostService
     {
-        internal InsuranceService(EasyPostClient client) : base(client)
+        internal InsuranceService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -57,10 +58,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.InsuranceCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null)
-        {
-            return await List<InsuranceCollection>("insurances", parameters);
-        }
+        public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null) => await List<InsuranceCollection>("insurances", parameters);
 
         /// <summary>
         ///     Retrieve an Insurance from its id.
@@ -68,10 +66,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing an Insurance. Starts with "ins_".</param>
         /// <returns>EasyPost.Insurance instance.</returns>
         [CrudOperations.Read]
-        public async Task<Insurance> Retrieve(string id)
-        {
-            return await Get<Insurance>($"insurances/{id}");
-        }
+        public async Task<Insurance> Retrieve(string id) => await Get<Insurance>($"insurances/{id}");
 
         #endregion
     }

@@ -10,7 +10,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class CustomsInfoService : EasyPostService
     {
-        internal CustomsInfoService(EasyPostClient client) : base(client)
+        internal CustomsInfoService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -45,10 +46,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a CustomsInfo. Starts with "cstinfo_".</param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         [CrudOperations.Read]
-        public async Task<CustomsInfo> Retrieve(string id)
-        {
-            return await Get<CustomsInfo>($"customs_infos/{id}");
-        }
+        public async Task<CustomsInfo> Retrieve(string id) => await Get<CustomsInfo>($"customs_infos/{id}");
 
         #endregion
     }

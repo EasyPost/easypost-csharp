@@ -10,7 +10,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class AddressService : EasyPostService
     {
-        internal AddressService(EasyPostClient client) : base(client)
+        internal AddressService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -54,6 +55,7 @@ namespace EasyPost.Services
             {
                 parameters.Add("verify", true);
             }
+
             if (verifyStrict)
             {
                 parameters.Add("verify_strict", true);
@@ -79,11 +81,9 @@ namespace EasyPost.Services
         ///     * {"email", string}
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <returns>An Address object.</returns>
         [CrudOperations.Create]
-        public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters)
-        {
-            return await Create<Address>("addresses/create_and_verify", parameters, "address");
-        }
+        public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters) => await Create<Address>("addresses/create_and_verify", parameters, "address");
 
         /// <summary>
         ///     List all Address objects.
@@ -101,10 +101,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.AddressCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null)
-        {
-            return await List<AddressCollection>("addresses", parameters);
-        }
+        public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null) => await List<AddressCollection>("addresses", parameters);
 
         /// <summary>
         ///     Retrieve an Address from its id.
@@ -112,10 +109,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing an Address. Starts with "adr_".</param>
         /// <returns>EasyPost.Address instance.</returns>
         [CrudOperations.Read]
-        public async Task<Address> Retrieve(string id)
-        {
-            return await Get<Address>($"addresses/{id}");
-        }
+        public async Task<Address> Retrieve(string id) => await Get<Address>($"addresses/{id}");
 
         #endregion
     }

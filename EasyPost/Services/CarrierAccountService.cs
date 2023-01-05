@@ -12,7 +12,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class CarrierAccountService : EasyPostService
     {
-        internal CarrierAccountService(EasyPostClient client) : base(client)
+        internal CarrierAccountService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -35,7 +36,9 @@ namespace EasyPost.Services
         public async Task<CarrierAccount> Create(Dictionary<string, object> parameters)
         {
             if (parameters["type"] is not string carrierType)
+            {
                 throw new MissingParameterError("CarrierAccount type is required.");
+            }
 
             string endpoint = SelectCarrierAccountCreationEndpoint(carrierType);
 
@@ -49,10 +52,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<CarrierAccount>> All()
-        {
-            return await List<List<CarrierAccount>>("carrier_accounts");
-        }
+        public async Task<List<CarrierAccount>> All() => await List<List<CarrierAccount>>("carrier_accounts");
 
         /// <summary>
         ///     Retrieve a CarrierAccount from its id.
@@ -60,10 +60,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a carrier account. Starts with "ca_".</param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         [CrudOperations.Read]
-        public async Task<CarrierAccount> Retrieve(string id)
-        {
-            return await Get<CarrierAccount>($"carrier_accounts/{id}");
-        }
+        public async Task<CarrierAccount> Retrieve(string id) => await Get<CarrierAccount>($"carrier_accounts/{id}");
 
         #endregion
 
@@ -76,7 +73,7 @@ namespace EasyPost.Services
             SwitchCase @switch = new()
             {
                 { Constants.CarrierAccountTypes.CarrierTypesWithCustomWorkflows.Contains(carrierAccountType), () => endpoint = "carrier_accounts/register" },
-                { SwitchCaseScenario.Default, () => endpoint = "carrier_accounts" }
+                { SwitchCaseScenario.Default, () => endpoint = "carrier_accounts" },
             };
             @switch.MatchFirstTrue();
 

@@ -9,7 +9,8 @@ namespace EasyPost.Models.API
 
         internal string? EndPoint => Value.ToString();
 
-        private PaymentMethodType(int id, string endpoint) : base(id, endpoint)
+        private PaymentMethodType(int id, string endpoint)
+            : base(id, endpoint)
         {
         }
     }

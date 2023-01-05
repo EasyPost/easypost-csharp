@@ -8,7 +8,9 @@ using EasyPost.Utilities;
 using Newtonsoft.Json;
 using RestSharp;
 
+#pragma warning disable SA1300
 namespace EasyPost._base
+#pragma warning restore SA1300
 {
     /// <summary>
     ///     Class for any object that comes from or goes to the EasyPost API.
@@ -42,11 +44,8 @@ namespace EasyPost._base
             return GetHashCode() == ((EasyPostObject)obj).GetHashCode();
         }
 
-        [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
-        public override int GetHashCode()
-        {
-            return AsJson().GetHashCode() ^ GetType().GetHashCode() ^ (Client != null ? Client!.GetHashCode() : 1);
-        }
+        [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode", Justification = "Client is used to determine equality.")]
+        public override int GetHashCode() => AsJson().GetHashCode() ^ GetType().GetHashCode() ^ (Client != null ? Client!.GetHashCode() : 1);
 
         public static bool operator ==(EasyPostObject? one, object? two)
         {
@@ -74,7 +73,9 @@ namespace EasyPost._base
         /// <param name="rootElement">Root element of JSON returned by update call.</param>
         /// <param name="overrideApiVersion">Override the API version used for update call.</param>
         /// <typeparam name="T">Type of object to update.</typeparam>
-        protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null)
+            where T : class
         {
             T updatedObject = await Request<T>(method, url, parameters, rootElement, overrideApiVersion);
 
@@ -84,7 +85,7 @@ namespace EasyPost._base
         /// <summary>
         ///     Get the JSON representation of this object instance.
         /// </summary>
-        /// <returns>A JSON string representation of this object instance's attributes</returns>
+        /// <returns>A JSON string representation of this object instance's attributes.</returns>
         private string AsJson() => JsonSerialization.ConvertObjectToJson(this);
 
         /// <summary>

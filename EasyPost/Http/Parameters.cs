@@ -7,7 +7,7 @@ namespace EasyPost.Http
     {
         /// <summary>
         ///     Wrap a dictionary into a larger dictionary.
-        ///     i.e. add a dictionary of parameters to "level1" -> "level2" -> "level3" -> "parameters"
+        ///     i.e. add a dictionary of parameters to "level1" -> "level2" -> "level3" -> "parameters".
         /// </summary>
         /// <param name="dictionary">Dictionary to wrap.</param>
         /// <param name="keys">Path of keys to wrap the parameters in.</param>
@@ -17,7 +17,7 @@ namespace EasyPost.Http
 
         /// <summary>
         ///     Wrap a list into a larger dictionary.
-        ///     i.e. add a list of parameters to "level1" -> "level2" -> "level3" -> "parameters"
+        ///     i.e. add a list of parameters to "level1" -> "level2" -> "level3" -> "parameters".
         /// </summary>
         /// <param name="list">List to wrap.</param>
         /// <param name="keys">Path of keys to wrap the parameters in.</param>

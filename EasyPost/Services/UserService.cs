@@ -10,7 +10,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class UserService : EasyPostService
     {
-        internal UserService(EasyPostClient client) : base(client)
+        internal UserService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -53,10 +54,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
-        public async Task<User> RetrieveMe()
-        {
-            return await Retrieve();
-        }
+        public async Task<User> RetrieveMe() => await Retrieve();
 
         #endregion
     }

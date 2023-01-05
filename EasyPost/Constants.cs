@@ -34,13 +34,10 @@ namespace EasyPost
             { 429, typeof(RateLimitError) },
             { 500, typeof(InternalServerError) },
             { 503, typeof(ServiceUnavailableError) },
-            { 504, typeof(GatewayTimeoutError) }
+            { 504, typeof(GatewayTimeoutError) },
         };
 
-        public static Type? EasyPostExceptionType(this HttpStatusCode statusCode)
-        {
-            return GetEasyPostExceptionType(statusCode);
-        }
+        public static Type? EasyPostExceptionType(this HttpStatusCode statusCode) => GetEasyPostExceptionType(statusCode);
 
         public static Type? GetEasyPostExceptionType(int statusCode)
         {
@@ -58,17 +55,14 @@ namespace EasyPost
                 { Utilities.Http.StatusCodeIs3xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
                 { Utilities.Http.StatusCodeIs4xx(statusCode), () => { exceptionType = typeof(UnknownApiError); } },
                 { Utilities.Http.StatusCodeIs5xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
-                { SwitchCaseScenario.Default, () => { exceptionType = null; } }
+                { SwitchCaseScenario.Default, () => { exceptionType = null; } },
             };
             @switch.MatchFirst(true); // evaluate switch case, checking which expression evaluates to "true"
 
             return exceptionType;
         }
 
-        public static Type? GetEasyPostExceptionType(HttpStatusCode statusCode)
-        {
-            return GetEasyPostExceptionType((int)statusCode);
-        }
+        public static Type? GetEasyPostExceptionType(HttpStatusCode statusCode) => GetEasyPostExceptionType((int)statusCode);
 
         // public so end-users can access if need to (i.e. regex?)
         public static class ErrorMessages
@@ -87,8 +81,8 @@ namespace EasyPost
             public const string PaymentNotSetUp = "This payment method is not set up.";
             public const string UnexpectedHttpStatusCode = "Unexpected HTTP status code: {0}.";
             public const string ApiDidNotReturnErrorDetails = "API did not return error details.";
-            internal const string ApiErrorDetailsParsingError = "RESPONSE.PARSE_ERROR"; // not for public consumption
             public const string CouldNotPassClient = "Could not pass client to {0}.";
+            internal const string ApiErrorDetailsParsingError = "RESPONSE.PARSE_ERROR"; // not for public consumption
         }
 
         public static class CarrierAccountTypes
@@ -96,7 +90,7 @@ namespace EasyPost
             internal static List<string> CarrierTypesWithCustomWorkflows => new()
             {
                 "FedexAccount",
-                "UpsAccount"
+                "UpsAccount",
             };
         }
     }

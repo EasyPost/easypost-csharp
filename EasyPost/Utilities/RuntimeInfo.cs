@@ -10,7 +10,7 @@ namespace EasyPost.Utilities
         internal struct ApplicationInfo
         {
             /// <summary>
-            ///     Get the version of the application as a string.
+            ///     Gets the version of the application as a string.
             /// </summary>
             /// <returns>The version of the application as a string.</returns>
             internal static string ApplicationVersion
@@ -31,7 +31,7 @@ namespace EasyPost.Utilities
             }
 
             /// <summary>
-            ///     Get the .NET framework version as a string.
+            ///     Gets the .NET framework version as a string.
             /// </summary>
             /// <returns>The .NET framework version as a string.</returns>
             internal static string DotNetVersion => Environment.Version.ToString();
@@ -40,13 +40,13 @@ namespace EasyPost.Utilities
         internal struct OperationSystemInfo
         {
             /// <summary>
-            ///     Get details about the operating system.
+            ///     Gets details about the operating system.
             /// </summary>
             /// <returns>Details about the operating system.</returns>
             private static OperatingSystem OperatingSystem => Environment.OSVersion;
 
             /// <summary>
-            ///     Get the name of the operating system.
+            ///     Gets the name of the operating system.
             /// </summary>
             /// <returns>Name of the operating system.</returns>
 #pragma warning disable IDE0025
@@ -66,7 +66,7 @@ namespace EasyPost.Utilities
                         PlatformID.MacOSX => // in newer versions, Mac OS X is PlatformID.Unix unfortunately
                             "Darwin",
                         PlatformID.Xbox => "Unknown",
-                        var _ => "Unknown"
+                        var _ => "Unknown",
                     };
 #else
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
@@ -90,13 +90,13 @@ namespace EasyPost.Utilities
             }
 
             /// <summary>
-            ///     Get the version of the operating system.
+            ///     Gets the version of the operating system.
             /// </summary>
             /// <returns>Version of the operating system.</returns>
             internal static string Version => OperatingSystem.Version.ToString();
 
             /// <summary>
-            ///     Get the architecture of the operating system.
+            ///     Gets the architecture of the operating system.
             /// </summary>
             /// <returns>Architecture of the operating system.</returns>
             internal static string Architecture =>
@@ -112,7 +112,7 @@ namespace EasyPost.Utilities
                     System.Runtime.InteropServices.Architecture.Arm64 => "arm64",
                     System.Runtime.InteropServices.Architecture.X64 => "x64",
                     System.Runtime.InteropServices.Architecture.X86 => "x86",
-                    var _ => "Unknown"
+                    var _ => "Unknown",
                 };
 #endif
 

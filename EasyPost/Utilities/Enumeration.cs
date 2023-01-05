@@ -6,7 +6,9 @@ using System.Reflection;
 
 namespace EasyPost.Utilities
 {
+#pragma warning disable SA1649
     public interface IEnum
+#pragma warning restore SA1649
     {
     }
 
@@ -71,7 +73,9 @@ namespace EasyPost.Utilities
 
         public static bool operator !=(Enum? one, Enum? two) => !(one == two);
 
-        public static IEnumerable<T> GetAll<T>() where T : IEnum =>
+        public static IEnumerable<T> GetAll<T>()
+            where T : IEnum
+            =>
             typeof(T).GetFields(BindingFlags.Public |
                                 BindingFlags.Static |
                                 BindingFlags.DeclaredOnly)
@@ -94,8 +98,13 @@ namespace EasyPost.Utilities
     {
         internal object Value { get; }
 
-        protected ValueEnum(int id, object value) : base(id) => Value = value;
+        protected ValueEnum(int id, object value)
+            : base(id) => Value = value;
 
         public override string ToString() => Value.ToString() ?? string.Empty;
+
+        public override bool Equals(object? obj) => Value.Equals(((ValueEnum)obj!).Value);
+
+        public override int GetHashCode() => base.GetHashCode();
     }
 }

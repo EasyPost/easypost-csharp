@@ -26,7 +26,9 @@ namespace EasyPost.Utilities.Annotations
             return matchingProperties;
         }
 
-        internal static IEnumerable<PropertyInfo> GetPropertiesWithAttribute<T>(object obj) where T : Attribute => GetPropertiesWithAttribute<T>(obj.GetType());
+        internal static IEnumerable<PropertyInfo> GetPropertiesWithAttribute<T>(object obj)
+            where T : Attribute
+            => GetPropertiesWithAttribute<T>(obj.GetType());
 
         internal static IEnumerable<MethodInfo> GetMethodsWithAttribute<T>(Type @type)
         {
@@ -47,7 +49,9 @@ namespace EasyPost.Utilities.Annotations
             return matchingMethods;
         }
 
-        internal static IEnumerable<MethodInfo> GetMethodsWithAttribute<T>(object obj) where T : Attribute => GetMethodsWithAttribute<T>(obj.GetType());
+        internal static IEnumerable<MethodInfo> GetMethodsWithAttribute<T>(object obj)
+            where T : Attribute
+            => GetMethodsWithAttribute<T>(obj.GetType());
     }
 
     internal interface IBaseCustomAttribute

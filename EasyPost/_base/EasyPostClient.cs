@@ -13,7 +13,9 @@ using EasyPost.Models.Shared;
 using EasyPost.Utilities;
 using RestSharp;
 
+#pragma warning disable SA1300
 namespace EasyPost._base
+#pragma warning restore SA1300
 {
     public abstract class EasyPostClient
     {
@@ -22,10 +24,11 @@ namespace EasyPost._base
         private readonly RestClient _restClient;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="EasyPostClient"/> class.
         ///     Constructor for the EasyPost client.
         /// </summary>
         /// <param name="apiKey">API key to use with this client.</param>
-        /// <param name="baseUrl">Base URL to use with this client. This will override `apiVersion`</param>
+        /// <param name="baseUrl">Base URL to use with this client. This will override `apiVersion`.</param>
         /// <param name="customHttpClient">
         ///     Custom HttpClient to pass into RestSharp if needed. Mostly for debug purposes, not
         ///     advised for general use.
@@ -39,7 +42,7 @@ namespace EasyPost._base
             {
                 MaxTimeout = Configuration.ConnectTimeoutMilliseconds,
                 BaseUrl = new Uri(Configuration.ApiBase),
-                UserAgent = Configuration.UserAgent
+                UserAgent = Configuration.UserAgent,
             };
 
             _restClient = Configuration.HttpClient != null ? new RestClient(Configuration.HttpClient, clientOptions) : new RestClient(clientOptions);
@@ -48,10 +51,11 @@ namespace EasyPost._base
         /// <summary>
         ///     Execute an HTTP request.
         /// </summary>
-        /// <param name="request">Request to execute</param>
+        /// <param name="request">Request to execute.</param>
         /// <typeparam name="T">Type of object to serialize response into.</typeparam>
         /// <returns>A RestResponse containing a T-type object.</returns>
         internal virtual async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request) =>
+
             // This method actually executes the request and returns the response.
             // Everything up to this point has been pre-request, and everything after this point is post-request.
             // This method is "virtual" so it can be overriden (i.e. by a MockClient in testing to avoid making actual HTTP requests).
@@ -60,10 +64,11 @@ namespace EasyPost._base
         /// <summary>
         ///     Execute an HTTP request.
         /// </summary>
-        /// <param name="request">Request to execute</param>
+        /// <param name="request">Request to execute.</param>
         /// <returns>A RestResponse object.</returns>
         // ReSharper disable once MemberCanBeProtected.Global
         internal virtual async Task<RestResponse> ExecuteRequest(RestRequest request) =>
+
             // This method actually executes the request and returns the response.
             // Everything up to this point has been pre-request, and everything after this point is post-request.
             // This method is "virtual" so it can be overriden (i.e. by a MockClient in testing to avoid making actual HTTP requests).
@@ -72,9 +77,15 @@ namespace EasyPost._base
         /// <summary>
         ///     Execute a request against the EasyPost API.
         /// </summary>
+        /// <param name="method">HTTP method to use for the request.</param>
+        /// <param name="url">EasyPost API endpoint to use for the request.</param>
+        /// <param name="apiVersion">API version to use for the request.</param>
+        /// <param name="parameters">Optional parameters to use for the request.</param>
+        /// <param name="rootElement">Optional root element for the JSON to begin deserialization at.</param>
         /// <typeparam name="T">Type of object to deserialize response data into. Must be subclass of EasyPostObject.</typeparam>
         /// <returns>An instance of a T type object.</returns>
-        internal async Task<T> Request<T>(Method method, string url, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null) where T : class
+        internal async Task<T> Request<T>(Method method, string url, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null)
+            where T : class
         {
             // Build the request
             Request request = new(url, method, apiVersion, parameters, rootElement);
@@ -110,7 +121,8 @@ namespace EasyPost._base
             return resource;
         }
 
-        private void PassClientToAllEasyPostObjectProperties<T>(T? resource) where T : EasyPostObject
+        private void PassClientToAllEasyPostObjectProperties<T>(T? resource)
+            where T : EasyPostObject
         {
             if (resource == null)
             {
@@ -125,7 +137,8 @@ namespace EasyPost._base
             }
         }
 
-        private void PassClientToEasyPostObjectsInList<T>(T? resource) where T : IList
+        private void PassClientToEasyPostObjectsInList<T>(T? resource)
+            where T : IList
         {
             if (resource == null)
             {
@@ -144,8 +157,8 @@ namespace EasyPost._base
         /// </summary>
         /// <param name="resource">Object to add this Client to.</param>
         /// <typeparam name="T">Type of the object.</typeparam>
-        /// <returns>Object with Client added.</returns>
-        private void PassClientToEasyPostObject<T>(T? resource) where T : class
+        private void PassClientToEasyPostObject<T>(T? resource)
+            where T : class
         {
             switch (resource)
             {
@@ -161,6 +174,7 @@ namespace EasyPost._base
                     easyPostObject.Client = this;
                     PassClientToAllEasyPostObjectProperties(easyPostObject);
                     break;
+
                 // ReSharper disable once RedundantEmptySwitchSection
                 default:
                     break;
@@ -170,7 +184,12 @@ namespace EasyPost._base
         /// <summary>
         ///     Execute a request against the EasyPost API.
         /// </summary>
+        /// /// <param name="method">HTTP method to use for the request.</param>
+        /// <param name="url">EasyPost API endpoint to use for the request.</param>
+        /// <param name="apiVersion">API version to use for the request.</param>
+        /// <param name="parameters">Optional parameters to use for the request.</param>
         /// <returns>Whether request was successful.</returns>
+        // ReSharper disable once UnusedMethodReturnValue.Global
         internal async Task<bool> Request(Method method, string url, ApiVersion apiVersion, Dictionary<string, object>? parameters = null)
         {
             // Build the request
@@ -190,7 +209,8 @@ namespace EasyPost._base
         /// </summary>
         /// <typeparam name="T">Type of service class to instantiate.</typeparam>
         /// <returns>A T-type instance.</returns>
-        protected T GetService<T>() where T : IEasyPostService
+        protected T GetService<T>()
+            where T : IEasyPostService
         {
             // construct a new service
             ConstructorInfo[] cons = typeof(T).GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
@@ -218,7 +238,6 @@ namespace EasyPost._base
 
         public override int GetHashCode() => Configuration.GetHashCode();
 
-
         /// <summary>
         ///     Make a copy of this client, with the ability to override API key, API base, and HttpClient.
         /// </summary>
@@ -230,7 +249,8 @@ namespace EasyPost._base
         // NOTE: If you ever need to initialize a new client (i.e. temporarily switch API keys), use this function to do so.
         // This will preserve all other configuration options (e.g. request timeout, VCR, etc.)
         [Obsolete("This method does not always function as expected. Create a new Client instead.")]
-        public T Clone<T>(string? overrideApiKey = null, string? overrideApiBase = null, HttpClient? overrideHttpClient = null) where T : EasyPostClient
+        public T Clone<T>(string? overrideApiKey = null, string? overrideApiBase = null, HttpClient? overrideHttpClient = null)
+            where T : EasyPostClient
         {
             // TODO: You can't reuse the same HTTP client to re-initialize an EasyPost client, because the HTTP client is already initialized and can't be modified.
             // From a testing perspective, this means any VCR client will not be passed into the new client.

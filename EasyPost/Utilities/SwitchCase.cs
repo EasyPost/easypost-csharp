@@ -6,12 +6,14 @@ using System.Linq;
 namespace EasyPost.Utilities
 {
     // Thanks to https://stackoverflow.com/a/34388226/13343799
-
+#pragma warning disable SA1649
     internal class SwitchCaseScenario : Enum
+#pragma warning restore SA1649
     {
         internal static readonly SwitchCaseScenario Default = new(1);
 
-        private SwitchCaseScenario(int id) : base(id)
+        private SwitchCaseScenario(int id)
+            : base(id)
         {
         }
     }
@@ -49,7 +51,8 @@ namespace EasyPost.Utilities
     /// </summary>
     internal sealed class StaticCase : ExpressionCase
     {
-        internal StaticCase(object value, Action? action) : base(() => value, action)
+        internal StaticCase(object value, Action? action)
+            : base(() => value, action)
         {
         }
     }
@@ -64,14 +67,14 @@ namespace EasyPost.Utilities
         private Action? _defaultCaseAction;
 
         /// <summary>
-        ///     Add a case where matching a static value triggers an Action
+        ///     Add a case where matching a static value triggers an Action.
         /// </summary>
         /// <param name="value">Static value to match.</param>
         /// <param name="action">Action to trigger on match.</param>
         internal void Add(object value, Action? action) => _list.Add(new StaticCase(value, action));
 
         /// <summary>
-        ///     Add a case where matching the result of an function triggers an Action
+        ///     Add a case where matching the result of an function triggers an Action.
         /// </summary>
         /// <param name="func">Func whose return value to match.</param>
         /// <param name="action">Action to trigger on match.</param>

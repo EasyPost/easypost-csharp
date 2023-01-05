@@ -50,6 +50,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="withCarrier">The carrier to purchase a shipment from.</param>
         /// <param name="withService">The service to purchase.</param>
+        /// <returns>The updated Order.</returns>
         [CrudOperations.Update]
         public async Task<Order> Buy(string withCarrier, string withService)
         {
@@ -61,7 +62,7 @@ namespace EasyPost.Models.API
             Dictionary<string, object> parameters = new()
             {
                 { "carrier", withCarrier },
-                { "service", withService }
+                { "service", withService },
             };
 
             await Update<Order>(Method.Post, $"orders/{Id}/buy", parameters);
@@ -72,6 +73,7 @@ namespace EasyPost.Models.API
         ///     Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
+        /// <returns>The updated Order.</returns>
         [CrudOperations.Update]
         public async Task<Order> Buy(Rate rate)
         {
@@ -91,6 +93,7 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Populate the rates property for this Order.
         /// </summary>
+        /// <returns>The task to refresh this Order's rates.</returns>
         [CrudOperations.Update]
         public async Task GetRates()
         {
