@@ -171,9 +171,10 @@ namespace EasyPost.Services
 
             Dictionary<string, object>? data = response.Data;
 
-            return !data.ContainsKey("id")
-                ? throw new ExternalApiError("Could not create Stripe token, please try again later.", (int)response.StatusCode)
-                : (string)data["id"];
+            data.TryGetValue("id", out object? id);
+            return id == null
+                ? throw new ExternalApiError("Could not send card details to Stripe, please try again later.", (int)response.StatusCode)
+                : (string)id;
         }
 
         /// <summary>

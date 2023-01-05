@@ -85,9 +85,9 @@ namespace EasyPost.Calculation
                 float rateValue = float.Parse(rate.Price, NumberStyles.Any, CultureInfo.InvariantCulture);
                 float lowestRateValue = float.Parse(lowestRate.Price, NumberStyles.Any, CultureInfo.InvariantCulture);
 
-                if (!(rateValue < lowestRateValue))
+                if (rateValue > lowestRateValue)
                 {
-                    // if this rate not lower than the lowest rate, skip it
+                    // if this rate is greater than the lowest rate, skip it
                     continue;
                 }
 
@@ -141,9 +141,9 @@ namespace EasyPost.Calculation
                     continue;
                 }
 
-                if (!(smartRate.Rate < lowestSmartRate.Rate))
+                if (smartRate.Rate > lowestSmartRate.Rate)
                 {
-                    // if this smartRate is not lower than the lowest smartRate, skip it
+                    // if this smartRate is greater than the lowest smartRate, skip it
                     continue;
                 }
 
