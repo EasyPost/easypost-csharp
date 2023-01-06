@@ -82,7 +82,7 @@ namespace EasyPost.Services
         #endregion
 
         /// <summary>
-        ///     Get the lowest smart rate from a list of smart rates.
+        ///     Get the lowest Smart Rate from a list of Smart Rates.
         /// </summary>
         /// <param name="smartrates">List of smartrates to filter.</param>
         /// <param name="deliveryDays">Delivery days restriction to use when filtering.</param>

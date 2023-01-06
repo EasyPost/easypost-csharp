@@ -19,7 +19,7 @@ namespace EasyPost._base
 {
     public abstract class EasyPostClient
     {
-        internal readonly ClientConfiguration Configuration;
+        public readonly ClientConfiguration Configuration;
 
         private readonly RestClient _restClient;
 

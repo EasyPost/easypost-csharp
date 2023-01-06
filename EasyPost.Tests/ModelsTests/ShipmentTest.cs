@@ -350,16 +350,16 @@ namespace EasyPost.Tests.ModelsTests
 
             Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
 
-            // test lowest smart rate with valid filters
+            // test lowest Smart Rate with valid filters
             Smartrate lowestSmartRate = await shipment.LowestSmartrate(2, SmartrateAccuracy.Percentile90);
             Assert.Equal("Priority", lowestSmartRate.Service);
             Assert.Equal(8.15, lowestSmartRate.Rate);
             Assert.Equal("USPS", lowestSmartRate.Carrier);
 
-            // test lowest smart rate with invalid filters (should error due to strict delivery_days)
+            // test lowest Smart Rate with invalid filters (should error due to strict delivery_days)
             await Assert.ThrowsAsync<FilteringError>(async () => await shipment.LowestSmartrate(0, SmartrateAccuracy.Percentile90));
 
-            // test lowest smart rate with invalid filters (should error due to bad delivery_accuracy)
+            // test lowest Smart Rate with invalid filters (should error due to bad delivery_accuracy)
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
         }
 

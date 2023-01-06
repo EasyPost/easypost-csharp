@@ -63,9 +63,8 @@ namespace EasyPost.Utilities
                         PlatformID.Win32NT => "Windows",
                         PlatformID.WinCE => "Windows",
                         PlatformID.Unix => "Linux",
-                        PlatformID.MacOSX => // in newer versions, Mac OS X is PlatformID.Unix unfortunately
-                            "Darwin",
-                        PlatformID.Xbox => "Unknown",
+                        PlatformID.MacOSX => "Darwin",  // in newer versions, Mac OS X is PlatformID.Unix unfortunately
+                        PlatformID.Xbox => "Unknown",  // how are you doing this? Tell me!
                         var _ => "Unknown",
                     };
 #else

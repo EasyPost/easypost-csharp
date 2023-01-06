@@ -14,7 +14,7 @@ namespace EasyPost.Http
         ///     This cannot be changed after the client has been initialized.
         /// </summary>
         // This cannot be changed, because the internal RestClient is initialized with this value immediately.
-        internal readonly string ApiBase;
+        public readonly string ApiBase;
 
         /// <summary>
         ///     Gets the API key.
@@ -28,7 +28,7 @@ namespace EasyPost.Http
         ///     This cannot be changed after the client has been initialized.
         /// </summary>
         // This cannot be changed, because the internal RestClient is initialized with this value immediately.
-        internal readonly HttpClient? HttpClient;
+        public readonly HttpClient? HttpClient;
 
         /// <summary>
         ///    The .NET version of the current application.
