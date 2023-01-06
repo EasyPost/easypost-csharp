@@ -39,10 +39,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a user. Starts with "user_".</param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
-        public async Task<User> Retrieve(string? id = null)
-        {
-            return id == null ? await Get<User>("users") : await Get<User>($"users/{id}");
-        }
+        public async Task<User> Retrieve(string? id = null) => id == null ? await Get<User>("users") : await Get<User>($"users/{id}");
 
         /// <summary>
         ///     Retrieve the current user.

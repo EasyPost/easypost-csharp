@@ -87,7 +87,9 @@ namespace EasyPost.Models.API
         [CrudOperations.Read]
         public async Task<List<Smartrate>> GetSmartrates()
         {
+#pragma warning disable IDE0046
             if (Id == null)
+#pragma warning restore IDE0046
             {
                 throw new MissingPropertyError(this, nameof(Id));
             }
