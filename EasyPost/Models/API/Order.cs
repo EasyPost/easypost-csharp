@@ -82,7 +82,9 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(rate, nameof(rate.Carrier));
             }
 
+#pragma warning disable IDE0046
             if (rate.Service == null)
+#pragma warning restore IDE0046
             {
                 throw new MissingPropertyError(rate, nameof(rate.Service));
             }
@@ -118,7 +120,9 @@ namespace EasyPost.Models.API
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
         public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
+#pragma warning disable IDE0046
             if (Rates == null)
+#pragma warning restore IDE0046
             {
                 throw new MissingPropertyError(this, nameof(Rates));
             }

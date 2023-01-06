@@ -65,10 +65,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
         [CrudOperations.Delete]
-        public async Task Delete()
-        {
-            await DeleteNoResponse($"users/{Id}");
-        }
+        public async Task Delete() => await DeleteNoResponse($"users/{Id}");
 
         #endregion
     }

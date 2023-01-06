@@ -20,6 +20,7 @@ namespace EasyPost.Tests._Utilities
         ///     An asynchronous function executed after every test.
         ///     Function should have a string (ID) passed in, and should return a boolean.
         /// </summary>
+        // ReSharper disable once PropertyCanBeMadeInitOnly.Global
         protected Func<string, Task<bool>>? CleanupFunction { get; set; }
 
 #pragma warning disable CS8618
@@ -90,10 +91,7 @@ namespace EasyPost.Tests._Utilities
         // ReSharper disable once InconsistentNaming
         protected void UseVCR(string cassetteName, string? overrideApiKey = null) => Client = _vcr?.SetUpTest(cassetteName, overrideApiKey)!;
 
-        protected virtual IEnumerable<TestUtils.MockRequest> MockRequests
-        {
-            get { return new List<TestUtils.MockRequest>(); }
-        }
+        protected virtual IEnumerable<TestUtils.MockRequest> MockRequests =>  new List<TestUtils.MockRequest>();
 
         /// <summary>
         ///     Set up all clients to make mock requests.

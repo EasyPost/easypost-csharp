@@ -88,9 +88,6 @@ namespace EasyPost.Services
         /// <param name="deliveryDays">Delivery days restriction to use when filtering.</param>
         /// <param name="deliveryAccuracy">Delivery days accuracy restriction to use when filtering.</param>
         /// <returns>Lowest EasyPost.Smartrate object instance.</returns>
-        public static Smartrate GetLowestSmartrate(IEnumerable<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy)
-        {
-            return Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
-        }
+        public static Smartrate GetLowestSmartrate(IEnumerable<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy) => Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
     }
 }

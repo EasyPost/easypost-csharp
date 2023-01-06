@@ -45,12 +45,10 @@ namespace EasyPost.Services
         public async Task<PaymentMethodsSummary> RetrievePaymentMethodsSummary()
         {
             PaymentMethodsSummary paymentMethodsSummary = await Get<PaymentMethodsSummary>("payment_methods");
-            if (paymentMethodsSummary.Id == null)
-            {
-                throw new InvalidObjectError(Constants.ErrorMessages.NoPaymentMethods);
-            }
 
-            return paymentMethodsSummary;
+            return paymentMethodsSummary.Id == null
+                ? throw new InvalidObjectError(Constants.ErrorMessages.NoPaymentMethods)
+                : paymentMethodsSummary;
         }
 
         /// <summary>
@@ -88,12 +86,7 @@ namespace EasyPost.Services
 
             @switch.MatchFirst(priority);
 
-            if (paymentMethod?.Id == null)
-            {
-                throw new InvalidObjectError(Constants.ErrorMessages.PaymentNotSetUp);
-            }
-
-            return paymentMethod;
+            return paymentMethod?.Id == null ? throw new InvalidObjectError(Constants.ErrorMessages.PaymentNotSetUp) : paymentMethod;
         }
     }
 }

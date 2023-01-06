@@ -39,12 +39,7 @@ namespace EasyPost.Utilities
         internal static T ConvertJsonToObject<T>(string? data, JsonSerializerSettings? jsonSerializerSettings = null, List<string>? rootElementKeys = null)
         {
             object obj = ConvertJsonToObject(data, typeof(T), jsonSerializerSettings, rootElementKeys);
-            if (obj is T t)
-            {
-                return t;
-            }
-
-            throw new JsonDeserializationError(typeof(T));
+            return obj is T t ? t : throw new JsonDeserializationError(typeof(T));
         }
 
         /// <summary>

@@ -239,7 +239,9 @@ namespace EasyPost.Models.API
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
         public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
+#pragma warning disable IDE0046
             if (Rates == null)
+#pragma warning restore IDE0046
             {
                 throw new MissingPropertyError(this, nameof(Rates));
             }
@@ -248,15 +250,15 @@ namespace EasyPost.Models.API
         }
 
         /// <summary>
-        ///     Get the lowest smartrate for this Shipment.
+        ///     Get the lowest SmartRate for this Shipment.
         /// </summary>
         /// <param name="deliveryDays">Delivery days restriction to use when filtering.</param>
         /// <param name="deliveryAccuracy">Delivery days accuracy restriction to use when filtering.</param>
         /// <returns>Lowest EasyPost.Smartrate object instance.</returns>
         public async Task<Smartrate?> LowestSmartrate(int deliveryDays, SmartrateAccuracy deliveryAccuracy)
         {
-            List<Smartrate> smartrates = await GetSmartrates();
-            return Calculation.Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
+            List<Smartrate> smartRates = await GetSmartrates();
+            return Calculation.Rates.GetLowestShipmentSmartrate(smartRates, deliveryDays, deliveryAccuracy);
         }
     }
 

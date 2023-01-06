@@ -78,7 +78,10 @@ namespace EasyPost.Utilities
                         return "Darwin";
                     }
 
+                    // ReSharper disable once ConvertIfStatementToReturnStatement
+#pragma warning disable IDE0046
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+#pragma warning restore IDE0046
                     {
                         return "Windows";
                     }

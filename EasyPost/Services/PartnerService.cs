@@ -73,7 +73,9 @@ namespace EasyPost.Services
             // ReSharper disable once RedundantSuppressNullableWarningExpression
             string stripeToken = await CreateStripeToken(number, expirationMonth, expirationYear, cvc, easypostStripeApiKey!);
 
+#pragma warning disable IDE0046
             if (string.IsNullOrEmpty(stripeToken))
+#pragma warning restore IDE0046
             {
                 throw new ExternalApiError("Could not create Stripe token, please try again later.", 0);
             }
@@ -184,12 +186,11 @@ namespace EasyPost.Services
         private async Task<string?> RetrieveEasypostStripeApiKey()
         {
             Dictionary<string, object> response = await Get<Dictionary<string, object>>("partners/stripe_public_key");
-            if (!response.ContainsKey("public_key"))
-            {
-                return null;
-            }
 
-            return (string)response["public_key"];
+            response.TryGetValue("public_key", out object? easypostStripePublicKey);
+
+            // ReSharper disable once MergeConditionalExpression
+            return easypostStripePublicKey == null ? null : (string)easypostStripePublicKey;
         }
     }
 }

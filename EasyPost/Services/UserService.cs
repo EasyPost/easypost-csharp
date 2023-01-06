@@ -41,12 +41,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<User> Retrieve(string? id = null)
         {
-            if (id == null)
-            {
-                return await Get<User>("users");
-            }
-
-            return await Get<User>($"users/{id}");
+            return id == null ? await Get<User>("users") : await Get<User>($"users/{id}");
         }
 
         /// <summary>

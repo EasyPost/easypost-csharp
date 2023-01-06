@@ -66,7 +66,9 @@ namespace EasyPost.Models.API
             }
 
             // ReSharper disable once ConvertIfStatementToReturnStatement
+#pragma warning disable IDE0046
             if (accuracy.Equals(SmartrateAccuracy.Percentile99))
+#pragma warning restore IDE0046
             {
                 return Percentile99;
             }

@@ -52,7 +52,7 @@ namespace EasyPost.Tests._Utilities
             Production,
             Partner,
             Referral,
-            Mock
+            Mock,
         }
 
         public static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath)!;
@@ -251,22 +251,11 @@ namespace EasyPost.Tests._Utilities
             {
             }
 
-            internal void AddMockRequest(MockRequest mockRequest)
-            {
-                _mockRequests.Add(mockRequest);
-            }
+            internal void AddMockRequest(MockRequest mockRequest) => _mockRequests.Add(mockRequest);
 
-            internal void AddMockRequests(IEnumerable<MockRequest> mockRequests)
-            {
-                _mockRequests.AddRange(mockRequests);
-            }
+            internal void AddMockRequests(IEnumerable<MockRequest> mockRequests) => _mockRequests.AddRange(mockRequests);
 
-            private MockRequest? FindMatchingMockRequest(RestRequest request)
-            {
-                return _mockRequests.FirstOrDefault(
-                    mock => mock.MatchRules.Method == request.Method &&
-                            EndpointMatches(request.Resource, mock.MatchRules.ResourceRegex));
-            }
+            private MockRequest? FindMatchingMockRequest(RestRequest request) => _mockRequests.FirstOrDefault(mock => mock.MatchRules.Method == request.Method && EndpointMatches(request.Resource, mock.MatchRules.ResourceRegex));
 
             private static bool EndpointMatches(string endpoint, string pattern)
             {

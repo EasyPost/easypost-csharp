@@ -63,7 +63,9 @@ namespace EasyPost.Utilities
                 return true;
             }
 
+#pragma warning disable IDE0046
             if (one is null || two is null)
+#pragma warning restore IDE0046
             {
                 return false;
             }

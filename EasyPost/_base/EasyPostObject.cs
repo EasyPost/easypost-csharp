@@ -34,15 +34,7 @@ namespace EasyPost._base
 
         internal string? Prefix => Id?.Split('_').First();
 
-        public override bool Equals(object? obj)
-        {
-            if (GetType() != obj?.GetType())
-            {
-                return false;
-            }
-
-            return GetHashCode() == ((EasyPostObject)obj).GetHashCode();
-        }
+        public override bool Equals(object? obj) => GetType() == obj?.GetType() && GetHashCode() == ((EasyPostObject)obj).GetHashCode();
 
         [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode", Justification = "Client is used to determine equality.")]
         public override int GetHashCode() => AsJson().GetHashCode() ^ GetType().GetHashCode() ^ (Client != null ? Client!.GetHashCode() : 1);
@@ -54,7 +46,9 @@ namespace EasyPost._base
                 return true;
             }
 
+#pragma warning disable IDE0046
             if (one is null || two is null)
+#pragma warning restore IDE0046
             {
                 return false;
             }
