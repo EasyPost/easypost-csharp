@@ -24,7 +24,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            Order order = await CreateBasicOrder();
+            Order order = await Client.Order.Create(Fixtures.BasicOrder);
 
             Assert.IsType<Order>(order);
             Assert.StartsWith("order_", order.Id);
@@ -38,7 +38,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            Order order = await CreateBasicOrder();
+            Order order = await Client.Order.Create(Fixtures.BasicOrder);
 
             Order retrievedOrder = await Client.Order.Retrieve(order.Id);
 
@@ -50,7 +50,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<Order> CreateBasicOrder() => await Client.Order.Create(Fixtures.BasicOrder);
     }
 }

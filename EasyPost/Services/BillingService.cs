@@ -12,7 +12,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class BillingService : EasyPostService
     {
-        internal BillingService(EasyPostClient client) : base(client)
+        internal BillingService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -23,6 +24,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="amount">Amount to fund.</param>
         /// <param name="priority">Which type of payment method to use to fund the wallet. Defaults to primary.</param>
+        /// <returns>A Task to fund the wallet.</returns>
         [CrudOperations.Create]
         public async Task FundWallet(string amount, PaymentMethod.Priority? priority = null)
         {
@@ -30,7 +32,7 @@ namespace EasyPost.Services
 
             PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
 
-            Dictionary<string, object> parameters = new Dictionary<string, object> { { "amount", amount } };
+            Dictionary<string, object> parameters = new() { { "amount", amount } };
 
             await CreateNoResponse($"{paymentMethod.Endpoint}/{paymentMethod.Id}/charges", parameters);
         }
@@ -43,18 +45,17 @@ namespace EasyPost.Services
         public async Task<PaymentMethodsSummary> RetrievePaymentMethodsSummary()
         {
             PaymentMethodsSummary paymentMethodsSummary = await Get<PaymentMethodsSummary>("payment_methods");
-            if (paymentMethodsSummary.Id == null)
-            {
-                throw new InvalidObjectError(Constants.ErrorMessages.NoPaymentMethods);
-            }
 
-            return paymentMethodsSummary;
+            return paymentMethodsSummary.Id == null
+                ? throw new InvalidObjectError(Constants.ErrorMessages.NoPaymentMethods)
+                : paymentMethodsSummary;
         }
 
         /// <summary>
         ///     Delete a payment method from the user's account.
         /// </summary>
         /// <param name="priority">Which type of payment method to delete.</param>
+        /// <returns>A Task to delete a payment method.</returns>
         [CrudOperations.Delete]
         public async Task DeletePaymentMethod(PaymentMethod.Priority priority)
         {
@@ -76,21 +77,16 @@ namespace EasyPost.Services
             PaymentMethodsSummary paymentMethodsSummarySummary = await RetrievePaymentMethodsSummary();
 
             PaymentMethod? paymentMethod = null;
-            var @switch = new SwitchCase
+            SwitchCase @switch = new()
             {
                 { PaymentMethod.Priority.Primary, () => { paymentMethod = paymentMethodsSummarySummary.PrimaryPaymentMethod; } },
                 { PaymentMethod.Priority.Secondary, () => { paymentMethod = paymentMethodsSummarySummary.SecondaryPaymentMethod; } },
-                { SwitchCaseScenario.Default, () => throw new InvalidParameterError("priority") }
+                { SwitchCaseScenario.Default, () => throw new InvalidParameterError("priority") },
             };
 
             @switch.MatchFirst(priority);
 
-            if (paymentMethod?.Id == null)
-            {
-                throw new InvalidObjectError(Constants.ErrorMessages.PaymentNotSetUp);
-            }
-
-            return paymentMethod;
+            return paymentMethod?.Id == null ? throw new InvalidObjectError(Constants.ErrorMessages.PaymentNotSetUp) : paymentMethod;
         }
     }
 }

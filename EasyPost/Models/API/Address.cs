@@ -37,6 +37,7 @@ namespace EasyPost.Models.API
         public bool? Residential { get; set; }
         [JsonProperty("state")]
         public string? State { get; set; }
+
         [JsonProperty("state_tax_id")]
         public string? StateTaxId { get; set; }
         [JsonProperty("street1")]
@@ -65,7 +66,7 @@ namespace EasyPost.Models.API
         {
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             await Update<Address>(Method.Get, $"addresses/{Id}/verify", null, "address");

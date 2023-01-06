@@ -56,9 +56,9 @@ namespace EasyPost.Tests.ServicesTests
                                 Id = "bank_123",
                                 Client = Client,
                                 BankName = "Mock Bank",
-                            }
+                            },
                         })
-                    )
+                    ),
                 };
             }
         }
@@ -114,7 +114,7 @@ namespace EasyPost.Tests.ServicesTests
                     new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/payment_methods$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new PaymentMethodsSummary
                     {
-                        Id = null // No ID, will throw an error when we try to interact with this summary
+                        Id = null, // No ID, will throw an error when we try to interact with this summary
                     })
                 )
             });
@@ -166,7 +166,7 @@ namespace EasyPost.Tests.ServicesTests
                     {
                         Id = "summary_123",
                         PrimaryPaymentMethod = null, // null, will throw an error when we try to grab this payment method from the summary
-                        SecondaryPaymentMethod = null // null, will throw an error when we try to grab this payment method from the summary
+                        SecondaryPaymentMethod = null, // null, will throw an error when we try to grab this payment method from the summary
                     })
                 )
             });
@@ -189,12 +189,12 @@ namespace EasyPost.Tests.ServicesTests
                         Id = "summary_123",
                         PrimaryPaymentMethod = new PaymentMethod
                         {
-                            Id = null // No ID, will throw an error when we try to grab this payment method from the summary
+                            Id = null, // No ID, will throw an error when we try to grab this payment method from the summary
                         },
                         SecondaryPaymentMethod = new PaymentMethod
                         {
-                            Id = null // No ID, will throw an error when we try to grab this payment method from the summary
-                        }
+                            Id = null, // No ID, will throw an error when we try to grab this payment method from the summary
+                        },
                     })
                 )
             });

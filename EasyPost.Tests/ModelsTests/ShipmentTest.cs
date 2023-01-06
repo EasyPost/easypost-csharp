@@ -64,7 +64,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("insure_with_no_id");
 
-            Shipment shipment = await CreateFullShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
             shipment.Id = null;
 
             await Assert.ThrowsAsync<MissingPropertyError>(async () => await shipment.Insure(100));
@@ -73,35 +73,35 @@ namespace EasyPost.Tests.ModelsTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
-        public async Task TestGetSmartrates()
+        public async Task TestGetSmartRates()
         {
-            UseVCR("get_smartrates");
+            UseVCR("get_smart_rates");
 
-            Shipment shipment = await CreateBasicShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
 
             Assert.NotNull(shipment.Rates);
 
             List<Smartrate> smartRates = await shipment.GetSmartrates();
-            Smartrate smartrate = smartRates.First();
+            Smartrate smartRate = smartRates.First();
             // Must compare IDs because one is a Rate object and one is a Smartrate object
-            Assert.Equal(shipment.Rates[0].Id, smartrate.Id);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile50);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile75);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile85);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile90);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile95);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile97);
-            Assert.NotNull(smartrate.TimeInTransit.Percentile99);
+            Assert.Equal(shipment.Rates[0].Id, smartRate.Id);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile50);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile75);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile85);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile90);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile95);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile97);
+            Assert.NotNull(smartRate.TimeInTransit.Percentile99);
         }
 
         [Fact]
         [CrudOperations.Update]
         [Testing.Parameters]
-        public async Task TestGetSmartratesWithNoId()
+        public async Task TestGetSmartRatesWithNoId()
         {
-            UseVCR("get_smartrates_with_no_id");
+            UseVCR("get_smart_rates_with_no_id");
 
-            Shipment shipment = await CreateBasicShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
             shipment.Id = null;
 
             await Assert.ThrowsAsync<MissingPropertyError>(async () => await shipment.GetSmartrates());
@@ -115,13 +115,13 @@ namespace EasyPost.Tests.ModelsTests
             UseVCR("buy");
 
             // buy with rate ID
-            Shipment shipment = await CreateFullShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
             await shipment.Buy(shipment.LowestRate().Id);
 
             Assert.NotNull(shipment.PostageLabel);
 
             // buy with rate
-            shipment = await CreateFullShipment();
+            shipment = await Client.Shipment.Create(Fixtures.FullShipment);
             await shipment.Buy(shipment.LowestRate());
 
             Assert.NotNull(shipment.PostageLabel);
@@ -134,7 +134,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("buy_with_no_id");
 
-            Shipment shipment = await CreateFullShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
             shipment.Id = null;
 
             await Assert.ThrowsAsync<MissingPropertyError>(async () => await shipment.Buy(shipment.LowestRate().Id));
@@ -147,7 +147,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("buy_with_no_rate");
 
-            Shipment shipment = await CreateFullShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
 
             await Assert.ThrowsAsync<MissingParameterError>(async () => await shipment.Buy(rate: null));
         }
@@ -159,7 +159,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("buy_with_no_rate_id");
 
-            Shipment shipment = await CreateFullShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
 
             await Assert.ThrowsAsync<MissingParameterError>(async () => await shipment.Buy(rateId: null));
         }
@@ -171,7 +171,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("buy_with_carbon_offset");
 
-            Shipment shipment = await CreateFullShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
 
             await shipment.Buy(shipment.LowestRate(), withCarbonOffset: true);
 
@@ -189,7 +189,7 @@ namespace EasyPost.Tests.ModelsTests
 
             EndShipper endShipper = await Client.EndShipper.Create(Fixtures.CaAddress1);
 
-            Shipment shipment = await CreateFullShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
 
             await shipment.Buy(shipment.LowestRate(), endShipperId: endShipper.Id);
 
@@ -203,7 +203,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("generate_label");
 
-            Shipment shipment = await CreateOneCallBuyShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
 
             shipment = await shipment.GenerateLabel("ZPL");
 
@@ -217,7 +217,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("generate_label_with_no_id");
 
-            Shipment shipment = await CreateOneCallBuyShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
             shipment.Id = null;
 
             await Assert.ThrowsAsync<MissingPropertyError>(async () => await shipment.GenerateLabel("ZPL"));
@@ -233,7 +233,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("refund");
 
-            Shipment shipment = await CreateOneCallBuyShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
 
             shipment = await shipment.Refund();
 
@@ -247,7 +247,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("refund_with_no_id");
 
-            Shipment shipment = await CreateOneCallBuyShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
             shipment.Id = null;
 
             await Assert.ThrowsAsync<MissingPropertyError>(async () => await shipment.Refund());
@@ -260,7 +260,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("regenerate_rates");
 
-            Shipment shipment = await CreateFullShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
 
             await shipment.RegenerateRates();
 
@@ -280,7 +280,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("regenerate_rates_with_no_id");
 
-            Shipment shipment = await CreateFullShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
             shipment.Id = null;
 
             await Assert.ThrowsAsync<MissingPropertyError>(async () => await shipment.RegenerateRates());
@@ -299,8 +299,8 @@ namespace EasyPost.Tests.ModelsTests
             await shipment.RegenerateRates(withCarbonOffset: true);
             List<Rate> newRatesWithCarbon = shipment.Rates;
 
-            Rate baseRate = baseRates.First();
-            Rate newRateWithCarbon = newRatesWithCarbon.First();
+            Rate baseRate = baseRates!.First();
+            Rate newRateWithCarbon = newRatesWithCarbon!.First();
 
             Assert.Null(baseRate.CarbonOffset);
             Assert.NotNull(newRateWithCarbon.CarbonOffset);
@@ -314,7 +314,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("lowest_rate");
 
-            Shipment shipment = await CreateFullShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
 
             // test lowest rate with no filters
             Rate lowestRate = shipment.LowestRate();
@@ -344,22 +344,22 @@ namespace EasyPost.Tests.ModelsTests
 
         [Fact]
         [Testing.Function]
-        public async Task TestLowestSmartrate()
+        public async Task TestLowestSmartRate()
         {
-            UseVCR("lowest_smartrate");
+            UseVCR("lowest_smart_rate");
 
-            Shipment shipment = await CreateBasicShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
 
-            // test lowest smartrate with valid filters
-            Smartrate lowestSmartrate = await shipment.LowestSmartrate(2, SmartrateAccuracy.Percentile90);
-            Assert.Equal("Priority", lowestSmartrate.Service);
-            Assert.Equal(8.15, lowestSmartrate.Rate);
-            Assert.Equal("USPS", lowestSmartrate.Carrier);
+            // test lowest Smart Rate with valid filters
+            Smartrate lowestSmartRate = await shipment.LowestSmartrate(2, SmartrateAccuracy.Percentile90);
+            Assert.Equal("Priority", lowestSmartRate.Service);
+            Assert.Equal(8.15, lowestSmartRate.Rate);
+            Assert.Equal("USPS", lowestSmartRate.Carrier);
 
-            // test lowest smartrate with invalid filters (should error due to strict delivery_days)
+            // test lowest Smart Rate with invalid filters (should error due to strict delivery_days)
             await Assert.ThrowsAsync<FilteringError>(async () => await shipment.LowestSmartrate(0, SmartrateAccuracy.Percentile90));
 
-            // test lowest smartrate with invalid filters (should error due to bad delivery_accuracy)
+            // test lowest Smart Rate with invalid filters (should error due to bad delivery_accuracy)
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
         }
 
@@ -369,7 +369,7 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("forms");
 
-            Shipment shipment = await CreateFullShipment();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
 
             await shipment.Buy(shipment.LowestRate().Id);
 
@@ -384,11 +384,5 @@ namespace EasyPost.Tests.ModelsTests
         }
 
         #endregion
-
-        private async Task<Shipment> CreateBasicShipment() => await Client.Shipment.Create(Fixtures.BasicShipment);
-
-        private async Task<Shipment> CreateFullShipment() => await Client.Shipment.Create(Fixtures.FullShipment);
-
-        private async Task<Shipment> CreateOneCallBuyShipment() => await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
     }
 }

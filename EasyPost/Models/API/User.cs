@@ -52,6 +52,7 @@ namespace EasyPost.Models.API
         ///     account.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <returns>The updated User.</returns>
         [CrudOperations.Update]
         public async Task<User> Update(Dictionary<string, object> parameters)
         {
@@ -64,10 +65,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
         [CrudOperations.Delete]
-        public async Task Delete()
-        {
-            await DeleteNoResponse($"users/{Id}");
-        }
+        public async Task Delete() => await DeleteNoResponse($"users/{Id}");
 
         #endregion
     }

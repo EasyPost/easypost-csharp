@@ -10,7 +10,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class PickupService : EasyPostService
     {
-        internal PickupService(EasyPostClient client) : base(client)
+        internal PickupService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -46,10 +47,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Pickup. Starts with "pickup_".</param>
         /// <returns>EasyPost.Pickup instance.</returns>
         [CrudOperations.Read]
-        public async Task<Pickup> Retrieve(string id)
-        {
-            return await Get<Pickup>($"pickups/{id}");
-        }
+        public async Task<Pickup> Retrieve(string id) => await Get<Pickup>($"pickups/{id}");
 
         #endregion
     }

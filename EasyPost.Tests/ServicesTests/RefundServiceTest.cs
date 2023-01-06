@@ -25,7 +25,14 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            List<Refund> refunds = await CreateBasicRefund();
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+            Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.Id); // We need to retrieve the shipment so that the tracking_code has time to populate
+
+            List<Refund> refunds = await Client.Refund.Create(new Dictionary<string, object>
+            {
+                { "carrier", Fixtures.Usps },
+                { "tracking_codes", new List<string> { retrievedShipment.TrackingCode } }
+            });
 
             foreach (Refund item in refunds)
             {
@@ -63,7 +70,16 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            Refund refund = (await CreateBasicRefund())[0];
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+            Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.Id); // We need to retrieve the shipment so that the tracking_code has time to populate
+
+            List<Refund> refunds = await Client.Refund.Create(new Dictionary<string, object>
+            {
+                { "carrier", Fixtures.Usps },
+                { "tracking_codes", new List<string> { retrievedShipment.TrackingCode } }
+            });
+
+            Refund refund = refunds[0];
 
             Refund retrievedRefund = await Client.Refund.Retrieve(refund.Id);
 
@@ -74,17 +90,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<List<Refund>> CreateBasicRefund()
-        {
-            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
-            Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.Id); // We need to retrieve the shipment so that the tracking_code has time to populate
-
-            return await Client.Refund.Create(new Dictionary<string, object>
-            {
-                { "carrier", Fixtures.Usps },
-                { "tracking_codes", new List<string> { retrievedShipment.TrackingCode } }
-            });
-        }
     }
 }

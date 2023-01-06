@@ -9,7 +9,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ScanFormService : EasyPostService
     {
-        internal ScanFormService(EasyPostClient client) : base(client)
+        internal ScanFormService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -23,7 +24,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<ScanForm> Create(List<Shipment> shipments)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object> { { "shipments", shipments } };
+            Dictionary<string, object> parameters = new() { { "shipments", shipments } };
             return await Create<ScanForm>("scan_forms", parameters);
         }
 
@@ -56,10 +57,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a scan form, starts with "sf_".</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
         [CrudOperations.Read]
-        public async Task<ScanForm> Retrieve(string id)
-        {
-            return await Get<ScanForm>($"scan_forms/{id}");
-        }
+        public async Task<ScanForm> Retrieve(string id) => await Get<ScanForm>($"scan_forms/{id}");
 
         #endregion
     }

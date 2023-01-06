@@ -4,7 +4,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1716
     public class Error : EasyPostObject
+#pragma warning restore CA1716
     {
         #region JSON Properties
 

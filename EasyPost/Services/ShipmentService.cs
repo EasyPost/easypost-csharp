@@ -11,7 +11,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ShipmentService : EasyPostService
     {
-        internal ShipmentService(EasyPostClient client) : base(client)
+        internal ShipmentService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -76,23 +77,17 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
         /// <returns>An EasyPost.Shipment instance.</returns>
         [CrudOperations.Read]
-        public async Task<Shipment> Retrieve(string id)
-        {
-            return await Get<Shipment>($"shipments/{id}");
-        }
+        public async Task<Shipment> Retrieve(string id) => await Get<Shipment>($"shipments/{id}");
 
         #endregion
 
         /// <summary>
-        ///     Get the lowest smartrate from a list of smartrates.
+        ///     Get the lowest Smart Rate from a list of Smart Rates.
         /// </summary>
         /// <param name="smartrates">List of smartrates to filter.</param>
         /// <param name="deliveryDays">Delivery days restriction to use when filtering.</param>
         /// <param name="deliveryAccuracy">Delivery days accuracy restriction to use when filtering.</param>
         /// <returns>Lowest EasyPost.Smartrate object instance.</returns>
-        public static Smartrate GetLowestSmartrate(IEnumerable<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy)
-        {
-            return Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
-        }
+        public static Smartrate GetLowestSmartrate(IEnumerable<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy) => Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
     }
 }

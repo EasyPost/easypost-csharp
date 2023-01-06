@@ -8,7 +8,9 @@ using EasyPost.Utilities;
 using Newtonsoft.Json;
 using RestSharp;
 
+#pragma warning disable SA1300
 namespace EasyPost._base
+#pragma warning restore SA1300
 {
     /// <summary>
     ///     Class for any object that comes from or goes to the EasyPost API.
@@ -30,26 +32,12 @@ namespace EasyPost._base
 
         #endregion
 
-        internal string? Prefix
-        {
-            get { return Id?.Split('_').First(); }
-        }
+        internal string? Prefix => Id?.Split('_').First();
 
-        public override bool Equals(object? obj)
-        {
-            if (GetType() != obj?.GetType())
-            {
-                return false;
-            }
+        public override bool Equals(object? obj) => GetType() == obj?.GetType() && GetHashCode() == ((EasyPostObject)obj).GetHashCode();
 
-            return GetHashCode() == ((EasyPostObject)obj).GetHashCode();
-        }
-
-        [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
-        public override int GetHashCode()
-        {
-            return AsJson().GetHashCode() ^ GetType().GetHashCode() ^ (Client != null ? Client!.GetHashCode() : 1);
-        }
+        [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode", Justification = "Client is used to determine equality.")]
+        public override int GetHashCode() => AsJson().GetHashCode() ^ GetType().GetHashCode() ^ (Client != null ? Client!.GetHashCode() : 1);
 
         public static bool operator ==(EasyPostObject? one, object? two)
         {
@@ -58,7 +46,9 @@ namespace EasyPost._base
                 return true;
             }
 
+#pragma warning disable IDE0046
             if (one is null || two is null)
+#pragma warning restore IDE0046
             {
                 return false;
             }
@@ -66,10 +56,7 @@ namespace EasyPost._base
             return one.Equals(two);
         }
 
-        public static bool operator !=(EasyPostObject? one, object? two)
-        {
-            return !(one == two);
-        }
+        public static bool operator !=(EasyPostObject? one, object? two) => !(one == two);
 
         /// <summary>
         ///     Update an EasyPostObject object server-side and in-place locally.
@@ -80,7 +67,9 @@ namespace EasyPost._base
         /// <param name="rootElement">Root element of JSON returned by update call.</param>
         /// <param name="overrideApiVersion">Override the API version used for update call.</param>
         /// <typeparam name="T">Type of object to update.</typeparam>
-        protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null) where T : class
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null)
+            where T : class
         {
             T updatedObject = await Request<T>(method, url, parameters, rootElement, overrideApiVersion);
 
@@ -90,7 +79,7 @@ namespace EasyPost._base
         /// <summary>
         ///     Get the JSON representation of this object instance.
         /// </summary>
-        /// <returns>A JSON string representation of this object instance's attributes</returns>
+        /// <returns>A JSON string representation of this object instance's attributes.</returns>
         private string AsJson() => JsonSerialization.ConvertObjectToJson(this);
 
         /// <summary>

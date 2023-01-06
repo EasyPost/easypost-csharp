@@ -25,7 +25,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            Batch batch = await CreateBasicBatch();
+            Batch batch = await Client.Batch.Create(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixtures.BasicShipment } } });
 
             Assert.IsType<Batch>(batch);
             Assert.StartsWith("batch_", batch.Id);
@@ -72,7 +72,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            Batch batch = await CreateBasicBatch();
+            Batch batch = await Client.Batch.Create(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixtures.BasicShipment } } });
 
             Batch retrievedBatch = await Client.Batch.Retrieve(batch.Id);
 
@@ -84,8 +84,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<Batch> CreateBasicBatch() =>
-            await Client.Batch.Create(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixtures.BasicShipment } } });
     }
 }

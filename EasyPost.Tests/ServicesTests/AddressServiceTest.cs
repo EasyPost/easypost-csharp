@@ -25,7 +25,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            Address address = await CreateBasicAddress();
+            Address address = await Client.Address.Create(Fixtures.CaAddress1);
 
             Assert.IsType<Address>(address);
             Assert.StartsWith("adr_", address.Id);
@@ -156,7 +156,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<Address> CreateBasicAddress() => await Client.Address.Create(Fixtures.CaAddress1);
     }
 }

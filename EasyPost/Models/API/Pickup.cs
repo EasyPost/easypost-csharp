@@ -42,13 +42,10 @@ namespace EasyPost.Models.API
         #endregion
 
         /// <summary>
-        ///     Get the pickup rates as a list of Rate objects.
+        ///     Gets the pickup rates as a list of Rate objects.
         /// </summary>
         /// <returns>List of Rate objects.</returns>
-        private IEnumerable<Rate> Rates
-        {
-            get { return PickupRates != null ? PickupRates.Cast<Rate>().ToList() : new List<Rate>(); }
-        }
+        private IEnumerable<Rate> Rates => PickupRates != null ? PickupRates.Cast<Rate>().ToList() : new List<Rate>();
 
         internal Pickup()
         {
@@ -61,18 +58,19 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="withCarrier">The name of the carrier to purchase with.</param>
         /// <param name="withService">The name of the service to purchase.</param>
+        /// <returns>The updated Pickup.</returns>
         [CrudOperations.Update]
         public async Task<Pickup> Buy(string withCarrier, string withService)
         {
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            Dictionary<string, object> parameters = new()
             {
                 { "carrier", withCarrier },
-                { "service", withService }
+                { "service", withService },
             };
 
             await Update<Pickup>(Method.Post, $"pickups/{Id}/buy", parameters);
@@ -82,12 +80,13 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Cancel this pickup.
         /// </summary>
+        /// <returns>The updated Pickup.</returns>
         [CrudOperations.Update]
         public async Task<Pickup> Cancel()
         {
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             await Update<Pickup>(Method.Post, $"pickups/{Id}/cancel");
@@ -104,9 +103,6 @@ namespace EasyPost.Models.API
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest EasyPost.PickupRate object instance.</returns>
-        public PickupRate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
-        {
-            return (PickupRate)Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
-        }
+        public PickupRate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => (PickupRate)Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
     }
 }

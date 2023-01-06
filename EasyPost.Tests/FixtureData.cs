@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 #pragma warning disable CS8618
 
+// ReSharper disable once CheckNamespace
 namespace EasyPost.Tests._Utilities
 {
     public class FixtureStructure

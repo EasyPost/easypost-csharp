@@ -10,7 +10,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class OrderService : EasyPostService
     {
-        internal OrderService(EasyPostClient client) : base(client)
+        internal OrderService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -48,10 +49,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Order. Starts with "order_" if passing an id.</param>
         /// <returns>EasyPost.Order instance.</returns>
         [CrudOperations.Read]
-        public async Task<Order> Retrieve(string id)
-        {
-            return await Get<Order>($"orders/{id}");
-        }
+        public async Task<Order> Retrieve(string id) => await Get<Order>($"orders/{id}");
 
         #endregion
     }

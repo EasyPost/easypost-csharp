@@ -87,9 +87,11 @@ namespace EasyPost.Models.API
         [CrudOperations.Read]
         public async Task<List<Smartrate>> GetSmartrates()
         {
+#pragma warning disable IDE0046
             if (Id == null)
+#pragma warning restore IDE0046
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             return await Request<List<Smartrate>>(Method.Get, $"shipments/{Id}/smartrate", null, "result");
@@ -102,13 +104,14 @@ namespace EasyPost.Models.API
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
         /// <param name="endShipperId">The id of the end shipper to use for this purchase.</param>
+        /// <returns>The task to buy this Shipment.</returns>
         [CrudOperations.Update]
         public async Task Buy(string? rateId, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null)
         {
             // TODO: Should this function return the updated Shipment like Order.Buy?
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             if (rateId == null)
@@ -116,11 +119,11 @@ namespace EasyPost.Models.API
                 throw new MissingParameterError("rateId");
             }
 
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            Dictionary<string, object> parameters = new()
             {
                 { "rate", new Dictionary<string, object> { { "id", rateId } } },
                 { "insurance", insuranceValue ?? string.Empty },
-                { "carbon_offset", withCarbonOffset }
+                { "carbon_offset", withCarbonOffset },
             };
 
             if (endShipperId != null)
@@ -138,6 +141,7 @@ namespace EasyPost.Models.API
         /// <param name="insuranceValue">The value to insure the shipment for.</param>
         /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
         /// <param name="endShipperId">The id of the end shipper to use for this purchase.</param>
+        /// <returns>The task to buy this Shipment.</returns>
         [CrudOperations.Update]
         public async Task Buy(Rate rate, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null)
         {
@@ -153,15 +157,16 @@ namespace EasyPost.Models.API
         ///     Generate a postage label for this shipment.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
+        /// <returns>The updated Shipment.</returns>
         [CrudOperations.Update]
         public async Task<Shipment> GenerateLabel(string fileFormat)
         {
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
-            Dictionary<string, object> parameters = new Dictionary<string, object> { { "file_format", fileFormat } };
+            Dictionary<string, object> parameters = new() { { "file_format", fileFormat } };
 
             await Update<Shipment>(Method.Get, $"shipments/{Id}/label", parameters);
             return this;
@@ -171,15 +176,16 @@ namespace EasyPost.Models.API
         ///     Insure shipment for the given amount.
         /// </summary>
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
+        /// <returns>The updated Shipment.</returns>
         [CrudOperations.Update]
         public async Task<Shipment> Insure(double amount)
         {
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
-            Dictionary<string, object> parameters = new Dictionary<string, object> { { "amount", amount } };
+            Dictionary<string, object> parameters = new() { { "amount", amount } };
 
             await Update<Shipment>(Method.Post, $"shipments/{Id}/insure", parameters);
             return this;
@@ -188,12 +194,13 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Send a refund request to the carrier the shipment was purchased from.
         /// </summary>
+        /// <returns>The updated Shipment.</returns>
         [CrudOperations.Update]
         public async Task<Shipment> Refund()
         {
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             await Update<Shipment>(Method.Post, $"shipments/{Id}/refund");
@@ -205,6 +212,7 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
         /// <param name="withCarbonOffset">Whether to use carbon offset when re-rating the shipment.</param>
+        /// <returns>The task to regenerate this Shipment's rates.</returns>
         [CrudOperations.Update]
         public async Task RegenerateRates(Dictionary<string, object>? parameters = null, bool withCarbonOffset = false)
         {
@@ -212,7 +220,7 @@ namespace EasyPost.Models.API
 
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             parameters.Add("carbon_offset", withCarbonOffset);
@@ -233,24 +241,26 @@ namespace EasyPost.Models.API
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
         public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
+#pragma warning disable IDE0046
             if (Rates == null)
+#pragma warning restore IDE0046
             {
-                throw new MissingPropertyError(this, "rates");
+                throw new MissingPropertyError(this, nameof(Rates));
             }
 
             return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
 
         /// <summary>
-        ///     Get the lowest smartrate for this Shipment.
+        ///     Get the lowest SmartRate for this Shipment.
         /// </summary>
         /// <param name="deliveryDays">Delivery days restriction to use when filtering.</param>
         /// <param name="deliveryAccuracy">Delivery days accuracy restriction to use when filtering.</param>
         /// <returns>Lowest EasyPost.Smartrate object instance.</returns>
         public async Task<Smartrate?> LowestSmartrate(int deliveryDays, SmartrateAccuracy deliveryAccuracy)
         {
-            List<Smartrate> smartrates = await GetSmartrates();
-            return Calculation.Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
+            List<Smartrate> smartRates = await GetSmartrates();
+            return Calculation.Rates.GetLowestShipmentSmartrate(smartRates, deliveryDays, deliveryAccuracy);
         }
     }
 

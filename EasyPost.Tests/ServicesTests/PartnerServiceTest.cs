@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.API;
@@ -29,7 +30,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create_referral");
 
-            ReferralCustomer referralCustomer = await CreateReferral();
+            ReferralCustomer referralCustomer = await Client.Partner.CreateReferral(Fixtures.ReferralUser);
 
             Assert.NotNull(referralCustomer);
             Assert.IsType<ReferralCustomer>(referralCustomer);
@@ -269,7 +270,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("update_referral_email");
 
-            ReferralCustomer referralCustomer = await CreateReferral();
+            ReferralCustomer referralCustomer = await Client.Partner.CreateReferral(Fixtures.ReferralUser);
 
             Exception? possibleException = await Record.ExceptionAsync(async () => await Client.Partner.UpdateReferralEmail(referralCustomer.Id, "email@example.com"));
 
@@ -281,8 +282,6 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         private static string ReferralUserKey => TestUtils.GetApiKey(TestUtils.ApiKey.Referral);
-
-        private async Task<ReferralCustomer> CreateReferral() => await Client.Partner.CreateReferral(Fixtures.ReferralUser);
 
         private class CreditCard
         {
@@ -297,8 +296,8 @@ namespace EasyPost.Tests.ServicesTests
             internal CreditCard(IReadOnlyDictionary<string, object> details)
             {
                 Number = (string)details["number"];
-                ExpirationMonth = int.Parse((string)details["expiration_month"]);
-                ExpirationYear = int.Parse((string)details["expiration_year"]);
+                ExpirationMonth = int.Parse((string)details["expiration_month"], NumberStyles.Number, CultureInfo.InvariantCulture);
+                ExpirationYear = int.Parse((string)details["expiration_year"], NumberStyles.Number, CultureInfo.InvariantCulture);
                 Cvc = (string)details["cvc"];
             }
         }

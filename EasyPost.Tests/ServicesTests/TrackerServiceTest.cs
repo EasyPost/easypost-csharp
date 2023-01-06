@@ -26,7 +26,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            Tracker tracker = await CreateBasicTracker();
+            Tracker tracker = await Client.Tracker.Create(Fixtures.Usps, "EZ1000000001");
 
             Assert.IsType<Tracker>(tracker);
             Assert.StartsWith("trk_", tracker.Id);
@@ -77,7 +77,7 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("retrieve");
 
             // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
-            Tracker tracker = await CreateBasicTracker();
+            Tracker tracker = await Client.Tracker.Create(Fixtures.Usps, "EZ1000000001");
 
             Tracker retrievedTracker = await Client.Tracker.Retrieve(tracker.Id);
 
@@ -89,7 +89,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<Tracker> CreateBasicTracker() => await Client.Tracker.Create(Fixtures.Usps, "EZ1000000001");
     }
 }

@@ -37,7 +37,8 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create_child");
 
-            User user = await CreateChildUser();
+            User user = await Client.User.CreateChild(new Dictionary<string, object> { { "name", "Test User" } });
+            CleanUpAfterTest(user.Id);
 
             Assert.IsType<User>(user);
             Assert.StartsWith("user_", user.Id);
@@ -51,7 +52,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            User authenticatedUser = await RetrieveMe();
+            User authenticatedUser = await Client.User.RetrieveMe();
 
             string id = authenticatedUser.Id;
 
@@ -69,7 +70,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve_with_no_id");
 
-            User authenticatedUser = await RetrieveMe();
+            User authenticatedUser = await Client.User.RetrieveMe();
 
             User user = await Client.User.Retrieve();
             // retrieve with no id should return the authenticated user
@@ -86,7 +87,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve_me");
 
-            User user = await RetrieveMe();
+            User user = await Client.User.RetrieveMe();
 
             Assert.IsType<User>(user);
             Assert.StartsWith("user_", user.Id);
@@ -95,15 +96,5 @@ namespace EasyPost.Tests.ServicesTests
         #endregion
 
         #endregion
-
-        private async Task<User> CreateChildUser()
-        {
-            User user = await Client.User.CreateChild(new Dictionary<string, object> { { "name", "Test User" } });
-            CleanUpAfterTest(user.Id);
-
-            return user;
-        }
-
-        private async Task<User> RetrieveMe() => await Client.User.RetrieveMe();
     }
 }

@@ -78,10 +78,7 @@ namespace EasyPost.Tests
             Client client2 = new(key2);
             Client client3 = new(key3);
 
-            static void Thread(Client client, string keyToMatch)
-            {
-                Assert.Equal(keyToMatch, client.Configuration.ApiKey);
-            }
+            static void Thread(Client client, string keyToMatch) => Assert.Equal(keyToMatch, client.Configuration.ApiKey);
 
             Thread thread1 = new(() => Thread(client1, key1));
             Thread thread2 = new(() => Thread(client2, key2));

@@ -9,7 +9,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class EventService : EasyPostService
     {
-        internal EventService(EasyPostClient client) : base(client)
+        internal EventService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -31,10 +32,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.EventCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<EventCollection> All(Dictionary<string, object>? parameters = null)
-        {
-            return await Get<EventCollection>("events", parameters);
-        }
+        public async Task<EventCollection> All(Dictionary<string, object>? parameters = null) => await Get<EventCollection>("events", parameters);
 
         /// <summary>
         ///     Retrieve an Event from its id.
@@ -42,10 +40,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Event. Starts with "evt_".</param>
         /// <returns>EasyPost.Event instance.</returns>
         [CrudOperations.Read]
-        public async Task<Event> Retrieve(string id)
-        {
-            return await Get<Event>($"events/{id}");
-        }
+        public async Task<Event> Retrieve(string id) => await Get<Event>($"events/{id}");
 
         #endregion
     }

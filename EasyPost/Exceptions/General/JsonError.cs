@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace EasyPost.Exceptions.General
 {
@@ -8,7 +9,8 @@ namespace EasyPost.Exceptions.General
         ///     Initializes a new instance of the <see cref="JsonError" /> class.
         /// </summary>
         /// <param name="message">Error message.</param>
-        internal JsonError(string message) : base(message)
+        internal JsonError(string message)
+            : base(message)
         {
         }
     }
@@ -19,7 +21,8 @@ namespace EasyPost.Exceptions.General
         ///     Initializes a new instance of the <see cref="JsonDeserializationError" /> class.
         /// </summary>
         /// <param name="toType">Type of object attempted creating from JSON.</param>
-        internal JsonDeserializationError(Type toType) : base(string.Format(Constants.ErrorMessages.JsonDeserializationError, toType.FullName))
+        internal JsonDeserializationError(Type toType)
+            : base(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.JsonDeserializationError, toType.FullName))
         {
         }
     }
@@ -30,7 +33,8 @@ namespace EasyPost.Exceptions.General
         ///     Initializes a new instance of the <see cref="JsonSerializationError" /> class.
         /// </summary>
         /// <param name="fromType">Type of object attempted serializing to JSON.</param>
-        internal JsonSerializationError(Type fromType) : base(string.Format(Constants.ErrorMessages.JsonSerializationError, fromType.FullName))
+        internal JsonSerializationError(Type fromType)
+            : base(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.JsonSerializationError, fromType.FullName))
         {
         }
     }
@@ -40,7 +44,8 @@ namespace EasyPost.Exceptions.General
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonNoDataError" /> class.
         /// </summary>
-        internal JsonNoDataError() : base(Constants.ErrorMessages.JsonNoDataToDeserialize)
+        internal JsonNoDataError()
+            : base(Constants.ErrorMessages.JsonNoDataToDeserialize)
         {
         }
     }

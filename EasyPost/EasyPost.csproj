@@ -13,6 +13,10 @@
     <LangVersion>9</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <AnalysisMode>all</AnalysisMode>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,8 +52,12 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)"/>
-    <PackageReference Include="RestSharp" Version="[108.0.1, 109.0.0)"/>
+    <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />
+    <PackageReference Include="RestSharp" Version="[108.0.1, 109.0.0)" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435" Condition=" '$(Configuration)' == 'Debug' ">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md">

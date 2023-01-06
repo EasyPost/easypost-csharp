@@ -6,9 +6,9 @@ using Xunit;
 
 namespace EasyPost.Tests.ModelsTests
 {
-    public class SmartrateAccuracyTests : UnitTest
+    public class SmartRateAccuracyTests : UnitTest
     {
-        public SmartrateAccuracyTests() : base("smartrate_accuracy")
+        public SmartRateAccuracyTests() : base("smart_rate_accuracy")
         {
         }
 

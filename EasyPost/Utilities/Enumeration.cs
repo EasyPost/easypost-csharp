@@ -1,29 +1,31 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
 namespace EasyPost.Utilities
 {
+#pragma warning disable SA1649
     public interface IEnum
+#pragma warning restore SA1649
     {
     }
 
     /// <summary>
     ///     A Java-like enum implementation for C#.
     /// </summary>
+#pragma warning disable CA1716
     public abstract class Enum : IComparable, IEnum
+#pragma warning restore CA1716
     {
         private int Id { get; }
 
-        protected Enum(int id)
-        {
-            Id = id;
-        }
+        protected Enum(int id) => Id = id;
 
-        public int CompareTo(object? other) => Id.CompareTo(((Enum)other!).Id);
+        public int CompareTo(object? obj) => Id.CompareTo(((Enum)obj!).Id);
 
-        public override string ToString() => Id.ToString();
+        public override string ToString() => Id.ToString(CultureInfo.InvariantCulture);
 
         public override bool Equals(object? obj)
         {
@@ -61,7 +63,9 @@ namespace EasyPost.Utilities
                 return true;
             }
 
+#pragma warning disable IDE0046
             if (one is null || two is null)
+#pragma warning restore IDE0046
             {
                 return false;
             }
@@ -69,17 +73,24 @@ namespace EasyPost.Utilities
             return one.Equals(two);
         }
 
-        public static bool operator !=(Enum? one, Enum? two)
-        {
-            return !(one == two);
-        }
+        public static bool operator !=(Enum? one, Enum? two) => !(one == two);
 
-        public static IEnumerable<T> GetAll<T>() where T : IEnum =>
+        public static IEnumerable<T> GetAll<T>()
+            where T : IEnum
+            =>
             typeof(T).GetFields(BindingFlags.Public |
                                 BindingFlags.Static |
                                 BindingFlags.DeclaredOnly)
                 .Select(f => f.GetValue(null))
                 .Cast<T>();
+
+        public static bool operator <(Enum left, Enum right) => left.CompareTo(right) < 0;
+
+        public static bool operator <=(Enum left, Enum right) => left.CompareTo(right) <= 0;
+
+        public static bool operator >(Enum left, Enum right) => left.CompareTo(right) > 0;
+
+        public static bool operator >=(Enum left, Enum right) => left.CompareTo(right) >= 0;
     }
 
     /// <summary>
@@ -89,11 +100,27 @@ namespace EasyPost.Utilities
     {
         internal object Value { get; }
 
-        protected ValueEnum(int id, object value) : base(id)
-        {
-            Value = value;
-        }
+        protected ValueEnum(int id, object value)
+            : base(id) => Value = value;
 
         public override string ToString() => Value.ToString() ?? string.Empty;
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is null)
+            {
+                return false;
+            }
+
+            if (GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            ValueEnum objEnum = (ValueEnum)obj;
+            return objEnum.Value.Equals(Value);
+        }
+
+        public override int GetHashCode() => base.GetHashCode();
     }
 }

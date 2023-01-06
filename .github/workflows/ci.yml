@@ -11,66 +11,94 @@ jobs:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v3
+
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: |
-            3.1.x
-            5.x.x
-            6.x.x
-            7.x.x
+          dotnet-version: 7.x.x
+
       - name: Set up dotnet tools
         run: make install-tools
-      - name: Check dotnet Style
+
+      - name: Check style with dotnet-format
         run: make lint
-  security:
-    runs-on: windows-2022
+
+  Roslyn_Static_Analysis:
+    runs-on: windows-2019  # Known issue running on windows-2022: https://github.com/dotnet/code-analysis/issues/16
     steps:
       - uses: actions/checkout@v3
+
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: |
-            3.1.x
-            5.x.x
-            6.x.x
-            7.x.x
+          dotnet-version: 7.x.x
+
+      - name: Restore NuGet Packages
+        run: make restore
+
+      - name: Run Roslyn analyzers
+        uses: dotnet/code-analysis@main
+        id: code-analysis
+        with:
+          build-breaking: false
+          all-categories: latest-recommended
+
+      - name: Upload analysis results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ${{ env.ANALYSIS_RESULTS_SARIF_FILE }}
+          category: Roslyn
+
+  Security_Code_Scan:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.x.x
+
       - name: Set up dotnet tools and dependencies
         run: make install
+
       - name: Run security analysis
         run: make scan
-        # TODO: In the future, we can collect the output logs by enabling Code Scanning and using the pre-built GitHub Action: https://github.com/marketplace/actions/securitycodescan
-        # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github#uploading-a-code-scanning-analysis-with-github-actions
-  coverage_requirement:
+
+  Coverage_Requirements:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
+
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: |
-            3.1.x
-            5.x.x
-            6.x.x
-            7.x.x
+          dotnet-version: 7.x.x
+
       - name: Set up dotnet tools and dependencies
         run: make install
+
       - name: Check if test suite coverage meets requirements
         run: make coverage-check
-  coverage_upload:
+
+  Upload_Coverage_Report:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
+
       - name: Set up dotnet tools and dependencies
         run: make install
+
       - name: Generate coverage report
         run: make coverage
+
       - name: Upload lcov coverage report to Coveralls
         uses: coverallsapp/github-action@master
         with:
           path-to-lcov: coveragereport/lcov.info
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
   NET_Tests:
     # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
     runs-on: windows-2022
@@ -98,22 +126,18 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
-        # Install .NET SDK
+
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: |
-            3.1.x
-            5.x.x
-            6.x.x
-            7.x.x
-        # Install MSBuild, used to build the test project
+          dotnet-version: 7.x.x
+
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
-        # Install NuGet.exe to restore required NuGet packages
+
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
-        # Load NuGet package cache
+
       - name: Load NuGet package cache
         uses: actions/cache@v2
         with:
@@ -121,68 +145,83 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ matrix.framework }}-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
-        # Restore required NuGet packages
+
       - name: Restore NuGet Packages
         run: make restore
+
         # Pull in fixtures submodule
       - name: Set up dotnet tools and dependencies
         run: make install
-        # Run the framework-specific tests
+
+        # Run the unit tests in a specific framework (verify that the library works in that framework)
       - name: Run Tests
         run: make test-fw fw=${{ matrix.framework }}
-  Compatibility_Tests:
+
+  FSharp_Compatibility:
     runs-on: windows-2022
-    strategy:
-      matrix:
-        lang: [ 'VB', 'FSharp' ]
-        include:
-          - lang: VB
-            ext: vbproj
-          - lang: FSharp
-            ext: fsproj
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: true
-        # Install .NET SDK
+
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: |
-            3.1.x
-            5.x.x
-            6.x.x
-            7.x.x
-        # Set the project name, based on platform version currently selected
-      - name: Set up variables
-        id: test_project
-        run: echo "::set-output name=test_file::EasyPost.Tests.${{ matrix.lang }}"
-        # Install MSBuild, used to build the test project
+          dotnet-version: 7.x.x
+
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
-        # Install NuGet.exe to restore required NuGet packages
+
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.0.5
-        # Install Visual Studio's console test application, to execute tests
+
       - name: Setup VSTest
         uses: darenm/Setup-VSTest@v1
-        # Load NuGet package cache
-      - name: Load NuGet package cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ matrix.framework }}-${{ hashFiles('**/packages.lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
-        # Restore required NuGet packages
+
       - name: Restore NuGet Packages
         run: make restore
+
         # Pull in fixtures submodule
       - name: Set up dotnet tools and dependencies
         run: make install
+
         # Build the test project
       - name: Build Solution
-        run: msbuild ${{ steps.test_project.outputs.test_file }}\${{ steps.test_project.outputs.test_file }}.${{ matrix.ext }} /p:platform="Any CPU" /p:configuration="Debug" /p:outputPath="bin/Test" /p:target="Rebuild" -restore
+        run: msbuild EasyPost.Tests.FSharp\EasyPost.Tests.FSharp.fsproj /p:platform="Any CPU" /p:configuration="Debug" /p:outputPath="bin/Test" /p:target="Rebuild" -restore
+
+  Visual_Basic_Compatibility:
+    runs-on: windows-2022
+    steps:
+
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.x.x
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Setup Nuget
+        uses: NuGet/setup-nuget@v1.0.5
+
+      - name: Setup VSTest
+        uses: darenm/Setup-VSTest@v1
+
+      - name: Restore NuGet Packages
+        run: make restore
+
+        # Pull in fixtures submodule
+      - name: Set up dotnet tools and dependencies
+        run: make install
+
+        # Build the test project
+      - name: Build Solution
+        run: msbuild EasyPost.Tests.VB\EasyPost.Tests.VB.vbproj /p:platform="Any CPU" /p:configuration="Debug" /p:outputPath="bin/Test" /p:target="Rebuild" -restore
+
 
 # .NET Standard notes:
 # - NET Standard 2.0 is compatible with minimum .NET Framework 4.6.1: https://docs.microsoft.com/en-us/dotnet/standard/net-standard?tabs=net-standard-2-0

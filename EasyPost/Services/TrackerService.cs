@@ -10,7 +10,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class TrackerService : EasyPostService
     {
-        internal TrackerService(EasyPostClient client) : base(client)
+        internal TrackerService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -25,20 +26,20 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Tracker> Create(string carrier, string trackingCode)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            Dictionary<string, object> parameters = new()
             {
                 { "carrier", carrier },
-                { "tracking_code", trackingCode }
+                { "tracking_code", trackingCode },
             };
             parameters = parameters.Wrap("tracker");
             return await Create<Tracker>("trackers", parameters);
         }
 
         /// <summary>
-        ///     Create a list of trackers
+        ///     Create a list of trackers.
         /// </summary>
-        /// <param name="parameters">A dictionary of tracking codes and carriers</param>
-        /// <returns>True</returns>
+        /// <param name="parameters">A dictionary of tracking codes and carriers.</param>
+        /// <returns>True if successful, False otherwise.</returns>
         [CrudOperations.Create]
         public async Task CreateList(Dictionary<string, object> parameters)
         {
@@ -74,16 +75,14 @@ namespace EasyPost.Services
         }
 
         // This endpoint does not return a response so we return the request was successful
+
         /// <summary>
         ///     Retrieve a Tracker from its id.
         /// </summary>
         /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
         /// <returns>EasyPost.Tracker instance.</returns>
         [CrudOperations.Read]
-        public async Task<Tracker> Retrieve(string id)
-        {
-            return await Get<Tracker>($"trackers/{id}");
-        }
+        public async Task<Tracker> Retrieve(string id) => await Get<Tracker>($"trackers/{id}");
 
         #endregion
     }

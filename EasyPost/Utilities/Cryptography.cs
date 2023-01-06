@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -8,11 +9,11 @@ namespace EasyPost.Utilities
         private static readonly uint[] Lookup32 = CreateLookup32();
 
         /// <summary>
-        ///     Convert a string to a hex string using a specific encoding (defaults to UTF-8)
+        ///     Convert a string to a hex string using a specific encoding (defaults to UTF-8).
         /// </summary>
         /// <param name="str">String to convert to hex string.</param>
-        /// <param name="encoding">Encoding to use. Default: UTF-8</param>
-        /// <returns>Hex string</returns>
+        /// <param name="encoding">Encoding to use. Default: UTF-8.</param>
+        /// <returns>Hex string.</returns>
         public static string AsHexString(this string str, Encoding? encoding = null)
         {
             byte[] bytes = str.AsByteArray(encoding);
@@ -21,11 +22,11 @@ namespace EasyPost.Utilities
         }
 
         /// <summary>
-        ///     Convert a byte array to a string using a specific encoding (defaults to UTF-8)
+        ///     Convert a byte array to a string using a specific encoding (defaults to UTF-8).
         /// </summary>
         /// <param name="bytes">Byte array to convert to string.</param>
-        /// <param name="encoding">Encoding to use. Default: UTF-8</param>
-        /// <returns>String</returns>
+        /// <param name="encoding">Encoding to use. Default: UTF-8.</param>
+        /// <returns>String.</returns>
         public static string AsString(this byte[] bytes, Encoding? encoding = null)
         {
             encoding ??= Encoding.UTF8;
@@ -40,6 +41,8 @@ namespace EasyPost.Utilities
         /// <param name="secret">Key used to calculate data hex digest.</param>
         /// <param name="normalizationForm">Normalization type to use when normalizing key. Default: No normalization.</param>
         /// <returns>Hex digest of data.</returns>
+        // ReSharper disable once IdentifierTypo
+        // ReSharper disable once InconsistentNaming
         public static string CalculateHMACSHA256HexDigest(this byte[] data, string secret, NormalizationForm? normalizationForm = null)
         {
             if (normalizationForm != null)
@@ -49,7 +52,7 @@ namespace EasyPost.Utilities
 
             byte[] keyBytes = Encoding.UTF8.GetBytes(secret);
 
-            using HMACSHA256 hmac = new HMACSHA256(keyBytes);
+            using HMACSHA256 hmac = new(keyBytes);
             byte[] hash = hmac.ComputeHash(data);
 
             return hash.AsHexString();
@@ -70,7 +73,7 @@ namespace EasyPost.Utilities
             }
 
             // short-circuit if signatures are not the same length
-            if (signature1.Length != signature2?.Length)
+            if (signature1.Length != signature2.Length)
             {
                 return false;
             }
@@ -102,11 +105,11 @@ namespace EasyPost.Utilities
         }
 
         /// <summary>
-        ///     Convert a string to a byte array using a specific encoding (defaults to UTF-8)
+        ///     Convert a string to a byte array using a specific encoding (defaults to UTF-8).
         /// </summary>
         /// <param name="str">String to convert to byte array.</param>
-        /// <param name="encoding">Encoding to use. Default: UTF-8</param>
-        /// <returns>Byte array</returns>
+        /// <param name="encoding">Encoding to use. Default: UTF-8.</param>
+        /// <returns>Byte array.</returns>
         private static byte[] AsByteArray(this string str, Encoding? encoding = null)
         {
             encoding ??= Encoding.UTF8;
@@ -118,35 +121,41 @@ namespace EasyPost.Utilities
         ///     Convert a byte array to a hex string.
         /// </summary>
         /// <param name="bytes">Byte array to convert to hex string.</param>
-        /// <returns>Hex string</returns>
-        private static string AsHexString(this byte[] bytes)
+        /// <returns>Hex string.</returns>
+        private static string AsHexString(this IReadOnlyList<byte> bytes)
         {
             // Fastest safe way to convert a byte array to hex string,
             // per https://stackoverflow.com/a/624379/13343799
-
             uint[] lookup32 = Lookup32;
-            char[] result = new char[bytes.Length * 2];
-            for (int i = 0; i < bytes.Length; i++)
+            char[] result = new char[bytes.Count * 2];
+            for (int i = 0; i < bytes.Count; i++)
             {
                 uint val = lookup32[bytes[i]];
                 result[2 * i] = (char)val;
-                result[2 * i + 1] = (char)(val >> 16);
+                result[(2 * i) + 1] = (char)(val >> 16);
             }
 
-            return new string(result).ToLower();
+            return new string(result).ToLowerInvariant();
         }
 
         /// <summary>
         ///     Construct a lookup table of hex values.
         /// </summary>
-        /// <returns>Lookup table of hex values</returns>
+        /// <returns>Lookup table of hex values.</returns>
         private static uint[] CreateLookup32()
         {
             uint[] result = new uint[256];
             for (int i = 0; i < 256; i++)
             {
+#pragma warning disable CA1305
                 string s = i.ToString("X2");
+#pragma warning restore CA1305
+
+                // ReSharper disable once RedundantCast
+                // ReSharper disable once ArrangeRedundantParentheses
+#pragma warning disable IDE0004
                 result[i] = ((uint)s[0]) + ((uint)s[1] << 16);
+#pragma warning restore IDE0004
             }
 
             return result;

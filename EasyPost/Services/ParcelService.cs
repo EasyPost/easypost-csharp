@@ -10,7 +10,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ParcelService : EasyPostService
     {
-        internal ParcelService(EasyPostClient client) : base(client)
+        internal ParcelService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -42,10 +43,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
         /// <returns>EasyPost.Parcel instance.</returns>
         [CrudOperations.Read]
-        public async Task<Parcel> Retrieve(string id)
-        {
-            return await Get<Parcel>($"parcels/{id}");
-        }
+        public async Task<Parcel> Retrieve(string id) => await Get<Parcel>($"parcels/{id}");
 
         #endregion
     }

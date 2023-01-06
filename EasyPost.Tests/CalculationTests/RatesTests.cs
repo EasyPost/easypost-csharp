@@ -26,7 +26,7 @@ namespace EasyPost.Tests.CalculationTests
 
         [Fact]
         [Testing.Function]
-        public void TestGetLowestShipmentSmartrate()
+        public void TestGetLowestShipmentSmartRate()
         {
             List<Smartrate> rates = new()
             {

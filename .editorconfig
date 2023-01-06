@@ -406,7 +406,7 @@ dotnet_naming_style.camel_case_underscore_style.capitalization = camel_case
 # Code style defaults
 csharp_using_directive_placement = outside_namespace:suggestion
 dotnet_sort_system_directives_first = true
-csharp_prefer_braces = true:silent
+csharp_prefer_braces = when_multiline:silent
 csharp_preserve_single_line_blocks = true:none
 csharp_preserve_single_line_statements = false:none
 csharp_prefer_static_local_function = true:suggestion
@@ -510,3 +510,61 @@ end_of_line = crlf
 indent_style = space
 indent_size = 4
 tab_width = 4
+
+
+# Custom rules
+[*.{cs,vb}]
+dotnet_analyzer_diagnostic.severity = warning
+### Naming rules (mostly complains about missing "Test" prefix on non-test methods)
+dotnet_diagnostic.IDE1006.severity = none
+### Identifier rules should have proper suffixes (complaining about Exception types not ending in "Exception")
+### TODO: We should change our "Error" suffix to "Exception" and enable this rule
+dotnet_diagnostic.CA1710.severity = none
+### Use expression body for constructors
+dotnet_diagnostic.IDE0021.severity = suggestion
+### Use expression body for methods
+dotnet_diagnostic.IDE0022.severity = suggestion
+### Use expression body for local methods
+dotnet_diagnostic.IDE0061.severity = suggestion
+### Use expression body for properties
+dotnet_diagnostic.IDE0025.severity = suggestion
+### Do not use incorrect suffix
+### TODO: We should probably enable this one in the future, encroaching on reserved words: https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1711
+dotnet_diagnostic.CA1711.severity = none
+### Do not use reserved words in namespaces
+dotnet_diagnostic.CA1716.severity = none
+### Always capture return value of function
+dotnet_diagnostic.IDE0058.severity = none
+### Use conditional expression for return
+dotnet_diagnostic.IDE0046.severity = suggestion
+### Use curly braces for if/else statements (see csharp_prefer_braces - requires braces for multi-line statements, optional for single-line)
+dotnet_diagnostic.IDE0011.severity = warning
+### Don't use generic Exception
+dotnet_diagnostic.CA2201.severity = warning
+### Do not declare visible instance fields
+dotnet_diagnostic.CA1051.severity = none
+### Identifiers should not contain underscores
+dotnet_diagnostic.CA1707.severity = none
+### Elements should be documented
+dotnet_diagnostic.SA1600.severity = none
+### Elements should be separated by blank line
+dotnet_diagnostic.SA1516.severity = none
+### Do not use regions
+dotnet_diagnostic.SA1124.severity = none
+### Files should have header
+dotnet_diagnostic.SA1633.severity = none
+### A constructor should not follow a property
+dotnet_diagnostic.SA1201.severity = none
+### Elements should be ordered properly (overriden by our custom layout rules)
+dotnet_diagnostic.SA1202.severity = none
+### Static elements should be placed before instance elements (overriden by our custom layout rules)
+dotnet_diagnostic.SA1204.severity = none
+dotnet_diagnostic.SA1202.severity = none
+### Prefix local calls with "this"
+dotnet_diagnostic.SA1101.severity = none
+### File may only contain a single type
+dotnet_diagnostic.SA1402.severity = none
+### Field should be private
+dotnet_diagnostic.SA1401.severity = none
+### Private fields should not start with underscore
+dotnet_diagnostic.SA1309.severity = none

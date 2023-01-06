@@ -50,6 +50,7 @@ namespace EasyPost.Models.API
         ///     Update this EndShipper. Must pass in all properties (new and existing).
         /// </summary>
         /// <param name="parameters">See EndShipper.Create for more details.</param>
+        /// <returns>The updated EndShipper.</returns>
         [CrudOperations.Update]
         public async Task<EndShipper> Update(Dictionary<string, object> parameters)
         {

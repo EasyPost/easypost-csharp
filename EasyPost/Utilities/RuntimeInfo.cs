@@ -10,7 +10,7 @@ namespace EasyPost.Utilities
         internal struct ApplicationInfo
         {
             /// <summary>
-            ///     Get the version of the application as a string.
+            ///     Gets the version of the application as a string.
             /// </summary>
             /// <returns>The version of the application as a string.</returns>
             internal static string ApplicationVersion
@@ -31,49 +31,42 @@ namespace EasyPost.Utilities
             }
 
             /// <summary>
-            ///     Get the .NET framework version as a string.
+            ///     Gets the .NET framework version as a string.
             /// </summary>
             /// <returns>The .NET framework version as a string.</returns>
-            internal static string DotNetVersion
-            {
-                get { return Environment.Version.ToString(); }
-            }
+            internal static string DotNetVersion => Environment.Version.ToString();
         }
 
         internal struct OperationSystemInfo
         {
             /// <summary>
-            ///     Get details about the operating system.
+            ///     Gets details about the operating system.
             /// </summary>
             /// <returns>Details about the operating system.</returns>
-            private static OperatingSystem OperatingSystem
-            {
-                get { return Environment.OSVersion; }
-            }
+            private static OperatingSystem OperatingSystem => Environment.OSVersion;
 
             /// <summary>
-            ///     Get the name of the operating system.
+            ///     Gets the name of the operating system.
             /// </summary>
             /// <returns>Name of the operating system.</returns>
+#pragma warning disable IDE0025
             internal static string Name
+#pragma warning restore IDE0025
             {
                 get
                 {
 #if NETSTANDARD2_0
-                    switch (OperatingSystem.Platform)
+                    return OperatingSystem.Platform switch
                     {
-                        case PlatformID.Win32S:
-                        case PlatformID.Win32Windows:
-                        case PlatformID.Win32NT:
-                        case PlatformID.WinCE:
-                            return "Windows";
-                        case PlatformID.Unix:
-                            return "Linux";
-                        case PlatformID.MacOSX: // in newer versions, Mac OS X is PlatformID.Unix unfortunately
-                            return "Darwin";
-                        default:
-                            return "Unknown";
-                    }
+                        PlatformID.Win32S => "Windows",
+                        PlatformID.Win32Windows => "Windows",
+                        PlatformID.Win32NT => "Windows",
+                        PlatformID.WinCE => "Windows",
+                        PlatformID.Unix => "Linux",
+                        PlatformID.MacOSX => "Darwin",  // in newer versions, Mac OS X is PlatformID.Unix unfortunately
+                        PlatformID.Xbox => "Unknown",  // how are you doing this? Tell me!
+                        var _ => "Unknown",
+                    };
 #else
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                     {
@@ -85,7 +78,10 @@ namespace EasyPost.Utilities
                         return "Darwin";
                     }
 
+                    // ReSharper disable once ConvertIfStatementToReturnStatement
+#pragma warning disable IDE0046
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+#pragma warning restore IDE0046
                     {
                         return "Windows";
                     }
@@ -96,42 +92,32 @@ namespace EasyPost.Utilities
             }
 
             /// <summary>
-            ///     Get the version of the operating system.
+            ///     Gets the version of the operating system.
             /// </summary>
             /// <returns>Version of the operating system.</returns>
-            internal static string Version
-            {
-                get { return OperatingSystem.Version.ToString(); }
-            }
+            internal static string Version => OperatingSystem.Version.ToString();
 
             /// <summary>
-            ///     Get the architecture of the operating system.
+            ///     Gets the architecture of the operating system.
             /// </summary>
             /// <returns>Architecture of the operating system.</returns>
-            internal static string Architecture
-            {
-                get
-                {
+            internal static string Architecture =>
 #if NET462
                     // Sorry, Windows ARM users (if you exist), best we can do is determine if we are running on a 64-bit or 32-bit
                     return Environment.Is64BitOperatingSystem ? "x64" : "x86";
 #else
-                    switch (RuntimeInformation.OSArchitecture)
-                    {
-                        case System.Runtime.InteropServices.Architecture.Arm:
-                            return "arm";
-                        case System.Runtime.InteropServices.Architecture.Arm64:
-                            return "arm64";
-                        case System.Runtime.InteropServices.Architecture.X64:
-                            return "x64";
-                        case System.Runtime.InteropServices.Architecture.X86:
-                            return "x86";
-                        default:
-                            return "Unknown";
-                    }
+#pragma warning disable IDE0072 // Disable to avoid unnecessary enums on specific .NET versions
+                RuntimeInformation.OSArchitecture switch
+#pragma warning restore IDE0072
+                {
+                    System.Runtime.InteropServices.Architecture.Arm => "arm",
+                    System.Runtime.InteropServices.Architecture.Arm64 => "arm64",
+                    System.Runtime.InteropServices.Architecture.X64 => "x64",
+                    System.Runtime.InteropServices.Architecture.X86 => "x86",
+                    var _ => "Unknown",
+                };
 #endif
-                }
-            }
+
         }
     }
 }

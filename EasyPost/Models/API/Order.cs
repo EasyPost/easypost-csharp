@@ -50,18 +50,19 @@ namespace EasyPost.Models.API
         /// </summary>
         /// <param name="withCarrier">The carrier to purchase a shipment from.</param>
         /// <param name="withService">The service to purchase.</param>
+        /// <returns>The updated Order.</returns>
         [CrudOperations.Update]
         public async Task<Order> Buy(string withCarrier, string withService)
         {
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            Dictionary<string, object> parameters = new()
             {
                 { "carrier", withCarrier },
-                { "service", withService }
+                { "service", withService },
             };
 
             await Update<Order>(Method.Post, $"orders/{Id}/buy", parameters);
@@ -72,17 +73,20 @@ namespace EasyPost.Models.API
         ///     Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
+        /// <returns>The updated Order.</returns>
         [CrudOperations.Update]
         public async Task<Order> Buy(Rate rate)
         {
             if (rate.Carrier == null)
             {
-                throw new MissingPropertyError(rate, "Carrier");
+                throw new MissingPropertyError(rate, nameof(rate.Carrier));
             }
 
+#pragma warning disable IDE0046
             if (rate.Service == null)
+#pragma warning restore IDE0046
             {
-                throw new MissingPropertyError(rate, "Service");
+                throw new MissingPropertyError(rate, nameof(rate.Service));
             }
 
             return await Buy(rate.Carrier, rate.Service);
@@ -91,13 +95,14 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Populate the rates property for this Order.
         /// </summary>
+        /// <returns>The task to refresh this Order's rates.</returns>
         [CrudOperations.Update]
         public async Task GetRates()
         {
             // TODO: Should this return the updated Order object?
             if (Id == null)
             {
-                throw new MissingPropertyError(this, "Id");
+                throw new MissingPropertyError(this, nameof(Id));
             }
 
             await Update<Order>(Method.Get, $"orders/{Id}/rates");
@@ -115,9 +120,11 @@ namespace EasyPost.Models.API
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
         public Rate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
+#pragma warning disable IDE0046
             if (Rates == null)
+#pragma warning restore IDE0046
             {
-                throw new MissingPropertyError(this, "rates");
+                throw new MissingPropertyError(this, nameof(Rates));
             }
 
             return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);

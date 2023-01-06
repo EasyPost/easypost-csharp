@@ -9,7 +9,8 @@ namespace EasyPost.Services
 {
     public class EndShipperService : EasyPostService
     {
-        internal EndShipperService(EasyPostClient client) : base(client)
+        internal EndShipperService(EasyPostClient client)
+            : base(client)
         {
         }
 

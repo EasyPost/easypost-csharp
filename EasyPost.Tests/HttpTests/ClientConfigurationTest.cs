@@ -23,9 +23,7 @@ namespace EasyPost.Tests.HttpTests
             ClientConfiguration configuration2 = new("key2", "https://www.example.com");
 
             // Compare the two configurations
-            Assert.False(configuration1 == configuration2);
             Assert.False(configuration1.Equals(configuration2));
-            Assert.True(configuration1 != configuration2);
 
             // Compare the configuration to null
             Assert.False(configuration1.Equals(null));
@@ -40,9 +38,7 @@ namespace EasyPost.Tests.HttpTests
             ClientConfiguration configuration2 = new("key2", "https://www.example.com");
 
             // Compare the two configurations
-            Assert.False(configuration1 == configuration2);
             Assert.False(configuration1.Equals(configuration2));
-            Assert.True(configuration1 != configuration2);
 
             // Compare the configuration to null
             Assert.False(configuration1.Equals(null));
@@ -55,7 +51,7 @@ namespace EasyPost.Tests.HttpTests
         {
             const string apiKey = "fake_api_key";
             const string apiBase = "https://www.example.com";
-            ClientConfiguration? configuration1 = new(apiKey, apiBase);
+            ClientConfiguration configuration1 = new(apiKey, apiBase);
 
             // Assert that hashcode is calculated correctly
             int expectedHashCode = apiKey.GetHashCode() ^ apiBase.GetHashCode() ^ 1; // 1 is the default value if no HttpClient is passed

@@ -10,7 +10,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class RateService : EasyPostService
     {
-        internal RateService(EasyPostClient client) : base(client)
+        internal RateService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -22,10 +23,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a rate. Starts with `rate_`.</param>
         /// <returns>EasyPost.Rate instance.</returns>
         [CrudOperations.Read]
-        public async Task<Rate> Retrieve(string id)
-        {
-            return await Get<Rate>($"rates/{id}");
-        }
+        public async Task<Rate> Retrieve(string id) => await Get<Rate>($"rates/{id}");
 
         #endregion
 
@@ -38,9 +36,8 @@ namespace EasyPost.Services
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
-        public Rate GetLowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
-        {
-            return Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
-        }
+#pragma warning disable CA1822
+        public Rate GetLowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+#pragma warning restore CA1822
     }
 }

@@ -13,6 +13,7 @@ using EasyPost.Utilities;
 using EasyVCR;
 using RestSharp;
 
+// ReSharper disable once CheckNamespace
 namespace EasyPost.Tests._Utilities
 {
     public class TestUtils
@@ -51,34 +52,24 @@ namespace EasyPost.Tests._Utilities
             Production,
             Partner,
             Referral,
-            Mock
+            Mock,
         }
 
-        public static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath);
+        public static string GetSourceFileDirectory([CallerFilePath] string sourceFilePath = "") => Path.GetDirectoryName(sourceFilePath)!;
 
         internal static string GetApiKey(ApiKey apiKey)
         {
-            string keyName = "";
-            switch (apiKey)
+            string keyName = apiKey switch
             {
-                case ApiKey.Test:
-                    keyName = "EASYPOST_TEST_API_KEY";
-                    break;
-                case ApiKey.Production:
-                    keyName = "EASYPOST_PROD_API_KEY";
-                    break;
-                case ApiKey.Partner:
-                    keyName = "PARTNER_USER_PROD_API_KEY";
-                    break;
-                case ApiKey.Referral:
-                    keyName = "REFERRAL_USER_PROD_API_KEY";
-                    break;
-                case ApiKey.Mock:
-                    keyName = "EASYPOST_MOCK_API_KEY"; // does not exist, will trigger to use ApiKeyFailedToPull
-                    break;
-                default:
-                    throw new Exception(Constants.ErrorMessages.InvalidApiKeyType);
-            }
+                ApiKey.Test => "EASYPOST_TEST_API_KEY",
+                ApiKey.Production => "EASYPOST_PROD_API_KEY",
+                ApiKey.Partner => "PARTNER_USER_PROD_API_KEY",
+                ApiKey.Referral => "REFERRAL_USER_PROD_API_KEY",
+                ApiKey.Mock => "EASYPOST_MOCK_API_KEY", // does not exist, will trigger to use ApiKeyFailedToPull
+#pragma warning disable CA2201
+                var _ => throw new Exception(Constants.ErrorMessages.InvalidApiKeyType)
+#pragma warning restore CA2201
+            };
 
             return Environment.GetEnvironmentVariable(keyName) ?? ApiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.
         }
@@ -124,6 +115,7 @@ namespace EasyPost.Tests._Utilities
 
                 _testCassettesFolder = Path.Combine(GetSourceFileDirectory(), CassettesFolder); // create "cassettes" folder in same directory as test files
 
+                // ReSharper disable once ConvertToConstant.Local
                 string netVersionFolder = "net";
 #if NET462
                 netVersionFolder = "netstandard";
@@ -220,11 +212,11 @@ namespace EasyPost.Tests._Utilities
             internal override async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request)
 #pragma warning restore CS1998
             {
-                var mockRequest = FindMatchingMockRequest(request);
+                MockRequest? mockRequest = FindMatchingMockRequest(request);
 
                 if (mockRequest == null)
                 {
-                    throw new Exception($"No matching mock request found for: {request.Method.ToString().ToUpper()} {request.Resource}");
+                    throw new EasyPostError($"No matching mock request found for: {request.Method.ToString().ToUpperInvariant()} {request.Resource}");
                 }
 
                 return new RestResponse<T>
@@ -239,11 +231,13 @@ namespace EasyPost.Tests._Utilities
             internal override async Task<RestResponse> ExecuteRequest(RestRequest request)
 #pragma warning restore CS1998
             {
-                var mockRequest = FindMatchingMockRequest(request);
+                MockRequest? mockRequest = FindMatchingMockRequest(request);
 
                 if (mockRequest == null)
                 {
+#pragma warning disable CA2201
                     throw new Exception("No matching mock request found");
+#pragma warning restore CA2201
                 }
 
                 return new RestResponse
@@ -257,22 +251,11 @@ namespace EasyPost.Tests._Utilities
             {
             }
 
-            internal void AddMockRequest(MockRequest mockRequest)
-            {
-                _mockRequests.Add(mockRequest);
-            }
+            internal void AddMockRequest(MockRequest mockRequest) => _mockRequests.Add(mockRequest);
 
-            internal void AddMockRequests(IEnumerable<MockRequest> mockRequests)
-            {
-                _mockRequests.AddRange(mockRequests);
-            }
+            internal void AddMockRequests(IEnumerable<MockRequest> mockRequests) => _mockRequests.AddRange(mockRequests);
 
-            private MockRequest FindMatchingMockRequest(RestRequest request)
-            {
-                return _mockRequests.FirstOrDefault(
-                    mock => mock.MatchRules.Method == request.Method &&
-                            EndpointMatches(request.Resource, mock.MatchRules.ResourceRegex));
-            }
+            private MockRequest? FindMatchingMockRequest(RestRequest request) => _mockRequests.FirstOrDefault(mock => mock.MatchRules.Method == request.Method && EndpointMatches(request.Resource, mock.MatchRules.ResourceRegex));
 
             private static bool EndpointMatches(string endpoint, string pattern)
             {

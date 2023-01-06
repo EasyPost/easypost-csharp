@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.API;
@@ -13,7 +14,8 @@ namespace EasyPost.Services
 {
     public class PartnerService : EasyPostService
     {
-        internal PartnerService(EasyPostClient client) : base(client)
+        internal PartnerService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -44,10 +46,7 @@ namespace EasyPost.Services
         /// <param name="parameters">Parameters for API call.</param>
         /// <returns>An EasyPost.ReferralCustomerCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null)
-        {
-            return await List<ReferralCustomerCollection>("referral_customers", parameters);
-        }
+        public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null) => await List<ReferralCustomerCollection>("referral_customers", parameters);
 
         /// <summary>
         ///     Add a credit card to a Referral Customer.
@@ -71,9 +70,12 @@ namespace EasyPost.Services
                 throw new InternalServerError("Could not retrieve EasyPost Stripe API key.", 0);
             }
 
-            string? stripeToken = await CreateStripeToken(number, expirationMonth, expirationYear, cvc, easypostStripeApiKey!);
+            // ReSharper disable once RedundantSuppressNullableWarningExpression
+            string stripeToken = await CreateStripeToken(number, expirationMonth, expirationYear, cvc, easypostStripeApiKey!);
 
+#pragma warning disable IDE0046
             if (string.IsNullOrEmpty(stripeToken))
+#pragma warning restore IDE0046
             {
                 throw new ExternalApiError("Could not create Stripe token, please try again later.", 0);
             }
@@ -87,10 +89,12 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="referralId">ID of the referral user to update.</param>
         /// <param name="email">Email of the referral user to update.</param>
+        /// <returns>A Task to update a referral's email.</returns>
         [CrudOperations.Update]
         public async Task UpdateReferralEmail(string referralId, string email)
         {
-            var parameters = new Dictionary<string, object> { { "user", new Dictionary<string, object> { { "email", email } } } };
+            Dictionary<string, object> parameters = new() { { "user", new Dictionary<string, object> { { "email", email } } } };
+
             // NOTE: This is a PATCH request, not a PUT request.
             await UpdateNoResponse($"referral_customers/{referralId}", parameters);
         }
@@ -106,15 +110,16 @@ namespace EasyPost.Services
         /// <returns>An EasyPost.PaymentMethod instance.</returns>
         private async Task<PaymentMethod> CreateEasypostCreditCard(string referralApiKey, string stripeObjectId, PaymentMethod.Priority priority)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            Dictionary<string, object> parameters = new()
             {
                 {
-                    "credit_card", new Dictionary<string, object>
+                    "credit_card",
+                    new Dictionary<string, object>
                     {
                         { "stripe_object_id", stripeObjectId },
-                        { "priority", priority.ToString().ToLower() }
+                        { "priority", priority.ToString().ToLowerInvariant() },
                     }
-                }
+                },
             };
 
             // Store the old API key
@@ -151,12 +156,12 @@ namespace EasyPost.Services
         {
             const string url = "https://api.stripe.com/v1/tokens";
 
-            RestRequest request = new RestRequest(url, Method.Post);
+            RestRequest request = new(url, Method.Post);
             request.AddHeader("Authorization", $"Bearer {easypostStripeApiKey}");
             request.AddHeader("Accept", "application/x-www-form-urlencoded");
             request.AddParameter("card[number]", number);
-            request.AddParameter("card[exp_month]", expirationMonth.ToString());
-            request.AddParameter("card[exp_year]", expirationYear.ToString());
+            request.AddParameter("card[exp_month]", expirationMonth.ToString(CultureInfo.InvariantCulture));
+            request.AddParameter("card[exp_year]", expirationYear.ToString(CultureInfo.InvariantCulture));
             request.AddParameter("card[cvc]", cvc);
 
             RestResponse<Dictionary<string, object>> response = await Client!.ExecuteRequest<Dictionary<string, object>>(request);
@@ -168,12 +173,10 @@ namespace EasyPost.Services
 
             Dictionary<string, object>? data = response.Data;
 
-            if (!data.ContainsKey("id"))
-            {
-                throw new ExternalApiError("Could not create Stripe token, please try again later.", (int)response.StatusCode);
-            }
-
-            return (string)data["id"];
+            data.TryGetValue("id", out object? id);
+            return id == null
+                ? throw new ExternalApiError("Could not send card details to Stripe, please try again later.", (int)response.StatusCode)
+                : (string)id;
         }
 
         /// <summary>
@@ -183,12 +186,11 @@ namespace EasyPost.Services
         private async Task<string?> RetrieveEasypostStripeApiKey()
         {
             Dictionary<string, object> response = await Get<Dictionary<string, object>>("partners/stripe_public_key");
-            if (!response.ContainsKey("public_key"))
-            {
-                return null;
-            }
 
-            return (string)response["public_key"];
+            response.TryGetValue("public_key", out object? easypostStripePublicKey);
+
+            // ReSharper disable once MergeConditionalExpression
+            return easypostStripePublicKey == null ? null : (string)easypostStripePublicKey;
         }
     }
 }

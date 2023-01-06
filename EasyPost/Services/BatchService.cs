@@ -10,7 +10,8 @@ namespace EasyPost.Services
     // ReSharper disable once ClassNeverInstantiated.Global
     public class BatchService : EasyPostService
     {
-        internal BatchService(EasyPostClient client) : base(client)
+        internal BatchService(EasyPostClient client)
+            : base(client)
         {
         }
 
@@ -66,10 +67,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.BatchCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
-        {
-            return await List<BatchCollection>("batches", parameters);
-        }
+        public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null) => await List<BatchCollection>("batches", parameters);
 
         /// <summary>
         ///     Retrieve a Batch from its id.
@@ -77,10 +75,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Batch. Starts with "batch_".</param>
         /// <returns>EasyPost.Batch instance.</returns>
         [CrudOperations.Read]
-        public async Task<Batch> Retrieve(string id)
-        {
-            return await Get<Batch>($"batches/{id}");
-        }
+        public async Task<Batch> Retrieve(string id) => await Get<Batch>($"batches/{id}");
 
         #endregion
     }

@@ -1,3 +1,4 @@
+using System;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Utilities;
@@ -13,38 +14,29 @@ namespace EasyPost.Models.API
     {
         #region JSON Properties
 
-        // bank_account
         [JsonProperty("bank_name")]
-        public string? BankName { get; set; }
-        // credit_card
+        public string? BankName { get; set; } // bank_account
         [JsonProperty("brand")]
-        public string? Brand { get; set; }
-        // bank_account
+        public string? Brand { get; set; } // credit_card
         [JsonProperty("country")]
-        public string? Country { get; set; }
-        // both
+        public string? Country { get; set; } // bank_account
         [JsonProperty("disabled_at")]
-        public string? DisabledAt { get; set; }
-        // credit_card
+        public string? DisabledAt { get; set; } // both
         [JsonProperty("exp_month")]
-        public int? ExpMonth { get; set; }
-        // credit_card
+        public int? ExpMonth { get; set; } // credit_card
         [JsonProperty("exp_year")]
-        public int? ExpYear { get; set; }
-        // both
+        public int? ExpYear { get; set; } // credit_card
         [JsonProperty("last4")]
-        public string? Last4 { get; set; }
-        // credit_card
+        public string? Last4 { get; set; } // both
         [JsonProperty("name")]
-        public string? Name { get; set; }
-        // bank_account
+        public string? Name { get; set; } // credit_card
         [JsonProperty("verified")]
-        public bool? Verified { get; set; }
+        public bool? Verified { get; set; } // bank_account
 
         #endregion
 
         /// <summary>
-        ///     Get what type of payment method this is (credit card, bank account, etc.)
+        ///     Gets what type of payment method this is (credit card, bank account, etc.)
         /// </summary>
         public PaymentMethodType? Type
         {
@@ -56,12 +48,11 @@ namespace EasyPost.Models.API
                     return null;
                 }
 
-                if (Id.StartsWith("card_"))
+                if (Id.StartsWith("card_", StringComparison.InvariantCulture))
                 {
                     type = PaymentMethodType.CreditCard;
                 }
-
-                else if (Id.StartsWith("bank_"))
+                else if (Id.StartsWith("bank_", StringComparison.InvariantCulture))
                 {
                     type = PaymentMethodType.BankAccount;
                 }
@@ -77,7 +68,7 @@ namespace EasyPost.Models.API
                 if (Type == null)
                 {
 #pragma warning disable CA1507 // IDE doesn't understand what I'm doing here
-                    throw new MissingPropertyError(this, "Type");
+                    throw new MissingPropertyError(this, nameof(Type));
 #pragma warning restore CA1507
                 }
 
@@ -90,14 +81,15 @@ namespace EasyPost.Models.API
         }
 
         /// <summary>
-        ///     Payment method priority
+        ///     Payment method priority.
         /// </summary>
         public class Priority : ValueEnum
         {
-            public static readonly Priority Primary = new Priority(1, "Primary");
-            public static readonly Priority Secondary = new Priority(2, "Secondary");
+            public static readonly Priority Primary = new(1, "Primary");
+            public static readonly Priority Secondary = new(2, "Secondary");
 
-            private Priority(int id, object value) : base(id, value)
+            private Priority(int id, object value)
+                : base(id, value)
             {
             }
         }

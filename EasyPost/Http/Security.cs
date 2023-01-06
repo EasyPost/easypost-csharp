@@ -8,13 +8,12 @@ namespace EasyPost.Http
         ///     Get the TLS protocol version to use for the request.
         /// </summary>
         /// <returns>SecurityProtocolType TLS version enum.</returns>
-        public static SecurityProtocolType GetProtocol()
-        {
+        internal static SecurityProtocolType GetProtocol() =>
 #if NET45
-            return SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            SecurityProtocolType.Tls12;
 #else
-            return (SecurityProtocolType)0x00000C00;
+            (SecurityProtocolType)0x00000C00;
 #endif
-        }
+
     }
 }

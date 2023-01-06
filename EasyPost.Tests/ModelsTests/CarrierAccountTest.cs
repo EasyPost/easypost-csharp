@@ -38,7 +38,8 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("update");
 
-            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
+            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(Fixtures.BasicCarrierAccount);
+            CleanUpAfterTest(carrierAccount.Id);
 
             const string testDescription = "my custom description";
 
@@ -57,7 +58,8 @@ namespace EasyPost.Tests.ModelsTests
         {
             UseVCR("delete");
 
-            CarrierAccount carrierAccount = await CreateBasicCarrierAccount();
+            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(Fixtures.BasicCarrierAccount);
+            CleanUpAfterTest(carrierAccount.Id);
 
             Exception? possibleException = await Record.ExceptionAsync(async () => await carrierAccount.Delete());
 
@@ -69,13 +71,5 @@ namespace EasyPost.Tests.ModelsTests
         #endregion
 
         #endregion
-
-        private async Task<CarrierAccount> CreateBasicCarrierAccount()
-        {
-            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(Fixtures.BasicCarrierAccount);
-            CleanUpAfterTest(carrierAccount.Id);
-
-            return carrierAccount;
-        }
     }
 }
