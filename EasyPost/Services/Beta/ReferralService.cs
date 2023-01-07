@@ -44,7 +44,6 @@ namespace EasyPost.Services.Beta
                 },
             };
 
-            // Client is already configured with the Referral Customer's API key at this point.
             return await Request<PaymentMethod>(Method.Post, "referral_customers/payment_method", parameters, overrideApiVersion: ApiVersion.Beta);
         }
 

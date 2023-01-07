@@ -12,7 +12,7 @@ namespace EasyPost.Models.API.Beta
         public int? RefundedAmount { get; set; }
 
         // ReSharper disable once StringLiteralTypo
-        [JsonProperty("refundedAmountCurrencys")]
+        [JsonProperty("refunded_amount_currencys")]
         public string? RefundedAmountCurrencies { get; set; }
         [JsonProperty("refunded_payment_logs")]
         public List<string>? RefundedPaymentLogIds { get; set; }
