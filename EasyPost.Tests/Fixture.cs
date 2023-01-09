@@ -86,7 +86,7 @@ namespace EasyPost.Tests._Utilities
 
         internal static string PickupService => GetFixtureStructure().ServiceNames.Usps.PickupService;
 
-        internal static Dictionary<string, object> ReferralUser => GetFixtureStructure().Users.Referral;
+        internal static Dictionary<string, object> ReferralCustomer => GetFixtureStructure().Users.Referral;
 
         internal static string ReportDate => "2022-04-12";
 

@@ -45,7 +45,7 @@ namespace EasyPost.Tests.ServicesTests
             List<Rate> rates = new()
             {
                 new Rate { Price = "100.00" },
-                new Rate { Price = "1.00" }
+                new Rate { Price = "1.00" },
             };
 
             Rate lowestRate = Client.Rate.GetLowestRate(rates);

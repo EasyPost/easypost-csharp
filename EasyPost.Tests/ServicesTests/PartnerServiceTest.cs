@@ -30,7 +30,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create_referral");
 
-            ReferralCustomer referralCustomer = await Client.Partner.CreateReferral(Fixtures.ReferralUser);
+            ReferralCustomer referralCustomer = await Client.Partner.CreateReferral(Fixtures.ReferralCustomer);
 
             Assert.NotNull(referralCustomer);
             Assert.IsType<ReferralCustomer>(referralCustomer);
@@ -83,7 +83,7 @@ namespace EasyPost.Tests.ServicesTests
 
             CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
 
-            PaymentMethod paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary);
+            PaymentMethod paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralCustomerKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary);
 
             Assert.NotNull(paymentMethod);
             Assert.IsType<PaymentMethod>(paymentMethod);
@@ -122,17 +122,17 @@ namespace EasyPost.Tests.ServicesTests
 
             PaymentMethod.Priority? priority = PaymentMethod.Priority.Primary;
 
-            PaymentMethod paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, priority);
+            PaymentMethod paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralCustomerKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, priority);
             Assert.NotNull(paymentMethod);
             // If we've gotten here, no internal errors occurred on the method.
 
             // Test with other priorities.
             priority = PaymentMethod.Priority.Secondary;
-            paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, priority);
+            paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralCustomerKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, priority);
             Assert.NotNull(paymentMethod);
 
             priority = null; // Should internally default to primary priority if not specified.
-            paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, priority);
+            paymentMethod = await Client.Partner.AddCreditCardToUser(ReferralCustomerKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, priority);
             Assert.NotNull(paymentMethod);
         }
 
@@ -152,7 +152,7 @@ namespace EasyPost.Tests.ServicesTests
 
             CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
 
-            await Assert.ThrowsAsync<InternalServerError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
+            await Assert.ThrowsAsync<InternalServerError>(async () => await Client.Partner.AddCreditCardToUser(ReferralCustomerKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
         }
 
         [Fact]
@@ -169,7 +169,7 @@ namespace EasyPost.Tests.ServicesTests
 
             CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
 
-            await Assert.ThrowsAsync<InternalServerError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
+            await Assert.ThrowsAsync<InternalServerError>(async () => await Client.Partner.AddCreditCardToUser(ReferralCustomerKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
         }
 
         [Fact]
@@ -190,7 +190,7 @@ namespace EasyPost.Tests.ServicesTests
 
             CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
 
-            await Assert.ThrowsAsync<ExternalApiError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
+            await Assert.ThrowsAsync<ExternalApiError>(async () => await Client.Partner.AddCreditCardToUser(ReferralCustomerKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
         }
 
         [Fact]
@@ -211,7 +211,7 @@ namespace EasyPost.Tests.ServicesTests
 
             CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
 
-            await Assert.ThrowsAsync<ExternalApiError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
+            await Assert.ThrowsAsync<ExternalApiError>(async () => await Client.Partner.AddCreditCardToUser(ReferralCustomerKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
         }
 
         [Fact]
@@ -232,7 +232,7 @@ namespace EasyPost.Tests.ServicesTests
 
             CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
 
-            await Assert.ThrowsAsync<ExternalApiError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
+            await Assert.ThrowsAsync<ExternalApiError>(async () => await Client.Partner.AddCreditCardToUser(ReferralCustomerKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
         }
 
         [Fact]
@@ -257,7 +257,7 @@ namespace EasyPost.Tests.ServicesTests
 
             CreditCard card = new CreditCard(Fixtures.CreditCardDetails);
 
-            await Assert.ThrowsAsync<NotFoundError>(async () => await Client.Partner.AddCreditCardToUser(ReferralUserKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
+            await Assert.ThrowsAsync<NotFoundError>(async () => await Client.Partner.AddCreditCardToUser(ReferralCustomerKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
 
             // Assert that the original API key was restored to the client properly even after the failed request
             Assert.Equal(TestUtils.GetApiKey(TestUtils.ApiKey.Mock), Client.Configuration.ApiKey);
@@ -270,7 +270,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("update_referral_email");
 
-            ReferralCustomer referralCustomer = await Client.Partner.CreateReferral(Fixtures.ReferralUser);
+            ReferralCustomer referralCustomer = await Client.Partner.CreateReferral(Fixtures.ReferralCustomer);
 
             Exception? possibleException = await Record.ExceptionAsync(async () => await Client.Partner.UpdateReferralEmail(referralCustomer.Id, "email@example.com"));
 
@@ -281,7 +281,7 @@ namespace EasyPost.Tests.ServicesTests
 
         #endregion
 
-        private static string ReferralUserKey => TestUtils.GetApiKey(TestUtils.ApiKey.Referral);
+        private static string ReferralCustomerKey => TestUtils.GetApiKey(TestUtils.ApiKey.Referral);
 
         private class CreditCard
         {

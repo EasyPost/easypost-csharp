@@ -64,7 +64,7 @@ namespace EasyPost.Tests._Utilities
                 ApiKey.Test => "EASYPOST_TEST_API_KEY",
                 ApiKey.Production => "EASYPOST_PROD_API_KEY",
                 ApiKey.Partner => "PARTNER_USER_PROD_API_KEY",
-                ApiKey.Referral => "REFERRAL_USER_PROD_API_KEY",
+                ApiKey.Referral => "REFERRAL_CUSTOMER_PROD_API_KEY",
                 ApiKey.Mock => "EASYPOST_MOCK_API_KEY", // does not exist, will trigger to use ApiKeyFailedToPull
 #pragma warning disable CA2201
                 var _ => throw new Exception(Constants.ErrorMessages.InvalidApiKeyType)
