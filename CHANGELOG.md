@@ -1,11 +1,12 @@
 # CHANGELOG
 
-## [Unreleased]
+## v4.2.0 (2023-01-11)
 
-- Added new beta billing functionality for referral customer users, accessible via `myClient.Beta.Referral` service.
-  - `AddPaymentMethod` to add an existing Stripe bank account or credit card to your EasyPost account.
-  - `RefundByAmount` refunds you wallet balance by a specified amount.
-  - `RefundByPaymentLog` refunds you wallet balance by a specified payment log.
+- Added new beta billing functionality for referral customer users, accessible via `myClient.Beta.Referral` service
+  - `AddPaymentMethod` to add an existing Stripe bank account or credit card to your EasyPost account
+  - `RefundByAmount` refunds you wallet balance by a specified amount
+  - `RefundByPaymentLog` refunds you wallet balance by a specified payment log
+- Added new `DeliveryMaxDatetime` Shipment option
 
 ## v4.1.0 (2022-12-07)
 

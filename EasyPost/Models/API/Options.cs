@@ -69,6 +69,8 @@ namespace EasyPost.Models.API
         public string? DeliveryConfirmation { get; set; }
         [JsonProperty("delivery_time_preference")]
         public string? DeliveryTimePreference { get; set; }
+        [JsonProperty("delivery_max_datetime")]
+        public string? DeliveryMaxDatetime { get; set; }
         [JsonProperty("dropoff_max_datetime")]
         public DateTime? DropoffMaxDatetime { get; set; }
         [JsonProperty("dropoff_type")]
