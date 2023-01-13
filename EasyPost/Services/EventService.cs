@@ -56,7 +56,8 @@ namespace EasyPost.Services
         /// <param name="event"><see cref="Event"/> to retrieve payload for.</param>
         /// <param name="payloadId">ID of payload to retrieve.</param>
         /// <returns>A <see cref="Payload"/> object.</returns>
-        /// <exception cref="InvalidRequestError">Thrown if the specified payload is not found.</exception>
+        /// <exception cref="InvalidRequestError">Thrown if the specified payload ID is malformed.</exception>
+        /// <exception cref="NotFoundError">Thrown if the specified payload is not found.</exception>
         public async Task<Payload> RetrievePayloadForEvent(Event @event, string payloadId)
         {
             try
@@ -65,9 +66,9 @@ namespace EasyPost.Services
             }
             catch (InternalServerError)
             {
-                // The API returns a 500 error when the payload is not found.
+                // The API returns a 500 error if the payload ID is malformed.
                 // This is a catch clause to instead throw a more appropriate exception.
-                throw new InvalidRequestError($"Payload with id {payloadId} not found for event {@event.Id}.", 422);
+                throw new InvalidRequestError($"Payload ID is invalid length.", 422);
             }
         }
 

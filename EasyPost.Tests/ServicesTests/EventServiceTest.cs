@@ -120,6 +120,9 @@ namespace EasyPost.Tests.ServicesTests
             // Retrieve a specific payload for the event
             // Payload does not exist due to queueing, so this will throw an exception
             // invalid payload should throw an exception
+            await Assert.ThrowsAsync<NotFoundError>(async () => await Client.Event.RetrievePayloadForEvent(@event, "payload_11111111111111111111111111111111"));
+
+            // Invalid payload ID length will throw a 500, library remaps this to a 422
             await Assert.ThrowsAsync<InvalidRequestError>(async () => await Client.Event.RetrievePayloadForEvent(@event, "payload_123"));
         }
 
