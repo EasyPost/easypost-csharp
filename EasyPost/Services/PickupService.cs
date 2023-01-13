@@ -49,6 +49,30 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<Pickup> Retrieve(string id) => await Get<Pickup>($"pickups/{id}");
 
+        /// <summary>
+        ///     Get a paginated list of <see cref="Pickup"/>s.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
+        ///     * {"before_id", string} String representing a Shipment. Starts with "shp_". Only retrieve shipments created before
+        ///     this id. Takes precedence over after_id.
+        ///     * {"after_id", string} String representing a Shipment. Starts with "shp_". Only retrieve shipments created after
+        ///     this id.
+        ///     * {"start_datetime", DateTime} Starting time for the search.
+        ///     * {"end_datetime", DateTime} Ending time for the search.
+        ///     * {"page_size", int} Size of page. Default to 20.
+        ///     * {"purchased", bool} If true only display purchased shipments.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>An <see cref="PickupCollection"/> object.</returns>
+        [CrudOperations.Read]
+        public async Task<PickupCollection> All(Dictionary<string, object>? parameters = null)
+        {
+            PickupCollection pickupCollection = await List<PickupCollection>("pickups", parameters);
+            pickupCollection.Client = Client;
+            return pickupCollection;
+        }
+
         #endregion
     }
 }
