@@ -48,7 +48,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="event"><see cref="Event"/> to retrieve payloads for.</param>
         /// <returns>A list of <see cref="Payload"/> objects.</returns>
-        public async Task<List<Payload>> RetrievePayloadsForEvent(Event @event) => await Get<List<Payload>>($"events/{@event.Id}/payloads", rootElement: "payloads");
+        public async Task<List<Payload>> RetrieveAllPayloadsForEvent(Event @event) => await Get<List<Payload>>($"events/{@event.Id}/payloads", rootElement: "payloads");
 
         /// <summary>
         ///     Retrieve a specific <see cref="Payload"/> for an <see cref="Event"/>.
@@ -58,19 +58,7 @@ namespace EasyPost.Services
         /// <returns>A <see cref="Payload"/> object.</returns>
         /// <exception cref="InvalidRequestError">Thrown if the specified payload ID is malformed.</exception>
         /// <exception cref="NotFoundError">Thrown if the specified payload is not found.</exception>
-        public async Task<Payload> RetrievePayloadForEvent(Event @event, string payloadId)
-        {
-            try
-            {
-                return await Get<Payload>($"events/{@event.Id}/payloads/{payloadId}");
-            }
-            catch (InternalServerError)
-            {
-                // The API returns a 500 error if the payload ID is malformed.
-                // This is a catch clause to instead throw a more appropriate exception.
-                throw new InvalidRequestError($"Payload ID is invalid length.", 422);
-            }
-        }
+        public async Task<Payload> RetrievePayloadForEvent(Event @event, string payloadId) => await Get<Payload>($"events/{@event.Id}/payloads/{payloadId}");
 
         #endregion
     }

@@ -90,7 +90,7 @@ namespace EasyPost.Tests.ServicesTests
             Event @event = eventCollection.Events[0];
 
             // Retrieve the payloads for the event
-            List<Payload> retrievedPayloads = await Client.Event.RetrievePayloadsForEvent(@event);
+            List<Payload> retrievedPayloads = await Client.Event.RetrieveAllPayloadsForEvent(@event);
 
             Assert.IsType<List<Payload>>(retrievedPayloads);
         }
@@ -122,8 +122,8 @@ namespace EasyPost.Tests.ServicesTests
             // invalid payload should throw an exception
             await Assert.ThrowsAsync<NotFoundError>(async () => await Client.Event.RetrievePayloadForEvent(@event, "payload_11111111111111111111111111111111"));
 
-            // Invalid payload ID length will throw a 500, library remaps this to a 422
-            await Assert.ThrowsAsync<InvalidRequestError>(async () => await Client.Event.RetrievePayloadForEvent(@event, "payload_123"));
+            // Invalid payload ID length will throw a 500
+            await Assert.ThrowsAsync<InternalServerError>(async () => await Client.Event.RetrievePayloadForEvent(@event, "payload_123"));
         }
 
         #endregion
