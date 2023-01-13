@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [Unreleased]
+
+- Added payload functions `RetrievePayloadsForEvent` and `RetrievePayloadForEvent` methods, accessible via `myClient.Event` service.
+
 ## v4.2.0 (2023-01-11)
 
 - Added new beta billing functionality for referral customer users, accessible via `myClient.Beta.Referral` service

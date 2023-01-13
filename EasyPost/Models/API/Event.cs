@@ -23,6 +23,8 @@ namespace EasyPost.Models.API
         public Dictionary<string, object>? Result { get; set; }
         [JsonProperty("status")]
         public string? Status { get; set; }
+        [JsonProperty("user_id")]
+        public string? UserId { get; set; }
 
         #endregion
 

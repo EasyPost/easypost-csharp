@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.API;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 
@@ -41,6 +42,34 @@ namespace EasyPost.Services
         /// <returns>EasyPost.Event instance.</returns>
         [CrudOperations.Read]
         public async Task<Event> Retrieve(string id) => await Get<Event>($"events/{id}");
+
+        /// <summary>
+        ///     Retrieve all <see cref="Payload"/>s for an <see cref="Event"/>.
+        /// </summary>
+        /// <param name="event"><see cref="Event"/> to retrieve payloads for.</param>
+        /// <returns>A list of <see cref="Payload"/> objects.</returns>
+        public async Task<List<Payload>> RetrievePayloadsForEvent(Event @event) => await Get<List<Payload>>($"events/{@event.Id}/payloads", rootElement: "payloads");
+
+        /// <summary>
+        ///     Retrieve a specific <see cref="Payload"/> for an <see cref="Event"/>.
+        /// </summary>
+        /// <param name="event"><see cref="Event"/> to retrieve payload for.</param>
+        /// <param name="payloadId">ID of payload to retrieve.</param>
+        /// <returns>A <see cref="Payload"/> object.</returns>
+        /// <exception cref="InvalidRequestError">Thrown if the specified payload is not found.</exception>
+        public async Task<Payload> RetrievePayloadForEvent(Event @event, string payloadId)
+        {
+            try
+            {
+                return await Get<Payload>($"events/{@event.Id}/payloads/{payloadId}");
+            }
+            catch (InternalServerError)
+            {
+                // The API returns a 500 error when the payload is not found.
+                // This is a catch clause to instead throw a more appropriate exception.
+                throw new InvalidRequestError($"Payload with id {payloadId} not found for event {@event.Id}.", 422);
+            }
+        }
 
         #endregion
     }
