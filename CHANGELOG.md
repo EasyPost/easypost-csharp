@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [Unreleased]
+
+- Added function to retrieve all pickups via `myClient.Pickup.All()`
+
 ## v4.2.0 (2023-01-11)
 
 - Added new beta billing functionality for referral customer users, accessible via `myClient.Beta.Referral` service

@@ -55,6 +55,25 @@ namespace EasyPost.Tests.ServicesTests
             Assert.Equal(pickup.Id, retrievedPickup.Id);
         }
 
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Function]
+        public async Task TestAll()
+        {
+            UseVCR("all");
+
+            PickupCollection pickupCollection = await Client.Pickup.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
+
+            List<Pickup> pickups = pickupCollection.Pickups;
+
+            Assert.True(pickupCollection.HasMore);
+            Assert.True(pickups.Count <= Fixtures.PageSize);
+            foreach (Pickup pickup in pickups)
+            {
+                Assert.IsType<Pickup>(pickup);
+            }
+        }
+
         #endregion
 
         #endregion

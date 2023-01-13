@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Models.Shared;
 using EasyPost.Utilities.Annotations;
 using Newtonsoft.Json;
 using RestSharp;
@@ -104,5 +105,19 @@ namespace EasyPost.Models.API
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest EasyPost.PickupRate object instance.</returns>
         public PickupRate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => (PickupRate)Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+    }
+
+    public class PickupCollection : Collection
+    {
+        #region JSON Properties
+
+        [JsonProperty("pickups")]
+        public List<Pickup>? Pickups { get; set; }
+
+        #endregion
+
+        internal PickupCollection()
+        {
+        }
     }
 }
