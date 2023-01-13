@@ -82,17 +82,19 @@ namespace EasyPost.Tests.ServicesTests
             // Create a batch to trigger an event
             Batch _ = await Client.Batch.Create(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixtures.BasicShipment } } });
 
-            // Wait for the event to be created
-            await Task.Delay(5000);
+            if (IsRecording())
+            {
+                await Task.Delay(5000); // Wait for the event to be created
+            }
 
             // Retrieve all events and extract the newest one
             EventCollection eventCollection = await Client.Event.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
             Event @event = eventCollection.Events[0];
 
             // Retrieve the payloads for the event
-            List<Payload> retrievedPayloads = await Client.Event.RetrieveAllPayloadsForEvent(@event);
+            List<Payload> payloads = await Client.Event.RetrieveAllPayloadsForEvent(@event);
 
-            Assert.IsType<List<Payload>>(retrievedPayloads);
+            Assert.IsType<List<Payload>>(payloads);
         }
 
         [Fact]
@@ -110,8 +112,10 @@ namespace EasyPost.Tests.ServicesTests
             // Create a batch to trigger an event
             Batch _ = await Client.Batch.Create(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixtures.BasicShipment } } });
 
-            // Wait for the event to be created
-            await Task.Delay(5000);
+            if (IsRecording())
+            {
+                await Task.Delay(5000); // Wait for the event to be created
+            }
 
             // Retrieve all events and extract the newest one
             EventCollection eventCollection = await Client.Event.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
