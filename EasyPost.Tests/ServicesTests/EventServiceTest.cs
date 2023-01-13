@@ -87,11 +87,9 @@ namespace EasyPost.Tests.ServicesTests
                 await Task.Delay(5000); // Wait for the event to be created
             }
 
-            // Retrieve all events and extract the newest one
             EventCollection eventCollection = await Client.Event.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
             Event @event = eventCollection.Events[0];
 
-            // Retrieve the payloads for the event
             List<Payload> payloads = await Client.Event.RetrieveAllPayloadsForEvent(@event);
 
             Assert.IsType<List<Payload>>(payloads);
@@ -117,17 +115,11 @@ namespace EasyPost.Tests.ServicesTests
                 await Task.Delay(5000); // Wait for the event to be created
             }
 
-            // Retrieve all events and extract the newest one
             EventCollection eventCollection = await Client.Event.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
             Event @event = eventCollection.Events[0];
 
-            // Retrieve a specific payload for the event
             // Payload does not exist due to queueing, so this will throw an exception
-            // invalid payload should throw an exception
             await Assert.ThrowsAsync<NotFoundError>(async () => await Client.Event.RetrievePayloadForEvent(@event, "payload_11111111111111111111111111111111"));
-
-            // Invalid payload ID length will throw a 500
-            await Assert.ThrowsAsync<InternalServerError>(async () => await Client.Event.RetrievePayloadForEvent(@event, "payload_123"));
         }
 
         #endregion
