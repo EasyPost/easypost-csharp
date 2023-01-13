@@ -70,7 +70,7 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
-        public async Task TestRetrievePayloadsForEvent()
+        public async Task TestRetrieveAllPayloadsForEvent()
         {
             UseVCR("retrieve_payloads_for_event");
 

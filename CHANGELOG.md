@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-- Added payload functions `RetrievePayloadsForEvent` and `RetrievePayloadForEvent` methods, accessible via `myClient.Event` service.
+- Added payload functions `RetrieveAllPayloadsForEvent` and `RetrievePayloadForEvent` methods, accessible via `myClient.Event` service.
 
 ## v4.2.0 (2023-01-11)
 
