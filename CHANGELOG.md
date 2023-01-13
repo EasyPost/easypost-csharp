@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 - Added payload functions `RetrieveAllPayloadsForEvent` and `RetrievePayloadForEvent` methods, accessible via `myClient.Event` service.
+- Added function to retrieve all pickups via `myClient.Pickup.All()`
 
 ## v4.2.0 (2023-01-11)
 

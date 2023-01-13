@@ -1,0 +1,51 @@
+[
+  {
+    "Duration": 668,
+    "RecordedAt": "2023-01-13T12:20:18.742716-07:00",
+    "Request": {
+      "Body": "",
+      "BodyContentType": "Text",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/pickups?page_size=5"
+    },
+    "Response": {
+      "Body": "{\"pickups\":[{\"id\":\"pickup_e502e5a7a88149b98a78c614ee709ef5\",\"object\":\"Pickup\",\"created_at\":\"2022-11-13T23:18:45Z\",\"updated_at\":\"2022-11-13T23:18:45Z\",\"mode\":\"test\",\"status\":\"unknown\",\"reference\":null,\"min_datetime\":\"2022-11-14T00:00:00Z\",\"max_datetime\":\"2022-11-14T00:00:00Z\",\"is_account_address\":false,\"instructions\":\"Pickup at front door\",\"messages\":[],\"confirmation\":null,\"address\":{\"id\":\"adr_8570c33063a911ed8668ac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2022-11-13T16:18:45-07:00\",\"updated_at\":\"2022-11-13T16:18:45-07:00\",\"name\":\"Jack Sparrow\",\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"carrier_accounts\":[],\"pickup_rates\":[{\"mode\":\"test\",\"service\":\"NextDay\",\"rate\":\"0.00\",\"currency\":\"USD\",\"created_at\":\"2022-11-13T23:18:46Z\",\"updated_at\":\"2022-11-13T23:18:46Z\",\"carrier\":\"USPS\",\"pickup_id\":\"pickup_e502e5a7a88149b98a78c614ee709ef5\",\"id\":\"pickuprate_9ecb8d2b520348fba30206d89f734f30\",\"object\":\"PickupRate\"}]},{\"id\":\"pickup_1e11bfc578d64ba18b9b5783a760c046\",\"object\":\"Pickup\",\"created_at\":\"2022-11-13T23:18:43Z\",\"updated_at\":\"2022-11-13T23:18:43Z\",\"mode\":\"test\",\"status\":\"unknown\",\"reference\":null,\"min_datetime\":\"2022-11-14T00:00:00Z\",\"max_datetime\":\"2022-11-14T00:00:00Z\",\"is_account_address\":false,\"instructions\":\"Pickup at front door\",\"messages\":[],\"confirmation\":null,\"address\":{\"id\":\"adr_842d1f3863a911eda2e2ac1f6bc7b362\",\"object\":\"Address\",\"created_at\":\"2022-11-13T16:18:43-07:00\",\"updated_at\":\"2022-11-13T16:18:43-07:00\",\"name\":\"Jack Sparrow\",\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"carrier_accounts\":[],\"pickup_rates\":[{\"mode\":\"test\",\"service\":\"NextDay\",\"rate\":\"0.00\",\"currency\":\"USD\",\"created_at\":\"2022-11-13T23:18:44Z\",\"updated_at\":\"2022-11-13T23:18:44Z\",\"carrier\":\"USPS\",\"pickup_id\":\"pickup_1e11bfc578d64ba18b9b5783a760c046\",\"id\":\"pickuprate_22106ff939e44fea8be279855a3b557e\",\"object\":\"PickupRate\"}]},{\"id\":\"pickup_1237f666ecfd4d05b9f990ee23b9c3a8\",\"object\":\"Pickup\",\"created_at\":\"2022-11-13T23:18:39Z\",\"updated_at\":\"2022-11-13T23:18:41Z\",\"mode\":\"test\",\"status\":\"canceled\",\"reference\":null,\"min_datetime\":\"2022-11-14T00:00:00Z\",\"max_datetime\":\"2022-11-14T00:00:00Z\",\"is_account_address\":false,\"instructions\":\"Pickup at front door\",\"messages\":[],\"confirmation\":\"WTC62387304\",\"address\":{\"id\":\"adr_8197cf3f63a911eda27fac1f6bc7b362\",\"object\":\"Address\",\"created_at\":\"2022-11-13T16:18:39-07:00\",\"updated_at\":\"2022-11-13T16:18:39-07:00\",\"name\":\"Jack Sparrow\",\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"carrier_accounts\":[],\"pickup_rates\":[{\"mode\":\"test\",\"service\":\"NextDay\",\"rate\":\"0.00\",\"currency\":\"USD\",\"created_at\":\"2022-11-13T23:18:39Z\",\"updated_at\":\"2022-11-13T23:18:39Z\",\"carrier\":\"USPS\",\"pickup_id\":\"pickup_1237f666ecfd4d05b9f990ee23b9c3a8\",\"id\":\"pickuprate_bbbfa685bda747a28a0fc935ab6ef268\",\"object\":\"PickupRate\"}]},{\"id\":\"pickup_bb966affa6f74463806d05acbcd7fdd3\",\"object\":\"Pickup\",\"created_at\":\"2022-11-13T23:18:36Z\",\"updated_at\":\"2022-11-13T23:18:38Z\",\"mode\":\"test\",\"status\":\"scheduled\",\"reference\":null,\"min_datetime\":\"2022-11-14T00:00:00Z\",\"max_datetime\":\"2022-11-14T00:00:00Z\",\"is_account_address\":false,\"instructions\":\"Pickup at front door\",\"messages\":[],\"confirmation\":\"WTC62387302\",\"address\":{\"id\":\"adr_7fc90e1963a911edac27ac1f6bc7bdc6\",\"object\":\"Address\",\"created_at\":\"2022-11-13T16:18:36-07:00\",\"updated_at\":\"2022-11-13T16:18:36-07:00\",\"name\":\"Jack Sparrow\",\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"carrier_accounts\":[],\"pickup_rates\":[{\"mode\":\"test\",\"service\":\"NextDay\",\"rate\":\"0.00\",\"currency\":\"USD\",\"created_at\":\"2022-11-13T23:18:37Z\",\"updated_at\":\"2022-11-13T23:18:37Z\",\"carrier\":\"USPS\",\"pickup_id\":\"pickup_bb966affa6f74463806d05acbcd7fdd3\",\"id\":\"pickuprate_2d51a6dc43e94047b5c8a82341a09ae0\",\"object\":\"PickupRate\"}]},{\"id\":\"pickup_a38a6eeac3764cbdb940a23637cc5cc9\",\"object\":\"Pickup\",\"created_at\":\"2022-11-13T23:18:34Z\",\"updated_at\":\"2022-11-13T23:18:34Z\",\"mode\":\"test\",\"status\":\"unknown\",\"reference\":null,\"min_datetime\":\"2022-11-14T00:00:00Z\",\"max_datetime\":\"2022-11-14T00:00:00Z\",\"is_account_address\":false,\"instructions\":\"Pickup at front door\",\"messages\":[],\"confirmation\":null,\"address\":{\"id\":\"adr_7e804e3e63a911ed8535ac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2022-11-13T16:18:34-07:00\",\"updated_at\":\"2022-11-13T16:18:34-07:00\",\"name\":\"Jack Sparrow\",\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"carrier_accounts\":[],\"pickup_rates\":[{\"mode\":\"test\",\"service\":\"NextDay\",\"rate\":\"0.00\",\"currency\":\"USD\",\"created_at\":\"2022-11-13T23:18:34Z\",\"updated_at\":\"2022-11-13T23:18:34Z\",\"carrier\":\"USPS\",\"pickup_id\":\"pickup_a38a6eeac3764cbdb940a23637cc5cc9\",\"id\":\"pickuprate_d3304359b7244d149b66f97ad04a1f38\",\"object\":\"PickupRate\"}]}],\"has_more\":true}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "5840"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "3ac9ec2d63c1aef2e78b9b0900059969",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "ETag": "W/\"e734b25f5236a5892a7cbe0d9f0b7b79\"",
+        "x-runtime": "0.231289",
+        "x-node": "bigweb3nuq",
+        "x-version-label": "easypost-202301131832-957dabd382-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq 29913d444b,extlb2nuq 29913d444b",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  }
+]
