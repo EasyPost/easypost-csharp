@@ -70,7 +70,7 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
-        public async Task TestRetrieveAllPayloadsForEvent()
+        public async Task TestRetrieveAllPayloads()
         {
             UseVCR("retrieve_payloads_for_event");
 
@@ -90,7 +90,7 @@ namespace EasyPost.Tests.ServicesTests
             EventCollection eventCollection = await Client.Event.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
             Event @event = eventCollection.Events[0];
 
-            List<Payload> payloads = await Client.Event.RetrieveAllPayloadsForEvent(@event);
+            List<Payload> payloads = await Client.Event.RetrieveAllPayloads(@event.Id);
 
             Assert.IsType<List<Payload>>(payloads);
         }
@@ -98,7 +98,7 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
-        public async Task TestRetrievePayloadForEvent()
+        public async Task TestRetrievePayload()
         {
             UseVCR("retrieve_payload_for_event");
 
@@ -119,7 +119,7 @@ namespace EasyPost.Tests.ServicesTests
             Event @event = eventCollection.Events[0];
 
             // Payload does not exist due to queueing, so this will throw an exception
-            await Assert.ThrowsAsync<NotFoundError>(async () => await Client.Event.RetrievePayloadForEvent(@event, "payload_11111111111111111111111111111111"));
+            await Assert.ThrowsAsync<NotFoundError>(async () => await Client.Event.RetrievePayload(@event.Id, "payload_11111111111111111111111111111111"));
         }
 
         #endregion

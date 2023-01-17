@@ -46,19 +46,19 @@ namespace EasyPost.Services
         /// <summary>
         ///     Retrieve all <see cref="Payload"/>s for an <see cref="Event"/>.
         /// </summary>
-        /// <param name="event"><see cref="Event"/> to retrieve payloads for.</param>
+        /// <param name="eventId">ID of the <see cref="Event"/> to retrieve payloads for.</param>
         /// <returns>A list of <see cref="Payload"/> objects.</returns>
-        public async Task<List<Payload>> RetrieveAllPayloadsForEvent(Event @event) => await Get<List<Payload>>($"events/{@event.Id}/payloads", rootElement: "payloads");
+        public async Task<List<Payload>> RetrieveAllPayloads(string eventId) => await Get<List<Payload>>($"events/{eventId}/payloads", rootElement: "payloads");
 
         /// <summary>
         ///     Retrieve a specific <see cref="Payload"/> for an <see cref="Event"/>.
         /// </summary>
-        /// <param name="event"><see cref="Event"/> to retrieve payload for.</param>
+        /// <param name="eventId">ID of the <see cref="Event"/> to retrieve payload for.</param>
         /// <param name="payloadId">ID of payload to retrieve.</param>
         /// <returns>A <see cref="Payload"/> object.</returns>
         /// <exception cref="InvalidRequestError">Thrown if the specified payload ID is malformed.</exception>
         /// <exception cref="NotFoundError">Thrown if the specified payload is not found.</exception>
-        public async Task<Payload> RetrievePayloadForEvent(Event @event, string payloadId) => await Get<Payload>($"events/{@event.Id}/payloads/{payloadId}");
+        public async Task<Payload> RetrievePayload(string eventId, string payloadId) => await Get<Payload>($"events/{eventId}/payloads/{payloadId}");
 
         #endregion
     }
