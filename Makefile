@@ -49,7 +49,7 @@ install-tools:
 	dotnet new tool-manifest || exit 0
 	dotnet tool install --local security-scan --version 5.6.3 || exit 0
 	dotnet tool install --local dotnet-format || exit 0
-	dotnet tool update -g docfx || exit 0
+	dotnet tool update --local docfx || exit 0
 
 ## install - Install requirements
 install: | install-tools
