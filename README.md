@@ -141,7 +141,9 @@ using the wrong API key when interacting with a resource in a multi-client envir
 
 ## Documentation
 
-API Documentation can be found at: <https://easypost.com/docs/api>. Alternatively, you can view [Fuget](https://fuget.org/packages/EasyPost-Official).
+API documentation can be found at: <https://easypost.com/docs/api>.
+
+Library documentation can be found on the web at [Fuget](https://fuget.org/packages/EasyPost-Official).
 
 Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
 
