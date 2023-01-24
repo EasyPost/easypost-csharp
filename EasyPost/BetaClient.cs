@@ -32,9 +32,6 @@ namespace EasyPost
         /// <param name="baseUrl">Base URL to use with this client.</param>
         /// <param name="customHttpClient">Custom HttpClient to pass into RestSharp if needed.</param>
         internal BetaClient(string apiKey, string? baseUrl = null, HttpClient? customHttpClient = null)
-            : base(apiKey, baseUrl, customHttpClient)
-        {
-            Referral = new ReferralService(this);
-        }
+            : base(apiKey, baseUrl, customHttpClient) => Referral = new ReferralService(this);
     }
 }

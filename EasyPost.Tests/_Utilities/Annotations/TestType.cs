@@ -12,7 +12,7 @@ namespace EasyPost.Tests._Utilities.Annotations
         ///     e.g. public void TestBuy() { ... } should be testing a method called Buy()
         /// </summary>
         [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-        internal class Function : BaseCustomAttribute
+        internal sealed class Function : BaseCustomAttribute
         {
         }
 
@@ -20,7 +20,7 @@ namespace EasyPost.Tests._Utilities.Annotations
         ///     Marks a unit test that is testing logic (such as loops or conditionals).
         /// </summary>
         [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-        internal class Logic : BaseCustomAttribute
+        internal sealed class Logic : BaseCustomAttribute
         {
         }
 
@@ -28,7 +28,7 @@ namespace EasyPost.Tests._Utilities.Annotations
         ///     Marks a unit test that is testing exception handling.
         /// </summary>
         [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-        internal class Exception : BaseCustomAttribute
+        internal sealed class Exception : BaseCustomAttribute
         {
         }
 
@@ -36,7 +36,7 @@ namespace EasyPost.Tests._Utilities.Annotations
         ///     Marks a unit test that is testing properties of an object.
         /// </summary>
         [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-        internal class Properties : BaseCustomAttribute
+        internal sealed class Properties : BaseCustomAttribute
         {
         }
 
@@ -44,7 +44,7 @@ namespace EasyPost.Tests._Utilities.Annotations
         ///     Marks a unit test that is testing "happy path" behavior.
         /// </summary>
         [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-        internal class HappyPath : BaseCustomAttribute
+        internal sealed class HappyPath : BaseCustomAttribute
         {
         }
 
@@ -52,7 +52,7 @@ namespace EasyPost.Tests._Utilities.Annotations
         ///     Marks a unit test that is testing edge cases.
         /// </summary>
         [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-        internal class EdgeCase : BaseCustomAttribute
+        internal sealed class EdgeCase : BaseCustomAttribute
         {
         }
 
@@ -60,7 +60,7 @@ namespace EasyPost.Tests._Utilities.Annotations
         ///     Marks a unit test that is testing the same method as another unit test, but with different parameters.
         /// </summary>
         [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-        internal class Parameters : BaseCustomAttribute
+        internal sealed class Parameters : BaseCustomAttribute
         {
         }
 
@@ -68,7 +68,7 @@ namespace EasyPost.Tests._Utilities.Annotations
         ///     Marks a unit test that is doing custom assertions.
         /// </summary>
         [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-        internal class Custom : BaseCustomAttribute
+        internal sealed class Custom : BaseCustomAttribute
         {
         }
     }

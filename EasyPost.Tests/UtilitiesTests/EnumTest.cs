@@ -71,7 +71,7 @@ namespace EasyPost.Tests.UtilitiesTests
 
         #endregion
 
-        internal class TestEnum : Enum
+        internal sealed class TestEnum : Enum
         {
             public static readonly TestEnum A = new(1);
             public static readonly TestEnum B = new(2);
@@ -82,7 +82,7 @@ namespace EasyPost.Tests.UtilitiesTests
             }
         }
 
-        internal class TestValueEnum : ValueEnum
+        internal sealed class TestValueEnum : ValueEnum
         {
             public static readonly TestValueEnum A = new(1, "A");
             public static readonly TestValueEnum B = new(2, "B");

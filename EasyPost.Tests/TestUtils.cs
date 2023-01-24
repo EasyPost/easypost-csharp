@@ -204,7 +204,7 @@ namespace EasyPost.Tests._Utilities
             }
         }
 
-        internal class MockClient : Client
+        internal sealed class MockClient : Client
         {
             private readonly List<MockRequest> _mockRequests = new();
 

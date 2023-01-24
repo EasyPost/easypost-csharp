@@ -283,7 +283,7 @@ namespace EasyPost.Tests.ServicesTests
 
         private static string ReferralCustomerKey => TestUtils.GetApiKey(TestUtils.ApiKey.Referral);
 
-        private class CreditCard
+        private sealed class CreditCard
         {
             internal readonly string Number;
 
