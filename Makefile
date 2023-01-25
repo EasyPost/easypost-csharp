@@ -29,6 +29,11 @@ coverage:
 coverage-check:
 	./check_coverage.sh
 
+## docs - Generates library documentation
+docs:
+	docfx docs/docfx.json
+	git add docs/*
+
 ## format - Formats the project
 format:
 	dotnet dotnet-format --no-restore
@@ -45,6 +50,7 @@ install-tools:
 	dotnet new tool-manifest || exit 0
 	dotnet tool install --local security-scan --version 5.6.3 || exit 0
 	dotnet tool install --local dotnet-format || exit 0
+	dotnet tool install --local docfx || exit 0
 
 ## install - Install requirements
 install: | install-tools
@@ -119,4 +125,4 @@ test-fw:
 uninstall-scanner:
 	dotnet tool uninstall security-scan
 
-.PHONY: help build build-test-fw build-prod clean coverage coverage-check format install-cert install-tools install lint lint-scripts pre-release publish-all publish release restore scan setup-win setup-unix sign test test-fw uninstall-scanner
+.PHONY: help build build-test-fw build-prod clean coverage coverage-check docs format install-cert install-tools install lint lint-scripts pre-release publish-all publish release restore scan setup-win setup-unix sign test test-fw uninstall-scanner
