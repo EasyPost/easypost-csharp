@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API.Beta
 {
-    public class Rate : EphemeralEasyPostObject
+    public class StatelessRate : EphemeralEasyPostObject
     {
         #region JSON Properties
 
@@ -43,7 +43,7 @@ namespace EasyPost.Models.API.Beta
 
         #endregion
 
-        internal Rate()
+        internal StatelessRate()
         {
         }
     }

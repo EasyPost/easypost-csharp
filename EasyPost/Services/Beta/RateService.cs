@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Calculation;
 using EasyPost.Http;
+using EasyPost.Models.API.Beta;
 using EasyPost.Utilities.Annotations;
 
 namespace EasyPost.Services.Beta
@@ -37,12 +38,12 @@ namespace EasyPost.Services.Beta
         ///     * {"carrier_accounts", List&lt;string&gt;} List of CarrierAccount.id to limit rating.
         ///     All invalid keys will be ignored.
         /// </param>
-        /// <returns>A list of <see cref="EasyPost.Models.API.Beta.Rate"/> objects.</returns>
+        /// <returns>A list of <see cref="StatelessRate"/> objects.</returns>
         [CrudOperations.Create]
-        public async Task<List<EasyPost.Models.API.Beta.Rate>> RetrieveStatelessRates(Dictionary<string, object> parameters)
+        public async Task<List<EasyPost.Models.API.Beta.StatelessRate>> RetrieveStatelessRates(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("shipment");
-            return await Create<List<EasyPost.Models.API.Beta.Rate>>("rates", parameters, "rates", ApiVersion.Beta);
+            return await Create<List<EasyPost.Models.API.Beta.StatelessRate>>("rates", parameters, "rates", ApiVersion.Beta);
         }
 
         #endregion
@@ -57,7 +58,7 @@ namespace EasyPost.Services.Beta
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
 #pragma warning disable CA1822
-        public EasyPost.Models.API.Beta.Rate GetLowestEphemeralRate(IEnumerable<EasyPost.Models.API.Beta.Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => Rates.GetLowestEphemeralRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+        public EasyPost.Models.API.Beta.StatelessRate GetLowestEphemeralRate(IEnumerable<EasyPost.Models.API.Beta.StatelessRate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => Rates.GetLowestEphemeralRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
 #pragma warning restore CA1822
     }
 }

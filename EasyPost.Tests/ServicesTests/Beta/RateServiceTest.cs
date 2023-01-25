@@ -28,12 +28,27 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             Dictionary<string, object> data = Fixtures.BasicShipment;
 
-            List<Rate> rates = await Client.Beta.Rate.RetrieveStatelessRates(data);
+            List<StatelessRate> rates = await Client.Beta.Rate.RetrieveStatelessRates(data);
 
-            Assert.IsType<List<Rate>>(rates);
+            Assert.IsType<List<StatelessRate>>(rates);
         }
 
         #endregion
+
+        [Fact]
+        [Testing.Function]
+        public async Task TestGetLowestRateInstanceFunction()
+        {
+            UseVCR("get_lowest_rate_instance_function");
+
+            Dictionary<string, object> data = Fixtures.BasicShipment;
+
+            List<StatelessRate> rates = await Client.Beta.Rate.RetrieveStatelessRates(data);
+
+            StatelessRate lowestStatelessRate = Calculation.Rates.GetLowestEphemeralRate(rates);
+
+            Assert.Equal("First", lowestStatelessRate.Service);
+        }
 
         [Fact]
         [Testing.Function]
@@ -43,11 +58,11 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             Dictionary<string, object> data = Fixtures.BasicShipment;
 
-            List<Rate> rates = await Client.Beta.Rate.RetrieveStatelessRates(data);
+            List<StatelessRate> rates = await Client.Beta.Rate.RetrieveStatelessRates(data);
 
-            Rate lowestRate = Client.Beta.Rate.GetLowestEphemeralRate(rates);
+            StatelessRate lowestStatelessRate = Client.Beta.Rate.GetLowestEphemeralRate(rates);
 
-            Assert.Equal("First", lowestRate.Service);
+            Assert.Equal("First", lowestStatelessRate.Service);
         }
 
         [Fact]
@@ -58,11 +73,11 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             Dictionary<string, object> data = Fixtures.BasicShipment;
 
-            List<Rate> rates = await Client.Beta.Rate.RetrieveStatelessRates(data);
+            List<StatelessRate> rates = await Client.Beta.Rate.RetrieveStatelessRates(data);
 
-            Rate lowestRate = rates.GetLowest();
+            StatelessRate lowestStatelessRate = rates.GetLowest();
 
-            Assert.Equal("First", lowestRate.Service);
+            Assert.Equal("First", lowestStatelessRate.Service);
         }
 
         #endregion
