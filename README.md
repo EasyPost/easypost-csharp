@@ -143,7 +143,7 @@ using the wrong API key when interacting with a resource in a multi-client envir
 
 API documentation can be found at: <https://easypost.com/docs/api>.
 
-Library documentation can be found on the web at [Fuget](https://fuget.org/packages/EasyPost-Official).
+Library documentation can be found on the web at: <https://easypost.github.io/easypost-csharp> or locally on the [`gh-pages` branch](https://github.com/EasyPost/easypost-csharp/tree/gh-pages).
 
 Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
 
