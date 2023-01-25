@@ -1,0 +1,2548 @@
+### YamlMime:ManagedReference
+items:
+- uid: EasyPost.Models.API.PostageLabel
+  commentId: T:EasyPost.Models.API.PostageLabel
+  id: PostageLabel
+  parent: EasyPost.Models.API
+  children:
+  - EasyPost.Models.API.PostageLabel.DateAdvance
+  - EasyPost.Models.API.PostageLabel.IntegratedForm
+  - EasyPost.Models.API.PostageLabel.LabelDate
+  - EasyPost.Models.API.PostageLabel.LabelEpl2Url
+  - EasyPost.Models.API.PostageLabel.LabelFile
+  - EasyPost.Models.API.PostageLabel.LabelFileType
+  - EasyPost.Models.API.PostageLabel.LabelPdfUrl
+  - EasyPost.Models.API.PostageLabel.LabelResolution
+  - EasyPost.Models.API.PostageLabel.LabelSize
+  - EasyPost.Models.API.PostageLabel.LabelType
+  - EasyPost.Models.API.PostageLabel.LabelUrl
+  - EasyPost.Models.API.PostageLabel.LabelZplUrl
+  langs:
+  - csharp
+  - vb
+  name: PostageLabel
+  nameWithType: PostageLabel
+  fullName: EasyPost.Models.API.PostageLabel
+  type: Class
+  source:
+    remote:
+      path: EasyPost/Models/API/PostageLabel.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: PostageLabel
+    path: Models/API/PostageLabel.cs
+    startLine: 6
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Models.API
+  syntax:
+    content: 'public class PostageLabel : EasyPostObject, IEasyPostObject'
+    content.vb: >-
+      Public Class PostageLabel
+
+          Inherits EasyPostObject
+
+          Implements IEasyPostObject
+  inheritance:
+  - System.Object
+  - EasyPost._base.WithClient
+  - EasyPost._base.EasyPostObject
+  implements:
+  - EasyPost._base.IEasyPostObject
+  inheritedMembers:
+  - EasyPost._base.EasyPostObject.CreatedAt
+  - EasyPost._base.EasyPostObject.Id
+  - EasyPost._base.EasyPostObject.Mode
+  - EasyPost._base.EasyPostObject.UpdatedAt
+  - EasyPost._base.EasyPostObject.Equals(System.Object)
+  - EasyPost._base.EasyPostObject.GetHashCode
+  - EasyPost._base.EasyPostObject.Update``1(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  - EasyPost._base.WithClient.Create``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  - EasyPost._base.WithClient.CreateNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+  - EasyPost._base.WithClient.Delete``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  - EasyPost._base.WithClient.DeleteNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+  - EasyPost._base.WithClient.Get``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  - EasyPost._base.WithClient.List``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  - EasyPost._base.WithClient.Request``1(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  - EasyPost._base.WithClient.Request(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+  - EasyPost._base.WithClient.Update``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  - EasyPost._base.WithClient.UpdateNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: EasyPost.Models.API.PostageLabel.DateAdvance
+  commentId: P:EasyPost.Models.API.PostageLabel.DateAdvance
+  id: DateAdvance
+  parent: EasyPost.Models.API.PostageLabel
+  langs:
+  - csharp
+  - vb
+  name: DateAdvance
+  nameWithType: PostageLabel.DateAdvance
+  fullName: EasyPost.Models.API.PostageLabel.DateAdvance
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Models/API/PostageLabel.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: DateAdvance
+    path: Models/API/PostageLabel.cs
+    startLine: 10
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Models.API
+  syntax:
+    content: >-
+      [JsonProperty("date_advance")]
+
+      public int? DateAdvance { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: >-
+      <JsonProperty("date_advance")>
+
+      Public Property DateAdvance As Integer?
+  overload: EasyPost.Models.API.PostageLabel.DateAdvance*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: date_advance
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: EasyPost.Models.API.PostageLabel.IntegratedForm
+  commentId: P:EasyPost.Models.API.PostageLabel.IntegratedForm
+  id: IntegratedForm
+  parent: EasyPost.Models.API.PostageLabel
+  langs:
+  - csharp
+  - vb
+  name: IntegratedForm
+  nameWithType: PostageLabel.IntegratedForm
+  fullName: EasyPost.Models.API.PostageLabel.IntegratedForm
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Models/API/PostageLabel.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: IntegratedForm
+    path: Models/API/PostageLabel.cs
+    startLine: 12
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Models.API
+  syntax:
+    content: >-
+      [JsonProperty("integrated_form")]
+
+      public string IntegratedForm { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty("integrated_form")>
+
+      Public Property IntegratedForm As String
+  overload: EasyPost.Models.API.PostageLabel.IntegratedForm*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: integrated_form
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: EasyPost.Models.API.PostageLabel.LabelDate
+  commentId: P:EasyPost.Models.API.PostageLabel.LabelDate
+  id: LabelDate
+  parent: EasyPost.Models.API.PostageLabel
+  langs:
+  - csharp
+  - vb
+  name: LabelDate
+  nameWithType: PostageLabel.LabelDate
+  fullName: EasyPost.Models.API.PostageLabel.LabelDate
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Models/API/PostageLabel.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: LabelDate
+    path: Models/API/PostageLabel.cs
+    startLine: 14
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Models.API
+  syntax:
+    content: >-
+      [JsonProperty("label_date")]
+
+      public DateTime? LabelDate { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: >-
+      <JsonProperty("label_date")>
+
+      Public Property LabelDate As Date?
+  overload: EasyPost.Models.API.PostageLabel.LabelDate*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: label_date
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: EasyPost.Models.API.PostageLabel.LabelEpl2Url
+  commentId: P:EasyPost.Models.API.PostageLabel.LabelEpl2Url
+  id: LabelEpl2Url
+  parent: EasyPost.Models.API.PostageLabel
+  langs:
+  - csharp
+  - vb
+  name: LabelEpl2Url
+  nameWithType: PostageLabel.LabelEpl2Url
+  fullName: EasyPost.Models.API.PostageLabel.LabelEpl2Url
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Models/API/PostageLabel.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: LabelEpl2Url
+    path: Models/API/PostageLabel.cs
+    startLine: 16
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Models.API
+  syntax:
+    content: >-
+      [JsonProperty("label_epl2_url")]
+
+      public string LabelEpl2Url { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty("label_epl2_url")>
+
+      Public Property LabelEpl2Url As String
+  overload: EasyPost.Models.API.PostageLabel.LabelEpl2Url*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: label_epl2_url
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: EasyPost.Models.API.PostageLabel.LabelFile
+  commentId: P:EasyPost.Models.API.PostageLabel.LabelFile
+  id: LabelFile
+  parent: EasyPost.Models.API.PostageLabel
+  langs:
+  - csharp
+  - vb
+  name: LabelFile
+  nameWithType: PostageLabel.LabelFile
+  fullName: EasyPost.Models.API.PostageLabel.LabelFile
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Models/API/PostageLabel.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: LabelFile
+    path: Models/API/PostageLabel.cs
+    startLine: 18
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Models.API
+  syntax:
+    content: >-
+      [JsonProperty("label_file")]
+
+      public string LabelFile { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty("label_file")>
+
+      Public Property LabelFile As String
+  overload: EasyPost.Models.API.PostageLabel.LabelFile*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: label_file
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: EasyPost.Models.API.PostageLabel.LabelFileType
+  commentId: P:EasyPost.Models.API.PostageLabel.LabelFileType
+  id: LabelFileType
+  parent: EasyPost.Models.API.PostageLabel
+  langs:
+  - csharp
+  - vb
+  name: LabelFileType
+  nameWithType: PostageLabel.LabelFileType
+  fullName: EasyPost.Models.API.PostageLabel.LabelFileType
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Models/API/PostageLabel.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: LabelFileType
+    path: Models/API/PostageLabel.cs
+    startLine: 20
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Models.API
+  syntax:
+    content: >-
+      [JsonProperty("label_file_type")]
+
+      public string LabelFileType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty("label_file_type")>
+
+      Public Property LabelFileType As String
+  overload: EasyPost.Models.API.PostageLabel.LabelFileType*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: label_file_type
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: EasyPost.Models.API.PostageLabel.LabelPdfUrl
+  commentId: P:EasyPost.Models.API.PostageLabel.LabelPdfUrl
+  id: LabelPdfUrl
+  parent: EasyPost.Models.API.PostageLabel
+  langs:
+  - csharp
+  - vb
+  name: LabelPdfUrl
+  nameWithType: PostageLabel.LabelPdfUrl
+  fullName: EasyPost.Models.API.PostageLabel.LabelPdfUrl
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Models/API/PostageLabel.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: LabelPdfUrl
+    path: Models/API/PostageLabel.cs
+    startLine: 22
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Models.API
+  syntax:
+    content: >-
+      [JsonProperty("label_pdf_url")]
+
+      public string LabelPdfUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty("label_pdf_url")>
+
+      Public Property LabelPdfUrl As String
+  overload: EasyPost.Models.API.PostageLabel.LabelPdfUrl*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: label_pdf_url
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: EasyPost.Models.API.PostageLabel.LabelResolution
+  commentId: P:EasyPost.Models.API.PostageLabel.LabelResolution
+  id: LabelResolution
+  parent: EasyPost.Models.API.PostageLabel
+  langs:
+  - csharp
+  - vb
+  name: LabelResolution
+  nameWithType: PostageLabel.LabelResolution
+  fullName: EasyPost.Models.API.PostageLabel.LabelResolution
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Models/API/PostageLabel.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: LabelResolution
+    path: Models/API/PostageLabel.cs
+    startLine: 24
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Models.API
+  syntax:
+    content: >-
+      [JsonProperty("label_resolution")]
+
+      public int? LabelResolution { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: >-
+      <JsonProperty("label_resolution")>
+
+      Public Property LabelResolution As Integer?
+  overload: EasyPost.Models.API.PostageLabel.LabelResolution*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: label_resolution
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: EasyPost.Models.API.PostageLabel.LabelSize
+  commentId: P:EasyPost.Models.API.PostageLabel.LabelSize
+  id: LabelSize
+  parent: EasyPost.Models.API.PostageLabel
+  langs:
+  - csharp
+  - vb
+  name: LabelSize
+  nameWithType: PostageLabel.LabelSize
+  fullName: EasyPost.Models.API.PostageLabel.LabelSize
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Models/API/PostageLabel.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: LabelSize
+    path: Models/API/PostageLabel.cs
+    startLine: 26
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Models.API
+  syntax:
+    content: >-
+      [JsonProperty("label_size")]
+
+      public string LabelSize { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty("label_size")>
+
+      Public Property LabelSize As String
+  overload: EasyPost.Models.API.PostageLabel.LabelSize*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: label_size
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: EasyPost.Models.API.PostageLabel.LabelType
+  commentId: P:EasyPost.Models.API.PostageLabel.LabelType
+  id: LabelType
+  parent: EasyPost.Models.API.PostageLabel
+  langs:
+  - csharp
+  - vb
+  name: LabelType
+  nameWithType: PostageLabel.LabelType
+  fullName: EasyPost.Models.API.PostageLabel.LabelType
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Models/API/PostageLabel.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: LabelType
+    path: Models/API/PostageLabel.cs
+    startLine: 28
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Models.API
+  syntax:
+    content: >-
+      [JsonProperty("label_type")]
+
+      public string LabelType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty("label_type")>
+
+      Public Property LabelType As String
+  overload: EasyPost.Models.API.PostageLabel.LabelType*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: label_type
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: EasyPost.Models.API.PostageLabel.LabelUrl
+  commentId: P:EasyPost.Models.API.PostageLabel.LabelUrl
+  id: LabelUrl
+  parent: EasyPost.Models.API.PostageLabel
+  langs:
+  - csharp
+  - vb
+  name: LabelUrl
+  nameWithType: PostageLabel.LabelUrl
+  fullName: EasyPost.Models.API.PostageLabel.LabelUrl
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Models/API/PostageLabel.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: LabelUrl
+    path: Models/API/PostageLabel.cs
+    startLine: 30
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Models.API
+  syntax:
+    content: >-
+      [JsonProperty("label_url")]
+
+      public string LabelUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty("label_url")>
+
+      Public Property LabelUrl As String
+  overload: EasyPost.Models.API.PostageLabel.LabelUrl*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: label_url
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: EasyPost.Models.API.PostageLabel.LabelZplUrl
+  commentId: P:EasyPost.Models.API.PostageLabel.LabelZplUrl
+  id: LabelZplUrl
+  parent: EasyPost.Models.API.PostageLabel
+  langs:
+  - csharp
+  - vb
+  name: LabelZplUrl
+  nameWithType: PostageLabel.LabelZplUrl
+  fullName: EasyPost.Models.API.PostageLabel.LabelZplUrl
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Models/API/PostageLabel.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: LabelZplUrl
+    path: Models/API/PostageLabel.cs
+    startLine: 32
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Models.API
+  syntax:
+    content: >-
+      [JsonProperty("label_zpl_url")]
+
+      public string LabelZplUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty("label_zpl_url")>
+
+      Public Property LabelZplUrl As String
+  overload: EasyPost.Models.API.PostageLabel.LabelZplUrl*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: label_zpl_url
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: EasyPost.Models.API
+  commentId: N:EasyPost.Models.API
+  name: EasyPost.Models.API
+  nameWithType: EasyPost.Models.API
+  fullName: EasyPost.Models.API
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: EasyPost._base.WithClient
+  commentId: T:EasyPost._base.WithClient
+  parent: EasyPost._base
+  name: WithClient
+  nameWithType: WithClient
+  fullName: EasyPost._base.WithClient
+- uid: EasyPost._base.EasyPostObject
+  commentId: T:EasyPost._base.EasyPostObject
+  parent: EasyPost._base
+  name: EasyPostObject
+  nameWithType: EasyPostObject
+  fullName: EasyPost._base.EasyPostObject
+- uid: EasyPost._base.IEasyPostObject
+  commentId: T:EasyPost._base.IEasyPostObject
+  parent: EasyPost._base
+  name: IEasyPostObject
+  nameWithType: IEasyPostObject
+  fullName: EasyPost._base.IEasyPostObject
+- uid: EasyPost._base.EasyPostObject.CreatedAt
+  commentId: P:EasyPost._base.EasyPostObject.CreatedAt
+  parent: EasyPost._base.EasyPostObject
+  name: CreatedAt
+  nameWithType: EasyPostObject.CreatedAt
+  fullName: EasyPost._base.EasyPostObject.CreatedAt
+- uid: EasyPost._base.EasyPostObject.Id
+  commentId: P:EasyPost._base.EasyPostObject.Id
+  parent: EasyPost._base.EasyPostObject
+  name: Id
+  nameWithType: EasyPostObject.Id
+  fullName: EasyPost._base.EasyPostObject.Id
+- uid: EasyPost._base.EasyPostObject.Mode
+  commentId: P:EasyPost._base.EasyPostObject.Mode
+  parent: EasyPost._base.EasyPostObject
+  name: Mode
+  nameWithType: EasyPostObject.Mode
+  fullName: EasyPost._base.EasyPostObject.Mode
+- uid: EasyPost._base.EasyPostObject.UpdatedAt
+  commentId: P:EasyPost._base.EasyPostObject.UpdatedAt
+  parent: EasyPost._base.EasyPostObject
+  name: UpdatedAt
+  nameWithType: EasyPostObject.UpdatedAt
+  fullName: EasyPost._base.EasyPostObject.UpdatedAt
+- uid: EasyPost._base.EasyPostObject.Equals(System.Object)
+  commentId: M:EasyPost._base.EasyPostObject.Equals(System.Object)
+  parent: EasyPost._base.EasyPostObject
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: EasyPostObject.Equals(Object)
+  fullName: EasyPost._base.EasyPostObject.Equals(System.Object)
+  spec.csharp:
+  - uid: EasyPost._base.EasyPostObject.Equals(System.Object)
+    name: Equals
+    nameWithType: EasyPostObject.Equals
+    fullName: EasyPost._base.EasyPostObject.Equals
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.EasyPostObject.Equals(System.Object)
+    name: Equals
+    nameWithType: EasyPostObject.Equals
+    fullName: EasyPost._base.EasyPostObject.Equals
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.EasyPostObject.GetHashCode
+  commentId: M:EasyPost._base.EasyPostObject.GetHashCode
+  parent: EasyPost._base.EasyPostObject
+  name: GetHashCode()
+  nameWithType: EasyPostObject.GetHashCode()
+  fullName: EasyPost._base.EasyPostObject.GetHashCode()
+  spec.csharp:
+  - uid: EasyPost._base.EasyPostObject.GetHashCode
+    name: GetHashCode
+    nameWithType: EasyPostObject.GetHashCode
+    fullName: EasyPost._base.EasyPostObject.GetHashCode
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.EasyPostObject.GetHashCode
+    name: GetHashCode
+    nameWithType: EasyPostObject.GetHashCode
+    fullName: EasyPost._base.EasyPostObject.GetHashCode
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.EasyPostObject.Update``1(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  commentId: M:EasyPost._base.EasyPostObject.Update``1(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  parent: EasyPost._base.EasyPostObject
+  isExternal: true
+  name: Update<T>(Method, String, Dictionary<String, Object>, String, ApiVersion)
+  nameWithType: EasyPostObject.Update<T>(Method, String, Dictionary<String, Object>, String, ApiVersion)
+  fullName: EasyPost._base.EasyPostObject.Update<T>(RestSharp.Method, System.String, System.Collections.Generic.Dictionary<System.String, System.Object>, System.String, EasyPost._base.ApiVersion)
+  nameWithType.vb: EasyPostObject.Update(Of T)(Method, String, Dictionary(Of String, Object), String, ApiVersion)
+  fullName.vb: EasyPost._base.EasyPostObject.Update(Of T)(RestSharp.Method, System.String, System.Collections.Generic.Dictionary(Of System.String, System.Object), System.String, EasyPost._base.ApiVersion)
+  name.vb: Update(Of T)(Method, String, Dictionary(Of String, Object), String, ApiVersion)
+  spec.csharp:
+  - uid: EasyPost._base.EasyPostObject.Update``1(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: Update<T>
+    nameWithType: EasyPostObject.Update<T>
+    fullName: EasyPost._base.EasyPostObject.Update<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: RestSharp.Method
+    name: Method
+    nameWithType: Method
+    fullName: RestSharp.Method
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.EasyPostObject.Update``1(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: Update(Of T)
+    nameWithType: EasyPostObject.Update(Of T)
+    fullName: EasyPost._base.EasyPostObject.Update(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: RestSharp.Method
+    name: Method
+    nameWithType: Method
+    fullName: RestSharp.Method
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.WithClient.Create``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  commentId: M:EasyPost._base.WithClient.Create``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  parent: EasyPost._base.WithClient
+  isExternal: true
+  name: Create<T>(String, Dictionary<String, Object>, String, ApiVersion)
+  nameWithType: WithClient.Create<T>(String, Dictionary<String, Object>, String, ApiVersion)
+  fullName: EasyPost._base.WithClient.Create<T>(System.String, System.Collections.Generic.Dictionary<System.String, System.Object>, System.String, EasyPost._base.ApiVersion)
+  nameWithType.vb: WithClient.Create(Of T)(String, Dictionary(Of String, Object), String, ApiVersion)
+  fullName.vb: EasyPost._base.WithClient.Create(Of T)(System.String, System.Collections.Generic.Dictionary(Of System.String, System.Object), System.String, EasyPost._base.ApiVersion)
+  name.vb: Create(Of T)(String, Dictionary(Of String, Object), String, ApiVersion)
+  spec.csharp:
+  - uid: EasyPost._base.WithClient.Create``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: Create<T>
+    nameWithType: WithClient.Create<T>
+    fullName: EasyPost._base.WithClient.Create<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.WithClient.Create``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: Create(Of T)
+    nameWithType: WithClient.Create(Of T)
+    fullName: EasyPost._base.WithClient.Create(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.WithClient.CreateNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+  commentId: M:EasyPost._base.WithClient.CreateNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+  parent: EasyPost._base.WithClient
+  isExternal: true
+  name: CreateNoResponse(String, Dictionary<String, Object>, ApiVersion)
+  nameWithType: WithClient.CreateNoResponse(String, Dictionary<String, Object>, ApiVersion)
+  fullName: EasyPost._base.WithClient.CreateNoResponse(System.String, System.Collections.Generic.Dictionary<System.String, System.Object>, EasyPost._base.ApiVersion)
+  nameWithType.vb: WithClient.CreateNoResponse(String, Dictionary(Of String, Object), ApiVersion)
+  fullName.vb: EasyPost._base.WithClient.CreateNoResponse(System.String, System.Collections.Generic.Dictionary(Of System.String, System.Object), EasyPost._base.ApiVersion)
+  name.vb: CreateNoResponse(String, Dictionary(Of String, Object), ApiVersion)
+  spec.csharp:
+  - uid: EasyPost._base.WithClient.CreateNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+    name: CreateNoResponse
+    nameWithType: WithClient.CreateNoResponse
+    fullName: EasyPost._base.WithClient.CreateNoResponse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.WithClient.CreateNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+    name: CreateNoResponse
+    nameWithType: WithClient.CreateNoResponse
+    fullName: EasyPost._base.WithClient.CreateNoResponse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.WithClient.Delete``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  commentId: M:EasyPost._base.WithClient.Delete``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  parent: EasyPost._base.WithClient
+  isExternal: true
+  name: Delete<T>(String, Dictionary<String, Object>, String, ApiVersion)
+  nameWithType: WithClient.Delete<T>(String, Dictionary<String, Object>, String, ApiVersion)
+  fullName: EasyPost._base.WithClient.Delete<T>(System.String, System.Collections.Generic.Dictionary<System.String, System.Object>, System.String, EasyPost._base.ApiVersion)
+  nameWithType.vb: WithClient.Delete(Of T)(String, Dictionary(Of String, Object), String, ApiVersion)
+  fullName.vb: EasyPost._base.WithClient.Delete(Of T)(System.String, System.Collections.Generic.Dictionary(Of System.String, System.Object), System.String, EasyPost._base.ApiVersion)
+  name.vb: Delete(Of T)(String, Dictionary(Of String, Object), String, ApiVersion)
+  spec.csharp:
+  - uid: EasyPost._base.WithClient.Delete``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: Delete<T>
+    nameWithType: WithClient.Delete<T>
+    fullName: EasyPost._base.WithClient.Delete<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.WithClient.Delete``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: Delete(Of T)
+    nameWithType: WithClient.Delete(Of T)
+    fullName: EasyPost._base.WithClient.Delete(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.WithClient.DeleteNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+  commentId: M:EasyPost._base.WithClient.DeleteNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+  parent: EasyPost._base.WithClient
+  isExternal: true
+  name: DeleteNoResponse(String, Dictionary<String, Object>, ApiVersion)
+  nameWithType: WithClient.DeleteNoResponse(String, Dictionary<String, Object>, ApiVersion)
+  fullName: EasyPost._base.WithClient.DeleteNoResponse(System.String, System.Collections.Generic.Dictionary<System.String, System.Object>, EasyPost._base.ApiVersion)
+  nameWithType.vb: WithClient.DeleteNoResponse(String, Dictionary(Of String, Object), ApiVersion)
+  fullName.vb: EasyPost._base.WithClient.DeleteNoResponse(System.String, System.Collections.Generic.Dictionary(Of System.String, System.Object), EasyPost._base.ApiVersion)
+  name.vb: DeleteNoResponse(String, Dictionary(Of String, Object), ApiVersion)
+  spec.csharp:
+  - uid: EasyPost._base.WithClient.DeleteNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+    name: DeleteNoResponse
+    nameWithType: WithClient.DeleteNoResponse
+    fullName: EasyPost._base.WithClient.DeleteNoResponse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.WithClient.DeleteNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+    name: DeleteNoResponse
+    nameWithType: WithClient.DeleteNoResponse
+    fullName: EasyPost._base.WithClient.DeleteNoResponse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.WithClient.Get``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  commentId: M:EasyPost._base.WithClient.Get``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  parent: EasyPost._base.WithClient
+  isExternal: true
+  name: Get<T>(String, Dictionary<String, Object>, String, ApiVersion)
+  nameWithType: WithClient.Get<T>(String, Dictionary<String, Object>, String, ApiVersion)
+  fullName: EasyPost._base.WithClient.Get<T>(System.String, System.Collections.Generic.Dictionary<System.String, System.Object>, System.String, EasyPost._base.ApiVersion)
+  nameWithType.vb: WithClient.Get(Of T)(String, Dictionary(Of String, Object), String, ApiVersion)
+  fullName.vb: EasyPost._base.WithClient.Get(Of T)(System.String, System.Collections.Generic.Dictionary(Of System.String, System.Object), System.String, EasyPost._base.ApiVersion)
+  name.vb: Get(Of T)(String, Dictionary(Of String, Object), String, ApiVersion)
+  spec.csharp:
+  - uid: EasyPost._base.WithClient.Get``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: Get<T>
+    nameWithType: WithClient.Get<T>
+    fullName: EasyPost._base.WithClient.Get<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.WithClient.Get``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: Get(Of T)
+    nameWithType: WithClient.Get(Of T)
+    fullName: EasyPost._base.WithClient.Get(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.WithClient.List``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  commentId: M:EasyPost._base.WithClient.List``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  parent: EasyPost._base.WithClient
+  isExternal: true
+  name: List<T>(String, Dictionary<String, Object>, String, ApiVersion)
+  nameWithType: WithClient.List<T>(String, Dictionary<String, Object>, String, ApiVersion)
+  fullName: EasyPost._base.WithClient.List<T>(System.String, System.Collections.Generic.Dictionary<System.String, System.Object>, System.String, EasyPost._base.ApiVersion)
+  nameWithType.vb: WithClient.List(Of T)(String, Dictionary(Of String, Object), String, ApiVersion)
+  fullName.vb: EasyPost._base.WithClient.List(Of T)(System.String, System.Collections.Generic.Dictionary(Of System.String, System.Object), System.String, EasyPost._base.ApiVersion)
+  name.vb: List(Of T)(String, Dictionary(Of String, Object), String, ApiVersion)
+  spec.csharp:
+  - uid: EasyPost._base.WithClient.List``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: List<T>
+    nameWithType: WithClient.List<T>
+    fullName: EasyPost._base.WithClient.List<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.WithClient.List``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: List(Of T)
+    nameWithType: WithClient.List(Of T)
+    fullName: EasyPost._base.WithClient.List(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.WithClient.Request``1(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  commentId: M:EasyPost._base.WithClient.Request``1(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  parent: EasyPost._base.WithClient
+  isExternal: true
+  name: Request<T>(Method, String, Dictionary<String, Object>, String, ApiVersion)
+  nameWithType: WithClient.Request<T>(Method, String, Dictionary<String, Object>, String, ApiVersion)
+  fullName: EasyPost._base.WithClient.Request<T>(RestSharp.Method, System.String, System.Collections.Generic.Dictionary<System.String, System.Object>, System.String, EasyPost._base.ApiVersion)
+  nameWithType.vb: WithClient.Request(Of T)(Method, String, Dictionary(Of String, Object), String, ApiVersion)
+  fullName.vb: EasyPost._base.WithClient.Request(Of T)(RestSharp.Method, System.String, System.Collections.Generic.Dictionary(Of System.String, System.Object), System.String, EasyPost._base.ApiVersion)
+  name.vb: Request(Of T)(Method, String, Dictionary(Of String, Object), String, ApiVersion)
+  spec.csharp:
+  - uid: EasyPost._base.WithClient.Request``1(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: Request<T>
+    nameWithType: WithClient.Request<T>
+    fullName: EasyPost._base.WithClient.Request<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: RestSharp.Method
+    name: Method
+    nameWithType: Method
+    fullName: RestSharp.Method
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.WithClient.Request``1(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: Request(Of T)
+    nameWithType: WithClient.Request(Of T)
+    fullName: EasyPost._base.WithClient.Request(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: RestSharp.Method
+    name: Method
+    nameWithType: Method
+    fullName: RestSharp.Method
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.WithClient.Request(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+  commentId: M:EasyPost._base.WithClient.Request(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+  parent: EasyPost._base.WithClient
+  isExternal: true
+  name: Request(Method, String, Dictionary<String, Object>, ApiVersion)
+  nameWithType: WithClient.Request(Method, String, Dictionary<String, Object>, ApiVersion)
+  fullName: EasyPost._base.WithClient.Request(RestSharp.Method, System.String, System.Collections.Generic.Dictionary<System.String, System.Object>, EasyPost._base.ApiVersion)
+  nameWithType.vb: WithClient.Request(Method, String, Dictionary(Of String, Object), ApiVersion)
+  fullName.vb: EasyPost._base.WithClient.Request(RestSharp.Method, System.String, System.Collections.Generic.Dictionary(Of System.String, System.Object), EasyPost._base.ApiVersion)
+  name.vb: Request(Method, String, Dictionary(Of String, Object), ApiVersion)
+  spec.csharp:
+  - uid: EasyPost._base.WithClient.Request(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+    name: Request
+    nameWithType: WithClient.Request
+    fullName: EasyPost._base.WithClient.Request
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: RestSharp.Method
+    name: Method
+    nameWithType: Method
+    fullName: RestSharp.Method
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.WithClient.Request(RestSharp.Method,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+    name: Request
+    nameWithType: WithClient.Request
+    fullName: EasyPost._base.WithClient.Request
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: RestSharp.Method
+    name: Method
+    nameWithType: Method
+    fullName: RestSharp.Method
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.WithClient.Update``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  commentId: M:EasyPost._base.WithClient.Update``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+  parent: EasyPost._base.WithClient
+  isExternal: true
+  name: Update<T>(String, Dictionary<String, Object>, String, ApiVersion)
+  nameWithType: WithClient.Update<T>(String, Dictionary<String, Object>, String, ApiVersion)
+  fullName: EasyPost._base.WithClient.Update<T>(System.String, System.Collections.Generic.Dictionary<System.String, System.Object>, System.String, EasyPost._base.ApiVersion)
+  nameWithType.vb: WithClient.Update(Of T)(String, Dictionary(Of String, Object), String, ApiVersion)
+  fullName.vb: EasyPost._base.WithClient.Update(Of T)(System.String, System.Collections.Generic.Dictionary(Of System.String, System.Object), System.String, EasyPost._base.ApiVersion)
+  name.vb: Update(Of T)(String, Dictionary(Of String, Object), String, ApiVersion)
+  spec.csharp:
+  - uid: EasyPost._base.WithClient.Update``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: Update<T>
+    nameWithType: WithClient.Update<T>
+    fullName: EasyPost._base.WithClient.Update<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.WithClient.Update``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,EasyPost._base.ApiVersion)
+    name: Update(Of T)
+    nameWithType: WithClient.Update(Of T)
+    fullName: EasyPost._base.WithClient.Update(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.WithClient.UpdateNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+  commentId: M:EasyPost._base.WithClient.UpdateNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+  parent: EasyPost._base.WithClient
+  isExternal: true
+  name: UpdateNoResponse(String, Dictionary<String, Object>, ApiVersion)
+  nameWithType: WithClient.UpdateNoResponse(String, Dictionary<String, Object>, ApiVersion)
+  fullName: EasyPost._base.WithClient.UpdateNoResponse(System.String, System.Collections.Generic.Dictionary<System.String, System.Object>, EasyPost._base.ApiVersion)
+  nameWithType.vb: WithClient.UpdateNoResponse(String, Dictionary(Of String, Object), ApiVersion)
+  fullName.vb: EasyPost._base.WithClient.UpdateNoResponse(System.String, System.Collections.Generic.Dictionary(Of System.String, System.Object), EasyPost._base.ApiVersion)
+  name.vb: UpdateNoResponse(String, Dictionary(Of String, Object), ApiVersion)
+  spec.csharp:
+  - uid: EasyPost._base.WithClient.UpdateNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+    name: UpdateNoResponse
+    nameWithType: WithClient.UpdateNoResponse
+    fullName: EasyPost._base.WithClient.UpdateNoResponse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.WithClient.UpdateNoResponse(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},EasyPost._base.ApiVersion)
+    name: UpdateNoResponse
+    nameWithType: WithClient.UpdateNoResponse
+    fullName: EasyPost._base.WithClient.UpdateNoResponse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: EasyPost._base.ApiVersion
+    name: ApiVersion
+    nameWithType: ApiVersion
+    fullName: EasyPost._base.ApiVersion
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: EasyPost._base
+  commentId: N:EasyPost._base
+  name: EasyPost._base
+  nameWithType: EasyPost._base
+  fullName: EasyPost._base
+- uid: EasyPost.Models.API.PostageLabel.DateAdvance*
+  commentId: Overload:EasyPost.Models.API.PostageLabel.DateAdvance
+  name: DateAdvance
+  nameWithType: PostageLabel.DateAdvance
+  fullName: EasyPost.Models.API.PostageLabel.DateAdvance
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost.Models.API.PostageLabel.IntegratedForm*
+  commentId: Overload:EasyPost.Models.API.PostageLabel.IntegratedForm
+  name: IntegratedForm
+  nameWithType: PostageLabel.IntegratedForm
+  fullName: EasyPost.Models.API.PostageLabel.IntegratedForm
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: EasyPost.Models.API.PostageLabel.LabelDate*
+  commentId: Overload:EasyPost.Models.API.PostageLabel.LabelDate
+  name: LabelDate
+  nameWithType: PostageLabel.LabelDate
+  fullName: EasyPost.Models.API.PostageLabel.LabelDate
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<DateTime>
+  nameWithType: Nullable<DateTime>
+  fullName: System.Nullable<System.DateTime>
+  nameWithType.vb: Nullable(Of DateTime)
+  fullName.vb: System.Nullable(Of System.DateTime)
+  name.vb: Nullable(Of DateTime)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.DateTime
+    name: DateTime
+    nameWithType: DateTime
+    fullName: System.DateTime
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.DateTime
+    name: DateTime
+    nameWithType: DateTime
+    fullName: System.DateTime
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost.Models.API.PostageLabel.LabelEpl2Url*
+  commentId: Overload:EasyPost.Models.API.PostageLabel.LabelEpl2Url
+  name: LabelEpl2Url
+  nameWithType: PostageLabel.LabelEpl2Url
+  fullName: EasyPost.Models.API.PostageLabel.LabelEpl2Url
+- uid: EasyPost.Models.API.PostageLabel.LabelFile*
+  commentId: Overload:EasyPost.Models.API.PostageLabel.LabelFile
+  name: LabelFile
+  nameWithType: PostageLabel.LabelFile
+  fullName: EasyPost.Models.API.PostageLabel.LabelFile
+- uid: EasyPost.Models.API.PostageLabel.LabelFileType*
+  commentId: Overload:EasyPost.Models.API.PostageLabel.LabelFileType
+  name: LabelFileType
+  nameWithType: PostageLabel.LabelFileType
+  fullName: EasyPost.Models.API.PostageLabel.LabelFileType
+- uid: EasyPost.Models.API.PostageLabel.LabelPdfUrl*
+  commentId: Overload:EasyPost.Models.API.PostageLabel.LabelPdfUrl
+  name: LabelPdfUrl
+  nameWithType: PostageLabel.LabelPdfUrl
+  fullName: EasyPost.Models.API.PostageLabel.LabelPdfUrl
+- uid: EasyPost.Models.API.PostageLabel.LabelResolution*
+  commentId: Overload:EasyPost.Models.API.PostageLabel.LabelResolution
+  name: LabelResolution
+  nameWithType: PostageLabel.LabelResolution
+  fullName: EasyPost.Models.API.PostageLabel.LabelResolution
+- uid: EasyPost.Models.API.PostageLabel.LabelSize*
+  commentId: Overload:EasyPost.Models.API.PostageLabel.LabelSize
+  name: LabelSize
+  nameWithType: PostageLabel.LabelSize
+  fullName: EasyPost.Models.API.PostageLabel.LabelSize
+- uid: EasyPost.Models.API.PostageLabel.LabelType*
+  commentId: Overload:EasyPost.Models.API.PostageLabel.LabelType
+  name: LabelType
+  nameWithType: PostageLabel.LabelType
+  fullName: EasyPost.Models.API.PostageLabel.LabelType
+- uid: EasyPost.Models.API.PostageLabel.LabelUrl*
+  commentId: Overload:EasyPost.Models.API.PostageLabel.LabelUrl
+  name: LabelUrl
+  nameWithType: PostageLabel.LabelUrl
+  fullName: EasyPost.Models.API.PostageLabel.LabelUrl
+- uid: EasyPost.Models.API.PostageLabel.LabelZplUrl*
+  commentId: Overload:EasyPost.Models.API.PostageLabel.LabelZplUrl
+  name: LabelZplUrl
+  nameWithType: PostageLabel.LabelZplUrl
+  fullName: EasyPost.Models.API.PostageLabel.LabelZplUrl

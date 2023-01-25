@@ -5,7 +5,8 @@
                 {
                     "files": [
                         "EasyPost/**.csproj"
-                    ]
+                    ],
+                    "src": "../"
                 }
             ],
             "dest": "api",

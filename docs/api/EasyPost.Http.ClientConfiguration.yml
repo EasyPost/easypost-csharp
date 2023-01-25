@@ -1,0 +1,662 @@
+### YamlMime:ManagedReference
+items:
+- uid: EasyPost.Http.ClientConfiguration
+  commentId: T:EasyPost.Http.ClientConfiguration
+  id: ClientConfiguration
+  parent: EasyPost.Http
+  children:
+  - EasyPost.Http.ClientConfiguration.ApiBase
+  - EasyPost.Http.ClientConfiguration.ApiKey
+  - EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds
+  - EasyPost.Http.ClientConfiguration.Equals(System.Object)
+  - EasyPost.Http.ClientConfiguration.GetHashCode
+  - EasyPost.Http.ClientConfiguration.HttpClient
+  - EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds
+  langs:
+  - csharp
+  - vb
+  name: ClientConfiguration
+  nameWithType: ClientConfiguration
+  fullName: EasyPost.Http.ClientConfiguration
+  type: Class
+  source:
+    remote:
+      path: EasyPost/Http/ClientConfiguration.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: ClientConfiguration
+    path: Http/ClientConfiguration.cs
+    startLine: 9
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Http
+  summary: "\nProvides configuration options for the REST client. Used internally to store API key and other configuration.\n"
+  example: []
+  syntax:
+    content: public class ClientConfiguration
+    content.vb: Public Class ClientConfiguration
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: EasyPost.Http.ClientConfiguration.ApiBase
+  commentId: F:EasyPost.Http.ClientConfiguration.ApiBase
+  id: ApiBase
+  parent: EasyPost.Http.ClientConfiguration
+  langs:
+  - csharp
+  - vb
+  name: ApiBase
+  nameWithType: ClientConfiguration.ApiBase
+  fullName: EasyPost.Http.ClientConfiguration.ApiBase
+  type: Field
+  source:
+    remote:
+      path: EasyPost/Http/ClientConfiguration.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: ApiBase
+    path: Http/ClientConfiguration.cs
+    startLine: 16
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Http
+  summary: "\nThe API base URI.\nThis cannot be changed after the client has been initialized.\n"
+  example: []
+  syntax:
+    content: public readonly string ApiBase
+    return:
+      type: System.String
+    content.vb: Public ReadOnly ApiBase As String
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Http.ClientConfiguration.ApiKey
+  commentId: P:EasyPost.Http.ClientConfiguration.ApiKey
+  id: ApiKey
+  parent: EasyPost.Http.ClientConfiguration
+  langs:
+  - csharp
+  - vb
+  name: ApiKey
+  nameWithType: ClientConfiguration.ApiKey
+  fullName: EasyPost.Http.ClientConfiguration.ApiKey
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Http/ClientConfiguration.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: ApiKey
+    path: Http/ClientConfiguration.cs
+    startLine: 23
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Http
+  summary: "\nGets the API key.\nThis cannot be changed after the client has been initialized.\n"
+  example: []
+  syntax:
+    content: public string ApiKey { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ApiKey As String
+  overload: EasyPost.Http.ClientConfiguration.ApiKey*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Http.ClientConfiguration.HttpClient
+  commentId: F:EasyPost.Http.ClientConfiguration.HttpClient
+  id: HttpClient
+  parent: EasyPost.Http.ClientConfiguration
+  langs:
+  - csharp
+  - vb
+  name: HttpClient
+  nameWithType: ClientConfiguration.HttpClient
+  fullName: EasyPost.Http.ClientConfiguration.HttpClient
+  type: Field
+  source:
+    remote:
+      path: EasyPost/Http/ClientConfiguration.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: HttpClient
+    path: Http/ClientConfiguration.cs
+    startLine: 30
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Http
+  summary: "\nA custom HttpClient to use for requests.\nThis cannot be changed after the client has been initialized.\n"
+  example: []
+  syntax:
+    content: public readonly HttpClient HttpClient
+    return:
+      type: System.Net.Http.HttpClient
+    content.vb: Public ReadOnly HttpClient As HttpClient
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds
+  commentId: P:EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds
+  id: ConnectTimeoutMilliseconds
+  parent: EasyPost.Http.ClientConfiguration
+  langs:
+  - csharp
+  - vb
+  name: ConnectTimeoutMilliseconds
+  nameWithType: ClientConfiguration.ConnectTimeoutMilliseconds
+  fullName: EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Http/ClientConfiguration.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: ConnectTimeoutMilliseconds
+    path: Http/ClientConfiguration.cs
+    startLine: 70
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Http
+  summary: "\nGets or sets the connect timeout in milliseconds.\n"
+  example: []
+  syntax:
+    content: public int ConnectTimeoutMilliseconds { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ConnectTimeoutMilliseconds As Integer
+  overload: EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds
+  commentId: P:EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds
+  id: RequestTimeoutMilliseconds
+  parent: EasyPost.Http.ClientConfiguration
+  langs:
+  - csharp
+  - vb
+  name: RequestTimeoutMilliseconds
+  nameWithType: ClientConfiguration.RequestTimeoutMilliseconds
+  fullName: EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Http/ClientConfiguration.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: RequestTimeoutMilliseconds
+    path: Http/ClientConfiguration.cs
+    startLine: 79
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Http
+  summary: "\nGets or sets the request timeout in milliseconds.\n"
+  example: []
+  syntax:
+    content: public int RequestTimeoutMilliseconds { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property RequestTimeoutMilliseconds As Integer
+  overload: EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: EasyPost.Http.ClientConfiguration.Equals(System.Object)
+  commentId: M:EasyPost.Http.ClientConfiguration.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: EasyPost.Http.ClientConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Equals(Object)
+  nameWithType: ClientConfiguration.Equals(Object)
+  fullName: EasyPost.Http.ClientConfiguration.Equals(System.Object)
+  type: Method
+  source:
+    remote:
+      path: EasyPost/Http/ClientConfiguration.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Equals
+    path: Http/ClientConfiguration.cs
+    startLine: 129
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Http
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.Object.Equals(System.Object)
+  overload: EasyPost.Http.ClientConfiguration.Equals*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: EasyPost.Http.ClientConfiguration.GetHashCode
+  commentId: M:EasyPost.Http.ClientConfiguration.GetHashCode
+  id: GetHashCode
+  parent: EasyPost.Http.ClientConfiguration
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: ClientConfiguration.GetHashCode()
+  fullName: EasyPost.Http.ClientConfiguration.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: EasyPost/Http/ClientConfiguration.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: GetHashCode
+    path: Http/ClientConfiguration.cs
+    startLine: 132
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Http
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+    content.vb: Public Overrides Function GetHashCode As Integer
+  overridden: System.Object.GetHashCode
+  overload: EasyPost.Http.ClientConfiguration.GetHashCode*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: EasyPost.Http
+  commentId: N:EasyPost.Http
+  name: EasyPost.Http
+  nameWithType: EasyPost.Http
+  fullName: EasyPost.Http
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: EasyPost.Http.ClientConfiguration.ApiKey*
+  commentId: Overload:EasyPost.Http.ClientConfiguration.ApiKey
+  name: ApiKey
+  nameWithType: ClientConfiguration.ApiKey
+  fullName: EasyPost.Http.ClientConfiguration.ApiKey
+- uid: System.Net.Http.HttpClient
+  commentId: T:System.Net.Http.HttpClient
+  parent: System.Net.Http
+  isExternal: true
+  name: HttpClient
+  nameWithType: HttpClient
+  fullName: System.Net.Http.HttpClient
+- uid: System.Net.Http
+  commentId: N:System.Net.Http
+  isExternal: true
+  name: System.Net.Http
+  nameWithType: System.Net.Http
+  fullName: System.Net.Http
+- uid: EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds*
+  commentId: Overload:EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds
+  name: ConnectTimeoutMilliseconds
+  nameWithType: ClientConfiguration.ConnectTimeoutMilliseconds
+  fullName: EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds*
+  commentId: Overload:EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds
+  name: RequestTimeoutMilliseconds
+  nameWithType: ClientConfiguration.RequestTimeoutMilliseconds
+  fullName: EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost.Http.ClientConfiguration.Equals*
+  commentId: Overload:EasyPost.Http.ClientConfiguration.Equals
+  name: Equals
+  nameWithType: ClientConfiguration.Equals
+  fullName: EasyPost.Http.ClientConfiguration.Equals
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost.Http.ClientConfiguration.GetHashCode*
+  commentId: Overload:EasyPost.Http.ClientConfiguration.GetHashCode
+  name: GetHashCode
+  nameWithType: ClientConfiguration.GetHashCode
+  fullName: EasyPost.Http.ClientConfiguration.GetHashCode

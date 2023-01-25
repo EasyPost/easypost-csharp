@@ -1,0 +1,946 @@
+### YamlMime:ManagedReference
+items:
+- uid: EasyPost.Exceptions.API.ApiError
+  commentId: T:EasyPost.Exceptions.API.ApiError
+  id: ApiError
+  parent: EasyPost.Exceptions.API
+  children:
+  - EasyPost.Exceptions.API.ApiError.#ctor(System.String,System.Nullable{System.Int32},System.String,System.Collections.Generic.List{EasyPost.Models.API.Error})
+  - EasyPost.Exceptions.API.ApiError.Code
+  - EasyPost.Exceptions.API.ApiError.Errors
+  - EasyPost.Exceptions.API.ApiError.PrettyPrint
+  - EasyPost.Exceptions.API.ApiError.StatusCode
+  langs:
+  - csharp
+  - vb
+  name: ApiError
+  nameWithType: ApiError
+  fullName: EasyPost.Exceptions.API.ApiError
+  type: Class
+  source:
+    remote:
+      path: EasyPost/Exceptions/API/_Base.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: ApiError
+    path: Exceptions/API/_Base.cs
+    startLine: 14
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Exceptions.API
+  syntax:
+    content: 'public class ApiError : EasyPostError, ISerializable'
+    content.vb: >-
+      Public Class ApiError
+
+          Inherits EasyPostError
+
+          Implements ISerializable
+  inheritance:
+  - System.Object
+  - System.Exception
+  - EasyPost.Exceptions.EasyPostError
+  derivedClasses:
+  - EasyPost.Exceptions.API.ConnectionError
+  - EasyPost.Exceptions.API.ExternalApiError
+  - EasyPost.Exceptions.API.GatewayTimeoutError
+  - EasyPost.Exceptions.API.InternalServerError
+  - EasyPost.Exceptions.API.InvalidRequestError
+  - EasyPost.Exceptions.API.MethodNotAllowedError
+  - EasyPost.Exceptions.API.NotFoundError
+  - EasyPost.Exceptions.API.PaymentError
+  - EasyPost.Exceptions.API.ProxyError
+  - EasyPost.Exceptions.API.RateLimitError
+  - EasyPost.Exceptions.API.RedirectError
+  - EasyPost.Exceptions.API.RetryError
+  - EasyPost.Exceptions.API.ServiceUnavailableError
+  - EasyPost.Exceptions.API.SslError
+  - EasyPost.Exceptions.API.TimeoutError
+  - EasyPost.Exceptions.API.UnauthorizedError
+  - EasyPost.Exceptions.API.UnexpectedHttpError
+  - EasyPost.Exceptions.API.UnknownApiError
+  implements:
+  - System.Runtime.Serialization.ISerializable
+  inheritedMembers:
+  - System.Exception.GetBaseException
+  - System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Exception.GetType
+  - System.Exception.ToString
+  - System.Exception.Data
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.SerializeObjectState
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: EasyPost.Exceptions.API.ApiError.Code
+  commentId: F:EasyPost.Exceptions.API.ApiError.Code
+  id: Code
+  parent: EasyPost.Exceptions.API.ApiError
+  langs:
+  - csharp
+  - vb
+  name: Code
+  nameWithType: ApiError.Code
+  fullName: EasyPost.Exceptions.API.ApiError.Code
+  type: Field
+  source:
+    remote:
+      path: EasyPost/Exceptions/API/_Base.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Code
+    path: Exceptions/API/_Base.cs
+    startLine: 17
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Exceptions.API
+  syntax:
+    content: public readonly string Code
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Code As String
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Exceptions.API.ApiError.Errors
+  commentId: F:EasyPost.Exceptions.API.ApiError.Errors
+  id: Errors
+  parent: EasyPost.Exceptions.API.ApiError
+  langs:
+  - csharp
+  - vb
+  name: Errors
+  nameWithType: ApiError.Errors
+  fullName: EasyPost.Exceptions.API.ApiError.Errors
+  type: Field
+  source:
+    remote:
+      path: EasyPost/Exceptions/API/_Base.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Errors
+    path: Exceptions/API/_Base.cs
+    startLine: 18
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Exceptions.API
+  syntax:
+    content: public readonly List<Error> Errors
+    return:
+      type: System.Collections.Generic.List{EasyPost.Models.API.Error}
+    content.vb: Public ReadOnly Errors As List(Of  Error)
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Exceptions.API.ApiError.StatusCode
+  commentId: F:EasyPost.Exceptions.API.ApiError.StatusCode
+  id: StatusCode
+  parent: EasyPost.Exceptions.API.ApiError
+  langs:
+  - csharp
+  - vb
+  name: StatusCode
+  nameWithType: ApiError.StatusCode
+  fullName: EasyPost.Exceptions.API.ApiError.StatusCode
+  type: Field
+  source:
+    remote:
+      path: EasyPost/Exceptions/API/_Base.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: StatusCode
+    path: Exceptions/API/_Base.cs
+    startLine: 19
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Exceptions.API
+  syntax:
+    content: public readonly int? StatusCode
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly StatusCode As Integer?
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Exceptions.API.ApiError.PrettyPrint
+  commentId: P:EasyPost.Exceptions.API.ApiError.PrettyPrint
+  id: PrettyPrint
+  parent: EasyPost.Exceptions.API.ApiError
+  langs:
+  - csharp
+  - vb
+  name: PrettyPrint
+  nameWithType: ApiError.PrettyPrint
+  fullName: EasyPost.Exceptions.API.ApiError.PrettyPrint
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Exceptions/API/_Base.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: PrettyPrint
+    path: Exceptions/API/_Base.cs
+    startLine: 25
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Exceptions.API
+  summary: "\nGets a formatted error string with expanded details about the error.\n"
+  example: []
+  syntax:
+    content: public string PrettyPrint { get; }
+    parameters: []
+    return:
+      type: System.String
+      description: A formatted error string.
+    content.vb: Public ReadOnly Property PrettyPrint As String
+  overload: EasyPost.Exceptions.API.ApiError.PrettyPrint*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Exceptions.API.ApiError.#ctor(System.String,System.Nullable{System.Int32},System.String,System.Collections.Generic.List{EasyPost.Models.API.Error})
+  commentId: M:EasyPost.Exceptions.API.ApiError.#ctor(System.String,System.Nullable{System.Int32},System.String,System.Collections.Generic.List{EasyPost.Models.API.Error})
+  id: '#ctor(System.String,System.Nullable{System.Int32},System.String,System.Collections.Generic.List{EasyPost.Models.API.Error})'
+  parent: EasyPost.Exceptions.API.ApiError
+  langs:
+  - csharp
+  - vb
+  name: ApiError(String, Nullable<Int32>, String, List<Error>)
+  nameWithType: ApiError.ApiError(String, Nullable<Int32>, String, List<Error>)
+  fullName: EasyPost.Exceptions.API.ApiError.ApiError(System.String, System.Nullable<System.Int32>, System.String, System.Collections.Generic.List<EasyPost.Models.API.Error>)
+  type: Constructor
+  source:
+    remote:
+      path: EasyPost/Exceptions/API/_Base.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: .ctor
+    path: Exceptions/API/_Base.cs
+    startLine: 49
+  assemblies:
+  - EasyPost
+  namespace: EasyPost.Exceptions.API
+  summary: "\nInitializes a new instance of the <xref href=\"EasyPost.Exceptions.API.ApiError\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: protected ApiError(string errorMessage, int? statusCode = null, string errorType = null, List<Error> errors = null)
+    parameters:
+    - id: errorMessage
+      type: System.String
+      description: Error message string to print to console.
+    - id: statusCode
+      type: System.Nullable{System.Int32}
+      description: Optional HTTP status code to store as a property.
+    - id: errorType
+      type: System.String
+      description: Optional error type string to store as a property.
+    - id: errors
+      type: System.Collections.Generic.List{EasyPost.Models.API.Error}
+      description: Optional list of Error objects to store as a property.
+    content.vb: Protected Sub New(errorMessage As String, statusCode As Integer? = Nothing, errorType As String = Nothing, errors As List(Of  Error) = Nothing)
+  overload: EasyPost.Exceptions.API.ApiError.#ctor*
+  nameWithType.vb: ApiError.ApiError(String, Nullable(Of Int32), String, List(Of Error))
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+  fullName.vb: EasyPost.Exceptions.API.ApiError.ApiError(System.String, System.Nullable(Of System.Int32), System.String, System.Collections.Generic.List(Of EasyPost.Models.API.Error))
+  name.vb: ApiError(String, Nullable(Of Int32), String, List(Of Error))
+references:
+- uid: EasyPost.Exceptions.API
+  commentId: N:EasyPost.Exceptions.API
+  name: EasyPost.Exceptions.API
+  nameWithType: EasyPost.Exceptions.API
+  fullName: EasyPost.Exceptions.API
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: EasyPost.Exceptions.EasyPostError
+  commentId: T:EasyPost.Exceptions.EasyPostError
+  parent: EasyPost.Exceptions
+  name: EasyPostError
+  nameWithType: EasyPostError
+  fullName: EasyPost.Exceptions.EasyPostError
+- uid: System.Runtime.Serialization.ISerializable
+  commentId: T:System.Runtime.Serialization.ISerializable
+  parent: System.Runtime.Serialization
+  isExternal: true
+  name: ISerializable
+  nameWithType: ISerializable
+  fullName: System.Runtime.Serialization.ISerializable
+- uid: System.Exception.GetBaseException
+  commentId: M:System.Exception.GetBaseException
+  parent: System.Exception
+  isExternal: true
+  name: GetBaseException()
+  nameWithType: Exception.GetBaseException()
+  fullName: System.Exception.GetBaseException()
+  spec.csharp:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    nameWithType: Exception.GetBaseException
+    fullName: System.Exception.GetBaseException
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    nameWithType: Exception.GetBaseException
+    fullName: System.Exception.GetBaseException
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  commentId: M:System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.Exception
+  isExternal: true
+  name: GetObjectData(SerializationInfo, StreamingContext)
+  nameWithType: Exception.GetObjectData(SerializationInfo, StreamingContext)
+  fullName: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  spec.csharp:
+  - uid: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    nameWithType: Exception.GetObjectData
+    fullName: System.Exception.GetObjectData
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    nameWithType: SerializationInfo
+    fullName: System.Runtime.Serialization.SerializationInfo
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    nameWithType: StreamingContext
+    fullName: System.Runtime.Serialization.StreamingContext
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    nameWithType: Exception.GetObjectData
+    fullName: System.Exception.GetObjectData
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    nameWithType: SerializationInfo
+    fullName: System.Runtime.Serialization.SerializationInfo
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    nameWithType: StreamingContext
+    fullName: System.Runtime.Serialization.StreamingContext
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Exception.GetType
+  commentId: M:System.Exception.GetType
+  parent: System.Exception
+  isExternal: true
+  name: GetType()
+  nameWithType: Exception.GetType()
+  fullName: System.Exception.GetType()
+  spec.csharp:
+  - uid: System.Exception.GetType
+    name: GetType
+    nameWithType: Exception.GetType
+    fullName: System.Exception.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Exception.GetType
+    name: GetType
+    nameWithType: Exception.GetType
+    fullName: System.Exception.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Exception.ToString
+  commentId: M:System.Exception.ToString
+  parent: System.Exception
+  isExternal: true
+  name: ToString()
+  nameWithType: Exception.ToString()
+  fullName: System.Exception.ToString()
+  spec.csharp:
+  - uid: System.Exception.ToString
+    name: ToString
+    nameWithType: Exception.ToString
+    fullName: System.Exception.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Exception.ToString
+    name: ToString
+    nameWithType: Exception.ToString
+    fullName: System.Exception.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Exception.Data
+  commentId: P:System.Exception.Data
+  parent: System.Exception
+  isExternal: true
+  name: Data
+  nameWithType: Exception.Data
+  fullName: System.Exception.Data
+- uid: System.Exception.HelpLink
+  commentId: P:System.Exception.HelpLink
+  parent: System.Exception
+  isExternal: true
+  name: HelpLink
+  nameWithType: Exception.HelpLink
+  fullName: System.Exception.HelpLink
+- uid: System.Exception.HResult
+  commentId: P:System.Exception.HResult
+  parent: System.Exception
+  isExternal: true
+  name: HResult
+  nameWithType: Exception.HResult
+  fullName: System.Exception.HResult
+- uid: System.Exception.InnerException
+  commentId: P:System.Exception.InnerException
+  parent: System.Exception
+  isExternal: true
+  name: InnerException
+  nameWithType: Exception.InnerException
+  fullName: System.Exception.InnerException
+- uid: System.Exception.Message
+  commentId: P:System.Exception.Message
+  parent: System.Exception
+  isExternal: true
+  name: Message
+  nameWithType: Exception.Message
+  fullName: System.Exception.Message
+- uid: System.Exception.Source
+  commentId: P:System.Exception.Source
+  parent: System.Exception
+  isExternal: true
+  name: Source
+  nameWithType: Exception.Source
+  fullName: System.Exception.Source
+- uid: System.Exception.StackTrace
+  commentId: P:System.Exception.StackTrace
+  parent: System.Exception
+  isExternal: true
+  name: StackTrace
+  nameWithType: Exception.StackTrace
+  fullName: System.Exception.StackTrace
+- uid: System.Exception.TargetSite
+  commentId: P:System.Exception.TargetSite
+  parent: System.Exception
+  isExternal: true
+  name: TargetSite
+  nameWithType: Exception.TargetSite
+  fullName: System.Exception.TargetSite
+- uid: System.Exception.SerializeObjectState
+  commentId: E:System.Exception.SerializeObjectState
+  parent: System.Exception
+  isExternal: true
+  name: SerializeObjectState
+  nameWithType: Exception.SerializeObjectState
+  fullName: System.Exception.SerializeObjectState
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: EasyPost.Exceptions
+  commentId: N:EasyPost.Exceptions
+  name: EasyPost.Exceptions
+  nameWithType: EasyPost.Exceptions
+  fullName: EasyPost.Exceptions
+- uid: System.Runtime.Serialization
+  commentId: N:System.Runtime.Serialization
+  isExternal: true
+  name: System.Runtime.Serialization
+  nameWithType: System.Runtime.Serialization
+  fullName: System.Runtime.Serialization
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Collections.Generic.List{EasyPost.Models.API.Error}
+  commentId: T:System.Collections.Generic.List{EasyPost.Models.API.Error}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<Error>
+  nameWithType: List<Error>
+  fullName: System.Collections.Generic.List<EasyPost.Models.API.Error>
+  nameWithType.vb: List(Of Error)
+  fullName.vb: System.Collections.Generic.List(Of EasyPost.Models.API.Error)
+  name.vb: List(Of Error)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: EasyPost.Models.API.Error
+    name: Error
+    nameWithType: Error
+    fullName: EasyPost.Models.API.Error
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: EasyPost.Models.API.Error
+    name: Error
+    nameWithType: Error
+    fullName: EasyPost.Models.API.Error
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost.Exceptions.API.ApiError.PrettyPrint*
+  commentId: Overload:EasyPost.Exceptions.API.ApiError.PrettyPrint
+  name: PrettyPrint
+  nameWithType: ApiError.PrettyPrint
+  fullName: EasyPost.Exceptions.API.ApiError.PrettyPrint
+- uid: EasyPost.Exceptions.API.ApiError
+  commentId: T:EasyPost.Exceptions.API.ApiError
+  parent: EasyPost.Exceptions.API
+  name: ApiError
+  nameWithType: ApiError
+  fullName: EasyPost.Exceptions.API.ApiError
+- uid: EasyPost.Exceptions.API.ApiError.#ctor*
+  commentId: Overload:EasyPost.Exceptions.API.ApiError.#ctor
+  name: ApiError
+  nameWithType: ApiError.ApiError
+  fullName: EasyPost.Exceptions.API.ApiError.ApiError

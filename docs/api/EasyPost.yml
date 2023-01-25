@@ -1,0 +1,52 @@
+### YamlMime:ManagedReference
+items:
+- uid: EasyPost
+  commentId: N:EasyPost
+  id: EasyPost
+  children:
+  - EasyPost.BetaClient
+  - EasyPost.Client
+  - EasyPost.Constants
+  - EasyPost.Constants.CarrierAccountTypes
+  - EasyPost.Constants.ErrorMessages
+  langs:
+  - csharp
+  - vb
+  name: EasyPost
+  nameWithType: EasyPost
+  fullName: EasyPost
+  type: Namespace
+  assemblies:
+  - EasyPost
+references:
+- uid: EasyPost.BetaClient
+  commentId: T:EasyPost.BetaClient
+  parent: EasyPost
+  name: BetaClient
+  nameWithType: BetaClient
+  fullName: EasyPost.BetaClient
+- uid: EasyPost.Client
+  commentId: T:EasyPost.Client
+  name: Client
+  nameWithType: Client
+  fullName: EasyPost.Client
+- uid: EasyPost.Constants
+  commentId: T:EasyPost.Constants
+  name: Constants
+  nameWithType: Constants
+  fullName: EasyPost.Constants
+- uid: EasyPost.Constants.ErrorMessages
+  commentId: T:EasyPost.Constants.ErrorMessages
+  name: Constants.ErrorMessages
+  nameWithType: Constants.ErrorMessages
+  fullName: EasyPost.Constants.ErrorMessages
+- uid: EasyPost.Constants.CarrierAccountTypes
+  commentId: T:EasyPost.Constants.CarrierAccountTypes
+  name: Constants.CarrierAccountTypes
+  nameWithType: Constants.CarrierAccountTypes
+  fullName: EasyPost.Constants.CarrierAccountTypes
+- uid: EasyPost
+  commentId: N:EasyPost
+  name: EasyPost
+  nameWithType: EasyPost
+  fullName: EasyPost

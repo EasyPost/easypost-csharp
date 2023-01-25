@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: EasyPost._base
+  commentId: N:EasyPost._base
+  id: EasyPost._base
+  children:
+  - EasyPost._base.ApiVersion
+  - EasyPost._base.EasyPostClient
+  - EasyPost._base.EasyPostObject
+  - EasyPost._base.EasyPostService
+  - EasyPost._base.IEasyPostObject
+  - EasyPost._base.IEasyPostService
+  - EasyPost._base.WithClient
+  langs:
+  - csharp
+  - vb
+  name: EasyPost._base
+  nameWithType: EasyPost._base
+  fullName: EasyPost._base
+  type: Namespace
+  assemblies:
+  - EasyPost
+references:
+- uid: EasyPost._base.ApiVersion
+  commentId: T:EasyPost._base.ApiVersion
+  parent: EasyPost._base
+  name: ApiVersion
+  nameWithType: ApiVersion
+  fullName: EasyPost._base.ApiVersion
+- uid: EasyPost._base.EasyPostClient
+  commentId: T:EasyPost._base.EasyPostClient
+  parent: EasyPost._base
+  name: EasyPostClient
+  nameWithType: EasyPostClient
+  fullName: EasyPost._base.EasyPostClient
+- uid: EasyPost._base.EasyPostObject
+  commentId: T:EasyPost._base.EasyPostObject
+  parent: EasyPost._base
+  name: EasyPostObject
+  nameWithType: EasyPostObject
+  fullName: EasyPost._base.EasyPostObject
+- uid: EasyPost._base.IEasyPostObject
+  commentId: T:EasyPost._base.IEasyPostObject
+  parent: EasyPost._base
+  name: IEasyPostObject
+  nameWithType: IEasyPostObject
+  fullName: EasyPost._base.IEasyPostObject
+- uid: EasyPost._base.EasyPostService
+  commentId: T:EasyPost._base.EasyPostService
+  parent: EasyPost._base
+  name: EasyPostService
+  nameWithType: EasyPostService
+  fullName: EasyPost._base.EasyPostService
+- uid: EasyPost._base.IEasyPostService
+  commentId: T:EasyPost._base.IEasyPostService
+  parent: EasyPost._base
+  name: IEasyPostService
+  nameWithType: IEasyPostService
+  fullName: EasyPost._base.IEasyPostService
+- uid: EasyPost._base.WithClient
+  commentId: T:EasyPost._base.WithClient
+  parent: EasyPost._base
+  name: WithClient
+  nameWithType: WithClient
+  fullName: EasyPost._base.WithClient
+- uid: EasyPost._base
+  commentId: N:EasyPost._base
+  name: EasyPost._base
+  nameWithType: EasyPost._base
+  fullName: EasyPost._base

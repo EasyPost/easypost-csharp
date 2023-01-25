@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: EasyPost.Calculation
+  commentId: N:EasyPost.Calculation
+  id: EasyPost.Calculation
+  children:
+  - EasyPost.Calculation.Rates
+  langs:
+  - csharp
+  - vb
+  name: EasyPost.Calculation
+  nameWithType: EasyPost.Calculation
+  fullName: EasyPost.Calculation
+  type: Namespace
+  assemblies:
+  - EasyPost
+references:
+- uid: EasyPost.Calculation.Rates
+  commentId: T:EasyPost.Calculation.Rates
+  name: Rates
+  nameWithType: Rates
+  fullName: EasyPost.Calculation.Rates
