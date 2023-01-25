@@ -98,6 +98,29 @@ jobs:
         with:
           path-to-lcov: coveragereport/lcov.info
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          
+  Publish_Docs:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        
+      - name: Install .NET SDK
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.x.x
+
+      - name: Install docfx
+      - run: dotnet install -g docfx
+      
+      - name: Generate docs
+      - run: docfx docs/docfx.json
+
+      - name: Deploy docs
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/_site
 
   NET_Tests:
     # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
