@@ -32,6 +32,7 @@ coverage-check:
 ## docs - Generates library documentation
 docs:
 	docfx docs/docfx.json
+	git add docs/*
 
 ## format - Formats the project
 format:
