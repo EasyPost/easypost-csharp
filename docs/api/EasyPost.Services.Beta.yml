@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: EasyPost.Services.Beta
+  commentId: N:EasyPost.Services.Beta
+  id: EasyPost.Services.Beta
+  children:
+  - EasyPost.Services.Beta.ReferralService
+  langs:
+  - csharp
+  - vb
+  name: EasyPost.Services.Beta
+  nameWithType: EasyPost.Services.Beta
+  fullName: EasyPost.Services.Beta
+  type: Namespace
+  assemblies:
+  - EasyPost
+references:
+- uid: EasyPost.Services.Beta.ReferralService
+  commentId: T:EasyPost.Services.Beta.ReferralService
+  parent: EasyPost.Services.Beta
+  name: ReferralService
+  nameWithType: ReferralService
+  fullName: EasyPost.Services.Beta.ReferralService
+- uid: EasyPost.Services.Beta
+  commentId: N:EasyPost.Services.Beta
+  name: EasyPost.Services.Beta
+  nameWithType: EasyPost.Services.Beta
+  fullName: EasyPost.Services.Beta

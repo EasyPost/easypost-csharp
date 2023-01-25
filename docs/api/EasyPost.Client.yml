@@ -1,0 +1,1672 @@
+### YamlMime:ManagedReference
+items:
+- uid: EasyPost.Client
+  commentId: T:EasyPost.Client
+  id: Client
+  parent: EasyPost
+  children:
+  - EasyPost.Client.#ctor(System.String,System.String,System.Net.Http.HttpClient)
+  - EasyPost.Client.Address
+  - EasyPost.Client.ApiKey
+  - EasyPost.Client.Batch
+  - EasyPost.Client.Beta
+  - EasyPost.Client.Billing
+  - EasyPost.Client.CarrierAccount
+  - EasyPost.Client.CarrierType
+  - EasyPost.Client.CustomsInfo
+  - EasyPost.Client.CustomsItem
+  - EasyPost.Client.EndShipper
+  - EasyPost.Client.Event
+  - EasyPost.Client.Insurance
+  - EasyPost.Client.Order
+  - EasyPost.Client.Parcel
+  - EasyPost.Client.Partner
+  - EasyPost.Client.Pickup
+  - EasyPost.Client.Rate
+  - EasyPost.Client.Refund
+  - EasyPost.Client.Report
+  - EasyPost.Client.ScanForm
+  - EasyPost.Client.Shipment
+  - EasyPost.Client.Tracker
+  - EasyPost.Client.User
+  - EasyPost.Client.Webhook
+  langs:
+  - csharp
+  - vb
+  name: Client
+  nameWithType: Client
+  fullName: EasyPost.Client
+  type: Class
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Client
+    path: Client.cs
+    startLine: 6
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: 'public class Client : EasyPostClient'
+    content.vb: >-
+      Public Class Client
+
+          Inherits EasyPostClient
+  inheritance:
+  - System.Object
+  - EasyPost._base.EasyPostClient
+  inheritedMembers:
+  - EasyPost._base.EasyPostClient.Configuration
+  - EasyPost._base.EasyPostClient.GetService``1
+  - EasyPost._base.EasyPostClient.Equals(System.Object)
+  - EasyPost._base.EasyPostClient.GetHashCode
+  - EasyPost._base.EasyPostClient.Clone``1(System.String,System.String,System.Net.Http.HttpClient)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: EasyPost.Client.Address
+  commentId: P:EasyPost.Client.Address
+  id: Address
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Address
+  nameWithType: Client.Address
+  fullName: EasyPost.Client.Address
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Address
+    path: Client.cs
+    startLine: 8
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public AddressService Address { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.AddressService
+    content.vb: Public ReadOnly Property Address As AddressService
+  overload: EasyPost.Client.Address*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.ApiKey
+  commentId: P:EasyPost.Client.ApiKey
+  id: ApiKey
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: ApiKey
+  nameWithType: Client.ApiKey
+  fullName: EasyPost.Client.ApiKey
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: ApiKey
+    path: Client.cs
+    startLine: 10
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public ApiKeyService ApiKey { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.ApiKeyService
+    content.vb: Public ReadOnly Property ApiKey As ApiKeyService
+  overload: EasyPost.Client.ApiKey*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Batch
+  commentId: P:EasyPost.Client.Batch
+  id: Batch
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Batch
+  nameWithType: Client.Batch
+  fullName: EasyPost.Client.Batch
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Batch
+    path: Client.cs
+    startLine: 12
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public BatchService Batch { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.BatchService
+    content.vb: Public ReadOnly Property Batch As BatchService
+  overload: EasyPost.Client.Batch*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Beta
+  commentId: P:EasyPost.Client.Beta
+  id: Beta
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Beta
+  nameWithType: Client.Beta
+  fullName: EasyPost.Client.Beta
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Beta
+    path: Client.cs
+    startLine: 16
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public BetaClient Beta { get; }
+    parameters: []
+    return:
+      type: EasyPost.BetaClient
+    content.vb: Public ReadOnly Property Beta As BetaClient
+  overload: EasyPost.Client.Beta*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Billing
+  commentId: P:EasyPost.Client.Billing
+  id: Billing
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Billing
+  nameWithType: Client.Billing
+  fullName: EasyPost.Client.Billing
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Billing
+    path: Client.cs
+    startLine: 18
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public BillingService Billing { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.BillingService
+    content.vb: Public ReadOnly Property Billing As BillingService
+  overload: EasyPost.Client.Billing*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.CarrierAccount
+  commentId: P:EasyPost.Client.CarrierAccount
+  id: CarrierAccount
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: CarrierAccount
+  nameWithType: Client.CarrierAccount
+  fullName: EasyPost.Client.CarrierAccount
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: CarrierAccount
+    path: Client.cs
+    startLine: 20
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public CarrierAccountService CarrierAccount { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.CarrierAccountService
+    content.vb: Public ReadOnly Property CarrierAccount As CarrierAccountService
+  overload: EasyPost.Client.CarrierAccount*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.CarrierType
+  commentId: P:EasyPost.Client.CarrierType
+  id: CarrierType
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: CarrierType
+  nameWithType: Client.CarrierType
+  fullName: EasyPost.Client.CarrierType
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: CarrierType
+    path: Client.cs
+    startLine: 22
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public CarrierTypeService CarrierType { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.CarrierTypeService
+    content.vb: Public ReadOnly Property CarrierType As CarrierTypeService
+  overload: EasyPost.Client.CarrierType*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.CustomsInfo
+  commentId: P:EasyPost.Client.CustomsInfo
+  id: CustomsInfo
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: CustomsInfo
+  nameWithType: Client.CustomsInfo
+  fullName: EasyPost.Client.CustomsInfo
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: CustomsInfo
+    path: Client.cs
+    startLine: 24
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public CustomsInfoService CustomsInfo { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.CustomsInfoService
+    content.vb: Public ReadOnly Property CustomsInfo As CustomsInfoService
+  overload: EasyPost.Client.CustomsInfo*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.CustomsItem
+  commentId: P:EasyPost.Client.CustomsItem
+  id: CustomsItem
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: CustomsItem
+  nameWithType: Client.CustomsItem
+  fullName: EasyPost.Client.CustomsItem
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: CustomsItem
+    path: Client.cs
+    startLine: 26
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public CustomsItemService CustomsItem { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.CustomsItemService
+    content.vb: Public ReadOnly Property CustomsItem As CustomsItemService
+  overload: EasyPost.Client.CustomsItem*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.EndShipper
+  commentId: P:EasyPost.Client.EndShipper
+  id: EndShipper
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: EndShipper
+  nameWithType: Client.EndShipper
+  fullName: EasyPost.Client.EndShipper
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: EndShipper
+    path: Client.cs
+    startLine: 28
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public EndShipperService EndShipper { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.EndShipperService
+    content.vb: Public ReadOnly Property EndShipper As EndShipperService
+  overload: EasyPost.Client.EndShipper*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Event
+  commentId: P:EasyPost.Client.Event
+  id: Event
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Event
+  nameWithType: Client.Event
+  fullName: EasyPost.Client.Event
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Event
+    path: Client.cs
+    startLine: 30
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public EventService Event { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.EventService
+    content.vb: Public ReadOnly Property Event As EventService
+  overload: EasyPost.Client.Event*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Insurance
+  commentId: P:EasyPost.Client.Insurance
+  id: Insurance
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Insurance
+  nameWithType: Client.Insurance
+  fullName: EasyPost.Client.Insurance
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Insurance
+    path: Client.cs
+    startLine: 32
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public InsuranceService Insurance { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.InsuranceService
+    content.vb: Public ReadOnly Property Insurance As InsuranceService
+  overload: EasyPost.Client.Insurance*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Order
+  commentId: P:EasyPost.Client.Order
+  id: Order
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Order
+  nameWithType: Client.Order
+  fullName: EasyPost.Client.Order
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Order
+    path: Client.cs
+    startLine: 34
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public OrderService Order { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.OrderService
+    content.vb: Public ReadOnly Property Order As OrderService
+  overload: EasyPost.Client.Order*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Parcel
+  commentId: P:EasyPost.Client.Parcel
+  id: Parcel
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Parcel
+  nameWithType: Client.Parcel
+  fullName: EasyPost.Client.Parcel
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Parcel
+    path: Client.cs
+    startLine: 36
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public ParcelService Parcel { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.ParcelService
+    content.vb: Public ReadOnly Property Parcel As ParcelService
+  overload: EasyPost.Client.Parcel*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Partner
+  commentId: P:EasyPost.Client.Partner
+  id: Partner
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Partner
+  nameWithType: Client.Partner
+  fullName: EasyPost.Client.Partner
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Partner
+    path: Client.cs
+    startLine: 38
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public PartnerService Partner { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.PartnerService
+    content.vb: Public ReadOnly Property Partner As PartnerService
+  overload: EasyPost.Client.Partner*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Pickup
+  commentId: P:EasyPost.Client.Pickup
+  id: Pickup
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Pickup
+  nameWithType: Client.Pickup
+  fullName: EasyPost.Client.Pickup
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Pickup
+    path: Client.cs
+    startLine: 40
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public PickupService Pickup { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.PickupService
+    content.vb: Public ReadOnly Property Pickup As PickupService
+  overload: EasyPost.Client.Pickup*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Rate
+  commentId: P:EasyPost.Client.Rate
+  id: Rate
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Rate
+  nameWithType: Client.Rate
+  fullName: EasyPost.Client.Rate
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Rate
+    path: Client.cs
+    startLine: 42
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public RateService Rate { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.RateService
+    content.vb: Public ReadOnly Property Rate As RateService
+  overload: EasyPost.Client.Rate*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Refund
+  commentId: P:EasyPost.Client.Refund
+  id: Refund
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Refund
+  nameWithType: Client.Refund
+  fullName: EasyPost.Client.Refund
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Refund
+    path: Client.cs
+    startLine: 44
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public RefundService Refund { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.RefundService
+    content.vb: Public ReadOnly Property Refund As RefundService
+  overload: EasyPost.Client.Refund*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Report
+  commentId: P:EasyPost.Client.Report
+  id: Report
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Report
+  nameWithType: Client.Report
+  fullName: EasyPost.Client.Report
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Report
+    path: Client.cs
+    startLine: 46
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public ReportService Report { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.ReportService
+    content.vb: Public ReadOnly Property Report As ReportService
+  overload: EasyPost.Client.Report*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.ScanForm
+  commentId: P:EasyPost.Client.ScanForm
+  id: ScanForm
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: ScanForm
+  nameWithType: Client.ScanForm
+  fullName: EasyPost.Client.ScanForm
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: ScanForm
+    path: Client.cs
+    startLine: 48
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public ScanFormService ScanForm { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.ScanFormService
+    content.vb: Public ReadOnly Property ScanForm As ScanFormService
+  overload: EasyPost.Client.ScanForm*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Shipment
+  commentId: P:EasyPost.Client.Shipment
+  id: Shipment
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Shipment
+  nameWithType: Client.Shipment
+  fullName: EasyPost.Client.Shipment
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Shipment
+    path: Client.cs
+    startLine: 50
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public ShipmentService Shipment { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.ShipmentService
+    content.vb: Public ReadOnly Property Shipment As ShipmentService
+  overload: EasyPost.Client.Shipment*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Tracker
+  commentId: P:EasyPost.Client.Tracker
+  id: Tracker
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Tracker
+  nameWithType: Client.Tracker
+  fullName: EasyPost.Client.Tracker
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Tracker
+    path: Client.cs
+    startLine: 52
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public TrackerService Tracker { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.TrackerService
+    content.vb: Public ReadOnly Property Tracker As TrackerService
+  overload: EasyPost.Client.Tracker*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.User
+  commentId: P:EasyPost.Client.User
+  id: User
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: User
+  nameWithType: Client.User
+  fullName: EasyPost.Client.User
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: User
+    path: Client.cs
+    startLine: 54
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public UserService User { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.UserService
+    content.vb: Public ReadOnly Property User As UserService
+  overload: EasyPost.Client.User*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.Webhook
+  commentId: P:EasyPost.Client.Webhook
+  id: Webhook
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Webhook
+  nameWithType: Client.Webhook
+  fullName: EasyPost.Client.Webhook
+  type: Property
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: Webhook
+    path: Client.cs
+    startLine: 56
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  syntax:
+    content: public WebhookService Webhook { get; }
+    parameters: []
+    return:
+      type: EasyPost.Services.WebhookService
+    content.vb: Public ReadOnly Property Webhook As WebhookService
+  overload: EasyPost.Client.Webhook*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: EasyPost.Client.#ctor(System.String,System.String,System.Net.Http.HttpClient)
+  commentId: M:EasyPost.Client.#ctor(System.String,System.String,System.Net.Http.HttpClient)
+  id: '#ctor(System.String,System.String,System.Net.Http.HttpClient)'
+  parent: EasyPost.Client
+  langs:
+  - csharp
+  - vb
+  name: Client(String, String, HttpClient)
+  nameWithType: Client.Client(String, String, HttpClient)
+  fullName: EasyPost.Client.Client(System.String, System.String, System.Net.Http.HttpClient)
+  type: Constructor
+  source:
+    remote:
+      path: EasyPost/Client.cs
+      branch: docs
+      repo: git@github.com:EasyPost/easypost-csharp.git
+    id: .ctor
+    path: Client.cs
+    startLine: 66
+  assemblies:
+  - EasyPost
+  namespace: EasyPost
+  summary: "\nInitializes a new instance of the <xref href=\"EasyPost.Client\" data-throw-if-not-resolved=\"false\"></xref> class.\nConstructor for the EasyPost client.\n"
+  example: []
+  syntax:
+    content: public Client(string apiKey, string baseUrl = null, HttpClient customHttpClient = null)
+    parameters:
+    - id: apiKey
+      type: System.String
+      description: API key to use with this client.
+    - id: baseUrl
+      type: System.String
+      description: Base URL to use with this client. Must include API version.
+    - id: customHttpClient
+      type: System.Net.Http.HttpClient
+      description: Custom HttpClient to pass into RestSharp if needed.
+    content.vb: Public Sub New(apiKey As String, baseUrl As String = Nothing, customHttpClient As HttpClient = Nothing)
+  overload: EasyPost.Client.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: EasyPost
+  commentId: N:EasyPost
+  name: EasyPost
+  nameWithType: EasyPost
+  fullName: EasyPost
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: EasyPost._base.EasyPostClient
+  commentId: T:EasyPost._base.EasyPostClient
+  parent: EasyPost._base
+  name: EasyPostClient
+  nameWithType: EasyPostClient
+  fullName: EasyPost._base.EasyPostClient
+- uid: EasyPost._base.EasyPostClient.Configuration
+  commentId: F:EasyPost._base.EasyPostClient.Configuration
+  parent: EasyPost._base.EasyPostClient
+  name: Configuration
+  nameWithType: EasyPostClient.Configuration
+  fullName: EasyPost._base.EasyPostClient.Configuration
+- uid: EasyPost._base.EasyPostClient.GetService``1
+  commentId: M:EasyPost._base.EasyPostClient.GetService``1
+  parent: EasyPost._base.EasyPostClient
+  name: GetService<T>()
+  nameWithType: EasyPostClient.GetService<T>()
+  fullName: EasyPost._base.EasyPostClient.GetService<T>()
+  nameWithType.vb: EasyPostClient.GetService(Of T)()
+  fullName.vb: EasyPost._base.EasyPostClient.GetService(Of T)()
+  name.vb: GetService(Of T)()
+  spec.csharp:
+  - uid: EasyPost._base.EasyPostClient.GetService``1
+    name: GetService<T>
+    nameWithType: EasyPostClient.GetService<T>
+    fullName: EasyPost._base.EasyPostClient.GetService<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.EasyPostClient.GetService``1
+    name: GetService(Of T)
+    nameWithType: EasyPostClient.GetService(Of T)
+    fullName: EasyPost._base.EasyPostClient.GetService(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.EasyPostClient.Equals(System.Object)
+  commentId: M:EasyPost._base.EasyPostClient.Equals(System.Object)
+  parent: EasyPost._base.EasyPostClient
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: EasyPostClient.Equals(Object)
+  fullName: EasyPost._base.EasyPostClient.Equals(System.Object)
+  spec.csharp:
+  - uid: EasyPost._base.EasyPostClient.Equals(System.Object)
+    name: Equals
+    nameWithType: EasyPostClient.Equals
+    fullName: EasyPost._base.EasyPostClient.Equals
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.EasyPostClient.Equals(System.Object)
+    name: Equals
+    nameWithType: EasyPostClient.Equals
+    fullName: EasyPost._base.EasyPostClient.Equals
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.EasyPostClient.GetHashCode
+  commentId: M:EasyPost._base.EasyPostClient.GetHashCode
+  parent: EasyPost._base.EasyPostClient
+  name: GetHashCode()
+  nameWithType: EasyPostClient.GetHashCode()
+  fullName: EasyPost._base.EasyPostClient.GetHashCode()
+  spec.csharp:
+  - uid: EasyPost._base.EasyPostClient.GetHashCode
+    name: GetHashCode
+    nameWithType: EasyPostClient.GetHashCode
+    fullName: EasyPost._base.EasyPostClient.GetHashCode
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.EasyPostClient.GetHashCode
+    name: GetHashCode
+    nameWithType: EasyPostClient.GetHashCode
+    fullName: EasyPost._base.EasyPostClient.GetHashCode
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EasyPost._base.EasyPostClient.Clone``1(System.String,System.String,System.Net.Http.HttpClient)
+  commentId: M:EasyPost._base.EasyPostClient.Clone``1(System.String,System.String,System.Net.Http.HttpClient)
+  parent: EasyPost._base.EasyPostClient
+  isExternal: true
+  name: Clone<T>(String, String, HttpClient)
+  nameWithType: EasyPostClient.Clone<T>(String, String, HttpClient)
+  fullName: EasyPost._base.EasyPostClient.Clone<T>(System.String, System.String, System.Net.Http.HttpClient)
+  nameWithType.vb: EasyPostClient.Clone(Of T)(String, String, HttpClient)
+  fullName.vb: EasyPost._base.EasyPostClient.Clone(Of T)(System.String, System.String, System.Net.Http.HttpClient)
+  name.vb: Clone(Of T)(String, String, HttpClient)
+  spec.csharp:
+  - uid: EasyPost._base.EasyPostClient.Clone``1(System.String,System.String,System.Net.Http.HttpClient)
+    name: Clone<T>
+    nameWithType: EasyPostClient.Clone<T>
+    fullName: EasyPost._base.EasyPostClient.Clone<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Net.Http.HttpClient
+    name: HttpClient
+    nameWithType: HttpClient
+    fullName: System.Net.Http.HttpClient
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: EasyPost._base.EasyPostClient.Clone``1(System.String,System.String,System.Net.Http.HttpClient)
+    name: Clone(Of T)
+    nameWithType: EasyPostClient.Clone(Of T)
+    fullName: EasyPost._base.EasyPostClient.Clone(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Net.Http.HttpClient
+    name: HttpClient
+    nameWithType: HttpClient
+    fullName: System.Net.Http.HttpClient
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: EasyPost._base
+  commentId: N:EasyPost._base
+  name: EasyPost._base
+  nameWithType: EasyPost._base
+  fullName: EasyPost._base
+- uid: EasyPost.Client.Address*
+  commentId: Overload:EasyPost.Client.Address
+  name: Address
+  nameWithType: Client.Address
+  fullName: EasyPost.Client.Address
+- uid: EasyPost.Services.AddressService
+  commentId: T:EasyPost.Services.AddressService
+  parent: EasyPost.Services
+  name: AddressService
+  nameWithType: AddressService
+  fullName: EasyPost.Services.AddressService
+- uid: EasyPost.Services
+  commentId: N:EasyPost.Services
+  name: EasyPost.Services
+  nameWithType: EasyPost.Services
+  fullName: EasyPost.Services
+- uid: EasyPost.Client.ApiKey*
+  commentId: Overload:EasyPost.Client.ApiKey
+  name: ApiKey
+  nameWithType: Client.ApiKey
+  fullName: EasyPost.Client.ApiKey
+- uid: EasyPost.Services.ApiKeyService
+  commentId: T:EasyPost.Services.ApiKeyService
+  parent: EasyPost.Services
+  name: ApiKeyService
+  nameWithType: ApiKeyService
+  fullName: EasyPost.Services.ApiKeyService
+- uid: EasyPost.Client.Batch*
+  commentId: Overload:EasyPost.Client.Batch
+  name: Batch
+  nameWithType: Client.Batch
+  fullName: EasyPost.Client.Batch
+- uid: EasyPost.Services.BatchService
+  commentId: T:EasyPost.Services.BatchService
+  parent: EasyPost.Services
+  name: BatchService
+  nameWithType: BatchService
+  fullName: EasyPost.Services.BatchService
+- uid: EasyPost.Client.Beta*
+  commentId: Overload:EasyPost.Client.Beta
+  name: Beta
+  nameWithType: Client.Beta
+  fullName: EasyPost.Client.Beta
+- uid: EasyPost.BetaClient
+  commentId: T:EasyPost.BetaClient
+  parent: EasyPost
+  name: BetaClient
+  nameWithType: BetaClient
+  fullName: EasyPost.BetaClient
+- uid: EasyPost.Client.Billing*
+  commentId: Overload:EasyPost.Client.Billing
+  name: Billing
+  nameWithType: Client.Billing
+  fullName: EasyPost.Client.Billing
+- uid: EasyPost.Services.BillingService
+  commentId: T:EasyPost.Services.BillingService
+  parent: EasyPost.Services
+  name: BillingService
+  nameWithType: BillingService
+  fullName: EasyPost.Services.BillingService
+- uid: EasyPost.Client.CarrierAccount*
+  commentId: Overload:EasyPost.Client.CarrierAccount
+  name: CarrierAccount
+  nameWithType: Client.CarrierAccount
+  fullName: EasyPost.Client.CarrierAccount
+- uid: EasyPost.Services.CarrierAccountService
+  commentId: T:EasyPost.Services.CarrierAccountService
+  parent: EasyPost.Services
+  name: CarrierAccountService
+  nameWithType: CarrierAccountService
+  fullName: EasyPost.Services.CarrierAccountService
+- uid: EasyPost.Client.CarrierType*
+  commentId: Overload:EasyPost.Client.CarrierType
+  name: CarrierType
+  nameWithType: Client.CarrierType
+  fullName: EasyPost.Client.CarrierType
+- uid: EasyPost.Services.CarrierTypeService
+  commentId: T:EasyPost.Services.CarrierTypeService
+  parent: EasyPost.Services
+  name: CarrierTypeService
+  nameWithType: CarrierTypeService
+  fullName: EasyPost.Services.CarrierTypeService
+- uid: EasyPost.Client.CustomsInfo*
+  commentId: Overload:EasyPost.Client.CustomsInfo
+  name: CustomsInfo
+  nameWithType: Client.CustomsInfo
+  fullName: EasyPost.Client.CustomsInfo
+- uid: EasyPost.Services.CustomsInfoService
+  commentId: T:EasyPost.Services.CustomsInfoService
+  parent: EasyPost.Services
+  name: CustomsInfoService
+  nameWithType: CustomsInfoService
+  fullName: EasyPost.Services.CustomsInfoService
+- uid: EasyPost.Client.CustomsItem*
+  commentId: Overload:EasyPost.Client.CustomsItem
+  name: CustomsItem
+  nameWithType: Client.CustomsItem
+  fullName: EasyPost.Client.CustomsItem
+- uid: EasyPost.Services.CustomsItemService
+  commentId: T:EasyPost.Services.CustomsItemService
+  parent: EasyPost.Services
+  name: CustomsItemService
+  nameWithType: CustomsItemService
+  fullName: EasyPost.Services.CustomsItemService
+- uid: EasyPost.Client.EndShipper*
+  commentId: Overload:EasyPost.Client.EndShipper
+  name: EndShipper
+  nameWithType: Client.EndShipper
+  fullName: EasyPost.Client.EndShipper
+- uid: EasyPost.Services.EndShipperService
+  commentId: T:EasyPost.Services.EndShipperService
+  parent: EasyPost.Services
+  name: EndShipperService
+  nameWithType: EndShipperService
+  fullName: EasyPost.Services.EndShipperService
+- uid: EasyPost.Client.Event*
+  commentId: Overload:EasyPost.Client.Event
+  name: Event
+  nameWithType: Client.Event
+  fullName: EasyPost.Client.Event
+- uid: EasyPost.Services.EventService
+  commentId: T:EasyPost.Services.EventService
+  parent: EasyPost.Services
+  name: EventService
+  nameWithType: EventService
+  fullName: EasyPost.Services.EventService
+- uid: EasyPost.Client.Insurance*
+  commentId: Overload:EasyPost.Client.Insurance
+  name: Insurance
+  nameWithType: Client.Insurance
+  fullName: EasyPost.Client.Insurance
+- uid: EasyPost.Services.InsuranceService
+  commentId: T:EasyPost.Services.InsuranceService
+  parent: EasyPost.Services
+  name: InsuranceService
+  nameWithType: InsuranceService
+  fullName: EasyPost.Services.InsuranceService
+- uid: EasyPost.Client.Order*
+  commentId: Overload:EasyPost.Client.Order
+  name: Order
+  nameWithType: Client.Order
+  fullName: EasyPost.Client.Order
+- uid: EasyPost.Services.OrderService
+  commentId: T:EasyPost.Services.OrderService
+  parent: EasyPost.Services
+  name: OrderService
+  nameWithType: OrderService
+  fullName: EasyPost.Services.OrderService
+- uid: EasyPost.Client.Parcel*
+  commentId: Overload:EasyPost.Client.Parcel
+  name: Parcel
+  nameWithType: Client.Parcel
+  fullName: EasyPost.Client.Parcel
+- uid: EasyPost.Services.ParcelService
+  commentId: T:EasyPost.Services.ParcelService
+  parent: EasyPost.Services
+  name: ParcelService
+  nameWithType: ParcelService
+  fullName: EasyPost.Services.ParcelService
+- uid: EasyPost.Client.Partner*
+  commentId: Overload:EasyPost.Client.Partner
+  name: Partner
+  nameWithType: Client.Partner
+  fullName: EasyPost.Client.Partner
+- uid: EasyPost.Services.PartnerService
+  commentId: T:EasyPost.Services.PartnerService
+  parent: EasyPost.Services
+  name: PartnerService
+  nameWithType: PartnerService
+  fullName: EasyPost.Services.PartnerService
+- uid: EasyPost.Client.Pickup*
+  commentId: Overload:EasyPost.Client.Pickup
+  name: Pickup
+  nameWithType: Client.Pickup
+  fullName: EasyPost.Client.Pickup
+- uid: EasyPost.Services.PickupService
+  commentId: T:EasyPost.Services.PickupService
+  parent: EasyPost.Services
+  name: PickupService
+  nameWithType: PickupService
+  fullName: EasyPost.Services.PickupService
+- uid: EasyPost.Client.Rate*
+  commentId: Overload:EasyPost.Client.Rate
+  name: Rate
+  nameWithType: Client.Rate
+  fullName: EasyPost.Client.Rate
+- uid: EasyPost.Services.RateService
+  commentId: T:EasyPost.Services.RateService
+  parent: EasyPost.Services
+  name: RateService
+  nameWithType: RateService
+  fullName: EasyPost.Services.RateService
+- uid: EasyPost.Client.Refund*
+  commentId: Overload:EasyPost.Client.Refund
+  name: Refund
+  nameWithType: Client.Refund
+  fullName: EasyPost.Client.Refund
+- uid: EasyPost.Services.RefundService
+  commentId: T:EasyPost.Services.RefundService
+  parent: EasyPost.Services
+  name: RefundService
+  nameWithType: RefundService
+  fullName: EasyPost.Services.RefundService
+- uid: EasyPost.Client.Report*
+  commentId: Overload:EasyPost.Client.Report
+  name: Report
+  nameWithType: Client.Report
+  fullName: EasyPost.Client.Report
+- uid: EasyPost.Services.ReportService
+  commentId: T:EasyPost.Services.ReportService
+  parent: EasyPost.Services
+  name: ReportService
+  nameWithType: ReportService
+  fullName: EasyPost.Services.ReportService
+- uid: EasyPost.Client.ScanForm*
+  commentId: Overload:EasyPost.Client.ScanForm
+  name: ScanForm
+  nameWithType: Client.ScanForm
+  fullName: EasyPost.Client.ScanForm
+- uid: EasyPost.Services.ScanFormService
+  commentId: T:EasyPost.Services.ScanFormService
+  parent: EasyPost.Services
+  name: ScanFormService
+  nameWithType: ScanFormService
+  fullName: EasyPost.Services.ScanFormService
+- uid: EasyPost.Client.Shipment*
+  commentId: Overload:EasyPost.Client.Shipment
+  name: Shipment
+  nameWithType: Client.Shipment
+  fullName: EasyPost.Client.Shipment
+- uid: EasyPost.Services.ShipmentService
+  commentId: T:EasyPost.Services.ShipmentService
+  parent: EasyPost.Services
+  name: ShipmentService
+  nameWithType: ShipmentService
+  fullName: EasyPost.Services.ShipmentService
+- uid: EasyPost.Client.Tracker*
+  commentId: Overload:EasyPost.Client.Tracker
+  name: Tracker
+  nameWithType: Client.Tracker
+  fullName: EasyPost.Client.Tracker
+- uid: EasyPost.Services.TrackerService
+  commentId: T:EasyPost.Services.TrackerService
+  parent: EasyPost.Services
+  name: TrackerService
+  nameWithType: TrackerService
+  fullName: EasyPost.Services.TrackerService
+- uid: EasyPost.Client.User*
+  commentId: Overload:EasyPost.Client.User
+  name: User
+  nameWithType: Client.User
+  fullName: EasyPost.Client.User
+- uid: EasyPost.Services.UserService
+  commentId: T:EasyPost.Services.UserService
+  parent: EasyPost.Services
+  name: UserService
+  nameWithType: UserService
+  fullName: EasyPost.Services.UserService
+- uid: EasyPost.Client.Webhook*
+  commentId: Overload:EasyPost.Client.Webhook
+  name: Webhook
+  nameWithType: Client.Webhook
+  fullName: EasyPost.Client.Webhook
+- uid: EasyPost.Services.WebhookService
+  commentId: T:EasyPost.Services.WebhookService
+  parent: EasyPost.Services
+  name: WebhookService
+  nameWithType: WebhookService
+  fullName: EasyPost.Services.WebhookService
+- uid: EasyPost.Client
+  commentId: T:EasyPost.Client
+  name: Client
+  nameWithType: Client
+  fullName: EasyPost.Client
+- uid: EasyPost.Client.#ctor*
+  commentId: Overload:EasyPost.Client.#ctor
+  name: Client
+  nameWithType: Client.Client
+  fullName: EasyPost.Client.Client
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Net.Http.HttpClient
+  commentId: T:System.Net.Http.HttpClient
+  parent: System.Net.Http
+  isExternal: true
+  name: HttpClient
+  nameWithType: HttpClient
+  fullName: System.Net.Http.HttpClient
+- uid: System.Net.Http
+  commentId: N:System.Net.Http
+  isExternal: true
+  name: System.Net.Http
+  nameWithType: System.Net.Http
+  fullName: System.Net.Http

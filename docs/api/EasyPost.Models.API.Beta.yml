@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: EasyPost.Models.API.Beta
+  commentId: N:EasyPost.Models.API.Beta
+  id: EasyPost.Models.API.Beta
+  children:
+  - EasyPost.Models.API.Beta.PaymentRefund
+  langs:
+  - csharp
+  - vb
+  name: EasyPost.Models.API.Beta
+  nameWithType: EasyPost.Models.API.Beta
+  fullName: EasyPost.Models.API.Beta
+  type: Namespace
+  assemblies:
+  - EasyPost
+references:
+- uid: EasyPost.Models.API.Beta.PaymentRefund
+  commentId: T:EasyPost.Models.API.Beta.PaymentRefund
+  name: PaymentRefund
+  nameWithType: PaymentRefund
+  fullName: EasyPost.Models.API.Beta.PaymentRefund
