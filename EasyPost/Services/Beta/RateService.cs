@@ -58,7 +58,7 @@ namespace EasyPost.Services.Beta
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
 #pragma warning disable CA1822
-        public EasyPost.Models.API.Beta.StatelessRate GetLowestEphemeralRate(IEnumerable<EasyPost.Models.API.Beta.StatelessRate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => Rates.GetLowestEphemeralRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+        public EasyPost.Models.API.Beta.StatelessRate GetLowestStatelessRate(IEnumerable<EasyPost.Models.API.Beta.StatelessRate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => Rates.GetLowestStatelessRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
 #pragma warning restore CA1822
     }
 }

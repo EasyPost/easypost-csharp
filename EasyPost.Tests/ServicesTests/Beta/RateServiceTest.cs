@@ -45,7 +45,7 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             List<StatelessRate> rates = await Client.Beta.Rate.RetrieveStatelessRates(data);
 
-            StatelessRate lowestStatelessRate = Calculation.Rates.GetLowestEphemeralRate(rates);
+            StatelessRate lowestStatelessRate = Calculation.Rates.GetLowestStatelessRate(rates);
 
             Assert.Equal("First", lowestStatelessRate.Service);
         }
@@ -60,7 +60,7 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             List<StatelessRate> rates = await Client.Beta.Rate.RetrieveStatelessRates(data);
 
-            StatelessRate lowestStatelessRate = Client.Beta.Rate.GetLowestEphemeralRate(rates);
+            StatelessRate lowestStatelessRate = Client.Beta.Rate.GetLowestStatelessRate(rates);
 
             Assert.Equal("First", lowestStatelessRate.Service);
         }

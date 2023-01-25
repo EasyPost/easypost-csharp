@@ -129,7 +129,7 @@ namespace EasyPost.Calculation
         /// <returns>Lowest rate matching the filter.</returns>
         public static EasyPost.Models.API.Beta.StatelessRate GetLowest(this IEnumerable<EasyPost.Models.API.Beta.StatelessRate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
-            return GetLowestEphemeralRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+            return GetLowestStatelessRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace EasyPost.Calculation
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest rate matching the filter.</returns>
-        public static EasyPost.Models.API.Beta.StatelessRate GetLowestEphemeralRate(IEnumerable<EasyPost.Models.API.Beta.StatelessRate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
+        public static EasyPost.Models.API.Beta.StatelessRate GetLowestStatelessRate(IEnumerable<EasyPost.Models.API.Beta.StatelessRate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
             includeCarriers ??= new List<string>();
             excludeCarriers ??= new List<string>();
