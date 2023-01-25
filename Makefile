@@ -31,7 +31,7 @@ coverage-check:
 
 ## docs - Generates library documentation
 docs:
-	docfx EasyPost/docfx.json
+	docfx docs/docfx.json
 
 ## format - Formats the project
 format:
