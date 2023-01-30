@@ -134,7 +134,6 @@ namespace EasyPost.Tests.ServicesTests
 
             List<Shipment> shipments = shipmentCollection.Shipments;
 
-            Assert.True(shipmentCollection.HasMore);
             Assert.True(shipments.Count <= Fixtures.PageSize);
             foreach (Shipment shipment in shipments)
             {

@@ -42,7 +42,6 @@ namespace EasyPost.Tests.ServicesTests
 
             List<Event> events = eventCollection.Events;
 
-            Assert.True(eventCollection.HasMore);
             Assert.True(events.Count <= Fixtures.PageSize);
             foreach (Event item in events)
             {

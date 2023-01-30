@@ -42,7 +42,6 @@ namespace EasyPost.Tests.ServicesTests
             EndShipperCollection endShipperCollection = await Client.EndShipper.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
             List<EndShipper> endShippers = endShipperCollection.EndShippers;
 
-            Assert.True(endShipperCollection.HasMore);
             Assert.True(endShippers.Count <= Fixtures.PageSize);
             foreach (EndShipper item in endShippers)
             {

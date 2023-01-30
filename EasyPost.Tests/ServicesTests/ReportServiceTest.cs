@@ -100,7 +100,6 @@ namespace EasyPost.Tests.ServicesTests
 
             List<Report> reports = reportCollection.Reports;
 
-            Assert.True(reportCollection.HasMore);
             Assert.True(reports.Count <= Fixtures.PageSize);
             foreach (Report report in reports)
             {

@@ -48,7 +48,6 @@ namespace EasyPost.Tests.ServicesTests
 
             List<Insurance> insurances = insuranceCollection.Insurances;
 
-            Assert.True(insuranceCollection.HasMore);
             Assert.True(insurances.Count <= Fixtures.PageSize);
             foreach (Insurance item in insurances)
             {

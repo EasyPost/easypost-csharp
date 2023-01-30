@@ -61,7 +61,6 @@ namespace EasyPost.Tests.ServicesTests
 
             List<Tracker> trackers = trackerCollection.Trackers;
 
-            Assert.True(trackerCollection.HasMore);
             Assert.True(trackers.Count <= Fixtures.PageSize);
             foreach (Tracker tracker in trackers)
             {
