@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Calculation;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
 
@@ -37,7 +36,7 @@ namespace EasyPost.Services
         /// <param name="excludeServices">Services to exclude in the filter.</param>
         /// <returns>Lowest EasyPost.Rate object instance.</returns>
 #pragma warning disable CA1822
-        public Rate GetLowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => Rates.GetLowestObjectRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+        public Rate GetLowestRate(IEnumerable<Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => Utilities.Rates.GetLowestRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
 #pragma warning restore CA1822
     }
 }
