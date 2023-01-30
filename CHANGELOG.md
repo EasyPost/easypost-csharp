@@ -9,8 +9,6 @@
   filter the lowest rate
 - Deprecated rate and smartrate filtering methods in `ShipmentService`, `RateService` and `Calculation.Rates` namespaces, moved to `Utilities.Rate` namespace
 
-
-
 ## v4.3.0 (2023-01-18)
 
 - Added payload functions `RetrieveAllPayloadsForEvent` and `RetrievePayloadForEvent` methods, accessible via `myClient.Event` service.
