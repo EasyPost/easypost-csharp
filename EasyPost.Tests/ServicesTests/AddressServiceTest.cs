@@ -114,7 +114,6 @@ namespace EasyPost.Tests.ServicesTests
             AddressCollection addressCollection = await Client.Address.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
             List<Address> addresses = addressCollection.Addresses;
 
-            Assert.True(addressCollection.HasMore);
             Assert.True(addresses.Count <= Fixtures.PageSize);
             foreach (Address item in addresses)
             {

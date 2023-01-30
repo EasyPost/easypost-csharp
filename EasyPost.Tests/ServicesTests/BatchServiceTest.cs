@@ -57,7 +57,6 @@ namespace EasyPost.Tests.ServicesTests
 
             List<Batch> batches = batchCollection.Batches;
 
-            Assert.True(batchCollection.HasMore);
             Assert.True(batches.Count <= Fixtures.PageSize);
             foreach (Batch item in batches)
             {

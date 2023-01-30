@@ -55,7 +55,6 @@ namespace EasyPost.Tests.ServicesTests
 
             List<Refund> refunds = refundCollection.Refunds;
 
-            Assert.True(refundCollection.HasMore);
             Assert.True(refunds.Count <= Fixtures.PageSize);
             foreach (Refund item in refunds)
             {

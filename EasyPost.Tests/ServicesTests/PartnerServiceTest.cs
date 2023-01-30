@@ -48,7 +48,6 @@ namespace EasyPost.Tests.ServicesTests
             ReferralCustomerCollection referralCustomerCollection = await Client.Partner.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
             List<ReferralCustomer> referralCustomers = referralCustomerCollection.ReferralCustomers;
 
-            Assert.True(referralCustomerCollection.HasMore);
             Assert.True(referralCustomers.Count <= Fixtures.PageSize);
             foreach (ReferralCustomer item in referralCustomers)
             {

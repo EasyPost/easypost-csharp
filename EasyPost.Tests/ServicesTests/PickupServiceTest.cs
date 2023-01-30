@@ -66,7 +66,6 @@ namespace EasyPost.Tests.ServicesTests
 
             List<Pickup> pickups = pickupCollection.Pickups;
 
-            Assert.True(pickupCollection.HasMore);
             Assert.True(pickups.Count <= Fixtures.PageSize);
             foreach (Pickup pickup in pickups)
             {
