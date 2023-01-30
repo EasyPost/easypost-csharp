@@ -9,102 +9,89 @@
   filter the lowest rate
 - Deprecated rate and smartrate filtering methods in `ShipmentService`, `RateService` and `Calculation.Rates` namespaces, moved to `Utilities.Rate` namespace
 
+
+
 ## v4.3.0 (2023-01-18)
 
-- Added payload functions `RetrieveAllPayloadsForEvent` and `RetrievePayloadForEvent` methods, accessible
-  via `myClient.Event` service.
+- Added payload functions `RetrieveAllPayloadsForEvent` and `RetrievePayloadForEvent` methods, accessible via `myClient.Event` service.
 - Added function to retrieve all pickups via `myClient.Pickup.All()`
 
 ## v4.2.0 (2023-01-11)
 
 - Added new beta billing functionality for referral customer users, accessible via `myClient.Beta.Referral` service
-    - `AddPaymentMethod` to add an existing Stripe bank account or credit card to your EasyPost account
-    - `RefundByAmount` refunds you wallet balance by a specified amount
-    - `RefundByPaymentLog` refunds you wallet balance by a specified payment log
+  - `AddPaymentMethod` to add an existing Stripe bank account or credit card to your EasyPost account
+  - `RefundByAmount` refunds you wallet balance by a specified amount
+  - `RefundByPaymentLog` refunds you wallet balance by a specified payment log
 - Added new `DeliveryMaxDatetime` Shipment option
 
 ## v4.1.0 (2022-12-07)
 
-- Routes requests for creating a carrier account with a custom workflow (eg: FedEx, UPS) to the correct endpoint when
-  using the `Create` function
+- Routes requests for creating a carrier account with a custom workflow (eg: FedEx, UPS) to the correct endpoint when using the `Create` function
 - `Constants` are now stored in `EasyPost.Constants` instead of `EasyPost.Exceptions.Constants`
 - Fixed a typo in `/charges` endpoint that was causing bank and credit card charge requests to fail
 
 ## v4.0.2 (2022-11-01)
 
-- Fix bug where the temporary internal API key switch when adding a credit card to a referral user was not reverted
-  after the request.
-    - After adding a credit card to a referral user, the existing Client would be misconfigured for following requests.
+- Fix bug where the temporary internal API key switch when adding a credit card to a referral user was not reverted after the request.
+  - After adding a credit card to a referral user, the existing Client would be misconfigured for following requests.
 
 ## v4.0.1 (2022-10-24)
 
 - `myInsurance.Refresh()` function HTTP method fixed from `PATCH` to `GET`
-    - This function has been marked as obsolete and will be removed in a future release
+  - This function has been marked as obsolete and will be removed in a future release
 - Fix return type of `order.Buy()` when passing in a rate. Function will now return the updated order.
 - Fix bug where request time limits were not being copied to a cloned Client.
 - Fix bug where hashcode of any `EasyPostObject` or subtype was not consistent.
-    - Hashcode and equality now consider properties of the object, including Client. Different properties and/or
-      different Clients will result in different hashcodes and objects will not be considered equal.
+  - Hashcode and equality now consider properties of the object, including Client. Different properties and/or different Clients will result in different hashcodes and objects will not be considered equal.
 - Fix bug where the wrong `SmartrateAccuracy` would be chosen
-    - `Percentile75` might accidentally have been chosen rather than `Percentile85` due to a bug in
-      the `SmartrateAccuracy` enum ID.
-- Fix bug where some embedded elements (e.g. customs items) were not being created if included during a larger creation
-  request (e.g. customs info create).
+  - `Percentile75` might accidentally have been chosen rather than `Percentile85` due to a bug in the `SmartrateAccuracy` enum ID.
+- Fix bug where some embedded elements (e.g. customs items) were not being created if included during a larger creation request (e.g. customs info create).
 - Prevent users from attempting to buy a shipment with a `null` rate, avoiding a `NullReferenceException`.
 
 ## v4.0.0 (2022-10-12)
 
-The `v4.0.0` release includes all the changes from the release candidate (see `v4.0.0-rc1` below) as well as the
-following items:
+The `v4.0.0` release includes all the changes from the release candidate (see `v4.0.0-rc1` below) as well as the following items:
 
 - Improved API error parsing
-    - API error message may be an array rather than a string. Arrays will be concatenated (by comma) and returned as a
-      string.
+  - API error message may be an array rather than a string. Arrays will be concatenated (by comma) and returned as a string.
 - Capture 1xx and 3xx HTTP status codes as errors
-    - Any known 3xx status code from the EasyPost API will throw a `RedirectError` exception
-    - Any unknown 3xx status code will throw a `UnexpectedHttpError` exception
-    - Any 1xx status code (known or unknown) will throw a `UnexpectedHttpError` exception
+  - Any known 3xx status code from the EasyPost API will throw a `RedirectError` exception
+  - Any unknown 3xx status code will throw a `UnexpectedHttpError` exception
+  - Any 1xx status code (known or unknown) will throw a `UnexpectedHttpError` exception
 
 ## v4.0.0-rc1 (2022-09-26)
 
 ### Breaking Changes & New Features
 
 - Library is now thread-safe
-    - Initialize a `Client` object with an API key
-    - Static methods (i.e. `create`, `retrieve`, retrieve `all` of a resource) exist in services, accessed via property
-      of the client (e.g. `myClient.Address.Create()`)
-    - Instance methods (i.e. `update`, `delete`) accessed on instance of a resource (i.e. `myShipment.Update()`)
+  - Initialize a `Client` object with an API key
+  - Static methods (i.e. `create`, `retrieve`, retrieve `all` of a resource) exist in services, accessed via property of the client (e.g. `myClient.Address.Create()`)
+  - Instance methods (i.e. `update`, `delete`) accessed on instance of a resource (i.e. `myShipment.Update()`)
 - All properties are now title-cased rather than snake-cased to match standard .NET naming conventions
-    - e.g. `myShipment.id` is now `myShipment.Id`, `myAddress.federal_tax_id` is
-      now `myAddress.FederalTaxId`, `myTrackerCollection.has_more` is now `myTrackerCollection.HasMore`
-    - Some properties have been renamed to avoid naming conflicts:
-        - `Rate.rate` is now `Rate.Price`
-        - `Message.message` is now `Message.Text`
+  - e.g. `myShipment.id` is now `myShipment.Id`, `myAddress.federal_tax_id` is now `myAddress.FederalTaxId`, `myTrackerCollection.has_more` is now `myTrackerCollection.HasMore`
+  - Some properties have been renamed to avoid naming conflicts:
+    - `Rate.rate` is now `Rate.Price`
+    - `Message.message` is now `Message.Text`
 - All properties are now nullable
-    - Almost all properties will be assigned a value during JSON deserialization. This is mostly to address compiler
-      warnings
-    - Users can proceed with the assumption that any given property will not be null
+  - Almost all properties will be assigned a value during JSON deserialization. This is mostly to address compiler warnings
+  - Users can proceed with the assumption that any given property will not be null
 - Consistent exception handling
-    - All exceptions inherit from `EasyPostError`
-    - API-related and HTTP-related exceptions will throw an `ApiError` or inherited-type exception
-    - API exception types can be retrieved by HTTP status code via the `EasyPost.Exceptions.Constants` class (i.e. to
-      anticipate what error will be thrown for a 404, etc.)
-    - Common exception messages and templates can be found in the `EasyPost.Exceptions.Constants` class (i.e. for log
-      parsing)
+  - All exceptions inherit from `EasyPostError`
+  - API-related and HTTP-related exceptions will throw an `ApiError` or inherited-type exception
+  - API exception types can be retrieved by HTTP status code via the `EasyPost.Exceptions.Constants` class (i.e. to anticipate what error will be thrown for a 404, etc.)
+  - Common exception messages and templates can be found in the `EasyPost.Exceptions.Constants` class (i.e. for log parsing)
 - Source code files have been organized
-    - Most EasyPost-related objects (i.e. `Shipment`, `Address`, `Tracker`, etc.) are now in the `EasyPost.Model.API`
-      namespace
+  - Most EasyPost-related objects (i.e. `Shipment`, `Address`, `Tracker`, etc.) are now in the `EasyPost.Model.API` namespace
 - Dependencies updated to latest versions, including `RestSharp` v108
 
 ### Misc
 
 - Under the hood improvements:
-    - Underlying `Request`-`Client`-`ClientConfiguration` relationship has been re-architected to allow for thread
-      safety
-    - Process of generating an API request has been standardized and simplified
-    - Improved accessibility levels of internal functions, to prevent accidental use by end users
-    - Files have been organized into a more logical structure
-    - Methods and properties have been organized (e.g. methods ordered by CRUD, properties ordered alphabetically)
+  - Underlying `Request`-`Client`-`ClientConfiguration` relationship has been re-architected to allow for thread safety
+  - Process of generating an API request has been standardized and simplified
+  - Improved accessibility levels of internal functions, to prevent accidental use by end users
+  - Files have been organized into a more logical structure
+  - Methods and properties have been organized (e.g. methods ordered by CRUD, properties ordered alphabetically)
 
 ## v3.6.1 (2022-09-22)
 
@@ -115,10 +102,10 @@ following items:
 - Adds `end_shipper_id` shipment option
 - Adds support to pass an EndShipper ID when buying a shipment
 - Add Partner White Label support:
-    - Create a referral customer
-    - Update a referral customer's email address
-    - List all referral customers
-    - Add a credit card to a referral customer's account
+  - Create a referral customer
+  - Update a referral customer's email address
+  - List all referral customers
+  - Add a credit card to a referral customer's account
 
 ## v3.5.0 (2022-08-25)
 
@@ -129,10 +116,10 @@ following items:
 ## v3.4.0 (2022-08-02)
 
 - Adds Carbon Offset support
-    - Adds the ability to create a shipment with carbon offset
-    - Adds the ability to buy a shipment with carbon offset
-    - Adds the ability to one-call-buy a shipment with carbon offset
-    - Adds the ability to re-rate a shipment with carbon offset
+  - Adds the ability to create a shipment with carbon offset
+  - Adds the ability to buy a shipment with carbon offset
+  - Adds the ability to one-call-buy a shipment with carbon offset
+  - Adds the ability to re-rate a shipment with carbon offset
 - Removes the unusable `carrier` param from the `verify` function on an Address
 
 ## v3.3.0 (2022-07-18)
@@ -145,8 +132,7 @@ following items:
 - Adds `billing_type` attribute in CarrierAccount and Rate classes
 - Adds support for webhook secrets
 - Collect OS details in User-Agent header
-- Update functions now use `patch` instead of `put` under the hood to better match the API behavior and documentation.
-  Behavior of these functions should remain the same
+- Update functions now use `patch` instead of `put` under the hood to better match the API behavior and documentation. Behavior of these functions should remain the same
 
 ## v3.1.0 (2022-05-19)
 
@@ -163,20 +149,14 @@ Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_G
 - Upgrades RestSharp from v106 to v107
 - Project was built with C# 8.0
 - Project is now entirely asynchronous which will require the addition of async/await on function calls
-- Renames methods from `List()` to `All()` to make our library consistent (previously we had methods calling the `/all`
-  endpoint with both names)
+- Renames methods from `List()` to `All()` to make our library consistent (previously we had methods calling the `/all` endpoint with both names)
 - Removes the unusable `Rating` class
-- Removes `shipment.GetRates()` method since the shipment object already has rates. If you need to get new rates for a
-  shipment, please use the `shipment.RegenerateRates()` method.
-- Must use `verify` and `verify_strict` parameters to verify addresses during creation, per our API docs; `verification`
-  and `strict_verification` will no longer work
+- Removes `shipment.GetRates()` method since the shipment object already has rates. If you need to get new rates for a shipment, please use the `shipment.RegenerateRates()` method.
+- Must use `verify` and `verify_strict` parameters to verify addresses during creation, per our API docs; `verification` and `strict_verification` will no longer work
 - Clarify XList vs XCollection distinction:
-    - `ReportList`, `ScanFormList`, `ShipmentList` and `TrackerList` renamed
-      to `ReportCollection`, `ScanFormCollection`, `ShipmentCollection` and `TrackerCollection` to match the other names
-      throughout the project
+  - `ReportList`, `ScanFormList`, `ShipmentList` and `TrackerList` renamed to `ReportCollection`, `ScanFormCollection`, `ShipmentCollection` and `TrackerCollection` to match the other names throughout the project
 - Functions previously called `Destroy` are now called `Delete` for consistency (eg: deleting a carrier account)
-- Removes non-static `Create()` functions on `Address`, `Order`, `Pickup` and `Shipment` classes for Visual Basic
-  compatibility.
+- Removes non-static `Create()` functions on `Address`, `Order`, `Pickup` and `Shipment` classes for Visual Basic compatibility.
 
 ### Features
 
