@@ -45,6 +45,7 @@ namespace EasyPost.Tests.ServicesTests
             List<ScanForm> scanForms = scanFormCollection.ScanForms;
 
             Assert.True(scanForms.Count <= Fixtures.PageSize);
+            Assert.True(scanFormCollection.HasMore);
             foreach (ScanForm scanForm in scanForms)
             {
                 Assert.IsType<ScanForm>(scanForm);
