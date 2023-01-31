@@ -184,19 +184,6 @@ references:
   isSpec: "True"
   fullName: EasyPost._base.EasyPostObject.Id
   nameWithType: EasyPostObject.Id
-- uid: EasyPost._base.EasyPostObject.Mode
-  name: Mode
-  href: api/EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_Mode
-  commentId: P:EasyPost._base.EasyPostObject.Mode
-  fullName: EasyPost._base.EasyPostObject.Mode
-  nameWithType: EasyPostObject.Mode
-- uid: EasyPost._base.EasyPostObject.Mode*
-  name: Mode
-  href: api/EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_Mode_
-  commentId: Overload:EasyPost._base.EasyPostObject.Mode
-  isSpec: "True"
-  fullName: EasyPost._base.EasyPostObject.Mode
-  nameWithType: EasyPostObject.Mode
 - uid: EasyPost._base.EasyPostObject.op_Equality(EasyPost._base.EasyPostObject,System.Nullable{System.Object})
   name: operator ==(EasyPostObject?, object?)
   href: api/EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_op_Equality_EasyPost__base_EasyPostObject_System_Nullable_System_Object__
@@ -270,6 +257,105 @@ references:
   commentId: T:EasyPost._base.EasyPostService
   fullName: EasyPost._base.EasyPostService
   nameWithType: EasyPostService
+- uid: EasyPost._base.EphemeralEasyPostObject
+  name: EphemeralEasyPostObject
+  href: api/EasyPost._base.EphemeralEasyPostObject.html
+  commentId: T:EasyPost._base.EphemeralEasyPostObject
+  fullName: EasyPost._base.EphemeralEasyPostObject
+  nameWithType: EphemeralEasyPostObject
+- uid: EasyPost._base.EphemeralEasyPostObject.AsJson
+  name: AsJson()
+  href: api/EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_AsJson
+  commentId: M:EasyPost._base.EphemeralEasyPostObject.AsJson
+  fullName: EasyPost._base.EphemeralEasyPostObject.AsJson()
+  nameWithType: EphemeralEasyPostObject.AsJson()
+- uid: EasyPost._base.EphemeralEasyPostObject.AsJson*
+  name: AsJson
+  href: api/EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_AsJson_
+  commentId: Overload:EasyPost._base.EphemeralEasyPostObject.AsJson
+  isSpec: "True"
+  fullName: EasyPost._base.EphemeralEasyPostObject.AsJson
+  nameWithType: EphemeralEasyPostObject.AsJson
+- uid: EasyPost._base.EphemeralEasyPostObject.Equals(System.Nullable{System.Object})
+  name: Equals(object?)
+  href: api/EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_Equals_System_Nullable_System_Object__
+  commentId: M:EasyPost._base.EphemeralEasyPostObject.Equals(System.Nullable{System.Object})
+  name.vb: Equals(Object?)
+  fullName: EasyPost._base.EphemeralEasyPostObject.Equals(object?)
+  fullName.vb: EasyPost._base.EphemeralEasyPostObject.Equals(Object?)
+  nameWithType: EphemeralEasyPostObject.Equals(object?)
+  nameWithType.vb: EphemeralEasyPostObject.Equals(Object?)
+- uid: EasyPost._base.EphemeralEasyPostObject.Equals*
+  name: Equals
+  href: api/EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_Equals_
+  commentId: Overload:EasyPost._base.EphemeralEasyPostObject.Equals
+  isSpec: "True"
+  fullName: EasyPost._base.EphemeralEasyPostObject.Equals
+  nameWithType: EphemeralEasyPostObject.Equals
+- uid: EasyPost._base.EphemeralEasyPostObject.GetHashCode
+  name: GetHashCode()
+  href: api/EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_GetHashCode
+  commentId: M:EasyPost._base.EphemeralEasyPostObject.GetHashCode
+  fullName: EasyPost._base.EphemeralEasyPostObject.GetHashCode()
+  nameWithType: EphemeralEasyPostObject.GetHashCode()
+- uid: EasyPost._base.EphemeralEasyPostObject.GetHashCode*
+  name: GetHashCode
+  href: api/EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_GetHashCode_
+  commentId: Overload:EasyPost._base.EphemeralEasyPostObject.GetHashCode
+  isSpec: "True"
+  fullName: EasyPost._base.EphemeralEasyPostObject.GetHashCode
+  nameWithType: EphemeralEasyPostObject.GetHashCode
+- uid: EasyPost._base.EphemeralEasyPostObject.Mode
+  name: Mode
+  href: api/EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_Mode
+  commentId: P:EasyPost._base.EphemeralEasyPostObject.Mode
+  fullName: EasyPost._base.EphemeralEasyPostObject.Mode
+  nameWithType: EphemeralEasyPostObject.Mode
+- uid: EasyPost._base.EphemeralEasyPostObject.Mode*
+  name: Mode
+  href: api/EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_Mode_
+  commentId: Overload:EasyPost._base.EphemeralEasyPostObject.Mode
+  isSpec: "True"
+  fullName: EasyPost._base.EphemeralEasyPostObject.Mode
+  nameWithType: EphemeralEasyPostObject.Mode
+- uid: EasyPost._base.EphemeralEasyPostObject.op_Equality(EasyPost._base.EphemeralEasyPostObject,System.Nullable{System.Object})
+  name: operator ==(EphemeralEasyPostObject?, object?)
+  href: api/EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_op_Equality_EasyPost__base_EphemeralEasyPostObject_System_Nullable_System_Object__
+  commentId: M:EasyPost._base.EphemeralEasyPostObject.op_Equality(EasyPost._base.EphemeralEasyPostObject,System.Nullable{System.Object})
+  name.vb: =(EphemeralEasyPostObject, Object?)
+  fullName: EasyPost._base.EphemeralEasyPostObject.operator ==(EasyPost._base.EphemeralEasyPostObject?, object?)
+  fullName.vb: EasyPost._base.EphemeralEasyPostObject.=(EasyPost._base.EphemeralEasyPostObject, Object?)
+  nameWithType: EphemeralEasyPostObject.operator ==(EphemeralEasyPostObject?, object?)
+  nameWithType.vb: EphemeralEasyPostObject.=(EphemeralEasyPostObject, Object?)
+- uid: EasyPost._base.EphemeralEasyPostObject.op_Equality*
+  name: operator ==
+  href: api/EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_op_Equality_
+  commentId: Overload:EasyPost._base.EphemeralEasyPostObject.op_Equality
+  isSpec: "True"
+  name.vb: =
+  fullName: EasyPost._base.EphemeralEasyPostObject.operator ==
+  fullName.vb: EasyPost._base.EphemeralEasyPostObject.=
+  nameWithType: EphemeralEasyPostObject.operator ==
+  nameWithType.vb: EphemeralEasyPostObject.=
+- uid: EasyPost._base.EphemeralEasyPostObject.op_Inequality(EasyPost._base.EphemeralEasyPostObject,System.Nullable{System.Object})
+  name: operator !=(EphemeralEasyPostObject?, object?)
+  href: api/EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_op_Inequality_EasyPost__base_EphemeralEasyPostObject_System_Nullable_System_Object__
+  commentId: M:EasyPost._base.EphemeralEasyPostObject.op_Inequality(EasyPost._base.EphemeralEasyPostObject,System.Nullable{System.Object})
+  name.vb: <>(EphemeralEasyPostObject, Object?)
+  fullName: EasyPost._base.EphemeralEasyPostObject.operator !=(EasyPost._base.EphemeralEasyPostObject?, object?)
+  fullName.vb: EasyPost._base.EphemeralEasyPostObject.<>(EasyPost._base.EphemeralEasyPostObject, Object?)
+  nameWithType: EphemeralEasyPostObject.operator !=(EphemeralEasyPostObject?, object?)
+  nameWithType.vb: EphemeralEasyPostObject.<>(EphemeralEasyPostObject, Object?)
+- uid: EasyPost._base.EphemeralEasyPostObject.op_Inequality*
+  name: operator !=
+  href: api/EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_op_Inequality_
+  commentId: Overload:EasyPost._base.EphemeralEasyPostObject.op_Inequality
+  isSpec: "True"
+  name.vb: <>
+  fullName: EasyPost._base.EphemeralEasyPostObject.operator !=
+  fullName.vb: EasyPost._base.EphemeralEasyPostObject.<>
+  nameWithType: EphemeralEasyPostObject.operator !=
+  nameWithType.vb: EphemeralEasyPostObject.<>
 - uid: EasyPost._base.IEasyPostObject
   name: IEasyPostObject
   href: api/EasyPost._base.IEasyPostObject.html
@@ -447,6 +533,19 @@ references:
   commentId: T:EasyPost.BetaClient
   fullName: EasyPost.BetaClient
   nameWithType: BetaClient
+- uid: EasyPost.BetaClient.Rate
+  name: Rate
+  href: api/EasyPost.BetaClient.html#EasyPost_BetaClient_Rate
+  commentId: P:EasyPost.BetaClient.Rate
+  fullName: EasyPost.BetaClient.Rate
+  nameWithType: BetaClient.Rate
+- uid: EasyPost.BetaClient.Rate*
+  name: Rate
+  href: api/EasyPost.BetaClient.html#EasyPost_BetaClient_Rate_
+  commentId: Overload:EasyPost.BetaClient.Rate
+  isSpec: "True"
+  fullName: EasyPost.BetaClient.Rate
+  nameWithType: BetaClient.Rate
 - uid: EasyPost.BetaClient.Referral
   name: Referral
   href: api/EasyPost.BetaClient.html#EasyPost_BetaClient_Referral
@@ -2048,6 +2147,207 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Beta.PaymentRefund.RefundedPaymentLogIds
   nameWithType: PaymentRefund.RefundedPaymentLogIds
+- uid: EasyPost.Models.API.Beta.StatelessRate
+  name: StatelessRate
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html
+  commentId: T:EasyPost.Models.API.Beta.StatelessRate
+  fullName: EasyPost.Models.API.Beta.StatelessRate
+  nameWithType: StatelessRate
+- uid: EasyPost.Models.API.Beta.StatelessRate.BillingType
+  name: BillingType
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_BillingType
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.BillingType
+  fullName: EasyPost.Models.API.Beta.StatelessRate.BillingType
+  nameWithType: StatelessRate.BillingType
+- uid: EasyPost.Models.API.Beta.StatelessRate.BillingType*
+  name: BillingType
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_BillingType_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.BillingType
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.BillingType
+  nameWithType: StatelessRate.BillingType
+- uid: EasyPost.Models.API.Beta.StatelessRate.Carrier
+  name: Carrier
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_Carrier
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.Carrier
+  fullName: EasyPost.Models.API.Beta.StatelessRate.Carrier
+  nameWithType: StatelessRate.Carrier
+- uid: EasyPost.Models.API.Beta.StatelessRate.Carrier*
+  name: Carrier
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_Carrier_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.Carrier
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.Carrier
+  nameWithType: StatelessRate.Carrier
+- uid: EasyPost.Models.API.Beta.StatelessRate.CarrierAccountId
+  name: CarrierAccountId
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_CarrierAccountId
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.CarrierAccountId
+  fullName: EasyPost.Models.API.Beta.StatelessRate.CarrierAccountId
+  nameWithType: StatelessRate.CarrierAccountId
+- uid: EasyPost.Models.API.Beta.StatelessRate.CarrierAccountId*
+  name: CarrierAccountId
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_CarrierAccountId_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.CarrierAccountId
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.CarrierAccountId
+  nameWithType: StatelessRate.CarrierAccountId
+- uid: EasyPost.Models.API.Beta.StatelessRate.Currency
+  name: Currency
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_Currency
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.Currency
+  fullName: EasyPost.Models.API.Beta.StatelessRate.Currency
+  nameWithType: StatelessRate.Currency
+- uid: EasyPost.Models.API.Beta.StatelessRate.Currency*
+  name: Currency
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_Currency_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.Currency
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.Currency
+  nameWithType: StatelessRate.Currency
+- uid: EasyPost.Models.API.Beta.StatelessRate.DeliveryDate
+  name: DeliveryDate
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_DeliveryDate
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.DeliveryDate
+  fullName: EasyPost.Models.API.Beta.StatelessRate.DeliveryDate
+  nameWithType: StatelessRate.DeliveryDate
+- uid: EasyPost.Models.API.Beta.StatelessRate.DeliveryDate*
+  name: DeliveryDate
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_DeliveryDate_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.DeliveryDate
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.DeliveryDate
+  nameWithType: StatelessRate.DeliveryDate
+- uid: EasyPost.Models.API.Beta.StatelessRate.DeliveryDateGuaranteed
+  name: DeliveryDateGuaranteed
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_DeliveryDateGuaranteed
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.DeliveryDateGuaranteed
+  fullName: EasyPost.Models.API.Beta.StatelessRate.DeliveryDateGuaranteed
+  nameWithType: StatelessRate.DeliveryDateGuaranteed
+- uid: EasyPost.Models.API.Beta.StatelessRate.DeliveryDateGuaranteed*
+  name: DeliveryDateGuaranteed
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_DeliveryDateGuaranteed_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.DeliveryDateGuaranteed
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.DeliveryDateGuaranteed
+  nameWithType: StatelessRate.DeliveryDateGuaranteed
+- uid: EasyPost.Models.API.Beta.StatelessRate.DeliveryDays
+  name: DeliveryDays
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_DeliveryDays
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.DeliveryDays
+  fullName: EasyPost.Models.API.Beta.StatelessRate.DeliveryDays
+  nameWithType: StatelessRate.DeliveryDays
+- uid: EasyPost.Models.API.Beta.StatelessRate.DeliveryDays*
+  name: DeliveryDays
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_DeliveryDays_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.DeliveryDays
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.DeliveryDays
+  nameWithType: StatelessRate.DeliveryDays
+- uid: EasyPost.Models.API.Beta.StatelessRate.EstDeliveryDays
+  name: EstDeliveryDays
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_EstDeliveryDays
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.EstDeliveryDays
+  fullName: EasyPost.Models.API.Beta.StatelessRate.EstDeliveryDays
+  nameWithType: StatelessRate.EstDeliveryDays
+- uid: EasyPost.Models.API.Beta.StatelessRate.EstDeliveryDays*
+  name: EstDeliveryDays
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_EstDeliveryDays_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.EstDeliveryDays
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.EstDeliveryDays
+  nameWithType: StatelessRate.EstDeliveryDays
+- uid: EasyPost.Models.API.Beta.StatelessRate.ListCurrency
+  name: ListCurrency
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_ListCurrency
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.ListCurrency
+  fullName: EasyPost.Models.API.Beta.StatelessRate.ListCurrency
+  nameWithType: StatelessRate.ListCurrency
+- uid: EasyPost.Models.API.Beta.StatelessRate.ListCurrency*
+  name: ListCurrency
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_ListCurrency_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.ListCurrency
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.ListCurrency
+  nameWithType: StatelessRate.ListCurrency
+- uid: EasyPost.Models.API.Beta.StatelessRate.ListRate
+  name: ListRate
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_ListRate
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.ListRate
+  fullName: EasyPost.Models.API.Beta.StatelessRate.ListRate
+  nameWithType: StatelessRate.ListRate
+- uid: EasyPost.Models.API.Beta.StatelessRate.ListRate*
+  name: ListRate
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_ListRate_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.ListRate
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.ListRate
+  nameWithType: StatelessRate.ListRate
+- uid: EasyPost.Models.API.Beta.StatelessRate.Price
+  name: Price
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_Price
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.Price
+  fullName: EasyPost.Models.API.Beta.StatelessRate.Price
+  nameWithType: StatelessRate.Price
+- uid: EasyPost.Models.API.Beta.StatelessRate.Price*
+  name: Price
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_Price_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.Price
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.Price
+  nameWithType: StatelessRate.Price
+- uid: EasyPost.Models.API.Beta.StatelessRate.RetailCurrency
+  name: RetailCurrency
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_RetailCurrency
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.RetailCurrency
+  fullName: EasyPost.Models.API.Beta.StatelessRate.RetailCurrency
+  nameWithType: StatelessRate.RetailCurrency
+- uid: EasyPost.Models.API.Beta.StatelessRate.RetailCurrency*
+  name: RetailCurrency
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_RetailCurrency_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.RetailCurrency
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.RetailCurrency
+  nameWithType: StatelessRate.RetailCurrency
+- uid: EasyPost.Models.API.Beta.StatelessRate.RetailRate
+  name: RetailRate
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_RetailRate
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.RetailRate
+  fullName: EasyPost.Models.API.Beta.StatelessRate.RetailRate
+  nameWithType: StatelessRate.RetailRate
+- uid: EasyPost.Models.API.Beta.StatelessRate.RetailRate*
+  name: RetailRate
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_RetailRate_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.RetailRate
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.RetailRate
+  nameWithType: StatelessRate.RetailRate
+- uid: EasyPost.Models.API.Beta.StatelessRate.Service
+  name: Service
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_Service
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.Service
+  fullName: EasyPost.Models.API.Beta.StatelessRate.Service
+  nameWithType: StatelessRate.Service
+- uid: EasyPost.Models.API.Beta.StatelessRate.Service*
+  name: Service
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_Service_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.Service
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.Service
+  nameWithType: StatelessRate.Service
+- uid: EasyPost.Models.API.Beta.StatelessRate.ShipmentId
+  name: ShipmentId
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_ShipmentId
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.ShipmentId
+  fullName: EasyPost.Models.API.Beta.StatelessRate.ShipmentId
+  nameWithType: StatelessRate.ShipmentId
+- uid: EasyPost.Models.API.Beta.StatelessRate.ShipmentId*
+  name: ShipmentId
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_ShipmentId_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.ShipmentId
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.ShipmentId
+  nameWithType: StatelessRate.ShipmentId
 - uid: EasyPost.Models.API.Brand
   name: Brand
   href: api/EasyPost.Models.API.Brand.html
@@ -8079,6 +8379,28 @@ references:
   commentId: N:EasyPost.Services.Beta
   fullName: EasyPost.Services.Beta
   nameWithType: EasyPost.Services.Beta
+- uid: EasyPost.Services.Beta.RateService
+  name: RateService
+  href: api/EasyPost.Services.Beta.RateService.html
+  commentId: T:EasyPost.Services.Beta.RateService
+  fullName: EasyPost.Services.Beta.RateService
+  nameWithType: RateService
+- uid: EasyPost.Services.Beta.RateService.RetrieveStatelessRates(Dictionary{System.String,System.Object})
+  name: RetrieveStatelessRates(Dictionary<string, object>)
+  href: api/EasyPost.Services.Beta.RateService.html#EasyPost_Services_Beta_RateService_RetrieveStatelessRates_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.Services.Beta.RateService.RetrieveStatelessRates(Dictionary{System.String,System.Object})
+  name.vb: RetrieveStatelessRates(Dictionary(Of String, Object))
+  fullName: EasyPost.Services.Beta.RateService.RetrieveStatelessRates(Dictionary<string, object>)
+  fullName.vb: EasyPost.Services.Beta.RateService.RetrieveStatelessRates(Dictionary(Of String, Object))
+  nameWithType: RateService.RetrieveStatelessRates(Dictionary<string, object>)
+  nameWithType.vb: RateService.RetrieveStatelessRates(Dictionary(Of String, Object))
+- uid: EasyPost.Services.Beta.RateService.RetrieveStatelessRates*
+  name: RetrieveStatelessRates
+  href: api/EasyPost.Services.Beta.RateService.html#EasyPost_Services_Beta_RateService_RetrieveStatelessRates_
+  commentId: Overload:EasyPost.Services.Beta.RateService.RetrieveStatelessRates
+  isSpec: "True"
+  fullName: EasyPost.Services.Beta.RateService.RetrieveStatelessRates
+  nameWithType: RateService.RetrieveStatelessRates
 - uid: EasyPost.Services.Beta.ReferralService
   name: ReferralService
   href: api/EasyPost.Services.Beta.ReferralService.html
@@ -9498,6 +9820,94 @@ references:
   commentId: T:EasyPost.Utilities.IEnum
   fullName: EasyPost.Utilities.IEnum
   nameWithType: IEnum
+- uid: EasyPost.Utilities.Rates
+  name: Rates
+  href: api/EasyPost.Utilities.Rates.html
+  commentId: T:EasyPost.Utilities.Rates
+  fullName: EasyPost.Utilities.Rates
+  nameWithType: Rates
+- uid: EasyPost.Utilities.Rates.GetLowest(IEnumerable{EasyPost.Models.API.Beta.StatelessRate},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}})
+  name: GetLowest(IEnumerable<StatelessRate>, List<string>?, List<string>?, List<string>?, List<string>?)
+  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowest_IEnumerable_EasyPost_Models_API_Beta_StatelessRate__System_Nullable_List_System_String___System_Nullable_List_System_String___System_Nullable_List_System_String___System_Nullable_List_System_String___
+  commentId: M:EasyPost.Utilities.Rates.GetLowest(IEnumerable{EasyPost.Models.API.Beta.StatelessRate},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}})
+  name.vb: GetLowest(IEnumerable(Of StatelessRate), List(Of String)?, List(Of String)?, List(Of String)?, List(Of String)?)
+  fullName: EasyPost.Utilities.Rates.GetLowest(IEnumerable<EasyPost.Models.API.Beta.StatelessRate>, List<string>?, List<string>?, List<string>?, List<string>?)
+  fullName.vb: EasyPost.Utilities.Rates.GetLowest(IEnumerable(Of EasyPost.Models.API.Beta.StatelessRate), List(Of String)?, List(Of String)?, List(Of String)?, List(Of String)?)
+  nameWithType: Rates.GetLowest(IEnumerable<StatelessRate>, List<string>?, List<string>?, List<string>?, List<string>?)
+  nameWithType.vb: Rates.GetLowest(IEnumerable(Of StatelessRate), List(Of String)?, List(Of String)?, List(Of String)?, List(Of String)?)
+- uid: EasyPost.Utilities.Rates.GetLowest(IEnumerable{EasyPost.Models.API.Rate},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}})
+  name: GetLowest(IEnumerable<Rate>, List<string>?, List<string>?, List<string>?, List<string>?)
+  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowest_IEnumerable_EasyPost_Models_API_Rate__System_Nullable_List_System_String___System_Nullable_List_System_String___System_Nullable_List_System_String___System_Nullable_List_System_String___
+  commentId: M:EasyPost.Utilities.Rates.GetLowest(IEnumerable{EasyPost.Models.API.Rate},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}})
+  name.vb: GetLowest(IEnumerable(Of Rate), List(Of String)?, List(Of String)?, List(Of String)?, List(Of String)?)
+  fullName: EasyPost.Utilities.Rates.GetLowest(IEnumerable<EasyPost.Models.API.Rate>, List<string>?, List<string>?, List<string>?, List<string>?)
+  fullName.vb: EasyPost.Utilities.Rates.GetLowest(IEnumerable(Of EasyPost.Models.API.Rate), List(Of String)?, List(Of String)?, List(Of String)?, List(Of String)?)
+  nameWithType: Rates.GetLowest(IEnumerable<Rate>, List<string>?, List<string>?, List<string>?, List<string>?)
+  nameWithType.vb: Rates.GetLowest(IEnumerable(Of Rate), List(Of String)?, List(Of String)?, List(Of String)?, List(Of String)?)
+- uid: EasyPost.Utilities.Rates.GetLowest(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)
+  name: GetLowest(IEnumerable<Smartrate>, int, SmartrateAccuracy)
+  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowest_IEnumerable_EasyPost_Models_API_Smartrate__System_Int32_EasyPost_Models_API_SmartrateAccuracy_
+  commentId: M:EasyPost.Utilities.Rates.GetLowest(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)
+  name.vb: GetLowest(IEnumerable(Of Smartrate), Integer, SmartrateAccuracy)
+  fullName: EasyPost.Utilities.Rates.GetLowest(IEnumerable<EasyPost.Models.API.Smartrate>, int, EasyPost.Models.API.SmartrateAccuracy)
+  fullName.vb: EasyPost.Utilities.Rates.GetLowest(IEnumerable(Of EasyPost.Models.API.Smartrate), Integer, EasyPost.Models.API.SmartrateAccuracy)
+  nameWithType: Rates.GetLowest(IEnumerable<Smartrate>, int, SmartrateAccuracy)
+  nameWithType.vb: Rates.GetLowest(IEnumerable(Of Smartrate), Integer, SmartrateAccuracy)
+- uid: EasyPost.Utilities.Rates.GetLowest*
+  name: GetLowest
+  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowest_
+  commentId: Overload:EasyPost.Utilities.Rates.GetLowest
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Rates.GetLowest
+  nameWithType: Rates.GetLowest
+- uid: EasyPost.Utilities.Rates.GetLowestRate(IEnumerable{EasyPost.Models.API.Rate},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}})
+  name: GetLowestRate(IEnumerable<Rate>, List<string>?, List<string>?, List<string>?, List<string>?)
+  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowestRate_IEnumerable_EasyPost_Models_API_Rate__System_Nullable_List_System_String___System_Nullable_List_System_String___System_Nullable_List_System_String___System_Nullable_List_System_String___
+  commentId: M:EasyPost.Utilities.Rates.GetLowestRate(IEnumerable{EasyPost.Models.API.Rate},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}})
+  name.vb: GetLowestRate(IEnumerable(Of Rate), List(Of String)?, List(Of String)?, List(Of String)?, List(Of String)?)
+  fullName: EasyPost.Utilities.Rates.GetLowestRate(IEnumerable<EasyPost.Models.API.Rate>, List<string>?, List<string>?, List<string>?, List<string>?)
+  fullName.vb: EasyPost.Utilities.Rates.GetLowestRate(IEnumerable(Of EasyPost.Models.API.Rate), List(Of String)?, List(Of String)?, List(Of String)?, List(Of String)?)
+  nameWithType: Rates.GetLowestRate(IEnumerable<Rate>, List<string>?, List<string>?, List<string>?, List<string>?)
+  nameWithType.vb: Rates.GetLowestRate(IEnumerable(Of Rate), List(Of String)?, List(Of String)?, List(Of String)?, List(Of String)?)
+- uid: EasyPost.Utilities.Rates.GetLowestRate*
+  name: GetLowestRate
+  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowestRate_
+  commentId: Overload:EasyPost.Utilities.Rates.GetLowestRate
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Rates.GetLowestRate
+  nameWithType: Rates.GetLowestRate
+- uid: EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)
+  name: GetLowestSmartRate(IEnumerable<Smartrate>, int, SmartrateAccuracy)
+  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowestSmartRate_IEnumerable_EasyPost_Models_API_Smartrate__System_Int32_EasyPost_Models_API_SmartrateAccuracy_
+  commentId: M:EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)
+  name.vb: GetLowestSmartRate(IEnumerable(Of Smartrate), Integer, SmartrateAccuracy)
+  fullName: EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable<EasyPost.Models.API.Smartrate>, int, EasyPost.Models.API.SmartrateAccuracy)
+  fullName.vb: EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable(Of EasyPost.Models.API.Smartrate), Integer, EasyPost.Models.API.SmartrateAccuracy)
+  nameWithType: Rates.GetLowestSmartRate(IEnumerable<Smartrate>, int, SmartrateAccuracy)
+  nameWithType.vb: Rates.GetLowestSmartRate(IEnumerable(Of Smartrate), Integer, SmartrateAccuracy)
+- uid: EasyPost.Utilities.Rates.GetLowestSmartRate*
+  name: GetLowestSmartRate
+  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowestSmartRate_
+  commentId: Overload:EasyPost.Utilities.Rates.GetLowestSmartRate
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Rates.GetLowestSmartRate
+  nameWithType: Rates.GetLowestSmartRate
+- uid: EasyPost.Utilities.Rates.GetLowestStatelessRate(IEnumerable{EasyPost.Models.API.Beta.StatelessRate},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}})
+  name: GetLowestStatelessRate(IEnumerable<StatelessRate>, List<string>?, List<string>?, List<string>?, List<string>?)
+  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowestStatelessRate_IEnumerable_EasyPost_Models_API_Beta_StatelessRate__System_Nullable_List_System_String___System_Nullable_List_System_String___System_Nullable_List_System_String___System_Nullable_List_System_String___
+  commentId: M:EasyPost.Utilities.Rates.GetLowestStatelessRate(IEnumerable{EasyPost.Models.API.Beta.StatelessRate},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}})
+  name.vb: GetLowestStatelessRate(IEnumerable(Of StatelessRate), List(Of String)?, List(Of String)?, List(Of String)?, List(Of String)?)
+  fullName: EasyPost.Utilities.Rates.GetLowestStatelessRate(IEnumerable<EasyPost.Models.API.Beta.StatelessRate>, List<string>?, List<string>?, List<string>?, List<string>?)
+  fullName.vb: EasyPost.Utilities.Rates.GetLowestStatelessRate(IEnumerable(Of EasyPost.Models.API.Beta.StatelessRate), List(Of String)?, List(Of String)?, List(Of String)?, List(Of String)?)
+  nameWithType: Rates.GetLowestStatelessRate(IEnumerable<StatelessRate>, List<string>?, List<string>?, List<string>?, List<string>?)
+  nameWithType.vb: Rates.GetLowestStatelessRate(IEnumerable(Of StatelessRate), List(Of String)?, List(Of String)?, List(Of String)?, List(Of String)?)
+- uid: EasyPost.Utilities.Rates.GetLowestStatelessRate*
+  name: GetLowestStatelessRate
+  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowestStatelessRate_
+  commentId: Overload:EasyPost.Utilities.Rates.GetLowestStatelessRate
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Rates.GetLowestStatelessRate
+  nameWithType: Rates.GetLowestStatelessRate
 - uid: EasyPost.Utilities.ValueEnum
   name: ValueEnum
   href: api/EasyPost.Utilities.ValueEnum.html
