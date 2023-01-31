@@ -1,0 +1,101 @@
+[
+  {
+    "Duration": 370,
+    "RecordedAt": "2023-01-31T15:54:26.875734-07:00",
+    "Request": {
+      "Body": "",
+      "BodyContentType": "Text",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/refunds?page_size=5"
+    },
+    "Response": {
+      "Body": "{\"refunds\":[{\"id\":\"rfnd_42737fee62004ca28a4b2548c2ec7bed\",\"object\":\"Refund\",\"created_at\":\"2023-01-31T22:54:26Z\",\"updated_at\":\"2023-01-31T22:54:26Z\",\"tracking_code\":\"9400100106089176611394\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_02905c4a4e5c44bc834cc684326e438a\"}],\"has_more\":false}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "326"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "72d8ff9663d99c22ecd6fb5000143367",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "ETag": "W/\"205048b96f83965c0a1b798c7b6c13e5\"",
+        "x-runtime": "0.032682",
+        "x-node": "bigweb5nuq",
+        "x-version-label": "easypost-202301311954-88b0b2bbd3-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb2nuq 29913d444b,intlb2wdc 29913d444b,extlb3wdc 29913d444b",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  },
+  {
+    "Duration": 205,
+    "RecordedAt": "2023-01-31T15:54:27.094392-07:00",
+    "Request": {
+      "Body": "",
+      "BodyContentType": "Text",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/refunds/rfnd_42737fee62004ca28a4b2548c2ec7bed"
+    },
+    "Response": {
+      "Body": "{\"id\":\"rfnd_42737fee62004ca28a4b2548c2ec7bed\",\"object\":\"Refund\",\"created_at\":\"2023-01-31T22:54:26Z\",\"updated_at\":\"2023-01-31T22:54:26Z\",\"tracking_code\":\"9400100106089176611394\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_02905c4a4e5c44bc834cc684326e438a\"}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "295"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "72d8ff9663d99c23ecd6fb500014337e",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "ETag": "W/\"f061417989122456a83b3b941f800de8\"",
+        "x-runtime": "0.029507",
+        "x-node": "bigweb7nuq",
+        "x-version-label": "easypost-202301311954-88b0b2bbd3-master",
+        "x-backend": "easypost",
+        "x-canary": "direct",
+        "x-proxied": "intlb1nuq 29913d444b,intlb1wdc 29913d444b,extlb3wdc 29913d444b",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  }
+]

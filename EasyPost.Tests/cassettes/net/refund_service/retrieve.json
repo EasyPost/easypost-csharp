@@ -1,0 +1,100 @@
+[
+  {
+    "Duration": 218,
+    "RecordedAt": "2023-01-31T15:54:37.453343-07:00",
+    "Request": {
+      "Body": "",
+      "BodyContentType": "Text",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/refunds?page_size=5"
+    },
+    "Response": {
+      "Body": "{\"refunds\":[{\"id\":\"rfnd_798b777cc0f6417188effc82904ce04d\",\"object\":\"Refund\",\"created_at\":\"2023-01-31T22:54:37Z\",\"updated_at\":\"2023-01-31T22:54:37Z\",\"tracking_code\":\"9400100106089176611417\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_2fde0051b2fb470da77f1c5f1be1cf4f\"},{\"id\":\"rfnd_42737fee62004ca28a4b2548c2ec7bed\",\"object\":\"Refund\",\"created_at\":\"2023-01-31T22:54:26Z\",\"updated_at\":\"2023-01-31T22:54:26Z\",\"tracking_code\":\"9400100106089176611394\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_02905c4a4e5c44bc834cc684326e438a\"}],\"has_more\":false}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "622"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "e5f2be7163d99c2dec7e07c300160557",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "ETag": "W/\"738130399472b072407e33c971a5321d\"",
+        "x-runtime": "0.042896",
+        "x-node": "bigweb12nuq",
+        "x-version-label": "easypost-202301311954-88b0b2bbd3-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb2nuq 29913d444b,extlb2nuq 29913d444b",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  },
+  {
+    "Duration": 71,
+    "RecordedAt": "2023-01-31T15:54:37.535418-07:00",
+    "Request": {
+      "Body": "",
+      "BodyContentType": "Text",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/refunds/rfnd_798b777cc0f6417188effc82904ce04d"
+    },
+    "Response": {
+      "Body": "{\"id\":\"rfnd_798b777cc0f6417188effc82904ce04d\",\"object\":\"Refund\",\"created_at\":\"2023-01-31T22:54:37Z\",\"updated_at\":\"2023-01-31T22:54:37Z\",\"tracking_code\":\"9400100106089176611417\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_2fde0051b2fb470da77f1c5f1be1cf4f\"}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "295"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "e5f2be7163d99c2dec7e07c30016055d",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "ETag": "W/\"b8d9a6412941bf38c3afe85a820ac8ba\"",
+        "x-runtime": "0.033788",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202301311954-88b0b2bbd3-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq 29913d444b,extlb2nuq 29913d444b",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  }
+]
