@@ -69,21 +69,14 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
-            Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.Id); // We need to retrieve the shipment so that the tracking_code has time to populate
+            RefundCollection refundCollection = await Client.Refund.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
 
-            List<Refund> refunds = await Client.Refund.Create(new Dictionary<string, object>
-            {
-                { "carrier", Fixtures.Usps },
-                { "tracking_codes", new List<string> { retrievedShipment.TrackingCode } }
-            });
+            List<Refund> refunds = refundCollection.Refunds;
 
-            Refund refund = refunds[0];
-
-            Refund retrievedRefund = await Client.Refund.Retrieve(refund.Id);
+            Refund retrievedRefund = await Client.Refund.Retrieve(refunds[0].Id);
 
             Assert.IsType<Refund>(retrievedRefund);
-            Assert.Equal(refund, retrievedRefund);
+            Assert.Equal(refunds[0], retrievedRefund);
         }
 
         #endregion
