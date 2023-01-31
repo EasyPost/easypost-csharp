@@ -92,13 +92,13 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("validate_webhook");
 
-            byte[] data = Fixtures.EventBody;
+            byte[] eventData = Fixtures.EventBody;
 
             // ReSharper disable once StringLiteralTypo
             const string webhookSecret = "sécret";
             Dictionary<string, object?> headers = new() { { "X-Hmac-Signature", "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b" } };
 
-            Event @event = Client.Webhook.ValidateWebhook(data, headers, webhookSecret);
+            Event @event = Client.Webhook.ValidateWebhook(eventData, headers, webhookSecret);
 
             Assert.Equal("batch.created", @event.Description);
         }
@@ -109,14 +109,14 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("validate_webhook_with_invalid_secret");
 
-            byte[] data = Fixtures.EventBody;
+            byte[] eventData = Fixtures.EventBody;
 
             const string webhookSecret = "invalid_secret";
             Dictionary<string, object?> headers = new() { { "X-Hmac-Signature", "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b" } };
 
             try
             {
-                Event _ = Client.Webhook.ValidateWebhook(data, headers, webhookSecret);
+                Event _ = Client.Webhook.ValidateWebhook(eventData, headers, webhookSecret);
             }
             catch (SignatureVerificationError error)
             {
@@ -130,14 +130,14 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("validate_webhook_with_missing_secret");
 
-            byte[] data = Fixtures.EventBody;
+            byte[] eventData = Fixtures.EventBody;
 
             const string webhookSecret = "123";
             Dictionary<string, object?> headers = new() { { "some-header", "some-value" } };
 
             try
             {
-                Event _ = Client.Webhook.ValidateWebhook(data, headers, webhookSecret);
+                Event _ = Client.Webhook.ValidateWebhook(eventData, headers, webhookSecret);
             }
             catch (SignatureVerificationError error)
             {

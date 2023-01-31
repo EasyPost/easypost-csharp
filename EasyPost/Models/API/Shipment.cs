@@ -248,7 +248,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Rates));
             }
 
-            return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+            return Utilities.Rates.GetLowestRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
 
         /// <summary>
@@ -260,7 +260,7 @@ namespace EasyPost.Models.API
         public async Task<Smartrate?> LowestSmartrate(int deliveryDays, SmartrateAccuracy deliveryAccuracy)
         {
             List<Smartrate> smartRates = await GetSmartrates();
-            return Calculation.Rates.GetLowestShipmentSmartrate(smartRates, deliveryDays, deliveryAccuracy);
+            return Utilities.Rates.GetLowestSmartRate(smartRates, deliveryDays, deliveryAccuracy);
         }
     }
 

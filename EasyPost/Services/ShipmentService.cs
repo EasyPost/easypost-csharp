@@ -1,7 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Calculation;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Annotations;
@@ -83,11 +83,14 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the lowest Smart Rate from a list of Smart Rates.
+        ///
+        ///     Deprecated. Use <see cref="EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable{EasyPost.Models.API.Smartrate}, int, EasyPost.Models.API.SmartrateAccuracy)"/> instead.
         /// </summary>
         /// <param name="smartrates">List of smartrates to filter.</param>
         /// <param name="deliveryDays">Delivery days restriction to use when filtering.</param>
         /// <param name="deliveryAccuracy">Delivery days accuracy restriction to use when filtering.</param>
         /// <returns>Lowest EasyPost.Smartrate object instance.</returns>
-        public static Smartrate GetLowestSmartrate(IEnumerable<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy) => Rates.GetLowestShipmentSmartrate(smartrates, deliveryDays, deliveryAccuracy);
+        [Obsolete("This method is deprecated. Please use EasyPost.Utilities.Rates.GetLowestSmartRate() instead. This method will be removed in a future version.", false)]
+        public static Smartrate GetLowestSmartrate(IEnumerable<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy) => Utilities.Rates.GetLowestSmartRate(smartrates, deliveryDays, deliveryAccuracy);
     }
 }

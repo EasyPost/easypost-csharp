@@ -127,7 +127,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Rates));
             }
 
-            return Calculation.Rates.GetLowestObjectRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+            return Utilities.Rates.GetLowestRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
     }
 }

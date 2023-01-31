@@ -4,7 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using EasyPost.Utilities;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -15,7 +14,7 @@ namespace EasyPost._base
     /// <summary>
     ///     Class for any object that comes from or goes to the EasyPost API.
     /// </summary>
-    public abstract class EasyPostObject : WithClient, IEasyPostObject
+    public abstract class EasyPostObject : EphemeralEasyPostObject
     {
         #region JSON Properties
 
@@ -23,12 +22,8 @@ namespace EasyPost._base
         public DateTime? CreatedAt { get; internal set; }
         [JsonProperty("id")]
         public string? Id { get; internal set; }
-        [JsonProperty("mode")]
-        public string? Mode { get; internal set; }
         [JsonProperty("updated_at")]
         public DateTime? UpdatedAt { get; internal set; }
-        [JsonProperty("object")]
-        internal string? Object { get; set; }
 
         #endregion
 
@@ -77,12 +72,6 @@ namespace EasyPost._base
         }
 
         /// <summary>
-        ///     Get the JSON representation of this object instance.
-        /// </summary>
-        /// <returns>A JSON string representation of this object instance's attributes.</returns>
-        private string AsJson() => JsonSerialization.ConvertObjectToJson(this);
-
-        /// <summary>
         ///     Merge the properties of this object instance with the properties of another object instance.
         ///     Adds properties from the input object instance into this object instance.
         /// </summary>
@@ -94,9 +83,5 @@ namespace EasyPost._base
                 property.SetValue(this, property.GetValue(source, null), null);
             }
         }
-    }
-
-    public interface IEasyPostObject
-    {
     }
 }

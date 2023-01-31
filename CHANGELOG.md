@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## Unreleased
+
+- Added new beta `RateService`, accessible via `myClient.Beta.Rate`.
+- Added `RetrieveStatelessRate` function under beta `RateService` to pull stateless rates when shipment data is provided
+- Added `GetLowestStatelessRate` function under `Utilities.Rate` to filter the lowest stateless rate
+- Added new `GetLowest` instance functions, callable on `List<Rate>`, `List<Smartrate>` and `List<StatelessRate>`, to
+  filter the lowest rate
+- Deprecated rate and smartrate filtering methods in `ShipmentService`, `RateService` and `Calculation.Rates` namespaces, moved to `Utilities.Rate` namespace
+
 ## v4.3.0 (2023-01-18)
 
 - Added payload functions `RetrieveAllPayloadsForEvent` and `RetrievePayloadForEvent` methods, accessible via `myClient.Event` service.
