@@ -11,9 +11,9 @@
 
 :: Parse command line arguments
 SET projectName=%1
-SET strongNameCertFile=%4
-SET authCertFile=%2
-SET authCertPass=%3
+SET strongNameCertFile=%2
+SET authCertFile=%3
+SET authCertPass=%4
 SET containerName=%5
 SET buildMode=%6
 
@@ -27,13 +27,13 @@ CALL "scripts\build_project.bat" %buildMode% || GOTO :commandFailed
 CALL "scripts\strong_name_dlls.bat" %strongNameCertFile% || GOTO :commandFailed
 
 :: Sign the DLLs for authenticity
-CALL "scripts\sign_dlls.bat" %certFile% %certPass% || GOTO :commandFailed
+CALL "scripts\sign_dlls.bat" %authCertFile% %authCertPass% || GOTO :commandFailed
 
 :: Package the DLLs in a NuGet package (will fail if DLLs are missing)
 CALL "scripts\pack_nuget.bat" %projectName% || GOTO :commandFailed
 
 :: Sign the NuGet package for authenticity
-CALL "scripts\sign_nuget.bat" %certFile% %certPass% || GOTO :commandFailed
+CALL "scripts\sign_nuget.bat" %authCertFile% %authCertPass% || GOTO :commandFailed
 SET nugetFileName=
 FOR /R %%F IN (*.nupkg) DO (
     SET nugetFileName="%%F"
