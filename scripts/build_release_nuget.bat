@@ -11,22 +11,20 @@
 
 :: Parse command line arguments
 SET projectName=%1
-SET certFile=%2
-SET certPass=%3
-SET containerName=%4
-SET buildMode=%5
+SET strongNameCertFile=%4
+SET authCertFile=%2
+SET authCertPass=%3
+SET containerName=%5
+SET buildMode=%6
 
 :: Delete old files
 CALL "scripts\delete_old_assemblies.bat"
-
-:: Install certificate (needed to automate signing later on)
-CALL "scripts\install_cert.bat" %certFile% %certPass% %containerName% || GOTO :commandFailed
 
 :: Restore dependencies and build solution
 CALL "scripts\build_project.bat" %buildMode% || GOTO :commandFailed
 
 :: Strong-name the DLLs
-CALL "scripts\strong_name_dlls.bat" %containerName% || GOTO :commandFailed
+CALL "scripts\strong_name_dlls.bat" %strongNameCertFile% || GOTO :commandFailed
 
 :: Sign the DLLs for authenticity
 CALL "scripts\sign_dlls.bat" %certFile% %certPass% || GOTO :commandFailed

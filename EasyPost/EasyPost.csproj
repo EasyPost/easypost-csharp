@@ -48,7 +48,7 @@
     <!-- Strong-name the assembly, required for .NET Framework compatibility -->
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
-    <AssemblyOriginatorKeyFile>..\EasyPost.pub</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\EasyPostNETStrongNameSigning.pub</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>

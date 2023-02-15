@@ -7,14 +7,14 @@
 @ECHO OFF
 
 :: Parse command line arguments
-SET containerName=%1
+SET certFile=%1
 
 :: Strong-name all DLLs found in the lib folder
 @ECHO:
 @ECHO Strong-naming (finishing delayed signing) DLLs with %certFile%...
 FOR /R "lib" %%F IN (*.dll) DO (
     REM sn erroneously triggers command failed if we put a fallback on this
-    sn -Rca "%%F" %containerName%
+    sn -Ra "%%F" %certFile%
 )
 
 EXIT /B 0
