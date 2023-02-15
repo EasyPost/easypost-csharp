@@ -12,7 +12,7 @@ SET certPass=%2
 
 :: Sign all DLLs found in the lib folder with our certificate to guarantee authenticity
 @ECHO:
-@ECHO Authenticating DLLs with %certFile%...
+@ECHO Signing DLLs with %certFile% for authenticity...
 FOR /R "lib" %%F IN (*.dll) DO (
     signtool sign /f %certFile% /p %certPass% /v /tr http://timestamp.digicert.com?alg=sha256 /td SHA256 /fd SHA256 "%%F" || GOTO :commandFailed
 )
