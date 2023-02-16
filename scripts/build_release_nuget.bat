@@ -11,28 +11,29 @@
 
 :: Parse command line arguments
 SET projectName=%1
-SET certFile=%2
-SET certPass=%3
-SET containerName=%4
-SET buildMode=%5
+SET strongNameCertFile=%2
+SET authCertFile=%3
+SET authCertPass=%4
+SET containerName=%5
+SET buildMode=%6
 
 :: Delete old files
 CALL "scripts\delete_old_assemblies.bat"
 
-:: Install certificate (needed to automate signing later on)
-CALL "scripts\install_cert.bat" %certFile% %certPass% %containerName% || GOTO :commandFailed
-
 :: Restore dependencies and build solution
 CALL "scripts\build_project.bat" %buildMode% || GOTO :commandFailed
 
-:: Sign the DLLs
-CALL "scripts\sign_dlls.bat" %certFile% %certPass% %containerName% || GOTO :commandFailed
+:: Strong-name the DLLs
+CALL "scripts\strong_name_dlls.bat" %strongNameCertFile% || GOTO :commandFailed
+
+:: Sign the DLLs for authenticity
+CALL "scripts\sign_dlls.bat" %authCertFile% %authCertPass% || GOTO :commandFailed
 
 :: Package the DLLs in a NuGet package (will fail if DLLs are missing)
 CALL "scripts\pack_nuget.bat" %projectName% || GOTO :commandFailed
 
-:: Sign the NuGet package
-CALL "scripts\sign_nuget.bat" %certFile% %certPass% || GOTO :commandFailed
+:: Sign the NuGet package for authenticity
+CALL "scripts\sign_nuget.bat" %authCertFile% %authCertPass% || GOTO :commandFailed
 SET nugetFileName=
 FOR /R %%F IN (*.nupkg) DO (
     SET nugetFileName="%%F"

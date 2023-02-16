@@ -45,8 +45,10 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <SignAssembly>false</SignAssembly>
-    <!-- We manually sign the DLLs later -->
+    <!-- Strong-name the assembly, required for .NET Framework compatibility -->
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>..\EasyPostNETStrongNameSigning.pub</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -61,9 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md">
+      <Link>README.md</Link>
       <Pack>true</Pack>
       <PackagePath>/</PackagePath>
-      <Link>README.md</Link>
     </None>
   </ItemGroup>
 

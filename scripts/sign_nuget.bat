@@ -1,4 +1,4 @@
-:: This script will find and sign any NuGet packages with a provided PFX certificate
+:: This script will find and sign any NuGet packages with a provided PFX certificate for authenticity
 
 :: Requirements:
 :: - NuGet is installed on the machine and is accessible everywhere (added to PATH)
@@ -9,9 +9,9 @@
 SET certFile=%1
 SET certPass=%2
 
-:: Sign all NuGet packages found
+:: Sign all NuGet packages found with our certificate to guarantee authenticity
 @ECHO:
-@ECHO Signing NuGet package with %certFile%...
+@ECHO Signing NuGet package with %certFile% for authenticity...
 :: Should only be one .nupkg file at this point, since we deleted the old ones
 FOR /R %%F IN (*.nupkg) DO (
     nuget sign "%%F" -Timestamper http://timestamp.digicert.com -CertificatePath "%certFile%" -CertificatePassword "%certPass%" || GOTO :commandFailed

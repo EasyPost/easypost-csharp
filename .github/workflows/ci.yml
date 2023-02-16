@@ -153,7 +153,10 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
+          # .NET 5 is deprecated and removed from GitHub Actions, we need to manually install it
+          dotnet-version: |
+            5.x.x
+            7.x.x
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1.2
