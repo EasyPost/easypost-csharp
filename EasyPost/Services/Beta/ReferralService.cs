@@ -1,7 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.API;
 using EasyPost.Models.API;
 using EasyPost.Models.API.Beta;
 using RestSharp;
@@ -26,7 +26,7 @@ namespace EasyPost.Services.Beta
         /// <param name="paymentMethodReference">ID of the card or bank account provided by Stripe.</param>
         /// <param name="priority">Which priority to save this payment method as on EasyPost.</param>
         /// <returns>A <see cref="PaymentMethod"/> object.</returns>
-        /// <exception cref="Exception">When the request fails.</exception>
+        /// <exception cref="ApiError">When the request fails.</exception>
         public async Task<PaymentMethod> AddPaymentMethod(string stripeCustomerId, string paymentMethodReference, PaymentMethod.Priority? priority = null)
         {
             priority ??= PaymentMethod.Priority.Primary;

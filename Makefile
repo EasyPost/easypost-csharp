@@ -31,8 +31,8 @@ coverage-check:
 
 ## docs - Generates library documentation
 docs:
-	docfx docs/docfx.json
-	git add docs/*
+	dotnet tool run docfx docs/docfx.json
+	git add docs/* || exit 0
 
 ## format - Formats the project
 format:
@@ -43,7 +43,7 @@ install-tools:
 	dotnet new tool-manifest || exit 0
 	dotnet tool install --local security-scan --version 5.6.3 || exit 0
 	dotnet tool install --local dotnet-format || exit 0
-	dotnet tool install --local docfx || exit 0
+	dotnet tool install --local docfx --version 2.60.2 || exit 0
 
 ## install - Install requirements
 install: | install-tools
