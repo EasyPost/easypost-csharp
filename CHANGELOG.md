@@ -1,13 +1,14 @@
 # CHANGELOG
 
-## Unreleased
+## v4.4.0 (2023-02-17)
 
-- Added new beta `RateService`, accessible via `myClient.Beta.Rate`.
+- Added new beta `RateService`, accessible via `myClient.Beta.Rate`
 - Added `RetrieveStatelessRate` function under beta `RateService` to pull stateless rates when shipment data is provided
 - Added `GetLowestStatelessRate` function under `Utilities.Rate` to filter the lowest stateless rate
 - Added new `GetLowest` instance functions, callable on `List<Rate>`, `List<Smartrate>` and `List<StatelessRate>`, to
   filter the lowest rate
 - Deprecated rate and smartrate filtering methods in `ShipmentService`, `RateService` and `Calculation.Rates` namespaces, moved to `Utilities.Rate` namespace
+- Fixes Strong-Name signing that was unintentionally removed in v4.1.0 (this package is now strong-name signed once again)
 
 ## v4.3.0 (2023-01-18)
 
