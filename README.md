@@ -139,6 +139,46 @@ Any generated local resource will have stored internally the same client used to
 made against the resource will automatically use the same client. This will prevent potential issues of accidentally
 using the wrong API key when interacting with a resource in a multi-client environment.
 
+## Parameters (BETA):
+
+Most functions in this library accept a `Dictionary<string, object>` as their sole parameter, which is ultimately used as the body of the HTTP request against EasyPost's API. If you instead would like to use .NET objects to construct API call parameters, you can use the various `Parameters` classes (currently in beta).
+
+For example, to create an address:
+
+```csharp
+// Use an object constructor to create the address creation parameters
+var addressCreateParameters = new EasyPost.BetaFeatures.Parameters.Address.Create {
+    Name = "My Name",
+    Street1 = "123 Main St",
+    City = "San Francisco",
+    State = "CA",
+    Zip = "94105",
+    Country = "US",
+    Phone = "415-123-4567"
+};
+
+// You can add additional parameters as needed outside of the constructor
+addressCreateParameters.Company = "My Company";
+
+// Then convert the object to a dictionary
+// This step will validate the data and throw an exception if there are any errors (i.e. missing required parameters)
+var addressCreateDictionary = addressCreateParameters.ToDictionary();
+
+// Pass the dictionary into the address creation method as normal
+var address = await myClient.Address.Create(addressCreateDictionary);
+```
+
+Using the `Parameters` classes is not required, but they can help in a number of ways:
+- Naturally enforces parameter types (can't assign a string to an int parameter, for example)
+- Removes the need to remember parameter names (i.e. "name" vs "company")
+- Prevents typos in parameter names
+- Removes the need to know the exact JSON schema of the HTTP request body (parameters will be serialized into the proper schema behind-the-scenes)
+- Validates parameters (i.e. ensure required parameters are present)
+- Allows for IDE auto-completion
+- Allows for IDE parameter documentation
+- Provides a more natural way to construct parameters
+- Facilitates ASP.NET Core model binding (bind an HTML form to a `Parameters` instance)
+
 ## Documentation
 
 API documentation can be found at: <https://easypost.com/docs/api>.
