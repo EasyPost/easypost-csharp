@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using EasyPost.Exceptions.General;
 using EasyPost.Tests._Utilities.Annotations;
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
 using Newtonsoft.Json;
 using Xunit;
 

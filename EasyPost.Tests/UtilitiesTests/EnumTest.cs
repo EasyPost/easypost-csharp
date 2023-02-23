@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using EasyPost.Tests._Utilities.Annotations;
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
 using Xunit;
 
 // ReSharper disable InconsistentNaming

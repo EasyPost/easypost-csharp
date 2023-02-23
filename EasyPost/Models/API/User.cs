@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using EasyPost.Http;
 using EasyPost.Models.Shared;
-using EasyPost.Utilities.Annotations;
+using EasyPost.Utilities.Internal.Annotations;
 using RestSharp;
 
 namespace EasyPost.Models.API

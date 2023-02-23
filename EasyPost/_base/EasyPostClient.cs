@@ -9,7 +9,8 @@ using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.Shared;
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
+using EasyPost.Utilities.Internal.Extensions;
 using RestSharp;
 
 #pragma warning disable SA1300

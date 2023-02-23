@@ -1,4 +1,4 @@
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
 
 namespace EasyPost.Models.API
 {

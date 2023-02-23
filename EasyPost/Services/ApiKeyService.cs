@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
-using EasyPost.Utilities.Annotations;
+using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.Services
 {

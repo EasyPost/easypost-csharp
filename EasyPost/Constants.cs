@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using EasyPost.Exceptions.API;
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
 
 namespace EasyPost
 {
@@ -51,10 +51,10 @@ namespace EasyPost
             Type? exceptionType = null;
             SwitchCase @switch = new()
             {
-                { Utilities.Http.StatusCodeIs1xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
-                { Utilities.Http.StatusCodeIs3xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
-                { Utilities.Http.StatusCodeIs4xx(statusCode), () => { exceptionType = typeof(UnknownApiError); } },
-                { Utilities.Http.StatusCodeIs5xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
+                { Utilities.Internal.Extensions.Http.StatusCodeIs1xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
+                { Utilities.Internal.Extensions.Http.StatusCodeIs3xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
+                { Utilities.Internal.Extensions.Http.StatusCodeIs4xx(statusCode), () => { exceptionType = typeof(UnknownApiError); } },
+                { Utilities.Internal.Extensions.Http.StatusCodeIs5xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
                 { SwitchCaseScenario.Default, () => { exceptionType = null; } },
             };
             @switch.MatchFirst(true); // evaluate switch case, checking which expression evaluates to "true"

@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions;
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
 using EasyVCR;
 using RestSharp;
 

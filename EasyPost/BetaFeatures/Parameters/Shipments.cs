@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-using EasyPost.Utilities.Annotations;
+using EasyPost.Utilities.Internal.Annotations;
 
-namespace EasyPost.Beta.Parameters.V2
+namespace EasyPost.BetaFeatures.Parameters
 {
     public static class Shipments
     {
         /// <summary>
         ///     Parameters for <see cref="EasyPost.Services.ShipmentService.Create"/> API calls.
         /// </summary>
-        public class Create : CreateRequestParameters
+        public class Create : Parameters
         {
             #region Request Parameters
 
@@ -53,69 +53,6 @@ namespace EasyPost.Beta.Parameters.V2
             public Addresses.Create? ToAddressParameters { get; set; }
 
             #endregion
-        }
-
-        /// <summary>
-        ///     Parameters for <see cref="EasyPost.Models.API.Shipment"/> one-call buy API calls.
-        /// </summary>
-        public sealed class OneCallBuy : Create
-        {
-            #region Request Parameters
-
-            [RequestParameter(Necessity.Optional, "shipment", "carrier")]
-            public string? Carrier { get; set; }
-
-            [RequestParameter(Necessity.Optional, "shipment", "service")]
-            public string? Service { get; set; }
-
-            #endregion
-        }
-
-        /// <summary>
-        ///     Parameters for <see cref="EasyPost.Models.API.Shipment"/> document creation API calls.
-        /// </summary>
-        public sealed class CreateDocument : RequestParameters
-        {
-            #region Request Parameters
-
-            #endregion
-        }
-
-        /// <summary>
-        ///     Parameters for <see cref="EasyPost.Models.API.Shipment"/> insure API calls.
-        /// </summary>
-        public sealed class Insure : RequestParameters
-        {
-            #region Request Parameters
-
-            #endregion
-        }
-
-        /// <summary>
-        ///     Parameters for <see cref="EasyPost.Models.API.Shipment"/> buy API calls.
-        /// </summary>
-        public sealed class Buy : RequestParameters
-        {
-            #region Request Parameters
-
-            #endregion
-        }
-
-        /// <summary>
-        ///     Parameters for <see cref="EasyPost.Models.API.Shipment"/> rate generation API calls.
-        /// </summary>
-        public sealed class RegenerateRates : RequestParameters
-        {
-            #region Request Parameters
-
-            #endregion
-        }
-
-        /// <summary>
-        ///     Parameters for <see cref="EasyPost.Services.ShipmentService.All"/> API calls.
-        /// </summary>
-        public sealed class All : AllRequestParameters
-        {
         }
     }
 }

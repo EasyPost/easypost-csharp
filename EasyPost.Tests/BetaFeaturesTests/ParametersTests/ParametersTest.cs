@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using EasyPost.Beta.Parameters.V2;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Tests._Utilities.Annotations;
 using Xunit;
 
-namespace EasyPost.Tests.ParametersTests
+namespace EasyPost.Tests.BetaFeaturesTests.ParametersTests
 {
     public class ParametersTest
     {
@@ -34,17 +34,25 @@ namespace EasyPost.Tests.ParametersTests
             // Check that a dictionary was created correctly
             Assert.NotNull(dictionary);
 
-            // Check that the dictionary contains 3 elements, including an "address" key
-            Assert.Equal(3, dictionary.Count); // "address" + default "verify" and "verify_strict" top-level keys
+            // Check that the dictionary contains "address" + default "verify" and "verify_strict" top-level keys
             Assert.True(dictionary.ContainsKey("address"));
+            Assert.True(dictionary.ContainsKey("verify"));
+            Assert.True(dictionary.ContainsKey("verify_strict"));
 
-            // Check that the value of the "address" key is a dictionary with 7 elements
+            // Check that the "address" sub-dictionary was created correctly
             var addressData = dictionary["address"] as Dictionary<string, object>;
             Assert.NotNull(addressData);
-            Assert.Equal(7, addressData.Count); // the 6 elements we set + default "residential" boolean
 
-            // Check that the "address" dictionary contains a key "street1" with the correct value
+            // Check that the "address" sub-dictionary contains the 6 elements we set + default "residential" boolean
             Assert.True(addressData.ContainsKey("street1"));
+            Assert.True(addressData.ContainsKey("street2"));
+            Assert.True(addressData.ContainsKey("city"));
+            Assert.True(addressData.ContainsKey("state"));
+            Assert.True(addressData.ContainsKey("zip"));
+            Assert.True(addressData.ContainsKey("country"));
+            Assert.True(addressData.ContainsKey("residential"));
+
+            // Check that the "street1" key was set with the correct value
             Assert.NotNull(addressData["street1"]);
             Assert.Equal(street, addressData["street1"]);
         }

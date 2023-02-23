@@ -4,10 +4,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using EasyPost.Exceptions.General;
-using EasyPost.Utilities;
-using EasyPost.Utilities.Annotations;
+using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Extensions;
 
-namespace EasyPost.Beta.Parameters
+namespace EasyPost.BetaFeatures.Parameters
 {
     /// <summary>
     ///     Base class for all parameters used in functions.
@@ -181,7 +181,9 @@ namespace EasyPost.Beta.Parameters
             }
             else
             {
+#pragma warning disable CA2201 // Don't throw base Exception class
                 throw new Exception("Found a non-dictionary while traversing the dictionary");
+#pragma warning restore CA2201 // Don't throw base Exception class
             }
 
             return dictionary;

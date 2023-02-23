@@ -1,13 +1,13 @@
-using EasyPost.Utilities.Annotations;
+using EasyPost.Utilities.Internal.Annotations;
 
-namespace EasyPost.Beta.Parameters.V2
+namespace EasyPost.BetaFeatures.Parameters
 {
     public static class Addresses
     {
         /// <summary>
         ///     Parameters for <see cref="EasyPost.Services.AddressService.Create"/> API calls.
         /// </summary>
-        public class Create : CreateRequestParameters
+        public class Create : Parameters
         {
             #region Request Parameters
 
@@ -60,20 +60,6 @@ namespace EasyPost.Beta.Parameters.V2
             public string? Zip { get; set; }
 
             #endregion
-        }
-
-        /// <summary>
-        ///     Parameters for <see cref="EasyPost.Services.AddressService.All"/> API calls.
-        /// </summary>
-        public sealed class All : AllRequestParameters
-        {
-        }
-
-        /// <summary>
-        ///     Parameters for <see cref="EasyPost.Models.API.Address"/> update API calls.
-        /// </summary>
-        public class Update : Create
-        {
         }
     }
 }

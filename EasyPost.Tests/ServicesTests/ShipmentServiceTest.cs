@@ -6,7 +6,7 @@ using EasyPost.Models.API;
 using EasyPost.Services;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Annotations;
-using EasyPost.Utilities.Annotations;
+using EasyPost.Utilities.Internal.Annotations;
 using Xunit;
 
 namespace EasyPost.Tests.ServicesTests

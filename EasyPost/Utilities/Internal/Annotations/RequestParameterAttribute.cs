@@ -1,6 +1,6 @@
 using System;
 
-namespace EasyPost.Utilities.Annotations
+namespace EasyPost.Utilities.Internal.Annotations
 {
     /// <summary>
     ///     An enum to represent the necessity of a parameter.

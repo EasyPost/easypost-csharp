@@ -1,4 +1,4 @@
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
 
 #pragma warning disable SA1300
 namespace EasyPost._base

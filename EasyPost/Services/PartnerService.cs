@@ -6,8 +6,8 @@ using EasyPost._base;
 using EasyPost.Exceptions.API;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Utilities;
-using EasyPost.Utilities.Annotations;
+using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Extensions;
 using RestSharp;
 
 namespace EasyPost.Services

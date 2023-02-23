@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace EasyPost.Utilities
+namespace EasyPost.Utilities.Internal.Extensions
 {
     public static class Dictionaries
     {
@@ -46,19 +46,13 @@ namespace EasyPost.Utilities
         /// </summary>
         /// <param name="dictionary">A <see cref="Dictionary{TKey,TValue}"/> to convert.</param>
         /// <returns>A <see cref="Dictionary{TKey,TValue}"/> of string, object pairs.</returns>
-        public static Dictionary<string, object> ToStringNonNullableObjectDictionary(this Dictionary<string, object?> dictionary)
-        {
-            return ConvertToStringNonNullableObjectDictionary(dictionary);
-        }
+        public static Dictionary<string, object> ToStringNonNullableObjectDictionary(this Dictionary<string, object?> dictionary) => ConvertToStringNonNullableObjectDictionary(dictionary);
 
         /// <summary>
         ///     Converts a <see cref="Dictionary{TKey,TValue}"/> of string, object key-value pairs to a dictionary of string, object? (nullable) key-value pairs.
         /// </summary>
         /// <param name="dictionary">A <see cref="Dictionary{TKey,TValue}"/> to convert.</param>
         /// <returns>A <see cref="Dictionary{TKey,TValue}"/> of string, object? pairs.</returns>
-        public static Dictionary<string, object?> ToStringNullableObjectDictionary(this Dictionary<string, object> dictionary)
-        {
-            return ConvertToStringNullableObjectDictionary(dictionary);
-        }
+        public static Dictionary<string, object?> ToStringNullableObjectDictionary(this Dictionary<string, object> dictionary) => ConvertToStringNullableObjectDictionary(dictionary);
     }
 }

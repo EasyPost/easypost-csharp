@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
 
 // ReSharper disable once CheckNamespace
 namespace EasyPost.Tests._Utilities

@@ -1,5 +1,5 @@
 using System;
-using EasyPost.Utilities.Annotations;
+using EasyPost.Utilities.Internal.Annotations;
 
 // ReSharper disable InconsistentNaming
 

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using EasyPost.Models.API;
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 

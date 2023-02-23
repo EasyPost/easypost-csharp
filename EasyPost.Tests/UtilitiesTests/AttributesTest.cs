@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities.Annotations;
-using EasyPost.Utilities.Annotations;
+using EasyPost.Utilities.Internal.Annotations;
 using Newtonsoft.Json;
 using Xunit;
 
