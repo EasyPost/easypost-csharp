@@ -52,6 +52,25 @@ namespace EasyPost.Utilities.Annotations
         internal static IEnumerable<MethodInfo> GetMethodsWithAttribute<T>(object obj)
             where T : Attribute
             => GetMethodsWithAttribute<T>(obj.GetType());
+
+        /// <summary>
+        ///     Get the attribute of the specified type for a property.
+        /// </summary>
+        /// <param name="property">Property to get attribute of.</param>
+        /// <typeparam name="T">Type of attribute to retrieve.</typeparam>
+        /// <returns>T-type attribute for the property.</returns>
+        public static T? GetAttribute<T>(PropertyInfo property)
+            where T : BaseCustomAttribute
+        {
+            try
+            {
+                return property.GetCustomAttribute<T>(true);
+            }
+            catch (Exception)
+            {
+                return default;
+            }
+        }
     }
 
     internal interface IBaseCustomAttribute
