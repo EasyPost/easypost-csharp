@@ -62,7 +62,7 @@ namespace EasyPost._base
         /// <param name="rootElement">Root element of JSON returned by update call.</param>
         /// <param name="overrideApiVersion">Override the API version used for update call.</param>
         /// <typeparam name="T">Type of object to update.</typeparam>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <returns>A task representing the asynchronous operation.</returns>
         protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null)
             where T : class
         {

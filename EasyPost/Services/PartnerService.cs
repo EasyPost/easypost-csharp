@@ -61,7 +61,7 @@ namespace EasyPost.Services
         /// <param name="cvc">CVC of the credit card.</param>
         /// <param name="priority">Priority of the credit card.</param>
         /// <returns>An EasyPost.PaymentMethodObject instance.</returns>
-        /// <exception cref="Exception">When the request fails.</exception>
+        /// <exception cref="ApiError">When the request fails.</exception>
         [CrudOperations.Update]
         public async Task<PaymentMethod> AddCreditCardToUser(string referralApiKey, string number, int expirationMonth, int expirationYear, string cvc, PaymentMethod.Priority? priority = null)
         {
