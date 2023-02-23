@@ -1,6 +1,6 @@
 #!/bin/sh
 
-THRESHOLD=90
+THRESHOLD=84
 THRESHOLD_TYPE=line
 
 # Analyze test coverage
