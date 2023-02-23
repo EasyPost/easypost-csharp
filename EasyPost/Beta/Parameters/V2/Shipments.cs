@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using EasyPost.Utilities.Annotations;
 
-namespace EasyPost.Parameters.V2
+namespace EasyPost.Beta.Parameters.V2
 {
     public static class Shipments
     {
@@ -50,7 +50,7 @@ namespace EasyPost.Parameters.V2
             // TODO: Fix placement of sub-parameters.
             // This will be placed at "shipment" -> "to_address", and then "address" -> ... because of the Address class's own serialization rules.
             // Needs instead to be "shipment" -> "to_address" -> ... because of the way the API expects it.
-            public EasyPost.Parameters.V2.Addresses.Create? ToAddressParameters { get; set; }
+            public Addresses.Create? ToAddressParameters { get; set; }
 
             #endregion
         }

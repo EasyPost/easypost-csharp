@@ -1,6 +1,6 @@
 using EasyPost.Utilities.Annotations;
 
-namespace EasyPost.Parameters.V2
+namespace EasyPost.Beta.Parameters.V2
 {
     public static class Addresses
     {

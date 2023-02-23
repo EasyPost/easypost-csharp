@@ -7,7 +7,7 @@ using EasyPost.Exceptions.General;
 using EasyPost.Utilities;
 using EasyPost.Utilities.Annotations;
 
-namespace EasyPost.Parameters
+namespace EasyPost.Beta.Parameters
 {
     /// <summary>
     ///     Base class for all parameters used in functions.

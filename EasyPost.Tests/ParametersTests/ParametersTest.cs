@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using EasyPost.Beta.Parameters.V2;
 using EasyPost.Tests._Utilities.Annotations;
 using Xunit;
 
@@ -18,7 +19,7 @@ namespace EasyPost.Tests.ParametersTests
         {
             const string street = "388 Townsend St";
 
-            var parameters = new Parameters.V2.Addresses.Create
+            var parameters = new Addresses.Create
             {
                 Street1 = street,
                 Street2 = "Apt 20",
@@ -54,10 +55,10 @@ namespace EasyPost.Tests.ParametersTests
         {
             const string street = "388 Townsend St";
 
-            var parameters = new Parameters.V2.Shipments.Create
+            var parameters = new Shipments.Create
             {
                 IsReturn = false,
-                ToAddressParameters = new Parameters.V2.Addresses.Create
+                ToAddressParameters = new Addresses.Create
                 {
                     Street1 = street,
                     Street2 = "Apt 20",

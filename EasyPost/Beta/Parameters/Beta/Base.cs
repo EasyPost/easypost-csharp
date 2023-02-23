@@ -1,7 +1,7 @@
 using EasyPost._base;
 using EasyPost.Utilities.Annotations;
 
-namespace EasyPost.Parameters.Beta
+namespace EasyPost.Beta.Parameters.Beta
 {
     /// <summary>
     ///     Base class for all parameters used in requests to <see cref="ApiVersion.Beta"/> endpoints.
@@ -52,19 +52,19 @@ namespace EasyPost.Parameters.Beta
         #region Request Parameters
 
         /// <summary>
-        ///     Only records created after the given ID will be included. May not be used with <see cref="EasyPost.Parameters.Beta.AllRequestParameters.BeforeId"/>.
+        ///     Only records created after the given ID will be included. May not be used with <see cref="BeforeId"/>.
         /// </summary>
         [RequestParameter(Necessity.Optional, "after_id")]
         public string? AfterId { get; set; }
 
         /// <summary>
-        ///     Only records created before the given ID will be included. May not be used with <see cref="EasyPost.Parameters.Beta.AllRequestParameters.AfterId"/>.
+        ///     Only records created before the given ID will be included. May not be used with <see cref="AfterId"/>.
         /// </summary>
         [RequestParameter(Necessity.Optional, "before_id")]
         public string? BeforeId { get; set; }
 
         /// <summary>
-        ///     Only return records created before this timestamp. Defaults to 1 month ago, or 1 month before a passed <see cref="EasyPost.Parameters.Beta.AllRequestParameters.StartDatetime"/>.
+        ///     Only return records created before this timestamp. Defaults to 1 month ago, or 1 month before a passed <see cref="StartDatetime"/>.
         /// </summary>
         [RequestParameter(Necessity.Optional, "end_datetime")]
         public string? EndDatetime { get; set; }
@@ -76,7 +76,7 @@ namespace EasyPost.Parameters.Beta
         public int PageSize { get; set; } = 20;
 
         /// <summary>
-        ///     Only return records created after this timestamp. Defaults to 1 month ago, or 1 month before a passed <see cref="EasyPost.Parameters.Beta.AllRequestParameters.EndDatetime"/>.
+        ///     Only return records created after this timestamp. Defaults to 1 month ago, or 1 month before a passed <see cref="EndDatetime"/>.
         /// </summary>
         [RequestParameter(Necessity.Optional, "start_datetime")]
         public string? StartDatetime { get; set; }
