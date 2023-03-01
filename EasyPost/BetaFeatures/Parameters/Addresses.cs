@@ -7,56 +7,72 @@ namespace EasyPost.BetaFeatures.Parameters
         /// <summary>
         ///     Parameters for <see cref="EasyPost.Services.AddressService.Create"/> API calls.
         /// </summary>
-        public class Create : Parameters
+        public class Create : Parameters, IAddressParameter
         {
             #region Request Parameters
 
-            [RequestParameter(Necessity.Optional, "address", "carrier_facility")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "carrier_facility")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "carrier_facility")]
             public string? CarrierFacility { get; set; }
 
-            [RequestParameter(Necessity.Optional, "address", "city")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "city")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "city")]
             public string? City { get; set; }
 
-            [RequestParameter(Necessity.Optional, "address", "company")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "company")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "company")]
             public string? Company { get; set; }
 
-            [RequestParameter(Necessity.Optional, "address", "country")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "country")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "country")]
             public string? Country { get; set; }
 
-            [RequestParameter(Necessity.Optional, "address", "email")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "email")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "email")]
             public string? Email { get; set; }
 
-            [RequestParameter(Necessity.Optional, "address", "federal_tax_id")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "federal_tax_id")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "federal_tax_id")]
             public string? FederalTaxId { get; set; }
 
-            [RequestParameter(Necessity.Optional, "address", "name")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "name")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "name")]
             public string? Name { get; set; }
 
-            [RequestParameter(Necessity.Optional, "address", "phone")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "phone")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "phone")]
             public string? Phone { get; set; }
 
-            [RequestParameter(Necessity.Optional, "address", "residential")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "residential")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "residential")]
             public bool Residential { get; set; } = false;
 
-            [RequestParameter(Necessity.Optional, "address", "state")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "state")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "state")]
             public string? State { get; set; }
 
-            [RequestParameter(Necessity.Optional, "address", "state_tax_id")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "state_tax_id")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "state_tax_id")]
             public string? StateTaxId { get; set; }
 
-            [RequestParameter(Necessity.Optional, "address", "street1")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "street1")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "street1")]
             public string? Street1 { get; set; }
 
-            [RequestParameter(Necessity.Optional, "address", "street2")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "street2")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "street2")]
             public string? Street2 { get; set; }
 
-            [RequestParameter(Necessity.Optional, "verify_strict")]
+            [TopLevelRequestParameter(Necessity.Optional, "verify_strict")]
+            // "verify_strict" is not included when address creation parameters are used for a to/from address in a shipment creation request.
             public bool VerifyStrictly { get; set; } = false;
 
-            [RequestParameter(Necessity.Optional, "verify")]
+            [TopLevelRequestParameter(Necessity.Optional, "verify")]
+            // "verify" is not included when address creation parameters are used for a to/from address in a shipment creation request.
             public bool Verify { get; set; } = false;
 
-            [RequestParameter(Necessity.Optional, "address", "zip")]
+            [TopLevelRequestParameter(Necessity.Optional, "address", "zip")]
+            [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "zip")]
             public string? Zip { get; set; }
 
             #endregion

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using EasyPost.BetaFeatures.Parameters;
+using EasyPost.Models.API;
 using EasyPost.Tests._Utilities.Annotations;
 using Xunit;
 
@@ -57,53 +58,94 @@ namespace EasyPost.Tests.BetaFeaturesTests.ParametersTests
             Assert.Equal(street, addressData["street1"]);
         }
 
-        [Fact(Skip = "Embedded sub-parameters are not yet implemented properly")]
-        [Testing.EdgeCase]
-        public void TestParametersToDictionaryWithSubParameters()
+        [Fact]
+        [Testing.Parameters]
+        public void TestParametersToDictionaryWithSubDictionary()
         {
-            const string street = "388 Townsend St";
+            const string streetA = "388 Townsend St";
+            const string streetB = "123 Main St";
 
+            Address preExistingAddressObject = new Address
+            {
+                Street1 = streetA,
+            };
+
+            Addresses.Create newAddressCreationParameters = new Addresses.Create
+            {
+                Street1 = streetB,
+            };
+
+            // Users can pass in an existing Address object as the "ToAddress" parameter
             var parameters = new Shipments.Create
             {
                 IsReturn = false,
-                ToAddressParameters = new Addresses.Create
-                {
-                    Street1 = street,
-                    Street2 = "Apt 20",
-                    City = "San Francisco",
-                    State = "CA",
-                    Zip = "94107",
-                    Country = "US",
-                },
+                ToAddress = preExistingAddressObject,
             };
 
+            // No errors here confirm that the dictionary was serialized to the expected schema
             var dictionary = parameters.ToDictionary();
-
-            // Check that a dictionary was created correctly
-            Assert.NotNull(dictionary);
-
-            // Check that the dictionary contains 2 elements, including an "shipment" key
-            Assert.Equal(2, dictionary.Count); // "shipment" + default "carbon_offset" top-level key
-            Assert.True(dictionary.ContainsKey("shipment"));
-
-            // Check that the value of the "shipment" key is a dictionary with 2 elements
             var shipmentData = dictionary["shipment"] as Dictionary<string, object>;
-            Assert.NotNull(shipmentData);
-            Assert.Equal(3, shipmentData.Count); // the 1 element we set + default "is_return" boolean and "insurance" 0 value
-
-            // TODO: This test fails because address data will get embedded as "to_address" -> "address" -> "street1" instead of "to_address" -> "street1"
-
-            // Check that the value of the "to_address" key is a dictionary with 7 elements
             var addressData = shipmentData["to_address"] as Dictionary<string, object>;
-            Assert.NotNull(addressData);
-            Assert.Equal(7, addressData.Count); // the 6 elements we set + default "residential" boolean
 
-            // Check that the "to_address" dictionary contains a key "street1" with the correct value
-            Assert.True(addressData.ContainsKey("street1"));
-            Assert.NotNull(addressData["street1"]);
-            Assert.Equal(street, addressData["street1"]);
+            // The value of "street1" should be the value of "streetA" via the Address object
+            Assert.Equal(streetA, addressData["street1"]);
+
+            // Users can also pass in an Address.Create parameter object as the "ToAddress" parameter
+            parameters = new Shipments.Create
+            {
+                IsReturn = false,
+                ToAddress = newAddressCreationParameters,
+            };
+
+            // No errors here confirm that the dictionary was serialized to the expected schema
+            dictionary = parameters.ToDictionary();
+            shipmentData = dictionary["shipment"] as Dictionary<string, object>;
+            addressData = shipmentData["to_address"] as Dictionary<string, object>;
+
+            // The value of "street1" should be the value of "streetB" via the Address.Create parameter object
+            Assert.Equal(streetB, addressData["street1"]);
         }
 
+        [Fact]
+        [Testing.Logic]
+        public void TestTopLevelVersusNestedParameters()
+        {
+            // This test proves that we can reuse the Address.Create parameter object,
+            // with its serialization logic adapting to whether it is
+            // a top-level parameter object or a nested parameter object within another parameter object.
+
+            const string street = "388 Townsend St";
+
+            Addresses.Create addressCreationParameters = new Addresses.Create
+            {
+                Street1 = street,
+            };
+
+            // Using the Address.Create parameter object as a top-level parameter object
+            var dictionary = addressCreationParameters.ToDictionary();
+
+            // Path to "street1" should be dictionary["address"]["street1"]
+            var addressData = dictionary["address"] as Dictionary<string, object>;
+            Assert.Equal(street, addressData["street1"]);
+
+            // Using the Address.Create parameter object as a nested parameter object
+            var shipmentCreationParameters = new Shipments.Create
+            {
+                IsReturn = false,
+                ToAddress = addressCreationParameters,
+            };
+            dictionary = shipmentCreationParameters.ToDictionary();
+
+            // Path to "street1" should be dictionary["shipment"]["to_address"]["street1"]
+            var shipmentData = dictionary["shipment"] as Dictionary<string, object>;
+            var toAddressData = shipmentData["to_address"] as Dictionary<string, object>;
+            Assert.Equal(street, toAddressData["street1"]);
+
+            // Notice how the paths to "street1" are different depending on whether the Address.Create parameter object
+            // The schema for an address creation API call contains all address data wrapped in an "address" key (excluding irrelevant "verify" and "verify_strict" keys)
+            // The schema for a shipment creation API call does not contain this "address" key, with all address data instead wrapped inside a "to_address" key
+            // Behind the scenes, the Address.Create parameter object is the same, but the serialization path for each property (parameter) adapts to the context in which it is used
+        }
 
         #endregion
     }
