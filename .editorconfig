@@ -578,5 +578,11 @@ dotnet_diagnostic.CA2227.severity = suggestion
 dotnet_diagnostic.CA1002.severity = suggestion
 ### URI parameters should not be strings
 dotnet_diagnostic.CA1054.severity = suggestion
+### URI properties should not be strings
+dotnet_diagnostic.CA1056.severity = suggestion
 ### Specify StringComparison for clarity
 dotnet_diagnostic.CA1307.severity = suggestion
+### Do not nest types
+dotnet_diagnostic.CA1034.severity = suggestion
+### Property names should not match get methods
+dotnet_diagnostic.CA1721.severity = suggestion
