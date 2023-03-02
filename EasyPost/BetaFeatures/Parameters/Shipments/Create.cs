@@ -11,7 +11,9 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         #region Request Parameters
 
         [TopLevelRequestParameter(Necessity.Optional, "carbon_offset")]
-        public bool AddCarbonOffset { get; set; }
+
+        // non-nullable, will always be included (default: false)
+        public bool CarbonOffset { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "carrier_accounts")]
         public List<EasyPost.Models.API.CarrierAccount>? CarrierAccounts { get; set; }
