@@ -586,3 +586,5 @@ dotnet_diagnostic.CA1307.severity = suggestion
 dotnet_diagnostic.CA1034.severity = suggestion
 ### Property names should not match get methods
 dotnet_diagnostic.CA1721.severity = suggestion
+### Avoid empty interfaces
+dotnet_diagnostic.CA1040.severity = suggestion
