@@ -43,6 +43,12 @@ jobs:
           build-breaking: false
           all-categories: latest-recommended
 
+      - name: Upload analysis results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ${{ env.ANALYSIS_RESULTS_SARIF_FILE }}
+          category: Roslyn
+
   Security_Code_Scan:
     runs-on: windows-latest
     steps:
