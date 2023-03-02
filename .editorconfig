@@ -538,7 +538,7 @@ dotnet_diagnostic.IDE0058.severity = none
 ### Use conditional expression for return
 dotnet_diagnostic.IDE0046.severity = suggestion
 ### Use curly braces for if/else statements (see csharp_prefer_braces - requires braces for multi-line statements, optional for single-line)
-dotnet_diagnostic.IDE0011.severity = warning
+dotnet_diagnostic.IDE0011.severity = suggestion
 ### Don't use generic Exception
 dotnet_diagnostic.CA2201.severity = warning
 ### Do not declare visible instance fields
@@ -568,3 +568,15 @@ dotnet_diagnostic.SA1402.severity = none
 dotnet_diagnostic.SA1401.severity = none
 ### Private fields should not start with underscore
 dotnet_diagnostic.SA1309.severity = none
+### Single line comments should begin with single space
+dotnet_diagnostic.SA1515.severity = none
+### Missing constructor
+dotnet_diagnostic.CA1032.severity = none
+### Make readonly by removing setter
+dotnet_diagnostic.CA2227.severity = suggestion
+### Use collection instead of list
+dotnet_diagnostic.CA1002.severity = suggestion
+### URI parameters should not be strings
+dotnet_diagnostic.CA1054.severity = suggestion
+### Specify StringComparison for clarity
+dotnet_diagnostic.CA1307.severity = suggestion
