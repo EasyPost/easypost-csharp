@@ -20,7 +20,7 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         public EasyPost.Models.API.CustomsInfo? CustomsInfo { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "insurance")]
-        public double Insurance { get; set; }
+        public double? Insurance { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "is_return")]
         public bool IsReturn { get; set; } = false;
