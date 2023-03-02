@@ -147,7 +147,7 @@ For example, to create an address:
 
 ```csharp
 // Use an object constructor to create the address creation parameters
-var addressCreateParameters = new EasyPost.BetaFeatures.Parameters.Address.Create {
+var addressCreateParameters = new EasyPost.BetaFeatures.Parameters.Addresses.Create {
     Name = "My Name",
     Street1 = "123 Main St",
     City = "San Francisco",
