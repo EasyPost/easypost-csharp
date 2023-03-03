@@ -109,13 +109,13 @@ namespace EasyPost._base
             // Deserialize the response into an object
             T resource = JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
 
-#pragma warning disable IDE2070 // Simplify null check
+#pragma warning disable IDE0270 // Simplify null check
             if (resource is null)
             {
                 // Object deserialization failed
                 throw new JsonDeserializationError(typeof(T));
             }
-#pragma warning restore IDE2070
+#pragma warning restore IDE0270
 
             PassClientToEasyPostObject(resource);
 

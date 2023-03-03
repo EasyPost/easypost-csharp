@@ -557,7 +557,7 @@ dotnet_diagnostic.IDE0061.severity = suggestion
 dotnet_diagnostic.IDE0025.severity = suggestion
 ### Simplify null check
 ### https://github.com/dotnet/roslyn/issues/65769#issuecomment-1337237203
-dotnet_diagnostic.IDE2070.severity = suggestion
+dotnet_diagnostic.IDE0270.severity = suggestion
 
 # Custom StyleCop (SA) rules
 [*.{cs,vb}]
