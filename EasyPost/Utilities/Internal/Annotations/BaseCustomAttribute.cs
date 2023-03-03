@@ -66,10 +66,12 @@ namespace EasyPost.Utilities.Internal.Annotations
             {
                 return property.GetCustomAttribute<T>(true);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
             {
                 return default;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 

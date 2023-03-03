@@ -5,7 +5,6 @@ namespace EasyPost.BetaFeatures.Parameters
     /// </summary>
     public interface IParameter
     {
-
     }
 
     /// <summary>
@@ -13,7 +12,6 @@ namespace EasyPost.BetaFeatures.Parameters
     /// </summary>
     public interface IAddressParameter : IParameter
     {
-
     }
 
     /// <summary>
@@ -21,6 +19,5 @@ namespace EasyPost.BetaFeatures.Parameters
     /// </summary>
     public interface IShipmentParameter : IParameter
     {
-
     }
 }

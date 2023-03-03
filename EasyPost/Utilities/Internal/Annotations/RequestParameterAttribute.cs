@@ -52,7 +52,7 @@ namespace EasyPost.Utilities.Internal.Annotations
     /// <summary>
     ///     An attribute to label a parameter that will be included in a top-level (standalone) JSON request body.
     /// </summary>
-    internal class TopLevelRequestParameterAttribute : RequestParameterAttribute
+    internal sealed class TopLevelRequestParameterAttribute : RequestParameterAttribute
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="TopLevelRequestParameterAttribute"/> class with the given <see cref="Necessity"/> and JSON path.
@@ -68,7 +68,7 @@ namespace EasyPost.Utilities.Internal.Annotations
     /// <summary>
     ///     An attribute to label a parameter that will be included in an embedded dictionary inside another JSON request body (e.g. "address" data in "shipment" parameters).
     /// </summary>
-    internal class NestedRequestParameterAttribute : RequestParameterAttribute
+    internal sealed class NestedRequestParameterAttribute : RequestParameterAttribute
     {
         /// <summary>
         ///     The type of the parent parameter set that will utilize this parameter.

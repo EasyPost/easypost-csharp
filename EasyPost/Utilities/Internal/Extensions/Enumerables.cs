@@ -16,7 +16,9 @@ namespace EasyPost.Utilities.Internal.Extensions
         {
             int num = 0;
             foreach (T obj in ie)
+            {
                 action(num++, obj);
+            }
         }
     }
 }

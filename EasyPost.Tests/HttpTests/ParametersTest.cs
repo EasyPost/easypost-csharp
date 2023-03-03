@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using EasyPost.Http;
 using EasyPost.Tests._Utilities.Annotations;
+using EasyPost.Utilities.Internal.Extensions;
 using Xunit;
 
 namespace EasyPost.Tests.HttpTests

@@ -43,7 +43,10 @@ namespace EasyPost.BetaFeatures.Parameters
                 TopLevelRequestParameterAttribute? parameterAttribute = BaseCustomAttribute.GetAttribute<TopLevelRequestParameterAttribute>(property);
 
                 // Ignore any properties that are not annotated with a StandaloneRequestParameterAttribute
-                if (parameterAttribute == null) continue;
+                if (parameterAttribute == null)
+                {
+                    continue;
+                }
 
                 object? value = property.GetValue(this);
 
@@ -51,7 +54,10 @@ namespace EasyPost.BetaFeatures.Parameters
                 if (value == null)
                 {
                     // If the parameter is required and null, throw an exception
-                    if (parameterAttribute.Necessity == Necessity.Required) throw new MissingParameterError(property);
+                    if (parameterAttribute.Necessity == Necessity.Required)
+                    {
+                        throw new MissingParameterError(property);
+                    }
 
                     // If the parameter is optional and null, skip it
                     continue;
@@ -83,7 +89,10 @@ namespace EasyPost.BetaFeatures.Parameters
                 NestedRequestParameterAttribute? parameterAttribute = NestedRequestParameterAttribute.GetNestedRequestParameterAttributeForParentType(parentParameterObjectType, property);
 
                 // Ignore any properties that are not annotated with a NestedRequestParameterAttribute or do not have a NestedRequestParameterAttribute for this specific parent type
-                if (parameterAttribute == null) continue;
+                if (parameterAttribute == null)
+                {
+                    continue;
+                }
 
                 object? value = property.GetValue(this);
 
@@ -91,7 +100,10 @@ namespace EasyPost.BetaFeatures.Parameters
                 if (value == null)
                 {
                     // If the parameter is required and null, throw an exception
-                    if (parameterAttribute.Necessity == Necessity.Required) throw new MissingParameterError(property);
+                    if (parameterAttribute.Necessity == Necessity.Required)
+                    {
+                        throw new MissingParameterError(property);
+                    }
 
                     // If the parameter is optional and null, skip it
                     continue;
@@ -119,12 +131,18 @@ namespace EasyPost.BetaFeatures.Parameters
             // If we've done our job correctly, the only classes that inherit base-IParameter interfaces are base-EasyPostObject and base-Parameters
 
             // If a given value is a base-EasyPostObject object, serialize it as a dictionary
-            if (value is EasyPostObject easyPostObject) value = easyPostObject.AsDictionary();
+            if (value is EasyPostObject easyPostObject)
+            {
+                value = easyPostObject.AsDictionary();
+            }
 
             // If the given value is another base-Parameters object, serialize it as a sub-dictionary for the parent dictionary
             // This is because the JSON schema for a sub-object is different than the JSON schema for a top-level object
             // e.g. the schema for an address in the address create API call is different than the schema for an address in the shipment create API call
-            if (value is Parameters parameters) value = parameters.ToSubDictionary(GetType());
+            if (value is Parameters parameters)
+            {
+                value = parameters.ToSubDictionary(GetType());
+            }
 
             // Finally, add the value to the dictionary
             _parameterDictionary = UpdateDictionary(_parameterDictionary, requestParameterAttribute.JsonPath, value);
@@ -153,11 +171,15 @@ namespace EasyPost.BetaFeatures.Parameters
                 case 1:
                     string soloKey = keys[0];
                     if (dictionary.ContainsKey(soloKey))
+                    {
                         // Key-value pair already exists in dictionary (likely because of override parameters)
                         // Only change the value if the existing value is null
                         dictionary[soloKey] ??= value;
+                    }
                     else
+                    {
                         dictionary.Add(soloKey, value);
+                    }
 
                     return dictionary;
             }
@@ -166,7 +188,10 @@ namespace EasyPost.BetaFeatures.Parameters
             // Get the key and update the list of keys
             string key = keys[0];
             keys = keys.Skip(1).ToArray();
-            if (!dictionary.ContainsKey(key)) dictionary[key] = UpdateDictionary(new Dictionary<string, object?>(), keys, value);
+            if (!dictionary.ContainsKey(key))
+            {
+                dictionary[key] = UpdateDictionary(new Dictionary<string, object?>(), keys, value);
+            }
 
             object? subDirectory = dictionary[key];
             if (subDirectory is Dictionary<string, object?> subDictionary)
