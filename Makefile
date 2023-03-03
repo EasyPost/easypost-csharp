@@ -4,7 +4,7 @@ help:
 
 ## analyze - Run static analysis for the project
 analyze:
-	dotnet build EasyPost/EasyPost.csproj -c "Debug" -t:Rebuild -restore -p:EnableNETAnalyzers=true -p:EnforceCodeStyleInBuild=true -p:CodeAnalysisTreatWarningsAsErrors=true -p:RunAnalyzersDuringBuild=true -p:AnalysisLevel=latest -p:AnalysisMode=All
+	dotnet build EasyPost/EasyPost.csproj -c "Debug" -t:Rebuild -restore -p:EnableNETAnalyzers=true -p:EnforceCodeStyleInBuild=true -p:CodeAnalysisTreatWarningsAsErrors=true -p:RunAnalyzersDuringBuild=true -p:AnalysisLevel=latest -p:AnalysisMode=All -p:Verbosity=minimal
 
 ## build - Build the project in Debug mode
 build:
