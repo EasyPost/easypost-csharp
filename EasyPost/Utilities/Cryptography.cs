@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EasyPost.Utilities
 {
-    #pragma warning disable CA1724 // Naming conflicts with System.Security.Cryptography.Cryptography
+#pragma warning disable CA1724 // Naming conflicts with System.Security.Cryptography.Cryptography
     public static class Cryptography
     {
         private static readonly uint[] Lookup32 = CreateLookup32();
