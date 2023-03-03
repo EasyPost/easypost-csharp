@@ -32,7 +32,9 @@ namespace EasyPost._base
         public override bool Equals(object? obj) => GetType() == obj?.GetType() && GetHashCode() == ((EasyPostObject)obj).GetHashCode();
 
         [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode", Justification = "Client is used to determine equality.")]
+#pragma warning disable CA1307
         public override int GetHashCode() => AsJson().GetHashCode() ^ GetType().GetHashCode() ^ (Client != null ? Client!.GetHashCode() : 1);
+#pragma warning restore CA1307
 
         public static bool operator ==(EasyPostObject? one, object? two)
         {

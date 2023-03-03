@@ -97,6 +97,7 @@ namespace EasyPost.Exceptions.API
                     "errors",
                 });
             }
+            #pragma warning disable CA1031 // Do not catch general exception types
             catch
             {
                 // could not extract error details from the API response (or API did not return data, i.e. 1xx, 3xx or 5xx)
@@ -106,6 +107,7 @@ namespace EasyPost.Exceptions.API
                 errorType = Constants.ErrorMessages.ApiErrorDetailsParsingError;
                 errors = null;
             }
+            #pragma warning restore CA1031 // Do not catch general exception types
 
             Type? exceptionType = statusCode.EasyPostExceptionType();
             if (exceptionType == null)

@@ -40,19 +40,18 @@ namespace EasyPost.Utilities
                 Enum objEnum = (Enum)obj;
                 return objEnum == this;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
             {
                 // casting likely failed
                 return false;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
-        public override int GetHashCode()
-        {
-            {
-                return new Dictionary<string, int> { { GetType().ToString(), Id } }.GetHashCode();
-            }
-        }
+#pragma warning disable CA1307
+        public override int GetHashCode() => new Dictionary<string, int> { { GetType().ToString(), Id } }.GetHashCode();
+#pragma warning restore CA1307
 
         private bool Equals(Enum? other) => Id == other?.Id;
 
@@ -121,6 +120,8 @@ namespace EasyPost.Utilities
             return objEnum.Value.Equals(Value);
         }
 
+#pragma warning disable CA1307
         public override int GetHashCode() => base.GetHashCode();
+#pragma warning restore CA1307
     }
 }

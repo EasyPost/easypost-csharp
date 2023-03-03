@@ -243,7 +243,7 @@ namespace EasyPost.Utilities
         {
             EasyPost.Models.API.Smartrate? lowestSmartRate = null;
 
-            foreach (EasyPost.Models.API.Smartrate? smartRate in smartRates)
+            foreach (EasyPost.Models.API.Smartrate smartRate in smartRates)
             {
                 // smartRate will always have a time in transit, don't need to check for null
                 int? smartRateAccuracy = smartRate.TimeInTransit!.GetBySmartrateAccuracy(deliveryAccuracy);

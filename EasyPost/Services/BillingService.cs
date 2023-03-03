@@ -86,7 +86,9 @@ namespace EasyPost.Services
 
             @switch.MatchFirst(priority);
 
+            #pragma warning disable CA1508 // Avoid dead conditional code (false positive)
             return paymentMethod?.Id == null ? throw new InvalidObjectError(Constants.ErrorMessages.PaymentNotSetUp) : paymentMethod;
+            #pragma warning restore CA1508 // Avoid dead conditional code
         }
     }
 }

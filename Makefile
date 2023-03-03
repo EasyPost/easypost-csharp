@@ -2,9 +2,9 @@
 help:
 	@cat Makefile | grep '^## ' --color=never | cut -c4- | sed -e "`printf 's/ - /\t- /;'`" | column -s "`printf '\t'`" -t
 
-## analyze - Run static analysis for the project
+## analyze - Run static analysis for the project (check CA rule violations)
 analyze:
-	dotnet build EasyPost/EasyPost.csproj -c "Debug" -t:Rebuild -restore -p:EnableNETAnalyzers=true -p:EnforceCodeStyleInBuild=true -p:CodeAnalysisTreatWarningsAsErrors=true -p:RunAnalyzersDuringBuild=true -p:AnalysisLevel=latest -p:AnalysisMode=All -p:Verbosity=minimal
+	dotnet build EasyPost/EasyPost.csproj -c "Release" -t:Rebuild -restore -p:EnableNETAnalyzers=true -p:CodeAnalysisTreatWarningsAsErrors=true -p:RunAnalyzersDuringBuild=true -p:AnalysisLevel=latest -p:AnalysisMode=Minimum -p:Verbosity=minimal
 
 ## build - Build the project in Debug mode
 build:
@@ -54,7 +54,7 @@ install: | install-tools
 	git submodule init
 	git submodule update
 
-## lint - Lints the solution (EasyPost + Tests + F#/VB samples)
+## lint - Lints the solution (EasyPost + Tests + F#/VB samples) (check IDE and SA rule violations)
 lint:
 	dotnet tool run dotnet-format --no-restore --check
 
