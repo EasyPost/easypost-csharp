@@ -1,7 +1,7 @@
 using System;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API

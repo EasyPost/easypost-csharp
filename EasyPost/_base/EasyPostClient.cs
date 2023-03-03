@@ -9,7 +9,8 @@ using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.Shared;
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
+using EasyPost.Utilities.Internal.Extensions;
 using RestSharp;
 
 #pragma warning disable SA1300
@@ -108,11 +109,13 @@ namespace EasyPost._base
             // Deserialize the response into an object
             T resource = JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
 
+#pragma warning disable IDE0270 // Simplify null check
             if (resource is null)
             {
                 // Object deserialization failed
                 throw new JsonDeserializationError(typeof(T));
             }
+#pragma warning restore IDE0270
 
             PassClientToEasyPostObject(resource);
 

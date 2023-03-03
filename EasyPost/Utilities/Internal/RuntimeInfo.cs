@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace EasyPost.Utilities
+namespace EasyPost.Utilities.Internal
 {
     internal static class RuntimeInfo
     {

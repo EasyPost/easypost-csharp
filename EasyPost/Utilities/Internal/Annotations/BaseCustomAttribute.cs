@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace EasyPost.Utilities.Annotations
+namespace EasyPost.Utilities.Internal.Annotations
 {
     internal abstract class BaseCustomAttribute : Attribute, IBaseCustomAttribute
     {
@@ -52,6 +52,27 @@ namespace EasyPost.Utilities.Annotations
         internal static IEnumerable<MethodInfo> GetMethodsWithAttribute<T>(object obj)
             where T : Attribute
             => GetMethodsWithAttribute<T>(obj.GetType());
+
+        /// <summary>
+        ///     Get the attribute of the specified type for a property.
+        /// </summary>
+        /// <param name="property">Property to get attribute of.</param>
+        /// <typeparam name="T">Type of attribute to retrieve.</typeparam>
+        /// <returns>T-type attribute for the property.</returns>
+        public static T? GetAttribute<T>(PropertyInfo property)
+            where T : BaseCustomAttribute
+        {
+            try
+            {
+                return property.GetCustomAttribute<T>(true);
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception)
+            {
+                return default;
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
+        }
     }
 
     internal interface IBaseCustomAttribute

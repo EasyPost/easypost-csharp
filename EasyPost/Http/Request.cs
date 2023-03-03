@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using EasyPost._base;
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
 using RestSharp;
 using RestSharp.Serializers;
 

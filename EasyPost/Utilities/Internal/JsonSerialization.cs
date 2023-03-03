@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 
-namespace EasyPost.Utilities
+namespace EasyPost.Utilities.Internal
 {
     /// <summary>
     ///     JSON de/serialization utilities.

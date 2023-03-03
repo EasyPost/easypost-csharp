@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace EasyPost.Utilities
+namespace EasyPost.Utilities.Internal
 {
 #pragma warning disable SA1649
     public interface IEnum

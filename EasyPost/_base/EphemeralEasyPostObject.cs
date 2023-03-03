@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
 using Newtonsoft.Json;
 
 #pragma warning disable SA1300

@@ -1,6 +1,6 @@
 using System;
 
-namespace EasyPost.Utilities.Annotations
+namespace EasyPost.Utilities.Internal.Annotations
 {
     internal static class CrudOperations
     {

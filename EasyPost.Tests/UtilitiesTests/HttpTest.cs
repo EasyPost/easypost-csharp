@@ -1,6 +1,6 @@
 using System.Net;
 using EasyPost.Tests._Utilities.Annotations;
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal.Extensions;
 using RestSharp;
 using Xunit;
 
@@ -16,12 +16,12 @@ namespace EasyPost.Tests.UtilitiesTests
         {
             const HttpStatusCode statusCode = HttpStatusCode.OK;
 
-            Assert.True(Utilities.Http.StatusCodeBetween(statusCode, 200, 300));
-            Assert.False(Utilities.Http.StatusCodeIs1xx(statusCode));
-            Assert.True(Utilities.Http.StatusCodeIs2xx(statusCode));
-            Assert.False(Utilities.Http.StatusCodeIs3xx(statusCode));
-            Assert.False(Utilities.Http.StatusCodeIs4xx(statusCode));
-            Assert.False(Utilities.Http.StatusCodeIs5xx(statusCode));
+            Assert.True(Utilities.Internal.Extensions.Http.StatusCodeBetween(statusCode, 200, 300));
+            Assert.False(Utilities.Internal.Extensions.Http.StatusCodeIs1xx(statusCode));
+            Assert.True(Utilities.Internal.Extensions.Http.StatusCodeIs2xx(statusCode));
+            Assert.False(Utilities.Internal.Extensions.Http.StatusCodeIs3xx(statusCode));
+            Assert.False(Utilities.Internal.Extensions.Http.StatusCodeIs4xx(statusCode));
+            Assert.False(Utilities.Internal.Extensions.Http.StatusCodeIs5xx(statusCode));
 
             Assert.True(statusCode.IsBetween(200, 300));
             Assert.False(statusCode.Is1xx());
@@ -37,12 +37,12 @@ namespace EasyPost.Tests.UtilitiesTests
         {
             const int statusCode = 200;
 
-            Assert.True(Utilities.Http.StatusCodeBetween(statusCode, 200, 300));
-            Assert.False(Utilities.Http.StatusCodeIs1xx(statusCode));
-            Assert.True(Utilities.Http.StatusCodeIs2xx(statusCode));
-            Assert.False(Utilities.Http.StatusCodeIs3xx(statusCode));
-            Assert.False(Utilities.Http.StatusCodeIs4xx(statusCode));
-            Assert.False(Utilities.Http.StatusCodeIs5xx(statusCode));
+            Assert.True(Utilities.Internal.Extensions.Http.StatusCodeBetween(statusCode, 200, 300));
+            Assert.False(Utilities.Internal.Extensions.Http.StatusCodeIs1xx(statusCode));
+            Assert.True(Utilities.Internal.Extensions.Http.StatusCodeIs2xx(statusCode));
+            Assert.False(Utilities.Internal.Extensions.Http.StatusCodeIs3xx(statusCode));
+            Assert.False(Utilities.Internal.Extensions.Http.StatusCodeIs4xx(statusCode));
+            Assert.False(Utilities.Internal.Extensions.Http.StatusCodeIs5xx(statusCode));
         }
 
         [Fact]
@@ -51,7 +51,7 @@ namespace EasyPost.Tests.UtilitiesTests
         {
             RestResponse response = new() { StatusCode = HttpStatusCode.OK };
 
-            Assert.True(Utilities.Http.StatusCodeBetween(response, 200, 300));
+            Assert.True(Utilities.Internal.Extensions.Http.StatusCodeBetween(response, 200, 300));
             Assert.True(response.HasStatusCodeBetween(200, 300));
         }
 

@@ -29,6 +29,8 @@ namespace EasyPost._base
 
         internal string? Prefix => Id?.Split('_').First();
 
+        internal Dictionary<string, object> AsDictionary() => JsonConvert.DeserializeObject<Dictionary<string, object>>(AsJson())!;
+
         public override bool Equals(object? obj) => GetType() == obj?.GetType() && GetHashCode() == ((EasyPostObject)obj).GetHashCode();
 
         [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode", Justification = "Client is used to determine equality.")]

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Utilities.Annotations;
+using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
 {

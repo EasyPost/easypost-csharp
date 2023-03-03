@@ -511,6 +511,32 @@ indent_style = space
 indent_size = 4
 tab_width = 4
 
+### NOTE: Analyzers used by the dotnet CLI do not seem to respect the "hint" severity level. Please use "suggestion" instead.
+
+# General rules by category
+[*.{cs,vb}]
+### By default, all enabled rules are treated as errors (will break the build)
+### This does not include rules that are disabled by default
+dotnet_analyzer_diagnostic.severity = error
+### Override the severity of enabled rules by category
+### Docs: https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/categories
+### This is IDE rules (below)
+### Please keep this as "error" to ensure that the build breaks if the IDE rules are violated
+dotnet_analyzer_diagnostic.category-Style.severity = error
+### These are CA rules (below)
+dotnet_analyzer_diagnostic.category-CodeQuality.severity = error
+dotnet_analyzer_diagnostic.category-Design.severity = error
+dotnet_analyzer_diagnostic.category-Documentation.severity = error
+dotnet_analyzer_diagnostic.category-Globalization.severity = error
+dotnet_analyzer_diagnostic.category-Interoperability.severity = error
+dotnet_analyzer_diagnostic.category-Maintainability.severity = error
+dotnet_analyzer_diagnostic.category-Naming.severity = error
+dotnet_analyzer_diagnostic.category-Performance.severity = error
+dotnet_analyzer_diagnostic.category-Reliability.severity = error
+dotnet_analyzer_diagnostic.category-Security.severity = error
+dotnet_analyzer_diagnostic.category-SingleFile.severity = error
+dotnet_analyzer_diagnostic.category-Usage.severity = error
+
 # Custom general styling (IDE) rules
 [*.{cs,vb}]
 ### Naming rules (mostly complains about missing "Test" prefix on non-test methods)
@@ -529,11 +555,14 @@ dotnet_diagnostic.IDE0022.severity = suggestion
 dotnet_diagnostic.IDE0061.severity = suggestion
 ### Use expression body for properties
 dotnet_diagnostic.IDE0025.severity = suggestion
+### Simplify null check
+### https://github.com/dotnet/roslyn/issues/65769#issuecomment-1337237203
+dotnet_diagnostic.IDE0270.severity = suggestion
 
 # Custom StyleCop (SA) rules
 [*.{cs,vb}]
 ### Elements should be documented
-dotnet_diagnostic.SA1600.severity = none
+dotnet_diagnostic.SA1600.severity = suggestion
 ### Elements should be separated by blank line
 dotnet_diagnostic.SA1516.severity = none
 ### Do not use regions
@@ -548,20 +577,21 @@ dotnet_diagnostic.SA1202.severity = none
 dotnet_diagnostic.SA1204.severity = none
 dotnet_diagnostic.SA1202.severity = none
 ### Prefix local calls with "this"
-dotnet_diagnostic.SA1101.severity = none
+dotnet_diagnostic.SA1101.severity = suggestion
 ### File may only contain a single type
-dotnet_diagnostic.SA1402.severity = none
+dotnet_diagnostic.SA1402.severity = suggestion
 ### Field should be private
-dotnet_diagnostic.SA1401.severity = none
+dotnet_diagnostic.SA1401.severity = suggestion
 ### Private fields should not start with underscore
 dotnet_diagnostic.SA1309.severity = none
 ### Single line comments should begin with single space
 dotnet_diagnostic.SA1515.severity = none
+### Use "gets" for properties docstrings
+dotnet_diagnostic.SA1623.severity = none
 
 # Custom quality (CA) rules
 [*.{cs,vb}]
-### Because of how Roslyn analyzers work, each rule must be "none" ("suggestion", "hint", etc. will still be considered a violation during static analysis)
-dotnet_analyzer_diagnostic.severity = warning
+### NOTE: Because of how Roslyn analyzers work, each rule in this section must be "none" to be disabled ("suggestion", "hint", etc. will still be considered a violation during static analysis)
 ### Identifier rules should have proper suffixes (complaining about Exception types not ending in "Exception")
 ### TODO: We should change our "Error" suffix to "Exception" and enable this rule
 dotnet_diagnostic.CA1710.severity = none
@@ -571,7 +601,7 @@ dotnet_diagnostic.CA1711.severity = none
 ### Do not use reserved words in namespaces
 dotnet_diagnostic.CA1716.severity = none
 ### Don't use generic Exception
-dotnet_diagnostic.CA2201.severity = warning
+dotnet_diagnostic.CA2201.severity = error
 ### Do not declare visible instance fields
 dotnet_diagnostic.CA1051.severity = none
 ### Identifiers should not contain underscores

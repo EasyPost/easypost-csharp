@@ -1,6 +1,6 @@
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities.Annotations;
-using EasyPost.Utilities;
+using EasyPost.Utilities.Internal;
 using Xunit;
 
 namespace EasyPost.Tests.UtilitiesTests
