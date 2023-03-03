@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -35,7 +34,6 @@ namespace EasyPost._base
         /// </param>
         protected EasyPostClient(string apiKey, string? baseUrl = null, HttpClient? customHttpClient = null)
         {
-            ServicePointManager.SecurityProtocol |= Security.GetProtocol();
             Configuration = new ClientConfiguration(apiKey, baseUrl, customHttpClient);
 
             RestClientOptions clientOptions = new()
@@ -236,7 +234,9 @@ namespace EasyPost._base
 
         public override bool Equals(object? obj) => obj is EasyPostClient client && Configuration.Equals(client.Configuration);
 
+#pragma warning disable CA1307
         public override int GetHashCode() => Configuration.GetHashCode();
+#pragma warning restore CA1307
 
         /// <summary>
         ///     Make a copy of this client, with the ability to override API key, API base, and HttpClient.

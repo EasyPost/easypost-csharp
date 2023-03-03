@@ -23,10 +23,12 @@ namespace EasyPost.Utilities
                         FileVersionInfo info = FileVersionInfo.GetVersionInfo(assembly.Location);
                         return info.FileVersion ?? "Unknown";
                     }
+#pragma warning disable CA1031 // Do not catch general exception types
                     catch (Exception)
                     {
                         return "Unknown";
                     }
+#pragma warning disable CA1031 // Do not catch general exception types
                 }
             }
 

@@ -24,7 +24,7 @@ jobs:
         run: make lint
 
   Roslyn_Static_Analysis:
-    runs-on: windows-2019  # Known issue running on windows-2022: https://github.com/dotnet/code-analysis/issues/16
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
 
@@ -36,18 +36,9 @@ jobs:
       - name: Restore NuGet Packages
         run: make restore
 
-      - name: Run Roslyn analyzers
-        uses: dotnet/code-analysis@main
-        id: code-analysis
-        with:
-          build-breaking: false
-          all-categories: latest-recommended
-
-      - name: Upload analysis results
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: ${{ env.ANALYSIS_RESULTS_SARIF_FILE }}
-          category: Roslyn
+      # This Make step is configured to treat all warnings as errors, so it will fail if any warnings are found
+      - name: Run static analysis
+        run: make analyze
 
   Security_Code_Scan:
     runs-on: windows-latest

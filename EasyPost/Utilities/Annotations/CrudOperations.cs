@@ -5,22 +5,22 @@ namespace EasyPost.Utilities.Annotations
     internal static class CrudOperations
     {
         [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-        internal class Create : BaseCustomAttribute
+        internal sealed class Create : BaseCustomAttribute
         {
         }
 
         [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-        internal class Read : BaseCustomAttribute
+        internal sealed class Read : BaseCustomAttribute
         {
         }
 
         [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-        internal class Update : BaseCustomAttribute
+        internal sealed class Update : BaseCustomAttribute
         {
         }
 
         [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-        internal class Delete : BaseCustomAttribute
+        internal sealed class Delete : BaseCustomAttribute
         {
         }
     }

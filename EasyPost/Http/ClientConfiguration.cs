@@ -130,6 +130,8 @@ namespace EasyPost.Http
         public override bool Equals(object? obj) => obj is ClientConfiguration other && ApiKey == other.ApiKey && ApiBase == other.ApiBase;
 
         // ReSharper disable once NonReadonlyMemberInGetHashCode
+#pragma warning disable CA1307
         public override int GetHashCode() => ApiKey.GetHashCode() ^ ApiBase.GetHashCode() ^ (HttpClient?.GetHashCode() ?? 1);
+#pragma warning restore CA1307
     }
 }

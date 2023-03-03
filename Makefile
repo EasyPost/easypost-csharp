@@ -2,19 +2,23 @@
 help:
 	@cat Makefile | grep '^## ' --color=never | cut -c4- | sed -e "`printf 's/ - /\t- /;'`" | column -s "`printf '\t'`" -t
 
+## analyze - Run static analysis for the project (check CA rule violations)
+analyze:
+	dotnet build EasyPost/EasyPost.csproj -c "Release" -t:Rebuild -restore -p:EnableNETAnalyzers=true -p:CodeAnalysisTreatWarningsAsErrors=true -p:RunAnalyzersDuringBuild=true -p:AnalysisLevel=latest -p:AnalysisMode=Minimum
+
 ## build - Build the project in Debug mode
 build:
-	dotnet msbuild -property:Configuration="Debug" -target:Rebuild -restore
+	dotnet build EasyPost/EasyPost.csproj -c "Debug" -t:Rebuild -restore -p:EnableNETAnalyzers=false
 
-## build-test-fw - Build the project for unit testing in Debug mode for a specific framework
+## build-fw - Build the project in Debug mode for a specific framework
 # @parameters:
 # fw= - The framework to build for.
-build-test-fw:
-	dotnet msbuild EasyPost.Tests/EasyPost.Tests.csproj -property:Configuration="Debug" -target:Rebuild -restore -property:TargetFramework=${fw}
+build-fw:
+	dotnet build EasyPost/EasyPost.csproj -c "Debug" -t:Rebuild -restore -f ${fw} -p:EnableNETAnalyzers=false
 
 ## build-prod - Build the project in Release mode
 build-prod:
-	dotnet msbuild -property:Configuration="Release" -target:Rebuild -restore
+	dotnet build EasyPost/EasyPost.csproj -c "Release" -t:Rebuild -restore -p:EnableNETAnalyzers=false
 
 ## clean - Clean the project
 clean:
@@ -36,7 +40,7 @@ docs:
 
 ## format - Formats the project
 format:
-	dotnet dotnet-format --no-restore
+	dotnet tool run dotnet-format --no-restore
 
 ## install-tools - Install required dotnet tools
 install-tools:
@@ -50,9 +54,9 @@ install: | install-tools
 	git submodule init
 	git submodule update
 
-## lint - Lints the project
+## lint - Lints the solution (EasyPost + Tests + F#/VB samples) (check IDE and SA rule violations)
 lint:
-	dotnet dotnet-format --no-restore --check
+	dotnet tool run dotnet-format --no-restore --check
 
 ## lint-scripts - Lint and validate the Batch scripts (Windows only)
 lint-scripts:
@@ -82,8 +86,7 @@ release:
 restore:
 	dotnet restore
 
-## scan - Scan the project for security issues (must run install-scanner first)
-# Makefile cannot access global dotnet tools, so you need to run the below command manually.
+## scan - Scan the solution (EasyPost + Tests + F#/VB samples) for security issues (must run install-scanner first)
 scan:
 	dotnet tool run security-scan --verbose --no-banner --ignore-msbuild-errors EasyPost.sln
     # "--ignore-msbuild-errors" needed since MSBuild does not like F#: https://github.com/security-code-scan/security-code-scan/issues/235
@@ -111,4 +114,4 @@ test-fw:
 uninstall-scanner:
 	dotnet tool uninstall security-scan
 
-.PHONY: help build build-test-fw build-prod clean coverage coverage-check docs format install-tools install lint lint-scripts pre-release publish-all publish release restore scan setup-win setup-unix test test-fw uninstall-scanner
+.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-tools install lint lint-scripts pre-release publish-all publish release restore scan setup-win setup-unix test test-fw uninstall-scanner

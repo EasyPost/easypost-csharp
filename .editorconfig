@@ -511,15 +511,16 @@ indent_style = space
 indent_size = 4
 tab_width = 4
 
-
-# Custom rules
+# Custom general styling (IDE) rules
 [*.{cs,vb}]
-dotnet_analyzer_diagnostic.severity = warning
 ### Naming rules (mostly complains about missing "Test" prefix on non-test methods)
 dotnet_diagnostic.IDE1006.severity = none
-### Identifier rules should have proper suffixes (complaining about Exception types not ending in "Exception")
-### TODO: We should change our "Error" suffix to "Exception" and enable this rule
-dotnet_diagnostic.CA1710.severity = none
+### Always capture return value of function
+dotnet_diagnostic.IDE0058.severity = none
+### Use conditional expression for return
+dotnet_diagnostic.IDE0046.severity = suggestion
+### Use curly braces for if/else statements (see csharp_prefer_braces - requires braces for multi-line statements, optional for single-line)
+dotnet_diagnostic.IDE0011.severity = suggestion
 ### Use expression body for constructors
 dotnet_diagnostic.IDE0021.severity = suggestion
 ### Use expression body for methods
@@ -528,23 +529,9 @@ dotnet_diagnostic.IDE0022.severity = suggestion
 dotnet_diagnostic.IDE0061.severity = suggestion
 ### Use expression body for properties
 dotnet_diagnostic.IDE0025.severity = suggestion
-### Do not use incorrect suffix
-### TODO: We should probably enable this one in the future, encroaching on reserved words: https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1711
-dotnet_diagnostic.CA1711.severity = none
-### Do not use reserved words in namespaces
-dotnet_diagnostic.CA1716.severity = none
-### Always capture return value of function
-dotnet_diagnostic.IDE0058.severity = none
-### Use conditional expression for return
-dotnet_diagnostic.IDE0046.severity = suggestion
-### Use curly braces for if/else statements (see csharp_prefer_braces - requires braces for multi-line statements, optional for single-line)
-dotnet_diagnostic.IDE0011.severity = warning
-### Don't use generic Exception
-dotnet_diagnostic.CA2201.severity = warning
-### Do not declare visible instance fields
-dotnet_diagnostic.CA1051.severity = none
-### Identifiers should not contain underscores
-dotnet_diagnostic.CA1707.severity = none
+
+# Custom StyleCop (SA) rules
+[*.{cs,vb}]
 ### Elements should be documented
 dotnet_diagnostic.SA1600.severity = none
 ### Elements should be separated by blank line
@@ -568,3 +555,55 @@ dotnet_diagnostic.SA1402.severity = none
 dotnet_diagnostic.SA1401.severity = none
 ### Private fields should not start with underscore
 dotnet_diagnostic.SA1309.severity = none
+### Single line comments should begin with single space
+dotnet_diagnostic.SA1515.severity = none
+
+# Custom quality (CA) rules
+[*.{cs,vb}]
+### Because of how Roslyn analyzers work, each rule must be "none" ("suggestion", "hint", etc. will still be considered a violation during static analysis)
+dotnet_analyzer_diagnostic.severity = warning
+### Identifier rules should have proper suffixes (complaining about Exception types not ending in "Exception")
+### TODO: We should change our "Error" suffix to "Exception" and enable this rule
+dotnet_diagnostic.CA1710.severity = none
+### Do not use incorrect suffix
+### TODO: We should probably enable this one in the future, encroaching on reserved words: https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1711
+dotnet_diagnostic.CA1711.severity = none
+### Do not use reserved words in namespaces
+dotnet_diagnostic.CA1716.severity = none
+### Don't use generic Exception
+dotnet_diagnostic.CA2201.severity = warning
+### Do not declare visible instance fields
+dotnet_diagnostic.CA1051.severity = none
+### Identifiers should not contain underscores
+dotnet_diagnostic.CA1707.severity = none
+### Missing constructor
+dotnet_diagnostic.CA1032.severity = none
+### Make readonly by removing setter
+dotnet_diagnostic.CA2227.severity = none
+### Use collection instead of list
+dotnet_diagnostic.CA1002.severity = none
+### URI parameters should not be strings
+dotnet_diagnostic.CA1054.severity = none
+### URI properties should not be strings
+dotnet_diagnostic.CA1056.severity = none
+### Specify StringComparison for clarity
+dotnet_diagnostic.CA1307.severity = none
+### Do not nest types
+dotnet_diagnostic.CA1034.severity = none
+### Property names should not match get methods
+dotnet_diagnostic.CA1721.severity = none
+### Avoid empty interfaces
+dotnet_diagnostic.CA1040.severity = none
+### Normalize strings to uppercase
+dotnet_diagnostic.CA1308.severity = none
+### Code Contract precondition asserting non-null argument
+dotnet_diagnostic.CA1062.severity = none
+### Use ConfigureAwait(false) in library code
+### TODO: Investigate if we should enable this rule and fix all violations
+dotnet_diagnostic.CA2007.severity = none
+### Conflicting namespace
+dotnet_diagnostic.CA1724.severity = none
+### Avoid hardcoding TLS protocol version
+dotnet_diagnostic.CA5386.severity = none
+### Mark assemblies with CLSCompliant
+dotnet_diagnostic.CA1014.severity = none

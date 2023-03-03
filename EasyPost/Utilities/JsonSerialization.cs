@@ -71,10 +71,12 @@ namespace EasyPost.Utilities
                 object? obj = JsonConvert.DeserializeObject(data, type, jsonSerializerSettings ?? DefaultJsonSerializerSettings);
                 return (obj ?? default)!;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
             {
                 throw new JsonDeserializationError(type);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -118,10 +120,12 @@ namespace EasyPost.Utilities
             {
                 return JsonConvert.SerializeObject(data, jsonSerializerSettings ?? DefaultJsonSerializerSettings);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
             {
                 throw new JsonSerializationError(data.GetType());
             }
+#pragma warning disable CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -140,13 +144,17 @@ namespace EasyPost.Utilities
             object? json = JsonConvert.DeserializeObject(data);
             try
             {
+#pragma warning disable CA1307
                 rootElementKeys.ForEach(key => { json = (json as JObject)?.Property(key)?.Value; });
                 return (json as JToken)?.ToString();
+#pragma warning restore CA1307
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
             {
                 return null;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
         }
     }
 }

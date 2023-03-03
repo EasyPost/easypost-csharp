@@ -7,7 +7,7 @@ namespace EasyPost.Utilities
 {
     // Thanks to https://stackoverflow.com/a/34388226/13343799
 #pragma warning disable SA1649
-    internal class SwitchCaseScenario : Enum
+    internal sealed class SwitchCaseScenario : Enum
 #pragma warning restore SA1649
     {
         internal static readonly SwitchCaseScenario Default = new(1);
@@ -60,7 +60,7 @@ namespace EasyPost.Utilities
     /// <summary>
     ///     A custom switch-case implementation that can handle non-constants and custom enums.
     /// </summary>
-    internal class SwitchCase : IEnumerable<ICase>
+    internal sealed class SwitchCase : IEnumerable<ICase>
     {
         private readonly List<ICase> _list = new();
 
