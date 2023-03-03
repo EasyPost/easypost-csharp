@@ -31,6 +31,12 @@ references:
   commentId: F:EasyPost._base.ApiVersion.Current
   fullName: EasyPost._base.ApiVersion.Current
   nameWithType: ApiVersion.Current
+- uid: EasyPost._base.ApiVersion.V2
+  name: V2
+  href: api/EasyPost._base.ApiVersion.html#EasyPost__base_ApiVersion_V2
+  commentId: F:EasyPost._base.ApiVersion.V2
+  fullName: EasyPost._base.ApiVersion.V2
+  nameWithType: ApiVersion.V2
 - uid: EasyPost._base.EasyPostClient
   name: EasyPostClient
   href: api/EasyPost._base.EasyPostClient.html
@@ -544,6 +550,450 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaClient.Referral
   nameWithType: BetaClient.Referral
+- uid: EasyPost.BetaFeatures.Parameters
+  name: EasyPost.BetaFeatures.Parameters
+  href: api/EasyPost.BetaFeatures.Parameters.html
+  commentId: N:EasyPost.BetaFeatures.Parameters
+  fullName: EasyPost.BetaFeatures.Parameters
+  nameWithType: EasyPost.BetaFeatures.Parameters
+- uid: EasyPost.BetaFeatures.Parameters.Addresses
+  name: EasyPost.BetaFeatures.Parameters.Addresses
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.html
+  commentId: N:EasyPost.BetaFeatures.Parameters.Addresses
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses
+  nameWithType: EasyPost.BetaFeatures.Parameters.Addresses
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create
+  name: Create
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.Addresses.Create
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create
+  nameWithType: Create
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.CarrierFacility
+  name: CarrierFacility
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_CarrierFacility
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.CarrierFacility
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.CarrierFacility
+  nameWithType: Create.CarrierFacility
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.CarrierFacility*
+  name: CarrierFacility
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_CarrierFacility_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.CarrierFacility
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.CarrierFacility
+  nameWithType: Create.CarrierFacility
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.City
+  name: City
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_City
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.City
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.City
+  nameWithType: Create.City
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.City*
+  name: City
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_City_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.City
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.City
+  nameWithType: Create.City
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Company
+  name: Company
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Company
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.Company
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Company
+  nameWithType: Create.Company
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Company*
+  name: Company
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Company_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.Company
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Company
+  nameWithType: Create.Company
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Country
+  name: Country
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Country
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.Country
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Country
+  nameWithType: Create.Country
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Country*
+  name: Country
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Country_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.Country
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Country
+  nameWithType: Create.Country
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Email
+  name: Email
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Email
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.Email
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Email
+  nameWithType: Create.Email
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Email*
+  name: Email
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Email_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.Email
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Email
+  nameWithType: Create.Email
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.FederalTaxId
+  name: FederalTaxId
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_FederalTaxId
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.FederalTaxId
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.FederalTaxId
+  nameWithType: Create.FederalTaxId
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.FederalTaxId*
+  name: FederalTaxId
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_FederalTaxId_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.FederalTaxId
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.FederalTaxId
+  nameWithType: Create.FederalTaxId
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Name
+  name: Name
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Name
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.Name
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Name
+  nameWithType: Create.Name
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Name*
+  name: Name
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Name_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.Name
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Name
+  nameWithType: Create.Name
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Phone
+  name: Phone
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Phone
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.Phone
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Phone
+  nameWithType: Create.Phone
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Phone*
+  name: Phone
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Phone_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.Phone
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Phone
+  nameWithType: Create.Phone
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Residential
+  name: Residential
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Residential
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.Residential
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Residential
+  nameWithType: Create.Residential
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Residential*
+  name: Residential
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Residential_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.Residential
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Residential
+  nameWithType: Create.Residential
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.State
+  name: State
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_State
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.State
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.State
+  nameWithType: Create.State
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.State*
+  name: State
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_State_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.State
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.State
+  nameWithType: Create.State
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.StateTaxId
+  name: StateTaxId
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_StateTaxId
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.StateTaxId
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.StateTaxId
+  nameWithType: Create.StateTaxId
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.StateTaxId*
+  name: StateTaxId
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_StateTaxId_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.StateTaxId
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.StateTaxId
+  nameWithType: Create.StateTaxId
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Street1
+  name: Street1
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Street1
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.Street1
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Street1
+  nameWithType: Create.Street1
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Street1*
+  name: Street1
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Street1_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.Street1
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Street1
+  nameWithType: Create.Street1
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Street2
+  name: Street2
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Street2
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.Street2
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Street2
+  nameWithType: Create.Street2
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Street2*
+  name: Street2
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Street2_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.Street2
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Street2
+  nameWithType: Create.Street2
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Verify
+  name: Verify
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Verify
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.Verify
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Verify
+  nameWithType: Create.Verify
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Verify*
+  name: Verify
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Verify_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.Verify
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Verify
+  nameWithType: Create.Verify
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.VerifyStrict
+  name: VerifyStrict
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_VerifyStrict
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.VerifyStrict
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.VerifyStrict
+  nameWithType: Create.VerifyStrict
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.VerifyStrict*
+  name: VerifyStrict
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_VerifyStrict_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.VerifyStrict
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.VerifyStrict
+  nameWithType: Create.VerifyStrict
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Zip
+  name: Zip
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Zip
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.Zip
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Zip
+  nameWithType: Create.Zip
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Zip*
+  name: Zip
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Zip_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.Zip
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Zip
+  nameWithType: Create.Zip
+- uid: EasyPost.BetaFeatures.Parameters.BaseParameters
+  name: BaseParameters
+  href: api/EasyPost.BetaFeatures.Parameters.BaseParameters.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.BaseParameters
+  fullName: EasyPost.BetaFeatures.Parameters.BaseParameters
+  nameWithType: BaseParameters
+- uid: EasyPost.BetaFeatures.Parameters.BaseParameters.#ctor
+  name: BaseParameters()
+  href: api/EasyPost.BetaFeatures.Parameters.BaseParameters.html#EasyPost_BetaFeatures_Parameters_BaseParameters__ctor
+  commentId: M:EasyPost.BetaFeatures.Parameters.BaseParameters.#ctor
+  fullName: EasyPost.BetaFeatures.Parameters.BaseParameters.BaseParameters()
+  nameWithType: BaseParameters.BaseParameters()
+- uid: EasyPost.BetaFeatures.Parameters.BaseParameters.#ctor*
+  name: BaseParameters
+  href: api/EasyPost.BetaFeatures.Parameters.BaseParameters.html#EasyPost_BetaFeatures_Parameters_BaseParameters__ctor_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.BaseParameters.#ctor
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.BaseParameters.BaseParameters
+  nameWithType: BaseParameters.BaseParameters
+- uid: EasyPost.BetaFeatures.Parameters.BaseParameters.ToDictionary
+  name: ToDictionary()
+  href: api/EasyPost.BetaFeatures.Parameters.BaseParameters.html#EasyPost_BetaFeatures_Parameters_BaseParameters_ToDictionary
+  commentId: M:EasyPost.BetaFeatures.Parameters.BaseParameters.ToDictionary
+  fullName: EasyPost.BetaFeatures.Parameters.BaseParameters.ToDictionary()
+  nameWithType: BaseParameters.ToDictionary()
+- uid: EasyPost.BetaFeatures.Parameters.BaseParameters.ToDictionary*
+  name: ToDictionary
+  href: api/EasyPost.BetaFeatures.Parameters.BaseParameters.html#EasyPost_BetaFeatures_Parameters_BaseParameters_ToDictionary_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.BaseParameters.ToDictionary
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.BaseParameters.ToDictionary
+  nameWithType: BaseParameters.ToDictionary
+- uid: EasyPost.BetaFeatures.Parameters.BaseParameters.ToSubDictionary(Type)
+  name: ToSubDictionary(Type)
+  href: api/EasyPost.BetaFeatures.Parameters.BaseParameters.html#EasyPost_BetaFeatures_Parameters_BaseParameters_ToSubDictionary_Type_
+  commentId: M:EasyPost.BetaFeatures.Parameters.BaseParameters.ToSubDictionary(Type)
+  fullName: EasyPost.BetaFeatures.Parameters.BaseParameters.ToSubDictionary(Type)
+  nameWithType: BaseParameters.ToSubDictionary(Type)
+- uid: EasyPost.BetaFeatures.Parameters.BaseParameters.ToSubDictionary*
+  name: ToSubDictionary
+  href: api/EasyPost.BetaFeatures.Parameters.BaseParameters.html#EasyPost_BetaFeatures_Parameters_BaseParameters_ToSubDictionary_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.BaseParameters.ToSubDictionary
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.BaseParameters.ToSubDictionary
+  nameWithType: BaseParameters.ToSubDictionary
+- uid: EasyPost.BetaFeatures.Parameters.IAddressParameter
+  name: IAddressParameter
+  href: api/EasyPost.BetaFeatures.Parameters.IAddressParameter.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.IAddressParameter
+  fullName: EasyPost.BetaFeatures.Parameters.IAddressParameter
+  nameWithType: IAddressParameter
+- uid: EasyPost.BetaFeatures.Parameters.IParameter
+  name: IParameter
+  href: api/EasyPost.BetaFeatures.Parameters.IParameter.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.IParameter
+  fullName: EasyPost.BetaFeatures.Parameters.IParameter
+  nameWithType: IParameter
+- uid: EasyPost.BetaFeatures.Parameters.IShipmentParameter
+  name: IShipmentParameter
+  href: api/EasyPost.BetaFeatures.Parameters.IShipmentParameter.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.IShipmentParameter
+  fullName: EasyPost.BetaFeatures.Parameters.IShipmentParameter
+  nameWithType: IShipmentParameter
+- uid: EasyPost.BetaFeatures.Parameters.Shipments
+  name: EasyPost.BetaFeatures.Parameters.Shipments
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.html
+  commentId: N:EasyPost.BetaFeatures.Parameters.Shipments
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments
+  nameWithType: EasyPost.BetaFeatures.Parameters.Shipments
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create
+  name: Create
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.Shipments.Create
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create
+  nameWithType: Create
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarbonOffset
+  name: CarbonOffset
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_CarbonOffset
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.CarbonOffset
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarbonOffset
+  nameWithType: Create.CarbonOffset
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarbonOffset*
+  name: CarbonOffset
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_CarbonOffset_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.CarbonOffset
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarbonOffset
+  nameWithType: Create.CarbonOffset
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts
+  name: CarrierAccounts
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_CarrierAccounts
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts
+  nameWithType: Create.CarrierAccounts
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts*
+  name: CarrierAccounts
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_CarrierAccounts_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts
+  nameWithType: Create.CarrierAccounts
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.CustomsInfo
+  name: CustomsInfo
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_CustomsInfo
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.CustomsInfo
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.CustomsInfo
+  nameWithType: Create.CustomsInfo
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.CustomsInfo*
+  name: CustomsInfo
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_CustomsInfo_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.CustomsInfo
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.CustomsInfo
+  nameWithType: Create.CustomsInfo
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.FromAddress
+  name: FromAddress
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_FromAddress
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.FromAddress
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.FromAddress
+  nameWithType: Create.FromAddress
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.FromAddress*
+  name: FromAddress
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_FromAddress_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.FromAddress
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.FromAddress
+  nameWithType: Create.FromAddress
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.Insurance
+  name: Insurance
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_Insurance
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.Insurance
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.Insurance
+  nameWithType: Create.Insurance
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.Insurance*
+  name: Insurance
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_Insurance_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.Insurance
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.Insurance
+  nameWithType: Create.Insurance
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.IsReturn
+  name: IsReturn
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_IsReturn
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.IsReturn
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.IsReturn
+  nameWithType: Create.IsReturn
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.IsReturn*
+  name: IsReturn
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_IsReturn_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.IsReturn
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.IsReturn
+  nameWithType: Create.IsReturn
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.Options
+  name: Options
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_Options
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.Options
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.Options
+  nameWithType: Create.Options
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.Options*
+  name: Options
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_Options_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.Options
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.Options
+  nameWithType: Create.Options
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.Parcel
+  name: Parcel
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_Parcel
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.Parcel
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.Parcel
+  nameWithType: Create.Parcel
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.Parcel*
+  name: Parcel
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_Parcel_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.Parcel
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.Parcel
+  nameWithType: Create.Parcel
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.Reference
+  name: Reference
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_Reference
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.Reference
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.Reference
+  nameWithType: Create.Reference
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.Reference*
+  name: Reference
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_Reference_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.Reference
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.Reference
+  nameWithType: Create.Reference
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.TaxIdentifiers
+  name: TaxIdentifiers
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_TaxIdentifiers
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.TaxIdentifiers
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.TaxIdentifiers
+  nameWithType: Create.TaxIdentifiers
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.TaxIdentifiers*
+  name: TaxIdentifiers
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_TaxIdentifiers_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.TaxIdentifiers
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.TaxIdentifiers
+  nameWithType: Create.TaxIdentifiers
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.ToAddress
+  name: ToAddress
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_ToAddress
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.ToAddress
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.ToAddress
+  nameWithType: Create.ToAddress
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.ToAddress*
+  name: ToAddress
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_ToAddress_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.ToAddress
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.ToAddress
+  nameWithType: Create.ToAddress
 - uid: EasyPost.Calculation
   name: EasyPost.Calculation
   href: api/EasyPost.Calculation.html
@@ -1418,12 +1868,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds
   nameWithType: ClientConfiguration.RequestTimeoutMilliseconds
-- uid: EasyPost.Http.Parameters
-  name: Parameters
-  href: api/EasyPost.Http.Parameters.html
-  commentId: T:EasyPost.Http.Parameters
-  fullName: EasyPost.Http.Parameters
-  nameWithType: Parameters
 - uid: EasyPost.Models.API
   name: EasyPost.Models.API
   href: api/EasyPost.Models.API.html
@@ -9463,183 +9907,367 @@ references:
   isSpec: "True"
   fullName: EasyPost.Utilities.Cryptography.SignaturesMatch
   nameWithType: Cryptography.SignaturesMatch
-- uid: EasyPost.Utilities.Enum
+- uid: EasyPost.Utilities.Internal
+  name: EasyPost.Utilities.Internal
+  href: api/EasyPost.Utilities.Internal.html
+  commentId: N:EasyPost.Utilities.Internal
+  fullName: EasyPost.Utilities.Internal
+  nameWithType: EasyPost.Utilities.Internal
+- uid: EasyPost.Utilities.Internal.Enum
   name: Enum
-  href: api/EasyPost.Utilities.Enum.html
-  commentId: T:EasyPost.Utilities.Enum
-  fullName: EasyPost.Utilities.Enum
+  href: api/EasyPost.Utilities.Internal.Enum.html
+  commentId: T:EasyPost.Utilities.Internal.Enum
+  fullName: EasyPost.Utilities.Internal.Enum
   nameWithType: Enum
-- uid: EasyPost.Utilities.Enum.#ctor(System.Int32)
+- uid: EasyPost.Utilities.Internal.Enum.#ctor(System.Int32)
   name: Enum(Int32)
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum__ctor_System_Int32_
-  commentId: M:EasyPost.Utilities.Enum.#ctor(System.Int32)
-  fullName: EasyPost.Utilities.Enum.Enum(System.Int32)
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum__ctor_System_Int32_
+  commentId: M:EasyPost.Utilities.Internal.Enum.#ctor(System.Int32)
+  fullName: EasyPost.Utilities.Internal.Enum.Enum(System.Int32)
   nameWithType: Enum.Enum(Int32)
-- uid: EasyPost.Utilities.Enum.#ctor*
+- uid: EasyPost.Utilities.Internal.Enum.#ctor*
   name: Enum
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum__ctor_
-  commentId: Overload:EasyPost.Utilities.Enum.#ctor
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum__ctor_
+  commentId: Overload:EasyPost.Utilities.Internal.Enum.#ctor
   isSpec: "True"
-  fullName: EasyPost.Utilities.Enum.Enum
+  fullName: EasyPost.Utilities.Internal.Enum.Enum
   nameWithType: Enum.Enum
-- uid: EasyPost.Utilities.Enum.CompareTo(System.Nullable{System.Object})
+- uid: EasyPost.Utilities.Internal.Enum.CompareTo(System.Nullable{System.Object})
   name: CompareTo(Nullable<Object>)
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_CompareTo_System_Nullable_System_Object__
-  commentId: M:EasyPost.Utilities.Enum.CompareTo(System.Nullable{System.Object})
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_CompareTo_System_Nullable_System_Object__
+  commentId: M:EasyPost.Utilities.Internal.Enum.CompareTo(System.Nullable{System.Object})
   name.vb: CompareTo(Nullable(Of Object))
-  fullName: EasyPost.Utilities.Enum.CompareTo(System.Nullable<System.Object>)
-  fullName.vb: EasyPost.Utilities.Enum.CompareTo(System.Nullable(Of System.Object))
+  fullName: EasyPost.Utilities.Internal.Enum.CompareTo(System.Nullable<System.Object>)
+  fullName.vb: EasyPost.Utilities.Internal.Enum.CompareTo(System.Nullable(Of System.Object))
   nameWithType: Enum.CompareTo(Nullable<Object>)
   nameWithType.vb: Enum.CompareTo(Nullable(Of Object))
-- uid: EasyPost.Utilities.Enum.CompareTo*
+- uid: EasyPost.Utilities.Internal.Enum.CompareTo*
   name: CompareTo
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_CompareTo_
-  commentId: Overload:EasyPost.Utilities.Enum.CompareTo
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_CompareTo_
+  commentId: Overload:EasyPost.Utilities.Internal.Enum.CompareTo
   isSpec: "True"
-  fullName: EasyPost.Utilities.Enum.CompareTo
+  fullName: EasyPost.Utilities.Internal.Enum.CompareTo
   nameWithType: Enum.CompareTo
-- uid: EasyPost.Utilities.Enum.Equals(System.Nullable{System.Object})
+- uid: EasyPost.Utilities.Internal.Enum.Equals(System.Nullable{System.Object})
   name: Equals(Nullable<Object>)
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_Equals_System_Nullable_System_Object__
-  commentId: M:EasyPost.Utilities.Enum.Equals(System.Nullable{System.Object})
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_Equals_System_Nullable_System_Object__
+  commentId: M:EasyPost.Utilities.Internal.Enum.Equals(System.Nullable{System.Object})
   name.vb: Equals(Nullable(Of Object))
-  fullName: EasyPost.Utilities.Enum.Equals(System.Nullable<System.Object>)
-  fullName.vb: EasyPost.Utilities.Enum.Equals(System.Nullable(Of System.Object))
+  fullName: EasyPost.Utilities.Internal.Enum.Equals(System.Nullable<System.Object>)
+  fullName.vb: EasyPost.Utilities.Internal.Enum.Equals(System.Nullable(Of System.Object))
   nameWithType: Enum.Equals(Nullable<Object>)
   nameWithType.vb: Enum.Equals(Nullable(Of Object))
-- uid: EasyPost.Utilities.Enum.Equals*
+- uid: EasyPost.Utilities.Internal.Enum.Equals*
   name: Equals
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_Equals_
-  commentId: Overload:EasyPost.Utilities.Enum.Equals
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_Equals_
+  commentId: Overload:EasyPost.Utilities.Internal.Enum.Equals
   isSpec: "True"
-  fullName: EasyPost.Utilities.Enum.Equals
+  fullName: EasyPost.Utilities.Internal.Enum.Equals
   nameWithType: Enum.Equals
-- uid: EasyPost.Utilities.Enum.GetAll*
+- uid: EasyPost.Utilities.Internal.Enum.GetAll*
   name: GetAll
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_GetAll_
-  commentId: Overload:EasyPost.Utilities.Enum.GetAll
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_GetAll_
+  commentId: Overload:EasyPost.Utilities.Internal.Enum.GetAll
   isSpec: "True"
-  fullName: EasyPost.Utilities.Enum.GetAll
+  fullName: EasyPost.Utilities.Internal.Enum.GetAll
   nameWithType: Enum.GetAll
-- uid: EasyPost.Utilities.Enum.GetAll``1
+- uid: EasyPost.Utilities.Internal.Enum.GetAll``1
   name: GetAll<T>()
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_GetAll__1
-  commentId: M:EasyPost.Utilities.Enum.GetAll``1
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_GetAll__1
+  commentId: M:EasyPost.Utilities.Internal.Enum.GetAll``1
   name.vb: GetAll(Of T)()
-  fullName: EasyPost.Utilities.Enum.GetAll<T>()
-  fullName.vb: EasyPost.Utilities.Enum.GetAll(Of T)()
+  fullName: EasyPost.Utilities.Internal.Enum.GetAll<T>()
+  fullName.vb: EasyPost.Utilities.Internal.Enum.GetAll(Of T)()
   nameWithType: Enum.GetAll<T>()
   nameWithType.vb: Enum.GetAll(Of T)()
-- uid: EasyPost.Utilities.Enum.GetHashCode
+- uid: EasyPost.Utilities.Internal.Enum.GetHashCode
   name: GetHashCode()
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_GetHashCode
-  commentId: M:EasyPost.Utilities.Enum.GetHashCode
-  fullName: EasyPost.Utilities.Enum.GetHashCode()
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_GetHashCode
+  commentId: M:EasyPost.Utilities.Internal.Enum.GetHashCode
+  fullName: EasyPost.Utilities.Internal.Enum.GetHashCode()
   nameWithType: Enum.GetHashCode()
-- uid: EasyPost.Utilities.Enum.GetHashCode*
+- uid: EasyPost.Utilities.Internal.Enum.GetHashCode*
   name: GetHashCode
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_GetHashCode_
-  commentId: Overload:EasyPost.Utilities.Enum.GetHashCode
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_GetHashCode_
+  commentId: Overload:EasyPost.Utilities.Internal.Enum.GetHashCode
   isSpec: "True"
-  fullName: EasyPost.Utilities.Enum.GetHashCode
+  fullName: EasyPost.Utilities.Internal.Enum.GetHashCode
   nameWithType: Enum.GetHashCode
-- uid: EasyPost.Utilities.Enum.op_Equality(EasyPost.Utilities.Enum,EasyPost.Utilities.Enum)
+- uid: EasyPost.Utilities.Internal.Enum.op_Equality(EasyPost.Utilities.Internal.Enum,EasyPost.Utilities.Internal.Enum)
   name: Equality(Enum, Enum)
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_op_Equality_EasyPost_Utilities_Enum_EasyPost_Utilities_Enum_
-  commentId: M:EasyPost.Utilities.Enum.op_Equality(EasyPost.Utilities.Enum,EasyPost.Utilities.Enum)
-  fullName: EasyPost.Utilities.Enum.Equality(EasyPost.Utilities.Enum, EasyPost.Utilities.Enum)
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_op_Equality_EasyPost_Utilities_Internal_Enum_EasyPost_Utilities_Internal_Enum_
+  commentId: M:EasyPost.Utilities.Internal.Enum.op_Equality(EasyPost.Utilities.Internal.Enum,EasyPost.Utilities.Internal.Enum)
+  fullName: EasyPost.Utilities.Internal.Enum.Equality(EasyPost.Utilities.Internal.Enum, EasyPost.Utilities.Internal.Enum)
   nameWithType: Enum.Equality(Enum, Enum)
-- uid: EasyPost.Utilities.Enum.op_Equality*
+- uid: EasyPost.Utilities.Internal.Enum.op_Equality*
   name: Equality
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_op_Equality_
-  commentId: Overload:EasyPost.Utilities.Enum.op_Equality
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_op_Equality_
+  commentId: Overload:EasyPost.Utilities.Internal.Enum.op_Equality
   isSpec: "True"
-  fullName: EasyPost.Utilities.Enum.Equality
+  fullName: EasyPost.Utilities.Internal.Enum.Equality
   nameWithType: Enum.Equality
-- uid: EasyPost.Utilities.Enum.op_GreaterThan(EasyPost.Utilities.Enum,EasyPost.Utilities.Enum)
+- uid: EasyPost.Utilities.Internal.Enum.op_GreaterThan(EasyPost.Utilities.Internal.Enum,EasyPost.Utilities.Internal.Enum)
   name: GreaterThan(Enum, Enum)
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_op_GreaterThan_EasyPost_Utilities_Enum_EasyPost_Utilities_Enum_
-  commentId: M:EasyPost.Utilities.Enum.op_GreaterThan(EasyPost.Utilities.Enum,EasyPost.Utilities.Enum)
-  fullName: EasyPost.Utilities.Enum.GreaterThan(EasyPost.Utilities.Enum, EasyPost.Utilities.Enum)
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_op_GreaterThan_EasyPost_Utilities_Internal_Enum_EasyPost_Utilities_Internal_Enum_
+  commentId: M:EasyPost.Utilities.Internal.Enum.op_GreaterThan(EasyPost.Utilities.Internal.Enum,EasyPost.Utilities.Internal.Enum)
+  fullName: EasyPost.Utilities.Internal.Enum.GreaterThan(EasyPost.Utilities.Internal.Enum, EasyPost.Utilities.Internal.Enum)
   nameWithType: Enum.GreaterThan(Enum, Enum)
-- uid: EasyPost.Utilities.Enum.op_GreaterThan*
+- uid: EasyPost.Utilities.Internal.Enum.op_GreaterThan*
   name: GreaterThan
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_op_GreaterThan_
-  commentId: Overload:EasyPost.Utilities.Enum.op_GreaterThan
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_op_GreaterThan_
+  commentId: Overload:EasyPost.Utilities.Internal.Enum.op_GreaterThan
   isSpec: "True"
-  fullName: EasyPost.Utilities.Enum.GreaterThan
+  fullName: EasyPost.Utilities.Internal.Enum.GreaterThan
   nameWithType: Enum.GreaterThan
-- uid: EasyPost.Utilities.Enum.op_GreaterThanOrEqual(EasyPost.Utilities.Enum,EasyPost.Utilities.Enum)
+- uid: EasyPost.Utilities.Internal.Enum.op_GreaterThanOrEqual(EasyPost.Utilities.Internal.Enum,EasyPost.Utilities.Internal.Enum)
   name: GreaterThanOrEqual(Enum, Enum)
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_op_GreaterThanOrEqual_EasyPost_Utilities_Enum_EasyPost_Utilities_Enum_
-  commentId: M:EasyPost.Utilities.Enum.op_GreaterThanOrEqual(EasyPost.Utilities.Enum,EasyPost.Utilities.Enum)
-  fullName: EasyPost.Utilities.Enum.GreaterThanOrEqual(EasyPost.Utilities.Enum, EasyPost.Utilities.Enum)
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_op_GreaterThanOrEqual_EasyPost_Utilities_Internal_Enum_EasyPost_Utilities_Internal_Enum_
+  commentId: M:EasyPost.Utilities.Internal.Enum.op_GreaterThanOrEqual(EasyPost.Utilities.Internal.Enum,EasyPost.Utilities.Internal.Enum)
+  fullName: EasyPost.Utilities.Internal.Enum.GreaterThanOrEqual(EasyPost.Utilities.Internal.Enum, EasyPost.Utilities.Internal.Enum)
   nameWithType: Enum.GreaterThanOrEqual(Enum, Enum)
-- uid: EasyPost.Utilities.Enum.op_GreaterThanOrEqual*
+- uid: EasyPost.Utilities.Internal.Enum.op_GreaterThanOrEqual*
   name: GreaterThanOrEqual
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_op_GreaterThanOrEqual_
-  commentId: Overload:EasyPost.Utilities.Enum.op_GreaterThanOrEqual
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_op_GreaterThanOrEqual_
+  commentId: Overload:EasyPost.Utilities.Internal.Enum.op_GreaterThanOrEqual
   isSpec: "True"
-  fullName: EasyPost.Utilities.Enum.GreaterThanOrEqual
+  fullName: EasyPost.Utilities.Internal.Enum.GreaterThanOrEqual
   nameWithType: Enum.GreaterThanOrEqual
-- uid: EasyPost.Utilities.Enum.op_Inequality(EasyPost.Utilities.Enum,EasyPost.Utilities.Enum)
+- uid: EasyPost.Utilities.Internal.Enum.op_Inequality(EasyPost.Utilities.Internal.Enum,EasyPost.Utilities.Internal.Enum)
   name: Inequality(Enum, Enum)
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_op_Inequality_EasyPost_Utilities_Enum_EasyPost_Utilities_Enum_
-  commentId: M:EasyPost.Utilities.Enum.op_Inequality(EasyPost.Utilities.Enum,EasyPost.Utilities.Enum)
-  fullName: EasyPost.Utilities.Enum.Inequality(EasyPost.Utilities.Enum, EasyPost.Utilities.Enum)
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_op_Inequality_EasyPost_Utilities_Internal_Enum_EasyPost_Utilities_Internal_Enum_
+  commentId: M:EasyPost.Utilities.Internal.Enum.op_Inequality(EasyPost.Utilities.Internal.Enum,EasyPost.Utilities.Internal.Enum)
+  fullName: EasyPost.Utilities.Internal.Enum.Inequality(EasyPost.Utilities.Internal.Enum, EasyPost.Utilities.Internal.Enum)
   nameWithType: Enum.Inequality(Enum, Enum)
-- uid: EasyPost.Utilities.Enum.op_Inequality*
+- uid: EasyPost.Utilities.Internal.Enum.op_Inequality*
   name: Inequality
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_op_Inequality_
-  commentId: Overload:EasyPost.Utilities.Enum.op_Inequality
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_op_Inequality_
+  commentId: Overload:EasyPost.Utilities.Internal.Enum.op_Inequality
   isSpec: "True"
-  fullName: EasyPost.Utilities.Enum.Inequality
+  fullName: EasyPost.Utilities.Internal.Enum.Inequality
   nameWithType: Enum.Inequality
-- uid: EasyPost.Utilities.Enum.op_LessThan(EasyPost.Utilities.Enum,EasyPost.Utilities.Enum)
+- uid: EasyPost.Utilities.Internal.Enum.op_LessThan(EasyPost.Utilities.Internal.Enum,EasyPost.Utilities.Internal.Enum)
   name: LessThan(Enum, Enum)
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_op_LessThan_EasyPost_Utilities_Enum_EasyPost_Utilities_Enum_
-  commentId: M:EasyPost.Utilities.Enum.op_LessThan(EasyPost.Utilities.Enum,EasyPost.Utilities.Enum)
-  fullName: EasyPost.Utilities.Enum.LessThan(EasyPost.Utilities.Enum, EasyPost.Utilities.Enum)
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_op_LessThan_EasyPost_Utilities_Internal_Enum_EasyPost_Utilities_Internal_Enum_
+  commentId: M:EasyPost.Utilities.Internal.Enum.op_LessThan(EasyPost.Utilities.Internal.Enum,EasyPost.Utilities.Internal.Enum)
+  fullName: EasyPost.Utilities.Internal.Enum.LessThan(EasyPost.Utilities.Internal.Enum, EasyPost.Utilities.Internal.Enum)
   nameWithType: Enum.LessThan(Enum, Enum)
-- uid: EasyPost.Utilities.Enum.op_LessThan*
+- uid: EasyPost.Utilities.Internal.Enum.op_LessThan*
   name: LessThan
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_op_LessThan_
-  commentId: Overload:EasyPost.Utilities.Enum.op_LessThan
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_op_LessThan_
+  commentId: Overload:EasyPost.Utilities.Internal.Enum.op_LessThan
   isSpec: "True"
-  fullName: EasyPost.Utilities.Enum.LessThan
+  fullName: EasyPost.Utilities.Internal.Enum.LessThan
   nameWithType: Enum.LessThan
-- uid: EasyPost.Utilities.Enum.op_LessThanOrEqual(EasyPost.Utilities.Enum,EasyPost.Utilities.Enum)
+- uid: EasyPost.Utilities.Internal.Enum.op_LessThanOrEqual(EasyPost.Utilities.Internal.Enum,EasyPost.Utilities.Internal.Enum)
   name: LessThanOrEqual(Enum, Enum)
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_op_LessThanOrEqual_EasyPost_Utilities_Enum_EasyPost_Utilities_Enum_
-  commentId: M:EasyPost.Utilities.Enum.op_LessThanOrEqual(EasyPost.Utilities.Enum,EasyPost.Utilities.Enum)
-  fullName: EasyPost.Utilities.Enum.LessThanOrEqual(EasyPost.Utilities.Enum, EasyPost.Utilities.Enum)
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_op_LessThanOrEqual_EasyPost_Utilities_Internal_Enum_EasyPost_Utilities_Internal_Enum_
+  commentId: M:EasyPost.Utilities.Internal.Enum.op_LessThanOrEqual(EasyPost.Utilities.Internal.Enum,EasyPost.Utilities.Internal.Enum)
+  fullName: EasyPost.Utilities.Internal.Enum.LessThanOrEqual(EasyPost.Utilities.Internal.Enum, EasyPost.Utilities.Internal.Enum)
   nameWithType: Enum.LessThanOrEqual(Enum, Enum)
-- uid: EasyPost.Utilities.Enum.op_LessThanOrEqual*
+- uid: EasyPost.Utilities.Internal.Enum.op_LessThanOrEqual*
   name: LessThanOrEqual
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_op_LessThanOrEqual_
-  commentId: Overload:EasyPost.Utilities.Enum.op_LessThanOrEqual
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_op_LessThanOrEqual_
+  commentId: Overload:EasyPost.Utilities.Internal.Enum.op_LessThanOrEqual
   isSpec: "True"
-  fullName: EasyPost.Utilities.Enum.LessThanOrEqual
+  fullName: EasyPost.Utilities.Internal.Enum.LessThanOrEqual
   nameWithType: Enum.LessThanOrEqual
-- uid: EasyPost.Utilities.Enum.ToString
+- uid: EasyPost.Utilities.Internal.Enum.ToString
   name: ToString()
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_ToString
-  commentId: M:EasyPost.Utilities.Enum.ToString
-  fullName: EasyPost.Utilities.Enum.ToString()
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_ToString
+  commentId: M:EasyPost.Utilities.Internal.Enum.ToString
+  fullName: EasyPost.Utilities.Internal.Enum.ToString()
   nameWithType: Enum.ToString()
-- uid: EasyPost.Utilities.Enum.ToString*
+- uid: EasyPost.Utilities.Internal.Enum.ToString*
   name: ToString
-  href: api/EasyPost.Utilities.Enum.html#EasyPost_Utilities_Enum_ToString_
-  commentId: Overload:EasyPost.Utilities.Enum.ToString
+  href: api/EasyPost.Utilities.Internal.Enum.html#EasyPost_Utilities_Internal_Enum_ToString_
+  commentId: Overload:EasyPost.Utilities.Internal.Enum.ToString
   isSpec: "True"
-  fullName: EasyPost.Utilities.Enum.ToString
+  fullName: EasyPost.Utilities.Internal.Enum.ToString
   nameWithType: Enum.ToString
-- uid: EasyPost.Utilities.IEnum
+- uid: EasyPost.Utilities.Internal.Extensions
+  name: EasyPost.Utilities.Internal.Extensions
+  href: api/EasyPost.Utilities.Internal.Extensions.html
+  commentId: N:EasyPost.Utilities.Internal.Extensions
+  fullName: EasyPost.Utilities.Internal.Extensions
+  nameWithType: EasyPost.Utilities.Internal.Extensions
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries
+  name: Dictionaries
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html
+  commentId: T:EasyPost.Utilities.Internal.Extensions.Dictionaries
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries
+  nameWithType: Dictionaries
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary(Dictionary{System.String,System.Nullable{System.Object}})
+  name: ConvertToStringNonNullableObjectDictionary(Dictionary<String, Nullable<Object>>)
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_ConvertToStringNonNullableObjectDictionary_Dictionary_System_String_System_Nullable_System_Object___
+  commentId: M:EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary(Dictionary{System.String,System.Nullable{System.Object}})
+  name.vb: ConvertToStringNonNullableObjectDictionary(Dictionary(Of String, Nullable(Of Object)))
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary(Dictionary<System.String, System.Nullable<System.Object>>)
+  fullName.vb: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary(Dictionary(Of System.String, System.Nullable(Of System.Object)))
+  nameWithType: Dictionaries.ConvertToStringNonNullableObjectDictionary(Dictionary<String, Nullable<Object>>)
+  nameWithType.vb: Dictionaries.ConvertToStringNonNullableObjectDictionary(Dictionary(Of String, Nullable(Of Object)))
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary*
+  name: ConvertToStringNonNullableObjectDictionary
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_ConvertToStringNonNullableObjectDictionary_
+  commentId: Overload:EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary
+  nameWithType: Dictionaries.ConvertToStringNonNullableObjectDictionary
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary(Dictionary{System.String,System.Object})
+  name: ConvertToStringNullableObjectDictionary(Dictionary<String, Object>)
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_ConvertToStringNullableObjectDictionary_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary(Dictionary{System.String,System.Object})
+  name.vb: ConvertToStringNullableObjectDictionary(Dictionary(Of String, Object))
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary(Dictionary(Of System.String, System.Object))
+  nameWithType: Dictionaries.ConvertToStringNullableObjectDictionary(Dictionary<String, Object>)
+  nameWithType.vb: Dictionaries.ConvertToStringNullableObjectDictionary(Dictionary(Of String, Object))
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary*
+  name: ConvertToStringNullableObjectDictionary
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_ConvertToStringNullableObjectDictionary_
+  commentId: Overload:EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary
+  nameWithType: Dictionaries.ConvertToStringNullableObjectDictionary
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNonNullableObjectDictionary(Dictionary{System.String,System.Nullable{System.Object}})
+  name: ToStringNonNullableObjectDictionary(Dictionary<String, Nullable<Object>>)
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_ToStringNonNullableObjectDictionary_Dictionary_System_String_System_Nullable_System_Object___
+  commentId: M:EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNonNullableObjectDictionary(Dictionary{System.String,System.Nullable{System.Object}})
+  name.vb: ToStringNonNullableObjectDictionary(Dictionary(Of String, Nullable(Of Object)))
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNonNullableObjectDictionary(Dictionary<System.String, System.Nullable<System.Object>>)
+  fullName.vb: EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNonNullableObjectDictionary(Dictionary(Of System.String, System.Nullable(Of System.Object)))
+  nameWithType: Dictionaries.ToStringNonNullableObjectDictionary(Dictionary<String, Nullable<Object>>)
+  nameWithType.vb: Dictionaries.ToStringNonNullableObjectDictionary(Dictionary(Of String, Nullable(Of Object)))
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNonNullableObjectDictionary*
+  name: ToStringNonNullableObjectDictionary
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_ToStringNonNullableObjectDictionary_
+  commentId: Overload:EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNonNullableObjectDictionary
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNonNullableObjectDictionary
+  nameWithType: Dictionaries.ToStringNonNullableObjectDictionary
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNullableObjectDictionary(Dictionary{System.String,System.Object})
+  name: ToStringNullableObjectDictionary(Dictionary<String, Object>)
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_ToStringNullableObjectDictionary_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNullableObjectDictionary(Dictionary{System.String,System.Object})
+  name.vb: ToStringNullableObjectDictionary(Dictionary(Of String, Object))
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNullableObjectDictionary(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNullableObjectDictionary(Dictionary(Of System.String, System.Object))
+  nameWithType: Dictionaries.ToStringNullableObjectDictionary(Dictionary<String, Object>)
+  nameWithType.vb: Dictionaries.ToStringNullableObjectDictionary(Dictionary(Of String, Object))
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNullableObjectDictionary*
+  name: ToStringNullableObjectDictionary
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_ToStringNullableObjectDictionary_
+  commentId: Overload:EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNullableObjectDictionary
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNullableObjectDictionary
+  nameWithType: Dictionaries.ToStringNullableObjectDictionary
+- uid: EasyPost.Utilities.Internal.Extensions.Enumerables
+  name: Enumerables
+  href: api/EasyPost.Utilities.Internal.Extensions.Enumerables.html
+  commentId: T:EasyPost.Utilities.Internal.Extensions.Enumerables
+  fullName: EasyPost.Utilities.Internal.Extensions.Enumerables
+  nameWithType: Enumerables
+- uid: EasyPost.Utilities.Internal.Extensions.Enumerables.Each*
+  name: Each
+  href: api/EasyPost.Utilities.Internal.Extensions.Enumerables.html#EasyPost_Utilities_Internal_Extensions_Enumerables_Each_
+  commentId: Overload:EasyPost.Utilities.Internal.Extensions.Enumerables.Each
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.Extensions.Enumerables.Each
+  nameWithType: Enumerables.Each
+- uid: EasyPost.Utilities.Internal.Extensions.Enumerables.Each``1(IEnumerable{``0},Action{System.Int32,``0})
+  name: Each<T>(IEnumerable<T>, Action<Int32, T>)
+  href: api/EasyPost.Utilities.Internal.Extensions.Enumerables.html#EasyPost_Utilities_Internal_Extensions_Enumerables_Each__1_IEnumerable___0__Action_System_Int32___0__
+  commentId: M:EasyPost.Utilities.Internal.Extensions.Enumerables.Each``1(IEnumerable{``0},Action{System.Int32,``0})
+  name.vb: Each(Of T)(IEnumerable(Of T), Action(Of Int32, T))
+  fullName: EasyPost.Utilities.Internal.Extensions.Enumerables.Each<T>(IEnumerable<T>, Action<System.Int32, T>)
+  fullName.vb: EasyPost.Utilities.Internal.Extensions.Enumerables.Each(Of T)(IEnumerable(Of T), Action(Of System.Int32, T))
+  nameWithType: Enumerables.Each<T>(IEnumerable<T>, Action<Int32, T>)
+  nameWithType.vb: Enumerables.Each(Of T)(IEnumerable(Of T), Action(Of Int32, T))
+- uid: EasyPost.Utilities.Internal.IEnum
   name: IEnum
-  href: api/EasyPost.Utilities.IEnum.html
-  commentId: T:EasyPost.Utilities.IEnum
-  fullName: EasyPost.Utilities.IEnum
+  href: api/EasyPost.Utilities.Internal.IEnum.html
+  commentId: T:EasyPost.Utilities.Internal.IEnum
+  fullName: EasyPost.Utilities.Internal.IEnum
   nameWithType: IEnum
+- uid: EasyPost.Utilities.Internal.Objects
+  name: Objects
+  href: api/EasyPost.Utilities.Internal.Objects.html
+  commentId: T:EasyPost.Utilities.Internal.Objects
+  fullName: EasyPost.Utilities.Internal.Objects
+  nameWithType: Objects
+- uid: EasyPost.Utilities.Internal.Objects.IsPropertySet(System.Object,System.String)
+  name: IsPropertySet(Object, String)
+  href: api/EasyPost.Utilities.Internal.Objects.html#EasyPost_Utilities_Internal_Objects_IsPropertySet_System_Object_System_String_
+  commentId: M:EasyPost.Utilities.Internal.Objects.IsPropertySet(System.Object,System.String)
+  fullName: EasyPost.Utilities.Internal.Objects.IsPropertySet(System.Object, System.String)
+  nameWithType: Objects.IsPropertySet(Object, String)
+- uid: EasyPost.Utilities.Internal.Objects.IsPropertySet*
+  name: IsPropertySet
+  href: api/EasyPost.Utilities.Internal.Objects.html#EasyPost_Utilities_Internal_Objects_IsPropertySet_
+  commentId: Overload:EasyPost.Utilities.Internal.Objects.IsPropertySet
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.Objects.IsPropertySet
+  nameWithType: Objects.IsPropertySet
+- uid: EasyPost.Utilities.Internal.ValueEnum
+  name: ValueEnum
+  href: api/EasyPost.Utilities.Internal.ValueEnum.html
+  commentId: T:EasyPost.Utilities.Internal.ValueEnum
+  fullName: EasyPost.Utilities.Internal.ValueEnum
+  nameWithType: ValueEnum
+- uid: EasyPost.Utilities.Internal.ValueEnum.#ctor(System.Int32,System.Object)
+  name: ValueEnum(Int32, Object)
+  href: api/EasyPost.Utilities.Internal.ValueEnum.html#EasyPost_Utilities_Internal_ValueEnum__ctor_System_Int32_System_Object_
+  commentId: M:EasyPost.Utilities.Internal.ValueEnum.#ctor(System.Int32,System.Object)
+  fullName: EasyPost.Utilities.Internal.ValueEnum.ValueEnum(System.Int32, System.Object)
+  nameWithType: ValueEnum.ValueEnum(Int32, Object)
+- uid: EasyPost.Utilities.Internal.ValueEnum.#ctor*
+  name: ValueEnum
+  href: api/EasyPost.Utilities.Internal.ValueEnum.html#EasyPost_Utilities_Internal_ValueEnum__ctor_
+  commentId: Overload:EasyPost.Utilities.Internal.ValueEnum.#ctor
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.ValueEnum.ValueEnum
+  nameWithType: ValueEnum.ValueEnum
+- uid: EasyPost.Utilities.Internal.ValueEnum.Equals(System.Nullable{System.Object})
+  name: Equals(Nullable<Object>)
+  href: api/EasyPost.Utilities.Internal.ValueEnum.html#EasyPost_Utilities_Internal_ValueEnum_Equals_System_Nullable_System_Object__
+  commentId: M:EasyPost.Utilities.Internal.ValueEnum.Equals(System.Nullable{System.Object})
+  name.vb: Equals(Nullable(Of Object))
+  fullName: EasyPost.Utilities.Internal.ValueEnum.Equals(System.Nullable<System.Object>)
+  fullName.vb: EasyPost.Utilities.Internal.ValueEnum.Equals(System.Nullable(Of System.Object))
+  nameWithType: ValueEnum.Equals(Nullable<Object>)
+  nameWithType.vb: ValueEnum.Equals(Nullable(Of Object))
+- uid: EasyPost.Utilities.Internal.ValueEnum.Equals*
+  name: Equals
+  href: api/EasyPost.Utilities.Internal.ValueEnum.html#EasyPost_Utilities_Internal_ValueEnum_Equals_
+  commentId: Overload:EasyPost.Utilities.Internal.ValueEnum.Equals
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.ValueEnum.Equals
+  nameWithType: ValueEnum.Equals
+- uid: EasyPost.Utilities.Internal.ValueEnum.GetHashCode
+  name: GetHashCode()
+  href: api/EasyPost.Utilities.Internal.ValueEnum.html#EasyPost_Utilities_Internal_ValueEnum_GetHashCode
+  commentId: M:EasyPost.Utilities.Internal.ValueEnum.GetHashCode
+  fullName: EasyPost.Utilities.Internal.ValueEnum.GetHashCode()
+  nameWithType: ValueEnum.GetHashCode()
+- uid: EasyPost.Utilities.Internal.ValueEnum.GetHashCode*
+  name: GetHashCode
+  href: api/EasyPost.Utilities.Internal.ValueEnum.html#EasyPost_Utilities_Internal_ValueEnum_GetHashCode_
+  commentId: Overload:EasyPost.Utilities.Internal.ValueEnum.GetHashCode
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.ValueEnum.GetHashCode
+  nameWithType: ValueEnum.GetHashCode
+- uid: EasyPost.Utilities.Internal.ValueEnum.ToString
+  name: ToString()
+  href: api/EasyPost.Utilities.Internal.ValueEnum.html#EasyPost_Utilities_Internal_ValueEnum_ToString
+  commentId: M:EasyPost.Utilities.Internal.ValueEnum.ToString
+  fullName: EasyPost.Utilities.Internal.ValueEnum.ToString()
+  nameWithType: ValueEnum.ToString()
+- uid: EasyPost.Utilities.Internal.ValueEnum.ToString*
+  name: ToString
+  href: api/EasyPost.Utilities.Internal.ValueEnum.html#EasyPost_Utilities_Internal_ValueEnum_ToString_
+  commentId: Overload:EasyPost.Utilities.Internal.ValueEnum.ToString
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.ValueEnum.ToString
+  nameWithType: ValueEnum.ToString
 - uid: EasyPost.Utilities.Rates
   name: Rates
   href: api/EasyPost.Utilities.Rates.html
@@ -9728,64 +10356,3 @@ references:
   isSpec: "True"
   fullName: EasyPost.Utilities.Rates.GetLowestStatelessRate
   nameWithType: Rates.GetLowestStatelessRate
-- uid: EasyPost.Utilities.ValueEnum
-  name: ValueEnum
-  href: api/EasyPost.Utilities.ValueEnum.html
-  commentId: T:EasyPost.Utilities.ValueEnum
-  fullName: EasyPost.Utilities.ValueEnum
-  nameWithType: ValueEnum
-- uid: EasyPost.Utilities.ValueEnum.#ctor(System.Int32,System.Object)
-  name: ValueEnum(Int32, Object)
-  href: api/EasyPost.Utilities.ValueEnum.html#EasyPost_Utilities_ValueEnum__ctor_System_Int32_System_Object_
-  commentId: M:EasyPost.Utilities.ValueEnum.#ctor(System.Int32,System.Object)
-  fullName: EasyPost.Utilities.ValueEnum.ValueEnum(System.Int32, System.Object)
-  nameWithType: ValueEnum.ValueEnum(Int32, Object)
-- uid: EasyPost.Utilities.ValueEnum.#ctor*
-  name: ValueEnum
-  href: api/EasyPost.Utilities.ValueEnum.html#EasyPost_Utilities_ValueEnum__ctor_
-  commentId: Overload:EasyPost.Utilities.ValueEnum.#ctor
-  isSpec: "True"
-  fullName: EasyPost.Utilities.ValueEnum.ValueEnum
-  nameWithType: ValueEnum.ValueEnum
-- uid: EasyPost.Utilities.ValueEnum.Equals(System.Nullable{System.Object})
-  name: Equals(Nullable<Object>)
-  href: api/EasyPost.Utilities.ValueEnum.html#EasyPost_Utilities_ValueEnum_Equals_System_Nullable_System_Object__
-  commentId: M:EasyPost.Utilities.ValueEnum.Equals(System.Nullable{System.Object})
-  name.vb: Equals(Nullable(Of Object))
-  fullName: EasyPost.Utilities.ValueEnum.Equals(System.Nullable<System.Object>)
-  fullName.vb: EasyPost.Utilities.ValueEnum.Equals(System.Nullable(Of System.Object))
-  nameWithType: ValueEnum.Equals(Nullable<Object>)
-  nameWithType.vb: ValueEnum.Equals(Nullable(Of Object))
-- uid: EasyPost.Utilities.ValueEnum.Equals*
-  name: Equals
-  href: api/EasyPost.Utilities.ValueEnum.html#EasyPost_Utilities_ValueEnum_Equals_
-  commentId: Overload:EasyPost.Utilities.ValueEnum.Equals
-  isSpec: "True"
-  fullName: EasyPost.Utilities.ValueEnum.Equals
-  nameWithType: ValueEnum.Equals
-- uid: EasyPost.Utilities.ValueEnum.GetHashCode
-  name: GetHashCode()
-  href: api/EasyPost.Utilities.ValueEnum.html#EasyPost_Utilities_ValueEnum_GetHashCode
-  commentId: M:EasyPost.Utilities.ValueEnum.GetHashCode
-  fullName: EasyPost.Utilities.ValueEnum.GetHashCode()
-  nameWithType: ValueEnum.GetHashCode()
-- uid: EasyPost.Utilities.ValueEnum.GetHashCode*
-  name: GetHashCode
-  href: api/EasyPost.Utilities.ValueEnum.html#EasyPost_Utilities_ValueEnum_GetHashCode_
-  commentId: Overload:EasyPost.Utilities.ValueEnum.GetHashCode
-  isSpec: "True"
-  fullName: EasyPost.Utilities.ValueEnum.GetHashCode
-  nameWithType: ValueEnum.GetHashCode
-- uid: EasyPost.Utilities.ValueEnum.ToString
-  name: ToString()
-  href: api/EasyPost.Utilities.ValueEnum.html#EasyPost_Utilities_ValueEnum_ToString
-  commentId: M:EasyPost.Utilities.ValueEnum.ToString
-  fullName: EasyPost.Utilities.ValueEnum.ToString()
-  nameWithType: ValueEnum.ToString()
-- uid: EasyPost.Utilities.ValueEnum.ToString*
-  name: ToString
-  href: api/EasyPost.Utilities.ValueEnum.html#EasyPost_Utilities_ValueEnum_ToString_
-  commentId: Overload:EasyPost.Utilities.ValueEnum.ToString
-  isSpec: "True"
-  fullName: EasyPost.Utilities.ValueEnum.ToString
-  nameWithType: ValueEnum.ToString
