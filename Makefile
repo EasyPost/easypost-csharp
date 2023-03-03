@@ -4,7 +4,7 @@ help:
 
 ## analyze - Run static analysis for the project (check CA rule violations)
 analyze:
-	dotnet build EasyPost/EasyPost.csproj -c "Release" -t:Rebuild -restore -p:EnableNETAnalyzers=true -p:CodeAnalysisTreatWarningsAsErrors=true -p:RunAnalyzersDuringBuild=true -p:AnalysisLevel=latest -p:AnalysisMode=Minimum -p:Verbosity=minimal
+	dotnet build EasyPost/EasyPost.csproj -c "Release" -t:Rebuild -restore -p:EnableNETAnalyzers=true -p:CodeAnalysisTreatWarningsAsErrors=true -p:RunAnalyzersDuringBuild=true -p:AnalysisLevel=latest -p:AnalysisMode=Minimum
 
 ## build - Build the project in Debug mode
 build:
