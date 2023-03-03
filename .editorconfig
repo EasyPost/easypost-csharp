@@ -514,6 +514,7 @@ tab_width = 4
 
 # Custom rules
 [*.{cs,vb}]
+### Because of how Roslyn analyzers work, each rule must be "none" ("suggestion", "hint", etc. will still be considered a violation during static analysis)
 dotnet_analyzer_diagnostic.severity = warning
 ### Naming rules (mostly complains about missing "Test" prefix on non-test methods)
 dotnet_diagnostic.IDE1006.severity = none
@@ -575,7 +576,7 @@ dotnet_diagnostic.CA1032.severity = none
 ### Make readonly by removing setter
 dotnet_diagnostic.CA2227.severity = suggestion
 ### Use collection instead of list
-dotnet_diagnostic.CA1002.severity = suggestion
+dotnet_diagnostic.CA1002.severity = none
 ### URI parameters should not be strings
 dotnet_diagnostic.CA1054.severity = suggestion
 ### URI properties should not be strings
@@ -587,4 +588,4 @@ dotnet_diagnostic.CA1034.severity = suggestion
 ### Property names should not match get methods
 dotnet_diagnostic.CA1721.severity = suggestion
 ### Avoid empty interfaces
-dotnet_diagnostic.CA1040.severity = suggestion
+dotnet_diagnostic.CA1040.severity = none
