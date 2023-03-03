@@ -2,12 +2,6 @@
   "version": 1,
   "dependencies": {
     ".NETCoreApp,Version=v3.1": {
-      "Microsoft.Security.CodeAnalysis.Cli": {
-        "type": "Direct",
-        "requested": "[0.111.1, )",
-        "resolved": "0.111.1",
-        "contentHash": "JHc0GGJjcQjEaq+yLKyNL8SgGhSza1669qNQdW1ztfxMQ6ifNCzzJum5gOikJklf+VFU6aMzt9rAUfDR1aH7JQ=="
-      },
       "Newtonsoft.Json": {
         "type": "Direct",
         "requested": "[13.0.1, 14.0.0)",
@@ -30,12 +24,6 @@
       }
     },
     ".NETStandard,Version=v2.0": {
-      "Microsoft.Security.CodeAnalysis.Cli": {
-        "type": "Direct",
-        "requested": "[0.111.1, )",
-        "resolved": "0.111.1",
-        "contentHash": "JHc0GGJjcQjEaq+yLKyNL8SgGhSza1669qNQdW1ztfxMQ6ifNCzzJum5gOikJklf+VFU6aMzt9rAUfDR1aH7JQ=="
-      },
       "NETStandard.Library": {
         "type": "Direct",
         "requested": "[2.0.3, )",
@@ -130,12 +118,6 @@
       }
     },
     ".NETCoreApp,Version=v5.0": {
-      "Microsoft.Security.CodeAnalysis.Cli": {
-        "type": "Direct",
-        "requested": "[0.111.1, )",
-        "resolved": "0.111.1",
-        "contentHash": "JHc0GGJjcQjEaq+yLKyNL8SgGhSza1669qNQdW1ztfxMQ6ifNCzzJum5gOikJklf+VFU6aMzt9rAUfDR1aH7JQ=="
-      },
       "Newtonsoft.Json": {
         "type": "Direct",
         "requested": "[13.0.1, 14.0.0)",
@@ -158,12 +140,6 @@
       }
     },
     "net6.0": {
-      "Microsoft.Security.CodeAnalysis.Cli": {
-        "type": "Direct",
-        "requested": "[0.111.1, )",
-        "resolved": "0.111.1",
-        "contentHash": "JHc0GGJjcQjEaq+yLKyNL8SgGhSza1669qNQdW1ztfxMQ6ifNCzzJum5gOikJklf+VFU6aMzt9rAUfDR1aH7JQ=="
-      },
       "Newtonsoft.Json": {
         "type": "Direct",
         "requested": "[13.0.1, 14.0.0)",
@@ -178,12 +154,6 @@
       }
     },
     "net7.0": {
-      "Microsoft.Security.CodeAnalysis.Cli": {
-        "type": "Direct",
-        "requested": "[0.111.1, )",
-        "resolved": "0.111.1",
-        "contentHash": "JHc0GGJjcQjEaq+yLKyNL8SgGhSza1669qNQdW1ztfxMQ6ifNCzzJum5gOikJklf+VFU6aMzt9rAUfDR1aH7JQ=="
-      },
       "Newtonsoft.Json": {
         "type": "Direct",
         "requested": "[13.0.1, 14.0.0)",

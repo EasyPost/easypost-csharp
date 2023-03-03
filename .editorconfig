@@ -557,6 +557,8 @@ dotnet_diagnostic.SA1401.severity = none
 dotnet_diagnostic.SA1309.severity = none
 ### Single line comments should begin with single space
 dotnet_diagnostic.SA1515.severity = none
+### Use "gets" for properties docstrings
+dotnet_diagnostic.SA1623.severity = none
 
 # Custom quality (CA) rules
 [*.{cs,vb}]
