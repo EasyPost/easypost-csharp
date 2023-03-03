@@ -63,7 +63,7 @@ namespace EasyPost.BetaFeatures.Parameters.Addresses
 
         [TopLevelRequestParameter(Necessity.Optional, "verify_strict")]
         // "verify_strict" is not included when address creation parameters are used for a to/from address in a shipment creation request.
-        public bool VerifyStrictly { get; set; } = false;
+        public bool VerifyStrict { get; set; } = false;
 
         [TopLevelRequestParameter(Necessity.Optional, "verify")]
         // "verify" is not included when address creation parameters are used for a to/from address in a shipment creation request.
