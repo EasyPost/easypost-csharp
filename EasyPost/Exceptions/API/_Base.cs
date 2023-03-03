@@ -110,11 +110,13 @@ namespace EasyPost.Exceptions.API
 #pragma warning restore CA1031 // Do not catch general exception types
 
             Type? exceptionType = statusCode.EasyPostExceptionType();
+#pragma warning disable IDE2070 // Simplify null check
             if (exceptionType == null)
             {
                 // A unaccounted-for status code was in the response.
                 throw new EasyPostError(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.UnexpectedHttpStatusCode, statusCodeInt));
             }
+#pragma warning restore IDE2070 // Simplify null check
 
             // instantiate the exception class
             ConstructorInfo[] cons = exceptionType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);

@@ -58,7 +58,7 @@ install: | install-tools
 lint:
     # Lint the source code with dotnet-format
 	dotnet tool run dotnet-format --no-restore --check
-    # Lint the source code by building with the "Linting" configuration
+    # Lint the source code by building with the "Linting" configuration (will trigger StyleCop)
 	dotnet build EasyPost/EasyPost.csproj -c "Linting" -t:Rebuild -restore -p:EnforceCodeStyleInBuild=true
 
 ## lint-scripts - Lint and validate the Batch scripts (Windows only)
