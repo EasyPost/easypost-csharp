@@ -5,7 +5,7 @@ namespace EasyPost.BetaFeatures.Parameters.Addresses
     /// <summary>
     ///     Parameters for <see cref="EasyPost.Services.AddressService.Create"/> API calls.
     /// </summary>
-    public class Create : Parameters, IAddressParameter
+    public class Create : BaseParameters, IAddressParameter
     {
         #region Request Parameters
 

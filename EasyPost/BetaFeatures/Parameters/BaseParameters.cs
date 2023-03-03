@@ -13,7 +13,7 @@ namespace EasyPost.BetaFeatures.Parameters
     /// <summary>
     ///     Base class for all parameters used in functions.
     /// </summary>
-    public abstract class Parameters
+    public abstract class BaseParameters
     {
         /*
          * NOTES:
@@ -26,9 +26,9 @@ namespace EasyPost.BetaFeatures.Parameters
         private Dictionary<string, object?> _parameterDictionary;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Parameters" /> class for a new set of request parameters.
+        ///     Initializes a new instance of the <see cref="BaseParameters" /> class for a new set of request parameters.
         /// </summary>
-        protected Parameters() => _parameterDictionary = new Dictionary<string, object?>();
+        protected BaseParameters() => _parameterDictionary = new Dictionary<string, object?>();
 
         /// <summary>
         ///     Convert this parameter object to a dictionary for an HTTP request.
@@ -139,7 +139,7 @@ namespace EasyPost.BetaFeatures.Parameters
             // If the given value is another base-Parameters object, serialize it as a sub-dictionary for the parent dictionary
             // This is because the JSON schema for a sub-object is different than the JSON schema for a top-level object
             // e.g. the schema for an address in the address create API call is different than the schema for an address in the shipment create API call
-            if (value is Parameters parameters)
+            if (value is BaseParameters parameters)
             {
                 value = parameters.ToSubDictionary(GetType());
             }
@@ -182,6 +182,9 @@ namespace EasyPost.BetaFeatures.Parameters
                     }
 
                     return dictionary;
+
+                default:
+                    break;
             }
 
             // Need to go down another level

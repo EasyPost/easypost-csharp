@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>EasyPost</RootNamespace>
     <AssemblyName>EasyPost</AssemblyName>
-    <Configurations>Release;Debug</Configurations>
+    <Configurations>Release;Debug;Linting</Configurations>
     <Platforms>AnyCPU</Platforms>
     <PackageId>EasyPost</PackageId>
     <LangVersion>9</LangVersion>
@@ -15,6 +15,18 @@
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET45</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <!-- Warnings to suppress -->
+    <NoWarn></NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Linting|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -40,6 +52,9 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Linting' ">
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <!-- Strong-name the assembly, required for .NET Framework compatibility -->
     <SignAssembly>true</SignAssembly>
@@ -52,7 +67,7 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="[13.0.1, 14.0.0)" />
     <PackageReference Include="RestSharp" Version="[108.0.1, 109.0.0)" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435" Condition=" '$(Configuration)' == 'Debug' ">
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435" Condition=" '$(Configuration)' == 'Linting' ">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -63,9 +78,6 @@
       <Pack>true</Pack>
       <PackagePath>/</PackagePath>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BetaFeatures\Parameters\Beta" />
   </ItemGroup>
 
 </Project>

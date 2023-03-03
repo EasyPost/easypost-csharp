@@ -6,7 +6,7 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
     /// <summary>
     ///     Parameters for <see cref="EasyPost.Services.ShipmentService.Create"/> API calls.
     /// </summary>
-    public class Create : Parameters, IShipmentParameter
+    public class Create : BaseParameters, IShipmentParameter
     {
         #region Request Parameters
 

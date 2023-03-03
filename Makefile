@@ -56,7 +56,10 @@ install: | install-tools
 
 ## lint - Lints the solution (EasyPost + Tests + F#/VB samples) (check IDE and SA rule violations)
 lint:
+    # Lint the source code with dotnet-format
 	dotnet tool run dotnet-format --no-restore --check
+    # Lint the source code by building with the "Linting" configuration
+	dotnet build EasyPost/EasyPost.csproj -c "Linting" -t:Rebuild -restore -p:EnforceCodeStyleInBuild=true
 
 ## lint-scripts - Lint and validate the Batch scripts (Windows only)
 lint-scripts:
