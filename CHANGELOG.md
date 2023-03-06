@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds missing `StatusDetail` property to `Tracker` and `TrackingDetail` classes
+
 ## v4.4.0 (2023-02-17)
 
 - Added new beta `RateService`, accessible via `myClient.Beta.Rate`
