@@ -34,6 +34,7 @@ namespace EasyPost.Tests.ModelsTests
             {
                 Assert.NotNull(trackingDetail.Message);
                 Assert.NotNull(trackingDetail.Status);
+                Assert.NotNull(trackingDetail.StatusDetail);
                 Assert.NotNull(trackingDetail.Datetime);
                 Assert.NotNull(trackingDetail.TrackingLocation);
                 // TrackingLocation details will be empty, so we can't test their presence.
