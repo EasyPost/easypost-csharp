@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using EasyPost.Utilities.Internal.Annotations;
+
+namespace EasyPost.BetaFeatures.Parameters.Pickups
+{
+    public class Create : BaseParameters, IPickupParameter
+    {
+        #region Request Parameters
+
+        [TopLevelRequestParameter(Necessity.Optional, "pickup", "address")]
+        public EasyPost.Models.API.Address? Address { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "pickup", "batch")]
+        public EasyPost.Models.API.Batch? Batch { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "pickup", "carrier_accounts")]
+        public List<EasyPost.Models.API.CarrierAccount>? CarrierAccounts { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "pickup", "instructions")]
+        public string? Instructions { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "pickup", "is_account_address")]
+        public bool IsAccountAddress { get; set; } = false;
+
+        [TopLevelRequestParameter(Necessity.Optional, "pickup", "max_datetime")]
+        public DateTime? MaxDatetime { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "pickup", "min_datetime")]
+        public DateTime? MinDatetime { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "pickup", "reference")]
+        public string? Reference { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "pickup", "shipment")]
+        public EasyPost.Models.API.Shipment? Shipment { get; set; }
+
+        #endregion
+    }
+}
