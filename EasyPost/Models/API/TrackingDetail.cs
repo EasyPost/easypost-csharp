@@ -14,6 +14,8 @@ namespace EasyPost.Models.API
         public string? Message { get; set; }
         [JsonProperty("status")]
         public string? Status { get; set; }
+        [JsonProperty("status_detail")]
+        public string? StatusDetail { get; set; }
         [JsonProperty("tracking_location")]
         public TrackingLocation? TrackingLocation { get; set; }
 
