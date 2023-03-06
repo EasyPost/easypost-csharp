@@ -7980,6 +7980,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Tracker.Status
   nameWithType: Tracker.Status
+- uid: EasyPost.Models.API.Tracker.StatusDetail
+  name: StatusDetail
+  href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_StatusDetail
+  commentId: P:EasyPost.Models.API.Tracker.StatusDetail
+  fullName: EasyPost.Models.API.Tracker.StatusDetail
+  nameWithType: Tracker.StatusDetail
+- uid: EasyPost.Models.API.Tracker.StatusDetail*
+  name: StatusDetail
+  href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_StatusDetail_
+  commentId: Overload:EasyPost.Models.API.Tracker.StatusDetail
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Tracker.StatusDetail
+  nameWithType: Tracker.StatusDetail
 - uid: EasyPost.Models.API.Tracker.TrackingCode
   name: TrackingCode
   href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_TrackingCode
@@ -8096,6 +8109,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.TrackingDetail.Status
   nameWithType: TrackingDetail.Status
+- uid: EasyPost.Models.API.TrackingDetail.StatusDetail
+  name: StatusDetail
+  href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_StatusDetail
+  commentId: P:EasyPost.Models.API.TrackingDetail.StatusDetail
+  fullName: EasyPost.Models.API.TrackingDetail.StatusDetail
+  nameWithType: TrackingDetail.StatusDetail
+- uid: EasyPost.Models.API.TrackingDetail.StatusDetail*
+  name: StatusDetail
+  href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_StatusDetail_
+  commentId: Overload:EasyPost.Models.API.TrackingDetail.StatusDetail
+  isSpec: "True"
+  fullName: EasyPost.Models.API.TrackingDetail.StatusDetail
+  nameWithType: TrackingDetail.StatusDetail
 - uid: EasyPost.Models.API.TrackingDetail.TrackingLocation
   name: TrackingLocation
   href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_TrackingLocation
