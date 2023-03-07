@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace EasyPost.Utilities.Internal.Annotations
+namespace EasyPost.Utilities.Internal.Attributes
 {
     internal abstract class BaseCustomAttribute : Attribute, IBaseCustomAttribute
     {

@@ -6,7 +6,7 @@ using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 using Newtonsoft.Json;
 using RestSharp;
 

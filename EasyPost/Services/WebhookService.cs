@@ -6,7 +6,7 @@ using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
 using EasyPost.Utilities.Internal;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services

@@ -3,8 +3,7 @@ using EasyPost.Exceptions.API;
 using EasyPost.Models.API;
 using EasyPost.Models.API.Beta;
 using EasyPost.Tests._Utilities;
-using EasyPost.Tests._Utilities.Annotations;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
 
 namespace EasyPost.Tests.ServicesTests.Beta
