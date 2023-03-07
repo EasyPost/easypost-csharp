@@ -10,6 +10,7 @@ using RestSharp;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Insurance
     public class Insurance : EasyPostObject, IInsuranceParameter
     {
         #region JSON Properties
@@ -60,6 +61,7 @@ namespace EasyPost.Models.API
 
         #endregion
     }
+#pragma warning restore CA1724 // Naming conflicts with Parameters.Insurance
 
     public class InsuranceCollection : Collection
     {
