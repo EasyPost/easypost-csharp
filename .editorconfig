@@ -637,3 +637,5 @@ dotnet_diagnostic.CA1724.severity = none
 dotnet_diagnostic.CA5386.severity = none
 ### Mark assemblies with CLSCompliant
 dotnet_diagnostic.CA1014.severity = none
+### Make instance methods static
+dotnet_diagnostic.CA1822.severity = none

@@ -36,6 +36,9 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null) => await Create<Report>($"reports/{type}", parameters);
 
+        [CrudOperations.Create]
+        public async Task<Address> Create(string type, BetaFeatures.Parameters.Addresses.Create parameters) => await Create<Address>($"reports/{type}", parameters.ToDictionary());
+
         /// <summary>
         ///     Get a paginated list of reports.
         /// </summary>

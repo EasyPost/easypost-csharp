@@ -47,6 +47,13 @@ namespace EasyPost.Services
             return await Create<Shipment>("shipments", parameters);
         }
 
+        [CrudOperations.Create]
+        public async Task<Shipment> Create(BetaFeatures.Parameters.Shipments.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<Shipment>("shipments", parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     Get a paginated list of shipments.
         /// </summary>

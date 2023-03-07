@@ -15,13 +15,13 @@ namespace EasyPost.BetaFeatures.Parameters.Pickups
         public IBatchParameter? Batch { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "carrier_accounts")]
-        public List<ICarrierAccountParameter>? CarrierAccounts { get; set; }
+        public List<EasyPost.Models.API.CarrierAccount>? CarrierAccounts { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "instructions")]
         public string? Instructions { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "is_account_address")]
-        public bool IsAccountAddress { get; set; } = false;
+        public bool? IsAccountAddress { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "max_datetime")]
         public DateTime? MaxDatetime { get; set; }

@@ -40,7 +40,7 @@ namespace EasyPost.BetaFeatures.Parameters.EndShippers
 
         [TopLevelRequestParameter(Necessity.Optional, "address", "residential")]
         [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "residential")]
-        public bool Residential { get; set; } = false;
+        public bool? Residential { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "address", "state")]
         [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "state")]
@@ -60,11 +60,11 @@ namespace EasyPost.BetaFeatures.Parameters.EndShippers
 
         [TopLevelRequestParameter(Necessity.Optional, "verify_strict")]
         // "verify_strict" is not included when address creation parameters are used for a to/from address in a shipment creation request.
-        public bool VerifyStrict { get; set; } = false;
+        public bool? VerifyStrict { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "verify")]
         // "verify" is not included when address creation parameters are used for a to/from address in a shipment creation request.
-        public bool Verify { get; set; } = false;
+        public bool? Verify { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "address", "zip")]
         [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "zip")]

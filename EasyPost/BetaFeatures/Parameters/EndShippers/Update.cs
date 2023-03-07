@@ -34,7 +34,7 @@ namespace EasyPost.BetaFeatures.Parameters.EndShippers
         public string? Phone { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "address", "residential")]
-        public bool Residential { get; set; } = false;
+        public bool? Residential { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "address", "state")]
         public string? State { get; set; }

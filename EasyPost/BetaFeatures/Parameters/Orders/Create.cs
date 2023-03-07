@@ -8,7 +8,7 @@ namespace EasyPost.BetaFeatures.Parameters.Orders
         #region Request Parameters
 
         [TopLevelRequestParameter(Necessity.Optional, "order", "carrier_accounts")]
-        public List<ICarrierAccountParameter>? CarrierAccounts { get; set; }
+        public List<EasyPost.Models.API.CarrierAccount>? CarrierAccounts { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "order", "from_address")]
         public IAddressParameter? FromAddress { get; set; }

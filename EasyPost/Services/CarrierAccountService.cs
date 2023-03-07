@@ -47,6 +47,20 @@ namespace EasyPost.Services
             return await Create<CarrierAccount>(endpoint, parameters);
         }
 
+        [CrudOperations.Create]
+        public async Task<CarrierAccount> Create(BetaFeatures.Parameters.CarrierAccounts.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            if (parameters.Type == null)
+            {
+                throw new MissingParameterError(nameof(parameters.Type));
+            }
+
+            string endpoint = SelectCarrierAccountCreationEndpoint(parameters.Type);
+
+            return await Create<CarrierAccount>(endpoint, parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     List all available carrier accounts.
         /// </summary>

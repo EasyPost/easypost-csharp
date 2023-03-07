@@ -41,6 +41,13 @@ namespace EasyPost.Services
             return await Create<Insurance>("insurances", parameters);
         }
 
+        [CrudOperations.Create]
+        public async Task<Insurance> Create(BetaFeatures.Parameters.Insurance.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<Insurance>("insurances", parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     List all Insurance objects.
         /// </summary>

@@ -37,6 +37,13 @@ namespace EasyPost.Services
             return await Create<Webhook>("webhooks", parameters);
         }
 
+        [CrudOperations.Create]
+        public async Task<Webhook> Create(BetaFeatures.Parameters.Webhooks.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<Webhook>("webhooks", parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     Get a list of scan forms.
         /// </summary>

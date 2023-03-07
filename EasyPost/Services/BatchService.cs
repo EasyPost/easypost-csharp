@@ -34,6 +34,13 @@ namespace EasyPost.Services
             return await Create<Batch>("batches", parameters);
         }
 
+        [CrudOperations.Create]
+        public async Task<Batch> Create(BetaFeatures.Parameters.Batches.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<Batch>("batches", parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     Create and buy a Batch in one step.
         /// </summary>
@@ -49,6 +56,13 @@ namespace EasyPost.Services
         {
             parameters = parameters.Wrap("batch");
             return await Create<Batch>("batches/create_and_buy", parameters);
+        }
+
+        [CrudOperations.Create]
+        public async Task<Batch> CreateAndBuy(BetaFeatures.Parameters.Batches.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<Batch>("batches/create_and_buy", parameters.ToDictionary());
         }
 
         /// <summary>

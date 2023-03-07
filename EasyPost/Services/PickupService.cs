@@ -41,6 +41,13 @@ namespace EasyPost.Services
             return await Create<Pickup>("pickups", parameters);
         }
 
+        [CrudOperations.Create]
+        public async Task<Pickup> Create(BetaFeatures.Parameters.Pickups.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<Pickup>("pickups", parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     Retrieve a Pickup from its id.
         /// </summary>

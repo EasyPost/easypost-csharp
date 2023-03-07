@@ -38,6 +38,13 @@ namespace EasyPost.Services
             return await Create<CustomsItem>("customs_items", parameters);
         }
 
+        [CrudOperations.Create]
+        public async Task<CustomsItem> Create(BetaFeatures.Parameters.CustomsItems.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<CustomsItem>("customs_items", parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     Retrieve a CustomsItem from its id.
         /// </summary>

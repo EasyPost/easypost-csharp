@@ -13,10 +13,10 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         [TopLevelRequestParameter(Necessity.Optional, "carbon_offset")]
 
         // non-nullable, will always be included (default: false)
-        public bool CarbonOffset { get; set; }
+        public bool CarbonOffset { get; set; } = false;
 
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "carrier_accounts")]
-        public List<ICarrierAccountParameter>? CarrierAccounts { get; set; }
+        public List<EasyPost.Models.API.CarrierAccount>? CarrierAccounts { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "customs_info")]
         public ICustomsInfoParameter? CustomsInfo { get; set; }
@@ -25,7 +25,7 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         public double? Insurance { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "is_return")]
-        public bool IsReturn { get; set; } = false;
+        public bool? IsReturn { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "options")]
         public EasyPost.Models.API.Options? Options { get; set; }
@@ -33,9 +33,8 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "reference")]
         public string? Reference { get; set; }
 
-        // TODO: How is a user supposed to create this object?
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "tax_identifiers")]
-        public List<EasyPost.Models.API.TaxIdentifier>? TaxIdentifiers { get; set; }
+        public List<ITaxIdenfierParameter>? TaxIdentifiers { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "to_address")]
         public IAddressParameter? ToAddress { get; set; }

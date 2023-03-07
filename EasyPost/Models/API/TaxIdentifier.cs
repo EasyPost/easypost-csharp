@@ -1,9 +1,10 @@
 ﻿using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
-    public class TaxIdentifier : EasyPostObject
+    public class TaxIdentifier : EasyPostObject, ITaxIdenfierParameter
     {
         #region JSON Properties
 

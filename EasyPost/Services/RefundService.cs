@@ -32,6 +32,13 @@ namespace EasyPost.Services
             return await Create<List<Refund>>("refunds", parameters);
         }
 
+        [CrudOperations.Create]
+        public async Task<List<Refund>> Create(BetaFeatures.Parameters.Refunds.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<List<Refund>>("refunds", parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     List all Refund objects.
         /// </summary>

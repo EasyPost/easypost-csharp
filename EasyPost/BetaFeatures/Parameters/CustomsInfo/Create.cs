@@ -14,7 +14,7 @@ namespace EasyPost.BetaFeatures.Parameters.CustomsInfo
         public string? ContentsType { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "customs_info", "customs_certify")]
-        public bool CustomsCertify { get; set; } = false;
+        public bool? CustomsCertify { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "customs_info", "customs_items")]
         public List<ICustomsItemParameter>? CustomsItems { get; set; }

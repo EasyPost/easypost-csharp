@@ -112,6 +112,10 @@ namespace EasyPost.BetaFeatures.Parameters
     {
     }
 
+    public interface ITaxIdenfierParameter : IParameter
+    {
+    }
+
     /// <summary>
     ///     An interface marking that an instance of the implementing class can be used as a tracker parameter in a Parameters object.
     /// </summary>

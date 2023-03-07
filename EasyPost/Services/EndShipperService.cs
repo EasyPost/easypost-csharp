@@ -43,6 +43,13 @@ namespace EasyPost.Services
             return await Create<EndShipper>("end_shippers", parameters);
         }
 
+        [CrudOperations.Create]
+        public async Task<EndShipper> Create(BetaFeatures.Parameters.EndShippers.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<EndShipper>("end_shippers", parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     List all EndShipper objects.
         /// </summary>

@@ -28,6 +28,13 @@ namespace EasyPost.Services
             return await Create<ScanForm>("scan_forms", parameters);
         }
 
+        [CrudOperations.Create]
+        public async Task<ScanForm> Create(BetaFeatures.Parameters.ScanForms.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<ScanForm>("scan_forms", parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     Get a paginated list of scan forms.
         /// </summary>

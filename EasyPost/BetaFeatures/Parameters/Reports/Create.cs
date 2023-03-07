@@ -17,10 +17,10 @@ namespace EasyPost.BetaFeatures.Parameters.Reports
         public string? EndDate { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "report", "include_children")]
-        public bool IncludeChildren { get; set; } = false;
+        public bool? IncludeChildren { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "report", "send_email")]
-        public bool SendEmail { get; set; } = false;
+        public bool? SendEmail { get; set; }
 
         [TopLevelRequestParameter(Necessity.Required, "report", "start_date")]
         public string? StartDate { get; set; }
