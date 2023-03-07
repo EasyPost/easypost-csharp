@@ -3,6 +3,9 @@ using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.CarrierAccounts
 {
+    /// <summary>
+    ///     Parameters for <see cref="EasyPost.Services.CarrierAccountService.Create(Create)"/> API calls.
+    /// </summary>
     public class Create : BaseParameters, ICarrierAccountParameter
     {
         #region Request Parameters

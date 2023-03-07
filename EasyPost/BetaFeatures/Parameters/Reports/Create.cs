@@ -3,6 +3,9 @@ using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Reports
 {
+    /// <summary>
+    ///     Parameters for <see cref="EasyPost.Services.ReportService.Create(string, Create)"/> API calls.
+    /// </summary>
     public class Create : BaseParameters, IReportParameter
     {
         #region Request Parameters

@@ -3,6 +3,9 @@ using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.CustomsInfo
 {
+    /// <summary>
+    ///     Parameters for <see cref="EasyPost.Services.CustomsInfoService.Create(Create)"/> API calls.
+    /// </summary>
     public class Create : BaseParameters, ICustomsInfoParameter
     {
         #region Request Parameters

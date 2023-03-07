@@ -4,6 +4,9 @@ using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Pickups
 {
+    /// <summary>
+    ///     Parameters for <see cref="EasyPost.Services.PickupService.Create(Create)"/> API calls.
+    /// </summary>
     public class Create : BaseParameters, IPickupParameter
     {
         #region Request Parameters

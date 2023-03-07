@@ -2,6 +2,9 @@ using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Webhooks
 {
+    /// <summary>
+    ///     Parameters for <see cref="EasyPost.Services.WebhookService.Create(Create)"/> API calls.
+    /// </summary>
     public class Create : BaseParameters, IWebhookParameter
     {
         #region Request Parameters

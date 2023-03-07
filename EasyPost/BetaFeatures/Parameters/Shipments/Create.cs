@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Annotations;
 namespace EasyPost.BetaFeatures.Parameters.Shipments
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.ShipmentService.Create"/> API calls.
+    ///     Parameters for <see cref="EasyPost.Services.ShipmentService.Create(Create)"/> API calls.
     /// </summary>
     public class Create : BaseParameters, IShipmentParameter
     {

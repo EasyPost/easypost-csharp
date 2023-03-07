@@ -2,6 +2,9 @@ using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.TaxIdentifiers
 {
+    /// <summary>
+    ///     Parameters for <see cref="EasyPost.BetaFeatures.Parameters.Shipments.Create.TaxIdentifiers"/> property.
+    /// </summary>
     public class Create : BaseParameters, ITaxIdentifierParameter
     {
         #region Request Parameters

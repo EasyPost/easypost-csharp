@@ -2,6 +2,9 @@ using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Parcels
 {
+    /// <summary>
+    ///     Parameters for <see cref="EasyPost.Services.ParcelService.Create(Create)"/> API calls.
+    /// </summary>
     public class Create : BaseParameters, IParcelParameter
     {
         #region Request Parameters

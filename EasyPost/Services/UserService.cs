@@ -33,6 +33,13 @@ namespace EasyPost.Services
             return await Create<User>("users", parameters);
         }
 
+        [CrudOperations.Create]
+        public async Task<User> CreateChild(BetaFeatures.Parameters.Users.CreateChild parameters)
+        {
+            // Because the normal CreateChild method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<User>("users", parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     Retrieve a User from its id. If no id is specified, it returns the user for the api_key specified.
         /// </summary>

@@ -2,6 +2,9 @@ using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Insurance
 {
+    /// <summary>
+    ///     Parameters for <see cref="EasyPost.Services.InsuranceService.Create(Create)"/> API calls.
+    /// </summary>
     public class Create : BaseParameters, IInsuranceParameter
     {
         #region Request Parameters

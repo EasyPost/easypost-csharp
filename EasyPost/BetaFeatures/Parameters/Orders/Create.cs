@@ -3,6 +3,9 @@ using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Orders
 {
+    /// <summary>
+    ///     Parameters for <see cref="EasyPost.Services.OrderService.Create(Create)"/> API calls.
+    /// </summary>
     public class Create : BaseParameters, IOrderParameter
     {
         #region Request Parameters

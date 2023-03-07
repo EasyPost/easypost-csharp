@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.CustomInfo
     public class CustomsInfo : EasyPostObject, ICustomsInfoParameter
     {
         #region JSON Properties
@@ -36,4 +37,5 @@ namespace EasyPost.Models.API
         {
         }
     }
+#pragma warning restore CA1724 // Naming conflicts with Parameters.CustomInfo
 }
