@@ -31,7 +31,7 @@ namespace EasyPost.BetaFeatures.Parameters.Trackers
         ///     The number of records to return on each page. The maximum value is 100, and default is 20.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "page_size")]
-        public int PageSize { get; set; } = 20;
+        public int? PageSize { get; set; }
 
         /// <summary>
         ///     Only return records created after this timestamp. Defaults to 1 month ago, or 1 month before a passed <see cref="EndDatetime"/>.
