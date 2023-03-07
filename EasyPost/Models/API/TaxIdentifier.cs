@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
-    public class TaxIdentifier : EasyPostObject, ITaxIdenfierParameter
+    public class TaxIdentifier : EasyPostObject, ITaxIdentifierParameter
     {
         #region JSON Properties
 

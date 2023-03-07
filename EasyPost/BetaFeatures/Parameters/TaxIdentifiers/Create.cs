@@ -2,7 +2,7 @@ using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.TaxIdentifiers
 {
-    public class Create : BaseParameters, ITaxIdenfierParameter
+    public class Create : BaseParameters, ITaxIdentifierParameter
     {
         #region Request Parameters
 

@@ -68,6 +68,7 @@ namespace EasyPost.Utilities.Internal.Annotations
     /// <summary>
     ///     An attribute to label a parameter that will be included in an embedded dictionary inside another JSON request body (e.g. "address" data in "shipment" parameters).
     /// </summary>
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = true, Inherited = false)]
     internal sealed class NestedRequestParameterAttribute : RequestParameterAttribute
     {
         /// <summary>
