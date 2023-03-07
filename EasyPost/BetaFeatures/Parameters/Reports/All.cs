@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Reports
@@ -5,7 +6,8 @@ namespace EasyPost.BetaFeatures.Parameters.Reports
     /// <summary>
     ///     Parameters for <see cref="EasyPost.Services.ReportService.All"/> API calls.
     /// </summary>
-    public class All : BaseParameters
+    [ExcludeFromCodeCoverage]
+    public sealed class All : BaseParameters
     {
         #region Request Parameters
 

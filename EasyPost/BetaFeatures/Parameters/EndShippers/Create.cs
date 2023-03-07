@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.EndShippers
@@ -5,7 +6,8 @@ namespace EasyPost.BetaFeatures.Parameters.EndShippers
     /// <summary>
     ///     Parameters for <see cref="EasyPost.Services.EndShipperService.Create(Create)"/> API calls.
     /// </summary>
-    public class Create : BaseParameters, IEndShipperParameter
+    [ExcludeFromCodeCoverage]
+    public sealed class Create : BaseParameters, IEndShipperParameter
     {
         #region Request Parameters
 

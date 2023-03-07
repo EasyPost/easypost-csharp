@@ -1,11 +1,13 @@
+using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.ReferralCustomers
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.PartnerService.CreateReferral(Create)"/> API calls.
+    ///     Parameters for <see cref="EasyPost.Services.PartnerService.CreateReferral(CreateReferralCustomer)"/> API calls.
     /// </summary>
-    public class Create : BaseParameters, IReferralCustomerParameter
+    [ExcludeFromCodeCoverage]
+    public sealed class CreateReferralCustomer : BaseParameters, IReferralCustomerParameter
     {
         #region Request Parameters
 

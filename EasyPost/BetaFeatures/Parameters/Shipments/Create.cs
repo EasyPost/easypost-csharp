@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Shipments
@@ -6,7 +7,8 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
     /// <summary>
     ///     Parameters for <see cref="EasyPost.Services.ShipmentService.Create(Create)"/> API calls.
     /// </summary>
-    public class Create : BaseParameters, IShipmentParameter
+    [ExcludeFromCodeCoverage]
+    public sealed class Create : BaseParameters, IShipmentParameter
     {
         #region Request Parameters
 

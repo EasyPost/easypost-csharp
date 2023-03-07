@@ -40,7 +40,7 @@ namespace EasyPost.Services
         }
 
         [CrudOperations.Create]
-        public async Task<ReferralCustomer> CreateReferral(BetaFeatures.Parameters.ReferralCustomers.Create parameters)
+        public async Task<ReferralCustomer> CreateReferral(BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer parameters)
         {
             // Because the normal CreateReferral method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await Create<ReferralCustomer>("referral_customers", parameters.ToDictionary());

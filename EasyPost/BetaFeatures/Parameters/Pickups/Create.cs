@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Pickups
@@ -7,7 +8,8 @@ namespace EasyPost.BetaFeatures.Parameters.Pickups
     /// <summary>
     ///     Parameters for <see cref="EasyPost.Services.PickupService.Create(Create)"/> API calls.
     /// </summary>
-    public class Create : BaseParameters, IPickupParameter
+    [ExcludeFromCodeCoverage]
+    public sealed class Create : BaseParameters, IPickupParameter
     {
         #region Request Parameters
 

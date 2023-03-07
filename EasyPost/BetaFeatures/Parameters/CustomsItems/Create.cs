@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.CustomsItems
@@ -5,7 +6,8 @@ namespace EasyPost.BetaFeatures.Parameters.CustomsItems
     /// <summary>
     ///     Parameters for <see cref="EasyPost.Services.CustomsItemService.Create(Create)"/> API calls.
     /// </summary>
-    public class Create : BaseParameters, ICustomsItemParameter
+    [ExcludeFromCodeCoverage]
+    public sealed class Create : BaseParameters, ICustomsItemParameter
     {
         #region Request Parameters
 

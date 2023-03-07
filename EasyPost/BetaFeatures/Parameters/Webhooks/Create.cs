@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Webhooks
@@ -5,7 +6,8 @@ namespace EasyPost.BetaFeatures.Parameters.Webhooks
     /// <summary>
     ///     Parameters for <see cref="EasyPost.Services.WebhookService.Create(Create)"/> API calls.
     /// </summary>
-    public class Create : BaseParameters, IWebhookParameter
+    [ExcludeFromCodeCoverage]
+    public sealed class Create : BaseParameters, IWebhookParameter
     {
         #region Request Parameters
 

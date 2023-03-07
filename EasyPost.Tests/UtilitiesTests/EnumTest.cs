@@ -60,6 +60,38 @@ namespace EasyPost.Tests.UtilitiesTests
 
         [Fact]
         [Testing.Function]
+        public void TestGreaterThan()
+        {
+            Assert.True(TestValueEnum.B > TestValueEnum.A);
+            Assert.False(TestValueEnum.B > TestValueEnum.B);
+        }
+
+        [Fact]
+        [Testing.Function]
+        public void TestGreaterThanOrEqual()
+        {
+            Assert.True(TestValueEnum.B >= TestValueEnum.A);
+            Assert.True(TestValueEnum.B >= TestValueEnum.B);
+        }
+
+        [Fact]
+        [Testing.Function]
+        public void TestLessThan()
+        {
+            Assert.True(TestValueEnum.A < TestValueEnum.B);
+            Assert.False(TestValueEnum.A < TestValueEnum.A);
+        }
+
+        [Fact]
+        [Testing.Function]
+        public void TestLessThanOrEqual()
+        {
+            Assert.True(TestValueEnum.A <= TestValueEnum.B);
+            Assert.True(TestValueEnum.A <= TestValueEnum.A);
+        }
+
+        [Fact]
+        [Testing.Function]
         public void TestToString()
         {
             // normal enums print their ID as a string

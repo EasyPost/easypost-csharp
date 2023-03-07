@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.TaxIdentifiers
@@ -5,7 +6,8 @@ namespace EasyPost.BetaFeatures.Parameters.TaxIdentifiers
     /// <summary>
     ///     Parameters for <see cref="EasyPost.BetaFeatures.Parameters.Shipments.Create.TaxIdentifiers"/> property.
     /// </summary>
-    public class Create : BaseParameters, ITaxIdentifierParameter
+    [ExcludeFromCodeCoverage]
+    public sealed class Create : BaseParameters, ITaxIdentifierParameter
     {
         #region Request Parameters
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Refunds
@@ -6,7 +7,8 @@ namespace EasyPost.BetaFeatures.Parameters.Refunds
     /// <summary>
     ///     Parameters for <see cref="EasyPost.Services.RefundService.Create(Create)"/> API calls.
     /// </summary>
-    public class Create : BaseParameters, IRefundParameter
+    [ExcludeFromCodeCoverage]
+    public sealed class Create : BaseParameters, IRefundParameter
     {
         #region Request Parameters
 

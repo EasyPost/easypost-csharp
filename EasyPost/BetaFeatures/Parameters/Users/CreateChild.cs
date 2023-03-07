@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Users
@@ -5,7 +6,8 @@ namespace EasyPost.BetaFeatures.Parameters.Users
     /// <summary>
     ///     Parameters for <see cref="EasyPost.Services.UserService.CreateChild(CreateChild)"/> API calls.
     /// </summary>
-    public class CreateChild : BaseParameters, IUserParameter
+    [ExcludeFromCodeCoverage]
+    public sealed class CreateChild : BaseParameters, IUserParameter
     {
         #region Request Parameters
 

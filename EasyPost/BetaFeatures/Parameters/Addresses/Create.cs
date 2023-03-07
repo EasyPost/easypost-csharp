@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Addresses
@@ -5,7 +6,8 @@ namespace EasyPost.BetaFeatures.Parameters.Addresses
     /// <summary>
     ///     Parameters for <see cref="EasyPost.Services.AddressService.Create(Create)"/> API calls.
     /// </summary>
-    public class Create : BaseParameters, IAddressParameter
+    [ExcludeFromCodeCoverage]
+    public sealed class Create : BaseParameters, IAddressParameter
     {
         #region Request Parameters
 

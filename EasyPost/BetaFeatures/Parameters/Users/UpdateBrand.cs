@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Annotations;
 
 namespace EasyPost.BetaFeatures.Parameters.Users
@@ -5,7 +6,8 @@ namespace EasyPost.BetaFeatures.Parameters.Users
     /// <summary>
     ///     Parameters for <see cref="EasyPost.Models.API.User.UpdateBrand"/> API calls.
     /// </summary>
-    public class UpdateBrand : BaseParameters
+    [ExcludeFromCodeCoverage]
+    public sealed class UpdateBrand : BaseParameters
     {
         #region Request Parameters
 
