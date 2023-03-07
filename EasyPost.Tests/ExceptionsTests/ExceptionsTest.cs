@@ -9,7 +9,7 @@ using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
-using EasyPost.Tests._Utilities.Annotations;
+using EasyPost.Tests._Utilities.Attributes;
 using RestSharp;
 using Xunit;
 

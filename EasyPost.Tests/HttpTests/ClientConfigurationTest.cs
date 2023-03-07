@@ -1,5 +1,5 @@
 using EasyPost.Http;
-using EasyPost.Tests._Utilities.Annotations;
+using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
 
 namespace EasyPost.Tests.HttpTests

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using EasyPost.Models.API;
-using EasyPost.Tests._Utilities.Annotations;
+using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
 
 namespace EasyPost.Tests.baseTests

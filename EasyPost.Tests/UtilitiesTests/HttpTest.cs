@@ -1,5 +1,5 @@
 using System.Net;
-using EasyPost.Tests._Utilities.Annotations;
+using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 using RestSharp;
 using Xunit;

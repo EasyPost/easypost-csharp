@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using EasyPost.Tests._Utilities.Annotations;
+using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities;
 using Xunit;
 

@@ -1,5 +1,5 @@
 using EasyPost.Models.API;
-using EasyPost.Tests._Utilities.Annotations;
+using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal;
 using Xunit;
 

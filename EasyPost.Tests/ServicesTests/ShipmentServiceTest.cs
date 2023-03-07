@@ -5,6 +5,7 @@ using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Services;
 using EasyPost.Tests._Utilities;
+using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
 
