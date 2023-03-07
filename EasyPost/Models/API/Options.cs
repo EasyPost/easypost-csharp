@@ -190,7 +190,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        internal Options()
+        public Options()
         {
         }
     }

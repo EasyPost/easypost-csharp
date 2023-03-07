@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
-    public class CustomsInfo : EasyPostObject
+    public class CustomsInfo : EasyPostObject, ICustomsInfoParameter
     {
         #region JSON Properties
 

@@ -13,13 +13,13 @@ namespace EasyPost.BetaFeatures.Parameters.Insurance
         public string? Carrier { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "insurance", "from_address")]
-        public EasyPost.Models.API.Address? FromAddress { get; set; }
+        public IAddressParameter? FromAddress { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "insurance", "reference")]
         public string? Reference { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "insurance", "to_address")]
-        public EasyPost.Models.API.Address? ToAddress { get; set; }
+        public IAddressParameter? ToAddress { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "insurance", "tracking_code")]
         public string? TrackingCode { get; set; }

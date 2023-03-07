@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal.Annotations;
 using Newtonsoft.Json;
@@ -9,7 +10,7 @@ using RestSharp;
 
 namespace EasyPost.Models.API
 {
-    public class Insurance : EasyPostObject
+    public class Insurance : EasyPostObject, IInsuranceParameter
     {
         #region JSON Properties
 

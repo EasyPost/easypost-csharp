@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal.Annotations;
@@ -11,7 +12,7 @@ using RestSharp;
 
 namespace EasyPost.Models.API
 {
-    public class Pickup : EasyPostObject
+    public class Pickup : EasyPostObject, IPickupParameter
     {
         #region JSON Properties
 

@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Utilities.Internal.Annotations;
 using EasyPost.Utilities.Internal.Extensions;
 using Newtonsoft.Json;
@@ -9,7 +10,7 @@ using RestSharp;
 
 namespace EasyPost.Models.API
 {
-    public class CarrierAccount : EasyPostObject
+    public class CarrierAccount : EasyPostObject, ICarrierAccountParameter
     {
         #region JSON Properties
 

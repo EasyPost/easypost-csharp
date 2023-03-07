@@ -9,13 +9,13 @@ namespace EasyPost.BetaFeatures.Parameters.Pickups
         #region Request Parameters
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "address")]
-        public EasyPost.Models.API.Address? Address { get; set; }
+        public IAddressParameter? Address { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "batch")]
-        public EasyPost.Models.API.Batch? Batch { get; set; }
+        public IBatchParameter? Batch { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "carrier_accounts")]
-        public List<EasyPost.Models.API.CarrierAccount>? CarrierAccounts { get; set; }
+        public List<ICarrierAccountParameter>? CarrierAccounts { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "instructions")]
         public string? Instructions { get; set; }
@@ -33,7 +33,7 @@ namespace EasyPost.BetaFeatures.Parameters.Pickups
         public string? Reference { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "shipment")]
-        public EasyPost.Models.API.Shipment? Shipment { get; set; }
+        public IShipmentParameter? Shipment { get; set; }
 
         #endregion
     }

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal.Annotations;
 using Newtonsoft.Json;
@@ -9,7 +10,7 @@ using RestSharp;
 
 namespace EasyPost.Models.API
 {
-    public class Batch : EasyPostObject
+    public class Batch : EasyPostObject, IBatchParameter
     {
         #region JSON Properties
 

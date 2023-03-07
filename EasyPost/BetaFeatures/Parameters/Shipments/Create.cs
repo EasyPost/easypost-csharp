@@ -16,10 +16,10 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         public bool CarbonOffset { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "carrier_accounts")]
-        public List<EasyPost.Models.API.CarrierAccount>? CarrierAccounts { get; set; }
+        public List<ICarrierAccountParameter>? CarrierAccounts { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "customs_info")]
-        public EasyPost.Models.API.CustomsInfo? CustomsInfo { get; set; }
+        public ICustomsInfoParameter? CustomsInfo { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "insurance")]
         public double? Insurance { get; set; }
@@ -33,6 +33,7 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "reference")]
         public string? Reference { get; set; }
 
+        // TODO: How is a user supposed to create this object?
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "tax_identifiers")]
         public List<EasyPost.Models.API.TaxIdentifier>? TaxIdentifiers { get; set; }
 
@@ -43,7 +44,7 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         public IAddressParameter? FromAddress { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "parcel")]
-        public EasyPost.Models.API.Parcel? Parcel { get; set; }
+        public IParcelParameter? Parcel { get; set; }
 
         #endregion
     }

@@ -8,7 +8,7 @@ namespace EasyPost.BetaFeatures.Parameters.ScanForms
         #region Request Parameters
 
         [TopLevelRequestParameter(Necessity.Required, "shipments")]
-        public List<EasyPost.Models.API.Shipment>? Shipments { get; set; }
+        public List<IShipmentParameter>? Shipments { get; set; }
 
         #endregion
     }
