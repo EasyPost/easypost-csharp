@@ -117,6 +117,8 @@ namespace EasyPost.Tests.BetaFeaturesTests.ParametersTests
         /// The schema for a shipment creation API call does not contain this "address" key, with all address data instead wrapped inside a "to_address" key.
         ///
         /// Behind the scenes, the Addresses.Create parameter object is the same, but the serialization path for each property (parameter) adapts to the context in which it is used
+        ///
+        /// This is powered by the NestedRequestParameter attribute, which apply a different serialization path when the parameter set is being used nested within another parameter set.
         /// </summary>
         [Fact]
         [Testing.Logic]
