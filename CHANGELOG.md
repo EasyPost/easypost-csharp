@@ -3,6 +3,7 @@
 ## Next Release
 
 - Adds missing `StatusDetail` property to `Tracker` and `TrackingDetail` classes
+- Adds missing `Fee` property to `Insurance` class
 
 ## v4.4.0 (2023-02-17)
 

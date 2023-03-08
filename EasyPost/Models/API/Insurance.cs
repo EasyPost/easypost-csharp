@@ -35,7 +35,8 @@ namespace EasyPost.Models.API
         public Tracker? Tracker { get; set; }
         [JsonProperty("tracking_code")]
         public string? TrackingCode { get; set; }
-
+        [JsonProperty("fee")]
+        public Fee? Fee { get; set; }
         #endregion
 
         internal Insurance()
