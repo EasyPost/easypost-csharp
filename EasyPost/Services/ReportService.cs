@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services
 {
@@ -35,6 +35,9 @@ namespace EasyPost.Services
         /// <returns>EasyPost.Report instance.</returns>
         [CrudOperations.Create]
         public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null) => await Create<Report>($"reports/{type}", parameters);
+
+        [CrudOperations.Create]
+        public async Task<Address> Create(string type, BetaFeatures.Parameters.Reports.Create parameters) => await Create<Address>($"reports/{type}", parameters.ToDictionary());
 
         /// <summary>
         ///     Get a paginated list of reports.

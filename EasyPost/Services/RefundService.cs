@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
@@ -30,6 +30,13 @@ namespace EasyPost.Services
         {
             parameters = parameters.Wrap("refund");
             return await Create<List<Refund>>("refunds", parameters);
+        }
+
+        [CrudOperations.Create]
+        public async Task<List<Refund>> Create(BetaFeatures.Parameters.Refunds.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<List<Refund>>("refunds", parameters.ToDictionary());
         }
 
         /// <summary>

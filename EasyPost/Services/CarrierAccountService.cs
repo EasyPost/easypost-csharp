@@ -4,7 +4,7 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
@@ -45,6 +45,20 @@ namespace EasyPost.Services
             parameters = parameters.Wrap("carrier_account");
 
             return await Create<CarrierAccount>(endpoint, parameters);
+        }
+
+        [CrudOperations.Create]
+        public async Task<CarrierAccount> Create(BetaFeatures.Parameters.CarrierAccounts.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            if (parameters.Type == null)
+            {
+                throw new MissingParameterError(nameof(parameters.Type));
+            }
+
+            string endpoint = SelectCarrierAccountCreationEndpoint(parameters.Type);
+
+            return await Create<CarrierAccount>(endpoint, parameters.ToDictionary());
         }
 
         /// <summary>

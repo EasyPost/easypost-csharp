@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
-    public class ScanForm : EasyPostObject
+    public class ScanForm : EasyPostObject, IScanFormParameter
     {
         #region JSON Properties
 

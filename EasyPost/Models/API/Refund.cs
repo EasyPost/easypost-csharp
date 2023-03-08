@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
-    public class Refund : EasyPostObject
+    public class Refund : EasyPostObject, IRefundParameter
     {
         #region JSON Properties
 

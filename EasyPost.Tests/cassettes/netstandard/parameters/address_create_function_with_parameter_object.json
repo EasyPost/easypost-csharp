@@ -1,0 +1,56 @@
+[
+  {
+    "Duration": 196,
+    "RecordedAt": "2023-03-06T18:23:15.216644-07:00",
+    "Request": {
+      "Body": "{\"address\":{\"street1\":\"388 Townsend St\"}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "41"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/addresses"
+    },
+    "Response": {
+      "Body": "{\"id\":\"adr_a2560dc3bc8611ed809eac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2023-03-06T18:23:15-07:00\",\"updated_at\":\"2023-03-06T18:23:15-07:00\",\"name\":null,\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":\"US\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "411"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "a33588ba64069203e6625cab00219b45",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "Location": "/api/v2/addresses/adr_a2560dc3bc8611ed809eac1f6b0a0d1e",
+        "ETag": "W/\"672ac1af1a6d8ae12a4cafc1d39b9b02\"",
+        "x-runtime": "0.032131",
+        "x-node": "bigweb7nuq",
+        "x-version-label": "easypost-202303070112-c6393306d4-master",
+        "x-backend": "easypost",
+        "x-canary": "direct",
+        "x-proxied": "intlb1nuq a40ea751fd,extlb2nuq a40ea751fd",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  }
+]

@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 using Newtonsoft.Json;
 using RestSharp;
 
 namespace EasyPost.Models.API
 {
-    public class Order : EasyPostObject
+    public class Order : EasyPostObject, IOrderParameter
     {
         #region JSON Properties
 

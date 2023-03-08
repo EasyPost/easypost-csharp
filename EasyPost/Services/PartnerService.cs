@@ -4,9 +4,8 @@ using System.Globalization;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.API;
-using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 using RestSharp;
 
@@ -38,6 +37,13 @@ namespace EasyPost.Services
         {
             parameters = parameters.Wrap("user");
             return await Create<ReferralCustomer>("referral_customers", parameters);
+        }
+
+        [CrudOperations.Create]
+        public async Task<ReferralCustomer> CreateReferral(BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer parameters)
+        {
+            // Because the normal CreateReferral method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<ReferralCustomer>("referral_customers", parameters.ToDictionary());
         }
 
         /// <summary>

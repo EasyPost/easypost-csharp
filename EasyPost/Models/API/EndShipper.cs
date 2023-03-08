@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 using Newtonsoft.Json;
 using RestSharp;
 
 namespace EasyPost.Models.API
 {
-    public class EndShipper : EasyPostObject
+    public class EndShipper : EasyPostObject, IEndShipperParameter
     {
         #region JSON Properties
 

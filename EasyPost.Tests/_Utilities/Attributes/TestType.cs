@@ -1,9 +1,9 @@
 using System;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 
 // ReSharper disable InconsistentNaming
 
-namespace EasyPost.Tests._Utilities.Annotations
+namespace EasyPost.Tests._Utilities.Attributes
 {
     internal static class Testing
     {

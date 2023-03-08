@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services
 {
@@ -26,6 +26,13 @@ namespace EasyPost.Services
         {
             Dictionary<string, object> parameters = new() { { "shipments", shipments } };
             return await Create<ScanForm>("scan_forms", parameters);
+        }
+
+        [CrudOperations.Create]
+        public async Task<ScanForm> Create(BetaFeatures.Parameters.ScanForms.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<ScanForm>("scan_forms", parameters.ToDictionary());
         }
 
         /// <summary>

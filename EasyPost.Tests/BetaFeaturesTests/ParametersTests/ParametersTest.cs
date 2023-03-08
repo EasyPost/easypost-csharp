@@ -1,13 +1,15 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Tests._Utilities.Annotations;
+using EasyPost.Tests._Utilities;
+using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
 
 namespace EasyPost.Tests.BetaFeaturesTests.ParametersTests
 {
-    public class ParametersTest
+    public class ParametersTest : UnitTest
     {
-        public ParametersTest()
+        public ParametersTest() : base("parameters")
         {
         }
 
@@ -34,22 +36,19 @@ namespace EasyPost.Tests.BetaFeaturesTests.ParametersTests
 
             var dictionary = parameters.ToDictionary();
 
-            // Check that the dictionary contains "address" + default "verify" and "verify_strict" top-level keys
+            // Check that the dictionary contains "address"
             Assert.True(dictionary.ContainsKey("address"));
-            Assert.True(dictionary.ContainsKey("verify"));
-            Assert.True(dictionary.ContainsKey("verify_strict"));
 
             // Check that the "address" sub-dictionary was created correctly
             var addressData = dictionary["address"] as Dictionary<string, object>;
 
-            // Check that the "address" sub-dictionary contains the 6 elements we set + default "residential" boolean
+            // Check that the "address" sub-dictionary contains the 6 elements we set
             Assert.True(addressData.ContainsKey("street1"));
             Assert.True(addressData.ContainsKey("street2"));
             Assert.True(addressData.ContainsKey("city"));
             Assert.True(addressData.ContainsKey("state"));
             Assert.True(addressData.ContainsKey("zip"));
             Assert.True(addressData.ContainsKey("country"));
-            Assert.True(addressData.ContainsKey("residential"));
 
             // Check that the "street1" key was set with the correct value
             Assert.Equal(street, addressData["street1"]);
@@ -118,6 +117,8 @@ namespace EasyPost.Tests.BetaFeaturesTests.ParametersTests
         /// The schema for a shipment creation API call does not contain this "address" key, with all address data instead wrapped inside a "to_address" key.
         ///
         /// Behind the scenes, the Addresses.Create parameter object is the same, but the serialization path for each property (parameter) adapts to the context in which it is used
+        ///
+        /// This is powered by the NestedRequestParameter attribute, which apply a different serialization path when the parameter set is being used nested within another parameter set.
         /// </summary>
         [Fact]
         [Testing.Logic]
@@ -149,6 +150,63 @@ namespace EasyPost.Tests.BetaFeaturesTests.ParametersTests
             var shipmentData = dictionary["shipment"] as Dictionary<string, object>;
             var toAddressData = shipmentData["to_address"] as Dictionary<string, object>;
             Assert.Equal(street, toAddressData["street1"]);
+        }
+
+        /// <summary>
+        ///     This test proves that the overloaded Create methods, which accept a parameter object rather than a dictionary, work as expected.
+        /// </summary>
+        [Fact]
+        [Testing.Function]
+        public async Task TestAddressCreateFunctionWithParameterObject()
+        {
+            UseVCR("address_create_function_with_parameter_object");
+
+            const string street = "388 Townsend St";
+
+            EasyPost.BetaFeatures.Parameters.Addresses.Create addressCreationParameters = new EasyPost.BetaFeatures.Parameters.Addresses.Create
+            {
+                Street1 = street,
+            };
+
+            Address address = await Client.Address.Create(addressCreationParameters);
+
+            // If we got this far, the API call was successful (no error was thrown)
+
+            // Check that the "street1" key was set with the correct value (suggesting that the API received the correct data schema and was able to create the address properly)
+            Assert.Equal(street, address.Street1);
+        }
+
+        /// <summary>
+        ///     This test proves why we should not allow end-users to access the .ToDictionary() method for parameter objects.
+        ///
+        ///     If users use the .ToDictionary() method to serialize a parameter object, and then pass the resulting dictionary to the normal Create method,
+        ///     the data will be double-wrapped, sending malformed data to the API and producing unexpected results.
+        ///
+        ///     For this reason, the .ToDictionary() method is "internal", and should only be used by the library itself.
+        ///
+        ///     Instead, parameter objects can only be used by passing them into the overloaded methods, which will call the .ToDictionary() method internally.
+        /// </summary>
+        [Fact]
+        [Testing.Exception]
+        public async Task TestDisallowUsingParameterObjectDictionariesInDictionaryFunctions()
+        {
+            UseVCR("disallow_using_parameter_object_dictionaries_in_dictionary_functions");
+
+            const string street = "388 Townsend St";
+
+            EasyPost.BetaFeatures.Parameters.Addresses.Create addressCreationParameters = new EasyPost.BetaFeatures.Parameters.Addresses.Create
+            {
+                Street1 = street,
+            };
+
+            Dictionary<string, object> dictionary = addressCreationParameters.ToDictionary();  // this method is "internal", so end-users won't have access to it, for reasons seen below
+
+            // At this point, the data has already been wrapped properly by the .ToDictionary() method, and this method expects raw (unwrapped) data
+            // This will cause a double-wrapping, sending malformed data to the API
+            Address address = await Client.Address.Create(dictionary);
+
+            // The API doesn't fail due to the malformed data, but the address was not created properly
+            Assert.NotEqual(street, address.Street1);
         }
 
         #endregion

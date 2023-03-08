@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
@@ -64,6 +64,13 @@ namespace EasyPost.Services
             return await Create<Address>("addresses", parameters);
         }
 
+        [CrudOperations.Create]
+        public async Task<Address> Create(BetaFeatures.Parameters.Addresses.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<Address>("addresses", parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     Create and verify an Address.
         /// </summary>
@@ -84,6 +91,13 @@ namespace EasyPost.Services
         /// <returns>An Address object.</returns>
         [CrudOperations.Create]
         public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters) => await Create<Address>("addresses/create_and_verify", parameters, "address");
+
+        [CrudOperations.Create]
+        public async Task<Address> CreateAndVerify(BetaFeatures.Parameters.Addresses.Create parameters)
+        {
+            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<Address>("addresses/create_and_verify", parameters.ToDictionary(), "address");
+        }
 
         /// <summary>
         ///     List all Address objects.

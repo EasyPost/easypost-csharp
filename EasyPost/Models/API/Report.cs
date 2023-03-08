@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
-    public class Report : EasyPostObject
+    public class Report : EasyPostObject, IReportParameter
     {
         #region JSON Properties
 

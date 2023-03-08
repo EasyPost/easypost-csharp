@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
@@ -31,6 +31,13 @@ namespace EasyPost.Services
         {
             parameters = parameters.Wrap("user");
             return await Create<User>("users", parameters);
+        }
+
+        [CrudOperations.Create]
+        public async Task<User> CreateChild(BetaFeatures.Parameters.Users.CreateChild parameters)
+        {
+            // Because the normal CreateChild method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
+            return await Create<User>("users", parameters.ToDictionary());
         }
 
         /// <summary>

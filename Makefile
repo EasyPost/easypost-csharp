@@ -31,7 +31,7 @@ coverage:
 
 ## coverage-check - Check if the coverage is above the minimum threshold
 coverage-check:
-	./check_coverage.sh
+	./check_coverage.sh 90
 
 ## docs - Generates library documentation
 docs:
@@ -53,7 +53,6 @@ install-tools:
 install: | install-tools
 	git submodule init
 	git submodule update
-
 ## lint - Lints the solution (EasyPost + Tests + F#/VB samples) (check IDE and SA rule violations)
 lint:
     # Lint the source code with dotnet-format

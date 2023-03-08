@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using EasyPost.Models.API;
-using EasyPost.Tests._Utilities.Annotations;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Tests._Utilities.Attributes;
+using EasyPost.Utilities.Internal.Attributes;
 using Newtonsoft.Json;
 using Xunit;
 

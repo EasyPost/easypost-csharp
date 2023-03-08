@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
-using EasyPost.Utilities.Internal.Annotations;
+using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.BetaFeatures.Parameters
@@ -34,8 +34,12 @@ namespace EasyPost.BetaFeatures.Parameters
         ///     Convert this parameter object to a dictionary for an HTTP request.
         /// </summary>
         /// <returns><see cref="Dictionary{String,TValue}" /> of parameters.</returns>
-        public virtual Dictionary<string, object> ToDictionary()
+        internal virtual Dictionary<string, object> ToDictionary()
         {
+            // NOTE: This method is marked internally on purpose.
+            // Bad stuff could happen if we allow end-users to convert a parameter object to a dictionary themselves and try to use it in the normal functions
+            // In particular, a lot of the normal functions do additional wrapping of their dictionaries, which would result in invalid JSON schemas being sent to the API
+
             // Construct the dictionary of all parameters
             PropertyInfo[] properties = GetType().GetProperties();
             foreach (PropertyInfo property in properties)
