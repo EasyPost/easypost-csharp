@@ -3983,6 +3983,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Insurance.Amount
   nameWithType: Insurance.Amount
+- uid: EasyPost.Models.API.Insurance.Fee
+  name: Fee
+  href: api/EasyPost.Models.API.Insurance.html#EasyPost_Models_API_Insurance_Fee
+  commentId: P:EasyPost.Models.API.Insurance.Fee
+  fullName: EasyPost.Models.API.Insurance.Fee
+  nameWithType: Insurance.Fee
+- uid: EasyPost.Models.API.Insurance.Fee*
+  name: Fee
+  href: api/EasyPost.Models.API.Insurance.html#EasyPost_Models_API_Insurance_Fee_
+  commentId: Overload:EasyPost.Models.API.Insurance.Fee
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Insurance.Fee
+  nameWithType: Insurance.Fee
 - uid: EasyPost.Models.API.Insurance.FromAddress
   name: FromAddress
   href: api/EasyPost.Models.API.Insurance.html#EasyPost_Models_API_Insurance_FromAddress
