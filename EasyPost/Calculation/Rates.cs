@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace EasyPost.Calculation
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Beta.Rates
     [Obsolete("This class is deprecated. Please use EasyPost.Utilities.Rates instead.", false)]
     public static class Rates
     {
@@ -32,4 +33,5 @@ namespace EasyPost.Calculation
         [Obsolete("This method is deprecated. Please use EasyPost.Utilities.Rates.GetLowestSmartRate() instead. This method will be removed in a future version.", false)]
         public static EasyPost.Models.API.Smartrate GetLowestShipmentSmartrate(IEnumerable<EasyPost.Models.API.Smartrate> smartrates, int deliveryDays, EasyPost.Models.API.SmartrateAccuracy deliveryAccuracy) => Utilities.Rates.GetLowestSmartRate(smartrates, deliveryDays, deliveryAccuracy);
     }
+#pragma warning restore CA1724 // Naming conflicts with Parameters.Beta.Rates
 }

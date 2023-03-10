@@ -52,6 +52,9 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null) => await List<List<Webhook>>("webhooks", parameters, "webhooks");
 
+        [CrudOperations.Read]
+        public async Task<List<Webhook>> All(BetaFeatures.Parameters.Webhooks.All parameters) => await List<List<Webhook>>("webhooks", parameters.ToDictionary(), "webhooks");
+
         /// <summary>
         ///     Retrieve a Webhook from its id.
         /// </summary>

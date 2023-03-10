@@ -43,6 +43,13 @@ namespace EasyPost.Models.API
             return this;
         }
 
+        [CrudOperations.Update]
+        public async Task<Webhook> Update(BetaFeatures.Parameters.Webhooks.Update parameters)
+        {
+            await Update<Webhook>(Method.Patch, $"webhooks/{Id}", parameters.ToDictionary());
+            return this;
+        }
+
         /// <summary>
         ///     Delete this webhook.
         /// </summary>

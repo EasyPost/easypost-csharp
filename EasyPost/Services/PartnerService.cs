@@ -55,6 +55,9 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null) => await List<ReferralCustomerCollection>("referral_customers", parameters);
 
+        [CrudOperations.Read]
+        public async Task<ReferralCustomerCollection> All(BetaFeatures.Parameters.ReferralCustomers.All parameters) => await List<ReferralCustomerCollection>("referral_customers", parameters.ToDictionary());
+
         /// <summary>
         ///     Add a credit card to a Referral Customer.
         ///     This function should be called against a Client configured with the white label partner's API key.

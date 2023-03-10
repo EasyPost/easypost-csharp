@@ -77,6 +77,12 @@ namespace EasyPost.Services
             return shipmentCollection;
         }
 
+        [CrudOperations.Read]
+        public async Task<ShipmentCollection> All(BetaFeatures.Parameters.Shipments.All parameters)
+        {
+            return await List<ShipmentCollection>("shipments", parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     Retrieve a Shipment from its id.
         /// </summary>

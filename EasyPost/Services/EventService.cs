@@ -35,6 +35,9 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<EventCollection> All(Dictionary<string, object>? parameters = null) => await Get<EventCollection>("events", parameters);
 
+        [CrudOperations.Read]
+        public async Task<EventCollection> All(BetaFeatures.Parameters.Events.All parameters) => await Get<EventCollection>("events", parameters.ToDictionary());
+
         /// <summary>
         ///     Retrieve an Event from its id.
         /// </summary>

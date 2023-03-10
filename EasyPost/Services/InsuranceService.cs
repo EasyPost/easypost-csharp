@@ -67,6 +67,9 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null) => await List<InsuranceCollection>("insurances", parameters);
 
+        [CrudOperations.Read]
+        public async Task<InsuranceCollection> All(BetaFeatures.Parameters.Insurance.All parameters) => await List<InsuranceCollection>("insurances", parameters.ToDictionary());
+
         /// <summary>
         ///     Retrieve an Insurance from its id.
         /// </summary>

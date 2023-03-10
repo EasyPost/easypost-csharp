@@ -13,18 +13,22 @@ namespace EasyPost.BetaFeatures.Parameters.Parcels
 
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "height")]
         [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "height")]
+        [NestedRequestParameter(typeof(Beta.Rates.Retrieve), Necessity.Optional, "height")]
         public double? Height { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "length")]
         [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "length")]
+        [NestedRequestParameter(typeof(Beta.Rates.Retrieve), Necessity.Optional, "length")]
         public double? Length { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "weight")]
         [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "weight")]
+        [NestedRequestParameter(typeof(Beta.Rates.Retrieve), Necessity.Optional, "weight")]
         public double? Weight { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "width")]
         [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "width")]
+        [NestedRequestParameter(typeof(Beta.Rates.Retrieve), Necessity.Optional, "width")]
         public double? Width { get; set; }
 
         #endregion

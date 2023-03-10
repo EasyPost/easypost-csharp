@@ -230,6 +230,13 @@ namespace EasyPost.Models.API
             Rates = shipment.Rates;
         }
 
+        [CrudOperations.Update]
+        public async Task RegenerateRates(BetaFeatures.Parameters.Shipments.RegenerateRates parameters)
+        {
+            Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{Id}/rerate", parameters.ToDictionary());
+            Rates = shipment.Rates;
+        }
+
         #endregion
 
         /// <summary>

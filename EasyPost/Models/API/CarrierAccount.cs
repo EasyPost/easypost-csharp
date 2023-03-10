@@ -51,6 +51,13 @@ namespace EasyPost.Models.API
             return this;
         }
 
+        [CrudOperations.Update]
+        public async Task<CarrierAccount> Update(BetaFeatures.Parameters.CarrierAccounts.Update parameters)
+        {
+            await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{Id}", parameters.ToDictionary());
+            return this;
+        }
+
         /// <summary>
         ///     Remove this CarrierAccount from your account.
         /// </summary>

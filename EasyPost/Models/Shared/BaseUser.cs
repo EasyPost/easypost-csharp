@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.API;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.Shared
 {
-    public class BaseUser : EasyPostObject, IUserParameter
+    public class BaseUser : EasyPostObject
     {
         #region JSON Properties
 

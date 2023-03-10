@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.BetaFeatures.Parameters.Webhooks
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Models.API.Webhook.Update"/> API calls.
+    ///     Parameters for <see cref="EasyPost.Models.API.Webhook.Update(Update)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class Update : BaseParameters

@@ -79,6 +79,12 @@ namespace EasyPost.Services
             return pickupCollection;
         }
 
+        [CrudOperations.Read]
+        public async Task<PickupCollection> All(BetaFeatures.Parameters.Pickups.All parameters)
+        {
+            return await All(parameters.ToDictionary());
+        }
+
         #endregion
     }
 }

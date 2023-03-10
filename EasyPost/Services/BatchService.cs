@@ -83,6 +83,9 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null) => await List<BatchCollection>("batches", parameters);
 
+        [CrudOperations.Read]
+        public async Task<BatchCollection> All(BetaFeatures.Parameters.Batches.All parameters) => await List<BatchCollection>("batches", parameters.ToDictionary());
+
         /// <summary>
         ///     Retrieve a Batch from its id.
         /// </summary>

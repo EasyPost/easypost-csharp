@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
@@ -80,7 +81,11 @@ namespace EasyPost.Services
             return trackerCollection;
         }
 
-        // This endpoint does not return a response so we return the request was successful
+        [CrudOperations.Read]
+        public async Task<TrackerCollection> All(BetaFeatures.Parameters.Trackers.All parameters)
+        {
+            return await List<TrackerCollection>("trackers", parameters.ToDictionary());
+        }
 
         /// <summary>
         ///     Retrieve a Tracker from its id.

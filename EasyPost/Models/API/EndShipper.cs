@@ -62,6 +62,14 @@ namespace EasyPost.Models.API
             return this;
         }
 
+        [CrudOperations.Update]
+        public async Task<EndShipper> Update(BetaFeatures.Parameters.EndShippers.Update parameters)
+        {
+            // EndShipper needs Put, not Patch
+            await Update<EndShipper>(Method.Put, $"end_shippers/{Id}", parameters.ToDictionary());
+            return this;
+        }
+
         #endregion
     }
 

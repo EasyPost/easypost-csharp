@@ -54,6 +54,13 @@ namespace EasyPost.Models.API
             return this;
         }
 
+        [CrudOperations.Update]
+        public async Task<Batch> AddShipments(BetaFeatures.Parameters.Batches.AddShipments parameters)
+        {
+            await Update<Batch>(Method.Post, $"batches/{Id}/add_shipments", parameters.ToDictionary());
+            return this;
+        }
+
         /// <summary>
         ///     Add shipments to this batch.
         /// </summary>
@@ -125,6 +132,13 @@ namespace EasyPost.Models.API
         {
             // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
             await Update<Batch>(Method.Post, $"batches/{Id}/remove_shipments", parameters);
+            return this;
+        }
+
+        [CrudOperations.Update]
+        public async Task<Batch> RemoveShipments(BetaFeatures.Parameters.Batches.RemoveShipments parameters)
+        {
+            await Update<Batch>(Method.Post, $"batches/{Id}/remove_shipments", parameters.ToDictionary());
             return this;
         }
 

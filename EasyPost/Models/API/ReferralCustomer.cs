@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
-    public class ReferralCustomer : BaseUser
+    public class ReferralCustomer : BaseUser, IReferralCustomerParameter
     {
         internal ReferralCustomer()
         {

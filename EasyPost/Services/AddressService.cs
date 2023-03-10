@@ -117,6 +117,9 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null) => await List<AddressCollection>("addresses", parameters);
 
+        [CrudOperations.Read]
+        public async Task<AddressCollection> All(BetaFeatures.Parameters.Addresses.All parameters) => await List<AddressCollection>("addresses", parameters.ToDictionary());
+
         /// <summary>
         ///     Retrieve an Address from its id.
         /// </summary>

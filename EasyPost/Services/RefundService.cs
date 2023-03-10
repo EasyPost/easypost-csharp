@@ -50,6 +50,9 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null) => await List<RefundCollection>("refunds", parameters);
 
+        [CrudOperations.Read]
+        public async Task<RefundCollection> All(BetaFeatures.Parameters.Refunds.All parameters) => await List<RefundCollection>("refunds", parameters.ToDictionary());
+
         /// <summary>
         ///     Retrieve a Refund from its id.
         /// </summary>

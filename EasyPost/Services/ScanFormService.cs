@@ -57,6 +57,12 @@ namespace EasyPost.Services
             return scanFormCollection;
         }
 
+        [CrudOperations.Read]
+        public async Task<ScanFormCollection> All(BetaFeatures.Parameters.ScanForms.All parameters)
+        {
+            return await List<ScanFormCollection>("scan_forms", parameters.ToDictionary());
+        }
+
         /// <summary>
         ///     Retrieve a ScanForm from its id.
         /// </summary>

@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.BetaFeatures.Parameters.Users
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Models.API.User.UpdateBrand"/> API calls.
+    ///     Parameters for <see cref="EasyPost.Models.API.User.UpdateBrand(UpdateBrand)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class UpdateBrand : BaseParameters

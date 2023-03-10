@@ -62,6 +62,14 @@ namespace EasyPost.Services
             return reportCollection;
         }
 
+        [CrudOperations.Read]
+        public async Task<ReportCollection> All(string type, BetaFeatures.Parameters.Reports.All parameters)
+        {
+            ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters.ToDictionary());
+            reportCollection.Type = type;
+            return reportCollection;
+        }
+
         /// <summary>
         ///     Retrieve a Report from its id.
         /// </summary>
