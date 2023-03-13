@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal.Attributes;
 using Newtonsoft.Json;
@@ -49,6 +50,11 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(Dictionary<string, object> parameters)
         {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
             // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
             await Update<Batch>(Method.Post, $"batches/{Id}/add_shipments", parameters);
             return this;
@@ -62,6 +68,11 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(BetaFeatures.Parameters.Batches.AddShipments parameters)
         {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
             await Update<Batch>(Method.Post, $"batches/{Id}/add_shipments", parameters.ToDictionary());
             return this;
         }
@@ -97,6 +108,11 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> Buy()
         {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
             await Update<Batch>(Method.Post, $"batches/{Id}/buy");
             return this;
         }
@@ -109,8 +125,30 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> GenerateLabel(string fileFormat = "pdf") // TODO: Remove default value (breaking change)
         {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
             Dictionary<string, object> parameters = new() { { "file_format", fileFormat } };
             await Update<Batch>(Method.Post, $"batches/{Id}/label", parameters);
+            return this;
+        }
+
+        /// <summary>
+        ///     Asynchronously generate a label containing all of the <see cref="Shipment"/> labels belonging to this <see cref="Batch"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.GenerateLabel"/> parameter set.</param>
+        /// <returns>This updated <see cref="Batch"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<Batch> GenerateLabel(BetaFeatures.Parameters.Batches.GenerateLabel parameters)
+        {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
+            await Update<Batch>(Method.Post, $"batches/{Id}/label", parameters.ToDictionary());
             return this;
         }
 
@@ -122,8 +160,30 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> GenerateScanForm(string fileFormat = "pdf") // TODO: Remove default value (breaking change)
         {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
             Dictionary<string, object> parameters = new() { { "file_format", fileFormat } };
             await Update<Batch>(Method.Post, $"batches/{Id}/scan_form", parameters);
+            return this;
+        }
+
+        /// <summary>
+        ///     Asynchronously generate a <see cref="ScanForm"/> for this <see cref="Batch"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.GenerateScanForm"/> parameter set.</param>
+        /// <returns>This updated <see cref="Batch"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<Batch> GenerateScanForm(BetaFeatures.Parameters.Batches.GenerateScanForm parameters)
+        {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
+            await Update<Batch>(Method.Post, $"batches/{Id}/scan_form", parameters.ToDictionary());
             return this;
         }
 
@@ -135,6 +195,11 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(Dictionary<string, object> parameters)
         {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
             // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
             await Update<Batch>(Method.Post, $"batches/{Id}/remove_shipments", parameters);
             return this;
@@ -148,6 +213,11 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(BetaFeatures.Parameters.Batches.RemoveShipments parameters)
         {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
             await Update<Batch>(Method.Post, $"batches/{Id}/remove_shipments", parameters.ToDictionary());
             return this;
         }
@@ -158,9 +228,9 @@ namespace EasyPost.Models.API
         /// <param name="shipmentsToAdd">List of Shipment objects to be removed.</param>
         /// <returns>The updated Batch.</returns>
         [CrudOperations.Update]
-        public async Task<Batch> RemoveShipments(List<Shipment> shipmentsToAdd)
+        public async Task<Batch> RemoveShipments(List<Shipment> shipmentsToRemove)
         {
-            Dictionary<string, object> parameters = new() { { "shipments", shipmentsToAdd } };
+            Dictionary<string, object> parameters = new() { { "shipments", shipmentsToRemove } };
             return await RemoveShipments(parameters);
         }
 

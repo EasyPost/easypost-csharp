@@ -41,7 +41,9 @@ namespace EasyPost.BetaFeatures.Parameters
             // In particular, a lot of the normal functions do additional wrapping of their dictionaries, which would result in invalid JSON schemas being sent to the API
 
             // Construct the dictionary of all parameters
-            PropertyInfo[] properties = GetType().GetProperties();
+            PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance |
+                                                                BindingFlags.NonPublic |
+                                                                BindingFlags.Public);
             foreach (PropertyInfo property in properties)
             {
                 TopLevelRequestParameterAttribute? parameterAttribute = BaseCustomAttribute.GetAttribute<TopLevelRequestParameterAttribute>(property);
@@ -87,7 +89,9 @@ namespace EasyPost.BetaFeatures.Parameters
         protected virtual Dictionary<string, object> ToSubDictionary(Type parentParameterObjectType)
         {
             // Construct the dictionary of all parameters
-            PropertyInfo[] properties = GetType().GetProperties();
+            PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance |
+                                                                BindingFlags.NonPublic |
+                                                                BindingFlags.Public);
             foreach (PropertyInfo property in properties)
             {
                 NestedRequestParameterAttribute? parameterAttribute = NestedRequestParameterAttribute.GetNestedRequestParameterAttributeForParentType(parentParameterObjectType, property);

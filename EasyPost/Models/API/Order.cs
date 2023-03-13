@@ -94,6 +94,23 @@ namespace EasyPost.Models.API
         }
 
         /// <summary>
+        ///     Purchase the <see cref="Shipments"/> within this <see cref="Order"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Orders.Buy"/> parameters set.</param>
+        /// <returns>This updated <see cref="Order"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<Order> Buy(BetaFeatures.Parameters.Orders.Buy parameters)
+        {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
+            await Update<Order>(Method.Post, $"orders/{Id}/buy", parameters.ToDictionary());
+            return this;
+        }
+
+        /// <summary>
         ///     Populate the rates property for this Order.
         /// </summary>
         /// <returns>The task to refresh this Order's rates.</returns>
