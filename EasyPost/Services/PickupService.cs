@@ -41,6 +41,11 @@ namespace EasyPost.Services
             return await Create<Pickup>("pickups", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="Pickup"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Pickups.Create"/> parameter set.</param>
+        /// <returns><see cref="Pickup"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Pickup> Create(BetaFeatures.Parameters.Pickups.Create parameters)
         {

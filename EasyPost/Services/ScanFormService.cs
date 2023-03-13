@@ -28,6 +28,11 @@ namespace EasyPost.Services
             return await Create<ScanForm>("scan_forms", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="ScanForm"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.Create"/> parameter set.</param>
+        /// <returns><see cref="ScanForm"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<ScanForm> Create(BetaFeatures.Parameters.ScanForms.Create parameters)
         {

@@ -36,6 +36,11 @@ namespace EasyPost.Services
             return await Create<Tracker>("trackers", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="Tracker"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Trackers.Create"/> parameter set.</param>
+        /// <returns><see cref="Tracker"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Tracker> Create(BetaFeatures.Parameters.Trackers.Create parameters)
         {

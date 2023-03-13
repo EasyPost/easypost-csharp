@@ -34,6 +34,11 @@ namespace EasyPost.Services
             return await Create<Batch>("batches", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="Batch"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.Create"/> parameter set.</param>
+        /// <returns><see cref="Batch"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Batch> Create(BetaFeatures.Parameters.Batches.Create parameters)
         {

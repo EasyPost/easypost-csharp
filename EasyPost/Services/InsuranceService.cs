@@ -41,6 +41,11 @@ namespace EasyPost.Services
             return await Create<Insurance>("insurances", parameters);
         }
 
+        /// <summary>
+        ///     Create <see cref="Insurance"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Insurance.Create"/> parameter set.</param>
+        /// <returns><see cref="Insurance"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Insurance> Create(BetaFeatures.Parameters.Insurance.Create parameters)
         {

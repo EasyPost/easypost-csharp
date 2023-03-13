@@ -47,6 +47,11 @@ namespace EasyPost.Services
             return await Create<Shipment>("shipments", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="ScanForm"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.Create"/> parameter set.</param>
+        /// <returns><see cref="ScanForm"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Shipment> Create(BetaFeatures.Parameters.Shipments.Create parameters)
         {

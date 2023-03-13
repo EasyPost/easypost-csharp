@@ -37,6 +37,11 @@ namespace EasyPost.Services
             return await Create<Webhook>("webhooks", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="Webhook"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Webhooks.Create"/> parameter set.</param>
+        /// <returns><see cref="Webhook"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Webhook> Create(BetaFeatures.Parameters.Webhooks.Create parameters)
         {

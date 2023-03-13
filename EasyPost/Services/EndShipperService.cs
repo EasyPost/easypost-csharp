@@ -43,6 +43,11 @@ namespace EasyPost.Services
             return await Create<EndShipper>("end_shippers", parameters);
         }
 
+        /// <summary>
+        ///     Create an <see cref="EndShipper"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.Create"/> parameter set.</param>
+        /// <returns><see cref="EndShipper"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<EndShipper> Create(BetaFeatures.Parameters.EndShippers.Create parameters)
         {

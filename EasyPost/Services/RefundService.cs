@@ -32,6 +32,11 @@ namespace EasyPost.Services
             return await Create<List<Refund>>("refunds", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="Refund"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Refunds.Create"/> parameter set.</param>
+        /// <returns><see cref="Refund"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<List<Refund>> Create(BetaFeatures.Parameters.Refunds.Create parameters)
         {

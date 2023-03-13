@@ -40,6 +40,11 @@ namespace EasyPost.Services
             return await Create<CustomsInfo>("customs_infos", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="CustomsInfo"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.CustomsInfo.Create"/> parameter set.</param>
+        /// <returns><see cref="CustomsInfo"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<CustomsInfo> Create(BetaFeatures.Parameters.CustomsInfo.Create parameters)
         {
