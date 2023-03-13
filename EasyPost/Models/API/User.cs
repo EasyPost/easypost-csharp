@@ -67,6 +67,11 @@ namespace EasyPost.Models.API
             return this;
         }
 
+        /// <summary>
+        ///     Update this <see cref="User"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.Update"/> parameter set.</param>
+        /// <returns>This updated <see cref="User"/> instance.</returns>
         [CrudOperations.Update]
         public async Task<User> Update(BetaFeatures.Parameters.Users.Update parameters)
         {

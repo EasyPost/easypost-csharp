@@ -51,6 +51,11 @@ namespace EasyPost.Models.API
             return this;
         }
 
+        /// <summary>
+        ///     Update this <see cref="CarrierAccount"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.CarrierAccounts.Update"/> parameter set.</param>
+        /// <returns>This updated <see cref="CarrierAccount"/> instance.</returns>
         [CrudOperations.Update]
         public async Task<CarrierAccount> Update(BetaFeatures.Parameters.CarrierAccounts.Update parameters)
         {

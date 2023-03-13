@@ -43,6 +43,11 @@ namespace EasyPost.Models.API
             return this;
         }
 
+        /// <summary>
+        ///     Update this <see cref="Webhook"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Webhooks.Update"/> parameter set.</param>
+        /// <returns>This updated <see cref="Webhook"/> instance.</returns>
         [CrudOperations.Update]
         public async Task<Webhook> Update(BetaFeatures.Parameters.Webhooks.Update parameters)
         {
