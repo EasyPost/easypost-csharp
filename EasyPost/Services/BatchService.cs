@@ -83,6 +83,11 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null) => await List<BatchCollection>("batches", parameters);
 
+        /// <summary>
+        ///     List all <see cref="Batch"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.All"/> parameter set.</param>
+        /// <returns><see cref="BatchCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<BatchCollection> All(BetaFeatures.Parameters.Batches.All parameters) => await List<BatchCollection>("batches", parameters.ToDictionary());
 

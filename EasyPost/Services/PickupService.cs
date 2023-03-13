@@ -79,6 +79,11 @@ namespace EasyPost.Services
             return pickupCollection;
         }
 
+        /// <summary>
+        ///     List all <see cref="Pickup"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Pickups.All"/> parameter set.</param>
+        /// <returns><see cref="PickupCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<PickupCollection> All(BetaFeatures.Parameters.Pickups.All parameters)
         {

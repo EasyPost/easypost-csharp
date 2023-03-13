@@ -55,6 +55,11 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null) => await List<ReferralCustomerCollection>("referral_customers", parameters);
 
+        /// <summary>
+        ///     List all <see cref="ReferralCustomer"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.All"/> parameter set.</param>
+        /// <returns><see cref="ReferralCustomerCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<ReferralCustomerCollection> All(BetaFeatures.Parameters.ReferralCustomers.All parameters) => await List<ReferralCustomerCollection>("referral_customers", parameters.ToDictionary());
 

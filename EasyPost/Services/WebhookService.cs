@@ -52,6 +52,11 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null) => await List<List<Webhook>>("webhooks", parameters, "webhooks");
 
+        /// <summary>
+        ///     List all <see cref="Webhook"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Webhooks.All"/> parameter set.</param>
+        /// <returns><see cref="WebhookCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<List<Webhook>> All(BetaFeatures.Parameters.Webhooks.All parameters) => await List<List<Webhook>>("webhooks", parameters.ToDictionary(), "webhooks");
 
@@ -69,7 +74,7 @@ namespace EasyPost.Services
         /// <param name="data">Byte data of the received webhook request.</param>
         /// <param name="headers">Dictionary of headers from the received webhook request.</param>
         /// <param name="secret">Secret used to sign webhooks.</param>
-        /// <returns>An EasyPost.Event instance if webhook is valid.</returns>
+        /// <returns>An <see cref="Event"/> instance if webhook is valid.</returns>
         /// <exception cref="SignatureVerificationError">If webhook has an invalid signature.</exception>
         // ReSharper disable once MemberCanBeMadeStatic.Global
         // users could technically access this method without using a Client object, but we want to discourage that.

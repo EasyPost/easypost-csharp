@@ -77,6 +77,11 @@ namespace EasyPost.Services
             return shipmentCollection;
         }
 
+        /// <summary>
+        ///     List all <see cref="Shipment"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Shipments.All"/> parameter set.</param>
+        /// <returns><see cref="ShipmentCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<ShipmentCollection> All(BetaFeatures.Parameters.Shipments.All parameters)
         {

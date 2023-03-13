@@ -117,6 +117,11 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null) => await List<AddressCollection>("addresses", parameters);
 
+        /// <summary>
+        ///     List all <see cref="Address"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Addresses.All"/> parameter set.</param>
+        /// <returns><see cref="AddressCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<AddressCollection> All(BetaFeatures.Parameters.Addresses.All parameters) => await List<AddressCollection>("addresses", parameters.ToDictionary());
 

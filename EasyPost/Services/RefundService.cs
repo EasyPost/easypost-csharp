@@ -50,6 +50,11 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null) => await List<RefundCollection>("refunds", parameters);
 
+        /// <summary>
+        ///     List all <see cref="Refund"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Refunds.All"/> parameter set.</param>
+        /// <returns><see cref="RefundCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<RefundCollection> All(BetaFeatures.Parameters.Refunds.All parameters) => await List<RefundCollection>("refunds", parameters.ToDictionary());
 

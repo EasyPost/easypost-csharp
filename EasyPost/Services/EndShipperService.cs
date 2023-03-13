@@ -69,6 +69,11 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null) => await List<EndShipperCollection>("end_shippers", parameters);
 
+        /// <summary>
+        ///     List all <see cref="EndShipper"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.All"/> parameter set.</param>
+        /// <returns><see cref="EndShipperCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipperCollection> All(BetaFeatures.Parameters.EndShippers.All parameters) => await List<EndShipperCollection>("end_shippers", parameters.ToDictionary());
 

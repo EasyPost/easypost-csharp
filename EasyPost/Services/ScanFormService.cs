@@ -57,6 +57,11 @@ namespace EasyPost.Services
             return scanFormCollection;
         }
 
+        /// <summary>
+        ///     List all <see cref="ScanForm"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.All"/> parameter set.</param>
+        /// <returns><see cref="ScanFormCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<ScanFormCollection> All(BetaFeatures.Parameters.ScanForms.All parameters)
         {
