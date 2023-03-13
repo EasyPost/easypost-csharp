@@ -38,6 +38,11 @@ namespace EasyPost.Models.API
             return await Request<Brand>(Method.Patch, $"users/{Id}/brand", parameters);
         }
 
+        /// <summary>
+        ///     Update this <see cref="User"/>'s <see cref="Brand"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.UpdateBrand"/> parameter set.</param>
+        /// <returns>This updated <see cref="Brand"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Brand> UpdateBrand(BetaFeatures.Parameters.Users.UpdateBrand parameters)
         {

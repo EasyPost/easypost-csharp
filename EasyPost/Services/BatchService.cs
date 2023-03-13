@@ -63,6 +63,11 @@ namespace EasyPost.Services
             return await Create<Batch>("batches/create_and_buy", parameters);
         }
 
+        /// <summary>
+        ///     Create and buy a <see cref="Batch"/> in one step.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.Create"/> parameter set.</param>
+        /// <returns><see cref="Batch"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Batch> CreateAndBuy(BetaFeatures.Parameters.Batches.Create parameters)
         {

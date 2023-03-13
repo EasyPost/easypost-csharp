@@ -39,6 +39,12 @@ namespace EasyPost.Services
             return await Create<ReferralCustomer>("referral_customers", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="ReferralCustomer"/>.
+        ///     This function should be called against a <see cref="Client"/> configured with the white label partner's API key.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer"/> parameter set.</param>
+        /// <returns><see cref="ReferralCustomer"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<ReferralCustomer> CreateReferral(BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer parameters)
         {

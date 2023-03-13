@@ -54,6 +54,11 @@ namespace EasyPost.Models.API
             return this;
         }
 
+        /// <summary>
+        ///     Add <see cref="Shipment"/>s to this <see cref="Batch"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.AddShipments"/> parameter set.</param>
+        /// <returns>This updated <see cref="Batch"/> instance.</returns>
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(BetaFeatures.Parameters.Batches.AddShipments parameters)
         {
@@ -135,6 +140,11 @@ namespace EasyPost.Models.API
             return this;
         }
 
+        /// <summary>
+        ///     Remove <see cref="Shipment"/>s from this <see cref="Batch"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.RemoveShipments"/> parameter set.</param>
+        /// <returns>This updated <see cref="Batch"/> instance.</returns>
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(BetaFeatures.Parameters.Batches.RemoveShipments parameters)
         {

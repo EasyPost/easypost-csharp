@@ -33,6 +33,11 @@ namespace EasyPost.Services
             return await Create<User>("users", parameters);
         }
 
+        /// <summary>
+        ///     Create a child <see cref="User"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.CreateChild"/> parameter set.</param>
+        /// <returns><see cref="User"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<User> CreateChild(BetaFeatures.Parameters.Users.CreateChild parameters)
         {

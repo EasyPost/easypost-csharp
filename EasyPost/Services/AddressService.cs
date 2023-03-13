@@ -97,6 +97,11 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters) => await Create<Address>("addresses/create_and_verify", parameters, "address");
 
+        /// <summary>
+        ///     Create and verify an <see cref="Address"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Addresses.Create"/> parameter set.</param>
+        /// <returns><see cref="Address"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Address> CreateAndVerify(BetaFeatures.Parameters.Addresses.Create parameters)
         {

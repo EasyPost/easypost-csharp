@@ -230,6 +230,11 @@ namespace EasyPost.Models.API
             Rates = shipment.Rates;
         }
 
+        /// <summary>
+        ///     Refresh <see cref="Rates"/> for this <see cref="Shipment"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Shipments.RegenerateRates"/> parameter set.</param>
+        /// <returns>This updated <see cref="Shipment"/> instance.</returns>
         [CrudOperations.Update]
         public async Task RegenerateRates(BetaFeatures.Parameters.Shipments.RegenerateRates parameters)
         {
