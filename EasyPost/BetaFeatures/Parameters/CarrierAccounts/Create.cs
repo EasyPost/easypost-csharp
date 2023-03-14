@@ -28,6 +28,9 @@ namespace EasyPost.BetaFeatures.Parameters.CarrierAccounts
         [TopLevelRequestParameter(Necessity.Required, "carrier_account", "type")]
         public string? Type { get; set; }
 
+        [TopLevelRequestParameter(Necessity.Optional, "carrier_account", "registration_data")]
+        public Dictionary<string, object?>? RegistrationData { get; set; }
+
         #endregion
     }
 }
