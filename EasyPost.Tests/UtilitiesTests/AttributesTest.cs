@@ -13,7 +13,7 @@ namespace EasyPost.Tests.UtilitiesTests
     {
     }
 
-    #pragma warning disable CA1852 // Can be sealed
+#pragma warning disable CA1852 // Can be sealed
     internal class ExampleClass
     {
         [Example]
@@ -74,7 +74,7 @@ namespace EasyPost.Tests.UtilitiesTests
         {
         }
     }
-    #pragma warning restore CA1852 // Can be sealed
+#pragma warning restore CA1852 // Can be sealed
 
     public class AttributesTest
     {

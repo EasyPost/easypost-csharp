@@ -288,5 +288,5 @@ namespace EasyPost.Utilities
             return lowestSmartRate;
         }
     }
-    #pragma warning restore CA1724
+#pragma warning restore CA1724
 }
