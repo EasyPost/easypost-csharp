@@ -57,6 +57,7 @@ namespace EasyPost.Services
         public async Task CreateList(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("trackers");
+            // This endpoint does not return a response, so we simply send the request and only throw an exception if the API returns an error.
             await CreateNoResponse("trackers/create_list", parameters);
         }
 

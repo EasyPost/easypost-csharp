@@ -225,7 +225,7 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Remove shipments to this batch.
         /// </summary>
-        /// <param name="shipmentsToAdd">List of Shipment objects to be removed.</param>
+        /// <param name="shipmentsToRemove">List of Shipment objects to be removed.</param>
         /// <returns>The updated Batch.</returns>
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(List<Shipment> shipmentsToRemove)

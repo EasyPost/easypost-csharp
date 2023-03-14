@@ -61,7 +61,7 @@ namespace EasyPost.Services
         ///     List all <see cref="Webhook"/> objects.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Webhooks.All"/> parameter set.</param>
-        /// <returns><see cref="WebhookCollection"/> instance.</returns>
+        /// <returns>List of <see cref="Webhook"/> instances.</returns>
         [CrudOperations.Read]
         public async Task<List<Webhook>> All(BetaFeatures.Parameters.Webhooks.All parameters) => await List<List<Webhook>>("webhooks", parameters.ToDictionary(), "webhooks");
 

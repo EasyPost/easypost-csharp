@@ -80,6 +80,9 @@ namespace EasyPost.Tests.UtilitiesTests
     {
         #region Tests
 
+        /// <summary>
+        ///     This test confirms that the GetMethodsWithAttribute method can get public methods annotated with the ExampleAttribute.
+        /// </summary>
         [Fact]
         [Testing.Function]
         public void TestGetMethodsWithAttributes()
@@ -94,22 +97,26 @@ namespace EasyPost.Tests.UtilitiesTests
             Assert.True(methods.Any());
         }
 
+        /// <summary>
+        ///     This test confirms that the GetMethodsWithAttribute method can get non-public and static methods, in addition to public methods, annotated with the ExampleAttribute.
+        /// </summary>
         [Fact]
         [Testing.Logic]
         public void TestCanGetNonPublicAndStaticMethodsWithAttributes()
         {
             // via type
             IEnumerable<MethodInfo> methods = BaseCustomAttribute.GetMethodsWithAttribute<ExampleAttribute>(typeof(ExampleClass));
-            // we should have 8 methods with the attribute
             Assert.True(methods.Count() == 8);
 
             // via instance
             ExampleClass exampleClass = new();
             methods = BaseCustomAttribute.GetMethodsWithAttribute<ExampleAttribute>(exampleClass);
-            // we should have 8 methods with the attribute
             Assert.True(methods.Count() == 8);
         }
 
+        /// <summary>
+        ///     This test confirms that the GetPropertiesWithAttribute method can get public properties annotated with the ExampleAttribute.
+        /// </summary>
         [Fact]
         [Testing.Function]
         public void TestGetPropertiesWithAttributes()
@@ -124,19 +131,20 @@ namespace EasyPost.Tests.UtilitiesTests
             Assert.True(properties.Any());
         }
 
+        /// <summary>
+        ///     This test confirms that the GetPropertiesWithAttribute method can get non-public and static properties, in addition to public properties, annotated with the ExampleAttribute.
+        /// </summary>
         [Fact]
         [Testing.Logic]
         public void TestCanGetNonPublicAndStaticPropertiesWithAttributes()
         {
             // via type
             IEnumerable<PropertyInfo> properties = BaseCustomAttribute.GetPropertiesWithAttribute<ExampleAttribute>(typeof(ExampleClass));
-            // we should have 8 properties with the attribute
             Assert.True(properties.Count() == 8);
 
             // via instance
             ExampleClass exampleClass = new();
             properties = BaseCustomAttribute.GetPropertiesWithAttribute<ExampleAttribute>(exampleClass);
-            // we should have 8 properties with the attribute
             Assert.True(properties.Count() == 8);
         }
 
