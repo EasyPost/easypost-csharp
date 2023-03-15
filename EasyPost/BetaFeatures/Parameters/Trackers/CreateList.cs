@@ -63,7 +63,7 @@ namespace EasyPost.BetaFeatures.Parameters.Trackers
         #endregion
     }
 
-    internal class CreateListTracker
+    internal sealed class CreateListTracker
     {
         public string? Carrier { get; set; }
         public string TrackingCode { get; set; }

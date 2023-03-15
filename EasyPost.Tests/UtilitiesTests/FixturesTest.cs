@@ -19,7 +19,7 @@ namespace EasyPost.Tests.UtilitiesTests
         {
             Dictionary<string, object> fixture = Fixtures.BasicCarrierAccount;
 
-            BetaFeatures.Parameters.CarrierAccounts.Create parameters = new ()
+            BetaFeatures.Parameters.CarrierAccounts.Create parameters = new()
             {
                 Credentials = fixture.GetOrNull<Dictionary<string, object?>>("credentials"),
                 TestCredentials = fixture.GetOrNull<Dictionary<string, object?>>("test_credentials"),
