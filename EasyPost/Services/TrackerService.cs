@@ -77,7 +77,6 @@ namespace EasyPost.Services
         public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
         {
             TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters);
-            trackerCollection.Client = Client;
             return trackerCollection;
         }
 
