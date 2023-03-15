@@ -10,7 +10,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class EndShipperServiceTests : UnitTest
     {
-        public EndShipperServiceTests() : base("end_shipper_service")
+        public EndShipperServiceTests() : base("end_shipper_service_with_parameters")
         {
         }
 

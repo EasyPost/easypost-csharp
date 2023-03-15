@@ -10,7 +10,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class RefundServiceTests : UnitTest
     {
-        public RefundServiceTests() : base("refund_service")
+        public RefundServiceTests() : base("refund_service_with_parameters")
         {
         }
 
@@ -25,16 +25,23 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         {
             UseVCR("create");
 
-            Dictionary<string, object> data = Fixtures.OneCallBuyShipment;
+            Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
 
-            Shipment shipment = await Client.Shipment.Create(data);
+            BetaFeatures.Parameters.Shipments.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+
+            Shipment shipment = await Client.Shipment.Create(shipmentParameters);
+
             Shipment retrievedShipment = await Client.Shipment.Retrieve(shipment.Id); // We need to retrieve the shipment so that the tracking_code has time to populate
 
-            List<Refund> refunds = await Client.Refund.Create(new Dictionary<string, object>
+            Dictionary<string, object> refundData = new Dictionary<string, object>
             {
                 { "carrier", Fixtures.Usps },
-                { "tracking_codes", new List<string> { retrievedShipment.TrackingCode } }
-            });
+                { "tracking_codes", new List<string> { retrievedShipment.TrackingCode } },
+            };
+
+            BetaFeatures.Parameters.Refunds.Create refundParameters = Fixtures.Parameters.Refunds.Create(refundData);
+
+            List<Refund> refunds = await Client.Refund.Create(refundParameters);
 
             foreach (Refund item in refunds)
             {

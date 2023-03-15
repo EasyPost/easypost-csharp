@@ -1,0 +1,51 @@
+[
+  {
+    "Duration": 499,
+    "RecordedAt": "2023-03-15T12:49:50.988145-06:00",
+    "Request": {
+      "Body": "",
+      "BodyContentType": "Text",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/scan_forms?page_size=5"
+    },
+    "Response": {
+      "Body": "{\"scan_forms\":[{\"id\":\"sf_c7e5f47522254f03b4249722f871c2c5\",\"object\":\"ScanForm\",\"created_at\":\"2023-03-15T18:49:44Z\",\"updated_at\":\"2023-03-15T18:49:45Z\",\"tracking_codes\":[\"9400100104262189490480\"],\"address\":{\"id\":\"adr_2642195ec36211ed8004ac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2023-03-15T12:49:43-06:00\",\"updated_at\":\"2023-03-15T12:49:43-06:00\",\"name\":\"Elizabeth Swan\",\"company\":null,\"street1\":\"179 N Harbor Dr\",\"street2\":null,\"city\":\"Redondo Beach\",\"state\":\"CA\",\"zip\":\"90277\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"status\":\"created\",\"message\":null,\"form_url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20230315/b3e1ea9adca8488bb0199ff4be631126.pdf\",\"form_file_type\":null,\"batch_id\":\"batch_7d3851e1f026436a98f42dca92bd48b4\",\"confirmation\":null},{\"id\":\"sf_06beb1b3e6644bf19257d5d66c5dcd75\",\"object\":\"ScanForm\",\"created_at\":\"2023-03-15T18:42:41Z\",\"updated_at\":\"2023-03-15T18:42:41Z\",\"tracking_codes\":[\"9400100104262189488647\"],\"address\":{\"id\":\"adr_2a1507ecc36111ed8209ac1f6bc7bdc6\",\"object\":\"Address\",\"created_at\":\"2023-03-15T12:42:40-06:00\",\"updated_at\":\"2023-03-15T12:42:40-06:00\",\"name\":\"Elizabeth Swan\",\"company\":null,\"street1\":\"179 N Harbor Dr\",\"street2\":null,\"city\":\"Redondo Beach\",\"state\":\"CA\",\"zip\":\"90277\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"status\":\"created\",\"message\":null,\"form_url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20230315/d81a6d20606d4391a9b5d7cc340c3661.pdf\",\"form_file_type\":null,\"batch_id\":\"batch_268103dca86b437a995c4261331ce796\",\"confirmation\":null},{\"id\":\"sf_38b20fc140d04664925428257a338ea3\",\"object\":\"ScanForm\",\"created_at\":\"2023-03-15T18:42:33Z\",\"updated_at\":\"2023-03-15T18:42:33Z\",\"tracking_codes\":[\"9400100104262189488548\"],\"address\":{\"id\":\"adr_251d6aeac36111eda0a0ac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2023-03-15T12:42:32-06:00\",\"updated_at\":\"2023-03-15T12:42:32-06:00\",\"name\":\"Elizabeth Swan\",\"company\":null,\"street1\":\"179 N Harbor Dr\",\"street2\":null,\"city\":\"Redondo Beach\",\"state\":\"CA\",\"zip\":\"90277\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"status\":\"created\",\"message\":null,\"form_url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20230315/d528758790de41f8b891ce329f98882e.pdf\",\"form_file_type\":null,\"batch_id\":\"batch_ada61f5bd33d4245a0bb5a782bc1e4e3\",\"confirmation\":null},{\"id\":\"sf_018366366b324b438602b2a339cea7ec\",\"object\":\"ScanForm\",\"created_at\":\"2023-03-15T18:40:21Z\",\"updated_at\":\"2023-03-15T18:40:22Z\",\"tracking_codes\":[\"9400100104262189487022\"],\"address\":{\"id\":\"adr_d6b809c0c36011ed83e4ac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2023-03-15T12:40:20-06:00\",\"updated_at\":\"2023-03-15T12:40:20-06:00\",\"name\":\"Elizabeth Swan\",\"company\":null,\"street1\":\"179 N Harbor Dr\",\"street2\":null,\"city\":\"Redondo Beach\",\"state\":\"CA\",\"zip\":\"90277\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"status\":\"created\",\"message\":null,\"form_url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20230315/21709cde2d274119bea2a7308aadb1f0.pdf\",\"form_file_type\":null,\"batch_id\":\"batch_88ed4034c28d4c98a3e6cdd3f3b2e431\",\"confirmation\":null},{\"id\":\"sf_63fa790f4255426a90eca5abeb16a139\",\"object\":\"ScanForm\",\"created_at\":\"2023-03-15T18:40:13Z\",\"updated_at\":\"2023-03-15T18:40:13Z\",\"tracking_codes\":[\"9400100104262189486858\"],\"address\":{\"id\":\"adr_d1d02f29c36011eda7a3ac1f6bc7b362\",\"object\":\"Address\",\"created_at\":\"2023-03-15T12:40:12-06:00\",\"updated_at\":\"2023-03-15T12:40:12-06:00\",\"name\":\"Elizabeth Swan\",\"company\":null,\"street1\":\"179 N Harbor Dr\",\"street2\":null,\"city\":\"Redondo Beach\",\"state\":\"CA\",\"zip\":\"90277\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"status\":\"created\",\"message\":null,\"form_url\":\"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20230315/ebdbb76bc8044f7dac84ad44215fcfce.pdf\",\"form_file_type\":null,\"batch_id\":\"batch_c152e6f89bbd4da688daa75e10411939\",\"confirmation\":null}],\"has_more\":true}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "4552"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "274945026412134ee6882d87001de7a1",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "ETag": "W/\"0be5894e09484dd45cf12d6e78c1b79e\"",
+        "x-runtime": "0.042443",
+        "x-node": "bigweb11nuq",
+        "x-version-label": "easypost-202303142258-f5b873fcbd-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb2nuq a40ea751fd,intlb1wdc a40ea751fd,extlb3wdc a40ea751fd",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  }
+]

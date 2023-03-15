@@ -10,7 +10,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class CustomsItemServiceTests : UnitTest
     {
-        public CustomsItemServiceTests() : base("customs_item_service")
+        public CustomsItemServiceTests() : base("customs_item_service_with_parameters")
         {
         }
 

@@ -10,7 +10,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class ReportServiceTests : UnitTest
     {
-        public ReportServiceTests() : base("report_service")
+        public ReportServiceTests() : base("report_service_with_parameters")
         {
         }
 
@@ -31,7 +31,9 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 { "end_date", Fixtures.ReportDate },
             };
 
-            Report report = await Client.Report.Create(Fixtures.ReportType, data);
+            BetaFeatures.Parameters.Reports.Create parameters = Fixtures.Parameters.Reports.Create(data);
+
+            Report report = await Client.Report.Create(Fixtures.ReportType, parameters);
 
             Assert.IsType<Report>(report);
             Assert.StartsWith(Fixtures.ReportIdPrefix, report.Id);
@@ -50,12 +52,15 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 "from_company"
             };
 
-            Dictionary<string, object> parameters = new()
+            Dictionary<string, object> data = new()
             {
                 { "additional_columns", additionalColumns },
                 { "start_date", Fixtures.ReportDate },
                 { "end_date", Fixtures.ReportDate },
             };
+
+            BetaFeatures.Parameters.Reports.Create parameters = Fixtures.Parameters.Reports.Create(data);
+
             Report report = await Client.Report.Create("shipment", parameters);
 
             // verify parameters by checking VCR cassette for correct URL
@@ -75,12 +80,15 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 
             List<string> columns = new() { "usps_zone" };
 
-            Dictionary<string, object> parameters = new()
+            Dictionary<string, object> data = new()
             {
                 { "columns", columns },
                 { "start_date", Fixtures.ReportDate },
                 { "end_date", Fixtures.ReportDate },
             };
+
+            BetaFeatures.Parameters.Reports.Create parameters = Fixtures.Parameters.Reports.Create(data);
+
             Report report = await Client.Report.Create("shipment", parameters);
 
             // verify parameters by checking VCR cassette for correct URL

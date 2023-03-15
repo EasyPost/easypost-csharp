@@ -37,7 +37,11 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         {
             UseVCR("create_child");
 
-            User user = await Client.User.CreateChild(new Dictionary<string, object> { { "name", "Test User" } });
+            Dictionary<string, object> data = new Dictionary<string, object> { { "name", "Test User" } };
+
+            BetaFeatures.Parameters.Users.CreateChild parameters = Fixtures.Parameters.Users.CreateChild(data);
+
+            User user = await Client.User.CreateChild(parameters);
             CleanUpAfterTest(user.Id);
 
             Assert.IsType<User>(user);

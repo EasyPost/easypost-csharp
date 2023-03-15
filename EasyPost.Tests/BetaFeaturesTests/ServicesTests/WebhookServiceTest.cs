@@ -13,7 +13,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         // NOTE: Because the API does not allow two webhooks with the same URL,
         // and these tests run in parallel, each test needs to have a unique URL.
 
-        public WebhookServiceTests() : base("webhook_service") =>
+        public WebhookServiceTests() : base("webhook_service_with_parameters") =>
             CleanupFunction = async id =>
             {
                 try
@@ -42,7 +42,11 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 
             const string url = "https://example.com/create";
 
-            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
+            Dictionary<string, object> data = new Dictionary<string, object> { { "url", url } };
+
+            BetaFeatures.Parameters.Webhooks.Create parameters = Fixtures.Parameters.Webhooks.Create(data);
+
+            Webhook webhook = await Client.Webhook.Create(parameters);
             CleanUpAfterTest(webhook.Id);
 
             Assert.IsType<Webhook>(webhook);

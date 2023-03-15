@@ -8,7 +8,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class BillingServiceTests : UnitTest
     {
-        public BillingServiceTests() : base("billing_service")
+        public BillingServiceTests() : base("billing_service_with_parameters")
         {
         }
 

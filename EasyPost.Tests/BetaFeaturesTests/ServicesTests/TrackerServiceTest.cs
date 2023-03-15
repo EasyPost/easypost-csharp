@@ -11,7 +11,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class TrackerServiceTests : UnitTest
     {
-        public TrackerServiceTests() : base("tracker_service")
+        public TrackerServiceTests() : base("tracker_service_with_parameters")
         {
         }
 
@@ -26,7 +26,13 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         {
             UseVCR("create");
 
-            Tracker tracker = await Client.Tracker.Create(Fixtures.Usps, "EZ1000000001");
+            BetaFeatures.Parameters.Trackers.Create parameters = new()
+            {
+                Carrier = Fixtures.Usps,
+                TrackingCode = "EZ1000000001",
+            };
+
+            Tracker tracker = await Client.Tracker.Create(parameters);
 
             Assert.IsType<Tracker>(tracker);
             Assert.StartsWith("trk_", tracker.Id);
@@ -40,12 +46,12 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         {
             UseVCR("create_list");
 
-            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.Tracker.CreateList(new Dictionary<string, object>
-            {
-                { "0", new Dictionary<string, object> { { "tracking_code", "EZ1000000001" } } },
-                { "1", new Dictionary<string, object> { { "tracking_code", "EZ1000000002" } } },
-                { "2", new Dictionary<string, object> { { "tracking_code", "EZ1000000003" } } }
-            }));
+            BetaFeatures.Parameters.Trackers.CreateList parameters = new();
+            parameters.AddTracker("EZ1000000001");
+            parameters.AddTracker("EZ1000000002");
+            parameters.AddTracker("EZ1000000003");
+
+            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.Tracker.CreateList(parameters));
 
             Assert.Null(possibleException);
         }

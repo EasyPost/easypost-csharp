@@ -10,7 +10,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class BatchServiceTests : UnitTest
     {
-        public BatchServiceTests() : base("batch_service")
+        public BatchServiceTests() : base("batch_service_with_parameters")
         {
         }
 

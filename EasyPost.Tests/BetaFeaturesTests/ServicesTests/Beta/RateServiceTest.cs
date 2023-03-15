@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using EasyPost.Models.API.Beta;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
-using EasyPost.Utilities;
 using Xunit;
 
 namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests.Beta
@@ -22,32 +21,18 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests.Beta
 
         [Fact]
         [Testing.Function]
-        public async Task TestGetLowestRateStaticFunction()
+        public async Task TestGetRates()
         {
-            UseVCR("get_lowest_rate_static_function");
+            UseVCR("get_rates");
 
-            Dictionary<string, object> shipmentData = Fixtures.BasicShipment;
+            Dictionary<string, object> data = Fixtures.BasicShipment;
 
-            List<StatelessRate> rates = await Client.Beta.Rate.RetrieveStatelessRates(shipmentData);
+            BetaFeatures.Parameters.Beta.Rates.Retrieve parameters = Fixtures.Parameters.Rates.RetrieveBeta(data);
 
-            StatelessRate lowestStatelessRate = Utilities.Rates.GetLowestStatelessRate(rates);
+            List<StatelessRate> rates = await Client.Beta.Rate.RetrieveStatelessRates(parameters);
 
-            Assert.Equal("First", lowestStatelessRate.Service);
-        }
-
-        [Fact]
-        [Testing.Function]
-        public async Task TestGetLowestRateExtensionFunction()
-        {
-            UseVCR("get_lowest_rate_extension_function");
-
-            Dictionary<string, object> shipmentData = Fixtures.BasicShipment;
-
-            List<StatelessRate> rates = await Client.Beta.Rate.RetrieveStatelessRates(shipmentData);
-
-            StatelessRate lowestStatelessRate = rates.GetLowest();
-
-            Assert.Equal("First", lowestStatelessRate.Service);
+            Assert.NotNull(rates);
+            Assert.NotEmpty(rates);
         }
 
         #endregion

@@ -10,7 +10,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class EventServiceTests : UnitTest
     {
-        public EventServiceTests() : base("event_service") =>
+        public EventServiceTests() : base("event_service_with_parameters") =>
             CleanupFunction = async id =>
             {
                 try

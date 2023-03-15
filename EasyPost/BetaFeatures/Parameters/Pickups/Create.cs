@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Attributes;
@@ -29,15 +28,15 @@ namespace EasyPost.BetaFeatures.Parameters.Pickups
         public bool? IsAccountAddress { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "max_datetime")]
-        public DateTime? MaxDatetime { get; set; }
+        public string? MaxDatetime { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "min_datetime")]
-        public DateTime? MinDatetime { get; set; }
+        public string? MinDatetime { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "reference")]
         public string? Reference { get; set; }
 
-        [TopLevelRequestParameter(Necessity.Optional, "pickup", "shipment")]
+        [TopLevelRequestParameter(Necessity.Required, "pickup", "shipment")]
         public IShipmentParameter? Shipment { get; set; }
 
         #endregion

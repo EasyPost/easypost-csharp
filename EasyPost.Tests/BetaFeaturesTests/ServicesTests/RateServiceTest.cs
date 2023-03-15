@@ -8,7 +8,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class RateServiceTests : UnitTest
     {
-        public RateServiceTests() : base("rate_service")
+        public RateServiceTests() : base("rate_service_with_parameters")
         {
         }
 

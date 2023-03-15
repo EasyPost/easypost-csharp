@@ -11,6 +11,14 @@ namespace EasyPost.BetaFeatures.Parameters.Parcels
     {
         #region Request Parameters
 
+        // ID can't be provided when creating a parcel, but can be provided when using a parcel in a non-parcel creation request.
+        [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Orders.Create), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Pickups.Create), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Beta.Rates.Retrieve), Necessity.Optional, "id")]
+        public string? Id { get; set; }
+
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "height")]
         [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "height")]
         [NestedRequestParameter(typeof(Beta.Rates.Retrieve), Necessity.Optional, "height")]

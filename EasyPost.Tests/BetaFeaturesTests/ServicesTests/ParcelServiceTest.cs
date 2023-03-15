@@ -10,7 +10,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class ParcelServiceTests : UnitTest
     {
-        public ParcelServiceTests() : base("parcel_service")
+        public ParcelServiceTests() : base("parcel_service_with_parameters")
         {
         }
 
@@ -27,7 +27,9 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 
             Dictionary<string, object> data = Fixtures.BasicParcel;
 
-            Parcel parcel = await Client.Parcel.Create(data);
+            BetaFeatures.Parameters.Parcels.Create parameters = Fixtures.Parameters.Parcels.Create(data);
+
+            Parcel parcel = await Client.Parcel.Create(parameters);
 
             Assert.IsType<Parcel>(parcel);
             Assert.StartsWith("prcl_", parcel.Id);

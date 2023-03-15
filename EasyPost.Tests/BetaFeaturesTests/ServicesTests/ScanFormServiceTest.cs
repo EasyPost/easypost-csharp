@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -10,7 +11,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class ScanFormServiceTests : UnitTest
     {
-        public ScanFormServiceTests() : base("scan_form_service")
+        public ScanFormServiceTests() : base("scan_form_service_with_parameters")
         {
         }
 
@@ -25,11 +26,18 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         {
             UseVCR("create");
 
-            Dictionary<string, object> data = Fixtures.OneCallBuyShipment;
+            Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
 
-            Shipment shipment = await Client.Shipment.Create(data);
+            BetaFeatures.Parameters.Shipments.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
-            ScanForm scanForm = await Client.ScanForm.Create(new List<Shipment> { shipment });
+            Shipment shipment = await Client.Shipment.Create(shipmentParameters);
+
+            BetaFeatures.Parameters.ScanForms.Create parameters = new()
+            {
+                Shipments = new List<IShipmentParameter> { shipment },
+            };
+
+            ScanForm scanForm = await Client.ScanForm.Create(parameters);
 
             Assert.IsType<ScanForm>(scanForm);
             Assert.StartsWith("sf_", scanForm.Id);

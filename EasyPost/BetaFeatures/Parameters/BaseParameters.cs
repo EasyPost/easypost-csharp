@@ -1,10 +1,12 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -135,25 +137,43 @@ namespace EasyPost.BetaFeatures.Parameters
         {
             // Primitive types (i.e. strings, booleans) can be added directly to the dictionary
 
+            if (!Objects.IsPrimitive(value))
+            {
+                value = SerializeObject(value);
+            }
+
+            _parameterDictionary = UpdateDictionary(_parameterDictionary, requestParameterAttribute.JsonPath, value);
+        }
+
+        private object? SerializeObject(object? obj)
+        {
             // If the value is an object type, we know by this point it must inherit the corresponding base-IParameter interface
             // If we've done our job correctly, the only classes that inherit base-IParameter interfaces are base-EasyPostObject and base-Parameters
 
-            // If a given value is a base-EasyPostObject object, serialize it as a dictionary
-            if (value is EasyPostObject easyPostObject)
+            switch (obj)
             {
-                value = easyPostObject.AsDictionary();
+                // If a given value is a base-EasyPostObject object, serialize it as a dictionary
+                case EasyPostObject easyPostObject:
+                    return easyPostObject.AsDictionary();
+                // If the given value is another base-Parameters object, serialize it as a sub-dictionary for the parent dictionary
+                // This is because the JSON schema for a sub-object is different than the JSON schema for a top-level object
+                // e.g. the schema for an address in the address create API call is different than the schema for an address in the shipment create API call
+                case BaseParameters parameters:
+                    return parameters.ToSubDictionary(GetType());
+                // If the given value is a list, serialize each element of the list
+                case IList list:
+                    {
+                        var newList = new List<object?>();
+                        foreach (object? subObj in list)
+                        {
+                            newList.Add(SerializeObject(subObj));
+                        }
+
+                        return newList;
+                    }
             }
 
-            // If the given value is another base-Parameters object, serialize it as a sub-dictionary for the parent dictionary
-            // This is because the JSON schema for a sub-object is different than the JSON schema for a top-level object
-            // e.g. the schema for an address in the address create API call is different than the schema for an address in the shipment create API call
-            if (value is BaseParameters parameters)
-            {
-                value = parameters.ToSubDictionary(GetType());
-            }
-
-            // Finally, add the value to the dictionary
-            _parameterDictionary = UpdateDictionary(_parameterDictionary, requestParameterAttribute.JsonPath, value);
+            return obj;
         }
 
         /// <summary>

@@ -16,13 +16,6 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         // "carbon_offset" is not included when shipment creation parameters are used in a non-shipment creation request.
         public bool CarbonOffset { get; set; } = false; // non-nullable, will always be included (default: false)
 
-        [TopLevelRequestParameter(Necessity.Optional, "shipment", "carrier_accounts")]
-        [NestedRequestParameter(typeof(Pickups.Create), Necessity.Optional, "carrier_accounts")]
-        [NestedRequestParameter(typeof(Batches.Create), Necessity.Optional, "carrier_accounts")]
-        [NestedRequestParameter(typeof(Orders.Create), Necessity.Optional, "carrier_accounts")]
-        [NestedRequestParameter(typeof(ScanForms.Create), Necessity.Optional, "carrier_accounts")]
-        public List<EasyPost.Models.API.CarrierAccount>? CarrierAccounts { get; set; }
-
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "customs_info")]
         [NestedRequestParameter(typeof(Pickups.Create), Necessity.Optional, "customs_info")]
         [NestedRequestParameter(typeof(Batches.Create), Necessity.Optional, "customs_info")]
@@ -85,6 +78,27 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         [NestedRequestParameter(typeof(Orders.Create), Necessity.Optional, "parcel")]
         [NestedRequestParameter(typeof(ScanForms.Create), Necessity.Optional, "parcel")]
         public IParcelParameter? Parcel { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "shipment", "service")]
+        [NestedRequestParameter(typeof(Pickups.Create), Necessity.Optional, "service")]
+        [NestedRequestParameter(typeof(Batches.Create), Necessity.Optional, "service")]
+        [NestedRequestParameter(typeof(Orders.Create), Necessity.Optional, "service")]
+        [NestedRequestParameter(typeof(ScanForms.Create), Necessity.Optional, "service")]
+        public string? Service { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "shipment", "carrier")]
+        [NestedRequestParameter(typeof(Pickups.Create), Necessity.Optional, "carrier")]
+        [NestedRequestParameter(typeof(Batches.Create), Necessity.Optional, "carrier")]
+        [NestedRequestParameter(typeof(Orders.Create), Necessity.Optional, "carrier")]
+        [NestedRequestParameter(typeof(ScanForms.Create), Necessity.Optional, "carrier")]
+        public string? Carrier { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "shipment", "carrier_accounts")]
+        [NestedRequestParameter(typeof(Pickups.Create), Necessity.Optional, "carrier_accounts")]
+        [NestedRequestParameter(typeof(Batches.Create), Necessity.Optional, "carrier_accounts")]
+        [NestedRequestParameter(typeof(Orders.Create), Necessity.Optional, "carrier_accounts")]
+        [NestedRequestParameter(typeof(ScanForms.Create), Necessity.Optional, "carrier_accounts")]
+        public List<string>? CarrierAccountIds { get; set; }
 
         #endregion
     }

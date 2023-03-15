@@ -28,7 +28,13 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests.Beta
 
             try
             {
-                PaymentMethod _ = await Client.Beta.Referral.AddPaymentMethod("cus_123", "ba_123");
+                BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod parameters = new()
+                {
+                    StripeCustomerId = "cus_123",
+                    PaymentMethodReference = "ba_123",
+                };
+
+                PaymentMethod _ = await Client.Beta.Referral.AddPaymentMethod(parameters);
             }
             catch (InvalidRequestError e)
             {
@@ -48,7 +54,12 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests.Beta
 
             try
             {
-                PaymentRefund _ = await Client.Beta.Referral.RefundByAmount(2000);
+                BetaFeatures.Parameters.ReferralCustomers.RefundByAmount parameters = new()
+                {
+                    Amount = 2000,
+                };
+
+                PaymentRefund _ = await Client.Beta.Referral.RefundByAmount(parameters);
             }
             catch (InvalidRequestError e)
             {
@@ -68,7 +79,12 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests.Beta
 
             try
             {
-                PaymentRefund _ = await Client.Beta.Referral.RefundByPaymentLog("paylog_123");
+                BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog parameters = new()
+                {
+                    PaymentLogId = "paylog_123",
+                };
+
+                PaymentRefund _ = await Client.Beta.Referral.RefundByPaymentLog(parameters);
             }
             catch (InvalidRequestError e)
             {

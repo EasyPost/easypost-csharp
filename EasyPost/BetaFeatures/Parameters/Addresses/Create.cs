@@ -11,6 +11,14 @@ namespace EasyPost.BetaFeatures.Parameters.Addresses
     {
         #region Request Parameters
 
+        // ID can't be provided when creating an address, but can be provided when using an address in a non-address creation request.
+        [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Orders.Create), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Pickups.Create), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Beta.Rates.Retrieve), Necessity.Optional, "id")]
+        public string? Id { get; set; }
+
         [TopLevelRequestParameter(Necessity.Optional, "address", "carrier_facility")]
         [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "carrier_facility")]
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "carrier_facility")]

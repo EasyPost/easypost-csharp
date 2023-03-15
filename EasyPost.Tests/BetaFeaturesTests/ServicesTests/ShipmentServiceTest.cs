@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
-using EasyPost.Services;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -13,7 +11,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class ShipmentServiceTests : UnitTest
     {
-        public ShipmentServiceTests() : base("shipment_service")
+        public ShipmentServiceTests() : base("shipment_service_with_parameters")
         {
         }
 
@@ -30,7 +28,9 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 
             Dictionary<string, object> data = Fixtures.FullShipment;
 
-            Shipment shipment = await Client.Shipment.Create(data);
+            BetaFeatures.Parameters.Shipments.Create parameters = Fixtures.Parameters.Shipments.Create(data);
+
+            Shipment shipment = await Client.Shipment.Create(parameters);
 
             Assert.IsType<Shipment>(shipment);
             Assert.StartsWith("shp_", shipment.Id);
@@ -38,32 +38,6 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             Assert.Equal("PNG", shipment.Options.LabelFormat);
             Assert.Equal("123", shipment.Options.InvoiceNumber);
             Assert.Equal("123", shipment.Reference);
-        }
-
-        [Fact]
-        [CrudOperations.Create]
-        [Testing.Parameters]
-        public async Task TestCreateEmptyObjects()
-        {
-            UseVCR("create_empty_objects");
-
-            Dictionary<string, object> shipmentData = Fixtures.BasicShipment;
-
-            shipmentData.Add("customs_info", new Dictionary<string, object>());
-            Assert.NotNull(shipmentData["customs_info"]);
-            (shipmentData["customs_info"] as Dictionary<string, object>).Add("customs_items", new List<object>());
-            shipmentData["options"] = null;
-            shipmentData["tax_identifiers"] = null;
-            shipmentData["reference"] = "";
-
-            Shipment shipment = await Client.Shipment.Create(shipmentData);
-
-            Assert.IsType<Shipment>(shipment);
-            Assert.StartsWith("shp_", shipment.Id);
-            Assert.NotNull(shipment.Options); // The EasyPost API populates some default values here
-            Assert.True(shipment.CustomsInfo.CustomsItems.Count == 0);
-            Assert.Null(shipment.Reference);
-            Assert.Null(shipment.TaxIdentifiers);
         }
 
 
@@ -75,8 +49,11 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             UseVCR("create_with_carbon_offset");
 
             Dictionary<string, object> data = Fixtures.BasicShipment;
+            data["carbon_offset"] = true;
 
-            Shipment shipment = await Client.Shipment.Create(data, true);
+            BetaFeatures.Parameters.Shipments.Create parameters = Fixtures.Parameters.Shipments.Create(data);
+
+            Shipment shipment = await Client.Shipment.Create(parameters);
 
             Assert.IsType<Shipment>(shipment);
 
@@ -98,19 +75,27 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             Dictionary<string, object> toAddressData = Fixtures.CaAddress2;
             Dictionary<string, object> parcelData = Fixtures.BasicParcel;
 
+            BetaFeatures.Parameters.Addresses.Create fromAddressParameters = Fixtures.Parameters.Addresses.Create(fromAddressData);
+            BetaFeatures.Parameters.Addresses.Create toAddressParameters = Fixtures.Parameters.Addresses.Create(toAddressData);
+            BetaFeatures.Parameters.Parcels.Create parcelParameters = Fixtures.Parameters.Parcels.Create(parcelData);
 
-            Address fromAddress = await Client.Address.Create(fromAddressData);
-            Address toAddress = await Client.Address.Create(toAddressData);
-            Parcel parcel = await Client.Parcel.Create(parcelData);
+
+            Address fromAddress = await Client.Address.Create(fromAddressParameters);
+            Address toAddress = await Client.Address.Create(toAddressParameters);
+            Parcel parcel = await Client.Parcel.Create(parcelParameters);
 
             Dictionary<string, object> shipmentData = new Dictionary<string, object>
             {
                 { "from_address", new Dictionary<string, object> { { "id", fromAddress.Id } } },
                 { "to_address", new Dictionary<string, object> { { "id", toAddress.Id } } },
-                { "parcel", new Dictionary<string, object> { { "id", parcel.Id } } }
+                { "parcel", new Dictionary<string, object> { { "id", parcel.Id } } },
             };
 
-            Shipment shipment = await Client.Shipment.Create(shipmentData);
+            BetaFeatures.Parameters.Shipments.Create parameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+
+            Dictionary<string, object> dictionary = parameters.ToDictionary();
+
+            Shipment shipment = await Client.Shipment.Create(parameters);
 
             Assert.IsType<Shipment>(shipment);
             Assert.StartsWith("shp_", shipment.Id);
@@ -128,8 +113,11 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             UseVCR("one_call_buy_shipment_with_carbon_offset");
 
             Dictionary<string, object> data = Fixtures.OneCallBuyShipment;
+            data["carbon_offset"] = true;
 
-            Shipment shipment = await Client.Shipment.Create(data, true);
+            BetaFeatures.Parameters.Shipments.Create parameters = Fixtures.Parameters.Shipments.Create(data);
+
+            Shipment shipment = await Client.Shipment.Create(parameters);
 
             Assert.NotNull(shipment.Fees);
             bool carbonOffsetIncluded = shipment.Fees.Any(fee => fee.Type == "CarbonOffsetFee");
@@ -156,31 +144,6 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             {
                 Assert.IsType<Shipment>(shipment);
             }
-        }
-
-        [Fact]
-        [CrudOperations.Read]
-        [Testing.Function]
-        public async Task TestGetLowestSmartRate()
-        {
-            UseVCR("get_lowest_smart_rate");
-
-            Dictionary<string, object> data = Fixtures.BasicShipment;
-
-            Shipment shipment = await Client.Shipment.Create(data);
-
-            // test lowest Smart Rate with valid filters
-            List<Smartrate> smartRates = await shipment.GetSmartrates();
-            Smartrate lowestSmartRate = ShipmentService.GetLowestSmartrate(smartRates, 2, SmartrateAccuracy.Percentile90);
-            Assert.Equal("Priority", lowestSmartRate.Service);
-            Assert.Equal(8.15, lowestSmartRate.Rate);
-            Assert.Equal("USPS", lowestSmartRate.Carrier);
-
-            // test lowest Smart Rate with invalid filters (should error due to strict delivery_days)
-            Assert.Throws<FilteringError>(() => ShipmentService.GetLowestSmartrate(smartRates, 0, SmartrateAccuracy.Percentile90));
-
-            // test lowest Smart Rate with invalid filters (should error due to bad delivery_accuracy)
-            // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
         }
 
         #endregion

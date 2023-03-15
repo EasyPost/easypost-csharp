@@ -62,6 +62,18 @@ namespace EasyPost.Services
         }
 
         /// <summary>
+        ///     Create a list of trackers.
+        /// </summary>
+        /// <param name="parameters">A dictionary of tracking codes and carriers.</param>
+        /// <returns>True if successful, False otherwise.</returns>
+        [CrudOperations.Create]
+        [Obsolete("This method is deprecated. Please use TrackerService.Create() instead. This method will be removed in a future version.", false)]
+        public async Task CreateList(BetaFeatures.Parameters.Trackers.CreateList parameters)
+        {
+            await CreateNoResponse("trackers/create_list", parameters.ToDictionary());
+        }
+
+        /// <summary>
         ///     Get a paginated list of trackers.
         /// </summary>
         /// <param name="parameters">

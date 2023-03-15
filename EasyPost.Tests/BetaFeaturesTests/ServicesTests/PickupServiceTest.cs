@@ -10,7 +10,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class PickupServiceTests : UnitTest
     {
-        public PickupServiceTests() : base("pickup_service")
+        public PickupServiceTests() : base("pickup_service_with_parameters")
         {
         }
 
@@ -25,13 +25,18 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         {
             UseVCR("create");
 
-            Dictionary<string, object> data = Fixtures.OneCallBuyShipment;
+            Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
 
-            Shipment shipment = await Client.Shipment.Create(data);
+            BetaFeatures.Parameters.Shipments.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+
+            Shipment shipment = await Client.Shipment.Create(shipmentParameters);
+
             Dictionary<string, object> pickupData = Fixtures.BasicPickup;
             pickupData["shipment"] = shipment;
 
-            Pickup pickup = await Client.Pickup.Create(pickupData);
+            BetaFeatures.Parameters.Pickups.Create pickupParameters = Fixtures.Parameters.Pickups.Create(pickupData);
+
+            Pickup pickup = await Client.Pickup.Create(pickupParameters);
 
             Assert.IsType<Pickup>(pickup);
             Assert.StartsWith("pickup_", pickup.Id);

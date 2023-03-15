@@ -10,7 +10,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class OrderServiceTests : UnitTest
     {
-        public OrderServiceTests() : base("order_service")
+        public OrderServiceTests() : base("order_service_with_parameters")
         {
         }
 
@@ -27,7 +27,9 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 
             Dictionary<string, object> data = Fixtures.BasicOrder;
 
-            Order order = await Client.Order.Create(data);
+            BetaFeatures.Parameters.Orders.Create parameters = Fixtures.Parameters.Orders.Create(data);
+
+            Order order = await Client.Order.Create(parameters);
 
             Assert.IsType<Order>(order);
             Assert.StartsWith("order_", order.Id);

@@ -10,7 +10,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 {
     public class InsuranceServiceTests : UnitTest
     {
-        public InsuranceServiceTests() : base("insurance_service")
+        public InsuranceServiceTests() : base("insurance_service_with_parameters")
         {
         }
 
@@ -25,14 +25,18 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         {
             UseVCR("create");
 
-            Dictionary<string, object> data = Fixtures.OneCallBuyShipment;
+            Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
 
-            Shipment shipment = await Client.Shipment.Create(data);
+            BetaFeatures.Parameters.Shipments.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
-            Dictionary<string, object> parameters = Fixtures.BasicInsurance;
-            parameters.Add("tracking_code", shipment.TrackingCode);
+            Shipment shipment = await Client.Shipment.Create(shipmentParameters);
 
-            Insurance insurance = await Client.Insurance.Create(parameters);
+            Dictionary<string, object> insuranceData = Fixtures.BasicInsurance;
+            insuranceData.Add("tracking_code", shipment.TrackingCode);
+
+            BetaFeatures.Parameters.Insurance.Create insuranceParameters = Fixtures.Parameters.Insurance.Create(insuranceData);
+
+            Insurance insurance = await Client.Insurance.Create(insuranceParameters);
 
             Assert.IsType<Insurance>(insurance);
             Assert.StartsWith("ins_", insurance.Id);
