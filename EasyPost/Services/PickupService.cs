@@ -76,7 +76,6 @@ namespace EasyPost.Services
         public async Task<PickupCollection> All(Dictionary<string, object>? parameters = null)
         {
             PickupCollection pickupCollection = await List<PickupCollection>("pickups", parameters);
-            pickupCollection.Client = Client;
             return pickupCollection;
         }
 

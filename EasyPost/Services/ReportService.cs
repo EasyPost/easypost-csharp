@@ -59,7 +59,6 @@ namespace EasyPost.Services
         {
             ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters);
             reportCollection.Type = type;
-            reportCollection.Client = Client;
             return reportCollection;
         }
 
