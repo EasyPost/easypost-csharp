@@ -43,6 +43,11 @@ namespace EasyPost.Services
             return await Create<EndShipper>("end_shippers", parameters);
         }
 
+        /// <summary>
+        ///     Create an <see cref="EndShipper"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.Create"/> parameter set.</param>
+        /// <returns><see cref="EndShipper"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<EndShipper> Create(BetaFeatures.Parameters.EndShippers.Create parameters)
         {
@@ -68,6 +73,14 @@ namespace EasyPost.Services
         /// <returns>An EasyPost.EndShipperCollection instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null) => await List<EndShipperCollection>("end_shippers", parameters);
+
+        /// <summary>
+        ///     List all <see cref="EndShipper"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.All"/> parameter set.</param>
+        /// <returns><see cref="EndShipperCollection"/> instance.</returns>
+        [CrudOperations.Read]
+        public async Task<EndShipperCollection> All(BetaFeatures.Parameters.EndShippers.All parameters) => await List<EndShipperCollection>("end_shippers", parameters.ToDictionary());
 
         /// <summary>
         ///     Retrieve an EndShipper from its id.

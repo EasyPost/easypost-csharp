@@ -11,7 +11,10 @@ namespace EasyPost.Utilities.Internal.Attributes
         {
             List<PropertyInfo> matchingProperties = new();
 
-            PropertyInfo[] properties = @type.GetProperties();
+            PropertyInfo[] properties = @type.GetProperties(BindingFlags.Instance |
+                                                            BindingFlags.Static |
+                                                            BindingFlags.NonPublic |
+                                                            BindingFlags.Public);
 
             foreach (PropertyInfo property in properties)
             {
@@ -34,7 +37,10 @@ namespace EasyPost.Utilities.Internal.Attributes
         {
             List<MethodInfo> matchingMethods = new();
 
-            MethodInfo[] methods = @type.GetMethods();
+            MethodInfo[] methods = @type.GetMethods(BindingFlags.Instance |
+                                                    BindingFlags.Static |
+                                                    BindingFlags.NonPublic |
+                                                    BindingFlags.Public);
 
             foreach (MethodInfo method in methods)
             {

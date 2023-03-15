@@ -558,6 +558,12 @@ dotnet_diagnostic.IDE0025.severity = suggestion
 ### Simplify null check
 ### https://github.com/dotnet/roslyn/issues/65769#issuecomment-1337237203
 dotnet_diagnostic.IDE0270.severity = suggestion
+### Don't use redundant casts
+dotnet_diagnostic.IDE0004.severity = suggestion
+### Populate switch
+dotnet_diagnostic.IDE0010.severity = suggestion
+### "new" expression can be simplified
+dotnet_diagnostic.IDE0090.severity = suggestion
 
 # Custom StyleCop (SA) rules
 [*.{cs,vb}]
@@ -588,6 +594,12 @@ dotnet_diagnostic.SA1309.severity = none
 dotnet_diagnostic.SA1515.severity = none
 ### Use "gets" for properties docstrings
 dotnet_diagnostic.SA1623.severity = none
+### Don't omit braces
+dotnet_diagnostic.SA1503.severity = none
+### Type constraints should be on their own line
+dotnet_diagnostic.SA1127.severity = none
+### Single lint comments should not be followed by blank line
+dotnet_diagnostic.SA1512.severity = none
 
 # Custom quality (CA) rules
 [*.{cs,vb}]

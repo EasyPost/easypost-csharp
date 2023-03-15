@@ -36,6 +36,14 @@ namespace EasyPost.Services
         public async Task<EventCollection> All(Dictionary<string, object>? parameters = null) => await Get<EventCollection>("events", parameters);
 
         /// <summary>
+        ///     List all <see cref="Event"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Events.All"/> parameter set.</param>
+        /// <returns><see cref="EventCollection"/> instance.</returns>
+        [CrudOperations.Read]
+        public async Task<EventCollection> All(BetaFeatures.Parameters.Events.All parameters) => await Get<EventCollection>("events", parameters.ToDictionary());
+
+        /// <summary>
         ///     Retrieve an Event from its id.
         /// </summary>
         /// <param name="id">String representing a Event. Starts with "evt_".</param>

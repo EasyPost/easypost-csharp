@@ -52,6 +52,18 @@ namespace EasyPost.Models.API
         }
 
         /// <summary>
+        ///     Update this <see cref="CarrierAccount"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.CarrierAccounts.Update"/> parameter set.</param>
+        /// <returns>This updated <see cref="CarrierAccount"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<CarrierAccount> Update(BetaFeatures.Parameters.CarrierAccounts.Update parameters)
+        {
+            await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{Id}", parameters.ToDictionary());
+            return this;
+        }
+
+        /// <summary>
         ///     Remove this CarrierAccount from your account.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>

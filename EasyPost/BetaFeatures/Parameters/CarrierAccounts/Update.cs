@@ -5,7 +5,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.BetaFeatures.Parameters.CarrierAccounts
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Models.API.CarrierAccount.Update"/> API calls.
+    ///     Parameters for <see cref="EasyPost.Models.API.CarrierAccount.Update(Update)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class Update : BaseParameters

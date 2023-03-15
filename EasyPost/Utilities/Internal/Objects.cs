@@ -12,5 +12,10 @@ namespace EasyPost.Utilities.Internal
                 ? throw new ArgumentException($"Property {propertyName} does not exist on object {obj.GetType().Name}")
                 : otherProperty.GetValue(obj) != null;
         }
+
+        public static bool IsPrimitive(object? obj)
+        {
+            return obj is string or ValueType or null;
+        }
     }
 }

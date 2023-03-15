@@ -64,6 +64,11 @@ namespace EasyPost.Services
             return await Create<Address>("addresses", parameters);
         }
 
+        /// <summary>
+        ///     Create an <see cref="Address"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Addresses.Create"/> parameter set.</param>
+        /// <returns><see cref="Address"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Address> Create(BetaFeatures.Parameters.Addresses.Create parameters)
         {
@@ -92,6 +97,11 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters) => await Create<Address>("addresses/create_and_verify", parameters, "address");
 
+        /// <summary>
+        ///     Create and verify an <see cref="Address"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Addresses.Create"/> parameter set.</param>
+        /// <returns><see cref="Address"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Address> CreateAndVerify(BetaFeatures.Parameters.Addresses.Create parameters)
         {
@@ -116,6 +126,14 @@ namespace EasyPost.Services
         /// <returns>An EasyPost.AddressCollection instance.</returns>
         [CrudOperations.Read]
         public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null) => await List<AddressCollection>("addresses", parameters);
+
+        /// <summary>
+        ///     List all <see cref="Address"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Addresses.All"/> parameter set.</param>
+        /// <returns><see cref="AddressCollection"/> instance.</returns>
+        [CrudOperations.Read]
+        public async Task<AddressCollection> All(BetaFeatures.Parameters.Addresses.All parameters) => await List<AddressCollection>("addresses", parameters.ToDictionary());
 
         /// <summary>
         ///     Retrieve an Address from its id.

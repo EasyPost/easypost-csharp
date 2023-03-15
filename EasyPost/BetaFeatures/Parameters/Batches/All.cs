@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.BetaFeatures.Parameters.Batches
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.BatchService.All"/> API calls.
+    ///     Parameters for <see cref="EasyPost.Services.BatchService.All(All)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class All : BaseParameters

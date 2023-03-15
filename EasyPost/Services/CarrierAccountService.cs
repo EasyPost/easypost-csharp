@@ -47,6 +47,11 @@ namespace EasyPost.Services
             return await Create<CarrierAccount>(endpoint, parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="CarrierAccount"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.CarrierAccounts.Create"/> parameter set.</param>
+        /// <returns><see cref="CarrierAccount"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<CarrierAccount> Create(BetaFeatures.Parameters.CarrierAccounts.Create parameters)
         {
