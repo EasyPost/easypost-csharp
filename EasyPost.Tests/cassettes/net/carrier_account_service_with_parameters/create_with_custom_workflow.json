@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 291,
-    "RecordedAt": "2023-03-15T15:32:03.487567-06:00",
+    "Duration": 196,
+    "RecordedAt": "2023-03-15T16:17:58.98609-06:00",
     "Request": {
       "Body": "{\"carrier_account\":{\"credentials\":{},\"test_credentials\":{},\"type\":\"FedexAccount\",\"registration_data\":{}}}",
       "BodyContentType": "Json",
@@ -34,14 +34,14 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "8dda453864123953e64fb721002ea82c",
+        "x-ep-request-uuid": "8dda453864124417e685fcc700318b65",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.108506",
-        "x-node": "bigweb11nuq",
+        "x-runtime": "0.028706",
+        "x-node": "bigweb8nuq",
         "x-version-label": "easypost-202303142258-f5b873fcbd-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq a40ea751fd,extlb2nuq a40ea751fd",
+        "x-proxied": "intlb1nuq a40ea751fd,extlb2nuq a40ea751fd",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
