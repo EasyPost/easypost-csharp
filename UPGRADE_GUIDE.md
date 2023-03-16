@@ -115,40 +115,40 @@ errors thrown by the library.
 Subclasses of `EasyPostError` are grouped into two categories:
 
 - `EasyPost.Exceptions.ApiError` for errors returned by the API. Subclasses of this exception type are:
-    - `EasyPost.Exceptions.ConnectionError` - thrown when the library is unable to connect to the API
-    - `EasyPost.Exceptions.ExternalApiError` - thrown when an issue occurs with an external API (e.g. Stripe)
-    - `EasyPost.Exceptions.GatewayTimeoutError` - thrown when the API gateway times out (504 status code)
-    - `EasyPost.Exceptions.InternalServerError` - thrown when an internal server error occurs (500 status code)
-    - `EasyPost.Exceptions.InvalidRequestError` - thrown when the API received an invalid request (422 status code)
-    - `EasyPost.Exceptions.MethodNotAllowedError` - thrown when the API receives a request with an invalid HTTP method (
+  - `EasyPost.Exceptions.ConnectionError` - thrown when the library is unable to connect to the API
+  - `EasyPost.Exceptions.ExternalApiError` - thrown when an issue occurs with an external API (e.g. Stripe)
+  - `EasyPost.Exceptions.GatewayTimeoutError` - thrown when the API gateway times out (504 status code)
+  - `EasyPost.Exceptions.InternalServerError` - thrown when an internal server error occurs (500 status code)
+  - `EasyPost.Exceptions.InvalidRequestError` - thrown when the API received an invalid request (422 status code)
+  - `EasyPost.Exceptions.MethodNotAllowedError` - thrown when the API receives a request with an invalid HTTP method (
       405 status code)
-    - `EasyPost.Exceptions.NotFoundError` - thrown when the API receives a request for a resource that does not exist (
+  - `EasyPost.Exceptions.NotFoundError` - thrown when the API receives a request for a resource that does not exist (
       404 status code)
-    - `EasyPost.Exceptions.PaymentError` - thrown when a payment error occurs (402 status code)
-    - `EasyPost.Exceptions.ProxyError` - thrown when the library is unable to connect to the API via a proxy
-    - `EasyPost.Exceptions.RateLimitError` - thrown when the API rate limit is exceeded (429 status code)
-    - `EasyPost.Exceptions.RetryError` - thrown when an error occurs during a retry
-    - `EasyPost.Exceptions.ServiceUnavailableError` - thrown when the API is unavailable (503 status code)
-    - `EasyPost.Exceptions.SslError` - thrown when the library is unable to connect to the API via SSL
-    - `EasyPost.Exceptions.TimeoutError` - thrown when the API request times out (408 status code)
-    - `EasyPost.Exceptions.UnauthorizedError` - thrown when the API receives an unauthorized request (401 or 403 status
+  - `EasyPost.Exceptions.PaymentError` - thrown when a payment error occurs (402 status code)
+  - `EasyPost.Exceptions.ProxyError` - thrown when the library is unable to connect to the API via a proxy
+  - `EasyPost.Exceptions.RateLimitError` - thrown when the API rate limit is exceeded (429 status code)
+  - `EasyPost.Exceptions.RetryError` - thrown when an error occurs during a retry
+  - `EasyPost.Exceptions.ServiceUnavailableError` - thrown when the API is unavailable (503 status code)
+  - `EasyPost.Exceptions.SslError` - thrown when the library is unable to connect to the API via SSL
+  - `EasyPost.Exceptions.TimeoutError` - thrown when the API request times out (408 status code)
+  - `EasyPost.Exceptions.UnauthorizedError` - thrown when the API receives an unauthorized request (401 or 403 status
       code)
-    - `EasyPost.Exceptions.UnexpectedHttpError` - thrown when an unknown HTTP error occurs (unexpected 5xx status code)
-    - `EasyPost.Exceptions.UnknownApiError` - thrown when an unknown API error occurs (unexpected 4xx status code)
-    - `EasyPost.Exceptions.VcrError` - thrown when an error occurs with the VCR (used for testing only)
+  - `EasyPost.Exceptions.UnexpectedHttpError` - thrown when an unknown HTTP error occurs (unexpected 5xx status code)
+  - `EasyPost.Exceptions.UnknownApiError` - thrown when an unknown API error occurs (unexpected 4xx status code)
+  - `EasyPost.Exceptions.VcrError` - thrown when an error occurs with the VCR (used for testing only)
 - Generic exceptions
-    - `EasyPost.Exceptions.FilteringError` - thrown when an error occurs during filtering (e.g. calculating lowest rate)
-    - `EasyPost.Exceptions.InvalidObjectError` - thrown when an invalid object is being used
-    - `EasyPost.Exceptions.JsonError`
-        - `EasyPost.Exceptions.JsonDeserializationError` - thrown when an error occurs during JSON deserialization
-        - `EasyPost.Exceptions.JsonSerializationError` - thrown when an error occurs during JSON serialization
-        - `EasyPost.Exceptions.JsonNoDataError` - thrown when no data is provided for JSON deserialization
-    - `EasyPost.Exceptions.MissingPropertyError` - thrown when a required property is missing (e.g. `Id` for most
+  - `EasyPost.Exceptions.FilteringError` - thrown when an error occurs during filtering (e.g. calculating lowest rate)
+  - `EasyPost.Exceptions.InvalidObjectError` - thrown when an invalid object is being used
+  - `EasyPost.Exceptions.JsonError`
+    - `EasyPost.Exceptions.JsonDeserializationError` - thrown when an error occurs during JSON deserialization
+    - `EasyPost.Exceptions.JsonSerializationError` - thrown when an error occurs during JSON serialization
+    - `EasyPost.Exceptions.JsonNoDataError` - thrown when no data is provided for JSON deserialization
+  - `EasyPost.Exceptions.MissingPropertyError` - thrown when a required property is missing (e.g. `Id` for most
       objects)
-    - `EasyPost.Exceptions.SignatureVerificationError` - thrown when the signature for a webhook is invalid
-    - `EasyPost.Exceptions.ValidationError`
-        - `EasyPost.Exceptions.MissingParameterError` - thrown when a required parameter is missing
-        - `EasyPost.Exceptions.InvalidParameterError` - thrown when an invalid parameter is passed to a function
+  - `EasyPost.Exceptions.SignatureVerificationError` - thrown when the signature for a webhook is invalid
+  - `EasyPost.Exceptions.ValidationError`
+    - `EasyPost.Exceptions.MissingParameterError` - thrown when a required parameter is missing
+    - `EasyPost.Exceptions.InvalidParameterError` - thrown when an invalid parameter is passed to a function
 
 Any exception thrown by the EasyPost library will be one of the above types.
 
@@ -214,6 +214,10 @@ Outside of the [new client instance change](#40-client-instance) and the [namesp
 significant impact on usage, but it is worth noting the new organizational structure.
 
 ## Upgrading from 2.x to 3.0
+
+**NOTICE:** v3 is deprecated.
+
+[v3 Docs](https://github.com/EasyPost/examples/tree/master/official/docs/csharp/v3)
 
 ### 3.0 High Impact Changes
 

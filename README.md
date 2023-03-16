@@ -139,7 +139,7 @@ Any generated local resource will have stored internally the same client used to
 made against the resource will automatically use the same client. This will prevent potential issues of accidentally
 using the wrong API key when interacting with a resource in a multi-client environment.
 
-## Parameters (BETA):
+## Parameters (BETA)
 
 Most functions in this library accept a `Dictionary<string, object>` as their sole parameter, which is ultimately used as the body of the HTTP request against EasyPost's API. If you instead would like to use .NET objects to construct API call parameters, you can use the various `Parameters` classes (currently in beta).
 
@@ -169,6 +169,7 @@ var address = await myClient.Address.Create(addressCreateDictionary);
 ```
 
 Using the `Parameters` classes is not required, but they can help in a number of ways:
+
 - Naturally enforces parameter types (can't assign a string to an int parameter, for example)
 - Removes the need to remember parameter names (i.e. "name" vs "company")
 - Prevents typos in parameter names
@@ -186,6 +187,12 @@ API documentation can be found at: <https://easypost.com/docs/api>.
 Library documentation can be found on the web at: <https://easypost.github.io/easypost-csharp> or locally on the [`gh-pages` branch](https://github.com/EasyPost/easypost-csharp/tree/gh-pages).
 
 Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
+
+## Support
+
+New features and bug fixes are released on the latest major release of this library. If you are on an older major release of this library, we recommend upgrading to the most recent release to take advantage of new features, bug fixes, and security patches. Older versions of this library will continue to work and be available as long as the API version they are tied to remains active; however, they will not receive updates and are considered EOL.
+
+For additional support, see our [org-wide support policy](https://github.com/EasyPost/.github/blob/main/SUPPORT.md).
 
 ## Development
 
