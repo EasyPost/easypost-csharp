@@ -1,0 +1,55 @@
+[
+  {
+    "Duration": 576,
+    "RecordedAt": "2023-03-15T16:17:58.038011-06:00",
+    "Request": {
+      "Body": "{\"address\":{\"city\":\"San Francisco\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"name\":\"Jack Sparrow\",\"phone\":\"<REDACTED>\",\"state\":\"CA\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"zip\":\"94107\"}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "195"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/addresses"
+    },
+    "Response": {
+      "Body": "{\"id\":\"adr_3da7a156c37f11ed81f9ac1f6bc72124\",\"object\":\"Address\",\"created_at\":\"2023-03-15T16:17:58-06:00\",\"updated_at\":\"2023-03-15T16:17:58-06:00\",\"name\":\"Jack Sparrow\",\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "461"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "7815f67d64124415e674928c00308dc2",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "Location": "/api/v2/addresses/adr_3da7a156c37f11ed81f9ac1f6bc72124",
+        "ETag": "W/\"b8755f63974ab7ccb17fc6619444b6e7\"",
+        "x-runtime": "0.030313",
+        "x-node": "bigweb4nuq",
+        "x-version-label": "easypost-202303142258-f5b873fcbd-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq a40ea751fd,intlb2wdc a40ea751fd,extlb4wdc a40ea751fd",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  }
+]

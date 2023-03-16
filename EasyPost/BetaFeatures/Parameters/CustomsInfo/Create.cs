@@ -12,6 +12,14 @@ namespace EasyPost.BetaFeatures.Parameters.CustomsInfo
     {
         #region Request Parameters
 
+        // ID can't be provided when creating a customs info, but can be provided when using a customs info in a non-customs info creation request.
+        [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Orders.Create), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Pickups.Create), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Beta.Rates.Retrieve), Necessity.Optional, "id")]
+        public string? Id { get; set; }
+
         [TopLevelRequestParameter(Necessity.Optional, "customs_info", "contents_explanation")]
         [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "contents_explanation")]
         public string? ContentsExplanation { get; set; }

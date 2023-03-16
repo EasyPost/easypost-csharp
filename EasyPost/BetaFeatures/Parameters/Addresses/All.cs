@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.BetaFeatures.Parameters.Addresses
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.AddressService.All"/> API calls.
+    ///     Parameters for <see cref="EasyPost.Services.AddressService.All(All)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class All : BaseParameters

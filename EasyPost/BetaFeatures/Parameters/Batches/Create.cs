@@ -16,8 +16,8 @@ namespace EasyPost.BetaFeatures.Parameters.Batches
         [NestedRequestParameter(typeof(Pickups.Create), Necessity.Required, "shipments")]
         public List<IShipmentParameter>? Shipments { get; set; }
 
-        [TopLevelRequestParameter(Necessity.Required, "batch", "reference")]
-        [NestedRequestParameter(typeof(Pickups.Create), Necessity.Required, "reference")]
+        [TopLevelRequestParameter(Necessity.Optional, "batch", "reference")]
+        [NestedRequestParameter(typeof(Pickups.Create), Necessity.Optional, "reference")]
         public string? Reference { get; set; }
 
         #endregion

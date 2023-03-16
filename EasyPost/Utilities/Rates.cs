@@ -5,6 +5,7 @@ using EasyPost.Exceptions.General;
 
 namespace EasyPost.Utilities
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Beta.Rates
     public static class Rates
     {
         /// <summary>
@@ -287,4 +288,5 @@ namespace EasyPost.Utilities
             return lowestSmartRate;
         }
     }
+#pragma warning restore CA1724
 }

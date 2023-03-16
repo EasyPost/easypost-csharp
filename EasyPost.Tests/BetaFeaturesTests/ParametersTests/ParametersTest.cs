@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
+using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
 
 namespace EasyPost.Tests.BetaFeaturesTests.ParametersTests
@@ -209,6 +211,52 @@ namespace EasyPost.Tests.BetaFeaturesTests.ParametersTests
             Assert.NotEqual(street, address.Street1);
         }
 
+        /// <summary>
+        ///     This test proves that the .ToDictionary() method will serialize all properties, regardless of their access modifier, as long as they are decorated with the TopLevelRequestParameter attribute.
+        /// </summary>
+        [Fact]
+        [Testing.Logic]
+        public void TestParameterToDictionaryAccountsForNonPublicProperties()
+        {
+            ExampleParameters exampleParameters = new ExampleParameters();
+
+            Dictionary<string, object> dictionary = exampleParameters.ToDictionary();
+
+            // All decorated properties should be present in the dictionary, regardless of their access modifier
+            Assert.True(dictionary.ContainsKey("decorated_public_property"));
+            Assert.True(dictionary.ContainsKey("decorated_internal_property"));
+            Assert.True(dictionary.ContainsKey("decorated_protected_property"));
+            Assert.True(dictionary.ContainsKey("decorated_private_property"));
+
+            // None of the undecorated properties should be present in the dictionary
+            // If there's only four keys in the dictionary, it means only the decorated properties (above) are present
+            Assert.True(dictionary.Count == 4);
+        }
+
         #endregion
     }
+
+#pragma warning disable CA1852 // Can be sealed
+    internal class ExampleParameters : BaseParameters
+    {
+        // Default values set to guarantee any property won't be skipped for serialization due to a null value
+
+        [TopLevelRequestParameter(Necessity.Optional, "decorated_public_property")]
+        public string? DecoratedPublicProperty { get; set; } = "decorated_public";
+        [TopLevelRequestParameter(Necessity.Optional, "decorated_internal_property")]
+        internal string? DecoratedInternalProperty { get; set; } = "decorated_internal";
+        [TopLevelRequestParameter(Necessity.Optional, "decorated_protected_property")]
+        protected string? DecoratedProtectedProperty { get; set; } = "decorated_protected";
+        [TopLevelRequestParameter(Necessity.Optional, "decorated_private_property")]
+        private string? DecoratedPrivateProperty { get; set; } = "decorated_private";
+
+        public string? UndecoratedPublicProperty { get; set; } = "undecorated_public";
+
+        internal string? UndecoratedInternalProperty { get; set; } = "undecorated_internal";
+
+        protected string? UndecoratedProtectedProperty { get; set; } = "undecorated_protected";
+
+        private string? UndecoratedPrivateProperty { get; set; } = "undecorated_private";
+    }
+#pragma warning restore CA1852 // Can be sealed
 }
