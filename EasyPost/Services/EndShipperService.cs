@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -81,6 +82,14 @@ namespace EasyPost.Services
         /// <returns><see cref="EndShipperCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipperCollection> All(BetaFeatures.Parameters.EndShippers.All parameters) => await List<EndShipperCollection>("end_shippers", parameters.ToDictionary());
+
+        /// <summary>
+        ///     Get the next page of a paginated <see cref="EndShipperCollection"/>.
+        /// </summary>
+        /// <param name="collection">The <see cref="EndShipperCollection"/> to get the next page of.</param>
+        /// <returns>The next page, as a <see cref="EndShipperCollection"/> instance.</returns>
+        /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
+        public async Task<EndShipperCollection> GetNextPage(EndShipperCollection collection) => await collection.GetNextPage<EndShipperCollection, EndShipper>(async parameters => await All(parameters), collection.EndShippers);
 
         /// <summary>
         ///     Retrieve an EndShipper from its id.
