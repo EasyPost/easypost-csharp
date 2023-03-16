@@ -717,6 +717,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.FederalTaxId
   nameWithType: Create.FederalTaxId
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Id
+  name: Id
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Id
+  commentId: P:EasyPost.BetaFeatures.Parameters.Addresses.Create.Id
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Id
+  nameWithType: Create.Id
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Id*
+  name: Id
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Id_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.Create.Id
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Id
+  nameWithType: Create.Id
 - uid: EasyPost.BetaFeatures.Parameters.Addresses.Create.Name
   name: Name
   href: api/EasyPost.BetaFeatures.Parameters.Addresses.Create.html#EasyPost_BetaFeatures_Parameters_Addresses_Create_Name
@@ -847,18 +860,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Zip
   nameWithType: Create.Zip
-- uid: EasyPost.BetaFeatures.Parameters.ApiKeys
-  name: EasyPost.BetaFeatures.Parameters.ApiKeys
-  href: api/EasyPost.BetaFeatures.Parameters.ApiKeys.html
-  commentId: N:EasyPost.BetaFeatures.Parameters.ApiKeys
-  fullName: EasyPost.BetaFeatures.Parameters.ApiKeys
-  nameWithType: EasyPost.BetaFeatures.Parameters.ApiKeys
-- uid: EasyPost.BetaFeatures.Parameters.ApiKeys.All
-  name: All
-  href: api/EasyPost.BetaFeatures.Parameters.ApiKeys.All.html
-  commentId: T:EasyPost.BetaFeatures.Parameters.ApiKeys.All
-  fullName: EasyPost.BetaFeatures.Parameters.ApiKeys.All
-  nameWithType: All
 - uid: EasyPost.BetaFeatures.Parameters.BaseParameters
   name: BaseParameters
   href: api/EasyPost.BetaFeatures.Parameters.BaseParameters.html
@@ -897,6 +898,25 @@ references:
   commentId: N:EasyPost.BetaFeatures.Parameters.Batches
   fullName: EasyPost.BetaFeatures.Parameters.Batches
   nameWithType: EasyPost.BetaFeatures.Parameters.Batches
+- uid: EasyPost.BetaFeatures.Parameters.Batches.AddShipments
+  name: AddShipments
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.AddShipments.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.Batches.AddShipments
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.AddShipments
+  nameWithType: AddShipments
+- uid: EasyPost.BetaFeatures.Parameters.Batches.AddShipments.Shipments
+  name: Shipments
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.AddShipments.html#EasyPost_BetaFeatures_Parameters_Batches_AddShipments_Shipments
+  commentId: P:EasyPost.BetaFeatures.Parameters.Batches.AddShipments.Shipments
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.AddShipments.Shipments
+  nameWithType: AddShipments.Shipments
+- uid: EasyPost.BetaFeatures.Parameters.Batches.AddShipments.Shipments*
+  name: Shipments
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.AddShipments.html#EasyPost_BetaFeatures_Parameters_Batches_AddShipments_Shipments_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Batches.AddShipments.Shipments
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.AddShipments.Shipments
+  nameWithType: AddShipments.Shipments
 - uid: EasyPost.BetaFeatures.Parameters.Batches.All
   name: All
   href: api/EasyPost.BetaFeatures.Parameters.Batches.All.html
@@ -1000,18 +1020,159 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Batches.Create.Shipments
   nameWithType: Create.Shipments
+- uid: EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel
+  name: GenerateLabel
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel
+  nameWithType: GenerateLabel
+- uid: EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel.FileFormat
+  name: FileFormat
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel.html#EasyPost_BetaFeatures_Parameters_Batches_GenerateLabel_FileFormat
+  commentId: P:EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel.FileFormat
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel.FileFormat
+  nameWithType: GenerateLabel.FileFormat
+- uid: EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel.FileFormat*
+  name: FileFormat
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel.html#EasyPost_BetaFeatures_Parameters_Batches_GenerateLabel_FileFormat_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel.FileFormat
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel.FileFormat
+  nameWithType: GenerateLabel.FileFormat
+- uid: EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm
+  name: GenerateScanForm
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm
+  nameWithType: GenerateScanForm
+- uid: EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm.FileFormat
+  name: FileFormat
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm.html#EasyPost_BetaFeatures_Parameters_Batches_GenerateScanForm_FileFormat
+  commentId: P:EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm.FileFormat
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm.FileFormat
+  nameWithType: GenerateScanForm.FileFormat
+- uid: EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm.FileFormat*
+  name: FileFormat
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm.html#EasyPost_BetaFeatures_Parameters_Batches_GenerateScanForm_FileFormat_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm.FileFormat
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm.FileFormat
+  nameWithType: GenerateScanForm.FileFormat
+- uid: EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments
+  name: RemoveShipments
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments
+  nameWithType: RemoveShipments
+- uid: EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments.Shipments
+  name: Shipments
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments.html#EasyPost_BetaFeatures_Parameters_Batches_RemoveShipments_Shipments
+  commentId: P:EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments.Shipments
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments.Shipments
+  nameWithType: RemoveShipments.Shipments
+- uid: EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments.Shipments*
+  name: Shipments
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments.html#EasyPost_BetaFeatures_Parameters_Batches_RemoveShipments_Shipments_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments.Shipments
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments.Shipments
+  nameWithType: RemoveShipments.Shipments
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates
+  name: EasyPost.BetaFeatures.Parameters.Beta.Rates
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.html
+  commentId: N:EasyPost.BetaFeatures.Parameters.Beta.Rates
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates
+  nameWithType: EasyPost.BetaFeatures.Parameters.Beta.Rates
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve
+  name: Retrieve
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve
+  nameWithType: Retrieve
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.CarrierAccounts
+  name: CarrierAccounts
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html#EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_CarrierAccounts
+  commentId: P:EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.CarrierAccounts
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.CarrierAccounts
+  nameWithType: Retrieve.CarrierAccounts
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.CarrierAccounts*
+  name: CarrierAccounts
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html#EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_CarrierAccounts_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.CarrierAccounts
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.CarrierAccounts
+  nameWithType: Retrieve.CarrierAccounts
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.FromAddress
+  name: FromAddress
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html#EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_FromAddress
+  commentId: P:EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.FromAddress
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.FromAddress
+  nameWithType: Retrieve.FromAddress
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.FromAddress*
+  name: FromAddress
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html#EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_FromAddress_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.FromAddress
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.FromAddress
+  nameWithType: Retrieve.FromAddress
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Parcel
+  name: Parcel
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html#EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_Parcel
+  commentId: P:EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Parcel
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Parcel
+  nameWithType: Retrieve.Parcel
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Parcel*
+  name: Parcel
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html#EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_Parcel_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Parcel
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Parcel
+  nameWithType: Retrieve.Parcel
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Reference
+  name: Reference
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html#EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_Reference
+  commentId: P:EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Reference
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Reference
+  nameWithType: Retrieve.Reference
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Reference*
+  name: Reference
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html#EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_Reference_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Reference
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Reference
+  nameWithType: Retrieve.Reference
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Service
+  name: Service
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html#EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_Service
+  commentId: P:EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Service
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Service
+  nameWithType: Retrieve.Service
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Service*
+  name: Service
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html#EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_Service_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Service
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.Service
+  nameWithType: Retrieve.Service
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.ToAddress
+  name: ToAddress
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html#EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_ToAddress
+  commentId: P:EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.ToAddress
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.ToAddress
+  nameWithType: Retrieve.ToAddress
+- uid: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.ToAddress*
+  name: ToAddress
+  href: api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html#EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_ToAddress_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.ToAddress
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.ToAddress
+  nameWithType: Retrieve.ToAddress
 - uid: EasyPost.BetaFeatures.Parameters.CarrierAccounts
   name: EasyPost.BetaFeatures.Parameters.CarrierAccounts
   href: api/EasyPost.BetaFeatures.Parameters.CarrierAccounts.html
   commentId: N:EasyPost.BetaFeatures.Parameters.CarrierAccounts
   fullName: EasyPost.BetaFeatures.Parameters.CarrierAccounts
   nameWithType: EasyPost.BetaFeatures.Parameters.CarrierAccounts
-- uid: EasyPost.BetaFeatures.Parameters.CarrierAccounts.All
-  name: All
-  href: api/EasyPost.BetaFeatures.Parameters.CarrierAccounts.All.html
-  commentId: T:EasyPost.BetaFeatures.Parameters.CarrierAccounts.All
-  fullName: EasyPost.BetaFeatures.Parameters.CarrierAccounts.All
-  nameWithType: All
 - uid: EasyPost.BetaFeatures.Parameters.CarrierAccounts.Create
   name: Create
   href: api/EasyPost.BetaFeatures.Parameters.CarrierAccounts.Create.html
@@ -1057,6 +1218,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.CarrierAccounts.Create.Reference
   nameWithType: Create.Reference
+- uid: EasyPost.BetaFeatures.Parameters.CarrierAccounts.Create.RegistrationData
+  name: RegistrationData
+  href: api/EasyPost.BetaFeatures.Parameters.CarrierAccounts.Create.html#EasyPost_BetaFeatures_Parameters_CarrierAccounts_Create_RegistrationData
+  commentId: P:EasyPost.BetaFeatures.Parameters.CarrierAccounts.Create.RegistrationData
+  fullName: EasyPost.BetaFeatures.Parameters.CarrierAccounts.Create.RegistrationData
+  nameWithType: Create.RegistrationData
+- uid: EasyPost.BetaFeatures.Parameters.CarrierAccounts.Create.RegistrationData*
+  name: RegistrationData
+  href: api/EasyPost.BetaFeatures.Parameters.CarrierAccounts.Create.html#EasyPost_BetaFeatures_Parameters_CarrierAccounts_Create_RegistrationData_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.CarrierAccounts.Create.RegistrationData
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.CarrierAccounts.Create.RegistrationData
+  nameWithType: Create.RegistrationData
 - uid: EasyPost.BetaFeatures.Parameters.CarrierAccounts.Create.TestCredentials
   name: TestCredentials
   href: api/EasyPost.BetaFeatures.Parameters.CarrierAccounts.Create.html#EasyPost_BetaFeatures_Parameters_CarrierAccounts_Create_TestCredentials
@@ -1141,18 +1315,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.CarrierAccounts.Update.TestCredentials
   nameWithType: Update.TestCredentials
-- uid: EasyPost.BetaFeatures.Parameters.CarrierTypes
-  name: EasyPost.BetaFeatures.Parameters.CarrierTypes
-  href: api/EasyPost.BetaFeatures.Parameters.CarrierTypes.html
-  commentId: N:EasyPost.BetaFeatures.Parameters.CarrierTypes
-  fullName: EasyPost.BetaFeatures.Parameters.CarrierTypes
-  nameWithType: EasyPost.BetaFeatures.Parameters.CarrierTypes
-- uid: EasyPost.BetaFeatures.Parameters.CarrierTypes.All
-  name: All
-  href: api/EasyPost.BetaFeatures.Parameters.CarrierTypes.All.html
-  commentId: T:EasyPost.BetaFeatures.Parameters.CarrierTypes.All
-  fullName: EasyPost.BetaFeatures.Parameters.CarrierTypes.All
-  nameWithType: All
 - uid: EasyPost.BetaFeatures.Parameters.CustomsInfo
   name: EasyPost.BetaFeatures.Parameters.CustomsInfo
   href: api/EasyPost.BetaFeatures.Parameters.CustomsInfo.html
@@ -1243,6 +1405,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.EelPfc
   nameWithType: Create.EelPfc
+- uid: EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.Id
+  name: Id
+  href: api/EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.html#EasyPost_BetaFeatures_Parameters_CustomsInfo_Create_Id
+  commentId: P:EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.Id
+  fullName: EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.Id
+  nameWithType: Create.Id
+- uid: EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.Id*
+  name: Id
+  href: api/EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.html#EasyPost_BetaFeatures_Parameters_CustomsInfo_Create_Id_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.Id
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.Id
+  nameWithType: Create.Id
 - uid: EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.NonDeliveryOption
   name: NonDeliveryOption
   href: api/EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.html#EasyPost_BetaFeatures_Parameters_CustomsInfo_Create_NonDeliveryOption
@@ -2129,6 +2304,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Parcels.Create.Height
   nameWithType: Create.Height
+- uid: EasyPost.BetaFeatures.Parameters.Parcels.Create.Id
+  name: Id
+  href: api/EasyPost.BetaFeatures.Parameters.Parcels.Create.html#EasyPost_BetaFeatures_Parameters_Parcels_Create_Id
+  commentId: P:EasyPost.BetaFeatures.Parameters.Parcels.Create.Id
+  fullName: EasyPost.BetaFeatures.Parameters.Parcels.Create.Id
+  nameWithType: Create.Id
+- uid: EasyPost.BetaFeatures.Parameters.Parcels.Create.Id*
+  name: Id
+  href: api/EasyPost.BetaFeatures.Parameters.Parcels.Create.html#EasyPost_BetaFeatures_Parameters_Parcels_Create_Id_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Parcels.Create.Id
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Parcels.Create.Id
+  nameWithType: Create.Id
 - uid: EasyPost.BetaFeatures.Parameters.Parcels.Create.Length
   name: Length
   href: api/EasyPost.BetaFeatures.Parameters.Parcels.Create.html#EasyPost_BetaFeatures_Parameters_Parcels_Create_Length
@@ -2952,19 +3140,32 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarbonOffset
   nameWithType: Create.CarbonOffset
-- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts
-  name: CarrierAccounts
-  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_CarrierAccounts
-  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts
-  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts
-  nameWithType: Create.CarrierAccounts
-- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts*
-  name: CarrierAccounts
-  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_CarrierAccounts_
-  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.Carrier
+  name: Carrier
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_Carrier
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.Carrier
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.Carrier
+  nameWithType: Create.Carrier
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.Carrier*
+  name: Carrier
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_Carrier_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.Carrier
   isSpec: "True"
-  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts
-  nameWithType: Create.CarrierAccounts
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.Carrier
+  nameWithType: Create.Carrier
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccountIds
+  name: CarrierAccountIds
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_CarrierAccountIds
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccountIds
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccountIds
+  nameWithType: Create.CarrierAccountIds
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccountIds*
+  name: CarrierAccountIds
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_CarrierAccountIds_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccountIds
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccountIds
+  nameWithType: Create.CarrierAccountIds
 - uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.CustomsInfo
   name: CustomsInfo
   href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_CustomsInfo
@@ -3056,6 +3257,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.Reference
   nameWithType: Create.Reference
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.Service
+  name: Service
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_Service
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.Create.Service
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.Service
+  nameWithType: Create.Service
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.Service*
+  name: Service
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_Service_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.Create.Service
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.Create.Service
+  nameWithType: Create.Service
 - uid: EasyPost.BetaFeatures.Parameters.Shipments.Create.TaxIdentifiers
   name: TaxIdentifiers
   href: api/EasyPost.BetaFeatures.Parameters.Shipments.Create.html#EasyPost_BetaFeatures_Parameters_Shipments_Create_TaxIdentifiers
@@ -4872,6 +5086,12 @@ references:
   fullName.vb: EasyPost.Models.API.Batch.AddShipments(Dictionary(Of System.String, System.Object))
   nameWithType: Batch.AddShipments(Dictionary<String, Object>)
   nameWithType.vb: Batch.AddShipments(Dictionary(Of String, Object))
+- uid: EasyPost.Models.API.Batch.AddShipments(EasyPost.BetaFeatures.Parameters.Batches.AddShipments)
+  name: AddShipments(AddShipments)
+  href: api/EasyPost.Models.API.Batch.html#EasyPost_Models_API_Batch_AddShipments_EasyPost_BetaFeatures_Parameters_Batches_AddShipments_
+  commentId: M:EasyPost.Models.API.Batch.AddShipments(EasyPost.BetaFeatures.Parameters.Batches.AddShipments)
+  fullName: EasyPost.Models.API.Batch.AddShipments(EasyPost.BetaFeatures.Parameters.Batches.AddShipments)
+  nameWithType: Batch.AddShipments(AddShipments)
 - uid: EasyPost.Models.API.Batch.AddShipments(IEnumerable{System.String})
   name: AddShipments(IEnumerable<String>)
   href: api/EasyPost.Models.API.Batch.html#EasyPost_Models_API_Batch_AddShipments_IEnumerable_System_String__
@@ -4923,6 +5143,12 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Batch.Error
   nameWithType: Batch.Error
+- uid: EasyPost.Models.API.Batch.GenerateLabel(EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel)
+  name: GenerateLabel(GenerateLabel)
+  href: api/EasyPost.Models.API.Batch.html#EasyPost_Models_API_Batch_GenerateLabel_EasyPost_BetaFeatures_Parameters_Batches_GenerateLabel_
+  commentId: M:EasyPost.Models.API.Batch.GenerateLabel(EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel)
+  fullName: EasyPost.Models.API.Batch.GenerateLabel(EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel)
+  nameWithType: Batch.GenerateLabel(GenerateLabel)
 - uid: EasyPost.Models.API.Batch.GenerateLabel(System.String)
   name: GenerateLabel(String)
   href: api/EasyPost.Models.API.Batch.html#EasyPost_Models_API_Batch_GenerateLabel_System_String_
@@ -4936,6 +5162,12 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Batch.GenerateLabel
   nameWithType: Batch.GenerateLabel
+- uid: EasyPost.Models.API.Batch.GenerateScanForm(EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm)
+  name: GenerateScanForm(GenerateScanForm)
+  href: api/EasyPost.Models.API.Batch.html#EasyPost_Models_API_Batch_GenerateScanForm_EasyPost_BetaFeatures_Parameters_Batches_GenerateScanForm_
+  commentId: M:EasyPost.Models.API.Batch.GenerateScanForm(EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm)
+  fullName: EasyPost.Models.API.Batch.GenerateScanForm(EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm)
+  nameWithType: Batch.GenerateScanForm(GenerateScanForm)
 - uid: EasyPost.Models.API.Batch.GenerateScanForm(System.String)
   name: GenerateScanForm(String)
   href: api/EasyPost.Models.API.Batch.html#EasyPost_Models_API_Batch_GenerateScanForm_System_String_
@@ -5010,6 +5242,12 @@ references:
   fullName.vb: EasyPost.Models.API.Batch.RemoveShipments(Dictionary(Of System.String, System.Object))
   nameWithType: Batch.RemoveShipments(Dictionary<String, Object>)
   nameWithType.vb: Batch.RemoveShipments(Dictionary(Of String, Object))
+- uid: EasyPost.Models.API.Batch.RemoveShipments(EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments)
+  name: RemoveShipments(RemoveShipments)
+  href: api/EasyPost.Models.API.Batch.html#EasyPost_Models_API_Batch_RemoveShipments_EasyPost_BetaFeatures_Parameters_Batches_RemoveShipments_
+  commentId: M:EasyPost.Models.API.Batch.RemoveShipments(EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments)
+  fullName: EasyPost.Models.API.Batch.RemoveShipments(EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments)
+  nameWithType: Batch.RemoveShipments(RemoveShipments)
 - uid: EasyPost.Models.API.Batch.RemoveShipments(IEnumerable{System.String})
   name: RemoveShipments(IEnumerable<String>)
   href: api/EasyPost.Models.API.Batch.html#EasyPost_Models_API_Batch_RemoveShipments_IEnumerable_System_String__
@@ -5716,6 +5954,12 @@ references:
   fullName.vb: EasyPost.Models.API.CarrierAccount.Update(Dictionary(Of System.String, System.Object))
   nameWithType: CarrierAccount.Update(Dictionary<String, Object>)
   nameWithType.vb: CarrierAccount.Update(Dictionary(Of String, Object))
+- uid: EasyPost.Models.API.CarrierAccount.Update(EasyPost.BetaFeatures.Parameters.CarrierAccounts.Update)
+  name: Update(Update)
+  href: api/EasyPost.Models.API.CarrierAccount.html#EasyPost_Models_API_CarrierAccount_Update_EasyPost_BetaFeatures_Parameters_CarrierAccounts_Update_
+  commentId: M:EasyPost.Models.API.CarrierAccount.Update(EasyPost.BetaFeatures.Parameters.CarrierAccounts.Update)
+  fullName: EasyPost.Models.API.CarrierAccount.Update(EasyPost.BetaFeatures.Parameters.CarrierAccounts.Update)
+  nameWithType: CarrierAccount.Update(Update)
 - uid: EasyPost.Models.API.CarrierAccount.Update*
   name: Update
   href: api/EasyPost.Models.API.CarrierAccount.html#EasyPost_Models_API_CarrierAccount_Update_
@@ -6308,6 +6552,12 @@ references:
   fullName.vb: EasyPost.Models.API.EndShipper.Update(Dictionary(Of System.String, System.Object))
   nameWithType: EndShipper.Update(Dictionary<String, Object>)
   nameWithType.vb: EndShipper.Update(Dictionary(Of String, Object))
+- uid: EasyPost.Models.API.EndShipper.Update(EasyPost.BetaFeatures.Parameters.EndShippers.Update)
+  name: Update(Update)
+  href: api/EasyPost.Models.API.EndShipper.html#EasyPost_Models_API_EndShipper_Update_EasyPost_BetaFeatures_Parameters_EndShippers_Update_
+  commentId: M:EasyPost.Models.API.EndShipper.Update(EasyPost.BetaFeatures.Parameters.EndShippers.Update)
+  fullName: EasyPost.Models.API.EndShipper.Update(EasyPost.BetaFeatures.Parameters.EndShippers.Update)
+  nameWithType: EndShipper.Update(Update)
 - uid: EasyPost.Models.API.EndShipper.Update*
   name: Update
   href: api/EasyPost.Models.API.EndShipper.html#EasyPost_Models_API_EndShipper_Update_
@@ -11338,6 +11588,12 @@ references:
   commentId: T:EasyPost.Services.AddressService
   fullName: EasyPost.Services.AddressService
   nameWithType: AddressService
+- uid: EasyPost.Services.AddressService.All(EasyPost.BetaFeatures.Parameters.Addresses.All)
+  name: All(All)
+  href: api/EasyPost.Services.AddressService.html#EasyPost_Services_AddressService_All_EasyPost_BetaFeatures_Parameters_Addresses_All_
+  commentId: M:EasyPost.Services.AddressService.All(EasyPost.BetaFeatures.Parameters.Addresses.All)
+  fullName: EasyPost.Services.AddressService.All(EasyPost.BetaFeatures.Parameters.Addresses.All)
+  nameWithType: AddressService.All(All)
 - uid: EasyPost.Services.AddressService.All(System.Nullable{Dictionary{System.String,System.Object}})
   name: All(Nullable<Dictionary<String, Object>>)
   href: api/EasyPost.Services.AddressService.html#EasyPost_Services_AddressService_All_System_Nullable_Dictionary_System_String_System_Object___
@@ -11436,6 +11692,12 @@ references:
   commentId: T:EasyPost.Services.BatchService
   fullName: EasyPost.Services.BatchService
   nameWithType: BatchService
+- uid: EasyPost.Services.BatchService.All(EasyPost.BetaFeatures.Parameters.Batches.All)
+  name: All(All)
+  href: api/EasyPost.Services.BatchService.html#EasyPost_Services_BatchService_All_EasyPost_BetaFeatures_Parameters_Batches_All_
+  commentId: M:EasyPost.Services.BatchService.All(EasyPost.BetaFeatures.Parameters.Batches.All)
+  fullName: EasyPost.Services.BatchService.All(EasyPost.BetaFeatures.Parameters.Batches.All)
+  nameWithType: BatchService.All(All)
 - uid: EasyPost.Services.BatchService.All(System.Nullable{Dictionary{System.String,System.Object}})
   name: All(Nullable<Dictionary<String, Object>>)
   href: api/EasyPost.Services.BatchService.html#EasyPost_Services_BatchService_All_System_Nullable_Dictionary_System_String_System_Object___
@@ -11801,6 +12063,12 @@ references:
   commentId: T:EasyPost.Services.EndShipperService
   fullName: EasyPost.Services.EndShipperService
   nameWithType: EndShipperService
+- uid: EasyPost.Services.EndShipperService.All(EasyPost.BetaFeatures.Parameters.EndShippers.All)
+  name: All(All)
+  href: api/EasyPost.Services.EndShipperService.html#EasyPost_Services_EndShipperService_All_EasyPost_BetaFeatures_Parameters_EndShippers_All_
+  commentId: M:EasyPost.Services.EndShipperService.All(EasyPost.BetaFeatures.Parameters.EndShippers.All)
+  fullName: EasyPost.Services.EndShipperService.All(EasyPost.BetaFeatures.Parameters.EndShippers.All)
+  nameWithType: EndShipperService.All(All)
 - uid: EasyPost.Services.EndShipperService.All(System.Nullable{Dictionary{System.String,System.Object}})
   name: All(Nullable<Dictionary<String, Object>>)
   href: api/EasyPost.Services.EndShipperService.html#EasyPost_Services_EndShipperService_All_System_Nullable_Dictionary_System_String_System_Object___
@@ -11858,6 +12126,12 @@ references:
   commentId: T:EasyPost.Services.EventService
   fullName: EasyPost.Services.EventService
   nameWithType: EventService
+- uid: EasyPost.Services.EventService.All(EasyPost.BetaFeatures.Parameters.Events.All)
+  name: All(All)
+  href: api/EasyPost.Services.EventService.html#EasyPost_Services_EventService_All_EasyPost_BetaFeatures_Parameters_Events_All_
+  commentId: M:EasyPost.Services.EventService.All(EasyPost.BetaFeatures.Parameters.Events.All)
+  fullName: EasyPost.Services.EventService.All(EasyPost.BetaFeatures.Parameters.Events.All)
+  nameWithType: EventService.All(All)
 - uid: EasyPost.Services.EventService.All(System.Nullable{Dictionary{System.String,System.Object}})
   name: All(Nullable<Dictionary<String, Object>>)
   href: api/EasyPost.Services.EventService.html#EasyPost_Services_EventService_All_System_Nullable_Dictionary_System_String_System_Object___
@@ -12941,38 +13215,22 @@ references:
   commentId: T:EasyPost.Utilities.Internal.Extensions.Dictionaries
   fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries
   nameWithType: Dictionaries
-- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary(Dictionary{System.String,System.Nullable{System.Object}})
-  name: ConvertToStringNonNullableObjectDictionary(Dictionary<String, Nullable<Object>>)
-  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_ConvertToStringNonNullableObjectDictionary_Dictionary_System_String_System_Nullable_System_Object___
-  commentId: M:EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary(Dictionary{System.String,System.Nullable{System.Object}})
-  name.vb: ConvertToStringNonNullableObjectDictionary(Dictionary(Of String, Nullable(Of Object)))
-  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary(Dictionary<System.String, System.Nullable<System.Object>>)
-  fullName.vb: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary(Dictionary(Of System.String, System.Nullable(Of System.Object)))
-  nameWithType: Dictionaries.ConvertToStringNonNullableObjectDictionary(Dictionary<String, Nullable<Object>>)
-  nameWithType.vb: Dictionaries.ConvertToStringNonNullableObjectDictionary(Dictionary(Of String, Nullable(Of Object)))
-- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary*
-  name: ConvertToStringNonNullableObjectDictionary
-  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_ConvertToStringNonNullableObjectDictionary_
-  commentId: Overload:EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Object},System.String,System.Object)
+  name: AddOrUpdate(IDictionary<String, Object>, String, Object)
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_IDictionary_System_String_System_Object__System_String_System_Object_
+  commentId: M:EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Object},System.String,System.Object)
+  name.vb: AddOrUpdate(IDictionary(Of String, Object), String, Object)
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary<System.String, System.Object>, System.String, System.Object)
+  fullName.vb: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary(Of System.String, System.Object), System.String, System.Object)
+  nameWithType: Dictionaries.AddOrUpdate(IDictionary<String, Object>, String, Object)
+  nameWithType.vb: Dictionaries.AddOrUpdate(IDictionary(Of String, Object), String, Object)
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate*
+  name: AddOrUpdate
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_
+  commentId: Overload:EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate
   isSpec: "True"
-  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNonNullableObjectDictionary
-  nameWithType: Dictionaries.ConvertToStringNonNullableObjectDictionary
-- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary(Dictionary{System.String,System.Object})
-  name: ConvertToStringNullableObjectDictionary(Dictionary<String, Object>)
-  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_ConvertToStringNullableObjectDictionary_Dictionary_System_String_System_Object__
-  commentId: M:EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary(Dictionary{System.String,System.Object})
-  name.vb: ConvertToStringNullableObjectDictionary(Dictionary(Of String, Object))
-  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary(Dictionary<System.String, System.Object>)
-  fullName.vb: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary(Dictionary(Of System.String, System.Object))
-  nameWithType: Dictionaries.ConvertToStringNullableObjectDictionary(Dictionary<String, Object>)
-  nameWithType.vb: Dictionaries.ConvertToStringNullableObjectDictionary(Dictionary(Of String, Object))
-- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary*
-  name: ConvertToStringNullableObjectDictionary
-  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_ConvertToStringNullableObjectDictionary_
-  commentId: Overload:EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary
-  isSpec: "True"
-  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.ConvertToStringNullableObjectDictionary
-  nameWithType: Dictionaries.ConvertToStringNullableObjectDictionary
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate
+  nameWithType: Dictionaries.AddOrUpdate
 - uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.ToStringNonNullableObjectDictionary(Dictionary{System.String,System.Nullable{System.Object}})
   name: ToStringNonNullableObjectDictionary(Dictionary<String, Nullable<Object>>)
   href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_ToStringNonNullableObjectDictionary_Dictionary_System_String_System_Nullable_System_Object___
@@ -13039,6 +13297,22 @@ references:
   commentId: T:EasyPost.Utilities.Internal.Objects
   fullName: EasyPost.Utilities.Internal.Objects
   nameWithType: Objects
+- uid: EasyPost.Utilities.Internal.Objects.IsPrimitive(System.Nullable{System.Object})
+  name: IsPrimitive(Nullable<Object>)
+  href: api/EasyPost.Utilities.Internal.Objects.html#EasyPost_Utilities_Internal_Objects_IsPrimitive_System_Nullable_System_Object__
+  commentId: M:EasyPost.Utilities.Internal.Objects.IsPrimitive(System.Nullable{System.Object})
+  name.vb: IsPrimitive(Nullable(Of Object))
+  fullName: EasyPost.Utilities.Internal.Objects.IsPrimitive(System.Nullable<System.Object>)
+  fullName.vb: EasyPost.Utilities.Internal.Objects.IsPrimitive(System.Nullable(Of System.Object))
+  nameWithType: Objects.IsPrimitive(Nullable<Object>)
+  nameWithType.vb: Objects.IsPrimitive(Nullable(Of Object))
+- uid: EasyPost.Utilities.Internal.Objects.IsPrimitive*
+  name: IsPrimitive
+  href: api/EasyPost.Utilities.Internal.Objects.html#EasyPost_Utilities_Internal_Objects_IsPrimitive_
+  commentId: Overload:EasyPost.Utilities.Internal.Objects.IsPrimitive
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.Objects.IsPrimitive
+  nameWithType: Objects.IsPrimitive
 - uid: EasyPost.Utilities.Internal.Objects.IsPropertySet(System.Object,System.String)
   name: IsPropertySet(Object, String)
   href: api/EasyPost.Utilities.Internal.Objects.html#EasyPost_Utilities_Internal_Objects_IsPropertySet_System_Object_System_String_

@@ -133,19 +133,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_BetaFeatures_Parameters_Shipments_Create_CarrierAccounts.md&amp;value=---%0Auid%3A%20EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_BetaFeatures_Parameters_Shipments_Create_Carrier.md&amp;value=---%0Auid%3A%20EasyPost.BetaFeatures.Parameters.Shipments.Create.Carrier%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L19">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L89">View Source</a>
   </span>
-  <a id="EasyPost_BetaFeatures_Parameters_Shipments_Create_CarrierAccounts_" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts*"></a>
-  <h4 id="EasyPost_BetaFeatures_Parameters_Shipments_Create_CarrierAccounts" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccounts">CarrierAccounts</h4>
+  <a id="EasyPost_BetaFeatures_Parameters_Shipments_Create_Carrier_" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.Carrier*"></a>
+  <h4 id="EasyPost_BetaFeatures_Parameters_Shipments_Create_Carrier" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.Carrier">Carrier</h4>
   <div class="markdown level1 summary"><p>Parameters for <a class="xref" href="EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Create_EasyPost_BetaFeatures_Parameters_Shipments_Create_">Create(Create)</a> API calls.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;CarrierAccount&gt;? CarrierAccounts { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? Carrier { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -157,7 +157,38 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="EasyPost.Models.API.CarrierAccount.html">CarrierAccount</a>&gt;&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_BetaFeatures_Parameters_Shipments_Create_CarrierAccountIds.md&amp;value=---%0Auid%3A%20EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccountIds%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L96">View Source</a>
+  </span>
+  <a id="EasyPost_BetaFeatures_Parameters_Shipments_Create_CarrierAccountIds_" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccountIds*"></a>
+  <h4 id="EasyPost_BetaFeatures_Parameters_Shipments_Create_CarrierAccountIds" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.CarrierAccountIds">CarrierAccountIds</h4>
+  <div class="markdown level1 summary"><p>Parameters for <a class="xref" href="EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Create_EasyPost_BetaFeatures_Parameters_Shipments_Create_">Create(Create)</a> API calls.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt;? CarrierAccountIds { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -167,7 +198,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_BetaFeatures_Parameters_Shipments_Create_CustomsInfo.md&amp;value=---%0Auid%3A%20EasyPost.BetaFeatures.Parameters.Shipments.Create.CustomsInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L26">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L19">View Source</a>
   </span>
   <a id="EasyPost_BetaFeatures_Parameters_Shipments_Create_CustomsInfo_" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.CustomsInfo*"></a>
   <h4 id="EasyPost_BetaFeatures_Parameters_Shipments_Create_CustomsInfo" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.CustomsInfo">CustomsInfo</h4>
@@ -198,7 +229,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_BetaFeatures_Parameters_Shipments_Create_FromAddress.md&amp;value=---%0Auid%3A%20EasyPost.BetaFeatures.Parameters.Shipments.Create.FromAddress%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L75">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L68">View Source</a>
   </span>
   <a id="EasyPost_BetaFeatures_Parameters_Shipments_Create_FromAddress_" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.FromAddress*"></a>
   <h4 id="EasyPost_BetaFeatures_Parameters_Shipments_Create_FromAddress" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.FromAddress">FromAddress</h4>
@@ -229,7 +260,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_BetaFeatures_Parameters_Shipments_Create_Insurance.md&amp;value=---%0Auid%3A%20EasyPost.BetaFeatures.Parameters.Shipments.Create.Insurance%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L33">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L26">View Source</a>
   </span>
   <a id="EasyPost_BetaFeatures_Parameters_Shipments_Create_Insurance_" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.Insurance*"></a>
   <h4 id="EasyPost_BetaFeatures_Parameters_Shipments_Create_Insurance" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.Insurance">Insurance</h4>
@@ -260,7 +291,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_BetaFeatures_Parameters_Shipments_Create_IsReturn.md&amp;value=---%0Auid%3A%20EasyPost.BetaFeatures.Parameters.Shipments.Create.IsReturn%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L40">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L33">View Source</a>
   </span>
   <a id="EasyPost_BetaFeatures_Parameters_Shipments_Create_IsReturn_" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.IsReturn*"></a>
   <h4 id="EasyPost_BetaFeatures_Parameters_Shipments_Create_IsReturn" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.IsReturn">IsReturn</h4>
@@ -291,7 +322,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_BetaFeatures_Parameters_Shipments_Create_Options.md&amp;value=---%0Auid%3A%20EasyPost.BetaFeatures.Parameters.Shipments.Create.Options%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L47">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L40">View Source</a>
   </span>
   <a id="EasyPost_BetaFeatures_Parameters_Shipments_Create_Options_" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.Options*"></a>
   <h4 id="EasyPost_BetaFeatures_Parameters_Shipments_Create_Options" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.Options">Options</h4>
@@ -322,7 +353,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_BetaFeatures_Parameters_Shipments_Create_Parcel.md&amp;value=---%0Auid%3A%20EasyPost.BetaFeatures.Parameters.Shipments.Create.Parcel%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L82">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L75">View Source</a>
   </span>
   <a id="EasyPost_BetaFeatures_Parameters_Shipments_Create_Parcel_" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.Parcel*"></a>
   <h4 id="EasyPost_BetaFeatures_Parameters_Shipments_Create_Parcel" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.Parcel">Parcel</h4>
@@ -353,7 +384,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_BetaFeatures_Parameters_Shipments_Create_Reference.md&amp;value=---%0Auid%3A%20EasyPost.BetaFeatures.Parameters.Shipments.Create.Reference%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L54">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L47">View Source</a>
   </span>
   <a id="EasyPost_BetaFeatures_Parameters_Shipments_Create_Reference_" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.Reference*"></a>
   <h4 id="EasyPost_BetaFeatures_Parameters_Shipments_Create_Reference" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.Reference">Reference</h4>
@@ -381,10 +412,41 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_BetaFeatures_Parameters_Shipments_Create_Service.md&amp;value=---%0Auid%3A%20EasyPost.BetaFeatures.Parameters.Shipments.Create.Service%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L82">View Source</a>
+  </span>
+  <a id="EasyPost_BetaFeatures_Parameters_Shipments_Create_Service_" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.Service*"></a>
+  <h4 id="EasyPost_BetaFeatures_Parameters_Shipments_Create_Service" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.Service">Service</h4>
+  <div class="markdown level1 summary"><p>Parameters for <a class="xref" href="EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Create_EasyPost_BetaFeatures_Parameters_Shipments_Create_">Create(Create)</a> API calls.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? Service { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_BetaFeatures_Parameters_Shipments_Create_TaxIdentifiers.md&amp;value=---%0Auid%3A%20EasyPost.BetaFeatures.Parameters.Shipments.Create.TaxIdentifiers%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L61">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L54">View Source</a>
   </span>
   <a id="EasyPost_BetaFeatures_Parameters_Shipments_Create_TaxIdentifiers_" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.TaxIdentifiers*"></a>
   <h4 id="EasyPost_BetaFeatures_Parameters_Shipments_Create_TaxIdentifiers" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.TaxIdentifiers">TaxIdentifiers</h4>
@@ -415,7 +477,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_BetaFeatures_Parameters_Shipments_Create_ToAddress.md&amp;value=---%0Auid%3A%20EasyPost.BetaFeatures.Parameters.Shipments.Create.ToAddress%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L68">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/BetaFeatures/Parameters/Shipments/Create.cs/#L61">View Source</a>
   </span>
   <a id="EasyPost_BetaFeatures_Parameters_Shipments_Create_ToAddress_" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.ToAddress*"></a>
   <h4 id="EasyPost_BetaFeatures_Parameters_Shipments_Create_ToAddress" data-uid="EasyPost.BetaFeatures.Parameters.Shipments.Create.ToAddress">ToAddress</h4>
