@@ -1,0 +1,54 @@
+[
+  {
+    "Duration": 285,
+    "RecordedAt": "2023-03-17T11:54:19.753441-06:00",
+    "Request": {
+      "Body": "{\"payment_method\":{\"stripe_customer_id\":\"cus_123\",\"payment_method_reference\":\"ba_123\",\"priority\":\"primary\"}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "108"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "content_type": "application/json",
+        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/beta/referral_customers/payment_method"
+    },
+    "Response": {
+      "Body": "{\"error\":{\"code\":\"BILLING.INVALID_PAYMENT_GATEWAY_REFERENCE\",\"message\":\"Invalid Payment Gateway Reference.\",\"errors\":[]}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "121"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "fbe742376414a94be63d1b6b001920ba",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.055465",
+        "Vary": "Origin",
+        "x-node": "bigweb6nuq",
+        "x-version-label": "easypost-202303161921-1934ad3d07-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1nuq a40ea751fd,extlb2nuq a40ea751fd",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 422,
+        "Message": "Unprocessable Entity"
+      }
+    }
+  }
+]
