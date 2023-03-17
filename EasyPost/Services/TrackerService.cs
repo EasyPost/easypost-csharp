@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
@@ -35,6 +36,11 @@ namespace EasyPost.Services
             return await Create<Tracker>("trackers", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="Tracker"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Trackers.Create"/> parameter set.</param>
+        /// <returns><see cref="Tracker"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Tracker> Create(BetaFeatures.Parameters.Trackers.Create parameters)
         {
@@ -51,7 +57,20 @@ namespace EasyPost.Services
         public async Task CreateList(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("trackers");
+            // This endpoint does not return a response, so we simply send the request and only throw an exception if the API returns an error.
             await CreateNoResponse("trackers/create_list", parameters);
+        }
+
+        /// <summary>
+        ///     Create a list of trackers.
+        /// </summary>
+        /// <param name="parameters">A dictionary of tracking codes and carriers.</param>
+        /// <returns>True if successful, False otherwise.</returns>
+        [CrudOperations.Create]
+        [Obsolete("This method is deprecated. Please use TrackerService.Create() instead. This method will be removed in a future version.", false)]
+        public async Task CreateList(BetaFeatures.Parameters.Trackers.CreateList parameters)
+        {
+            await CreateNoResponse("trackers/create_list", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -80,7 +99,16 @@ namespace EasyPost.Services
             return trackerCollection;
         }
 
-        // This endpoint does not return a response so we return the request was successful
+        /// <summary>
+        ///     List all <see cref="Tracker"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Trackers.All"/> parameter set.</param>
+        /// <returns><see cref="TrackerCollection"/> instance.</returns>
+        [CrudOperations.Read]
+        public async Task<TrackerCollection> All(BetaFeatures.Parameters.Trackers.All parameters)
+        {
+            return await List<TrackerCollection>("trackers", parameters.ToDictionary());
+        }
 
         /// <summary>
         ///     Retrieve a Tracker from its id.

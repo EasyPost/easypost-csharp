@@ -88,9 +88,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Read]
         public async Task<List<Smartrate>> GetSmartrates()
         {
-#pragma warning disable IDE0046
             if (Id == null)
-#pragma warning restore IDE0046
             {
                 throw new MissingPropertyError(this, nameof(Id));
             }
@@ -155,6 +153,23 @@ namespace EasyPost.Models.API
         }
 
         /// <summary>
+        ///     Purchase a label for this <see cref="Shipment"/> with the given <see cref="Rate"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Shipments.Buy"/> parameters set.</param>
+        /// <returns>This updated <see cref="Shipment"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<Shipment> Buy(BetaFeatures.Parameters.Shipments.Buy parameters)
+        {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
+            await Update<Shipment>(Method.Post, $"shipments/{Id}/buy", parameters.ToDictionary());
+            return this;
+        }
+
+        /// <summary>
         ///     Generate a postage label for this shipment.
         /// </summary>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
@@ -174,6 +189,23 @@ namespace EasyPost.Models.API
         }
 
         /// <summary>
+        ///     Generate a postage label for this <see cref="Shipment"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Shipments.GenerateLabel"/> parameter set.</param>
+        /// <returns>This updated <see cref="Shipment"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<Shipment> GenerateLabel(BetaFeatures.Parameters.Shipments.GenerateLabel parameters)
+        {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
+            await Update<Shipment>(Method.Get, $"shipments/{Id}/label", parameters.ToDictionary());
+            return this;
+        }
+
+        /// <summary>
         ///     Insure shipment for the given amount.
         /// </summary>
         /// <param name="amount">The amount to insure the shipment for. Currency is provided when creating a shipment.</param>
@@ -189,6 +221,23 @@ namespace EasyPost.Models.API
             Dictionary<string, object> parameters = new() { { "amount", amount } };
 
             await Update<Shipment>(Method.Post, $"shipments/{Id}/insure", parameters);
+            return this;
+        }
+
+        /// <summary>
+        ///     Insure this <see cref="Shipment"/> for the given amount.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Shipments.Insure"/> parameters set.</param>
+        /// <returns>This updated <see cref="Shipment"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<Shipment> Insure(BetaFeatures.Parameters.Shipments.Insure parameters)
+        {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
+            await Update<Shipment>(Method.Post, $"shipments/{Id}/insure", parameters.ToDictionary());
             return this;
         }
 
@@ -227,6 +276,23 @@ namespace EasyPost.Models.API
             parameters.Add("carbon_offset", withCarbonOffset);
 
             Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{Id}/rerate", parameters);
+            Rates = shipment.Rates;
+        }
+
+        /// <summary>
+        ///     Refresh <see cref="Rates"/> for this <see cref="Shipment"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Shipments.RegenerateRates"/> parameter set.</param>
+        /// <returns>This updated <see cref="Shipment"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task RegenerateRates(BetaFeatures.Parameters.Shipments.RegenerateRates parameters)
+        {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
+            Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{Id}/rerate", parameters.ToDictionary());
             Rates = shipment.Rates;
         }
 

@@ -595,6 +595,18 @@ namespace EasyPost.Tests._Utilities
                     Dictionary<string, object>? customsInfoFixture = fixture.GetOrNull<Dictionary<string, object>>("customs_info");
                     Dictionary<string, object>? optionsFixture = fixture.GetOrNull<Dictionary<string, object>>("options");
 
+                    List<Dictionary<string, object>>? taxIdentifiersFixture = fixture.GetOrNull<List<Dictionary<string, object>>>("tax_identifiers");
+
+                    List<ITaxIdentifierParameter>? taxIdentifiers = null;
+                    if (taxIdentifiersFixture != null)
+                    {
+                        taxIdentifiers = new List<ITaxIdentifierParameter>();
+                        foreach (Dictionary<string, object> taxIdentifierFixture in taxIdentifiersFixture)
+                        {
+                            taxIdentifiers.Add(Fixtures.Parameters.TaxIdentifiers.Create(taxIdentifierFixture));
+                        }
+                    }
+
                     return new BetaFeatures.Parameters.Shipments.Create
                     {
                         ToAddress = Fixtures.Parameters.Addresses.Create(toAddressFixture),
@@ -607,6 +619,8 @@ namespace EasyPost.Tests._Utilities
                         Carrier = fixture.GetOrNull<string>("carrier"),
                         Service = fixture.GetOrNull<string>("service"),
                         Reference = fixture.GetOrNull<string>("reference"),
+                        TaxIdentifiers = taxIdentifiers,
+                        Insurance = fixture.GetOrNullDouble("insurance"),
                     };
                 }
 
@@ -615,6 +629,80 @@ namespace EasyPost.Tests._Utilities
                     fixture ??= new Dictionary<string, object>();
 
                     return new BetaFeatures.Parameters.Shipments.All
+                    {
+                        PageSize = fixture.GetOrNullInt("page_size"),
+                        BeforeId = fixture.GetOrNull<string>("before_id"),
+                        AfterId = fixture.GetOrNull<string>("after_id"),
+                        StartDatetime = fixture.GetOrNull<string>("start_datetime"),
+                        EndDatetime = fixture.GetOrNull<string>("end_datetime"),
+                    };
+                }
+            }
+
+            internal static class TaxIdentifiers
+            {
+                internal static BetaFeatures.Parameters.TaxIdentifiers.Create Create(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.TaxIdentifiers.Create
+                    {
+                        Entity = fixture.GetOrNull<string>("entity"),
+                        TaxIdType = fixture.GetOrNull<string>("tax_id_type"),
+                        TaxId = fixture.GetOrNull<string>("tax_id"),
+                        IssuingCountry = fixture.GetOrNull<string>("issuing_country"),
+                    };
+                }
+            }
+
+            internal static class Trackers
+            {
+                internal static BetaFeatures.Parameters.Trackers.All All(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.Trackers.All
+                    {
+                        PageSize = fixture.GetOrNullInt("page_size"),
+                        BeforeId = fixture.GetOrNull<string>("before_id"),
+                        AfterId = fixture.GetOrNull<string>("after_id"),
+                        StartDatetime = fixture.GetOrNull<string>("start_datetime"),
+                        EndDatetime = fixture.GetOrNull<string>("end_datetime"),
+                    };
+                }
+            }
+
+            internal static class Users
+            {
+                internal static BetaFeatures.Parameters.Users.CreateChild CreateChild(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.Users.CreateChild
+                    {
+                        Name = fixture.GetOrNull<string>("name"),
+                    };
+                }
+            }
+
+            internal static class Webhooks
+            {
+                internal static BetaFeatures.Parameters.Webhooks.Create Create(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.Webhooks.Create
+                    {
+                        Url = fixture.GetOrNull<string>("url"),
+                        Secret = fixture.GetOrNull<string>("secret"),
+                    };
+                }
+
+                internal static BetaFeatures.Parameters.Webhooks.All All(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.Webhooks.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),

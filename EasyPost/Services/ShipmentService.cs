@@ -47,6 +47,11 @@ namespace EasyPost.Services
             return await Create<Shipment>("shipments", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="ScanForm"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.Create"/> parameter set.</param>
+        /// <returns><see cref="ScanForm"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Shipment> Create(BetaFeatures.Parameters.Shipments.Create parameters)
         {
@@ -75,6 +80,17 @@ namespace EasyPost.Services
         {
             ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
             return shipmentCollection;
+        }
+
+        /// <summary>
+        ///     List all <see cref="Shipment"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Shipments.All"/> parameter set.</param>
+        /// <returns><see cref="ShipmentCollection"/> instance.</returns>
+        [CrudOperations.Read]
+        public async Task<ShipmentCollection> All(BetaFeatures.Parameters.Shipments.All parameters)
+        {
+            return await List<ShipmentCollection>("shipments", parameters.ToDictionary());
         }
 
         /// <summary>

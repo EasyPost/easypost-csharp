@@ -44,6 +44,18 @@ namespace EasyPost.Models.API
         }
 
         /// <summary>
+        ///     Update this <see cref="Webhook"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Webhooks.Update"/> parameter set.</param>
+        /// <returns>This updated <see cref="Webhook"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<Webhook> Update(BetaFeatures.Parameters.Webhooks.Update parameters)
+        {
+            await Update<Webhook>(Method.Patch, $"webhooks/{Id}", parameters.ToDictionary());
+            return this;
+        }
+
+        /// <summary>
         ///     Delete this webhook.
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
