@@ -39,6 +39,12 @@ namespace EasyPost.Services
             return await Create<ReferralCustomer>("referral_customers", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="ReferralCustomer"/>.
+        ///     This function should be called against a <see cref="Client"/> configured with the white label partner's API key.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer"/> parameter set.</param>
+        /// <returns><see cref="ReferralCustomer"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<ReferralCustomer> CreateReferral(BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer parameters)
         {
@@ -54,6 +60,14 @@ namespace EasyPost.Services
         /// <returns>An EasyPost.ReferralCustomerCollection instance.</returns>
         [CrudOperations.Read]
         public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null) => await List<ReferralCustomerCollection>("referral_customers", parameters);
+
+        /// <summary>
+        ///     List all <see cref="ReferralCustomer"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.All"/> parameter set.</param>
+        /// <returns><see cref="ReferralCustomerCollection"/> instance.</returns>
+        [CrudOperations.Read]
+        public async Task<ReferralCustomerCollection> All(BetaFeatures.Parameters.ReferralCustomers.All parameters) => await List<ReferralCustomerCollection>("referral_customers", parameters.ToDictionary());
 
         /// <summary>
         ///     Add a credit card to a Referral Customer.

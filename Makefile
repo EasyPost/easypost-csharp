@@ -31,7 +31,7 @@ coverage:
 
 ## coverage-check - Check if the coverage is above the minimum threshold
 coverage-check:
-	./check_coverage.sh 89
+	./check_coverage.sh 90
 
 ## docs - Generates library documentation
 docs:

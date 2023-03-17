@@ -32,6 +32,11 @@ namespace EasyPost.Services
             return await Create<List<Refund>>("refunds", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="Refund"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Refunds.Create"/> parameter set.</param>
+        /// <returns><see cref="Refund"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<List<Refund>> Create(BetaFeatures.Parameters.Refunds.Create parameters)
         {
@@ -49,6 +54,14 @@ namespace EasyPost.Services
         /// <returns>An EasyPost.RefundCollection instance.</returns>
         [CrudOperations.Read]
         public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null) => await List<RefundCollection>("refunds", parameters);
+
+        /// <summary>
+        ///     List all <see cref="Refund"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Refunds.All"/> parameter set.</param>
+        /// <returns><see cref="RefundCollection"/> instance.</returns>
+        [CrudOperations.Read]
+        public async Task<RefundCollection> All(BetaFeatures.Parameters.Refunds.All parameters) => await List<RefundCollection>("refunds", parameters.ToDictionary());
 
         /// <summary>
         ///     Retrieve a Refund from its id.

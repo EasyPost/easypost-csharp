@@ -54,7 +54,7 @@ namespace EasyPost.Tests._Utilities
             {
                 Dictionary<string, object> fixture = GetFixtureStructure().Pickups.Basic;
 
-                const string pickupDate = "2023-03-08";
+                const string pickupDate = "2023-03-21";
 
                 fixture.AddOrUpdate("min_datetime", pickupDate);
                 fixture.AddOrUpdate("max_datetime", pickupDate);
@@ -331,6 +331,41 @@ namespace EasyPost.Tests._Utilities
                 }
             }
 
+            internal static class Insurance
+            {
+                internal static BetaFeatures.Parameters.Insurance.Create Create(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    Dictionary<string, object>? toAddressFixture = fixture.GetOrNull<Dictionary<string, object>>("to_address");
+                    Dictionary<string, object>? fromAddressFixture = fixture.GetOrNull<Dictionary<string, object>>("from_address");
+
+                    return new BetaFeatures.Parameters.Insurance.Create
+                    {
+                        Amount = fixture.GetOrNullDouble("amount"),
+                        Carrier = fixture.GetOrNull<string>("carrier"),
+                        ToAddress = Fixtures.Parameters.Addresses.Create(toAddressFixture),
+                        FromAddress = Fixtures.Parameters.Addresses.Create(fromAddressFixture),
+                        TrackingCode = fixture.GetOrNull<string>("tracking_code"),
+                        Reference = fixture.GetOrNull<string>("reference"),
+                    };
+                }
+
+                internal static BetaFeatures.Parameters.Insurance.All All(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.Insurance.All
+                    {
+                        PageSize = fixture.GetOrNullInt("page_size"),
+                        BeforeId = fixture.GetOrNull<string>("before_id"),
+                        AfterId = fixture.GetOrNull<string>("after_id"),
+                        StartDatetime = fixture.GetOrNull<string>("start_datetime"),
+                        EndDatetime = fixture.GetOrNull<string>("end_datetime"),
+                    };
+                }
+            }
+
             internal static Options Options(Dictionary<string, object>? fixture)
             {
                 fixture ??= new Dictionary<string, object>();
@@ -340,6 +375,37 @@ namespace EasyPost.Tests._Utilities
                     LabelFormat = fixture.GetOrNull<string>("label_format"),
                     InvoiceNumber = fixture.GetOrNull<string>("invoice_number"),
                 };
+            }
+
+            internal static class Orders
+            {
+                internal static BetaFeatures.Parameters.Orders.Create Create(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    Dictionary<string, object>? toAddressFixture = fixture.GetOrNull<Dictionary<string, object>>("to_address");
+                    Dictionary<string, object>? fromAddressFixture = fixture.GetOrNull<Dictionary<string, object>>("from_address");
+
+                    List<Dictionary<string, object>>? shipmentsFixture = fixture.GetOrNull<List<Dictionary<string, object>>>("shipments");
+
+                    List<IShipmentParameter>? shipments = null;
+                    if (shipmentsFixture != null)
+                    {
+                        shipments = new List<IShipmentParameter>();
+                        foreach (Dictionary<string, object> shipmentFixture in shipmentsFixture)
+                        {
+                            shipments.Add(Fixtures.Parameters.Shipments.Create(shipmentFixture));
+                        }
+                    }
+
+                    return new BetaFeatures.Parameters.Orders.Create
+                    {
+                        ToAddress = Fixtures.Parameters.Addresses.Create(toAddressFixture),
+                        FromAddress = Fixtures.Parameters.Addresses.Create(fromAddressFixture),
+                        Reference = fixture.GetOrNull<string>("reference"),
+                        Shipments = shipments,
+                    };
+                }
             }
 
             internal static class Parcels
@@ -355,6 +421,164 @@ namespace EasyPost.Tests._Utilities
                         Width = fixture.GetOrNullDouble("width"),
                         Height = fixture.GetOrNullDouble("height"),
                         Weight = fixture.GetOrNullDouble("weight"),
+                    };
+                }
+            }
+
+            internal static class Pickups
+            {
+                internal static BetaFeatures.Parameters.Pickups.Create Create(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    Dictionary<string, object>? addressFixture = fixture.GetOrNull<Dictionary<string, object>>("address");
+
+                    return new BetaFeatures.Parameters.Pickups.Create
+                    {
+                        Address = Fixtures.Parameters.Addresses.Create(addressFixture),
+                        MinDatetime = fixture.GetOrNull<string>("min_datetime"),
+                        MaxDatetime = fixture.GetOrNull<string>("max_datetime"),
+                        Instructions = fixture.GetOrNull<string>("instructions"),
+                        Shipment = fixture.GetOrNull<Shipment>("shipment"),
+                    };
+                }
+
+                internal static BetaFeatures.Parameters.Pickups.All All(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.Pickups.All
+                    {
+                        PageSize = fixture.GetOrNullInt("page_size"),
+                        BeforeId = fixture.GetOrNull<string>("before_id"),
+                        AfterId = fixture.GetOrNull<string>("after_id"),
+                        StartDatetime = fixture.GetOrNull<string>("start_datetime"),
+                        EndDatetime = fixture.GetOrNull<string>("end_datetime"),
+                    };
+                }
+            }
+
+            internal static class Rates
+            {
+                internal static BetaFeatures.Parameters.Beta.Rates.Retrieve RetrieveBeta(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    Dictionary<string, object>? toAddressFixture = fixture.GetOrNull<Dictionary<string, object>>("to_address");
+                    Dictionary<string, object>? fromAddressFixture = fixture.GetOrNull<Dictionary<string, object>>("from_address");
+                    Dictionary<string, object>? parcelFixture = fixture.GetOrNull<Dictionary<string, object>>("parcel");
+
+                    return new BetaFeatures.Parameters.Beta.Rates.Retrieve
+                    {
+                        ToAddress = Fixtures.Parameters.Addresses.Create(toAddressFixture),
+                        FromAddress = Fixtures.Parameters.Addresses.Create(fromAddressFixture),
+                        Parcel = Fixtures.Parameters.Parcels.Create(parcelFixture),
+                    };
+                }
+            }
+
+            internal static class ReferralCustomers
+            {
+                internal static BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer CreateReferralCustomer(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer
+                    {
+                        Email = fixture.GetOrNull<string>("email"),
+                        Name = fixture.GetOrNull<string>("name"),
+                        PhoneNumber = fixture.GetOrNull<string>("phone"),
+                    };
+                }
+
+                internal static BetaFeatures.Parameters.ReferralCustomers.All All(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.ReferralCustomers.All
+                    {
+                        PageSize = fixture.GetOrNullInt("page_size"),
+                        BeforeId = fixture.GetOrNull<string>("before_id"),
+                        AfterId = fixture.GetOrNull<string>("after_id"),
+                        StartDatetime = fixture.GetOrNull<string>("start_datetime"),
+                        EndDatetime = fixture.GetOrNull<string>("end_datetime"),
+                    };
+                }
+            }
+
+            internal static class Refunds
+            {
+                internal static BetaFeatures.Parameters.Refunds.Create Create(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.Refunds.Create
+                    {
+                        Carrier = fixture.GetOrNull<string>("carrier"),
+                        TrackingCodes = fixture.GetOrNull<List<string>>("tracking_codes"),
+                    };
+                }
+
+                internal static BetaFeatures.Parameters.Refunds.All All(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.Refunds.All
+                    {
+                        PageSize = fixture.GetOrNullInt("page_size"),
+                        BeforeId = fixture.GetOrNull<string>("before_id"),
+                        AfterId = fixture.GetOrNull<string>("after_id"),
+                        StartDatetime = fixture.GetOrNull<string>("start_datetime"),
+                        EndDatetime = fixture.GetOrNull<string>("end_datetime"),
+                    };
+                }
+            }
+
+            internal static class Reports
+            {
+                internal static BetaFeatures.Parameters.Reports.Create Create(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.Reports.Create
+                    {
+                        AdditionalColumns = fixture.GetOrNull<List<string>>("additional_columns"),
+                        Columns = fixture.GetOrNull<List<string>>("columns"),
+                        EndDate = fixture.GetOrNull<string>("end_date"),
+                        StartDate = fixture.GetOrNull<string>("start_date"),
+                        IncludeChildren = fixture.GetOrNullBoolean("include_children"),
+                        SendEmail = fixture.GetOrNullBoolean("send_email"),
+                    };
+                }
+
+                internal static BetaFeatures.Parameters.Reports.All All(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.Reports.All
+                    {
+                        PageSize = fixture.GetOrNullInt("page_size"),
+                        BeforeId = fixture.GetOrNull<string>("before_id"),
+                        AfterId = fixture.GetOrNull<string>("after_id"),
+                        StartDatetime = fixture.GetOrNull<string>("start_datetime"),
+                        EndDatetime = fixture.GetOrNull<string>("end_datetime"),
+                    };
+                }
+            }
+
+            internal static class ScanForms
+            {
+                internal static BetaFeatures.Parameters.ScanForms.All All(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new BetaFeatures.Parameters.ScanForms.All
+                    {
+                        PageSize = fixture.GetOrNullInt("page_size"),
+                        BeforeId = fixture.GetOrNull<string>("before_id"),
+                        AfterId = fixture.GetOrNull<string>("after_id"),
+                        StartDatetime = fixture.GetOrNull<string>("start_datetime"),
+                        EndDatetime = fixture.GetOrNull<string>("end_datetime"),
                     };
                 }
             }

@@ -37,6 +37,11 @@ namespace EasyPost.Services
             return await Create<Parcel>("parcels", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="Parcel"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Parcels.Create"/> parameter set.</param>
+        /// <returns><see cref="Parcel"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Parcel> Create(BetaFeatures.Parameters.Parcels.Create parameters)
         {

@@ -41,6 +41,11 @@ namespace EasyPost.Services
             return await Create<Pickup>("pickups", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="Pickup"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Pickups.Create"/> parameter set.</param>
+        /// <returns><see cref="Pickup"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Pickup> Create(BetaFeatures.Parameters.Pickups.Create parameters)
         {
@@ -77,6 +82,17 @@ namespace EasyPost.Services
         {
             PickupCollection pickupCollection = await List<PickupCollection>("pickups", parameters);
             return pickupCollection;
+        }
+
+        /// <summary>
+        ///     List all <see cref="Pickup"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Pickups.All"/> parameter set.</param>
+        /// <returns><see cref="PickupCollection"/> instance.</returns>
+        [CrudOperations.Read]
+        public async Task<PickupCollection> All(BetaFeatures.Parameters.Pickups.All parameters)
+        {
+            return await All(parameters.ToDictionary());
         }
 
         #endregion
