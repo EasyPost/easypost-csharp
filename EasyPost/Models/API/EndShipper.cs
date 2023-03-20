@@ -99,7 +99,7 @@ namespace EasyPost.Models.API
         /// <typeparam name="T">The type of <see cref="EasyPost._base.EasyPostObject"/> the entries are. Should be <see cref="EndShipper"/>.</typeparam>
         /// <returns>A <see cref="Dictionary{TKey,TValue}"/> of parameters to use for the subsequent API call.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there are no more items to retrieve for the paginated collection.</exception>
-        protected internal override Dictionary<string, object> BuildNextPageParameters<T>(List<T>? entries)
+        internal override Dictionary<string, object> BuildNextPageParameters<T>(List<T>? entries)
         {
             if (entries is not List<EndShipper> endShippers)
             {

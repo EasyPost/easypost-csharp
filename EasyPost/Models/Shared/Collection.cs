@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.Shared
 {
-    public class Collection : EasyPostObject
+    public abstract class Collection : EasyPostObject
     {
         #region JSON Properties
 
@@ -40,7 +40,7 @@ namespace EasyPost.Models.Shared
         /// <typeparam name="T">The type of <see cref="EasyPost._base.EasyPostObject"/> the entries are.</typeparam>
         /// <returns>A <see cref="Dictionary{TKey,TValue}"/> of parameters to use for the subsequent API call.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there are no more items to retrieve for the paginated collection.</exception>
-        protected internal virtual Dictionary<string, object> BuildNextPageParameters<T>(List<T>? entries) where T : EasyPost._base.EasyPostObject
+        internal virtual Dictionary<string, object> BuildNextPageParameters<T>(List<T>? entries) where T : EasyPost._base.EasyPostObject
         {
             // This method is virtual so that it can be overridden by specific collection types that need to use different parameters (e.g. EndShipperCollection doesn't use "before_id").
 
@@ -49,7 +49,7 @@ namespace EasyPost.Models.Shared
                 throw new EndOfPaginationError();
             }
 
-            if (HasMore == null || !(bool)HasMore)
+            if (this.HasMore == null || !(bool)this.HasMore)
             {
                 throw new EndOfPaginationError();
             }
