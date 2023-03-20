@@ -45,6 +45,17 @@ namespace EasyPost.Services.Beta
             return await Create<List<EasyPost.Models.API.Beta.StatelessRate>>("rates", parameters, "rates", ApiVersion.Beta);
         }
 
+        /// <summary>
+        ///     Retrieve ephemeral rates.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Beta.Rates.Retrieve"/> parameter set.</param>
+        /// <returns>A list of <see cref="StatelessRate"/> objects.</returns>
+        [CrudOperations.Create]
+        public async Task<List<EasyPost.Models.API.Beta.StatelessRate>> RetrieveStatelessRates(BetaFeatures.Parameters.Beta.Rates.Retrieve parameters)
+        {
+            return await Create<List<EasyPost.Models.API.Beta.StatelessRate>>("rates", parameters.ToDictionary(), "rates", ApiVersion.Beta);
+        }
+
         #endregion
     }
 }

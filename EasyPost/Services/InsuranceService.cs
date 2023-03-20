@@ -41,6 +41,11 @@ namespace EasyPost.Services
             return await Create<Insurance>("insurances", parameters);
         }
 
+        /// <summary>
+        ///     Create <see cref="Insurance"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Insurance.Create"/> parameter set.</param>
+        /// <returns><see cref="Insurance"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Insurance> Create(BetaFeatures.Parameters.Insurance.Create parameters)
         {
@@ -66,6 +71,9 @@ namespace EasyPost.Services
         /// <returns>An EasyPost.InsuranceCollection instance.</returns>
         [CrudOperations.Read]
         public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null) => await List<InsuranceCollection>("insurances", parameters);
+
+        [CrudOperations.Read]
+        public async Task<InsuranceCollection> All(BetaFeatures.Parameters.Insurance.All parameters) => await List<InsuranceCollection>("insurances", parameters.ToDictionary());
 
         /// <summary>
         ///     Retrieve an Insurance from its id.

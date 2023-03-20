@@ -43,6 +43,11 @@ namespace EasyPost.Services
             return await Create<Order>("orders", parameters);
         }
 
+        /// <summary>
+        ///     Create an <see cref="Order"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Orders.Create"/> parameter set.</param>
+        /// <returns><see cref="Order"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Order> Create(BetaFeatures.Parameters.Orders.Create parameters)
         {

@@ -36,7 +36,7 @@ namespace EasyPost.BetaFeatures.Parameters.Pickups
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "reference")]
         public string? Reference { get; set; }
 
-        [TopLevelRequestParameter(Necessity.Optional, "pickup", "shipment")]
+        [TopLevelRequestParameter(Necessity.Required, "pickup", "shipment")]
         public IShipmentParameter? Shipment { get; set; }
 
         #endregion

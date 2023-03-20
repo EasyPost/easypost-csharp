@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.BetaFeatures.Parameters.Reports
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.ReportService.All"/> API calls.
+    ///     Parameters for <see cref="EasyPost.Services.ReportService.All(string, All)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class All : BaseParameters

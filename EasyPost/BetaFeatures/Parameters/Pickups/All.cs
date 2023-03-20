@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.BetaFeatures.Parameters.Pickups
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.PickupService.All"/> API calls.
+    ///     Parameters for <see cref="EasyPost.Services.PickupService.All(All)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class All : BaseParameters

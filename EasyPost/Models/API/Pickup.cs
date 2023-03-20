@@ -80,6 +80,23 @@ namespace EasyPost.Models.API
         }
 
         /// <summary>
+        ///     Purchase this <see cref="Pickup"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Pickups.Buy"/> parameters set.</param>
+        /// <returns>This updated <see cref="Pickup"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<Pickup> Buy(BetaFeatures.Parameters.Pickups.Buy parameters)
+        {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
+            await Update<Pickup>(Method.Post, $"pickups/{Id}/buy", parameters.ToDictionary());
+            return this;
+        }
+
+        /// <summary>
         ///     Cancel this pickup.
         /// </summary>
         /// <returns>The updated Pickup.</returns>
