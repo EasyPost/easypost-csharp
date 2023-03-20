@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.BetaFeatures.Parameters.Trackers
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.TrackerService.All"/> API calls.
+    ///     Parameters for <see cref="EasyPost.Services.TrackerService.All(All)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class All : BaseParameters

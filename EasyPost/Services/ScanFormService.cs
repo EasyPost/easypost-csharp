@@ -28,6 +28,11 @@ namespace EasyPost.Services
             return await Create<ScanForm>("scan_forms", parameters);
         }
 
+        /// <summary>
+        ///     Create a <see cref="ScanForm"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.Create"/> parameter set.</param>
+        /// <returns><see cref="ScanForm"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<ScanForm> Create(BetaFeatures.Parameters.ScanForms.Create parameters)
         {
@@ -55,6 +60,17 @@ namespace EasyPost.Services
         {
             ScanFormCollection scanFormCollection = await List<ScanFormCollection>("scan_forms", parameters);
             return scanFormCollection;
+        }
+
+        /// <summary>
+        ///     List all <see cref="ScanForm"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.All"/> parameter set.</param>
+        /// <returns><see cref="ScanFormCollection"/> instance.</returns>
+        [CrudOperations.Read]
+        public async Task<ScanFormCollection> All(BetaFeatures.Parameters.ScanForms.All parameters)
+        {
+            return await List<ScanFormCollection>("scan_forms", parameters.ToDictionary());
         }
 
         /// <summary>

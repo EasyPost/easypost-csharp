@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -7,7 +8,7 @@ using RestSharp;
 
 namespace EasyPost.Models.API
 {
-    public class User : BaseUser
+    public class User : BaseUser, IUserParameter
     {
         internal User()
         {
@@ -38,6 +39,17 @@ namespace EasyPost.Models.API
         }
 
         /// <summary>
+        ///     Update this <see cref="User"/>'s <see cref="Brand"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.UpdateBrand"/> parameter set.</param>
+        /// <returns>This updated <see cref="Brand"/> instance.</returns>
+        [CrudOperations.Create]
+        public async Task<Brand> UpdateBrand(BetaFeatures.Parameters.Users.UpdateBrand parameters)
+        {
+            return await Request<Brand>(Method.Patch, $"users/{Id}/brand", parameters.ToDictionary());
+        }
+
+        /// <summary>
         ///     Update the User associated with the api_key specified.
         /// </summary>
         /// <param name="parameters">
@@ -57,6 +69,18 @@ namespace EasyPost.Models.API
         public async Task<User> Update(Dictionary<string, object> parameters)
         {
             await Update<User>(Method.Patch, $"users/{Id}", parameters);
+            return this;
+        }
+
+        /// <summary>
+        ///     Update this <see cref="User"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.Update"/> parameter set.</param>
+        /// <returns>This updated <see cref="User"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<User> Update(BetaFeatures.Parameters.Users.Update parameters)
+        {
+            await Update<User>(Method.Patch, $"users/{Id}", parameters.ToDictionary());
             return this;
         }
 
