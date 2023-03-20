@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.BaseParameters.html",
-          "hash": "GZ11f6OM9//CKWrTV2Q+jXXNG9DtqHyrEiC16YbqM3Q="
+          "hash": "ppJXrS0vB8REZL1F24QubE9EbgE1WNxUJkrF5pgParQ="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html",
-          "hash": "5Vmxx5Aj6fgFKGp5oSWjTo0sLDcqmqqk9VPvN0jrz3Y="
+          "hash": "83pLCdf8dnmQZ+iP/W+V7TCkirrzOAx4Jso0OhUvEYs="
         }
       },
       "is_incremental": false,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.Beta.Rates.html",
-          "hash": "Ip/VAiX/n7Vtw7LSIRrJ0NG4nLsQXkFJk8cHEaMD7jk="
+          "hash": "UGHy3l5fKzfTv0jfF5mhY8YcFuszmI2pnsblwPGfWF4="
         }
       },
       "is_incremental": false,
@@ -573,7 +573,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.Insurance.All.html",
-          "hash": "b5I3ipKd8UCfp6GTSjJQ2En5HZwI8wu8sWjDYiVw8Fg="
+          "hash": "OZjI6bQQlfl6mFKVBYNvvRAGkfyyCySe8+wU79u3aZk="
         }
       },
       "is_incremental": false,
@@ -597,7 +597,19 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.Insurance.html",
-          "hash": "qF+eycGeKI+F+cZozpS+iN3km+s9/vzdPP+6UYDZQ4I="
+          "hash": "yGQHuQQ0Db3SCwg8Wm5+8ULQAnZoa9VtwlCni1SKHBg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.BetaFeatures.Parameters.Orders.Buy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.BetaFeatures.Parameters.Orders.Buy.html",
+          "hash": "83cj0+cki3Y/r3e0gxhCSplUWQ+5XMG948DbXBLpRfY="
         }
       },
       "is_incremental": false,
@@ -621,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.Orders.html",
-          "hash": "9o0g0fhjxqvKEieJQSnzCDReoKSlMttS/9oM/7YwAZY="
+          "hash": "Bo7ttsotI8BAPCwdzlLAHLjPaDDvormj6Wtwq91ma6g="
         }
       },
       "is_incremental": false,
@@ -657,7 +669,19 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.Pickups.All.html",
-          "hash": "RZwk2GR60QRFfNlOJ00yPHOd5REeqWh+harNPA/3HHc="
+          "hash": "tu9m2pwf5TB+WkOaSbKMT/HuYXRiz0LkjvwpGwYP7j8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.BetaFeatures.Parameters.Pickups.Buy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.BetaFeatures.Parameters.Pickups.Buy.html",
+          "hash": "1M4P8dOE2wA0Ew26O7wE2D4CJGlsPnrlecXa8POpY3E="
         }
       },
       "is_incremental": false,
@@ -681,7 +705,19 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.Pickups.html",
-          "hash": "J4d3UE1nVpCuASbTCt+HhPP/XD0fd8oF3ACwNk/3trg="
+          "hash": "BCnrOEV2y/IHS4WWsvwSZiksvQwmCVeIibxgXxnHpOg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.html",
+          "hash": "xDD3ug9L1ozgH+ps1OGDPKMcHvBwe1HPx1CYc8yDjPQ="
         }
       },
       "is_incremental": false,
@@ -693,7 +729,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.html",
-          "hash": "a+WbH8Dg0Ig9NoKMm2upZ3vp+2bEPirQwmgHWQGqBZo="
+          "hash": "8xxBMRN8PcKQFpbbUzDBdGUsOgeiF+69O3HpK7FAo+U="
         }
       },
       "is_incremental": false,
@@ -713,11 +749,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount.html",
+          "hash": "cAVXHMurXRWoE08cPsEPUXuNxuU0U08kaiY/9ZPAdDg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog.html",
+          "hash": "6sPRJuJJW84rDtUSiLYWbLQxCunUpedSOyJpoVweOFk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.yml",
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.html",
-          "hash": "8QMe0xAkvWPBKvucG8iXUtyJ5CYnzg/hJeZsgRTZU9g="
+          "hash": "/NtE09cCEE83ZvE0OEaljCLFK9a9u4RZUyPo5NAaffk="
         }
       },
       "is_incremental": false,
@@ -729,7 +789,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.Refunds.All.html",
-          "hash": "Dve5vLlS4Y29Sc7aOt4b33Sx0egfCQqjUSjMUpuqRME="
+          "hash": "zzu8sREK0V85pAP9Y4I2L7/h4Zrd6xJ+K9FDZ3t1DyU="
         }
       },
       "is_incremental": false,
@@ -753,7 +813,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.Refunds.html",
-          "hash": "txLgE/1yNWFBW/qtAHjS/1xLOmxlxeu+yRXzumDiijM="
+          "hash": "0VSuY11HZ6wW7H5fqkBt/GHjtDk9I7xewxXhAfQfDko="
         }
       },
       "is_incremental": false,
@@ -765,7 +825,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.Reports.All.html",
-          "hash": "GAldM9LTeR42kE60xKudsoZHpLmYuiH+S4M1K1SVsao="
+          "hash": "D1RUZTIE8Y2c+wD4lX4/+zQkZd0aKl8OTnIUNvtm6AU="
         }
       },
       "is_incremental": false,
@@ -789,7 +849,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.Reports.html",
-          "hash": "xekd/IHGfFh19i5hKNuEpUiE7RAyy4h4v1E0IRx3FUo="
+          "hash": "/9ymPpTsari9AhzZBYgQhVuXPnXQZX69V4prWaRR4gw="
         }
       },
       "is_incremental": false,
@@ -1881,7 +1941,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.Order.html",
-          "hash": "Zz4otw1okZvj71k2XdF3z7HSx8KBDOCatne9LWQ0ApY="
+          "hash": "n1WGwSWbIhGYqJDFKceareUWcZCDqoruUzUVgnDqsS8="
         }
       },
       "is_incremental": false,
@@ -1965,7 +2025,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.Pickup.html",
-          "hash": "JjUbiFJ0QqkrB+/W3fbWPg5FdjxgC9fuVTqHwVwLLsg="
+          "hash": "9jCVIecyjAzFEM3d1kSV6acc7JYPIxMszzJ9FnKpG38="
         }
       },
       "is_incremental": false,
@@ -1977,7 +2037,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.PickupCollection.html",
-          "hash": "ADGf1dF8mrWIXRq/SpfyKhQ29hS0hLtAotE2F8G8D0g="
+          "hash": "8iqdz3GqStoE6ADD7Guj0oMy2dPnFF3tRNK23OBWQ5E="
         }
       },
       "is_incremental": false,
@@ -2025,7 +2085,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.ReferralCustomer.html",
-          "hash": "5yy7PbR921oRsbd9dglk97E630GXd00VmEOM/Q0XRhQ="
+          "hash": "h1VDULL31LBXBIeHS8kJIxB2RAx5vya8A073cqPySnw="
         }
       },
       "is_incremental": false,
@@ -2037,7 +2097,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.ReferralCustomerCollection.html",
-          "hash": "vHi7kI1o6sO/lhXz2HWD7ihmM8V0eMAXUpika1EbW9o="
+          "hash": "4jlAmGh7KM5N2v3tul7faVD1Opiju0ht9cLdT7bGDfg="
         }
       },
       "is_incremental": false,
@@ -2385,7 +2445,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.Beta.RateService.html",
-          "hash": "yaDSA99Zhg19r+/IIBnUVtJd2pF/+eyMdEYaFKcxRX0="
+          "hash": "bXPzZDPCfzLgU18W1DVZGkSNRPwydiuuSn71GJ680DY="
         }
       },
       "is_incremental": false,
@@ -2397,7 +2457,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.Beta.ReferralService.html",
-          "hash": "d97+HhaTQ2ibi09ePKXClUfLu9dVB+3QSmeXhjUMIEA="
+          "hash": "oyLvbJqSD+rE/RWyXM2+gBXLX+YNKpuEuM/NEwAwoH4="
         }
       },
       "is_incremental": false,
@@ -2505,7 +2565,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.InsuranceService.html",
-          "hash": "XYfTr+ZvHjn2Mc59BtXEIukPC8HctGr8qxmNYJja66M="
+          "hash": "S+5kNXHAEOZ6E5Ws9eJh+6VGyUuHAx3WuybRX8Pp1Ps="
         }
       },
       "is_incremental": false,
@@ -2517,7 +2577,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.OrderService.html",
-          "hash": "EdKrro4pu00Zfotb99t9qC7goq0zPGS0KIQYIK1uOKw="
+          "hash": "VXE5gvdfk35LsrbI8tudYKfhPaHKrRAiouSpg0pRuPw="
         }
       },
       "is_incremental": false,
@@ -2529,7 +2589,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.ParcelService.html",
-          "hash": "oJJoPgX43MpzPXWYD2k4IHIhhtKnA1Tfzf4rjIbNim4="
+          "hash": "hCvXjWh0bKrvRRavSC0HhAgJokfZ5JNmWv40uGnoqH4="
         }
       },
       "is_incremental": false,
@@ -2541,7 +2601,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.PartnerService.html",
-          "hash": "JEbfyRfYqcwEI19iHwtkX/s1QAMVroKsNMPPWt91rIk="
+          "hash": "ANCXlM2p9a/BmjQmNTToAC7hw+88i4CSGQvBfHHFv+0="
         }
       },
       "is_incremental": false,
@@ -2553,7 +2613,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.PickupService.html",
-          "hash": "y/tmG0p9inySBjWI8waUfTP+sM0vLoj9MZI7OHXlzrk="
+          "hash": "DNnaCSlM3chSCPXu8peaLT0rK+C3w+18cnIWz92Rbt8="
         }
       },
       "is_incremental": false,
@@ -2577,7 +2637,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.RefundService.html",
-          "hash": "t64v35nbCWzucnfkDcdSEpab698z3csw+GBpUPhUTZ4="
+          "hash": "cDqGvWypaO7V4VoAglLMhSUfHkfdDTumA+nXLUNPJf8="
         }
       },
       "is_incremental": false,
@@ -2589,7 +2649,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.ReportService.html",
-          "hash": "sixxrxZfVVonbeCT/NSOgzY1cv605IPR2T+RW6MEsF0="
+          "hash": "l1q7kdT9E6uByhn7HO2u7KTjthYSL5rC46FjgPmtnJQ="
         }
       },
       "is_incremental": false,
@@ -2937,7 +2997,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "PV5QMkShgdsR3WbGE6cPqcaR1/v85wV01C/cSpS8vwM="
+          "hash": "dTwBZcbqySvhgNNmrkbas6I/zGs0EJUeLOGkEHznx7s="
         }
       },
       "is_incremental": false,
@@ -3012,7 +3072,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 243,
+          "total_file_count": 248,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

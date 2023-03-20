@@ -2208,6 +2208,57 @@ references:
   commentId: N:EasyPost.BetaFeatures.Parameters.Orders
   fullName: EasyPost.BetaFeatures.Parameters.Orders
   nameWithType: EasyPost.BetaFeatures.Parameters.Orders
+- uid: EasyPost.BetaFeatures.Parameters.Orders.Buy
+  name: Buy
+  href: api/EasyPost.BetaFeatures.Parameters.Orders.Buy.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.Orders.Buy
+  fullName: EasyPost.BetaFeatures.Parameters.Orders.Buy
+  nameWithType: Buy
+- uid: EasyPost.BetaFeatures.Parameters.Orders.Buy.#ctor(EasyPost.Models.API.Rate)
+  name: Buy(Rate)
+  href: api/EasyPost.BetaFeatures.Parameters.Orders.Buy.html#EasyPost_BetaFeatures_Parameters_Orders_Buy__ctor_EasyPost_Models_API_Rate_
+  commentId: M:EasyPost.BetaFeatures.Parameters.Orders.Buy.#ctor(EasyPost.Models.API.Rate)
+  fullName: EasyPost.BetaFeatures.Parameters.Orders.Buy.Buy(EasyPost.Models.API.Rate)
+  nameWithType: Buy.Buy(Rate)
+- uid: EasyPost.BetaFeatures.Parameters.Orders.Buy.#ctor(System.String,System.String)
+  name: Buy(String, String)
+  href: api/EasyPost.BetaFeatures.Parameters.Orders.Buy.html#EasyPost_BetaFeatures_Parameters_Orders_Buy__ctor_System_String_System_String_
+  commentId: M:EasyPost.BetaFeatures.Parameters.Orders.Buy.#ctor(System.String,System.String)
+  fullName: EasyPost.BetaFeatures.Parameters.Orders.Buy.Buy(System.String, System.String)
+  nameWithType: Buy.Buy(String, String)
+- uid: EasyPost.BetaFeatures.Parameters.Orders.Buy.#ctor*
+  name: Buy
+  href: api/EasyPost.BetaFeatures.Parameters.Orders.Buy.html#EasyPost_BetaFeatures_Parameters_Orders_Buy__ctor_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Orders.Buy.#ctor
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Orders.Buy.Buy
+  nameWithType: Buy.Buy
+- uid: EasyPost.BetaFeatures.Parameters.Orders.Buy.Carrier
+  name: Carrier
+  href: api/EasyPost.BetaFeatures.Parameters.Orders.Buy.html#EasyPost_BetaFeatures_Parameters_Orders_Buy_Carrier
+  commentId: P:EasyPost.BetaFeatures.Parameters.Orders.Buy.Carrier
+  fullName: EasyPost.BetaFeatures.Parameters.Orders.Buy.Carrier
+  nameWithType: Buy.Carrier
+- uid: EasyPost.BetaFeatures.Parameters.Orders.Buy.Carrier*
+  name: Carrier
+  href: api/EasyPost.BetaFeatures.Parameters.Orders.Buy.html#EasyPost_BetaFeatures_Parameters_Orders_Buy_Carrier_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Orders.Buy.Carrier
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Orders.Buy.Carrier
+  nameWithType: Buy.Carrier
+- uid: EasyPost.BetaFeatures.Parameters.Orders.Buy.Service
+  name: Service
+  href: api/EasyPost.BetaFeatures.Parameters.Orders.Buy.html#EasyPost_BetaFeatures_Parameters_Orders_Buy_Service
+  commentId: P:EasyPost.BetaFeatures.Parameters.Orders.Buy.Service
+  fullName: EasyPost.BetaFeatures.Parameters.Orders.Buy.Service
+  nameWithType: Buy.Service
+- uid: EasyPost.BetaFeatures.Parameters.Orders.Buy.Service*
+  name: Service
+  href: api/EasyPost.BetaFeatures.Parameters.Orders.Buy.html#EasyPost_BetaFeatures_Parameters_Orders_Buy_Service_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Orders.Buy.Service
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Orders.Buy.Service
+  nameWithType: Buy.Service
 - uid: EasyPost.BetaFeatures.Parameters.Orders.Create
   name: Create
   href: api/EasyPost.BetaFeatures.Parameters.Orders.Create.html
@@ -2433,6 +2484,57 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Pickups.All.StartDatetime
   nameWithType: All.StartDatetime
+- uid: EasyPost.BetaFeatures.Parameters.Pickups.Buy
+  name: Buy
+  href: api/EasyPost.BetaFeatures.Parameters.Pickups.Buy.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.Pickups.Buy
+  fullName: EasyPost.BetaFeatures.Parameters.Pickups.Buy
+  nameWithType: Buy
+- uid: EasyPost.BetaFeatures.Parameters.Pickups.Buy.#ctor(EasyPost.Models.API.Rate)
+  name: Buy(Rate)
+  href: api/EasyPost.BetaFeatures.Parameters.Pickups.Buy.html#EasyPost_BetaFeatures_Parameters_Pickups_Buy__ctor_EasyPost_Models_API_Rate_
+  commentId: M:EasyPost.BetaFeatures.Parameters.Pickups.Buy.#ctor(EasyPost.Models.API.Rate)
+  fullName: EasyPost.BetaFeatures.Parameters.Pickups.Buy.Buy(EasyPost.Models.API.Rate)
+  nameWithType: Buy.Buy(Rate)
+- uid: EasyPost.BetaFeatures.Parameters.Pickups.Buy.#ctor(System.String,System.String)
+  name: Buy(String, String)
+  href: api/EasyPost.BetaFeatures.Parameters.Pickups.Buy.html#EasyPost_BetaFeatures_Parameters_Pickups_Buy__ctor_System_String_System_String_
+  commentId: M:EasyPost.BetaFeatures.Parameters.Pickups.Buy.#ctor(System.String,System.String)
+  fullName: EasyPost.BetaFeatures.Parameters.Pickups.Buy.Buy(System.String, System.String)
+  nameWithType: Buy.Buy(String, String)
+- uid: EasyPost.BetaFeatures.Parameters.Pickups.Buy.#ctor*
+  name: Buy
+  href: api/EasyPost.BetaFeatures.Parameters.Pickups.Buy.html#EasyPost_BetaFeatures_Parameters_Pickups_Buy__ctor_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Pickups.Buy.#ctor
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Pickups.Buy.Buy
+  nameWithType: Buy.Buy
+- uid: EasyPost.BetaFeatures.Parameters.Pickups.Buy.Carrier
+  name: Carrier
+  href: api/EasyPost.BetaFeatures.Parameters.Pickups.Buy.html#EasyPost_BetaFeatures_Parameters_Pickups_Buy_Carrier
+  commentId: P:EasyPost.BetaFeatures.Parameters.Pickups.Buy.Carrier
+  fullName: EasyPost.BetaFeatures.Parameters.Pickups.Buy.Carrier
+  nameWithType: Buy.Carrier
+- uid: EasyPost.BetaFeatures.Parameters.Pickups.Buy.Carrier*
+  name: Carrier
+  href: api/EasyPost.BetaFeatures.Parameters.Pickups.Buy.html#EasyPost_BetaFeatures_Parameters_Pickups_Buy_Carrier_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Pickups.Buy.Carrier
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Pickups.Buy.Carrier
+  nameWithType: Buy.Carrier
+- uid: EasyPost.BetaFeatures.Parameters.Pickups.Buy.Service
+  name: Service
+  href: api/EasyPost.BetaFeatures.Parameters.Pickups.Buy.html#EasyPost_BetaFeatures_Parameters_Pickups_Buy_Service
+  commentId: P:EasyPost.BetaFeatures.Parameters.Pickups.Buy.Service
+  fullName: EasyPost.BetaFeatures.Parameters.Pickups.Buy.Service
+  nameWithType: Buy.Service
+- uid: EasyPost.BetaFeatures.Parameters.Pickups.Buy.Service*
+  name: Service
+  href: api/EasyPost.BetaFeatures.Parameters.Pickups.Buy.html#EasyPost_BetaFeatures_Parameters_Pickups_Buy_Service_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Pickups.Buy.Service
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Pickups.Buy.Service
+  nameWithType: Buy.Service
 - uid: EasyPost.BetaFeatures.Parameters.Pickups.Create
   name: Create
   href: api/EasyPost.BetaFeatures.Parameters.Pickups.Create.html
@@ -2562,6 +2664,51 @@ references:
   commentId: N:EasyPost.BetaFeatures.Parameters.ReferralCustomers
   fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers
   nameWithType: EasyPost.BetaFeatures.Parameters.ReferralCustomers
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod
+  name: AddPaymentMethod
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod
+  nameWithType: AddPaymentMethod
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.PaymentMethodReference
+  name: PaymentMethodReference
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.html#EasyPost_BetaFeatures_Parameters_ReferralCustomers_AddPaymentMethod_PaymentMethodReference
+  commentId: P:EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.PaymentMethodReference
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.PaymentMethodReference
+  nameWithType: AddPaymentMethod.PaymentMethodReference
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.PaymentMethodReference*
+  name: PaymentMethodReference
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.html#EasyPost_BetaFeatures_Parameters_ReferralCustomers_AddPaymentMethod_PaymentMethodReference_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.PaymentMethodReference
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.PaymentMethodReference
+  nameWithType: AddPaymentMethod.PaymentMethodReference
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.Priority
+  name: Priority
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.html#EasyPost_BetaFeatures_Parameters_ReferralCustomers_AddPaymentMethod_Priority
+  commentId: P:EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.Priority
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.Priority
+  nameWithType: AddPaymentMethod.Priority
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.Priority*
+  name: Priority
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.html#EasyPost_BetaFeatures_Parameters_ReferralCustomers_AddPaymentMethod_Priority_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.Priority
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.Priority
+  nameWithType: AddPaymentMethod.Priority
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.StripeCustomerId
+  name: StripeCustomerId
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.html#EasyPost_BetaFeatures_Parameters_ReferralCustomers_AddPaymentMethod_StripeCustomerId
+  commentId: P:EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.StripeCustomerId
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.StripeCustomerId
+  nameWithType: AddPaymentMethod.StripeCustomerId
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.StripeCustomerId*
+  name: StripeCustomerId
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.html#EasyPost_BetaFeatures_Parameters_ReferralCustomers_AddPaymentMethod_StripeCustomerId_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.StripeCustomerId
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod.StripeCustomerId
+  nameWithType: AddPaymentMethod.StripeCustomerId
 - uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.All
   name: All
   href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.html
@@ -2678,6 +2825,44 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer.PhoneNumber
   nameWithType: CreateReferralCustomer.PhoneNumber
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount
+  name: RefundByAmount
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount
+  nameWithType: RefundByAmount
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount.Amount
+  name: Amount
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount.html#EasyPost_BetaFeatures_Parameters_ReferralCustomers_RefundByAmount_Amount
+  commentId: P:EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount.Amount
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount.Amount
+  nameWithType: RefundByAmount.Amount
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount.Amount*
+  name: Amount
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount.html#EasyPost_BetaFeatures_Parameters_ReferralCustomers_RefundByAmount_Amount_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount.Amount
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount.Amount
+  nameWithType: RefundByAmount.Amount
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog
+  name: RefundByPaymentLog
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog
+  nameWithType: RefundByPaymentLog
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog.PaymentLogId
+  name: PaymentLogId
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog.html#EasyPost_BetaFeatures_Parameters_ReferralCustomers_RefundByPaymentLog_PaymentLogId
+  commentId: P:EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog.PaymentLogId
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog.PaymentLogId
+  nameWithType: RefundByPaymentLog.PaymentLogId
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog.PaymentLogId*
+  name: PaymentLogId
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog.html#EasyPost_BetaFeatures_Parameters_ReferralCustomers_RefundByPaymentLog_PaymentLogId_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog.PaymentLogId
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog.PaymentLogId
+  nameWithType: RefundByPaymentLog.PaymentLogId
 - uid: EasyPost.BetaFeatures.Parameters.Refunds
   name: EasyPost.BetaFeatures.Parameters.Refunds
   href: api/EasyPost.BetaFeatures.Parameters.Refunds.html
@@ -8324,6 +8509,12 @@ references:
   commentId: T:EasyPost.Models.API.Order
   fullName: EasyPost.Models.API.Order
   nameWithType: Order
+- uid: EasyPost.Models.API.Order.Buy(EasyPost.BetaFeatures.Parameters.Orders.Buy)
+  name: Buy(Buy)
+  href: api/EasyPost.Models.API.Order.html#EasyPost_Models_API_Order_Buy_EasyPost_BetaFeatures_Parameters_Orders_Buy_
+  commentId: M:EasyPost.Models.API.Order.Buy(EasyPost.BetaFeatures.Parameters.Orders.Buy)
+  fullName: EasyPost.Models.API.Order.Buy(EasyPost.BetaFeatures.Parameters.Orders.Buy)
+  nameWithType: Order.Buy(Buy)
 - uid: EasyPost.Models.API.Order.Buy(EasyPost.Models.API.Rate)
   name: Buy(Rate)
   href: api/EasyPost.Models.API.Order.html#EasyPost_Models_API_Order_Buy_EasyPost_Models_API_Rate_
@@ -8919,6 +9110,12 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Pickup.Address
   nameWithType: Pickup.Address
+- uid: EasyPost.Models.API.Pickup.Buy(EasyPost.BetaFeatures.Parameters.Pickups.Buy)
+  name: Buy(Buy)
+  href: api/EasyPost.Models.API.Pickup.html#EasyPost_Models_API_Pickup_Buy_EasyPost_BetaFeatures_Parameters_Pickups_Buy_
+  commentId: M:EasyPost.Models.API.Pickup.Buy(EasyPost.BetaFeatures.Parameters.Pickups.Buy)
+  fullName: EasyPost.Models.API.Pickup.Buy(EasyPost.BetaFeatures.Parameters.Pickups.Buy)
+  nameWithType: Pickup.Buy(Buy)
 - uid: EasyPost.Models.API.Pickup.Buy(System.String,System.String)
   name: Buy(String, String)
   href: api/EasyPost.Models.API.Pickup.html#EasyPost_Models_API_Pickup_Buy_System_String_System_String_
@@ -11792,6 +11989,12 @@ references:
   fullName.vb: EasyPost.Services.Beta.RateService.RetrieveStatelessRates(Dictionary(Of System.String, System.Object))
   nameWithType: RateService.RetrieveStatelessRates(Dictionary<String, Object>)
   nameWithType.vb: RateService.RetrieveStatelessRates(Dictionary(Of String, Object))
+- uid: EasyPost.Services.Beta.RateService.RetrieveStatelessRates(EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve)
+  name: RetrieveStatelessRates(Retrieve)
+  href: api/EasyPost.Services.Beta.RateService.html#EasyPost_Services_Beta_RateService_RetrieveStatelessRates_EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_
+  commentId: M:EasyPost.Services.Beta.RateService.RetrieveStatelessRates(EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve)
+  fullName: EasyPost.Services.Beta.RateService.RetrieveStatelessRates(EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve)
+  nameWithType: RateService.RetrieveStatelessRates(Retrieve)
 - uid: EasyPost.Services.Beta.RateService.RetrieveStatelessRates*
   name: RetrieveStatelessRates
   href: api/EasyPost.Services.Beta.RateService.html#EasyPost_Services_Beta_RateService_RetrieveStatelessRates_
@@ -11818,6 +12021,12 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.Beta.ReferralService.ReferralService
   nameWithType: ReferralService.ReferralService
+- uid: EasyPost.Services.Beta.ReferralService.AddPaymentMethod(EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod)
+  name: AddPaymentMethod(AddPaymentMethod)
+  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_AddPaymentMethod_EasyPost_BetaFeatures_Parameters_ReferralCustomers_AddPaymentMethod_
+  commentId: M:EasyPost.Services.Beta.ReferralService.AddPaymentMethod(EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod)
+  fullName: EasyPost.Services.Beta.ReferralService.AddPaymentMethod(EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod)
+  nameWithType: ReferralService.AddPaymentMethod(AddPaymentMethod)
 - uid: EasyPost.Services.Beta.ReferralService.AddPaymentMethod(System.String,System.String,EasyPost.Models.API.PaymentMethod.Priority)
   name: AddPaymentMethod(String, String, PaymentMethod.Priority)
   href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_AddPaymentMethod_System_String_System_String_EasyPost_Models_API_PaymentMethod_Priority_
@@ -11831,6 +12040,12 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.Beta.ReferralService.AddPaymentMethod
   nameWithType: ReferralService.AddPaymentMethod
+- uid: EasyPost.Services.Beta.ReferralService.RefundByAmount(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount)
+  name: RefundByAmount(RefundByAmount)
+  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_RefundByAmount_EasyPost_BetaFeatures_Parameters_ReferralCustomers_RefundByAmount_
+  commentId: M:EasyPost.Services.Beta.ReferralService.RefundByAmount(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount)
+  fullName: EasyPost.Services.Beta.ReferralService.RefundByAmount(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount)
+  nameWithType: ReferralService.RefundByAmount(RefundByAmount)
 - uid: EasyPost.Services.Beta.ReferralService.RefundByAmount(System.Int32)
   name: RefundByAmount(Int32)
   href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_RefundByAmount_System_Int32_
@@ -11844,6 +12059,12 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.Beta.ReferralService.RefundByAmount
   nameWithType: ReferralService.RefundByAmount
+- uid: EasyPost.Services.Beta.ReferralService.RefundByPaymentLog(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog)
+  name: RefundByPaymentLog(RefundByPaymentLog)
+  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_RefundByPaymentLog_EasyPost_BetaFeatures_Parameters_ReferralCustomers_RefundByPaymentLog_
+  commentId: M:EasyPost.Services.Beta.ReferralService.RefundByPaymentLog(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog)
+  fullName: EasyPost.Services.Beta.ReferralService.RefundByPaymentLog(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog)
+  nameWithType: ReferralService.RefundByPaymentLog(RefundByPaymentLog)
 - uid: EasyPost.Services.Beta.ReferralService.RefundByPaymentLog(System.String)
   name: RefundByPaymentLog(String)
   href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_RefundByPaymentLog_System_String_
@@ -12193,6 +12414,12 @@ references:
   commentId: T:EasyPost.Services.InsuranceService
   fullName: EasyPost.Services.InsuranceService
   nameWithType: InsuranceService
+- uid: EasyPost.Services.InsuranceService.All(EasyPost.BetaFeatures.Parameters.Insurance.All)
+  name: All(All)
+  href: api/EasyPost.Services.InsuranceService.html#EasyPost_Services_InsuranceService_All_EasyPost_BetaFeatures_Parameters_Insurance_All_
+  commentId: M:EasyPost.Services.InsuranceService.All(EasyPost.BetaFeatures.Parameters.Insurance.All)
+  fullName: EasyPost.Services.InsuranceService.All(EasyPost.BetaFeatures.Parameters.Insurance.All)
+  nameWithType: InsuranceService.All(All)
 - uid: EasyPost.Services.InsuranceService.All(System.Nullable{Dictionary{System.String,System.Object}})
   name: All(Nullable<Dictionary<String, Object>>)
   href: api/EasyPost.Services.InsuranceService.html#EasyPost_Services_InsuranceService_All_System_Nullable_Dictionary_System_String_System_Object___
@@ -12345,6 +12572,12 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.PartnerService.AddCreditCardToUser
   nameWithType: PartnerService.AddCreditCardToUser
+- uid: EasyPost.Services.PartnerService.All(EasyPost.BetaFeatures.Parameters.ReferralCustomers.All)
+  name: All(All)
+  href: api/EasyPost.Services.PartnerService.html#EasyPost_Services_PartnerService_All_EasyPost_BetaFeatures_Parameters_ReferralCustomers_All_
+  commentId: M:EasyPost.Services.PartnerService.All(EasyPost.BetaFeatures.Parameters.ReferralCustomers.All)
+  fullName: EasyPost.Services.PartnerService.All(EasyPost.BetaFeatures.Parameters.ReferralCustomers.All)
+  nameWithType: PartnerService.All(All)
 - uid: EasyPost.Services.PartnerService.All(System.Nullable{Dictionary{System.String,System.Object}})
   name: All(Nullable<Dictionary<String, Object>>)
   href: api/EasyPost.Services.PartnerService.html#EasyPost_Services_PartnerService_All_System_Nullable_Dictionary_System_String_System_Object___
@@ -12402,6 +12635,12 @@ references:
   commentId: T:EasyPost.Services.PickupService
   fullName: EasyPost.Services.PickupService
   nameWithType: PickupService
+- uid: EasyPost.Services.PickupService.All(EasyPost.BetaFeatures.Parameters.Pickups.All)
+  name: All(All)
+  href: api/EasyPost.Services.PickupService.html#EasyPost_Services_PickupService_All_EasyPost_BetaFeatures_Parameters_Pickups_All_
+  commentId: M:EasyPost.Services.PickupService.All(EasyPost.BetaFeatures.Parameters.Pickups.All)
+  fullName: EasyPost.Services.PickupService.All(EasyPost.BetaFeatures.Parameters.Pickups.All)
+  nameWithType: PickupService.All(All)
 - uid: EasyPost.Services.PickupService.All(System.Nullable{Dictionary{System.String,System.Object}})
   name: All(Nullable<Dictionary<String, Object>>)
   href: api/EasyPost.Services.PickupService.html#EasyPost_Services_PickupService_All_System_Nullable_Dictionary_System_String_System_Object___
@@ -12494,6 +12733,12 @@ references:
   commentId: T:EasyPost.Services.RefundService
   fullName: EasyPost.Services.RefundService
   nameWithType: RefundService
+- uid: EasyPost.Services.RefundService.All(EasyPost.BetaFeatures.Parameters.Refunds.All)
+  name: All(All)
+  href: api/EasyPost.Services.RefundService.html#EasyPost_Services_RefundService_All_EasyPost_BetaFeatures_Parameters_Refunds_All_
+  commentId: M:EasyPost.Services.RefundService.All(EasyPost.BetaFeatures.Parameters.Refunds.All)
+  fullName: EasyPost.Services.RefundService.All(EasyPost.BetaFeatures.Parameters.Refunds.All)
+  nameWithType: RefundService.All(All)
 - uid: EasyPost.Services.RefundService.All(System.Nullable{Dictionary{System.String,System.Object}})
   name: All(Nullable<Dictionary<String, Object>>)
   href: api/EasyPost.Services.RefundService.html#EasyPost_Services_RefundService_All_System_Nullable_Dictionary_System_String_System_Object___
@@ -12551,6 +12796,12 @@ references:
   commentId: T:EasyPost.Services.ReportService
   fullName: EasyPost.Services.ReportService
   nameWithType: ReportService
+- uid: EasyPost.Services.ReportService.All(System.String,EasyPost.BetaFeatures.Parameters.Reports.All)
+  name: All(String, All)
+  href: api/EasyPost.Services.ReportService.html#EasyPost_Services_ReportService_All_System_String_EasyPost_BetaFeatures_Parameters_Reports_All_
+  commentId: M:EasyPost.Services.ReportService.All(System.String,EasyPost.BetaFeatures.Parameters.Reports.All)
+  fullName: EasyPost.Services.ReportService.All(System.String, EasyPost.BetaFeatures.Parameters.Reports.All)
+  nameWithType: ReportService.All(String, All)
 - uid: EasyPost.Services.ReportService.All(System.String,System.Nullable{Dictionary{System.String,System.Object}})
   name: All(String, Nullable<Dictionary<String, Object>>)
   href: api/EasyPost.Services.ReportService.html#EasyPost_Services_ReportService_All_System_String_System_Nullable_Dictionary_System_String_System_Object___
