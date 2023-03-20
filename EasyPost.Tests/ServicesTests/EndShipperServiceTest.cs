@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -48,19 +47,6 @@ namespace EasyPost.Tests.ServicesTests
             {
                 Assert.IsType<EndShipper>(item);
             }
-        }
-
-        [Fact]
-        [CrudOperations.Read]
-        [Testing.Function]
-        public async Task TestGetNextPage()
-        {
-            UseVCR("get_next_page");
-
-            EndShipperCollection endShipperCollection = await Client.EndShipper.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
-
-            // TODO: Throws an exception currently because the parameter set calculation overload has not been implemented
-            await Assert.ThrowsAsync<EndOfPaginationError>(async () => await Client.EndShipper.GetNextPage(endShipperCollection));
         }
 
         [Fact]

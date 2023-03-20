@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
-using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -92,33 +91,6 @@ namespace EasyPost.Models.API
         {
         }
 
-        /// <summary>
-        ///     Override the default BuildNextPageParameters method to build the parameters for the next page of EndShippers.
-        /// </summary>
-        /// <param name="entries">The entries of the <see cref="EndShipperCollection"/>.</param>
-        /// <typeparam name="T">The type of <see cref="EasyPost._base.EasyPostObject"/> the entries are. Should be <see cref="EndShipper"/>.</typeparam>
-        /// <returns>A <see cref="Dictionary{TKey,TValue}"/> of parameters to use for the subsequent API call.</returns>
-        /// <exception cref="EndOfPaginationError">Thrown if there are no more items to retrieve for the paginated collection.</exception>
-        internal override Dictionary<string, object> BuildNextPageParameters<T>(List<T>? entries)
-        {
-            if (entries is not List<EndShipper> endShippers)
-            {
-                throw new EndOfPaginationError();
-            }
-
-            if (endShippers == null || endShippers.Count == 0)
-            {
-                throw new EndOfPaginationError();
-            }
-
-            if (HasMore == null || !(bool)HasMore)
-            {
-                throw new EndOfPaginationError();
-            }
-
-            // TODO: How would we get the next page of EndShippers?
-
-            throw new EndOfPaginationError();
-        }
+        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new System.NotImplementedException();
     }
 }

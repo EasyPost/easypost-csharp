@@ -137,5 +137,7 @@ namespace EasyPost.Models.API
         internal PickupCollection()
         {
         }
+
+        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new NotImplementedException();
     }
 }

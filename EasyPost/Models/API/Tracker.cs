@@ -55,5 +55,7 @@ namespace EasyPost.Models.API
         internal TrackerCollection()
         {
         }
+
+        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new NotImplementedException();
     }
 }

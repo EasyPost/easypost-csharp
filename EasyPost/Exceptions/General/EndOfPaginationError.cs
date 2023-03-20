@@ -6,7 +6,7 @@ namespace EasyPost.Exceptions.General
         ///     Initializes a new instance of the <see cref="EndOfPaginationError" /> class.
         /// </summary>
         internal EndOfPaginationError()
-            : base("There are no more items to iterate through.")
+            : base("There are no more pages to retrieve.")
         {
         }
     }
