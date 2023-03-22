@@ -11,5 +11,3 @@ BUILD_MODE=$1
 # Restore dependencies and build solution
 echo "Restoring and building project..."
 dotnet msbuild -property:Configuration="$BUILD_MODE" -target:Rebuild -restore || exit 1
-
-exit 0

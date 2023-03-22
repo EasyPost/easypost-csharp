@@ -6,5 +6,3 @@
 echo "Cleaning old files..."
 rm -rf lib
 rm -rf "*.nupkg"
-
-exit 0

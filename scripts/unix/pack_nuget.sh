@@ -11,5 +11,3 @@ PROJECT_NAME=$1
 # Generate the NuGet package (will fail if assemblies are missing)
 echo "Generating NuGet package..."
 nuget pack "$PROJECT_NAME.nuspec" || exit 1
-
-exit 0

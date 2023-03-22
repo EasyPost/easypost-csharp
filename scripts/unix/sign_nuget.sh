@@ -19,5 +19,3 @@ for file in $(find "$FOLDER" -name "$FILE_PATTERN"); do
     # Sign the file in-place
     dotnet nuget sign "$file" --timestamper "$TIMESTAMP_SERVER" --certificate-path "$CERT_FILE" --certificate-password "$CERT_PASSWORD"
 done
-
-exit 0

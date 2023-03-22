@@ -5,7 +5,6 @@
 :: Requirements:
 :: - NuGet is installed on the machine and is accessible everywhere (added to PATH)
 :: - dotnet is installed on the machine and is accessible everywhere (added to PATH) (might be in C:\Program Files\dotnet)
-:: - SnInstallPfx (https://github.com/honzajscz/SnInstallPfx) is installed on the machine and is accessible everywhere (added to PATH)
 
 @ECHO OFF
 
@@ -14,26 +13,25 @@ SET projectName=%1
 SET strongNameCertFile=%2
 SET authCertFile=%3
 SET authCertPass=%4
-SET containerName=%5
-SET buildMode=%6
+SET buildMode=%5
 
 :: Delete old files
-CALL "scripts\delete_old_assemblies.bat"
+CALL "scripts\win\delete_old_assemblies.bat"
 
 :: Restore dependencies and build solution
-CALL "scripts\build_project.bat" %buildMode% || GOTO :commandFailed
+CALL "scripts\win\build_project.bat" %buildMode% || GOTO :commandFailed
 
 :: Strong-name the DLLs
-CALL "scripts\strong_name_dlls.bat" %strongNameCertFile% || GOTO :commandFailed
+CALL "scripts\win\strong_name_dlls.bat" %strongNameCertFile% || GOTO :commandFailed
 
 :: Sign the DLLs for authenticity
-CALL "scripts\sign_dlls.bat" %authCertFile% %authCertPass% || GOTO :commandFailed
+CALL "scripts\win\sign_dlls.bat" %authCertFile% %authCertPass% || GOTO :commandFailed
 
 :: Package the DLLs in a NuGet package (will fail if DLLs are missing)
-CALL "scripts\pack_nuget.bat" %projectName% || GOTO :commandFailed
+CALL "scripts\win\pack_nuget.bat" %projectName% || GOTO :commandFailed
 
 :: Sign the NuGet package for authenticity
-CALL "scripts\sign_nuget.bat" %authCertFile% %authCertPass% || GOTO :commandFailed
+CALL "scripts\win\sign_nuget.bat" %authCertFile% %authCertPass% || GOTO :commandFailed
 SET nugetFileName=
 FOR /R %%F IN (*.nupkg) DO (
     SET nugetFileName="%%F"

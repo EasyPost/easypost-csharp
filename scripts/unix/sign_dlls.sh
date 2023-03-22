@@ -21,5 +21,3 @@ for file in $(find "$FOLDER" -name "$FILE_PATTERN"); do
     # Rename signed file to original name
     mv "$file$SUFFIX" "$file"
 done
-
-exit 0

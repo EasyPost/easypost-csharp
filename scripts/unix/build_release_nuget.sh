@@ -37,5 +37,3 @@ bash scripts/unix/sign_nuget.sh "$AUTH_CERT_FILE" "$AUTH_CERT_PASSWORD" || exit 
 # Preset final information
 NUGET_PACKAGE_FILE=$(find lib -name "*.nupkg")
 echo "NuGet file $NUGET_PACKAGE_FILE is ready."
-
-exit 0

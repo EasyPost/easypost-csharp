@@ -18,5 +18,3 @@ for file in $(find "$FOLDER" -name "$FILE_PATTERN"); do
     # Strong-name the file to a new file with added suffix
     sn -R "$file" "$CERT_FILE"
 done
-
-exit 0
