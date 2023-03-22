@@ -105,4 +105,4 @@ test-fw:
     # Note, running .NET Framework tests on a non-Windows machine may cause issues: https://xunit.net/docs/getting-started/netfx/cmdline
 	dotnet test EasyPost.Tests/EasyPost.Tests.csproj -f ${fw}
 
-.PHONY: help build build-test-fw build-prod clean coverage coverage-check docs format install-tools install lint lint-scripts prep-release release restore scan setup-win setup-unix test test-fw
+.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-tools install lint lint-scripts prep-release release restore scan setup-win setup-unix test test-fw
