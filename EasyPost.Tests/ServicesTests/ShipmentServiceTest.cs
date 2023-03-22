@@ -144,6 +144,32 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
+        public async Task TestGetNextPage()
+        {
+            UseVCR("get_next_page");
+
+            ShipmentCollection collection = await Client.Shipment.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
+
+            try
+            {
+                ShipmentCollection nextPageCollection = await Client.Shipment.GetNextPage(collection);
+
+                // If the first ID in the next page is the same as the first ID in the current page, then we didn't get the next page
+                Assert.NotEqual(collection.Shipments[0].Id, nextPageCollection.Shipments[0].Id);
+            }
+            catch (EndOfPaginationError e) // There's no second page, that's not a failure
+            {
+                Assert.True(true);
+            }
+            catch // Any other exception is a failure
+            {
+                Assert.True(false);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Function]
         public async Task TestGetLowestSmartRate()
         {
             UseVCR("get_lowest_smart_rate");

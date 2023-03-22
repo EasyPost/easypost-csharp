@@ -40,13 +40,7 @@ namespace EasyPost.Models.Shared
                 throw new EndOfPaginationError();
             }
 
-            TParameters? parameters = BuildNextPageParameters<TParameters>(currentEntries, pageSize);
-
-            if (parameters == null)
-            {
-                // No parameters available to retrieve the next page.
-                throw new EndOfPaginationError();
-            }
+            TParameters parameters = BuildNextPageParameters<TParameters>(currentEntries, pageSize);
 
             return await apiCallFunction(parameters);
         }

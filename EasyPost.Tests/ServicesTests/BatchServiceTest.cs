@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -61,6 +63,32 @@ namespace EasyPost.Tests.ServicesTests
             foreach (Batch item in batches)
             {
                 Assert.IsType<Batch>(item);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Function]
+        public async Task TestGetNextPage()
+        {
+            UseVCR("get_next_page");
+
+            BatchCollection collection = await Client.Batch.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
+
+            try
+            {
+                BatchCollection nextPageCollection = await Client.Batch.GetNextPage(collection);
+
+                // If the first ID in the next page is the same as the first ID in the current page, then we didn't get the next page
+                Assert.NotEqual(collection.Batches[0].Id, nextPageCollection.Batches[0].Id);
+            }
+            catch (EndOfPaginationError e) // There's no second page, that's not a failure
+            {
+                Assert.True(true);
+            }
+            catch (Exception e) // Any other exception is a failure
+            {
+                Assert.True(false);
             }
         }
 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -62,6 +63,17 @@ namespace EasyPost.Services
         /// <returns><see cref="RefundCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<RefundCollection> All(BetaFeatures.Parameters.Refunds.All parameters) => await List<RefundCollection>("refunds", parameters.ToDictionary());
+
+        /// <summary>
+        ///     Get the next page of a paginated <see cref="RefundCollection"/>.
+        /// </summary>
+        /// <param name="collection">The <see cref="RefundCollection"/> to get the next page of.</param>
+        /// <param name="pageSize">The size of the next page.</param>
+        /// <returns>The next page, as a <see cref="RefundCollection"/> instance.</returns>
+        /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
+        [CrudOperations.Read]
+        public async Task<RefundCollection> GetNextPage(RefundCollection collection, int? pageSize = null) => await collection.GetNextPage<RefundCollection, BetaFeatures.Parameters.Refunds.All>(async parameters => await All(parameters), collection.Refunds, pageSize);
+
 
         /// <summary>
         ///     Retrieve a Refund from its id.

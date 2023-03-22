@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -48,6 +49,32 @@ namespace EasyPost.Tests.ServicesTests
             foreach (ScanForm scanForm in scanForms)
             {
                 Assert.IsType<ScanForm>(scanForm);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Function]
+        public async Task TestGetNextPage()
+        {
+            UseVCR("get_next_page");
+
+            ScanFormCollection collection = await Client.ScanForm.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
+
+            try
+            {
+                ScanFormCollection nextPageCollection = await Client.ScanForm.GetNextPage(collection);
+
+                // If the first ID in the next page is the same as the first ID in the current page, then we didn't get the next page
+                Assert.NotEqual(collection.ScanForms[0].Id, nextPageCollection.ScanForms[0].Id);
+            }
+            catch (EndOfPaginationError e) // There's no second page, that's not a failure
+            {
+                Assert.True(true);
+            }
+            catch // Any other exception is a failure
+            {
+                Assert.True(false);
             }
         }
 

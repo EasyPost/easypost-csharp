@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -100,6 +101,17 @@ namespace EasyPost.Services
         /// <returns><see cref="BatchCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<BatchCollection> All(BetaFeatures.Parameters.Batches.All parameters) => await List<BatchCollection>("batches", parameters.ToDictionary());
+
+        /// <summary>
+        ///     Get the next page of a paginated <see cref="BatchCollection"/>.
+        /// </summary>
+        /// <param name="collection">The <see cref="BatchCollection"/> to get the next page of.</param>
+        /// <param name="pageSize">The size of the next page.</param>
+        /// <returns>The next page, as a <see cref="BatchCollection"/> instance.</returns>
+        /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
+        [CrudOperations.Read]
+        public async Task<BatchCollection> GetNextPage(BatchCollection collection, int? pageSize = null) => await collection.GetNextPage<BatchCollection, BetaFeatures.Parameters.Batches.All>(async parameters => await All(parameters), collection.Batches, pageSize);
+
 
         /// <summary>
         ///     Retrieve a Batch from its id.

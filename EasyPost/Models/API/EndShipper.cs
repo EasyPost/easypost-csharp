@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -91,6 +92,7 @@ namespace EasyPost.Models.API
         {
         }
 
-        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<EndShipper> entries, int? pageSize = null) => throw new System.NotImplementedException();
+        // Cannot currently get the next page of EndShippers, so this is not implemented.
+        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<EndShipper> entries, int? pageSize = null) => throw new EndOfPaginationError();
     }
 }

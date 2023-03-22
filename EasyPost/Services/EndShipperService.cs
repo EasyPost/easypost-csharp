@@ -81,6 +81,7 @@ namespace EasyPost.Services
         /// <returns><see cref="EndShipperCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipperCollection> All(BetaFeatures.Parameters.EndShippers.All parameters) => await List<EndShipperCollection>("end_shippers", parameters.ToDictionary());
+
         /// <summary>
         ///     Retrieve an EndShipper from its id.
         /// </summary>

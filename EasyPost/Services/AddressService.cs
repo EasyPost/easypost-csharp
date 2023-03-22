@@ -143,7 +143,8 @@ namespace EasyPost.Services
         /// <param name="pageSize">The size of the next page.</param>
         /// <returns>The next page, as a <see cref="AddressCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
-        public async Task<AddressCollection> GetNextPage(AddressCollection collection, int? pageSize = null) => await collection.GetNextPage<AddressCollection, Address, BetaFeatures.Parameters.Addresses.All>(async parameters => await All(parameters), collection.Addresses, pageSize);
+        [CrudOperations.Read]
+        public async Task<AddressCollection> GetNextPage(AddressCollection collection, int? pageSize = null) => await collection.GetNextPage<AddressCollection, BetaFeatures.Parameters.Addresses.All>(async parameters => await All(parameters), collection.Addresses, pageSize);
 
         /// <summary>
         ///     Retrieve an Address from its id.

@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.API;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -68,6 +69,16 @@ namespace EasyPost.Services
         /// <returns><see cref="ReferralCustomerCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<ReferralCustomerCollection> All(BetaFeatures.Parameters.ReferralCustomers.All parameters) => await List<ReferralCustomerCollection>("referral_customers", parameters.ToDictionary());
+
+        /// <summary>
+        ///     Get the next page of a paginated <see cref="ReferralCustomerCollection"/>.
+        /// </summary>
+        /// <param name="collection">The <see cref="ReferralCustomerCollection"/> to get the next page of.</param>
+        /// <param name="pageSize">The size of the next page.</param>
+        /// <returns>The next page, as a <see cref="ReferralCustomerCollection"/> instance.</returns>
+        /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
+        [CrudOperations.Read]
+        public async Task<ReferralCustomerCollection> GetNextPage(ReferralCustomerCollection collection, int? pageSize = null) => await collection.GetNextPage<ReferralCustomerCollection, BetaFeatures.Parameters.ReferralCustomers.All>(async parameters => await All(parameters), collection.ReferralCustomers, pageSize);
 
         /// <summary>
         ///     Add a credit card to a Referral Customer.
