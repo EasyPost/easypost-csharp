@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -134,6 +135,15 @@ namespace EasyPost.Services
         /// <returns><see cref="AddressCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<AddressCollection> All(BetaFeatures.Parameters.Addresses.All parameters) => await List<AddressCollection>("addresses", parameters.ToDictionary());
+
+        /// <summary>
+        ///     Get the next page of a paginated <see cref="AddressCollection"/>.
+        /// </summary>
+        /// <param name="collection">The <see cref="AddressCollection"/> to get the next page of.</param>
+        /// <param name="pageSize">The size of the next page.</param>
+        /// <returns>The next page, as a <see cref="AddressCollection"/> instance.</returns>
+        /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
+        public async Task<AddressCollection> GetNextPage(AddressCollection collection, int? pageSize = null) => await collection.GetNextPage<AddressCollection, Address, BetaFeatures.Parameters.Addresses.All>(async parameters => await All(parameters), collection.Addresses, pageSize);
 
         /// <summary>
         ///     Retrieve an Address from its id.

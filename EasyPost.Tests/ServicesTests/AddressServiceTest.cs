@@ -124,6 +124,21 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
+        public async Task TestGetNextPage()
+        {
+            UseVCR("get_next_page");
+
+            AddressCollection addressCollection = await Client.Address.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
+
+            AddressCollection nextPageAddressCollection = await Client.Address.GetNextPage(addressCollection);
+
+            // If the first ID in the next page is the same as the first ID in the current page, then we didn't get the next page
+            Assert.NotEqual(addressCollection.Addresses[0].Id, nextPageAddressCollection.Addresses[0].Id);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Function]
         public async Task TestRetrieve()
         {
             UseVCR("retrieve");

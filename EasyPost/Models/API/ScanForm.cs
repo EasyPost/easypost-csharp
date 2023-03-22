@@ -44,5 +44,7 @@ namespace EasyPost.Models.API
         internal ScanFormCollection()
         {
         }
+
+        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new System.NotImplementedException();
     }
 }

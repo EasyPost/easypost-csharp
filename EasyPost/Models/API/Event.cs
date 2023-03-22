@@ -45,5 +45,7 @@ namespace EasyPost.Models.API
         internal EventCollection()
         {
         }
+
+        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new System.NotImplementedException();
     }
 }
