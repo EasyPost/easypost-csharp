@@ -125,7 +125,7 @@ namespace EasyPost.Models.API
         public PickupRate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => (PickupRate)Utilities.Rates.GetLowestRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
     }
 
-    public class PickupCollection : Collection
+    public class PickupCollection : PaginatedCollection<Pickup>
     {
         #region JSON Properties
 
@@ -138,6 +138,6 @@ namespace EasyPost.Models.API
         {
         }
 
-        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new NotImplementedException();
+        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Pickup> entries, int? pageSize = null) => throw new NotImplementedException();
     }
 }

@@ -249,7 +249,7 @@ namespace EasyPost.Models.API
         #endregion
     }
 
-    public class BatchCollection : Collection
+    public class BatchCollection : PaginatedCollection<Batch>
     {
         #region JSON Properties
 
@@ -262,6 +262,6 @@ namespace EasyPost.Models.API
         {
         }
 
-        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new System.NotImplementedException();
+        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Batch> entries, int? pageSize = null) => throw new System.NotImplementedException();
     }
 }

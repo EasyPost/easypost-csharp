@@ -64,7 +64,7 @@ namespace EasyPost.Models.API
     }
 #pragma warning restore CA1724 // Naming conflicts with Parameters.Insurance
 
-    public class InsuranceCollection : Collection
+    public class InsuranceCollection : PaginatedCollection<Insurance>
     {
         #region JSON Properties
 
@@ -77,6 +77,6 @@ namespace EasyPost.Models.API
         {
         }
 
-        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new NotImplementedException();
+        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Insurance> entries, int? pageSize = null) => throw new NotImplementedException();
     }
 }

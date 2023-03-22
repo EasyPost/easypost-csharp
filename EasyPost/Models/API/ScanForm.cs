@@ -32,7 +32,7 @@ namespace EasyPost.Models.API
         }
     }
 
-    public class ScanFormCollection : Collection
+    public class ScanFormCollection : PaginatedCollection<ScanForm>
     {
         #region JSON Properties
 
@@ -45,6 +45,6 @@ namespace EasyPost.Models.API
         {
         }
 
-        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new System.NotImplementedException();
+        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<ScanForm> entries, int? pageSize = null) => throw new System.NotImplementedException();
     }
 }

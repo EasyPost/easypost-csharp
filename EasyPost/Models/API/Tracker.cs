@@ -43,7 +43,7 @@ namespace EasyPost.Models.API
         }
     }
 
-    public class TrackerCollection : Collection
+    public class TrackerCollection : PaginatedCollection<Tracker>
     {
         #region JSON Properties
 
@@ -56,6 +56,6 @@ namespace EasyPost.Models.API
         {
         }
 
-        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new NotImplementedException();
+        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Tracker> entries, int? pageSize = null) => throw new NotImplementedException();
     }
 }

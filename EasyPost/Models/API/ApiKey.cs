@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using EasyPost._base;
-using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -19,7 +18,7 @@ namespace EasyPost.Models.API
         }
     }
 
-    public class ApiKeyCollection : Collection
+    public class ApiKeyCollection : EasyPostObject
     {
         #region JSON Properties
 
@@ -34,7 +33,5 @@ namespace EasyPost.Models.API
         internal ApiKeyCollection()
         {
         }
-
-        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new System.NotImplementedException();
     }
 }

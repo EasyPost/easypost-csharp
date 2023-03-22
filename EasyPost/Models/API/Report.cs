@@ -31,7 +31,7 @@ namespace EasyPost.Models.API
         }
     }
 
-    public class ReportCollection : Collection
+    public class ReportCollection : PaginatedCollection<Report>
     {
         #region JSON Properties
 
@@ -46,6 +46,6 @@ namespace EasyPost.Models.API
         {
         }
 
-        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new NotImplementedException();
+        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Report> entries, int? pageSize = null) => throw new NotImplementedException();
     }
 }
