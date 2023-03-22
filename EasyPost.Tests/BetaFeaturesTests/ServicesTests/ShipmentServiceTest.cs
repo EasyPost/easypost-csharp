@@ -97,7 +97,6 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             BetaFeatures.Parameters.Addresses.Create toAddressParameters = Fixtures.Parameters.Addresses.Create(toAddressData);
             BetaFeatures.Parameters.Parcels.Create parcelParameters = Fixtures.Parameters.Parcels.Create(parcelData);
 
-
             Address fromAddress = await Client.Address.Create(fromAddressParameters);
             Address toAddress = await Client.Address.Create(toAddressParameters);
             Parcel parcel = await Client.Parcel.Create(parcelParameters);

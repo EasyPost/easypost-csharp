@@ -118,7 +118,6 @@ namespace EasyPost.Tests._Utilities
 
         internal static string WebhookUrl => GetFixtureStructure().WebhookUrl;
 
-
         private static FixtureStructure GetFixtureStructure()
         {
             string fixtureData = ReadFixtureData();

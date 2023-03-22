@@ -64,7 +64,6 @@ namespace EasyPost.Tests.ServicesTests
             Assert.Null(shipment.TaxIdentifiers);
         }
 
-
         [Fact]
         [CrudOperations.Create]
         [Testing.Parameters]

@@ -74,7 +74,6 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<RefundCollection> GetNextPage(RefundCollection collection, int? pageSize = null) => await collection.GetNextPage<RefundCollection, BetaFeatures.Parameters.Refunds.All>(async parameters => await All(parameters), collection.Refunds, pageSize);
 
-
         /// <summary>
         ///     Retrieve a Refund from its id.
         /// </summary>

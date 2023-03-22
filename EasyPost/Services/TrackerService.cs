@@ -121,7 +121,6 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<TrackerCollection> GetNextPage(TrackerCollection collection, int? pageSize = null) => await collection.GetNextPage<TrackerCollection, BetaFeatures.Parameters.Trackers.All>(async parameters => await All(parameters), collection.Trackers, pageSize);
 
-
         /// <summary>
         ///     Retrieve a Tracker from its id.
         /// </summary>

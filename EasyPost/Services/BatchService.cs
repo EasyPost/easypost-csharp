@@ -112,7 +112,6 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<BatchCollection> GetNextPage(BatchCollection collection, int? pageSize = null) => await collection.GetNextPage<BatchCollection, BetaFeatures.Parameters.Batches.All>(async parameters => await All(parameters), collection.Batches, pageSize);
 
-
         /// <summary>
         ///     Retrieve a Batch from its id.
         /// </summary>

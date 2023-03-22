@@ -42,7 +42,6 @@ namespace EasyPost.Tests.ExceptionsTests
 
             Assert.Equal(expectedMessage, prettyPrintedError);
 
-
             // Now test with some error-related JSON inside the response
             string errorMessageStringJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": \"ERROR_MESSAGE\", \"errors\": []}}";
 
@@ -218,7 +217,6 @@ namespace EasyPost.Tests.ExceptionsTests
             ApiError error = ApiError.FromErrorResponse(response);
 
             Assert.Equal("ERROR_MESSAGE_1", error.Message);
-
 
             const string errorMessageArrayJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": [\"ERROR_MESSAGE_1\", \"ERROR_MESSAGE_2\"], \"errors\": []}}";
             response = new RestResponse

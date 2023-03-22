@@ -84,7 +84,6 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ScanFormCollection> GetNextPage(ScanFormCollection collection, int? pageSize = null) => await collection.GetNextPage<ScanFormCollection, BetaFeatures.Parameters.ScanForms.All>(async parameters => await All(parameters), collection.ScanForms, pageSize);
 
-
         /// <summary>
         ///     Retrieve a ScanForm from its id.
         /// </summary>

@@ -104,7 +104,6 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ShipmentCollection> GetNextPage(ShipmentCollection collection, int? pageSize = null) => await collection.GetNextPage<ShipmentCollection, BetaFeatures.Parameters.Shipments.All>(async parameters => await All(parameters), collection.Shipments, pageSize);
 
-
         /// <summary>
         ///     Retrieve a Shipment from its id.
         /// </summary>

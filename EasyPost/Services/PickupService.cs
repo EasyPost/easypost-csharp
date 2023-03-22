@@ -106,7 +106,6 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<PickupCollection> GetNextPage(PickupCollection collection, int? pageSize = null) => await collection.GetNextPage<PickupCollection, BetaFeatures.Parameters.Pickups.All>(async parameters => await All(parameters), collection.Pickups, pageSize);
 
-
         #endregion
     }
 }
