@@ -27,11 +27,11 @@ clean:
 
 ## coverage - Generate coverage reports for the project
 coverage:
-	./generate_test_reports.sh
+	bash scripts/unix/generate_test_reports.sh
 
 ## coverage-check - Check if the coverage is above the minimum threshold
 coverage-check:
-	./check_coverage.sh 90
+	bash scripts/unix/check_coverage.sh 90
 
 ## docs - Generates library documentation
 docs:
@@ -62,22 +62,15 @@ lint:
 
 ## lint-scripts - Lint and validate the Batch scripts (Windows only)
 lint-scripts:
-	scripts\lint_scripts.bat
+	scripts\win\lint_scripts.bat
 
-## prep-release - Build, sign and package the project for distribution, signing with the provided certificate (Windows only)
+## prep-release - Build, sign and package the project for distribution, signing with the provided certificate
 # @parameters:
 # sncert= - The strong-name certificate to use for signing the built assets.
 # cert= - The authenticity certificate to use for signing the built assets.
 # pass= - The password for the authenticity certificate.
 prep-release:
-	scripts\build_release_nuget.bat EasyPost ${sncert} ${cert} ${pass} EasyPost Release
-
-## publish - Publish a specific NuGet file to nuget.org (Windows only)
-# @parameters:
-# file= - The NuGet file to publish
-# key= - The API key for nuget.org
-publish:
-	scripts\publish_nuget.bat ${file} ${key}
+	bash scripts/unix/build_release_nuget.sh EasyPost ${sncert} ${cert} ${pass} Release
 
 ## release - Cuts a release for the project on GitHub (requires GitHub CLI)
 # tag = The associated tag title of the release
@@ -95,11 +88,11 @@ scan:
 
 ## setup-win - Install required .NET versions and tools (Windows only)
 setup-win:
-	scripts\setup.bat
+	scripts\win\setup.bat
 
 ## setup-unix - Install required .NET versions and tools (Unix only)
 setup-unix:
-	bash scripts/setup.sh
+	bash scripts/unix/setup.sh
 
 ## test - Test the project
 test:
@@ -112,8 +105,4 @@ test-fw:
     # Note, running .NET Framework tests on a non-Windows machine may cause issues: https://xunit.net/docs/getting-started/netfx/cmdline
 	dotnet test EasyPost.Tests/EasyPost.Tests.csproj -f ${fw}
 
-## uninstall-scanner - Uninstall SecurityCodeScan from your system
-uninstall-scanner:
-	dotnet tool uninstall security-scan
-
-.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-tools install lint lint-scripts pre-release publish-all publish release restore scan setup-win setup-unix test test-fw uninstall-scanner
+.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-tools install lint lint-scripts prep-release release restore scan setup-win setup-unix test test-fw

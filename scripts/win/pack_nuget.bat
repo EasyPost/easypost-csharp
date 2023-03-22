@@ -5,6 +5,9 @@
 
 @ECHO OFF
 
+:: Parse command line arguments
+SET projectName=%1
+
 :: Generate a NuGet package (will fail if assemblies are missing)
 @ECHO:
 @ECHO Generating NuGet package...
