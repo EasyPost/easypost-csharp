@@ -1,9 +1,11 @@
 # CHANGELOG
 
-## Next Release
+## v4.5.0 (2023-03-22)
 
+- Adds new `Parameters` namespace and objects, allowing you to create the paramaters of any CRUD request without needing to build the dictionaries manually. See the README for more details
 - Adds missing `StatusDetail` property to `Tracker` and `TrackingDetail` classes
 - Adds missing `Fee` property to `Insurance` class
+- Removes the `Client` property of a `Collection`
 
 ## v4.4.0 (2023-02-17)
 
