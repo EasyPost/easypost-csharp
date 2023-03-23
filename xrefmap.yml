@@ -5374,15 +5374,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.AddressCollection.BuildNextPageParameters
   nameWithType: AddressCollection.BuildNextPageParameters
-- uid: EasyPost.Models.API.AddressCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.API.AddressCollection.html#EasyPost_Models_API_AddressCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.API.AddressCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.API.AddressCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.API.AddressCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: AddressCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: AddressCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.API.AddressCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Address},System.Nullable{System.Int32})
+  name: BuildNextPageParameters<TParameters>(IEnumerable<Address>, Nullable<Int32>)
+  href: api/EasyPost.Models.API.AddressCollection.html#EasyPost_Models_API_AddressCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_Address__System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.API.AddressCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Address},System.Nullable{System.Int32})
+  name.vb: BuildNextPageParameters(Of TParameters)(IEnumerable(Of Address), Nullable(Of Int32))
+  fullName: EasyPost.Models.API.AddressCollection.BuildNextPageParameters<TParameters>(IEnumerable<EasyPost.Models.API.Address>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.API.AddressCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EasyPost.Models.API.Address), System.Nullable(Of System.Int32))
+  nameWithType: AddressCollection.BuildNextPageParameters<TParameters>(IEnumerable<Address>, Nullable<Int32>)
+  nameWithType.vb: AddressCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of Address), Nullable(Of Int32))
 - uid: EasyPost.Models.API.ApiKey
   name: ApiKey
   href: api/EasyPost.Models.API.ApiKey.html
@@ -5408,22 +5408,6 @@ references:
   commentId: T:EasyPost.Models.API.ApiKeyCollection
   fullName: EasyPost.Models.API.ApiKeyCollection
   nameWithType: ApiKeyCollection
-- uid: EasyPost.Models.API.ApiKeyCollection.BuildNextPageParameters*
-  name: BuildNextPageParameters
-  href: api/EasyPost.Models.API.ApiKeyCollection.html#EasyPost_Models_API_ApiKeyCollection_BuildNextPageParameters_
-  commentId: Overload:EasyPost.Models.API.ApiKeyCollection.BuildNextPageParameters
-  isSpec: "True"
-  fullName: EasyPost.Models.API.ApiKeyCollection.BuildNextPageParameters
-  nameWithType: ApiKeyCollection.BuildNextPageParameters
-- uid: EasyPost.Models.API.ApiKeyCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.API.ApiKeyCollection.html#EasyPost_Models_API_ApiKeyCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.API.ApiKeyCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.API.ApiKeyCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.API.ApiKeyCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: ApiKeyCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: ApiKeyCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
 - uid: EasyPost.Models.API.ApiKeyCollection.Children
   name: Children
   href: api/EasyPost.Models.API.ApiKeyCollection.html#EasyPost_Models_API_ApiKeyCollection_Children
@@ -5730,15 +5714,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.BatchCollection.BuildNextPageParameters
   nameWithType: BatchCollection.BuildNextPageParameters
-- uid: EasyPost.Models.API.BatchCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.API.BatchCollection.html#EasyPost_Models_API_BatchCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.API.BatchCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.API.BatchCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.API.BatchCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: BatchCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: BatchCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.API.BatchCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Batch},System.Nullable{System.Int32})
+  name: BuildNextPageParameters<TParameters>(IEnumerable<Batch>, Nullable<Int32>)
+  href: api/EasyPost.Models.API.BatchCollection.html#EasyPost_Models_API_BatchCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_Batch__System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.API.BatchCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Batch},System.Nullable{System.Int32})
+  name.vb: BuildNextPageParameters(Of TParameters)(IEnumerable(Of Batch), Nullable(Of Int32))
+  fullName: EasyPost.Models.API.BatchCollection.BuildNextPageParameters<TParameters>(IEnumerable<EasyPost.Models.API.Batch>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.API.BatchCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EasyPost.Models.API.Batch), System.Nullable(Of System.Int32))
+  nameWithType: BatchCollection.BuildNextPageParameters<TParameters>(IEnumerable<Batch>, Nullable<Int32>)
+  nameWithType.vb: BatchCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of Batch), Nullable(Of Int32))
 - uid: EasyPost.Models.API.BatchShipment
   name: BatchShipment
   href: api/EasyPost.Models.API.BatchShipment.html
@@ -6986,15 +6970,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.EndShipperCollection.BuildNextPageParameters
   nameWithType: EndShipperCollection.BuildNextPageParameters
-- uid: EasyPost.Models.API.EndShipperCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.API.EndShipperCollection.html#EasyPost_Models_API_EndShipperCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.API.EndShipperCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.API.EndShipperCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.API.EndShipperCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: EndShipperCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: EndShipperCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.API.EndShipperCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.EndShipper},System.Nullable{System.Int32})
+  name: BuildNextPageParameters<TParameters>(IEnumerable<EndShipper>, Nullable<Int32>)
+  href: api/EasyPost.Models.API.EndShipperCollection.html#EasyPost_Models_API_EndShipperCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_EndShipper__System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.API.EndShipperCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.EndShipper},System.Nullable{System.Int32})
+  name.vb: BuildNextPageParameters(Of TParameters)(IEnumerable(Of EndShipper), Nullable(Of Int32))
+  fullName: EasyPost.Models.API.EndShipperCollection.BuildNextPageParameters<TParameters>(IEnumerable<EasyPost.Models.API.EndShipper>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.API.EndShipperCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EasyPost.Models.API.EndShipper), System.Nullable(Of System.Int32))
+  nameWithType: EndShipperCollection.BuildNextPageParameters<TParameters>(IEnumerable<EndShipper>, Nullable<Int32>)
+  nameWithType.vb: EndShipperCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EndShipper), Nullable(Of Int32))
 - uid: EasyPost.Models.API.EndShipperCollection.EndShippers
   name: EndShippers
   href: api/EasyPost.Models.API.EndShipperCollection.html#EasyPost_Models_API_EndShipperCollection_EndShippers
@@ -7189,15 +7173,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.EventCollection.BuildNextPageParameters
   nameWithType: EventCollection.BuildNextPageParameters
-- uid: EasyPost.Models.API.EventCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.API.EventCollection.html#EasyPost_Models_API_EventCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.API.EventCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.API.EventCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.API.EventCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: EventCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: EventCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.API.EventCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Event},System.Nullable{System.Int32})
+  name: BuildNextPageParameters<TParameters>(IEnumerable<Event>, Nullable<Int32>)
+  href: api/EasyPost.Models.API.EventCollection.html#EasyPost_Models_API_EventCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_Event__System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.API.EventCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Event},System.Nullable{System.Int32})
+  name.vb: BuildNextPageParameters(Of TParameters)(IEnumerable(Of Event), Nullable(Of Int32))
+  fullName: EasyPost.Models.API.EventCollection.BuildNextPageParameters<TParameters>(IEnumerable<EasyPost.Models.API.Event>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.API.EventCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EasyPost.Models.API.Event), System.Nullable(Of System.Int32))
+  nameWithType: EventCollection.BuildNextPageParameters<TParameters>(IEnumerable<Event>, Nullable<Int32>)
+  nameWithType.vb: EventCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of Event), Nullable(Of Int32))
 - uid: EasyPost.Models.API.EventCollection.Events
   name: Events
   href: api/EasyPost.Models.API.EventCollection.html#EasyPost_Models_API_EventCollection_Events
@@ -7505,15 +7489,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.InsuranceCollection.BuildNextPageParameters
   nameWithType: InsuranceCollection.BuildNextPageParameters
-- uid: EasyPost.Models.API.InsuranceCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.API.InsuranceCollection.html#EasyPost_Models_API_InsuranceCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.API.InsuranceCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.API.InsuranceCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.API.InsuranceCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: InsuranceCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: InsuranceCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.API.InsuranceCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Insurance},System.Nullable{System.Int32})
+  name: BuildNextPageParameters<TParameters>(IEnumerable<Insurance>, Nullable<Int32>)
+  href: api/EasyPost.Models.API.InsuranceCollection.html#EasyPost_Models_API_InsuranceCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_Insurance__System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.API.InsuranceCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Insurance},System.Nullable{System.Int32})
+  name.vb: BuildNextPageParameters(Of TParameters)(IEnumerable(Of Insurance), Nullable(Of Int32))
+  fullName: EasyPost.Models.API.InsuranceCollection.BuildNextPageParameters<TParameters>(IEnumerable<EasyPost.Models.API.Insurance>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.API.InsuranceCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EasyPost.Models.API.Insurance), System.Nullable(Of System.Int32))
+  nameWithType: InsuranceCollection.BuildNextPageParameters<TParameters>(IEnumerable<Insurance>, Nullable<Int32>)
+  nameWithType.vb: InsuranceCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of Insurance), Nullable(Of Int32))
 - uid: EasyPost.Models.API.InsuranceCollection.Insurances
   name: Insurances
   href: api/EasyPost.Models.API.InsuranceCollection.html#EasyPost_Models_API_InsuranceCollection_Insurances
@@ -9572,15 +9556,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.PickupCollection.BuildNextPageParameters
   nameWithType: PickupCollection.BuildNextPageParameters
-- uid: EasyPost.Models.API.PickupCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.API.PickupCollection.html#EasyPost_Models_API_PickupCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.API.PickupCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.API.PickupCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.API.PickupCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: PickupCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: PickupCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.API.PickupCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Pickup},System.Nullable{System.Int32})
+  name: BuildNextPageParameters<TParameters>(IEnumerable<Pickup>, Nullable<Int32>)
+  href: api/EasyPost.Models.API.PickupCollection.html#EasyPost_Models_API_PickupCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_Pickup__System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.API.PickupCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Pickup},System.Nullable{System.Int32})
+  name.vb: BuildNextPageParameters(Of TParameters)(IEnumerable(Of Pickup), Nullable(Of Int32))
+  fullName: EasyPost.Models.API.PickupCollection.BuildNextPageParameters<TParameters>(IEnumerable<EasyPost.Models.API.Pickup>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.API.PickupCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EasyPost.Models.API.Pickup), System.Nullable(Of System.Int32))
+  nameWithType: PickupCollection.BuildNextPageParameters<TParameters>(IEnumerable<Pickup>, Nullable<Int32>)
+  nameWithType.vb: PickupCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of Pickup), Nullable(Of Int32))
 - uid: EasyPost.Models.API.PickupCollection.Pickups
   name: Pickups
   href: api/EasyPost.Models.API.PickupCollection.html#EasyPost_Models_API_PickupCollection_Pickups
@@ -10008,15 +9992,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.ReferralCustomerCollection.BuildNextPageParameters
   nameWithType: ReferralCustomerCollection.BuildNextPageParameters
-- uid: EasyPost.Models.API.ReferralCustomerCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.API.ReferralCustomerCollection.html#EasyPost_Models_API_ReferralCustomerCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.API.ReferralCustomerCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.API.ReferralCustomerCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.API.ReferralCustomerCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: ReferralCustomerCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: ReferralCustomerCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.API.ReferralCustomerCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.ReferralCustomer},System.Nullable{System.Int32})
+  name: BuildNextPageParameters<TParameters>(IEnumerable<ReferralCustomer>, Nullable<Int32>)
+  href: api/EasyPost.Models.API.ReferralCustomerCollection.html#EasyPost_Models_API_ReferralCustomerCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_ReferralCustomer__System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.API.ReferralCustomerCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.ReferralCustomer},System.Nullable{System.Int32})
+  name.vb: BuildNextPageParameters(Of TParameters)(IEnumerable(Of ReferralCustomer), Nullable(Of Int32))
+  fullName: EasyPost.Models.API.ReferralCustomerCollection.BuildNextPageParameters<TParameters>(IEnumerable<EasyPost.Models.API.ReferralCustomer>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.API.ReferralCustomerCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EasyPost.Models.API.ReferralCustomer), System.Nullable(Of System.Int32))
+  nameWithType: ReferralCustomerCollection.BuildNextPageParameters<TParameters>(IEnumerable<ReferralCustomer>, Nullable<Int32>)
+  nameWithType.vb: ReferralCustomerCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of ReferralCustomer), Nullable(Of Int32))
 - uid: EasyPost.Models.API.ReferralCustomerCollection.ReferralCustomers
   name: ReferralCustomers
   href: api/EasyPost.Models.API.ReferralCustomerCollection.html#EasyPost_Models_API_ReferralCustomerCollection_ReferralCustomers
@@ -10114,15 +10098,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.RefundCollection.BuildNextPageParameters
   nameWithType: RefundCollection.BuildNextPageParameters
-- uid: EasyPost.Models.API.RefundCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.API.RefundCollection.html#EasyPost_Models_API_RefundCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.API.RefundCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.API.RefundCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.API.RefundCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: RefundCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: RefundCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.API.RefundCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Refund},System.Nullable{System.Int32})
+  name: BuildNextPageParameters<TParameters>(IEnumerable<Refund>, Nullable<Int32>)
+  href: api/EasyPost.Models.API.RefundCollection.html#EasyPost_Models_API_RefundCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_Refund__System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.API.RefundCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Refund},System.Nullable{System.Int32})
+  name.vb: BuildNextPageParameters(Of TParameters)(IEnumerable(Of Refund), Nullable(Of Int32))
+  fullName: EasyPost.Models.API.RefundCollection.BuildNextPageParameters<TParameters>(IEnumerable<EasyPost.Models.API.Refund>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.API.RefundCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EasyPost.Models.API.Refund), System.Nullable(Of System.Int32))
+  nameWithType: RefundCollection.BuildNextPageParameters<TParameters>(IEnumerable<Refund>, Nullable<Int32>)
+  nameWithType.vb: RefundCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of Refund), Nullable(Of Int32))
 - uid: EasyPost.Models.API.RefundCollection.Refunds
   name: Refunds
   href: api/EasyPost.Models.API.RefundCollection.html#EasyPost_Models_API_RefundCollection_Refunds
@@ -10233,15 +10217,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.ReportCollection.BuildNextPageParameters
   nameWithType: ReportCollection.BuildNextPageParameters
-- uid: EasyPost.Models.API.ReportCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.API.ReportCollection.html#EasyPost_Models_API_ReportCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.API.ReportCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.API.ReportCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.API.ReportCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: ReportCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: ReportCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.API.ReportCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Report},System.Nullable{System.Int32})
+  name: BuildNextPageParameters<TParameters>(IEnumerable<Report>, Nullable<Int32>)
+  href: api/EasyPost.Models.API.ReportCollection.html#EasyPost_Models_API_ReportCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_Report__System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.API.ReportCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Report},System.Nullable{System.Int32})
+  name.vb: BuildNextPageParameters(Of TParameters)(IEnumerable(Of Report), Nullable(Of Int32))
+  fullName: EasyPost.Models.API.ReportCollection.BuildNextPageParameters<TParameters>(IEnumerable<EasyPost.Models.API.Report>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.API.ReportCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EasyPost.Models.API.Report), System.Nullable(Of System.Int32))
+  nameWithType: ReportCollection.BuildNextPageParameters<TParameters>(IEnumerable<Report>, Nullable<Int32>)
+  nameWithType.vb: ReportCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of Report), Nullable(Of Int32))
 - uid: EasyPost.Models.API.ReportCollection.Reports
   name: Reports
   href: api/EasyPost.Models.API.ReportCollection.html#EasyPost_Models_API_ReportCollection_Reports
@@ -10378,15 +10362,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.ScanFormCollection.BuildNextPageParameters
   nameWithType: ScanFormCollection.BuildNextPageParameters
-- uid: EasyPost.Models.API.ScanFormCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.API.ScanFormCollection.html#EasyPost_Models_API_ScanFormCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.API.ScanFormCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.API.ScanFormCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.API.ScanFormCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: ScanFormCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: ScanFormCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.API.ScanFormCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.ScanForm},System.Nullable{System.Int32})
+  name: BuildNextPageParameters<TParameters>(IEnumerable<ScanForm>, Nullable<Int32>)
+  href: api/EasyPost.Models.API.ScanFormCollection.html#EasyPost_Models_API_ScanFormCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_ScanForm__System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.API.ScanFormCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.ScanForm},System.Nullable{System.Int32})
+  name.vb: BuildNextPageParameters(Of TParameters)(IEnumerable(Of ScanForm), Nullable(Of Int32))
+  fullName: EasyPost.Models.API.ScanFormCollection.BuildNextPageParameters<TParameters>(IEnumerable<EasyPost.Models.API.ScanForm>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.API.ScanFormCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EasyPost.Models.API.ScanForm), System.Nullable(Of System.Int32))
+  nameWithType: ScanFormCollection.BuildNextPageParameters<TParameters>(IEnumerable<ScanForm>, Nullable<Int32>)
+  nameWithType.vb: ScanFormCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of ScanForm), Nullable(Of Int32))
 - uid: EasyPost.Models.API.ScanFormCollection.ScanForms
   name: ScanForms
   href: api/EasyPost.Models.API.ScanFormCollection.html#EasyPost_Models_API_ScanFormCollection_ScanForms
@@ -10942,15 +10926,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.ShipmentCollection.BuildNextPageParameters
   nameWithType: ShipmentCollection.BuildNextPageParameters
-- uid: EasyPost.Models.API.ShipmentCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.API.ShipmentCollection.html#EasyPost_Models_API_ShipmentCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.API.ShipmentCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.API.ShipmentCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.API.ShipmentCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: ShipmentCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: ShipmentCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.API.ShipmentCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Shipment},System.Nullable{System.Int32})
+  name: BuildNextPageParameters<TParameters>(IEnumerable<Shipment>, Nullable<Int32>)
+  href: api/EasyPost.Models.API.ShipmentCollection.html#EasyPost_Models_API_ShipmentCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_Shipment__System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.API.ShipmentCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Shipment},System.Nullable{System.Int32})
+  name.vb: BuildNextPageParameters(Of TParameters)(IEnumerable(Of Shipment), Nullable(Of Int32))
+  fullName: EasyPost.Models.API.ShipmentCollection.BuildNextPageParameters<TParameters>(IEnumerable<EasyPost.Models.API.Shipment>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.API.ShipmentCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EasyPost.Models.API.Shipment), System.Nullable(Of System.Int32))
+  nameWithType: ShipmentCollection.BuildNextPageParameters<TParameters>(IEnumerable<Shipment>, Nullable<Int32>)
+  nameWithType.vb: ShipmentCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of Shipment), Nullable(Of Int32))
 - uid: EasyPost.Models.API.ShipmentCollection.Shipments
   name: Shipments
   href: api/EasyPost.Models.API.ShipmentCollection.html#EasyPost_Models_API_ShipmentCollection_Shipments
@@ -11582,15 +11566,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.TrackerCollection.BuildNextPageParameters
   nameWithType: TrackerCollection.BuildNextPageParameters
-- uid: EasyPost.Models.API.TrackerCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.API.TrackerCollection.html#EasyPost_Models_API_TrackerCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.API.TrackerCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.API.TrackerCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.API.TrackerCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: TrackerCollection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: TrackerCollection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.API.TrackerCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Tracker},System.Nullable{System.Int32})
+  name: BuildNextPageParameters<TParameters>(IEnumerable<Tracker>, Nullable<Int32>)
+  href: api/EasyPost.Models.API.TrackerCollection.html#EasyPost_Models_API_TrackerCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_Tracker__System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.API.TrackerCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Tracker},System.Nullable{System.Int32})
+  name.vb: BuildNextPageParameters(Of TParameters)(IEnumerable(Of Tracker), Nullable(Of Int32))
+  fullName: EasyPost.Models.API.TrackerCollection.BuildNextPageParameters<TParameters>(IEnumerable<EasyPost.Models.API.Tracker>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.API.TrackerCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EasyPost.Models.API.Tracker), System.Nullable(Of System.Int32))
+  nameWithType: TrackerCollection.BuildNextPageParameters<TParameters>(IEnumerable<Tracker>, Nullable<Int32>)
+  nameWithType.vb: TrackerCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of Tracker), Nullable(Of Int32))
 - uid: EasyPost.Models.API.TrackerCollection.Trackers
   name: Trackers
   href: api/EasyPost.Models.API.TrackerCollection.html#EasyPost_Models_API_TrackerCollection_Trackers
@@ -12166,41 +12150,50 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.Shared.BaseUser.SecondaryRechargeAmount
   nameWithType: BaseUser.SecondaryRechargeAmount
-- uid: EasyPost.Models.Shared.Collection
-  name: Collection
-  href: api/EasyPost.Models.Shared.Collection.html
-  commentId: T:EasyPost.Models.Shared.Collection
-  fullName: EasyPost.Models.Shared.Collection
-  nameWithType: Collection
-- uid: EasyPost.Models.Shared.Collection.BuildNextPageParameters*
+- uid: EasyPost.Models.Shared.PaginatedCollection`1
+  name: PaginatedCollection<TEntries>
+  href: api/EasyPost.Models.Shared.PaginatedCollection-1.html
+  commentId: T:EasyPost.Models.Shared.PaginatedCollection`1
+  name.vb: PaginatedCollection(Of TEntries)
+  fullName: EasyPost.Models.Shared.PaginatedCollection<TEntries>
+  fullName.vb: EasyPost.Models.Shared.PaginatedCollection(Of TEntries)
+  nameWithType: PaginatedCollection<TEntries>
+  nameWithType.vb: PaginatedCollection(Of TEntries)
+- uid: EasyPost.Models.Shared.PaginatedCollection`1.BuildNextPageParameters*
   name: BuildNextPageParameters
-  href: api/EasyPost.Models.Shared.Collection.html#EasyPost_Models_Shared_Collection_BuildNextPageParameters_
-  commentId: Overload:EasyPost.Models.Shared.Collection.BuildNextPageParameters
+  href: api/EasyPost.Models.Shared.PaginatedCollection-1.html#EasyPost_Models_Shared_PaginatedCollection_1_BuildNextPageParameters_
+  commentId: Overload:EasyPost.Models.Shared.PaginatedCollection`1.BuildNextPageParameters
   isSpec: "True"
-  fullName: EasyPost.Models.Shared.Collection.BuildNextPageParameters
-  nameWithType: Collection.BuildNextPageParameters
-- uid: EasyPost.Models.Shared.Collection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name: BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  href: api/EasyPost.Models.Shared.Collection.html#EasyPost_Models_Shared_Collection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__
-  commentId: M:EasyPost.Models.Shared.Collection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})
-  name.vb: BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-  fullName: EasyPost.Models.Shared.Collection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
-  fullName.vb: EasyPost.Models.Shared.Collection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
-  nameWithType: Collection.BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
-  nameWithType.vb: Collection.BuildNextPageParameters(Of TEntries, TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
-- uid: EasyPost.Models.Shared.Collection.HasMore
+  fullName: EasyPost.Models.Shared.PaginatedCollection<TEntries>.BuildNextPageParameters
+  fullName.vb: EasyPost.Models.Shared.PaginatedCollection(Of TEntries).BuildNextPageParameters
+  nameWithType: PaginatedCollection<TEntries>.BuildNextPageParameters
+  nameWithType.vb: PaginatedCollection(Of TEntries).BuildNextPageParameters
+- uid: EasyPost.Models.Shared.PaginatedCollection`1.BuildNextPageParameters``1(IEnumerable{`0},System.Nullable{System.Int32})
+  name: BuildNextPageParameters<TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
+  href: api/EasyPost.Models.Shared.PaginatedCollection-1.html#EasyPost_Models_Shared_PaginatedCollection_1_BuildNextPageParameters__1_IEnumerable__0__System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.Shared.PaginatedCollection`1.BuildNextPageParameters``1(IEnumerable{`0},System.Nullable{System.Int32})
+  name.vb: BuildNextPageParameters(Of TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+  fullName: EasyPost.Models.Shared.PaginatedCollection<TEntries>.BuildNextPageParameters<TParameters>(IEnumerable<TEntries>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.Shared.PaginatedCollection(Of TEntries).BuildNextPageParameters(Of TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
+  nameWithType: PaginatedCollection<TEntries>.BuildNextPageParameters<TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
+  nameWithType.vb: PaginatedCollection(Of TEntries).BuildNextPageParameters(Of TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.Shared.PaginatedCollection`1.HasMore
   name: HasMore
-  href: api/EasyPost.Models.Shared.Collection.html#EasyPost_Models_Shared_Collection_HasMore
-  commentId: P:EasyPost.Models.Shared.Collection.HasMore
-  fullName: EasyPost.Models.Shared.Collection.HasMore
-  nameWithType: Collection.HasMore
-- uid: EasyPost.Models.Shared.Collection.HasMore*
+  href: api/EasyPost.Models.Shared.PaginatedCollection-1.html#EasyPost_Models_Shared_PaginatedCollection_1_HasMore
+  commentId: P:EasyPost.Models.Shared.PaginatedCollection`1.HasMore
+  fullName: EasyPost.Models.Shared.PaginatedCollection<TEntries>.HasMore
+  fullName.vb: EasyPost.Models.Shared.PaginatedCollection(Of TEntries).HasMore
+  nameWithType: PaginatedCollection<TEntries>.HasMore
+  nameWithType.vb: PaginatedCollection(Of TEntries).HasMore
+- uid: EasyPost.Models.Shared.PaginatedCollection`1.HasMore*
   name: HasMore
-  href: api/EasyPost.Models.Shared.Collection.html#EasyPost_Models_Shared_Collection_HasMore_
-  commentId: Overload:EasyPost.Models.Shared.Collection.HasMore
+  href: api/EasyPost.Models.Shared.PaginatedCollection-1.html#EasyPost_Models_Shared_PaginatedCollection_1_HasMore_
+  commentId: Overload:EasyPost.Models.Shared.PaginatedCollection`1.HasMore
   isSpec: "True"
-  fullName: EasyPost.Models.Shared.Collection.HasMore
-  nameWithType: Collection.HasMore
+  fullName: EasyPost.Models.Shared.PaginatedCollection<TEntries>.HasMore
+  fullName.vb: EasyPost.Models.Shared.PaginatedCollection(Of TEntries).HasMore
+  nameWithType: PaginatedCollection<TEntries>.HasMore
+  nameWithType.vb: PaginatedCollection(Of TEntries).HasMore
 - uid: EasyPost.Services
   name: EasyPost.Services
   href: api/EasyPost.Services.html
@@ -12813,6 +12806,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.EventService.All
   nameWithType: EventService.All
+- uid: EasyPost.Services.EventService.GetNextPage(EasyPost.Models.API.EventCollection,System.Nullable{System.Int32})
+  name: GetNextPage(EventCollection, Nullable<Int32>)
+  href: api/EasyPost.Services.EventService.html#EasyPost_Services_EventService_GetNextPage_EasyPost_Models_API_EventCollection_System_Nullable_System_Int32__
+  commentId: M:EasyPost.Services.EventService.GetNextPage(EasyPost.Models.API.EventCollection,System.Nullable{System.Int32})
+  name.vb: GetNextPage(EventCollection, Nullable(Of Int32))
+  fullName: EasyPost.Services.EventService.GetNextPage(EasyPost.Models.API.EventCollection, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Services.EventService.GetNextPage(EasyPost.Models.API.EventCollection, System.Nullable(Of System.Int32))
+  nameWithType: EventService.GetNextPage(EventCollection, Nullable<Int32>)
+  nameWithType.vb: EventService.GetNextPage(EventCollection, Nullable(Of Int32))
+- uid: EasyPost.Services.EventService.GetNextPage*
+  name: GetNextPage
+  href: api/EasyPost.Services.EventService.html#EasyPost_Services_EventService_GetNextPage_
+  commentId: Overload:EasyPost.Services.EventService.GetNextPage
+  isSpec: "True"
+  fullName: EasyPost.Services.EventService.GetNextPage
+  nameWithType: EventService.GetNextPage
 - uid: EasyPost.Services.EventService.Retrieve(System.String)
   name: Retrieve(String)
   href: api/EasyPost.Services.EventService.html#EasyPost_Services_EventService_Retrieve_System_String_
@@ -12902,6 +12911,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.InsuranceService.Create
   nameWithType: InsuranceService.Create
+- uid: EasyPost.Services.InsuranceService.GetNextPage(EasyPost.Models.API.InsuranceCollection,System.Nullable{System.Int32})
+  name: GetNextPage(InsuranceCollection, Nullable<Int32>)
+  href: api/EasyPost.Services.InsuranceService.html#EasyPost_Services_InsuranceService_GetNextPage_EasyPost_Models_API_InsuranceCollection_System_Nullable_System_Int32__
+  commentId: M:EasyPost.Services.InsuranceService.GetNextPage(EasyPost.Models.API.InsuranceCollection,System.Nullable{System.Int32})
+  name.vb: GetNextPage(InsuranceCollection, Nullable(Of Int32))
+  fullName: EasyPost.Services.InsuranceService.GetNextPage(EasyPost.Models.API.InsuranceCollection, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Services.InsuranceService.GetNextPage(EasyPost.Models.API.InsuranceCollection, System.Nullable(Of System.Int32))
+  nameWithType: InsuranceService.GetNextPage(InsuranceCollection, Nullable<Int32>)
+  nameWithType.vb: InsuranceService.GetNextPage(InsuranceCollection, Nullable(Of Int32))
+- uid: EasyPost.Services.InsuranceService.GetNextPage*
+  name: GetNextPage
+  href: api/EasyPost.Services.InsuranceService.html#EasyPost_Services_InsuranceService_GetNextPage_
+  commentId: Overload:EasyPost.Services.InsuranceService.GetNextPage
+  isSpec: "True"
+  fullName: EasyPost.Services.InsuranceService.GetNextPage
+  nameWithType: InsuranceService.GetNextPage
 - uid: EasyPost.Services.InsuranceService.Retrieve(System.String)
   name: Retrieve(String)
   href: api/EasyPost.Services.InsuranceService.html#EasyPost_Services_InsuranceService_Retrieve_System_String_
@@ -13060,6 +13085,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.PartnerService.CreateReferral
   nameWithType: PartnerService.CreateReferral
+- uid: EasyPost.Services.PartnerService.GetNextPage(EasyPost.Models.API.ReferralCustomerCollection,System.Nullable{System.Int32})
+  name: GetNextPage(ReferralCustomerCollection, Nullable<Int32>)
+  href: api/EasyPost.Services.PartnerService.html#EasyPost_Services_PartnerService_GetNextPage_EasyPost_Models_API_ReferralCustomerCollection_System_Nullable_System_Int32__
+  commentId: M:EasyPost.Services.PartnerService.GetNextPage(EasyPost.Models.API.ReferralCustomerCollection,System.Nullable{System.Int32})
+  name.vb: GetNextPage(ReferralCustomerCollection, Nullable(Of Int32))
+  fullName: EasyPost.Services.PartnerService.GetNextPage(EasyPost.Models.API.ReferralCustomerCollection, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Services.PartnerService.GetNextPage(EasyPost.Models.API.ReferralCustomerCollection, System.Nullable(Of System.Int32))
+  nameWithType: PartnerService.GetNextPage(ReferralCustomerCollection, Nullable<Int32>)
+  nameWithType.vb: PartnerService.GetNextPage(ReferralCustomerCollection, Nullable(Of Int32))
+- uid: EasyPost.Services.PartnerService.GetNextPage*
+  name: GetNextPage
+  href: api/EasyPost.Services.PartnerService.html#EasyPost_Services_PartnerService_GetNextPage_
+  commentId: Overload:EasyPost.Services.PartnerService.GetNextPage
+  isSpec: "True"
+  fullName: EasyPost.Services.PartnerService.GetNextPage
+  nameWithType: PartnerService.GetNextPage
 - uid: EasyPost.Services.PartnerService.UpdateReferralEmail(System.String,System.String)
   name: UpdateReferralEmail(String, String)
   href: api/EasyPost.Services.PartnerService.html#EasyPost_Services_PartnerService_UpdateReferralEmail_System_String_System_String_
@@ -13123,6 +13164,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.PickupService.Create
   nameWithType: PickupService.Create
+- uid: EasyPost.Services.PickupService.GetNextPage(EasyPost.Models.API.PickupCollection,System.Nullable{System.Int32})
+  name: GetNextPage(PickupCollection, Nullable<Int32>)
+  href: api/EasyPost.Services.PickupService.html#EasyPost_Services_PickupService_GetNextPage_EasyPost_Models_API_PickupCollection_System_Nullable_System_Int32__
+  commentId: M:EasyPost.Services.PickupService.GetNextPage(EasyPost.Models.API.PickupCollection,System.Nullable{System.Int32})
+  name.vb: GetNextPage(PickupCollection, Nullable(Of Int32))
+  fullName: EasyPost.Services.PickupService.GetNextPage(EasyPost.Models.API.PickupCollection, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Services.PickupService.GetNextPage(EasyPost.Models.API.PickupCollection, System.Nullable(Of System.Int32))
+  nameWithType: PickupService.GetNextPage(PickupCollection, Nullable<Int32>)
+  nameWithType.vb: PickupService.GetNextPage(PickupCollection, Nullable(Of Int32))
+- uid: EasyPost.Services.PickupService.GetNextPage*
+  name: GetNextPage
+  href: api/EasyPost.Services.PickupService.html#EasyPost_Services_PickupService_GetNextPage_
+  commentId: Overload:EasyPost.Services.PickupService.GetNextPage
+  isSpec: "True"
+  fullName: EasyPost.Services.PickupService.GetNextPage
+  nameWithType: PickupService.GetNextPage
 - uid: EasyPost.Services.PickupService.Retrieve(System.String)
   name: Retrieve(String)
   href: api/EasyPost.Services.PickupService.html#EasyPost_Services_PickupService_Retrieve_System_String_
@@ -13221,6 +13278,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.RefundService.Create
   nameWithType: RefundService.Create
+- uid: EasyPost.Services.RefundService.GetNextPage(EasyPost.Models.API.RefundCollection,System.Nullable{System.Int32})
+  name: GetNextPage(RefundCollection, Nullable<Int32>)
+  href: api/EasyPost.Services.RefundService.html#EasyPost_Services_RefundService_GetNextPage_EasyPost_Models_API_RefundCollection_System_Nullable_System_Int32__
+  commentId: M:EasyPost.Services.RefundService.GetNextPage(EasyPost.Models.API.RefundCollection,System.Nullable{System.Int32})
+  name.vb: GetNextPage(RefundCollection, Nullable(Of Int32))
+  fullName: EasyPost.Services.RefundService.GetNextPage(EasyPost.Models.API.RefundCollection, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Services.RefundService.GetNextPage(EasyPost.Models.API.RefundCollection, System.Nullable(Of System.Int32))
+  nameWithType: RefundService.GetNextPage(RefundCollection, Nullable<Int32>)
+  nameWithType.vb: RefundService.GetNextPage(RefundCollection, Nullable(Of Int32))
+- uid: EasyPost.Services.RefundService.GetNextPage*
+  name: GetNextPage
+  href: api/EasyPost.Services.RefundService.html#EasyPost_Services_RefundService_GetNextPage_
+  commentId: Overload:EasyPost.Services.RefundService.GetNextPage
+  isSpec: "True"
+  fullName: EasyPost.Services.RefundService.GetNextPage
+  nameWithType: RefundService.GetNextPage
 - uid: EasyPost.Services.RefundService.Retrieve(System.String)
   name: Retrieve(String)
   href: api/EasyPost.Services.RefundService.html#EasyPost_Services_RefundService_Retrieve_System_String_
@@ -13284,6 +13357,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ReportService.Create
   nameWithType: ReportService.Create
+- uid: EasyPost.Services.ReportService.GetNextPage(EasyPost.Models.API.ReportCollection,System.Nullable{System.Int32})
+  name: GetNextPage(ReportCollection, Nullable<Int32>)
+  href: api/EasyPost.Services.ReportService.html#EasyPost_Services_ReportService_GetNextPage_EasyPost_Models_API_ReportCollection_System_Nullable_System_Int32__
+  commentId: M:EasyPost.Services.ReportService.GetNextPage(EasyPost.Models.API.ReportCollection,System.Nullable{System.Int32})
+  name.vb: GetNextPage(ReportCollection, Nullable(Of Int32))
+  fullName: EasyPost.Services.ReportService.GetNextPage(EasyPost.Models.API.ReportCollection, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Services.ReportService.GetNextPage(EasyPost.Models.API.ReportCollection, System.Nullable(Of System.Int32))
+  nameWithType: ReportService.GetNextPage(ReportCollection, Nullable<Int32>)
+  nameWithType.vb: ReportService.GetNextPage(ReportCollection, Nullable(Of Int32))
+- uid: EasyPost.Services.ReportService.GetNextPage*
+  name: GetNextPage
+  href: api/EasyPost.Services.ReportService.html#EasyPost_Services_ReportService_GetNextPage_
+  commentId: Overload:EasyPost.Services.ReportService.GetNextPage
+  isSpec: "True"
+  fullName: EasyPost.Services.ReportService.GetNextPage
+  nameWithType: ReportService.GetNextPage
 - uid: EasyPost.Services.ReportService.Retrieve(System.String,System.String)
   name: Retrieve(String, String)
   href: api/EasyPost.Services.ReportService.html#EasyPost_Services_ReportService_Retrieve_System_String_System_String_
@@ -13353,6 +13442,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ScanFormService.Create
   nameWithType: ScanFormService.Create
+- uid: EasyPost.Services.ScanFormService.GetNextPage(EasyPost.Models.API.ScanFormCollection,System.Nullable{System.Int32})
+  name: GetNextPage(ScanFormCollection, Nullable<Int32>)
+  href: api/EasyPost.Services.ScanFormService.html#EasyPost_Services_ScanFormService_GetNextPage_EasyPost_Models_API_ScanFormCollection_System_Nullable_System_Int32__
+  commentId: M:EasyPost.Services.ScanFormService.GetNextPage(EasyPost.Models.API.ScanFormCollection,System.Nullable{System.Int32})
+  name.vb: GetNextPage(ScanFormCollection, Nullable(Of Int32))
+  fullName: EasyPost.Services.ScanFormService.GetNextPage(EasyPost.Models.API.ScanFormCollection, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Services.ScanFormService.GetNextPage(EasyPost.Models.API.ScanFormCollection, System.Nullable(Of System.Int32))
+  nameWithType: ScanFormService.GetNextPage(ScanFormCollection, Nullable<Int32>)
+  nameWithType.vb: ScanFormService.GetNextPage(ScanFormCollection, Nullable(Of Int32))
+- uid: EasyPost.Services.ScanFormService.GetNextPage*
+  name: GetNextPage
+  href: api/EasyPost.Services.ScanFormService.html#EasyPost_Services_ScanFormService_GetNextPage_
+  commentId: Overload:EasyPost.Services.ScanFormService.GetNextPage
+  isSpec: "True"
+  fullName: EasyPost.Services.ScanFormService.GetNextPage
+  nameWithType: ScanFormService.GetNextPage
 - uid: EasyPost.Services.ScanFormService.Retrieve(System.String)
   name: Retrieve(String)
   href: api/EasyPost.Services.ScanFormService.html#EasyPost_Services_ScanFormService_Retrieve_System_String_
@@ -13432,6 +13537,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ShipmentService.GetLowestSmartrate
   nameWithType: ShipmentService.GetLowestSmartrate
+- uid: EasyPost.Services.ShipmentService.GetNextPage(EasyPost.Models.API.ShipmentCollection,System.Nullable{System.Int32})
+  name: GetNextPage(ShipmentCollection, Nullable<Int32>)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GetNextPage_EasyPost_Models_API_ShipmentCollection_System_Nullable_System_Int32__
+  commentId: M:EasyPost.Services.ShipmentService.GetNextPage(EasyPost.Models.API.ShipmentCollection,System.Nullable{System.Int32})
+  name.vb: GetNextPage(ShipmentCollection, Nullable(Of Int32))
+  fullName: EasyPost.Services.ShipmentService.GetNextPage(EasyPost.Models.API.ShipmentCollection, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Services.ShipmentService.GetNextPage(EasyPost.Models.API.ShipmentCollection, System.Nullable(Of System.Int32))
+  nameWithType: ShipmentService.GetNextPage(ShipmentCollection, Nullable<Int32>)
+  nameWithType.vb: ShipmentService.GetNextPage(ShipmentCollection, Nullable(Of Int32))
+- uid: EasyPost.Services.ShipmentService.GetNextPage*
+  name: GetNextPage
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GetNextPage_
+  commentId: Overload:EasyPost.Services.ShipmentService.GetNextPage
+  isSpec: "True"
+  fullName: EasyPost.Services.ShipmentService.GetNextPage
+  nameWithType: ShipmentService.GetNextPage
 - uid: EasyPost.Services.ShipmentService.Retrieve(System.String)
   name: Retrieve(String)
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Retrieve_System_String_
@@ -13514,6 +13635,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.TrackerService.CreateList
   nameWithType: TrackerService.CreateList
+- uid: EasyPost.Services.TrackerService.GetNextPage(EasyPost.Models.API.TrackerCollection,System.Nullable{System.Int32})
+  name: GetNextPage(TrackerCollection, Nullable<Int32>)
+  href: api/EasyPost.Services.TrackerService.html#EasyPost_Services_TrackerService_GetNextPage_EasyPost_Models_API_TrackerCollection_System_Nullable_System_Int32__
+  commentId: M:EasyPost.Services.TrackerService.GetNextPage(EasyPost.Models.API.TrackerCollection,System.Nullable{System.Int32})
+  name.vb: GetNextPage(TrackerCollection, Nullable(Of Int32))
+  fullName: EasyPost.Services.TrackerService.GetNextPage(EasyPost.Models.API.TrackerCollection, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Services.TrackerService.GetNextPage(EasyPost.Models.API.TrackerCollection, System.Nullable(Of System.Int32))
+  nameWithType: TrackerService.GetNextPage(TrackerCollection, Nullable<Int32>)
+  nameWithType.vb: TrackerService.GetNextPage(TrackerCollection, Nullable(Of Int32))
+- uid: EasyPost.Services.TrackerService.GetNextPage*
+  name: GetNextPage
+  href: api/EasyPost.Services.TrackerService.html#EasyPost_Services_TrackerService_GetNextPage_
+  commentId: Overload:EasyPost.Services.TrackerService.GetNextPage
+  isSpec: "True"
+  fullName: EasyPost.Services.TrackerService.GetNextPage
+  nameWithType: TrackerService.GetNextPage
 - uid: EasyPost.Services.TrackerService.Retrieve(System.String)
   name: Retrieve(String)
   href: api/EasyPost.Services.TrackerService.html#EasyPost_Services_TrackerService_Retrieve_System_String_

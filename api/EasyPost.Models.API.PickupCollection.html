@@ -80,7 +80,7 @@
     <div class="level1"><a class="xref" href="EasyPost._base.WithClient.html">WithClient</a></div>
     <div class="level2"><a class="xref" href="EasyPost._base.EphemeralEasyPostObject.html">EphemeralEasyPostObject</a></div>
     <div class="level3"><a class="xref" href="EasyPost._base.EasyPostObject.html">EasyPostObject</a></div>
-    <div class="level4"><a class="xref" href="EasyPost.Models.Shared.Collection.html">Collection</a></div>
+    <div class="level4"><a class="xref" href="EasyPost.Models.Shared.PaginatedCollection-1.html">PaginatedCollection</a>&lt;<a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>&gt;</div>
     <div class="level5"><span class="xref">PickupCollection</span></div>
   </div>
   <div class="implements">
@@ -90,7 +90,7 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="EasyPost.Models.Shared.Collection.html#EasyPost_Models_Shared_Collection_HasMore">Collection.HasMore</a>
+      <a class="xref" href="EasyPost.Models.Shared.PaginatedCollection-1.html#EasyPost_Models_Shared_PaginatedCollection_1_HasMore">PaginatedCollection&lt;Pickup&gt;.HasMore</a>
     </div>
     <div>
       <a class="xref" href="EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_CreatedAt">EasyPostObject.CreatedAt</a>
@@ -151,7 +151,7 @@
   <h6><strong>Assembly</strong>: EasyPost.dll</h6>
   <h5 id="EasyPost_Models_API_PickupCollection_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class PickupCollection : Collection, IEasyPostObject</code></pre>
+    <pre><code class="lang-csharp hljs">public class PickupCollection : PaginatedCollection&lt;Pickup&gt;, IEasyPostObject</code></pre>
   </div>
   <h3 id="properties">Properties
 </h3>
@@ -189,19 +189,19 @@
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_API_PickupCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20EasyPost.Models.API.PickupCollection.BuildNextPageParameters%60%602(IEnumerable%7B%60%600%7D%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_API_PickupCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_Pickup__System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20EasyPost.Models.API.PickupCollection.BuildNextPageParameters%60%601(IEnumerable%7BEasyPost.Models.API.Pickup%7D%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/API/Pickup.cs/#L141">View Source</a>
   </span>
   <a id="EasyPost_Models_API_PickupCollection_BuildNextPageParameters_" data-uid="EasyPost.Models.API.PickupCollection.BuildNextPageParameters*"></a>
-  <h4 id="EasyPost_Models_API_PickupCollection_BuildNextPageParameters__2_IEnumerable___0__System_Nullable_System_Int32__" data-uid="EasyPost.Models.API.PickupCollection.BuildNextPageParameters``2(IEnumerable{``0},System.Nullable{System.Int32})">BuildNextPageParameters&lt;TEntries, TParameters&gt;(IEnumerable&lt;TEntries&gt;, Nullable&lt;Int32&gt;)</h4>
+  <h4 id="EasyPost_Models_API_PickupCollection_BuildNextPageParameters__1_IEnumerable_EasyPost_Models_API_Pickup__System_Nullable_System_Int32__" data-uid="EasyPost.Models.API.PickupCollection.BuildNextPageParameters``1(IEnumerable{EasyPost.Models.API.Pickup},System.Nullable{System.Int32})">BuildNextPageParameters&lt;TParameters&gt;(IEnumerable&lt;Pickup&gt;, Nullable&lt;Int32&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override TParameters BuildNextPageParameters&lt;TEntries, TParameters&gt;(IEnumerable&lt;TEntries&gt; entries, int? pageSize = null)
-    where TEntries : EasyPostObject where TParameters : BaseParameters</code></pre>
+    <pre><code class="lang-csharp hljs">protected override TParameters BuildNextPageParameters&lt;TParameters&gt;(IEnumerable&lt;Pickup&gt; entries, int? pageSize = null)
+    where TParameters : BaseParameters</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -214,7 +214,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;TEntries&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>&gt;</td>
         <td><span class="parametername">entries</span></td>
         <td></td>
       </tr>
@@ -250,17 +250,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="parametername">TEntries</span></td>
-        <td></td>
-      </tr>
-      <tr>
         <td><span class="parametername">TParameters</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">EasyPost.Models.Shared.Collection.BuildNextPageParameters&lt;TEntries, TParameters&gt;(IEnumerable&lt;TEntries&gt;, System.Nullable&lt;System.Int32&gt;)</span></div>
+  <div><span class="xref">EasyPost.Models.Shared.PaginatedCollection&lt;EasyPost.Models.API.Pickup&gt;.BuildNextPageParameters&lt;TParameters&gt;(IEnumerable&lt;EasyPost.Models.API.Pickup&gt;, System.Nullable&lt;System.Int32&gt;)</span></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="EasyPost._base.IEasyPostObject.html">IEasyPostObject</a>
