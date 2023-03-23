@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
@@ -12,7 +13,7 @@ namespace EasyPost.Models.API
         }
     }
 
-    public class ReferralCustomerCollection : Collection
+    public class ReferralCustomerCollection : PaginatedCollection<ReferralCustomer>
     {
         #region JSON Properties
 
@@ -25,6 +26,21 @@ namespace EasyPost.Models.API
         {
         }
 
-        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new System.NotImplementedException();
+        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<ReferralCustomer> entries, int? pageSize = null)
+        {
+            string? lastId = entries.Last().Id;
+
+            BetaFeatures.Parameters.ReferralCustomers.All parameters = new()
+            {
+                BeforeId = lastId,
+            };
+
+            if (pageSize != null)
+            {
+                parameters.PageSize = pageSize;
+            }
+
+            return (parameters as TParameters)!;
+        }
     }
 }

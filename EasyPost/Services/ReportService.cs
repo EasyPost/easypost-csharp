@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 
@@ -69,6 +70,16 @@ namespace EasyPost.Services
             reportCollection.Type = type;
             return reportCollection;
         }
+
+        /// <summary>
+        ///     Get the next page of a paginated <see cref="ReportCollection"/>.
+        /// </summary>
+        /// <param name="collection">The <see cref="ReportCollection"/> to get the next page of.</param>
+        /// <param name="pageSize">The size of the next page.</param>
+        /// <returns>The next page, as a <see cref="ReportCollection"/> instance.</returns>
+        /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
+        [CrudOperations.Read]
+        public async Task<ReportCollection> GetNextPage(ReportCollection collection, int? pageSize = null) => await collection.GetNextPage<ReportCollection, BetaFeatures.Parameters.Reports.All>(async parameters => await All(collection.Type!, parameters), collection.Reports, pageSize);
 
         /// <summary>
         ///     Retrieve a Report from its id.

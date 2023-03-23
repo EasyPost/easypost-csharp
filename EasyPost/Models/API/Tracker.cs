@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
@@ -43,7 +44,7 @@ namespace EasyPost.Models.API
         }
     }
 
-    public class TrackerCollection : Collection
+    public class TrackerCollection : PaginatedCollection<Tracker>
     {
         #region JSON Properties
 
@@ -56,6 +57,21 @@ namespace EasyPost.Models.API
         {
         }
 
-        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new NotImplementedException();
+        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Tracker> entries, int? pageSize = null)
+        {
+            string? lastId = entries.Last().Id;
+
+            BetaFeatures.Parameters.Trackers.All parameters = new()
+            {
+                BeforeId = lastId,
+            };
+
+            if (pageSize != null)
+            {
+                parameters.PageSize = pageSize;
+            }
+
+            return (parameters as TParameters)!;
+        }
     }
 }

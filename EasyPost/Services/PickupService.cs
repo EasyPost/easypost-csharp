@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -94,6 +95,16 @@ namespace EasyPost.Services
         {
             return await All(parameters.ToDictionary());
         }
+
+        /// <summary>
+        ///     Get the next page of a paginated <see cref="PickupCollection"/>.
+        /// </summary>
+        /// <param name="collection">The <see cref="PickupCollection"/> to get the next page of.</param>
+        /// <param name="pageSize">The size of the next page.</param>
+        /// <returns>The next page, as a <see cref="PickupCollection"/> instance.</returns>
+        /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
+        [CrudOperations.Read]
+        public async Task<PickupCollection> GetNextPage(PickupCollection collection, int? pageSize = null) => await collection.GetNextPage<PickupCollection, BetaFeatures.Parameters.Pickups.All>(async parameters => await All(parameters), collection.Pickups, pageSize);
 
         #endregion
     }

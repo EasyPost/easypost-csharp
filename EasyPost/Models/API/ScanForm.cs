@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
@@ -32,7 +33,7 @@ namespace EasyPost.Models.API
         }
     }
 
-    public class ScanFormCollection : Collection
+    public class ScanFormCollection : PaginatedCollection<ScanForm>
     {
         #region JSON Properties
 
@@ -45,6 +46,21 @@ namespace EasyPost.Models.API
         {
         }
 
-        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new System.NotImplementedException();
+        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<ScanForm> entries, int? pageSize = null)
+        {
+            string? lastId = entries.Last().Id;
+
+            BetaFeatures.Parameters.ScanForms.All parameters = new()
+            {
+                BeforeId = lastId,
+            };
+
+            if (pageSize != null)
+            {
+                parameters.PageSize = pageSize;
+            }
+
+            return (parameters as TParameters)!;
+        }
     }
 }

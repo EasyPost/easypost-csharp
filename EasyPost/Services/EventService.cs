@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.API;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 
@@ -42,6 +43,16 @@ namespace EasyPost.Services
         /// <returns><see cref="EventCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<EventCollection> All(BetaFeatures.Parameters.Events.All parameters) => await Get<EventCollection>("events", parameters.ToDictionary());
+
+        /// <summary>
+        ///     Get the next page of a paginated <see cref="EventCollection"/>.
+        /// </summary>
+        /// <param name="collection">The <see cref="EventCollection"/> to get the next page of.</param>
+        /// <param name="pageSize">The size of the next page.</param>
+        /// <returns>The next page, as a <see cref="EventCollection"/> instance.</returns>
+        /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
+        [CrudOperations.Read]
+        public async Task<EventCollection> GetNextPage(EventCollection collection, int? pageSize = null) => await collection.GetNextPage<EventCollection, BetaFeatures.Parameters.Events.All>(async parameters => await All(parameters), collection.Events, pageSize);
 
         /// <summary>
         ///     Retrieve an Event from its id.

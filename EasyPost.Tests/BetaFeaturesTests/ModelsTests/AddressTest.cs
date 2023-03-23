@@ -12,7 +12,6 @@ namespace EasyPost.Tests.BetaFeaturesTests.ModelsTests
 
         #region Test CRUD Operations
 
-
         #endregion
 
         #endregion

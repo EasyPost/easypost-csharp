@@ -56,8 +56,6 @@ namespace EasyPost.Tests.BetaFeaturesTests.ModelsTests
             Assert.Equal(color, brand.Color);
         }
 
-
-
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]

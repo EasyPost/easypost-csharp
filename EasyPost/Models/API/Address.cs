@@ -78,7 +78,7 @@ namespace EasyPost.Models.API
         #endregion
     }
 
-    public class AddressCollection : Collection
+    public class AddressCollection : PaginatedCollection<Address>
     {
         #region JSON Properties
 
@@ -91,7 +91,7 @@ namespace EasyPost.Models.API
         {
         }
 
-        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null)
+        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Address> entries, int? pageSize = null)
         {
             string? lastId = entries.Last().Id;
 

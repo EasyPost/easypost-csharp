@@ -101,6 +101,8 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<BatchCollection> All(BetaFeatures.Parameters.Batches.All parameters) => await List<BatchCollection>("batches", parameters.ToDictionary());
 
+        // TODO: Add GetNextPage function when Batches are sorted newest to oldest.
+
         /// <summary>
         ///     Retrieve a Batch from its id.
         /// </summary>

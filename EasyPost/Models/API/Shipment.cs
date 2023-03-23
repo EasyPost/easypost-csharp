@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
@@ -331,7 +332,7 @@ namespace EasyPost.Models.API
         }
     }
 
-    public class ShipmentCollection : Collection
+    public class ShipmentCollection : PaginatedCollection<Shipment>
     {
         #region JSON Properties
 
@@ -344,6 +345,21 @@ namespace EasyPost.Models.API
         {
         }
 
-        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new System.NotImplementedException();
+        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Shipment> entries, int? pageSize = null)
+        {
+            string? lastId = entries.Last().Id;
+
+            BetaFeatures.Parameters.Shipments.All parameters = new()
+            {
+                BeforeId = lastId,
+            };
+
+            if (pageSize != null)
+            {
+                parameters.PageSize = pageSize;
+            }
+
+            return (parameters as TParameters)!;
+        }
     }
 }

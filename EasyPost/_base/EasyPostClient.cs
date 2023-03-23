@@ -168,7 +168,7 @@ namespace EasyPost._base
                 case IList list:
                     PassClientToEasyPostObjectsInList(list);
                     break;
-                case Collection collection:
+                case PaginatedCollection<EasyPost._base.EasyPostObject> collection:
                     PassClientToAllEasyPostObjectProperties(collection);
                     break;
                 case EasyPostObject easyPostObject:

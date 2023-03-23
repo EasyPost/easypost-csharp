@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -109,6 +110,16 @@ namespace EasyPost.Services
         {
             return await List<TrackerCollection>("trackers", parameters.ToDictionary());
         }
+
+        /// <summary>
+        ///     Get the next page of a paginated <see cref="TrackerCollection"/>.
+        /// </summary>
+        /// <param name="collection">The <see cref="TrackerCollection"/> to get the next page of.</param>
+        /// <param name="pageSize">The size of the next page.</param>
+        /// <returns>The next page, as a <see cref="TrackerCollection"/> instance.</returns>
+        /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
+        [CrudOperations.Read]
+        public async Task<TrackerCollection> GetNextPage(TrackerCollection collection, int? pageSize = null) => await collection.GetNextPage<TrackerCollection, BetaFeatures.Parameters.Trackers.All>(async parameters => await All(parameters), collection.Trackers, pageSize);
 
         /// <summary>
         ///     Retrieve a Tracker from its id.

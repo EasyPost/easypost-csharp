@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
@@ -64,7 +65,7 @@ namespace EasyPost.Models.API
     }
 #pragma warning restore CA1724 // Naming conflicts with Parameters.Insurance
 
-    public class InsuranceCollection : Collection
+    public class InsuranceCollection : PaginatedCollection<Insurance>
     {
         #region JSON Properties
 
@@ -77,6 +78,21 @@ namespace EasyPost.Models.API
         {
         }
 
-        protected internal override TParameters BuildNextPageParameters<TEntries, TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) => throw new NotImplementedException();
+        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Insurance> entries, int? pageSize = null)
+        {
+            string? lastId = entries.Last().Id;
+
+            BetaFeatures.Parameters.Insurance.All parameters = new()
+            {
+                BeforeId = lastId,
+            };
+
+            if (pageSize != null)
+            {
+                parameters.PageSize = pageSize;
+            }
+
+            return (parameters as TParameters)!;
+        }
     }
 }
