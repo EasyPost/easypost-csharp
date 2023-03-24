@@ -83,6 +83,7 @@ namespace EasyPost
             public const string ApiDidNotReturnErrorDetails = "API did not return error details.";
             public const string CouldNotPassClient = "Could not pass client to {0}.";
             internal const string ApiErrorDetailsParsingError = "RESPONSE.PARSE_ERROR"; // not for public consumption
+            public const string NoMorePagesToRetrieve = "There are no more pages to retrieve.";
         }
 
         public static class CarrierAccountTypes
