@@ -84,7 +84,8 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Parameters]
-        public async Task TestAllParameterHandOff() {
+        public async Task TestAllParameterHandOff()
+        {
             UseVCR("all_parameter_hand_off");
 
             BetaFeatures.Parameters.Trackers.All filters = new BetaFeatures.Parameters.Trackers.All
@@ -97,7 +98,8 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 
             // No trackers will match the filters, so the collection will be empty
             // Need to make a fake tracker temporarily to get the next page parameters
-            Tracker fakeTracker = new Tracker {
+            Tracker fakeTracker = new Tracker
+            {
                 TrackingCode = "0",
                 Carrier = "does_not_matter",
             };

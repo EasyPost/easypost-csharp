@@ -146,7 +146,8 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Parameters]
-        public async Task TestAllParameterHandOff() {
+        public async Task TestAllParameterHandOff()
+        {
             UseVCR("all_parameter_hand_off");
 
             Dictionary<string, object> filters = new Dictionary<string, object> {
@@ -192,7 +193,8 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Parameters]
-        public async Task TestGetNextPageParameterHandOff() {
+        public async Task TestGetNextPageParameterHandOff()
+        {
             UseVCR("get_next_page_parameter_hand_off");
 
             Dictionary<string, object> filters = new Dictionary<string, object> {

@@ -114,7 +114,8 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Parameters]
-        public async Task TestAllParameterHandOff() {
+        public async Task TestAllParameterHandOff()
+        {
             UseVCR("all_parameter_hand_off");
 
             const string type = "shipment";

@@ -170,7 +170,8 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Parameters]
-        public async Task TestAllParameterHandOff() {
+        public async Task TestAllParameterHandOff()
+        {
             UseVCR("all_parameter_hand_off");
 
             BetaFeatures.Parameters.Shipments.All filters = new All

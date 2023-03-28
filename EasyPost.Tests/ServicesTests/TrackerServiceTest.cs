@@ -75,7 +75,8 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Parameters]
-        public async Task TestAllParameterHandOff() {
+        public async Task TestAllParameterHandOff()
+        {
             UseVCR("all_parameter_hand_off");
 
             Dictionary<string, object> filters = new Dictionary<string, object> {
@@ -121,7 +122,8 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Parameters]
-        public async Task TestGetNextPageParameterHandOff() {
+        public async Task TestGetNextPageParameterHandOff()
+        {
             UseVCR("get_next_page_parameter_hand_off");
 
             Dictionary<string, object> filters = new Dictionary<string, object> {
@@ -133,7 +135,8 @@ namespace EasyPost.Tests.ServicesTests
 
             // No trackers will match the filters, so the collection will be empty
             // Need to make a fake tracker temporarily to get the next page parameters
-            Tracker fakeTracker = new Tracker {
+            Tracker fakeTracker = new Tracker
+            {
                 TrackingCode = "0",
                 Carrier = "does_not_matter",
             };
