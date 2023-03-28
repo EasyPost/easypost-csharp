@@ -121,6 +121,26 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             }
         }
 
+        /// <summary>
+        ///     This test confirms that the parameters used to filter the results of the All() method are passed through to the resulting collection object.
+        /// </summary>
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Parameters]
+        public async Task TestAllParameterHandOff() {
+            UseVCR("all_parameter_hand_off");
+
+            const string type = "shipment";
+
+            Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize } };
+
+            BetaFeatures.Parameters.Reports.All parameters = Fixtures.Parameters.Reports.All(data);
+
+            ReportCollection reportCollection = await Client.Report.All(type, parameters);
+
+            Assert.Equal(type, reportCollection.Type);
+        }
+
         #endregion
 
         #endregion

@@ -634,6 +634,8 @@ namespace EasyPost.Tests._Utilities
                         AfterId = fixture.GetOrNull<string>("after_id"),
                         StartDatetime = fixture.GetOrNull<string>("start_datetime"),
                         EndDatetime = fixture.GetOrNull<string>("end_datetime"),
+                        IncludeChildren = fixture.GetOrNullBoolean("include_children"),
+                        Purchased = fixture.GetOrNullBoolean("purchased"),
                     };
                 }
             }
@@ -667,6 +669,8 @@ namespace EasyPost.Tests._Utilities
                         AfterId = fixture.GetOrNull<string>("after_id"),
                         StartDatetime = fixture.GetOrNull<string>("start_datetime"),
                         EndDatetime = fixture.GetOrNull<string>("end_datetime"),
+                        TrackingCode = fixture.GetOrNull<string>("tracking_code"),
+                        Carrier = fixture.GetOrNull<string>("carrier"),
                     };
                 }
             }

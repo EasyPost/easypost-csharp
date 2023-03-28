@@ -38,8 +38,8 @@ namespace EasyPost.Models.API
 
         [JsonProperty("reports")]
         public List<Report>? Reports { get; set; }
-        [JsonProperty("type")]
-        public string? Type { get; set; }
+
+        internal string? Type { get; set; }
 
         #endregion
 

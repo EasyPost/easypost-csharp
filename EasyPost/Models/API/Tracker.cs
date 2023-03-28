@@ -51,6 +51,10 @@ namespace EasyPost.Models.API
         [JsonProperty("trackers")]
         public List<Tracker>? Trackers { get; set; }
 
+        internal string? TrackingCode { get; set; }
+
+        internal string? Carrier { get; set; }
+
         #endregion
 
         internal TrackerCollection()
@@ -64,6 +68,8 @@ namespace EasyPost.Models.API
             BetaFeatures.Parameters.Trackers.All parameters = new()
             {
                 BeforeId = lastId,
+                TrackingCode = TrackingCode,
+                Carrier = Carrier,
             };
 
             if (pageSize != null)

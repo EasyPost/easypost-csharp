@@ -42,6 +42,18 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         [TopLevelRequestParameter(Necessity.Optional, "start_datetime")]
         public string? StartDatetime { get; set; }
 
+        /// <summary>
+        ///     If true, only return purchased shipments. Defaults to true.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "purchased")]
+        public bool? Purchased { get; set; } = true;
+
+        /// <summary>
+        ///     If true, also include shipments created by child users.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "include_children")]
+        public bool? IncludeChildren { get; set; }
+
         #endregion
     }
 }
