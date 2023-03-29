@@ -46,7 +46,7 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         ///     If true, only return purchased shipments. Defaults to true.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "purchased")]
-        public bool? Purchased { get; set; } = true;
+        public bool? Purchased { get; set; }
 
         /// <summary>
         ///     If true, also include shipments created by child users.
