@@ -3280,6 +3280,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Shipments.All.EndDatetime
   nameWithType: All.EndDatetime
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.All.IncludeChildren
+  name: IncludeChildren
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.All.html#EasyPost_BetaFeatures_Parameters_Shipments_All_IncludeChildren
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.All.IncludeChildren
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.All.IncludeChildren
+  nameWithType: All.IncludeChildren
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.All.IncludeChildren*
+  name: IncludeChildren
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.All.html#EasyPost_BetaFeatures_Parameters_Shipments_All_IncludeChildren_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.All.IncludeChildren
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.All.IncludeChildren
+  nameWithType: All.IncludeChildren
 - uid: EasyPost.BetaFeatures.Parameters.Shipments.All.PageSize
   name: PageSize
   href: api/EasyPost.BetaFeatures.Parameters.Shipments.All.html#EasyPost_BetaFeatures_Parameters_Shipments_All_PageSize
@@ -3293,6 +3306,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Shipments.All.PageSize
   nameWithType: All.PageSize
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.All.Purchased
+  name: Purchased
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.All.html#EasyPost_BetaFeatures_Parameters_Shipments_All_Purchased
+  commentId: P:EasyPost.BetaFeatures.Parameters.Shipments.All.Purchased
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.All.Purchased
+  nameWithType: All.Purchased
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.All.Purchased*
+  name: Purchased
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.All.html#EasyPost_BetaFeatures_Parameters_Shipments_All_Purchased_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.All.Purchased
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.All.Purchased
+  nameWithType: All.Purchased
 - uid: EasyPost.BetaFeatures.Parameters.Shipments.All.StartDatetime
   name: StartDatetime
   href: api/EasyPost.BetaFeatures.Parameters.Shipments.All.html#EasyPost_BetaFeatures_Parameters_Shipments_All_StartDatetime
@@ -10245,19 +10271,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.ReportCollection.Reports
   nameWithType: ReportCollection.Reports
-- uid: EasyPost.Models.API.ReportCollection.Type
-  name: Type
-  href: api/EasyPost.Models.API.ReportCollection.html#EasyPost_Models_API_ReportCollection_Type
-  commentId: P:EasyPost.Models.API.ReportCollection.Type
-  fullName: EasyPost.Models.API.ReportCollection.Type
-  nameWithType: ReportCollection.Type
-- uid: EasyPost.Models.API.ReportCollection.Type*
-  name: Type
-  href: api/EasyPost.Models.API.ReportCollection.html#EasyPost_Models_API_ReportCollection_Type_
-  commentId: Overload:EasyPost.Models.API.ReportCollection.Type
-  isSpec: "True"
-  fullName: EasyPost.Models.API.ReportCollection.Type
-  nameWithType: ReportCollection.Type
 - uid: EasyPost.Models.API.ScanForm
   name: ScanForm
   href: api/EasyPost.Models.API.ScanForm.html
