@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EasyPost.BetaFeatures.Parameters.Shipments;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -161,6 +162,28 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             {
                 Assert.IsType<Shipment>(shipment);
             }
+        }
+
+        /// <summary>
+        ///     This test confirms that the parameters used to filter the results of the All() method are passed through to the resulting collection object.
+        /// </summary>
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Parameters]
+        public async Task TestAllParameterHandOff()
+        {
+            UseVCR("all_parameter_hand_off");
+
+            BetaFeatures.Parameters.Shipments.All filters = new All
+            {
+                IncludeChildren = true,
+                Purchased = false,
+            };
+
+            ShipmentCollection shipmentCollection = await Client.Shipment.All(filters);
+
+            Assert.Equal(filters.IncludeChildren, shipmentCollection.IncludeChildren);
+            Assert.Equal(filters.Purchased, shipmentCollection.Purchased);
         }
 
         #endregion

@@ -140,6 +140,27 @@ namespace EasyPost.Tests.ServicesTests
             }
         }
 
+        /// <summary>
+        ///     This test confirms that the parameters used to filter the results of the All() method are passed through to the resulting collection object.
+        /// </summary>
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Parameters]
+        public async Task TestAllParameterHandOff()
+        {
+            UseVCR("all_parameter_hand_off");
+
+            Dictionary<string, object> filters = new Dictionary<string, object> {
+                { "include_children", true },
+                { "purchased", false },
+            };
+
+            ShipmentCollection shipmentCollection = await Client.Shipment.All(filters);
+
+            Assert.Equal(filters["include_children"], shipmentCollection.IncludeChildren);
+            Assert.Equal(filters["purchased"], shipmentCollection.Purchased);
+        }
+
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
@@ -164,6 +185,29 @@ namespace EasyPost.Tests.ServicesTests
             {
                 Assert.True(false);
             }
+        }
+
+        /// <summary>
+        ///     This test confirms that the parameters used to filter the results of the All() method are used to filter the results of the GetNextPage() method.
+        /// </summary>
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Parameters]
+        public async Task TestGetNextPageParameterHandOff()
+        {
+            UseVCR("get_next_page_parameter_hand_off");
+
+            Dictionary<string, object> filters = new Dictionary<string, object> {
+                { "include_children", true },
+                { "purchased", false },
+            };
+
+            ShipmentCollection shipmentCollection = await Client.Shipment.All(filters);
+
+            BetaFeatures.Parameters.Shipments.All filtersForNextPage = shipmentCollection.BuildNextPageParameters<BetaFeatures.Parameters.Shipments.All>(shipmentCollection.Shipments);
+
+            Assert.Equal(shipmentCollection.IncludeChildren, filtersForNextPage.IncludeChildren);
+            Assert.Equal(shipmentCollection.Purchased, filtersForNextPage.Purchased);
         }
 
         [Fact]

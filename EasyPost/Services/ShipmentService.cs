@@ -80,6 +80,8 @@ namespace EasyPost.Services
         public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
             ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
+            shipmentCollection.Purchased = parameters?.GetOrNullBoolean("purchased");
+            shipmentCollection.IncludeChildren = parameters?.GetOrNullBoolean("include_children");
             return shipmentCollection;
         }
 
@@ -91,7 +93,10 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ShipmentCollection> All(BetaFeatures.Parameters.Shipments.All parameters)
         {
-            return await List<ShipmentCollection>("shipments", parameters.ToDictionary());
+            ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters.ToDictionary());
+            shipmentCollection.Purchased = parameters.Purchased;
+            shipmentCollection.IncludeChildren = parameters.IncludeChildren;
+            return shipmentCollection;
         }
 
         /// <summary>

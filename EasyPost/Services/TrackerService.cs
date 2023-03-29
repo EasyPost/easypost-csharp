@@ -97,6 +97,8 @@ namespace EasyPost.Services
         public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
         {
             TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters);
+            trackerCollection.TrackingCode = parameters?.GetOrNull<string>("tracking_code");
+            trackerCollection.Carrier = parameters?.GetOrNull<string>("carrier");
             return trackerCollection;
         }
 
@@ -108,7 +110,10 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<TrackerCollection> All(BetaFeatures.Parameters.Trackers.All parameters)
         {
-            return await List<TrackerCollection>("trackers", parameters.ToDictionary());
+            TrackerCollection trackerCollection = await List<TrackerCollection>("trackers", parameters.ToDictionary());
+            trackerCollection.TrackingCode = parameters.TrackingCode;
+            trackerCollection.Carrier = parameters.Carrier;
+            return trackerCollection;
         }
 
         /// <summary>

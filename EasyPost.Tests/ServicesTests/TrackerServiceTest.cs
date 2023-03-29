@@ -69,6 +69,27 @@ namespace EasyPost.Tests.ServicesTests
             }
         }
 
+        /// <summary>
+        ///     This test confirms that the parameters used to filter the results of the All() method are passed through to the resulting collection object.
+        /// </summary>
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Parameters]
+        public async Task TestAllParameterHandOff()
+        {
+            UseVCR("all_parameter_hand_off");
+
+            Dictionary<string, object> filters = new Dictionary<string, object> {
+                { "tracking_code", "0" },
+                { "carrier", "test_carrier" },
+            };
+
+            TrackerCollection trackerCollection = await Client.Tracker.All(filters);
+
+            Assert.Equal(filters["tracking_code"], trackerCollection.TrackingCode);
+            Assert.Equal(filters["carrier"], trackerCollection.Carrier);
+        }
+
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
@@ -93,6 +114,38 @@ namespace EasyPost.Tests.ServicesTests
             {
                 Assert.True(false);
             }
+        }
+
+        /// <summary>
+        ///     This test confirms that the parameters used to filter the results of the All() method are used to filter the results of the GetNextPage() method.
+        /// </summary>
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Parameters]
+        public async Task TestGetNextPageParameterHandOff()
+        {
+            UseVCR("get_next_page_parameter_hand_off");
+
+            Dictionary<string, object> filters = new Dictionary<string, object> {
+                { "tracking_code", "0" },
+                { "carrier", "test_carrier" },
+            };
+
+            TrackerCollection trackerCollection = await Client.Tracker.All(filters);
+
+            // No trackers will match the filters, so the collection will be empty
+            // Need to make a fake tracker temporarily to get the next page parameters
+            Tracker fakeTracker = new Tracker
+            {
+                TrackingCode = "0",
+                Carrier = "does_not_matter",
+            };
+            trackerCollection.Trackers.Add(fakeTracker);
+
+            BetaFeatures.Parameters.Trackers.All filtersForNextPage = trackerCollection.BuildNextPageParameters<BetaFeatures.Parameters.Trackers.All>(trackerCollection.Trackers);
+
+            Assert.Equal(trackerCollection.TrackingCode, filtersForNextPage.TrackingCode);
+            Assert.Equal(trackerCollection.Carrier, filtersForNextPage.Carrier);
         }
 
         [Fact]
