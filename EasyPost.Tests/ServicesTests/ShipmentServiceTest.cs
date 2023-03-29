@@ -150,15 +150,23 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("all_parameter_hand_off");
 
+            const bool includeChildren = true;
+            const bool purchased = false;
+
             Dictionary<string, object> filters = new Dictionary<string, object> {
-                { "include_children", true },
-                { "purchased", false },
+                { "include_children", includeChildren },
+                { "purchased", purchased },
             };
 
             ShipmentCollection shipmentCollection = await Client.Shipment.All(filters);
 
-            Assert.Equal(filters["include_children"], shipmentCollection.IncludeChildren);
-            Assert.Equal(filters["purchased"], shipmentCollection.Purchased);
+            // Filters should be cached in in the resultant collection object.
+            Assert.NotNull(shipmentCollection.Filters);
+            Assert.IsType<BetaFeatures.Parameters.Shipments.All>(shipmentCollection.Filters);
+
+            BetaFeatures.Parameters.Shipments.All cachedFilters = (BetaFeatures.Parameters.Shipments.All)shipmentCollection.Filters;
+            Assert.Equal(includeChildren, cachedFilters.IncludeChildren);
+            Assert.Equal(purchased, cachedFilters.Purchased);
         }
 
         [Fact]
@@ -197,17 +205,21 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("get_next_page_parameter_hand_off");
 
+            const bool includeChildren = true;
+            const bool purchased = false;
+
             Dictionary<string, object> filters = new Dictionary<string, object> {
-                { "include_children", true },
-                { "purchased", false },
+                { "include_children", includeChildren },
+                { "purchased", purchased },
             };
 
             ShipmentCollection shipmentCollection = await Client.Shipment.All(filters);
 
             BetaFeatures.Parameters.Shipments.All filtersForNextPage = shipmentCollection.BuildNextPageParameters<BetaFeatures.Parameters.Shipments.All>(shipmentCollection.Shipments);
 
-            Assert.Equal(shipmentCollection.IncludeChildren, filtersForNextPage.IncludeChildren);
-            Assert.Equal(shipmentCollection.Purchased, filtersForNextPage.Purchased);
+            // These parameters made it from the dictionary -> cached in the resultant collection -> made it back to the parameters object for the next page
+            Assert.Equal(includeChildren, filtersForNextPage.IncludeChildren);
+            Assert.Equal(purchased, filtersForNextPage.Purchased);
         }
 
         [Fact]

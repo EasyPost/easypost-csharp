@@ -239,4 +239,20 @@ namespace EasyPost.BetaFeatures.Parameters
             return dictionary;
         }
     }
+
+    /// <summary>
+    ///     Base class for parameter sets used in `All` methods.
+    /// </summary>
+    public abstract class AllBaseParameters : BaseParameters
+    {
+        public static TParameters FromDictionary<TParameters>(Dictionary<string, object>? dictionary)
+            where TParameters : AllBaseParameters
+        {
+            TParameters parameters = (TParameters)Activator.CreateInstance(typeof(TParameters))!;
+            return dictionary == null ? parameters : parameters._FromDictionary<TParameters>(dictionary);
+        }
+
+        protected abstract TParameters _FromDictionary<TParameters>(Dictionary<string, object> dictionary)
+            where TParameters : AllBaseParameters;
+    }
 }

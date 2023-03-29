@@ -16,6 +16,11 @@ namespace EasyPost.Models.Shared
         [JsonProperty("has_more")]
         public bool? HasMore { get; set; }
 
+        /// <summary>
+        ///     The filter parameters used to retrieve this collection.
+        /// </summary>
+        internal BetaFeatures.Parameters.BaseParameters? Filters { get; set; }
+
         #endregion
 
         /// <summary>

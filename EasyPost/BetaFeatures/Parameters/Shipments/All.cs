@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Attributes;
+using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.BetaFeatures.Parameters.Shipments
 {
@@ -8,7 +10,7 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
     ///     Parameters for <see cref="EasyPost.Services.ShipmentService.All(All)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class All : BaseParameters
+    public sealed class All : AllBaseParameters
     {
         #region Request Parameters
 
@@ -55,5 +57,21 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         public bool? IncludeChildren { get; set; }
 
         #endregion
+
+        protected override TParameters _FromDictionary<TParameters>(Dictionary<string, object> dictionary)
+        {
+            var parameters = new All
+            {
+                PageSize = dictionary.GetOrNullInt("page_size"),
+                BeforeId = dictionary.GetOrNull<string>("before_id"),
+                AfterId = dictionary.GetOrNull<string>("after_id"),
+                StartDatetime = dictionary.GetOrNull<string>("start_datetime"),
+                EndDatetime = dictionary.GetOrNull<string>("end_datetime"),
+                Purchased = dictionary.GetOrNullBoolean("purchased"),
+                IncludeChildren = dictionary.GetOrNullBoolean("include_children"),
+            };
+
+            return (parameters as TParameters)!;
+        }
     }
 }

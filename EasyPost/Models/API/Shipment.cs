@@ -339,10 +339,6 @@ namespace EasyPost.Models.API
         [JsonProperty("shipments")]
         public List<Shipment>? Shipments { get; set; }
 
-        internal bool? Purchased { get; set; }
-
-        internal bool? IncludeChildren { get; set; }
-
         #endregion
 
         internal ShipmentCollection()
@@ -353,13 +349,17 @@ namespace EasyPost.Models.API
         {
             string? lastId = entries.Last().Id;
 
-            BetaFeatures.Parameters.Shipments.All parameters = new()
+            BetaFeatures.Parameters.Shipments.All parameters;
+
+            if (Filters != null)
             {
-                BeforeId = lastId,
-                // Purchased and IncludeChildren won't be included in the request if they are null.
-                Purchased = Purchased,
-                IncludeChildren = IncludeChildren,
-            };
+                parameters = (BetaFeatures.Parameters.Shipments.All)Filters;
+            } else
+            {
+                parameters = new BetaFeatures.Parameters.Shipments.All();
+            }
+
+            parameters.BeforeId = lastId;
 
             if (pageSize != null)
             {
