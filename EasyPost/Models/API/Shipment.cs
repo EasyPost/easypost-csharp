@@ -356,6 +356,7 @@ namespace EasyPost.Models.API
             BetaFeatures.Parameters.Shipments.All parameters = new()
             {
                 BeforeId = lastId,
+                // Purchased and IncludeChildren won't be included in the request if they are null.
                 Purchased = Purchased,
                 IncludeChildren = IncludeChildren,
             };

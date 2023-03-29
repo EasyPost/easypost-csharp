@@ -68,6 +68,7 @@ namespace EasyPost.Models.API
             BetaFeatures.Parameters.Trackers.All parameters = new()
             {
                 BeforeId = lastId,
+                // TrackingCode and Carrier won't be included in the request if they are null.
                 TrackingCode = TrackingCode,
                 Carrier = Carrier,
             };
