@@ -354,7 +354,8 @@ namespace EasyPost.Models.API
             if (Filters != null)
             {
                 parameters = (BetaFeatures.Parameters.Shipments.All)Filters;
-            } else
+            }
+            else
             {
                 parameters = new BetaFeatures.Parameters.Shipments.All();
             }
