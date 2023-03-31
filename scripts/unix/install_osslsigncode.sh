@@ -31,7 +31,7 @@ OSSLSIGNCODE_EXE=$(find . -name "osslsigncode")
 chmod +x "$OSSLSIGNCODE_EXE"
 
 # Move the executable to the PATH_STORAGE folder
-mv bin/osslsigncode "$PATH_STORAGE"
+mv "$OSSLSIGNCODE_EXE" "$PATH_STORAGE"
 
 # Clean up
 cd ..
