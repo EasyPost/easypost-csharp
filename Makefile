@@ -49,10 +49,15 @@ install-tools:
 	dotnet tool install --local dotnet-format || exit 0
 	dotnet tool install --local docfx --version 2.60.2 || exit 0
 
+## install-release-tools - Install required tools for release
+install-release-tools:
+	bash scripts/unix/install_osslsigncode.sh
+
 ## install - Install requirements
 install: | install-tools
 	git submodule init
 	git submodule update
+
 ## lint - Lints the solution (EasyPost + Tests + F#/VB samples) (check IDE and SA rule violations)
 lint:
     # Lint the source code with dotnet-format
@@ -105,4 +110,4 @@ test-fw:
     # Note, running .NET Framework tests on a non-Windows machine may cause issues: https://xunit.net/docs/getting-started/netfx/cmdline
 	dotnet test EasyPost.Tests/EasyPost.Tests.csproj -f ${fw}
 
-.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-tools install lint lint-scripts prep-release release restore scan setup-win setup-unix test test-fw
+.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-tools install-release-tools install lint lint-scripts prep-release release restore scan setup-win setup-unix test test-fw
