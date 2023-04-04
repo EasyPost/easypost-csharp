@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v4.6.0 (2023-04-04)
+
+- Adds `GetNextPage` function to each service which retrieves the next page of a collection when the `has_more` key is present in the response (eg: `Client.Address.GetNextPage(addressCollection)`)
+
 ## v4.5.0 (2023-03-22)
 
 - Adds new `Parameters` namespace and objects, allowing you to create the paramaters of any CRUD request without needing to build the dictionaries manually. See the README for more details
