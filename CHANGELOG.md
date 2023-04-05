@@ -1,8 +1,9 @@
 # CHANGELOG
 
-## v4.6.0 (2023-04-04)
+## v4.6.0 (Next Release)
 
 - Adds `GetNextPage` function to each service which retrieves the next page of a collection when the `has_more` key is present in the response (eg: `Client.Address.GetNextPage(addressCollection)`)
+- Fixes the type of `RequestBody` from Dictionary to String in Payload class
 
 ## v4.5.0 (2023-03-22)
 
