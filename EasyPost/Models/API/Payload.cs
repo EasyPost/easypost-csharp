@@ -13,7 +13,7 @@ namespace EasyPost.Models.API
         [JsonProperty("request_headers")]
         public Dictionary<string, string>? RequestHeaders { get; set; }
         [JsonProperty("request_body")]
-        public Dictionary<string, object>? RequestBody { get; set; }
+        public string? RequestBody { get; set; }
         [JsonProperty("response_headers")]
         public Dictionary<string, string>? ResponseHeaders { get; set; }
         [JsonProperty("response_body")]
