@@ -6,17 +6,22 @@ using System.Net;
 using System.Reflection;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal;
-using Newtonsoft.Json.Linq;
 using RestSharp;
 
 namespace EasyPost.Exceptions.API
 {
 #pragma warning disable SA1649
+    /// <summary>
+    ///     Represents an error that occurred while communicating with the EasyPost API.
+    ///     This is typically due to a specific HTTP status code, such as 4xx or 5xx.
+    ///     This is different than the Error class, which represents information about what triggered the failed request.
+    ///     The information from the top-level Error class is used to generate this error, and any sub-errors are stored as a list of Error objects.
+    /// </summary>
     public class ApiError : EasyPostError
 #pragma warning restore SA1649
     {
         public readonly string? Code;
-        public readonly List<Error>? Errors;
+        public readonly List<Error>? Errors; // Details about what server-side issues caused the API request to fail.
         public readonly int? StatusCode;
 
         /// <summary>
@@ -77,25 +82,13 @@ namespace EasyPost.Exceptions.API
 
             try
             {
-                // try to extract error details from the API response
-                Dictionary<string, Dictionary<string, object>> body = JsonSerialization.ConvertJsonToObject<Dictionary<string, Dictionary<string, object>>>(response.Content);
+                // try to convert the response to an Error object
+                Error error = JsonSerialization.ConvertJsonToObject<Error>(response.Content, rootElementKeys: new List<string> { "error" });
 
-                // Errors may be an array improperly assigned to the `message` field instead of the `errors` field, concatenate those here
-                object parsedBodyMessage = body["error"]["message"];
-                errorMessage = parsedBodyMessage switch
-                {
-                    string bodyMessage => bodyMessage,
-                    JArray bodyMessage => string.Join(", ", bodyMessage),
-#pragma warning disable CA2201
-                    var _ => throw new Exception(), // this will trigger the catch block below
-#pragma warning restore CA2201
-                };
-                errorType = body["error"]["code"].ToString();
-                errors = JsonSerialization.ConvertJsonToObject<List<Error>>(response.Content, null, new List<string>
-                {
-                    "error",
-                    "errors",
-                });
+                // if the above succeeded, we'll extract the error details from the Error object
+                errorMessage = error.Message;
+                errorType = error.Code;
+                errors = error.Errors;
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch
