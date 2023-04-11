@@ -11,7 +11,7 @@ namespace EasyPost.Models.API
     ///     Represents an error returned by the EasyPost API.
     ///     These are typically informational about why a request failed (server-side validation issues, missing data, etc.).
     ///     This is different than the EasyPostError class, which represents exceptions in the EasyPost library,
-    ///     such as bad HTTP status codes or local validation issues. 
+    ///     such as bad HTTP status codes or local validation issues.
     /// </summary>
     public class Error : EasyPostObject
 #pragma warning restore CA1716
@@ -68,12 +68,14 @@ namespace EasyPost.Models.API
                     {
                         collectedMessages = CollectErrorMessages(item, collectedMessages);
                     }
+
                     break;
                 case JObject obj:
                     foreach (JProperty property in obj.Properties())
                     {
                         collectedMessages = CollectErrorMessages(property.Value, collectedMessages);
                     }
+
                     break;
                 default:
                     string? asString = element.ToString();
@@ -81,7 +83,7 @@ namespace EasyPost.Models.API
                         collectedMessages.Add(asString);
                     break;
             }
-            
+
             return collectedMessages;
         }
     }

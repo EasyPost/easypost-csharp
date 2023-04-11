@@ -227,7 +227,7 @@ namespace EasyPost.Tests.ExceptionsTests
 
             error = ApiError.FromErrorResponse(response);
             Assert.Equal("ERROR_MESSAGE_1, ERROR_MESSAGE_2", error.Message);
-            
+
             // Test that it can go down multiple levels into sub-dictionaries and collect multiple key-value pairs across multiple levels
             const string errorMessageDictJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": {\"errors\": {\"errors\": {\"errors\": {\"errors\": [\"ERROR_MESSAGE_1\", \"ERROR_MESSAGE_2\"], \"second_element\": \"ERROR_MESSAGE_3\"}}, \"third_element\": \"ERROR_MESSAGE_4\"}}, \"errors\": []}}";
             response = new RestResponse
