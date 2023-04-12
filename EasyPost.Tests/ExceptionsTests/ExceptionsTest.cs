@@ -59,7 +59,7 @@ namespace EasyPost.Tests.ExceptionsTests
 
             // Now test with some error-related JSON inside the response with sub-errors
             errorMessageStringJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": \"ERROR_MESSAGE\", \"errors\": [{\"field\": \"SUB_ERROR_FIELD\", \"message\": \"SUB_ERROR_MESSAGE\"}]}}";
-            List<Error> subErrors = new() { new Error { Field = "SUB_ERROR_FIELD", Message = "SUB_ERROR_MESSAGE" } };
+            List<Error> subErrors = new() { new Error { Field = "SUB_ERROR_FIELD", RawMessage = "SUB_ERROR_MESSAGE" } };
 
             // Generate a dummy RestResponse with the given status code to parse
             httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString(CultureInfo.InvariantCulture));
@@ -211,7 +211,7 @@ namespace EasyPost.Tests.ExceptionsTests
             RestResponse response = new()
             {
                 StatusCode = HttpStatusCode.BadRequest,
-                Content = errorMessageStringJson
+                Content = errorMessageStringJson,
             };
 
             ApiError error = ApiError.FromErrorResponse(response);
@@ -222,17 +222,28 @@ namespace EasyPost.Tests.ExceptionsTests
             response = new RestResponse
             {
                 StatusCode = HttpStatusCode.BadRequest,
-                Content = errorMessageArrayJson
+                Content = errorMessageArrayJson,
             };
 
             error = ApiError.FromErrorResponse(response);
             Assert.Equal("ERROR_MESSAGE_1, ERROR_MESSAGE_2", error.Message);
 
-            const string errorMessageBadFormatJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": {\"bad_key\": \"bad_value\"}, \"ERROR_MESSAGE_2\"], \"errors\": []}}";
+            // Test that it can go down multiple levels into sub-dictionaries and collect multiple key-value pairs across multiple levels
+            const string errorMessageDictJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": {\"errors\": {\"errors\": {\"errors\": {\"errors\": [\"ERROR_MESSAGE_1\", \"ERROR_MESSAGE_2\"], \"second_element\": \"ERROR_MESSAGE_3\"}}, \"third_element\": \"ERROR_MESSAGE_4\"}}, \"errors\": []}}";
             response = new RestResponse
             {
                 StatusCode = HttpStatusCode.BadRequest,
-                Content = errorMessageBadFormatJson
+                Content = errorMessageDictJson,
+            };
+
+            error = ApiError.FromErrorResponse(response);
+            Assert.Equal("ERROR_MESSAGE_1, ERROR_MESSAGE_2, ERROR_MESSAGE_3, ERROR_MESSAGE_4", error.Message);
+
+            const string errorMessageBadFormatJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": {bad_key\": \"bad_value\"}, \"ERROR_MESSAGE_2\"], \"errors\": []}}";
+            response = new RestResponse
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = errorMessageBadFormatJson,
             };
 
             error = ApiError.FromErrorResponse(response);
