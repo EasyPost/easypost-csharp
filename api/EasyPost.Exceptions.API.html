@@ -77,7 +77,11 @@
     <h3 id="classes">Classes
 </h3>
       <h4><a class="xref" href="EasyPost.Exceptions.API.ApiError.html">ApiError</a></h4>
-      <section></section>
+      <section><p>Represents an error that occurred while communicating with the EasyPost API.
+This is typically due to a specific HTTP status code, such as 4xx or 5xx.
+This is different than the Error class, which represents information about what triggered the failed request.
+The information from the top-level Error class is used to generate this error, and any sub-errors are stored as a list of Error objects.</p>
+</section>
       <h4><a class="xref" href="EasyPost.Exceptions.API.ConnectionError.html">ConnectionError</a></h4>
       <section></section>
       <h4><a class="xref" href="EasyPost.Exceptions.API.ExternalApiError.html">ExternalApiError</a></h4>
