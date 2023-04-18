@@ -47,12 +47,12 @@ namespace EasyPost.Tests.ServicesTests.Beta
         public async Task TestRetrieveWithFilters()
         {
             UseVCR("retrieve_with_filters");
-            
+
             const string carrierName = "usps";
 
             BetaFeatures.Parameters.Beta.CarrierMetadata.Retrieve parameters = new()
             {
-                Carriers =  new List<string> { carrierName },
+                Carriers = new List<string> { carrierName },
                 Types = new List<CarrierMetadataType> { CarrierMetadataType.ServiceLevels, CarrierMetadataType.PredefinedPackages },
             };
 
