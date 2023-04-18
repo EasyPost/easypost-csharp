@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API.Beta
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Beta.CarrierMetadata
     public class CarrierMetadata
     {
         #region JSON Properties
@@ -13,6 +14,7 @@ namespace EasyPost.Models.API.Beta
 
         #endregion
     }
+#pragma warning restore CA1724 // Naming conflicts with Parameters.Beta.CarrierMetadata
 
     public class Carrier
     {
