@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 
 namespace EasyPost.Utilities.Internal.Attributes
@@ -20,7 +19,7 @@ namespace EasyPost.Utilities.Internal.Attributes
             {
                 object[] attributes = property.GetCustomAttributes(typeof(T), true);
 
-                if (attributes.Any())
+                if (attributes.Length > 0)
                 {
                     matchingProperties.Add(property);
                 }
@@ -46,7 +45,7 @@ namespace EasyPost.Utilities.Internal.Attributes
             {
                 object[] attributes = method.GetCustomAttributes(typeof(T), true);
 
-                if (attributes.Any())
+                if (attributes.Length > 0)
                 {
                     matchingMethods.Add(method);
                 }

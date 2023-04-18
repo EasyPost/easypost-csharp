@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
-using System.Linq;
 using EasyPost.Exceptions.General;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -56,7 +55,7 @@ namespace EasyPost.Utilities.Internal
         // ReSharper disable once MemberCanBePrivate.Global
         internal static object ConvertJsonToObject(string? data, Type type, JsonSerializerSettings? jsonSerializerSettings = null, List<string>? rootElementKeys = null)
         {
-            if (rootElementKeys != null && rootElementKeys.Any())
+            if (rootElementKeys is { Count: > 0 })
             {
                 data = GoToRootElement(data, rootElementKeys);
             }
