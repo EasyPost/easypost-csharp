@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API.Beta;
@@ -17,22 +16,17 @@ namespace EasyPost.Services.Beta
 
         #region CRUD Operations
 
+        /// <summary>
+        ///     Retrieve metadata about specific carrier(s).
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Beta.CarrierMetadata.Retrieve"/> parameter set.</param>
+        /// <returns>A list of <see cref="Carrier"/> objects.</returns>
         [CrudOperations.Read]
-        public async Task<List<Carrier>> RetrieveCarrierMetadata(List<string>? carriers = null, List<CarrierMetadataType>? types = null)
+        public async Task<List<Carrier>> RetrieveCarrierMetadata(BetaFeatures.Parameters.Beta.CarrierMetadata.Retrieve? parameters = null)
         {
-            var parameters = new Dictionary<string, object>();
+            Dictionary<string, object> data = parameters?.ToDictionary() ?? new Dictionary<string, object>();
 
-            if (carriers != null)
-            {
-                parameters.Add("carriers", string.Join(",", carriers));
-            }
-
-            if (types != null)
-            {
-                parameters.Add("types", string.Join(",", types.Select(type => type.ToString())));
-            }
-
-            return await Get<List<Carrier>>("metadata", parameters, "carriers", ApiVersion.Beta);
+            return await Get<List<Carrier>>("metadata", data, "carriers", ApiVersion.Beta);
         }
 
         #endregion

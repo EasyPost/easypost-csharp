@@ -47,20 +47,26 @@ namespace EasyPost.Tests.ServicesTests.Beta
         public async Task TestRetrieveWithFilters()
         {
             UseVCR("retrieve_with_filters");
+            
+            const string carrierName = "usps";
 
-            List<string> carrierTypes = new List<string> { "usps" };
-            List<CarrierMetadataType> metadataTypes = new List<CarrierMetadataType> { CarrierMetadataType.ServiceLevels, CarrierMetadataType.PredefinedPackages };
+            BetaFeatures.Parameters.Beta.CarrierMetadata.Retrieve parameters = new()
+            {
+                Carriers =  new List<string> { carrierName },
+                Types = new List<CarrierMetadataType> { CarrierMetadataType.ServiceLevels, CarrierMetadataType.PredefinedPackages },
+            };
 
-            List<Carrier> carriers = await Client.Beta.CarrierMetadata.RetrieveCarrierMetadata(carrierTypes, metadataTypes);
+            List<Carrier> carriers = await Client.Beta.CarrierMetadata.RetrieveCarrierMetadata(parameters);
 
-            // Assert we get the single carrier we asked for and only the types we asked for
+            // Assert we get the single carrier we asked for
             Assert.True(carriers.Count == 1);
-            Assert.All(carriers, carrier => Assert.Equal("usps", carrier.Name));
+            Assert.All(carriers, carrier => Assert.Equal(carrierName, carrier.Name));
 
-            // Assert we get service levels and predefined packages, but not supported features
+            // Assert we get service levels and predefined packages as we asked for, but not supported features or shipment options
             Assert.All(carriers, carrier => Assert.True(carrier.ServiceLevels != null));
             Assert.All(carriers, carrier => Assert.True(carrier.PredefinedPackages != null));
             Assert.All(carriers, carrier => Assert.True(carrier.SupportedFeatures == null));
+            Assert.All(carriers, carrier => Assert.True(carrier.ShipmentOptions == null));
         }
 
         #endregion

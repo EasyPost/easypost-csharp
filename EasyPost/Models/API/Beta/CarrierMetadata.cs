@@ -133,10 +133,15 @@ namespace EasyPost.Models.API.Beta
         #endregion
     }
 
+    /// <summary>
+    ///     Represents the types of metadata that can be retrieved for a carrier.
+    /// </summary>
     public class CarrierMetadataType : ValueEnum
     {
         public static readonly CarrierMetadataType ServiceLevels = new(1, "service_levels");
         public static readonly CarrierMetadataType PredefinedPackages = new(2, "predefined_packages");
+        public static readonly CarrierMetadataType ShipmentOptions = new(3, "shipment_options");
+        public static readonly CarrierMetadataType SupportedFeatures = new(4, "supported_features");
 
         private CarrierMetadataType(int id, string name)
             : base(id, name)
