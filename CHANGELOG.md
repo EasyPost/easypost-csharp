@@ -3,6 +3,7 @@
 ## v4.6.0 (2023-04-18)
 
 - Adds `GetNextPage` function to each service which retrieves the next page of a collection when the `has_more` key is present in the response (eg: `Client.Address.GetNextPage(addressCollection)`)
+- Adds `RetrieveCarrierMetadata` via `myClient.Beta.CarrierMetadata`
 - Fixes the type of `RequestBody` from Dictionary to String in Payload class
 - Fixes a deserialization bug when an error.message from the API was returned as an object instead of a string
 
