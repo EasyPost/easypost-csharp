@@ -26,6 +26,8 @@ namespace EasyPost
 
         public RateService Rate { get; }
 
+        public CarrierMetadataService CarrierMetadata { get; }
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="BetaClient"/> class.
         ///     Constructor for the EasyPost beta client.
@@ -38,6 +40,7 @@ namespace EasyPost
         {
             Referral = new ReferralService(this);
             Rate = new RateService(this);
+            CarrierMetadata = new CarrierMetadataService(this);
         }
     }
 }
