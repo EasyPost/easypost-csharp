@@ -1443,6 +1443,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.CustomsSigner
   nameWithType: Create.CustomsSigner
+- uid: EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.Declaration
+  name: Declaration
+  href: api/EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.html#EasyPost_BetaFeatures_Parameters_CustomsInfo_Create_Declaration
+  commentId: P:EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.Declaration
+  fullName: EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.Declaration
+  nameWithType: Create.Declaration
+- uid: EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.Declaration*
+  name: Declaration
+  href: api/EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.html#EasyPost_BetaFeatures_Parameters_CustomsInfo_Create_Declaration_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.Declaration
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.Declaration
+  nameWithType: Create.Declaration
 - uid: EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.EelPfc
   name: EelPfc
   href: api/EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.html#EasyPost_BetaFeatures_Parameters_CustomsInfo_Create_EelPfc
