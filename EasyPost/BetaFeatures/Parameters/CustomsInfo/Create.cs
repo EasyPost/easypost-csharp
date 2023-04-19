@@ -39,7 +39,7 @@ namespace EasyPost.BetaFeatures.Parameters.CustomsInfo
         [TopLevelRequestParameter(Necessity.Optional, "customs_info", "customs_signer")]
         [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "customs_signer")]
         public string? CustomsSigner { get; set; }
-        
+
         [TopLevelRequestParameter(Necessity.Optional, "customs_info", "declaration")]
         [NestedRequestParameter(typeof(Shipments.Create), Necessity.Optional, "declaration")]
         public string? Declaration { get; set; }
