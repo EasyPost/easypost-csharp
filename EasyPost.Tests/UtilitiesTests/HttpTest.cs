@@ -1,7 +1,7 @@
 using System.Net;
+using System.Net.Http;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
-using RestSharp;
 using Xunit;
 
 namespace EasyPost.Tests.UtilitiesTests
@@ -49,7 +49,7 @@ namespace EasyPost.Tests.UtilitiesTests
         [Testing.Function]
         public void TestStatusCodeChecksRestResponse()
         {
-            RestResponse response = new() { StatusCode = HttpStatusCode.OK };
+            HttpResponseMessage response = new() { StatusCode = HttpStatusCode.OK };
 
             Assert.True(Utilities.Internal.Extensions.Http.StatusCodeBetween(response, 200, 300));
             Assert.True(response.HasStatusCodeBetween(200, 300));

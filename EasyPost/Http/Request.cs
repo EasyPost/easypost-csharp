@@ -1,59 +1,59 @@
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
 using EasyPost._base;
 using EasyPost.Utilities.Internal;
-using RestSharp;
-using RestSharp.Serializers;
 
 namespace EasyPost.Http
 {
-    internal sealed class Request
+    internal sealed class Request : IDisposable
     {
-        public readonly string? RootElement;
+        private readonly HttpRequestMessage _requestMessage;
+
+        private readonly Http.Method _method;
 
         private readonly Dictionary<string, object> _parameters;
-        private readonly RestRequest _restRequest;
 
         // ReSharper disable once SuggestBaseTypeForParameterInConstructor
-        public Request(string endpoint, Method method, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null)
+        internal Request(string domain, string endpoint, Http.Method method, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, Dictionary<string, string>? headers = null, string? rootElement = null)
         {
-            endpoint = $"{apiVersion.Value}/{endpoint}";
+            _method = method;
 
-            _restRequest = new RestRequest(endpoint, method);
-
+            Uri url = new Uri($"{domain}/{apiVersion.Value}/{endpoint}");
+            _requestMessage = new HttpRequestMessage(_method.HttpMethod, url);
             _parameters = parameters ?? new Dictionary<string, object>();
+        }
 
-            RootElement = rootElement;
+        internal HttpRequestMessage AsHttpRequestMessage()
+        {
+            // wait until the last possible moment to set the content
+            BuildParameters();
+
+            return _requestMessage;
         }
 
         /// <summary>
         ///     Build the request parameters.
         /// </summary>
-        internal void BuildParameters()
+        private void BuildParameters()
         {
             if (_parameters.Count == 0)
             {
                 return;
             }
 
-            switch (_restRequest.Method)
+            var @switch = new SwitchCase
             {
-                case Method.Get:
-                case Method.Delete:
-                    BuildQueryParameters();
-                    break;
-                case Method.Post:
-                case Method.Put:
-                case Method.Patch:
-                    BuildBodyParameters();
-                    break;
-                case Method.Head:
-                case Method.Options:
-                case Method.Merge:
-                case Method.Copy:
-                case Method.Search:
-                default:
-                    break;
-            }
+                // equality of two HttpMethod objects falls back to their inner strings, so we can compare these objects directly
+                { Http.Method.Get.HttpMethod, BuildQueryParameters },
+                { Http.Method.Delete.HttpMethod, BuildQueryParameters },
+                { Http.Method.Post.HttpMethod, BuildBodyParameters },
+                { Http.Method.Put.HttpMethod, BuildBodyParameters },
+                { Http.Method.Patch.HttpMethod, BuildBodyParameters },
+            };
+
+            @switch.MatchFirst(_method.HttpMethod);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace EasyPost.Http
         private void BuildBodyParameters()
         {
             string body = JsonSerialization.ConvertObjectToJson(_parameters);
-            _restRequest.AddStringBody(body, ContentType.Json);
+            _requestMessage.Content = new StringContent(body, Encoding.UTF8, "application/json");
         }
 
         /// <summary>
@@ -70,6 +70,9 @@ namespace EasyPost.Http
         /// </summary>
         private void BuildQueryParameters()
         {
+            // add query parameters
+            var query = new StringBuilder();
+
             foreach (KeyValuePair<string, object> pair in _parameters)
             {
                 // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
@@ -78,10 +81,16 @@ namespace EasyPost.Http
                     continue;
                 }
 
-                _restRequest.AddParameter(pair.Key, pair.Value, ParameterType.QueryString);
+                query.Append($"{pair.Key}={pair.Value}&");
             }
+
+            // remove last '&'
+            query.Remove(query.Length - 1, 1);
+
+            // add query to request uri
+            _requestMessage.RequestUri = new Uri($"{_requestMessage.RequestUri}?{query}");
         }
 
-        public static explicit operator RestRequest(Request request) => request._restRequest;
+        public void Dispose() => _requestMessage.Dispose();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using EasyPost.Exceptions;
 using EasyPost.Exceptions.API;
@@ -10,7 +11,6 @@ using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
-using RestSharp;
 using Xunit;
 
 namespace EasyPost.Tests.ExceptionsTests
@@ -25,18 +25,18 @@ namespace EasyPost.Tests.ExceptionsTests
 
         [Fact]
         [Testing.Exception]
-        public void TestApiExceptionPrettyPrint()
+        public async Task TestApiExceptionPrettyPrint()
         {
             const int statusCode = 401;
 
-            // Generate a dummy RestResponse with the given status code to parse
+            // Generate a dummy HttpResponseMessage with the given status code to parse
             HttpStatusCode httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString(CultureInfo.InvariantCulture));
-            RestResponse response = new() { StatusCode = httpStatusCode };
+            HttpResponseMessage response = new() { StatusCode = httpStatusCode };
 
-            ApiError generatedError = ApiError.FromErrorResponse(response);
+            ApiError generatedError = await ApiError.FromErrorResponse(response);
 
             // we didn't load error-related JSON data into the response for parsing, so the pretty print is going to fallback to default values.
-            string expectedMessage = $@"{Constants.ErrorMessages.ApiErrorDetailsParsingError} ({statusCode}): {Constants.ErrorMessages.ApiDidNotReturnErrorDetails}";
+            string expectedMessage = $@"{Constants.ErrorMessages.ApiErrorDetailsParsingError} ({statusCode}): Unauthorized";
 
             string prettyPrintedError = generatedError.PrettyPrint;
 
@@ -45,11 +45,11 @@ namespace EasyPost.Tests.ExceptionsTests
             // Now test with some error-related JSON inside the response
             string errorMessageStringJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": \"ERROR_MESSAGE\", \"errors\": []}}";
 
-            // Generate a dummy RestResponse with the given status code to parse
+            // Generate a dummy HttpResponseMessage with the given status code to parse
             httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString(CultureInfo.InvariantCulture));
-            response = new() { StatusCode = httpStatusCode, Content = errorMessageStringJson };
+            response = new HttpResponseMessage { StatusCode = httpStatusCode, Content = new StringContent(errorMessageStringJson) };
 
-            generatedError = ApiError.FromErrorResponse(response);
+            generatedError = await ApiError.FromErrorResponse(response);
 
             expectedMessage = $@"ERROR_CODE (401): ERROR_MESSAGE";
 
@@ -61,11 +61,11 @@ namespace EasyPost.Tests.ExceptionsTests
             errorMessageStringJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": \"ERROR_MESSAGE\", \"errors\": [{\"field\": \"SUB_ERROR_FIELD\", \"message\": \"SUB_ERROR_MESSAGE\"}]}}";
             List<Error> subErrors = new() { new Error { Field = "SUB_ERROR_FIELD", RawMessage = "SUB_ERROR_MESSAGE" } };
 
-            // Generate a dummy RestResponse with the given status code to parse
+            // Generate a dummy HttpResponseMessage with the given status code to parse
             httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString(CultureInfo.InvariantCulture));
-            response = new() { StatusCode = httpStatusCode, Content = errorMessageStringJson };
+            response = new HttpResponseMessage { StatusCode = httpStatusCode, Content = new StringContent(errorMessageStringJson) };
 
-            generatedError = ApiError.FromErrorResponse(response);
+            generatedError = await ApiError.FromErrorResponse(response);
 
             expectedMessage = subErrors.Aggregate($@"ERROR_CODE (401): ERROR_MESSAGE", (current, error) => current + $@"
                             Field: {error.Field}
@@ -205,49 +205,49 @@ namespace EasyPost.Tests.ExceptionsTests
 
         [Fact]
         [Testing.Exception]
-        public void TestExceptionErrorMessageParsing()
+        public async Task TestExceptionErrorMessageParsing()
         {
             const string errorMessageStringJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": \"ERROR_MESSAGE_1\", \"errors\": []}}";
-            RestResponse response = new()
+            HttpResponseMessage response = new()
             {
                 StatusCode = HttpStatusCode.BadRequest,
-                Content = errorMessageStringJson,
+                Content = new StringContent(errorMessageStringJson),
             };
 
-            ApiError error = ApiError.FromErrorResponse(response);
+            ApiError error = await ApiError.FromErrorResponse(response);
 
             Assert.Equal("ERROR_MESSAGE_1", error.Message);
 
             const string errorMessageArrayJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": [\"ERROR_MESSAGE_1\", \"ERROR_MESSAGE_2\"], \"errors\": []}}";
-            response = new RestResponse
+            response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.BadRequest,
-                Content = errorMessageArrayJson,
+                Content = new StringContent(errorMessageArrayJson),
             };
 
-            error = ApiError.FromErrorResponse(response);
+            error = await ApiError.FromErrorResponse(response);
             Assert.Equal("ERROR_MESSAGE_1, ERROR_MESSAGE_2", error.Message);
 
             // Test that it can go down multiple levels into sub-dictionaries and collect multiple key-value pairs across multiple levels
             const string errorMessageDictJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": {\"errors\": {\"errors\": {\"errors\": {\"errors\": [\"ERROR_MESSAGE_1\", \"ERROR_MESSAGE_2\"], \"second_element\": \"ERROR_MESSAGE_3\"}}, \"third_element\": \"ERROR_MESSAGE_4\"}}, \"errors\": []}}";
-            response = new RestResponse
+            response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.BadRequest,
-                Content = errorMessageDictJson,
+                Content = new StringContent(errorMessageDictJson),
             };
 
-            error = ApiError.FromErrorResponse(response);
+            error = await ApiError.FromErrorResponse(response);
             Assert.Equal("ERROR_MESSAGE_1, ERROR_MESSAGE_2, ERROR_MESSAGE_3, ERROR_MESSAGE_4", error.Message);
 
             const string errorMessageBadFormatJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": {bad_key\": \"bad_value\"}, \"ERROR_MESSAGE_2\"], \"errors\": []}}";
-            response = new RestResponse
+            response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.BadRequest,
-                Content = errorMessageBadFormatJson,
+                Content = new StringContent(errorMessageBadFormatJson),
             };
 
-            error = ApiError.FromErrorResponse(response);
-            Assert.Equal(Constants.ErrorMessages.ApiDidNotReturnErrorDetails, error.Message);
+            error = await ApiError.FromErrorResponse(response);
+            Assert.Equal("Bad Request", error.Message);
         }
 
         [Fact]
@@ -294,7 +294,7 @@ namespace EasyPost.Tests.ExceptionsTests
 
         [Fact]
         [Testing.Exception]
-        public Task TestKnownApiExceptionGeneration()
+        public async Task TestKnownApiExceptionGeneration()
         {
             // all the error status codes the library should be able to handle
             Dictionary<int, Type> exceptionsMap = new()
@@ -330,11 +330,11 @@ namespace EasyPost.Tests.ExceptionsTests
                 int statusCodeInt = exceptionDetails.Key;
                 Type exceptionType = exceptionDetails.Value;
 
-                // Generate a dummy RestResponse with the given status code to parse
+                // Generate a dummy HttpResponseMessage with the given status code to parse
                 HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCodeInt.ToString(CultureInfo.InvariantCulture));
-                RestResponse response = new() { StatusCode = statusCode };
+                HttpResponseMessage response = new() { StatusCode = statusCode };
 
-                ApiError generatedError = ApiError.FromErrorResponse(response);
+                ApiError generatedError = await ApiError.FromErrorResponse(response);
 
                 // should be of base type ApiError
                 Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
@@ -352,23 +352,21 @@ namespace EasyPost.Tests.ExceptionsTests
                 // because we're not giving it a real API response to parse, there's no code to extract, so the code should be the default
                 Assert.Equal("RESPONSE.PARSE_ERROR", generatedError.Code);
             }
-
-            return Task.CompletedTask;
         }
 
         [Fact]
         [Testing.Exception]
-        public void TestUnknownApiException1xxGeneration()
+        public async Task TestUnknownApiException1xxGeneration()
         {
             // library does not have a specific exception for this status code
             // Since it's a 1xx error, it should throw an UnexpectedHttpError
             const int unexpectedStatusCode = 199;
 
-            // Generate a dummy RestResponse with the given status code to parse
+            // Generate a dummy HttpResponseMessage with the given status code to parse
             HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString(CultureInfo.InvariantCulture));
-            RestResponse response = new() { StatusCode = statusCode };
+            HttpResponseMessage response = new() { StatusCode = statusCode };
 
-            ApiError generatedError = ApiError.FromErrorResponse(response);
+            ApiError generatedError = await ApiError.FromErrorResponse(response);
 
             // the exception should be of base type ApiError
             Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
@@ -378,17 +376,17 @@ namespace EasyPost.Tests.ExceptionsTests
 
         [Fact]
         [Testing.Exception]
-        public void TestUnknownApiException3xxGeneration()
+        public async Task TestUnknownApiException3xxGeneration()
         {
             // library does not have a specific exception for this status code
             // Since it's a 3xx error, it should throw an UnexpectedHttpError
             const int unexpectedStatusCode = 319;
 
-            // Generate a dummy RestResponse with the given status code to parse
+            // Generate a dummy HttpResponseMessage with the given status code to parse
             HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString(CultureInfo.InvariantCulture));
-            RestResponse response = new() { StatusCode = statusCode };
+            HttpResponseMessage response = new() { StatusCode = statusCode };
 
-            ApiError generatedError = ApiError.FromErrorResponse(response);
+            ApiError generatedError = await ApiError.FromErrorResponse(response);
 
             // the exception should be of base type ApiError
             Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
@@ -398,17 +396,17 @@ namespace EasyPost.Tests.ExceptionsTests
 
         [Fact]
         [Testing.Exception]
-        public void TestUnknownApiException4xxGeneration()
+        public async Task TestUnknownApiException4xxGeneration()
         {
             // library does not have a specific exception for this status code
             // Since it's a 4xx error, it should throw an UnknownApiError
             const int unexpectedStatusCode = 418;
 
-            // Generate a dummy RestResponse with the given status code to parse
+            // Generate a dummy HttpResponseMessage with the given status code to parse
             HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString(CultureInfo.InvariantCulture));
-            RestResponse response = new() { StatusCode = statusCode };
+            HttpResponseMessage response = new() { StatusCode = statusCode };
 
-            ApiError generatedError = ApiError.FromErrorResponse(response);
+            ApiError generatedError = await ApiError.FromErrorResponse(response);
 
             // the exception should be of base type ApiError
             Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
@@ -418,17 +416,17 @@ namespace EasyPost.Tests.ExceptionsTests
 
         [Fact]
         [Testing.Exception]
-        public void TestUnknownApiException5xxGeneration()
+        public async Task TestUnknownApiException5xxGeneration()
         {
             // library does not have a specific exception for this status code
             // Since it's a 5xx error, it should throw an UnexpectedHttpError
             const int unexpectedStatusCode = 502;
 
-            // Generate a dummy RestResponse with the given status code to parse
+            // Generate a dummy HttpResponseMessage with the given status code to parse
             HttpStatusCode statusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), unexpectedStatusCode.ToString(CultureInfo.InvariantCulture));
-            RestResponse response = new() { StatusCode = statusCode };
+            HttpResponseMessage response = new() { StatusCode = statusCode };
 
-            ApiError generatedError = ApiError.FromErrorResponse(response);
+            ApiError generatedError = await ApiError.FromErrorResponse(response);
 
             // the exception should be of base type ApiError
             Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);

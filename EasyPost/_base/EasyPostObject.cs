@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 #pragma warning disable SA1300
 namespace EasyPost._base
@@ -67,7 +66,7 @@ namespace EasyPost._base
         /// <param name="overrideApiVersion">Override the API version used for update call.</param>
         /// <typeparam name="T">Type of object to update.</typeparam>
         /// <returns>A task representing the asynchronous operation.</returns>
-        protected async Task Update<T>(Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null)
+        protected async Task Update<T>(Http.Method method, string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null)
             where T : class
         {
             T updatedObject = await Request<T>(method, url, parameters, rootElement, overrideApiVersion);

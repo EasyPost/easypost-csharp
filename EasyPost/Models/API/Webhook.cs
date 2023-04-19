@@ -5,7 +5,6 @@ using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Utilities.Internal.Attributes;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -39,7 +38,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Webhook> Update(Dictionary<string, object>? parameters = null)
         {
-            await Update<Webhook>(Method.Patch, $"webhooks/{Id}", parameters);
+            await Update<Webhook>(Http.Method.Patch, $"webhooks/{Id}", parameters);
             return this;
         }
 
@@ -51,7 +50,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<Webhook> Update(BetaFeatures.Parameters.Webhooks.Update parameters)
         {
-            await Update<Webhook>(Method.Patch, $"webhooks/{Id}", parameters.ToDictionary());
+            await Update<Webhook>(Http.Method.Patch, $"webhooks/{Id}", parameters.ToDictionary());
             return this;
         }
 

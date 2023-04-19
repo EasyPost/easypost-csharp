@@ -9,9 +9,9 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions;
+using EasyPost.Http;
 using EasyPost.Utilities.Internal;
 using EasyVCR;
-using RestSharp;
 
 // ReSharper disable once CheckNamespace
 namespace EasyPost.Tests._Utilities
@@ -67,14 +67,14 @@ namespace EasyPost.Tests._Utilities
                 ApiKey.Referral => "REFERRAL_CUSTOMER_PROD_API_KEY",
                 ApiKey.Mock => "EASYPOST_MOCK_API_KEY", // does not exist, will trigger to use ApiKeyFailedToPull
 #pragma warning disable CA2201
-                var _ => throw new Exception(Constants.ErrorMessages.InvalidApiKeyType)
+                var _ => throw new Exception(Constants.ErrorMessages.InvalidApiKeyType),
 #pragma warning restore CA2201
             };
 
             return Environment.GetEnvironmentVariable(keyName) ?? ApiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.
         }
 
-        internal static Client GetClient(string apiKey, HttpClient? vcrClient = null) => new(apiKey, customHttpClient: vcrClient);
+        internal static Client GetClient(string apiKey, HttpClient? vcrClient = null) => new(new ClientConfiguration(apiKey) { CustomHttpClient = vcrClient });
 
         internal static string ReadFile(string path)
         {
@@ -82,7 +82,7 @@ namespace EasyPost.Tests._Utilities
             return File.ReadAllText(filePath);
         }
 
-        public class VCR
+        internal sealed class VCR
         {
             // Cassettes folder will always been in the same directory as this TestUtils.cs file
             private const string CassettesFolder = "cassettes";
@@ -167,13 +167,13 @@ namespace EasyPost.Tests._Utilities
 
         public class MockRequestMatchRules
         {
-            internal Method Method { get; set; }
+            internal HttpMethod Method { get; set; }
 
             internal string ResourceRegex { get; set; }
 
-            public MockRequestMatchRules(Method method, string resourceRegex)
+            public MockRequestMatchRules(Http.Method method, string resourceRegex)
             {
-                Method = method;
+                Method = method.HttpMethod;
                 ResourceRegex = resourceRegex;
             }
         }
@@ -209,45 +209,24 @@ namespace EasyPost.Tests._Utilities
             private readonly List<MockRequest> _mockRequests = new();
 
 #pragma warning disable CS1998
-            internal override async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request)
+            internal override async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request)
 #pragma warning restore CS1998
             {
                 MockRequest? mockRequest = FindMatchingMockRequest(request);
 
                 if (mockRequest == null)
                 {
-                    throw new EasyPostError($"No matching mock request found for: {request.Method.ToString().ToUpperInvariant()} {request.Resource}");
+                    throw new EasyPostError($"No matching mock request found for: {request.Method.ToString().ToUpperInvariant()} {request.RequestUri.AbsoluteUri}");
                 }
 
-                return new RestResponse<T>
+                return new HttpResponseMessage
                 {
-                    Content = mockRequest.ResponseInfo.Content,
+                    Content = new StringContent(mockRequest.ResponseInfo.Content),
                     StatusCode = mockRequest.ResponseInfo.StatusCode,
-                    Data = mockRequest.ResponseInfo.Content != null ? JsonSerialization.ConvertJsonToObject<T>(mockRequest.ResponseInfo.Content) : default
                 };
             }
 
-#pragma warning disable CS1998
-            internal override async Task<RestResponse> ExecuteRequest(RestRequest request)
-#pragma warning restore CS1998
-            {
-                MockRequest? mockRequest = FindMatchingMockRequest(request);
-
-                if (mockRequest == null)
-                {
-#pragma warning disable CA2201
-                    throw new Exception("No matching mock request found");
-#pragma warning restore CA2201
-                }
-
-                return new RestResponse
-                {
-                    Content = mockRequest.ResponseInfo.Content,
-                    StatusCode = mockRequest.ResponseInfo.StatusCode
-                };
-            }
-
-            internal MockClient(EasyPostClient client) : base(client.Configuration.ApiKey, client.Configuration.ApiBase, client.Configuration.HttpClient)
+            internal MockClient(EasyPostClient client) : base(client.Configuration.ApiKey, client.Configuration.ApiBase, client.Configuration.CustomHttpClient)
             {
             }
 
@@ -255,7 +234,7 @@ namespace EasyPost.Tests._Utilities
 
             internal void AddMockRequests(IEnumerable<MockRequest> mockRequests) => _mockRequests.AddRange(mockRequests);
 
-            private MockRequest? FindMatchingMockRequest(RestRequest request) => _mockRequests.FirstOrDefault(mock => mock.MatchRules.Method == request.Method && EndpointMatches(request.Resource, mock.MatchRules.ResourceRegex));
+            private MockRequest? FindMatchingMockRequest(HttpRequestMessage request) => _mockRequests.FirstOrDefault(mock => mock.MatchRules.Method == request.Method && EndpointMatches(request.RequestUri.AbsoluteUri, mock.MatchRules.ResourceRegex));
 
             private static bool EndpointMatches(string endpoint, string pattern)
             {

@@ -7,7 +7,6 @@ using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -59,7 +58,7 @@ namespace EasyPost.Models.API
             parameters = parameters.Wrap("address");
 
             // EndShipper needs Put, not Patch
-            await Update<EndShipper>(Method.Put, $"end_shippers/{Id}", parameters);
+            await Update<EndShipper>(Http.Method.Put, $"end_shippers/{Id}", parameters);
             return this;
         }
 
@@ -72,7 +71,7 @@ namespace EasyPost.Models.API
         public async Task<EndShipper> Update(BetaFeatures.Parameters.EndShippers.Update parameters)
         {
             // EndShipper needs Put, not Patch
-            await Update<EndShipper>(Method.Put, $"end_shippers/{Id}", parameters.ToDictionary());
+            await Update<EndShipper>(Http.Method.Put, $"end_shippers/{Id}", parameters.ToDictionary());
             return this;
         }
 

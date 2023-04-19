@@ -6,7 +6,6 @@ using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
-using RestSharp;
 using Xunit;
 
 namespace EasyPost.Tests.ServicesTests
@@ -70,7 +69,7 @@ namespace EasyPost.Tests.ServicesTests
             {
                 // API call to get the page of addresses will return an empty list with HasMore = false
                 new(
-                    new TestUtils.MockRequestMatchRules(Method.Get, @"^v2\/addresses$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"v2\/addresses"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new AddressCollection
                     {
                         Addresses = new List<Address>(),
