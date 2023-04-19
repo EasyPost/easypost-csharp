@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Add missing `Declaration` parameter to Customs Info creation parameter set
+
 ## v4.6.0 (2023-04-18)
 
 - Adds `GetNextPage` function to each service which retrieves the next page of a collection when the `has_more` key is present in the response (eg: `Client.Address.GetNextPage(addressCollection)`)

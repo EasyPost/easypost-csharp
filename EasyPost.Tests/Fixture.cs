@@ -252,6 +252,7 @@ namespace EasyPost.Tests._Utilities
                     {
                         Id = fixture.GetOrNull<string>("id"),
                         CustomsItems = customsItems,
+                        Declaration = fixture.GetOrNull<string>("declaration"),
                         EelPfc = fixture.GetOrNull<string>("eel_pfc"),
                         ContentsType = fixture.GetOrNull<string>("contents_type"),
                         ContentsExplanation = fixture.GetOrNull<string>("contents_explanation"),
