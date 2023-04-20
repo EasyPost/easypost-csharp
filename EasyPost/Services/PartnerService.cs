@@ -204,15 +204,17 @@ namespace EasyPost.Services
             {
                 { "Authorization", $"Bearer {easypostStripeApiKey}" },
                 { "Accept", "application/x-www-form-urlencoded" },
-
             };
+
             foreach (KeyValuePair<string, string> header in headers)
             {
                 request.Headers.Add(header.Key, header.Value);
             }
 
             // add parameters
-            Dictionary<string, string> parameters = new Dictionary<string, string>
+#pragma warning disable SA0001 // Nullability
+#pragma warning disable CS8620 // Nullability
+            Dictionary<string, string?> parameters = new Dictionary<string, string?>
             {
                 { "card[number]", number },
                 { "card[exp_month]", expirationMonth.ToString(CultureInfo.InvariantCulture) },
@@ -220,6 +222,8 @@ namespace EasyPost.Services
                 { "card[cvc]", cvc },
             };
             request.Content = new FormUrlEncodedContent(parameters);
+#pragma warning restore SA0001 // Nullability
+#pragma warning restore CS8620 // Nullability
 
             HttpResponseMessage response = await Client!.ExecuteRequest(request);
 

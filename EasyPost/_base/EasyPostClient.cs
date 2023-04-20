@@ -39,7 +39,6 @@ namespace EasyPost._base
         /// </summary>
         public HttpClient? CustomHttpClientInUse => Configuration.CustomHttpClient; // public read-only property so users can audit the custom HTTP client they set to be used by the client
 
-
         /// <summary>
         ///     Gets the prepared HTTP client used by this client for all API calls.
         /// </summary>
@@ -116,12 +115,7 @@ namespace EasyPost._base
             where T : class
         {
             // Build the request
-            var headers = new Dictionary<string, string>
-            {
-                // User-Agent is already set as a default header for the HttpClient
-                { "Authorization", $"Bearer {ApiKeyInUse}" },
-                { "Content-Type", "application/json" },
-            };
+            Dictionary<string, string> headers = Configuration.Headers;
             Request request = new Request(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
 
             // Execute the request
@@ -163,12 +157,7 @@ namespace EasyPost._base
         internal async Task<bool> Request(Method method, string endpoint, ApiVersion apiVersion, Dictionary<string, object>? parameters = null)
         {
             // Build the request
-            var headers = new Dictionary<string, string>
-            {
-                // User-Agent is already set as a default header for the HttpClient
-                { "Authorization", $"Bearer {ApiKeyInUse}" },
-                { "Content-Type", "application/json" }
-            };
+            Dictionary<string, string> headers = Configuration.Headers;
             Request request = new Request(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
 
             // Execute the request

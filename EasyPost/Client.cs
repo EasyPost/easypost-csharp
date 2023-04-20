@@ -10,7 +10,7 @@ namespace EasyPost
     {
         public AddressService Address { get; }
 
-        public ApiKeyService ApiKey { get; }  // TODO: Recommend renaming. Because ApiKey is used as the name of the API key service, you have to access the actual configured API key via ApiKeyInUse
+        public ApiKeyService ApiKey { get; } // TODO: Recommend renaming. Because ApiKey is used as the name of the API key service, you have to access the actual configured API key via ApiKeyInUse
 
         public BatchService Batch { get; }
 
@@ -144,7 +144,7 @@ namespace EasyPost
         {
             // Dispose of the base client
             base.Dispose();
-            
+
             // Dispose of the Beta client
             Beta.Dispose();
 

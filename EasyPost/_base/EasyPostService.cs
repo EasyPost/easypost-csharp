@@ -15,6 +15,8 @@ namespace EasyPost._base
         public void Dispose()
         {
             Client?.Dispose();
+
+            GC.SuppressFinalize(this);
         }
     }
 

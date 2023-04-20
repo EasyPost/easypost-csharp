@@ -11,18 +11,29 @@ namespace EasyPost.Http
     {
         private readonly HttpRequestMessage _requestMessage;
 
-        private readonly Http.Method _method;
+        private readonly Method _method;
 
         private readonly Dictionary<string, object> _parameters;
 
         // ReSharper disable once SuggestBaseTypeForParameterInConstructor
-        internal Request(string domain, string endpoint, Http.Method method, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, Dictionary<string, string>? headers = null, string? rootElement = null)
+        internal Request(string domain, string endpoint, Method method, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, Dictionary<string, string>? headers = null)
         {
+            // store method for later use
             _method = method;
 
-            Uri url = new Uri($"{domain}/{apiVersion.Value}/{endpoint}");
+            // build the request URL, then request message
+            Uri url = new($"{domain}/{apiVersion.Value}/{endpoint}");
             _requestMessage = new HttpRequestMessage(_method.HttpMethod, url);
+
+            // store parameters for later use
             _parameters = parameters ?? new Dictionary<string, object>();
+
+            // set the headers (user-agent, auth, and content-type should have been included in the headers dictionary)
+            if (headers == null) return;
+            foreach (KeyValuePair<string, string> header in headers)
+            {
+                _requestMessage.Headers.Add(header.Key, header.Value);
+            }
         }
 
         internal HttpRequestMessage AsHttpRequestMessage()
@@ -46,11 +57,11 @@ namespace EasyPost.Http
             var @switch = new SwitchCase
             {
                 // equality of two HttpMethod objects falls back to their inner strings, so we can compare these objects directly
-                { Http.Method.Get.HttpMethod, BuildQueryParameters },
-                { Http.Method.Delete.HttpMethod, BuildQueryParameters },
-                { Http.Method.Post.HttpMethod, BuildBodyParameters },
-                { Http.Method.Put.HttpMethod, BuildBodyParameters },
-                { Http.Method.Patch.HttpMethod, BuildBodyParameters },
+                { Method.Get.HttpMethod, BuildQueryParameters },
+                { Method.Delete.HttpMethod, BuildQueryParameters },
+                { Method.Post.HttpMethod, BuildBodyParameters },
+                { Method.Put.HttpMethod, BuildBodyParameters },
+                { Method.Patch.HttpMethod, BuildBodyParameters },
             };
 
             @switch.MatchFirst(_method.HttpMethod);

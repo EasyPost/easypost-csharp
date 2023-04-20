@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using EasyPost._base;
 using EasyPost.Utilities.Internal;
@@ -42,6 +43,22 @@ namespace EasyPost.Http
         /// </summary>
         internal HttpClient? PreparedHttpClient; // the actual HttpClient used to make requests, this will never actually be null
 
+        /*
+         * NOTE: User-Agent will always show the general availability API version, even if the API call itself goes to a different API version (i.e. beta).
+         * This is because the User-Agent must be set when the client is initialized, and the target API version is not known until a request is made.
+         */
+        private string UserAgent => $"EasyPost/{ApiVersion.Current.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
+
+        /// <summary>
+        ///     Gets the headers to use for a request.
+        /// </summary>
+        internal Dictionary<string, string> Headers => new()
+        {
+            { "Authorization", $"Bearer {ApiKey}" },
+            { "User-Agent", UserAgent },
+            // Content-Type is set downstream while constructing the request body
+        };
+
         /// <summary>
         ///    The .NET version of the current application.
         /// </summary>
@@ -67,12 +84,6 @@ namespace EasyPost.Http
         /// </summary>
         private readonly string _osVersion;
 
-        /*
-         * NOTE: User-Agent will always show the general availability API version, even if the API call itself goes to a different API version (i.e. beta).
-         * This is because the User-Agent must be set when the client is initialized, and the target API version is not known until a request is made.
-         */
-        private string UserAgent => $"EasyPost/{ApiVersion.Current.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="ClientConfiguration"/> class.
         /// </summary>
@@ -84,7 +95,7 @@ namespace EasyPost.Http
 
             // optional values (HttpClient, ConnectTimeoutMilliseconds) are set to defaults during construction if not set by the user
 
-            // set internal user agent values
+            // calculate internal user agent values, so we don't needlessly calculate them for every request
             _libraryVersion = RuntimeInfo.ApplicationInfo.ApplicationVersion;
             _dotNetVersion = RuntimeInfo.ApplicationInfo.DotNetVersion;
             _osName = RuntimeInfo.OperationSystemInfo.Name;
@@ -96,8 +107,11 @@ namespace EasyPost.Http
         {
             // set up the HttpClient
             PreparedHttpClient = CustomHttpClient ?? new HttpClient();
-            PreparedHttpClient.DefaultRequestHeaders.Add("User-Agent", UserAgent); // we set the user agent here once so it's not needlessly calculated for every request
+
+            // Connect timeout is set once, when the client is initialized, and not changed again.
             PreparedHttpClient.Timeout = new TimeSpan(0, 0, 0, 0, milliseconds: ConnectTimeoutMilliseconds); // set the default timeout for the client
+
+            // API key and user-agent is set in headers for every request downstream.
         }
 
         public override bool Equals(object? obj) => obj is ClientConfiguration other && ApiKey == other.ApiKey && ApiBase == other.ApiBase;
