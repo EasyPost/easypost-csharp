@@ -12,13 +12,6 @@ namespace EasyPost.Http
     public class ClientConfiguration : IDisposable
     {
         /// <summary>
-        ///     Gets the API key.
-        ///     This cannot be changed after the client has been initialized.
-        /// </summary>
-        // This can be changed between API calls, but only by internal methods (by the library and test suite, but not by the end user).
-        internal readonly string ApiKey; // internal so users can't set it via a constructor property, only via the parameter
-
-        /// <summary>
         ///     Gets the base URL for the API.
         ///     This cannot be changed after the client has been initialized.
         /// </summary>
@@ -38,17 +31,18 @@ namespace EasyPost.Http
         public HttpClient? CustomHttpClient; // public so users can set via a constructor property (stored for auditing and cloning purposes)
 
         /// <summary>
+        ///     Gets the API key.
+        ///     This cannot be changed after the client has been initialized.
+        /// </summary>
+        // This can be changed between API calls, but only by internal methods (by the library and test suite, but not by the end user).
+        internal readonly string ApiKey; // internal so users can't set it via a constructor property, only via the parameter
+        
+        /// <summary>
         ///     Gets or sets the prepared HTTP client used to make requests.
         ///     This is the client actually used to make requests.
         /// </summary>
         internal HttpClient? PreparedHttpClient; // the actual HttpClient used to make requests, this will never actually be null
-
-        /*
-         * NOTE: User-Agent will always show the general availability API version, even if the API call itself goes to a different API version (i.e. beta).
-         * This is because the User-Agent must be set when the client is initialized, and the target API version is not known until a request is made.
-         */
-        private string UserAgent => $"EasyPost/{ApiVersion.Current.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
-
+        
         /// <summary>
         ///     Gets the headers to use for a request.
         /// </summary>
@@ -58,6 +52,12 @@ namespace EasyPost.Http
             { "User-Agent", UserAgent },
             // Content-Type is set downstream while constructing the request body
         };
+
+        /*
+         * NOTE: User-Agent will always show the general availability API version, even if the API call itself goes to a different API version (i.e. beta).
+         * This is because the User-Agent must be set when the client is initialized, and the target API version is not known until a request is made.
+         */
+        private string UserAgent => $"EasyPost/{ApiVersion.Current.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
 
         /// <summary>
         ///    The .NET version of the current application.
@@ -88,7 +88,7 @@ namespace EasyPost.Http
         ///     Initializes a new instance of the <see cref="ClientConfiguration"/> class.
         /// </summary>
         /// <param name="apiKey">The API key to use for the client connection.</param>
-        internal ClientConfiguration(string apiKey)
+        public ClientConfiguration(string apiKey)
         {
             // set required values
             ApiKey = apiKey;
