@@ -1,5 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -14,18 +15,6 @@ namespace EasyPost.Tests
         }
 
         #region Tests
-
-        [Fact]
-        [Testing.Function]
-        public void TestClient()
-        {
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            // we specifically want to test the getters/setters
-            Client client = new(FakeApikey);
-            client.Configuration.ConnectTimeoutMilliseconds = 5000;
-
-            Assert.Equal(5000, client.Configuration.ConnectTimeoutMilliseconds);
-        }
 
         [Fact]
         [Testing.Function]
@@ -93,13 +82,31 @@ namespace EasyPost.Tests
         private const string FakeApikey = "fake_api_key";
 
         [Fact]
+        [Testing.Parameters]
         public void TestBaseUrlOverride()
         {
             Client normalClient = new(FakeApikey);
-            Client overrideClient = new(FakeApikey, "https://www.example.com");
+            Client overrideClient = new(new ClientConfiguration(FakeApikey)
+            {
+                ApiBase = "https://www.example.com",
+            });
+            
+            Assert.Equal("https://api.easypost.com", normalClient.ApiBaseInUse);
+            Assert.Equal("https://www.example.com", overrideClient.ApiBaseInUse);
+        }
+        
+        [Fact]
+        [Testing.Parameters]
+        public void TestConnectionTimeoutOverride()
+        {
+            Client normalClient = new(FakeApikey);
+            Client overrideClient = new(new ClientConfiguration(FakeApikey)
+            {
+                ConnectTimeoutMilliseconds = 50,
+            });
 
-            Assert.Equal("https://api.easypost.com", normalClient.Configuration.ApiBase);
-            Assert.Equal("https://www.example.com", overrideClient.Configuration.ApiBase);
+            Assert.Equal(30000, normalClient.ConnectTimeoutMillisecondsInUse); // 30 second default
+            Assert.Equal(50, overrideClient.ConnectTimeoutMillisecondsInUse);
         }
     }
 }
