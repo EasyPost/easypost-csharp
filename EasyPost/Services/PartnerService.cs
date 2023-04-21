@@ -179,6 +179,7 @@ namespace EasyPost.Services
             {
                 // Restore the original client configuration
                 Client.Configuration = currentConfiguration;
+                tempConfiguration.Dispose();
             }
 
             return paymentMethod;
@@ -198,7 +199,7 @@ namespace EasyPost.Services
         {
             const string url = "https://api.stripe.com/v1/tokens";
 
-            HttpRequestMessage request = new HttpRequestMessage(Http.Method.Post.HttpMethod, url);
+            HttpRequestMessage request = new(Http.Method.Post.HttpMethod, url);
 
             Dictionary<string, string> headers = new Dictionary<string, string>
             {
@@ -234,6 +235,10 @@ namespace EasyPost.Services
 
             string content = await response.Content.ReadAsStringAsync();
             Dictionary<string, object> data = JsonSerialization.ConvertJsonToObject<Dictionary<string, object>>(content);
+
+            // Dispose of the request and response
+            request.Dispose();
+            response.Dispose();
 
             data.TryGetValue("id", out object? id);
             return id == null

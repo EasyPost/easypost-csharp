@@ -22,7 +22,7 @@ namespace EasyPost._base
         /// <summary>
         ///     Gets the API key used by this client.
         /// </summary>
-        public string ApiKeyInUse => Configuration.ApiKey;  // public read-only property so users can audit the API key used by the client
+        public string ApiKeyInUse => Configuration.ApiKey; // public read-only property so users can audit the API key used by the client
 
         /// <summary>
         ///     Gets the base URL used by this client.
@@ -116,7 +116,7 @@ namespace EasyPost._base
         {
             // Build the request
             Dictionary<string, string> headers = Configuration.Headers;
-            Request request = new Request(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
+            Request request = new(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
 
             // Execute the request
             HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage());
@@ -147,6 +147,10 @@ namespace EasyPost._base
 
             PassClientToEasyPostObject(resource);
 
+            // Dispose of the request and response
+            request.Dispose();
+            response.Dispose();
+
             return resource;
         }
 
@@ -158,13 +162,19 @@ namespace EasyPost._base
         {
             // Build the request
             Dictionary<string, string> headers = Configuration.Headers;
-            Request request = new Request(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
+            Request request = new(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
 
             // Execute the request
             HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage());
 
-            // Return whether the HTTP request produced an error (3xx, 4xx or 5xx status code) or not
-            return response.ReturnedNoError();
+            // Check whether the HTTP request produced an error (3xx, 4xx or 5xx status code) or not
+            bool errorRaised = response.ReturnedNoError();
+
+            // Dispose of the request and response
+            request.Dispose();
+            response.Dispose();
+
+            return errorRaised;
         }
 
         private void PassClientToAllEasyPostObjectProperties<T>(T? resource)
@@ -233,11 +243,33 @@ namespace EasyPost._base
         public override int GetHashCode() => Configuration.GetHashCode();
 #pragma warning restore CA1307
 
+        private bool _isDisposed;
+
         public void Dispose()
         {
-            Configuration.Dispose();
-
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_isDisposed) return;
+            if (disposing)
+            {
+                // Dispose managed state (managed objects).
+
+                // Dispose the configuration
+                Configuration.Dispose();
+            }
+
+            // Free native resources (unmanaged objects) and override a finalizer below.
+            _isDisposed = true;
+        }
+
+        ~EasyPostClient()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(disposing: false);
         }
     }
 }

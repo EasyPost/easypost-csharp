@@ -3,14 +3,13 @@ using System.Net.Http;
 using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Services.Beta;
-using RateService = EasyPost.Services.Beta.RateService;
 
 namespace EasyPost
 {
     /// <summary>
     ///     Access beta EasyPost API endpoints.
     /// </summary>
-    public class BetaClient : EasyPostClient, IDisposable
+    public class BetaClient : EasyPostClient
     {
         /*
          * NOTE to maintainer: This class stores all beta features. Users can only access this by calling `myClient.Beta`. It cannot be initialized directly.
@@ -67,17 +66,22 @@ namespace EasyPost
             CarrierMetadata = new CarrierMetadataService(this);
         }
 
-        public new void Dispose()
+        protected override void Dispose(bool disposing)
         {
+            if (disposing)
+            {
+                // Dispose managed state (managed objects).
+
+                // Dispose of the services
+                Referral.Dispose();
+                Rate.Dispose();
+                CarrierMetadata.Dispose();
+            }
+
+            // Free native resources (unmanaged objects) and override a finalizer below.
+
             // Dispose of the base client
-            base.Dispose();
-
-            // Dispose of the services
-            Referral.Dispose();
-            Rate.Dispose();
-            CarrierMetadata.Dispose();
-
-            GC.SuppressFinalize(this);
+            base.Dispose(disposing);
         }
     }
 }

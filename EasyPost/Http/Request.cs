@@ -7,7 +7,8 @@ using EasyPost.Utilities.Internal;
 
 namespace EasyPost.Http
 {
-    internal sealed class Request : IDisposable
+#pragma warning disable CA1852 // Can be sealed, but dispose function cannot be sealed
+    internal class Request : IDisposable
     {
         private readonly HttpRequestMessage _requestMessage;
 
@@ -102,6 +103,34 @@ namespace EasyPost.Http
             _requestMessage.RequestUri = new Uri($"{_requestMessage.RequestUri}?{query}");
         }
 
-        public void Dispose() => _requestMessage.Dispose();
+        private bool _isDisposed;
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_isDisposed) return;
+            if (disposing)
+            {
+                // Dispose managed state (managed objects).
+
+                // Dispose the request message
+                _requestMessage.Dispose();
+            }
+
+            // Free native resources (unmanaged objects) and override a finalizer below.
+            _isDisposed = true;
+        }
+
+        ~Request()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(disposing: false);
+        }
     }
+#pragma warning restore CA1852 // Can be sealed, but dispose function cannot be sealed
 }

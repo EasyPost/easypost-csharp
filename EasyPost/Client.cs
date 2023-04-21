@@ -6,7 +6,7 @@ using EasyPost.Services;
 
 namespace EasyPost
 {
-    public class Client : EasyPostClient, IDisposable
+    public class Client : EasyPostClient
     {
         public AddressService Address { get; }
 
@@ -140,40 +140,48 @@ namespace EasyPost
             Beta = new BetaClient(configuration);
         }
 
-        public new void Dispose()
+        protected override void Dispose(bool disposing)
         {
+            // ref: https://dzone.com/articles/when-and-how-to-use-dispose-and-finalize-in-c
+            // ref: https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1063#pseudo-code-example
+            if (disposing)
+            {
+                // Dispose managed state (managed objects).
+                // "disposing" inherently true when called from Dispose(), so don't need to pass it in.
+
+                // Dispose of the services
+                Address.Dispose();
+                ApiKey.Dispose();
+                Batch.Dispose();
+                Billing.Dispose();
+                CarrierAccount.Dispose();
+                CarrierType.Dispose();
+                CustomsInfo.Dispose();
+                CustomsItem.Dispose();
+                EndShipper.Dispose();
+                Event.Dispose();
+                Insurance.Dispose();
+                Order.Dispose();
+                Parcel.Dispose();
+                Partner.Dispose();
+                Pickup.Dispose();
+                Rate.Dispose();
+                Refund.Dispose();
+                Report.Dispose();
+                ScanForm.Dispose();
+                Shipment.Dispose();
+                Tracker.Dispose();
+                User.Dispose();
+                Webhook.Dispose();
+
+                // Dispose of the Beta client
+                Beta.Dispose();
+            }
+
+            // Free native resources (unmanaged objects) and override a finalizer below.
+
             // Dispose of the base client
-            base.Dispose();
-
-            // Dispose of the Beta client
-            Beta.Dispose();
-
-            // Dispose of the services
-            Address.Dispose();
-            ApiKey.Dispose();
-            Batch.Dispose();
-            Billing.Dispose();
-            CarrierAccount.Dispose();
-            CarrierType.Dispose();
-            CustomsInfo.Dispose();
-            CustomsItem.Dispose();
-            EndShipper.Dispose();
-            Event.Dispose();
-            Insurance.Dispose();
-            Order.Dispose();
-            Parcel.Dispose();
-            Partner.Dispose();
-            Pickup.Dispose();
-            Rate.Dispose();
-            Refund.Dispose();
-            Report.Dispose();
-            ScanForm.Dispose();
-            Shipment.Dispose();
-            Tracker.Dispose();
-            User.Dispose();
-            Webhook.Dispose();
-
-            GC.SuppressFinalize(this);
+            base.Dispose(disposing);
         }
     }
 }

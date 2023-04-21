@@ -36,13 +36,13 @@ namespace EasyPost.Http
         /// </summary>
         // This can be changed between API calls, but only by internal methods (by the library and test suite, but not by the end user).
         internal readonly string ApiKey; // internal so users can't set it via a constructor property, only via the parameter
-        
+
         /// <summary>
         ///     Gets or sets the prepared HTTP client used to make requests.
         ///     This is the client actually used to make requests.
         /// </summary>
         internal HttpClient? PreparedHttpClient; // the actual HttpClient used to make requests, this will never actually be null
-        
+
         /// <summary>
         ///     Gets the headers to use for a request.
         /// </summary>
@@ -120,15 +120,38 @@ namespace EasyPost.Http
 #pragma warning disable CA1307
         public override int GetHashCode() => ApiKey.GetHashCode() ^ ApiBase.GetHashCode();
 #pragma warning restore CA1307
+
+        private bool _isDisposed;
+
         public void Dispose()
         {
-            // dispose of the prepared HTTP client
-            PreparedHttpClient?.Dispose();
-
-            // dispose of the user-provided HTTP client
-            CustomHttpClient?.Dispose();
-
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_isDisposed) return;
+
+            if (disposing)
+            {
+                // Dispose managed state (managed objects).
+
+                // dispose of the prepared HTTP client
+                PreparedHttpClient?.Dispose();
+
+                // dispose of the user-provided HTTP client
+                CustomHttpClient?.Dispose();
+            }
+
+            // Free native resources (unmanaged objects) and override a finalizer below.
+            _isDisposed = true;
+        }
+
+        ~ClientConfiguration()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(disposing: false);
         }
     }
 }

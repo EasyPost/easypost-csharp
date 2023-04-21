@@ -12,11 +12,34 @@ namespace EasyPost._base
             Client = client;
         }
 #pragma warning restore IDE0021
+
+        private bool _isDisposed;
+
         public void Dispose()
         {
-            Client?.Dispose();
-
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_isDisposed) return;
+            if (disposing)
+            {
+                // Dispose managed state (managed objects).
+
+                // Dispose the client
+                Client?.Dispose();
+            }
+
+            // Free native resources (unmanaged objects) and override a finalizer below.
+            _isDisposed = true;
+        }
+
+        ~EasyPostService()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(disposing: false);
         }
     }
 
