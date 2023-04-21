@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 using EasyPost.Exceptions;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
+using CustomAssertions = EasyPost.Tests._Utilities.Assertions.Assert;
 
 namespace EasyPost.Tests.ExceptionsTests
 {
@@ -432,6 +434,32 @@ namespace EasyPost.Tests.ExceptionsTests
             Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
             // specifically, the exception should be of type UnexpectedHttpError
             Assert.Equal(typeof(UnexpectedHttpError), generatedError.GetType());
+        }
+
+        [Fact]
+        [Testing.Exception]
+        public async Task TestHTTPTimeoutFriendlyException()
+        {
+            // create a new client with a very short timeout
+            Client client = new(new ClientConfiguration(TestUtils.GetApiKey(TestUtils.ApiKey.Test))
+            {
+                ConnectTimeoutMilliseconds = 1, // 1ms should be enough to timeout
+            });
+
+            // make a real request that should timeout, assert that it threw a friendly TimeoutError rather than a TaskCanceledException
+            try
+            {
+                await client.Address.Create(Fixtures.CaAddress1);
+                // if we get here, the request didn't time out, consider test failed
+                Assert.Fail("Request did not time out");
+            }
+            catch (Exception e) // capture any exception
+            {
+                // we should get here
+                // assert that the exception is of type TimeoutError
+                Assert.IsType<TimeoutError>(e);
+                Assert.Equal(Constants.ErrorMessages.ApiRequestTimedOut, e.Message);
+            }
         }
 
         #endregion

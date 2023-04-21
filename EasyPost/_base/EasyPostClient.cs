@@ -94,13 +94,23 @@ namespace EasyPost._base
         /// <param name="request">Request to execute.</param>
         /// <returns>An <see cref="HttpResponseMessage"/> object.</returns>
         // ReSharper disable once MemberCanBeProtected.Global
-        internal virtual async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request) =>
-
+        internal virtual async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request)
+        {
             // This method actually executes the request and returns the response.
             // Everything up to this point has been pre-request, and everything after this point is post-request.
             // This method is "virtual" so it can be overriden (i.e. by a MockClient in testing to avoid making actual HTTP requests).
-            await HttpClient.SendAsync(request);
 
+            // try to execute the request, catch and rethrow an HTTP timeout exception, all other exceptions are thrown as-is
+            try
+            {
+                return await HttpClient.SendAsync(request);
+            }
+            catch (TaskCanceledException)
+            {
+                throw new TimeoutError(Constants.ErrorMessages.ApiRequestTimedOut, 408);
+            }
+        }
+        
         /// <summary>
         ///     Execute a request against the EasyPost API.
         /// </summary>

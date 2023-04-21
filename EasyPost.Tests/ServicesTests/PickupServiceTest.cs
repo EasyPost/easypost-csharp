@@ -6,6 +6,7 @@ using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
+using CustomAssertions = EasyPost.Tests._Utilities.Assertions.Assert;
 
 namespace EasyPost.Tests.ServicesTests
 {
@@ -92,11 +93,11 @@ namespace EasyPost.Tests.ServicesTests
             }
             catch (EndOfPaginationError e) // There's no second page, that's not a failure
             {
-                Assert.True(true);
+                CustomAssertions.Pass();
             }
             catch // Any other exception is a failure
             {
-                Assert.True(false);
+                Assert.Fail("Failed to get next page");
             }
         }
 

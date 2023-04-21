@@ -90,11 +90,11 @@ namespace EasyPost.Tests
             {
                 ApiBase = "https://www.example.com",
             });
-            
+
             Assert.Equal("https://api.easypost.com", normalClient.ApiBaseInUse);
             Assert.Equal("https://www.example.com", overrideClient.ApiBaseInUse);
         }
-        
+
         [Fact]
         [Testing.Parameters]
         public void TestConnectionTimeoutOverride()

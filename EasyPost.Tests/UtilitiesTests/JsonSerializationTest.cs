@@ -5,6 +5,7 @@ using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal;
 using Newtonsoft.Json;
 using Xunit;
+using CustomAssertions = EasyPost.Tests._Utilities.Assertions.Assert;
 
 namespace EasyPost.Tests.UtilitiesTests
 {
@@ -89,7 +90,7 @@ namespace EasyPost.Tests.UtilitiesTests
                 };
 
                 JsonSerialization.ConvertObjectToJson(root);
-                Assert.True(true); // we got this far with no exceptions, so we're good
+                CustomAssertions.Pass(); // we got this far with no exceptions, so we're good
             }
             catch (Exception)
             {
