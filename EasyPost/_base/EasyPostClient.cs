@@ -240,38 +240,5 @@ namespace EasyPost._base
 #pragma warning disable CA1307
         public override int GetHashCode() => Configuration.GetHashCode();
 #pragma warning restore CA1307
-
-        /// <summary>
-        ///     Make a copy of this client, with the ability to override API key, API base, and HttpClient.
-        /// </summary>
-        /// <param name="overrideApiKey">Optional alternate API key to use.</param>
-        /// <param name="overrideApiBase">Optional alternate API base to use.</param>
-        /// <param name="overrideHttpClient">Optional alternate HttpClient to use.</param>
-        /// <typeparam name="T">Type of client to duplicate.</typeparam>
-        /// <returns>A T-type client object.</returns>
-        // NOTE: If you ever need to initialize a new client (i.e. temporarily switch API keys), use this function to do so.
-        // This will preserve all other configuration options (e.g. request timeout, VCR, etc.)
-        [Obsolete("This method does not always function as expected. Create a new Client instead.")]
-        public T Clone<T>(string? overrideApiKey = null, string? overrideApiBase = null, HttpClient? overrideHttpClient = null)
-            where T : EasyPostClient
-        {
-            // TODO: You can't reuse the same HTTP client to re-initialize an EasyPost client, because the HTTP client is already initialized and can't be modified.
-            // From a testing perspective, this means any VCR client will not be passed into the new client.
-            // We should investigate a re-initialization/cloning process for HttpClient.
-            ConstructorInfo[] constructors = typeof(T).GetConstructors();
-
-            if (constructors == null || constructors.Length == 0)
-            {
-                throw new EasyPostError("Could not clone client. No constructors found.");
-            }
-
-            T clone = (T)constructors[0].Invoke(new object?[] { overrideApiKey ?? Configuration.ApiKey, overrideApiBase ?? Configuration.ApiBase, overrideHttpClient });
-
-            // We need to manually copy over other configuration options
-            clone.Configuration.ConnectTimeoutMilliseconds = Configuration.ConnectTimeoutMilliseconds;
-            clone.Configuration.RequestTimeoutMilliseconds = Configuration.RequestTimeoutMilliseconds;
-
-            return clone;
-        }
     }
 }
