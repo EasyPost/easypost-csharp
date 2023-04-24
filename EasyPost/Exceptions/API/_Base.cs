@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal;
-using RestSharp;
 
 namespace EasyPost.Exceptions.API
 {
@@ -64,22 +64,16 @@ namespace EasyPost.Exceptions.API
         // great minds think alike: https://github.com/stripe/stripe-dotnet/blob/6b9513d3b938d265c7607db919ad2c536ab578c3/src/Stripe.net/Infrastructure/Public/StripeClient.cs#L171
 
         /// <summary>
-        ///     Parse a errored RestResponse response object and return an instance of the appropriate exception class.
+        ///     Parse a errored HttpResponseMessage response object and return an instance of the appropriate exception class.
         ///     Do not pass a non-error response to this method.
         /// </summary>
-        /// <param name="response">RestResponse response to parse.</param>
-        /// <raises>EasyPostError if an unplanned response code is found (i.e. user passed in a non-error RestResponse response object with a 2xx status code).</raises>
+        /// <param name="response">HttpResponseMessage response to parse.</param>
+        /// <raises>EasyPostError if an unplanned response code is found (i.e. user passed in a non-error HttpResponseMessage response object with a 2xx status code).</raises>
         /// <returns>An instance of an HttpError-inherited exception.</returns>
-        internal static ApiError FromErrorResponse(RestResponse response)
+        internal static async Task<ApiError> FromErrorResponse(HttpResponseMessage response)
         {
             // NOTE: This method anticipates that the status code will be a non-2xx code.
             // Do not use this method to parse a successful response.
-
-            // short-circuit if the request timed out
-            if (response.ErrorException?.GetType() == typeof(TaskCanceledException))
-            {
-                return new TimeoutError(Constants.ErrorMessages.ApiRequestTimedOut, 408);
-            }
 
             HttpStatusCode statusCode = response.StatusCode;
             int statusCodeInt = (int)statusCode;
@@ -91,7 +85,7 @@ namespace EasyPost.Exceptions.API
             try
             {
                 // try to convert the response to an Error object
-                Error error = JsonSerialization.ConvertJsonToObject<Error>(response.Content, rootElementKeys: new List<string> { "error" });
+                Error error = await JsonSerialization.ConvertJsonToObject<Error>(response, rootElementKeys: new List<string> { "error" });
 
                 // if the above succeeded, we'll extract the error details from the Error object
                 errorMessage = error.Message;
@@ -102,8 +96,7 @@ namespace EasyPost.Exceptions.API
             catch
             {
                 // could not extract error details from the API response (or API did not return data, i.e. 1xx, 3xx or 5xx)
-                errorMessage = response.ErrorMessage // fallback to standard HTTP error message
-                               ?? response.StatusDescription // fallback to standard HTTP status description
+                errorMessage = response.ReasonPhrase // fallback to standard HTTP error message
                                ?? Constants.ErrorMessages.ApiDidNotReturnErrorDetails; // fallback to no error details
                 errorType = Constants.ErrorMessages.ApiErrorDetailsParsingError;
                 errors = null;

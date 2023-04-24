@@ -1,5 +1,5 @@
 using System.Net;
-using RestSharp;
+using System.Net.Http;
 
 // ReSharper disable InconsistentNaming
 namespace EasyPost.Utilities.Internal.Extensions
@@ -13,7 +13,7 @@ namespace EasyPost.Utilities.Internal.Extensions
         /// <param name="min">Minimum valid status code.</param>
         /// <param name="max">Maximum valid status code.</param>
         /// <returns>Whether the given response has a status code in the given range.</returns>
-        internal static bool HasStatusCodeBetween(this RestResponseBase response, int min, int max) => StatusCodeBetween(response, min, max);
+        internal static bool HasStatusCodeBetween(this HttpResponseMessage response, int min, int max) => StatusCodeBetween(response, min, max);
 
         /// <summary>
         ///     Return whether the given status code is a 1xx error.
@@ -64,14 +64,14 @@ namespace EasyPost.Utilities.Internal.Extensions
         /// </summary>
         /// <param name="response">Response to check.</param>
         /// <returns>True if the response code is not in the 200-299 range, false otherwise.</returns>
-        internal static bool ReturnedError(this RestResponse response) => !ReturnedNoError(response);
+        internal static bool ReturnedError(this HttpResponseMessage response) => !ReturnedNoError(response);
 
         /// <summary>
         ///     Return whether the given response has a successful status code.
         /// </summary>
         /// <param name="response">Response to check.</param>
         /// <returns>True if the response code is in the 200-299 range, false otherwise.</returns>
-        internal static bool ReturnedNoError(this RestResponse response) => response.StatusCode.Is2xx();
+        internal static bool ReturnedNoError(this HttpResponseMessage response) => response.StatusCode.Is2xx();
 
         /// <summary>
         ///     Return whether the given status code is in the given range.
@@ -98,7 +98,7 @@ namespace EasyPost.Utilities.Internal.Extensions
         /// <param name="min">Minimum valid status code.</param>
         /// <param name="max">Maximum valid status code.</param>
         /// <returns>Whether the given response has a status code in the given range.</returns>
-        internal static bool StatusCodeBetween(RestResponseBase response, int min, int max) => StatusCodeBetween(response.StatusCode, min, max);
+        internal static bool StatusCodeBetween(HttpResponseMessage response, int min, int max) => StatusCodeBetween(response.StatusCode, min, max);
 
         /// <summary>
         ///     Return whether the given status code is a 1xx error.

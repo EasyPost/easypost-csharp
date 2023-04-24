@@ -18,23 +18,23 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 return new List<TestUtils.MockRequest>
                 {
                     new(
-                        new TestUtils.MockRequestMatchRules(Http.Method.Post, @"^v2\/bank_accounts\/\S*\/charges$"),
+                        new TestUtils.MockRequestMatchRules(Http.Method.Post, @"v2\/bank_accounts\/\S*\/charges$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
                     ),
                     new(
-                        new TestUtils.MockRequestMatchRules(Http.Method.Post, @"^v2\/credit_cards\/\S*\/charges$"),
+                        new TestUtils.MockRequestMatchRules(Http.Method.Post, @"v2\/credit_cards\/\S*\/charges$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
                     ),
                     new(
-                        new TestUtils.MockRequestMatchRules(Http.Method.Delete, @"^v2\/bank_accounts\/\S*$"),
+                        new TestUtils.MockRequestMatchRules(Http.Method.Delete, @"v2\/bank_accounts\/\S*$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
                     ),
                     new(
-                        new TestUtils.MockRequestMatchRules(Http.Method.Delete, @"^v2\/credit_cards\/\S*$"),
+                        new TestUtils.MockRequestMatchRules(Http.Method.Delete, @"v2\/credit_cards\/\S*$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
                     ),
                     new(
-                        new TestUtils.MockRequestMatchRules(Http.Method.Get, @"^v2\/payment_methods$"),
+                        new TestUtils.MockRequestMatchRules(Http.Method.Get, @"v2\/payment_methods$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new PaymentMethodsSummary
                         {
                             Id = "summary_123",

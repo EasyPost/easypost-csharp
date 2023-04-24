@@ -89,15 +89,15 @@ namespace EasyPost.Tests.ServicesTests
             UseMockClient(new List<TestUtils.MockRequest>
             {
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"v2\/partners\/stripe_public_key$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"pk_test_12345\"}")
                 ),
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"^https://api.stripe.com/v1/tokens$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"https://api.stripe.com/v1/tokens$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"id\":\"tok_12345\"}")
                 ),
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"^v2\/credit_cards$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"v2\/credit_cards$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new PaymentMethod
                     {
                         Id = "summary_123",
@@ -126,15 +126,15 @@ namespace EasyPost.Tests.ServicesTests
             UseMockClient(new List<TestUtils.MockRequest>
             {
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"v2\/partners\/stripe_public_key$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"pk_test_12345\"}")
                 ),
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"^https://api.stripe.com/v1/tokens$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"https://api.stripe.com/v1/tokens$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"id\":\"tok_12345\"}")
                 ),
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"^v2\/credit_cards$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"v2\/credit_cards$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new PaymentMethod
                     {
                         Id = "summary_123",
@@ -169,7 +169,7 @@ namespace EasyPost.Tests.ServicesTests
             {
                 {
                     new(
-                        new TestUtils.MockRequestMatchRules(Http.Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                        new TestUtils.MockRequestMatchRules(Http.Method.Get, @"v2\/partners\/stripe_public_key$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"\"}")
                     )
                 }
@@ -187,7 +187,7 @@ namespace EasyPost.Tests.ServicesTests
             UseMockClient(new List<TestUtils.MockRequest>
             {
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"v2\/partners\/stripe_public_key$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"not_public_key\":\"random\"}")
                 ),
             });
@@ -204,11 +204,11 @@ namespace EasyPost.Tests.ServicesTests
             UseMockClient(new List<TestUtils.MockRequest>
             {
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"v2\/partners\/stripe_public_key$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"pk_test_12345\"}")
                 ),
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"^https://api.stripe.com/v1/tokens$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"https://api.stripe.com/v1/tokens$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"id\":\"\"}")
                 )
             });
@@ -225,11 +225,11 @@ namespace EasyPost.Tests.ServicesTests
             UseMockClient(new List<TestUtils.MockRequest>
             {
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"v2\/partners\/stripe_public_key$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"pk_test_12345\"}")
                 ),
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"^https://api.stripe.com/v1/tokens$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"https://api.stripe.com/v1/tokens$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.NotFound, content: "{}")
                 )
             });
@@ -246,11 +246,11 @@ namespace EasyPost.Tests.ServicesTests
             UseMockClient(new List<TestUtils.MockRequest>
             {
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"v2\/partners\/stripe_public_key$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"pk_test_12345\"}")
                 ),
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"^https://api.stripe.com/v1/tokens$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"https://api.stripe.com/v1/tokens$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"not_id\":\"random\"}")
                 )
             });
@@ -267,15 +267,15 @@ namespace EasyPost.Tests.ServicesTests
             UseMockClient(new List<TestUtils.MockRequest>
             {
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"^v2\/partners\/stripe_public_key$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"v2\/partners\/stripe_public_key$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"public_key\":\"pk_test_12345\"}")
                 ),
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"^https://api.stripe.com/v1/tokens$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"https://api.stripe.com/v1/tokens$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{\"id\":\"tok_12345\"}")
                 ),
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"^v2\/credit_cards$"),
+                    new TestUtils.MockRequestMatchRules(Http.Method.Post, @"v2\/credit_cards$"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.NotFound, content: "{}")
                 )
             });
