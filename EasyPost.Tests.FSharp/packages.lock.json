@@ -153,7 +153,7 @@
         "type": "Project",
         "dependencies": {
           "Newtonsoft.Json": "[13.0.1, 14.0.0)",
-          "RestSharp": "[108.0.1, 109.0.0)"
+          "RestSharp": "[108.0.1, 111.0.0)"
         }
       }
     }
