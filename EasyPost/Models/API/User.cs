@@ -4,7 +4,6 @@ using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -35,7 +34,7 @@ namespace EasyPost.Models.API
         public async Task<Brand> UpdateBrand(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("brand");
-            return await Request<Brand>(Method.Patch, $"users/{Id}/brand", parameters);
+            return await Request<Brand>(Http.Method.Patch, $"users/{Id}/brand", parameters);
         }
 
         /// <summary>
@@ -46,7 +45,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Create]
         public async Task<Brand> UpdateBrand(BetaFeatures.Parameters.Users.UpdateBrand parameters)
         {
-            return await Request<Brand>(Method.Patch, $"users/{Id}/brand", parameters.ToDictionary());
+            return await Request<Brand>(Http.Method.Patch, $"users/{Id}/brand", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -68,7 +67,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<User> Update(Dictionary<string, object> parameters)
         {
-            await Update<User>(Method.Patch, $"users/{Id}", parameters);
+            await Update<User>(Http.Method.Patch, $"users/{Id}", parameters);
             return this;
         }
 
@@ -80,7 +79,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<User> Update(BetaFeatures.Parameters.Users.Update parameters)
         {
-            await Update<User>(Method.Patch, $"users/{Id}", parameters.ToDictionary());
+            await Update<User>(Http.Method.Patch, $"users/{Id}", parameters.ToDictionary());
             return this;
         }
 

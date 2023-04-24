@@ -6,7 +6,6 @@ using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -47,7 +46,7 @@ namespace EasyPost.Models.API
         public async Task<CarrierAccount> Update(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("carrier_account");
-            await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{Id}", parameters);
+            await Update<CarrierAccount>(Http.Method.Patch, $"carrier_accounts/{Id}", parameters);
             return this;
         }
 
@@ -59,7 +58,7 @@ namespace EasyPost.Models.API
         [CrudOperations.Update]
         public async Task<CarrierAccount> Update(BetaFeatures.Parameters.CarrierAccounts.Update parameters)
         {
-            await Update<CarrierAccount>(Method.Patch, $"carrier_accounts/{Id}", parameters.ToDictionary());
+            await Update<CarrierAccount>(Http.Method.Patch, $"carrier_accounts/{Id}", parameters.ToDictionary());
             return this;
         }
 

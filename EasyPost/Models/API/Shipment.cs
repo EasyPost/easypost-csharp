@@ -7,7 +7,6 @@ using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal.Attributes;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -94,7 +93,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            return await Request<List<Smartrate>>(Method.Get, $"shipments/{Id}/smartrate", null, "result");
+            return await Request<List<Smartrate>>(Http.Method.Get, $"shipments/{Id}/smartrate", null, "result");
         }
 
         /// <summary>
@@ -131,7 +130,7 @@ namespace EasyPost.Models.API
                 parameters.Add("end_shipper", endShipperId);
             }
 
-            await Update<Shipment>(Method.Post, $"shipments/{Id}/buy", parameters);
+            await Update<Shipment>(Http.Method.Post, $"shipments/{Id}/buy", parameters);
         }
 
         /// <summary>
@@ -166,7 +165,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            await Update<Shipment>(Method.Post, $"shipments/{Id}/buy", parameters.ToDictionary());
+            await Update<Shipment>(Http.Method.Post, $"shipments/{Id}/buy", parameters.ToDictionary());
             return this;
         }
 
@@ -185,7 +184,7 @@ namespace EasyPost.Models.API
 
             Dictionary<string, object> parameters = new() { { "file_format", fileFormat } };
 
-            await Update<Shipment>(Method.Get, $"shipments/{Id}/label", parameters);
+            await Update<Shipment>(Http.Method.Get, $"shipments/{Id}/label", parameters);
             return this;
         }
 
@@ -202,7 +201,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            await Update<Shipment>(Method.Get, $"shipments/{Id}/label", parameters.ToDictionary());
+            await Update<Shipment>(Http.Method.Get, $"shipments/{Id}/label", parameters.ToDictionary());
             return this;
         }
 
@@ -221,7 +220,7 @@ namespace EasyPost.Models.API
 
             Dictionary<string, object> parameters = new() { { "amount", amount } };
 
-            await Update<Shipment>(Method.Post, $"shipments/{Id}/insure", parameters);
+            await Update<Shipment>(Http.Method.Post, $"shipments/{Id}/insure", parameters);
             return this;
         }
 
@@ -238,7 +237,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            await Update<Shipment>(Method.Post, $"shipments/{Id}/insure", parameters.ToDictionary());
+            await Update<Shipment>(Http.Method.Post, $"shipments/{Id}/insure", parameters.ToDictionary());
             return this;
         }
 
@@ -254,7 +253,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            await Update<Shipment>(Method.Post, $"shipments/{Id}/refund");
+            await Update<Shipment>(Http.Method.Post, $"shipments/{Id}/refund");
             return this;
         }
 
@@ -276,7 +275,7 @@ namespace EasyPost.Models.API
 
             parameters.Add("carbon_offset", withCarbonOffset);
 
-            Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{Id}/rerate", parameters);
+            Shipment shipment = await Request<Shipment>(Http.Method.Post, $"shipments/{Id}/rerate", parameters);
             Rates = shipment.Rates;
         }
 
@@ -293,7 +292,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            Shipment shipment = await Request<Shipment>(Method.Post, $"shipments/{Id}/rerate", parameters.ToDictionary());
+            Shipment shipment = await Request<Shipment>(Http.Method.Post, $"shipments/{Id}/rerate", parameters.ToDictionary());
             Rates = shipment.Rates;
         }
 

@@ -7,7 +7,6 @@ using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal.Attributes;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -56,7 +55,7 @@ namespace EasyPost.Models.API
             }
 
             // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
-            await Update<Batch>(Method.Post, $"batches/{Id}/add_shipments", parameters);
+            await Update<Batch>(Http.Method.Post, $"batches/{Id}/add_shipments", parameters);
             return this;
         }
 
@@ -73,7 +72,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            await Update<Batch>(Method.Post, $"batches/{Id}/add_shipments", parameters.ToDictionary());
+            await Update<Batch>(Http.Method.Post, $"batches/{Id}/add_shipments", parameters.ToDictionary());
             return this;
         }
 
@@ -113,7 +112,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            await Update<Batch>(Method.Post, $"batches/{Id}/buy");
+            await Update<Batch>(Http.Method.Post, $"batches/{Id}/buy");
             return this;
         }
 
@@ -131,7 +130,7 @@ namespace EasyPost.Models.API
             }
 
             Dictionary<string, object> parameters = new() { { "file_format", fileFormat } };
-            await Update<Batch>(Method.Post, $"batches/{Id}/label", parameters);
+            await Update<Batch>(Http.Method.Post, $"batches/{Id}/label", parameters);
             return this;
         }
 
@@ -148,7 +147,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            await Update<Batch>(Method.Post, $"batches/{Id}/label", parameters.ToDictionary());
+            await Update<Batch>(Http.Method.Post, $"batches/{Id}/label", parameters.ToDictionary());
             return this;
         }
 
@@ -166,7 +165,7 @@ namespace EasyPost.Models.API
             }
 
             Dictionary<string, object> parameters = new() { { "file_format", fileFormat } };
-            await Update<Batch>(Method.Post, $"batches/{Id}/scan_form", parameters);
+            await Update<Batch>(Http.Method.Post, $"batches/{Id}/scan_form", parameters);
             return this;
         }
 
@@ -183,7 +182,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            await Update<Batch>(Method.Post, $"batches/{Id}/scan_form", parameters.ToDictionary());
+            await Update<Batch>(Http.Method.Post, $"batches/{Id}/scan_form", parameters.ToDictionary());
             return this;
         }
 
@@ -201,7 +200,7 @@ namespace EasyPost.Models.API
             }
 
             // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
-            await Update<Batch>(Method.Post, $"batches/{Id}/remove_shipments", parameters);
+            await Update<Batch>(Http.Method.Post, $"batches/{Id}/remove_shipments", parameters);
             return this;
         }
 
@@ -218,7 +217,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            await Update<Batch>(Method.Post, $"batches/{Id}/remove_shipments", parameters.ToDictionary());
+            await Update<Batch>(Http.Method.Post, $"batches/{Id}/remove_shipments", parameters.ToDictionary());
             return this;
         }
 

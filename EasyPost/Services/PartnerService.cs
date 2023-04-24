@@ -165,7 +165,7 @@ namespace EasyPost.Services
             try
             {
                 // Make request
-                paymentMethod = await Client.Request<PaymentMethod>(Method.Post, "credit_cards", ApiVersion.Current, parameters);
+                paymentMethod = await Client.Request<PaymentMethod>(Http.Method.Post, "credit_cards", ApiVersion.Current, parameters);
             }
             finally
             {
