@@ -226,13 +226,13 @@ references:
   isSpec: "True"
   fullName: EasyPost._base.EasyPostObject.Update
   nameWithType: EasyPostObject.Update
-- uid: EasyPost._base.EasyPostObject.Update``1(Method,System.String,System.Nullable{Dictionary{System.String,System.Object}},System.Nullable{System.String},EasyPost._base.ApiVersion)
+- uid: EasyPost._base.EasyPostObject.Update``1(EasyPost.Http.Method,System.String,System.Nullable{Dictionary{System.String,System.Object}},System.Nullable{System.String},EasyPost._base.ApiVersion)
   name: Update<T>(Method, String, Nullable<Dictionary<String, Object>>, Nullable<String>, ApiVersion)
-  href: api/EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_Update__1_Method_System_String_System_Nullable_Dictionary_System_String_System_Object___System_Nullable_System_String__EasyPost__base_ApiVersion_
-  commentId: M:EasyPost._base.EasyPostObject.Update``1(Method,System.String,System.Nullable{Dictionary{System.String,System.Object}},System.Nullable{System.String},EasyPost._base.ApiVersion)
+  href: api/EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_Update__1_EasyPost_Http_Method_System_String_System_Nullable_Dictionary_System_String_System_Object___System_Nullable_System_String__EasyPost__base_ApiVersion_
+  commentId: M:EasyPost._base.EasyPostObject.Update``1(EasyPost.Http.Method,System.String,System.Nullable{Dictionary{System.String,System.Object}},System.Nullable{System.String},EasyPost._base.ApiVersion)
   name.vb: Update(Of T)(Method, String, Nullable(Of Dictionary(Of String, Object)), Nullable(Of String), ApiVersion)
-  fullName: EasyPost._base.EasyPostObject.Update<T>(Method, System.String, System.Nullable<Dictionary<System.String, System.Object>>, System.Nullable<System.String>, EasyPost._base.ApiVersion)
-  fullName.vb: EasyPost._base.EasyPostObject.Update(Of T)(Method, System.String, System.Nullable(Of Dictionary(Of System.String, System.Object)), System.Nullable(Of System.String), EasyPost._base.ApiVersion)
+  fullName: EasyPost._base.EasyPostObject.Update<T>(EasyPost.Http.Method, System.String, System.Nullable<Dictionary<System.String, System.Object>>, System.Nullable<System.String>, EasyPost._base.ApiVersion)
+  fullName.vb: EasyPost._base.EasyPostObject.Update(Of T)(EasyPost.Http.Method, System.String, System.Nullable(Of Dictionary(Of System.String, System.Object)), System.Nullable(Of System.String), EasyPost._base.ApiVersion)
   nameWithType: EasyPostObject.Update<T>(Method, String, Nullable<Dictionary<String, Object>>, Nullable<String>, ApiVersion)
   nameWithType.vb: EasyPostObject.Update(Of T)(Method, String, Nullable(Of Dictionary(Of String, Object)), Nullable(Of String), ApiVersion)
 - uid: EasyPost._base.EasyPostObject.UpdatedAt
@@ -461,13 +461,13 @@ references:
   fullName.vb: EasyPost._base.WithClient.List(Of T)(System.String, System.Nullable(Of Dictionary(Of System.String, System.Object)), System.Nullable(Of System.String), EasyPost._base.ApiVersion)
   nameWithType: WithClient.List<T>(String, Nullable<Dictionary<String, Object>>, Nullable<String>, ApiVersion)
   nameWithType.vb: WithClient.List(Of T)(String, Nullable(Of Dictionary(Of String, Object)), Nullable(Of String), ApiVersion)
-- uid: EasyPost._base.WithClient.Request(Method,System.String,System.Nullable{Dictionary{System.String,System.Object}},EasyPost._base.ApiVersion)
+- uid: EasyPost._base.WithClient.Request(EasyPost.Http.Method,System.String,System.Nullable{Dictionary{System.String,System.Object}},EasyPost._base.ApiVersion)
   name: Request(Method, String, Nullable<Dictionary<String, Object>>, ApiVersion)
-  href: api/EasyPost._base.WithClient.html#EasyPost__base_WithClient_Request_Method_System_String_System_Nullable_Dictionary_System_String_System_Object___EasyPost__base_ApiVersion_
-  commentId: M:EasyPost._base.WithClient.Request(Method,System.String,System.Nullable{Dictionary{System.String,System.Object}},EasyPost._base.ApiVersion)
+  href: api/EasyPost._base.WithClient.html#EasyPost__base_WithClient_Request_EasyPost_Http_Method_System_String_System_Nullable_Dictionary_System_String_System_Object___EasyPost__base_ApiVersion_
+  commentId: M:EasyPost._base.WithClient.Request(EasyPost.Http.Method,System.String,System.Nullable{Dictionary{System.String,System.Object}},EasyPost._base.ApiVersion)
   name.vb: Request(Method, String, Nullable(Of Dictionary(Of String, Object)), ApiVersion)
-  fullName: EasyPost._base.WithClient.Request(Method, System.String, System.Nullable<Dictionary<System.String, System.Object>>, EasyPost._base.ApiVersion)
-  fullName.vb: EasyPost._base.WithClient.Request(Method, System.String, System.Nullable(Of Dictionary(Of System.String, System.Object)), EasyPost._base.ApiVersion)
+  fullName: EasyPost._base.WithClient.Request(EasyPost.Http.Method, System.String, System.Nullable<Dictionary<System.String, System.Object>>, EasyPost._base.ApiVersion)
+  fullName.vb: EasyPost._base.WithClient.Request(EasyPost.Http.Method, System.String, System.Nullable(Of Dictionary(Of System.String, System.Object)), EasyPost._base.ApiVersion)
   nameWithType: WithClient.Request(Method, String, Nullable<Dictionary<String, Object>>, ApiVersion)
   nameWithType.vb: WithClient.Request(Method, String, Nullable(Of Dictionary(Of String, Object)), ApiVersion)
 - uid: EasyPost._base.WithClient.Request*
@@ -477,13 +477,13 @@ references:
   isSpec: "True"
   fullName: EasyPost._base.WithClient.Request
   nameWithType: WithClient.Request
-- uid: EasyPost._base.WithClient.Request``1(Method,System.String,System.Nullable{Dictionary{System.String,System.Object}},System.Nullable{System.String},EasyPost._base.ApiVersion)
+- uid: EasyPost._base.WithClient.Request``1(EasyPost.Http.Method,System.String,System.Nullable{Dictionary{System.String,System.Object}},System.Nullable{System.String},EasyPost._base.ApiVersion)
   name: Request<T>(Method, String, Nullable<Dictionary<String, Object>>, Nullable<String>, ApiVersion)
-  href: api/EasyPost._base.WithClient.html#EasyPost__base_WithClient_Request__1_Method_System_String_System_Nullable_Dictionary_System_String_System_Object___System_Nullable_System_String__EasyPost__base_ApiVersion_
-  commentId: M:EasyPost._base.WithClient.Request``1(Method,System.String,System.Nullable{Dictionary{System.String,System.Object}},System.Nullable{System.String},EasyPost._base.ApiVersion)
+  href: api/EasyPost._base.WithClient.html#EasyPost__base_WithClient_Request__1_EasyPost_Http_Method_System_String_System_Nullable_Dictionary_System_String_System_Object___System_Nullable_System_String__EasyPost__base_ApiVersion_
+  commentId: M:EasyPost._base.WithClient.Request``1(EasyPost.Http.Method,System.String,System.Nullable{Dictionary{System.String,System.Object}},System.Nullable{System.String},EasyPost._base.ApiVersion)
   name.vb: Request(Of T)(Method, String, Nullable(Of Dictionary(Of String, Object)), Nullable(Of String), ApiVersion)
-  fullName: EasyPost._base.WithClient.Request<T>(Method, System.String, System.Nullable<Dictionary<System.String, System.Object>>, System.Nullable<System.String>, EasyPost._base.ApiVersion)
-  fullName.vb: EasyPost._base.WithClient.Request(Of T)(Method, System.String, System.Nullable(Of Dictionary(Of System.String, System.Object)), System.Nullable(Of System.String), EasyPost._base.ApiVersion)
+  fullName: EasyPost._base.WithClient.Request<T>(EasyPost.Http.Method, System.String, System.Nullable<Dictionary<System.String, System.Object>>, System.Nullable<System.String>, EasyPost._base.ApiVersion)
+  fullName.vb: EasyPost._base.WithClient.Request(Of T)(EasyPost.Http.Method, System.String, System.Nullable(Of Dictionary(Of System.String, System.Object)), System.Nullable(Of System.String), EasyPost._base.ApiVersion)
   nameWithType: WithClient.Request<T>(Method, String, Nullable<Dictionary<String, Object>>, Nullable<String>, ApiVersion)
   nameWithType.vb: WithClient.Request(Of T)(Method, String, Nullable(Of Dictionary(Of String, Object)), Nullable(Of String), ApiVersion)
 - uid: EasyPost._base.WithClient.Update*
@@ -5204,6 +5204,42 @@ references:
   isSpec: "True"
   fullName: EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds
   nameWithType: ClientConfiguration.RequestTimeoutMilliseconds
+- uid: EasyPost.Http.Method
+  name: Method
+  href: api/EasyPost.Http.Method.html
+  commentId: T:EasyPost.Http.Method
+  fullName: EasyPost.Http.Method
+  nameWithType: Method
+- uid: EasyPost.Http.Method.Delete
+  name: Delete
+  href: api/EasyPost.Http.Method.html#EasyPost_Http_Method_Delete
+  commentId: F:EasyPost.Http.Method.Delete
+  fullName: EasyPost.Http.Method.Delete
+  nameWithType: Method.Delete
+- uid: EasyPost.Http.Method.Get
+  name: Get
+  href: api/EasyPost.Http.Method.html#EasyPost_Http_Method_Get
+  commentId: F:EasyPost.Http.Method.Get
+  fullName: EasyPost.Http.Method.Get
+  nameWithType: Method.Get
+- uid: EasyPost.Http.Method.Patch
+  name: Patch
+  href: api/EasyPost.Http.Method.html#EasyPost_Http_Method_Patch
+  commentId: F:EasyPost.Http.Method.Patch
+  fullName: EasyPost.Http.Method.Patch
+  nameWithType: Method.Patch
+- uid: EasyPost.Http.Method.Post
+  name: Post
+  href: api/EasyPost.Http.Method.html#EasyPost_Http_Method_Post
+  commentId: F:EasyPost.Http.Method.Post
+  fullName: EasyPost.Http.Method.Post
+  nameWithType: Method.Post
+- uid: EasyPost.Http.Method.Put
+  name: Put
+  href: api/EasyPost.Http.Method.html#EasyPost_Http_Method_Put
+  commentId: F:EasyPost.Http.Method.Put
+  fullName: EasyPost.Http.Method.Put
+  nameWithType: Method.Put
 - uid: EasyPost.Models.API
   name: EasyPost.Models.API
   href: api/EasyPost.Models.API.html
