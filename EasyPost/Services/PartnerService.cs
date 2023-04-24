@@ -226,6 +226,9 @@ namespace EasyPost.Services
 
             string content = await response.Content.ReadAsStringAsync();
             Dictionary<string, object> data = JsonSerialization.ConvertJsonToObject<Dictionary<string, object>>(content);
+            
+            // Dispose of the response
+            response.Dispose();
 
             data.TryGetValue("id", out object? id);
             return id == null
