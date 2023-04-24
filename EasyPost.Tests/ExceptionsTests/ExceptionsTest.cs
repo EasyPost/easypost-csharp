@@ -436,6 +436,31 @@ namespace EasyPost.Tests.ExceptionsTests
             Assert.Equal(typeof(UnexpectedHttpError), generatedError.GetType());
         }
 
+        [Fact]
+        [Testing.Exception]
+        public async Task TestHTTPTimeoutFriendlyException()
+        {
+            // create a new client with a very short timeout
+            Client client = new(TestUtils.GetApiKey(TestUtils.ApiKey.Test));
+            client.Configuration.ConnectTimeoutMilliseconds = 1;
+            client.Configuration.RequestTimeoutMilliseconds = 1;
+
+            // make a real request that should timeout, assert that it threw a friendly TimeoutError rather than a TaskCanceledException
+            try
+            {
+                await client.Address.Create(Fixtures.CaAddress1);
+                // if we get here, the request didn't time out, consider test failed
+                Assert.Fail("Request did not time out");
+            }
+            catch (Exception e) // capture any exception
+            {
+                // we should get here
+                // assert that the exception is of type TimeoutError
+                Assert.IsType<TimeoutError>(e);
+                Assert.Equal(Constants.ErrorMessages.ApiRequestTimedOut, e.Message);
+            }
+        }
+
         #endregion
     }
 }

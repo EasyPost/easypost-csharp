@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal;
 using RestSharp;
@@ -73,6 +74,13 @@ namespace EasyPost.Exceptions.API
         {
             // NOTE: This method anticipates that the status code will be a non-2xx code.
             // Do not use this method to parse a successful response.
+
+            // short-circuit if the request timed out
+            if (response.ErrorException?.GetType() == typeof(TaskCanceledException))
+            {
+                return new TimeoutError(Constants.ErrorMessages.ApiRequestTimedOut, 408);
+            }
+
             HttpStatusCode statusCode = response.StatusCode;
             int statusCodeInt = (int)statusCode;
 

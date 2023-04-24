@@ -2,6 +2,7 @@
 
 ## Next Release
 
+- Handle API timeout errors more gracefully (produce proper `TimeoutError` exception with readable messages)
 - Add missing `Declaration` parameter to Customs Info creation parameter set
 
 ## v4.6.0 (2023-04-18)
