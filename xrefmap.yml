@@ -4727,6 +4727,12 @@ references:
   commentId: F:EasyPost.Constants.ErrorMessages.ApiDidNotReturnErrorDetails
   fullName: EasyPost.Constants.ErrorMessages.ApiDidNotReturnErrorDetails
   nameWithType: Constants.ErrorMessages.ApiDidNotReturnErrorDetails
+- uid: EasyPost.Constants.ErrorMessages.ApiRequestTimedOut
+  name: ApiRequestTimedOut
+  href: api/EasyPost.Constants.ErrorMessages.html#EasyPost_Constants_ErrorMessages_ApiRequestTimedOut
+  commentId: F:EasyPost.Constants.ErrorMessages.ApiRequestTimedOut
+  fullName: EasyPost.Constants.ErrorMessages.ApiRequestTimedOut
+  nameWithType: Constants.ErrorMessages.ApiRequestTimedOut
 - uid: EasyPost.Constants.ErrorMessages.CouldNotPassClient
   name: CouldNotPassClient
   href: api/EasyPost.Constants.ErrorMessages.html#EasyPost_Constants_ErrorMessages_CouldNotPassClient
