@@ -88,11 +88,6 @@
         "resolved": "5.11.0",
         "contentHash": "eaiXkUjC4NPcquGWzAGMXjuxvLwc6XGKMptSyOGQeT0X70BUZObuybJFZLA0OfTdueLd3US23NBPTBb6iF3V1Q=="
       },
-      "RestSharp": {
-        "type": "Transitive",
-        "resolved": "108.0.1",
-        "contentHash": "XKwuwWq7A4dxZ8l9QkS2+ePLJ9ImmLaJSeFO6H2kpII4Us4n1NRs4w3c//8H2BYpL1XqBE8nmsd9aNCVBwXmOA=="
-      },
       "System.Reflection.Metadata": {
         "type": "Transitive",
         "resolved": "1.6.0",
@@ -146,8 +141,7 @@
       "easypost": {
         "type": "Project",
         "dependencies": {
-          "Newtonsoft.Json": "[13.0.1, 14.0.0)",
-          "RestSharp": "[108.0.1, 109.0.0)"
+          "Newtonsoft.Json": "[13.0.1, 14.0.0)"
         }
       }
     }
