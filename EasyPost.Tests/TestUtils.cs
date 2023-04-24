@@ -167,11 +167,11 @@ namespace EasyPost.Tests._Utilities
 
         public class MockRequestMatchRules
         {
-            internal Method Method { get; set; }
+            internal Http.Method Method { get; set; }
 
             internal string ResourceRegex { get; set; }
 
-            public MockRequestMatchRules(Method method, string resourceRegex)
+            public MockRequestMatchRules(Http.Method method, string resourceRegex)
             {
                 Method = method;
                 ResourceRegex = resourceRegex;
@@ -243,7 +243,7 @@ namespace EasyPost.Tests._Utilities
                 return new RestResponse
                 {
                     Content = mockRequest.ResponseInfo.Content,
-                    StatusCode = mockRequest.ResponseInfo.StatusCode
+                    StatusCode = mockRequest.ResponseInfo.StatusCode,
                 };
             }
 
@@ -255,7 +255,7 @@ namespace EasyPost.Tests._Utilities
 
             internal void AddMockRequests(IEnumerable<MockRequest> mockRequests) => _mockRequests.AddRange(mockRequests);
 
-            private MockRequest? FindMatchingMockRequest(RestRequest request) => _mockRequests.FirstOrDefault(mock => mock.MatchRules.Method == request.Method && EndpointMatches(request.Resource, mock.MatchRules.ResourceRegex));
+            private MockRequest? FindMatchingMockRequest(RestRequest request) => _mockRequests.FirstOrDefault(mock => mock.MatchRules.Method.RestSharpMethod == request.Method && EndpointMatches(request.Resource, mock.MatchRules.ResourceRegex));
 
             private static bool EndpointMatches(string endpoint, string pattern)
             {

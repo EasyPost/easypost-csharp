@@ -13,12 +13,15 @@ namespace EasyPost.Http
         private readonly Dictionary<string, object> _parameters;
         private readonly RestRequest _restRequest;
 
+        private readonly Http.Method _method;
+
         // ReSharper disable once SuggestBaseTypeForParameterInConstructor
         public Request(string endpoint, Method method, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null)
         {
             endpoint = $"{apiVersion.Value}/{endpoint}";
+            _method = method;
 
-            _restRequest = new RestRequest(endpoint, method);
+            _restRequest = new RestRequest(endpoint, method.RestSharpMethod);
 
             _parameters = parameters ?? new Dictionary<string, object>();
 
@@ -35,25 +38,17 @@ namespace EasyPost.Http
                 return;
             }
 
-            switch (_restRequest.Method)
+            var @switch = new SwitchCase
             {
-                case Method.Get:
-                case Method.Delete:
-                    BuildQueryParameters();
-                    break;
-                case Method.Post:
-                case Method.Put:
-                case Method.Patch:
-                    BuildBodyParameters();
-                    break;
-                case Method.Head:
-                case Method.Options:
-                case Method.Merge:
-                case Method.Copy:
-                case Method.Search:
-                default:
-                    break;
-            }
+                // equality of two HttpMethod objects falls back to their inner strings, so we can compare these objects directly
+                { Http.Method.Get.HttpMethod, BuildQueryParameters },
+                { Http.Method.Delete.HttpMethod, BuildQueryParameters },
+                { Http.Method.Post.HttpMethod, BuildBodyParameters },
+                { Http.Method.Put.HttpMethod, BuildBodyParameters },
+                { Http.Method.Patch.HttpMethod, BuildBodyParameters },
+            };
+
+            @switch.MatchFirst(_method.HttpMethod);
         }
 
         /// <summary>

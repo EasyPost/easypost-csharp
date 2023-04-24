@@ -8,7 +8,6 @@ using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal.Attributes;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -75,7 +74,7 @@ namespace EasyPost.Models.API
                 { "service", withService },
             };
 
-            await Update<Pickup>(Method.Post, $"pickups/{Id}/buy", parameters);
+            await Update<Pickup>(Http.Method.Post, $"pickups/{Id}/buy", parameters);
             return this;
         }
 
@@ -92,7 +91,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            await Update<Pickup>(Method.Post, $"pickups/{Id}/buy", parameters.ToDictionary());
+            await Update<Pickup>(Http.Method.Post, $"pickups/{Id}/buy", parameters.ToDictionary());
             return this;
         }
 
@@ -108,7 +107,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            await Update<Pickup>(Method.Post, $"pickups/{Id}/cancel");
+            await Update<Pickup>(Http.Method.Post, $"pickups/{Id}/cancel");
             return this;
         }
 

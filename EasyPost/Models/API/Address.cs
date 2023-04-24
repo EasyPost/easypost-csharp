@@ -7,7 +7,6 @@ using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal.Attributes;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace EasyPost.Models.API
 {
@@ -71,7 +70,7 @@ namespace EasyPost.Models.API
                 throw new MissingPropertyError(this, nameof(Id));
             }
 
-            await Update<Address>(Method.Get, $"addresses/{Id}/verify", null, "address");
+            await Update<Address>(Http.Method.Get, $"addresses/{Id}/verify", null, "address");
             return this;
         }
 
