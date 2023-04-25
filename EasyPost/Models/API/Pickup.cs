@@ -52,67 +52,6 @@ namespace EasyPost.Models.API
         {
         }
 
-        #region CRUD Operations
-
-        /// <summary>
-        ///     Purchase this pickup.
-        /// </summary>
-        /// <param name="withCarrier">The name of the carrier to purchase with.</param>
-        /// <param name="withService">The name of the service to purchase.</param>
-        /// <returns>The updated Pickup.</returns>
-        [CrudOperations.Update]
-        public async Task<Pickup> Buy(string withCarrier, string withService)
-        {
-            if (Id == null)
-            {
-                throw new MissingPropertyError(this, nameof(Id));
-            }
-
-            Dictionary<string, object> parameters = new()
-            {
-                { "carrier", withCarrier },
-                { "service", withService },
-            };
-
-            await Update<Pickup>(Http.Method.Post, $"pickups/{Id}/buy", parameters);
-            return this;
-        }
-
-        /// <summary>
-        ///     Purchase this <see cref="Pickup"/>.
-        /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Pickups.Buy"/> parameters set.</param>
-        /// <returns>This updated <see cref="Pickup"/> instance.</returns>
-        [CrudOperations.Update]
-        public async Task<Pickup> Buy(BetaFeatures.Parameters.Pickups.Buy parameters)
-        {
-            if (Id == null)
-            {
-                throw new MissingPropertyError(this, nameof(Id));
-            }
-
-            await Update<Pickup>(Http.Method.Post, $"pickups/{Id}/buy", parameters.ToDictionary());
-            return this;
-        }
-
-        /// <summary>
-        ///     Cancel this pickup.
-        /// </summary>
-        /// <returns>The updated Pickup.</returns>
-        [CrudOperations.Update]
-        public async Task<Pickup> Cancel()
-        {
-            if (Id == null)
-            {
-                throw new MissingPropertyError(this, nameof(Id));
-            }
-
-            await Update<Pickup>(Http.Method.Post, $"pickups/{Id}/cancel");
-            return this;
-        }
-
-        #endregion
-
         /// <summary>
         ///     Get the lowest rate for this Pickup.
         /// </summary>

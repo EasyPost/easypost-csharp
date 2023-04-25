@@ -105,6 +105,46 @@ namespace EasyPost.Services
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
         public async Task<PickupCollection> GetNextPage(PickupCollection collection, int? pageSize = null) => await collection.GetNextPage<PickupCollection, BetaFeatures.Parameters.Pickups.All>(async parameters => await All(parameters), collection.Pickups, pageSize);
+        
+        
+        /// <summary>
+        ///     Purchase this pickup.
+        /// </summary>
+        /// <param name="withCarrier">The name of the carrier to purchase with.</param>
+        /// <param name="withService">The name of the service to purchase.</param>
+        /// <returns>The updated Pickup.</returns>
+        [CrudOperations.Update]
+        public async Task<Pickup> Buy(string id, string withCarrier, string withService)
+        {
+            Dictionary<string, object> parameters = new()
+            {
+                { "carrier", withCarrier },
+                { "service", withService },
+            };
+
+            return await Request<Pickup>(Http.Method.Post, $"pickups/{id}/buy", parameters);
+        }
+
+        /// <summary>
+        ///     Purchase this <see cref="Pickup"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Pickups.Buy"/> parameters set.</param>
+        /// <returns>This updated <see cref="Pickup"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<Pickup> Buy(string id, BetaFeatures.Parameters.Pickups.Buy parameters)
+        {
+            return await Request<Pickup>(Http.Method.Post, $"pickups/{id}/buy", parameters.ToDictionary());
+        }
+
+        /// <summary>
+        ///     Cancel this pickup.
+        /// </summary>
+        /// <returns>The updated Pickup.</returns>
+        [CrudOperations.Update]
+        public async Task<Pickup> Cancel(string id)
+        {
+            return await Request<Pickup>(Http.Method.Post, $"pickups/{id}/cancel");
+        }
 
         #endregion
     }

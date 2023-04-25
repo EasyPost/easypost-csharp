@@ -91,6 +91,32 @@ namespace EasyPost.Services
         /// <returns>EasyPost.EndShipper instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipper> Retrieve(string id) => await Get<EndShipper>($"end_shippers/{id}");
+        
+        /// <summary>
+        ///     Update this EndShipper. Must pass in all properties (new and existing).
+        /// </summary>
+        /// <param name="parameters">See EndShipper.Create for more details.</param>
+        /// <returns>The updated EndShipper.</returns>
+        [CrudOperations.Update]
+        public async Task<EndShipper> Update(string id, Dictionary<string, object> parameters)
+        {
+            parameters = parameters.Wrap("address");
+
+            // EndShipper needs Put, not Patch
+            return await Request<EndShipper>(Http.Method.Put, $"end_shippers/{id}", parameters);
+        }
+
+        /// <summary>
+        ///     Update this <see cref="EndShipper"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.Update"/> parameter set.</param>
+        /// <returns>This updated <see cref="EndShipper"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<EndShipper> Update(string id, BetaFeatures.Parameters.EndShippers.Update parameters)
+        {
+            // EndShipper needs Put, not Patch
+            return await Request<EndShipper>(Http.Method.Put, $"end_shippers/{id}", parameters.ToDictionary());
+        }
 
         #endregion
     }

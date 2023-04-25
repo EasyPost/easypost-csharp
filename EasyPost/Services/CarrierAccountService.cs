@@ -18,6 +18,8 @@ namespace EasyPost.Services
         }
 
         #region CRUD Operations
+        
+        // TODO: Use ID or whole object as parameter?
 
         /// <summary>
         ///     Create a CarrierAccount.
@@ -80,6 +82,37 @@ namespace EasyPost.Services
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         [CrudOperations.Read]
         public async Task<CarrierAccount> Retrieve(string id) => await Get<CarrierAccount>($"carrier_accounts/{id}");
+        
+        /// <summary>
+        ///     Update this CarrierAccount.
+        /// </summary>
+        /// <param name="parameters">See CarrierAccount.Create for more details.</param>
+        /// <returns>The updated CarrierAccount.</returns>
+        [CrudOperations.Update]
+        public async Task<CarrierAccount> Update(string id, Dictionary<string, object> parameters)
+        {
+            parameters = parameters.Wrap("carrier_account");
+            return await Request<CarrierAccount>(Http.Method.Patch, $"carrier_accounts/{id}", parameters);
+        }
+
+        /// <summary>
+        ///     Update this <see cref="CarrierAccount"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.CarrierAccounts.Update"/> parameter set.</param>
+        /// <returns>This updated <see cref="CarrierAccount"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<CarrierAccount> Update(string id, BetaFeatures.Parameters.CarrierAccounts.Update parameters)
+        {
+            return await Request<CarrierAccount>(Http.Method.Patch, $"carrier_accounts/{id}", parameters.ToDictionary());
+        }
+
+        /// <summary>
+        ///     Remove this CarrierAccount from your account.
+        /// </summary>
+        /// <returns>Whether the request was successful or not.</returns>
+        [CrudOperations.Delete]
+        public async Task Delete(string id) => await DeleteNoResponse($"carrier_accounts/{id}");
+
 
         #endregion
 

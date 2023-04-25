@@ -125,69 +125,7 @@ namespace EasyPost._base
             }
 #pragma warning restore IDE0270
 
-            PassClientToEasyPostObject(resource);
-
             return resource;
-        }
-
-        private void PassClientToAllEasyPostObjectProperties<T>(T? resource)
-            where T : EasyPostObject
-        {
-            if (resource == null)
-            {
-                return;
-            }
-
-            List<PropertyInfo> properties = new(resource.GetType().GetProperties());
-            foreach (PropertyInfo property in properties)
-            {
-                // Pass the Client into every EasyPostObject in the collection
-                PassClientToEasyPostObject(property.GetValue(resource));
-            }
-        }
-
-        private void PassClientToEasyPostObjectsInList<T>(T? resource)
-            where T : IList
-        {
-            if (resource == null)
-            {
-                return;
-            }
-
-            foreach (object? item in resource)
-            {
-                // pass the Client into every EasyPostObject in the list
-                PassClientToEasyPostObject(item);
-            }
-        }
-
-        /// <summary>
-        ///     Copy this Client into a new EasyPostObject instance.
-        /// </summary>
-        /// <param name="resource">Object to add this Client to.</param>
-        /// <typeparam name="T">Type of the object.</typeparam>
-        private void PassClientToEasyPostObject<T>(T? resource)
-            where T : class
-        {
-            switch (resource)
-            {
-                case null:
-                    break;
-                case IList list:
-                    PassClientToEasyPostObjectsInList(list);
-                    break;
-                case PaginatedCollection<EasyPost._base.EasyPostObject> collection:
-                    PassClientToAllEasyPostObjectProperties(collection);
-                    break;
-                case EasyPostObject easyPostObject:
-                    easyPostObject.Client = this;
-                    PassClientToAllEasyPostObjectProperties(easyPostObject);
-                    break;
-
-                // ReSharper disable once RedundantEmptySwitchSection
-                default:
-                    break;
-            }
         }
 
         /// <summary>
