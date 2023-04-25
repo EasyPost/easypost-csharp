@@ -43,15 +43,15 @@ references:
   commentId: T:EasyPost._base.EasyPostClient
   fullName: EasyPost._base.EasyPostClient
   nameWithType: EasyPostClient
-- uid: EasyPost._base.EasyPostClient.#ctor(System.String,System.Nullable{System.String},System.Nullable{HttpClient})
-  name: EasyPostClient(String, Nullable<String>, Nullable<HttpClient>)
-  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient__ctor_System_String_System_Nullable_System_String__System_Nullable_HttpClient__
-  commentId: M:EasyPost._base.EasyPostClient.#ctor(System.String,System.Nullable{System.String},System.Nullable{HttpClient})
-  name.vb: EasyPostClient(String, Nullable(Of String), Nullable(Of HttpClient))
-  fullName: EasyPost._base.EasyPostClient.EasyPostClient(System.String, System.Nullable<System.String>, System.Nullable<HttpClient>)
-  fullName.vb: EasyPost._base.EasyPostClient.EasyPostClient(System.String, System.Nullable(Of System.String), System.Nullable(Of HttpClient))
-  nameWithType: EasyPostClient.EasyPostClient(String, Nullable<String>, Nullable<HttpClient>)
-  nameWithType.vb: EasyPostClient.EasyPostClient(String, Nullable(Of String), Nullable(Of HttpClient))
+- uid: EasyPost._base.EasyPostClient.#ctor(System.String,System.Nullable{System.String},System.Nullable{System.Int32},System.Nullable{HttpClient})
+  name: EasyPostClient(String, Nullable<String>, Nullable<Int32>, Nullable<HttpClient>)
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient__ctor_System_String_System_Nullable_System_String__System_Nullable_System_Int32__System_Nullable_HttpClient__
+  commentId: M:EasyPost._base.EasyPostClient.#ctor(System.String,System.Nullable{System.String},System.Nullable{System.Int32},System.Nullable{HttpClient})
+  name.vb: EasyPostClient(String, Nullable(Of String), Nullable(Of Int32), Nullable(Of HttpClient))
+  fullName: EasyPost._base.EasyPostClient.EasyPostClient(System.String, System.Nullable<System.String>, System.Nullable<System.Int32>, System.Nullable<HttpClient>)
+  fullName.vb: EasyPost._base.EasyPostClient.EasyPostClient(System.String, System.Nullable(Of System.String), System.Nullable(Of System.Int32), System.Nullable(Of HttpClient))
+  nameWithType: EasyPostClient.EasyPostClient(String, Nullable<String>, Nullable<Int32>, Nullable<HttpClient>)
+  nameWithType.vb: EasyPostClient.EasyPostClient(String, Nullable(Of String), Nullable(Of Int32), Nullable(Of HttpClient))
 - uid: EasyPost._base.EasyPostClient.#ctor*
   name: EasyPostClient
   href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient__ctor_
@@ -59,28 +59,51 @@ references:
   isSpec: "True"
   fullName: EasyPost._base.EasyPostClient.EasyPostClient
   nameWithType: EasyPostClient.EasyPostClient
-- uid: EasyPost._base.EasyPostClient.Clone*
-  name: Clone
-  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_Clone_
-  commentId: Overload:EasyPost._base.EasyPostClient.Clone
+- uid: EasyPost._base.EasyPostClient.ApiBase
+  name: ApiBase
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_ApiBase
+  commentId: P:EasyPost._base.EasyPostClient.ApiBase
+  fullName: EasyPost._base.EasyPostClient.ApiBase
+  nameWithType: EasyPostClient.ApiBase
+- uid: EasyPost._base.EasyPostClient.ApiBase*
+  name: ApiBase
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_ApiBase_
+  commentId: Overload:EasyPost._base.EasyPostClient.ApiBase
   isSpec: "True"
-  fullName: EasyPost._base.EasyPostClient.Clone
-  nameWithType: EasyPostClient.Clone
-- uid: EasyPost._base.EasyPostClient.Clone``1(System.Nullable{System.String},System.Nullable{System.String},System.Nullable{HttpClient})
-  name: Clone<T>(Nullable<String>, Nullable<String>, Nullable<HttpClient>)
-  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_Clone__1_System_Nullable_System_String__System_Nullable_System_String__System_Nullable_HttpClient__
-  commentId: M:EasyPost._base.EasyPostClient.Clone``1(System.Nullable{System.String},System.Nullable{System.String},System.Nullable{HttpClient})
-  name.vb: Clone(Of T)(Nullable(Of String), Nullable(Of String), Nullable(Of HttpClient))
-  fullName: EasyPost._base.EasyPostClient.Clone<T>(System.Nullable<System.String>, System.Nullable<System.String>, System.Nullable<HttpClient>)
-  fullName.vb: EasyPost._base.EasyPostClient.Clone(Of T)(System.Nullable(Of System.String), System.Nullable(Of System.String), System.Nullable(Of HttpClient))
-  nameWithType: EasyPostClient.Clone<T>(Nullable<String>, Nullable<String>, Nullable<HttpClient>)
-  nameWithType.vb: EasyPostClient.Clone(Of T)(Nullable(Of String), Nullable(Of String), Nullable(Of HttpClient))
+  fullName: EasyPost._base.EasyPostClient.ApiBase
+  nameWithType: EasyPostClient.ApiBase
+- uid: EasyPost._base.EasyPostClient.ApiKey
+  name: ApiKey
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_ApiKey
+  commentId: P:EasyPost._base.EasyPostClient.ApiKey
+  fullName: EasyPost._base.EasyPostClient.ApiKey
+  nameWithType: EasyPostClient.ApiKey
+- uid: EasyPost._base.EasyPostClient.ApiKey*
+  name: ApiKey
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_ApiKey_
+  commentId: Overload:EasyPost._base.EasyPostClient.ApiKey
+  isSpec: "True"
+  fullName: EasyPost._base.EasyPostClient.ApiKey
+  nameWithType: EasyPostClient.ApiKey
 - uid: EasyPost._base.EasyPostClient.Configuration
   name: Configuration
   href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_Configuration
   commentId: F:EasyPost._base.EasyPostClient.Configuration
   fullName: EasyPost._base.EasyPostClient.Configuration
   nameWithType: EasyPostClient.Configuration
+- uid: EasyPost._base.EasyPostClient.CustomHttpClient
+  name: CustomHttpClient
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_CustomHttpClient
+  commentId: P:EasyPost._base.EasyPostClient.CustomHttpClient
+  fullName: EasyPost._base.EasyPostClient.CustomHttpClient
+  nameWithType: EasyPostClient.CustomHttpClient
+- uid: EasyPost._base.EasyPostClient.CustomHttpClient*
+  name: CustomHttpClient
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_CustomHttpClient_
+  commentId: Overload:EasyPost._base.EasyPostClient.CustomHttpClient
+  isSpec: "True"
+  fullName: EasyPost._base.EasyPostClient.CustomHttpClient
+  nameWithType: EasyPostClient.CustomHttpClient
 - uid: EasyPost._base.EasyPostClient.Equals(System.Nullable{System.Object})
   name: Equals(Nullable<Object>)
   href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_Equals_System_Nullable_System_Object__
@@ -126,6 +149,19 @@ references:
   fullName.vb: EasyPost._base.EasyPostClient.GetService(Of T)()
   nameWithType: EasyPostClient.GetService<T>()
   nameWithType.vb: EasyPostClient.GetService(Of T)()
+- uid: EasyPost._base.EasyPostClient.TimeoutMilliseconds
+  name: TimeoutMilliseconds
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_TimeoutMilliseconds
+  commentId: P:EasyPost._base.EasyPostClient.TimeoutMilliseconds
+  fullName: EasyPost._base.EasyPostClient.TimeoutMilliseconds
+  nameWithType: EasyPostClient.TimeoutMilliseconds
+- uid: EasyPost._base.EasyPostClient.TimeoutMilliseconds*
+  name: TimeoutMilliseconds
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_TimeoutMilliseconds_
+  commentId: Overload:EasyPost._base.EasyPostClient.TimeoutMilliseconds
+  isSpec: "True"
+  fullName: EasyPost._base.EasyPostClient.TimeoutMilliseconds
+  nameWithType: EasyPostClient.TimeoutMilliseconds
 - uid: EasyPost._base.EasyPostObject
   name: EasyPostObject
   href: api/EasyPost._base.EasyPostObject.html
@@ -4362,15 +4398,15 @@ references:
   commentId: T:EasyPost.Client
   fullName: EasyPost.Client
   nameWithType: Client
-- uid: EasyPost.Client.#ctor(System.String,System.Nullable{System.String},System.Nullable{HttpClient})
-  name: Client(String, Nullable<String>, Nullable<HttpClient>)
-  href: api/EasyPost.Client.html#EasyPost_Client__ctor_System_String_System_Nullable_System_String__System_Nullable_HttpClient__
-  commentId: M:EasyPost.Client.#ctor(System.String,System.Nullable{System.String},System.Nullable{HttpClient})
-  name.vb: Client(String, Nullable(Of String), Nullable(Of HttpClient))
-  fullName: EasyPost.Client.Client(System.String, System.Nullable<System.String>, System.Nullable<HttpClient>)
-  fullName.vb: EasyPost.Client.Client(System.String, System.Nullable(Of System.String), System.Nullable(Of HttpClient))
-  nameWithType: Client.Client(String, Nullable<String>, Nullable<HttpClient>)
-  nameWithType.vb: Client.Client(String, Nullable(Of String), Nullable(Of HttpClient))
+- uid: EasyPost.Client.#ctor(System.String,System.Nullable{System.String},System.Nullable{System.Int32},System.Nullable{HttpClient})
+  name: Client(String, Nullable<String>, Nullable<Int32>, Nullable<HttpClient>)
+  href: api/EasyPost.Client.html#EasyPost_Client__ctor_System_String_System_Nullable_System_String__System_Nullable_System_Int32__System_Nullable_HttpClient__
+  commentId: M:EasyPost.Client.#ctor(System.String,System.Nullable{System.String},System.Nullable{System.Int32},System.Nullable{HttpClient})
+  name.vb: Client(String, Nullable(Of String), Nullable(Of Int32), Nullable(Of HttpClient))
+  fullName: EasyPost.Client.Client(System.String, System.Nullable<System.String>, System.Nullable<System.Int32>, System.Nullable<HttpClient>)
+  fullName.vb: EasyPost.Client.Client(System.String, System.Nullable(Of System.String), System.Nullable(Of System.Int32), System.Nullable(Of HttpClient))
+  nameWithType: Client.Client(String, Nullable<String>, Nullable<Int32>, Nullable<HttpClient>)
+  nameWithType.vb: Client.Client(String, Nullable(Of String), Nullable(Of Int32), Nullable(Of HttpClient))
 - uid: EasyPost.Client.#ctor*
   name: Client
   href: api/EasyPost.Client.html#EasyPost_Client__ctor_
@@ -5127,7 +5163,14 @@ references:
 - uid: EasyPost.Http.ClientConfiguration.ApiBase
   name: ApiBase
   href: api/EasyPost.Http.ClientConfiguration.html#EasyPost_Http_ClientConfiguration_ApiBase
-  commentId: F:EasyPost.Http.ClientConfiguration.ApiBase
+  commentId: P:EasyPost.Http.ClientConfiguration.ApiBase
+  fullName: EasyPost.Http.ClientConfiguration.ApiBase
+  nameWithType: ClientConfiguration.ApiBase
+- uid: EasyPost.Http.ClientConfiguration.ApiBase*
+  name: ApiBase
+  href: api/EasyPost.Http.ClientConfiguration.html#EasyPost_Http_ClientConfiguration_ApiBase_
+  commentId: Overload:EasyPost.Http.ClientConfiguration.ApiBase
+  isSpec: "True"
   fullName: EasyPost.Http.ClientConfiguration.ApiBase
   nameWithType: ClientConfiguration.ApiBase
 - uid: EasyPost.Http.ClientConfiguration.ApiKey
@@ -5143,19 +5186,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Http.ClientConfiguration.ApiKey
   nameWithType: ClientConfiguration.ApiKey
-- uid: EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds
-  name: ConnectTimeoutMilliseconds
-  href: api/EasyPost.Http.ClientConfiguration.html#EasyPost_Http_ClientConfiguration_ConnectTimeoutMilliseconds
-  commentId: P:EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds
-  fullName: EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds
-  nameWithType: ClientConfiguration.ConnectTimeoutMilliseconds
-- uid: EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds*
-  name: ConnectTimeoutMilliseconds
-  href: api/EasyPost.Http.ClientConfiguration.html#EasyPost_Http_ClientConfiguration_ConnectTimeoutMilliseconds_
-  commentId: Overload:EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds
-  isSpec: "True"
-  fullName: EasyPost.Http.ClientConfiguration.ConnectTimeoutMilliseconds
-  nameWithType: ClientConfiguration.ConnectTimeoutMilliseconds
 - uid: EasyPost.Http.ClientConfiguration.Equals(System.Nullable{System.Object})
   name: Equals(Nullable<Object>)
   href: api/EasyPost.Http.ClientConfiguration.html#EasyPost_Http_ClientConfiguration_Equals_System_Nullable_System_Object__
@@ -5185,25 +5215,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Http.ClientConfiguration.GetHashCode
   nameWithType: ClientConfiguration.GetHashCode
-- uid: EasyPost.Http.ClientConfiguration.HttpClient
-  name: HttpClient
-  href: api/EasyPost.Http.ClientConfiguration.html#EasyPost_Http_ClientConfiguration_HttpClient
-  commentId: F:EasyPost.Http.ClientConfiguration.HttpClient
-  fullName: EasyPost.Http.ClientConfiguration.HttpClient
-  nameWithType: ClientConfiguration.HttpClient
-- uid: EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds
-  name: RequestTimeoutMilliseconds
-  href: api/EasyPost.Http.ClientConfiguration.html#EasyPost_Http_ClientConfiguration_RequestTimeoutMilliseconds
-  commentId: P:EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds
-  fullName: EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds
-  nameWithType: ClientConfiguration.RequestTimeoutMilliseconds
-- uid: EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds*
-  name: RequestTimeoutMilliseconds
-  href: api/EasyPost.Http.ClientConfiguration.html#EasyPost_Http_ClientConfiguration_RequestTimeoutMilliseconds_
-  commentId: Overload:EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds
-  isSpec: "True"
-  fullName: EasyPost.Http.ClientConfiguration.RequestTimeoutMilliseconds
-  nameWithType: ClientConfiguration.RequestTimeoutMilliseconds
 - uid: EasyPost.Http.Method
   name: Method
   href: api/EasyPost.Http.Method.html
