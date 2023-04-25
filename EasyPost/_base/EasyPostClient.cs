@@ -29,9 +29,9 @@ namespace EasyPost._base
         public string ApiBaseInUse => Configuration.ApiBase; // public read-only property so users can audit the base URL used by the client
 
         /// <summary>
-        ///     Gets the connect timeout in milliseconds used by this client.
+        ///     Gets the timeout in milliseconds used by this client.
         /// </summary>
-        public int ConnectTimeoutMillisecondsInUse => (int)HttpClient.Timeout.TotalMilliseconds; // public read-only property so users can audit the connect timeout used by the client
+        public int TimeoutMillisecondsInUse => (int)HttpClient.Timeout.TotalMilliseconds; // public read-only property so users can audit the connect timeout used by the client
 
         /// <summary>
         ///     Gets the custom HTTP client used by this client.

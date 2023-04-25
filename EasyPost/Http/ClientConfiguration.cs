@@ -91,31 +91,18 @@ namespace EasyPost.Http
             ApiKey = apiKey;
 
             // Optional constructor parameters with defaults
-            ApiBase = baseUrl ?? Defaults.DefaultBaseUrl;
+            ApiBase = baseUrl ?? "https://api.easypost.com";
             HttpClient = customHttpClient ?? new HttpClient();
 
             // Prepare the HttpClient
             PreparedHttpClient = HttpClient;
-            PreparedHttpClient.Timeout = TimeSpan.FromMilliseconds(timeoutMilliseconds ?? Defaults.DefaultConnectTimeoutMilliseconds);
+            PreparedHttpClient.Timeout = TimeSpan.FromMilliseconds(timeoutMilliseconds ?? 30000); // Default to 30 seconds
 
             _libraryVersion = RuntimeInfo.ApplicationInfo.ApplicationVersion;
             _dotNetVersion = RuntimeInfo.ApplicationInfo.DotNetVersion;
             _osName = RuntimeInfo.OperationSystemInfo.Name;
             _osVersion = RuntimeInfo.OperationSystemInfo.Version;
             _osArch = RuntimeInfo.OperationSystemInfo.Architecture;
-        }
-
-        private abstract class Defaults
-        {
-            /// <summary>
-            ///     The default API base URI.
-            /// </summary>
-            internal const string DefaultBaseUrl = "https://api.easypost.com";
-
-            /// <summary>
-            ///     The default connection timeout in milliseconds.
-            /// </summary>
-            internal const int DefaultConnectTimeoutMilliseconds = 30000;
         }
 
         public override bool Equals(object? obj) => obj is ClientConfiguration other && ApiKey == other.ApiKey && ApiBase == other.ApiBase;
