@@ -21,22 +21,22 @@ namespace EasyPost._base
         /// <summary>
         ///     Gets the API key used by this client.
         /// </summary>
-        public string ApiKeyInUse => Configuration.ApiKey; // public read-only property so users can audit the API key used by the client
+        public string ApiKey => Configuration.ApiKey; // public read-only property so users can audit the API key used by the client
 
         /// <summary>
         ///     Gets the base URL used by this client.
         /// </summary>
-        public string ApiBaseInUse => Configuration.ApiBase; // public read-only property so users can audit the base URL used by the client
+        public string ApiBase => Configuration.ApiBase; // public read-only property so users can audit the base URL used by the client
 
         /// <summary>
         ///     Gets the timeout in milliseconds used by this client.
         /// </summary>
-        public int TimeoutMillisecondsInUse => (int)HttpClient.Timeout.TotalMilliseconds; // public read-only property so users can audit the connect timeout used by the client
+        public int TimeoutMilliseconds => (int)HttpClient.Timeout.TotalMilliseconds; // public read-only property so users can audit the connect timeout used by the client
 
         /// <summary>
         ///     Gets the custom HTTP client used by this client.
         /// </summary>
-        public HttpClient? CustomHttpClientInUse => Configuration.HttpClient; // public read-only property so users can audit the custom HTTP client they set to be used by the client
+        public HttpClient? CustomHttpClient => Configuration.HttpClient; // public read-only property so users can audit the custom HTTP client they set to be used by the client
 
         /// <summary>
         ///     Gets the prepared HTTP client used by this client for all API calls.
@@ -96,7 +96,7 @@ namespace EasyPost._base
         {
             // Build the request
             Dictionary<string, string> headers = Configuration.Headers;
-            Request request = new(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
+            Request request = new(ApiBase, endpoint, method, apiVersion, parameters, headers);
 
             // Execute the request
             HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage());
@@ -203,7 +203,7 @@ namespace EasyPost._base
         {
             // Build the request
             Dictionary<string, string> headers = Configuration.Headers;
-            Request request = new(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
+            Request request = new(ApiBase, endpoint, method, apiVersion, parameters, headers);
 
             // Execute the request
             HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage());

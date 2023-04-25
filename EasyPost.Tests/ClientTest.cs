@@ -23,7 +23,7 @@ namespace EasyPost.Tests
             // we specifically want to test the getters/setters
             Client client = new(FakeApikey, timeoutMilliseconds: 5000);
 
-            Assert.Equal(5000, client.TimeoutMillisecondsInUse);
+            Assert.Equal(5000, client.TimeoutMilliseconds);
         }
 
         [Fact]

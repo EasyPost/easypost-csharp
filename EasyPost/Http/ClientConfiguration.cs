@@ -96,7 +96,7 @@ namespace EasyPost.Http
 
             // Prepare the HttpClient
             PreparedHttpClient = HttpClient;
-            PreparedHttpClient.Timeout = TimeSpan.FromMilliseconds(timeoutMilliseconds ?? 30000); // Default to 30 seconds
+            PreparedHttpClient.Timeout = TimeSpan.FromMilliseconds(timeoutMilliseconds ?? 60000); // Default to 60 seconds
 
             _libraryVersion = RuntimeInfo.ApplicationInfo.ApplicationVersion;
             _dotNetVersion = RuntimeInfo.ApplicationInfo.DotNetVersion;
