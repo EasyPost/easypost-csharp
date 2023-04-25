@@ -21,12 +21,12 @@ namespace EasyPost._base
         /// <summary>
         ///     Gets the API key used by this client.
         /// </summary>
-        public string ApiKey => Configuration.ApiKey; // public read-only property so users can audit the API key used by the client
+        public string ApiKeyInUse => Configuration.ApiKey; // public read-only property so users can audit the API key used by the client
 
         /// <summary>
         ///     Gets the base URL used by this client.
         /// </summary>
-        public string ApiBase => Configuration.ApiBase; // public read-only property so users can audit the base URL used by the client
+        public string ApiBaseInUse => Configuration.ApiBase; // public read-only property so users can audit the base URL used by the client
 
         /// <summary>
         ///     Gets the timeout in milliseconds used by this client.
@@ -96,7 +96,7 @@ namespace EasyPost._base
         {
             // Build the request
             Dictionary<string, string> headers = Configuration.Headers;
-            Request request = new(ApiBase, endpoint, method, apiVersion, parameters, headers);
+            Request request = new(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
 
             // Execute the request
             HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage());
@@ -203,7 +203,7 @@ namespace EasyPost._base
         {
             // Build the request
             Dictionary<string, string> headers = Configuration.Headers;
-            Request request = new(ApiBase, endpoint, method, apiVersion, parameters, headers);
+            Request request = new(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
 
             // Execute the request
             HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage());
@@ -212,19 +212,6 @@ namespace EasyPost._base
             bool errorRaised = response.ReturnedNoError();
 
             return errorRaised;
-        }
-
-        /// <summary>
-        ///     Get a service instance.
-        /// </summary>
-        /// <typeparam name="T">Type of service class to instantiate.</typeparam>
-        /// <returns>A T-type instance.</returns>
-        protected T GetService<T>()
-            where T : IEasyPostService
-        {
-            // construct a new service
-            ConstructorInfo[] cons = typeof(T).GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
-            return (T)cons[0].Invoke(new object[] { this });
         }
 
         public override bool Equals(object? obj) => obj is EasyPostClient client && Configuration.Equals(client.Configuration);
