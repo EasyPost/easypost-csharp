@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -41,7 +42,7 @@ namespace EasyPost.Services
         public async Task<Order> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("order");
-            return await Create<Order>("orders", parameters);
+            return await Request<Order>(Method.Post, "orders", parameters);
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace EasyPost.Services
         public async Task<Order> Create(BetaFeatures.Parameters.Orders.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Create<Order>("orders", parameters.ToDictionary());
+            return await Request<Order>(Method.Post,"orders", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Order. Starts with "order_" if passing an id.</param>
         /// <returns>EasyPost.Order instance.</returns>
         [CrudOperations.Read]
-        public async Task<Order> Retrieve(string id) => await Get<Order>($"orders/{id}");
+        public async Task<Order> Retrieve(string id) => await Request<Order>(Method.Get, $"orders/{id}");
         
         /// <summary>
         ///     Purchase the shipments within this order with a carrier and service.

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -30,7 +31,7 @@ namespace EasyPost.Services
         public async Task<User> CreateChild(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("user");
-            return await Create<User>("users", parameters);
+            return await Request<User>(Method.Post, "users", parameters);
         }
 
         /// <summary>
@@ -42,23 +43,23 @@ namespace EasyPost.Services
         public async Task<User> CreateChild(BetaFeatures.Parameters.Users.CreateChild parameters)
         {
             // Because the normal CreateChild method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Create<User>("users", parameters.ToDictionary());
+            return await Request<User>(Method.Post, "users", parameters.ToDictionary());
         }
 
         /// <summary>
-        ///     Retrieve a User from its id. If no id is specified, it returns the user for the api_key specified.
+        ///     Retrieve a User from its id.
         /// </summary>
         /// <param name="id">String representing a user. Starts with "user_".</param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
-        public async Task<User> Retrieve(string? id = null) => id == null ? await Get<User>("users") : await Get<User>($"users/{id}");
+        public async Task<User> Retrieve(string id) => await Request<User>(Method.Get, $"users/{id}");
 
         /// <summary>
         ///     Retrieve the current user.
         /// </summary>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
-        public async Task<User> RetrieveMe() => await Retrieve();
+        public async Task<User> RetrieveMe() => await Request<User>(Method.Get, "users");
         
         /// <summary>
         ///     Update the User's brand.
@@ -131,7 +132,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
         [CrudOperations.Delete]
-        public async Task Delete(string? id) => await DeleteNoResponse($"users/{id}");
+        public async Task Delete(string? id) => await Request(Method.Delete,$"users/{id}");
 
         #endregion
     }

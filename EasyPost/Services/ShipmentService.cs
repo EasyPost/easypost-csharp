@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -45,7 +46,7 @@ namespace EasyPost.Services
         {
             parameters = parameters.Wrap("shipment");
             parameters.Add("carbon_offset", withCarbonOffset);
-            return await Create<Shipment>("shipments", parameters);
+            return await Request<Shipment>(Method.Post, "shipments", parameters);
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace EasyPost.Services
         public async Task<Shipment> Create(BetaFeatures.Parameters.Shipments.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Create<Shipment>("shipments", parameters.ToDictionary());
+            return await Request<Shipment>(Method.Post, "shipments", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -79,7 +80,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
-            ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters);
+            ShipmentCollection shipmentCollection = await Request<ShipmentCollection>(Method.Get,"shipments", parameters);
             shipmentCollection.Purchased = parameters?.GetOrNullBoolean("purchased");
             shipmentCollection.IncludeChildren = parameters?.GetOrNullBoolean("include_children");
             return shipmentCollection;
@@ -93,7 +94,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ShipmentCollection> All(BetaFeatures.Parameters.Shipments.All parameters)
         {
-            ShipmentCollection shipmentCollection = await List<ShipmentCollection>("shipments", parameters.ToDictionary());
+            ShipmentCollection shipmentCollection = await Request<ShipmentCollection>(Method.Get,"shipments", parameters.ToDictionary());
             shipmentCollection.Purchased = parameters.Purchased;
             shipmentCollection.IncludeChildren = parameters.IncludeChildren;
             return shipmentCollection;
@@ -115,7 +116,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
         /// <returns>An EasyPost.Shipment instance.</returns>
         [CrudOperations.Read]
-        public async Task<Shipment> Retrieve(string id) => await Get<Shipment>($"shipments/{id}");
+        public async Task<Shipment> Retrieve(string id) => await Request<Shipment>(Method.Get, $"shipments/{id}");
         
         /// <summary>
         ///     Get the SmartRates for this shipment.

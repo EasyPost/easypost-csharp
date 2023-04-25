@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Attributes;
@@ -45,8 +46,8 @@ namespace EasyPost.Services
             string endpoint = SelectCarrierAccountCreationEndpoint(carrierType);
 
             parameters = parameters.Wrap("carrier_account");
-
-            return await Create<CarrierAccount>(endpoint, parameters);
+            
+            return await Request<CarrierAccount>(Http.Method.Post, endpoint, parameters);
         }
 
         /// <summary>
@@ -65,7 +66,7 @@ namespace EasyPost.Services
 
             string endpoint = SelectCarrierAccountCreationEndpoint(parameters.Type);
 
-            return await Create<CarrierAccount>(endpoint, parameters.ToDictionary());
+            return await Request<CarrierAccount>(Method.Post, endpoint, parameters.ToDictionary());
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<CarrierAccount>> All() => await List<List<CarrierAccount>>("carrier_accounts");
+        public async Task<List<CarrierAccount>> All() => await Request<List<CarrierAccount>>(Method.Get,"carrier_accounts");
 
         /// <summary>
         ///     Retrieve a CarrierAccount from its id.
@@ -81,7 +82,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a carrier account. Starts with "ca_".</param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         [CrudOperations.Read]
-        public async Task<CarrierAccount> Retrieve(string id) => await Get<CarrierAccount>($"carrier_accounts/{id}");
+        public async Task<CarrierAccount> Retrieve(string id) => await Request<CarrierAccount>(Method.Get, $"carrier_accounts/{id}");
         
         /// <summary>
         ///     Update this CarrierAccount.
@@ -111,7 +112,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
         [CrudOperations.Delete]
-        public async Task Delete(string id) => await DeleteNoResponse($"carrier_accounts/{id}");
+        public async Task Delete(string id) => await Request(Method.Delete,$"carrier_accounts/{id}");
 
 
         #endregion

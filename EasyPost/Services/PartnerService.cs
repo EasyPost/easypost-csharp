@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Attributes;
@@ -38,7 +39,7 @@ namespace EasyPost.Services
         public async Task<ReferralCustomer> CreateReferral(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("user");
-            return await Create<ReferralCustomer>("referral_customers", parameters);
+            return await Request<ReferralCustomer>(Method.Post, "referral_customers", parameters);
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace EasyPost.Services
         public async Task<ReferralCustomer> CreateReferral(BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer parameters)
         {
             // Because the normal CreateReferral method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Create<ReferralCustomer>("referral_customers", parameters.ToDictionary());
+            return await Request<ReferralCustomer>(Method.Post,"referral_customers", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace EasyPost.Services
         /// <param name="parameters">Parameters for API call.</param>
         /// <returns>An EasyPost.ReferralCustomerCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null) => await List<ReferralCustomerCollection>("referral_customers", parameters);
+        public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null) => await Request<ReferralCustomerCollection>(Method.Get,"referral_customers", parameters);
 
         /// <summary>
         ///     List all <see cref="ReferralCustomer"/> objects.
@@ -69,7 +70,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.All"/> parameter set.</param>
         /// <returns><see cref="ReferralCustomerCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<ReferralCustomerCollection> All(BetaFeatures.Parameters.ReferralCustomers.All parameters) => await List<ReferralCustomerCollection>("referral_customers", parameters.ToDictionary());
+        public async Task<ReferralCustomerCollection> All(BetaFeatures.Parameters.ReferralCustomers.All parameters) => await Request<ReferralCustomerCollection>(Method.Get,"referral_customers", parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ReferralCustomerCollection"/>.
@@ -130,7 +131,7 @@ namespace EasyPost.Services
             Dictionary<string, object> parameters = new() { { "user", new Dictionary<string, object> { { "email", email } } } };
 
             // NOTE: This is a PATCH request, not a PUT request.
-            await UpdateNoResponse($"referral_customers/{referralId}", parameters);
+            await Request(Method.Patch, $"referral_customers/{referralId}", parameters);
         }
 
         #endregion
@@ -243,7 +244,7 @@ namespace EasyPost.Services
         /// <returns>EasyPost Stripe API key.</returns>
         private async Task<string?> RetrieveEasypostStripeApiKey()
         {
-            Dictionary<string, object> response = await Get<Dictionary<string, object>>("partners/stripe_public_key");
+            Dictionary<string, object> response = await Request<Dictionary<string, object>>(Method.Get, "partners/stripe_public_key");
 
             response.TryGetValue("public_key", out object? easypostStripePublicKey);
 

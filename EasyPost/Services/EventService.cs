@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 
@@ -34,7 +35,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.EventCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<EventCollection> All(Dictionary<string, object>? parameters = null) => await Get<EventCollection>("events", parameters);
+        public async Task<EventCollection> All(Dictionary<string, object>? parameters = null) => await Request<EventCollection>(Method.Get, "events", parameters);
 
         /// <summary>
         ///     List all <see cref="Event"/> objects.
@@ -42,7 +43,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Events.All"/> parameter set.</param>
         /// <returns><see cref="EventCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<EventCollection> All(BetaFeatures.Parameters.Events.All parameters) => await Get<EventCollection>("events", parameters.ToDictionary());
+        public async Task<EventCollection> All(BetaFeatures.Parameters.Events.All parameters) => await Request<EventCollection>(Method.Get, "events", parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="EventCollection"/>.
@@ -60,14 +61,14 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Event. Starts with "evt_".</param>
         /// <returns>EasyPost.Event instance.</returns>
         [CrudOperations.Read]
-        public async Task<Event> Retrieve(string id) => await Get<Event>($"events/{id}");
+        public async Task<Event> Retrieve(string id) => await Request<Event>(Method.Get, $"events/{id}");
 
         /// <summary>
         ///     Retrieve all <see cref="Payload"/>s for an <see cref="Event"/>.
         /// </summary>
         /// <param name="eventId">ID of the <see cref="Event"/> to retrieve payloads for.</param>
         /// <returns>A list of <see cref="Payload"/> objects.</returns>
-        public async Task<List<Payload>> RetrieveAllPayloads(string eventId) => await Get<List<Payload>>($"events/{eventId}/payloads", rootElement: "payloads");
+        public async Task<List<Payload>> RetrieveAllPayloads(string eventId) => await Request<List<Payload>>(Method.Get, $"events/{eventId}/payloads", rootElement: "payloads");
 
         /// <summary>
         ///     Retrieve a specific <see cref="Payload"/> for an <see cref="Event"/>.
@@ -77,7 +78,7 @@ namespace EasyPost.Services
         /// <returns>A <see cref="Payload"/> object.</returns>
         /// <exception cref="InvalidRequestError">Thrown if the specified payload ID is malformed.</exception>
         /// <exception cref="NotFoundError">Thrown if the specified payload is not found.</exception>
-        public async Task<Payload> RetrievePayload(string eventId, string payloadId) => await Get<Payload>($"events/{eventId}/payloads/{payloadId}");
+        public async Task<Payload> RetrievePayload(string eventId, string payloadId) => await Request<Payload>(Method.Get, $"events/{eventId}/payloads/{payloadId}");
 
         #endregion
     }

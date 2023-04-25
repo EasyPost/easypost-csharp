@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 
@@ -35,10 +36,10 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.Report instance.</returns>
         [CrudOperations.Create]
-        public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null) => await Create<Report>($"reports/{type}", parameters);
+        public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null) => await Request<Report>(Method.Post, $"reports/{type}", parameters);
 
         [CrudOperations.Create]
-        public async Task<Report> Create(string type, BetaFeatures.Parameters.Reports.Create parameters) => await Create<Report>($"reports/{type}", parameters.ToDictionary());
+        public async Task<Report> Create(string type, BetaFeatures.Parameters.Reports.Create parameters) => await Request<Report>(Method.Post,$"reports/{type}", parameters.ToDictionary());
 
         /// <summary>
         ///     Get a paginated list of reports.
@@ -58,7 +59,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
         {
-            ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters);
+            ReportCollection reportCollection = await Request<ReportCollection>(Method.Get,$"reports/{type}", parameters);
             reportCollection.Type = type;
             return reportCollection;
         }
@@ -66,7 +67,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ReportCollection> All(string type, BetaFeatures.Parameters.Reports.All parameters)
         {
-            ReportCollection reportCollection = await List<ReportCollection>($"reports/{type}", parameters.ToDictionary());
+            ReportCollection reportCollection = await Request<ReportCollection>(Method.Get,$"reports/{type}", parameters.ToDictionary());
             reportCollection.Type = type;
             return reportCollection;
         }
@@ -87,7 +88,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a report.</param>
         /// <returns>EasyPost.Report instance.</returns>
         [CrudOperations.Read]
-        public async Task<Report> Retrieve(string id) => await Get<Report>($"reports/{id}");
+        public async Task<Report> Retrieve(string id) => await Request<Report>(Method.Get, $"reports/{id}");
 
         /// <summary>
         ///     Retrieve a Report from its id and type.
@@ -96,7 +97,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a report.</param>
         /// <returns>EasyPost.Report instance.</returns>
         [CrudOperations.Read]
-        public async Task<Report> Retrieve(string type, string id) => await Get<Report>($"reports/{type}/{id}");
+        public async Task<Report> Retrieve(string type, string id) => await Request<Report>(Method.Get,$"reports/{type}/{id}");
 
         #endregion
     }

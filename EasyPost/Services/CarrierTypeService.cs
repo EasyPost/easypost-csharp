@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 
@@ -21,7 +22,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>A list of EasyPost.CarrierType instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<CarrierType>> All() => await List<List<CarrierType>>("carrier_types");
+        public async Task<List<CarrierType>> All() => await Request<List<CarrierType>>(Method.Get, "carrier_types");
 
         #endregion
     }

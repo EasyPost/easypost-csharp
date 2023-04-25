@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -30,7 +31,7 @@ namespace EasyPost.Services
         public async Task<List<Refund>> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("refund");
-            return await Create<List<Refund>>("refunds", parameters);
+            return await Request<List<Refund>>(Method.Post, "refunds", parameters);
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace EasyPost.Services
         public async Task<List<Refund>> Create(BetaFeatures.Parameters.Refunds.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Create<List<Refund>>("refunds", parameters.ToDictionary());
+            return await Request<List<Refund>>(Method.Post, "refunds", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.RefundCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null) => await List<RefundCollection>("refunds", parameters);
+        public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null) => await Request<RefundCollection>(Method.Get,"refunds", parameters);
 
         /// <summary>
         ///     List all <see cref="Refund"/> objects.
@@ -62,7 +63,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Refunds.All"/> parameter set.</param>
         /// <returns><see cref="RefundCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<RefundCollection> All(BetaFeatures.Parameters.Refunds.All parameters) => await List<RefundCollection>("refunds", parameters.ToDictionary());
+        public async Task<RefundCollection> All(BetaFeatures.Parameters.Refunds.All parameters) => await Request<RefundCollection>(Method.Get,"refunds", parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="RefundCollection"/>.
@@ -80,7 +81,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Refund. Starts with "rfnd_".</param>
         /// <returns>EasyPost.Refund instance.</returns>
         [CrudOperations.Read]
-        public async Task<Refund> Retrieve(string id) => await Get<Refund>($"refunds/{id}");
+        public async Task<Refund> Retrieve(string id) => await Request<Refund>(Method.Get,$"refunds/{id}");
 
         #endregion
     }

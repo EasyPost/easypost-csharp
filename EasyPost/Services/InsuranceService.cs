@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -39,7 +40,7 @@ namespace EasyPost.Services
         public async Task<Insurance> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("insurance");
-            return await Create<Insurance>("insurances", parameters);
+            return await Request<Insurance>(Method.Post,"insurances", parameters);
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace EasyPost.Services
         public async Task<Insurance> Create(BetaFeatures.Parameters.Insurance.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Create<Insurance>("insurances", parameters.ToDictionary());
+            return await Request<Insurance>(Method.Post,"insurances", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -71,10 +72,10 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.InsuranceCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null) => await List<InsuranceCollection>("insurances", parameters);
+        public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null) => await Request<InsuranceCollection>(Method.Get,"insurances", parameters);
 
         [CrudOperations.Read]
-        public async Task<InsuranceCollection> All(BetaFeatures.Parameters.Insurance.All parameters) => await List<InsuranceCollection>("insurances", parameters.ToDictionary());
+        public async Task<InsuranceCollection> All(BetaFeatures.Parameters.Insurance.All parameters) => await Request<InsuranceCollection>(Method.Get,"insurances", parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="InsuranceCollection"/>.
@@ -92,7 +93,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing an Insurance. Starts with "ins_".</param>
         /// <returns>EasyPost.Insurance instance.</returns>
         [CrudOperations.Read]
-        public async Task<Insurance> Retrieve(string id) => await Get<Insurance>($"insurances/{id}");
+        public async Task<Insurance> Retrieve(string id) => await Request<Insurance>(Method.Get, $"insurances/{id}");
 
         #endregion
     }

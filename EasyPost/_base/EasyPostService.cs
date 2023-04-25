@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Utilities.Internal.Attributes;
 
 #pragma warning disable SA1300
 namespace EasyPost._base
@@ -8,39 +7,13 @@ namespace EasyPost._base
 {
     public abstract class EasyPostService : IEasyPostService
     {
-        protected internal EasyPostClient Client { get; }
+        private EasyPostClient Client { get; }
         
         internal EasyPostService(EasyPostClient client)
         {
             Client = client;
         }
         
-        [CrudOperations.Create]
-        protected async Task<T> Create<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null)
-            where T : class
-            => await Request<T>(Http.Method.Post, url, parameters, rootElement, overrideApiVersion);
-
-        [CrudOperations.Create]
-        protected async Task CreateNoResponse(string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Request(Http.Method.Post, url, parameters, overrideApiVersion);
-
-        [CrudOperations.Delete]
-        protected async Task<T> Delete<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null)
-            where T : class
-            => await Request<T>(Http.Method.Delete, url, parameters, rootElement, overrideApiVersion);
-
-        [CrudOperations.Delete]
-        protected async Task DeleteNoResponse(string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Request(Http.Method.Delete, url, parameters, overrideApiVersion);
-
-        [CrudOperations.Read]
-        protected async Task<T> Get<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null)
-            where T : class
-            => await Request<T>(Http.Method.Get, url, parameters, rootElement, overrideApiVersion);
-
-        [CrudOperations.Read]
-        protected async Task<T> List<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null)
-            where T : class
-            => await Request<T>(Http.Method.Get, url, parameters, rootElement, overrideApiVersion);
-
         /// <summary>
         ///     Make an HTTP request to the EasyPost API and deserialize the response JSON into an object.
         /// </summary>
@@ -65,15 +38,6 @@ namespace EasyPost._base
         /// <returns>None.</returns>
         // ReSharper disable once MemberCanBePrivate.Global
         protected async Task Request(Http.Method method, string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Client.Request(method, url, overrideApiVersion ?? ApiVersion.Current, parameters);
-
-        [CrudOperations.Update]
-        protected async Task<T> Update<T>(string url, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null)
-            where T : class
-            => await Request<T>(Http.Method.Patch, url, parameters, rootElement, overrideApiVersion);
-
-        [CrudOperations.Update]
-        protected async Task UpdateNoResponse(string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Request(Http.Method.Patch, url, parameters, overrideApiVersion);
-
     }
 
     public interface IEasyPostService
