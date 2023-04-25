@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Text;
+using System.Web;
 using EasyPost._base;
 using EasyPost.Utilities.Internal;
 
@@ -85,24 +87,37 @@ namespace EasyPost.Http
         private void BuildQueryParameters()
         {
             // add query parameters
-            var query = new StringBuilder();
-
-            foreach (KeyValuePair<string, object> pair in _parameters)
+            var query = HttpUtility.ParseQueryString(string.Empty);
+            
+            // build query string from parameters
+            foreach (var param in _parameters)
             {
                 // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-                if (pair.Value == null)
+                if (param.Value == null)
                 {
                     continue;
                 }
-
-                query.Append($"{pair.Key}={pair.Value}&");
+                
+                query[param.Key] = param.Value switch
+                {
+                    // TODO: Handle special conversions for other types
+                    // DateTime dateTime => dateTime.ToString("o", CultureInfo.InvariantCulture),
+                    var _ => param.Value.ToString(),
+                };
+            }
+            
+            // short circuit if no query parameters
+            if (query.Count == 0)
+            {
+                return;
             }
 
-            // remove last '&'
-            query.Remove(query.Length - 1, 1);
-
-            // add query to request uri
-            _requestMessage.RequestUri = new Uri($"{_requestMessage.RequestUri}?{query}");
+            // rebuild the request URL with the query string appended
+            var uriBuilder = new UriBuilder(_requestMessage.RequestUri!)
+            {
+                Query = query.ToString(),
+            };
+            _requestMessage.RequestUri = new Uri(uriBuilder.ToString());
         }
     }
 }
