@@ -9,33 +9,30 @@ namespace EasyPost.Http
     {
         internal HttpMethod HttpMethod { get; }
 
-        internal RestSharp.Method RestSharpMethod { get; }
-
         /// <summary>
         ///     HTTP GET method.
         /// </summary>
-        public static readonly Method Get = new Method(HttpMethod.Get, RestSharp.Method.Get);
+        public static readonly Method Get = new Method(HttpMethod.Get);
         /// <summary>
         ///     HTTP POST method.
         /// </summary>
-        public static readonly Method Post = new Method(HttpMethod.Post, RestSharp.Method.Post);
+        public static readonly Method Post = new Method(HttpMethod.Post);
         /// <summary>
         ///     HTTP PUT method.
         /// </summary>
-        public static readonly Method Put = new Method(HttpMethod.Put, RestSharp.Method.Put);
+        public static readonly Method Put = new Method(HttpMethod.Put);
         /// <summary>
         ///     HTTP DELETE method.
         /// </summary>
-        public static readonly Method Delete = new Method(HttpMethod.Delete, RestSharp.Method.Delete);
+        public static readonly Method Delete = new Method(HttpMethod.Delete);
         /// <summary>
         ///     HTTP PATCH method.
         /// </summary>
-        public static readonly Method Patch = new Method(new HttpMethod("PATCH"), RestSharp.Method.Patch);
+        public static readonly Method Patch = new Method(new HttpMethod("PATCH"));
 
-        private Method(HttpMethod httpMethod, RestSharp.Method restSharpMethod)
+        private Method(HttpMethod httpMethod)
         {
             HttpMethod = httpMethod;
-            RestSharpMethod = restSharpMethod;
         }
     }
 }

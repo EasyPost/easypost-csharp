@@ -1,3 +1,4 @@
+using System.Net.Http;
 using EasyPost.Http;
 using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
@@ -51,10 +52,12 @@ namespace EasyPost.Tests.HttpTests
         {
             const string apiKey = "fake_api_key";
             const string apiBase = "https://www.example.com";
-            ClientConfiguration configuration1 = new(apiKey, apiBase);
+            HttpClient httpClient = new();
+
+            ClientConfiguration configuration1 = new(apiKey, apiBase, customHttpClient: httpClient);
 
             // Assert that hashcode is calculated correctly
-            int expectedHashCode = apiKey.GetHashCode() ^ apiBase.GetHashCode() ^ 1; // 1 is the default value if no HttpClient is passed
+            int expectedHashCode = apiKey.GetHashCode() ^ apiBase.GetHashCode() ^ httpClient.GetHashCode();
             Assert.Equal(expectedHashCode, configuration1.GetHashCode());
         }
 

@@ -21,12 +21,9 @@ namespace EasyPost.Tests
         {
             // ReSharper disable once UseObjectOrCollectionInitializer
             // we specifically want to test the getters/setters
-            Client client = new(FakeApikey);
-            client.Configuration.ConnectTimeoutMilliseconds = 5000;
-            client.Configuration.RequestTimeoutMilliseconds = 5000;
+            Client client = new(FakeApikey, timeoutMilliseconds: 5000);
 
-            Assert.Equal(5000, client.Configuration.ConnectTimeoutMilliseconds);
-            Assert.Equal(5000, client.Configuration.RequestTimeoutMilliseconds);
+            Assert.Equal(5000, client.TimeoutMilliseconds);
         }
 
         [Fact]

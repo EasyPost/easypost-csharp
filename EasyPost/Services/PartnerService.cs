@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Net.Http;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
+using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
-using RestSharp;
 
 namespace EasyPost.Services
 {
@@ -189,22 +190,46 @@ namespace EasyPost.Services
         {
             const string url = "https://api.stripe.com/v1/tokens";
 
-            RestRequest request = new(url, Method.Post);
-            request.AddHeader("Authorization", $"Bearer {easypostStripeApiKey}");
-            request.AddHeader("Accept", "application/x-www-form-urlencoded");
-            request.AddParameter("card[number]", number);
-            request.AddParameter("card[exp_month]", expirationMonth.ToString(CultureInfo.InvariantCulture));
-            request.AddParameter("card[exp_year]", expirationYear.ToString(CultureInfo.InvariantCulture));
-            request.AddParameter("card[cvc]", cvc);
+            HttpRequestMessage request = new(Http.Method.Post.HttpMethod, url);
 
-            RestResponse<Dictionary<string, object>> response = await Client!.ExecuteRequest<Dictionary<string, object>>(request);
+            Dictionary<string, string> headers = new Dictionary<string, string>
+            {
+                { "Authorization", $"Bearer {easypostStripeApiKey}" },
+                { "Accept", "application/x-www-form-urlencoded" },
+            };
 
-            if (response.ReturnedError() || response.Data == null)
+            foreach (KeyValuePair<string, string> header in headers)
+            {
+                request.Headers.Add(header.Key, header.Value);
+            }
+
+            // add parameters
+#pragma warning disable SA0001 // Nullability
+#pragma warning disable CS8620 // Nullability
+            Dictionary<string, string?> parameters = new Dictionary<string, string?>
+            {
+                { "card[number]", number },
+                { "card[exp_month]", expirationMonth.ToString(CultureInfo.InvariantCulture) },
+                { "card[exp_year]", expirationYear.ToString(CultureInfo.InvariantCulture) },
+                { "card[cvc]", cvc },
+            };
+            request.Content = new FormUrlEncodedContent(parameters);
+#pragma warning restore SA0001 // Nullability
+#pragma warning restore CS8620 // Nullability
+
+            HttpResponseMessage response = await Client!.ExecuteRequest(request);
+
+            if (response.ReturnedError())
             {
                 throw new ExternalApiError("Could not send card details to Stripe, please try again later.", (int)response.StatusCode);
             }
 
-            Dictionary<string, object>? data = response.Data;
+            string content = await response.Content.ReadAsStringAsync();
+            Dictionary<string, object> data = JsonSerialization.ConvertJsonToObject<Dictionary<string, object>>(content);
+
+            // Dispose of the request and response
+            request.Dispose();
+            response.Dispose();
 
             data.TryGetValue("id", out object? id);
             return id == null

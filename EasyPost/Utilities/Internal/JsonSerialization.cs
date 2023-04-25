@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Net.Http;
+using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RestSharp;
 
 namespace EasyPost.Utilities.Internal
 {
@@ -91,10 +92,10 @@ namespace EasyPost.Utilities.Internal
         internal static ExpandoObject ConvertJsonToObject(string? data, JsonSerializerSettings? jsonSerializerSettings = null, List<string>? rootElementKeys = null) => ConvertJsonToObject<ExpandoObject>(data, jsonSerializerSettings, rootElementKeys);
 
         /// <summary>
-        ///     Deserialize data from a RestSharp.RestResponse into a T-type object, using this instance's
+        ///     Deserialize JSON data into a T-type object, using this instance's
         ///     <see cref="JsonSerializerSettings" />.
         /// </summary>
-        /// <param name="response">RestSharp.RestResponse object to extract data from.</param>
+        /// <param name="content"><see cref="HttpContent"/> object to extract data from.</param>
         /// <param name="jsonSerializerSettings">
         ///     The <see cref="Newtonsoft.Json.JsonSerializerSettings" /> to use for
         ///     deserialization. Defaults to <see cref="DefaultJsonSerializerSettings" /> if not provided.
@@ -102,7 +103,21 @@ namespace EasyPost.Utilities.Internal
         /// <param name="rootElementKeys">List, in order, of sub-keys path to follow to deserialization starting position.</param>
         /// <typeparam name="T">Type of object to deserialize to.</typeparam>
         /// <returns>A T-type object.</returns>
-        internal static T ConvertJsonToObject<T>(RestResponse response, JsonSerializerSettings? jsonSerializerSettings = null, List<string>? rootElementKeys = null) => ConvertJsonToObject<T>(response.Content, jsonSerializerSettings, rootElementKeys);
+        internal static async Task<T> ConvertJsonToObject<T>(HttpContent content, JsonSerializerSettings? jsonSerializerSettings = null, List<string>? rootElementKeys = null) => ConvertJsonToObject<T>(await content.ReadAsStringAsync(), jsonSerializerSettings, rootElementKeys);
+
+        /// <summary>
+        ///     Deserialize data from a HttpResponseMessage into a T-type object, using this instance's
+        ///     <see cref="JsonSerializerSettings" />.
+        /// </summary>
+        /// <param name="response">HttpResponseMessage object to extract data from.</param>
+        /// <param name="jsonSerializerSettings">
+        ///     The <see cref="Newtonsoft.Json.JsonSerializerSettings" /> to use for
+        ///     deserialization. Defaults to <see cref="DefaultJsonSerializerSettings" /> if not provided.
+        /// </param>
+        /// <param name="rootElementKeys">List, in order, of sub-keys path to follow to deserialization starting position.</param>
+        /// <typeparam name="T">Type of object to deserialize to.</typeparam>
+        /// <returns>A T-type object.</returns>
+        internal static async Task<T> ConvertJsonToObject<T>(HttpResponseMessage response, JsonSerializerSettings? jsonSerializerSettings = null, List<string>? rootElementKeys = null) => await ConvertJsonToObject<T>(response.Content, jsonSerializerSettings, rootElementKeys);
 
         /// <summary>
         ///     Serialize an object into a JSON string, using this instance's <see cref="JsonSerializerSettings" />.

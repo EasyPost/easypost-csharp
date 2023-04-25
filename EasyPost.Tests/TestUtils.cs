@@ -8,10 +8,8 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Exceptions;
 using EasyPost.Utilities.Internal;
 using EasyVCR;
-using RestSharp;
 
 // ReSharper disable once CheckNamespace
 namespace EasyPost.Tests._Utilities
@@ -209,26 +207,7 @@ namespace EasyPost.Tests._Utilities
             private readonly List<MockRequest> _mockRequests = new();
 
 #pragma warning disable CS1998
-            internal override async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request)
-#pragma warning restore CS1998
-            {
-                MockRequest? mockRequest = FindMatchingMockRequest(request);
-
-                if (mockRequest == null)
-                {
-                    throw new EasyPostError($"No matching mock request found for: {request.Method.ToString().ToUpperInvariant()} {request.Resource}");
-                }
-
-                return new RestResponse<T>
-                {
-                    Content = mockRequest.ResponseInfo.Content,
-                    StatusCode = mockRequest.ResponseInfo.StatusCode,
-                    Data = mockRequest.ResponseInfo.Content != null ? JsonSerialization.ConvertJsonToObject<T>(mockRequest.ResponseInfo.Content) : default
-                };
-            }
-
-#pragma warning disable CS1998
-            internal override async Task<RestResponse> ExecuteRequest(RestRequest request)
+            internal override async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request)
 #pragma warning restore CS1998
             {
                 MockRequest? mockRequest = FindMatchingMockRequest(request);
@@ -240,14 +219,14 @@ namespace EasyPost.Tests._Utilities
 #pragma warning restore CA2201
                 }
 
-                return new RestResponse
+                return new HttpResponseMessage
                 {
-                    Content = mockRequest.ResponseInfo.Content,
+                    Content = new StringContent(mockRequest.ResponseInfo.Content),
                     StatusCode = mockRequest.ResponseInfo.StatusCode,
                 };
             }
 
-            internal MockClient(EasyPostClient client) : base(client.Configuration.ApiKey, client.Configuration.ApiBase, client.Configuration.HttpClient)
+            internal MockClient(EasyPostClient client) : base(client.Configuration.ApiKey, client.Configuration.ApiBase, customHttpClient: client.Configuration.HttpClient)
             {
             }
 
@@ -255,7 +234,7 @@ namespace EasyPost.Tests._Utilities
 
             internal void AddMockRequests(IEnumerable<MockRequest> mockRequests) => _mockRequests.AddRange(mockRequests);
 
-            private MockRequest? FindMatchingMockRequest(RestRequest request) => _mockRequests.FirstOrDefault(mock => mock.MatchRules.Method.RestSharpMethod == request.Method && EndpointMatches(request.Resource, mock.MatchRules.ResourceRegex));
+            private MockRequest? FindMatchingMockRequest(HttpRequestMessage request) => _mockRequests.FirstOrDefault(mock => mock.MatchRules.Method.HttpMethod == request.Method && EndpointMatches(request.RequestUri.AbsoluteUri, mock.MatchRules.ResourceRegex));
 
             private static bool EndpointMatches(string endpoint, string pattern)
             {
