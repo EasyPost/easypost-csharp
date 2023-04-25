@@ -4,6 +4,7 @@
 
 - Handle API timeout errors more gracefully (produce proper `TimeoutError` exception with readable messages)
 - Add missing `Declaration` parameter to Customs Info creation parameter set
+- Expand RestSharp dependency range, allow v108-v110 for .NET Standard 2.0, .NET 6.0 and .NET 7.0. RestSharp v108 still required for .NET 5.0 and .NET Core 3.1 due to EOL.
 
 ## v4.6.0 (2023-04-18)
 
