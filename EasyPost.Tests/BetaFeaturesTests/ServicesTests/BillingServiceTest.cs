@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Net;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 
@@ -18,36 +19,34 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 return new List<TestUtils.MockRequest>
                 {
                     new(
-                        new TestUtils.MockRequestMatchRules(Http.Method.Post, @"v2\/bank_accounts\/\S*\/charges$"),
+                        new TestUtils.MockRequestMatchRules(Method.Post, @"v2\/bank_accounts\/\S*\/charges$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
                     ),
                     new(
-                        new TestUtils.MockRequestMatchRules(Http.Method.Post, @"v2\/credit_cards\/\S*\/charges$"),
+                        new TestUtils.MockRequestMatchRules(Method.Post, @"v2\/credit_cards\/\S*\/charges$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
                     ),
                     new(
-                        new TestUtils.MockRequestMatchRules(Http.Method.Delete, @"v2\/bank_accounts\/\S*$"),
+                        new TestUtils.MockRequestMatchRules(Method.Delete, @"v2\/bank_accounts\/\S*$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
                     ),
                     new(
-                        new TestUtils.MockRequestMatchRules(Http.Method.Delete, @"v2\/credit_cards\/\S*$"),
+                        new TestUtils.MockRequestMatchRules(Method.Delete, @"v2\/credit_cards\/\S*$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
                     ),
                     new(
-                        new TestUtils.MockRequestMatchRules(Http.Method.Get, @"v2\/payment_methods$"),
+                        new TestUtils.MockRequestMatchRules(Method.Get, @"v2\/payment_methods$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new PaymentMethodsSummary
                         {
                             Id = "summary_123",
                             PrimaryPaymentMethod = new PaymentMethod
                             {
                                 Id = "card_123",
-                                Client = Client,
                                 Last4 = "1234",
                             },
                             SecondaryPaymentMethod = new PaymentMethod
                             {
                                 Id = "bank_123",
-                                Client = Client,
                                 BankName = "Mock Bank",
                             },
                         })

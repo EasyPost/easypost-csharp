@@ -179,6 +179,22 @@ namespace EasyPost.Tests.ServicesTests
             Assert.Equal("388 TOWNSEND ST APT 20", address.Street1);
         }
 
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestVerify()
+        {
+            UseVCR("verify");
+
+            Address address = await Client.Address.Create(Fixtures.CaAddress1);
+
+            address = await Client.Address.Verify(address.Id);
+
+            Assert.IsType<Address>(address);
+            Assert.StartsWith("adr_", address.Id);
+            Assert.Equal("388 TOWNSEND ST APT 20", address.Street1);
+        }
+
         #endregion
 
         #endregion

@@ -44,38 +44,6 @@ namespace EasyPost.Models.API
         internal EndShipper()
         {
         }
-
-        #region CRUD Operations
-
-        /// <summary>
-        ///     Update this EndShipper. Must pass in all properties (new and existing).
-        /// </summary>
-        /// <param name="parameters">See EndShipper.Create for more details.</param>
-        /// <returns>The updated EndShipper.</returns>
-        [CrudOperations.Update]
-        public async Task<EndShipper> Update(Dictionary<string, object> parameters)
-        {
-            parameters = parameters.Wrap("address");
-
-            // EndShipper needs Put, not Patch
-            await Update<EndShipper>(Http.Method.Put, $"end_shippers/{Id}", parameters);
-            return this;
-        }
-
-        /// <summary>
-        ///     Update this <see cref="EndShipper"/>.
-        /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.Update"/> parameter set.</param>
-        /// <returns>This updated <see cref="EndShipper"/> instance.</returns>
-        [CrudOperations.Update]
-        public async Task<EndShipper> Update(BetaFeatures.Parameters.EndShippers.Update parameters)
-        {
-            // EndShipper needs Put, not Patch
-            await Update<EndShipper>(Http.Method.Put, $"end_shippers/{Id}", parameters.ToDictionary());
-            return this;
-        }
-
-        #endregion
     }
 
     public class EndShipperCollection : PaginatedCollection<EndShipper>
