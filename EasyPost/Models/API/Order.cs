@@ -43,6 +43,90 @@ namespace EasyPost.Models.API
         {
         }
 
+        #region CRUD Operations
+
+        /// <summary>
+        ///     Purchase the shipments within this order with a carrier and service.
+        /// </summary>
+        /// <param name="withCarrier">The carrier to purchase a shipment from.</param>
+        /// <param name="withService">The service to purchase.</param>
+        /// <returns>The updated Order.</returns>
+        [CrudOperations.Update]
+        public async Task<Order> Buy(string withCarrier, string withService)
+        {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
+            Dictionary<string, object> parameters = new()
+            {
+                { "carrier", withCarrier },
+                { "service", withService },
+            };
+
+            await Request<Order>(Http.Method.Post, $"orders/{Id}/buy", parameters);
+            return this;
+        }
+
+        /// <summary>
+        ///     Purchase a label for this shipment with the given rate.
+        /// </summary>
+        /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
+        /// <returns>The updated Order.</returns>
+        [CrudOperations.Update]
+        public async Task<Order> Buy(Rate rate)
+        {
+            if (rate.Carrier == null)
+            {
+                throw new MissingPropertyError(rate, nameof(rate.Carrier));
+            }
+
+#pragma warning disable IDE0046
+            if (rate.Service == null)
+#pragma warning restore IDE0046
+            {
+                throw new MissingPropertyError(rate, nameof(rate.Service));
+            }
+
+            return await Buy(rate.Carrier, rate.Service);
+        }
+
+        /// <summary>
+        ///     Purchase the <see cref="Shipments"/> within this <see cref="Order"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Orders.Buy"/> parameters set.</param>
+        /// <returns>This updated <see cref="Order"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<Order> Buy(BetaFeatures.Parameters.Orders.Buy parameters)
+        {
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
+            await Request<Order>(Http.Method.Post, $"orders/{Id}/buy", parameters.ToDictionary());
+            return this;
+        }
+
+        /// <summary>
+        ///     Populate the rates property for this Order.
+        /// </summary>
+        /// <returns>The task to refresh this Order's rates.</returns>
+        [CrudOperations.Update]
+        public async Task GetRates()
+        {
+            // TODO: Should this return the updated Order object?
+            if (Id == null)
+            {
+                throw new MissingPropertyError(this, nameof(Id));
+            }
+
+            await Request<Order>(Http.Method.Get, $"orders/{Id}/rates");
+        }
+
+        #endregion
+
         /// <summary>
         ///     Get the lowest rate for this Order.
         /// </summary>
