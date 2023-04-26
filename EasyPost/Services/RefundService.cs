@@ -55,7 +55,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.RefundCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null) => await Request<RefundCollection>(Method.Get,"refunds", parameters);
+        public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null) => await Request<RefundCollection>(Method.Get, "refunds", parameters);
 
         /// <summary>
         ///     List all <see cref="Refund"/> objects.
@@ -63,7 +63,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Refunds.All"/> parameter set.</param>
         /// <returns><see cref="RefundCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<RefundCollection> All(BetaFeatures.Parameters.Refunds.All parameters) => await Request<RefundCollection>(Method.Get,"refunds", parameters.ToDictionary());
+        public async Task<RefundCollection> All(BetaFeatures.Parameters.Refunds.All parameters) => await Request<RefundCollection>(Method.Get, "refunds", parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="RefundCollection"/>.
@@ -81,7 +81,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Refund. Starts with "rfnd_".</param>
         /// <returns>EasyPost.Refund instance.</returns>
         [CrudOperations.Read]
-        public async Task<Refund> Retrieve(string id) => await Request<Refund>(Method.Get,$"refunds/{id}");
+        public async Task<Refund> Retrieve(string id) => await Request<Refund>(Method.Get, $"refunds/{id}");
 
         #endregion
     }

@@ -64,7 +64,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 Assert.IsType<Pickup>(pickup);
             }
         }
-        
+
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]

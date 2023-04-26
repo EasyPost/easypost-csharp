@@ -77,7 +77,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 Assert.IsType<Batch>(item);
             }
         }
-        
+
         [Fact]
         [CrudOperations.Create]
         [Testing.Function]
@@ -254,7 +254,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             Batch batch = await Client.Batch.Create(batchParameters);
 
             Assert.Equal(1, batch.NumShipments);
-            
+
             if (IsRecording()) // Yes, this is needed. Otherwise, the API says we can't modify a batch while it's being created.
             {
                 Thread.Sleep(10000); // Wait enough time to process
@@ -271,7 +271,6 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         }
 
         // Shipments have to exist before they can be added/removed to a batch, so we don't need to test removing shipment via shipment creation parameters, since it's not possible.
-
 
         #endregion
 

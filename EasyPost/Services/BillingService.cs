@@ -35,7 +35,7 @@ namespace EasyPost.Services
 
             Dictionary<string, object> parameters = new() { { "amount", amount } };
 
-            await Request(Method.Post,$"{paymentMethod.Endpoint}/{paymentMethod.Id}/charges", parameters);
+            await Request(Method.Post, $"{paymentMethod.Endpoint}/{paymentMethod.Id}/charges", parameters);
         }
 
         /// <summary>

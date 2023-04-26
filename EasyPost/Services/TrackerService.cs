@@ -72,7 +72,7 @@ namespace EasyPost.Services
         [Obsolete("This method is deprecated. Please use TrackerService.Create() instead. This method will be removed in a future version.", false)]
         public async Task CreateList(BetaFeatures.Parameters.Trackers.CreateList parameters)
         {
-            await Request(Method.Post,"trackers/create_list", parameters.ToDictionary());
+            await Request(Method.Post, "trackers/create_list", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<TrackerCollection> All(BetaFeatures.Parameters.Trackers.All parameters)
         {
-            TrackerCollection trackerCollection = await Request<TrackerCollection>(Method.Get,"trackers", parameters.ToDictionary());
+            TrackerCollection trackerCollection = await Request<TrackerCollection>(Method.Get, "trackers", parameters.ToDictionary());
             trackerCollection.TrackingCode = parameters.TrackingCode;
             trackerCollection.Carrier = parameters.Carrier;
             return trackerCollection;

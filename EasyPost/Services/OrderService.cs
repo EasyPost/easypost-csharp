@@ -54,7 +54,7 @@ namespace EasyPost.Services
         public async Task<Order> Create(BetaFeatures.Parameters.Orders.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<Order>(Method.Post,"orders", parameters.ToDictionary());
+            return await Request<Order>(Method.Post, "orders", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace EasyPost.Services
         /// <returns>EasyPost.Order instance.</returns>
         [CrudOperations.Read]
         public async Task<Order> Retrieve(string id) => await Request<Order>(Method.Get, $"orders/{id}");
-        
+
         /// <summary>
         ///     Purchase the shipments within this order with a carrier and service.
         /// </summary>

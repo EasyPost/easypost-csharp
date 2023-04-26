@@ -60,7 +60,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
         {
-            return await Request<ScanFormCollection>(Method.Get,"scan_forms", parameters);
+            return await Request<ScanFormCollection>(Method.Get, "scan_forms", parameters);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ScanFormCollection> All(BetaFeatures.Parameters.ScanForms.All parameters)
         {
-            return await Request<ScanFormCollection>(Method.Get,"scan_forms", parameters.ToDictionary());
+            return await Request<ScanFormCollection>(Method.Get, "scan_forms", parameters.ToDictionary());
         }
 
         /// <summary>

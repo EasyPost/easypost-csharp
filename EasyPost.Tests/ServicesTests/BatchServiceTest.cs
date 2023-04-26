@@ -80,7 +80,7 @@ namespace EasyPost.Tests.ServicesTests
             // Must compare IDs since elements of batch (i.e. status) may be different
             Assert.Equal(batch.Id, retrievedBatch.Id);
         }
-        
+
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]
@@ -231,10 +231,10 @@ namespace EasyPost.Tests.ServicesTests
             Batch batch = await Client.Batch.Create();
 
             Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
-            batch = await Client.Batch.AddShipments(batch.Id,new List<Shipment> { shipment });
+            batch = await Client.Batch.AddShipments(batch.Id, new List<Shipment> { shipment });
             Assert.Equal(1, batch.NumShipments);
 
-            batch = await Client.Batch.RemoveShipments(batch.Id,new List<string> { shipment.Id });
+            batch = await Client.Batch.RemoveShipments(batch.Id, new List<string> { shipment.Id });
 
             Assert.Equal(0, batch.NumShipments);
         }
@@ -249,11 +249,11 @@ namespace EasyPost.Tests.ServicesTests
             Batch batch = await Client.Batch.Create();
 
             Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
-            batch = await Client.Batch.AddShipments(batch.Id,new List<Shipment> { shipment });
+            batch = await Client.Batch.AddShipments(batch.Id, new List<Shipment> { shipment });
             Assert.Equal(1, batch.NumShipments);
 
             Dictionary<string, object> shipmentsDictionary = new() { { "shipments", new List<Dictionary<string, object>> { new() { { "id", shipment.Id } } } } };
-            batch = await Client.Batch.RemoveShipments(batch.Id,shipmentsDictionary);
+            batch = await Client.Batch.RemoveShipments(batch.Id, shipmentsDictionary);
 
             Assert.Equal(0, batch.NumShipments);
         }

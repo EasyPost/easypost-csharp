@@ -52,7 +52,7 @@ namespace EasyPost.Services
         public async Task<ReferralCustomer> CreateReferral(BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer parameters)
         {
             // Because the normal CreateReferral method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<ReferralCustomer>(Method.Post,"referral_customers", parameters.ToDictionary());
+            return await Request<ReferralCustomer>(Method.Post, "referral_customers", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace EasyPost.Services
         /// <param name="parameters">Parameters for API call.</param>
         /// <returns>An EasyPost.ReferralCustomerCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null) => await Request<ReferralCustomerCollection>(Method.Get,"referral_customers", parameters);
+        public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null) => await Request<ReferralCustomerCollection>(Method.Get, "referral_customers", parameters);
 
         /// <summary>
         ///     List all <see cref="ReferralCustomer"/> objects.
@@ -70,7 +70,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.All"/> parameter set.</param>
         /// <returns><see cref="ReferralCustomerCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<ReferralCustomerCollection> All(BetaFeatures.Parameters.ReferralCustomers.All parameters) => await Request<ReferralCustomerCollection>(Method.Get,"referral_customers", parameters.ToDictionary());
+        public async Task<ReferralCustomerCollection> All(BetaFeatures.Parameters.ReferralCustomers.All parameters) => await Request<ReferralCustomerCollection>(Method.Get, "referral_customers", parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ReferralCustomerCollection"/>.
@@ -129,7 +129,7 @@ namespace EasyPost.Services
         public async Task UpdateReferralEmail(string referralId, string email)
         {
             Dictionary<string, object> parameters = new() { { "user", new Dictionary<string, object> { { "email", email } } } };
-            
+
             await Request(Method.Put, $"referral_customers/{referralId}", parameters);
         }
 
@@ -155,7 +155,7 @@ namespace EasyPost.Services
                     }
                 },
             };
-            
+
             // Store the old API key
             string oldApiKey = Client!.Configuration.ApiKey;
 

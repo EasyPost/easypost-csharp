@@ -39,7 +39,7 @@ namespace EasyPost.Services
         public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null) => await Request<Report>(Method.Post, $"reports/{type}", parameters);
 
         [CrudOperations.Create]
-        public async Task<Report> Create(string type, BetaFeatures.Parameters.Reports.Create parameters) => await Request<Report>(Method.Post,$"reports/{type}", parameters.ToDictionary());
+        public async Task<Report> Create(string type, BetaFeatures.Parameters.Reports.Create parameters) => await Request<Report>(Method.Post, $"reports/{type}", parameters.ToDictionary());
 
         /// <summary>
         ///     Get a paginated list of reports.
@@ -59,7 +59,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
         {
-            ReportCollection reportCollection = await Request<ReportCollection>(Method.Get,$"reports/{type}", parameters);
+            ReportCollection reportCollection = await Request<ReportCollection>(Method.Get, $"reports/{type}", parameters);
             reportCollection.Type = type;
             return reportCollection;
         }
@@ -67,7 +67,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ReportCollection> All(string type, BetaFeatures.Parameters.Reports.All parameters)
         {
-            ReportCollection reportCollection = await Request<ReportCollection>(Method.Get,$"reports/{type}", parameters.ToDictionary());
+            ReportCollection reportCollection = await Request<ReportCollection>(Method.Get, $"reports/{type}", parameters.ToDictionary());
             reportCollection.Type = type;
             return reportCollection;
         }
@@ -97,7 +97,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a report.</param>
         /// <returns>EasyPost.Report instance.</returns>
         [CrudOperations.Read]
-        public async Task<Report> Retrieve(string type, string id) => await Request<Report>(Method.Get,$"reports/{type}/{id}");
+        public async Task<Report> Retrieve(string type, string id) => await Request<Report>(Method.Get, $"reports/{type}/{id}");
 
         #endregion
     }

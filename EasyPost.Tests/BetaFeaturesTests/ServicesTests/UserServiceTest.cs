@@ -48,7 +48,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             Assert.StartsWith("user_", user.Id);
             Assert.Equal("Test User", user.Name);
         }
-        
+
         [Fact]
         [CrudOperations.Create]
         [Testing.Function]

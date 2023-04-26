@@ -19,7 +19,7 @@ namespace EasyPost.Services
         }
 
         #region CRUD Operations
-        
+
         // TODO: Use ID or whole object as parameter?
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace EasyPost.Services
             string endpoint = SelectCarrierAccountCreationEndpoint(carrierType);
 
             parameters = parameters.Wrap("carrier_account");
-            
+
             return await Request<CarrierAccount>(Method.Post, endpoint, parameters);
         }
 
@@ -74,7 +74,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<CarrierAccount>> All() => await Request<List<CarrierAccount>>(Method.Get,"carrier_accounts");
+        public async Task<List<CarrierAccount>> All() => await Request<List<CarrierAccount>>(Method.Get, "carrier_accounts");
 
         /// <summary>
         ///     Retrieve a CarrierAccount from its id.
@@ -83,7 +83,7 @@ namespace EasyPost.Services
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         [CrudOperations.Read]
         public async Task<CarrierAccount> Retrieve(string id) => await Request<CarrierAccount>(Method.Get, $"carrier_accounts/{id}");
-        
+
         /// <summary>
         ///     Update this CarrierAccount.
         /// </summary>
@@ -112,8 +112,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
         [CrudOperations.Delete]
-        public async Task Delete(string id) => await Request(Method.Delete,$"carrier_accounts/{id}");
-
+        public async Task Delete(string id) => await Request(Method.Delete, $"carrier_accounts/{id}");
 
         #endregion
 

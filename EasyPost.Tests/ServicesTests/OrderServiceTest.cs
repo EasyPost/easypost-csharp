@@ -48,7 +48,7 @@ namespace EasyPost.Tests.ServicesTests
             // Must compare IDs since other elements of objects may be different
             Assert.Equal(order.Id, retrievedOrder.Id);
         }
-        
+
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
@@ -79,7 +79,7 @@ namespace EasyPost.Tests.ServicesTests
             // buy with a carrier and service
             Order order = await Client.Order.Create(Fixtures.BasicOrder);
 
-            order = await Client.Order.Buy(order.Id,Fixtures.Usps, Fixtures.UspsService);
+            order = await Client.Order.Buy(order.Id, Fixtures.Usps, Fixtures.UspsService);
 
             List<Shipment> shipments = order.Shipments;
 
@@ -93,7 +93,7 @@ namespace EasyPost.Tests.ServicesTests
             order = await Client.Order.Create(Fixtures.BasicOrder);
             Rate rate = order.LowestRate();
 
-            order = await Client.Order.Buy(order.Id,rate);
+            order = await Client.Order.Buy(order.Id, rate);
 
             shipments = order.Shipments;
 
@@ -124,8 +124,8 @@ namespace EasyPost.Tests.ServicesTests
                 Carrier = "something",
             };
 
-            await Assert.ThrowsAsync<MissingPropertyError>(async () => await Client.Order.Buy(order.Id,badCarrierRate));
-            await Assert.ThrowsAsync<MissingPropertyError>(async () => await Client.Order.Buy(order.Id,badServiceRate));
+            await Assert.ThrowsAsync<MissingPropertyError>(async () => await Client.Order.Buy(order.Id, badCarrierRate));
+            await Assert.ThrowsAsync<MissingPropertyError>(async () => await Client.Order.Buy(order.Id, badServiceRate));
         }
 
         [Fact]

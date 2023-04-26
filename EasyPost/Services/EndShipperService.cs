@@ -41,7 +41,7 @@ namespace EasyPost.Services
         public async Task<EndShipper> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("address");
-            return await Request<EndShipper>(Method.Post,"end_shippers", parameters);
+            return await Request<EndShipper>(Method.Post, "end_shippers", parameters);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.EndShipperCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null) => await Request<EndShipperCollection>(Method.Get,"end_shippers", parameters);
+        public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null) => await Request<EndShipperCollection>(Method.Get, "end_shippers", parameters);
 
         /// <summary>
         ///     List all <see cref="EndShipper"/> objects.
@@ -81,7 +81,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.All"/> parameter set.</param>
         /// <returns><see cref="EndShipperCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipperCollection> All(BetaFeatures.Parameters.EndShippers.All parameters) => await Request<EndShipperCollection>(Method.Get,"end_shippers", parameters.ToDictionary());
+        public async Task<EndShipperCollection> All(BetaFeatures.Parameters.EndShippers.All parameters) => await Request<EndShipperCollection>(Method.Get, "end_shippers", parameters.ToDictionary());
 
         // TODO: Add GetNextPage function when "before_id" available for EndShipper All endpoint.
 
@@ -92,7 +92,7 @@ namespace EasyPost.Services
         /// <returns>EasyPost.EndShipper instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipper> Retrieve(string id) => await Request<EndShipper>(Method.Get, $"end_shippers/{id}");
-        
+
         /// <summary>
         ///     Update this EndShipper. Must pass in all properties (new and existing).
         /// </summary>

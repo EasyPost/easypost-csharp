@@ -72,7 +72,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 Assert.IsType<Webhook>(item);
             }
         }
-        
+
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]

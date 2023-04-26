@@ -127,7 +127,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.AddressCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null) => await Request<AddressCollection>(Method.Get,"addresses", parameters);
+        public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null) => await Request<AddressCollection>(Method.Get, "addresses", parameters);
 
         /// <summary>
         ///     List all <see cref="Address"/> objects.
@@ -135,7 +135,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Addresses.All"/> parameter set.</param>
         /// <returns><see cref="AddressCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<AddressCollection> All(BetaFeatures.Parameters.Addresses.All parameters) => await Request<AddressCollection>(Method.Get,"addresses", parameters.ToDictionary());
+        public async Task<AddressCollection> All(BetaFeatures.Parameters.Addresses.All parameters) => await Request<AddressCollection>(Method.Get, "addresses", parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="AddressCollection"/>.
@@ -154,7 +154,7 @@ namespace EasyPost.Services
         /// <returns>EasyPost.Address instance.</returns>
         [CrudOperations.Read]
         public async Task<Address> Retrieve(string id) => await Request<Address>(Method.Get, $"addresses/{id}");
-        
+
         /// <summary>
         ///     Verify an Address.
         /// </summary>

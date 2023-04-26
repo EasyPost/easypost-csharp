@@ -76,16 +76,18 @@ namespace EasyPost._base
             {
                 return await HttpClient.SendAsync(request);
             }
-            catch (TaskCanceledException) // thrown when HttpClient times out in .NET Core and .NET
+            catch (TaskCanceledException)
             {
+                // thrown when HttpClient times out in .NET Core and .NET
                 throw new TimeoutError(Constants.ErrorMessages.ApiRequestTimedOut, 408);
             }
-            catch (OperationCanceledException) // thrown when HttpClient times out in .NET Standard
+            catch (OperationCanceledException)
             {
+                // thrown when HttpClient times out in .NET Standard
                 throw new TimeoutError(Constants.ErrorMessages.ApiRequestTimedOut, 408);
             }
         }
-        
+
         /// <summary>
         ///     Execute a request against the EasyPost API.
         /// </summary>

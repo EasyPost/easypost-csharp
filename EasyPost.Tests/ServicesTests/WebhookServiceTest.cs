@@ -149,7 +149,7 @@ namespace EasyPost.Tests.ServicesTests
                 Assert.Equal(Constants.ErrorMessages.InvalidWebhookSignature, error.Message);
             }
         }
-        
+
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]
@@ -161,7 +161,7 @@ namespace EasyPost.Tests.ServicesTests
 
             Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
             CleanUpAfterTest(webhook.Id);
-            
+
             if (IsRecording()) // Give the server time to process the webhook
             {
                 Thread.Sleep(10000); // Wait enough time to process

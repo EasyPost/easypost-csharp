@@ -77,7 +77,7 @@ namespace EasyPost.Services
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await Request<Batch>(Method.Post, "batches/create_and_buy", parameters.ToDictionary());
         }
-        
+
         /// <summary>
         ///     Retrieve a Batch from its id.
         /// </summary>
@@ -85,7 +85,6 @@ namespace EasyPost.Services
         /// <returns>EasyPost.Batch instance.</returns>
         [CrudOperations.Read]
         public async Task<Batch> Retrieve(string id) => await Request<Batch>(Method.Get, $"batches/{id}");
-
 
         /// <summary>
         ///     List all Batch objects.
@@ -103,7 +102,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.BatchCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null) => await Request<BatchCollection>(Method.Get,"batches", parameters);
+        public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null) => await Request<BatchCollection>(Method.Get, "batches", parameters);
 
         /// <summary>
         ///     List all <see cref="Batch"/> objects.
@@ -111,7 +110,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.All"/> parameter set.</param>
         /// <returns><see cref="BatchCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<BatchCollection> All(BetaFeatures.Parameters.Batches.All parameters) => await Request<BatchCollection>(Method.Get,"batches", parameters.ToDictionary());
+        public async Task<BatchCollection> All(BetaFeatures.Parameters.Batches.All parameters) => await Request<BatchCollection>(Method.Get, "batches", parameters.ToDictionary());
 
         // TODO: Add GetNextPage function when Batches are sorted newest to oldest.
 

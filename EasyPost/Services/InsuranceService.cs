@@ -40,7 +40,7 @@ namespace EasyPost.Services
         public async Task<Insurance> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("insurance");
-            return await Request<Insurance>(Method.Post,"insurances", parameters);
+            return await Request<Insurance>(Method.Post, "insurances", parameters);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace EasyPost.Services
         public async Task<Insurance> Create(BetaFeatures.Parameters.Insurance.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<Insurance>(Method.Post,"insurances", parameters.ToDictionary());
+            return await Request<Insurance>(Method.Post, "insurances", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -72,10 +72,10 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.InsuranceCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null) => await Request<InsuranceCollection>(Method.Get,"insurances", parameters);
+        public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null) => await Request<InsuranceCollection>(Method.Get, "insurances", parameters);
 
         [CrudOperations.Read]
-        public async Task<InsuranceCollection> All(BetaFeatures.Parameters.Insurance.All parameters) => await Request<InsuranceCollection>(Method.Get,"insurances", parameters.ToDictionary());
+        public async Task<InsuranceCollection> All(BetaFeatures.Parameters.Insurance.All parameters) => await Request<InsuranceCollection>(Method.Get, "insurances", parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="InsuranceCollection"/>.

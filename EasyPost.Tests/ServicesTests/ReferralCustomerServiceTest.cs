@@ -298,7 +298,7 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("update_referral_email");
 
             ReferralCustomer referralCustomer = await Client.ReferralCustomer.CreateReferral(Fixtures.ReferralCustomer);
-            
+
             if (IsRecording()) // Give the server time to process the referral user
             {
                 Thread.Sleep(10000); // Wait enough time to process

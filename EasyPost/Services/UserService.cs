@@ -60,7 +60,7 @@ namespace EasyPost.Services
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
         public async Task<User> RetrieveMe() => await Request<User>(Method.Get, "users");
-        
+
         /// <summary>
         ///     Update the User's brand.
         /// </summary>
@@ -132,7 +132,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
         [CrudOperations.Delete]
-        public async Task Delete(string? id) => await Request(Method.Delete,$"users/{id}");
+        public async Task Delete(string? id) => await Request(Method.Delete, $"users/{id}");
 
         #endregion
     }

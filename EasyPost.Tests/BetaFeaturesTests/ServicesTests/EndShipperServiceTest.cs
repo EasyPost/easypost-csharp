@@ -57,7 +57,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 Assert.IsType<EndShipper>(item);
             }
         }
-        
+
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]
@@ -70,7 +70,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             BetaFeatures.Parameters.EndShippers.Create createParameters = Fixtures.Parameters.EndShippers.Create(data);
 
             EndShipper endShipper = await Client.EndShipper.Create(createParameters);
-            
+
             if (IsRecording()) // Give the server time to process the endshipper
             {
                 Thread.Sleep(10000); // Wait enough time to process

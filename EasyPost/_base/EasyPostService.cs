@@ -9,12 +9,12 @@ namespace EasyPost._base
     public abstract class EasyPostService : IEasyPostService
     {
         protected EasyPostClient Client { get; }
-        
+
         internal EasyPostService(EasyPostClient client)
         {
             Client = client;
         }
-        
+
         /// <summary>
         ///     Make an HTTP request to the EasyPost API and deserialize the response JSON into an object.
         /// </summary>
@@ -37,7 +37,7 @@ namespace EasyPost._base
         /// <param name="parameters">Optional parameters to include in the request.</param>
         /// <param name="overrideApiVersion">Override API version hit for HTTP request. Defaults to general availability.</param>
         /// <returns>None</returns>
-        protected async Task Request(Method method, string endpoint, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) 
+        protected async Task Request(Method method, string endpoint, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null)
             => await Client.Request(method, endpoint, overrideApiVersion ?? ApiVersion.Current, parameters);
     }
 

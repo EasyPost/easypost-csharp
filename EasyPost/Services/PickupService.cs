@@ -82,7 +82,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<PickupCollection> All(Dictionary<string, object>? parameters = null)
         {
-            PickupCollection pickupCollection = await Request<PickupCollection>(Method.Get,"pickups", parameters);
+            PickupCollection pickupCollection = await Request<PickupCollection>(Method.Get, "pickups", parameters);
             return pickupCollection;
         }
 
@@ -106,8 +106,7 @@ namespace EasyPost.Services
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
         public async Task<PickupCollection> GetNextPage(PickupCollection collection, int? pageSize = null) => await collection.GetNextPage<PickupCollection, BetaFeatures.Parameters.Pickups.All>(async parameters => await All(parameters), collection.Pickups, pageSize);
-        
-        
+
         /// <summary>
         ///     Purchase this pickup.
         /// </summary>

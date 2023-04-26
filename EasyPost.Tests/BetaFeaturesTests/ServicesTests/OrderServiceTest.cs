@@ -35,7 +35,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             Assert.StartsWith("order_", order.Id);
             Assert.NotNull(order.Rates);
         }
-        
+
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]

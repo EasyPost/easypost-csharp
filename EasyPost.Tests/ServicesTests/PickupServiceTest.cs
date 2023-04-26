@@ -99,7 +99,7 @@ namespace EasyPost.Tests.ServicesTests
                 Assert.True(false);
             }
         }
-        
+
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]
@@ -134,7 +134,7 @@ namespace EasyPost.Tests.ServicesTests
 
             Pickup pickup = await Client.Pickup.Create(pickupData);
 
-            pickup = await Client.Pickup.Buy(pickup.Id,Fixtures.Usps, Fixtures.PickupService);
+            pickup = await Client.Pickup.Buy(pickup.Id, Fixtures.Usps, Fixtures.PickupService);
 
             pickup = await Client.Pickup.Cancel(pickup.Id);
 
