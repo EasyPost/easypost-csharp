@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 397,
-    "RecordedAt": "2023-03-06T18:35:16.429379-07:00",
+    "Duration": 291,
+    "RecordedAt": "2023-04-25T21:17:06.34171-06:00",
     "Request": {
       "Body": "{\"address\":{\"street1\":\"388 Townsend St\"}}",
       "BodyContentType": "Json",
@@ -12,14 +12,12 @@
       "Method": "POST",
       "RequestHeaders": {
         "Authorization": "<REDACTED>",
-        "content_type": "application/json",
-        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
         "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/addresses"
     },
     "Response": {
-      "Body": "{\"id\":\"adr_503295e1bc8811eda2d7ac1f6bc7b362\",\"object\":\"Address\",\"created_at\":\"2023-03-06T18:35:16-07:00\",\"updated_at\":\"2023-03-06T18:35:16-07:00\",\"name\":null,\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":\"US\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
+      "Body": "{\"id\":\"adr_d2a678e2e3e011ed9116ac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2023-04-25T21:17:06-06:00\",\"updated_at\":\"2023-04-25T21:17:06-06:00\",\"name\":null,\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":\"US\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -34,16 +32,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "a839953e640694d4e64175ca001f3b97",
+        "x-ep-request-uuid": "d677fdb6644897b2e1cda0400008ca03",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "Location": "/api/v2/addresses/adr_503295e1bc8811eda2d7ac1f6bc7b362",
-        "ETag": "W/\"bdbdadc9d80c26d2b2e955655e0ac895\"",
-        "x-runtime": "0.030684",
-        "x-node": "bigweb4nuq",
-        "x-version-label": "easypost-202303070112-c6393306d4-master",
+        "Location": "/api/v2/addresses/adr_d2a678e2e3e011ed9116ac1f6b0a0d1e",
+        "ETag": "W/\"ffe4971594106849f308e738896dd444\"",
+        "x-runtime": "0.038039",
+        "x-node": "bigweb3nuq",
+        "x-version-label": "easypost-202304252326-79950b6035-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq a40ea751fd,intlb1wdc a40ea751fd,extlb4wdc a40ea751fd",
+        "x-proxied": "intlb2nuq a29e4ad05c,extlb2nuq a29e4ad05c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

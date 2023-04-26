@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -39,7 +40,7 @@ namespace EasyPost.Services
         public async Task<Pickup> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("pickup");
-            return await Create<Pickup>("pickups", parameters);
+            return await Request<Pickup>(Method.Post, "pickups", parameters);
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace EasyPost.Services
         public async Task<Pickup> Create(BetaFeatures.Parameters.Pickups.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Create<Pickup>("pickups", parameters.ToDictionary());
+            return await Request<Pickup>(Method.Post, "pickups", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Pickup. Starts with "pickup_".</param>
         /// <returns>EasyPost.Pickup instance.</returns>
         [CrudOperations.Read]
-        public async Task<Pickup> Retrieve(string id) => await Get<Pickup>($"pickups/{id}");
+        public async Task<Pickup> Retrieve(string id) => await Request<Pickup>(Method.Get, $"pickups/{id}");
 
         /// <summary>
         ///     Get a paginated list of <see cref="Pickup"/>s.
@@ -81,7 +82,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<PickupCollection> All(Dictionary<string, object>? parameters = null)
         {
-            PickupCollection pickupCollection = await List<PickupCollection>("pickups", parameters);
+            PickupCollection pickupCollection = await Request<PickupCollection>(Method.Get, "pickups", parameters);
             return pickupCollection;
         }
 
@@ -105,6 +106,45 @@ namespace EasyPost.Services
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
         public async Task<PickupCollection> GetNextPage(PickupCollection collection, int? pageSize = null) => await collection.GetNextPage<PickupCollection, BetaFeatures.Parameters.Pickups.All>(async parameters => await All(parameters), collection.Pickups, pageSize);
+
+        /// <summary>
+        ///     Purchase this pickup.
+        /// </summary>
+        /// <param name="withCarrier">The name of the carrier to purchase with.</param>
+        /// <param name="withService">The name of the service to purchase.</param>
+        /// <returns>The updated Pickup.</returns>
+        [CrudOperations.Update]
+        public async Task<Pickup> Buy(string id, string withCarrier, string withService)
+        {
+            Dictionary<string, object> parameters = new()
+            {
+                { "carrier", withCarrier },
+                { "service", withService },
+            };
+
+            return await Request<Pickup>(Method.Post, $"pickups/{id}/buy", parameters);
+        }
+
+        /// <summary>
+        ///     Purchase this <see cref="Pickup"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Pickups.Buy"/> parameters set.</param>
+        /// <returns>This updated <see cref="Pickup"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<Pickup> Buy(string id, BetaFeatures.Parameters.Pickups.Buy parameters)
+        {
+            return await Request<Pickup>(Method.Post, $"pickups/{id}/buy", parameters.ToDictionary());
+        }
+
+        /// <summary>
+        ///     Cancel this pickup.
+        /// </summary>
+        /// <returns>The updated Pickup.</returns>
+        [CrudOperations.Update]
+        public async Task<Pickup> Cancel(string id)
+        {
+            return await Request<Pickup>(Method.Post, $"pickups/{id}/cancel");
+        }
 
         #endregion
     }

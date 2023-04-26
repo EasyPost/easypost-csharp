@@ -65,6 +65,36 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             }
         }
 
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestBuy()
+        {
+            UseVCR("buy");
+
+            Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
+
+            BetaFeatures.Parameters.Shipments.Create shipmentCreateParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+
+            Shipment shipment = await Client.Shipment.Create(shipmentCreateParameters);
+
+            Dictionary<string, object> pickupData = Fixtures.BasicPickup;
+            pickupData["shipment"] = shipment;
+
+            BetaFeatures.Parameters.Pickups.Create pickupCreateParameters = Fixtures.Parameters.Pickups.Create(pickupData);
+
+            Pickup pickup = await Client.Pickup.Create(pickupCreateParameters);
+
+            BetaFeatures.Parameters.Pickups.Buy pickupBuyParameters = new BetaFeatures.Parameters.Pickups.Buy(Fixtures.Usps, Fixtures.PickupService);
+
+            pickup = await Client.Pickup.Buy(pickup.Id, pickupBuyParameters);
+
+            Assert.IsType<Pickup>(pickup);
+            Assert.StartsWith("pickup_", pickup.Id);
+            Assert.NotNull(pickup.Confirmation);
+            Assert.Equal("scheduled", pickup.Status);
+        }
+
         #endregion
 
         #endregion
