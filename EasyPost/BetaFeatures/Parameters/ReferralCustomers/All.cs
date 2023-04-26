@@ -1,10 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
+using EasyPost.Services;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.BetaFeatures.Parameters.ReferralCustomers
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.PartnerService.All(All)"/> API calls.
+    ///     Parameters for <see cref="ReferralCustomerService.All(All)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class All : BaseParameters

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -69,7 +70,7 @@ namespace EasyPost.Tests.ServicesTests
             {
                 // API call to get the page of addresses will return an empty list with HasMore = false
                 new(
-                    new TestUtils.MockRequestMatchRules(Http.Method.Get, @"v2\/addresses"),
+                    new TestUtils.MockRequestMatchRules(Method.Get, @"v2\/addresses"),
                     new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new AddressCollection
                     {
                         Addresses = new List<Address>(),

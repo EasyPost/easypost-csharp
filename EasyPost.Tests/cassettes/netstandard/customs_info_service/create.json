@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 569,
-    "RecordedAt": "2022-10-24T12:36:16.894525-06:00",
+    "Duration": 259,
+    "RecordedAt": "2023-04-25T21:18:23.262897-06:00",
     "Request": {
       "Body": "{\"customs_info\":{\"eel_pfc\":\"NOEEI 30.37(a)\",\"customs_certify\":true,\"customs_signer\":\"Steve Brule\",\"contents_type\":\"merchandise\",\"contents_explanation\":\"\",\"restriction_type\":\"none\",\"non_delivery_option\":\"return\",\"customs_items\":[{\"description\":\"Sweet shirts\",\"quantity\":2,\"weight\":11,\"value\":23.25,\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\"}]}}",
       "BodyContentType": "Json",
@@ -12,14 +12,12 @@
       "Method": "POST",
       "RequestHeaders": {
         "Authorization": "<REDACTED>",
-        "content_type": "application/json",
-        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
         "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/customs_infos"
     },
     "Response": {
-      "Body": "{\"id\":\"cstinfo_4c6a79a19f0e40f6bffe924ae2633560\",\"object\":\"CustomsInfo\",\"created_at\":\"2022-10-24T18:36:16Z\",\"updated_at\":\"2022-10-24T18:36:16Z\",\"contents_explanation\":\"\",\"contents_type\":\"merchandise\",\"customs_certify\":true,\"customs_signer\":\"Steve Brule\",\"eel_pfc\":\"NOEEI 30.37(a)\",\"non_delivery_option\":\"return\",\"restriction_comments\":null,\"restriction_type\":\"none\",\"mode\":\"test\",\"declaration\":null,\"customs_items\":[{\"id\":\"cstitem_aa3f702d3fcd43fb8e03b881a15f50f7\",\"object\":\"CustomsItem\",\"created_at\":\"2022-10-24T18:36:16Z\",\"updated_at\":\"2022-10-24T18:36:16Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.25\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}]}",
+      "Body": "{\"id\":\"cstinfo_2f91a8f393234fd1aa2ad5b2aed1191c\",\"object\":\"CustomsInfo\",\"created_at\":\"2023-04-26T03:18:23Z\",\"updated_at\":\"2023-04-26T03:18:23Z\",\"contents_explanation\":\"\",\"contents_type\":\"merchandise\",\"customs_certify\":true,\"customs_signer\":\"Steve Brule\",\"eel_pfc\":\"NOEEI 30.37(a)\",\"non_delivery_option\":\"return\",\"restriction_comments\":null,\"restriction_type\":\"none\",\"mode\":\"test\",\"declaration\":null,\"customs_items\":[{\"id\":\"cstitem_bc52dcd4ec5b4a978a56d5f7f750616f\",\"object\":\"CustomsItem\",\"created_at\":\"2023-04-26T03:18:23Z\",\"updated_at\":\"2023-04-26T03:18:23Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.25\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}]}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -34,16 +32,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "885a1bc06356db20eca0a12800218e17",
+        "x-ep-request-uuid": "72dbe6fc644897ffe1dfb060000b31bb",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "Location": "/api/v2/customs_infos/cstinfo_4c6a79a19f0e40f6bffe924ae2633560",
-        "ETag": "W/\"542e41d9993feeee21e6c5b47e22abb2\"",
-        "x-runtime": "0.038820",
-        "x-node": "bigweb6nuq",
-        "x-version-label": "easypost-202210241803-ba94ab8034-master",
+        "Location": "/api/v2/customs_infos/cstinfo_2f91a8f393234fd1aa2ad5b2aed1191c",
+        "ETag": "W/\"71d56a10ee50c820cb1570b61a181027\"",
+        "x-runtime": "0.046563",
+        "x-node": "bigweb8nuq",
+        "x-version-label": "easypost-202304252326-79950b6035-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 29913d444b,intlb1wdc 29913d444b,extlb4wdc 29913d444b",
+        "x-proxied": "intlb1nuq a29e4ad05c,extlb1nuq a29e4ad05c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

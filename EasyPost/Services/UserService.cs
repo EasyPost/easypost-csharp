@@ -80,7 +80,7 @@ namespace EasyPost.Services
         public async Task<Brand> UpdateBrand(string? id, Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("brand");
-            return await Request<Brand>(Http.Method.Patch, $"users/{id}/brand", parameters);
+            return await Request<Brand>(Method.Put, $"users/{id}/brand", parameters);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Brand> UpdateBrand(string? id, BetaFeatures.Parameters.Users.UpdateBrand parameters)
         {
-            return await Request<Brand>(Http.Method.Patch, $"users/{id}/brand", parameters.ToDictionary());
+            return await Request<Brand>(Method.Put, $"users/{id}/brand", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<User> Update(string? id, Dictionary<string, object> parameters)
         {
-            return await Request<User>(Http.Method.Patch, $"users/{id}", parameters);
+            return await Request<User>(Method.Put, $"users/{id}", parameters);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<User> Update(string? id, BetaFeatures.Parameters.Users.Update parameters)
         {
-            return await Request<User>(Http.Method.Patch, $"users/{id}", parameters.ToDictionary());
+            return await Request<User>(Method.Put, $"users/{id}", parameters.ToDictionary());
         }
 
         /// <summary>

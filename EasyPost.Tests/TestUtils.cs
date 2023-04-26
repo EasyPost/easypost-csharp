@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Http;
 using EasyPost.Utilities.Internal;
 using EasyVCR;
 
@@ -80,6 +81,19 @@ namespace EasyPost.Tests._Utilities
             return File.ReadAllText(filePath);
         }
 
+        internal static string NetVersion
+        {
+            get
+            {
+                string netVersion = "net";
+#if NET462
+                netVersion = "netstandard";
+#endif
+
+                return netVersion;
+            }
+        }
+
         public class VCR
         {
             // Cassettes folder will always been in the same directory as this TestUtils.cs file
@@ -113,11 +127,7 @@ namespace EasyPost.Tests._Utilities
 
                 _testCassettesFolder = Path.Combine(GetSourceFileDirectory(), CassettesFolder); // create "cassettes" folder in same directory as test files
 
-                // ReSharper disable once ConvertToConstant.Local
-                string netVersionFolder = "net";
-#if NET462
-                netVersionFolder = "netstandard";
-#endif
+                string netVersionFolder = NetVersion;
 
                 _testCassettesFolder = Path.Combine(_testCassettesFolder, netVersionFolder); // create .NET version-specific folder in "cassettes" folder
 
@@ -165,11 +175,11 @@ namespace EasyPost.Tests._Utilities
 
         public class MockRequestMatchRules
         {
-            internal Http.Method Method { get; set; }
+            internal Method Method { get; set; }
 
             internal string ResourceRegex { get; set; }
 
-            public MockRequestMatchRules(Http.Method method, string resourceRegex)
+            public MockRequestMatchRules(Method method, string resourceRegex)
             {
                 Method = method;
                 ResourceRegex = resourceRegex;

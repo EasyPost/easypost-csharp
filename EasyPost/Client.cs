@@ -36,7 +36,7 @@ namespace EasyPost
 
         public ParcelService Parcel { get; }
 
-        public PartnerService Partner { get; }
+        public ReferralCustomerService ReferralCustomer { get; }
 
         public PickupService Pickup { get; }
 
@@ -82,7 +82,7 @@ namespace EasyPost
             Insurance = new InsuranceService(this);
             Order = new OrderService(this);
             Parcel = new ParcelService(this);
-            Partner = new PartnerService(this);
+            ReferralCustomer = new ReferralCustomerService(this);
             Pickup = new PickupService(this);
             Rate = new RateService(this);
             Refund = new RefundService(this);

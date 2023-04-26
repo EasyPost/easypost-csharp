@@ -123,7 +123,7 @@ namespace EasyPost.Services
                 { "service", withService },
             };
 
-            return await Request<Pickup>(Http.Method.Post, $"pickups/{id}/buy", parameters);
+            return await Request<Pickup>(Method.Post, $"pickups/{id}/buy", parameters);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Pickup> Buy(string id, BetaFeatures.Parameters.Pickups.Buy parameters)
         {
-            return await Request<Pickup>(Http.Method.Post, $"pickups/{id}/buy", parameters.ToDictionary());
+            return await Request<Pickup>(Method.Post, $"pickups/{id}/buy", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Pickup> Cancel(string id)
         {
-            return await Request<Pickup>(Http.Method.Post, $"pickups/{id}/cancel");
+            return await Request<Pickup>(Method.Post, $"pickups/{id}/cancel");
         }
 
         #endregion

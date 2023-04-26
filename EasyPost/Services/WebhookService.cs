@@ -87,7 +87,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Webhook> Update(string id, Dictionary<string, object>? parameters = null)
         {
-            return await Request<Webhook>(Http.Method.Patch, $"webhooks/{id}", parameters);
+            return await Request<Webhook>(Method.Put, $"webhooks/{id}", parameters);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Webhook> Update(string id, BetaFeatures.Parameters.Webhooks.Update parameters)
         {
-            return await Request<Webhook>(Http.Method.Patch, $"webhooks/{id}", parameters.ToDictionary());
+            return await Request<Webhook>(Method.Put, $"webhooks/{id}", parameters.ToDictionary());
         }
 
         /// <summary>

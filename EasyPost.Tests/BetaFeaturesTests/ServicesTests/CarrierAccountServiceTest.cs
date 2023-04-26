@@ -17,7 +17,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 try
                 {
                     CarrierAccount retrievedCarrierAccount = await Client.CarrierAccount.Retrieve(id);
-                    await retrievedCarrierAccount.Delete();
+                    await Client.CarrierAccount.Delete(retrievedCarrierAccount.Id);
                     return true;
                 }
                 catch
@@ -77,6 +77,34 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 
                 // Check the cassette to make sure the endpoint is correct (it should be carrier_accounts/register)
             }
+        }
+        
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestUpdate()
+        {
+            UseVCR("update");
+
+            Dictionary<string, object> data = Fixtures.BasicCarrierAccount;
+
+            BetaFeatures.Parameters.CarrierAccounts.Create createParameters = Fixtures.Parameters.CarrierAccounts.Create(data);
+
+            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(createParameters);
+            CleanUpAfterTest(carrierAccount.Id);
+
+            const string testDescription = "my custom description";
+
+            BetaFeatures.Parameters.CarrierAccounts.Update updateParameters = new BetaFeatures.Parameters.CarrierAccounts.Update
+            {
+                Description = testDescription,
+            };
+
+            carrierAccount = await Client.CarrierAccount.Update(carrierAccount.Id, updateParameters);
+
+            Assert.IsType<CarrierAccount>(carrierAccount);
+            Assert.StartsWith("ca_", carrierAccount.Id);
+            Assert.Equal(testDescription, carrierAccount.Description);
         }
 
         #endregion

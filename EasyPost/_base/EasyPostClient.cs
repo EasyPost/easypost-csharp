@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -75,10 +76,42 @@ namespace EasyPost._base
             {
                 return await HttpClient.SendAsync(request);
             }
-            catch (TaskCanceledException)
+            catch (TaskCanceledException) // thrown when HttpClient times out in .NET Core and .NET
             {
                 throw new TimeoutError(Constants.ErrorMessages.ApiRequestTimedOut, 408);
             }
+            catch (OperationCanceledException) // thrown when HttpClient times out in .NET Standard
+            {
+                throw new TimeoutError(Constants.ErrorMessages.ApiRequestTimedOut, 408);
+            }
+        }
+        
+        /// <summary>
+        ///     Execute a request against the EasyPost API.
+        /// </summary>
+        /// /// <param name="method">HTTP method to use for the request.</param>
+        /// <param name="endpoint">EasyPost API endpoint to use for the request.</param>
+        /// <param name="apiVersion">API version to use for the request.</param>
+        /// <param name="parameters">Optional parameters to use for the request.</param>
+        /// <returns>Response</returns>
+        // ReSharper disable once UnusedMethodReturnValue.Global
+        internal async Task<HttpResponseMessage> Request(Method method, string endpoint, ApiVersion apiVersion, Dictionary<string, object>? parameters = null)
+        {
+            // Build the request
+            Dictionary<string, string> headers = Configuration.Headers;
+            Request request = new(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
+
+            // Execute the request
+            HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage());
+
+            // Check whether the HTTP request produced an error (3xx, 4xx or 5xx status code) or not
+            // Check the response's status code
+            if (response.ReturnedError())
+            {
+                throw await ApiError.FromErrorResponse(response);
+            }
+
+            return response;
         }
 
         /// <summary>
@@ -91,21 +124,10 @@ namespace EasyPost._base
         /// <param name="rootElement">Optional root element for the JSON to begin deserialization at.</param>
         /// <typeparam name="T">Type of object to deserialize response data into. Must be subclass of EasyPostObject.</typeparam>
         /// <returns>An instance of a T type object.</returns>
-        internal async Task<T> Request<T>(Http.Method method, string endpoint, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null)
+        internal async Task<T> Request<T>(Method method, string endpoint, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null)
             where T : class
         {
-            // Build the request
-            Dictionary<string, string> headers = Configuration.Headers;
-            Request request = new(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
-
-            // Execute the request
-            HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage());
-
-            // Check the response's status code
-            if (response.ReturnedError())
-            {
-                throw await ApiError.FromErrorResponse(response);
-            }
+            HttpResponseMessage response = await Request(method, endpoint, apiVersion, parameters);
 
             // Prepare the list of root elements to use during deserialization
             List<string>? rootElements = null;
@@ -126,30 +148,6 @@ namespace EasyPost._base
 #pragma warning restore IDE0270
 
             return resource;
-        }
-
-        /// <summary>
-        ///     Execute a request against the EasyPost API.
-        /// </summary>
-        /// /// <param name="method">HTTP method to use for the request.</param>
-        /// <param name="endpoint">EasyPost API endpoint to use for the request.</param>
-        /// <param name="apiVersion">API version to use for the request.</param>
-        /// <param name="parameters">Optional parameters to use for the request.</param>
-        /// <returns>Whether request was successful.</returns>
-        // ReSharper disable once UnusedMethodReturnValue.Global
-        internal async Task<bool> Request(Http.Method method, string endpoint, ApiVersion apiVersion, Dictionary<string, object>? parameters = null)
-        {
-            // Build the request
-            Dictionary<string, string> headers = Configuration.Headers;
-            Request request = new(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
-
-            // Execute the request
-            HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage());
-
-            // Check whether the HTTP request produced an error (3xx, 4xx or 5xx status code) or not
-            bool errorRaised = response.ReturnedNoError();
-
-            return errorRaised;
         }
 
         public override bool Equals(object? obj) => obj is EasyPostClient client && Configuration.Equals(client.Configuration);

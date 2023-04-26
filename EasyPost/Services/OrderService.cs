@@ -80,7 +80,7 @@ namespace EasyPost.Services
                 { "service", withService },
             };
 
-            return await Request<Order>(Http.Method.Post, $"orders/{id}/buy", parameters);
+            return await Request<Order>(Method.Post, $"orders/{id}/buy", parameters);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Order> Buy(string id, BetaFeatures.Parameters.Orders.Buy parameters)
         {
-            return await Request<Order>(Http.Method.Post, $"orders/{id}/buy", parameters.ToDictionary());
+            return await Request<Order>(Method.Post, $"orders/{id}/buy", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -124,7 +124,8 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Order> RefreshRates(string id)
         {
-            return await Request<Order>(Http.Method.Get, $"orders/{id}/rates");
+            // TODO: Make consistent with Shipment, Pickup and Order: GetRates, RefreshRates, RegenerateRates?
+            return await Request<Order>(Method.Get, $"orders/{id}/rates");
         }
 
         #endregion

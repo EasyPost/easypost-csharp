@@ -1,10 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
+using EasyPost.Services.Beta;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.BetaFeatures.Parameters.ReferralCustomers
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.Beta.ReferralService.RefundByPaymentLog(RefundByPaymentLog)"/> API calls.
+    ///     Parameters for <see cref="ReferralCustomerService.RefundByPaymentLog(RefundByPaymentLog)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class RefundByPaymentLog : BaseParameters

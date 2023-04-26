@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 671,
-    "RecordedAt": "2022-11-22T13:55:57.818219-07:00",
+    "Duration": 207,
+    "RecordedAt": "2023-04-25T21:18:24.683882-06:00",
     "Request": {
       "Body": "{\"carrier_account\":{\"type\":\"FedexAccount\",\"credentials\":{},\"test_credentials\":{},\"registration_data\":{}}}",
       "BodyContentType": "Json",
@@ -12,8 +12,6 @@
       "Method": "POST",
       "RequestHeaders": {
         "Authorization": "<REDACTED>",
-        "content_type": "application/json",
-        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
         "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/carrier_accounts/register"
@@ -34,14 +32,14 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "816b7d78637d375dec7c7bfe00574372",
+        "x-ep-request-uuid": "d677fdbb64489800f753df340008d814",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.031737",
-        "x-node": "bigweb6nuq",
-        "x-version-label": "easypost-202211221943-034b711ab5-master",
+        "x-runtime": "0.032654",
+        "x-node": "bigweb5nuq",
+        "x-version-label": "easypost-202304252326-79950b6035-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 29913d444b,extlb1nuq 29913d444b",
+        "x-proxied": "intlb1nuq a29e4ad05c,extlb2nuq a29e4ad05c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

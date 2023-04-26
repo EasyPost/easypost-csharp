@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 884,
-    "RecordedAt": "2023-03-15T16:18:03.590738-06:00",
+    "Duration": 528,
+    "RecordedAt": "2023-04-25T21:18:22.542795-06:00",
     "Request": {
       "Body": "{\"address\":{\"city\":\"San Francisco\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"name\":\"Jack Sparrow\",\"phone\":\"<REDACTED>\",\"state\":\"CA\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"zip\":\"94107\"}}",
       "BodyContentType": "Json",
@@ -12,14 +12,12 @@
       "Method": "POST",
       "RequestHeaders": {
         "Authorization": "<REDACTED>",
-        "content_type": "application/json",
-        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
         "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/end_shippers"
     },
     "Response": {
-      "Body": "{\"id\":\"es_9175eacec7b64bfba254e7669be28934\",\"object\":\"EndShipper\",\"mode\":\"test\",\"created_at\":\"2023-03-15T16:18:03-06:00\",\"updated_at\":\"2023-03-15T16:18:03-06:00\",\"name\":\"JACK SPARROW\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
+      "Body": "{\"id\":\"es_b6c273a104c849b9910f26981c81b0ab\",\"object\":\"EndShipper\",\"mode\":\"test\",\"created_at\":\"2023-04-25T21:18:22-06:00\",\"updated_at\":\"2023-04-25T21:18:22-06:00\",\"name\":\"JACK SPARROW\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\"}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -34,15 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "f46ccd136412441be6869a2700050c7e",
+        "x-ep-request-uuid": "72dbe703644897fef754ef2f000b3144",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "ETag": "W/\"f3c3b4f956908b936cab740366b2d485\"",
-        "x-runtime": "0.038627",
-        "x-node": "bigweb5nuq",
-        "x-version-label": "easypost-202303142258-f5b873fcbd-master",
+        "ETag": "W/\"1e09d20cb0a990391be2b281f4b3ade9\"",
+        "x-runtime": "0.043878",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202304252326-79950b6035-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq a40ea751fd,intlb1wdc a40ea751fd,extlb3wdc a40ea751fd",
+        "x-proxied": "intlb2nuq a29e4ad05c,extlb1nuq a29e4ad05c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
@@ -55,6 +56,48 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             {
                 Assert.IsType<EndShipper>(item);
             }
+        }
+        
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestUpdate()
+        {
+            UseVCR("update");
+
+            Dictionary<string, object> data = Fixtures.CaAddress1;
+
+            BetaFeatures.Parameters.EndShippers.Create createParameters = Fixtures.Parameters.EndShippers.Create(data);
+
+            EndShipper endShipper = await Client.EndShipper.Create(createParameters);
+            
+            if (IsRecording()) // Give the server time to process the endshipper
+            {
+                Thread.Sleep(10000); // Wait enough time to process
+            }
+
+            const string testName = "NEW NAME";
+
+            // Updating an EndShipper requires all the original data to be sent back + the updated data
+            BetaFeatures.Parameters.EndShippers.Update updateParameters = new BetaFeatures.Parameters.EndShippers.Update
+            {
+                Name = testName,
+                City = createParameters.City,
+                Company = createParameters.Company,
+                Country = createParameters.Country,
+                Email = createParameters.Email,
+                Phone = createParameters.Phone,
+                State = createParameters.State,
+                Street1 = createParameters.Street1,
+                Street2 = createParameters.Street2,
+                Zip = createParameters.Zip,
+            };
+
+            endShipper = await Client.EndShipper.Update(endShipper.Id, updateParameters);
+
+            Assert.IsType<EndShipper>(endShipper);
+            Assert.StartsWith("es_", endShipper.Id);
+            Assert.Equal(testName, endShipper.Name);
         }
 
         #endregion

@@ -1,11 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
 using EasyPost.Models.API;
+using EasyPost.Services.Beta;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.BetaFeatures.Parameters.ReferralCustomers
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.Beta.ReferralService.AddPaymentMethod(AddPaymentMethod)"/> API calls.
+    ///     Parameters for <see cref="ReferralCustomerService.AddPaymentMethod(AddPaymentMethod)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class AddPaymentMethod : BaseParameters

@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 225,
-    "RecordedAt": "2023-03-17T11:54:26.387905-06:00",
+    "Duration": 249,
+    "RecordedAt": "2023-04-25T21:18:24.416515-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -9,19 +9,17 @@
       "Method": "GET",
       "RequestHeaders": {
         "Authorization": "<REDACTED>",
-        "content_type": "application/json",
-        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
         "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/refunds?page_size=5"
     },
     "Response": {
-      "Body": "{\"refunds\":[{\"id\":\"rfnd_1f890a9083174124be7f5d30c29beea1\",\"object\":\"Refund\",\"created_at\":\"2023-03-17T17:54:26Z\",\"updated_at\":\"2023-03-17T17:54:26Z\",\"tracking_code\":\"9400100104262190088508\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_83a47ff3f12445eba7f028983bac2d9c\"},{\"id\":\"rfnd_91483f690c974966b1f3228d8c52dc40\",\"object\":\"Refund\",\"created_at\":\"2023-03-17T17:54:20Z\",\"updated_at\":\"2023-03-17T17:54:20Z\",\"tracking_code\":\"9400100104262190088461\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_135a47970d5f41dd9c699e991978738d\"},{\"id\":\"rfnd_6e510fa5585b414c9d23737f7a922f62\",\"object\":\"Refund\",\"created_at\":\"2023-03-15T18:49:53Z\",\"updated_at\":\"2023-03-16T18:49:53Z\",\"tracking_code\":\"9400100104262189490527\",\"confirmation_number\":null,\"status\":\"rejected\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_ad8358e924a941b1addae0394cb2453b\"},{\"id\":\"rfnd_89763865e7a94c4c97e2d64183a1ba0a\",\"object\":\"Refund\",\"created_at\":\"2023-03-15T18:49:44Z\",\"updated_at\":\"2023-03-16T18:49:44Z\",\"tracking_code\":\"9400100104262189490459\",\"confirmation_number\":null,\"status\":\"rejected\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_b9f189812e2f4f3da0fd4497cee9203b\"},{\"id\":\"rfnd_c6f82da5f9b24c84b311ca85ecbd2fb4\",\"object\":\"Refund\",\"created_at\":\"2023-03-15T18:42:41Z\",\"updated_at\":\"2023-03-16T18:42:41Z\",\"tracking_code\":\"9400100104262189488616\",\"confirmation_number\":null,\"status\":\"rejected\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_7ac9abe735f341adb4fa03b65ab78f57\"}],\"has_more\":true}",
+      "Body": "{\"refunds\":[{\"id\":\"rfnd_93967f6df15f498d983e054a6467168e\",\"object\":\"Refund\",\"created_at\":\"2023-04-26T03:18:24Z\",\"updated_at\":\"2023-04-26T03:18:24Z\",\"tracking_code\":\"9400100104262203282824\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_b46c9b3c4c204a4398249f0f1b8dd7db\"},{\"id\":\"rfnd_7fc9a58b431c46bd9c76fab7fe925e2c\",\"object\":\"Refund\",\"created_at\":\"2023-04-26T03:17:31Z\",\"updated_at\":\"2023-04-26T03:17:31Z\",\"tracking_code\":\"9400100104262203282213\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_33d9fe475bd943c3b632d556dccd208a\"},{\"id\":\"rfnd_f52b10ef4c8347549de31c846bc0c220\",\"object\":\"Refund\",\"created_at\":\"2023-04-26T03:17:08Z\",\"updated_at\":\"2023-04-26T03:17:08Z\",\"tracking_code\":\"9400100104262203281759\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_14820f7216a548ada9a1aef89deaaee5\"},{\"id\":\"rfnd_623f6f918c2c48c7a4cc75caad12ec81\",\"object\":\"Refund\",\"created_at\":\"2023-04-26T03:17:07Z\",\"updated_at\":\"2023-04-26T03:17:07Z\",\"tracking_code\":\"9400100104262203281650\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_cbe8f26cc0a94b8db0dc23a54f23f82c\"},{\"id\":\"rfnd_4ef88240546e40ac8f816fbc246a3e23\",\"object\":\"Refund\",\"created_at\":\"2023-04-26T03:15:37Z\",\"updated_at\":\"2023-04-26T03:15:37Z\",\"tracking_code\":\"9400100104262203280394\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_fd59c2a0fb0d4b2f8b8f948e046102c6\"}],\"has_more\":true}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "1506"
+        "Content-Length": "1509"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -31,15 +29,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "fbe742376414a952e660c7a30019231b",
+        "x-ep-request-uuid": "d677fdb464489800e1ce1fbe0008d805",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "ETag": "W/\"12f2bc3d5b1d4d1e585228b6c3dc7663\"",
-        "x-runtime": "0.057088",
-        "x-node": "bigweb11nuq",
-        "x-version-label": "easypost-202303161921-1934ad3d07-master",
+        "ETag": "W/\"656abfd25617d5395a34c4a2496a41c4\"",
+        "x-runtime": "0.046842",
+        "x-node": "bigweb12nuq",
+        "x-version-label": "easypost-202304252326-79950b6035-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq a40ea751fd,extlb2nuq a40ea751fd",
+        "x-proxied": "intlb1nuq a29e4ad05c,extlb2nuq a29e4ad05c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

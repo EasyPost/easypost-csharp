@@ -47,7 +47,7 @@ namespace EasyPost.Services
 
             parameters = parameters.Wrap("carrier_account");
             
-            return await Request<CarrierAccount>(Http.Method.Post, endpoint, parameters);
+            return await Request<CarrierAccount>(Method.Post, endpoint, parameters);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace EasyPost.Services
         public async Task<CarrierAccount> Update(string id, Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("carrier_account");
-            return await Request<CarrierAccount>(Http.Method.Patch, $"carrier_accounts/{id}", parameters);
+            return await Request<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", parameters);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<CarrierAccount> Update(string id, BetaFeatures.Parameters.CarrierAccounts.Update parameters)
         {
-            return await Request<CarrierAccount>(Http.Method.Patch, $"carrier_accounts/{id}", parameters.ToDictionary());
+            return await Request<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", parameters.ToDictionary());
         }
 
         /// <summary>
