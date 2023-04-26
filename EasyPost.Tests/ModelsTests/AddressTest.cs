@@ -1,0 +1,55 @@
+using System.Threading.Tasks;
+using EasyPost.Exceptions.General;
+using EasyPost.Models.API;
+using EasyPost.Tests._Utilities;
+using EasyPost.Tests._Utilities.Attributes;
+using EasyPost.Utilities.Internal.Attributes;
+using Xunit;
+
+namespace EasyPost.Tests.ModelsTests
+{
+#pragma warning disable xUnit1004
+    public class AddressTests : UnitTest
+    {
+        public AddressTests() : base("address")
+        {
+        }
+
+        #region Tests
+
+        #region Test CRUD Operations
+
+        [Fact(Skip = "TO BE REMOVED.")]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestVerify()
+        {
+            UseVCR("verify");
+
+            Address address = await Client.Address.Create(Fixtures.CaAddress1);
+
+            address = await address.Verify();
+
+            Assert.IsType<Address>(address);
+            Assert.StartsWith("adr_", address.Id);
+            Assert.Equal("388 TOWNSEND ST APT 20", address.Street1);
+        }
+
+        [Fact(Skip = "TO BE REMOVED.")]
+        [CrudOperations.Update]
+        [Testing.Parameters]
+        public async Task TestVerifyWithNoId()
+        {
+            UseVCR("verify_with_no_id");
+
+            Address address = await Client.Address.Create(Fixtures.CaAddress1);
+            address.Id = null;
+
+            await Assert.ThrowsAsync<MissingPropertyError>(async () => await address.Verify());
+        }
+
+        #endregion
+
+        #endregion
+    }
+}
