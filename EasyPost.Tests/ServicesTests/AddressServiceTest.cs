@@ -178,7 +178,7 @@ namespace EasyPost.Tests.ServicesTests
             Assert.StartsWith("adr_", address.Id);
             Assert.Equal("388 TOWNSEND ST APT 20", address.Street1);
         }
-        
+
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]

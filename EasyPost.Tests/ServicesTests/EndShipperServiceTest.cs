@@ -64,7 +64,7 @@ namespace EasyPost.Tests.ServicesTests
             Assert.IsType<EndShipper>(retrievedEndShipper);
             Assert.Equal(endShipper.Street1, retrievedEndShipper.Street1);
         }
-        
+
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]
@@ -73,7 +73,7 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("update");
 
             EndShipper endShipper = await Client.EndShipper.Create(Fixtures.CaAddress1);
-            
+
             if (IsRecording()) // Give the server time to process the endshipper
             {
                 Thread.Sleep(10000); // Wait enough time to process

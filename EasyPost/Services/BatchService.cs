@@ -78,7 +78,6 @@ namespace EasyPost.Services
             return await Create<Batch>("batches/create_and_buy", parameters.ToDictionary());
         }
 
-
         /// <summary>
         ///     List all Batch objects.
         /// </summary>
@@ -118,7 +117,7 @@ namespace EasyPost.Services
             // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
             return await Request<Batch>(Method.Post, $"batches/{id}/add_shipments", parameters);
         }
-        
+
         /// <summary>
         ///     Retrieve a Batch from its id.
         /// </summary>

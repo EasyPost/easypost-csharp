@@ -92,7 +92,7 @@ namespace EasyPost.Services
         /// <returns>EasyPost.EndShipper instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipper> Retrieve(string id) => await Get<EndShipper>($"end_shippers/{id}");
-        
+
         /// <summary>
         ///     Update this EndShipper. Must pass in all properties (new and existing).
         /// </summary>

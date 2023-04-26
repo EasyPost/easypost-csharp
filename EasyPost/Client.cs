@@ -92,7 +92,7 @@ namespace EasyPost
             Tracker = new TrackerService(this);
             User = new UserService(this);
             Webhook = new WebhookService(this);
-            
+
             // We go ahead and initialize the Beta client internally here as well
             Beta = new BetaClient(apiKey, baseUrl, timeoutMilliseconds, customHttpClient);
         }

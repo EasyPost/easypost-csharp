@@ -154,7 +154,7 @@ namespace EasyPost.Services
         /// <returns>EasyPost.Address instance.</returns>
         [CrudOperations.Read]
         public async Task<Address> Retrieve(string id) => await Get<Address>($"addresses/{id}");
-        
+
         /// <summary>
         ///     Verify an Address.
         /// </summary>

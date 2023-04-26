@@ -78,7 +78,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 // Check the cassette to make sure the endpoint is correct (it should be carrier_accounts/register)
             }
         }
-        
+
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]

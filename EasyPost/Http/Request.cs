@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Globalization;
 using System.Net.Http;
 using System.Text;
@@ -87,17 +88,17 @@ namespace EasyPost.Http
         private void BuildQueryParameters()
         {
             // add query parameters
-            var query = HttpUtility.ParseQueryString(string.Empty);
-            
+            NameValueCollection query = HttpUtility.ParseQueryString(string.Empty);
+
             // build query string from parameters
-            foreach (var param in _parameters)
+            foreach (KeyValuePair<string, object> param in _parameters)
             {
                 // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
                 if (param.Value == null)
                 {
                     continue;
                 }
-                
+
                 query[param.Key] = param.Value switch
                 {
                     // TODO: Handle special conversions for other types
@@ -105,7 +106,7 @@ namespace EasyPost.Http
                     var _ => param.Value.ToString(),
                 };
             }
-            
+
             // short circuit if no query parameters
             if (query.Count == 0)
             {

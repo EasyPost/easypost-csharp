@@ -104,7 +104,7 @@ namespace EasyPost.Tests.ServicesTests
             Assert.IsType<CarrierAccount>(retrievedCarrierAccount);
             Assert.Equal(carrierAccount, retrievedCarrierAccount);
         }
-        
+
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]
