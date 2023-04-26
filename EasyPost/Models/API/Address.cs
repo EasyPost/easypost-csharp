@@ -55,26 +55,6 @@ namespace EasyPost.Models.API
         internal Address()
         {
         }
-
-        #region CRUD Operations
-
-        /// <summary>
-        ///     Verify this address.
-        /// </summary>
-        /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
-        [CrudOperations.Update]
-        public async Task<Address> Verify()
-        {
-            if (Id == null)
-            {
-                throw new MissingPropertyError(this, nameof(Id));
-            }
-
-            await Update<Address>(Http.Method.Get, $"addresses/{Id}/verify", null, "address");
-            return this;
-        }
-
-        #endregion
     }
 
     public class AddressCollection : PaginatedCollection<Address>

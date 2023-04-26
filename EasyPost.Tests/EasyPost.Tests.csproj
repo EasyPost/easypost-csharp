@@ -65,9 +65,28 @@
     <None Remove="RestSharp" />
     <None Remove="MSTest.TestFramework" />
     <None Remove="MSTest.TestAdapter" />
+    <None Remove="cassettes\net\address\verify.json" />
+    <None Remove="cassettes\net\batch\add_shipments.json" />
+    <None Remove="cassettes\net\batch_with_parameters\create_with_shipments.json" />
+    <None Remove="cassettes\net\batch\buy.json" />
+    <None Remove="cassettes\net\batch_service\get_next_page.json" />
+    <None Remove="cassettes\net\batch\generate_scan_form.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="cassettes" />
+    <Folder Include="cassettes\net\address\" />
+    <Folder Include="cassettes\net\carrier_account_with_parameters\" />
+    <Folder Include="cassettes\net\client\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="BetaFeaturesTests\ModelsTests\EndShipperTest.cs" />
+    <Compile Remove="BetaFeaturesTests\ModelsTests\AddressTest.cs" />
+    <Compile Remove="BetaFeaturesTests\ModelsTests\BatchTest.cs" />
+    <Compile Remove="ModelsTests\CarrierAccountTest.cs" />
+    <Compile Remove="ModelsTests\BatchTest.cs" />
+    <Compile Remove="ModelsTests\EndShipperTest.cs" />
+    <Compile Remove="ModelsTests\AddressTest.cs" />
   </ItemGroup>
 </Project>

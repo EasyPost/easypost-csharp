@@ -101,7 +101,7 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("retrieve_payloads_for_event");
 
             // Create a webhook to receive the event
-            const string url = "https://example.com";
+            string url = $"https://example.com/all_payloads/{TestUtils.NetVersion}";
             Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
             CleanUpAfterTest(webhook.Id);
 
@@ -129,7 +129,7 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("retrieve_payload_for_event");
 
             // Create a webhook to receive the event
-            const string url = "https://example.com";
+            string url = $"https://example.com/single_payload/{TestUtils.NetVersion}";
             Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
             CleanUpAfterTest(webhook.Id);
 

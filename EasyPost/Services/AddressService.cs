@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -153,6 +154,17 @@ namespace EasyPost.Services
         /// <returns>EasyPost.Address instance.</returns>
         [CrudOperations.Read]
         public async Task<Address> Retrieve(string id) => await Get<Address>($"addresses/{id}");
+        
+        /// <summary>
+        ///     Verify an Address.
+        /// </summary>
+        /// <param name="id">ID of the address to verify.</param>
+        /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
+        [CrudOperations.Update]
+        public async Task<Address> Verify(string id)
+        {
+            return await Request<Address>(Method.Get, $"addresses/{id}/verify", null, "address");
+        }
 
         #endregion
     }
