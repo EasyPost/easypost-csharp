@@ -103,7 +103,6 @@ namespace EasyPost.Services
         {
             parameters = parameters.Wrap("address");
 
-            // EndShipper needs Put, not Patch
             return await Request<EndShipper>(Method.Put, $"end_shippers/{id}", parameters);
         }
 
@@ -115,7 +114,6 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<EndShipper> Update(string id, BetaFeatures.Parameters.EndShippers.Update parameters)
         {
-            // EndShipper needs Put, not Patch
             return await Request<EndShipper>(Method.Put, $"end_shippers/{id}", parameters.ToDictionary());
         }
 

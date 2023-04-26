@@ -114,7 +114,6 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(string id, Dictionary<string, object> parameters)
         {
-            // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
             return await Request<Batch>(Method.Post, $"batches/{id}/add_shipments", parameters);
         }
 
@@ -225,7 +224,6 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(string id, Dictionary<string, object> parameters)
         {
-            // parameters = parameters.Wrap("batch");  // TODO: Update docs to remove wrapped "batch" key
             return await Request<Batch>(Method.Post, $"batches/{id}/remove_shipments", parameters);
         }
 
