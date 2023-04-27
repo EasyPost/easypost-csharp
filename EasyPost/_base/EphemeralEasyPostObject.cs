@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal;
 using Newtonsoft.Json;
 
@@ -9,7 +8,7 @@ namespace EasyPost._base
     /// <summary>
     ///     Class for any ephemeral (non-permanent) object that comes from or goes to the EasyPost API.
     /// </summary>
-    public abstract class EphemeralEasyPostObject : WithClient, IEasyPostObject
+    public abstract class EphemeralEasyPostObject : IEasyPostObject
     {
         #region JSON Properties
 
@@ -21,11 +20,8 @@ namespace EasyPost._base
         #endregion
 
         public override bool Equals(object? obj) => GetType() == obj?.GetType() && GetHashCode() == ((EphemeralEasyPostObject)obj).GetHashCode();
-
-        [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode", Justification = "Client is used to determine equality.")]
-#pragma warning disable CA1307
-        public override int GetHashCode() => AsJson().GetHashCode() ^ GetType().GetHashCode() ^ (Client != null ? Client!.GetHashCode() : 1);
-#pragma warning restore CA1307
+        
+        public override int GetHashCode() => AsJson().GetHashCode() ^ GetType().GetHashCode();
 
         public static bool operator ==(EphemeralEasyPostObject? one, object? two)
         {

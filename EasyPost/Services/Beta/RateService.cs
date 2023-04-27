@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Http;
 using EasyPost.Models.API.Beta;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -39,10 +40,10 @@ namespace EasyPost.Services.Beta
         /// </param>
         /// <returns>A list of <see cref="StatelessRate"/> objects.</returns>
         [CrudOperations.Create]
-        public async Task<List<EasyPost.Models.API.Beta.StatelessRate>> RetrieveStatelessRates(Dictionary<string, object> parameters)
+        public async Task<List<StatelessRate>> RetrieveStatelessRates(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("shipment");
-            return await Create<List<EasyPost.Models.API.Beta.StatelessRate>>("rates", parameters, "rates", ApiVersion.Beta);
+            return await Request<List<StatelessRate>>(Method.Post, "rates", parameters, "rates", ApiVersion.Beta);
         }
 
         /// <summary>
@@ -51,9 +52,9 @@ namespace EasyPost.Services.Beta
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Beta.Rates.Retrieve"/> parameter set.</param>
         /// <returns>A list of <see cref="StatelessRate"/> objects.</returns>
         [CrudOperations.Create]
-        public async Task<List<EasyPost.Models.API.Beta.StatelessRate>> RetrieveStatelessRates(BetaFeatures.Parameters.Beta.Rates.Retrieve parameters)
+        public async Task<List<StatelessRate>> RetrieveStatelessRates(BetaFeatures.Parameters.Beta.Rates.Retrieve parameters)
         {
-            return await Create<List<EasyPost.Models.API.Beta.StatelessRate>>("rates", parameters.ToDictionary(), "rates", ApiVersion.Beta);
+            return await Request<List<StatelessRate>>(Method.Post,"rates", parameters.ToDictionary(), "rates", ApiVersion.Beta);
         }
 
         #endregion
