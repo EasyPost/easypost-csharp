@@ -100,6 +100,89 @@ namespace EasyPost.Tests.ServicesTests
             }
         }
 
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestBuy()
+        {
+            UseVCR("buy");
+
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+            Dictionary<string, object> pickupData = Fixtures.BasicPickup;
+            pickupData["shipment"] = shipment;
+
+            Pickup pickup = await Client.Pickup.Create(pickupData);
+
+            pickup = await Client.Pickup.Buy(pickup.Id, Fixtures.Usps, Fixtures.PickupService);
+
+            Assert.IsType<Pickup>(pickup);
+            Assert.StartsWith("pickup_", pickup.Id);
+            Assert.NotNull(pickup.Confirmation);
+            Assert.Equal("scheduled", pickup.Status);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestCancel()
+        {
+            UseVCR("cancel");
+
+            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
+            Dictionary<string, object> pickupData = Fixtures.BasicPickup;
+            pickupData["shipment"] = shipment;
+
+            Pickup pickup = await Client.Pickup.Create(pickupData);
+
+            pickup = await Client.Pickup.Buy(pickup.Id, Fixtures.Usps, Fixtures.PickupService);
+
+            pickup = await Client.Pickup.Cancel(pickup.Id);
+
+            Assert.IsType<Pickup>(pickup);
+            Assert.StartsWith("pickup_", pickup.Id);
+            Assert.Equal("canceled", pickup.Status);
+        }
+
+        [Fact]
+        [Testing.Function]
+        public void TestLowestRate()
+        {
+            // Mock rates since these can change from the API and we want to test the local filtering logic, not the API call
+            List<PickupRate> rates = new List<PickupRate>
+            {
+                new PickupRate
+                {
+                    Service = "Priority",
+                    Carrier = "USPS",
+                    Price = "7.58",
+                },
+                new PickupRate
+                {
+                    Service = "First",
+                    Carrier = "USPS",
+                    Price = "6.07",
+                },
+            };
+            Pickup pickup = new Pickup
+            {
+                PickupRates = rates,
+            };
+
+            // test lowest rate with no filters
+            Rate lowestRate = pickup.LowestRate();
+            Assert.Equal("First", lowestRate.Service);
+            Assert.Equal("6.07", lowestRate.Price);
+            Assert.Equal("USPS", lowestRate.Carrier);
+
+            // test lowest rate with service filter (should error due to bad service)
+            List<string> services = new() { "BAD_SERVICE" };
+            Assert.Throws<FilteringError>(() => pickup.LowestRate(null, services));
+
+            // test lowest rate with carrier filter (should error due to bad carrier)
+            List<string> carriers = new() { "BAD_CARRIER" };
+            Assert.Throws<FilteringError>(() => pickup.LowestRate(carriers));
+        }
+
         #endregion
 
         #endregion
