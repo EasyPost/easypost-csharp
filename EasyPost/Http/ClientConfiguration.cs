@@ -14,27 +14,33 @@ namespace EasyPost.Http
         /// <summary>
         ///     The API base URI.
         /// </summary>
-        // This can be changed between API calls by the end user.
-        public string ApiBase { get; set; }
-
-        /// <summary>
-        ///     Gets the API key.
-        ///     This cannot be changed after the client has been initialized.
-        /// </summary>
-        // This can be changed between API calls, but only by internal methods (by the library and test suite, but not by the end user).
-        public string ApiKey { get; internal set; }
+        // This cannot be changed after the client has been initialized.
+        public string ApiBase { get; set; } = "https://api.easypost.com"; // default to production if not specified by the user
 
         /// <summary>
         ///     A custom HttpClient to use for requests.
         /// </summary>
         // This cannot be changed after the client has been initialized, and is stored for reference only.
-        internal HttpClient HttpClient { get; }
+        public HttpClient? CustomHttpClient { get; set; } // default to null if not specified by the user
+        
+        /// <summary>
+        ///     The timeout to use for requests.
+        /// </summary>
+        // This cannot be changed after the client has been initialized.
+        public TimeSpan Timeout { get; set; } = TimeSpan.FromSeconds(60); // default to 60 seconds if not specified by the user
 
         /// <summary>
         ///     Gets the HttpClient to use for requests.
         ///     This is the HttpClient with the connect timeout set.
         /// </summary>
-        internal HttpClient PreparedHttpClient { get; }
+        // This is the prepared HttpClient that is actually used to make requests, will be initialized when the client is initialized (will never be null).
+        internal HttpClient? PreparedHttpClient;
+
+        /// <summary>
+        ///     Gets the API key.
+        /// </summary>
+        // This cannot be changed after the client has been initialized.
+        internal string ApiKey;
 
         /// <summary>
         ///    The .NET version of the current application.
@@ -60,44 +66,36 @@ namespace EasyPost.Http
         ///     The version of the current application's operating system.
         /// </summary>
         private readonly string _osVersion;
-
-        /*
-         * NOTE: User-Agent will always show the general availability API version, even if the API call itself goes to a different API version (i.e. beta).
-         * This is because the User-Agent must be set when the client is initialized, and the target API version is not known until a request is made.
-         */
-        private string UserAgent => $"EasyPost/{ApiVersion.Current.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
+        
+        /// <summary>
+        ///     Get the User-Agent string to use for a request.
+        /// </summary>
+        /// <param name="apiVersion">Version of the API being used for this request.</param>
+        /// <returns>The prepared User-Agent string.</returns>
+        private string GetUserAgent(ApiVersion apiVersion) => $"EasyPost/{apiVersion.Value} CSharpClient/{_libraryVersion} .NET/{_dotNetVersion} OS/{_osName} OSVersion/{_osVersion} OSArch/{_osArch}";
 
         /// <summary>
         ///     Gets the headers to use for a request.
         /// </summary>
-        internal Dictionary<string, string> Headers => new()
+        internal Dictionary<string, string> GetHeaders(ApiVersion apiVersion) => new()
         {
             { "Authorization", $"Bearer {ApiKey}" },
-            { "User-Agent", UserAgent },
+            { "User-Agent", GetUserAgent(apiVersion) },
             // Content-Type is set downstream while constructing the request body
         };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ClientConfiguration"/> class.
-        ///     Create an EasyPost.ClientConfiguration instance.
+        ///     Initializes a new instance of the <see cref="ClientConfiguration"/> class.
         /// </summary>
-        /// <param name="apiKey">The API key to use for the client connection.</param>
-        /// <param name="baseUrl">Base URL to use with this client. This will override `apiVersion`.</param>
-        /// <param name="timeoutMilliseconds">Timeout length, in milliseconds, for API calls.</param>
-        /// <param name="customHttpClient">The custom HTTP client to use for the client connection.</param>
-        internal ClientConfiguration(string apiKey, string? baseUrl, int? timeoutMilliseconds = null, HttpClient? customHttpClient = null)
+        /// <param name="apiKey">The API key to use for the client.</param>
+        public ClientConfiguration(string apiKey)
         {
             // Required constructor parameters
             ApiKey = apiKey;
-
-            // Optional constructor parameters with defaults
-            ApiBase = baseUrl ?? "https://api.easypost.com";
-            HttpClient = customHttpClient ?? new HttpClient();
-
-            // Prepare the HttpClient
-            PreparedHttpClient = HttpClient;
-            PreparedHttpClient.Timeout = TimeSpan.FromMilliseconds(timeoutMilliseconds ?? 60000); // Default to 60 seconds
-
+            
+            // Optional constructor parameters with defaults, set by the constructor
+            
+            // Calculate the properties that are used in the User-Agent string once and store them
             _libraryVersion = RuntimeInfo.ApplicationInfo.ApplicationVersion;
             _dotNetVersion = RuntimeInfo.ApplicationInfo.DotNetVersion;
             _osName = RuntimeInfo.OperationSystemInfo.Name;
@@ -105,11 +103,27 @@ namespace EasyPost.Http
             _osArch = RuntimeInfo.OperationSystemInfo.Architecture;
         }
 
+        /// <summary>
+        ///     Sets up the HTTP client.
+        ///     Because we need to wait for construction to finish, we have to do this in a separate method
+        /// </summary>
+        internal void SetUp()
+        {
+            // Prepare the HttpClient
+            PreparedHttpClient = CustomHttpClient ?? new HttpClient(); // copy the custom HttpClient if it exists, otherwise create a new one
+            PreparedHttpClient.Timeout = Timeout;
+        }
+
         public override bool Equals(object? obj) => obj is ClientConfiguration other && ApiKey == other.ApiKey && ApiBase == other.ApiBase;
 
         // ReSharper disable once NonReadonlyMemberInGetHashCode
 #pragma warning disable CA1307
-        public override int GetHashCode() => ApiKey.GetHashCode() ^ ApiBase.GetHashCode() ^ (HttpClient?.GetHashCode() ?? 1);
+        public override int GetHashCode() => ApiKey.GetHashCode() ^ ApiBase.GetHashCode() ^ Timeout.GetHashCode();
 #pragma warning restore CA1307
+    }
+    
+    namespace System.Runtime.CompilerServices
+    {
+        internal static class IsExternalInit {}
     }
 }

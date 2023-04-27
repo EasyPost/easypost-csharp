@@ -118,7 +118,7 @@ namespace EasyPost.Tests.ServicesTests
             Assert.EndsWith(paymentMethod.Last4, card.Number);
 
             // Assert that the original API key was restored to the client properly after the request
-            Assert.Equal(TestUtils.GetApiKey(TestUtils.ApiKey.Mock), Client.Configuration.ApiKey);
+            Assert.Equal(TestUtils.GetApiKey(TestUtils.ApiKey.Mock), Client.ApiKeyInUse);
         }
 
         [Fact]
@@ -287,7 +287,7 @@ namespace EasyPost.Tests.ServicesTests
             await Assert.ThrowsAsync<NotFoundError>(async () => await Client.ReferralCustomer.AddCreditCardToUser(ReferralCustomerKey, card.Number, card.ExpirationMonth, card.ExpirationYear, card.Cvc, PaymentMethod.Priority.Primary));
 
             // Assert that the original API key was restored to the client properly even after the failed request
-            Assert.Equal(TestUtils.GetApiKey(TestUtils.ApiKey.Mock), Client.Configuration.ApiKey);
+            Assert.Equal(TestUtils.GetApiKey(TestUtils.ApiKey.Mock), Client.ApiKeyInUse);
         }
 
         [Fact]

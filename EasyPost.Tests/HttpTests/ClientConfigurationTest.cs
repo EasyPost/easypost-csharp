@@ -1,3 +1,4 @@
+using System;
 using System.Net.Http;
 using EasyPost.Http;
 using EasyPost.Tests._Utilities.Attributes;
@@ -15,13 +16,18 @@ namespace EasyPost.Tests.HttpTests
         {
             const string apiKey = "fake_api_key";
             const string apiBase = "https://www.example.com";
-            ClientConfiguration configuration1 = new(apiKey, apiBase);
+            ClientConfiguration configuration1 = new(apiKey)
+            {
+                ApiBase = apiBase,
+            };
 
             // Assert that the configuration is set correctly
             Assert.Equal(apiKey, configuration1.ApiKey);
             Assert.Equal(apiBase, configuration1.ApiBase);
 
-            ClientConfiguration configuration2 = new("key2", "https://www.example.com");
+            ClientConfiguration configuration2 = new("key2") {
+                ApiBase = "https://www.example.com"
+            };
 
             // Compare the two configurations
             Assert.False(configuration1.Equals(configuration2));
@@ -35,8 +41,14 @@ namespace EasyPost.Tests.HttpTests
         [Testing.Function]
         public void TestEquals()
         {
-            ClientConfiguration configuration1 = new("fake_api_key", "https://www.example.com");
-            ClientConfiguration configuration2 = new("key2", "https://www.example.com");
+            ClientConfiguration configuration1 = new("fake_api_key")
+            {
+                ApiBase = "fake_api_key",
+            };
+            ClientConfiguration configuration2 = new("key2")
+            {
+                ApiBase = "https://www.example.com",
+            };
 
             // Compare the two configurations
             Assert.False(configuration1.Equals(configuration2));
@@ -52,12 +64,16 @@ namespace EasyPost.Tests.HttpTests
         {
             const string apiKey = "fake_api_key";
             const string apiBase = "https://www.example.com";
-            HttpClient httpClient = new();
+            TimeSpan timeout = TimeSpan.FromMilliseconds(5000);
 
-            ClientConfiguration configuration1 = new(apiKey, apiBase, customHttpClient: httpClient);
+            ClientConfiguration configuration1 = new(apiKey)
+            {
+                ApiBase = apiBase,
+                Timeout = timeout,
+            };
 
             // Assert that hashcode is calculated correctly
-            int expectedHashCode = apiKey.GetHashCode() ^ apiBase.GetHashCode() ^ httpClient.GetHashCode();
+            int expectedHashCode = apiKey.GetHashCode() ^ apiBase.GetHashCode() ^ timeout.GetHashCode();
             Assert.Equal(expectedHashCode, configuration1.GetHashCode());
         }
 

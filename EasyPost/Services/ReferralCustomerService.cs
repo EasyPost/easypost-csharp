@@ -155,12 +155,12 @@ namespace EasyPost.Services
                     }
                 },
             };
-
-            // Store the old API key
-            string oldApiKey = Client!.Configuration.ApiKey;
-
-            // Change API key temporarily to referral customer's API key.
-            Client.Configuration.ApiKey = referralApiKey;
+            
+            // store the original client's API key
+            string originalApiKey = Client.ApiKeyInUse;
+            
+            // set the client's API key to the referral customer's API key
+            Client.ApiKeyInUse = referralApiKey;
 
             PaymentMethod paymentMethod;
             try
@@ -170,7 +170,8 @@ namespace EasyPost.Services
             }
             finally
             {
-                Client.Configuration.ApiKey = oldApiKey;
+                // reset the client's API key to the original API key
+                Client.ApiKeyInUse = originalApiKey;
             }
 
             return paymentMethod;

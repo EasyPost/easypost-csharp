@@ -73,7 +73,10 @@ namespace EasyPost.Tests._Utilities
             return Environment.GetEnvironmentVariable(keyName) ?? ApiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.
         }
 
-        internal static Client GetClient(string apiKey, HttpClient? vcrClient = null) => new(apiKey, customHttpClient: vcrClient);
+        internal static Client GetClient(string apiKey, HttpClient? vcrClient = null) => new(new ClientConfiguration(apiKey)
+        {
+            CustomHttpClient = vcrClient,
+        });
 
         internal static string ReadFile(string path)
         {
@@ -236,7 +239,11 @@ namespace EasyPost.Tests._Utilities
                 };
             }
 
-            internal MockClient(EasyPostClient client) : base(client.Configuration.ApiKey, client.Configuration.ApiBase, customHttpClient: client.Configuration.HttpClient)
+            internal MockClient(EasyPostClient client) : base(new ClientConfiguration(client.ApiKeyInUse)
+            {
+                ApiBase = client.ApiBaseInUse,
+                CustomHttpClient = client.CustomHttpClient,
+            })
             {
             }
 

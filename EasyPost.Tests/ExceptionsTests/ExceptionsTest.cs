@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using EasyPost.Exceptions;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -439,7 +440,10 @@ namespace EasyPost.Tests.ExceptionsTests
         public async Task TestHTTPTimeoutFriendlyException()
         {
             // create a new client with a very short timeout
-            Client client = new(TestUtils.GetApiKey(TestUtils.ApiKey.Test), timeoutMilliseconds: 1);
+            Client client = new(new ClientConfiguration(TestUtils.GetApiKey(TestUtils.ApiKey.Test))
+            {
+                Timeout = TimeSpan.FromMilliseconds(1),
+            });
 
             // make a real request that should timeout, assert that it threw a friendly TimeoutError rather than a TaskCanceledException
             try

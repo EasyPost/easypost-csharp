@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -13,47 +14,53 @@ namespace EasyPost._base
 {
     public abstract class EasyPostClient
     {
-        public readonly ClientConfiguration Configuration;
+        private readonly ClientConfiguration _configuration; // configuration is immutable by end-user once set
 
         /// <summary>
         ///     Gets the API key used by this client.
         /// </summary>
-        public string ApiKeyInUse => Configuration.ApiKey; // public read-only property so users can audit the API key used by the client
+        public string ApiKeyInUse
+        {
+            get
+            {
+                return _configuration.ApiKey; // public read-only property so users can audit the API key used by the client
+            }
+            internal set
+            {
+                _configuration.ApiKey = value; // internal setter so the library can alter this client's API key when we need to
+            }
+        }
 
         /// <summary>
         ///     Gets the base URL used by this client.
         /// </summary>
-        public string ApiBaseInUse => Configuration.ApiBase; // public read-only property so users can audit the base URL used by the client
+        public string ApiBaseInUse => _configuration.ApiBase; // public read-only property so users can audit the base URL used by the client
 
         /// <summary>
-        ///     Gets the timeout in milliseconds used by this client.
+        ///     Gets the timeout used by this client.
         /// </summary>
-        public int TimeoutMilliseconds => (int)HttpClient.Timeout.TotalMilliseconds; // public read-only property so users can audit the connect timeout used by the client
+        public TimeSpan Timeout => _configuration.Timeout; // public read-only property so users can audit the connect timeout used by the client
 
         /// <summary>
         ///     Gets the custom HTTP client used by this client.
         /// </summary>
-        public HttpClient? CustomHttpClient => Configuration.HttpClient; // public read-only property so users can audit the custom HTTP client they set to be used by the client
+        public HttpClient? CustomHttpClient => _configuration.CustomHttpClient; // public read-only property so users can audit the custom HTTP client they set to be used by the client
 
         /// <summary>
         ///     Gets the prepared HTTP client used by this client for all API calls.
         /// </summary>
-        private HttpClient HttpClient => Configuration.PreparedHttpClient; // this is the actual, prepared HttpClient used to make requests
+        private HttpClient HttpClient => _configuration.PreparedHttpClient!; // this is the actual, prepared HttpClient used to make requests, will never be null
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EasyPostClient"/> class.
-        ///     Constructor for the EasyPost client.
+        ///     Initializes a new instance of the <see cref="EasyPostClient"/> class.
         /// </summary>
-        /// <param name="apiKey">API key to use with this client.</param>
-        /// <param name="baseUrl">Base URL to use with this client. This will override `apiVersion`.</param>
-        /// <param name="timeoutMilliseconds">Timeout length, in milliseconds, for API calls.</param>
-        /// <param name="customHttpClient">
-        ///     Custom HttpClient to use if needed. Mostly for debug purposes, not
-        ///     advised for general use.
-        /// </param>
-        protected EasyPostClient(string apiKey, string? baseUrl = null, int? timeoutMilliseconds = null, HttpClient? customHttpClient = null)
+        /// <param name="configuration">Configuration for this client.</param>
+        protected EasyPostClient(ClientConfiguration configuration)
         {
-            Configuration = new ClientConfiguration(apiKey, baseUrl, timeoutMilliseconds, customHttpClient);
+            _configuration = configuration;
+            
+            // set up the configuration, needed to finalize the HttpClient used to make requests
+            _configuration.SetUp();
         }
 
         /// <summary>
@@ -65,7 +72,7 @@ namespace EasyPost._base
         {
             // This method actually executes the request and returns the response.
             // Everything up to this point has been pre-request, and everything after this point is post-request.
-            // This method is "virtual" so it can be overriden (i.e. by a MockClient in testing to avoid making actual HTTP requests).
+            // This method is "virtual" so it can be overridden (i.e. by a MockClient in testing to avoid making actual HTTP requests).
 
             // try to execute the request, catch and rethrow an HTTP timeout exception, all other exceptions are thrown as-is
             try
@@ -92,7 +99,7 @@ namespace EasyPost._base
             where T : class
         {
             // Build the request
-            Dictionary<string, string> headers = Configuration.Headers;
+            Dictionary<string, string> headers = _configuration.GetHeaders(apiVersion);
             Request request = new(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
 
             // Execute the request
@@ -137,7 +144,7 @@ namespace EasyPost._base
         internal async Task<bool> Request(Method method, string endpoint, ApiVersion apiVersion, Dictionary<string, object>? parameters = null)
         {
             // Build the request
-            Dictionary<string, string> headers = Configuration.Headers;
+            Dictionary<string, string> headers = _configuration.GetHeaders(apiVersion);
             Request request = new(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
 
             // Execute the request
@@ -149,10 +156,10 @@ namespace EasyPost._base
             return errorRaised;
         }
 
-        public override bool Equals(object? obj) => obj is EasyPostClient client && Configuration.Equals(client.Configuration);
+        public override bool Equals(object? obj) => obj is EasyPostClient client && _configuration.Equals(client._configuration);
 
 #pragma warning disable CA1307
-        public override int GetHashCode() => Configuration.GetHashCode();
+        public override int GetHashCode() => _configuration.GetHashCode();
 #pragma warning restore CA1307
     }
 }

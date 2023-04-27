@@ -1,5 +1,8 @@
+using System;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -19,11 +22,21 @@ namespace EasyPost.Tests
         [Testing.Function]
         public void TestClient()
         {
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            // we specifically want to test the getters/setters
-            Client client = new(FakeApikey, timeoutMilliseconds: 5000);
+            const string apiBase = "https://www.example.com";
+            TimeSpan timeout = TimeSpan.FromMilliseconds(5000);
+            HttpClient httpClient = new();
+            
+            Client client = new(new ClientConfiguration(FakeApikey)
+            {
+                ApiBase = apiBase,
+                Timeout = timeout,
+                CustomHttpClient = httpClient,
+            });
 
-            Assert.Equal(5000, client.TimeoutMilliseconds);
+            Assert.Equal(FakeApikey, client.ApiKeyInUse);
+            Assert.Equal(apiBase, client.ApiBaseInUse);
+            Assert.Equal(timeout, client.Timeout);
+            Assert.Equal(httpClient, client.CustomHttpClient);
         }
 
         [Fact]
@@ -34,11 +47,11 @@ namespace EasyPost.Tests
             const string key2 = "key2";
             const string key3 = "key3";
 
-            Client client1 = new(key1);
-            Client client2 = new(key2);
-            Client client3 = new(key3);
+            Client client1 = new(new ClientConfiguration(key1));
+            Client client2 = new(new ClientConfiguration(key2));
+            Client client3 = new(new ClientConfiguration(key3));
 
-            static void Thread(Client client, string keyToMatch) => Assert.Equal(keyToMatch, client.Configuration.ApiKey);
+            static void Thread(Client client, string keyToMatch) => Assert.Equal(keyToMatch, client.ApiKeyInUse);
 
             Thread thread1 = new(() => Thread(client1, key1));
             Thread thread2 = new(() => Thread(client2, key2));
@@ -57,11 +70,42 @@ namespace EasyPost.Tests
         [Fact]
         public void TestBaseUrlOverride()
         {
-            Client normalClient = new(FakeApikey);
-            Client overrideClient = new(FakeApikey, "https://www.example.com");
+            Client normalClient = new(new ClientConfiguration(FakeApikey));
+            Client overrideClient = new(new ClientConfiguration(FakeApikey)
+            {
+                ApiBase = "https://www.example.com",
+            });
 
-            Assert.Equal("https://api.easypost.com", normalClient.Configuration.ApiBase);
-            Assert.Equal("https://www.example.com", overrideClient.Configuration.ApiBase);
+            Assert.Equal("https://api.easypost.com", normalClient.ApiBaseInUse);
+            Assert.Equal("https://www.example.com", overrideClient.ApiBaseInUse);
+        }
+        
+        [Fact]
+        public void TestTimeoutOverride()
+        {
+            Client normalClient = new(new ClientConfiguration(FakeApikey));
+            Client overrideClient = new(new ClientConfiguration(FakeApikey)
+            {
+                Timeout = TimeSpan.FromMilliseconds(1),
+            });
+
+            Assert.Equal(TimeSpan.FromSeconds(60), normalClient.Timeout);
+            Assert.Equal(TimeSpan.FromMilliseconds(1), overrideClient.Timeout);
+        }
+        
+        [Fact]
+        public void TestHttpClientOverride()
+        {
+            Client normalClient = new(new ClientConfiguration(FakeApikey));
+            
+            HttpClient httpClient = new();
+            Client overrideClient = new(new ClientConfiguration(FakeApikey)
+            {
+                CustomHttpClient = httpClient,
+            });
+
+            Assert.NotEqual(httpClient, normalClient.CustomHttpClient);
+            Assert.Equal(httpClient, overrideClient.CustomHttpClient);
         }
     }
 }
