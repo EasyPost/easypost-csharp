@@ -185,7 +185,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             Assert.Equal(filters.IncludeChildren, shipmentCollection.IncludeChildren);
             Assert.Equal(filters.Purchased, shipmentCollection.Purchased);
         }
-        
+
         // If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
         // so that USPS doesn't automatically insure it so we could manually insure it here.
         [Fact]
@@ -306,7 +306,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 FileFormat = "ZPL",
             };
 
-            shipment = await Client.Shipment.GenerateLabel(shipment.Id,generateLabelParameters);
+            shipment = await Client.Shipment.GenerateLabel(shipment.Id, generateLabelParameters);
 
             Assert.NotNull(shipment.PostageLabel.LabelZplUrl);
         }
@@ -324,7 +324,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 
             BetaFeatures.Parameters.Shipments.RegenerateRates regenerateRatesParameters = new BetaFeatures.Parameters.Shipments.RegenerateRates();
 
-            await Client.Shipment.RegenerateRates(shipment.Id,regenerateRatesParameters);
+            await Client.Shipment.RegenerateRates(shipment.Id, regenerateRatesParameters);
 
             List<Rate> rates = shipment.Rates;
 
@@ -351,7 +351,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             {
                 CarbonOffset = true,
             };
-            shipment = await Client.Shipment.RegenerateRates(shipment.Id,regenerateRatesParameters);
+            shipment = await Client.Shipment.RegenerateRates(shipment.Id, regenerateRatesParameters);
 
             List<Rate> newRatesWithCarbon = shipment.Rates;
 

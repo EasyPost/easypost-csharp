@@ -76,7 +76,7 @@ namespace EasyPost.Tests.ServicesTests
             Assert.IsType<User>(user);
             Assert.StartsWith("user_", user.Id);
         }
-        
+
         [Fact]
         [CrudOperations.Create]
         [Testing.Function]

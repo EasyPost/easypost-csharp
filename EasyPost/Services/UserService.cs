@@ -60,7 +60,7 @@ namespace EasyPost.Services
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
         public async Task<User> RetrieveMe() => await Retrieve();
-        
+
         /// <summary>
         ///     Update the User's brand.
         /// </summary>

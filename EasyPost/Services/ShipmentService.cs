@@ -117,7 +117,7 @@ namespace EasyPost.Services
         /// <returns>An EasyPost.Shipment instance.</returns>
         [CrudOperations.Read]
         public async Task<Shipment> Retrieve(string id) => await Get<Shipment>($"shipments/{id}");
-        
+
         /// <summary>
         ///     Get the SmartRates for this shipment.
         /// </summary>

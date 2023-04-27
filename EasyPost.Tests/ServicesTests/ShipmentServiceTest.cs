@@ -224,7 +224,7 @@ namespace EasyPost.Tests.ServicesTests
             Assert.IsType<Shipment>(shipment);
             Assert.Equal(shipment, retrievedShipment);
         }
-        
+
         [Fact]
         [CrudOperations.Create]
         [Testing.Parameters]
@@ -357,7 +357,7 @@ namespace EasyPost.Tests.ServicesTests
 
             Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
 
-            shipment = await Client.Shipment.Buy(shipment.Id,shipment.LowestRate(), endShipperId: endShipper.Id);
+            shipment = await Client.Shipment.Buy(shipment.Id, shipment.LowestRate(), endShipperId: endShipper.Id);
 
             Assert.NotNull(shipment.PostageLabel);
         }
@@ -371,7 +371,7 @@ namespace EasyPost.Tests.ServicesTests
 
             Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
 
-            shipment = await Client.Shipment.GenerateLabel(shipment.Id,"ZPL");
+            shipment = await Client.Shipment.GenerateLabel(shipment.Id, "ZPL");
 
             Assert.NotNull(shipment.PostageLabel.LabelZplUrl);
         }
@@ -549,7 +549,7 @@ namespace EasyPost.Tests.ServicesTests
         }
 
         #endregion
-        
+
         #endregion
     }
 }

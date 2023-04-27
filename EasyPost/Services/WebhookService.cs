@@ -73,7 +73,7 @@ namespace EasyPost.Services
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
         public async Task<Webhook> Retrieve(string id) => await Get<Webhook>($"webhooks/{id}");
-        
+
         /// <summary>
         ///     Update a Webhook. A disabled webhook will be enabled.
         /// </summary>
