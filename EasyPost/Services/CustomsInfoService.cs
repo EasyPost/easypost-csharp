@@ -38,7 +38,7 @@ namespace EasyPost.Services
         public async Task<CustomsInfo> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("customs_info");
-            return await Request<CustomsInfo>(Method.Post,"customs_infos", parameters);
+            return await Request<CustomsInfo>(Method.Post, "customs_infos", parameters);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace EasyPost.Services
         public async Task<CustomsInfo> Create(BetaFeatures.Parameters.CustomsInfo.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<CustomsInfo>(Method.Post,"customs_infos", parameters.ToDictionary());
+            return await Request<CustomsInfo>(Method.Post, "customs_infos", parameters.ToDictionary());
         }
 
         /// <summary>

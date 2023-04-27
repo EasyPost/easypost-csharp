@@ -54,7 +54,7 @@ namespace EasyPost.Services.Beta
         [CrudOperations.Create]
         public async Task<List<StatelessRate>> RetrieveStatelessRates(BetaFeatures.Parameters.Beta.Rates.Retrieve parameters)
         {
-            return await Request<List<StatelessRate>>(Method.Post,"rates", parameters.ToDictionary(), "rates", ApiVersion.Beta);
+            return await Request<List<StatelessRate>>(Method.Post, "rates", parameters.ToDictionary(), "rates", ApiVersion.Beta);
         }
 
         #endregion

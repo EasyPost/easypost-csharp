@@ -124,7 +124,7 @@ namespace EasyPost._base
 
             return resource;
         }
-        
+
         /// <summary>
         ///     Execute a request against the EasyPost API.
         /// </summary>

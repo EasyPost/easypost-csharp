@@ -8,14 +8,14 @@ namespace EasyPost._base
     public abstract class EasyPostService : IEasyPostService
     {
         protected internal readonly EasyPostClient Client;
-        
+
 #pragma warning disable IDE0021
         internal EasyPostService(EasyPostClient client)
         {
             Client = client;
         }
 #pragma warning restore IDE0021
-        
+
         /// <summary>
         ///     Make an HTTP request to the EasyPost API and deserialize the response JSON into an object.
         /// </summary>
@@ -40,7 +40,6 @@ namespace EasyPost._base
         /// <returns>None.</returns>
         // ReSharper disable once MemberCanBePrivate.Global
         protected async Task Request(Http.Method method, string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Client.Request(method, url, overrideApiVersion ?? ApiVersion.Current, parameters);
-
     }
 
     public interface IEasyPostService

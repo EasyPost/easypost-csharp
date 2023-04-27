@@ -35,7 +35,7 @@ namespace EasyPost.Services
         public async Task<Webhook> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("webhook");
-            return await Request<Webhook>(Method.Post,"webhooks", parameters);
+            return await Request<Webhook>(Method.Post, "webhooks", parameters);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace EasyPost.Services
         public async Task<Webhook> Create(BetaFeatures.Parameters.Webhooks.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<Webhook>(Method.Post,"webhooks", parameters.ToDictionary());
+            return await Request<Webhook>(Method.Post, "webhooks", parameters.ToDictionary());
         }
 
         /// <summary>

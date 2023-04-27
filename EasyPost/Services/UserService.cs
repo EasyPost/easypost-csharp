@@ -31,7 +31,7 @@ namespace EasyPost.Services
         public async Task<User> CreateChild(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("user");
-            return await Request<User>(Method.Post,"users", parameters);
+            return await Request<User>(Method.Post, "users", parameters);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace EasyPost.Services
         public async Task<User> CreateChild(BetaFeatures.Parameters.Users.CreateChild parameters)
         {
             // Because the normal CreateChild method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<User>(Method.Post,"users", parameters.ToDictionary());
+            return await Request<User>(Method.Post, "users", parameters.ToDictionary());
         }
 
         /// <summary>

@@ -31,7 +31,7 @@ namespace EasyPost._base
         internal Dictionary<string, object> AsDictionary() => JsonConvert.DeserializeObject<Dictionary<string, object>>(AsJson())!;
 
         public override bool Equals(object? obj) => GetType() == obj?.GetType() && GetHashCode() == ((EasyPostObject)obj).GetHashCode();
-        
+
         public override int GetHashCode() => AsJson().GetHashCode() ^ GetType().GetHashCode();
 
         public static bool operator ==(EasyPostObject? one, object? two)

@@ -20,7 +20,7 @@ namespace EasyPost._base
         #endregion
 
         public override bool Equals(object? obj) => GetType() == obj?.GetType() && GetHashCode() == ((EphemeralEasyPostObject)obj).GetHashCode();
-        
+
         public override int GetHashCode() => AsJson().GetHashCode() ^ GetType().GetHashCode();
 
         public static bool operator ==(EphemeralEasyPostObject? one, object? two)

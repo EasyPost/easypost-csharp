@@ -35,7 +35,7 @@ namespace EasyPost.Services
                 { "tracking_code", trackingCode },
             };
             parameters = parameters.Wrap("tracker");
-            return await Request<Tracker>(Method.Post,"trackers", parameters);
+            return await Request<Tracker>(Method.Post, "trackers", parameters);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace EasyPost.Services
         public async Task<Tracker> Create(BetaFeatures.Parameters.Trackers.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<Tracker>(Method.Post,"trackers", parameters.ToDictionary());
+            return await Request<Tracker>(Method.Post, "trackers", parameters.ToDictionary());
         }
 
         /// <summary>
