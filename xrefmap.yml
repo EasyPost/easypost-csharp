@@ -570,19 +570,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaClient.Rate
   nameWithType: BetaClient.Rate
-- uid: EasyPost.BetaClient.Referral
-  name: Referral
-  href: api/EasyPost.BetaClient.html#EasyPost_BetaClient_Referral
-  commentId: P:EasyPost.BetaClient.Referral
-  fullName: EasyPost.BetaClient.Referral
-  nameWithType: BetaClient.Referral
-- uid: EasyPost.BetaClient.Referral*
-  name: Referral
-  href: api/EasyPost.BetaClient.html#EasyPost_BetaClient_Referral_
-  commentId: Overload:EasyPost.BetaClient.Referral
+- uid: EasyPost.BetaClient.ReferralCustomer
+  name: ReferralCustomer
+  href: api/EasyPost.BetaClient.html#EasyPost_BetaClient_ReferralCustomer
+  commentId: P:EasyPost.BetaClient.ReferralCustomer
+  fullName: EasyPost.BetaClient.ReferralCustomer
+  nameWithType: BetaClient.ReferralCustomer
+- uid: EasyPost.BetaClient.ReferralCustomer*
+  name: ReferralCustomer
+  href: api/EasyPost.BetaClient.html#EasyPost_BetaClient_ReferralCustomer_
+  commentId: Overload:EasyPost.BetaClient.ReferralCustomer
   isSpec: "True"
-  fullName: EasyPost.BetaClient.Referral
-  nameWithType: BetaClient.Referral
+  fullName: EasyPost.BetaClient.ReferralCustomer
+  nameWithType: BetaClient.ReferralCustomer
 - uid: EasyPost.BetaFeatures.Parameters
   name: EasyPost.BetaFeatures.Parameters
   href: api/EasyPost.BetaFeatures.Parameters.html
@@ -10718,37 +10718,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Shipment.BatchStatus
   nameWithType: Shipment.BatchStatus
-- uid: EasyPost.Models.API.Shipment.Buy(EasyPost.BetaFeatures.Parameters.Shipments.Buy)
-  name: Buy(Buy)
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_Buy_EasyPost_BetaFeatures_Parameters_Shipments_Buy_
-  commentId: M:EasyPost.Models.API.Shipment.Buy(EasyPost.BetaFeatures.Parameters.Shipments.Buy)
-  fullName: EasyPost.Models.API.Shipment.Buy(EasyPost.BetaFeatures.Parameters.Shipments.Buy)
-  nameWithType: Shipment.Buy(Buy)
-- uid: EasyPost.Models.API.Shipment.Buy(EasyPost.Models.API.Rate,System.Nullable{System.String},System.Boolean,System.Nullable{System.String})
-  name: Buy(Rate, Nullable<String>, Boolean, Nullable<String>)
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_Buy_EasyPost_Models_API_Rate_System_Nullable_System_String__System_Boolean_System_Nullable_System_String__
-  commentId: M:EasyPost.Models.API.Shipment.Buy(EasyPost.Models.API.Rate,System.Nullable{System.String},System.Boolean,System.Nullable{System.String})
-  name.vb: Buy(Rate, Nullable(Of String), Boolean, Nullable(Of String))
-  fullName: EasyPost.Models.API.Shipment.Buy(EasyPost.Models.API.Rate, System.Nullable<System.String>, System.Boolean, System.Nullable<System.String>)
-  fullName.vb: EasyPost.Models.API.Shipment.Buy(EasyPost.Models.API.Rate, System.Nullable(Of System.String), System.Boolean, System.Nullable(Of System.String))
-  nameWithType: Shipment.Buy(Rate, Nullable<String>, Boolean, Nullable<String>)
-  nameWithType.vb: Shipment.Buy(Rate, Nullable(Of String), Boolean, Nullable(Of String))
-- uid: EasyPost.Models.API.Shipment.Buy(System.Nullable{System.String},System.Nullable{System.String},System.Boolean,System.Nullable{System.String})
-  name: Buy(Nullable<String>, Nullable<String>, Boolean, Nullable<String>)
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_Buy_System_Nullable_System_String__System_Nullable_System_String__System_Boolean_System_Nullable_System_String__
-  commentId: M:EasyPost.Models.API.Shipment.Buy(System.Nullable{System.String},System.Nullable{System.String},System.Boolean,System.Nullable{System.String})
-  name.vb: Buy(Nullable(Of String), Nullable(Of String), Boolean, Nullable(Of String))
-  fullName: EasyPost.Models.API.Shipment.Buy(System.Nullable<System.String>, System.Nullable<System.String>, System.Boolean, System.Nullable<System.String>)
-  fullName.vb: EasyPost.Models.API.Shipment.Buy(System.Nullable(Of System.String), System.Nullable(Of System.String), System.Boolean, System.Nullable(Of System.String))
-  nameWithType: Shipment.Buy(Nullable<String>, Nullable<String>, Boolean, Nullable<String>)
-  nameWithType.vb: Shipment.Buy(Nullable(Of String), Nullable(Of String), Boolean, Nullable(Of String))
-- uid: EasyPost.Models.API.Shipment.Buy*
-  name: Buy
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_Buy_
-  commentId: Overload:EasyPost.Models.API.Shipment.Buy
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Shipment.Buy
-  nameWithType: Shipment.Buy
 - uid: EasyPost.Models.API.Shipment.BuyerAddress
   name: BuyerAddress
   href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_BuyerAddress
@@ -10827,38 +10796,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Shipment.FromAddress
   nameWithType: Shipment.FromAddress
-- uid: EasyPost.Models.API.Shipment.GenerateLabel(EasyPost.BetaFeatures.Parameters.Shipments.GenerateLabel)
-  name: GenerateLabel(GenerateLabel)
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_GenerateLabel_EasyPost_BetaFeatures_Parameters_Shipments_GenerateLabel_
-  commentId: M:EasyPost.Models.API.Shipment.GenerateLabel(EasyPost.BetaFeatures.Parameters.Shipments.GenerateLabel)
-  fullName: EasyPost.Models.API.Shipment.GenerateLabel(EasyPost.BetaFeatures.Parameters.Shipments.GenerateLabel)
-  nameWithType: Shipment.GenerateLabel(GenerateLabel)
-- uid: EasyPost.Models.API.Shipment.GenerateLabel(System.String)
-  name: GenerateLabel(String)
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_GenerateLabel_System_String_
-  commentId: M:EasyPost.Models.API.Shipment.GenerateLabel(System.String)
-  fullName: EasyPost.Models.API.Shipment.GenerateLabel(System.String)
-  nameWithType: Shipment.GenerateLabel(String)
-- uid: EasyPost.Models.API.Shipment.GenerateLabel*
-  name: GenerateLabel
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_GenerateLabel_
-  commentId: Overload:EasyPost.Models.API.Shipment.GenerateLabel
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Shipment.GenerateLabel
-  nameWithType: Shipment.GenerateLabel
-- uid: EasyPost.Models.API.Shipment.GetSmartrates
-  name: GetSmartrates()
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_GetSmartrates
-  commentId: M:EasyPost.Models.API.Shipment.GetSmartrates
-  fullName: EasyPost.Models.API.Shipment.GetSmartrates()
-  nameWithType: Shipment.GetSmartrates()
-- uid: EasyPost.Models.API.Shipment.GetSmartrates*
-  name: GetSmartrates
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_GetSmartrates_
-  commentId: Overload:EasyPost.Models.API.Shipment.GetSmartrates
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Shipment.GetSmartrates
-  nameWithType: Shipment.GetSmartrates
 - uid: EasyPost.Models.API.Shipment.Insurance
   name: Insurance
   href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_Insurance
@@ -10872,25 +10809,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Shipment.Insurance
   nameWithType: Shipment.Insurance
-- uid: EasyPost.Models.API.Shipment.Insure(EasyPost.BetaFeatures.Parameters.Shipments.Insure)
-  name: Insure(Insure)
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_Insure_EasyPost_BetaFeatures_Parameters_Shipments_Insure_
-  commentId: M:EasyPost.Models.API.Shipment.Insure(EasyPost.BetaFeatures.Parameters.Shipments.Insure)
-  fullName: EasyPost.Models.API.Shipment.Insure(EasyPost.BetaFeatures.Parameters.Shipments.Insure)
-  nameWithType: Shipment.Insure(Insure)
-- uid: EasyPost.Models.API.Shipment.Insure(System.Double)
-  name: Insure(Double)
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_Insure_System_Double_
-  commentId: M:EasyPost.Models.API.Shipment.Insure(System.Double)
-  fullName: EasyPost.Models.API.Shipment.Insure(System.Double)
-  nameWithType: Shipment.Insure(Double)
-- uid: EasyPost.Models.API.Shipment.Insure*
-  name: Insure
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_Insure_
-  commentId: Overload:EasyPost.Models.API.Shipment.Insure
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Shipment.Insure
-  nameWithType: Shipment.Insure
 - uid: EasyPost.Models.API.Shipment.IsReturn
   name: IsReturn
   href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_IsReturn
@@ -10920,19 +10838,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Shipment.LowestRate
   nameWithType: Shipment.LowestRate
-- uid: EasyPost.Models.API.Shipment.LowestSmartrate(System.Int32,EasyPost.Models.API.SmartrateAccuracy)
-  name: LowestSmartrate(Int32, SmartrateAccuracy)
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_LowestSmartrate_System_Int32_EasyPost_Models_API_SmartrateAccuracy_
-  commentId: M:EasyPost.Models.API.Shipment.LowestSmartrate(System.Int32,EasyPost.Models.API.SmartrateAccuracy)
-  fullName: EasyPost.Models.API.Shipment.LowestSmartrate(System.Int32, EasyPost.Models.API.SmartrateAccuracy)
-  nameWithType: Shipment.LowestSmartrate(Int32, SmartrateAccuracy)
-- uid: EasyPost.Models.API.Shipment.LowestSmartrate*
-  name: LowestSmartrate
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_LowestSmartrate_
-  commentId: Overload:EasyPost.Models.API.Shipment.LowestSmartrate
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Shipment.LowestSmartrate
-  nameWithType: Shipment.LowestSmartrate
 - uid: EasyPost.Models.API.Shipment.Messages
   name: Messages
   href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_Messages
@@ -11024,19 +10929,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Shipment.Reference
   nameWithType: Shipment.Reference
-- uid: EasyPost.Models.API.Shipment.Refund
-  name: Refund()
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_Refund
-  commentId: M:EasyPost.Models.API.Shipment.Refund
-  fullName: EasyPost.Models.API.Shipment.Refund()
-  nameWithType: Shipment.Refund()
-- uid: EasyPost.Models.API.Shipment.Refund*
-  name: Refund
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_Refund_
-  commentId: Overload:EasyPost.Models.API.Shipment.Refund
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Shipment.Refund
-  nameWithType: Shipment.Refund
 - uid: EasyPost.Models.API.Shipment.RefundStatus
   name: RefundStatus
   href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_RefundStatus
@@ -11050,28 +10942,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Shipment.RefundStatus
   nameWithType: Shipment.RefundStatus
-- uid: EasyPost.Models.API.Shipment.RegenerateRates(EasyPost.BetaFeatures.Parameters.Shipments.RegenerateRates)
-  name: RegenerateRates(RegenerateRates)
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_RegenerateRates_EasyPost_BetaFeatures_Parameters_Shipments_RegenerateRates_
-  commentId: M:EasyPost.Models.API.Shipment.RegenerateRates(EasyPost.BetaFeatures.Parameters.Shipments.RegenerateRates)
-  fullName: EasyPost.Models.API.Shipment.RegenerateRates(EasyPost.BetaFeatures.Parameters.Shipments.RegenerateRates)
-  nameWithType: Shipment.RegenerateRates(RegenerateRates)
-- uid: EasyPost.Models.API.Shipment.RegenerateRates(System.Nullable{Dictionary{System.String,System.Object}},System.Boolean)
-  name: RegenerateRates(Nullable<Dictionary<String, Object>>, Boolean)
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_RegenerateRates_System_Nullable_Dictionary_System_String_System_Object___System_Boolean_
-  commentId: M:EasyPost.Models.API.Shipment.RegenerateRates(System.Nullable{Dictionary{System.String,System.Object}},System.Boolean)
-  name.vb: RegenerateRates(Nullable(Of Dictionary(Of String, Object)), Boolean)
-  fullName: EasyPost.Models.API.Shipment.RegenerateRates(System.Nullable<Dictionary<System.String, System.Object>>, System.Boolean)
-  fullName.vb: EasyPost.Models.API.Shipment.RegenerateRates(System.Nullable(Of Dictionary(Of System.String, System.Object)), System.Boolean)
-  nameWithType: Shipment.RegenerateRates(Nullable<Dictionary<String, Object>>, Boolean)
-  nameWithType.vb: Shipment.RegenerateRates(Nullable(Of Dictionary(Of String, Object)), Boolean)
-- uid: EasyPost.Models.API.Shipment.RegenerateRates*
-  name: RegenerateRates
-  href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_RegenerateRates_
-  commentId: Overload:EasyPost.Models.API.Shipment.RegenerateRates
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Shipment.RegenerateRates
-  nameWithType: Shipment.RegenerateRates
 - uid: EasyPost.Models.API.Shipment.ReturnAddress
   name: ReturnAddress
   href: api/EasyPost.Models.API.Shipment.html#EasyPost_Models_API_Shipment_ReturnAddress
@@ -12012,63 +11882,6 @@ references:
   commentId: T:EasyPost.Models.API.User
   fullName: EasyPost.Models.API.User
   nameWithType: User
-- uid: EasyPost.Models.API.User.Delete
-  name: Delete()
-  href: api/EasyPost.Models.API.User.html#EasyPost_Models_API_User_Delete
-  commentId: M:EasyPost.Models.API.User.Delete
-  fullName: EasyPost.Models.API.User.Delete()
-  nameWithType: User.Delete()
-- uid: EasyPost.Models.API.User.Delete*
-  name: Delete
-  href: api/EasyPost.Models.API.User.html#EasyPost_Models_API_User_Delete_
-  commentId: Overload:EasyPost.Models.API.User.Delete
-  isSpec: "True"
-  fullName: EasyPost.Models.API.User.Delete
-  nameWithType: User.Delete
-- uid: EasyPost.Models.API.User.Update(Dictionary{System.String,System.Object})
-  name: Update(Dictionary<String, Object>)
-  href: api/EasyPost.Models.API.User.html#EasyPost_Models_API_User_Update_Dictionary_System_String_System_Object__
-  commentId: M:EasyPost.Models.API.User.Update(Dictionary{System.String,System.Object})
-  name.vb: Update(Dictionary(Of String, Object))
-  fullName: EasyPost.Models.API.User.Update(Dictionary<System.String, System.Object>)
-  fullName.vb: EasyPost.Models.API.User.Update(Dictionary(Of System.String, System.Object))
-  nameWithType: User.Update(Dictionary<String, Object>)
-  nameWithType.vb: User.Update(Dictionary(Of String, Object))
-- uid: EasyPost.Models.API.User.Update(EasyPost.BetaFeatures.Parameters.Users.Update)
-  name: Update(Update)
-  href: api/EasyPost.Models.API.User.html#EasyPost_Models_API_User_Update_EasyPost_BetaFeatures_Parameters_Users_Update_
-  commentId: M:EasyPost.Models.API.User.Update(EasyPost.BetaFeatures.Parameters.Users.Update)
-  fullName: EasyPost.Models.API.User.Update(EasyPost.BetaFeatures.Parameters.Users.Update)
-  nameWithType: User.Update(Update)
-- uid: EasyPost.Models.API.User.Update*
-  name: Update
-  href: api/EasyPost.Models.API.User.html#EasyPost_Models_API_User_Update_
-  commentId: Overload:EasyPost.Models.API.User.Update
-  isSpec: "True"
-  fullName: EasyPost.Models.API.User.Update
-  nameWithType: User.Update
-- uid: EasyPost.Models.API.User.UpdateBrand(Dictionary{System.String,System.Object})
-  name: UpdateBrand(Dictionary<String, Object>)
-  href: api/EasyPost.Models.API.User.html#EasyPost_Models_API_User_UpdateBrand_Dictionary_System_String_System_Object__
-  commentId: M:EasyPost.Models.API.User.UpdateBrand(Dictionary{System.String,System.Object})
-  name.vb: UpdateBrand(Dictionary(Of String, Object))
-  fullName: EasyPost.Models.API.User.UpdateBrand(Dictionary<System.String, System.Object>)
-  fullName.vb: EasyPost.Models.API.User.UpdateBrand(Dictionary(Of System.String, System.Object))
-  nameWithType: User.UpdateBrand(Dictionary<String, Object>)
-  nameWithType.vb: User.UpdateBrand(Dictionary(Of String, Object))
-- uid: EasyPost.Models.API.User.UpdateBrand(EasyPost.BetaFeatures.Parameters.Users.UpdateBrand)
-  name: UpdateBrand(UpdateBrand)
-  href: api/EasyPost.Models.API.User.html#EasyPost_Models_API_User_UpdateBrand_EasyPost_BetaFeatures_Parameters_Users_UpdateBrand_
-  commentId: M:EasyPost.Models.API.User.UpdateBrand(EasyPost.BetaFeatures.Parameters.Users.UpdateBrand)
-  fullName: EasyPost.Models.API.User.UpdateBrand(EasyPost.BetaFeatures.Parameters.Users.UpdateBrand)
-  nameWithType: User.UpdateBrand(UpdateBrand)
-- uid: EasyPost.Models.API.User.UpdateBrand*
-  name: UpdateBrand
-  href: api/EasyPost.Models.API.User.html#EasyPost_Models_API_User_UpdateBrand_
-  commentId: Overload:EasyPost.Models.API.User.UpdateBrand
-  isSpec: "True"
-  fullName: EasyPost.Models.API.User.UpdateBrand
-  nameWithType: User.UpdateBrand
 - uid: EasyPost.Models.API.Verification
   name: Verification
   href: api/EasyPost.Models.API.Verification.html
@@ -12197,19 +12010,6 @@ references:
   commentId: T:EasyPost.Models.API.Webhook
   fullName: EasyPost.Models.API.Webhook
   nameWithType: Webhook
-- uid: EasyPost.Models.API.Webhook.Delete
-  name: Delete()
-  href: api/EasyPost.Models.API.Webhook.html#EasyPost_Models_API_Webhook_Delete
-  commentId: M:EasyPost.Models.API.Webhook.Delete
-  fullName: EasyPost.Models.API.Webhook.Delete()
-  nameWithType: Webhook.Delete()
-- uid: EasyPost.Models.API.Webhook.Delete*
-  name: Delete
-  href: api/EasyPost.Models.API.Webhook.html#EasyPost_Models_API_Webhook_Delete_
-  commentId: Overload:EasyPost.Models.API.Webhook.Delete
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Webhook.Delete
-  nameWithType: Webhook.Delete
 - uid: EasyPost.Models.API.Webhook.DisabledAt
   name: DisabledAt
   href: api/EasyPost.Models.API.Webhook.html#EasyPost_Models_API_Webhook_DisabledAt
@@ -12223,28 +12023,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Webhook.DisabledAt
   nameWithType: Webhook.DisabledAt
-- uid: EasyPost.Models.API.Webhook.Update(EasyPost.BetaFeatures.Parameters.Webhooks.Update)
-  name: Update(Update)
-  href: api/EasyPost.Models.API.Webhook.html#EasyPost_Models_API_Webhook_Update_EasyPost_BetaFeatures_Parameters_Webhooks_Update_
-  commentId: M:EasyPost.Models.API.Webhook.Update(EasyPost.BetaFeatures.Parameters.Webhooks.Update)
-  fullName: EasyPost.Models.API.Webhook.Update(EasyPost.BetaFeatures.Parameters.Webhooks.Update)
-  nameWithType: Webhook.Update(Update)
-- uid: EasyPost.Models.API.Webhook.Update(System.Nullable{Dictionary{System.String,System.Object}})
-  name: Update(Nullable<Dictionary<String, Object>>)
-  href: api/EasyPost.Models.API.Webhook.html#EasyPost_Models_API_Webhook_Update_System_Nullable_Dictionary_System_String_System_Object___
-  commentId: M:EasyPost.Models.API.Webhook.Update(System.Nullable{Dictionary{System.String,System.Object}})
-  name.vb: Update(Nullable(Of Dictionary(Of String, Object)))
-  fullName: EasyPost.Models.API.Webhook.Update(System.Nullable<Dictionary<System.String, System.Object>>)
-  fullName.vb: EasyPost.Models.API.Webhook.Update(System.Nullable(Of Dictionary(Of System.String, System.Object)))
-  nameWithType: Webhook.Update(Nullable<Dictionary<String, Object>>)
-  nameWithType.vb: Webhook.Update(Nullable(Of Dictionary(Of String, Object)))
-- uid: EasyPost.Models.API.Webhook.Update*
-  name: Update
-  href: api/EasyPost.Models.API.Webhook.html#EasyPost_Models_API_Webhook_Update_
-  commentId: Overload:EasyPost.Models.API.Webhook.Update
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Webhook.Update
-  nameWithType: Webhook.Update
 - uid: EasyPost.Models.API.Webhook.Url
   name: Url
   href: api/EasyPost.Models.API.Webhook.html#EasyPost_Models_API_Webhook_Url
@@ -12891,82 +12669,82 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.Beta.RateService.RetrieveStatelessRates
   nameWithType: RateService.RetrieveStatelessRates
-- uid: EasyPost.Services.Beta.ReferralService
-  name: ReferralService
-  href: api/EasyPost.Services.Beta.ReferralService.html
-  commentId: T:EasyPost.Services.Beta.ReferralService
-  fullName: EasyPost.Services.Beta.ReferralService
-  nameWithType: ReferralService
-- uid: EasyPost.Services.Beta.ReferralService.#ctor(EasyPost._base.EasyPostClient)
-  name: ReferralService(EasyPostClient)
-  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService__ctor_EasyPost__base_EasyPostClient_
-  commentId: M:EasyPost.Services.Beta.ReferralService.#ctor(EasyPost._base.EasyPostClient)
-  fullName: EasyPost.Services.Beta.ReferralService.ReferralService(EasyPost._base.EasyPostClient)
-  nameWithType: ReferralService.ReferralService(EasyPostClient)
-- uid: EasyPost.Services.Beta.ReferralService.#ctor*
-  name: ReferralService
-  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService__ctor_
-  commentId: Overload:EasyPost.Services.Beta.ReferralService.#ctor
+- uid: EasyPost.Services.Beta.ReferralCustomerService
+  name: ReferralCustomerService
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html
+  commentId: T:EasyPost.Services.Beta.ReferralCustomerService
+  fullName: EasyPost.Services.Beta.ReferralCustomerService
+  nameWithType: ReferralCustomerService
+- uid: EasyPost.Services.Beta.ReferralCustomerService.#ctor(EasyPost._base.EasyPostClient)
+  name: ReferralCustomerService(EasyPostClient)
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService__ctor_EasyPost__base_EasyPostClient_
+  commentId: M:EasyPost.Services.Beta.ReferralCustomerService.#ctor(EasyPost._base.EasyPostClient)
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.ReferralCustomerService(EasyPost._base.EasyPostClient)
+  nameWithType: ReferralCustomerService.ReferralCustomerService(EasyPostClient)
+- uid: EasyPost.Services.Beta.ReferralCustomerService.#ctor*
+  name: ReferralCustomerService
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService__ctor_
+  commentId: Overload:EasyPost.Services.Beta.ReferralCustomerService.#ctor
   isSpec: "True"
-  fullName: EasyPost.Services.Beta.ReferralService.ReferralService
-  nameWithType: ReferralService.ReferralService
-- uid: EasyPost.Services.Beta.ReferralService.AddPaymentMethod(EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod)
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.ReferralCustomerService
+  nameWithType: ReferralCustomerService.ReferralCustomerService
+- uid: EasyPost.Services.Beta.ReferralCustomerService.AddPaymentMethod(EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod)
   name: AddPaymentMethod(AddPaymentMethod)
-  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_AddPaymentMethod_EasyPost_BetaFeatures_Parameters_ReferralCustomers_AddPaymentMethod_
-  commentId: M:EasyPost.Services.Beta.ReferralService.AddPaymentMethod(EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod)
-  fullName: EasyPost.Services.Beta.ReferralService.AddPaymentMethod(EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod)
-  nameWithType: ReferralService.AddPaymentMethod(AddPaymentMethod)
-- uid: EasyPost.Services.Beta.ReferralService.AddPaymentMethod(System.String,System.String,EasyPost.Models.API.PaymentMethod.Priority)
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_AddPaymentMethod_EasyPost_BetaFeatures_Parameters_ReferralCustomers_AddPaymentMethod_
+  commentId: M:EasyPost.Services.Beta.ReferralCustomerService.AddPaymentMethod(EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod)
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.AddPaymentMethod(EasyPost.BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod)
+  nameWithType: ReferralCustomerService.AddPaymentMethod(AddPaymentMethod)
+- uid: EasyPost.Services.Beta.ReferralCustomerService.AddPaymentMethod(System.String,System.String,EasyPost.Models.API.PaymentMethod.Priority)
   name: AddPaymentMethod(String, String, PaymentMethod.Priority)
-  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_AddPaymentMethod_System_String_System_String_EasyPost_Models_API_PaymentMethod_Priority_
-  commentId: M:EasyPost.Services.Beta.ReferralService.AddPaymentMethod(System.String,System.String,EasyPost.Models.API.PaymentMethod.Priority)
-  fullName: EasyPost.Services.Beta.ReferralService.AddPaymentMethod(System.String, System.String, EasyPost.Models.API.PaymentMethod.Priority)
-  nameWithType: ReferralService.AddPaymentMethod(String, String, PaymentMethod.Priority)
-- uid: EasyPost.Services.Beta.ReferralService.AddPaymentMethod*
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_AddPaymentMethod_System_String_System_String_EasyPost_Models_API_PaymentMethod_Priority_
+  commentId: M:EasyPost.Services.Beta.ReferralCustomerService.AddPaymentMethod(System.String,System.String,EasyPost.Models.API.PaymentMethod.Priority)
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.AddPaymentMethod(System.String, System.String, EasyPost.Models.API.PaymentMethod.Priority)
+  nameWithType: ReferralCustomerService.AddPaymentMethod(String, String, PaymentMethod.Priority)
+- uid: EasyPost.Services.Beta.ReferralCustomerService.AddPaymentMethod*
   name: AddPaymentMethod
-  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_AddPaymentMethod_
-  commentId: Overload:EasyPost.Services.Beta.ReferralService.AddPaymentMethod
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_AddPaymentMethod_
+  commentId: Overload:EasyPost.Services.Beta.ReferralCustomerService.AddPaymentMethod
   isSpec: "True"
-  fullName: EasyPost.Services.Beta.ReferralService.AddPaymentMethod
-  nameWithType: ReferralService.AddPaymentMethod
-- uid: EasyPost.Services.Beta.ReferralService.RefundByAmount(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount)
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.AddPaymentMethod
+  nameWithType: ReferralCustomerService.AddPaymentMethod
+- uid: EasyPost.Services.Beta.ReferralCustomerService.RefundByAmount(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount)
   name: RefundByAmount(RefundByAmount)
-  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_RefundByAmount_EasyPost_BetaFeatures_Parameters_ReferralCustomers_RefundByAmount_
-  commentId: M:EasyPost.Services.Beta.ReferralService.RefundByAmount(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount)
-  fullName: EasyPost.Services.Beta.ReferralService.RefundByAmount(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount)
-  nameWithType: ReferralService.RefundByAmount(RefundByAmount)
-- uid: EasyPost.Services.Beta.ReferralService.RefundByAmount(System.Int32)
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_RefundByAmount_EasyPost_BetaFeatures_Parameters_ReferralCustomers_RefundByAmount_
+  commentId: M:EasyPost.Services.Beta.ReferralCustomerService.RefundByAmount(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount)
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.RefundByAmount(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByAmount)
+  nameWithType: ReferralCustomerService.RefundByAmount(RefundByAmount)
+- uid: EasyPost.Services.Beta.ReferralCustomerService.RefundByAmount(System.Int32)
   name: RefundByAmount(Int32)
-  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_RefundByAmount_System_Int32_
-  commentId: M:EasyPost.Services.Beta.ReferralService.RefundByAmount(System.Int32)
-  fullName: EasyPost.Services.Beta.ReferralService.RefundByAmount(System.Int32)
-  nameWithType: ReferralService.RefundByAmount(Int32)
-- uid: EasyPost.Services.Beta.ReferralService.RefundByAmount*
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_RefundByAmount_System_Int32_
+  commentId: M:EasyPost.Services.Beta.ReferralCustomerService.RefundByAmount(System.Int32)
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.RefundByAmount(System.Int32)
+  nameWithType: ReferralCustomerService.RefundByAmount(Int32)
+- uid: EasyPost.Services.Beta.ReferralCustomerService.RefundByAmount*
   name: RefundByAmount
-  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_RefundByAmount_
-  commentId: Overload:EasyPost.Services.Beta.ReferralService.RefundByAmount
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_RefundByAmount_
+  commentId: Overload:EasyPost.Services.Beta.ReferralCustomerService.RefundByAmount
   isSpec: "True"
-  fullName: EasyPost.Services.Beta.ReferralService.RefundByAmount
-  nameWithType: ReferralService.RefundByAmount
-- uid: EasyPost.Services.Beta.ReferralService.RefundByPaymentLog(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog)
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.RefundByAmount
+  nameWithType: ReferralCustomerService.RefundByAmount
+- uid: EasyPost.Services.Beta.ReferralCustomerService.RefundByPaymentLog(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog)
   name: RefundByPaymentLog(RefundByPaymentLog)
-  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_RefundByPaymentLog_EasyPost_BetaFeatures_Parameters_ReferralCustomers_RefundByPaymentLog_
-  commentId: M:EasyPost.Services.Beta.ReferralService.RefundByPaymentLog(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog)
-  fullName: EasyPost.Services.Beta.ReferralService.RefundByPaymentLog(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog)
-  nameWithType: ReferralService.RefundByPaymentLog(RefundByPaymentLog)
-- uid: EasyPost.Services.Beta.ReferralService.RefundByPaymentLog(System.String)
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_RefundByPaymentLog_EasyPost_BetaFeatures_Parameters_ReferralCustomers_RefundByPaymentLog_
+  commentId: M:EasyPost.Services.Beta.ReferralCustomerService.RefundByPaymentLog(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog)
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.RefundByPaymentLog(EasyPost.BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog)
+  nameWithType: ReferralCustomerService.RefundByPaymentLog(RefundByPaymentLog)
+- uid: EasyPost.Services.Beta.ReferralCustomerService.RefundByPaymentLog(System.String)
   name: RefundByPaymentLog(String)
-  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_RefundByPaymentLog_System_String_
-  commentId: M:EasyPost.Services.Beta.ReferralService.RefundByPaymentLog(System.String)
-  fullName: EasyPost.Services.Beta.ReferralService.RefundByPaymentLog(System.String)
-  nameWithType: ReferralService.RefundByPaymentLog(String)
-- uid: EasyPost.Services.Beta.ReferralService.RefundByPaymentLog*
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_RefundByPaymentLog_System_String_
+  commentId: M:EasyPost.Services.Beta.ReferralCustomerService.RefundByPaymentLog(System.String)
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.RefundByPaymentLog(System.String)
+  nameWithType: ReferralCustomerService.RefundByPaymentLog(String)
+- uid: EasyPost.Services.Beta.ReferralCustomerService.RefundByPaymentLog*
   name: RefundByPaymentLog
-  href: api/EasyPost.Services.Beta.ReferralService.html#EasyPost_Services_Beta_ReferralService_RefundByPaymentLog_
-  commentId: Overload:EasyPost.Services.Beta.ReferralService.RefundByPaymentLog
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_RefundByPaymentLog_
+  commentId: Overload:EasyPost.Services.Beta.ReferralCustomerService.RefundByPaymentLog
   isSpec: "True"
-  fullName: EasyPost.Services.Beta.ReferralService.RefundByPaymentLog
-  nameWithType: ReferralService.RefundByPaymentLog
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.RefundByPaymentLog
+  nameWithType: ReferralCustomerService.RefundByPaymentLog
 - uid: EasyPost.Services.BillingService
   name: BillingService
   href: api/EasyPost.Services.BillingService.html
@@ -14078,6 +13856,37 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ShipmentService.All
   nameWithType: ShipmentService.All
+- uid: EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.BetaFeatures.Parameters.Shipments.Buy)
+  name: Buy(String, Buy)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Buy_System_String_EasyPost_BetaFeatures_Parameters_Shipments_Buy_
+  commentId: M:EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.BetaFeatures.Parameters.Shipments.Buy)
+  fullName: EasyPost.Services.ShipmentService.Buy(System.String, EasyPost.BetaFeatures.Parameters.Shipments.Buy)
+  nameWithType: ShipmentService.Buy(String, Buy)
+- uid: EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.Models.API.Rate,System.Nullable{System.String},System.Boolean,System.Nullable{System.String})
+  name: Buy(String, Rate, Nullable<String>, Boolean, Nullable<String>)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Buy_System_String_EasyPost_Models_API_Rate_System_Nullable_System_String__System_Boolean_System_Nullable_System_String__
+  commentId: M:EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.Models.API.Rate,System.Nullable{System.String},System.Boolean,System.Nullable{System.String})
+  name.vb: Buy(String, Rate, Nullable(Of String), Boolean, Nullable(Of String))
+  fullName: EasyPost.Services.ShipmentService.Buy(System.String, EasyPost.Models.API.Rate, System.Nullable<System.String>, System.Boolean, System.Nullable<System.String>)
+  fullName.vb: EasyPost.Services.ShipmentService.Buy(System.String, EasyPost.Models.API.Rate, System.Nullable(Of System.String), System.Boolean, System.Nullable(Of System.String))
+  nameWithType: ShipmentService.Buy(String, Rate, Nullable<String>, Boolean, Nullable<String>)
+  nameWithType.vb: ShipmentService.Buy(String, Rate, Nullable(Of String), Boolean, Nullable(Of String))
+- uid: EasyPost.Services.ShipmentService.Buy(System.String,System.Nullable{System.String},System.Nullable{System.String},System.Boolean,System.Nullable{System.String})
+  name: Buy(String, Nullable<String>, Nullable<String>, Boolean, Nullable<String>)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Buy_System_String_System_Nullable_System_String__System_Nullable_System_String__System_Boolean_System_Nullable_System_String__
+  commentId: M:EasyPost.Services.ShipmentService.Buy(System.String,System.Nullable{System.String},System.Nullable{System.String},System.Boolean,System.Nullable{System.String})
+  name.vb: Buy(String, Nullable(Of String), Nullable(Of String), Boolean, Nullable(Of String))
+  fullName: EasyPost.Services.ShipmentService.Buy(System.String, System.Nullable<System.String>, System.Nullable<System.String>, System.Boolean, System.Nullable<System.String>)
+  fullName.vb: EasyPost.Services.ShipmentService.Buy(System.String, System.Nullable(Of System.String), System.Nullable(Of System.String), System.Boolean, System.Nullable(Of System.String))
+  nameWithType: ShipmentService.Buy(String, Nullable<String>, Nullable<String>, Boolean, Nullable<String>)
+  nameWithType.vb: ShipmentService.Buy(String, Nullable(Of String), Nullable(Of String), Boolean, Nullable(Of String))
+- uid: EasyPost.Services.ShipmentService.Buy*
+  name: Buy
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Buy_
+  commentId: Overload:EasyPost.Services.ShipmentService.Buy
+  isSpec: "True"
+  fullName: EasyPost.Services.ShipmentService.Buy
+  nameWithType: ShipmentService.Buy
 - uid: EasyPost.Services.ShipmentService.Create(Dictionary{System.String,System.Object},System.Boolean)
   name: Create(Dictionary<String, Object>, Boolean)
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Create_Dictionary_System_String_System_Object__System_Boolean_
@@ -14100,6 +13909,25 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ShipmentService.Create
   nameWithType: ShipmentService.Create
+- uid: EasyPost.Services.ShipmentService.GenerateLabel(System.String,EasyPost.BetaFeatures.Parameters.Shipments.GenerateLabel)
+  name: GenerateLabel(String, GenerateLabel)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GenerateLabel_System_String_EasyPost_BetaFeatures_Parameters_Shipments_GenerateLabel_
+  commentId: M:EasyPost.Services.ShipmentService.GenerateLabel(System.String,EasyPost.BetaFeatures.Parameters.Shipments.GenerateLabel)
+  fullName: EasyPost.Services.ShipmentService.GenerateLabel(System.String, EasyPost.BetaFeatures.Parameters.Shipments.GenerateLabel)
+  nameWithType: ShipmentService.GenerateLabel(String, GenerateLabel)
+- uid: EasyPost.Services.ShipmentService.GenerateLabel(System.String,System.String)
+  name: GenerateLabel(String, String)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GenerateLabel_System_String_System_String_
+  commentId: M:EasyPost.Services.ShipmentService.GenerateLabel(System.String,System.String)
+  fullName: EasyPost.Services.ShipmentService.GenerateLabel(System.String, System.String)
+  nameWithType: ShipmentService.GenerateLabel(String, String)
+- uid: EasyPost.Services.ShipmentService.GenerateLabel*
+  name: GenerateLabel
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GenerateLabel_
+  commentId: Overload:EasyPost.Services.ShipmentService.GenerateLabel
+  isSpec: "True"
+  fullName: EasyPost.Services.ShipmentService.GenerateLabel
+  nameWithType: ShipmentService.GenerateLabel
 - uid: EasyPost.Services.ShipmentService.GetLowestSmartrate(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)
   name: GetLowestSmartrate(IEnumerable<Smartrate>, Int32, SmartrateAccuracy)
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GetLowestSmartrate_IEnumerable_EasyPost_Models_API_Smartrate__System_Int32_EasyPost_Models_API_SmartrateAccuracy_
@@ -14132,6 +13960,73 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ShipmentService.GetNextPage
   nameWithType: ShipmentService.GetNextPage
+- uid: EasyPost.Services.ShipmentService.GetSmartrates(System.String)
+  name: GetSmartrates(String)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GetSmartrates_System_String_
+  commentId: M:EasyPost.Services.ShipmentService.GetSmartrates(System.String)
+  fullName: EasyPost.Services.ShipmentService.GetSmartrates(System.String)
+  nameWithType: ShipmentService.GetSmartrates(String)
+- uid: EasyPost.Services.ShipmentService.GetSmartrates*
+  name: GetSmartrates
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GetSmartrates_
+  commentId: Overload:EasyPost.Services.ShipmentService.GetSmartrates
+  isSpec: "True"
+  fullName: EasyPost.Services.ShipmentService.GetSmartrates
+  nameWithType: ShipmentService.GetSmartrates
+- uid: EasyPost.Services.ShipmentService.Insure(System.String,EasyPost.BetaFeatures.Parameters.Shipments.Insure)
+  name: Insure(String, Insure)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Insure_System_String_EasyPost_BetaFeatures_Parameters_Shipments_Insure_
+  commentId: M:EasyPost.Services.ShipmentService.Insure(System.String,EasyPost.BetaFeatures.Parameters.Shipments.Insure)
+  fullName: EasyPost.Services.ShipmentService.Insure(System.String, EasyPost.BetaFeatures.Parameters.Shipments.Insure)
+  nameWithType: ShipmentService.Insure(String, Insure)
+- uid: EasyPost.Services.ShipmentService.Insure(System.String,System.Double)
+  name: Insure(String, Double)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Insure_System_String_System_Double_
+  commentId: M:EasyPost.Services.ShipmentService.Insure(System.String,System.Double)
+  fullName: EasyPost.Services.ShipmentService.Insure(System.String, System.Double)
+  nameWithType: ShipmentService.Insure(String, Double)
+- uid: EasyPost.Services.ShipmentService.Insure*
+  name: Insure
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Insure_
+  commentId: Overload:EasyPost.Services.ShipmentService.Insure
+  isSpec: "True"
+  fullName: EasyPost.Services.ShipmentService.Insure
+  nameWithType: ShipmentService.Insure
+- uid: EasyPost.Services.ShipmentService.Refund(System.String)
+  name: Refund(String)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Refund_System_String_
+  commentId: M:EasyPost.Services.ShipmentService.Refund(System.String)
+  fullName: EasyPost.Services.ShipmentService.Refund(System.String)
+  nameWithType: ShipmentService.Refund(String)
+- uid: EasyPost.Services.ShipmentService.Refund*
+  name: Refund
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Refund_
+  commentId: Overload:EasyPost.Services.ShipmentService.Refund
+  isSpec: "True"
+  fullName: EasyPost.Services.ShipmentService.Refund
+  nameWithType: ShipmentService.Refund
+- uid: EasyPost.Services.ShipmentService.RegenerateRates(System.String,EasyPost.BetaFeatures.Parameters.Shipments.RegenerateRates)
+  name: RegenerateRates(String, RegenerateRates)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_RegenerateRates_System_String_EasyPost_BetaFeatures_Parameters_Shipments_RegenerateRates_
+  commentId: M:EasyPost.Services.ShipmentService.RegenerateRates(System.String,EasyPost.BetaFeatures.Parameters.Shipments.RegenerateRates)
+  fullName: EasyPost.Services.ShipmentService.RegenerateRates(System.String, EasyPost.BetaFeatures.Parameters.Shipments.RegenerateRates)
+  nameWithType: ShipmentService.RegenerateRates(String, RegenerateRates)
+- uid: EasyPost.Services.ShipmentService.RegenerateRates(System.String,System.Nullable{Dictionary{System.String,System.Object}},System.Boolean)
+  name: RegenerateRates(String, Nullable<Dictionary<String, Object>>, Boolean)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_RegenerateRates_System_String_System_Nullable_Dictionary_System_String_System_Object___System_Boolean_
+  commentId: M:EasyPost.Services.ShipmentService.RegenerateRates(System.String,System.Nullable{Dictionary{System.String,System.Object}},System.Boolean)
+  name.vb: RegenerateRates(String, Nullable(Of Dictionary(Of String, Object)), Boolean)
+  fullName: EasyPost.Services.ShipmentService.RegenerateRates(System.String, System.Nullable<Dictionary<System.String, System.Object>>, System.Boolean)
+  fullName.vb: EasyPost.Services.ShipmentService.RegenerateRates(System.String, System.Nullable(Of Dictionary(Of System.String, System.Object)), System.Boolean)
+  nameWithType: ShipmentService.RegenerateRates(String, Nullable<Dictionary<String, Object>>, Boolean)
+  nameWithType.vb: ShipmentService.RegenerateRates(String, Nullable(Of Dictionary(Of String, Object)), Boolean)
+- uid: EasyPost.Services.ShipmentService.RegenerateRates*
+  name: RegenerateRates
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_RegenerateRates_
+  commentId: Overload:EasyPost.Services.ShipmentService.RegenerateRates
+  isSpec: "True"
+  fullName: EasyPost.Services.ShipmentService.RegenerateRates
+  nameWithType: ShipmentService.RegenerateRates
 - uid: EasyPost.Services.ShipmentService.Retrieve(System.String)
   name: Retrieve(String)
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Retrieve_System_String_
@@ -14271,6 +14166,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.UserService.CreateChild
   nameWithType: UserService.CreateChild
+- uid: EasyPost.Services.UserService.Delete(System.Nullable{System.String})
+  name: Delete(Nullable<String>)
+  href: api/EasyPost.Services.UserService.html#EasyPost_Services_UserService_Delete_System_Nullable_System_String__
+  commentId: M:EasyPost.Services.UserService.Delete(System.Nullable{System.String})
+  name.vb: Delete(Nullable(Of String))
+  fullName: EasyPost.Services.UserService.Delete(System.Nullable<System.String>)
+  fullName.vb: EasyPost.Services.UserService.Delete(System.Nullable(Of System.String))
+  nameWithType: UserService.Delete(Nullable<String>)
+  nameWithType.vb: UserService.Delete(Nullable(Of String))
+- uid: EasyPost.Services.UserService.Delete*
+  name: Delete
+  href: api/EasyPost.Services.UserService.html#EasyPost_Services_UserService_Delete_
+  commentId: Overload:EasyPost.Services.UserService.Delete
+  isSpec: "True"
+  fullName: EasyPost.Services.UserService.Delete
+  nameWithType: UserService.Delete
 - uid: EasyPost.Services.UserService.Retrieve(System.Nullable{System.String})
   name: Retrieve(Nullable<String>)
   href: api/EasyPost.Services.UserService.html#EasyPost_Services_UserService_Retrieve_System_Nullable_System_String__
@@ -14300,6 +14211,56 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.UserService.RetrieveMe
   nameWithType: UserService.RetrieveMe
+- uid: EasyPost.Services.UserService.Update(System.Nullable{System.String},Dictionary{System.String,System.Object})
+  name: Update(Nullable<String>, Dictionary<String, Object>)
+  href: api/EasyPost.Services.UserService.html#EasyPost_Services_UserService_Update_System_Nullable_System_String__Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.Services.UserService.Update(System.Nullable{System.String},Dictionary{System.String,System.Object})
+  name.vb: Update(Nullable(Of String), Dictionary(Of String, Object))
+  fullName: EasyPost.Services.UserService.Update(System.Nullable<System.String>, Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.Services.UserService.Update(System.Nullable(Of System.String), Dictionary(Of System.String, System.Object))
+  nameWithType: UserService.Update(Nullable<String>, Dictionary<String, Object>)
+  nameWithType.vb: UserService.Update(Nullable(Of String), Dictionary(Of String, Object))
+- uid: EasyPost.Services.UserService.Update(System.Nullable{System.String},EasyPost.BetaFeatures.Parameters.Users.Update)
+  name: Update(Nullable<String>, Update)
+  href: api/EasyPost.Services.UserService.html#EasyPost_Services_UserService_Update_System_Nullable_System_String__EasyPost_BetaFeatures_Parameters_Users_Update_
+  commentId: M:EasyPost.Services.UserService.Update(System.Nullable{System.String},EasyPost.BetaFeatures.Parameters.Users.Update)
+  name.vb: Update(Nullable(Of String), Update)
+  fullName: EasyPost.Services.UserService.Update(System.Nullable<System.String>, EasyPost.BetaFeatures.Parameters.Users.Update)
+  fullName.vb: EasyPost.Services.UserService.Update(System.Nullable(Of System.String), EasyPost.BetaFeatures.Parameters.Users.Update)
+  nameWithType: UserService.Update(Nullable<String>, Update)
+  nameWithType.vb: UserService.Update(Nullable(Of String), Update)
+- uid: EasyPost.Services.UserService.Update*
+  name: Update
+  href: api/EasyPost.Services.UserService.html#EasyPost_Services_UserService_Update_
+  commentId: Overload:EasyPost.Services.UserService.Update
+  isSpec: "True"
+  fullName: EasyPost.Services.UserService.Update
+  nameWithType: UserService.Update
+- uid: EasyPost.Services.UserService.UpdateBrand(System.Nullable{System.String},Dictionary{System.String,System.Object})
+  name: UpdateBrand(Nullable<String>, Dictionary<String, Object>)
+  href: api/EasyPost.Services.UserService.html#EasyPost_Services_UserService_UpdateBrand_System_Nullable_System_String__Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.Services.UserService.UpdateBrand(System.Nullable{System.String},Dictionary{System.String,System.Object})
+  name.vb: UpdateBrand(Nullable(Of String), Dictionary(Of String, Object))
+  fullName: EasyPost.Services.UserService.UpdateBrand(System.Nullable<System.String>, Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.Services.UserService.UpdateBrand(System.Nullable(Of System.String), Dictionary(Of System.String, System.Object))
+  nameWithType: UserService.UpdateBrand(Nullable<String>, Dictionary<String, Object>)
+  nameWithType.vb: UserService.UpdateBrand(Nullable(Of String), Dictionary(Of String, Object))
+- uid: EasyPost.Services.UserService.UpdateBrand(System.Nullable{System.String},EasyPost.BetaFeatures.Parameters.Users.UpdateBrand)
+  name: UpdateBrand(Nullable<String>, UpdateBrand)
+  href: api/EasyPost.Services.UserService.html#EasyPost_Services_UserService_UpdateBrand_System_Nullable_System_String__EasyPost_BetaFeatures_Parameters_Users_UpdateBrand_
+  commentId: M:EasyPost.Services.UserService.UpdateBrand(System.Nullable{System.String},EasyPost.BetaFeatures.Parameters.Users.UpdateBrand)
+  name.vb: UpdateBrand(Nullable(Of String), UpdateBrand)
+  fullName: EasyPost.Services.UserService.UpdateBrand(System.Nullable<System.String>, EasyPost.BetaFeatures.Parameters.Users.UpdateBrand)
+  fullName.vb: EasyPost.Services.UserService.UpdateBrand(System.Nullable(Of System.String), EasyPost.BetaFeatures.Parameters.Users.UpdateBrand)
+  nameWithType: UserService.UpdateBrand(Nullable<String>, UpdateBrand)
+  nameWithType.vb: UserService.UpdateBrand(Nullable(Of String), UpdateBrand)
+- uid: EasyPost.Services.UserService.UpdateBrand*
+  name: UpdateBrand
+  href: api/EasyPost.Services.UserService.html#EasyPost_Services_UserService_UpdateBrand_
+  commentId: Overload:EasyPost.Services.UserService.UpdateBrand
+  isSpec: "True"
+  fullName: EasyPost.Services.UserService.UpdateBrand
+  nameWithType: UserService.UpdateBrand
 - uid: EasyPost.Services.WebhookService
   name: WebhookService
   href: api/EasyPost.Services.WebhookService.html
@@ -14350,15 +14311,25 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.WebhookService.Create
   nameWithType: WebhookService.Create
-- uid: EasyPost.Services.WebhookService.Retrieve(System.Nullable{System.String})
-  name: Retrieve(Nullable<String>)
-  href: api/EasyPost.Services.WebhookService.html#EasyPost_Services_WebhookService_Retrieve_System_Nullable_System_String__
-  commentId: M:EasyPost.Services.WebhookService.Retrieve(System.Nullable{System.String})
-  name.vb: Retrieve(Nullable(Of String))
-  fullName: EasyPost.Services.WebhookService.Retrieve(System.Nullable<System.String>)
-  fullName.vb: EasyPost.Services.WebhookService.Retrieve(System.Nullable(Of System.String))
-  nameWithType: WebhookService.Retrieve(Nullable<String>)
-  nameWithType.vb: WebhookService.Retrieve(Nullable(Of String))
+- uid: EasyPost.Services.WebhookService.Delete(System.String)
+  name: Delete(String)
+  href: api/EasyPost.Services.WebhookService.html#EasyPost_Services_WebhookService_Delete_System_String_
+  commentId: M:EasyPost.Services.WebhookService.Delete(System.String)
+  fullName: EasyPost.Services.WebhookService.Delete(System.String)
+  nameWithType: WebhookService.Delete(String)
+- uid: EasyPost.Services.WebhookService.Delete*
+  name: Delete
+  href: api/EasyPost.Services.WebhookService.html#EasyPost_Services_WebhookService_Delete_
+  commentId: Overload:EasyPost.Services.WebhookService.Delete
+  isSpec: "True"
+  fullName: EasyPost.Services.WebhookService.Delete
+  nameWithType: WebhookService.Delete
+- uid: EasyPost.Services.WebhookService.Retrieve(System.String)
+  name: Retrieve(String)
+  href: api/EasyPost.Services.WebhookService.html#EasyPost_Services_WebhookService_Retrieve_System_String_
+  commentId: M:EasyPost.Services.WebhookService.Retrieve(System.String)
+  fullName: EasyPost.Services.WebhookService.Retrieve(System.String)
+  nameWithType: WebhookService.Retrieve(String)
 - uid: EasyPost.Services.WebhookService.Retrieve*
   name: Retrieve
   href: api/EasyPost.Services.WebhookService.html#EasyPost_Services_WebhookService_Retrieve_
@@ -14366,6 +14337,28 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.WebhookService.Retrieve
   nameWithType: WebhookService.Retrieve
+- uid: EasyPost.Services.WebhookService.Update(System.String,EasyPost.BetaFeatures.Parameters.Webhooks.Update)
+  name: Update(String, Update)
+  href: api/EasyPost.Services.WebhookService.html#EasyPost_Services_WebhookService_Update_System_String_EasyPost_BetaFeatures_Parameters_Webhooks_Update_
+  commentId: M:EasyPost.Services.WebhookService.Update(System.String,EasyPost.BetaFeatures.Parameters.Webhooks.Update)
+  fullName: EasyPost.Services.WebhookService.Update(System.String, EasyPost.BetaFeatures.Parameters.Webhooks.Update)
+  nameWithType: WebhookService.Update(String, Update)
+- uid: EasyPost.Services.WebhookService.Update(System.String,System.Nullable{Dictionary{System.String,System.Object}})
+  name: Update(String, Nullable<Dictionary<String, Object>>)
+  href: api/EasyPost.Services.WebhookService.html#EasyPost_Services_WebhookService_Update_System_String_System_Nullable_Dictionary_System_String_System_Object___
+  commentId: M:EasyPost.Services.WebhookService.Update(System.String,System.Nullable{Dictionary{System.String,System.Object}})
+  name.vb: Update(String, Nullable(Of Dictionary(Of String, Object)))
+  fullName: EasyPost.Services.WebhookService.Update(System.String, System.Nullable<Dictionary<System.String, System.Object>>)
+  fullName.vb: EasyPost.Services.WebhookService.Update(System.String, System.Nullable(Of Dictionary(Of System.String, System.Object)))
+  nameWithType: WebhookService.Update(String, Nullable<Dictionary<String, Object>>)
+  nameWithType.vb: WebhookService.Update(String, Nullable(Of Dictionary(Of String, Object)))
+- uid: EasyPost.Services.WebhookService.Update*
+  name: Update
+  href: api/EasyPost.Services.WebhookService.html#EasyPost_Services_WebhookService_Update_
+  commentId: Overload:EasyPost.Services.WebhookService.Update
+  isSpec: "True"
+  fullName: EasyPost.Services.WebhookService.Update
+  nameWithType: WebhookService.Update
 - uid: EasyPost.Services.WebhookService.ValidateWebhook(System.Byte[],Dictionary{System.String,System.Nullable{System.Object}},System.String)
   name: ValidateWebhook(Byte[], Dictionary<String, Nullable<Object>>, String)
   href: api/EasyPost.Services.WebhookService.html#EasyPost_Services_WebhookService_ValidateWebhook_System_Byte___Dictionary_System_String_System_Nullable_System_Object___System_String_

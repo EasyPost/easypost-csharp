@@ -131,7 +131,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_All_EasyPost_BetaFeatures_Parameters_Shipments_All_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.All(EasyPost.BetaFeatures.Parameters.Shipments.All)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L93">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L94">View Source</a>
   </span>
   <a id="EasyPost_Services_ShipmentService_All_" data-uid="EasyPost.Services.ShipmentService.All*"></a>
   <h4 id="EasyPost_Services_ShipmentService_All_EasyPost_BetaFeatures_Parameters_Shipments_All_" data-uid="EasyPost.Services.ShipmentService.All(EasyPost.BetaFeatures.Parameters.Shipments.All)">All(All)</h4>
@@ -181,7 +181,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_All_System_Nullable_Dictionary_System_String_System_Object___.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.All(System.Nullable%7BDictionary%7BSystem.String%2CSystem.Object%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L79">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L80">View Source</a>
   </span>
   <a id="EasyPost_Services_ShipmentService_All_" data-uid="EasyPost.Services.ShipmentService.All*"></a>
   <h4 id="EasyPost_Services_ShipmentService_All_System_Nullable_Dictionary_System_String_System_Object___" data-uid="EasyPost.Services.ShipmentService.All(System.Nullable{Dictionary{System.String,System.Object}})">All(Nullable&lt;Dictionary&lt;String, Object&gt;&gt;)</h4>
@@ -239,10 +239,211 @@ All invalid keys will be ignored.</li>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_Buy_System_String_EasyPost_BetaFeatures_Parameters_Shipments_Buy_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.Buy(System.String%2CEasyPost.BetaFeatures.Parameters.Shipments.Buy)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L186">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ShipmentService_Buy_" data-uid="EasyPost.Services.ShipmentService.Buy*"></a>
+  <h4 id="EasyPost_Services_ShipmentService_Buy_System_String_EasyPost_BetaFeatures_Parameters_Shipments_Buy_" data-uid="EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.BetaFeatures.Parameters.Shipments.Buy)">Buy(String, Buy)</h4>
+  <div class="markdown level1 summary"><p>Purchase a label for this <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a> with the given <a class="xref" href="EasyPost.Models.API.Rate.html">Rate</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Shipment&gt; Buy(string id, Buy parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Shipments.Buy.html">Buy</a></td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Shipments.Buy.html">Buy</a> parameters set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>&gt;</td>
+        <td><p>This updated <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a> instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_Buy_System_String_EasyPost_Models_API_Rate_System_Nullable_System_String__System_Boolean_System_Nullable_System_String__.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.Buy(System.String%2CEasyPost.Models.API.Rate%2CSystem.Nullable%7BSystem.String%7D%2CSystem.Boolean%2CSystem.Nullable%7BSystem.String%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L170">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ShipmentService_Buy_" data-uid="EasyPost.Services.ShipmentService.Buy*"></a>
+  <h4 id="EasyPost_Services_ShipmentService_Buy_System_String_EasyPost_Models_API_Rate_System_Nullable_System_String__System_Boolean_System_Nullable_System_String__" data-uid="EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.Models.API.Rate,System.Nullable{System.String},System.Boolean,System.Nullable{System.String})">Buy(String, Rate, Nullable&lt;String&gt;, Boolean, Nullable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Purchase a label for this shipment with the given rate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Shipment&gt; Buy(string id, Rate rate, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EasyPost.Models.API.Rate.html">Rate</a></td>
+        <td><span class="parametername">rate</span></td>
+        <td><p>The Rate to purchase the shipment with.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">insuranceValue</span></td>
+        <td><p>The value to insure the shipment for.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">withCarbonOffset</span></td>
+        <td><p>Whether to apply carbon offset to this purchase.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">endShipperId</span></td>
+        <td><p>The id of the end shipper to use for this purchase.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>&gt;</td>
+        <td><p>The task to buy this Shipment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_Buy_System_String_System_Nullable_System_String__System_Nullable_System_String__System_Boolean_System_Nullable_System_String__.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.Buy(System.String%2CSystem.Nullable%7BSystem.String%7D%2CSystem.Nullable%7BSystem.String%7D%2CSystem.Boolean%2CSystem.Nullable%7BSystem.String%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L139">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ShipmentService_Buy_" data-uid="EasyPost.Services.ShipmentService.Buy*"></a>
+  <h4 id="EasyPost_Services_ShipmentService_Buy_System_String_System_Nullable_System_String__System_Nullable_System_String__System_Boolean_System_Nullable_System_String__" data-uid="EasyPost.Services.ShipmentService.Buy(System.String,System.Nullable{System.String},System.Nullable{System.String},System.Boolean,System.Nullable{System.String})">Buy(String, Nullable&lt;String&gt;, Nullable&lt;String&gt;, Boolean, Nullable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Purchase a label for this shipment with the given rate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Shipment&gt; Buy(string id, string? rateId, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">rateId</span></td>
+        <td><p>The id of the rate to purchase the shipment with.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">insuranceValue</span></td>
+        <td><p>The value to insure the shipment for.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">withCarbonOffset</span></td>
+        <td><p>Whether to apply carbon offset to this purchase.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">endShipperId</span></td>
+        <td><p>The id of the end shipper to use for this purchase.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>&gt;</td>
+        <td><p>The task to buy this Shipment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_Create_Dictionary_System_String_System_Object__System_Boolean_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.Create(Dictionary%7BSystem.String%2CSystem.Object%7D%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L43">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L44">View Source</a>
   </span>
   <a id="EasyPost_Services_ShipmentService_Create_" data-uid="EasyPost.Services.ShipmentService.Create*"></a>
   <h4 id="EasyPost_Services_ShipmentService_Create_Dictionary_System_String_System_Object__System_Boolean_" data-uid="EasyPost.Services.ShipmentService.Create(Dictionary{System.String,System.Object},System.Boolean)">Create(Dictionary&lt;String, Object&gt;, Boolean)</h4>
@@ -313,7 +514,7 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_Create_EasyPost_BetaFeatures_Parameters_Shipments_Create_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.Create(EasyPost.BetaFeatures.Parameters.Shipments.Create)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L56">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L57">View Source</a>
   </span>
   <a id="EasyPost_Services_ShipmentService_Create_" data-uid="EasyPost.Services.ShipmentService.Create*"></a>
   <h4 id="EasyPost_Services_ShipmentService_Create_EasyPost_BetaFeatures_Parameters_Shipments_Create_" data-uid="EasyPost.Services.ShipmentService.Create(EasyPost.BetaFeatures.Parameters.Shipments.Create)">Create(Create)</h4>
@@ -360,10 +561,120 @@ All invalid keys will be ignored.</li>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_GenerateLabel_System_String_EasyPost_BetaFeatures_Parameters_Shipments_GenerateLabel_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.GenerateLabel(System.String%2CEasyPost.BetaFeatures.Parameters.Shipments.GenerateLabel)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L210">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ShipmentService_GenerateLabel_" data-uid="EasyPost.Services.ShipmentService.GenerateLabel*"></a>
+  <h4 id="EasyPost_Services_ShipmentService_GenerateLabel_System_String_EasyPost_BetaFeatures_Parameters_Shipments_GenerateLabel_" data-uid="EasyPost.Services.ShipmentService.GenerateLabel(System.String,EasyPost.BetaFeatures.Parameters.Shipments.GenerateLabel)">GenerateLabel(String, GenerateLabel)</h4>
+  <div class="markdown level1 summary"><p>Generate a postage label for this <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Shipment&gt; GenerateLabel(string id, GenerateLabel parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Shipments.GenerateLabel.html">GenerateLabel</a></td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Shipments.GenerateLabel.html">GenerateLabel</a> parameter set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>&gt;</td>
+        <td><p>This updated <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a> instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_GenerateLabel_System_String_System_String_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.GenerateLabel(System.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L197">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ShipmentService_GenerateLabel_" data-uid="EasyPost.Services.ShipmentService.GenerateLabel*"></a>
+  <h4 id="EasyPost_Services_ShipmentService_GenerateLabel_System_String_System_String_" data-uid="EasyPost.Services.ShipmentService.GenerateLabel(System.String,System.String)">GenerateLabel(String, String)</h4>
+  <div class="markdown level1 summary"><p>Generate a postage label for this shipment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Shipment&gt; GenerateLabel(string id, string fileFormat)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileFormat</span></td>
+        <td><p>Format to generate the label in. Valid formats: &quot;pdf&quot;, &quot;zpl&quot; and &quot;epl2&quot;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>&gt;</td>
+        <td><p>The updated Shipment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_GetLowestSmartrate_IEnumerable_EasyPost_Models_API_Smartrate__System_Int32_EasyPost_Models_API_SmartrateAccuracy_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.GetLowestSmartrate(IEnumerable%7BEasyPost.Models.API.Smartrate%7D%2CSystem.Int32%2CEasyPost.Models.API.SmartrateAccuracy)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L131">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L288">View Source</a>
   </span>
   <a id="EasyPost_Services_ShipmentService_GetLowestSmartrate_" data-uid="EasyPost.Services.ShipmentService.GetLowestSmartrate*"></a>
   <h4 id="EasyPost_Services_ShipmentService_GetLowestSmartrate_IEnumerable_EasyPost_Models_API_Smartrate__System_Int32_EasyPost_Models_API_SmartrateAccuracy_" data-uid="EasyPost.Services.ShipmentService.GetLowestSmartrate(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)">GetLowestSmartrate(IEnumerable&lt;Smartrate&gt;, Int32, SmartrateAccuracy)</h4>
@@ -426,7 +737,7 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_GetNextPage_EasyPost_Models_API_ShipmentCollection_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.GetNextPage(EasyPost.Models.API.ShipmentCollection%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L109">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L110">View Source</a>
   </span>
   <a id="EasyPost_Services_ShipmentService_GetNextPage_" data-uid="EasyPost.Services.ShipmentService.GetNextPage*"></a>
   <h4 id="EasyPost_Services_ShipmentService_GetNextPage_EasyPost_Models_API_ShipmentCollection_System_Nullable_System_Int32__" data-uid="EasyPost.Services.ShipmentService.GetNextPage(EasyPost.Models.API.ShipmentCollection,System.Nullable{System.Int32})">GetNextPage(ShipmentCollection, Nullable&lt;Int32&gt;)</h4>
@@ -495,10 +806,334 @@ All invalid keys will be ignored.</li>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_GetSmartrates_System_String_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.GetSmartrates(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L125">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ShipmentService_GetSmartrates_" data-uid="EasyPost.Services.ShipmentService.GetSmartrates*"></a>
+  <h4 id="EasyPost_Services_ShipmentService_GetSmartrates_System_String_" data-uid="EasyPost.Services.ShipmentService.GetSmartrates(System.String)">GetSmartrates(String)</h4>
+  <div class="markdown level1 summary"><p>Get the SmartRates for this shipment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;List&lt;Smartrate&gt;&gt; GetSmartrates(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="EasyPost.Models.API.Smartrate.html">Smartrate</a>&gt;&gt;</td>
+        <td><p>A list of EasyPost.Smartrate instances.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_Insure_System_String_EasyPost_BetaFeatures_Parameters_Shipments_Insure_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.Insure(System.String%2CEasyPost.BetaFeatures.Parameters.Shipments.Insure)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L234">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ShipmentService_Insure_" data-uid="EasyPost.Services.ShipmentService.Insure*"></a>
+  <h4 id="EasyPost_Services_ShipmentService_Insure_System_String_EasyPost_BetaFeatures_Parameters_Shipments_Insure_" data-uid="EasyPost.Services.ShipmentService.Insure(System.String,EasyPost.BetaFeatures.Parameters.Shipments.Insure)">Insure(String, Insure)</h4>
+  <div class="markdown level1 summary"><p>Insure this <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a> for the given amount.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Shipment&gt; Insure(string id, Insure parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Shipments.Insure.html">Insure</a></td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Shipments.Insure.html">Insure</a> parameters set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>&gt;</td>
+        <td><p>This updated <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a> instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_Insure_System_String_System_Double_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.Insure(System.String%2CSystem.Double)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L221">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ShipmentService_Insure_" data-uid="EasyPost.Services.ShipmentService.Insure*"></a>
+  <h4 id="EasyPost_Services_ShipmentService_Insure_System_String_System_Double_" data-uid="EasyPost.Services.ShipmentService.Insure(System.String,System.Double)">Insure(String, Double)</h4>
+  <div class="markdown level1 summary"><p>Insure shipment for the given amount.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Shipment&gt; Insure(string id, double amount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>The amount to insure the shipment for. Currency is provided when creating a shipment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>&gt;</td>
+        <td><p>The updated Shipment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_Refund_System_String_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.Refund(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L244">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ShipmentService_Refund_" data-uid="EasyPost.Services.ShipmentService.Refund*"></a>
+  <h4 id="EasyPost_Services_ShipmentService_Refund_System_String_" data-uid="EasyPost.Services.ShipmentService.Refund(System.String)">Refund(String)</h4>
+  <div class="markdown level1 summary"><p>Send a refund request to the carrier the shipment was purchased from.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Shipment&gt; Refund(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>&gt;</td>
+        <td><p>The updated Shipment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_RegenerateRates_System_String_EasyPost_BetaFeatures_Parameters_Shipments_RegenerateRates_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.RegenerateRates(System.String%2CEasyPost.BetaFeatures.Parameters.Shipments.RegenerateRates)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L271">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ShipmentService_RegenerateRates_" data-uid="EasyPost.Services.ShipmentService.RegenerateRates*"></a>
+  <h4 id="EasyPost_Services_ShipmentService_RegenerateRates_System_String_EasyPost_BetaFeatures_Parameters_Shipments_RegenerateRates_" data-uid="EasyPost.Services.ShipmentService.RegenerateRates(System.String,EasyPost.BetaFeatures.Parameters.Shipments.RegenerateRates)">RegenerateRates(String, RegenerateRates)</h4>
+  <div class="markdown level1 summary"><p>Refresh <see cref="!:Rates"></see> for this <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Shipment&gt; RegenerateRates(string id, RegenerateRates parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Shipments.RegenerateRates.html">RegenerateRates</a></td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Shipments.RegenerateRates.html">RegenerateRates</a> parameter set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>&gt;</td>
+        <td><p>This updated <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a> instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_RegenerateRates_System_String_System_Nullable_Dictionary_System_String_System_Object___System_Boolean_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.RegenerateRates(System.String%2CSystem.Nullable%7BDictionary%7BSystem.String%2CSystem.Object%7D%7D%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L256">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ShipmentService_RegenerateRates_" data-uid="EasyPost.Services.ShipmentService.RegenerateRates*"></a>
+  <h4 id="EasyPost_Services_ShipmentService_RegenerateRates_System_String_System_Nullable_Dictionary_System_String_System_Object___System_Boolean_" data-uid="EasyPost.Services.ShipmentService.RegenerateRates(System.String,System.Nullable{Dictionary{System.String,System.Object}},System.Boolean)">RegenerateRates(String, Nullable&lt;Dictionary&lt;String, Object&gt;&gt;, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Refresh the rates for this Shipment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Shipment&gt; RegenerateRates(string id, Dictionary&lt;string, object&gt;? parameters = null, bool withCarbonOffset = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>Optional dictionary of parameters for the API request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">withCarbonOffset</span></td>
+        <td><p>Whether to use carbon offset when re-rating the shipment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>&gt;</td>
+        <td><p>The task to regenerate this Shipment's rates.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService_Retrieve_System_String_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService.Retrieve(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L117">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L118">View Source</a>
   </span>
   <a id="EasyPost_Services_ShipmentService_Retrieve_" data-uid="EasyPost.Services.ShipmentService.Retrieve*"></a>
   <h4 id="EasyPost_Services_ShipmentService_Retrieve_System_String_" data-uid="EasyPost.Services.ShipmentService.Retrieve(System.String)">Retrieve(String)</h4>
@@ -558,7 +1193,7 @@ All invalid keys will be ignored.</li>
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ShipmentService.md&amp;value=---%0Auid%3A%20EasyPost.Services.ShipmentService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L13" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ShipmentService.cs/#L14" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
