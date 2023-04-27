@@ -18,7 +18,7 @@ namespace EasyPost.Tests.ServicesTests
                 try
                 {
                     Webhook retrievedWebhook = await Client.Webhook.Retrieve(id);
-                    await retrievedWebhook.Delete();
+                    await Client.Webhook.Delete(retrievedWebhook.Id);
                     return true;
                 }
                 catch

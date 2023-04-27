@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
@@ -16,7 +17,7 @@ namespace EasyPost.Tests.ServicesTests
                 try
                 {
                     User retrievedUser = await Client.User.Retrieve(id);
-                    await retrievedUser.Delete();
+                    await Client.User.Delete(retrievedUser.Id);
                     return true;
                 }
                 catch
@@ -66,23 +67,6 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
-        public async Task TestRetrieveWithNoId()
-        {
-            UseVCR("retrieve_with_no_id");
-
-            User authenticatedUser = await Client.User.RetrieveMe();
-
-            User user = await Client.User.Retrieve();
-            // retrieve with no id should return the authenticated user
-
-            Assert.IsType<User>(user);
-            Assert.StartsWith("user_", user.Id);
-            Assert.Equal(authenticatedUser.Id, user.Id);
-        }
-
-        [Fact]
-        [CrudOperations.Read]
-        [Testing.Function]
         public async Task TestRetrieveMe()
         {
             UseVCR("retrieve_me");
@@ -91,6 +75,61 @@ namespace EasyPost.Tests.ServicesTests
 
             Assert.IsType<User>(user);
             Assert.StartsWith("user_", user.Id);
+        }
+        
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Function]
+        public async Task TestUpdateBrand()
+        {
+            UseVCR("update_brand");
+
+            User user = await Client.User.CreateChild(new Dictionary<string, object> { { "name", "Test User" } });
+            CleanUpAfterTest(user.Id);
+
+            const string color = "#123456";
+            Brand brand = await Client.User.UpdateBrand(user.Id, new Dictionary<string, object> { { "color", color } });
+
+            Assert.IsType<Brand>(brand);
+            Assert.StartsWith("brd_", brand.Id);
+            Assert.Equal(color, brand.Color);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestUpdate()
+        {
+            UseVCR("update");
+
+            User user = await Client.User.CreateChild(new Dictionary<string, object> { { "name", "Test User" } });
+            CleanUpAfterTest(user.Id);
+
+            const string testName = "New Name";
+
+            Dictionary<string, object> userDict = new() { { "name", testName } };
+            user = await Client.User.Update(user.Id, userDict);
+
+            Assert.IsType<User>(user);
+            Assert.StartsWith("user_", user.Id);
+            Assert.Equal(testName, user.Name);
+        }
+
+        [Fact]
+        [CrudOperations.Delete]
+        [Testing.Function]
+        public async Task TestDelete()
+        {
+            UseVCR("delete");
+
+            User user = await Client.User.CreateChild(new Dictionary<string, object> { { "name", "Test User" } });
+            CleanUpAfterTest(user.Id);
+
+            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.User.Delete(user.Id));
+
+            Assert.Null(possibleException);
+
+            SkipCleanUpAfterTest();
         }
 
         #endregion

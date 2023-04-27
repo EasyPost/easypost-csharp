@@ -22,7 +22,7 @@ namespace EasyPost
          * When you are migrating a service from beta to general, you should remove/change the overrideApiVersion parameter from each function that is being migrated.
          */
 
-        public ReferralService Referral { get; }
+        public ReferralCustomerService ReferralCustomer { get; }
 
         public RateService Rate { get; }
 
@@ -39,7 +39,7 @@ namespace EasyPost
         internal BetaClient(string apiKey, string? baseUrl = null, int? timeoutMilliseconds = null, HttpClient? customHttpClient = null)
             : base(apiKey, baseUrl, timeoutMilliseconds, customHttpClient)
         {
-            Referral = new ReferralService(this);
+            ReferralCustomer = new ReferralCustomerService(this);
             Rate = new RateService(this);
             CarrierMetadata = new CarrierMetadataService(this);
         }

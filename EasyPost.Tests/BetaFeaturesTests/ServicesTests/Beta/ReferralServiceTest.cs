@@ -34,7 +34,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests.Beta
                     PaymentMethodReference = "ba_123",
                 };
 
-                PaymentMethod _ = await Client.Beta.Referral.AddPaymentMethod(parameters);
+                PaymentMethod _ = await Client.Beta.ReferralCustomer.AddPaymentMethod(parameters);
             }
             catch (InvalidRequestError e)
             {
@@ -59,7 +59,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests.Beta
                     Amount = 2000,
                 };
 
-                PaymentRefund _ = await Client.Beta.Referral.RefundByAmount(parameters);
+                PaymentRefund _ = await Client.Beta.ReferralCustomer.RefundByAmount(parameters);
             }
             catch (InvalidRequestError e)
             {
@@ -84,7 +84,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests.Beta
                     PaymentLogId = "paylog_123",
                 };
 
-                PaymentRefund _ = await Client.Beta.Referral.RefundByPaymentLog(parameters);
+                PaymentRefund _ = await Client.Beta.ReferralCustomer.RefundByPaymentLog(parameters);
             }
             catch (InvalidRequestError e)
             {
