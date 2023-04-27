@@ -13,12 +13,6 @@ namespace EasyPost.Tests.ServicesTests
 {
     public class WebhookServiceTests : UnitTest
     {
-        // NOTE: Because the API does not allow two webhooks with the same URL,
-        // and these tests run in parallel, each test needs to have a unique URL.
-        // If you are re-recording these tests, run all the net462 tests alone,
-        // then one of the net test sets, then the other net test sets.
-        // This will avoid clashing webhooks server-side causing tests to fail.
-
         public WebhookServiceTests() : base("webhook_service") =>
             CleanupFunction = async id =>
             {

@@ -65,77 +65,9 @@
     <None Remove="RestSharp" />
     <None Remove="MSTest.TestFramework" />
     <None Remove="MSTest.TestAdapter" />
-    <None Remove="cassettes\net\beta_rate_service\get_lowest_rate_instance_function.json" />
-    <None Remove="cassettes\net\shipment\create_with_tax_identifiers.json" />
-    <None Remove="cassettes\net\shipment\buy_with_end_shipper.json" />
-    <None Remove="cassettes\net\shipment_with_parameters\regenerate_rates_with_carbon_offset.json" />
-    <None Remove="cassettes\net\shipment\lowest_rate.json" />
-    <None Remove="cassettes\net\shipment\buy.json" />
-    <None Remove="cassettes\net\shipment\forms.json" />
-    <None Remove="cassettes\net\shipment\generate_label.json" />
-    <None Remove="cassettes\net\shipment\get_smart_rates.json" />
-    <None Remove="cassettes\net\user\update_brand.json" />
-    <None Remove="cassettes\net\shipment\buy_with_carbon_offset.json" />
-    <None Remove="cassettes\net\webhook\delete.json" />
-    <None Remove="cassettes\net\shipment\regenerate_rates_with_carbon_offset.json" />
-    <None Remove="cassettes\net\shipment\refund.json" />
-    <None Remove="cassettes\net\shipment_with_parameters\buy_with_end_shipper.json" />
-    <None Remove="cassettes\net\shipment\get_smart_rates_with_no_id.json" />
-    <None Remove="cassettes\net\shipment\generate_label_with_no_id.json" />
-    <None Remove="cassettes\net\shipment\regenerate_rates.json" />
-    <None Remove="cassettes\net\shipment_service\get_lowest_smart_rate.json" />
-    <None Remove="cassettes\net\shipment\buy_with_no_id.json" />
-    <None Remove="cassettes\net\user_service\retrieve_with_no_id.json" />
-    <None Remove="cassettes\net\shipment\regenerate_rates_with_no_id.json" />
-    <None Remove="cassettes\net\shipment_with_parameters\regenerate_rates.json" />
-    <None Remove="cassettes\net\shipment\buy_with_no_rate.json" />
-    <None Remove="cassettes\net\shipment\insure.json" />
-    <None Remove="cassettes\net\shipment\buy_with_no_rate_id.json" />
-    <None Remove="cassettes\net\shipment\insure_with_no_id.json" />
-    <None Remove="cassettes\net\shipment\lowest_smart_rate.json" />
-    <None Remove="cassettes\netstandard\beta_rate_service\get_lowest_rate_instance_function.json" />
-    <None Remove="cassettes\netstandard\shipment_with_parameters\buy_with_carbon_offset.json" />
-    <None Remove="cassettes\netstandard\user_with_parameters\update.json" />
-    <None Remove="cassettes\netstandard\shipment_service\get_lowest_smart_rate.json" />
-    <None Remove="cassettes\netstandard\shipment\forms.json" />
-    <None Remove="cassettes\netstandard\shipment\lowest_rate.json" />
-    <None Remove="cassettes\netstandard\shipment\regenerate_rates.json" />
-    <None Remove="cassettes\netstandard\shipment_with_parameters\insure.json" />
-    <None Remove="cassettes\netstandard\shipment\get_smart_rates_with_no_id.json" />
-    <None Remove="cassettes\netstandard\shipment\regenerate_rates_with_carbon_offset.json" />
-    <None Remove="cassettes\netstandard\shipment\buy_with_end_shipper.json" />
-    <None Remove="cassettes\netstandard\shipment\insure.json" />
-    <None Remove="cassettes\netstandard\shipment\insure_with_no_id.json" />
-    <None Remove="cassettes\netstandard\shipment\lowest_smart_rate.json" />
-    <None Remove="cassettes\netstandard\shipment\refund_with_no_id.json" />
-    <None Remove="cassettes\netstandard\shipment\regenerate_rates_with_no_id.json" />
-    <None Remove="cassettes\netstandard\user_service\retrieve_with_no_id.json" />
-    <None Remove="cassettes\netstandard\shipment\generate_label_with_no_id.json" />
-    <None Remove="cassettes\netstandard\shipment\buy_with_no_id.json" />
-    <None Remove="cassettes\netstandard\shipment_with_parameters\regenerate_rates.json" />
-    <None Remove="cassettes\netstandard\shipment_with_parameters\buy.json" />
-    <None Remove="cassettes\netstandard\shipment\buy.json" />
-    <None Remove="cassettes\netstandard\shipment\create_with_tax_identifiers.json" />
-    <None Remove="cassettes\netstandard\shipment\buy_with_no_rate.json" />
-    <None Remove="cassettes\netstandard\shipment\generate_label.json" />
-    <None Remove="cassettes\netstandard\shipment\get_smart_rates.json" />
-    <None Remove="cassettes\netstandard\shipment\refund.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BetaFeaturesTests\ModelsTests\" />
     <Folder Include="cassettes" />
-    <Folder Include="cassettes\netstandard\shipment\" />
-    <Folder Include="cassettes\net\user\" />
-    <Folder Include="cassettes\net\webhook\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="BetaFeaturesTests\ModelsTests\TrackerTest.cs" />
-    <Compile Remove="BetaFeaturesTests\ModelsTests\UserTest.cs" />
-    <Compile Remove="BetaFeaturesTests\ModelsTests\ShipmentTest.cs" />
-    <Compile Remove="ModelsTests\WebhookTest.cs" />
-    <Compile Remove="ModelsTests\ShipmentTest.cs" />
-    <Compile Remove="ModelsTests\UserTest.cs" />
   </ItemGroup>
 </Project>
