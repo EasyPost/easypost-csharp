@@ -21,14 +21,8 @@ namespace EasyPost._base
         /// </summary>
         public string ApiKeyInUse
         {
-            get
-            {
-                return _configuration.ApiKey; // public read-only property so users can audit the API key used by the client
-            }
-            internal set
-            {
-                _configuration.ApiKey = value; // internal setter so the library can alter this client's API key when we need to
-            }
+            get => _configuration.ApiKey; // public read-only property so users can audit the API key used by the client
+            internal set => _configuration.ApiKey = value; // internal setter so the library can alter this client's API key when we need to
         }
 
         /// <summary>
@@ -58,7 +52,7 @@ namespace EasyPost._base
         protected EasyPostClient(ClientConfiguration configuration)
         {
             _configuration = configuration;
-            
+
             // set up the configuration, needed to finalize the HttpClient used to make requests
             _configuration.SetUp();
         }

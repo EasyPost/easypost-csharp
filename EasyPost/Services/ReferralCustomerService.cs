@@ -155,10 +155,10 @@ namespace EasyPost.Services
                     }
                 },
             };
-            
+
             // store the original client's API key
             string originalApiKey = Client.ApiKeyInUse;
-            
+
             // set the client's API key to the referral customer's API key
             Client.ApiKeyInUse = referralApiKey;
 

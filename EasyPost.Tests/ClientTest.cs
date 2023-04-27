@@ -25,7 +25,7 @@ namespace EasyPost.Tests
             const string apiBase = "https://www.example.com";
             TimeSpan timeout = TimeSpan.FromMilliseconds(5000);
             HttpClient httpClient = new();
-            
+
             Client client = new(new ClientConfiguration(FakeApikey)
             {
                 ApiBase = apiBase,
@@ -79,7 +79,7 @@ namespace EasyPost.Tests
             Assert.Equal("https://api.easypost.com", normalClient.ApiBaseInUse);
             Assert.Equal("https://www.example.com", overrideClient.ApiBaseInUse);
         }
-        
+
         [Fact]
         public void TestTimeoutOverride()
         {
@@ -92,12 +92,12 @@ namespace EasyPost.Tests
             Assert.Equal(TimeSpan.FromSeconds(60), normalClient.Timeout);
             Assert.Equal(TimeSpan.FromMilliseconds(1), overrideClient.Timeout);
         }
-        
+
         [Fact]
         public void TestHttpClientOverride()
         {
             Client normalClient = new(new ClientConfiguration(FakeApikey));
-            
+
             HttpClient httpClient = new();
             Client overrideClient = new(new ClientConfiguration(FakeApikey)
             {
