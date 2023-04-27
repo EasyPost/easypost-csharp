@@ -39,15 +39,11 @@ namespace EasyPost.Tests.baseTests
             // hashcode should be the same number each time
             Assert.Equal(apiKey.GetHashCode(), apiKey.GetHashCode());
 
-            // hashcode should be the same for two objects with the same properties (including Client)
+            // hashcode should be the same for two objects with the same properties
             Assert.Equal(apiKey.GetHashCode(), sameProperties.GetHashCode());
 
             // hashcode should be different for two objects with different properties
             Assert.NotEqual(apiKey.GetHashCode(), differentProperties.GetHashCode());
-
-            // hashcode should be different for two objects with the same properties but different Clients
-            sameProperties.Client = new Client("key");
-            Assert.NotEqual(apiKey.GetHashCode(), sameProperties.GetHashCode());
         }
 
         [Fact]
@@ -72,13 +68,6 @@ namespace EasyPost.Tests.baseTests
             Assert.False(apiKey.Equals(differentProperties));
             Assert.False(apiKey == differentProperties);
             Assert.True(apiKey != differentProperties);
-
-            // two objects with the same properties but different clients should not be equal
-            sameProperties.Client = new Client("key");
-            Assert.NotEqual(apiKey, sameProperties);
-            Assert.False(apiKey.Equals(sameProperties));
-            Assert.False(apiKey == sameProperties);
-            Assert.True(apiKey != sameProperties);
 
             // two objects of different types should not be equal
             // ReSharper disable once SuspiciousTypeConversion.Global

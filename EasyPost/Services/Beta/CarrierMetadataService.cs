@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Http;
 using EasyPost.Models.API.Beta;
 using EasyPost.Utilities.Internal.Attributes;
 
@@ -26,7 +27,7 @@ namespace EasyPost.Services.Beta
         {
             Dictionary<string, object> data = parameters?.ToDictionary() ?? new Dictionary<string, object>();
 
-            return await Get<List<Carrier>>("metadata", data, "carriers", ApiVersion.Beta);
+            return await Request<List<Carrier>>(Method.Get, "metadata", data, "carriers", ApiVersion.Beta);
         }
 
         #endregion

@@ -1,12 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Reflection;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
-using EasyPost.Models.Shared;
 using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -91,7 +88,7 @@ namespace EasyPost._base
         /// <param name="rootElement">Optional root element for the JSON to begin deserialization at.</param>
         /// <typeparam name="T">Type of object to deserialize response data into. Must be subclass of EasyPostObject.</typeparam>
         /// <returns>An instance of a T type object.</returns>
-        internal async Task<T> Request<T>(Http.Method method, string endpoint, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null)
+        internal async Task<T> Request<T>(Method method, string endpoint, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null)
             where T : class
         {
             // Build the request
@@ -125,69 +122,7 @@ namespace EasyPost._base
             }
 #pragma warning restore IDE0270
 
-            PassClientToEasyPostObject(resource);
-
             return resource;
-        }
-
-        private void PassClientToAllEasyPostObjectProperties<T>(T? resource)
-            where T : EasyPostObject
-        {
-            if (resource == null)
-            {
-                return;
-            }
-
-            List<PropertyInfo> properties = new(resource.GetType().GetProperties());
-            foreach (PropertyInfo property in properties)
-            {
-                // Pass the Client into every EasyPostObject in the collection
-                PassClientToEasyPostObject(property.GetValue(resource));
-            }
-        }
-
-        private void PassClientToEasyPostObjectsInList<T>(T? resource)
-            where T : IList
-        {
-            if (resource == null)
-            {
-                return;
-            }
-
-            foreach (object? item in resource)
-            {
-                // pass the Client into every EasyPostObject in the list
-                PassClientToEasyPostObject(item);
-            }
-        }
-
-        /// <summary>
-        ///     Copy this Client into a new EasyPostObject instance.
-        /// </summary>
-        /// <param name="resource">Object to add this Client to.</param>
-        /// <typeparam name="T">Type of the object.</typeparam>
-        private void PassClientToEasyPostObject<T>(T? resource)
-            where T : class
-        {
-            switch (resource)
-            {
-                case null:
-                    break;
-                case IList list:
-                    PassClientToEasyPostObjectsInList(list);
-                    break;
-                case PaginatedCollection<EasyPost._base.EasyPostObject> collection:
-                    PassClientToAllEasyPostObjectProperties(collection);
-                    break;
-                case EasyPostObject easyPostObject:
-                    easyPostObject.Client = this;
-                    PassClientToAllEasyPostObjectProperties(easyPostObject);
-                    break;
-
-                // ReSharper disable once RedundantEmptySwitchSection
-                default:
-                    break;
-            }
         }
 
         /// <summary>
@@ -199,7 +134,7 @@ namespace EasyPost._base
         /// <param name="parameters">Optional parameters to use for the request.</param>
         /// <returns>Whether request was successful.</returns>
         // ReSharper disable once UnusedMethodReturnValue.Global
-        internal async Task<bool> Request(Http.Method method, string endpoint, ApiVersion apiVersion, Dictionary<string, object>? parameters = null)
+        internal async Task<bool> Request(Method method, string endpoint, ApiVersion apiVersion, Dictionary<string, object>? parameters = null)
         {
             // Build the request
             Dictionary<string, string> headers = Configuration.Headers;
