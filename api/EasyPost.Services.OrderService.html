@@ -128,10 +128,181 @@
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_Buy_System_String_EasyPost_BetaFeatures_Parameters_Orders_Buy_.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.Buy(System.String%2CEasyPost.BetaFeatures.Parameters.Orders.Buy)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L114">View Source</a>
+  </span>
+  <a id="EasyPost_Services_OrderService_Buy_" data-uid="EasyPost.Services.OrderService.Buy*"></a>
+  <h4 id="EasyPost_Services_OrderService_Buy_System_String_EasyPost_BetaFeatures_Parameters_Orders_Buy_" data-uid="EasyPost.Services.OrderService.Buy(System.String,EasyPost.BetaFeatures.Parameters.Orders.Buy)">Buy(String, Buy)</h4>
+  <div class="markdown level1 summary"><p>Purchase the <see cref="!:Shipments"></see> within this <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Order&gt; Buy(string id, Buy parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Orders.Buy.html">Buy</a></td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Orders.Buy.html">Buy</a> parameters set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Order.html">Order</a>&gt;</td>
+        <td><p>This updated <a class="xref" href="EasyPost.Models.API.Order.html">Order</a> instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_Buy_System_String_EasyPost_Models_API_Rate_.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.Buy(System.String%2CEasyPost.Models.API.Rate)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L91">View Source</a>
+  </span>
+  <a id="EasyPost_Services_OrderService_Buy_" data-uid="EasyPost.Services.OrderService.Buy*"></a>
+  <h4 id="EasyPost_Services_OrderService_Buy_System_String_EasyPost_Models_API_Rate_" data-uid="EasyPost.Services.OrderService.Buy(System.String,EasyPost.Models.API.Rate)">Buy(String, Rate)</h4>
+  <div class="markdown level1 summary"><p>Purchase a label for this shipment with the given rate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Order&gt; Buy(string id, Rate rate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EasyPost.Models.API.Rate.html">Rate</a></td>
+        <td><span class="parametername">rate</span></td>
+        <td><p>EasyPost.Rate object instance to purchase the shipment with.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Order.html">Order</a>&gt;</td>
+        <td><p>The updated Order.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_Buy_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.Buy(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L74">View Source</a>
+  </span>
+  <a id="EasyPost_Services_OrderService_Buy_" data-uid="EasyPost.Services.OrderService.Buy*"></a>
+  <h4 id="EasyPost_Services_OrderService_Buy_System_String_System_String_System_String_" data-uid="EasyPost.Services.OrderService.Buy(System.String,System.String,System.String)">Buy(String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Purchase the shipments within this order with a carrier and service.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Order&gt; Buy(string id, string withCarrier, string withService)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">withCarrier</span></td>
+        <td><p>The carrier to purchase a shipment from.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">withService</span></td>
+        <td><p>The service to purchase.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Order.html">Order</a>&gt;</td>
+        <td><p>The updated Order.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_Create_Dictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.Create(Dictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L39">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L41">View Source</a>
   </span>
   <a id="EasyPost_Services_OrderService_Create_" data-uid="EasyPost.Services.OrderService.Create*"></a>
   <h4 id="EasyPost_Services_OrderService_Create_Dictionary_System_String_System_Object__" data-uid="EasyPost.Services.OrderService.Create(Dictionary{System.String,System.Object})">Create(Dictionary&lt;String, Object&gt;)</h4>
@@ -195,7 +366,7 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_Create_EasyPost_BetaFeatures_Parameters_Orders_Create_.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.Create(EasyPost.BetaFeatures.Parameters.Orders.Create)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L51">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L53">View Source</a>
   </span>
   <a id="EasyPost_Services_OrderService_Create_" data-uid="EasyPost.Services.OrderService.Create*"></a>
   <h4 id="EasyPost_Services_OrderService_Create_EasyPost_BetaFeatures_Parameters_Orders_Create_" data-uid="EasyPost.Services.OrderService.Create(EasyPost.BetaFeatures.Parameters.Orders.Create)">Create(Create)</h4>
@@ -242,10 +413,59 @@ All invalid keys will be ignored.</li>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_RefreshRates_System_String_.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.RefreshRates(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L124">View Source</a>
+  </span>
+  <a id="EasyPost_Services_OrderService_RefreshRates_" data-uid="EasyPost.Services.OrderService.RefreshRates*"></a>
+  <h4 id="EasyPost_Services_OrderService_RefreshRates_System_String_" data-uid="EasyPost.Services.OrderService.RefreshRates(System.String)">RefreshRates(String)</h4>
+  <div class="markdown level1 summary"><p>Repopulate the rates for an Order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;Order&gt; RefreshRates(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Order.html">Order</a>&gt;</td>
+        <td><p>The task to refresh this Order's rates.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_Retrieve_System_String_.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.Retrieve(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L63">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L65">View Source</a>
   </span>
   <a id="EasyPost_Services_OrderService_Retrieve_" data-uid="EasyPost.Services.OrderService.Retrieve*"></a>
   <h4 id="EasyPost_Services_OrderService_Retrieve_System_String_" data-uid="EasyPost.Services.OrderService.Retrieve(System.String)">Retrieve(String)</h4>
@@ -305,7 +525,7 @@ All invalid keys will be ignored.</li>
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
