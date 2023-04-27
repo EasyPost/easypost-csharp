@@ -32,7 +32,9 @@ namespace EasyPost._base
 
         public override bool Equals(object? obj) => GetType() == obj?.GetType() && GetHashCode() == ((EasyPostObject)obj).GetHashCode();
 
+#pragma warning disable CA1307
         public override int GetHashCode() => AsJson().GetHashCode() ^ GetType().GetHashCode();
+#pragma warning restore CA1307
 
         public static bool operator ==(EasyPostObject? one, object? two)
         {
