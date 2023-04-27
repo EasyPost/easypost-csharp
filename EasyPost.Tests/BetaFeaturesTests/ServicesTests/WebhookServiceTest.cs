@@ -19,7 +19,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 try
                 {
                     Webhook retrievedWebhook = await Client.Webhook.Retrieve(id);
-                    await retrievedWebhook.Delete();
+                    await Client.Webhook.Delete(retrievedWebhook.Id);
                     return true;
                 }
                 catch
@@ -40,7 +40,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         {
             UseVCR("create");
 
-            const string url = "https://example.com/create";
+            string url = $"https://example.com/beta/create/{TestUtils.NetVersion}";
 
             Dictionary<string, object> data = new Dictionary<string, object> { { "url", url } };
 
@@ -71,6 +71,32 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             {
                 Assert.IsType<Webhook>(item);
             }
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestUpdate()
+        {
+            UseVCR("update");
+
+            string url = $"https://example.com/beta/update/{TestUtils.NetVersion}";
+            BetaFeatures.Parameters.Webhooks.Create webhookParameters = new()
+            {
+                Url = url,
+            };
+            Webhook webhook = await Client.Webhook.Create(webhookParameters);
+            CleanUpAfterTest(webhook.Id);
+
+            BetaFeatures.Parameters.Webhooks.Update updateParameters = new()
+            {
+            };
+            // Sending an empty payload will toggle the active status of the webhook silently.
+            webhook = await Client.Webhook.Update(webhook.Id, updateParameters);
+
+            // We can only update the secret, but that's not returned as part of the Webhook object, so we have no property to check to see if it was updated.
+            Assert.IsType<Webhook>(webhook);
+            Assert.StartsWith("hook_", webhook.Id);
         }
 
         #endregion

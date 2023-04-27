@@ -3,6 +3,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities;
 using EasyPost.Utilities.Internal;
@@ -71,7 +72,41 @@ namespace EasyPost.Services
         /// <param name="id">String representing a webhook. Starts with "hook_".</param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
-        public async Task<Webhook> Retrieve(string? id) => await Get<Webhook>($"webhooks/{id}");
+        public async Task<Webhook> Retrieve(string id) => await Get<Webhook>($"webhooks/{id}");
+
+        /// <summary>
+        ///     Update a Webhook. A disabled webhook will be enabled.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Dictionary containing parameters to update the webhook with. Valid pairs:
+        ///     * { "url", string } Url of the webhook that events will be sent to.
+        ///     * { "webhook_secret", string } Secret token to include as a header when sending a webhook.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <returns>The updated Webhook.</returns>
+        [CrudOperations.Update]
+        public async Task<Webhook> Update(string id, Dictionary<string, object>? parameters = null)
+        {
+            return await Request<Webhook>(Method.Put, $"webhooks/{id}", parameters);
+        }
+
+        /// <summary>
+        ///     Update this <see cref="Webhook"/>.
+        /// </summary>
+        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Webhooks.Update"/> parameter set.</param>
+        /// <returns>This updated <see cref="Webhook"/> instance.</returns>
+        [CrudOperations.Update]
+        public async Task<Webhook> Update(string id, BetaFeatures.Parameters.Webhooks.Update parameters)
+        {
+            return await Request<Webhook>(Method.Put, $"webhooks/{id}", parameters.ToDictionary());
+        }
+
+        /// <summary>
+        ///     Delete this webhook.
+        /// </summary>
+        /// <returns>Whether the request was successful or not.</returns>
+        [CrudOperations.Delete]
+        public async Task Delete(string id) => await DeleteNoResponse($"webhooks/{id}");
 
         /// <summary>
         ///     Validate a received webhook's HMAC signature.

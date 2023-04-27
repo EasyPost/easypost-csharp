@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 446,
-    "RecordedAt": "2023-03-17T15:07:51.529336-06:00",
+    "Duration": 340,
+    "RecordedAt": "2023-04-25T21:17:06.248335-06:00",
     "Request": {
       "Body": "{\"tracker\":{\"carrier\":\"USPS\",\"tracking_code\":\"EZ1000000001\"}}",
       "BodyContentType": "Json",
@@ -12,8 +12,6 @@
       "Method": "POST",
       "RequestHeaders": {
         "Authorization": "<REDACTED>",
-        "content_type": "application/json",
-        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
         "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/v2/trackers"
@@ -34,16 +32,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "3d24c62b6414d6a7e6652aa7000bfc88",
+        "x-ep-request-uuid": "d677fdb8644897b2e1a95a9c0008c9f2",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
         "Location": "/api/v2/trackers/trk_131720d1e9a34aeab5c9d872e93adce9",
         "ETag": "W/\"d251eb1f0ccf15c5bf976a49f16d5cd0\"",
-        "x-runtime": "0.070941",
+        "x-runtime": "0.058780",
         "x-node": "bigweb1nuq",
-        "x-version-label": "easypost-202303171748-9814978ec9-master",
+        "x-version-label": "easypost-202304252326-79950b6035-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq a40ea751fd,intlb1wdc a40ea751fd,extlb3wdc a40ea751fd",
+        "x-proxied": "intlb2nuq a29e4ad05c,extlb2nuq a29e4ad05c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

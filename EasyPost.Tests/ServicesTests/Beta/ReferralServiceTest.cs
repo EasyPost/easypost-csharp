@@ -28,7 +28,7 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             try
             {
-                PaymentMethod _ = await Client.Beta.Referral.AddPaymentMethod("cus_123", "ba_123");
+                PaymentMethod _ = await Client.Beta.ReferralCustomer.AddPaymentMethod("cus_123", "ba_123");
             }
             catch (InvalidRequestError e)
             {
@@ -48,7 +48,7 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             try
             {
-                PaymentRefund _ = await Client.Beta.Referral.RefundByAmount(2000);
+                PaymentRefund _ = await Client.Beta.ReferralCustomer.RefundByAmount(2000);
             }
             catch (InvalidRequestError e)
             {
@@ -68,7 +68,7 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             try
             {
-                PaymentRefund _ = await Client.Beta.Referral.RefundByPaymentLog("paylog_123");
+                PaymentRefund _ = await Client.Beta.ReferralCustomer.RefundByPaymentLog("paylog_123");
             }
             catch (InvalidRequestError e)
             {

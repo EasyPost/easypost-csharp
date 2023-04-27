@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 713,
-    "RecordedAt": "2023-01-06T14:41:19.855409-07:00",
+    "Duration": 798,
+    "RecordedAt": "2023-04-25T21:17:06.2514-06:00",
     "Request": {
       "Body": "{\"refund_amount\":2000}",
       "BodyContentType": "Json",
@@ -12,8 +12,6 @@
       "Method": "POST",
       "RequestHeaders": {
         "Authorization": "<REDACTED>",
-        "content_type": "application/json",
-        "Accept": "application/json,text/json,text/x-json,text/javascript,application/xml,text/xml",
         "User-Agent": "<REDACTED>"
       },
       "Uri": "https://api.easypost.com/beta/referral_customers/refunds"
@@ -34,14 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "2eaef11663b8957fecd65dc700120f79",
+        "x-ep-request-uuid": "d677fdb5644897b1e1973dc00008c9a0",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.478328",
-        "x-node": "bigweb8nuq",
-        "x-version-label": "easypost-202301061916-0a02324e86-master",
+        "x-runtime": "0.504807",
+        "Vary": "Origin",
+        "x-node": "bigweb1nuq",
+        "x-version-label": "easypost-202304252326-79950b6035-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq 29913d444b,extlb2nuq 29913d444b",
+        "x-proxied": "intlb2nuq a29e4ad05c,extlb2nuq a29e4ad05c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

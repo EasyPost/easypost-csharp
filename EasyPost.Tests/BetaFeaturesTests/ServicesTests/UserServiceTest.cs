@@ -16,7 +16,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 try
                 {
                     User retrievedUser = await Client.User.Retrieve(id);
-                    await retrievedUser.Delete();
+                    await Client.User.Delete(retrievedUser.Id);
                     return true;
                 }
                 catch
@@ -47,6 +47,60 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             Assert.IsType<User>(user);
             Assert.StartsWith("user_", user.Id);
             Assert.Equal("Test User", user.Name);
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Function]
+        public async Task TestUpdateBrand()
+        {
+            UseVCR("update_brand");
+
+            BetaFeatures.Parameters.Users.CreateChild userParameters = new()
+            {
+                Name = "Test User",
+            };
+            User user = await Client.User.CreateChild(userParameters);
+            CleanUpAfterTest(user.Id);
+
+            const string color = "#123456";
+            BetaFeatures.Parameters.Users.UpdateBrand brandParameters = new()
+            {
+                ColorHexCode = color,
+            };
+
+            Brand brand = await Client.User.UpdateBrand(user.Id, brandParameters);
+
+            Assert.IsType<Brand>(brand);
+            Assert.StartsWith("brd_", brand.Id);
+            Assert.Equal(color, brand.Color);
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestUpdate()
+        {
+            UseVCR("update");
+
+            BetaFeatures.Parameters.Users.CreateChild userParameters = new()
+            {
+                Name = "Test User",
+            };
+            User user = await Client.User.CreateChild(userParameters);
+            CleanUpAfterTest(user.Id);
+
+            const string testName = "New Name";
+            BetaFeatures.Parameters.Users.Update userUpdateParameters = new()
+            {
+                Name = testName,
+            };
+
+            user = await Client.User.Update(user.Id, userUpdateParameters);
+
+            Assert.IsType<User>(user);
+            Assert.StartsWith("user_", user.Id);
+            Assert.Equal(testName, user.Name);
         }
 
         #endregion

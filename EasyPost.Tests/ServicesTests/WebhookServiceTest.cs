@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
@@ -11,16 +13,13 @@ namespace EasyPost.Tests.ServicesTests
 {
     public class WebhookServiceTests : UnitTest
     {
-        // NOTE: Because the API does not allow two webhooks with the same URL,
-        // and these tests run in parallel, each test needs to have a unique URL.
-
         public WebhookServiceTests() : base("webhook_service") =>
             CleanupFunction = async id =>
             {
                 try
                 {
                     Webhook retrievedWebhook = await Client.Webhook.Retrieve(id);
-                    await retrievedWebhook.Delete();
+                    await Client.Webhook.Delete(retrievedWebhook.Id);
                     return true;
                 }
                 catch
@@ -41,7 +40,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            const string url = "https://example.com/create";
+            string url = $"https://example.com/create/{TestUtils.NetVersion}";
 
             Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
             CleanUpAfterTest(webhook.Id);
@@ -73,7 +72,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            const string url = "https://example.com/retrieve";
+            string url = $"https://example.com/retrieve/{TestUtils.NetVersion}";
 
             Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
             CleanUpAfterTest(webhook.Id);
@@ -143,6 +142,50 @@ namespace EasyPost.Tests.ServicesTests
             {
                 Assert.Equal(Constants.ErrorMessages.InvalidWebhookSignature, error.Message);
             }
+        }
+
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestUpdate()
+        {
+            UseVCR("update");
+
+            string url = $"https://example.com/update/{TestUtils.NetVersion}";
+
+            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
+            CleanUpAfterTest(webhook.Id);
+
+            if (IsRecording()) // Give the server time to process the webhook
+            {
+                Thread.Sleep(10000); // Wait enough time to process
+            }
+
+            webhook = await Client.Webhook.Update(webhook.Id);
+
+            Assert.IsType<Webhook>(webhook);
+            Assert.StartsWith("hook_", webhook.Id);
+        }
+
+        [Fact]
+        [CrudOperations.Delete]
+        [Testing.Function]
+        public async Task TestDelete()
+        {
+            UseVCR("delete");
+
+            string url = $"https://example.com/delete/{TestUtils.NetVersion}";
+
+            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
+            CleanUpAfterTest(webhook.Id);
+
+            Webhook retrievedWebhook = await Client.Webhook.Retrieve(webhook.Id);
+
+            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.Webhook.Delete(retrievedWebhook.Id));
+
+            Assert.Null(possibleException);
+
+            SkipCleanUpAfterTest();
         }
 
         #endregion
