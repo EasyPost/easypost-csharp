@@ -114,6 +114,10 @@ namespace EasyPost._base
 
             // Deserialize the response into an object
             T resource = await JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
+            
+            // Dispose of the request and response
+            request.Dispose();
+            response.Dispose();
 
 #pragma warning disable IDE0270 // Simplify null check
             if (resource is null)
