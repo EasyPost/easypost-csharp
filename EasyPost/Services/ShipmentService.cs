@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
@@ -81,8 +82,7 @@ namespace EasyPost.Services
         public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
             ShipmentCollection shipmentCollection = await Request<ShipmentCollection>(Method.Get, "shipments", parameters);
-            shipmentCollection.Purchased = parameters?.GetOrNullBoolean("purchased");
-            shipmentCollection.IncludeChildren = parameters?.GetOrNullBoolean("include_children");
+            shipmentCollection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Shipments.All>(parameters);
             return shipmentCollection;
         }
 
@@ -95,8 +95,7 @@ namespace EasyPost.Services
         public async Task<ShipmentCollection> All(BetaFeatures.Parameters.Shipments.All parameters)
         {
             ShipmentCollection shipmentCollection = await Request<ShipmentCollection>(Method.Get, "shipments", parameters.ToDictionary());
-            shipmentCollection.Purchased = parameters.Purchased;
-            shipmentCollection.IncludeChildren = parameters.IncludeChildren;
+            shipmentCollection.Filters = parameters;
             return shipmentCollection;
         }
 

@@ -17,6 +17,11 @@ namespace EasyPost.Models.Shared
         public bool? HasMore { get; set; }
 
         #endregion
+        
+        /// <summary>
+        ///     The filter parameters used to retrieve this collection.
+        /// </summary>
+        internal BetaFeatures.Parameters.BaseParameters? Filters { get; set; }
 
         /// <summary>
         ///     Get the next page of a paginated collection.
