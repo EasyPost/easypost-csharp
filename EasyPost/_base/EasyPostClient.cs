@@ -12,7 +12,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost._base
 #pragma warning restore SA1300
 {
-    public abstract class EasyPostClient
+    public abstract class EasyPostClient : IDisposable
     {
         private readonly ClientConfiguration _configuration; // configuration is immutable by end-user once set
 
@@ -143,9 +143,13 @@ namespace EasyPost._base
 
             // Execute the request
             HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage());
-
+            
             // Check whether the HTTP request produced an error (3xx, 4xx or 5xx status code) or not
             bool errorRaised = response.ReturnedNoError();
+
+            // Dispose of the request and response
+            request.Dispose();
+            response.Dispose();
 
             return errorRaised;
         }
@@ -155,5 +159,34 @@ namespace EasyPost._base
 #pragma warning disable CA1307
         public override int GetHashCode() => _configuration.GetHashCode();
 #pragma warning restore CA1307
+        
+        private bool _isDisposed;
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_isDisposed) return;
+            if (disposing)
+            {
+                // Dispose managed state (managed objects).
+
+                // Dispose the configuration
+                _configuration.Dispose();
+            }
+
+            // Free native resources (unmanaged objects) and override a finalizer below.
+            _isDisposed = true;
+        }
+
+        ~EasyPostClient()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(disposing: false);
+        }
     }
 }

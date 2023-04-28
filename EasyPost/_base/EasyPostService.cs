@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -5,7 +6,7 @@ using System.Threading.Tasks;
 namespace EasyPost._base
 #pragma warning restore SA1300
 {
-    public abstract class EasyPostService : IEasyPostService
+    public abstract class EasyPostService : IEasyPostService, IDisposable
     {
         protected internal readonly EasyPostClient Client;
 
@@ -40,6 +41,35 @@ namespace EasyPost._base
         /// <returns>None.</returns>
         // ReSharper disable once MemberCanBePrivate.Global
         protected async Task Request(Http.Method method, string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Client.Request(method, url, overrideApiVersion ?? ApiVersion.Current, parameters);
+        
+        private bool _isDisposed;
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_isDisposed) return;
+            if (disposing)
+            {
+                // Dispose managed state (managed objects).
+
+                // Dispose the client
+                Client?.Dispose();
+            }
+
+            // Free native resources (unmanaged objects) and override a finalizer below.
+            _isDisposed = true;
+        }
+
+        ~EasyPostService()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(disposing: false);
+        }
     }
 
     public interface IEasyPostService

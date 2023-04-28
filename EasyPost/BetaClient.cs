@@ -23,11 +23,11 @@ namespace EasyPost
          * When you are migrating a service from beta to general, you should remove/change the overrideApiVersion parameter from each function that is being migrated.
          */
 
-        public ReferralCustomerService ReferralCustomer { get; }
-
-        public RateService Rate { get; }
-
         public CarrierMetadataService CarrierMetadata { get; }
+        
+        public RateService Rate { get; }
+        
+        public ReferralCustomerService ReferralCustomer { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BetaClient"/> class.
@@ -36,9 +36,27 @@ namespace EasyPost
         internal BetaClient(ClientConfiguration configuration)
             : base(configuration)
         {
-            ReferralCustomer = new ReferralCustomerService(this);
-            Rate = new RateService(this);
             CarrierMetadata = new CarrierMetadataService(this);
+            Rate = new RateService(this);
+            ReferralCustomer = new ReferralCustomerService(this);
+        }
+        
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                // Dispose managed state (managed objects).
+
+                // Dispose of the services
+                CarrierMetadata.Dispose();
+                Rate.Dispose();
+                ReferralCustomer.Dispose();
+            }
+
+            // Free native resources (unmanaged objects) and override a finalizer below.
+
+            // Dispose of the base client
+            base.Dispose(disposing);
         }
     }
 }

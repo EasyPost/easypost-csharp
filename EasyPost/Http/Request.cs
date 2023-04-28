@@ -10,9 +10,8 @@ using EasyPost.Utilities.Internal;
 
 namespace EasyPost.Http
 {
-    // TODO: Make disposable and dispose of the request message
 #pragma warning disable CA1001
-    internal sealed class Request
+    internal class Request : IDisposable
 #pragma warning restore CA1001
     {
         private readonly HttpRequestMessage _requestMessage;
@@ -119,6 +118,35 @@ namespace EasyPost.Http
                 Query = query.ToString(),
             };
             _requestMessage.RequestUri = new Uri(uriBuilder.ToString());
+        }
+        
+        private bool _isDisposed;
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_isDisposed) return;
+            if (disposing)
+            {
+                // Dispose managed state (managed objects).
+
+                // Dispose the request message
+                _requestMessage.Dispose();
+            }
+
+            // Free native resources (unmanaged objects) and override a finalizer below.
+            _isDisposed = true;
+        }
+
+        ~Request()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(disposing: false);
         }
     }
 }
