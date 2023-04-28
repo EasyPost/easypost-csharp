@@ -515,16 +515,16 @@ namespace EasyPost.Tests.ServicesTests
                 },
             };
 
-            // test lowest Smart Rate with valid filters
+            // test lowest SmartRate with valid filters
             SmartRate lowestSmartRate = Utilities.Rates.GetLowestSmartRate(smartRates, 2, SmartRateAccuracy.Percentile90);
             Assert.Equal("First", lowestSmartRate.Service);
             Assert.Equal(6.07, lowestSmartRate.Rate);
             Assert.Equal("USPS", lowestSmartRate.Carrier);
 
-            // test lowest Smart Rate with invalid filters (should error due to strict delivery_days)
+            // test lowest SmartRate with invalid filters (should error due to strict delivery_days)
             await Assert.ThrowsAsync<FilteringError>(() => Task.FromResult(Utilities.Rates.GetLowestSmartRate(smartRates, 0, SmartRateAccuracy.Percentile90)));
 
-            // test lowest Smart Rate with invalid filters (should error due to bad delivery_accuracy)
+            // test lowest SmartRate with invalid filters (should error due to bad delivery_accuracy)
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
         }
 

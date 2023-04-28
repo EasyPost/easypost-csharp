@@ -225,7 +225,7 @@ namespace EasyPost.Utilities
         }
 
         /// <summary>
-        ///     Get the lowest Smart Rate from this list.
+        ///     Get the lowest SmartRate from this list.
         /// </summary>
         /// <param name="smartRates">List of smartRates to parse.</param>
         /// <param name="deliveryDays">Delivery days to include in the filter.</param>
@@ -234,7 +234,7 @@ namespace EasyPost.Utilities
         public static EasyPost.Models.API.SmartRate GetLowest(this IEnumerable<EasyPost.Models.API.SmartRate> smartRates, int deliveryDays, EasyPost.Models.API.SmartRateAccuracy deliveryAccuracy) => GetLowestSmartRate(smartRates, deliveryDays, deliveryAccuracy);
 
         /// <summary>
-        ///     Get the lowest Smart Rate from a list of <see cref="EasyPost.Models.API.SmartRate"/>s.
+        ///     Get the lowest SmartRate from a list of <see cref="EasyPost.Models.API.SmartRate"/>s.
         /// </summary>
         /// <param name="smartRates">List of SmartRates to parse.</param>
         /// <param name="deliveryDays">Delivery days to include in the filter.</param>
@@ -251,40 +251,40 @@ namespace EasyPost.Utilities
 
                 if (smartRateAccuracy == null)
                 {
-                    // If the Smart Rate doesn't have a time in transit for the specified accuracy, skip it
+                    // If the SmartRate doesn't have a time in transit for the specified accuracy, skip it
                     continue;
                 }
 
                 if (smartRateAccuracy > deliveryDays)
                 {
-                    // If the Smart Rate's time in transit is greater than the specified delivery days, skip it
+                    // If the SmartRate's time in transit is greater than the specified delivery days, skip it
                     continue;
                 }
 
                 if (lowestSmartRate == null)
                 {
-                    // if lowest Smart Rate is null, set it to this Smart Rate
+                    // if lowest SmartRate is null, set it to this SmartRate
                     lowestSmartRate = smartRate;
                     continue;
                 }
 
                 if (smartRate.Rate >= lowestSmartRate.Rate)
                 {
-                    // if this Smart Rate is greater than or equal to the lowest Smart Rate, skip it
+                    // if this SmartRate is greater than or equal to the lowest SmartRate, skip it
                     continue;
                 }
 
-                // if we made it this far, this SmartRate is the lowest Smart Rate, set it to the lowest Smart Rate
+                // if we made it this far, this SmartRate is the lowest SmartRate, set it to the lowest SmartRate
                 lowestSmartRate = smartRate;
             }
 
             if (lowestSmartRate == null)
             {
-                // if we didn't find a Smart Rate, throw an exception
+                // if we didn't find a SmartRate, throw an exception
                 throw new FilteringError(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.NoObjectFound, "smartRates"));
             }
 
-            // return the lowest Smart Rate
+            // return the lowest SmartRate
             return lowestSmartRate;
         }
     }
