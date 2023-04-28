@@ -40,7 +40,7 @@ namespace EasyPost
         public PickupService Pickup { get; }
 
         public RateService Rate { get; }
-        
+
         public ReferralCustomerService ReferralCustomer { get; }
 
         public RefundService Refund { get; }

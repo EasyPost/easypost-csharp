@@ -11,8 +11,10 @@ using EasyPost.Utilities.Internal;
 namespace EasyPost.Http
 {
 #pragma warning disable CA1001
+#pragma warning disable CA1852 // Cannot be sealed because need virtual Dispose(bool)
     internal class Request : IDisposable
 #pragma warning restore CA1001
+#pragma warning restore CA1852
     {
         private readonly HttpRequestMessage _requestMessage;
 
@@ -119,7 +121,7 @@ namespace EasyPost.Http
             };
             _requestMessage.RequestUri = new Uri(uriBuilder.ToString());
         }
-        
+
         private bool _isDisposed;
 
         public void Dispose()

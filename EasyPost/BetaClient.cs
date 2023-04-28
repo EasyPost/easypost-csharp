@@ -24,9 +24,9 @@ namespace EasyPost
          */
 
         public CarrierMetadataService CarrierMetadata { get; }
-        
+
         public RateService Rate { get; }
-        
+
         public ReferralCustomerService ReferralCustomer { get; }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace EasyPost
             Rate = new RateService(this);
             ReferralCustomer = new ReferralCustomerService(this);
         }
-        
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

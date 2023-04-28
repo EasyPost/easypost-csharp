@@ -41,7 +41,7 @@ namespace EasyPost._base
         /// <returns>None.</returns>
         // ReSharper disable once MemberCanBePrivate.Global
         protected async Task Request(Http.Method method, string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Client.Request(method, url, overrideApiVersion ?? ApiVersion.Current, parameters);
-        
+
         private bool _isDisposed;
 
         public void Dispose()

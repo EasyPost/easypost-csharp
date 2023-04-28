@@ -143,7 +143,7 @@ namespace EasyPost._base
 
             // Execute the request
             HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage());
-            
+
             // Check whether the HTTP request produced an error (3xx, 4xx or 5xx status code) or not
             bool errorRaised = response.ReturnedNoError();
 
@@ -159,7 +159,7 @@ namespace EasyPost._base
 #pragma warning disable CA1307
         public override int GetHashCode() => _configuration.GetHashCode();
 #pragma warning restore CA1307
-        
+
         private bool _isDisposed;
 
         public void Dispose()

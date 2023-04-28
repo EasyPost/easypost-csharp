@@ -120,7 +120,7 @@ public class ClientConfiguration : IDisposable
 #pragma warning disable CA1307
     public override int GetHashCode() => ApiKey.GetHashCode() ^ ApiBase.GetHashCode() ^ Timeout.GetHashCode();
 #pragma warning restore CA1307
-    
+
     private bool _isDisposed;
 
     public void Dispose()
