@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
@@ -35,7 +36,12 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.EventCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<EventCollection> All(Dictionary<string, object>? parameters = null) => await Request<EventCollection>(Method.Get, "events", parameters);
+        public async Task<EventCollection> All(Dictionary<string, object>? parameters = null)
+        {
+            EventCollection collection = await Request<EventCollection>(Method.Get, "events", parameters);
+            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Events.All>(parameters);
+            return collection;
+        }
 
         /// <summary>
         ///     List all <see cref="Event"/> objects.
@@ -43,7 +49,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Events.All"/> parameter set.</param>
         /// <returns><see cref="EventCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<EventCollection> All(BetaFeatures.Parameters.Events.All parameters) => await Request<EventCollection>(Method.Get, "events", parameters.ToDictionary());
+        public async Task<EventCollection> All(BetaFeatures.Parameters.Events.All parameters) => await All(parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="EventCollection"/>.

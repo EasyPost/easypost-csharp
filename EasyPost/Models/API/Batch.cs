@@ -55,13 +55,10 @@ namespace EasyPost.Models.API
 
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Batch> entries, int? pageSize = null)
         {
-            string? lastId = entries.Last().Id;
+            BetaFeatures.Parameters.Shipments.All parameters = Filters != null ? (BetaFeatures.Parameters.Shipments.All)Filters : new BetaFeatures.Parameters.Shipments.All();
 
-            BetaFeatures.Parameters.Batches.All parameters = new()
-            {
-                // TODO: Batches get returned in reverse order from everything else (oldest first instead of newest first), so this needs to be "after_id" instead of "before_id"
-                AfterId = lastId,
-            };
+            // TODO: Batches get returned in reverse order from everything else (oldest first instead of newest first), so this needs to be "after_id" instead of "before_id"
+            parameters.AfterId = entries.Last().Id;
 
             if (pageSize != null)
             {

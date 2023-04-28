@@ -124,7 +124,7 @@ namespace EasyPost.Tests.ServicesTests
 
             ReportCollection reportCollection = await Client.Report.All(type, filters);
 
-            Assert.Equal(type, reportCollection.Type);
+            Assert.Equal(type, ((BetaFeatures.Parameters.Reports.All)reportCollection.Filters!).ReportType);
         }
 
         [Fact]

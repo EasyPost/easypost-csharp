@@ -105,8 +105,8 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             };
             trackerCollection.Trackers.Add(fakeTracker);
 
-            Assert.Equal(filters.TrackingCode, trackerCollection.TrackingCode);
-            Assert.Equal(filters.Carrier, trackerCollection.Carrier);
+            Assert.Equal(filters.TrackingCode, ((BetaFeatures.Parameters.Trackers.All)trackerCollection.Filters!).TrackingCode);
+            Assert.Equal(filters.Carrier, ((BetaFeatures.Parameters.Trackers.All)trackerCollection.Filters!).Carrier);
         }
 
         #endregion

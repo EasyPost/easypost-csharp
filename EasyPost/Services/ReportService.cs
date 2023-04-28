@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
@@ -59,18 +60,14 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
         {
-            ReportCollection reportCollection = await Request<ReportCollection>(Method.Get, $"reports/{type}", parameters);
-            reportCollection.Type = type;
-            return reportCollection;
+            ReportCollection collection = await Request<ReportCollection>(Method.Get, $"reports/{type}", parameters);
+            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Reports.All>(parameters);
+            ((BetaFeatures.Parameters.Reports.All)collection.Filters).ReportType = type;
+            return collection;
         }
 
         [CrudOperations.Read]
-        public async Task<ReportCollection> All(string type, BetaFeatures.Parameters.Reports.All parameters)
-        {
-            ReportCollection reportCollection = await Request<ReportCollection>(Method.Get, $"reports/{type}", parameters.ToDictionary());
-            reportCollection.Type = type;
-            return reportCollection;
-        }
+        public async Task<ReportCollection> All(string type, BetaFeatures.Parameters.Reports.All parameters) => await All(type, parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ReportCollection"/>.
@@ -80,7 +77,8 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="ReportCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<ReportCollection> GetNextPage(ReportCollection collection, int? pageSize = null) => await collection.GetNextPage<ReportCollection, BetaFeatures.Parameters.Reports.All>(async parameters => await All(collection.Type!, parameters), collection.Reports, pageSize);
+        // Reuse the same report type as the current page of the collection (will not be null)
+        public async Task<ReportCollection> GetNextPage(ReportCollection collection, int? pageSize = null) => await collection.GetNextPage<ReportCollection, BetaFeatures.Parameters.Reports.All>(async parameters => await All(((BetaFeatures.Parameters.Reports.All)collection.Filters!).ReportType!, parameters), collection.Reports, pageSize);
 
         /// <summary>
         ///     Retrieve a Report from its id.

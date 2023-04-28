@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
@@ -127,7 +128,12 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.AddressCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null) => await Request<AddressCollection>(Method.Get, "addresses", parameters);
+        public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null)
+        {
+            AddressCollection collection = await Request<AddressCollection>(Method.Get, "addresses", parameters);
+            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Addresses.All>(parameters);
+            return collection;
+        }
 
         /// <summary>
         ///     List all <see cref="Address"/> objects.
@@ -135,7 +141,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Addresses.All"/> parameter set.</param>
         /// <returns><see cref="AddressCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<AddressCollection> All(BetaFeatures.Parameters.Addresses.All parameters) => await Request<AddressCollection>(Method.Get, "addresses", parameters.ToDictionary());
+        public async Task<AddressCollection> All(BetaFeatures.Parameters.Addresses.All parameters) => await All(parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="AddressCollection"/>.

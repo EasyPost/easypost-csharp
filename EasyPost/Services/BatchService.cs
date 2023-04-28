@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
@@ -94,7 +95,12 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.BatchCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null) => await Request<BatchCollection>(Method.Get, "batches", parameters);
+        public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
+        {
+            BatchCollection collection = await Request<BatchCollection>(Method.Get, "batches", parameters);
+            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Batches.All>(parameters);
+            return collection;
+        }
 
         /// <summary>
         ///     List all <see cref="Batch"/> objects.
@@ -102,7 +108,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.All"/> parameter set.</param>
         /// <returns><see cref="BatchCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<BatchCollection> All(BetaFeatures.Parameters.Batches.All parameters) => await Request<BatchCollection>(Method.Get, "batches", parameters.ToDictionary());
+        public async Task<BatchCollection> All(BetaFeatures.Parameters.Batches.All parameters) => await All(parameters.ToDictionary());
 
         // TODO: Add GetNextPage function when Batches are sorted newest to oldest.
 

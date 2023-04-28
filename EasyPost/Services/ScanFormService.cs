@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
@@ -60,8 +61,9 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
         {
-            ScanFormCollection scanFormCollection = await Request<ScanFormCollection>(Method.Get, "scan_forms", parameters);
-            return scanFormCollection;
+            ScanFormCollection collection = await Request<ScanFormCollection>(Method.Get, "scan_forms", parameters);
+            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.ScanForms.All>(parameters);
+            return collection;
         }
 
         /// <summary>
@@ -70,10 +72,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.All"/> parameter set.</param>
         /// <returns><see cref="ScanFormCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<ScanFormCollection> All(BetaFeatures.Parameters.ScanForms.All parameters)
-        {
-            return await Request<ScanFormCollection>(Method.Get, "scan_forms", parameters.ToDictionary());
-        }
+        public async Task<ScanFormCollection> All(BetaFeatures.Parameters.ScanForms.All parameters) => await All(parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ScanFormCollection"/>.

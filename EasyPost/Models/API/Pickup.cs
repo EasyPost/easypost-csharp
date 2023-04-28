@@ -78,12 +78,9 @@ namespace EasyPost.Models.API
 
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Pickup> entries, int? pageSize = null)
         {
-            string? lastId = entries.Last().Id;
+            BetaFeatures.Parameters.Pickups.All parameters = Filters != null ? (BetaFeatures.Parameters.Pickups.All)Filters : new BetaFeatures.Parameters.Pickups.All();
 
-            BetaFeatures.Parameters.Pickups.All parameters = new()
-            {
-                BeforeId = lastId,
-            };
+            parameters.BeforeId = entries.Last().Id;
 
             if (pageSize != null)
             {

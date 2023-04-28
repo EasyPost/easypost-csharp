@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
@@ -82,8 +83,9 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<PickupCollection> All(Dictionary<string, object>? parameters = null)
         {
-            PickupCollection pickupCollection = await Request<PickupCollection>(Method.Get, "pickups", parameters);
-            return pickupCollection;
+            PickupCollection collection = await Request<PickupCollection>(Method.Get, "pickups", parameters);
+            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Pickups.All>(parameters);
+            return collection;
         }
 
         /// <summary>
@@ -92,10 +94,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Pickups.All"/> parameter set.</param>
         /// <returns><see cref="PickupCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<PickupCollection> All(BetaFeatures.Parameters.Pickups.All parameters)
-        {
-            return await All(parameters.ToDictionary());
-        }
+        public async Task<PickupCollection> All(BetaFeatures.Parameters.Pickups.All parameters) => await All(parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="PickupCollection"/>.

@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Attributes;
+using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.BetaFeatures.Parameters.Trackers
 {
@@ -7,7 +9,7 @@ namespace EasyPost.BetaFeatures.Parameters.Trackers
     ///     Parameters for <see cref="EasyPost.Services.TrackerService.All(All)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class All : BaseParameters
+    public sealed class All : BaseAllParameters
     {
         #region Request Parameters
 
@@ -54,5 +56,21 @@ namespace EasyPost.BetaFeatures.Parameters.Trackers
         public string? TrackingCode { get; set; }
 
         #endregion
+
+        protected override TParameters FromDictionaryProtected<TParameters>(Dictionary<string, object> dictionary)
+        {
+            var parameters = new All
+            {
+                PageSize = dictionary.GetOrNullInt("page_size"),
+                BeforeId = dictionary.GetOrNull<string>("before_id"),
+                AfterId = dictionary.GetOrNull<string>("after_id"),
+                StartDatetime = dictionary.GetOrNull<string>("start_datetime"),
+                EndDatetime = dictionary.GetOrNull<string>("end_datetime"),
+                Carrier = dictionary.GetOrNull<string>("carrier"),
+                TrackingCode = dictionary.GetOrNull<string>("tracking_code"),
+            };
+
+            return (parameters as TParameters)!;
+        }
     }
 }

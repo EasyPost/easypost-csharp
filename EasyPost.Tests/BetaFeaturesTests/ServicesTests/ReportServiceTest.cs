@@ -139,7 +139,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 
             ReportCollection reportCollection = await Client.Report.All(type, parameters);
 
-            Assert.Equal(type, reportCollection.Type);
+            Assert.Equal(type, ((BetaFeatures.Parameters.Reports.All)reportCollection.Filters!).ReportType);
         }
 
         #endregion

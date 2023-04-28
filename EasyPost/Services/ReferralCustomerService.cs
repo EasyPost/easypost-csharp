@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
@@ -62,7 +63,12 @@ namespace EasyPost.Services
         /// <param name="parameters">Parameters for API call.</param>
         /// <returns>An EasyPost.ReferralCustomerCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null) => await Request<ReferralCustomerCollection>(Method.Get, "referral_customers", parameters);
+        public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null)
+        {
+            ReferralCustomerCollection collection = await Request<ReferralCustomerCollection>(Method.Get, "referral_customers", parameters);
+            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.ReferralCustomers.All>(parameters);
+            return collection;
+        }
 
         /// <summary>
         ///     List all <see cref="ReferralCustomer"/> objects.
@@ -70,7 +76,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.All"/> parameter set.</param>
         /// <returns><see cref="ReferralCustomerCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<ReferralCustomerCollection> All(BetaFeatures.Parameters.ReferralCustomers.All parameters) => await Request<ReferralCustomerCollection>(Method.Get, "referral_customers", parameters.ToDictionary());
+        public async Task<ReferralCustomerCollection> All(BetaFeatures.Parameters.ReferralCustomers.All parameters) => await All(parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ReferralCustomerCollection"/>.
