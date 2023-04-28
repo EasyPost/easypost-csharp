@@ -117,16 +117,7 @@ namespace EasyPost.Models.API
         {
             string? lastId = entries.Last().Id;
 
-            BetaFeatures.Parameters.Shipments.All parameters;
-
-            if (Filters != null)
-            {
-                parameters = (BetaFeatures.Parameters.Shipments.All)Filters;
-            }
-            else
-            {
-                parameters = new BetaFeatures.Parameters.Shipments.All();
-            }
+            BetaFeatures.Parameters.Shipments.All parameters = Filters != null ? (BetaFeatures.Parameters.Shipments.All)Filters : new BetaFeatures.Parameters.Shipments.All();
 
             parameters.BeforeId = lastId;
 

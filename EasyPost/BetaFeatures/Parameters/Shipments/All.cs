@@ -56,8 +56,8 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         public bool? IncludeChildren { get; set; }
 
         #endregion
-        
-        protected override TParameters _FromDictionary<TParameters>(Dictionary<string, object> dictionary)
+
+        protected override TParameters FromDictionaryProtected<TParameters>(Dictionary<string, object> dictionary)
         {
             var parameters = new All
             {

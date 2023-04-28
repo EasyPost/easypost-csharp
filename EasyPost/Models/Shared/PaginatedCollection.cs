@@ -17,7 +17,7 @@ namespace EasyPost.Models.Shared
         public bool? HasMore { get; set; }
 
         #endregion
-        
+
         /// <summary>
         ///     The filter parameters used to retrieve this collection.
         /// </summary>

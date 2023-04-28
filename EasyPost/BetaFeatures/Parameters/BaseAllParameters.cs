@@ -12,9 +12,9 @@ public abstract class BaseAllParameters : BaseParameters
         where TParameters : BaseAllParameters
     {
         TParameters parameters = (TParameters)Activator.CreateInstance(typeof(TParameters))!;
-        return dictionary == null ? parameters : parameters._FromDictionary<TParameters>(dictionary);
+        return dictionary == null ? parameters : parameters.FromDictionaryProtected<TParameters>(dictionary);
     }
 
-    protected abstract TParameters _FromDictionary<TParameters>(Dictionary<string, object> dictionary)
+    protected abstract TParameters FromDictionaryProtected<TParameters>(Dictionary<string, object> dictionary)
         where TParameters : BaseAllParameters;
 }
