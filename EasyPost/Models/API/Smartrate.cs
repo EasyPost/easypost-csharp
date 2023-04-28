@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
-    public class Smartrate : EasyPostObject
+    public class SmartRate : EasyPostObject
     {
         #region JSON Properties
 
@@ -43,7 +43,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        internal Smartrate()
+        internal SmartRate()
         {
         }
     }

@@ -16,15 +16,15 @@ namespace EasyPost.Tests.ModelsTests
         [Testing.Function]
         public void TestGetBySmartRateAccuracy()
         {
-            Dictionary<SmartrateAccuracy, int> pairs = new()
+            Dictionary<SmartRateAccuracy, int> pairs = new()
             {
-                { SmartrateAccuracy.Percentile50, 1 },
-                { SmartrateAccuracy.Percentile75, 2 },
-                { SmartrateAccuracy.Percentile85, 3 },
-                { SmartrateAccuracy.Percentile90, 4 },
-                { SmartrateAccuracy.Percentile95, 5 },
-                { SmartrateAccuracy.Percentile97, 6 },
-                { SmartrateAccuracy.Percentile99, 7 }
+                { SmartRateAccuracy.Percentile50, 1 },
+                { SmartRateAccuracy.Percentile75, 2 },
+                { SmartRateAccuracy.Percentile85, 3 },
+                { SmartRateAccuracy.Percentile90, 4 },
+                { SmartRateAccuracy.Percentile95, 5 },
+                { SmartRateAccuracy.Percentile97, 6 },
+                { SmartRateAccuracy.Percentile99, 7 }
             };
 
             TimeInTransit timeInTransit = new()
@@ -38,11 +38,11 @@ namespace EasyPost.Tests.ModelsTests
                 Percentile99 = 7
             };
 
-            foreach (KeyValuePair<SmartrateAccuracy, int> pair in pairs)
+            foreach (KeyValuePair<SmartRateAccuracy, int> pair in pairs)
             {
-                SmartrateAccuracy accuracy = pair.Key;
+                SmartRateAccuracy accuracy = pair.Key;
                 int expected = pair.Value;
-                int? actual = timeInTransit.GetBySmartrateAccuracy(accuracy);
+                int? actual = timeInTransit.GetBySmartRateAccuracy(accuracy);
                 Assert.Equal(expected, actual);
             }
         }

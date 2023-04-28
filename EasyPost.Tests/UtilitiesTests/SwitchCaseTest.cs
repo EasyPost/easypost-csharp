@@ -20,7 +20,7 @@ namespace EasyPost.Tests.UtilitiesTests
                 { "string", () => matchCount += 1 },
                 { 100, () => matchCount += 1 },
                 { 20.000, () => matchCount += 1 },
-                { SmartrateAccuracy.Percentile50, () => matchCount += 1 },
+                { SmartRateAccuracy.Percentile50, () => matchCount += 1 },
                 { new object(), () => matchCount += 1 },
                 { false, () => matchCount += 1 },
                 { ReturnsFalse(), () => matchCount += 1 },
@@ -30,7 +30,7 @@ namespace EasyPost.Tests.UtilitiesTests
                 { SwitchCaseScenario.Default, () => matchCount = -1000 }
             };
 
-            @switch.MatchAll(SmartrateAccuracy.Percentile50);
+            @switch.MatchAll(SmartRateAccuracy.Percentile50);
             Assert.Equal(1, matchCount);
 
             // If there is no match, the default case should be executed

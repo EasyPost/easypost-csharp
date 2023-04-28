@@ -16,10 +16,10 @@ namespace EasyPost.Tests.ModelsTests
         [Testing.Function]
         public void TestAll()
         {
-            IEnumerable<SmartrateAccuracy> enums = SmartrateAccuracy.All();
-            foreach (SmartrateAccuracy? @enum in enums)
+            IEnumerable<SmartRateAccuracy> enums = SmartRateAccuracy.All();
+            foreach (SmartRateAccuracy? @enum in enums)
             {
-                Assert.IsType<SmartrateAccuracy>(@enum);
+                Assert.IsType<SmartRateAccuracy>(@enum);
                 Assert.IsType<string>(@enum.Value);
             }
         }

@@ -28,15 +28,15 @@ namespace EasyPost.Tests.CalculationTests
         [Testing.Function]
         public void TestGetLowestShipmentSmartRate()
         {
-            List<Smartrate> rates = new()
+            List<SmartRate> rates = new()
             {
-                new Smartrate
+                new SmartRate
                 {
                     Rate = 100.00,
                     DeliveryDays = 1,
                     TimeInTransit = new TimeInTransit { Percentile50 = 1 }
                 },
-                new Smartrate
+                new SmartRate
                 {
                     Rate = 1.00,
                     DeliveryDays = 4,
@@ -44,7 +44,7 @@ namespace EasyPost.Tests.CalculationTests
                 }
             };
 
-            Smartrate lowestRate = Utilities.Rates.GetLowestSmartRate(rates, 1, SmartrateAccuracy.Percentile50);
+            SmartRate lowestRate = Utilities.Rates.GetLowestSmartRate(rates, 1, SmartRateAccuracy.Percentile50);
             Assert.Equal(100.00, lowestRate.Rate); // Will choose the $100 rate because it is the only rate that meets the delivery days and accuracy requirement
         }
 
