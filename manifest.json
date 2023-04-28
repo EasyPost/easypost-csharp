@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaClient.html",
-          "hash": "DImew2Vq2QqGAEeXZN80cRXjnbSfcLgp6b0z4vp/E2A="
+          "hash": "DzGjsyFMVSQ+RtuOTPL4y/HtfshvAwzzg1BISezqCpA="
         }
       },
       "is_incremental": false,
@@ -1209,7 +1209,19 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Client.html",
-          "hash": "ncpO2SB30pibZyL04Ud2sUtCBpuDJhTMo8sgdY6NhMI="
+          "hash": "y6xvfn8C/LjhMLvT6wnLjq1ciihDGlCus+aHoCFWrvY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.ClientConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.ClientConfiguration.html",
+          "hash": "qyQz30KdrQq3Hxa6M1wSzbEVDu/43gZIFYFk8b9sS64="
         }
       },
       "is_incremental": false,
@@ -1673,18 +1685,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/EasyPost.Http.ClientConfiguration.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/EasyPost.Http.ClientConfiguration.html",
-          "hash": "Y9d8iLNMJgnnGkoIIK02Y0kXDvBhs7yGvOI+JKOFL4s="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/EasyPost.Http.Method.yml",
       "output": {
         ".html": {
@@ -1701,7 +1701,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Http.html",
-          "hash": "TemZMFW379tNSXoBb25a38/F8S9RXWoorGoJn3HGwwA="
+          "hash": "HqMKb/HsNYOnBFuqqUmLA7ARECADMA3q9FHMsfi3mls="
         }
       },
       "is_incremental": false,
@@ -3081,7 +3081,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost._base.EasyPostClient.html",
-          "hash": "/6DjCxx3W2PXeY8oMf+iUXnc9bQNL9PhqtnRChXmnaU="
+          "hash": "GD2M7LLM/NwQslYKEyoCMmjUgUUAmtn9mw9NJrd01kE="
         }
       },
       "is_incremental": false,
@@ -3165,7 +3165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.html",
-          "hash": "lLQqj3jALSGIX94g8Y+eLlODmaR/nrBHCCXuwRywCgw="
+          "hash": "uVmryK4MHlHATAl22c+f/Km4S26qZC6ZrMt2IM5Jobs="
         }
       },
       "is_incremental": false,
@@ -3189,7 +3189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "jo81Xa+zY4nETPVhMtKmaalCnxNpdX2T8zyJr2Auceo="
+          "hash": "PzOl9VDm6k7eiU0JbvXpvrzW/6WLcEqg5aF0peL+FqU="
         }
       },
       "is_incremental": false,

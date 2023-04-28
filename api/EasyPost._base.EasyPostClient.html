@@ -91,20 +91,19 @@
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost__base_EasyPostClient__ctor_System_String_System_Nullable_System_String__System_Nullable_System_Int32__System_Nullable_HttpClient__.md&amp;value=---%0Auid%3A%20EasyPost._base.EasyPostClient.%23ctor(System.String%2CSystem.Nullable%7BSystem.String%7D%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Nullable%7BHttpClient%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost__base_EasyPostClient__ctor_EasyPost_ClientConfiguration_.md&amp;value=---%0Auid%3A%20EasyPost._base.EasyPostClient.%23ctor(EasyPost.ClientConfiguration)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L54">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L52">View Source</a>
   </span>
   <a id="EasyPost__base_EasyPostClient__ctor_" data-uid="EasyPost._base.EasyPostClient.#ctor*"></a>
-  <h4 id="EasyPost__base_EasyPostClient__ctor_System_String_System_Nullable_System_String__System_Nullable_System_Int32__System_Nullable_HttpClient__" data-uid="EasyPost._base.EasyPostClient.#ctor(System.String,System.Nullable{System.String},System.Nullable{System.Int32},System.Nullable{HttpClient})">EasyPostClient(String, Nullable&lt;String&gt;, Nullable&lt;Int32&gt;, Nullable&lt;HttpClient&gt;)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="EasyPost._base.EasyPostClient.html">EasyPostClient</a> class.
-Constructor for the EasyPost client.</p>
+  <h4 id="EasyPost__base_EasyPostClient__ctor_EasyPost_ClientConfiguration_" data-uid="EasyPost._base.EasyPostClient.#ctor(EasyPost.ClientConfiguration)">EasyPostClient(ClientConfiguration)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="EasyPost._base.EasyPostClient.html">EasyPostClient</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected EasyPostClient(string apiKey, string? baseUrl = null, int? timeoutMilliseconds = null, HttpClient? customHttpClient = null)</code></pre>
+    <pre><code class="lang-csharp hljs">protected EasyPostClient(ClientConfiguration configuration)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -117,60 +116,10 @@ Constructor for the EasyPost client.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">apiKey</span></td>
-        <td><p>API key to use with this client.</p>
+        <td><a class="xref" href="EasyPost.ClientConfiguration.html">ClientConfiguration</a></td>
+        <td><span class="parametername">configuration</span></td>
+        <td><p>Configuration for this client.</p>
 </td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td><span class="parametername">baseUrl</span></td>
-        <td><p>Base URL to use with this client. This will override <code>apiVersion</code>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td><span class="parametername">timeoutMilliseconds</span></td>
-        <td><p>Timeout length, in milliseconds, for API calls.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">HttpClient</span>&gt;</td>
-        <td><span class="parametername">customHttpClient</span></td>
-        <td><p>Custom HttpClient to use if needed. Mostly for debug purposes, not
-advised for general use.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost__base_EasyPostClient_Configuration.md&amp;value=---%0Auid%3A%20EasyPost._base.EasyPostClient.Configuration%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L16">View Source</a>
-  </span>
-  <h4 id="EasyPost__base_EasyPostClient_Configuration" data-uid="EasyPost._base.EasyPostClient.Configuration">Configuration</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly ClientConfiguration Configuration</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="EasyPost.Http.ClientConfiguration.html">ClientConfiguration</a></td>
-        <td></td>
       </tr>
     </tbody>
   </table>
@@ -181,7 +130,7 @@ advised for general use.</p>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost__base_EasyPostClient_ApiBaseInUse.md&amp;value=---%0Auid%3A%20EasyPost._base.EasyPostClient.ApiBaseInUse%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L26">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L31">View Source</a>
   </span>
   <a id="EasyPost__base_EasyPostClient_ApiBaseInUse_" data-uid="EasyPost._base.EasyPostClient.ApiBaseInUse*"></a>
   <h4 id="EasyPost__base_EasyPostClient_ApiBaseInUse" data-uid="EasyPost._base.EasyPostClient.ApiBaseInUse">ApiBaseInUse</h4>
@@ -212,7 +161,7 @@ advised for general use.</p>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost__base_EasyPostClient_ApiKeyInUse.md&amp;value=---%0Auid%3A%20EasyPost._base.EasyPostClient.ApiKeyInUse%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L21">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L22">View Source</a>
   </span>
   <a id="EasyPost__base_EasyPostClient_ApiKeyInUse_" data-uid="EasyPost._base.EasyPostClient.ApiKeyInUse*"></a>
   <h4 id="EasyPost__base_EasyPostClient_ApiKeyInUse" data-uid="EasyPost._base.EasyPostClient.ApiKeyInUse">ApiKeyInUse</h4>
@@ -243,7 +192,7 @@ advised for general use.</p>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost__base_EasyPostClient_CustomHttpClient.md&amp;value=---%0Auid%3A%20EasyPost._base.EasyPostClient.CustomHttpClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L36">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L41">View Source</a>
   </span>
   <a id="EasyPost__base_EasyPostClient_CustomHttpClient_" data-uid="EasyPost._base.EasyPostClient.CustomHttpClient*"></a>
   <h4 id="EasyPost__base_EasyPostClient_CustomHttpClient" data-uid="EasyPost._base.EasyPostClient.CustomHttpClient">CustomHttpClient</h4>
@@ -271,19 +220,19 @@ advised for general use.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost__base_EasyPostClient_TimeoutMilliseconds.md&amp;value=---%0Auid%3A%20EasyPost._base.EasyPostClient.TimeoutMilliseconds%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost__base_EasyPostClient_Timeout.md&amp;value=---%0Auid%3A%20EasyPost._base.EasyPostClient.Timeout%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L31">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L36">View Source</a>
   </span>
-  <a id="EasyPost__base_EasyPostClient_TimeoutMilliseconds_" data-uid="EasyPost._base.EasyPostClient.TimeoutMilliseconds*"></a>
-  <h4 id="EasyPost__base_EasyPostClient_TimeoutMilliseconds" data-uid="EasyPost._base.EasyPostClient.TimeoutMilliseconds">TimeoutMilliseconds</h4>
-  <div class="markdown level1 summary"><p>Gets the timeout in milliseconds used by this client.</p>
+  <a id="EasyPost__base_EasyPostClient_Timeout_" data-uid="EasyPost._base.EasyPostClient.Timeout*"></a>
+  <h4 id="EasyPost__base_EasyPostClient_Timeout" data-uid="EasyPost._base.EasyPostClient.Timeout">Timeout</h4>
+  <div class="markdown level1 summary"><p>Gets the timeout used by this client.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int TimeoutMilliseconds { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TimeSpan Timeout { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -295,7 +244,7 @@ advised for general use.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
+        <td><span class="xref">TimeSpan</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -307,7 +256,7 @@ advised for general use.</p>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost__base_EasyPostClient_Equals_System_Nullable_System_Object__.md&amp;value=---%0Auid%3A%20EasyPost._base.EasyPostClient.Equals(System.Nullable%7BSystem.Object%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L152">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L153">View Source</a>
   </span>
   <a id="EasyPost__base_EasyPostClient_Equals_" data-uid="EasyPost._base.EasyPostClient.Equals*"></a>
   <h4 id="EasyPost__base_EasyPostClient_Equals_System_Nullable_System_Object__" data-uid="EasyPost._base.EasyPostClient.Equals(System.Nullable{System.Object})">Equals(Nullable&lt;Object&gt;)</h4>
@@ -354,7 +303,7 @@ advised for general use.</p>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost__base_EasyPostClient_GetHashCode.md&amp;value=---%0Auid%3A%20EasyPost._base.EasyPostClient.GetHashCode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L155">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L156">View Source</a>
   </span>
   <a id="EasyPost__base_EasyPostClient_GetHashCode_" data-uid="EasyPost._base.EasyPostClient.GetHashCode*"></a>
   <h4 id="EasyPost__base_EasyPostClient_GetHashCode" data-uid="EasyPost._base.EasyPostClient.GetHashCode">GetHashCode()</h4>
@@ -390,7 +339,7 @@ advised for general use.</p>
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost__base_EasyPostClient.md&amp;value=---%0Auid%3A%20EasyPost._base.EasyPostClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/_base/EasyPostClient.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
