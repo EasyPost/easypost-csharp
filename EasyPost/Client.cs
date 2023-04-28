@@ -1,6 +1,6 @@
 using System.Net.Http;
 using EasyPost._base;
-using EasyPost.Models.API;
+using EasyPost.Http;
 using EasyPost.Services;
 
 namespace EasyPost
@@ -60,13 +60,10 @@ namespace EasyPost
         /// <summary>
         ///     Initializes a new instance of the <see cref="Client"/> class.
         /// </summary>
-        /// <param name="apiKey">API key to use with this client.</param>
-        /// <param name="baseUrl">Base URL to use with this client. Must include API version.</param>
-        /// <param name="timeoutMilliseconds">Timeout length, in milliseconds, for API calls.</param>
-        /// <param name="customHttpClient">Custom HttpClient to use if needed.</param>
+        /// <param name="configuration">Configuration for this client.</param>
 #pragma warning disable IDE0021 // Ignoring since more properties will be added during construction in the future.
-        public Client(string apiKey, string? baseUrl = null, int? timeoutMilliseconds = null, HttpClient? customHttpClient = null)
-            : base(apiKey, baseUrl, timeoutMilliseconds, customHttpClient)
+        public Client(ClientConfiguration configuration)
+            : base(configuration)
 #pragma warning restore IDE0021
         {
             // We initialize the services here since initializing a new one on each property call is expensive.
@@ -95,7 +92,7 @@ namespace EasyPost
             Webhook = new WebhookService(this);
 
             // We go ahead and initialize the Beta client internally here as well
-            Beta = new BetaClient(apiKey, baseUrl, timeoutMilliseconds, customHttpClient);
+            Beta = new BetaClient(configuration);
         }
     }
 }

@@ -564,6 +564,8 @@ dotnet_diagnostic.IDE0004.severity = suggestion
 dotnet_diagnostic.IDE0010.severity = suggestion
 ### "new" expression can be simplified
 dotnet_diagnostic.IDE0090.severity = suggestion
+### Use block-scoped namespace
+dotnet_diagnostic.IDE0160.severity = suggestion
 
 # Custom StyleCop (SA) rules
 [*.{cs,vb}]

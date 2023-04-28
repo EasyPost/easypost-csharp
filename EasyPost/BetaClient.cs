@@ -1,5 +1,6 @@
 using System.Net.Http;
 using EasyPost._base;
+using EasyPost.Http;
 using EasyPost.Services.Beta;
 
 namespace EasyPost
@@ -30,14 +31,10 @@ namespace EasyPost
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BetaClient"/> class.
-        ///     Constructor for the EasyPost beta client.
         /// </summary>
-        /// <param name="apiKey">API key to use with this client.</param>
-        /// <param name="baseUrl">Base URL to use with this client.</param>
-        /// <param name="timeoutMilliseconds">Timeout length, in milliseconds, for API calls.</param>
-        /// <param name="customHttpClient">Custom HttpClient to use if needed.</param>
-        internal BetaClient(string apiKey, string? baseUrl = null, int? timeoutMilliseconds = null, HttpClient? customHttpClient = null)
-            : base(apiKey, baseUrl, timeoutMilliseconds, customHttpClient)
+        /// <param name="configuration">Configuration for this client.</param>
+        internal BetaClient(ClientConfiguration configuration)
+            : base(configuration)
         {
             ReferralCustomer = new ReferralCustomerService(this);
             Rate = new RateService(this);
