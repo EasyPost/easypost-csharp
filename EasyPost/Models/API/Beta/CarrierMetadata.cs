@@ -150,6 +150,6 @@ namespace EasyPost.Models.API.Beta
         {
         }
 
-        public static IEnumerable<SmartrateAccuracy> All() => GetAll<SmartrateAccuracy>();
+        public static IEnumerable<SmartRateAccuracy> All() => GetAll<SmartRateAccuracy>();
     }
 }

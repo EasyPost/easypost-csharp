@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
@@ -121,11 +120,11 @@ namespace EasyPost.Services
         /// <summary>
         ///     Get the SmartRates for this shipment.
         /// </summary>
-        /// <returns>A list of EasyPost.Smartrate instances.</returns>
+        /// <returns>A list of EasyPost.SmartRate instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<Smartrate>> GetSmartrates(string id)
+        public async Task<List<SmartRate>> GetSmartRates(string id)
         {
-            return await Request<List<Smartrate>>(Method.Get, $"shipments/{id}/smartrate", null, "result");
+            return await Request<List<SmartRate>>(Method.Get, $"shipments/{id}/smartrate", null, "result");
         }
 
         /// <summary>
@@ -275,17 +274,5 @@ namespace EasyPost.Services
         }
 
         #endregion
-
-        /// <summary>
-        ///     Get the lowest Smart Rate from a list of Smart Rates.
-        ///
-        ///     Deprecated. Use <see cref="EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable{EasyPost.Models.API.Smartrate}, int, EasyPost.Models.API.SmartrateAccuracy)"/> instead.
-        /// </summary>
-        /// <param name="smartrates">List of smartrates to filter.</param>
-        /// <param name="deliveryDays">Delivery days restriction to use when filtering.</param>
-        /// <param name="deliveryAccuracy">Delivery days accuracy restriction to use when filtering.</param>
-        /// <returns>Lowest EasyPost.Smartrate object instance.</returns>
-        [Obsolete("This method is deprecated. Please use EasyPost.Utilities.Rates.GetLowestSmartRate() instead. This method will be removed in a future version.", false)]
-        public static Smartrate GetLowestSmartrate(IEnumerable<Smartrate> smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy) => Utilities.Rates.GetLowestSmartRate(smartrates, deliveryDays, deliveryAccuracy);
     }
 }

@@ -24,14 +24,14 @@ namespace EasyPost.Calculation
         /// <summary>
         ///     Get the lowest smartRate from a list of rates.
         ///
-        ///     Deprecated. Use <see cref="EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable{EasyPost.Models.API.Smartrate}, int, EasyPost.Models.API.SmartrateAccuracy)"/> instead.
+        ///     Deprecated. Use <see cref="EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable{EasyPost.Models.API.SmartRate}, int, EasyPost.Models.API.SmartRateAccuracy)"/> instead.
         /// </summary>
-        /// <param name="smartrates">List of smartRates to parse.</param>
+        /// <param name="smartRates">List of smartRates to parse.</param>
         /// <param name="deliveryDays">Delivery days to include in the filter.</param>
         /// <param name="deliveryAccuracy">Delivery accuracy to include in the filter.</param>
         /// <returns>Lowest rate matching the filter.</returns>
         [Obsolete("This method is deprecated. Please use EasyPost.Utilities.Rates.GetLowestSmartRate() instead. This method will be removed in a future version.", false)]
-        public static EasyPost.Models.API.Smartrate GetLowestShipmentSmartrate(IEnumerable<EasyPost.Models.API.Smartrate> smartrates, int deliveryDays, EasyPost.Models.API.SmartrateAccuracy deliveryAccuracy) => Utilities.Rates.GetLowestSmartRate(smartrates, deliveryDays, deliveryAccuracy);
+        public static EasyPost.Models.API.SmartRate GetLowestShipmentSmartRate(IEnumerable<EasyPost.Models.API.SmartRate> smartRates, int deliveryDays, EasyPost.Models.API.SmartRateAccuracy deliveryAccuracy) => Utilities.Rates.GetLowestSmartRate(smartRates, deliveryDays, deliveryAccuracy);
     }
 #pragma warning restore CA1724 // Naming conflicts with Parameters.Beta.Rates
 }

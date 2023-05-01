@@ -273,9 +273,9 @@ namespace EasyPost.Tests.ServicesTests
 
             Assert.NotNull(shipment.Rates);
 
-            List<Smartrate> smartRates = await Client.Shipment.GetSmartrates(shipment.Id);
-            Smartrate smartRate = smartRates.First();
-            // Must compare IDs because one is a Rate object and one is a Smartrate object
+            List<SmartRate> smartRates = await Client.Shipment.GetSmartRates(shipment.Id);
+            SmartRate smartRate = smartRates.First();
+            // Must compare IDs because one is a Rate object and one is a SmartRate object
             Assert.Equal(shipment.Rates[0].Id, smartRate.Id);
             Assert.NotNull(smartRate.TimeInTransit.Percentile50);
             Assert.NotNull(smartRate.TimeInTransit.Percentile75);
@@ -491,9 +491,9 @@ namespace EasyPost.Tests.ServicesTests
         {
             // Mock rates since these can change from the API and we want to test the local filtering logic, not the API call
             // API call is tested in TestGetSmartRates
-            List<Smartrate> smartrates = new List<Smartrate>
+            List<SmartRate> smartRates = new List<SmartRate>
             {
-                new Smartrate
+                new SmartRate
                 {
                     Service = "Priority",
                     Carrier = "USPS",
@@ -503,7 +503,7 @@ namespace EasyPost.Tests.ServicesTests
                         Percentile90 = 3,
                     },
                 },
-                new Smartrate
+                new SmartRate
                 {
                     Service = "First",
                     Carrier = "USPS",
@@ -515,16 +515,16 @@ namespace EasyPost.Tests.ServicesTests
                 },
             };
 
-            // test lowest Smart Rate with valid filters
-            Smartrate lowestSmartRate = Utilities.Rates.GetLowestSmartRate(smartrates, 2, SmartrateAccuracy.Percentile90);
+            // test lowest SmartRate with valid filters
+            SmartRate lowestSmartRate = Utilities.Rates.GetLowestSmartRate(smartRates, 2, SmartRateAccuracy.Percentile90);
             Assert.Equal("First", lowestSmartRate.Service);
             Assert.Equal(6.07, lowestSmartRate.Rate);
             Assert.Equal("USPS", lowestSmartRate.Carrier);
 
-            // test lowest Smart Rate with invalid filters (should error due to strict delivery_days)
-            await Assert.ThrowsAsync<FilteringError>(() => Task.FromResult(Utilities.Rates.GetLowestSmartRate(smartrates, 0, SmartrateAccuracy.Percentile90)));
+            // test lowest SmartRate with invalid filters (should error due to strict delivery_days)
+            await Assert.ThrowsAsync<FilteringError>(() => Task.FromResult(Utilities.Rates.GetLowestSmartRate(smartRates, 0, SmartRateAccuracy.Percentile90)));
 
-            // test lowest Smart Rate with invalid filters (should error due to bad delivery_accuracy)
+            // test lowest SmartRate with invalid filters (should error due to bad delivery_accuracy)
             // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
         }
 
