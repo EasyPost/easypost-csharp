@@ -35,8 +35,7 @@ coverage-check:
 
 ## docs - Generates library documentation
 docs:
-	dotnet tool run docfx docs/docfx.json
-	git add docs/* || exit 0
+	dotnet tool run docfx docfx.json
 
 ## format - Formats the project
 format:
