@@ -9,7 +9,7 @@ namespace EasyPost;
 /// <summary>
 ///     Provides configuration options for the REST client. Used internally to store API key and other configuration.
 /// </summary>
-public class ClientConfiguration
+public class ClientConfiguration : IDisposable
 {
     /// <summary>
     ///     The API base URI.
@@ -120,4 +120,37 @@ public class ClientConfiguration
 #pragma warning disable CA1307
     public override int GetHashCode() => ApiKey.GetHashCode() ^ ApiBase.GetHashCode() ^ Timeout.GetHashCode();
 #pragma warning restore CA1307
+
+    private bool _isDisposed;
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_isDisposed) return;
+
+        if (disposing)
+        {
+            // Dispose managed state (managed objects).
+
+            // dispose of the prepared HTTP client
+            PreparedHttpClient?.Dispose();
+
+            // dispose of the user-provided HTTP client
+            CustomHttpClient?.Dispose();
+        }
+
+        // Free native resources (unmanaged objects) and override a finalizer below.
+        _isDisposed = true;
+    }
+
+    ~ClientConfiguration()
+    {
+        // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        Dispose(disposing: false);
+    }
 }

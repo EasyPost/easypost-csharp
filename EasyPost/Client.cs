@@ -37,11 +37,11 @@ namespace EasyPost
 
         public ParcelService Parcel { get; }
 
-        public ReferralCustomerService ReferralCustomer { get; }
-
         public PickupService Pickup { get; }
 
         public RateService Rate { get; }
+
+        public ReferralCustomerService ReferralCustomer { get; }
 
         public RefundService Refund { get; }
 
@@ -80,9 +80,9 @@ namespace EasyPost
             Insurance = new InsuranceService(this);
             Order = new OrderService(this);
             Parcel = new ParcelService(this);
-            ReferralCustomer = new ReferralCustomerService(this);
             Pickup = new PickupService(this);
             Rate = new RateService(this);
+            ReferralCustomer = new ReferralCustomerService(this);
             Refund = new RefundService(this);
             Report = new ReportService(this);
             ScanForm = new ScanFormService(this);
@@ -93,6 +93,50 @@ namespace EasyPost
 
             // We go ahead and initialize the Beta client internally here as well
             Beta = new BetaClient(configuration);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            // ref: https://dzone.com/articles/when-and-how-to-use-dispose-and-finalize-in-c
+            // ref: https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1063#pseudo-code-example
+            if (disposing)
+            {
+                // Dispose managed state (managed objects).
+                // "disposing" inherently true when called from Dispose(), so don't need to pass it in.
+
+                // Dispose of the services
+                Address.Dispose();
+                ApiKey.Dispose();
+                Batch.Dispose();
+                Billing.Dispose();
+                CarrierAccount.Dispose();
+                CarrierType.Dispose();
+                CustomsInfo.Dispose();
+                CustomsItem.Dispose();
+                EndShipper.Dispose();
+                Event.Dispose();
+                Insurance.Dispose();
+                Order.Dispose();
+                Parcel.Dispose();
+                Pickup.Dispose();
+                Rate.Dispose();
+                ReferralCustomer.Dispose();
+                Refund.Dispose();
+                Report.Dispose();
+                ScanForm.Dispose();
+                Shipment.Dispose();
+                Tracker.Dispose();
+                User.Dispose();
+                Webhook.Dispose();
+
+                // Dispose of the Beta client
+                Beta.Dispose();
+            }
+
+            // Free native resources (unmanaged objects) and override a finalizer below.
+
+            // Dispose of the base client
+            base.Dispose(disposing);
         }
     }
 }
