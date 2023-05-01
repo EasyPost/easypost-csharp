@@ -85,11 +85,9 @@ namespace EasyPost.Tests.ExceptionsTests
             const string testMessage = "This is a test message.";
             const string testPropertyName = "test_property";
             Type testType = typeof(ExceptionsTests);
-            object testObj = new EasyPostError("unimportant_string");
 
-            // Test the base constructor
-            EasyPostError defaultError = new(testMessage);
-            Assert.Equal(testMessage, defaultError.Message);
+            // Test the base EasyPostError constructor
+            // Class is abstract, cannot be directly constructed
 
             // Test the base ApiError constructor
             // Constructor is protected (black-boxed), so we can't access it
@@ -98,8 +96,8 @@ namespace EasyPost.Tests.ExceptionsTests
             ConnectionError error = new(testMessage, 0);
             Assert.Equal(testMessage, error.Message);
 
-            ExternalApiError externalApiError = new(testMessage, 0);
-            Assert.Equal(testMessage, externalApiError.Message);
+            ExternalApiError externalHttpError = new(testMessage, 0);
+            Assert.Equal(testMessage, externalHttpError.Message);
 
             GatewayTimeoutError gatewayTimeoutError = new(testMessage, 0);
             Assert.Equal(testMessage, gatewayTimeoutError.Message);
@@ -142,11 +140,8 @@ namespace EasyPost.Tests.ExceptionsTests
             UnauthorizedError unauthorizedError = new(testMessage, 0);
             Assert.Equal(testMessage, unauthorizedError.Message);
 
-            UnexpectedHttpError unexpectedHttpError = new(testMessage, 0);
+            UnknownHttpError unexpectedHttpError = new(testMessage, 0);
             Assert.Equal(testMessage, unexpectedHttpError.Message);
-
-            UnknownApiError unknownApiError = new(testMessage, 0);
-            Assert.Equal(testMessage, unknownApiError.Message);
 
             // Test the base general error constructors
             // Does not exist
@@ -176,10 +171,9 @@ namespace EasyPost.Tests.ExceptionsTests
             MissingParameterError missingParameterError = new(testPropertyName);
             Assert.Equal(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.MissingRequiredParameter, testPropertyName), missingParameterError.Message);
 
-            MissingPropertyError missingPropertyError = new(testObj, testPropertyName);
-#pragma warning disable CA2241
-            Assert.Equal(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.MissingProperty, new object[] { testObj.GetType().Name, testPropertyName }), missingPropertyError.Message);
-#pragma warning restore CA2241
+            object testObject = new List<string>();
+            MissingPropertyError missingPropertyError = new(testObject, testPropertyName);
+            Assert.Equal(string.Format(Constants.ErrorMessages.MissingProperty, new object[] { testObject.GetType().Name, testPropertyName }), missingPropertyError.Message);
 
             SignatureVerificationError signatureVerificationError = new();
             Assert.Equal(Constants.ErrorMessages.InvalidWebhookSignature, signatureVerificationError.Message);
@@ -301,10 +295,10 @@ namespace EasyPost.Tests.ExceptionsTests
             Dictionary<int, Type> exceptionsMap = new()
             {
                 { 0, typeof(ConnectionError) }, // RestSharp returns status code 0 when a connection cannot be established (i.e. no internet access)
-                { 100, typeof(UnexpectedHttpError) },
-                { 101, typeof(UnexpectedHttpError) },
-                { 102, typeof(UnexpectedHttpError) },
-                { 103, typeof(UnexpectedHttpError) },
+                { 100, typeof(UnknownHttpError) },
+                { 101, typeof(UnknownHttpError) },
+                { 102, typeof(UnknownHttpError) },
+                { 103, typeof(UnknownHttpError) },
                 { 300, typeof(RedirectError) },
                 { 301, typeof(RedirectError) },
                 { 302, typeof(RedirectError) },
@@ -372,7 +366,7 @@ namespace EasyPost.Tests.ExceptionsTests
             // the exception should be of base type ApiError
             Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
             // specifically, the exception should be of type UnexpectedHttpError
-            Assert.Equal(typeof(UnexpectedHttpError), generatedError.GetType());
+            Assert.Equal(typeof(UnknownHttpError), generatedError.GetType());
         }
 
         [Fact]
@@ -392,7 +386,7 @@ namespace EasyPost.Tests.ExceptionsTests
             // the exception should be of base type ApiError
             Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
             // specifically, the exception should be of type UnexpectedHttpError
-            Assert.Equal(typeof(UnexpectedHttpError), generatedError.GetType());
+            Assert.Equal(typeof(UnknownHttpError), generatedError.GetType());
         }
 
         [Fact]
@@ -412,7 +406,7 @@ namespace EasyPost.Tests.ExceptionsTests
             // the exception should be of base type ApiError
             Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
             // specifically, the exception should be of type UnknownApiError
-            Assert.Equal(typeof(UnknownApiError), generatedError.GetType());
+            Assert.Equal(typeof(UnknownHttpError), generatedError.GetType());
         }
 
         [Fact]
@@ -432,7 +426,7 @@ namespace EasyPost.Tests.ExceptionsTests
             // the exception should be of base type ApiError
             Assert.Equal(typeof(ApiError), generatedError.GetType().BaseType);
             // specifically, the exception should be of type UnexpectedHttpError
-            Assert.Equal(typeof(UnexpectedHttpError), generatedError.GetType());
+            Assert.Equal(typeof(UnknownHttpError), generatedError.GetType());
         }
 
         [Fact]

@@ -10,5 +10,11 @@ namespace EasyPost.Exceptions.General
             : base(message)
         {
         }
+
+        /// <summary>
+        ///     Get a formatted error string with expanded details about the error.
+        /// </summary>
+        /// <returns>A formatted error string.</returns>
+        public override string PrettyPrint => Message;
     }
 }

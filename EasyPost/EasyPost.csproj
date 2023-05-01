@@ -80,6 +80,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="BetaFeatures\Parameters\CarrierAccounts\All.cs" />
+    <Compile Remove="Exceptions\API\UnexpectedHttpError.cs" />
+    <Compile Remove="Exceptions\API\UnknownApiError.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BetaFeatures\Parameters\ApiKeys" />

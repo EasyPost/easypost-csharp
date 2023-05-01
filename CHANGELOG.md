@@ -4,6 +4,15 @@
 
 - Handle API timeout errors more gracefully (produce proper `TimeoutError` exception with readable messages)
 - Add missing `Declaration` parameter to Customs Info creation parameter set
+- [CHANGED] Renamed `UnexpectedHttpError` exception type to `UnknownHttpError` to better reflect its purpose.
+- [REMOVED] Removed `UnknownApiError` exception type, consolidated into `UnknownHttpError` exception type.
+- [CHANGED] `ExternalApiError` no longer inherits from `ApiError` (`ApiError` reserved from EasyPost API errors only).
+- [IMPROVED] All `EasyPostError` exceptions and subclasses now have a `PrettyPrint` getter that returns a human-readable string representation of the error.
+  - Previously, only `ApiError` exceptions had this. Now, all exceptions thrown by the library should have this.
+- [IMPROVED] Logic for calculating exception type to throw based on API error
+  - EasyPost API failures can trigger a variety of specific exceptions, all inheriting from `ApiError`.
+  - Non-EasyPost API/HTTP failures will trigger an `ExternalApiError` exception.
+
 
 ## v4.6.0 (2023-04-18)
 
