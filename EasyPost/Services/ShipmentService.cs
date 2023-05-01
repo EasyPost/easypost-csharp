@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
+using EasyPost.BetaFeatures.Parameters.Shipments;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
@@ -119,6 +120,34 @@ namespace EasyPost.Services
         public async Task<List<SmartRate>> GetSmartRates(string id)
         {
             return await Request<List<SmartRate>>(Method.Get, $"shipments/{id}/smartrate", null, "result");
+        }
+
+        /// <summary>
+        ///     Retrieve the estimated delivery date of each rate for this shipment via the SmartRates API.
+        /// </summary>
+        /// <param name="id">The ID of the shipment to get rates for.</param>
+        /// <param name="plannedShipDate">The planned shipment date.</param>
+        /// <returns>A list of rates with estimated delivery dates for each.</returns>
+        [CrudOperations.Read]
+        public async Task<List<RateWithEstimatedDeliveryDate>> RetrieveEstimatedDeliveryDate(string id, string plannedShipDate)
+        {
+            Dictionary<string, object> parameters = new()
+            {
+                { "planned_ship_date", plannedShipDate },
+            };
+            return await Request<List<RateWithEstimatedDeliveryDate>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", parameters, "rates");
+        }
+
+        /// <summary>
+        ///     Retrieve the estimated delivery date of each rate for this shipment via the SmartRates API.
+        /// </summary>
+        /// <param name="id">The ID of the shipment to get rates for.</param>
+        /// <param name="parameters">The <see cref="BetaFeatures.Parameters.Shipments.RetrieveEstimatedDeliveryDate"/> parameters to include on the API call.</param>
+        /// <returns>A list of rates with estimated delivery dates for each.</returns>
+        [CrudOperations.Read]
+        public async Task<List<RateWithEstimatedDeliveryDate>> RetrieveEstimatedDeliveryDate(string id, BetaFeatures.Parameters.Shipments.RetrieveEstimatedDeliveryDate parameters)
+        {
+            return await Request<List<RateWithEstimatedDeliveryDate>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", parameters.ToDictionary(), "rates");
         }
 
         /// <summary>

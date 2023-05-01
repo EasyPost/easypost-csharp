@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
-    public class TimeInTransit : EasyPostObject
+    public class TimeInTransit : EphemeralEasyPostObject
     {
         #region JSON Properties
 

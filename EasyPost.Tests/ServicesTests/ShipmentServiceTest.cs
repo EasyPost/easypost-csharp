@@ -560,6 +560,22 @@ namespace EasyPost.Tests.ServicesTests
             }
         }
 
+        [Fact]
+        [Testing.Function]
+        public async Task TestRetrieveEstimatedDeliveryDates()
+        {
+            UseVCR("estimated_delivery_dates");
+
+            Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
+
+            List<RateWithEstimatedDeliveryDate> ratesWithEstimatedDeliveryDates = await Client.Shipment.RetrieveEstimatedDeliveryDate(shipment.Id, Fixtures.PlannedShipDate);
+
+            foreach (var rate in ratesWithEstimatedDeliveryDates)
+            {
+                Assert.NotNull(rate.EasyPostTimeInTransitData);
+            }
+        }
+
         #endregion
 
         #endregion
