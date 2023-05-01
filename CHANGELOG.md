@@ -6,7 +6,7 @@
 - Add missing `Declaration` parameter to Customs Info creation parameter set
 - [CHANGED] Renamed `UnexpectedHttpError` exception type to `UnknownHttpError` to better reflect its purpose.
 - [REMOVED] Removed `UnknownApiError` exception type, consolidated into `UnknownHttpError` exception type.
-- [CHANGED] `ExternalApiError` no longer inherits from `ApiError` (`ApiError` reserved from EasyPost API errors only).
+- [CHANGED] `ExternalApiError` no longer inherits from `ApiError` (`ApiError` reserved for EasyPost API errors only).
 - [IMPROVED] All `EasyPostError` exceptions and subclasses now have a `PrettyPrint` getter that returns a human-readable string representation of the error.
   - Previously, only `ApiError` exceptions had this. Now, all exceptions thrown by the library should have this.
 - [IMPROVED] Logic for calculating exception type to throw based on API error

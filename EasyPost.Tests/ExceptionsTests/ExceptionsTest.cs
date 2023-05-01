@@ -110,8 +110,8 @@ namespace EasyPost.Tests.ExceptionsTests
             ConnectionError error = new(testMessage, 0);
             Assert.Equal(testMessage, error.Message);
 
-            ExternalApiError externalHttpError = new(testMessage, 0);
-            Assert.Equal(testMessage, externalHttpError.Message);
+            ExternalApiError externalApiError = new(testMessage, 0);
+            Assert.Equal(testMessage, externalApiError.Message);
 
             GatewayTimeoutError gatewayTimeoutError = new(testMessage, 0);
             Assert.Equal(testMessage, gatewayTimeoutError.Message);
