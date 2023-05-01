@@ -817,6 +817,44 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Addresses.Create.Zip
   nameWithType: Create.Zip
+- uid: EasyPost.BetaFeatures.Parameters.BaseAllParameters
+  name: BaseAllParameters
+  href: api/EasyPost.BetaFeatures.Parameters.BaseAllParameters.html
+  commentId: T:EasyPost.BetaFeatures.Parameters.BaseAllParameters
+  fullName: EasyPost.BetaFeatures.Parameters.BaseAllParameters
+  nameWithType: BaseAllParameters
+- uid: EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionary*
+  name: FromDictionary
+  href: api/EasyPost.BetaFeatures.Parameters.BaseAllParameters.html#EasyPost_BetaFeatures_Parameters_BaseAllParameters_FromDictionary_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionary
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionary
+  nameWithType: BaseAllParameters.FromDictionary
+- uid: EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionary``1(System.Nullable{Dictionary{System.String,System.Object}})
+  name: FromDictionary<TParameters>(Nullable<Dictionary<String, Object>>)
+  href: api/EasyPost.BetaFeatures.Parameters.BaseAllParameters.html#EasyPost_BetaFeatures_Parameters_BaseAllParameters_FromDictionary__1_System_Nullable_Dictionary_System_String_System_Object___
+  commentId: M:EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionary``1(System.Nullable{Dictionary{System.String,System.Object}})
+  name.vb: FromDictionary(Of TParameters)(Nullable(Of Dictionary(Of String, Object)))
+  fullName: EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionary<TParameters>(System.Nullable<Dictionary<System.String, System.Object>>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionary(Of TParameters)(System.Nullable(Of Dictionary(Of System.String, System.Object)))
+  nameWithType: BaseAllParameters.FromDictionary<TParameters>(Nullable<Dictionary<String, Object>>)
+  nameWithType.vb: BaseAllParameters.FromDictionary(Of TParameters)(Nullable(Of Dictionary(Of String, Object)))
+- uid: EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.BaseAllParameters.html#EasyPost_BetaFeatures_Parameters_BaseAllParameters_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionaryProtected
+  nameWithType: BaseAllParameters.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.BaseAllParameters.html#EasyPost_BetaFeatures_Parameters_BaseAllParameters_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.BaseAllParameters.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: BaseAllParameters.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: BaseAllParameters.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.BaseParameters
   name: BaseParameters
   href: api/EasyPost.BetaFeatures.Parameters.BaseParameters.html
@@ -3288,6 +3326,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Shipments.All.EndDatetime
   nameWithType: All.EndDatetime
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.All.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.All.html#EasyPost_BetaFeatures_Parameters_Shipments_All_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Shipments.All.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.All.FromDictionaryProtected
+  nameWithType: All.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.Shipments.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.Shipments.All.html#EasyPost_BetaFeatures_Parameters_Shipments_All_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.Shipments.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.Shipments.All.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.Shipments.All.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: All.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: All.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.Shipments.All.IncludeChildren
   name: IncludeChildren
   href: api/EasyPost.BetaFeatures.Parameters.Shipments.All.html#EasyPost_BetaFeatures_Parameters_Shipments_All_IncludeChildren

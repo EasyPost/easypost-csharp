@@ -53,11 +53,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.BetaFeatures.Parameters.BaseAllParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.BetaFeatures.Parameters.BaseAllParameters.html",
+          "hash": "OMYT+LEut9YEmPmzxXgCvSxKeUo2r0u0ng/ZIaiWiKU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EasyPost.BetaFeatures.Parameters.BaseParameters.yml",
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.BaseParameters.html",
-          "hash": "Egw9IKAXqwsuI2LiGSVqNF6Ncg/fvF88UZy7P1MGWnE="
+          "hash": "4ubGVevgN5coA/X1vf4etEzRT1dL3p8bYJaj4n3nOJA="
         }
       },
       "is_incremental": false,
@@ -921,7 +933,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.Shipments.All.html",
-          "hash": "36XRjtZIpnv+w3hZZ7aNyHqc6cIscxf2RTa/H3W3PGs="
+          "hash": "5CIek3rfmF8RdjjHu2AksX0ZTmzbHUQSTvtZAHPMUOM="
         }
       },
       "is_incremental": false,
@@ -1173,7 +1185,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaFeatures.Parameters.html",
-          "hash": "NHVdrgnuLn8BGB75g7oU1FGYjMNPQI8zJ2lxfJYTlw0="
+          "hash": "KZSKb8PNEr2fn7FHfP2UZnSZdlvEzl64aV558Bd8+YE="
         }
       },
       "is_incremental": false,
@@ -2385,7 +2397,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.ShipmentCollection.html",
-          "hash": "agd3plwl4T4uD1HCkCHokQgK53rHiNvC6oELjCCXcik="
+          "hash": "BQjWYC96MTfE5sqniQqrIw+BmIFQntDca03QZ0EZeNM="
         }
       },
       "is_incremental": false,
@@ -2577,7 +2589,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.Shared.PaginatedCollection-1.html",
-          "hash": "MsnnDPMwkZVJjPXO/x/qwLW3aC0y3HvJEfw9c7+JEnI="
+          "hash": "LIatz2hslaX9nS7KZdJjEBxwTLckcvcOOQSwCPFB6o4="
         }
       },
       "is_incremental": false,
@@ -2877,7 +2889,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.ShipmentService.html",
-          "hash": "xSYv+7dSepmBeA4VRfnoxudQgELIZIfzxtWh/bUVExg="
+          "hash": "IdnJGEheOjnWS4NMH5x8cl4SXw+7CVmfS6Yam1lTbRg="
         }
       },
       "is_incremental": false,
@@ -3189,7 +3201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "66FSQoYru0CdIpRO5hdjFWe2gn+JwyEBqpP00IlMEBw="
+          "hash": "zD9d11VlHka9ct0//i3J6PWptbL4sLKjFwBUpZVRCCM="
         }
       },
       "is_incremental": false,
@@ -3264,7 +3276,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 264,
+          "total_file_count": 265,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
