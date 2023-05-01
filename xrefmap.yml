@@ -564,6 +564,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Addresses.All.EndDatetime
   nameWithType: All.EndDatetime
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.All.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.All.html#EasyPost_BetaFeatures_Parameters_Addresses_All_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Addresses.All.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.All.FromDictionaryProtected
+  nameWithType: All.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.Addresses.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.Addresses.All.html#EasyPost_BetaFeatures_Parameters_Addresses_All_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.Addresses.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.Addresses.All.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.Addresses.All.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: All.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: All.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.Addresses.All.PageSize
   name: PageSize
   href: api/EasyPost.BetaFeatures.Parameters.Addresses.All.html#EasyPost_BetaFeatures_Parameters_Addresses_All_PageSize
@@ -957,6 +973,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Batches.All.EndDatetime
   nameWithType: All.EndDatetime
+- uid: EasyPost.BetaFeatures.Parameters.Batches.All.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.All.html#EasyPost_BetaFeatures_Parameters_Batches_All_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Batches.All.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.All.FromDictionaryProtected
+  nameWithType: All.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.Batches.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.Batches.All.html#EasyPost_BetaFeatures_Parameters_Batches_All_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.Batches.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.Batches.All.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.Batches.All.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: All.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: All.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.Batches.All.PageSize
   name: PageSize
   href: api/EasyPost.BetaFeatures.Parameters.Batches.All.html#EasyPost_BetaFeatures_Parameters_Batches_All_PageSize
@@ -1605,6 +1637,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.EndShippers.All.AfterId
   nameWithType: All.AfterId
+- uid: EasyPost.BetaFeatures.Parameters.EndShippers.All.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.EndShippers.All.html#EasyPost_BetaFeatures_Parameters_EndShippers_All_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.EndShippers.All.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.EndShippers.All.FromDictionaryProtected
+  nameWithType: All.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.EndShippers.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.EndShippers.All.html#EasyPost_BetaFeatures_Parameters_EndShippers_All_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.EndShippers.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.EndShippers.All.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.EndShippers.All.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: All.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: All.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.EndShippers.All.PageSize
   name: PageSize
   href: api/EasyPost.BetaFeatures.Parameters.EndShippers.All.html#EasyPost_BetaFeatures_Parameters_EndShippers_All_PageSize
@@ -1941,6 +1989,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Events.All.EndDatetime
   nameWithType: All.EndDatetime
+- uid: EasyPost.BetaFeatures.Parameters.Events.All.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.Events.All.html#EasyPost_BetaFeatures_Parameters_Events_All_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Events.All.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Events.All.FromDictionaryProtected
+  nameWithType: All.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.Events.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.Events.All.html#EasyPost_BetaFeatures_Parameters_Events_All_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.Events.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.Events.All.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.Events.All.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: All.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: All.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.Events.All.PageSize
   name: PageSize
   href: api/EasyPost.BetaFeatures.Parameters.Events.All.html#EasyPost_BetaFeatures_Parameters_Events_All_PageSize
@@ -2060,6 +2124,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Insurance.All.EndDatetime
   nameWithType: All.EndDatetime
+- uid: EasyPost.BetaFeatures.Parameters.Insurance.All.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.Insurance.All.html#EasyPost_BetaFeatures_Parameters_Insurance_All_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Insurance.All.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Insurance.All.FromDictionaryProtected
+  nameWithType: All.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.Insurance.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.Insurance.All.html#EasyPost_BetaFeatures_Parameters_Insurance_All_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.Insurance.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.Insurance.All.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.Insurance.All.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: All.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: All.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.Insurance.All.PageSize
   name: PageSize
   href: api/EasyPost.BetaFeatures.Parameters.Insurance.All.html#EasyPost_BetaFeatures_Parameters_Insurance_All_PageSize
@@ -2504,6 +2584,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Pickups.All.EndDatetime
   nameWithType: All.EndDatetime
+- uid: EasyPost.BetaFeatures.Parameters.Pickups.All.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.Pickups.All.html#EasyPost_BetaFeatures_Parameters_Pickups_All_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Pickups.All.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Pickups.All.FromDictionaryProtected
+  nameWithType: All.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.Pickups.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.Pickups.All.html#EasyPost_BetaFeatures_Parameters_Pickups_All_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.Pickups.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.Pickups.All.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.Pickups.All.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: All.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: All.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.Pickups.All.PageSize
   name: PageSize
   href: api/EasyPost.BetaFeatures.Parameters.Pickups.All.html#EasyPost_BetaFeatures_Parameters_Pickups_All_PageSize
@@ -2800,6 +2896,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.EndDatetime
   nameWithType: All.EndDatetime
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.html#EasyPost_BetaFeatures_Parameters_ReferralCustomers_All_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.FromDictionaryProtected
+  nameWithType: All.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.html#EasyPost_BetaFeatures_Parameters_ReferralCustomers_All_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: All.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: All.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.PageSize
   name: PageSize
   href: api/EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.html#EasyPost_BetaFeatures_Parameters_ReferralCustomers_All_PageSize
@@ -2960,6 +3072,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Refunds.All.EndDatetime
   nameWithType: All.EndDatetime
+- uid: EasyPost.BetaFeatures.Parameters.Refunds.All.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.Refunds.All.html#EasyPost_BetaFeatures_Parameters_Refunds_All_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Refunds.All.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Refunds.All.FromDictionaryProtected
+  nameWithType: All.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.Refunds.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.Refunds.All.html#EasyPost_BetaFeatures_Parameters_Refunds_All_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.Refunds.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.Refunds.All.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.Refunds.All.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: All.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: All.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.Refunds.All.PageSize
   name: PageSize
   href: api/EasyPost.BetaFeatures.Parameters.Refunds.All.html#EasyPost_BetaFeatures_Parameters_Refunds_All_PageSize
@@ -3069,6 +3197,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Reports.All.EndDatetime
   nameWithType: All.EndDatetime
+- uid: EasyPost.BetaFeatures.Parameters.Reports.All.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.Reports.All.html#EasyPost_BetaFeatures_Parameters_Reports_All_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Reports.All.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Reports.All.FromDictionaryProtected
+  nameWithType: All.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.Reports.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.Reports.All.html#EasyPost_BetaFeatures_Parameters_Reports_All_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.Reports.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.Reports.All.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.Reports.All.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: All.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: All.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.Reports.All.PageSize
   name: PageSize
   href: api/EasyPost.BetaFeatures.Parameters.Reports.All.html#EasyPost_BetaFeatures_Parameters_Reports_All_PageSize
@@ -3230,6 +3374,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.ScanForms.All.EndDatetime
   nameWithType: All.EndDatetime
+- uid: EasyPost.BetaFeatures.Parameters.ScanForms.All.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.ScanForms.All.html#EasyPost_BetaFeatures_Parameters_ScanForms_All_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.ScanForms.All.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.ScanForms.All.FromDictionaryProtected
+  nameWithType: All.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.ScanForms.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.ScanForms.All.html#EasyPost_BetaFeatures_Parameters_ScanForms_All_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.ScanForms.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.ScanForms.All.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.ScanForms.All.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: All.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: All.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.ScanForms.All.PageSize
   name: PageSize
   href: api/EasyPost.BetaFeatures.Parameters.ScanForms.All.html#EasyPost_BetaFeatures_Parameters_ScanForms_All_PageSize
@@ -3831,6 +3991,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Trackers.All.EndDatetime
   nameWithType: All.EndDatetime
+- uid: EasyPost.BetaFeatures.Parameters.Trackers.All.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.Trackers.All.html#EasyPost_BetaFeatures_Parameters_Trackers_All_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Trackers.All.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Trackers.All.FromDictionaryProtected
+  nameWithType: All.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.Trackers.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.Trackers.All.html#EasyPost_BetaFeatures_Parameters_Trackers_All_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.Trackers.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.Trackers.All.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.Trackers.All.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: All.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: All.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.Trackers.All.PageSize
   name: PageSize
   href: api/EasyPost.BetaFeatures.Parameters.Trackers.All.html#EasyPost_BetaFeatures_Parameters_Trackers_All_PageSize
@@ -4233,6 +4409,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaFeatures.Parameters.Webhooks.All.EndDatetime
   nameWithType: All.EndDatetime
+- uid: EasyPost.BetaFeatures.Parameters.Webhooks.All.FromDictionaryProtected*
+  name: FromDictionaryProtected
+  href: api/EasyPost.BetaFeatures.Parameters.Webhooks.All.html#EasyPost_BetaFeatures_Parameters_Webhooks_All_FromDictionaryProtected_
+  commentId: Overload:EasyPost.BetaFeatures.Parameters.Webhooks.All.FromDictionaryProtected
+  isSpec: "True"
+  fullName: EasyPost.BetaFeatures.Parameters.Webhooks.All.FromDictionaryProtected
+  nameWithType: All.FromDictionaryProtected
+- uid: EasyPost.BetaFeatures.Parameters.Webhooks.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name: FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  href: api/EasyPost.BetaFeatures.Parameters.Webhooks.All.html#EasyPost_BetaFeatures_Parameters_Webhooks_All_FromDictionaryProtected__1_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.BetaFeatures.Parameters.Webhooks.All.FromDictionaryProtected``1(Dictionary{System.String,System.Object})
+  name.vb: FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
+  fullName: EasyPost.BetaFeatures.Parameters.Webhooks.All.FromDictionaryProtected<TParameters>(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.BetaFeatures.Parameters.Webhooks.All.FromDictionaryProtected(Of TParameters)(Dictionary(Of System.String, System.Object))
+  nameWithType: All.FromDictionaryProtected<TParameters>(Dictionary<String, Object>)
+  nameWithType.vb: All.FromDictionaryProtected(Of TParameters)(Dictionary(Of String, Object))
 - uid: EasyPost.BetaFeatures.Parameters.Webhooks.All.PageSize
   name: PageSize
   href: api/EasyPost.BetaFeatures.Parameters.Webhooks.All.html#EasyPost_BetaFeatures_Parameters_Webhooks_All_PageSize
