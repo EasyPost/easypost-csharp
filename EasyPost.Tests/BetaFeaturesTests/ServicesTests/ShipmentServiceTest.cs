@@ -366,6 +366,27 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             Assert.Null(baseRate.CarbonOffset);
             Assert.NotNull(newRateWithCarbon.CarbonOffset);
         }
+        
+        [Fact]
+        [Testing.Function]
+        public async Task TestGetEstimatedDeliveryDates()
+        {
+            UseVCR("estimated_delivery_dates");
+            
+            Shipment shipment = await Client.Shipment.Create(Fixtures.Parameters.Shipments.Create(Fixtures.BasicShipment));
+            
+            BetaFeatures.Parameters.Shipments.GetEstimatedDeliveryDate getEstimatedDeliveryDatesParameters = new BetaFeatures.Parameters.Shipments.GetEstimatedDeliveryDate
+            {
+                PlannedShipDate = Fixtures.PlannedShipDate,
+            };
+
+            List<RateWithEstimatedDeliveryDate> ratesWithEstimatedDeliveryDates = await Client.Shipment.GetEstimatedDeliveryDate(shipment.Id, getEstimatedDeliveryDatesParameters);
+
+            foreach (var rate in ratesWithEstimatedDeliveryDates)
+            {
+                Assert.NotNull(rate.EasyPostTimeInTransitData);
+            }
+        }
 
         #endregion
 
