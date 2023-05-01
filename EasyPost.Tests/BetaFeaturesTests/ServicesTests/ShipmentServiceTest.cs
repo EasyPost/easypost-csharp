@@ -182,8 +182,13 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 
             ShipmentCollection shipmentCollection = await Client.Shipment.All(filters);
 
-            Assert.Equal(filters.IncludeChildren, shipmentCollection.IncludeChildren);
-            Assert.Equal(filters.Purchased, shipmentCollection.Purchased);
+            // Filters should be cached in in the resultant collection object.
+            Assert.NotNull(shipmentCollection.Filters);
+            Assert.IsType<BetaFeatures.Parameters.Shipments.All>(shipmentCollection.Filters);
+
+            BetaFeatures.Parameters.Shipments.All cachedFilters = (BetaFeatures.Parameters.Shipments.All)shipmentCollection.Filters;
+            Assert.Equal(filters.IncludeChildren, cachedFilters.IncludeChildren);
+            Assert.Equal(filters.Purchased, cachedFilters.Purchased);
         }
 
         // If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought

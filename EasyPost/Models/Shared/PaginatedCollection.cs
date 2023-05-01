@@ -19,6 +19,11 @@ namespace EasyPost.Models.Shared
         #endregion
 
         /// <summary>
+        ///     The filter parameters used to retrieve this collection.
+        /// </summary>
+        internal BetaFeatures.Parameters.BaseParameters? Filters { get; set; }
+
+        /// <summary>
         ///     Get the next page of a paginated collection.
         /// </summary>
         /// <param name="apiCallFunction">The function to execute to retrieve a page (most likely an All function).</param>
