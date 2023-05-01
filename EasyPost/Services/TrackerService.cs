@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
@@ -97,10 +98,10 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
         {
-            TrackerCollection trackerCollection = await Request<TrackerCollection>(Method.Get, "trackers", parameters);
-            trackerCollection.TrackingCode = parameters?.GetOrNull<string>("tracking_code");
-            trackerCollection.Carrier = parameters?.GetOrNull<string>("carrier");
-            return trackerCollection;
+            // TODO: When we adopt parameter objects as the only way to pass parameters, we don't need to do this object -> dictionary -> object conversion to store the filters.
+            TrackerCollection collection = await Request<TrackerCollection>(Method.Get, "trackers", parameters);
+            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Trackers.All>(parameters);
+            return collection;
         }
 
         /// <summary>
@@ -109,13 +110,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Trackers.All"/> parameter set.</param>
         /// <returns><see cref="TrackerCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<TrackerCollection> All(BetaFeatures.Parameters.Trackers.All parameters)
-        {
-            TrackerCollection trackerCollection = await Request<TrackerCollection>(Method.Get, "trackers", parameters.ToDictionary());
-            trackerCollection.TrackingCode = parameters.TrackingCode;
-            trackerCollection.Carrier = parameters.Carrier;
-            return trackerCollection;
-        }
+        public async Task<TrackerCollection> All(BetaFeatures.Parameters.Trackers.All parameters) => await All(parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="TrackerCollection"/>.

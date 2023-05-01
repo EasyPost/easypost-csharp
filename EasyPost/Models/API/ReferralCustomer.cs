@@ -28,12 +28,9 @@ namespace EasyPost.Models.API
 
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<ReferralCustomer> entries, int? pageSize = null)
         {
-            string? lastId = entries.Last().Id;
+            BetaFeatures.Parameters.ReferralCustomers.All parameters = Filters != null ? (BetaFeatures.Parameters.ReferralCustomers.All)Filters : new BetaFeatures.Parameters.ReferralCustomers.All();
 
-            BetaFeatures.Parameters.ReferralCustomers.All parameters = new()
-            {
-                BeforeId = lastId,
-            };
+            parameters.BeforeId = entries.Last().Id;
 
             if (pageSize != null)
             {

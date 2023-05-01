@@ -80,9 +80,9 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
-            ShipmentCollection shipmentCollection = await Request<ShipmentCollection>(Method.Get, "shipments", parameters);
-            shipmentCollection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Shipments.All>(parameters);
-            return shipmentCollection;
+            ShipmentCollection collection = await Request<ShipmentCollection>(Method.Get, "shipments", parameters);
+            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Shipments.All>(parameters);
+            return collection;
         }
 
         /// <summary>
@@ -91,12 +91,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Shipments.All"/> parameter set.</param>
         /// <returns><see cref="ShipmentCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<ShipmentCollection> All(BetaFeatures.Parameters.Shipments.All parameters)
-        {
-            ShipmentCollection shipmentCollection = await Request<ShipmentCollection>(Method.Get, "shipments", parameters.ToDictionary());
-            shipmentCollection.Filters = parameters;
-            return shipmentCollection;
-        }
+        public async Task<ShipmentCollection> All(BetaFeatures.Parameters.Shipments.All parameters) => await All(parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ShipmentCollection"/>.

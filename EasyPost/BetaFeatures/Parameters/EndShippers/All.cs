@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Attributes;
+using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.BetaFeatures.Parameters.EndShippers
 {
@@ -7,7 +9,7 @@ namespace EasyPost.BetaFeatures.Parameters.EndShippers
     ///     Parameters for <see cref="EasyPost.Services.EndShipperService.All(All)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class All : BaseParameters
+    public sealed class All : BaseAllParameters
     {
         #region Request Parameters
 
@@ -24,5 +26,16 @@ namespace EasyPost.BetaFeatures.Parameters.EndShippers
         public int? PageSize { get; set; }
 
         #endregion
+
+        protected override TParameters FromDictionaryProtected<TParameters>(Dictionary<string, object> dictionary)
+        {
+            var parameters = new All
+            {
+                PageSize = dictionary.GetOrNullInt("page_size"),
+                AfterId = dictionary.GetOrNull<string>("after_id"),
+            };
+
+            return (parameters as TParameters)!;
+        }
     }
 }

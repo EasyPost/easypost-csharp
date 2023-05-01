@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
@@ -73,7 +74,12 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.EndShipperCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null) => await Request<EndShipperCollection>(Method.Get, "end_shippers", parameters);
+        public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null)
+        {
+            EndShipperCollection collection = await Request<EndShipperCollection>(Method.Get, "end_shippers", parameters);
+            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.EndShippers.All>(parameters);
+            return collection;
+        }
 
         /// <summary>
         ///     List all <see cref="EndShipper"/> objects.
@@ -81,7 +87,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.All"/> parameter set.</param>
         /// <returns><see cref="EndShipperCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipperCollection> All(BetaFeatures.Parameters.EndShippers.All parameters) => await Request<EndShipperCollection>(Method.Get, "end_shippers", parameters.ToDictionary());
+        public async Task<EndShipperCollection> All(BetaFeatures.Parameters.EndShippers.All parameters) => await All(parameters.ToDictionary());
 
         // TODO: Add GetNextPage function when "before_id" available for EndShipper All endpoint.
 

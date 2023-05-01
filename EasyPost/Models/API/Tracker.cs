@@ -51,10 +51,6 @@ namespace EasyPost.Models.API
         [JsonProperty("trackers")]
         public List<Tracker>? Trackers { get; set; }
 
-        internal string? TrackingCode { get; set; }
-
-        internal string? Carrier { get; set; }
-
         #endregion
 
         internal TrackerCollection()
@@ -63,15 +59,9 @@ namespace EasyPost.Models.API
 
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Tracker> entries, int? pageSize = null)
         {
-            string? lastId = entries.Last().Id;
+            BetaFeatures.Parameters.Trackers.All parameters = Filters != null ? (BetaFeatures.Parameters.Trackers.All)Filters : new BetaFeatures.Parameters.Trackers.All();
 
-            BetaFeatures.Parameters.Trackers.All parameters = new()
-            {
-                BeforeId = lastId,
-                // TrackingCode and Carrier won't be included in the request if they are null.
-                TrackingCode = TrackingCode,
-                Carrier = Carrier,
-            };
+            parameters.BeforeId = entries.Last().Id;
 
             if (pageSize != null)
             {

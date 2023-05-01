@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
@@ -72,10 +73,15 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.InsuranceCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null) => await Request<InsuranceCollection>(Method.Get, "insurances", parameters);
+        public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null)
+        {
+            InsuranceCollection collection = await Request<InsuranceCollection>(Method.Get, "insurances", parameters);
+            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Insurance.All>(parameters);
+            return collection;
+        }
 
         [CrudOperations.Read]
-        public async Task<InsuranceCollection> All(BetaFeatures.Parameters.Insurance.All parameters) => await Request<InsuranceCollection>(Method.Get, "insurances", parameters.ToDictionary());
+        public async Task<InsuranceCollection> All(BetaFeatures.Parameters.Insurance.All parameters) => await All(parameters.ToDictionary());
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="InsuranceCollection"/>.

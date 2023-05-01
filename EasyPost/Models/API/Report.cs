@@ -39,8 +39,6 @@ namespace EasyPost.Models.API
         [JsonProperty("reports")]
         public List<Report>? Reports { get; set; }
 
-        internal string? Type { get; set; }
-
         #endregion
 
         internal ReportCollection()
@@ -49,12 +47,9 @@ namespace EasyPost.Models.API
 
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Report> entries, int? pageSize = null)
         {
-            string? lastId = entries.Last().Id;
+            BetaFeatures.Parameters.Reports.All parameters = Filters != null ? (BetaFeatures.Parameters.Reports.All)Filters : new BetaFeatures.Parameters.Reports.All();
 
-            BetaFeatures.Parameters.Reports.All parameters = new()
-            {
-                BeforeId = lastId,
-            };
+            parameters.BeforeId = entries.Last().Id;
 
             if (pageSize != null)
             {

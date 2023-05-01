@@ -48,12 +48,9 @@ namespace EasyPost.Models.API
 
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<ScanForm> entries, int? pageSize = null)
         {
-            string? lastId = entries.Last().Id;
+            BetaFeatures.Parameters.ScanForms.All parameters = Filters != null ? (BetaFeatures.Parameters.ScanForms.All)Filters : new BetaFeatures.Parameters.ScanForms.All();
 
-            BetaFeatures.Parameters.ScanForms.All parameters = new()
-            {
-                BeforeId = lastId,
-            };
+            parameters.BeforeId = entries.Last().Id;
 
             if (pageSize != null)
             {

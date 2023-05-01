@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Attributes;
+using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.BetaFeatures.Parameters.Reports
 {
@@ -7,7 +9,7 @@ namespace EasyPost.BetaFeatures.Parameters.Reports
     ///     Parameters for <see cref="EasyPost.Services.ReportService.All(string, All)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class All : BaseParameters
+    public sealed class All : BaseAllParameters
     {
         #region Request Parameters
 
@@ -41,6 +43,26 @@ namespace EasyPost.BetaFeatures.Parameters.Reports
         [TopLevelRequestParameter(Necessity.Optional, "start_datetime")]
         public string? StartDatetime { get; set; }
 
+        /// <summary>
+        ///     The type of reports to retrieve.
+        /// </summary>
+        // This is not set by the end-user, but stored for reference when getting the next page of results.
+        internal string? ReportType { get; set; }
+
         #endregion
+
+        protected override TParameters FromDictionaryProtected<TParameters>(Dictionary<string, object> dictionary)
+        {
+            var parameters = new All
+            {
+                PageSize = dictionary.GetOrNullInt("page_size"),
+                BeforeId = dictionary.GetOrNull<string>("before_id"),
+                AfterId = dictionary.GetOrNull<string>("after_id"),
+                StartDatetime = dictionary.GetOrNull<string>("start_datetime"),
+                EndDatetime = dictionary.GetOrNull<string>("end_datetime"),
+            };
+
+            return (parameters as TParameters)!;
+        }
     }
 }
