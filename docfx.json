@@ -3,13 +3,11 @@
         {
             "src": [
                 {
-                    "files": [
-                        "EasyPost/**.csproj"
-                    ],
-                    "src": "../"
+                    "files": ["EasyPost/**.csproj"],
+                    "src": "./"
                 }
             ],
-            "dest": "api",
+            "dest": "docs/metadata",
             "disableGitFeatures": false,
             "disableDefaultFilter": false
         }
@@ -17,10 +15,7 @@
     "build": {
         "content": [
             {
-                "files": [
-                    "api/**.yml",
-                    "api/index.md"
-                ]
+                "files": ["api/**.yml", "api/index.md"]
             },
             {
                 "files": [
@@ -33,28 +28,19 @@
         ],
         "resource": [
             {
-                "files": [
-                    "images/**"
-                ]
+                "files": ["images/**"]
             }
         ],
         "overwrite": [
             {
-                "files": [
-                    "apidoc/**.md"
-                ],
-                "exclude": [
-                    "obj/**",
-                    "_site/**"
-                ]
+                "files": ["apidoc/**.md"],
+                "exclude": ["obj/**", "docs/**"]
             }
         ],
-        "dest": "_site",
+        "dest": "docs",
         "globalMetadataFiles": [],
         "fileMetadataFiles": [],
-        "template": [
-            "default"
-        ],
+        "template": ["default"],
         "postProcessors": [],
         "markdownEngineName": "markdig",
         "noLangKeyword": false,
