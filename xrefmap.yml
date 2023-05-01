@@ -4284,22 +4284,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Calculation.Rates.GetLowestObjectRate
   nameWithType: Rates.GetLowestObjectRate
-- uid: EasyPost.Calculation.Rates.GetLowestShipmentSmartrate(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)
-  name: GetLowestShipmentSmartrate(IEnumerable<Smartrate>, Int32, SmartrateAccuracy)
-  href: api/EasyPost.Calculation.Rates.html#EasyPost_Calculation_Rates_GetLowestShipmentSmartrate_IEnumerable_EasyPost_Models_API_Smartrate__System_Int32_EasyPost_Models_API_SmartrateAccuracy_
-  commentId: M:EasyPost.Calculation.Rates.GetLowestShipmentSmartrate(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)
-  name.vb: GetLowestShipmentSmartrate(IEnumerable(Of Smartrate), Int32, SmartrateAccuracy)
-  fullName: EasyPost.Calculation.Rates.GetLowestShipmentSmartrate(IEnumerable<EasyPost.Models.API.Smartrate>, System.Int32, EasyPost.Models.API.SmartrateAccuracy)
-  fullName.vb: EasyPost.Calculation.Rates.GetLowestShipmentSmartrate(IEnumerable(Of EasyPost.Models.API.Smartrate), System.Int32, EasyPost.Models.API.SmartrateAccuracy)
-  nameWithType: Rates.GetLowestShipmentSmartrate(IEnumerable<Smartrate>, Int32, SmartrateAccuracy)
-  nameWithType.vb: Rates.GetLowestShipmentSmartrate(IEnumerable(Of Smartrate), Int32, SmartrateAccuracy)
-- uid: EasyPost.Calculation.Rates.GetLowestShipmentSmartrate*
-  name: GetLowestShipmentSmartrate
-  href: api/EasyPost.Calculation.Rates.html#EasyPost_Calculation_Rates_GetLowestShipmentSmartrate_
-  commentId: Overload:EasyPost.Calculation.Rates.GetLowestShipmentSmartrate
+- uid: EasyPost.Calculation.Rates.GetLowestShipmentSmartRate(IEnumerable{EasyPost.Models.API.SmartRate},System.Int32,EasyPost.Models.API.SmartRateAccuracy)
+  name: GetLowestShipmentSmartRate(IEnumerable<SmartRate>, Int32, SmartRateAccuracy)
+  href: api/EasyPost.Calculation.Rates.html#EasyPost_Calculation_Rates_GetLowestShipmentSmartRate_IEnumerable_EasyPost_Models_API_SmartRate__System_Int32_EasyPost_Models_API_SmartRateAccuracy_
+  commentId: M:EasyPost.Calculation.Rates.GetLowestShipmentSmartRate(IEnumerable{EasyPost.Models.API.SmartRate},System.Int32,EasyPost.Models.API.SmartRateAccuracy)
+  name.vb: GetLowestShipmentSmartRate(IEnumerable(Of SmartRate), Int32, SmartRateAccuracy)
+  fullName: EasyPost.Calculation.Rates.GetLowestShipmentSmartRate(IEnumerable<EasyPost.Models.API.SmartRate>, System.Int32, EasyPost.Models.API.SmartRateAccuracy)
+  fullName.vb: EasyPost.Calculation.Rates.GetLowestShipmentSmartRate(IEnumerable(Of EasyPost.Models.API.SmartRate), System.Int32, EasyPost.Models.API.SmartRateAccuracy)
+  nameWithType: Rates.GetLowestShipmentSmartRate(IEnumerable<SmartRate>, Int32, SmartRateAccuracy)
+  nameWithType.vb: Rates.GetLowestShipmentSmartRate(IEnumerable(Of SmartRate), Int32, SmartRateAccuracy)
+- uid: EasyPost.Calculation.Rates.GetLowestShipmentSmartRate*
+  name: GetLowestShipmentSmartRate
+  href: api/EasyPost.Calculation.Rates.html#EasyPost_Calculation_Rates_GetLowestShipmentSmartRate_
+  commentId: Overload:EasyPost.Calculation.Rates.GetLowestShipmentSmartRate
   isSpec: "True"
-  fullName: EasyPost.Calculation.Rates.GetLowestShipmentSmartrate
-  nameWithType: Rates.GetLowestShipmentSmartrate
+  fullName: EasyPost.Calculation.Rates.GetLowestShipmentSmartRate
+  nameWithType: Rates.GetLowestShipmentSmartRate
 - uid: EasyPost.Client
   name: Client
   href: api/EasyPost.Client.html
@@ -11099,281 +11099,281 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.ShipmentCollection.Shipments
   nameWithType: ShipmentCollection.Shipments
-- uid: EasyPost.Models.API.Smartrate
-  name: Smartrate
-  href: api/EasyPost.Models.API.Smartrate.html
-  commentId: T:EasyPost.Models.API.Smartrate
-  fullName: EasyPost.Models.API.Smartrate
-  nameWithType: Smartrate
-- uid: EasyPost.Models.API.Smartrate.BillingType
+- uid: EasyPost.Models.API.SmartRate
+  name: SmartRate
+  href: api/EasyPost.Models.API.SmartRate.html
+  commentId: T:EasyPost.Models.API.SmartRate
+  fullName: EasyPost.Models.API.SmartRate
+  nameWithType: SmartRate
+- uid: EasyPost.Models.API.SmartRate.BillingType
   name: BillingType
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_BillingType
-  commentId: P:EasyPost.Models.API.Smartrate.BillingType
-  fullName: EasyPost.Models.API.Smartrate.BillingType
-  nameWithType: Smartrate.BillingType
-- uid: EasyPost.Models.API.Smartrate.BillingType*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_BillingType
+  commentId: P:EasyPost.Models.API.SmartRate.BillingType
+  fullName: EasyPost.Models.API.SmartRate.BillingType
+  nameWithType: SmartRate.BillingType
+- uid: EasyPost.Models.API.SmartRate.BillingType*
   name: BillingType
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_BillingType_
-  commentId: Overload:EasyPost.Models.API.Smartrate.BillingType
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_BillingType_
+  commentId: Overload:EasyPost.Models.API.SmartRate.BillingType
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.BillingType
-  nameWithType: Smartrate.BillingType
-- uid: EasyPost.Models.API.Smartrate.Carrier
+  fullName: EasyPost.Models.API.SmartRate.BillingType
+  nameWithType: SmartRate.BillingType
+- uid: EasyPost.Models.API.SmartRate.Carrier
   name: Carrier
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_Carrier
-  commentId: P:EasyPost.Models.API.Smartrate.Carrier
-  fullName: EasyPost.Models.API.Smartrate.Carrier
-  nameWithType: Smartrate.Carrier
-- uid: EasyPost.Models.API.Smartrate.Carrier*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_Carrier
+  commentId: P:EasyPost.Models.API.SmartRate.Carrier
+  fullName: EasyPost.Models.API.SmartRate.Carrier
+  nameWithType: SmartRate.Carrier
+- uid: EasyPost.Models.API.SmartRate.Carrier*
   name: Carrier
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_Carrier_
-  commentId: Overload:EasyPost.Models.API.Smartrate.Carrier
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_Carrier_
+  commentId: Overload:EasyPost.Models.API.SmartRate.Carrier
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.Carrier
-  nameWithType: Smartrate.Carrier
-- uid: EasyPost.Models.API.Smartrate.CarrierAccountId
+  fullName: EasyPost.Models.API.SmartRate.Carrier
+  nameWithType: SmartRate.Carrier
+- uid: EasyPost.Models.API.SmartRate.CarrierAccountId
   name: CarrierAccountId
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_CarrierAccountId
-  commentId: P:EasyPost.Models.API.Smartrate.CarrierAccountId
-  fullName: EasyPost.Models.API.Smartrate.CarrierAccountId
-  nameWithType: Smartrate.CarrierAccountId
-- uid: EasyPost.Models.API.Smartrate.CarrierAccountId*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_CarrierAccountId
+  commentId: P:EasyPost.Models.API.SmartRate.CarrierAccountId
+  fullName: EasyPost.Models.API.SmartRate.CarrierAccountId
+  nameWithType: SmartRate.CarrierAccountId
+- uid: EasyPost.Models.API.SmartRate.CarrierAccountId*
   name: CarrierAccountId
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_CarrierAccountId_
-  commentId: Overload:EasyPost.Models.API.Smartrate.CarrierAccountId
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_CarrierAccountId_
+  commentId: Overload:EasyPost.Models.API.SmartRate.CarrierAccountId
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.CarrierAccountId
-  nameWithType: Smartrate.CarrierAccountId
-- uid: EasyPost.Models.API.Smartrate.Currency
+  fullName: EasyPost.Models.API.SmartRate.CarrierAccountId
+  nameWithType: SmartRate.CarrierAccountId
+- uid: EasyPost.Models.API.SmartRate.Currency
   name: Currency
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_Currency
-  commentId: P:EasyPost.Models.API.Smartrate.Currency
-  fullName: EasyPost.Models.API.Smartrate.Currency
-  nameWithType: Smartrate.Currency
-- uid: EasyPost.Models.API.Smartrate.Currency*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_Currency
+  commentId: P:EasyPost.Models.API.SmartRate.Currency
+  fullName: EasyPost.Models.API.SmartRate.Currency
+  nameWithType: SmartRate.Currency
+- uid: EasyPost.Models.API.SmartRate.Currency*
   name: Currency
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_Currency_
-  commentId: Overload:EasyPost.Models.API.Smartrate.Currency
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_Currency_
+  commentId: Overload:EasyPost.Models.API.SmartRate.Currency
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.Currency
-  nameWithType: Smartrate.Currency
-- uid: EasyPost.Models.API.Smartrate.DeliveryDate
+  fullName: EasyPost.Models.API.SmartRate.Currency
+  nameWithType: SmartRate.Currency
+- uid: EasyPost.Models.API.SmartRate.DeliveryDate
   name: DeliveryDate
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_DeliveryDate
-  commentId: P:EasyPost.Models.API.Smartrate.DeliveryDate
-  fullName: EasyPost.Models.API.Smartrate.DeliveryDate
-  nameWithType: Smartrate.DeliveryDate
-- uid: EasyPost.Models.API.Smartrate.DeliveryDate*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_DeliveryDate
+  commentId: P:EasyPost.Models.API.SmartRate.DeliveryDate
+  fullName: EasyPost.Models.API.SmartRate.DeliveryDate
+  nameWithType: SmartRate.DeliveryDate
+- uid: EasyPost.Models.API.SmartRate.DeliveryDate*
   name: DeliveryDate
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_DeliveryDate_
-  commentId: Overload:EasyPost.Models.API.Smartrate.DeliveryDate
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_DeliveryDate_
+  commentId: Overload:EasyPost.Models.API.SmartRate.DeliveryDate
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.DeliveryDate
-  nameWithType: Smartrate.DeliveryDate
-- uid: EasyPost.Models.API.Smartrate.DeliveryDateGuaranteed
+  fullName: EasyPost.Models.API.SmartRate.DeliveryDate
+  nameWithType: SmartRate.DeliveryDate
+- uid: EasyPost.Models.API.SmartRate.DeliveryDateGuaranteed
   name: DeliveryDateGuaranteed
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_DeliveryDateGuaranteed
-  commentId: P:EasyPost.Models.API.Smartrate.DeliveryDateGuaranteed
-  fullName: EasyPost.Models.API.Smartrate.DeliveryDateGuaranteed
-  nameWithType: Smartrate.DeliveryDateGuaranteed
-- uid: EasyPost.Models.API.Smartrate.DeliveryDateGuaranteed*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_DeliveryDateGuaranteed
+  commentId: P:EasyPost.Models.API.SmartRate.DeliveryDateGuaranteed
+  fullName: EasyPost.Models.API.SmartRate.DeliveryDateGuaranteed
+  nameWithType: SmartRate.DeliveryDateGuaranteed
+- uid: EasyPost.Models.API.SmartRate.DeliveryDateGuaranteed*
   name: DeliveryDateGuaranteed
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_DeliveryDateGuaranteed_
-  commentId: Overload:EasyPost.Models.API.Smartrate.DeliveryDateGuaranteed
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_DeliveryDateGuaranteed_
+  commentId: Overload:EasyPost.Models.API.SmartRate.DeliveryDateGuaranteed
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.DeliveryDateGuaranteed
-  nameWithType: Smartrate.DeliveryDateGuaranteed
-- uid: EasyPost.Models.API.Smartrate.DeliveryDays
+  fullName: EasyPost.Models.API.SmartRate.DeliveryDateGuaranteed
+  nameWithType: SmartRate.DeliveryDateGuaranteed
+- uid: EasyPost.Models.API.SmartRate.DeliveryDays
   name: DeliveryDays
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_DeliveryDays
-  commentId: P:EasyPost.Models.API.Smartrate.DeliveryDays
-  fullName: EasyPost.Models.API.Smartrate.DeliveryDays
-  nameWithType: Smartrate.DeliveryDays
-- uid: EasyPost.Models.API.Smartrate.DeliveryDays*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_DeliveryDays
+  commentId: P:EasyPost.Models.API.SmartRate.DeliveryDays
+  fullName: EasyPost.Models.API.SmartRate.DeliveryDays
+  nameWithType: SmartRate.DeliveryDays
+- uid: EasyPost.Models.API.SmartRate.DeliveryDays*
   name: DeliveryDays
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_DeliveryDays_
-  commentId: Overload:EasyPost.Models.API.Smartrate.DeliveryDays
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_DeliveryDays_
+  commentId: Overload:EasyPost.Models.API.SmartRate.DeliveryDays
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.DeliveryDays
-  nameWithType: Smartrate.DeliveryDays
-- uid: EasyPost.Models.API.Smartrate.EstDeliveryDays
+  fullName: EasyPost.Models.API.SmartRate.DeliveryDays
+  nameWithType: SmartRate.DeliveryDays
+- uid: EasyPost.Models.API.SmartRate.EstDeliveryDays
   name: EstDeliveryDays
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_EstDeliveryDays
-  commentId: P:EasyPost.Models.API.Smartrate.EstDeliveryDays
-  fullName: EasyPost.Models.API.Smartrate.EstDeliveryDays
-  nameWithType: Smartrate.EstDeliveryDays
-- uid: EasyPost.Models.API.Smartrate.EstDeliveryDays*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_EstDeliveryDays
+  commentId: P:EasyPost.Models.API.SmartRate.EstDeliveryDays
+  fullName: EasyPost.Models.API.SmartRate.EstDeliveryDays
+  nameWithType: SmartRate.EstDeliveryDays
+- uid: EasyPost.Models.API.SmartRate.EstDeliveryDays*
   name: EstDeliveryDays
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_EstDeliveryDays_
-  commentId: Overload:EasyPost.Models.API.Smartrate.EstDeliveryDays
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_EstDeliveryDays_
+  commentId: Overload:EasyPost.Models.API.SmartRate.EstDeliveryDays
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.EstDeliveryDays
-  nameWithType: Smartrate.EstDeliveryDays
-- uid: EasyPost.Models.API.Smartrate.ListCurrency
+  fullName: EasyPost.Models.API.SmartRate.EstDeliveryDays
+  nameWithType: SmartRate.EstDeliveryDays
+- uid: EasyPost.Models.API.SmartRate.ListCurrency
   name: ListCurrency
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_ListCurrency
-  commentId: P:EasyPost.Models.API.Smartrate.ListCurrency
-  fullName: EasyPost.Models.API.Smartrate.ListCurrency
-  nameWithType: Smartrate.ListCurrency
-- uid: EasyPost.Models.API.Smartrate.ListCurrency*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_ListCurrency
+  commentId: P:EasyPost.Models.API.SmartRate.ListCurrency
+  fullName: EasyPost.Models.API.SmartRate.ListCurrency
+  nameWithType: SmartRate.ListCurrency
+- uid: EasyPost.Models.API.SmartRate.ListCurrency*
   name: ListCurrency
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_ListCurrency_
-  commentId: Overload:EasyPost.Models.API.Smartrate.ListCurrency
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_ListCurrency_
+  commentId: Overload:EasyPost.Models.API.SmartRate.ListCurrency
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.ListCurrency
-  nameWithType: Smartrate.ListCurrency
-- uid: EasyPost.Models.API.Smartrate.ListRate
+  fullName: EasyPost.Models.API.SmartRate.ListCurrency
+  nameWithType: SmartRate.ListCurrency
+- uid: EasyPost.Models.API.SmartRate.ListRate
   name: ListRate
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_ListRate
-  commentId: P:EasyPost.Models.API.Smartrate.ListRate
-  fullName: EasyPost.Models.API.Smartrate.ListRate
-  nameWithType: Smartrate.ListRate
-- uid: EasyPost.Models.API.Smartrate.ListRate*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_ListRate
+  commentId: P:EasyPost.Models.API.SmartRate.ListRate
+  fullName: EasyPost.Models.API.SmartRate.ListRate
+  nameWithType: SmartRate.ListRate
+- uid: EasyPost.Models.API.SmartRate.ListRate*
   name: ListRate
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_ListRate_
-  commentId: Overload:EasyPost.Models.API.Smartrate.ListRate
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_ListRate_
+  commentId: Overload:EasyPost.Models.API.SmartRate.ListRate
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.ListRate
-  nameWithType: Smartrate.ListRate
-- uid: EasyPost.Models.API.Smartrate.Rate
+  fullName: EasyPost.Models.API.SmartRate.ListRate
+  nameWithType: SmartRate.ListRate
+- uid: EasyPost.Models.API.SmartRate.Rate
   name: Rate
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_Rate
-  commentId: P:EasyPost.Models.API.Smartrate.Rate
-  fullName: EasyPost.Models.API.Smartrate.Rate
-  nameWithType: Smartrate.Rate
-- uid: EasyPost.Models.API.Smartrate.Rate*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_Rate
+  commentId: P:EasyPost.Models.API.SmartRate.Rate
+  fullName: EasyPost.Models.API.SmartRate.Rate
+  nameWithType: SmartRate.Rate
+- uid: EasyPost.Models.API.SmartRate.Rate*
   name: Rate
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_Rate_
-  commentId: Overload:EasyPost.Models.API.Smartrate.Rate
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_Rate_
+  commentId: Overload:EasyPost.Models.API.SmartRate.Rate
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.Rate
-  nameWithType: Smartrate.Rate
-- uid: EasyPost.Models.API.Smartrate.RetailCurrency
+  fullName: EasyPost.Models.API.SmartRate.Rate
+  nameWithType: SmartRate.Rate
+- uid: EasyPost.Models.API.SmartRate.RetailCurrency
   name: RetailCurrency
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_RetailCurrency
-  commentId: P:EasyPost.Models.API.Smartrate.RetailCurrency
-  fullName: EasyPost.Models.API.Smartrate.RetailCurrency
-  nameWithType: Smartrate.RetailCurrency
-- uid: EasyPost.Models.API.Smartrate.RetailCurrency*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_RetailCurrency
+  commentId: P:EasyPost.Models.API.SmartRate.RetailCurrency
+  fullName: EasyPost.Models.API.SmartRate.RetailCurrency
+  nameWithType: SmartRate.RetailCurrency
+- uid: EasyPost.Models.API.SmartRate.RetailCurrency*
   name: RetailCurrency
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_RetailCurrency_
-  commentId: Overload:EasyPost.Models.API.Smartrate.RetailCurrency
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_RetailCurrency_
+  commentId: Overload:EasyPost.Models.API.SmartRate.RetailCurrency
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.RetailCurrency
-  nameWithType: Smartrate.RetailCurrency
-- uid: EasyPost.Models.API.Smartrate.RetailRate
+  fullName: EasyPost.Models.API.SmartRate.RetailCurrency
+  nameWithType: SmartRate.RetailCurrency
+- uid: EasyPost.Models.API.SmartRate.RetailRate
   name: RetailRate
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_RetailRate
-  commentId: P:EasyPost.Models.API.Smartrate.RetailRate
-  fullName: EasyPost.Models.API.Smartrate.RetailRate
-  nameWithType: Smartrate.RetailRate
-- uid: EasyPost.Models.API.Smartrate.RetailRate*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_RetailRate
+  commentId: P:EasyPost.Models.API.SmartRate.RetailRate
+  fullName: EasyPost.Models.API.SmartRate.RetailRate
+  nameWithType: SmartRate.RetailRate
+- uid: EasyPost.Models.API.SmartRate.RetailRate*
   name: RetailRate
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_RetailRate_
-  commentId: Overload:EasyPost.Models.API.Smartrate.RetailRate
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_RetailRate_
+  commentId: Overload:EasyPost.Models.API.SmartRate.RetailRate
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.RetailRate
-  nameWithType: Smartrate.RetailRate
-- uid: EasyPost.Models.API.Smartrate.Service
+  fullName: EasyPost.Models.API.SmartRate.RetailRate
+  nameWithType: SmartRate.RetailRate
+- uid: EasyPost.Models.API.SmartRate.Service
   name: Service
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_Service
-  commentId: P:EasyPost.Models.API.Smartrate.Service
-  fullName: EasyPost.Models.API.Smartrate.Service
-  nameWithType: Smartrate.Service
-- uid: EasyPost.Models.API.Smartrate.Service*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_Service
+  commentId: P:EasyPost.Models.API.SmartRate.Service
+  fullName: EasyPost.Models.API.SmartRate.Service
+  nameWithType: SmartRate.Service
+- uid: EasyPost.Models.API.SmartRate.Service*
   name: Service
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_Service_
-  commentId: Overload:EasyPost.Models.API.Smartrate.Service
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_Service_
+  commentId: Overload:EasyPost.Models.API.SmartRate.Service
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.Service
-  nameWithType: Smartrate.Service
-- uid: EasyPost.Models.API.Smartrate.ShipmentId
+  fullName: EasyPost.Models.API.SmartRate.Service
+  nameWithType: SmartRate.Service
+- uid: EasyPost.Models.API.SmartRate.ShipmentId
   name: ShipmentId
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_ShipmentId
-  commentId: P:EasyPost.Models.API.Smartrate.ShipmentId
-  fullName: EasyPost.Models.API.Smartrate.ShipmentId
-  nameWithType: Smartrate.ShipmentId
-- uid: EasyPost.Models.API.Smartrate.ShipmentId*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_ShipmentId
+  commentId: P:EasyPost.Models.API.SmartRate.ShipmentId
+  fullName: EasyPost.Models.API.SmartRate.ShipmentId
+  nameWithType: SmartRate.ShipmentId
+- uid: EasyPost.Models.API.SmartRate.ShipmentId*
   name: ShipmentId
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_ShipmentId_
-  commentId: Overload:EasyPost.Models.API.Smartrate.ShipmentId
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_ShipmentId_
+  commentId: Overload:EasyPost.Models.API.SmartRate.ShipmentId
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.ShipmentId
-  nameWithType: Smartrate.ShipmentId
-- uid: EasyPost.Models.API.Smartrate.TimeInTransit
+  fullName: EasyPost.Models.API.SmartRate.ShipmentId
+  nameWithType: SmartRate.ShipmentId
+- uid: EasyPost.Models.API.SmartRate.TimeInTransit
   name: TimeInTransit
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_TimeInTransit
-  commentId: P:EasyPost.Models.API.Smartrate.TimeInTransit
-  fullName: EasyPost.Models.API.Smartrate.TimeInTransit
-  nameWithType: Smartrate.TimeInTransit
-- uid: EasyPost.Models.API.Smartrate.TimeInTransit*
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_TimeInTransit
+  commentId: P:EasyPost.Models.API.SmartRate.TimeInTransit
+  fullName: EasyPost.Models.API.SmartRate.TimeInTransit
+  nameWithType: SmartRate.TimeInTransit
+- uid: EasyPost.Models.API.SmartRate.TimeInTransit*
   name: TimeInTransit
-  href: api/EasyPost.Models.API.Smartrate.html#EasyPost_Models_API_Smartrate_TimeInTransit_
-  commentId: Overload:EasyPost.Models.API.Smartrate.TimeInTransit
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_TimeInTransit_
+  commentId: Overload:EasyPost.Models.API.SmartRate.TimeInTransit
   isSpec: "True"
-  fullName: EasyPost.Models.API.Smartrate.TimeInTransit
-  nameWithType: Smartrate.TimeInTransit
-- uid: EasyPost.Models.API.SmartrateAccuracy
-  name: SmartrateAccuracy
-  href: api/EasyPost.Models.API.SmartrateAccuracy.html
-  commentId: T:EasyPost.Models.API.SmartrateAccuracy
-  fullName: EasyPost.Models.API.SmartrateAccuracy
-  nameWithType: SmartrateAccuracy
-- uid: EasyPost.Models.API.SmartrateAccuracy.All
+  fullName: EasyPost.Models.API.SmartRate.TimeInTransit
+  nameWithType: SmartRate.TimeInTransit
+- uid: EasyPost.Models.API.SmartRateAccuracy
+  name: SmartRateAccuracy
+  href: api/EasyPost.Models.API.SmartRateAccuracy.html
+  commentId: T:EasyPost.Models.API.SmartRateAccuracy
+  fullName: EasyPost.Models.API.SmartRateAccuracy
+  nameWithType: SmartRateAccuracy
+- uid: EasyPost.Models.API.SmartRateAccuracy.All
   name: All()
-  href: api/EasyPost.Models.API.SmartrateAccuracy.html#EasyPost_Models_API_SmartrateAccuracy_All
-  commentId: M:EasyPost.Models.API.SmartrateAccuracy.All
-  fullName: EasyPost.Models.API.SmartrateAccuracy.All()
-  nameWithType: SmartrateAccuracy.All()
-- uid: EasyPost.Models.API.SmartrateAccuracy.All*
+  href: api/EasyPost.Models.API.SmartRateAccuracy.html#EasyPost_Models_API_SmartRateAccuracy_All
+  commentId: M:EasyPost.Models.API.SmartRateAccuracy.All
+  fullName: EasyPost.Models.API.SmartRateAccuracy.All()
+  nameWithType: SmartRateAccuracy.All()
+- uid: EasyPost.Models.API.SmartRateAccuracy.All*
   name: All
-  href: api/EasyPost.Models.API.SmartrateAccuracy.html#EasyPost_Models_API_SmartrateAccuracy_All_
-  commentId: Overload:EasyPost.Models.API.SmartrateAccuracy.All
+  href: api/EasyPost.Models.API.SmartRateAccuracy.html#EasyPost_Models_API_SmartRateAccuracy_All_
+  commentId: Overload:EasyPost.Models.API.SmartRateAccuracy.All
   isSpec: "True"
-  fullName: EasyPost.Models.API.SmartrateAccuracy.All
-  nameWithType: SmartrateAccuracy.All
-- uid: EasyPost.Models.API.SmartrateAccuracy.Percentile50
+  fullName: EasyPost.Models.API.SmartRateAccuracy.All
+  nameWithType: SmartRateAccuracy.All
+- uid: EasyPost.Models.API.SmartRateAccuracy.Percentile50
   name: Percentile50
-  href: api/EasyPost.Models.API.SmartrateAccuracy.html#EasyPost_Models_API_SmartrateAccuracy_Percentile50
-  commentId: F:EasyPost.Models.API.SmartrateAccuracy.Percentile50
-  fullName: EasyPost.Models.API.SmartrateAccuracy.Percentile50
-  nameWithType: SmartrateAccuracy.Percentile50
-- uid: EasyPost.Models.API.SmartrateAccuracy.Percentile75
+  href: api/EasyPost.Models.API.SmartRateAccuracy.html#EasyPost_Models_API_SmartRateAccuracy_Percentile50
+  commentId: F:EasyPost.Models.API.SmartRateAccuracy.Percentile50
+  fullName: EasyPost.Models.API.SmartRateAccuracy.Percentile50
+  nameWithType: SmartRateAccuracy.Percentile50
+- uid: EasyPost.Models.API.SmartRateAccuracy.Percentile75
   name: Percentile75
-  href: api/EasyPost.Models.API.SmartrateAccuracy.html#EasyPost_Models_API_SmartrateAccuracy_Percentile75
-  commentId: F:EasyPost.Models.API.SmartrateAccuracy.Percentile75
-  fullName: EasyPost.Models.API.SmartrateAccuracy.Percentile75
-  nameWithType: SmartrateAccuracy.Percentile75
-- uid: EasyPost.Models.API.SmartrateAccuracy.Percentile85
+  href: api/EasyPost.Models.API.SmartRateAccuracy.html#EasyPost_Models_API_SmartRateAccuracy_Percentile75
+  commentId: F:EasyPost.Models.API.SmartRateAccuracy.Percentile75
+  fullName: EasyPost.Models.API.SmartRateAccuracy.Percentile75
+  nameWithType: SmartRateAccuracy.Percentile75
+- uid: EasyPost.Models.API.SmartRateAccuracy.Percentile85
   name: Percentile85
-  href: api/EasyPost.Models.API.SmartrateAccuracy.html#EasyPost_Models_API_SmartrateAccuracy_Percentile85
-  commentId: F:EasyPost.Models.API.SmartrateAccuracy.Percentile85
-  fullName: EasyPost.Models.API.SmartrateAccuracy.Percentile85
-  nameWithType: SmartrateAccuracy.Percentile85
-- uid: EasyPost.Models.API.SmartrateAccuracy.Percentile90
+  href: api/EasyPost.Models.API.SmartRateAccuracy.html#EasyPost_Models_API_SmartRateAccuracy_Percentile85
+  commentId: F:EasyPost.Models.API.SmartRateAccuracy.Percentile85
+  fullName: EasyPost.Models.API.SmartRateAccuracy.Percentile85
+  nameWithType: SmartRateAccuracy.Percentile85
+- uid: EasyPost.Models.API.SmartRateAccuracy.Percentile90
   name: Percentile90
-  href: api/EasyPost.Models.API.SmartrateAccuracy.html#EasyPost_Models_API_SmartrateAccuracy_Percentile90
-  commentId: F:EasyPost.Models.API.SmartrateAccuracy.Percentile90
-  fullName: EasyPost.Models.API.SmartrateAccuracy.Percentile90
-  nameWithType: SmartrateAccuracy.Percentile90
-- uid: EasyPost.Models.API.SmartrateAccuracy.Percentile95
+  href: api/EasyPost.Models.API.SmartRateAccuracy.html#EasyPost_Models_API_SmartRateAccuracy_Percentile90
+  commentId: F:EasyPost.Models.API.SmartRateAccuracy.Percentile90
+  fullName: EasyPost.Models.API.SmartRateAccuracy.Percentile90
+  nameWithType: SmartRateAccuracy.Percentile90
+- uid: EasyPost.Models.API.SmartRateAccuracy.Percentile95
   name: Percentile95
-  href: api/EasyPost.Models.API.SmartrateAccuracy.html#EasyPost_Models_API_SmartrateAccuracy_Percentile95
-  commentId: F:EasyPost.Models.API.SmartrateAccuracy.Percentile95
-  fullName: EasyPost.Models.API.SmartrateAccuracy.Percentile95
-  nameWithType: SmartrateAccuracy.Percentile95
-- uid: EasyPost.Models.API.SmartrateAccuracy.Percentile97
+  href: api/EasyPost.Models.API.SmartRateAccuracy.html#EasyPost_Models_API_SmartRateAccuracy_Percentile95
+  commentId: F:EasyPost.Models.API.SmartRateAccuracy.Percentile95
+  fullName: EasyPost.Models.API.SmartRateAccuracy.Percentile95
+  nameWithType: SmartRateAccuracy.Percentile95
+- uid: EasyPost.Models.API.SmartRateAccuracy.Percentile97
   name: Percentile97
-  href: api/EasyPost.Models.API.SmartrateAccuracy.html#EasyPost_Models_API_SmartrateAccuracy_Percentile97
-  commentId: F:EasyPost.Models.API.SmartrateAccuracy.Percentile97
-  fullName: EasyPost.Models.API.SmartrateAccuracy.Percentile97
-  nameWithType: SmartrateAccuracy.Percentile97
-- uid: EasyPost.Models.API.SmartrateAccuracy.Percentile99
+  href: api/EasyPost.Models.API.SmartRateAccuracy.html#EasyPost_Models_API_SmartRateAccuracy_Percentile97
+  commentId: F:EasyPost.Models.API.SmartRateAccuracy.Percentile97
+  fullName: EasyPost.Models.API.SmartRateAccuracy.Percentile97
+  nameWithType: SmartRateAccuracy.Percentile97
+- uid: EasyPost.Models.API.SmartRateAccuracy.Percentile99
   name: Percentile99
-  href: api/EasyPost.Models.API.SmartrateAccuracy.html#EasyPost_Models_API_SmartrateAccuracy_Percentile99
-  commentId: F:EasyPost.Models.API.SmartrateAccuracy.Percentile99
-  fullName: EasyPost.Models.API.SmartrateAccuracy.Percentile99
-  nameWithType: SmartrateAccuracy.Percentile99
+  href: api/EasyPost.Models.API.SmartRateAccuracy.html#EasyPost_Models_API_SmartRateAccuracy_Percentile99
+  commentId: F:EasyPost.Models.API.SmartRateAccuracy.Percentile99
+  fullName: EasyPost.Models.API.SmartRateAccuracy.Percentile99
+  nameWithType: SmartRateAccuracy.Percentile99
 - uid: EasyPost.Models.API.TaxIdentifier
   name: TaxIdentifier
   href: api/EasyPost.Models.API.TaxIdentifier.html
@@ -11438,19 +11438,19 @@ references:
   commentId: T:EasyPost.Models.API.TimeInTransit
   fullName: EasyPost.Models.API.TimeInTransit
   nameWithType: TimeInTransit
-- uid: EasyPost.Models.API.TimeInTransit.GetBySmartrateAccuracy(EasyPost.Models.API.SmartrateAccuracy)
-  name: GetBySmartrateAccuracy(SmartrateAccuracy)
-  href: api/EasyPost.Models.API.TimeInTransit.html#EasyPost_Models_API_TimeInTransit_GetBySmartrateAccuracy_EasyPost_Models_API_SmartrateAccuracy_
-  commentId: M:EasyPost.Models.API.TimeInTransit.GetBySmartrateAccuracy(EasyPost.Models.API.SmartrateAccuracy)
-  fullName: EasyPost.Models.API.TimeInTransit.GetBySmartrateAccuracy(EasyPost.Models.API.SmartrateAccuracy)
-  nameWithType: TimeInTransit.GetBySmartrateAccuracy(SmartrateAccuracy)
-- uid: EasyPost.Models.API.TimeInTransit.GetBySmartrateAccuracy*
-  name: GetBySmartrateAccuracy
-  href: api/EasyPost.Models.API.TimeInTransit.html#EasyPost_Models_API_TimeInTransit_GetBySmartrateAccuracy_
-  commentId: Overload:EasyPost.Models.API.TimeInTransit.GetBySmartrateAccuracy
+- uid: EasyPost.Models.API.TimeInTransit.GetBySmartRateAccuracy(EasyPost.Models.API.SmartRateAccuracy)
+  name: GetBySmartRateAccuracy(SmartRateAccuracy)
+  href: api/EasyPost.Models.API.TimeInTransit.html#EasyPost_Models_API_TimeInTransit_GetBySmartRateAccuracy_EasyPost_Models_API_SmartRateAccuracy_
+  commentId: M:EasyPost.Models.API.TimeInTransit.GetBySmartRateAccuracy(EasyPost.Models.API.SmartRateAccuracy)
+  fullName: EasyPost.Models.API.TimeInTransit.GetBySmartRateAccuracy(EasyPost.Models.API.SmartRateAccuracy)
+  nameWithType: TimeInTransit.GetBySmartRateAccuracy(SmartRateAccuracy)
+- uid: EasyPost.Models.API.TimeInTransit.GetBySmartRateAccuracy*
+  name: GetBySmartRateAccuracy
+  href: api/EasyPost.Models.API.TimeInTransit.html#EasyPost_Models_API_TimeInTransit_GetBySmartRateAccuracy_
+  commentId: Overload:EasyPost.Models.API.TimeInTransit.GetBySmartRateAccuracy
   isSpec: "True"
-  fullName: EasyPost.Models.API.TimeInTransit.GetBySmartrateAccuracy
-  nameWithType: TimeInTransit.GetBySmartrateAccuracy
+  fullName: EasyPost.Models.API.TimeInTransit.GetBySmartRateAccuracy
+  nameWithType: TimeInTransit.GetBySmartRateAccuracy
 - uid: EasyPost.Models.API.TimeInTransit.Percentile50
   name: Percentile50
   href: api/EasyPost.Models.API.TimeInTransit.html#EasyPost_Models_API_TimeInTransit_Percentile50
@@ -13920,22 +13920,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ShipmentService.GenerateLabel
   nameWithType: ShipmentService.GenerateLabel
-- uid: EasyPost.Services.ShipmentService.GetLowestSmartrate(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)
-  name: GetLowestSmartrate(IEnumerable<Smartrate>, Int32, SmartrateAccuracy)
-  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GetLowestSmartrate_IEnumerable_EasyPost_Models_API_Smartrate__System_Int32_EasyPost_Models_API_SmartrateAccuracy_
-  commentId: M:EasyPost.Services.ShipmentService.GetLowestSmartrate(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)
-  name.vb: GetLowestSmartrate(IEnumerable(Of Smartrate), Int32, SmartrateAccuracy)
-  fullName: EasyPost.Services.ShipmentService.GetLowestSmartrate(IEnumerable<EasyPost.Models.API.Smartrate>, System.Int32, EasyPost.Models.API.SmartrateAccuracy)
-  fullName.vb: EasyPost.Services.ShipmentService.GetLowestSmartrate(IEnumerable(Of EasyPost.Models.API.Smartrate), System.Int32, EasyPost.Models.API.SmartrateAccuracy)
-  nameWithType: ShipmentService.GetLowestSmartrate(IEnumerable<Smartrate>, Int32, SmartrateAccuracy)
-  nameWithType.vb: ShipmentService.GetLowestSmartrate(IEnumerable(Of Smartrate), Int32, SmartrateAccuracy)
-- uid: EasyPost.Services.ShipmentService.GetLowestSmartrate*
-  name: GetLowestSmartrate
-  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GetLowestSmartrate_
-  commentId: Overload:EasyPost.Services.ShipmentService.GetLowestSmartrate
-  isSpec: "True"
-  fullName: EasyPost.Services.ShipmentService.GetLowestSmartrate
-  nameWithType: ShipmentService.GetLowestSmartrate
 - uid: EasyPost.Services.ShipmentService.GetNextPage(EasyPost.Models.API.ShipmentCollection,System.Nullable{System.Int32})
   name: GetNextPage(ShipmentCollection, Nullable<Int32>)
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GetNextPage_EasyPost_Models_API_ShipmentCollection_System_Nullable_System_Int32__
@@ -13952,19 +13936,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ShipmentService.GetNextPage
   nameWithType: ShipmentService.GetNextPage
-- uid: EasyPost.Services.ShipmentService.GetSmartrates(System.String)
-  name: GetSmartrates(String)
-  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GetSmartrates_System_String_
-  commentId: M:EasyPost.Services.ShipmentService.GetSmartrates(System.String)
-  fullName: EasyPost.Services.ShipmentService.GetSmartrates(System.String)
-  nameWithType: ShipmentService.GetSmartrates(String)
-- uid: EasyPost.Services.ShipmentService.GetSmartrates*
-  name: GetSmartrates
-  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GetSmartrates_
-  commentId: Overload:EasyPost.Services.ShipmentService.GetSmartrates
+- uid: EasyPost.Services.ShipmentService.GetSmartRates(System.String)
+  name: GetSmartRates(String)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GetSmartRates_System_String_
+  commentId: M:EasyPost.Services.ShipmentService.GetSmartRates(System.String)
+  fullName: EasyPost.Services.ShipmentService.GetSmartRates(System.String)
+  nameWithType: ShipmentService.GetSmartRates(String)
+- uid: EasyPost.Services.ShipmentService.GetSmartRates*
+  name: GetSmartRates
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GetSmartRates_
+  commentId: Overload:EasyPost.Services.ShipmentService.GetSmartRates
   isSpec: "True"
-  fullName: EasyPost.Services.ShipmentService.GetSmartrates
-  nameWithType: ShipmentService.GetSmartrates
+  fullName: EasyPost.Services.ShipmentService.GetSmartRates
+  nameWithType: ShipmentService.GetSmartRates
 - uid: EasyPost.Services.ShipmentService.Insure(System.String,EasyPost.BetaFeatures.Parameters.Shipments.Insure)
   name: Insure(String, Insure)
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Insure_System_String_EasyPost_BetaFeatures_Parameters_Shipments_Insure_
@@ -14837,15 +14821,15 @@ references:
   fullName.vb: EasyPost.Utilities.Rates.GetLowest(IEnumerable(Of EasyPost.Models.API.Rate), System.Nullable(Of List(Of System.String)), System.Nullable(Of List(Of System.String)), System.Nullable(Of List(Of System.String)), System.Nullable(Of List(Of System.String)))
   nameWithType: Rates.GetLowest(IEnumerable<Rate>, Nullable<List<String>>, Nullable<List<String>>, Nullable<List<String>>, Nullable<List<String>>)
   nameWithType.vb: Rates.GetLowest(IEnumerable(Of Rate), Nullable(Of List(Of String)), Nullable(Of List(Of String)), Nullable(Of List(Of String)), Nullable(Of List(Of String)))
-- uid: EasyPost.Utilities.Rates.GetLowest(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)
-  name: GetLowest(IEnumerable<Smartrate>, Int32, SmartrateAccuracy)
-  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowest_IEnumerable_EasyPost_Models_API_Smartrate__System_Int32_EasyPost_Models_API_SmartrateAccuracy_
-  commentId: M:EasyPost.Utilities.Rates.GetLowest(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)
-  name.vb: GetLowest(IEnumerable(Of Smartrate), Int32, SmartrateAccuracy)
-  fullName: EasyPost.Utilities.Rates.GetLowest(IEnumerable<EasyPost.Models.API.Smartrate>, System.Int32, EasyPost.Models.API.SmartrateAccuracy)
-  fullName.vb: EasyPost.Utilities.Rates.GetLowest(IEnumerable(Of EasyPost.Models.API.Smartrate), System.Int32, EasyPost.Models.API.SmartrateAccuracy)
-  nameWithType: Rates.GetLowest(IEnumerable<Smartrate>, Int32, SmartrateAccuracy)
-  nameWithType.vb: Rates.GetLowest(IEnumerable(Of Smartrate), Int32, SmartrateAccuracy)
+- uid: EasyPost.Utilities.Rates.GetLowest(IEnumerable{EasyPost.Models.API.SmartRate},System.Int32,EasyPost.Models.API.SmartRateAccuracy)
+  name: GetLowest(IEnumerable<SmartRate>, Int32, SmartRateAccuracy)
+  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowest_IEnumerable_EasyPost_Models_API_SmartRate__System_Int32_EasyPost_Models_API_SmartRateAccuracy_
+  commentId: M:EasyPost.Utilities.Rates.GetLowest(IEnumerable{EasyPost.Models.API.SmartRate},System.Int32,EasyPost.Models.API.SmartRateAccuracy)
+  name.vb: GetLowest(IEnumerable(Of SmartRate), Int32, SmartRateAccuracy)
+  fullName: EasyPost.Utilities.Rates.GetLowest(IEnumerable<EasyPost.Models.API.SmartRate>, System.Int32, EasyPost.Models.API.SmartRateAccuracy)
+  fullName.vb: EasyPost.Utilities.Rates.GetLowest(IEnumerable(Of EasyPost.Models.API.SmartRate), System.Int32, EasyPost.Models.API.SmartRateAccuracy)
+  nameWithType: Rates.GetLowest(IEnumerable<SmartRate>, Int32, SmartRateAccuracy)
+  nameWithType.vb: Rates.GetLowest(IEnumerable(Of SmartRate), Int32, SmartRateAccuracy)
 - uid: EasyPost.Utilities.Rates.GetLowest*
   name: GetLowest
   href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowest_
@@ -14869,15 +14853,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Utilities.Rates.GetLowestRate
   nameWithType: Rates.GetLowestRate
-- uid: EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)
-  name: GetLowestSmartRate(IEnumerable<Smartrate>, Int32, SmartrateAccuracy)
-  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowestSmartRate_IEnumerable_EasyPost_Models_API_Smartrate__System_Int32_EasyPost_Models_API_SmartrateAccuracy_
-  commentId: M:EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)
-  name.vb: GetLowestSmartRate(IEnumerable(Of Smartrate), Int32, SmartrateAccuracy)
-  fullName: EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable<EasyPost.Models.API.Smartrate>, System.Int32, EasyPost.Models.API.SmartrateAccuracy)
-  fullName.vb: EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable(Of EasyPost.Models.API.Smartrate), System.Int32, EasyPost.Models.API.SmartrateAccuracy)
-  nameWithType: Rates.GetLowestSmartRate(IEnumerable<Smartrate>, Int32, SmartrateAccuracy)
-  nameWithType.vb: Rates.GetLowestSmartRate(IEnumerable(Of Smartrate), Int32, SmartrateAccuracy)
+- uid: EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable{EasyPost.Models.API.SmartRate},System.Int32,EasyPost.Models.API.SmartRateAccuracy)
+  name: GetLowestSmartRate(IEnumerable<SmartRate>, Int32, SmartRateAccuracy)
+  href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowestSmartRate_IEnumerable_EasyPost_Models_API_SmartRate__System_Int32_EasyPost_Models_API_SmartRateAccuracy_
+  commentId: M:EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable{EasyPost.Models.API.SmartRate},System.Int32,EasyPost.Models.API.SmartRateAccuracy)
+  name.vb: GetLowestSmartRate(IEnumerable(Of SmartRate), Int32, SmartRateAccuracy)
+  fullName: EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable<EasyPost.Models.API.SmartRate>, System.Int32, EasyPost.Models.API.SmartRateAccuracy)
+  fullName.vb: EasyPost.Utilities.Rates.GetLowestSmartRate(IEnumerable(Of EasyPost.Models.API.SmartRate), System.Int32, EasyPost.Models.API.SmartRateAccuracy)
+  nameWithType: Rates.GetLowestSmartRate(IEnumerable<SmartRate>, Int32, SmartRateAccuracy)
+  nameWithType.vb: Rates.GetLowestSmartRate(IEnumerable(Of SmartRate), Int32, SmartRateAccuracy)
 - uid: EasyPost.Utilities.Rates.GetLowestSmartRate*
   name: GetLowestSmartRate
   href: api/EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowestSmartRate_

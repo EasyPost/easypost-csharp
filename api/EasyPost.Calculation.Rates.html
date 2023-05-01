@@ -164,20 +164,20 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Calculation_Rates_GetLowestShipmentSmartrate_IEnumerable_EasyPost_Models_API_Smartrate__System_Int32_EasyPost_Models_API_SmartrateAccuracy_.md&amp;value=---%0Auid%3A%20EasyPost.Calculation.Rates.GetLowestShipmentSmartrate(IEnumerable%7BEasyPost.Models.API.Smartrate%7D%2CSystem.Int32%2CEasyPost.Models.API.SmartrateAccuracy)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Calculation_Rates_GetLowestShipmentSmartRate_IEnumerable_EasyPost_Models_API_SmartRate__System_Int32_EasyPost_Models_API_SmartRateAccuracy_.md&amp;value=---%0Auid%3A%20EasyPost.Calculation.Rates.GetLowestShipmentSmartRate(IEnumerable%7BEasyPost.Models.API.SmartRate%7D%2CSystem.Int32%2CEasyPost.Models.API.SmartRateAccuracy)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Calculation/Rates.cs/#L33">View Source</a>
   </span>
-  <a id="EasyPost_Calculation_Rates_GetLowestShipmentSmartrate_" data-uid="EasyPost.Calculation.Rates.GetLowestShipmentSmartrate*"></a>
-  <h4 id="EasyPost_Calculation_Rates_GetLowestShipmentSmartrate_IEnumerable_EasyPost_Models_API_Smartrate__System_Int32_EasyPost_Models_API_SmartrateAccuracy_" data-uid="EasyPost.Calculation.Rates.GetLowestShipmentSmartrate(IEnumerable{EasyPost.Models.API.Smartrate},System.Int32,EasyPost.Models.API.SmartrateAccuracy)">GetLowestShipmentSmartrate(IEnumerable&lt;Smartrate&gt;, Int32, SmartrateAccuracy)</h4>
+  <a id="EasyPost_Calculation_Rates_GetLowestShipmentSmartRate_" data-uid="EasyPost.Calculation.Rates.GetLowestShipmentSmartRate*"></a>
+  <h4 id="EasyPost_Calculation_Rates_GetLowestShipmentSmartRate_IEnumerable_EasyPost_Models_API_SmartRate__System_Int32_EasyPost_Models_API_SmartRateAccuracy_" data-uid="EasyPost.Calculation.Rates.GetLowestShipmentSmartRate(IEnumerable{EasyPost.Models.API.SmartRate},System.Int32,EasyPost.Models.API.SmartRateAccuracy)">GetLowestShipmentSmartRate(IEnumerable&lt;SmartRate&gt;, Int32, SmartRateAccuracy)</h4>
   <div class="markdown level1 summary"><p>Get the lowest smartRate from a list of rates.</p>
-<p>Deprecated. Use <a class="xref" href="EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowestSmartRate_IEnumerable_EasyPost_Models_API_Smartrate__System_Int32_EasyPost_Models_API_SmartrateAccuracy_">GetLowestSmartRate(IEnumerable&lt;Smartrate&gt;, Int32, SmartrateAccuracy)</a> instead.</p>
+<p>Deprecated. Use <a class="xref" href="EasyPost.Utilities.Rates.html#EasyPost_Utilities_Rates_GetLowestSmartRate_IEnumerable_EasyPost_Models_API_SmartRate__System_Int32_EasyPost_Models_API_SmartRateAccuracy_">GetLowestSmartRate(IEnumerable&lt;SmartRate&gt;, Int32, SmartRateAccuracy)</a> instead.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Smartrate GetLowestShipmentSmartrate(IEnumerable&lt;Smartrate&gt; smartrates, int deliveryDays, SmartrateAccuracy deliveryAccuracy)</code></pre>
+    <pre><code class="lang-csharp hljs">public static SmartRate GetLowestShipmentSmartRate(IEnumerable&lt;SmartRate&gt; smartRates, int deliveryDays, SmartRateAccuracy deliveryAccuracy)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -190,8 +190,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="EasyPost.Models.API.Smartrate.html">Smartrate</a>&gt;</td>
-        <td><span class="parametername">smartrates</span></td>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="EasyPost.Models.API.SmartRate.html">SmartRate</a>&gt;</td>
+        <td><span class="parametername">smartRates</span></td>
         <td><p>List of smartRates to parse.</p>
 </td>
       </tr>
@@ -202,7 +202,7 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="EasyPost.Models.API.SmartrateAccuracy.html">SmartrateAccuracy</a></td>
+        <td><a class="xref" href="EasyPost.Models.API.SmartRateAccuracy.html">SmartRateAccuracy</a></td>
         <td><span class="parametername">deliveryAccuracy</span></td>
         <td><p>Delivery accuracy to include in the filter.</p>
 </td>
@@ -219,7 +219,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="EasyPost.Models.API.Smartrate.html">Smartrate</a></td>
+        <td><a class="xref" href="EasyPost.Models.API.SmartRate.html">SmartRate</a></td>
         <td><p>Lowest rate matching the filter.</p>
 </td>
       </tr>
