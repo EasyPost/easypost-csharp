@@ -95,6 +95,25 @@ references:
   isSpec: "True"
   fullName: EasyPost._base.EasyPostClient.CustomHttpClient
   nameWithType: EasyPostClient.CustomHttpClient
+- uid: EasyPost._base.EasyPostClient.Dispose
+  name: Dispose()
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_Dispose
+  commentId: M:EasyPost._base.EasyPostClient.Dispose
+  fullName: EasyPost._base.EasyPostClient.Dispose()
+  nameWithType: EasyPostClient.Dispose()
+- uid: EasyPost._base.EasyPostClient.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_Dispose_System_Boolean_
+  commentId: M:EasyPost._base.EasyPostClient.Dispose(System.Boolean)
+  fullName: EasyPost._base.EasyPostClient.Dispose(System.Boolean)
+  nameWithType: EasyPostClient.Dispose(Boolean)
+- uid: EasyPost._base.EasyPostClient.Dispose*
+  name: Dispose
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_Dispose_
+  commentId: Overload:EasyPost._base.EasyPostClient.Dispose
+  isSpec: "True"
+  fullName: EasyPost._base.EasyPostClient.Dispose
+  nameWithType: EasyPostClient.Dispose
 - uid: EasyPost._base.EasyPostClient.Equals(System.Nullable{System.Object})
   name: Equals(Nullable<Object>)
   href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_Equals_System_Nullable_System_Object__
@@ -111,6 +130,19 @@ references:
   isSpec: "True"
   fullName: EasyPost._base.EasyPostClient.Equals
   nameWithType: EasyPostClient.Equals
+- uid: EasyPost._base.EasyPostClient.Finalize
+  name: Finalize()
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_Finalize
+  commentId: M:EasyPost._base.EasyPostClient.Finalize
+  fullName: EasyPost._base.EasyPostClient.Finalize()
+  nameWithType: EasyPostClient.Finalize()
+- uid: EasyPost._base.EasyPostClient.Finalize*
+  name: Finalize
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_Finalize_
+  commentId: Overload:EasyPost._base.EasyPostClient.Finalize
+  isSpec: "True"
+  fullName: EasyPost._base.EasyPostClient.Finalize
+  nameWithType: EasyPostClient.Finalize
 - uid: EasyPost._base.EasyPostClient.GetHashCode
   name: GetHashCode()
   href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_GetHashCode
@@ -255,6 +287,38 @@ references:
   commentId: F:EasyPost._base.EasyPostService.Client
   fullName: EasyPost._base.EasyPostService.Client
   nameWithType: EasyPostService.Client
+- uid: EasyPost._base.EasyPostService.Dispose
+  name: Dispose()
+  href: api/EasyPost._base.EasyPostService.html#EasyPost__base_EasyPostService_Dispose
+  commentId: M:EasyPost._base.EasyPostService.Dispose
+  fullName: EasyPost._base.EasyPostService.Dispose()
+  nameWithType: EasyPostService.Dispose()
+- uid: EasyPost._base.EasyPostService.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/EasyPost._base.EasyPostService.html#EasyPost__base_EasyPostService_Dispose_System_Boolean_
+  commentId: M:EasyPost._base.EasyPostService.Dispose(System.Boolean)
+  fullName: EasyPost._base.EasyPostService.Dispose(System.Boolean)
+  nameWithType: EasyPostService.Dispose(Boolean)
+- uid: EasyPost._base.EasyPostService.Dispose*
+  name: Dispose
+  href: api/EasyPost._base.EasyPostService.html#EasyPost__base_EasyPostService_Dispose_
+  commentId: Overload:EasyPost._base.EasyPostService.Dispose
+  isSpec: "True"
+  fullName: EasyPost._base.EasyPostService.Dispose
+  nameWithType: EasyPostService.Dispose
+- uid: EasyPost._base.EasyPostService.Finalize
+  name: Finalize()
+  href: api/EasyPost._base.EasyPostService.html#EasyPost__base_EasyPostService_Finalize
+  commentId: M:EasyPost._base.EasyPostService.Finalize
+  fullName: EasyPost._base.EasyPostService.Finalize()
+  nameWithType: EasyPostService.Finalize()
+- uid: EasyPost._base.EasyPostService.Finalize*
+  name: Finalize
+  href: api/EasyPost._base.EasyPostService.html#EasyPost__base_EasyPostService_Finalize_
+  commentId: Overload:EasyPost._base.EasyPostService.Finalize
+  isSpec: "True"
+  fullName: EasyPost._base.EasyPostService.Finalize
+  nameWithType: EasyPostService.Finalize
 - uid: EasyPost._base.EasyPostService.Request(EasyPost.Http.Method,System.String,System.Nullable{Dictionary{System.String,System.Object}},EasyPost._base.ApiVersion)
   name: Request(Method, String, Nullable<Dictionary<String, Object>>, ApiVersion)
   href: api/EasyPost._base.EasyPostService.html#EasyPost__base_EasyPostService_Request_EasyPost_Http_Method_System_String_System_Nullable_Dictionary_System_String_System_Object___EasyPost__base_ApiVersion_
@@ -404,6 +468,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.BetaClient.CarrierMetadata
   nameWithType: BetaClient.CarrierMetadata
+- uid: EasyPost.BetaClient.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/EasyPost.BetaClient.html#EasyPost_BetaClient_Dispose_System_Boolean_
+  commentId: M:EasyPost.BetaClient.Dispose(System.Boolean)
+  fullName: EasyPost.BetaClient.Dispose(System.Boolean)
+  nameWithType: BetaClient.Dispose(Boolean)
+- uid: EasyPost.BetaClient.Dispose*
+  name: Dispose
+  href: api/EasyPost.BetaClient.html#EasyPost_BetaClient_Dispose_
+  commentId: Overload:EasyPost.BetaClient.Dispose
+  isSpec: "True"
+  fullName: EasyPost.BetaClient.Dispose
+  nameWithType: BetaClient.Dispose
 - uid: EasyPost.BetaClient.Rate
   name: Rate
   href: api/EasyPost.BetaClient.html#EasyPost_BetaClient_Rate
@@ -4359,6 +4436,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Client.CustomsItem
   nameWithType: Client.CustomsItem
+- uid: EasyPost.Client.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/EasyPost.Client.html#EasyPost_Client_Dispose_System_Boolean_
+  commentId: M:EasyPost.Client.Dispose(System.Boolean)
+  fullName: EasyPost.Client.Dispose(System.Boolean)
+  nameWithType: Client.Dispose(Boolean)
+- uid: EasyPost.Client.Dispose*
+  name: Dispose
+  href: api/EasyPost.Client.html#EasyPost_Client_Dispose_
+  commentId: Overload:EasyPost.Client.Dispose
+  isSpec: "True"
+  fullName: EasyPost.Client.Dispose
+  nameWithType: Client.Dispose
 - uid: EasyPost.Client.EndShipper
   name: EndShipper
   href: api/EasyPost.Client.html#EasyPost_Client_EndShipper
@@ -4599,6 +4689,25 @@ references:
   isSpec: "True"
   fullName: EasyPost.ClientConfiguration.CustomHttpClient
   nameWithType: ClientConfiguration.CustomHttpClient
+- uid: EasyPost.ClientConfiguration.Dispose
+  name: Dispose()
+  href: api/EasyPost.ClientConfiguration.html#EasyPost_ClientConfiguration_Dispose
+  commentId: M:EasyPost.ClientConfiguration.Dispose
+  fullName: EasyPost.ClientConfiguration.Dispose()
+  nameWithType: ClientConfiguration.Dispose()
+- uid: EasyPost.ClientConfiguration.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/EasyPost.ClientConfiguration.html#EasyPost_ClientConfiguration_Dispose_System_Boolean_
+  commentId: M:EasyPost.ClientConfiguration.Dispose(System.Boolean)
+  fullName: EasyPost.ClientConfiguration.Dispose(System.Boolean)
+  nameWithType: ClientConfiguration.Dispose(Boolean)
+- uid: EasyPost.ClientConfiguration.Dispose*
+  name: Dispose
+  href: api/EasyPost.ClientConfiguration.html#EasyPost_ClientConfiguration_Dispose_
+  commentId: Overload:EasyPost.ClientConfiguration.Dispose
+  isSpec: "True"
+  fullName: EasyPost.ClientConfiguration.Dispose
+  nameWithType: ClientConfiguration.Dispose
 - uid: EasyPost.ClientConfiguration.Equals(System.Nullable{System.Object})
   name: Equals(Nullable<Object>)
   href: api/EasyPost.ClientConfiguration.html#EasyPost_ClientConfiguration_Equals_System_Nullable_System_Object__
@@ -4615,6 +4724,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.ClientConfiguration.Equals
   nameWithType: ClientConfiguration.Equals
+- uid: EasyPost.ClientConfiguration.Finalize
+  name: Finalize()
+  href: api/EasyPost.ClientConfiguration.html#EasyPost_ClientConfiguration_Finalize
+  commentId: M:EasyPost.ClientConfiguration.Finalize
+  fullName: EasyPost.ClientConfiguration.Finalize()
+  nameWithType: ClientConfiguration.Finalize()
+- uid: EasyPost.ClientConfiguration.Finalize*
+  name: Finalize
+  href: api/EasyPost.ClientConfiguration.html#EasyPost_ClientConfiguration_Finalize_
+  commentId: Overload:EasyPost.ClientConfiguration.Finalize
+  isSpec: "True"
+  fullName: EasyPost.ClientConfiguration.Finalize
+  nameWithType: ClientConfiguration.Finalize
 - uid: EasyPost.ClientConfiguration.GetHashCode
   name: GetHashCode()
   href: api/EasyPost.ClientConfiguration.html#EasyPost_ClientConfiguration_GetHashCode
