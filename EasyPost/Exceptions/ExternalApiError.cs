@@ -11,7 +11,8 @@ namespace EasyPost.Exceptions
         /// <param name="errorMessage">Error message string to print to console.</param>
         /// <param name="statusCode">Optional HTTP status code to store as a property.</param>
         /// <param name="errorType">Optional error type string to store as a property.</param>
-        internal ExternalApiError(string errorMessage, int statusCode, string? errorType = null) : base(errorMessage)
+        internal ExternalApiError(string errorMessage, int statusCode, string? errorType = null)
+            : base(errorMessage)
         {
             StatusCode = statusCode;
             Code = errorType;

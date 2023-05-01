@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using EasyPost.Exceptions;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
-using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -48,7 +47,11 @@ namespace EasyPost.Tests.ExceptionsTests
 
             // Generate a dummy HttpResponseMessage with the given status code to parse
             httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString(CultureInfo.InvariantCulture));
-            response = new() { StatusCode = httpStatusCode, Content = new StringContent(errorMessageStringJson) };
+            response = new()
+            {
+                StatusCode = httpStatusCode,
+                Content = new StringContent(errorMessageStringJson)
+            };
 
             generatedError = await ApiError.FromErrorResponse(response);
 
@@ -60,11 +63,22 @@ namespace EasyPost.Tests.ExceptionsTests
 
             // Now test with some error-related JSON inside the response with sub-errors
             errorMessageStringJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": \"ERROR_MESSAGE\", \"errors\": [{\"field\": \"SUB_ERROR_FIELD\", \"message\": \"SUB_ERROR_MESSAGE\"}]}}";
-            List<Error> subErrors = new() { new Error { Field = "SUB_ERROR_FIELD", RawMessage = "SUB_ERROR_MESSAGE" } };
+            List<Error> subErrors = new()
+            {
+                new Error
+                {
+                    Field = "SUB_ERROR_FIELD",
+                    RawMessage = "SUB_ERROR_MESSAGE"
+                }
+            };
 
             // Generate a dummy HttpResponseMessage with the given status code to parse
             httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString(CultureInfo.InvariantCulture));
-            response = new() { StatusCode = httpStatusCode, Content = new StringContent(errorMessageStringJson) };
+            response = new()
+            {
+                StatusCode = httpStatusCode,
+                Content = new StringContent(errorMessageStringJson)
+            };
 
             generatedError = await ApiError.FromErrorResponse(response);
 
@@ -173,7 +187,9 @@ namespace EasyPost.Tests.ExceptionsTests
 
             object testObject = new List<string>();
             MissingPropertyError missingPropertyError = new(testObject, testPropertyName);
-            Assert.Equal(string.Format(Constants.ErrorMessages.MissingProperty, new object[] { testObject.GetType().Name, testPropertyName }), missingPropertyError.Message);
+#pragma warning disable CA2241 // Provide correct arguments to formatting methods
+            Assert.Equal(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.MissingProperty, new object[] { testObject.GetType().Name, testPropertyName }), missingPropertyError.Message);
+#pragma warning restore CA2241 // Provide correct arguments to formatting methods
 
             SignatureVerificationError signatureVerificationError = new();
             Assert.Equal(Constants.ErrorMessages.InvalidWebhookSignature, signatureVerificationError.Message);
