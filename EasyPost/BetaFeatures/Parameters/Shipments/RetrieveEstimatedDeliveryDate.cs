@@ -4,10 +4,10 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.BetaFeatures.Parameters.Shipments
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.ShipmentService.GetEstimatedDeliveryDate(GetEstimatedDeliveryDate)"/> API calls.
+    ///     Parameters for <see cref="EasyPost.Services.ShipmentService.RetrieveEstimatedDeliveryDate(string, RetrieveEstimatedDeliveryDate)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class GetEstimatedDeliveryDate : BaseParameters
+    public sealed class RetrieveEstimatedDeliveryDate : BaseParameters
     {
         #region Request Parameters
 

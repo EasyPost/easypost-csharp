@@ -369,18 +369,18 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 
         [Fact]
         [Testing.Function]
-        public async Task TestGetEstimatedDeliveryDates()
+        public async Task TestRetrieveEstimatedDeliveryDates()
         {
             UseVCR("estimated_delivery_dates");
 
             Shipment shipment = await Client.Shipment.Create(Fixtures.Parameters.Shipments.Create(Fixtures.BasicShipment));
 
-            BetaFeatures.Parameters.Shipments.GetEstimatedDeliveryDate getEstimatedDeliveryDatesParameters = new BetaFeatures.Parameters.Shipments.GetEstimatedDeliveryDate
+            BetaFeatures.Parameters.Shipments.RetrieveEstimatedDeliveryDate retrieveEstimatedDeliveryDatesParameters = new BetaFeatures.Parameters.Shipments.RetrieveEstimatedDeliveryDate
             {
                 PlannedShipDate = Fixtures.PlannedShipDate,
             };
 
-            List<RateWithEstimatedDeliveryDate> ratesWithEstimatedDeliveryDates = await Client.Shipment.GetEstimatedDeliveryDate(shipment.Id, getEstimatedDeliveryDatesParameters);
+            List<RateWithEstimatedDeliveryDate> ratesWithEstimatedDeliveryDates = await Client.Shipment.RetrieveEstimatedDeliveryDate(shipment.Id, retrieveEstimatedDeliveryDatesParameters);
 
             foreach (var rate in ratesWithEstimatedDeliveryDates)
             {
