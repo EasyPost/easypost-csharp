@@ -122,6 +122,34 @@ namespace EasyPost.Services
         }
 
         /// <summary>
+        ///     Retrieve the estimated delivery date of each rate for this shipment via the SmartRates API.
+        /// </summary>
+        /// <param name="id">The ID of the shipment to get rates for.</param>
+        /// <param name="plannedShipDate">The planned shipment date.</param>
+        /// <returns>A list of rates with estimated delivery dates for each.</returns>
+        [CrudOperations.Read]
+        public async Task<List<RateWithEstimatedDeliveryDate>> GetEstimatedDeliveryDate(string id, string plannedShipDate)
+        {
+            Dictionary<string, object> parameters = new()
+            {
+                {"planned_ship_date", plannedShipDate},
+            };
+            return await Request<List<RateWithEstimatedDeliveryDate>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", parameters, "rates");
+        }
+        
+        /// <summary>
+        ///     Retrieve the estimated delivery date of each rate for this shipment via the SmartRates API.
+        /// </summary>
+        /// <param name="id">The ID of the shipment to get rates for.</param>
+        /// <param name="parameters">The <see cref="BetaFeatures.Parameters.Shipments.GetEstimatedDeliveryDate"/> parameters to include on the API call.</param>
+        /// <returns>A list of rates with estimated delivery dates for each.</returns>
+        [CrudOperations.Read]
+        public async Task<List<RateWithEstimatedDeliveryDate>> GetEstimatedDeliveryDate(string id, BetaFeatures.Parameters.Shipments.GetEstimatedDeliveryDate parameters)
+        {
+            return await Request<List<RateWithEstimatedDeliveryDate>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", parameters.ToDictionary(), "rates");
+        }
+
+        /// <summary>
         ///     Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rateId">The id of the rate to purchase the shipment with.</param>
