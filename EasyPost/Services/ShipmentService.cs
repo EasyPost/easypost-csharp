@@ -132,11 +132,11 @@ namespace EasyPost.Services
         {
             Dictionary<string, object> parameters = new()
             {
-                {"planned_ship_date", plannedShipDate},
+                { "planned_ship_date", plannedShipDate },
             };
             return await Request<List<RateWithEstimatedDeliveryDate>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", parameters, "rates");
         }
-        
+
         /// <summary>
         ///     Retrieve the estimated delivery date of each rate for this shipment via the SmartRates API.
         /// </summary>

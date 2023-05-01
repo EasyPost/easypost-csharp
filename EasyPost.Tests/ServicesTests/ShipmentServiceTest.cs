@@ -565,9 +565,9 @@ namespace EasyPost.Tests.ServicesTests
         public async Task TestGetEstimatedDeliveryDates()
         {
             UseVCR("estimated_delivery_dates");
-            
+
             Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
-            
+
             List<RateWithEstimatedDeliveryDate> ratesWithEstimatedDeliveryDates = await Client.Shipment.GetEstimatedDeliveryDate(shipment.Id, Fixtures.PlannedShipDate);
 
             foreach (var rate in ratesWithEstimatedDeliveryDates)

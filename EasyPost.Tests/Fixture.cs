@@ -88,7 +88,7 @@ namespace EasyPost.Tests._Utilities
         internal static int PageSize => GetFixtureStructure().PageSizes.Five;
 
         internal static string PickupService => GetFixtureStructure().ServiceNames.Usps.PickupService;
-        
+
         internal static string PlannedShipDate => "2023-05-02";
 
         internal static Dictionary<string, object> ReferralCustomer => GetFixtureStructure().Users.Referral;

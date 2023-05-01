@@ -32,7 +32,7 @@ namespace EasyPost.Models.API
         public DateTime? PlannedShipDate { get; set; }
 
         #endregion
-        
+
         internal TimeInTransitDetails()
         {
         }
