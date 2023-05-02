@@ -47,7 +47,7 @@ namespace EasyPost.Services
         {
             parameters = parameters.Wrap("shipment");
             parameters.Add("carbon_offset", withCarbonOffset);
-            return await Request<Shipment>(Method.Post, "shipments", parameters);
+            return await RequestAsync<Shipment>(Method.Post, "shipments", parameters);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace EasyPost.Services
         public async Task<Shipment> Create(BetaFeatures.Parameters.Shipments.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<Shipment>(Method.Post, "shipments", parameters.ToDictionary());
+            return await RequestAsync<Shipment>(Method.Post, "shipments", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null)
         {
-            ShipmentCollection collection = await Request<ShipmentCollection>(Method.Get, "shipments", parameters);
+            ShipmentCollection collection = await RequestAsync<ShipmentCollection>(Method.Get, "shipments", parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Shipments.All>(parameters);
             return collection;
         }
@@ -110,7 +110,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Shipment. Starts with "shp_".</param>
         /// <returns>An EasyPost.Shipment instance.</returns>
         [CrudOperations.Read]
-        public async Task<Shipment> Retrieve(string id) => await Request<Shipment>(Method.Get, $"shipments/{id}");
+        public async Task<Shipment> Retrieve(string id) => await RequestAsync<Shipment>(Method.Get, $"shipments/{id}");
 
         /// <summary>
         ///     Get the SmartRates for this shipment.
@@ -119,7 +119,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<List<SmartRate>> GetSmartRates(string id)
         {
-            return await Request<List<SmartRate>>(Method.Get, $"shipments/{id}/smartrate", null, "result");
+            return await RequestAsync<List<SmartRate>>(Method.Get, $"shipments/{id}/smartrate", null, "result");
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace EasyPost.Services
             {
                 { "planned_ship_date", plannedShipDate },
             };
-            return await Request<List<RateWithEstimatedDeliveryDate>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", parameters, "rates");
+            return await RequestAsync<List<RateWithEstimatedDeliveryDate>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", parameters, "rates");
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<List<RateWithEstimatedDeliveryDate>> RetrieveEstimatedDeliveryDate(string id, BetaFeatures.Parameters.Shipments.RetrieveEstimatedDeliveryDate parameters)
         {
-            return await Request<List<RateWithEstimatedDeliveryDate>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", parameters.ToDictionary(), "rates");
+            return await RequestAsync<List<RateWithEstimatedDeliveryDate>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", parameters.ToDictionary(), "rates");
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace EasyPost.Services
                 parameters.Add("end_shipper", endShipperId);
             }
 
-            return await Request<Shipment>(Method.Post, $"shipments/{id}/buy", parameters);
+            return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/buy", parameters);
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Shipment> Buy(string id, BetaFeatures.Parameters.Shipments.Buy parameters)
         {
-            return await Request<Shipment>(Method.Post, $"shipments/{id}/buy", parameters.ToDictionary());
+            return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/buy", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace EasyPost.Services
         {
             Dictionary<string, object> parameters = new() { { "file_format", fileFormat } };
 
-            return await Request<Shipment>(Method.Get, $"shipments/{id}/label", parameters);
+            return await RequestAsync<Shipment>(Method.Get, $"shipments/{id}/label", parameters);
         }
 
         /// <summary>
@@ -232,7 +232,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Shipment> GenerateLabel(string id, BetaFeatures.Parameters.Shipments.GenerateLabel parameters)
         {
-            return await Request<Shipment>(Method.Get, $"shipments/{id}/label", parameters.ToDictionary());
+            return await RequestAsync<Shipment>(Method.Get, $"shipments/{id}/label", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace EasyPost.Services
         {
             Dictionary<string, object> parameters = new() { { "amount", amount } };
 
-            return await Request<Shipment>(Method.Post, $"shipments/{id}/insure", parameters);
+            return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/insure", parameters);
         }
 
         /// <summary>
@@ -256,7 +256,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Shipment> Insure(string id, BetaFeatures.Parameters.Shipments.Insure parameters)
         {
-            return await Request<Shipment>(Method.Post, $"shipments/{id}/insure", parameters.ToDictionary());
+            return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/insure", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Shipment> Refund(string id)
         {
-            return await Request<Shipment>(Method.Post, $"shipments/{id}/refund");
+            return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/refund");
         }
 
         /// <summary>
@@ -282,7 +282,7 @@ namespace EasyPost.Services
 
             parameters.Add("carbon_offset", withCarbonOffset);
 
-            return await Request<Shipment>(Method.Post, $"shipments/{id}/rerate", parameters);
+            return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/rerate", parameters);
         }
 
         /// <summary>
@@ -293,7 +293,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Shipment> RegenerateRates(string id, BetaFeatures.Parameters.Shipments.RegenerateRates parameters)
         {
-            return await Request<Shipment>(Method.Post, $"shipments/{id}/rerate", parameters.ToDictionary());
+            return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/rerate", parameters.ToDictionary());
         }
 
         #endregion

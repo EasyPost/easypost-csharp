@@ -31,7 +31,7 @@ namespace EasyPost.Services
         public async Task<User> CreateChild(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("user");
-            return await Request<User>(Method.Post, "users", parameters);
+            return await RequestAsync<User>(Method.Post, "users", parameters);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace EasyPost.Services
         public async Task<User> CreateChild(BetaFeatures.Parameters.Users.CreateChild parameters)
         {
             // Because the normal CreateChild method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<User>(Method.Post, "users", parameters.ToDictionary());
+            return await RequestAsync<User>(Method.Post, "users", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a user. Starts with "user_".</param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
-        public async Task<User> Retrieve(string? id = null) => id == null ? await Request<User>(Method.Get, "users") : await Request<User>(Method.Get, $"users/{id}");
+        public async Task<User> Retrieve(string? id = null) => id == null ? await RequestAsync<User>(Method.Get, "users") : await RequestAsync<User>(Method.Get, $"users/{id}");
 
         /// <summary>
         ///     Retrieve the current user.
@@ -80,7 +80,7 @@ namespace EasyPost.Services
         public async Task<Brand> UpdateBrand(string? id, Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("brand");
-            return await Request<Brand>(Method.Put, $"users/{id}/brand", parameters);
+            return await RequestAsync<Brand>(Method.Put, $"users/{id}/brand", parameters);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Brand> UpdateBrand(string? id, BetaFeatures.Parameters.Users.UpdateBrand parameters)
         {
-            return await Request<Brand>(Method.Put, $"users/{id}/brand", parameters.ToDictionary());
+            return await RequestAsync<Brand>(Method.Put, $"users/{id}/brand", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<User> Update(string? id, Dictionary<string, object> parameters)
         {
-            return await Request<User>(Method.Put, $"users/{id}", parameters);
+            return await RequestAsync<User>(Method.Put, $"users/{id}", parameters);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<User> Update(string? id, BetaFeatures.Parameters.Users.Update parameters)
         {
-            return await Request<User>(Method.Put, $"users/{id}", parameters.ToDictionary());
+            return await RequestAsync<User>(Method.Put, $"users/{id}", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
         [CrudOperations.Delete]
-        public async Task Delete(string? id) => await Request(Method.Delete, $"users/{id}");
+        public async Task Delete(string? id) => await RequestAsync(Method.Delete, $"users/{id}");
 
         #endregion
     }

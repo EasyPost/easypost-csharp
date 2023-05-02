@@ -36,7 +36,7 @@ namespace EasyPost.Services
                 { "tracking_code", trackingCode },
             };
             parameters = parameters.Wrap("tracker");
-            return await Request<Tracker>(Method.Post, "trackers", parameters);
+            return await RequestAsync<Tracker>(Method.Post, "trackers", parameters);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace EasyPost.Services
         public async Task<Tracker> Create(BetaFeatures.Parameters.Trackers.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<Tracker>(Method.Post, "trackers", parameters.ToDictionary());
+            return await RequestAsync<Tracker>(Method.Post, "trackers", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace EasyPost.Services
         {
             parameters = parameters.Wrap("trackers");
             // This endpoint does not return a response, so we simply send the request and only throw an exception if the API returns an error.
-            await Request(Method.Post, "trackers/create_list", parameters);
+            await RequestAsync(Method.Post, "trackers/create_list", parameters);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EasyPost.Services
         [Obsolete("This method is deprecated. Please use TrackerService.Create() instead. This method will be removed in a future version.", false)]
         public async Task CreateList(BetaFeatures.Parameters.Trackers.CreateList parameters)
         {
-            await Request(Method.Post, "trackers/create_list", parameters.ToDictionary());
+            await RequestAsync(Method.Post, "trackers/create_list", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace EasyPost.Services
         public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
         {
             // TODO: When we adopt parameter objects as the only way to pass parameters, we don't need to do this object -> dictionary -> object conversion to store the filters.
-            TrackerCollection collection = await Request<TrackerCollection>(Method.Get, "trackers", parameters);
+            TrackerCollection collection = await RequestAsync<TrackerCollection>(Method.Get, "trackers", parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Trackers.All>(parameters);
             return collection;
         }
@@ -128,7 +128,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
         /// <returns>EasyPost.Tracker instance.</returns>
         [CrudOperations.Read]
-        public async Task<Tracker> Retrieve(string id) => await Request<Tracker>(Method.Get, $"trackers/{id}");
+        public async Task<Tracker> Retrieve(string id) => await RequestAsync<Tracker>(Method.Get, $"trackers/{id}");
 
         #endregion
     }

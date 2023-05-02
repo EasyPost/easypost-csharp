@@ -35,7 +35,7 @@ namespace EasyPost.Services
 
             Dictionary<string, object> parameters = new() { { "amount", amount } };
 
-            await Request(Method.Post, $"{paymentMethod.Endpoint}/{paymentMethod.Id}/charges", parameters);
+            await RequestAsync(Method.Post, $"{paymentMethod.Endpoint}/{paymentMethod.Id}/charges", parameters);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<PaymentMethodsSummary> RetrievePaymentMethodsSummary()
         {
-            PaymentMethodsSummary paymentMethodsSummary = await Request<PaymentMethodsSummary>(Method.Get, "payment_methods");
+            PaymentMethodsSummary paymentMethodsSummary = await RequestAsync<PaymentMethodsSummary>(Method.Get, "payment_methods");
 
             return paymentMethodsSummary.Id == null
                 ? throw new InvalidObjectError(Constants.ErrorMessages.NoPaymentMethods)
@@ -62,7 +62,7 @@ namespace EasyPost.Services
         {
             PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
 
-            await Request(Method.Delete, $"{paymentMethod.Endpoint}/{paymentMethod.Id}");
+            await RequestAsync(Method.Delete, $"{paymentMethod.Endpoint}/{paymentMethod.Id}");
         }
 
         #endregion

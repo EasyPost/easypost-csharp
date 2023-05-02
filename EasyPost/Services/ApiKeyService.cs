@@ -21,7 +21,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>An EasyPost.ApiKeyCollection instances.</returns>
         [CrudOperations.Read]
-        public async Task<ApiKeyCollection> All() => await Request<ApiKeyCollection>(Method.Get, "api_keys");
+        public async Task<ApiKeyCollection> All() => await RequestAsync<ApiKeyCollection>(Method.Get, "api_keys");
 
         #endregion
     }

@@ -47,7 +47,7 @@ namespace EasyPost.Services
 
             parameters = parameters.Wrap("carrier_account");
 
-            return await Request<CarrierAccount>(Method.Post, endpoint, parameters);
+            return await RequestAsync<CarrierAccount>(Method.Post, endpoint, parameters);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace EasyPost.Services
 
             string endpoint = SelectCarrierAccountCreationEndpoint(parameters.Type);
 
-            return await Request<CarrierAccount>(Method.Post, endpoint, parameters.ToDictionary());
+            return await RequestAsync<CarrierAccount>(Method.Post, endpoint, parameters.ToDictionary());
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<CarrierAccount>> All() => await Request<List<CarrierAccount>>(Method.Get, "carrier_accounts");
+        public async Task<List<CarrierAccount>> All() => await RequestAsync<List<CarrierAccount>>(Method.Get, "carrier_accounts");
 
         /// <summary>
         ///     Retrieve a CarrierAccount from its id.
@@ -82,7 +82,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a carrier account. Starts with "ca_".</param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         [CrudOperations.Read]
-        public async Task<CarrierAccount> Retrieve(string id) => await Request<CarrierAccount>(Method.Get, $"carrier_accounts/{id}");
+        public async Task<CarrierAccount> Retrieve(string id) => await RequestAsync<CarrierAccount>(Method.Get, $"carrier_accounts/{id}");
 
         /// <summary>
         ///     Update this CarrierAccount.
@@ -93,7 +93,7 @@ namespace EasyPost.Services
         public async Task<CarrierAccount> Update(string id, Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("carrier_account");
-            return await Request<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", parameters);
+            return await RequestAsync<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", parameters);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<CarrierAccount> Update(string id, BetaFeatures.Parameters.CarrierAccounts.Update parameters)
         {
-            return await Request<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", parameters.ToDictionary());
+            return await RequestAsync<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
         [CrudOperations.Delete]
-        public async Task Delete(string id) => await Request(Method.Delete, $"carrier_accounts/{id}");
+        public async Task Delete(string id) => await RequestAsync(Method.Delete, $"carrier_accounts/{id}");
 
         #endregion
 

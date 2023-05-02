@@ -35,7 +35,7 @@ namespace EasyPost.Services
         public async Task<Parcel> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("parcel");
-            return await Request<Parcel>(Method.Post, "parcels", parameters);
+            return await RequestAsync<Parcel>(Method.Post, "parcels", parameters);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace EasyPost.Services
         public async Task<Parcel> Create(BetaFeatures.Parameters.Parcels.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<Parcel>(Method.Post, "parcels", parameters.ToDictionary());
+            return await RequestAsync<Parcel>(Method.Post, "parcels", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
         /// <returns>EasyPost.Parcel instance.</returns>
         [CrudOperations.Read]
-        public async Task<Parcel> Retrieve(string id) => await Request<Parcel>(Method.Get, $"parcels/{id}");
+        public async Task<Parcel> Retrieve(string id) => await RequestAsync<Parcel>(Method.Get, $"parcels/{id}");
 
         #endregion
     }

@@ -43,7 +43,7 @@ namespace EasyPost.Services.Beta
         public async Task<List<StatelessRate>> RetrieveStatelessRates(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("shipment");
-            return await Request<List<StatelessRate>>(Method.Post, "rates", parameters, "rates", ApiVersion.Beta);
+            return await RequestAsync<List<StatelessRate>>(Method.Post, "rates", parameters, "rates", ApiVersion.Beta);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace EasyPost.Services.Beta
         [CrudOperations.Create]
         public async Task<List<StatelessRate>> RetrieveStatelessRates(BetaFeatures.Parameters.Beta.Rates.Retrieve parameters)
         {
-            return await Request<List<StatelessRate>>(Method.Post, "rates", parameters.ToDictionary(), "rates", ApiVersion.Beta);
+            return await RequestAsync<List<StatelessRate>>(Method.Post, "rates", parameters.ToDictionary(), "rates", ApiVersion.Beta);
         }
 
         #endregion
