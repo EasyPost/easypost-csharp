@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
@@ -39,10 +40,10 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.Order instance.</returns>
         [CrudOperations.Create]
-        public async Task<Order> Create(Dictionary<string, object> parameters)
+        public async Task<Order> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             parameters = parameters.Wrap("order");
-            return await RequestAsync<Order>(Method.Post, "orders", parameters);
+            return await RequestAsync<Order>(Method.Post, "orders", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -51,10 +52,10 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Orders.Create"/> parameter set.</param>
         /// <returns><see cref="Order"/> instance.</returns>
         [CrudOperations.Create]
-        public async Task<Order> Create(BetaFeatures.Parameters.Orders.Create parameters)
+        public async Task<Order> Create(BetaFeatures.Parameters.Orders.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await RequestAsync<Order>(Method.Post, "orders", parameters.ToDictionary());
+            return await RequestAsync<Order>(Method.Post, "orders", cancellationToken, parameters.ToDictionary());
         }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Order. Starts with "order_" if passing an id.</param>
         /// <returns>EasyPost.Order instance.</returns>
         [CrudOperations.Read]
-        public async Task<Order> Retrieve(string id) => await RequestAsync<Order>(Method.Get, $"orders/{id}");
+        public async Task<Order> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Order>(Method.Get, $"orders/{id}", cancellationToken);
 
         /// <summary>
         ///     Purchase the shipments within this order with a carrier and service.
@@ -72,7 +73,7 @@ namespace EasyPost.Services
         /// <param name="withService">The service to purchase.</param>
         /// <returns>The updated Order.</returns>
         [CrudOperations.Update]
-        public async Task<Order> Buy(string id, string withCarrier, string withService)
+        public async Task<Order> Buy(string id, string withCarrier, string withService, CancellationToken cancellationToken = default)
         {
             Dictionary<string, object> parameters = new()
             {
@@ -80,7 +81,7 @@ namespace EasyPost.Services
                 { "service", withService },
             };
 
-            return await RequestAsync<Order>(Method.Post, $"orders/{id}/buy", parameters);
+            return await RequestAsync<Order>(Method.Post, $"orders/{id}/buy", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace EasyPost.Services
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
         /// <returns>The updated Order.</returns>
         [CrudOperations.Update]
-        public async Task<Order> Buy(string id, Rate rate)
+        public async Task<Order> Buy(string id, Rate rate, CancellationToken cancellationToken = default)
         {
             if (rate.Carrier == null)
             {
@@ -103,7 +104,7 @@ namespace EasyPost.Services
                 throw new MissingPropertyError(rate, nameof(rate.Service));
             }
 
-            return await Buy(id, rate.Carrier, rate.Service);
+            return await Buy(id, rate.Carrier, rate.Service, cancellationToken);
         }
 
         /// <summary>
@@ -112,9 +113,9 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Orders.Buy"/> parameters set.</param>
         /// <returns>This updated <see cref="Order"/> instance.</returns>
         [CrudOperations.Update]
-        public async Task<Order> Buy(string id, BetaFeatures.Parameters.Orders.Buy parameters)
+        public async Task<Order> Buy(string id, BetaFeatures.Parameters.Orders.Buy parameters, CancellationToken cancellationToken = default)
         {
-            return await RequestAsync<Order>(Method.Post, $"orders/{id}/buy", parameters.ToDictionary());
+            return await RequestAsync<Order>(Method.Post, $"orders/{id}/buy", cancellationToken, parameters.ToDictionary());
         }
 
         /// <summary>
@@ -122,10 +123,10 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>The task to refresh this Order's rates.</returns>
         [CrudOperations.Update]
-        public async Task<Order> RefreshRates(string id)
+        public async Task<Order> RefreshRates(string id, CancellationToken cancellationToken = default)
         {
             // TODO: Make consistent with Shipment, Pickup and Order: GetRates, RefreshRates, RegenerateRates?
-            return await RequestAsync<Order>(Method.Get, $"orders/{id}/rates");
+            return await RequestAsync<Order>(Method.Get, $"orders/{id}/rates", cancellationToken);
         }
 
         #endregion

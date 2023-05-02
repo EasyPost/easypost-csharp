@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
@@ -39,10 +40,10 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.EndShipper instance.</returns>
         [CrudOperations.Create]
-        public async Task<EndShipper> Create(Dictionary<string, object> parameters)
+        public async Task<EndShipper> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             parameters = parameters.Wrap("address");
-            return await RequestAsync<EndShipper>(Method.Post, "end_shippers", parameters);
+            return await RequestAsync<EndShipper>(Method.Post, "end_shippers", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -51,10 +52,10 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.Create"/> parameter set.</param>
         /// <returns><see cref="EndShipper"/> instance.</returns>
         [CrudOperations.Create]
-        public async Task<EndShipper> Create(BetaFeatures.Parameters.EndShippers.Create parameters)
+        public async Task<EndShipper> Create(BetaFeatures.Parameters.EndShippers.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await RequestAsync<EndShipper>(Method.Post, "end_shippers", parameters.ToDictionary());
+            return await RequestAsync<EndShipper>(Method.Post, "end_shippers", cancellationToken, parameters.ToDictionary());
         }
 
         /// <summary>
@@ -74,9 +75,9 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.EndShipperCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null)
+        public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
-            EndShipperCollection collection = await RequestAsync<EndShipperCollection>(Method.Get, "end_shippers", parameters);
+            EndShipperCollection collection = await RequestAsync<EndShipperCollection>(Method.Get, "end_shippers", cancellationToken, parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.EndShippers.All>(parameters);
             return collection;
         }
@@ -87,7 +88,12 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.All"/> parameter set.</param>
         /// <returns><see cref="EndShipperCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipperCollection> All(BetaFeatures.Parameters.EndShippers.All parameters) => await All(parameters.ToDictionary());
+        public async Task<EndShipperCollection> All(BetaFeatures.Parameters.EndShippers.All parameters, CancellationToken cancellationToken = default)
+        {
+            EndShipperCollection collection = await RequestAsync<EndShipperCollection>(Method.Get, "end_shippers", cancellationToken, parameters.ToDictionary());
+            collection.Filters = parameters;
+            return collection;
+        }
 
         // TODO: Add GetNextPage function when "before_id" available for EndShipper All endpoint.
 
@@ -97,7 +103,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing an EndShipper. Starts with "es_".</param>
         /// <returns>EasyPost.EndShipper instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipper> Retrieve(string id) => await RequestAsync<EndShipper>(Method.Get, $"end_shippers/{id}");
+        public async Task<EndShipper> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<EndShipper>(Method.Get, $"end_shippers/{id}", cancellationToken);
 
         /// <summary>
         ///     Update this EndShipper. Must pass in all properties (new and existing).
@@ -105,11 +111,11 @@ namespace EasyPost.Services
         /// <param name="parameters">See EndShipper.Create for more details.</param>
         /// <returns>The updated EndShipper.</returns>
         [CrudOperations.Update]
-        public async Task<EndShipper> Update(string id, Dictionary<string, object> parameters)
+        public async Task<EndShipper> Update(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             parameters = parameters.Wrap("address");
 
-            return await RequestAsync<EndShipper>(Method.Put, $"end_shippers/{id}", parameters);
+            return await RequestAsync<EndShipper>(Method.Put, $"end_shippers/{id}", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -118,9 +124,9 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.Update"/> parameter set.</param>
         /// <returns>This updated <see cref="EndShipper"/> instance.</returns>
         [CrudOperations.Update]
-        public async Task<EndShipper> Update(string id, BetaFeatures.Parameters.EndShippers.Update parameters)
+        public async Task<EndShipper> Update(string id, BetaFeatures.Parameters.EndShippers.Update parameters, CancellationToken cancellationToken = default)
         {
-            return await RequestAsync<EndShipper>(Method.Put, $"end_shippers/{id}", parameters.ToDictionary());
+            return await RequestAsync<EndShipper>(Method.Put, $"end_shippers/{id}", cancellationToken, parameters.ToDictionary());
         }
 
         #endregion

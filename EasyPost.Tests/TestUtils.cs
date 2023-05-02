@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
@@ -220,7 +221,7 @@ namespace EasyPost.Tests._Utilities
             private readonly List<MockRequest> _mockRequests = new();
 
 #pragma warning disable CS1998
-            internal override async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request)
+            internal override async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request, CancellationToken cancellationToken)
 #pragma warning restore CS1998
             {
                 MockRequest? mockRequest = FindMatchingMockRequest(request);

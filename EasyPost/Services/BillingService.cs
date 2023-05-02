@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
@@ -27,15 +28,15 @@ namespace EasyPost.Services
         /// <param name="priority">Which type of payment method to use to fund the wallet. Defaults to primary.</param>
         /// <returns>A Task to fund the wallet.</returns>
         [CrudOperations.Create]
-        public async Task FundWallet(string amount, PaymentMethod.Priority? priority = null)
+        public async Task FundWallet(string amount, PaymentMethod.Priority? priority = null, CancellationToken cancellationToken = default)
         {
             priority ??= PaymentMethod.Priority.Primary;
 
-            PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
+            PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority, cancellationToken);
 
             Dictionary<string, object> parameters = new() { { "amount", amount } };
 
-            await RequestAsync(Method.Post, $"{paymentMethod.Endpoint}/{paymentMethod.Id}/charges", parameters);
+            await RequestAsync(Method.Post, $"{paymentMethod.Endpoint}/{paymentMethod.Id}/charges", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -43,9 +44,9 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>An EasyPost.PaymentMethodSummary summary object.</returns>
         [CrudOperations.Read]
-        public async Task<PaymentMethodsSummary> RetrievePaymentMethodsSummary()
+        public async Task<PaymentMethodsSummary> RetrievePaymentMethodsSummary(CancellationToken cancellationToken = default)
         {
-            PaymentMethodsSummary paymentMethodsSummary = await RequestAsync<PaymentMethodsSummary>(Method.Get, "payment_methods");
+            PaymentMethodsSummary paymentMethodsSummary = await RequestAsync<PaymentMethodsSummary>(Method.Get, "payment_methods", cancellationToken);
 
             return paymentMethodsSummary.Id == null
                 ? throw new InvalidObjectError(Constants.ErrorMessages.NoPaymentMethods)
@@ -58,11 +59,11 @@ namespace EasyPost.Services
         /// <param name="priority">Which type of payment method to delete.</param>
         /// <returns>A Task to delete a payment method.</returns>
         [CrudOperations.Delete]
-        public async Task DeletePaymentMethod(PaymentMethod.Priority priority)
+        public async Task DeletePaymentMethod(PaymentMethod.Priority priority, CancellationToken cancellationToken = default)
         {
-            PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority);
+            PaymentMethod paymentMethod = await GetPaymentMethodByPriority(priority, cancellationToken);
 
-            await RequestAsync(Method.Delete, $"{paymentMethod.Endpoint}/{paymentMethod.Id}");
+            await RequestAsync(Method.Delete, $"{paymentMethod.Endpoint}/{paymentMethod.Id}", cancellationToken);
         }
 
         #endregion
@@ -73,9 +74,9 @@ namespace EasyPost.Services
         /// <param name="priority">Which priority payment method to get.</param>
         /// <returns>An EasyPost.PaymentMethodObject instance.</returns>
         /// <exception cref="Exception">Billing has not been set up yet, or the Priority provided is invalid.</exception>
-        private async Task<PaymentMethod> GetPaymentMethodByPriority(PaymentMethod.Priority priority)
+        private async Task<PaymentMethod> GetPaymentMethodByPriority(PaymentMethod.Priority priority, CancellationToken cancellationToken = default)
         {
-            PaymentMethodsSummary paymentMethodsSummarySummary = await RetrievePaymentMethodsSummary();
+            PaymentMethodsSummary paymentMethodsSummarySummary = await RetrievePaymentMethodsSummary(cancellationToken);
 
             PaymentMethod? paymentMethod = null;
             SwitchCase @switch = new()

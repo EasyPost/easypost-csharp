@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
@@ -33,10 +34,10 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
         [CrudOperations.Create]
-        public async Task<CustomsItem> Create(Dictionary<string, object> parameters)
+        public async Task<CustomsItem> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             parameters = parameters.Wrap("customs_item");
-            return await RequestAsync<CustomsItem>(Method.Post, "customs_items", parameters);
+            return await RequestAsync<CustomsItem>(Method.Post, "customs_items", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -45,10 +46,10 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.CustomsItems.Create"/> parameter set.</param>
         /// <returns><see cref="CustomsItem"/> instance.</returns>
         [CrudOperations.Create]
-        public async Task<CustomsItem> Create(BetaFeatures.Parameters.CustomsItems.Create parameters)
+        public async Task<CustomsItem> Create(BetaFeatures.Parameters.CustomsItems.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await RequestAsync<CustomsItem>(Method.Post, "customs_items", parameters.ToDictionary());
+            return await RequestAsync<CustomsItem>(Method.Post, "customs_items", cancellationToken, parameters.ToDictionary());
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a CustomsItem. Starts with "cstitem_".</param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
         [CrudOperations.Read]
-        public async Task<CustomsItem> Retrieve(string id) => await RequestAsync<CustomsItem>(Method.Get, $"customs_items/{id}");
+        public async Task<CustomsItem> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<CustomsItem>(Method.Get, $"customs_items/{id}", cancellationToken);
 
         #endregion
     }

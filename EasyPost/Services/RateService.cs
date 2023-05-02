@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
@@ -24,7 +25,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a rate. Starts with `rate_`.</param>
         /// <returns>EasyPost.Rate instance.</returns>
         [CrudOperations.Read]
-        public async Task<Rate> Retrieve(string id) => await RequestAsync<Rate>(Method.Get, $"rates/{id}");
+        public async Task<Rate> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Rate>(Method.Get, $"rates/{id}", cancellationToken);
 
         #endregion
 

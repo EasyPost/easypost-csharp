@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
@@ -21,7 +22,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>An EasyPost.ApiKeyCollection instances.</returns>
         [CrudOperations.Read]
-        public async Task<ApiKeyCollection> All() => await RequestAsync<ApiKeyCollection>(Method.Get, "api_keys");
+        public async Task<ApiKeyCollection> All(CancellationToken cancellationToken = default) => await RequestAsync<ApiKeyCollection>(Method.Get, "api_keys", cancellationToken);
 
         #endregion
     }

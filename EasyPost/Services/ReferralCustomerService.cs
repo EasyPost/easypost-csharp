@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
@@ -37,10 +38,10 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Create]
-        public async Task<ReferralCustomer> CreateReferral(Dictionary<string, object> parameters)
+        public async Task<ReferralCustomer> CreateReferral(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             parameters = parameters.Wrap("user");
-            return await RequestAsync<ReferralCustomer>(Method.Post, "referral_customers", parameters);
+            return await RequestAsync<ReferralCustomer>(Method.Post, "referral_customers", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -50,10 +51,10 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer"/> parameter set.</param>
         /// <returns><see cref="ReferralCustomer"/> instance.</returns>
         [CrudOperations.Create]
-        public async Task<ReferralCustomer> CreateReferral(BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer parameters)
+        public async Task<ReferralCustomer> CreateReferral(BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal CreateReferral method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await RequestAsync<ReferralCustomer>(Method.Post, "referral_customers", parameters.ToDictionary());
+            return await RequestAsync<ReferralCustomer>(Method.Post, "referral_customers", cancellationToken, parameters.ToDictionary());
         }
 
         /// <summary>
@@ -63,9 +64,9 @@ namespace EasyPost.Services
         /// <param name="parameters">Parameters for API call.</param>
         /// <returns>An EasyPost.ReferralCustomerCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null)
+        public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
-            ReferralCustomerCollection collection = await RequestAsync<ReferralCustomerCollection>(Method.Get, "referral_customers", parameters);
+            ReferralCustomerCollection collection = await RequestAsync<ReferralCustomerCollection>(Method.Get, "referral_customers", cancellationToken, parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.ReferralCustomers.All>(parameters);
             return collection;
         }
@@ -76,7 +77,12 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.All"/> parameter set.</param>
         /// <returns><see cref="ReferralCustomerCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<ReferralCustomerCollection> All(BetaFeatures.Parameters.ReferralCustomers.All parameters) => await All(parameters.ToDictionary());
+        public async Task<ReferralCustomerCollection> All(BetaFeatures.Parameters.ReferralCustomers.All parameters, CancellationToken cancellationToken = default)
+        {
+            ReferralCustomerCollection collection = await RequestAsync<ReferralCustomerCollection>(Method.Get, "referral_customers", cancellationToken, parameters.ToDictionary());
+            collection.Filters = parameters;
+            return collection;
+        }
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ReferralCustomerCollection"/>.
@@ -86,7 +92,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="ReferralCustomerCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<ReferralCustomerCollection> GetNextPage(ReferralCustomerCollection collection, int? pageSize = null) => await collection.GetNextPage<ReferralCustomerCollection, BetaFeatures.Parameters.ReferralCustomers.All>(async parameters => await All(parameters), collection.ReferralCustomers, pageSize);
+        public async Task<ReferralCustomerCollection> GetNextPage(ReferralCustomerCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ReferralCustomerCollection, BetaFeatures.Parameters.ReferralCustomers.All>(async parameters => await All(parameters, cancellationToken), collection.ReferralCustomers, pageSize);
 
         /// <summary>
         ///     Add a credit card to a Referral Customer.
@@ -102,9 +108,9 @@ namespace EasyPost.Services
         /// <returns>An EasyPost.PaymentMethodObject instance.</returns>
         /// <exception cref="ApiError">When the request fails.</exception>
         [CrudOperations.Update]
-        public async Task<PaymentMethod> AddCreditCardToUser(string referralApiKey, string number, int expirationMonth, int expirationYear, string cvc, PaymentMethod.Priority? priority = null)
+        public async Task<PaymentMethod> AddCreditCardToUser(string referralApiKey, string number, int expirationMonth, int expirationYear, string cvc, PaymentMethod.Priority? priority = null, CancellationToken cancellationToken = default)
         {
-            string? easypostStripeApiKey = await RetrieveEasypostStripeApiKey();
+            string? easypostStripeApiKey = await RetrieveEasypostStripeApiKey(cancellationToken);
 
             if (string.IsNullOrEmpty(easypostStripeApiKey))
             {
@@ -112,7 +118,7 @@ namespace EasyPost.Services
             }
 
             // ReSharper disable once RedundantSuppressNullableWarningExpression
-            string stripeToken = await CreateStripeToken(number, expirationMonth, expirationYear, cvc, easypostStripeApiKey!);
+            string stripeToken = await CreateStripeToken(number, expirationMonth, expirationYear, cvc, easypostStripeApiKey!, cancellationToken);
 
 #pragma warning disable IDE0046
             if (string.IsNullOrEmpty(stripeToken))
@@ -121,7 +127,7 @@ namespace EasyPost.Services
                 throw new ExternalApiError("Could not create Stripe token, please try again later.", 0);
             }
 
-            return await CreateEasypostCreditCard(referralApiKey, stripeToken, priority ?? PaymentMethod.Priority.Primary);
+            return await CreateEasypostCreditCard(referralApiKey, stripeToken, priority ?? PaymentMethod.Priority.Primary, cancellationToken);
         }
 
         /// <summary>
@@ -132,11 +138,11 @@ namespace EasyPost.Services
         /// <param name="email">Email of the referral customer to update.</param>
         /// <returns>A Task to update a referral's email.</returns>
         [CrudOperations.Update]
-        public async Task UpdateReferralEmail(string referralId, string email)
+        public async Task UpdateReferralEmail(string referralId, string email, CancellationToken cancellationToken = default)
         {
             Dictionary<string, object> parameters = new() { { "user", new Dictionary<string, object> { { "email", email } } } };
 
-            await RequestAsync(Method.Put, $"referral_customers/{referralId}", parameters);
+            await RequestAsync(Method.Put, $"referral_customers/{referralId}", cancellationToken, parameters);
         }
 
         #endregion
@@ -148,13 +154,12 @@ namespace EasyPost.Services
         /// <param name="stripeObjectId">Stripe token.</param>
         /// <param name="priority">Credit card priority.</param>
         /// <returns>An EasyPost.PaymentMethod instance.</returns>
-        private async Task<PaymentMethod> CreateEasypostCreditCard(string referralApiKey, string stripeObjectId, PaymentMethod.Priority priority)
+        private async Task<PaymentMethod> CreateEasypostCreditCard(string referralApiKey, string stripeObjectId, PaymentMethod.Priority priority, CancellationToken cancellationToken = default)
         {
             Dictionary<string, object> parameters = new()
             {
                 {
-                    "credit_card",
-                    new Dictionary<string, object>
+                    "credit_card", new Dictionary<string, object>
                     {
                         { "stripe_object_id", stripeObjectId },
                         { "priority", priority.ToString().ToLowerInvariant() },
@@ -172,7 +177,7 @@ namespace EasyPost.Services
             try
             {
                 // Make request
-                paymentMethod = await Client.RequestAsync<PaymentMethod>(Method.Post, "credit_cards", ApiVersion.Current, parameters);
+                paymentMethod = await Client.RequestAsync<PaymentMethod>(Method.Post, "credit_cards", ApiVersion.Current, cancellationToken, parameters);
             }
             finally
             {
@@ -193,7 +198,7 @@ namespace EasyPost.Services
         /// <param name="easypostStripeApiKey">EasyPost Stripe API key.</param>
         /// <returns>Stripe token.</returns>
         /// <exception cref="Exception">When the request fails.</exception>
-        private async Task<string> CreateStripeToken(string number, int expirationMonth, int expirationYear, string cvc, string easypostStripeApiKey)
+        private async Task<string> CreateStripeToken(string number, int expirationMonth, int expirationYear, string cvc, string easypostStripeApiKey, CancellationToken cancellationToken = default)
         {
             const string url = "https://api.stripe.com/v1/tokens";
 
@@ -224,14 +229,18 @@ namespace EasyPost.Services
 #pragma warning restore SA0001 // Nullability
 #pragma warning restore CS8620 // Nullability
 
-            HttpResponseMessage response = await Client!.ExecuteRequest(request);
+            HttpResponseMessage response = await Client.ExecuteRequest(request, cancellationToken);
 
             if (response.ReturnedError())
             {
                 throw new ExternalApiError("Could not send card details to Stripe, please try again later.", (int)response.StatusCode);
             }
 
+#if NETSTANDARD2_0 || NETCOREAPP3_1
             string content = await response.Content.ReadAsStringAsync();
+#else
+            string content = await response.Content.ReadAsStringAsync(cancellationToken);
+#endif
             Dictionary<string, object> data = JsonSerialization.ConvertJsonToObject<Dictionary<string, object>>(content);
 
             // Dispose of the request and response
@@ -248,9 +257,9 @@ namespace EasyPost.Services
         ///     Retrieve EasyPost Stripe API key.
         /// </summary>
         /// <returns>EasyPost Stripe API key.</returns>
-        private async Task<string?> RetrieveEasypostStripeApiKey()
+        private async Task<string?> RetrieveEasypostStripeApiKey(CancellationToken cancellationToken = default)
         {
-            Dictionary<string, object> response = await RequestAsync<Dictionary<string, object>>(Method.Get, "partners/stripe_public_key");
+            Dictionary<string, object> response = await RequestAsync<Dictionary<string, object>>(Method.Get, "partners/stripe_public_key", cancellationToken);
 
             response.TryGetValue("public_key", out object? easypostStripePublicKey);
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
@@ -25,10 +26,10 @@ namespace EasyPost.Services
         /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
         [CrudOperations.Create]
-        public async Task<ScanForm> Create(List<Shipment> shipments)
+        public async Task<ScanForm> Create(List<Shipment> shipments, CancellationToken cancellationToken = default)
         {
             Dictionary<string, object> parameters = new() { { "shipments", shipments } };
-            return await RequestAsync<ScanForm>(Method.Post, "scan_forms", parameters);
+            return await RequestAsync<ScanForm>(Method.Post, "scan_forms", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -37,10 +38,10 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.Create"/> parameter set.</param>
         /// <returns><see cref="ScanForm"/> instance.</returns>
         [CrudOperations.Create]
-        public async Task<ScanForm> Create(BetaFeatures.Parameters.ScanForms.Create parameters)
+        public async Task<ScanForm> Create(BetaFeatures.Parameters.ScanForms.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await RequestAsync<ScanForm>(Method.Post, "scan_forms", parameters.ToDictionary());
+            return await RequestAsync<ScanForm>(Method.Post, "scan_forms", cancellationToken, parameters.ToDictionary());
         }
 
         /// <summary>
@@ -59,9 +60,9 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null)
+        public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
-            ScanFormCollection collection = await RequestAsync<ScanFormCollection>(Method.Get, "scan_forms", parameters);
+            ScanFormCollection collection = await RequestAsync<ScanFormCollection>(Method.Get, "scan_forms", cancellationToken, parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.ScanForms.All>(parameters);
             return collection;
         }
@@ -72,7 +73,12 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.All"/> parameter set.</param>
         /// <returns><see cref="ScanFormCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<ScanFormCollection> All(BetaFeatures.Parameters.ScanForms.All parameters) => await All(parameters.ToDictionary());
+        public async Task<ScanFormCollection> All(BetaFeatures.Parameters.ScanForms.All parameters, CancellationToken cancellationToken = default)
+        {
+            ScanFormCollection collection = await RequestAsync<ScanFormCollection>(Method.Get, "scan_forms", cancellationToken, parameters.ToDictionary());
+            collection.Filters = parameters;
+            return collection;
+        }
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ScanFormCollection"/>.
@@ -82,7 +88,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="ScanFormCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<ScanFormCollection> GetNextPage(ScanFormCollection collection, int? pageSize = null) => await collection.GetNextPage<ScanFormCollection, BetaFeatures.Parameters.ScanForms.All>(async parameters => await All(parameters), collection.ScanForms, pageSize);
+        public async Task<ScanFormCollection> GetNextPage(ScanFormCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ScanFormCollection, BetaFeatures.Parameters.ScanForms.All>(async parameters => await All(parameters, cancellationToken), collection.ScanForms, pageSize);
 
         /// <summary>
         ///     Retrieve a ScanForm from its id.
@@ -90,7 +96,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a scan form, starts with "sf_".</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
         [CrudOperations.Read]
-        public async Task<ScanForm> Retrieve(string id) => await RequestAsync<ScanForm>(Method.Get, $"scan_forms/{id}");
+        public async Task<ScanForm> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<ScanForm>(Method.Get, $"scan_forms/{id}", cancellationToken);
 
         #endregion
     }
