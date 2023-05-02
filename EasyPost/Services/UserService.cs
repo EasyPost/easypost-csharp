@@ -48,12 +48,20 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Retrieve a User from its ID.
+        ///     Retrieve a User from its ID. If no ID is specified, the current User will be returned.
         /// </summary>
         /// <param name="id">String representing a user. Starts with "user_".</param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
-        public async Task<User> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<User>(Method.Get, $"users/{id}", cancellationToken);
+        public async Task<User> Retrieve(string? id = null, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return await RetrieveMe(cancellationToken);
+            }
+            
+            return await RequestAsync<User>(Method.Get, $"users/{id}", cancellationToken);
+        }
 
         /// <summary>
         ///     Retrieve the current user.
