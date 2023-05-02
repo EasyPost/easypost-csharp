@@ -59,7 +59,7 @@ namespace EasyPost.Services
             {
                 return await RetrieveMe(cancellationToken);
             }
-            
+
             return await RequestAsync<User>(Method.Get, $"users/{id}", cancellationToken);
         }
 
