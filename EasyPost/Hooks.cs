@@ -1,11 +1,14 @@
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using EasyPost._base;
 
 namespace EasyPost;
 
+/// <summary>
+///     Class representing a set of callbacks to use for introspecting API requests made by an <see cref="EasyPostClient"/>.
+/// </summary>
 public class Hooks
 {
     /// <summary>
@@ -20,6 +23,10 @@ public class Hooks
     public EventHandler<OnRequestResponseReceivedEventArgs>? OnRequestResponseReceived { get; set; }
 }
 
+/// <summary>
+///     Represents a set of <see cref="EventArgs"/> containing information about an in-flight HTTP request.
+///     This set is passed into the <see cref="Hooks.OnRequestExecuting"/> event handler.
+/// </summary>
 public class OnRequestExecutingEventArgs : EventArgs
 {
     /// <summary>
@@ -71,6 +78,10 @@ public class OnRequestExecutingEventArgs : EventArgs
     }
 }
 
+/// <summary>
+///     Represents a set of <see cref="EventArgs"/> containing information about an HTTP response received by the client.
+///     This set is passed into the <see cref="Hooks.OnRequestResponseReceived"/> event handler.
+/// </summary>
 public class OnRequestResponseReceivedEventArgs : EventArgs
 {
     /// <summary>
