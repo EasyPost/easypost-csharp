@@ -35,7 +35,7 @@ namespace EasyPost.Services
         public async Task<Batch> Create(Dictionary<string, object>? parameters = null)
         {
             parameters = parameters?.Wrap("batch");
-            return await Request<Batch>(Method.Post, "batches", parameters);
+            return await RequestAsync<Batch>(Method.Post, "batches", parameters);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace EasyPost.Services
         public async Task<Batch> Create(BetaFeatures.Parameters.Batches.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<Batch>(Method.Post, "batches", parameters.ToDictionary());
+            return await RequestAsync<Batch>(Method.Post, "batches", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace EasyPost.Services
         public async Task<Batch> CreateAndBuy(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("batch");
-            return await Request<Batch>(Method.Post, "batches/create_and_buy", parameters);
+            return await RequestAsync<Batch>(Method.Post, "batches/create_and_buy", parameters);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace EasyPost.Services
         public async Task<Batch> CreateAndBuy(BetaFeatures.Parameters.Batches.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<Batch>(Method.Post, "batches/create_and_buy", parameters.ToDictionary());
+            return await RequestAsync<Batch>(Method.Post, "batches/create_and_buy", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null)
         {
-            BatchCollection collection = await Request<BatchCollection>(Method.Get, "batches", parameters);
+            BatchCollection collection = await RequestAsync<BatchCollection>(Method.Get, "batches", parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Batches.All>(parameters);
             return collection;
         }
@@ -120,7 +120,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(string id, Dictionary<string, object> parameters)
         {
-            return await Request<Batch>(Method.Post, $"batches/{id}/add_shipments", parameters);
+            return await RequestAsync<Batch>(Method.Post, $"batches/{id}/add_shipments", parameters);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Batch. Starts with "batch_".</param>
         /// <returns>EasyPost.Batch instance.</returns>
         [CrudOperations.Read]
-        public async Task<Batch> Retrieve(string id) => await Request<Batch>(Method.Get, $"batches/{id}");
+        public async Task<Batch> Retrieve(string id) => await RequestAsync<Batch>(Method.Get, $"batches/{id}");
 
         /// <summary>
         ///     Add <see cref="Shipment"/>s to this <see cref="Batch"/>.
@@ -139,7 +139,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(string id, BetaFeatures.Parameters.Batches.AddShipments parameters)
         {
-            return await Request<Batch>(Method.Post, $"batches/{id}/add_shipments", parameters.ToDictionary());
+            return await RequestAsync<Batch>(Method.Post, $"batches/{id}/add_shipments", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Batch> Buy(string id)
         {
-            return await Request<Batch>(Method.Post, $"batches/{id}/buy");
+            return await RequestAsync<Batch>(Method.Post, $"batches/{id}/buy");
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace EasyPost.Services
         public async Task<Batch> GenerateLabel(string id, string fileFormat = "pdf") // TODO: Remove default value (breaking change)
         {
             Dictionary<string, object> parameters = new() { { "file_format", fileFormat } };
-            return await Request<Batch>(Method.Post, $"batches/{id}/label", parameters);
+            return await RequestAsync<Batch>(Method.Post, $"batches/{id}/label", parameters);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Batch> GenerateLabel(string id, BetaFeatures.Parameters.Batches.GenerateLabel parameters)
         {
-            return await Request<Batch>(Method.Post, $"batches/{id}/label", parameters.ToDictionary());
+            return await RequestAsync<Batch>(Method.Post, $"batches/{id}/label", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace EasyPost.Services
         public async Task<Batch> GenerateScanForm(string id, string fileFormat = "pdf") // TODO: Remove default value (breaking change)
         {
             Dictionary<string, object> parameters = new() { { "file_format", fileFormat } };
-            return await Request<Batch>(Method.Post, $"batches/{id}/scan_form", parameters);
+            return await RequestAsync<Batch>(Method.Post, $"batches/{id}/scan_form", parameters);
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Batch> GenerateScanForm(string id, BetaFeatures.Parameters.Batches.GenerateScanForm parameters)
         {
-            return await Request<Batch>(Method.Post, $"batches/{id}/scan_form", parameters.ToDictionary());
+            return await RequestAsync<Batch>(Method.Post, $"batches/{id}/scan_form", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -230,7 +230,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(string id, Dictionary<string, object> parameters)
         {
-            return await Request<Batch>(Method.Post, $"batches/{id}/remove_shipments", parameters);
+            return await RequestAsync<Batch>(Method.Post, $"batches/{id}/remove_shipments", parameters);
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(string id, BetaFeatures.Parameters.Batches.RemoveShipments parameters)
         {
-            return await Request<Batch>(Method.Post, $"batches/{id}/remove_shipments", parameters.ToDictionary());
+            return await RequestAsync<Batch>(Method.Post, $"batches/{id}/remove_shipments", parameters.ToDictionary());
         }
 
         /// <summary>

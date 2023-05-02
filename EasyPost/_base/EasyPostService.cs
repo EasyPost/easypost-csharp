@@ -27,9 +27,9 @@ namespace EasyPost._base
         /// <param name="overrideApiVersion">Override API version hit for HTTP request. Defaults to general availability.</param>
         /// <typeparam name="T">Type of object to return from request.</typeparam>
         /// <returns>A T-type object.</returns>
-        protected async Task<T> Request<T>(Http.Method method, string endpoint, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null)
+        protected async Task<T> RequestAsync<T>(Http.Method method, string endpoint, Dictionary<string, object>? parameters = null, string? rootElement = null, ApiVersion? overrideApiVersion = null)
             where T : class
-            => await Client.Request<T>(method, endpoint, overrideApiVersion ?? ApiVersion.Current, parameters, rootElement);
+            => await Client.RequestAsync<T>(method, endpoint, overrideApiVersion ?? ApiVersion.Current, parameters, rootElement).ConfigureAwait(false);
 
         /// <summary>
         ///     Make an HTTP request to the EasyPost API.
@@ -40,7 +40,7 @@ namespace EasyPost._base
         /// <param name="overrideApiVersion">Override API version hit for HTTP request. Defaults to general availability.</param>
         /// <returns>None.</returns>
         // ReSharper disable once MemberCanBePrivate.Global
-        protected async Task Request(Http.Method method, string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Client.Request(method, url, overrideApiVersion ?? ApiVersion.Current, parameters);
+        protected async Task RequestAsync(Http.Method method, string url, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Client.RequestAsync(method, url, overrideApiVersion ?? ApiVersion.Current, parameters).ConfigureAwait(false);
 
         private bool _isDisposed;
 

@@ -41,7 +41,7 @@ namespace EasyPost.Services
         public async Task<Insurance> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("insurance");
-            return await Request<Insurance>(Method.Post, "insurances", parameters);
+            return await RequestAsync<Insurance>(Method.Post, "insurances", parameters);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace EasyPost.Services
         public async Task<Insurance> Create(BetaFeatures.Parameters.Insurance.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<Insurance>(Method.Post, "insurances", parameters.ToDictionary());
+            return await RequestAsync<Insurance>(Method.Post, "insurances", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null)
         {
-            InsuranceCollection collection = await Request<InsuranceCollection>(Method.Get, "insurances", parameters);
+            InsuranceCollection collection = await RequestAsync<InsuranceCollection>(Method.Get, "insurances", parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Insurance.All>(parameters);
             return collection;
         }
@@ -99,7 +99,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing an Insurance. Starts with "ins_".</param>
         /// <returns>EasyPost.Insurance instance.</returns>
         [CrudOperations.Read]
-        public async Task<Insurance> Retrieve(string id) => await Request<Insurance>(Method.Get, $"insurances/{id}");
+        public async Task<Insurance> Retrieve(string id) => await RequestAsync<Insurance>(Method.Get, $"insurances/{id}");
 
         #endregion
     }

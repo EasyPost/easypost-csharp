@@ -42,7 +42,7 @@ namespace EasyPost.Services
         public async Task<EndShipper> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("address");
-            return await Request<EndShipper>(Method.Post, "end_shippers", parameters);
+            return await RequestAsync<EndShipper>(Method.Post, "end_shippers", parameters);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace EasyPost.Services
         public async Task<EndShipper> Create(BetaFeatures.Parameters.EndShippers.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<EndShipper>(Method.Post, "end_shippers", parameters.ToDictionary());
+            return await RequestAsync<EndShipper>(Method.Post, "end_shippers", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null)
         {
-            EndShipperCollection collection = await Request<EndShipperCollection>(Method.Get, "end_shippers", parameters);
+            EndShipperCollection collection = await RequestAsync<EndShipperCollection>(Method.Get, "end_shippers", parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.EndShippers.All>(parameters);
             return collection;
         }
@@ -97,7 +97,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing an EndShipper. Starts with "es_".</param>
         /// <returns>EasyPost.EndShipper instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipper> Retrieve(string id) => await Request<EndShipper>(Method.Get, $"end_shippers/{id}");
+        public async Task<EndShipper> Retrieve(string id) => await RequestAsync<EndShipper>(Method.Get, $"end_shippers/{id}");
 
         /// <summary>
         ///     Update this EndShipper. Must pass in all properties (new and existing).
@@ -109,7 +109,7 @@ namespace EasyPost.Services
         {
             parameters = parameters.Wrap("address");
 
-            return await Request<EndShipper>(Method.Put, $"end_shippers/{id}", parameters);
+            return await RequestAsync<EndShipper>(Method.Put, $"end_shippers/{id}", parameters);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<EndShipper> Update(string id, BetaFeatures.Parameters.EndShippers.Update parameters)
         {
-            return await Request<EndShipper>(Method.Put, $"end_shippers/{id}", parameters.ToDictionary());
+            return await RequestAsync<EndShipper>(Method.Put, $"end_shippers/{id}", parameters.ToDictionary());
         }
 
         #endregion

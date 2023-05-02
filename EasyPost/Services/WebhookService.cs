@@ -35,7 +35,7 @@ namespace EasyPost.Services
         public async Task<Webhook> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("webhook");
-            return await Request<Webhook>(Method.Post, "webhooks", parameters);
+            return await RequestAsync<Webhook>(Method.Post, "webhooks", parameters);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace EasyPost.Services
         public async Task<Webhook> Create(BetaFeatures.Parameters.Webhooks.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<Webhook>(Method.Post, "webhooks", parameters.ToDictionary());
+            return await RequestAsync<Webhook>(Method.Post, "webhooks", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace EasyPost.Services
         /// <param name="parameters">A optional dictionary of parameters to include in the API request.</param>
         /// <returns>List of EasyPost.Webhook instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null) => await Request<List<Webhook>>(Method.Get, "webhooks", parameters, "webhooks");
+        public async Task<List<Webhook>> All(Dictionary<string, object>? parameters = null) => await RequestAsync<List<Webhook>>(Method.Get, "webhooks", parameters, "webhooks");
 
         /// <summary>
         ///     List all <see cref="Webhook"/> objects.
@@ -64,7 +64,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Webhooks.All"/> parameter set.</param>
         /// <returns>List of <see cref="Webhook"/> instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<Webhook>> All(BetaFeatures.Parameters.Webhooks.All parameters) => await Request<List<Webhook>>(Method.Get, "webhooks", parameters.ToDictionary(), "webhooks");
+        public async Task<List<Webhook>> All(BetaFeatures.Parameters.Webhooks.All parameters) => await RequestAsync<List<Webhook>>(Method.Get, "webhooks", parameters.ToDictionary(), "webhooks");
 
         /// <summary>
         ///     Retrieve a Webhook from its id.
@@ -72,7 +72,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a webhook. Starts with "hook_".</param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
-        public async Task<Webhook> Retrieve(string id) => await Request<Webhook>(Method.Get, $"webhooks/{id}");
+        public async Task<Webhook> Retrieve(string id) => await RequestAsync<Webhook>(Method.Get, $"webhooks/{id}");
 
         /// <summary>
         ///     Update a Webhook. A disabled webhook will be enabled.
@@ -87,7 +87,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Webhook> Update(string id, Dictionary<string, object>? parameters = null)
         {
-            return await Request<Webhook>(Method.Put, $"webhooks/{id}", parameters);
+            return await RequestAsync<Webhook>(Method.Put, $"webhooks/{id}", parameters);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Webhook> Update(string id, BetaFeatures.Parameters.Webhooks.Update parameters)
         {
-            return await Request<Webhook>(Method.Put, $"webhooks/{id}", parameters.ToDictionary());
+            return await RequestAsync<Webhook>(Method.Put, $"webhooks/{id}", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
         [CrudOperations.Delete]
-        public async Task Delete(string id) => await Request(Method.Delete, $"webhooks/{id}");
+        public async Task Delete(string id) => await RequestAsync(Method.Delete, $"webhooks/{id}");
 
         /// <summary>
         ///     Validate a received webhook's HMAC signature.

@@ -40,7 +40,7 @@ namespace EasyPost.Services
         public async Task<ReferralCustomer> CreateReferral(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("user");
-            return await Request<ReferralCustomer>(Method.Post, "referral_customers", parameters);
+            return await RequestAsync<ReferralCustomer>(Method.Post, "referral_customers", parameters);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace EasyPost.Services
         public async Task<ReferralCustomer> CreateReferral(BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer parameters)
         {
             // Because the normal CreateReferral method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<ReferralCustomer>(Method.Post, "referral_customers", parameters.ToDictionary());
+            return await RequestAsync<ReferralCustomer>(Method.Post, "referral_customers", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null)
         {
-            ReferralCustomerCollection collection = await Request<ReferralCustomerCollection>(Method.Get, "referral_customers", parameters);
+            ReferralCustomerCollection collection = await RequestAsync<ReferralCustomerCollection>(Method.Get, "referral_customers", parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.ReferralCustomers.All>(parameters);
             return collection;
         }
@@ -136,7 +136,7 @@ namespace EasyPost.Services
         {
             Dictionary<string, object> parameters = new() { { "user", new Dictionary<string, object> { { "email", email } } } };
 
-            await Request(Method.Put, $"referral_customers/{referralId}", parameters);
+            await RequestAsync(Method.Put, $"referral_customers/{referralId}", parameters);
         }
 
         #endregion
@@ -172,7 +172,7 @@ namespace EasyPost.Services
             try
             {
                 // Make request
-                paymentMethod = await Client.Request<PaymentMethod>(Method.Post, "credit_cards", ApiVersion.Current, parameters);
+                paymentMethod = await Client.RequestAsync<PaymentMethod>(Method.Post, "credit_cards", ApiVersion.Current, parameters);
             }
             finally
             {
@@ -250,7 +250,7 @@ namespace EasyPost.Services
         /// <returns>EasyPost Stripe API key.</returns>
         private async Task<string?> RetrieveEasypostStripeApiKey()
         {
-            Dictionary<string, object> response = await Request<Dictionary<string, object>>(Method.Get, "partners/stripe_public_key");
+            Dictionary<string, object> response = await RequestAsync<Dictionary<string, object>>(Method.Get, "partners/stripe_public_key");
 
             response.TryGetValue("public_key", out object? easypostStripePublicKey);
 

@@ -32,7 +32,7 @@ namespace EasyPost.Services
         public async Task<List<Refund>> Create(Dictionary<string, object> parameters)
         {
             parameters = parameters.Wrap("refund");
-            return await Request<List<Refund>>(Method.Post, "refunds", parameters);
+            return await RequestAsync<List<Refund>>(Method.Post, "refunds", parameters);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace EasyPost.Services
         public async Task<List<Refund>> Create(BetaFeatures.Parameters.Refunds.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<List<Refund>>(Method.Post, "refunds", parameters.ToDictionary());
+            return await RequestAsync<List<Refund>>(Method.Post, "refunds", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null)
         {
-            RefundCollection collection = await Request<RefundCollection>(Method.Get, "refunds", parameters);
+            RefundCollection collection = await RequestAsync<RefundCollection>(Method.Get, "refunds", parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Refunds.All>(parameters);
             return collection;
         }
@@ -87,7 +87,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Refund. Starts with "rfnd_".</param>
         /// <returns>EasyPost.Refund instance.</returns>
         [CrudOperations.Read]
-        public async Task<Refund> Retrieve(string id) => await Request<Refund>(Method.Get, $"refunds/{id}");
+        public async Task<Refund> Retrieve(string id) => await RequestAsync<Refund>(Method.Get, $"refunds/{id}");
 
         #endregion
     }

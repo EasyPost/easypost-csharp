@@ -38,7 +38,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<EventCollection> All(Dictionary<string, object>? parameters = null)
         {
-            EventCollection collection = await Request<EventCollection>(Method.Get, "events", parameters);
+            EventCollection collection = await RequestAsync<EventCollection>(Method.Get, "events", parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Events.All>(parameters);
             return collection;
         }
@@ -67,14 +67,14 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Event. Starts with "evt_".</param>
         /// <returns>EasyPost.Event instance.</returns>
         [CrudOperations.Read]
-        public async Task<Event> Retrieve(string id) => await Request<Event>(Method.Get, $"events/{id}");
+        public async Task<Event> Retrieve(string id) => await RequestAsync<Event>(Method.Get, $"events/{id}");
 
         /// <summary>
         ///     Retrieve all <see cref="Payload"/>s for an <see cref="Event"/>.
         /// </summary>
         /// <param name="eventId">ID of the <see cref="Event"/> to retrieve payloads for.</param>
         /// <returns>A list of <see cref="Payload"/> objects.</returns>
-        public async Task<List<Payload>> RetrieveAllPayloads(string eventId) => await Request<List<Payload>>(Method.Get, $"events/{eventId}/payloads", rootElement: "payloads");
+        public async Task<List<Payload>> RetrieveAllPayloads(string eventId) => await RequestAsync<List<Payload>>(Method.Get, $"events/{eventId}/payloads", rootElement: "payloads");
 
         /// <summary>
         ///     Retrieve a specific <see cref="Payload"/> for an <see cref="Event"/>.
@@ -84,7 +84,7 @@ namespace EasyPost.Services
         /// <returns>A <see cref="Payload"/> object.</returns>
         /// <exception cref="InvalidRequestError">Thrown if the specified payload ID is malformed.</exception>
         /// <exception cref="NotFoundError">Thrown if the specified payload is not found.</exception>
-        public async Task<Payload> RetrievePayload(string eventId, string payloadId) => await Request<Payload>(Method.Get, $"events/{eventId}/payloads/{payloadId}");
+        public async Task<Payload> RetrievePayload(string eventId, string payloadId) => await RequestAsync<Payload>(Method.Get, $"events/{eventId}/payloads/{payloadId}");
 
         #endregion
     }

@@ -22,7 +22,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>A list of EasyPost.CarrierType instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<CarrierType>> All() => await Request<List<CarrierType>>(Method.Get, "carrier_types");
+        public async Task<List<CarrierType>> All() => await RequestAsync<List<CarrierType>>(Method.Get, "carrier_types");
 
         #endregion
     }

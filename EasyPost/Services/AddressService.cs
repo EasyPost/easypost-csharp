@@ -64,7 +64,7 @@ namespace EasyPost.Services
                 parameters.Add("verify_strict", true);
             }
 
-            return await Request<Address>(Method.Post, "addresses", parameters);
+            return await RequestAsync<Address>(Method.Post, "addresses", parameters);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace EasyPost.Services
         public async Task<Address> Create(BetaFeatures.Parameters.Addresses.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<Address>(Method.Post, "addresses", parameters.ToDictionary());
+            return await RequestAsync<Address>(Method.Post, "addresses", parameters.ToDictionary());
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An Address object.</returns>
         [CrudOperations.Create]
-        public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters) => await Request<Address>(Method.Post, "addresses/create_and_verify", parameters, "address");
+        public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters) => await RequestAsync<Address>(Method.Post, "addresses/create_and_verify", parameters, "address");
 
         /// <summary>
         ///     Create and verify an <see cref="Address"/>.
@@ -109,7 +109,7 @@ namespace EasyPost.Services
         public async Task<Address> CreateAndVerify(BetaFeatures.Parameters.Addresses.Create parameters)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await Request<Address>(Method.Post, "addresses/create_and_verify", parameters.ToDictionary(), "address");
+            return await RequestAsync<Address>(Method.Post, "addresses/create_and_verify", parameters.ToDictionary(), "address");
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null)
         {
-            AddressCollection collection = await Request<AddressCollection>(Method.Get, "addresses", parameters);
+            AddressCollection collection = await RequestAsync<AddressCollection>(Method.Get, "addresses", parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Addresses.All>(parameters);
             return collection;
         }
@@ -159,7 +159,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing an Address. Starts with "adr_".</param>
         /// <returns>EasyPost.Address instance.</returns>
         [CrudOperations.Read]
-        public async Task<Address> Retrieve(string id) => await Request<Address>(Method.Get, $"addresses/{id}");
+        public async Task<Address> Retrieve(string id) => await RequestAsync<Address>(Method.Get, $"addresses/{id}");
 
         /// <summary>
         ///     Verify an Address.
@@ -169,7 +169,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Address> Verify(string id)
         {
-            return await Request<Address>(Method.Get, $"addresses/{id}/verify", null, "address");
+            return await RequestAsync<Address>(Method.Get, $"addresses/{id}/verify", null, "address");
         }
 
         #endregion
