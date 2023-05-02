@@ -12,6 +12,12 @@ namespace EasyPost.BetaFeatures.Parameters.Reports
     {
         #region Request Parameters
 
+        /// <summary>
+        ///     What type of report to create. Required.
+        /// </summary>
+        // This parameter is not included in the request body, but is used to determine the endpoint to call.
+        public string? Type { get; set; }
+
         [TopLevelRequestParameter(Necessity.Optional, "report", "additional_columns")]
         public List<string>? AdditionalColumns { get; set; }
 

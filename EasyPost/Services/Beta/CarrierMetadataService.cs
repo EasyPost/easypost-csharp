@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
@@ -23,11 +24,11 @@ namespace EasyPost.Services.Beta
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Beta.CarrierMetadata.Retrieve"/> parameter set.</param>
         /// <returns>A list of <see cref="Carrier"/> objects.</returns>
         [CrudOperations.Read]
-        public async Task<List<Carrier>> RetrieveCarrierMetadata(BetaFeatures.Parameters.Beta.CarrierMetadata.Retrieve? parameters = null)
+        public async Task<List<Carrier>> RetrieveCarrierMetadata(BetaFeatures.Parameters.Beta.CarrierMetadata.Retrieve? parameters = null, CancellationToken cancellationToken = default)
         {
             Dictionary<string, object> data = parameters?.ToDictionary() ?? new Dictionary<string, object>();
 
-            return await RequestAsync<List<Carrier>>(Method.Get, "metadata", data, "carriers", ApiVersion.Beta);
+            return await RequestAsync<List<Carrier>>(Method.Get, "metadata", cancellationToken, data, "carriers", ApiVersion.Beta);
         }
 
         #endregion

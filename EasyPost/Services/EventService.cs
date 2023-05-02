@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
@@ -36,9 +37,9 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>An EasyPost.EventCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<EventCollection> All(Dictionary<string, object>? parameters = null)
+        public async Task<EventCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
-            EventCollection collection = await RequestAsync<EventCollection>(Method.Get, "events", parameters);
+            EventCollection collection = await RequestAsync<EventCollection>(Method.Get, "events", cancellationToken, parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Events.All>(parameters);
             return collection;
         }
@@ -49,7 +50,12 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Events.All"/> parameter set.</param>
         /// <returns><see cref="EventCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<EventCollection> All(BetaFeatures.Parameters.Events.All parameters) => await All(parameters.ToDictionary());
+        public async Task<EventCollection> All(BetaFeatures.Parameters.Events.All parameters, CancellationToken cancellationToken = default)
+        {
+            EventCollection collection = await RequestAsync<EventCollection>(Method.Get, "events", cancellationToken, parameters.ToDictionary());
+            collection.Filters = parameters;
+            return collection;
+        }
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="EventCollection"/>.
@@ -59,7 +65,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="EventCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<EventCollection> GetNextPage(EventCollection collection, int? pageSize = null) => await collection.GetNextPage<EventCollection, BetaFeatures.Parameters.Events.All>(async parameters => await All(parameters), collection.Events, pageSize);
+        public async Task<EventCollection> GetNextPage(EventCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<EventCollection, BetaFeatures.Parameters.Events.All>(async parameters => await All(parameters, cancellationToken), collection.Events, pageSize);
 
         /// <summary>
         ///     Retrieve an Event from its id.
@@ -67,14 +73,14 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Event. Starts with "evt_".</param>
         /// <returns>EasyPost.Event instance.</returns>
         [CrudOperations.Read]
-        public async Task<Event> Retrieve(string id) => await RequestAsync<Event>(Method.Get, $"events/{id}");
+        public async Task<Event> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Event>(Method.Get, $"events/{id}", cancellationToken);
 
         /// <summary>
         ///     Retrieve all <see cref="Payload"/>s for an <see cref="Event"/>.
         /// </summary>
         /// <param name="eventId">ID of the <see cref="Event"/> to retrieve payloads for.</param>
         /// <returns>A list of <see cref="Payload"/> objects.</returns>
-        public async Task<List<Payload>> RetrieveAllPayloads(string eventId) => await RequestAsync<List<Payload>>(Method.Get, $"events/{eventId}/payloads", rootElement: "payloads");
+        public async Task<List<Payload>> RetrieveAllPayloads(string eventId, CancellationToken cancellationToken = default) => await RequestAsync<List<Payload>>(Method.Get, $"events/{eventId}/payloads", cancellationToken: cancellationToken, rootElement: "payloads");
 
         /// <summary>
         ///     Retrieve a specific <see cref="Payload"/> for an <see cref="Event"/>.
@@ -84,7 +90,7 @@ namespace EasyPost.Services
         /// <returns>A <see cref="Payload"/> object.</returns>
         /// <exception cref="InvalidRequestError">Thrown if the specified payload ID is malformed.</exception>
         /// <exception cref="NotFoundError">Thrown if the specified payload is not found.</exception>
-        public async Task<Payload> RetrievePayload(string eventId, string payloadId) => await RequestAsync<Payload>(Method.Get, $"events/{eventId}/payloads/{payloadId}");
+        public async Task<Payload> RetrievePayload(string eventId, string payloadId, CancellationToken cancellationToken = default) => await RequestAsync<Payload>(Method.Get, $"events/{eventId}/payloads/{payloadId}", cancellationToken);
 
         #endregion
     }

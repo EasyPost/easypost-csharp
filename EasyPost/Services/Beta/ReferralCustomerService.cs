@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Exceptions.API;
@@ -29,7 +30,7 @@ namespace EasyPost.Services.Beta
         /// <returns>A <see cref="PaymentMethod"/> object.</returns>
         /// <exception cref="ApiError">When the request fails.</exception>
         [CrudOperations.Update]
-        public async Task<PaymentMethod> AddPaymentMethod(string stripeCustomerId, string paymentMethodReference, PaymentMethod.Priority? priority = null)
+        public async Task<PaymentMethod> AddPaymentMethod(string stripeCustomerId, string paymentMethodReference, PaymentMethod.Priority? priority = null, CancellationToken cancellationToken = default)
         {
             priority ??= PaymentMethod.Priority.Primary;
 
@@ -46,7 +47,7 @@ namespace EasyPost.Services.Beta
                 },
             };
 
-            return await RequestAsync<PaymentMethod>(Method.Post, "referral_customers/payment_method", parameters, overrideApiVersion: ApiVersion.Beta);
+            return await RequestAsync<PaymentMethod>(Method.Post, "referral_customers/payment_method", cancellationToken, parameters, overrideApiVersion: ApiVersion.Beta);
         }
 
         /// <summary>
@@ -58,9 +59,9 @@ namespace EasyPost.Services.Beta
         /// <returns>A <see cref="PaymentMethod"/> object.</returns>
         /// <exception cref="ApiError">When the request fails.</exception>
         [CrudOperations.Update]
-        public async Task<PaymentMethod> AddPaymentMethod(BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod parameters)
+        public async Task<PaymentMethod> AddPaymentMethod(BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod parameters, CancellationToken cancellationToken = default)
         {
-            return await RequestAsync<PaymentMethod>(Method.Post, "referral_customers/payment_method", parameters.ToDictionary(), overrideApiVersion: ApiVersion.Beta);
+            return await RequestAsync<PaymentMethod>(Method.Post, "referral_customers/payment_method", cancellationToken, parameters.ToDictionary(), overrideApiVersion: ApiVersion.Beta);
         }
 
         /// <summary>
@@ -70,14 +71,14 @@ namespace EasyPost.Services.Beta
         /// <param name="amount">Amount in cents to refund the Referral Customer.</param>
         /// <returns>A <see cref="PaymentRefund"/> object.</returns>
         [CrudOperations.Update]
-        public async Task<PaymentRefund> RefundByAmount(int amount)
+        public async Task<PaymentRefund> RefundByAmount(int amount, CancellationToken cancellationToken = default)
         {
             Dictionary<string, object> parameters = new()
             {
                 { "refund_amount", amount },
             };
 
-            return await RequestAsync<PaymentRefund>(Method.Post, "referral_customers/refunds", parameters, overrideApiVersion: ApiVersion.Beta);
+            return await RequestAsync<PaymentRefund>(Method.Post, "referral_customers/refunds", cancellationToken, parameters, overrideApiVersion: ApiVersion.Beta);
         }
 
         /// <summary>
@@ -86,9 +87,9 @@ namespace EasyPost.Services.Beta
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.RefundByAmount"/> parameter set.</param>
         /// <returns>A <see cref="PaymentRefund"/> object.</returns>
         [CrudOperations.Update]
-        public async Task<PaymentRefund> RefundByAmount(BetaFeatures.Parameters.ReferralCustomers.RefundByAmount parameters)
+        public async Task<PaymentRefund> RefundByAmount(BetaFeatures.Parameters.ReferralCustomers.RefundByAmount parameters, CancellationToken cancellationToken = default)
         {
-            return await RequestAsync<PaymentRefund>(Method.Post, "referral_customers/refunds", parameters.ToDictionary(), overrideApiVersion: ApiVersion.Beta);
+            return await RequestAsync<PaymentRefund>(Method.Post, "referral_customers/refunds", cancellationToken, parameters.ToDictionary(), overrideApiVersion: ApiVersion.Beta);
         }
 
         /// <summary>
@@ -98,14 +99,14 @@ namespace EasyPost.Services.Beta
         /// <param name="paymentLogId">Payment log ID to refund.</param>
         /// <returns>A <see cref="PaymentRefund"/> object.</returns>
         [CrudOperations.Update]
-        public async Task<PaymentRefund> RefundByPaymentLog(string paymentLogId)
+        public async Task<PaymentRefund> RefundByPaymentLog(string paymentLogId, CancellationToken cancellationToken = default)
         {
             Dictionary<string, object> parameters = new()
             {
                 { "payment_log_id", paymentLogId },
             };
 
-            return await RequestAsync<PaymentRefund>(Method.Post, "referral_customers/refunds", parameters, overrideApiVersion: ApiVersion.Beta);
+            return await RequestAsync<PaymentRefund>(Method.Post, "referral_customers/refunds", cancellationToken, parameters, overrideApiVersion: ApiVersion.Beta);
         }
 
         /// <summary>
@@ -114,9 +115,9 @@ namespace EasyPost.Services.Beta
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog"/> parameter set.</param>
         /// <returns>A <see cref="PaymentRefund"/> object.</returns>
         [CrudOperations.Update]
-        public async Task<PaymentRefund> RefundByPaymentLog(BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog parameters)
+        public async Task<PaymentRefund> RefundByPaymentLog(BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog parameters, CancellationToken cancellationToken = default)
         {
-            return await RequestAsync<PaymentRefund>(Method.Post, "referral_customers/refunds", parameters.ToDictionary(), overrideApiVersion: ApiVersion.Beta);
+            return await RequestAsync<PaymentRefund>(Method.Post, "referral_customers/refunds", cancellationToken, parameters.ToDictionary(), overrideApiVersion: ApiVersion.Beta);
         }
 
         #endregion

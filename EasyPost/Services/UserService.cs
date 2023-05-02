@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
@@ -28,10 +29,10 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Create]
-        public async Task<User> CreateChild(Dictionary<string, object> parameters)
+        public async Task<User> CreateChild(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             parameters = parameters.Wrap("user");
-            return await RequestAsync<User>(Method.Post, "users", parameters);
+            return await RequestAsync<User>(Method.Post, "users", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -40,26 +41,34 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.CreateChild"/> parameter set.</param>
         /// <returns><see cref="User"/> instance.</returns>
         [CrudOperations.Create]
-        public async Task<User> CreateChild(BetaFeatures.Parameters.Users.CreateChild parameters)
+        public async Task<User> CreateChild(BetaFeatures.Parameters.Users.CreateChild parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal CreateChild method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await RequestAsync<User>(Method.Post, "users", parameters.ToDictionary());
+            return await RequestAsync<User>(Method.Post, "users", cancellationToken, parameters.ToDictionary());
         }
 
         /// <summary>
-        ///     Retrieve a User from its id. If no id is specified, it returns the user for the api_key specified.
+        ///     Retrieve a User from its ID. If no ID is specified, the current User will be returned.
         /// </summary>
         /// <param name="id">String representing a user. Starts with "user_".</param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
-        public async Task<User> Retrieve(string? id = null) => id == null ? await RequestAsync<User>(Method.Get, "users") : await RequestAsync<User>(Method.Get, $"users/{id}");
+        public async Task<User> Retrieve(string? id = null, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return await RetrieveMe(cancellationToken);
+            }
+
+            return await RequestAsync<User>(Method.Get, $"users/{id}", cancellationToken);
+        }
 
         /// <summary>
         ///     Retrieve the current user.
         /// </summary>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
-        public async Task<User> RetrieveMe() => await Retrieve();
+        public async Task<User> RetrieveMe(CancellationToken cancellationToken = default) => await RequestAsync<User>(Method.Get, "users", cancellationToken);
 
         /// <summary>
         ///     Update the User's brand.
@@ -77,10 +86,10 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.Brand instance.</returns>
         [CrudOperations.Create]
-        public async Task<Brand> UpdateBrand(string? id, Dictionary<string, object> parameters)
+        public async Task<Brand> UpdateBrand(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             parameters = parameters.Wrap("brand");
-            return await RequestAsync<Brand>(Method.Put, $"users/{id}/brand", parameters);
+            return await RequestAsync<Brand>(Method.Put, $"users/{id}/brand", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -89,9 +98,9 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.UpdateBrand"/> parameter set.</param>
         /// <returns>This updated <see cref="Brand"/> instance.</returns>
         [CrudOperations.Create]
-        public async Task<Brand> UpdateBrand(string? id, BetaFeatures.Parameters.Users.UpdateBrand parameters)
+        public async Task<Brand> UpdateBrand(string id, BetaFeatures.Parameters.Users.UpdateBrand parameters, CancellationToken cancellationToken = default)
         {
-            return await RequestAsync<Brand>(Method.Put, $"users/{id}/brand", parameters.ToDictionary());
+            return await RequestAsync<Brand>(Method.Put, $"users/{id}/brand", cancellationToken, parameters.ToDictionary());
         }
 
         /// <summary>
@@ -111,9 +120,9 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>The updated User.</returns>
         [CrudOperations.Update]
-        public async Task<User> Update(string? id, Dictionary<string, object> parameters)
+        public async Task<User> Update(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
-            return await RequestAsync<User>(Method.Put, $"users/{id}", parameters);
+            return await RequestAsync<User>(Method.Put, $"users/{id}", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -122,9 +131,9 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.Update"/> parameter set.</param>
         /// <returns>This updated <see cref="User"/> instance.</returns>
         [CrudOperations.Update]
-        public async Task<User> Update(string? id, BetaFeatures.Parameters.Users.Update parameters)
+        public async Task<User> Update(string id, BetaFeatures.Parameters.Users.Update parameters, CancellationToken cancellationToken = default)
         {
-            return await RequestAsync<User>(Method.Put, $"users/{id}", parameters.ToDictionary());
+            return await RequestAsync<User>(Method.Put, $"users/{id}", cancellationToken, parameters.ToDictionary());
         }
 
         /// <summary>
@@ -132,7 +141,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <returns>Whether the request was successful or not.</returns>
         [CrudOperations.Delete]
-        public async Task Delete(string? id) => await RequestAsync(Method.Delete, $"users/{id}");
+        public async Task Delete(string id, CancellationToken cancellationToken = default) => await RequestAsync(Method.Delete, $"users/{id}", cancellationToken);
 
         #endregion
     }

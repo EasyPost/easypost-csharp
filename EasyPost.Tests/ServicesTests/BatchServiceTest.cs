@@ -197,7 +197,7 @@ namespace EasyPost.Tests.ServicesTests
                 Thread.Sleep(10000); // Wait enough time to process
             }
 
-            batch = await Client.Batch.GenerateScanForm(batch.Id);
+            batch = await Client.Batch.GenerateScanForm(batch.Id, "pdf");
 
             // We can't assert anything meaningful here because the scanform gets queued for generation and may not be immediately available
             Assert.IsType<Batch>(batch);

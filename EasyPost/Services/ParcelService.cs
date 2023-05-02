@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
@@ -32,10 +33,10 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>EasyPost.Parcel instance.</returns>
         [CrudOperations.Create]
-        public async Task<Parcel> Create(Dictionary<string, object> parameters)
+        public async Task<Parcel> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             parameters = parameters.Wrap("parcel");
-            return await RequestAsync<Parcel>(Method.Post, "parcels", parameters);
+            return await RequestAsync<Parcel>(Method.Post, "parcels", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -44,10 +45,10 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Parcels.Create"/> parameter set.</param>
         /// <returns><see cref="Parcel"/> instance.</returns>
         [CrudOperations.Create]
-        public async Task<Parcel> Create(BetaFeatures.Parameters.Parcels.Create parameters)
+        public async Task<Parcel> Create(BetaFeatures.Parameters.Parcels.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await RequestAsync<Parcel>(Method.Post, "parcels", parameters.ToDictionary());
+            return await RequestAsync<Parcel>(Method.Post, "parcels", cancellationToken, parameters.ToDictionary());
         }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
         /// <returns>EasyPost.Parcel instance.</returns>
         [CrudOperations.Read]
-        public async Task<Parcel> Retrieve(string id) => await RequestAsync<Parcel>(Method.Get, $"parcels/{id}");
+        public async Task<Parcel> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Parcel>(Method.Get, $"parcels/{id}", cancellationToken);
 
         #endregion
     }

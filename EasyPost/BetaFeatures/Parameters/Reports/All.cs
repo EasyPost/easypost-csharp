@@ -14,6 +14,12 @@ namespace EasyPost.BetaFeatures.Parameters.Reports
         #region Request Parameters
 
         /// <summary>
+        ///     What type of report to return. Required.
+        /// </summary>
+        // This parameter is not included in the request body, but is used to determine the endpoint to call.
+        public string? Type { get; set; }
+
+        /// <summary>
         ///     Only records created after the given ID will be included. May not be used with <see cref="BeforeId"/>.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "after_id")]
@@ -43,12 +49,6 @@ namespace EasyPost.BetaFeatures.Parameters.Reports
         [TopLevelRequestParameter(Necessity.Optional, "start_datetime")]
         public string? StartDatetime { get; set; }
 
-        /// <summary>
-        ///     The type of reports to retrieve.
-        /// </summary>
-        // This is not set by the end-user, but stored for reference when getting the next page of results.
-        internal string? ReportType { get; set; }
-
         #endregion
 
         protected override TParameters FromDictionaryProtected<TParameters>(Dictionary<string, object> dictionary)
@@ -60,6 +60,7 @@ namespace EasyPost.BetaFeatures.Parameters.Reports
                 AfterId = dictionary.GetOrNull<string>("after_id"),
                 StartDatetime = dictionary.GetOrNull<string>("start_datetime"),
                 EndDatetime = dictionary.GetOrNull<string>("end_datetime"),
+                Type = dictionary.GetOrNull<string>("type"),
             };
 
             return (parameters as TParameters)!;

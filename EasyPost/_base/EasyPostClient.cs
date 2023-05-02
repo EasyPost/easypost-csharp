@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
@@ -62,7 +63,7 @@ namespace EasyPost._base
         /// </summary>
         /// <param name="request">Request to execute.</param>
         /// <returns>An <see cref="HttpResponseMessage"/> object.</returns>
-        internal virtual async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request)
+        internal virtual async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             // This method actually executes the request and returns the response.
             // Everything up to this point has been pre-request, and everything after this point is post-request.
@@ -71,7 +72,7 @@ namespace EasyPost._base
             // try to execute the request, catch and rethrow an HTTP timeout exception, all other exceptions are thrown as-is
             try
             {
-                return await HttpClient.SendAsync(request).ConfigureAwait(false);
+                return await HttpClient.SendAsync(request, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
             catch (TaskCanceledException)
             {
@@ -89,7 +90,7 @@ namespace EasyPost._base
         /// <param name="rootElement">Optional root element for the JSON to begin deserialization at.</param>
         /// <typeparam name="T">Type of object to deserialize response data into. Must be subclass of EasyPostObject.</typeparam>
         /// <returns>An instance of a T type object.</returns>
-        internal async Task<T> RequestAsync<T>(Method method, string endpoint, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, string? rootElement = null)
+        internal async Task<T> RequestAsync<T>(Method method, string endpoint, ApiVersion apiVersion, CancellationToken cancellationToken, Dictionary<string, object>? parameters = null, string? rootElement = null)
             where T : class
         {
             // Build the request
@@ -97,12 +98,12 @@ namespace EasyPost._base
             Request request = new(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
 
             // Execute the request
-            HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage());
+            HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage(), cancellationToken);
 
             // Check the response's status code
             if (response.ReturnedError())
             {
-                throw await ApiError.FromErrorResponse(response);
+                throw await ApiError.FromErrorResponse(response).ConfigureAwait(false);
             }
 
             // Prepare the list of root elements to use during deserialization
@@ -139,14 +140,14 @@ namespace EasyPost._base
         /// <param name="parameters">Optional parameters to use for the request.</param>
         /// <returns>Whether request was successful.</returns>
         // ReSharper disable once UnusedMethodReturnValue.Global
-        internal async Task<bool> RequestAsync(Method method, string endpoint, ApiVersion apiVersion, Dictionary<string, object>? parameters = null)
+        internal async Task<bool> RequestAsync(Method method, string endpoint, ApiVersion apiVersion, CancellationToken cancellationToken, Dictionary<string, object>? parameters = null)
         {
             // Build the request
             Dictionary<string, string> headers = _configuration.GetHeaders(apiVersion);
             Request request = new(ApiBaseInUse, endpoint, method, apiVersion, parameters, headers);
 
             // Execute the request
-            HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage());
+            HttpResponseMessage response = await ExecuteRequest(request.AsHttpRequestMessage(), cancellationToken);
 
             // Check whether the HTTP request produced an error (3xx, 4xx or 5xx status code) or not
             bool errorRaised = response.ReturnedNoError();

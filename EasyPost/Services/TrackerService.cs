@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
@@ -28,7 +29,7 @@ namespace EasyPost.Services
         /// <param name="trackingCode">Tracking code for the tracker.</param>
         /// <returns>An EasyPost.Tracker instance.</returns>
         [CrudOperations.Create]
-        public async Task<Tracker> Create(string carrier, string trackingCode)
+        public async Task<Tracker> Create(string carrier, string trackingCode, CancellationToken cancellationToken = default)
         {
             Dictionary<string, object> parameters = new()
             {
@@ -36,7 +37,7 @@ namespace EasyPost.Services
                 { "tracking_code", trackingCode },
             };
             parameters = parameters.Wrap("tracker");
-            return await RequestAsync<Tracker>(Method.Post, "trackers", parameters);
+            return await RequestAsync<Tracker>(Method.Post, "trackers", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -45,10 +46,10 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Trackers.Create"/> parameter set.</param>
         /// <returns><see cref="Tracker"/> instance.</returns>
         [CrudOperations.Create]
-        public async Task<Tracker> Create(BetaFeatures.Parameters.Trackers.Create parameters)
+        public async Task<Tracker> Create(BetaFeatures.Parameters.Trackers.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await RequestAsync<Tracker>(Method.Post, "trackers", parameters.ToDictionary());
+            return await RequestAsync<Tracker>(Method.Post, "trackers", cancellationToken, parameters.ToDictionary());
         }
 
         /// <summary>
@@ -57,11 +58,11 @@ namespace EasyPost.Services
         /// <param name="parameters">A dictionary of tracking codes and carriers.</param>
         /// <returns>True if successful, False otherwise.</returns>
         [CrudOperations.Create]
-        public async Task CreateList(Dictionary<string, object> parameters)
+        public async Task CreateList(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             parameters = parameters.Wrap("trackers");
             // This endpoint does not return a response, so we simply send the request and only throw an exception if the API returns an error.
-            await RequestAsync(Method.Post, "trackers/create_list", parameters);
+            await RequestAsync(Method.Post, "trackers/create_list", cancellationToken, parameters);
         }
 
         /// <summary>
@@ -71,9 +72,9 @@ namespace EasyPost.Services
         /// <returns>True if successful, False otherwise.</returns>
         [CrudOperations.Create]
         [Obsolete("This method is deprecated. Please use TrackerService.Create() instead. This method will be removed in a future version.", false)]
-        public async Task CreateList(BetaFeatures.Parameters.Trackers.CreateList parameters)
+        public async Task CreateList(BetaFeatures.Parameters.Trackers.CreateList parameters, CancellationToken cancellationToken = default)
         {
-            await RequestAsync(Method.Post, "trackers/create_list", parameters.ToDictionary());
+            await RequestAsync(Method.Post, "trackers/create_list", cancellationToken, parameters.ToDictionary());
         }
 
         /// <summary>
@@ -96,10 +97,10 @@ namespace EasyPost.Services
         /// </param>
         /// <returns>A EasyPost.TrackerCollection instance.</returns>
         [CrudOperations.Read]
-        public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null)
+        public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             // TODO: When we adopt parameter objects as the only way to pass parameters, we don't need to do this object -> dictionary -> object conversion to store the filters.
-            TrackerCollection collection = await RequestAsync<TrackerCollection>(Method.Get, "trackers", parameters);
+            TrackerCollection collection = await RequestAsync<TrackerCollection>(Method.Get, "trackers", cancellationToken, parameters);
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Trackers.All>(parameters);
             return collection;
         }
@@ -110,7 +111,12 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Trackers.All"/> parameter set.</param>
         /// <returns><see cref="TrackerCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<TrackerCollection> All(BetaFeatures.Parameters.Trackers.All parameters) => await All(parameters.ToDictionary());
+        public async Task<TrackerCollection> All(BetaFeatures.Parameters.Trackers.All parameters, CancellationToken cancellationToken = default)
+        {
+            TrackerCollection collection = await RequestAsync<TrackerCollection>(Method.Get, "trackers", cancellationToken, parameters.ToDictionary());
+            collection.Filters = parameters;
+            return collection;
+        }
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="TrackerCollection"/>.
@@ -120,7 +126,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="TrackerCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<TrackerCollection> GetNextPage(TrackerCollection collection, int? pageSize = null) => await collection.GetNextPage<TrackerCollection, BetaFeatures.Parameters.Trackers.All>(async parameters => await All(parameters), collection.Trackers, pageSize);
+        public async Task<TrackerCollection> GetNextPage(TrackerCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<TrackerCollection, BetaFeatures.Parameters.Trackers.All>(async parameters => await All(parameters, cancellationToken), collection.Trackers, pageSize);
 
         /// <summary>
         ///     Retrieve a Tracker from its id.
@@ -128,7 +134,7 @@ namespace EasyPost.Services
         /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
         /// <returns>EasyPost.Tracker instance.</returns>
         [CrudOperations.Read]
-        public async Task<Tracker> Retrieve(string id) => await RequestAsync<Tracker>(Method.Get, $"trackers/{id}");
+        public async Task<Tracker> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Tracker>(Method.Get, $"trackers/{id}", cancellationToken);
 
         #endregion
     }
