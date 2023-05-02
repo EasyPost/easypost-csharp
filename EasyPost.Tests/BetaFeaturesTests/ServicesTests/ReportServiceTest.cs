@@ -110,7 +110,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         {
             UseVCR("all");
 
-            Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize}, { "type", "shipment" } };
+            Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize }, { "type", "shipment" } };
 
             BetaFeatures.Parameters.Reports.All parameters = Fixtures.Parameters.Reports.All(data);
 
@@ -152,11 +152,11 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         public async Task TestMissingTypeWhenCallingAll()
         {
             UseVCR("missing_type_when_calling_all");
-            
+
             Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize } }; // missing type
-            
+
             BetaFeatures.Parameters.Reports.All parameters = Fixtures.Parameters.Reports.All(data);
-            
+
             await Assert.ThrowsAsync<MissingParameterError>(() => Client.Report.All(parameters));
         }
 

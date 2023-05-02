@@ -159,7 +159,8 @@ namespace EasyPost.Services
             Dictionary<string, object> parameters = new()
             {
                 {
-                    "credit_card", new Dictionary<string, object>
+                    "credit_card",
+                    new Dictionary<string, object>
                     {
                         { "stripe_object_id", stripeObjectId },
                         { "priority", priority.ToString().ToLowerInvariant() },
