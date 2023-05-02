@@ -15,10 +15,10 @@ namespace EasyPost.Exceptions.API
     /// <summary>
     ///     Represents an error that occurred while communicating with the EasyPost API.
     ///     This is typically due to a specific HTTP status code, such as 4xx or 5xx.
-    ///     This is different than the Error class, which represents information about what triggered the failed request.
-    ///     The information from the top-level Error class is used to generate this error, and any sub-errors are stored as a list of Error objects.
+    ///     This is different than the <see cref="Error"/> class, which represents information about what triggered the failed request.
+    ///     The information from the top-level <see cref="Error"/> class is used to generate this error, and any sub-errors are stored as a list of <see cref="Error"/> objects.
     /// </summary>
-    public class ApiError : EasyPostError
+    public abstract class ApiError : EasyPostError
 #pragma warning restore SA1649
     {
         public readonly string? Code;
@@ -52,7 +52,7 @@ namespace EasyPost.Exceptions.API
         /// <param name="errorMessage">Error message string to print to console.</param>
         /// <param name="statusCode">Optional HTTP status code to store as a property.</param>
         /// <param name="errorType">Optional error type string to store as a property.</param>
-        /// <param name="errors">Optional list of Error objects to store as a property.</param>
+        /// <param name="errors">Optional list of <see cref="Error"/> objects to store as a property.</param>
         protected ApiError(string errorMessage, int? statusCode = null, string? errorType = null, List<Error>? errors = null)
             : base(errorMessage)
         {
@@ -64,12 +64,12 @@ namespace EasyPost.Exceptions.API
         // great minds think alike: https://github.com/stripe/stripe-dotnet/blob/6b9513d3b938d265c7607db919ad2c536ab578c3/src/Stripe.net/Infrastructure/Public/StripeClient.cs#L171
 
         /// <summary>
-        ///     Parse a errored HttpResponseMessage response object and return an instance of the appropriate exception class.
+        ///     Parse a errored <see cref="HttpResponseMessage"/> response object and return an instance of the appropriate exception class.
         ///     Do not pass a non-error response to this method.
         /// </summary>
-        /// <param name="response">HttpResponseMessage response to parse.</param>
-        /// <raises>EasyPostError if an unplanned response code is found (i.e. user passed in a non-error HttpResponseMessage response object with a 2xx status code).</raises>
-        /// <returns>An instance of an HttpError-inherited exception.</returns>
+        /// <param name="response"><see cref="HttpResponseMessage"/> response to parse.</param>
+        /// <raises>EasyPostError if an unplanned response code is found (i.e. user passed in a non-error <see cref="HttpResponseMessage"/> response object with a 2xx status code).</raises>
+        /// <returns>An instance of an <see cref="ApiError"/>-inherited exception.</returns>
         internal static async Task<ApiError> FromErrorResponse(HttpResponseMessage response)
         {
             // NOTE: This method anticipates that the status code will be a non-2xx code.

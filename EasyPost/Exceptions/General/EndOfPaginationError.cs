@@ -1,5 +1,8 @@
 namespace EasyPost.Exceptions.General
 {
+    /// <summary>
+    ///     Represents an error that occurs when there are no more pages of a paginated collection to retrieve from the EasyPost API.
+    /// </summary>
     public class EndOfPaginationError : EasyPostError
     {
         /// <summary>

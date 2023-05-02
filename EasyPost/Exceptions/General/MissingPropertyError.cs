@@ -2,6 +2,9 @@ using System.Globalization;
 
 namespace EasyPost.Exceptions.General
 {
+    /// <summary>
+    ///     Represents an error that occurs due to a missing property on an object.
+    /// </summary>
     public class MissingPropertyError : EasyPostError
     {
         /// <summary>
