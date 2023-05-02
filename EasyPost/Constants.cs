@@ -10,11 +10,13 @@ namespace EasyPost
     {
         private static readonly Dictionary<int, Type?> HttpExceptionsMap = new()
         {
+            // 1xx status codes are usually HTTP process-related, not server-related
+            // (mostly) everything else is related to the server being interacted with: https://httpwg.org/specs/rfc9110.html#rfc.section.15.5
             { 0, typeof(ConnectionError) }, // RestSharp returns status code 0 when a connection cannot be established (i.e. no internet access)
-            { 100, typeof(UnexpectedHttpError) },
-            { 101, typeof(UnexpectedHttpError) },
-            { 102, typeof(UnexpectedHttpError) },
-            { 103, typeof(UnexpectedHttpError) },
+            { 100, typeof(UnknownHttpError) },
+            { 101, typeof(UnknownHttpError) },
+            { 102, typeof(UnknownHttpError) },
+            { 103, typeof(UnknownHttpError) },
             { 300, typeof(RedirectError) },
             { 301, typeof(RedirectError) },
             { 302, typeof(RedirectError) },
@@ -51,10 +53,10 @@ namespace EasyPost
             Type? exceptionType = null;
             SwitchCase @switch = new()
             {
-                { Utilities.Internal.Extensions.Http.StatusCodeIs1xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
-                { Utilities.Internal.Extensions.Http.StatusCodeIs3xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
-                { Utilities.Internal.Extensions.Http.StatusCodeIs4xx(statusCode), () => { exceptionType = typeof(UnknownApiError); } },
-                { Utilities.Internal.Extensions.Http.StatusCodeIs5xx(statusCode), () => { exceptionType = typeof(UnexpectedHttpError); } },
+                { Utilities.Internal.Extensions.Http.StatusCodeIs1xx(statusCode), () => { exceptionType = typeof(UnknownHttpError); } },
+                { Utilities.Internal.Extensions.Http.StatusCodeIs3xx(statusCode), () => { exceptionType = typeof(UnknownHttpError); } },
+                { Utilities.Internal.Extensions.Http.StatusCodeIs4xx(statusCode), () => { exceptionType = typeof(UnknownHttpError); } },
+                { Utilities.Internal.Extensions.Http.StatusCodeIs5xx(statusCode), () => { exceptionType = typeof(UnknownHttpError); } },
                 { SwitchCaseScenario.Default, () => { exceptionType = null; } },
             };
             @switch.MatchFirst(true); // evaluate switch case, checking which expression evaluates to "true"

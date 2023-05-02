@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using EasyPost.Exceptions;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;

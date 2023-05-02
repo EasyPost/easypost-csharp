@@ -29,7 +29,7 @@ namespace EasyPost.Exceptions.API
         ///     Gets a formatted error string with expanded details about the error.
         /// </summary>
         /// <returns>A formatted error string.</returns>
-        public string PrettyPrint
+        public override string PrettyPrint
         {
             get
             {
@@ -108,7 +108,7 @@ namespace EasyPost.Exceptions.API
             if (exceptionType == null)
             {
                 // A unaccounted-for status code was in the response.
-                throw new EasyPostError(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.UnexpectedHttpStatusCode, statusCodeInt));
+                throw new UnknownHttpError(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.UnexpectedHttpStatusCode, statusCodeInt), statusCodeInt);
             }
 #pragma warning restore IDE0270 // Simplify null check
 
