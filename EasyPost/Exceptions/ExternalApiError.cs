@@ -9,7 +9,7 @@ namespace EasyPost.Exceptions
         ///     Detailed error type string.
         /// </summary>
         public readonly string? Code;
-        
+
         /// <summary>
         ///     Status code of the HTTP response that caused the error.
         /// </summary>
