@@ -1,5 +1,8 @@
 ﻿namespace EasyPost.Exceptions.General
 {
+    /// <summary>
+    ///     Represents an error that occurs during signature verification.
+    /// </summary>
     public class SignatureVerificationError : EasyPostError
     {
         /// <summary>

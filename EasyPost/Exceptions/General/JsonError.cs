@@ -3,12 +3,15 @@ using System.Globalization;
 
 namespace EasyPost.Exceptions.General
 {
-    public class JsonError : EasyPostError
+    /// <summary>
+    ///     Base class for all JSON-related errors.
+    /// </summary>
+    public abstract class JsonError : EasyPostError
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonError" /> class.
         /// </summary>
-        /// <param name="message">Error message.</param>
+        /// <param name="message">The error message to print to console.</param>
         internal JsonError(string message)
             : base(message)
         {
@@ -21,6 +24,9 @@ namespace EasyPost.Exceptions.General
         public override string PrettyPrint => Message;
     }
 
+    /// <summary>
+    ///     Represents an error that occurs while deserializing JSON.
+    /// </summary>
     public class JsonDeserializationError : JsonError
     {
         /// <summary>
@@ -33,6 +39,9 @@ namespace EasyPost.Exceptions.General
         }
     }
 
+    /// <summary>
+    ///     Represents an error that occurs while serializing JSON.
+    /// </summary>
     public class JsonSerializationError : JsonError
     {
         /// <summary>
@@ -45,6 +54,9 @@ namespace EasyPost.Exceptions.General
         }
     }
 
+    /// <summary>
+    ///     Represents an error that occurs while deserializing JSON with no data.
+    /// </summary>
     public class JsonNoDataError : JsonError
     {
         /// <summary>

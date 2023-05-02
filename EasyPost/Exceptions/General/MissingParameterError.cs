@@ -3,6 +3,9 @@ using System.Reflection;
 
 namespace EasyPost.Exceptions.General
 {
+    /// <summary>
+    ///     Represents an error that occurs due to a missing parameter.
+    /// </summary>
     public class MissingParameterError : ValidationError
     {
         /// <summary>

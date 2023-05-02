@@ -3,6 +3,9 @@ using EasyPost.Models.API;
 
 namespace EasyPost.Exceptions.API
 {
+    /// <summary>
+    ///     Represents a generic unknown or unexpected HTTP error that occurs when communicating with the EasyPost API.
+    /// </summary>
     public class UnknownHttpError : ApiError
     {
         /// <summary>
@@ -11,7 +14,7 @@ namespace EasyPost.Exceptions.API
         /// <param name="errorMessage">Error message string to print to console.</param>
         /// <param name="statusCode">Optional HTTP status code to store as a property.</param>
         /// <param name="errorType">Optional error type string to store as a property.</param>
-        /// <param name="errors">Optional list of Error objects to store as a property.</param>
+        /// <param name="errors">Optional list of <see cref="Error"/> objects to store as a property.</param>
         internal UnknownHttpError(string errorMessage, int statusCode, string? errorType = null, List<Error>? errors = null)
             : base(errorMessage, statusCode, errorType, errors)
         {
