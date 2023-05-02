@@ -89,7 +89,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.UpdateBrand"/> parameter set.</param>
         /// <returns>This updated <see cref="Brand"/> instance.</returns>
         [CrudOperations.Create]
-        public async Task<Brand> UpdateBrand(string? id, BetaFeatures.Parameters.Users.UpdateBrand parameters)
+        public async Task<Brand> UpdateBrand(string id, BetaFeatures.Parameters.Users.UpdateBrand parameters)
         {
             return await RequestAsync<Brand>(Method.Put, $"users/{id}/brand", parameters.ToDictionary());
         }
@@ -122,7 +122,7 @@ namespace EasyPost.Services
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.Update"/> parameter set.</param>
         /// <returns>This updated <see cref="User"/> instance.</returns>
         [CrudOperations.Update]
-        public async Task<User> Update(string? id, BetaFeatures.Parameters.Users.Update parameters)
+        public async Task<User> Update(string id, BetaFeatures.Parameters.Users.Update parameters)
         {
             return await RequestAsync<User>(Method.Put, $"users/{id}", parameters.ToDictionary());
         }

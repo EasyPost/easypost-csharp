@@ -550,6 +550,7 @@ namespace EasyPost.Tests._Utilities
                         StartDate = fixture.GetOrNull<string>("start_date"),
                         IncludeChildren = fixture.GetOrNullBoolean("include_children"),
                         SendEmail = fixture.GetOrNullBoolean("send_email"),
+                        Type = fixture.GetOrNull<string>("type"),
                     };
                 }
 
@@ -564,6 +565,7 @@ namespace EasyPost.Tests._Utilities
                         AfterId = fixture.GetOrNull<string>("after_id"),
                         StartDatetime = fixture.GetOrNull<string>("start_datetime"),
                         EndDatetime = fixture.GetOrNull<string>("end_datetime"),
+                        Type = fixture.GetOrNull<string>("type"),
                     };
                 }
             }

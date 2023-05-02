@@ -40,7 +40,15 @@ namespace EasyPost.Services
         public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null) => await RequestAsync<Report>(Method.Post, $"reports/{type}", parameters);
 
         [CrudOperations.Create]
-        public async Task<Report> Create(string type, BetaFeatures.Parameters.Reports.Create parameters) => await RequestAsync<Report>(Method.Post, $"reports/{type}", parameters.ToDictionary());
+        public async Task<Report> Create(BetaFeatures.Parameters.Reports.Create parameters)
+        {
+            if (parameters.Type == null)
+            {
+                throw new MissingParameterError("Type");
+            }
+
+            return await Create(parameters.Type, parameters.ToDictionary());
+        }
 
         /// <summary>
         ///     Get a paginated list of reports.
@@ -61,13 +69,23 @@ namespace EasyPost.Services
         public async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null)
         {
             ReportCollection collection = await RequestAsync<ReportCollection>(Method.Get, $"reports/{type}", parameters);
+            // Copy the report type into the dictionary before we store the dictionary in the collection
+            parameters ??= new Dictionary<string, object>();
+            parameters["type"] = type;
             collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Reports.All>(parameters);
-            ((BetaFeatures.Parameters.Reports.All)collection.Filters).ReportType = type;
             return collection;
         }
 
         [CrudOperations.Read]
-        public async Task<ReportCollection> All(string type, BetaFeatures.Parameters.Reports.All parameters) => await All(type, parameters.ToDictionary());
+        public async Task<ReportCollection> All(BetaFeatures.Parameters.Reports.All parameters)
+        {
+            if (parameters.Type == null)
+            {
+                throw new MissingParameterError("Type");
+            }
+
+            return await All(parameters.Type, parameters.ToDictionary());
+        }
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ReportCollection"/>.
@@ -78,7 +96,7 @@ namespace EasyPost.Services
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
         // Reuse the same report type as the current page of the collection (will not be null)
-        public async Task<ReportCollection> GetNextPage(ReportCollection collection, int? pageSize = null) => await collection.GetNextPage<ReportCollection, BetaFeatures.Parameters.Reports.All>(async parameters => await All(((BetaFeatures.Parameters.Reports.All)collection.Filters!).ReportType!, parameters), collection.Reports, pageSize);
+        public async Task<ReportCollection> GetNextPage(ReportCollection collection, int? pageSize = null) => await collection.GetNextPage<ReportCollection, BetaFeatures.Parameters.Reports.All>(async parameters => await All(parameters), collection.Reports, pageSize);
 
         /// <summary>
         ///     Retrieve a Report from its id.

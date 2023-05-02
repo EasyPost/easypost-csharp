@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -29,11 +30,12 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
             {
                 { "start_date", Fixtures.ReportDate },
                 { "end_date", Fixtures.ReportDate },
+                { "type", Fixtures.ReportType },
             };
 
             BetaFeatures.Parameters.Reports.Create parameters = Fixtures.Parameters.Reports.Create(data);
 
-            Report report = await Client.Report.Create(Fixtures.ReportType, parameters);
+            Report report = await Client.Report.Create(parameters);
 
             Assert.IsType<Report>(report);
             Assert.StartsWith(Fixtures.ReportIdPrefix, report.Id);
@@ -57,11 +59,12 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 { "additional_columns", additionalColumns },
                 { "start_date", Fixtures.ReportDate },
                 { "end_date", Fixtures.ReportDate },
+                { "type", "shipment" },
             };
 
             BetaFeatures.Parameters.Reports.Create parameters = Fixtures.Parameters.Reports.Create(data);
 
-            Report report = await Client.Report.Create("shipment", parameters);
+            Report report = await Client.Report.Create(parameters);
 
             // verify parameters by checking VCR cassette for correct URL
             // Some reports take a long time to generate, so we won't be able to consistently pull the report
@@ -85,11 +88,12 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 { "columns", columns },
                 { "start_date", Fixtures.ReportDate },
                 { "end_date", Fixtures.ReportDate },
+                { "type", "shipment" },
             };
 
             BetaFeatures.Parameters.Reports.Create parameters = Fixtures.Parameters.Reports.Create(data);
 
-            Report report = await Client.Report.Create("shipment", parameters);
+            Report report = await Client.Report.Create(parameters);
 
             // verify parameters by checking VCR cassette for correct URL
             // Some reports take a long time to generate, so we won't be able to consistently pull the report
@@ -106,11 +110,11 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
         {
             UseVCR("all");
 
-            Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize } };
+            Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize}, { "type", "shipment" } };
 
             BetaFeatures.Parameters.Reports.All parameters = Fixtures.Parameters.Reports.All(data);
 
-            ReportCollection reportCollection = await Client.Report.All("shipment", parameters);
+            ReportCollection reportCollection = await Client.Report.All(parameters);
 
             List<Report> reports = reportCollection.Reports;
 
@@ -133,13 +137,27 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
 
             const string type = "shipment";
 
-            Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize } };
+            Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize }, { "type", type } };
 
             BetaFeatures.Parameters.Reports.All parameters = Fixtures.Parameters.Reports.All(data);
 
-            ReportCollection reportCollection = await Client.Report.All(type, parameters);
+            ReportCollection reportCollection = await Client.Report.All(parameters);
 
-            Assert.Equal(type, ((BetaFeatures.Parameters.Reports.All)reportCollection.Filters!).ReportType);
+            Assert.Equal(type, ((BetaFeatures.Parameters.Reports.All)reportCollection.Filters!).Type);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Exception]
+        public async Task TestMissingTypeWhenCallingAll()
+        {
+            UseVCR("missing_type_when_calling_all");
+            
+            Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize } }; // missing type
+            
+            BetaFeatures.Parameters.Reports.All parameters = Fixtures.Parameters.Reports.All(data);
+            
+            await Assert.ThrowsAsync<MissingParameterError>(() => Client.Report.All(parameters));
         }
 
         #endregion
