@@ -5,6 +5,9 @@ using Newtonsoft.Json.Linq;
 
 namespace EasyPost.Utilities.Internal.Extensions
 {
+    /// <summary>
+    ///     Extension methods for <see cref="Dictionary{TKey,TValue}"/> objects.
+    /// </summary>
     public static class Dictionaries
     {
         /// <summary>
@@ -89,12 +92,12 @@ namespace EasyPost.Utilities.Internal.Extensions
         }
 
         /// <summary>
-        ///     Get a value from a dictionary, or null if the key does not exist.
+        ///     Get a value from a dictionary, or <c>null</c> if the key does not exist.
         /// </summary>
         /// <param name="dictionary">The dictionary to extract the value from.</param>
         /// <param name="key">The key to search for in the dictionary.</param>
         /// <typeparam name="T">The type of value to extract.</typeparam>
-        /// <returns>A T-type object, or null if key does not exist.</returns>
+        /// <returns>A T-type object, or <c>null</c> if key does not exist.</returns>
         internal static T? GetOrNull<T>(this Dictionary<string, object> dictionary, string key) where T : class
         {
             if (!dictionary.TryGetValue(key, out object? value)) return null;
@@ -127,11 +130,11 @@ namespace EasyPost.Utilities.Internal.Extensions
         }
 
         /// <summary>
-        ///     Get a boolean value from a dictionary, or null if the key does not exist.
+        ///     Get a boolean value from a dictionary, or <c>null</c> if the key does not exist.
         /// </summary>
         /// <param name="dictionary">The dictionary to extract the value from.</param>
         /// <param name="key">The key to search for in the dictionary.</param>
-        /// <returns>A boolean, or null if key does not exist.</returns>
+        /// <returns>A boolean, or <c>null</c> if key does not exist.</returns>
         internal static bool? GetOrNullBoolean(this Dictionary<string, object> dictionary, string key)
         {
             if (!dictionary.TryGetValue(key, out object? value)) return null;
@@ -144,11 +147,11 @@ namespace EasyPost.Utilities.Internal.Extensions
         }
 
         /// <summary>
-        ///     Get a double value from a dictionary, or null if the key does not exist.
+        ///     Get a double value from a dictionary, or <c>null</c> if the key does not exist.
         /// </summary>
         /// <param name="dictionary">The dictionary to extract the value from.</param>
         /// <param name="key">The key to search for in the dictionary.</param>
-        /// <returns>A double, or null if key does not exist.</returns>
+        /// <returns>A double, or <c>null</c> if key does not exist.</returns>
         internal static double? GetOrNullDouble(this Dictionary<string, object> dictionary, string key)
         {
             if (!dictionary.TryGetValue(key, out object? value)) return null;
@@ -165,11 +168,11 @@ namespace EasyPost.Utilities.Internal.Extensions
         }
 
         /// <summary>
-        ///     Get an int value from a dictionary, or null if the key does not exist.
+        ///     Get an int value from a dictionary, or <c>null</c> if the key does not exist.
         /// </summary>
         /// <param name="dictionary">The dictionary to extract the value from.</param>
         /// <param name="key">The key to search for in the dictionary.</param>
-        /// <returns>An int, or null if key does not exist.</returns>
+        /// <returns>An int, or <c>null</c> if key does not exist.</returns>
         internal static int? GetOrNullInt(this Dictionary<string, object> dictionary, string key)
         {
             if (!dictionary.TryGetValue(key, out object? value)) return null;
@@ -186,11 +189,11 @@ namespace EasyPost.Utilities.Internal.Extensions
         }
 
         /// <summary>
-        ///     Get a float value from a dictionary, or null if the key does not exist.
+        ///     Get a float value from a dictionary, or <c>null</c> if the key does not exist.
         /// </summary>
         /// <param name="dictionary">The dictionary to extract the value from.</param>
         /// <param name="key">The key to search for in the dictionary.</param>
-        /// <returns>A float, or null if key does not exist.</returns>
+        /// <returns>A float, or <c>null</c> if key does not exist.</returns>
         internal static float? GetOrNullFloat(this Dictionary<string, object> dictionary, string key)
         {
             if (!dictionary.TryGetValue(key, out object? value)) return null;
@@ -207,11 +210,11 @@ namespace EasyPost.Utilities.Internal.Extensions
         }
 
         /// <summary>
-        ///     Get a long value from a dictionary, or null if the key does not exist.
+        ///     Get a long value from a dictionary, or <c>null</c> if the key does not exist.
         /// </summary>
         /// <param name="dictionary">The dictionary to extract the value from.</param>
         /// <param name="key">The key to search for in the dictionary.</param>
-        /// <returns>A long, or null if key does not exist.</returns>
+        /// <returns>A long, or <c>null</c> if key does not exist.</returns>
         internal static long? GetOrNullLong(this Dictionary<string, object> dictionary, string key)
         {
             if (!dictionary.TryGetValue(key, out object? value)) return null;

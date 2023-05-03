@@ -4,8 +4,17 @@ using System.Reflection;
 
 namespace EasyPost.Utilities.Internal.Attributes
 {
+    /// <summary>
+    ///     The base class for all custom <see cref="Attribute"/>s in the SDK.
+    /// </summary>
     internal abstract class BaseCustomAttribute : Attribute, IBaseCustomAttribute
     {
+        /// <summary>
+        ///     Get all properties of a given <see cref="Type"/> decorated with a T-type attribute.
+        /// </summary>
+        /// <param name="type">The <see cref="Type"/> to evaluate properties of.</param>
+        /// <typeparam name="T">The type of attribute to search for.</typeparam>
+        /// <returns>A list of all properties of the provided type decorated with the T-type attribute.</returns>
         internal static IEnumerable<PropertyInfo> GetPropertiesWithAttribute<T>(Type @type)
         {
             List<PropertyInfo> matchingProperties = new();
@@ -28,10 +37,22 @@ namespace EasyPost.Utilities.Internal.Attributes
             return matchingProperties;
         }
 
+        /// <summary>
+        ///     Get all properties of a given object decorated with a T-type attribute.
+        /// </summary>
+        /// <param name="obj">The object to evaluate properties of.</param>
+        /// <typeparam name="T">The type of attribute to search for.</typeparam>
+        /// <returns>A list of all properties of the provided object decorated with the T-type attribute.</returns>
         internal static IEnumerable<PropertyInfo> GetPropertiesWithAttribute<T>(object obj)
             where T : Attribute
             => GetPropertiesWithAttribute<T>(obj.GetType());
 
+        /// <summary>
+        ///     Get all methods of a given <see cref="Type"/> decorated with a T-type attribute.
+        /// </summary>
+        /// <param name="type">The <see cref="Type"/> to evaluate methods of.</param>
+        /// <typeparam name="T">The type of attribute to search for.</typeparam>
+        /// <returns>A list of all methods of the provided type decorated with the T-type attribute.</returns>
         internal static IEnumerable<MethodInfo> GetMethodsWithAttribute<T>(Type @type)
         {
             List<MethodInfo> matchingMethods = new();
@@ -54,6 +75,12 @@ namespace EasyPost.Utilities.Internal.Attributes
             return matchingMethods;
         }
 
+        /// <summary>
+        ///     Get all methods of a given object decorated with a T-type attribute.
+        /// </summary>
+        /// <param name="obj">The object to evaluate methods of.</param>
+        /// <typeparam name="T">The type of attribute to search for.</typeparam>
+        /// <returns>A list of all methods of the provided object decorated with the T-type attribute.</returns>
         internal static IEnumerable<MethodInfo> GetMethodsWithAttribute<T>(object obj)
             where T : Attribute
             => GetMethodsWithAttribute<T>(obj.GetType());
@@ -80,6 +107,9 @@ namespace EasyPost.Utilities.Internal.Attributes
         }
     }
 
+    /// <summary>
+    ///     Base interface for all custom <see cref="Attribute"/>s in this SDK.
+    /// </summary>
     internal interface IBaseCustomAttribute
     {
     }

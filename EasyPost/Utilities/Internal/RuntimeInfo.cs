@@ -5,8 +5,14 @@ using System.Runtime.InteropServices;
 
 namespace EasyPost.Utilities.Internal
 {
+    /// <summary>
+    ///     Methods to retrieve runtime information.
+    /// </summary>
     internal static class RuntimeInfo
     {
+        /// <summary>
+        ///     Methods to retrieve application information.
+        /// </summary>
         internal struct ApplicationInfo
         {
             /// <summary>
@@ -39,6 +45,9 @@ namespace EasyPost.Utilities.Internal
             internal static string DotNetVersion => Environment.Version.ToString();
         }
 
+        /// <summary>
+        ///     Methods to retrieve operating system information.
+        /// </summary>
         internal struct OperationSystemInfo
         {
             /// <summary>

@@ -22,7 +22,7 @@ namespace EasyPost.Utilities.Internal.Attributes
     }
 
     /// <summary>
-    ///     An attribute to label a parameter that will be sent in an HTTP request to the EasyPost API.
+    ///     A <see cref="BaseCustomAttribute"/> to label a parameter that will be sent in an HTTP request to the EasyPost API.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
     internal abstract class RequestParameterAttribute : BaseCustomAttribute
@@ -38,7 +38,7 @@ namespace EasyPost.Utilities.Internal.Attributes
         internal string[] JsonPath { get; }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RequestParameterAttribute"/> class with the given <see cref="Necessity"/> and JSON path.
+        ///     Initializes a new instance of the <see cref="RequestParameterAttribute"/> class.
         /// </summary>
         /// <param name="necessity"><see cref="Necessity"/> level of this parameter.</param>
         /// <param name="jsonPath">Path in JSON schema where this parameter value will be inserted.</param>
@@ -50,12 +50,12 @@ namespace EasyPost.Utilities.Internal.Attributes
     }
 
     /// <summary>
-    ///     An attribute to label a parameter that will be included in a top-level (standalone) JSON request body.
+    ///     A <see cref="BaseCustomAttribute"/> to label a parameter that will be included in a top-level (standalone) JSON request body.
     /// </summary>
     internal sealed class TopLevelRequestParameterAttribute : RequestParameterAttribute
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="TopLevelRequestParameterAttribute"/> class with the given <see cref="Necessity"/> and JSON path.
+        ///     Initializes a new instance of the <see cref="TopLevelRequestParameterAttribute"/> class.
         /// </summary>
         /// <param name="necessity"><see cref="Necessity"/> level of this parameter.</param>
         /// <param name="jsonPath">Path in JSON schema where this parameter value will be inserted.</param>
@@ -66,7 +66,7 @@ namespace EasyPost.Utilities.Internal.Attributes
     }
 
     /// <summary>
-    ///     An attribute to label a parameter that will be included in an embedded dictionary inside another JSON request body (e.g. "address" data in "shipment" parameters).
+    ///     A <see cref="BaseCustomAttribute"/> to label a parameter that will be included in an embedded dictionary inside another JSON request body (e.g. "address" data in "shipment" parameters).
     /// </summary>
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = true, Inherited = false)]
     internal sealed class NestedRequestParameterAttribute : RequestParameterAttribute
@@ -77,7 +77,7 @@ namespace EasyPost.Utilities.Internal.Attributes
         private Type ParentType { get; }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="NestedRequestParameterAttribute"/> class with the given <see cref="Necessity"/> and JSON path.
+        ///     Initializes a new instance of the <see cref="NestedRequestParameterAttribute"/> class.
         /// </summary>
         /// <param name="parentType">The type of the parent parameter set that will utilize this parameter.</param>
         /// <param name="necessity"><see cref="Necessity"/> level of this parameter.</param>
