@@ -32,7 +32,6 @@ namespace EasyPost._base
         /// <inheritdoc />
         public override int GetHashCode() => AsJson().GetHashCode() ^ GetType().GetHashCode();
 
-
         /// <summary>
         ///     Compare two objects for equality.
         /// </summary>

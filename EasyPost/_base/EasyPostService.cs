@@ -16,7 +16,7 @@ namespace EasyPost._base
         ///     The <see cref="EasyPostClient"/> that this service will use to make API requests.
         /// </summary>
         protected internal readonly EasyPostClient Client;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="EasyPostService"/> class.
         /// </summary>

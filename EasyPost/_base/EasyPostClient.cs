@@ -175,7 +175,7 @@ namespace EasyPost._base
         /// <param name="obj">An object to compare this client against.</param>
         /// <returns>True if the two objects are equal, false otherwise.</returns>
         public override bool Equals(object? obj) => obj is EasyPostClient client && _configuration.Equals(client._configuration);
-        
+
         /// <summary>
         ///     Get the hash code for this <see cref="EasyPostClient"/>.
         /// </summary>
