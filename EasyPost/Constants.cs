@@ -6,8 +6,14 @@ using EasyPost.Utilities.Internal;
 
 namespace EasyPost
 {
+    /// <summary>
+    ///     Constants used throughout this SDK.
+    /// </summary>
     public static class Constants
     {
+        /// <summary>
+        ///     A <see cref="Dictionary{TKey,TValue}"/> of HTTP status codes and their corresponding <see cref="ApiError"/> types.
+        /// </summary>
         private static readonly Dictionary<int, Type?> HttpExceptionsMap = new()
         {
             // 1xx status codes are usually HTTP process-related, not server-related
@@ -39,8 +45,18 @@ namespace EasyPost
             { 504, typeof(GatewayTimeoutError) },
         };
 
+        /// <summary>
+        ///     Get a <see cref="ApiError"/> <see cref="Type"/> corresponding to this <see cref="HttpStatusCode"/>.
+        /// </summary>
+        /// <param name="statusCode">The <see cref="HttpStatusCode"/> to find the <see cref="ApiError"/> for.</param>
+        /// <returns>The corresponding <see cref="ApiError"/> type.</returns>
         public static Type? EasyPostExceptionType(this HttpStatusCode statusCode) => GetEasyPostExceptionType(statusCode);
 
+        /// <summary>
+        ///     Get a <see cref="ApiError"/> <see cref="Type"/> from its corresponding HTTP status code.
+        /// </summary>
+        /// <param name="statusCode">The HTTP status code to find the <see cref="ApiError"/> for.</param>
+        /// <returns>The corresponding <see cref="ApiError"/> type.</returns>
         public static Type? GetEasyPostExceptionType(int statusCode)
         {
             if (HttpExceptionsMap.TryGetValue(statusCode, out Type? value))
@@ -64,9 +80,17 @@ namespace EasyPost
             return exceptionType;
         }
 
+        /// <summary>
+        ///     Get a <see cref="ApiError"/> <see cref="Type"/> from its corresponding <see cref="HttpStatusCode"/>.
+        /// </summary>
+        /// <param name="statusCode">The <see cref="HttpStatusCode"/> to find the <see cref="ApiError"/> for.</param>
+        /// <returns>The corresponding <see cref="ApiError"/> type.</returns>
         public static Type? GetEasyPostExceptionType(HttpStatusCode statusCode) => GetEasyPostExceptionType((int)statusCode);
 
         // public so end-users can access if need to (i.e. regex?)
+        /// <summary>
+        ///     Exception messages used in this SDK.
+        /// </summary>
         public static class ErrorMessages
         {
             public const string InvalidApiKeyType = "Invalid API key type.";
@@ -89,8 +113,14 @@ namespace EasyPost
             public const string ApiRequestTimedOut = "The request to EasyPost timed out.";
         }
 
+        /// <summary>
+        ///     Common carrier account type groups.
+        /// </summary>
         public static class CarrierAccountTypes
         {
+            /// <summary>
+            ///     Carrier account types that support custom workflows.
+            /// </summary>
             internal static List<string> CarrierTypesWithCustomWorkflows => new()
             {
                 "FedexAccount",
