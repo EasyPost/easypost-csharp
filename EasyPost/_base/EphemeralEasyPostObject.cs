@@ -37,7 +37,7 @@ namespace EasyPost._base
         /// </summary>
         /// <param name="one">The first object in the comparison.</param>
         /// <param name="two">The second object in the comparison.</param>
-        /// <returns>true if the two objects are equal; otherwise, false.</returns>
+        /// <returns><c>true</c> if the two objects are equal; otherwise, false.</returns>
         public static bool operator ==(EphemeralEasyPostObject? one, object? two)
         {
             if (one is null && two is null)
@@ -60,7 +60,7 @@ namespace EasyPost._base
         /// </summary>
         /// <param name="one">The first object in the comparison.</param>
         /// <param name="two">The second object in the comparison.</param>
-        /// <returns>true if the two objects are not equal; otherwise, false.</returns>
+        /// <returns><c>true</c> if the two objects are not equal; otherwise, false.</returns>
         public static bool operator !=(EphemeralEasyPostObject? one, object? two) => !(one == two);
 
         /// <summary>

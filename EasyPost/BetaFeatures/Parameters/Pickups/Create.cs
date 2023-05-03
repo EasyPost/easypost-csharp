@@ -19,7 +19,7 @@ namespace EasyPost.BetaFeatures.Parameters.Pickups
         public IBatchParameter? Batch { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "carrier_accounts")]
-        public List<EasyPost.Models.API.CarrierAccount>? CarrierAccounts { get; set; }
+        public List<Models.API.CarrierAccount>? CarrierAccounts { get; set; }
 
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "instructions")]
         public string? Instructions { get; set; }

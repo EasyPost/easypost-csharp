@@ -56,7 +56,7 @@ namespace EasyPost.Services
         ///     Create a list of trackers.
         /// </summary>
         /// <param name="parameters">A dictionary of tracking codes and carriers.</param>
-        /// <returns>True if successful, False otherwise.</returns>
+        /// <returns><c>true</c> if successful, <c>false</c> otherwise.</returns>
         [CrudOperations.Create]
         public async Task CreateList(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -69,7 +69,7 @@ namespace EasyPost.Services
         ///     Create a list of trackers.
         /// </summary>
         /// <param name="parameters">A dictionary of tracking codes and carriers.</param>
-        /// <returns>True if successful, False otherwise.</returns>
+        /// <returns><c>true</c> if successful, <c>false</c> otherwise.</returns>
         [CrudOperations.Create]
         [Obsolete("This method is deprecated. Please use TrackerService.Create() instead. This method will be removed in a future version.", false)]
         public async Task CreateList(BetaFeatures.Parameters.Trackers.CreateList parameters, CancellationToken cancellationToken = default)

@@ -148,7 +148,7 @@ namespace EasyPost._base
         /// <param name="apiVersion"><see cref="ApiVersion"/> to use for the request.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <param name="parameters">Optional parameters to use for the request.</param>
-        /// <returns>True if the request was successful, false otherwise.</returns>
+        /// <returns><c>true</c> if the request was successful, <c>false</c> otherwise.</returns>
         // ReSharper disable once UnusedMethodReturnValue.Global
         internal async Task<bool> RequestAsync(Method method, string endpoint, ApiVersion apiVersion, CancellationToken cancellationToken, Dictionary<string, object>? parameters = null)
         {
@@ -173,7 +173,7 @@ namespace EasyPost._base
         ///     Compare this <see cref="EasyPostClient"/> to another object for equality.
         /// </summary>
         /// <param name="obj">An object to compare this client against.</param>
-        /// <returns>True if the two objects are equal, false otherwise.</returns>
+        /// <returns><c>true</c> if the two objects are equal, <c>false</c> otherwise.</returns>
         public override bool Equals(object? obj) => obj is EasyPostClient client && _configuration.Equals(client._configuration);
 
         /// <summary>
