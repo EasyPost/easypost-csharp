@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.BetaFeatures.Parameters.EndShippers
@@ -7,7 +8,7 @@ namespace EasyPost.BetaFeatures.Parameters.EndShippers
     ///     Parameters for <see cref="EasyPost.Models.API.EndShipper.Update(Update)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class Update : BaseParameters
+    public sealed class Update : BaseUpdateParameters<EndShipper>
     {
         #region Request Parameters
 
@@ -52,5 +53,22 @@ namespace EasyPost.BetaFeatures.Parameters.EndShippers
         public string? Zip { get; set; }
 
         #endregion
+
+        public static new Update FromObject(EndShipper obj)
+        {
+            return new Update
+            {
+                City = obj.City,
+                Country = obj.Country,
+                Company = obj.Company,
+                Email = obj.Email,
+                Name = obj.Name,
+                Phone = obj.Phone,
+                State = obj.State,
+                Street1 = obj.Street1,
+                Street2 = obj.Street2,
+                Zip = obj.Zip,
+            };
+        }
     }
 }

@@ -233,6 +233,32 @@ namespace EasyPost.Tests.BetaFeaturesTests.ParametersTests
             Assert.True(dictionary.Count == 4);
         }
 
+        [Fact]
+        [Testing.Function]
+        public async Task TestObjectToParameterConversionUtilityFunction()
+        {
+            UseVCR("object_to_parameter_conversion_utility_function");
+            
+            Dictionary<string, object> data = Fixtures.CaAddress1;
+
+            BetaFeatures.Parameters.EndShippers.Create createParameters = Fixtures.Parameters.EndShippers.Create(data);
+            
+            EndShipper endShipper = await Client.EndShipper.Create(createParameters);
+            
+            // modify a property of the EndShipper object
+            const string name = "a different name";
+            endShipper.Name = name;
+            
+            // Verify that the EndShipper's updated name got saved
+            Assert.Equal(name, endShipper.Name);
+
+            // create a set of Update parameters using the EndShipper object
+            BetaFeatures.Parameters.EndShippers.Update updateParameters = BetaFeatures.Parameters.EndShippers.Update.FromObject(endShipper);
+            
+            // Verify that the EndShipper's name got copied into the parameter set
+            Assert.Equal(endShipper.Name, updateParameters.Name);
+        }
+
         #endregion
     }
 
