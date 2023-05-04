@@ -110,7 +110,7 @@ namespace EasyPost.BetaFeatures.Parameters.Shipments
         public IParcelParameter? Parcel { get; set; }
 
         /// <summary>
-        ///     The service level for the new <see cref="Models.API.Shipment"/>. 
+        ///     The service level for the new <see cref="Models.API.Shipment"/>.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "service")]
         [NestedRequestParameter(typeof(Pickups.Create), Necessity.Optional, "service")]

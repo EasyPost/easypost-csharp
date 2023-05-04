@@ -75,7 +75,7 @@ namespace EasyPost.BetaFeatures.Parameters.Trackers
         ///     The carrier for the <see cref="Models.API.Tracker"/>.
         /// </summary>
         public string? Carrier { get; set; }
-        
+
         /// <summary>
         ///     The tracking code for the <see cref="Models.API.Tracker"/>.
         /// </summary>
