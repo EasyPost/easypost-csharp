@@ -6,13 +6,16 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.BetaFeatures.Parameters.Batches
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Models.API.Batch.AddShipments(AddShipments)"/> API calls.
+    ///     <a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Parameters</a> for <see cref="EasyPost.Services.BatchService.AddShipments(string, AddShipments, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class AddShipments : BaseParameters
     {
         #region Request Parameters
 
+        /// <summary>
+        ///     List of <see cref="Models.API.Shipment"/>s to add to the <see cref="Models.API.Batch"/>.
+        /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "shipments")]
         public List<Shipment>? Shipments { get; set; } // Shipments have to exist before they can be added to a batch
 

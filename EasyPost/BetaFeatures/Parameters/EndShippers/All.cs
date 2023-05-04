@@ -6,7 +6,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.BetaFeatures.Parameters.EndShippers
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.EndShipperService.All(All)"/> API calls.
+    ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-endshippers">Parameters</a> for <see cref="EasyPost.Services.EndShipperService.All(All, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class All : BaseAllParameters
@@ -27,15 +27,19 @@ namespace EasyPost.BetaFeatures.Parameters.EndShippers
 
         #endregion
 
-        protected override TParameters FromDictionaryProtected<TParameters>(Dictionary<string, object> dictionary)
+        /// <summary>
+        ///     Convert a dictionary into this parameter set.
+        /// </summary>
+        /// <param name="dictionary">Dictionary to parse.</param>
+        /// <returns>An <see cref="All"/> parameters set.</returns>
+        public static new All FromDictionary(Dictionary<string, object>? dictionary)
         {
-            var parameters = new All
+            if (dictionary == null) return new All();
+            return new All
             {
                 PageSize = dictionary.GetOrNullInt("page_size"),
                 AfterId = dictionary.GetOrNull<string>("after_id"),
             };
-
-            return (parameters as TParameters)!;
         }
     }
 }

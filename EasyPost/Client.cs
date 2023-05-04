@@ -31,7 +31,7 @@ namespace EasyPost
         ///     Access beta functionality.
         /// </summary>
         public BetaClient Beta { get; }
-        
+
         /// <summary>
         ///     Access Billing-related functionality.
         /// </summary>

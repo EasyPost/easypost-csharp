@@ -101,7 +101,7 @@ namespace EasyPost.Services
         {
             // TODO: When we adopt parameter objects as the only way to pass parameters, we don't need to do this object -> dictionary -> object conversion to store the filters.
             TrackerCollection collection = await RequestAsync<TrackerCollection>(Method.Get, "trackers", cancellationToken, parameters);
-            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Trackers.All>(parameters);
+            collection.Filters = BetaFeatures.Parameters.Trackers.All.FromDictionary(parameters);
             return collection;
         }
 

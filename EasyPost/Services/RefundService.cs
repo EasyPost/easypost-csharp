@@ -60,7 +60,7 @@ namespace EasyPost.Services
         public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             RefundCollection collection = await RequestAsync<RefundCollection>(Method.Get, "refunds", cancellationToken, parameters);
-            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Refunds.All>(parameters);
+            collection.Filters = BetaFeatures.Parameters.Refunds.All.FromDictionary(parameters);
             return collection;
         }
 

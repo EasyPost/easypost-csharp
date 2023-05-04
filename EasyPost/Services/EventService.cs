@@ -40,7 +40,7 @@ namespace EasyPost.Services
         public async Task<EventCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             EventCollection collection = await RequestAsync<EventCollection>(Method.Get, "events", cancellationToken, parameters);
-            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Events.All>(parameters);
+            collection.Filters = BetaFeatures.Parameters.Events.All.FromDictionary(parameters);
             return collection;
         }
 

@@ -119,9 +119,7 @@ namespace EasyPost.Services
         /// <exception cref="SignatureVerificationError">If webhook has an invalid signature.</exception>
         // ReSharper disable once MemberCanBeMadeStatic.Global
         // users could technically access this method without using a Client object, but we want to discourage that.
-#pragma warning disable CA1822 // TODO: Will be altered when instance methods are removed.
         public Event ValidateWebhook(byte[] data, Dictionary<string, object?> headers, string secret)
-#pragma warning restore CA1822
         {
             const string signatureHeader = "X-Hmac-Signature";
 

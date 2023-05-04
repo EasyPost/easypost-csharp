@@ -18,7 +18,6 @@ namespace EasyPost.Http
 #pragma warning restore CA1001
 #pragma warning restore CA1852
     {
-        
         /// <summary>
         ///     The <see cref="HttpRequestMessage"/> being executed by an <see cref="HttpClient"/>.
         /// </summary>

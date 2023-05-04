@@ -227,7 +227,7 @@ namespace EasyPost.Tests.BetaFeaturesTests.ServicesTests
                 FileFormat = "ZPL",
             };
 
-            await Client.Batch.GenerateScanForm(batch.Id, generateScanFormParameters);
+            batch = await Client.Batch.GenerateScanForm(batch.Id, generateScanFormParameters);
 
             // We can't assert anything meaningful here because the scanform gets queued for generation and may not be immediately available
             Assert.IsType<Batch>(batch);

@@ -132,7 +132,7 @@ namespace EasyPost.Services
         public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             AddressCollection collection = await RequestAsync<AddressCollection>(Method.Get, "addresses", cancellationToken, parameters);
-            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Addresses.All>(parameters);
+            collection.Filters = BetaFeatures.Parameters.Addresses.All.FromDictionary(parameters);
             return collection;
         }
 

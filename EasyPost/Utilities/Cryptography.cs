@@ -27,7 +27,7 @@ namespace EasyPost.Utilities
 
             return encoding.GetString(bytes);
         }
-        
+
         /// <summary>
         ///     Convert a string to a byte array using a specific encoding.
         /// </summary>
@@ -40,7 +40,7 @@ namespace EasyPost.Utilities
 
             return encoding.GetBytes(str);
         }
-        
+
         /// <summary>
         ///     Convert a byte array to a hex string.
         /// </summary>
@@ -61,7 +61,7 @@ namespace EasyPost.Utilities
 
             return new string(result).ToLowerInvariant();
         }
-        
+
         /// <summary>
         ///     Convert a string to a hex string using a specific encoding.
         /// </summary>

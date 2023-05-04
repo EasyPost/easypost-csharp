@@ -73,7 +73,7 @@ namespace EasyPost.Services
             // Copy the report type into the dictionary before we store the dictionary in the collection
             parameters ??= new Dictionary<string, object>();
             parameters["type"] = type;
-            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Reports.All>(parameters);
+            collection.Filters = BetaFeatures.Parameters.Reports.All.FromDictionary(parameters);
             return collection;
         }
 
