@@ -1,16 +1,20 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Threading;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.BetaFeatures.Parameters.Batches
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Models.API.Batch.GenerateLabel(GenerateLabel)"/> API calls.
+    ///     <a href="https://www.easypost.com/docs/api#batch-labels">Parameters</a> for <see cref="EasyPost.Services.BatchService.GenerateLabel(string, GenerateLabel, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class GenerateLabel : BaseParameters
     {
         #region Request Parameters
 
+        /// <summary>
+        ///     File format for the label.
+        /// </summary>
         [TopLevelRequestParameter(Necessity.Required, "file_format")]
         public string? FileFormat { get; set; }
 

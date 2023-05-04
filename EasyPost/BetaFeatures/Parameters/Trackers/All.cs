@@ -6,7 +6,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.BetaFeatures.Parameters.Trackers
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.TrackerService.All(All)"/> API calls.
+    ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-trackers">Parameters</a> for <see cref="EasyPost.Services.TrackerService.All(All, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class All : BaseAllParameters
@@ -57,9 +57,15 @@ namespace EasyPost.BetaFeatures.Parameters.Trackers
 
         #endregion
 
-        protected override TParameters FromDictionaryProtected<TParameters>(Dictionary<string, object> dictionary)
+        /// <summary>
+        ///     Convert a dictionary into this parameter set.
+        /// </summary>
+        /// <param name="dictionary">Dictionary to parse.</param>
+        /// <returns>An <see cref="All"/> parameters set.</returns>
+        public static new All FromDictionary(Dictionary<string, object>? dictionary)
         {
-            var parameters = new All
+            if (dictionary == null) return new All();
+            return new All
             {
                 PageSize = dictionary.GetOrNullInt("page_size"),
                 BeforeId = dictionary.GetOrNull<string>("before_id"),
@@ -69,8 +75,6 @@ namespace EasyPost.BetaFeatures.Parameters.Trackers
                 Carrier = dictionary.GetOrNull<string>("carrier"),
                 TrackingCode = dictionary.GetOrNull<string>("tracking_code"),
             };
-
-            return (parameters as TParameters)!;
         }
     }
 }

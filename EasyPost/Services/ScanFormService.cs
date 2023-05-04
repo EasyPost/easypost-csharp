@@ -63,7 +63,7 @@ namespace EasyPost.Services
         public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             ScanFormCollection collection = await RequestAsync<ScanFormCollection>(Method.Get, "scan_forms", cancellationToken, parameters);
-            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.ScanForms.All>(parameters);
+            collection.Filters = BetaFeatures.Parameters.ScanForms.All.FromDictionary(parameters);
             return collection;
         }
 

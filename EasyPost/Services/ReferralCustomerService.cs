@@ -68,7 +68,7 @@ namespace EasyPost.Services
         public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             ReferralCustomerCollection collection = await RequestAsync<ReferralCustomerCollection>(Method.Get, "referral_customers", cancellationToken, parameters);
-            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.ReferralCustomers.All>(parameters);
+            collection.Filters = BetaFeatures.Parameters.ReferralCustomers.All.FromDictionary(parameters);
             return collection;
         }
 

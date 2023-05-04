@@ -78,7 +78,7 @@ namespace EasyPost.Services
         public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             EndShipperCollection collection = await RequestAsync<EndShipperCollection>(Method.Get, "end_shippers", cancellationToken, parameters);
-            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.EndShippers.All>(parameters);
+            collection.Filters = BetaFeatures.Parameters.EndShippers.All.FromDictionary(parameters);
             return collection;
         }
 

@@ -6,13 +6,16 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.BetaFeatures.Parameters.Trackers
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.TrackerService.CreateList(CreateList)"/> API calls.
+    ///     Parameters for <see cref="EasyPost.Services.TrackerService.CreateList(CreateList, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class CreateList : BaseParameters, ITrackerParameter
     {
         #region Request Parameters
 
+        /// <summary>
+        ///     The list of <see cref="Models.API.Tracker"/>s to batch-create.
+        /// </summary>
         private List<CreateListTracker> Trackers { get; set; }
 
         /// <summary>
@@ -63,11 +66,26 @@ namespace EasyPost.BetaFeatures.Parameters.Trackers
         #endregion
     }
 
+    /// <summary>
+    ///     Internal class used to construct a <see cref="CreateList"/> parameter set.
+    /// </summary>
     internal sealed class CreateListTracker
     {
+        /// <summary>
+        ///     The carrier for the <see cref="Models.API.Tracker"/>.
+        /// </summary>
         public string? Carrier { get; set; }
+        
+        /// <summary>
+        ///     The tracking code for the <see cref="Models.API.Tracker"/>.
+        /// </summary>
         public string TrackingCode { get; set; }
 
+        /// <summary>
+        ///     Instantiate a new instance of the <see cref="CreateListTracker"/> class.
+        /// </summary>
+        /// <param name="trackingCode">The tracking code.</param>
+        /// <param name="carrier">The carrier.</param>
         public CreateListTracker(string trackingCode, string? carrier)
         {
             Carrier = carrier;

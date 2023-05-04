@@ -77,7 +77,7 @@ namespace EasyPost.Services
         public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             InsuranceCollection collection = await RequestAsync<InsuranceCollection>(Method.Get, "insurances", cancellationToken, parameters);
-            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Insurance.All>(parameters);
+            collection.Filters = BetaFeatures.Parameters.Insurance.All.FromDictionary(parameters);
             return collection;
         }
 

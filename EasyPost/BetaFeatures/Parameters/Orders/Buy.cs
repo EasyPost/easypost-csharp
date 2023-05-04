@@ -5,16 +5,22 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.BetaFeatures.Parameters.Orders
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Models.API.Order.Buy(Buy)"/> API calls.
+    ///     <a href="https://www.easypost.com/docs/api#buy-an-order">Parameters</a> for <see cref="EasyPost.Services.OrderService.Buy(string, Buy, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class Buy : BaseParameters
     {
         #region Request Parameters
 
+        /// <summary>
+        ///     Carrier for use to buy the <see cref="Models.API.Order"/>.
+        /// </summary>
         [TopLevelRequestParameter(Necessity.Required, "carrier")]
         public string? Carrier { get; set; }
 
+        /// <summary>
+        ///     Service level to use to buy the <see cref="Models.API.Order"/>.
+        /// </summary>
         [TopLevelRequestParameter(Necessity.Required, "service")]
         public string? Service { get; set; }
 

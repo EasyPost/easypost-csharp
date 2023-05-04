@@ -85,7 +85,7 @@ namespace EasyPost.Services
         public async Task<PickupCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             PickupCollection collection = await RequestAsync<PickupCollection>(Method.Get, "pickups", cancellationToken, parameters);
-            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Pickups.All>(parameters);
+            collection.Filters = BetaFeatures.Parameters.Pickups.All.FromDictionary(parameters);
             return collection;
         }
 
