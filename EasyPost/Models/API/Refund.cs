@@ -12,15 +12,15 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("carrier")]
-        public string? Carrier { get; set; }
+        public string? Carrier { get; internal set; }
         [JsonProperty("confirmation_number")]
-        public string? ConfirmationNumber { get; set; }
+        public string? ConfirmationNumber { get; internal set; }
         [JsonProperty("shipment_id")]
-        public string? ShipmentId { get; set; }
+        public string? ShipmentId { get; internal set; }
         [JsonProperty("status")]
-        public string? Status { get; set; }
+        public string? Status { get; internal set; }
         [JsonProperty("tracking_code")]
-        public string? TrackingCode { get; set; }
+        public string? TrackingCode { get; internal set; }
 
         #endregion
 
@@ -34,7 +34,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("refunds")]
-        public List<Refund>? Refunds { get; set; }
+        public List<Refund>? Refunds { get; internal set; }
 
         #endregion
 

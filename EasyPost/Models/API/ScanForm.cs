@@ -12,19 +12,19 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("address")]
-        public Address? Address { get; set; }
+        public Address? Address { get; internal set; }
         [JsonProperty("batch_id")]
-        public string? BatchId { get; set; }
+        public string? BatchId { get; internal set; }
         [JsonProperty("form_file_type")]
-        public string? FormFileType { get; set; }
+        public string? FormFileType { get; internal set; }
         [JsonProperty("form_url")]
-        public string? FormUrl { get; set; }
+        public string? FormUrl { get; internal set; }
         [JsonProperty("message")]
-        public string? Message { get; set; }
+        public string? Message { get; internal set; }
         [JsonProperty("status")]
-        public string? Status { get; set; }
+        public string? Status { get; internal set; }
         [JsonProperty("tracking_codes")]
-        public List<string>? TrackingCodes { get; set; }
+        public List<string>? TrackingCodes { get; internal set; }
 
         #endregion
 
@@ -38,7 +38,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("scan_forms")]
-        public List<ScanForm>? ScanForms { get; set; }
+        public List<ScanForm>? ScanForms { get; internal set; }
 
         #endregion
 

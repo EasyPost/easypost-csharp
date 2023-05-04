@@ -13,17 +13,17 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("end_date")]
-        public DateTime? EndDate { get; set; }
+        public DateTime? EndDate { get; internal set; }
         [JsonProperty("include_children")]
-        public bool? IncludeChildren { get; set; }
+        public bool? IncludeChildren { get; internal set; }
         [JsonProperty("start_date")]
-        public DateTime? StartDate { get; set; }
+        public DateTime? StartDate { get; internal set; }
         [JsonProperty("status")]
-        public string? Status { get; set; }
+        public string? Status { get; internal set; }
         [JsonProperty("url")]
-        public string? Url { get; set; }
+        public string? Url { get; internal set; }
         [JsonProperty("url_expires_at")]
-        public DateTime? UrlExpiresAt { get; set; }
+        public DateTime? UrlExpiresAt { get; internal set; }
 
         #endregion
 
@@ -37,7 +37,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("reports")]
-        public List<Report>? Reports { get; set; }
+        public List<Report>? Reports { get; internal set; }
 
         #endregion
 

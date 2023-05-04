@@ -15,63 +15,63 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("batch_id")]
-        public string? BatchId { get; set; }
+        public string? BatchId { get; internal set; }
         [JsonProperty("batch_message")]
-        public string? BatchMessage { get; set; }
+        public string? BatchMessage { get; internal set; }
         [JsonProperty("batch_status")]
-        public string? BatchStatus { get; set; }
+        public string? BatchStatus { get; internal set; }
         [JsonProperty("buyer_address")]
-        public Address? BuyerAddress { get; set; }
+        public Address? BuyerAddress { get; internal set; }
         [JsonProperty("carrier_accounts")]
-        public List<CarrierAccount>? CarrierAccounts { get; set; }
+        public List<CarrierAccount>? CarrierAccounts { get; internal set; }
         [JsonProperty("customs_info")]
-        public CustomsInfo? CustomsInfo { get; set; }
+        public CustomsInfo? CustomsInfo { get; internal set; }
         [JsonProperty("fees")]
-        public List<Fee>? Fees { get; set; }
+        public List<Fee>? Fees { get; internal set; }
         [JsonProperty("forms")]
-        public List<Form>? Forms { get; set; }
+        public List<Form>? Forms { get; internal set; }
         [JsonProperty("from_address")]
-        public Address? FromAddress { get; set; }
+        public Address? FromAddress { get; internal set; }
         [JsonProperty("insurance")]
-        public string? Insurance { get; set; }
+        public string? Insurance { get; internal set; }
         [JsonProperty("is_return")]
-        public bool? IsReturn { get; set; }
+        public bool? IsReturn { get; internal set; }
         [JsonProperty("messages")]
-        public List<Message>? Messages { get; set; }
+        public List<Message>? Messages { get; internal set; }
         [JsonProperty("options")]
-        public Options? Options { get; set; }
+        public Options? Options { get; internal set; }
         [JsonProperty("order_id")]
-        public string? OrderId { get; set; }
+        public string? OrderId { get; internal set; }
         [JsonProperty("parcel")]
-        public Parcel? Parcel { get; set; }
+        public Parcel? Parcel { get; internal set; }
         [JsonProperty("postage_label")]
-        public PostageLabel? PostageLabel { get; set; }
+        public PostageLabel? PostageLabel { get; internal set; }
         [JsonProperty("rates")]
-        public List<Rate>? Rates { get; set; }
+        public List<Rate>? Rates { get; internal set; }
         [JsonProperty("reference")]
-        public string? Reference { get; set; }
+        public string? Reference { get; internal set; }
         [JsonProperty("refund_status")]
-        public string? RefundStatus { get; set; }
+        public string? RefundStatus { get; internal set; }
         [JsonProperty("return_address")]
-        public Address? ReturnAddress { get; set; }
+        public Address? ReturnAddress { get; internal set; }
         [JsonProperty("scan_form")]
-        public ScanForm? ScanForm { get; set; }
+        public ScanForm? ScanForm { get; internal set; }
         [JsonProperty("selected_rate")]
-        public Rate? SelectedRate { get; set; }
+        public Rate? SelectedRate { get; internal set; }
         [JsonProperty("service")]
-        public string? Service { get; set; }
+        public string? Service { get; internal set; }
         [JsonProperty("status")]
-        public string? Status { get; set; }
+        public string? Status { get; internal set; }
         [JsonProperty("tax_identifiers")]
-        public List<TaxIdentifier>? TaxIdentifiers { get; set; }
+        public List<TaxIdentifier>? TaxIdentifiers { get; internal set; }
         [JsonProperty("to_address")]
-        public Address? ToAddress { get; set; }
+        public Address? ToAddress { get; internal set; }
         [JsonProperty("tracker")]
-        public Tracker? Tracker { get; set; }
+        public Tracker? Tracker { get; internal set; }
         [JsonProperty("tracking_code")]
-        public string? TrackingCode { get; set; }
+        public string? TrackingCode { get; internal set; }
         [JsonProperty("usps_zone")]
-        public string? UspsZone { get; set; }
+        public string? UspsZone { get; internal set; }
 
         #endregion
 
@@ -105,7 +105,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("shipments")]
-        public List<Shipment>? Shipments { get; set; }
+        public List<Shipment>? Shipments { get; internal set; }
 
         #endregion
 

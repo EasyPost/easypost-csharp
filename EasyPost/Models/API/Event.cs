@@ -13,19 +13,19 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("completed_urls")]
-        public List<string>? CompletedUrls { get; set; }
+        public List<string>? CompletedUrls { get; internal set; }
         [JsonProperty("description")]
-        public string? Description { get; set; }
+        public string? Description { get; internal set; }
         [JsonProperty("pending_urls")]
-        public List<string>? PendingUrls { get; set; }
+        public List<string>? PendingUrls { get; internal set; }
         [JsonProperty("previous_attributes")]
-        public Dictionary<string, object>? PreviousAttributes { get; set; }
+        public Dictionary<string, object>? PreviousAttributes { get; internal set; }
         [JsonProperty("result")]
-        public Dictionary<string, object>? Result { get; set; }
+        public Dictionary<string, object>? Result { get; internal set; }
         [JsonProperty("status")]
-        public string? Status { get; set; }
+        public string? Status { get; internal set; }
         [JsonProperty("user_id")]
-        public string? UserId { get; set; }
+        public string? UserId { get; internal set; }
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("events")]
-        public List<Event>? Events { get; set; }
+        public List<Event>? Events { get; internal set; }
 
         #endregion
 

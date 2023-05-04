@@ -18,7 +18,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("referral_customers")]
-        public List<ReferralCustomer>? ReferralCustomers { get; set; }
+        public List<ReferralCustomer>? ReferralCustomers { get; internal set; }
 
         #endregion
 

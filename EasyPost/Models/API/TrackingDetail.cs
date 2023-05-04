@@ -9,15 +9,15 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("datetime")]
-        public DateTime? Datetime { get; set; }
+        public DateTime? Datetime { get; internal set; }
         [JsonProperty("message")]
-        public string? Message { get; set; }
+        public string? Message { get; internal set; }
         [JsonProperty("status")]
-        public string? Status { get; set; }
+        public string? Status { get; internal set; }
         [JsonProperty("status_detail")]
-        public string? StatusDetail { get; set; }
+        public string? StatusDetail { get; internal set; }
         [JsonProperty("tracking_location")]
-        public TrackingLocation? TrackingLocation { get; set; }
+        public TrackingLocation? TrackingLocation { get; internal set; }
 
         #endregion
 

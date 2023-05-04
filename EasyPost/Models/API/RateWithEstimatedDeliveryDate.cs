@@ -9,9 +9,9 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("rate")]
-        public Rate? Rate { get; set; }
+        public Rate? Rate { get; internal set; }
         [JsonProperty("easypost_time_in_transit_data")]
-        public TimeInTransitDetails? EasyPostTimeInTransitData { get; set; }
+        public TimeInTransitDetails? EasyPostTimeInTransitData { get; internal set; }
 
         #endregion
 
@@ -25,11 +25,11 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("days_in_transit")]
-        public TimeInTransit? DaysInTransit { get; set; }
+        public TimeInTransit? DaysInTransit { get; internal set; }
         [JsonProperty("easypost_time_in_transit_data")]
-        public string? EasyPostEstimatedDeliveryDate { get; set; }
+        public string? EasyPostEstimatedDeliveryDate { get; internal set; }
         [JsonProperty("planned_ship_date")]
-        public DateTime? PlannedShipDate { get; set; }
+        public DateTime? PlannedShipDate { get; internal set; }
 
         #endregion
 

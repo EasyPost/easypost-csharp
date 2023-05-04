@@ -15,23 +15,23 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("bank_name")]
-        public string? BankName { get; set; } // bank_account
+        public string? BankName { get; internal set; } // bank_account
         [JsonProperty("brand")]
-        public string? Brand { get; set; } // credit_card
+        public string? Brand { get; internal set; } // credit_card
         [JsonProperty("country")]
-        public string? Country { get; set; } // bank_account
+        public string? Country { get; internal set; } // bank_account
         [JsonProperty("disabled_at")]
-        public string? DisabledAt { get; set; } // both
+        public string? DisabledAt { get; internal set; } // both
         [JsonProperty("exp_month")]
-        public int? ExpMonth { get; set; } // credit_card
+        public int? ExpMonth { get; internal set; } // credit_card
         [JsonProperty("exp_year")]
-        public int? ExpYear { get; set; } // credit_card
+        public int? ExpYear { get; internal set; } // credit_card
         [JsonProperty("last4")]
-        public string? Last4 { get; set; } // both
+        public string? Last4 { get; internal set; } // both
         [JsonProperty("name")]
-        public string? Name { get; set; } // credit_card
+        public string? Name { get; internal set; } // credit_card
         [JsonProperty("verified")]
-        public bool? Verified { get; set; } // bank_account
+        public bool? Verified { get; internal set; } // bank_account
 
         #endregion
 

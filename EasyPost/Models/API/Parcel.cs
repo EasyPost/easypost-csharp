@@ -9,15 +9,15 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("height")]
-        public double? Height { get; set; }
+        public double? Height { get; internal set; }
         [JsonProperty("length")]
-        public double? Length { get; set; }
+        public double? Length { get; internal set; }
         [JsonProperty("predefined_package")]
-        public string? PredefinedPackage { get; set; }
+        public string? PredefinedPackage { get; internal set; }
         [JsonProperty("weight")]
-        public double? Weight { get; set; }
+        public double? Weight { get; internal set; }
         [JsonProperty("width")]
-        public double? Width { get; set; }
+        public double? Width { get; internal set; }
 
         #endregion
 

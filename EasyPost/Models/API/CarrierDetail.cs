@@ -9,23 +9,23 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("alternate_identifier")]
-        public string? AlternateIdentifier { get; set; }
+        public string? AlternateIdentifier { get; internal set; }
         [JsonProperty("container_type")]
-        public string? ContainerType { get; set; }
+        public string? ContainerType { get; internal set; }
         [JsonProperty("destination_location")]
-        public string? DestinationLocation { get; set; }
+        public string? DestinationLocation { get; internal set; }
         [JsonProperty("est_delivery_date_local")]
-        public string? EstDeliveryDateLocal { get; set; }
+        public string? EstDeliveryDateLocal { get; internal set; }
         [JsonProperty("est_delivery_time_local")]
-        public string? EstDeliveryTimeLocal { get; set; }
+        public string? EstDeliveryTimeLocal { get; internal set; }
         [JsonProperty("guaranteed_delivery_date")]
-        public DateTime? GuaranteedDeliveryDate { get; set; }
+        public DateTime? GuaranteedDeliveryDate { get; internal set; }
         [JsonProperty("initial_delivery_attempt")]
-        public DateTime? InitialDeliveryAttempt { get; set; }
+        public DateTime? InitialDeliveryAttempt { get; internal set; }
         [JsonProperty("origin_location")]
-        public string? OriginLocation { get; set; }
+        public string? OriginLocation { get; internal set; }
         [JsonProperty("service")]
-        public string? Service { get; set; }
+        public string? Service { get; internal set; }
 
         #endregion
 

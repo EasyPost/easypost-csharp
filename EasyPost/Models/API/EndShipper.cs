@@ -15,29 +15,29 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("city")]
-        public string? City { get; set; }
+        public string? City { get; internal set; }
         [JsonProperty("company")]
-        public string? Company { get; set; }
+        public string? Company { get; internal set; }
         [JsonProperty("country")]
-        public string? Country { get; set; }
+        public string? Country { get; internal set; }
         [JsonProperty("email")]
-        public string? Email { get; set; }
+        public string? Email { get; internal set; }
         [JsonProperty("error")]
-        public string? Error { get; set; }
+        public string? Error { get; internal set; }
         [JsonProperty("message")]
-        public string? Message { get; set; }
+        public string? Message { get; internal set; }
         [JsonProperty("name")]
-        public string? Name { get; set; }
+        public string? Name { get; internal set; }
         [JsonProperty("phone")]
-        public string? Phone { get; set; }
+        public string? Phone { get; internal set; }
         [JsonProperty("state")]
-        public string? State { get; set; }
+        public string? State { get; internal set; }
         [JsonProperty("street1")]
-        public string? Street1 { get; set; }
+        public string? Street1 { get; internal set; }
         [JsonProperty("street2")]
-        public string? Street2 { get; set; }
+        public string? Street2 { get; internal set; }
         [JsonProperty("zip")]
-        public string? Zip { get; set; }
+        public string? Zip { get; internal set; }
 
         #endregion
 
@@ -51,7 +51,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("end_shippers")]
-        public List<EndShipper>? EndShippers { get; set; }
+        public List<EndShipper>? EndShippers { get; internal set; }
 
         #endregion
 

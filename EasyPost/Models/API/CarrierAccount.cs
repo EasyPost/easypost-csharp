@@ -14,20 +14,20 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("billing_type")]
-        public string? BillingType { get; set; }
+        public string? BillingType { get; internal set; }
         [JsonProperty("credentials")]
-        public Dictionary<string, object>? Credentials { get; set; }
+        public Dictionary<string, object>? Credentials { get; internal set; }
         [JsonProperty("description")]
-        public string? Description { get; set; }
+        public string? Description { get; internal set; }
         [JsonProperty("readable")]
-        public string? Readable { get; set; }
+        public string? Readable { get; internal set; }
         [JsonProperty("reference")]
-        public string? Reference { get; set; }
+        public string? Reference { get; internal set; }
         [JsonProperty("test_credentials")]
         [SuppressMessage("ReSharper", "InconsistentNaming", Justification = "TestCredentials is the correct name for this property")]
-        public Dictionary<string, object>? TestCredentials { get; set; }
+        public Dictionary<string, object>? TestCredentials { get; internal set; }
         [JsonProperty("type")]
-        public string? Type { get; set; }
+        public string? Type { get; internal set; }
 
         #endregion
 

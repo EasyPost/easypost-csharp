@@ -8,13 +8,13 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("amount")]
-        public double? Amount { get; set; }
+        public double? Amount { get; internal set; }
         [JsonProperty("charged")]
-        public bool? Charged { get; set; }
+        public bool? Charged { get; internal set; }
         [JsonProperty("refunded")]
-        public bool? Refunded { get; set; }
+        public bool? Refunded { get; internal set; }
         [JsonProperty("type")]
-        public string? Type { get; set; }
+        public string? Type { get; internal set; }
 
         #endregion
 

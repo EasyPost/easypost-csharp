@@ -16,29 +16,29 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("address")]
-        public Address? Address { get; set; }
+        public Address? Address { get; internal set; }
         [JsonProperty("carrier_accounts")]
-        public List<CarrierAccount>? CarrierAccounts { get; set; }
+        public List<CarrierAccount>? CarrierAccounts { get; internal set; }
         [JsonProperty("confirmation")]
-        public string? Confirmation { get; set; }
+        public string? Confirmation { get; internal set; }
         [JsonProperty("instructions")]
-        public string? Instructions { get; set; }
+        public string? Instructions { get; internal set; }
         [JsonProperty("is_account_address")]
-        public bool? IsAccountAddress { get; set; }
+        public bool? IsAccountAddress { get; internal set; }
         [JsonProperty("max_datetime")]
-        public DateTime? MaxDatetime { get; set; }
+        public DateTime? MaxDatetime { get; internal set; }
         [JsonProperty("messages")]
-        public List<Message>? Messages { get; set; }
+        public List<Message>? Messages { get; internal set; }
         [JsonProperty("min_datetime")]
-        public DateTime? MinDatetime { get; set; }
+        public DateTime? MinDatetime { get; internal set; }
         [JsonProperty("name")]
-        public string? Name { get; set; }
+        public string? Name { get; internal set; }
         [JsonProperty("pickup_rates")]
-        public List<PickupRate>? PickupRates { get; set; }
+        public List<PickupRate>? PickupRates { get; internal set; }
         [JsonProperty("reference")]
-        public string? Reference { get; set; }
+        public string? Reference { get; internal set; }
         [JsonProperty("status")]
-        public string? Status { get; set; }
+        public string? Status { get; internal set; }
 
         #endregion
 
@@ -68,7 +68,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("pickups")]
-        public List<Pickup>? Pickups { get; set; }
+        public List<Pickup>? Pickups { get; internal set; }
 
         #endregion
 

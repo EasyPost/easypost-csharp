@@ -9,21 +9,21 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("code")]
-        public string? Code { get; set; }
+        public string? Code { get; internal set; }
         [JsonProperty("currency")]
-        public string? Currency { get; set; }
+        public string? Currency { get; internal set; }
         [JsonProperty("description")]
-        public string? Description { get; set; }
+        public string? Description { get; internal set; }
         [JsonProperty("hs_tariff_number")]
-        public string? HsTariffNumber { get; set; }
+        public string? HsTariffNumber { get; internal set; }
         [JsonProperty("origin_country")]
-        public string? OriginCountry { get; set; }
+        public string? OriginCountry { get; internal set; }
         [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
+        public int? Quantity { get; internal set; }
         [JsonProperty("value")]
-        public double? Value { get; set; }
+        public double? Value { get; internal set; }
         [JsonProperty("weight")]
-        public double? Weight { get; set; }
+        public double? Weight { get; internal set; }
 
         #endregion
 

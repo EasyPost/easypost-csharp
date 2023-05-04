@@ -13,29 +13,29 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("carrier")]
-        public string? Carrier { get; set; }
+        public string? Carrier { get; internal set; }
         [JsonProperty("carrier_detail")]
-        public CarrierDetail? CarrierDetail { get; set; }
+        public CarrierDetail? CarrierDetail { get; internal set; }
         [JsonProperty("est_delivery_date")]
-        public DateTime? EstDeliveryDate { get; set; }
+        public DateTime? EstDeliveryDate { get; internal set; }
         [JsonProperty("public_url")]
-        public string? PublicUrl { get; set; }
+        public string? PublicUrl { get; internal set; }
         [JsonProperty("shipment_id")]
-        public string? ShipmentId { get; set; }
+        public string? ShipmentId { get; internal set; }
         [JsonProperty("signed_by")]
-        public string? SignedBy { get; set; }
+        public string? SignedBy { get; internal set; }
         [JsonProperty("status")]
-        public string? Status { get; set; }
+        public string? Status { get; internal set; }
         [JsonProperty("status_detail")]
-        public string? StatusDetail { get; set; }
+        public string? StatusDetail { get; internal set; }
         [JsonProperty("tracking_code")]
-        public string? TrackingCode { get; set; }
+        public string? TrackingCode { get; internal set; }
         [JsonProperty("tracking_details")]
-        public List<TrackingDetail>? TrackingDetails { get; set; }
+        public List<TrackingDetail>? TrackingDetails { get; internal set; }
         [JsonProperty("tracking_updated_at")]
-        public DateTime? TrackingUpdatedAt { get; set; }
+        public DateTime? TrackingUpdatedAt { get; internal set; }
         [JsonProperty("weight")]
-        public double? Weight { get; set; }
+        public double? Weight { get; internal set; }
 
         #endregion
 
@@ -49,7 +49,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("trackers")]
-        public List<Tracker>? Trackers { get; set; }
+        public List<Tracker>? Trackers { get; internal set; }
 
         #endregion
 

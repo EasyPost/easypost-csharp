@@ -15,40 +15,40 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("carrier_facility")]
-        public string? CarrierFacility { get; set; }
+        public string? CarrierFacility { get; internal set; }
         [JsonProperty("city")]
-        public string? City { get; set; }
+        public string? City { get; internal set; }
         [JsonProperty("company")]
-        public string? Company { get; set; }
+        public string? Company { get; internal set; }
         [JsonProperty("country")]
-        public string? Country { get; set; }
+        public string? Country { get; internal set; }
         [JsonProperty("email")]
-        public string? Email { get; set; }
+        public string? Email { get; internal set; }
         [JsonProperty("error")]
-        public string? Error { get; set; }
+        public string? Error { get; internal set; }
         [JsonProperty("federal_tax_id")]
-        public string? FederalTaxId { get; set; }
+        public string? FederalTaxId { get; internal set; }
         [JsonProperty("message")]
-        public string? Message { get; set; }
+        public string? Message { get; internal set; }
         [JsonProperty("name")]
-        public string? Name { get; set; }
+        public string? Name { get; internal set; }
         [JsonProperty("phone")]
-        public string? Phone { get; set; }
+        public string? Phone { get; internal set; }
         [JsonProperty("residential")]
-        public bool? Residential { get; set; }
+        public bool? Residential { get; internal set; }
         [JsonProperty("state")]
-        public string? State { get; set; }
+        public string? State { get; internal set; }
 
         [JsonProperty("state_tax_id")]
-        public string? StateTaxId { get; set; }
+        public string? StateTaxId { get; internal set; }
         [JsonProperty("street1")]
-        public string? Street1 { get; set; }
+        public string? Street1 { get; internal set; }
         [JsonProperty("street2")]
-        public string? Street2 { get; set; }
+        public string? Street2 { get; internal set; }
         [JsonProperty("verifications")]
-        public Verifications? Verifications { get; set; }
+        public Verifications? Verifications { get; internal set; }
         [JsonProperty("zip")]
-        public string? Zip { get; set; }
+        public string? Zip { get; internal set; }
 
         #endregion
 
@@ -62,7 +62,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("addresses")]
-        public List<Address>? Addresses { get; set; }
+        public List<Address>? Addresses { get; internal set; }
 
         #endregion
 

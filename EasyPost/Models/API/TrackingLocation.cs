@@ -8,13 +8,13 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("city")]
-        public string? City { get; set; }
+        public string? City { get; internal set; }
         [JsonProperty("country")]
-        public string? Country { get; set; }
+        public string? Country { get; internal set; }
         [JsonProperty("state")]
-        public string? State { get; set; }
+        public string? State { get; internal set; }
         [JsonProperty("zip")]
-        public string? Zip { get; set; }
+        public string? Zip { get; internal set; }
 
         #endregion
 

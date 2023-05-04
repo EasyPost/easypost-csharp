@@ -7,7 +7,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("pickup_id")]
-        public string? PickupId { get; set; }
+        public string? PickupId { get; internal set; }
 
         #endregion
 

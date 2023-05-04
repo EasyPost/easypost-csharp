@@ -10,7 +10,7 @@ namespace EasyPost.Models.API.Beta
         #region JSON Properties
 
         [JsonProperty("carriers")]
-        public List<Carrier>? Carriers { get; set; }
+        public List<Carrier>? Carriers { get; internal set; }
 
         #endregion
     }
@@ -21,22 +21,22 @@ namespace EasyPost.Models.API.Beta
         #region JSON Properties
 
         [JsonProperty("name")]
-        public string? Name { get; set; }
+        public string? Name { get; internal set; }
 
         [JsonProperty("human_readable")]
-        public string? HumanReadable { get; set; }
+        public string? HumanReadable { get; internal set; }
 
         [JsonProperty("predefined_packages")]
-        public List<PredefinedPackage>? PredefinedPackages { get; set; }
+        public List<PredefinedPackage>? PredefinedPackages { get; internal set; }
 
         [JsonProperty("service_levels")]
-        public List<ServiceLevel>? ServiceLevels { get; set; }
+        public List<ServiceLevel>? ServiceLevels { get; internal set; }
 
         [JsonProperty("shipment_options")]
-        public List<ShipmentOption>? ShipmentOptions { get; set; }
+        public List<ShipmentOption>? ShipmentOptions { get; internal set; }
 
         [JsonProperty("supported_features")]
-        public List<SupportedFeature>? SupportedFeatures { get; set; }
+        public List<SupportedFeature>? SupportedFeatures { get; internal set; }
 
         #endregion
     }
@@ -46,22 +46,22 @@ namespace EasyPost.Models.API.Beta
         #region JSON Properties
 
         [JsonProperty("carrier")]
-        public string? Carrier { get; set; }
+        public string? Carrier { get; internal set; }
 
         [JsonProperty("description")]
-        public string? Description { get; set; }
+        public string? Description { get; internal set; }
 
         [JsonProperty("dimensions")]
-        public List<string>? Dimensions { get; set; }
+        public List<string>? Dimensions { get; internal set; }
 
         [JsonProperty("human_readable")]
-        public string? HumanReadable { get; set; }
+        public string? HumanReadable { get; internal set; }
 
         [JsonProperty("max_weight")]
-        public string? MaxWeight { get; set; } // todo: float?
+        public string? MaxWeight { get; internal set; } // todo: float?
 
         [JsonProperty("name")]
-        public string? Name { get; set; }
+        public string? Name { get; internal set; }
 
         #endregion
     }
@@ -71,22 +71,22 @@ namespace EasyPost.Models.API.Beta
         #region JSON Properties
 
         [JsonProperty("carrier")]
-        public string? Carrier { get; set; }
+        public string? Carrier { get; internal set; }
 
         [JsonProperty("description")]
-        public string? Description { get; set; }
+        public string? Description { get; internal set; }
 
         [JsonProperty("dimensions")]
-        public List<string>? Dimensions { get; set; }
+        public List<string>? Dimensions { get; internal set; }
 
         [JsonProperty("human_readable")]
-        public string? HumanReadable { get; set; }
+        public string? HumanReadable { get; internal set; }
 
         [JsonProperty("max_weight")]
-        public string? MaxWeight { get; set; } // todo: float?
+        public string? MaxWeight { get; internal set; } // todo: float?
 
         [JsonProperty("name")]
-        public string? Name { get; set; }
+        public string? Name { get; internal set; }
 
         #endregion
     }
@@ -96,22 +96,22 @@ namespace EasyPost.Models.API.Beta
         #region JSON Properties
 
         [JsonProperty("carrier")]
-        public string? Carrier { get; set; }
+        public string? Carrier { get; internal set; }
 
         [JsonProperty("deprecated")]
-        public bool? Deprecated { get; set; }
+        public bool? Deprecated { get; internal set; }
 
         [JsonProperty("description")]
-        public string? Description { get; set; }
+        public string? Description { get; internal set; }
 
         [JsonProperty("human_readable")]
-        public string? HumanReadable { get; set; }
+        public string? HumanReadable { get; internal set; }
 
         [JsonProperty("name")]
-        public string? Name { get; set; }
+        public string? Name { get; internal set; }
 
         [JsonProperty("type")]
-        public string? Type { get; set; }
+        public string? Type { get; internal set; }
 
         #endregion
     }
@@ -121,16 +121,16 @@ namespace EasyPost.Models.API.Beta
         #region JSON Properties
 
         [JsonProperty("carrier")]
-        public string? Carrier { get; set; }
+        public string? Carrier { get; internal set; }
 
         [JsonProperty("description")]
-        public string? Description { get; set; }
+        public string? Description { get; internal set; }
 
         [JsonProperty("name")]
-        public string? Name { get; set; }
+        public string? Name { get; internal set; }
 
         [JsonProperty("supported")]
-        public bool? Supported { get; set; }
+        public bool? Supported { get; internal set; }
 
         #endregion
     }

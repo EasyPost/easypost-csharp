@@ -19,11 +19,11 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("code")]
-        public string? Code { get; set; }
+        public string? Code { get; internal set; }
         [JsonProperty("errors")]
-        public List<Error>? Errors { get; set; }
+        public List<Error>? Errors { get; internal set; }
         [JsonProperty("field")]
-        public string? Field { get; set; }
+        public string? Field { get; internal set; }
 
         [JsonIgnore]
         public string? Message
@@ -42,7 +42,7 @@ namespace EasyPost.Models.API
         }
 
         [JsonProperty("suggestion")]
-        public string? Suggestion { get; set; }
+        public string? Suggestion { get; internal set; }
 
         /// <summary>
         ///     The "message" is most likely a string, but it can also be a dictionary or a list from the API.

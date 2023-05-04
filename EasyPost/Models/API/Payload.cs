@@ -9,19 +9,19 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("request_url")]
-        public string? RequestUrl { get; set; }
+        public string? RequestUrl { get; internal set; }
         [JsonProperty("request_headers")]
-        public Dictionary<string, string>? RequestHeaders { get; set; }
+        public Dictionary<string, string>? RequestHeaders { get; internal set; }
         [JsonProperty("request_body")]
-        public string? RequestBody { get; set; }
+        public string? RequestBody { get; internal set; }
         [JsonProperty("response_headers")]
-        public Dictionary<string, string>? ResponseHeaders { get; set; }
+        public Dictionary<string, string>? ResponseHeaders { get; internal set; }
         [JsonProperty("response_body")]
-        public string? ResponseBody { get; set; }
+        public string? ResponseBody { get; internal set; }
         [JsonProperty("response_code")]
-        public int? ResponseCode { get; set; }
+        public int? ResponseCode { get; internal set; }
         [JsonProperty("total_time")]
-        public int? TotalTime { get; set; }
+        public int? TotalTime { get; internal set; }
 
         #endregion
 

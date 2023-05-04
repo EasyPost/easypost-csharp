@@ -8,13 +8,13 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("carrier")]
-        public string? Carrier { get; set; }
+        public string? Carrier { get; internal set; }
         [JsonProperty("carrier_account_id")]
-        public string? CarrierAccountId { get; set; }
+        public string? CarrierAccountId { get; internal set; }
         [JsonProperty("message")]
-        public string? Text { get; set; } // "Message" is the enclosing class name
+        public string? Text { get; internal set; } // "Message" is the enclosing class name
         [JsonProperty("type")]
-        public string? Type { get; set; }
+        public string? Type { get; internal set; }
 
         #endregion
 

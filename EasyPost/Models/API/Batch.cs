@@ -15,23 +15,23 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("error")]
-        public string? Error { get; set; }
+        public string? Error { get; internal set; }
         [JsonProperty("label_url")]
-        public string? LabelUrl { get; set; }
+        public string? LabelUrl { get; internal set; }
         [JsonProperty("message")]
-        public string? Message { get; set; }
+        public string? Message { get; internal set; }
         [JsonProperty("num_shipments")]
-        public int? NumShipments { get; set; }
+        public int? NumShipments { get; internal set; }
         [JsonProperty("reference")]
-        public string? Reference { get; set; }
+        public string? Reference { get; internal set; }
         [JsonProperty("scan_form")]
-        public ScanForm? ScanForm { get; set; }
+        public ScanForm? ScanForm { get; internal set; }
         [JsonProperty("shipments")]
-        public List<BatchShipment>? Shipments { get; set; }
+        public List<BatchShipment>? Shipments { get; internal set; }
         [JsonProperty("state")]
-        public string? State { get; set; }
+        public string? State { get; internal set; }
         [JsonProperty("status")]
-        public Dictionary<string, int>? Status { get; set; }
+        public Dictionary<string, int>? Status { get; internal set; }
 
         #endregion
 
@@ -45,7 +45,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("batches")]
-        public List<Batch>? Batches { get; set; }
+        public List<Batch>? Batches { get; internal set; }
 
         #endregion
 

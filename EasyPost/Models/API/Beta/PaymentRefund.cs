@@ -9,17 +9,17 @@ namespace EasyPost.Models.API.Beta
         #region JSON Properties
 
         [JsonProperty("refunded_amount")]
-        public int? RefundedAmount { get; set; }
+        public int? RefundedAmount { get; internal set; }
 
         // ReSharper disable once StringLiteralTypo
         [JsonProperty("refunded_amount_currencys")]
-        public string? RefundedAmountCurrencies { get; set; }
+        public string? RefundedAmountCurrencies { get; internal set; }
         [JsonProperty("refunded_payment_logs")]
-        public List<string>? RefundedPaymentLogIds { get; set; }
+        public List<string>? RefundedPaymentLogIds { get; internal set; }
         [JsonProperty("payment_log_id")]
-        public string? PaymentLogId { get; set; }
+        public string? PaymentLogId { get; internal set; }
         [JsonProperty("errors")]
-        public List<Error>? Errors { get; set; }
+        public List<Error>? Errors { get; internal set; }
 
         #endregion
 

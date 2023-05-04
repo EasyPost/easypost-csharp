@@ -9,11 +9,11 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("details")]
-        public VerificationDetails? Details { get; set; }
+        public VerificationDetails? Details { get; internal set; }
         [JsonProperty("errors")]
-        public List<Error>? Errors { get; set; }
+        public List<Error>? Errors { get; internal set; }
         [JsonProperty("success")]
-        public bool? Success { get; set; }
+        public bool? Success { get; internal set; }
 
         #endregion
 

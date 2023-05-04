@@ -9,13 +9,13 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("fields")]
-        public Dictionary<string, object>? Fields { get; set; }
+        public Dictionary<string, object>? Fields { get; internal set; }
         [JsonProperty("logo")]
-        public string? Logo { get; set; }
+        public string? Logo { get; internal set; }
         [JsonProperty("readable")]
-        public string? Readable { get; set; }
+        public string? Readable { get; internal set; }
         [JsonProperty("type")]
-        public string? Type { get; set; }
+        public string? Type { get; internal set; }
 
         #endregion
 

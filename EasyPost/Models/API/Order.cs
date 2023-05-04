@@ -13,29 +13,29 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("buyer_address")]
-        public Address? BuyerAddress { get; set; }
+        public Address? BuyerAddress { get; internal set; }
         [JsonProperty("carrier_accounts")]
-        public List<CarrierAccount>? CarrierAccounts { get; set; }
+        public List<CarrierAccount>? CarrierAccounts { get; internal set; }
         [JsonProperty("customs_info")]
-        public CustomsInfo? CustomsInfo { get; set; }
+        public CustomsInfo? CustomsInfo { get; internal set; }
         [JsonProperty("from_address")]
-        public Address? FromAddress { get; set; }
+        public Address? FromAddress { get; internal set; }
         [JsonProperty("is_return")]
-        public bool? IsReturn { get; set; }
+        public bool? IsReturn { get; internal set; }
         [JsonProperty("messages")]
-        public List<Message>? Messages { get; set; }
+        public List<Message>? Messages { get; internal set; }
         [JsonProperty("rates")]
-        public List<Rate>? Rates { get; set; }
+        public List<Rate>? Rates { get; internal set; }
         [JsonProperty("reference")]
-        public string? Reference { get; set; }
+        public string? Reference { get; internal set; }
         [JsonProperty("return_address")]
-        public Address? ReturnAddress { get; set; }
+        public Address? ReturnAddress { get; internal set; }
         [JsonProperty("service")]
-        public string? Service { get; set; }
+        public string? Service { get; internal set; }
         [JsonProperty("shipments")]
-        public List<Shipment>? Shipments { get; set; }
+        public List<Shipment>? Shipments { get; internal set; }
         [JsonProperty("to_address")]
-        public Address? ToAddress { get; set; }
+        public Address? ToAddress { get; internal set; }
 
         #endregion
 

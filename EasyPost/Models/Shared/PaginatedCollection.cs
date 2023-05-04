@@ -14,7 +14,7 @@ namespace EasyPost.Models.Shared
         #region JSON Properties
 
         [JsonProperty("has_more")]
-        public bool? HasMore { get; set; }
+        public bool? HasMore { get; internal set; }
 
         #endregion
 

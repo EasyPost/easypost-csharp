@@ -13,9 +13,9 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("disabled_at")]
-        public DateTime? DisabledAt { get; set; }
+        public DateTime? DisabledAt { get; internal set; }
         [JsonProperty("url")]
-        public string? Url { get; set; }
+        public string? Url { get; internal set; }
 
         #endregion
 

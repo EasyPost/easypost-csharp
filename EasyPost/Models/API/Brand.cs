@@ -8,23 +8,23 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("ad")]
-        public string? Ad { get; set; }
+        public string? Ad { get; internal set; }
         [JsonProperty("ad_href")]
-        public string? AdHref { get; set; }
+        public string? AdHref { get; internal set; }
         [JsonProperty("background_color")]
-        public string? BackgroundColor { get; set; }
+        public string? BackgroundColor { get; internal set; }
         [JsonProperty("color")]
-        public string? Color { get; set; }
+        public string? Color { get; internal set; }
         [JsonProperty("logo")]
-        public string? Logo { get; set; }
+        public string? Logo { get; internal set; }
         [JsonProperty("logo_href")]
-        public string? LogoHref { get; set; }
+        public string? LogoHref { get; internal set; }
         [JsonProperty("name")]
-        public string? Name { get; set; }
+        public string? Name { get; internal set; }
         [JsonProperty("theme")]
-        public string? Theme { get; set; }
+        public string? Theme { get; internal set; }
         [JsonProperty("user_id")]
-        public string? UserId { get; set; }
+        public string? UserId { get; internal set; }
 
         #endregion
 

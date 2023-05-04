@@ -8,11 +8,11 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("currency")]
-        public string? Currency { get; set; }
+        public string? Currency { get; internal set; }
         [JsonProperty("grams")]
-        public int? Grams { get; set; }
+        public int? Grams { get; internal set; }
         [JsonProperty("price")]
-        public string? Price { get; set; }
+        public string? Price { get; internal set; }
 
         #endregion
 

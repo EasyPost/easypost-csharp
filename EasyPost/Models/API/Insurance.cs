@@ -16,29 +16,29 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("amount")]
-        public string? Amount { get; set; }
+        public string? Amount { get; internal set; }
         [JsonProperty("from_address")]
-        public Address? FromAddress { get; set; }
+        public Address? FromAddress { get; internal set; }
         [JsonProperty("messages")]
-        public List<string>? Messages { get; set; }
+        public List<string>? Messages { get; internal set; }
         [JsonProperty("provider")]
-        public string? Provider { get; set; }
+        public string? Provider { get; internal set; }
         [JsonProperty("provider_id")]
-        public string? ProviderId { get; set; }
+        public string? ProviderId { get; internal set; }
         [JsonProperty("reference")]
-        public string? Reference { get; set; }
+        public string? Reference { get; internal set; }
         [JsonProperty("shipment_id")]
-        public string? ShipmentId { get; set; }
+        public string? ShipmentId { get; internal set; }
         [JsonProperty("status")]
-        public string? Status { get; set; }
+        public string? Status { get; internal set; }
         [JsonProperty("to_address")]
-        public Address? ToAddress { get; set; }
+        public Address? ToAddress { get; internal set; }
         [JsonProperty("tracker")]
-        public Tracker? Tracker { get; set; }
+        public Tracker? Tracker { get; internal set; }
         [JsonProperty("tracking_code")]
-        public string? TrackingCode { get; set; }
+        public string? TrackingCode { get; internal set; }
         [JsonProperty("fee")]
-        public Fee? Fee { get; set; }
+        public Fee? Fee { get; internal set; }
         #endregion
 
         internal Insurance()
@@ -52,7 +52,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         [JsonProperty("insurances")]
-        public List<Insurance>? Insurances { get; set; }
+        public List<Insurance>? Insurances { get; internal set; }
 
         #endregion
 
