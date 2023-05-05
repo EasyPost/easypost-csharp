@@ -34,18 +34,13 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a referral customer for the account associated with the api_key specified.
-        ///     This function should be called against a Client configured with the white label partner's API key.
+        ///     Create a <see cref="ReferralCustomer"/> for the account associated with the API key used.
+        ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the white label partner's API key.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-referral-customer">Referral Customer API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to create the referral customer with. Valid pairs:
-        ///     * {"name", string} Name on the account.
-        ///     * {"email", string} Email on the account.
-        ///     * {"phone", string} Phone number on the account.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to use to create the <see cref="ReferralCustomer"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.User instance.</returns>
+        /// <returns>A <see cref="ReferralCustomer"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<ReferralCustomer> CreateReferral(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -54,12 +49,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Create a <see cref="ReferralCustomer"/>.
-        ///     This function should be called against a <see cref="Client"/> configured with the white label partner's API key.
+        ///     Create a <see cref="ReferralCustomer"/> for the account associated with the API key used.
+        ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the white label partner's API key.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-referral-customer">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="ReferralCustomer"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="ReferralCustomer"/> instance.</returns>
+        /// <returns>A <see cref="ReferralCustomer"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<ReferralCustomer> CreateReferral(BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer parameters, CancellationToken cancellationToken = default)
         {
@@ -68,12 +64,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     List all Referral Customer objects.
-        ///     This function should be called against a Client configured with the white label partner's API key.
+        ///     List all <see cref="ReferralCustomer"/>s.
+        ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the white label partner's API key.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-referral-customers">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">Parameters for API call.</param>
+        /// <param name="parameters">Parameters to filter the list of <see cref="ReferralCustomer"/>s.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>An EasyPost.ReferralCustomerCollection instance.</returns>
+        /// <returns>A <see cref="ReferralCustomerCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
@@ -83,11 +80,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     List all <see cref="ReferralCustomer"/> objects.
+        ///     List all <see cref="ReferralCustomer"/>s.
+        ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the white label partner's API key.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-referral-customers">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.All"/> parameter set.</param>
+        /// <param name="parameters">Parameters to filter the list of <see cref="ReferralCustomer"/>s.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="ReferralCustomerCollection"/> instance.</returns>
+        /// <returns>A <see cref="ReferralCustomerCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<ReferralCustomerCollection> All(BetaFeatures.Parameters.ReferralCustomers.All parameters, CancellationToken cancellationToken = default)
         {
@@ -98,6 +97,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ReferralCustomerCollection"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-referral-customers">Related API documentation</a>.
         /// </summary>
         /// <param name="collection">The <see cref="ReferralCustomerCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
@@ -108,18 +108,19 @@ namespace EasyPost.Services
         public async Task<ReferralCustomerCollection> GetNextPage(ReferralCustomerCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ReferralCustomerCollection, BetaFeatures.Parameters.ReferralCustomers.All>(async parameters => await All(parameters, cancellationToken), collection.ReferralCustomers, pageSize);
 
         /// <summary>
-        ///     Add a credit card to a Referral Customer.
-        ///     This function should be called against a Client configured with the white label partner's API key.
-        ///     This function requires the target Referral Customer's API key as a parameter.
+        ///     Add a credit card to a <see cref="ReferralCustomer"/>.
+        ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the white label partner's API key.
+        ///     This function requires the target <see cref="ReferralCustomer"/>'s API key as a parameter.
+        ///     <a href="https://www.easypost.com/docs/api#add-payment-method-to-referral-user">Related API documentation</a>.
         /// </summary>
-        /// <param name="referralApiKey">API key of the referral customer.</param>
+        /// <param name="referralApiKey">API key of the <see cref="ReferralCustomer"/>.</param>
         /// <param name="number">Credit card number.</param>
         /// <param name="expirationMonth">Expiration month of the credit card.</param>
         /// <param name="expirationYear">Expiration year of the credit card.</param>
         /// <param name="cvc">CVC of the credit card.</param>
         /// <param name="priority">Priority of the credit card.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>An EasyPost.PaymentMethodObject instance.</returns>
+        /// <returns>The <see cref="PaymentMethod"/> that was added.</returns>
         /// <exception cref="ApiError">When the request fails.</exception>
         [CrudOperations.Update]
         public async Task<PaymentMethod> AddCreditCardToUser(string referralApiKey, string number, int expirationMonth, int expirationYear, string cvc, PaymentMethod.Priority? priority = null, CancellationToken cancellationToken = default)
@@ -145,13 +146,14 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Update a Referral Customer object email.
-        ///     This function should be called against a Client configured with the white label partner's API key.
+        ///     Update a <see cref="ReferralCustomer"/>'s email.
+        ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the white label partner's API key.
+        ///     <a href="https://www.easypost.com/docs/api#update-a-referral-customer">Related API documentation</a>.
         /// </summary>
-        /// <param name="referralId">ID of the referral customer to update.</param>
-        /// <param name="email">Email of the referral customer to update.</param>
+        /// <param name="referralId">The ID of the <see cref="ReferralCustomer"/> to update.</param>
+        /// <param name="email">The new email address for the <see cref="ReferralCustomer"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>A Task to update a referral's email.</returns>
+        /// <returns>None.</returns>
         [CrudOperations.Update]
         public async Task UpdateReferralEmail(string referralId, string email, CancellationToken cancellationToken = default)
         {
@@ -163,13 +165,13 @@ namespace EasyPost.Services
         #endregion
 
         /// <summary>
-        ///     Submit Stripe credit card token to EasyPost for a specified Referral Customer.
+        ///     Submit Stripe credit card token to EasyPost for a specified <see cref="ReferralCustomer"/>.
         /// </summary>
-        /// <param name="referralApiKey">API key of the referral customer.</param>
+        /// <param name="referralApiKey">API key of the <see cref="ReferralCustomer"/>.</param>
         /// <param name="stripeObjectId">Stripe token.</param>
         /// <param name="priority">Credit card priority.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>An EasyPost.PaymentMethod instance.</returns>
+        /// <returns>The <see cref="PaymentMethod"/> that was created.</returns>
         private async Task<PaymentMethod> CreateEasypostCreditCard(string referralApiKey, string stripeObjectId, PaymentMethod.Priority priority, CancellationToken cancellationToken = default)
         {
             Dictionary<string, object> parameters = new()
@@ -207,6 +209,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a credit card token via Stripe.
+        ///     <a href="https://stripe.com/docs/api/tokens">Related API documentation</a>.
         /// </summary>
         /// <param name="number">Credit card number.</param>
         /// <param name="expirationMonth">Expiration month of the credit card.</param>
