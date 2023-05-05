@@ -58,16 +58,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Create and buy a Batch in one step.
+        ///     Create and buy a <see cref="Batch"/> in one API call.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing optional parameters to create the batch with. Valid pairs:
-        ///     * {"shipments", List&lt;Dictionary&lt;string, object&gt;&gt;} See Shipment.Create for a list of valid keys.
-        ///     * {"reference", string}
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Dictionary containing parameters to create the <see cref="Batch"/> with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.Batch instance.</returns>
+        /// <returns>A <see cref="Batch"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Batch> CreateAndBuy(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -76,11 +72,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Create and buy a <see cref="Batch"/> in one step.
+        ///     Create and buy a <see cref="Batch"/> in one API call.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.Create"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="Batch"/> instance.</returns>
+        /// <returns>A <see cref="Batch"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Batch> CreateAndBuy(BetaFeatures.Parameters.Batches.Create parameters, CancellationToken cancellationToken = default)
         {
@@ -89,21 +86,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     List all Batch objects.
+        ///     List all <see cref="Batch"/> objects.
+        ///     <a href="https://www.easypost.com/docs/api#list-all-batches">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
-        ///     * {"before_id", string} String representing a Batch ID. Starts with "batch_". Only retrieve batches created
-        ///     before this id. Takes precedence over after_id.
-        ///     * {"after_id", string} String representing a Batch ID. Starts with "batch_". Only retrieve batches created after
-        ///     this id.
-        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve batches created after this datetime.
-        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve batches created before this datetime.
-        ///     * {"page_size", int} Max size of list. Default to 20.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Dictionary containing parameters to filter the result list with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>An EasyPost.BatchCollection instance.</returns>
+        /// <returns>A <see cref="BatchCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
@@ -114,10 +102,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Batch"/> objects.
+        ///     <a href="https://www.easypost.com/docs/api#list-all-batches">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.All"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="BatchCollection"/> instance.</returns>
+        /// <returns>A <see cref="BatchCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<BatchCollection> All(BetaFeatures.Parameters.Batches.All parameters, CancellationToken cancellationToken = default)
         {
@@ -129,11 +118,13 @@ namespace EasyPost.Services
         // TODO: Add GetNextPage function when Batches are sorted newest to oldest.
 
         /// <summary>
-        ///     Add shipments to this batch.
+        ///     Add <see cref="Shipment"/>s to a <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">Update shipment parameters.</param>
+        /// <param name="id">The ID of the <see cref="Batch"/> to add <see cref="Shipment"/>s to.</param>
+        /// <param name="parameters">Parameters for the <see cref="Shipment"/>s to add.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The updated Batch.</returns>
+        /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -141,20 +132,23 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Retrieve a Batch from its id.
+        ///     Retrieve a <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="id">String representing a Batch. Starts with "batch_".</param>
+        /// <param name="id">The ID of the <see cref="Batch"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.Batch instance.</returns>
+        /// <returns>The requested <see cref="Batch"/>.</returns>
         [CrudOperations.Read]
         public async Task<Batch> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Batch>(Method.Get, $"batches/{id}", cancellationToken);
 
         /// <summary>
-        ///     Add <see cref="Shipment"/>s to this <see cref="Batch"/>.
+        ///     Add <see cref="Shipment"/>s to a <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.AddShipments"/> parameter set.</param>
+        /// <param name="id">The ID of the <see cref="Batch"/> to add <see cref="Shipment"/>s to.</param>
+        /// <param name="parameters">Parameters for the <see cref="Shipment"/>s to add.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>This updated <see cref="Batch"/> instance.</returns>
+        /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(string id, BetaFeatures.Parameters.Batches.AddShipments parameters, CancellationToken cancellationToken = default)
         {
@@ -162,11 +156,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Add shipments to this batch.
+        ///     Add <see cref="Shipment"/>s to a <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="shipmentsToAdd">List of Shipment objects to be added.</param>
+        /// <param name="id">The ID of the <see cref="Batch"/> to add <see cref="Shipment"/>s to.</param>
+        /// <param name="shipmentsToAdd">List of <see cref="Shipment"/>s to add to the <see cref="Batch"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The updated Batch.</returns>
+        /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(string id, List<Shipment> shipmentsToAdd, CancellationToken cancellationToken = default)
         {
@@ -175,11 +171,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Add shipments to this batch.
+        ///     Add <see cref="Shipment"/>s to a <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="shipmentIds">List of shipment ids to be added.</param>
+        /// <param name="id">The ID of the <see cref="Batch"/> to add <see cref="Shipment"/>s to.</param>
+        /// <param name="shipmentIds">List of IDs of <see cref="Shipment"/>s to add to the <see cref="Batch"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The updated Batch.</returns>
+        /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
         public async Task<Batch> AddShipments(string id, IEnumerable<string> shipmentIds, CancellationToken cancellationToken = default)
         {
@@ -188,10 +186,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Purchase all shipments within this batch. The Batch's state must be "created" before purchasing.
+        ///     Purchase all <see cref="Shipment"/>s within a <see cref="Batch"/>. The <see cref="Batch.State"/> must be "created" before purchasing.
+        ///     <a href="https://www.easypost.com/docs/api#buy-a-batch">Related API documentation</a>.
         /// </summary>
+        /// <param name="id">The ID of the <see cref="Batch"/> to purchase <see cref="Shipment"/>s from.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The updated Batch.</returns>
+        /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
         public async Task<Batch> Buy(string id, CancellationToken cancellationToken = default)
         {
@@ -199,11 +199,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Asynchronously generate a label containing all of the Shipment labels belonging to this batch.
+        ///     Asynchronously generate a <see cref="PostageLabel"/> containing all of the <see cref="Shipment"/> labels belonging to a <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#batch-labels">Related API documentation</a>.
         /// </summary>
-        /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
+        /// <param name="id">The ID of the <see cref="Batch"/> to generate a label for.</param>
+        /// <param name="fileFormat">Format to generate the label in. Must be "pdf" or "zpl".</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The updated Batch.</returns>
+        /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
         public async Task<Batch> GenerateLabel(string id, string fileFormat, CancellationToken cancellationToken = default)
         {
@@ -212,11 +214,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Asynchronously generate a label containing all of the <see cref="Shipment"/> labels belonging to this <see cref="Batch"/>.
+        ///     Asynchronously generate a <see cref="PostageLabel"/> containing all of the <see cref="Shipment"/> labels belonging to this <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#batch-labels">Related API documentation</a>.
         /// </summary>
+        /// <param name="id">The ID of the <see cref="Batch"/> to generate a label for.</param>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.GenerateLabel"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>This updated <see cref="Batch"/> instance.</returns>
+        /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
         public async Task<Batch> GenerateLabel(string id, BetaFeatures.Parameters.Batches.GenerateLabel parameters, CancellationToken cancellationToken = default)
         {
@@ -224,11 +228,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Asynchronously generate a scan from for this batch.
+        ///     Asynchronously generate a <see cref="ScanForm"/> for a <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#manifesting-scan-form">Related API documentation</a>.
         /// </summary>
+        /// <param name="id">String representing a Batch. Starts with "batch_".</param>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The updated Batch.</returns>
+        /// <returns>An updated <see cref="Batch"/> instance.</returns>
         [CrudOperations.Update]
         public async Task<Batch> GenerateScanForm(string id, string fileFormat, CancellationToken cancellationToken = default)
         {
@@ -238,7 +244,9 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Asynchronously generate a <see cref="ScanForm"/> for this <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#manifesting-scan-form">Related API documentation</a>.
         /// </summary>
+        /// <param name="id">String representing a Batch. Starts with "batch_".</param>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.GenerateScanForm"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>This updated <see cref="Batch"/> instance.</returns>
@@ -249,11 +257,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Remove shipments to this batch.
+        ///     Remove <see cref="Shipment"/>s from a <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#remove-shipments-from-a-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">Update shipment parameters.</param>
+        /// <param name="id">The ID of the <see cref="Batch"/> to remove <see cref="Shipment"/>s from.</param>
+        /// <param name="parameters">Parameters for the <see cref="Shipment"/>s to remove.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The updated Batch.</returns>
+        /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -261,11 +271,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Remove <see cref="Shipment"/>s from this <see cref="Batch"/>.
+        ///     Remove <see cref="Shipment"/>s from a <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#remove-shipments-from-a-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.RemoveShipments"/> parameter set.</param>
+        /// <param name="id">The ID of the <see cref="Batch"/> to remove <see cref="Shipment"/>s from.</param>
+        /// <param name="parameters">Parameters for the <see cref="Shipment"/>s to remove.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>This updated <see cref="Batch"/> instance.</returns>
+        /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(string id, BetaFeatures.Parameters.Batches.RemoveShipments parameters, CancellationToken cancellationToken = default)
         {
@@ -273,11 +285,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Remove shipments to this batch.
+        ///     Remove <see cref="Shipment"/>s from a <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#remove-shipments-from-a-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="shipmentsToRemove">List of Shipment objects to be removed.</param>
+        /// <param name="id">The ID of the <see cref="Batch"/> to remove <see cref="Shipment"/>s from.</param>
+        /// <param name="shipmentsToRemove">List of <see cref="Shipment"/>s to remove from the <see cref="Batch"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The updated Batch.</returns>
+        /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(string id, List<Shipment> shipmentsToRemove, CancellationToken cancellationToken = default)
         {
@@ -286,11 +300,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Remove shipments to this batch.
+        ///     Remove <see cref="Shipment"/>s from a <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#remove-shipments-from-a-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="shipmentIds">List of shipment ids to be removed.</param>
+        /// <param name="id">The ID of the <see cref="Batch"/> to remove <see cref="Shipment"/>s from.</param>
+        /// <param name="shipmentIds">List of IDs of <see cref="Shipment"/>s to remove from the <see cref="Batch"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The updated Batch.</returns>
+        /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
         public async Task<Batch> RemoveShipments(string id, IEnumerable<string> shipmentIds, CancellationToken cancellationToken = default)
         {

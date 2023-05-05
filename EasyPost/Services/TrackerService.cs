@@ -64,7 +64,7 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Create a list of trackers.
+        ///     Create a list of <see cref="Tracker"/>s.
         /// </summary>
         /// <param name="parameters">A dictionary of tracking codes and carriers.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -78,9 +78,9 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Create a list of trackers.
+        ///     Create a list of <see cref="Tracker"/>s.
         /// </summary>
-        /// <param name="parameters">A dictionary of tracking codes and carriers.</param>
+        /// <param name="parameters">Parameters to use to create the <see cref="Tracker"/>s.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><c>true</c> if successful, <c>false</c> otherwise.</returns>
         [CrudOperations.Create]
@@ -91,25 +91,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Get a paginated list of trackers.
+        ///     List all <see cref="Tracker"/>s.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-trackers">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
-        ///     * {"tracking_code", string} Tracking number string. Only retrieve trackers with the given tracking code.
-        ///     * {"carrier", string} String representing the tracker's carrier. Only retrieve trackers with the given carrier.
-        ///     * {"before_id", string} String representing a Tracker. Starts with "trk_". Only retrieve trackers created before
-        ///     this id. Takes precedence over after_id.
-        ///     * {"after_id", string} String representing a Tracker. Starts with "trk_". Only retrieve trackers created after this
-        ///     id.
-        ///     * {"start_datetime", datetime} Datetime representing the earliest possible tracker. Only retrieve trackers created
-        ///     at or after this datetime. Defaults to 1 month ago.
-        ///     * {"end_datetime", datetime} Datetime representing the latest possible tracker. Only retrieve trackers created
-        ///     before this datetime. Defaults to the end of the current day.
-        ///     * {"page_size", int} Size of page. Default to 30.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">A dictionary of parameters to filter the list of <see cref="Tracker"/>s with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>A EasyPost.TrackerCollection instance.</returns>
+        /// <returns>A <see cref="TrackerCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
@@ -120,11 +107,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     List all <see cref="Tracker"/> objects.
+        ///     List all <see cref="Tracker"/>s.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-trackers">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Trackers.All"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="TrackerCollection"/> instance.</returns>
+        /// <returns>A <see cref="TrackerCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<TrackerCollection> All(BetaFeatures.Parameters.Trackers.All parameters, CancellationToken cancellationToken = default)
         {
@@ -135,6 +123,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="TrackerCollection"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-trackers">Related API documentation</a>.
         /// </summary>
         /// <param name="collection">The <see cref="TrackerCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
@@ -145,11 +134,12 @@ namespace EasyPost.Services
         public async Task<TrackerCollection> GetNextPage(TrackerCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<TrackerCollection, BetaFeatures.Parameters.Trackers.All>(async parameters => await All(parameters, cancellationToken), collection.Trackers, pageSize);
 
         /// <summary>
-        ///     Retrieve a Tracker from its id.
+        ///     Retrieve a <see cref="Tracker"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-tracker">Related API documentation</a>.
         /// </summary>
-        /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
+        /// <param name="id">The ID of the <see cref="Tracker"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.Tracker instance.</returns>
+        /// <returns>The requested <see cref="Tracker"/>.</returns>
         [CrudOperations.Read]
         public async Task<Tracker> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Tracker>(Method.Get, $"trackers/{id}", cancellationToken);
 

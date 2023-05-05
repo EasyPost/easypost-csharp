@@ -25,10 +25,11 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Get a list of all API keys.
+        ///     Get a list of all <see cref="ApiKey"/>s.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-an-api-key">Related API documentation</a>.
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>An EasyPost.ApiKeyCollection instances.</returns>
+        /// <returns>A <see cref="ApiKeyCollection"/> object.</returns>
         [CrudOperations.Read]
         public async Task<ApiKeyCollection> All(CancellationToken cancellationToken = default) => await RequestAsync<ApiKeyCollection>(Method.Get, "api_keys", cancellationToken);
 

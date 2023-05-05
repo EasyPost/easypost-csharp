@@ -55,11 +55,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Retrieve a CustomsItem from its id.
+        ///     Retrieve a <see cref="CustomsItem"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-customsitem">Related API documentation</a>.
         /// </summary>
-        /// <param name="id">String representing a CustomsItem. Starts with "cstitem_".</param>
+        /// <param name="id">The ID of the <see cref="CustomsItem"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.CustomsItem instance.</returns>
+        /// <returns>A <see cref="CustomsItem"/> object.</returns>
         [CrudOperations.Read]
         public async Task<CustomsItem> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<CustomsItem>(Method.Get, $"customs_items/{id}", cancellationToken);
 

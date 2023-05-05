@@ -55,11 +55,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Retrieve a Parcel from its id.
+        ///     Retrieve a <see cref="Parcel"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-parcel">Related API documentation</a>.
         /// </summary>
-        /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
+        /// <param name="id">The ID of the <see cref="Parcel"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.Parcel instance.</returns>
+        /// <returns>The requested <see cref="Parcel"/>.</returns>
         [CrudOperations.Read]
         public async Task<Parcel> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Parcel>(Method.Get, $"parcels/{id}", cancellationToken);
 

@@ -56,21 +56,24 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Retrieve a Order from its id or reference.
+        ///     Retrieve an <see cref="Order"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-an-order">Related API documentation</a>.
         /// </summary>
-        /// <param name="id">String representing a Order. Starts with "order_" if passing an id.</param>
+        /// <param name="id">The ID of the <see cref="Order"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.Order instance.</returns>
+        /// <returns>An <see cref="Order"/> object.</returns>
         [CrudOperations.Read]
         public async Task<Order> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Order>(Method.Get, $"orders/{id}", cancellationToken);
 
         /// <summary>
-        ///     Purchase the shipments within this order with a carrier and service.
+        ///     Purchase the <see cref="Shipment"/>s within an <see cref="Order"/>.
+        ///     <a href="https://www.easypost.com/docs/api#buy-an-order">Related API documentation</a>.
         /// </summary>
-        /// <param name="withCarrier">The carrier to purchase a shipment from.</param>
-        /// <param name="withService">The service to purchase.</param>
+        /// <param name="id">The ID of the <see cref="Order"/> to purchase.</param>
+        /// <param name="withCarrier">The carrier to purchase the <see cref="Shipment"/>s with.</param>
+        /// <param name="withService">The service to purchase the <see cref="Shipment"/>s with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The updated Order.</returns>
+        /// <returns>An updated <see cref="Order"/>.</returns>
         [CrudOperations.Update]
         public async Task<Order> Buy(string id, string withCarrier, string withService, CancellationToken cancellationToken = default)
         {
@@ -84,11 +87,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Purchase a label for this shipment with the given rate.
+        ///     Purchase the <see cref="Shipment"/>s within an <see cref="Order"/>.
+        ///     <a href="https://www.easypost.com/docs/api#buy-an-order">Related API documentation</a>.
         /// </summary>
-        /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
+        /// <param name="id">The ID of the <see cref="Order"/> to purchase.</param>
+        /// <param name="rate">The <see cref="Rate"/> to purchase the <see cref="Shipment"/>s with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The updated Order.</returns>
+        /// <returns>An updated <see cref="Order"/>.</returns>
         [CrudOperations.Update]
         public async Task<Order> Buy(string id, Rate rate, CancellationToken cancellationToken = default)
         {
@@ -108,11 +113,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Purchase the <see cref="Shipments"/> within this <see cref="Order"/>.
+        ///     Purchase the <see cref="Shipment"/>s within an <see cref="Order"/>.
+        ///     <a href="https://www.easypost.com/docs/api#buy-an-order">Related API documentation</a>.
         /// </summary>
+        /// <param name="id">The ID of the <see cref="Order"/> to purchase.</param>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Orders.Buy"/> parameters set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>This updated <see cref="Order"/> instance.</returns>
+        /// <returns>An updated <see cref="Order"/>.</returns>
         [CrudOperations.Update]
         public async Task<Order> Buy(string id, BetaFeatures.Parameters.Orders.Buy parameters, CancellationToken cancellationToken = default)
         {
@@ -120,10 +127,11 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Repopulate the rates for an Order.
+        ///     Repopulate the <see cref="Rate"/>s for an Order.
         /// </summary>
+        /// <param name="id">The ID of the <see cref="Order"/> to refresh the <see cref="Rate"/>s for.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The task to refresh this Order's rates.</returns>
+        /// <returns>An updated <see cref="Order"/> with refreshed <see cref="Rate"/>s.</returns>
         [CrudOperations.Update]
         public async Task<Order> RefreshRates(string id, CancellationToken cancellationToken = default)
         {

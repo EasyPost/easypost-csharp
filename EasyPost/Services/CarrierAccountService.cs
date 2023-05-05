@@ -74,24 +74,27 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     List all available carrier accounts.
+        ///     List all available <see cref="CarrierAccount"/>s.
+        ///     <a href="https://www.easypost.com/docs/api#list-all-carrier-accounts">Related API documentation</a>.
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
+        /// <returns>A list of <see cref="CarrierAccount"/>s.</returns>
         [CrudOperations.Read]
         public async Task<List<CarrierAccount>> All(CancellationToken cancellationToken = default) => await RequestAsync<List<CarrierAccount>>(Method.Get, "carrier_accounts", cancellationToken);
 
         /// <summary>
-        ///     Retrieve a CarrierAccount from its id.
+        ///     Retrieve a <see cref="CarrierAccount"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-carrieraccount">Related API documentation</a>.
         /// </summary>
         /// <param name="id">String representing a carrier account. Starts with "ca_".</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.CarrierAccount instance.</returns>
+        /// <returns>The retrieved <see cref="CarrierAccount"/>.</returns>
         [CrudOperations.Read]
         public async Task<CarrierAccount> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<CarrierAccount>(Method.Get, $"carrier_accounts/{id}", cancellationToken);
 
         /// <summary>
         ///     Update a <see cref="CarrierAccount"/>.
+        ///     <a href="https://www.easypost.com/docs/api#update-a-carrieraccount">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to update <see cref="CarrierAccount"/> with.</param>
         /// <param name="id">ID of the <see cref="CarrierAccount"/> to update.</param>
@@ -106,6 +109,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Update a <see cref="CarrierAccount"/>.
+        ///     <a href="https://www.easypost.com/docs/api#update-a-carrieraccount">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to update <see cref="CarrierAccount"/> with.</param>
         /// <param name="id">ID of the <see cref="CarrierAccount"/> to update.</param>
@@ -119,6 +123,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Delete a <see cref="CarrierAccount"/>.
+        ///     <a href="https://www.easypost.com/docs/api#delete-a-carrier-account">Related API documentation</a>.
         /// </summary>
         /// <param name="id">ID of the <see cref="CarrierAccount"/> to delete.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -128,6 +133,11 @@ namespace EasyPost.Services
 
         #endregion
 
+        /// <summary>
+        ///     Selects the correct endpoint to use for creating a <see cref="CarrierAccount"/> based on the carrier type.
+        /// </summary>
+        /// <param name="carrierAccountType">Type of <see cref="CarrierAccount"/> being created.</param>
+        /// <returns>Endpoint for API call.</returns>
         private static string SelectCarrierAccountCreationEndpoint(string carrierAccountType)
         {
             // endpoint will always be something since the switch case's default value will kick in,

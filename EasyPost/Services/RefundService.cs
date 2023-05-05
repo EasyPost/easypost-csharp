@@ -57,14 +57,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     List all Refund objects.
+        ///     List all <see cref="Refund"/>s.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-refunds">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Parameters to filter the list of <see cref="Refund"/>s on. Refer to <see cref="BetaFeatures.Parameters.Refunds.All"/> for more information.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>An EasyPost.RefundCollection instance.</returns>
+        /// <returns>A <see cref="RefundCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
@@ -74,11 +72,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     List all <see cref="Refund"/> objects.
+        ///     List all <see cref="Refund"/>s.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-refunds">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Refunds.All"/> parameter set.</param>
+        /// <param name="parameters">Parameters to filter the list of <see cref="Refund"/>s on.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="RefundCollection"/> instance.</returns>
+        /// <returns>A <see cref="RefundCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<RefundCollection> All(BetaFeatures.Parameters.Refunds.All parameters, CancellationToken cancellationToken = default)
         {
@@ -89,6 +88,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="RefundCollection"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-refunds">Related API documentation</a>.
         /// </summary>
         /// <param name="collection">The <see cref="RefundCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
@@ -99,11 +99,12 @@ namespace EasyPost.Services
         public async Task<RefundCollection> GetNextPage(RefundCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<RefundCollection, BetaFeatures.Parameters.Refunds.All>(async parameters => await All(parameters, cancellationToken), collection.Refunds, pageSize);
 
         /// <summary>
-        ///     Retrieve a Refund from its id.
+        ///     Retrieve a <see cref="Refund"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-refund">Related API documentation</a>.
         /// </summary>
-        /// <param name="id">String representing a Refund. Starts with "rfnd_".</param>
+        /// <param name="id">The ID of the <see cref="Refund"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.Refund instance.</returns>
+        /// <returns>The requested <see cref="Refund"/>.</returns>
         [CrudOperations.Read]
         public async Task<Refund> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Refund>(Method.Get, $"refunds/{id}", cancellationToken);
 
