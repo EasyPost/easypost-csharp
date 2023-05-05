@@ -1,11 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
-using EasyPost.Utilities.Internal.Attributes;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -84,7 +81,7 @@ namespace EasyPost.Models.API
         /// </summary>
         [JsonProperty("tracking_code")]
         public string? TrackingCode { get; set; }
-        
+
         /// <summary>
         ///     The <see cref="Models.API.Fee"/> for the insurance.
         /// </summary>
