@@ -44,6 +44,7 @@ namespace EasyPost.Services
         ///     auto-detected if none is provided
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Insurance instance.</returns>
         [CrudOperations.Create]
         public async Task<Insurance> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -56,6 +57,7 @@ namespace EasyPost.Services
         ///     Create <see cref="Insurance"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Insurance.Create"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="Insurance"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Insurance> Create(BetaFeatures.Parameters.Insurance.Create parameters, CancellationToken cancellationToken = default)
@@ -79,6 +81,7 @@ namespace EasyPost.Services
         ///     * {"page_size", int} Max size of list. Default to 20.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An EasyPost.InsuranceCollection instance.</returns>
         [CrudOperations.Read]
         public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
@@ -101,6 +104,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="collection">The <see cref="InsuranceCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The next page, as a <see cref="InsuranceCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
@@ -110,6 +114,7 @@ namespace EasyPost.Services
         ///     Retrieve an Insurance from its id.
         /// </summary>
         /// <param name="id">String representing an Insurance. Starts with "ins_".</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Insurance instance.</returns>
         [CrudOperations.Read]
         public async Task<Insurance> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Insurance>(Method.Get, $"insurances/{id}", cancellationToken);

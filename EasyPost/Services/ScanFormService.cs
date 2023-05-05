@@ -31,6 +31,7 @@ namespace EasyPost.Services
         ///     Create a ScanForm.
         /// </summary>
         /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
         [CrudOperations.Create]
         public async Task<ScanForm> Create(List<Shipment> shipments, CancellationToken cancellationToken = default)
@@ -43,6 +44,7 @@ namespace EasyPost.Services
         ///     Create a <see cref="ScanForm"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.Create"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="ScanForm"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<ScanForm> Create(BetaFeatures.Parameters.ScanForms.Create parameters, CancellationToken cancellationToken = default)
@@ -65,6 +67,7 @@ namespace EasyPost.Services
         ///     * {"page_size", int} Max size of list. Default to 20.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An EasyPost.ScanFormCollection instance.</returns>
         [CrudOperations.Read]
         public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
@@ -78,6 +81,7 @@ namespace EasyPost.Services
         ///     List all <see cref="ScanForm"/> objects.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.All"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="ScanFormCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<ScanFormCollection> All(BetaFeatures.Parameters.ScanForms.All parameters, CancellationToken cancellationToken = default)
@@ -92,6 +96,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="collection">The <see cref="ScanFormCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The next page, as a <see cref="ScanFormCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
@@ -101,6 +106,7 @@ namespace EasyPost.Services
         ///     Retrieve a ScanForm from its id.
         /// </summary>
         /// <param name="id">String representing a scan form, starts with "sf_".</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.ScanForm instance.</returns>
         [CrudOperations.Read]
         public async Task<ScanForm> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<ScanForm>(Method.Get, $"scan_forms/{id}", cancellationToken);

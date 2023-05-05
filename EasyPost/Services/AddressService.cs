@@ -47,6 +47,7 @@ namespace EasyPost.Services
         ///     * {"verify_strict", bool}
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An <see cref="Address"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Address> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -79,6 +80,7 @@ namespace EasyPost.Services
         ///     Create an <see cref="Address"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Addresses.Create"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="Address"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Address> Create(BetaFeatures.Parameters.Addresses.Create parameters, CancellationToken cancellationToken = default)
@@ -104,6 +106,7 @@ namespace EasyPost.Services
         ///     * {"email", string}
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An Address object.</returns>
         [CrudOperations.Create]
         public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters, CancellationToken cancellationToken = default) => await RequestAsync<Address>(Method.Post, "addresses/create_and_verify", cancellationToken, parameters, "address");
@@ -112,6 +115,7 @@ namespace EasyPost.Services
         ///     Create and verify an <see cref="Address"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Addresses.Create"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="Address"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Address> CreateAndVerify(BetaFeatures.Parameters.Addresses.Create parameters, CancellationToken cancellationToken = default)
@@ -134,6 +138,7 @@ namespace EasyPost.Services
         ///     * {"page_size", int} Max size of list. Default to 20.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An EasyPost.AddressCollection instance.</returns>
         [CrudOperations.Read]
         public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
@@ -147,6 +152,7 @@ namespace EasyPost.Services
         ///     List all <see cref="Address"/> objects.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Addresses.All"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="AddressCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<AddressCollection> All(BetaFeatures.Parameters.Addresses.All parameters, CancellationToken cancellationToken = default)
@@ -161,6 +167,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="collection">The <see cref="AddressCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The next page, as a <see cref="AddressCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
@@ -170,6 +177,7 @@ namespace EasyPost.Services
         ///     Retrieve an Address from its id.
         /// </summary>
         /// <param name="id">String representing an Address. Starts with "adr_".</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Address instance.</returns>
         [CrudOperations.Read]
         public async Task<Address> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Address>(Method.Get, $"addresses/{id}", cancellationToken);
@@ -178,6 +186,7 @@ namespace EasyPost.Services
         ///     Verify an Address.
         /// </summary>
         /// <param name="id">ID of the address to verify.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Address instance. Check message for verification failures.</returns>
         [CrudOperations.Update]
         public async Task<Address> Verify(string id, CancellationToken cancellationToken = default)

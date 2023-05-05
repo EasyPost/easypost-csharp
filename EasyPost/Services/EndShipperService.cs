@@ -46,6 +46,7 @@ namespace EasyPost.Services
         ///     * {"strict_verifications", List&lt;string&gt;} Possible items are "delivery" and "zip4".
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.EndShipper instance.</returns>
         [CrudOperations.Create]
         public async Task<EndShipper> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -58,6 +59,7 @@ namespace EasyPost.Services
         ///     Create an <see cref="EndShipper"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.Create"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="EndShipper"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<EndShipper> Create(BetaFeatures.Parameters.EndShippers.Create parameters, CancellationToken cancellationToken = default)
@@ -81,6 +83,7 @@ namespace EasyPost.Services
         ///     * {"page_size", int} Max size of list. Default to 20.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An EasyPost.EndShipperCollection instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
@@ -94,6 +97,7 @@ namespace EasyPost.Services
         ///     List all <see cref="EndShipper"/> objects.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.All"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="EndShipperCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipperCollection> All(BetaFeatures.Parameters.EndShippers.All parameters, CancellationToken cancellationToken = default)
@@ -109,6 +113,7 @@ namespace EasyPost.Services
         ///     Retrieve an EndShipper from its id.
         /// </summary>
         /// <param name="id">String representing an EndShipper. Starts with "es_".</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.EndShipper instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipper> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<EndShipper>(Method.Get, $"end_shippers/{id}", cancellationToken);
@@ -117,6 +122,7 @@ namespace EasyPost.Services
         ///     Update this EndShipper. Must pass in all properties (new and existing).
         /// </summary>
         /// <param name="parameters">See EndShipper.Create for more details.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated EndShipper.</returns>
         [CrudOperations.Update]
         public async Task<EndShipper> Update(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -130,6 +136,7 @@ namespace EasyPost.Services
         ///     Update this <see cref="EndShipper"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.Update"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>This updated <see cref="EndShipper"/> instance.</returns>
         [CrudOperations.Update]
         public async Task<EndShipper> Update(string id, BetaFeatures.Parameters.EndShippers.Update parameters, CancellationToken cancellationToken = default)

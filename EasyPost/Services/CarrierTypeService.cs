@@ -28,6 +28,7 @@ namespace EasyPost.Services
         /// <summary>
         ///     Get all available carrier types.
         /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of EasyPost.CarrierType instances.</returns>
         [CrudOperations.Read]
         public async Task<List<CarrierType>> All(CancellationToken cancellationToken = default) => await RequestAsync<List<CarrierType>>(Method.Get, "carrier_types", cancellationToken);

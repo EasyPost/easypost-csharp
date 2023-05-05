@@ -34,6 +34,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="carrier">Carrier for the tracker.</param>
         /// <param name="trackingCode">Tracking code for the tracker.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An EasyPost.Tracker instance.</returns>
         [CrudOperations.Create]
         public async Task<Tracker> Create(string carrier, string trackingCode, CancellationToken cancellationToken = default)
@@ -51,6 +52,7 @@ namespace EasyPost.Services
         ///     Create a <see cref="Tracker"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Trackers.Create"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="Tracker"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Tracker> Create(BetaFeatures.Parameters.Trackers.Create parameters, CancellationToken cancellationToken = default)
@@ -63,6 +65,7 @@ namespace EasyPost.Services
         ///     Create a list of trackers.
         /// </summary>
         /// <param name="parameters">A dictionary of tracking codes and carriers.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><c>true</c> if successful, <c>false</c> otherwise.</returns>
         [CrudOperations.Create]
         public async Task CreateList(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -76,6 +79,7 @@ namespace EasyPost.Services
         ///     Create a list of trackers.
         /// </summary>
         /// <param name="parameters">A dictionary of tracking codes and carriers.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><c>true</c> if successful, <c>false</c> otherwise.</returns>
         [CrudOperations.Create]
         [Obsolete("This method is deprecated. Please use TrackerService.Create() instead. This method will be removed in a future version.", false)]
@@ -102,6 +106,7 @@ namespace EasyPost.Services
         ///     * {"page_size", int} Size of page. Default to 30.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A EasyPost.TrackerCollection instance.</returns>
         [CrudOperations.Read]
         public async Task<TrackerCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
@@ -116,6 +121,7 @@ namespace EasyPost.Services
         ///     List all <see cref="Tracker"/> objects.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Trackers.All"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="TrackerCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<TrackerCollection> All(BetaFeatures.Parameters.Trackers.All parameters, CancellationToken cancellationToken = default)
@@ -130,6 +136,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="collection">The <see cref="TrackerCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The next page, as a <see cref="TrackerCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
@@ -139,6 +146,7 @@ namespace EasyPost.Services
         ///     Retrieve a Tracker from its id.
         /// </summary>
         /// <param name="id">String representing a Tracker. Starts with "trk_".</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Tracker instance.</returns>
         [CrudOperations.Read]
         public async Task<Tracker> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Tracker>(Method.Get, $"trackers/{id}", cancellationToken);

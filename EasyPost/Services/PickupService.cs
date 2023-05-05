@@ -44,6 +44,7 @@ namespace EasyPost.Services
         ///     * {"batch", Batch}
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Pickup instance.</returns>
         [CrudOperations.Create]
         public async Task<Pickup> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -56,6 +57,7 @@ namespace EasyPost.Services
         ///     Create a <see cref="Pickup"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Pickups.Create"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="Pickup"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Pickup> Create(BetaFeatures.Parameters.Pickups.Create parameters, CancellationToken cancellationToken = default)
@@ -68,6 +70,7 @@ namespace EasyPost.Services
         ///     Retrieve a Pickup from its id.
         /// </summary>
         /// <param name="id">String representing a Pickup. Starts with "pickup_".</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Pickup instance.</returns>
         [CrudOperations.Read]
         public async Task<Pickup> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Pickup>(Method.Get, $"pickups/{id}", cancellationToken);
@@ -87,6 +90,7 @@ namespace EasyPost.Services
         ///     * {"purchased", bool} If true only display purchased shipments.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An <see cref="PickupCollection"/> object.</returns>
         [CrudOperations.Read]
         public async Task<PickupCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
@@ -100,6 +104,7 @@ namespace EasyPost.Services
         ///     List all <see cref="Pickup"/> objects.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Pickups.All"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="PickupCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<PickupCollection> All(BetaFeatures.Parameters.Pickups.All parameters, CancellationToken cancellationToken = default)
@@ -114,6 +119,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="collection">The <see cref="PickupCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The next page, as a <see cref="PickupCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
@@ -124,6 +130,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="withCarrier">The name of the carrier to purchase with.</param>
         /// <param name="withService">The name of the service to purchase.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated Pickup.</returns>
         [CrudOperations.Update]
         public async Task<Pickup> Buy(string id, string withCarrier, string withService, CancellationToken cancellationToken = default)
@@ -141,6 +148,7 @@ namespace EasyPost.Services
         ///     Purchase this <see cref="Pickup"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Pickups.Buy"/> parameters set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>This updated <see cref="Pickup"/> instance.</returns>
         [CrudOperations.Update]
         public async Task<Pickup> Buy(string id, BetaFeatures.Parameters.Pickups.Buy parameters, CancellationToken cancellationToken = default)
@@ -151,6 +159,7 @@ namespace EasyPost.Services
         /// <summary>
         ///     Cancel this pickup.
         /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated Pickup.</returns>
         [CrudOperations.Update]
         public async Task<Pickup> Cancel(string id, CancellationToken cancellationToken = default)

@@ -42,6 +42,7 @@ namespace EasyPost.Services
         ///     * {"page_size", int} Max size of list. Default to 20.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An EasyPost.EventCollection instance.</returns>
         [CrudOperations.Read]
         public async Task<EventCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
@@ -55,6 +56,7 @@ namespace EasyPost.Services
         ///     List all <see cref="Event"/> objects.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Events.All"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="EventCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<EventCollection> All(BetaFeatures.Parameters.Events.All parameters, CancellationToken cancellationToken = default)
@@ -69,6 +71,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="collection">The <see cref="EventCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The next page, as a <see cref="EventCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
@@ -78,6 +81,7 @@ namespace EasyPost.Services
         ///     Retrieve an Event from its id.
         /// </summary>
         /// <param name="id">String representing a Event. Starts with "evt_".</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Event instance.</returns>
         [CrudOperations.Read]
         public async Task<Event> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Event>(Method.Get, $"events/{id}", cancellationToken);
@@ -86,6 +90,7 @@ namespace EasyPost.Services
         ///     Retrieve all <see cref="Payload"/>s for an <see cref="Event"/>.
         /// </summary>
         /// <param name="eventId">ID of the <see cref="Event"/> to retrieve payloads for.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="Payload"/> objects.</returns>
         public async Task<List<Payload>> RetrieveAllPayloads(string eventId, CancellationToken cancellationToken = default) => await RequestAsync<List<Payload>>(Method.Get, $"events/{eventId}/payloads", cancellationToken: cancellationToken, rootElement: "payloads");
 
@@ -94,6 +99,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="eventId">ID of the <see cref="Event"/> to retrieve payload for.</param>
         /// <param name="payloadId">ID of payload to retrieve.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="Payload"/> object.</returns>
         /// <exception cref="InvalidRequestError">Thrown if the specified payload ID is malformed.</exception>
         /// <exception cref="NotFoundError">Thrown if the specified payload is not found.</exception>

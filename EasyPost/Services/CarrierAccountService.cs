@@ -42,6 +42,7 @@ namespace EasyPost.Services
         ///     * {"test_credentials", Dictionary&lt;string, string&gt;}
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         [CrudOperations.Create]
         public async Task<CarrierAccount> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -62,6 +63,7 @@ namespace EasyPost.Services
         ///     Create a <see cref="CarrierAccount"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.CarrierAccounts.Create"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="CarrierAccount"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<CarrierAccount> Create(BetaFeatures.Parameters.CarrierAccounts.Create parameters, CancellationToken cancellationToken = default)
@@ -80,6 +82,7 @@ namespace EasyPost.Services
         /// <summary>
         ///     List all available carrier accounts.
         /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of EasyPost.CarrierAccount instances.</returns>
         [CrudOperations.Read]
         public async Task<List<CarrierAccount>> All(CancellationToken cancellationToken = default) => await RequestAsync<List<CarrierAccount>>(Method.Get, "carrier_accounts", cancellationToken);
@@ -88,6 +91,7 @@ namespace EasyPost.Services
         ///     Retrieve a CarrierAccount from its id.
         /// </summary>
         /// <param name="id">String representing a carrier account. Starts with "ca_".</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.CarrierAccount instance.</returns>
         [CrudOperations.Read]
         public async Task<CarrierAccount> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<CarrierAccount>(Method.Get, $"carrier_accounts/{id}", cancellationToken);
@@ -96,6 +100,7 @@ namespace EasyPost.Services
         ///     Update this CarrierAccount.
         /// </summary>
         /// <param name="parameters">See CarrierAccount.Create for more details.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated CarrierAccount.</returns>
         [CrudOperations.Update]
         public async Task<CarrierAccount> Update(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -108,6 +113,7 @@ namespace EasyPost.Services
         ///     Update this <see cref="CarrierAccount"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.CarrierAccounts.Update"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>This updated <see cref="CarrierAccount"/> instance.</returns>
         [CrudOperations.Update]
         public async Task<CarrierAccount> Update(string id, BetaFeatures.Parameters.CarrierAccounts.Update parameters, CancellationToken cancellationToken = default)
@@ -118,6 +124,7 @@ namespace EasyPost.Services
         /// <summary>
         ///     Remove this CarrierAccount from your account.
         /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>Whether the request was successful or not.</returns>
         [CrudOperations.Delete]
         public async Task Delete(string id, CancellationToken cancellationToken = default) => await RequestAsync(Method.Delete, $"carrier_accounts/{id}", cancellationToken);

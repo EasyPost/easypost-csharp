@@ -34,6 +34,7 @@ namespace EasyPost.Services
         ///     * {"name", string} Name on the account.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Create]
         public async Task<User> CreateChild(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -46,6 +47,7 @@ namespace EasyPost.Services
         ///     Create a child <see cref="User"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.CreateChild"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="User"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<User> CreateChild(BetaFeatures.Parameters.Users.CreateChild parameters, CancellationToken cancellationToken = default)
@@ -58,6 +60,7 @@ namespace EasyPost.Services
         ///     Retrieve a User from its ID. If no ID is specified, the current User will be returned.
         /// </summary>
         /// <param name="id">String representing a user. Starts with "user_".</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
         public async Task<User> Retrieve(string? id = null, CancellationToken cancellationToken = default)
@@ -73,6 +76,7 @@ namespace EasyPost.Services
         /// <summary>
         ///     Retrieve the current user.
         /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.User instance.</returns>
         [CrudOperations.Read]
         public async Task<User> RetrieveMe(CancellationToken cancellationToken = default) => await RequestAsync<User>(Method.Get, "users", cancellationToken);
@@ -91,6 +95,7 @@ namespace EasyPost.Services
         ///     * {"theme", string} "theme1" or "theme2"
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Brand instance.</returns>
         [CrudOperations.Create]
         public async Task<Brand> UpdateBrand(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -103,6 +108,7 @@ namespace EasyPost.Services
         ///     Update this <see cref="User"/>'s <see cref="Brand"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.UpdateBrand"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>This updated <see cref="Brand"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Brand> UpdateBrand(string id, BetaFeatures.Parameters.Users.UpdateBrand parameters, CancellationToken cancellationToken = default)
@@ -125,6 +131,7 @@ namespace EasyPost.Services
         ///     account.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated User.</returns>
         [CrudOperations.Update]
         public async Task<User> Update(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -136,6 +143,7 @@ namespace EasyPost.Services
         ///     Update this <see cref="User"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.Update"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>This updated <see cref="User"/> instance.</returns>
         [CrudOperations.Update]
         public async Task<User> Update(string id, BetaFeatures.Parameters.Users.Update parameters, CancellationToken cancellationToken = default)
@@ -146,6 +154,7 @@ namespace EasyPost.Services
         /// <summary>
         ///     Delete the user.
         /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>Whether the request was successful or not.</returns>
         [CrudOperations.Delete]
         public async Task Delete(string id, CancellationToken cancellationToken = default) => await RequestAsync(Method.Delete, $"users/{id}", cancellationToken);

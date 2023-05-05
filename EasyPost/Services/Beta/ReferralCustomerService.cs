@@ -27,13 +27,15 @@ namespace EasyPost.Services.Beta
         #region CRUD Operations
 
         /// <summary>
-        ///     Add a Stripe payment method to a Referral Customer.
-        ///     This function should be called against a Client configured with the Referral Customer's API key.
+        ///     Add a Stripe payment method to a <see cref="ReferralCustomer"/>
+        ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the <see cref="ReferralCustomer"/>'s API key.
         ///     This function will fail if called against a non-Referral Customer Client.
+        ///     <a href="https://www.easypost.com/docs/api#add-payment-method-to-referral-user">Related API documentation</a>.
         /// </summary>
         /// <param name="stripeCustomerId">Unique customer ID provided by Stripe.</param>
         /// <param name="paymentMethodReference">ID of the card or bank account provided by Stripe.</param>
         /// <param name="priority">Which priority to save this payment method as on EasyPost.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="PaymentMethod"/> object.</returns>
         /// <exception cref="ApiError">When the request fails.</exception>
         [CrudOperations.Update]
@@ -58,11 +60,13 @@ namespace EasyPost.Services.Beta
         }
 
         /// <summary>
-        ///     Add a Stripe payment method to a <see cref="ReferralCustomer"/>.
-        ///     This function should be called against a Client configured with the Referral Customer's API key.
+        ///     Add a Stripe payment method to a <see cref="ReferralCustomer"/>
+        ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the <see cref="ReferralCustomer"/>'s API key.
         ///     This function will fail if called against a non-Referral Customer Client.
+        ///     <a href="https://www.easypost.com/docs/api#add-payment-method-to-referral-user">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.AddPaymentMethod"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="PaymentMethod"/> object.</returns>
         /// <exception cref="ApiError">When the request fails.</exception>
         [CrudOperations.Update]
@@ -72,10 +76,12 @@ namespace EasyPost.Services.Beta
         }
 
         /// <summary>
-        ///     Refund a Referral Customer's wallet by a specified amount.
+        ///     Refund a <see cref="ReferralCustomer"/>'s wallet by a specified amount.
         ///     Refund will be issued to the user's original payment method.
+        ///     <a href="https://www.easypost.com/docs/api#refund-a-referral-user">Related API documentation</a>.
         /// </summary>
         /// <param name="amount">Amount in cents to refund the Referral Customer.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="PaymentRefund"/> object.</returns>
         [CrudOperations.Update]
         public async Task<PaymentRefund> RefundByAmount(int amount, CancellationToken cancellationToken = default)
@@ -89,9 +95,12 @@ namespace EasyPost.Services.Beta
         }
 
         /// <summary>
-        ///     Refund a <see cref="ReferralCustomer"/>'s wallet for a specified amount.
+        ///     Refund a <see cref="ReferralCustomer"/>'s wallet by a specified amount.
+        ///     Refund will be issued to the user's original payment method.
+        ///     <a href="https://www.easypost.com/docs/api#refund-a-referral-user">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.RefundByAmount"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="PaymentRefund"/> object.</returns>
         [CrudOperations.Update]
         public async Task<PaymentRefund> RefundByAmount(BetaFeatures.Parameters.ReferralCustomers.RefundByAmount parameters, CancellationToken cancellationToken = default)
@@ -100,10 +109,12 @@ namespace EasyPost.Services.Beta
         }
 
         /// <summary>
-        ///     Refund a Referral Customer's wallet for a specified payment log entry.
+        ///     Refund a <see cref="ReferralCustomer"/>'s wallet for a specified payment log entry.
         ///     Refund will be issued to the user's original payment method.
+        ///     <a href="https://www.easypost.com/docs/api#refund-a-referral-user">Related API documentation</a>.
         /// </summary>
         /// <param name="paymentLogId">Payment log ID to refund.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="PaymentRefund"/> object.</returns>
         [CrudOperations.Update]
         public async Task<PaymentRefund> RefundByPaymentLog(string paymentLogId, CancellationToken cancellationToken = default)
@@ -118,8 +129,11 @@ namespace EasyPost.Services.Beta
 
         /// <summary>
         ///     Refund a <see cref="ReferralCustomer"/>'s wallet for a specified payment log entry.
+        ///     Refund will be issued to the user's original payment method.
+        ///     <a href="https://www.easypost.com/docs/api#refund-a-referral-user">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="PaymentRefund"/> object.</returns>
         [CrudOperations.Update]
         public async Task<PaymentRefund> RefundByPaymentLog(BetaFeatures.Parameters.ReferralCustomers.RefundByPaymentLog parameters, CancellationToken cancellationToken = default)
