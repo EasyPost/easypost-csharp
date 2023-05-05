@@ -38,6 +38,7 @@ namespace EasyPost.Services
         ///     * {"predefined_package", string}
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Parcel instance.</returns>
         [CrudOperations.Create]
         public async Task<Parcel> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -50,6 +51,7 @@ namespace EasyPost.Services
         ///     Create a <see cref="Parcel"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Parcels.Create"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="Parcel"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Parcel> Create(BetaFeatures.Parameters.Parcels.Create parameters, CancellationToken cancellationToken = default)
@@ -62,6 +64,7 @@ namespace EasyPost.Services
         ///     Retrieve a Parcel from its id.
         /// </summary>
         /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Parcel instance.</returns>
         [CrudOperations.Read]
         public async Task<Parcel> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Parcel>(Method.Get, $"parcels/{id}", cancellationToken);

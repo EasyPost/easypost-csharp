@@ -39,6 +39,7 @@ namespace EasyPost.Services
         ///     * {"origin_country", string}
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
         [CrudOperations.Create]
         public async Task<CustomsItem> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -51,6 +52,7 @@ namespace EasyPost.Services
         ///     Create a <see cref="CustomsItem"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.CustomsItems.Create"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="CustomsItem"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<CustomsItem> Create(BetaFeatures.Parameters.CustomsItems.Create parameters, CancellationToken cancellationToken = default)
@@ -63,6 +65,7 @@ namespace EasyPost.Services
         ///     Retrieve a CustomsItem from its id.
         /// </summary>
         /// <param name="id">String representing a CustomsItem. Starts with "cstitem_".</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.CustomsItem instance.</returns>
         [CrudOperations.Read]
         public async Task<CustomsItem> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<CustomsItem>(Method.Get, $"customs_items/{id}", cancellationToken);

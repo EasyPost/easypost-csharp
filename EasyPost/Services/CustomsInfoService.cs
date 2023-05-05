@@ -41,6 +41,7 @@ namespace EasyPost.Services
         ///     CustomsItem.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         [CrudOperations.Create]
         public async Task<CustomsInfo> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -53,6 +54,7 @@ namespace EasyPost.Services
         ///     Create a <see cref="CustomsInfo"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.CustomsInfo.Create"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="CustomsInfo"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<CustomsInfo> Create(BetaFeatures.Parameters.CustomsInfo.Create parameters, CancellationToken cancellationToken = default)
@@ -65,6 +67,7 @@ namespace EasyPost.Services
         ///     Retrieve a CustomsInfo from its id.
         /// </summary>
         /// <param name="id">String representing a CustomsInfo. Starts with "cstinfo_".</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.CustomsInfo instance.</returns>
         [CrudOperations.Read]
         public async Task<CustomsInfo> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<CustomsInfo>(Method.Get, $"customs_infos/{id}", cancellationToken);

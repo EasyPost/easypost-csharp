@@ -46,6 +46,7 @@ namespace EasyPost.Services.Beta
         ///     * {"carrier_accounts", List&lt;string&gt;} List of CarrierAccount.id to limit rating.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="StatelessRate"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<List<StatelessRate>> RetrieveStatelessRates(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -58,6 +59,7 @@ namespace EasyPost.Services.Beta
         ///     Retrieve ephemeral rates.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Beta.Rates.Retrieve"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="StatelessRate"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<List<StatelessRate>> RetrieveStatelessRates(BetaFeatures.Parameters.Beta.Rates.Retrieve parameters, CancellationToken cancellationToken = default)

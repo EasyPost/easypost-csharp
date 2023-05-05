@@ -27,6 +27,7 @@ namespace EasyPost.Services
         /// <summary>
         ///     Get a list of all API keys.
         /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An EasyPost.ApiKeyCollection instances.</returns>
         [CrudOperations.Read]
         public async Task<ApiKeyCollection> All(CancellationToken cancellationToken = default) => await RequestAsync<ApiKeyCollection>(Method.Get, "api_keys", cancellationToken);

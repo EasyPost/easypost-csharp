@@ -43,6 +43,7 @@ namespace EasyPost.Services
         ///     * {"additional_columns", List&lt;string&gt;} Request additional columns (if any) outside of the defaults.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Report instance.</returns>
         [CrudOperations.Create]
         public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default) => await RequestAsync<Report>(Method.Post, $"reports/{type}", cancellationToken, parameters);
@@ -72,6 +73,7 @@ namespace EasyPost.Services
         ///     * {"page_size", int} Max size of list. Default to 20.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An EasyPost.ReportCollection instance.</returns>
         [CrudOperations.Read]
         public async Task<ReportCollection> All(string type, Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
@@ -102,6 +104,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="collection">The <see cref="ReportCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The next page, as a <see cref="ReportCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
@@ -112,6 +115,7 @@ namespace EasyPost.Services
         ///     Retrieve a Report from its id.
         /// </summary>
         /// <param name="id">String representing a report.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Report instance.</returns>
         [CrudOperations.Read]
         public async Task<Report> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Report>(Method.Get, $"reports/{id}", cancellationToken);
@@ -121,6 +125,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="type">Type of report, e.g. shipment, tracker, payment_log, etc.</param>
         /// <param name="id">String representing a report.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Report instance.</returns>
         [CrudOperations.Read]
         public async Task<Report> Retrieve(string type, string id, CancellationToken cancellationToken = default) => await RequestAsync<Report>(Method.Get, $"reports/{type}/{id}", cancellationToken);

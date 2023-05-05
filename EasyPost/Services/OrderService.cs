@@ -45,6 +45,7 @@ namespace EasyPost.Services
         ///     * {"items", IEnumerable&lt;Item&gt;} See Item.Create for list of valid keys.
         ///     All invalid keys will be ignored.
         /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Order instance.</returns>
         [CrudOperations.Create]
         public async Task<Order> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -57,6 +58,7 @@ namespace EasyPost.Services
         ///     Create an <see cref="Order"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Orders.Create"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="Order"/> instance.</returns>
         [CrudOperations.Create]
         public async Task<Order> Create(BetaFeatures.Parameters.Orders.Create parameters, CancellationToken cancellationToken = default)
@@ -69,6 +71,7 @@ namespace EasyPost.Services
         ///     Retrieve a Order from its id or reference.
         /// </summary>
         /// <param name="id">String representing a Order. Starts with "order_" if passing an id.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>EasyPost.Order instance.</returns>
         [CrudOperations.Read]
         public async Task<Order> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Order>(Method.Get, $"orders/{id}", cancellationToken);
@@ -78,6 +81,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="withCarrier">The carrier to purchase a shipment from.</param>
         /// <param name="withService">The service to purchase.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated Order.</returns>
         [CrudOperations.Update]
         public async Task<Order> Buy(string id, string withCarrier, string withService, CancellationToken cancellationToken = default)
@@ -95,6 +99,7 @@ namespace EasyPost.Services
         ///     Purchase a label for this shipment with the given rate.
         /// </summary>
         /// <param name="rate">EasyPost.Rate object instance to purchase the shipment with.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated Order.</returns>
         [CrudOperations.Update]
         public async Task<Order> Buy(string id, Rate rate, CancellationToken cancellationToken = default)
@@ -118,6 +123,7 @@ namespace EasyPost.Services
         ///     Purchase the <see cref="Shipments"/> within this <see cref="Order"/>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.Orders.Buy"/> parameters set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>This updated <see cref="Order"/> instance.</returns>
         [CrudOperations.Update]
         public async Task<Order> Buy(string id, BetaFeatures.Parameters.Orders.Buy parameters, CancellationToken cancellationToken = default)
@@ -128,6 +134,7 @@ namespace EasyPost.Services
         /// <summary>
         ///     Repopulate the rates for an Order.
         /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The task to refresh this Order's rates.</returns>
         [CrudOperations.Update]
         public async Task<Order> RefreshRates(string id, CancellationToken cancellationToken = default)
