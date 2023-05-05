@@ -10,7 +10,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of user-related functionality.
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#users">user-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class UserService : EasyPostService

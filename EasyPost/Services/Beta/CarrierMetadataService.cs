@@ -8,9 +8,16 @@ using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services.Beta
 {
+    /// <summary>
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#carrier-metadata">carrier metadata-related beta functionality</a>.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class CarrierMetadataService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="CarrierMetadataService"/> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal CarrierMetadataService(EasyPostClient client)
             : base(client)
         {

@@ -8,7 +8,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of API key-related functionality.
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#api-keys">API key-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ApiKeyService : EasyPostService

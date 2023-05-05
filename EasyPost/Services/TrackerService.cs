@@ -13,7 +13,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of tracker-related functionality.
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#trackers">tracker-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class TrackerService : EasyPostService

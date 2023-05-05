@@ -12,7 +12,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of address-related functionality.
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#addresses">address-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class AddressService : EasyPostService

@@ -13,7 +13,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of batch-related functionality.
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#batches">batch-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class BatchService : EasyPostService

@@ -10,8 +10,15 @@ using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services.Beta
 {
+    /// <summary>
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#referral-customers">referral customer-related beta functionality</a>.
+    /// </summary>
     public class ReferralCustomerService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ReferralCustomerService"/> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         public ReferralCustomerService(EasyPostClient client)
             : base(client)
         {

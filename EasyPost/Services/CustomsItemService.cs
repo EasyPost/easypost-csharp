@@ -10,7 +10,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of customs item-related functionality.
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#customs-items">customs item-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class CustomsItemService : EasyPostService
