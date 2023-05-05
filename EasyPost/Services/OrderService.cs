@@ -28,25 +28,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a Order.
+        ///     Create an <see cref="Order"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-an-order">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to create the order with. Valid pairs:
-        ///     * {"from_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"to_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"buyer_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"return_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"customs_info", Dictionary&lt;string, object&gt;} See CustomsInfo.Create for list of valid keys.
-        ///     * {"is_return", bool}
-        ///     * {"reference", string}
-        ///     * {"shipments", IEnumerable&lt;Shipment&gt;} See Shipment.Create for list of valid keys.
-        ///     * {"carrier_accounts", IEnumerable&lt;CarrierAccount&gt;}
-        ///     * {"containers", IEnumerable&lt;Container&gt;} See Container.Create for list of valid keys.
-        ///     * {"items", IEnumerable&lt;Item&gt;} See Item.Create for list of valid keys.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to use to create the <see cref="Order"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.Order instance.</returns>
+        /// <returns>An <see cref="Order"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Order> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -56,10 +43,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create an <see cref="Order"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-an-order">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Orders.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="Order"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="Order"/> instance.</returns>
+        /// <returns>An <see cref="Order"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Order> Create(BetaFeatures.Parameters.Orders.Create parameters, CancellationToken cancellationToken = default)
         {

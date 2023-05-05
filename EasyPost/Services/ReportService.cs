@@ -28,26 +28,23 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a Report.
+        ///     Create a <see cref="Report"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-report">Related API documentation</a>.
         /// </summary>
-        /// <param name="type">
-        ///     The type of report, e.g. "shipment", "tracker", "payment_log", etc.
-        /// </param>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to create the carrier account with. Valid pairs:
-        ///     * {"start_date", string} Date to start the report at.
-        ///     * {"end_date", string} Date to end the report at.
-        ///     * {"include_children", string} Whether or not to include child objects in the report.
-        ///     * {"send_email", string} Whether or not to send the report via email.
-        ///     * {"columns", List&lt;string&gt;} Specify the exact columns you want in your report.
-        ///     * {"additional_columns", List&lt;string&gt;} Request additional columns (if any) outside of the defaults.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="type">Type of <see cref="Report"/> to create.</param>
+        /// <param name="parameters">Data to use to create the <see cref="Report"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.Report instance.</returns>
+        /// <returns>A <see cref="Report"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<Report> Create(string type, Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default) => await RequestAsync<Report>(Method.Post, $"reports/{type}", cancellationToken, parameters);
 
+        /// <summary>
+        ///     Create a <see cref="Report"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-report">Related API documentation</a>.
+        /// </summary>
+        /// <param name="parameters">Data to use to create the <see cref="Report"/>.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="Report"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<Report> Create(BetaFeatures.Parameters.Reports.Create parameters, CancellationToken cancellationToken = default)
         {

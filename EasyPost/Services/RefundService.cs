@@ -29,14 +29,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a Refund.
+        ///     Create a <see cref="Refund"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-refund">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to create the refund with.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to use to create the <see cref="Refund"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>A list of EasyPost.Refund instances.</returns>
+        /// <returns>A list of <see cref="Refund"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<List<Refund>> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -46,10 +44,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Refund"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-refund">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Refunds.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="Refund"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="Refund"/> instance.</returns>
+        /// <returns>A list of <see cref="Refund"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<List<Refund>> Create(BetaFeatures.Parameters.Refunds.Create parameters, CancellationToken cancellationToken = default)
         {

@@ -27,19 +27,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a Parcel.
+        ///     Create a <see cref="Parcel"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-parcel">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to create the parcel with. Valid pairs:
-        ///     * {"length", int}
-        ///     * {"width", int}
-        ///     * {"height", int}
-        ///     * {"weight", double}
-        ///     * {"predefined_package", string}
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to use to create the <see cref="Parcel"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.Parcel instance.</returns>
+        /// <returns>A <see cref="Parcel"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Parcel> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -49,10 +42,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Parcel"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-parcel">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Parcels.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="Parcel"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="Parcel"/> instance.</returns>
+        /// <returns>A <see cref="Parcel"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Parcel> Create(BetaFeatures.Parameters.Parcels.Create parameters, CancellationToken cancellationToken = default)
         {

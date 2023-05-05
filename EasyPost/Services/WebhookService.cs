@@ -31,15 +31,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a Webhook.
+        ///     Create a <see cref="Webhook"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-webhook">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to create the webhook with. Valid pairs:
-        ///     * { "url", string } Url of the webhook that events will be sent to.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to use to create the <see cref="Webhook"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.Webhook instance.</returns>
+        /// <returns>A <see cref="Webhook"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<Webhook> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -49,10 +46,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Webhook"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-webhook">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Webhooks.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="Webhook"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="Webhook"/> instance.</returns>
+        /// <returns>A <see cref="Webhook"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<Webhook> Create(BetaFeatures.Parameters.Webhooks.Create parameters, CancellationToken cancellationToken = default)
         {
@@ -88,16 +86,12 @@ namespace EasyPost.Services
         public async Task<Webhook> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Webhook>(Method.Get, $"webhooks/{id}", cancellationToken);
 
         /// <summary>
-        ///     Update a Webhook. A disabled webhook will be enabled.
+        ///     Update a <see cref="Webhook"/>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to update the webhook with. Valid pairs:
-        ///     * { "url", string } Url of the webhook that events will be sent to.
-        ///     * { "webhook_secret", string } Secret token to include as a header when sending a webhook.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to update <see cref="Webhook"/> with.</param>
+        /// <param name="id">ID of the <see cref="Webhook"/> to update.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The updated Webhook.</returns>
+        /// <returns>The updated <see cref="Webhook"/>.</returns>
         [CrudOperations.Update]
         public async Task<Webhook> Update(string id, Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
@@ -105,11 +99,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Update this <see cref="Webhook"/>.
+        ///     Update a <see cref="Webhook"/>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Webhooks.Update"/> parameter set.</param>
+        /// <param name="parameters">Data to update <see cref="Webhook"/> with.</param>
+        /// <param name="id">ID of the <see cref="Webhook"/> to update.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>This updated <see cref="Webhook"/> instance.</returns>
+        /// <returns>The updated <see cref="Webhook"/>.</returns>
         [CrudOperations.Update]
         public async Task<Webhook> Update(string id, BetaFeatures.Parameters.Webhooks.Update parameters, CancellationToken cancellationToken = default)
         {
@@ -117,10 +112,11 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Delete this webhook.
+        ///     Delete a <see cref="Webhook"/>.
         /// </summary>
+        /// <param name="id">ID of the <see cref="Webhook"/> to delete.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>Whether the request was successful or not.</returns>
+        /// <returns>None.</returns>
         [CrudOperations.Delete]
         public async Task Delete(string id, CancellationToken cancellationToken = default) => await RequestAsync(Method.Delete, $"webhooks/{id}", cancellationToken);
 

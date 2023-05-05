@@ -30,27 +30,13 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a Shipment.
+        ///     Create a <see cref="Shipment"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-shipment">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to create the shipment with. Valid pairs:
-        ///     * {"from_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"to_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"buyer_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"return_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"parcel", Dictionary&lt;string, object&gt;} See Parcel.Create for list of valid keys.
-        ///     * {"customs_info", Dictionary&lt;string, object&gt;} See CustomsInfo.Create for list of valid keys.
-        ///     * {"options", Dictionary&lt;string, object&gt;} See https://www.easypost.com/docs/api#shipments for list of
-        ///     options.
-        ///     * {"is_return", bool}
-        ///     * {"currency", string} Defaults to "USD".
-        ///     * {"reference", string}
-        ///     * {"carrier_accounts", List&lt;string&gt;} List of CarrierAccount.id to limit rating.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <param name="withCarbonOffset">Whether to use carbon offset when creating the shipment.</param>
+        /// <param name="parameters">Data to use to create the <see cref="Shipment"/>.</param>
+        /// <param name="withCarbonOffset">Whether to include a carbon offset fee for the <see cref="Shipment"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>An EasyPost.Shipment instance.</returns>
+        /// <returns>A <see cref="Shipment"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<Shipment> Create(Dictionary<string, object> parameters, bool withCarbonOffset = false, CancellationToken cancellationToken = default)
         {
@@ -60,11 +46,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Create a <see cref="ScanForm"/>.
+        ///     Create a <see cref="Shipment"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-shipment">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="Shipment"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="ScanForm"/> instance.</returns>
+        /// <returns>A <see cref="Shipment"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<Shipment> Create(BetaFeatures.Parameters.Shipments.Create parameters, CancellationToken cancellationToken = default)
         {
