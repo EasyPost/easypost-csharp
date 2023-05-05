@@ -117,22 +117,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Update the User associated with the api_key specified.
+        ///     Update a <see cref="User"/>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to create the carrier account with. Valid pairs:
-        ///     * {"name", string} Name on the account.
-        ///     * {"email", string} Email on the account. Can only be updated on the parent account.
-        ///     * {"phone_number", string} Phone number on the account. Can only be updated on the parent account.
-        ///     * {"recharge_amount", int} Recharge amount for the account in cents. Can only be updated on the parent account.
-        ///     * {"secondary_recharge_amount", int} Secondary recharge amount for the account in cents. Can only be updated on the
-        ///     parent account.
-        ///     * {"recharge_threshold", int} Recharge threshold for the account in cents. Can only be updated on the parent
-        ///     account.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to update <see cref="User"/> with.</param>
+        /// <param name="id">ID of the <see cref="User"/> to update.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>The updated User.</returns>
+        /// <returns>The updated <see cref="User"/>.</returns>
         [CrudOperations.Update]
         public async Task<User> Update(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -140,11 +130,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Update this <see cref="User"/>.
+        ///     Update a <see cref="User"/>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Users.Update"/> parameter set.</param>
+        /// <param name="parameters">Data to update <see cref="User"/> with.</param>
+        /// <param name="id">ID of the <see cref="User"/> to update.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>This updated <see cref="User"/> instance.</returns>
+        /// <returns>The updated <see cref="User"/>.</returns>
         [CrudOperations.Update]
         public async Task<User> Update(string id, BetaFeatures.Parameters.Users.Update parameters, CancellationToken cancellationToken = default)
         {
@@ -152,10 +143,11 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Delete the user.
+        ///     Delete a <see cref="User"/>.
         /// </summary>
+        /// <param name="id">ID of the <see cref="User"/> to delete.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>Whether the request was successful or not.</returns>
+        /// <returns>None.</returns>
         [CrudOperations.Delete]
         public async Task Delete(string id, CancellationToken cancellationToken = default) => await RequestAsync(Method.Delete, $"users/{id}", cancellationToken);
 

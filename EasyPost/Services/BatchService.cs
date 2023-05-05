@@ -30,16 +30,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a Batch.
+        ///     Create a <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing optional parameters to create the batch with. Valid pairs:
-        ///     * {"shipments", List&lt;Dictionary&lt;string, object&gt;&gt;} See Shipment.Create for a list of valid keys.
-        ///     * {"reference", string}
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to use to create the <see cref="Batch"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.Batch instance.</returns>
+        /// <returns>A <see cref="Batch"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Batch> Create(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
@@ -49,10 +45,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Batch"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="Batch"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="Batch"/> instance.</returns>
+        /// <returns>A <see cref="Batch"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Batch> Create(BetaFeatures.Parameters.Batches.Create parameters, CancellationToken cancellationToken = default)
         {

@@ -30,23 +30,9 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create an <see cref="Address"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-and-verify-addresses">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to create the address with. Valid pairs:
-        ///     * {"name", string}
-        ///     * {"company", string}
-        ///     * {"street1", string}
-        ///     * {"street2", string}
-        ///     * {"city", string}
-        ///     * {"state", string}
-        ///     * {"zip", string}
-        ///     * {"country", string}
-        ///     * {"phone", string}
-        ///     * {"email", string}
-        ///     * {"verify", bool}
-        ///     * {"verify_strict", bool}
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to use to create the <see cref="Address"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An <see cref="Address"/> object.</returns>
         [CrudOperations.Create]
@@ -78,10 +64,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create an <see cref="Address"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-and-verify-addresses">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Addresses.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="Address"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="Address"/> instance.</returns>
+        /// <returns>An <see cref="Address"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Address> Create(BetaFeatures.Parameters.Addresses.Create parameters, CancellationToken cancellationToken = default)
         {
@@ -90,33 +77,22 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Create and verify an Address.
+        ///     Create and verify an <see cref="Address"/> in one API call.
+        ///     <a href="https://www.easypost.com/docs/api#create-and-verify-addresses">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to create the address with. Valid pairs:
-        ///     * {"name", string}
-        ///     * {"company", string}
-        ///     * {"street1", string}
-        ///     * {"street2", string}
-        ///     * {"city", string}
-        ///     * {"state", string}
-        ///     * {"zip", string}
-        ///     * {"country", string}
-        ///     * {"phone", string}
-        ///     * {"email", string}
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to use to create the <see cref="Address"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>An Address object.</returns>
+        /// <returns>An <see cref="Address"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters, CancellationToken cancellationToken = default) => await RequestAsync<Address>(Method.Post, "addresses/create_and_verify", cancellationToken, parameters, "address");
 
         /// <summary>
-        ///     Create and verify an <see cref="Address"/>.
+        ///     Create and verify an <see cref="Address"/> in one API call.
+        ///     <a href="https://www.easypost.com/docs/api#create-and-verify-addresses">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Addresses.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="Address"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="Address"/> instance.</returns>
+        /// <returns>An <see cref="Address"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Address> CreateAndVerify(BetaFeatures.Parameters.Addresses.Create parameters, CancellationToken cancellationToken = default)
         {

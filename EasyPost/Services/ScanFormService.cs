@@ -28,11 +28,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a ScanForm.
+        ///     Create a <see cref="ScanForm"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-scanform">Related API documentation</a>.
         /// </summary>
-        /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
+        /// <param name="shipments"><see cref="Shipment"/>s to create a <see cref="ScanForm"/> for.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.ScanForm instance.</returns>
+        /// <returns>A <see cref="ScanForm"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<ScanForm> Create(List<Shipment> shipments, CancellationToken cancellationToken = default)
         {
@@ -42,10 +43,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="ScanForm"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-scanform">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="ScanForm"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="ScanForm"/> instance.</returns>
+        /// <returns>A <see cref="ScanForm"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<ScanForm> Create(BetaFeatures.Parameters.ScanForms.Create parameters, CancellationToken cancellationToken = default)
         {

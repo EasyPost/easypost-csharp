@@ -29,23 +29,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create an Insurance.
+        ///     Create an <see cref="Insurance"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-an-insurance">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to create the insurance with. Valid pairs:
-        ///     * {"to_address", Address} The actual destination of the package to be insured
-        ///     * {"from_address", Address} The actual origin of the package to be insured
-        ///     * {"tracking_code", string} The tracking code associated with the non-EasyPost-purchased package you'd like to
-        ///     insure
-        ///     * {"reference", string} Optional. A unique value that may be used in place of ID when doing Retrieve calls for this
-        ///     insurance
-        ///     * {"amount", decimal} The USD value of contents you would like to insure. Currently the maximum is $5000
-        ///     * {"carrier", string} Optional. The carrier associated with the tracking_code you provided. The carrier will get
-        ///     auto-detected if none is provided
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to use to create the <see cref="Insurance"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.Insurance instance.</returns>
+        /// <returns>An <see cref="Insurance"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Insurance> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -54,11 +43,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Create <see cref="Insurance"/>.
+        ///     Create an <see cref="Insurance"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-an-insurance">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Insurance.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="Insurance"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="Insurance"/> instance.</returns>
+        /// <returns>An <see cref="Insurance"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Insurance> Create(BetaFeatures.Parameters.Insurance.Create parameters, CancellationToken cancellationToken = default)
         {

@@ -29,23 +29,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a Pickup.
+        ///     Create a <see cref="Pickup"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-pickup">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to create the batch with. Valid pairs:
-        ///     * {"is_account_address", bool}
-        ///     * {"min_datetime", DateTime}
-        ///     * {"max_datetime", DateTime}
-        ///     * {"reference", string}
-        ///     * {"instructions", string}
-        ///     * {"carrier_accounts", List&lt;CarrierAccount&gt;}
-        ///     * {"address", Address}
-        ///     * {"shipment", Shipment}
-        ///     * {"batch", Batch}
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to use to create the <see cref="Pickup"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.Pickup instance.</returns>
+        /// <returns>A <see cref="Pickup"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Pickup> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -55,10 +44,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Pickup"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-pickup">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Pickups.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="Pickup"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="Pickup"/> instance.</returns>
+        /// <returns>A <see cref="Pickup"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Pickup> Create(BetaFeatures.Parameters.Pickups.Create parameters, CancellationToken cancellationToken = default)
         {

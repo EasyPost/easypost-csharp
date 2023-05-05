@@ -27,20 +27,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a CustomsItem.
+        ///     Create a <see cref="CustomsItem"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-customsitem">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to create the customs item with. Valid pairs:
-        ///     * {"description", string}
-        ///     * {"quantity", int}
-        ///     * {"weight", int}
-        ///     * {"value", double}
-        ///     * {"hs_tariff_number", string}
-        ///     * {"origin_country", string}
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to use to create the <see cref="CustomsItem"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.CustomsItem instance.</returns>
+        /// <returns>A <see cref="CustomsItem"/> object.</returns>
         [CrudOperations.Create]
         public async Task<CustomsItem> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -50,10 +42,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="CustomsItem"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-customsitem">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.CustomsItems.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="CustomsItem"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="CustomsItem"/> instance.</returns>
+        /// <returns>A <see cref="CustomsItem"/> object.</returns>
         [CrudOperations.Create]
         public async Task<CustomsItem> Create(BetaFeatures.Parameters.CustomsItems.Create parameters, CancellationToken cancellationToken = default)
         {

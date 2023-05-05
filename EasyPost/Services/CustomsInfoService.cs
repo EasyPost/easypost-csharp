@@ -27,22 +27,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a CustomsInfo.
+        ///     Create a <see cref="CustomsInfo"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-customsinfo">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to create the customs info with. Valid pairs:
-        ///     * {"customs_certify", bool}
-        ///     * {"customs_signer", string}
-        ///     * {"contents_type", string}
-        ///     * {"contents_explanation", string}
-        ///     * {"restriction_type", string}
-        ///     * {"eel_pfc", string}
-        ///     * {"custom_items", Dictionary&lt;string, object&gt;} -- Can contain the key "id" or all keys required to create a
-        ///     CustomsItem.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to use to create the <see cref="CustomsInfo"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>EasyPost.CustomsInfo instance.</returns>
+        /// <returns>A <see cref="CustomsInfo"/> object.</returns>
         [CrudOperations.Create]
         public async Task<CustomsInfo> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -52,10 +42,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="CustomsInfo"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-customsinfo">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.CustomsInfo.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="CustomsInfo"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="CustomsInfo"/> instance.</returns>
+        /// <returns>A <see cref="CustomsInfo"/> object.</returns>
         [CrudOperations.Create]
         public async Task<CustomsInfo> Create(BetaFeatures.Parameters.CustomsInfo.Create parameters, CancellationToken cancellationToken = default)
         {

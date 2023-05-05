@@ -30,12 +30,13 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a tracker.
+        ///     Create a <see cref="Tracker"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-tracker">Related API documentation</a>.
         /// </summary>
-        /// <param name="carrier">Carrier for the tracker.</param>
-        /// <param name="trackingCode">Tracking code for the tracker.</param>
+        /// <param name="carrier">Carrier for the <see cref="Tracker"/>.</param>
+        /// <param name="trackingCode">Tracking code for the <see cref="Tracker"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>An EasyPost.Tracker instance.</returns>
+        /// <returns>A <see cref="Tracker"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<Tracker> Create(string carrier, string trackingCode, CancellationToken cancellationToken = default)
         {
@@ -50,10 +51,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Tracker"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-tracker">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Trackers.Create"/> parameter set.</param>
+        /// <param name="parameters">Data to use to create the <see cref="Tracker"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><see cref="Tracker"/> instance.</returns>
+        /// <returns>A <see cref="Tracker"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<Tracker> Create(BetaFeatures.Parameters.Trackers.Create parameters, CancellationToken cancellationToken = default)
         {
