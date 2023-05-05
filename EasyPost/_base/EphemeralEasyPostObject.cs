@@ -31,6 +31,7 @@ namespace EasyPost._base
 
 #pragma warning disable CA1307 // Specify StringComparison
         /// <inheritdoc />
+#pragma warning disable CA1307 // Specify StringComparison
         public override int GetHashCode() => AsJson().GetHashCode() ^ GetType().GetHashCode();
 #pragma warning restore CA1307 // Specify StringComparison
 
