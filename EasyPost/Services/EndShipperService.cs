@@ -10,8 +10,16 @@ using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of end shipper-related functionality.
+    /// </summary>
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class EndShipperService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="EndShipperService" /> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal EndShipperService(EasyPostClient client)
             : base(client)
         {

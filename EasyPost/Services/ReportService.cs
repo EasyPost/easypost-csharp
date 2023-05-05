@@ -10,9 +10,16 @@ using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of report-related functionality.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ReportService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ReportService" /> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal ReportService(EasyPostClient client)
             : base(client)
         {

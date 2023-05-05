@@ -10,9 +10,16 @@ using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of scan form-related functionality.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ScanFormService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ScanFormService" /> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal ScanFormService(EasyPostClient client)
             : base(client)
         {

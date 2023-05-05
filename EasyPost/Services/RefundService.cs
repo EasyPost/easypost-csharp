@@ -11,9 +11,16 @@ using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of refund-related functionality.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class RefundService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="RefundService" /> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal RefundService(EasyPostClient client)
             : base(client)
         {

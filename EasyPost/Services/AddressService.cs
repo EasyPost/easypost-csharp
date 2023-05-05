@@ -11,9 +11,16 @@ using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of address-related functionality.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class AddressService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AddressService" /> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal AddressService(EasyPostClient client)
             : base(client)
         {
@@ -22,7 +29,7 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create an Address.
+        ///     Create an <see cref="Address"/>.
         /// </summary>
         /// <param name="parameters">
         ///     Optional dictionary containing parameters to create the address with. Valid pairs:
@@ -40,7 +47,7 @@ namespace EasyPost.Services
         ///     * {"verify_strict", bool}
         ///     All invalid keys will be ignored.
         /// </param>
-        /// <returns>EasyPost.Address instance.</returns>
+        /// <returns>An <see cref="Address"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Address> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {

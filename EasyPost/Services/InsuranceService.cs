@@ -11,9 +11,16 @@ using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of insurance-related functionality.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class InsuranceService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="InsuranceService" /> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal InsuranceService(EasyPostClient client)
             : base(client)
         {
