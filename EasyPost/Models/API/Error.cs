@@ -18,13 +18,27 @@ namespace EasyPost.Models.API
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     A machine-readable description of the problem encountered.
+        /// </summary>
         [JsonProperty("code")]
         public string? Code { get; set; }
+
+        /// <summary>
+        ///     A breakdown of errors encountered for specific fields in the request.
+        /// </summary>
         [JsonProperty("errors")]
         public List<Error>? Errors { get; set; }
+
+        /// <summary>
+        ///     The field of the request that caused the error.
+        /// </summary>
         [JsonProperty("field")]
         public string? Field { get; set; }
 
+        /// <summary>
+        ///     A human-readable description of the problem encountered.
+        /// </summary>
         [JsonIgnore]
         public string? Message
         {
@@ -41,6 +55,9 @@ namespace EasyPost.Models.API
             }
         }
 
+        /// <summary>
+        ///     A human-readable suggestion to resolve the problem encountered.
+        /// </summary>
         [JsonProperty("suggestion")]
         public string? Suggestion { get; set; }
 
@@ -53,10 +70,20 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Error"/> class.
+        /// </summary>
         internal Error()
         {
         }
 
+        /// <summary>
+        ///     Traverse the returned element for error messages.
+        ///     This will handle potential inconsistent data structures in EasyPost error messages.
+        /// </summary>
+        /// <param name="element">The current element to traverse.</param>
+        /// <param name="collectedMessages">Previously-collected error messages.</param>
+        /// <returns>A collection of error message strings.</returns>
         private static ICollection<string> CollectErrorMessages(object? element, ICollection<string> collectedMessages)
         {
             switch (element)

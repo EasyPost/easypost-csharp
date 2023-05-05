@@ -2,6 +2,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an EasyPost pickup rate.
+    /// </summary>
     public class PickupRate : Rate
     {
         #region JSON Properties
@@ -11,6 +14,9 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PickupRate"/> class.
+        /// </summary>
         internal PickupRate()
         {
         }

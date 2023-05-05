@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an EasyPost postage label.
+    /// </summary>
     public class PostageLabel : EasyPostObject
     {
         #region JSON Properties
@@ -35,6 +38,9 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PostageLabel"/> class.
+        /// </summary>
         internal PostageLabel()
         {
         }

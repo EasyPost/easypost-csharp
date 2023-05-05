@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an EasyPost tax identifier.
+    /// </summary>
     public class TaxIdentifier : EasyPostObject, ITaxIdentifierParameter
     {
         #region JSON Properties
@@ -19,6 +22,9 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="TaxIdentifier"/> class.
+        /// </summary>
         internal TaxIdentifier()
         {
         }

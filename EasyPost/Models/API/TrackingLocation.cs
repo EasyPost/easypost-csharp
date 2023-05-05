@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an EasyPost tracking location.
+    /// </summary>
     public class TrackingLocation : EasyPostObject
     {
         #region JSON Properties
@@ -18,6 +21,9 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="TrackingLocation"/> class.
+        /// </summary>
         internal TrackingLocation()
         {
         }

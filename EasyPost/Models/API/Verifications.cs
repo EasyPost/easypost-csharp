@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an EasyPost verifications object.
+    /// </summary>
     public class Verifications : EasyPostObject
     {
         #region JSON Properties
@@ -14,6 +17,9 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Verifications"/> class.
+        /// </summary>
         internal Verifications()
         {
         }

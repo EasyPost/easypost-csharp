@@ -59,6 +59,6 @@ namespace EasyPost.Models.Shared
         /// <returns>A TParameters-type set of parameters to use for the subsequent API call.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there are no more items to retrieve for the paginated collection.</exception>
         // This method is abstract and must be implemented for each collection.
-        protected internal abstract TParameters BuildNextPageParameters<TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) where TParameters : EasyPost.BetaFeatures.Parameters.BaseParameters;
+        protected internal abstract TParameters BuildNextPageParameters<TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) where TParameters : BetaFeatures.Parameters.BaseParameters;
     }
 }

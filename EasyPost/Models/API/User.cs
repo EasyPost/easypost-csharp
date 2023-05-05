@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using EasyPost.BetaFeatures.Parameters;
+﻿using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
-using EasyPost.Utilities.Internal.Attributes;
-using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an EasyPost user.
+    /// </summary>
     public class User : BaseUser, IUserParameter
     {
         internal User()
