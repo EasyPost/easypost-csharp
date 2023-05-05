@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost refund.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#refund-object">EasyPost refund</a>.
     /// </summary>
     public class Refund : EasyPostObject, IRefundParameter
     {

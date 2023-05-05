@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost webhook.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#webhook-object">EasyPost webhook</a>.
     /// </summary>
     public class Webhook : EasyPostObject, IWebhookParameter
     {

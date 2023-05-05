@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost pickup.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#pickup-object">EasyPost pickup</a>.
     /// </summary>
     public class Pickup : EasyPostObject, IPickupParameter
     {

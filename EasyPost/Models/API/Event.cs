@@ -8,7 +8,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1716
     /// <summary>
-    ///     Class representing an EasyPost event.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#event-object">EasyPost event</a>.
     /// </summary>
     public class Event : EasyPostObject
 #pragma warning restore CA1716

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost tax identifier.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#taxidentifier-object">EasyPost tax identifier</a>.
     /// </summary>
     public class TaxIdentifier : EasyPostObject, ITaxIdentifierParameter
     {

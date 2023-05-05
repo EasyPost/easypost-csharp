@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost end shipper.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#endshipper-object">EasyPost EndShipper</a>.
     /// </summary>
     public class EndShipper : EasyPostObject, IEndShipperParameter
     {

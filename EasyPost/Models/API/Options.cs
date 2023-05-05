@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost options set.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#options-object">EasyPost options set</a>.
     /// </summary>
     public class Options : EasyPostObject
     {

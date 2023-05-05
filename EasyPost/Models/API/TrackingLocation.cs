@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost tracking location.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#tracking-location-object">EasyPost tracking location</a>.
     /// </summary>
     public class TrackingLocation : EasyPostObject
     {

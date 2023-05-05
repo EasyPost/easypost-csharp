@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost scan form.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#scan-form-object">EasyPost scan form</a>.
     /// </summary>
     public class ScanForm : EasyPostObject, IScanFormParameter
     {

@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost address.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#address-object">EasyPost address</a>.
     /// </summary>
     public class Address : EasyPostObject, IAddressParameter
     {

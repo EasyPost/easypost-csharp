@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost batch shipment.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#batch-shipment-object">EasyPost batch shipment</a>.
     /// </summary>
     public class BatchShipment : EasyPostObject
     {

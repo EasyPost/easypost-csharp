@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost referral customer.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#referral-customers">EasyPost referral customer</a>.
     /// </summary>
     public class ReferralCustomer : BaseUser, IReferralCustomerParameter
     {

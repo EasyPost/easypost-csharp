@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost report.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#report-object">EasyPost report</a>.
     /// </summary>
     public class Report : EasyPostObject, IReportParameter
     {
