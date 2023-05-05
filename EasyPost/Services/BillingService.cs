@@ -12,7 +12,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of billing-related functionality.
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#billing">billing-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class BillingService : EasyPostService

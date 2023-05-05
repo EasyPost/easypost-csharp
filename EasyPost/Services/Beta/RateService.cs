@@ -9,9 +9,16 @@ using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services.Beta
 {
+    /// <summary>
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#rates">rate-related beta functionality</a>.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class RateService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="RateService"/> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal RateService(EasyPostClient client)
             : base(client)
         {

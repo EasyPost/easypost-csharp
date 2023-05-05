@@ -11,7 +11,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of end shipper-related functionality.
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#endshipper">EndShipper-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class EndShipperService : EasyPostService

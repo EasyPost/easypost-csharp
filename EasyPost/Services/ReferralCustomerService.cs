@@ -17,8 +17,15 @@ using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#referral-customers">referral customer-related functionality</a>.
+    /// </summary>
     public class ReferralCustomerService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ReferralCustomerService"/> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal ReferralCustomerService(EasyPostClient client)
             : base(client)
         {

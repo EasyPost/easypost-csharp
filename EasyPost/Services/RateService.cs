@@ -10,7 +10,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of rate-related functionality.
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#rates">rate-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class RateService : EasyPostService
