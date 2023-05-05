@@ -15,7 +15,7 @@ namespace EasyPost.Models.API
         /// </summary>
         [JsonProperty("rate")]
         public Rate? Rate { get; set; }
-        
+
         /// <summary>
         ///     Estimated <see cref="TimeInTransitDetails"/> for the <see cref="Rate"/>.
         /// </summary>
@@ -44,13 +44,13 @@ namespace EasyPost.Models.API
         /// </summary>
         [JsonProperty("days_in_transit")]
         public TimeInTransit? DaysInTransit { get; set; }
-        
+
         /// <summary>
         ///     EasyPost's estimated delivery date for the associated <see cref="RateWithEstimatedDeliveryDate"/>.
         /// </summary>
         [JsonProperty("easypost_time_in_transit_data")]
         public string? EasyPostEstimatedDeliveryDate { get; set; }
-        
+
         /// <summary>
         ///     The planned departure date for the shipment.
         /// </summary>
