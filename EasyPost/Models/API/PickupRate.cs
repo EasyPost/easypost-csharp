@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost pickup rate.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#pickup-rate-object">EasyPost pickup rate</a>.
     /// </summary>
     public class PickupRate : Rate
     {

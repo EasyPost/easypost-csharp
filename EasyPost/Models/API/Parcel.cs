@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost parcel.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#parcel-object">EasyPost parcel</a>.
     /// </summary>
     public class Parcel : EasyPostObject, IParcelParameter
     {

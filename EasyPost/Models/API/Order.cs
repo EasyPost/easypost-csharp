@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost order.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#order-object">EasyPost order</a>.
     /// </summary>
     public class Order : EasyPostObject, IOrderParameter
     {

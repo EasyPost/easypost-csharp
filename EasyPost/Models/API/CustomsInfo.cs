@@ -7,7 +7,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.CustomInfo
     /// <summary>
-    ///     Class representing an EasyPost customs info object.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#customs-info-object">EasyPost customs info object</a>.
     /// </summary>
     public class CustomsInfo : EasyPostObject, ICustomsInfoParameter
     {

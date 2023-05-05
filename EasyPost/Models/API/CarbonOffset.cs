@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost carbon offset object.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#carbon%20offset-object">EasyPost carbon offset object</a>.
     /// </summary>
     public class CarbonOffset : EasyPostObject
     {

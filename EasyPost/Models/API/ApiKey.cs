@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost API key.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#api-key-object">EasyPost API key</a>.
     /// </summary>
     public class ApiKey : EasyPostObject
     {

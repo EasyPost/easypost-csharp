@@ -12,7 +12,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Insurance
     /// <summary>
-    ///     Class representing an EasyPost insurance object.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#insurance-object">EasyPost insurance object</a>.
     /// </summary>
     public class Insurance : EasyPostObject, IInsuranceParameter
     {

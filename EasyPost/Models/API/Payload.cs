@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost event payload.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#payload-object">EasyPost event payload</a>.
     /// </summary>
     public class Payload : EasyPostObject
     {

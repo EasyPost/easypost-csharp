@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost customs item.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#customs-item-object">EasyPost customs item</a>.
     /// </summary>
     public class CustomsItem : EasyPostObject, ICustomsItemParameter
     {

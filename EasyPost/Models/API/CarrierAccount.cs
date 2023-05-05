@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost carrier account.
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#carrier-account-object">EasyPost carrier account</a>.
     /// </summary>
     public class CarrierAccount : EasyPostObject, ICarrierAccountParameter
     {
