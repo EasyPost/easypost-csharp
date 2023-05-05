@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API.Beta
 {
+    /// <summary>
+    ///     Class representing an EasyPost <a href="https://www.easypost.com/docs/api#retrieve-rates-for-a-shipment">stateless rate</a>.
+    /// </summary>
     public class StatelessRate : EphemeralEasyPostObject
     {
         #region JSON Properties

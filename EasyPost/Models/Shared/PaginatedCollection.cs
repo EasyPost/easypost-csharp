@@ -7,9 +7,9 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.Shared
 {
     /// <summary>
-    ///     A collection of <see cref="EasyPost._base.EasyPostObject"/>s with multiple pages.
+    ///     A <a href="https://www.easypost.com/docs/api#pagination">paginated collection</a> of <see cref="EasyPost._base.EasyPostObject"/>s.
     /// </summary>
-    public abstract class PaginatedCollection<TEntries> : EasyPost._base.EasyPostObject where TEntries : EasyPost._base.EasyPostObject
+    public abstract class PaginatedCollection<TEntries> : _base.EasyPostObject where TEntries : _base.EasyPostObject
     {
         #region JSON Properties
 

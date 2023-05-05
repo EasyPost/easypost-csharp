@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API.Beta
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Beta.CarrierMetadata
+    /// <summary>
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#carriermetadata-object">EasyPost carrier metadata summary</a>.
+    /// </summary>
     public class CarrierMetadata
     {
         #region JSON Properties
@@ -16,6 +19,9 @@ namespace EasyPost.Models.API.Beta
     }
 #pragma warning restore CA1724 // Naming conflicts with Parameters.Beta.CarrierMetadata
 
+    /// <summary>
+    ///     Class representing a carrier in a EasyPost carrier metadata summary.
+    /// </summary>
     public class Carrier
     {
         #region JSON Properties
@@ -41,6 +47,9 @@ namespace EasyPost.Models.API.Beta
         #endregion
     }
 
+    /// <summary>
+    ///     Class representing a predefined package in a EasyPost carrier metadata summary.
+    /// </summary>
     public class PredefinedPackage
     {
         #region JSON Properties
@@ -66,6 +75,9 @@ namespace EasyPost.Models.API.Beta
         #endregion
     }
 
+    /// <summary>
+    ///     Class representing a service level in a EasyPost carrier metadata summary.
+    /// </summary>
     public class ServiceLevel
     {
         #region JSON Properties
@@ -91,6 +103,9 @@ namespace EasyPost.Models.API.Beta
         #endregion
     }
 
+    /// <summary>
+    ///     Class representing a shipment option in a EasyPost carrier metadata summary.
+    /// </summary>
     public class ShipmentOption
     {
         #region JSON Properties
@@ -116,6 +131,9 @@ namespace EasyPost.Models.API.Beta
         #endregion
     }
 
+    /// <summary>
+    ///     Class representing a supported feature in a EasyPost carrier metadata summary.
+    /// </summary>
     public class SupportedFeature
     {
         #region JSON Properties
