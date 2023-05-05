@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an EasyPost tracker.
+    /// </summary>
     public class Tracker : EasyPostObject, ITrackerParameter
     {
         #region JSON Properties
@@ -39,24 +42,43 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Tracker"/> class.
+        /// </summary>
         internal Tracker()
         {
         }
     }
 
+    /// <summary>
+    ///     Class representing a collection of EasyPost <see cref="Tracker"/>s.
+    /// </summary>
     public class TrackerCollection : PaginatedCollection<Tracker>
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The <see cref="Tracker"/>s in the collection.
+        /// </summary>
         [JsonProperty("trackers")]
         public List<Tracker>? Trackers { get; set; }
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="TrackerCollection"/> class.
+        /// </summary>
         internal TrackerCollection()
         {
         }
 
+        /// <summary>
+        ///     Construct the parameter set for retrieving the next page of this paginated collection.
+        /// </summary>
+        /// <param name="entries">The entries on the current page of this paginated collection.</param>
+        /// <param name="pageSize">The request size of the next page.</param>
+        /// <typeparam name="TParameters">The type of parameters to construct.</typeparam>
+        /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Tracker> entries, int? pageSize = null)
         {
             BetaFeatures.Parameters.Trackers.All parameters = Filters != null ? (BetaFeatures.Parameters.Trackers.All)Filters : new BetaFeatures.Parameters.Trackers.All();

@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an EasyPost time in transit summary.
+    /// </summary>
     public class TimeInTransit : EphemeralEasyPostObject
     {
         #region JSON Properties
@@ -24,6 +27,9 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="TimeInTransit"/> class.
+        /// </summary>
         internal TimeInTransit()
         {
         }

@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an EasyPost order.
+    /// </summary>
     public class Order : EasyPostObject, IOrderParameter
     {
         #region JSON Properties
@@ -26,6 +29,10 @@ namespace EasyPost.Models.API
         public List<Message>? Messages { get; set; }
         [JsonProperty("rates")]
         public List<Rate>? Rates { get; set; }
+
+        /// <summary>
+        ///     An optional field that may be used in place of ID in some API endpoints.
+        /// </summary>
         [JsonProperty("reference")]
         public string? Reference { get; set; }
         [JsonProperty("return_address")]
@@ -39,6 +46,9 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Order"/> class.
+        /// </summary>
         internal Order()
         {
         }

@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
-using EasyPost.Utilities.Internal.Attributes;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an EasyPost webhook.
+    /// </summary>
     public class Webhook : EasyPostObject, IWebhookParameter
     {
         #region JSON Properties
@@ -19,6 +19,9 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Webhook"/> class.
+        /// </summary>
         internal Webhook()
         {
         }
