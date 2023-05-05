@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Threading;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.BetaFeatures.Parameters.Batches

@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.BetaFeatures.Parameters;
-using EasyPost.Utilities.Internal.Attributes;
-using EasyPost.Utilities.Internal.Extensions;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API

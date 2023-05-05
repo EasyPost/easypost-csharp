@@ -72,7 +72,7 @@ namespace EasyPost._base
                 // Dispose managed state (managed objects).
 
                 // Dispose the client
-                Client?.Dispose();
+                Client.Dispose();
             }
 
             // Free native resources (unmanaged objects) and override a finalizer below.
