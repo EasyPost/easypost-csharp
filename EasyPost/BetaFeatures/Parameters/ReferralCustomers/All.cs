@@ -6,7 +6,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.BetaFeatures.Parameters.ReferralCustomers
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-referral-customers">Parameters</a> for <see cref="EasyPost.Services.PartnerService.All(All, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-referral-customers">Parameters</a> for <see cref="EasyPost.Services.ReferralCustomerService.All(All, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class All : BaseAllParameters
