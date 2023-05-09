@@ -131,7 +131,7 @@ namespace EasyPost.Utilities
             return !err;
         }
 
-        /// <inheritdoc cref="SignaturesMatch(byte[],byte[]?)"/>
+        /// <inheritdoc cref="SignaturesMatch(byte[],byte[])"/>
         public static bool SignaturesMatch(string signature1, string? signature2)
         {
             byte[] signatureBytes1 = signature1.AsByteArray();
