@@ -84,7 +84,7 @@ namespace EasyPost.Models.API
         /// </summary>
         [JsonProperty("tracking_code")]
         public string? TrackingCode { get; set; }
-        
+
         /// <summary>
         ///     The <see cref="Models.API.Fee"/> for the insurance.
         /// </summary>
