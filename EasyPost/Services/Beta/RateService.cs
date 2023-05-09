@@ -9,9 +9,16 @@ using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services.Beta
 {
+    /// <summary>
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#rates">rate-related beta functionality</a>.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class RateService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="RateService"/> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal RateService(EasyPostClient client)
             : base(client)
         {
@@ -20,25 +27,11 @@ namespace EasyPost.Services.Beta
         #region CRUD Operations
 
         /// <summary>
-        ///     Retrieve ephemeral rates for a shipment.
-        ///
+        ///     Retrieve <see cref="Models.API.Beta.StatelessRate"/>s for a <see cref="Models.API.Shipment"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-rates-for-a-shipment">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing shipment data. Valid pairs:
-        ///     * {"from_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"to_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"buyer_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"return_address", Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.
-        ///     * {"parcel", Dictionary&lt;string, object&gt;} See Parcel.Create for list of valid keys.
-        ///     * {"customs_info", Dictionary&lt;string, object&gt;} See CustomsInfo.Create for list of valid keys.
-        ///     * {"options", Dictionary&lt;string, object&gt;} See https://www.easypost.com/docs/api#shipments for list of
-        ///     options.
-        ///     * {"is_return", bool}
-        ///     * {"currency", string} Defaults to "USD".
-        ///     * {"reference", string}
-        ///     * {"carrier_accounts", List&lt;string&gt;} List of CarrierAccount.id to limit rating.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Data to retrieve the rates with.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="StatelessRate"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<List<StatelessRate>> RetrieveStatelessRates(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
@@ -48,9 +41,11 @@ namespace EasyPost.Services.Beta
         }
 
         /// <summary>
-        ///     Retrieve ephemeral rates.
+        ///     Retrieve <see cref="Models.API.Beta.StatelessRate"/>s for a <see cref="Models.API.Shipment"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-rates-for-a-shipment">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Beta.Rates.Retrieve"/> parameter set.</param>
+        /// <param name="parameters">Data to retrieve the rates with.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="StatelessRate"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<List<StatelessRate>> RetrieveStatelessRates(BetaFeatures.Parameters.Beta.Rates.Retrieve parameters, CancellationToken cancellationToken = default)

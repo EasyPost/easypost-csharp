@@ -11,9 +11,16 @@ using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#billing">billing-related functionality</a>.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class BillingService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BillingService" /> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal BillingService(EasyPostClient client)
             : base(client)
         {
@@ -22,11 +29,13 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Fund your wallet from a specific payment method.
+        ///     Fund your wallet from a specific <see cref="PaymentMethod"/>.
+        ///     <a href="https://www.easypost.com/docs/api#add-funds-to-your-wallet-one-time-charge">Related API documentation</a>.
         /// </summary>
         /// <param name="amount">Amount to fund.</param>
-        /// <param name="priority">Which type of payment method to use to fund the wallet. Defaults to primary.</param>
-        /// <returns>A Task to fund the wallet.</returns>
+        /// <param name="priority">Which <see cref="PaymentMethod.Priority"/> of payment method to use to fund the wallet. Defaults to <see cref="PaymentMethod.Priority.Primary"/>.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>None.</returns>
         [CrudOperations.Create]
         public async Task FundWallet(string amount, PaymentMethod.Priority? priority = null, CancellationToken cancellationToken = default)
         {
@@ -40,9 +49,11 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     List all payment methods for this account.
+        ///     List all <see cref="PaymentMethod"/>s for the user's account.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-payment-methods">Related API documentation</a>.
         /// </summary>
-        /// <returns>An EasyPost.PaymentMethodSummary summary object.</returns>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="PaymentMethodsSummary"/> object.</returns>
         [CrudOperations.Read]
         public async Task<PaymentMethodsSummary> RetrievePaymentMethodsSummary(CancellationToken cancellationToken = default)
         {
@@ -54,10 +65,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Delete a payment method from the user's account.
+        ///     Delete a <see cref="PaymentMethod"/> from the user's account.
+        ///     <a href="https://www.easypost.com/docs/api#delete-a-payment-method">Related API documentation</a>.
         /// </summary>
-        /// <param name="priority">Which type of payment method to delete.</param>
-        /// <returns>A Task to delete a payment method.</returns>
+        /// <param name="priority">Which <see cref="PaymentMethod.Priority"/> of payment method to delete.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>None.</returns>
         [CrudOperations.Delete]
         public async Task DeletePaymentMethod(PaymentMethod.Priority priority, CancellationToken cancellationToken = default)
         {
@@ -69,11 +82,12 @@ namespace EasyPost.Services
         #endregion
 
         /// <summary>
-        ///     Get a payment method by priority.
+        ///     Get a <see cref="PaymentMethod"/> by priority.
         /// </summary>
-        /// <param name="priority">Which priority payment method to get.</param>
-        /// <returns>An EasyPost.PaymentMethodObject instance.</returns>
-        /// <exception cref="Exception">Billing has not been set up yet, or the Priority provided is invalid.</exception>
+        /// <param name="priority">Which priority <see cref="PaymentMethod"/> to get.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="PaymentMethod"/> object.</returns>
+        /// <exception cref="Exception">Billing has not been set up yet, or the <see cref="PaymentMethod.Priority"/> provided is invalid.</exception>
         private async Task<PaymentMethod> GetPaymentMethodByPriority(PaymentMethod.Priority priority, CancellationToken cancellationToken = default)
         {
             PaymentMethodsSummary paymentMethodsSummarySummary = await RetrievePaymentMethodsSummary(cancellationToken);

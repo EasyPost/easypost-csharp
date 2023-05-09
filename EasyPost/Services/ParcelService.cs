@@ -9,9 +9,16 @@ using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#parcels">parcel-related functionality</a>.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ParcelService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ParcelService" /> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal ParcelService(EasyPostClient client)
             : base(client)
         {
@@ -20,18 +27,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a Parcel.
+        ///     Create a <see cref="Parcel"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-parcel">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to create the parcel with. Valid pairs:
-        ///     * {"length", int}
-        ///     * {"width", int}
-        ///     * {"height", int}
-        ///     * {"weight", double}
-        ///     * {"predefined_package", string}
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>EasyPost.Parcel instance.</returns>
+        /// <param name="parameters">Data to use to create the <see cref="Parcel"/>.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="Parcel"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Parcel> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -41,9 +42,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Parcel"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-parcel">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Parcels.Create"/> parameter set.</param>
-        /// <returns><see cref="Parcel"/> instance.</returns>
+        /// <param name="parameters">Data to use to create the <see cref="Parcel"/>.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="Parcel"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Parcel> Create(BetaFeatures.Parameters.Parcels.Create parameters, CancellationToken cancellationToken = default)
         {
@@ -52,10 +55,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Retrieve a Parcel from its id.
+        ///     Retrieve a <see cref="Parcel"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-parcel">Related API documentation</a>.
         /// </summary>
-        /// <param name="id">String representing a Parcel. Starts with "prcl_".</param>
-        /// <returns>EasyPost.Parcel instance.</returns>
+        /// <param name="id">The ID of the <see cref="Parcel"/> to retrieve.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>The requested <see cref="Parcel"/>.</returns>
         [CrudOperations.Read]
         public async Task<Parcel> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Parcel>(Method.Get, $"parcels/{id}", cancellationToken);
 

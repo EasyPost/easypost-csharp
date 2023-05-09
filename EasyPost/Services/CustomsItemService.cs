@@ -9,9 +9,16 @@ using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#customs-items">customs item-related functionality</a>.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class CustomsItemService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="CustomsItemService" /> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal CustomsItemService(EasyPostClient client)
             : base(client)
         {
@@ -20,19 +27,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a CustomsItem.
+        ///     Create a <see cref="CustomsItem"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-customsitem">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to create the customs item with. Valid pairs:
-        ///     * {"description", string}
-        ///     * {"quantity", int}
-        ///     * {"weight", int}
-        ///     * {"value", double}
-        ///     * {"hs_tariff_number", string}
-        ///     * {"origin_country", string}
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>EasyPost.CustomsItem instance.</returns>
+        /// <param name="parameters">Data to use to create the <see cref="CustomsItem"/>.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="CustomsItem"/> object.</returns>
         [CrudOperations.Create]
         public async Task<CustomsItem> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -42,9 +42,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="CustomsItem"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-customsitem">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.CustomsItems.Create"/> parameter set.</param>
-        /// <returns><see cref="CustomsItem"/> instance.</returns>
+        /// <param name="parameters">Data to use to create the <see cref="CustomsItem"/>.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="CustomsItem"/> object.</returns>
         [CrudOperations.Create]
         public async Task<CustomsItem> Create(BetaFeatures.Parameters.CustomsItems.Create parameters, CancellationToken cancellationToken = default)
         {
@@ -53,10 +55,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Retrieve a CustomsItem from its id.
+        ///     Retrieve a <see cref="CustomsItem"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-customsitem">Related API documentation</a>.
         /// </summary>
-        /// <param name="id">String representing a CustomsItem. Starts with "cstitem_".</param>
-        /// <returns>EasyPost.CustomsItem instance.</returns>
+        /// <param name="id">The ID of the <see cref="CustomsItem"/> to retrieve.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="CustomsItem"/> object.</returns>
         [CrudOperations.Read]
         public async Task<CustomsItem> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<CustomsItem>(Method.Get, $"customs_items/{id}", cancellationToken);
 

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
@@ -11,9 +10,16 @@ using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#insurance">insurance-related functionality</a>.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class InsuranceService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="InsuranceService" /> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal InsuranceService(EasyPostClient client)
             : base(client)
         {
@@ -22,22 +28,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create an Insurance.
+        ///     Create an <see cref="Insurance"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-an-insurance">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to create the insurance with. Valid pairs:
-        ///     * {"to_address", Address} The actual destination of the package to be insured
-        ///     * {"from_address", Address} The actual origin of the package to be insured
-        ///     * {"tracking_code", string} The tracking code associated with the non-EasyPost-purchased package you'd like to
-        ///     insure
-        ///     * {"reference", string} Optional. A unique value that may be used in place of ID when doing Retrieve calls for this
-        ///     insurance
-        ///     * {"amount", decimal} The USD value of contents you would like to insure. Currently the maximum is $5000
-        ///     * {"carrier", string} Optional. The carrier associated with the tracking_code you provided. The carrier will get
-        ///     auto-detected if none is provided
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>EasyPost.Insurance instance.</returns>
+        /// <param name="parameters">Data to use to create the <see cref="Insurance"/>.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>An <see cref="Insurance"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Insurance> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -46,10 +42,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Create <see cref="Insurance"/>.
+        ///     Create an <see cref="Insurance"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-an-insurance">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Insurance.Create"/> parameter set.</param>
-        /// <returns><see cref="Insurance"/> instance.</returns>
+        /// <param name="parameters">Data to use to create the <see cref="Insurance"/>.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>An <see cref="Insurance"/> object.</returns>
         [CrudOperations.Create]
         public async Task<Insurance> Create(BetaFeatures.Parameters.Insurance.Create parameters, CancellationToken cancellationToken = default)
         {
@@ -58,21 +56,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     List all Insurance objects.
+        ///     List all <see cref="Insurance"/>s.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-insurances">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
-        ///     * {"before_id", string} String representing an Insurance ID. Starts with "ins_". Only retrieve insurances created
-        ///     before this id. Takes precedence over after_id.
-        ///     * {"after_id", string} String representing an Insurance ID. Starts with "ins_". Only retrieve insurances created
-        ///     after
-        ///     this id.
-        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve insurances created after this datetime.
-        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve insurances created before this datetime.
-        ///     * {"page_size", int} Max size of list. Default to 20.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>An EasyPost.InsuranceCollection instance.</returns>
+        /// <param name="parameters">Parameters to filter the list of <see cref="Insurance"/>s.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>An <see cref="InsuranceCollection"/> instance containing <see cref="Insurance"/>s instances.</returns>
         [CrudOperations.Read]
         public async Task<InsuranceCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
@@ -81,6 +70,13 @@ namespace EasyPost.Services
             return collection;
         }
 
+        /// <summary>
+        ///     List all <see cref="Insurance"/>s.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-insurances">Related API documentation</a>.
+        /// </summary>
+        /// <param name="parameters">Parameters to filter the list of <see cref="Insurance"/>s.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>An <see cref="InsuranceCollection"/> instance containing <see cref="Insurance"/>s instances.</returns>
         [CrudOperations.Read]
         public async Task<InsuranceCollection> All(BetaFeatures.Parameters.Insurance.All parameters, CancellationToken cancellationToken = default)
         {
@@ -91,19 +87,23 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="InsuranceCollection"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-insurances">Related API documentation</a>.
         /// </summary>
         /// <param name="collection">The <see cref="InsuranceCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The next page, as a <see cref="InsuranceCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
         public async Task<InsuranceCollection> GetNextPage(InsuranceCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<InsuranceCollection, BetaFeatures.Parameters.Insurance.All>(async parameters => await All(parameters, cancellationToken), collection.Insurances, pageSize);
 
         /// <summary>
-        ///     Retrieve an Insurance from its id.
+        ///     Retrieve an <see cref="Insurance"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-an-insurance">Related API documentation</a>.
         /// </summary>
-        /// <param name="id">String representing an Insurance. Starts with "ins_".</param>
-        /// <returns>EasyPost.Insurance instance.</returns>
+        /// <param name="id">The ID of the <see cref="Insurance"/> to retrieve.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>An <see cref="Insurance"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<Insurance> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Insurance>(Method.Get, $"insurances/{id}", cancellationToken);
 

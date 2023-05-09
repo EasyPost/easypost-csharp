@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
@@ -10,8 +9,16 @@ using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#endshipper">EndShipper-related functionality</a>.
+    /// </summary>
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class EndShipperService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="EndShipperService" /> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal EndShipperService(EasyPostClient client)
             : base(client)
         {
@@ -20,25 +27,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create an EndShipper.
+        ///     Create an <see cref="EndShipper"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-an-endshipper">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to create the EndShipper with. Valid pairs:
-        ///     * {"name", string}
-        ///     * {"company", string}
-        ///     * {"street1", string}
-        ///     * {"street2", string}
-        ///     * {"city", string}
-        ///     * {"state", string}
-        ///     * {"zip", string}
-        ///     * {"country", string}
-        ///     * {"phone", string}
-        ///     * {"email", string}
-        ///     * {"verifications", List&lt;string&gt;} Possible items are "delivery" and "zip4".
-        ///     * {"strict_verifications", List&lt;string&gt;} Possible items are "delivery" and "zip4".
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>EasyPost.EndShipper instance.</returns>
+        /// <param name="parameters">Data to use to create the <see cref="EndShipper"/>.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>An <see cref="EndShipper"/> object.</returns>
         [CrudOperations.Create]
         public async Task<EndShipper> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -48,9 +42,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create an <see cref="EndShipper"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-an-endshipper">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.Create"/> parameter set.</param>
-        /// <returns><see cref="EndShipper"/> instance.</returns>
+        /// <param name="parameters">Data to use to create the <see cref="EndShipper"/>.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>An <see cref="EndShipper"/> object.</returns>
         [CrudOperations.Create]
         public async Task<EndShipper> Create(BetaFeatures.Parameters.EndShippers.Create parameters, CancellationToken cancellationToken = default)
         {
@@ -59,21 +55,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     List all EndShipper objects.
+        ///     List all <see cref="EndShipper"/>s.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-endshippers">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
-        ///     * {"before_id", string} String representing an EndShipper ID. Starts with "es_". Only retrieve EndShippers created
-        ///     before this id. Takes precedence over after_id.
-        ///     * {"after_id", string} String representing an EndShipper ID. Starts with "es". Only retrieve EndShippers created
-        ///     after
-        ///     this id.
-        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve EndShippers created after this datetime.
-        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve EndShippers created before this datetime.
-        ///     * {"page_size", int} Max size of list. Default to 20.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>An EasyPost.EndShipperCollection instance.</returns>
+        /// <param name="parameters">A dictionary containing parameters to filter the list with. See <see cref="BetaFeatures.Parameters.EndShippers.All"/> for valid keys.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="EndShipperCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
@@ -83,10 +70,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     List all <see cref="EndShipper"/> objects.
+        ///     List all <see cref="EndShipper"/>s.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-endshippers">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.All"/> parameter set.</param>
-        /// <returns><see cref="EndShipperCollection"/> instance.</returns>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="EndShipperCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipperCollection> All(BetaFeatures.Parameters.EndShippers.All parameters, CancellationToken cancellationToken = default)
         {
@@ -98,18 +87,23 @@ namespace EasyPost.Services
         // TODO: Add GetNextPage function when "before_id" available for EndShipper All endpoint.
 
         /// <summary>
-        ///     Retrieve an EndShipper from its id.
+        ///     Retrieve an <see cref="EndShipper"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-an-endshipper">Related API documentation</a>.
         /// </summary>
-        /// <param name="id">String representing an EndShipper. Starts with "es_".</param>
-        /// <returns>EasyPost.EndShipper instance.</returns>
+        /// <param name="id">The ID of the <see cref="EndShipper"/> to retrieve.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>The <see cref="EndShipper"/>.</returns>
         [CrudOperations.Read]
         public async Task<EndShipper> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<EndShipper>(Method.Get, $"end_shippers/{id}", cancellationToken);
 
         /// <summary>
-        ///     Update this EndShipper. Must pass in all properties (new and existing).
+        ///     Update an <see cref="EndShipper"/>.
+        ///     <a href="https://www.easypost.com/docs/api#update-an-endshipper">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">See EndShipper.Create for more details.</param>
-        /// <returns>The updated EndShipper.</returns>
+        /// <param name="parameters">Data to update <see cref="EndShipper"/> with.</param>
+        /// <param name="id">ID of the <see cref="EndShipper"/> to update.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>The updated <see cref="EndShipper"/>.</returns>
         [CrudOperations.Update]
         public async Task<EndShipper> Update(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -119,10 +113,13 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Update this <see cref="EndShipper"/>.
+        ///     Update an <see cref="EndShipper"/>.
+        ///     <a href="https://www.easypost.com/docs/api#update-an-endshipper">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.Update"/> parameter set.</param>
-        /// <returns>This updated <see cref="EndShipper"/> instance.</returns>
+        /// <param name="parameters">Data to update <see cref="EndShipper"/> with.</param>
+        /// <param name="id">ID of the <see cref="EndShipper"/> to update.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>The updated <see cref="EndShipper"/>.</returns>
         [CrudOperations.Update]
         public async Task<EndShipper> Update(string id, BetaFeatures.Parameters.EndShippers.Update parameters, CancellationToken cancellationToken = default)
         {

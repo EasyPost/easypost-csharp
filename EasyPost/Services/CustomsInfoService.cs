@@ -9,9 +9,16 @@ using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#customs-infos">customs info-related functionality</a>.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class CustomsInfoService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="CustomsInfoService" /> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal CustomsInfoService(EasyPostClient client)
             : base(client)
         {
@@ -20,21 +27,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a CustomsInfo.
+        ///     Create a <see cref="CustomsInfo"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-customsinfo">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Dictionary containing parameters to create the customs info with. Valid pairs:
-        ///     * {"customs_certify", bool}
-        ///     * {"customs_signer", string}
-        ///     * {"contents_type", string}
-        ///     * {"contents_explanation", string}
-        ///     * {"restriction_type", string}
-        ///     * {"eel_pfc", string}
-        ///     * {"custom_items", Dictionary&lt;string, object&gt;} -- Can contain the key "id" or all keys required to create a
-        ///     CustomsItem.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>EasyPost.CustomsInfo instance.</returns>
+        /// <param name="parameters">Data to use to create the <see cref="CustomsInfo"/>.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="CustomsInfo"/> object.</returns>
         [CrudOperations.Create]
         public async Task<CustomsInfo> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
@@ -44,9 +42,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="CustomsInfo"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-customsinfo">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.CustomsInfo.Create"/> parameter set.</param>
-        /// <returns><see cref="CustomsInfo"/> instance.</returns>
+        /// <param name="parameters">Data to use to create the <see cref="CustomsInfo"/>.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="CustomsInfo"/> object.</returns>
         [CrudOperations.Create]
         public async Task<CustomsInfo> Create(BetaFeatures.Parameters.CustomsInfo.Create parameters, CancellationToken cancellationToken = default)
         {
@@ -55,10 +55,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Retrieve a CustomsInfo from its id.
+        ///     Retrieve a <see cref="CustomsInfo"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-customsinfo">Related API documentation</a>.
         /// </summary>
-        /// <param name="id">String representing a CustomsInfo. Starts with "cstinfo_".</param>
-        /// <returns>EasyPost.CustomsInfo instance.</returns>
+        /// <param name="id">The ID of the <see cref="CustomsInfo"/> to retrieve.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="CustomsInfo"/> object.</returns>
         [CrudOperations.Read]
         public async Task<CustomsInfo> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<CustomsInfo>(Method.Get, $"customs_infos/{id}", cancellationToken);
 

@@ -36,22 +36,6 @@ namespace EasyPost.Tests.ServicesTests
 
         #endregion
 
-        [Fact]
-        [Testing.Function]
-        public void TestGetLowestRate()
-        {
-            UseVCR("get_lowest_rate");
-
-            List<Rate> rates = new()
-            {
-                new Rate { Price = "100.00" },
-                new Rate { Price = "1.00" },
-            };
-
-            Rate lowestRate = Client.Rate.GetLowestRate(rates);
-            Assert.Equal("1.00", lowestRate.Price);
-        }
-
         #endregion
     }
 }

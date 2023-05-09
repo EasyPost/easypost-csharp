@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
@@ -10,9 +9,16 @@ using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services
 {
+    /// <summary>
+    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#scan-form">scan form-related functionality</a>.
+    /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ScanFormService : EasyPostService
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ScanFormService" /> class.
+        /// </summary>
+        /// <param name="client">The <see cref="EasyPostClient"/> to tie to this service and use for API calls.</param>
         internal ScanFormService(EasyPostClient client)
             : base(client)
         {
@@ -21,10 +27,12 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Create a ScanForm.
+        ///     Create a <see cref="ScanForm"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-scanform">Related API documentation</a>.
         /// </summary>
-        /// <param name="shipments">Shipments to be associated with the ScanForm. Only id is required.</param>
-        /// <returns>EasyPost.ScanForm instance.</returns>
+        /// <param name="shipments"><see cref="Shipment"/>s to create a <see cref="ScanForm"/> for.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="ScanForm"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<ScanForm> Create(List<Shipment> shipments, CancellationToken cancellationToken = default)
         {
@@ -34,9 +42,11 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="ScanForm"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-a-scanform">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.Create"/> parameter set.</param>
-        /// <returns><see cref="ScanForm"/> instance.</returns>
+        /// <param name="parameters">Data to use to create the <see cref="ScanForm"/>.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="ScanForm"/> objects.</returns>
         [CrudOperations.Create]
         public async Task<ScanForm> Create(BetaFeatures.Parameters.ScanForms.Create parameters, CancellationToken cancellationToken = default)
         {
@@ -45,20 +55,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Get a paginated list of scan forms.
+        ///     List all <see cref="ScanForm"/>s.
+        ///     <a href="https://www.easypost.com/docs/api#retreive-a-list-of-scanforms">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
-        ///     * {"before_id", string} String representing a ScanForm ID. Starts with "sf_". Only retrieve ScanForms created
-        ///     before this id. Takes precedence over after_id.
-        ///     * {"after_id", string} String representing a ScanForm ID. Starts with "sf_". Only retrieve ScanForms created after
-        ///     this id.
-        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created after this datetime.
-        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve ScanForms created before this datetime.
-        ///     * {"page_size", int} Max size of list. Default to 20.
-        ///     All invalid keys will be ignored.
-        /// </param>
-        /// <returns>An EasyPost.ScanFormCollection instance.</returns>
+        /// <param name="parameters">Parameters to filter the list of <see cref="ScanForm"/>s on.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="ScanFormCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
@@ -68,10 +70,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     List all <see cref="ScanForm"/> objects.
+        ///     List all <see cref="ScanForm"/>s.
+        ///     <a href="https://www.easypost.com/docs/api#retreive-a-list-of-scanforms">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.ScanForms.All"/> parameter set.</param>
-        /// <returns><see cref="ScanFormCollection"/> instance.</returns>
+        /// <param name="parameters">Parameters to filter the list of <see cref="ScanForm"/>s on.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="ScanFormCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<ScanFormCollection> All(BetaFeatures.Parameters.ScanForms.All parameters, CancellationToken cancellationToken = default)
         {
@@ -82,19 +86,23 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ScanFormCollection"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-the-next-page-of-a-list-of-scanforms">Related API documentation</a>.
         /// </summary>
         /// <param name="collection">The <see cref="ScanFormCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The next page, as a <see cref="ScanFormCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
         public async Task<ScanFormCollection> GetNextPage(ScanFormCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ScanFormCollection, BetaFeatures.Parameters.ScanForms.All>(async parameters => await All(parameters, cancellationToken), collection.ScanForms, pageSize);
 
         /// <summary>
-        ///     Retrieve a ScanForm from its id.
+        ///     Retrieve a <see cref="ScanForm"/>.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-scanform">Related API documentation</a>.
         /// </summary>
-        /// <param name="id">String representing a scan form, starts with "sf_".</param>
-        /// <returns>EasyPost.ScanForm instance.</returns>
+        /// <param name="id">The ID of the <see cref="ScanForm"/> to retrieve.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>The requested <see cref="ScanForm"/>.</returns>
         [CrudOperations.Read]
         public async Task<ScanForm> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<ScanForm>(Method.Get, $"scan_forms/{id}", cancellationToken);
 
