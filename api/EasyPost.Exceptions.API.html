@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace EasyPost.Exceptions.API
+ </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace EasyPost.Exceptions.API
+ ">
+  
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="EasyPost.Exceptions.API">
+
+  <h1 id="EasyPost_Exceptions_API" data-uid="EasyPost.Exceptions.API" class="text-break">Namespace EasyPost.Exceptions.API
+</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+</h3>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.ApiError.html">ApiError</a></h4>
+      <section><p>Represents an error that occurred while communicating with the EasyPost API.
+This is typically due to a specific HTTP status code, such as 4xx or 5xx.
+This is different than the <a class="xref" href="EasyPost.Models.API.Error.html">Error</a> class, which represents information about what triggered the failed request.
+The information from the top-level <a class="xref" href="EasyPost.Models.API.Error.html">Error</a> class is used to generate this error, and any sub-errors are stored as a list of <a class="xref" href="EasyPost.Models.API.Error.html">Error</a> objects.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.ConnectionError.html">ConnectionError</a></h4>
+      <section><p>Represents an error that occurs when a connection to the EasyPost API cannot be established.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.GatewayTimeoutError.html">GatewayTimeoutError</a></h4>
+      <section><p>Represents an error that occurs when the EasyPost API times out.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.InternalServerError.html">InternalServerError</a></h4>
+      <section><p>Represents an error that occurs when an internal server error occurs on the EasyPost API.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.InvalidRequestError.html">InvalidRequestError</a></h4>
+      <section><p>Represents an error that occurs when an invalid request is made to the EasyPost API.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.MethodNotAllowedError.html">MethodNotAllowedError</a></h4>
+      <section><p>Represents an error that occurs when a request with an invalid method is made to the EasyPost API.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.NotFoundError.html">NotFoundError</a></h4>
+      <section><p>Represents an error that occurs when an EasyPost API resource is not found.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.PaymentError.html">PaymentError</a></h4>
+      <section><p>Represents an error that occurs when a payment error occurs on the EasyPost API.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.ProxyError.html">ProxyError</a></h4>
+      <section><p>Represents an error that occurs when a proxy error occurs on the EasyPost API.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.RateLimitError.html">RateLimitError</a></h4>
+      <section><p>Represents an error that occurs when a rate limit error occurs on the EasyPost API.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.RedirectError.html">RedirectError</a></h4>
+      <section><p>Represents an error that occurs when a redirect error occurs on the EasyPost API.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.RetryError.html">RetryError</a></h4>
+      <section><p>Represents an error that occurs when a retry error occurs on the EasyPost API.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.ServiceUnavailableError.html">ServiceUnavailableError</a></h4>
+      <section><p>Represents an error that occurs when an EasyPost API service is unavailable.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.SslError.html">SslError</a></h4>
+      <section><p>Represents an error that occurs when a SSL error occurs on the EasyPost API.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.TimeoutError.html">TimeoutError</a></h4>
+      <section><p>Represents an error that occurs when a connection to the EasyPost API times out.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.UnauthorizedError.html">UnauthorizedError</a></h4>
+      <section><p>Represents an error that occurs when a unauthorized request occurs on the EasyPost API.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Exceptions.API.UnknownHttpError.html">UnknownHttpError</a></h4>
+      <section><p>Represents a generic unknown or unexpected HTTP error that occurs when communicating with the EasyPost API.</p>
+</section>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
