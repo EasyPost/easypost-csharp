@@ -8,8 +8,8 @@ namespace EasyPost.Models.API
 {
     /// <summary>
     ///     Represents a credit card or a bank account.
-    ///     Have to collect all possible properties since we can't anticipate which type of payment method the API will return.
     /// </summary>
+    // Have to collect all possible properties since we can't anticipate which type of payment method the API will return.
     public class PaymentMethod : EasyPostObject
     {
         #region JSON Properties

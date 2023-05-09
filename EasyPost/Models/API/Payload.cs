@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#payload-object">EasyPost event payload</a>.
+    /// </summary>
     public class Payload : EasyPostObject
     {
         #region JSON Properties
@@ -25,6 +28,9 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Payload"/> class.
+        /// </summary>
         internal Payload()
         {
         }

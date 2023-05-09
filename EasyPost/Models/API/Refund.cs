@@ -7,6 +7,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#refund-object">EasyPost refund</a>.
+    /// </summary>
     public class Refund : EasyPostObject, IRefundParameter
     {
         #region JSON Properties
@@ -24,24 +27,43 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Refund"/> class.
+        /// </summary>
         internal Refund()
         {
         }
     }
 
+    /// <summary>
+    ///     Class representing a collection of EasyPost <see cref="Refund"/>s.
+    /// </summary>
     public class RefundCollection : PaginatedCollection<Refund>
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The <see cref="Refund"/>s in the collection.
+        /// </summary>
         [JsonProperty("refunds")]
         public List<Refund>? Refunds { get; set; }
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="RefundCollection"/> class.
+        /// </summary>
         internal RefundCollection()
         {
         }
 
+        /// <summary>
+        ///     Construct the parameter set for retrieving the next page of this paginated collection.
+        /// </summary>
+        /// <param name="entries">The entries on the current page of this paginated collection.</param>
+        /// <param name="pageSize">The request size of the next page.</param>
+        /// <typeparam name="TParameters">The type of parameters to construct.</typeparam>
+        /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Refund> entries, int? pageSize = null)
         {
             BetaFeatures.Parameters.Refunds.All parameters = Filters != null ? (BetaFeatures.Parameters.Refunds.All)Filters : new BetaFeatures.Parameters.Refunds.All();

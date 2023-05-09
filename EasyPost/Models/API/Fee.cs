@@ -3,21 +3,43 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#fee-object">EasyPost fee</a>.
+    /// </summary>
     public class Fee : EasyPostObject
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The amount of the fee, in US cents with sub-cent precision.
+        /// </summary>
         [JsonProperty("amount")]
         public double? Amount { get; set; }
+
+        /// <summary>
+        ///     Whether EasyPost has successfully charged your account for the fee.
+        /// </summary>
         [JsonProperty("charged")]
         public bool? Charged { get; set; }
+
+        /// <summary>
+        ///     Whether the fee has been refunded successfully.
+        /// </summary>
         [JsonProperty("refunded")]
         public bool? Refunded { get; set; }
+
+        /// <summary>
+        ///     The category of the fee.
+        ///     Possible types include "LabelFee", "CarbonOffsetFee", "PostageFee", "InsuranceFee" and "TrackerFee".
+        /// </summary>
         [JsonProperty("type")]
         public string? Type { get; set; }
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Fee"/> class.
+        /// </summary>
         internal Fee()
         {
         }

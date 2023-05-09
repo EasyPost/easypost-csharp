@@ -11,6 +11,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#pickup-object">EasyPost pickup</a>.
+    /// </summary>
     public class Pickup : EasyPostObject, IPickupParameter
     {
         #region JSON Properties
@@ -35,6 +38,10 @@ namespace EasyPost.Models.API
         public string? Name { get; set; }
         [JsonProperty("pickup_rates")]
         public List<PickupRate>? PickupRates { get; set; }
+
+        /// <summary>
+        ///     An optional field that may be used in place of ID in some API endpoints.
+        /// </summary>
         [JsonProperty("reference")]
         public string? Reference { get; set; }
         [JsonProperty("status")]
@@ -48,6 +55,9 @@ namespace EasyPost.Models.API
         /// <returns>List of Rate objects.</returns>
         private IEnumerable<Rate> Rates => PickupRates != null ? PickupRates.Cast<Rate>().ToList() : new List<Rate>();
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Pickup"/> class.
+        /// </summary>
         internal Pickup()
         {
         }
@@ -63,19 +73,35 @@ namespace EasyPost.Models.API
         public PickupRate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => (PickupRate)Utilities.Rates.GetLowestRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
     }
 
+    /// <summary>
+    ///     Class representing a collection of EasyPost <see cref="Pickup"/> objects.
+    /// </summary>
     public class PickupCollection : PaginatedCollection<Pickup>
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The <see cref="Pickup"/>s in the collection.
+        /// </summary>
         [JsonProperty("pickups")]
         public List<Pickup>? Pickups { get; set; }
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PickupCollection"/> class.
+        /// </summary>
         internal PickupCollection()
         {
         }
 
+        /// <summary>
+        ///     Construct the parameter set for retrieving the next page of this paginated collection.
+        /// </summary>
+        /// <param name="entries">The entries on the current page of this paginated collection.</param>
+        /// <param name="pageSize">The request size of the next page.</param>
+        /// <typeparam name="TParameters">The type of parameters to construct.</typeparam>
+        /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Pickup> entries, int? pageSize = null)
         {
             BetaFeatures.Parameters.Pickups.All parameters = Filters != null ? (BetaFeatures.Parameters.Pickups.All)Filters : new BetaFeatures.Parameters.Pickups.All();

@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#verification-object">EasyPost verification object</a>.
+    /// </summary>
     public class Verification : EasyPostObject
     {
         #region JSON Properties
@@ -17,6 +20,9 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Verification"/> class.
+        /// </summary>
         internal Verification()
         {
         }

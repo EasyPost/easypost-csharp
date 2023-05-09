@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.Shared
 {
+    /// <summary>
+    ///     Base class for all EasyPost user objects.
+    /// </summary>
     public class BaseUser : EasyPostObject
     {
         #region JSON Properties

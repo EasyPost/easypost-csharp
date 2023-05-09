@@ -10,6 +10,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#shipment-object">EasyPost shipment</a>.
+    /// </summary>
     public class Shipment : EasyPostObject, IShipmentParameter
     {
         #region JSON Properties
@@ -48,6 +51,10 @@ namespace EasyPost.Models.API
         public PostageLabel? PostageLabel { get; set; }
         [JsonProperty("rates")]
         public List<Rate>? Rates { get; set; }
+
+        /// <summary>
+        ///     An optional field that may be used in place of ID in some API endpoints.
+        /// </summary>
         [JsonProperty("reference")]
         public string? Reference { get; set; }
         [JsonProperty("refund_status")]
@@ -75,6 +82,9 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Shipment"/> class.
+        /// </summary>
         internal Shipment()
         {
         }
@@ -100,19 +110,35 @@ namespace EasyPost.Models.API
         }
     }
 
+    /// <summary>
+    ///     Class representing a collection of EasyPost <see cref="Shipment"/>s.
+    /// </summary>
     public class ShipmentCollection : PaginatedCollection<Shipment>
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The <see cref="Shipment"/>s in the collection.
+        /// </summary>
         [JsonProperty("shipments")]
         public List<Shipment>? Shipments { get; set; }
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ShipmentCollection" /> class.
+        /// </summary>
         internal ShipmentCollection()
         {
         }
 
+        /// <summary>
+        ///     Construct the parameter set for retrieving the next page of this paginated collection.
+        /// </summary>
+        /// <param name="entries">The entries on the current page of this paginated collection.</param>
+        /// <param name="pageSize">The request size of the next page.</param>
+        /// <typeparam name="TParameters">The type of parameters to construct.</typeparam>
+        /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Shipment> entries, int? pageSize = null)
         {
             BetaFeatures.Parameters.Shipments.All parameters = Filters != null ? (BetaFeatures.Parameters.Shipments.All)Filters : new BetaFeatures.Parameters.Shipments.All();

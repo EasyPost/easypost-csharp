@@ -7,9 +7,9 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.Shared
 {
     /// <summary>
-    ///     A collection of <see cref="EasyPost._base.EasyPostObject"/>s with multiple pages.
+    ///     A <a href="https://www.easypost.com/docs/api#pagination">paginated collection</a> of <see cref="EasyPost._base.EasyPostObject"/>s.
     /// </summary>
-    public abstract class PaginatedCollection<TEntries> : EasyPost._base.EasyPostObject where TEntries : EasyPost._base.EasyPostObject
+    public abstract class PaginatedCollection<TEntries> : _base.EasyPostObject where TEntries : _base.EasyPostObject
     {
         #region JSON Properties
 
@@ -59,6 +59,6 @@ namespace EasyPost.Models.Shared
         /// <returns>A TParameters-type set of parameters to use for the subsequent API call.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there are no more items to retrieve for the paginated collection.</exception>
         // This method is abstract and must be implemented for each collection.
-        protected internal abstract TParameters BuildNextPageParameters<TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) where TParameters : EasyPost.BetaFeatures.Parameters.BaseParameters;
+        protected internal abstract TParameters BuildNextPageParameters<TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) where TParameters : BetaFeatures.Parameters.BaseParameters;
     }
 }

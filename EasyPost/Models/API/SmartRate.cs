@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+    /// <summary>
+    ///     Class representing an <a href="https://www.easypost.com/docs/api#smartrate">EasyPost SmartRate</a>.
+    /// </summary>
     public class SmartRate : EasyPostObject
     {
         #region JSON Properties
@@ -43,6 +46,9 @@ namespace EasyPost.Models.API
 
         #endregion
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SmartRate"/> class.
+        /// </summary>
         internal SmartRate()
         {
         }
