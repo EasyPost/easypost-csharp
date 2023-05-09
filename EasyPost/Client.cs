@@ -108,7 +108,7 @@ namespace EasyPost
         public ReportService Report { get; }
 
         /// <summary>
-        ///     Access Scan Form-related functionality.
+        ///     Access ScanForm-related functionality.
         /// </summary>
         public ScanFormService ScanForm { get; }
 
