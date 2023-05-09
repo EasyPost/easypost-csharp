@@ -72,7 +72,8 @@
 
   <h1 id="EasyPost_Services_Beta_RateService" data-uid="EasyPost.Services.Beta.RateService" class="text-break">Class RateService
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Class representing a set of <a href="https://www.easypost.com/docs/api#rates">rate-related beta functionality</a>.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -116,11 +117,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_Beta_RateService_RetrieveStatelessRates_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.Beta.RateService.RetrieveStatelessRates(Dictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/Beta/RateService.cs/#L43">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/Beta/RateService.cs/#L36">View Source</a>
   </span>
   <a id="EasyPost_Services_Beta_RateService_RetrieveStatelessRates_" data-uid="EasyPost.Services.Beta.RateService.RetrieveStatelessRates*"></a>
   <h4 id="EasyPost_Services_Beta_RateService_RetrieveStatelessRates_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.Beta.RateService.RetrieveStatelessRates(Dictionary{System.String,System.Object},CancellationToken)">RetrieveStatelessRates(Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieve ephemeral rates for a shipment.</p>
+  <div class="markdown level1 summary"><p>Retrieve <a class="xref" href="EasyPost.Models.API.Beta.StatelessRate.html">StatelessRate</a>s for a <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-rates-for-a-shipment">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -140,28 +142,14 @@
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Optional dictionary containing shipment data. Valid pairs:</p>
-<ul>
-<li>{&quot;from_address&quot;, Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.</li>
-<li>{&quot;to_address&quot;, Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.</li>
-<li>{&quot;buyer_address&quot;, Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.</li>
-<li>{&quot;return_address&quot;, Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.</li>
-<li>{&quot;parcel&quot;, Dictionary&lt;string, object&gt;} See Parcel.Create for list of valid keys.</li>
-<li>{&quot;customs_info&quot;, Dictionary&lt;string, object&gt;} See CustomsInfo.Create for list of valid keys.</li>
-<li>{&quot;options&quot;, Dictionary&lt;string, object&gt;} See <a href="https://www.easypost.com/docs/api#shipments">https://www.easypost.com/docs/api#shipments</a> for list of
-options.</li>
-<li>{&quot;is_return&quot;, bool}</li>
-<li>{&quot;currency&quot;, string} Defaults to &quot;USD&quot;.</li>
-<li>{&quot;reference&quot;, string}</li>
-<li>{&quot;carrier_accounts&quot;, List&lt;string&gt;} List of CarrierAccount.id to limit rating.
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Data to retrieve the rates with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -186,11 +174,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_Beta_RateService_RetrieveStatelessRates_EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.Beta.RateService.RetrieveStatelessRates(EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/Beta/RateService.cs/#L55">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/Beta/RateService.cs/#L50">View Source</a>
   </span>
   <a id="EasyPost_Services_Beta_RateService_RetrieveStatelessRates_" data-uid="EasyPost.Services.Beta.RateService.RetrieveStatelessRates*"></a>
   <h4 id="EasyPost_Services_Beta_RateService_RetrieveStatelessRates_EasyPost_BetaFeatures_Parameters_Beta_Rates_Retrieve_CancellationToken_" data-uid="EasyPost.Services.Beta.RateService.RetrieveStatelessRates(EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve,CancellationToken)">RetrieveStatelessRates(Retrieve, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieve ephemeral rates.</p>
+  <div class="markdown level1 summary"><p>Retrieve <a class="xref" href="EasyPost.Models.API.Beta.StatelessRate.html">StatelessRate</a>s for a <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-rates-for-a-shipment">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -210,13 +199,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html">Retrieve</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Beta.Rates.Retrieve.html">Retrieve</a> parameter set.</p>
+        <td><p>Data to retrieve the rates with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -254,7 +244,7 @@ All invalid keys will be ignored.</li>
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_Beta_RateService.md&amp;value=---%0Auid%3A%20EasyPost.Services.Beta.RateService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/Beta/RateService.cs/#L13" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/Beta/RateService.cs/#L16" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

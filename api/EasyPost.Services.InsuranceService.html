@@ -72,7 +72,8 @@
 
   <h1 id="EasyPost_Services_InsuranceService" data-uid="EasyPost.Services.InsuranceService" class="text-break">Class InsuranceService
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Class representing a set of <a href="https://www.easypost.com/docs/api#insurance">insurance-related functionality</a>.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -116,11 +117,13 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_InsuranceService_All_EasyPost_BetaFeatures_Parameters_Insurance_All_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.InsuranceService.All(EasyPost.BetaFeatures.Parameters.Insurance.All%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/InsuranceService.cs/#L84">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/InsuranceService.cs/#L80">View Source</a>
   </span>
   <a id="EasyPost_Services_InsuranceService_All_" data-uid="EasyPost.Services.InsuranceService.All*"></a>
   <h4 id="EasyPost_Services_InsuranceService_All_EasyPost_BetaFeatures_Parameters_Insurance_All_CancellationToken_" data-uid="EasyPost.Services.InsuranceService.All(EasyPost.BetaFeatures.Parameters.Insurance.All,CancellationToken)">All(All, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>s.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-insurances">Related API documentation</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -139,12 +142,14 @@
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Insurance.All.html">All</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td></td>
+        <td><p>Parameters to filter the list of <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>s.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -159,7 +164,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.InsuranceCollection.html">InsuranceCollection</a>&gt;</td>
-        <td></td>
+        <td><p>An <a class="xref" href="EasyPost.Models.API.InsuranceCollection.html">InsuranceCollection</a> instance containing <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>s instances.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -168,11 +174,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_InsuranceService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.InsuranceService.All(System.Nullable%7BDictionary%7BSystem.String%2CSystem.Object%7D%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/InsuranceService.cs/#L76">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/InsuranceService.cs/#L65">View Source</a>
   </span>
   <a id="EasyPost_Services_InsuranceService_All_" data-uid="EasyPost.Services.InsuranceService.All*"></a>
   <h4 id="EasyPost_Services_InsuranceService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_" data-uid="EasyPost.Services.InsuranceService.All(System.Nullable{Dictionary{System.String,System.Object}},CancellationToken)">All(Nullable&lt;Dictionary&lt;String, Object&gt;&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>List all Insurance objects.</p>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>s.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-insurances">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -192,24 +199,14 @@
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Optional dictionary containing parameters to filter the list with. Valid pairs:</p>
-<ul>
-<li>{&quot;before_id&quot;, string} String representing an Insurance ID. Starts with &quot;ins_&quot;. Only retrieve insurances created
-before this id. Takes precedence over after_id.</li>
-<li>{&quot;after_id&quot;, string} String representing an Insurance ID. Starts with &quot;ins_&quot;. Only retrieve insurances created
-after
-this id.</li>
-<li>{&quot;start_datetime&quot;, string} ISO 8601 datetime string. Only retrieve insurances created after this datetime.</li>
-<li>{&quot;end_datetime&quot;, string} ISO 8601 datetime string. Only retrieve insurances created before this datetime.</li>
-<li>{&quot;page_size&quot;, int} Max size of list. Default to 20.
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Parameters to filter the list of <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>s.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -224,7 +221,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.InsuranceCollection.html">InsuranceCollection</a>&gt;</td>
-        <td><p>An EasyPost.InsuranceCollection instance.</p>
+        <td><p>An <a class="xref" href="EasyPost.Models.API.InsuranceCollection.html">InsuranceCollection</a> instance containing <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>s instances.</p>
 </td>
       </tr>
     </tbody>
@@ -234,11 +231,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_InsuranceService_Create_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.InsuranceService.Create(Dictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/InsuranceService.cs/#L41">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/InsuranceService.cs/#L37">View Source</a>
   </span>
   <a id="EasyPost_Services_InsuranceService_Create_" data-uid="EasyPost.Services.InsuranceService.Create*"></a>
   <h4 id="EasyPost_Services_InsuranceService_Create_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.InsuranceService.Create(Dictionary{System.String,System.Object},CancellationToken)">Create(Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create an Insurance.</p>
+  <div class="markdown level1 summary"><p>Create an <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>.
+<a href="https://www.easypost.com/docs/api#create-an-insurance">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -258,25 +256,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Dictionary containing parameters to create the insurance with. Valid pairs:</p>
-<ul>
-<li>{&quot;to_address&quot;, Address} The actual destination of the package to be insured</li>
-<li>{&quot;from_address&quot;, Address} The actual origin of the package to be insured</li>
-<li>{&quot;tracking_code&quot;, string} The tracking code associated with the non-EasyPost-purchased package you'd like to
-insure</li>
-<li>{&quot;reference&quot;, string} Optional. A unique value that may be used in place of ID when doing Retrieve calls for this
-insurance</li>
-<li>{&quot;amount&quot;, decimal} The USD value of contents you would like to insure. Currently the maximum is $5000</li>
-<li>{&quot;carrier&quot;, string} Optional. The carrier associated with the tracking_code you provided. The carrier will get
-auto-detected if none is provided
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -291,7 +278,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>&gt;</td>
-        <td><p>EasyPost.Insurance instance.</p>
+        <td><p>An <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -301,11 +288,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_InsuranceService_Create_EasyPost_BetaFeatures_Parameters_Insurance_Create_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.InsuranceService.Create(EasyPost.BetaFeatures.Parameters.Insurance.Create%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/InsuranceService.cs/#L53">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/InsuranceService.cs/#L51">View Source</a>
   </span>
   <a id="EasyPost_Services_InsuranceService_Create_" data-uid="EasyPost.Services.InsuranceService.Create*"></a>
   <h4 id="EasyPost_Services_InsuranceService_Create_EasyPost_BetaFeatures_Parameters_Insurance_Create_CancellationToken_" data-uid="EasyPost.Services.InsuranceService.Create(EasyPost.BetaFeatures.Parameters.Insurance.Create,CancellationToken)">Create(Create, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>.</p>
+  <div class="markdown level1 summary"><p>Create an <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>.
+<a href="https://www.easypost.com/docs/api#create-an-insurance">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -325,13 +313,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Insurance.Create.html">Create</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Insurance.Create.html">Create</a> parameter set.</p>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -346,7 +335,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a> instance.</p>
+        <td><p>An <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -356,11 +345,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_InsuranceService_GetNextPage_EasyPost_Models_API_InsuranceCollection_System_Nullable_System_Int32__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.InsuranceService.GetNextPage(EasyPost.Models.API.InsuranceCollection%2CSystem.Nullable%7BSystem.Int32%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/InsuranceService.cs/#L99">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/InsuranceService.cs/#L97">View Source</a>
   </span>
   <a id="EasyPost_Services_InsuranceService_GetNextPage_" data-uid="EasyPost.Services.InsuranceService.GetNextPage*"></a>
   <h4 id="EasyPost_Services_InsuranceService_GetNextPage_EasyPost_Models_API_InsuranceCollection_System_Nullable_System_Int32__CancellationToken_" data-uid="EasyPost.Services.InsuranceService.GetNextPage(EasyPost.Models.API.InsuranceCollection,System.Nullable{System.Int32},CancellationToken)">GetNextPage(InsuranceCollection, Nullable&lt;Int32&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get the next page of a paginated <a class="xref" href="EasyPost.Models.API.InsuranceCollection.html">InsuranceCollection</a>.</p>
+  <div class="markdown level1 summary"><p>Get the next page of a paginated <a class="xref" href="EasyPost.Models.API.InsuranceCollection.html">InsuranceCollection</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-insurances">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -392,7 +382,8 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -437,7 +428,8 @@ All invalid keys will be ignored.</li>
   </span>
   <a id="EasyPost_Services_InsuranceService_Retrieve_" data-uid="EasyPost.Services.InsuranceService.Retrieve*"></a>
   <h4 id="EasyPost_Services_InsuranceService_Retrieve_System_String_CancellationToken_" data-uid="EasyPost.Services.InsuranceService.Retrieve(System.String,CancellationToken)">Retrieve(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieve an Insurance from its id.</p>
+  <div class="markdown level1 summary"><p>Retrieve an <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-an-insurance">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -457,13 +449,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td><p>String representing an Insurance. Starts with &quot;ins_&quot;.</p>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a> to retrieve.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -478,7 +471,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a>&gt;</td>
-        <td><p>EasyPost.Insurance instance.</p>
+        <td><p>An <a class="xref" href="EasyPost.Models.API.Insurance.html">Insurance</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -501,7 +494,7 @@ All invalid keys will be ignored.</li>
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_InsuranceService.md&amp;value=---%0Auid%3A%20EasyPost.Services.InsuranceService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/InsuranceService.cs/#L15" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/InsuranceService.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

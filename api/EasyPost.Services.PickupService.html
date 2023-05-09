@@ -72,7 +72,8 @@
 
   <h1 id="EasyPost_Services_PickupService" data-uid="EasyPost.Services.PickupService" class="text-break">Class PickupService
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Class representing a set of <a href="https://www.easypost.com/docs/api#pickups">pickup-related functionality</a>.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -116,11 +117,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_PickupService_All_EasyPost_BetaFeatures_Parameters_Pickups_All_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.PickupService.All(EasyPost.BetaFeatures.Parameters.Pickups.All%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L97">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L90">View Source</a>
   </span>
   <a id="EasyPost_Services_PickupService_All_" data-uid="EasyPost.Services.PickupService.All*"></a>
   <h4 id="EasyPost_Services_PickupService_All_EasyPost_BetaFeatures_Parameters_Pickups_All_CancellationToken_" data-uid="EasyPost.Services.PickupService.All(EasyPost.BetaFeatures.Parameters.Pickups.All,CancellationToken)">All(All, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> objects.</p>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> objects.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-pickups">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -140,13 +142,14 @@
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Pickups.All.html">All</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Pickups.All.html">All</a> parameter set.</p>
+        <td><p>The parameters to filter the list of <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> objects by.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -161,7 +164,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.PickupCollection.html">PickupCollection</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.PickupCollection.html">PickupCollection</a> instance.</p>
+        <td><p>An <a class="xref" href="EasyPost.Models.API.PickupCollection.html">PickupCollection</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -171,11 +174,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_PickupService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.PickupService.All(System.Nullable%7BDictionary%7BSystem.String%2CSystem.Object%7D%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L84">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L75">View Source</a>
   </span>
   <a id="EasyPost_Services_PickupService_All_" data-uid="EasyPost.Services.PickupService.All*"></a>
   <h4 id="EasyPost_Services_PickupService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_" data-uid="EasyPost.Services.PickupService.All(System.Nullable{Dictionary{System.String,System.Object}},CancellationToken)">All(Nullable&lt;Dictionary&lt;String, Object&gt;&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get a paginated list of <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>s.</p>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> objects.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-pickups">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -195,24 +199,14 @@
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Optional dictionary containing parameters to filter the list with. Valid pairs:</p>
-<ul>
-<li>{&quot;before_id&quot;, string} String representing a Shipment. Starts with &quot;shp_&quot;. Only retrieve shipments created before
-this id. Takes precedence over after_id.</li>
-<li>{&quot;after_id&quot;, string} String representing a Shipment. Starts with &quot;shp_&quot;. Only retrieve shipments created after
-this id.</li>
-<li>{&quot;start_datetime&quot;, DateTime} Starting time for the search.</li>
-<li>{&quot;end_datetime&quot;, DateTime} Ending time for the search.</li>
-<li>{&quot;page_size&quot;, int} Size of page. Default to 20.</li>
-<li>{&quot;purchased&quot;, bool} If true only display purchased shipments.
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>The parameters to filter the list of <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> objects by.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -237,11 +231,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_PickupService_Buy_System_String_EasyPost_BetaFeatures_Parameters_Pickups_Buy_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.PickupService.Buy(System.String%2CEasyPost.BetaFeatures.Parameters.Pickups.Buy%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L138">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L139">View Source</a>
   </span>
   <a id="EasyPost_Services_PickupService_Buy_" data-uid="EasyPost.Services.PickupService.Buy*"></a>
   <h4 id="EasyPost_Services_PickupService_Buy_System_String_EasyPost_BetaFeatures_Parameters_Pickups_Buy_CancellationToken_" data-uid="EasyPost.Services.PickupService.Buy(System.String,EasyPost.BetaFeatures.Parameters.Pickups.Buy,CancellationToken)">Buy(String, Buy, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Purchase this <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>.</p>
+  <div class="markdown level1 summary"><p>Purchase a <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>.
+<a href="https://www.easypost.com/docs/api#buy-a-pickup">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -261,18 +256,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> to purchase.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Pickups.Buy.html">Buy</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Pickups.Buy.html">Buy</a> parameters set.</p>
+        <td><p>The parameters to purchase the <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -287,7 +284,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>&gt;</td>
-        <td><p>This updated <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> instance.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -297,11 +294,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_PickupService_Buy_System_String_System_String_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.PickupService.Buy(System.String%2CSystem.String%2CSystem.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L121">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L119">View Source</a>
   </span>
   <a id="EasyPost_Services_PickupService_Buy_" data-uid="EasyPost.Services.PickupService.Buy*"></a>
   <h4 id="EasyPost_Services_PickupService_Buy_System_String_System_String_System_String_CancellationToken_" data-uid="EasyPost.Services.PickupService.Buy(System.String,System.String,System.String,CancellationToken)">Buy(String, String, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Purchase this pickup.</p>
+  <div class="markdown level1 summary"><p>Purchase a <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>.
+<a href="https://www.easypost.com/docs/api#buy-a-pickup">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -321,24 +319,26 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> to purchase.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">withCarrier</span></td>
-        <td><p>The name of the carrier to purchase with.</p>
+        <td><p>The name of the carrier to purchase the <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">withService</span></td>
-        <td><p>The name of the service to purchase.</p>
+        <td><p>The name of the service to purchase the <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -353,7 +353,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>&gt;</td>
-        <td><p>The updated Pickup.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -363,11 +363,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_PickupService_Cancel_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.PickupService.Cancel(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L148">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L152">View Source</a>
   </span>
   <a id="EasyPost_Services_PickupService_Cancel_" data-uid="EasyPost.Services.PickupService.Cancel*"></a>
   <h4 id="EasyPost_Services_PickupService_Cancel_System_String_CancellationToken_" data-uid="EasyPost.Services.PickupService.Cancel(System.String,CancellationToken)">Cancel(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Cancel this pickup.</p>
+  <div class="markdown level1 summary"><p>Cancel a <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>.
+<a href="https://www.easypost.com/docs/api#cancel-a-pickup">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -387,12 +388,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> to cancel.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -407,7 +410,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>&gt;</td>
-        <td><p>The updated Pickup.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -417,11 +420,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_PickupService_Create_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.PickupService.Create(Dictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L41">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L37">View Source</a>
   </span>
   <a id="EasyPost_Services_PickupService_Create_" data-uid="EasyPost.Services.PickupService.Create*"></a>
   <h4 id="EasyPost_Services_PickupService_Create_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.PickupService.Create(Dictionary{System.String,System.Object},CancellationToken)">Create(Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a Pickup.</p>
+  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>.
+<a href="https://www.easypost.com/docs/api#create-a-pickup">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -441,25 +445,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Optional dictionary containing parameters to create the batch with. Valid pairs:</p>
-<ul>
-<li>{&quot;is_account_address&quot;, bool}</li>
-<li>{&quot;min_datetime&quot;, DateTime}</li>
-<li>{&quot;max_datetime&quot;, DateTime}</li>
-<li>{&quot;reference&quot;, string}</li>
-<li>{&quot;instructions&quot;, string}</li>
-<li>{&quot;carrier_accounts&quot;, List&lt;CarrierAccount&gt;}</li>
-<li>{&quot;address&quot;, Address}</li>
-<li>{&quot;shipment&quot;, Shipment}</li>
-<li>{&quot;batch&quot;, Batch}
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -474,7 +467,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>&gt;</td>
-        <td><p>EasyPost.Pickup instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -484,11 +477,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_PickupService_Create_EasyPost_BetaFeatures_Parameters_Pickups_Create_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.PickupService.Create(EasyPost.BetaFeatures.Parameters.Pickups.Create%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L53">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L51">View Source</a>
   </span>
   <a id="EasyPost_Services_PickupService_Create_" data-uid="EasyPost.Services.PickupService.Create*"></a>
   <h4 id="EasyPost_Services_PickupService_Create_EasyPost_BetaFeatures_Parameters_Pickups_Create_CancellationToken_" data-uid="EasyPost.Services.PickupService.Create(EasyPost.BetaFeatures.Parameters.Pickups.Create,CancellationToken)">Create(Create, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>.</p>
+  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>.
+<a href="https://www.easypost.com/docs/api#create-a-pickup">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -508,13 +502,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Pickups.Create.html">Create</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Pickups.Create.html">Create</a> parameter set.</p>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -529,7 +524,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -539,11 +534,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_PickupService_GetNextPage_EasyPost_Models_API_PickupCollection_System_Nullable_System_Int32__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.PickupService.GetNextPage(EasyPost.Models.API.PickupCollection%2CSystem.Nullable%7BSystem.Int32%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L112">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L107">View Source</a>
   </span>
   <a id="EasyPost_Services_PickupService_GetNextPage_" data-uid="EasyPost.Services.PickupService.GetNextPage*"></a>
   <h4 id="EasyPost_Services_PickupService_GetNextPage_EasyPost_Models_API_PickupCollection_System_Nullable_System_Int32__CancellationToken_" data-uid="EasyPost.Services.PickupService.GetNextPage(EasyPost.Models.API.PickupCollection,System.Nullable{System.Int32},CancellationToken)">GetNextPage(PickupCollection, Nullable&lt;Int32&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get the next page of a paginated <a class="xref" href="EasyPost.Models.API.PickupCollection.html">PickupCollection</a>.</p>
+  <div class="markdown level1 summary"><p>Get the next page of a paginated <a class="xref" href="EasyPost.Models.API.PickupCollection.html">PickupCollection</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-pickups">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -575,7 +571,8 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -620,7 +617,8 @@ All invalid keys will be ignored.</li>
   </span>
   <a id="EasyPost_Services_PickupService_Retrieve_" data-uid="EasyPost.Services.PickupService.Retrieve*"></a>
   <h4 id="EasyPost_Services_PickupService_Retrieve_System_String_CancellationToken_" data-uid="EasyPost.Services.PickupService.Retrieve(System.String,CancellationToken)">Retrieve(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieve a Pickup from its id.</p>
+  <div class="markdown level1 summary"><p>Retrieve a <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-a-pickup">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -640,13 +638,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td><p>String representing a Pickup. Starts with &quot;pickup_&quot;.</p>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> to retrieve.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -661,7 +660,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a>&gt;</td>
-        <td><p>EasyPost.Pickup instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.Pickup.html">Pickup</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -684,7 +683,7 @@ All invalid keys will be ignored.</li>
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_PickupService.md&amp;value=---%0Auid%3A%20EasyPost.Services.PickupService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L15" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/PickupService.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -14055,22 +14055,6 @@ references:
   commentId: T:EasyPost.Services.RateService
   fullName: EasyPost.Services.RateService
   nameWithType: RateService
-- uid: EasyPost.Services.RateService.GetLowestRate(IEnumerable{EasyPost.Models.API.Rate},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}})
-  name: GetLowestRate(IEnumerable<Rate>, Nullable<List<String>>, Nullable<List<String>>, Nullable<List<String>>, Nullable<List<String>>)
-  href: api/EasyPost.Services.RateService.html#EasyPost_Services_RateService_GetLowestRate_IEnumerable_EasyPost_Models_API_Rate__System_Nullable_List_System_String___System_Nullable_List_System_String___System_Nullable_List_System_String___System_Nullable_List_System_String___
-  commentId: M:EasyPost.Services.RateService.GetLowestRate(IEnumerable{EasyPost.Models.API.Rate},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}},System.Nullable{List{System.String}})
-  name.vb: GetLowestRate(IEnumerable(Of Rate), Nullable(Of List(Of String)), Nullable(Of List(Of String)), Nullable(Of List(Of String)), Nullable(Of List(Of String)))
-  fullName: EasyPost.Services.RateService.GetLowestRate(IEnumerable<EasyPost.Models.API.Rate>, System.Nullable<List<System.String>>, System.Nullable<List<System.String>>, System.Nullable<List<System.String>>, System.Nullable<List<System.String>>)
-  fullName.vb: EasyPost.Services.RateService.GetLowestRate(IEnumerable(Of EasyPost.Models.API.Rate), System.Nullable(Of List(Of System.String)), System.Nullable(Of List(Of System.String)), System.Nullable(Of List(Of System.String)), System.Nullable(Of List(Of System.String)))
-  nameWithType: RateService.GetLowestRate(IEnumerable<Rate>, Nullable<List<String>>, Nullable<List<String>>, Nullable<List<String>>, Nullable<List<String>>)
-  nameWithType.vb: RateService.GetLowestRate(IEnumerable(Of Rate), Nullable(Of List(Of String)), Nullable(Of List(Of String)), Nullable(Of List(Of String)), Nullable(Of List(Of String)))
-- uid: EasyPost.Services.RateService.GetLowestRate*
-  name: GetLowestRate
-  href: api/EasyPost.Services.RateService.html#EasyPost_Services_RateService_GetLowestRate_
-  commentId: Overload:EasyPost.Services.RateService.GetLowestRate
-  isSpec: "True"
-  fullName: EasyPost.Services.RateService.GetLowestRate
-  nameWithType: RateService.GetLowestRate
 - uid: EasyPost.Services.RateService.Retrieve(System.String,CancellationToken)
   name: Retrieve(String, CancellationToken)
   href: api/EasyPost.Services.RateService.html#EasyPost_Services_RateService_Retrieve_System_String_CancellationToken_
@@ -14453,15 +14437,15 @@ references:
   commentId: M:EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.BetaFeatures.Parameters.Shipments.Buy,CancellationToken)
   fullName: EasyPost.Services.ShipmentService.Buy(System.String, EasyPost.BetaFeatures.Parameters.Shipments.Buy, CancellationToken)
   nameWithType: ShipmentService.Buy(String, Buy, CancellationToken)
-- uid: EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.Models.API.Rate,System.Nullable{System.String},System.Boolean,System.Nullable{System.String})
-  name: Buy(String, Rate, Nullable<String>, Boolean, Nullable<String>)
-  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Buy_System_String_EasyPost_Models_API_Rate_System_Nullable_System_String__System_Boolean_System_Nullable_System_String__
-  commentId: M:EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.Models.API.Rate,System.Nullable{System.String},System.Boolean,System.Nullable{System.String})
-  name.vb: Buy(String, Rate, Nullable(Of String), Boolean, Nullable(Of String))
-  fullName: EasyPost.Services.ShipmentService.Buy(System.String, EasyPost.Models.API.Rate, System.Nullable<System.String>, System.Boolean, System.Nullable<System.String>)
-  fullName.vb: EasyPost.Services.ShipmentService.Buy(System.String, EasyPost.Models.API.Rate, System.Nullable(Of System.String), System.Boolean, System.Nullable(Of System.String))
-  nameWithType: ShipmentService.Buy(String, Rate, Nullable<String>, Boolean, Nullable<String>)
-  nameWithType.vb: ShipmentService.Buy(String, Rate, Nullable(Of String), Boolean, Nullable(Of String))
+- uid: EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.Models.API.Rate,System.Nullable{System.String},System.Boolean,System.Nullable{System.String},CancellationToken)
+  name: Buy(String, Rate, Nullable<String>, Boolean, Nullable<String>, CancellationToken)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Buy_System_String_EasyPost_Models_API_Rate_System_Nullable_System_String__System_Boolean_System_Nullable_System_String__CancellationToken_
+  commentId: M:EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.Models.API.Rate,System.Nullable{System.String},System.Boolean,System.Nullable{System.String},CancellationToken)
+  name.vb: Buy(String, Rate, Nullable(Of String), Boolean, Nullable(Of String), CancellationToken)
+  fullName: EasyPost.Services.ShipmentService.Buy(System.String, EasyPost.Models.API.Rate, System.Nullable<System.String>, System.Boolean, System.Nullable<System.String>, CancellationToken)
+  fullName.vb: EasyPost.Services.ShipmentService.Buy(System.String, EasyPost.Models.API.Rate, System.Nullable(Of System.String), System.Boolean, System.Nullable(Of System.String), CancellationToken)
+  nameWithType: ShipmentService.Buy(String, Rate, Nullable<String>, Boolean, Nullable<String>, CancellationToken)
+  nameWithType.vb: ShipmentService.Buy(String, Rate, Nullable(Of String), Boolean, Nullable(Of String), CancellationToken)
 - uid: EasyPost.Services.ShipmentService.Buy(System.String,System.Nullable{System.String},System.Nullable{System.String},System.Boolean,System.Nullable{System.String},CancellationToken)
   name: Buy(String, Nullable<String>, Nullable<String>, Boolean, Nullable<String>, CancellationToken)
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Buy_System_String_System_Nullable_System_String__System_Nullable_System_String__System_Boolean_System_Nullable_System_String__CancellationToken_

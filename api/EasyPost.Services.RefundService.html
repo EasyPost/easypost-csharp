@@ -72,7 +72,8 @@
 
   <h1 id="EasyPost_Services_RefundService" data-uid="EasyPost.Services.RefundService" class="text-break">Class RefundService
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Class representing a set of <a href="https://www.easypost.com/docs/api#refunds">refund-related functionality</a>.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -116,11 +117,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_RefundService_All_EasyPost_BetaFeatures_Parameters_Refunds_All_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.RefundService.All(EasyPost.BetaFeatures.Parameters.Refunds.All%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L72">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L80">View Source</a>
   </span>
   <a id="EasyPost_Services_RefundService_All_" data-uid="EasyPost.Services.RefundService.All*"></a>
   <h4 id="EasyPost_Services_RefundService_All_EasyPost_BetaFeatures_Parameters_Refunds_All_CancellationToken_" data-uid="EasyPost.Services.RefundService.All(EasyPost.BetaFeatures.Parameters.Refunds.All,CancellationToken)">All(All, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a> objects.</p>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>s.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-refunds">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -140,13 +142,14 @@
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Refunds.All.html">All</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Refunds.All.html">All</a> parameter set.</p>
+        <td><p>Parameters to filter the list of <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>s on.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -161,7 +164,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.RefundCollection.html">RefundCollection</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.RefundCollection.html">RefundCollection</a> instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.RefundCollection.html">RefundCollection</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -171,11 +174,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_RefundService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.RefundService.All(System.Nullable%7BDictionary%7BSystem.String%2CSystem.Object%7D%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L59">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L65">View Source</a>
   </span>
   <a id="EasyPost_Services_RefundService_All_" data-uid="EasyPost.Services.RefundService.All*"></a>
   <h4 id="EasyPost_Services_RefundService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_" data-uid="EasyPost.Services.RefundService.All(System.Nullable{Dictionary{System.String,System.Object}},CancellationToken)">All(Nullable&lt;Dictionary&lt;String, Object&gt;&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>List all Refund objects.</p>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>s.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-refunds">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -195,14 +199,14 @@
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Optional dictionary containing parameters to filter the list with.
-All invalid keys will be ignored.</p>
+        <td><p>Parameters to filter the list of <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>s on. Refer to <a class="xref" href="EasyPost.BetaFeatures.Parameters.Refunds.All.html">All</a> for more information.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -217,7 +221,7 @@ All invalid keys will be ignored.</p>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.RefundCollection.html">RefundCollection</a>&gt;</td>
-        <td><p>An EasyPost.RefundCollection instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.RefundCollection.html">RefundCollection</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -227,11 +231,12 @@ All invalid keys will be ignored.</p>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_RefundService_Create_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.RefundService.Create(Dictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L32">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L37">View Source</a>
   </span>
   <a id="EasyPost_Services_RefundService_Create_" data-uid="EasyPost.Services.RefundService.Create*"></a>
   <h4 id="EasyPost_Services_RefundService_Create_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.RefundService.Create(Dictionary{System.String,System.Object},CancellationToken)">Create(Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a Refund.</p>
+  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>.
+<a href="https://www.easypost.com/docs/api#create-a-refund">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -251,14 +256,14 @@ All invalid keys will be ignored.</p>
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Dictionary containing parameters to create the refund with.
-All invalid keys will be ignored.</p>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -273,7 +278,7 @@ All invalid keys will be ignored.</p>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>&gt;&gt;</td>
-        <td><p>A list of EasyPost.Refund instances.</p>
+        <td><p>A list of <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a> objects.</p>
 </td>
       </tr>
     </tbody>
@@ -283,11 +288,12 @@ All invalid keys will be ignored.</p>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_RefundService_Create_EasyPost_BetaFeatures_Parameters_Refunds_Create_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.RefundService.Create(EasyPost.BetaFeatures.Parameters.Refunds.Create%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L44">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L51">View Source</a>
   </span>
   <a id="EasyPost_Services_RefundService_Create_" data-uid="EasyPost.Services.RefundService.Create*"></a>
   <h4 id="EasyPost_Services_RefundService_Create_EasyPost_BetaFeatures_Parameters_Refunds_Create_CancellationToken_" data-uid="EasyPost.Services.RefundService.Create(EasyPost.BetaFeatures.Parameters.Refunds.Create,CancellationToken)">Create(Create, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>.</p>
+  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>.
+<a href="https://www.easypost.com/docs/api#create-a-refund">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -307,13 +313,14 @@ All invalid keys will be ignored.</p>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Refunds.Create.html">Create</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Refunds.Create.html">Create</a> parameter set.</p>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -328,7 +335,7 @@ All invalid keys will be ignored.</p>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>&gt;&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a> instance.</p>
+        <td><p>A list of <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a> objects.</p>
 </td>
       </tr>
     </tbody>
@@ -338,11 +345,12 @@ All invalid keys will be ignored.</p>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_RefundService_GetNextPage_EasyPost_Models_API_RefundCollection_System_Nullable_System_Int32__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.RefundService.GetNextPage(EasyPost.Models.API.RefundCollection%2CSystem.Nullable%7BSystem.Int32%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L87">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L97">View Source</a>
   </span>
   <a id="EasyPost_Services_RefundService_GetNextPage_" data-uid="EasyPost.Services.RefundService.GetNextPage*"></a>
   <h4 id="EasyPost_Services_RefundService_GetNextPage_EasyPost_Models_API_RefundCollection_System_Nullable_System_Int32__CancellationToken_" data-uid="EasyPost.Services.RefundService.GetNextPage(EasyPost.Models.API.RefundCollection,System.Nullable{System.Int32},CancellationToken)">GetNextPage(RefundCollection, Nullable&lt;Int32&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get the next page of a paginated <a class="xref" href="EasyPost.Models.API.RefundCollection.html">RefundCollection</a>.</p>
+  <div class="markdown level1 summary"><p>Get the next page of a paginated <a class="xref" href="EasyPost.Models.API.RefundCollection.html">RefundCollection</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-refunds">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -374,7 +382,8 @@ All invalid keys will be ignored.</p>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -415,11 +424,12 @@ All invalid keys will be ignored.</p>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_RefundService_Retrieve_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.RefundService.Retrieve(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L95">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L107">View Source</a>
   </span>
   <a id="EasyPost_Services_RefundService_Retrieve_" data-uid="EasyPost.Services.RefundService.Retrieve*"></a>
   <h4 id="EasyPost_Services_RefundService_Retrieve_System_String_CancellationToken_" data-uid="EasyPost.Services.RefundService.Retrieve(System.String,CancellationToken)">Retrieve(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieve a Refund from its id.</p>
+  <div class="markdown level1 summary"><p>Retrieve a <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-a-refund">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -439,13 +449,14 @@ All invalid keys will be ignored.</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td><p>String representing a Refund. Starts with &quot;rfnd_&quot;.</p>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a> to retrieve.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -460,7 +471,7 @@ All invalid keys will be ignored.</p>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>&gt;</td>
-        <td><p>EasyPost.Refund instance.</p>
+        <td><p>The requested <a class="xref" href="EasyPost.Models.API.Refund.html">Refund</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -483,7 +494,7 @@ All invalid keys will be ignored.</p>
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_RefundService.md&amp;value=---%0Auid%3A%20EasyPost.Services.RefundService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L15" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/RefundService.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

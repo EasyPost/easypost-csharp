@@ -72,7 +72,8 @@
 
   <h1 id="EasyPost_Services_OrderService" data-uid="EasyPost.Services.OrderService" class="text-break">Class OrderService
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Class representing a set of <a href="https://www.easypost.com/docs/api#orders">order-related functionality</a>.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -116,11 +117,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_Buy_System_String_EasyPost_BetaFeatures_Parameters_Orders_Buy_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.Buy(System.String%2CEasyPost.BetaFeatures.Parameters.Orders.Buy%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L115">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L123">View Source</a>
   </span>
   <a id="EasyPost_Services_OrderService_Buy_" data-uid="EasyPost.Services.OrderService.Buy*"></a>
   <h4 id="EasyPost_Services_OrderService_Buy_System_String_EasyPost_BetaFeatures_Parameters_Orders_Buy_CancellationToken_" data-uid="EasyPost.Services.OrderService.Buy(System.String,EasyPost.BetaFeatures.Parameters.Orders.Buy,CancellationToken)">Buy(String, Buy, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Purchase the <see cref="!:Shipments"></see> within this <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.</p>
+  <div class="markdown level1 summary"><p>Purchase the <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s within an <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.
+<a href="https://www.easypost.com/docs/api#buy-an-order">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -140,7 +142,8 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Order.html">Order</a> to purchase.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Orders.Buy.html">Buy</a></td>
@@ -151,7 +154,8 @@
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -166,7 +170,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Order.html">Order</a>&gt;</td>
-        <td><p>This updated <a class="xref" href="EasyPost.Models.API.Order.html">Order</a> instance.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -176,11 +180,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_Buy_System_String_EasyPost_Models_API_Rate_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.Buy(System.String%2CEasyPost.Models.API.Rate%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L92">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L97">View Source</a>
   </span>
   <a id="EasyPost_Services_OrderService_Buy_" data-uid="EasyPost.Services.OrderService.Buy*"></a>
   <h4 id="EasyPost_Services_OrderService_Buy_System_String_EasyPost_Models_API_Rate_CancellationToken_" data-uid="EasyPost.Services.OrderService.Buy(System.String,EasyPost.Models.API.Rate,CancellationToken)">Buy(String, Rate, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Purchase a label for this shipment with the given rate.</p>
+  <div class="markdown level1 summary"><p>Purchase the <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s within an <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.
+<a href="https://www.easypost.com/docs/api#buy-an-order">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -200,18 +205,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Order.html">Order</a> to purchase.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="EasyPost.Models.API.Rate.html">Rate</a></td>
         <td><span class="parametername">rate</span></td>
-        <td><p>EasyPost.Rate object instance to purchase the shipment with.</p>
+        <td><p>The <a class="xref" href="EasyPost.Models.API.Rate.html">Rate</a> to purchase the <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -226,7 +233,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Order.html">Order</a>&gt;</td>
-        <td><p>The updated Order.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -236,11 +243,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_Buy_System_String_System_String_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.Buy(System.String%2CSystem.String%2CSystem.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L75">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L77">View Source</a>
   </span>
   <a id="EasyPost_Services_OrderService_Buy_" data-uid="EasyPost.Services.OrderService.Buy*"></a>
   <h4 id="EasyPost_Services_OrderService_Buy_System_String_System_String_System_String_CancellationToken_" data-uid="EasyPost.Services.OrderService.Buy(System.String,System.String,System.String,CancellationToken)">Buy(String, String, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Purchase the shipments within this order with a carrier and service.</p>
+  <div class="markdown level1 summary"><p>Purchase the <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s within an <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.
+<a href="https://www.easypost.com/docs/api#buy-an-order">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -260,24 +268,26 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Order.html">Order</a> to purchase.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">withCarrier</span></td>
-        <td><p>The carrier to purchase a shipment from.</p>
+        <td><p>The carrier to purchase the <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">withService</span></td>
-        <td><p>The service to purchase.</p>
+        <td><p>The service to purchase the <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -292,7 +302,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Order.html">Order</a>&gt;</td>
-        <td><p>The updated Order.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -302,11 +312,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_Create_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.Create(Dictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L42">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L37">View Source</a>
   </span>
   <a id="EasyPost_Services_OrderService_Create_" data-uid="EasyPost.Services.OrderService.Create*"></a>
   <h4 id="EasyPost_Services_OrderService_Create_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.OrderService.Create(Dictionary{System.String,System.Object},CancellationToken)">Create(Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a Order.</p>
+  <div class="markdown level1 summary"><p>Create an <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.
+<a href="https://www.easypost.com/docs/api#create-an-order">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -326,27 +337,14 @@
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Dictionary containing parameters to create the order with. Valid pairs:</p>
-<ul>
-<li>{&quot;from_address&quot;, Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.</li>
-<li>{&quot;to_address&quot;, Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.</li>
-<li>{&quot;buyer_address&quot;, Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.</li>
-<li>{&quot;return_address&quot;, Dictionary&lt;string, object&gt;} See Address.Create for a list of valid keys.</li>
-<li>{&quot;customs_info&quot;, Dictionary&lt;string, object&gt;} See CustomsInfo.Create for list of valid keys.</li>
-<li>{&quot;is_return&quot;, bool}</li>
-<li>{&quot;reference&quot;, string}</li>
-<li>{&quot;shipments&quot;, IEnumerable&lt;Shipment&gt;} See Shipment.Create for list of valid keys.</li>
-<li>{&quot;carrier_accounts&quot;, IEnumerable&lt;CarrierAccount&gt;}</li>
-<li>{&quot;containers&quot;, IEnumerable&lt;Container&gt;} See Container.Create for list of valid keys.</li>
-<li>{&quot;items&quot;, IEnumerable&lt;Item&gt;} See Item.Create for list of valid keys.
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -361,7 +359,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Order.html">Order</a>&gt;</td>
-        <td><p>EasyPost.Order instance.</p>
+        <td><p>An <a class="xref" href="EasyPost.Models.API.Order.html">Order</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -371,11 +369,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_Create_EasyPost_BetaFeatures_Parameters_Orders_Create_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.Create(EasyPost.BetaFeatures.Parameters.Orders.Create%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L54">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L51">View Source</a>
   </span>
   <a id="EasyPost_Services_OrderService_Create_" data-uid="EasyPost.Services.OrderService.Create*"></a>
   <h4 id="EasyPost_Services_OrderService_Create_EasyPost_BetaFeatures_Parameters_Orders_Create_CancellationToken_" data-uid="EasyPost.Services.OrderService.Create(EasyPost.BetaFeatures.Parameters.Orders.Create,CancellationToken)">Create(Create, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create an <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.</p>
+  <div class="markdown level1 summary"><p>Create an <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.
+<a href="https://www.easypost.com/docs/api#create-an-order">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -395,13 +394,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Orders.Create.html">Create</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Orders.Create.html">Create</a> parameter set.</p>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -416,7 +416,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Order.html">Order</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.Order.html">Order</a> instance.</p>
+        <td><p>An <a class="xref" href="EasyPost.Models.API.Order.html">Order</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -426,11 +426,11 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_RefreshRates_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.RefreshRates(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L125">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L135">View Source</a>
   </span>
   <a id="EasyPost_Services_OrderService_RefreshRates_" data-uid="EasyPost.Services.OrderService.RefreshRates*"></a>
   <h4 id="EasyPost_Services_OrderService_RefreshRates_System_String_CancellationToken_" data-uid="EasyPost.Services.OrderService.RefreshRates(System.String,CancellationToken)">RefreshRates(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Repopulate the rates for an Order.</p>
+  <div class="markdown level1 summary"><p>Repopulate the <a class="xref" href="EasyPost.Models.API.Rate.html">Rate</a>s for an Order.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -450,12 +450,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Order.html">Order</a> to refresh the <a class="xref" href="EasyPost.Models.API.Rate.html">Rate</a>s for.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -470,7 +472,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Order.html">Order</a>&gt;</td>
-        <td><p>The task to refresh this Order's rates.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Order.html">Order</a> with refreshed <a class="xref" href="EasyPost.Models.API.Rate.html">Rate</a>s.</p>
 </td>
       </tr>
     </tbody>
@@ -480,11 +482,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService_Retrieve_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService.Retrieve(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L66">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L65">View Source</a>
   </span>
   <a id="EasyPost_Services_OrderService_Retrieve_" data-uid="EasyPost.Services.OrderService.Retrieve*"></a>
   <h4 id="EasyPost_Services_OrderService_Retrieve_System_String_CancellationToken_" data-uid="EasyPost.Services.OrderService.Retrieve(System.String,CancellationToken)">Retrieve(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieve a Order from its id or reference.</p>
+  <div class="markdown level1 summary"><p>Retrieve an <a class="xref" href="EasyPost.Models.API.Order.html">Order</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-an-order">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -504,13 +507,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td><p>String representing a Order. Starts with &quot;order_&quot; if passing an id.</p>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Order.html">Order</a> to retrieve.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -525,7 +529,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Order.html">Order</a>&gt;</td>
-        <td><p>EasyPost.Order instance.</p>
+        <td><p>An <a class="xref" href="EasyPost.Models.API.Order.html">Order</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -548,7 +552,7 @@ All invalid keys will be ignored.</li>
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_OrderService.md&amp;value=---%0Auid%3A%20EasyPost.Services.OrderService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/OrderService.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

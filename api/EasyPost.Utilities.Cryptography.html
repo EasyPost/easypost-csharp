@@ -383,7 +383,7 @@
   </span>
   <a id="EasyPost_Utilities_Cryptography_SignaturesMatch_" data-uid="EasyPost.Utilities.Cryptography.SignaturesMatch*"></a>
   <h4 id="EasyPost_Utilities_Cryptography_SignaturesMatch_System_String_System_Nullable_System_String__" data-uid="EasyPost.Utilities.Cryptography.SignaturesMatch(System.String,System.Nullable{System.String})">SignaturesMatch(String, Nullable&lt;String&gt;)</h4>
-  <div class="markdown level1 summary"><p>Cryptography-related utility methods.</p>
+  <div class="markdown level1 summary"><p>Check whether two signatures match. This is safe against timing attacks.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -423,7 +423,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p><code>true</code> if the two signatures match, <code>false</code> otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>

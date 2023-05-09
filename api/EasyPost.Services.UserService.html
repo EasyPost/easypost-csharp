@@ -72,7 +72,8 @@
 
   <h1 id="EasyPost_Services_UserService" data-uid="EasyPost.Services.UserService" class="text-break">Class UserService
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Class representing a set of <a href="https://www.easypost.com/docs/api#users">user-related functionality</a>.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -116,11 +117,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_UserService_CreateChild_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.UserService.CreateChild(Dictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L31">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L36">View Source</a>
   </span>
   <a id="EasyPost_Services_UserService_CreateChild_" data-uid="EasyPost.Services.UserService.CreateChild*"></a>
   <h4 id="EasyPost_Services_UserService_CreateChild_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.UserService.CreateChild(Dictionary{System.String,System.Object},CancellationToken)">CreateChild(Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a child user for the account associated with the api_key specified.</p>
+  <div class="markdown level1 summary"><p>Create a child <a class="xref" href="EasyPost.Models.API.User.html">User</a> for the current account.
+<a href="https://www.easypost.com/docs/api#create-a-child-user">Related API documentation.</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -140,17 +142,14 @@
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Optional dictionary containing parameters to create the carrier account with. Valid pairs:</p>
-<ul>
-<li>{&quot;name&quot;, string} Name on the account.
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Parameters to create the child <a class="xref" href="EasyPost.Models.API.User.html">User</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -165,7 +164,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.User.html">User</a>&gt;</td>
-        <td><p>EasyPost.User instance.</p>
+        <td><p>The created child <a class="xref" href="EasyPost.Models.API.User.html">User</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -175,11 +174,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_UserService_CreateChild_EasyPost_BetaFeatures_Parameters_Users_CreateChild_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.UserService.CreateChild(EasyPost.BetaFeatures.Parameters.Users.CreateChild%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L43">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L50">View Source</a>
   </span>
   <a id="EasyPost_Services_UserService_CreateChild_" data-uid="EasyPost.Services.UserService.CreateChild*"></a>
   <h4 id="EasyPost_Services_UserService_CreateChild_EasyPost_BetaFeatures_Parameters_Users_CreateChild_CancellationToken_" data-uid="EasyPost.Services.UserService.CreateChild(EasyPost.BetaFeatures.Parameters.Users.CreateChild,CancellationToken)">CreateChild(CreateChild, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a child <a class="xref" href="EasyPost.Models.API.User.html">User</a>.</p>
+  <div class="markdown level1 summary"><p>Create a child <a class="xref" href="EasyPost.Models.API.User.html">User</a> for the current account.
+<a href="https://www.easypost.com/docs/api#create-a-child-user">Related API documentation.</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -199,13 +199,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Users.CreateChild.html">CreateChild</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Users.CreateChild.html">CreateChild</a> parameter set.</p>
+        <td><p>Parameters to create the child <a class="xref" href="EasyPost.Models.API.User.html">User</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -220,7 +221,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.User.html">User</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.User.html">User</a> instance.</p>
+        <td><p>The created child <a class="xref" href="EasyPost.Models.API.User.html">User</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -230,11 +231,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_UserService_Delete_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.UserService.Delete(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L143">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L147">View Source</a>
   </span>
   <a id="EasyPost_Services_UserService_Delete_" data-uid="EasyPost.Services.UserService.Delete*"></a>
   <h4 id="EasyPost_Services_UserService_Delete_System_String_CancellationToken_" data-uid="EasyPost.Services.UserService.Delete(System.String,CancellationToken)">Delete(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Delete the user.</p>
+  <div class="markdown level1 summary"><p>Delete a child <a class="xref" href="EasyPost.Models.API.User.html">User</a>.
+<a href="https://www.easypost.com/docs/api#delete-a-child-user">Related API documentation.</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -254,12 +256,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the child <a class="xref" href="EasyPost.Models.API.User.html">User</a> to delete.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -274,7 +278,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span></td>
-        <td><p>Whether the request was successful or not.</p>
+        <td><p>None.</p>
 </td>
       </tr>
     </tbody>
@@ -284,11 +288,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_UserService_Retrieve_System_Nullable_System_String__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.UserService.Retrieve(System.Nullable%7BSystem.String%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L55">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L64">View Source</a>
   </span>
   <a id="EasyPost_Services_UserService_Retrieve_" data-uid="EasyPost.Services.UserService.Retrieve*"></a>
   <h4 id="EasyPost_Services_UserService_Retrieve_System_Nullable_System_String__CancellationToken_" data-uid="EasyPost.Services.UserService.Retrieve(System.Nullable{System.String},CancellationToken)">Retrieve(Nullable&lt;String&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieve a User from its ID. If no ID is specified, the current User will be returned.</p>
+  <div class="markdown level1 summary"><p>Retrieve a child <a class="xref" href="EasyPost.Models.API.User.html">User</a>.
+If no ID is specified, the current <a class="xref" href="EasyPost.Models.API.User.html">User</a> will be returned.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -308,13 +313,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">id</span></td>
-        <td><p>String representing a user. Starts with &quot;user_&quot;.</p>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.User.html">User</a> to retrieve.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -329,7 +335,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.User.html">User</a>&gt;</td>
-        <td><p>EasyPost.User instance.</p>
+        <td><p>The retrieved <a class="xref" href="EasyPost.Models.API.User.html">User</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -339,11 +345,11 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_UserService_RetrieveMe_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.UserService.RetrieveMe(CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L70">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L80">View Source</a>
   </span>
   <a id="EasyPost_Services_UserService_RetrieveMe_" data-uid="EasyPost.Services.UserService.RetrieveMe*"></a>
   <h4 id="EasyPost_Services_UserService_RetrieveMe_CancellationToken_" data-uid="EasyPost.Services.UserService.RetrieveMe(CancellationToken)">RetrieveMe(CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieve the current user.</p>
+  <div class="markdown level1 summary"><p>Retrieve the current <a class="xref" href="EasyPost.Models.API.User.html">User</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -363,7 +369,8 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -378,7 +385,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.User.html">User</a>&gt;</td>
-        <td><p>EasyPost.User instance.</p>
+        <td><p>The current <a class="xref" href="EasyPost.Models.API.User.html">User</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -388,11 +395,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_UserService_Update_System_String_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.UserService.Update(System.String%2CDictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L122">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L120">View Source</a>
   </span>
   <a id="EasyPost_Services_UserService_Update_" data-uid="EasyPost.Services.UserService.Update*"></a>
   <h4 id="EasyPost_Services_UserService_Update_System_String_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.UserService.Update(System.String,Dictionary{System.String,System.Object},CancellationToken)">Update(String, Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Update the User associated with the api_key specified.</p>
+  <div class="markdown level1 summary"><p>Update a <a class="xref" href="EasyPost.Models.API.User.html">User</a>.
+<a href="https://www.easypost.com/docs/api#update-a-user">Related API documentation.</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -412,29 +420,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.User.html">User</a> to update.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Optional dictionary containing parameters to create the carrier account with. Valid pairs:</p>
-<ul>
-<li>{&quot;name&quot;, string} Name on the account.</li>
-<li>{&quot;email&quot;, string} Email on the account. Can only be updated on the parent account.</li>
-<li>{&quot;phone_number&quot;, string} Phone number on the account. Can only be updated on the parent account.</li>
-<li>{&quot;recharge_amount&quot;, int} Recharge amount for the account in cents. Can only be updated on the parent account.</li>
-<li>{&quot;secondary_recharge_amount&quot;, int} Secondary recharge amount for the account in cents. Can only be updated on the
-parent account.</li>
-<li>{&quot;recharge_threshold&quot;, int} Recharge threshold for the account in cents. Can only be updated on the parent
-account.
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Data to update <a class="xref" href="EasyPost.Models.API.User.html">User</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -449,7 +448,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.User.html">User</a>&gt;</td>
-        <td><p>The updated User.</p>
+        <td><p>The updated <a class="xref" href="EasyPost.Models.API.User.html">User</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -459,11 +458,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_UserService_Update_System_String_EasyPost_BetaFeatures_Parameters_Users_Update_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.UserService.Update(System.String%2CEasyPost.BetaFeatures.Parameters.Users.Update%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L133">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L134">View Source</a>
   </span>
   <a id="EasyPost_Services_UserService_Update_" data-uid="EasyPost.Services.UserService.Update*"></a>
   <h4 id="EasyPost_Services_UserService_Update_System_String_EasyPost_BetaFeatures_Parameters_Users_Update_CancellationToken_" data-uid="EasyPost.Services.UserService.Update(System.String,EasyPost.BetaFeatures.Parameters.Users.Update,CancellationToken)">Update(String, Update, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Update this <a class="xref" href="EasyPost.Models.API.User.html">User</a>.</p>
+  <div class="markdown level1 summary"><p>Update a <a class="xref" href="EasyPost.Models.API.User.html">User</a>.
+<a href="https://www.easypost.com/docs/api#update-a-user">Related API documentation.</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -483,18 +483,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.User.html">User</a> to update.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Users.Update.html">Update</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Users.Update.html">Update</a> parameter set.</p>
+        <td><p>Data to update <a class="xref" href="EasyPost.Models.API.User.html">User</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -509,7 +511,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.User.html">User</a>&gt;</td>
-        <td><p>This updated <a class="xref" href="EasyPost.Models.API.User.html">User</a> instance.</p>
+        <td><p>The updated <a class="xref" href="EasyPost.Models.API.User.html">User</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -519,11 +521,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_UserService_UpdateBrand_System_String_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.UserService.UpdateBrand(System.String%2CDictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L88">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L91">View Source</a>
   </span>
   <a id="EasyPost_Services_UserService_UpdateBrand_" data-uid="EasyPost.Services.UserService.UpdateBrand*"></a>
   <h4 id="EasyPost_Services_UserService_UpdateBrand_System_String_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.UserService.UpdateBrand(System.String,Dictionary{System.String,System.Object},CancellationToken)">UpdateBrand(String, Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Update the User's brand.</p>
+  <div class="markdown level1 summary"><p>Update a <a class="xref" href="EasyPost.Models.API.User.html">User</a>'s <a class="xref" href="EasyPost.Models.API.Brand.html">Brand</a>.
+<a href="https://www.easypost.com/docs/api#update-a-brand">Related API documentation.</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -543,28 +546,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.User.html">User</a> to update the <a class="xref" href="EasyPost.Models.API.Brand.html">Brand</a> of.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Dictionary containing parameters to update the brand with. Valid pairs:</p>
-<ul>
-<li>{&quot;ad&quot;, string} Base64 encoded string for a png, gif, jpeg, or svg.</li>
-<li>{&quot;ad_href&quot;, string} Valid URL under 255 characters</li>
-<li>{&quot;background_color&quot;, string} Valid hex code</li>
-<li>{&quot;color&quot;, string} Valid hex code</li>
-<li>{&quot;logo&quot;, string} Base64 encoded string for a png, gif, jpeg, or svg</li>
-<li>{&quot;logo_href&quot;, string} Valid URL under 255 characters</li>
-<li>{&quot;theme&quot;, string} &quot;theme1&quot; or &quot;theme2&quot;
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Parameters to update the <a class="xref" href="EasyPost.Models.API.Brand.html">Brand</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -579,7 +574,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Brand.html">Brand</a>&gt;</td>
-        <td><p>EasyPost.Brand instance.</p>
+        <td><p>The updated <a class="xref" href="EasyPost.Models.API.Brand.html">Brand</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -589,11 +584,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_UserService_UpdateBrand_System_String_EasyPost_BetaFeatures_Parameters_Users_UpdateBrand_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.UserService.UpdateBrand(System.String%2CEasyPost.BetaFeatures.Parameters.Users.UpdateBrand%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L100">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L106">View Source</a>
   </span>
   <a id="EasyPost_Services_UserService_UpdateBrand_" data-uid="EasyPost.Services.UserService.UpdateBrand*"></a>
   <h4 id="EasyPost_Services_UserService_UpdateBrand_System_String_EasyPost_BetaFeatures_Parameters_Users_UpdateBrand_CancellationToken_" data-uid="EasyPost.Services.UserService.UpdateBrand(System.String,EasyPost.BetaFeatures.Parameters.Users.UpdateBrand,CancellationToken)">UpdateBrand(String, UpdateBrand, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Update this <a class="xref" href="EasyPost.Models.API.User.html">User</a>'s <a class="xref" href="EasyPost.Models.API.Brand.html">Brand</a>.</p>
+  <div class="markdown level1 summary"><p>Update a <a class="xref" href="EasyPost.Models.API.User.html">User</a>'s <a class="xref" href="EasyPost.Models.API.Brand.html">Brand</a>.
+<a href="https://www.easypost.com/docs/api#update-a-brand">Related API documentation.</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -613,18 +609,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.User.html">User</a> to update the <a class="xref" href="EasyPost.Models.API.Brand.html">Brand</a> of.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Users.UpdateBrand.html">UpdateBrand</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Users.UpdateBrand.html">UpdateBrand</a> parameter set.</p>
+        <td><p>Parameters to update the <a class="xref" href="EasyPost.Models.API.Brand.html">Brand</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -639,7 +637,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Brand.html">Brand</a>&gt;</td>
-        <td><p>This updated <a class="xref" href="EasyPost.Models.API.Brand.html">Brand</a> instance.</p>
+        <td><p>The updated <a class="xref" href="EasyPost.Models.API.Brand.html">Brand</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -662,7 +660,7 @@ All invalid keys will be ignored.</li>
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_UserService.md&amp;value=---%0Auid%3A%20EasyPost.Services.UserService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L13" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/UserService.cs/#L16" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

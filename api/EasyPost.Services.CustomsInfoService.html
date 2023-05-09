@@ -72,7 +72,8 @@
 
   <h1 id="EasyPost_Services_CustomsInfoService" data-uid="EasyPost.Services.CustomsInfoService" class="text-break">Class CustomsInfoService
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Class representing a set of <a href="https://www.easypost.com/docs/api#customs-infos">customs info-related functionality</a>.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -116,11 +117,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_CustomsInfoService_Create_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.CustomsInfoService.Create(Dictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/CustomsInfoService.cs/#L38">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/CustomsInfoService.cs/#L36">View Source</a>
   </span>
   <a id="EasyPost_Services_CustomsInfoService_Create_" data-uid="EasyPost.Services.CustomsInfoService.Create*"></a>
   <h4 id="EasyPost_Services_CustomsInfoService_Create_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.CustomsInfoService.Create(Dictionary{System.String,System.Object},CancellationToken)">Create(Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a CustomsInfo.</p>
+  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a>.
+<a href="https://www.easypost.com/docs/api#create-a-customsinfo">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -140,24 +142,14 @@
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Dictionary containing parameters to create the customs info with. Valid pairs:</p>
-<ul>
-<li>{&quot;customs_certify&quot;, bool}</li>
-<li>{&quot;customs_signer&quot;, string}</li>
-<li>{&quot;contents_type&quot;, string}</li>
-<li>{&quot;contents_explanation&quot;, string}</li>
-<li>{&quot;restriction_type&quot;, string}</li>
-<li>{&quot;eel_pfc&quot;, string}</li>
-<li>{&quot;custom_items&quot;, Dictionary&lt;string, object&gt;} -- Can contain the key &quot;id&quot; or all keys required to create a
-CustomsItem.
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -172,7 +164,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a>&gt;</td>
-        <td><p>EasyPost.CustomsInfo instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -186,7 +178,8 @@ All invalid keys will be ignored.</li>
   </span>
   <a id="EasyPost_Services_CustomsInfoService_Create_" data-uid="EasyPost.Services.CustomsInfoService.Create*"></a>
   <h4 id="EasyPost_Services_CustomsInfoService_Create_EasyPost_BetaFeatures_Parameters_CustomsInfo_Create_CancellationToken_" data-uid="EasyPost.Services.CustomsInfoService.Create(EasyPost.BetaFeatures.Parameters.CustomsInfo.Create,CancellationToken)">Create(Create, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a>.</p>
+  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a>.
+<a href="https://www.easypost.com/docs/api#create-a-customsinfo">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -206,13 +199,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.html">Create</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.CustomsInfo.Create.html">Create</a> parameter set.</p>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -227,7 +221,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a> instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -237,11 +231,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_CustomsInfoService_Retrieve_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.CustomsInfoService.Retrieve(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/CustomsInfoService.cs/#L62">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/CustomsInfoService.cs/#L64">View Source</a>
   </span>
   <a id="EasyPost_Services_CustomsInfoService_Retrieve_" data-uid="EasyPost.Services.CustomsInfoService.Retrieve*"></a>
   <h4 id="EasyPost_Services_CustomsInfoService_Retrieve_System_String_CancellationToken_" data-uid="EasyPost.Services.CustomsInfoService.Retrieve(System.String,CancellationToken)">Retrieve(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieve a CustomsInfo from its id.</p>
+  <div class="markdown level1 summary"><p>Retrieve a <a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-a-customsinfo">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -261,13 +256,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td><p>String representing a CustomsInfo. Starts with &quot;cstinfo_&quot;.</p>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a> to retrieve.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -282,7 +278,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a>&gt;</td>
-        <td><p>EasyPost.CustomsInfo instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.CustomsInfo.html">CustomsInfo</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -305,7 +301,7 @@ All invalid keys will be ignored.</li>
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_CustomsInfoService.md&amp;value=---%0Auid%3A%20EasyPost.Services.CustomsInfoService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/CustomsInfoService.cs/#L13" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/CustomsInfoService.cs/#L16" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

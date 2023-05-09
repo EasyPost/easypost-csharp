@@ -72,7 +72,8 @@
 
   <h1 id="EasyPost_Services_BatchService" data-uid="EasyPost.Services.BatchService" class="text-break">Class BatchService
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Class representing a set of <a href="https://www.easypost.com/docs/api#batches">batch-related functionality</a>.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -120,7 +121,8 @@
   </span>
   <a id="EasyPost_Services_BatchService_AddShipments_" data-uid="EasyPost.Services.BatchService.AddShipments*"></a>
   <h4 id="EasyPost_Services_BatchService_AddShipments_System_String_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.BatchService.AddShipments(System.String,Dictionary{System.String,System.Object},CancellationToken)">AddShipments(String, Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Add shipments to this batch.</p>
+  <div class="markdown level1 summary"><p>Add <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -140,18 +142,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> to add <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Update shipment parameters.</p>
+        <td><p>Parameters for the <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to add.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -166,7 +170,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>The updated Batch.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -176,11 +180,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_AddShipments_System_String_EasyPost_BetaFeatures_Parameters_Batches_AddShipments_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.AddShipments(System.String%2CEasyPost.BetaFeatures.Parameters.Batches.AddShipments%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L145">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L150">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_AddShipments_" data-uid="EasyPost.Services.BatchService.AddShipments*"></a>
   <h4 id="EasyPost_Services_BatchService_AddShipments_System_String_EasyPost_BetaFeatures_Parameters_Batches_AddShipments_CancellationToken_" data-uid="EasyPost.Services.BatchService.AddShipments(System.String,EasyPost.BetaFeatures.Parameters.Batches.AddShipments,CancellationToken)">AddShipments(String, AddShipments, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Add <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to this <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.</p>
+  <div class="markdown level1 summary"><p>Add <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -200,18 +205,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> to add <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Batches.AddShipments.html">AddShipments</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Batches.AddShipments.html">AddShipments</a> parameter set.</p>
+        <td><p>Parameters for the <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to add.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -226,7 +233,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>This updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> instance.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -236,11 +243,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_AddShipments_System_String_IEnumerable_System_String__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.AddShipments(System.String%2CIEnumerable%7BSystem.String%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L168">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L179">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_AddShipments_" data-uid="EasyPost.Services.BatchService.AddShipments*"></a>
   <h4 id="EasyPost_Services_BatchService_AddShipments_System_String_IEnumerable_System_String__CancellationToken_" data-uid="EasyPost.Services.BatchService.AddShipments(System.String,IEnumerable{System.String},CancellationToken)">AddShipments(String, IEnumerable&lt;String&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Add shipments to this batch.</p>
+  <div class="markdown level1 summary"><p>Add <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -260,18 +268,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> to add <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">shipmentIds</span></td>
-        <td><p>List of shipment ids to be added.</p>
+        <td><p>List of IDs of <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to add to the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -286,7 +296,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>The updated Batch.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -296,11 +306,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_AddShipments_System_String_List_EasyPost_Models_API_Shipment__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.AddShipments(System.String%2CList%7BEasyPost.Models.API.Shipment%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L156">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L164">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_AddShipments_" data-uid="EasyPost.Services.BatchService.AddShipments*"></a>
   <h4 id="EasyPost_Services_BatchService_AddShipments_System_String_List_EasyPost_Models_API_Shipment__CancellationToken_" data-uid="EasyPost.Services.BatchService.AddShipments(System.String,List{EasyPost.Models.API.Shipment},CancellationToken)">AddShipments(String, List&lt;Shipment&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Add shipments to this batch.</p>
+  <div class="markdown level1 summary"><p>Add <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -320,18 +331,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> to add <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">List</span>&lt;<a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>&gt;</td>
         <td><span class="parametername">shipmentsToAdd</span></td>
-        <td><p>List of Shipment objects to be added.</p>
+        <td><p>List of <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to add to the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -346,7 +359,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>The updated Batch.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -356,11 +369,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_All_EasyPost_BetaFeatures_Parameters_Batches_All_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.All(EasyPost.BetaFeatures.Parameters.Batches.All%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L111">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L108">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_All_" data-uid="EasyPost.Services.BatchService.All*"></a>
   <h4 id="EasyPost_Services_BatchService_All_EasyPost_BetaFeatures_Parameters_Batches_All_CancellationToken_" data-uid="EasyPost.Services.BatchService.All(EasyPost.BetaFeatures.Parameters.Batches.All,CancellationToken)">All(All, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> objects.</p>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> objects.
+<a href="https://www.easypost.com/docs/api#list-all-batches">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -386,7 +400,8 @@
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -401,7 +416,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.BatchCollection.html">BatchCollection</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.BatchCollection.html">BatchCollection</a> instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.BatchCollection.html">BatchCollection</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -411,11 +426,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.All(System.Nullable%7BDictionary%7BSystem.String%2CSystem.Object%7D%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L98">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L93">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_All_" data-uid="EasyPost.Services.BatchService.All*"></a>
   <h4 id="EasyPost_Services_BatchService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_" data-uid="EasyPost.Services.BatchService.All(System.Nullable{Dictionary{System.String,System.Object}},CancellationToken)">All(Nullable&lt;Dictionary&lt;String, Object&gt;&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>List all Batch objects.</p>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> objects.
+<a href="https://www.easypost.com/docs/api#list-all-batches">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -435,23 +451,14 @@
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Optional dictionary containing parameters to filter the list with. Valid pairs:</p>
-<ul>
-<li>{&quot;before_id&quot;, string} String representing a Batch ID. Starts with &quot;batch_&quot;. Only retrieve batches created
-before this id. Takes precedence over after_id.</li>
-<li>{&quot;after_id&quot;, string} String representing a Batch ID. Starts with &quot;batch_&quot;. Only retrieve batches created after
-this id.</li>
-<li>{&quot;start_datetime&quot;, string} ISO 8601 datetime string. Only retrieve batches created after this datetime.</li>
-<li>{&quot;end_datetime&quot;, string} ISO 8601 datetime string. Only retrieve batches created before this datetime.</li>
-<li>{&quot;page_size&quot;, int} Max size of list. Default to 20.
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Dictionary containing parameters to filter the result list with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -466,7 +473,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.BatchCollection.html">BatchCollection</a>&gt;</td>
-        <td><p>An EasyPost.BatchCollection instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.BatchCollection.html">BatchCollection</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -476,11 +483,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_Buy_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.Buy(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L179">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L193">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_Buy_" data-uid="EasyPost.Services.BatchService.Buy*"></a>
   <h4 id="EasyPost_Services_BatchService_Buy_System_String_CancellationToken_" data-uid="EasyPost.Services.BatchService.Buy(System.String,CancellationToken)">Buy(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Purchase all shipments within this batch. The Batch's state must be &quot;created&quot; before purchasing.</p>
+  <div class="markdown level1 summary"><p>Purchase all <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s within a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>. The <a class="xref" href="EasyPost.Models.API.Batch.html#EasyPost_Models_API_Batch_State">State</a> must be &quot;created&quot; before purchasing.
+<a href="https://www.easypost.com/docs/api#buy-a-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -500,12 +508,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> to purchase <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s from.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -520,7 +530,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>The updated Batch.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -530,11 +540,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_Create_EasyPost_BetaFeatures_Parameters_Batches_Create_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.Create(EasyPost.BetaFeatures.Parameters.Batches.Create%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L47">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L51">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_Create_" data-uid="EasyPost.Services.BatchService.Create*"></a>
   <h4 id="EasyPost_Services_BatchService_Create_EasyPost_BetaFeatures_Parameters_Batches_Create_CancellationToken_" data-uid="EasyPost.Services.BatchService.Create(EasyPost.BetaFeatures.Parameters.Batches.Create,CancellationToken)">Create(Create, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.</p>
+  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -554,13 +565,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Batches.Create.html">Create</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Batches.Create.html">Create</a> parameter set.</p>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -575,7 +587,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -585,11 +597,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_Create_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.Create(System.Nullable%7BDictionary%7BSystem.String%2CSystem.Object%7D%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L35">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L37">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_Create_" data-uid="EasyPost.Services.BatchService.Create*"></a>
   <h4 id="EasyPost_Services_BatchService_Create_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_" data-uid="EasyPost.Services.BatchService.Create(System.Nullable{Dictionary{System.String,System.Object}},CancellationToken)">Create(Nullable&lt;Dictionary&lt;String, Object&gt;&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a Batch.</p>
+  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -609,18 +622,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Optional dictionary containing optional parameters to create the batch with. Valid pairs:</p>
-<ul>
-<li>{&quot;shipments&quot;, List&lt;Dictionary&lt;string, object&gt;&gt;} See Shipment.Create for a list of valid keys.</li>
-<li>{&quot;reference&quot;, string}
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -635,7 +644,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>EasyPost.Batch instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -645,11 +654,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_CreateAndBuy_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.CreateAndBuy(Dictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L64">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L65">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_CreateAndBuy_" data-uid="EasyPost.Services.BatchService.CreateAndBuy*"></a>
   <h4 id="EasyPost_Services_BatchService_CreateAndBuy_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.BatchService.CreateAndBuy(Dictionary{System.String,System.Object},CancellationToken)">CreateAndBuy(Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create and buy a Batch in one step.</p>
+  <div class="markdown level1 summary"><p>Create and buy a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> in one API call.
+<a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -669,18 +679,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Dictionary containing optional parameters to create the batch with. Valid pairs:</p>
-<ul>
-<li>{&quot;shipments&quot;, List&lt;Dictionary&lt;string, object&gt;&gt;} See Shipment.Create for a list of valid keys.</li>
-<li>{&quot;reference&quot;, string}
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Dictionary containing parameters to create the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -695,7 +701,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>EasyPost.Batch instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -705,11 +711,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_CreateAndBuy_EasyPost_BetaFeatures_Parameters_Batches_Create_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.CreateAndBuy(EasyPost.BetaFeatures.Parameters.Batches.Create%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L76">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L79">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_CreateAndBuy_" data-uid="EasyPost.Services.BatchService.CreateAndBuy*"></a>
   <h4 id="EasyPost_Services_BatchService_CreateAndBuy_EasyPost_BetaFeatures_Parameters_Batches_Create_CancellationToken_" data-uid="EasyPost.Services.BatchService.CreateAndBuy(EasyPost.BetaFeatures.Parameters.Batches.Create,CancellationToken)">CreateAndBuy(Create, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create and buy a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> in one step.</p>
+  <div class="markdown level1 summary"><p>Create and buy a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> in one API call.
+<a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -735,7 +742,8 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -750,7 +758,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -760,11 +768,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_GenerateLabel_System_String_EasyPost_BetaFeatures_Parameters_Batches_GenerateLabel_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.GenerateLabel(System.String%2CEasyPost.BetaFeatures.Parameters.Batches.GenerateLabel%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L202">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L222">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_GenerateLabel_" data-uid="EasyPost.Services.BatchService.GenerateLabel*"></a>
   <h4 id="EasyPost_Services_BatchService_GenerateLabel_System_String_EasyPost_BetaFeatures_Parameters_Batches_GenerateLabel_CancellationToken_" data-uid="EasyPost.Services.BatchService.GenerateLabel(System.String,EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel,CancellationToken)">GenerateLabel(String, GenerateLabel, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Asynchronously generate a label containing all of the <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a> labels belonging to this <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.</p>
+  <div class="markdown level1 summary"><p>Asynchronously generate a <a class="xref" href="EasyPost.Models.API.PostageLabel.html">PostageLabel</a> containing all of the <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a> labels belonging to this <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#batch-labels">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -784,7 +793,8 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> to generate a label for.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Batches.GenerateLabel.html">GenerateLabel</a></td>
@@ -795,7 +805,8 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -810,7 +821,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>This updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> instance.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -820,11 +831,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_GenerateLabel_System_String_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.GenerateLabel(System.String%2CSystem.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L190">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L207">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_GenerateLabel_" data-uid="EasyPost.Services.BatchService.GenerateLabel*"></a>
   <h4 id="EasyPost_Services_BatchService_GenerateLabel_System_String_System_String_CancellationToken_" data-uid="EasyPost.Services.BatchService.GenerateLabel(System.String,System.String,CancellationToken)">GenerateLabel(String, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Asynchronously generate a label containing all of the Shipment labels belonging to this batch.</p>
+  <div class="markdown level1 summary"><p>Asynchronously generate a <a class="xref" href="EasyPost.Models.API.PostageLabel.html">PostageLabel</a> containing all of the <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a> labels belonging to a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#batch-labels">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -844,18 +856,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> to generate a label for.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">fileFormat</span></td>
-        <td><p>Format to generate the label in. Valid formats: &quot;pdf&quot;, &quot;zpl&quot; and &quot;epl2&quot;.</p>
+        <td><p>Format to generate the label in. Must be &quot;pdf&quot; or &quot;zpl&quot;.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -870,7 +884,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>The updated Batch.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -880,11 +894,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_GenerateScanForm_System_String_EasyPost_BetaFeatures_Parameters_Batches_GenerateScanForm_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.GenerateScanForm(System.String%2CEasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L225">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L251">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_GenerateScanForm_" data-uid="EasyPost.Services.BatchService.GenerateScanForm*"></a>
   <h4 id="EasyPost_Services_BatchService_GenerateScanForm_System_String_EasyPost_BetaFeatures_Parameters_Batches_GenerateScanForm_CancellationToken_" data-uid="EasyPost.Services.BatchService.GenerateScanForm(System.String,EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm,CancellationToken)">GenerateScanForm(String, GenerateScanForm, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Asynchronously generate a <a class="xref" href="EasyPost.Models.API.ScanForm.html">ScanForm</a> for this <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.</p>
+  <div class="markdown level1 summary"><p>Asynchronously generate a <a class="xref" href="EasyPost.Models.API.ScanForm.html">ScanForm</a> for this <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#manifesting-scan-form">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -904,7 +919,8 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>String representing a Batch. Starts with &quot;batch_&quot;.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Batches.GenerateScanForm.html">GenerateScanForm</a></td>
@@ -915,7 +931,8 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -940,11 +957,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_GenerateScanForm_System_String_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.GenerateScanForm(System.String%2CSystem.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L213">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L236">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_GenerateScanForm_" data-uid="EasyPost.Services.BatchService.GenerateScanForm*"></a>
   <h4 id="EasyPost_Services_BatchService_GenerateScanForm_System_String_System_String_CancellationToken_" data-uid="EasyPost.Services.BatchService.GenerateScanForm(System.String,System.String,CancellationToken)">GenerateScanForm(String, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Asynchronously generate a scan from for this batch.</p>
+  <div class="markdown level1 summary"><p>Asynchronously generate a <a class="xref" href="EasyPost.Models.API.ScanForm.html">ScanForm</a> for a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#manifesting-scan-form">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -964,7 +982,8 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>String representing a Batch. Starts with &quot;batch_&quot;.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
@@ -975,7 +994,8 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -990,7 +1010,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>The updated Batch.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -1000,11 +1020,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_RemoveShipments_System_String_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.RemoveShipments(System.String%2CDictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L236">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L265">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_RemoveShipments_" data-uid="EasyPost.Services.BatchService.RemoveShipments*"></a>
   <h4 id="EasyPost_Services_BatchService_RemoveShipments_System_String_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.BatchService.RemoveShipments(System.String,Dictionary{System.String,System.Object},CancellationToken)">RemoveShipments(String, Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Remove shipments to this batch.</p>
+  <div class="markdown level1 summary"><p>Remove <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s from a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#remove-shipments-from-a-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -1024,18 +1045,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> to remove <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s from.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Update shipment parameters.</p>
+        <td><p>Parameters for the <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to remove.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1050,7 +1073,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>The updated Batch.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -1060,11 +1083,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_RemoveShipments_System_String_EasyPost_BetaFeatures_Parameters_Batches_RemoveShipments_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.RemoveShipments(System.String%2CEasyPost.BetaFeatures.Parameters.Batches.RemoveShipments%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L247">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L279">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_RemoveShipments_" data-uid="EasyPost.Services.BatchService.RemoveShipments*"></a>
   <h4 id="EasyPost_Services_BatchService_RemoveShipments_System_String_EasyPost_BetaFeatures_Parameters_Batches_RemoveShipments_CancellationToken_" data-uid="EasyPost.Services.BatchService.RemoveShipments(System.String,EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments,CancellationToken)">RemoveShipments(String, RemoveShipments, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Remove <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s from this <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.</p>
+  <div class="markdown level1 summary"><p>Remove <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s from a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#remove-shipments-from-a-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -1084,18 +1108,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> to remove <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s from.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments.html">RemoveShipments</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Batches.RemoveShipments.html">RemoveShipments</a> parameter set.</p>
+        <td><p>Parameters for the <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to remove.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1110,7 +1136,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>This updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> instance.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -1120,11 +1146,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_RemoveShipments_System_String_IEnumerable_System_String__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.RemoveShipments(System.String%2CIEnumerable%7BSystem.String%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L270">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L308">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_RemoveShipments_" data-uid="EasyPost.Services.BatchService.RemoveShipments*"></a>
   <h4 id="EasyPost_Services_BatchService_RemoveShipments_System_String_IEnumerable_System_String__CancellationToken_" data-uid="EasyPost.Services.BatchService.RemoveShipments(System.String,IEnumerable{System.String},CancellationToken)">RemoveShipments(String, IEnumerable&lt;String&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Remove shipments to this batch.</p>
+  <div class="markdown level1 summary"><p>Remove <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s from a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#remove-shipments-from-a-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -1144,18 +1171,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> to remove <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s from.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">shipmentIds</span></td>
-        <td><p>List of shipment ids to be removed.</p>
+        <td><p>List of IDs of <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to remove from the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1170,7 +1199,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>The updated Batch.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -1180,11 +1209,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_RemoveShipments_System_String_List_EasyPost_Models_API_Shipment__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.RemoveShipments(System.String%2CList%7BEasyPost.Models.API.Shipment%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L258">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L293">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_RemoveShipments_" data-uid="EasyPost.Services.BatchService.RemoveShipments*"></a>
   <h4 id="EasyPost_Services_BatchService_RemoveShipments_System_String_List_EasyPost_Models_API_Shipment__CancellationToken_" data-uid="EasyPost.Services.BatchService.RemoveShipments(System.String,List{EasyPost.Models.API.Shipment},CancellationToken)">RemoveShipments(String, List&lt;Shipment&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Remove shipments to this batch.</p>
+  <div class="markdown level1 summary"><p>Remove <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s from a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#remove-shipments-from-a-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -1204,18 +1234,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> to remove <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s from.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">List</span>&lt;<a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>&gt;</td>
         <td><span class="parametername">shipmentsToRemove</span></td>
-        <td><p>List of Shipment objects to be removed.</p>
+        <td><p>List of <a class="xref" href="EasyPost.Models.API.Shipment.html">Shipment</a>s to remove from the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1230,7 +1262,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>The updated Batch.</p>
+        <td><p>An updated <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -1240,11 +1272,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService_Retrieve_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService.Retrieve(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L137">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L139">View Source</a>
   </span>
   <a id="EasyPost_Services_BatchService_Retrieve_" data-uid="EasyPost.Services.BatchService.Retrieve*"></a>
   <h4 id="EasyPost_Services_BatchService_Retrieve_System_String_CancellationToken_" data-uid="EasyPost.Services.BatchService.Retrieve(System.String,CancellationToken)">Retrieve(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieve a Batch from its id.</p>
+  <div class="markdown level1 summary"><p>Retrieve a <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-batch">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -1264,13 +1297,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td><p>String representing a Batch. Starts with &quot;batch_&quot;.</p>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a> to retrieve.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1285,7 +1319,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>&gt;</td>
-        <td><p>EasyPost.Batch instance.</p>
+        <td><p>The requested <a class="xref" href="EasyPost.Models.API.Batch.html">Batch</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -1308,7 +1342,7 @@ All invalid keys will be ignored.</li>
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_BatchService.md&amp;value=---%0Auid%3A%20EasyPost.Services.BatchService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L16" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/BatchService.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

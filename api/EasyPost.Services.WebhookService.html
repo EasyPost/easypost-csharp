@@ -72,7 +72,8 @@
 
   <h1 id="EasyPost_Services_WebhookService" data-uid="EasyPost.Services.WebhookService" class="text-break">Class WebhookService
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Class representing a set of <a href="https://www.easypost.com/docs/api#webhooks">webhook-related functionality</a>.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -116,11 +117,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_WebhookService_All_EasyPost_BetaFeatures_Parameters_Webhooks_All_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.WebhookService.All(EasyPost.BetaFeatures.Parameters.Webhooks.All%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L67">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L78">View Source</a>
   </span>
   <a id="EasyPost_Services_WebhookService_All_" data-uid="EasyPost.Services.WebhookService.All*"></a>
   <h4 id="EasyPost_Services_WebhookService_All_EasyPost_BetaFeatures_Parameters_Webhooks_All_CancellationToken_" data-uid="EasyPost.Services.WebhookService.All(EasyPost.BetaFeatures.Parameters.Webhooks.All,CancellationToken)">All(All, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> objects.</p>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>s.
+<a href="https://www.easypost.com/docs/api#list-a-webhooks">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -140,13 +142,14 @@
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Webhooks.All.html">All</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Webhooks.All.html">All</a> parameter set.</p>
+        <td><p>Parameters to filter the list of <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>s returned.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -161,7 +164,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>&gt;&gt;</td>
-        <td><p>List of <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> instances.</p>
+        <td><p>A list of <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> instances.</p>
 </td>
       </tr>
     </tbody>
@@ -171,11 +174,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_WebhookService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.WebhookService.All(System.Nullable%7BDictionary%7BSystem.String%2CSystem.Object%7D%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L59">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L68">View Source</a>
   </span>
   <a id="EasyPost_Services_WebhookService_All_" data-uid="EasyPost.Services.WebhookService.All*"></a>
   <h4 id="EasyPost_Services_WebhookService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_" data-uid="EasyPost.Services.WebhookService.All(System.Nullable{Dictionary{System.String,System.Object}},CancellationToken)">All(Nullable&lt;Dictionary&lt;String, Object&gt;&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get a list of scan forms.</p>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>s.
+<a href="https://www.easypost.com/docs/api#list-a-webhooks">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -195,13 +199,14 @@
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>A optional dictionary of parameters to include in the API request.</p>
+        <td><p>Parameters to filter the list of <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>s returned.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -216,7 +221,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>&gt;&gt;</td>
-        <td><p>List of EasyPost.Webhook instances.</p>
+        <td><p>A list of <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> instances.</p>
 </td>
       </tr>
     </tbody>
@@ -226,11 +231,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_WebhookService_Create_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.WebhookService.Create(Dictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L35">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L40">View Source</a>
   </span>
   <a id="EasyPost_Services_WebhookService_Create_" data-uid="EasyPost.Services.WebhookService.Create*"></a>
   <h4 id="EasyPost_Services_WebhookService_Create_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.WebhookService.Create(Dictionary{System.String,System.Object},CancellationToken)">Create(Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a Webhook.</p>
+  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>.
+<a href="https://www.easypost.com/docs/api#create-a-webhook">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -250,17 +256,14 @@
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Dictionary containing parameters to create the webhook with. Valid pairs:</p>
-<ul>
-<li>{ &quot;url&quot;, string } Url of the webhook that events will be sent to.
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -275,7 +278,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>&gt;</td>
-        <td><p>EasyPost.Webhook instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> objects.</p>
 </td>
       </tr>
     </tbody>
@@ -285,11 +288,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_WebhookService_Create_EasyPost_BetaFeatures_Parameters_Webhooks_Create_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.WebhookService.Create(EasyPost.BetaFeatures.Parameters.Webhooks.Create%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L47">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L54">View Source</a>
   </span>
   <a id="EasyPost_Services_WebhookService_Create_" data-uid="EasyPost.Services.WebhookService.Create*"></a>
   <h4 id="EasyPost_Services_WebhookService_Create_EasyPost_BetaFeatures_Parameters_Webhooks_Create_CancellationToken_" data-uid="EasyPost.Services.WebhookService.Create(EasyPost.BetaFeatures.Parameters.Webhooks.Create,CancellationToken)">Create(Create, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>.</p>
+  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>.
+<a href="https://www.easypost.com/docs/api#create-a-webhook">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -309,13 +313,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Webhooks.Create.html">Create</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Webhooks.Create.html">Create</a> parameter set.</p>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -330,7 +335,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> objects.</p>
 </td>
       </tr>
     </tbody>
@@ -340,11 +345,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_WebhookService_Delete_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.WebhookService.Delete(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L109">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L126">View Source</a>
   </span>
   <a id="EasyPost_Services_WebhookService_Delete_" data-uid="EasyPost.Services.WebhookService.Delete*"></a>
   <h4 id="EasyPost_Services_WebhookService_Delete_System_String_CancellationToken_" data-uid="EasyPost.Services.WebhookService.Delete(System.String,CancellationToken)">Delete(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Delete this webhook.</p>
+  <div class="markdown level1 summary"><p>Delete a <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>.
+<a href="https://www.easypost.com/docs/api#delete-a-webhook">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -364,12 +370,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> to delete.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -384,7 +392,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span></td>
-        <td><p>Whether the request was successful or not.</p>
+        <td><p>None.</p>
 </td>
       </tr>
     </tbody>
@@ -394,11 +402,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_WebhookService_Retrieve_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.WebhookService.Retrieve(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L75">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L88">View Source</a>
   </span>
   <a id="EasyPost_Services_WebhookService_Retrieve_" data-uid="EasyPost.Services.WebhookService.Retrieve*"></a>
   <h4 id="EasyPost_Services_WebhookService_Retrieve_System_String_CancellationToken_" data-uid="EasyPost.Services.WebhookService.Retrieve(System.String,CancellationToken)">Retrieve(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieve a Webhook from its id.</p>
+  <div class="markdown level1 summary"><p>Retrieve a <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-a-webhook">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -418,13 +427,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td><p>String representing a webhook. Starts with &quot;hook_&quot;.</p>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> to retrieve.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -439,7 +449,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>&gt;</td>
-        <td><p>EasyPost.User instance.</p>
+        <td><p>The <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -449,11 +459,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_WebhookService_Update_System_String_EasyPost_BetaFeatures_Parameters_Webhooks_Update_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.WebhookService.Update(System.String%2CEasyPost.BetaFeatures.Parameters.Webhooks.Update%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L99">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L113">View Source</a>
   </span>
   <a id="EasyPost_Services_WebhookService_Update_" data-uid="EasyPost.Services.WebhookService.Update*"></a>
   <h4 id="EasyPost_Services_WebhookService_Update_System_String_EasyPost_BetaFeatures_Parameters_Webhooks_Update_CancellationToken_" data-uid="EasyPost.Services.WebhookService.Update(System.String,EasyPost.BetaFeatures.Parameters.Webhooks.Update,CancellationToken)">Update(String, Update, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Update this <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>.</p>
+  <div class="markdown level1 summary"><p>Enable a disabled <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> or alter its secret.
+<a href="https://www.easypost.com/docs/api#update-a-webhook">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -473,18 +484,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> to update.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.Webhooks.Update.html">Update</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.Webhooks.Update.html">Update</a> parameter set.</p>
+        <td><p>Data to update <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -499,7 +512,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>&gt;</td>
-        <td><p>This updated <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> instance.</p>
+        <td><p>The updated <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -509,11 +522,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_WebhookService_Update_System_String_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.WebhookService.Update(System.String%2CSystem.Nullable%7BDictionary%7BSystem.String%2CSystem.Object%7D%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L88">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L99">View Source</a>
   </span>
   <a id="EasyPost_Services_WebhookService_Update_" data-uid="EasyPost.Services.WebhookService.Update*"></a>
   <h4 id="EasyPost_Services_WebhookService_Update_System_String_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_" data-uid="EasyPost.Services.WebhookService.Update(System.String,System.Nullable{Dictionary{System.String,System.Object}},CancellationToken)">Update(String, Nullable&lt;Dictionary&lt;String, Object&gt;&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Update a Webhook. A disabled webhook will be enabled.</p>
+  <div class="markdown level1 summary"><p>Enable a disabled <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> or alter its secret.
+<a href="https://www.easypost.com/docs/api#update-a-webhook">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -533,23 +547,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> to update.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Dictionary containing parameters to update the webhook with. Valid pairs:</p>
-<ul>
-<li>{ &quot;url&quot;, string } Url of the webhook that events will be sent to.</li>
-<li>{ &quot;webhook_secret&quot;, string } Secret token to include as a header when sending a webhook.
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Data to update <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -564,7 +575,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>&gt;</td>
-        <td><p>The updated Webhook.</p>
+        <td><p>The updated <a class="xref" href="EasyPost.Models.API.Webhook.html">Webhook</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -574,11 +585,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_WebhookService_ValidateWebhook_System_Byte___Dictionary_System_String_System_Nullable_System_Object___System_String_.md&amp;value=---%0Auid%3A%20EasyPost.Services.WebhookService.ValidateWebhook(System.Byte%5B%5D%2CDictionary%7BSystem.String%2CSystem.Nullable%7BSystem.Object%7D%7D%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L122">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L140">View Source</a>
   </span>
   <a id="EasyPost_Services_WebhookService_ValidateWebhook_" data-uid="EasyPost.Services.WebhookService.ValidateWebhook*"></a>
   <h4 id="EasyPost_Services_WebhookService_ValidateWebhook_System_Byte___Dictionary_System_String_System_Nullable_System_Object___System_String_" data-uid="EasyPost.Services.WebhookService.ValidateWebhook(System.Byte[],Dictionary{System.String,System.Nullable{System.Object}},System.String)">ValidateWebhook(Byte[], Dictionary&lt;String, Nullable&lt;Object&gt;&gt;, String)</h4>
-  <div class="markdown level1 summary"><p>Validate a received webhook's HMAC signature.</p>
+  <div class="markdown level1 summary"><p>Validate a received webhook's HMAC signature.
+<a href="https://www.easypost.com/docs/api#hmac-validation">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -665,7 +677,7 @@ All invalid keys will be ignored.</li>
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_WebhookService.md&amp;value=---%0Auid%3A%20EasyPost.Services.WebhookService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L17" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/WebhookService.cs/#L20" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

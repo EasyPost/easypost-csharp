@@ -72,7 +72,8 @@
 
   <h1 id="EasyPost_Services_ReferralCustomerService" data-uid="EasyPost.Services.ReferralCustomerService" class="text-break">Class ReferralCustomerService
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Class representing a set of <a href="https://www.easypost.com/docs/api#referral-customers">referral customer-related functionality</a>.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -116,13 +117,14 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ReferralCustomerService_AddCreditCardToUser_System_String_System_String_System_Int32_System_Int32_System_String_EasyPost_Models_API_PaymentMethod_Priority_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ReferralCustomerService.AddCreditCardToUser(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CEasyPost.Models.API.PaymentMethod.Priority%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L111">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L124">View Source</a>
   </span>
   <a id="EasyPost_Services_ReferralCustomerService_AddCreditCardToUser_" data-uid="EasyPost.Services.ReferralCustomerService.AddCreditCardToUser*"></a>
   <h4 id="EasyPost_Services_ReferralCustomerService_AddCreditCardToUser_System_String_System_String_System_Int32_System_Int32_System_String_EasyPost_Models_API_PaymentMethod_Priority_CancellationToken_" data-uid="EasyPost.Services.ReferralCustomerService.AddCreditCardToUser(System.String,System.String,System.Int32,System.Int32,System.String,EasyPost.Models.API.PaymentMethod.Priority,CancellationToken)">AddCreditCardToUser(String, String, Int32, Int32, String, PaymentMethod.Priority, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Add a credit card to a Referral Customer.
-This function should be called against a Client configured with the white label partner's API key.
-This function requires the target Referral Customer's API key as a parameter.</p>
+  <div class="markdown level1 summary"><p>Add a credit card to a <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>.
+This function should be called against a <a class="xref" href="EasyPost.Client.html">Client</a> configured with the white label partner's API key.
+This function requires the target <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>'s API key as a parameter.
+<a href="https://www.easypost.com/docs/api#add-payment-method-to-referral-user">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -142,7 +144,7 @@ This function requires the target Referral Customer's API key as a parameter.</p
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">referralApiKey</span></td>
-        <td><p>API key of the referral customer.</p>
+        <td><p>API key of the <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>.</p>
 </td>
       </tr>
       <tr>
@@ -178,7 +180,8 @@ This function requires the target Referral Customer's API key as a parameter.</p
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -193,7 +196,7 @@ This function requires the target Referral Customer's API key as a parameter.</p
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.PaymentMethod.html">PaymentMethod</a>&gt;</td>
-        <td><p>An EasyPost.PaymentMethodObject instance.</p>
+        <td><p>The <a class="xref" href="EasyPost.Models.API.PaymentMethod.html">PaymentMethod</a> that was added.</p>
 </td>
       </tr>
     </tbody>
@@ -219,11 +222,13 @@ This function requires the target Referral Customer's API key as a parameter.</p
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ReferralCustomerService_All_EasyPost_BetaFeatures_Parameters_ReferralCustomers_All_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ReferralCustomerService.All(EasyPost.BetaFeatures.Parameters.ReferralCustomers.All%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L80">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L89">View Source</a>
   </span>
   <a id="EasyPost_Services_ReferralCustomerService_All_" data-uid="EasyPost.Services.ReferralCustomerService.All*"></a>
   <h4 id="EasyPost_Services_ReferralCustomerService_All_EasyPost_BetaFeatures_Parameters_ReferralCustomers_All_CancellationToken_" data-uid="EasyPost.Services.ReferralCustomerService.All(EasyPost.BetaFeatures.Parameters.ReferralCustomers.All,CancellationToken)">All(All, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a> objects.</p>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>s.
+This function should be called against a <a class="xref" href="EasyPost.Client.html">Client</a> configured with the white label partner's API key.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-referral-customers">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -243,13 +248,14 @@ This function requires the target Referral Customer's API key as a parameter.</p
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.html">All</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.ReferralCustomers.All.html">All</a> parameter set.</p>
+        <td><p>Parameters to filter the list of <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>s.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -264,7 +270,7 @@ This function requires the target Referral Customer's API key as a parameter.</p
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.ReferralCustomerCollection.html">ReferralCustomerCollection</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.ReferralCustomerCollection.html">ReferralCustomerCollection</a> instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.ReferralCustomerCollection.html">ReferralCustomerCollection</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -274,12 +280,13 @@ This function requires the target Referral Customer's API key as a parameter.</p
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ReferralCustomerService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ReferralCustomerService.All(System.Nullable%7BDictionary%7BSystem.String%2CSystem.Object%7D%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L67">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L73">View Source</a>
   </span>
   <a id="EasyPost_Services_ReferralCustomerService_All_" data-uid="EasyPost.Services.ReferralCustomerService.All*"></a>
   <h4 id="EasyPost_Services_ReferralCustomerService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_" data-uid="EasyPost.Services.ReferralCustomerService.All(System.Nullable{Dictionary{System.String,System.Object}},CancellationToken)">All(Nullable&lt;Dictionary&lt;String, Object&gt;&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>List all Referral Customer objects.
-This function should be called against a Client configured with the white label partner's API key.</p>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>s.
+This function should be called against a <a class="xref" href="EasyPost.Client.html">Client</a> configured with the white label partner's API key.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-referral-customers">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -299,13 +306,14 @@ This function should be called against a Client configured with the white label 
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Parameters for API call.</p>
+        <td><p>Parameters to filter the list of <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>s.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -320,7 +328,7 @@ This function should be called against a Client configured with the white label 
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.ReferralCustomerCollection.html">ReferralCustomerCollection</a>&gt;</td>
-        <td><p>An EasyPost.ReferralCustomerCollection instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.ReferralCustomerCollection.html">ReferralCustomerCollection</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -330,12 +338,13 @@ This function should be called against a Client configured with the white label 
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ReferralCustomerService_CreateReferral_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ReferralCustomerService.CreateReferral(Dictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L41">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L43">View Source</a>
   </span>
   <a id="EasyPost_Services_ReferralCustomerService_CreateReferral_" data-uid="EasyPost.Services.ReferralCustomerService.CreateReferral*"></a>
   <h4 id="EasyPost_Services_ReferralCustomerService_CreateReferral_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.ReferralCustomerService.CreateReferral(Dictionary{System.String,System.Object},CancellationToken)">CreateReferral(Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a referral customer for the account associated with the api_key specified.
-This function should be called against a Client configured with the white label partner's API key.</p>
+  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a> for the account associated with the API key used.
+This function should be called against a <a class="xref" href="EasyPost.Client.html">Client</a> configured with the white label partner's API key.
+<a href="https://www.easypost.com/docs/api#create-a-referral-customer">Referral Customer API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -355,19 +364,14 @@ This function should be called against a Client configured with the white label 
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Optional dictionary containing parameters to create the referral customer with. Valid pairs:</p>
-<ul>
-<li>{&quot;name&quot;, string} Name on the account.</li>
-<li>{&quot;email&quot;, string} Email on the account.</li>
-<li>{&quot;phone&quot;, string} Phone number on the account.
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -382,7 +386,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>&gt;</td>
-        <td><p>EasyPost.User instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -392,12 +396,13 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ReferralCustomerService_CreateReferral_EasyPost_BetaFeatures_Parameters_ReferralCustomers_CreateReferralCustomer_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ReferralCustomerService.CreateReferral(EasyPost.BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L54">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L58">View Source</a>
   </span>
   <a id="EasyPost_Services_ReferralCustomerService_CreateReferral_" data-uid="EasyPost.Services.ReferralCustomerService.CreateReferral*"></a>
   <h4 id="EasyPost_Services_ReferralCustomerService_CreateReferral_EasyPost_BetaFeatures_Parameters_ReferralCustomers_CreateReferralCustomer_CancellationToken_" data-uid="EasyPost.Services.ReferralCustomerService.CreateReferral(EasyPost.BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer,CancellationToken)">CreateReferral(CreateReferralCustomer, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>.
-This function should be called against a <a class="xref" href="EasyPost.Client.html">Client</a> configured with the white label partner's API key.</p>
+  <div class="markdown level1 summary"><p>Create a <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a> for the account associated with the API key used.
+This function should be called against a <a class="xref" href="EasyPost.Client.html">Client</a> configured with the white label partner's API key.
+<a href="https://www.easypost.com/docs/api#create-a-referral-customer">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -417,13 +422,14 @@ This function should be called against a <a class="xref" href="EasyPost.Client.h
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer.html">CreateReferralCustomer</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer.html">CreateReferralCustomer</a> parameter set.</p>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -438,7 +444,7 @@ This function should be called against a <a class="xref" href="EasyPost.Client.h
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a> instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -448,11 +454,12 @@ This function should be called against a <a class="xref" href="EasyPost.Client.h
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ReferralCustomerService_GetNextPage_EasyPost_Models_API_ReferralCustomerCollection_System_Nullable_System_Int32__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ReferralCustomerService.GetNextPage(EasyPost.Models.API.ReferralCustomerCollection%2CSystem.Nullable%7BSystem.Int32%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L95">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L106">View Source</a>
   </span>
   <a id="EasyPost_Services_ReferralCustomerService_GetNextPage_" data-uid="EasyPost.Services.ReferralCustomerService.GetNextPage*"></a>
   <h4 id="EasyPost_Services_ReferralCustomerService_GetNextPage_EasyPost_Models_API_ReferralCustomerCollection_System_Nullable_System_Int32__CancellationToken_" data-uid="EasyPost.Services.ReferralCustomerService.GetNextPage(EasyPost.Models.API.ReferralCustomerCollection,System.Nullable{System.Int32},CancellationToken)">GetNextPage(ReferralCustomerCollection, Nullable&lt;Int32&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get the next page of a paginated <a class="xref" href="EasyPost.Models.API.ReferralCustomerCollection.html">ReferralCustomerCollection</a>.</p>
+  <div class="markdown level1 summary"><p>Get the next page of a paginated <a class="xref" href="EasyPost.Models.API.ReferralCustomerCollection.html">ReferralCustomerCollection</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-referral-customers">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -484,7 +491,8 @@ This function should be called against a <a class="xref" href="EasyPost.Client.h
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -525,12 +533,13 @@ This function should be called against a <a class="xref" href="EasyPost.Client.h
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ReferralCustomerService_UpdateReferralEmail_System_String_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ReferralCustomerService.UpdateReferralEmail(System.String%2CSystem.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L141">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L156">View Source</a>
   </span>
   <a id="EasyPost_Services_ReferralCustomerService_UpdateReferralEmail_" data-uid="EasyPost.Services.ReferralCustomerService.UpdateReferralEmail*"></a>
   <h4 id="EasyPost_Services_ReferralCustomerService_UpdateReferralEmail_System_String_System_String_CancellationToken_" data-uid="EasyPost.Services.ReferralCustomerService.UpdateReferralEmail(System.String,System.String,CancellationToken)">UpdateReferralEmail(String, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Update a Referral Customer object email.
-This function should be called against a Client configured with the white label partner's API key.</p>
+  <div class="markdown level1 summary"><p>Update a <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>'s email.
+This function should be called against a <a class="xref" href="EasyPost.Client.html">Client</a> configured with the white label partner's API key.
+<a href="https://www.easypost.com/docs/api#update-a-referral-customer">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -550,19 +559,20 @@ This function should be called against a Client configured with the white label 
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">referralId</span></td>
-        <td><p>ID of the referral customer to update.</p>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a> to update.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">email</span></td>
-        <td><p>Email of the referral customer to update.</p>
+        <td><p>The new email address for the <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -577,7 +587,7 @@ This function should be called against a Client configured with the white label 
     <tbody>
       <tr>
         <td><span class="xref">Task</span></td>
-        <td><p>A Task to update a referral's email.</p>
+        <td><p>None.</p>
 </td>
       </tr>
     </tbody>
@@ -600,7 +610,7 @@ This function should be called against a Client configured with the white label 
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ReferralCustomerService.md&amp;value=---%0Auid%3A%20EasyPost.Services.ReferralCustomerService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L20" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L22" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

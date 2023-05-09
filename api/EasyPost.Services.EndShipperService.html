@@ -72,7 +72,8 @@
 
   <h1 id="EasyPost_Services_EndShipperService" data-uid="EasyPost.Services.EndShipperService" class="text-break">Class EndShipperService
 </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Class representing a set of <a href="https://www.easypost.com/docs/api#endshipper">EndShipper-related functionality</a>.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -116,11 +117,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_EndShipperService_All_EasyPost_BetaFeatures_Parameters_EndShippers_All_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.EndShipperService.All(EasyPost.BetaFeatures.Parameters.EndShippers.All%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L90">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L79">View Source</a>
   </span>
   <a id="EasyPost_Services_EndShipperService_All_" data-uid="EasyPost.Services.EndShipperService.All*"></a>
   <h4 id="EasyPost_Services_EndShipperService_All_EasyPost_BetaFeatures_Parameters_EndShippers_All_CancellationToken_" data-uid="EasyPost.Services.EndShipperService.All(EasyPost.BetaFeatures.Parameters.EndShippers.All,CancellationToken)">All(All, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a> objects.</p>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>s.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-endshippers">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -146,7 +148,8 @@
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -161,7 +164,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.EndShipperCollection.html">EndShipperCollection</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.EndShipperCollection.html">EndShipperCollection</a> instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.EndShipperCollection.html">EndShipperCollection</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -171,11 +174,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_EndShipperService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.EndShipperService.All(System.Nullable%7BDictionary%7BSystem.String%2CSystem.Object%7D%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L77">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L64">View Source</a>
   </span>
   <a id="EasyPost_Services_EndShipperService_All_" data-uid="EasyPost.Services.EndShipperService.All*"></a>
   <h4 id="EasyPost_Services_EndShipperService_All_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_" data-uid="EasyPost.Services.EndShipperService.All(System.Nullable{Dictionary{System.String,System.Object}},CancellationToken)">All(Nullable&lt;Dictionary&lt;String, Object&gt;&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>List all EndShipper objects.</p>
+  <div class="markdown level1 summary"><p>List all <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>s.
+<a href="https://www.easypost.com/docs/api#retrieve-a-list-of-endshippers">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -195,24 +199,14 @@
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Optional dictionary containing parameters to filter the list with. Valid pairs:</p>
-<ul>
-<li>{&quot;before_id&quot;, string} String representing an EndShipper ID. Starts with &quot;es_&quot;. Only retrieve EndShippers created
-before this id. Takes precedence over after_id.</li>
-<li>{&quot;after_id&quot;, string} String representing an EndShipper ID. Starts with &quot;es&quot;. Only retrieve EndShippers created
-after
-this id.</li>
-<li>{&quot;start_datetime&quot;, string} ISO 8601 datetime string. Only retrieve EndShippers created after this datetime.</li>
-<li>{&quot;end_datetime&quot;, string} ISO 8601 datetime string. Only retrieve EndShippers created before this datetime.</li>
-<li>{&quot;page_size&quot;, int} Max size of list. Default to 20.
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>A dictionary containing parameters to filter the list with. See <a class="xref" href="EasyPost.BetaFeatures.Parameters.EndShippers.All.html">All</a> for valid keys.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -227,7 +221,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.EndShipperCollection.html">EndShipperCollection</a>&gt;</td>
-        <td><p>An EasyPost.EndShipperCollection instance.</p>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.EndShipperCollection.html">EndShipperCollection</a> instance.</p>
 </td>
       </tr>
     </tbody>
@@ -237,11 +231,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_EndShipperService_Create_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.EndShipperService.Create(Dictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L42">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L36">View Source</a>
   </span>
   <a id="EasyPost_Services_EndShipperService_Create_" data-uid="EasyPost.Services.EndShipperService.Create*"></a>
   <h4 id="EasyPost_Services_EndShipperService_Create_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.EndShipperService.Create(Dictionary{System.String,System.Object},CancellationToken)">Create(Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create an EndShipper.</p>
+  <div class="markdown level1 summary"><p>Create an <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>.
+<a href="https://www.easypost.com/docs/api#create-an-endshipper">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -261,28 +256,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>Optional dictionary containing parameters to create the EndShipper with. Valid pairs:</p>
-<ul>
-<li>{&quot;name&quot;, string}</li>
-<li>{&quot;company&quot;, string}</li>
-<li>{&quot;street1&quot;, string}</li>
-<li>{&quot;street2&quot;, string}</li>
-<li>{&quot;city&quot;, string}</li>
-<li>{&quot;state&quot;, string}</li>
-<li>{&quot;zip&quot;, string}</li>
-<li>{&quot;country&quot;, string}</li>
-<li>{&quot;phone&quot;, string}</li>
-<li>{&quot;email&quot;, string}</li>
-<li>{&quot;verifications&quot;, List&lt;string&gt;} Possible items are &quot;delivery&quot; and &quot;zip4&quot;.</li>
-<li>{&quot;strict_verifications&quot;, List&lt;string&gt;} Possible items are &quot;delivery&quot; and &quot;zip4&quot;.
-All invalid keys will be ignored.</li>
-</ul>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -297,7 +278,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>&gt;</td>
-        <td><p>EasyPost.EndShipper instance.</p>
+        <td><p>An <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -307,11 +288,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_EndShipperService_Create_EasyPost_BetaFeatures_Parameters_EndShippers_Create_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.EndShipperService.Create(EasyPost.BetaFeatures.Parameters.EndShippers.Create%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L54">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L50">View Source</a>
   </span>
   <a id="EasyPost_Services_EndShipperService_Create_" data-uid="EasyPost.Services.EndShipperService.Create*"></a>
   <h4 id="EasyPost_Services_EndShipperService_Create_EasyPost_BetaFeatures_Parameters_EndShippers_Create_CancellationToken_" data-uid="EasyPost.Services.EndShipperService.Create(EasyPost.BetaFeatures.Parameters.EndShippers.Create,CancellationToken)">Create(Create, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create an <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>.</p>
+  <div class="markdown level1 summary"><p>Create an <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>.
+<a href="https://www.easypost.com/docs/api#create-an-endshipper">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -331,13 +313,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.EndShippers.Create.html">Create</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.EndShippers.Create.html">Create</a> parameter set.</p>
+        <td><p>Data to use to create the <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -352,7 +335,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>&gt;</td>
-        <td><p><a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a> instance.</p>
+        <td><p>An <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -362,11 +345,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_EndShipperService_Retrieve_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.EndShipperService.Retrieve(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L105">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L96">View Source</a>
   </span>
   <a id="EasyPost_Services_EndShipperService_Retrieve_" data-uid="EasyPost.Services.EndShipperService.Retrieve*"></a>
   <h4 id="EasyPost_Services_EndShipperService_Retrieve_System_String_CancellationToken_" data-uid="EasyPost.Services.EndShipperService.Retrieve(System.String,CancellationToken)">Retrieve(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieve an EndShipper from its id.</p>
+  <div class="markdown level1 summary"><p>Retrieve an <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>.
+<a href="https://www.easypost.com/docs/api#retrieve-an-endshipper">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -386,13 +370,14 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td><p>String representing an EndShipper. Starts with &quot;es_&quot;.</p>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a> to retrieve.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -407,7 +392,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>&gt;</td>
-        <td><p>EasyPost.EndShipper instance.</p>
+        <td><p>The <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -417,11 +402,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_EndShipperService_Update_System_String_Dictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.EndShipperService.Update(System.String%2CDictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L113">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L107">View Source</a>
   </span>
   <a id="EasyPost_Services_EndShipperService_Update_" data-uid="EasyPost.Services.EndShipperService.Update*"></a>
   <h4 id="EasyPost_Services_EndShipperService_Update_System_String_Dictionary_System_String_System_Object__CancellationToken_" data-uid="EasyPost.Services.EndShipperService.Update(System.String,Dictionary{System.String,System.Object},CancellationToken)">Update(String, Dictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Update this EndShipper. Must pass in all properties (new and existing).</p>
+  <div class="markdown level1 summary"><p>Update an <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>.
+<a href="https://www.easypost.com/docs/api#update-an-endshipper">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -441,18 +427,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>ID of the <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a> to update.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td><p>See EndShipper.Create for more details.</p>
+        <td><p>Data to update <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -467,7 +455,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>&gt;</td>
-        <td><p>The updated EndShipper.</p>
+        <td><p>The updated <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -477,11 +465,12 @@ All invalid keys will be ignored.</li>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_EndShipperService_Update_System_String_EasyPost_BetaFeatures_Parameters_EndShippers_Update_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.EndShipperService.Update(System.String%2CEasyPost.BetaFeatures.Parameters.EndShippers.Update%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L126">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L123">View Source</a>
   </span>
   <a id="EasyPost_Services_EndShipperService_Update_" data-uid="EasyPost.Services.EndShipperService.Update*"></a>
   <h4 id="EasyPost_Services_EndShipperService_Update_System_String_EasyPost_BetaFeatures_Parameters_EndShippers_Update_CancellationToken_" data-uid="EasyPost.Services.EndShipperService.Update(System.String,EasyPost.BetaFeatures.Parameters.EndShippers.Update,CancellationToken)">Update(String, Update, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Update this <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>.</p>
+  <div class="markdown level1 summary"><p>Update an <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>.
+<a href="https://www.easypost.com/docs/api#update-an-endshipper">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -501,18 +490,20 @@ All invalid keys will be ignored.</li>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>ID of the <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a> to update.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="EasyPost.BetaFeatures.Parameters.EndShippers.Update.html">Update</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.BetaFeatures.Parameters.EndShippers.Update.html">Update</a> parameter set.</p>
+        <td><p>Data to update <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a> with.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -527,7 +518,7 @@ All invalid keys will be ignored.</li>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>&gt;</td>
-        <td><p>This updated <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a> instance.</p>
+        <td><p>The updated <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -550,7 +541,7 @@ All invalid keys will be ignored.</li>
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_EndShipperService.md&amp;value=---%0Auid%3A%20EasyPost.Services.EndShipperService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L13" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/EndShipperService.cs/#L16" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
