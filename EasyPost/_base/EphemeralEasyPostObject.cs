@@ -28,7 +28,7 @@ namespace EasyPost._base
 
         /// <inheritdoc />
         public override bool Equals(object? obj) => GetType() == obj?.GetType() && GetHashCode() == ((EphemeralEasyPostObject)obj).GetHashCode();
-        
+
         /// <inheritdoc />
 #pragma warning disable CA1307 // Specify StringComparison
         public override int GetHashCode() => AsJson().GetHashCode() ^ GetType().GetHashCode();
