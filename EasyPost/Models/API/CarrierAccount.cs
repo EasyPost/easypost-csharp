@@ -25,7 +25,7 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Only the reference and description are possible to update if set to true.
         /// </summary>
-        [JsonProperty("credentials")]
+        [JsonProperty("clone")]
         public bool? Clone { get; set; }
 
         /// <summary>
