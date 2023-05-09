@@ -4,7 +4,7 @@ using EasyPost.Models.API;
 using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
 
-namespace EasyPost.Tests.CalculationTests
+namespace EasyPost.Tests.UtilitiesTests
 {
     public class RatesTests
     {
