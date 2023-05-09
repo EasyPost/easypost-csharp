@@ -8,13 +8,13 @@ namespace EasyPost.BetaFeatures.Parameters;
 /// </summary>
 public abstract class BaseAllParameters : BaseParameters
 {
-    public static TParameters FromDictionary<TParameters>(Dictionary<string, object>? dictionary)
-        where TParameters : BaseAllParameters
+    /// <summary>
+    ///     Construct a new <see cref="BaseAllParameters"/>-based instance from a <see cref="Dictionary{TKey,TValue}"/>.
+    /// </summary>
+    /// <param name="dictionary">The dictionary to parse.</param>
+    /// <returns>A BaseAllParameters-subtype object.</returns>
+    public static BaseAllParameters FromDictionary(Dictionary<string, object>? dictionary)
     {
-        TParameters parameters = (TParameters)Activator.CreateInstance(typeof(TParameters))!;
-        return dictionary == null ? parameters : parameters.FromDictionaryProtected<TParameters>(dictionary);
+        throw new NotImplementedException();
     }
-
-    protected abstract TParameters FromDictionaryProtected<TParameters>(Dictionary<string, object> dictionary)
-        where TParameters : BaseAllParameters;
 }

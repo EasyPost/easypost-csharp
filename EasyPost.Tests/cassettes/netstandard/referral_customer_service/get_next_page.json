@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 837,
-    "RecordedAt": "2023-04-28T16:47:56.735704-06:00",
+    "Duration": 850,
+    "RecordedAt": "2023-05-08T11:38:48.038054-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -29,15 +29,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "197cbb04644c4d1ce184ad9e001332c2",
+        "x-ep-request-uuid": "bdc89cad645933a7f45093290020be5c",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
         "ETag": "W/\"87d4f1c9b4c89d23ec5e4ddf34cfae8e\"",
-        "x-runtime": "0.334559",
-        "x-node": "bigweb4nuq",
-        "x-version-label": "easypost-202304282215-fd20a8757c-master",
+        "x-runtime": "0.315861",
+        "x-node": "bigweb2nuq",
+        "x-version-label": "easypost-202305051845-6708fb4da1-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq a29e4ad05c,extlb2nuq a29e4ad05c",
+        "x-proxied": "intlb1nuq a29e4ad05c,extlb1nuq a29e4ad05c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -47,8 +47,8 @@
     }
   },
   {
-    "Duration": 264,
-    "RecordedAt": "2023-04-28T16:47:57.017704-06:00",
+    "Duration": 405,
+    "RecordedAt": "2023-05-08T11:38:48.467029-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -58,7 +58,7 @@
         "Authorization": "<REDACTED>",
         "User-Agent": "<REDACTED>"
       },
-      "Uri": "https://api.easypost.com/v2/referral_customers?before_id=user_488e391395f4416196a31965fecac409&page_size=20"
+      "Uri": "https://api.easypost.com/v2/referral_customers?before_id=user_488e391395f4416196a31965fecac409&page_size=5"
     },
     "Response": {
       "Body": "{\"has_more\":false,\"referral_customers\":[{\"id\":\"user_4a22730cdc844ce1bc2efbed999c869f\",\"object\":\"User\",\"parent_id\":null,\"name\":\"test test\",\"phone_number\":\"<REDACTED>\",\"verified\":true,\"created_at\":\"2022-04-29T19:35:33Z\",\"default_carbon_offset\":false,\"has_elevate_access\":false,\"balance\":\"0.00000\",\"price_per_shipment\":\"0.00000\",\"recharge_amount\":null,\"secondary_recharge_amount\":null,\"recharge_threshold\":null,\"has_billing_method\":null,\"cc_fee_rate\":\"0.0325\",\"default_insurance_amount\":\"50.00\",\"insurance_fee_rate\":\"0.005\",\"insurance_fee_minimum\":\"0.25\",\"email\":\"<REDACTED>\",\"children\":[]},{\"id\":\"user_fa93cc16bcc24c078ee057ce82f38eed\",\"object\":\"User\",\"parent_id\":null,\"name\":\"test test\",\"phone_number\":\"<REDACTED>\",\"verified\":true,\"created_at\":\"2022-04-28T22:34:38Z\",\"default_carbon_offset\":false,\"has_elevate_access\":false,\"balance\":\"0.00000\",\"price_per_shipment\":\"0.00000\",\"recharge_amount\":null,\"secondary_recharge_amount\":null,\"recharge_threshold\":null,\"has_billing_method\":null,\"cc_fee_rate\":\"0.0325\",\"default_insurance_amount\":\"50.00\",\"insurance_fee_rate\":\"0.005\",\"insurance_fee_minimum\":\"0.25\",\"email\":\"<REDACTED>\",\"children\":[]},{\"id\":\"user_35cb81fb8af1454dabf1f6afa7330634\",\"object\":\"User\",\"parent_id\":null,\"name\":\"Firstname Lastname\",\"phone_number\":\"<REDACTED>\",\"verified\":true,\"created_at\":\"2022-04-27T20:20:52Z\",\"default_carbon_offset\":false,\"has_elevate_access\":false,\"balance\":\"0.00000\",\"price_per_shipment\":\"0.00000\",\"recharge_amount\":\"100.00\",\"secondary_recharge_amount\":\"100.00\",\"recharge_threshold\":\"0.00\",\"has_billing_method\":true,\"cc_fee_rate\":\"0.0325\",\"default_insurance_amount\":\"50.00\",\"insurance_fee_rate\":\"0.005\",\"insurance_fee_minimum\":\"0.25\",\"email\":\"<REDACTED>\",\"children\":[]},{\"id\":\"user_634b6daa05744bfaa205058f06864363\",\"object\":\"User\",\"parent_id\":null,\"name\":\"Firstname Lastname\",\"phone_number\":\"<REDACTED>\",\"verified\":true,\"created_at\":\"2022-04-26T15:50:28Z\",\"default_carbon_offset\":false,\"has_elevate_access\":false,\"balance\":\"0.00000\",\"price_per_shipment\":\"0.00000\",\"recharge_amount\":null,\"secondary_recharge_amount\":null,\"recharge_threshold\":null,\"has_billing_method\":null,\"cc_fee_rate\":\"0.0325\",\"default_insurance_amount\":\"50.00\",\"insurance_fee_rate\":\"0.005\",\"insurance_fee_minimum\":\"0.25\",\"email\":\"<REDACTED>\",\"children\":[]}]}",
@@ -76,15 +76,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "197cbb04644c4d1ce184ad9e001332d7",
+        "x-ep-request-uuid": "bdc89cad645933a8f45093290020be74",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
         "ETag": "W/\"96f6bfd4815c1b4cb441150d0a156828\"",
-        "x-runtime": "0.223215",
-        "x-node": "bigweb1nuq",
-        "x-version-label": "easypost-202304282215-fd20a8757c-master",
+        "x-runtime": "0.366026",
+        "x-node": "bigweb4nuq",
+        "x-version-label": "easypost-202305051845-6708fb4da1-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq a29e4ad05c,extlb2nuq a29e4ad05c",
+        "x-proxied": "intlb1nuq a29e4ad05c,extlb1nuq a29e4ad05c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

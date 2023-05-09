@@ -1,11 +1,14 @@
 namespace EasyPost.Exceptions.General
 {
+    /// <summary>
+    ///     Represents an error that occurs due to an invalid object.
+    /// </summary>
     public class InvalidObjectError : EasyPostError
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="InvalidObjectError" /> class.
         /// </summary>
-        /// <param name="message">Error message.</param>
+        /// <param name="message">The error message to print to console.</param>
         internal InvalidObjectError(string message)
             : base(message)
         {

@@ -99,7 +99,7 @@ namespace EasyPost.Services
         public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             BatchCollection collection = await RequestAsync<BatchCollection>(Method.Get, "batches", cancellationToken, parameters);
-            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Batches.All>(parameters);
+            collection.Filters = BetaFeatures.Parameters.Batches.All.FromDictionary(parameters);
             return collection;
         }
 

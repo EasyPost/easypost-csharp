@@ -12,19 +12,34 @@ namespace EasyPost._base
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The API mode used when interacting with this object. Can be <c>test</c> or <c>production</c>.
+        /// </summary>
         [JsonProperty("mode")]
         public string? Mode { get; internal set; }
+
+        /// <summary>
+        ///     The type of EasyPost data structure this object represents.
+        /// </summary>
         [JsonProperty("object")]
         internal string? Object { get; set; }
 
         #endregion
 
+        /// <inheritdoc />
         public override bool Equals(object? obj) => GetType() == obj?.GetType() && GetHashCode() == ((EphemeralEasyPostObject)obj).GetHashCode();
 
-#pragma warning disable CA1307
+#pragma warning disable CA1307 // Specify StringComparison
+        /// <inheritdoc />
         public override int GetHashCode() => AsJson().GetHashCode() ^ GetType().GetHashCode();
-#pragma warning restore CA1307
+#pragma warning restore CA1307 // Specify StringComparison
 
+        /// <summary>
+        ///     Compare two objects for equality.
+        /// </summary>
+        /// <param name="one">The first object in the comparison.</param>
+        /// <param name="two">The second object in the comparison.</param>
+        /// <returns><c>true</c> if the two objects are equal; otherwise, false.</returns>
         public static bool operator ==(EphemeralEasyPostObject? one, object? two)
         {
             if (one is null && two is null)
@@ -42,6 +57,12 @@ namespace EasyPost._base
             return one.Equals(two);
         }
 
+        /// <summary>
+        ///     Compare two objects for equality.
+        /// </summary>
+        /// <param name="one">The first object in the comparison.</param>
+        /// <param name="two">The second object in the comparison.</param>
+        /// <returns><c>true</c> if the two objects are not equal; otherwise, false.</returns>
         public static bool operator !=(EphemeralEasyPostObject? one, object? two) => !(one == two);
 
         /// <summary>
@@ -51,6 +72,9 @@ namespace EasyPost._base
         protected string AsJson() => JsonSerialization.ConvertObjectToJson(this);
     }
 
+    /// <summary>
+    ///     Interface for any object that represents a data structure from the EasyPost API.
+    /// </summary>
     public interface IEasyPostObject
     {
     }

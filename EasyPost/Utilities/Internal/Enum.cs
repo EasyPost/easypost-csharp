@@ -7,6 +7,9 @@ using System.Reflection;
 namespace EasyPost.Utilities.Internal
 {
 #pragma warning disable SA1649
+    /// <summary>
+    ///     Interface for all custom enums.
+    /// </summary>
     public interface IEnum
 #pragma warning restore SA1649
     {
@@ -19,14 +22,24 @@ namespace EasyPost.Utilities.Internal
     public abstract class Enum : IComparable, IEnum
 #pragma warning restore CA1716
     {
+        /// <summary>
+        ///     An internal ID associated with this <see cref="Enum"/>, used for comparison and equality.
+        /// </summary>
         private int Id { get; }
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Enum" /> class.
+        /// </summary>
+        /// <param name="id">The internal ID to associated with this enum.</param>
         protected Enum(int id) => Id = id;
 
+        /// <inheritdoc cref="Int32.CompareTo(int)"/>
         public int CompareTo(object? obj) => Id.CompareTo(((Enum)obj!).Id);
 
+        /// <inheritdoc cref="Int32.ToString()"/>
         public override string ToString() => Id.ToString(CultureInfo.InvariantCulture);
 
+        /// <inheritdoc cref="System.Object.Equals(object?)"/>
         public override bool Equals(object? obj)
         {
             try
@@ -50,11 +63,19 @@ namespace EasyPost.Utilities.Internal
         }
 
 #pragma warning disable CA1307
+        /// <inheritdoc cref="System.Object.GetHashCode()"/>
         public override int GetHashCode() => new Dictionary<string, int> { { GetType().ToString(), Id } }.GetHashCode();
 #pragma warning restore CA1307
 
+        /// <inheritdoc cref="Equals(object)"/>
         private bool Equals(Enum? other) => Id == other?.Id;
 
+        /// <summary>
+        ///     Compare two objects for equality.
+        /// </summary>
+        /// <param name="one">The first object in the comparison.</param>
+        /// <param name="two">The second object in the comparison.</param>
+        /// <returns><c>true</c> if the two objects are equal; otherwise, false.</returns>
         public static bool operator ==(Enum? one, Enum? two)
         {
             if (one is null && two is null)
@@ -72,6 +93,12 @@ namespace EasyPost.Utilities.Internal
             return one.Equals(two);
         }
 
+        /// <summary>
+        ///     Compare two objects for inequality.
+        /// </summary>
+        /// <param name="one">The first object in the comparison.</param>
+        /// <param name="two">The second object in the comparison.</param>
+        /// <returns><c>true</c> if the two objects are not equal; otherwise, false.</returns>
         public static bool operator !=(Enum? one, Enum? two) => !(one == two);
 
         public static IEnumerable<T> GetAll<T>()
@@ -83,27 +110,63 @@ namespace EasyPost.Utilities.Internal
                 .Select(f => f.GetValue(null))
                 .Cast<T>();
 
+        /// <summary>
+        ///     Compare two objects.
+        /// </summary>
+        /// <param name="left">The first object in the comparison.</param>
+        /// <param name="right">The second object in the comparison.</param>
+        /// <returns><c>true</c> if the left object is less than the right object, <c>false</c> otherwise.</returns>
         public static bool operator <(Enum left, Enum right) => left.CompareTo(right) < 0;
 
+        /// <summary>
+        ///     Compare two objects.
+        /// </summary>
+        /// <param name="left">The first object in the comparison.</param>
+        /// <param name="right">The second object in the comparison.</param>
+        /// <returns><c>true</c> if the left object is less than or equal to the right object, <c>false</c> otherwise.</returns>
         public static bool operator <=(Enum left, Enum right) => left.CompareTo(right) <= 0;
 
+        /// <summary>
+        ///     Compare two objects.
+        /// </summary>
+        /// <param name="left">The first object in the comparison.</param>
+        /// <param name="right">The second object in the comparison.</param>
+        /// <returns><c>true</c> if the left object is greater than the right object, <c>false</c> otherwise.</returns>
         public static bool operator >(Enum left, Enum right) => left.CompareTo(right) > 0;
 
+        /// <summary>
+        ///     Compare two objects.
+        /// </summary>
+        /// <param name="left">The first object in the comparison.</param>
+        /// <param name="right">The second object in the comparison.</param>
+        /// <returns><c>true</c> if the left object is greater than or equal to the right object, <c>false</c> otherwise.</returns>
         public static bool operator >=(Enum left, Enum right) => left.CompareTo(right) >= 0;
     }
 
     /// <summary>
-    ///     An enum that stores a value internally.
+    ///     An <see cref="Enum"/> that stores a value internally.
     /// </summary>
     public abstract class ValueEnum : Enum
     {
+        /// <summary>
+        ///     The internal value associated with this <see cref="Enum"/>.
+        /// </summary>
         internal object Value { get; }
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ValueEnum" /> class.
+        /// </summary>
+        /// <param name="id">The internal ID to associated with this enum.</param>
+        /// <param name="value">The internal value to associated with this enum.</param>
         protected ValueEnum(int id, object value)
             : base(id) => Value = value;
 
+        /// <summary>
+        ///     A string representation of the <see cref="Value"/> of this <see cref="Enum"/>, or an empty string if a string representation is not available.
+        /// </summary>
         public override string ToString() => Value.ToString() ?? string.Empty;
 
+        /// <inheritdoc cref="Enum.Equals(object)"/>
         public override bool Equals(object? obj)
         {
             if (obj is null)
@@ -121,6 +184,7 @@ namespace EasyPost.Utilities.Internal
         }
 
 #pragma warning disable CA1307
+        /// <inheritdoc cref="Enum.GetHashCode()"/>
         public override int GetHashCode() => base.GetHashCode();
 #pragma warning restore CA1307
     }

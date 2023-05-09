@@ -6,7 +6,7 @@ using EasyPost.Services.Beta;
 namespace EasyPost
 {
     /// <summary>
-    ///     Access beta EasyPost API endpoints.
+    ///     Access beta EasyPost API functionality.
     /// </summary>
     public class BetaClient : EasyPostClient
     {
@@ -23,16 +23,27 @@ namespace EasyPost
          * When you are migrating a service from beta to general, you should remove/change the overrideApiVersion parameter from each function that is being migrated.
          */
 
+        // TODO: Add doc links
+
+        /// <summary>
+        ///     Access beta Carrier Metadata-related functionality.
+        /// </summary>
         public CarrierMetadataService CarrierMetadata { get; }
 
+        /// <summary>
+        ///     Access beta Rate-related functionality.
+        /// </summary>
         public RateService Rate { get; }
 
+        /// <summary>
+        ///     Access beta Referral Customer-related functionality.
+        /// </summary>
         public ReferralCustomerService ReferralCustomer { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BetaClient"/> class.
         /// </summary>
-        /// <param name="configuration">Configuration for this client.</param>
+        /// <param name="configuration"><see cref="ClientConfiguration"/> for this client.</param>
         internal BetaClient(ClientConfiguration configuration)
             : base(configuration)
         {
@@ -41,6 +52,7 @@ namespace EasyPost
             ReferralCustomer = new ReferralCustomerService(this);
         }
 
+        /// <inheritdoc cref="EasyPostClient.Dispose(bool)"/>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

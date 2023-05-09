@@ -5,22 +5,34 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.BetaFeatures.Parameters.Shipments
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Models.API.Shipment.Buy(Buy)"/> API calls.
+    ///     <a href="https://www.easypost.com/docs/api#buy-a-shipment">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.Buy(string, Buy, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class Buy : BaseParameters
     {
         #region Request Parameters
 
+        /// <summary>
+        ///     The ID of the <see cref="Rate"/> to purchase a <see cref="Models.API.Shipment"/> with.
+        /// </summary>
         [TopLevelRequestParameter(Necessity.Required, "rate", "id")]
         public string? RateId { get; set; }
 
+        /// <summary>
+        ///     A value to insure the <see cref="Models.API.Shipment"/> for. Optional.
+        /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "insurance")]
         public string? InsuranceValue { get; set; }
 
+        /// <summary>
+        ///     Whether or not to purchase the <see cref="Models.API.Shipment"/> with a carbon offset. Defaults to <c>false</c>.
+        /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "carbon_offset")]
         public bool? CarbonOffset { get; set; }
 
+        /// <summary>
+        ///     The ID of the <see cref="Models.API.EndShipper"/> to buy the <see cref="Models.API.Shipment"/> with. Optional.
+        /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "end_shipper")]
         public string? EndShipperId { get; set; }
 

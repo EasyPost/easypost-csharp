@@ -13,9 +13,15 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost._base
 #pragma warning restore SA1300
 {
+    /// <summary>
+    ///     The base class for all EasyPost clients (i.e. <see cref="Client"/> and <see cref="BetaClient"/>).
+    /// </summary>
     public abstract class EasyPostClient : IDisposable
     {
-        private readonly ClientConfiguration _configuration; // configuration is immutable by end-user once set
+        /// <summary>
+        ///     The configuration for this client. This is immutable once set and is not accessible to end-users.
+        /// </summary>
+        private readonly ClientConfiguration _configuration;
 
         /// <summary>
         ///     Gets the API key used by this client.
@@ -37,19 +43,20 @@ namespace EasyPost._base
         public TimeSpan Timeout => _configuration.Timeout; // public read-only property so users can audit the connect timeout used by the client
 
         /// <summary>
-        ///     Gets the custom HTTP client used by this client.
+        ///     Gets the custom <see cref="System.Net.Http.HttpClient"/> used by this client.
         /// </summary>
         public HttpClient? CustomHttpClient => _configuration.CustomHttpClient; // public read-only property so users can audit the custom HTTP client they set to be used by the client
 
         /// <summary>
-        ///     Gets the prepared HTTP client used by this client for all API calls.
+        ///     Gets the prepared <see cref="System.Net.Http.HttpClient"/> used by this client for all API calls.
+        ///     This is the actual client used to make requests, is inaccessible to end-users, and will never be null.
         /// </summary>
-        private HttpClient HttpClient => _configuration.PreparedHttpClient!; // this is the actual, prepared HttpClient used to make requests, will never be null
+        private HttpClient HttpClient => _configuration.PreparedHttpClient!;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="EasyPostClient"/> class.
         /// </summary>
-        /// <param name="configuration">Configuration for this client.</param>
+        /// <param name="configuration"><see cref="ClientConfiguration"/> to use for this client.</param>
         protected EasyPostClient(ClientConfiguration configuration)
         {
             _configuration = configuration;
@@ -61,7 +68,8 @@ namespace EasyPost._base
         /// <summary>
         ///     Execute an HTTP request.
         /// </summary>
-        /// <param name="request">Request to execute.</param>
+        /// <param name="request"><see cref="HttpRequestMessage"/> to execute.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An <see cref="HttpResponseMessage"/> object.</returns>
         internal virtual async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request, CancellationToken cancellationToken)
         {
@@ -85,11 +93,12 @@ namespace EasyPost._base
         /// </summary>
         /// <param name="method">HTTP method to use for the request.</param>
         /// <param name="endpoint">EasyPost API endpoint to use for the request.</param>
-        /// <param name="apiVersion">API version to use for the request.</param>
+        /// <param name="apiVersion"><see cref="ApiVersion"/> to use for the request.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <param name="parameters">Optional parameters to use for the request.</param>
-        /// <param name="rootElement">Optional root element for the JSON to begin deserialization at.</param>
-        /// <typeparam name="T">Type of object to deserialize response data into. Must be subclass of EasyPostObject.</typeparam>
-        /// <returns>An instance of a T type object.</returns>
+        /// <param name="rootElement">Optional root element for the resultant JSON to begin deserialization at.</param>
+        /// <typeparam name="T">Type of object to deserialize response data into. Must be subclass of <see cref="EasyPostObject"/>.</typeparam>
+        /// <returns>An instance of a T-type object.</returns>
         internal async Task<T> RequestAsync<T>(Method method, string endpoint, ApiVersion apiVersion, CancellationToken cancellationToken, Dictionary<string, object>? parameters = null, string? rootElement = null)
             where T : class
         {
@@ -134,11 +143,12 @@ namespace EasyPost._base
         /// <summary>
         ///     Execute a request against the EasyPost API.
         /// </summary>
-        /// /// <param name="method">HTTP method to use for the request.</param>
+        /// <param name="method">HTTP <see cref="Method"/> to use for the request.</param>
         /// <param name="endpoint">EasyPost API endpoint to use for the request.</param>
-        /// <param name="apiVersion">API version to use for the request.</param>
+        /// <param name="apiVersion"><see cref="ApiVersion"/> to use for the request.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <param name="parameters">Optional parameters to use for the request.</param>
-        /// <returns>Whether request was successful.</returns>
+        /// <returns><c>true</c> if the request was successful, <c>false</c> otherwise.</returns>
         // ReSharper disable once UnusedMethodReturnValue.Global
         internal async Task<bool> RequestAsync(Method method, string endpoint, ApiVersion apiVersion, CancellationToken cancellationToken, Dictionary<string, object>? parameters = null)
         {
@@ -159,20 +169,37 @@ namespace EasyPost._base
             return errorRaised;
         }
 
+        /// <summary>
+        ///     Compare this <see cref="EasyPostClient"/> to another object for equality.
+        /// </summary>
+        /// <param name="obj">An object to compare this client against.</param>
+        /// <returns><c>true</c> if the two objects are equal, <c>false</c> otherwise.</returns>
         public override bool Equals(object? obj) => obj is EasyPostClient client && _configuration.Equals(client._configuration);
 
-#pragma warning disable CA1307
+        /// <summary>
+        ///     Get the hash code for this <see cref="EasyPostClient"/>.
+        /// </summary>
+        /// <returns>The hash code for this client.</returns>
         public override int GetHashCode() => _configuration.GetHashCode();
-#pragma warning restore CA1307
 
+        /// <summary>
+        ///     Whether this object has been disposed or not.
+        /// </summary>
         private bool _isDisposed;
 
+        /// <summary>
+        ///     Dispose of this object.
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        ///     Dispose of this object.
+        /// </summary>
+        /// <param name="disposing">Whether this object is being disposed.</param>
         protected virtual void Dispose(bool disposing)
         {
             if (_isDisposed) return;
@@ -188,6 +215,9 @@ namespace EasyPost._base
             _isDisposed = true;
         }
 
+        /// <summary>
+        ///     Finalizer for this <see cref="EasyPostClient"/>.
+        /// </summary>
         ~EasyPostClient()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.

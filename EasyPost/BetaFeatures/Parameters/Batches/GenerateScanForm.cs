@@ -4,13 +4,16 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.BetaFeatures.Parameters.Batches
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Models.API.Batch.GenerateScanForm(GenerateScanForm)"/> API calls.
+    ///     <a href="https://www.easypost.com/docs/api#manifesting-scan-form">Parameters</a> for <see cref="EasyPost.Services.BatchService.GenerateScanForm(string, GenerateScanForm, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class GenerateScanForm : BaseParameters
     {
         #region Request Parameters
 
+        /// <summary>
+        ///     File format for the scan form.
+        /// </summary>
         [TopLevelRequestParameter(Necessity.Required, "file_format")]
         public string? FileFormat { get; set; }
 

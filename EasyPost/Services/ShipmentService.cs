@@ -83,7 +83,7 @@ namespace EasyPost.Services
         public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             ShipmentCollection collection = await RequestAsync<ShipmentCollection>(Method.Get, "shipments", cancellationToken, parameters);
-            collection.Filters = BaseAllParameters.FromDictionary<BetaFeatures.Parameters.Shipments.All>(parameters);
+            collection.Filters = BetaFeatures.Parameters.Shipments.All.FromDictionary(parameters);
             return collection;
         }
 

@@ -25,10 +25,13 @@ namespace EasyPost.BetaFeatures.Parameters
          * No need to set a default value for Optional parameters, will be `null` if not set, which is what the internal validator expects
          */
 
+        /// <summary>
+        ///     The internal dictionary of parameter key-value pairs.
+        /// </summary>
         private Dictionary<string, object?> _parameterDictionary;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseParameters" /> class for a new set of request parameters.
+        ///     Initializes a new instance of the <see cref="BaseParameters"/> class for a new set of request parameters.
         /// </summary>
         protected BaseParameters() => _parameterDictionary = new Dictionary<string, object?>();
 

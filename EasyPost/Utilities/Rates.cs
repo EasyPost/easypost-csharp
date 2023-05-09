@@ -5,30 +5,33 @@ using EasyPost.Exceptions.General;
 
 namespace EasyPost.Utilities
 {
+    /// <summary>
+    ///     Utility methods to filter rate lists.
+    /// </summary>
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Beta.Rates
     public static class Rates
     {
         /// <summary>
-        ///     Get the lowest rate from this list.
+        ///     Get the lowest <see cref="Models.API.Rate"/> from this list.
         /// </summary>
-        /// <param name="rates">List of rates to parse.</param>
+        /// <param name="rates">List of <see cref="Models.API.Rate"/>s to parse.</param>
         /// <param name="includeCarriers">Carriers to include in the filter.</param>
         /// <param name="includeServices">Services to include in the filter.</param>
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
-        /// <returns>Lowest rate matching the filter.</returns>
-        public static EasyPost.Models.API.Rate GetLowest(this IEnumerable<EasyPost.Models.API.Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => GetLowestRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+        /// <returns>Lowest <see cref="Models.API.Rate"/> matching the filter.</returns>
+        public static Models.API.Rate GetLowest(this IEnumerable<Models.API.Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => GetLowestRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
 
         /// <summary>
-        ///     Get the lowest rate from a list of <see cref="EasyPost.Models.API.Rate"/>s.
+        ///     Get the lowest <see cref="Models.API.Rate"/> from a list of <see cref="EasyPost.Models.API.Rate"/>s.
         /// </summary>
-        /// <param name="rates">List of rates to parse.</param>
+        /// <param name="rates">List of <see cref="Models.API.Rate"/>s to parse.</param>
         /// <param name="includeCarriers">Carriers to include in the filter.</param>
         /// <param name="includeServices">Services to include in the filter.</param>
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
-        /// <returns>Lowest rate matching the filter.</returns>
-        public static EasyPost.Models.API.Rate GetLowestRate(IEnumerable<EasyPost.Models.API.Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
+        /// <returns>Lowest <see cref="Models.API.Rate"/> matching the filter.</returns>
+        public static Models.API.Rate GetLowestRate(IEnumerable<Models.API.Rate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
             includeCarriers ??= new List<string>();
             excludeCarriers ??= new List<string>();
@@ -40,9 +43,9 @@ namespace EasyPost.Utilities
             includeServices = includeServices.Select(s => s.ToLowerInvariant()).ToList();
             excludeServices = excludeServices.Select(s => s.ToLowerInvariant()).ToList();
 
-            EasyPost.Models.API.Rate? lowestRate = null;
+            Models.API.Rate? lowestRate = null;
 
-            foreach (EasyPost.Models.API.Rate rate in rates)
+            foreach (Models.API.Rate rate in rates)
             {
                 if (includeCarriers.Count > 0 || excludeCarriers.Count > 0)
                 {
@@ -117,26 +120,26 @@ namespace EasyPost.Utilities
         }
 
         /// <summary>
-        ///     Get the lowest rate from this list.
+        ///     Get the lowest <see cref="Models.API.Beta.StatelessRate"/> from this list.
         /// </summary>
-        /// <param name="rates">List of rates to parse.</param>
+        /// <param name="rates">List of <see cref="Models.API.Beta.StatelessRate"/>s to parse.</param>
         /// <param name="includeCarriers">Carriers to include in the filter.</param>
         /// <param name="includeServices">Services to include in the filter.</param>
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
-        /// <returns>Lowest rate matching the filter.</returns>
-        public static EasyPost.Models.API.Beta.StatelessRate GetLowest(this IEnumerable<EasyPost.Models.API.Beta.StatelessRate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => GetLowestStatelessRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
+        /// <returns>Lowest <see cref="Models.API.Beta.StatelessRate"/> matching the filter.</returns>
+        public static Models.API.Beta.StatelessRate GetLowest(this IEnumerable<Models.API.Beta.StatelessRate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => GetLowestStatelessRate(rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
 
         /// <summary>
-        ///     Get the lowest rate from a list of <see cref="EasyPost.Models.API.Beta.StatelessRate"/>s.
+        ///     Get the lowest <see cref="Models.API.Beta.StatelessRate"/> from a list of <see cref="EasyPost.Models.API.Beta.StatelessRate"/>s.
         /// </summary>
-        /// <param name="rates">List of rates to parse.</param>
+        /// <param name="rates">List of <see cref="Models.API.Beta.StatelessRate"/>s to parse.</param>
         /// <param name="includeCarriers">Carriers to include in the filter.</param>
         /// <param name="includeServices">Services to include in the filter.</param>
         /// <param name="excludeCarriers">Carriers to exclude in the filter.</param>
         /// <param name="excludeServices">Services to exclude in the filter.</param>
-        /// <returns>Lowest rate matching the filter.</returns>
-        public static EasyPost.Models.API.Beta.StatelessRate GetLowestStatelessRate(IEnumerable<EasyPost.Models.API.Beta.StatelessRate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
+        /// <returns>Lowest <see cref="Models.API.Beta.StatelessRate"/> matching the filter.</returns>
+        public static Models.API.Beta.StatelessRate GetLowestStatelessRate(IEnumerable<Models.API.Beta.StatelessRate> rates, List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null)
         {
             includeCarriers ??= new List<string>();
             excludeCarriers ??= new List<string>();
@@ -148,9 +151,9 @@ namespace EasyPost.Utilities
             includeServices = includeServices.Select(s => s.ToLowerInvariant()).ToList();
             excludeServices = excludeServices.Select(s => s.ToLowerInvariant()).ToList();
 
-            EasyPost.Models.API.Beta.StatelessRate? lowestRate = null;
+            Models.API.Beta.StatelessRate? lowestRate = null;
 
-            foreach (EasyPost.Models.API.Beta.StatelessRate rate in rates)
+            foreach (Models.API.Beta.StatelessRate rate in rates)
             {
                 if (includeCarriers.Count > 0 || excludeCarriers.Count > 0)
                 {
@@ -225,21 +228,21 @@ namespace EasyPost.Utilities
         }
 
         /// <summary>
-        ///     Get the lowest SmartRate from this list.
+        ///     Get the lowest <see cref="Models.API.SmartRate"/> from this list.
         /// </summary>
-        /// <param name="smartRates">List of smartRates to parse.</param>
+        /// <param name="smartRates">List of <see cref="Models.API.SmartRate"/>s to parse.</param>
         /// <param name="deliveryDays">Delivery days to include in the filter.</param>
         /// <param name="deliveryAccuracy">Delivery accuracy to include in the filter.</param>
-        /// <returns>Lowest rate matching the filter.</returns>
-        public static EasyPost.Models.API.SmartRate GetLowest(this IEnumerable<EasyPost.Models.API.SmartRate> smartRates, int deliveryDays, EasyPost.Models.API.SmartRateAccuracy deliveryAccuracy) => GetLowestSmartRate(smartRates, deliveryDays, deliveryAccuracy);
+        /// <returns>Lowest <see cref="Models.API.SmartRate"/>s matching the filter.</returns>
+        public static Models.API.SmartRate GetLowest(this IEnumerable<Models.API.SmartRate> smartRates, int deliveryDays, Models.API.SmartRateAccuracy deliveryAccuracy) => GetLowestSmartRate(smartRates, deliveryDays, deliveryAccuracy);
 
         /// <summary>
-        ///     Get the lowest SmartRate from a list of <see cref="EasyPost.Models.API.SmartRate"/>s.
+        ///     Get the lowest <see cref="Models.API.SmartRate"/> from a list of <see cref="EasyPost.Models.API.SmartRate"/>s.
         /// </summary>
-        /// <param name="smartRates">List of SmartRates to parse.</param>
+        /// <param name="smartRates">List of <see cref="Models.API.SmartRate"/> to parse.</param>
         /// <param name="deliveryDays">Delivery days to include in the filter.</param>
         /// <param name="deliveryAccuracy">Delivery accuracy to include in the filter.</param>
-        /// <returns>Lowest rate matching the filter.</returns>
+        /// <returns>Lowest <see cref="Models.API.SmartRate"/> matching the filter.</returns>
         public static Models.API.SmartRate GetLowestSmartRate(IEnumerable<Models.API.SmartRate> smartRates, int deliveryDays, Models.API.SmartRateAccuracy deliveryAccuracy)
         {
             Models.API.SmartRate? lowestSmartRate = null;

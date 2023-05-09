@@ -6,7 +6,7 @@ using EasyPost.Models.API.Beta;
 namespace EasyPost.BetaFeatures.Parameters.Beta.CarrierMetadata
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.Beta.CarrierMetadataService.RetrieveCarrierMetadata(Retrieve)"/> API calls.
+    ///     <a href="https://www.easypost.com/docs/api#retrieve-carrier-metadata">Parameters</a> for <see cref="EasyPost.Services.Beta.CarrierMetadataService.RetrieveCarrierMetadata(Retrieve, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public sealed class Retrieve : BaseParameters
@@ -19,7 +19,7 @@ namespace EasyPost.BetaFeatures.Parameters.Beta.CarrierMetadata
         public List<string>? Carriers { get; set; }
 
         /// <summary>
-        ///     A list of metadata types to retrieve.
+        ///     A list of <see cref="CarrierMetadataType"/>s to retrieve.
         /// </summary>
         public List<CarrierMetadataType>? Types { get; set; }
 
