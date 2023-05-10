@@ -52,7 +52,7 @@ namespace EasyPost.Tests._Utilities.Assertions
                     passed = true;
                     break; // if we get here, we passed, so we can stop iterating
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // we don't care about the exception, we just want to keep iterating
                 }

@@ -90,7 +90,7 @@ namespace EasyPost.Tests.ServicesTests
                 // If the first ID in the next page is the same as the first ID in the current page, then we didn't get the next page
                 Assert.NotEqual(collection.Pickups[0].Id, nextPageCollection.Pickups[0].Id);
             }
-            catch (EndOfPaginationError e) // There's no second page, that's not a failure
+            catch (EndOfPaginationError) // There's no second page, that's not a failure
             {
                 Assert.True(true);
             }
