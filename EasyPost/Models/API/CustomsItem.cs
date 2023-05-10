@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.CustomsItem
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#customs-item-object">EasyPost customs item</a>.
     /// </summary>
@@ -72,3 +73,4 @@ namespace EasyPost.Models.API
         }
     }
 }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.CustomsItem

@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.ReferralCustomer
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#referral-customers">EasyPost referral customer</a>.
     /// </summary>
@@ -19,6 +20,7 @@ namespace EasyPost.Models.API
         {
         }
     }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.ReferralCustomer
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="ReferralCustomer"/>s.

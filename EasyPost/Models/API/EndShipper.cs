@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.EndShipper
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#endshipper-object">EasyPost EndShipper</a>.
     /// </summary>
@@ -96,6 +97,7 @@ namespace EasyPost.Models.API
         {
         }
     }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.EndShipper
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="EndShipper"/>s.

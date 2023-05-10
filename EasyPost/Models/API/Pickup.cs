@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Pickup
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#pickup-object">EasyPost pickup</a>.
     /// </summary>
@@ -70,6 +71,7 @@ namespace EasyPost.Models.API
         /// <returns>Lowest EasyPost.PickupRate object instance.</returns>
         public PickupRate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => (PickupRate)Utilities.Rates.GetLowestRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
     }
+#pragma warning restore CA1724 // Naming conflicts with Parameters.Pickup
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="Pickup"/> objects.

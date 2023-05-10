@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Tracker
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#tracker-object">EasyPost tracker</a>.
     /// </summary>
@@ -50,6 +51,7 @@ namespace EasyPost.Models.API
         {
         }
     }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Tracker
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="Tracker"/>s.

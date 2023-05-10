@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Address
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#address-object">EasyPost address</a>.
     /// </summary>
@@ -126,6 +127,7 @@ namespace EasyPost.Models.API
         {
         }
     }
+#pragma warning restore CA1724 // Naming conflicts with Parameters.Address
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="Address"/>es.

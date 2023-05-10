@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Shipment
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#shipment-object">EasyPost shipment</a>.
     /// </summary>
@@ -108,6 +109,7 @@ namespace EasyPost.Models.API
             return Utilities.Rates.GetLowestRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
     }
+#pragma warning restore CA1724 // Naming conflicts with Parameters.Shipment
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="Shipment"/>s.

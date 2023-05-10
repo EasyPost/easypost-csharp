@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Report
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#report-object">EasyPost report</a>.
     /// </summary>
@@ -38,6 +39,7 @@ namespace EasyPost.Models.API
         {
         }
     }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Report
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="Report"/>s.
