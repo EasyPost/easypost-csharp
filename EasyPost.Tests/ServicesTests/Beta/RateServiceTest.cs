@@ -45,7 +45,7 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             List<StatelessRate> rates = await Client.Beta.Rate.RetrieveStatelessRates(shipmentData);
 
-            StatelessRate lowestStatelessRate = Utilities.Rates.GetLowestStatelessRate(rates);
+            StatelessRate lowestStatelessRate = Rates.GetLowestStatelessRate(rates);
 
             Assert.Equal("First", lowestStatelessRate.Service);
         }

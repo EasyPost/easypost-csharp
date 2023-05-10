@@ -1,6 +1,4 @@
 using System;
-using System.Net.Http;
-using EasyPost.Http;
 using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
 

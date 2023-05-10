@@ -19,7 +19,7 @@ namespace EasyPost.Tests.UtilitiesTests
 
             List<int> actual = new();
 
-            values.Each((index, value) => actual.Add(value + 1));
+            values.Each((_, value) => actual.Add(value + 1));
 
             Assert.Equal(expected, actual);
         }

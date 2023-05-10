@@ -88,9 +88,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Webhook webhook = await Client.Webhook.Create(webhookParameters);
             CleanUpAfterTest(webhook.Id);
 
-            Parameters.Webhook.Update updateParameters = new()
-            {
-            };
+            Parameters.Webhook.Update updateParameters = new();
             // Sending an empty payload will toggle the active status of the webhook silently.
             webhook = await Client.Webhook.Update(webhook.Id, updateParameters);
 

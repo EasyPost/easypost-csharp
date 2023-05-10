@@ -101,7 +101,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Address toAddress = await Client.Address.Create(toAddressParameters);
             Parcel parcel = await Client.Parcel.Create(parcelParameters);
 
-            Dictionary<string, object> shipmentData = new Dictionary<string, object>
+            Dictionary<string, object> shipmentData = new()
             {
                 { "from_address", new Dictionary<string, object> { { "id", fromAddress.Id } } },
                 { "to_address", new Dictionary<string, object> { { "id", toAddress.Id } } },
@@ -109,8 +109,6 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             };
 
             Parameters.Shipment.Create parameters = Fixtures.Parameters.Shipments.Create(shipmentData);
-
-            Dictionary<string, object> dictionary = parameters.ToDictionary();
 
             Shipment shipment = await Client.Shipment.Create(parameters);
 
