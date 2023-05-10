@@ -12,6 +12,7 @@
 - [IMPROVED] Logic for calculating exception type to throw based on API error
   - EasyPost API failures can trigger a variety of specific exceptions, all inheriting from `ApiError`.
   - Non-EasyPost API/HTTP failures will trigger an `ExternalApiError` exception.
+- [Parameter sets](#v450-2023-03-22) are out of beta. Users can use access them via `EasyPost.Parameters` namespace.
 
 
 ## v4.6.0 (2023-04-18)
