@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
+using EasyPost.Parameters;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API

@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
+using EasyPost.Parameters;
+using EasyPost.Parameters.Refunds;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -66,7 +67,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Refund> entries, int? pageSize = null)
         {
-            BetaFeatures.Parameters.Refunds.All parameters = Filters != null ? (BetaFeatures.Parameters.Refunds.All)Filters : new BetaFeatures.Parameters.Refunds.All();
+            All parameters = Filters != null ? (All)Filters : new All();
 
             parameters.BeforeId = entries.Last().Id;
 

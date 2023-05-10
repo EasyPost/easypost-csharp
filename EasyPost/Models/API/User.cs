@@ -1,5 +1,5 @@
-﻿using EasyPost.BetaFeatures.Parameters;
-using EasyPost.Models.Shared;
+﻿using EasyPost.Models.Shared;
+using EasyPost.Parameters;
 
 namespace EasyPost.Models.API
 {

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
+using EasyPost.Parameters;
+using EasyPost.Parameters.Insurance;
 using EasyPost.Utilities.Internal.Attributes;
 using Newtonsoft.Json;
 
@@ -132,7 +133,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Insurance> entries, int? pageSize = null)
         {
-            BetaFeatures.Parameters.Insurance.All parameters = Filters != null ? (BetaFeatures.Parameters.Insurance.All)Filters : new BetaFeatures.Parameters.Insurance.All();
+            All parameters = Filters != null ? (All)Filters : new All();
 
             parameters.BeforeId = entries.Last().Id;
 

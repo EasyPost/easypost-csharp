@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
+using EasyPost.Parameters.Trackers;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -86,8 +87,8 @@ namespace EasyPost.Tests.ServicesTests
 
             TrackerCollection trackerCollection = await Client.Tracker.All(filters);
 
-            Assert.Equal(filters["tracking_code"], ((BetaFeatures.Parameters.Trackers.All)trackerCollection.Filters!).TrackingCode);
-            Assert.Equal(filters["carrier"], ((BetaFeatures.Parameters.Trackers.All)trackerCollection.Filters!).Carrier);
+            Assert.Equal(filters["tracking_code"], ((All)trackerCollection.Filters!).TrackingCode);
+            Assert.Equal(filters["carrier"], ((All)trackerCollection.Filters!).Carrier);
         }
 
         [Fact]
@@ -142,10 +143,10 @@ namespace EasyPost.Tests.ServicesTests
             };
             trackerCollection.Trackers.Add(fakeTracker);
 
-            BetaFeatures.Parameters.Trackers.All filtersForNextPage = trackerCollection.BuildNextPageParameters<BetaFeatures.Parameters.Trackers.All>(trackerCollection.Trackers);
+            All filtersForNextPage = trackerCollection.BuildNextPageParameters<All>(trackerCollection.Trackers);
 
-            Assert.Equal(((BetaFeatures.Parameters.Trackers.All)trackerCollection.Filters!).TrackingCode, filtersForNextPage.TrackingCode);
-            Assert.Equal(((BetaFeatures.Parameters.Trackers.All)trackerCollection.Filters!).Carrier, filtersForNextPage.Carrier);
+            Assert.Equal(((All)trackerCollection.Filters!).TrackingCode, filtersForNextPage.TrackingCode);
+            Assert.Equal(((All)trackerCollection.Filters!).Carrier, filtersForNextPage.Carrier);
         }
 
         [Fact]

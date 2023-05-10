@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Parameters.Batches;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -49,7 +50,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="Batch"/> object.</returns>
         [CrudOperations.Create]
-        public async Task<Batch> Create(BetaFeatures.Parameters.Batches.Create parameters, CancellationToken cancellationToken = default)
+        public async Task<Batch> Create(Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<Batch>(Method.Post, "batches", cancellationToken, parameters.ToDictionary());
@@ -73,11 +74,11 @@ namespace EasyPost.Services
         ///     Create and buy a <see cref="Batch"/> in one API call.
         ///     <a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.Create"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Batches.Create"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="Batch"/> object.</returns>
         [CrudOperations.Create]
-        public async Task<Batch> CreateAndBuy(BetaFeatures.Parameters.Batches.Create parameters, CancellationToken cancellationToken = default)
+        public async Task<Batch> CreateAndBuy(Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<Batch>(Method.Post, "batches/create_and_buy", cancellationToken, parameters.ToDictionary());
@@ -94,7 +95,7 @@ namespace EasyPost.Services
         public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             BatchCollection collection = await RequestAsync<BatchCollection>(Method.Get, "batches", cancellationToken, parameters);
-            collection.Filters = BetaFeatures.Parameters.Batches.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Batches.All.FromDictionary(parameters);
             return collection;
         }
 
@@ -102,11 +103,11 @@ namespace EasyPost.Services
         ///     List all <see cref="Batch"/> objects.
         ///     <a href="https://www.easypost.com/docs/api#list-all-batches">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.All"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Batches.All"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="BatchCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<BatchCollection> All(BetaFeatures.Parameters.Batches.All parameters, CancellationToken cancellationToken = default)
+        public async Task<BatchCollection> All(All parameters, CancellationToken cancellationToken = default)
         {
             BatchCollection collection = await RequestAsync<BatchCollection>(Method.Get, "batches", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
@@ -148,7 +149,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
-        public async Task<Batch> AddShipments(string id, BetaFeatures.Parameters.Batches.AddShipments parameters, CancellationToken cancellationToken = default)
+        public async Task<Batch> AddShipments(string id, AddShipments parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Batch>(Method.Post, $"batches/{id}/add_shipments", cancellationToken, parameters.ToDictionary());
         }
@@ -216,11 +217,11 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#batch-labels">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to generate a label for.</param>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.GenerateLabel"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Batches.GenerateLabel"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
-        public async Task<Batch> GenerateLabel(string id, BetaFeatures.Parameters.Batches.GenerateLabel parameters, CancellationToken cancellationToken = default)
+        public async Task<Batch> GenerateLabel(string id, GenerateLabel parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Batch>(Method.Post, $"batches/{id}/label", cancellationToken, parameters.ToDictionary());
         }
@@ -245,11 +246,11 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#manifesting-scan-form">Related API documentation</a>.
         /// </summary>
         /// <param name="id">String representing a Batch. Starts with "batch_".</param>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Batches.GenerateScanForm"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Batches.GenerateScanForm"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>This updated <see cref="Batch"/> instance.</returns>
         [CrudOperations.Update]
-        public async Task<Batch> GenerateScanForm(string id, BetaFeatures.Parameters.Batches.GenerateScanForm parameters, CancellationToken cancellationToken = default)
+        public async Task<Batch> GenerateScanForm(string id, GenerateScanForm parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Batch>(Method.Post, $"batches/{id}/scan_form", cancellationToken, parameters.ToDictionary());
         }
@@ -277,7 +278,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
-        public async Task<Batch> RemoveShipments(string id, BetaFeatures.Parameters.Batches.RemoveShipments parameters, CancellationToken cancellationToken = default)
+        public async Task<Batch> RemoveShipments(string id, RemoveShipments parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Batch>(Method.Post, $"batches/{id}/remove_shipments", cancellationToken, parameters.ToDictionary());
         }

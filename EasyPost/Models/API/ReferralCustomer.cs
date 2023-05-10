@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
+using EasyPost.Parameters;
+using EasyPost.Parameters.ReferralCustomers;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -50,7 +51,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<ReferralCustomer> entries, int? pageSize = null)
         {
-            BetaFeatures.Parameters.ReferralCustomers.All parameters = Filters != null ? (BetaFeatures.Parameters.ReferralCustomers.All)Filters : new BetaFeatures.Parameters.ReferralCustomers.All();
+            All parameters = Filters != null ? (All)Filters : new All();
 
             parameters.BeforeId = entries.Last().Id;
 

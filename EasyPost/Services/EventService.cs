@@ -6,6 +6,7 @@ using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Parameters.Events;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services
@@ -31,14 +32,14 @@ namespace EasyPost.Services
         ///     List all <see cref="Event"/>s.
         ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-events">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">Dictionary containing parameters to filter the results on. See <see cref="BetaFeatures.Parameters.Events.All"/> for valid keys.</param>
+        /// <param name="parameters">Dictionary containing parameters to filter the results on. See <see cref="Parameters.Events.All"/> for valid keys.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="EventCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<EventCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             EventCollection collection = await RequestAsync<EventCollection>(Method.Get, "events", cancellationToken, parameters);
-            collection.Filters = BetaFeatures.Parameters.Events.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Events.All.FromDictionary(parameters);
             return collection;
         }
 
@@ -46,11 +47,11 @@ namespace EasyPost.Services
         ///     List all <see cref="Event"/>s.
         ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-events">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Events.All"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Events.All"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="EventCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<EventCollection> All(BetaFeatures.Parameters.Events.All parameters, CancellationToken cancellationToken = default)
+        public async Task<EventCollection> All(All parameters, CancellationToken cancellationToken = default)
         {
             EventCollection collection = await RequestAsync<EventCollection>(Method.Get, "events", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
@@ -67,7 +68,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="EventCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<EventCollection> GetNextPage(EventCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<EventCollection, BetaFeatures.Parameters.Events.All>(async parameters => await All(parameters, cancellationToken), collection.Events, pageSize);
+        public async Task<EventCollection> GetNextPage(EventCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<EventCollection, All>(async parameters => await All((All)parameters, cancellationToken), collection.Events, pageSize);
 
         /// <summary>
         ///     Retrieve an <see cref="Event"/>.

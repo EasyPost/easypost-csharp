@@ -2,6 +2,7 @@
 using System.Linq;
 using EasyPost._base;
 using EasyPost.Models.Shared;
+using EasyPost.Parameters.Events;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -103,7 +104,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Event> entries, int? pageSize = null)
         {
-            BetaFeatures.Parameters.Events.All parameters = Filters != null ? (BetaFeatures.Parameters.Events.All)Filters : new BetaFeatures.Parameters.Events.All();
+            All parameters = Filters != null ? (All)Filters : new All();
 
             parameters.BeforeId = entries.Last().Id;
 

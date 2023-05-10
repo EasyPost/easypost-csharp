@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
+using EasyPost.Parameters.Shipments;
 using EasyPost.Services;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -162,9 +163,9 @@ namespace EasyPost.Tests.ServicesTests
 
             // Filters should be cached in in the resultant collection object.
             Assert.NotNull(shipmentCollection.Filters);
-            Assert.IsType<BetaFeatures.Parameters.Shipments.All>(shipmentCollection.Filters);
+            Assert.IsType<All>(shipmentCollection.Filters);
 
-            BetaFeatures.Parameters.Shipments.All cachedFilters = (BetaFeatures.Parameters.Shipments.All)shipmentCollection.Filters;
+            All cachedFilters = (All)shipmentCollection.Filters;
             Assert.Equal(includeChildren, cachedFilters.IncludeChildren);
             Assert.Equal(purchased, cachedFilters.Purchased);
         }
@@ -215,7 +216,7 @@ namespace EasyPost.Tests.ServicesTests
 
             ShipmentCollection shipmentCollection = await Client.Shipment.All(filters);
 
-            BetaFeatures.Parameters.Shipments.All filtersForNextPage = shipmentCollection.BuildNextPageParameters<BetaFeatures.Parameters.Shipments.All>(shipmentCollection.Shipments);
+            All filtersForNextPage = shipmentCollection.BuildNextPageParameters<All>(shipmentCollection.Shipments);
 
             // These parameters made it from the dictionary -> cached in the resultant collection -> made it back to the parameters object for the next page
             Assert.Equal(includeChildren, filtersForNextPage.IncludeChildren);

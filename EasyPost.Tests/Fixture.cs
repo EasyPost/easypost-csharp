@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.API;
+using EasyPost.Parameters;
+using EasyPost.Parameters.Addresses;
+using EasyPost.Parameters.Beta.Rates;
+using EasyPost.Parameters.ReferralCustomers;
+using EasyPost.Parameters.Users;
 using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Extensions;
+using All = EasyPost.Parameters.Addresses.All;
 
 // ReSharper disable once CheckNamespace
 namespace EasyPost.Tests._Utilities
@@ -138,11 +143,11 @@ namespace EasyPost.Tests._Utilities
         {
             internal static class Addresses
             {
-                internal static BetaFeatures.Parameters.Addresses.Create Create(Dictionary<string, object>? fixture)
+                internal static Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Addresses.Create
+                    return new Create
                     {
                         Id = fixture.GetOrNull<string>("id"),
                         Name = fixture.GetOrNull<string>("name"),
@@ -159,11 +164,11 @@ namespace EasyPost.Tests._Utilities
                     };
                 }
 
-                internal static BetaFeatures.Parameters.Addresses.All All(Dictionary<string, object>? fixture)
+                internal static All All(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Addresses.All
+                    return new All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
@@ -176,7 +181,7 @@ namespace EasyPost.Tests._Utilities
 
             internal static class Batches
             {
-                internal static BetaFeatures.Parameters.Batches.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Batches.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
@@ -192,18 +197,18 @@ namespace EasyPost.Tests._Utilities
                         }
                     }
 
-                    return new BetaFeatures.Parameters.Batches.Create
+                    return new EasyPost.Parameters.Batches.Create
                     {
                         Reference = fixture.GetOrNull<string>("reference"),
                         Shipments = shipments,
                     };
                 }
 
-                internal static BetaFeatures.Parameters.Batches.All All(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Batches.All All(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Batches.All
+                    return new EasyPost.Parameters.Batches.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
@@ -216,11 +221,11 @@ namespace EasyPost.Tests._Utilities
 
             internal static class CarrierAccounts
             {
-                internal static BetaFeatures.Parameters.CarrierAccounts.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.CarrierAccounts.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.CarrierAccounts.Create
+                    return new EasyPost.Parameters.CarrierAccounts.Create
                     {
                         Description = fixture.GetOrNull<string>("description"),
                         Type = fixture.GetOrNull<string>("type"),
@@ -234,7 +239,7 @@ namespace EasyPost.Tests._Utilities
 
             internal static class CustomsInfo
             {
-                internal static BetaFeatures.Parameters.CustomsInfo.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.CustomsInfo.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
@@ -250,7 +255,7 @@ namespace EasyPost.Tests._Utilities
                         }
                     }
 
-                    return new BetaFeatures.Parameters.CustomsInfo.Create
+                    return new EasyPost.Parameters.CustomsInfo.Create
                     {
                         Id = fixture.GetOrNull<string>("id"),
                         CustomsItems = customsItems,
@@ -268,11 +273,11 @@ namespace EasyPost.Tests._Utilities
 
             internal static class CustomsItems
             {
-                internal static BetaFeatures.Parameters.CustomsItems.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.CustomsItems.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.CustomsItems.Create
+                    return new EasyPost.Parameters.CustomsItems.Create
                     {
                         Description = fixture.GetOrNull<string>("description"),
                         Quantity = fixture.GetOrNullInt("quantity"),
@@ -286,11 +291,11 @@ namespace EasyPost.Tests._Utilities
 
             internal static class EndShippers
             {
-                internal static BetaFeatures.Parameters.EndShippers.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.EndShippers.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.EndShippers.Create
+                    return new EasyPost.Parameters.EndShippers.Create
                     {
                         Name = fixture.GetOrNull<string>("name"),
                         Street1 = fixture.GetOrNull<string>("street1"),
@@ -304,11 +309,11 @@ namespace EasyPost.Tests._Utilities
                     };
                 }
 
-                internal static BetaFeatures.Parameters.EndShippers.All All(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.EndShippers.All All(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.EndShippers.All
+                    return new EasyPost.Parameters.EndShippers.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         AfterId = fixture.GetOrNull<string>("after_id"),
@@ -318,11 +323,11 @@ namespace EasyPost.Tests._Utilities
 
             internal static class Events
             {
-                internal static BetaFeatures.Parameters.Events.All All(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Events.All All(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Events.All
+                    return new EasyPost.Parameters.Events.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
@@ -335,14 +340,14 @@ namespace EasyPost.Tests._Utilities
 
             internal static class Insurance
             {
-                internal static BetaFeatures.Parameters.Insurance.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Insurance.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
                     Dictionary<string, object>? toAddressFixture = fixture.GetOrNull<Dictionary<string, object>>("to_address");
                     Dictionary<string, object>? fromAddressFixture = fixture.GetOrNull<Dictionary<string, object>>("from_address");
 
-                    return new BetaFeatures.Parameters.Insurance.Create
+                    return new EasyPost.Parameters.Insurance.Create
                     {
                         Amount = fixture.GetOrNullDouble("amount"),
                         Carrier = fixture.GetOrNull<string>("carrier"),
@@ -353,11 +358,11 @@ namespace EasyPost.Tests._Utilities
                     };
                 }
 
-                internal static BetaFeatures.Parameters.Insurance.All All(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Insurance.All All(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Insurance.All
+                    return new EasyPost.Parameters.Insurance.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
@@ -381,7 +386,7 @@ namespace EasyPost.Tests._Utilities
 
             internal static class Orders
             {
-                internal static BetaFeatures.Parameters.Orders.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Orders.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
@@ -400,7 +405,7 @@ namespace EasyPost.Tests._Utilities
                         }
                     }
 
-                    return new BetaFeatures.Parameters.Orders.Create
+                    return new EasyPost.Parameters.Orders.Create
                     {
                         ToAddress = Fixtures.Parameters.Addresses.Create(toAddressFixture),
                         FromAddress = Fixtures.Parameters.Addresses.Create(fromAddressFixture),
@@ -412,11 +417,11 @@ namespace EasyPost.Tests._Utilities
 
             internal static class Parcels
             {
-                internal static BetaFeatures.Parameters.Parcels.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Parcels.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Parcels.Create
+                    return new EasyPost.Parameters.Parcels.Create
                     {
                         Id = fixture.GetOrNull<string>("id"),
                         Length = fixture.GetOrNullDouble("length"),
@@ -429,13 +434,13 @@ namespace EasyPost.Tests._Utilities
 
             internal static class Pickups
             {
-                internal static BetaFeatures.Parameters.Pickups.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Pickups.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
                     Dictionary<string, object>? addressFixture = fixture.GetOrNull<Dictionary<string, object>>("address");
 
-                    return new BetaFeatures.Parameters.Pickups.Create
+                    return new EasyPost.Parameters.Pickups.Create
                     {
                         Address = Fixtures.Parameters.Addresses.Create(addressFixture),
                         MinDatetime = fixture.GetOrNull<string>("min_datetime"),
@@ -445,11 +450,11 @@ namespace EasyPost.Tests._Utilities
                     };
                 }
 
-                internal static BetaFeatures.Parameters.Pickups.All All(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Pickups.All All(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Pickups.All
+                    return new EasyPost.Parameters.Pickups.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
@@ -462,7 +467,7 @@ namespace EasyPost.Tests._Utilities
 
             internal static class Rates
             {
-                internal static BetaFeatures.Parameters.Beta.Rates.Retrieve RetrieveBeta(Dictionary<string, object>? fixture)
+                internal static Retrieve RetrieveBeta(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
@@ -470,7 +475,7 @@ namespace EasyPost.Tests._Utilities
                     Dictionary<string, object>? fromAddressFixture = fixture.GetOrNull<Dictionary<string, object>>("from_address");
                     Dictionary<string, object>? parcelFixture = fixture.GetOrNull<Dictionary<string, object>>("parcel");
 
-                    return new BetaFeatures.Parameters.Beta.Rates.Retrieve
+                    return new Retrieve
                     {
                         ToAddress = Fixtures.Parameters.Addresses.Create(toAddressFixture),
                         FromAddress = Fixtures.Parameters.Addresses.Create(fromAddressFixture),
@@ -481,11 +486,11 @@ namespace EasyPost.Tests._Utilities
 
             internal static class ReferralCustomers
             {
-                internal static BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer CreateReferralCustomer(Dictionary<string, object>? fixture)
+                internal static CreateReferralCustomer CreateReferralCustomer(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.ReferralCustomers.CreateReferralCustomer
+                    return new CreateReferralCustomer
                     {
                         Email = fixture.GetOrNull<string>("email"),
                         Name = fixture.GetOrNull<string>("name"),
@@ -493,11 +498,11 @@ namespace EasyPost.Tests._Utilities
                     };
                 }
 
-                internal static BetaFeatures.Parameters.ReferralCustomers.All All(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.ReferralCustomers.All All(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.ReferralCustomers.All
+                    return new EasyPost.Parameters.ReferralCustomers.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
@@ -510,22 +515,22 @@ namespace EasyPost.Tests._Utilities
 
             internal static class Refunds
             {
-                internal static BetaFeatures.Parameters.Refunds.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Refunds.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Refunds.Create
+                    return new EasyPost.Parameters.Refunds.Create
                     {
                         Carrier = fixture.GetOrNull<string>("carrier"),
                         TrackingCodes = fixture.GetOrNull<List<string>>("tracking_codes"),
                     };
                 }
 
-                internal static BetaFeatures.Parameters.Refunds.All All(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Refunds.All All(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Refunds.All
+                    return new EasyPost.Parameters.Refunds.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
@@ -538,11 +543,11 @@ namespace EasyPost.Tests._Utilities
 
             internal static class Reports
             {
-                internal static BetaFeatures.Parameters.Reports.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Reports.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Reports.Create
+                    return new EasyPost.Parameters.Reports.Create
                     {
                         AdditionalColumns = fixture.GetOrNull<List<string>>("additional_columns"),
                         Columns = fixture.GetOrNull<List<string>>("columns"),
@@ -554,11 +559,11 @@ namespace EasyPost.Tests._Utilities
                     };
                 }
 
-                internal static BetaFeatures.Parameters.Reports.All All(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Reports.All All(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Reports.All
+                    return new EasyPost.Parameters.Reports.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
@@ -572,11 +577,11 @@ namespace EasyPost.Tests._Utilities
 
             internal static class ScanForms
             {
-                internal static BetaFeatures.Parameters.ScanForms.All All(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.ScanForms.All All(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.ScanForms.All
+                    return new EasyPost.Parameters.ScanForms.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
@@ -589,7 +594,7 @@ namespace EasyPost.Tests._Utilities
 
             internal static class Shipments
             {
-                internal static BetaFeatures.Parameters.Shipments.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Shipments.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
@@ -611,7 +616,7 @@ namespace EasyPost.Tests._Utilities
                         }
                     }
 
-                    return new BetaFeatures.Parameters.Shipments.Create
+                    return new EasyPost.Parameters.Shipments.Create
                     {
                         ToAddress = Fixtures.Parameters.Addresses.Create(toAddressFixture),
                         FromAddress = Fixtures.Parameters.Addresses.Create(fromAddressFixture),
@@ -628,11 +633,11 @@ namespace EasyPost.Tests._Utilities
                     };
                 }
 
-                internal static BetaFeatures.Parameters.Shipments.All All(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Shipments.All All(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Shipments.All
+                    return new EasyPost.Parameters.Shipments.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
@@ -647,11 +652,11 @@ namespace EasyPost.Tests._Utilities
 
             internal static class TaxIdentifiers
             {
-                internal static BetaFeatures.Parameters.TaxIdentifiers.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.TaxIdentifiers.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.TaxIdentifiers.Create
+                    return new EasyPost.Parameters.TaxIdentifiers.Create
                     {
                         Entity = fixture.GetOrNull<string>("entity"),
                         TaxIdType = fixture.GetOrNull<string>("tax_id_type"),
@@ -663,11 +668,11 @@ namespace EasyPost.Tests._Utilities
 
             internal static class Trackers
             {
-                internal static BetaFeatures.Parameters.Trackers.All All(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Trackers.All All(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Trackers.All
+                    return new EasyPost.Parameters.Trackers.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
@@ -682,11 +687,11 @@ namespace EasyPost.Tests._Utilities
 
             internal static class Users
             {
-                internal static BetaFeatures.Parameters.Users.CreateChild CreateChild(Dictionary<string, object>? fixture)
+                internal static CreateChild CreateChild(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Users.CreateChild
+                    return new CreateChild
                     {
                         Name = fixture.GetOrNull<string>("name"),
                     };
@@ -695,22 +700,22 @@ namespace EasyPost.Tests._Utilities
 
             internal static class Webhooks
             {
-                internal static BetaFeatures.Parameters.Webhooks.Create Create(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Webhooks.Create Create(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Webhooks.Create
+                    return new EasyPost.Parameters.Webhooks.Create
                     {
                         Url = fixture.GetOrNull<string>("url"),
                         Secret = fixture.GetOrNull<string>("secret"),
                     };
                 }
 
-                internal static BetaFeatures.Parameters.Webhooks.All All(Dictionary<string, object>? fixture)
+                internal static EasyPost.Parameters.Webhooks.All All(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new BetaFeatures.Parameters.Webhooks.All
+                    return new EasyPost.Parameters.Webhooks.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),

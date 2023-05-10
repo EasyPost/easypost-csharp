@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
+using EasyPost.Parameters;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API

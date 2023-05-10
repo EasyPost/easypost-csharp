@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API.Beta;
+using EasyPost.Parameters.Beta.Rates;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -48,7 +49,7 @@ namespace EasyPost.Services.Beta
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="StatelessRate"/> objects.</returns>
         [CrudOperations.Create]
-        public async Task<List<StatelessRate>> RetrieveStatelessRates(BetaFeatures.Parameters.Beta.Rates.Retrieve parameters, CancellationToken cancellationToken = default)
+        public async Task<List<StatelessRate>> RetrieveStatelessRates(Retrieve parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<List<StatelessRate>>(Method.Post, "rates", cancellationToken, parameters.ToDictionary(), "rates", ApiVersion.Beta);
         }

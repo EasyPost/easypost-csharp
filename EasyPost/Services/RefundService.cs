@@ -5,6 +5,7 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Parameters.Refunds;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -49,7 +50,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="Refund"/> objects.</returns>
         [CrudOperations.Create]
-        public async Task<List<Refund>> Create(BetaFeatures.Parameters.Refunds.Create parameters, CancellationToken cancellationToken = default)
+        public async Task<List<Refund>> Create(Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<List<Refund>>(Method.Post, "refunds", cancellationToken, parameters.ToDictionary());
@@ -59,14 +60,14 @@ namespace EasyPost.Services
         ///     List all <see cref="Refund"/>s.
         ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-refunds">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">Parameters to filter the list of <see cref="Refund"/>s on. Refer to <see cref="BetaFeatures.Parameters.Refunds.All"/> for more information.</param>
+        /// <param name="parameters">Parameters to filter the list of <see cref="Refund"/>s on. Refer to <see cref="Parameters.Refunds.All"/> for more information.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="RefundCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             RefundCollection collection = await RequestAsync<RefundCollection>(Method.Get, "refunds", cancellationToken, parameters);
-            collection.Filters = BetaFeatures.Parameters.Refunds.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Refunds.All.FromDictionary(parameters);
             return collection;
         }
 
@@ -78,7 +79,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="RefundCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<RefundCollection> All(BetaFeatures.Parameters.Refunds.All parameters, CancellationToken cancellationToken = default)
+        public async Task<RefundCollection> All(All parameters, CancellationToken cancellationToken = default)
         {
             RefundCollection collection = await RequestAsync<RefundCollection>(Method.Get, "refunds", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
@@ -95,7 +96,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="RefundCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<RefundCollection> GetNextPage(RefundCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<RefundCollection, BetaFeatures.Parameters.Refunds.All>(async parameters => await All(parameters, cancellationToken), collection.Refunds, pageSize);
+        public async Task<RefundCollection> GetNextPage(RefundCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<RefundCollection, All>(async parameters => await All(parameters, cancellationToken), collection.Refunds, pageSize);
 
         /// <summary>
         ///     Retrieve a <see cref="Refund"/>.
