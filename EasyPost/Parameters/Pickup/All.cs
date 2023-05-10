@@ -9,7 +9,7 @@ namespace EasyPost.Parameters.Pickup
     ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-pickups">Parameters</a> for <see cref="EasyPost.Services.PickupService.All(All, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class All : BaseAllParameters
+    public class All : BaseAllParameters
     {
         #region Request Parameters
 

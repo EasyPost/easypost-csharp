@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.Pickup
     ///     <a href="https://www.easypost.com/docs/api#buy-a-pickup">Parameters</a> for <see cref="EasyPost.Services.PickupService.Buy(string, Buy, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class Buy : BaseParameters
+    public class Buy : BaseParameters
     {
         #region Request Parameters
 

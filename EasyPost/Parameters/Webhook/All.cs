@@ -9,7 +9,7 @@ namespace EasyPost.Parameters.Webhook
     ///     <a href="https://www.easypost.com/docs/api#list-a-webhooks">Parameters</a> for <see cref="EasyPost.Services.WebhookService.All(All, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class All : BaseAllParameters
+    public class All : BaseAllParameters
     {
         #region Request Parameters
 

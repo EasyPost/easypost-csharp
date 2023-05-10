@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.Batch
     ///     <a href="https://www.easypost.com/docs/api#remove-shipments-from-a-batch">Parameters</a> for <see cref="EasyPost.Services.BatchService.RemoveShipments(string, RemoveShipments, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class RemoveShipments : BaseParameters
+    public class RemoveShipments : BaseParameters
     {
         #region Request Parameters
 

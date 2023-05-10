@@ -9,7 +9,7 @@ namespace EasyPost.Parameters.EndShipper
     ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-endshippers">Parameters</a> for <see cref="EasyPost.Services.EndShipperService.All(All, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class All : BaseAllParameters
+    public class All : BaseAllParameters
     {
         #region Request Parameters
 

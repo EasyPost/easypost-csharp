@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.TaxIdentifier
     ///     <a href="https://www.easypost.com/docs/api#tax-identifiers">Parameters</a> for <see cref="Shipment.Create.TaxIdentifiers"/> property.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class Create : BaseParameters, ITaxIdentifierParameter
+    public class Create : BaseParameters, ITaxIdentifierParameter
     {
         #region Request Parameters
 

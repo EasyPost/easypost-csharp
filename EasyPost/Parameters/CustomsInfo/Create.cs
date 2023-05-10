@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.CustomsInfo
     ///     <a href="https://www.easypost.com/docs/api#create-a-customsinfo">Parameters</a> for <see cref="EasyPost.Services.CustomsInfoService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class Create : BaseParameters, ICustomsInfoParameter
+    public class Create : BaseParameters, ICustomsInfoParameter
     {
         #region Request Parameters
 

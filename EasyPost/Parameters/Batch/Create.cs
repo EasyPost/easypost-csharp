@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.Batch
     ///     <a href="https://www.easypost.com/docs/api#create-a-batch">Parameters</a> for <see cref="EasyPost.Services.BatchService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class Create : BaseParameters, IBatchParameter
+    public class Create : BaseParameters, IBatchParameter
     {
         #region Request Parameters
 
