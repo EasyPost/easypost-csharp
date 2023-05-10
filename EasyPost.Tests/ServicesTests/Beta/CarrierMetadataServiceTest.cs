@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API.Beta;
-using EasyPost.Parameters.Beta.CarrierMetadata;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -51,7 +50,7 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             const string carrierName = "usps";
 
-            Retrieve parameters = new()
+            Parameters.Beta.CarrierMetadata.Retrieve parameters = new()
             {
                 Carriers = new List<string> { carrierName },
                 Types = new List<CarrierMetadataType> { CarrierMetadataType.ServiceLevels, CarrierMetadataType.PredefinedPackages },

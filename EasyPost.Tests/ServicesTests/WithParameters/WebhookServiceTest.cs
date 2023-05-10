@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Webhook;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -45,7 +44,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object> { { "url", url } };
 
-            Create parameters = Fixtures.Parameters.Webhooks.Create(data);
+            Parameters.Webhook.Create parameters = Fixtures.Parameters.Webhooks.Create(data);
 
             Webhook webhook = await Client.Webhook.Create(parameters);
             CleanUpAfterTest(webhook.Id);
@@ -64,7 +63,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize } };
 
-            All parameters = Fixtures.Parameters.Webhooks.All(data);
+            Parameters.Webhook.All parameters = Fixtures.Parameters.Webhooks.All(data);
 
             List<Webhook> webhooks = await Client.Webhook.All(parameters);
 
@@ -82,14 +81,14 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             UseVCR("update");
 
             string url = $"https://example.com/beta/update/{TestUtils.NetVersion}";
-            Create webhookParameters = new()
+            Parameters.Webhook.Create webhookParameters = new()
             {
                 Url = url,
             };
             Webhook webhook = await Client.Webhook.Create(webhookParameters);
             CleanUpAfterTest(webhook.Id);
 
-            Update updateParameters = new()
+            Parameters.Webhook.Update updateParameters = new()
             {
             };
             // Sending an empty payload will toggle the active status of the webhook silently.

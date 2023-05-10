@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.API;
 using EasyPost.Models.API;
-using EasyPost.Parameters.CarrierAccount;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -41,7 +40,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = Fixtures.BasicCarrierAccount;
 
-            Create parameters = Fixtures.Parameters.CarrierAccounts.Create(data);
+            Parameters.CarrierAccount.Create parameters = Fixtures.Parameters.CarrierAccounts.Create(data);
 
             CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
             CleanUpAfterTest(carrierAccount.Id);
@@ -64,7 +63,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 data["type"] = "FedexAccount";
                 data["registration_data"] = new Dictionary<string, object>();
 
-                Create parameters = Fixtures.Parameters.CarrierAccounts.Create(data);
+                Parameters.CarrierAccount.Create parameters = Fixtures.Parameters.CarrierAccounts.Create(data);
 
                 CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
                 CleanUpAfterTest(carrierAccount.Id);
@@ -89,14 +88,14 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = Fixtures.BasicCarrierAccount;
 
-            Create createParameters = Fixtures.Parameters.CarrierAccounts.Create(data);
+            Parameters.CarrierAccount.Create createParameters = Fixtures.Parameters.CarrierAccounts.Create(data);
 
             CarrierAccount carrierAccount = await Client.CarrierAccount.Create(createParameters);
             CleanUpAfterTest(carrierAccount.Id);
 
             const string testDescription = "my custom description";
 
-            Update updateParameters = new Update
+            Parameters.CarrierAccount.Update updateParameters = new()
             {
                 Description = testDescription,
             };

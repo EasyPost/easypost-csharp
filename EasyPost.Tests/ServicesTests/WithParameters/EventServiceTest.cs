@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Event;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -40,7 +39,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize } };
 
-            All parameters = Fixtures.Parameters.Events.All(data);
+            Parameters.Event.All parameters = Fixtures.Parameters.Events.All(data);
 
             EventCollection eventCollection = await Client.Event.All(parameters);
 

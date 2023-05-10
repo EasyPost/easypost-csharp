@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.ReferralCustomer;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -29,7 +28,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = Fixtures.ReferralCustomer;
 
-            CreateReferralCustomer parameters = Fixtures.Parameters.ReferralCustomers.CreateReferralCustomer(data);
+            Parameters.ReferralCustomer.CreateReferralCustomer parameters = Fixtures.Parameters.ReferralCustomers.CreateReferralCustomer(data);
 
             ReferralCustomer referralCustomer = await Client.ReferralCustomer.CreateReferral(parameters);
 
@@ -48,7 +47,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize } };
 
-            All parameters = Fixtures.Parameters.ReferralCustomers.All(data);
+            Parameters.ReferralCustomer.All parameters = Fixtures.Parameters.ReferralCustomers.All(data);
 
             ReferralCustomerCollection referralCustomerCollection = await Client.ReferralCustomer.All(parameters);
             List<ReferralCustomer> referralCustomers = referralCustomerCollection.ReferralCustomers;

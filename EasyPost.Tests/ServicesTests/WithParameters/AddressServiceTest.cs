@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Address;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -28,7 +27,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> fixture = Fixtures.CaAddress1;
 
-            Create parameters = Fixtures.Parameters.Addresses.Create(fixture);
+            Parameters.Address.Create parameters = Fixtures.Parameters.Addresses.Create(fixture);
 
             Address address = await Client.Address.Create(parameters);
 
@@ -47,7 +46,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Dictionary<string, object> fixture = Fixtures.IncorrectAddress;
             fixture["verify"] = true;
 
-            Create parameters = Fixtures.Parameters.Addresses.Create(fixture);
+            Parameters.Address.Create parameters = Fixtures.Parameters.Addresses.Create(fixture);
 
             Address address = await Client.Address.Create(parameters);
 
@@ -66,7 +65,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Dictionary<string, object> fixture = Fixtures.CaAddress1;
             fixture["verify_strict"] = true;
 
-            Create parameters = Fixtures.Parameters.Addresses.Create(fixture);
+            Parameters.Address.Create parameters = Fixtures.Parameters.Addresses.Create(fixture);
 
             Address address = await Client.Address.Create(parameters);
 
@@ -84,7 +83,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> fixture = new Dictionary<string, object> { { "page_size", Fixtures.PageSize } };
 
-            All parameters = Fixtures.Parameters.Addresses.All(fixture);
+            Parameters.Address.All parameters = Fixtures.Parameters.Addresses.All(fixture);
 
             AddressCollection addressCollection = await Client.Address.All(parameters);
             List<Address> addresses = addressCollection.Addresses;
@@ -105,7 +104,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> fixture = Fixtures.CaAddress1;
 
-            Create parameters = Fixtures.Parameters.Addresses.Create(fixture);
+            Parameters.Address.Create parameters = Fixtures.Parameters.Addresses.Create(fixture);
 
             Address address = await Client.Address.CreateAndVerify(parameters);
 

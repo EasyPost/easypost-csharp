@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.EndShipper;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -29,7 +28,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = Fixtures.CaAddress1;
 
-            Create parameters = Fixtures.Parameters.EndShippers.Create(data);
+            Parameters.EndShipper.Create parameters = Fixtures.Parameters.EndShippers.Create(data);
 
             EndShipper endShipper = await Client.EndShipper.Create(parameters);
 
@@ -47,7 +46,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object> { { "page_size", Fixtures.PageSize } };
 
-            All parameters = Fixtures.Parameters.EndShippers.All(data);
+            Parameters.EndShipper.All parameters = Fixtures.Parameters.EndShippers.All(data);
 
             EndShipperCollection endShipperCollection = await Client.EndShipper.All(parameters);
             List<EndShipper> endShippers = endShipperCollection.EndShippers;
@@ -68,7 +67,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = Fixtures.CaAddress1;
 
-            Create createParameters = Fixtures.Parameters.EndShippers.Create(data);
+            Parameters.EndShipper.Create createParameters = Fixtures.Parameters.EndShippers.Create(data);
 
             EndShipper endShipper = await Client.EndShipper.Create(createParameters);
 
@@ -80,7 +79,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             const string testName = "NEW NAME";
 
             // Updating an EndShipper requires all the original data to be sent back + the updated data
-            Update updateParameters = new Update
+            Parameters.EndShipper.Update updateParameters = new()
             {
                 Name = testName,
                 City = createParameters.City,

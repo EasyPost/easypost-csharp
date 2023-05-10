@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 using EasyPost.Exceptions.API;
 using EasyPost.Models.API;
 using EasyPost.Models.API.Beta;
-using EasyPost.Parameters.ReferralCustomer;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -29,7 +28,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters.Beta
 
             try
             {
-                AddPaymentMethod parameters = new()
+                Parameters.ReferralCustomer.AddPaymentMethod parameters = new()
                 {
                     StripeCustomerId = "cus_123",
                     PaymentMethodReference = "ba_123",
@@ -55,7 +54,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters.Beta
 
             try
             {
-                RefundByAmount parameters = new()
+                Parameters.ReferralCustomer.RefundByAmount parameters = new()
                 {
                     Amount = 2000,
                 };
@@ -80,7 +79,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters.Beta
 
             try
             {
-                RefundByPaymentLog parameters = new()
+                Parameters.ReferralCustomer.RefundByPaymentLog parameters = new()
                 {
                     PaymentLogId = "paylog_123",
                 };

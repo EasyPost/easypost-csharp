@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Shipment;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
-using All = EasyPost.Parameters.Refund.All;
 
 namespace EasyPost.Tests.ServicesTests.WithParameters
 {
@@ -29,7 +27,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
 
-            Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
 
@@ -64,7 +62,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize } };
 
-            All parameters = Fixtures.Parameters.Refunds.All(data);
+            Parameters.Refund.All parameters = Fixtures.Parameters.Refunds.All(data);
 
             RefundCollection refundCollection = await Client.Refund.All(parameters);
 

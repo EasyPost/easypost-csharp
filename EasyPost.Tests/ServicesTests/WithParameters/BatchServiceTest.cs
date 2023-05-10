@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters;
-using EasyPost.Parameters.Batch;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -30,7 +28,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixtures.BasicShipment } } };
 
-            Create parameters = Fixtures.Parameters.Batches.Create(data);
+            Parameters.Batch.Create parameters = Fixtures.Parameters.Batches.Create(data);
 
             Batch batch = await Client.Batch.Create(parameters);
 
@@ -48,7 +46,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixtures.OneCallBuyShipment } } };
 
-            Create parameters = Fixtures.Parameters.Batches.Create(data);
+            Parameters.Batch.Create parameters = Fixtures.Parameters.Batches.Create(data);
 
             Batch batch = await Client.Batch.CreateAndBuy(parameters);
 
@@ -66,7 +64,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object> { { "page_size", Fixtures.PageSize } };
 
-            All parameters = Fixtures.Parameters.Batches.All(data);
+            Parameters.Batch.All parameters = Fixtures.Parameters.Batches.All(data);
 
             BatchCollection batchCollection = await Client.Batch.All(parameters);
 
@@ -92,9 +90,9 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
 
-            Create batchParameters = new Create
+            Parameters.Batch.Create batchParameters = new()
             {
-                Shipments = new List<IShipmentParameter> { shipment },
+                Shipments = new List<Parameters.IShipmentParameter> { shipment },
             };
 
             Batch batch = await Client.Batch.Create(batchParameters);
@@ -114,9 +112,9 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
-            Create batchParameters = new Create
+            Parameters.Batch.Create batchParameters = new()
             {
-                Shipments = new List<IShipmentParameter> { shipmentParameters },
+                Shipments = new List<Parameters.IShipmentParameter> { shipmentParameters },
             };
 
             Batch batch = await Client.Batch.Create(batchParameters);
@@ -140,7 +138,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
 
-            AddShipments addShipmentsParameters = new AddShipments
+            Parameters.Batch.AddShipments addShipmentsParameters = new()
             {
                 Shipments = new List<Shipment> { shipment },
             };
@@ -163,9 +161,9 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
-            Create batchParameters = new Create
+            Parameters.Batch.Create batchParameters = new()
             {
-                Shipments = new List<IShipmentParameter> { shipmentParameters },
+                Shipments = new List<Parameters.IShipmentParameter> { shipmentParameters },
             };
 
             Batch batch = await Client.Batch.Create(batchParameters);
@@ -182,7 +180,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 Thread.Sleep(10000); // Wait enough time to process
             }
 
-            GenerateLabel generateLabelParameters = new GenerateLabel
+            Parameters.Batch.GenerateLabel generateLabelParameters = new()
             {
                 FileFormat = "ZPL",
             };
@@ -204,9 +202,9 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
-            Create batchParameters = new Create
+            Parameters.Batch.Create batchParameters = new()
             {
-                Shipments = new List<IShipmentParameter> { shipmentParameters },
+                Shipments = new List<Parameters.IShipmentParameter> { shipmentParameters },
             };
 
             Batch batch = await Client.Batch.Create(batchParameters);
@@ -223,7 +221,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 Thread.Sleep(10000); // Wait enough time to process
             }
 
-            GenerateScanForm generateScanFormParameters = new GenerateScanForm
+            Parameters.Batch.GenerateScanForm generateScanFormParameters = new()
             {
                 FileFormat = "ZPL",
             };
@@ -247,9 +245,9 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
 
-            Create batchParameters = new Create
+            Parameters.Batch.Create batchParameters = new()
             {
-                Shipments = new List<IShipmentParameter> { shipment },
+                Shipments = new List<Parameters.IShipmentParameter> { shipment },
             };
 
             Batch batch = await Client.Batch.Create(batchParameters);
@@ -261,7 +259,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 Thread.Sleep(10000); // Wait enough time to process
             }
 
-            RemoveShipments removeShipmentsParameters = new RemoveShipments
+            Parameters.Batch.RemoveShipments removeShipmentsParameters = new()
             {
                 Shipments = new List<Shipment> { shipment },
             };

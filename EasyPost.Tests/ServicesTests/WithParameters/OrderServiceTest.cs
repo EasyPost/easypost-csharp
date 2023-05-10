@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Order;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -28,7 +27,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = Fixtures.BasicOrder;
 
-            Create parameters = Fixtures.Parameters.Orders.Create(data);
+            Parameters.Order.Create parameters = Fixtures.Parameters.Orders.Create(data);
 
             Order order = await Client.Order.Create(parameters);
 
@@ -47,11 +46,11 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             // buy with a carrier and service
             Dictionary<string, object> orderCreateData = Fixtures.BasicOrder;
 
-            Create orderCreateParameters = Fixtures.Parameters.Orders.Create(orderCreateData);
+            Parameters.Order.Create orderCreateParameters = Fixtures.Parameters.Orders.Create(orderCreateData);
 
             Order order = await Client.Order.Create(orderCreateParameters);
 
-            Buy orderBuyParameters = new Buy(Fixtures.Usps, Fixtures.UspsService);
+            Parameters.Order.Buy orderBuyParameters = new(Fixtures.Usps, Fixtures.UspsService);
 
             order = await Client.Order.Buy(order.Id, orderBuyParameters);
 
@@ -72,7 +71,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Rate rate = order.LowestRate();
 
-            orderBuyParameters = new Buy(rate);
+            orderBuyParameters = new(rate);
 
             order = await Client.Order.Buy(order.Id, rate);
 

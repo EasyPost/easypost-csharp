@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters;
-using EasyPost.Parameters.Address;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -27,7 +25,7 @@ namespace EasyPost.Tests.ParametersTests
         {
             const string street = "388 Townsend St";
 
-            var parameters = new Create
+            Parameters.Address.Create parameters = new()
             {
                 Street1 = street,
                 Street2 = "Apt 20",
@@ -72,7 +70,7 @@ namespace EasyPost.Tests.ParametersTests
                 Street1 = streetA,
             };
 
-            Create newAddressCreationParameters = new Create
+            Parameters.Address.Create newAddressCreationParameters = new()
             {
                 Street1 = streetB,
             };
@@ -129,7 +127,7 @@ namespace EasyPost.Tests.ParametersTests
         {
             const string street = "388 Townsend St";
 
-            Create addressCreationParameters = new Create
+            Parameters.Address.Create addressCreationParameters = new()
             {
                 Street1 = street,
             };
@@ -166,7 +164,7 @@ namespace EasyPost.Tests.ParametersTests
 
             const string street = "388 Townsend St";
 
-            Create addressCreationParameters = new Create
+            Parameters.Address.Create addressCreationParameters = new()
             {
                 Street1 = street,
             };
@@ -197,7 +195,7 @@ namespace EasyPost.Tests.ParametersTests
 
             const string street = "388 Townsend St";
 
-            Create addressCreationParameters = new Create
+            Parameters.Address.Create addressCreationParameters = new()
             {
                 Street1 = street,
             };
@@ -238,7 +236,7 @@ namespace EasyPost.Tests.ParametersTests
     }
 
 #pragma warning disable CA1852 // Can be sealed
-    internal class ExampleParameters : BaseParameters
+    internal class ExampleParameters : Parameters.BaseParameters
     {
         // Default values set to guarantee any property won't be skipped for serialization due to a null value
 

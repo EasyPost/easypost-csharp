@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.CustomsItem;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -28,7 +27,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = Fixtures.BasicCustomsItem;
 
-            Create parameters = Fixtures.Parameters.CustomsItems.Create(data);
+            Parameters.CustomsItem.Create parameters = Fixtures.Parameters.CustomsItems.Create(data);
 
             CustomsItem customsItem = await Client.CustomsItem.Create(parameters);
 

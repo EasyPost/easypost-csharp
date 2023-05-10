@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Tracker;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -27,7 +26,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         {
             UseVCR("create");
 
-            Create parameters = new()
+            Parameters.Tracker.Create parameters = new()
             {
                 Carrier = Fixtures.Usps,
                 TrackingCode = "EZ1000000001",
@@ -47,7 +46,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         {
             UseVCR("create_list");
 
-            CreateList parameters = new();
+            Parameters.Tracker.CreateList parameters = new();
             parameters.AddTracker("EZ1000000001");
             parameters.AddTracker("EZ1000000002");
             parameters.AddTracker("EZ1000000003");
@@ -66,7 +65,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize } };
 
-            All parameters = Fixtures.Parameters.Trackers.All(data);
+            Parameters.Tracker.All parameters = Fixtures.Parameters.Trackers.All(data);
 
             TrackerCollection trackerCollection = await Client.Tracker.All(parameters);
 
@@ -89,7 +88,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         {
             UseVCR("all_parameter_hand_off");
 
-            All filters = new All
+            Parameters.Tracker.All filters = new()
             {
                 TrackingCode = "0",
                 Carrier = "test_carrier",
@@ -106,8 +105,8 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             };
             trackerCollection.Trackers.Add(fakeTracker);
 
-            Assert.Equal(filters.TrackingCode, ((All)trackerCollection.Filters!).TrackingCode);
-            Assert.Equal(filters.Carrier, ((All)trackerCollection.Filters!).Carrier);
+            Assert.Equal(filters.TrackingCode, ((Parameters.Tracker.All)trackerCollection.Filters!).TrackingCode);
+            Assert.Equal(filters.Carrier, ((Parameters.Tracker.All)trackerCollection.Filters!).Carrier);
         }
 
         #endregion

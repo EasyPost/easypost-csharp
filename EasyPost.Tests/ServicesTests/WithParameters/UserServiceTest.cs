@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.User;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -40,7 +39,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object> { { "name", "Test User" } };
 
-            CreateChild parameters = Fixtures.Parameters.Users.CreateChild(data);
+            Parameters.User.CreateChild parameters = Fixtures.Parameters.Users.CreateChild(data);
 
             User user = await Client.User.CreateChild(parameters);
             CleanUpAfterTest(user.Id);
@@ -57,7 +56,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         {
             UseVCR("update_brand");
 
-            CreateChild userParameters = new()
+            Parameters.User.CreateChild userParameters = new()
             {
                 Name = "Test User",
             };
@@ -65,7 +64,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             CleanUpAfterTest(user.Id);
 
             const string color = "#123456";
-            UpdateBrand brandParameters = new()
+            Parameters.User.UpdateBrand brandParameters = new()
             {
                 ColorHexCode = color,
             };
@@ -84,7 +83,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         {
             UseVCR("update");
 
-            CreateChild userParameters = new()
+            Parameters.User.CreateChild userParameters = new()
             {
                 Name = "Test User",
             };
@@ -92,7 +91,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             CleanUpAfterTest(user.Id);
 
             const string testName = "New Name";
-            Update userUpdateParameters = new()
+            Parameters.User.Update userUpdateParameters = new()
             {
                 Name = testName,
             };

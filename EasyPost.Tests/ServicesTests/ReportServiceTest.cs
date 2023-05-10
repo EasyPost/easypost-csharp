@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Report;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -125,7 +124,7 @@ namespace EasyPost.Tests.ServicesTests
 
             ReportCollection reportCollection = await Client.Report.All(type, filters);
 
-            Assert.Equal(type, ((All)reportCollection.Filters!).Type);
+            Assert.Equal(type, ((Parameters.Report.All)reportCollection.Filters!).Type);
         }
 
         [Fact]

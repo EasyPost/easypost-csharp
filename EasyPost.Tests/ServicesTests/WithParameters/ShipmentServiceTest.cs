@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Shipment;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -29,7 +28,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = Fixtures.FullShipment;
 
-            Create parameters = Fixtures.Parameters.Shipments.Create(data);
+            Parameters.Shipment.Create parameters = Fixtures.Parameters.Shipments.Create(data);
 
             Shipment shipment = await Client.Shipment.Create(parameters);
 
@@ -51,7 +50,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Dictionary<string, object> shipmentData = Fixtures.BasicShipment;
             shipmentData["tax_identifiers"] = new List<Dictionary<string, object>> { Fixtures.TaxIdentifier };
 
-            Create parameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create parameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
             Shipment shipment = await Client.Shipment.Create(parameters);
 
@@ -70,7 +69,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Dictionary<string, object> data = Fixtures.BasicShipment;
             data["carbon_offset"] = true;
 
-            Create parameters = Fixtures.Parameters.Shipments.Create(data);
+            Parameters.Shipment.Create parameters = Fixtures.Parameters.Shipments.Create(data);
 
             Shipment shipment = await Client.Shipment.Create(parameters);
 
@@ -109,7 +108,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 { "parcel", new Dictionary<string, object> { { "id", parcel.Id } } },
             };
 
-            Create parameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create parameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
             Dictionary<string, object> dictionary = parameters.ToDictionary();
 
@@ -133,7 +132,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Dictionary<string, object> data = Fixtures.OneCallBuyShipment;
             data["carbon_offset"] = true;
 
-            Create parameters = Fixtures.Parameters.Shipments.Create(data);
+            Parameters.Shipment.Create parameters = Fixtures.Parameters.Shipments.Create(data);
 
             Shipment shipment = await Client.Shipment.Create(parameters);
 
@@ -151,7 +150,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize } };
 
-            All parameters = Fixtures.Parameters.Shipments.All(data);
+            Parameters.Shipment.All parameters = Fixtures.Parameters.Shipments.All(data);
 
             ShipmentCollection shipmentCollection = await Client.Shipment.All(parameters);
 
@@ -174,7 +173,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         {
             UseVCR("all_parameter_hand_off");
 
-            All filters = new All
+            Parameters.Shipment.All filters = new()
             {
                 IncludeChildren = true,
                 Purchased = false,
@@ -184,9 +183,9 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             // Filters should be cached in in the resultant collection object.
             Assert.NotNull(shipmentCollection.Filters);
-            Assert.IsType<All>(shipmentCollection.Filters);
+            Assert.IsType<Parameters.Shipment.All>(shipmentCollection.Filters);
 
-            All cachedFilters = (All)shipmentCollection.Filters;
+            Parameters.Shipment.All cachedFilters = (Parameters.Shipment.All)shipmentCollection.Filters;
             Assert.Equal(filters.IncludeChildren, cachedFilters.IncludeChildren);
             Assert.Equal(filters.Purchased, cachedFilters.Purchased);
         }
@@ -203,10 +202,10 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
             // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
             shipmentData["insurance"] = 0;
-            Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
 
-            Insure insureParameters = new Insure
+            Parameters.Shipment.Insure insureParameters = new()
             {
                 Amount = "100",
             };
@@ -224,13 +223,13 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             UseVCR("buy");
 
             Dictionary<string, object> shipmentData = Fixtures.FullShipment;
-            Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
             // buy with rate ID
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
             Rate rate = shipment.LowestRate();
 
-            Buy buyParameters = new Buy(rate.Id);
+            Parameters.Shipment.Buy buyParameters = new(rate.Id);
             shipment = await Client.Shipment.Buy(shipment.Id, buyParameters);
 
             Assert.NotNull(shipment.PostageLabel);
@@ -239,7 +238,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             shipment = await Client.Shipment.Create(shipmentParameters);
             rate = shipment.LowestRate();
 
-            buyParameters = new Buy(rate);
+            buyParameters = new(rate);
             shipment = await Client.Shipment.Buy(shipment.Id, buyParameters);
 
             Assert.NotNull(shipment.PostageLabel);
@@ -253,11 +252,11 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             UseVCR("buy_with_carbon_offset");
 
             Dictionary<string, object> shipmentData = Fixtures.FullShipment;
-            Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
             Rate rate = shipment.LowestRate();
 
-            Buy buyParameters = new Buy(rate)
+            Parameters.Shipment.Buy buyParameters = new(rate)
             {
                 CarbonOffset = true,
             };
@@ -281,11 +280,11 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             EndShipper endShipper = await Client.EndShipper.Create(endShipperParameters);
 
             Dictionary<string, object> shipmentData = Fixtures.FullShipment;
-            Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
             Rate rate = shipment.LowestRate();
 
-            Buy buyParameters = new Buy(rate)
+            Parameters.Shipment.Buy buyParameters = new(rate)
             {
                 EndShipperId = endShipper.Id,
             };
@@ -303,10 +302,10 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             UseVCR("generate_label");
 
             Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
-            Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
 
-            GenerateLabel generateLabelParameters = new GenerateLabel
+            Parameters.Shipment.GenerateLabel generateLabelParameters = new()
             {
                 FileFormat = "ZPL",
             };
@@ -324,10 +323,10 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             UseVCR("regenerate_rates");
 
             Dictionary<string, object> shipmentData = Fixtures.FullShipment;
-            Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
 
-            RegenerateRates regenerateRatesParameters = new RegenerateRates();
+            Parameters.Shipment.RegenerateRates regenerateRatesParameters = new();
 
             await Client.Shipment.RegenerateRates(shipment.Id, regenerateRatesParameters);
 
@@ -348,11 +347,11 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             UseVCR("regenerate_rates_with_carbon_offset");
 
             Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
-            Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
             List<Rate> baseRates = shipment.Rates;
 
-            RegenerateRates regenerateRatesParameters = new RegenerateRates
+            Parameters.Shipment.RegenerateRates regenerateRatesParameters = new()
             {
                 CarbonOffset = true,
             };
@@ -375,7 +374,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Shipment shipment = await Client.Shipment.Create(Fixtures.Parameters.Shipments.Create(Fixtures.BasicShipment));
 
-            RetrieveEstimatedDeliveryDate retrieveEstimatedDeliveryDatesParameters = new RetrieveEstimatedDeliveryDate
+            Parameters.Shipment.RetrieveEstimatedDeliveryDate retrieveEstimatedDeliveryDatesParameters = new()
             {
                 PlannedShipDate = Fixtures.PlannedShipDate,
             };

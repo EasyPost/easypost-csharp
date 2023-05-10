@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Report;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -34,7 +33,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 { "type", Fixtures.ReportType },
             };
 
-            Create parameters = Fixtures.Parameters.Reports.Create(data);
+            Parameters.Report.Create parameters = Fixtures.Parameters.Reports.Create(data);
 
             Report report = await Client.Report.Create(parameters);
 
@@ -63,7 +62,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 { "type", "shipment" },
             };
 
-            Create parameters = Fixtures.Parameters.Reports.Create(data);
+            Parameters.Report.Create parameters = Fixtures.Parameters.Reports.Create(data);
 
             Report report = await Client.Report.Create(parameters);
 
@@ -92,7 +91,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 { "type", "shipment" },
             };
 
-            Create parameters = Fixtures.Parameters.Reports.Create(data);
+            Parameters.Report.Create parameters = Fixtures.Parameters.Reports.Create(data);
 
             Report report = await Client.Report.Create(parameters);
 
@@ -113,7 +112,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize }, { "type", "shipment" } };
 
-            All parameters = Fixtures.Parameters.Reports.All(data);
+            Parameters.Report.All parameters = Fixtures.Parameters.Reports.All(data);
 
             ReportCollection reportCollection = await Client.Report.All(parameters);
 
@@ -140,11 +139,11 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize }, { "type", type } };
 
-            All parameters = Fixtures.Parameters.Reports.All(data);
+            Parameters.Report.All parameters = Fixtures.Parameters.Reports.All(data);
 
             ReportCollection reportCollection = await Client.Report.All(parameters);
 
-            Assert.Equal(type, ((All)reportCollection.Filters!).Type);
+            Assert.Equal(type, ((Parameters.Report.All)reportCollection.Filters!).Type);
         }
 
         [Fact]
@@ -156,7 +155,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> data = new Dictionary<string, object>() { { "page_size", Fixtures.PageSize } }; // missing type
 
-            All parameters = Fixtures.Parameters.Reports.All(data);
+            Parameters.Report.All parameters = Fixtures.Parameters.Reports.All(data);
 
             await Assert.ThrowsAsync<MissingParameterError>(() => Client.Report.All(parameters));
         }
