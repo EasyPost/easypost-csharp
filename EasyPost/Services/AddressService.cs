@@ -5,7 +5,6 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Address;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -70,7 +69,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An <see cref="Address"/> object.</returns>
         [CrudOperations.Create]
-        public async Task<Address> Create(Create parameters, CancellationToken cancellationToken = default)
+        public async Task<Address> Create(Parameters.Address.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<Address>(Method.Post, "addresses", cancellationToken, parameters.ToDictionary());
@@ -94,7 +93,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An <see cref="Address"/> object.</returns>
         [CrudOperations.Create]
-        public async Task<Address> CreateAndVerify(Create parameters, CancellationToken cancellationToken = default)
+        public async Task<Address> CreateAndVerify(Parameters.Address.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<Address>(Method.Post, "addresses/create_and_verify", cancellationToken, parameters.ToDictionary(), "address");
@@ -131,7 +130,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="AddressCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<AddressCollection> All(All parameters, CancellationToken cancellationToken = default)
+        public async Task<AddressCollection> All(Parameters.Address.All parameters, CancellationToken cancellationToken = default)
         {
             AddressCollection collection = await RequestAsync<AddressCollection>(Method.Get, "addresses", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
@@ -147,7 +146,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="AddressCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<AddressCollection> GetNextPage(AddressCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<AddressCollection, All>(async parameters => await All(parameters, cancellationToken), collection.Addresses, pageSize);
+        public async Task<AddressCollection> GetNextPage(AddressCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<AddressCollection, Parameters.Address.All>(async parameters => await All(parameters, cancellationToken), collection.Addresses, pageSize);
 
         /// <summary>
         ///     Retrieve an Address from its id.

@@ -10,7 +10,6 @@ using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.ReferralCustomer;
 using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -57,7 +56,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="ReferralCustomer"/> instance.</returns>
         [CrudOperations.Create]
-        public async Task<ReferralCustomer> CreateReferral(CreateReferralCustomer parameters, CancellationToken cancellationToken = default)
+        public async Task<ReferralCustomer> CreateReferral(Parameters.ReferralCustomer.CreateReferralCustomer parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal CreateReferral method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<ReferralCustomer>(Method.Post, "referral_customers", cancellationToken, parameters.ToDictionary());
@@ -88,7 +87,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="ReferralCustomerCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<ReferralCustomerCollection> All(All parameters, CancellationToken cancellationToken = default)
+        public async Task<ReferralCustomerCollection> All(Parameters.ReferralCustomer.All parameters, CancellationToken cancellationToken = default)
         {
             ReferralCustomerCollection collection = await RequestAsync<ReferralCustomerCollection>(Method.Get, "referral_customers", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
@@ -105,7 +104,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="ReferralCustomerCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<ReferralCustomerCollection> GetNextPage(ReferralCustomerCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ReferralCustomerCollection, All>(async parameters => await All(parameters, cancellationToken), collection.ReferralCustomers, pageSize);
+        public async Task<ReferralCustomerCollection> GetNextPage(ReferralCustomerCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ReferralCustomerCollection, Parameters.ReferralCustomer.All>(async parameters => await All(parameters, cancellationToken), collection.ReferralCustomers, pageSize);
 
         /// <summary>
         ///     Add a credit card to a <see cref="ReferralCustomer"/>.

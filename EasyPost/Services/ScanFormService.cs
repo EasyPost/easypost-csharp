@@ -5,7 +5,6 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.ScanForm;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services
@@ -49,7 +48,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="ScanForm"/> objects.</returns>
         [CrudOperations.Create]
-        public async Task<ScanForm> Create(Create parameters, CancellationToken cancellationToken = default)
+        public async Task<ScanForm> Create(Parameters.ScanForm.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<ScanForm>(Method.Post, "scan_forms", cancellationToken, parameters.ToDictionary());
@@ -78,7 +77,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="ScanFormCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<ScanFormCollection> All(All parameters, CancellationToken cancellationToken = default)
+        public async Task<ScanFormCollection> All(Parameters.ScanForm.All parameters, CancellationToken cancellationToken = default)
         {
             ScanFormCollection collection = await RequestAsync<ScanFormCollection>(Method.Get, "scan_forms", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
@@ -95,7 +94,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="ScanFormCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<ScanFormCollection> GetNextPage(ScanFormCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ScanFormCollection, All>(async parameters => await All(parameters, cancellationToken), collection.ScanForms, pageSize);
+        public async Task<ScanFormCollection> GetNextPage(ScanFormCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ScanFormCollection, Parameters.ScanForm.All>(async parameters => await All(parameters, cancellationToken), collection.ScanForms, pageSize);
 
         /// <summary>
         ///     Retrieve a <see cref="ScanForm"/>.

@@ -6,7 +6,6 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Webhook;
 using EasyPost.Utilities;
 using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Attributes;
@@ -53,7 +52,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="Webhook"/> objects.</returns>
         [CrudOperations.Create]
-        public async Task<Webhook> Create(Create parameters, CancellationToken cancellationToken = default)
+        public async Task<Webhook> Create(Parameters.Webhook.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<Webhook>(Method.Post, "webhooks", cancellationToken, parameters.ToDictionary());
@@ -77,7 +76,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="Webhook"/> instances.</returns>
         [CrudOperations.Read]
-        public async Task<List<Webhook>> All(All parameters, CancellationToken cancellationToken = default) => await RequestAsync<List<Webhook>>(Method.Get, "webhooks", cancellationToken, parameters.ToDictionary(), "webhooks");
+        public async Task<List<Webhook>> All(Parameters.Webhook.All parameters, CancellationToken cancellationToken = default) => await RequestAsync<List<Webhook>>(Method.Get, "webhooks", cancellationToken, parameters.ToDictionary(), "webhooks");
 
         /// <summary>
         ///     Retrieve a <see cref="Webhook"/>.
@@ -112,7 +111,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Webhook"/>.</returns>
         [CrudOperations.Update]
-        public async Task<Webhook> Update(string id, Update parameters, CancellationToken cancellationToken = default)
+        public async Task<Webhook> Update(string id, Parameters.Webhook.Update parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Webhook>(Method.Put, $"webhooks/{id}", cancellationToken, parameters.ToDictionary());
         }

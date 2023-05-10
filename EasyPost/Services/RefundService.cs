@@ -5,7 +5,6 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Refund;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -50,7 +49,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="Refund"/> objects.</returns>
         [CrudOperations.Create]
-        public async Task<List<Refund>> Create(Create parameters, CancellationToken cancellationToken = default)
+        public async Task<List<Refund>> Create(Parameters.Refund.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<List<Refund>>(Method.Post, "refunds", cancellationToken, parameters.ToDictionary());
@@ -79,7 +78,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="RefundCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<RefundCollection> All(All parameters, CancellationToken cancellationToken = default)
+        public async Task<RefundCollection> All(Parameters.Refund.All parameters, CancellationToken cancellationToken = default)
         {
             RefundCollection collection = await RequestAsync<RefundCollection>(Method.Get, "refunds", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
@@ -96,7 +95,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="RefundCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<RefundCollection> GetNextPage(RefundCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<RefundCollection, All>(async parameters => await All(parameters, cancellationToken), collection.Refunds, pageSize);
+        public async Task<RefundCollection> GetNextPage(RefundCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<RefundCollection, Parameters.Refund.All>(async parameters => await All(parameters, cancellationToken), collection.Refunds, pageSize);
 
         /// <summary>
         ///     Retrieve a <see cref="Refund"/>.

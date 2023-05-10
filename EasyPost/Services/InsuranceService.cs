@@ -5,7 +5,6 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Insurance;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -50,7 +49,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An <see cref="Insurance"/> object.</returns>
         [CrudOperations.Create]
-        public async Task<Insurance> Create(Create parameters, CancellationToken cancellationToken = default)
+        public async Task<Insurance> Create(Parameters.Insurance.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<Insurance>(Method.Post, "insurances", cancellationToken, parameters.ToDictionary());
@@ -79,7 +78,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An <see cref="InsuranceCollection"/> instance containing <see cref="Insurance"/>s instances.</returns>
         [CrudOperations.Read]
-        public async Task<InsuranceCollection> All(All parameters, CancellationToken cancellationToken = default)
+        public async Task<InsuranceCollection> All(Parameters.Insurance.All parameters, CancellationToken cancellationToken = default)
         {
             InsuranceCollection collection = await RequestAsync<InsuranceCollection>(Method.Get, "insurances", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
@@ -96,7 +95,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="InsuranceCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<InsuranceCollection> GetNextPage(InsuranceCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<InsuranceCollection, All>(async parameters => await All(parameters, cancellationToken), collection.Insurances, pageSize);
+        public async Task<InsuranceCollection> GetNextPage(InsuranceCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<InsuranceCollection, Parameters.Insurance.All>(async parameters => await All(parameters, cancellationToken), collection.Insurances, pageSize);
 
         /// <summary>
         ///     Retrieve an <see cref="Insurance"/>.

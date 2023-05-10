@@ -6,7 +6,6 @@ using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Event;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services
@@ -51,7 +50,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="EventCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<EventCollection> All(All parameters, CancellationToken cancellationToken = default)
+        public async Task<EventCollection> All(Parameters.Event.All parameters, CancellationToken cancellationToken = default)
         {
             EventCollection collection = await RequestAsync<EventCollection>(Method.Get, "events", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
@@ -68,7 +67,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="EventCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<EventCollection> GetNextPage(EventCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<EventCollection, All>(async parameters => await All((All)parameters, cancellationToken), collection.Events, pageSize);
+        public async Task<EventCollection> GetNextPage(EventCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<EventCollection, Parameters.Event.All>(async parameters => await All(parameters, cancellationToken), collection.Events, pageSize);
 
         /// <summary>
         ///     Retrieve an <see cref="Event"/>.

@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.User;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -49,7 +48,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The created child <see cref="User"/>.</returns>
         [CrudOperations.Create]
-        public async Task<User> CreateChild(CreateChild parameters, CancellationToken cancellationToken = default)
+        public async Task<User> CreateChild(Parameters.User.CreateChild parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal CreateChild method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<User>(Method.Post, "users", cancellationToken, parameters.ToDictionary());
@@ -105,7 +104,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Brand"/>.</returns>
         [CrudOperations.Create]
-        public async Task<Brand> UpdateBrand(string id, UpdateBrand parameters, CancellationToken cancellationToken = default)
+        public async Task<Brand> UpdateBrand(string id, Parameters.User.UpdateBrand parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Brand>(Method.Put, $"users/{id}/brand", cancellationToken, parameters.ToDictionary());
         }
@@ -133,7 +132,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="User"/>.</returns>
         [CrudOperations.Update]
-        public async Task<User> Update(string id, Update parameters, CancellationToken cancellationToken = default)
+        public async Task<User> Update(string id, Parameters.User.Update parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<User>(Method.Put, $"users/{id}", cancellationToken, parameters.ToDictionary());
         }

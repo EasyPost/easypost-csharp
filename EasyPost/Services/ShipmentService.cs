@@ -5,7 +5,6 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Shipment;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -52,7 +51,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="Shipment"/> objects.</returns>
         [CrudOperations.Create]
-        public async Task<Shipment> Create(Create parameters, CancellationToken cancellationToken = default)
+        public async Task<Shipment> Create(Parameters.Shipment.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<Shipment>(Method.Post, "shipments", cancellationToken, parameters.ToDictionary());
@@ -81,7 +80,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="ShipmentCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<ShipmentCollection> All(All parameters, CancellationToken cancellationToken = default)
+        public async Task<ShipmentCollection> All(Parameters.Shipment.All parameters, CancellationToken cancellationToken = default)
         {
             ShipmentCollection collection = await RequestAsync<ShipmentCollection>(Method.Get, "shipments", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
@@ -98,7 +97,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="ShipmentCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<ShipmentCollection> GetNextPage(ShipmentCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ShipmentCollection, All>(async parameters => await All(parameters, cancellationToken), collection.Shipments, pageSize);
+        public async Task<ShipmentCollection> GetNextPage(ShipmentCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ShipmentCollection, Parameters.Shipment.All>(async parameters => await All(parameters, cancellationToken), collection.Shipments, pageSize);
 
         /// <summary>
         ///     Retrieve a <see cref="Shipment"/>.
@@ -150,7 +149,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="RateWithEstimatedDeliveryDate"/>s.</returns>
         [CrudOperations.Read]
-        public async Task<List<RateWithEstimatedDeliveryDate>> RetrieveEstimatedDeliveryDate(string id, RetrieveEstimatedDeliveryDate parameters, CancellationToken cancellationToken = default)
+        public async Task<List<RateWithEstimatedDeliveryDate>> RetrieveEstimatedDeliveryDate(string id, Parameters.Shipment.RetrieveEstimatedDeliveryDate parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<List<RateWithEstimatedDeliveryDate>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", cancellationToken, parameters.ToDictionary(), "rates");
         }
@@ -220,7 +219,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>This updated <see cref="Shipment"/> instance.</returns>
         [CrudOperations.Update]
-        public async Task<Shipment> Buy(string id, Buy parameters, CancellationToken cancellationToken = default)
+        public async Task<Shipment> Buy(string id, Parameters.Shipment.Buy parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/buy", cancellationToken, parameters.ToDictionary());
         }
@@ -250,7 +249,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Shipment"/>.</returns>
         [CrudOperations.Update]
-        public async Task<Shipment> GenerateLabel(string id, GenerateLabel parameters, CancellationToken cancellationToken = default)
+        public async Task<Shipment> GenerateLabel(string id, Parameters.Shipment.GenerateLabel parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Shipment>(Method.Get, $"shipments/{id}/label", cancellationToken, parameters.ToDictionary());
         }
@@ -280,7 +279,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Shipment"/>.</returns>
         [CrudOperations.Update]
-        public async Task<Shipment> Insure(string id, Insure parameters, CancellationToken cancellationToken = default)
+        public async Task<Shipment> Insure(string id, Parameters.Shipment.Insure parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/insure", cancellationToken, parameters.ToDictionary());
         }
@@ -324,7 +323,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Shipment"/>.</returns>
         [CrudOperations.Update]
-        public async Task<Shipment> RegenerateRates(string id, RegenerateRates parameters, CancellationToken cancellationToken = default)
+        public async Task<Shipment> RegenerateRates(string id, Parameters.Shipment.RegenerateRates parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/rerate", cancellationToken, parameters.ToDictionary());
         }

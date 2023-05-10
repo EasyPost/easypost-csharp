@@ -5,7 +5,6 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.CarrierAccount;
 using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -61,7 +60,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="CarrierAccount"/> object.</returns>
         [CrudOperations.Create]
-        public async Task<CarrierAccount> Create(Create parameters, CancellationToken cancellationToken = default)
+        public async Task<CarrierAccount> Create(Parameters.CarrierAccount.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             if (parameters.Type == null)
@@ -117,7 +116,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="CarrierAccount"/>.</returns>
         [CrudOperations.Update]
-        public async Task<CarrierAccount> Update(string id, Update parameters, CancellationToken cancellationToken = default)
+        public async Task<CarrierAccount> Update(string id, Parameters.CarrierAccount.Update parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", cancellationToken, parameters.ToDictionary());
         }

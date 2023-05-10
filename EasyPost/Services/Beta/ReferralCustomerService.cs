@@ -6,7 +6,6 @@ using EasyPost.Exceptions.API;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Models.API.Beta;
-using EasyPost.Parameters.ReferralCustomer;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services.Beta
@@ -71,7 +70,7 @@ namespace EasyPost.Services.Beta
         /// <returns>A <see cref="PaymentMethod"/> object.</returns>
         /// <exception cref="ApiError">When the request fails.</exception>
         [CrudOperations.Update]
-        public async Task<PaymentMethod> AddPaymentMethod(AddPaymentMethod parameters, CancellationToken cancellationToken = default)
+        public async Task<PaymentMethod> AddPaymentMethod(Parameters.ReferralCustomer.AddPaymentMethod parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<PaymentMethod>(Method.Post, "referral_customers/payment_method", cancellationToken, parameters.ToDictionary(), overrideApiVersion: ApiVersion.Beta);
         }
@@ -104,7 +103,7 @@ namespace EasyPost.Services.Beta
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="PaymentRefund"/> object.</returns>
         [CrudOperations.Update]
-        public async Task<PaymentRefund> RefundByAmount(RefundByAmount parameters, CancellationToken cancellationToken = default)
+        public async Task<PaymentRefund> RefundByAmount(Parameters.ReferralCustomer.RefundByAmount parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<PaymentRefund>(Method.Post, "referral_customers/refunds", cancellationToken, parameters.ToDictionary(), overrideApiVersion: ApiVersion.Beta);
         }
@@ -137,7 +136,7 @@ namespace EasyPost.Services.Beta
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="PaymentRefund"/> object.</returns>
         [CrudOperations.Update]
-        public async Task<PaymentRefund> RefundByPaymentLog(RefundByPaymentLog parameters, CancellationToken cancellationToken = default)
+        public async Task<PaymentRefund> RefundByPaymentLog(Parameters.ReferralCustomer.RefundByPaymentLog parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<PaymentRefund>(Method.Post, "referral_customers/refunds", cancellationToken, parameters.ToDictionary(), overrideApiVersion: ApiVersion.Beta);
         }
