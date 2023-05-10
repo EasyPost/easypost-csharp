@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Shipments;
+using EasyPost.Parameters.Shipment;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
-using All = EasyPost.Parameters.Refunds.All;
+using All = EasyPost.Parameters.Refund.All;
 
 namespace EasyPost.Tests.ServicesTests.WithParameters
 {
@@ -41,7 +41,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 { "tracking_codes", new List<string> { retrievedShipment.TrackingCode } },
             };
 
-            Parameters.Refunds.Create refundParameters = Fixtures.Parameters.Refunds.Create(refundData);
+            Parameters.Refund.Create refundParameters = Fixtures.Parameters.Refunds.Create(refundData);
 
             List<Refund> refunds = await Client.Refund.Create(refundParameters);
 

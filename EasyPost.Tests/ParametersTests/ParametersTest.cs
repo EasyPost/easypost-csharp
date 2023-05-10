@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Parameters;
-using EasyPost.Parameters.Addresses;
+using EasyPost.Parameters.Address;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -78,7 +78,7 @@ namespace EasyPost.Tests.ParametersTests
             };
 
             // Users can pass in an existing Address object as the "ToAddress" parameter
-            var parameters = new Parameters.Shipments.Create
+            var parameters = new Parameters.Shipment.Create
             {
                 IsReturn = false,
                 ToAddress = preExistingAddressObject,
@@ -93,7 +93,7 @@ namespace EasyPost.Tests.ParametersTests
             Assert.Equal(streetA, addressData["street1"]);
 
             // Users can also pass in an Addresses.Create parameter object as the "ToAddress" parameter
-            parameters = new Parameters.Shipments.Create
+            parameters = new Parameters.Shipment.Create
             {
                 IsReturn = false,
                 ToAddress = newAddressCreationParameters,
@@ -142,7 +142,7 @@ namespace EasyPost.Tests.ParametersTests
             Assert.Equal(street, addressData["street1"]);
 
             // Using the Addresses.Create parameter object as a nested parameter object
-            var shipmentCreationParameters = new Parameters.Shipments.Create
+            var shipmentCreationParameters = new Parameters.Shipment.Create
             {
                 IsReturn = false,
                 ToAddress = addressCreationParameters,

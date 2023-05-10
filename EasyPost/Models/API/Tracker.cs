@@ -4,7 +4,7 @@ using System.Linq;
 using EasyPost._base;
 using EasyPost.Models.Shared;
 using EasyPost.Parameters;
-using EasyPost.Parameters.Trackers;
+using EasyPost.Parameters.Tracker;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API

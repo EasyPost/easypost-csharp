@@ -5,7 +5,7 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.ScanForms;
+using EasyPost.Parameters.ScanForm;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services
@@ -66,7 +66,7 @@ namespace EasyPost.Services
         public async Task<ScanFormCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             ScanFormCollection collection = await RequestAsync<ScanFormCollection>(Method.Get, "scan_forms", cancellationToken, parameters);
-            collection.Filters = Parameters.ScanForms.All.FromDictionary(parameters);
+            collection.Filters = Parameters.ScanForm.All.FromDictionary(parameters);
             return collection;
         }
 

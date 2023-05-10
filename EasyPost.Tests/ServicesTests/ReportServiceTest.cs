@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Reports;
+using EasyPost.Parameters.Report;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;

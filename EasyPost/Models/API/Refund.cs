@@ -3,7 +3,7 @@ using System.Linq;
 using EasyPost._base;
 using EasyPost.Models.Shared;
 using EasyPost.Parameters;
-using EasyPost.Parameters.Refunds;
+using EasyPost.Parameters.Refund;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API

@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Parameters;
-using EasyPost.Parameters.Batches;
+using EasyPost.Parameters.Batch;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -88,7 +88,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
 
-            Parameters.Shipments.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
 
@@ -112,7 +112,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
 
-            Parameters.Shipments.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
             Create batchParameters = new Create
             {
@@ -136,7 +136,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
 
-            Parameters.Shipments.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
 
@@ -161,7 +161,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
 
-            Parameters.Shipments.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
             Create batchParameters = new Create
             {
@@ -202,7 +202,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
 
-            Parameters.Shipments.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
             Create batchParameters = new Create
             {
@@ -243,7 +243,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
 
-            Parameters.Shipments.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
 
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
 

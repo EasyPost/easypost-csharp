@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Batches;
+using EasyPost.Parameters.Batch;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -74,7 +74,7 @@ namespace EasyPost.Services
         ///     Create and buy a <see cref="Batch"/> in one API call.
         ///     <a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="Parameters.Batches.Create"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Batch.Create"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="Batch"/> object.</returns>
         [CrudOperations.Create]
@@ -95,7 +95,7 @@ namespace EasyPost.Services
         public async Task<BatchCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             BatchCollection collection = await RequestAsync<BatchCollection>(Method.Get, "batches", cancellationToken, parameters);
-            collection.Filters = Parameters.Batches.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Batch.All.FromDictionary(parameters);
             return collection;
         }
 
@@ -103,7 +103,7 @@ namespace EasyPost.Services
         ///     List all <see cref="Batch"/> objects.
         ///     <a href="https://www.easypost.com/docs/api#list-all-batches">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="Parameters.Batches.All"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Batch.All"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="BatchCollection"/> instance.</returns>
         [CrudOperations.Read]
@@ -217,7 +217,7 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#batch-labels">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to generate a label for.</param>
-        /// <param name="parameters"><see cref="Parameters.Batches.GenerateLabel"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Batch.GenerateLabel"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An updated <see cref="Batch"/> object.</returns>
         [CrudOperations.Update]
@@ -246,7 +246,7 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#manifesting-scan-form">Related API documentation</a>.
         /// </summary>
         /// <param name="id">String representing a Batch. Starts with "batch_".</param>
-        /// <param name="parameters"><see cref="Parameters.Batches.GenerateScanForm"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Batch.GenerateScanForm"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>This updated <see cref="Batch"/> instance.</returns>
         [CrudOperations.Update]

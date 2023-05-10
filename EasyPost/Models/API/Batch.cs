@@ -2,7 +2,7 @@
 using System.Linq;
 using EasyPost._base;
 using EasyPost.Models.Shared;
-using EasyPost.Parameters.Shipments;
+using EasyPost.Parameters.Shipment;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API

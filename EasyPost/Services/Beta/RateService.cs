@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API.Beta;
-using EasyPost.Parameters.Beta.Rates;
+using EasyPost.Parameters.Beta.Rate;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 

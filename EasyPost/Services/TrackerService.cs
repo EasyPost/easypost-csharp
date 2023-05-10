@@ -6,7 +6,7 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Trackers;
+using EasyPost.Parameters.Tracker;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -102,7 +102,7 @@ namespace EasyPost.Services
         {
             // TODO: When we adopt parameter objects as the only way to pass parameters, we don't need to do this object -> dictionary -> object conversion to store the filters.
             TrackerCollection collection = await RequestAsync<TrackerCollection>(Method.Get, "trackers", cancellationToken, parameters);
-            collection.Filters = Parameters.Trackers.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Tracker.All.FromDictionary(parameters);
             return collection;
         }
 
@@ -110,7 +110,7 @@ namespace EasyPost.Services
         ///     List all <see cref="Tracker"/>s.
         ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-trackers">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="Parameters.Trackers.All"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Tracker.All"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="TrackerCollection"/> instance.</returns>
         [CrudOperations.Read]

@@ -2,7 +2,7 @@
 using System.Linq;
 using EasyPost._base;
 using EasyPost.Models.Shared;
-using EasyPost.Parameters.Events;
+using EasyPost.Parameters.Event;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API

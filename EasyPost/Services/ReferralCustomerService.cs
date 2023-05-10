@@ -10,7 +10,7 @@ using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.ReferralCustomers;
+using EasyPost.Parameters.ReferralCustomer;
 using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
@@ -75,7 +75,7 @@ namespace EasyPost.Services
         public async Task<ReferralCustomerCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             ReferralCustomerCollection collection = await RequestAsync<ReferralCustomerCollection>(Method.Get, "referral_customers", cancellationToken, parameters);
-            collection.Filters = Parameters.ReferralCustomers.All.FromDictionary(parameters);
+            collection.Filters = Parameters.ReferralCustomer.All.FromDictionary(parameters);
             return collection;
         }
 

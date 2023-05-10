@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API.Beta;
-using EasyPost.Parameters.Beta.Rates;
+using EasyPost.Parameters.Beta.Rate;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using Xunit;

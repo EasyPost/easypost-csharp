@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using EasyPost.Exceptions.API;
 using EasyPost.Models.API;
 using EasyPost.Models.API.Beta;
-using EasyPost.Parameters.ReferralCustomers;
+using EasyPost.Parameters.ReferralCustomer;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;

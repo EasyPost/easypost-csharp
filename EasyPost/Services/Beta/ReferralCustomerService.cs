@@ -6,7 +6,7 @@ using EasyPost.Exceptions.API;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Models.API.Beta;
-using EasyPost.Parameters.ReferralCustomers;
+using EasyPost.Parameters.ReferralCustomer;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services.Beta
@@ -66,7 +66,7 @@ namespace EasyPost.Services.Beta
         ///     This function will fail if called against a non-Referral Customer Client.
         ///     <a href="https://www.easypost.com/docs/api#add-payment-method-to-referral-user">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="Parameters.ReferralCustomers.AddPaymentMethod"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.ReferralCustomer.AddPaymentMethod"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="PaymentMethod"/> object.</returns>
         /// <exception cref="ApiError">When the request fails.</exception>
@@ -100,7 +100,7 @@ namespace EasyPost.Services.Beta
         ///     Refund will be issued to the user's original payment method.
         ///     <a href="https://www.easypost.com/docs/api#refund-a-referral-user">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="Parameters.ReferralCustomers.RefundByAmount"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.ReferralCustomer.RefundByAmount"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="PaymentRefund"/> object.</returns>
         [CrudOperations.Update]
@@ -133,7 +133,7 @@ namespace EasyPost.Services.Beta
         ///     Refund will be issued to the user's original payment method.
         ///     <a href="https://www.easypost.com/docs/api#refund-a-referral-user">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="Parameters.ReferralCustomers.RefundByPaymentLog"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.ReferralCustomer.RefundByPaymentLog"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="PaymentRefund"/> object.</returns>
         [CrudOperations.Update]

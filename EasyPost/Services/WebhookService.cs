@@ -6,7 +6,7 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Webhooks;
+using EasyPost.Parameters.Webhook;
 using EasyPost.Utilities;
 using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Attributes;

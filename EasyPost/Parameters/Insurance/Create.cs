@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using EasyPost.Parameters.Address;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Parameters.Insurance
@@ -25,7 +26,7 @@ namespace EasyPost.Parameters.Insurance
         public string? Carrier { get; set; }
 
         /// <summary>
-        ///     The origin <see cref="Models.API.Address"/> (or <see cref="Parameters.Addresses.Create"/> parameters) for the shipment.
+        ///     The origin <see cref="Models.API.Address"/> (or <see cref="Address.Create"/> parameters) for the shipment.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "insurance", "from_address")]
         public IAddressParameter? FromAddress { get; set; }
@@ -37,7 +38,7 @@ namespace EasyPost.Parameters.Insurance
         public string? Reference { get; set; }
 
         /// <summary>
-        ///     The destination <see cref="Models.API.Address"/> (or <see cref="Parameters.Addresses.Create"/> parameters) for the shipment.
+        ///     The destination <see cref="Models.API.Address"/> (or <see cref="Address.Create"/> parameters) for the shipment.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "insurance", "to_address")]
         public IAddressParameter? ToAddress { get; set; }

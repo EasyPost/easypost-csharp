@@ -5,7 +5,7 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Refunds;
+using EasyPost.Parameters.Refund;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -60,14 +60,14 @@ namespace EasyPost.Services
         ///     List all <see cref="Refund"/>s.
         ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-refunds">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">Parameters to filter the list of <see cref="Refund"/>s on. Refer to <see cref="Parameters.Refunds.All"/> for more information.</param>
+        /// <param name="parameters">Parameters to filter the list of <see cref="Refund"/>s on. Refer to <see cref="Parameters.Refund.All"/> for more information.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="RefundCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<RefundCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             RefundCollection collection = await RequestAsync<RefundCollection>(Method.Get, "refunds", cancellationToken, parameters);
-            collection.Filters = Parameters.Refunds.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Refund.All.FromDictionary(parameters);
             return collection;
         }
 

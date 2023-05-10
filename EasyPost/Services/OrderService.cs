@@ -5,7 +5,7 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Orders;
+using EasyPost.Parameters.Order;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -118,7 +118,7 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#buy-an-order">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Order"/> to purchase.</param>
-        /// <param name="parameters"><see cref="Parameters.Orders.Buy"/> parameters set.</param>
+        /// <param name="parameters"><see cref="Parameters.Order.Buy"/> parameters set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An updated <see cref="Order"/>.</returns>
         [CrudOperations.Update]

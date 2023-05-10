@@ -6,7 +6,7 @@ using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Events;
+using EasyPost.Parameters.Event;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services
@@ -32,14 +32,14 @@ namespace EasyPost.Services
         ///     List all <see cref="Event"/>s.
         ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-events">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">Dictionary containing parameters to filter the results on. See <see cref="Parameters.Events.All"/> for valid keys.</param>
+        /// <param name="parameters">Dictionary containing parameters to filter the results on. See <see cref="Parameters.Event.All"/> for valid keys.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="EventCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<EventCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             EventCollection collection = await RequestAsync<EventCollection>(Method.Get, "events", cancellationToken, parameters);
-            collection.Filters = Parameters.Events.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Event.All.FromDictionary(parameters);
             return collection;
         }
 
@@ -47,7 +47,7 @@ namespace EasyPost.Services
         ///     List all <see cref="Event"/>s.
         ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-events">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="Parameters.Events.All"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Event.All"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="EventCollection"/> instance.</returns>
         [CrudOperations.Read]

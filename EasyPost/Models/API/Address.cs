@@ -3,7 +3,7 @@ using System.Linq;
 using EasyPost._base;
 using EasyPost.Models.Shared;
 using EasyPost.Parameters;
-using EasyPost.Parameters.Addresses;
+using EasyPost.Parameters.Address;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API

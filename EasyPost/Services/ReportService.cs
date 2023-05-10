@@ -5,7 +5,7 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Reports;
+using EasyPost.Parameters.Report;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services
@@ -71,7 +71,7 @@ namespace EasyPost.Services
             // Copy the report type into the dictionary before we store the dictionary in the collection
             parameters ??= new Dictionary<string, object>();
             parameters["type"] = type;
-            collection.Filters = Parameters.Reports.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Report.All.FromDictionary(parameters);
             return collection;
         }
 

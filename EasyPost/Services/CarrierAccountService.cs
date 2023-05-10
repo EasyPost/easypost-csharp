@@ -5,7 +5,7 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.CarrierAccounts;
+using EasyPost.Parameters.CarrierAccount;
 using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;

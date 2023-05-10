@@ -5,7 +5,7 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Addresses;
+using EasyPost.Parameters.Address;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -120,14 +120,14 @@ namespace EasyPost.Services
         public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             AddressCollection collection = await RequestAsync<AddressCollection>(Method.Get, "addresses", cancellationToken, parameters);
-            collection.Filters = Parameters.Addresses.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Address.All.FromDictionary(parameters);
             return collection;
         }
 
         /// <summary>
         ///     List all <see cref="Address"/> objects.
         /// </summary>
-        /// <param name="parameters"><see cref="Parameters.Addresses.All"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Address.All"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="AddressCollection"/> instance.</returns>
         [CrudOperations.Read]

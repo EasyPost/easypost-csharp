@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Shipments;
+using EasyPost.Parameters.Shipment;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
-using All = EasyPost.Parameters.Pickups.All;
-using Buy = EasyPost.Parameters.Pickups.Buy;
+using All = EasyPost.Parameters.Pickup.All;
+using Buy = EasyPost.Parameters.Pickup.Buy;
 
 namespace EasyPost.Tests.ServicesTests.WithParameters
 {
@@ -37,7 +37,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Dictionary<string, object> pickupData = Fixtures.BasicPickup;
             pickupData["shipment"] = shipment;
 
-            Parameters.Pickups.Create pickupParameters = Fixtures.Parameters.Pickups.Create(pickupData);
+            Parameters.Pickup.Create pickupParameters = Fixtures.Parameters.Pickups.Create(pickupData);
 
             Pickup pickup = await Client.Pickup.Create(pickupParameters);
 
@@ -84,7 +84,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Dictionary<string, object> pickupData = Fixtures.BasicPickup;
             pickupData["shipment"] = shipment;
 
-            Parameters.Pickups.Create pickupCreateParameters = Fixtures.Parameters.Pickups.Create(pickupData);
+            Parameters.Pickup.Create pickupCreateParameters = Fixtures.Parameters.Pickups.Create(pickupData);
 
             Pickup pickup = await Client.Pickup.Create(pickupCreateParameters);
 

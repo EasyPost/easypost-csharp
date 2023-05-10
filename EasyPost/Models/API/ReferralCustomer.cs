@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using EasyPost.Models.Shared;
 using EasyPost.Parameters;
-using EasyPost.Parameters.ReferralCustomers;
+using EasyPost.Parameters.ReferralCustomer;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API

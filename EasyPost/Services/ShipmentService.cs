@@ -5,7 +5,7 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Shipments;
+using EasyPost.Parameters.Shipment;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -69,7 +69,7 @@ namespace EasyPost.Services
         public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             ShipmentCollection collection = await RequestAsync<ShipmentCollection>(Method.Get, "shipments", cancellationToken, parameters);
-            collection.Filters = Parameters.Shipments.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Shipment.All.FromDictionary(parameters);
             return collection;
         }
 
@@ -146,7 +146,7 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#retrieve-estimated-delivery-date-and-total-transit-days-across-all-rates-for-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to get rates for.</param>
-        /// <param name="parameters">The <see cref="Parameters.Shipments.RetrieveEstimatedDeliveryDate"/> parameters to include on the API call.</param>
+        /// <param name="parameters">The <see cref="Parameters.Shipment.RetrieveEstimatedDeliveryDate"/> parameters to include on the API call.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="RateWithEstimatedDeliveryDate"/>s.</returns>
         [CrudOperations.Read]
@@ -216,7 +216,7 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#buy-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to purchase the label for.</param>
-        /// <param name="parameters"><see cref="Parameters.Shipments.Buy"/> parameters set.</param>
+        /// <param name="parameters"><see cref="Parameters.Shipment.Buy"/> parameters set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>This updated <see cref="Shipment"/> instance.</returns>
         [CrudOperations.Update]
@@ -246,7 +246,7 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#convert-the-label-format-of-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to generate a label for.</param>
-        /// <param name="parameters"><see cref="Parameters.Shipments.GenerateLabel"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Shipment.GenerateLabel"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Shipment"/>.</returns>
         [CrudOperations.Update]
@@ -276,7 +276,7 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#insure-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to insure.</param>
-        /// <param name="parameters"><see cref="Parameters.Shipments.Insure"/> parameters set.</param>
+        /// <param name="parameters"><see cref="Parameters.Shipment.Insure"/> parameters set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Shipment"/>.</returns>
         [CrudOperations.Update]
@@ -320,7 +320,7 @@ namespace EasyPost.Services
         ///     Refresh the <see cref="Models.API.Rate"/>s for a <see cref="Shipment"/>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to refresh rates for.</param>
-        /// <param name="parameters"><see cref="Parameters.Shipments.RegenerateRates"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Shipment.RegenerateRates"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Shipment"/>.</returns>
         [CrudOperations.Update]

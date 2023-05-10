@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.EndShippers;
+using EasyPost.Parameters.EndShipper;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -59,14 +59,14 @@ namespace EasyPost.Services
         ///     List all <see cref="EndShipper"/>s.
         ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-endshippers">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">A dictionary containing parameters to filter the list with. See <see cref="Parameters.EndShippers.All"/> for valid keys.</param>
+        /// <param name="parameters">A dictionary containing parameters to filter the list with. See <see cref="Parameters.EndShipper.All"/> for valid keys.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="EndShipperCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             EndShipperCollection collection = await RequestAsync<EndShipperCollection>(Method.Get, "end_shippers", cancellationToken, parameters);
-            collection.Filters = Parameters.EndShippers.All.FromDictionary(parameters);
+            collection.Filters = Parameters.EndShipper.All.FromDictionary(parameters);
             return collection;
         }
 
@@ -74,7 +74,7 @@ namespace EasyPost.Services
         ///     List all <see cref="EndShipper"/>s.
         ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-endshippers">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="Parameters.EndShippers.All"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.EndShipper.All"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="EndShipperCollection"/> instance.</returns>
         [CrudOperations.Read]

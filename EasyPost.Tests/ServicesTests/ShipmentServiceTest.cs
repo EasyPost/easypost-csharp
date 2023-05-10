@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Shipments;
+using EasyPost.Parameters.Shipment;
 using EasyPost.Services;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;

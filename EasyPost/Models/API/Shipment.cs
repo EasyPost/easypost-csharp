@@ -4,7 +4,7 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
 using EasyPost.Parameters;
-using EasyPost.Parameters.Shipments;
+using EasyPost.Parameters.Shipment;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Shipments;
+using EasyPost.Parameters.Shipment;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -94,9 +94,9 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Dictionary<string, object> toAddressData = Fixtures.CaAddress2;
             Dictionary<string, object> parcelData = Fixtures.BasicParcel;
 
-            Parameters.Addresses.Create fromAddressParameters = Fixtures.Parameters.Addresses.Create(fromAddressData);
-            Parameters.Addresses.Create toAddressParameters = Fixtures.Parameters.Addresses.Create(toAddressData);
-            Parameters.Parcels.Create parcelParameters = Fixtures.Parameters.Parcels.Create(parcelData);
+            Parameters.Address.Create fromAddressParameters = Fixtures.Parameters.Addresses.Create(fromAddressData);
+            Parameters.Address.Create toAddressParameters = Fixtures.Parameters.Addresses.Create(toAddressData);
+            Parameters.Parcel.Create parcelParameters = Fixtures.Parameters.Parcels.Create(parcelData);
 
             Address fromAddress = await Client.Address.Create(fromAddressParameters);
             Address toAddress = await Client.Address.Create(toAddressParameters);
@@ -277,7 +277,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             UseVCR("buy_with_end_shipper");
 
             Dictionary<string, object> endShipperData = Fixtures.CaAddress1;
-            Parameters.EndShippers.Create endShipperParameters = Fixtures.Parameters.EndShippers.Create(endShipperData);
+            Parameters.EndShipper.Create endShipperParameters = Fixtures.Parameters.EndShippers.Create(endShipperData);
             EndShipper endShipper = await Client.EndShipper.Create(endShipperParameters);
 
             Dictionary<string, object> shipmentData = Fixtures.FullShipment;

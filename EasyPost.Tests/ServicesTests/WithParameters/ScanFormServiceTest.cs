@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Parameters;
-using EasyPost.Parameters.Shipments;
+using EasyPost.Parameters.Shipment;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
-using All = EasyPost.Parameters.ScanForms.All;
+using All = EasyPost.Parameters.ScanForm.All;
 
 namespace EasyPost.Tests.ServicesTests.WithParameters
 {
@@ -34,7 +34,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
 
-            Parameters.ScanForms.Create parameters = new()
+            Parameters.ScanForm.Create parameters = new()
             {
                 Shipments = new List<IShipmentParameter> { shipment },
             };

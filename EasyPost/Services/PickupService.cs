@@ -5,7 +5,7 @@ using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Pickups;
+using EasyPost.Parameters.Pickup;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -77,7 +77,7 @@ namespace EasyPost.Services
         public async Task<PickupCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             PickupCollection collection = await RequestAsync<PickupCollection>(Method.Get, "pickups", cancellationToken, parameters);
-            collection.Filters = Parameters.Pickups.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Pickup.All.FromDictionary(parameters);
             return collection;
         }
 
