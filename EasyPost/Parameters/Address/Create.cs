@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using EasyPost.Parameters.Beta.Rate;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Parameters.Address
@@ -21,7 +20,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "id")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "id")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "id")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "id")]
         public string? Id { get; set; }
 
         /// <summary>
@@ -32,7 +31,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "carrier_facility")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "carrier_facility")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "carrier_facility")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "carrier_facility")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "carrier_facility")]
         public string? CarrierFacility { get; set; }
 
         /// <summary>
@@ -43,7 +42,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "city")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "city")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "city")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "city")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "city")]
         public string? City { get; set; }
 
         /// <summary>
@@ -54,7 +53,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "company")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "company")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "company")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "company")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "company")]
         public string? Company { get; set; }
 
         /// <summary>
@@ -65,7 +64,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "country")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "country")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "country")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "country")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "country")]
         public string? Country { get; set; }
 
         /// <summary>
@@ -76,7 +75,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "email")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "email")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "email")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "email")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "email")]
         public string? Email { get; set; }
 
         /// <summary>
@@ -87,7 +86,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "federal_tax_id")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "federal_tax_id")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "federal_tax_id")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "federal_tax_id")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "federal_tax_id")]
         public string? FederalTaxId { get; set; }
 
         /// <summary>
@@ -98,7 +97,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "name")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "name")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "name")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "name")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "name")]
         public string? Name { get; set; }
 
         /// <summary>
@@ -109,7 +108,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "phone")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "phone")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "phone")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "phone")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "phone")]
         public string? Phone { get; set; }
 
         /// <summary>
@@ -120,7 +119,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "residential")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "residential")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "residential")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "residential")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "residential")]
         public bool? Residential { get; set; }
 
         /// <summary>
@@ -131,7 +130,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "state")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "state")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "state")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "state")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "state")]
         public string? State { get; set; }
 
         /// <summary>
@@ -142,7 +141,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "state_tax_id")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "state_tax_id")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "state_tax_id")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "state_tax_id")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "state_tax_id")]
         public string? StateTaxId { get; set; }
 
         /// <summary>
@@ -153,7 +152,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "street1")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "street1")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "street1")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "street1")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "street1")]
         public string? Street1 { get; set; }
 
         /// <summary>
@@ -164,7 +163,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "street2")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "street2")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "street2")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "street2")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "street2")]
         public string? Street2 { get; set; }
 
         /// <summary>
@@ -189,7 +188,7 @@ namespace EasyPost.Parameters.Address
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "zip")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "zip")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "zip")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "zip")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "zip")]
         public string? Zip { get; set; }
 
         #endregion

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using EasyPost._base;
 using EasyPost.Models.Shared;
-using EasyPost.Parameters;
-using EasyPost.Parameters.Pickup;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -13,7 +11,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#pickup-object">EasyPost pickup</a>.
     /// </summary>
-    public class Pickup : EasyPostObject, IPickupParameter
+    public class Pickup : EasyPostObject, Parameters.IPickupParameter
     {
         #region JSON Properties
 
@@ -104,7 +102,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Pickup> entries, int? pageSize = null)
         {
-            All parameters = Filters != null ? (All)Filters : new All();
+            Parameters.Pickup.All parameters = Filters != null ? (Parameters.Pickup.All)Filters : new Parameters.Pickup.All();
 
             parameters.BeforeId = entries.Last().Id;
 

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
-using EasyPost.Parameters;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.Shared
@@ -22,7 +21,7 @@ namespace EasyPost.Models.Shared
         /// <summary>
         ///     The filter parameters used to retrieve this collection.
         /// </summary>
-        internal BaseParameters? Filters { get; set; }
+        internal Parameters.BaseParameters? Filters { get; set; }
 
         /// <summary>
         ///     Get the next page of a paginated collection.
@@ -31,10 +30,10 @@ namespace EasyPost.Models.Shared
         /// <param name="currentEntries">The results on the current page. Used to determine the API call parameters to retrieve the next page.</param>
         /// <param name="pageSize">The size of the next page.</param>
         /// <typeparam name="TCollection">The type of <see cref="PaginatedCollection{TCollection}"/> to get the next page of.</typeparam>
-        /// <typeparam name="TParameters">The type of <see cref="BaseParameters"/> to construct for the API call.</typeparam>
+        /// <typeparam name="TParameters">The type of <see cref="Parameters.BaseParameters"/> to construct for the API call.</typeparam>
         /// <returns>The next page of a paginated collection.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
-        internal async Task<TCollection> GetNextPage<TCollection, TParameters>(Func<TParameters, Task<TCollection>> apiCallFunction, List<TEntries>? currentEntries, int? pageSize = null) where TCollection : PaginatedCollection<TEntries> where TParameters : BaseParameters
+        internal async Task<TCollection> GetNextPage<TCollection, TParameters>(Func<TParameters, Task<TCollection>> apiCallFunction, List<TEntries>? currentEntries, int? pageSize = null) where TCollection : PaginatedCollection<TEntries> where TParameters : Parameters.BaseParameters
         {
             if (currentEntries == null || currentEntries.Count == 0)
             {
@@ -56,10 +55,10 @@ namespace EasyPost.Models.Shared
         /// </summary>
         /// <param name="entries">The entries of the collection.</param>
         /// <param name="pageSize">The size of the next page.</param>
-        /// <typeparam name="TParameters">The type of <see cref="BaseParameters"/> to construct for the API call.</typeparam>
+        /// <typeparam name="TParameters">The type of <see cref="Parameters.BaseParameters"/> to construct for the API call.</typeparam>
         /// <returns>A TParameters-type set of parameters to use for the subsequent API call.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there are no more items to retrieve for the paginated collection.</exception>
         // This method is abstract and must be implemented for each collection.
-        protected internal abstract TParameters BuildNextPageParameters<TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) where TParameters : BaseParameters;
+        protected internal abstract TParameters BuildNextPageParameters<TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) where TParameters : Parameters.BaseParameters;
     }
 }

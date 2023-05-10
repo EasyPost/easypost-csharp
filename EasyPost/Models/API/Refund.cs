@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using EasyPost._base;
 using EasyPost.Models.Shared;
-using EasyPost.Parameters;
-using EasyPost.Parameters.Refund;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -12,7 +10,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#refund-object">EasyPost refund</a>.
     /// </summary>
-    public class Refund : EasyPostObject, IRefundParameter
+    public class Refund : EasyPostObject, Parameters.IRefundParameter
     {
         #region JSON Properties
 
@@ -69,7 +67,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Refund> entries, int? pageSize = null)
         {
-            All parameters = Filters != null ? (All)Filters : new All();
+            Parameters.Refund.All parameters = Filters != null ? (Parameters.Refund.All)Filters : new Parameters.Refund.All();
 
             parameters.BeforeId = entries.Last().Id;
 

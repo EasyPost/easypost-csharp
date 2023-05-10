@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using EasyPost.Parameters.Beta.Rate;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Parameters.Parcel
@@ -21,7 +20,7 @@ namespace EasyPost.Parameters.Parcel
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "id")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "id")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "id")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "id")]
         public string? Id { get; set; }
 
         /// <summary>
@@ -29,7 +28,7 @@ namespace EasyPost.Parameters.Parcel
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "height")]
         [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "height")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "height")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "height")]
         public double? Height { get; set; }
 
         /// <summary>
@@ -37,7 +36,7 @@ namespace EasyPost.Parameters.Parcel
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "length")]
         [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "length")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "length")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "length")]
         public double? Length { get; set; }
 
         /// <summary>
@@ -45,7 +44,7 @@ namespace EasyPost.Parameters.Parcel
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "weight")]
         [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "weight")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "weight")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "weight")]
         public double? Weight { get; set; }
 
         /// <summary>
@@ -53,7 +52,7 @@ namespace EasyPost.Parameters.Parcel
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "width")]
         [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "width")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "width")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "width")]
         public double? Width { get; set; }
 
         #endregion

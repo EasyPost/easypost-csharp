@@ -1,6 +1,5 @@
 ﻿using System;
 using EasyPost._base;
-using EasyPost.Parameters;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -9,7 +8,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#webhook-object">EasyPost webhook</a>.
     /// </summary>
-    public class Webhook : EasyPostObject, IWebhookParameter
+    public class Webhook : EasyPostObject, Parameters.IWebhookParameter
     {
         #region JSON Properties
 

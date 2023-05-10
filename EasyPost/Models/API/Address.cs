@@ -2,8 +2,6 @@
 using System.Linq;
 using EasyPost._base;
 using EasyPost.Models.Shared;
-using EasyPost.Parameters;
-using EasyPost.Parameters.Address;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -12,7 +10,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#address-object">EasyPost address</a>.
     /// </summary>
-    public class Address : EasyPostObject, IAddressParameter
+    public class Address : EasyPostObject, Parameters.IAddressParameter
     {
         #region JSON Properties
 
@@ -160,7 +158,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Address> entries, int? pageSize = null)
         {
-            All parameters = Filters != null ? (All)Filters : new All();
+            Parameters.Address.All parameters = Filters != null ? (Parameters.Address.All)Filters : new Parameters.Address.All();
 
             parameters.BeforeId = entries.Last().Id;
 

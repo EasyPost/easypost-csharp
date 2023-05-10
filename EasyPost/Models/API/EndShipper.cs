@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
-using EasyPost.Parameters;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -11,7 +10,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#endshipper-object">EasyPost EndShipper</a>.
     /// </summary>
-    public class EndShipper : EasyPostObject, IEndShipperParameter
+    public class EndShipper : EasyPostObject, Parameters.IEndShipperParameter
     {
         #region JSON Properties
 

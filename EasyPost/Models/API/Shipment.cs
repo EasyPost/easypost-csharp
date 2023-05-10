@@ -3,8 +3,6 @@ using System.Linq;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
-using EasyPost.Parameters;
-using EasyPost.Parameters.Shipment;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -13,7 +11,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#shipment-object">EasyPost shipment</a>.
     /// </summary>
-    public class Shipment : EasyPostObject, IShipmentParameter
+    public class Shipment : EasyPostObject, Parameters.IShipmentParameter
     {
         #region JSON Properties
 
@@ -142,7 +140,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Shipment> entries, int? pageSize = null)
         {
-            All parameters = Filters != null ? (All)Filters : new All();
+            Parameters.Shipment.All parameters = Filters != null ? (Parameters.Shipment.All)Filters : new Parameters.Shipment.All();
 
             parameters.BeforeId = entries.Last().Id;
 

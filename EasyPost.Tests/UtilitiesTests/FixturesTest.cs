@@ -9,9 +9,9 @@ namespace EasyPost.Tests.UtilitiesTests
     public class FixturesTest
     {
         /// <summary>
-        ///     This test confirms that the patterns used in unit tests to convert fixture data dictionaries into <see cref="BetaFeatures.Parameters"/> objects are working as expected.
+        ///     This test confirms that the patterns used in unit tests to convert fixture data dictionaries into <see cref="Parameters"/> objects are working as expected.
         ///
-        ///     If the patterns were not working properly, the rest of the unit tests that utilize this pattern of generating <see cref="BetaFeatures.Parameters"/> could be invisibly using invalid data.
+        ///     If the patterns were not working properly, the rest of the unit tests that utilize this pattern of generating <see cref="Parameters"/> could be invisibly using invalid data.
         /// </summary>
         [Fact]
         [Testing.Function]

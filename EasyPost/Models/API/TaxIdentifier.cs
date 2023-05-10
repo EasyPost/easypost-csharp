@@ -1,5 +1,4 @@
 ﻿using EasyPost._base;
-using EasyPost.Parameters;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -8,7 +7,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#taxidentifier-object">EasyPost tax identifier</a>.
     /// </summary>
-    public class TaxIdentifier : EasyPostObject, ITaxIdentifierParameter
+    public class TaxIdentifier : EasyPostObject, Parameters.ITaxIdentifierParameter
     {
         #region JSON Properties
 

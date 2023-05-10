@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using EasyPost._base;
-using EasyPost.Parameters;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -10,7 +9,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#carrier-account-object">EasyPost carrier account</a>.
     /// </summary>
-    public class CarrierAccount : EasyPostObject, ICarrierAccountParameter
+    public class CarrierAccount : EasyPostObject, Parameters.ICarrierAccountParameter
     {
         #region JSON Properties
 

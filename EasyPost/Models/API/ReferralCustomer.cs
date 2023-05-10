@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using EasyPost.Models.Shared;
-using EasyPost.Parameters;
-using EasyPost.Parameters.ReferralCustomer;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -11,7 +9,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#referral-customers">EasyPost referral customer</a>.
     /// </summary>
-    public class ReferralCustomer : BaseUser, IReferralCustomerParameter
+    public class ReferralCustomer : BaseUser, Parameters.IReferralCustomerParameter
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="ReferralCustomer"/> class.
@@ -53,7 +51,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<ReferralCustomer> entries, int? pageSize = null)
         {
-            All parameters = Filters != null ? (All)Filters : new All();
+            Parameters.ReferralCustomer.All parameters = Filters != null ? (Parameters.ReferralCustomer.All)Filters : new Parameters.ReferralCustomer.All();
 
             parameters.BeforeId = entries.Last().Id;
 

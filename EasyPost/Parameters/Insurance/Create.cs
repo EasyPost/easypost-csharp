@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using EasyPost.Parameters.Address;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Parameters.Insurance

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using EasyPost._base;
-using EasyPost.Parameters;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -9,7 +8,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#customs-info-object">EasyPost customs info object</a>.
     /// </summary>
-    public class CustomsInfo : EasyPostObject, ICustomsInfoParameter
+    public class CustomsInfo : EasyPostObject, Parameters.ICustomsInfoParameter
     {
         #region JSON Properties
 

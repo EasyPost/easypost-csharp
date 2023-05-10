@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using EasyPost.Parameters.Address;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Parameters.Beta.Rate
@@ -14,13 +13,13 @@ namespace EasyPost.Parameters.Beta.Rate
         #region Request Parameters
 
         /// <summary>
-        ///     List of <see cref="Models.API.Address"/>es (or <see cref="Create"/> parameters) to use to retrieve <see cref="Models.API.Beta.StatelessRate"/>s.
+        ///     List of <see cref="Models.API.Address"/>es (or <see cref="Parameters.Address.Create"/> parameters) to use to retrieve <see cref="Models.API.Beta.StatelessRate"/>s.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "to_address")]
         public IAddressParameter? ToAddress { get; set; }
 
         /// <summary>
-        ///     List of <see cref="Models.API.Address"/>es (or <see cref="Create"/> parameters) to use to retrieve <see cref="Models.API.Beta.StatelessRate"/>s.
+        ///     List of <see cref="Models.API.Address"/>es (or <see cref="Parameters.Address.Create"/> parameters) to use to retrieve <see cref="Models.API.Beta.StatelessRate"/>s.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "from_address")]
         public IAddressParameter? FromAddress { get; set; }

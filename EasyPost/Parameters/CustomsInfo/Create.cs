@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using EasyPost.Parameters.Beta.Rate;
-using EasyPost.Parameters.CustomsItem;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Parameters.CustomsInfo
@@ -23,7 +21,7 @@ namespace EasyPost.Parameters.CustomsInfo
         [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "id")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "id")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "id")]
-        [NestedRequestParameter(typeof(Retrieve), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "id")]
         public string? Id { get; set; }
 
         /// <summary>

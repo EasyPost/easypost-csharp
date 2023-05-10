@@ -29,7 +29,7 @@ namespace EasyPost.Services.Beta
         ///     Retrieve metadata about specific carrier(s).
         ///     <a href="https://www.easypost.com/docs/api#retrieve-carrier-metadata">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="Retrieve"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Beta.CarrierMetadata.Retrieve"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="Carrier"/> objects.</returns>
         [CrudOperations.Read]
