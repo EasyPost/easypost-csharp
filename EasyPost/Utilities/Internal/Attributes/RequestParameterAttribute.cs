@@ -21,6 +21,7 @@ namespace EasyPost.Utilities.Internal.Attributes
         Optional,
     }
 
+#pragma warning disable CA1019 // Define accessors for attribute arguments
     /// <summary>
     ///     A <see cref="BaseCustomAttribute"/> to label a parameter that will be sent in an HTTP request to the EasyPost API.
     /// </summary>
@@ -42,7 +43,7 @@ namespace EasyPost.Utilities.Internal.Attributes
         /// </summary>
         /// <param name="necessity"><see cref="Necessity"/> level of this parameter.</param>
         /// <param name="jsonPath">Path in JSON schema where this parameter value will be inserted.</param>
-        public RequestParameterAttribute(Necessity necessity, params string[] jsonPath)
+        protected RequestParameterAttribute(Necessity necessity, params string[] jsonPath)
         {
             Necessity = necessity;
             JsonPath = jsonPath;
@@ -97,4 +98,5 @@ namespace EasyPost.Utilities.Internal.Attributes
             return attributes.FirstOrDefault(attribute => attribute.ParentType == parentType);
         }
     }
+#pragma warning restore CA1019 // Define accessors for attribute arguments
 }
