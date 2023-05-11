@@ -43,6 +43,12 @@ namespace EasyPost.Parameters.Order
         [TopLevelRequestParameter(Necessity.Optional, "order", "to_address")]
         public IAddressParameter? ToAddress { get; set; }
 
+        /// <summary>
+        ///     One-call-buy an <see cref="Models.API.Order"/> by specifying a service.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "order", "service")]
+        public string? Service { get; set; }
+
         #endregion
     }
 }

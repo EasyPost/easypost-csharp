@@ -55,6 +55,14 @@ namespace EasyPost.Parameters.Parcel
         [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "width")]
         public double? Width { get; set; }
 
+        /// <summary>
+        ///     Predefined package type to use for the <see cref="Models.API.Parcel"/>.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "parcel", "predefined_package")]
+        [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "predefined_package")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "predefined_package")]
+        public string? PredefinedPackage { get; set; }
+
         #endregion
     }
 }
