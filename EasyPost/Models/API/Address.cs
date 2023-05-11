@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Address
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#address-object">EasyPost address</a>.
     /// </summary>
-    public class Address : EasyPostObject, IAddressParameter
+    public class Address : EasyPostObject, Parameters.IAddressParameter
     {
         #region JSON Properties
 
@@ -125,6 +125,7 @@ namespace EasyPost.Models.API
         {
         }
     }
+#pragma warning restore CA1724 // Naming conflicts with Parameters.Address
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="Address"/>es.
@@ -157,7 +158,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Address> entries, int? pageSize = null)
         {
-            BetaFeatures.Parameters.Addresses.All parameters = Filters != null ? (BetaFeatures.Parameters.Addresses.All)Filters : new BetaFeatures.Parameters.Addresses.All();
+            Parameters.Address.All parameters = Filters != null ? (Parameters.Address.All)Filters : new Parameters.Address.All();
 
             parameters.BeforeId = entries.Last().Id;
 

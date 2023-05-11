@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.CarrierAccount
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#carrier-account-object">EasyPost carrier account</a>.
     /// </summary>
-    public class CarrierAccount : EasyPostObject, ICarrierAccountParameter
+    public class CarrierAccount : EasyPostObject, Parameters.ICarrierAccountParameter
     {
         #region JSON Properties
 
@@ -78,3 +78,4 @@ namespace EasyPost.Models.API
         }
     }
 }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.CarrierAccount

@@ -7,11 +7,11 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
 #pragma warning disable CA1716
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Event
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#event-object">EasyPost event</a>.
     /// </summary>
     public class Event : EasyPostObject
-#pragma warning restore CA1716
     {
         #region JSON Properties
 
@@ -71,6 +71,8 @@ namespace EasyPost.Models.API
         {
         }
     }
+#pragma warning restore CA1716
+#pragma warning restore CA1724 // Naming conflicts with Parameters.Event
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="Event"/>s.
@@ -103,7 +105,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Event> entries, int? pageSize = null)
         {
-            BetaFeatures.Parameters.Events.All parameters = Filters != null ? (BetaFeatures.Parameters.Events.All)Filters : new BetaFeatures.Parameters.Events.All();
+            Parameters.Event.All parameters = Filters != null ? (Parameters.Event.All)Filters : new Parameters.Event.All();
 
             parameters.BeforeId = entries.Last().Id;
 

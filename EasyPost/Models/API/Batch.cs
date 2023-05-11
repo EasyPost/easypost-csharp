@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Batch
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#batch-object">EasyPost batch</a>.
     /// </summary>
@@ -92,6 +93,7 @@ namespace EasyPost.Models.API
         {
         }
     }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Batch
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="Batch"/>es.
@@ -124,7 +126,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Batch> entries, int? pageSize = null)
         {
-            BetaFeatures.Parameters.Shipments.All parameters = Filters != null ? (BetaFeatures.Parameters.Shipments.All)Filters : new BetaFeatures.Parameters.Shipments.All();
+            Parameters.Shipment.All parameters = Filters != null ? (Parameters.Shipment.All)Filters : new Parameters.Shipment.All();
 
             // TODO: Batches get returned in reverse order from everything else (oldest first instead of newest first), so this needs to be "after_id" instead of "before_id"
             parameters.AfterId = entries.Last().Id;

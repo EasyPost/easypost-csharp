@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Report
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#report-object">EasyPost report</a>.
     /// </summary>
-    public class Report : EasyPostObject, IReportParameter
+    public class Report : EasyPostObject, Parameters.IReportParameter
     {
         #region JSON Properties
 
@@ -37,6 +37,7 @@ namespace EasyPost.Models.API
         {
         }
     }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Report
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="Report"/>s.
@@ -69,7 +70,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Report> entries, int? pageSize = null)
         {
-            BetaFeatures.Parameters.Reports.All parameters = Filters != null ? (BetaFeatures.Parameters.Reports.All)Filters : new BetaFeatures.Parameters.Reports.All();
+            Parameters.Report.All parameters = Filters != null ? (Parameters.Report.All)Filters : new Parameters.Report.All();
 
             parameters.BeforeId = entries.Last().Id;
 

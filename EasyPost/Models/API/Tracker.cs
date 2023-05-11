@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Tracker
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#tracker-object">EasyPost tracker</a>.
     /// </summary>
-    public class Tracker : EasyPostObject, ITrackerParameter
+    public class Tracker : EasyPostObject, Parameters.ITrackerParameter
     {
         #region JSON Properties
 
@@ -49,6 +49,7 @@ namespace EasyPost.Models.API
         {
         }
     }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Tracker
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="Tracker"/>s.
@@ -81,7 +82,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Tracker> entries, int? pageSize = null)
         {
-            BetaFeatures.Parameters.Trackers.All parameters = Filters != null ? (BetaFeatures.Parameters.Trackers.All)Filters : new BetaFeatures.Parameters.Trackers.All();
+            Parameters.Tracker.All parameters = Filters != null ? (Parameters.Tracker.All)Filters : new Parameters.Tracker.All();
 
             parameters.BeforeId = entries.Last().Id;
 

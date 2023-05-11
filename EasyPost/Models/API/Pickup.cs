@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Pickup
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#pickup-object">EasyPost pickup</a>.
     /// </summary>
-    public class Pickup : EasyPostObject, IPickupParameter
+    public class Pickup : EasyPostObject, Parameters.IPickupParameter
     {
         #region JSON Properties
 
@@ -69,6 +69,7 @@ namespace EasyPost.Models.API
         /// <returns>Lowest EasyPost.PickupRate object instance.</returns>
         public PickupRate LowestRate(List<string>? includeCarriers = null, List<string>? includeServices = null, List<string>? excludeCarriers = null, List<string>? excludeServices = null) => (PickupRate)Utilities.Rates.GetLowestRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
     }
+#pragma warning restore CA1724 // Naming conflicts with Parameters.Pickup
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="Pickup"/> objects.
@@ -101,7 +102,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Pickup> entries, int? pageSize = null)
         {
-            BetaFeatures.Parameters.Pickups.All parameters = Filters != null ? (BetaFeatures.Parameters.Pickups.All)Filters : new BetaFeatures.Parameters.Pickups.All();
+            Parameters.Pickup.All parameters = Filters != null ? (Parameters.Pickup.All)Filters : new Parameters.Pickup.All();
 
             parameters.BeforeId = entries.Last().Id;
 

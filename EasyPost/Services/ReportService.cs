@@ -45,7 +45,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="Report"/> objects.</returns>
         [CrudOperations.Create]
-        public async Task<Report> Create(BetaFeatures.Parameters.Reports.Create parameters, CancellationToken cancellationToken = default)
+        public async Task<Report> Create(Parameters.Report.Create parameters, CancellationToken cancellationToken = default)
         {
             if (parameters.Type == null)
             {
@@ -70,7 +70,7 @@ namespace EasyPost.Services
             // Copy the report type into the dictionary before we store the dictionary in the collection
             parameters ??= new Dictionary<string, object>();
             parameters["type"] = type;
-            collection.Filters = BetaFeatures.Parameters.Reports.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Report.All.FromDictionary(parameters);
             return collection;
         }
 
@@ -82,7 +82,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="ReportCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<ReportCollection> All(BetaFeatures.Parameters.Reports.All parameters, CancellationToken cancellationToken = default)
+        public async Task<ReportCollection> All(Parameters.Report.All parameters, CancellationToken cancellationToken = default)
         {
             if (parameters.Type == null)
             {
@@ -105,7 +105,7 @@ namespace EasyPost.Services
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
         // Reuse the same report type as the current page of the collection (will not be null)
-        public async Task<ReportCollection> GetNextPage(ReportCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ReportCollection, BetaFeatures.Parameters.Reports.All>(async parameters => await All(parameters, cancellationToken), collection.Reports, pageSize);
+        public async Task<ReportCollection> GetNextPage(ReportCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ReportCollection, Parameters.Report.All>(async parameters => await All(parameters, cancellationToken), collection.Reports, pageSize);
 
         /// <summary>
         ///     Retrieve a <see cref="Report"/>.

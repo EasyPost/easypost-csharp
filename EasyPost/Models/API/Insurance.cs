@@ -1,11 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
-using EasyPost.Utilities.Internal.Attributes;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -14,7 +10,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#insurance-object">EasyPost insurance object</a>.
     /// </summary>
-    public class Insurance : EasyPostObject, IInsuranceParameter
+    public class Insurance : EasyPostObject, Parameters.IInsuranceParameter
     {
         #region JSON Properties
 
@@ -132,7 +128,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Insurance> entries, int? pageSize = null)
         {
-            BetaFeatures.Parameters.Insurance.All parameters = Filters != null ? (BetaFeatures.Parameters.Insurance.All)Filters : new BetaFeatures.Parameters.Insurance.All();
+            Parameters.Insurance.All parameters = Filters != null ? (Parameters.Insurance.All)Filters : new Parameters.Insurance.All();
 
             parameters.BeforeId = entries.Last().Id;
 

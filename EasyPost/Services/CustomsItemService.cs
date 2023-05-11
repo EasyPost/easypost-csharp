@@ -48,7 +48,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="CustomsItem"/> object.</returns>
         [CrudOperations.Create]
-        public async Task<CustomsItem> Create(BetaFeatures.Parameters.CustomsItems.Create parameters, CancellationToken cancellationToken = default)
+        public async Task<CustomsItem> Create(Parameters.CustomsItem.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<CustomsItem>(Method.Post, "customs_items", cancellationToken, parameters.ToDictionary());

@@ -1,13 +1,13 @@
 ﻿using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.CustomsItem
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#customs-item-object">EasyPost customs item</a>.
     /// </summary>
-    public class CustomsItem : EasyPostObject, ICustomsItemParameter
+    public class CustomsItem : EasyPostObject, Parameters.ICustomsItemParameter
     {
         #region JSON Properties
 
@@ -72,3 +72,4 @@ namespace EasyPost.Models.API
         }
     }
 }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.CustomsItem

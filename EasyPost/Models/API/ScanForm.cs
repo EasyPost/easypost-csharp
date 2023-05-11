@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.ScanForm
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#scan-form-object">EasyPost scan form</a>.
     /// </summary>
-    public class ScanForm : EasyPostObject, IScanFormParameter
+    public class ScanForm : EasyPostObject, Parameters.IScanFormParameter
     {
         #region JSON Properties
 
@@ -42,6 +42,7 @@ namespace EasyPost.Models.API
         {
         }
     }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.ScanForm
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="ScanForm"/>s.
@@ -74,7 +75,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<ScanForm> entries, int? pageSize = null)
         {
-            BetaFeatures.Parameters.ScanForms.All parameters = Filters != null ? (BetaFeatures.Parameters.ScanForms.All)Filters : new BetaFeatures.Parameters.ScanForms.All();
+            Parameters.ScanForm.All parameters = Filters != null ? (Parameters.ScanForm.All)Filters : new Parameters.ScanForm.All();
 
             parameters.BeforeId = entries.Last().Id;
 

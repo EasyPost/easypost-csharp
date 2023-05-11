@@ -49,7 +49,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="Pickup"/> object.</returns>
         [CrudOperations.Create]
-        public async Task<Pickup> Create(BetaFeatures.Parameters.Pickups.Create parameters, CancellationToken cancellationToken = default)
+        public async Task<Pickup> Create(Parameters.Pickup.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<Pickup>(Method.Post, "pickups", cancellationToken, parameters.ToDictionary());
@@ -76,7 +76,7 @@ namespace EasyPost.Services
         public async Task<PickupCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             PickupCollection collection = await RequestAsync<PickupCollection>(Method.Get, "pickups", cancellationToken, parameters);
-            collection.Filters = BetaFeatures.Parameters.Pickups.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Pickup.All.FromDictionary(parameters);
             return collection;
         }
 
@@ -88,7 +88,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An <see cref="PickupCollection"/> object.</returns>
         [CrudOperations.Read]
-        public async Task<PickupCollection> All(BetaFeatures.Parameters.Pickups.All parameters, CancellationToken cancellationToken = default)
+        public async Task<PickupCollection> All(Parameters.Pickup.All parameters, CancellationToken cancellationToken = default)
         {
             PickupCollection collection = await RequestAsync<PickupCollection>(Method.Get, "pickups", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
@@ -105,7 +105,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="PickupCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<PickupCollection> GetNextPage(PickupCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<PickupCollection, BetaFeatures.Parameters.Pickups.All>(async parameters => await All(parameters, cancellationToken), collection.Pickups, pageSize);
+        public async Task<PickupCollection> GetNextPage(PickupCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<PickupCollection, Parameters.Pickup.All>(async parameters => await All(parameters, cancellationToken), collection.Pickups, pageSize);
 
         /// <summary>
         ///     Purchase a <see cref="Pickup"/>.
@@ -137,7 +137,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An updated <see cref="Pickup"/> instance.</returns>
         [CrudOperations.Update]
-        public async Task<Pickup> Buy(string id, BetaFeatures.Parameters.Pickups.Buy parameters, CancellationToken cancellationToken = default)
+        public async Task<Pickup> Buy(string id, Parameters.Pickup.Buy parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Pickup>(Method.Post, $"pickups/{id}/buy", cancellationToken, parameters.ToDictionary());
         }

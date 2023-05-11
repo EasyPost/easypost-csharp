@@ -86,8 +86,8 @@ namespace EasyPost.Tests.ServicesTests
 
             TrackerCollection trackerCollection = await Client.Tracker.All(filters);
 
-            Assert.Equal(filters["tracking_code"], ((BetaFeatures.Parameters.Trackers.All)trackerCollection.Filters!).TrackingCode);
-            Assert.Equal(filters["carrier"], ((BetaFeatures.Parameters.Trackers.All)trackerCollection.Filters!).Carrier);
+            Assert.Equal(filters["tracking_code"], ((Parameters.Tracker.All)trackerCollection.Filters!).TrackingCode);
+            Assert.Equal(filters["carrier"], ((Parameters.Tracker.All)trackerCollection.Filters!).Carrier);
         }
 
         [Fact]
@@ -142,10 +142,10 @@ namespace EasyPost.Tests.ServicesTests
             };
             trackerCollection.Trackers.Add(fakeTracker);
 
-            BetaFeatures.Parameters.Trackers.All filtersForNextPage = trackerCollection.BuildNextPageParameters<BetaFeatures.Parameters.Trackers.All>(trackerCollection.Trackers);
+            Parameters.Tracker.All filtersForNextPage = trackerCollection.BuildNextPageParameters<Parameters.Tracker.All>(trackerCollection.Trackers);
 
-            Assert.Equal(((BetaFeatures.Parameters.Trackers.All)trackerCollection.Filters!).TrackingCode, filtersForNextPage.TrackingCode);
-            Assert.Equal(((BetaFeatures.Parameters.Trackers.All)trackerCollection.Filters!).Carrier, filtersForNextPage.Carrier);
+            Assert.Equal(((Parameters.Tracker.All)trackerCollection.Filters!).TrackingCode, filtersForNextPage.TrackingCode);
+            Assert.Equal(((Parameters.Tracker.All)trackerCollection.Filters!).Carrier, filtersForNextPage.Carrier);
         }
 
         [Fact]

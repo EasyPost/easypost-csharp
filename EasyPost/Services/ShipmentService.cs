@@ -51,7 +51,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="Shipment"/> objects.</returns>
         [CrudOperations.Create]
-        public async Task<Shipment> Create(BetaFeatures.Parameters.Shipments.Create parameters, CancellationToken cancellationToken = default)
+        public async Task<Shipment> Create(Parameters.Shipment.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<Shipment>(Method.Post, "shipments", cancellationToken, parameters.ToDictionary());
@@ -68,7 +68,7 @@ namespace EasyPost.Services
         public async Task<ShipmentCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             ShipmentCollection collection = await RequestAsync<ShipmentCollection>(Method.Get, "shipments", cancellationToken, parameters);
-            collection.Filters = BetaFeatures.Parameters.Shipments.All.FromDictionary(parameters);
+            collection.Filters = Parameters.Shipment.All.FromDictionary(parameters);
             return collection;
         }
 
@@ -80,7 +80,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="ShipmentCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<ShipmentCollection> All(BetaFeatures.Parameters.Shipments.All parameters, CancellationToken cancellationToken = default)
+        public async Task<ShipmentCollection> All(Parameters.Shipment.All parameters, CancellationToken cancellationToken = default)
         {
             ShipmentCollection collection = await RequestAsync<ShipmentCollection>(Method.Get, "shipments", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
@@ -97,7 +97,7 @@ namespace EasyPost.Services
         /// <returns>The next page, as a <see cref="ShipmentCollection"/> instance.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
         [CrudOperations.Read]
-        public async Task<ShipmentCollection> GetNextPage(ShipmentCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ShipmentCollection, BetaFeatures.Parameters.Shipments.All>(async parameters => await All(parameters, cancellationToken), collection.Shipments, pageSize);
+        public async Task<ShipmentCollection> GetNextPage(ShipmentCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ShipmentCollection, Parameters.Shipment.All>(async parameters => await All(parameters, cancellationToken), collection.Shipments, pageSize);
 
         /// <summary>
         ///     Retrieve a <see cref="Shipment"/>.
@@ -145,11 +145,11 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#retrieve-estimated-delivery-date-and-total-transit-days-across-all-rates-for-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to get rates for.</param>
-        /// <param name="parameters">The <see cref="BetaFeatures.Parameters.Shipments.RetrieveEstimatedDeliveryDate"/> parameters to include on the API call.</param>
+        /// <param name="parameters">The <see cref="Parameters.Shipment.RetrieveEstimatedDeliveryDate"/> parameters to include on the API call.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="RateWithEstimatedDeliveryDate"/>s.</returns>
         [CrudOperations.Read]
-        public async Task<List<RateWithEstimatedDeliveryDate>> RetrieveEstimatedDeliveryDate(string id, BetaFeatures.Parameters.Shipments.RetrieveEstimatedDeliveryDate parameters, CancellationToken cancellationToken = default)
+        public async Task<List<RateWithEstimatedDeliveryDate>> RetrieveEstimatedDeliveryDate(string id, Parameters.Shipment.RetrieveEstimatedDeliveryDate parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<List<RateWithEstimatedDeliveryDate>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", cancellationToken, parameters.ToDictionary(), "rates");
         }
@@ -215,11 +215,11 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#buy-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to purchase the label for.</param>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Shipments.Buy"/> parameters set.</param>
+        /// <param name="parameters"><see cref="Parameters.Shipment.Buy"/> parameters set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>This updated <see cref="Shipment"/> instance.</returns>
         [CrudOperations.Update]
-        public async Task<Shipment> Buy(string id, BetaFeatures.Parameters.Shipments.Buy parameters, CancellationToken cancellationToken = default)
+        public async Task<Shipment> Buy(string id, Parameters.Shipment.Buy parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/buy", cancellationToken, parameters.ToDictionary());
         }
@@ -245,11 +245,11 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#convert-the-label-format-of-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to generate a label for.</param>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Shipments.GenerateLabel"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Shipment.GenerateLabel"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Shipment"/>.</returns>
         [CrudOperations.Update]
-        public async Task<Shipment> GenerateLabel(string id, BetaFeatures.Parameters.Shipments.GenerateLabel parameters, CancellationToken cancellationToken = default)
+        public async Task<Shipment> GenerateLabel(string id, Parameters.Shipment.GenerateLabel parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Shipment>(Method.Get, $"shipments/{id}/label", cancellationToken, parameters.ToDictionary());
         }
@@ -275,11 +275,11 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#insure-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to insure.</param>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Shipments.Insure"/> parameters set.</param>
+        /// <param name="parameters"><see cref="Parameters.Shipment.Insure"/> parameters set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Shipment"/>.</returns>
         [CrudOperations.Update]
-        public async Task<Shipment> Insure(string id, BetaFeatures.Parameters.Shipments.Insure parameters, CancellationToken cancellationToken = default)
+        public async Task<Shipment> Insure(string id, Parameters.Shipment.Insure parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/insure", cancellationToken, parameters.ToDictionary());
         }
@@ -319,11 +319,11 @@ namespace EasyPost.Services
         ///     Refresh the <see cref="Models.API.Rate"/>s for a <see cref="Shipment"/>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to refresh rates for.</param>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Shipments.RegenerateRates"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.Shipment.RegenerateRates"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Shipment"/>.</returns>
         [CrudOperations.Update]
-        public async Task<Shipment> RegenerateRates(string id, BetaFeatures.Parameters.Shipments.RegenerateRates parameters, CancellationToken cancellationToken = default)
+        public async Task<Shipment> RegenerateRates(string id, Parameters.Shipment.RegenerateRates parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/rerate", cancellationToken, parameters.ToDictionary());
         }

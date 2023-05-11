@@ -48,7 +48,7 @@ namespace EasyPost.Services.Beta
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="StatelessRate"/> objects.</returns>
         [CrudOperations.Create]
-        public async Task<List<StatelessRate>> RetrieveStatelessRates(BetaFeatures.Parameters.Beta.Rates.Retrieve parameters, CancellationToken cancellationToken = default)
+        public async Task<List<StatelessRate>> RetrieveStatelessRates(Parameters.Beta.Rate.Retrieve parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<List<StatelessRate>>(Method.Post, "rates", cancellationToken, parameters.ToDictionary(), "rates", ApiVersion.Beta);
         }

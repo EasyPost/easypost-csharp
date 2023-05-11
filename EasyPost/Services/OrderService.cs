@@ -49,7 +49,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An <see cref="Order"/> object.</returns>
         [CrudOperations.Create]
-        public async Task<Order> Create(BetaFeatures.Parameters.Orders.Create parameters, CancellationToken cancellationToken = default)
+        public async Task<Order> Create(Parameters.Order.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<Order>(Method.Post, "orders", cancellationToken, parameters.ToDictionary());
@@ -117,11 +117,11 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#buy-an-order">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Order"/> to purchase.</param>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.Orders.Buy"/> parameters set.</param>
+        /// <param name="parameters"><see cref="Parameters.Order.Buy"/> parameters set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An updated <see cref="Order"/>.</returns>
         [CrudOperations.Update]
-        public async Task<Order> Buy(string id, BetaFeatures.Parameters.Orders.Buy parameters, CancellationToken cancellationToken = default)
+        public async Task<Order> Buy(string id, Parameters.Order.Buy parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<Order>(Method.Post, $"orders/{id}/buy", cancellationToken, parameters.ToDictionary());
         }

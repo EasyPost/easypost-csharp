@@ -50,7 +50,7 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             const string carrierName = "usps";
 
-            BetaFeatures.Parameters.Beta.CarrierMetadata.Retrieve parameters = new()
+            Parameters.Beta.CarrierMetadata.Retrieve parameters = new()
             {
                 Carriers = new List<string> { carrierName },
                 Types = new List<CarrierMetadataType> { CarrierMetadataType.ServiceLevels, CarrierMetadataType.PredefinedPackages },

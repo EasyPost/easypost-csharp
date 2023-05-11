@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Shipment
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#shipment-object">EasyPost shipment</a>.
     /// </summary>
-    public class Shipment : EasyPostObject, IShipmentParameter
+    public class Shipment : EasyPostObject, Parameters.IShipmentParameter
     {
         #region JSON Properties
 
@@ -107,6 +107,7 @@ namespace EasyPost.Models.API
             return Utilities.Rates.GetLowestRate(Rates, includeCarriers, includeServices, excludeCarriers, excludeServices);
         }
     }
+#pragma warning restore CA1724 // Naming conflicts with Parameters.Shipment
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="Shipment"/>s.
@@ -139,7 +140,7 @@ namespace EasyPost.Models.API
         /// <returns>A TParameters-type parameters set.</returns>
         protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Shipment> entries, int? pageSize = null)
         {
-            BetaFeatures.Parameters.Shipments.All parameters = Filters != null ? (BetaFeatures.Parameters.Shipments.All)Filters : new BetaFeatures.Parameters.Shipments.All();
+            Parameters.Shipment.All parameters = Filters != null ? (Parameters.Shipment.All)Filters : new Parameters.Shipment.All();
 
             parameters.BeforeId = entries.Last().Id;
 

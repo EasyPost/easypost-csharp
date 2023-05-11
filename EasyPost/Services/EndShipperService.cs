@@ -48,7 +48,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An <see cref="EndShipper"/> object.</returns>
         [CrudOperations.Create]
-        public async Task<EndShipper> Create(BetaFeatures.Parameters.EndShippers.Create parameters, CancellationToken cancellationToken = default)
+        public async Task<EndShipper> Create(Parameters.EndShipper.Create parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             return await RequestAsync<EndShipper>(Method.Post, "end_shippers", cancellationToken, parameters.ToDictionary());
@@ -58,14 +58,14 @@ namespace EasyPost.Services
         ///     List all <see cref="EndShipper"/>s.
         ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-endshippers">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">A dictionary containing parameters to filter the list with. See <see cref="BetaFeatures.Parameters.EndShippers.All"/> for valid keys.</param>
+        /// <param name="parameters">A dictionary containing parameters to filter the list with. See <see cref="Parameters.EndShipper.All"/> for valid keys.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="EndShipperCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<EndShipperCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             EndShipperCollection collection = await RequestAsync<EndShipperCollection>(Method.Get, "end_shippers", cancellationToken, parameters);
-            collection.Filters = BetaFeatures.Parameters.EndShippers.All.FromDictionary(parameters);
+            collection.Filters = Parameters.EndShipper.All.FromDictionary(parameters);
             return collection;
         }
 
@@ -73,11 +73,11 @@ namespace EasyPost.Services
         ///     List all <see cref="EndShipper"/>s.
         ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-endshippers">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters"><see cref="BetaFeatures.Parameters.EndShippers.All"/> parameter set.</param>
+        /// <param name="parameters"><see cref="Parameters.EndShipper.All"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="EndShipperCollection"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<EndShipperCollection> All(BetaFeatures.Parameters.EndShippers.All parameters, CancellationToken cancellationToken = default)
+        public async Task<EndShipperCollection> All(Parameters.EndShipper.All parameters, CancellationToken cancellationToken = default)
         {
             EndShipperCollection collection = await RequestAsync<EndShipperCollection>(Method.Get, "end_shippers", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
@@ -121,7 +121,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="EndShipper"/>.</returns>
         [CrudOperations.Update]
-        public async Task<EndShipper> Update(string id, BetaFeatures.Parameters.EndShippers.Update parameters, CancellationToken cancellationToken = default)
+        public async Task<EndShipper> Update(string id, Parameters.EndShipper.Update parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<EndShipper>(Method.Put, $"end_shippers/{id}", cancellationToken, parameters.ToDictionary());
         }

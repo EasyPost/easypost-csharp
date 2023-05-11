@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.EndShipper
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#endshipper-object">EasyPost EndShipper</a>.
     /// </summary>
-    public class EndShipper : EasyPostObject, IEndShipperParameter
+    public class EndShipper : EasyPostObject, Parameters.IEndShipperParameter
     {
         #region JSON Properties
 
@@ -96,6 +96,7 @@ namespace EasyPost.Models.API
         {
         }
     }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.EndShipper
 
     /// <summary>
     ///     Class representing a collection of EasyPost <see cref="EndShipper"/>s.

@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using EasyPost._base;
-using EasyPost.BetaFeatures.Parameters;
 using EasyPost.Exceptions.General;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Order
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#order-object">EasyPost order</a>.
     /// </summary>
-    public class Order : EasyPostObject, IOrderParameter
+    public class Order : EasyPostObject, Parameters.IOrderParameter
     {
         #region JSON Properties
 
@@ -72,3 +72,4 @@ namespace EasyPost.Models.API
         }
     }
 }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Order

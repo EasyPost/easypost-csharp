@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Beta.Rate
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#rate-object">EasyPost rate</a>.
     /// </summary>
@@ -54,3 +55,4 @@ namespace EasyPost.Models.API
         }
     }
 }
+#pragma warning disable CA1724 // Naming conflicts with Parameters.Beta.Rate
