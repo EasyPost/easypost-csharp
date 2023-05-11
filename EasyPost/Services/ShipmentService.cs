@@ -255,6 +255,36 @@ namespace EasyPost.Services
         }
 
         /// <summary>
+        ///     Generate a <see cref="Form"/> for a <see cref="Shipment"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-form">Related API documentation</a>.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="Shipment"/> to generate a form for.</param>
+        /// <param name="parameters">Parameters to generate the <see cref="Form"/> with.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>The updated <see cref="Shipment"/>.</returns>
+        [CrudOperations.Update]
+        public async Task<Shipment> GenerateForm(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
+        {
+            parameters = parameters.Wrap("form");
+
+            return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/forms", cancellationToken, parameters);
+        }
+
+        /// <summary>
+        ///     Generate a <see cref="Form"/> for a <see cref="Shipment"/>.
+        ///     <a href="https://www.easypost.com/docs/api#create-form">Related API documentation</a>.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="Shipment"/> to generate a form for.</param>
+        /// <param name="parameters"><see cref="Parameters.Shipment.GenerateForm"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>The updated <see cref="Shipment"/>.</returns>
+        [CrudOperations.Update]
+        public async Task<Shipment> GenerateForm(string id, Parameters.Shipment.GenerateForm parameters, CancellationToken cancellationToken = default)
+        {
+            return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/forms", cancellationToken, parameters.ToDictionary());
+        }
+
+        /// <summary>
         ///     Insure a <see cref="Shipment"/> for the given amount.
         ///     <a href="https://www.easypost.com/docs/api#insure-a-shipment">Related API documentation</a>.
         /// </summary>
