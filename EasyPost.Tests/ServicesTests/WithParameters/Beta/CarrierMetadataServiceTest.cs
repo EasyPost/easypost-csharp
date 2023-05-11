@@ -7,11 +7,11 @@ using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
 using CustomAssertions = EasyPost.Tests._Utilities.Assertions.Assert;
 
-namespace EasyPost.Tests.ServicesTests.Beta
+namespace EasyPost.Tests.ServicesTests.WithParameters.Beta
 {
     public class CarrierMetadataServiceTests : UnitTest
     {
-        public CarrierMetadataServiceTests() : base("beta_carrier_metadata")
+        public CarrierMetadataServiceTests() : base("beta_carrier_metadata_with_parameters")
         {
         }
 
