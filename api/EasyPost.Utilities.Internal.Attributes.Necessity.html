@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class RefundByPaymentLog
+    <title>Enum Necessity
  </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class RefundByPaymentLog
+    <meta name="title" content="Enum Necessity
  ">
   
     <link rel="shortcut icon" href="../favicon.ico">
@@ -67,65 +67,42 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="EasyPost.Parameters.ReferralCustomer.RefundByPaymentLog">
+            <article class="content wrap" id="_content" data-uid="EasyPost.Utilities.Internal.Attributes.Necessity">
 
 
-  <h1 id="EasyPost_Parameters_ReferralCustomer_RefundByPaymentLog" data-uid="EasyPost.Parameters.ReferralCustomer.RefundByPaymentLog" class="text-break">Class RefundByPaymentLog
+  <h1 id="EasyPost_Utilities_Internal_Attributes_Necessity" data-uid="EasyPost.Utilities.Internal.Attributes.Necessity" class="text-break">Enum Necessity
 </h1>
-  <div class="markdown level0 summary"><p><a href="https://www.easypost.com/docs/api#refund-a-referral-user">Parameters</a> for <see cref="!:EasyPost.Services.Beta.ReferralCustomerService.RefundByPaymentLog(RefundByPaymentLog, System.Threading.CancellationToken)"></see> API calls.</p>
+  <div class="markdown level0 summary"><p>An enum to represent the necessity of a parameter.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="EasyPost.Parameters.BaseParameters.html">BaseParameters</a></div>
-    <div class="level2"><span class="xref">RefundByPaymentLog</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToSubDictionary_Type_">BaseParameters.ToSubDictionary(Type)</a>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="EasyPost.Parameters.ReferralCustomer.html">EasyPost.Parameters.ReferralCustomer</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="EasyPost.Utilities.Internal.Attributes.html">EasyPost.Utilities.Internal.Attributes</a></h6>
   <h6><strong>Assembly</strong>: EasyPost.dll</h6>
-  <h5 id="EasyPost_Parameters_ReferralCustomer_RefundByPaymentLog_syntax">Syntax</h5>
+  <h5 id="EasyPost_Utilities_Internal_Attributes_Necessity_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RefundByPaymentLog : BaseParameters</code></pre>
+    <pre><code class="lang-csharp hljs">public enum Necessity : int</code></pre>
   </div>
-  <h3 id="properties">Properties
+  <h3 id="fields">Fields
 </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_ReferralCustomer_RefundByPaymentLog_PaymentLogId.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.ReferralCustomer.RefundByPaymentLog.PaymentLogId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/ReferralCustomer/RefundByPaymentLog.cs/#L17">View Source</a>
-  </span>
-  <a id="EasyPost_Parameters_ReferralCustomer_RefundByPaymentLog_PaymentLogId_" data-uid="EasyPost.Parameters.ReferralCustomer.RefundByPaymentLog.PaymentLogId*"></a>
-  <h4 id="EasyPost_Parameters_ReferralCustomer_RefundByPaymentLog_PaymentLogId" data-uid="EasyPost.Parameters.ReferralCustomer.RefundByPaymentLog.PaymentLogId">PaymentLogId</h4>
-  <div class="markdown level1 summary"><p>The ID of the payment log to refund.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string? PaymentLogId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
-        <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
-    </thead>
+    <thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td></td>
+        <td id="EasyPost_Utilities_Internal_Attributes_Necessity_Optional">Optional</td>
+        <td><p>Optional parameters are optional for a request. Default value for these should be null.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="EasyPost_Utilities_Internal_Attributes_Necessity_Required">Required</td>
+        <td><p>Required parameters are required for a request. They do not need a default value, since they are required to be set.</p>
+</td>
       </tr>
     </tbody>
-  </table>
+  </thead></thead></table>
 </article>
           </div>
 
@@ -134,10 +111,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_ReferralCustomer_RefundByPaymentLog.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.ReferralCustomer.RefundByPaymentLog%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Utilities_Internal_Attributes_Necessity.md&amp;value=---%0Auid%3A%20EasyPost.Utilities.Internal.Attributes.Necessity%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/ReferralCustomer/RefundByPaymentLog.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Utilities/Internal/Attributes/RequestParameterAttribute.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
