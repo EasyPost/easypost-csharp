@@ -7,7 +7,7 @@ namespace EasyPost.Utilities.Internal.Attributes
     /// <summary>
     ///     The base class for all custom <see cref="Attribute"/>s in the SDK.
     /// </summary>
-    internal abstract class BaseCustomAttribute : Attribute, IBaseCustomAttribute
+    public abstract class BaseCustomAttribute : Attribute, IBaseCustomAttribute
     {
         /// <summary>
         ///     Get all properties of a given <see cref="Type"/> decorated with a T-type attribute.
