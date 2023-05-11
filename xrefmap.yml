@@ -12150,6 +12150,38 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Shipment.Create.ToAddress
   nameWithType: Create.ToAddress
+- uid: EasyPost.Parameters.Shipment.GenerateForm
+  name: GenerateForm
+  href: api/EasyPost.Parameters.Shipment.GenerateForm.html
+  commentId: T:EasyPost.Parameters.Shipment.GenerateForm
+  fullName: EasyPost.Parameters.Shipment.GenerateForm
+  nameWithType: GenerateForm
+- uid: EasyPost.Parameters.Shipment.GenerateForm.Data
+  name: Data
+  href: api/EasyPost.Parameters.Shipment.GenerateForm.html#EasyPost_Parameters_Shipment_GenerateForm_Data
+  commentId: P:EasyPost.Parameters.Shipment.GenerateForm.Data
+  fullName: EasyPost.Parameters.Shipment.GenerateForm.Data
+  nameWithType: GenerateForm.Data
+- uid: EasyPost.Parameters.Shipment.GenerateForm.Data*
+  name: Data
+  href: api/EasyPost.Parameters.Shipment.GenerateForm.html#EasyPost_Parameters_Shipment_GenerateForm_Data_
+  commentId: Overload:EasyPost.Parameters.Shipment.GenerateForm.Data
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Shipment.GenerateForm.Data
+  nameWithType: GenerateForm.Data
+- uid: EasyPost.Parameters.Shipment.GenerateForm.Type
+  name: Type
+  href: api/EasyPost.Parameters.Shipment.GenerateForm.html#EasyPost_Parameters_Shipment_GenerateForm_Type
+  commentId: P:EasyPost.Parameters.Shipment.GenerateForm.Type
+  fullName: EasyPost.Parameters.Shipment.GenerateForm.Type
+  nameWithType: GenerateForm.Type
+- uid: EasyPost.Parameters.Shipment.GenerateForm.Type*
+  name: Type
+  href: api/EasyPost.Parameters.Shipment.GenerateForm.html#EasyPost_Parameters_Shipment_GenerateForm_Type_
+  commentId: Overload:EasyPost.Parameters.Shipment.GenerateForm.Type
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Shipment.GenerateForm.Type
+  nameWithType: GenerateForm.Type
 - uid: EasyPost.Parameters.Shipment.GenerateLabel
   name: GenerateLabel
   href: api/EasyPost.Parameters.Shipment.GenerateLabel.html
@@ -14497,6 +14529,28 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ShipmentService.Create
   nameWithType: ShipmentService.Create
+- uid: EasyPost.Services.ShipmentService.GenerateForm(System.String,Dictionary{System.String,System.Object},CancellationToken)
+  name: GenerateForm(String, Dictionary<String, Object>, CancellationToken)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GenerateForm_System_String_Dictionary_System_String_System_Object__CancellationToken_
+  commentId: M:EasyPost.Services.ShipmentService.GenerateForm(System.String,Dictionary{System.String,System.Object},CancellationToken)
+  name.vb: GenerateForm(String, Dictionary(Of String, Object), CancellationToken)
+  fullName: EasyPost.Services.ShipmentService.GenerateForm(System.String, Dictionary<System.String, System.Object>, CancellationToken)
+  fullName.vb: EasyPost.Services.ShipmentService.GenerateForm(System.String, Dictionary(Of System.String, System.Object), CancellationToken)
+  nameWithType: ShipmentService.GenerateForm(String, Dictionary<String, Object>, CancellationToken)
+  nameWithType.vb: ShipmentService.GenerateForm(String, Dictionary(Of String, Object), CancellationToken)
+- uid: EasyPost.Services.ShipmentService.GenerateForm(System.String,EasyPost.Parameters.Shipment.GenerateForm,CancellationToken)
+  name: GenerateForm(String, GenerateForm, CancellationToken)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GenerateForm_System_String_EasyPost_Parameters_Shipment_GenerateForm_CancellationToken_
+  commentId: M:EasyPost.Services.ShipmentService.GenerateForm(System.String,EasyPost.Parameters.Shipment.GenerateForm,CancellationToken)
+  fullName: EasyPost.Services.ShipmentService.GenerateForm(System.String, EasyPost.Parameters.Shipment.GenerateForm, CancellationToken)
+  nameWithType: ShipmentService.GenerateForm(String, GenerateForm, CancellationToken)
+- uid: EasyPost.Services.ShipmentService.GenerateForm*
+  name: GenerateForm
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GenerateForm_
+  commentId: Overload:EasyPost.Services.ShipmentService.GenerateForm
+  isSpec: "True"
+  fullName: EasyPost.Services.ShipmentService.GenerateForm
+  nameWithType: ShipmentService.GenerateForm
 - uid: EasyPost.Services.ShipmentService.GenerateLabel(System.String,EasyPost.Parameters.Shipment.GenerateLabel,CancellationToken)
   name: GenerateLabel(String, GenerateLabel, CancellationToken)
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GenerateLabel_System_String_EasyPost_Parameters_Shipment_GenerateLabel_CancellationToken_
