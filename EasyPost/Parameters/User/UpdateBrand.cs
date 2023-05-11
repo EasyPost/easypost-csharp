@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.User
     ///     <a href="https://www.easypost.com/docs/api#update-a-brand">Parameters</a> for <see cref="EasyPost.Services.UserService.UpdateBrand(string, UpdateBrand, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class UpdateBrand : BaseParameters
+    public class UpdateBrand : BaseParameters
     {
         #region Request Parameters
 

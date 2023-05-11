@@ -37,7 +37,7 @@ namespace EasyPost._base
         /// <summary>
         ///     The prefix of the EasyPost ID for this object.
         /// </summary>
-        internal string? Prefix => Id?.Split('_').First();
+        public string? Prefix => Id?.Split('_').First();
 
         /// <summary>
         ///     Gets this object as a JSON object (dictionary).

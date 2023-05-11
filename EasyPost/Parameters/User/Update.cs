@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.User
     ///     <a href="https://www.easypost.com/docs/api#update-a-user">Parameters</a> for <see cref="EasyPost.Services.UserService.Update(string, Update, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class Update : BaseParameters
+    public class Update : BaseParameters
     {
         #region Request Parameters
 

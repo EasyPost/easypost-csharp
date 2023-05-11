@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.Shipment
     ///     <a href="https://www.easypost.com/docs/api#insure-a-shipment">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.Insure(string, Insure, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class Insure : BaseParameters
+    public class Insure : BaseParameters
     {
         #region Request Parameters
 

@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.Shipment
     ///     <a href="https://www.easypost.com/docs/api#regenerate-rates-for-a-shipment">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.RegenerateRates(string, RegenerateRates, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class RegenerateRates : BaseParameters
+    public class RegenerateRates : BaseParameters
     {
         #region Request Parameters
 

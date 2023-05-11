@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.ScanForm
     ///     <a href="https://www.easypost.com/docs/api#create-a-scanform">Parameters</a> for <see cref="EasyPost.Services.ScanFormService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class Create : BaseParameters, IScanFormParameter
+    public class Create : BaseParameters, IScanFormParameter
     {
         #region Request Parameters
 

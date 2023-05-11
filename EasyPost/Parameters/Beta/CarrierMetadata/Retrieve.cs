@@ -9,7 +9,7 @@ namespace EasyPost.Parameters.Beta.CarrierMetadata
     ///     <a href="https://www.easypost.com/docs/api#retrieve-carrier-metadata">Parameters</a> for <see cref="EasyPost.Services.Beta.CarrierMetadataService.RetrieveCarrierMetadata(Retrieve, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class Retrieve : BaseParameters
+    public class Retrieve : BaseParameters
     {
         #region Request Parameters
 

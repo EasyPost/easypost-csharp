@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.CarrierAccount
     ///     <a href="https://www.easypost.com/docs/api#update-a-carrieraccount">Parameters</a> for <see cref="EasyPost.Services.CarrierAccountService.Update(string, Update, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class Update : BaseParameters
+    public class Update : BaseParameters
     {
         #region Request Parameters
 

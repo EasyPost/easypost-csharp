@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.Insurance
     ///     <a href="https://www.easypost.com/docs/api#create-an-insurance">Parameters</a> for <see cref="EasyPost.Services.InsuranceService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class Create : BaseParameters, IInsuranceParameter
+    public class Create : BaseParameters, IInsuranceParameter
     {
         #region Request Parameters
 

@@ -9,7 +9,7 @@ namespace EasyPost.Parameters.Tracker
     ///     Parameters for <see cref="EasyPost.Services.TrackerService.CreateList(CreateList, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class CreateList : BaseParameters, ITrackerParameter
+    public class CreateList : BaseParameters, ITrackerParameter
     {
         #region Request Parameters
 

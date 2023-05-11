@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.Report
     ///     <a href="https://www.easypost.com/docs/api#create-a-report">Parameters</a> for <see cref="EasyPost.Services.ReportService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class Create : BaseParameters, IReportParameter
+    public class Create : BaseParameters, IReportParameter
     {
         #region Request Parameters
 

@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.Webhook
     ///     <a href="https://www.easypost.com/docs/api#create-a-webhook">Parameters</a> for <see cref="EasyPost.Services.WebhookService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class Create : BaseParameters, IWebhookParameter
+    public class Create : BaseParameters, IWebhookParameter
     {
         #region Request Parameters
 

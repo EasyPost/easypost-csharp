@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.ReferralCustomer
     ///     <a href="https://www.easypost.com/docs/api#refund-a-referral-user">Parameters</a> for <see cref="EasyPost.Services.Beta.ReferralCustomerService.RefundByPaymentLog(RefundByPaymentLog, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class RefundByPaymentLog : BaseParameters
+    public class RefundByPaymentLog : BaseParameters
     {
         #region Request Parameters
 

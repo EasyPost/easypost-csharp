@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.Batch
     ///     <a href="https://www.easypost.com/docs/api#batch-labels">Parameters</a> for <see cref="EasyPost.Services.BatchService.GenerateLabel(string, GenerateLabel, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class GenerateLabel : BaseParameters
+    public class GenerateLabel : BaseParameters
     {
         #region Request Parameters
 
