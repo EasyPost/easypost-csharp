@@ -214,6 +214,7 @@ namespace EasyPost.Parameters
 
                     return dictionary;
 
+                // ReSharper disable once RedundantEmptySwitchSection
                 default:
                     break;
             }

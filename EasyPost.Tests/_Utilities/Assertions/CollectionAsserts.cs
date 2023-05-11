@@ -24,7 +24,7 @@ namespace EasyPost.Tests._Utilities.Assertions
             GuardArgumentNotNull(nameof(collection), collection);
             GuardArgumentNotNull(nameof(action), action);
 
-            Any(collection, (item, index) => action(item));
+            Any(collection, (item, _) => action(item));
         }
 
         /// <summary>

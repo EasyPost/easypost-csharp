@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using EasyPost._base;
 using EasyPost.Utilities.Internal;
@@ -120,6 +121,7 @@ public class ClientConfiguration : IDisposable
     // ReSharper disable once NonReadonlyMemberInGetHashCode
 #pragma warning disable CA1307
     /// <inheritdoc cref="EasyPostObject.GetHashCode()"/>
+    [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode", Justification = "ApiBase and Timeout will never change after construction")]
     public override int GetHashCode() => ApiKey.GetHashCode() ^ ApiBase.GetHashCode() ^ Timeout.GetHashCode();
 #pragma warning restore CA1307
 

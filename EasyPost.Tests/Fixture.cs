@@ -188,7 +188,7 @@ namespace EasyPost.Tests._Utilities
                         shipments = new List<ParameterSets.IShipmentParameter>();
                         foreach (Dictionary<string, object> shipmentFixture in shipmentsFixture)
                         {
-                            shipments.Add(Fixtures.Parameters.Shipments.Create(shipmentFixture));
+                            shipments.Add(Shipments.Create(shipmentFixture));
                         }
                     }
 
@@ -246,7 +246,7 @@ namespace EasyPost.Tests._Utilities
                         customsItems = new List<ParameterSets.ICustomsItemParameter>();
                         foreach (Dictionary<string, object> customsItemFixture in customsItemsFixture)
                         {
-                            customsItems.Add(Fixtures.Parameters.CustomsItems.Create(customsItemFixture));
+                            customsItems.Add(CustomsItems.Create(customsItemFixture));
                         }
                     }
 
@@ -346,8 +346,8 @@ namespace EasyPost.Tests._Utilities
                     {
                         Amount = fixture.GetOrNullDouble("amount"),
                         Carrier = fixture.GetOrNull<string>("carrier"),
-                        ToAddress = Fixtures.Parameters.Addresses.Create(toAddressFixture),
-                        FromAddress = Fixtures.Parameters.Addresses.Create(fromAddressFixture),
+                        ToAddress = Addresses.Create(toAddressFixture),
+                        FromAddress = Addresses.Create(fromAddressFixture),
                         TrackingCode = fixture.GetOrNull<string>("tracking_code"),
                         Reference = fixture.GetOrNull<string>("reference"),
                     };
@@ -396,14 +396,14 @@ namespace EasyPost.Tests._Utilities
                         shipments = new List<ParameterSets.IShipmentParameter>();
                         foreach (Dictionary<string, object> shipmentFixture in shipmentsFixture)
                         {
-                            shipments.Add(Fixtures.Parameters.Shipments.Create(shipmentFixture));
+                            shipments.Add(Shipments.Create(shipmentFixture));
                         }
                     }
 
                     return new ParameterSets.Order.Create
                     {
-                        ToAddress = Fixtures.Parameters.Addresses.Create(toAddressFixture),
-                        FromAddress = Fixtures.Parameters.Addresses.Create(fromAddressFixture),
+                        ToAddress = Addresses.Create(toAddressFixture),
+                        FromAddress = Addresses.Create(fromAddressFixture),
                         Reference = fixture.GetOrNull<string>("reference"),
                         Shipments = shipments,
                     };
@@ -437,7 +437,7 @@ namespace EasyPost.Tests._Utilities
 
                     return new ParameterSets.Pickup.Create
                     {
-                        Address = Fixtures.Parameters.Addresses.Create(addressFixture),
+                        Address = Addresses.Create(addressFixture),
                         MinDatetime = fixture.GetOrNull<string>("min_datetime"),
                         MaxDatetime = fixture.GetOrNull<string>("max_datetime"),
                         Instructions = fixture.GetOrNull<string>("instructions"),
@@ -472,9 +472,9 @@ namespace EasyPost.Tests._Utilities
 
                     return new ParameterSets.Beta.Rate.Retrieve
                     {
-                        ToAddress = Fixtures.Parameters.Addresses.Create(toAddressFixture),
-                        FromAddress = Fixtures.Parameters.Addresses.Create(fromAddressFixture),
-                        Parcel = Fixtures.Parameters.Parcels.Create(parcelFixture),
+                        ToAddress = Addresses.Create(toAddressFixture),
+                        FromAddress = Addresses.Create(fromAddressFixture),
+                        Parcel = Parcels.Create(parcelFixture),
                     };
                 }
             }
@@ -607,17 +607,17 @@ namespace EasyPost.Tests._Utilities
                         taxIdentifiers = new List<ParameterSets.ITaxIdentifierParameter>();
                         foreach (Dictionary<string, object> taxIdentifierFixture in taxIdentifiersFixture)
                         {
-                            taxIdentifiers.Add(Fixtures.Parameters.TaxIdentifiers.Create(taxIdentifierFixture));
+                            taxIdentifiers.Add(TaxIdentifiers.Create(taxIdentifierFixture));
                         }
                     }
 
                     return new ParameterSets.Shipment.Create
                     {
-                        ToAddress = Fixtures.Parameters.Addresses.Create(toAddressFixture),
-                        FromAddress = Fixtures.Parameters.Addresses.Create(fromAddressFixture),
-                        Parcel = Fixtures.Parameters.Parcels.Create(parcelFixture),
-                        CustomsInfo = Fixtures.Parameters.CustomsInfo.Create(customsInfoFixture),
-                        Options = Fixtures.Parameters.Options(optionsFixture),
+                        ToAddress = Addresses.Create(toAddressFixture),
+                        FromAddress = Addresses.Create(fromAddressFixture),
+                        Parcel = Parcels.Create(parcelFixture),
+                        CustomsInfo = CustomsInfo.Create(customsInfoFixture),
+                        Options = Options(optionsFixture),
                         CarbonOffset = fixture.GetOrDefault<bool>("carbon_offset"),  // this will always be true or false, never null
                         CarrierAccountIds = fixture.GetOrNull<List<string>>("carrier_accounts"),
                         Carrier = fixture.GetOrNull<string>("carrier"),

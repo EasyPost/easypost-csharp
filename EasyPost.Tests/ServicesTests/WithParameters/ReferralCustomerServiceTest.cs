@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Globalization;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
@@ -62,26 +61,5 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         #endregion
 
         #endregion
-
-        private static string ReferralCustomerKey => TestUtils.GetApiKey(TestUtils.ApiKey.Referral);
-
-        private sealed class CreditCard
-        {
-            internal readonly string Number;
-
-            internal readonly int ExpirationMonth;
-
-            internal readonly int ExpirationYear;
-
-            internal readonly string Cvc;
-
-            internal CreditCard(IReadOnlyDictionary<string, object> details)
-            {
-                Number = (string)details["number"];
-                ExpirationMonth = int.Parse((string)details["expiration_month"], NumberStyles.Number, CultureInfo.InvariantCulture);
-                ExpirationYear = int.Parse((string)details["expiration_year"], NumberStyles.Number, CultureInfo.InvariantCulture);
-                Cvc = (string)details["cvc"];
-            }
-        }
     }
 }
