@@ -10748,6 +10748,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Order.Create.Reference
   nameWithType: Create.Reference
+- uid: EasyPost.Parameters.Order.Create.Service
+  name: Service
+  href: api/EasyPost.Parameters.Order.Create.html#EasyPost_Parameters_Order_Create_Service
+  commentId: P:EasyPost.Parameters.Order.Create.Service
+  fullName: EasyPost.Parameters.Order.Create.Service
+  nameWithType: Create.Service
+- uid: EasyPost.Parameters.Order.Create.Service*
+  name: Service
+  href: api/EasyPost.Parameters.Order.Create.html#EasyPost_Parameters_Order_Create_Service_
+  commentId: Overload:EasyPost.Parameters.Order.Create.Service
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Order.Create.Service
+  nameWithType: Create.Service
 - uid: EasyPost.Parameters.Order.Create.Shipments
   name: Shipments
   href: api/EasyPost.Parameters.Order.Create.html#EasyPost_Parameters_Order_Create_Shipments
@@ -10825,6 +10838,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Parcel.Create.Length
   nameWithType: Create.Length
+- uid: EasyPost.Parameters.Parcel.Create.PredefinedPackage
+  name: PredefinedPackage
+  href: api/EasyPost.Parameters.Parcel.Create.html#EasyPost_Parameters_Parcel_Create_PredefinedPackage
+  commentId: P:EasyPost.Parameters.Parcel.Create.PredefinedPackage
+  fullName: EasyPost.Parameters.Parcel.Create.PredefinedPackage
+  nameWithType: Create.PredefinedPackage
+- uid: EasyPost.Parameters.Parcel.Create.PredefinedPackage*
+  name: PredefinedPackage
+  href: api/EasyPost.Parameters.Parcel.Create.html#EasyPost_Parameters_Parcel_Create_PredefinedPackage_
+  commentId: Overload:EasyPost.Parameters.Parcel.Create.PredefinedPackage
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Parcel.Create.PredefinedPackage
+  nameWithType: Create.PredefinedPackage
 - uid: EasyPost.Parameters.Parcel.Create.Weight
   name: Weight
   href: api/EasyPost.Parameters.Parcel.Create.html#EasyPost_Parameters_Parcel_Create_Weight
