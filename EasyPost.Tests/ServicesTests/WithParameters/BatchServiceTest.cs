@@ -185,7 +185,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 FileFormat = "ZPL",
             };
 
-            await Client.Batch.GenerateLabel(batch.Id, generateLabelParameters);
+            batch = await Client.Batch.GenerateLabel(batch.Id, generateLabelParameters);
 
             // We can't assert anything meaningful here because the label gets queued for generation and may not be immediately available
             Assert.IsType<Batch>(batch);

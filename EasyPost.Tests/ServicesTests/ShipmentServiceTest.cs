@@ -7,6 +7,7 @@ using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
+using CustomAssertions = EasyPost.Tests._Utilities.Assertions.Assert;
 
 namespace EasyPost.Tests.ServicesTests
 {
@@ -547,7 +548,7 @@ namespace EasyPost.Tests.ServicesTests
 
             Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
 
-            await Client.Shipment.Buy(shipment.Id, shipment.LowestRate().Id);
+            shipment = await Client.Shipment.Buy(shipment.Id, shipment.LowestRate().Id);
 
             Assert.NotNull(shipment.Forms);
 
@@ -557,6 +558,31 @@ namespace EasyPost.Tests.ServicesTests
                 Assert.NotNull(form.FormUrl);
                 Assert.True(form.SubmittedElectronically);
             }
+        }
+
+        [Fact]
+        [Testing.Function]
+        public async Task TestGenerateForm()
+        {
+            UseVCR("generate_form");
+            
+            const string formType = "label_qr_code";
+            
+            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
+            
+            CustomAssertions.None(shipment.Forms, form => Assert.Equal(formType, form.FormType));
+            
+            shipment = await Client.Shipment.Buy(shipment.Id, shipment.LowestRate().Id);
+
+            Dictionary<string, object> parameters = new()
+            {
+                { "type", "label_qr_code" },
+            };
+            
+            shipment = await Client.Shipment.GenerateForm(shipment.Id, parameters);
+            
+            Assert.NotNull(shipment.Forms);
+            CustomAssertions.Any(shipment.Forms, form => Assert.Equal(formType, form.FormType));
         }
 
         [Fact]
