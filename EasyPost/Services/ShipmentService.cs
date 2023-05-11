@@ -253,7 +253,7 @@ namespace EasyPost.Services
         {
             return await RequestAsync<Shipment>(Method.Get, $"shipments/{id}/label", cancellationToken, parameters.ToDictionary());
         }
-        
+
         /// <summary>
         ///     Generate a <see cref="Form"/> for a <see cref="Shipment"/>.
         ///     <a href="https://www.easypost.com/docs/api#create-form">Related API documentation</a>.

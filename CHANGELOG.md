@@ -13,6 +13,7 @@
   - EasyPost API failures can trigger a variety of specific exceptions, all inheriting from `ApiError`.
   - Non-EasyPost API/HTTP failures will trigger an `ExternalApiError` exception.
 - [Parameter sets](#v450-2023-03-22) are out of beta. Users can use access them via `EasyPost.Parameters` namespace.
+- Reintroduce `GenerateForm` function for shipments that was accidentally removed in `v4`.
 
 
 ## v4.6.0 (2023-04-18)

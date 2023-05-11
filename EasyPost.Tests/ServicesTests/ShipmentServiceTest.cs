@@ -565,22 +565,22 @@ namespace EasyPost.Tests.ServicesTests
         public async Task TestGenerateForm()
         {
             UseVCR("generate_form");
-            
+
             const string formType = "label_qr_code";
-            
+
             Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
-            
+
             CustomAssertions.None(shipment.Forms, form => Assert.Equal(formType, form.FormType));
-            
+
             shipment = await Client.Shipment.Buy(shipment.Id, shipment.LowestRate().Id);
 
             Dictionary<string, object> parameters = new()
             {
                 { "type", "label_qr_code" },
             };
-            
+
             shipment = await Client.Shipment.GenerateForm(shipment.Id, parameters);
-            
+
             Assert.NotNull(shipment.Forms);
             CustomAssertions.Any(shipment.Forms, form => Assert.Equal(formType, form.FormType));
         }

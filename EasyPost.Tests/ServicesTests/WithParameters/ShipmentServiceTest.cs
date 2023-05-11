@@ -313,37 +313,37 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Assert.NotNull(shipment.PostageLabel.LabelZplUrl);
         }
-        
+
         [Fact]
         [Testing.Function]
         public async Task TestGenerateForm()
         {
             UseVCR("generate_form");
-            
+
             const string formType = "label_qr_code";
-            
+
             Dictionary<string, object> shipmentData = Fixtures.FullShipment;
             Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
             Shipment shipment = await Client.Shipment.Create(shipmentParameters);
 
             CustomAssertions.None(shipment.Forms, form => Assert.Equal(formType, form.FormType));
-            
+
             Rate rate = shipment.LowestRate();
-            
+
             Parameters.Shipment.Buy buyParameters = new(rate)
             {
                 CarbonOffset = true,
             };
 
             shipment = await Client.Shipment.Buy(shipment.Id, buyParameters);
-            
+
             Parameters.Shipment.GenerateForm generateFormParameters = new()
             {
                 Type = formType,
             };
-            
+
             shipment = await Client.Shipment.GenerateForm(shipment.Id, generateFormParameters);
-            
+
             Assert.NotNull(shipment.Forms);
             CustomAssertions.Any(shipment.Forms, form => Assert.Equal(formType, form.FormType));
         }

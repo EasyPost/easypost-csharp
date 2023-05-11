@@ -63,7 +63,7 @@ namespace EasyPost.Tests._Utilities.Assertions
             if (!passed)
                 throw new AnyException();
         }
-        
+
         /// <summary>
         /// Verifies that no items in the collection pass when executed against
         /// action.
