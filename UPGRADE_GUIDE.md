@@ -2,8 +2,145 @@
 
 Use the following guide to assist in the upgrade process of the `easypost-csharp` library between major versions.
 
+- [Upgrading from 4.x to 5.0](#upgrading-from-4x-to-50)
 - [Upgrading from 3.x to 4.x](#upgrading-from-3x-to-40)
 - [Upgrading from 2.x to 3.0](#upgrading-from-2x-to-30)
+
+## Upgrading from 4.x to 5.0
+
+### 5.0 High Impact Changes
+
+- [Service Functions](#50-service-functions)
+- [Client Configuration](#50-client-configuration)
+
+### 5.0 Medium Impact Changes
+
+- [Naming Conventions](#50-naming-conventions)
+- [Exception Changes](#50-exception-changes)
+- [Cancellation Tokens](#50-cancellation-tokens)
+- [Parameter Sets](#50-parameter-sets)
+
+### 5.0 Low Impact Changes
+
+- [Drop RestSharp Dependency](#50-drop-restsharp-dependency)
+- [Dispose Pattern](#50-dispose-pattern)
+- [Docstring Improvements](#50-docstring-improvements)
+
+## 5.0 Service Functions
+
+*Likelihood of Impact: **High***
+
+Following the design for the other EasyPost SDKs, all functions have been consolidated into appropriate service classes.
+
+Previously, only `Create`, `Retrieve` and `All` functions were available in services, with all other functions related to a specific instance of a resource available on the resource itself.
+
+For example, v4.x flow of creating a pickup and then buying it:
+
+```csharp
+var pickup = await myClient.Pickup.Create(parameters);
+pickup.Buy();  // pickup variable is updated in-place
+```
+
+In v5.0, the flow is now:
+
+```csharp
+var pickup = await myClient.Pickup.Create(parameters);
+pickup = await myClient.Pickup.Buy(pickup.Id); // re-assign pickup variable to capture the updated Pickup object
+```
+
+## 5.0 Client Configuration
+
+*Likelihood of Impact: **High***
+
+The process of configuring a `Client` has been overhauled to allow for more flexibility in the configuration process.
+
+Old method:
+```csharp
+Client myClient = new Client("my_api_key");
+```
+
+New method:
+```csharp
+Client myClient = new Client(new ClientConfiguration("my_api_key"));
+```
+
+The `ClientConfiguration` class has a number of optional parameters that can be set to customize the behavior of the `Client` instance.
+
+```csharp
+Client myClient = new Client(new ClientConfiguration("my_api_key") {
+  ApiBase = "optional_api_base_override",
+  CustomHttpClient = myOptionalCustomHttpClient,
+  Timeout = TimeSpan.FromMilliseconds(myCustomTimeoutMilliseconds)
+});
+```
+
+## 5.0 Naming Conventions
+
+*Likelihood of Impact: **Medium***
+
+A number of classes and properties have been renamed or altered:
+
+- `Smartrate` is now `SmartRate`
+
+## 5.0 Exception Changes
+
+*Likelihood of Impact: **Medium***
+
+Some exception types have been consolidated or altered:
+
+- `UnexpectedHttpError` is now `UnknownHttpError`
+- `UnknownApiError` has been removed and replaced with `UnknownHttpError`
+- `ExternalApiError` no longer inherits from `ApiError` and instead inherits from `EasyPostError`
+  - Any EasyPost API failure will raise an `ApiError`-based exception
+  - Non-EasyPost API/HTTP failures (e.g. calls to Stripe) will raise an `ExternalApiError` exception
+- All `EasyPostError` exceptions now have a `PrettyPrint` getter method that returns a human-readable string representation of the error
+- An EasyPost API timeout will raise a `TimeoutError` exception rather than a `System.Threading.Tasks.TaskCanceledException`
+
+## 5.0 Cancellation Tokens
+
+*Likelihood of Impact: **Medium***
+
+All service functions that make HTTP requests now accept an optional `CancellationToken` parameter that can be used to cancel the request.
+
+## 5.0 Parameter Sets
+
+*Likelihood of Impact: **Medium***
+
+The Parameter objects introduced in [`v4.5.0`](CHANGELOG.md#v450-2023-03-22) have been moved out of beta. As a result, the classes are available in a different namespace.
+
+Old namespace:
+```csharp
+var parameters = new EasyPost.BetaFeatures.Parameters.Addresses.Create();
+```
+
+New namespace:
+```csharp
+var parameters = new EasyPost.Parameters.Address.Create();
+```
+
+Note that the namespaces have also changed from plural to singular (e.g. `Addresses` to `Address`, `Shipments` to `Shipment`) to better correlate with the service names on a `Client` instance.
+
+## 5.0 Drop RestSharp Dependency
+
+*Likelihood of Impact: **Low***
+
+The RestSharp dependency in this SDK has been dropped in favor of using the `System.Net.Http` and `Newtonsoft.Json` libraries directly.
+
+This should have no impact on the end-user experience of using this SDK, but if you were reliant on the RestSharp dependency in this SDK being transitively used for another aspect of your codebase, you will need to now install RestSharp directly.
+
+## 5.0 Dispose Pattern
+
+*Likelihood of Impact: **Low***
+
+The SDK has implemented the IDisposable interface for a number of classes, including `Client` and `ClientConfiguration` and several internal classes.
+
+This should improve performance and memory usage in some cases, but should have no impact on the end-user experience of using this SDK.
+
+## 5.0 Docstring Improvements
+
+*Likelihood of Impact: **Low***
+
+The docstrings for all classes and functions have been improved to provide more information about the parameters and return values, as well as include links to the relevant API documentation on EasyPost's website.
 
 ## Upgrading from 3.x to 4.0
 
