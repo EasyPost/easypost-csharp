@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v5.0.0 (2023-05-15)
 
 ### Breaking Changes
 
