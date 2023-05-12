@@ -161,7 +161,7 @@ namespace EasyPost.Tests.ServicesTests
                 Thread.Sleep(10000); // Wait enough time to process
             }
 
-            webhook = await Client.Webhook.Update(webhook.Id);
+            webhook = await Client.Webhook.Update(webhook.Id, new Dictionary<string, object>());
 
             Assert.IsType<Webhook>(webhook);
             Assert.StartsWith("hook_", webhook.Id);
