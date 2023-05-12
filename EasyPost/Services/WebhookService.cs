@@ -92,8 +92,8 @@ namespace EasyPost.Services
         ///     Enable a disabled <see cref="Webhook"/> or alter its secret.
         ///     <a href="https://www.easypost.com/docs/api#update-a-webhook">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">Data to update <see cref="Webhook"/> with.</param>
         /// <param name="id">The ID of the <see cref="Webhook"/> to update.</param>
+        /// <param name="parameters">Data to update <see cref="Webhook"/> with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Webhook"/>.</returns>
         [CrudOperations.Update]
@@ -106,14 +106,14 @@ namespace EasyPost.Services
         ///     Enable a disabled <see cref="Webhook"/> or alter its secret.
         ///     <a href="https://www.easypost.com/docs/api#update-a-webhook">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">Data to update <see cref="Webhook"/> with.</param>
         /// <param name="id">The ID of the <see cref="Webhook"/> to update.</param>
+        /// <param name="parameters">Optional data to update <see cref="Webhook"/> with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Webhook"/>.</returns>
         [CrudOperations.Update]
-        public async Task<Webhook> Update(string id, Parameters.Webhook.Update parameters, CancellationToken cancellationToken = default)
+        public async Task<Webhook> Update(string id, Parameters.Webhook.Update? parameters = null, CancellationToken cancellationToken = default)
         {
-            return await RequestAsync<Webhook>(Method.Put, $"webhooks/{id}", cancellationToken, parameters.ToDictionary());
+            return await RequestAsync<Webhook>(Method.Put, $"webhooks/{id}", cancellationToken, parameters?.ToDictionary());
         }
 
         /// <summary>
