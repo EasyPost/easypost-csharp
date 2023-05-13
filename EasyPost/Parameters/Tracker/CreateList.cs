@@ -40,7 +40,7 @@ namespace EasyPost.Parameters.Tracker
         ///     Override the default <see cref="BaseParameters.ToDictionary"/> method to handle the unique serialization requirements for this parameter set.
         /// </summary>
         /// <returns>A <see cref="Dictionary{TKey,TValue}"/>.</returns>
-        internal override Dictionary<string, object> ToDictionary()
+        public override Dictionary<string, object> ToDictionary()
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
             Trackers.Each((index, tracker) =>

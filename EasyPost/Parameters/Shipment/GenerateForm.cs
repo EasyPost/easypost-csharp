@@ -29,7 +29,7 @@ namespace EasyPost.Parameters.Shipment
         /// </summary>
         /// <returns>A <see cref="Dictionary{TKey,TValue}"/>.</returns>
         /// <exception cref="MissingParameterError">Thrown when the form type was not provided.</exception>
-        internal override Dictionary<string, object> ToDictionary()
+        public override Dictionary<string, object> ToDictionary()
         {
             if (Type == null)
             {
