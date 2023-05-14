@@ -9208,6 +9208,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.BaseParameters.BaseParameters
   nameWithType: BaseParameters.BaseParameters
+- uid: EasyPost.Parameters.BaseParameters.ToDictionary
+  name: ToDictionary()
+  href: api/EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToDictionary
+  commentId: M:EasyPost.Parameters.BaseParameters.ToDictionary
+  fullName: EasyPost.Parameters.BaseParameters.ToDictionary()
+  nameWithType: BaseParameters.ToDictionary()
+- uid: EasyPost.Parameters.BaseParameters.ToDictionary*
+  name: ToDictionary
+  href: api/EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToDictionary_
+  commentId: Overload:EasyPost.Parameters.BaseParameters.ToDictionary
+  isSpec: "True"
+  fullName: EasyPost.Parameters.BaseParameters.ToDictionary
+  nameWithType: BaseParameters.ToDictionary
 - uid: EasyPost.Parameters.BaseParameters.ToSubDictionary(Type)
   name: ToSubDictionary(Type)
   href: api/EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToSubDictionary_Type_
@@ -9447,6 +9460,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Beta.CarrierMetadata.Retrieve.Carriers
   nameWithType: Retrieve.Carriers
+- uid: EasyPost.Parameters.Beta.CarrierMetadata.Retrieve.ToDictionary
+  name: ToDictionary()
+  href: api/EasyPost.Parameters.Beta.CarrierMetadata.Retrieve.html#EasyPost_Parameters_Beta_CarrierMetadata_Retrieve_ToDictionary
+  commentId: M:EasyPost.Parameters.Beta.CarrierMetadata.Retrieve.ToDictionary
+  fullName: EasyPost.Parameters.Beta.CarrierMetadata.Retrieve.ToDictionary()
+  nameWithType: Retrieve.ToDictionary()
+- uid: EasyPost.Parameters.Beta.CarrierMetadata.Retrieve.ToDictionary*
+  name: ToDictionary
+  href: api/EasyPost.Parameters.Beta.CarrierMetadata.Retrieve.html#EasyPost_Parameters_Beta_CarrierMetadata_Retrieve_ToDictionary_
+  commentId: Overload:EasyPost.Parameters.Beta.CarrierMetadata.Retrieve.ToDictionary
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Beta.CarrierMetadata.Retrieve.ToDictionary
+  nameWithType: Retrieve.ToDictionary
 - uid: EasyPost.Parameters.Beta.CarrierMetadata.Retrieve.Types
   name: Types
   href: api/EasyPost.Parameters.Beta.CarrierMetadata.Retrieve.html#EasyPost_Parameters_Beta_CarrierMetadata_Retrieve_Types
@@ -12195,6 +12221,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Shipment.GenerateForm.Data
   nameWithType: GenerateForm.Data
+- uid: EasyPost.Parameters.Shipment.GenerateForm.ToDictionary
+  name: ToDictionary()
+  href: api/EasyPost.Parameters.Shipment.GenerateForm.html#EasyPost_Parameters_Shipment_GenerateForm_ToDictionary
+  commentId: M:EasyPost.Parameters.Shipment.GenerateForm.ToDictionary
+  fullName: EasyPost.Parameters.Shipment.GenerateForm.ToDictionary()
+  nameWithType: GenerateForm.ToDictionary()
+- uid: EasyPost.Parameters.Shipment.GenerateForm.ToDictionary*
+  name: ToDictionary
+  href: api/EasyPost.Parameters.Shipment.GenerateForm.html#EasyPost_Parameters_Shipment_GenerateForm_ToDictionary_
+  commentId: Overload:EasyPost.Parameters.Shipment.GenerateForm.ToDictionary
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Shipment.GenerateForm.ToDictionary
+  nameWithType: GenerateForm.ToDictionary
 - uid: EasyPost.Parameters.Shipment.GenerateForm.Type
   name: Type
   href: api/EasyPost.Parameters.Shipment.GenerateForm.html#EasyPost_Parameters_Shipment_GenerateForm_Type
@@ -12534,6 +12573,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Tracker.CreateList.AddTracker
   nameWithType: CreateList.AddTracker
+- uid: EasyPost.Parameters.Tracker.CreateList.ToDictionary
+  name: ToDictionary()
+  href: api/EasyPost.Parameters.Tracker.CreateList.html#EasyPost_Parameters_Tracker_CreateList_ToDictionary
+  commentId: M:EasyPost.Parameters.Tracker.CreateList.ToDictionary
+  fullName: EasyPost.Parameters.Tracker.CreateList.ToDictionary()
+  nameWithType: CreateList.ToDictionary()
+- uid: EasyPost.Parameters.Tracker.CreateList.ToDictionary*
+  name: ToDictionary
+  href: api/EasyPost.Parameters.Tracker.CreateList.html#EasyPost_Parameters_Tracker_CreateList_ToDictionary_
+  commentId: Overload:EasyPost.Parameters.Tracker.CreateList.ToDictionary
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Tracker.CreateList.ToDictionary
+  nameWithType: CreateList.ToDictionary
 - uid: EasyPost.Parameters.User
   name: EasyPost.Parameters.User
   href: api/EasyPost.Parameters.User.html
