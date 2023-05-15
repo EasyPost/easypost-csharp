@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v4.6.2 (2023-05-15)
+
+- Rollback RestSharp dependency range extension due to breaking changes with RestSharp between v108 and v110. This library only works with RestSharp v108.
+
 ## v4.6.1 (2023-04-25)
 
 - Handle API timeout errors more gracefully (produce proper `TimeoutError` exception with readable messages)
