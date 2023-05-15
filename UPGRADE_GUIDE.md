@@ -2,10 +2,121 @@
 
 Use the following guide to assist in the upgrade process of the `easypost-csharp` library between major versions.
 
+- [Upgrading from 4.x to 5.0](#upgrading-from-4x-to-50)
 - [Upgrading from 3.x to 4.x](#upgrading-from-3x-to-40)
 - [Upgrading from 2.x to 3.0](#upgrading-from-2x-to-30)
 
+## Upgrading from 4.x to 5.0
+
+### 5.0 High Impact Changes
+
+- [Service Functions](#50-service-functions)
+- [Client Configuration](#50-client-configuration)
+
+### 5.0 Medium Impact Changes
+
+- [Drop RestSharp Dependency](#50-drop-restsharp-dependency)
+- [Naming Conventions](#50-naming-conventions)
+- [Exception Changes](#50-exception-changes)
+- [Parameter Sets](#50-parameter-sets)
+
+## 5.0 Service Functions
+
+*Likelihood of Impact: **High***
+
+Previously, only `Create`, `Retrieve` and `All` functions were available in services, with all other functions related to a specific instance of a resource available on the resource itself.
+
+For example, v4.x flow of creating a pickup and then buying it:
+
+```csharp
+var pickup = await myClient.Pickup.Create(parameters);
+pickup.Buy();  // pickup variable is updated in-place
+```
+
+In v5.0, the flow is now:
+
+```csharp
+var pickup = await myClient.Pickup.Create(parameters);
+purchasedPickup = await myClient.Pickup.Buy(pickup.Id); // need to capture the updated Pickup object
+```
+
+## 5.0 Client Configuration
+
+*Likelihood of Impact: **High***
+
+The process of configuring a `Client` has been overhauled to allow for more flexibility in the configuration process.
+
+Old method:
+```csharp
+Client myClient = new Client("my_api_key");
+```
+
+New method:
+```csharp
+Client myClient = new Client(new ClientConfiguration("my_api_key"));
+```
+
+The `ClientConfiguration` class has a number of optional parameters that can be set to customize the behavior of the `Client` instance.
+
+```csharp
+Client myClient = new Client(new ClientConfiguration("my_api_key") {
+  ApiBase = "optional_api_base_override",
+  CustomHttpClient = myOptionalCustomHttpClient,
+  Timeout = TimeSpan.FromMilliseconds(myCustomTimeoutMilliseconds)
+});
+```
+
+## 5.0 Drop RestSharp Dependency
+
+*Likelihood of Impact: **Medium***
+
+The RestSharp dependency in this library has been dropped in favor of using the `System.Net.Http` and `Newtonsoft.Json` libraries directly.
+
+This should have no impact on the end-user experience of using this library, but if you were reliant on the RestSharp dependency in this library being transitively used for another aspect of your codebase, you will need to now install RestSharp directly.
+
+## 5.0 Naming Conventions
+
+*Likelihood of Impact: **Medium***
+
+The following classes and properties have been renamed or altered:
+
+- `Smartrate` is now `SmartRate`
+
+## 5.0 Exception Changes
+
+*Likelihood of Impact: **Medium***
+
+Some exception types have been consolidated or altered:
+
+- `UnexpectedHttpError` is now `UnknownHttpError`
+- `UnknownApiError` has been removed and replaced with `UnknownHttpError`
+- `ExternalApiError` no longer inherits from `ApiError` and instead inherits from `EasyPostError`
+  - Any EasyPost API failure will raise an `ApiError`-based exception
+  - Non-EasyPost API/HTTP failures (e.g. calls to Stripe) will raise an `ExternalApiError` exception
+- All `EasyPostError` exceptions now have a `PrettyPrint` getter method that returns a human-readable string representation of the error
+- An EasyPost API timeout will raise a `TimeoutError` exception rather than a `System.Threading.Tasks.TaskCanceledException`
+
+## 5.0 Parameter Sets
+
+*Likelihood of Impact: **Medium***
+
+The Parameter objects introduced in [`v4.5.0`](CHANGELOG.md#v450-2023-03-22) have been moved out of beta. As a result, the classes are available in a different namespace.
+
+Old namespace:
+```csharp
+var parameters = new EasyPost.BetaFeatures.Parameters.Addresses.Create();
+```
+
+New namespace:
+```csharp
+var parameters = new EasyPost.Parameters.Address.Create();
+```
+
+Note that the namespaces have also changed from plural to singular (e.g. `Addresses` to `Address`, `Shipments` to `Shipment`) to better correlate with the service names on a `Client` instance.
+
 ## Upgrading from 3.x to 4.0
+
+**NOTICE:** v4 is deprecated.
 
 ### 4.0 High Impact Changes
 
