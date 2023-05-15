@@ -1,10 +1,14 @@
 # CHANGELOG
 
-## v4.6.1 (2023-04-25)
+## v4.6.2 (2023-05-15)
 
+- Rollback RestSharp dependency range extension (in v4.6.1) due to breaking changes with RestSharp between v108 and v110. This library only works with RestSharp v108.
 - Handle API timeout errors more gracefully (produce proper `TimeoutError` exception with readable messages)
 - Add missing `Declaration` parameter to Customs Info creation parameter set
-- Expand RestSharp dependency range, allow v108-v110 for .NET Standard 2.0, .NET 6.0 and .NET 7.0. RestSharp v108 still required for .NET 5.0 and .NET Core 3.1 due to EOL.
+
+## v4.6.1 (2023-04-25)
+
+- **This release is broken, please use v4.6.2 instead**
 
 ## v4.6.0 (2023-04-18)
 
