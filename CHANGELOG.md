@@ -1,38 +1,38 @@
 # CHANGELOG
 
-## Next Release
+## v5.0.0 (2023-05-15)
 
 ### Breaking Changes
 
-- **[CHANGED]** All API-calling functions on models have been moved to their respective services. For example, `myPickup.Buy()` is now `myClient.Pickup.Buy(myPickup.Id)`.
-- **[CHANGED]** `Client` constructor now takes a `ClientConfiguration` object rather than a list of parameters.
+- All API-calling functions on models have been moved to their respective services. For example, `myPickup.Buy()` is now `myClient.Pickup.Buy(myPickup.Id)`.
+- `Client` constructor now takes a `ClientConfiguration` object rather than a list of parameters.
   - `Client myClient = new Client("my_api_key");` is now `Client myClient = new Client(new ClientConfiguration("my_api_key"));`
-- **[CHANGED]** `Smartrate` is now `SmartRate`
-- **[REMOVED]** `myClient.Clone` functionality has been removed. Please construct a new `Client` object instead.
-- **[REMOVED]** RestSharp dependency has been dropped entirely.
-- **[CHANGED]** Renamed `UnexpectedHttpError` exception type to `UnknownHttpError` to better reflect its purpose.
-- **[REMOVED]** Removed `UnknownApiError` exception type, consolidated into `UnknownHttpError` exception type.
-- **[CHANGED]** `ExternalApiError` no longer inherits from `ApiError` (`ApiError` reserved for EasyPost API errors only).
-- **[IMPROVED]** All `EasyPostError` exceptions and subclasses now have a `PrettyPrint` getter that returns a human-readable string representation of the error.
+- `Smartrate` is now `SmartRate`
+- `myClient.Clone` functionality has been removed. Please construct a new `Client` object instead.
+- RestSharp dependency has been dropped entirely.
+- Renamed `UnexpectedHttpError` exception type to `UnknownHttpError` to better reflect its purpose.
+- Removed `UnknownApiError` exception type, consolidated into `UnknownHttpError` exception type.
+- `ExternalApiError` no longer inherits from `ApiError` (`ApiError` reserved for EasyPost API errors only).
+- All `EasyPostError` exceptions and subclasses now have a `PrettyPrint` getter that returns a human-readable string representation of the error.
   - Previously, only `ApiError` exceptions had this. Now, all exceptions thrown by the library should have this.
-- **[IMPROVED]** Logic for calculating exception type to throw based on API error
+- Logic for calculating exception type to throw based on API error
   - EasyPost API failures can trigger a variety of specific exceptions, all inheriting from `ApiError`.
   - Non-EasyPost API/HTTP failures will trigger an `ExternalApiError` exception.
 
 ### New Features
 
-- **[CHANGED]** [Parameter sets](#v450-2023-03-22) are out of beta. Users can use access them via `EasyPost.Parameters` namespace.
+- [Parameter sets](#v450-2023-03-22) are out of beta. Users can use access them via `EasyPost.Parameters` namespace.
   - Previous plural namespaces are now singular (eg: `Parameters.Addresses` is now `Parameters.Address`)
-- **[ADDED]** All API-calling functions accept an optional `CancellationToken` parameter that can be used to cancel the request.
-- **[ADDED]** Reintroduce `GenerateForm` function for shipments that was accidentally removed in `v4`.
-- **[ADDED]** All `EasyPostClient`-based classes, all `EasyPostService`-based classes, `ClientConfiguration` and internal request classes are now explicitly disposable.
+- All API-calling functions accept an optional `CancellationToken` parameter that can be used to cancel the request.
+- Reintroduce `GenerateForm` function for shipments that was accidentally removed in `v4`.
+- All `EasyPostClient`-based classes, all `EasyPostService`-based classes, `ClientConfiguration` and internal request classes are now explicitly disposable.
 
 ### Miscellaneous
 
-- **[IMPROVED]** Add missing `Declaration` parameter to Customs Info creation parameter set
-- **[IMPROVED]** Handle API timeout errors more gracefully (produce proper `TimeoutError` exception with readable messages)
-- **[IMPROVED]** `myClient.Webhook.Update` function now has an optional `Parameters.Webhook.Update` parameter (rather than required)
-- **[IMPROVED]** All aspects of the library have been documented with XML comments
+- Add missing `Declaration` parameter to Customs Info creation parameter set
+- Handle API timeout errors more gracefully (produce proper `TimeoutError` exception with readable messages)
+- `myClient.Webhook.Update` function now has an optional `Parameters.Webhook.Update` parameter (rather than required)
+- All aspects of the library have been documented with XML comments
 
 ## v4.6.0 (2023-04-18)
 

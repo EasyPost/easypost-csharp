@@ -26,6 +26,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost;
 using Newtonsoft.Json;
+using EasyPost.Parameters;
 
 namespace example
 {
@@ -33,51 +34,47 @@ namespace example
     {
         static async Task Main()
         {
-            Client client = new Client(Environment.GetEnvironmentVariable("EASYPOST_API_KEY"));
-
-            Shipment shipment = await client.Shipment.Create(new Dictionary<string, object>()
-            {
-                {
-                    "to_address", new Dictionary<string, object>()
-                    {
-                        { "name", "Dr. Steve Brule" },
-                        { "street1", "179 N Harbor Dr" },
-                        { "city", "Redondo Beach" },
-                        { "state", "CA" },
-                        { "zip", "90277" },
-                        { "country", "US" },
-                        { "phone", "8573875756" },
-                        { "email", "dr_steve_brule@gmail.com" }
-                    }
+            Client client = new Client(new ClientConfiguration(Environment.GetEnvironmentVariable("EASYPOST_API_KEY")));
+            
+            Parameters.Shipment.Create createParameters = new() {
+                ToAddress = new Parameters.Address.Create {
+                    Name = "Dr. Steve Brule",
+                    Street1 = "179 N Harbor Dr",
+                    City = "Redondo Beach",
+                    State = "CA",
+                    Zip = "90277",
+                    Country = "US",
+                    Phone = "8573875756",
+                    Email = "dr_steve_brule@gmail.com"
                 },
-                {
-                    "from_address", new Dictionary<string, object>()
-                    {
-                        { "name", "EasyPost" },
-                        { "street1", "417 Montgomery Street" },
-                        { "street2", "5th Floor" },
-                        { "city", "San Francisco" },
-                        { "state", "CA" },
-                        { "zip", "94104" },
-                        { "country", "US" },
-                        { "phone", "4153334445" },
-                        { "email", "support@easypost.com" }
-                    }
+                FromAddress = new Parameters.Address.Create {
+                    Name = "EasyPost",
+                    Street1 = "417 Montgomery Street",
+                    Street2 = "5th Floor",
+                    City = "San Francisco",
+                    State = "CA",
+                    Zip = "94104",
+                    Country = "US",
+                    Phone = "4153334445",
+                    Email = "support@easypost.com"
                 },
-                {
-                    "parcel", new Dictionary<string, object>()
-                    {
-                        { "length", 20.2 },
-                        { "width", 10.9 },
-                        { "height", 5 },
-                        { "weight", 65.9 }
-                    }
+                Parcel = new Parameters.Parcel.Create {
+                    Length = 20.2,
+                    Width = 10.9,
+                    Height = 5,
+                    Weight = 65.9
                 }
-            });
+            }
 
-            await shipment.Buy(shipment.LowestRate());
+            Shipment shipment = await client.Shipment.Create(parameters);
+            
+            Rate rate = shipment.LowestRate();
+            
+            Paramaters.Shipment.Buy buyParameters = new(rate);
 
-            Console.WriteLine(JsonConvert.SerializeObject(shipment, Formatting.Indented));
+            Shipment purchasedShipment = await client.Shipment.Buy(shipment.Id, buyParameters);
+
+            Console.WriteLine(JsonConvert.SerializeObject(purchasedShipment, Formatting.Indented));
         }
     }
 }
@@ -85,12 +82,12 @@ namespace example
 
 ### Configuration
 
-A `Client` object is the entry point into the EasyPost API. It is instantiated with your API key:
+A `Client` object is the entry point into the EasyPost API. It is instantiated with a `ClientConfiguration` with your API key:
 
 ```csharp
 using EasyPost;
 
-Client myClient = new Client("EASYPOST_API_KEY");
+Client myClient = new Client(new ClientConfiguration("EASYPOST_API_KEY"));
 ```
 
 An API key is required for all requests. You can find your API key in
@@ -129,17 +126,13 @@ Shipment myShipment = await myClient.Shipment.Create(new Dictionary<string, obje
 });
 ```
 
-Functions involving a specific resource are then enacted on that resource. For example, to buy the shipment:
+All API-calling functions are made from the appropriate service object (rather than against the resource object), by providing the ID of the related resource. For example, to buy a shipment:
 
 ```csharp
-await myShipment.Buy(myShipment.LowestRate());
+Shipment myPurchasedShipment = await myClient.Shipment.Buy(myShipment.Id, myShipment.LowestRate());
 ```
 
-Any generated local resource will have stored internally the same client used to create or retrieve them. Any API call
-made against the resource will automatically use the same client. This will prevent potential issues of accidentally
-using the wrong API key when interacting with a resource in a multi-client environment.
-
-## Parameters (BETA)
+## Parameters
 
 Most functions in this library accept a `Dictionary<string, object>` as their sole parameter, which is ultimately used as the body of the HTTP request against EasyPost's API. If you instead would like to use .NET objects to construct API call parameters, you can use the various `Parameters` classes (currently in beta).
 
