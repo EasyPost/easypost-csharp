@@ -10,6 +10,7 @@ namespace EasyPost;
 /// <summary>
 ///     Provides configuration options for the REST client used by the SDK. Used internally to store API key and other configuration.
 /// </summary>
+// ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
 public class ClientConfiguration : IDisposable
 {
     /// <summary>
