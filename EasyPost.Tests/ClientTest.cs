@@ -1,6 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Threading;
+using EasyPost.Exceptions;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
@@ -103,6 +104,28 @@ namespace EasyPost.Tests
 
             Assert.NotEqual(httpClient, normalClient.CustomHttpClient);
             Assert.Equal(httpClient, overrideClient.CustomHttpClient);
+        }
+
+        [Fact]
+        public void TestRequestAuditor()
+        {
+            int requestAuditorCallCount = 0;
+
+            void RequestAuditor(HttpRequestMessage request)
+            {
+                requestAuditorCallCount++;
+            }
+
+            Client client = new Client(new ClientConfiguration(FakeApikey)
+            {
+                RequestAuditor = RequestAuditor,
+            });
+
+            // Make a request, doesn't matter what it is (catch the exception due to invalid API key)
+            Assert.ThrowsAsync<EasyPostError>(async () => await client.Address.Create(new Parameters.Address.Create()));
+
+            // Assert that the auditor was called
+            Assert.Equal(1, requestAuditorCallCount);
         }
     }
 }

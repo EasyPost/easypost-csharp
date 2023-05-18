@@ -54,6 +54,11 @@ namespace EasyPost._base
         private HttpClient HttpClient => _configuration.PreparedHttpClient!;
 
         /// <summary>
+        ///     Gets the <see cref="Action{T}"/> used to audit all HTTP requests sent by this client.
+        /// </summary>
+        private Action<HttpRequestMessage>? RequestAuditor => _configuration.RequestAuditor;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="EasyPostClient"/> class.
         /// </summary>
         /// <param name="configuration"><see cref="ClientConfiguration"/> to use for this client.</param>
@@ -80,6 +85,8 @@ namespace EasyPost._base
             // try to execute the request, catch and rethrow an HTTP timeout exception, all other exceptions are thrown as-is
             try
             {
+                // if a request auditor is set, use it to audit the request
+                RequestAuditor?.Invoke(request);
                 return await HttpClient.SendAsync(request, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
             catch (TaskCanceledException)
