@@ -1,6 +1,9 @@
 using System;
 using System.Net.Http;
 using System.Threading;
+using System.Threading.Tasks;
+using EasyPost.Exceptions;
+using EasyPost.Exceptions.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
@@ -103,6 +106,72 @@ namespace EasyPost.Tests
 
             Assert.NotEqual(httpClient, normalClient.CustomHttpClient);
             Assert.Equal(httpClient, overrideClient.CustomHttpClient);
+        }
+
+        [Fact]
+        public async Task TestRequestHooks()
+        {
+            var preRequestCallbackCallCount = 0;
+            var postRequestCallbackCallCount = 0;
+            var requestGuid = Guid.Empty;
+
+            Hooks hooks = new()
+            {
+                OnRequestBeforeExecution = (sender, args) =>
+                {
+                    // Modifying the HttpRequestMessage in this action does not impact the HttpRequestMessage being executed (passed by value, not reference)
+                    preRequestCallbackCallCount++;
+                    Assert.True(args.Timestamp > 0);
+                    requestGuid = args.Guid;
+                },
+                OnRequestResponseReceived = (sender, args) =>
+                {
+                    postRequestCallbackCallCount++;
+                    Assert.True(args.RequestTimestamp > 0);
+                    Assert.True(args.ResponseTimestamp > 0);
+                    Assert.True(args.ResponseTimestamp > args.RequestTimestamp);
+                    Assert.Equal(requestGuid, args.Guid);
+                },
+            };
+
+            var client = new Client(new ClientConfiguration(FakeApikey)
+            {
+                Hooks = hooks,
+            });
+            
+            // Make a request, doesn't matter what it is (catch the exception due to invalid API key)
+            await Assert.ThrowsAsync<UnauthorizedError>(async () => await client.Address.Create(new Parameters.Address.Create()));
+
+            // Assert that the pre-request callback was called
+            Assert.Equal(1, preRequestCallbackCallCount);
+            // Assert that the post-request callback was called
+            Assert.Equal(1, postRequestCallbackCallCount);
+        }
+
+        [Fact]
+        public async Task TestCancellationToken()
+        {
+            var cancelTokenSource = new CancellationTokenSource();
+            var token = cancelTokenSource.Token;
+
+            Hooks hooks = new()
+            {
+                OnRequestBeforeExecution = (sender, args) =>
+                {
+                    // Use the cancellation token to cancel the request
+                    cancelTokenSource.Cancel();
+                },
+            };
+
+            var client = new Client(new ClientConfiguration(FakeApikey)
+            {
+                Hooks = hooks,
+            });
+
+            // Make a request, doesn't matter what it is
+            // Should throw a TimeoutError because the request was cancelled
+            // If it throws a UnauthorizedError, then the cancellation token was not used (request went through and failed due to invalid API key)
+            await Assert.ThrowsAsync<TimeoutError>(async () => await client.Address.Create(new Parameters.Address.Create(), token));
         }
     }
 }
