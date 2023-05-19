@@ -130,6 +130,19 @@ references:
   isSpec: "True"
   fullName: EasyPost._base.EasyPostClient.Equals
   nameWithType: EasyPostClient.Equals
+- uid: EasyPost._base.EasyPostClient.ExecuteRequest(HttpRequestMessage,CancellationToken)
+  name: ExecuteRequest(HttpRequestMessage, CancellationToken)
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_ExecuteRequest_HttpRequestMessage_CancellationToken_
+  commentId: M:EasyPost._base.EasyPostClient.ExecuteRequest(HttpRequestMessage,CancellationToken)
+  fullName: EasyPost._base.EasyPostClient.ExecuteRequest(HttpRequestMessage, CancellationToken)
+  nameWithType: EasyPostClient.ExecuteRequest(HttpRequestMessage, CancellationToken)
+- uid: EasyPost._base.EasyPostClient.ExecuteRequest*
+  name: ExecuteRequest
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_ExecuteRequest_
+  commentId: Overload:EasyPost._base.EasyPostClient.ExecuteRequest
+  isSpec: "True"
+  fullName: EasyPost._base.EasyPostClient.ExecuteRequest
+  nameWithType: EasyPostClient.ExecuteRequest
 - uid: EasyPost._base.EasyPostClient.Finalize
   name: Finalize()
   href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_Finalize
