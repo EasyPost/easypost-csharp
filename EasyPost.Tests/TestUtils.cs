@@ -221,7 +221,7 @@ namespace EasyPost.Tests._Utilities
             private readonly List<MockRequest> _mockRequests = new();
 
 #pragma warning disable CS1998
-            internal override async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request, CancellationToken cancellationToken)
+            public override async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request, CancellationToken cancellationToken)
 #pragma warning restore CS1998
             {
                 MockRequest? mockRequest = FindMatchingMockRequest(request);
