@@ -187,6 +187,7 @@ Users can interact with the `HttpRequestMessage` inside the `Action` as they see
 void myRequestAuditingAction(HttpRequestMessage request)
 {
     // Interact with the HttpRequestMessage here
+    System.Console.WriteLine($"Making HTTP call to {request.RequestUri}");
 }
 
 Client client = new Client(new ClientConfiguration("EASYPOST_API_KEY")
