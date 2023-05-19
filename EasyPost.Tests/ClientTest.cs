@@ -113,6 +113,7 @@ namespace EasyPost.Tests
 
             void RequestAuditor(HttpRequestMessage request)
             {
+                // Modifying the HttpRequestMessage in this action does not impact the HttpRequestMessage being executed (passed by value, not reference)
                 requestAuditorCallCount++;
             }
 

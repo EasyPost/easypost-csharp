@@ -132,7 +132,7 @@ All API-calling functions are made from the appropriate service object (rather t
 Shipment myPurchasedShipment = await myClient.Shipment.Buy(myShipment.Id, myShipment.LowestRate());
 ```
 
-## Parameters
+### Parameters
 
 Most functions in this library accept a `Dictionary<string, object>` as their sole parameter, which is ultimately used as the body of the HTTP request against EasyPost's API. If you instead would like to use .NET objects to construct API call parameters, you can use the various `Parameters` classes (currently in beta).
 
@@ -172,6 +172,30 @@ Using the `Parameters` classes is not required, but they can help in a number of
 - Allows for IDE parameter documentation
 - Provides a more natural way to construct parameters
 - Facilitates ASP.NET Core model binding (bind an HTML form to a `Parameters` instance)
+
+## Debugging
+
+### View HTTP Requests
+
+Users can audit the HTTP requests being made by the library by setting the `RequestAuditor` property of a `ClientConfiguration` with an `Action` that accepts an `HttpRequestMessage`. 
+
+The `Action` will be executed with the pre-flight `HttpRequestMessage` before the request is executed. At that point, the `HttpRequestMessage` is configured with all expected data (headers, body, etc.).
+
+Users can interact with the `HttpRequestMessage` inside the `Action` as they see fit (e.g. logging).
+
+```csharp
+void myRequestAuditingAction(HttpRequestMessage request)
+{
+    // Interact with the HttpRequestMessage here
+}
+
+Client client = new Client(new ClientConfiguration("EASYPOST_API_KEY")
+{
+    RequestAuditor = myRequestAuditingAction,
+});
+```
+
+This action is effectively read-only. Any changes made to the `HttpRequestMessage` will not be reflected in the actual executed request.
 
 ## Documentation
 
