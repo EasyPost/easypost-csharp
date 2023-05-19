@@ -198,6 +198,28 @@ Client client = new Client(new ClientConfiguration("EASYPOST_API_KEY")
 
 This action is effectively read-only. Any changes made to the `HttpRequestMessage` will not be reflected in the actual executed request.
 
+Users can, however, use the `RequestAuditor` function as a way to verify a request and, combined with a `CancellationToken`, cancel the request before it is executed as needed.
+
+```csharp
+CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+CancellationToken cancellationToken = cancellationTokenSource.Token;
+            
+void myRequestAuditingAction(HttpRequestMessage request)
+{
+    // Use the cancellation token to cancel a request before it is executed
+    cancellationToken.Cancel();
+}
+            
+Client client = new Client(new ClientConfiguration(FakeApikey)
+{
+    RequestAuditor = myRequestAuditingAction,
+});
+
+// Include `cancellationToken` in the API-calling function to be able to cancel the request
+// Cancelling a request will throw a TimeoutError exception
+await myClient.Address.Create(new Parameters.Address.Create(), cancellationToken)
+```
+
 ## Documentation
 
 API documentation can be found at: <https://easypost.com/docs/api>.

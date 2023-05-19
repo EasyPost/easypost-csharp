@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using System.Threading;
 using EasyPost.Exceptions;
+using EasyPost.Exceptions.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
@@ -127,6 +128,29 @@ namespace EasyPost.Tests
 
             // Assert that the auditor was called
             Assert.Equal(1, requestAuditorCallCount);
+        }
+
+        [Fact]
+        public void TestCancellationToken()
+        {
+            CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+            CancellationToken token = cancelTokenSource.Token;
+            
+            void RequestAuditor(HttpRequestMessage request)
+            {
+                // Use the cancellation token to cancel the request
+                cancelTokenSource.Cancel();
+            }
+            
+            Client client = new Client(new ClientConfiguration(FakeApikey)
+            {
+                RequestAuditor = RequestAuditor,
+            });
+            
+            // Make a request, doesn't matter what it is
+            // Should throw a TimeoutError because the request was cancelled
+            // If it throws a UnauthorizedError, then the cancellation token was not used (request went through and failed due to invalid API key)
+            Assert.ThrowsAsync<TimeoutError>(async () => await client.Address.Create(new Parameters.Address.Create(), token));
         }
     }
 }
