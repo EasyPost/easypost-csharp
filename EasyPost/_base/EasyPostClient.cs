@@ -71,7 +71,7 @@ namespace EasyPost._base
         /// <param name="request"><see cref="HttpRequestMessage"/> to execute.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An <see cref="HttpResponseMessage"/> object.</returns>
-        internal virtual async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request, CancellationToken cancellationToken)
+        public virtual async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             // This method actually executes the request and returns the response.
             // Everything up to this point has been pre-request, and everything after this point is post-request.
