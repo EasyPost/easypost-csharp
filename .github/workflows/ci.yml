@@ -172,9 +172,9 @@ jobs:
 
         # Run the unit tests in a specific framework (verify that the library works in that framework)
       - name: Run Tests
-        run: make test-fw fw=${{ matrix.framework }}
-
-  FSharp_Compatibility:
+        run: make unit-test fw=${{ matrix.framework }}
+        
+  Integration_Tests:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v3
@@ -202,11 +202,43 @@ jobs:
       - name: Set up dotnet tools and dependencies
         run: make install
 
-        # Build the test project
-      - name: Build Solution
-        run: msbuild EasyPost.Tests.FSharp\EasyPost.Tests.FSharp.fsproj /p:platform="Any CPU" /p:configuration="Debug" /p:outputPath="bin/Test" /p:target="Rebuild" -restore
+        # Run the integration tests
+      - name: Run Tests
+        run: make integration-test fw=net7.0  # Always run integration tests on the latest framework
 
-  Visual_Basic_Compatibility:
+  FSharp_Integration_Tests:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.x.x
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1.2
+
+      - name: Setup Nuget
+        uses: NuGet/setup-nuget@v1.1.1
+
+      - name: Setup VSTest
+        uses: darenm/Setup-VSTest@v1.2
+
+      - name: Restore NuGet Packages
+        run: make restore
+
+        # Pull in fixtures submodule
+      - name: Set up dotnet tools and dependencies
+        run: make install
+
+        # Run the compatibility tests
+      - name: Run Tests
+        run: make fs-compat-test
+          
+  Visual_Basic_Integration_Test:
     runs-on: windows-2022
     steps:
 
@@ -234,10 +266,10 @@ jobs:
         # Pull in fixtures submodule
       - name: Set up dotnet tools and dependencies
         run: make install
-
-        # Build the test project
-      - name: Build Solution
-        run: msbuild EasyPost.Tests.VB\EasyPost.Tests.VB.vbproj /p:platform="Any CPU" /p:configuration="Debug" /p:outputPath="bin/Test" /p:target="Rebuild" -restore
+          
+        # Run the compatibility tests
+      - name: Run Tests
+        run: make vb-compat-test
 
 
 # .NET Standard notes:
