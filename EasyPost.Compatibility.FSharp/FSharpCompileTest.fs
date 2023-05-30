@@ -1,7 +1,7 @@
 ﻿// This test checks that EasyPost C# code can be used in F#.
 // This test project is running on .NET 7.0, although a success here should mean a success in all versions of .NET.'
 
-namespace EasyPost.Tests.FSharp
+namespace EasyPost.Compatibility.FSharp
 
 open EasyPost
 open Xunit
