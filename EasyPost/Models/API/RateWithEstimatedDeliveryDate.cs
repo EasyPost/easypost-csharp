@@ -24,7 +24,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
     }
 
     /// <summary>
@@ -54,6 +53,5 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
     }
 }

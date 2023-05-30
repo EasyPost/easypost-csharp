@@ -88,7 +88,6 @@ namespace EasyPost.Models.API
         public Fee? Fee { get; set; }
         #endregion
 
-        
     }
 #pragma warning restore CA1724 // Naming conflicts with Parameters.Insurance
 
@@ -106,8 +105,6 @@ namespace EasyPost.Models.API
         public List<Insurance>? Insurances { get; set; }
 
         #endregion
-
-        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

@@ -21,6 +21,5 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
     }
 }

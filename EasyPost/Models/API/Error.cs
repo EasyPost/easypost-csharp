@@ -70,8 +70,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
-
         /// <summary>
         ///     Traverse the returned element for error messages.
         ///     This will handle potential inconsistent data structures in EasyPost error messages.

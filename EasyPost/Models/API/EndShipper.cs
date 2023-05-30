@@ -89,7 +89,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
     }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.EndShipper
 
@@ -107,8 +106,6 @@ namespace EasyPost.Models.API
         public List<EndShipper>? EndShippers { get; set; }
 
         #endregion
-
-        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

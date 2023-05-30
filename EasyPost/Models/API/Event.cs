@@ -64,7 +64,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
     }
 #pragma warning restore CA1716
 #pragma warning restore CA1724 // Naming conflicts with Parameters.Event
@@ -83,8 +82,6 @@ namespace EasyPost.Models.API
         public List<Event>? Events { get; set; }
 
         #endregion
-
-        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

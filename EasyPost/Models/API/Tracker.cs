@@ -42,7 +42,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
     }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Tracker
 
@@ -60,8 +59,6 @@ namespace EasyPost.Models.API
         public List<Tracker>? Trackers { get; set; }
 
         #endregion
-
-        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

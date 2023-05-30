@@ -140,7 +140,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
     }
 #pragma warning restore CA1724 // Naming conflicts with Parameters.CustomInfo
 }

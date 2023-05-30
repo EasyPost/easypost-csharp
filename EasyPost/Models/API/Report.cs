@@ -30,7 +30,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
     }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Report
 
@@ -48,8 +47,6 @@ namespace EasyPost.Models.API
         public List<Report>? Reports { get; set; }
 
         #endregion
-
-        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

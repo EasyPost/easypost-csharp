@@ -11,7 +11,6 @@ namespace EasyPost.Models.API
     /// </summary>
     public class ReferralCustomer : BaseUser, Parameters.IReferralCustomerParameter
     {
-        
     }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.ReferralCustomer
 
@@ -29,8 +28,6 @@ namespace EasyPost.Models.API
         public List<ReferralCustomer>? ReferralCustomers { get; set; }
 
         #endregion
-
-        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

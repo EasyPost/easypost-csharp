@@ -52,8 +52,6 @@ namespace EasyPost.Models.API
         /// <returns>List of Rate objects.</returns>
         private IEnumerable<Rate> Rates => PickupRates != null ? PickupRates.Cast<Rate>().ToList() : new List<Rate>();
 
-        
-
         /// <summary>
         ///     Get the lowest rate for this Pickup.
         /// </summary>
@@ -80,8 +78,6 @@ namespace EasyPost.Models.API
         public List<Pickup>? Pickups { get; set; }
 
         #endregion
-
-        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

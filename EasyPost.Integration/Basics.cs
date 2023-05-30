@@ -16,7 +16,7 @@ public class Basics
     {
         var address = new Address();
         var addressCollection = new AddressCollection();
-        var apiKey  = new ApiKey();
+        var apiKey = new ApiKey();
         var apiKeyCollection = new ApiKeyCollection();
         var batch = new Batch();
         var batchCollection = new BatchCollection();

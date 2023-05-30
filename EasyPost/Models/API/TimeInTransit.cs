@@ -27,8 +27,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
-
         /// <summary>
         ///     Get the value of a specific percentile by its corresponding SmartRateAccuracy enum.
         /// </summary>

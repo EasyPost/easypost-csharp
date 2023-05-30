@@ -35,7 +35,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
     }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.ScanForm
 
@@ -53,8 +52,6 @@ namespace EasyPost.Models.API
         public List<ScanForm>? ScanForms { get; set; }
 
         #endregion
-
-        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

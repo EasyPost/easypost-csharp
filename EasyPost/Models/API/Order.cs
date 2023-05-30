@@ -44,8 +44,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
-
         /// <summary>
         ///     Get the lowest rate for this Order.
         /// </summary>

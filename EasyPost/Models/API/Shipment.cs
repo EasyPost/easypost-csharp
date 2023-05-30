@@ -80,8 +80,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
-
         /// <summary>
         ///     Get the lowest rate for this Shipment.
         /// </summary>
@@ -118,8 +116,6 @@ namespace EasyPost.Models.API
         public List<Shipment>? Shipments { get; set; }
 
         #endregion
-
-        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

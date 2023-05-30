@@ -47,7 +47,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        
     }
 }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Beta.Rate
