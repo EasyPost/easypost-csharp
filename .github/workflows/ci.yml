@@ -206,7 +206,7 @@ jobs:
       - name: Run Tests
         run: make integration-test fw=net7.0  # Always run integration tests on the latest framework
 
-  FSharp_Integration_Tests:
+  FSharp_Compatibility_Tests:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v3
@@ -236,9 +236,9 @@ jobs:
 
         # Run the compatibility tests
       - name: Run Tests
-        run: make fs-compat-test
+        run: make fs-compat-test fw=net7.0  # Always run compatibility tests on the latest framework
           
-  Visual_Basic_Integration_Test:
+  Visual_Basic_Compatibility_Test:
     runs-on: windows-2022
     steps:
 
@@ -269,7 +269,7 @@ jobs:
           
         # Run the compatibility tests
       - name: Run Tests
-        run: make vb-compat-test
+        run: make vb-compat-test fw=net7.0  # Always run compatibility tests on the latest framework
 
 
 # .NET Standard notes:
