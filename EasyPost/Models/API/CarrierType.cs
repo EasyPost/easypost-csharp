@@ -52,11 +52,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="CarrierType"/> class.
-        /// </summary>
-        internal CarrierType()
-        {
-        }
+        
     }
 }

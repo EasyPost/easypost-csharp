@@ -28,11 +28,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="TrackingDetail"/> class.
-        /// </summary>
-        internal TrackingDetail()
-        {
-        }
+        
     }
 }

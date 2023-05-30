@@ -35,12 +35,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ScanForm"/> class.
-        /// </summary>
-        internal ScanForm()
-        {
-        }
+        
     }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.ScanForm
 
@@ -59,12 +54,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ScanFormCollection"/> class.
-        /// </summary>
-        internal ScanFormCollection()
-        {
-        }
+        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

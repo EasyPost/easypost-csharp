@@ -24,12 +24,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="RateWithEstimatedDeliveryDate"/> class.
-        /// </summary>
-        internal RateWithEstimatedDeliveryDate()
-        {
-        }
+        
     }
 
     /// <summary>
@@ -59,11 +54,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="TimeInTransitDetails"/> class.
-        /// </summary>
-        internal TimeInTransitDetails()
-        {
-        }
+        
     }
 }

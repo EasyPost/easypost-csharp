@@ -42,12 +42,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Tracker"/> class.
-        /// </summary>
-        internal Tracker()
-        {
-        }
+        
     }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Tracker
 
@@ -66,12 +61,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="TrackerCollection"/> class.
-        /// </summary>
-        internal TrackerCollection()
-        {
-        }
+        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

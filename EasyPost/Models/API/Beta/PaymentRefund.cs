@@ -43,12 +43,5 @@ namespace EasyPost.Models.API.Beta
         public List<Error>? Errors { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="PaymentRefund"/> class.
-        /// </summary>
-        internal PaymentRefund()
-        {
-        }
     }
 }

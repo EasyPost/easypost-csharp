@@ -18,13 +18,6 @@ namespace EasyPost.Models.API
         public string? Key { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ApiKey"/> class.
-        /// </summary>
-        internal ApiKey()
-        {
-        }
     }
 
     /// <summary>
@@ -47,12 +40,5 @@ namespace EasyPost.Models.API
         public List<ApiKey>? Keys { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ApiKeyCollection"/> class.
-        /// </summary>
-        internal ApiKeyCollection()
-        {
-        }
     }
 }

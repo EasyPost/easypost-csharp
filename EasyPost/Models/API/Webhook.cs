@@ -19,12 +19,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Webhook"/> class.
-        /// </summary>
-        internal Webhook()
-        {
-        }
+        
     }
 }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Webhook

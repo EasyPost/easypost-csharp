@@ -67,12 +67,5 @@ namespace EasyPost.Models.API
         public string? UserId { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Brand"/> class.
-        /// </summary>
-        internal Brand()
-        {
-        }
     }
 }

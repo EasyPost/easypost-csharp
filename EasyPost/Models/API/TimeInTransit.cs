@@ -27,12 +27,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="TimeInTransit"/> class.
-        /// </summary>
-        internal TimeInTransit()
-        {
-        }
+        
 
         /// <summary>
         ///     Get the value of a specific percentile by its corresponding SmartRateAccuracy enum.

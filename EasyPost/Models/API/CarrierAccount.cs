@@ -70,12 +70,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="CarrierAccount"/> class.
-        /// </summary>
-        internal CarrierAccount()
-        {
-        }
+        
     }
 }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.CarrierAccount

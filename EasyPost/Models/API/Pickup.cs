@@ -52,12 +52,7 @@ namespace EasyPost.Models.API
         /// <returns>List of Rate objects.</returns>
         private IEnumerable<Rate> Rates => PickupRates != null ? PickupRates.Cast<Rate>().ToList() : new List<Rate>();
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Pickup"/> class.
-        /// </summary>
-        internal Pickup()
-        {
-        }
+        
 
         /// <summary>
         ///     Get the lowest rate for this Pickup.
@@ -86,12 +81,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="PickupCollection"/> class.
-        /// </summary>
-        internal PickupCollection()
-        {
-        }
+        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

@@ -64,12 +64,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Event"/> class.
-        /// </summary>
-        internal Event()
-        {
-        }
+        
     }
 #pragma warning restore CA1716
 #pragma warning restore CA1724 // Naming conflicts with Parameters.Event
@@ -89,12 +84,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="EventCollection"/> class.
-        /// </summary>
-        internal EventCollection()
-        {
-        }
+        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

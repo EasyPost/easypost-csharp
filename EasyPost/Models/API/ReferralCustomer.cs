@@ -11,12 +11,7 @@ namespace EasyPost.Models.API
     /// </summary>
     public class ReferralCustomer : BaseUser, Parameters.IReferralCustomerParameter
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ReferralCustomer"/> class.
-        /// </summary>
-        internal ReferralCustomer()
-        {
-        }
+        
     }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.ReferralCustomer
 
@@ -35,12 +30,7 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ReferralCustomerCollection"/> class.
-        /// </summary>
-        internal ReferralCustomerCollection()
-        {
-        }
+        
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.
