@@ -108,7 +108,7 @@ test:
 # @parameters:
 # fw= - The framework to build for.
 unit-test:
-	dotnet test EasyPost.Tests/EasyPost.Tests.csproj -f ${fw} -c "Debug" -restore # Always run unit tests in Debug mode to allow access to internal members
+	dotnet test EasyPost.Tests/EasyPost.Tests.csproj -f ${fw} -c "Debug" # Always run unit tests in Debug mode to allow access to internal members
 
 ## integration-test - Run the integration tests for a specific framework
 ## @parameters:
