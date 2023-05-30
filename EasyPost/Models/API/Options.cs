@@ -950,7 +950,7 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     Initializes a new instance of the <see cref="Options" /> class.
         /// </summary>
-        internal Options()
+        public Options()
         {
         }
     }
