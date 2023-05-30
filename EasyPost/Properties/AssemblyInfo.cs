@@ -16,7 +16,10 @@ using System.Runtime.InteropServices;
 
 // Make "internal" methods testable.
 #if DEBUG
-[assembly: InternalsVisibleTo("EasyPost.Tests")]
+[assembly: InternalsVisibleTo("EasyPost.Tests")] // EasyPost.Tests can access internal classes/methods (unit testing).
+// EasyPost.Compatibility.FSharp cannot access internal classes/methods (integration/end-user experience).
+// EasyPost.Compatibility.VB cannot access internal classes/methods (integration/end-user experience).
+// EasyPost.Integration cannot access internal classes/methods (integration/end-user experience).
 #endif
 
 // Setting ComVisible to false makes the types in this assembly not visible
