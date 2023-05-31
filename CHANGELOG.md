@@ -2,6 +2,9 @@
 
 ## Next Release
 
+- Carrier Metadata is now in GA, accessible via `myClient.CarrierMetadata`
+  - `myClient.Beta.CarrierMetadata` is now deprecated and will be removed in a future release
+  - Method to retrieve carrier metadata has been renamed: `myClient.Beta.CarrierMetadata.RetrieveCarrierMetadata` is now `myClient.CarrierMetadata.Retrieve`
 - Constructors for all response objects (e.g. `EasyPost.Models.API.Address`) are publicly available for end-users to construct their own objects for testing purposes.
 
 ## v5.0.0 (2023-05-15)
