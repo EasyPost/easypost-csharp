@@ -39,7 +39,7 @@ namespace EasyPost
         ///     Access Carrier Account-related functionality.
         /// </summary>
         public CarrierAccountService CarrierAccount { get; }
-        
+
         /// <summary>
         ///     Access Carrier Metadata-related functionality.
         /// </summary>
