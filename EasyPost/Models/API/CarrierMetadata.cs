@@ -1,15 +1,13 @@
-using System;
 using System.Collections.Generic;
 using EasyPost.Utilities.Internal;
 using Newtonsoft.Json;
 
-namespace EasyPost.Models.API.Beta
+namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Beta.CarrierMetadata
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#carriermetadata-object">EasyPost carrier metadata summary</a>.
     /// </summary>
-    [Obsolete("This class is deprecated. Please use EasyPost.Models.API.CarrierMetadata instead. This class will be removed in a future version.", false)]
     public class CarrierMetadata
     {
         #region JSON Properties
@@ -24,7 +22,6 @@ namespace EasyPost.Models.API.Beta
     /// <summary>
     ///     Class representing a carrier in a EasyPost carrier metadata summary.
     /// </summary>
-    [Obsolete("This class is deprecated. Please use EasyPost.Models.API.Carrier instead. This class will be removed in a future version.", false)]
     public class Carrier
     {
         #region JSON Properties
@@ -53,7 +50,6 @@ namespace EasyPost.Models.API.Beta
     /// <summary>
     ///     Class representing a predefined package in a EasyPost carrier metadata summary.
     /// </summary>
-    [Obsolete("This class is deprecated. Please use EasyPost.Models.API.PredefinedPackage instead. This class will be removed in a future version.", false)]
     public class PredefinedPackage
     {
         #region JSON Properties
@@ -82,7 +78,6 @@ namespace EasyPost.Models.API.Beta
     /// <summary>
     ///     Class representing a service level in a EasyPost carrier metadata summary.
     /// </summary>
-    [Obsolete("This class is deprecated. Please use EasyPost.Models.API.ServiceLevel instead. This class will be removed in a future version.", false)]
     public class ServiceLevel
     {
         #region JSON Properties
@@ -111,7 +106,6 @@ namespace EasyPost.Models.API.Beta
     /// <summary>
     ///     Class representing a shipment option in a EasyPost carrier metadata summary.
     /// </summary>
-    [Obsolete("This class is deprecated. Please use EasyPost.Models.API.ShipmentOption instead. This class will be removed in a future version.", false)]
     public class ShipmentOption
     {
         #region JSON Properties
@@ -140,7 +134,6 @@ namespace EasyPost.Models.API.Beta
     /// <summary>
     ///     Class representing a supported feature in a EasyPost carrier metadata summary.
     /// </summary>
-    [Obsolete("This class is deprecated. Please use EasyPost.Models.API.SupportedFeature instead. This class will be removed in a future version.", false)]
     public class SupportedFeature
     {
         #region JSON Properties
@@ -163,7 +156,6 @@ namespace EasyPost.Models.API.Beta
     /// <summary>
     ///     Represents the types of metadata that can be retrieved for a carrier.
     /// </summary>
-    [Obsolete("This class is deprecated. Please use EasyPost.Models.API.CarrierMetadataType instead. This class will be removed in a future version.", false)]
     public class CarrierMetadataType : ValueEnum
     {
         public static readonly CarrierMetadataType ServiceLevels = new(1, "service_levels");

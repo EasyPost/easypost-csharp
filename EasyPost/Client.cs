@@ -41,6 +41,11 @@ namespace EasyPost
         public CarrierAccountService CarrierAccount { get; }
 
         /// <summary>
+        ///     Access Carrier Metadata-related functionality.
+        /// </summary>
+        public CarrierMetadataService CarrierMetadata { get; }
+
+        /// <summary>
         ///     Access Carrier Type-related functionality.
         /// </summary>
         public CarrierTypeService CarrierType { get; }
@@ -145,6 +150,7 @@ namespace EasyPost
             Batch = new BatchService(this);
             Billing = new BillingService(this);
             CarrierAccount = new CarrierAccountService(this);
+            CarrierMetadata = new CarrierMetadataService(this);
             CarrierType = new CarrierTypeService(this);
             CustomsInfo = new CustomsInfoService(this);
             CustomsItem = new CustomsItemService(this);
@@ -184,6 +190,7 @@ namespace EasyPost
                 Batch.Dispose();
                 Billing.Dispose();
                 CarrierAccount.Dispose();
+                CarrierMetadata.Dispose();
                 CarrierType.Dispose();
                 CustomsInfo.Dispose();
                 CustomsItem.Dispose();

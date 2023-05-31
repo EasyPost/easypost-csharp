@@ -1,19 +1,17 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyPost.Models.API.Beta;
+using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
 using CustomAssertions = EasyPost.Tests._Utilities.Assertions.Assert;
 
-namespace EasyPost.Tests.ServicesTests.WithParameters.Beta
+namespace EasyPost.Tests.ServicesTests.WithParameters
 {
-    [Obsolete("This test group is obsolete. CarrierMetadataService is out of beta. Tests have been moved to EasyPost.Tests.ServiceTests.WithParameters.CarrierMetadataServiceTests.")]
     public class CarrierMetadataServiceTests : UnitTest
     {
-        public CarrierMetadataServiceTests() : base("beta_carrier_metadata_with_parameters")
+        public CarrierMetadataServiceTests() : base("carrier_metadata_with_parameters")
         {
         }
 
@@ -31,7 +29,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters.Beta
         {
             UseVCR("retrieve");
 
-            List<Carrier> carriers = await Client.Beta.CarrierMetadata.RetrieveCarrierMetadata();
+            List<Carrier> carriers = await Client.CarrierMetadata.Retrieve();
 
             Assert.IsType<List<Carrier>>(carriers);
 
@@ -52,13 +50,13 @@ namespace EasyPost.Tests.ServicesTests.WithParameters.Beta
 
             const string carrierName = "usps";
 
-            Parameters.Beta.CarrierMetadata.Retrieve parameters = new()
+            Parameters.CarrierMetadata.Retrieve parameters = new()
             {
                 Carriers = new List<string> { carrierName },
                 Types = new List<CarrierMetadataType> { CarrierMetadataType.ServiceLevels, CarrierMetadataType.PredefinedPackages },
             };
 
-            List<Carrier> carriers = await Client.Beta.CarrierMetadata.RetrieveCarrierMetadata(parameters);
+            List<Carrier> carriers = await Client.CarrierMetadata.Retrieve(parameters);
 
             // Assert we get the single carrier we asked for
             Assert.True(carriers.Count == 1);

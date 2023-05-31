@@ -1,3 +1,4 @@
+using System;
 using EasyPost._base;
 using EasyPost.Services.Beta;
 
@@ -26,6 +27,7 @@ namespace EasyPost
         /// <summary>
         ///     Access beta Carrier Metadata-related functionality.
         /// </summary>
+        [Obsolete("This service is out of beta. Please use CarrierMetadata via the GA client instead. This beta service will be removed in a future version.", false)]
         public CarrierMetadataService CarrierMetadata { get; }
 
         /// <summary>

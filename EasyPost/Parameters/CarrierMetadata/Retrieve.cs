@@ -1,16 +1,14 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using EasyPost.Models.API.Beta;
+using EasyPost.Models.API;
 
-namespace EasyPost.Parameters.Beta.CarrierMetadata
+namespace EasyPost.Parameters.CarrierMetadata
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#retrieve-carrier-metadata">Parameters</a> for <see cref="EasyPost.Services.Beta.CarrierMetadataService.RetrieveCarrierMetadata(Retrieve, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://www.easypost.com/docs/api#retrieve-carrier-metadata">Parameters</a> for <see cref="EasyPost.Services.CarrierMetadataService.Retrieve(Retrieve, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    [Obsolete("This class is deprecated. Please use EasyPost.Parameters.CarrierMetadata.Retrieve instead. This class will be removed in a future version.", false)]
     public class Retrieve : BaseParameters
     {
         #region Request Parameters
