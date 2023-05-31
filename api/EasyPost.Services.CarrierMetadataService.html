@@ -67,10 +67,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="EasyPost.Services.Beta.CarrierMetadataService">
+            <article class="content wrap" id="_content" data-uid="EasyPost.Services.CarrierMetadataService">
 
 
-  <h1 id="EasyPost_Services_Beta_CarrierMetadataService" data-uid="EasyPost.Services.Beta.CarrierMetadataService" class="text-break">Class CarrierMetadataService
+  <h1 id="EasyPost_Services_CarrierMetadataService" data-uid="EasyPost.Services.CarrierMetadataService" class="text-break">Class CarrierMetadataService
 </h1>
   <div class="markdown level0 summary"><p>Class representing a set of <a href="https://www.easypost.com/docs/api#carrier-metadata">carrier metadata-related beta functionality</a>.</p>
 </div>
@@ -104,9 +104,9 @@
       <a class="xref" href="EasyPost._base.EasyPostService.html#EasyPost__base_EasyPostService_Dispose_System_Boolean_">EasyPostService.Dispose(Boolean)</a>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="EasyPost.Services.Beta.html">EasyPost.Services.Beta</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="EasyPost.Services.html">EasyPost.Services</a></h6>
   <h6><strong>Assembly</strong>: EasyPost.dll</h6>
-  <h5 id="EasyPost_Services_Beta_CarrierMetadataService_syntax">Syntax</h5>
+  <h5 id="EasyPost_Services_CarrierMetadataService_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class CarrierMetadataService : EasyPostService, IEasyPostService</code></pre>
   </div>
@@ -114,20 +114,20 @@
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_Beta_CarrierMetadataService_RetrieveCarrierMetadata_EasyPost_Parameters_Beta_CarrierMetadata_Retrieve_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.Beta.CarrierMetadataService.RetrieveCarrierMetadata(EasyPost.Parameters.Beta.CarrierMetadata.Retrieve%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_CarrierMetadataService_Retrieve_EasyPost_Parameters_CarrierMetadata_Retrieve_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.CarrierMetadataService.Retrieve(EasyPost.Parameters.CarrierMetadata.Retrieve%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/Beta/CarrierMetadataService.cs/#L37">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/CarrierMetadataService.cs/#L35">View Source</a>
   </span>
-  <a id="EasyPost_Services_Beta_CarrierMetadataService_RetrieveCarrierMetadata_" data-uid="EasyPost.Services.Beta.CarrierMetadataService.RetrieveCarrierMetadata*"></a>
-  <h4 id="EasyPost_Services_Beta_CarrierMetadataService_RetrieveCarrierMetadata_EasyPost_Parameters_Beta_CarrierMetadata_Retrieve_CancellationToken_" data-uid="EasyPost.Services.Beta.CarrierMetadataService.RetrieveCarrierMetadata(EasyPost.Parameters.Beta.CarrierMetadata.Retrieve,CancellationToken)">RetrieveCarrierMetadata(Retrieve, CancellationToken)</h4>
+  <a id="EasyPost_Services_CarrierMetadataService_Retrieve_" data-uid="EasyPost.Services.CarrierMetadataService.Retrieve*"></a>
+  <h4 id="EasyPost_Services_CarrierMetadataService_Retrieve_EasyPost_Parameters_CarrierMetadata_Retrieve_CancellationToken_" data-uid="EasyPost.Services.CarrierMetadataService.Retrieve(EasyPost.Parameters.CarrierMetadata.Retrieve,CancellationToken)">Retrieve(Retrieve, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieve metadata about specific carrier(s).
 <a href="https://www.easypost.com/docs/api#retrieve-carrier-metadata">Related API documentation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;List&lt;Carrier&gt;&gt; RetrieveCarrierMetadata(Retrieve parameters = null, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;List&lt;Carrier&gt;&gt; Retrieve(Retrieve parameters = null, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -140,9 +140,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="EasyPost.Parameters.Beta.CarrierMetadata.Retrieve.html">Retrieve</a></td>
+        <td><a class="xref" href="EasyPost.Parameters.CarrierMetadata.Retrieve.html">Retrieve</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td><p><a class="xref" href="EasyPost.Parameters.Beta.CarrierMetadata.Retrieve.html">Retrieve</a> parameter set.</p>
+        <td><p><a class="xref" href="EasyPost.Parameters.CarrierMetadata.Retrieve.html">Retrieve</a> parameter set.</p>
 </td>
       </tr>
       <tr>
@@ -163,8 +163,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="EasyPost.Models.API.Beta.Carrier.html">Carrier</a>&gt;&gt;</td>
-        <td><p>A list of <a class="xref" href="EasyPost.Models.API.Beta.Carrier.html">Carrier</a> objects.</p>
+        <td><span class="xref">Task</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="EasyPost.Models.API.Carrier.html">Carrier</a>&gt;&gt;</td>
+        <td><p>A list of <a class="xref" href="EasyPost.Models.API.Carrier.html">Carrier</a> objects.</p>
 </td>
       </tr>
     </tbody>
@@ -184,10 +184,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_Beta_CarrierMetadataService.md&amp;value=---%0Auid%3A%20EasyPost.Services.Beta.CarrierMetadataService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_CarrierMetadataService.md&amp;value=---%0Auid%3A%20EasyPost.Services.CarrierMetadataService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/Beta/CarrierMetadataService.cs/#L16" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/CarrierMetadataService.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
