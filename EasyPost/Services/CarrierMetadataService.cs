@@ -37,7 +37,7 @@ namespace EasyPost.Services
         {
             Dictionary<string, object> data = parameters?.ToDictionary() ?? new Dictionary<string, object>();
 
-            return await RequestAsync<List<Carrier>>(Method.Get, "metadata", cancellationToken, data, "carriers", ApiVersion.Beta);
+            return await RequestAsync<List<Carrier>>(Method.Get, "metadata/carriers", cancellationToken, data, "carriers");
         }
 
         #endregion
