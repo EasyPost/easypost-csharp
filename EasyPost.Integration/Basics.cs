@@ -1,6 +1,5 @@
 using EasyPost.Integration.Utilities.Attributes;
 using EasyPost.Models.API;
-using EasyPost.Models.API.Beta;
 using Xunit;
 
 namespace EasyPost.Integration;
@@ -10,7 +9,6 @@ public class Basics
     /// <summary>
     ///     Test that an end-user can locally construct a response object without needing to call the API (response objects have public constructors).
     ///     If this test can be compiled, then the response objects have public constructors.
-    ///     Obsolete constructors (i.e. deprecated beta classes) are not tested.
     /// </summary>
     [Fact, Testing.Access, Testing.Compile]
     public void TestUserCanLocallyConstructResponseObject()
@@ -25,11 +23,13 @@ public class Basics
         var brand = new Brand();
         var carbonOffset = new CarbonOffset();
         var carrier = new EasyPost.Models.API.Carrier();
+        var carrierBeta = new EasyPost.Models.API.Beta.Carrier();
         var carrierAccount = new CarrierAccount();
         var carrierDetail = new CarrierDetail();
         var carrierField = new CarrierField();
         var carrierFields = new CarrierFields();
         var carrierMetadata = new EasyPost.Models.API.CarrierMetadata();
+        var carrierMetadataBeta = new EasyPost.Models.API.Beta.CarrierMetadata();
         var carrierType = new CarrierType();
         var customsInfo = new CustomsInfo();
         var customsItem = new CustomsItem();
@@ -49,12 +49,13 @@ public class Basics
         var payload = new Payload();
         var paymentMethod = new PaymentMethod();
         var paymentMethodsSummary = new PaymentMethodsSummary();
-        var paymentRefund = new PaymentRefund();
+        var paymentRefundBeta = new EasyPost.Models.API.Beta.PaymentRefund();
         var pickup = new Pickup();
         var pickupCollection = new PickupCollection();
         var pickupRate = new PickupRate();
         var postageLabel = new PostageLabel();
         var predefinedPackage = new EasyPost.Models.API.PredefinedPackage();
+        var predefinedPackageBeta = new EasyPost.Models.API.Beta.PredefinedPackage();
         var rate = new Rate();
         var rateWithEstimatedDeliveryDate = new RateWithEstimatedDeliveryDate();
         var referralCustomer = new ReferralCustomer();
@@ -64,12 +65,15 @@ public class Basics
         var scanForm = new ScanForm();
         var scanFormCollection = new ScanFormCollection();
         var serviceLevel = new EasyPost.Models.API.ServiceLevel();
+        var serviceLevelBeta = new EasyPost.Models.API.Beta.ServiceLevel();
         var shipment = new Shipment();
         var shipmentCollection = new ShipmentCollection();
         var shipmentOption = new EasyPost.Models.API.ShipmentOption();
+        var shipmentOptionBeta = new EasyPost.Models.API.Beta.ShipmentOption();
         var smartRate = new SmartRate();
-        var statelessRate = new StatelessRate();
+        var statelessRateBeta = new EasyPost.Models.API.Beta.StatelessRate();
         var supportedFeature = new EasyPost.Models.API.SupportedFeature();
+        var supportedFeatureBeta = new EasyPost.Models.API.Beta.SupportedFeature();
         var taxIdentifier = new TaxIdentifier();
         var timeInTransit = new TimeInTransit();
         var tracker = new Tracker();
