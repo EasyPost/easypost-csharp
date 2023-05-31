@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Http;
-using EasyPost.Models.API.Beta;
+using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Services
@@ -33,7 +33,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="Carrier"/> objects.</returns>
         [CrudOperations.Read]
-        public async Task<List<Carrier>> RetrieveCarrierMetadata(Parameters.Beta.CarrierMetadata.Retrieve? parameters = null, CancellationToken cancellationToken = default)
+        public async Task<List<Carrier>> Retrieve(Parameters.Beta.CarrierMetadata.Retrieve? parameters = null, CancellationToken cancellationToken = default)
         {
             Dictionary<string, object> data = parameters?.ToDictionary() ?? new Dictionary<string, object>();
 
