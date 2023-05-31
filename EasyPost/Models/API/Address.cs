@@ -117,13 +117,6 @@ namespace EasyPost.Models.API
         public string? Zip { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Address"/> class.
-        /// </summary>
-        internal Address()
-        {
-        }
     }
 #pragma warning restore CA1724 // Naming conflicts with Parameters.Address
 
@@ -141,13 +134,6 @@ namespace EasyPost.Models.API
         public List<Address>? Addresses { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="AddressCollection"/> class.
-        /// </summary>
-        internal AddressCollection()
-        {
-        }
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

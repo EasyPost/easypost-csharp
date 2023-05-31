@@ -24,12 +24,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Parcel"/> class.
-        /// </summary>
-        internal Parcel()
-        {
-        }
     }
 }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Parcel

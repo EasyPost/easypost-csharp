@@ -89,12 +89,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="EndShipper"/> class.
-        /// </summary>
-        internal EndShipper()
-        {
-        }
     }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.EndShipper
 
@@ -112,13 +106,6 @@ namespace EasyPost.Models.API
         public List<EndShipper>? EndShippers { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="EndShipperCollection"/> class.
-        /// </summary>
-        internal EndShipperCollection()
-        {
-        }
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

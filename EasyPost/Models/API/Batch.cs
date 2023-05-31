@@ -85,13 +85,6 @@ namespace EasyPost.Models.API
         public Dictionary<string, int>? Status { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Batch"/> class.
-        /// </summary>
-        internal Batch()
-        {
-        }
     }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Batch
 
@@ -109,13 +102,6 @@ namespace EasyPost.Models.API
         public List<Batch>? Batches { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BatchCollection"/> class.
-        /// </summary>
-        internal BatchCollection()
-        {
-        }
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

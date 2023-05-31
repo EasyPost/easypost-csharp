@@ -140,12 +140,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="CustomsInfo"/> class.
-        /// </summary>
-        internal CustomsInfo()
-        {
-        }
     }
 #pragma warning restore CA1724 // Naming conflicts with Parameters.CustomInfo
 }

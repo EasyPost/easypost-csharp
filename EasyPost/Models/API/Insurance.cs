@@ -88,12 +88,6 @@ namespace EasyPost.Models.API
         public Fee? Fee { get; set; }
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Insurance"/> class.
-        /// </summary>
-        internal Insurance()
-        {
-        }
     }
 #pragma warning restore CA1724 // Naming conflicts with Parameters.Insurance
 
@@ -111,13 +105,6 @@ namespace EasyPost.Models.API
         public List<Insurance>? Insurances { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="InsuranceCollection"/> class.
-        /// </summary>
-        internal InsuranceCollection()
-        {
-        }
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

@@ -30,12 +30,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Report"/> class.
-        /// </summary>
-        internal Report()
-        {
-        }
     }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Report
 
@@ -53,13 +47,6 @@ namespace EasyPost.Models.API
         public List<Report>? Reports { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ReportCollection"/> class.
-        /// </summary>
-        internal ReportCollection()
-        {
-        }
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

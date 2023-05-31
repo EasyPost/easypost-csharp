@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Constructors for all response objects (e.g. `EasyPost.Models.API.Address`) are publicly available for end-users to construct their own objects for testing purposes.
+
 ## v5.0.0 (2023-05-15)
 
 ### Breaking Changes

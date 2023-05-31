@@ -44,12 +44,5 @@ namespace EasyPost.Models.API
         public string? TrackingCode { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BatchShipment"/> class.
-        /// </summary>
-        internal BatchShipment()
-        {
-        }
     }
 }

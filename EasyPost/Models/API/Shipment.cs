@@ -81,13 +81,6 @@ namespace EasyPost.Models.API
         #endregion
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Shipment"/> class.
-        /// </summary>
-        internal Shipment()
-        {
-        }
-
-        /// <summary>
         ///     Get the lowest rate for this Shipment.
         /// </summary>
         /// <param name="includeCarriers">Carriers to include in the filter.</param>
@@ -123,13 +116,6 @@ namespace EasyPost.Models.API
         public List<Shipment>? Shipments { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ShipmentCollection" /> class.
-        /// </summary>
-        internal ShipmentCollection()
-        {
-        }
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

@@ -8,9 +8,6 @@ namespace EasyPost.Models.API
     /// </summary>
     public class User : BaseUser, Parameters.IUserParameter
     {
-        internal User()
-        {
-        }
     }
 }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.User

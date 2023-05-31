@@ -30,12 +30,5 @@ namespace EasyPost.Models.API
         public string? Price { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///   Initializes a new instance of the <see cref="CarbonOffset"/> class.
-        /// </summary>
-        internal CarbonOffset()
-        {
-        }
     }
 }

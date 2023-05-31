@@ -37,11 +37,5 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Fee"/> class.
-        /// </summary>
-        internal Fee()
-        {
-        }
     }
 }

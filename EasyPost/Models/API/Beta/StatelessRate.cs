@@ -43,9 +43,5 @@ namespace EasyPost.Models.API.Beta
         public string? ShipmentId { get; set; }
 
         #endregion
-
-        internal StatelessRate()
-        {
-        }
     }
 }

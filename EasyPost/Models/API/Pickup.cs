@@ -53,13 +53,6 @@ namespace EasyPost.Models.API
         private IEnumerable<Rate> Rates => PickupRates != null ? PickupRates.Cast<Rate>().ToList() : new List<Rate>();
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Pickup"/> class.
-        /// </summary>
-        internal Pickup()
-        {
-        }
-
-        /// <summary>
         ///     Get the lowest rate for this Pickup.
         /// </summary>
         /// <param name="includeCarriers">Carriers to include in the filter.</param>
@@ -85,13 +78,6 @@ namespace EasyPost.Models.API
         public List<Pickup>? Pickups { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="PickupCollection"/> class.
-        /// </summary>
-        internal PickupCollection()
-        {
-        }
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.

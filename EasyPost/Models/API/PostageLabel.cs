@@ -38,11 +38,5 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="PostageLabel"/> class.
-        /// </summary>
-        internal PostageLabel()
-        {
-        }
     }
 }

@@ -64,12 +64,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="CustomsItem"/> class.
-        /// </summary>
-        internal CustomsItem()
-        {
-        }
     }
 }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.CustomsItem

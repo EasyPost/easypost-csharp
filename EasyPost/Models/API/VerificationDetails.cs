@@ -19,11 +19,5 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="VerificationDetails"/> class.
-        /// </summary>
-        internal VerificationDetails()
-        {
-        }
     }
 }

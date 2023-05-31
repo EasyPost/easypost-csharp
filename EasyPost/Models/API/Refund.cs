@@ -27,12 +27,6 @@ namespace EasyPost.Models.API
 
         #endregion
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Refund"/> class.
-        /// </summary>
-        internal Refund()
-        {
-        }
     }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Refund
 
@@ -50,13 +44,6 @@ namespace EasyPost.Models.API
         public List<Refund>? Refunds { get; set; }
 
         #endregion
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="RefundCollection"/> class.
-        /// </summary>
-        internal RefundCollection()
-        {
-        }
 
         /// <summary>
         ///     Construct the parameter set for retrieving the next page of this paginated collection.
