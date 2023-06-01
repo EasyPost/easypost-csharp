@@ -110,24 +110,38 @@ namespace EasyPost.Tests
         [Fact]
         public void TestRequestAuditor()
         {
-            int requestAuditorCallCount = 0;
+            int preRequestAuditorCallCount = 0;
+            int postRequestAuditorCallCount = 0;
 
-            void RequestAuditor(HttpRequestMessage request)
+            void PreRequestAuditor(HttpRequestMessage request)
             {
                 // Modifying the HttpRequestMessage in this action does not impact the HttpRequestMessage being executed (passed by value, not reference)
-                requestAuditorCallCount++;
+                preRequestAuditorCallCount++;
             }
+
+            void PostRequestAuditor(HttpResponseMessage response)
+            {
+                postRequestAuditorCallCount++;
+            }
+
+            Hooks hooks = new()
+            {
+                PreRequestAuditor = PreRequestAuditor,
+                PostRequestAuditor = PostRequestAuditor,
+            };
 
             Client client = new Client(new ClientConfiguration(FakeApikey)
             {
-                RequestAuditor = RequestAuditor,
+                Hooks = hooks, 
             });
 
             // Make a request, doesn't matter what it is (catch the exception due to invalid API key)
             Assert.ThrowsAsync<EasyPostError>(async () => await client.Address.Create(new Parameters.Address.Create()));
 
-            // Assert that the auditor was called
-            Assert.Equal(1, requestAuditorCallCount);
+            // Assert that the pre-request auditor was called
+            Assert.Equal(1, preRequestAuditorCallCount);
+            // Assert that the post-request auditor was called
+            Assert.Equal(1, postRequestAuditorCallCount);
         }
 
         [Fact]
@@ -142,9 +156,14 @@ namespace EasyPost.Tests
                 cancelTokenSource.Cancel();
             }
             
+            Hooks hooks = new()
+            {
+                PreRequestAuditor = RequestAuditor,
+            };
+            
             Client client = new Client(new ClientConfiguration(FakeApikey)
             {
-                RequestAuditor = RequestAuditor,
+                Hooks = hooks,
             });
             
             // Make a request, doesn't matter what it is

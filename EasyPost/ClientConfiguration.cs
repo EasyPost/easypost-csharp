@@ -32,11 +32,10 @@ public class ClientConfiguration : IDisposable
     public TimeSpan Timeout { get; set; } = TimeSpan.FromSeconds(60); // default to 60 seconds if not specified by the user
 
     /// <summary>
-    ///     A <see cref="Action{T}"/> to audit all HTTP requests sent by the client.
-    ///     The <see cref="HttpRequestMessage"/> executed by the client is passed into this action.
+    ///     A set of <see cref="Hooks"/> to use for requests.
     /// </summary>
     // This cannot be changed after the client has been initialized.
-    public Action<HttpRequestMessage>? RequestAuditor { get; set; }
+    public Hooks Hooks { get; set; } = new();
 
     /// <summary>
     ///     Gets the HttpClient to use for requests.
