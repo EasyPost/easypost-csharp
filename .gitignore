@@ -176,3 +176,7 @@ $RECYCLE.BIN/
 
 # Dotnet tools
 .config/dotnet-tools.json
+
+# Downloaded style guides
+/layout_rules.xml
+/.editorconfig
