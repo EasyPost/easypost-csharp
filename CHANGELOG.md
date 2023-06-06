@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v5.1.0 (2023-06-06)
 
 - Carrier Metadata is now in GA, accessible via `myClient.CarrierMetadata`
   - `myClient.Beta.CarrierMetadata` is now deprecated and will be removed in a future release
