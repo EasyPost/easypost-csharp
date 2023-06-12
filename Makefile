@@ -52,8 +52,15 @@ install-tools:
 install-release-tools:
 	bash scripts/unix/install_osslsigncode.sh
 
+## install-styleguide - Import style guide (Unix only)
+install-styleguide: | update-examples-submodule
+	sh examples/symlink_directory_files.sh examples/style_guides/csharp .
+
 ## install - Install requirements
-install: | install-tools
+install: | install-tools update-examples-submodule
+
+## update-examples-submodule - Update the examples submodule
+update-examples-submodule:
 	git submodule init
 	git submodule update
 
@@ -128,4 +135,4 @@ fs-compat-test:
 vb-compat-test:
 	dotnet test EasyPost.Compatibility.VB/EasyPost.Compatibility.VB.vbproj -f ${fw} -restore
 
-.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-tools install-release-tools install lint lint-scripts prep-release release restore scan setup-win setup-unix test unit-test integration-test fs-compat-test vb-compat-test
+.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-styleguide install-tools install-release-tools install lint lint-scripts prep-release release restore scan setup-win setup-unix test update-examples-submodule unit-test integration-test fs-compat-test vb-compat-test

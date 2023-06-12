@@ -18,7 +18,7 @@ jobs:
           dotnet-version: 7.x.x
 
       - name: Set up dotnet tools
-        run: make install-tools
+        run: make install install-styleguide
 
       - name: Check style with dotnet-format
         run: make lint
@@ -32,6 +32,9 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 7.x.x
+          
+      - name: Set up dotnet tools
+        run: make install install-styleguide
 
       - name: Restore NuGet Packages
         run: make restore
