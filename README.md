@@ -198,14 +198,10 @@ make build
 
 # Lint project
 make lint
-
-# Format project
-make format
+make lint-fix
 
 # Run tests (recommended to instead run via an IDE like Visual Studio)
 EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make test
-
-# Generate coverage reports
 EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make coverage
 
 # Run security analysis

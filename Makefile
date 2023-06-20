@@ -37,10 +37,6 @@ coverage-check:
 docs:
 	dotnet tool run docfx docs/docfx.json
 
-## format - Formats the project
-format:
-	dotnet tool run dotnet-format --no-restore
-
 ## install-tools - Install required dotnet tools
 install-tools:
 	dotnet new tool-manifest || exit 0
@@ -59,17 +55,16 @@ install-styleguide: | update-examples-submodule
 ## install - Install requirements
 install: | install-tools update-examples-submodule
 
-## update-examples-submodule - Update the examples submodule
-update-examples-submodule:
-	git submodule init
-	git submodule update
-
 ## lint - Lints the solution (EasyPost + Tests + Integration + F#/VB compatibilities) (check IDE and SA rule violations)
 lint:
     # Lint the project code with dotnet-format
 	dotnet tool run dotnet-format --no-restore --check
     # Lint the source code (only EasyPost, no tests et. al) by building with the "Linting" configuration (will trigger StyleCop)
 	dotnet build EasyPost/EasyPost.csproj -c "Linting" -t:Rebuild -restore -p:EnforceCodeStyleInBuild=true
+
+## lint-fix - Formats the project
+lint-fix:
+	dotnet tool run dotnet-format --no-restore
 
 ## lint-scripts - Lint and validate the Batch scripts (Windows only)
 lint-scripts:
@@ -116,6 +111,11 @@ test:
 # fw= - The framework to build for.
 unit-test:
 	dotnet test EasyPost.Tests/EasyPost.Tests.csproj -f ${fw} -c "Debug" # Always run unit tests in Debug mode to allow access to internal members
+
+## update-examples-submodule - Update the examples submodule
+update-examples-submodule:
+	git submodule init
+	git submodule update
 
 ## integration-test - Run the integration tests for a specific framework
 ## @parameters:
