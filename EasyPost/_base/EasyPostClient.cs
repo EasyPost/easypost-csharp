@@ -86,14 +86,14 @@ namespace EasyPost._base
             try
             {
                 // generate a UUID and starting timestamp for this request
-                var requestId = Guid.NewGuid();
-                var requestTimestamp = Environment.TickCount;
+                Guid requestId = Guid.NewGuid();
+                int requestTimestamp = Environment.TickCount;
                 // if a pre-request event has been set, invoke it
                 Hooks.OnRequestBeforeExecution?.Invoke(this, new RequestBeforeExecutionEventArgs(request, requestTimestamp, requestId));
                 // execute the request
-                var response = await HttpClient.SendAsync(request, cancellationToken: cancellationToken).ConfigureAwait(false);
+                HttpResponseMessage response = await HttpClient.SendAsync(request, cancellationToken: cancellationToken).ConfigureAwait(false);
                 // if a post-request event has been set, invoke it
-                var responseTimestamp = Environment.TickCount;
+                int responseTimestamp = Environment.TickCount;
                 Hooks.OnRequestResponseReceived?.Invoke(this, new RequestResponseReceivedEventArgs(response, requestTimestamp, responseTimestamp, requestId));
 
                 return response;

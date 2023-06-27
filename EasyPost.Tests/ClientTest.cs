@@ -111,8 +111,8 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestRequestHooks()
         {
-            var preRequestCallbackCallCount = 0;
-            var postRequestCallbackCallCount = 0;
+            int preRequestCallbackCallCount = 0;
+            int postRequestCallbackCallCount = 0;
             var requestGuid = Guid.Empty;
 
             Hooks hooks = new()
@@ -122,7 +122,7 @@ namespace EasyPost.Tests
                     // Modifying the HttpRequestMessage in this action does not impact the HttpRequestMessage being executed (passed by value, not reference)
                     preRequestCallbackCallCount++;
                     Assert.True(args.Timestamp > 0);
-                    requestGuid = args.Guid;
+                    requestGuid = args.Id;
                 },
                 OnRequestResponseReceived = (sender, args) =>
                 {
@@ -130,7 +130,7 @@ namespace EasyPost.Tests
                     Assert.True(args.RequestTimestamp > 0);
                     Assert.True(args.ResponseTimestamp > 0);
                     Assert.True(args.ResponseTimestamp > args.RequestTimestamp);
-                    Assert.Equal(requestGuid, args.Guid);
+                    Assert.Equal(requestGuid, args.Id);
                 },
             };
 
@@ -138,7 +138,7 @@ namespace EasyPost.Tests
             {
                 Hooks = hooks,
             });
-            
+
             // Make a request, doesn't matter what it is (catch the exception due to invalid API key)
             await Assert.ThrowsAsync<UnauthorizedError>(async () => await client.Address.Create(new Parameters.Address.Create()));
 
@@ -151,8 +151,8 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCancellationToken()
         {
-            var cancelTokenSource = new CancellationTokenSource();
-            var token = cancelTokenSource.Token;
+            CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+            CancellationToken token = cancelTokenSource.Token;
 
             Hooks hooks = new()
             {
