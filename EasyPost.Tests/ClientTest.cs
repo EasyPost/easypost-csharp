@@ -133,14 +133,17 @@ namespace EasyPost.Tests
                     Assert.Equal(requestGuid, args.Id);
                 },
             };
-
-            var client = new Client(new ClientConfiguration(FakeApikey)
-            {
-                Hooks = hooks,
-            });
+            
+            UseVCRWithCustomClient("request_hooks", (apiKey, httpClient) => 
+                new Client(new ClientConfiguration(FakeApikey) 
+                { 
+                    CustomHttpClient = httpClient,
+                    Hooks = hooks,
+                })
+            );
 
             // Make a request, doesn't matter what it is (catch the exception due to invalid API key)
-            await Assert.ThrowsAsync<UnauthorizedError>(async () => await client.Address.Create(new Parameters.Address.Create()));
+            await Assert.ThrowsAsync<UnauthorizedError>(async () => await Client.Address.Create(new Parameters.Address.Create()));
 
             // Assert that the pre-request callback was called
             Assert.Equal(1, preRequestCallbackCallCount);
@@ -151,7 +154,7 @@ namespace EasyPost.Tests
         [Fact]
         public async Task TestCancellationToken()
         {
-            CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+            CancellationTokenSource cancelTokenSource = new();
             CancellationToken token = cancelTokenSource.Token;
 
             Hooks hooks = new()
@@ -162,16 +165,20 @@ namespace EasyPost.Tests
                     cancelTokenSource.Cancel();
                 },
             };
-
-            var client = new Client(new ClientConfiguration(FakeApikey)
-            {
-                Hooks = hooks,
-            });
-
+            
+            UseVCRWithCustomClient("cancellation_token", (apiKey, httpClient) => 
+                new Client(new ClientConfiguration(FakeApikey)
+                {
+                    CustomHttpClient = httpClient,
+                    Hooks = hooks,
+                })
+            );
+            
             // Make a request, doesn't matter what it is
             // Should throw a TimeoutError because the request was cancelled
             // If it throws a UnauthorizedError, then the cancellation token was not used (request went through and failed due to invalid API key)
-            await Assert.ThrowsAsync<TimeoutError>(async () => await client.Address.Create(new Parameters.Address.Create(), token));
+            // this will not record a cassette because the request should be cancelled before it is sent
+            await Assert.ThrowsAsync<TimeoutError>(async () => await Client.Address.Create(new Parameters.Address.Create(), token));
         }
     }
 }
