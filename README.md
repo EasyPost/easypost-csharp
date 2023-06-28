@@ -173,9 +173,7 @@ Using the `Parameters` classes is not required, but they can help in a number of
 - Provides a more natural way to construct parameters
 - Facilitates ASP.NET Core model binding (bind an HTML form to a `Parameters` instance)
 
-## Debugging
-
-### View HTTP Requests
+### HTTP Hooks
 
 Users can audit the HTTP requests and responses being made by the library by setting the `Hooks` property of a `ClientConfiguration` with a set of event handlers. Available handlers include:
 
@@ -186,17 +184,21 @@ Users can audit the HTTP requests and responses being made by the library by set
 Users can interact with these details in their callbacks as they see fit (e.g. logging).
 
 ```csharp
+void OnRequestBeforeExecutionHandler(object? sender, OnRequestBeforeExecutionEventArgs args) {
+    // Interact with the HttpRequestMessage here via args.Request
+    System.Console.WriteLine($"Making HTTP call to {args.Request.RequestUri}");
+}
+            
+void OnRequestResponseReceivedHandler(object? sender, OnRequestResponseReceivedEventArgs args) {
+    // Interact with the HttpResponseMessage here via args.Response
+    System.Console.WriteLine($"Received HTTP response with status code {args.Response.StatusCode}");
+}
+            
 Client client = new Client(new ClientConfiguration("EASYPOST_API_KEY")
 {
     Hooks = new Hooks {
-        OnRequestBeforeExecution = (_, args) => {
-            // Interact with the HttpRequestMessage here via args.Request
-            System.Console.WriteLine($"Making HTTP call to {args.Request.RequestUri}");
-        },
-        OnPostRequest = (_, args) => {
-            // Interact with the HttpResponseMessage here via args.Response
-            System.Console.WriteLine($"Received HTTP response with status code {args.Response.StatusCode}");
-        },
+        OnRequestBeforeExecution = OnRequestBeforeExecutionHandler,
+        OnRequestResponseReceived = OnRequestResponseReceivedHandler,
     },
 });
 ```

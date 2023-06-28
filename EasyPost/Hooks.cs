@@ -5,18 +5,18 @@ namespace EasyPost;
 public class Hooks
 {
     /// <summary>
-    ///     An <see cref="EventHandler{RequestBeforeExecutionEventArgs}"/> to view an HTTP request by the client prior to being sent.
+    ///     An <see cref="EventHandler{OnRequestBeforeExecutionEventArgs}"/> to view an HTTP request by the client prior to being sent.
     ///     Editing the <see cref="HttpRequestMessage"/> in this callback does not impact the <see cref="HttpRequestMessage"/> being executed.
     /// </summary>
-    public EventHandler<RequestBeforeExecutionEventArgs>? OnRequestBeforeExecution { get; set; }
+    public EventHandler<OnRequestBeforeExecutionEventArgs>? OnRequestBeforeExecution { get; set; }
 
     /// <summary>
-    ///     An <see cref="EventHandler{RequestResponseReceivedEventArgs}"/> to view an HTTP response received by the client.
+    ///     An <see cref="EventHandler{OnRequestResponseReceivedEventArgs}"/> to view an HTTP response received by the client.
     /// </summary>
-    public EventHandler<RequestResponseReceivedEventArgs>? OnRequestResponseReceived { get; set; }
+    public EventHandler<OnRequestResponseReceivedEventArgs>? OnRequestResponseReceived { get; set; }
 }
 
-public class RequestBeforeExecutionEventArgs : EventArgs
+public class OnRequestBeforeExecutionEventArgs : EventArgs
 {
     /// <summary>
     ///     The <see cref="HttpRequestMessage"/> about to be executed by the HTTP request.
@@ -26,7 +26,7 @@ public class RequestBeforeExecutionEventArgs : EventArgs
     /// <summary>
     ///     The timestamp of the HTTP request.
     /// </summary>
-    public int Timestamp { get; }
+    public int RequestTimestamp { get; }
 
     /// <summary>
     ///     A unique identifier for the HTTP request-response pair.
@@ -34,20 +34,20 @@ public class RequestBeforeExecutionEventArgs : EventArgs
     public Guid Id { get; }
 
     /// <summary>
-    ///     Constructs a new instance of the <see cref="RequestBeforeExecutionEventArgs"/> class.
+    ///     Constructs a new instance of the <see cref="OnRequestBeforeExecutionEventArgs"/> class.
     /// </summary>
     /// <param name="request">The <see cref="HttpRequestMessage"/> about to be executed by the HTTP request.</param>
     /// <param name="timestamp">The timestamp of the HTTP request.</param>
     /// <param name="guid">A unique identifier for the HTTP request-response pair.</param>
-    internal RequestBeforeExecutionEventArgs(HttpRequestMessage request, int timestamp, Guid guid)
+    internal OnRequestBeforeExecutionEventArgs(HttpRequestMessage request, int timestamp, Guid guid)
     {
         Request = request;
-        Timestamp = timestamp;
+        RequestTimestamp = timestamp;
         Id = guid;
     }
 }
 
-public class RequestResponseReceivedEventArgs : EventArgs
+public class OnRequestResponseReceivedEventArgs : EventArgs
 {
     /// <summary>
     ///     The <see cref="HttpResponseMessage"/> returned by the HTTP request.
@@ -70,13 +70,13 @@ public class RequestResponseReceivedEventArgs : EventArgs
     public Guid Id { get; }
 
     /// <summary>
-    ///     Constructs a new instance of the <see cref="RequestResponseReceivedEventArgs"/> class.
+    ///     Constructs a new instance of the <see cref="OnRequestResponseReceivedEventArgs"/> class.
     /// </summary>
     /// <param name="response">The <see cref="HttpResponseMessage"/> returned by the HTTP request.</param>
     /// <param name="requestTimestamp">The timestamp of the HTTP request.</param>
     /// <param name="responseTimestamp">The timestamp of the HTTP response.</param>
     /// <param name="guid">A unique identifier for the HTTP request-response pair.</param>
-    internal RequestResponseReceivedEventArgs(HttpResponseMessage response, int requestTimestamp, int responseTimestamp, Guid guid)
+    internal OnRequestResponseReceivedEventArgs(HttpResponseMessage response, int requestTimestamp, int responseTimestamp, Guid guid)
     {
         Response = response;
         RequestTimestamp = requestTimestamp;

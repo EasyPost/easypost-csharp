@@ -2,7 +2,6 @@ using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using EasyPost.Exceptions;
 using EasyPost.Exceptions.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -121,7 +120,7 @@ namespace EasyPost.Tests
                 {
                     // Modifying the HttpRequestMessage in this action does not impact the HttpRequestMessage being executed (passed by value, not reference)
                     preRequestCallbackCallCount++;
-                    Assert.True(args.Timestamp > 0);
+                    Assert.True(args.RequestTimestamp > 0);
                     requestGuid = args.Id;
                 },
                 OnRequestResponseReceived = (sender, args) =>
