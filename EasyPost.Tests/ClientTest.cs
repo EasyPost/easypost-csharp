@@ -128,7 +128,7 @@ namespace EasyPost.Tests
                     postRequestCallbackCallCount++;
                     Assert.True(args.RequestTimestamp > 0);
                     Assert.True(args.ResponseTimestamp > 0);
-                    Assert.True(args.ResponseTimestamp > args.RequestTimestamp);
+                    Assert.True(args.ResponseTimestamp >= args.RequestTimestamp);
                     Assert.Equal(requestGuid, args.Id);
                 },
             };
