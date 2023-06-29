@@ -86,4 +86,54 @@ public class Basics
         var verifications = new Verifications();
         var webhook = new Webhook();
     }
+
+    /// <summary>
+    ///     Test that an end-user can locally construct all available hooks.
+    ///     If this test can be compiled, then the hooks are publicly accessible.
+    /// </summary>
+    [Fact, Testing.Access, Testing.Compile]
+    public void TestUserCanCreateHooks()
+    {
+        // Can set up each hook event handler during construction
+        var hooks = new Hooks()
+        {
+            OnRequestResponseReceived = new EventHandler<OnRequestResponseReceivedEventArgs>((sender, args) =>
+            {
+                Console.WriteLine(args.Response);
+                Console.WriteLine(args.RequestTimestamp);
+                Console.WriteLine(args.ResponseTimestamp);
+                Console.WriteLine(args.Id);
+            }),
+            OnRequestBeforeExecution = new EventHandler<OnRequestBeforeExecutionEventArgs>((sender, args) =>
+            {
+                Console.WriteLine(args.Request);
+                Console.WriteLine(args.RequestTimestamp);
+                Console.WriteLine(args.Id);
+            }),
+        };
+        
+        // Can set up/add to each hook event handler after construction
+        hooks.OnRequestResponseReceived += (sender, args) =>
+        {
+            Console.WriteLine(args.Response);
+            Console.WriteLine(args.RequestTimestamp);
+            Console.WriteLine(args.ResponseTimestamp);
+            Console.WriteLine(args.Id);
+        };
+        
+        hooks.OnRequestBeforeExecution += (sender, args) =>
+        {
+            Console.WriteLine(args.Request);
+            Console.WriteLine(args.RequestTimestamp);
+            Console.WriteLine(args.Id);
+        };
+        
+        // Can pass hooks to a client during construction
+        var client = new Client(new ClientConfiguration("not-a-real-api-key")
+        {
+            Hooks = hooks,
+        });
+        
+        // Cannot edit hooks via a constructed client
+    }
 }
