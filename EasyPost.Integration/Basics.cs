@@ -111,7 +111,7 @@ public class Basics
                 Console.WriteLine(args.Id);
             }),
         };
-        
+
         // Can set up/add to each hook event handler after construction
         hooks.OnRequestResponseReceived += (sender, args) =>
         {
@@ -120,20 +120,20 @@ public class Basics
             Console.WriteLine(args.ResponseTimestamp);
             Console.WriteLine(args.Id);
         };
-        
+
         hooks.OnRequestBeforeExecution += (sender, args) =>
         {
             Console.WriteLine(args.Request);
             Console.WriteLine(args.RequestTimestamp);
             Console.WriteLine(args.Id);
         };
-        
+
         // Can pass hooks to a client during construction
         var client = new Client(new ClientConfiguration("not-a-real-api-key")
         {
             Hooks = hooks,
         });
-        
+
         // Cannot edit hooks via a constructed client
     }
 }
