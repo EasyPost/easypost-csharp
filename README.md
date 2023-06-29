@@ -177,14 +177,17 @@ Using the `Parameters` classes is not required, but they can help in a number of
 
 Users can audit the HTTP requests and responses being made by the library by setting the `Hooks` property of a `ClientConfiguration` with a set of event handlers. Available handlers include:
 
-- `OnRequestBeforeExecution` - Called before an HTTP request is made. An `RequestBeforeExecutionEventArgs` object is passed to the handler, which contains the `HttpRequestMessage` that will be sent to the server.
-  - The `HttpRequestMessage` at this point is configured with all expected data (headers, body, etc.). Modifying the `HttpRequestMessage` will NOT affect the actual request that is sent to the server.
-- `OnRequestResponseReceived` - Called after an HTTP request is made. An `RequestResponseReceivedEventArgs` object is passed to the handler, which contains the `HttpResponseMessage` that was received from the server.
+- `OnRequestExecuting` - Called before an HTTP request is made. An `OnRequestExecutingEventArgs` object is passed to the
+  handler, which contains the `HttpRequestMessage` that will be sent to the server.
+  - The `HttpRequestMessage` at this point is configured with all expected data (headers, body, etc.). Modifying
+    the `HttpRequestMessage` will NOT affect the actual request that is sent to the server.
+- `OnRequestResponseReceived` - Called after an HTTP request is made. An `RequestResponseReceivedEventArgs` object is
+  passed to the handler, which contains the `HttpResponseMessage` that was received from the server.
 
 Users can interact with these details in their callbacks as they see fit (e.g. logging).
 
 ```csharp
-void OnRequestBeforeExecutionHandler(object? sender, OnRequestBeforeExecutionEventArgs args) {
+void OnRequestExecutingHandler(object? sender, OnRequestExecutingEventArgs args) {
     // Interact with the HttpRequestMessage here via args.Request
     System.Console.WriteLine($"Making HTTP call to {args.Request.RequestUri}");
 }
@@ -197,7 +200,7 @@ void OnRequestResponseReceivedHandler(object? sender, OnRequestResponseReceivedE
 Client client = new Client(new ClientConfiguration("EASYPOST_API_KEY")
 {
     Hooks = new Hooks {
-        OnRequestBeforeExecution = OnRequestBeforeExecutionHandler,
+        OnRequestExecuting = OnRequestExecutingHandler,
         OnRequestResponseReceived = OnRequestResponseReceivedHandler,
     },
 });

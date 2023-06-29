@@ -2,13 +2,14 @@ using System;
 using System.Net.Http;
 
 namespace EasyPost;
+
 public class Hooks
 {
     /// <summary>
-    ///     An <see cref="EventHandler{OnRequestBeforeExecutionEventArgs}"/> to view an HTTP request by the client prior to being sent.
+    ///     An <see cref="EventHandler{OnRequestExecutingEventArgs}"/> to view an HTTP request by the client prior to being sent.
     ///     Editing the <see cref="HttpRequestMessage"/> in this callback does not impact the <see cref="HttpRequestMessage"/> being executed.
     /// </summary>
-    public EventHandler<OnRequestBeforeExecutionEventArgs>? OnRequestBeforeExecution { get; set; }
+    public EventHandler<OnRequestExecutingEventArgs>? OnRequestExecuting { get; set; }
 
     /// <summary>
     ///     An <see cref="EventHandler{OnRequestResponseReceivedEventArgs}"/> to view an HTTP response received by the client.
@@ -16,7 +17,7 @@ public class Hooks
     public EventHandler<OnRequestResponseReceivedEventArgs>? OnRequestResponseReceived { get; set; }
 }
 
-public class OnRequestBeforeExecutionEventArgs : EventArgs
+public class OnRequestExecutingEventArgs : EventArgs
 {
     /// <summary>
     ///     The <see cref="HttpRequestMessage"/> about to be executed by the HTTP request.
@@ -34,12 +35,12 @@ public class OnRequestBeforeExecutionEventArgs : EventArgs
     public Guid Id { get; }
 
     /// <summary>
-    ///     Constructs a new instance of the <see cref="OnRequestBeforeExecutionEventArgs"/> class.
+    ///     Constructs a new instance of the <see cref="OnRequestExecutingEventArgs"/> class.
     /// </summary>
     /// <param name="request">The <see cref="HttpRequestMessage"/> about to be executed by the HTTP request.</param>
     /// <param name="timestamp">The timestamp of the HTTP request.</param>
     /// <param name="guid">A unique identifier for the HTTP request-response pair.</param>
-    internal OnRequestBeforeExecutionEventArgs(HttpRequestMessage request, int timestamp, Guid guid)
+    internal OnRequestExecutingEventArgs(HttpRequestMessage request, int timestamp, Guid guid)
     {
         Request = request;
         RequestTimestamp = timestamp;

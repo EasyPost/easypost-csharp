@@ -116,7 +116,7 @@ namespace EasyPost.Tests
 
             Hooks hooks = new()
             {
-                OnRequestBeforeExecution = (sender, args) =>
+                OnRequestExecuting = (sender, args) =>
                 {
                     // Modifying the HttpRequestMessage in this action does not impact the HttpRequestMessage being executed (passed by value, not reference)
                     preRequestCallbackCallCount++;
@@ -158,7 +158,7 @@ namespace EasyPost.Tests
 
             Hooks hooks = new()
             {
-                OnRequestBeforeExecution = (sender, args) =>
+                OnRequestExecuting = (sender, args) =>
                 {
                     // Use the cancellation token to cancel the request
                     cancelTokenSource.Cancel();

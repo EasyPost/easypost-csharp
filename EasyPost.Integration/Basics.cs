@@ -104,7 +104,7 @@ public class Basics
                 Console.WriteLine(args.ResponseTimestamp);
                 Console.WriteLine(args.Id);
             }),
-            OnRequestBeforeExecution = new EventHandler<OnRequestBeforeExecutionEventArgs>((sender, args) =>
+            OnRequestExecuting = new EventHandler<OnRequestExecutingEventArgs>((sender, args) =>
             {
                 Console.WriteLine(args.Request);
                 Console.WriteLine(args.RequestTimestamp);
@@ -121,7 +121,7 @@ public class Basics
             Console.WriteLine(args.Id);
         };
 
-        hooks.OnRequestBeforeExecution += (sender, args) =>
+        hooks.OnRequestExecuting += (sender, args) =>
         {
             Console.WriteLine(args.Request);
             Console.WriteLine(args.RequestTimestamp);
