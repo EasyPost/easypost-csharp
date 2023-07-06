@@ -188,12 +188,12 @@ Users can interact with these details in their callbacks as they see fit (e.g. l
 
 ```csharp
 void OnRequestExecutingHandler(object? sender, OnRequestExecutingEventArgs args) {
-    // Interact with the HttpRequestMessage here via args
+    // Interact with details about the HttpRequestMessage here via args
     System.Console.WriteLine($"Making HTTP call to {args.RequestUri}");
 }
             
 void OnRequestResponseReceivedHandler(object? sender, OnRequestResponseReceivedEventArgs args) {
-    // Interact with the HttpResponseMessage here via args
+    // Interact with details about the HttpResponseMessage here via args
     System.Console.WriteLine($"Received HTTP response with status code {args.ResponseStatusCode}");
 }
             
