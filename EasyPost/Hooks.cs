@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace EasyPost;
 
@@ -22,7 +25,27 @@ public class OnRequestExecutingEventArgs : EventArgs
     /// <summary>
     ///     The <see cref="HttpRequestMessage"/> about to be executed by the HTTP request.
     /// </summary>
-    public HttpRequestMessage Request { get; }
+    private HttpRequestMessage Request { get; } // Not publicly-exposed, used for reference only.
+
+    /// <summary>
+    ///     The <see cref="HttpMethod"/> of the HTTP request.
+    /// </summary>
+    public HttpMethod RequestMethod => Request.Method;
+
+    /// <summary>
+    ///     The <see cref="Uri"/> of the HTTP request.
+    /// </summary>
+    public Uri? RequestUri => Request.RequestUri;
+
+    /// <summary>
+    ///     The <see cref="HttpContent"/> of the HTTP request.
+    /// </summary>
+    public HttpContent? RequestBody => Request.Content;
+
+    /// <summary>
+    ///     The <see cref="HttpHeaders"/> of the HTTP request.
+    /// </summary>
+    public HttpRequestHeaders RequestHeaders => Request.Headers;
 
     /// <summary>
     ///     The timestamp of the HTTP request.
@@ -53,7 +76,32 @@ public class OnRequestResponseReceivedEventArgs : EventArgs
     /// <summary>
     ///     The <see cref="HttpResponseMessage"/> returned by the HTTP request.
     /// </summary>
-    public HttpResponseMessage Response { get; }
+    private HttpResponseMessage Response { get; } // Not publicly-exposed, used for reference only.
+
+    /// <summary>
+    ///     The <see cref="HttpStatusCode"/> of the HTTP response.
+    /// </summary>
+    public HttpStatusCode ResponseStatusCode => Response.StatusCode;
+
+    /// <summary>
+    ///     The <see cref="HttpMethod"/> of the HTTP request that prompted the associated response.
+    /// </summary>
+    public HttpMethod? RequestMethod => Response.RequestMessage?.Method;
+
+    /// <summary>
+    ///     The <see cref="Uri"/> of the HTTP request that prompted the associated response.
+    /// </summary>
+    public Uri? RequestUri => Response.RequestMessage?.RequestUri;
+
+    /// <summary>
+    ///     The <see cref="HttpHeaders"/> present in the HTTP response.
+    /// </summary>
+    public HttpResponseHeaders ResponseHeaders => Response.Headers;
+
+    /// <summary>
+    ///     The <see cref="HttpContent"/> of the HTTP response.
+    /// </summary>
+    public HttpContent ResponseBody => Response.Content;
 
     /// <summary>
     ///     The timestamp of the HTTP request.

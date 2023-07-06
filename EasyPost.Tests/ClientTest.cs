@@ -151,6 +151,40 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        public async Task TestMultipleRequestHookCallbacks()
+        {
+            bool preRequestCallback1Called = false;
+            bool preRequestCallback2Called = false;
+
+            bool postRequestCallback1Called = false;
+            bool postRequestCallback2Called = false;
+
+            Hooks hooks = new();
+            hooks.OnRequestExecuting += (sender, args) => preRequestCallback1Called = true;
+            hooks.OnRequestExecuting += (sender, args) => preRequestCallback2Called = true;
+            hooks.OnRequestResponseReceived += (sender, args) => postRequestCallback1Called = true;
+            hooks.OnRequestResponseReceived += (sender, args) => postRequestCallback2Called = true;
+
+            UseVCRWithCustomClient("multiple_request_hooks", (apiKey, httpClient) =>
+                new Client(new ClientConfiguration(FakeApikey)
+                {
+                    CustomHttpClient = httpClient,
+                    Hooks = hooks,
+                })
+            );
+
+            // Make a request, doesn't matter what it is (catch the exception due to invalid API key)
+            await Assert.ThrowsAsync<UnauthorizedError>(async () => await Client.Address.Create(new Parameters.Address.Create()));
+
+            // Assert that the pre-request callbacks were called
+            Assert.True(preRequestCallback1Called);
+            Assert.True(preRequestCallback2Called);
+            // Assert that the post-request callbacks were called
+            Assert.True(postRequestCallback1Called);
+            Assert.True(postRequestCallback2Called);
+        }
+
+        [Fact]
         public async Task TestCancellationToken()
         {
             CancellationTokenSource cancelTokenSource = new();

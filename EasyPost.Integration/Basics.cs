@@ -99,14 +99,21 @@ public class Basics
         {
             OnRequestResponseReceived = new EventHandler<OnRequestResponseReceivedEventArgs>((sender, args) =>
             {
-                Console.WriteLine(args.Response);
+                Console.WriteLine(args.RequestMethod);
+                Console.WriteLine(args.RequestUri);
+                Console.WriteLine(args.ResponseHeaders);
+                Console.WriteLine(args.ResponseStatusCode);
+                Console.WriteLine(args.ResponseBody);
                 Console.WriteLine(args.RequestTimestamp);
                 Console.WriteLine(args.ResponseTimestamp);
                 Console.WriteLine(args.Id);
             }),
             OnRequestExecuting = new EventHandler<OnRequestExecutingEventArgs>((sender, args) =>
             {
-                Console.WriteLine(args.Request);
+                Console.WriteLine(args.RequestMethod);
+                Console.WriteLine(args.RequestUri);
+                Console.WriteLine(args.RequestHeaders);
+                Console.WriteLine(args.RequestBody);
                 Console.WriteLine(args.RequestTimestamp);
                 Console.WriteLine(args.Id);
             }),
@@ -115,7 +122,11 @@ public class Basics
         // Can set up/add to each hook event handler after construction
         hooks.OnRequestResponseReceived += (sender, args) =>
         {
-            Console.WriteLine(args.Response);
+            Console.WriteLine(args.RequestMethod);
+            Console.WriteLine(args.RequestUri);
+            Console.WriteLine(args.ResponseHeaders);
+            Console.WriteLine(args.ResponseStatusCode);
+            Console.WriteLine(args.ResponseBody);
             Console.WriteLine(args.RequestTimestamp);
             Console.WriteLine(args.ResponseTimestamp);
             Console.WriteLine(args.Id);
@@ -123,7 +134,10 @@ public class Basics
 
         hooks.OnRequestExecuting += (sender, args) =>
         {
-            Console.WriteLine(args.Request);
+            Console.WriteLine(args.RequestMethod);
+            Console.WriteLine(args.RequestUri);
+            Console.WriteLine(args.RequestHeaders);
+            Console.WriteLine(args.RequestBody);
             Console.WriteLine(args.RequestTimestamp);
             Console.WriteLine(args.Id);
         };
