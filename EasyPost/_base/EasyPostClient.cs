@@ -56,7 +56,11 @@ namespace EasyPost._base
         /// <summary>
         ///     Gets the <see cref="Hooks"/> used by this client.
         /// </summary>
-        private Hooks Hooks => _configuration.Hooks;
+        public Hooks Hooks
+        {
+            get => _configuration.Hooks; // public read-only property so users can audit the hooks used by the client
+            set => _configuration.Hooks = value; // public setter so users can set the hooks used by the client
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="EasyPostClient"/> class.

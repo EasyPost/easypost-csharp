@@ -206,11 +206,24 @@ Client client = new Client(new ClientConfiguration("EASYPOST_API_KEY")
 });
 ```
 
+Users
+can [subscribe to or unsubscribe from callbacks](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/how-to-subscribe-to-and-unsubscribe-from-events)
+at any time via the `Hooks` property of a client.
+
+```csharp
+// Add a new callback
+client.Hooks.OnRequestExecuting += (sender, args) => { /* ... */ };
+
+// Remove a callback
+client.Hooks.OnRequestExecuting -= OnRequestExecutingHandler;
+```
+
 ## Documentation
 
 API documentation can be found at: <https://easypost.com/docs/api>.
 
-Library documentation can be found on the web at: <https://easypost.github.io/easypost-csharp> or locally on the [`gh-pages` branch](https://github.com/EasyPost/easypost-csharp/tree/gh-pages).
+Library documentation can be found on the web at: <https://easypost.github.io/easypost-csharp> or locally on
+the [`gh-pages` branch](https://github.com/EasyPost/easypost-csharp/tree/gh-pages).
 
 Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
 
