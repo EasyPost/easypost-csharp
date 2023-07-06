@@ -178,23 +178,23 @@ Using the `Parameters` classes is not required, but they can help in a number of
 Users can audit the HTTP requests and responses being made by the library by setting the `Hooks` property of a `ClientConfiguration` with a set of event handlers. Available handlers include:
 
 - `OnRequestExecuting` - Called before an HTTP request is made. An `OnRequestExecutingEventArgs` object is passed to the
-  handler, which contains the `HttpRequestMessage` that will be sent to the server.
+  handler, which contains details about the `HttpRequestMessage` that will be sent to the server.
   - The `HttpRequestMessage` at this point is configured with all expected data (headers, body, etc.). Modifying
-    the `HttpRequestMessage` will NOT affect the actual request that is sent to the server.
+    any data in the callback will NOT affect the actual request that is sent to the server.
 - `OnRequestResponseReceived` - Called after an HTTP request is made. An `RequestResponseReceivedEventArgs` object is
-  passed to the handler, which contains the `HttpResponseMessage` that was received from the server.
+  passed to the handler, which contains details about the `HttpResponseMessage` that was received from the server.
 
 Users can interact with these details in their callbacks as they see fit (e.g. logging).
 
 ```csharp
 void OnRequestExecutingHandler(object? sender, OnRequestExecutingEventArgs args) {
-    // Interact with the HttpRequestMessage here via args.Request
-    System.Console.WriteLine($"Making HTTP call to {args.Request.RequestUri}");
+    // Interact with the HttpRequestMessage here via args
+    System.Console.WriteLine($"Making HTTP call to {args.RequestUri}");
 }
             
 void OnRequestResponseReceivedHandler(object? sender, OnRequestResponseReceivedEventArgs args) {
-    // Interact with the HttpResponseMessage here via args.Response
-    System.Console.WriteLine($"Received HTTP response with status code {args.Response.StatusCode}");
+    // Interact with the HttpResponseMessage here via args
+    System.Console.WriteLine($"Received HTTP response with status code {args.ResponseStatusCode}");
 }
             
 Client client = new Client(new ClientConfiguration("EASYPOST_API_KEY")
