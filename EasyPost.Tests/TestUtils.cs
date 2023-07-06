@@ -74,7 +74,8 @@ namespace EasyPost.Tests._Utilities
             return Environment.GetEnvironmentVariable(keyName) ?? ApiKeyFailedToPull; // if can't pull from environment, will use a fake key. Won't matter on replay.
         }
 
-        internal static Client GetClient(string apiKey, HttpClient? vcrClient = null) => new(new ClientConfiguration(apiKey)
+        // ReSharper disable once InconsistentNaming
+        internal static Client GetBasicVCRClient(string apiKey, HttpClient? vcrClient = null) => new(new ClientConfiguration(apiKey)
         {
             CustomHttpClient = vcrClient,
         });
@@ -149,7 +150,7 @@ namespace EasyPost.Tests._Utilities
 
             internal bool IsRecording() => _vcr.Mode == Mode.Record;
 
-            internal Client SetUpTest(string cassetteName, string? overrideApiKey = null)
+            internal Client SetUpTest(string cassetteName, Func<string, HttpClient, Client> getClientFunc, string? overrideApiKey = null)
             {
                 // override api key if needed
                 string apiKey = overrideApiKey ?? _apiKey;
@@ -173,7 +174,12 @@ namespace EasyPost.Tests._Utilities
                 }
 
                 // get EasyPost client
-                return GetClient(apiKey, _vcr.Client);
+                return getClientFunc(apiKey, _vcr.Client);
+            }
+
+            internal Client SetUpTest(string cassetteName, string? overrideApiKey = null)
+            {
+                return SetUpTest(cassetteName, GetBasicVCRClient, overrideApiKey);
             }
         }
 

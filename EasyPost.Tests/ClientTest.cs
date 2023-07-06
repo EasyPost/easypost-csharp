@@ -1,6 +1,8 @@
 using System;
 using System.Net.Http;
 using System.Threading;
+using System.Threading.Tasks;
+using EasyPost.Exceptions.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
@@ -103,6 +105,152 @@ namespace EasyPost.Tests
 
             Assert.NotEqual(httpClient, normalClient.CustomHttpClient);
             Assert.Equal(httpClient, overrideClient.CustomHttpClient);
+        }
+
+        [Fact]
+        public async Task TestRequestHooks()
+        {
+            int preRequestCallbackCallCount = 0;
+            int postRequestCallbackCallCount = 0;
+            var requestGuid = Guid.Empty;
+
+            Hooks hooks = new()
+            {
+                OnRequestExecuting = (sender, args) =>
+                {
+                    // Modifying the HttpRequestMessage in this action does not impact the HttpRequestMessage being executed (passed by value, not reference)
+                    preRequestCallbackCallCount++;
+                    Assert.True(args.RequestTimestamp > 0);
+                    requestGuid = args.Id;
+                },
+                OnRequestResponseReceived = (sender, args) =>
+                {
+                    postRequestCallbackCallCount++;
+                    Assert.True(args.RequestTimestamp > 0);
+                    Assert.True(args.ResponseTimestamp > 0);
+                    Assert.True(args.ResponseTimestamp >= args.RequestTimestamp);
+                    Assert.Equal(requestGuid, args.Id);
+                },
+            };
+
+            UseVCRWithCustomClient("request_hooks", (apiKey, httpClient) =>
+                new Client(new ClientConfiguration(FakeApikey)
+                {
+                    CustomHttpClient = httpClient,
+                    Hooks = hooks,
+                })
+            );
+
+            // Make a request, doesn't matter what it is (catch the exception due to invalid API key)
+            await Assert.ThrowsAsync<UnauthorizedError>(async () => await Client.Address.Create(new Parameters.Address.Create()));
+
+            // Assert that the pre-request callback was called
+            Assert.Equal(1, preRequestCallbackCallCount);
+            // Assert that the post-request callback was called
+            Assert.Equal(1, postRequestCallbackCallCount);
+        }
+
+        [Fact]
+        public async Task TestMultipleRequestHookCallbacks()
+        {
+            bool preRequestCallback1Called = false;
+            bool preRequestCallback2Called = false;
+
+            bool postRequestCallback1Called = false;
+            bool postRequestCallback2Called = false;
+
+            Hooks hooks = new();
+            hooks.OnRequestExecuting += (sender, args) => preRequestCallback1Called = true;
+            hooks.OnRequestExecuting += (sender, args) => preRequestCallback2Called = true;
+            hooks.OnRequestResponseReceived += (sender, args) => postRequestCallback1Called = true;
+            hooks.OnRequestResponseReceived += (sender, args) => postRequestCallback2Called = true;
+
+            UseVCRWithCustomClient("multiple_request_hooks", (apiKey, httpClient) =>
+                new Client(new ClientConfiguration(FakeApikey)
+                {
+                    CustomHttpClient = httpClient,
+                    Hooks = hooks,
+                })
+            );
+
+            // Make a request, doesn't matter what it is (catch the exception due to invalid API key)
+            await Assert.ThrowsAsync<UnauthorizedError>(async () => await Client.Address.Create(new Parameters.Address.Create()));
+
+            // Assert that the pre-request callbacks were called
+            Assert.True(preRequestCallback1Called);
+            Assert.True(preRequestCallback2Called);
+            // Assert that the post-request callbacks were called
+            Assert.True(postRequestCallback1Called);
+            Assert.True(postRequestCallback2Called);
+        }
+
+        [Fact]
+        public async Task TestRequestHooksUnsubscribing()
+        {
+            int preRequestCallbackCallCount = 0;
+
+            void PreRequestCallback(object? sender, OnRequestExecutingEventArgs args)
+            {
+                preRequestCallbackCallCount++;
+            }
+
+            Hooks hooks = new();
+
+            UseVCRWithCustomClient("request_hooks_unsubscribing", (apiKey, httpClient) =>
+                new Client(new ClientConfiguration(FakeApikey)
+                {
+                    CustomHttpClient = httpClient,
+                    Hooks = hooks,
+                })
+            );
+
+            // Subscribe to the pre-request callback
+            Client.Hooks.OnRequestExecuting += PreRequestCallback;
+
+            // Make a request, doesn't matter what it is (catch the exception due to invalid API key)
+            await Assert.ThrowsAsync<UnauthorizedError>(async () => await Client.Address.Create(new Parameters.Address.Create()));
+
+            // Assert that the pre-request callback was called
+            Assert.Equal(1, preRequestCallbackCallCount);
+
+            // Unsubscribe from the pre-request callback
+            Client.Hooks.OnRequestExecuting -= PreRequestCallback;
+
+            // Make a request, doesn't matter what it is (catch the exception due to invalid API key)
+            await Assert.ThrowsAsync<UnauthorizedError>(async () => await Client.Address.Create(new Parameters.Address.Create()));
+
+            // Assert that the pre-request callback was not called again
+            Assert.Equal(1, preRequestCallbackCallCount);
+        }
+
+        [Fact]
+        public async Task TestCancellationToken()
+        {
+            CancellationTokenSource cancelTokenSource = new();
+            CancellationToken token = cancelTokenSource.Token;
+
+            Hooks hooks = new()
+            {
+                OnRequestExecuting = (sender, args) =>
+                {
+                    // Use the cancellation token to cancel the request
+                    cancelTokenSource.Cancel();
+                },
+            };
+
+            UseVCRWithCustomClient("cancellation_token", (apiKey, httpClient) =>
+                new Client(new ClientConfiguration(FakeApikey)
+                {
+                    CustomHttpClient = httpClient,
+                    Hooks = hooks,
+                })
+            );
+
+            // Make a request, doesn't matter what it is
+            // Should throw a TimeoutError because the request was cancelled
+            // If it throws a UnauthorizedError, then the cancellation token was not used (request went through and failed due to invalid API key)
+            // this will not record a cassette because the request should be cancelled before it is sent
+            await Assert.ThrowsAsync<TimeoutError>(async () => await Client.Address.Create(new Parameters.Address.Create(), token));
         }
     }
 }

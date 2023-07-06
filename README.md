@@ -132,7 +132,7 @@ All API-calling functions are made from the appropriate service object (rather t
 Shipment myPurchasedShipment = await myClient.Shipment.Buy(myShipment.Id, myShipment.LowestRate());
 ```
 
-## Parameters
+### Parameters
 
 Most functions in this library accept a `Dictionary<string, object>` as their sole parameter, which is ultimately used as the body of the HTTP request against EasyPost's API. If you instead would like to use .NET objects to construct API call parameters, you can use the various `Parameters` classes (currently in beta).
 
@@ -173,11 +173,57 @@ Using the `Parameters` classes is not required, but they can help in a number of
 - Provides a more natural way to construct parameters
 - Facilitates ASP.NET Core model binding (bind an HTML form to a `Parameters` instance)
 
+### HTTP Hooks
+
+Users can audit the HTTP requests and responses being made by the library by setting the `Hooks` property of a `ClientConfiguration` with a set of event handlers. Available handlers include:
+
+- `OnRequestExecuting` - Called before an HTTP request is made. An `OnRequestExecutingEventArgs` object is passed to the
+  handler, which contains details about the `HttpRequestMessage` that will be sent to the server.
+  - The `HttpRequestMessage` at this point is configured with all expected data (headers, body, etc.). Modifying
+    any data in the callback will NOT affect the actual request that is sent to the server.
+- `OnRequestResponseReceived` - Called after an HTTP request is made. An `RequestResponseReceivedEventArgs` object is
+  passed to the handler, which contains details about the `HttpResponseMessage` that was received from the server.
+
+Users can interact with these details in their callbacks as they see fit (e.g. logging).
+
+```csharp
+void OnRequestExecutingHandler(object? sender, OnRequestExecutingEventArgs args) {
+    // Interact with details about the HttpRequestMessage here via args
+    System.Console.WriteLine($"Making HTTP call to {args.RequestUri}");
+}
+            
+void OnRequestResponseReceivedHandler(object? sender, OnRequestResponseReceivedEventArgs args) {
+    // Interact with details about the HttpResponseMessage here via args
+    System.Console.WriteLine($"Received HTTP response with status code {args.ResponseStatusCode}");
+}
+            
+Client client = new Client(new ClientConfiguration("EASYPOST_API_KEY")
+{
+    Hooks = new Hooks {
+        OnRequestExecuting = OnRequestExecutingHandler,
+        OnRequestResponseReceived = OnRequestResponseReceivedHandler,
+    },
+});
+```
+
+Users
+can [subscribe to or unsubscribe from callbacks](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/how-to-subscribe-to-and-unsubscribe-from-events)
+at any time via the `Hooks` property of a client.
+
+```csharp
+// Add a new callback
+client.Hooks.OnRequestExecuting += (sender, args) => { /* ... */ };
+
+// Remove a callback
+client.Hooks.OnRequestExecuting -= OnRequestExecutingHandler;
+```
+
 ## Documentation
 
 API documentation can be found at: <https://easypost.com/docs/api>.
 
-Library documentation can be found on the web at: <https://easypost.github.io/easypost-csharp> or locally on the [`gh-pages` branch](https://github.com/EasyPost/easypost-csharp/tree/gh-pages).
+Library documentation can be found on the web at: <https://easypost.github.io/easypost-csharp> or locally on
+the [`gh-pages` branch](https://github.com/EasyPost/easypost-csharp/tree/gh-pages).
 
 Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
 
