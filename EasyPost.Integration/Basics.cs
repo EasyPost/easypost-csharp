@@ -99,10 +99,10 @@ public class Basics
         {
             OnRequestResponseReceived = new EventHandler<OnRequestResponseReceivedEventArgs>((sender, args) =>
             {
-                Console.WriteLine(args.RequestMethod);
-                Console.WriteLine(args.RequestUri);
-                Console.WriteLine(args.ResponseHeaders);
-                Console.WriteLine(args.ResponseStatusCode);
+                Console.WriteLine(args.Method);
+                Console.WriteLine(args.Uri);
+                Console.WriteLine(args.Headers);
+                Console.WriteLine(args.StatusCode);
                 Console.WriteLine(args.ResponseBody);
                 Console.WriteLine(args.RequestTimestamp);
                 Console.WriteLine(args.ResponseTimestamp);
@@ -110,9 +110,9 @@ public class Basics
             }),
             OnRequestExecuting = new EventHandler<OnRequestExecutingEventArgs>((sender, args) =>
             {
-                Console.WriteLine(args.RequestMethod);
-                Console.WriteLine(args.RequestUri);
-                Console.WriteLine(args.RequestHeaders);
+                Console.WriteLine(args.Method);
+                Console.WriteLine(args.Uri);
+                Console.WriteLine(args.Headers);
                 Console.WriteLine(args.RequestBody);
                 Console.WriteLine(args.RequestTimestamp);
                 Console.WriteLine(args.Id);
@@ -122,10 +122,10 @@ public class Basics
         // Can set up/add to each hook event handler after construction
         hooks.OnRequestResponseReceived += (sender, args) =>
         {
-            Console.WriteLine(args.RequestMethod);
-            Console.WriteLine(args.RequestUri);
-            Console.WriteLine(args.ResponseHeaders);
-            Console.WriteLine(args.ResponseStatusCode);
+            Console.WriteLine(args.Method);
+            Console.WriteLine(args.Uri);
+            Console.WriteLine(args.Headers);
+            Console.WriteLine(args.StatusCode);
             Console.WriteLine(args.ResponseBody);
             Console.WriteLine(args.RequestTimestamp);
             Console.WriteLine(args.ResponseTimestamp);
@@ -134,9 +134,9 @@ public class Basics
 
         hooks.OnRequestExecuting += (sender, args) =>
         {
-            Console.WriteLine(args.RequestMethod);
-            Console.WriteLine(args.RequestUri);
-            Console.WriteLine(args.RequestHeaders);
+            Console.WriteLine(args.Method);
+            Console.WriteLine(args.Uri);
+            Console.WriteLine(args.Headers);
             Console.WriteLine(args.RequestBody);
             Console.WriteLine(args.RequestTimestamp);
             Console.WriteLine(args.Id);
