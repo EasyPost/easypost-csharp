@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.BetaClient.html",
-          "hash": "2lGI0CBPWjBI/ZK2ACoimIuouaZwAvH7G+5wrjLMQK4="
+          "hash": "9PbFUbvy2Ddm8gK46DRuwHbBV/6XJFWUGaq3RLu4eV8="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Client.html",
-          "hash": "uwpKPsVADq5qhfzcm/LvwUZsbZMXyVvLRWmeZA/P0Fw="
+          "hash": "wY0xbdY5X72mHsIGDk4BvcfBEb3pN/Rx/JWv534tFTo="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.ClientConfiguration.html",
-          "hash": "+cysM+CiRyn4Heivek491zs0r8eEoGh9s3ioQwOUGf8="
+          "hash": "ton8liP/hbREGXVPyiFCi5vejuI3h7p/qV7ZDxMdURw="
         }
       },
       "is_incremental": false,
@@ -478,6 +478,18 @@
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.html",
           "hash": "+zfbaKcBqJupFMby99Z2QFhLaJ5o8cI2MoLbAPOZp/0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.Hooks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.Hooks.html",
+          "hash": "s6wcH5iTBZAmFKZP+hDbFPkW03bd/al39yZGCiRJwtU="
         }
       },
       "is_incremental": false,
@@ -1522,6 +1534,30 @@
         ".html": {
           "relative_path": "api/EasyPost.Models.Shared.html",
           "hash": "LO2kLU7xN4KOAuu1QB5knfFdDJOFTBZt4UbaXL1oSGo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.OnRequestExecutingEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.OnRequestExecutingEventArgs.html",
+          "hash": "+9m3tia1m2AkRvXYGNdyM6UEKKEzeJicj+tPNjywgrU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.OnRequestResponseReceivedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.OnRequestResponseReceivedEventArgs.html",
+          "hash": "dQawLgDERMsuZXsDKuCb1VzrJEJn/tWfAaS8cYGMneI="
         }
       },
       "is_incremental": false,
@@ -3321,7 +3357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost._base.EasyPostClient.html",
-          "hash": "rZhw74nKGr0e+xUPMkgn0qG+fFjqnP/JzUewaX+6WOg="
+          "hash": "sAhYOuXqQx5GY7fcwEChh9QSNzvZOEGOkBM+WqmFDSI="
         }
       },
       "is_incremental": false,
@@ -3405,7 +3441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.html",
-          "hash": "PnPaAyp80EgmfqjIA0nRTgwrQz4GgpR99wEaGP/CEMQ="
+          "hash": "SHi41jz9sHOYtPif6hvNlikvzg8Vmv+ZjKQeFjDyKkA="
         }
       },
       "is_incremental": false,
@@ -3429,7 +3465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "cP5GRDN4MqTDAKzD4XGAjEjcygxTJAeGWlvrT2D+60g="
+          "hash": "HDhakMquls0oh+rliCY2y4VIAg4BaDBIassJP8X3fcg="
         }
       },
       "is_incremental": false,
@@ -3504,7 +3540,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 284,
+          "total_file_count": 287,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
