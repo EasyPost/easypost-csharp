@@ -185,6 +185,45 @@ namespace EasyPost.Tests
         }
 
         [Fact]
+        public async Task TestRequestHooksUnsubscribing()
+        {
+            int preRequestCallbackCallCount = 0;
+
+            void PreRequestCallback(object? sender, OnRequestExecutingEventArgs args)
+            {
+                preRequestCallbackCallCount++;
+            }
+
+            Hooks hooks = new();
+
+            UseVCRWithCustomClient("request_hooks_unsubscribing", (apiKey, httpClient) =>
+                new Client(new ClientConfiguration(FakeApikey)
+                {
+                    CustomHttpClient = httpClient,
+                    Hooks = hooks,
+                })
+            );
+
+            // Subscribe to the pre-request callback
+            Client.Hooks.OnRequestExecuting += PreRequestCallback;
+
+            // Make a request, doesn't matter what it is (catch the exception due to invalid API key)
+            await Assert.ThrowsAsync<UnauthorizedError>(async () => await Client.Address.Create(new Parameters.Address.Create()));
+
+            // Assert that the pre-request callback was called
+            Assert.Equal(1, preRequestCallbackCallCount);
+
+            // Unsubscribe from the pre-request callback
+            Client.Hooks.OnRequestExecuting -= PreRequestCallback;
+
+            // Make a request, doesn't matter what it is (catch the exception due to invalid API key)
+            await Assert.ThrowsAsync<UnauthorizedError>(async () => await Client.Address.Create(new Parameters.Address.Create()));
+
+            // Assert that the pre-request callback was not called again
+            Assert.Equal(1, preRequestCallbackCallCount);
+        }
+
+        [Fact]
         public async Task TestCancellationToken()
         {
             CancellationTokenSource cancelTokenSource = new();
