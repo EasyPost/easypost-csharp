@@ -945,7 +945,12 @@ namespace EasyPost.Models.API
         [JsonProperty("suppress_etd")]
         public bool? SuppressEtd { get; set; }
 
-        #endregion
+        /// <summary>
+        ///     The expiration date of the tax ID, in the format DD/MM/YYYY.
+        /// </summary>
+        [JsonProperty("tax_id_expiration_date")]
+        public string? TaxIdExpirationDate { get; set; }
 
+        #endregion
     }
 }
