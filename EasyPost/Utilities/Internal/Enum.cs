@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using EasyPost.Models.API;
+using EasyPost.Utilities.Internal;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace EasyPost.Utilities.Internal
 {
@@ -25,7 +29,7 @@ namespace EasyPost.Utilities.Internal
         /// <summary>
         ///     An internal ID associated with this <see cref="Enum"/>, used for comparison and equality.
         /// </summary>
-        private int Id { get; }
+        internal int Id { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Enum" /> class.
@@ -104,11 +108,11 @@ namespace EasyPost.Utilities.Internal
         public static IEnumerable<T> GetAll<T>()
             where T : IEnum
             =>
-            typeof(T).GetFields(BindingFlags.Public |
-                                BindingFlags.Static |
-                                BindingFlags.DeclaredOnly)
-                .Select(f => f.GetValue(null))
-                .Cast<T>();
+                typeof(T).GetFields(BindingFlags.Public |
+                                    BindingFlags.Static |
+                                    BindingFlags.DeclaredOnly)
+                    .Select(f => f.GetValue(null))
+                    .Cast<T>();
 
         /// <summary>
         ///     Compare two objects.
@@ -141,6 +145,17 @@ namespace EasyPost.Utilities.Internal
         /// <param name="right">The second object in the comparison.</param>
         /// <returns><c>true</c> if the left object is greater than or equal to the right object, <c>false</c> otherwise.</returns>
         public static bool operator >=(Enum left, Enum right) => left.CompareTo(right) >= 0;
+
+        /// <summary>
+        ///     Get the <see cref="Enum"/> associated with the given ID.
+        /// </summary>
+        /// <param name="value">ID to determine <see cref="Enum"/> from.</param>
+        /// <typeparam name="T">Type of <see cref="Enum"/> to return.</typeparam>
+        /// <returns>A T-type enum corresponding to the provided value, or null.</returns>
+        public static T? FromValue<T>(object? value) where T : Enum
+        {
+            return GetAll<T>().FirstOrDefault(enumValue => enumValue.Id.Equals(value));
+        }
     }
 
     /// <summary>
@@ -166,6 +181,17 @@ namespace EasyPost.Utilities.Internal
         /// </summary>
         public override string ToString() => Value.ToString() ?? string.Empty;
 
+        /// <summary>
+        ///     Get the <see cref="ValueEnum"/> associated with the given value.
+        /// </summary>
+        /// <param name="value">Value to determine <see cref="ValueEnum"/> from.</param>
+        /// <typeparam name="T">Type of <see cref="ValueEnum"/> to return.</typeparam>
+        /// <returns>A T-type enum corresponding to the provided value, or null.</returns>
+        public static new T? FromValue<T>(object? value) where T : ValueEnum
+        {
+            return GetAll<T>().FirstOrDefault(@enum => @enum.Value.Equals(value));
+        }
+
         /// <inheritdoc cref="Enum.Equals(object)"/>
         public override bool Equals(object? obj)
         {
@@ -187,5 +213,77 @@ namespace EasyPost.Utilities.Internal
         /// <inheritdoc cref="Enum.GetHashCode()"/>
         public override int GetHashCode() => base.GetHashCode();
 #pragma warning restore CA1307
+    }
+}
+
+/// <summary>
+///     A <see cref="JsonConverter"/> for <see cref="EasyPost.Utilities.Internal.Enum"/>s.
+/// </summary>
+/// <typeparam name="T">The <see cref="EasyPost.Utilities.Internal.Enum"/> sub-type to de/serialize.</typeparam>
+internal class EnumJsonConverter<T> : JsonConverter<EasyPost.Utilities.Internal.Enum> where T : EasyPost.Utilities.Internal.Enum
+{
+    public override void WriteJson(JsonWriter writer, EasyPost.Utilities.Internal.Enum? value, JsonSerializer serializer)
+    {
+        int? enumValue = value?.Id;
+        if (enumValue is null)
+        {
+            writer.WriteNull();
+            return;
+        }
+
+        serializer.Serialize(writer, enumValue);
+    }
+
+    public override EasyPost.Utilities.Internal.Enum? ReadJson(JsonReader reader, Type objectType, EasyPost.Utilities.Internal.Enum? existingValue, bool hasExistingValue, JsonSerializer serializer)
+    {
+        if (reader.TokenType == JsonToken.Null)
+            return null;
+        JToken jToken = JToken.Load(reader);
+
+        // Extract the value from the JToken
+        object? enumId = jToken.Value<object>();
+        if (enumId is JValue jValue)
+            enumId = jValue.Value;
+
+        // Find corresponding enum based on the value
+        T? target = EasyPost.Utilities.Internal.Enum.FromValue<T>(enumId);
+
+        return target ?? null;
+    }
+}
+
+/// <summary>
+///     A <see cref="JsonConverter"/> for <see cref="ValueEnum"/>s.
+/// </summary>
+/// <typeparam name="T">The <see cref="ValueEnum"/> sub-type to de/serialize.</typeparam>
+internal class ValueEnumJsonConverter<T> : JsonConverter<ValueEnum> where T : ValueEnum
+{
+    public override void WriteJson(JsonWriter writer, ValueEnum? value, JsonSerializer serializer)
+    {
+        object? enumValue = value?.Value;
+        if (enumValue is null)
+        {
+            writer.WriteNull();
+            return;
+        }
+
+        serializer.Serialize(writer, enumValue);
+    }
+
+    public override ValueEnum? ReadJson(JsonReader reader, Type objectType, ValueEnum? existingValue, bool hasExistingValue, JsonSerializer serializer)
+    {
+        if (reader.TokenType == JsonToken.Null)
+            return null;
+        JToken jToken = JToken.Load(reader);
+
+        // Extract the value from the JToken
+        object? enumValue = jToken.Value<object>();
+        if (enumValue is JValue jValue)
+            enumValue = jValue.Value;
+
+        // Find corresponding enum based on the value
+        T? target = ValueEnum.FromValue<T>(enumValue);
+
+        return target ?? null;
     }
 }
