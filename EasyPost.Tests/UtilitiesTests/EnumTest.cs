@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using System.ComponentModel;
+using EasyPost._base;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal;
+using Newtonsoft.Json;
 using Xunit;
 
 // ReSharper disable InconsistentNaming
@@ -101,8 +104,46 @@ namespace EasyPost.Tests.UtilitiesTests
             Assert.Equal("A", TestValueEnum.A.ToString());
         }
 
+        [Fact]
+        [Testing.Function]
+        public void TestSerialization()
+        {
+            var obj = new TestClass
+            {
+                Enum = TestEnum.A,
+                ValueEnum = TestValueEnum.A,
+            };
+
+            // run JSON serialization process
+            var dictionary = obj.AsDictionary();
+
+            // check that the enum values are serialized correctly
+            Assert.Equal(1, (int)(long)dictionary["enum"]); // need to cast to avoid int64 vs int32 issues (https://stackoverflow.com/a/31737978)
+            Assert.Equal("A", dictionary["value_enum"]);
+        }
+
+        [Fact]
+        [Testing.Function]
+        public void TestDeserialization()
+        {
+            var dictionary = new Dictionary<string, object>
+            {
+                { "enum", 1 },
+                { "value_enum", "A" },
+            };
+
+            // run JSON deserialization process
+            var obj = JsonConvert.DeserializeObject<TestClass>(JsonConvert.SerializeObject(dictionary));
+
+            // check that the enum values are deserialized correctly
+            Assert.Equal(TestEnum.A, obj.Enum);
+            Assert.Equal(TestValueEnum.A, obj.ValueEnum);
+        }
+
         #endregion
 
+        // decorated with JsonConverter attribute so that it can be de/serialized custom
+        [JsonConverter(typeof(EnumJsonConverter<TestEnum>))]
         internal sealed class TestEnum : Enum
         {
             public static readonly TestEnum A = new(1);
@@ -114,6 +155,8 @@ namespace EasyPost.Tests.UtilitiesTests
             }
         }
 
+        // decorated with JsonConverter attribute so that it can be de/serialized custom
+        [JsonConverter(typeof(ValueEnumJsonConverter<TestValueEnum>))]
         internal sealed class TestValueEnum : ValueEnum
         {
             public static readonly TestValueEnum A = new(1, "A");
@@ -123,6 +166,15 @@ namespace EasyPost.Tests.UtilitiesTests
             private TestValueEnum(int id, object value) : base(id, value)
             {
             }
+        }
+
+        internal sealed class TestClass : EasyPostObject
+        {
+            [JsonProperty("enum")]
+            public TestEnum? Enum { get; set; }
+
+            [JsonProperty("value_enum")]
+            public TestValueEnum? ValueEnum { get; set; }
         }
     }
 }

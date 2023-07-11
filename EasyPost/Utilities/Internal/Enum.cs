@@ -154,7 +154,16 @@ namespace EasyPost.Utilities.Internal
         /// <returns>A T-type enum corresponding to the provided value, or null.</returns>
         public static T? FromValue<T>(object? value) where T : Enum
         {
-            return GetAll<T>().FirstOrDefault(enumValue => enumValue.Id.Equals(value));
+            try
+            {
+                int @int = Convert.ToInt32(value, CultureInfo.InvariantCulture);
+                return GetAll<T>().FirstOrDefault(enumValue => enumValue.Id == @int);
+            }
+            catch (Exception)
+            {
+                // object is not an int
+                return null;
+            }
         }
     }
 
