@@ -5863,6 +5863,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Options.SuppressEtd
   nameWithType: Options.SuppressEtd
+- uid: EasyPost.Models.API.Options.TaxIdExpirationDate
+  name: TaxIdExpirationDate
+  href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_TaxIdExpirationDate
+  commentId: P:EasyPost.Models.API.Options.TaxIdExpirationDate
+  fullName: EasyPost.Models.API.Options.TaxIdExpirationDate
+  nameWithType: Options.TaxIdExpirationDate
+- uid: EasyPost.Models.API.Options.TaxIdExpirationDate*
+  name: TaxIdExpirationDate
+  href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_TaxIdExpirationDate_
+  commentId: Overload:EasyPost.Models.API.Options.TaxIdExpirationDate
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Options.TaxIdExpirationDate
+  nameWithType: Options.TaxIdExpirationDate
 - uid: EasyPost.Models.API.Order
   name: Order
   href: api/EasyPost.Models.API.Order.html
