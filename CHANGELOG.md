@@ -1,7 +1,8 @@
 # CHANGELOG
 
-## v5.1.1 (2023-07-12)
+## v5.2.0 (2023-07-12)
 
+- Adds `Hooks` to introspect HTTP requests and responses (see `HTTP Hooks` section of README for more details)
 - Adds `TaxIdExpirationDate` to `EasyPost.Models.API.Options` for `Shipment` creation
 
 ## v5.1.0 (2023-06-06)
