@@ -54,15 +54,6 @@ namespace EasyPost._base
         private HttpClient HttpClient => _configuration.PreparedHttpClient!;
 
         /// <summary>
-        ///     Gets the <see cref="Hooks"/> used by this client.
-        /// </summary>
-        public Hooks Hooks
-        {
-            get => _configuration.Hooks; // public read-only property so users can audit the hooks used by the client
-            set => _configuration.Hooks = value; // public setter so users can set the hooks used by the client
-        }
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="EasyPostClient"/> class.
         /// </summary>
         /// <param name="configuration"><see cref="ClientConfiguration"/> to use for this client.</param>
@@ -89,18 +80,7 @@ namespace EasyPost._base
             // try to execute the request, catch and rethrow an HTTP timeout exception, all other exceptions are thrown as-is
             try
             {
-                // generate a UUID and starting timestamp for this request
-                Guid requestId = Guid.NewGuid();
-                int requestTimestamp = Environment.TickCount;
-                // if a pre-request event has been set, invoke it
-                Hooks.OnRequestExecuting?.Invoke(this, new OnRequestExecutingEventArgs(request, requestTimestamp, requestId));
-                // execute the request
-                HttpResponseMessage response = await HttpClient.SendAsync(request, cancellationToken: cancellationToken).ConfigureAwait(false);
-                // if a post-request event has been set, invoke it
-                int responseTimestamp = Environment.TickCount;
-                Hooks.OnRequestResponseReceived?.Invoke(this, new OnRequestResponseReceivedEventArgs(response, requestTimestamp, responseTimestamp, requestId));
-
-                return response;
+                return await HttpClient.SendAsync(request, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
             catch (TaskCanceledException)
             {

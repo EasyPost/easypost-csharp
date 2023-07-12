@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace EasyPost.Tests._Utilities
@@ -82,7 +81,7 @@ namespace EasyPost.Tests._Utilities
         ///     Set up all clients to make live calls.
         /// </summary>
         /// <param name="apiKey"></param>
-        protected void UseLive(string apiKey) => Client = TestUtils.GetBasicVCRClient(apiKey);
+        protected void UseLive(string apiKey) => Client = TestUtils.GetClient(apiKey);
 
         /// <summary>
         ///     Set up all clients to use the VCR.
@@ -91,9 +90,6 @@ namespace EasyPost.Tests._Utilities
         /// <param name="overrideApiKey"></param>
         // ReSharper disable once InconsistentNaming
         protected void UseVCR(string cassetteName, string? overrideApiKey = null) => Client = _vcr?.SetUpTest(cassetteName, overrideApiKey)!;
-
-        // ReSharper disable once InconsistentNaming
-        protected void UseVCRWithCustomClient(string cassetteName, Func<string, HttpClient, Client> getClientFunc, string? overrideApiKey = null) => Client = _vcr?.SetUpTest(cassetteName, getClientFunc, overrideApiKey)!;
 
         protected virtual IEnumerable<TestUtils.MockRequest> MockRequests => new List<TestUtils.MockRequest>();
 

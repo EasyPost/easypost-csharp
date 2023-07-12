@@ -10,7 +10,6 @@ namespace EasyPost;
 /// <summary>
 ///     Provides configuration options for the REST client used by the SDK. Used internally to store API key and other configuration.
 /// </summary>
-// ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
 public class ClientConfiguration : IDisposable
 {
     /// <summary>
@@ -30,12 +29,6 @@ public class ClientConfiguration : IDisposable
     /// </summary>
     // This cannot be changed after the client has been initialized.
     public TimeSpan Timeout { get; set; } = TimeSpan.FromSeconds(60); // default to 60 seconds if not specified by the user
-
-    /// <summary>
-    ///     A set of <see cref="Hooks"/> to use for requests.
-    /// </summary>
-    // This cannot be changed after the client has been initialized.
-    public Hooks Hooks { get; set; } = new();
 
     /// <summary>
     ///     Gets the HttpClient to use for requests.
