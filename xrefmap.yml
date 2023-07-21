@@ -1252,6 +1252,12 @@ references:
   commentId: F:EasyPost.Exceptions.API.ApiError.StatusCode
   fullName: EasyPost.Exceptions.API.ApiError.StatusCode
   nameWithType: ApiError.StatusCode
+- uid: EasyPost.Exceptions.API.BadRequestError
+  name: BadRequestError
+  href: api/EasyPost.Exceptions.API.BadRequestError.html
+  commentId: T:EasyPost.Exceptions.API.BadRequestError
+  fullName: EasyPost.Exceptions.API.BadRequestError
+  nameWithType: BadRequestError
 - uid: EasyPost.Exceptions.API.ConnectionError
   name: ConnectionError
   href: api/EasyPost.Exceptions.API.ConnectionError.html

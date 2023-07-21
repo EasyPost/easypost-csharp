@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Constants.CarrierAccountTypes.html",
-          "hash": "o0+5CeY4lLthAfWJqpuTzzDDjoX7JVC0nZo8bvfvPTM="
+          "hash": "Owk19M3Rkiou3plOY+r+wxc00+VchxoD7KpeICD8W8E="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Constants.ErrorMessages.html",
-          "hash": "ubWhny+Do4u8o6iaVL0rSUsIarzHUaKaOSMMh0PpEz8="
+          "hash": "FjfDy13ZZoz+UIzj2c8kTd8mJXiYSy5hIjDrk9yhwXo="
         }
       },
       "is_incremental": false,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Constants.html",
-          "hash": "EEW5BGknHHtAUOLFV4jJbuCqx51jyO8frg2TXDvaSQY="
+          "hash": "TqiWdBd1y6Vc87O1uku7KH1Gd2x7Y2tncNYKPtZnBIU="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,19 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.ApiError.html",
-          "hash": "PRSr12oELS4BXq3Ju+WtDsJpOTKV7cuF/gfUE5hg4wo="
+          "hash": "9drOJtyST2+v53YUs80X/s/pvG6FkQLyOPP8Bd476I4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.Exceptions.API.BadRequestError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.Exceptions.API.BadRequestError.html",
+          "hash": "pkYgHTEzZsVnHlT4ZOwXy+lIN1vVd51MI8twWT971zo="
         }
       },
       "is_incremental": false,
@@ -285,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.html",
-          "hash": "lKp7cKevMIy96c6a6X8YBnP8FG6HUfErPNuIN7Kp/MM="
+          "hash": "8NtbZP7MFfSgpfK6yIHMIiLS9HVUWdnV7jgnLFUCJqo="
         }
       },
       "is_incremental": false,
@@ -3465,7 +3477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "HDhakMquls0oh+rliCY2y4VIAg4BaDBIassJP8X3fcg="
+          "hash": "s1WBlq7WW4ZgNc4dScv7WUgqm1SOSuvIkbjg+8oo8Eo="
         }
       },
       "is_incremental": false,
@@ -3540,7 +3552,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 287,
+          "total_file_count": 288,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
