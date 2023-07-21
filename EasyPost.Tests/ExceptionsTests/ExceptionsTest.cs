@@ -321,6 +321,7 @@ namespace EasyPost.Tests.ExceptionsTests
                 { 306, typeof(RedirectError) },
                 { 307, typeof(RedirectError) },
                 { 308, typeof(RedirectError) },
+                { 400, typeof(BadRequestError) },
                 { 401, typeof(UnauthorizedError) },
                 { 402, typeof(PaymentError) },
                 { 403, typeof(UnauthorizedError) },
