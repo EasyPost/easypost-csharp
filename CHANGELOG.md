@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Maps 400 status codes to new `BadRequestError` class
+
 ## v5.2.0 (2023-07-12)
 
 - Adds `Hooks` to introspect HTTP requests and responses (see `HTTP Hooks` section of README for more details)
