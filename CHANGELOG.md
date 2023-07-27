@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v5.3.0 (2023-07-28)
 
 - Maps 400 status codes to new `BadRequestError` class
 
