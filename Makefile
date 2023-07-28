@@ -78,6 +78,14 @@ lint-scripts:
 prep-release:
 	bash scripts/unix/build_release_nuget.sh EasyPost ${sncert} ${cert} ${pass} Release
 
+## publish - Publish the project to NuGet
+# @parameters:
+# key= - The NuGet API key to use for publishing.
+# ref: https://learn.microsoft.com/en-us/nuget/reference/cli-reference/cli-ref-push
+publish:
+	# Verify that no extraneous .nupkg files exist
+	dotnet nuget push *.nupkg -Source https://api.nuget.org/v3/index.json -k ${key} -SkipDuplicate # -NonInteractive
+
 ## release - Cuts a release for the project on GitHub (requires GitHub CLI)
 # tag = The associated tag title of the release
 release:
