@@ -21,5 +21,13 @@ namespace EasyPost.Integration.Utilities.Attributes
         internal sealed class Compile : BaseCustomAttribute
         {
         }
+
+        /// <summary>
+        ///     Marks an integration test that is testing run-time behavior (test that code as written will run)
+        /// </summary>
+        [AttributeUsage(AttributeTargets.Method, Inherited = false)]
+        internal sealed class Run : BaseCustomAttribute
+        {
+        }
     }
 }
