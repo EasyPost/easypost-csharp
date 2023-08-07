@@ -2,22 +2,22 @@ using EasyPost.Models.API;
 using EasyPost.Parameters.Parcel;
 using Xunit;
 using System.Web.Mvc;
+using EasyPost.Integration.Utilities;
 using EasyPost.Integration.Utilities.Attributes;
 
 namespace EasyPost.Integration;
 
 public class Synchronous
 {
+    private Utils.VCR Vcr { get; } = new("synchronous", Utils.ApiKey.Test);
+
     /// <summary>
     ///     Test that an end-user can run asynchronous code asynchronously
     /// </summary>
     [Fact, Testing.Run]
     public async void TestUserCanRunAsyncCodeAsynchronously()
     {
-        // create a client
-        string? key = Environment.GetEnvironmentVariable("EASYPOST_TEST_API_KEY");
-        Assert.NotNull(key);
-        var client = new Client(new ClientConfiguration(key));
+        var client = Vcr.SetUpTest("async");
 
         // create a parcel asynchronously
         var parcel = await client.Parcel.Create(new Create
@@ -44,10 +44,7 @@ public class Synchronous
     [Fact, Testing.Run]
     public void TestUserCanRunAsyncCodeSynchronouslyViaResult()
     {
-        // create a client
-        string? key = Environment.GetEnvironmentVariable("EASYPOST_TEST_API_KEY");
-        Assert.NotNull(key);
-        var client = new Client(new ClientConfiguration(key));
+        var client = Vcr.SetUpTest("via_result");
 
         // create a parcel via .Result
         var parcel = client.Parcel.Create(new Create
@@ -74,10 +71,7 @@ public class Synchronous
     [Fact, Testing.Run]
     public void TestUserCanRunAsyncCodeSynchronouslyViaGetAwaiter()
     {
-        // create a client
-        string? key = Environment.GetEnvironmentVariable("EASYPOST_TEST_API_KEY");
-        Assert.NotNull(key);
-        var client = new Client(new ClientConfiguration(key));
+        var client = Vcr.SetUpTest("via_get_awaiter");
 
         // create a parcel via GetAwaiter().GetResult()
         var parcel = client.Parcel.Create(new Create
@@ -97,92 +91,88 @@ public class Synchronous
         Assert.NotNull(retrievedParcel);
         Assert.IsType<Parcel>(retrievedParcel);
     }
+}
 
 #pragma warning disable CA3147 // Mark Verb Handlers With Validate Antiforgery Token
+/// <summary>
+///     Test that an end-user can run asynchronous code in System.Web.Mvc.Controller
+/// </summary>
+public class SynchronousMvcController : System.Web.Mvc.Controller
+{
+    private Utils.VCR Vcr { get; } = new("synchronous_mvc_controller", Utils.ApiKey.Test);
+
     /// <summary>
-    ///     Test that an end-user can run asynchronous code in System.Web.Mvc.Controller
+    ///     Test that an end-user can run asynchronous code asynchronously
     /// </summary>
-    public class MvcController : System.Web.Mvc.Controller
+    [Fact, Testing.Run]
+    public async Task<ActionResult> TestUserCanRunAsyncCodeAsynchronously()
     {
-        /// <summary>
-        ///     Test that an end-user can run asynchronous code asynchronously
-        /// </summary>
-        [Fact, Testing.Run]
-        public async Task<ActionResult> TestUserCanRunAsyncCodeAsynchronously()
+        var client = Vcr.SetUpTest("async");
+
+        // create a parcel asynchronously
+        var parcel = await client.Parcel.Create(new Create
         {
-            // create a client
-            string? key = Environment.GetEnvironmentVariable("EASYPOST_TEST_API_KEY");
-            Assert.NotNull(key);
-            var client = new Client(new ClientConfiguration(key));
+            Height = 1,
+            Length = 1,
+            Width = 1,
+            Weight = 1,
+        });
+        Assert.NotNull(parcel);
+        Assert.IsType<Parcel>(parcel);
 
-            // create a parcel asynchronously
-            var parcel = await client.Parcel.Create(new Create
-            {
-                Height = 1,
-                Length = 1,
-                Width = 1,
-                Weight = 1,
-            });
-            Assert.NotNull(parcel);
-            Assert.IsType<Parcel>(parcel);
+        string parcelId = parcel.Id!;
 
-            string parcelId = parcel.Id!;
+        // retrieve a parcel asynchronously
+        var retrievedParcel = await client.Parcel.Retrieve(parcelId);
+        Assert.NotNull(retrievedParcel);
+        Assert.IsType<Parcel>(retrievedParcel);
 
-            // retrieve a parcel asynchronously
-            var retrievedParcel = await client.Parcel.Retrieve(parcelId);
-            Assert.NotNull(retrievedParcel);
-            Assert.IsType<Parcel>(retrievedParcel);
+        return new EmptyResult();
+    }
 
-            return new EmptyResult();
+    /// <summary>
+    ///     Test that an end-user can run asynchronous code synchronously via TaskFactory
+    ///     Ref: https://gist.github.com/leonardochaia/98ce57bcee39c18d88682424a6ffe305
+    /// </summary>
+    [Fact, Testing.Run]
+    public ActionResult TestUserCanRunAsyncCodeSynchronouslyViaTaskFactory()
+    {
+        var client = Vcr.SetUpTest("via_task_factory");
+
+        // create a parcel via TaskFactory (via AsyncHelper)
+        var parcel = AsyncHelper.RunSync(() => client.Parcel.Create(new Create
+        {
+            Height = 1,
+            Length = 1,
+            Width = 1,
+            Weight = 1,
+        }));
+        Assert.NotNull(parcel);
+        Assert.IsType<Parcel>(parcel);
+
+        string parcelId = parcel.Id!;
+
+        // retrieve a parcel via TaskFactory (via AsyncHelper)
+        var retrievedParcel = AsyncHelper.RunSync(() => client.Parcel.Retrieve(parcelId));
+        Assert.NotNull(retrievedParcel);
+        Assert.IsType<Parcel>(retrievedParcel);
+
+        return new EmptyResult();
+    }
+
+    private static class AsyncHelper
+    {
+        private static readonly TaskFactory TaskFactory = new TaskFactory(CancellationToken.None, TaskCreationOptions.None, TaskContinuationOptions.None, TaskScheduler.Default);
+
+        public static void RunSync(Func<Task> func)
+        {
+            TaskFactory.StartNew<Task>(func).Unwrap().GetAwaiter().GetResult();
         }
 
-        /// <summary>
-        ///     Test that an end-user can run asynchronous code synchronously via TaskFactory
-        ///     Ref: https://gist.github.com/leonardochaia/98ce57bcee39c18d88682424a6ffe305
-        /// </summary>
-        [Fact, Testing.Run]
-        public ActionResult TestUserCanRunAsyncCodeSynchronouslyViaTaskFactory()
+        public static TResult RunSync<TResult>(Func<Task<TResult>> func)
         {
-            // create a client
-            string? key = Environment.GetEnvironmentVariable("EASYPOST_TEST_API_KEY");
-            Assert.NotNull(key);
-            var client = new Client(new ClientConfiguration(key));
-
-            // create a parcel via TaskFactory (via AsyncHelper)
-            var parcel = AsyncHelper.RunSync(() => client.Parcel.Create(new Create
-            {
-                Height = 1,
-                Length = 1,
-                Width = 1,
-                Weight = 1,
-            }));
-            Assert.NotNull(parcel);
-            Assert.IsType<Parcel>(parcel);
-
-            string parcelId = parcel.Id!;
-
-            // retrieve a parcel via TaskFactory (via AsyncHelper)
-            var retrievedParcel = AsyncHelper.RunSync(() => client.Parcel.Retrieve(parcelId));
-            Assert.NotNull(retrievedParcel);
-            Assert.IsType<Parcel>(retrievedParcel);
-
-            return new EmptyResult();
-        }
-
-        private static class AsyncHelper
-        {
-            private static readonly TaskFactory TaskFactory = new TaskFactory(CancellationToken.None, TaskCreationOptions.None, TaskContinuationOptions.None, TaskScheduler.Default);
-
-            public static void RunSync(Func<Task> func)
-            {
-                TaskFactory.StartNew<Task>(func).Unwrap().GetAwaiter().GetResult();
-            }
-
-            public static TResult RunSync<TResult>(Func<Task<TResult>> func)
-            {
-                return TaskFactory.StartNew<Task<TResult>>(func).Unwrap<TResult>().GetAwaiter().GetResult();
-            }
+            return TaskFactory.StartNew<Task<TResult>>(func).Unwrap<TResult>().GetAwaiter().GetResult();
         }
     }
-#pragma warning restore CA3147 // Mark Verb Handlers With Validate Antiforgery Token
 }
+#pragma warning restore CA3147 // Mark Verb Handlers With Validate Antiforgery Token
