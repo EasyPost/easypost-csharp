@@ -1,9 +1,9 @@
-using EasyPost.Models.API;
-using EasyPost.Parameters.Parcel;
-using Xunit;
 using System.Web.Mvc;
 using EasyPost.Integration.Utilities;
 using EasyPost.Integration.Utilities.Attributes;
+using EasyPost.Models.API;
+using EasyPost.Parameters.Parcel;
+using Xunit;
 
 namespace EasyPost.Integration;
 
