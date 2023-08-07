@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFrameworks>net462;netcoreapp3.1;net5.0;net6.0;net7.0</TargetFrameworks>
         <LangVersion>10</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
@@ -12,6 +12,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="EasyVCR" Version="0.9.0"/>
+        <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
         <PackageReference Include="xunit" Version="2.4.2" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
@@ -27,5 +29,6 @@
     <ItemGroup>
       <ProjectReference Include="..\EasyPost\EasyPost.csproj" />
     </ItemGroup>
+
 
 </Project>

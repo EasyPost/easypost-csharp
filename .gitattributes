@@ -2,3 +2,6 @@
 
 EasyPost.Tests/cassettes/**/* -diff
 EasyPost.Tests/cassettes/**/* linguist-generated
+EasyPost.Integration/cassettes/**/* -diff
+EasyPost.Integration/cassettes/**/* linguist-generated
+
