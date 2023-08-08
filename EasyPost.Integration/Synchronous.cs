@@ -15,7 +15,7 @@ public class Synchronous
     ///     Test that an end-user can run asynchronous code asynchronously
     /// </summary>
     [Fact, Testing.Run]
-    public async void TestUserCanRunAsyncCodeAsynchronously()
+    public async void UserCanRunAsyncCodeAsynchronously()
     {
         var client = Vcr.SetUpTest("async");
 
@@ -42,7 +42,7 @@ public class Synchronous
     ///     Test that an end-user can run asynchronous code synchronously via .Result
     /// </summary>
     [Fact, Testing.Run]
-    public void TestUserCanRunAsyncCodeSynchronouslyViaResult()
+    public void UserCanRunAsyncCodeSynchronouslyViaResult()
     {
         var client = Vcr.SetUpTest("via_result");
 
@@ -69,7 +69,7 @@ public class Synchronous
     ///     Test that an end-user can run asynchronous code synchronously via .GetAwaiter().GetResult()
     /// </summary>
     [Fact, Testing.Run]
-    public void TestUserCanRunAsyncCodeSynchronouslyViaGetAwaiter()
+    public void UserCanRunAsyncCodeSynchronouslyViaGetAwaiter()
     {
         var client = Vcr.SetUpTest("via_get_awaiter");
 
@@ -105,7 +105,7 @@ public class SynchronousMvcController : System.Web.Mvc.Controller
     ///     Test that an end-user can run asynchronous code asynchronously
     /// </summary>
     [Fact, Testing.Run]
-    public async Task<ActionResult> TestUserCanRunAsyncCodeAsynchronously()
+    public async Task<ActionResult> UserCanRunAsyncCodeAsynchronously()
     {
         var client = Vcr.SetUpTest("async");
 
@@ -135,7 +135,7 @@ public class SynchronousMvcController : System.Web.Mvc.Controller
     ///     Ref: https://gist.github.com/leonardochaia/98ce57bcee39c18d88682424a6ffe305
     /// </summary>
     [Fact, Testing.Run]
-    public ActionResult TestUserCanRunAsyncCodeSynchronouslyViaTaskFactory()
+    public ActionResult UserCanRunAsyncCodeSynchronouslyViaTaskFactory()
     {
         var client = Vcr.SetUpTest("via_task_factory");
 
