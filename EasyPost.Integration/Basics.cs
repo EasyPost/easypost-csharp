@@ -1,6 +1,5 @@
 using EasyPost.Integration.Utilities.Attributes;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Order;
 using Xunit;
 
 namespace EasyPost.Integration;
@@ -163,27 +162,5 @@ public class Basics
         });
 
         // Cannot edit hooks via a constructed client
-    }
-
-    [Fact]
-    public async Task Scratch()
-    {
-        var client = new EasyPost.Client(new ClientConfiguration("not-a-real-api-key"));
-
-        var order = await client.Order.Create(
-            new EasyPost.Parameters.Order.Create
-            {
-                CarrierAccounts = new List<CarrierAccount>
-                {
-                    new CarrierAccount
-                    {
-                        Id = "ca_1",
-                    },
-                    new CarrierAccount
-                    {
-                        Id = "ca_2",
-                    },
-                },
-            });
     }
 }
