@@ -91,7 +91,7 @@ public class Basics
     ///     Test that an end-user can locally construct an object and set its ID.
     /// </summary>
     [Fact, Testing.Access, Testing.Compile]
-    public void UsersCanSetObjectId()
+    public void UserCanSetObjectId()
     {
         // Construct a local object, setting its ID
         var address = new Address { Id = "some_id" };
