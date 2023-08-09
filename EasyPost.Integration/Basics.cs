@@ -11,7 +11,7 @@ public class Basics
     ///     If this test can be compiled, then the response objects have public constructors.
     /// </summary>
     [Fact, Testing.Access, Testing.Compile]
-    public void TestUserCanLocallyConstructResponseObject()
+    public void UserCanLocallyConstructResponseObject()
     {
         var address = new Address();
         var addressCollection = new AddressCollection();
@@ -88,11 +88,24 @@ public class Basics
     }
 
     /// <summary>
+    ///     Test that an end-user can locally construct an object and set its ID.
+    /// </summary>
+    [Fact, Testing.Access, Testing.Compile]
+    public void UserCanSetObjectId()
+    {
+        // Construct a local object, setting its ID
+        var address = new Address { Id = "some_id" };
+
+        // Assert that the ID was set
+        Assert.Equal("some_id", address.Id);
+    }
+
+    /// <summary>
     ///     Test that an end-user can locally construct all available hooks.
     ///     If this test can be compiled, then the hooks are publicly accessible.
     /// </summary>
     [Fact, Testing.Access, Testing.Compile]
-    public void TestUserCanCreateHooks()
+    public void UserCanCreateHooks()
     {
         // Can set up each hook event handler during construction
         var hooks = new Hooks()

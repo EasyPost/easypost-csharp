@@ -24,7 +24,7 @@ namespace EasyPost._base
         ///     The EasyPost ID for this object.
         /// </summary>
         [JsonProperty("id")]
-        public string? Id { get; internal set; }
+        public string? Id { get; set; }
 
         /// <summary>
         ///     The date and time this object was last updated.
