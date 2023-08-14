@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v5.4.0 (2023-08-14)
+
+- Make the `Id` property of any `EasyPostObject`-based object instance settable (previously, this was read-only)
+  - This will allow users to make temporary references to existing objects in Parameter sets without having to retrieve the object from the API first
+
 ## v5.3.0 (2023-07-28)
 
 - Maps 400 status codes to new `BadRequestError` class
