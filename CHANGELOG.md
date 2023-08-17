@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v5.4.1 (2023-08-17)
+
+- Fix incorrect JSON mapping for `EasyPostEstimatedDeliveryDate`
+  - `EasyPostEstimatedDeliveryDate` is now a `DateTime` object rather than a `string`
+
 ## v5.4.0 (2023-08-14)
 
 - Make the `Id` property of any `EasyPostObject`-based object instance settable (previously, this was read-only)
