@@ -153,7 +153,8 @@ namespace EasyPost.Tests.ServicesTests
             const bool includeChildren = true;
             const bool purchased = false;
 
-            Dictionary<string, object> filters = new Dictionary<string, object> {
+            Dictionary<string, object> filters = new Dictionary<string, object>
+            {
                 { "include_children", includeChildren },
                 { "purchased", purchased },
             };
@@ -208,7 +209,8 @@ namespace EasyPost.Tests.ServicesTests
             const bool includeChildren = true;
             const bool purchased = false;
 
-            Dictionary<string, object> filters = new Dictionary<string, object> {
+            Dictionary<string, object> filters = new Dictionary<string, object>
+            {
                 { "include_children", includeChildren },
                 { "purchased", purchased },
             };
@@ -598,6 +600,9 @@ namespace EasyPost.Tests.ServicesTests
             foreach (var rate in ratesWithEstimatedDeliveryDates)
             {
                 Assert.NotNull(rate.EasyPostTimeInTransitData);
+                Assert.NotNull(rate.EasyPostTimeInTransitData.EasyPostEstimatedDeliveryDate);
+                Assert.NotNull(rate.EasyPostTimeInTransitData.DaysInTransit);
+                Assert.NotNull(rate.EasyPostTimeInTransitData.PlannedShipDate);
             }
         }
 

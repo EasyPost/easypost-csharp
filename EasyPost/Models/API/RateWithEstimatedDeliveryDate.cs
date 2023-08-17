@@ -23,7 +23,6 @@ namespace EasyPost.Models.API
         public TimeInTransitDetails? EasyPostTimeInTransitData { get; set; }
 
         #endregion
-
     }
 
     /// <summary>
@@ -42,8 +41,8 @@ namespace EasyPost.Models.API
         /// <summary>
         ///     EasyPost's estimated delivery date for the associated <see cref="RateWithEstimatedDeliveryDate"/>.
         /// </summary>
-        [JsonProperty("easypost_time_in_transit_data")]
-        public string? EasyPostEstimatedDeliveryDate { get; set; }
+        [JsonProperty("easypost_estimated_delivery_date")]
+        public DateTime? EasyPostEstimatedDeliveryDate { get; set; }
 
         /// <summary>
         ///     The planned departure date for the shipment.
@@ -52,6 +51,5 @@ namespace EasyPost.Models.API
         public DateTime? PlannedShipDate { get; set; }
 
         #endregion
-
     }
 }
