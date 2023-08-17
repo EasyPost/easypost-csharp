@@ -17,5 +17,6 @@ echo "Signing NuGet packages with $CERT_FILE for authenticity..."
 # Should only be one .nupkg file at this point, since we deleted the old ones
 for file in $(find "$FOLDER" -name "$FILE_PATTERN"); do
     # Sign the file in-place
+    echo "Signing $file..."
     dotnet nuget sign "$file" --timestamper "$TIMESTAMP_SERVER" --certificate-path "$CERT_FILE" --certificate-password "$CERT_PASSWORD"
 done
