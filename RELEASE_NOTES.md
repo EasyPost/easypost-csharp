@@ -1,0 +1,1 @@
+- Notes copied from the CHANGELOG that will be included on the Release page of GitHub

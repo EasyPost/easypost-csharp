@@ -37,6 +37,18 @@ coverage-check:
 docs:
 	dotnet tool run docfx docs/docfx.json
 
+## github-actions-certs-decrypt - Decrypt the certificates for GitHub Actions
+# @parameters:
+# pass= - The password used for decrypting the certificates.
+github-actions-certs-decrypt:
+	bash scripts/unix/gpg_decrypt_dir.sh certs ${pass} "gpg"
+
+## github-actions-certs-encrypt - Encrypt the certificates for GitHub Actions
+# @parameters:
+# pass= - The password used for encrypting the certificates.
+github-actions-certs-encrypt:
+	bash scripts/unix/gpg_encrypt_dir.sh certs ${pass} "gpg"
+
 ## install-tools - Install required dotnet tools
 install-tools:
 	dotnet new tool-manifest || exit 0
