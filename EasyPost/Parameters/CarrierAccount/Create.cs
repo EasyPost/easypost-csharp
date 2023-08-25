@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.CarrierAccount
     ///     <a href="https://www.easypost.com/docs/api#create-a-carrier-account">Parameters</a> for <see cref="EasyPost.Services.CarrierAccountService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class Create : BaseParameters, ICarrierAccountParameter
+    public class Create : BaseParameters<Models.API.CarrierAccount>, ICarrierAccountParameter
     {
         #region Request Parameters
 

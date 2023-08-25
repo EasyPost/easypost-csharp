@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.Shipment
     ///     <a href="https://www.easypost.com/docs/api#convert-the-label-format-of-a-shipment">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.GenerateLabel(string, GenerateLabel, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class GenerateLabel : BaseParameters
+    public class GenerateLabel : BaseParameters<Models.API.Shipment>
     {
         #region Request Parameters
 

@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.Order
     ///     <a href="https://www.easypost.com/docs/api#create-an-order">Parameters</a> for <see cref="EasyPost.Services.OrderService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class Create : BaseParameters, IOrderParameter
+    public class Create : BaseParameters<Models.API.Order>, IOrderParameter
     {
         #region Request Parameters
 

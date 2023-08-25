@@ -9,7 +9,7 @@ namespace EasyPost.Parameters.Shipment
     ///     <a href="https://www.easypost.com/docs/api#create-form">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.GenerateForm(string, GenerateForm, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class GenerateForm : BaseParameters
+    public class GenerateForm : BaseParameters<Models.API.Shipment>
     {
         #region Request Parameters
 
@@ -25,7 +25,7 @@ namespace EasyPost.Parameters.Shipment
         public Dictionary<string, object>? Data { get; set; }
 
         /// <summary>
-        ///     Override the default <see cref="BaseParameters.ToDictionary"/> method to handle the unique serialization requirements for this parameter set.
+        ///     Override the default <see cref="BaseParameters{TMatchInputType}.ToDictionary"/> method to handle the unique serialization requirements for this parameter set.
         /// </summary>
         /// <returns>A <see cref="Dictionary{TKey,TValue}"/>.</returns>
         /// <exception cref="MissingParameterError">Thrown when the form type was not provided.</exception>

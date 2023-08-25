@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.Tracker
     ///     <a href="https://www.easypost.com/docs/api#create-a-tracker">Parameters</a> for <see cref="EasyPost.Services.TrackerService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class Create : BaseParameters, ITrackerParameter
+    public class Create : BaseParameters<Models.API.Tracker>, ITrackerParameter
     {
         #region Request Parameters
 

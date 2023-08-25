@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using EasyPost._base;
 using EasyPost.Utilities.Internal;
 using Newtonsoft.Json;
 
@@ -8,7 +9,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#carriermetadata-object">EasyPost carrier metadata summary</a>.
     /// </summary>
-    public class CarrierMetadata
+    public class CarrierMetadata : EphemeralEasyPostObject
     {
         #region JSON Properties
 

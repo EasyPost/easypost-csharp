@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost._base;
 using EasyPost.Exceptions.General;
 using Newtonsoft.Json;
 
@@ -21,7 +22,7 @@ namespace EasyPost.Models.Shared
         /// <summary>
         ///     The filter parameters used to retrieve this collection.
         /// </summary>
-        internal Parameters.BaseParameters? Filters { get; set; }
+        internal Parameters.BaseParameters<TEntries>? Filters { get; set; }
 
         /// <summary>
         ///     Get the next page of a paginated collection.
@@ -33,7 +34,7 @@ namespace EasyPost.Models.Shared
         /// <typeparam name="TParameters">The type of <see cref="Parameters.BaseParameters"/> to construct for the API call.</typeparam>
         /// <returns>The next page of a paginated collection.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
-        internal async Task<TCollection> GetNextPage<TCollection, TParameters>(Func<TParameters, Task<TCollection>> apiCallFunction, List<TEntries>? currentEntries, int? pageSize = null) where TCollection : PaginatedCollection<TEntries> where TParameters : Parameters.BaseParameters
+        internal async Task<TCollection> GetNextPage<TCollection, TParameters>(Func<TParameters, Task<TCollection>> apiCallFunction, List<TEntries>? currentEntries, int? pageSize = null) where TCollection : PaginatedCollection<TEntries> where TParameters : Parameters.BaseParameters<TEntries>
         {
             if (currentEntries == null || currentEntries.Count == 0)
             {
@@ -59,6 +60,6 @@ namespace EasyPost.Models.Shared
         /// <returns>A TParameters-type set of parameters to use for the subsequent API call.</returns>
         /// <exception cref="EndOfPaginationError">Thrown if there are no more items to retrieve for the paginated collection.</exception>
         // This method is abstract and must be implemented for each collection.
-        protected internal abstract TParameters BuildNextPageParameters<TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) where TParameters : Parameters.BaseParameters;
+        protected internal abstract TParameters BuildNextPageParameters<TParameters>(IEnumerable<TEntries> entries, int? pageSize = null) where TParameters : Parameters.BaseParameters<TEntries>;
     }
 }

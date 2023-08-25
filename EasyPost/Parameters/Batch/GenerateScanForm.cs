@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.Batch
     ///     <a href="https://www.easypost.com/docs/api#manifesting-scan-form">Parameters</a> for <see cref="EasyPost.Services.BatchService.GenerateScanForm(string, GenerateScanForm, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class GenerateScanForm : BaseParameters
+    public class GenerateScanForm : BaseParameters<Models.API.Batch>
     {
         #region Request Parameters
 

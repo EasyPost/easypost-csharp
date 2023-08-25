@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.Pickup
     ///     <a href="https://www.easypost.com/docs/api#create-a-pickup">Parameters</a> for <see cref="EasyPost.Services.PickupService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class Create : BaseParameters, IPickupParameter
+    public class Create : BaseParameters<Models.API.Pickup>, IPickupParameter
     {
         #region Request Parameters
 

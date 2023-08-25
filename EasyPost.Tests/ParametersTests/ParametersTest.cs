@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost._base;
 using EasyPost.Models.API;
+using EasyPost.Parameters;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -255,9 +257,9 @@ namespace EasyPost.Tests.ParametersTests
         [Testing.Logic]
         public void TestParameterToDictionaryAccountsForNonPublicProperties()
         {
-            ExampleParameters exampleParameters = new ExampleParameters();
+            ExampleDecoratorParameters exampleDecoratorParameters = new ExampleDecoratorParameters();
 
-            Dictionary<string, object> dictionary = exampleParameters.ToDictionary();
+            Dictionary<string, object> dictionary = exampleDecoratorParameters.ToDictionary();
 
             // All decorated properties should be present in the dictionary, regardless of their access modifier
             Assert.True(dictionary.ContainsKey("decorated_public_property"));
@@ -270,11 +272,50 @@ namespace EasyPost.Tests.ParametersTests
             Assert.True(dictionary.Count == 4);
         }
 
+        /// <summary>
+        ///     This test proves that the .Matches() method will evaluate if a provided EasyPostObject matches the current parameter set, based on the defined match function.
+        /// </summary>
+        [Fact]
+        [Testing.Logic]
+        public void TestParameterMatchOverrideFunction()
+        {
+            ExampleMatchParametersEasyPostObject obj = new ExampleMatchParametersEasyPostObject
+            {
+                Prop1 = "prop1",
+                // uses default match function at base level (returns false)
+                // this can also be implemented on a per-parameter set basis
+                // users can also override the match function to implement custom logic (see examples below)
+            };
+
+            // The default match function should return false
+            ExampleMatchParameters parameters = new ExampleMatchParameters
+            {
+                Prop1 = "prop1",
+            };
+            Assert.False(parameters.Matches(obj));
+
+            // The overridden match function should return true (because the Prop1 property matches)
+            parameters = new ExampleMatchParameters
+            {
+                Prop1 = "prop1",
+                MatchFunction = o => o.Prop1 == "prop1",
+            };
+            Assert.True(parameters.Matches(obj));
+
+            // The overridden match function should return false (because the Prop1 property does not match)
+            parameters = new ExampleMatchParameters
+            {
+                Prop1 = "prop2",
+                MatchFunction = o => o.Prop1 == "prop2",
+            };
+            Assert.False(parameters.Matches(obj));
+        }
+
         #endregion
     }
 
 #pragma warning disable CA1852 // Can be sealed
-    internal class ExampleParameters : Parameters.BaseParameters
+    internal class ExampleDecoratorParameters : Parameters.BaseParameters<EasyPostObject>
     {
         // Default values set to guarantee any property won't be skipped for serialization due to a null value
 
@@ -295,5 +336,16 @@ namespace EasyPost.Tests.ParametersTests
 
         private string? UndecoratedPrivateProperty { get; set; } = "undecorated_private";
     }
+
+    internal class ExampleMatchParametersEasyPostObject : EasyPostObject
+    {
+        public string? Prop1 { get; set; }
+    }
+
+    internal class ExampleMatchParameters : Parameters.BaseParameters<ExampleMatchParametersEasyPostObject>
+    {
+        public string? Prop1 { get; set; }
+    }
+
 #pragma warning restore CA1852 // Can be sealed
 }

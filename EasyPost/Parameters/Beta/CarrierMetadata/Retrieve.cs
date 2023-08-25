@@ -11,7 +11,7 @@ namespace EasyPost.Parameters.Beta.CarrierMetadata
     /// </summary>
     [ExcludeFromCodeCoverage]
     [Obsolete("This class is deprecated. Please use EasyPost.Parameters.CarrierMetadata.Retrieve instead. This class will be removed in a future version.", false)]
-    public class Retrieve : BaseParameters
+    public class Retrieve : BaseParameters<Models.API.Beta.CarrierMetadata>
     {
         #region Request Parameters
 
@@ -28,7 +28,7 @@ namespace EasyPost.Parameters.Beta.CarrierMetadata
         #endregion
 
         /// <summary>
-        ///     Override the default <see cref="BaseParameters.ToDictionary"/> method to handle the unique serialization requirements for this parameter set.
+        ///     Override the default <see cref="BaseParameters{TMatchInputType}.ToDictionary"/> method to handle the unique serialization requirements for this parameter set.
         /// </summary>
         /// <returns>A <see cref="Dictionary{TKey,TValue}"/>.</returns>
         public override Dictionary<string, object> ToDictionary()

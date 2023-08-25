@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.Address
     ///     <a href="https://www.easypost.com/docs/api#create-and-verify-addresses">Parameters</a> for <see cref="EasyPost.Services.AddressService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class Create : BaseParameters, IAddressParameter
+    public class Create : BaseParameters<Models.API.Address>, IAddressParameter
     {
         #region Request Parameters
 
