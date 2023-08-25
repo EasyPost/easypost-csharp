@@ -14,13 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # todo: unneeded?
-      - name: Establish variables
-        id: vars
-        run: |
-          VERSION=${{ github.event.inputs.version || github.ref_name }}
-          echo ::set-output name=version::${VERSION}
-
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
