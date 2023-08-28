@@ -106,6 +106,44 @@ namespace EasyPost.Tests.ParametersTests
             Assert.Equal(streetB, addressData["street1"]);
         }
 
+        [Fact]
+        [Testing.Exception]
+        public void TestRequiredAndOptionalParameterValidation()
+        {
+            var parametersWithBothParameterSet = new ParameterSetWithRequiredAndOptionalParameters
+            {
+                RequiredParameter = "required",
+                OptionalParameter = "optional",
+            };
+            // should not throw an exception when serializing to a dictionary
+            parametersWithBothParameterSet.ToDictionary();
+
+            var parametersWithOnlyRequiredParameterSet = new ParameterSetWithRequiredAndOptionalParameters
+            {
+                RequiredParameter = "required",
+            };
+
+            // should not throw an exception when serializing to a dictionary
+            parametersWithOnlyRequiredParameterSet.ToDictionary();
+
+            var parametersWithOnlyOptionalParameterSet = new ParameterSetWithRequiredAndOptionalParameters
+            {
+                OptionalParameter = "optional",
+            };
+
+            // should throw an exception when serializing to a dictionary
+            Assert.Throws<Exceptions.General.MissingParameterError>(() => parametersWithOnlyOptionalParameterSet.ToDictionary());
+        }
+
+        private sealed class ParameterSetWithRequiredAndOptionalParameters : Parameters.BaseParameters
+        {
+            [TopLevelRequestParameter(Necessity.Required, "test", "required")]
+            public string? RequiredParameter { get; set; }
+
+            [TopLevelRequestParameter(Necessity.Optional, "test", "optional")]
+            public string? OptionalParameter { get; set; }
+        }
+
         /// <summary>
         /// This test proves that we can reuse the Addresses.Create parameter object,
         /// with its serialization logic adapting to whether it is a top-level parameter object
@@ -200,7 +238,7 @@ namespace EasyPost.Tests.ParametersTests
                 Street1 = street,
             };
 
-            Dictionary<string, object> dictionary = addressCreationParameters.ToDictionary();  // this method is "internal", so end-users won't have access to it, for reasons seen below
+            Dictionary<string, object> dictionary = addressCreationParameters.ToDictionary(); // this method is "internal", so end-users won't have access to it, for reasons seen below
 
             // At this point, the data has already been wrapped properly by the .ToDictionary() method, and this method expects raw (unwrapped) data
             // This will cause a double-wrapping, sending malformed data to the API

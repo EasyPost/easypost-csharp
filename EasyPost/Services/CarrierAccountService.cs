@@ -68,6 +68,12 @@ namespace EasyPost.Services
                 throw new MissingParameterError(nameof(parameters.Type));
             }
 
+            // stop the user from using a generic Create parameter set when creating a carrier account with a custom workflow (e.g. FedExAccount)
+            if (parameters.GetType() == typeof(Parameters.CarrierAccount.Create) && Constants.CarrierAccountTypes.CarrierTypesWithCustomWorkflows.Contains(parameters.Type))
+            {
+                throw new InvalidParameterError("parameters", $"Use a {parameters.Type} custom workflow parameter set instead.");
+            }
+
             string endpoint = SelectCarrierAccountCreationEndpoint(parameters.Type);
 
             return await RequestAsync<CarrierAccount>(Method.Post, endpoint, cancellationToken, parameters.ToDictionary());
