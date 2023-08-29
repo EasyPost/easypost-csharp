@@ -168,7 +168,7 @@ namespace EasyPost.Tests.ExceptionsTests
             Assert.Equal(testMessage, invalidObjectError.Message);
 
             InvalidParameterError invalidParameterError = new(testPropertyName);
-            Assert.Equal(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.InvalidParameter, testPropertyName), invalidParameterError.Message);
+            Assert.Equal($"{string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.InvalidParameter, testPropertyName)}. ", invalidParameterError.Message);
 
             JsonDeserializationError jsonDeserializationError = new(testType);
             Assert.Equal(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.JsonDeserializationError, testType.FullName), jsonDeserializationError.Message);

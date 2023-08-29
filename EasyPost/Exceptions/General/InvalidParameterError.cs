@@ -11,8 +11,9 @@ namespace EasyPost.Exceptions.General
         ///     Initializes a new instance of the <see cref="InvalidParameterError" /> class.
         /// </summary>
         /// <param name="parameterName">The name of the invalid parameter.</param>
-        internal InvalidParameterError(string parameterName)
-            : base(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.InvalidParameter, parameterName))
+        /// <param name="followUpMessage">Additional message to include in error message.</param>
+        internal InvalidParameterError(string parameterName, string? followUpMessage = "")
+            : base($"{string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.InvalidParameter, parameterName)}. {followUpMessage}")
         {
         }
     }

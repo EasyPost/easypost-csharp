@@ -119,13 +119,17 @@ namespace EasyPost
         /// </summary>
         public static class CarrierAccountTypes
         {
+            public const string FedExAccount = "FedexAccount";
+
+            public const string UpsAccount = "UpsAccount";
+
             /// <summary>
             ///     Carrier account types that support custom workflows.
             /// </summary>
             internal static List<string> CarrierTypesWithCustomWorkflows => new()
             {
-                "FedexAccount",
-                "UpsAccount",
+                FedExAccount,
+                UpsAccount,
             };
         }
     }

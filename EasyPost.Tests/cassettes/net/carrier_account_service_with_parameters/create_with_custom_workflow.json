@@ -1,13 +1,13 @@
 [
   {
-    "Duration": 380,
-    "RecordedAt": "2023-04-25T21:17:08.084642-06:00",
+    "Duration": 765,
+    "RecordedAt": "2023-08-28T14:42:20.463087-06:00",
     "Request": {
-      "Body": "{\"carrier_account\":{\"credentials\":{},\"test_credentials\":{},\"type\":\"FedexAccount\",\"registration_data\":{}}}",
+      "Body": "{\"carrier_account\":{\"registration_data\":{\"account_number\":\"123456789\",\"corporate_city\":\"San Francisco\",\"corporate_country_code\":\"US\",\"corporate_postal_code\":\"94105\",\"corporate_state\":\"CA\",\"corporate_streets\":\"345 California St\",\"corporate_company_name\":\"EasyPost\",\"corporate_email_address\":\"me@example.com\",\"corporate_first_name\":\"Demo\",\"corporate_job_title\":\"Developer\",\"corporate_last_name\":\"User\",\"corporate_phone_number\":\"5555555555\",\"shipping_city\":\"San Francisco\",\"shipping_country_code\":\"US\",\"shipping_postal_code\":\"94105\",\"shipping_state\":\"CA\",\"shipping_streets\":\"345 California St\"},\"credentials\":{},\"test_credentials\":{},\"type\":\"FedexAccount\"}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "299"
+        "Content-Length": "848"
       },
       "Method": "POST",
       "RequestHeaders": {
@@ -17,12 +17,12 @@
       "Uri": "https://api.easypost.com/v2/carrier_accounts/register"
     },
     "Response": {
-      "Body": "{\"error\":{\"code\":\"UNPROCESSABLE_ENTITY\",\"message\":\"The request was understood, but cannot be processed.\",\"errors\":[{\"field\":\"shipping_streets\",\"message\":\"must be present and a string\"},{\"field\":\"shipping_city\",\"message\":\"must be present and a string\"},{\"field\":\"shipping_state\",\"message\":\"must be present and a string\"},{\"field\":\"shipping_postal_code\",\"message\":\"must be present and a string\"},{\"field\":\"shipping_country_code\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_first_name\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_last_name\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_job_title\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_company_name\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_phone_number\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_email_address\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_streets\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_city\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_state\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_postal_code\",\"message\":\"must be present and a string\"},{\"field\":\"corporate_country_code\",\"message\":\"must be present and a string\"},{\"field\":\"account_number\",\"message\":\"must be present and a string\"}]}}",
+      "Body": "{\"error\":{\"code\":\"BAD_REQUEST\",\"message\":\"Malformed request. Please check the contents and retry.\",\"errors\":[{\"code\":\"3001\",\"message\":\"Invalid Customer Account Nbr\"}]}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "1347"
+        "Content-Length": "168"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -32,19 +32,19 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "72c23981644897b4e198efc200080b10",
+        "x-ep-request-uuid": "f17fc6ca64ed06acf451c98a000d0953",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.031220",
-        "x-node": "bigweb9nuq",
-        "x-version-label": "easypost-202304252326-79950b6035-master",
+        "x-runtime": "0.358320",
+        "x-node": "bigweb34nuq",
+        "x-version-label": "easypost-202308252358-79b9940f30-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq a29e4ad05c,intlb1wdc a29e4ad05c,extlb3wdc a29e4ad05c",
+        "x-proxied": "intlb1nuq 2bcb349163,intlb2wdc 2bcb349163,extlb3wdc 003ad9bca0",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
-        "Code": 422,
-        "Message": "Unprocessable Entity"
+        "Code": 400,
+        "Message": "Bad Request"
       }
     }
   }

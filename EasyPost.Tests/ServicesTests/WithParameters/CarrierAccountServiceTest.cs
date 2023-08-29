@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.API;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -57,26 +58,47 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             UseVCR("create_with_custom_workflow");
 
             // Carriers like FedEx and UPS should hit the `/carrier_accounts/register` endpoint
+            Dictionary<string, object> data = Fixtures.BasicCarrierAccount;
+
+            Parameters.CarrierAccount.Create parameters = Fixtures.Parameters.CarrierAccounts.CreateFedEx(data);
+
             try
             {
-                Dictionary<string, object> data = Fixtures.BasicCarrierAccount;
-                data["type"] = "FedexAccount";
-                data["registration_data"] = new Dictionary<string, object>();
-
-                Parameters.CarrierAccount.Create parameters = Fixtures.Parameters.CarrierAccounts.Create(data);
-
+                // confirms we can pass in CreateFedEx and CreateUps parameters to the same Create method because they are children of the generic Create class
                 CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
                 CleanUpAfterTest(carrierAccount.Id);
             }
-            catch (InvalidRequestError e)
+
+            catch (BadRequestError e)
             {
                 // the data we're sending is invalid, we want to check that the API error is because of malformed data and not due to the endpoint
-                Assert.Equal(422, e.StatusCode);  // 422 is fine. We don't want a 404 not found
+                Assert.Equal(400, e.StatusCode); // 400 is fine. We don't want a 404 not found
                 Assert.NotNull(e.Errors);
-                Assert.Contains(e.Errors, error => error is { Field: "account_number", Message: "must be present and a string" });
+                Assert.Contains(e.Errors, error => error is { Message: "Invalid Customer Account Nbr" });
 
                 // Check the cassette to make sure the endpoint is correct (it should be carrier_accounts/register)
+                // Check the cassette to make sure the "registration_data" key is populated in the request body
             }
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Exception]
+        public async Task TestPreventUsersUsingGenericParameterSetWithCustomWorkflow()
+        {
+            UseVCR("prevent_users_using_generic_parameter_set_with_custom_workflow");
+
+            // Generic Create parameter set configured for DHL
+            Dictionary<string, object> data = Fixtures.BasicCarrierAccount;
+
+            // Override the type to be a custom type
+            data["type"] = Constants.CarrierAccountTypes.FedExAccount;
+            data["registration_data"] = new Dictionary<string, object>();
+
+            Parameters.CarrierAccount.Create parameters = Fixtures.Parameters.CarrierAccounts.Create(data);
+
+            // should raise an exception because we're using a generic Create set with a custom workflow type (FedExAccount)
+            await Assert.ThrowsAsync<InvalidParameterError>(async () => await Client.CarrierAccount.Create(parameters));
         }
 
         [Fact]

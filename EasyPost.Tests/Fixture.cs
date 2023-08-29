@@ -230,6 +230,36 @@ namespace EasyPost.Tests._Utilities
                         RegistrationData = fixture.GetOrNull<Dictionary<string, object?>>("registration_data"),
                     };
                 }
+
+                internal static ParameterSets.CarrierAccount.CreateFedEx CreateFedEx(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new ParameterSets.CarrierAccount.CreateFedEx
+                    {
+                        Description = fixture.GetOrNull<string>("description"),
+                        Reference = fixture.GetOrNull<string>("reference"),
+                        Credentials = fixture.GetOrNull<Dictionary<string, object?>>("credentials"),
+                        TestCredentials = fixture.GetOrNull<Dictionary<string, object?>>("test_credentials"),
+                        AccountNumber = "123456789",
+                        CorporateAddressCity = "San Francisco",
+                        CorporateAddressCountryCode = "US",
+                        CorporateAddressPostalCode = "94105",
+                        CorporateAddressState = "CA",
+                        CorporateAddressStreet = "345 California St",
+                        CorporateCompanyName = "EasyPost",
+                        CorporateEmailAddress = "me@example.com",
+                        CorporateFirstName = "Demo",
+                        CorporateLastName = "User",
+                        CorporateJobTitle = "Developer",
+                        CorporatePhoneNumber = "5555555555",
+                        ShippingAddressCity = "San Francisco",
+                        ShippingAddressCountryCode = "US",
+                        ShippingAddressPostalCode = "94105",
+                        ShippingAddressState = "CA",
+                        ShippingAddressStreet = "345 California St",
+                    };
+                }
             }
 
             internal static class CustomsInfo
@@ -618,7 +648,7 @@ namespace EasyPost.Tests._Utilities
                         Parcel = Parcels.Create(parcelFixture),
                         CustomsInfo = CustomsInfo.Create(customsInfoFixture),
                         Options = Options(optionsFixture),
-                        CarbonOffset = fixture.GetOrDefault<bool>("carbon_offset"),  // this will always be true or false, never null
+                        CarbonOffset = fixture.GetOrDefault<bool>("carbon_offset"), // this will always be true or false, never null
                         CarrierAccountIds = fixture.GetOrNull<List<string>>("carrier_accounts"),
                         Carrier = fixture.GetOrNull<string>("carrier"),
                         Service = fixture.GetOrNull<string>("service"),
