@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v5.5.0 (2023-08-29)
+
+- Add custom parameter sets (`CreateFedEx`, `CreateUps`) for carrier account creation API calls
+  - Users required to use these parameter sets if creating a FedEx or UPS account
+
 ## v5.4.1 (2023-08-17)
 
 - Fix incorrect JSON mapping for `EasyPostEstimatedDeliveryDate`
