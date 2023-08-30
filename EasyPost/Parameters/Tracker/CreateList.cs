@@ -9,7 +9,7 @@ namespace EasyPost.Parameters.Tracker
     ///     Parameters for <see cref="EasyPost.Services.TrackerService.CreateList(CreateList, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class CreateList : BaseParameters, ITrackerParameter
+    public class CreateList : BaseParameters<Models.API.Tracker>, ITrackerParameter
     {
         #region Request Parameters
 
@@ -37,7 +37,7 @@ namespace EasyPost.Parameters.Tracker
         }
 
         /// <summary>
-        ///     Override the default <see cref="BaseParameters.ToDictionary"/> method to handle the unique serialization requirements for this parameter set.
+        ///     Override the default <see cref="BaseParameters{TMatchInputType}.ToDictionary"/> method to handle the unique serialization requirements for this parameter set.
         /// </summary>
         /// <returns>A <see cref="Dictionary{TKey,TValue}"/>.</returns>
         public override Dictionary<string, object> ToDictionary()

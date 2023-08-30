@@ -9,7 +9,7 @@ namespace EasyPost.Parameters.CarrierMetadata
     ///     <a href="https://www.easypost.com/docs/api#retrieve-carrier-metadata">Parameters</a> for <see cref="EasyPost.Services.CarrierMetadataService.Retrieve(Retrieve, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class Retrieve : BaseParameters
+    public class Retrieve : BaseParameters<Models.API.CarrierMetadata>
     {
         #region Request Parameters
 
@@ -26,7 +26,7 @@ namespace EasyPost.Parameters.CarrierMetadata
         #endregion
 
         /// <summary>
-        ///     Override the default <see cref="BaseParameters.ToDictionary"/> method to handle the unique serialization requirements for this parameter set.
+        ///     Override the default <see cref="BaseParameters{TMatchInputType}.ToDictionary"/> method to handle the unique serialization requirements for this parameter set.
         /// </summary>
         /// <returns>A <see cref="Dictionary{TKey,TValue}"/>.</returns>
         public override Dictionary<string, object> ToDictionary()

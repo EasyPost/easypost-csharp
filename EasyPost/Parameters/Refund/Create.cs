@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.Refund
     ///     <a href="https://www.easypost.com/docs/api#create-a-refund">Parameters</a> for <see cref="EasyPost.Services.RefundService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class Create : BaseParameters, IRefundParameter
+    public class Create : BaseParameters<Models.API.Refund>, IRefundParameter
     {
         #region Request Parameters
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using EasyPost._base;
 using EasyPost.Utilities.Internal;
 using Newtonsoft.Json;
 
@@ -10,7 +11,7 @@ namespace EasyPost.Models.API.Beta
     ///     Class representing an <a href="https://www.easypost.com/docs/api#carriermetadata-object">EasyPost carrier metadata summary</a>.
     /// </summary>
     [Obsolete("This class is deprecated. Please use EasyPost.Models.API.CarrierMetadata instead. This class will be removed in a future version.", false)]
-    public class CarrierMetadata
+    public class CarrierMetadata : EasyPostObject
     {
         #region JSON Properties
 

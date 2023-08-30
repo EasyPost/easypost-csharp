@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.Batch
     ///     <a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Parameters</a> for <see cref="EasyPost.Services.BatchService.AddShipments(string, AddShipments, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class AddShipments : BaseParameters
+    public class AddShipments : BaseParameters<Models.API.Batch>
     {
         #region Request Parameters
 

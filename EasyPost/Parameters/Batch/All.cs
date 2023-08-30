@@ -9,7 +9,7 @@ namespace EasyPost.Parameters.Batch
     ///     <a href="https://www.easypost.com/docs/api#list-all-batches">Parameters</a> for <see cref="EasyPost.Services.BatchService.All(All, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class All : BaseAllParameters
+    public class All : BaseAllParameters<Models.API.Batch>
     {
         #region Request Parameters
 

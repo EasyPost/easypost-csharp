@@ -15,7 +15,7 @@ namespace EasyPost.Parameters
     /// <summary>
     ///     Base class for all parameters used in functions.
     /// </summary>
-    public abstract class BaseParameters
+    public abstract class BaseParameters<TMatchInputType> : IBaseParameters where TMatchInputType : EphemeralEasyPostObject
     {
         /*
          * NOTES:
@@ -31,9 +31,22 @@ namespace EasyPost.Parameters
         private Dictionary<string, object?> _parameterDictionary;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BaseParameters"/> class for a new set of request parameters.
+        ///     A function to determine if a given object matches this parameter set.
+        ///     Defaults to always returning false, but can be overridden by child classes and end-users.
+        /// </summary>
+        public Func<TMatchInputType, bool> MatchFunction { get; set; } = _ => false;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BaseParameters{TMatchInputType}"/> class for a new set of request parameters.
         /// </summary>
         protected BaseParameters() => _parameterDictionary = new Dictionary<string, object?>();
+
+        /// <summary>
+        ///     Execute the match function on a given object.
+        /// </summary>
+        /// <param name="obj">The <see cref="EasyPostObject"/> to compare this parameter set against.</param>
+        /// <returns>The result of the <see cref="MatchFunction"/></returns>
+        public bool Matches(TMatchInputType obj) => MatchFunction(obj);
 
         /// <summary>
         ///     Convert this parameter object to a dictionary for an HTTP request.
@@ -91,7 +104,7 @@ namespace EasyPost.Parameters
         ///     embedded.
         /// </param>
         /// <returns><see cref="Dictionary{TKey,TValue}" /> of parameters.</returns>
-        protected virtual Dictionary<string, object> ToSubDictionary(Type parentParameterObjectType)
+        public virtual Dictionary<string, object> ToSubDictionary(Type parentParameterObjectType)
         {
             // Construct the dictionary of all parameters
             PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance |
@@ -161,7 +174,7 @@ namespace EasyPost.Parameters
                 // If the given value is another base-Parameters object, serialize it as a sub-dictionary for the parent dictionary
                 // This is because the JSON schema for a sub-object is different than the JSON schema for a top-level object
                 // e.g. the schema for an address in the address create API call is different than the schema for an address in the shipment create API call
-                case BaseParameters parameters:
+                case IBaseParameters parameters: // TODO: if issues arise with this function, look at the type constraint on BaseParameters here
                     return parameters.ToSubDictionary(GetType());
                 // If the given value is a list, serialize each element of the list
                 case IList list:

@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.Beta.Rate
     ///     <a href="https://www.easypost.com/docs/api#retrieve-rates-for-a-shipment">Parameters</a> for <see cref="EasyPost.Services.Beta.RateService.RetrieveStatelessRates(Retrieve, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class Retrieve : BaseParameters
+    public class Retrieve : BaseParameters<Models.API.Beta.StatelessRate>
     {
         #region Request Parameters
 

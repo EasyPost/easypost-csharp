@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.EndShipper
     ///     <a href="https://www.easypost.com/docs/api#create-an-endshipper">Parameters</a> for <see cref="EasyPost.Services.EndShipperService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class Create : BaseParameters, IEndShipperParameter
+    public class Create : BaseParameters<Models.API.EndShipper>, IEndShipperParameter
     {
         #region Request Parameters
 

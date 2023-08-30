@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.Order
     ///     <a href="https://www.easypost.com/docs/api#buy-an-order">Parameters</a> for <see cref="EasyPost.Services.OrderService.Buy(string, Buy, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class Buy : BaseParameters
+    public class Buy : BaseParameters<Models.API.Order>
     {
         #region Request Parameters
 

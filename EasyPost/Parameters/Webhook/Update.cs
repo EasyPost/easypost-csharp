@@ -8,7 +8,7 @@ namespace EasyPost.Parameters.Webhook
     ///     <a href="https://www.easypost.com/docs/api#update-a-webhook">Parameters</a> for <see cref="EasyPost.Services.WebhookService.Update(string, Update, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class Update : BaseParameters
+    public class Update : BaseParameters<Models.API.Webhook>
     {
         #region Request Parameters
 

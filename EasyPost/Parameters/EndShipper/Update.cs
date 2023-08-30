@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.EndShipper
     ///     <a href="https://www.easypost.com/docs/api#update-an-endshipper">Parameters</a> for <see cref="EasyPost.Services.EndShipperService.Update(string, Update, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class Update : BaseParameters
+    public class Update : BaseParameters<Models.API.EndShipper>
     {
         #region Request Parameters
 

@@ -7,7 +7,7 @@ namespace EasyPost.Parameters.Shipment
     ///     <a href="https://www.easypost.com/docs/api#retrieve-estimated-delivery-date-and-total-transit-days-across-all-rates-for-a-shipment">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.RetrieveEstimatedDeliveryDate(string, RetrieveEstimatedDeliveryDate, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class RetrieveEstimatedDeliveryDate : BaseParameters
+    public class RetrieveEstimatedDeliveryDate : BaseParameters<Models.API.Shipment>
     {
         #region Request Parameters
 

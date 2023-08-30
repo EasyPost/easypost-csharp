@@ -9,7 +9,7 @@ namespace EasyPost.Parameters.ScanForm
     ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-scanforms">Parameters</a> for <see cref="EasyPost.Services.ScanFormService.All(All, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class All : BaseAllParameters
+    public class All : BaseAllParameters<Models.API.ScanForm>
     {
         #region Request Parameters
 
