@@ -174,7 +174,7 @@ namespace EasyPost.Parameters
                 // If the given value is another base-Parameters object, serialize it as a sub-dictionary for the parent dictionary
                 // This is because the JSON schema for a sub-object is different than the JSON schema for a top-level object
                 // e.g. the schema for an address in the address create API call is different than the schema for an address in the shipment create API call
-                case IBaseParameters parameters: // todo: if issues arise with this function, look at the type constraint on BaseParameters here
+                case IBaseParameters parameters: // TODO: if issues arise with this function, look at the type constraint on BaseParameters here
                     return parameters.ToSubDictionary(GetType());
                 // If the given value is a list, serialize each element of the list
                 case IList list:
