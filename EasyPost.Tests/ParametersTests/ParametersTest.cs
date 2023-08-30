@@ -137,7 +137,7 @@ namespace EasyPost.Tests.ParametersTests
             Assert.Throws<Exceptions.General.MissingParameterError>(() => parametersWithOnlyOptionalParameterSet.ToDictionary());
         }
 
-        private sealed class ParameterSetWithRequiredAndOptionalParameters : Parameters.BaseParameters
+        private sealed class ParameterSetWithRequiredAndOptionalParameters : Parameters.BaseParameters<EasyPostObject>
         {
             [TopLevelRequestParameter(Necessity.Required, "test", "required")]
             public string? RequiredParameter { get; set; }
