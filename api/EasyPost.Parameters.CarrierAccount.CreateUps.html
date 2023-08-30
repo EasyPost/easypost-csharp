@@ -78,12 +78,13 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="EasyPost.Parameters.BaseParameters.html">BaseParameters</a></div>
+    <div class="level1"><a class="xref" href="EasyPost.Parameters.BaseParameters-1.html">BaseParameters</a>&lt;<a class="xref" href="EasyPost.Models.API.CarrierAccount.html">CarrierAccount</a>&gt;</div>
     <div class="level2"><a class="xref" href="EasyPost.Parameters.CarrierAccount.Create.html">Create</a></div>
     <div class="level3"><span class="xref">CreateUps</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
+    <div><a class="xref" href="EasyPost.Parameters.IBaseParameters.html">IBaseParameters</a></div>
     <div><a class="xref" href="EasyPost.Parameters.ICarrierAccountParameter.html">ICarrierAccountParameter</a></div>
     <div><a class="xref" href="EasyPost.Parameters.IParameter.html">IParameter</a></div>
   </div>
@@ -108,17 +109,23 @@
       <a class="xref" href="EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_RegistrationData">Create.RegistrationData</a>
     </div>
     <div>
-      <a class="xref" href="EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToDictionary">BaseParameters.ToDictionary()</a>
+      <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_MatchFunction">BaseParameters&lt;CarrierAccount&gt;.MatchFunction</a>
     </div>
     <div>
-      <a class="xref" href="EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToSubDictionary_Type_">BaseParameters.ToSubDictionary(Type)</a>
+      <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_Matches__0_">BaseParameters&lt;CarrierAccount&gt;.Matches(CarrierAccount)</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_ToDictionary">BaseParameters&lt;CarrierAccount&gt;.ToDictionary()</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_ToSubDictionary_Type_">BaseParameters&lt;CarrierAccount&gt;.ToSubDictionary(Type)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EasyPost.Parameters.CarrierAccount.html">EasyPost.Parameters.CarrierAccount</a></h6>
   <h6><strong>Assembly</strong>: EasyPost.dll</h6>
   <h5 id="EasyPost_Parameters_CarrierAccount_CreateUps_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CreateUps : Create, ICarrierAccountParameter, IParameter</code></pre>
+    <pre><code class="lang-csharp hljs">public class CreateUps : Create, IBaseParameters, ICarrierAccountParameter, IParameter</code></pre>
   </div>
   <h3 id="constructors">Constructors
 </h3>
@@ -699,6 +706,9 @@
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="EasyPost.Parameters.IBaseParameters.html">IBaseParameters</a>
+  </div>
   <div>
       <a class="xref" href="EasyPost.Parameters.ICarrierAccountParameter.html">ICarrierAccountParameter</a>
   </div>

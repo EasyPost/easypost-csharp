@@ -9932,73 +9932,127 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Address.Create.Zip
   nameWithType: Create.Zip
-- uid: EasyPost.Parameters.BaseAllParameters
-  name: BaseAllParameters
-  href: api/EasyPost.Parameters.BaseAllParameters.html
-  commentId: T:EasyPost.Parameters.BaseAllParameters
-  fullName: EasyPost.Parameters.BaseAllParameters
-  nameWithType: BaseAllParameters
-- uid: EasyPost.Parameters.BaseAllParameters.FromDictionary(System.Nullable{Dictionary{System.String,System.Object}})
+- uid: EasyPost.Parameters.BaseAllParameters`1
+  name: BaseAllParameters<TMatchInputType>
+  href: api/EasyPost.Parameters.BaseAllParameters-1.html
+  commentId: T:EasyPost.Parameters.BaseAllParameters`1
+  name.vb: BaseAllParameters(Of TMatchInputType)
+  fullName: EasyPost.Parameters.BaseAllParameters<TMatchInputType>
+  fullName.vb: EasyPost.Parameters.BaseAllParameters(Of TMatchInputType)
+  nameWithType: BaseAllParameters<TMatchInputType>
+  nameWithType.vb: BaseAllParameters(Of TMatchInputType)
+- uid: EasyPost.Parameters.BaseAllParameters`1.FromDictionary(System.Nullable{Dictionary{System.String,System.Object}})
   name: FromDictionary(Nullable<Dictionary<String, Object>>)
-  href: api/EasyPost.Parameters.BaseAllParameters.html#EasyPost_Parameters_BaseAllParameters_FromDictionary_System_Nullable_Dictionary_System_String_System_Object___
-  commentId: M:EasyPost.Parameters.BaseAllParameters.FromDictionary(System.Nullable{Dictionary{System.String,System.Object}})
+  href: api/EasyPost.Parameters.BaseAllParameters-1.html#EasyPost_Parameters_BaseAllParameters_1_FromDictionary_System_Nullable_Dictionary_System_String_System_Object___
+  commentId: M:EasyPost.Parameters.BaseAllParameters`1.FromDictionary(System.Nullable{Dictionary{System.String,System.Object}})
   name.vb: FromDictionary(Nullable(Of Dictionary(Of String, Object)))
-  fullName: EasyPost.Parameters.BaseAllParameters.FromDictionary(System.Nullable<Dictionary<System.String, System.Object>>)
-  fullName.vb: EasyPost.Parameters.BaseAllParameters.FromDictionary(System.Nullable(Of Dictionary(Of System.String, System.Object)))
-  nameWithType: BaseAllParameters.FromDictionary(Nullable<Dictionary<String, Object>>)
-  nameWithType.vb: BaseAllParameters.FromDictionary(Nullable(Of Dictionary(Of String, Object)))
-- uid: EasyPost.Parameters.BaseAllParameters.FromDictionary*
+  fullName: EasyPost.Parameters.BaseAllParameters<TMatchInputType>.FromDictionary(System.Nullable<Dictionary<System.String, System.Object>>)
+  fullName.vb: EasyPost.Parameters.BaseAllParameters(Of TMatchInputType).FromDictionary(System.Nullable(Of Dictionary(Of System.String, System.Object)))
+  nameWithType: BaseAllParameters<TMatchInputType>.FromDictionary(Nullable<Dictionary<String, Object>>)
+  nameWithType.vb: BaseAllParameters(Of TMatchInputType).FromDictionary(Nullable(Of Dictionary(Of String, Object)))
+- uid: EasyPost.Parameters.BaseAllParameters`1.FromDictionary*
   name: FromDictionary
-  href: api/EasyPost.Parameters.BaseAllParameters.html#EasyPost_Parameters_BaseAllParameters_FromDictionary_
-  commentId: Overload:EasyPost.Parameters.BaseAllParameters.FromDictionary
+  href: api/EasyPost.Parameters.BaseAllParameters-1.html#EasyPost_Parameters_BaseAllParameters_1_FromDictionary_
+  commentId: Overload:EasyPost.Parameters.BaseAllParameters`1.FromDictionary
   isSpec: "True"
-  fullName: EasyPost.Parameters.BaseAllParameters.FromDictionary
-  nameWithType: BaseAllParameters.FromDictionary
-- uid: EasyPost.Parameters.BaseParameters
-  name: BaseParameters
-  href: api/EasyPost.Parameters.BaseParameters.html
-  commentId: T:EasyPost.Parameters.BaseParameters
-  fullName: EasyPost.Parameters.BaseParameters
-  nameWithType: BaseParameters
-- uid: EasyPost.Parameters.BaseParameters.#ctor
+  fullName: EasyPost.Parameters.BaseAllParameters<TMatchInputType>.FromDictionary
+  fullName.vb: EasyPost.Parameters.BaseAllParameters(Of TMatchInputType).FromDictionary
+  nameWithType: BaseAllParameters<TMatchInputType>.FromDictionary
+  nameWithType.vb: BaseAllParameters(Of TMatchInputType).FromDictionary
+- uid: EasyPost.Parameters.BaseParameters`1
+  name: BaseParameters<TMatchInputType>
+  href: api/EasyPost.Parameters.BaseParameters-1.html
+  commentId: T:EasyPost.Parameters.BaseParameters`1
+  name.vb: BaseParameters(Of TMatchInputType)
+  fullName: EasyPost.Parameters.BaseParameters<TMatchInputType>
+  fullName.vb: EasyPost.Parameters.BaseParameters(Of TMatchInputType)
+  nameWithType: BaseParameters<TMatchInputType>
+  nameWithType.vb: BaseParameters(Of TMatchInputType)
+- uid: EasyPost.Parameters.BaseParameters`1.#ctor
   name: BaseParameters()
-  href: api/EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters__ctor
-  commentId: M:EasyPost.Parameters.BaseParameters.#ctor
-  fullName: EasyPost.Parameters.BaseParameters.BaseParameters()
-  nameWithType: BaseParameters.BaseParameters()
-- uid: EasyPost.Parameters.BaseParameters.#ctor*
+  href: api/EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1__ctor
+  commentId: M:EasyPost.Parameters.BaseParameters`1.#ctor
+  fullName: EasyPost.Parameters.BaseParameters<TMatchInputType>.BaseParameters()
+  fullName.vb: EasyPost.Parameters.BaseParameters(Of TMatchInputType).BaseParameters()
+  nameWithType: BaseParameters<TMatchInputType>.BaseParameters()
+  nameWithType.vb: BaseParameters(Of TMatchInputType).BaseParameters()
+- uid: EasyPost.Parameters.BaseParameters`1.#ctor*
   name: BaseParameters
-  href: api/EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters__ctor_
-  commentId: Overload:EasyPost.Parameters.BaseParameters.#ctor
+  href: api/EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1__ctor_
+  commentId: Overload:EasyPost.Parameters.BaseParameters`1.#ctor
   isSpec: "True"
-  fullName: EasyPost.Parameters.BaseParameters.BaseParameters
-  nameWithType: BaseParameters.BaseParameters
-- uid: EasyPost.Parameters.BaseParameters.ToDictionary
+  fullName: EasyPost.Parameters.BaseParameters<TMatchInputType>.BaseParameters
+  fullName.vb: EasyPost.Parameters.BaseParameters(Of TMatchInputType).BaseParameters
+  nameWithType: BaseParameters<TMatchInputType>.BaseParameters
+  nameWithType.vb: BaseParameters(Of TMatchInputType).BaseParameters
+- uid: EasyPost.Parameters.BaseParameters`1.Matches(`0)
+  name: Matches(TMatchInputType)
+  href: api/EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_Matches__0_
+  commentId: M:EasyPost.Parameters.BaseParameters`1.Matches(`0)
+  fullName: EasyPost.Parameters.BaseParameters<TMatchInputType>.Matches(TMatchInputType)
+  fullName.vb: EasyPost.Parameters.BaseParameters(Of TMatchInputType).Matches(TMatchInputType)
+  nameWithType: BaseParameters<TMatchInputType>.Matches(TMatchInputType)
+  nameWithType.vb: BaseParameters(Of TMatchInputType).Matches(TMatchInputType)
+- uid: EasyPost.Parameters.BaseParameters`1.Matches*
+  name: Matches
+  href: api/EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_Matches_
+  commentId: Overload:EasyPost.Parameters.BaseParameters`1.Matches
+  isSpec: "True"
+  fullName: EasyPost.Parameters.BaseParameters<TMatchInputType>.Matches
+  fullName.vb: EasyPost.Parameters.BaseParameters(Of TMatchInputType).Matches
+  nameWithType: BaseParameters<TMatchInputType>.Matches
+  nameWithType.vb: BaseParameters(Of TMatchInputType).Matches
+- uid: EasyPost.Parameters.BaseParameters`1.MatchFunction
+  name: MatchFunction
+  href: api/EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_MatchFunction
+  commentId: P:EasyPost.Parameters.BaseParameters`1.MatchFunction
+  fullName: EasyPost.Parameters.BaseParameters<TMatchInputType>.MatchFunction
+  fullName.vb: EasyPost.Parameters.BaseParameters(Of TMatchInputType).MatchFunction
+  nameWithType: BaseParameters<TMatchInputType>.MatchFunction
+  nameWithType.vb: BaseParameters(Of TMatchInputType).MatchFunction
+- uid: EasyPost.Parameters.BaseParameters`1.MatchFunction*
+  name: MatchFunction
+  href: api/EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_MatchFunction_
+  commentId: Overload:EasyPost.Parameters.BaseParameters`1.MatchFunction
+  isSpec: "True"
+  fullName: EasyPost.Parameters.BaseParameters<TMatchInputType>.MatchFunction
+  fullName.vb: EasyPost.Parameters.BaseParameters(Of TMatchInputType).MatchFunction
+  nameWithType: BaseParameters<TMatchInputType>.MatchFunction
+  nameWithType.vb: BaseParameters(Of TMatchInputType).MatchFunction
+- uid: EasyPost.Parameters.BaseParameters`1.ToDictionary
   name: ToDictionary()
-  href: api/EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToDictionary
-  commentId: M:EasyPost.Parameters.BaseParameters.ToDictionary
-  fullName: EasyPost.Parameters.BaseParameters.ToDictionary()
-  nameWithType: BaseParameters.ToDictionary()
-- uid: EasyPost.Parameters.BaseParameters.ToDictionary*
+  href: api/EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_ToDictionary
+  commentId: M:EasyPost.Parameters.BaseParameters`1.ToDictionary
+  fullName: EasyPost.Parameters.BaseParameters<TMatchInputType>.ToDictionary()
+  fullName.vb: EasyPost.Parameters.BaseParameters(Of TMatchInputType).ToDictionary()
+  nameWithType: BaseParameters<TMatchInputType>.ToDictionary()
+  nameWithType.vb: BaseParameters(Of TMatchInputType).ToDictionary()
+- uid: EasyPost.Parameters.BaseParameters`1.ToDictionary*
   name: ToDictionary
-  href: api/EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToDictionary_
-  commentId: Overload:EasyPost.Parameters.BaseParameters.ToDictionary
+  href: api/EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_ToDictionary_
+  commentId: Overload:EasyPost.Parameters.BaseParameters`1.ToDictionary
   isSpec: "True"
-  fullName: EasyPost.Parameters.BaseParameters.ToDictionary
-  nameWithType: BaseParameters.ToDictionary
-- uid: EasyPost.Parameters.BaseParameters.ToSubDictionary(Type)
+  fullName: EasyPost.Parameters.BaseParameters<TMatchInputType>.ToDictionary
+  fullName.vb: EasyPost.Parameters.BaseParameters(Of TMatchInputType).ToDictionary
+  nameWithType: BaseParameters<TMatchInputType>.ToDictionary
+  nameWithType.vb: BaseParameters(Of TMatchInputType).ToDictionary
+- uid: EasyPost.Parameters.BaseParameters`1.ToSubDictionary(Type)
   name: ToSubDictionary(Type)
-  href: api/EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToSubDictionary_Type_
-  commentId: M:EasyPost.Parameters.BaseParameters.ToSubDictionary(Type)
-  fullName: EasyPost.Parameters.BaseParameters.ToSubDictionary(Type)
-  nameWithType: BaseParameters.ToSubDictionary(Type)
-- uid: EasyPost.Parameters.BaseParameters.ToSubDictionary*
+  href: api/EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_ToSubDictionary_Type_
+  commentId: M:EasyPost.Parameters.BaseParameters`1.ToSubDictionary(Type)
+  fullName: EasyPost.Parameters.BaseParameters<TMatchInputType>.ToSubDictionary(Type)
+  fullName.vb: EasyPost.Parameters.BaseParameters(Of TMatchInputType).ToSubDictionary(Type)
+  nameWithType: BaseParameters<TMatchInputType>.ToSubDictionary(Type)
+  nameWithType.vb: BaseParameters(Of TMatchInputType).ToSubDictionary(Type)
+- uid: EasyPost.Parameters.BaseParameters`1.ToSubDictionary*
   name: ToSubDictionary
-  href: api/EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToSubDictionary_
-  commentId: Overload:EasyPost.Parameters.BaseParameters.ToSubDictionary
+  href: api/EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_ToSubDictionary_
+  commentId: Overload:EasyPost.Parameters.BaseParameters`1.ToSubDictionary
   isSpec: "True"
-  fullName: EasyPost.Parameters.BaseParameters.ToSubDictionary
-  nameWithType: BaseParameters.ToSubDictionary
+  fullName: EasyPost.Parameters.BaseParameters<TMatchInputType>.ToSubDictionary
+  fullName.vb: EasyPost.Parameters.BaseParameters(Of TMatchInputType).ToSubDictionary
+  nameWithType: BaseParameters<TMatchInputType>.ToSubDictionary
+  nameWithType.vb: BaseParameters(Of TMatchInputType).ToSubDictionary
 - uid: EasyPost.Parameters.Batch
   name: EasyPost.Parameters.Batch
   href: api/EasyPost.Parameters.Batch.html
@@ -11690,6 +11744,38 @@ references:
   commentId: T:EasyPost.Parameters.IAddressParameter
   fullName: EasyPost.Parameters.IAddressParameter
   nameWithType: IAddressParameter
+- uid: EasyPost.Parameters.IBaseParameters
+  name: IBaseParameters
+  href: api/EasyPost.Parameters.IBaseParameters.html
+  commentId: T:EasyPost.Parameters.IBaseParameters
+  fullName: EasyPost.Parameters.IBaseParameters
+  nameWithType: IBaseParameters
+- uid: EasyPost.Parameters.IBaseParameters.ToDictionary
+  name: ToDictionary()
+  href: api/EasyPost.Parameters.IBaseParameters.html#EasyPost_Parameters_IBaseParameters_ToDictionary
+  commentId: M:EasyPost.Parameters.IBaseParameters.ToDictionary
+  fullName: EasyPost.Parameters.IBaseParameters.ToDictionary()
+  nameWithType: IBaseParameters.ToDictionary()
+- uid: EasyPost.Parameters.IBaseParameters.ToDictionary*
+  name: ToDictionary
+  href: api/EasyPost.Parameters.IBaseParameters.html#EasyPost_Parameters_IBaseParameters_ToDictionary_
+  commentId: Overload:EasyPost.Parameters.IBaseParameters.ToDictionary
+  isSpec: "True"
+  fullName: EasyPost.Parameters.IBaseParameters.ToDictionary
+  nameWithType: IBaseParameters.ToDictionary
+- uid: EasyPost.Parameters.IBaseParameters.ToSubDictionary(Type)
+  name: ToSubDictionary(Type)
+  href: api/EasyPost.Parameters.IBaseParameters.html#EasyPost_Parameters_IBaseParameters_ToSubDictionary_Type_
+  commentId: M:EasyPost.Parameters.IBaseParameters.ToSubDictionary(Type)
+  fullName: EasyPost.Parameters.IBaseParameters.ToSubDictionary(Type)
+  nameWithType: IBaseParameters.ToSubDictionary(Type)
+- uid: EasyPost.Parameters.IBaseParameters.ToSubDictionary*
+  name: ToSubDictionary
+  href: api/EasyPost.Parameters.IBaseParameters.html#EasyPost_Parameters_IBaseParameters_ToSubDictionary_
+  commentId: Overload:EasyPost.Parameters.IBaseParameters.ToSubDictionary
+  isSpec: "True"
+  fullName: EasyPost.Parameters.IBaseParameters.ToSubDictionary
+  nameWithType: IBaseParameters.ToSubDictionary
 - uid: EasyPost.Parameters.IBatchParameter
   name: IBatchParameter
   href: api/EasyPost.Parameters.IBatchParameter.html

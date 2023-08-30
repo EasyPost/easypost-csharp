@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BaseParameters
+    <title>Class BaseParameters&lt;TMatchInputType&gt;
  </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BaseParameters
+    <meta name="title" content="Class BaseParameters&lt;TMatchInputType&gt;
  ">
   
     <link rel="shortcut icon" href="../favicon.ico">
@@ -67,10 +67,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="EasyPost.Parameters.BaseParameters">
+            <article class="content wrap" id="_content" data-uid="EasyPost.Parameters.BaseParameters`1">
 
 
-  <h1 id="EasyPost_Parameters_BaseParameters" data-uid="EasyPost.Parameters.BaseParameters" class="text-break">Class BaseParameters
+  <h1 id="EasyPost_Parameters_BaseParameters_1" data-uid="EasyPost.Parameters.BaseParameters`1" class="text-break">Class BaseParameters&lt;TMatchInputType&gt;
 </h1>
   <div class="markdown level0 summary"><p>Base class for all parameters used in functions.</p>
 </div>
@@ -78,9 +78,9 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">BaseParameters</span></div>
+    <div class="level1"><span class="xref">BaseParameters&lt;TMatchInputType&gt;</span></div>
       <div class="level2"><a class="xref" href="EasyPost.Parameters.Address.Create.html">Create</a></div>
-      <div class="level2"><a class="xref" href="EasyPost.Parameters.BaseAllParameters.html">BaseAllParameters</a></div>
+      <div class="level2"><a class="xref" href="EasyPost.Parameters.BaseAllParameters-1.html">BaseAllParameters&lt;TMatchInputType&gt;</a></div>
       <div class="level2"><a class="xref" href="EasyPost.Parameters.Batch.AddShipments.html">AddShipments</a></div>
       <div class="level2"><a class="xref" href="EasyPost.Parameters.Batch.Create.html">Create</a></div>
       <div class="level2"><a class="xref" href="EasyPost.Parameters.Batch.GenerateLabel.html">GenerateLabel</a></div>
@@ -124,41 +124,144 @@
       <div class="level2"><a class="xref" href="EasyPost.Parameters.Webhook.Create.html">Create</a></div>
       <div class="level2"><a class="xref" href="EasyPost.Parameters.Webhook.Update.html">Update</a></div>
   </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="EasyPost.Parameters.IBaseParameters.html">IBaseParameters</a></div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EasyPost.Parameters.html">EasyPost.Parameters</a></h6>
   <h6><strong>Assembly</strong>: EasyPost.dll</h6>
-  <h5 id="EasyPost_Parameters_BaseParameters_syntax">Syntax</h5>
+  <h5 id="EasyPost_Parameters_BaseParameters_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class BaseParameters : object</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class BaseParameters&lt;TMatchInputType&gt; : object, IBaseParameters where TMatchInputType : EphemeralEasyPostObject</code></pre>
   </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TMatchInputType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="constructors">Constructors
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_BaseParameters__ctor.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.BaseParameters.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_BaseParameters_1__ctor.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.BaseParameters%601.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/BaseParameters.cs/#L36">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/BaseParameters.cs/#L42">View Source</a>
   </span>
-  <a id="EasyPost_Parameters_BaseParameters__ctor_" data-uid="EasyPost.Parameters.BaseParameters.#ctor*"></a>
-  <h4 id="EasyPost_Parameters_BaseParameters__ctor" data-uid="EasyPost.Parameters.BaseParameters.#ctor">BaseParameters()</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="EasyPost.Parameters.BaseParameters.html">BaseParameters</a> class for a new set of request parameters.</p>
+  <a id="EasyPost_Parameters_BaseParameters_1__ctor_" data-uid="EasyPost.Parameters.BaseParameters`1.#ctor*"></a>
+  <h4 id="EasyPost_Parameters_BaseParameters_1__ctor" data-uid="EasyPost.Parameters.BaseParameters`1.#ctor">BaseParameters()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html">BaseParameters&lt;TMatchInputType&gt;</a> class for a new set of request parameters.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected BaseParameters()</code></pre>
   </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_BaseParameters_1_MatchFunction.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.BaseParameters%601.MatchFunction%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/BaseParameters.cs/#L37">View Source</a>
+  </span>
+  <a id="EasyPost_Parameters_BaseParameters_1_MatchFunction_" data-uid="EasyPost.Parameters.BaseParameters`1.MatchFunction*"></a>
+  <h4 id="EasyPost_Parameters_BaseParameters_1_MatchFunction" data-uid="EasyPost.Parameters.BaseParameters`1.MatchFunction">MatchFunction</h4>
+  <div class="markdown level1 summary"><p>A function to determine if a given object matches this parameter set.
+Defaults to always returning false, but can be overridden by child classes and end-users.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;TMatchInputType, bool&gt; MatchFunction { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Func</span>&lt;TMatchInputType, <span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_BaseParameters_ToDictionary.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.BaseParameters.ToDictionary%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_BaseParameters_1_Matches__0_.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.BaseParameters%601.Matches(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/BaseParameters.cs/#L42">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/BaseParameters.cs/#L49">View Source</a>
   </span>
-  <a id="EasyPost_Parameters_BaseParameters_ToDictionary_" data-uid="EasyPost.Parameters.BaseParameters.ToDictionary*"></a>
-  <h4 id="EasyPost_Parameters_BaseParameters_ToDictionary" data-uid="EasyPost.Parameters.BaseParameters.ToDictionary">ToDictionary()</h4>
+  <a id="EasyPost_Parameters_BaseParameters_1_Matches_" data-uid="EasyPost.Parameters.BaseParameters`1.Matches*"></a>
+  <h4 id="EasyPost_Parameters_BaseParameters_1_Matches__0_" data-uid="EasyPost.Parameters.BaseParameters`1.Matches(`0)">Matches(TMatchInputType)</h4>
+  <div class="markdown level1 summary"><p>Execute the match function on a given object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Matches(TMatchInputType obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TMatchInputType</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>The <a class="xref" href="EasyPost._base.EasyPostObject.html">EasyPostObject</a> to compare this parameter set against.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>The result of the <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_MatchFunction">MatchFunction</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_BaseParameters_1_ToDictionary.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.BaseParameters%601.ToDictionary%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/BaseParameters.cs/#L55">View Source</a>
+  </span>
+  <a id="EasyPost_Parameters_BaseParameters_1_ToDictionary_" data-uid="EasyPost.Parameters.BaseParameters`1.ToDictionary*"></a>
+  <h4 id="EasyPost_Parameters_BaseParameters_1_ToDictionary" data-uid="EasyPost.Parameters.BaseParameters`1.ToDictionary">ToDictionary()</h4>
   <div class="markdown level1 summary"><p>Convert this parameter object to a dictionary for an HTTP request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -184,19 +287,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_BaseParameters_ToSubDictionary_Type_.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.BaseParameters.ToSubDictionary(Type)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_BaseParameters_1_ToSubDictionary_Type_.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.BaseParameters%601.ToSubDictionary(Type)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/BaseParameters.cs/#L94">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/BaseParameters.cs/#L107">View Source</a>
   </span>
-  <a id="EasyPost_Parameters_BaseParameters_ToSubDictionary_" data-uid="EasyPost.Parameters.BaseParameters.ToSubDictionary*"></a>
-  <h4 id="EasyPost_Parameters_BaseParameters_ToSubDictionary_Type_" data-uid="EasyPost.Parameters.BaseParameters.ToSubDictionary(Type)">ToSubDictionary(Type)</h4>
+  <a id="EasyPost_Parameters_BaseParameters_1_ToSubDictionary_" data-uid="EasyPost.Parameters.BaseParameters`1.ToSubDictionary*"></a>
+  <h4 id="EasyPost_Parameters_BaseParameters_1_ToSubDictionary_Type_" data-uid="EasyPost.Parameters.BaseParameters`1.ToSubDictionary(Type)">ToSubDictionary(Type)</h4>
   <div class="markdown level1 summary"><p>Convert this parameters object to a sub-dictionary, for use in a parent parameter object's dictionary.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual Dictionary&lt;string, object&gt; ToSubDictionary(Type parentParameterObjectType)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual Dictionary&lt;string, object&gt; ToSubDictionary(Type parentParameterObjectType)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -233,6 +336,10 @@ embedded.</p>
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="EasyPost.Parameters.IBaseParameters.html">IBaseParameters</a>
+  </div>
 </article>
           </div>
 
@@ -241,7 +348,7 @@ embedded.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_BaseParameters.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.BaseParameters%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_BaseParameters_1.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.BaseParameters%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
                     <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/BaseParameters.cs/#L18" class="contribution-link">View Source</a>

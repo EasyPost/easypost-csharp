@@ -78,23 +78,33 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="EasyPost.Parameters.BaseParameters.html">BaseParameters</a></div>
+    <div class="level1"><a class="xref" href="EasyPost.Parameters.BaseParameters-1.html">BaseParameters</a>&lt;<a class="xref" href="EasyPost.Models.API.Order.html">Order</a>&gt;</div>
     <div class="level2"><span class="xref">Buy</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="EasyPost.Parameters.IBaseParameters.html">IBaseParameters</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToDictionary">BaseParameters.ToDictionary()</a>
+      <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_MatchFunction">BaseParameters&lt;Order&gt;.MatchFunction</a>
     </div>
     <div>
-      <a class="xref" href="EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToSubDictionary_Type_">BaseParameters.ToSubDictionary(Type)</a>
+      <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_Matches__0_">BaseParameters&lt;Order&gt;.Matches(Order)</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_ToDictionary">BaseParameters&lt;Order&gt;.ToDictionary()</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_ToSubDictionary_Type_">BaseParameters&lt;Order&gt;.ToSubDictionary(Type)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EasyPost.Parameters.Order.html">EasyPost.Parameters.Order</a></h6>
   <h6><strong>Assembly</strong>: EasyPost.dll</h6>
   <h5 id="EasyPost_Parameters_Order_Buy_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Buy : BaseParameters</code></pre>
+    <pre><code class="lang-csharp hljs">public class Buy : BaseParameters&lt;Order&gt;, IBaseParameters</code></pre>
   </div>
   <h3 id="constructors">Constructors
 </h3>
@@ -236,6 +246,10 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="EasyPost.Parameters.IBaseParameters.html">IBaseParameters</a>
+  </div>
 </article>
           </div>
 

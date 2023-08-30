@@ -78,11 +78,12 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="EasyPost.Parameters.BaseParameters.html">BaseParameters</a></div>
+    <div class="level1"><a class="xref" href="EasyPost.Parameters.BaseParameters-1.html">BaseParameters</a>&lt;<a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>&gt;</div>
     <div class="level2"><span class="xref">Create</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
+    <div><a class="xref" href="EasyPost.Parameters.IBaseParameters.html">IBaseParameters</a></div>
     <div><a class="xref" href="EasyPost.Parameters.IEndShipperParameter.html">IEndShipperParameter</a></div>
     <div><a class="xref" href="EasyPost.Parameters.IAddressParameter.html">IAddressParameter</a></div>
     <div><a class="xref" href="EasyPost.Parameters.IParameter.html">IParameter</a></div>
@@ -90,17 +91,23 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToDictionary">BaseParameters.ToDictionary()</a>
+      <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_MatchFunction">BaseParameters&lt;EndShipper&gt;.MatchFunction</a>
     </div>
     <div>
-      <a class="xref" href="EasyPost.Parameters.BaseParameters.html#EasyPost_Parameters_BaseParameters_ToSubDictionary_Type_">BaseParameters.ToSubDictionary(Type)</a>
+      <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_Matches__0_">BaseParameters&lt;EndShipper&gt;.Matches(EndShipper)</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_ToDictionary">BaseParameters&lt;EndShipper&gt;.ToDictionary()</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html#EasyPost_Parameters_BaseParameters_1_ToSubDictionary_Type_">BaseParameters&lt;EndShipper&gt;.ToSubDictionary(Type)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EasyPost.Parameters.EndShipper.html">EasyPost.Parameters.EndShipper</a></h6>
   <h6><strong>Assembly</strong>: EasyPost.dll</h6>
   <h5 id="EasyPost_Parameters_EndShipper_Create_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Create : BaseParameters, IEndShipperParameter, IAddressParameter, IParameter</code></pre>
+    <pre><code class="lang-csharp hljs">public class Create : BaseParameters&lt;EndShipper&gt;, IBaseParameters, IEndShipperParameter, IAddressParameter, IParameter</code></pre>
   </div>
   <h3 id="properties">Properties
 </h3>
@@ -415,6 +422,9 @@
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="EasyPost.Parameters.IBaseParameters.html">IBaseParameters</a>
+  </div>
   <div>
       <a class="xref" href="EasyPost.Parameters.IEndShipperParameter.html">IEndShipperParameter</a>
   </div>
