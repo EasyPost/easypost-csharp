@@ -16905,15 +16905,15 @@ references:
   commentId: T:EasyPost.Utilities.Internal.Extensions.Dictionaries
   fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries
   nameWithType: Dictionaries
-- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Object},System.String,System.Object)
-  name: AddOrUpdate(IDictionary<String, Object>, String, Object)
-  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_IDictionary_System_String_System_Object__System_String_System_Object_
-  commentId: M:EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Object},System.String,System.Object)
-  name.vb: AddOrUpdate(IDictionary(Of String, Object), String, Object)
-  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary<System.String, System.Object>, System.String, System.Object)
-  fullName.vb: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary(Of System.String, System.Object), System.String, System.Object)
-  nameWithType: Dictionaries.AddOrUpdate(IDictionary<String, Object>, String, Object)
-  nameWithType.vb: Dictionaries.AddOrUpdate(IDictionary(Of String, Object), String, Object)
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Nullable{System.Object}},System.String,System.Nullable{System.Object})
+  name: AddOrUpdate(IDictionary<String, Nullable<Object>>, String, Nullable<Object>)
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_IDictionary_System_String_System_Nullable_System_Object___System_String_System_Nullable_System_Object__
+  commentId: M:EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Nullable{System.Object}},System.String,System.Nullable{System.Object})
+  name.vb: AddOrUpdate(IDictionary(Of String, Nullable(Of Object)), String, Nullable(Of Object))
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary<System.String, System.Nullable<System.Object>>, System.String, System.Nullable<System.Object>)
+  fullName.vb: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary(Of System.String, System.Nullable(Of System.Object)), System.String, System.Nullable(Of System.Object))
+  nameWithType: Dictionaries.AddOrUpdate(IDictionary<String, Nullable<Object>>, String, Nullable<Object>)
+  nameWithType.vb: Dictionaries.AddOrUpdate(IDictionary(Of String, Nullable(Of Object)), String, Nullable(Of Object))
 - uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate*
   name: AddOrUpdate
   href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_
