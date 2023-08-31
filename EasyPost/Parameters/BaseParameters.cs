@@ -213,17 +213,7 @@ namespace EasyPost.Parameters
 
                 // Last key left
                 case 1:
-                    string soloKey = keys[0];
-                    if (dictionary.ContainsKey(soloKey))
-                    {
-                        // Key-value pair already exists in dictionary (likely because of override parameters)
-                        // Only change the value if the existing value is null
-                        dictionary[soloKey] ??= value;
-                    }
-                    else
-                    {
-                        dictionary.Add(soloKey, value);
-                    }
+                    dictionary.AddOrUpdate(keys[0], value);
 
                     return dictionary;
 
