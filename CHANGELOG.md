@@ -4,7 +4,7 @@
 
 - Add ability to compare an EasyPost object to a parameter set object via `Matches` function
   - Users can define a custom `Matches` function on any parameter set class
-- Fix parameter set serialization that was causing GetNextPage functions to malfunction when iterating through more than two pages
+- Fix parameter set serialization that was causing issues when altering and reusing parameter sets
 
 ## v5.5.0 (2023-08-29)
 

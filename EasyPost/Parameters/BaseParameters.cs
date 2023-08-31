@@ -58,6 +58,8 @@ namespace EasyPost.Parameters
             // Bad stuff could happen if we allow end-users to convert a parameter object to a dictionary themselves and try to use it in the normal functions
             // In particular, a lot of the normal functions do additional wrapping of their dictionaries, which would result in invalid JSON schemas being sent to the API
 
+            _parameterDictionary = new Dictionary<string, object?>();
+
             // Construct the dictionary of all parameters
             PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance |
                                                                 BindingFlags.NonPublic |
@@ -106,6 +108,8 @@ namespace EasyPost.Parameters
         /// <returns><see cref="Dictionary{TKey,TValue}" /> of parameters.</returns>
         public virtual Dictionary<string, object> ToSubDictionary(Type parentParameterObjectType)
         {
+            _parameterDictionary = new Dictionary<string, object?>();
+
             // Construct the dictionary of all parameters
             PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance |
                                                                 BindingFlags.NonPublic |

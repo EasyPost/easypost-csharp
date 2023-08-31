@@ -108,6 +108,43 @@ namespace EasyPost.Tests.ParametersTests
             Assert.Equal(streetB, addressData["street1"]);
         }
 
+        /// <summary>
+        ///     This test proves that you can reuse a parameter object, and that re-serializing it will take into account any changes made to its properties since the last serialization.
+        /// </summary>
+        [Fact]
+        [Testing.Logic]
+        public void TestReusingParameterSets()
+        {
+            var parameters = new Parameters.Shipment.All
+            {
+                BeforeId = null,
+            };
+
+            // null values should not be serialized
+            var parametersDictionary = parameters.ToDictionary();
+            Assert.False(parametersDictionary.ContainsKey("before_id"));
+
+            parameters.BeforeId = "1";
+
+            // now that the property has a value, it should be serialized
+            parametersDictionary = parameters.ToDictionary();
+            Assert.True(parametersDictionary.ContainsKey("before_id"));
+            Assert.Equal("1", parametersDictionary["before_id"]);
+
+            parameters.BeforeId = "2";
+
+            // the new value should be serialized
+            parametersDictionary = parameters.ToDictionary();
+            Assert.True(parametersDictionary.ContainsKey("before_id"));
+            Assert.Equal("2", parametersDictionary["before_id"]);
+
+            parameters.BeforeId = null;
+
+            // null values should not be serialized
+            parametersDictionary = parameters.ToDictionary();
+            Assert.False(parametersDictionary.ContainsKey("before_id"));
+        }
+
         [Fact]
         [Testing.Exception]
         public void TestRequiredAndOptionalParameterValidation()
