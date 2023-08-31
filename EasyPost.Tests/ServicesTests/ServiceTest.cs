@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
@@ -33,10 +34,21 @@ namespace EasyPost.Tests.ServicesTests
 
             AddressCollection addressCollection = await Client.Address.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
 
-            AddressCollection nextPageAddressCollection = await Client.Address.GetNextPage(addressCollection);
+            string firstId = addressCollection.Addresses[0].Id;
 
-            // If the first ID in the next page is the same as the first ID in the current page, then we didn't get the next page
-            Assert.NotEqual(addressCollection.Addresses[0].Id, nextPageAddressCollection.Addresses[0].Id);
+            foreach (int _ in Enumerable.Range(0, 3))
+            {
+                if (addressCollection.HasMore is false or null)
+                {
+                    break;
+                }
+
+                addressCollection = await Client.Address.GetNextPage(addressCollection);
+                // If the first ID in the next page is the same as the first ID in the current page, then we didn't get the next page
+                Assert.NotEqual(firstId, addressCollection.Addresses[0].Id);
+
+                firstId = addressCollection.Addresses[0].Id;
+            }
         }
 
         /// <summary>
