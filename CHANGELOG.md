@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v5.6.0 (2023-08-31)
+
+- Add ability to compare an EasyPost object to a parameter set object via `Matches` function
+  - Users can define a custom `Matches` function on any parameter set class
+- Fix parameter set serialization that was causing issues when altering and reusing parameter sets
+
 ## v5.5.0 (2023-08-29)
 
 - Add custom parameter sets (`CreateFedEx`, `CreateUps`) for carrier account creation API calls
