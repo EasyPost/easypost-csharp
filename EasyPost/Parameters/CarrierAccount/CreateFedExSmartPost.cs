@@ -71,7 +71,8 @@ public class CreateFedExSmartPost : ACreate
     /// <summary>
     ///     Construct a new set of <see cref="CreateFedExSmartPost"/> parameters.
     /// </summary>
-    internal CreateFedExSmartPost() : base(CarrierAccountType.FedExSmartPost)
+    internal CreateFedExSmartPost()
+        : base(CarrierAccountType.FedExSmartPost)
     {
     }
 }

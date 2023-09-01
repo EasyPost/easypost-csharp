@@ -35,18 +35,19 @@ namespace EasyPost.Parameters.CarrierAccount
         #endregion
 
         /// <summary>
-        ///     Create a new <see cref="Create"/> instance.
+        ///     Initializes a new instance of the <see cref="Create"/> class.
         /// </summary>
         [Obsolete("Use Create(CarrierAccountType type) instead.")]
-        public Create() : base()
+        public Create()
         {
         }
 
         /// <summary>
-        ///     Create a new <see cref="Create"/> instance.
+        ///     Initializes a new instance of the <see cref="Create"/> class.
         /// </summary>
         /// <param name="type">The type of carrier account to create.</param>
-        public Create(CarrierAccountType type) : base(type)
+        public Create(CarrierAccountType type)
+            : base(type)
         {
         }
     }
@@ -83,14 +84,14 @@ namespace EasyPost.Parameters.CarrierAccount
         internal abstract string Endpoint { get; }
 
         /// <summary>
-        ///     Create a new <see cref="ACreate"/> instance.
+        ///     Initializes a new instance of the <see cref="ACreate"/> class.
         /// </summary>
         protected ACreate()
         {
         }
 
         /// <summary>
-        ///     Create a new <see cref="ACreate"/> instance.
+        ///     Initializes a new instance of the <see cref="ACreate"/> class.
         /// </summary>
         /// <param name="type">The type of carrier account to create.</param>
         protected ACreate(CarrierAccountType type)

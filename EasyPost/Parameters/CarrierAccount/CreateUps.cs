@@ -71,9 +71,10 @@ namespace EasyPost.Parameters.CarrierAccount
         #endregion
 
         /// <summary>
-        ///     Construct a new set of <see cref="CreateUps"/> parameters.
+        ///     Initializes a new instance of the <see cref="CreateUps"/> class.
         /// </summary>
-        public CreateUps() : base(CarrierAccountType.Ups)
+        public CreateUps()
+            : base(CarrierAccountType.Ups)
         {
         }
     }

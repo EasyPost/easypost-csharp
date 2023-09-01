@@ -70,7 +70,8 @@ namespace EasyPost.Parameters.CarrierAccount
         /// <summary>
         ///     Construct a new set of <see cref="CreateFedEx"/> parameters.
         /// </summary>
-        public CreateFedEx() : base(CarrierAccountType.FedEx)
+        public CreateFedEx()
+            : base(CarrierAccountType.FedEx)
         {
         }
     }

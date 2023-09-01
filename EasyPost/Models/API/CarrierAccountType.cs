@@ -71,7 +71,8 @@ public class CarrierAccountType : ValueEnum
     public static readonly CarrierAccountType Veho = new CarrierAccountType(64, "VehoAccount");
     public static readonly CarrierAccountType XDelivery = new CarrierAccountType(65, "XDeliveryAccount");
 
-    private CarrierAccountType(int id, string name) : base(id, name)
+    private CarrierAccountType(int id, string name)
+        : base(id, name)
     {
     }
 
