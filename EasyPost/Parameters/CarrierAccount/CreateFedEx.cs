@@ -68,7 +68,7 @@ namespace EasyPost.Parameters.CarrierAccount
         #endregion
 
         /// <summary>
-        ///     Construct a new set of <see cref="CreateFedEx"/> parameters.
+        ///     Initializes a new instance of the <see cref="CreateFedEx"/> class.
         /// </summary>
         public CreateFedEx()
             : base(CarrierAccountType.FedEx)

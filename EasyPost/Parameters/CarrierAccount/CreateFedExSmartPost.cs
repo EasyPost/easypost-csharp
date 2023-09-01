@@ -69,7 +69,7 @@ public class CreateFedExSmartPost : ACreate
     #endregion
 
     /// <summary>
-    ///     Construct a new set of <see cref="CreateFedExSmartPost"/> parameters.
+    ///     Initializes a new instance of the <see cref="CreateFedExSmartPost"/> class.
     /// </summary>
     internal CreateFedExSmartPost()
         : base(CarrierAccountType.FedExSmartPost)

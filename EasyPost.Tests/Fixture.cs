@@ -56,8 +56,8 @@ namespace EasyPost.Tests._Utilities
 
                 const string pickupDate = "2023-05-12";
 
-                fixture.AddOrUpdate("min_datetime", pickupDate);
-                fixture.AddOrUpdate("max_datetime", pickupDate);
+                fixture!.AddOrUpdate("min_datetime", pickupDate);
+                fixture!.AddOrUpdate("max_datetime", pickupDate);
 
                 return fixture;
             }
