@@ -1041,24 +1041,24 @@ references:
   commentId: T:EasyPost.Constants
   fullName: EasyPost.Constants
   nameWithType: Constants
-- uid: EasyPost.Constants.CarrierAccountTypes
-  name: Constants.CarrierAccountTypes
-  href: api/EasyPost.Constants.CarrierAccountTypes.html
-  commentId: T:EasyPost.Constants.CarrierAccountTypes
-  fullName: EasyPost.Constants.CarrierAccountTypes
-  nameWithType: Constants.CarrierAccountTypes
-- uid: EasyPost.Constants.CarrierAccountTypes.FedExAccount
+- uid: EasyPost.Constants.CarrierAccounts
+  name: Constants.CarrierAccounts
+  href: api/EasyPost.Constants.CarrierAccounts.html
+  commentId: T:EasyPost.Constants.CarrierAccounts
+  fullName: EasyPost.Constants.CarrierAccounts
+  nameWithType: Constants.CarrierAccounts
+- uid: EasyPost.Constants.CarrierAccounts.FedExAccount
   name: FedExAccount
-  href: api/EasyPost.Constants.CarrierAccountTypes.html#EasyPost_Constants_CarrierAccountTypes_FedExAccount
-  commentId: F:EasyPost.Constants.CarrierAccountTypes.FedExAccount
-  fullName: EasyPost.Constants.CarrierAccountTypes.FedExAccount
-  nameWithType: Constants.CarrierAccountTypes.FedExAccount
-- uid: EasyPost.Constants.CarrierAccountTypes.UpsAccount
+  href: api/EasyPost.Constants.CarrierAccounts.html#EasyPost_Constants_CarrierAccounts_FedExAccount
+  commentId: F:EasyPost.Constants.CarrierAccounts.FedExAccount
+  fullName: EasyPost.Constants.CarrierAccounts.FedExAccount
+  nameWithType: Constants.CarrierAccounts.FedExAccount
+- uid: EasyPost.Constants.CarrierAccounts.UpsAccount
   name: UpsAccount
-  href: api/EasyPost.Constants.CarrierAccountTypes.html#EasyPost_Constants_CarrierAccountTypes_UpsAccount
-  commentId: F:EasyPost.Constants.CarrierAccountTypes.UpsAccount
-  fullName: EasyPost.Constants.CarrierAccountTypes.UpsAccount
-  nameWithType: Constants.CarrierAccountTypes.UpsAccount
+  href: api/EasyPost.Constants.CarrierAccounts.html#EasyPost_Constants_CarrierAccounts_UpsAccount
+  commentId: F:EasyPost.Constants.CarrierAccounts.UpsAccount
+  fullName: EasyPost.Constants.CarrierAccounts.UpsAccount
+  nameWithType: Constants.CarrierAccounts.UpsAccount
 - uid: EasyPost.Constants.EasyPostExceptionType(HttpStatusCode)
   name: EasyPostExceptionType(HttpStatusCode)
   href: api/EasyPost.Constants.html#EasyPost_Constants_EasyPostExceptionType_HttpStatusCode_
@@ -3303,6 +3303,56 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.CarrierAccount.Type
   nameWithType: CarrierAccount.Type
+- uid: EasyPost.Models.API.CarrierAccountType
+  name: CarrierAccountType
+  href: api/EasyPost.Models.API.CarrierAccountType.html
+  commentId: T:EasyPost.Models.API.CarrierAccountType
+  fullName: EasyPost.Models.API.CarrierAccountType
+  nameWithType: CarrierAccountType
+- uid: EasyPost.Models.API.CarrierAccountType.All
+  name: All()
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_All
+  commentId: M:EasyPost.Models.API.CarrierAccountType.All
+  fullName: EasyPost.Models.API.CarrierAccountType.All()
+  nameWithType: CarrierAccountType.All()
+- uid: EasyPost.Models.API.CarrierAccountType.All*
+  name: All
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_All_
+  commentId: Overload:EasyPost.Models.API.CarrierAccountType.All
+  isSpec: "True"
+  fullName: EasyPost.Models.API.CarrierAccountType.All
+  nameWithType: CarrierAccountType.All
+- uid: EasyPost.Models.API.CarrierAccountType.FedEx
+  name: FedEx
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_FedEx
+  commentId: F:EasyPost.Models.API.CarrierAccountType.FedEx
+  fullName: EasyPost.Models.API.CarrierAccountType.FedEx
+  nameWithType: CarrierAccountType.FedEx
+- uid: EasyPost.Models.API.CarrierAccountType.FedExSmartPost
+  name: FedExSmartPost
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_FedExSmartPost
+  commentId: F:EasyPost.Models.API.CarrierAccountType.FedExSmartPost
+  fullName: EasyPost.Models.API.CarrierAccountType.FedExSmartPost
+  nameWithType: CarrierAccountType.FedExSmartPost
+- uid: EasyPost.Models.API.CarrierAccountType.Name
+  name: Name
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_Name
+  commentId: P:EasyPost.Models.API.CarrierAccountType.Name
+  fullName: EasyPost.Models.API.CarrierAccountType.Name
+  nameWithType: CarrierAccountType.Name
+- uid: EasyPost.Models.API.CarrierAccountType.Name*
+  name: Name
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_Name_
+  commentId: Overload:EasyPost.Models.API.CarrierAccountType.Name
+  isSpec: "True"
+  fullName: EasyPost.Models.API.CarrierAccountType.Name
+  nameWithType: CarrierAccountType.Name
+- uid: EasyPost.Models.API.CarrierAccountType.Ups
+  name: Ups
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_Ups
+  commentId: F:EasyPost.Models.API.CarrierAccountType.Ups
+  fullName: EasyPost.Models.API.CarrierAccountType.Ups
+  nameWithType: CarrierAccountType.Ups
 - uid: EasyPost.Models.API.CarrierDetail
   name: CarrierDetail
   href: api/EasyPost.Models.API.CarrierDetail.html
@@ -10401,12 +10451,107 @@ references:
   commentId: N:EasyPost.Parameters.CarrierAccount
   fullName: EasyPost.Parameters.CarrierAccount
   nameWithType: EasyPost.Parameters.CarrierAccount
+- uid: EasyPost.Parameters.CarrierAccount.ACreate
+  name: ACreate
+  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.ACreate
+  fullName: EasyPost.Parameters.CarrierAccount.ACreate
+  nameWithType: ACreate
+- uid: EasyPost.Parameters.CarrierAccount.ACreate.#ctor
+  name: ACreate()
+  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate__ctor
+  commentId: M:EasyPost.Parameters.CarrierAccount.ACreate.#ctor
+  fullName: EasyPost.Parameters.CarrierAccount.ACreate.ACreate()
+  nameWithType: ACreate.ACreate()
+- uid: EasyPost.Parameters.CarrierAccount.ACreate.#ctor(EasyPost.Models.API.CarrierAccountType)
+  name: ACreate(CarrierAccountType)
+  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate__ctor_EasyPost_Models_API_CarrierAccountType_
+  commentId: M:EasyPost.Parameters.CarrierAccount.ACreate.#ctor(EasyPost.Models.API.CarrierAccountType)
+  fullName: EasyPost.Parameters.CarrierAccount.ACreate.ACreate(EasyPost.Models.API.CarrierAccountType)
+  nameWithType: ACreate.ACreate(CarrierAccountType)
+- uid: EasyPost.Parameters.CarrierAccount.ACreate.#ctor(System.String)
+  name: ACreate(String)
+  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate__ctor_System_String_
+  commentId: M:EasyPost.Parameters.CarrierAccount.ACreate.#ctor(System.String)
+  fullName: EasyPost.Parameters.CarrierAccount.ACreate.ACreate(System.String)
+  nameWithType: ACreate.ACreate(String)
+- uid: EasyPost.Parameters.CarrierAccount.ACreate.#ctor*
+  name: ACreate
+  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate__ctor_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.ACreate.#ctor
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.ACreate.ACreate
+  nameWithType: ACreate.ACreate
+- uid: EasyPost.Parameters.CarrierAccount.ACreate.Description
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate_Description
+  commentId: P:EasyPost.Parameters.CarrierAccount.ACreate.Description
+  fullName: EasyPost.Parameters.CarrierAccount.ACreate.Description
+  nameWithType: ACreate.Description
+- uid: EasyPost.Parameters.CarrierAccount.ACreate.Description*
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate_Description_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.ACreate.Description
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.ACreate.Description
+  nameWithType: ACreate.Description
+- uid: EasyPost.Parameters.CarrierAccount.ACreate.Reference
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate_Reference
+  commentId: P:EasyPost.Parameters.CarrierAccount.ACreate.Reference
+  fullName: EasyPost.Parameters.CarrierAccount.ACreate.Reference
+  nameWithType: ACreate.Reference
+- uid: EasyPost.Parameters.CarrierAccount.ACreate.Reference*
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate_Reference_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.ACreate.Reference
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.ACreate.Reference
+  nameWithType: ACreate.Reference
+- uid: EasyPost.Parameters.CarrierAccount.ACreate.Type
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate_Type
+  commentId: P:EasyPost.Parameters.CarrierAccount.ACreate.Type
+  fullName: EasyPost.Parameters.CarrierAccount.ACreate.Type
+  nameWithType: ACreate.Type
+- uid: EasyPost.Parameters.CarrierAccount.ACreate.Type*
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate_Type_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.ACreate.Type
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.ACreate.Type
+  nameWithType: ACreate.Type
 - uid: EasyPost.Parameters.CarrierAccount.Create
   name: Create
   href: api/EasyPost.Parameters.CarrierAccount.Create.html
   commentId: T:EasyPost.Parameters.CarrierAccount.Create
   fullName: EasyPost.Parameters.CarrierAccount.Create
   nameWithType: Create
+- uid: EasyPost.Parameters.CarrierAccount.Create.#ctor
+  name: Create()
+  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create__ctor
+  commentId: M:EasyPost.Parameters.CarrierAccount.Create.#ctor
+  fullName: EasyPost.Parameters.CarrierAccount.Create.Create()
+  nameWithType: Create.Create()
+- uid: EasyPost.Parameters.CarrierAccount.Create.#ctor(EasyPost.Models.API.CarrierAccountType)
+  name: Create(CarrierAccountType)
+  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create__ctor_EasyPost_Models_API_CarrierAccountType_
+  commentId: M:EasyPost.Parameters.CarrierAccount.Create.#ctor(EasyPost.Models.API.CarrierAccountType)
+  fullName: EasyPost.Parameters.CarrierAccount.Create.Create(EasyPost.Models.API.CarrierAccountType)
+  nameWithType: Create.Create(CarrierAccountType)
+- uid: EasyPost.Parameters.CarrierAccount.Create.#ctor(System.String)
+  name: Create(String)
+  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create__ctor_System_String_
+  commentId: M:EasyPost.Parameters.CarrierAccount.Create.#ctor(System.String)
+  fullName: EasyPost.Parameters.CarrierAccount.Create.Create(System.String)
+  nameWithType: Create.Create(String)
+- uid: EasyPost.Parameters.CarrierAccount.Create.#ctor*
+  name: Create
+  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create__ctor_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.Create.#ctor
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.Create.Create
+  nameWithType: Create.Create
 - uid: EasyPost.Parameters.CarrierAccount.Create.Credentials
   name: Credentials
   href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Credentials
@@ -10420,45 +10565,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.Create.Credentials
   nameWithType: Create.Credentials
-- uid: EasyPost.Parameters.CarrierAccount.Create.Description
-  name: Description
-  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Description
-  commentId: P:EasyPost.Parameters.CarrierAccount.Create.Description
-  fullName: EasyPost.Parameters.CarrierAccount.Create.Description
-  nameWithType: Create.Description
-- uid: EasyPost.Parameters.CarrierAccount.Create.Description*
-  name: Description
-  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Description_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.Create.Description
-  isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.Create.Description
-  nameWithType: Create.Description
-- uid: EasyPost.Parameters.CarrierAccount.Create.Reference
-  name: Reference
-  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Reference
-  commentId: P:EasyPost.Parameters.CarrierAccount.Create.Reference
-  fullName: EasyPost.Parameters.CarrierAccount.Create.Reference
-  nameWithType: Create.Reference
-- uid: EasyPost.Parameters.CarrierAccount.Create.Reference*
-  name: Reference
-  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Reference_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.Create.Reference
-  isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.Create.Reference
-  nameWithType: Create.Reference
-- uid: EasyPost.Parameters.CarrierAccount.Create.RegistrationData
-  name: RegistrationData
-  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_RegistrationData
-  commentId: P:EasyPost.Parameters.CarrierAccount.Create.RegistrationData
-  fullName: EasyPost.Parameters.CarrierAccount.Create.RegistrationData
-  nameWithType: Create.RegistrationData
-- uid: EasyPost.Parameters.CarrierAccount.Create.RegistrationData*
-  name: RegistrationData
-  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_RegistrationData_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.Create.RegistrationData
-  isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.Create.RegistrationData
-  nameWithType: Create.RegistrationData
 - uid: EasyPost.Parameters.CarrierAccount.Create.TestCredentials
   name: TestCredentials
   href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_TestCredentials
@@ -10472,19 +10578,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.Create.TestCredentials
   nameWithType: Create.TestCredentials
-- uid: EasyPost.Parameters.CarrierAccount.Create.Type
-  name: Type
-  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Type
-  commentId: P:EasyPost.Parameters.CarrierAccount.Create.Type
-  fullName: EasyPost.Parameters.CarrierAccount.Create.Type
-  nameWithType: Create.Type
-- uid: EasyPost.Parameters.CarrierAccount.Create.Type*
-  name: Type
-  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Type_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.Create.Type
-  isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.Create.Type
-  nameWithType: Create.Type
 - uid: EasyPost.Parameters.CarrierAccount.CreateFedEx
   name: CreateFedEx
   href: api/EasyPost.Parameters.CarrierAccount.CreateFedEx.html
@@ -10725,6 +10818,246 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.CreateFedEx.ShippingAddressStreet
   nameWithType: CreateFedEx.ShippingAddressStreet
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost
+  name: CreateFedExSmartPost
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost
+  nameWithType: CreateFedExSmartPost
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.AccountNumber
+  name: AccountNumber
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_AccountNumber
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.AccountNumber
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.AccountNumber
+  nameWithType: CreateFedExSmartPost.AccountNumber
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.AccountNumber*
+  name: AccountNumber
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_AccountNumber_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.AccountNumber
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.AccountNumber
+  nameWithType: CreateFedExSmartPost.AccountNumber
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressCity
+  name: CorporateAddressCity
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateAddressCity
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressCity
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressCity
+  nameWithType: CreateFedExSmartPost.CorporateAddressCity
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressCity*
+  name: CorporateAddressCity
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateAddressCity_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressCity
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressCity
+  nameWithType: CreateFedExSmartPost.CorporateAddressCity
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressCountryCode
+  name: CorporateAddressCountryCode
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateAddressCountryCode
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressCountryCode
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressCountryCode
+  nameWithType: CreateFedExSmartPost.CorporateAddressCountryCode
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressCountryCode*
+  name: CorporateAddressCountryCode
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateAddressCountryCode_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressCountryCode
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressCountryCode
+  nameWithType: CreateFedExSmartPost.CorporateAddressCountryCode
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressPostalCode
+  name: CorporateAddressPostalCode
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateAddressPostalCode
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressPostalCode
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressPostalCode
+  nameWithType: CreateFedExSmartPost.CorporateAddressPostalCode
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressPostalCode*
+  name: CorporateAddressPostalCode
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateAddressPostalCode_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressPostalCode
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressPostalCode
+  nameWithType: CreateFedExSmartPost.CorporateAddressPostalCode
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressState
+  name: CorporateAddressState
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateAddressState
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressState
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressState
+  nameWithType: CreateFedExSmartPost.CorporateAddressState
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressState*
+  name: CorporateAddressState
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateAddressState_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressState
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressState
+  nameWithType: CreateFedExSmartPost.CorporateAddressState
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressStreet
+  name: CorporateAddressStreet
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateAddressStreet
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressStreet
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressStreet
+  nameWithType: CreateFedExSmartPost.CorporateAddressStreet
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressStreet*
+  name: CorporateAddressStreet
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateAddressStreet_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressStreet
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateAddressStreet
+  nameWithType: CreateFedExSmartPost.CorporateAddressStreet
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateCompanyName
+  name: CorporateCompanyName
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateCompanyName
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateCompanyName
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateCompanyName
+  nameWithType: CreateFedExSmartPost.CorporateCompanyName
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateCompanyName*
+  name: CorporateCompanyName
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateCompanyName_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateCompanyName
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateCompanyName
+  nameWithType: CreateFedExSmartPost.CorporateCompanyName
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateEmailAddress
+  name: CorporateEmailAddress
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateEmailAddress
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateEmailAddress
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateEmailAddress
+  nameWithType: CreateFedExSmartPost.CorporateEmailAddress
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateEmailAddress*
+  name: CorporateEmailAddress
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateEmailAddress_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateEmailAddress
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateEmailAddress
+  nameWithType: CreateFedExSmartPost.CorporateEmailAddress
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateFirstName
+  name: CorporateFirstName
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateFirstName
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateFirstName
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateFirstName
+  nameWithType: CreateFedExSmartPost.CorporateFirstName
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateFirstName*
+  name: CorporateFirstName
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateFirstName_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateFirstName
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateFirstName
+  nameWithType: CreateFedExSmartPost.CorporateFirstName
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateJobTitle
+  name: CorporateJobTitle
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateJobTitle
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateJobTitle
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateJobTitle
+  nameWithType: CreateFedExSmartPost.CorporateJobTitle
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateJobTitle*
+  name: CorporateJobTitle
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateJobTitle_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateJobTitle
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateJobTitle
+  nameWithType: CreateFedExSmartPost.CorporateJobTitle
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateLastName
+  name: CorporateLastName
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateLastName
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateLastName
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateLastName
+  nameWithType: CreateFedExSmartPost.CorporateLastName
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateLastName*
+  name: CorporateLastName
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporateLastName_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateLastName
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporateLastName
+  nameWithType: CreateFedExSmartPost.CorporateLastName
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporatePhoneNumber
+  name: CorporatePhoneNumber
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporatePhoneNumber
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporatePhoneNumber
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporatePhoneNumber
+  nameWithType: CreateFedExSmartPost.CorporatePhoneNumber
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporatePhoneNumber*
+  name: CorporatePhoneNumber
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_CorporatePhoneNumber_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporatePhoneNumber
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporatePhoneNumber
+  nameWithType: CreateFedExSmartPost.CorporatePhoneNumber
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.HubId
+  name: HubId
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_HubId
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.HubId
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.HubId
+  nameWithType: CreateFedExSmartPost.HubId
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.HubId*
+  name: HubId
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_HubId_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.HubId
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.HubId
+  nameWithType: CreateFedExSmartPost.HubId
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressCity
+  name: ShippingAddressCity
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_ShippingAddressCity
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressCity
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressCity
+  nameWithType: CreateFedExSmartPost.ShippingAddressCity
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressCity*
+  name: ShippingAddressCity
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_ShippingAddressCity_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressCity
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressCity
+  nameWithType: CreateFedExSmartPost.ShippingAddressCity
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressCountryCode
+  name: ShippingAddressCountryCode
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_ShippingAddressCountryCode
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressCountryCode
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressCountryCode
+  nameWithType: CreateFedExSmartPost.ShippingAddressCountryCode
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressCountryCode*
+  name: ShippingAddressCountryCode
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_ShippingAddressCountryCode_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressCountryCode
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressCountryCode
+  nameWithType: CreateFedExSmartPost.ShippingAddressCountryCode
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressPostalCode
+  name: ShippingAddressPostalCode
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_ShippingAddressPostalCode
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressPostalCode
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressPostalCode
+  nameWithType: CreateFedExSmartPost.ShippingAddressPostalCode
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressPostalCode*
+  name: ShippingAddressPostalCode
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_ShippingAddressPostalCode_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressPostalCode
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressPostalCode
+  nameWithType: CreateFedExSmartPost.ShippingAddressPostalCode
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressState
+  name: ShippingAddressState
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_ShippingAddressState
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressState
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressState
+  nameWithType: CreateFedExSmartPost.ShippingAddressState
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressState*
+  name: ShippingAddressState
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_ShippingAddressState_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressState
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressState
+  nameWithType: CreateFedExSmartPost.ShippingAddressState
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressStreet
+  name: ShippingAddressStreet
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_ShippingAddressStreet
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressStreet
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressStreet
+  nameWithType: CreateFedExSmartPost.ShippingAddressStreet
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressStreet*
+  name: ShippingAddressStreet
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_ShippingAddressStreet_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressStreet
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressStreet
+  nameWithType: CreateFedExSmartPost.ShippingAddressStreet
 - uid: EasyPost.Parameters.CarrierAccount.CreateUps
   name: CreateUps
   href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html
@@ -14927,12 +15260,12 @@ references:
   fullName.vb: EasyPost.Services.CarrierAccountService.Create(Dictionary(Of System.String, System.Object), CancellationToken)
   nameWithType: CarrierAccountService.Create(Dictionary<String, Object>, CancellationToken)
   nameWithType.vb: CarrierAccountService.Create(Dictionary(Of String, Object), CancellationToken)
-- uid: EasyPost.Services.CarrierAccountService.Create(EasyPost.Parameters.CarrierAccount.Create,CancellationToken)
-  name: Create(Create, CancellationToken)
-  href: api/EasyPost.Services.CarrierAccountService.html#EasyPost_Services_CarrierAccountService_Create_EasyPost_Parameters_CarrierAccount_Create_CancellationToken_
-  commentId: M:EasyPost.Services.CarrierAccountService.Create(EasyPost.Parameters.CarrierAccount.Create,CancellationToken)
-  fullName: EasyPost.Services.CarrierAccountService.Create(EasyPost.Parameters.CarrierAccount.Create, CancellationToken)
-  nameWithType: CarrierAccountService.Create(Create, CancellationToken)
+- uid: EasyPost.Services.CarrierAccountService.Create(EasyPost.Parameters.CarrierAccount.ACreate,CancellationToken)
+  name: Create(ACreate, CancellationToken)
+  href: api/EasyPost.Services.CarrierAccountService.html#EasyPost_Services_CarrierAccountService_Create_EasyPost_Parameters_CarrierAccount_ACreate_CancellationToken_
+  commentId: M:EasyPost.Services.CarrierAccountService.Create(EasyPost.Parameters.CarrierAccount.ACreate,CancellationToken)
+  fullName: EasyPost.Services.CarrierAccountService.Create(EasyPost.Parameters.CarrierAccount.ACreate, CancellationToken)
+  nameWithType: CarrierAccountService.Create(ACreate, CancellationToken)
 - uid: EasyPost.Services.CarrierAccountService.Create*
   name: Create
   href: api/EasyPost.Services.CarrierAccountService.html#EasyPost_Services_CarrierAccountService_Create_
