@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v5.7.0 (2023-09-05)
+
+- Fix FedEx SmartPost carrier account creation not going to the correct endpoint
+- Add missing optional `ReturnAddress` and `BuyerAddress` parameters to Shipment creation parameter set
+
 ## v5.6.0 (2023-08-31)
 
 - Add ability to compare an EasyPost object to a parameter set object via `Matches` function
