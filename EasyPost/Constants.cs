@@ -120,10 +120,16 @@ namespace EasyPost
         /// </summary>
         public static class CarrierAccounts
         {
+            [Obsolete("Use CarrierAccountType.FedEx instead.")]
+            public const string FedExAccount = "FedexAccount";
+
+            [Obsolete("Use CarrierAccountType.Ups instead.")]
+            public const string UpsAccount = "UpsAccount";
+
             /// <summary>
             ///     Carrier account types that support custom workflows.
             /// </summary>
-            internal static List<string> CarrierTypesWithCustomWorkflows => new()
+            private static List<string> CarrierTypesWithCustomWorkflows => new()
             {
                 CarrierAccountType.FedEx.Name,
                 CarrierAccountType.FedExSmartPost.Name,
