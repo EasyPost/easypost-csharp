@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Parameters.CarrierAccount
@@ -7,7 +8,7 @@ namespace EasyPost.Parameters.CarrierAccount
     ///     <a href="https://www.easypost.com/docs/api#create-a-carrier-account">Parameters</a> for <see cref="EasyPost.Services.CarrierAccountService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class CreateUps : Create
+    public class CreateUps : ACreate
     {
         #region Request Parameters
 
@@ -65,14 +66,16 @@ namespace EasyPost.Parameters.CarrierAccount
         [TopLevelRequestParameter(Necessity.Required, "carrier_account", "registration_data", "website")]
         public string? Website { get; set; }
 
+        internal override string Endpoint => Constants.CarrierAccounts.CustomCreateEndpoint;
+
         #endregion
 
         /// <summary>
-        ///     Construct a new set of <see cref="CreateUps"/> parameters.
+        ///     Initializes a new instance of the <see cref="CreateUps"/> class.
         /// </summary>
         public CreateUps()
+            : base(CarrierAccountType.Ups)
         {
-            Type = Constants.CarrierAccountTypes.UpsAccount;
         }
     }
 }

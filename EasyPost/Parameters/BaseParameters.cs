@@ -15,6 +15,7 @@ namespace EasyPost.Parameters
     /// <summary>
     ///     Base class for all parameters used in functions.
     /// </summary>
+    /// <typeparam name="TMatchInputType">The type of <see cref="EphemeralEasyPostObject"/> that will be compared against in the <see cref="MatchFunction"/>.</typeparam>
     public abstract class BaseParameters<TMatchInputType> : IBaseParameters where TMatchInputType : EphemeralEasyPostObject
     {
         /*
@@ -45,7 +46,7 @@ namespace EasyPost.Parameters
         ///     Execute the match function on a given object.
         /// </summary>
         /// <param name="obj">The <see cref="EasyPostObject"/> to compare this parameter set against.</param>
-        /// <returns>The result of the <see cref="MatchFunction"/></returns>
+        /// <returns>The result of the <see cref="MatchFunction"/>.</returns>
         public bool Matches(TMatchInputType obj) => MatchFunction(obj);
 
         /// <summary>

@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Parameters.CarrierAccount
@@ -7,7 +8,7 @@ namespace EasyPost.Parameters.CarrierAccount
     ///     <a href="https://www.easypost.com/docs/api#create-a-carrier-account">Parameters</a> for <see cref="EasyPost.Services.CarrierAccountService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class CreateFedEx : Create
+    public class CreateFedEx : ACreate
     {
         #region Request Parameters
 
@@ -62,14 +63,16 @@ namespace EasyPost.Parameters.CarrierAccount
         [TopLevelRequestParameter(Necessity.Required, "carrier_account", "registration_data", "shipping_streets")]
         public string? ShippingAddressStreet { get; set; }
 
+        internal override string Endpoint => Constants.CarrierAccounts.CustomCreateEndpoint;
+
         #endregion
 
         /// <summary>
-        ///     Construct a new set of <see cref="CreateFedEx"/> parameters.
+        ///     Initializes a new instance of the <see cref="CreateFedEx"/> class.
         /// </summary>
         public CreateFedEx()
+            : base(CarrierAccountType.FedEx)
         {
-            Type = Constants.CarrierAccountTypes.FedExAccount;
         }
     }
 }

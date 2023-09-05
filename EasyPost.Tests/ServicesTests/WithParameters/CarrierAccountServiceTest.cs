@@ -60,7 +60,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             // Carriers like FedEx and UPS should hit the `/carrier_accounts/register` endpoint
             Dictionary<string, object> data = Fixtures.BasicCarrierAccount;
 
-            Parameters.CarrierAccount.Create parameters = Fixtures.Parameters.CarrierAccounts.CreateFedEx(data);
+            Parameters.CarrierAccount.CreateFedEx parameters = Fixtures.Parameters.CarrierAccounts.CreateFedEx(data);
 
             try
             {
@@ -92,7 +92,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Dictionary<string, object> data = Fixtures.BasicCarrierAccount;
 
             // Override the type to be a custom type
-            data["type"] = Constants.CarrierAccountTypes.FedExAccount;
+            data["type"] = CarrierAccountType.FedEx.Name;
             data["registration_data"] = new Dictionary<string, object>();
 
             Parameters.CarrierAccount.Create parameters = Fixtures.Parameters.CarrierAccounts.Create(data);

@@ -56,8 +56,8 @@ namespace EasyPost.Tests._Utilities
 
                 const string pickupDate = "2023-05-12";
 
-                fixture.AddOrUpdate("min_datetime", pickupDate);
-                fixture.AddOrUpdate("max_datetime", pickupDate);
+                fixture!.AddOrUpdate("min_datetime", pickupDate);
+                fixture!.AddOrUpdate("max_datetime", pickupDate);
 
                 return fixture;
             }
@@ -227,7 +227,6 @@ namespace EasyPost.Tests._Utilities
                         Reference = fixture.GetOrNull<string>("reference"),
                         Credentials = fixture.GetOrNull<Dictionary<string, object?>>("credentials"),
                         TestCredentials = fixture.GetOrNull<Dictionary<string, object?>>("test_credentials"),
-                        RegistrationData = fixture.GetOrNull<Dictionary<string, object?>>("registration_data"),
                     };
                 }
 
@@ -239,8 +238,6 @@ namespace EasyPost.Tests._Utilities
                     {
                         Description = fixture.GetOrNull<string>("description"),
                         Reference = fixture.GetOrNull<string>("reference"),
-                        Credentials = fixture.GetOrNull<Dictionary<string, object?>>("credentials"),
-                        TestCredentials = fixture.GetOrNull<Dictionary<string, object?>>("test_credentials"),
                         AccountNumber = "123456789",
                         CorporateAddressCity = "San Francisco",
                         CorporateAddressCountryCode = "US",

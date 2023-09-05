@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using EasyPost.Exceptions.API;
+using EasyPost.Models.API;
 using EasyPost.Utilities.Internal;
 
 namespace EasyPost
@@ -117,20 +118,28 @@ namespace EasyPost
         /// <summary>
         ///     Common carrier account type groups.
         /// </summary>
-        public static class CarrierAccountTypes
+        public static class CarrierAccounts
         {
+            [Obsolete("Use CarrierAccountType.FedEx instead.")]
             public const string FedExAccount = "FedexAccount";
 
+            [Obsolete("Use CarrierAccountType.Ups instead.")]
             public const string UpsAccount = "UpsAccount";
 
             /// <summary>
             ///     Carrier account types that support custom workflows.
             /// </summary>
-            internal static List<string> CarrierTypesWithCustomWorkflows => new()
+            private static List<string> CarrierTypesWithCustomWorkflows => new()
             {
-                FedExAccount,
-                UpsAccount,
+                CarrierAccountType.FedEx.Name,
+                CarrierAccountType.FedExSmartPost.Name,
+                CarrierAccountType.Ups.Name,
             };
+
+            internal static bool IsCustomWorkflowType(string carrierType) => CarrierTypesWithCustomWorkflows.Contains(carrierType);
+
+            internal const string StandardCreateEndpoint = "carrier_accounts";
+            internal const string CustomCreateEndpoint = "carrier_accounts/register";
         }
     }
 }

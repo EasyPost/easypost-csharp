@@ -45,7 +45,11 @@ namespace EasyPost.Services
                 throw new MissingParameterError("CarrierAccount type is required.");
             }
 
-            string endpoint = SelectCarrierAccountCreationEndpoint(carrierType);
+            string endpoint = Constants.CarrierAccounts.StandardCreateEndpoint;
+            if (Constants.CarrierAccounts.IsCustomWorkflowType(carrierType))
+            {
+                endpoint = Constants.CarrierAccounts.CustomCreateEndpoint;
+            }
 
             parameters = parameters.Wrap("carrier_account");
 
@@ -60,7 +64,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="CarrierAccount"/> object.</returns>
         [CrudOperations.Create]
-        public async Task<CarrierAccount> Create(Parameters.CarrierAccount.Create parameters, CancellationToken cancellationToken = default)
+        public async Task<CarrierAccount> Create(Parameters.CarrierAccount.ACreate parameters, CancellationToken cancellationToken = default)
         {
             // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
             if (parameters.Type == null)
@@ -69,12 +73,12 @@ namespace EasyPost.Services
             }
 
             // stop the user from using a generic Create parameter set when creating a carrier account with a custom workflow (e.g. FedExAccount)
-            if (parameters.GetType() == typeof(Parameters.CarrierAccount.Create) && Constants.CarrierAccountTypes.CarrierTypesWithCustomWorkflows.Contains(parameters.Type))
+            if (parameters.GetType() == typeof(Parameters.CarrierAccount.Create) && Constants.CarrierAccounts.IsCustomWorkflowType(parameters.Type))
             {
                 throw new InvalidParameterError("parameters", $"Use a {parameters.Type} custom workflow parameter set instead.");
             }
 
-            string endpoint = SelectCarrierAccountCreationEndpoint(parameters.Type);
+            string endpoint = parameters.Endpoint;
 
             return await RequestAsync<CarrierAccount>(Method.Post, endpoint, cancellationToken, parameters.ToDictionary());
         }
@@ -138,26 +142,5 @@ namespace EasyPost.Services
         public async Task Delete(string id, CancellationToken cancellationToken = default) => await RequestAsync(Method.Delete, $"carrier_accounts/{id}", cancellationToken);
 
         #endregion
-
-        /// <summary>
-        ///     Selects the correct endpoint to use for creating a <see cref="CarrierAccount"/> based on the carrier type.
-        /// </summary>
-        /// <param name="carrierAccountType">Type of <see cref="CarrierAccount"/> being created.</param>
-        /// <returns>Endpoint for API call.</returns>
-        private static string SelectCarrierAccountCreationEndpoint(string carrierAccountType)
-        {
-            // endpoint will always be something since the switch case's default value will kick in,
-            // but we have to initialize the variable to avoid a compiler nullability error
-            string endpoint = string.Empty;
-
-            SwitchCase @switch = new()
-            {
-                { Constants.CarrierAccountTypes.CarrierTypesWithCustomWorkflows.Contains(carrierAccountType), () => endpoint = "carrier_accounts/register" },
-                { SwitchCaseScenario.Default, () => endpoint = "carrier_accounts" },
-            };
-            @switch.MatchFirstTrue();
-
-            return endpoint;
-        }
     }
 }
