@@ -100,6 +100,26 @@ namespace EasyPost.Parameters.Shipment
         public IAddressParameter? FromAddress { get; set; }
 
         /// <summary>
+        ///     The return <see cref="Models.API.Address"/> (or a <see cref="Address.Create"/> parameter set) for the new <see cref="Models.API.Shipment"/>.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "shipment", "return_address")]
+        [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "return_address")]
+        [NestedRequestParameter(typeof(Batch.Create), Necessity.Optional, "return_address")]
+        [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "return_address")]
+        [NestedRequestParameter(typeof(ScanForm.Create), Necessity.Optional, "return_address")]
+        public IAddressParameter? ReturnAddress { get; set; }
+
+        /// <summary>
+        ///     The buyer <see cref="Models.API.Address"/> (or a <see cref="Address.Create"/> parameter set) for the new <see cref="Models.API.Shipment"/>.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "shipment", "buyer_address")]
+        [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "buyer_address")]
+        [NestedRequestParameter(typeof(Batch.Create), Necessity.Optional, "buyer_address")]
+        [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "buyer_address")]
+        [NestedRequestParameter(typeof(ScanForm.Create), Necessity.Optional, "buyer_address")]
+        public IAddressParameter? BuyerAddress { get; set; }
+
+        /// <summary>
         ///     The physical <see cref="Models.API.Parcel"/> (or <see cref="Parcel.Create"/> parameter set) being transported in the new <see cref="Models.API.Shipment"/>.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "parcel")]
