@@ -13761,6 +13761,19 @@ references:
   commentId: T:EasyPost.Parameters.Shipment.Create
   fullName: EasyPost.Parameters.Shipment.Create
   nameWithType: Create
+- uid: EasyPost.Parameters.Shipment.Create.BuyerAddress
+  name: BuyerAddress
+  href: api/EasyPost.Parameters.Shipment.Create.html#EasyPost_Parameters_Shipment_Create_BuyerAddress
+  commentId: P:EasyPost.Parameters.Shipment.Create.BuyerAddress
+  fullName: EasyPost.Parameters.Shipment.Create.BuyerAddress
+  nameWithType: Create.BuyerAddress
+- uid: EasyPost.Parameters.Shipment.Create.BuyerAddress*
+  name: BuyerAddress
+  href: api/EasyPost.Parameters.Shipment.Create.html#EasyPost_Parameters_Shipment_Create_BuyerAddress_
+  commentId: Overload:EasyPost.Parameters.Shipment.Create.BuyerAddress
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Shipment.Create.BuyerAddress
+  nameWithType: Create.BuyerAddress
 - uid: EasyPost.Parameters.Shipment.Create.CarbonOffset
   name: CarbonOffset
   href: api/EasyPost.Parameters.Shipment.Create.html#EasyPost_Parameters_Shipment_Create_CarbonOffset
@@ -13891,6 +13904,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Shipment.Create.Reference
   nameWithType: Create.Reference
+- uid: EasyPost.Parameters.Shipment.Create.ReturnAddress
+  name: ReturnAddress
+  href: api/EasyPost.Parameters.Shipment.Create.html#EasyPost_Parameters_Shipment_Create_ReturnAddress
+  commentId: P:EasyPost.Parameters.Shipment.Create.ReturnAddress
+  fullName: EasyPost.Parameters.Shipment.Create.ReturnAddress
+  nameWithType: Create.ReturnAddress
+- uid: EasyPost.Parameters.Shipment.Create.ReturnAddress*
+  name: ReturnAddress
+  href: api/EasyPost.Parameters.Shipment.Create.html#EasyPost_Parameters_Shipment_Create_ReturnAddress_
+  commentId: Overload:EasyPost.Parameters.Shipment.Create.ReturnAddress
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Shipment.Create.ReturnAddress
+  nameWithType: Create.ReturnAddress
 - uid: EasyPost.Parameters.Shipment.Create.Service
   name: Service
   href: api/EasyPost.Parameters.Shipment.Create.html#EasyPost_Parameters_Shipment_Create_Service
