@@ -146,6 +146,57 @@ namespace EasyPost.Tests.ParametersTests
         }
 
         [Fact]
+        [Testing.Logic]
+        public void TestCompetingParameters()
+        {
+            var parametersWithCompetingParameters = new ParameterSetWithCompetingParameters
+            {
+                AParam = "location1",
+                BParam = "location2",
+            };
+
+            // Both values are serializing to the same location ("location") in the dictionary, so which wins?
+            var dictionary = parametersWithCompetingParameters.ToDictionary();
+
+            // It seems that BParam here wins.
+            Assert.Equal("location2", dictionary["location"]);
+
+            // Is it because the properties are serialized in alphabetical order, or because BParam is the last property in the code structure?
+            // Let's test by reversing the order of the properties.
+            var parametersWithCompetingParametersNonAlphabetic = new ParameterSetWithCompetingParametersNonAlphabetic
+            {
+                // The order the properties are set in the constructor shouldn't matter.
+                // In the source code, BParam physically comes before AParam.
+                // We'll replicate that order here just for readability sake
+                BParam = "location1",
+                AParam = "location2",
+            };
+
+            var dictionaryNonAlphabetic = parametersWithCompetingParametersNonAlphabetic.ToDictionary();
+            Assert.Equal("location2", dictionaryNonAlphabetic["location"]);
+
+            // Just one last confirmation, let's keep the flipped alphabetical order, but rule out that the constructor order matters.
+            var parametersWithCompetingParametersNonAlphabetic2 = new ParameterSetWithCompetingParametersNonAlphabetic
+            {
+                // Again, AParam is physically located after BParam in the code structure, but it's set first in the constructor here.
+                AParam = "location2",
+                BParam = "location1",
+            };
+
+            var dictionaryNonAlphabetic2 = parametersWithCompetingParametersNonAlphabetic2.ToDictionary();
+            Assert.Equal("location2", dictionaryNonAlphabetic2["location"]);
+
+            // The constructor order doesn't seem to matter (which is a good thing because we can't control in what order end-users will set the properties).
+
+            // It seems the properties are in fact serialized not in alphabetical order, but in the order they are defined in the code structure.
+            // If you need to add an override to a parameter, physically place it after the parameter it overrides in the code structure, to ensure it is serialized last.
+
+            // The downside to this is linting. Our linter rules like to order properties alphabetically in the code structure.
+            // Meaning, to ensure that the override parameter is physically below the parameter it overrides, we either have to disable the linter rule for that file,
+            // or the override parameter has to be alphabetically after the parameter it overrides, which limits us on naming choices.
+        }
+
+        [Fact]
         [Testing.Exception]
         public void TestRequiredAndOptionalParameterValidation()
         {
@@ -181,6 +232,24 @@ namespace EasyPost.Tests.ParametersTests
 
             [TopLevelRequestParameter(Necessity.Optional, "test", "optional")]
             public string? OptionalParameter { get; set; }
+        }
+
+        private sealed class ParameterSetWithCompetingParameters : Parameters.BaseParameters<EasyPostObject>
+        {
+            [TopLevelRequestParameter(Necessity.Optional, "location")]
+            public string? AParam { get; set; }
+
+            [TopLevelRequestParameter(Necessity.Optional, "location")]
+            public string? BParam { get; set; }
+        }
+
+        private sealed class ParameterSetWithCompetingParametersNonAlphabetic : Parameters.BaseParameters<EasyPostObject>
+        {
+            [TopLevelRequestParameter(Necessity.Optional, "location")]
+            public string? BParam { get; set; }
+
+            [TopLevelRequestParameter(Necessity.Optional, "location")]
+            public string? AParam { get; set; }
         }
 
         /// <summary>
