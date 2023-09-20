@@ -35,7 +35,7 @@ namespace example
         static async Task Main()
         {
             Client client = new Client(new ClientConfiguration(Environment.GetEnvironmentVariable("EASYPOST_API_KEY")));
-            
+
             Parameters.Shipment.Create createParameters = new() {
                 ToAddress = new Parameters.Address.Create {
                     Name = "Dr. Steve Brule",
@@ -67,9 +67,9 @@ namespace example
             }
 
             Shipment shipment = await client.Shipment.Create(parameters);
-            
+
             Rate rate = shipment.LowestRate();
-            
+
             Paramaters.Shipment.Buy buyParameters = new(rate);
 
             Shipment purchasedShipment = await client.Shipment.Buy(shipment.Id, buyParameters);
@@ -191,12 +191,12 @@ void OnRequestExecutingHandler(object? sender, OnRequestExecutingEventArgs args)
     // Interact with details about the HttpRequestMessage here via args
     System.Console.WriteLine($"Making HTTP call to {args.RequestUri}");
 }
-            
+
 void OnRequestResponseReceivedHandler(object? sender, OnRequestResponseReceivedEventArgs args) {
     // Interact with details about the HttpResponseMessage here via args
     System.Console.WriteLine($"Received HTTP response with status code {args.ResponseStatusCode}");
 }
-            
+
 Client client = new Client(new ClientConfiguration("EASYPOST_API_KEY")
 {
     Hooks = new Hooks {
@@ -302,6 +302,15 @@ otherwise):
 
 Some tests may require a user with a particular set of enabled features such as a `Partner` user when creating
 referrals. We have attempted to call out these functions in their respective docstrings.
+
+**NOTE** .NET Framework/.NET Standard unit tests cannot currently be run on Apple Silicon (M1, M2, etc.). Instead, run
+unit tests in one framework at a time with, e.g `make unit-test fw=net7.0`. Valid frameworks:
+
+- `net462` (.NET Framework 4.6.2, will not run on Apple Silicon)
+- `netcoreapp3.1` (.NET Core 3.1)
+- `net5.0` (.NET 5.0)
+- `net6.0` (.NET 6.0)
+- `net7.0` (.NET 7.0)
 
 #### Test Coverage
 
