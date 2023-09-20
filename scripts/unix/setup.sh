@@ -2,6 +2,13 @@
 
 # This script is used to download and install the required .NET versions
 
+# If running Apple Silicon, use brew instead
+if [[ $(sysctl -n machdep.cpu.brand_string) =~ "Apple" ]]; then
+    echo "Apple Silicon detected, using brew to install .NET..."
+    brew install dotnet
+    exit 0
+fi
+
 # .NET versions we want to install
 declare -a NetVersions=("Current" "7.0" "6.0" "5.0" "3.1")
 
