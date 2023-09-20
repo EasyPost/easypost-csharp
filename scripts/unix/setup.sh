@@ -5,7 +5,7 @@
 # If running Apple Silicon, use brew instead
 if [[ $(sysctl -n machdep.cpu.brand_string) =~ "Apple" ]]; then
     echo "Apple Silicon detected, using brew to install .NET..."
-    brew install --cask dotnet-sdk
+    brew install dotnet
     exit 0
 fi
 
