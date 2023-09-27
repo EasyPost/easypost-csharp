@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Add `RetrieveApiKeysForUser` to `ApiKey` service
+
 ## v5.7.0 (2023-09-05)
 
 - Fix FedEx SmartPost carrier account creation not going to the correct endpoint

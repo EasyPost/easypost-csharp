@@ -1,6 +1,10 @@
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
@@ -32,6 +36,35 @@ namespace EasyPost.Services
         /// <returns>A <see cref="ApiKeyCollection"/> object.</returns>
         [CrudOperations.Read]
         public async Task<ApiKeyCollection> All(CancellationToken cancellationToken = default) => await RequestAsync<ApiKeyCollection>(Method.Get, "api_keys", cancellationToken);
+
+        /// <summary>
+        ///     Retrieve the <see cref="ApiKey"/>s for a specific <see cref="User"/>.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="User"/> to retrieve keys for.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A list of <see cref="ApiKey"/>s for the specified <see cref="User"/>.</returns>
+        /// <exception cref="FilteringError">Thrown if the specified <see cref="User"/> does not exist.</exception>
+        public async Task<List<ApiKey>?> RetrieveApiKeysForUser(string id, CancellationToken cancellationToken = default)
+        {
+            ApiKeyCollection apiKeyCollection = await All(cancellationToken);
+
+            if (apiKeyCollection.Id == id)
+            {
+                return apiKeyCollection.Keys;
+            }
+
+            if (apiKeyCollection.Children == null)
+            {
+                throw new FilteringError(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.NoObjectFound, "child"));
+            }
+
+            foreach (ApiKeyCollection child in apiKeyCollection.Children.Where(child => child.Id == id))
+            {
+                return child.Keys;
+            }
+
+            throw new FilteringError(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.NoObjectFound, "child"));
+        }
 
         #endregion
     }
