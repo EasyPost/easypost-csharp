@@ -44,7 +44,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="ApiKey"/>s for the specified <see cref="User"/>.</returns>
         /// <exception cref="FilteringError">Thrown if the specified <see cref="User"/> does not exist.</exception>
-        public async Task<List<ApiKey>?> RetrieveApiKeysFor(string id, CancellationToken cancellationToken = default)
+        public async Task<List<ApiKey>?> RetrieveApiKeysForUser(string id, CancellationToken cancellationToken = default)
         {
             ApiKeyCollection apiKeyCollection = await All(cancellationToken);
 
