@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -75,6 +76,33 @@ namespace EasyPost.Tests.ServicesTests
 
             Assert.IsType<User>(user);
             Assert.StartsWith("user_", user.Id);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestRetrieveApiKeys()
+        {
+            UseVCR("retrieve_api_keys");
+
+            User user = await Client.User.RetrieveMe();
+
+            List<ApiKey> apiKeys = await Client.User.RetrieveApiKeys(user.Id);
+
+            Assert.IsType<List<ApiKey>>(apiKeys);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        public async Task TestRetrieveApiKeysChild()
+        {
+            UseVCR("retrieve_api_keys_child");
+
+            const string fakeChildId = "user_123456789";
+
+            // Test suite user has no child users, so this should throw a FilteringError
+            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.User.RetrieveApiKeys(fakeChildId));
+
+            Assert.IsType<FilteringError>(possibleException);
         }
 
         [Fact]
