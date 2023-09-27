@@ -1,10 +1,7 @@
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
@@ -82,20 +79,6 @@ namespace EasyPost.Services
         /// <returns>The current <see cref="User"/>.</returns>
         [CrudOperations.Read]
         public async Task<User> RetrieveMe(CancellationToken cancellationToken = default) => await RequestAsync<User>(Method.Get, "users", cancellationToken);
-
-        /// <summary>
-        ///     Retrieve the <see cref="ApiKey"/>s for a specific <see cref="User"/>.
-        /// </summary>
-        /// <param name="id">The ID of the <see cref="User"/> to retrieve keys for.</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>A list of <see cref="ApiKey"/>s for the specified <see cref="User"/>.</returns>
-        /// <exception cref="FilteringError">Thrown if the specified <see cref="User"/> does not exist.</exception>
-        public async Task<List<ApiKey>?> RetrieveApiKeys(string id, CancellationToken cancellationToken = default)
-        {
-            // Create a temporary ApiKeyService to use API-calling method
-            ApiKeyService apiKeyService = new(Client);
-            return await apiKeyService.RetrieveApiKeysFor(id, cancellationToken);
-        }
 
         /// <summary>
         ///     Update a <see cref="User"/>'s <see cref="Brand"/>.

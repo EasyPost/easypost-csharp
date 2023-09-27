@@ -50,7 +50,7 @@ namespace EasyPost.Tests.ServicesTests
 
             User user = await Client.User.RetrieveMe();
 
-            List<ApiKey> apiKeys = await Client.User.RetrieveApiKeys(user.Id);
+            List<ApiKey> apiKeys = await Client.ApiKey.RetrieveApiKeysFor(user.Id);
 
             Assert.IsType<List<ApiKey>>(apiKeys);
         }
@@ -64,7 +64,7 @@ namespace EasyPost.Tests.ServicesTests
             const string fakeChildId = "user_123456789";
 
             // Test suite user has no child users, so this should throw a FilteringError
-            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.User.RetrieveApiKeys(fakeChildId));
+            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.ApiKey.RetrieveApiKeysFor(fakeChildId));
 
             Assert.IsType<FilteringError>(possibleException);
         }

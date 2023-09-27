@@ -58,7 +58,7 @@ namespace EasyPost.Services
                 throw new FilteringError(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.NoObjectFound, "child"));
             }
 
-            foreach (var child in apiKeyCollection.Children.Where(child => child.Id == id))
+            foreach (ApiKeyCollection child in apiKeyCollection.Children.Where(child => child.Id == id))
             {
                 return child.Keys;
             }
