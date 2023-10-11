@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v5.8.0 (2023-10-11)
 
 - Add `RetrieveApiKeysForUser` to `ApiKey` service
 
