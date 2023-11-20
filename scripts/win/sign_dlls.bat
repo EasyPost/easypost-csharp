@@ -7,14 +7,14 @@
 @ECHO OFF
 
 :: Parse command line arguments
-SET certFile=%1
-SET certPass=%2
+SET certFingerprint=%1
 
 :: Sign all DLLs found in the lib folder with our certificate to guarantee authenticity
 @ECHO:
-@ECHO Signing DLLs with %certFile% for authenticity...
+@ECHO Signing DLLs for authenticity...
 FOR /R "lib" %%F IN (*.dll) DO (
-    signtool sign /f %certFile% /p %certPass% /v /tr http://timestamp.digicert.com?alg=sha256 /td SHA256 /fd SHA256 "%%F" || GOTO :commandFailed
+    signtool sign /sha1 "%certFingerprint%" /tr http://timestamp.digicert.com /td SHA256 /fd SHA256 "%%F" || GOTO :commandFailed
+    signtool verify /v /pa "%%F" || GOTO :commandFailed
 )
 
 EXIT /B 0

@@ -10,7 +10,7 @@ SET certFingerprint=%1
 
 :: Sign all NuGet packages found with our certificate to guarantee authenticity
 @ECHO:
-@ECHO Signing NuGet package with %certFile% for authenticity...
+@ECHO Signing NuGet package for authenticity...
 :: Should only be one .nupkg file at this point, since we deleted the old ones
 FOR /R %%F IN (*.nupkg) DO (
     nuget sign "%%F" -Timestamper http://timestamp.digicert.com -CertificateFingerprint "%certFingerprint%" -HashAlgorithm SHA256 -Verbosity detailed -Overwrite || GOTO :commandFailed

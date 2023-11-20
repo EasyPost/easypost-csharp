@@ -66,8 +66,9 @@ jobs:
         shell: cmd
 
       - name: Build and Sign NuGet package
+        # TODO: Need to keep signing_cert.snk in the repo
         run: |
-          call scripts\win\build_release_nuget.bat EasyPost certs\signing_cert.snk "${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }}" Release
+          call scripts\win\build_release_nuget.bat EasyPost EasyPostNETStrongNameSigning.snk "${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }}" Release
         shell: cmd
 
       # - name: Publish to NuGet
