@@ -63,7 +63,7 @@ namespace EasyPost.Integration.Utilities
         }
 
         // ReSharper disable once InconsistentNaming
-        internal static Client GetBasicVCRClient(string apiKey, System.Net.Http.HttpClient? vcrClient = null) => new(new ClientConfiguration(apiKey)
+        internal static Client GetBasicVCRClient(string apiKey, HttpClient? vcrClient = null) => new(new ClientConfiguration(apiKey)
         {
             CustomHttpClient = vcrClient,
         });
@@ -138,7 +138,7 @@ namespace EasyPost.Integration.Utilities
 
             internal bool IsRecording() => _vcr.Mode == Mode.Record;
 
-            internal Client SetUpTest(string cassetteName, Func<string, System.Net.Http.HttpClient, Client> getClientFunc, string? overrideApiKey = null)
+            internal Client SetUpTest(string cassetteName, Func<string, HttpClient, Client> getClientFunc, string? overrideApiKey = null)
             {
                 // override api key if needed
                 string apiKey = overrideApiKey ?? _apiKey;

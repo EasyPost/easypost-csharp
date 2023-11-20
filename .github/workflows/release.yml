@@ -1,8 +1,6 @@
 name: Release
 
 on:
-  workflow_dispatch: ~
-  pull_request: ~
   push:
     tags:
       # ex. "v1.2.3", "v1.2.3-rc1"

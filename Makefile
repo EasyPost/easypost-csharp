@@ -43,10 +43,6 @@ install-tools:
 	dotnet tool install --local dotnet-format || exit 0
 	dotnet tool install --local docfx --version 2.60.2 || exit 0
 
-## install-release-tools - Install required tools for release
-install-release-tools:
-	bash scripts/unix/install_osslsigncode.sh
-
 ## install-styleguide - Import style guide (Unix only)
 install-styleguide: | update-examples-submodule
 	sh examples/symlink_directory_files.sh examples/style_guides/csharp .
