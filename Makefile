@@ -82,14 +82,6 @@ lint-fix:
 lint-scripts:
 	scripts\win\lint_scripts.bat
 
-## prep-release - Build, sign and package the project for distribution, signing with the provided certificate
-# @parameters:
-# sncert= - The strong-name certificate to use for signing the built assets.
-# cert= - The authenticity certificate to use for signing the built assets.
-# pass= - The password for the authenticity certificate.
-prep-release:
-	bash scripts/unix/build_release_nuget.sh EasyPost ${sncert} ${cert} ${pass} Release
-
 ## publish - Publish the project to NuGet
 # @parameters:
 # key= - The NuGet API key to use for publishing.

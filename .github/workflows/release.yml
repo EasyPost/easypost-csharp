@@ -1,6 +1,8 @@
 name: Release
 
 on:
+  workflow_dispatch: ~
+  pull_request: ~
   push:
     tags:
       # ex. "v1.2.3", "v1.2.3-rc1"
@@ -9,7 +11,7 @@ on:
 jobs:
   publish:
     name: Publish to NuGet
-    runs-on: ubuntu-22.04
+    runs-on: windows-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -26,48 +28,55 @@ jobs:
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v1.1.1
 
-      - name: Load NuGet package cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ matrix.framework }}-${{ hashFiles('**/packages.lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
-
       - name: Restore NuGet Packages
         run: make restore
 
       - name: Set up dotnet tools and dependencies
         run: make install
 
-      - name: Prep certificate imports
-        run: mkdir -p certs
+      - name: Set up authenticity certificate
+        run: |
+          echo "${{ secrets.SM_CLIENT_CERT_FILE_B64 }}" | base64 --decode > /d/Certificate_pkcs12.p12
+        shell: bash
 
-      - name: Import authenticity certificate
-        run: echo "${{ secrets.AUTHENTICITY_CERT_ENC }}" > certs/authenticity_cert.pfx.enc
+      - name: Set variables
+        id: variables
+        run: |
+          echo "SM_HOST=${{ secrets.SM_HOST }}" >> "$GITHUB_ENV"
+          echo "SM_API_KEY=${{ secrets.SM_API_KEY }}" >> "$GITHUB_ENV"
+          echo "SM_CLIENT_CERT_FILE=D:\\Certificate_pkcs12.p12" >> "$GITHUB_ENV"
+          echo "SM_CLIENT_CERT_PASSWORD=${{ secrets.SM_CLIENT_CERT_PASSWORD }}" >> "$GITHUB_ENV"
+          echo "C:\Program Files (x86)\Windows Kits\10\App Certification Kit" >> $GITHUB_PATH
+          echo "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools" >> $GITHUB_PATH
+          echo "C:\Program Files\DigiCert\DigiCert Keylocker Tools" >> $GITHUB_PATH
+        shell: bash
 
-      - name: Import signing certificate
-        run: echo "${{ secrets.SIGNING_CERT_ENC }}" > cert/signing_cert.snk.enc
+      - name: Setup Keylocker KSP on Windows
+        run: |
+          curl -X GET  https://one.digicert.com/signingmanager/api-ui/v1/releases/Keylockertools-windows-x64.msi/download -H "x-api-key:%SM_API_KEY%" -o Keylockertools-windows-x64.msi
+          msiexec /i Keylockertools-windows-x64.msi /quiet /qn
+          smksp_registrar.exe list
+          smctl.exe keypair ls
+          C:\Windows\System32\certutil.exe -csp "DigiCert Signing Manager KSP" -key -user
+        shell: cmd
 
-      - name: Decrypt certificates
-        run: make github-actions-certs-decrypt pass=${{ secrets.ENCRYPTION_KEY }}
+      - name: Sync Certificates
+        run: |
+          smctl windows certsync
+        shell: cmd
 
-      - name: Delete straggling .nupkg files
-        run: rm -f *.nupkg || true
+      - name: Build and Sign NuGet package
+        run: |
+          call scripts\win\build_release_nuget.bat EasyPost certs\signing_cert.snk "${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }}" Release
+        shell: cmd
 
-      - name: Build NuGet package
-        run: make prep-release cert=certs/authenticity_cert.pfx sncert=certs/signing_cert.snk pass=${{ secrets.CERT_PASSWORD }}
+      # - name: Publish to NuGet
+      #  run: make publish key=${{ secrets.NUGET_API_KEY }}
 
-      - name: Delete certificates
-        run: rm -rf certs
-
-      - name: Publish to NuGet
-        run: make publish key=${{ secrets.NUGET_API_KEY }}
-
-      - name: Create a GitHub release
-        uses: softprops/action-gh-release@v1
+      # - name: Create a GitHub release
+      #  uses: softprops/action-gh-release@v1
         # ref: https://github.com/softprops/action-gh-release#-customizing
-        with:
-          body_path: RELEASE_NOTES.md
-          files: |
-            "*.nupkg"
+      #  with:
+      #    body_path: RELEASE_NOTES.md
+      #    files: |
+      #      "*.nupkg"

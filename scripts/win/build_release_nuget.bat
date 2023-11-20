@@ -11,9 +11,8 @@
 :: Parse command line arguments
 SET projectName=%1
 SET strongNameCertFile=%2
-SET authCertFile=%3
-SET authCertPass=%4
-SET buildMode=%5
+SET authCertFingerprint=%3
+SET buildMode=%4
 
 :: Delete old files
 CALL "scripts\win\delete_old_assemblies.bat"
@@ -25,13 +24,13 @@ CALL "scripts\win\build_project.bat" %buildMode% || GOTO :commandFailed
 CALL "scripts\win\strong_name_dlls.bat" %strongNameCertFile% || GOTO :commandFailed
 
 :: Sign the DLLs for authenticity
-CALL "scripts\win\sign_dlls.bat" %authCertFile% %authCertPass% || GOTO :commandFailed
+CALL "scripts\win\sign_dlls.bat" %authCertFingerprint% || GOTO :commandFailed
 
 :: Package the DLLs in a NuGet package (will fail if DLLs are missing)
 CALL "scripts\win\pack_nuget.bat" %projectName% || GOTO :commandFailed
 
 :: Sign the NuGet package for authenticity
-CALL "scripts\win\sign_nuget.bat" %authCertFile% %authCertPass% || GOTO :commandFailed
+CALL "scripts\win\sign_nuget.bat" %authCertFingerprint% || GOTO :commandFailed
 SET nugetFileName=
 FOR /R %%F IN (*.nupkg) DO (
     SET nugetFileName="%%F"
@@ -50,7 +49,7 @@ GOTO :eof
 
 :usage
 @ECHO:
-@ECHO Usage: %0 <PROJECT_NAME> <PATH_TO_CERTIFICATE> <CERTIFICATE_PASSWORD> <CERT_CONTAINER_NAME> <BUILD_MODE>
+@ECHO Usage: %0 <PROJECT_NAME> <PATH_TO_STRONG_NAME_CERTIFICATE> <AUTH_CERTIFICATE_FINGERPRINT> <BUILD_MODE>
 GOTO :exitWithError
 
 :commandFailed
