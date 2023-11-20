@@ -23,7 +23,6 @@ build-prod:
 ## clean - Clean the project
 clean:
 	dotnet clean
-	rm -rf *.nupkg
 
 ## coverage - Generate coverage reports (unit tests, not integration) for the project
 coverage:
@@ -36,18 +35,6 @@ coverage-check:
 ## docs - Generates library documentation
 docs:
 	dotnet tool run docfx docs/docfx.json
-
-## github-actions-certs-decrypt - Decrypt the certificates for GitHub Actions
-# @parameters:
-# pass= - The password used for decrypting the certificates.
-github-actions-certs-decrypt:
-	bash scripts/unix/gpg_decrypt_dir.sh certs ${pass} "gpg"
-
-## github-actions-certs-encrypt - Encrypt the certificates for GitHub Actions
-# @parameters:
-# pass= - The password used for encrypting the certificates.
-github-actions-certs-encrypt:
-	bash scripts/unix/gpg_encrypt_dir.sh certs ${pass} "gpg"
 
 ## install-tools - Install required dotnet tools
 install-tools:
@@ -147,4 +134,4 @@ fs-compat-test:
 vb-compat-test:
 	dotnet test EasyPost.Compatibility.VB/EasyPost.Compatibility.VB.vbproj -f ${fw} -restore
 
-.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-styleguide install-tools install-release-tools install lint lint-scripts prep-release release restore scan setup-win setup-unix test update-examples-submodule unit-test integration-test fs-compat-test vb-compat-test
+.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-styleguide install-tools install-release-tools install lint lint-scripts release restore scan setup-win setup-unix test update-examples-submodule unit-test integration-test fs-compat-test vb-compat-test
