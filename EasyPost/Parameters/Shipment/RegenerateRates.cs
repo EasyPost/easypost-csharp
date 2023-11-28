@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Parameters.Shipment
 {
@@ -9,14 +8,5 @@ namespace EasyPost.Parameters.Shipment
     [ExcludeFromCodeCoverage]
     public class RegenerateRates : BaseParameters<Models.API.Shipment>
     {
-        #region Request Parameters
-
-        /// <summary>
-        ///     Whether or not to include carbon offsets in the new <see cref="Models.API.Rate"/>s.
-        /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "carbon_offset")]
-        public bool CarbonOffset { get; set; } = false; // non-nullable, will always be included (default: false)
-
-        #endregion
     }
 }

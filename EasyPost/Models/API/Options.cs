@@ -113,12 +113,6 @@ namespace EasyPost.Models.API
         [JsonProperty("by_drone")]
         public bool? ByDrone { get; set; }
 
-        /// <summary>
-        ///     Setting this to true will add a charge to reduce carbon emissions by carriers who support this option.
-        ///     Alternatively, see <see cref="CarbonOffset"/> which is provided by EasyPost and works with all carriers.
-        /// </summary>
-        [JsonProperty("carbon_neutral")]
-        public bool? CarbonNeutral { get; set; }
         [JsonProperty("carrier_insurance_amount")]
         public string? CarrierInsuranceAmount { get; set; }
         [JsonProperty("carrier_notification_email")]

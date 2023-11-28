@@ -21,7 +21,6 @@ public class Basics
         var batchCollection = new BatchCollection();
         var batchShipment = new BatchShipment();
         var brand = new Brand();
-        var carbonOffset = new CarbonOffset();
         var carrier = new EasyPost.Models.API.Carrier();
         var carrierBeta = new EasyPost.Models.API.Beta.Carrier();
         var carrierAccount = new CarrierAccount();

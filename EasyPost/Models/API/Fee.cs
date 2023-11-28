@@ -30,7 +30,7 @@ namespace EasyPost.Models.API
 
         /// <summary>
         ///     The category of the fee.
-        ///     Possible types include "LabelFee", "CarbonOffsetFee", "PostageFee", "InsuranceFee" and "TrackerFee".
+        ///     Possible types include "LabelFee", "PostageFee", "InsuranceFee" and "TrackerFee".
         /// </summary>
         [JsonProperty("type")]
         public string? Type { get; set; }
