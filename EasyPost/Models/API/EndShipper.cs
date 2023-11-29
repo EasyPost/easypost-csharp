@@ -115,6 +115,6 @@ namespace EasyPost.Models.API
         /// <typeparam name="TParameters">The type of parameters to construct.</typeparam>
         /// <returns>A TParameters-type parameters set.</returns>
         // Cannot currently get the next page of EndShippers, so this is not implemented.
-        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<EndShipper> entries, int? pageSize = null) => throw new EndOfPaginationError();
+        public override TParameters BuildNextPageParameters<TParameters>(IEnumerable<EndShipper> entries, int? pageSize = null) => throw new EndOfPaginationError();
     }
 }

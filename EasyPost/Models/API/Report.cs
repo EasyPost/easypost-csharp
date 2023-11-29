@@ -55,7 +55,7 @@ namespace EasyPost.Models.API
         /// <param name="pageSize">The request size of the next page.</param>
         /// <typeparam name="TParameters">The type of parameters to construct.</typeparam>
         /// <returns>A TParameters-type parameters set.</returns>
-        protected internal override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Report> entries, int? pageSize = null)
+        public override TParameters BuildNextPageParameters<TParameters>(IEnumerable<Report> entries, int? pageSize = null)
         {
             Parameters.Report.All parameters = Filters != null ? (Parameters.Report.All)Filters : new Parameters.Report.All();
 
