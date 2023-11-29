@@ -119,7 +119,7 @@ namespace EasyPost._base
         /// <param name="rootElement">Optional root element for the resultant JSON to begin deserialization at.</param>
         /// <typeparam name="T">Type of object to deserialize response data into. Must be subclass of <see cref="EasyPostObject"/>.</typeparam>
         /// <returns>An instance of a T-type object.</returns>
-        internal async Task<T> RequestAsync<T>(Method method, string endpoint, ApiVersion apiVersion, CancellationToken cancellationToken, Dictionary<string, object>? parameters = null, string? rootElement = null)
+        public async Task<T> RequestAsync<T>(Method method, string endpoint, ApiVersion apiVersion, CancellationToken cancellationToken, Dictionary<string, object>? parameters = null, string? rootElement = null)
             where T : class
         {
             // Build the request
@@ -170,7 +170,7 @@ namespace EasyPost._base
         /// <param name="parameters">Optional parameters to use for the request.</param>
         /// <returns><c>true</c> if the request was successful, <c>false</c> otherwise.</returns>
         // ReSharper disable once UnusedMethodReturnValue.Global
-        internal async Task<bool> RequestAsync(Method method, string endpoint, ApiVersion apiVersion, CancellationToken cancellationToken, Dictionary<string, object>? parameters = null)
+        public async Task<bool> RequestAsync(Method method, string endpoint, ApiVersion apiVersion, CancellationToken cancellationToken, Dictionary<string, object>? parameters = null)
         {
             // Build the request
             Dictionary<string, string> headers = _configuration.GetHeaders(apiVersion);
