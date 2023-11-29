@@ -56,34 +56,6 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Create and buy a <see cref="Batch"/> in one API call.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.
-        /// </summary>
-        /// <param name="parameters">Dictionary containing parameters to create the <see cref="Batch"/> with.</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>A <see cref="Batch"/> object.</returns>
-        [CrudOperations.Create]
-        public async Task<Batch> CreateAndBuy(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
-        {
-            parameters = parameters.Wrap("batch");
-            return await RequestAsync<Batch>(Method.Post, "batches/create_and_buy", cancellationToken, parameters);
-        }
-
-        /// <summary>
-        ///     Create and buy a <see cref="Batch"/> in one API call.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.
-        /// </summary>
-        /// <param name="parameters"><see cref="Parameters.Batch.Create"/> parameter set.</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>A <see cref="Batch"/> object.</returns>
-        [CrudOperations.Create]
-        public async Task<Batch> CreateAndBuy(Parameters.Batch.Create parameters, CancellationToken cancellationToken = default)
-        {
-            // Because the normal Create method does wrapping internally, we can't simply pass the parameters object to it, otherwise it will wrap the parameters twice.
-            return await RequestAsync<Batch>(Method.Post, "batches/create_and_buy", cancellationToken, parameters.ToDictionary());
-        }
-
-        /// <summary>
         ///     List all <see cref="Batch"/> objects.
         ///     <a href="https://www.easypost.com/docs/api#list-all-batches">Related API documentation</a>.
         /// </summary>

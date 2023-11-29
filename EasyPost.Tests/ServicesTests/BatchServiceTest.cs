@@ -34,20 +34,6 @@ namespace EasyPost.Tests.ServicesTests
         }
 
         [Fact]
-        [CrudOperations.Create]
-        [Testing.Function]
-        public async Task TestCreateAndBuy()
-        {
-            UseVCR("create_and_buy");
-
-            Batch batch = await Client.Batch.CreateAndBuy(new Dictionary<string, object> { { "shipments", new List<Dictionary<string, object>> { Fixtures.OneCallBuyShipment } } });
-
-            Assert.IsType<Batch>(batch);
-            Assert.StartsWith("batch_", batch.Id);
-            Assert.Equal(1, batch.NumShipments);
-        }
-
-        [Fact]
         [CrudOperations.Read]
         [Testing.Function]
         public async Task TestAll()
