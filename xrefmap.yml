@@ -3051,51 +3051,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Brand.UserId
   nameWithType: Brand.UserId
-- uid: EasyPost.Models.API.CarbonOffset
-  name: CarbonOffset
-  href: api/EasyPost.Models.API.CarbonOffset.html
-  commentId: T:EasyPost.Models.API.CarbonOffset
-  fullName: EasyPost.Models.API.CarbonOffset
-  nameWithType: CarbonOffset
-- uid: EasyPost.Models.API.CarbonOffset.Currency
-  name: Currency
-  href: api/EasyPost.Models.API.CarbonOffset.html#EasyPost_Models_API_CarbonOffset_Currency
-  commentId: P:EasyPost.Models.API.CarbonOffset.Currency
-  fullName: EasyPost.Models.API.CarbonOffset.Currency
-  nameWithType: CarbonOffset.Currency
-- uid: EasyPost.Models.API.CarbonOffset.Currency*
-  name: Currency
-  href: api/EasyPost.Models.API.CarbonOffset.html#EasyPost_Models_API_CarbonOffset_Currency_
-  commentId: Overload:EasyPost.Models.API.CarbonOffset.Currency
-  isSpec: "True"
-  fullName: EasyPost.Models.API.CarbonOffset.Currency
-  nameWithType: CarbonOffset.Currency
-- uid: EasyPost.Models.API.CarbonOffset.Grams
-  name: Grams
-  href: api/EasyPost.Models.API.CarbonOffset.html#EasyPost_Models_API_CarbonOffset_Grams
-  commentId: P:EasyPost.Models.API.CarbonOffset.Grams
-  fullName: EasyPost.Models.API.CarbonOffset.Grams
-  nameWithType: CarbonOffset.Grams
-- uid: EasyPost.Models.API.CarbonOffset.Grams*
-  name: Grams
-  href: api/EasyPost.Models.API.CarbonOffset.html#EasyPost_Models_API_CarbonOffset_Grams_
-  commentId: Overload:EasyPost.Models.API.CarbonOffset.Grams
-  isSpec: "True"
-  fullName: EasyPost.Models.API.CarbonOffset.Grams
-  nameWithType: CarbonOffset.Grams
-- uid: EasyPost.Models.API.CarbonOffset.Price
-  name: Price
-  href: api/EasyPost.Models.API.CarbonOffset.html#EasyPost_Models_API_CarbonOffset_Price
-  commentId: P:EasyPost.Models.API.CarbonOffset.Price
-  fullName: EasyPost.Models.API.CarbonOffset.Price
-  nameWithType: CarbonOffset.Price
-- uid: EasyPost.Models.API.CarbonOffset.Price*
-  name: Price
-  href: api/EasyPost.Models.API.CarbonOffset.html#EasyPost_Models_API_CarbonOffset_Price_
-  commentId: Overload:EasyPost.Models.API.CarbonOffset.Price
-  isSpec: "True"
-  fullName: EasyPost.Models.API.CarbonOffset.Price
-  nameWithType: CarbonOffset.Price
 - uid: EasyPost.Models.API.Carrier
   name: Carrier
   href: api/EasyPost.Models.API.Carrier.html
@@ -4878,19 +4833,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Options.ByDrone
   nameWithType: Options.ByDrone
-- uid: EasyPost.Models.API.Options.CarbonNeutral
-  name: CarbonNeutral
-  href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_CarbonNeutral
-  commentId: P:EasyPost.Models.API.Options.CarbonNeutral
-  fullName: EasyPost.Models.API.Options.CarbonNeutral
-  nameWithType: Options.CarbonNeutral
-- uid: EasyPost.Models.API.Options.CarbonNeutral*
-  name: CarbonNeutral
-  href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_CarbonNeutral_
-  commentId: Overload:EasyPost.Models.API.Options.CarbonNeutral
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Options.CarbonNeutral
-  nameWithType: Options.CarbonNeutral
 - uid: EasyPost.Models.API.Options.CarrierInsuranceAmount
   name: CarrierInsuranceAmount
   href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_CarrierInsuranceAmount
@@ -6991,19 +6933,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Rate.BillingType
   nameWithType: Rate.BillingType
-- uid: EasyPost.Models.API.Rate.CarbonOffset
-  name: CarbonOffset
-  href: api/EasyPost.Models.API.Rate.html#EasyPost_Models_API_Rate_CarbonOffset
-  commentId: P:EasyPost.Models.API.Rate.CarbonOffset
-  fullName: EasyPost.Models.API.Rate.CarbonOffset
-  nameWithType: Rate.CarbonOffset
-- uid: EasyPost.Models.API.Rate.CarbonOffset*
-  name: CarbonOffset
-  href: api/EasyPost.Models.API.Rate.html#EasyPost_Models_API_Rate_CarbonOffset_
-  commentId: Overload:EasyPost.Models.API.Rate.CarbonOffset
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Rate.CarbonOffset
-  nameWithType: Rate.CarbonOffset
 - uid: EasyPost.Models.API.Rate.Carrier
   name: Carrier
   href: api/EasyPost.Models.API.Rate.html#EasyPost_Models_API_Rate_Carrier
@@ -13703,19 +13632,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Shipment.Buy.Buy
   nameWithType: Buy.Buy
-- uid: EasyPost.Parameters.Shipment.Buy.CarbonOffset
-  name: CarbonOffset
-  href: api/EasyPost.Parameters.Shipment.Buy.html#EasyPost_Parameters_Shipment_Buy_CarbonOffset
-  commentId: P:EasyPost.Parameters.Shipment.Buy.CarbonOffset
-  fullName: EasyPost.Parameters.Shipment.Buy.CarbonOffset
-  nameWithType: Buy.CarbonOffset
-- uid: EasyPost.Parameters.Shipment.Buy.CarbonOffset*
-  name: CarbonOffset
-  href: api/EasyPost.Parameters.Shipment.Buy.html#EasyPost_Parameters_Shipment_Buy_CarbonOffset_
-  commentId: Overload:EasyPost.Parameters.Shipment.Buy.CarbonOffset
-  isSpec: "True"
-  fullName: EasyPost.Parameters.Shipment.Buy.CarbonOffset
-  nameWithType: Buy.CarbonOffset
 - uid: EasyPost.Parameters.Shipment.Buy.EndShipperId
   name: EndShipperId
   href: api/EasyPost.Parameters.Shipment.Buy.html#EasyPost_Parameters_Shipment_Buy_EndShipperId
@@ -13774,19 +13690,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Shipment.Create.BuyerAddress
   nameWithType: Create.BuyerAddress
-- uid: EasyPost.Parameters.Shipment.Create.CarbonOffset
-  name: CarbonOffset
-  href: api/EasyPost.Parameters.Shipment.Create.html#EasyPost_Parameters_Shipment_Create_CarbonOffset
-  commentId: P:EasyPost.Parameters.Shipment.Create.CarbonOffset
-  fullName: EasyPost.Parameters.Shipment.Create.CarbonOffset
-  nameWithType: Create.CarbonOffset
-- uid: EasyPost.Parameters.Shipment.Create.CarbonOffset*
-  name: CarbonOffset
-  href: api/EasyPost.Parameters.Shipment.Create.html#EasyPost_Parameters_Shipment_Create_CarbonOffset_
-  commentId: Overload:EasyPost.Parameters.Shipment.Create.CarbonOffset
-  isSpec: "True"
-  fullName: EasyPost.Parameters.Shipment.Create.CarbonOffset
-  nameWithType: Create.CarbonOffset
 - uid: EasyPost.Parameters.Shipment.Create.Carrier
   name: Carrier
   href: api/EasyPost.Parameters.Shipment.Create.html#EasyPost_Parameters_Shipment_Create_Carrier
@@ -14045,19 +13948,6 @@ references:
   commentId: T:EasyPost.Parameters.Shipment.RegenerateRates
   fullName: EasyPost.Parameters.Shipment.RegenerateRates
   nameWithType: RegenerateRates
-- uid: EasyPost.Parameters.Shipment.RegenerateRates.CarbonOffset
-  name: CarbonOffset
-  href: api/EasyPost.Parameters.Shipment.RegenerateRates.html#EasyPost_Parameters_Shipment_RegenerateRates_CarbonOffset
-  commentId: P:EasyPost.Parameters.Shipment.RegenerateRates.CarbonOffset
-  fullName: EasyPost.Parameters.Shipment.RegenerateRates.CarbonOffset
-  nameWithType: RegenerateRates.CarbonOffset
-- uid: EasyPost.Parameters.Shipment.RegenerateRates.CarbonOffset*
-  name: CarbonOffset
-  href: api/EasyPost.Parameters.Shipment.RegenerateRates.html#EasyPost_Parameters_Shipment_RegenerateRates_CarbonOffset_
-  commentId: Overload:EasyPost.Parameters.Shipment.RegenerateRates.CarbonOffset
-  isSpec: "True"
-  fullName: EasyPost.Parameters.Shipment.RegenerateRates.CarbonOffset
-  nameWithType: RegenerateRates.CarbonOffset
 - uid: EasyPost.Parameters.Shipment.RetrieveEstimatedDeliveryDate
   name: RetrieveEstimatedDeliveryDate
   href: api/EasyPost.Parameters.Shipment.RetrieveEstimatedDeliveryDate.html
@@ -16340,30 +16230,30 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ShipmentService.All
   nameWithType: ShipmentService.All
-- uid: EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.Models.API.Rate,System.Nullable{System.String},System.Boolean,System.Nullable{System.String},CancellationToken)
-  name: Buy(String, Rate, Nullable<String>, Boolean, Nullable<String>, CancellationToken)
-  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Buy_System_String_EasyPost_Models_API_Rate_System_Nullable_System_String__System_Boolean_System_Nullable_System_String__CancellationToken_
-  commentId: M:EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.Models.API.Rate,System.Nullable{System.String},System.Boolean,System.Nullable{System.String},CancellationToken)
-  name.vb: Buy(String, Rate, Nullable(Of String), Boolean, Nullable(Of String), CancellationToken)
-  fullName: EasyPost.Services.ShipmentService.Buy(System.String, EasyPost.Models.API.Rate, System.Nullable<System.String>, System.Boolean, System.Nullable<System.String>, CancellationToken)
-  fullName.vb: EasyPost.Services.ShipmentService.Buy(System.String, EasyPost.Models.API.Rate, System.Nullable(Of System.String), System.Boolean, System.Nullable(Of System.String), CancellationToken)
-  nameWithType: ShipmentService.Buy(String, Rate, Nullable<String>, Boolean, Nullable<String>, CancellationToken)
-  nameWithType.vb: ShipmentService.Buy(String, Rate, Nullable(Of String), Boolean, Nullable(Of String), CancellationToken)
+- uid: EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.Models.API.Rate,System.Nullable{System.String},System.Nullable{System.String},CancellationToken)
+  name: Buy(String, Rate, Nullable<String>, Nullable<String>, CancellationToken)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Buy_System_String_EasyPost_Models_API_Rate_System_Nullable_System_String__System_Nullable_System_String__CancellationToken_
+  commentId: M:EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.Models.API.Rate,System.Nullable{System.String},System.Nullable{System.String},CancellationToken)
+  name.vb: Buy(String, Rate, Nullable(Of String), Nullable(Of String), CancellationToken)
+  fullName: EasyPost.Services.ShipmentService.Buy(System.String, EasyPost.Models.API.Rate, System.Nullable<System.String>, System.Nullable<System.String>, CancellationToken)
+  fullName.vb: EasyPost.Services.ShipmentService.Buy(System.String, EasyPost.Models.API.Rate, System.Nullable(Of System.String), System.Nullable(Of System.String), CancellationToken)
+  nameWithType: ShipmentService.Buy(String, Rate, Nullable<String>, Nullable<String>, CancellationToken)
+  nameWithType.vb: ShipmentService.Buy(String, Rate, Nullable(Of String), Nullable(Of String), CancellationToken)
 - uid: EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.Parameters.Shipment.Buy,CancellationToken)
   name: Buy(String, Buy, CancellationToken)
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Buy_System_String_EasyPost_Parameters_Shipment_Buy_CancellationToken_
   commentId: M:EasyPost.Services.ShipmentService.Buy(System.String,EasyPost.Parameters.Shipment.Buy,CancellationToken)
   fullName: EasyPost.Services.ShipmentService.Buy(System.String, EasyPost.Parameters.Shipment.Buy, CancellationToken)
   nameWithType: ShipmentService.Buy(String, Buy, CancellationToken)
-- uid: EasyPost.Services.ShipmentService.Buy(System.String,System.Nullable{System.String},System.Nullable{System.String},System.Boolean,System.Nullable{System.String},CancellationToken)
-  name: Buy(String, Nullable<String>, Nullable<String>, Boolean, Nullable<String>, CancellationToken)
-  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Buy_System_String_System_Nullable_System_String__System_Nullable_System_String__System_Boolean_System_Nullable_System_String__CancellationToken_
-  commentId: M:EasyPost.Services.ShipmentService.Buy(System.String,System.Nullable{System.String},System.Nullable{System.String},System.Boolean,System.Nullable{System.String},CancellationToken)
-  name.vb: Buy(String, Nullable(Of String), Nullable(Of String), Boolean, Nullable(Of String), CancellationToken)
-  fullName: EasyPost.Services.ShipmentService.Buy(System.String, System.Nullable<System.String>, System.Nullable<System.String>, System.Boolean, System.Nullable<System.String>, CancellationToken)
-  fullName.vb: EasyPost.Services.ShipmentService.Buy(System.String, System.Nullable(Of System.String), System.Nullable(Of System.String), System.Boolean, System.Nullable(Of System.String), CancellationToken)
-  nameWithType: ShipmentService.Buy(String, Nullable<String>, Nullable<String>, Boolean, Nullable<String>, CancellationToken)
-  nameWithType.vb: ShipmentService.Buy(String, Nullable(Of String), Nullable(Of String), Boolean, Nullable(Of String), CancellationToken)
+- uid: EasyPost.Services.ShipmentService.Buy(System.String,System.Nullable{System.String},System.Nullable{System.String},System.Nullable{System.String},CancellationToken)
+  name: Buy(String, Nullable<String>, Nullable<String>, Nullable<String>, CancellationToken)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Buy_System_String_System_Nullable_System_String__System_Nullable_System_String__System_Nullable_System_String__CancellationToken_
+  commentId: M:EasyPost.Services.ShipmentService.Buy(System.String,System.Nullable{System.String},System.Nullable{System.String},System.Nullable{System.String},CancellationToken)
+  name.vb: Buy(String, Nullable(Of String), Nullable(Of String), Nullable(Of String), CancellationToken)
+  fullName: EasyPost.Services.ShipmentService.Buy(System.String, System.Nullable<System.String>, System.Nullable<System.String>, System.Nullable<System.String>, CancellationToken)
+  fullName.vb: EasyPost.Services.ShipmentService.Buy(System.String, System.Nullable(Of System.String), System.Nullable(Of System.String), System.Nullable(Of System.String), CancellationToken)
+  nameWithType: ShipmentService.Buy(String, Nullable<String>, Nullable<String>, Nullable<String>, CancellationToken)
+  nameWithType.vb: ShipmentService.Buy(String, Nullable(Of String), Nullable(Of String), Nullable(Of String), CancellationToken)
 - uid: EasyPost.Services.ShipmentService.Buy*
   name: Buy
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Buy_
@@ -16371,15 +16261,15 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ShipmentService.Buy
   nameWithType: ShipmentService.Buy
-- uid: EasyPost.Services.ShipmentService.Create(Dictionary{System.String,System.Object},System.Boolean,CancellationToken)
-  name: Create(Dictionary<String, Object>, Boolean, CancellationToken)
-  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Create_Dictionary_System_String_System_Object__System_Boolean_CancellationToken_
-  commentId: M:EasyPost.Services.ShipmentService.Create(Dictionary{System.String,System.Object},System.Boolean,CancellationToken)
-  name.vb: Create(Dictionary(Of String, Object), Boolean, CancellationToken)
-  fullName: EasyPost.Services.ShipmentService.Create(Dictionary<System.String, System.Object>, System.Boolean, CancellationToken)
-  fullName.vb: EasyPost.Services.ShipmentService.Create(Dictionary(Of System.String, System.Object), System.Boolean, CancellationToken)
-  nameWithType: ShipmentService.Create(Dictionary<String, Object>, Boolean, CancellationToken)
-  nameWithType.vb: ShipmentService.Create(Dictionary(Of String, Object), Boolean, CancellationToken)
+- uid: EasyPost.Services.ShipmentService.Create(Dictionary{System.String,System.Object},CancellationToken)
+  name: Create(Dictionary<String, Object>, CancellationToken)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Create_Dictionary_System_String_System_Object__CancellationToken_
+  commentId: M:EasyPost.Services.ShipmentService.Create(Dictionary{System.String,System.Object},CancellationToken)
+  name.vb: Create(Dictionary(Of String, Object), CancellationToken)
+  fullName: EasyPost.Services.ShipmentService.Create(Dictionary<System.String, System.Object>, CancellationToken)
+  fullName.vb: EasyPost.Services.ShipmentService.Create(Dictionary(Of System.String, System.Object), CancellationToken)
+  nameWithType: ShipmentService.Create(Dictionary<String, Object>, CancellationToken)
+  nameWithType.vb: ShipmentService.Create(Dictionary(Of String, Object), CancellationToken)
 - uid: EasyPost.Services.ShipmentService.Create(EasyPost.Parameters.Shipment.Create,CancellationToken)
   name: Create(Create, CancellationToken)
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Create_EasyPost_Parameters_Shipment_Create_CancellationToken_
@@ -16501,15 +16391,15 @@ references:
   commentId: M:EasyPost.Services.ShipmentService.RegenerateRates(System.String,EasyPost.Parameters.Shipment.RegenerateRates,CancellationToken)
   fullName: EasyPost.Services.ShipmentService.RegenerateRates(System.String, EasyPost.Parameters.Shipment.RegenerateRates, CancellationToken)
   nameWithType: ShipmentService.RegenerateRates(String, RegenerateRates, CancellationToken)
-- uid: EasyPost.Services.ShipmentService.RegenerateRates(System.String,System.Nullable{Dictionary{System.String,System.Object}},System.Boolean,CancellationToken)
-  name: RegenerateRates(String, Nullable<Dictionary<String, Object>>, Boolean, CancellationToken)
-  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_RegenerateRates_System_String_System_Nullable_Dictionary_System_String_System_Object___System_Boolean_CancellationToken_
-  commentId: M:EasyPost.Services.ShipmentService.RegenerateRates(System.String,System.Nullable{Dictionary{System.String,System.Object}},System.Boolean,CancellationToken)
-  name.vb: RegenerateRates(String, Nullable(Of Dictionary(Of String, Object)), Boolean, CancellationToken)
-  fullName: EasyPost.Services.ShipmentService.RegenerateRates(System.String, System.Nullable<Dictionary<System.String, System.Object>>, System.Boolean, CancellationToken)
-  fullName.vb: EasyPost.Services.ShipmentService.RegenerateRates(System.String, System.Nullable(Of Dictionary(Of System.String, System.Object)), System.Boolean, CancellationToken)
-  nameWithType: ShipmentService.RegenerateRates(String, Nullable<Dictionary<String, Object>>, Boolean, CancellationToken)
-  nameWithType.vb: ShipmentService.RegenerateRates(String, Nullable(Of Dictionary(Of String, Object)), Boolean, CancellationToken)
+- uid: EasyPost.Services.ShipmentService.RegenerateRates(System.String,System.Nullable{Dictionary{System.String,System.Object}},CancellationToken)
+  name: RegenerateRates(String, Nullable<Dictionary<String, Object>>, CancellationToken)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_RegenerateRates_System_String_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_
+  commentId: M:EasyPost.Services.ShipmentService.RegenerateRates(System.String,System.Nullable{Dictionary{System.String,System.Object}},CancellationToken)
+  name.vb: RegenerateRates(String, Nullable(Of Dictionary(Of String, Object)), CancellationToken)
+  fullName: EasyPost.Services.ShipmentService.RegenerateRates(System.String, System.Nullable<Dictionary<System.String, System.Object>>, CancellationToken)
+  fullName.vb: EasyPost.Services.ShipmentService.RegenerateRates(System.String, System.Nullable(Of Dictionary(Of System.String, System.Object)), CancellationToken)
+  nameWithType: ShipmentService.RegenerateRates(String, Nullable<Dictionary<String, Object>>, CancellationToken)
+  nameWithType.vb: ShipmentService.RegenerateRates(String, Nullable(Of Dictionary(Of String, Object)), CancellationToken)
 - uid: EasyPost.Services.ShipmentService.RegenerateRates*
   name: RegenerateRates
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_RegenerateRates_
