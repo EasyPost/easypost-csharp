@@ -182,6 +182,31 @@ references:
   isSpec: "True"
   fullName: EasyPost._base.EasyPostClient.Hooks
   nameWithType: EasyPostClient.Hooks
+- uid: EasyPost._base.EasyPostClient.RequestAsync(EasyPost.Http.Method,System.String,EasyPost._base.ApiVersion,CancellationToken,System.Nullable{Dictionary{System.String,System.Object}})
+  name: RequestAsync(Method, String, ApiVersion, CancellationToken, Nullable<Dictionary<String, Object>>)
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_RequestAsync_EasyPost_Http_Method_System_String_EasyPost__base_ApiVersion_CancellationToken_System_Nullable_Dictionary_System_String_System_Object___
+  commentId: M:EasyPost._base.EasyPostClient.RequestAsync(EasyPost.Http.Method,System.String,EasyPost._base.ApiVersion,CancellationToken,System.Nullable{Dictionary{System.String,System.Object}})
+  name.vb: RequestAsync(Method, String, ApiVersion, CancellationToken, Nullable(Of Dictionary(Of String, Object)))
+  fullName: EasyPost._base.EasyPostClient.RequestAsync(EasyPost.Http.Method, System.String, EasyPost._base.ApiVersion, CancellationToken, System.Nullable<Dictionary<System.String, System.Object>>)
+  fullName.vb: EasyPost._base.EasyPostClient.RequestAsync(EasyPost.Http.Method, System.String, EasyPost._base.ApiVersion, CancellationToken, System.Nullable(Of Dictionary(Of System.String, System.Object)))
+  nameWithType: EasyPostClient.RequestAsync(Method, String, ApiVersion, CancellationToken, Nullable<Dictionary<String, Object>>)
+  nameWithType.vb: EasyPostClient.RequestAsync(Method, String, ApiVersion, CancellationToken, Nullable(Of Dictionary(Of String, Object)))
+- uid: EasyPost._base.EasyPostClient.RequestAsync*
+  name: RequestAsync
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_RequestAsync_
+  commentId: Overload:EasyPost._base.EasyPostClient.RequestAsync
+  isSpec: "True"
+  fullName: EasyPost._base.EasyPostClient.RequestAsync
+  nameWithType: EasyPostClient.RequestAsync
+- uid: EasyPost._base.EasyPostClient.RequestAsync``1(EasyPost.Http.Method,System.String,EasyPost._base.ApiVersion,CancellationToken,System.Nullable{Dictionary{System.String,System.Object}},System.Nullable{System.String})
+  name: RequestAsync<T>(Method, String, ApiVersion, CancellationToken, Nullable<Dictionary<String, Object>>, Nullable<String>)
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_RequestAsync__1_EasyPost_Http_Method_System_String_EasyPost__base_ApiVersion_CancellationToken_System_Nullable_Dictionary_System_String_System_Object___System_Nullable_System_String__
+  commentId: M:EasyPost._base.EasyPostClient.RequestAsync``1(EasyPost.Http.Method,System.String,EasyPost._base.ApiVersion,CancellationToken,System.Nullable{Dictionary{System.String,System.Object}},System.Nullable{System.String})
+  name.vb: RequestAsync(Of T)(Method, String, ApiVersion, CancellationToken, Nullable(Of Dictionary(Of String, Object)), Nullable(Of String))
+  fullName: EasyPost._base.EasyPostClient.RequestAsync<T>(EasyPost.Http.Method, System.String, EasyPost._base.ApiVersion, CancellationToken, System.Nullable<Dictionary<System.String, System.Object>>, System.Nullable<System.String>)
+  fullName.vb: EasyPost._base.EasyPostClient.RequestAsync(Of T)(EasyPost.Http.Method, System.String, EasyPost._base.ApiVersion, CancellationToken, System.Nullable(Of Dictionary(Of System.String, System.Object)), System.Nullable(Of System.String))
+  nameWithType: EasyPostClient.RequestAsync<T>(Method, String, ApiVersion, CancellationToken, Nullable<Dictionary<String, Object>>, Nullable<String>)
+  nameWithType.vb: EasyPostClient.RequestAsync(Of T)(Method, String, ApiVersion, CancellationToken, Nullable(Of Dictionary(Of String, Object)), Nullable(Of String))
 - uid: EasyPost._base.EasyPostClient.Timeout
   name: Timeout
   href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_Timeout
@@ -9374,6 +9399,24 @@ references:
   fullName.vb: EasyPost.Models.Shared.PaginatedCollection(Of TEntries).BuildNextPageParameters(Of TParameters)(IEnumerable(Of TEntries), System.Nullable(Of System.Int32))
   nameWithType: PaginatedCollection<TEntries>.BuildNextPageParameters<TParameters>(IEnumerable<TEntries>, Nullable<Int32>)
   nameWithType.vb: PaginatedCollection(Of TEntries).BuildNextPageParameters(Of TParameters)(IEnumerable(Of TEntries), Nullable(Of Int32))
+- uid: EasyPost.Models.Shared.PaginatedCollection`1.GetNextPage*
+  name: GetNextPage
+  href: api/EasyPost.Models.Shared.PaginatedCollection-1.html#EasyPost_Models_Shared_PaginatedCollection_1_GetNextPage_
+  commentId: Overload:EasyPost.Models.Shared.PaginatedCollection`1.GetNextPage
+  isSpec: "True"
+  fullName: EasyPost.Models.Shared.PaginatedCollection<TEntries>.GetNextPage
+  fullName.vb: EasyPost.Models.Shared.PaginatedCollection(Of TEntries).GetNextPage
+  nameWithType: PaginatedCollection<TEntries>.GetNextPage
+  nameWithType.vb: PaginatedCollection(Of TEntries).GetNextPage
+- uid: EasyPost.Models.Shared.PaginatedCollection`1.GetNextPage``2(Func{``1,Task{``0}},System.Nullable{List{`0}},System.Nullable{System.Int32})
+  name: GetNextPage<TCollection, TParameters>(Func<TParameters, Task<TCollection>>, Nullable<List<TEntries>>, Nullable<Int32>)
+  href: api/EasyPost.Models.Shared.PaginatedCollection-1.html#EasyPost_Models_Shared_PaginatedCollection_1_GetNextPage__2_Func___1_Task___0___System_Nullable_List__0___System_Nullable_System_Int32__
+  commentId: M:EasyPost.Models.Shared.PaginatedCollection`1.GetNextPage``2(Func{``1,Task{``0}},System.Nullable{List{`0}},System.Nullable{System.Int32})
+  name.vb: GetNextPage(Of TCollection, TParameters)(Func(Of TParameters, Task(Of TCollection)), Nullable(Of List(Of TEntries)), Nullable(Of Int32))
+  fullName: EasyPost.Models.Shared.PaginatedCollection<TEntries>.GetNextPage<TCollection, TParameters>(Func<TParameters, Task<TCollection>>, System.Nullable<List<TEntries>>, System.Nullable<System.Int32>)
+  fullName.vb: EasyPost.Models.Shared.PaginatedCollection(Of TEntries).GetNextPage(Of TCollection, TParameters)(Func(Of TParameters, Task(Of TCollection)), System.Nullable(Of List(Of TEntries)), System.Nullable(Of System.Int32))
+  nameWithType: PaginatedCollection<TEntries>.GetNextPage<TCollection, TParameters>(Func<TParameters, Task<TCollection>>, Nullable<List<TEntries>>, Nullable<Int32>)
+  nameWithType.vb: PaginatedCollection(Of TEntries).GetNextPage(Of TCollection, TParameters)(Func(Of TParameters, Task(Of TCollection)), Nullable(Of List(Of TEntries)), Nullable(Of Int32))
 - uid: EasyPost.Models.Shared.PaginatedCollection`1.HasMore
   name: HasMore
   href: api/EasyPost.Models.Shared.PaginatedCollection-1.html#EasyPost_Models_Shared_PaginatedCollection_1_HasMore

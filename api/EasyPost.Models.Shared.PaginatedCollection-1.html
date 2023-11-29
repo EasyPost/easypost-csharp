@@ -195,7 +195,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected abstract TParameters BuildNextPageParameters&lt;TParameters&gt;(IEnumerable&lt;TEntries&gt; entries, int? pageSize = null)
+    <pre><code class="lang-csharp hljs">public abstract TParameters BuildNextPageParameters&lt;TParameters&gt;(IEnumerable&lt;TEntries&gt; entries, int? pageSize = null)
     where TParameters : BaseParameters&lt;TEntries&gt;</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -249,7 +249,7 @@
     <tbody>
       <tr>
         <td><span class="parametername">TParameters</span></td>
-        <td><p>The type of <see cref="!:Parameters.BaseParameters"></see> to construct for the API call.</p>
+        <td><p>The type of <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html">BaseParameters&lt;TMatchInputType&gt;</a> to construct for the API call.</p>
 </td>
       </tr>
     </tbody>
@@ -266,6 +266,106 @@
       <tr>
         <td><a class="xref" href="EasyPost.Exceptions.General.EndOfPaginationError.html">EndOfPaginationError</a></td>
         <td><p>Thrown if there are no more items to retrieve for the paginated collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_PaginatedCollection_1_GetNextPage__2_Func___1_Task___0___System_Nullable_List__0___System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.PaginatedCollection%601.GetNextPage%60%602(Func%7B%60%601%2CTask%7B%60%600%7D%7D%2CSystem.Nullable%7BList%7B%600%7D%7D%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/PaginatedCollection.cs/#L37">View Source</a>
+  </span>
+  <a id="EasyPost_Models_Shared_PaginatedCollection_1_GetNextPage_" data-uid="EasyPost.Models.Shared.PaginatedCollection`1.GetNextPage*"></a>
+  <h4 id="EasyPost_Models_Shared_PaginatedCollection_1_GetNextPage__2_Func___1_Task___0___System_Nullable_List__0___System_Nullable_System_Int32__" data-uid="EasyPost.Models.Shared.PaginatedCollection`1.GetNextPage``2(Func{``1,Task{``0}},System.Nullable{List{`0}},System.Nullable{System.Int32})">GetNextPage&lt;TCollection, TParameters&gt;(Func&lt;TParameters, Task&lt;TCollection&gt;&gt;, Nullable&lt;List&lt;TEntries&gt;&gt;, Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Get the next page of a paginated collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;TCollection&gt; GetNextPage&lt;TCollection, TParameters&gt;(Func&lt;TParameters, Task&lt;TCollection&gt;&gt; apiCallFunction, List&lt;TEntries&gt;? currentEntries, int? pageSize = null)
+    where TCollection : PaginatedCollection&lt;TEntries&gt; where TParameters : BaseParameters&lt;TEntries&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Func</span>&lt;TParameters, <span class="xref">Task</span>&lt;TCollection&gt;&gt;</td>
+        <td><span class="parametername">apiCallFunction</span></td>
+        <td><p>The function to execute to retrieve a page (most likely an All function).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">List</span>&lt;TEntries&gt;&gt;</td>
+        <td><span class="parametername">currentEntries</span></td>
+        <td><p>The results on the current page. Used to determine the API call parameters to retrieve the next page.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">pageSize</span></td>
+        <td><p>The size of the next page.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;TCollection&gt;</td>
+        <td><p>The next page of a paginated collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TCollection</span></td>
+        <td><p>The type of <a class="xref" href="EasyPost.Models.Shared.PaginatedCollection-1.html">PaginatedCollection&lt;TEntries&gt;</a> to get the next page of.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TParameters</span></td>
+        <td><p>The type of <a class="xref" href="EasyPost.Parameters.BaseParameters-1.html">BaseParameters&lt;TMatchInputType&gt;</a> to construct for the API call.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EasyPost.Exceptions.General.EndOfPaginationError.html">EndOfPaginationError</a></td>
+        <td><p>Thrown if there is no next page to retrieve.</p>
 </td>
       </tr>
     </tbody>

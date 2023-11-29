@@ -93,6 +93,9 @@
       <a class="xref" href="EasyPost.Models.Shared.PaginatedCollection-1.html#EasyPost_Models_Shared_PaginatedCollection_1_HasMore">PaginatedCollection&lt;Address&gt;.HasMore</a>
     </div>
     <div>
+      <a class="xref" href="EasyPost.Models.Shared.PaginatedCollection-1.html#EasyPost_Models_Shared_PaginatedCollection_1_GetNextPage__2_Func___1_Task___0___System_Nullable_List__0___System_Nullable_System_Int32__">PaginatedCollection&lt;Address&gt;.GetNextPage&lt;TCollection, TParameters&gt;(Func&lt;TParameters, Task&lt;TCollection&gt;&gt;, Nullable&lt;List&lt;Address&gt;&gt;, Nullable&lt;Int32&gt;)</a>
+    </div>
+    <div>
       <a class="xref" href="EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_CreatedAt">EasyPostObject.CreatedAt</a>
     </div>
     <div>
@@ -172,7 +175,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override TParameters BuildNextPageParameters&lt;TParameters&gt;(IEnumerable&lt;Address&gt; entries, int? pageSize = null)
+    <pre><code class="lang-csharp hljs">public override TParameters BuildNextPageParameters&lt;TParameters&gt;(IEnumerable&lt;Address&gt; entries, int? pageSize = null)
     where TParameters : BaseParameters&lt;Address&gt;</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
