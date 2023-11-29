@@ -63,29 +63,6 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         [Fact]
         [CrudOperations.Create]
         [Testing.Parameters]
-        public async Task TestCreateWithCarbonOffset()
-        {
-            UseVCR("create_with_carbon_offset");
-
-            Dictionary<string, object> data = Fixtures.BasicShipment;
-            data["carbon_offset"] = true;
-
-            Parameters.Shipment.Create parameters = Fixtures.Parameters.Shipments.Create(data);
-
-            Shipment shipment = await Client.Shipment.Create(parameters);
-
-            Assert.IsType<Shipment>(shipment);
-
-            Rate rate = shipment.LowestRate();
-            CarbonOffset carbonOffset = rate.CarbonOffset;
-
-            Assert.NotNull(carbonOffset);
-            Assert.NotNull(carbonOffset.Price);
-        }
-
-        [Fact]
-        [CrudOperations.Create]
-        [Testing.Parameters]
         public async Task TestCreateWithIds()
         {
             UseVCR("create_with_ids");
@@ -119,25 +96,6 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Assert.StartsWith("adr_", shipment.ToAddress.Id);
             Assert.StartsWith("prcl_", shipment.Parcel.Id);
             Assert.Equal("388 Townsend St", shipment.FromAddress.Street1);
-        }
-
-        [Fact]
-        [CrudOperations.Create]
-        [Testing.Parameters]
-        public async Task TestOneCallBuyShipmentWithCarbonOffset()
-        {
-            UseVCR("one_call_buy_shipment_with_carbon_offset");
-
-            Dictionary<string, object> data = Fixtures.OneCallBuyShipment;
-            data["carbon_offset"] = true;
-
-            Parameters.Shipment.Create parameters = Fixtures.Parameters.Shipments.Create(data);
-
-            Shipment shipment = await Client.Shipment.Create(parameters);
-
-            Assert.NotNull(shipment.Fees);
-            bool carbonOffsetIncluded = shipment.Fees.Any(fee => fee.Type == "CarbonOffsetFee");
-            Assert.True(carbonOffsetIncluded);
         }
 
         [Fact]
@@ -246,30 +204,6 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         [Fact]
         [CrudOperations.Update]
         [Testing.Parameters]
-        public async Task TestBuyWithCarbonOffset()
-        {
-            UseVCR("buy_with_carbon_offset");
-
-            Dictionary<string, object> shipmentData = Fixtures.FullShipment;
-            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
-            Shipment shipment = await Client.Shipment.Create(shipmentParameters);
-            Rate rate = shipment.LowestRate();
-
-            Parameters.Shipment.Buy buyParameters = new(rate)
-            {
-                CarbonOffset = true,
-            };
-
-            shipment = await Client.Shipment.Buy(shipment.Id, buyParameters);
-
-            Assert.NotNull(shipment.Fees);
-            bool carbonOffsetIncluded = shipment.Fees.Any(fee => fee.Type == "CarbonOffsetFee");
-            Assert.True(carbonOffsetIncluded);
-        }
-
-        [Fact]
-        [CrudOperations.Update]
-        [Testing.Parameters]
         public async Task TestBuyWithEndShipper()
         {
             UseVCR("buy_with_end_shipper");
@@ -330,10 +264,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Rate rate = shipment.LowestRate();
 
-            Parameters.Shipment.Buy buyParameters = new(rate)
-            {
-                CarbonOffset = true,
-            };
+            Parameters.Shipment.Buy buyParameters = new(rate);
 
             shipment = await Client.Shipment.Buy(shipment.Id, buyParameters);
 
@@ -370,33 +301,6 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             {
                 Assert.IsType<Rate>(rate);
             }
-        }
-
-        [Fact]
-        [CrudOperations.Update]
-        [Testing.Parameters]
-        public async Task TestRegenerateRatesWithCarbonOffset()
-        {
-            UseVCR("regenerate_rates_with_carbon_offset");
-
-            Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
-            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(shipmentData);
-            Shipment shipment = await Client.Shipment.Create(shipmentParameters);
-            List<Rate> baseRates = shipment.Rates;
-
-            Parameters.Shipment.RegenerateRates regenerateRatesParameters = new()
-            {
-                CarbonOffset = true,
-            };
-            shipment = await Client.Shipment.RegenerateRates(shipment.Id, regenerateRatesParameters);
-
-            List<Rate> newRatesWithCarbon = shipment.Rates;
-
-            Rate baseRate = baseRates!.First();
-            Rate newRateWithCarbon = newRatesWithCarbon!.First();
-
-            Assert.Null(baseRate.CarbonOffset);
-            Assert.NotNull(newRateWithCarbon.CarbonOffset);
         }
 
         [Fact]

@@ -13,13 +13,6 @@ namespace EasyPost.Parameters.Shipment
         #region Request Parameters
 
         /// <summary>
-        ///     Whether or not to include a carbon offset fee in the new <see cref="Models.API.Shipment"/>'s cost.
-        /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "carbon_offset")]
-        // "carbon_offset" is not included when shipment creation parameters are used in a non-shipment creation request.
-        public bool CarbonOffset { get; set; } = false; // non-nullable, will always be included (default: false)
-
-        /// <summary>
         ///     <see cref="Models.API.CustomsInfo"/> (or a <see cref="Parameters.CustomsInfo.Create"/> parameter set) for the new <see cref="Models.API.Shipment"/>.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "customs_info")]

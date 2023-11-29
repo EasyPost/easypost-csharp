@@ -67,24 +67,6 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Create]
         [Testing.Parameters]
-        public async Task TestCreateWithCarbonOffset()
-        {
-            UseVCR("create_with_carbon_offset");
-
-            Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment, true);
-
-            Assert.IsType<Shipment>(shipment);
-
-            Rate rate = shipment.LowestRate();
-            CarbonOffset carbonOffset = rate.CarbonOffset;
-
-            Assert.NotNull(carbonOffset);
-            Assert.NotNull(carbonOffset.Price);
-        }
-
-        [Fact]
-        [CrudOperations.Create]
-        [Testing.Parameters]
         public async Task TestCreateWithIds()
         {
             UseVCR("create_with_ids");
@@ -106,20 +88,6 @@ namespace EasyPost.Tests.ServicesTests
             Assert.StartsWith("adr_", shipment.ToAddress.Id);
             Assert.StartsWith("prcl_", shipment.Parcel.Id);
             Assert.Equal("388 Townsend St", shipment.FromAddress.Street1);
-        }
-
-        [Fact]
-        [CrudOperations.Create]
-        [Testing.Parameters]
-        public async Task TestOneCallBuyShipmentWithCarbonOffset()
-        {
-            UseVCR("one_call_buy_shipment_with_carbon_offset");
-
-            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment, true);
-
-            Assert.NotNull(shipment.Fees);
-            bool carbonOffsetIncluded = shipment.Fees.Any(fee => fee.Type == "CarbonOffsetFee");
-            Assert.True(carbonOffsetIncluded);
         }
 
         [Fact]
@@ -347,22 +315,6 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Update]
         [Testing.Parameters]
-        public async Task TestBuyWithCarbonOffset()
-        {
-            UseVCR("buy_with_carbon_offset");
-
-            Shipment shipment = await Client.Shipment.Create(Fixtures.FullShipment);
-
-            shipment = await Client.Shipment.Buy(shipment.Id, shipment.LowestRate(), withCarbonOffset: true);
-
-            Assert.NotNull(shipment.Fees);
-            bool carbonOffsetIncluded = shipment.Fees.Any(fee => fee.Type == "CarbonOffsetFee");
-            Assert.True(carbonOffsetIncluded);
-        }
-
-        [Fact]
-        [CrudOperations.Update]
-        [Testing.Parameters]
         public async Task TestBuyWithEndShipper()
         {
             UseVCR("buy_with_end_shipper");
@@ -425,26 +377,6 @@ namespace EasyPost.Tests.ServicesTests
             {
                 Assert.IsType<Rate>(rate);
             }
-        }
-
-        [Fact]
-        [CrudOperations.Update]
-        [Testing.Parameters]
-        public async Task TestRegenerateRatesWithCarbonOffset()
-        {
-            UseVCR("regenerate_rates_with_carbon_offset");
-
-            Shipment shipment = await Client.Shipment.Create(Fixtures.OneCallBuyShipment);
-            List<Rate> baseRates = shipment.Rates;
-
-            shipment = await Client.Shipment.RegenerateRates(shipment.Id, withCarbonOffset: true);
-            List<Rate> newRatesWithCarbon = shipment.Rates;
-
-            Rate baseRate = baseRates!.First();
-            Rate newRateWithCarbon = newRatesWithCarbon!.First();
-
-            Assert.Null(baseRate.CarbonOffset);
-            Assert.NotNull(newRateWithCarbon.CarbonOffset);
         }
 
         [Fact]

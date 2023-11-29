@@ -14,8 +14,6 @@ namespace EasyPost.Models.API
 
         [JsonProperty("billing_type")]
         public string? BillingType { get; set; }
-        [JsonProperty("carbon_offset")]
-        public CarbonOffset? CarbonOffset { get; set; }
         [JsonProperty("carrier")]
         public string? Carrier { get; set; }
         [JsonProperty("carrier_account_id")]

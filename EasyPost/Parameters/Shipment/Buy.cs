@@ -25,12 +25,6 @@ namespace EasyPost.Parameters.Shipment
         public string? InsuranceValue { get; set; }
 
         /// <summary>
-        ///     Whether or not to purchase the <see cref="Models.API.Shipment"/> with a carbon offset. Defaults to <c>false</c>.
-        /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "carbon_offset")]
-        public bool? CarbonOffset { get; set; }
-
-        /// <summary>
         ///     The ID of the <see cref="Models.API.EndShipper"/> to buy the <see cref="Models.API.Shipment"/> with. Optional.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "end_shipper")]

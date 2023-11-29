@@ -54,7 +54,7 @@ namespace EasyPost.Tests._Utilities
             {
                 Dictionary<string, object> fixture = GetFixtureStructure().Pickups.Basic;
 
-                const string pickupDate = "2023-05-12";
+                const string pickupDate = "2023-12-01";
 
                 fixture!.AddOrUpdate("min_datetime", pickupDate);
                 fixture!.AddOrUpdate("max_datetime", pickupDate);
@@ -89,7 +89,7 @@ namespace EasyPost.Tests._Utilities
 
         internal static string PickupService => GetFixtureStructure().ServiceNames.Usps.PickupService;
 
-        internal static string PlannedShipDate => "2023-05-12";
+        internal static string PlannedShipDate => "2023-12-01";
 
         internal static Dictionary<string, object> ReferralCustomer => GetFixtureStructure().Users.Referral;
 
@@ -645,7 +645,6 @@ namespace EasyPost.Tests._Utilities
                         Parcel = Parcels.Create(parcelFixture),
                         CustomsInfo = CustomsInfo.Create(customsInfoFixture),
                         Options = Options(optionsFixture),
-                        CarbonOffset = fixture.GetOrDefault<bool>("carbon_offset"), // this will always be true or false, never null
                         CarrierAccountIds = fixture.GetOrNull<List<string>>("carrier_accounts"),
                         Carrier = fixture.GetOrNull<string>("carrier"),
                         Service = fixture.GetOrNull<string>("service"),

@@ -32,14 +32,12 @@ namespace EasyPost.Services
         ///     <a href="https://www.easypost.com/docs/api#create-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Shipment"/>.</param>
-        /// <param name="withCarbonOffset">Whether to include a carbon offset fee for the <see cref="Shipment"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="Shipment"/> objects.</returns>
         [CrudOperations.Create]
-        public async Task<Shipment> Create(Dictionary<string, object> parameters, bool withCarbonOffset = false, CancellationToken cancellationToken = default)
+        public async Task<Shipment> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             parameters = parameters.Wrap("shipment");
-            parameters.Add("carbon_offset", withCarbonOffset);
             return await RequestAsync<Shipment>(Method.Post, "shipments", cancellationToken, parameters);
         }
 
@@ -161,12 +159,11 @@ namespace EasyPost.Services
         /// <param name="id">The ID of the <see cref="Shipment"/> to purchase the label for.</param>
         /// <param name="rateId">The ID of the <see cref="Rate"/> to purchase the shipment with.</param>
         /// <param name="insuranceValue">The value to insure the <see cref="Shipment"/> for.</param>
-        /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
         /// <param name="endShipperId">The ID of the <see cref="EndShipper"/> to use for this purchase.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The purchased <see cref="Shipment"/>.</returns>
         [CrudOperations.Update]
-        public async Task<Shipment> Buy(string id, string? rateId, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null, CancellationToken cancellationToken = default)
+        public async Task<Shipment> Buy(string id, string? rateId, string? insuranceValue = null, string? endShipperId = null, CancellationToken cancellationToken = default)
         {
             if (rateId == null)
             {
@@ -177,7 +174,6 @@ namespace EasyPost.Services
             {
                 { "rate", new Dictionary<string, object> { { "id", rateId } } },
                 { "insurance", insuranceValue ?? string.Empty },
-                { "carbon_offset", withCarbonOffset },
             };
 
             if (endShipperId != null)
@@ -195,19 +191,18 @@ namespace EasyPost.Services
         /// <param name="id">The ID of the <see cref="Shipment"/> to purchase the label for.</param>
         /// <param name="rate">The <see cref="Rate"/> to purchase the <see cref="Shipment"/> with.</param>
         /// <param name="insuranceValue">The value to insure the <see cref="Shipment"/> for.</param>
-        /// <param name="withCarbonOffset">Whether to apply carbon offset to this purchase.</param>
         /// <param name="endShipperId">The ID of the <see cref="EndShipper"/> to use for this purchase.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The purchased <see cref="Shipment"/>.</returns>
         [CrudOperations.Update]
-        public async Task<Shipment> Buy(string id, Rate rate, string? insuranceValue = null, bool withCarbonOffset = false, string? endShipperId = null, CancellationToken cancellationToken = default)
+        public async Task<Shipment> Buy(string id, Rate rate, string? insuranceValue = null, string? endShipperId = null, CancellationToken cancellationToken = default)
         {
             if (rate == null)
             {
                 throw new MissingParameterError("rate");
             }
 
-            return await Buy(id, rate.Id, insuranceValue, withCarbonOffset, endShipperId, cancellationToken);
+            return await Buy(id, rate.Id, insuranceValue, endShipperId, cancellationToken);
         }
 
         /// <summary>
@@ -332,15 +327,12 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to refresh rates for.</param>
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
-        /// <param name="withCarbonOffset">Whether to use carbon offset when re-rating the shipment.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="Shipment"/>.</returns>
         [CrudOperations.Update]
-        public async Task<Shipment> RegenerateRates(string id, Dictionary<string, object>? parameters = null, bool withCarbonOffset = false, CancellationToken cancellationToken = default)
+        public async Task<Shipment> RegenerateRates(string id, Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             parameters ??= new Dictionary<string, object>();
-
-            parameters.Add("carbon_offset", withCarbonOffset);
 
             return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/rerate", cancellationToken, parameters);
         }
