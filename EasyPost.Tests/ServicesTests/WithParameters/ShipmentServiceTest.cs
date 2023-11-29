@@ -264,9 +264,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Rate rate = shipment.LowestRate();
 
-            Parameters.Shipment.Buy buyParameters = new(rate)
-            {
-            };
+            Parameters.Shipment.Buy buyParameters = new(rate);
 
             shipment = await Client.Shipment.Buy(shipment.Id, buyParameters);
 

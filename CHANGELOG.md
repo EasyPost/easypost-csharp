@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## Next Release (Major Version)
 
 - Remove `carbon_offset` (`CarbonOffset`) parameter from shipment creation and purchase flows
   - This parameter is no longer supported by the EasyPost API
