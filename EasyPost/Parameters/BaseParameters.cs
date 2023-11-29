@@ -231,10 +231,12 @@ namespace EasyPost.Parameters
             // Get the key and update the list of keys
             string key = keys[0];
             keys = keys.Skip(1).ToArray();
+#pragma warning disable CA1854 // Don't want to use TryGetValue because no need for value
             if (!dictionary.ContainsKey(key))
             {
                 dictionary[key] = UpdateDictionary(new Dictionary<string, object?>(), keys, value);
             }
+#pragma warning restore CA1854
 
             object? subDirectory = dictionary[key];
             if (subDirectory is Dictionary<string, object?> subDictionary)
