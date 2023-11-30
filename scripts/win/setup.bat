@@ -10,7 +10,7 @@
 @ECHO OFF
 
 :: .NET Versions we want to install and destination
-SET NetVersions=Current 7.0 6.0 5.0 3.1
+SET NetVersions=Current 8.0 7.0 6.0 5.0
 SET InstallPath=C:\dotnet
 
 :: Dependency file

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -114,7 +115,9 @@ namespace EasyPost.Exceptions.API
 
             // instantiate the exception class
             ConstructorInfo[] cons = exceptionType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
+#pragma warning disable IDE0300 // False positive
             return (ApiError)cons[0].Invoke(new object?[] { errorMessage, statusCodeInt, errorType, errors });
+#pragma warning restore IDE0300 // False positive
         }
     }
 }

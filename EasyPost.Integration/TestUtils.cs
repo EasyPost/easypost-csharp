@@ -19,13 +19,13 @@ namespace EasyPost.Integration.Utilities
             "keys",
             "phone_number",
             "phone",
-            "test_credentials"
+            "test_credentials",
         };
 
         private static readonly List<string> HeaderCensors = new()
         {
             "Authorization",
-            "User-Agent"
+            "User-Agent",
         };
 
         private static readonly List<string> QueryCensors = new()

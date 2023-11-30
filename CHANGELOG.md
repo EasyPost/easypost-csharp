@@ -2,6 +2,8 @@
 
 ## Next Release (Major Version)
 
+- Drop support for .NET Core 3.1
+- Add support for .NET 8.0
 - Remove `carbon_offset` (`CarbonOffset`) parameter from shipment creation and purchase flows
   - This parameter is no longer supported by the EasyPost API
 - Remove `CarbonOffset` model
