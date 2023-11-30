@@ -40,6 +40,9 @@ namespace EasyPost.Models.API
         [JsonProperty("address_validation_level")]
         public string? AddressValidationLevel { get; set; }
 
+        [JsonProperty("administratively_unpurchasable")]
+        public bool? AdministrativelyUnpurchasable { get; set; }
+
         /// <summary>
         ///     Set this option to true if your shipment contains alcohol.
         ///     <list type="table">
@@ -66,6 +69,9 @@ namespace EasyPost.Models.API
         /// </summary>
         [JsonProperty("alcohol")]
         public bool? Alcohol { get; set; }
+
+        [JsonProperty("auto_manifest")]
+        public bool? AutoManifest { get; set; }
 
         /// <summary>
         ///     A reference ID for aggregating DHL eCommerce billing data.
@@ -114,8 +120,14 @@ namespace EasyPost.Models.API
         [JsonProperty("by_drone")]
         public bool? ByDrone { get; set; }
 
+        [JsonProperty("carrier_branded")]
+        public bool? CarrierBranded { get; set; }
+
+        [JsonProperty("carrier_instructions")]
+        public Dictionary<string, object?>? CarrierInstructions { get; set; } // hash
+
         [JsonProperty("carrier_insurance_amount")]
-        public string? CarrierInsuranceAmount { get; set; }
+        public string? CarrierInsuranceAmount { get; set; } // number
 
         /// <summary>
         ///     Assign an email address to receive carrier notifications.
@@ -129,6 +141,9 @@ namespace EasyPost.Models.API
         [JsonProperty("carrier_notification_sms")]
         public string? CarrierNotificationSms { get; set; }
 
+        [JsonProperty("certificate_number")]
+        public string? CertificateNumber { get; set; } // any
+
         /// <summary>
         ///     Certified Mail provides the sender with a mailing receipt and, upon request, electronic verification that an article was delivered or that a delivery attempt was made.
         /// </summary>
@@ -141,7 +156,7 @@ namespace EasyPost.Models.API
         ///     Only available on FedEx shipments.
         /// </summary>
         [JsonProperty("cod_address_id")]
-        public string? CodAddressId { get; set; }
+        public string? CodAddressId { get; set; } // any
 
         /// <summary>
         ///     Adding an amount will have the carrier collect the specified amount from the recipient.
@@ -170,13 +185,16 @@ namespace EasyPost.Models.API
         public string? CommercialInvoiceFormat { get; set; }
 
         [JsonProperty("commercial_invoice_letterhead")]
-        public string? CommercialInvoiceLetterhead { get; set; }
+        public string? CommercialInvoiceLetterhead { get; set; } // any
 
         [JsonProperty("commercial_invoice_signature")]
-        public string? CommercialInvoiceSignature { get; set; }
+        public string? CommercialInvoiceSignature { get; set; } // any
 
         [JsonProperty("commercial_invoice_size")]
         public string? CommercialInvoiceSize { get; set; }
+
+        [JsonProperty("container")]
+        public Dictionary<string, object?>? Container { get; set; } // hash
 
         /// <summary>
         ///     A description of the content of the shipment.
@@ -185,7 +203,7 @@ namespace EasyPost.Models.API
         public string? ContentDescription { get; set; }
 
         [JsonProperty("cost_center")]
-        public string? CostCenter { get; set; }
+        public string? CostCenter { get; set; } // any
 
         /// <summary>
         ///     Which currency this <see cref="Shipment"/> will show for rates if carrier allows.
@@ -194,16 +212,22 @@ namespace EasyPost.Models.API
         public string? Currency { get; set; }
 
         [JsonProperty("customs_broker_address_id")]
-        public string? CustomsBrokerAddressId { get; set; }
+        public string? CustomsBrokerAddressId { get; set; } // any
 
         [JsonProperty("customs_include_shipping")]
-        public string? CustomsIncludeShipping { get; set; }
+        public string? CustomsIncludeShipping { get; set; } // bool
+
+        [JsonProperty("customs_unit_of_measurement")]
+        public string? CustomsUnitOfMeasurement { get; set; }
+
+        [JsonProperty("dangerous_goods")]
+        public Dictionary<string, object>? DangerousGoods { get; set; } // hash
 
         [JsonProperty("declared_value")]
-        public double? DeclaredValue { get; set; }
+        public double? DeclaredValue { get; set; } // number
 
         [JsonProperty("delivered_duty_paid")]
-        public bool? DeliveredDutyPaid { get; set; }
+        public bool? DeliveredDutyPaid { get; set; } // bool
 
         /// <summary>
         ///     If you want to request a signature, you can pass "ADULT_SIGNATURE" or "SIGNATURE".
@@ -280,27 +304,36 @@ namespace EasyPost.Models.API
         ///     </list>
         /// </summary>
         [JsonProperty("delivery_confirmation")]
-        public string? DeliveryConfirmation { get; set; }
-
-        [JsonProperty("delivery_time_preference")]
-        public string? DeliveryTimePreference { get; set; }
-
-        /// <summary>
-        ///     The earliest a package should be delivered.
-        ///     Supported carriers vary.
-        /// </summary>
-        [JsonProperty("delivery_min_datetime")]
-        public string? DeliveryMinDatetime { get; set; }
+        public string? DeliveryConfirmation { get; set; } // any
 
         /// <summary>
         ///     The latest a package should be delivered.
         ///     Supported carriers vary.
         /// </summary>
         [JsonProperty("delivery_max_datetime")]
-        public string? DeliveryMaxDatetime { get; set; }
+        public string? DeliveryMaxDatetime { get; set; } // datetime
+
+        /// <summary>
+        ///     The earliest a package should be delivered.
+        ///     Supported carriers vary.
+        /// </summary>
+        [JsonProperty("delivery_min_datetime")]
+        public string? DeliveryMinDatetime { get; set; } // datetime
+
+        [JsonProperty("delivery_time_preference")]
+        public string? DeliveryTimePreference { get; set; }
+
+        [JsonProperty("dhlgm_return_location")]
+        public string? DhlgmReturnLocation { get; set; }
+
+        [JsonProperty("discrete_postage_labels")]
+        public bool? DiscretePostageLabels { get; set; } // bool
 
         [JsonProperty("dropoff_max_datetime")]
         public DateTime? DropoffMaxDatetime { get; set; }
+
+        [JsonProperty("dropoff_min_datetime")]
+        public DateTime? DropoffMinDatetime { get; set; }
 
         /// <summary>
         ///     Method the customer will use to transfer the package to the carrier.
@@ -340,7 +373,7 @@ namespace EasyPost.Models.API
         ///     </list>
         /// </summary>
         [JsonProperty("dropoff_type")]
-        public string? DropoffType { get; set; }
+        public string? DropoffType { get; set; } // enum server-side
 
         /// <summary>
         ///     Package contents contain dry ice.
@@ -364,7 +397,7 @@ namespace EasyPost.Models.API
         ///     </list>
         /// </summary>
         [JsonProperty("dry_ice")]
-        public bool? DryIce { get; set; }
+        public bool? DryIce { get; set; } // bool
 
         /// <summary>
         ///     Whether the dry ice is for medical use.
@@ -420,7 +453,8 @@ namespace EasyPost.Models.API
         ///         </listheader>
         ///         <item>
         ///             <term>type</term>
-        ///             <description>One of the following:
+        ///             <description>
+        ///                 One of the following:
         ///                 <list type="bullet">
         ///                     <item>
         ///                         <description>"THIRD_PARTY"</description>
@@ -446,7 +480,7 @@ namespace EasyPost.Models.API
         ///     </list>
         /// </summary>
         [JsonProperty("duty_payment")]
-        public Dictionary<string, object?>? DutyPayment { get; set; }
+        public Dictionary<string, object?>? DutyPayment { get; set; } // hash
 
         [JsonProperty("duty_payment_account")]
         public string? DutyPaymentAccount { get; set; }
@@ -472,7 +506,7 @@ namespace EasyPost.Models.API
         ///     </list>
         /// </summary>
         [JsonProperty("endorsement")]
-        public string? Endorsement { get; set; }
+        public string? Endorsement { get; set; } // enum server-side
 
         /// <summary>
         ///     Specify the responsible <see cref="EndShipper"/> for the shipment.
@@ -480,15 +514,30 @@ namespace EasyPost.Models.API
         [JsonProperty("end_shipper_id")]
         public string? EndShipperId { get; set; }
 
+        [JsonProperty("entry")]
+        public string? Entry { get; set; } // any
+
+        [JsonProperty("facility_code")]
+        public string? FacilityCode { get; set; }
+
+        [JsonProperty("fims_awb_number")]
+        public string? FimsAwbNumber { get; set; } // any
+
         /// <summary>
         ///     Additional cost to be added to the invoice of this <see cref="Shipment"/>.
         ///     Only applies to UPS currently.
         /// </summary>
         [JsonProperty("freight_charge")]
-        public string? FreightCharge { get; set; }
+        public string? FreightCharge { get; set; } // number
+
+        [JsonProperty("fulfiller_order_id")]
+        public string? FulfillerOrderId { get; set; }
+
+        [JsonProperty("fulfiller_order_items")]
+        public List<string>? FulfillerOrderItems { get; set; } // array
 
         [JsonProperty("group")]
-        public string? Group { get; set; }
+        public string? Group { get; set; } // any
 
         /// <summary>
         ///     This is to designate special instructions for the carrier, such as "Do not drop!".
@@ -531,25 +580,37 @@ namespace EasyPost.Models.API
         ///     Applies to USPS, FedEx and DHL eCommerce.
         /// </summary>
         [JsonProperty("hazmat")]
-        public string? Hazmat { get; set; }
+        public string? Hazmat { get; set; } // enum server-side
 
         /// <summary>
         ///     Package will wait at carrier facility for pickup.
         /// </summary>
         [JsonProperty("hold_for_pickup")]
-        public bool? HoldForPickup { get; set; }
+        public bool? HoldForPickup { get; set; } // bool
 
         [JsonProperty("image_format")]
         public string? ImageFormat { get; set; }
 
+        [JsonProperty("import_control")]
+        public string? ImportControl { get; set; } // enum server-side
+
+        [JsonProperty("import_control_description")]
+        public string? ImportControlDescription { get; set; } // any
+
         [JsonProperty("importer_address_id")]
-        public string? ImporterAddressId { get; set; }
+        public string? ImporterAddressId { get; set; } // any
 
         [JsonProperty("import_federal_tax_id")]
-        public string? ImportFederalTaxId { get; set; }
+        public string? ImportFederalTaxId { get; set; } // any
 
         [JsonProperty("import_state_tax_id")]
-        public string? ImportStateTaxId { get; set; }
+        public string? ImportStateTaxId { get; set; } // any
+
+        [JsonProperty("importer_id")]
+        public Dictionary<string, object?>? ImporterId { get; set; } // hash
+
+        [JsonProperty("importer_reference")]
+        public string? ImporterReference { get; set; } // any
 
         /// <summary>
         ///     Incoterm negotiated for shipment.
@@ -592,13 +653,13 @@ namespace EasyPost.Models.API
         ///     Setting this value to anything other than "DDP" will pass the cost and responsibility of duties on to the recipient of the package(s), as specified by Incoterms rules.
         /// </summary>
         [JsonProperty("incoterm")]
-        public string? Incoterm { get; set; }
+        public string? Incoterm { get; set; } // enum server-side
 
         /// <summary>
         ///     Invoice number to print on the postage label.
         /// </summary>
         [JsonProperty("invoice_number")]
-        public string? InvoiceNumber { get; set; }
+        public string? InvoiceNumber { get; set; } // any
 
         /// <summary>
         ///     Set the date that will appear on the postage label.
@@ -607,6 +668,9 @@ namespace EasyPost.Models.API
         /// </summary>
         [JsonProperty("label_date")]
         public DateTime? LabelDate { get; set; }
+
+        [JsonProperty("label_extension")]
+        public Dictionary<string, object?>? LabelExtension { get; set; } // hash
 
         /// <summary>
         ///     Supported label formats are:
@@ -633,19 +697,40 @@ namespace EasyPost.Models.API
         public string? LabelSize { get; set; }
 
         [JsonProperty("license_number")]
-        public string? LicenseNumber { get; set; }
+        public string? LicenseNumber { get; set; } // any
+
+        [JsonProperty("live_animal")]
+        public bool? LiveAnimal { get; set; } // todo: type
 
         /// <summary>
         ///     Whether or not the parcel can be processed by the carriers equipment.
         /// </summary>
         [JsonProperty("machinable")]
-        public string? Machinable { get; set; }
+        public string? Machinable { get; set; } // bool
+
+        [JsonProperty("merchant_id")]
+        public string? MerchantId { get; set; } // any
+
+        [JsonProperty("movement_type")]
+        public string? MovementType { get; set; } // bool
+
+        [JsonProperty("nafta_certificate_of_origin")]
+        public bool? NaftaCertificateOfOrigin { get; set; } // bool
 
         [JsonProperty("neutral_delivery")]
-        public bool? NeutralDelivery { get; set; }
+        public bool? NeutralDelivery { get; set; } // bool
 
         [JsonProperty("non_contact")]
-        public bool? NonContract { get; set; }
+        public bool? NonContact { get; set; } // bool
+
+        [JsonProperty("notifications")]
+        public List<string>? Notifications { get; set; } // array
+
+        [JsonProperty("one_page")]
+        public bool? OnePage { get; set; }
+
+        [JsonProperty("origin_terminal")]
+        public string? OriginTerminal { get; set; } // any
 
         [JsonProperty("overlabel_construct_code")]
         public string? OverlabelConstructCode { get; set; }
@@ -653,8 +738,20 @@ namespace EasyPost.Models.API
         [JsonProperty("overlabel_construct_tracking_number")]
         public string? OverlabelOriginalTrackingNumber { get; set; }
 
+        [JsonProperty("partial_delivery")]
+        public bool? PartialDelivery { get; set; } // todo: type
+
         [JsonProperty("parties_to_transaction_are_related")]
-        public string? PartiesToTransactionAreRelated { get; set; }
+        public string? PartiesToTransactionAreRelated { get; set; } // bool
+
+        [JsonProperty("passport_issue_date")]
+        public string? PassportIssueDate { get; set; }
+
+        [JsonProperty("passport_issued_by")]
+        public string? PassportIssuedBy { get; set; }
+
+        [JsonProperty("passport_number")]
+        public string? PassportNumber { get; set; }
 
         /// <summary>
         ///     Setting payment type to bill the correct account for purchasing postage.
@@ -666,7 +763,8 @@ namespace EasyPost.Models.API
         ///         </listheader>
         ///         <item>
         ///             <term>type</term>
-        ///             <description>One of the following:
+        ///             <description>
+        ///                 One of the following:
         ///                 <list type="bullet">
         ///                     <item>
         ///                         <description>"SENDER"</description>
@@ -699,46 +797,52 @@ namespace EasyPost.Models.API
         ///     </list>
         /// </summary>
         [JsonProperty("payment")]
-        public Dictionary<string, object>? Payment { get; set; }
+        public Dictionary<string, object>? Payment { get; set; } // hash
 
         [JsonProperty("peel_and_return")]
-        public bool? PeelAndReturn { get; set; }
+        public bool? PeelAndReturn { get; set; } // bool
+
+        [JsonProperty("perishable")]
+        public bool? Perishable { get; set; } // bool
+
+        [JsonProperty("pharmacy")]
+        public bool? Pharmacy { get; set; } // bool
 
         /// <summary>
         ///     The latest a package should be picked up.
         ///     Supported carriers vary.
         /// </summary>
         [JsonProperty("pickup_max_datetime")]
-        public DateTime? PickupMaxDatetime { get; set; }
+        public DateTime? PickupMaxDatetime { get; set; } // datetime
 
         /// <summary>
         ///     The earliest a package should be picked up.
         ///     Supported carriers vary.
         /// </summary>
         [JsonProperty("pickup_min_datetime")]
-        public DateTime? PickupMinDatetime { get; set; }
+        public DateTime? PickupMinDatetime { get; set; } // datetime
 
         [JsonProperty("po_sort")]
         public string? PoSort { get; set; }
 
         [JsonProperty("postage_label_inline")]
-        public bool? PostageLabelInline { get; set; }
+        public bool? PostageLabelInline { get; set; } // bool
 
         [JsonProperty("print_custom")]
-        public List<Dictionary<string, object>>? PrintCustom { get; set; }
+        public List<Dictionary<string, object>>? PrintCustom { get; set; }  // array
 
         /// <summary>
         ///     You can optionally print custom messages on labels.
         ///     Message to print on the label in spot 1.
         /// </summary>
         [JsonProperty("print_custom_1")]
-        public string? PrintCustom1 { get; set; }
+        public string? PrintCustom1 { get; set; } // any
 
         /// <summary>
         ///     Create a barcode for this custom reference if supported by carrier.
         /// </summary>
         [JsonProperty("print_custom_1_barcode")]
-        public bool? PrintCustom1Barcode { get; set; }
+        public bool? PrintCustom1Barcode { get; set; } // bool
 
         /// <summary>
         ///     Specify the type of <see cref="PrintCustom1"/>.
@@ -871,13 +975,13 @@ namespace EasyPost.Models.API
         ///     Message to print on the label in spot 2.
         /// </summary>
         [JsonProperty("print_custom_2")]
-        public string? PrintCustom2 { get; set; }
+        public string? PrintCustom2 { get; set; } // any
 
         /// <summary>
         ///     Create a barcode for this custom reference if supported by carrier.
         /// </summary>
         [JsonProperty("print_custom_2_barcode")]
-        public bool? PrintCustom2Barcode { get; set; }
+        public bool? PrintCustom2Barcode { get; set; } // bool
 
         /// <summary>
         ///     Specify the type of <see cref="PrintCustom2"/>.
@@ -891,13 +995,13 @@ namespace EasyPost.Models.API
         ///     Message to print on the label in spot 3.
         /// </summary>
         [JsonProperty("print_custom_3")]
-        public string? PrintCustom3 { get; set; }
+        public string? PrintCustom3 { get; set; } // any
 
         /// <summary>
         ///     Create a barcode for this custom reference if supported by carrier.
         /// </summary>
         [JsonProperty("print_custom_3_barcode")]
-        public bool? PrintCustom3Barcode { get; set; }
+        public bool? PrintCustom3Barcode { get; set; } // bool
 
         /// <summary>
         ///     Specify the type of <see cref="PrintCustom3"/>.
@@ -907,33 +1011,42 @@ namespace EasyPost.Models.API
         public string? PrintCustom3Code { get; set; }
 
         [JsonProperty("print_rate")]
-        public bool? PrintRate { get; set; }
+        public bool? PrintRate { get; set; } // bool
+
+        [JsonProperty("priority_alert")]
+        public bool? PriorityAlert { get; set; } // bool
+
+        [JsonProperty("priority_alert_content")]
+        public string? PriorityAlertContent { get; set; } // any
+
+        [JsonProperty("priority_alert_plus")]
+        public bool? PriorityAlertPlus { get; set; } // bool
 
         [JsonProperty("receiver_liquor_license")]
-        public string? ReceiverLiquorLicense { get; set; }
+        public string? ReceiverLiquorLicense { get; set; } // bool
 
         /// <summary>
         ///     Registered Mail is the most secure service that the USPS offers.
         ///     It incorporates a system of receipts to monitor the movement of the mail from the point of acceptance to delivery.
         /// </summary>
         [JsonProperty("registered_mail")]
-        public bool? RegisteredMail { get; set; }
+        public bool? RegisteredMail { get; set; } // bool
 
         /// <summary>
         ///     The value of the package contents for <see cref="RegisteredMail"/> purposes.
         /// </summary>
         [JsonProperty("registered_mail_amount")]
-        public double? RegisteredMailAmount { get; set; }
+        public double? RegisteredMailAmount { get; set; } // number
 
         /// <summary>
         ///     An electronic return receipt may be purchased at the time of mailing and provides a shipper with evidence of delivery (to whom the mail was delivered and date of delivery), and information about the recipient's actual delivery address.
         ///     Only applies to the USPS.
         /// </summary>
         [JsonProperty("return_receipt")]
-        public bool? ReturnReceipt { get; set; }
+        public bool? ReturnReceipt { get; set; } // bool
 
         [JsonProperty("return_service")]
-        public string? ReturnService { get; set; }
+        public string? ReturnService { get; set; } // any
 
         /// <summary>
         ///     Set this value to true for delivery on Saturday.
@@ -942,7 +1055,10 @@ namespace EasyPost.Models.API
         ///     You may need to create two shipments, one with the <see cref="SaturdayDelivery"/> option set and one without to get all your eligible rates.
         /// </summary>
         [JsonProperty("saturday_delivery")]
-        public bool? SaturdayDelivery { get; set; }
+        public bool? SaturdayDelivery { get; set; } // bool
+
+        [JsonProperty("service_codes")]
+        public List<string>? ServiceCodes { get; set; } // array
 
         [JsonProperty("settlement_method")]
         public string? SettlementMethod { get; set; }
@@ -957,7 +1073,7 @@ namespace EasyPost.Models.API
         ///     The manifest ID is used to group SmartPost packages onto a manifest for each trailer.
         /// </summary>
         [JsonProperty("smartpost_manifest")]
-        public string? SmartpostManifest { get; set; }
+        public string? SmartpostManifest { get; set; } // any
 
         /// <summary>
         ///     This option allows you to request the following USPS mail classes:
@@ -981,14 +1097,23 @@ namespace EasyPost.Models.API
         [JsonProperty("special_rates_eligibility")]
         public string? SpecialRatesEligibility { get; set; }
 
+        [JsonProperty("sub_shipper_id")]
+        public string? SubShipperId { get; set; } // any
+
         [JsonProperty("suppress_etd")]
-        public bool? SuppressEtd { get; set; }
+        public bool? SuppressEtd { get; set; } // bool
 
         /// <summary>
         ///     The expiration date of the tax ID, in the format DD/MM/YYYY.
         /// </summary>
         [JsonProperty("tax_id_expiration_date")]
         public string? TaxIdExpirationDate { get; set; }
+
+        [JsonProperty("third_party_consignee")]
+        public bool? ThirdPartyConsignee { get; set; } // bool
+
+        [JsonProperty("ups_return_service")]
+        public string? UpsReturnService { get; set; }
 
         #endregion
 
