@@ -43,7 +43,7 @@ namespace EasyPost._base
         ///     Gets this object as a JSON object (dictionary).
         /// </summary>
         /// <returns>A dictionary representation of this object's properties.</returns>
-        internal Dictionary<string, object> AsDictionary() => JsonConvert.DeserializeObject<Dictionary<string, object>>(AsJson())!;
+        public virtual Dictionary<string, object> AsDictionary() => JsonConvert.DeserializeObject<Dictionary<string, object>>(AsJson())!;
 
         /// <inheritdoc />
         public override bool Equals(object? obj) => GetType() == obj?.GetType() && GetHashCode() == ((EasyPostObject)obj).GetHashCode();

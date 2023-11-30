@@ -67,6 +67,22 @@ namespace EasyPost.Utilities.Internal.Extensions
         }
 
         /// <summary>
+        ///     Merge another dictionary into this dictionary.
+        /// </summary>
+        /// <param name="dictionary">The base dictionary to add additional key-value pairs to.</param>
+        /// <param name="other">The secondary dictionary to extract key-value pairs from.</param>
+        /// <returns>The base dictionary with key-value pairs from the secondary dictionary added.</returns>
+        internal static Dictionary<string, object> MergeIn(this Dictionary<string, object> dictionary, Dictionary<string, object> other)
+        {
+            foreach (KeyValuePair<string, object> item in other)
+            {
+                dictionary!.AddOrUpdate(item.Key, item.Value);
+            }
+
+            return dictionary;
+        }
+
+        /// <summary>
         ///     Wrap a dictionary into a larger dictionary.
         ///     i.e. add a dictionary of parameters to "level1" -> "level2" -> "level3" -> "parameters".
         /// </summary>
