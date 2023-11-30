@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -15,6 +16,7 @@ namespace EasyPost.Services
     ///     Class representing a set of <a href="https://www.easypost.com/docs/api#api-keys">API key-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
+    [SuppressMessage("Performance", "CA1863:Use \'CompositeFormat\'")]
     public class ApiKeyService : EasyPostService
     {
         /// <summary>

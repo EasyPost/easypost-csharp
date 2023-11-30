@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace EasyPost.Exceptions.General
@@ -5,6 +6,7 @@ namespace EasyPost.Exceptions.General
     /// <summary>
     ///     Represents an error that occurs due to a missing property on an object.
     /// </summary>
+    [SuppressMessage("Performance", "CA1863:Use \'CompositeFormat\'")]
     public class MissingPropertyError : EasyPostError
     {
         /// <summary>

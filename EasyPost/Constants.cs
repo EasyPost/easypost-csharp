@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Text;
 using EasyPost.Exceptions.API;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal;

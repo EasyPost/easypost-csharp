@@ -15,7 +15,7 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
+          dotnet-version: 8.x.x
 
       - name: Set up dotnet tools
         run: make install install-styleguide
@@ -31,8 +31,8 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
-          
+          dotnet-version: 8.x.x
+
       - name: Set up dotnet tools
         run: make install install-styleguide
 
@@ -51,7 +51,7 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
+          dotnet-version: 8.x.x
 
       - name: Set up dotnet tools and dependencies
         run: make install
@@ -67,7 +67,7 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
+          dotnet-version: 8.x.x
 
       - name: Set up dotnet tools and dependencies
         run: make install
@@ -102,7 +102,7 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
+          dotnet-version: 8.x.x
 
       - name: Install docfx
         run: make install-tools
@@ -124,21 +124,19 @@ jobs:
       EASYPOST_PROD_API_KEY: "123"
     strategy:
       matrix:
-        name: [ 'NetStandard20', 'NetCore31', 'Net50', 'Net60', 'Net70' ]
+        name: [ 'NetStandard20', 'Net60', 'Net70', 'Net80' ]
         include:
           - name: NetStandard20
             # can't run tests on .NET Standard, it's just a bridge between .NET Framework and .NET.
             # So we'll target .NET Framework 4.6.2
             # More notes at the bottom of this file
             framework: net462
-          - name: NetCore31
-            framework: netcoreapp3.1
-          - name: Net50
-            framework: net5.0
           - name: Net60
             framework: net6.0
           - name: Net70
             framework: net7.0
+          - name: Net80
+            framework: net8.0
     steps:
       - uses: actions/checkout@v3
         with:
@@ -147,11 +145,8 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          # .NET 3.1 and 5 are deprecated and removed from GitHub Actions, we need to manually install them
           dotnet-version: |
-            3.1.x
-            5.x.x
-            7.x.x
+            8.x.x
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1.2
@@ -177,7 +172,7 @@ jobs:
         # Run the unit tests in a specific framework (verify that the library works in that framework)
       - name: Run Tests
         run: make unit-test fw=${{ matrix.framework }}
-        
+
   Integration_Tests:
     runs-on: windows-2022
     steps:
@@ -188,7 +183,7 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
+          dotnet-version: 8.x.x
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1.2
@@ -220,7 +215,7 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
+          dotnet-version: 8.x.x
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1.2
@@ -241,7 +236,7 @@ jobs:
         # Run the compatibility tests
       - name: Run Tests
         run: make fs-compat-test fw=net7.0  # Always run compatibility tests on the latest framework
-          
+
   Visual_Basic_Compatibility_Test:
     runs-on: windows-2022
     steps:
@@ -253,7 +248,7 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x.x
+          dotnet-version: 8.x.x
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1.2
@@ -270,7 +265,7 @@ jobs:
         # Pull in fixtures submodule
       - name: Set up dotnet tools and dependencies
         run: make install
-          
+
         # Run the compatibility tests
       - name: Run Tests
         run: make vb-compat-test fw=net7.0  # Always run compatibility tests on the latest framework

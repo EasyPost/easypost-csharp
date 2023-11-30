@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using EasyPost.Exceptions.General;
@@ -9,6 +10,7 @@ namespace EasyPost.Utilities
     ///     Utility methods to filter rate lists.
     /// </summary>
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Beta.Rates
+    [SuppressMessage("Performance", "CA1863:Use \'CompositeFormat\'")]
     public static class Rates
     {
         /// <summary>
@@ -112,7 +114,9 @@ namespace EasyPost.Utilities
             if (lowestRate == null)
             {
                 // if we didn't find a rate, throw an exception
+#pragma warning disable CA1863
                 throw new FilteringError(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.NoObjectFound, "rates"));
+#pragma warning restore CA1863
             }
 
             // return the lowest rate

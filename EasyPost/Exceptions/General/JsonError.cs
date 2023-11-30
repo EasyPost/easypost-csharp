@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace EasyPost.Exceptions.General
@@ -27,6 +28,7 @@ namespace EasyPost.Exceptions.General
     /// <summary>
     ///     Represents an error that occurs while deserializing JSON.
     /// </summary>
+    [SuppressMessage("Performance", "CA1863:Use \'CompositeFormat\'")]
     public class JsonDeserializationError : JsonError
     {
         /// <summary>
@@ -42,6 +44,7 @@ namespace EasyPost.Exceptions.General
     /// <summary>
     ///     Represents an error that occurs while serializing JSON.
     /// </summary>
+    [SuppressMessage("Performance", "CA1863:Use \'CompositeFormat\'")]
     public class JsonSerializationError : JsonError
     {
         /// <summary>

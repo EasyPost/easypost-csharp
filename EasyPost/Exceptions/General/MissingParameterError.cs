@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Reflection;
 
 namespace EasyPost.Exceptions.General
@@ -6,6 +7,7 @@ namespace EasyPost.Exceptions.General
     /// <summary>
     ///     Represents an error that occurs due to a missing parameter.
     /// </summary>
+    [SuppressMessage("Performance", "CA1863:Use \'CompositeFormat\'")]
     public class MissingParameterError : ValidationError
     {
         /// <summary>
