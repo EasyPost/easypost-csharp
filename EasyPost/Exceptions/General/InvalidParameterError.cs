@@ -6,7 +6,6 @@ namespace EasyPost.Exceptions.General
     /// <summary>
     ///     Represents an error that occurs due to an invalid parameter.
     /// </summary>
-    [SuppressMessage("Performance", "CA1863:Use \'CompositeFormat\'")]
     public class InvalidParameterError : ValidationError
     {
         /// <summary>

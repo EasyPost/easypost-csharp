@@ -19,7 +19,6 @@ namespace EasyPost.Exceptions.API
     ///     This is different than the <see cref="Error"/> class, which represents information about what triggered the failed request.
     ///     The information from the top-level <see cref="Error"/> class is used to generate this error, and any sub-errors are stored as a list of <see cref="Error"/> objects.
     /// </summary>
-    [SuppressMessage("Performance", "CA1863:Use \'CompositeFormat\'")]
     public abstract class ApiError : EasyPostError
 #pragma warning restore SA1649
     {

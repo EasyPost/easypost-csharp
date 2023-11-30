@@ -95,7 +95,6 @@ namespace EasyPost.Tests.ExceptionsTests
 
         [Fact]
         [Testing.Exception]
-        [SuppressMessage("Performance", "CA1863:Use \'CompositeFormat\'")]
         public void TestExceptionConstructors()
         {
             const string testMessage = "This is a test message.";
@@ -262,7 +261,6 @@ namespace EasyPost.Tests.ExceptionsTests
 
         [Fact]
         [Testing.Exception]
-        [SuppressMessage("Performance", "CA1863:Use \'CompositeFormat\'")]
         public void TestExceptionMessageFormatting()
         {
             Type type = typeof(Address);
