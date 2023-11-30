@@ -25,6 +25,12 @@ namespace EasyPost.Parameters.Beta.Rate
         public IAddressParameter? FromAddress { get; set; }
 
         /// <summary>
+        ///     Additional <see cref="Models.API.Options"/> to use to retrieve <see cref="Models.API.Beta.StatelessRate"/>s.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "shipment", "options")]
+        public Models.API.Options? Options { get; set; }
+
+        /// <summary>
         ///     Reference name to use to retrieve <see cref="Models.API.Beta.StatelessRate"/>s.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "reference")]
