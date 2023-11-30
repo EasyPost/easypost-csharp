@@ -5,6 +5,7 @@
 - Remove `carbon_offset` (`CarbonOffset`) parameter from shipment creation and purchase flows
   - This parameter is no longer supported by the EasyPost API
 - Remove `CarbonOffset` model
+- Remove `CreateAndBuy` method in `Batch` service due to API deprecation
 
 ## v5.8.0 (2023-10-11)
 
