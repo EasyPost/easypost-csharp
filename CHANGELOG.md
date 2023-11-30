@@ -8,6 +8,7 @@
   - This parameter is no longer supported by the EasyPost API
 - Remove `CarbonOffset` model
 - Remove `CreateAndBuy` method in `Batch` service due to API deprecation
+- Add `Options` parameter for beta rates retrieval parameter set
 
 ## v5.8.0 (2023-10-11)
 
