@@ -370,7 +370,7 @@ namespace EasyPost.Models.API
         ///     </list>
         /// </summary>
         [JsonProperty("dropoff_type")]
-        public string? DropoffType { get; set; }  // enum server-side
+        public string? DropoffType { get; set; } // enum server-side
 
         /// <summary>
         ///     Package contents contain dry ice.
