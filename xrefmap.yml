@@ -14917,28 +14917,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.BatchService.Create
   nameWithType: BatchService.Create
-- uid: EasyPost.Services.BatchService.CreateAndBuy(Dictionary{System.String,System.Object},CancellationToken)
-  name: CreateAndBuy(Dictionary<String, Object>, CancellationToken)
-  href: api/EasyPost.Services.BatchService.html#EasyPost_Services_BatchService_CreateAndBuy_Dictionary_System_String_System_Object__CancellationToken_
-  commentId: M:EasyPost.Services.BatchService.CreateAndBuy(Dictionary{System.String,System.Object},CancellationToken)
-  name.vb: CreateAndBuy(Dictionary(Of String, Object), CancellationToken)
-  fullName: EasyPost.Services.BatchService.CreateAndBuy(Dictionary<System.String, System.Object>, CancellationToken)
-  fullName.vb: EasyPost.Services.BatchService.CreateAndBuy(Dictionary(Of System.String, System.Object), CancellationToken)
-  nameWithType: BatchService.CreateAndBuy(Dictionary<String, Object>, CancellationToken)
-  nameWithType.vb: BatchService.CreateAndBuy(Dictionary(Of String, Object), CancellationToken)
-- uid: EasyPost.Services.BatchService.CreateAndBuy(EasyPost.Parameters.Batch.Create,CancellationToken)
-  name: CreateAndBuy(Create, CancellationToken)
-  href: api/EasyPost.Services.BatchService.html#EasyPost_Services_BatchService_CreateAndBuy_EasyPost_Parameters_Batch_Create_CancellationToken_
-  commentId: M:EasyPost.Services.BatchService.CreateAndBuy(EasyPost.Parameters.Batch.Create,CancellationToken)
-  fullName: EasyPost.Services.BatchService.CreateAndBuy(EasyPost.Parameters.Batch.Create, CancellationToken)
-  nameWithType: BatchService.CreateAndBuy(Create, CancellationToken)
-- uid: EasyPost.Services.BatchService.CreateAndBuy*
-  name: CreateAndBuy
-  href: api/EasyPost.Services.BatchService.html#EasyPost_Services_BatchService_CreateAndBuy_
-  commentId: Overload:EasyPost.Services.BatchService.CreateAndBuy
-  isSpec: "True"
-  fullName: EasyPost.Services.BatchService.CreateAndBuy
-  nameWithType: BatchService.CreateAndBuy
 - uid: EasyPost.Services.BatchService.GenerateLabel(System.String,EasyPost.Parameters.Batch.GenerateLabel,CancellationToken)
   name: GenerateLabel(String, GenerateLabel, CancellationToken)
   href: api/EasyPost.Services.BatchService.html#EasyPost_Services_BatchService_GenerateLabel_System_String_EasyPost_Parameters_Batch_GenerateLabel_CancellationToken_
