@@ -2,6 +2,6 @@
 
 // Version information for an assembly must follow semantic versioning
 // When releasing a release candidate, append a 4th digit being the number of the release candidate
-[assembly: AssemblyVersion("6.7.1")]
-[assembly: AssemblyFileVersion("6.7.1")]
-[assembly: AssemblyInformationalVersion("6.7.1")]
+[assembly: AssemblyVersion("6.7.2")]
+[assembly: AssemblyFileVersion("6.7.2")]
+[assembly: AssemblyInformationalVersion("6.7.2")]

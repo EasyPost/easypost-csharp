@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v6.7.2 (2024-08-16)
 
 - Fix inclusion of `Verify` and `VerifyStrict` parameters when creating an Address as part of a larger object creation (e.g. Shipment, Order, etc.)
 
