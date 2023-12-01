@@ -9,6 +9,7 @@
 - Remove `CarbonOffset` model
 - Remove `CreateAndBuy` method in `Batch` service due to API deprecation
 - Add `Options` parameter for beta rates retrieval parameter set
+- Add ability to add custom options via `AddAdditionalOption`, in case an option is not explicitly supported
 
 ## v5.8.0 (2023-10-11)
 

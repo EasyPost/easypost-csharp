@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using EasyPost._base;
+using EasyPost.Utilities.Internal.Extensions;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -946,5 +947,24 @@ namespace EasyPost.Models.API
         public string? TaxIdExpirationDate { get; set; }
 
         #endregion
+
+        private readonly Dictionary<string, object> _additionalOptions = new();
+
+        /// <summary>
+        ///     Add an additional option that is not officially supported by the library.
+        /// </summary>
+        /// <param name="key">JSON key of the option to add.</param>
+        /// <param name="value">Value of the option to add.</param>
+        public void AddAdditionalOption(string key, object value) => _additionalOptions.Add(key, value);
+
+        public override Dictionary<string, object> AsDictionary()
+        {
+            Dictionary<string, object> data = base.AsDictionary();
+
+            // Add any additional options
+            data = data.MergeIn(_additionalOptions);
+
+            return data;
+        }
     }
 }
