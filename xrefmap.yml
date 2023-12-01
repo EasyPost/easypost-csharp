@@ -226,6 +226,19 @@ references:
   commentId: T:EasyPost._base.EasyPostObject
   fullName: EasyPost._base.EasyPostObject
   nameWithType: EasyPostObject
+- uid: EasyPost._base.EasyPostObject.AsDictionary
+  name: AsDictionary()
+  href: api/EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_AsDictionary
+  commentId: M:EasyPost._base.EasyPostObject.AsDictionary
+  fullName: EasyPost._base.EasyPostObject.AsDictionary()
+  nameWithType: EasyPostObject.AsDictionary()
+- uid: EasyPost._base.EasyPostObject.AsDictionary*
+  name: AsDictionary
+  href: api/EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_AsDictionary_
+  commentId: Overload:EasyPost._base.EasyPostObject.AsDictionary
+  isSpec: "True"
+  fullName: EasyPost._base.EasyPostObject.AsDictionary
+  nameWithType: EasyPostObject.AsDictionary
 - uid: EasyPost._base.EasyPostObject.CreatedAt
   name: CreatedAt
   href: api/EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_CreatedAt
@@ -4728,6 +4741,19 @@ references:
   commentId: T:EasyPost.Models.API.Options
   fullName: EasyPost.Models.API.Options
   nameWithType: Options
+- uid: EasyPost.Models.API.Options.AddAdditionalOption(System.String,System.Object)
+  name: AddAdditionalOption(String, Object)
+  href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_AddAdditionalOption_System_String_System_Object_
+  commentId: M:EasyPost.Models.API.Options.AddAdditionalOption(System.String,System.Object)
+  fullName: EasyPost.Models.API.Options.AddAdditionalOption(System.String, System.Object)
+  nameWithType: Options.AddAdditionalOption(String, Object)
+- uid: EasyPost.Models.API.Options.AddAdditionalOption*
+  name: AddAdditionalOption
+  href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_AddAdditionalOption_
+  commentId: Overload:EasyPost.Models.API.Options.AddAdditionalOption
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Options.AddAdditionalOption
+  nameWithType: Options.AddAdditionalOption
 - uid: EasyPost.Models.API.Options.AdditionalHandling
   name: AdditionalHandling
   href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_AdditionalHandling
@@ -4767,6 +4793,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Options.Alcohol
   nameWithType: Options.Alcohol
+- uid: EasyPost.Models.API.Options.AsDictionary
+  name: AsDictionary()
+  href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_AsDictionary
+  commentId: M:EasyPost.Models.API.Options.AsDictionary
+  fullName: EasyPost.Models.API.Options.AsDictionary()
+  nameWithType: Options.AsDictionary()
+- uid: EasyPost.Models.API.Options.AsDictionary*
+  name: AsDictionary
+  href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_AsDictionary_
+  commentId: Overload:EasyPost.Models.API.Options.AsDictionary
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Options.AsDictionary
+  nameWithType: Options.AsDictionary
 - uid: EasyPost.Models.API.Options.BillingRef
   name: BillingRef
   href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_BillingRef
