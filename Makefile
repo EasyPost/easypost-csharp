@@ -71,7 +71,7 @@ lint-scripts:
 # ref: https://learn.microsoft.com/en-us/nuget/reference/cli-reference/cli-ref-push
 publish:
 	# Verify that no extraneous .nupkg files exist
-	dotnet nuget push *.nupkg -Source https://api.nuget.org/v3/index.json -k ${key} -SkipDuplicate # -NonInteractive
+	dotnet nuget push *.nupkg -Source https://api.nuget.org/v3/index.json -k ${key} -SkipDuplicate
 
 ## release - Cuts a release for the project on GitHub (requires GitHub CLI)
 # tag = The associated tag title of the release
@@ -130,4 +130,4 @@ fs-compat-test:
 vb-compat-test:
 	dotnet test EasyPost.Compatibility.VB/EasyPost.Compatibility.VB.vbproj -f ${fw} -restore
 
-.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-styleguide install-tools install-release-tools install lint lint-scripts release restore scan setup-win setup-unix test update-examples-submodule unit-test integration-test fs-compat-test vb-compat-test
+.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-styleguide install-tools install lint lint-scripts release restore scan setup-win setup-unix test update-examples-submodule unit-test integration-test fs-compat-test vb-compat-test
