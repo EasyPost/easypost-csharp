@@ -9,11 +9,6 @@
 - Remove `CarbonOffset` model
 - Remove `CreateAndBuy` method in `Batch` service due to API deprecation
 - Add `Options` parameter for beta rates retrieval parameter set
-- Add a number of missing `Options`, fix invalid types:
-  - `DeliveryMaxDatetime` and `DeliveryMinDatetime` are now `DateTime` objects (previously `string`)
-  - `PartiesToTransactionAreRelated` is now a `bool` (previously `string`)
-  - `PrintCustom` is now a `List<string>` (previously `Dictionary<string, object>`)
-  - `ReceiverLiquorLicense` is now a `bool` (previously `string`)
 - Add ability to add custom options via `AddAdditionalOption`, in case an option is not explicitly supported
 
 ## v5.8.0 (2023-10-11)
