@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release (Major Version)
+## v6.0.0 (2023-12-06)
 
 - Drop support for .NET Core 3.1
 - Add support for .NET 8.0
