@@ -9,6 +9,7 @@ namespace EasyPost.Models.Shared
     /// <summary>
     ///     A <a href="https://www.easypost.com/docs/api#pagination">paginated collection</a> of <see cref="EasyPost._base.EasyPostObject"/>s.
     /// </summary>
+    /// <typeparam name="TEntries">The type of <see cref="EasyPost._base.EasyPostObject"/> contained in the collection.</typeparam>
     public abstract class PaginatedCollection<TEntries> : _base.EasyPostObject where TEntries : _base.EasyPostObject
     {
         #region JSON Properties

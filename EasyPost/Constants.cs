@@ -89,12 +89,13 @@ namespace EasyPost
         /// <returns>The corresponding <see cref="ApiError"/> type.</returns>
         public static Type? GetEasyPostExceptionType(HttpStatusCode statusCode) => GetEasyPostExceptionType((int)statusCode);
 
-        // public so end-users can access if need to (i.e. regex?)
         /// <summary>
         ///     Exception messages used in this SDK.
         /// </summary>
+        //// public so end-users can access if need to (i.e. regex?)
         public static class ErrorMessages
         {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
             public const string InvalidApiKeyType = "Invalid API key type.";
             public const string InvalidParameter = "Invalid parameter: {0}.";
             public const string InvalidWebhookSignature = "Webhook does not contain a valid HMAC signature.";
@@ -113,6 +114,7 @@ namespace EasyPost
             internal const string ApiErrorDetailsParsingError = "RESPONSE.PARSE_ERROR"; // not for public consumption
             public const string NoMorePagesToRetrieve = "There are no more pages to retrieve.";
             public const string ApiRequestTimedOut = "The request to EasyPost timed out.";
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         }
 
         /// <summary>
