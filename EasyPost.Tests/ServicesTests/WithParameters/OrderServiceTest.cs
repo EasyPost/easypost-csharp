@@ -71,8 +71,6 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Rate rate = order.LowestRate();
 
-            orderBuyParameters = new(rate);
-
             order = await Client.Order.Buy(order.Id, rate);
 
             shipments = order.Shipments;

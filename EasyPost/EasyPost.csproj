@@ -23,6 +23,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <!-- Need to generate documentation to lint docstrings -->
+    <!-- TODO: <GenerateDocumentationFile>true</GenerateDocumentationFile> -->
     <!-- Warnings to suppress -->
     <NoWarn></NoWarn>
   </PropertyGroup>
