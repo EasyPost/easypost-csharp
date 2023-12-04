@@ -16,6 +16,8 @@ Use the following guide to assist in the upgrade process of the `easypost-csharp
 
 ### 6.0 Low Impact Changes
 
+- [CreateAndBuy Batch Function Removed](#60-createandbuy-batch-function-removed)
+
 ## 6.0 .NET Support
 
 *Likelihood of Impact: **High***
