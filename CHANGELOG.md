@@ -10,6 +10,7 @@
 - Remove `CreateAndBuy` method in `Batch` service due to API deprecation
 - Add `Options` parameter for beta rates retrieval parameter set
 - Add ability to add custom options via `AddAdditionalOption`, in case an option is not explicitly supported
+- Beta `CarrierMetadata` service and classes removed. Please use the GA `CarrierMetadata` service and classes instead.
 
 ## v5.8.0 (2023-10-11)
 

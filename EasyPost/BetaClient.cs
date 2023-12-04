@@ -1,4 +1,3 @@
-using System;
 using EasyPost._base;
 using EasyPost.Services.Beta;
 
@@ -25,12 +24,6 @@ namespace EasyPost
         // TODO: Add doc links
 
         /// <summary>
-        ///     Access beta Carrier Metadata-related functionality.
-        /// </summary>
-        [Obsolete("This service is out of beta. Please use CarrierMetadata via the GA client instead. This beta service will be removed in a future version.", false)]
-        public CarrierMetadataService CarrierMetadata { get; }
-
-        /// <summary>
         ///     Access beta Rate-related functionality.
         /// </summary>
         public RateService Rate { get; }
@@ -47,7 +40,6 @@ namespace EasyPost
         internal BetaClient(ClientConfiguration configuration)
             : base(configuration)
         {
-            CarrierMetadata = new CarrierMetadataService(this);
             Rate = new RateService(this);
             ReferralCustomer = new ReferralCustomerService(this);
         }
@@ -60,7 +52,6 @@ namespace EasyPost
                 // Dispose managed state (managed objects).
 
                 // Dispose of the services
-                CarrierMetadata.Dispose();
                 Rate.Dispose();
                 ReferralCustomer.Dispose();
             }

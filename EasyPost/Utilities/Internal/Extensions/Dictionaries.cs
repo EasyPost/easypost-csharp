@@ -237,6 +237,7 @@ namespace EasyPost.Utilities.Internal.Extensions
             return value switch
             {
                 long l => l,
+                // ReSharper disable once RedundantCast
                 int i => (long)i,
                 float f => (long)f,
                 double d => (long)d,
