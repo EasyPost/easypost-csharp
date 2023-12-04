@@ -2,11 +2,57 @@
 
 Use the following guide to assist in the upgrade process of the `easypost-csharp` library between major versions.
 
+- [Upgrading from 5.x to 6.0](#upgrading-from-5x-to-60)
 - [Upgrading from 4.x to 5.0](#upgrading-from-4x-to-50)
 - [Upgrading from 3.x to 4.x](#upgrading-from-3x-to-40)
 - [Upgrading from 2.x to 3.0](#upgrading-from-2x-to-30)
 
+## Upgrading from 5.x to 6.0
+
+### 6.0 High Impact Changes
+
+- [.NET Support](#60-net-support)
+- [Carbon Offset Removed](#60-carbon-offset-removed)
+
+### 6.0 Low Impact Changes
+
+## 6.0 .NET Support
+
+*Likelihood of Impact: **High***
+
+**.NET Core 3.1 Support Dropped**
+
+This library no longer supports .NET Core 3.1, which has reached end-of-life.
+
+**.NET 8.0 Support Added**
+
+This library now supports .NET 8.0.
+
+## 6.0 Carbon Offset Removed
+
+*Likelihood of Impact: **High***
+
+EasyPost now offers Carbon Neutral shipments by default for free! Because of this, there is no longer a need to specify if you want to offset the carbon footprint of a shipment.
+
+The `withCarbonOffset` parameter of the `Create`, `Buy`, and `RegenerateRates` shipment functions has been removed.
+
+The `CarbonOffset` parameter of the `Shipment.Create`, `Shipment.Buy` and `Shipment.RegenerateRates` parameter sets has been removed.
+
+This is a high-impact change for those using `EndShippers`, as the signature for the `Create` and `Buy` shipment function has changed. You will need to inspect these callsites to ensure that the EndShipper parameter is being passed in the correct place.
+
+The `CarbonOffset` model has also been removed.
+
+## 6.0 CreateAndBuy Batch Function Removed
+
+*Likelihood of Impact: **Low***
+
+The `create_and_buy` batch endpoint has been deprecated, and the `CreateAndBuy` Batch service function has been removed.
+
+The correct procedure is to first create a batch and then purchase it with two separate API calls.
+
 ## Upgrading from 4.x to 5.0
+
+**NOTICE:** v5 is deprecated.
 
 ### 5.0 High Impact Changes
 
@@ -362,7 +408,7 @@ information.
 
 **.NET Standard 2.0 & NET 5.0 & 6.0 Support Added**
 
-easypost-chsarp can now be used with .NET Standard 2.0, NET 5.0 & NET 6.0 along with Visual Basic and F#.
+easypost-csharp can now be used with .NET Standard 2.0, NET 5.0 & NET 6.0 along with Visual Basic and F#.
 
 **Dependencies**
 
