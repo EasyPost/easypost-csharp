@@ -69,5 +69,9 @@ jobs:
       - name: Publish to NuGet
         run: make publish key=${{ secrets.NUGET_API_KEY }}
 
-    # TODO: Upload artifact to previous release
+      - name: Upload NuGet package to release
+        uses: AButler/upload-release-assets@v3.0
+        with:
+          files: "*.nupkg"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
