@@ -1,10 +1,8 @@
 name: Release
 
 on:
-  push:
-    tags:
-      # ex. "v1.2.3", "v1.2.3-rc1"
-      - "v[0-9]+.[0-9]+.*"
+  release:
+    types: [ published ]
 
 jobs:
   publish:
@@ -70,3 +68,6 @@ jobs:
 
       - name: Publish to NuGet
         run: make publish key=${{ secrets.NUGET_API_KEY }}
+
+    # TODO: Upload artifact to previous release
+
