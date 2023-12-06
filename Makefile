@@ -23,7 +23,6 @@ build-prod:
 ## clean - Clean the project
 clean:
 	dotnet clean
-	rm -rf *.nupkg
 
 ## coverage - Generate coverage reports (unit tests, not integration) for the project
 coverage:
@@ -43,10 +42,6 @@ install-tools:
 	dotnet tool install --local security-scan --version 5.6.3 || exit 0
 	dotnet tool install --local dotnet-format || exit 0
 	dotnet tool install --local docfx --version 2.60.2 || exit 0
-
-## install-release-tools - Install required tools for release
-install-release-tools:
-	bash scripts/unix/install_osslsigncode.sh
 
 ## install-styleguide - Import style guide (Unix only)
 install-styleguide: | update-examples-submodule
@@ -70,13 +65,13 @@ lint-fix:
 lint-scripts:
 	scripts\win\lint_scripts.bat
 
-## prep-release - Build, sign and package the project for distribution, signing with the provided certificate
+## publish - Publish the project to NuGet
 # @parameters:
-# sncert= - The strong-name certificate to use for signing the built assets.
-# cert= - The authenticity certificate to use for signing the built assets.
-# pass= - The password for the authenticity certificate.
-prep-release:
-	bash scripts/unix/build_release_nuget.sh EasyPost ${sncert} ${cert} ${pass} Release
+# key= - The NuGet API key to use for publishing.
+# ref: https://learn.microsoft.com/en-us/nuget/reference/cli-reference/cli-ref-push
+publish:
+	# Verify that no extraneous .nupkg files exist
+	dotnet nuget push *.nupkg -Source https://api.nuget.org/v3/index.json -k ${key} -SkipDuplicate
 
 ## release - Cuts a release for the project on GitHub (requires GitHub CLI)
 # tag = The associated tag title of the release
@@ -135,4 +130,4 @@ fs-compat-test:
 vb-compat-test:
 	dotnet test EasyPost.Compatibility.VB/EasyPost.Compatibility.VB.vbproj -f ${fw} -restore
 
-.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-styleguide install-tools install-release-tools install lint lint-scripts prep-release release restore scan setup-win setup-unix test update-examples-submodule unit-test integration-test fs-compat-test vb-compat-test
+.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-styleguide install-tools install lint lint-scripts release restore scan setup-win setup-unix test update-examples-submodule unit-test integration-test fs-compat-test vb-compat-test

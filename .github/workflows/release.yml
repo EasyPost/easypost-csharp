@@ -1,0 +1,72 @@
+name: Release
+
+on:
+  push:
+    tags:
+      # ex. "v1.2.3", "v1.2.3-rc1"
+      - "v[0-9]+.[0-9]+.*"
+
+jobs:
+  publish:
+    name: Publish to NuGet
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          # .NET 5 is deprecated and removed from GitHub Actions, we need to manually install it
+          dotnet-version: |
+            5.x.x
+            8.x.x
+
+      - name: Setup Nuget
+        uses: NuGet/setup-nuget@v1.1.1
+
+      - name: Restore NuGet Packages
+        run: make restore
+
+      - name: Set up dotnet tools and dependencies
+        run: make install
+
+      - name: Set up authenticity certificate
+        run: |
+          echo "${{ secrets.SM_CLIENT_CERT_FILE_B64 }}" | base64 --decode > /d/Certificate_pkcs12.p12
+        shell: bash
+
+      - name: Set variables
+        id: variables
+        run: |
+          echo "SM_HOST=${{ secrets.SM_HOST }}" >> "$GITHUB_ENV"
+          echo "SM_API_KEY=${{ secrets.SM_API_KEY }}" >> "$GITHUB_ENV"
+          echo "SM_CLIENT_CERT_FILE=D:\\Certificate_pkcs12.p12" >> "$GITHUB_ENV"
+          echo "SM_CLIENT_CERT_PASSWORD=${{ secrets.SM_CLIENT_CERT_PASSWORD }}" >> "$GITHUB_ENV"
+          echo "C:\Program Files (x86)\Windows Kits\10\App Certification Kit" >> $GITHUB_PATH
+          echo "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools" >> $GITHUB_PATH
+          echo "C:\Program Files\DigiCert\DigiCert Keylocker Tools" >> $GITHUB_PATH
+        shell: bash
+
+      - name: Setup Keylocker KSP on Windows
+        run: |
+          curl -X GET  https://one.digicert.com/signingmanager/api-ui/v1/releases/Keylockertools-windows-x64.msi/download -H "x-api-key:%SM_API_KEY%" -o Keylockertools-windows-x64.msi
+          msiexec /i Keylockertools-windows-x64.msi /quiet /qn
+          smksp_registrar.exe list
+          smctl.exe keypair ls
+          C:\Windows\System32\certutil.exe -csp "DigiCert Signing Manager KSP" -key -user
+        shell: cmd
+
+      - name: Sync Certificates
+        run: |
+          smctl windows certsync
+        shell: cmd
+
+      - name: Build and Sign NuGet package
+        # TODO: Need to keep signing_cert.snk in the repo
+        run: |
+          call scripts\win\build_release_nuget.bat EasyPost EasyPostNETStrongNameSigning.snk "${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }}" Release
+        shell: cmd
+
+      - name: Publish to NuGet
+        run: make publish key=${{ secrets.NUGET_API_KEY }}

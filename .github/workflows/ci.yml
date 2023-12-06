@@ -10,7 +10,7 @@ jobs:
   lint:
     runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
@@ -26,7 +26,7 @@ jobs:
   Roslyn_Static_Analysis:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
@@ -46,7 +46,7 @@ jobs:
   Security_Code_Scan:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
@@ -62,7 +62,7 @@ jobs:
   Coverage_Requirements:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
@@ -79,7 +79,7 @@ jobs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up dotnet tools and dependencies
         run: make install
@@ -97,7 +97,7 @@ jobs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
@@ -140,7 +140,7 @@ jobs:
           - name: Net80
             framework: net8.0
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
 
@@ -180,7 +180,7 @@ jobs:
   Integration_Tests:
     runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
 
@@ -212,7 +212,7 @@ jobs:
   FSharp_Compatibility_Tests:
     runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
 
@@ -245,7 +245,7 @@ jobs:
     runs-on: windows-2022
     steps:
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
 
