@@ -68,13 +68,13 @@ jobs:
           call scripts\win\build_release_nuget.bat EasyPost EasyPostNETStrongNameSigning.snk "${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }}" Release
         shell: cmd
 
-      # - name: Publish to NuGet
-      #  run: make publish key=${{ secrets.NUGET_API_KEY }}
+      - name: Publish to NuGet
+        run: make publish key=${{ secrets.NUGET_API_KEY }}
 
-      # - name: Create a GitHub release
-      #  uses: softprops/action-gh-release@v1
+      - name: Create a GitHub release
+        uses: softprops/action-gh-release@v1
         # ref: https://github.com/softprops/action-gh-release#-customizing
-      #  with:
-      #    body_path: RELEASE_NOTES.md
-      #    files: |
-      #      "*.nupkg"
+        with:
+          body_path: RELEASE_NOTES.md
+          files: |
+            "*.nupkg"
