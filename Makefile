@@ -76,7 +76,7 @@ publish:
 ## release - Cuts a release for the project on GitHub (requires GitHub CLI)
 # tag = The associated tag title of the release
 release:
-	gh release create ${tag} *.nupkg
+	gh release create ${tag}
 
 ## restore - Restore the project
 restore:
