@@ -70,11 +70,3 @@ jobs:
 
       - name: Publish to NuGet
         run: make publish key=${{ secrets.NUGET_API_KEY }}
-
-      - name: Create a GitHub release
-        uses: softprops/action-gh-release@v1
-        # ref: https://github.com/softprops/action-gh-release#-customizing
-        with:
-          body_path: RELEASE_NOTES.md
-          files: |
-            "*.nupkg"
