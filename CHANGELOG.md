@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v6.0.0 (2023-12-06)
+
+- No changes since `v6.0.0-rc1`, see below.
+
 ## v6.0.0-rc1 (2023-12-06)
 
 - Drop support for .NET Core 3.1
