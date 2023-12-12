@@ -77,7 +77,6 @@ namespace EasyPost.Services.Beta
         [CrudOperations.Read]
         public async Task<ChildUserCollection> GetNextPageOfChildren(ChildUserCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ChildUserCollection, AllChildren>(async parameters => await AllChildren((AllChildren)parameters, cancellationToken), collection.Children, pageSize);
 
-
         #endregion
     }
 }
