@@ -34,6 +34,11 @@ namespace EasyPost
         public ReferralCustomerService ReferralCustomer { get; }
 
         /// <summary>
+        ///     Access beta User-related functionality.
+        /// </summary>
+        public UserService User { get; }
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="BetaClient"/> class.
         /// </summary>
         /// <param name="configuration"><see cref="ClientConfiguration"/> for this client.</param>
@@ -42,6 +47,7 @@ namespace EasyPost
         {
             Rate = new RateService(this);
             ReferralCustomer = new ReferralCustomerService(this);
+            User = new UserService(this);
         }
 
         /// <inheritdoc cref="EasyPostClient.Dispose(bool)"/>
@@ -54,6 +60,7 @@ namespace EasyPost
                 // Dispose of the services
                 Rate.Dispose();
                 ReferralCustomer.Dispose();
+                User.Dispose();
             }
 
             // Free native resources (unmanaged objects) and override a finalizer below.

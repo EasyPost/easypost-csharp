@@ -50,7 +50,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         }
 
         [Fact]
-        [CrudOperations.Create]
+        [CrudOperations.Update]
         [Testing.Function]
         public async Task TestUpdateBrand()
         {
