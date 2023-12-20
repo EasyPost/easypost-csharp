@@ -9,9 +9,7 @@ using Xunit;
 namespace EasyPost.Tests.UtilitiesTests
 {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property, Inherited = false)]
-    internal sealed class ExampleAttribute : BaseCustomAttribute
-    {
-    }
+    internal sealed class ExampleAttribute : BaseCustomAttribute;
 
 #pragma warning disable CA1852 // Can be sealed
     internal class ExampleClass

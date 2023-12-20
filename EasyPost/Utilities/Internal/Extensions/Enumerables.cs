@@ -14,7 +14,7 @@ namespace EasyPost.Utilities.Internal.Extensions
         /// <param name="ie"><see cref="IEnumerable{T}"/> element to iterate over.</param>
         /// <param name="action">
         ///     <see cref="System.Action"/> to perform for each loop iteration.
-        ///     Action receives a (int, T) tuple containing the index and the current element in the loop as a parameter
+        ///     Action receives a (int, T) tuple containing the index and the current element in the loop as a parameter.
         /// </param>
         /// <typeparam name="T">Type of input.</typeparam>
         public static void Each<T>(this IEnumerable<T> ie, Action<int, T> action)

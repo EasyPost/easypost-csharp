@@ -116,14 +116,14 @@ namespace EasyPost.Tests
 
             Hooks hooks = new()
             {
-                OnRequestExecuting = (sender, args) =>
+                OnRequestExecuting = (_, args) =>
                 {
                     // Modifying the HttpRequestMessage in this action does not impact the HttpRequestMessage being executed (passed by value, not reference)
                     preRequestCallbackCallCount++;
                     Assert.True(args.RequestTimestamp > 0);
                     requestGuid = args.Id;
                 },
-                OnRequestResponseReceived = (sender, args) =>
+                OnRequestResponseReceived = (_, args) =>
                 {
                     postRequestCallbackCallCount++;
                     Assert.True(args.RequestTimestamp > 0);

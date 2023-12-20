@@ -113,8 +113,8 @@ namespace EasyPost.Services
         ///     Update a <see cref="User"/>.
         ///     <a href="https://www.easypost.com/docs/api#update-a-user">Related API documentation.</a>
         /// </summary>
-        /// <param name="parameters">Data to update <see cref="User"/> with.</param>
         /// <param name="id">The ID of the <see cref="User"/> to update.</param>
+        /// <param name="parameters">Data to update <see cref="User"/> with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="User"/>.</returns>
         [CrudOperations.Update]
@@ -127,8 +127,8 @@ namespace EasyPost.Services
         ///     Update a <see cref="User"/>.
         ///     <a href="https://www.easypost.com/docs/api#update-a-user">Related API documentation.</a>
         /// </summary>
-        /// <param name="parameters">Data to update <see cref="User"/> with.</param>
         /// <param name="id">The ID of the <see cref="User"/> to update.</param>
+        /// <param name="parameters">Data to update <see cref="User"/> with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="User"/>.</returns>
         [CrudOperations.Update]

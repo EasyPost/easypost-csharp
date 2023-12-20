@@ -1,3 +1,4 @@
+// ReSharper disable once RedundantUsingDirective
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using EasyVCR;
@@ -9,8 +10,8 @@ namespace EasyPost.Integration.Utilities
     {
         internal const string ApiKeyFailedToPull = "couldnotpullapikey";
 
-        private static readonly List<string> BodyCensors = new()
-        {
+        private static readonly List<string> BodyCensors =
+        [
             "api_keys",
             "children",
             "client_ip",
@@ -20,20 +21,20 @@ namespace EasyPost.Integration.Utilities
             "keys",
             "phone_number",
             "phone",
-            "test_credentials",
-        };
+            "test_credentials"
+        ];
 
-        private static readonly List<string> HeaderCensors = new()
-        {
+        private static readonly List<string> HeaderCensors =
+        [
             "Authorization",
-            "User-Agent",
-        };
+            "User-Agent"
+        ];
 
-        private static readonly List<string> QueryCensors = new()
-        {
+        private static readonly List<string> QueryCensors =
+        [
             "card[number]",
             "card[cvc]"
-        };
+        ];
 
         public enum ApiKey
         {

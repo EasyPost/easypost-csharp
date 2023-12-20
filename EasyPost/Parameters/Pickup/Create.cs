@@ -37,6 +37,9 @@ namespace EasyPost.Parameters.Pickup
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "instructions")]
         public string? Instructions { get; set; }
 
+        /// <summary>
+        ///    Indicates whether the pickup address is an account address.
+        /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "is_account_address")]
         public bool? IsAccountAddress { get; set; }
 

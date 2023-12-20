@@ -13,8 +13,10 @@ namespace EasyPost.Models.API
 
         [JsonProperty("details")]
         public VerificationDetails? Details { get; set; }
+
         [JsonProperty("errors")]
         public List<Error>? Errors { get; set; }
+
         [JsonProperty("success")]
         public bool? Success { get; set; }
 

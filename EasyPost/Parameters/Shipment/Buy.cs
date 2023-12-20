@@ -33,7 +33,7 @@ namespace EasyPost.Parameters.Shipment
         #endregion
 
         /// <summary>
-        ///     Construct this parameters set with the given <see cref="Rate"/>.
+        ///     Initializes a new instance of the <see cref="Buy"/> class with the given <see cref="Rate"/>.
         /// </summary>
         /// <param name="rate">The selected <see cref="Rate"/>.</param>
         public Buy(Rate rate)
@@ -42,7 +42,7 @@ namespace EasyPost.Parameters.Shipment
         }
 
         /// <summary>
-        ///     Construct this parameters set with the given <see cref="Rate"/> ID.
+        ///     Initializes a new instance of the <see cref="Buy"/> class with the given <see cref="Rate"/> ID.
         /// </summary>
         /// <param name="rateId">The selected <see cref="Rate"/> ID.</param>
         public Buy(string rateId)

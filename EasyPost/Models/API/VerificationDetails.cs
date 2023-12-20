@@ -12,8 +12,10 @@ namespace EasyPost.Models.API
 
         [JsonProperty("latitude")]
         public float? Latitude { get; set; }
+
         [JsonProperty("longitude")]
         public float? Longitude { get; set; }
+
         [JsonProperty("time_zone")]
         public string? TimeZone { get; set; }
 

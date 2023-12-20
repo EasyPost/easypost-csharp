@@ -25,6 +25,7 @@ namespace EasyPost
 
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once UnusedAutoPropertyAccessor.Global
+
         /// <summary>
         ///     Access beta functionality.
         /// </summary>

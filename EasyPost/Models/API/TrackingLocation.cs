@@ -12,10 +12,13 @@ namespace EasyPost.Models.API
 
         [JsonProperty("city")]
         public string? City { get; set; }
+
         [JsonProperty("country")]
         public string? Country { get; set; }
+
         [JsonProperty("state")]
         public string? State { get; set; }
+
         [JsonProperty("zip")]
         public string? Zip { get; set; }
 

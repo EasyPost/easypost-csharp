@@ -63,14 +63,14 @@ namespace EasyPost.Tests.ExceptionsTests
 
             // Now test with some error-related JSON inside the response with sub-errors
             errorMessageStringJson = "{\"error\": {\"code\": \"ERROR_CODE\", \"message\": \"ERROR_MESSAGE\", \"errors\": [{\"field\": \"SUB_ERROR_FIELD\", \"message\": \"SUB_ERROR_MESSAGE\"}]}}";
-            List<Error> subErrors = new()
-            {
+            List<Error> subErrors =
+            [
                 new Error
                 {
                     Field = "SUB_ERROR_FIELD",
                     RawMessage = "SUB_ERROR_MESSAGE"
                 }
-            };
+            ];
 
             // Generate a dummy HttpResponseMessage with the given status code to parse
             httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString(CultureInfo.InvariantCulture));
@@ -365,6 +365,7 @@ namespace EasyPost.Tests.ExceptionsTests
 
         [Fact]
         [Testing.Exception]
+        // ReSharper disable once InconsistentNaming
         public async Task TestUnknownApiException1xxGeneration()
         {
             // library does not have a specific exception for this status code
@@ -385,6 +386,7 @@ namespace EasyPost.Tests.ExceptionsTests
 
         [Fact]
         [Testing.Exception]
+        // ReSharper disable once InconsistentNaming
         public async Task TestUnknownApiException3xxGeneration()
         {
             // library does not have a specific exception for this status code
@@ -405,6 +407,7 @@ namespace EasyPost.Tests.ExceptionsTests
 
         [Fact]
         [Testing.Exception]
+        // ReSharper disable once InconsistentNaming
         public async Task TestUnknownApiException4xxGeneration()
         {
             // library does not have a specific exception for this status code
@@ -425,6 +428,7 @@ namespace EasyPost.Tests.ExceptionsTests
 
         [Fact]
         [Testing.Exception]
+        // ReSharper disable once InconsistentNaming
         public async Task TestUnknownApiException5xxGeneration()
         {
             // library does not have a specific exception for this status code
@@ -445,6 +449,7 @@ namespace EasyPost.Tests.ExceptionsTests
 
         [Fact]
         [Testing.Exception]
+        // ReSharper disable once InconsistentNaming
         public async Task TestHTTPTimeoutFriendlyException()
         {
             // create a new client with a very short timeout

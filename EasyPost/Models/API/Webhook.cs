@@ -14,6 +14,7 @@ namespace EasyPost.Models.API
 
         [JsonProperty("disabled_at")]
         public DateTime? DisabledAt { get; set; }
+
         [JsonProperty("url")]
         public string? Url { get; set; }
 

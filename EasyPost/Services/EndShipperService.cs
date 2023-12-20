@@ -100,8 +100,8 @@ namespace EasyPost.Services
         ///     Update an <see cref="EndShipper"/>.
         ///     <a href="https://www.easypost.com/docs/api#update-an-endshipper">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">Data to update <see cref="EndShipper"/> with.</param>
         /// <param name="id">ID of the <see cref="EndShipper"/> to update.</param>
+        /// <param name="parameters">Data to update <see cref="EndShipper"/> with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="EndShipper"/>.</returns>
         [CrudOperations.Update]
@@ -116,8 +116,8 @@ namespace EasyPost.Services
         ///     Update an <see cref="EndShipper"/>.
         ///     <a href="https://www.easypost.com/docs/api#update-an-endshipper">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">Data to update <see cref="EndShipper"/> with.</param>
         /// <param name="id">ID of the <see cref="EndShipper"/> to update.</param>
+        /// <param name="parameters">Data to update <see cref="EndShipper"/> with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="EndShipper"/>.</returns>
         [CrudOperations.Update]

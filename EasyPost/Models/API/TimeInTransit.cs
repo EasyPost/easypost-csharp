@@ -12,16 +12,22 @@ namespace EasyPost.Models.API
 
         [JsonProperty("percentile_50")]
         public int? Percentile50 { get; set; }
+
         [JsonProperty("percentile_75")]
         public int? Percentile75 { get; set; }
+
         [JsonProperty("percentile_85")]
         public int? Percentile85 { get; set; }
+
         [JsonProperty("percentile_90")]
         public int? Percentile90 { get; set; }
+
         [JsonProperty("percentile_95")]
         public int? Percentile95 { get; set; }
+
         [JsonProperty("percentile_97")]
         public int? Percentile97 { get; set; }
+
         [JsonProperty("percentile_99")]
         public int? Percentile99 { get; set; }
 

@@ -24,7 +24,7 @@ public class CarrierAccountType : ValueEnum
     public static readonly CarrierAccountType Ups = new CarrierAccountType(59, "UpsAccount");
 
     /// <summary>
-    ///     Constructor for CarrierAccountType enum.
+    ///     Initializes a new instance of the <see cref="CarrierAccountType"/> class.
     /// </summary>
     /// <param name="id">Internal ID of the enum. Must be unique among all enums of this specific type.</param>
     /// <param name="name">Name of the carrier account type. Stored as the value associated with this enum.</param>
@@ -41,6 +41,6 @@ public class CarrierAccountType : ValueEnum
     /// <summary>
     ///     Gets all <see cref="CarrierAccountType"/> enums.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>An <see cref="IEnumerable{CarrierAccountType}"/> of all <see cref="CarrierAccountType"/> enums.</returns>
     public static IEnumerable<CarrierAccountType> All() => GetAll<CarrierAccountType>();
 }

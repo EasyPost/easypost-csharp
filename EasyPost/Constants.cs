@@ -122,9 +122,15 @@ namespace EasyPost
         /// </summary>
         public static class CarrierAccounts
         {
+            /// <summary>
+            ///    Represents a FedEx carrier account.
+            /// </summary>
             [Obsolete("Use CarrierAccountType.FedEx instead.")]
             public const string FedExAccount = "FedexAccount";
 
+            /// <summary>
+            ///     Represents a UPS carrier account.
+            /// </summary>
             [Obsolete("Use CarrierAccountType.Ups instead.")]
             public const string UpsAccount = "UpsAccount";
 

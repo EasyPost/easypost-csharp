@@ -85,6 +85,8 @@ public class ClientConfiguration : IDisposable
     /// <summary>
     ///     Gets the headers to use for a request.
     /// </summary>
+    /// <param name="apiVersion">The <see cref="ApiVersion"/> to use for the HTTP headers.</param>
+    /// <returns>A <see cref="Dictionary{TKey,TValue}"/> of HTTP headers.</returns>
     internal Dictionary<string, string> GetHeaders(ApiVersion apiVersion) => new()
     {
         { "Authorization", $"Bearer {ApiKey}" },
@@ -113,7 +115,7 @@ public class ClientConfiguration : IDisposable
 
     /// <summary>
     ///     Sets up the HTTP client.
-    ///     Because we need to wait for construction to finish, we have to do this in a separate method
+    ///     Because we need to wait for construction to finish, we have to do this in a separate method.
     /// </summary>
     internal void SetUp()
     {
@@ -163,7 +165,7 @@ public class ClientConfiguration : IDisposable
     }
 
     /// <summary>
-    ///     Finalizer for this <see cref="ClientConfiguration"/>.
+    ///     Finalizes an instance of the <see cref="ClientConfiguration"/> class.
     /// </summary>
     ~ClientConfiguration()
     {
