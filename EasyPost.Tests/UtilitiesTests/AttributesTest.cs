@@ -5,6 +5,7 @@ using System.Reflection;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
+// ReSharper disable UnusedMember.Local
 
 namespace EasyPost.Tests.UtilitiesTests
 {

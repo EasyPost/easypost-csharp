@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using EasyPost._base;
 using EasyPost.Exceptions.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -50,8 +51,6 @@ namespace EasyPost.Tests
             Client client2 = new(new ClientConfiguration(key2));
             Client client3 = new(new ClientConfiguration(key3));
 
-            static void Thread(Client client, string keyToMatch) => Assert.Equal(keyToMatch, client.ApiKeyInUse);
-
             Thread thread1 = new(() => Thread(client1, key1));
             Thread thread2 = new(() => Thread(client2, key2));
             Thread thread3 = new(() => Thread(client3, key3));
@@ -60,6 +59,9 @@ namespace EasyPost.Tests
             thread2.Start();
             thread3.Start();
             thread1.Start();
+            return;
+
+            static void Thread(EasyPostClient client, string keyToMatch) => Assert.Equal(keyToMatch, client.ApiKeyInUse);
         }
 
         #endregion
@@ -133,7 +135,7 @@ namespace EasyPost.Tests
                 },
             };
 
-            UseVCRWithCustomClient("request_hooks", (apiKey, httpClient) =>
+            UseVCRWithCustomClient("request_hooks", (_, httpClient) =>
                 new Client(new ClientConfiguration(FakeApikey)
                 {
                     CustomHttpClient = httpClient,
@@ -160,12 +162,12 @@ namespace EasyPost.Tests
             bool postRequestCallback2Called = false;
 
             Hooks hooks = new();
-            hooks.OnRequestExecuting += (sender, args) => preRequestCallback1Called = true;
-            hooks.OnRequestExecuting += (sender, args) => preRequestCallback2Called = true;
-            hooks.OnRequestResponseReceived += (sender, args) => postRequestCallback1Called = true;
-            hooks.OnRequestResponseReceived += (sender, args) => postRequestCallback2Called = true;
+            hooks.OnRequestExecuting += (_, _) => preRequestCallback1Called = true;
+            hooks.OnRequestExecuting += (_, _) => preRequestCallback2Called = true;
+            hooks.OnRequestResponseReceived += (_, _) => postRequestCallback1Called = true;
+            hooks.OnRequestResponseReceived += (_, _) => postRequestCallback2Called = true;
 
-            UseVCRWithCustomClient("multiple_request_hooks", (apiKey, httpClient) =>
+            UseVCRWithCustomClient("multiple_request_hooks", (_, httpClient) =>
                 new Client(new ClientConfiguration(FakeApikey)
                 {
                     CustomHttpClient = httpClient,
@@ -231,14 +233,14 @@ namespace EasyPost.Tests
 
             Hooks hooks = new()
             {
-                OnRequestExecuting = (sender, args) =>
+                OnRequestExecuting = (_, _) =>
                 {
                     // Use the cancellation token to cancel the request
                     cancelTokenSource.Cancel();
                 },
             };
 
-            UseVCRWithCustomClient("cancellation_token", (apiKey, httpClient) =>
+            UseVCRWithCustomClient("cancellation_token", (_, httpClient) =>
                 new Client(new ClientConfiguration(FakeApikey)
                 {
                     CustomHttpClient = httpClient,

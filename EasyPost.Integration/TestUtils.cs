@@ -80,6 +80,8 @@ namespace EasyPost.Integration.Utilities
         {
             get
             {
+                // ReSharper disable once RedundantAssignment
+                // ReSharper disable once ConvertToConstant.Local
                 string netVersion = "net";
 #if NET462
                 netVersion = "netstandard";
@@ -89,6 +91,7 @@ namespace EasyPost.Integration.Utilities
             }
         }
 
+        // ReSharper disable once InconsistentNaming
         public class VCR
         {
             // Cassettes folder will always been in the same directory as this TestUtils.cs file

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
@@ -426,6 +427,7 @@ namespace EasyPost.Tests.ParametersTests
     }
 
 #pragma warning disable CA1852 // Can be sealed
+    [SuppressMessage("ReSharper", "UnusedMember.Local")]
     internal class ExampleDecoratorParameters : Parameters.BaseParameters<EasyPostObject>
     {
         // Default values set to guarantee any property won't be skipped for serialization due to a null value
