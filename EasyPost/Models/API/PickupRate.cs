@@ -9,6 +9,9 @@ namespace EasyPost.Models.API
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The ID of the <see cref="EasyPost.Models.API.Pickup"/> associated with this PickupRate.
+        /// </summary>
         [JsonProperty("pickup_id")]
         public string? PickupId { get; set; }
 

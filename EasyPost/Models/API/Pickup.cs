@@ -15,33 +15,63 @@ namespace EasyPost.Models.API
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The <see cref="EasyPost.Models.API.Address"/> associated with this Pickup.
+        /// </summary>
         [JsonProperty("address")]
         public Address? Address { get; set; }
 
+        /// <summary>
+        ///     The list of <see cref="EasyPost.Models.API.CarrierAccount"/>s used to generate rates for this Pickup.
+        ///     If empty, all of the account's carrier accounts will be used.
+        /// </summary>
         [JsonProperty("carrier_accounts")]
         public List<CarrierAccount>? CarrierAccounts { get; set; }
 
+        /// <summary>
+        ///     The confirmation number for this booked Pickup.
+        /// </summary>
         [JsonProperty("confirmation")]
         public string? Confirmation { get; set; }
 
+        /// <summary>
+        ///     Additional text to help the driver successfully obtain the package.
+        /// </summary>
         [JsonProperty("instructions")]
         public string? Instructions { get; set; }
 
+        /// <summary>
+        ///     Whether the <see cref="Address"/> is the account address.
+        /// </summary>
         [JsonProperty("is_account_address")]
         public bool? IsAccountAddress { get; set; }
 
+        /// <summary>
+        ///     The latest time at which the package is available to pick up.
+        ///     Must be later than <see cref="MinDatetime"/>.
+        /// </summary>
         [JsonProperty("max_datetime")]
         public DateTime? MaxDatetime { get; set; }
 
+        /// <summary>
+        ///     A list of messages containing carrier errors encountered during pickup rate generation.
+        /// </summary>
         [JsonProperty("messages")]
         public List<Message>? Messages { get; set; }
 
+        /// <summary>
+        ///     The earliest time at which the package is available to pick up.
+        ///     Must be earlier than <see cref="MaxDatetime"/>.
+        /// </summary>
         [JsonProperty("min_datetime")]
         public DateTime? MinDatetime { get; set; }
 
         [JsonProperty("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        ///     A list of different pickup rates across valid carrier accounts for the shipment.
+        /// </summary>
         [JsonProperty("pickup_rates")]
         public List<PickupRate>? PickupRates { get; set; }
 
@@ -51,15 +81,30 @@ namespace EasyPost.Models.API
         [JsonProperty("reference")]
         public string? Reference { get; set; }
 
+        /// <summary>
+        ///     Current status of the Pickup. One of:
+        ///     <list type="bullet">
+        ///         <item>
+        ///             <description>"scheduled"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"canceled"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"unknown"</description>
+        ///         </item>
+        ///     </list>
+        /// </summary>
         [JsonProperty("status")]
         public string? Status { get; set; }
 
         #endregion
 
         /// <summary>
-        ///     Gets the pickup rates as a list of Rate objects.
+        ///     Gets the pickup rates as a list of <see cref="Rate"/> objects.
         /// </summary>
-        /// <returns>List of Rate objects.</returns>
+        /// <returns>List of <see cref="Rate"/> objects.</returns>
+        // ReSharper disable once UseCollectionExpression
         private IEnumerable<Rate> Rates => PickupRates != null ? PickupRates.Cast<Rate>().ToList() : new List<Rate>();
 
         /// <summary>
