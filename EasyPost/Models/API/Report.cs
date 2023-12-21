@@ -15,21 +15,55 @@ namespace EasyPost.Models.API
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The end date of the report period.
+        /// </summary>
         [JsonProperty("end_date")]
         public DateTime? EndDate { get; set; }
 
+        /// <summary>
+        ///     Whether to include items created by child users in the report.
+        /// </summary>
         [JsonProperty("include_children")]
         public bool? IncludeChildren { get; set; }
 
+        /// <summary>
+        ///     The start date of the report period.
+        /// </summary>
         [JsonProperty("start_date")]
         public DateTime? StartDate { get; set; }
 
+        /// <summary>
+        ///     The status of the report.
+        ///     Possible values are:
+        ///     <list type="bullet">
+        ///         <item>
+        ///             <description>"new"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"available"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"failed"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"empty"</description>
+        ///         </item>
+        ///     </list>
+        /// </summary>
         [JsonProperty("status")]
         public string? Status { get; set; }
 
+        /// <summary>
+        ///     A URL to download the report.
+        ///     Expires 30 seconds after retrieving this object.
+        /// </summary>
         [JsonProperty("url")]
         public string? Url { get; set; }
 
+        /// <summary>
+        ///     The date and time at which the <see cref="Url"/> will expire.
+        /// </summary>
         [JsonProperty("url_expires_at")]
         public DateTime? UrlExpiresAt { get; set; }
 

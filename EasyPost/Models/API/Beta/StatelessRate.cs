@@ -78,6 +78,7 @@ namespace EasyPost.Models.API.Beta
         /// </summary>
         [JsonProperty("rate")]
         public string? Price { get; set; } // "Rate" is the enclosing class name
+        // TODO: Rate is a double in SmartRate...
 
         /// <summary>
         ///     The currency for the <see cref="RetailRate"/> for the rate.
