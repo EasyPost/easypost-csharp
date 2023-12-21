@@ -12,9 +12,15 @@ namespace EasyPost.Models.API
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The timestamp of the last time this webhook was disabled.
+        /// </summary>
         [JsonProperty("disabled_at")]
         public DateTime? DisabledAt { get; set; }
 
+        /// <summary>
+        ///     The URL to which this webhook will send its POST request.
+        /// </summary>
         [JsonProperty("url")]
         public string? Url { get; set; }
 

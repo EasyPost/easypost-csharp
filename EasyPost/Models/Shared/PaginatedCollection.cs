@@ -14,6 +14,9 @@ namespace EasyPost.Models.Shared
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     Whether there are more items to retrieve server-side.
+        /// </summary>
         [JsonProperty("has_more")]
         public bool? HasMore { get; set; }
 
