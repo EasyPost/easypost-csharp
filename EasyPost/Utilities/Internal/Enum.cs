@@ -101,6 +101,11 @@ namespace EasyPost.Utilities.Internal
         /// <returns><c>true</c> if the two objects are not equal; otherwise, false.</returns>
         public static bool operator !=(Enum? one, Enum? two) => !(one == two);
 
+        /// <summary>
+        ///     Retrieve an <see cref="IEnumerable{T}"/> of all <see cref="Enum"/>s of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of <see cref="Enum"/> to retrieve all entries of.</typeparam>
+        /// <returns>An <see cref="IEnumerable{T}"/> of all <see cref="Enum"/> of type <typeparamref name="T"/>.</returns>
         public static IEnumerable<T> GetAll<T>()
             where T : IEnum
             =>
