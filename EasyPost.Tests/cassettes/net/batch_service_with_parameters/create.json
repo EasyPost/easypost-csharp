@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 230,
-    "RecordedAt": "2023-11-28T16:01:19.443897-07:00",
+    "Duration": 506,
+    "RecordedAt": "2023-12-21T17:11:54.100546-07:00",
     "Request": {
       "Body": "{\"batch\":{\"shipments\":[{\"customs_info\":{},\"options\":{},\"to_address\":{\"city\":\"Redondo Beach\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"name\":\"Elizabeth Swan\",\"phone\":\"<REDACTED>\",\"state\":\"CA\",\"street1\":\"179 N Harbor Dr\",\"zip\":\"90277\"},\"from_address\":{\"city\":\"San Francisco\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"name\":\"Jack Sparrow\",\"phone\":\"<REDACTED>\",\"state\":\"CA\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"zip\":\"94107\"},\"parcel\":{\"height\":4.0,\"length\":10.0,\"weight\":15.4,\"width\":8.0}}]}}",
       "BodyContentType": "Json",
@@ -17,7 +17,7 @@
       "Uri": "https://api.easypost.com/v2/batches"
     },
     "Response": {
-      "Body": "{\"id\":\"batch_db4932d1a6e042deb3fd14e78c4720b2\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"creating\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2023-11-28T23:01:19Z\",\"updated_at\":\"2023-11-28T23:01:19Z\",\"scan_form\":null,\"shipments\":[],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null}",
+      "Body": "{\"id\":\"batch_1c2de63244694599bc0e52b4d13ff2f5\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"creating\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2023-12-22T00:11:54Z\",\"updated_at\":\"2023-12-22T00:11:54Z\",\"scan_form\":null,\"shipments\":[],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -32,15 +32,14 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "88ad7b916566713ff43e148d004b5078",
+        "x-ep-request-uuid": "2f5555476584d44ae608ea3f0047fb82",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.038429",
-        "x-node": "bigweb32nuq",
-        "x-version-label": "easypost-202311250013-a0f06fbc2c-master",
+        "x-runtime": "0.061130",
+        "x-node": "bigweb42nuq",
+        "x-version-label": "easypost-202312202038-ae3ff8e94e-master",
         "x-backend": "easypost",
-        "x-canary": "direct",
-        "x-proxied": "intlb2nuq b3de2c47ef,extlb1nuq 003ad9bca0",
+        "x-proxied": "intlb2nuq b3de2c47ef,extlb2nuq 003ad9bca0",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
