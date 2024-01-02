@@ -9,6 +9,7 @@ namespace EasyPost.Integration;
 
 public class Synchronous
 {
+    // ReSharper disable once RedundantArgumentDefaultValue
     private Utils.VCR Vcr { get; } = new("synchronous", Utils.ApiKey.Test);
 
     /// <summary>

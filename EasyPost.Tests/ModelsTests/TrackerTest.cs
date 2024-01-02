@@ -6,12 +6,8 @@ using Xunit;
 
 namespace EasyPost.Tests.ModelsTests
 {
-    public class TrackerTests : UnitTest
+    public class TrackerTests() : UnitTest("tracker")
     {
-        public TrackerTests() : base("tracker")
-        {
-        }
-
         [Fact]
         [Testing.Properties]
 #pragma warning disable CS1998

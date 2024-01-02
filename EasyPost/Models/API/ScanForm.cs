@@ -14,12 +14,27 @@ namespace EasyPost.Models.API
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The <see cref="Address"/> that packages will be shipped from.
+        /// </summary>
         [JsonProperty("address")]
         public Address? Address { get; set; }
+
+        /// <summary>
+        ///     The ID of the <see cref="Batch"/> associated with this scan form.
+        /// </summary>
         [JsonProperty("batch_id")]
         public string? BatchId { get; set; }
+
+        /// <summary>
+        ///     The file format of the scan form document.
+        /// </summary>
         [JsonProperty("form_file_type")]
         public string? FormFileType { get; set; }
+
+        /// <summary>
+        ///     The URL of the scan form document.
+        /// </summary>
         [JsonProperty("form_url")]
         public string? FormUrl { get; set; }
 
@@ -28,8 +43,28 @@ namespace EasyPost.Models.API
         /// </summary>
         [JsonProperty("message")]
         public string? Message { get; set; }
+
+        /// <summary>
+        ///     The current status of the scan form.
+        ///     Valid statuses are:
+        ///     <list type="bullet">
+        ///         <item>
+        ///             <description>"creating"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"created"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"failed"</description>
+        ///         </item>
+        ///     </list>
+        /// </summary>
         [JsonProperty("status")]
         public string? Status { get; set; }
+
+        /// <summary>
+        ///     A list of tracking codes included in the scan form.
+        /// </summary>
         [JsonProperty("tracking_codes")]
         public List<string>? TrackingCodes { get; set; }
 

@@ -13,6 +13,7 @@ public class Basics
     [Fact, Testing.Access, Testing.Compile]
     public void UserCanLocallyConstructResponseObject()
     {
+        // ReSharper disable once UnusedVariable
         var address = new Address();
         var addressCollection = new AddressCollection();
         var apiKey = new ApiKey();

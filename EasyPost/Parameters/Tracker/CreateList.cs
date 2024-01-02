@@ -19,7 +19,7 @@ namespace EasyPost.Parameters.Tracker
         private List<CreateListTracker> Trackers { get; set; }
 
         /// <summary>
-        ///     Construct a new <see cref="CreateList"/> instance.
+        ///     Initializes a new instance of the <see cref="CreateList"/> class.
         /// </summary>
         public CreateList()
         {
@@ -82,7 +82,7 @@ namespace EasyPost.Parameters.Tracker
         public string TrackingCode { get; set; }
 
         /// <summary>
-        ///     Instantiate a new instance of the <see cref="CreateListTracker"/> class.
+        ///     Initializes a new instance of the <see cref="CreateListTracker"/> class.
         /// </summary>
         /// <param name="trackingCode">The tracking code.</param>
         /// <param name="carrier">The carrier.</param>

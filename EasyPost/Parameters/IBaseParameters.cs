@@ -11,14 +11,14 @@ namespace EasyPost.Parameters
         /// <summary>
         ///     Convert this object to a <see cref="Dictionary{TKey,TValue}"/>.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A <see cref="Dictionary{TKey,TValue}"/>.</returns>
         public Dictionary<string, object> ToDictionary();
 
         /// <summary>
         ///     Convert this object to a sub-<see cref="Dictionary{TKey,TValue}"/> based on the parent parameter object type.
         /// </summary>
-        /// <param name="parentParameterObjectType"></param>
-        /// <returns></returns>
+        /// <param name="parentParameterObjectType">The <see cref="Type"/> of the parent parameter object.</param>
+        /// <returns>A <see cref="Dictionary{TKey,TValue}"/>.</returns>
         public Dictionary<string, object> ToSubDictionary(Type parentParameterObjectType);
     }
 }

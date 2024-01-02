@@ -11,14 +11,33 @@ namespace EasyPost.Models.API
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The height of the parcel, in inches.
+        /// </summary>
         [JsonProperty("height")]
         public double? Height { get; set; }
+
+        /// <summary>
+        ///     The length of the parcel, in inches.
+        /// </summary>
         [JsonProperty("length")]
         public double? Length { get; set; }
+
+        /// <summary>
+        ///     A predefined package type to use for the parcel, instead of specifying dimensions.
+        /// </summary>
         [JsonProperty("predefined_package")]
         public string? PredefinedPackage { get; set; }
+
+        /// <summary>
+        ///     The weight of the parcel, in ounces.
+        /// </summary>
         [JsonProperty("weight")]
         public double? Weight { get; set; }
+
+        /// <summary>
+        ///     The width of the parcel, in inches.
+        /// </summary>
         [JsonProperty("width")]
         public double? Width { get; set; }
 

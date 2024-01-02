@@ -15,7 +15,7 @@ namespace EasyPost.Tests.UtilitiesTests
         [Testing.Function]
         public void TestByteArrayAsString()
         {
-            byte[] testBytes = { 0x74, 0x65, 0x73, 0x74 };
+            byte[] testBytes = "test"u8.ToArray();
             const string expected = "test";
 
             Assert.Equal(expected, testBytes.AsString());
@@ -41,8 +41,8 @@ namespace EasyPost.Tests.UtilitiesTests
             Assert.False(Cryptography.SignaturesMatch(signature1S, null)); // one signature is null
             Assert.False(Cryptography.SignaturesMatch(signature1S, "longer_string")); // signatures are different lengths
 
-            byte[] signature1B = { 0x74, 0x65, 0x73, 0x74 };
-            byte[] signature2B = { 0x74, 0x65, 0x73, 0x75 };
+            byte[] signature1B = "test"u8.ToArray();
+            byte[] signature2B = "tesu"u8.ToArray();
 
             Assert.True(Cryptography.SignaturesMatch(signature1B, signature1B)); // same signatures
             Assert.False(Cryptography.SignaturesMatch(signature1B, signature2B)); // different signatures

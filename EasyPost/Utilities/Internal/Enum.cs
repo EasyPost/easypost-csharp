@@ -33,13 +33,13 @@ namespace EasyPost.Utilities.Internal
         /// <param name="id">The internal ID to associated with this enum.</param>
         protected Enum(int id) => Id = id;
 
-        /// <inheritdoc cref="Int32.CompareTo(int)"/>
+        /// <inheritdoc cref="int.CompareTo(int)"/>
         public int CompareTo(object? obj) => Id.CompareTo(((Enum)obj!).Id);
 
-        /// <inheritdoc cref="Int32.ToString()"/>
+        /// <inheritdoc cref="int.ToString()"/>
         public override string ToString() => Id.ToString(CultureInfo.InvariantCulture);
 
-        /// <inheritdoc cref="System.Object.Equals(object?)"/>
+        /// <inheritdoc cref="object.Equals(object?)"/>
         public override bool Equals(object? obj)
         {
             try
@@ -63,7 +63,7 @@ namespace EasyPost.Utilities.Internal
         }
 
 #pragma warning disable CA1307
-        /// <inheritdoc cref="System.Object.GetHashCode()"/>
+        /// <inheritdoc cref="object.GetHashCode()"/>
         public override int GetHashCode() => new Dictionary<string, int> { { GetType().ToString(), Id } }.GetHashCode();
 #pragma warning restore CA1307
 
@@ -101,6 +101,11 @@ namespace EasyPost.Utilities.Internal
         /// <returns><c>true</c> if the two objects are not equal; otherwise, false.</returns>
         public static bool operator !=(Enum? one, Enum? two) => !(one == two);
 
+        /// <summary>
+        ///     Retrieve an <see cref="IEnumerable{T}"/> of all <see cref="Enum"/>s of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of <see cref="Enum"/> to retrieve all entries of.</typeparam>
+        /// <returns>An <see cref="IEnumerable{T}"/> of all <see cref="Enum"/> of type <typeparamref name="T"/>.</returns>
         public static IEnumerable<T> GetAll<T>()
             where T : IEnum
             =>
@@ -162,8 +167,9 @@ namespace EasyPost.Utilities.Internal
             : base(id) => Value = value;
 
         /// <summary>
-        ///     A string representation of the <see cref="Value"/> of this <see cref="Enum"/>, or an empty string if a string representation is not available.
+        ///     Retrieve a string representation of the <see cref="Value"/> of this <see cref="Enum"/>, or an empty string if a string representation is not available.
         /// </summary>
+        /// <returns>A string representation of the <see cref="Value"/> of this <see cref="Enum"/>.</returns>
         public override string ToString() => Value.ToString() ?? string.Empty;
 
         /// <inheritdoc cref="Enum.Equals(object)"/>

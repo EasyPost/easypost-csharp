@@ -19,7 +19,7 @@ namespace EasyPost.Utilities
         ///     Convert a byte array to a string using a specific encoding.
         /// </summary>
         /// <param name="bytes">Byte array to convert to string.</param>
-        /// <param name="encoding"><see cref="Encoding"/> to use. Default: <see cref="Encoding.UTF8"/></param>
+        /// <param name="encoding"><see cref="Encoding"/> to use. Default: <see cref="Encoding.UTF8"/>.</param>
         /// <returns>String equivalent of input byte array.</returns>
         public static string AsString(this byte[] bytes, Encoding? encoding = null)
         {
@@ -32,7 +32,7 @@ namespace EasyPost.Utilities
         ///     Convert a string to a byte array using a specific encoding.
         /// </summary>
         /// <param name="str">String to convert to byte array.</param>
-        /// <param name="encoding"><see cref="Encoding"/> to use. Default: <see cref="Encoding.UTF8"/></param>
+        /// <param name="encoding"><see cref="Encoding"/> to use. Default: <see cref="Encoding.UTF8"/>.</param>
         /// <returns>Byte array equivalent of input string.</returns>
         public static byte[] AsByteArray(this string str, Encoding? encoding = null)
         {
@@ -66,7 +66,7 @@ namespace EasyPost.Utilities
         ///     Convert a string to a hex string using a specific encoding.
         /// </summary>
         /// <param name="str">String to convert to hex string.</param>
-        /// <param name="encoding"><see cref="Encoding"/> to use. Default: <see cref="Encoding.UTF8"/></param>
+        /// <param name="encoding"><see cref="Encoding"/> to use. Default: <see cref="Encoding.UTF8"/>.</param>
         /// <returns>Hex string equivalent of input string.</returns>
         public static string AsHexString(this string str, Encoding? encoding = null)
         {

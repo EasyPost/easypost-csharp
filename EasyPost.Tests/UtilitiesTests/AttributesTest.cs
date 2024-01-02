@@ -5,13 +5,12 @@ using System.Reflection;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
+// ReSharper disable UnusedMember.Local
 
 namespace EasyPost.Tests.UtilitiesTests
 {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property, Inherited = false)]
-    internal sealed class ExampleAttribute : BaseCustomAttribute
-    {
-    }
+    internal sealed class ExampleAttribute : BaseCustomAttribute;
 
 #pragma warning disable CA1852 // Can be sealed
     internal class ExampleClass

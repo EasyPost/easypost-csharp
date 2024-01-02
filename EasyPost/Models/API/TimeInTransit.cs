@@ -1,4 +1,5 @@
 ﻿using EasyPost._base;
+using EasyPost.Utilities.Internal;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -10,18 +11,45 @@ namespace EasyPost.Models.API
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     Expected transit days at the 50th percentile.
+        /// </summary>
         [JsonProperty("percentile_50")]
         public int? Percentile50 { get; set; }
+
+        /// <summary>
+        ///     Expected transit days at the 75th percentile.
+        /// </summary>
         [JsonProperty("percentile_75")]
         public int? Percentile75 { get; set; }
+
+        /// <summary>
+        ///     Expected transit days at the 85th percentile.
+        /// </summary>
         [JsonProperty("percentile_85")]
         public int? Percentile85 { get; set; }
+
+        /// <summary>
+        ///     Expected transit days at the 90th percentile.
+        /// </summary>
         [JsonProperty("percentile_90")]
         public int? Percentile90 { get; set; }
+
+        /// <summary>
+        ///     Expected transit days at the 95th percentile.
+        /// </summary>
         [JsonProperty("percentile_95")]
         public int? Percentile95 { get; set; }
+
+        /// <summary>
+        ///     Expected transit days at the 97th percentile.
+        /// </summary>
         [JsonProperty("percentile_97")]
         public int? Percentile97 { get; set; }
+
+        /// <summary>
+        ///     Expected transit days at the 99th percentile.
+        /// </summary>
         [JsonProperty("percentile_99")]
         public int? Percentile99 { get; set; }
 
@@ -34,45 +62,21 @@ namespace EasyPost.Models.API
         /// <returns>Corresponding percentile int value.</returns>
         public int? GetBySmartRateAccuracy(SmartRateAccuracy accuracy)
         {
-            if (accuracy.Equals(SmartRateAccuracy.Percentile50))
+            int? accuracyInt = null;
+            SwitchCase @switch = new()
             {
-                return Percentile50;
-            }
+                { accuracy.Equals(SmartRateAccuracy.Percentile50), () => { accuracyInt = Percentile50; } },
+                { accuracy.Equals(SmartRateAccuracy.Percentile75), () => { accuracyInt = Percentile75; } },
+                { accuracy.Equals(SmartRateAccuracy.Percentile85), () => { accuracyInt = Percentile85; } },
+                { accuracy.Equals(SmartRateAccuracy.Percentile90), () => { accuracyInt = Percentile90; } },
+                { accuracy.Equals(SmartRateAccuracy.Percentile95), () => { accuracyInt = Percentile95; } },
+                { accuracy.Equals(SmartRateAccuracy.Percentile97), () => { accuracyInt = Percentile97; } },
+                { accuracy.Equals(SmartRateAccuracy.Percentile99), () => { accuracyInt = Percentile99; } },
+                { SwitchCaseScenario.Default, () => { accuracyInt = null; } },
+            };
+            @switch.MatchFirst(true); // evaluate switch case, checking which expression evaluates to "true"
 
-            if (accuracy.Equals(SmartRateAccuracy.Percentile75))
-            {
-                return Percentile75;
-            }
-
-            if (accuracy.Equals(SmartRateAccuracy.Percentile85))
-            {
-                return Percentile85;
-            }
-
-            if (accuracy.Equals(SmartRateAccuracy.Percentile90))
-            {
-                return Percentile90;
-            }
-
-            if (accuracy.Equals(SmartRateAccuracy.Percentile95))
-            {
-                return Percentile95;
-            }
-
-            if (accuracy.Equals(SmartRateAccuracy.Percentile97))
-            {
-                return Percentile97;
-            }
-
-            // ReSharper disable once ConvertIfStatementToReturnStatement
-#pragma warning disable IDE0046
-            if (accuracy.Equals(SmartRateAccuracy.Percentile99))
-#pragma warning restore IDE0046
-            {
-                return Percentile99;
-            }
-
-            return null;
+            return accuracyInt;
         }
     }
 }

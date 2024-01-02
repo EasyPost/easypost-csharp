@@ -11,10 +11,21 @@ namespace EasyPost.Models.API
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     Extra details related to the verification.
+        /// </summary>
         [JsonProperty("details")]
         public VerificationDetails? Details { get; set; }
+
+        /// <summary>
+        ///     A list of errors encountered during verification.
+        /// </summary>
         [JsonProperty("errors")]
         public List<Error>? Errors { get; set; }
+
+        /// <summary>
+        ///     Whether the verification was successful.
+        /// </summary>
         [JsonProperty("success")]
         public bool? Success { get; set; }
 

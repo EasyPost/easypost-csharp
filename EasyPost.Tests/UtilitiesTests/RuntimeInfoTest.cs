@@ -1,6 +1,4 @@
 namespace EasyPost.Tests.UtilitiesTests
 {
-    public class RuntimeInfoTest
-    {
-    }
+    public class RuntimeInfoTest;
 }

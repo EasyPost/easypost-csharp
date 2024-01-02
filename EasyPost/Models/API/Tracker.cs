@@ -15,28 +15,202 @@ namespace EasyPost.Models.API
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The name of the carrier handling the package.
+        /// </summary>
         [JsonProperty("carrier")]
         public string? Carrier { get; set; }
+
+        /// <summary>
+        ///     Additional details provided by the carrier.
+        /// </summary>
         [JsonProperty("carrier_detail")]
         public CarrierDetail? CarrierDetail { get; set; }
+
+        /// <summary>
+        ///     The estimated delivery date provided by the carrier.
+        /// </summary>
         [JsonProperty("est_delivery_date")]
         public DateTime? EstDeliveryDate { get; set; }
+
+        /// <summary>
+        ///     A list of <see cref="Fee"/>s associated with the package.
+        /// </summary>
+        [JsonProperty("fees")]
+        public List<Fee>? Fees { get; set; }
+
+        /// <summary>
+        ///     The URL of the publicly-accessible webpage with tracking details for the package.
+        /// </summary>
         [JsonProperty("public_url")]
         public string? PublicUrl { get; set; }
+
+        /// <summary>
+        ///     The ID of the <see cref="Shipment"/> associated with this tracker.
+        /// </summary>
         [JsonProperty("shipment_id")]
         public string? ShipmentId { get; set; }
+
+        /// <summary>
+        ///     The name of the person who signed for the package.
+        /// </summary>
         [JsonProperty("signed_by")]
         public string? SignedBy { get; set; }
+
+        /// <summary>
+        ///     The current status of the package.
+        ///     Possible values are:
+        ///     <list type="bullet">
+        ///         <item>
+        ///             <description>"pre_transit"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"in_transit"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"out_for_delivery"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"delivered"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"available_for_pickup"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"return_to_sender"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"failure"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"cancelled"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"unknown"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"error"</description>
+        ///         </item>
+        ///     </list>
+        /// </summary>
         [JsonProperty("status")]
         public string? Status { get; set; }
+
+        /// <summary>
+        ///     Additional details about the current status of the package.
+        ///     Possible values are:
+        ///     <list type="bullet">
+        ///         <item>
+        ///             <description>"address_correction"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"arrived_at_destination"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"arrived_at_facility"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"arrived_at_pickup_location"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"awaiting_information"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"cancelled"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"damaged"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"delayed"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"delivery_exception"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"departed_facility"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"departed_origin_facility"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"expired"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"failure"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"held"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"in_transit"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"label_created"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"lost"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"missorted"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"out_for_delivery"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"received_at_destination_facility"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"received_at_origin_facility"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"refused"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"return"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"status_update"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"transferred_to_destination_carrier"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"transit_exception"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"unknown"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"weather_delay"</description>
+        ///         </item>
+        ///     </list>
+        /// </summary>
         [JsonProperty("status_detail")]
         public string? StatusDetail { get; set; }
+
+        /// <summary>
+        ///     The tracking code provided by the carrier.
+        /// </summary>
         [JsonProperty("tracking_code")]
         public string? TrackingCode { get; set; }
+
+        /// <summary>
+        ///     A list of every scan event recorded for the package.
+        /// </summary>
         [JsonProperty("tracking_details")]
         public List<TrackingDetail>? TrackingDetails { get; set; }
+
+        /// <summary>
+        ///     The date and time the package was last tracked.
+        /// </summary>
+        [Obsolete("Use UpdatedAt instead.")]
         [JsonProperty("tracking_updated_at")]
         public DateTime? TrackingUpdatedAt { get; set; }
+
+        /// <summary>
+        ///     The weight of the package as measured by the carrier, in ounces.
+        /// </summary>
         [JsonProperty("weight")]
         public double? Weight { get; set; }
 

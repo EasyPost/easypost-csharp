@@ -36,12 +36,12 @@ namespace EasyPost.Http
         /// <summary>
         ///     Initializes a new instance of the <see cref="Request"/> class.
         /// </summary>
-        /// <param name="domain">The EasyPost API domain for the HTTP request (e.g. <c>https://api.easypost.com</c>)</param>
-        /// <param name="endpoint">The EasyPost API endpoint for the HTTP request (e.g. <c>/address</c>)</param>
-        /// <param name="method">The <see cref="Method"/> for the HTTP request</param>
-        /// <param name="apiVersion">The <see cref="ApiVersion"/> of EasyPost to target for the HTTP request</param>
-        /// <param name="parameters">Optional parameters to include in the HTTP request</param>
-        /// <param name="headers">Optional headers to include in the HTTP request</param>
+        /// <param name="domain">The EasyPost API domain for the HTTP request (e.g. <c>https://api.easypost.com</c>).</param>
+        /// <param name="endpoint">The EasyPost API endpoint for the HTTP request (e.g. <c>/address</c>).</param>
+        /// <param name="method">The <see cref="Method"/> for the HTTP request.</param>
+        /// <param name="apiVersion">The <see cref="ApiVersion"/> of EasyPost to target for the HTTP request.</param>
+        /// <param name="parameters">Optional parameters to include in the HTTP request.</param>
+        /// <param name="headers">Optional headers to include in the HTTP request.</param>
         // ReSharper disable once SuggestBaseTypeForParameterInConstructor
         internal Request(string domain, string endpoint, Method method, ApiVersion apiVersion, Dictionary<string, object>? parameters = null, Dictionary<string, string>? headers = null)
         {
@@ -99,7 +99,7 @@ namespace EasyPost.Http
         }
 
         /// <summary>
-        ///     Build a request body and assign it to the <see cref="_requestMessage"/>
+        ///     Build a request body and assign it to the <see cref="_requestMessage"/>.
         /// </summary>
         private void BuildBodyParameters()
         {
@@ -108,7 +108,7 @@ namespace EasyPost.Http
         }
 
         /// <summary>
-        ///     Build a request query string and assign it to the <see cref="_requestMessage"/>
+        ///     Build a request query string and assign it to the <see cref="_requestMessage"/>.
         /// </summary>
         private void BuildQueryParameters()
         {
@@ -173,7 +173,7 @@ namespace EasyPost.Http
         }
 
         /// <summary>
-        ///     Finalizer for this <see cref="Request"/>.
+        ///     Finalizes an instance of the <see cref="Request"/> class.
         /// </summary>
         ~Request()
         {

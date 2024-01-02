@@ -27,7 +27,7 @@ namespace EasyPost.Parameters.Order
         #endregion
 
         /// <summary>
-        ///     Construct this parameters set with the given carrier and service.
+        ///     Initializes a new instance of the <see cref="Buy"/> class with the given carrier and service.
         /// </summary>
         /// <param name="withCarrier">The selected carrier.</param>
         /// <param name="withService">The selected service level.</param>
@@ -38,7 +38,7 @@ namespace EasyPost.Parameters.Order
         }
 
         /// <summary>
-        ///     Construct this parameters set with the given <see cref="Rate"/>.
+        ///     Initializes a new instance of the <see cref="Buy"/> class with the given <see cref="Rate"/>.
         /// </summary>
         /// <param name="rate">The selected <see cref="Rate"/>.</param>
         public Buy(Rate rate)

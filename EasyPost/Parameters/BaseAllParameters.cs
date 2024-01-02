@@ -7,6 +7,7 @@ namespace EasyPost.Parameters;
 /// <summary>
 ///     Base class for parameter sets used in `All` methods.
 /// </summary>
+/// <typeparam name="TMatchInputType">The type of <see cref="EphemeralEasyPostObject"/> contained in the response collection.</typeparam>
 public abstract class BaseAllParameters<TMatchInputType> : BaseParameters<TMatchInputType> where TMatchInputType : EphemeralEasyPostObject
 {
     /// <summary>

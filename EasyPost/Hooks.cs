@@ -65,7 +65,7 @@ public class OnRequestExecutingEventArgs : EventArgs
     public Guid Id { get; }
 
     /// <summary>
-    ///     Constructs a new instance of the <see cref="OnRequestExecutingEventArgs"/> class.
+    ///     Initializes a new instance of the <see cref="OnRequestExecutingEventArgs"/> class.
     /// </summary>
     /// <param name="request">The <see cref="HttpRequestMessage"/> about to be executed by the HTTP request.</param>
     /// <param name="timestamp">The timestamp of the HTTP request.</param>
@@ -130,7 +130,7 @@ public class OnRequestResponseReceivedEventArgs : EventArgs
     public Guid Id { get; }
 
     /// <summary>
-    ///     Constructs a new instance of the <see cref="OnRequestResponseReceivedEventArgs"/> class.
+    ///     Initializes a new instance of the <see cref="OnRequestResponseReceivedEventArgs"/> class.
     /// </summary>
     /// <param name="response">The <see cref="HttpResponseMessage"/> returned by the HTTP request.</param>
     /// <param name="requestTimestamp">The timestamp of the HTTP request.</param>

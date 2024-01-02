@@ -12,6 +12,7 @@ namespace EasyPost.Models.API
     public class ReferralCustomer : BaseUser, Parameters.IReferralCustomerParameter
     {
     }
+
 #pragma warning disable CA1724 // Naming conflicts with Parameters.ReferralCustomer
 
     /// <summary>

@@ -16,12 +16,13 @@ using EasyVCR;
 // ReSharper disable once CheckNamespace
 namespace EasyPost.Tests._Utilities
 {
+    // ReSharper disable once InconsistentNaming
     public class TestUtils
     {
         internal const string ApiKeyFailedToPull = "couldnotpullapikey";
 
-        private static readonly List<string> BodyCensors = new()
-        {
+        private static readonly List<string> BodyCensors =
+        [
             "api_keys",
             "children",
             "client_ip",
@@ -32,19 +33,19 @@ namespace EasyPost.Tests._Utilities
             "phone_number",
             "phone",
             "test_credentials"
-        };
+        ];
 
-        private static readonly List<string> HeaderCensors = new()
-        {
+        private static readonly List<string> HeaderCensors =
+        [
             "Authorization",
             "User-Agent"
-        };
+        ];
 
-        private static readonly List<string> QueryCensors = new()
-        {
+        private static readonly List<string> QueryCensors =
+        [
             "card[number]",
             "card[cvc]"
-        };
+        ];
 
         public enum ApiKey
         {
@@ -90,6 +91,8 @@ namespace EasyPost.Tests._Utilities
         {
             get
             {
+                // ReSharper disable once RedundantAssignment
+                // ReSharper disable once ConvertToConstant.Local
                 string netVersion = "net";
 #if NET462
                 netVersion = "netstandard";
@@ -99,6 +102,7 @@ namespace EasyPost.Tests._Utilities
             }
         }
 
+        // ReSharper disable once InconsistentNaming
         public class VCR
         {
             // Cassettes folder will always been in the same directory as this TestUtils.cs file
@@ -183,97 +187,85 @@ namespace EasyPost.Tests._Utilities
             }
         }
 
-        public class MockRequestMatchRules
+        public class MockRequestMatchRules(Method method, string resourceRegex)
         {
-            internal Method Method { get; set; }
+            internal Method Method { get; set; } = method;
 
-            internal string ResourceRegex { get; set; }
+        internal string ResourceRegex { get; set; } = resourceRegex;
+    }
 
-            public MockRequestMatchRules(Method method, string resourceRegex)
-            {
-                Method = method;
-                ResourceRegex = resourceRegex;
-            }
-        }
-
-        public class MockRequestResponseInfo
+    public class MockRequestResponseInfo(HttpStatusCode statusCode, string? content = null, object? data = null)
         {
-            internal HttpStatusCode StatusCode { get; set; }
+            internal HttpStatusCode StatusCode { get; set; } = statusCode;
 
-            internal string? Content { get; set; }
+    internal string? Content { get; set; } = content ?? JsonSerialization.ConvertObjectToJson(data);
+}
 
-            public MockRequestResponseInfo(HttpStatusCode statusCode, string? content = null, object? data = null)
-            {
-                StatusCode = statusCode;
-                Content = content ?? JsonSerialization.ConvertObjectToJson(data);
-            }
-        }
+public class MockRequest
+{
+    public MockRequestMatchRules MatchRules { get; }
 
-        public class MockRequest
-        {
-            public MockRequestMatchRules MatchRules { get; }
+    public MockRequestResponseInfo ResponseInfo { get; }
 
-            public MockRequestResponseInfo ResponseInfo { get; }
+    internal MockRequest(MockRequestMatchRules matchRules, MockRequestResponseInfo responseInfo)
+    {
+        MatchRules = matchRules;
+        ResponseInfo = responseInfo;
+    }
+}
 
-            internal MockRequest(MockRequestMatchRules matchRules, MockRequestResponseInfo responseInfo)
-            {
-                MatchRules = matchRules;
-                ResponseInfo = responseInfo;
-            }
-        }
-
-        internal sealed class MockClient : Client
-        {
-            private readonly List<MockRequest> _mockRequests = new();
+internal sealed class MockClient : Client
+{
+    private readonly List<MockRequest> _mockRequests = new();
 
 #pragma warning disable CS1998
-            public override async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request, CancellationToken cancellationToken)
+    public override async Task<HttpResponseMessage> ExecuteRequest(HttpRequestMessage request, CancellationToken cancellationToken)
 #pragma warning restore CS1998
-            {
-                MockRequest? mockRequest = FindMatchingMockRequest(request);
+    {
+        MockRequest? mockRequest = FindMatchingMockRequest(request);
 
-                if (mockRequest == null)
-                {
+        if (mockRequest == null)
+        {
 #pragma warning disable CA2201
-                    throw new Exception("No matching mock request found");
+            throw new Exception("No matching mock request found");
 #pragma warning restore CA2201
-                }
-
-                return new HttpResponseMessage
-                {
-                    Content = new StringContent(mockRequest.ResponseInfo.Content),
-                    StatusCode = mockRequest.ResponseInfo.StatusCode,
-                };
-            }
-
-            internal MockClient(EasyPostClient client) : base(new ClientConfiguration(client.ApiKeyInUse)
-            {
-                ApiBase = client.ApiBaseInUse,
-                CustomHttpClient = client.CustomHttpClient,
-            })
-            {
-            }
-
-            internal void AddMockRequest(MockRequest mockRequest) => _mockRequests.Add(mockRequest);
-
-            internal void AddMockRequests(IEnumerable<MockRequest> mockRequests) => _mockRequests.AddRange(mockRequests);
-
-            private MockRequest? FindMatchingMockRequest(HttpRequestMessage request) => _mockRequests.FirstOrDefault(mock => mock.MatchRules.Method.HttpMethod == request.Method && EndpointMatches(request.RequestUri.AbsoluteUri, mock.MatchRules.ResourceRegex));
-
-            private static bool EndpointMatches(string endpoint, string pattern)
-            {
-                try
-                {
-                    return Regex.IsMatch(endpoint,
-                        pattern,
-                        RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture | RegexOptions.IgnoreCase | RegexOptions.Singleline,
-                        TimeSpan.FromMilliseconds(250));
-                }
-                catch (RegexMatchTimeoutException)
-                {
-                    return false;
-                }
-            }
         }
+
+        return new HttpResponseMessage
+        {
+            Content = new StringContent(mockRequest.ResponseInfo.Content),
+            StatusCode = mockRequest.ResponseInfo.StatusCode,
+        };
+    }
+
+    internal MockClient(EasyPostClient client) : base(new ClientConfiguration(client.ApiKeyInUse)
+    {
+        ApiBase = client.ApiBaseInUse,
+        CustomHttpClient = client.CustomHttpClient,
+    })
+    {
+    }
+
+    internal void AddMockRequest(MockRequest mockRequest) => _mockRequests.Add(mockRequest);
+
+    internal void AddMockRequests(IEnumerable<MockRequest> mockRequests) => _mockRequests.AddRange(mockRequests);
+
+    private MockRequest? FindMatchingMockRequest(HttpRequestMessage request) => _mockRequests.FirstOrDefault(mock => mock.MatchRules.Method.HttpMethod == request.Method && EndpointMatches(request.RequestUri.AbsoluteUri, mock.MatchRules.ResourceRegex));
+
+    private static bool EndpointMatches(string endpoint, string pattern)
+    {
+        try
+        {
+            return Regex.IsMatch(endpoint,
+                pattern,
+                RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture | RegexOptions.IgnoreCase | RegexOptions.Singleline,
+                TimeSpan.FromMilliseconds(250));
+        }
+        catch (RegexMatchTimeoutException)
+        {
+            return false;
+        }
+    }
+}
     }
 }

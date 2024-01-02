@@ -13,10 +13,12 @@ namespace EasyPost._base
         ///     The beta version of the API.
         /// </summary>
         public static readonly ApiVersion Beta = new(2, "beta");
+
         /// <summary>
         ///     Version 2 of the API.
         /// </summary>
         public static readonly ApiVersion V2 = new(1, "v2");
+
         /// <summary>
         ///     The current (general availability) version of the API.
         /// </summary>

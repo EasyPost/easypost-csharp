@@ -21,8 +21,19 @@ namespace EasyPost.Exceptions.API
     public abstract class ApiError : EasyPostError
 #pragma warning restore SA1649
     {
+        /// <summary>
+        ///     The machine-readable error code returned by the API.
+        /// </summary>
         public readonly string? Code;
-        public readonly List<Error>? Errors; // Details about what server-side issues caused the API request to fail.
+
+        /// <summary>
+        ///     A list of <see cref="Error"/> objects that contain information about what triggered the failed request.
+        /// </summary>
+        public readonly List<Error>? Errors;
+
+        /// <summary>
+        ///     The HTTP status code returned by the API.
+        /// </summary>
         public readonly int? StatusCode;
 
         /// <summary>

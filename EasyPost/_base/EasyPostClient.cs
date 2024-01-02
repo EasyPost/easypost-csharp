@@ -236,7 +236,7 @@ namespace EasyPost._base
         }
 
         /// <summary>
-        ///     Finalizer for this <see cref="EasyPostClient"/>.
+        ///     Finalizes an instance of the <see cref="EasyPostClient"/> class.
         /// </summary>
         ~EasyPostClient()
         {

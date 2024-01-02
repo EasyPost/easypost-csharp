@@ -105,8 +105,8 @@ namespace EasyPost.Services
         ///     Update a <see cref="CarrierAccount"/>.
         ///     <a href="https://www.easypost.com/docs/api#update-a-carrieraccount">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">Data to update <see cref="CarrierAccount"/> with.</param>
         /// <param name="id">ID of the <see cref="CarrierAccount"/> to update.</param>
+        /// <param name="parameters">Data to update <see cref="CarrierAccount"/> with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="CarrierAccount"/>.</returns>
         [CrudOperations.Update]
@@ -120,8 +120,8 @@ namespace EasyPost.Services
         ///     Update a <see cref="CarrierAccount"/>.
         ///     <a href="https://www.easypost.com/docs/api#update-a-carrieraccount">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">Data to update <see cref="CarrierAccount"/> with.</param>
         /// <param name="id">ID of the <see cref="CarrierAccount"/> to update.</param>
+        /// <param name="parameters">Data to update <see cref="CarrierAccount"/> with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="CarrierAccount"/>.</returns>
         [CrudOperations.Update]

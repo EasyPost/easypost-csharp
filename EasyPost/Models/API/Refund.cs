@@ -14,14 +14,45 @@ namespace EasyPost.Models.API
     {
         #region JSON Properties
 
+        /// <summary>
+        ///     The carrier the refund request was submitted to.
+        /// </summary>
         [JsonProperty("carrier")]
         public string? Carrier { get; set; }
+
+        /// <summary>
+        ///     The confirmation number for the refund request submitted to the carrier.
+        /// </summary>
         [JsonProperty("confirmation_number")]
         public string? ConfirmationNumber { get; set; }
+
+        /// <summary>
+        ///     The ID of the <see cref="EasyPost.Models.API.Shipment"/> associated with this refund.
+        /// </summary>
         [JsonProperty("shipment_id")]
         public string? ShipmentId { get; set; }
+
+        /// <summary>
+        ///     The status of the refund request.
+        ///     Possible values are:
+        ///     <list type="bullet">
+        ///         <item>
+        ///             <description>"submitted"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"refunded"</description>
+        ///         </item>
+        ///         <item>
+        ///             <description>"rejected"</description>
+        ///         </item>
+        ///     </list>
+        /// </summary>
         [JsonProperty("status")]
         public string? Status { get; set; }
+
+        /// <summary>
+        ///     The tracking code of the <see cref="EasyPost.Models.API.Shipment"/> associated with this refund.
+        /// </summary>
         [JsonProperty("tracking_code")]
         public string? TrackingCode { get; set; }
 

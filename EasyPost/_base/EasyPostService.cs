@@ -49,7 +49,7 @@ namespace EasyPost._base
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <param name="parameters">Optional parameters to use for the request.</param>
         /// <param name="overrideApiVersion">Override the default <see cref="ApiVersion"/> (<see cref="ApiVersion.Current"/>) to use for the request.</param>
-        /// <returns>None</returns>
+        /// <returns>None.</returns>
         // ReSharper disable once MemberCanBePrivate.Global
         protected async Task RequestAsync(Http.Method method, string endpoint, CancellationToken cancellationToken, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Client.RequestAsync(method, endpoint, overrideApiVersion ?? ApiVersion.Current, cancellationToken, parameters).ConfigureAwait(false);
 
@@ -80,7 +80,7 @@ namespace EasyPost._base
         }
 
         /// <summary>
-        ///     Finalizer for this <see cref="EasyPostService"/>.
+        ///     Finalizes an instance of the <see cref="EasyPostService"/> class.
         /// </summary>
         ~EasyPostService()
         {

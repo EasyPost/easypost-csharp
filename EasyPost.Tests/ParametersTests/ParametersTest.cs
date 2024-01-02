@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using EasyPost._base;
 using EasyPost.Models.API;
@@ -227,27 +228,33 @@ namespace EasyPost.Tests.ParametersTests
         private sealed class ParameterSetWithRequiredAndOptionalParameters : Parameters.BaseParameters<EasyPostObject>
         {
             [TopLevelRequestParameter(Necessity.Required, "test", "required")]
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
             public string? RequiredParameter { get; set; }
 
             [TopLevelRequestParameter(Necessity.Optional, "test", "optional")]
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
             public string? OptionalParameter { get; set; }
         }
 
         private sealed class ParameterSetWithCompetingParameters : Parameters.BaseParameters<EasyPostObject>
         {
             [TopLevelRequestParameter(Necessity.Optional, "location")]
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
             public string? AParam { get; set; }
 
             [TopLevelRequestParameter(Necessity.Optional, "location")]
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
             public string? BParam { get; set; }
         }
 
         private sealed class ParameterSetWithCompetingParametersNonAlphabetic : Parameters.BaseParameters<EasyPostObject>
         {
             [TopLevelRequestParameter(Necessity.Optional, "location")]
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
             public string? BParam { get; set; }
 
             [TopLevelRequestParameter(Necessity.Optional, "location")]
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
             public string? AParam { get; set; }
         }
 
@@ -420,6 +427,7 @@ namespace EasyPost.Tests.ParametersTests
     }
 
 #pragma warning disable CA1852 // Can be sealed
+    [SuppressMessage("ReSharper", "UnusedMember.Local")]
     internal class ExampleDecoratorParameters : Parameters.BaseParameters<EasyPostObject>
     {
         // Default values set to guarantee any property won't be skipped for serialization due to a null value
