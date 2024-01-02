@@ -7878,6 +7878,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.SmartRate.ListRate
   nameWithType: SmartRate.ListRate
+- uid: EasyPost.Models.API.SmartRate.Price
+  name: Price
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_Price
+  commentId: P:EasyPost.Models.API.SmartRate.Price
+  fullName: EasyPost.Models.API.SmartRate.Price
+  nameWithType: SmartRate.Price
+- uid: EasyPost.Models.API.SmartRate.Price*
+  name: Price
+  href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_Price_
+  commentId: Overload:EasyPost.Models.API.SmartRate.Price
+  isSpec: "True"
+  fullName: EasyPost.Models.API.SmartRate.Price
+  nameWithType: SmartRate.Price
 - uid: EasyPost.Models.API.SmartRate.Rate
   name: Rate
   href: api/EasyPost.Models.API.SmartRate.html#EasyPost_Models_API_SmartRate_Rate
@@ -8320,6 +8333,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Tracker.EstDeliveryDate
   nameWithType: Tracker.EstDeliveryDate
+- uid: EasyPost.Models.API.Tracker.Fees
+  name: Fees
+  href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_Fees
+  commentId: P:EasyPost.Models.API.Tracker.Fees
+  fullName: EasyPost.Models.API.Tracker.Fees
+  nameWithType: Tracker.Fees
+- uid: EasyPost.Models.API.Tracker.Fees*
+  name: Fees
+  href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_Fees_
+  commentId: Overload:EasyPost.Models.API.Tracker.Fees
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Tracker.Fees
+  nameWithType: Tracker.Fees
 - uid: EasyPost.Models.API.Tracker.PublicUrl
   name: PublicUrl
   href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_PublicUrl
@@ -8504,6 +8530,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.TrackingDetail.Message
   nameWithType: TrackingDetail.Message
+- uid: EasyPost.Models.API.TrackingDetail.Source
+  name: Source
+  href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_Source
+  commentId: P:EasyPost.Models.API.TrackingDetail.Source
+  fullName: EasyPost.Models.API.TrackingDetail.Source
+  nameWithType: TrackingDetail.Source
+- uid: EasyPost.Models.API.TrackingDetail.Source*
+  name: Source
+  href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_Source_
+  commentId: Overload:EasyPost.Models.API.TrackingDetail.Source
+  isSpec: "True"
+  fullName: EasyPost.Models.API.TrackingDetail.Source
+  nameWithType: TrackingDetail.Source
 - uid: EasyPost.Models.API.TrackingDetail.Status
   name: Status
   href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_Status
@@ -8812,6 +8851,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.Shared.BaseUser.Children
   nameWithType: BaseUser.Children
+- uid: EasyPost.Models.Shared.BaseUser.ConvenienceFeeRate
+  name: ConvenienceFeeRate
+  href: api/EasyPost.Models.Shared.BaseUser.html#EasyPost_Models_Shared_BaseUser_ConvenienceFeeRate
+  commentId: P:EasyPost.Models.Shared.BaseUser.ConvenienceFeeRate
+  fullName: EasyPost.Models.Shared.BaseUser.ConvenienceFeeRate
+  nameWithType: BaseUser.ConvenienceFeeRate
+- uid: EasyPost.Models.Shared.BaseUser.ConvenienceFeeRate*
+  name: ConvenienceFeeRate
+  href: api/EasyPost.Models.Shared.BaseUser.html#EasyPost_Models_Shared_BaseUser_ConvenienceFeeRate_
+  commentId: Overload:EasyPost.Models.Shared.BaseUser.ConvenienceFeeRate
+  isSpec: "True"
+  fullName: EasyPost.Models.Shared.BaseUser.ConvenienceFeeRate
+  nameWithType: BaseUser.ConvenienceFeeRate
 - uid: EasyPost.Models.Shared.BaseUser.Email
   name: Email
   href: api/EasyPost.Models.Shared.BaseUser.html#EasyPost_Models_Shared_BaseUser_Email
@@ -8825,6 +8877,32 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.Shared.BaseUser.Email
   nameWithType: BaseUser.Email
+- uid: EasyPost.Models.Shared.BaseUser.InsuranceFeeMinimum
+  name: InsuranceFeeMinimum
+  href: api/EasyPost.Models.Shared.BaseUser.html#EasyPost_Models_Shared_BaseUser_InsuranceFeeMinimum
+  commentId: P:EasyPost.Models.Shared.BaseUser.InsuranceFeeMinimum
+  fullName: EasyPost.Models.Shared.BaseUser.InsuranceFeeMinimum
+  nameWithType: BaseUser.InsuranceFeeMinimum
+- uid: EasyPost.Models.Shared.BaseUser.InsuranceFeeMinimum*
+  name: InsuranceFeeMinimum
+  href: api/EasyPost.Models.Shared.BaseUser.html#EasyPost_Models_Shared_BaseUser_InsuranceFeeMinimum_
+  commentId: Overload:EasyPost.Models.Shared.BaseUser.InsuranceFeeMinimum
+  isSpec: "True"
+  fullName: EasyPost.Models.Shared.BaseUser.InsuranceFeeMinimum
+  nameWithType: BaseUser.InsuranceFeeMinimum
+- uid: EasyPost.Models.Shared.BaseUser.InsuranceFeeRate
+  name: InsuranceFeeRate
+  href: api/EasyPost.Models.Shared.BaseUser.html#EasyPost_Models_Shared_BaseUser_InsuranceFeeRate
+  commentId: P:EasyPost.Models.Shared.BaseUser.InsuranceFeeRate
+  fullName: EasyPost.Models.Shared.BaseUser.InsuranceFeeRate
+  nameWithType: BaseUser.InsuranceFeeRate
+- uid: EasyPost.Models.Shared.BaseUser.InsuranceFeeRate*
+  name: InsuranceFeeRate
+  href: api/EasyPost.Models.Shared.BaseUser.html#EasyPost_Models_Shared_BaseUser_InsuranceFeeRate_
+  commentId: Overload:EasyPost.Models.Shared.BaseUser.InsuranceFeeRate
+  isSpec: "True"
+  fullName: EasyPost.Models.Shared.BaseUser.InsuranceFeeRate
+  nameWithType: BaseUser.InsuranceFeeRate
 - uid: EasyPost.Models.Shared.BaseUser.Name
   name: Name
   href: api/EasyPost.Models.Shared.BaseUser.html#EasyPost_Models_Shared_BaseUser_Name

@@ -131,11 +131,11 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_ApiKeys.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.ApiKeys%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L15">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L18">View Source</a>
   </span>
   <a id="EasyPost_Models_Shared_BaseUser_ApiKeys_" data-uid="EasyPost.Models.Shared.BaseUser.ApiKeys*"></a>
   <h4 id="EasyPost_Models_Shared_BaseUser_ApiKeys" data-uid="EasyPost.Models.Shared.BaseUser.ApiKeys">ApiKeys</h4>
-  <div class="markdown level1 summary"><p>Base class for all EasyPost user objects.</p>
+  <div class="markdown level1 summary"><p>A list of the <a class="xref" href="EasyPost.Models.API.ApiKey.html">ApiKey</a>s associated with this user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -162,11 +162,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_Balance.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.Balance%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L17">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L25">View Source</a>
   </span>
   <a id="EasyPost_Models_Shared_BaseUser_Balance_" data-uid="EasyPost.Models.Shared.BaseUser.Balance*"></a>
   <h4 id="EasyPost_Models_Shared_BaseUser_Balance" data-uid="EasyPost.Models.Shared.BaseUser.Balance">Balance</h4>
-  <div class="markdown level1 summary"><p>Base class for all EasyPost user objects.</p>
+  <div class="markdown level1 summary"><p>The user's current account balance.
+Formatted as USD dollars and cents to five decimal places (e.g. &quot;10.00000&quot;).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -193,11 +194,11 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_Children.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.Children%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L19">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L31">View Source</a>
   </span>
   <a id="EasyPost_Models_Shared_BaseUser_Children_" data-uid="EasyPost.Models.Shared.BaseUser.Children*"></a>
   <h4 id="EasyPost_Models_Shared_BaseUser_Children" data-uid="EasyPost.Models.Shared.BaseUser.Children">Children</h4>
-  <div class="markdown level1 summary"><p>Base class for all EasyPost user objects.</p>
+  <div class="markdown level1 summary"><p>A list of associated child users.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -221,14 +222,46 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_ConvenienceFeeRate.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.ConvenienceFeeRate%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L96">View Source</a>
+  </span>
+  <a id="EasyPost_Models_Shared_BaseUser_ConvenienceFeeRate_" data-uid="EasyPost.Models.Shared.BaseUser.ConvenienceFeeRate*"></a>
+  <h4 id="EasyPost_Models_Shared_BaseUser_ConvenienceFeeRate" data-uid="EasyPost.Models.Shared.BaseUser.ConvenienceFeeRate">ConvenienceFeeRate</h4>
+  <div class="markdown level1 summary"><p>The fee rate for convenience fees.
+Formatted as a decimal percentage (e.g. &quot;0.005&quot;).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? ConvenienceFeeRate { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_Email.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.Email%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L21">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L37">View Source</a>
   </span>
   <a id="EasyPost_Models_Shared_BaseUser_Email_" data-uid="EasyPost.Models.Shared.BaseUser.Email*"></a>
   <h4 id="EasyPost_Models_Shared_BaseUser_Email" data-uid="EasyPost.Models.Shared.BaseUser.Email">Email</h4>
-  <div class="markdown level1 summary"><p>Base class for all EasyPost user objects.</p>
+  <div class="markdown level1 summary"><p>The user's email address.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -252,14 +285,78 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_InsuranceFeeMinimum.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.InsuranceFeeMinimum%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L110">View Source</a>
+  </span>
+  <a id="EasyPost_Models_Shared_BaseUser_InsuranceFeeMinimum_" data-uid="EasyPost.Models.Shared.BaseUser.InsuranceFeeMinimum*"></a>
+  <h4 id="EasyPost_Models_Shared_BaseUser_InsuranceFeeMinimum" data-uid="EasyPost.Models.Shared.BaseUser.InsuranceFeeMinimum">InsuranceFeeMinimum</h4>
+  <div class="markdown level1 summary"><p>The minimum cost for insurance purchases.
+Formatted as USD dollars and cents, delimited by a decimal point (e.g. &quot;10.00&quot;).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? InsuranceFeeMinimum { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_InsuranceFeeRate.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.InsuranceFeeRate%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L103">View Source</a>
+  </span>
+  <a id="EasyPost_Models_Shared_BaseUser_InsuranceFeeRate_" data-uid="EasyPost.Models.Shared.BaseUser.InsuranceFeeRate*"></a>
+  <h4 id="EasyPost_Models_Shared_BaseUser_InsuranceFeeRate" data-uid="EasyPost.Models.Shared.BaseUser.InsuranceFeeRate">InsuranceFeeRate</h4>
+  <div class="markdown level1 summary"><p>The fee rate for insurance purchases.
+Formatted as a decimal percentage (e.g. &quot;0.005&quot;).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? InsuranceFeeRate { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_Name.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.Name%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L23">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L43">View Source</a>
   </span>
   <a id="EasyPost_Models_Shared_BaseUser_Name_" data-uid="EasyPost.Models.Shared.BaseUser.Name*"></a>
   <h4 id="EasyPost_Models_Shared_BaseUser_Name" data-uid="EasyPost.Models.Shared.BaseUser.Name">Name</h4>
-  <div class="markdown level1 summary"><p>Base class for all EasyPost user objects.</p>
+  <div class="markdown level1 summary"><p>The user's full name.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -286,11 +383,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_ParentId.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.ParentId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L25">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L50">View Source</a>
   </span>
   <a id="EasyPost_Models_Shared_BaseUser_ParentId_" data-uid="EasyPost.Models.Shared.BaseUser.ParentId*"></a>
   <h4 id="EasyPost_Models_Shared_BaseUser_ParentId" data-uid="EasyPost.Models.Shared.BaseUser.ParentId">ParentId</h4>
-  <div class="markdown level1 summary"><p>Base class for all EasyPost user objects.</p>
+  <div class="markdown level1 summary"><p>The ID of the user's parent user, if the user is a child user.
+If the user is a parent user, this field will be null.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -317,7 +415,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_Password.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.Password%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L27">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L53">View Source</a>
   </span>
   <a id="EasyPost_Models_Shared_BaseUser_Password_" data-uid="EasyPost.Models.Shared.BaseUser.Password*"></a>
   <h4 id="EasyPost_Models_Shared_BaseUser_Password" data-uid="EasyPost.Models.Shared.BaseUser.Password">Password</h4>
@@ -348,7 +446,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_PasswordConfirmation.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.PasswordConfirmation%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L29">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L56">View Source</a>
   </span>
   <a id="EasyPost_Models_Shared_BaseUser_PasswordConfirmation_" data-uid="EasyPost.Models.Shared.BaseUser.PasswordConfirmation*"></a>
   <h4 id="EasyPost_Models_Shared_BaseUser_PasswordConfirmation" data-uid="EasyPost.Models.Shared.BaseUser.PasswordConfirmation">PasswordConfirmation</h4>
@@ -379,11 +477,11 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_PhoneNumber.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.PhoneNumber%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L31">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L62">View Source</a>
   </span>
   <a id="EasyPost_Models_Shared_BaseUser_PhoneNumber_" data-uid="EasyPost.Models.Shared.BaseUser.PhoneNumber*"></a>
   <h4 id="EasyPost_Models_Shared_BaseUser_PhoneNumber" data-uid="EasyPost.Models.Shared.BaseUser.PhoneNumber">PhoneNumber</h4>
-  <div class="markdown level1 summary"><p>Base class for all EasyPost user objects.</p>
+  <div class="markdown level1 summary"><p>The user's phone number.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -410,11 +508,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_PricePerShipment.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.PricePerShipment%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L33">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L69">View Source</a>
   </span>
   <a id="EasyPost_Models_Shared_BaseUser_PricePerShipment_" data-uid="EasyPost.Models.Shared.BaseUser.PricePerShipment*"></a>
   <h4 id="EasyPost_Models_Shared_BaseUser_PricePerShipment" data-uid="EasyPost.Models.Shared.BaseUser.PricePerShipment">PricePerShipment</h4>
-  <div class="markdown level1 summary"><p>Base class for all EasyPost user objects.</p>
+  <div class="markdown level1 summary"><p>The average price per shipment for the user's account.
+Formatted as USD dollars and cents to five decimals places (e.g. &quot;10.00000&quot;).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -441,11 +540,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_RechargeAmount.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.RechargeAmount%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L35">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L76">View Source</a>
   </span>
   <a id="EasyPost_Models_Shared_BaseUser_RechargeAmount_" data-uid="EasyPost.Models.Shared.BaseUser.RechargeAmount*"></a>
   <h4 id="EasyPost_Models_Shared_BaseUser_RechargeAmount" data-uid="EasyPost.Models.Shared.BaseUser.RechargeAmount">RechargeAmount</h4>
-  <div class="markdown level1 summary"><p>Base class for all EasyPost user objects.</p>
+  <div class="markdown level1 summary"><p>Primary recharge amount for the user's balance.
+Formatted as USD dollars and cents, delimited by a decimal point (e.g. &quot;10.00&quot;).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -472,11 +572,11 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_RechargeThreshold.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.RechargeThreshold%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L37">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L82">View Source</a>
   </span>
   <a id="EasyPost_Models_Shared_BaseUser_RechargeThreshold_" data-uid="EasyPost.Models.Shared.BaseUser.RechargeThreshold*"></a>
   <h4 id="EasyPost_Models_Shared_BaseUser_RechargeThreshold" data-uid="EasyPost.Models.Shared.BaseUser.RechargeThreshold">RechargeThreshold</h4>
-  <div class="markdown level1 summary"><p>Base class for all EasyPost user objects.</p>
+  <div class="markdown level1 summary"><p>Number of USD cents that, upon the user's account balance dropping below, trigger an automatic balance recharge using the <a class="xref" href="EasyPost.Models.Shared.BaseUser.html#EasyPost_Models_Shared_BaseUser_RechargeAmount">RechargeAmount</a> and <a class="xref" href="EasyPost.Models.API.PaymentMethodsSummary.html#EasyPost_Models_API_PaymentMethodsSummary_PrimaryPaymentMethod">PrimaryPaymentMethod</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -503,11 +603,12 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_Shared_BaseUser_SecondaryRechargeAmount.md&amp;value=---%0Auid%3A%20EasyPost.Models.Shared.BaseUser.SecondaryRechargeAmount%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L39">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/Shared/BaseUser.cs/#L89">View Source</a>
   </span>
   <a id="EasyPost_Models_Shared_BaseUser_SecondaryRechargeAmount_" data-uid="EasyPost.Models.Shared.BaseUser.SecondaryRechargeAmount*"></a>
   <h4 id="EasyPost_Models_Shared_BaseUser_SecondaryRechargeAmount" data-uid="EasyPost.Models.Shared.BaseUser.SecondaryRechargeAmount">SecondaryRechargeAmount</h4>
-  <div class="markdown level1 summary"><p>Base class for all EasyPost user objects.</p>
+  <div class="markdown level1 summary"><p>Secondary recharge amount for the user's balance.
+Formatted as USD dollars and cents, delimited by a decimal point (e.g. &quot;10.00&quot;).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
