@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using EasyPost.Models.Shared;
-using EasyPost.Parameters.Beta.User;
+using EasyPost.Parameters.User;
 using Newtonsoft.Json;
 
-namespace EasyPost.Models.API.Beta;
+namespace EasyPost.Models.API;
 
 /// <summary>
 ///     Class representing a collection of EasyPost Child <see cref="User"/>s.

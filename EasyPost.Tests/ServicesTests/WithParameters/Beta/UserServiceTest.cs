@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Models.API.Beta;
-using EasyPost.Parameters.Beta.User;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -32,26 +31,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters.Beta
 
         #region Test CRUD Operations
 
-        [Fact]
-        [CrudOperations.Read]
-        [Testing.Function]
-        public async Task TestAllChildren()
-        {
-            UseVCR("all_children");
 
-            Dictionary<string, object> fixture = new Dictionary<string, object> { { "page_size", Fixtures.PageSize } };
-
-            AllChildren parameters = Fixtures.Parameters.Users.AllChildren(fixture);
-
-            ChildUserCollection childUserCollection = await Client.Beta.User.AllChildren(parameters);
-            List<User> children = childUserCollection.Children;
-
-            Assert.True(children.Count <= Fixtures.PageSize);
-            foreach (User item in children)
-            {
-                Assert.IsType<User>(item);
-            }
-        }
 
         #endregion
 

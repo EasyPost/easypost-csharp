@@ -3,10 +3,10 @@ using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
-namespace EasyPost.Parameters.Beta.User
+namespace EasyPost.Parameters.User
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.Beta.UserService.AllChildren(AllChildren, System.Threading.CancellationToken)"/> API calls.
+    ///     Parameters for <see cref="EasyPost.Services.UserService.AllChildren(AllChildren, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class AllChildren : BaseAllParameters<Models.API.User>
@@ -49,7 +49,7 @@ namespace EasyPost.Parameters.Beta.User
         ///     Convert a dictionary into this parameter set.
         /// </summary>
         /// <param name="dictionary">Dictionary to parse.</param>
-        /// <returns>An <see cref="All"/> parameters set.</returns>
+        /// <returns>An <see cref="AllChildren"/> parameters set.</returns>
         public static new AllChildren FromDictionary(Dictionary<string, object>? dictionary)
         {
             if (dictionary == null) return new AllChildren();

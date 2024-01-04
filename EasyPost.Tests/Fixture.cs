@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using EasyPost.Models.API;
-using EasyPost.Parameters.Beta.User;
 using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Extensions;
 using ParameterSets = EasyPost.Parameters;
@@ -719,11 +718,11 @@ namespace EasyPost.Tests._Utilities
                     };
                 }
 
-                internal static AllChildren AllChildren(Dictionary<string, object>? fixture)
+                internal static ParameterSets.User.AllChildren AllChildren(Dictionary<string, object>? fixture)
                 {
                     fixture ??= new Dictionary<string, object>();
 
-                    return new AllChildren
+                    return new ParameterSets.User.AllChildren
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
