@@ -131,7 +131,6 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ChildUserCollection> GetNextPageOfChildren(ChildUserCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ChildUserCollection, AllChildren>(async parameters => await AllChildren(parameters, cancellationToken), collection.Children, pageSize);
 
-
         /// <summary>
         ///     Update a <see cref="User"/>'s <see cref="Brand"/>.
         ///     <a href="https://www.easypost.com/docs/api#update-a-brand">Related API documentation.</a>
