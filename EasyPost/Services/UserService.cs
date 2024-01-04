@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
+using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Parameters.User;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -79,6 +81,55 @@ namespace EasyPost.Services
         /// <returns>The current <see cref="User"/>.</returns>
         [CrudOperations.Read]
         public async Task<User> RetrieveMe(CancellationToken cancellationToken = default) => await RequestAsync<User>(Method.Get, "users", cancellationToken);
+
+        /// <summary>
+        ///     List all Child <see cref="User"/> objects.
+        /// </summary>
+        /// <param name="parameters">
+        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
+        ///     * {"before_id", string} String representing a User ID. Starts with "user_". Only retrieve users created
+        ///     before this id. Takes precedence over after_id.
+        ///     * {"after_id", string} String representing an User ID. Starts with "user_". Only retrieve users created after
+        ///     this id.
+        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve users created after this datetime.
+        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve users created before this datetime.
+        ///     * {"page_size", int} Max size of list. Default to 20.
+        ///     All invalid keys will be ignored.
+        /// </param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="ChildUserCollection"/> instance.</returns>
+        [CrudOperations.Read]
+        public async Task<ChildUserCollection> AllChildren(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
+        {
+            ChildUserCollection collection = await RequestAsync<ChildUserCollection>(Method.Get, "users/children", cancellationToken, parameters);
+            collection.Filters = Parameters.User.AllChildren.FromDictionary(parameters);
+            return collection;
+        }
+
+        /// <summary>
+        ///     List all Child <see cref="User"/> objects.
+        /// </summary>
+        /// <param name="parameters"><see cref="Parameters.User.AllChildren"/> parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns><see cref="ChildUserCollection"/> instance.</returns>
+        [CrudOperations.Read]
+        public async Task<ChildUserCollection> AllChildren(AllChildren parameters, CancellationToken cancellationToken = default)
+        {
+            ChildUserCollection collection = await RequestAsync<ChildUserCollection>(Method.Get, "users/children", cancellationToken, parameters.ToDictionary());
+            collection.Filters = parameters;
+            return collection;
+        }
+
+        /// <summary>
+        ///     Get the next page of a paginated <see cref="ChildUserCollection"/>.
+        /// </summary>
+        /// <param name="collection">The <see cref="ChildUserCollection"/> to get the next page of.</param>
+        /// <param name="pageSize">The size of the next page.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>The next page, as a <see cref="ChildUserCollection"/> instance.</returns>
+        /// <exception cref="EndOfPaginationError">Thrown if there is no next page to retrieve.</exception>
+        [CrudOperations.Read]
+        public async Task<ChildUserCollection> GetNextPageOfChildren(ChildUserCollection collection, int? pageSize = null, CancellationToken cancellationToken = default) => await collection.GetNextPage<ChildUserCollection, AllChildren>(async parameters => await AllChildren(parameters, cancellationToken), collection.Children, pageSize);
 
         /// <summary>
         ///     Update a <see cref="User"/>'s <see cref="Brand"/>.

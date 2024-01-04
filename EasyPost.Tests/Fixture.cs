@@ -717,6 +717,18 @@ namespace EasyPost.Tests._Utilities
                         Name = fixture.GetOrNull<string>("name"),
                     };
                 }
+
+                internal static ParameterSets.User.AllChildren AllChildren(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new ParameterSets.User.AllChildren
+                    {
+                        PageSize = fixture.GetOrNullInt("page_size"),
+                        BeforeId = fixture.GetOrNull<string>("before_id"),
+                        AfterId = fixture.GetOrNull<string>("after_id"),
+                    };
+                }
             }
 
             internal static class Webhooks
