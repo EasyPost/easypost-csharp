@@ -2,7 +2,7 @@
 
 ## Next Release
 
-- Add beta `AllChildren` and `GetNextPageOfChildren` functions to `Beta.User` service
+- Add `AllChildren` and `GetNextPageOfChildren` functions to `User` service
 
 ## v6.0.0 (2023-12-06)
 
