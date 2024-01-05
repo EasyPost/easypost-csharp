@@ -5,6 +5,7 @@ using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
+using EasyPost.Utilities.Internal.Extensions;
 using Xunit;
 
 namespace EasyPost.Tests.ServicesTests
@@ -41,14 +42,23 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("create_verify");
 
             Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
-            // internally, we're just checking for the presence of "verify" in the dictionary, so the value doesn't matter
-            addressData.Add("verify", true);
 
+            // Creating normally (without specifying "verify") will make the address, perform no verifications
             Address address = await Client.Address.Create(addressData);
 
             Assert.IsType<Address>(address);
-            Assert.StartsWith("adr_", address.Id);
-            Assert.Equal("417 MONTGOMERY ST FL 5", address.Street1);
+            Assert.Null(address.Verifications.Delivery);
+            Assert.Null(address.Verifications.Zip4);
+
+            // Creating with verify would make the address and perform verifications
+            // internally, we're just checking for the presence of "verify" in the dictionary, so the value doesn't matter
+            addressData.Add("verify", true);
+
+            address = await Client.Address.Create(addressData);
+
+            Assert.IsType<Address>(address);
+            Assert.NotNull(address.Verifications.Delivery);
+            Assert.NotNull(address.Verifications.Zip4);
         }
 
         [Fact]
@@ -59,14 +69,23 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("create_verify_array");
 
             Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
-            // internally, we're just checking for the presence of "verify" in the dictionary, so the value doesn't matter
-            addressData.Add("verify", new List<bool> { true });
 
+            // Creating normally (without specifying "verify") will make the address, perform no verifications
             Address address = await Client.Address.Create(addressData);
 
             Assert.IsType<Address>(address);
-            Assert.StartsWith("adr_", address.Id);
-            Assert.Equal("417 MONTGOMERY ST FL 5", address.Street1);
+            Assert.Null(address.Verifications.Delivery);
+            Assert.Null(address.Verifications.Zip4);
+
+            // Creating with verify would make the address and perform verifications
+            // internally, we're just checking for the presence of "verify" in the dictionary, so the value doesn't matter
+            addressData.Add("verify", new List<bool> { true });
+
+            address = await Client.Address.Create(addressData);
+
+            Assert.IsType<Address>(address);
+            Assert.NotNull(address.Verifications.Delivery);
+            Assert.NotNull(address.Verifications.Zip4);
         }
 
         [Fact]
