@@ -41,8 +41,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create_verify");
 
-            Dictionary<string, object> addressData = Fixtures.CaAddress1;
-            addressData["street1"] = "jfskfhasli"; // Just some random string to make the address invalid
+            Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
 
             // Creating normally (without specifying "verify") will make the address, perform no verifications
             Address address = await Client.Address.Create(addressData);
@@ -69,8 +68,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create_verify_array");
 
-            Dictionary<string, object> addressData = Fixtures.CaAddress1;
-            addressData["street1"] = "jfskfhasli"; // Just some random string to make the address invalid
+            Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
 
             // Creating normally (without specifying "verify") will make the address, perform no verifications
             Address address = await Client.Address.Create(addressData);

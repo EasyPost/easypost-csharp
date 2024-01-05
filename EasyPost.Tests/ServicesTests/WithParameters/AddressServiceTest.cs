@@ -43,9 +43,8 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         {
             UseVCR("create_verify");
 
-            Dictionary<string, object> fixture = Fixtures.CaAddress1;
+            Dictionary<string, object> fixture = Fixtures.IncorrectAddress;
             Parameters.Address.Create parameters = Fixtures.Parameters.Addresses.Create(fixture);
-            parameters.Street1 = "jfskfhasli"; // Just some random string to make the address invalid
 
             // Creating normally (without specifying "verify") will make the address, perform no verifications
             Address address = await Client.Address.Create(parameters);
