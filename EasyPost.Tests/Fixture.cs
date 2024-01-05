@@ -73,8 +73,6 @@ namespace EasyPost.Tests._Utilities
 
         internal static Dictionary<string, object> FullShipment => GetFixtureStructure().Shipments.Full;
 
-        internal static Dictionary<string, object> IncorrectAddress => GetFixtureStructure().Addresses.IncorrectAddress;
-
         internal static Dictionary<string, object> OneCallBuyShipment => new()
         {
             { "to_address", CaAddress1 },
