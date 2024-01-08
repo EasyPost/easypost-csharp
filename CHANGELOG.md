@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v6.1.0 (2024-01-08)
 
 - Add `AllChildren` and `GetNextPageOfChildren` functions to `User` service
 
