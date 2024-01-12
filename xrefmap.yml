@@ -358,6 +358,19 @@ references:
   commentId: T:EasyPost._base.EasyPostService
   fullName: EasyPost._base.EasyPostService
   nameWithType: EasyPostService
+- uid: EasyPost._base.EasyPostService.#ctor(EasyPost._base.EasyPostClient)
+  name: EasyPostService(EasyPostClient)
+  href: api/EasyPost._base.EasyPostService.html#EasyPost__base_EasyPostService__ctor_EasyPost__base_EasyPostClient_
+  commentId: M:EasyPost._base.EasyPostService.#ctor(EasyPost._base.EasyPostClient)
+  fullName: EasyPost._base.EasyPostService.EasyPostService(EasyPost._base.EasyPostClient)
+  nameWithType: EasyPostService.EasyPostService(EasyPostClient)
+- uid: EasyPost._base.EasyPostService.#ctor*
+  name: EasyPostService
+  href: api/EasyPost._base.EasyPostService.html#EasyPost__base_EasyPostService__ctor_
+  commentId: Overload:EasyPost._base.EasyPostService.#ctor
+  isSpec: "True"
+  fullName: EasyPost._base.EasyPostService.EasyPostService
+  nameWithType: EasyPostService.EasyPostService
 - uid: EasyPost._base.EasyPostService.Client
   name: Client
   href: api/EasyPost._base.EasyPostService.html#EasyPost__base_EasyPostService_Client
