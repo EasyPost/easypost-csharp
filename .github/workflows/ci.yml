@@ -147,8 +147,9 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          # .NET 5.0 is deprecated and removed from GitHub Actions, we need to manually install it
+          # .NET Core 3.1 and .NET 5.0 are deprecated and removed from GitHub Actions, we need to manually install them
           dotnet-version: |
+            3.1.x
             5.x.x
             8.x.x
 
@@ -272,7 +273,7 @@ jobs:
 
         # Run the compatibility tests
       - name: Run Tests
-        run: make vb-compat-test fw=net7.0  # Always run compatibility tests on the latest framework
+        run: make vb-compat-test fw=net8.0  # Always run compatibility tests on the latest framework
 
 
 # .NET Standard notes:
