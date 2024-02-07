@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v6.2.0 (2024-02-07)
 
 - Mark some unused parameters for various `All` functions as obsolete
   - These will be removed in a later version. It is recommended to stop using these parameters immediately.
