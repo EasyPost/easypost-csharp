@@ -8273,6 +8273,24 @@ references:
   commentId: F:EasyPost.Models.API.SmartRateAccuracy.Percentile99
   fullName: EasyPost.Models.API.SmartRateAccuracy.Percentile99
   nameWithType: SmartRateAccuracy.Percentile99
+- uid: EasyPost.Models.API.SortDirection
+  name: SortDirection
+  href: api/EasyPost.Models.API.SortDirection.html
+  commentId: T:EasyPost.Models.API.SortDirection
+  fullName: EasyPost.Models.API.SortDirection
+  nameWithType: SortDirection
+- uid: EasyPost.Models.API.SortDirection.Ascending
+  name: Ascending
+  href: api/EasyPost.Models.API.SortDirection.html#EasyPost_Models_API_SortDirection_Ascending
+  commentId: F:EasyPost.Models.API.SortDirection.Ascending
+  fullName: EasyPost.Models.API.SortDirection.Ascending
+  nameWithType: SortDirection.Ascending
+- uid: EasyPost.Models.API.SortDirection.Descending
+  name: Descending
+  href: api/EasyPost.Models.API.SortDirection.html#EasyPost_Models_API_SortDirection_Descending
+  commentId: F:EasyPost.Models.API.SortDirection.Descending
+  fullName: EasyPost.Models.API.SortDirection.Descending
+  nameWithType: SortDirection.Descending
 - uid: EasyPost.Models.API.SupportedFeature
   name: SupportedFeature
   href: api/EasyPost.Models.API.SupportedFeature.html
@@ -10085,6 +10103,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Batch.All.PageSize
   nameWithType: All.PageSize
+- uid: EasyPost.Parameters.Batch.All.Sort
+  name: Sort
+  href: api/EasyPost.Parameters.Batch.All.html#EasyPost_Parameters_Batch_All_Sort
+  commentId: P:EasyPost.Parameters.Batch.All.Sort
+  fullName: EasyPost.Parameters.Batch.All.Sort
+  nameWithType: All.Sort
+- uid: EasyPost.Parameters.Batch.All.Sort*
+  name: Sort
+  href: api/EasyPost.Parameters.Batch.All.html#EasyPost_Parameters_Batch_All_Sort_
+  commentId: Overload:EasyPost.Parameters.Batch.All.Sort
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Batch.All.Sort
+  nameWithType: All.Sort
 - uid: EasyPost.Parameters.Batch.All.StartDatetime
   name: StartDatetime
   href: api/EasyPost.Parameters.Batch.All.html#EasyPost_Parameters_Batch_All_StartDatetime
@@ -17313,6 +17344,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Utilities.Internal.ValueEnum.Equals
   nameWithType: ValueEnum.Equals
+- uid: EasyPost.Utilities.Internal.ValueEnum.FromValue*
+  name: FromValue
+  href: api/EasyPost.Utilities.Internal.ValueEnum.html#EasyPost_Utilities_Internal_ValueEnum_FromValue_
+  commentId: Overload:EasyPost.Utilities.Internal.ValueEnum.FromValue
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.ValueEnum.FromValue
+  nameWithType: ValueEnum.FromValue
+- uid: EasyPost.Utilities.Internal.ValueEnum.FromValue``1(System.Object)
+  name: FromValue<T>(Object)
+  href: api/EasyPost.Utilities.Internal.ValueEnum.html#EasyPost_Utilities_Internal_ValueEnum_FromValue__1_System_Object_
+  commentId: M:EasyPost.Utilities.Internal.ValueEnum.FromValue``1(System.Object)
+  name.vb: FromValue(Of T)(Object)
+  fullName: EasyPost.Utilities.Internal.ValueEnum.FromValue<T>(System.Object)
+  fullName.vb: EasyPost.Utilities.Internal.ValueEnum.FromValue(Of T)(System.Object)
+  nameWithType: ValueEnum.FromValue<T>(Object)
+  nameWithType.vb: ValueEnum.FromValue(Of T)(Object)
 - uid: EasyPost.Utilities.Internal.ValueEnum.GetHashCode
   name: GetHashCode()
   href: api/EasyPost.Utilities.Internal.ValueEnum.html#EasyPost_Utilities_Internal_ValueEnum_GetHashCode
