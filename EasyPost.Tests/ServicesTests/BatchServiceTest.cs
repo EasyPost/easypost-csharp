@@ -40,7 +40,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("all");
 
-            BatchCollection batchCollection = await Client.Batch.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize } });
+            BatchCollection batchCollection = await Client.Batch.All(new Dictionary<string, object> { { "page_size", Fixtures.PageSize }, { "sort", "asc" } });
 
             List<Batch> batches = batchCollection.Batches;
 

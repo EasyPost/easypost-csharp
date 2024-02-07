@@ -246,5 +246,16 @@ namespace EasyPost.Utilities.Internal.Extensions
                 var _ => null,
             };
         }
+
+        internal static T? GetOrNullEnum<T>(this Dictionary<string, object> dictionary, string key) where T : ValueEnum
+        {
+            if (!dictionary.TryGetValue(key, out object? value)) return null;
+            return value switch
+            {
+                T t => t,
+                string => ValueEnum.FromValue<T>(value),
+                var _ => null,
+            };
+        }
     }
 }

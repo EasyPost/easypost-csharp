@@ -24,7 +24,7 @@ namespace EasyPost.Models.API
 #pragma warning restore CA1724 // Naming conflicts with Parameters.Beta.CarrierMetadata
 
     /// <summary>
-    ///     Class representing a carrier in a EasyPost carrier metadata summary.
+    ///     Class representing a carrier in an EasyPost carrier metadata summary.
     /// </summary>
     public class Carrier
     {
@@ -70,7 +70,7 @@ namespace EasyPost.Models.API
     }
 
     /// <summary>
-    ///     Class representing a predefined package in a EasyPost carrier metadata summary.
+    ///     Class representing a predefined package in an EasyPost carrier metadata summary.
     /// </summary>
     public class PredefinedPackage
     {
@@ -116,7 +116,7 @@ namespace EasyPost.Models.API
     }
 
     /// <summary>
-    ///     Class representing a service level in a EasyPost carrier metadata summary.
+    ///     Class representing a service level in an EasyPost carrier metadata summary.
     /// </summary>
     public class ServiceLevel
     {
@@ -162,7 +162,7 @@ namespace EasyPost.Models.API
     }
 
     /// <summary>
-    ///     Class representing a shipment option in a EasyPost carrier metadata summary.
+    ///     Class representing a shipment option in an EasyPost carrier metadata summary.
     /// </summary>
     public class ShipmentOption
     {
@@ -208,7 +208,7 @@ namespace EasyPost.Models.API
     }
 
     /// <summary>
-    ///     Class representing a supported feature in a EasyPost carrier metadata summary.
+    ///     Class representing a supported feature in an EasyPost carrier metadata summary.
     /// </summary>
     public class SupportedFeature
     {

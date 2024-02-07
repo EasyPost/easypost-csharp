@@ -210,6 +210,7 @@ namespace EasyPost.Tests._Utilities
                         AfterId = fixture.GetOrNull<string>("after_id"),
                         StartDatetime = fixture.GetOrNull<string>("start_datetime"),
                         EndDatetime = fixture.GetOrNull<string>("end_datetime"),
+                        Sort = fixture.GetOrNullEnum<SortDirection>("sort"),
                     };
                 }
             }

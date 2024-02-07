@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Next Release
+
+- Mark some unused parameters for various `All` functions as obsolete
+  - These will be removed in a later version. It is recommended to stop using these parameters immediately.
+
 ## v6.1.0 (2024-01-08)
 
 - Add `AllChildren` and `GetNextPageOfChildren` functions to `User` service
