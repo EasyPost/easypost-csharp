@@ -18,12 +18,12 @@ namespace EasyPost.Models.API
         public static readonly SortDirection Descending = new(2, "desc");
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PaymentMethodType"/> class.
+        ///     Initializes a new instance of the <see cref="SortDirection"/> class.
         /// </summary>
         /// <param name="id">The internal ID of this enum.</param>
-        /// <param name="endpoint">The endpoint associated with this enum.</param>
-        private SortDirection(int id, string endpoint)
-            : base(id, endpoint)
+        /// <param name="value">The value associated with this enum.</param>
+        private SortDirection(int id, string value)
+            : base(id, value)
         {
         }
     }

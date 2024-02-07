@@ -253,7 +253,7 @@ namespace EasyPost.Utilities.Internal.Extensions
             return value switch
             {
                 T t => t,
-                string e => ValueEnum.FromValue<T>(value),
+                string => ValueEnum.FromValue<T>(value),
                 var _ => null,
             };
         }
