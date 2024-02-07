@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
@@ -43,6 +44,12 @@ namespace EasyPost.Parameters.Batch
         [TopLevelRequestParameter(Necessity.Optional, "start_datetime")]
         public string? StartDatetime { get; set; }
 
+        /// <summary>
+        ///     Which order to sort the records by.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "sort")]
+        public SortDirection? Sort { get; set; }
+
         #endregion
 
         /// <summary>
@@ -53,6 +60,7 @@ namespace EasyPost.Parameters.Batch
         public static new All FromDictionary(Dictionary<string, object>? dictionary)
         {
             if (dictionary == null) return new All();
+
             return new All
             {
                 PageSize = dictionary.GetOrNullInt("page_size"),
@@ -60,6 +68,7 @@ namespace EasyPost.Parameters.Batch
                 AfterId = dictionary.GetOrNull<string>("after_id"),
                 StartDatetime = dictionary.GetOrNull<string>("start_datetime"),
                 EndDatetime = dictionary.GetOrNull<string>("end_datetime"),
+                Sort = dictionary.GetOrNullEnum<SortDirection>("sort"),
             };
         }
     }

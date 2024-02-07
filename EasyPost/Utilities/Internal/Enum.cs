@@ -172,6 +172,27 @@ namespace EasyPost.Utilities.Internal
         /// <returns>A string representation of the <see cref="Value"/> of this <see cref="Enum"/>.</returns>
         public override string ToString() => Value.ToString() ?? string.Empty;
 
+        /// <summary>
+        ///     Retrieve an <see cref="ValueEnum"/> of type <typeparamref name="T"/> from a given value.
+        /// </summary>
+        /// <param name="value">The value to retrieve the <see cref="ValueEnum"/> of.</param>
+        /// <typeparam name="T">The type of <see cref="ValueEnum"/> to retrieve.</typeparam>
+        /// <returns>An <see cref="ValueEnum"/> of type <typeparamref name="T"/> from a given value.</returns>
+        /// <exception cref="ArgumentException">Thrown when the value is not a valid <see cref="ValueEnum"/>.</exception>
+        public static T FromValue<T>(object value)
+            where T : ValueEnum
+        {
+            foreach (T item in GetAll<T>())
+            {
+                if (item.Value.Equals(value))
+                {
+                    return item;
+                }
+            }
+
+            throw new ArgumentException($"Unknown value: {value}", nameof(value));
+        }
+
         /// <inheritdoc cref="Enum.Equals(object)"/>
         public override bool Equals(object? obj)
         {

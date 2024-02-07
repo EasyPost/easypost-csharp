@@ -44,7 +44,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         {
             UseVCR("all");
 
-            Dictionary<string, object> data = new Dictionary<string, object> { { "page_size", Fixtures.PageSize } };
+            Dictionary<string, object> data = new Dictionary<string, object> { { "page_size", Fixtures.PageSize }, { "sort", "asc" } };
 
             Parameters.Batch.All parameters = Fixtures.Parameters.Batches.All(data);
 

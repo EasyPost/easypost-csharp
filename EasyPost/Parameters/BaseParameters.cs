@@ -9,6 +9,7 @@ using EasyPost.Exceptions.General;
 using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
+using Enum = EasyPost.Utilities.Internal.Enum;
 
 namespace EasyPost.Parameters
 {
@@ -173,6 +174,9 @@ namespace EasyPost.Parameters
 
             switch (obj)
             {
+                // If a given value is an enum, serialize it as a string
+                case Enum enumObj:
+                    return enumObj.ToString();
                 // If a given value is a base-EasyPostObject object, serialize it as a dictionary
                 case EasyPostObject easyPostObject:
                     return easyPostObject.AsDictionary();
