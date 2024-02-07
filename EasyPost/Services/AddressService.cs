@@ -100,21 +100,12 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     List all Address objects.
+        ///     List all <see cref="Address"/> objects.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-addresses">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
-        ///     * {"before_id", string} String representing an Address ID. Starts with "adr_". Only retrieve addresses created
-        ///     before this id. Takes precedence over after_id.
-        ///     * {"after_id", string} String representing an Address ID. Starts with "adr". Only retrieve addresses created after
-        ///     this id.
-        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve addresses created after this datetime.
-        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve addresses created before this datetime.
-        ///     * {"page_size", int} Max size of list. Default to 20.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Dictionary containing parameters to filter the result list with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>An EasyPost.AddressCollection instance.</returns>
+        /// <returns>A <see cref="AddressCollection"/> instance.</returns>
         [CrudOperations.Read]
         public async Task<AddressCollection> All(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {

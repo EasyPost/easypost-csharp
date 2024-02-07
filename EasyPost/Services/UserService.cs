@@ -84,18 +84,9 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all Child <see cref="User"/> objects.
+        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-child-users">Related API documentation</a>.
         /// </summary>
-        /// <param name="parameters">
-        ///     Optional dictionary containing parameters to filter the list with. Valid pairs:
-        ///     * {"before_id", string} String representing a User ID. Starts with "user_". Only retrieve users created
-        ///     before this id. Takes precedence over after_id.
-        ///     * {"after_id", string} String representing an User ID. Starts with "user_". Only retrieve users created after
-        ///     this id.
-        ///     * {"start_datetime", string} ISO 8601 datetime string. Only retrieve users created after this datetime.
-        ///     * {"end_datetime", string} ISO 8601 datetime string. Only retrieve users created before this datetime.
-        ///     * {"page_size", int} Max size of list. Default to 20.
-        ///     All invalid keys will be ignored.
-        /// </param>
+        /// <param name="parameters">Dictionary containing parameters to filter the result list with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="ChildUserCollection"/> instance.</returns>
         [CrudOperations.Read]
