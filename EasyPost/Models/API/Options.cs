@@ -995,6 +995,7 @@ namespace EasyPost.Models.API
         /// <param name="value">Value of the option to add.</param>
         public void AddAdditionalOption(string key, object value) => _additionalOptions.Add(key, value);
 
+        /// <inheritdoc />
         public override Dictionary<string, object> AsDictionary()
         {
             Dictionary<string, object> data = base.AsDictionary();
@@ -1003,6 +1004,19 @@ namespace EasyPost.Models.API
             data = data.MergeIn(_additionalOptions);
 
             return data;
+        }
+
+        /// <summary>
+        ///     Create an <see cref="Options"/> object from a dictionary.
+        ///     WARNING: This method involves serializing and deserializing the data, which can be slow. Use sparingly.
+        /// </summary>
+        /// <param name="data">A <see cref="Dictionary{TKey,TValue}"/> of key-value pairs of options.</param>
+        /// <returns>An <see cref="Options"/> object.</returns>
+        public static Options? FromDictionary(Dictionary<string, object> data)
+        {
+            // Take the incoming dictionary, convert to JSON, then deserialize into an Options object
+            string jsonData = JsonConvert.SerializeObject(data);
+            return JsonConvert.DeserializeObject<Options>(jsonData);
         }
     }
 }
