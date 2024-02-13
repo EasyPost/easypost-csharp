@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
+using EasyPost.Utilities.Internal;
 using Xunit;
 
 namespace EasyPost.Tests.ModelsTests;
@@ -36,5 +38,20 @@ public class OptionsTests : UnitTest
         // check that the unsupported option is present
         Assert.True(dictionary.ContainsKey(unsupportedOption));
         Assert.Equal(unsupportedValue, dictionary[unsupportedOption]);
+    }
+
+    [Fact]
+    [Testing.Properties]
+    public void TestOptionsFromDictionary()
+    {
+        var dictionary = new Dictionary<string, object>
+        {
+            { "alcohol", true },
+        };
+
+        var options = Options.FromDictionary(dictionary);
+
+        // Data should be deserialized correctly and values set accordingly
+        Assert.True(options.Alcohol);
     }
 }
