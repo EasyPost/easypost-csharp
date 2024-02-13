@@ -3062,11 +3062,11 @@ See the DMM (https://pe.usps.com/DMM300/Index) for eligibility rules.
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_API_Options_AsDictionary.md&amp;value=---%0Auid%3A%20EasyPost.Models.API.Options.AsDictionary%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/API/Options.cs/#L998">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/API/Options.cs/#L999">View Source</a>
   </span>
   <a id="EasyPost_Models_API_Options_AsDictionary_" data-uid="EasyPost.Models.API.Options.AsDictionary*"></a>
   <h4 id="EasyPost_Models_API_Options_AsDictionary" data-uid="EasyPost.Models.API.Options.AsDictionary">AsDictionary()</h4>
-  <div class="markdown level1 summary"><p>Class representing an <a href="https://www.easypost.com/docs/api#options-object">EasyPost options set</a>.</p>
+  <div class="markdown level1 summary"><p>Gets this object as a JSON object (dictionary).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -3084,12 +3084,64 @@ See the DMM (https://pe.usps.com/DMM300/Index) for eligibility rules.
     <tbody>
       <tr>
         <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
-        <td></td>
+        <td><p>A dictionary representation of this object's properties.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_AsDictionary">EasyPostObject.AsDictionary()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_API_Options_FromDictionary_Dictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20EasyPost.Models.API.Options.FromDictionary(Dictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/API/Options.cs/#L1015">View Source</a>
+  </span>
+  <a id="EasyPost_Models_API_Options_FromDictionary_" data-uid="EasyPost.Models.API.Options.FromDictionary*"></a>
+  <h4 id="EasyPost_Models_API_Options_FromDictionary_Dictionary_System_String_System_Object__" data-uid="EasyPost.Models.API.Options.FromDictionary(Dictionary{System.String,System.Object})">FromDictionary(Dictionary&lt;String, Object&gt;)</h4>
+  <div class="markdown level1 summary"><p>Create an <a class="xref" href="EasyPost.Models.API.Options.html">Options</a> object from a dictionary.
+WARNING: This method involves serializing and deserializing the data, which can be slow. Use sparingly.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Options FromDictionary(Dictionary&lt;string, object&gt; data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>A <see cref="!:Dictionary&lt;TKey,TValue>"></see> of key-value pairs of options.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EasyPost.Models.API.Options.html">Options</a></td>
+        <td><p>An <a class="xref" href="EasyPost.Models.API.Options.html">Options</a> object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="EasyPost._base.IEasyPostObject.html">IEasyPostObject</a>

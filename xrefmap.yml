@@ -4892,6 +4892,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Options.FreightCharge
   nameWithType: Options.FreightCharge
+- uid: EasyPost.Models.API.Options.FromDictionary(Dictionary{System.String,System.Object})
+  name: FromDictionary(Dictionary<String, Object>)
+  href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_FromDictionary_Dictionary_System_String_System_Object__
+  commentId: M:EasyPost.Models.API.Options.FromDictionary(Dictionary{System.String,System.Object})
+  name.vb: FromDictionary(Dictionary(Of String, Object))
+  fullName: EasyPost.Models.API.Options.FromDictionary(Dictionary<System.String, System.Object>)
+  fullName.vb: EasyPost.Models.API.Options.FromDictionary(Dictionary(Of System.String, System.Object))
+  nameWithType: Options.FromDictionary(Dictionary<String, Object>)
+  nameWithType.vb: Options.FromDictionary(Dictionary(Of String, Object))
+- uid: EasyPost.Models.API.Options.FromDictionary*
+  name: FromDictionary
+  href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_FromDictionary_
+  commentId: Overload:EasyPost.Models.API.Options.FromDictionary
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Options.FromDictionary
+  nameWithType: Options.FromDictionary
 - uid: EasyPost.Models.API.Options.Group
   name: Group
   href: api/EasyPost.Models.API.Options.html#EasyPost_Models_API_Options_Group
