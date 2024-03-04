@@ -117,9 +117,15 @@ namespace EasyPost.Models.API
         [JsonProperty("carrier_insurance_amount")]
         public string? CarrierInsuranceAmount { get; set; }
 
+        /// <summary>
+        ///     Assign an email address to receive carrier notifications.
+        /// </summary>
         [JsonProperty("carrier_notification_email")]
         public string? CarrierNotificationEmail { get; set; }
 
+        /// <summary>
+        ///     Assign a phone number to receive carrier notifications.
+        /// </summary>
         [JsonProperty("carrier_notification_sms")]
         public string? CarrierNotificationSms { get; set; }
 
