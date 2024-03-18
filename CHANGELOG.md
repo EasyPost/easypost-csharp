@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v6.2.1 (2024-03-18)
 
 - Fix serialization bug for carrier accounts parameter on `RetrieveStatelessRates` parameter set
 
