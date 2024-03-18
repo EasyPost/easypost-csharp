@@ -22,15 +22,33 @@ namespace EasyPost.Tests.ServicesTests.Beta
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
-        public async Task TestRetrieve()
+        public async Task TestRetrieveStatelessRates()
         {
-            UseVCR("retrieve");
+            UseVCR("retrieve_stateless_rates");
 
             Dictionary<string, object> shipmentData = Fixtures.BasicShipment;
 
             List<StatelessRate> rates = await Client.Beta.Rate.RetrieveStatelessRates(shipmentData);
 
-            Assert.IsType<List<StatelessRate>>(rates);
+            Assert.NotNull(rates);
+            Assert.NotEmpty(rates);
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Function]
+        public async Task TestRetrieveStatelessRatesWithCarrierAccount()
+        {
+            UseVCR("retrieve_stateless_rates_with_carrier_account");
+
+            Dictionary<string, object> shipmentData = Fixtures.BasicShipment;
+
+            shipmentData.Add("carrier_accounts", new List<string> { Fixtures.UspsCarrierAccountId });
+
+            List<StatelessRate> rates = await Client.Beta.Rate.RetrieveStatelessRates(shipmentData);
+
+            Assert.NotNull(rates);
+            Assert.NotEmpty(rates);
         }
 
         #endregion
@@ -47,7 +65,7 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             StatelessRate lowestStatelessRate = Rates.GetLowestStatelessRate(rates);
 
-            Assert.Equal("First", lowestStatelessRate.Service);
+            Assert.Equal("GroundAdvantage", lowestStatelessRate.Service);
         }
 
         [Fact]
@@ -62,7 +80,7 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             StatelessRate lowestStatelessRate = rates.GetLowest();
 
-            Assert.Equal("First", lowestStatelessRate.Service);
+            Assert.Equal("GroundAdvantage", lowestStatelessRate.Service);
         }
 
         #endregion
