@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Fix serialization bug for carrier accounts parameter on `RetrieveStatelessRates` parameter set
+
 ## v6.2.0 (2024-02-07)
 
 - Mark some unused parameters for various `All` functions as obsolete
