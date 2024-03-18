@@ -10337,6 +10337,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Beta.Rate.Retrieve.ToAddress
   nameWithType: Retrieve.ToAddress
+- uid: EasyPost.Parameters.Beta.Rate.Retrieve.ToDictionary
+  name: ToDictionary()
+  href: api/EasyPost.Parameters.Beta.Rate.Retrieve.html#EasyPost_Parameters_Beta_Rate_Retrieve_ToDictionary
+  commentId: M:EasyPost.Parameters.Beta.Rate.Retrieve.ToDictionary
+  fullName: EasyPost.Parameters.Beta.Rate.Retrieve.ToDictionary()
+  nameWithType: Retrieve.ToDictionary()
+- uid: EasyPost.Parameters.Beta.Rate.Retrieve.ToDictionary*
+  name: ToDictionary
+  href: api/EasyPost.Parameters.Beta.Rate.Retrieve.html#EasyPost_Parameters_Beta_Rate_Retrieve_ToDictionary_
+  commentId: Overload:EasyPost.Parameters.Beta.Rate.Retrieve.ToDictionary
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Beta.Rate.Retrieve.ToDictionary
+  nameWithType: Retrieve.ToDictionary
 - uid: EasyPost.Parameters.CarrierAccount
   name: EasyPost.Parameters.CarrierAccount
   href: api/EasyPost.Parameters.CarrierAccount.html
