@@ -1,0 +1,98 @@
+[
+  {
+    "Duration": 845,
+    "RecordedAt": "2024-04-04T13:24:26.158505-04:00",
+    "Request": {
+      "Body": "{\"insurance\":{\"from_address\":{\"name\":\"Jack Sparrow\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"},\"to_address\":{\"name\":\"Elizabeth Swan\",\"street1\":\"179 N Harbor Dr\",\"city\":\"Redondo Beach\",\"state\":\"CA\",\"zip\":\"90277\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"},\"carrier\":\"USPS\",\"amount\":\"100\",\"tracking_code\":\"EZ1000000001\"}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "457"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/insurances"
+    },
+    "Response": {
+      "Body": "{\"id\":\"ins_9001d0f3b4ce476896f2a06cd741ef5c\",\"object\":\"Insurance\",\"mode\":\"test\",\"reference\":null,\"status\":\"pending\",\"amount\":\"100.00000\",\"provider\":\"easypost\",\"provider_id\":null,\"to_address\":{\"id\":\"adr_2f9cc708f2a811eeaaa93cecef1b359e\",\"object\":\"Address\",\"created_at\":\"2024-04-04T13:24:26-04:00\",\"updated_at\":\"2024-04-04T13:24:26-04:00\",\"name\":\"ELIZABETH SWAN\",\"company\":null,\"street1\":\"179 N HARBOR DR\",\"street2\":\"\",\"city\":\"REDONDO BEACH\",\"state\":\"CA\",\"zip\":\"90277-2506\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":33.8436,\"longitude\":-118.39177,\"time_zone\":\"America/Los_Angeles\"}}}},\"from_address\":{\"id\":\"adr_2fa2901af2a811ee84f4ac1f6bc53342\",\"object\":\"Address\",\"created_at\":\"2024-04-04T13:24:26-04:00\",\"updated_at\":\"2024-04-04T13:24:26-04:00\",\"name\":\"JACK SPARROW\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":true,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.77551,\"longitude\":-122.39697,\"time_zone\":\"America/Los_Angeles\"}}}},\"shipment_id\":null,\"tracker\":{\"id\":\"trk_2b845cbd4b20425cba23b168d69c09a4\",\"object\":\"Tracker\",\"mode\":\"test\",\"tracking_code\":\"EZ1000000001\",\"status\":\"pre_transit\",\"status_detail\":\"status_update\",\"created_at\":\"2024-04-04T17:18:43Z\",\"updated_at\":\"2024-04-04T17:18:43Z\",\"signed_by\":null,\"weight\":null,\"est_delivery_date\":\"2024-04-04T17:18:43Z\",\"shipment_id\":null,\"carrier\":\"USPS\",\"tracking_details\":[{\"object\":\"TrackingDetail\",\"message\":\"Pre-Shipment Info Sent to USPS\",\"description\":\"\",\"status\":\"pre_transit\",\"status_detail\":\"status_update\",\"datetime\":\"2024-03-04T17:18:43Z\",\"source\":\"USPS\",\"carrier_code\":\"\",\"tracking_location\":{\"object\":\"TrackingLocation\",\"city\":null,\"state\":null,\"country\":null,\"zip\":null}},{\"object\":\"TrackingDetail\",\"message\":\"Shipping Label Created\",\"description\":\"\",\"status\":\"pre_transit\",\"status_detail\":\"status_update\",\"datetime\":\"2024-03-05T05:55:43Z\",\"source\":\"USPS\",\"carrier_code\":\"\",\"tracking_location\":{\"object\":\"TrackingLocation\",\"city\":\"HOUSTON\",\"state\":\"TX\",\"country\":null,\"zip\":\"77063\"}}],\"carrier_detail\":{\"object\":\"CarrierDetail\",\"service\":\"First-Class Package Service\",\"container_type\":null,\"est_delivery_date_local\":null,\"est_delivery_time_local\":null,\"origin_location\":\"HOUSTON TX, 77001\",\"origin_tracking_location\":{\"object\":\"TrackingLocation\",\"city\":\"HOUSTON\",\"state\":\"TX\",\"country\":null,\"zip\":\"77063\"},\"destination_location\":\"CHARLESTON SC, 29401\",\"destination_tracking_location\":null,\"guaranteed_delivery_date\":null,\"alternate_identifier\":null,\"initial_delivery_attempt\":null},\"finalized\":true,\"is_return\":false,\"public_url\":\"https://track.easypost.com/djE6dHJrXzJiODQ1Y2JkNGIyMDQyNWNiYTIzYjE2OGQ2OWMwOWE0\",\"fees\":[]},\"tracking_code\":\"EZ1000000001\",\"fee\":{\"object\":\"Fee\",\"type\":\"InsuranceFee\",\"amount\":\"1.00000\",\"charged\":true,\"refunded\":false},\"messages\":[],\"created_at\":\"2024-04-04T17:24:26Z\",\"updated_at\":\"2024-04-04T17:24:26Z\"}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "3366"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "15191851660ee24ae786c541007d1818",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "Location": "/api/v2/insurances/ins_9001d0f3b4ce476896f2a06cd741ef5c",
+        "x-runtime": "0.181196",
+        "x-node": "bigweb39nuq",
+        "x-version-label": "easypost-202404041657-5f8f314f1c-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb3nuq 39c21b8207,extlb2nuq 60566a9ec2",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  },
+  {
+    "Duration": 224,
+    "RecordedAt": "2024-04-04T13:24:26.395212-04:00",
+    "Request": {
+      "Body": "",
+      "BodyContentType": "Text",
+      "ContentHeaders": {},
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/insurances/ins_9001d0f3b4ce476896f2a06cd741ef5c/refund"
+    },
+    "Response": {
+      "Body": "{\"id\":\"ins_9001d0f3b4ce476896f2a06cd741ef5c\",\"object\":\"Insurance\",\"mode\":\"test\",\"reference\":null,\"status\":\"cancelled\",\"amount\":\"100.00000\",\"provider\":\"easypost\",\"provider_id\":null,\"to_address\":{\"id\":\"adr_2f9cc708f2a811eeaaa93cecef1b359e\",\"object\":\"Address\",\"created_at\":\"2024-04-04T13:24:26-04:00\",\"updated_at\":\"2024-04-04T13:24:26-04:00\",\"name\":\"ELIZABETH SWAN\",\"company\":null,\"street1\":\"179 N HARBOR DR\",\"street2\":null,\"city\":\"REDONDO BEACH\",\"state\":\"CA\",\"zip\":\"90277-2506\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":33.8436,\"longitude\":-118.39177,\"time_zone\":\"America/Los_Angeles\"}}}},\"from_address\":{\"id\":\"adr_2fa2901af2a811ee84f4ac1f6bc53342\",\"object\":\"Address\",\"created_at\":\"2024-04-04T13:24:26-04:00\",\"updated_at\":\"2024-04-04T13:24:26-04:00\",\"name\":\"JACK SPARROW\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":true,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.77551,\"longitude\":-122.39697,\"time_zone\":\"America/Los_Angeles\"}}}},\"shipment_id\":null,\"tracker\":{\"id\":\"trk_31b5f41d4a6642599e6c92a83aa9be2f\",\"object\":\"Tracker\",\"mode\":\"test\",\"tracking_code\":\"EZ1000000001\",\"status\":\"pre_transit\",\"status_detail\":\"status_update\",\"created_at\":\"2024-04-04T17:24:26Z\",\"updated_at\":\"2024-04-04T17:24:26Z\",\"signed_by\":null,\"weight\":null,\"est_delivery_date\":\"2024-04-04T17:24:26Z\",\"shipment_id\":null,\"carrier\":\"USPS\",\"tracking_details\":[{\"object\":\"TrackingDetail\",\"message\":\"Pre-Shipment Info Sent to USPS\",\"description\":\"\",\"status\":\"pre_transit\",\"status_detail\":\"status_update\",\"datetime\":\"2024-03-04T17:24:26Z\",\"source\":\"USPS\",\"carrier_code\":\"\",\"tracking_location\":{\"object\":\"TrackingLocation\",\"city\":null,\"state\":null,\"country\":null,\"zip\":null}},{\"object\":\"TrackingDetail\",\"message\":\"Shipping Label Created\",\"description\":\"\",\"status\":\"pre_transit\",\"status_detail\":\"status_update\",\"datetime\":\"2024-03-05T06:01:26Z\",\"source\":\"USPS\",\"carrier_code\":\"\",\"tracking_location\":{\"object\":\"TrackingLocation\",\"city\":\"HOUSTON\",\"state\":\"TX\",\"country\":null,\"zip\":\"77063\"}}],\"carrier_detail\":{\"object\":\"CarrierDetail\",\"service\":\"First-Class Package Service\",\"container_type\":null,\"est_delivery_date_local\":null,\"est_delivery_time_local\":null,\"origin_location\":\"HOUSTON TX, 77001\",\"origin_tracking_location\":{\"object\":\"TrackingLocation\",\"city\":\"HOUSTON\",\"state\":\"TX\",\"country\":null,\"zip\":\"77063\"},\"destination_location\":\"CHARLESTON SC, 29401\",\"destination_tracking_location\":null,\"guaranteed_delivery_date\":null,\"alternate_identifier\":null,\"initial_delivery_attempt\":null},\"finalized\":true,\"is_return\":false,\"public_url\":\"https://track.easypost.com/djE6dHJrXzMxYjVmNDFkNGE2NjQyNTk5ZTZjOTJhODNhYTliZTJm\",\"fees\":[]},\"tracking_code\":\"EZ1000000001\",\"fee\":{\"object\":\"Fee\",\"type\":\"InsuranceFee\",\"amount\":\"1.00000\",\"charged\":true,\"refunded\":false},\"messages\":[],\"created_at\":\"2024-04-04T17:24:26Z\",\"updated_at\":\"2024-04-04T17:24:26Z\"}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "3372"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "15191851660ee24ae786c541007d1867",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.088967",
+        "x-node": "bigweb35nuq",
+        "x-version-label": "easypost-202404041657-5f8f314f1c-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb3nuq 39c21b8207,extlb2nuq 60566a9ec2",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  }
+]

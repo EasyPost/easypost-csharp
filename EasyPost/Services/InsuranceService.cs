@@ -107,6 +107,16 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<Insurance> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Insurance>(Method.Get, $"insurances/{id}", cancellationToken);
 
+        /// <summary>
+        ///     Refund an <see cref="Insurance"/>.
+        ///     <a href="https://www.easypost.com/docs/api#refund-an-insurance">Related API documentation</a>.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="Insurance"/> to refund.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>An <see cref="Insurance"/> instance.</returns>
+        [CrudOperations.Read]
+        public async Task<Insurance> Refund(string id, CancellationToken cancellationToken = default) => await RequestAsync<Insurance>(Method.Post, $"insurances/{id}/refund", cancellationToken);
+
         #endregion
     }
 }
