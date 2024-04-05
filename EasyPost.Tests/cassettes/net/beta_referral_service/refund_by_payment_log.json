@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 419,
-    "RecordedAt": "2023-04-25T21:17:07.029858-06:00",
+    "Duration": 216,
+    "RecordedAt": "2024-04-05T13:24:54.95207-06:00",
     "Request": {
       "Body": "{\"payment_log_id\":\"paylog_123\"}",
       "BodyContentType": "Json",
@@ -32,15 +32,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "d4af6151644897b2e1cf40df0009464a",
+        "x-ep-request-uuid": "1f0ae7a466105007f40aefa7000fa488",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.039173",
+        "x-runtime": "0.041516",
         "Vary": "Origin",
-        "x-node": "bigweb1nuq",
-        "x-version-label": "easypost-202304252326-79950b6035-master",
+        "x-node": "bigweb32nuq",
+        "x-version-label": "easypost-202404051854-b9502cad97-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq a29e4ad05c,intlb2wdc a29e4ad05c,extlb4wdc a29e4ad05c",
+        "x-canary": "direct",
+        "x-proxied": "intlb3nuq 39c21b8207,extlb2nuq 60566a9ec2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

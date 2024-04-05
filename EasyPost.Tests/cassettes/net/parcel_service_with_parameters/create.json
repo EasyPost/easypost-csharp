@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 366,
-    "RecordedAt": "2023-04-25T21:17:05.855638-06:00",
+    "Duration": 485,
+    "RecordedAt": "2024-04-05T13:24:53.928551-06:00",
     "Request": {
       "Body": "{\"parcel\":{\"height\":4.0,\"length\":10.0,\"weight\":15.4,\"width\":8.0}}",
       "BodyContentType": "Json",
@@ -17,7 +17,7 @@
       "Uri": "https://api.easypost.com/v2/parcels"
     },
     "Response": {
-      "Body": "{\"id\":\"prcl_0baf53e4ed974d14b7537e56495404a2\",\"object\":\"Parcel\",\"created_at\":\"2023-04-26T03:17:05Z\",\"updated_at\":\"2023-04-26T03:17:05Z\",\"length\":10.0,\"width\":8.0,\"height\":4.0,\"predefined_package\":null,\"weight\":15.4,\"mode\":\"test\"}",
+      "Body": "{\"id\":\"prcl_aefd285cfb524b4483360b42ffb0fb63\",\"object\":\"Parcel\",\"created_at\":\"2024-04-05T19:24:53Z\",\"updated_at\":\"2024-04-05T19:24:53Z\",\"length\":10.0,\"width\":8.0,\"height\":4.0,\"predefined_package\":null,\"weight\":15.4,\"mode\":\"test\"}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -32,16 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "d677fdba644897b1e1d1840f0008c99e",
+        "x-ep-request-uuid": "1f0ae7a266105005f022a2b8000fa344",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "Location": "/api/prcl_0baf53e4ed974d14b7537e56495404a2/parcels",
-        "ETag": "W/\"055b775abaeb6e786dfd71427b17085f\"",
-        "x-runtime": "0.030319",
-        "x-node": "bigweb6nuq",
-        "x-version-label": "easypost-202304252326-79950b6035-master",
+        "Location": "/api/v2/parcels/prcl_aefd285cfb524b4483360b42ffb0fb63",
+        "x-runtime": "0.032587",
+        "x-node": "bigweb41nuq",
+        "x-version-label": "easypost-202404051854-b9502cad97-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq a29e4ad05c,extlb2nuq a29e4ad05c",
+        "x-proxied": "intlb3nuq 39c21b8207,extlb2nuq 60566a9ec2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

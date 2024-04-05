@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 228,
-    "RecordedAt": "2023-11-28T15:38:05.713248-07:00",
+    "Duration": 213,
+    "RecordedAt": "2024-04-05T13:23:52.078995-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -14,7 +14,7 @@
       "Uri": "https://api.easypost.com/v2/refunds?page_size=5"
     },
     "Response": {
-      "Body": "{\"refunds\":[{\"id\":\"rfnd_b8610d4afe344206b372e8a6b9ea6640\",\"object\":\"Refund\",\"created_at\":\"2023-11-28T22:38:05Z\",\"updated_at\":\"2023-11-28T22:38:05Z\",\"tracking_code\":\"9400100105442285926710\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_329f0861693a4aee99b0eaa91b22ff40\"},{\"id\":\"rfnd_043a5f5472f2473a906871c5a7950b29\",\"object\":\"Refund\",\"created_at\":\"2023-11-28T22:38:05Z\",\"updated_at\":\"2023-11-28T22:38:05Z\",\"tracking_code\":\"9400100105442285926697\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_0ebd5d7093b243338fd4c6e3b9ddcddd\"}],\"has_more\":false}",
+      "Body": "{\"refunds\":[{\"id\":\"rfnd_dbbcf541372643088d4d95af427b7e8e\",\"object\":\"Refund\",\"created_at\":\"2024-04-05T19:23:51Z\",\"updated_at\":\"2024-04-05T19:23:51Z\",\"tracking_code\":\"9400100110322030261551\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_e70167235c674ebbb0436ed314a76548\"},{\"id\":\"rfnd_8d8c2ee125cf4becbe0055a49972967f\",\"object\":\"Refund\",\"created_at\":\"2024-04-05T19:23:51Z\",\"updated_at\":\"2024-04-05T19:23:51Z\",\"tracking_code\":\"9400100110322030261506\",\"confirmation_number\":null,\"status\":\"submitted\",\"carrier\":\"USPS\",\"shipment_id\":\"shp_ed3556801d124294b66a311a045cff9f\"}],\"has_more\":false}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -29,14 +29,14 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "88ad7b8f65666bcdf4094e690046603d",
+        "x-ep-request-uuid": "f5042d7666104fc8f3f973c900100b76",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.046039",
-        "x-node": "bigweb39nuq",
-        "x-version-label": "easypost-202311250013-a0f06fbc2c-master",
+        "x-runtime": "0.039689",
+        "x-node": "bigweb35nuq",
+        "x-version-label": "easypost-202404051854-b9502cad97-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq b3de2c47ef,extlb1nuq 003ad9bca0",
+        "x-proxied": "intlb3nuq 39c21b8207,extlb1nuq 60566a9ec2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

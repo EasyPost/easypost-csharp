@@ -72,11 +72,10 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]
-        public async Task TestBuy()
+        public async Task TestBuyWithCarrierAndService()
         {
-            UseVCR("buy");
+            UseVCR("buy_with_carrier_and_service");
 
-            // buy with a carrier and service
             Order order = await Client.Order.Create(Fixtures.BasicOrder);
 
             order = await Client.Order.Buy(order.Id, Fixtures.Usps, Fixtures.UspsService);
@@ -88,14 +87,21 @@ namespace EasyPost.Tests.ServicesTests
                 Assert.IsType<Shipment>(shipment);
                 Assert.NotNull(shipment.PostageLabel);
             }
+        }
 
-            // buy with a rate
-            order = await Client.Order.Create(Fixtures.BasicOrder);
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task TestBuyWithRate()
+        {
+            UseVCR("buy_with_rate");
+
+            Order order = await Client.Order.Create(Fixtures.BasicOrder);
             Rate rate = order.LowestRate();
 
             order = await Client.Order.Buy(order.Id, rate);
 
-            shipments = order.Shipments;
+            List<Shipment> shipments = order.Shipments;
 
             foreach (Shipment shipment in shipments)
             {
