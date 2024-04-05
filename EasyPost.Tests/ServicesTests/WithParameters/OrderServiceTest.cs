@@ -39,11 +39,10 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         [Fact]
         [CrudOperations.Update]
         [Testing.Function]
-        public async Task TestBuy()
+        public async Task TestBuyWithCarrierAndService()
         {
-            UseVCR("buy");
+            UseVCR("buy_with_carrier_and_service");
 
-            // buy with a carrier and service
             Dictionary<string, object> orderCreateData = Fixtures.BasicOrder;
 
             Parameters.Order.Create orderCreateParameters = Fixtures.Parameters.Orders.Create(orderCreateData);
@@ -61,19 +60,26 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 Assert.IsType<Shipment>(shipment);
                 Assert.NotNull(shipment.PostageLabel);
             }
+        }
 
-            // buy with a rate
-            orderCreateData = Fixtures.BasicOrder;
+        [Fact]
+        [CrudOperations.Update]
+        [Testing.Function]
+        public async Task BuyWithRate()
+        {
+            UseVCR("buy_with_rate");
 
-            orderCreateParameters = Fixtures.Parameters.Orders.Create(orderCreateData);
+            Dictionary<string, object> orderCreateData = Fixtures.BasicOrder;
 
-            order = await Client.Order.Create(orderCreateParameters);
+            Parameters.Order.Create orderCreateParameters = Fixtures.Parameters.Orders.Create(orderCreateData);
+
+            Order order = await Client.Order.Create(orderCreateParameters);
 
             Rate rate = order.LowestRate();
 
             order = await Client.Order.Buy(order.Id, rate);
 
-            shipments = order.Shipments;
+            List<Shipment> shipments = order.Shipments;
 
             foreach (Shipment shipment in shipments)
             {

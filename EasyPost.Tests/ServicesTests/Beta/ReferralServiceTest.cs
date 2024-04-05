@@ -35,7 +35,7 @@ namespace EasyPost.Tests.ServicesTests.Beta
                 // the data we're sending is invalid, we expect an error to be thrown
                 Assert.Equal(422, e.StatusCode);
                 Assert.Equal("BILLING.INVALID_PAYMENT_GATEWAY_REFERENCE", e.Code);
-                Assert.Equal("Invalid Payment Gateway Reference.", e.Message);
+                Assert.Equal("Invalid connect integration.", e.Message);
             }
         }
 

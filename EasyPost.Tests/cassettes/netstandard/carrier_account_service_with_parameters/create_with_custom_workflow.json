@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 820,
-    "RecordedAt": "2023-09-01T14:11:49.668082-06:00",
+    "Duration": 675,
+    "RecordedAt": "2024-04-05T13:23:51.967737-06:00",
     "Request": {
       "Body": "{\"carrier_account\":{\"registration_data\":{\"account_number\":\"123456789\",\"corporate_city\":\"San Francisco\",\"corporate_country_code\":\"US\",\"corporate_postal_code\":\"94105\",\"corporate_state\":\"CA\",\"corporate_streets\":\"345 California St\",\"corporate_company_name\":\"EasyPost\",\"corporate_email_address\":\"me@example.com\",\"corporate_first_name\":\"Demo\",\"corporate_job_title\":\"Developer\",\"corporate_last_name\":\"User\",\"corporate_phone_number\":\"5555555555\",\"shipping_city\":\"San Francisco\",\"shipping_country_code\":\"US\",\"shipping_postal_code\":\"94105\",\"shipping_state\":\"CA\",\"shipping_streets\":\"345 California St\"},\"type\":\"FedexAccount\"}}",
       "BodyContentType": "Json",
@@ -32,15 +32,14 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "ba97da7a64f24585f40b7bab00147400",
+        "x-ep-request-uuid": "f5042d7a66104fc7f41adaa600100adf",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.644526",
-        "x-node": "bigweb32nuq",
-        "x-version-label": "easypost-202309011816-f628ba26e7-master",
+        "x-runtime": "0.493596",
+        "x-node": "bigweb35nuq",
+        "x-version-label": "easypost-202404051854-b9502cad97-master",
         "x-backend": "easypost",
-        "x-canary": "direct",
-        "x-proxied": "intlb2nuq 2bcb349163,extlb1nuq 003ad9bca0",
+        "x-proxied": "intlb4nuq 39c21b8207,extlb1nuq 60566a9ec2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

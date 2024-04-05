@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 612,
-    "RecordedAt": "2023-04-25T21:18:22.712607-06:00",
+    "Duration": 277,
+    "RecordedAt": "2024-04-05T13:23:49.865548-06:00",
     "Request": {
       "Body": "{\"payment_method\":{\"stripe_customer_id\":\"cus_123\",\"payment_method_reference\":\"ba_123\",\"priority\":\"primary\"}}",
       "BodyContentType": "Json",
@@ -17,12 +17,12 @@
       "Uri": "https://api.easypost.com/beta/referral_customers/payment_method"
     },
     "Response": {
-      "Body": "{\"error\":{\"code\":\"BILLING.INVALID_PAYMENT_GATEWAY_REFERENCE\",\"message\":\"Invalid Payment Gateway Reference.\",\"errors\":[]}}",
+      "Body": "{\"error\":{\"code\":\"BILLING.INVALID_PAYMENT_GATEWAY_REFERENCE\",\"message\":\"Invalid connect integration.\",\"errors\":[]}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "121"
+        "Content-Length": "115"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -32,15 +32,16 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "72dbe701644897fee1cfda27000b3162",
+        "x-ep-request-uuid": "1f0ae7a766104fc6f43e840b000f712b",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.051648",
+        "x-runtime": "0.049662",
         "Vary": "Origin",
-        "x-node": "bigweb1nuq",
-        "x-version-label": "easypost-202304252326-79950b6035-master",
+        "x-node": "bigweb32nuq",
+        "x-version-label": "easypost-202404051854-b9502cad97-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq a29e4ad05c,extlb1nuq a29e4ad05c",
+        "x-canary": "direct",
+        "x-proxied": "intlb3nuq 39c21b8207,extlb2nuq 60566a9ec2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

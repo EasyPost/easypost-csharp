@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 559,
-    "RecordedAt": "2023-04-25T21:18:22.611508-06:00",
+    "Duration": 256,
+    "RecordedAt": "2024-04-05T13:23:51.213111-06:00",
     "Request": {
       "Body": "{\"report\":{\"additional_columns\":[\"from_name\",\"from_company\"],\"end_date\":\"2022-04-12\",\"start_date\":\"2022-04-12\"}}",
       "BodyContentType": "Json",
@@ -17,7 +17,7 @@
       "Uri": "https://api.easypost.com/v2/reports/shipment"
     },
     "Response": {
-      "Body": "{\"id\":\"shprep_fd23c815bd584afba8bc8ee56abddef0\",\"object\":\"ShipmentReport\",\"created_at\":\"2023-04-26T03:18:22Z\",\"updated_at\":\"2023-04-26T03:18:22Z\",\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null,\"include_children\":false}",
+      "Body": "{\"id\":\"shprep_a0bb262b8884482a9a2fc95edda71e3b\",\"object\":\"ShipmentReport\",\"created_at\":\"2024-04-05T19:23:51Z\",\"updated_at\":\"2024-04-05T19:23:51Z\",\"start_date\":\"2022-04-12\",\"end_date\":\"2022-04-12\",\"mode\":\"test\",\"status\":\"new\",\"url\":null,\"url_expires_at\":null,\"include_children\":false}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -32,15 +32,14 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "72dbe703644897fee19bc243000b3154",
+        "x-ep-request-uuid": "f5042d7766104fc7f43ea0cc00100a8d",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "ETag": "W/\"cddd9c8a3d50cd9cfb2c11a6523d99e8\"",
-        "x-runtime": "0.044810",
-        "x-node": "bigweb3nuq",
-        "x-version-label": "easypost-202304252326-79950b6035-master",
+        "x-runtime": "0.077448",
+        "x-node": "bigweb38nuq",
+        "x-version-label": "easypost-202404051854-b9502cad97-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq a29e4ad05c,extlb1nuq a29e4ad05c",
+        "x-proxied": "intlb4nuq 39c21b8207,extlb1nuq 60566a9ec2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

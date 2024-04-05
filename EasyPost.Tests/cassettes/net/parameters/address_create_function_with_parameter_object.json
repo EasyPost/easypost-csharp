@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 291,
-    "RecordedAt": "2023-04-25T21:17:06.34171-06:00",
+    "Duration": 520,
+    "RecordedAt": "2024-04-05T13:24:54.01713-06:00",
     "Request": {
       "Body": "{\"address\":{\"street1\":\"388 Townsend St\"}}",
       "BodyContentType": "Json",
@@ -17,7 +17,7 @@
       "Uri": "https://api.easypost.com/v2/addresses"
     },
     "Response": {
-      "Body": "{\"id\":\"adr_d2a678e2e3e011ed9116ac1f6b0a0d1e\",\"object\":\"Address\",\"created_at\":\"2023-04-25T21:17:06-06:00\",\"updated_at\":\"2023-04-25T21:17:06-06:00\",\"name\":null,\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":\"US\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
+      "Body": "{\"id\":\"adr_2e3346b1f38211ee92e2ac1f6bc539aa\",\"object\":\"Address\",\"created_at\":\"2024-04-05T13:24:54-06:00\",\"updated_at\":\"2024-04-05T13:24:54-06:00\",\"name\":null,\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":\"US\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -32,16 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "d677fdb6644897b2e1cda0400008ca03",
+        "x-ep-request-uuid": "1f0ae7a066105006f42d03a9000fa386",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "Location": "/api/v2/addresses/adr_d2a678e2e3e011ed9116ac1f6b0a0d1e",
-        "ETag": "W/\"ffe4971594106849f308e738896dd444\"",
-        "x-runtime": "0.038039",
-        "x-node": "bigweb3nuq",
-        "x-version-label": "easypost-202304252326-79950b6035-master",
+        "Location": "/api/v2/addresses/adr_2e3346b1f38211ee92e2ac1f6bc539aa",
+        "x-runtime": "0.031814",
+        "x-node": "bigweb33nuq",
+        "x-version-label": "easypost-202404051854-b9502cad97-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq a29e4ad05c,extlb2nuq a29e4ad05c",
+        "x-proxied": "intlb4nuq 39c21b8207,extlb2nuq 60566a9ec2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

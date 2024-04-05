@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 544,
-    "RecordedAt": "2023-04-25T21:17:06.065899-06:00",
+    "Duration": 512,
+    "RecordedAt": "2024-04-05T13:24:54.038656-06:00",
     "Request": {
       "Body": "{\"parcel\":{\"length\":10,\"width\":8,\"height\":4,\"weight\":15.4}}",
       "BodyContentType": "Json",
@@ -17,7 +17,7 @@
       "Uri": "https://api.easypost.com/v2/parcels"
     },
     "Response": {
-      "Body": "{\"id\":\"prcl_1b5f981a288f4c9188346ed4b0caa717\",\"object\":\"Parcel\",\"created_at\":\"2023-04-26T03:17:06Z\",\"updated_at\":\"2023-04-26T03:17:06Z\",\"length\":10.0,\"width\":8.0,\"height\":4.0,\"predefined_package\":null,\"weight\":15.4,\"mode\":\"test\"}",
+      "Body": "{\"id\":\"prcl_9632dc28f99a47bf955ed42e870b286e\",\"object\":\"Parcel\",\"created_at\":\"2024-04-05T19:24:54Z\",\"updated_at\":\"2024-04-05T19:24:54Z\",\"length\":10.0,\"width\":8.0,\"height\":4.0,\"predefined_package\":null,\"weight\":15.4,\"mode\":\"test\"}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -32,16 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "d677fdbb644897b2f7524bb50008c9d5",
+        "x-ep-request-uuid": "1f0ae7a166105006f0220554000fa385",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "Location": "/api/prcl_1b5f981a288f4c9188346ed4b0caa717/parcels",
-        "ETag": "W/\"76ce77cc85112761b7ccea0256059a72\"",
-        "x-runtime": "0.029708",
-        "x-node": "bigweb6nuq",
-        "x-version-label": "easypost-202304252326-79950b6035-master",
+        "Location": "/api/v2/parcels/prcl_9632dc28f99a47bf955ed42e870b286e",
+        "x-runtime": "0.039258",
+        "x-node": "bigweb36nuq",
+        "x-version-label": "easypost-202404051854-b9502cad97-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq a29e4ad05c,extlb2nuq a29e4ad05c",
+        "x-proxied": "intlb3nuq 39c21b8207,extlb2nuq 60566a9ec2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -51,8 +50,8 @@
     }
   },
   {
-    "Duration": 73,
-    "RecordedAt": "2023-04-25T21:17:06.228763-06:00",
+    "Duration": 116,
+    "RecordedAt": "2024-04-05T13:24:54.288655-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -62,10 +61,10 @@
         "Authorization": "<REDACTED>",
         "User-Agent": "<REDACTED>"
       },
-      "Uri": "https://api.easypost.com/v2/parcels/prcl_1b5f981a288f4c9188346ed4b0caa717"
+      "Uri": "https://api.easypost.com/v2/parcels/prcl_9632dc28f99a47bf955ed42e870b286e"
     },
     "Response": {
-      "Body": "{\"id\":\"prcl_1b5f981a288f4c9188346ed4b0caa717\",\"object\":\"Parcel\",\"created_at\":\"2023-04-26T03:17:06Z\",\"updated_at\":\"2023-04-26T03:17:06Z\",\"length\":10.0,\"width\":8.0,\"height\":4.0,\"predefined_package\":null,\"weight\":15.4,\"mode\":\"test\"}",
+      "Body": "{\"id\":\"prcl_9632dc28f99a47bf955ed42e870b286e\",\"object\":\"Parcel\",\"created_at\":\"2024-04-05T19:24:54Z\",\"updated_at\":\"2024-04-05T19:24:54Z\",\"length\":10.0,\"width\":8.0,\"height\":4.0,\"predefined_package\":null,\"weight\":15.4,\"mode\":\"test\"}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -80,15 +79,14 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "d677fdbb644897b2f7524bb50008c9f5",
+        "x-ep-request-uuid": "1f0ae7a166105006f0220554000fa3cd",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "ETag": "W/\"76ce77cc85112761b7ccea0256059a72\"",
-        "x-runtime": "0.021493",
-        "x-node": "bigweb9nuq",
-        "x-version-label": "easypost-202304252326-79950b6035-master",
+        "x-runtime": "0.048352",
+        "x-node": "bigweb42nuq",
+        "x-version-label": "easypost-202404051854-b9502cad97-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq a29e4ad05c,extlb2nuq a29e4ad05c",
+        "x-proxied": "intlb3nuq 39c21b8207,extlb2nuq 60566a9ec2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

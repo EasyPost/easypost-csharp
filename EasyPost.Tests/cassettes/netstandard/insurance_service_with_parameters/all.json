@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 250,
-    "RecordedAt": "2023-11-28T15:38:03.580446-07:00",
+    "Duration": 602,
+    "RecordedAt": "2024-04-05T13:23:49.236842-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -29,14 +29,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "88ad7b8e65666bcbf3f7364d00465e25",
+        "x-ep-request-uuid": "f5042d7866104fc5f407ad47001007b0",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.027055",
-        "x-node": "bigweb34nuq",
-        "x-version-label": "easypost-202311250013-a0f06fbc2c-master",
+        "x-runtime": "0.032469",
+        "x-node": "bigweb32nuq",
+        "x-version-label": "easypost-202404051854-b9502cad97-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb1nuq b3de2c47ef,extlb1nuq 003ad9bca0",
+        "x-canary": "direct",
+        "x-proxied": "intlb3nuq 39c21b8207,extlb1nuq 60566a9ec2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

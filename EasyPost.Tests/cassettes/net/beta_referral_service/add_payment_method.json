@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 315,
-    "RecordedAt": "2023-04-25T21:17:06.594556-06:00",
+    "Duration": 524,
+    "RecordedAt": "2024-04-05T13:24:54.678091-06:00",
     "Request": {
       "Body": "{\"payment_method\":{\"stripe_customer_id\":\"cus_123\",\"payment_method_reference\":\"ba_123\",\"priority\":\"primary\"}}",
       "BodyContentType": "Json",
@@ -17,12 +17,12 @@
       "Uri": "https://api.easypost.com/beta/referral_customers/payment_method"
     },
     "Response": {
-      "Body": "{\"error\":{\"code\":\"BILLING.INVALID_PAYMENT_GATEWAY_REFERENCE\",\"message\":\"Invalid Payment Gateway Reference.\",\"errors\":[]}}",
+      "Body": "{\"error\":{\"code\":\"BILLING.INVALID_PAYMENT_GATEWAY_REFERENCE\",\"message\":\"Invalid connect integration.\",\"errors\":[]}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "121"
+        "Content-Length": "115"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -32,15 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "d677fdb7644897b2f752d81a0008ca1f",
+        "x-ep-request-uuid": "1f0ae7a766105006f40a672c000fa415",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.120616",
+        "x-runtime": "0.172143",
         "Vary": "Origin",
-        "x-node": "bigweb4nuq",
-        "x-version-label": "easypost-202304252326-79950b6035-master",
+        "x-node": "bigweb38nuq",
+        "x-version-label": "easypost-202404051854-b9502cad97-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb2nuq a29e4ad05c,extlb2nuq a29e4ad05c",
+        "x-proxied": "intlb4nuq 39c21b8207,extlb2nuq 60566a9ec2",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
