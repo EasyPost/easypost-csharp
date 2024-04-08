@@ -15626,6 +15626,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.InsuranceService.GetNextPage
   nameWithType: InsuranceService.GetNextPage
+- uid: EasyPost.Services.InsuranceService.Refund(System.String,CancellationToken)
+  name: Refund(String, CancellationToken)
+  href: api/EasyPost.Services.InsuranceService.html#EasyPost_Services_InsuranceService_Refund_System_String_CancellationToken_
+  commentId: M:EasyPost.Services.InsuranceService.Refund(System.String,CancellationToken)
+  fullName: EasyPost.Services.InsuranceService.Refund(System.String, CancellationToken)
+  nameWithType: InsuranceService.Refund(String, CancellationToken)
+- uid: EasyPost.Services.InsuranceService.Refund*
+  name: Refund
+  href: api/EasyPost.Services.InsuranceService.html#EasyPost_Services_InsuranceService_Refund_
+  commentId: Overload:EasyPost.Services.InsuranceService.Refund
+  isSpec: "True"
+  fullName: EasyPost.Services.InsuranceService.Refund
+  nameWithType: InsuranceService.Refund
 - uid: EasyPost.Services.InsuranceService.Retrieve(System.String,CancellationToken)
   name: Retrieve(String, CancellationToken)
   href: api/EasyPost.Services.InsuranceService.html#EasyPost_Services_InsuranceService_Retrieve_System_String_CancellationToken_
