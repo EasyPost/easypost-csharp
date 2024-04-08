@@ -118,6 +118,7 @@ namespace EasyPost.Tests.ServicesTests
             Assert.IsType<Insurance>(insurance);
             Assert.StartsWith("ins_", cancelledInsurance.Id);
             Assert.Equal("cancelled", cancelledInsurance.Status);
+            Assert.Equal("Insurance was cancelled by the user.", cancelledInsurance.Messages[0]);
         }
 
         #endregion
