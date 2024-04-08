@@ -1,7 +1,8 @@
 # CHANGELOG
 
-## Next release
+## Next Release
 
+- Fix payment method funding and deletion failures due to undetermined payment method type
 - Add Refund function in insurance service for requesting a refund for standalone insurance.
 
 ## v6.2.1 (2024-03-18)

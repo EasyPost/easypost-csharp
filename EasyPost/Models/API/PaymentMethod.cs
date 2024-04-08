@@ -90,11 +90,11 @@ namespace EasyPost.Models.API
                     return null;
                 }
 
-                if (Id.StartsWith("card_", StringComparison.InvariantCulture))
+                if (Id.StartsWith("card_", StringComparison.InvariantCulture) || Object == "CreditCard")
                 {
                     type = PaymentMethodType.CreditCard;
                 }
-                else if (Id.StartsWith("bank_", StringComparison.InvariantCulture))
+                else if (Id.StartsWith("bank_", StringComparison.InvariantCulture) || Object == "BankAccount")
                 {
                     type = PaymentMethodType.BankAccount;
                 }
