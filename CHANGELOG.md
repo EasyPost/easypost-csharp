@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next release
+
+- Add Refund function in insurance service for requesting a refund for standalone insurance.
+
 ## v6.2.1 (2024-03-18)
 
 - Fix serialization bug for carrier accounts parameter on `RetrieveStatelessRates` parameter set
