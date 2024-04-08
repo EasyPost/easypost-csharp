@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Fix payment method funding and deletion failures due to undetermined payment method type
+
 ## v6.2.1 (2024-03-18)
 
 - Fix serialization bug for carrier accounts parameter on `RetrieveStatelessRates` parameter set
