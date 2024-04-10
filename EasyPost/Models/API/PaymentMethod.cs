@@ -1,4 +1,3 @@
-using System;
 using EasyPost._base;
 using EasyPost.Exceptions.General;
 using EasyPost.Utilities.Internal;
