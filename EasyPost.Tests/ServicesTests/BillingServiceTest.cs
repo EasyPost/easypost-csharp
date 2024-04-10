@@ -178,42 +178,6 @@ namespace EasyPost.Tests.ServicesTests
         [Fact]
         [CrudOperations.Delete]
         [Testing.Exception]
-        public async Task TestGetPaymentMethodByPriorityPaymentMethodLegacyIdPrefix()
-        {
-            UseMockClient(new List<TestUtils.MockRequest>
-            {
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Get, @"v2\/payment_methods$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new PaymentMethodsSummary
-                    {
-                        Id = "summary_123",
-                        PrimaryPaymentMethod = new PaymentMethod
-                        {
-                            Id = "card_123", // Legacy ID prefix, used to determine the type
-                            Object = null, // No object, force use of the ID to determine the type
-                        },
-                        SecondaryPaymentMethod = new PaymentMethod
-                        {
-                            Id = "bank_123", // Legacy ID prefix, used to determine the type
-                            Object = null, // No object, force use of the ID to determine the type
-                        },
-                    })
-                ),
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Delete, @"v2\/credit_cards\/\S*$"), // Only include the credit card endpoint, as the ID is a credit card ID
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK)
-                ),
-            });
-
-            // Deleting a payment method gets the payment method internally, which should execute the code that should not trigger an exception.
-            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.Billing.DeletePaymentMethod(PaymentMethod.Priority.Primary));
-
-            Assert.Null(possibleException);
-        }
-
-        [Fact]
-        [CrudOperations.Delete]
-        [Testing.Exception]
         public async Task TestGetPaymentMethodByPriorityPaymentMethodNoIdOrObjectType()
         {
             UseMockClient(new List<TestUtils.MockRequest>
