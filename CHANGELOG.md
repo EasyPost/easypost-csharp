@@ -2,8 +2,10 @@
 
 ## Next Release
 
-- Fix payment method funding and deletion failures due to undetermined payment method type
 - Add Refund function in insurance service for requesting a refund for standalone insurance.
+- Fix payment method funding and deletion failures due to undetermined payment method type
+- Fix `ToString` method for `EasyPostObject`- and `EphemeralEasyPostObject`-based objects to return object type and
+  optional ID
 
 ## v6.2.1 (2024-03-18)
 

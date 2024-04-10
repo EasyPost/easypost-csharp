@@ -27,6 +27,9 @@ namespace EasyPost._base
         #endregion
 
         /// <inheritdoc />
+        public override string ToString() => Object!;
+
+        /// <inheritdoc />
         public override bool Equals(object? obj) => GetType() == obj?.GetType() && GetHashCode() == ((EphemeralEasyPostObject)obj).GetHashCode();
 
         /// <inheritdoc />

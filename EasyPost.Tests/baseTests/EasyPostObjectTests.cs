@@ -80,5 +80,24 @@ namespace EasyPost.Tests.baseTests
             Assert.False(apiKey == null);
             Assert.False(null == apiKey);
         }
+
+        [Fact]
+        [Testing.Function]
+        public void TestToString()
+        {
+            const string @object = "the_object_type";
+            const string id = "the_objet_id";
+
+            Address address = new()
+            {
+                Id = id,
+                Object = @object
+            };
+
+            const string expected = $"{@object} {id}";
+            string actual = address.ToString();
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
