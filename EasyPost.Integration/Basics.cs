@@ -82,6 +82,77 @@ public class Basics
     }
 
     /// <summary>
+    ///     Test that an end-user can locally construct a parameter object (parameter objects have public constructors).
+    ///     If this test can be compiled, then the parameter objects have public constructors.
+    /// </summary>
+    [Fact, Testing.Access, Testing.Compile]
+    public void UserCanConstructParameterSets()
+    {
+        var addressCreateParameters = new EasyPost.Parameters.Address.Create();
+        var addressAllParameters = new EasyPost.Parameters.Address.All();
+        var batchCreateParameters = new EasyPost.Parameters.Batch.Create();
+        var batchAllParameters = new EasyPost.Parameters.Batch.All();
+        var batchAddShipmentsParameters = new EasyPost.Parameters.Batch.AddShipments();
+        var batchRemoveShipmentsParameters = new EasyPost.Parameters.Batch.RemoveShipments();
+        var batchGenerateLabelParameters = new EasyPost.Parameters.Batch.GenerateLabel();
+        var batchGenerateScanFormParameters = new EasyPost.Parameters.Batch.GenerateScanForm();
+        var betaRateRetrieveParameters = new EasyPost.Parameters.Beta.Rate.Retrieve();
+        var carrierAccountCreateParameters = new EasyPost.Parameters.CarrierAccount.Create("CarrierNameAccount");
+        var carrierAccountCreateFedExParameters = new EasyPost.Parameters.CarrierAccount.CreateFedEx();
+        var carrierAccountCreateFedExSmartPostParameters = new EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost();
+        var carrierAccountCreateUpsParameters = new EasyPost.Parameters.CarrierAccount.CreateUps();
+        var carrierAccountUpdateParameters = new EasyPost.Parameters.CarrierAccount.Update();
+        var carrierMetadataRetrieveParameters = new EasyPost.Parameters.CarrierMetadata.Retrieve();
+        var customsInfoCreateParameters = new EasyPost.Parameters.CustomsInfo.Create();
+        var customsItemCreateParameters = new EasyPost.Parameters.CustomsItem.Create();
+        var endShipperCreateParameters = new EasyPost.Parameters.EndShipper.Create();
+        var endShipperAllParameters = new EasyPost.Parameters.EndShipper.All();
+        var endShipperUpdateParameters = new EasyPost.Parameters.EndShipper.Update();
+        var eventAllParameters = new EasyPost.Parameters.Event.All();
+        var insuranceCreateParameters = new EasyPost.Parameters.Insurance.Create();
+        var insuranceAllParameters = new EasyPost.Parameters.Insurance.All();
+        var orderCreateParameters = new EasyPost.Parameters.Order.Create();
+        var orderBuyParametersWithCarrierAndService = new EasyPost.Parameters.Order.Buy("carrier", "service");
+        var orderBuyParametersWithRate = new EasyPost.Parameters.Order.Buy(new Rate());
+        var parcelCreateParameters = new EasyPost.Parameters.Parcel.Create();
+        var pickupCreateParameters = new EasyPost.Parameters.Pickup.Create();
+        var pickupAllParameters = new EasyPost.Parameters.Pickup.All();
+        var pickupBuyParametersWithCarrierAndService = new EasyPost.Parameters.Pickup.Buy("carrier", "service");
+        var pickupBuyParametersWithRate = new EasyPost.Parameters.Pickup.Buy(new Rate());
+        var referralCustomerCreateParameters = new EasyPost.Parameters.ReferralCustomer.CreateReferralCustomer();
+        var referralCustomerAllParameters = new EasyPost.Parameters.ReferralCustomer.All();
+        var referralCustomerAddPaymentMethodParameters = new EasyPost.Parameters.ReferralCustomer.AddPaymentMethod();
+        var referralCustomerRefundByAmountParameters = new EasyPost.Parameters.ReferralCustomer.RefundByAmount();
+        var referralCustomerRefundByPaymentLogParameters = new EasyPost.Parameters.ReferralCustomer.RefundByPaymentLog();
+        var refundCreateParameters = new EasyPost.Parameters.Refund.Create();
+        var refundAllParameters = new EasyPost.Parameters.Refund.All();
+        var reportCreateParameters = new EasyPost.Parameters.Report.Create();
+        var reportAllParameters = new EasyPost.Parameters.Report.All();
+        var scanFormCreateParameters = new EasyPost.Parameters.ScanForm.Create();
+        var scanFormAllParameters = new EasyPost.Parameters.ScanForm.All();
+        var shipmentCreateParameters = new EasyPost.Parameters.Shipment.Create();
+        var shipmentAllParameters = new EasyPost.Parameters.Shipment.All();
+        var shipmentBuyParametersWithCarrierAndServiceWithRate = new EasyPost.Parameters.Shipment.Buy(new Rate());
+        var shipmentBuyParametersWithCarrierAndServiceWithRateId = new EasyPost.Parameters.Shipment.Buy("rate_id");
+        var shipmentGenerateFormParameters = new EasyPost.Parameters.Shipment.GenerateForm();
+        var shipmentGenerateLabelParameters = new EasyPost.Parameters.Shipment.GenerateLabel();
+        var shipmentInsureParameters = new EasyPost.Parameters.Shipment.Insure();
+        var shipmentRegenerateRatesParameters = new EasyPost.Parameters.Shipment.RegenerateRates();
+        var shipmentRetrieveEstimatedDeliveryDateParameters = new EasyPost.Parameters.Shipment.RetrieveEstimatedDeliveryDate();
+        var taxIdentifierCreateParameters = new EasyPost.Parameters.TaxIdentifier.Create();
+        var trackerCreateParameters = new EasyPost.Parameters.Tracker.Create();
+        var trackerAllParameters = new EasyPost.Parameters.Tracker.All();
+        var trackerCreateListParameters = new EasyPost.Parameters.Tracker.CreateList();
+        var userCreateChildParameters = new EasyPost.Parameters.User.CreateChild();
+        var userAllChildrenParameters = new EasyPost.Parameters.User.AllChildren();
+        var userUpdateParameters = new EasyPost.Parameters.User.Update();
+        var userUpdateBrandParameters = new EasyPost.Parameters.User.UpdateBrand();
+        var webhookCreateParameters = new EasyPost.Parameters.Webhook.Create();
+        var webhookAllParameters = new EasyPost.Parameters.Webhook.All();
+        var webhookUpdateParameters = new EasyPost.Parameters.Webhook.Update();
+    }
+
+    /// <summary>
     ///     Test that an end-user can locally construct an object and set its ID.
     /// </summary>
     [Fact, Testing.Access, Testing.Compile]
