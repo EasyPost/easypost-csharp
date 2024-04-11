@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.API;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -143,6 +145,38 @@ namespace EasyPost.Tests.ServicesTests
         }
 
         #endregion
+
+        /// <summary>
+        ///     Test that the CarrierAccount fields are correctly deserialized from the API response.
+        ///     None of the demo carrier accounts used in the above tests have credentials or test credentials fields, so we need to use some mock data.
+        /// </summary>
+        [Fact]
+        [Testing.Function]
+        public async Task TestCarrierFieldsJsonDeserialization()
+        {
+            UseMockClient(new List<TestUtils.MockRequest>
+            {
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Get, @"v2\/carrier_accounts$"),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "[{\"id\":\"ca_123\",\"object\":\"CarrierAccount\",\"fields\":{\"credentials\":{\"account_number\":{\"visibility\":\"visible\",\"label\":\"DHL Account Number\",\"value\":\"123456\"},\"country\":{\"visibility\":\"visible\",\"label\":\"Account Country Code (2 Letter)\",\"value\":\"US\"},\"site_id\":{\"visibility\":\"visible\",\"label\":\"Site ID (Optional)\",\"value\": null },\"password\":{\"visibility\":\"password\",\"label\":\"Password (Optional)\",\"value\":\"\"},\"is_reseller\":{\"visibility\":\"checkbox\",\"label\":\"Reseller Account? (check if yes)\",\"value\":null}}}}]")
+                )
+            });
+
+            List<CarrierAccount> carrierAccounts = await Client.CarrierAccount.All();
+
+            Assert.NotEmpty(carrierAccounts);
+            Assert.Single(carrierAccounts);
+
+            CarrierAccount carrierAccount = carrierAccounts[0];
+            Assert.NotNull(carrierAccount.Fields);
+            Assert.NotNull(carrierAccount.Fields.Credentials);
+            Assert.NotNull(carrierAccount.Fields.Credentials["account_number"]);
+
+            CredentialsField accountNumberField = carrierAccount.Fields.Credentials["account_number"];
+            Assert.Equal("visible", accountNumberField.Visibility);
+            Assert.Equal("DHL Account Number", accountNumberField.Label);
+            Assert.Equal("123456", accountNumberField.Value);
+        }
 
         #endregion
     }

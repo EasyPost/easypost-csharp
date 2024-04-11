@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using EasyPost._base;
 using Newtonsoft.Json;
 
@@ -14,7 +15,7 @@ namespace EasyPost.Models.API
         ///     The credentials used in the production environment.
         /// </summary>
         [JsonProperty("credentials")]
-        public CarrierField? Credentials { get; set; }
+        public Dictionary<string, CredentialsField>? Credentials { get; set; }
 
         /// <summary>
         ///     The credentials used in the test environment.
@@ -23,7 +24,7 @@ namespace EasyPost.Models.API
 #pragma warning disable SA1515
         // ReSharper disable once InconsistentNaming
 #pragma warning restore SA1515
-        public CarrierField? TestCredentials { get; set; }
+        public Dictionary<string, CredentialsField>? TestCredentials { get; set; }
 
         /// <summary>
         ///     For USPS, this designates that no credentials are required.
@@ -43,15 +44,9 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing a single EasyPost <see cref="CarrierAccount"/>'s credentials entry details.
     /// </summary>
-    public class CarrierField : EasyPostObject
+    public class CredentialsField : EasyPostObject
     {
         #region JSON Properties
-
-        /// <summary>
-        ///     The key of the field.
-        /// </summary>
-        [JsonProperty("key")]
-        public string? Key { get; set; }
 
         /// <summary>
         ///     The visibility value is used to control form field types.
