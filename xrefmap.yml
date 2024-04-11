@@ -10755,6 +10755,19 @@ references:
   commentId: T:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost
   fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost
   nameWithType: CreateFedExSmartPost
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.#ctor
+  name: CreateFedExSmartPost()
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost__ctor
+  commentId: M:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.#ctor
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CreateFedExSmartPost()
+  nameWithType: CreateFedExSmartPost.CreateFedExSmartPost()
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.#ctor*
+  name: CreateFedExSmartPost
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost__ctor_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.#ctor
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CreateFedExSmartPost
+  nameWithType: CreateFedExSmartPost.CreateFedExSmartPost
 - uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.AccountNumber
   name: AccountNumber
   href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_AccountNumber
