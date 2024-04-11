@@ -126,8 +126,8 @@ public class CreateFedExSmartPost : ACreate
     /// <summary>
     ///     Initializes a new instance of the <see cref="CreateFedExSmartPost"/> class.
     /// </summary>
-     public CreateFedExSmartPost()
-        : base(CarrierAccountType.FedExSmartPost)
+    public CreateFedExSmartPost()
+       : base(CarrierAccountType.FedExSmartPost)
     {
     }
 }
