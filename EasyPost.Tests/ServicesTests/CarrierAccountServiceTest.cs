@@ -8,6 +8,7 @@ using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
+using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace EasyPost.Tests.ServicesTests
@@ -149,8 +150,6 @@ namespace EasyPost.Tests.ServicesTests
         /// <summary>
         ///     Test that the CarrierAccount fields are correctly deserialized from the API response.
         ///     None of the demo carrier accounts used in the above tests have credentials or test credentials fields, so we need to use some mock data.
-        ///
-        ///     NOTE: CarrierField/CarrierFields are only used in the CarrierAccount model, which is only ever deserialized from an API response. We do not need to test serialization.
         /// </summary>
         [Fact]
         [Testing.EdgeCase]
@@ -178,6 +177,65 @@ namespace EasyPost.Tests.ServicesTests
             Assert.Equal("visible", accountNumberField.Visibility);
             Assert.Equal("DHL Account Number", accountNumberField.Label);
             Assert.Equal("123456", accountNumberField.Value);
+        }
+
+        /// <summary>
+        ///     Test that the CarrierAccount fields are correctly serialized to the API request.
+        /// </summary>
+        [Fact]
+        [Testing.EdgeCase]
+        public async Task TestCarrierFieldsJsonSerialization()
+        {
+            UseMockClient(new List<TestUtils.MockRequest>
+                {
+                    new(
+                        new TestUtils.MockRequestMatchRules(Method.Post, @"v2\/pickups"),
+                        new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, content: "{}")
+                    )
+                }
+            );
+
+            CarrierAccount carrierAccount = new()
+            {
+                Id = "ca_123",
+                Fields = new CarrierFields
+                {
+                    Credentials = new Dictionary<string, CarrierField>
+                    {
+                        {
+                            "account_number",
+                            new CarrierField
+                            {
+                                Visibility = "visible",
+                                Label = "DHL Account Number",
+                                Value = "123456"
+                            }
+                        }
+                    }
+                }
+            };
+
+            EasyPost.Parameters.Pickup.Create parameters = new()
+            {
+                Shipment = new Shipment(),
+                CarrierAccounts = new List<CarrierAccount> { carrierAccount }
+            };
+
+            // Confirm that the CarrierAccount fields are serialized correctly
+            Dictionary<string, object> json = parameters.ToDictionary();
+            Dictionary<string, object> pickupJson = json["pickup"] as Dictionary<string, object>;
+            List<object> carrierAccountsJson = pickupJson["carrier_accounts"] as List<object>;
+            Dictionary<string, object> carrierAccountJson = carrierAccountsJson[0] as Dictionary<string, object>;
+            JObject fieldsJson = carrierAccountJson["fields"] as JObject;
+            JObject credentialsJson = fieldsJson["credentials"] as JObject;
+            JObject accountNumberJson = credentialsJson["account_number"] as JObject;
+            JToken visibility = accountNumberJson["visibility"];
+            Assert.Equal("visible", visibility);
+
+            // Test serialization again via an actual API call attempt
+            // This will throw an exception if the CarrierAccount fields are not serialized correctly
+            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.Pickup.Create(parameters));
+            Assert.Null(possibleException);
         }
 
         #endregion
