@@ -149,9 +149,11 @@ namespace EasyPost.Tests.ServicesTests
         /// <summary>
         ///     Test that the CarrierAccount fields are correctly deserialized from the API response.
         ///     None of the demo carrier accounts used in the above tests have credentials or test credentials fields, so we need to use some mock data.
+        ///
+        ///     NOTE: CarrierField/CarrierFields are only used in the CarrierAccount model, which is only ever deserialized from an API response. We do not need to test serialization.
         /// </summary>
         [Fact]
-        [Testing.Function]
+        [Testing.EdgeCase]
         public async Task TestCarrierFieldsJsonDeserialization()
         {
             UseMockClient(new List<TestUtils.MockRequest>
