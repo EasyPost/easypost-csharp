@@ -172,7 +172,7 @@ namespace EasyPost.Tests.ServicesTests
             Assert.NotNull(carrierAccount.Fields.Credentials);
             Assert.NotNull(carrierAccount.Fields.Credentials["account_number"]);
 
-            CredentialsField accountNumberField = carrierAccount.Fields.Credentials["account_number"];
+            CarrierField accountNumberField = carrierAccount.Fields.Credentials["account_number"];
             Assert.Equal("visible", accountNumberField.Visibility);
             Assert.Equal("DHL Account Number", accountNumberField.Label);
             Assert.Equal("123456", accountNumberField.Value);

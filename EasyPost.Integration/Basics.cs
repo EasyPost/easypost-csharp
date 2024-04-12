@@ -25,7 +25,7 @@ public class Basics
         var carrier = new Carrier();
         var carrierAccount = new CarrierAccount();
         var carrierDetail = new CarrierDetail();
-        var credentialsField = new CredentialsField();
+        var carrierField = new CarrierField();
         var carrierFields = new CarrierFields();
         var carrierMetadata = new CarrierMetadata();
         var carrierType = new CarrierType();

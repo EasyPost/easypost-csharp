@@ -2,6 +2,7 @@
 
 ## Next Release
 
+- Fix `CarrierFields` serialization bug causing carrier account operations to fail
 - Fix accessibility for `CreateFedExSmartPost` parameter set
 
 ## v6.3.0 (2024-04-10)
