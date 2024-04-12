@@ -44,6 +44,12 @@ namespace EasyPost.Models.API
         public CarrierFields? Fields { get; set; }
 
         /// <summary>
+        ///     The logo for the associated carrier.
+        /// </summary>
+        [JsonProperty("logo")]
+        public string? Logo { get; set; }
+
+        /// <summary>
         ///     The name used when displaying a readable value for the type of the carrier account.
         /// </summary>
         [JsonProperty("readable")]
@@ -69,7 +75,6 @@ namespace EasyPost.Models.API
         public string? Type { get; set; }
 
         #endregion
-
     }
 }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.CarrierAccount
