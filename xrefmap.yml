@@ -2814,6 +2814,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.CarrierAccount.Fields
   nameWithType: CarrierAccount.Fields
+- uid: EasyPost.Models.API.CarrierAccount.Logo
+  name: Logo
+  href: api/EasyPost.Models.API.CarrierAccount.html#EasyPost_Models_API_CarrierAccount_Logo
+  commentId: P:EasyPost.Models.API.CarrierAccount.Logo
+  fullName: EasyPost.Models.API.CarrierAccount.Logo
+  nameWithType: CarrierAccount.Logo
+- uid: EasyPost.Models.API.CarrierAccount.Logo*
+  name: Logo
+  href: api/EasyPost.Models.API.CarrierAccount.html#EasyPost_Models_API_CarrierAccount_Logo_
+  commentId: Overload:EasyPost.Models.API.CarrierAccount.Logo
+  isSpec: "True"
+  fullName: EasyPost.Models.API.CarrierAccount.Logo
+  nameWithType: CarrierAccount.Logo
 - uid: EasyPost.Models.API.CarrierAccount.Readable
   name: Readable
   href: api/EasyPost.Models.API.CarrierAccount.html#EasyPost_Models_API_CarrierAccount_Readable
@@ -3071,19 +3084,6 @@ references:
   commentId: T:EasyPost.Models.API.CarrierField
   fullName: EasyPost.Models.API.CarrierField
   nameWithType: CarrierField
-- uid: EasyPost.Models.API.CarrierField.Key
-  name: Key
-  href: api/EasyPost.Models.API.CarrierField.html#EasyPost_Models_API_CarrierField_Key
-  commentId: P:EasyPost.Models.API.CarrierField.Key
-  fullName: EasyPost.Models.API.CarrierField.Key
-  nameWithType: CarrierField.Key
-- uid: EasyPost.Models.API.CarrierField.Key*
-  name: Key
-  href: api/EasyPost.Models.API.CarrierField.html#EasyPost_Models_API_CarrierField_Key_
-  commentId: Overload:EasyPost.Models.API.CarrierField.Key
-  isSpec: "True"
-  fullName: EasyPost.Models.API.CarrierField.Key
-  nameWithType: CarrierField.Key
 - uid: EasyPost.Models.API.CarrierField.Label
   name: Label
   href: api/EasyPost.Models.API.CarrierField.html#EasyPost_Models_API_CarrierField_Label
