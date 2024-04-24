@@ -27,28 +27,10 @@ namespace EasyPost.Parameters.Order
         public List<Models.API.CarrierAccount>? CarrierAccounts { get; set; }
 
         /// <summary>
-        ///     <see cref="Models.API.CustomsInfo"/> (or a <see cref="Parameters.CustomsInfo.Create"/> parameter set) for the new <see cref="Models.API.Order"/>.
-        /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "order", "customs_info")]
-        public ICustomsInfoParameter? CustomsInfo { get; set; }
-
-        /// <summary>
         ///     The origin <see cref="Models.API.Address"/> (or <see cref="Address.Create"/> parameters) for the new <see cref="Models.API.Order"/>.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "order", "from_address")]
         public IAddressParameter? FromAddress { get; set; }
-
-        /// <summary>
-        ///     Whether the new <see cref="Models.API.Order"/> is a return.
-        /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "order", "is_return")]
-        public bool? IsReturn { get; set; }
-
-        /// <summary>
-        ///     Additional <see cref="Models.API.Options"/> for the new <see cref="Models.API.Order"/>.
-        /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "order", "options")]
-        public Models.API.Options? Options { get; set; }
 
         /// <summary>
         ///     Reference name for the new <see cref="Models.API.Order"/>.
