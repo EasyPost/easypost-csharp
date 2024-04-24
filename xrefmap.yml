@@ -12407,6 +12407,19 @@ references:
   commentId: T:EasyPost.Parameters.Order.Create
   fullName: EasyPost.Parameters.Order.Create
   nameWithType: Create
+- uid: EasyPost.Parameters.Order.Create.BuyerAddress
+  name: BuyerAddress
+  href: api/EasyPost.Parameters.Order.Create.html#EasyPost_Parameters_Order_Create_BuyerAddress
+  commentId: P:EasyPost.Parameters.Order.Create.BuyerAddress
+  fullName: EasyPost.Parameters.Order.Create.BuyerAddress
+  nameWithType: Create.BuyerAddress
+- uid: EasyPost.Parameters.Order.Create.BuyerAddress*
+  name: BuyerAddress
+  href: api/EasyPost.Parameters.Order.Create.html#EasyPost_Parameters_Order_Create_BuyerAddress_
+  commentId: Overload:EasyPost.Parameters.Order.Create.BuyerAddress
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Order.Create.BuyerAddress
+  nameWithType: Create.BuyerAddress
 - uid: EasyPost.Parameters.Order.Create.CarrierAccounts
   name: CarrierAccounts
   href: api/EasyPost.Parameters.Order.Create.html#EasyPost_Parameters_Order_Create_CarrierAccounts
@@ -12446,6 +12459,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Order.Create.Reference
   nameWithType: Create.Reference
+- uid: EasyPost.Parameters.Order.Create.ReturnAddress
+  name: ReturnAddress
+  href: api/EasyPost.Parameters.Order.Create.html#EasyPost_Parameters_Order_Create_ReturnAddress
+  commentId: P:EasyPost.Parameters.Order.Create.ReturnAddress
+  fullName: EasyPost.Parameters.Order.Create.ReturnAddress
+  nameWithType: Create.ReturnAddress
+- uid: EasyPost.Parameters.Order.Create.ReturnAddress*
+  name: ReturnAddress
+  href: api/EasyPost.Parameters.Order.Create.html#EasyPost_Parameters_Order_Create_ReturnAddress_
+  commentId: Overload:EasyPost.Parameters.Order.Create.ReturnAddress
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Order.Create.ReturnAddress
+  nameWithType: Create.ReturnAddress
 - uid: EasyPost.Parameters.Order.Create.Service
   name: Service
   href: api/EasyPost.Parameters.Order.Create.html#EasyPost_Parameters_Order_Create_Service
