@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Add missing parameters for `Order.Create` parameter set
+
 ## v6.3.1 (2024-04-12)
 
 - Fix `CarrierFields` serialization bug causing carrier account operations to fail
