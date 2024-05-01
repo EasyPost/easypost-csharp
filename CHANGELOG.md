@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v6.4.0 (2024-05-01)
 
 - Add missing parameters for `Order.Create` parameter set
 
