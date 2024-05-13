@@ -134,13 +134,13 @@ Shipment myPurchasedShipment = await myClient.Shipment.Buy(myShipment.Id, myShip
 
 ### Parameters
 
-Most functions in this library accept a `Dictionary<string, object>` as their sole parameter, which is ultimately used as the body of the HTTP request against EasyPost's API. If you instead would like to use .NET objects to construct API call parameters, you can use the various `Parameters` classes (currently in beta).
+Most functions in this library accept a `Dictionary<string, object>` as their sole parameter, which is ultimately used as the body of the HTTP request against EasyPost's API. If you instead would like to use .NET objects to construct API call parameters, you can use the various `Parameters` classes.
 
 For example, to create an address:
 
 ```csharp
 // Use an object constructor to create the address creation parameters
-var addressCreateParameters = new EasyPost.BetaFeatures.Parameters.Addresses.Create {
+var addressCreateParameters = new EasyPost.Parameters.Address.Create {
     Name = "My Name",
     Street1 = "123 Main St",
     City = "San Francisco",
