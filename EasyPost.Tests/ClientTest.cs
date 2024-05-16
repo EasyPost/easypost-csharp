@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -107,6 +108,38 @@ namespace EasyPost.Tests
 
             Assert.NotEqual(httpClient, normalClient.CustomHttpClient);
             Assert.Equal(httpClient, overrideClient.CustomHttpClient);
+        }
+
+        [Fact]
+        public async void TestHttpClientCustomProxy()
+        {
+            const string proxyAddress = "localhost:8888";
+
+            // Define a custom proxy in a custom HttpClientHandler in a custom HttpClient
+            HttpClientHandler handler = new()
+            {
+                UseProxy = true,
+                Proxy = new WebProxy($"http://{proxyAddress}"),
+            };
+            HttpClient httpClient = new(handler: handler);
+
+            Client client = new(new ClientConfiguration(FakeApikey)
+            {
+                CustomHttpClient = httpClient,
+            });
+
+            Assert.Equal(httpClient, client.CustomHttpClient);
+
+            // Assert that the proxy is set in the HttpClient by attempting to make a request (should fail due to invalid proxy address)
+            try
+            {
+                await client.Address.Create(new Parameters.Address.Create());
+                Assert.Fail("Expected HttpRequestException");
+            }
+            catch (HttpRequestException e)
+            {
+                Assert.Equal($"Connection refused ({proxyAddress})", e.Message);
+            }
         }
 
         [Fact]
