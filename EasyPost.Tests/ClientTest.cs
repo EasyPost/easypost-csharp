@@ -149,8 +149,8 @@ namespace EasyPost.Tests
 #if NET5_0_OR_GREATER
                     Assert.Equal($"Connection refused ({proxyAddress})", e.Message);
 #else
-                // Message is inconsistent in .NET Framework, so just assert that the exception was thrown
-                Assert.True(true);
+                    // Message is inconsistent in .NET Framework, so just assert that the exception was thrown
+                    Assert.True(true);
 #endif
                 }
             }
