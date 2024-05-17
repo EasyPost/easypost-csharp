@@ -226,8 +226,8 @@ If you need to use a proxy to make requests to the EasyPost API, you can define 
 // Define a custom HttpClientHandler with details about the proxy
 HttpClientHandler handler = new()
 {
-        UseProxy = true,
-        Proxy = new WebProxy($"http://localhost:8888"),
+    UseProxy = true,
+    Proxy = new WebProxy($"http://localhost:8888"),
 };
 
 // Define a custom HttpClient with the custom handler
