@@ -218,6 +218,28 @@ client.Hooks.OnRequestExecuting += (sender, args) => { /* ... */ };
 client.Hooks.OnRequestExecuting -= OnRequestExecutingHandler;
 ```
 
+### Proxies
+
+If you need to use a proxy to make requests to the EasyPost API, you can define a custom `HttpClientHandler` on a custom `HttpClient` passed to the `ClientConfiguration` constructor.
+
+```csharp
+// Define a custom HttpClientHandler with details about the proxy
+HttpClientHandler handler = new()
+{
+        UseProxy = true,
+        Proxy = new WebProxy($"http://localhost:8888"),
+};
+
+// Define a custom HttpClient with the custom handler
+HttpClient httpClient = new(handler: handler);
+
+// Pass the custom HttpClient to the ClientConfiguration constructor when creating a new EasyPost Client
+Client client = new(new ClientConfiguration(FakeApikey)
+{
+    CustomHttpClient = httpClient,
+});
+```
+
 ## Documentation
 
 API documentation can be found at: <https://easypost.com/docs/api>.
