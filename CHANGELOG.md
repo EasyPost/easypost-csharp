@@ -2,6 +2,10 @@
 
 ## Next Release
 
+- Add new `SmartRate` service under beta for interacting with the SmartRate API
+    - New `RecommendShipDateByDeliveryDate` function to recommend a ship date based on a delivery date for each shipment rate
+    - Updated `EstimateDeliveryDateByShipDate` function to get an estimated delivery date based on a ship date for each shipment rate
+    - Existing SmartRate-related functions and classes in `Shipment` service marked as deprecated and will be removed in a future release
 - Enforce one-or-other for `Shipment` and `Batch` parameters in `Pickup.Create` parameter set
 - Add internal parameter dependency utility
 
@@ -16,6 +20,30 @@
 ## v6.5.0 (2024-06-05)
 
 - Add missing parameters for `CustomsItem.Create` parameter set
+
+## Next Release
+
+<<<<<<< HEAD
+- Enforce one-or-other for `Shipment` and `Batch` parameters in `Pickup.Create` parameter set
+- Add internal parameter dependency utility
+
+## v6.5.2 (2024-06-12)
+
+- Fix `Shipment` parameter requirement for `Pickup.Create` parameter set
+
+## v6.5.1 (2024-06-10)
+
+- Fix `Batch` object not allowed to be used in parameter sets due to missing `IBatchParameter` inheritance
+
+## v6.5.0 (2024-06-05)
+
+- Add missing parameters for `CustomsItem.Create` parameter set
+=======
+- Add new `SmartRate` service under beta for interacting with the SmartRate API
+  - New `RecommendShipDateByDeliveryDate` function to recommend a ship date based on a delivery date for each shipment rate
+  - Updated `EstimateDeliveryDateByShipDate` function to get an estimated delivery date based on a ship date for each shipment rate
+  - Existing SmartRate-related functions and classes in `Shipment` service marked as deprecated and will be removed in a future release
+>>>>>>> c9ab1351 (- Update CHANGELOG)
 
 ## v6.4.0 (2024-05-01)
 
