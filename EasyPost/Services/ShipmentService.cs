@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -115,6 +116,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="SmartRate"/>s.</returns>
         [CrudOperations.Read]
+        [Obsolete("This method will be removed in a future version and migrated to a dedicated SmartRate service.")]
         public async Task<List<SmartRate>> GetSmartRates(string id, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<List<SmartRate>>(Method.Get, $"shipments/{id}/smartrate", cancellationToken, rootElement: "result");
@@ -129,6 +131,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="RateWithEstimatedDeliveryDate"/>s.</returns>
         [CrudOperations.Read]
+        [Obsolete("This method will be removed in a future version and migrated to a dedicated SmartRate service.")]
         public async Task<List<RateWithEstimatedDeliveryDate>> RetrieveEstimatedDeliveryDate(string id, string plannedShipDate, CancellationToken cancellationToken = default)
         {
             Dictionary<string, object> parameters = new()
@@ -147,6 +150,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="RateWithEstimatedDeliveryDate"/>s.</returns>
         [CrudOperations.Read]
+        [Obsolete("This method will be removed in a future version and migrated to a dedicated SmartRate service.")]
         public async Task<List<RateWithEstimatedDeliveryDate>> RetrieveEstimatedDeliveryDate(string id, Parameters.Shipment.RetrieveEstimatedDeliveryDate parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<List<RateWithEstimatedDeliveryDate>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", cancellationToken, parameters.ToDictionary(), "rates");

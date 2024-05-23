@@ -6,6 +6,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing a <see cref="Rate"/> with an <a href="https://www.easypost.com/docs/api#retrieve-estimated-delivery-date-and-total-transit-days-across-all-rates-for-a-shipment">estimated delivery date</a>.
     /// </summary>
+    [Obsolete("This class will be removed in a future version and replace with RateWithTimeInTransitDetailsByShipDate.")]
     public class RateWithEstimatedDeliveryDate
     {
         #region JSON Properties
@@ -21,34 +22,6 @@ namespace EasyPost.Models.API
         /// </summary>
         [JsonProperty("easypost_time_in_transit_data")]
         public TimeInTransitDetails? EasyPostTimeInTransitData { get; set; }
-
-        #endregion
-    }
-
-    /// <summary>
-    ///     Class representing estimated transit times for a <see cref="RateWithEstimatedDeliveryDate"/>.
-    /// </summary>
-    public class TimeInTransitDetails
-    {
-        #region JSON Properties
-
-        /// <summary>
-        ///     Confidence levels for days in transit estimates.
-        /// </summary>
-        [JsonProperty("days_in_transit")]
-        public TimeInTransit? DaysInTransit { get; set; }
-
-        /// <summary>
-        ///     EasyPost's estimated delivery date for the associated <see cref="RateWithEstimatedDeliveryDate"/>.
-        /// </summary>
-        [JsonProperty("easypost_estimated_delivery_date")]
-        public DateTime? EasyPostEstimatedDeliveryDate { get; set; }
-
-        /// <summary>
-        ///     The planned departure date for the shipment.
-        /// </summary>
-        [JsonProperty("planned_ship_date")]
-        public DateTime? PlannedShipDate { get; set; }
 
         #endregion
     }
