@@ -55,6 +55,8 @@ public class Basics
         var predefinedPackage = new PredefinedPackage();
         var rate = new Rate();
         var rateWithEstimatedDeliveryDate = new RateWithEstimatedDeliveryDate();
+        var rateWithTimeInTransitDetailsByShipDate = new RateWithTimeInTransitDetailsByShipDate();
+        var rateWithTimeInTransitDetailsByDeliveryDate = new RateWithTimeInTransitDetailsByDeliveryDate();
         var referralCustomer = new ReferralCustomer();
         var refund = new Refund();
         var report = new Report();
@@ -70,6 +72,9 @@ public class Basics
         var supportedFeature = new SupportedFeature();
         var taxIdentifier = new TaxIdentifier();
         var timeInTransit = new TimeInTransit();
+        var timeInTransitDetails = new TimeInTransitDetails();
+        var timeInTransitDetailsByShipDate = new TimeInTransitDetailsByShipDate();
+        var timeInTransitDetailsByDeliveryDate = new TimeInTransitDetailsByDeliveryDate();
         var tracker = new Tracker();
         var trackerCollection = new TrackerCollection();
         var trackingDetail = new TrackingDetail();
@@ -139,6 +144,8 @@ public class Basics
         var shipmentInsureParameters = new EasyPost.Parameters.Shipment.Insure();
         var shipmentRegenerateRatesParameters = new EasyPost.Parameters.Shipment.RegenerateRates();
         var shipmentRetrieveEstimatedDeliveryDateParameters = new EasyPost.Parameters.Shipment.RetrieveEstimatedDeliveryDate();
+        var smartRateEstimateDeliveryDateByShipDateParameters = new EasyPost.Parameters.SmartRate.EstimateDeliveryDateByShipDate();
+        var smartRateRecommendShipDateByDeliveryDateParameters = new EasyPost.Parameters.SmartRate.RecommendShipDateByDeliveryDate();
         var taxIdentifierCreateParameters = new EasyPost.Parameters.TaxIdentifier.Create();
         var trackerCreateParameters = new EasyPost.Parameters.Tracker.Create();
         var trackerAllParameters = new EasyPost.Parameters.Tracker.All();
