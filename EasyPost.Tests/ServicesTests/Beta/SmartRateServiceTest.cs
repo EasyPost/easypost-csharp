@@ -59,10 +59,9 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             foreach (var rate in ratesWithEstimatedDeliveryDates)
             {
-                Assert.NotNull(rate.TimeInTransitDetails);
-                Assert.NotNull(rate.TimeInTransitDetails.EasyPostEstimatedDeliveryDate);
-                Assert.NotNull(rate.TimeInTransitDetails.TimeInTransitPercentiles);
-                Assert.NotNull(rate.TimeInTransitDetails.PlannedShipDate);
+                Assert.NotNull(rate.TimeInTransitDetails?.EasyPostEstimatedDeliveryDate);
+                Assert.NotNull(rate.TimeInTransitDetails?.TimeInTransitPercentiles);
+                Assert.NotNull(rate.TimeInTransitDetails?.PlannedShipDate);
             }
         }
 
@@ -126,9 +125,6 @@ namespace EasyPost.Tests.ServicesTests.Beta
 
             // test lowest SmartRate with invalid filters (should error due to strict delivery_days)
             await Assert.ThrowsAsync<FilteringError>(() => Task.FromResult(Utilities.Rates.GetLowestSmartRate(smartRates, 0, SmartRateAccuracy.Percentile90)));
-
-            // test lowest SmartRate with invalid filters (should error due to bad delivery_accuracy)
-            // this test is not needed in the C# CL because it uses enums for the accuracy (can't pass in an incorrect value)
         }
 
         #endregion
