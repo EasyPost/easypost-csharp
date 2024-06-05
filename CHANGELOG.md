@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v6.5.0 (2024-06-05)
+
+- Add missing parameters for `CustomsItem.Create` parameter set
+
 ## v6.4.0 (2024-05-01)
 
 - Add missing parameters for `Order.Create` parameter set
