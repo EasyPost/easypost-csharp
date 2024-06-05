@@ -11518,6 +11518,32 @@ references:
   commentId: T:EasyPost.Parameters.CustomsItem.Create
   fullName: EasyPost.Parameters.CustomsItem.Create
   nameWithType: Create
+- uid: EasyPost.Parameters.CustomsItem.Create.Code
+  name: Code
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_Code
+  commentId: P:EasyPost.Parameters.CustomsItem.Create.Code
+  fullName: EasyPost.Parameters.CustomsItem.Create.Code
+  nameWithType: Create.Code
+- uid: EasyPost.Parameters.CustomsItem.Create.Code*
+  name: Code
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_Code_
+  commentId: Overload:EasyPost.Parameters.CustomsItem.Create.Code
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CustomsItem.Create.Code
+  nameWithType: Create.Code
+- uid: EasyPost.Parameters.CustomsItem.Create.Currency
+  name: Currency
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_Currency
+  commentId: P:EasyPost.Parameters.CustomsItem.Create.Currency
+  fullName: EasyPost.Parameters.CustomsItem.Create.Currency
+  nameWithType: Create.Currency
+- uid: EasyPost.Parameters.CustomsItem.Create.Currency*
+  name: Currency
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_Currency_
+  commentId: Overload:EasyPost.Parameters.CustomsItem.Create.Currency
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CustomsItem.Create.Currency
+  nameWithType: Create.Currency
 - uid: EasyPost.Parameters.CustomsItem.Create.Description
   name: Description
   href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_Description
@@ -11531,6 +11557,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CustomsItem.Create.Description
   nameWithType: Create.Description
+- uid: EasyPost.Parameters.CustomsItem.Create.Eccn
+  name: Eccn
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_Eccn
+  commentId: P:EasyPost.Parameters.CustomsItem.Create.Eccn
+  fullName: EasyPost.Parameters.CustomsItem.Create.Eccn
+  nameWithType: Create.Eccn
+- uid: EasyPost.Parameters.CustomsItem.Create.Eccn*
+  name: Eccn
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_Eccn_
+  commentId: Overload:EasyPost.Parameters.CustomsItem.Create.Eccn
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CustomsItem.Create.Eccn
+  nameWithType: Create.Eccn
 - uid: EasyPost.Parameters.CustomsItem.Create.HsTariffNumber
   name: HsTariffNumber
   href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_HsTariffNumber
@@ -11544,6 +11583,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CustomsItem.Create.HsTariffNumber
   nameWithType: Create.HsTariffNumber
+- uid: EasyPost.Parameters.CustomsItem.Create.Manufacturer
+  name: Manufacturer
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_Manufacturer
+  commentId: P:EasyPost.Parameters.CustomsItem.Create.Manufacturer
+  fullName: EasyPost.Parameters.CustomsItem.Create.Manufacturer
+  nameWithType: Create.Manufacturer
+- uid: EasyPost.Parameters.CustomsItem.Create.Manufacturer*
+  name: Manufacturer
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_Manufacturer_
+  commentId: Overload:EasyPost.Parameters.CustomsItem.Create.Manufacturer
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CustomsItem.Create.Manufacturer
+  nameWithType: Create.Manufacturer
 - uid: EasyPost.Parameters.CustomsItem.Create.OriginCountry
   name: OriginCountry
   href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_OriginCountry
@@ -11557,6 +11609,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CustomsItem.Create.OriginCountry
   nameWithType: Create.OriginCountry
+- uid: EasyPost.Parameters.CustomsItem.Create.PrintedCommodityIdentifier
+  name: PrintedCommodityIdentifier
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_PrintedCommodityIdentifier
+  commentId: P:EasyPost.Parameters.CustomsItem.Create.PrintedCommodityIdentifier
+  fullName: EasyPost.Parameters.CustomsItem.Create.PrintedCommodityIdentifier
+  nameWithType: Create.PrintedCommodityIdentifier
+- uid: EasyPost.Parameters.CustomsItem.Create.PrintedCommodityIdentifier*
+  name: PrintedCommodityIdentifier
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_PrintedCommodityIdentifier_
+  commentId: Overload:EasyPost.Parameters.CustomsItem.Create.PrintedCommodityIdentifier
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CustomsItem.Create.PrintedCommodityIdentifier
+  nameWithType: Create.PrintedCommodityIdentifier
 - uid: EasyPost.Parameters.CustomsItem.Create.Quantity
   name: Quantity
   href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_Quantity
