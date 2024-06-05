@@ -1,5 +1,4 @@
 using EasyPost._base;
-using EasyPost.Services.Beta;
 
 namespace EasyPost
 {
@@ -26,12 +25,17 @@ namespace EasyPost
         /// <summary>
         ///     Access beta Rate-related functionality.
         /// </summary>
-        public RateService Rate { get; }
+        public Services.Beta.RateService Rate { get; }
 
         /// <summary>
         ///     Access beta Referral Customer-related functionality.
         /// </summary>
-        public ReferralCustomerService ReferralCustomer { get; }
+        public Services.Beta.ReferralCustomerService ReferralCustomer { get; }
+
+        /// <summary>
+        ///     Access beta Shipment-related functionality.
+        /// </summary>
+        public Services.Beta.SmartRateService SmartRate { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BetaClient"/> class.
@@ -40,8 +44,9 @@ namespace EasyPost
         internal BetaClient(ClientConfiguration configuration)
             : base(configuration)
         {
-            Rate = new RateService(this);
-            ReferralCustomer = new ReferralCustomerService(this);
+            Rate = new Services.Beta.RateService(this);
+            ReferralCustomer = new Services.Beta.ReferralCustomerService(this);
+            SmartRate = new Services.Beta.SmartRateService(this);
         }
 
         /// <inheritdoc cref="EasyPostClient.Dispose(bool)"/>
@@ -54,6 +59,7 @@ namespace EasyPost
                 // Dispose of the services
                 Rate.Dispose();
                 ReferralCustomer.Dispose();
+                SmartRate.Dispose();
             }
 
             // Free native resources (unmanaged objects) and override a finalizer below.

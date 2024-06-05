@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Next Release
+
+- Add new `SmartRate` service under beta for interacting with the SmartRate API
+  - New `RecommendShipDateByDeliveryDate` function to recommend a ship date based on a delivery date for each shipment rate
+  - Updated `EstimateDeliveryDateByShipDate` function to get an estimated delivery date based on a ship date for each shipment rate
+  - Existing SmartRate-related functions and classes in `Shipment` service marked as deprecated and will be removed in a future release
+
 ## v6.4.0 (2024-05-01)
 
 - Add missing parameters for `Order.Create` parameter set
