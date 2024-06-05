@@ -53,6 +53,41 @@ namespace EasyPost.Parameters.CustomsItem
         [NestedRequestParameter(typeof(CustomsInfo.Create), Necessity.Optional, "weight")]
         public double? Weight { get; set; }
 
+        /// <summary>
+        ///     Manufacturer of the item.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "customs_item", "manufacturer")]
+        [NestedRequestParameter(typeof(CustomsInfo.Create), Necessity.Optional, "manufacturer")]
+        public string? Manufacturer { get; set; }
+
+        /// <summary>
+        ///     SKU or UPC of the item.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "customs_item", "code")]
+        [NestedRequestParameter(typeof(CustomsInfo.Create), Necessity.Optional, "code")]
+        public string? Code { get; set; }
+
+        /// <summary>
+        ///     Three-letter currency code for the item. Defaults to USD.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "customs_item", "currency")]
+        [NestedRequestParameter(typeof(CustomsInfo.Create), Necessity.Optional, "currency")]
+        public string? Currency { get; set; }
+
+        /// <summary>
+        ///     Commodity identifier for the item.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "customs_item", "printed_commodity_identifier")]
+        [NestedRequestParameter(typeof(CustomsInfo.Create), Necessity.Optional, "printed_commodity_identifier")]
+        public string? PrintedCommodityIdentifier { get; set; }
+
+        /// <summary>
+        ///     Export Control Classification Number (ECCN) for the item.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "customs_item", "eccn")]
+        [NestedRequestParameter(typeof(CustomsInfo.Create), Necessity.Optional, "eccn")]
+        public string? Eccn { get; set; }
+
         #endregion
     }
 }
