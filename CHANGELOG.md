@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v6.5.1 (2024-06-11)
+## v6.5.1 (2024-06-10)
 
 - Fix `Batch` object not allowed to be used in parameter sets due to missing `IBatchParameter` inheritance
 
