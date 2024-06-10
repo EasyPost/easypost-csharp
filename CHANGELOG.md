@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v6.5.1 (2024-06-11)
+
+- Fix `Batch` object not allowed to be used in parameter sets due to missing `IBatchParameter` inheritance
+
 ## v6.5.0 (2024-06-05)
 
 - Add missing parameters for `CustomsItem.Create` parameter set

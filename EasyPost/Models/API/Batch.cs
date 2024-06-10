@@ -10,7 +10,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an <a href="https://www.easypost.com/docs/api#batch-object">EasyPost batch</a>.
     /// </summary>
-    public class Batch : EasyPostObject
+    public class Batch : EasyPostObject, Parameters.IBatchParameter
     {
         #region JSON Properties
 
