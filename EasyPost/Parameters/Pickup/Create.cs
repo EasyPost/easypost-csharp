@@ -22,6 +22,8 @@ namespace EasyPost.Parameters.Pickup
         ///     <see cref="Models.API.Batch"/> being set for pickup (required if <see cref="Shipment"/> not provided).
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "batch")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfSet, DependentStatus.MustNotBeSet, "Shipment")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfNotSet, DependentStatus.MustBeSet, "Shipment")]
         public IBatchParameter? Batch { get; set; }
 
         /// <summary>
@@ -65,6 +67,8 @@ namespace EasyPost.Parameters.Pickup
         ///     <see cref="Models.API.Shipment"/> being set for pickup (required if <see cref="Batch"/> not provided).
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "shipment")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfSet, DependentStatus.MustNotBeSet, "Batch")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfNotSet, DependentStatus.MustBeSet, "Batch")]
         public IShipmentParameter? Shipment { get; set; }
 
         #endregion
