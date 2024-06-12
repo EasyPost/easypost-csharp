@@ -80,7 +80,7 @@ namespace EasyPost.Parameters
 
                 // Check dependent parameters before we finish handling the current parameter
                 IEnumerable<TopLevelRequestParameterDependentsAttribute> dependentParameterAttributes = property.GetCustomAttributes<TopLevelRequestParameterDependentsAttribute>();
-                foreach (var dependentParameterAttribute in dependentParameterAttributes)
+                foreach (TopLevelRequestParameterDependentsAttribute dependentParameterAttribute in dependentParameterAttributes)
                 {
                     Tuple<bool, string> dependentParameterResult = dependentParameterAttribute.DependentsAreCompliant(this, value);
                     if (!dependentParameterResult.Item1)
@@ -140,8 +140,8 @@ namespace EasyPost.Parameters
                 object? value = property.GetValue(this);
 
                 // Check dependent parameters before we finish handling the current parameter
-                IEnumerable<TopLevelRequestParameterDependentsAttribute> dependentParameterAttributes = property.GetCustomAttributes<TopLevelRequestParameterDependentsAttribute>();
-                foreach (var dependentParameterAttribute in dependentParameterAttributes)
+                IEnumerable<NestedRequestParameterDependentsAttribute> dependentParameterAttributes = property.GetCustomAttributes<NestedRequestParameterDependentsAttribute>();
+                foreach (NestedRequestParameterDependentsAttribute dependentParameterAttribute in dependentParameterAttributes)
                 {
                     Tuple<bool, string> dependentParameterResult = dependentParameterAttribute.DependentsAreCompliant(this, value);
                     if (!dependentParameterResult.Item1)
