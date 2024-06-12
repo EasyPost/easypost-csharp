@@ -78,6 +78,17 @@ namespace EasyPost.Parameters
 
                 object? value = property.GetValue(this);
 
+                // Check dependent parameters before we finish handling the current parameter
+                IEnumerable<TopLevelRequestParameterDependentsAttribute> dependentParameterAttributes = property.GetCustomAttributes<TopLevelRequestParameterDependentsAttribute>();
+                foreach (TopLevelRequestParameterDependentsAttribute dependentParameterAttribute in dependentParameterAttributes)
+                {
+                    Tuple<bool, string> dependentParameterResult = dependentParameterAttribute.DependentsAreCompliant(this, value);
+                    if (!dependentParameterResult.Item1)
+                    {
+                        throw new InvalidParameterPairError(firstParameterName: property.Name, secondParameterName: dependentParameterResult.Item2, followUpMessage: "Please verify the interdependence of these parameters.");
+                    }
+                }
+
                 // If the value is null, check the necessity of the parameter
                 if (value == null)
                 {
@@ -127,6 +138,17 @@ namespace EasyPost.Parameters
                 }
 
                 object? value = property.GetValue(this);
+
+                // Check dependent parameters before we finish handling the current parameter
+                IEnumerable<NestedRequestParameterDependentsAttribute> dependentParameterAttributes = property.GetCustomAttributes<NestedRequestParameterDependentsAttribute>();
+                foreach (NestedRequestParameterDependentsAttribute dependentParameterAttribute in dependentParameterAttributes)
+                {
+                    Tuple<bool, string> dependentParameterResult = dependentParameterAttribute.DependentsAreCompliant(this, value);
+                    if (!dependentParameterResult.Item1)
+                    {
+                        throw new InvalidParameterPairError(firstParameterName: property.Name, secondParameterName: dependentParameterResult.Item2, followUpMessage: "Please verify the interdependence of these parameters.");
+                    }
+                }
 
                 // If the value is null, check the necessity of the parameter
                 if (value == null)

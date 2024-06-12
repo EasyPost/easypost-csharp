@@ -98,6 +98,7 @@ namespace EasyPost.Tests.ExceptionsTests
         {
             const string testMessage = "This is a test message.";
             const string testPropertyName = "test_property";
+            const string testPropertyName2 = "test_property2";
             Type testType = typeof(ExceptionsTests);
 
             // Test the base EasyPostError constructor
@@ -169,6 +170,9 @@ namespace EasyPost.Tests.ExceptionsTests
 
             InvalidParameterError invalidParameterError = new(testPropertyName);
             Assert.Equal($"{string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.InvalidParameter, testPropertyName)}. ", invalidParameterError.Message);
+
+            InvalidParameterPairError invalidParameterPairError = new(testPropertyName, testPropertyName2);
+            Assert.Equal($"{string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.InvalidParameterPair, testPropertyName, testPropertyName2)}. ", invalidParameterPairError.Message);
 
             JsonDeserializationError jsonDeserializationError = new(testType);
             Assert.Equal(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.JsonDeserializationError, testType.FullName), jsonDeserializationError.Message);

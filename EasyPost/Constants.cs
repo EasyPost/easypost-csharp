@@ -98,6 +98,7 @@ namespace EasyPost
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
             public const string InvalidApiKeyType = "Invalid API key type.";
             public const string InvalidParameter = "Invalid parameter: {0}.";
+            public const string InvalidParameterPair = "Invalid parameter pair: '{0}' and '{1}'.";
             public const string InvalidWebhookSignature = "Webhook does not contain a valid HMAC signature.";
             public const string JsonDeserializationError = "Error deserializing JSON into object of type {0}.";
             public const string JsonNoDataToDeserialize = "No data to deserialize.";

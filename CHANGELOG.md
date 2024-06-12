@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Next Release
+
+- Enforce one-or-other for `Shipment` and `Batch` parameters in `Pickup.Create` parameter set
+- Add internal parameter dependency utility
+
 ## v6.5.2 (2024-06-12)
 
 - Fix `Shipment` parameter requirement for `Pickup.Create` parameter set
