@@ -78,6 +78,17 @@ namespace EasyPost.Parameters
 
                 object? value = property.GetValue(this);
 
+                // Check dependent parameters before we finish handling the current parameter
+                IEnumerable<TopLevelRequestParameterDependentsAttribute> dependentParameterAttributes = property.GetCustomAttributes<TopLevelRequestParameterDependentsAttribute>();
+                foreach (var dependentParameterAttribute in dependentParameterAttributes)
+                {
+                    Tuple<bool, string> dependentParameterResult = dependentParameterAttribute.DependentsAreCompliant(this, value);
+                    if (!dependentParameterResult.Item1)
+                    {
+                        throw new InvalidParameterPairError(firstParameterName: property.Name, secondParameterName: dependentParameterResult.Item2, followUpMessage: "Please verify the interdependence of these parameters.");
+                    }
+                }
+
                 // If the value is null, check the necessity of the parameter
                 if (value == null)
                 {
@@ -127,6 +138,17 @@ namespace EasyPost.Parameters
                 }
 
                 object? value = property.GetValue(this);
+
+                // Check dependent parameters before we finish handling the current parameter
+                IEnumerable<TopLevelRequestParameterDependentsAttribute> dependentParameterAttributes = property.GetCustomAttributes<TopLevelRequestParameterDependentsAttribute>();
+                foreach (var dependentParameterAttribute in dependentParameterAttributes)
+                {
+                    Tuple<bool, string> dependentParameterResult = dependentParameterAttribute.DependentsAreCompliant(this, value);
+                    if (!dependentParameterResult.Item1)
+                    {
+                        throw new InvalidParameterPairError(firstParameterName: property.Name, secondParameterName: dependentParameterResult.Item2, followUpMessage: "Please verify the interdependence of these parameters.");
+                    }
+                }
 
                 // If the value is null, check the necessity of the parameter
                 if (value == null)
@@ -255,6 +277,46 @@ namespace EasyPost.Parameters
             }
 
             return dictionary;
+        }
+
+        /// <summary>
+        ///     Check that all parameters in a list are set.
+        /// </summary>
+        /// <param name="parameterNames">List of parameter names to check.</param>
+        /// <returns>True if all parameters are set, false otherwise.</returns>
+        private bool AllParametersSet(List<string> parameterNames)
+        {
+            return parameterNames.All(parameterName => GetType().GetProperty(parameterName)?.GetValue(this) != null);
+        }
+
+        /// <summary>
+        ///     Check that at least one parameter in a list is set.
+        /// </summary>
+        /// <param name="parameterNames">List of parameter names to check.</param>
+        /// <returns>True if at least one parameter is set, false otherwise.</returns>
+        private bool AtLeastOneParameterSet(List<string> parameterNames)
+        {
+            return parameterNames.Any(parameterName => GetType().GetProperty(parameterName)?.GetValue(this) != null);
+        }
+
+        /// <summary>
+        ///     Check that only one parameter in a list is set.
+        /// </summary>
+        /// <param name="parameterNames">List of parameter names to check.</param>
+        /// <returns>True if only one parameter is set, false otherwise.</returns>
+        private bool OnlyOneParameterSet(List<string> parameterNames)
+        {
+            return parameterNames.Count(parameterName => GetType().GetProperty(parameterName)?.GetValue(this) != null) == 1;
+        }
+
+        /// <summary>
+        ///     Check that no parameters in a list are set.
+        /// </summary>
+        /// <param name="parameterNames">List of parameter names to check.</param>
+        /// <returns>True if no parameters are set, false otherwise.</returns>
+        private bool NoParametersSet(List<string> parameterNames)
+        {
+            return parameterNames.All(parameterName => GetType().GetProperty(parameterName)?.GetValue(this) == null);
         }
     }
 }
