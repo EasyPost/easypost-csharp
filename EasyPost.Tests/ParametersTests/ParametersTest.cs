@@ -254,7 +254,8 @@ namespace EasyPost.Tests.ParametersTests
             try
             {
                 parametersWithOneOrOtherInterdependenceOnlyASet.ToDictionary();
-            } catch (Exceptions.General.InvalidParameterPairError)
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
             {
                 Assert.Fail("Should not throw exception if only A is set.");
             }
@@ -268,7 +269,8 @@ namespace EasyPost.Tests.ParametersTests
             try
             {
                 parametersWithOneOrOtherInterdependenceOnlyBSet.ToDictionary();
-            } catch (Exceptions.General.InvalidParameterPairError)
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
             {
                 Assert.Fail("Should not throw exception if only B is set.");
             }
@@ -306,7 +308,8 @@ namespace EasyPost.Tests.ParametersTests
             try
             {
                 parametersWithBothOrNeitherInterdependenceBothSet.ToDictionary();
-            } catch (Exceptions.General.InvalidParameterPairError)
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
             {
                 Assert.Fail("Should not throw exception if both A and B are set.");
             }
@@ -317,7 +320,8 @@ namespace EasyPost.Tests.ParametersTests
             try
             {
                 parametersWithBothOrNeitherInterdependenceNeitherSet.ToDictionary();
-            } catch (Exceptions.General.InvalidParameterPairError)
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
             {
                 Assert.Fail("Should not throw exception if neither A nor B are set.");
             }
@@ -352,7 +356,8 @@ namespace EasyPost.Tests.ParametersTests
             try
             {
                 parametersWithInterdependenceOnlyASet.ToDictionary();
-            } catch (Exceptions.General.InvalidParameterPairError)
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
             {
                 Assert.Fail("Should not throw exception if only A is set.");
             }
@@ -366,7 +371,8 @@ namespace EasyPost.Tests.ParametersTests
             try
             {
                 parametersWithInterdependenceOnlyBSet.ToDictionary();
-            } catch (Exceptions.General.InvalidParameterPairError)
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
             {
                 Assert.Fail("Should not throw exception if only B is set.");
             }
