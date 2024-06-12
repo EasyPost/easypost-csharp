@@ -19,7 +19,7 @@ namespace EasyPost.Parameters.Pickup
         public IAddressParameter? Address { get; set; }
 
         /// <summary>
-        ///     <see cref="Models.API.Batch"/> being set for pickup (if <see cref="Shipment"/> not provided).
+        ///     <see cref="Models.API.Batch"/> being set for pickup (required if <see cref="Shipment"/> not provided).
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "pickup", "batch")]
         public IBatchParameter? Batch { get; set; }
@@ -62,9 +62,9 @@ namespace EasyPost.Parameters.Pickup
         public string? Reference { get; set; }
 
         /// <summary>
-        ///     <see cref="Models.API.Shipment"/> being set for pickup (if <see cref="Batch"/> not provided).
+        ///     <see cref="Models.API.Shipment"/> being set for pickup (required if <see cref="Batch"/> not provided).
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Required, "pickup", "shipment")]
+        [TopLevelRequestParameter(Necessity.Optional, "pickup", "shipment")]
         public IShipmentParameter? Shipment { get; set; }
 
         #endregion
