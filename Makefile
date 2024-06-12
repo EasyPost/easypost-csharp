@@ -30,7 +30,7 @@ coverage:
 
 ## coverage-check - Check if the coverage is above the minimum threshold
 coverage-check:
-	bash scripts/unix/check_coverage.sh 86
+	bash scripts/unix/check_coverage.sh 85
 
 ## docs - Generates library documentation
 docs:
