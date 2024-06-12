@@ -155,7 +155,9 @@ namespace EasyPost.Utilities.Internal.Attributes
             foreach (string dependentPropertyName in DependentProperties)
             {
                 PropertyInfo? dependentProperty = obj.GetType().GetProperty(dependentPropertyName);
-                if (dependentProperty == null) // If a listed dependent property is not found, the dependency is not met (and there is likely a bug in the parameter set source code)
+
+                // If a listed dependent property is not found, the dependency is not met (and there is likely a bug in the parameter set source code)
+                if (dependentProperty == null)
                 {
                     return new Tuple<bool, string>(false, dependentPropertyName);
                 }
@@ -201,7 +203,8 @@ namespace EasyPost.Utilities.Internal.Attributes
         /// <param name="independentStatus">The set status of the independent property.</param>
         /// <param name="dependentStatus">The set status of the dependent properties.</param>
         /// <param name="dependentProperties">The names of the dependent properties.</param>
-        public TopLevelRequestParameterDependentsAttribute(IndependentStatus independentStatus, DependentStatus dependentStatus, params string[] dependentProperties) : base(independentStatus, dependentStatus, dependentProperties)
+        public TopLevelRequestParameterDependentsAttribute(IndependentStatus independentStatus, DependentStatus dependentStatus, params string[] dependentProperties)
+            : base(independentStatus, dependentStatus, dependentProperties)
         {
         }
     }
@@ -251,7 +254,8 @@ namespace EasyPost.Utilities.Internal.Attributes
         /// <param name="independentStatus">The set status of the independent property.</param>
         /// <param name="dependentStatus">The set status of the dependent properties.</param>
         /// <param name="dependentProperties">The names of the dependent properties.</param>
-        public NestedRequestParameterDependentsAttribute(IndependentStatus independentStatus, DependentStatus dependentStatus, params string[] dependentProperties) : base(independentStatus, dependentStatus, dependentProperties)
+        public NestedRequestParameterDependentsAttribute(IndependentStatus independentStatus, DependentStatus dependentStatus, params string[] dependentProperties)
+            : base(independentStatus, dependentStatus, dependentProperties)
         {
         }
     }
