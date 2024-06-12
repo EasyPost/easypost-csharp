@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v6.5.2 (2024-06-12)
+
+- Fix `Shipment` parameter requirement for `Pickup.Create` parameter set
+
 ## v6.5.1 (2024-06-10)
 
 - Fix `Batch` object not allowed to be used in parameter sets due to missing `IBatchParameter` inheritance
