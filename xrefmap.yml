@@ -1172,6 +1172,12 @@ references:
   commentId: F:EasyPost.Constants.ErrorMessages.InvalidParameter
   fullName: EasyPost.Constants.ErrorMessages.InvalidParameter
   nameWithType: Constants.ErrorMessages.InvalidParameter
+- uid: EasyPost.Constants.ErrorMessages.InvalidParameterPair
+  name: InvalidParameterPair
+  href: api/EasyPost.Constants.ErrorMessages.html#EasyPost_Constants_ErrorMessages_InvalidParameterPair
+  commentId: F:EasyPost.Constants.ErrorMessages.InvalidParameterPair
+  fullName: EasyPost.Constants.ErrorMessages.InvalidParameterPair
+  nameWithType: Constants.ErrorMessages.InvalidParameterPair
 - uid: EasyPost.Constants.ErrorMessages.InvalidWebhookSignature
   name: InvalidWebhookSignature
   href: api/EasyPost.Constants.ErrorMessages.html#EasyPost_Constants_ErrorMessages_InvalidWebhookSignature
@@ -1549,6 +1555,12 @@ references:
   commentId: T:EasyPost.Exceptions.General.InvalidParameterError
   fullName: EasyPost.Exceptions.General.InvalidParameterError
   nameWithType: InvalidParameterError
+- uid: EasyPost.Exceptions.General.InvalidParameterPairError
+  name: InvalidParameterPairError
+  href: api/EasyPost.Exceptions.General.InvalidParameterPairError.html
+  commentId: T:EasyPost.Exceptions.General.InvalidParameterPairError
+  fullName: EasyPost.Exceptions.General.InvalidParameterPairError
+  nameWithType: InvalidParameterPairError
 - uid: EasyPost.Exceptions.General.JsonDeserializationError
   name: JsonDeserializationError
   href: api/EasyPost.Exceptions.General.JsonDeserializationError.html
@@ -17103,6 +17115,42 @@ references:
   fullName.vb: EasyPost.Utilities.Internal.Attributes.BaseCustomAttribute.GetAttribute(Of T)(PropertyInfo)
   nameWithType: BaseCustomAttribute.GetAttribute<T>(PropertyInfo)
   nameWithType.vb: BaseCustomAttribute.GetAttribute(Of T)(PropertyInfo)
+- uid: EasyPost.Utilities.Internal.Attributes.DependentStatus
+  name: DependentStatus
+  href: api/EasyPost.Utilities.Internal.Attributes.DependentStatus.html
+  commentId: T:EasyPost.Utilities.Internal.Attributes.DependentStatus
+  fullName: EasyPost.Utilities.Internal.Attributes.DependentStatus
+  nameWithType: DependentStatus
+- uid: EasyPost.Utilities.Internal.Attributes.DependentStatus.MustBeSet
+  name: MustBeSet
+  href: api/EasyPost.Utilities.Internal.Attributes.DependentStatus.html#EasyPost_Utilities_Internal_Attributes_DependentStatus_MustBeSet
+  commentId: F:EasyPost.Utilities.Internal.Attributes.DependentStatus.MustBeSet
+  fullName: EasyPost.Utilities.Internal.Attributes.DependentStatus.MustBeSet
+  nameWithType: DependentStatus.MustBeSet
+- uid: EasyPost.Utilities.Internal.Attributes.DependentStatus.MustNotBeSet
+  name: MustNotBeSet
+  href: api/EasyPost.Utilities.Internal.Attributes.DependentStatus.html#EasyPost_Utilities_Internal_Attributes_DependentStatus_MustNotBeSet
+  commentId: F:EasyPost.Utilities.Internal.Attributes.DependentStatus.MustNotBeSet
+  fullName: EasyPost.Utilities.Internal.Attributes.DependentStatus.MustNotBeSet
+  nameWithType: DependentStatus.MustNotBeSet
+- uid: EasyPost.Utilities.Internal.Attributes.IndependentStatus
+  name: IndependentStatus
+  href: api/EasyPost.Utilities.Internal.Attributes.IndependentStatus.html
+  commentId: T:EasyPost.Utilities.Internal.Attributes.IndependentStatus
+  fullName: EasyPost.Utilities.Internal.Attributes.IndependentStatus
+  nameWithType: IndependentStatus
+- uid: EasyPost.Utilities.Internal.Attributes.IndependentStatus.IfNotSet
+  name: IfNotSet
+  href: api/EasyPost.Utilities.Internal.Attributes.IndependentStatus.html#EasyPost_Utilities_Internal_Attributes_IndependentStatus_IfNotSet
+  commentId: F:EasyPost.Utilities.Internal.Attributes.IndependentStatus.IfNotSet
+  fullName: EasyPost.Utilities.Internal.Attributes.IndependentStatus.IfNotSet
+  nameWithType: IndependentStatus.IfNotSet
+- uid: EasyPost.Utilities.Internal.Attributes.IndependentStatus.IfSet
+  name: IfSet
+  href: api/EasyPost.Utilities.Internal.Attributes.IndependentStatus.html#EasyPost_Utilities_Internal_Attributes_IndependentStatus_IfSet
+  commentId: F:EasyPost.Utilities.Internal.Attributes.IndependentStatus.IfSet
+  fullName: EasyPost.Utilities.Internal.Attributes.IndependentStatus.IfSet
+  nameWithType: IndependentStatus.IfSet
 - uid: EasyPost.Utilities.Internal.Attributes.Necessity
   name: Necessity
   href: api/EasyPost.Utilities.Internal.Attributes.Necessity.html
@@ -17143,6 +17191,28 @@ references:
   isSpec: "True"
   fullName: EasyPost.Utilities.Internal.Attributes.NestedRequestParameterAttribute.NestedRequestParameterAttribute
   nameWithType: NestedRequestParameterAttribute.NestedRequestParameterAttribute
+- uid: EasyPost.Utilities.Internal.Attributes.NestedRequestParameterDependentsAttribute
+  name: NestedRequestParameterDependentsAttribute
+  href: api/EasyPost.Utilities.Internal.Attributes.NestedRequestParameterDependentsAttribute.html
+  commentId: T:EasyPost.Utilities.Internal.Attributes.NestedRequestParameterDependentsAttribute
+  fullName: EasyPost.Utilities.Internal.Attributes.NestedRequestParameterDependentsAttribute
+  nameWithType: NestedRequestParameterDependentsAttribute
+- uid: EasyPost.Utilities.Internal.Attributes.NestedRequestParameterDependentsAttribute.#ctor(EasyPost.Utilities.Internal.Attributes.IndependentStatus,EasyPost.Utilities.Internal.Attributes.DependentStatus,System.String[])
+  name: NestedRequestParameterDependentsAttribute(IndependentStatus, DependentStatus, String[])
+  href: api/EasyPost.Utilities.Internal.Attributes.NestedRequestParameterDependentsAttribute.html#EasyPost_Utilities_Internal_Attributes_NestedRequestParameterDependentsAttribute__ctor_EasyPost_Utilities_Internal_Attributes_IndependentStatus_EasyPost_Utilities_Internal_Attributes_DependentStatus_System_String___
+  commentId: M:EasyPost.Utilities.Internal.Attributes.NestedRequestParameterDependentsAttribute.#ctor(EasyPost.Utilities.Internal.Attributes.IndependentStatus,EasyPost.Utilities.Internal.Attributes.DependentStatus,System.String[])
+  name.vb: NestedRequestParameterDependentsAttribute(IndependentStatus, DependentStatus, String())
+  fullName: EasyPost.Utilities.Internal.Attributes.NestedRequestParameterDependentsAttribute.NestedRequestParameterDependentsAttribute(EasyPost.Utilities.Internal.Attributes.IndependentStatus, EasyPost.Utilities.Internal.Attributes.DependentStatus, System.String[])
+  fullName.vb: EasyPost.Utilities.Internal.Attributes.NestedRequestParameterDependentsAttribute.NestedRequestParameterDependentsAttribute(EasyPost.Utilities.Internal.Attributes.IndependentStatus, EasyPost.Utilities.Internal.Attributes.DependentStatus, System.String())
+  nameWithType: NestedRequestParameterDependentsAttribute.NestedRequestParameterDependentsAttribute(IndependentStatus, DependentStatus, String[])
+  nameWithType.vb: NestedRequestParameterDependentsAttribute.NestedRequestParameterDependentsAttribute(IndependentStatus, DependentStatus, String())
+- uid: EasyPost.Utilities.Internal.Attributes.NestedRequestParameterDependentsAttribute.#ctor*
+  name: NestedRequestParameterDependentsAttribute
+  href: api/EasyPost.Utilities.Internal.Attributes.NestedRequestParameterDependentsAttribute.html#EasyPost_Utilities_Internal_Attributes_NestedRequestParameterDependentsAttribute__ctor_
+  commentId: Overload:EasyPost.Utilities.Internal.Attributes.NestedRequestParameterDependentsAttribute.#ctor
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.Attributes.NestedRequestParameterDependentsAttribute.NestedRequestParameterDependentsAttribute
+  nameWithType: NestedRequestParameterDependentsAttribute.NestedRequestParameterDependentsAttribute
 - uid: EasyPost.Utilities.Internal.Attributes.RequestParameterAttribute
   name: RequestParameterAttribute
   href: api/EasyPost.Utilities.Internal.Attributes.RequestParameterAttribute.html
@@ -17165,6 +17235,44 @@ references:
   isSpec: "True"
   fullName: EasyPost.Utilities.Internal.Attributes.RequestParameterAttribute.RequestParameterAttribute
   nameWithType: RequestParameterAttribute.RequestParameterAttribute
+- uid: EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute
+  name: RequestParameterDependentsAttribute
+  href: api/EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.html
+  commentId: T:EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute
+  fullName: EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute
+  nameWithType: RequestParameterDependentsAttribute
+- uid: EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.#ctor(EasyPost.Utilities.Internal.Attributes.IndependentStatus,EasyPost.Utilities.Internal.Attributes.DependentStatus,System.String[])
+  name: RequestParameterDependentsAttribute(IndependentStatus, DependentStatus, String[])
+  href: api/EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.html#EasyPost_Utilities_Internal_Attributes_RequestParameterDependentsAttribute__ctor_EasyPost_Utilities_Internal_Attributes_IndependentStatus_EasyPost_Utilities_Internal_Attributes_DependentStatus_System_String___
+  commentId: M:EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.#ctor(EasyPost.Utilities.Internal.Attributes.IndependentStatus,EasyPost.Utilities.Internal.Attributes.DependentStatus,System.String[])
+  name.vb: RequestParameterDependentsAttribute(IndependentStatus, DependentStatus, String())
+  fullName: EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.RequestParameterDependentsAttribute(EasyPost.Utilities.Internal.Attributes.IndependentStatus, EasyPost.Utilities.Internal.Attributes.DependentStatus, System.String[])
+  fullName.vb: EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.RequestParameterDependentsAttribute(EasyPost.Utilities.Internal.Attributes.IndependentStatus, EasyPost.Utilities.Internal.Attributes.DependentStatus, System.String())
+  nameWithType: RequestParameterDependentsAttribute.RequestParameterDependentsAttribute(IndependentStatus, DependentStatus, String[])
+  nameWithType.vb: RequestParameterDependentsAttribute.RequestParameterDependentsAttribute(IndependentStatus, DependentStatus, String())
+- uid: EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.#ctor*
+  name: RequestParameterDependentsAttribute
+  href: api/EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.html#EasyPost_Utilities_Internal_Attributes_RequestParameterDependentsAttribute__ctor_
+  commentId: Overload:EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.#ctor
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.RequestParameterDependentsAttribute
+  nameWithType: RequestParameterDependentsAttribute.RequestParameterDependentsAttribute
+- uid: EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.DependentsAreCompliant(System.Object,System.Nullable{System.Object})
+  name: DependentsAreCompliant(Object, Nullable<Object>)
+  href: api/EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.html#EasyPost_Utilities_Internal_Attributes_RequestParameterDependentsAttribute_DependentsAreCompliant_System_Object_System_Nullable_System_Object__
+  commentId: M:EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.DependentsAreCompliant(System.Object,System.Nullable{System.Object})
+  name.vb: DependentsAreCompliant(Object, Nullable(Of Object))
+  fullName: EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.DependentsAreCompliant(System.Object, System.Nullable<System.Object>)
+  fullName.vb: EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.DependentsAreCompliant(System.Object, System.Nullable(Of System.Object))
+  nameWithType: RequestParameterDependentsAttribute.DependentsAreCompliant(Object, Nullable<Object>)
+  nameWithType.vb: RequestParameterDependentsAttribute.DependentsAreCompliant(Object, Nullable(Of Object))
+- uid: EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.DependentsAreCompliant*
+  name: DependentsAreCompliant
+  href: api/EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.html#EasyPost_Utilities_Internal_Attributes_RequestParameterDependentsAttribute_DependentsAreCompliant_
+  commentId: Overload:EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.DependentsAreCompliant
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.DependentsAreCompliant
+  nameWithType: RequestParameterDependentsAttribute.DependentsAreCompliant
 - uid: EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterAttribute
   name: TopLevelRequestParameterAttribute
   href: api/EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterAttribute.html
@@ -17187,6 +17295,28 @@ references:
   isSpec: "True"
   fullName: EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterAttribute.TopLevelRequestParameterAttribute
   nameWithType: TopLevelRequestParameterAttribute.TopLevelRequestParameterAttribute
+- uid: EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute
+  name: TopLevelRequestParameterDependentsAttribute
+  href: api/EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.html
+  commentId: T:EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute
+  fullName: EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute
+  nameWithType: TopLevelRequestParameterDependentsAttribute
+- uid: EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.#ctor(EasyPost.Utilities.Internal.Attributes.IndependentStatus,EasyPost.Utilities.Internal.Attributes.DependentStatus,System.String[])
+  name: TopLevelRequestParameterDependentsAttribute(IndependentStatus, DependentStatus, String[])
+  href: api/EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.html#EasyPost_Utilities_Internal_Attributes_TopLevelRequestParameterDependentsAttribute__ctor_EasyPost_Utilities_Internal_Attributes_IndependentStatus_EasyPost_Utilities_Internal_Attributes_DependentStatus_System_String___
+  commentId: M:EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.#ctor(EasyPost.Utilities.Internal.Attributes.IndependentStatus,EasyPost.Utilities.Internal.Attributes.DependentStatus,System.String[])
+  name.vb: TopLevelRequestParameterDependentsAttribute(IndependentStatus, DependentStatus, String())
+  fullName: EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.TopLevelRequestParameterDependentsAttribute(EasyPost.Utilities.Internal.Attributes.IndependentStatus, EasyPost.Utilities.Internal.Attributes.DependentStatus, System.String[])
+  fullName.vb: EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.TopLevelRequestParameterDependentsAttribute(EasyPost.Utilities.Internal.Attributes.IndependentStatus, EasyPost.Utilities.Internal.Attributes.DependentStatus, System.String())
+  nameWithType: TopLevelRequestParameterDependentsAttribute.TopLevelRequestParameterDependentsAttribute(IndependentStatus, DependentStatus, String[])
+  nameWithType.vb: TopLevelRequestParameterDependentsAttribute.TopLevelRequestParameterDependentsAttribute(IndependentStatus, DependentStatus, String())
+- uid: EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.#ctor*
+  name: TopLevelRequestParameterDependentsAttribute
+  href: api/EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.html#EasyPost_Utilities_Internal_Attributes_TopLevelRequestParameterDependentsAttribute__ctor_
+  commentId: Overload:EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.#ctor
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.TopLevelRequestParameterDependentsAttribute
+  nameWithType: TopLevelRequestParameterDependentsAttribute.TopLevelRequestParameterDependentsAttribute
 - uid: EasyPost.Utilities.Internal.Enum
   name: Enum
   href: api/EasyPost.Utilities.Internal.Enum.html

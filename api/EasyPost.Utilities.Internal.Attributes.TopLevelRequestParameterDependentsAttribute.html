@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NestedRequestParameterAttribute
+    <title>Class TopLevelRequestParameterDependentsAttribute
  </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NestedRequestParameterAttribute
+    <meta name="title" content="Class TopLevelRequestParameterDependentsAttribute
  ">
   
     <link rel="shortcut icon" href="../favicon.ico">
@@ -67,50 +67,53 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="EasyPost.Utilities.Internal.Attributes.NestedRequestParameterAttribute">
+            <article class="content wrap" id="_content" data-uid="EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute">
 
 
-  <h1 id="EasyPost_Utilities_Internal_Attributes_NestedRequestParameterAttribute" data-uid="EasyPost.Utilities.Internal.Attributes.NestedRequestParameterAttribute" class="text-break">Class NestedRequestParameterAttribute
+  <h1 id="EasyPost_Utilities_Internal_Attributes_TopLevelRequestParameterDependentsAttribute" data-uid="EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute" class="text-break">Class TopLevelRequestParameterDependentsAttribute
 </h1>
-  <div class="markdown level0 summary"><p>A <a class="xref" href="EasyPost.Utilities.Internal.Attributes.BaseCustomAttribute.html">BaseCustomAttribute</a> to label a parameter that will be included in an embedded dictionary inside another JSON request body (e.g. &quot;address&quot; data in &quot;shipment&quot; parameters).</p>
+  <div class="markdown level0 summary"><p>A <a class="xref" href="EasyPost.Utilities.Internal.Attributes.BaseCustomAttribute.html">BaseCustomAttribute</a> to denote the required dependents of a top-level request parameter, and the conditions under which they are required.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="EasyPost.Utilities.Internal.Attributes.BaseCustomAttribute.html">BaseCustomAttribute</a></div>
-    <div class="level2"><a class="xref" href="EasyPost.Utilities.Internal.Attributes.RequestParameterAttribute.html">RequestParameterAttribute</a></div>
-    <div class="level3"><span class="xref">NestedRequestParameterAttribute</span></div>
+    <div class="level2"><a class="xref" href="EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.html">RequestParameterDependentsAttribute</a></div>
+    <div class="level3"><span class="xref">TopLevelRequestParameterDependentsAttribute</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="EasyPost.Utilities.Internal.Attributes.RequestParameterDependentsAttribute.html#EasyPost_Utilities_Internal_Attributes_RequestParameterDependentsAttribute_DependentsAreCompliant_System_Object_System_Nullable_System_Object__">RequestParameterDependentsAttribute.DependentsAreCompliant(Object, Nullable&lt;Object&gt;)</a>
+    </div>
     <div>
       <a class="xref" href="EasyPost.Utilities.Internal.Attributes.BaseCustomAttribute.html#EasyPost_Utilities_Internal_Attributes_BaseCustomAttribute_GetAttribute__1_PropertyInfo_">BaseCustomAttribute.GetAttribute&lt;T&gt;(PropertyInfo)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EasyPost.Utilities.Internal.Attributes.html">EasyPost.Utilities.Internal.Attributes</a></h6>
   <h6><strong>Assembly</strong>: EasyPost.dll</h6>
-  <h5 id="EasyPost_Utilities_Internal_Attributes_NestedRequestParameterAttribute_syntax">Syntax</h5>
+  <h5 id="EasyPost_Utilities_Internal_Attributes_TopLevelRequestParameterDependentsAttribute_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class NestedRequestParameterAttribute : RequestParameterAttribute</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class TopLevelRequestParameterDependentsAttribute : RequestParameterDependentsAttribute</code></pre>
   </div>
   <h3 id="constructors">Constructors
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Utilities_Internal_Attributes_NestedRequestParameterAttribute__ctor_Type_EasyPost_Utilities_Internal_Attributes_Necessity_System_String___.md&amp;value=---%0Auid%3A%20EasyPost.Utilities.Internal.Attributes.NestedRequestParameterAttribute.%23ctor(Type%2CEasyPost.Utilities.Internal.Attributes.Necessity%2CSystem.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Utilities_Internal_Attributes_TopLevelRequestParameterDependentsAttribute__ctor_EasyPost_Utilities_Internal_Attributes_IndependentStatus_EasyPost_Utilities_Internal_Attributes_DependentStatus_System_String___.md&amp;value=---%0Auid%3A%20EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.%23ctor(EasyPost.Utilities.Internal.Attributes.IndependentStatus%2CEasyPost.Utilities.Internal.Attributes.DependentStatus%2CSystem.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Utilities/Internal/Attributes/RequestParameterAttribute.cs/#L229">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Utilities/Internal/Attributes/RequestParameterAttribute.cs/#L206">View Source</a>
   </span>
-  <a id="EasyPost_Utilities_Internal_Attributes_NestedRequestParameterAttribute__ctor_" data-uid="EasyPost.Utilities.Internal.Attributes.NestedRequestParameterAttribute.#ctor*"></a>
-  <h4 id="EasyPost_Utilities_Internal_Attributes_NestedRequestParameterAttribute__ctor_Type_EasyPost_Utilities_Internal_Attributes_Necessity_System_String___" data-uid="EasyPost.Utilities.Internal.Attributes.NestedRequestParameterAttribute.#ctor(Type,EasyPost.Utilities.Internal.Attributes.Necessity,System.String[])">NestedRequestParameterAttribute(Type, Necessity, String[])</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="EasyPost.Utilities.Internal.Attributes.NestedRequestParameterAttribute.html">NestedRequestParameterAttribute</a> class.</p>
+  <a id="EasyPost_Utilities_Internal_Attributes_TopLevelRequestParameterDependentsAttribute__ctor_" data-uid="EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.#ctor*"></a>
+  <h4 id="EasyPost_Utilities_Internal_Attributes_TopLevelRequestParameterDependentsAttribute__ctor_EasyPost_Utilities_Internal_Attributes_IndependentStatus_EasyPost_Utilities_Internal_Attributes_DependentStatus_System_String___" data-uid="EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.#ctor(EasyPost.Utilities.Internal.Attributes.IndependentStatus,EasyPost.Utilities.Internal.Attributes.DependentStatus,System.String[])">TopLevelRequestParameterDependentsAttribute(IndependentStatus, DependentStatus, String[])</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute.html">TopLevelRequestParameterDependentsAttribute</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NestedRequestParameterAttribute(Type parentType, Necessity necessity, params string[] jsonPath)</code></pre>
+    <pre><code class="lang-csharp hljs">public TopLevelRequestParameterDependentsAttribute(IndependentStatus independentStatus, DependentStatus dependentStatus, params string[] dependentProperties)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -123,21 +126,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Type</span></td>
-        <td><span class="parametername">parentType</span></td>
-        <td><p>The type of the parent parameter set that will utilize this parameter.</p>
+        <td><a class="xref" href="EasyPost.Utilities.Internal.Attributes.IndependentStatus.html">IndependentStatus</a></td>
+        <td><span class="parametername">independentStatus</span></td>
+        <td><p>The set status of the independent property.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="EasyPost.Utilities.Internal.Attributes.Necessity.html">Necessity</a></td>
-        <td><span class="parametername">necessity</span></td>
-        <td><p><a class="xref" href="EasyPost.Utilities.Internal.Attributes.Necessity.html">Necessity</a> level of this parameter.</p>
+        <td><a class="xref" href="EasyPost.Utilities.Internal.Attributes.DependentStatus.html">DependentStatus</a></td>
+        <td><span class="parametername">dependentStatus</span></td>
+        <td><p>The set status of the dependent properties.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">jsonPath</span></td>
-        <td><p>Path in JSON schema where this parameter value will be inserted.</p>
+        <td><span class="parametername">dependentProperties</span></td>
+        <td><p>The names of the dependent properties.</p>
 </td>
       </tr>
     </tbody>
@@ -150,10 +153,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Utilities_Internal_Attributes_NestedRequestParameterAttribute.md&amp;value=---%0Auid%3A%20EasyPost.Utilities.Internal.Attributes.NestedRequestParameterAttribute%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Utilities_Internal_Attributes_TopLevelRequestParameterDependentsAttribute.md&amp;value=---%0Auid%3A%20EasyPost.Utilities.Internal.Attributes.TopLevelRequestParameterDependentsAttribute%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Utilities/Internal/Attributes/RequestParameterAttribute.cs/#L215" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Utilities/Internal/Attributes/RequestParameterAttribute.cs/#L197" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
