@@ -53,7 +53,7 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Retrieve the estimated delivery date of each carrier-service level combination via the Smart Deliver On API, based on a specific ship date and origin-destination postal code pair.
+        ///     Retrieve the estimated delivery date of each carrier-service level combination via the Smart Deliver By API, based on a specific ship date and origin-destination postal code pair.
         ///     Unlike the <see cref="EstimateDeliveryDateForShipment"/> method, this method does not require a <see cref="Shipment"/> ID.
         /// </summary>
         /// <param name="parameters">The <see cref="Parameters.SmartRate.EstimateDeliveryDateForRoute"/> parameters to include on the API call.</param>
@@ -79,7 +79,7 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Retrieve a recommended ship date for each carrier-service level combination via the Smart Deliver By API, based on a specific ship date and origin-destination postal code pair.
+        ///     Retrieve a recommended ship date for each carrier-service level combination via the Smart Deliver On API, based on a specific ship date and origin-destination postal code pair.
         ///     Unlike the <see cref="RecommendShipDateForShipment"/> method, this method does not require a <see cref="Shipment"/> ID.
         /// </summary>
         /// <param name="parameters">The <see cref="Parameters.SmartRate.RecommendShipDateForRoute"/> parameters to include on the API call.</param>
