@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API;
 
 /// <summary>
-///     Class representing estimated transit times for a <see cref="RateWithTimeInTransitDetailsByShipDate"/>.
+///     Class representing estimated transit times for a <see cref="EstimateDeliveryDateForShipmentResult"/>.
 /// </summary>
-public class TimeInTransitDetailsByShipDate
+public class TimeInTransitDetailsForShipDate
 {
     #region JSON Properties
 
@@ -17,7 +17,7 @@ public class TimeInTransitDetailsByShipDate
     public DateTime? PlannedShipDate { get; set; }
 
     /// <summary>
-    ///     EasyPost's estimated delivery date for the associated <see cref="RateWithTimeInTransitDetailsByShipDate"/>.
+    ///     EasyPost's estimated delivery date for the associated <see cref="EstimateDeliveryDateForShipmentResult"/>.
     /// </summary>
     [JsonProperty("easypost_estimated_delivery_date")]
     public DateTime? EasyPostEstimatedDeliveryDate { get; set; }

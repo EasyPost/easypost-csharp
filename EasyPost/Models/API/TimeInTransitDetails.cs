@@ -6,7 +6,7 @@ namespace EasyPost.Models.API;
 /// <summary>
 ///     Class representing estimated transit times for a <see cref="RateWithEstimatedDeliveryDate"/>.
 /// </summary>
-[Obsolete("This class will be removed in a future version and replaced with TimeInTransitDetailsByShipDate.")]
+[Obsolete("This class will be removed in a future version and replaced with TimeInTransitDetailsForShipDate.")]
 public class TimeInTransitDetails
 {
     #region JSON Properties

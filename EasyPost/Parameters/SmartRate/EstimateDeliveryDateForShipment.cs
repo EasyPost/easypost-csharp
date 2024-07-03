@@ -1,13 +1,14 @@
 using System.Diagnostics.CodeAnalysis;
+using EasyPost.Services;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Parameters.SmartRate
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#retrieve-estimated-delivery-date-and-total-transit-days-across-all-rates-for-a-shipment">Parameters</a> for <see cref="EasyPost.Services.Beta.SmartRateService.EstimateDeliveryDateByShipDate(string, EstimateDeliveryDateByShipDate, System.Threading.CancellationToken)"/> API calls.
+    ///     Parameters for <see cref="SmartRateService.EstimateDeliveryDateForShipment(string, EstimateDeliveryDateForShipment, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class EstimateDeliveryDateByShipDate : BaseParameters<Models.API.RateWithTimeInTransitDetailsByShipDate>
+    public class EstimateDeliveryDateForShipment : BaseParameters<Models.API.EstimateDeliveryDateForShipmentResult>
     {
         #region Request Parameters
 

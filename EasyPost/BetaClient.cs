@@ -33,11 +33,6 @@ namespace EasyPost
         public Services.Beta.ReferralCustomerService ReferralCustomer { get; }
 
         /// <summary>
-        ///     Access beta Shipment-related functionality.
-        /// </summary>
-        public Services.Beta.SmartRateService SmartRate { get; }
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="BetaClient"/> class.
         /// </summary>
         /// <param name="configuration"><see cref="ClientConfiguration"/> for this client.</param>
@@ -46,7 +41,6 @@ namespace EasyPost
         {
             Rate = new Services.Beta.RateService(this);
             ReferralCustomer = new Services.Beta.ReferralCustomerService(this);
-            SmartRate = new Services.Beta.SmartRateService(this);
         }
 
         /// <inheritdoc cref="EasyPostClient.Dispose(bool)"/>
@@ -59,7 +53,6 @@ namespace EasyPost
                 // Dispose of the services
                 Rate.Dispose();
                 ReferralCustomer.Dispose();
-                SmartRate.Dispose();
             }
 
             // Free native resources (unmanaged objects) and override a finalizer below.

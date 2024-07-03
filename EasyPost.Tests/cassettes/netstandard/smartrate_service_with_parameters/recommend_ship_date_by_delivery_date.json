@@ -1,0 +1,98 @@
+[
+  {
+    "Duration": 247,
+    "RecordedAt": "2024-07-03T00:49:40.800398-04:00",
+    "Request": {
+      "Body": "{\"shipment\":{\"from_address\":{\"name\":\"Jack Sparrow\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"},\"to_address\":{\"name\":\"Elizabeth Swan\",\"street1\":\"179 N Harbor Dr\",\"city\":\"Redondo Beach\",\"state\":\"CA\",\"zip\":\"90277\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"},\"parcel\":{\"length\":10,\"width\":8,\"height\":4,\"weight\":15.4}}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "451"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/shipments"
+    },
+    "Response": {
+      "Body": "{\"created_at\":\"2024-07-03T04:49:39Z\",\"is_return\":false,\"messages\":[{\"carrier\":\"UPS\",\"carrier_account_id\":\"ca_ba94eaaacddb4bf2b135953b3067e817\",\"type\":\"rate_error\",\"message\":\"No rate response received.\"},{\"carrier\":\"UPS\",\"carrier_account_id\":\"ca_0b351eb47cac405dadaf54c659c0a0eb\",\"type\":\"rate_error\",\"message\":\"No rate response received.\"},{\"carrier\":\"UPS\",\"carrier_account_id\":\"ca_34d97dc9d5df46e48c088455935bc518\",\"type\":\"rate_error\",\"message\":\"No rate response received.\"},{\"carrier\":\"DhlEcs\",\"carrier_account_id\":\"ca_d85d6d6612ee4de1b27e32ead463e1f0\",\"type\":\"rate_error\",\"message\":\"Invalid credentials\"},{\"carrier\":\"DhlEcs\",\"carrier_account_id\":\"ca_591d414609684bada7f2a2c6a1734bf7\",\"type\":\"rate_error\",\"message\":\"Invalid credentials\"},{\"carrier\":\"DhlEcs\",\"carrier_account_id\":\"ca_45bdeb10ddbe45d4a74330c744000d36\",\"type\":\"rate_error\",\"message\":\"Invalid credentials\"},{\"carrier\":\"DhlEcs\",\"carrier_account_id\":\"ca_45999a4724c44dfcbd69483ee174502a\",\"type\":\"rate_error\",\"message\":\"Invalid credentials\"}],\"mode\":\"test\",\"options\":{\"currency\":\"USD\",\"payment\":{\"type\":\"SENDER\"},\"date_advance\":0},\"reference\":null,\"status\":\"unknown\",\"tracking_code\":null,\"updated_at\":\"2024-07-03T04:49:40Z\",\"batch_id\":null,\"batch_status\":null,\"batch_message\":null,\"customs_info\":null,\"from_address\":{\"id\":\"adr_a804c42638f711ef8369ac1f6bc539ae\",\"object\":\"Address\",\"created_at\":\"2024-07-03T00:49:39-04:00\",\"updated_at\":\"2024-07-03T00:49:39-04:00\",\"name\":\"Jack Sparrow\",\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"insurance\":null,\"order_id\":null,\"parcel\":{\"id\":\"prcl_b1cf4acfbfba4fa993dcf55caddeaa63\",\"object\":\"Parcel\",\"created_at\":\"2024-07-03T04:49:39Z\",\"updated_at\":\"2024-07-03T04:49:39Z\",\"length\":10.0,\"width\":8.0,\"height\":4.0,\"predefined_package\":null,\"weight\":15.4,\"mode\":\"test\"},\"postage_label\":null,\"rates\":[{\"id\":\"rate_1209d44d24974cdda43509b1cef65abd\",\"object\":\"Rate\",\"created_at\":\"2024-07-03T04:49:40Z\",\"updated_at\":\"2024-07-03T04:49:40Z\",\"mode\":\"test\",\"service\":\"Priority\",\"carrier\":\"USPS\",\"rate\":\"6.90\",\"currency\":\"USD\",\"retail_rate\":\"9.80\",\"retail_currency\":\"USD\",\"list_rate\":\"8.25\",\"list_currency\":\"USD\",\"billing_type\":\"easypost\",\"delivery_days\":2,\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"est_delivery_days\":2,\"shipment_id\":\"shp_5fcd68d83d464d499813f68469b41e43\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\"},{\"id\":\"rate_8fe4e997cf624b56a84dbb4479b7d3ab\",\"object\":\"Rate\",\"created_at\":\"2024-07-03T04:49:40Z\",\"updated_at\":\"2024-07-03T04:49:40Z\",\"mode\":\"test\",\"service\":\"GroundAdvantage\",\"carrier\":\"USPS\",\"rate\":\"6.40\",\"currency\":\"USD\",\"retail_rate\":\"8.45\",\"retail_currency\":\"USD\",\"list_rate\":\"6.40\",\"list_currency\":\"USD\",\"billing_type\":\"easypost\",\"delivery_days\":3,\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"est_delivery_days\":3,\"shipment_id\":\"shp_5fcd68d83d464d499813f68469b41e43\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\"},{\"id\":\"rate_0c2beafa5b6e48fe8d14c0d1d223037a\",\"object\":\"Rate\",\"created_at\":\"2024-07-03T04:49:40Z\",\"updated_at\":\"2024-07-03T04:49:40Z\",\"mode\":\"test\",\"service\":\"First\",\"carrier\":\"USPS\",\"rate\":\"6.40\",\"currency\":\"USD\",\"retail_rate\":\"8.45\",\"retail_currency\":\"USD\",\"list_rate\":\"6.40\",\"list_currency\":\"USD\",\"billing_type\":\"easypost\",\"delivery_days\":3,\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"est_delivery_days\":3,\"shipment_id\":\"shp_5fcd68d83d464d499813f68469b41e43\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\"},{\"id\":\"rate_7755968b499c4a96b46f0ff239c6f245\",\"object\":\"Rate\",\"created_at\":\"2024-07-03T04:49:40Z\",\"updated_at\":\"2024-07-03T04:49:40Z\",\"mode\":\"test\",\"service\":\"ParcelSelect\",\"carrier\":\"USPS\",\"rate\":\"6.40\",\"currency\":\"USD\",\"retail_rate\":\"8.45\",\"retail_currency\":\"USD\",\"list_rate\":\"6.40\",\"list_currency\":\"USD\",\"billing_type\":\"easypost\",\"delivery_days\":3,\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"est_delivery_days\":3,\"shipment_id\":\"shp_5fcd68d83d464d499813f68469b41e43\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\"},{\"id\":\"rate_ccc09afae07e4ded84c6600abffc6254\",\"object\":\"Rate\",\"created_at\":\"2024-07-03T04:49:40Z\",\"updated_at\":\"2024-07-03T04:49:40Z\",\"mode\":\"test\",\"service\":\"Express\",\"carrier\":\"USPS\",\"rate\":\"33.10\",\"currency\":\"USD\",\"retail_rate\":\"37.90\",\"retail_currency\":\"USD\",\"list_rate\":\"33.10\",\"list_currency\":\"USD\",\"billing_type\":\"easypost\",\"delivery_days\":2,\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"est_delivery_days\":2,\"shipment_id\":\"shp_5fcd68d83d464d499813f68469b41e43\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\"}],\"refund_status\":null,\"scan_form\":null,\"selected_rate\":null,\"tracker\":null,\"to_address\":{\"id\":\"adr_a801accd38f711ef8368ac1f6bc539ae\",\"object\":\"Address\",\"created_at\":\"2024-07-03T00:49:39-04:00\",\"updated_at\":\"2024-07-03T00:49:39-04:00\",\"name\":\"Elizabeth Swan\",\"company\":null,\"street1\":\"179 N Harbor Dr\",\"street2\":null,\"city\":\"Redondo Beach\",\"state\":\"CA\",\"zip\":\"90277\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"usps_zone\":4,\"return_address\":{\"id\":\"adr_a804c42638f711ef8369ac1f6bc539ae\",\"object\":\"Address\",\"created_at\":\"2024-07-03T00:49:39-04:00\",\"updated_at\":\"2024-07-03T00:49:39-04:00\",\"name\":\"Jack Sparrow\",\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"buyer_address\":{\"id\":\"adr_a801accd38f711ef8368ac1f6bc539ae\",\"object\":\"Address\",\"created_at\":\"2024-07-03T00:49:39-04:00\",\"updated_at\":\"2024-07-03T00:49:39-04:00\",\"name\":\"Elizabeth Swan\",\"company\":null,\"street1\":\"179 N Harbor Dr\",\"street2\":null,\"city\":\"Redondo Beach\",\"state\":\"CA\",\"zip\":\"90277\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},\"forms\":[],\"fees\":[],\"id\":\"shp_5fcd68d83d464d499813f68469b41e43\",\"object\":\"Shipment\"}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "6333"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "272a2dac6684d863f09e2c1f007649c6",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "Location": "/api/v2/shipments/shp_5fcd68d83d464d499813f68469b41e43",
+        "x-runtime": "0.950035",
+        "x-node": "bigweb42nuq",
+        "x-version-label": "easypost-202407022336-077e33787b-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb3nuq fa152d4755,extlb2nuq fa152d4755",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  },
+  {
+    "Duration": 184,
+    "RecordedAt": "2024-07-03T00:49:41.006724-04:00",
+    "Request": {
+      "Body": "",
+      "BodyContentType": "Text",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/shipments/shp_5fcd68d83d464d499813f68469b41e43/smartrate/precision_shipping?desired_delivery_date=2024-07-13"
+    },
+    "Response": {
+      "Body": "{\"rates\":[{\"easypost_time_in_transit_data\":{\"days_in_transit\":{\"percentile_50\":3,\"percentile_75\":3,\"percentile_85\":5,\"percentile_90\":5,\"percentile_95\":5,\"percentile_97\":6,\"percentile_99\":7},\"delivery_date_confidence\":0.39,\"desired_delivery_date\":\"2024-07-13\",\"estimated_transit_days\":3,\"ship_on_date\":\"2024-07-10\"},\"rate\":{\"carrier\":\"USPS\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\",\"created_at\":\"2024-07-03T04:49:40Z\",\"currency\":\"USD\",\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"delivery_days\":2,\"est_delivery_days\":2,\"id\":\"rate_1209d44d24974cdda43509b1cef65abd\",\"list_currency\":\"USD\",\"list_rate\":8.25,\"mode\":\"test\",\"object\":\"Rate\",\"rate\":6.9,\"retail_currency\":\"USD\",\"retail_rate\":9.8,\"service\":\"Priority\",\"shipment_id\":\"shp_5fcd68d83d464d499813f68469b41e43\",\"updated_at\":\"2024-07-03T04:49:40Z\"}},{\"easypost_time_in_transit_data\":{\"days_in_transit\":{\"percentile_50\":3,\"percentile_75\":3,\"percentile_85\":5,\"percentile_90\":5,\"percentile_95\":5,\"percentile_97\":6,\"percentile_99\":8},\"delivery_date_confidence\":0.43,\"desired_delivery_date\":\"2024-07-13\",\"estimated_transit_days\":3,\"ship_on_date\":\"2024-07-10\"},\"rate\":{\"carrier\":\"USPS\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\",\"created_at\":\"2024-07-03T04:49:40Z\",\"currency\":\"USD\",\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"delivery_days\":3,\"est_delivery_days\":3,\"id\":\"rate_8fe4e997cf624b56a84dbb4479b7d3ab\",\"list_currency\":\"USD\",\"list_rate\":6.4,\"mode\":\"test\",\"object\":\"Rate\",\"rate\":6.4,\"retail_currency\":\"USD\",\"retail_rate\":8.45,\"service\":\"GroundAdvantage\",\"shipment_id\":\"shp_5fcd68d83d464d499813f68469b41e43\",\"updated_at\":\"2024-07-03T04:49:40Z\"}},{\"easypost_time_in_transit_data\":{\"days_in_transit\":{\"percentile_50\":3,\"percentile_75\":3,\"percentile_85\":5,\"percentile_90\":5,\"percentile_95\":5,\"percentile_97\":6,\"percentile_99\":8},\"delivery_date_confidence\":0.43,\"desired_delivery_date\":\"2024-07-13\",\"estimated_transit_days\":3,\"ship_on_date\":\"2024-07-10\"},\"rate\":{\"carrier\":\"USPS\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\",\"created_at\":\"2024-07-03T04:49:40Z\",\"currency\":\"USD\",\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"delivery_days\":3,\"est_delivery_days\":3,\"id\":\"rate_0c2beafa5b6e48fe8d14c0d1d223037a\",\"list_currency\":\"USD\",\"list_rate\":6.4,\"mode\":\"test\",\"object\":\"Rate\",\"rate\":6.4,\"retail_currency\":\"USD\",\"retail_rate\":8.45,\"service\":\"First\",\"shipment_id\":\"shp_5fcd68d83d464d499813f68469b41e43\",\"updated_at\":\"2024-07-03T04:49:40Z\"}},{\"easypost_time_in_transit_data\":{\"days_in_transit\":{\"percentile_50\":3,\"percentile_75\":3,\"percentile_85\":5,\"percentile_90\":5,\"percentile_95\":5,\"percentile_97\":6,\"percentile_99\":8},\"delivery_date_confidence\":0.43,\"desired_delivery_date\":\"2024-07-13\",\"estimated_transit_days\":3,\"ship_on_date\":\"2024-07-10\"},\"rate\":{\"carrier\":\"USPS\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\",\"created_at\":\"2024-07-03T04:49:40Z\",\"currency\":\"USD\",\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"delivery_days\":3,\"est_delivery_days\":3,\"id\":\"rate_7755968b499c4a96b46f0ff239c6f245\",\"list_currency\":\"USD\",\"list_rate\":6.4,\"mode\":\"test\",\"object\":\"Rate\",\"rate\":6.4,\"retail_currency\":\"USD\",\"retail_rate\":8.45,\"service\":\"ParcelSelect\",\"shipment_id\":\"shp_5fcd68d83d464d499813f68469b41e43\",\"updated_at\":\"2024-07-03T04:49:40Z\"}},{\"easypost_time_in_transit_data\":{\"days_in_transit\":{\"percentile_50\":3,\"percentile_75\":3,\"percentile_85\":3,\"percentile_90\":4,\"percentile_95\":4,\"percentile_97\":5,\"percentile_99\":7},\"delivery_date_confidence\":0.39,\"desired_delivery_date\":\"2024-07-13\",\"estimated_transit_days\":1,\"ship_on_date\":\"2024-07-12\"},\"rate\":{\"carrier\":\"USPS\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\",\"created_at\":\"2024-07-03T04:49:40Z\",\"currency\":\"USD\",\"delivery_date\":null,\"delivery_date_guaranteed\":false,\"delivery_days\":2,\"est_delivery_days\":2,\"id\":\"rate_ccc09afae07e4ded84c6600abffc6254\",\"list_currency\":\"USD\",\"list_rate\":33.1,\"mode\":\"test\",\"object\":\"Rate\",\"rate\":33.1,\"retail_currency\":\"USD\",\"retail_rate\":37.9,\"service\":\"Express\",\"shipment_id\":\"shp_5fcd68d83d464d499813f68469b41e43\",\"updated_at\":\"2024-07-03T04:49:40Z\"}}]}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "4095"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "272a2dac6684d864f09e2c1f00764a52",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.109853",
+        "x-node": "bigweb42nuq",
+        "x-version-label": "easypost-202407022336-077e33787b-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb4nuq fa152d4755,extlb2nuq fa152d4755",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  }
+]

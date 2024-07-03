@@ -4,14 +4,14 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API;
 
 /// <summary>
-///     Class representing estimated transit times for a <see cref="RateWithTimeInTransitDetailsByDeliveryDate"/>.
+///     Class representing estimated transit times for a <see cref="RecommendShipDateForShipmentResult"/>.
 /// </summary>
-public class TimeInTransitDetailsByDeliveryDate
+public class TimeInTransitDetailsForDeliveryDate
 {
     #region JSON Properties
 
     /// <summary>
-    ///     The desired delivery date for the shipment for the associated <see cref="RateWithTimeInTransitDetailsByDeliveryDate"/>.
+    ///     The desired delivery date for the shipment for the associated <see cref="RecommendShipDateForShipmentResult"/>.
     /// </summary>
     [JsonProperty("desired_delivery_date")]
     public DateTime? DesiredDeliveryDate { get; set; }
@@ -27,18 +27,6 @@ public class TimeInTransitDetailsByDeliveryDate
     /// </summary>
     [JsonProperty("delivery_date_confidence")]
     public float? DeliveryDateConfidence { get; set; }
-
-    /// <summary>
-    ///     The likelihood that the shipment will be late if shipped on the <see cref="EasyPostRecommendedShipDate"/>.
-    /// </summary>
-    [JsonProperty("likelihood_shipment_is_late")]
-    public float? LikelihoodShipmentIsLate { get; set; }
-
-    /// <summary>
-    ///     The likelihood that the shipment will be early if shipped on the <see cref="EasyPostRecommendedShipDate"/>.
-    /// </summary>
-    [JsonProperty("likelihood_shipment_is_early")]
-    public float? LikelihoodShipmentIsEarly { get; set; }
 
     /// <summary>
     ///     The estimated days in transit if shipped on the <see cref="EasyPostRecommendedShipDate"/>.
