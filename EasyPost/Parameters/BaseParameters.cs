@@ -186,7 +186,7 @@ namespace EasyPost.Parameters
                 value = SerializeObject(value);
             }
 
-            _parameterDictionary = UpdateDictionary(_parameterDictionary, requestParameterAttribute.JsonPath, value);
+            _parameterDictionary.AddOrUpdate(value, requestParameterAttribute.JsonPath);
         }
 
         private object? SerializeObject(object? obj)
@@ -221,62 +221,6 @@ namespace EasyPost.Parameters
             }
 
             return obj;
-        }
-
-        /// <summary>
-        ///     Update a dictionary with a new value.
-        /// </summary>
-        /// <param name="dictionary">Dictionary to update.</param>
-        /// <param name="keys">Path of new value to add.</param>
-        /// <param name="value">New value to add.</param>
-        /// <returns>Updated dictionary.</returns>
-        /// <exception cref="Exception">Could not add value to dictionary.</exception>
-        [SuppressMessage("Style", "IDE0045:Convert to conditional expression", Justification = "Harder to read")]
-        private static Dictionary<string, object?> UpdateDictionary(Dictionary<string, object?>? dictionary, string[] keys, object? value)
-        {
-            dictionary ??= new Dictionary<string, object?>();
-
-            switch (keys.Length)
-            {
-                // Don't need to go down
-                case 0:
-                    return dictionary;
-
-                // Last key left
-                case 1:
-                    dictionary.AddOrUpdate(keys[0], value);
-
-                    return dictionary;
-
-                // ReSharper disable once RedundantEmptySwitchSection
-                default:
-                    break;
-            }
-
-            // Need to go down another level
-            // Get the key and update the list of keys
-            string key = keys[0];
-            keys = keys.Skip(1).ToArray();
-#pragma warning disable CA1854 // Don't want to use TryGetValue because no need for value
-            if (!dictionary.ContainsKey(key))
-            {
-                dictionary[key] = UpdateDictionary(new Dictionary<string, object?>(), keys, value);
-            }
-#pragma warning restore CA1854
-
-            object? subDirectory = dictionary[key];
-            if (subDirectory is Dictionary<string, object?> subDictionary)
-            {
-                dictionary[key] = UpdateDictionary(subDictionary, keys, value);
-            }
-            else
-            {
-#pragma warning disable CA2201 // Don't throw base Exception class
-                throw new Exception("Found a non-dictionary while traversing the dictionary");
-#pragma warning restore CA2201 // Don't throw base Exception class
-            }
-
-            return dictionary;
         }
     }
 }
