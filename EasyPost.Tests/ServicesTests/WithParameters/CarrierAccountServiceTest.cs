@@ -53,18 +53,18 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         [Fact]
         [CrudOperations.Create]
         [Testing.Parameters]
-        public async Task TestCreateWithCustomWorkflow()
+        public async Task TestCreateFedEx()
         {
-            UseVCR("create_with_custom_workflow");
+            UseVCR("create_fedex");
 
-            // Carriers like FedEx and UPS should hit the `/carrier_accounts/register` endpoint
+            // FedEx should hit the `/carrier_accounts/register` endpoint
             Dictionary<string, object> data = Fixtures.BasicCarrierAccount;
 
             Parameters.CarrierAccount.CreateFedEx parameters = Fixtures.Parameters.CarrierAccounts.CreateFedEx(data);
 
             try
             {
-                // confirms we can pass in CreateFedEx and CreateUps parameters to the same Create method because they are children of the generic Create class
+                // confirms we can pass in CreateFedEx parameters to the same Create method because they are children of the generic Create class
                 CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
                 CleanUpAfterTest(carrierAccount.Id);
             }
@@ -78,6 +78,37 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
                 // Check the cassette to make sure the endpoint is correct (it should be carrier_accounts/register)
                 // Check the cassette to make sure the "registration_data" key is populated in the request body
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Parameters]
+        public async Task TestCreateUps()
+        {
+            UseVCR("create_ups");
+
+            // UPS should hit the `/ups_oauth_registrations` endpoint
+            Dictionary<string, object> data = Fixtures.BasicCarrierAccount;
+
+            Parameters.CarrierAccount.CreateUps parameters = Fixtures.Parameters.CarrierAccounts.CreateUps(data);
+
+            try
+            {
+                // confirms we can pass in CreateUps parameters to the same Create method because they are children of the generic Create class
+                CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
+                CleanUpAfterTest(carrierAccount.Id);
+            }
+
+            catch (BadRequestError e)
+            {
+                // the data we're sending is invalid, we want to check that the API error is because of malformed data and not due to the endpoint
+                Assert.Equal(400, e.StatusCode); // 400 is fine. We don't want a 404 not found
+                Assert.NotNull(e.Errors);
+                Assert.Contains(e.Errors, error => error is { Message: "Invalid Customer Account Nbr" });
+
+                // Check the cassette to make sure the endpoint is correct (it should be ups_oauth_registrations)
+                // Check the cassette to make sure the "ups_oauth_registrations" key is populated in the request body
             }
         }
 

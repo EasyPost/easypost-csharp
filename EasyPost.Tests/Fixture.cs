@@ -56,8 +56,8 @@ namespace EasyPost.Tests._Utilities
 
                 const string pickupDate = "2024-04-08";
 
-                fixture!.AddOrUpdate("min_datetime", pickupDate);
-                fixture!.AddOrUpdate("max_datetime", pickupDate);
+                fixture!.AddOrUpdate(pickupDate, "min_datetime");
+                fixture!.AddOrUpdate(pickupDate, "max_datetime");
 
                 return fixture;
             }
@@ -256,6 +256,18 @@ namespace EasyPost.Tests._Utilities
                         ShippingAddressPostalCode = "94105",
                         ShippingAddressState = "CA",
                         ShippingAddressStreet = "345 California St",
+                    };
+                }
+
+                internal static ParameterSets.CarrierAccount.CreateUps CreateUps(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new ParameterSets.CarrierAccount.CreateUps
+                    {
+                        Description = fixture.GetOrNull<string>("description"),
+                        Reference = fixture.GetOrNull<string>("reference"),
+                        AccountNumber = "123456789",
                     };
                 }
             }

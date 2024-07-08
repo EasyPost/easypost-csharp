@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.API;
+using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
@@ -56,24 +57,20 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create_with_custom_workflow");
 
-            // Carriers like FedEx and UPS should hit the `/carrier_accounts/register` endpoint
+            //  FedEx or UPS should trigger a function error since not supported by legacy parameter method
             try
             {
                 Dictionary<string, object> parameters = Fixtures.BasicCarrierAccount;
-                parameters["type"] = "FedexAccount";
+                parameters["type"] = CarrierAccountType.FedEx.Name;
                 parameters["registration_data"] = new Dictionary<string, object>();
 
                 CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
                 CleanUpAfterTest(carrierAccount.Id);
             }
-            catch (InvalidRequestError e)
+            catch (InvalidFunctionError e)
             {
-                // the data we're sending is invalid, we want to check that the API error is because of malformed data and not due to the endpoint
-                Assert.Equal(422, e.StatusCode);  // 422 is fine. We don't want a 404 not found
-                Assert.NotNull(e.Errors);
-                Assert.Contains(e.Errors, error => error is { Field: "account_number", Message: "must be present and a string" });
-
-                // Check the cassette to make sure the endpoint is correct (it should be carrier_accounts/register)
+                // Function should have been halted due to incompatible carrier account type
+                Assert.NotNull(e);
             }
         }
 
