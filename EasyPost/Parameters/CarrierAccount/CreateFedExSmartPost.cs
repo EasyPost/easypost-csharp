@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
+using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Parameters.CarrierAccount;
 
@@ -118,10 +120,26 @@ public class CreateFedExSmartPost : ACreate
     [TopLevelRequestParameter(Necessity.Required, "carrier_account", "registration_data", "shipping_streets")]
     public string? ShippingAddressStreet { get; set; }
 
-    /// <inheritdoc cref="EasyPost.Parameters.CarrierAccount.ACreate.Endpoint"/>
-    internal override string Endpoint => Constants.CarrierAccounts.CustomCreateEndpoint;
+    /// <summary>
+    ///     Description for the new <see cref="Models.API.CarrierAccount"/>.
+    /// </summary>
+    [TopLevelRequestParameter(Necessity.Optional, "carrier_account", "description")]
+    public string? Description { get; set; }
+
+    /// <summary>
+    ///     Reference name for the new <see cref="Models.API.CarrierAccount"/>.
+    /// </summary>
+    [TopLevelRequestParameter(Necessity.Optional, "carrier_account", "reference")]
+    public string? Reference { get; set; }
+
+    /// <inheritdoc/>
+    [TopLevelRequestParameter(Necessity.Required, "carrier_account", "type")]
+    public override string? Type { get; set; }
 
     #endregion
+
+    /// <inheritdoc cref="EasyPost.Parameters.CarrierAccount.ACreate.Endpoint"/>
+    internal override string Endpoint => Constants.CarrierAccounts.CustomCreateEndpoint;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="CreateFedExSmartPost"/> class.
@@ -129,5 +147,15 @@ public class CreateFedExSmartPost : ACreate
     public CreateFedExSmartPost()
        : base(CarrierAccountType.FedExSmartPost)
     {
+    }
+
+    /// <inheritdoc />
+    public override Dictionary<string, object> ToDictionary()
+    {
+        Dictionary<string, object> dictionary = base.ToDictionary();
+
+        dictionary!.AddOrUpdate(Type, "carrier_account", "type"); // Need to add "type" since excluded from serialization
+
+        return dictionary;
     }
 }

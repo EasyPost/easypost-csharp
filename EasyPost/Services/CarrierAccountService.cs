@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -37,6 +38,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="CarrierAccount"/> object.</returns>
         [CrudOperations.Create]
+        [Obsolete("This function does not support FedEx or UPS account registrations. Please use the Create(Parameters.CarrierAccount.ACreate) function instead for all carrier account registrations.")]
         public async Task<CarrierAccount> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             if (parameters["type"] is not string carrierType)
@@ -44,11 +46,13 @@ namespace EasyPost.Services
                 throw new MissingParameterError("CarrierAccount type is required.");
             }
 
-            string endpoint = Constants.CarrierAccounts.StandardCreateEndpoint;
-            if (Constants.CarrierAccounts.IsCustomWorkflowType(carrierType))
+            // Stop users from using this function for non-standard carrier account creation workflows (FedEx, UPS, etc.)
+            if (Constants.CarrierAccounts.IsCustomWorkflowCreate(carrierType))
             {
-                endpoint = Constants.CarrierAccounts.CustomCreateEndpoint;
+                throw new InvalidFunctionError($"This function does not support non-standard carrier accounts, including FedEx and UPS. Use Create(Parameters.CarrierAccount.ACreate) instead.");
             }
+
+            string endpoint = Constants.CarrierAccounts.DeriveCreateEndpoint(carrierType); // Should always be "carrier_accounts" due to guard clause above, but just in case
 
             parameters = parameters.Wrap("carrier_account");
 
@@ -71,8 +75,8 @@ namespace EasyPost.Services
                 throw new MissingParameterError(nameof(parameters.Type));
             }
 
-            // stop the user from using a generic Create parameter set when creating a carrier account with a custom workflow (e.g. FedExAccount)
-            if (parameters.GetType() == typeof(Parameters.CarrierAccount.Create) && Constants.CarrierAccounts.IsCustomWorkflowType(parameters.Type))
+            // Stop users from using a generic Create parameter set when creating a carrier account with a custom workflow (e.g. FedExAccount or UpsAccount)
+            if (parameters.GetType() == typeof(Parameters.CarrierAccount.Create) && Constants.CarrierAccounts.IsCustomWorkflowCreate(parameters.Type))
             {
                 throw new InvalidParameterError("parameters", $"Use a {parameters.Type} custom workflow parameter set instead.");
             }

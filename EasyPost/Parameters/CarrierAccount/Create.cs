@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
+using EasyPost.Utilities.Internal.Extensions;
+// ReSharper disable VirtualMemberCallInConstructor - Virtual member allowed during base class construction despite not being sealed
 
 namespace EasyPost.Parameters.CarrierAccount
 {
@@ -28,11 +30,27 @@ namespace EasyPost.Parameters.CarrierAccount
         public Dictionary<string, object?>? TestCredentials { get; set; }
 
         /// <summary>
+        ///     Description for the new <see cref="Models.API.CarrierAccount"/>.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "carrier_account", "description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        ///     Reference name for the new <see cref="Models.API.CarrierAccount"/>.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "carrier_account", "reference")]
+        public string? Reference { get; set; }
+
+        /// <inheritdoc/>
+        [TopLevelRequestParameter(Necessity.Required, "carrier_account", "type")]
+        public override string? Type { get; set; }
+
+        #endregion
+
+        /// <summary>
         ///     The endpoint to hit to create this carrier account.
         /// </summary>
         internal override string Endpoint => Constants.CarrierAccounts.StandardCreateEndpoint;
-
-        #endregion
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Create"/> class.
@@ -67,25 +85,10 @@ namespace EasyPost.Parameters.CarrierAccount
     [ExcludeFromCodeCoverage]
     public abstract class ACreate : BaseParameters<Models.API.CarrierAccount>, ICarrierAccountParameter
     {
-        #region Request Parameters
-
-        /// <summary>
-        ///     Description for the new <see cref="Models.API.CarrierAccount"/>.
-        /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "carrier_account", "description")]
-        public string? Description { get; set; }
-
-        /// <summary>
-        ///     Reference name for the new <see cref="Models.API.CarrierAccount"/>.
-        /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "carrier_account", "reference")]
-        public string? Reference { get; set; }
-
         /// <summary>
         ///     Type of <see cref="Models.API.CarrierAccount"/> to create.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Required, "carrier_account", "type")]
-        public string? Type { get; set; }
+        public abstract string? Type { get; set; }
 
         /// <summary>
         ///     The endpoint to hit to create this carrier account.
@@ -95,6 +98,7 @@ namespace EasyPost.Parameters.CarrierAccount
         /// <summary>
         ///     Initializes a new instance of the <see cref="ACreate"/> class.
         /// </summary>
+        [Obsolete("Use ACreate(CarrierAccountType type) or ACreate(string type) instead.")]
         protected ACreate()
         {
         }
@@ -116,7 +120,5 @@ namespace EasyPost.Parameters.CarrierAccount
         {
             Type = type.Name;
         }
-
-        #endregion
     }
 }
