@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
-using EasyPost.Utilities.Internal.Extensions;
 // ReSharper disable VirtualMemberCallInConstructor - Virtual member allowed during base class construction despite not being sealed
 
 namespace EasyPost.Parameters.CarrierAccount

@@ -52,8 +52,8 @@ namespace EasyPost.Utilities.Internal.Extensions
         ///     This update runs in-place, so the dictionary is not copied and a new dictionary is not returned.
         /// </summary>
         /// <param name="dictionary">The dictionary to add/update the key-value pair in.</param>
-        /// <param name="key">The key path to add/update.</param>
         /// <param name="value">The value to add/update.</param>
+        /// <param name="key">The key path to add/update.</param>
         public static void AddOrUpdate(this IDictionary<string, object?> dictionary, object? value, string key)
         {
             try
@@ -72,8 +72,8 @@ namespace EasyPost.Utilities.Internal.Extensions
         ///     This update runs in-place, so the dictionary is not copied and a new dictionary is not returned.
         /// </summary>
         /// <param name="dictionary">The dictionary to add/update the key-value pair in.</param>
-        /// <param name="path">The key path to add/update.</param>
         /// <param name="value">The value to add/update.</param>
+        /// <param name="path">The key path to add/update.</param>
         public static void AddOrUpdate(this IDictionary<string, object?> dictionary, object? value, params string[] path)
         {
             switch (path.Length)
