@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 636,
-    "RecordedAt": "2024-04-05T13:24:56.180147-06:00",
+    "Duration": 518,
+    "RecordedAt": "2024-07-08T17:59:13.409396-06:00",
     "Request": {
       "Body": "{\"carrier_account\":{\"registration_data\":{\"account_number\":\"123456789\",\"corporate_city\":\"San Francisco\",\"corporate_country_code\":\"US\",\"corporate_postal_code\":\"94105\",\"corporate_state\":\"CA\",\"corporate_streets\":\"345 California St\",\"corporate_company_name\":\"EasyPost\",\"corporate_email_address\":\"me@example.com\",\"corporate_first_name\":\"Demo\",\"corporate_job_title\":\"Developer\",\"corporate_last_name\":\"User\",\"corporate_phone_number\":\"5555555555\",\"shipping_city\":\"San Francisco\",\"shipping_country_code\":\"US\",\"shipping_postal_code\":\"94105\",\"shipping_state\":\"CA\",\"shipping_streets\":\"345 California St\"},\"type\":\"FedexAccount\"}}",
       "BodyContentType": "Json",
@@ -27,19 +27,19 @@
       "HttpVersion": "1.1",
       "ResponseHeaders": {
         "X-Frame-Options": "SAMEORIGIN",
-        "X-XSS-Protection": "1; mode=block",
+        "x-xss-protection": "1; mode=block",
         "X-Content-Type-Options": "nosniff",
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
-        "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "1f0ae7a766105007f43045ec000fa549",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "df6fc7b4668c7d51f40c0c6800499da3",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.464939",
-        "x-node": "bigweb53nuq",
-        "x-version-label": "easypost-202404051854-b9502cad97-master",
+        "x-runtime": "0.328739",
+        "x-node": "bigweb34nuq",
+        "x-version-label": "easypost-202407082200-ece3ee3827-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb3nuq 39c21b8207,extlb2nuq 60566a9ec2",
+        "x-proxied": "intlb4nuq fa152d4755,extlb1nuq fa152d4755",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
