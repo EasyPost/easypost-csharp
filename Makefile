@@ -36,6 +36,11 @@ coverage-check:
 docs:
 	dotnet tool run docfx docs/docfx.json
 
+## init-examples-submodule - Initialize the examples submodule
+init-examples-submodule:
+	git submodule init
+	git submodule update
+
 ## install-tools - Install required dotnet tools
 install-tools:
 	dotnet new tool-manifest || exit 0
@@ -48,7 +53,7 @@ install-styleguide: | update-examples-submodule
 	sh examples/symlink_directory_files.sh examples/style_guides/csharp .
 
 ## install - Install requirements
-install: | install-tools update-examples-submodule
+install: | install-tools init-examples-submodule
 
 ## lint - Lints the solution (EasyPost + Tests + Integration + F#/VB compatibilities) (check IDE and SA rule violations)
 lint:
@@ -131,4 +136,4 @@ fs-compat-test:
 vb-compat-test:
 	dotnet test EasyPost.Compatibility.VB/EasyPost.Compatibility.VB.vbproj -f ${fw} -restore
 
-.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format install-styleguide install-tools install lint lint-scripts release restore scan setup-win setup-unix test update-examples-submodule unit-test integration-test fs-compat-test vb-compat-test
+.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format init-examples-submodule install-styleguide install-tools install lint lint-scripts release restore scan setup-win setup-unix test update-examples-submodule unit-test integration-test fs-compat-test vb-compat-test
