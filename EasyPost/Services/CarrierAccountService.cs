@@ -81,6 +81,12 @@ namespace EasyPost.Services
                 throw new InvalidParameterError("parameters", $"Use a {parameters.Type} custom workflow parameter set instead.");
             }
 
+            // Stop users from using a custom Create parameter set when creating a carrier account with a standard workflow
+            if (parameters.GetType() != typeof(Parameters.CarrierAccount.Create) && !Constants.CarrierAccounts.IsCustomWorkflowCreate(parameters.Type))
+            {
+                throw new InvalidParameterError("parameters", "Use a standard Create parameter set instead.");
+            }
+
             string endpoint = parameters.Endpoint;
 
             return await RequestAsync<CarrierAccount>(Method.Post, endpoint, cancellationToken, parameters.ToDictionary());
@@ -114,10 +120,23 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="CarrierAccount"/>.</returns>
         [CrudOperations.Update]
+        [Obsolete("This function does not support UPS accounts. Please use the Update(string, Parameters.CarrierAccount.Update) function instead for all carrier account updates.")]
         public async Task<CarrierAccount> Update(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
+            // Need to retrieve account first to check type
+            CarrierAccount account = await Retrieve(id, cancellationToken);
+
+            // Stop users from using this function for non-standard carrier account update workflows (UPS, etc.)
+            if (Constants.CarrierAccounts.IsCustomWorkflowUpdate(account.Type!))
+            {
+                throw new InvalidFunctionError($"This function does not support non-standard carrier accounts, including UPS. Use Update(string, Parameters.CarrierAccount.Update) instead.");
+            }
+
+            string endpoint = Constants.CarrierAccounts.DeriveUpdateEndpoint(account.Type!, id); // Should always be "carrier_accounts/{ID}" due to guard clause above, but just in case
+
             parameters = parameters.Wrap("carrier_account");
-            return await RequestAsync<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", cancellationToken, parameters);
+
+            return await RequestAsync<CarrierAccount>(Method.Put, endpoint, cancellationToken, parameters);
         }
 
         /// <summary>
@@ -129,9 +148,26 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="CarrierAccount"/>.</returns>
         [CrudOperations.Update]
-        public async Task<CarrierAccount> Update(string id, Parameters.CarrierAccount.Update parameters, CancellationToken cancellationToken = default)
+        public async Task<CarrierAccount> Update(string id, Parameters.CarrierAccount.AUpdate parameters, CancellationToken cancellationToken = default)
         {
-            return await RequestAsync<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", cancellationToken, parameters.ToDictionary());
+            // Need to retrieve account first to check type
+            CarrierAccount account = await Retrieve(id, cancellationToken);
+
+            // Stop users from using a generic Update parameter set when updating a carrier account with a custom workflow (e.g. UpsAccount)
+            if (parameters.GetType() == typeof(Parameters.CarrierAccount.Update) && Constants.CarrierAccounts.IsCustomWorkflowUpdate(account.Type!))
+            {
+                throw new InvalidParameterError("parameters", $"Use a {account.Type} custom workflow parameter set instead.");
+            }
+
+            // Stop users from using a custom Update parameter set when updating a carrier account with a standard workflow
+            if (parameters.GetType() != typeof(Parameters.CarrierAccount.Update) && !Constants.CarrierAccounts.IsCustomWorkflowUpdate(account.Type!))
+            {
+                throw new InvalidParameterError("parameters", "Use a standard Update parameter set instead.");
+            }
+
+            string endpoint = parameters.Endpoint(id);
+
+            return await RequestAsync<CarrierAccount>(Method.Put, endpoint, cancellationToken, parameters.ToDictionary());
         }
 
         /// <summary>
