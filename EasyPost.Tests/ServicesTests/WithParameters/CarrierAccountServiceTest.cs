@@ -95,23 +95,12 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Parameters.CarrierAccount.CreateUps parameters = Fixtures.Parameters.CarrierAccounts.CreateUps(data);
 
-            try
-            {
-                // confirms we can pass in CreateUps parameters to the same Create method because they are children of the generic Create class
-                CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
-                CleanUpAfterTest(carrierAccount.Id);
-            }
+            // confirms we can pass in CreateUps parameters to the same Create method because they are children of the generic Create class
+            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
+            CleanUpAfterTest(carrierAccount.Id);
 
-            catch (BadRequestError e)
-            {
-                // the data we're sending is invalid, we want to check that the API error is because of malformed data and not due to the endpoint
-                Assert.Equal(400, e.StatusCode); // 400 is fine. We don't want a 404 not found
-                Assert.NotNull(e.Errors);
-                Assert.Contains(e.Errors, error => error is { Message: "Invalid Customer Account Nbr" });
-
-                // Check the cassette to make sure the endpoint is correct (it should be ups_oauth_registrations)
-                // Check the cassette to make sure the "ups_oauth_registrations" key is populated in the request body
-            }
+            Assert.IsType<CarrierAccount>(carrierAccount);
+            Assert.StartsWith("ca_", carrierAccount.Id);
         }
 
         [Fact]

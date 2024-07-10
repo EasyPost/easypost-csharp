@@ -165,15 +165,12 @@ namespace EasyPost
 
                 var @switch = new SwitchCase
                 {
-                    { CarrierAccountType.FedEx.Name, () => endpoint = CustomCreateEndpoint },
-                    { CarrierAccountType.FedExSmartPost.Name, () => endpoint = CustomCreateEndpoint },
-                    { CarrierAccountType.Ups.Name, () => endpoint = UpsOAuthCreateEndpoint },
-                    { CarrierAccountType.UpsMailInnovations.Name, () => endpoint = UpsOAuthCreateEndpoint },
-                    { CarrierAccountType.UpsSurePost.Name, () => endpoint = UpsOAuthCreateEndpoint },
+                    { new List<string> { CarrierAccountType.FedEx.Name, CarrierAccountType.FedExSmartPost.Name }.Contains(carrierType), () => endpoint = CustomCreateEndpoint },
+                    { new List<string> { CarrierAccountType.Ups.Name, CarrierAccountType.UpsMailInnovations.Name, CarrierAccountType.UpsSurePost.Name }.Contains(carrierType), () => endpoint = UpsOAuthCreateEndpoint },
                     { SwitchCaseScenario.Default, () => endpoint = StandardCreateEndpoint },
                 };
 
-                @switch.MatchFirst(carrierType);
+                @switch.MatchFirstTrue();
 
                 return endpoint;
             }
@@ -184,13 +181,11 @@ namespace EasyPost
 
                 var @switch = new SwitchCase
                 {
-                    { CarrierAccountType.Ups.Name, () => endpoint = string.Format(CultureInfo.InvariantCulture, UpsOAuthUpdateEndpoint, id) },
-                    { CarrierAccountType.UpsMailInnovations.Name, () => endpoint = string.Format(CultureInfo.InvariantCulture, UpsOAuthUpdateEndpoint, id) },
-                    { CarrierAccountType.UpsSurePost.Name, () => endpoint = string.Format(CultureInfo.InvariantCulture, UpsOAuthUpdateEndpoint, id) },
+                    { new List<string> { CarrierAccountType.Ups.Name, CarrierAccountType.UpsMailInnovations.Name, CarrierAccountType.UpsSurePost.Name }.Contains(carrierType), () => endpoint = string.Format(CultureInfo.InvariantCulture, UpsOAuthUpdateEndpoint, id) },
                     { SwitchCaseScenario.Default, () => endpoint = string.Format(CultureInfo.InvariantCulture, StandardUpdateEndpoint, id) },
                 };
 
-                @switch.MatchFirst(carrierType);
+                @switch.MatchFirstTrue();
 
                 return endpoint;
             }
