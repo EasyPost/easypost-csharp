@@ -5,7 +5,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.SmartRate
 {
     /// <summary>
-    ///     Parameters for <see cref="SmartRateService.EstimateDeliveryDateForShipment(string, EstimateDeliveryDateForShipment, System.Threading.CancellationToken)"/> API calls.
+    ///     Parameters for <see cref="ShipmentService.EstimateDeliveryDate(string, EstimateDeliveryDateForShipment, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class EstimateDeliveryDateForShipment : BaseParameters<Models.API.EstimateDeliveryDateForShipmentResult>

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
@@ -38,8 +37,6 @@ namespace EasyPost.Services
         {
             return await RequestAsync<EstimateDeliveryDateForZipPairResult>(Method.Post, "smartrate/deliver_by", cancellationToken, parameters.ToDictionary());
         }
-
-
 
         /// <summary>
         ///     Retrieve a recommended ship date for each carrier-service level combination via the Smart Deliver On API, based on a specific desired delivery date and origin-destination postal code pair.
