@@ -23,90 +23,16 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
-        public async Task TestGetSmartRates()
+        public async Task TestEstimateDeliveryDate()
         {
-            UseVCR("get_smart_rates");
-
-            Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
-
-            Assert.NotNull(shipment.Rates);
-
-            List<SmartRate> smartRates = await Client.SmartRate.GetSmartRates(shipment.Id);
-            SmartRate smartRate = smartRates.First();
-            // Must compare IDs because one is a Rate object and one is a SmartRate object
-            Assert.Equal(shipment.Rates[0].Id, smartRate.Id);
-            Assert.NotNull(smartRate.TimeInTransit.Percentile50);
-            Assert.NotNull(smartRate.TimeInTransit.Percentile75);
-            Assert.NotNull(smartRate.TimeInTransit.Percentile85);
-            Assert.NotNull(smartRate.TimeInTransit.Percentile90);
-            Assert.NotNull(smartRate.TimeInTransit.Percentile95);
-            Assert.NotNull(smartRate.TimeInTransit.Percentile97);
-            Assert.NotNull(smartRate.TimeInTransit.Percentile99);
-        }
-
-        [Fact]
-        [CrudOperations.Read]
-        [Testing.Function]
-        public async Task TestEstimateDeliveryDateForShipment()
-        {
-            UseVCR("estimate_delivery_date_by_ship_date");
-
-            Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
-
-            Parameters.SmartRate.EstimateDeliveryDateForShipment estimateDeliveryDateForShipmentParameters = new()
-            {
-                PlannedShipDate = Fixtures.PlannedShipDate,
-            };
-
-            List<EstimateDeliveryDateForShipmentResult> ratesWithEstimatedDeliveryDates = await Client.SmartRate.EstimateDeliveryDateForShipment(shipment.Id, estimateDeliveryDateForShipmentParameters);
-
-            foreach (var rate in ratesWithEstimatedDeliveryDates)
-            {
-                Assert.NotNull(rate.TimeInTransitDetails);
-                Assert.NotNull(rate.TimeInTransitDetails.EasyPostEstimatedDeliveryDate);
-                Assert.NotNull(rate.TimeInTransitDetails.TimeInTransitPercentiles);
-                Assert.NotNull(rate.TimeInTransitDetails.PlannedShipDate);
-            }
-        }
-
-        [Fact]
-        [CrudOperations.Read]
-        [Testing.Function]
-        public async Task TestRecommendShipDateForShipment()
-        {
-            UseVCR("recommend_ship_date_by_delivery_date");
-
-            Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
-
-            Parameters.SmartRate.RecommendShipDateForShipment recommendShipDateForShipmentParameters = new()
-            {
-                DesiredDeliveryDate = Fixtures.DesiredDeliveryDate,
-            };
-
-            List<RecommendShipDateForShipmentResult> ratesWithEstimatedDeliveryDates = await Client.SmartRate.RecommendShipDateForShipment(shipment.Id, recommendShipDateForShipmentParameters);
-
-            foreach (var rate in ratesWithEstimatedDeliveryDates)
-            {
-                Assert.NotNull(rate.TimeInTransitDetails);
-                Assert.NotNull(rate.TimeInTransitDetails.EasyPostRecommendedShipDate);
-                Assert.NotNull(rate.TimeInTransitDetails.TimeInTransitPercentiles);
-                Assert.NotNull(rate.TimeInTransitDetails.DesiredDeliveryDate);
-            }
-        }
-
-        [Fact]
-        [CrudOperations.Read]
-        [Testing.Function]
-        public async Task TestEstimateDeliveryDateForRoute()
-        {
-            UseVCR("estimate_delivery_date_by_route");
+            UseVCR("estimate_delivery_date");
 
             Dictionary<string, object> address1Data = Fixtures.CaAddress1;
             Dictionary<string, object> address2Data = Fixtures.CaAddress2;
             Parameters.Address.Create address1Parameters = Fixtures.Parameters.Addresses.Create(address1Data);
             Parameters.Address.Create address2Parameters = Fixtures.Parameters.Addresses.Create(address2Data);
 
-            Parameters.SmartRate.EstimateDeliveryDateForRoute estimateDeliveryDateForRouteParameters = new()
+            Parameters.SmartRate.EstimateDeliveryDateForZipPair estimateDeliveryDateForZipPairParameters = new()
             {
                 OriginPostalCode = address1Parameters.Zip,
                 DestinationPostalCode = address2Parameters.Zip,
@@ -114,11 +40,11 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 Carriers = ["USPS", "FedEx", "UPS", "DHL"],
             };
 
-            EstimateDeliveryDateForRouteResult result = await Client.SmartRate.EstimateDeliveryDateForRoute(estimateDeliveryDateForRouteParameters);
+            EstimateDeliveryDateForZipPairResult result = await Client.SmartRate.EstimateDeliveryDate(estimateDeliveryDateForZipPairParameters);
 
-            Assert.Equal(result.OriginPostalCode, estimateDeliveryDateForRouteParameters.OriginPostalCode);
-            Assert.Equal(result.DestinationPostalCode, estimateDeliveryDateForRouteParameters.DestinationPostalCode);
-            Assert.Equal(result.PlannedShipDate, estimateDeliveryDateForRouteParameters.PlannedShipDate);
+            Assert.Equal(result.OriginPostalCode, estimateDeliveryDateForZipPairParameters.OriginPostalCode);
+            Assert.Equal(result.DestinationPostalCode, estimateDeliveryDateForZipPairParameters.DestinationPostalCode);
+            Assert.Equal(result.PlannedShipDate, estimateDeliveryDateForZipPairParameters.PlannedShipDate);
             Assert.NotNull(result.Estimates);
             Assert.NotEmpty(result.Estimates);
             foreach (var estimate in result.Estimates)
@@ -134,16 +60,16 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         [Fact]
         [CrudOperations.Read]
         [Testing.Function]
-        public async Task TestRecommendShipDateForRoute()
+        public async Task TestRecommendShipDate()
         {
-            UseVCR("recommend_ship_date_by_route");
+            UseVCR("recommend_ship_date");
 
             Dictionary<string, object> address1Data = Fixtures.CaAddress1;
             Dictionary<string, object> address2Data = Fixtures.CaAddress2;
             Parameters.Address.Create address1Parameters = Fixtures.Parameters.Addresses.Create(address1Data);
             Parameters.Address.Create address2Parameters = Fixtures.Parameters.Addresses.Create(address2Data);
 
-            Parameters.SmartRate.RecommendShipDateForRoute recommendShipDateForRouteParameters = new()
+            Parameters.SmartRate.RecommendShipDateForZipPair recommendShipDateForZipPairParameters = new()
             {
                 OriginPostalCode = address1Parameters.Zip,
                 DestinationPostalCode = address2Parameters.Zip,
@@ -151,11 +77,11 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 Carriers = ["USPS", "FedEx", "UPS", "DHL"],
             };
 
-            RecommendShipDateForRouteResult result = await Client.SmartRate.RecommendShipDateForRoute(recommendShipDateForRouteParameters);
+            RecommendShipDateForZipPairResult result = await Client.SmartRate.RecommendShipDate(recommendShipDateForZipPairParameters);
 
-            Assert.Equal(result.OriginPostalCode, recommendShipDateForRouteParameters.OriginPostalCode);
-            Assert.Equal(result.DestinationPostalCode, recommendShipDateForRouteParameters.DestinationPostalCode);
-            Assert.Equal(result.DesiredDeliveryDate, recommendShipDateForRouteParameters.DesiredDeliveryDate);
+            Assert.Equal(result.OriginPostalCode, recommendShipDateForZipPairParameters.OriginPostalCode);
+            Assert.Equal(result.DestinationPostalCode, recommendShipDateForZipPairParameters.DestinationPostalCode);
+            Assert.Equal(result.DesiredDeliveryDate, recommendShipDateForZipPairParameters.DesiredDeliveryDate);
             Assert.NotNull(result.Estimates);
             Assert.NotEmpty(result.Estimates);
             foreach (var estimate in result.Estimates)

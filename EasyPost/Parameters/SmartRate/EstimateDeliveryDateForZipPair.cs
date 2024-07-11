@@ -6,10 +6,10 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.SmartRate
 {
     /// <summary>
-    ///     Parameters for <see cref="SmartRateService.EstimateDeliveryDateForRoute(EstimateDeliveryDateForRoute, System.Threading.CancellationToken)"/> API calls.
+    ///     Parameters for <see cref="SmartRateService.EstimateDeliveryDateForZipPair(EstimateDeliveryDateForZipPair, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class EstimateDeliveryDateForRoute : BaseParameters<Models.API.EstimateDeliveryDateForShipmentResult>
+    public class EstimateDeliveryDateForZipPair : BaseParameters<Models.API.EstimateDeliveryDateForShipmentResult>
     {
         #region Request Parameters
 

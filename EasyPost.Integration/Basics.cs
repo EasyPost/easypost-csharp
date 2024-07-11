@@ -34,7 +34,7 @@ public class Basics
         var endShipper = new EndShipper();
         var endShipperCollection = new EndShipperCollection();
         var error = new Error();
-        var estimateDeliveryDateForRouteResult = new EstimateDeliveryDateForRouteResult();
+        var EstimateDeliveryDateForZipPairResult = new EstimateDeliveryDateForZipPairResult();
         var estimateDeliveryDateForShipmentResult = new EstimateDeliveryDateForShipmentResult();
         var @event = new Event();
         var eventCollection = new EventCollection();
@@ -57,7 +57,7 @@ public class Basics
         var predefinedPackage = new PredefinedPackage();
         var rate = new Rate();
         var rateWithEstimatedDeliveryDate = new RateWithEstimatedDeliveryDate();
-        var recommendShipDateForRouteResult = new RecommendShipDateForRouteResult();
+        var recommendShipDateForZipPairResult = new RecommendShipDateForZipPairResult();
         var recommendShipDateForShipmentResult = new RecommendShipDateForShipmentResult();
         var referralCustomer = new ReferralCustomer();
         var refund = new Refund();
@@ -148,8 +148,8 @@ public class Basics
         var shipmentRetrieveEstimatedDeliveryDateParameters = new EasyPost.Parameters.Shipment.RetrieveEstimatedDeliveryDate();
         var smartRateEstimateDeliveryDateForShipmentParameters = new EasyPost.Parameters.SmartRate.EstimateDeliveryDateForShipment();
         var smartRateRecommendShipDateForShipmentParameters = new EasyPost.Parameters.SmartRate.RecommendShipDateForShipment();
-        var smartRateEstimateDeliveryDateForRouteParameters = new EasyPost.Parameters.SmartRate.EstimateDeliveryDateForRoute();
-        var smartRateRecommendShipDateForRouteParameters = new EasyPost.Parameters.SmartRate.RecommendShipDateForRoute();
+        var smartRateEstimateDeliveryDateForZipPairParameters = new EasyPost.Parameters.SmartRate.EstimateDeliveryDateForZipPair();
+        var smartRateRecommendShipDateForZipPairParameters = new EasyPost.Parameters.SmartRate.RecommendShipDateForZipPair();
         var taxIdentifierCreateParameters = new EasyPost.Parameters.TaxIdentifier.Create();
         var trackerCreateParameters = new EasyPost.Parameters.Tracker.Create();
         var trackerAllParameters = new EasyPost.Parameters.Tracker.All();

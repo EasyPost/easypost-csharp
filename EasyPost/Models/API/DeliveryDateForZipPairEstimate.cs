@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing time-in-transit estimates for a specific carrier-route-service level combination in a <see cref="RecommendShipDateForRouteResult"/>.
+    ///     Class representing time-in-transit estimates for a specific carrier-route-service level combination in a <see cref="EstimateDeliveryDateForZipPairResult"/>.
     /// </summary>
-    public class ShipDateForRouteRecommendation : EphemeralEasyPostObject
+    public class DeliveryDateForZipPairEstimate : EphemeralEasyPostObject
     {
         #region JSON Properties
 
@@ -23,10 +23,10 @@ namespace EasyPost.Models.API
         public string? Service { get; set; }
 
         /// <summary>
-        ///     Estimated <see cref="TimeInTransitDetailsForDeliveryDate"/> for the carrier-service level combination.
+        ///     Estimated <see cref="TimeInTransitDetailsForShipDate"/> for the carrier-service level combination.
         /// </summary>
         [JsonProperty("easypost_time_in_transit_data")]
-        public TimeInTransitDetailsForDeliveryDate? EasyPostTimeInTransitData { get; set; }
+        public TimeInTransitDetailsForShipDate? EasyPostTimeInTransitData { get; set; }
 
         #endregion
     }

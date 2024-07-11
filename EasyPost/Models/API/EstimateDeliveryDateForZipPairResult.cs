@@ -5,9 +5,9 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing ship date recommendations for carrier-route-service level combinations.
+    ///     Class representing delivery date estimates for carrier-route-service level combinations.
     /// </summary>
-    public class RecommendShipDateForRouteResult : EphemeralEasyPostObject
+    public class EstimateDeliveryDateForZipPairResult : EphemeralEasyPostObject
     {
         #region JSON Properties
 
@@ -36,16 +36,16 @@ namespace EasyPost.Models.API
         public bool? SaturdayDelivery { get; set; }
 
         /// <summary>
-        ///     The delivery date used for the estimates.
+        ///     The ship date used for the estimates.
         /// </summary>
-        [JsonProperty("desired_delivery_date")]
-        public string? DesiredDeliveryDate { get; set; }
+        [JsonProperty("planned_ship_date")]
+        public string? PlannedShipDate { get; set; }
 
         /// <summary>
         ///     The estimate results.
         /// </summary>
         [JsonProperty("results")]
-        public List<ShipDateForRouteRecommendation>? Estimates { get; set; }
+        public List<DeliveryDateForZipPairEstimate>? Estimates { get; set; }
 
         #endregion
     }

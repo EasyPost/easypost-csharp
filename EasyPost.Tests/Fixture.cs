@@ -89,9 +89,9 @@ namespace EasyPost.Tests._Utilities
 
         internal static string PickupService => GetFixtureStructure().ServiceNames.Usps.PickupService;
 
-        internal static string PlannedShipDate => "2024-07-09";
+        internal static string PlannedShipDate => "2024-07-15";
 
-        internal static string DesiredDeliveryDate => "2024-07-13";
+        internal static string DesiredDeliveryDate => "2024-07-15";
 
         internal static Dictionary<string, object> ReferralCustomer => GetFixtureStructure().Users.Referral;
 

@@ -27,68 +27,31 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Get the <see cref="SmartRate"/>s for a <see cref="Shipment"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-time-in-transit-statistics-across-all-rates-for-a-shipment">Related API documentation</a>.
-        /// </summary>
-        /// <param name="shipmentId">The ID of the <see cref="Shipment"/> to get rates for.</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>A list of <see cref="SmartRate"/>s.</returns>
-        [CrudOperations.Read]
-        public async Task<List<SmartRate>> GetSmartRates(string shipmentId, CancellationToken cancellationToken = default)
-        {
-            return await RequestAsync<List<SmartRate>>(Method.Get, $"shipments/{shipmentId}/smartrate", cancellationToken, rootElement: "result");
-        }
-
-        /// <summary>
-        ///     Retrieve the estimated delivery date of each rate for an existing <see cref="Shipment"/> via the Delivery Date Estimator API, based on a specific ship date.
-        /// </summary>
-        /// <param name="shipmentId">The ID of the <see cref="Shipment"/> to get rate estimates for.</param>
-        /// <param name="parameters">The <see cref="Parameters.SmartRate.EstimateDeliveryDateForShipment"/> parameters to include on the API call.</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>A list of <see cref="EstimateDeliveryDateForShipmentResult"/> objects.</returns>
-        [CrudOperations.Read]
-        public async Task<List<EstimateDeliveryDateForShipmentResult>> EstimateDeliveryDateForShipment(string shipmentId, EstimateDeliveryDateForShipment parameters, CancellationToken cancellationToken = default)
-        {
-            return await RequestAsync<List<EstimateDeliveryDateForShipmentResult>>(Method.Get, $"shipments/{shipmentId}/smartrate/delivery_date", cancellationToken, parameters.ToDictionary(), "rates");
-        }
-
-        /// <summary>
         ///     Retrieve the estimated delivery date of each carrier-service level combination via the Smart Deliver By API, based on a specific ship date and origin-destination postal code pair.
-        ///     Unlike the <see cref="EstimateDeliveryDateForShipment"/> method, this method does not require a <see cref="Shipment"/> ID.
+        ///     Unlike the <see cref="ShipmentService.EstimateDeliveryDate"/> method, this method does not require a <see cref="Shipment"/> ID.
         /// </summary>
-        /// <param name="parameters">The <see cref="Parameters.SmartRate.EstimateDeliveryDateForRoute"/> parameters to include on the API call.</param>
+        /// <param name="parameters">The <see cref="Parameters.SmartRate.EstimateDeliveryDateForZipPair"/> parameters to include on the API call.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>An <see cref="EstimateDeliveryDateForRouteResult"/> object.</returns>
+        /// <returns>An <see cref="EstimateDeliveryDateForZipPairResult"/> object.</returns>
         [CrudOperations.Read]
-        public async Task<EstimateDeliveryDateForRouteResult> EstimateDeliveryDateForRoute(EstimateDeliveryDateForRoute parameters, CancellationToken cancellationToken = default)
+        public async Task<EstimateDeliveryDateForZipPairResult> EstimateDeliveryDate(EstimateDeliveryDateForZipPair parameters, CancellationToken cancellationToken = default)
         {
-            return await RequestAsync<EstimateDeliveryDateForRouteResult>(Method.Post, "smartrate/deliver_by", cancellationToken, parameters.ToDictionary());
+            return await RequestAsync<EstimateDeliveryDateForZipPairResult>(Method.Post, "smartrate/deliver_by", cancellationToken, parameters.ToDictionary());
         }
 
-        /// <summary>
-        ///     Retrieve a recommended ship date for an existing <see cref="Shipment"/> via the Precision Shipping API, based on a specific desired delivery date.
-        /// </summary>
-        /// <param name="shipmentId">The ID of the <see cref="Shipment"/> to get rate estimates for.</param>
-        /// <param name="parameters">The <see cref="Parameters.SmartRate.RecommendShipDateForShipment"/> parameters to include on the API call.</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>A list of <see cref="RecommendShipDateForShipmentResult"/> objects.</returns>
-        [CrudOperations.Read]
-        public async Task<List<RecommendShipDateForShipmentResult>> RecommendShipDateForShipment(string shipmentId, RecommendShipDateForShipment parameters, CancellationToken cancellationToken = default)
-        {
-            return await RequestAsync<List<RecommendShipDateForShipmentResult>>(Method.Get, $"shipments/{shipmentId}/smartrate/precision_shipping", cancellationToken, parameters.ToDictionary(), "rates");
-        }
+
 
         /// <summary>
-        ///     Retrieve a recommended ship date for each carrier-service level combination via the Smart Deliver On API, based on a specific ship date and origin-destination postal code pair.
-        ///     Unlike the <see cref="RecommendShipDateForShipment"/> method, this method does not require a <see cref="Shipment"/> ID.
+        ///     Retrieve a recommended ship date for each carrier-service level combination via the Smart Deliver On API, based on a specific desired delivery date and origin-destination postal code pair.
+        ///     Unlike the <see cref="ShipmentService.RecommendShipDate"/> method, this method does not require a <see cref="Shipment"/> ID.
         /// </summary>
-        /// <param name="parameters">The <see cref="Parameters.SmartRate.RecommendShipDateForRoute"/> parameters to include on the API call.</param>
+        /// <param name="parameters">The <see cref="Parameters.SmartRate.RecommendShipDateForZipPair"/> parameters to include on the API call.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>A <see cref="RecommendShipDateForRouteResult"/> object.</returns>
+        /// <returns>A <see cref="RecommendShipDateForZipPairResult"/> object.</returns>
         [CrudOperations.Read]
-        public async Task<RecommendShipDateForRouteResult> RecommendShipDateForRoute(RecommendShipDateForRoute parameters, CancellationToken cancellationToken = default)
+        public async Task<RecommendShipDateForZipPairResult> RecommendShipDate(RecommendShipDateForZipPair parameters, CancellationToken cancellationToken = default)
         {
-            return await RequestAsync<RecommendShipDateForRouteResult>(Method.Post, "smartrate/deliver_on", cancellationToken, parameters.ToDictionary());
+            return await RequestAsync<RecommendShipDateForZipPairResult>(Method.Post, "smartrate/deliver_on", cancellationToken, parameters.ToDictionary());
         }
 
         #endregion

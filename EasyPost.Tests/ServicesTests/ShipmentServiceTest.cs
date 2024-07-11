@@ -521,7 +521,7 @@ namespace EasyPost.Tests.ServicesTests
 
         [Fact]
         [Testing.Function]
-        public async Task TestRetrieveEstimatedDeliveryDates()
+        public async Task TestRetrieveEstimatedDeliveryDatesDeprecated()
         {
             UseVCR("estimated_delivery_dates");
 

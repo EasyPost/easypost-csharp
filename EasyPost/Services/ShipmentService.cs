@@ -116,7 +116,6 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="SmartRate"/>s.</returns>
         [CrudOperations.Read]
-        [Obsolete("This method has been migrated to the dedicated SmartRate service and will be removed in a future version.")]
         public async Task<List<SmartRate>> GetSmartRates(string id, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<List<SmartRate>>(Method.Get, $"shipments/{id}/smartrate", cancellationToken, rootElement: "result");
@@ -131,7 +130,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="RateWithEstimatedDeliveryDate"/>s.</returns>
         [CrudOperations.Read]
-        [Obsolete("This method has been migrated to the dedicated SmartRate service and will be removed in a future version.")]
+        [Obsolete("This method has been replaced with EstimateDeliveryDate and will be removed in a future version.")]
         public async Task<List<RateWithEstimatedDeliveryDate>> RetrieveEstimatedDeliveryDate(string id, string plannedShipDate, CancellationToken cancellationToken = default)
         {
             Dictionary<string, object> parameters = new()
@@ -150,10 +149,36 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="RateWithEstimatedDeliveryDate"/>s.</returns>
         [CrudOperations.Read]
-        [Obsolete("This method has been migrated to the dedicated SmartRate service and will be removed in a future version.")]
+        [Obsolete("This method has been replaced with EstimateDeliveryDate and will be removed in a future version.")]
         public async Task<List<RateWithEstimatedDeliveryDate>> RetrieveEstimatedDeliveryDate(string id, Parameters.Shipment.RetrieveEstimatedDeliveryDate parameters, CancellationToken cancellationToken = default)
         {
             return await RequestAsync<List<RateWithEstimatedDeliveryDate>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", cancellationToken, parameters.ToDictionary(), "rates");
+        }
+
+        /// <summary>
+        ///     Retrieve the estimated delivery date of each rate for a <see cref="Shipment"/> via the Delivery Date Estimator API, based on a specific ship date.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="Shipment"/> to get rate estimates for.</param>
+        /// <param name="parameters">The <see cref="Parameters.SmartRate.EstimateDeliveryDateForShipment"/> parameters to include on the API call.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A list of <see cref="EstimateDeliveryDateForShipmentResult"/> objects.</returns>
+        [CrudOperations.Read]
+        public async Task<List<EstimateDeliveryDateForShipmentResult>> EstimateDeliveryDate(string id, Parameters.SmartRate.EstimateDeliveryDateForShipment parameters, CancellationToken cancellationToken = default)
+        {
+            return await RequestAsync<List<EstimateDeliveryDateForShipmentResult>>(Method.Get, $"shipments/{id}/smartrate/delivery_date", cancellationToken, parameters.ToDictionary(), "rates");
+        }
+
+        /// <summary>
+        ///     Retrieve a recommended ship date for a <see cref="Shipment"/> via the Precision Shipping API, based on a specific desired delivery date.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="Shipment"/> to get rate estimates for.</param>
+        /// <param name="parameters">The <see cref="Parameters.SmartRate.RecommendShipDateForShipment"/> parameters to include on the API call.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A list of <see cref="RecommendShipDateForShipmentResult"/> objects.</returns>
+        [CrudOperations.Read]
+        public async Task<List<RecommendShipDateForShipmentResult>> RecommendShipDate(string id, Parameters.SmartRate.RecommendShipDateForShipment parameters, CancellationToken cancellationToken = default)
+        {
+            return await RequestAsync<List<RecommendShipDateForShipmentResult>>(Method.Get, $"shipments/{id}/smartrate/precision_shipping", cancellationToken, parameters.ToDictionary(), "rates");
         }
 
         /// <summary>
