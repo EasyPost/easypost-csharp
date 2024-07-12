@@ -11,16 +11,16 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         /// <summary>
-        ///     The <see cref="Models.API.SmartRate"/> object.
+        ///     The <see cref="Models.API.Rate"/> object.
         /// </summary>
         [JsonProperty("rate")]
         public Rate? Rate { get; set; }
 
         /// <summary>
-        ///     Estimated <see cref="TimeInTransitDetailsForShipDate"/> for the <see cref="Rate"/>.
+        ///     Estimated <see cref="TimeInTransitDetailsForDeliveryDateEstimate"/> for the <see cref="Rate"/>.
         /// </summary>
         [JsonProperty("easypost_time_in_transit_data")]
-        public TimeInTransitDetailsForShipDate? TimeInTransitDetails { get; set; }
+        public TimeInTransitDetailsForDeliveryDateEstimate? TimeInTransitDetails { get; set; }
 
         #endregion
     }

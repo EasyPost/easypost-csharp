@@ -23,10 +23,10 @@ namespace EasyPost.Models.API
         public string? Service { get; set; }
 
         /// <summary>
-        ///     Estimated <see cref="TimeInTransitDetailsForDeliveryDate"/> for the carrier-service level combination.
+        ///     Estimated <see cref="TimeInTransitDetailsForShipDateRecommendation"/> for the carrier-service level combination.
         /// </summary>
         [JsonProperty("easypost_time_in_transit_data")]
-        public TimeInTransitDetailsForDeliveryDate? EasyPostTimeInTransitData { get; set; }
+        public TimeInTransitDetailsForShipDateRecommendation? EasyPostTimeInTransitData { get; set; }
 
         #endregion
     }

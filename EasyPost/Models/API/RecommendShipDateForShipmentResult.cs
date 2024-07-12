@@ -17,10 +17,10 @@ namespace EasyPost.Models.API
         public Rate? Rate { get; set; }
 
         /// <summary>
-        ///     Estimated <see cref="TimeInTransitDetailsForDeliveryDate"/> for the <see cref="Rate"/>.
+        ///     Estimated <see cref="TimeInTransitDetailsForShipDateRecommendation"/> for the <see cref="Rate"/>.
         /// </summary>
         [JsonProperty("easypost_time_in_transit_data")]
-        public TimeInTransitDetailsForDeliveryDate? TimeInTransitDetails { get; set; }
+        public TimeInTransitDetailsForShipDateRecommendation? TimeInTransitDetails { get; set; }
 
         #endregion
     }

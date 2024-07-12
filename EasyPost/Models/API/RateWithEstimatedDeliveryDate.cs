@@ -12,7 +12,7 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         /// <summary>
-        ///     The <see cref="Models.API.SmartRate"/> object.
+        ///     The <see cref="Models.API.Rate"/> object.
         /// </summary>
         [JsonProperty("rate")]
         public Rate? Rate { get; set; }

@@ -75,8 +75,8 @@ public class Basics
         var taxIdentifier = new TaxIdentifier();
         var timeInTransit = new TimeInTransit();
         var timeInTransitDetails = new TimeInTransitDetails();
-        var timeInTransitDetailsByShipDate = new TimeInTransitDetailsForShipDate();
-        var timeInTransitDetailsByDeliveryDate = new TimeInTransitDetailsForDeliveryDate();
+        var timeInTransitDetailsByShipDate = new TimeInTransitDetailsForDeliveryDateEstimate();
+        var timeInTransitDetailsByDeliveryDate = new TimeInTransitDetailsForShipDateRecommendation();
         var tracker = new Tracker();
         var trackerCollection = new TrackerCollection();
         var trackingDetail = new TrackingDetail();

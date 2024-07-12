@@ -6,7 +6,7 @@ namespace EasyPost.Models.API;
 /// <summary>
 ///     Class representing estimated transit times for a <see cref="RecommendShipDateForShipmentResult"/>.
 /// </summary>
-public class TimeInTransitDetailsForDeliveryDate
+public class TimeInTransitDetailsForShipDateRecommendation
 {
     #region JSON Properties
 
