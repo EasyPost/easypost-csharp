@@ -120,7 +120,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>The updated <see cref="CarrierAccount"/>.</returns>
         [CrudOperations.Update]
-        [Obsolete("This function does not support UPS accounts. Please use the Update(string, Parameters.CarrierAccount.Update) function instead for all carrier account updates.")]
+        [Obsolete("This function does not support UPS accounts. Please use the Update(string, Parameters.CarrierAccount.AUpdate) function instead for all carrier account updates.")]
         public async Task<CarrierAccount> Update(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             // Need to retrieve account first to check type
