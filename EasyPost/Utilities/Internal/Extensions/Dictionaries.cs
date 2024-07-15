@@ -47,14 +47,14 @@ namespace EasyPost.Utilities.Internal.Extensions
         }
 
         /// <summary>
-        ///     Add a key-value pair to a dictionary if the key does not exist, otherwise update the value.
+        ///     Add a key-value pair to a dictionary if the key path does not exist, otherwise update the value.
         ///     This is a workaround for the fact that <see cref="IDictionary{TKey,TValue}"/> does not have an AddOrUpdate method.
         ///     This update runs in-place, so the dictionary is not copied and a new dictionary is not returned.
         /// </summary>
         /// <param name="dictionary">The dictionary to add/update the key-value pair in.</param>
-        /// <param name="key">The key to add/update.</param>
         /// <param name="value">The value to add/update.</param>
-        public static void AddOrUpdate(this IDictionary<string, object?> dictionary, string key, object? value)
+        /// <param name="key">The key path to add/update.</param>
+        public static void AddOrUpdate(this IDictionary<string, object?> dictionary, object? value, string key)
         {
             try
             {
@@ -63,6 +63,59 @@ namespace EasyPost.Utilities.Internal.Extensions
             catch (ArgumentException)
             {
                 dictionary[key] = value;
+            }
+        }
+
+        /// <summary>
+        ///     Add a key-value pair to a dictionary if the key path does not exist, otherwise update the value.
+        ///     This is a workaround for the fact that <see cref="IDictionary{TKey,TValue}"/> does not have an AddOrUpdate method.
+        ///     This update runs in-place, so the dictionary is not copied and a new dictionary is not returned.
+        /// </summary>
+        /// <param name="dictionary">The dictionary to add/update the key-value pair in.</param>
+        /// <param name="value">The value to add/update.</param>
+        /// <param name="path">The key path to add/update.</param>
+        public static void AddOrUpdate(this IDictionary<string, object?> dictionary, object? value, params string[] path)
+        {
+            switch (path.Length)
+            {
+                // Don't need to go down
+                case 0:
+                    return;
+
+                // Last key left
+                case 1:
+                    dictionary.AddOrUpdate(value, path[0]);
+                    return;
+
+                // ReSharper disable once RedundantEmptySwitchSection
+                default:
+                    break;
+            }
+
+            // Need to go down another level
+            // Get the key and update the list of keys
+            string key = path[0];
+            path = path.Skip(1).ToArray();
+#pragma warning disable CA1854 // Don't want to use TryGetValue because no need for value
+            if (!dictionary.ContainsKey(key))
+            {
+                var newDictionary = new Dictionary<string, object?>();
+                newDictionary.AddOrUpdate(value, path);
+                dictionary[key] = newDictionary;
+            }
+#pragma warning restore CA1854
+
+            object? subDirectory = dictionary[key];
+            if (subDirectory is Dictionary<string, object?> subDictionary)
+            {
+                subDictionary.AddOrUpdate(value, path);
+                dictionary[key] = subDictionary;
+            }
+            else
+            {
+#pragma warning disable CA2201 // Don't throw base Exception class
+                throw new Exception("Found a non-dictionary while traversing the dictionary");
+#pragma warning restore CA2201 // Don't throw base Exception class
             }
         }
 
@@ -76,7 +129,7 @@ namespace EasyPost.Utilities.Internal.Extensions
         {
             foreach (KeyValuePair<string, object> item in other)
             {
-                dictionary!.AddOrUpdate(item.Key, item.Value);
+                dictionary!.AddOrUpdate(item.Value, item.Key);
             }
 
             return dictionary;

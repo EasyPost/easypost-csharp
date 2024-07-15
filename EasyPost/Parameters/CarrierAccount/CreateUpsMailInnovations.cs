@@ -10,7 +10,7 @@ namespace EasyPost.Parameters.CarrierAccount
     ///     <a href="https://www.easypost.com/docs/api#create-a-carrier-account">Parameters</a> for <see cref="EasyPost.Services.CarrierAccountService.Create(ACreate, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class CreateUps : ACreate
+    public class CreateUpsMailInnovations : ACreate
     {
         #region Request Parameters
 
@@ -42,10 +42,10 @@ namespace EasyPost.Parameters.CarrierAccount
         internal override string Endpoint => Constants.CarrierAccounts.UpsOAuthCreateEndpoint;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="CreateUps"/> class.
+        ///     Initializes a new instance of the <see cref="CreateUpsMailInnovations"/> class.
         /// </summary>
-        public CreateUps()
-            : base(CarrierAccountType.Ups)
+        public CreateUpsMailInnovations()
+            : base(CarrierAccountType.UpsMailInnovations)
         {
         }
 

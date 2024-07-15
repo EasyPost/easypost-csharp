@@ -24,6 +24,16 @@ public class CarrierAccountType : ValueEnum
     public static readonly CarrierAccountType Ups = new CarrierAccountType(59, "UpsAccount");
 
     /// <summary>
+    ///     Represents a UPS Mail Innovations carrier account.
+    /// </summary>
+    public static readonly CarrierAccountType UpsMailInnovations = new CarrierAccountType(60, "UpsMailInnovationsAccount");
+
+    /// <summary>
+    ///     Represents a UPS SurePost carrier account.
+    /// </summary>
+    public static readonly CarrierAccountType UpsSurePost = new CarrierAccountType(61, "UpsSurepostAccount");
+
+    /// <summary>
     ///     Initializes a new instance of the <see cref="CarrierAccountType"/> class.
     /// </summary>
     /// <param name="id">Internal ID of the enum. Must be unique among all enums of this specific type.</param>

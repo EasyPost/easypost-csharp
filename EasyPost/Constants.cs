@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net;
 using EasyPost.Exceptions.API;
 using EasyPost.Models.API;
@@ -98,6 +99,7 @@ namespace EasyPost
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
             public const string InvalidApiKeyType = "Invalid API key type.";
             public const string InvalidParameter = "Invalid parameter: {0}.";
+            public const string InvalidFunction = "Invalid function call.";
             public const string InvalidParameterPair = "Invalid parameter pair: '{0}' and '{1}'.";
             public const string InvalidWebhookSignature = "Webhook does not contain a valid HMAC signature.";
             public const string JsonDeserializationError = "Error deserializing JSON into object of type {0}.";
@@ -136,19 +138,67 @@ namespace EasyPost
             public const string UpsAccount = "UpsAccount";
 
             /// <summary>
-            ///     Carrier account types that support custom workflows.
+            ///     Carrier account types that support custom creation workflows.
             /// </summary>
-            private static List<string> CarrierTypesWithCustomWorkflows => new()
+            private static List<string> CarrierTypesWithCustomCreateWorkflows => new()
             {
                 CarrierAccountType.FedEx.Name,
                 CarrierAccountType.FedExSmartPost.Name,
                 CarrierAccountType.Ups.Name,
+                CarrierAccountType.UpsMailInnovations.Name,
+                CarrierAccountType.UpsSurePost.Name,
             };
 
-            internal static bool IsCustomWorkflowType(string carrierType) => CarrierTypesWithCustomWorkflows.Contains(carrierType);
+            /// <summary>
+            ///     Carrier account types that support custom update workflows.
+            /// </summary>
+            private static List<string> CarrierTypesWithCustomUpdateWorkflows => new()
+            {
+                CarrierAccountType.Ups.Name,
+                CarrierAccountType.UpsMailInnovations.Name,
+                CarrierAccountType.UpsSurePost.Name,
+            };
+
+            internal static string DeriveCreateEndpoint(string carrierType)
+            {
+                string endpoint = StandardCreateEndpoint;
+
+                var @switch = new SwitchCase
+                {
+                    { new List<string> { CarrierAccountType.FedEx.Name, CarrierAccountType.FedExSmartPost.Name }.Contains(carrierType), () => endpoint = CustomCreateEndpoint },
+                    { new List<string> { CarrierAccountType.Ups.Name, CarrierAccountType.UpsMailInnovations.Name, CarrierAccountType.UpsSurePost.Name }.Contains(carrierType), () => endpoint = UpsOAuthCreateEndpoint },
+                    { SwitchCaseScenario.Default, () => endpoint = StandardCreateEndpoint },
+                };
+
+                @switch.MatchFirstTrue();
+
+                return endpoint;
+            }
+
+            internal static string DeriveUpdateEndpoint(string carrierType, string id)
+            {
+                string endpoint = string.Format(CultureInfo.InvariantCulture, StandardUpdateEndpoint, id);
+
+                var @switch = new SwitchCase
+                {
+                    { new List<string> { CarrierAccountType.Ups.Name, CarrierAccountType.UpsMailInnovations.Name, CarrierAccountType.UpsSurePost.Name }.Contains(carrierType), () => endpoint = string.Format(CultureInfo.InvariantCulture, UpsOAuthUpdateEndpoint, id) },
+                    { SwitchCaseScenario.Default, () => endpoint = string.Format(CultureInfo.InvariantCulture, StandardUpdateEndpoint, id) },
+                };
+
+                @switch.MatchFirstTrue();
+
+                return endpoint;
+            }
+
+            internal static bool IsCustomWorkflowCreate(string carrierType) => CarrierTypesWithCustomCreateWorkflows.Contains(carrierType);
+
+            internal static bool IsCustomWorkflowUpdate(string carrierType) => CarrierTypesWithCustomUpdateWorkflows.Contains(carrierType);
 
             internal const string StandardCreateEndpoint = "carrier_accounts";
             internal const string CustomCreateEndpoint = "carrier_accounts/register";
+            internal const string UpsOAuthCreateEndpoint = "ups_oauth_registrations";
+            internal const string StandardUpdateEndpoint = "carrier_accounts/{0}";
+            internal const string UpsOAuthUpdateEndpoint = "ups_oauth_registrations/{0}";
         }
     }
 }
