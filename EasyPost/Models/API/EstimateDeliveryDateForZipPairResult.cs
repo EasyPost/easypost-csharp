@@ -21,13 +21,13 @@ namespace EasyPost.Models.API
         ///     The origin postal code used for the estimates.
         /// </summary>
         [JsonProperty("from_zip")]
-        public string? OriginPostalCode { get; set; }
+        public string? FromZip { get; set; }
 
         /// <summary>
         ///     The destination postal code used for the estimates.
         /// </summary>
         [JsonProperty("to_zip")]
-        public string? DestinationPostalCode { get; set; }
+        public string? ToZip { get; set; }
 
         /// <summary>
         ///     Whether potential Saturday delivery dates are included in the estimates.
@@ -45,7 +45,7 @@ namespace EasyPost.Models.API
         ///     The estimate results.
         /// </summary>
         [JsonProperty("results")]
-        public List<DeliveryDateForZipPairEstimate>? Estimates { get; set; }
+        public List<DeliveryDateForZipPairEstimate>? Results { get; set; }
 
         #endregion
     }

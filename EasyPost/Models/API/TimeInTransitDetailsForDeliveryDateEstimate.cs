@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API;
 
 /// <summary>
-///     Class representing estimated transit times for a <see cref="EstimateDeliveryDateForShipmentResult"/>.
+///     Class representing estimated transit times for a <see cref="EstimateDeliveryDateForZipPairResult"/> or <see cref="RateWithEstimatedDeliveryDate"/>.
 /// </summary>
 public class TimeInTransitDetailsForDeliveryDateEstimate
 {
@@ -17,7 +17,7 @@ public class TimeInTransitDetailsForDeliveryDateEstimate
     public DateTime? PlannedShipDate { get; set; }
 
     /// <summary>
-    ///     EasyPost's estimated delivery date for the associated <see cref="EstimateDeliveryDateForShipmentResult"/>.
+    ///     EasyPost's estimated delivery date for the associated <see cref="EstimateDeliveryDateForZipPairResult"/> or <see cref="RateWithEstimatedDeliveryDate"/>.
     /// </summary>
     [JsonProperty("easypost_estimated_delivery_date")]
     public DateTime? EasyPostEstimatedDeliveryDate { get; set; }
@@ -26,7 +26,18 @@ public class TimeInTransitDetailsForDeliveryDateEstimate
     ///     Expanded confidence levels for time in transit estimates.
     /// </summary>
     [JsonProperty("days_in_transit")]
-    public TimeInTransit? TimeInTransitPercentiles { get; set; }
+    public TimeInTransit? DaysInTransit { get; set; }
+
+    /// <summary>
+    ///     Convert this object to a deprecated <see cref="TimeInTransitDetails"/> object.
+    /// </summary>
+    /// <returns>A <see cref="TimeInTransitDetails"/> object copy.</returns>
+    internal TimeInTransitDetails? AsDeprecatedTimeInTransitDetails() => new TimeInTransitDetails
+    {
+        DaysInTransit = DaysInTransit,
+        EasyPostEstimatedDeliveryDate = EasyPostEstimatedDeliveryDate,
+        PlannedShipDate = PlannedShipDate,
+    };
 
     #endregion
 }

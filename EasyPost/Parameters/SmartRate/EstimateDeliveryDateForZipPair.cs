@@ -9,7 +9,7 @@ namespace EasyPost.Parameters.SmartRate
     ///     Parameters for <see cref="SmartRateService.EstimateDeliveryDate(EstimateDeliveryDateForZipPair, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class EstimateDeliveryDateForZipPair : BaseParameters<Models.API.EstimateDeliveryDateForShipmentResult>
+    public class EstimateDeliveryDateForZipPair : BaseParameters<Models.API.EstimateDeliveryDateForZipPairResult>
     {
         #region Request Parameters
 
@@ -17,13 +17,13 @@ namespace EasyPost.Parameters.SmartRate
         ///     The origin postal code of the parcel(s).
         /// </summary>
         [TopLevelRequestParameter(Necessity.Required, "from_zip")]
-        public string? OriginPostalCode { get; set; }
+        public string? FromZip { get; set; }
 
         /// <summary>
         ///     The destination postal code of the parcel(s).
         /// </summary>
         [TopLevelRequestParameter(Necessity.Required, "to_zip")]
-        public string? DestinationPostalCode { get; set; }
+        public string? ToZip { get; set; }
 
         /// <summary>
         ///     The names of the carriers to estimate delivery dates for.

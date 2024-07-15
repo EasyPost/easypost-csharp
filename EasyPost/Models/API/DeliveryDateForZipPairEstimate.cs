@@ -26,7 +26,7 @@ namespace EasyPost.Models.API
         ///     Estimated <see cref="TimeInTransitDetailsForDeliveryDateEstimate"/> for the carrier-service level combination.
         /// </summary>
         [JsonProperty("easypost_time_in_transit_data")]
-        public TimeInTransitDetailsForDeliveryDateEstimate? EasyPostTimeInTransitData { get; set; }
+        public TimeInTransitDetailsForDeliveryDateEstimate? TimeInTransitDetails { get; set; }
 
         #endregion
     }

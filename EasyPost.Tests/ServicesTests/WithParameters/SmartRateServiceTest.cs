@@ -34,26 +34,26 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Parameters.SmartRate.EstimateDeliveryDateForZipPair estimateDeliveryDateForZipPairParameters = new()
             {
-                OriginPostalCode = address1Parameters.Zip,
-                DestinationPostalCode = address2Parameters.Zip,
+                FromZip = address1Parameters.Zip,
+                ToZip = address2Parameters.Zip,
                 PlannedShipDate = Fixtures.PlannedShipDate,
                 Carriers = ["USPS", "FedEx", "UPS", "DHL"],
             };
 
-            EstimateDeliveryDateForZipPairResult result = await Client.SmartRate.EstimateDeliveryDate(estimateDeliveryDateForZipPairParameters);
+            EstimateDeliveryDateForZipPairResult results = await Client.SmartRate.EstimateDeliveryDate(estimateDeliveryDateForZipPairParameters);
 
-            Assert.Equal(result.OriginPostalCode, estimateDeliveryDateForZipPairParameters.OriginPostalCode);
-            Assert.Equal(result.DestinationPostalCode, estimateDeliveryDateForZipPairParameters.DestinationPostalCode);
-            Assert.Equal(result.PlannedShipDate, estimateDeliveryDateForZipPairParameters.PlannedShipDate);
-            Assert.NotNull(result.Estimates);
-            Assert.NotEmpty(result.Estimates);
-            foreach (var estimate in result.Estimates)
+            Assert.Equal(results.FromZip, estimateDeliveryDateForZipPairParameters.FromZip);
+            Assert.Equal(results.ToZip, estimateDeliveryDateForZipPairParameters.ToZip);
+            Assert.Equal(results.PlannedShipDate, estimateDeliveryDateForZipPairParameters.PlannedShipDate);
+            Assert.NotNull(results.Results);
+            Assert.NotEmpty(results.Results);
+            foreach (var estimate in results.Results)
             {
                 Assert.NotNull(estimate.Carrier);
                 Assert.NotNull(estimate.Service);
-                Assert.NotNull(estimate.EasyPostTimeInTransitData);
-                Assert.NotNull(estimate.EasyPostTimeInTransitData.TimeInTransitPercentiles);
-                Assert.NotNull(estimate.EasyPostTimeInTransitData.TimeInTransitPercentiles.Percentile75);
+                Assert.NotNull(estimate.TimeInTransitDetails);
+                Assert.NotNull(estimate.TimeInTransitDetails.DaysInTransit);
+                Assert.NotNull(estimate.TimeInTransitDetails.DaysInTransit.Percentile75);
             }
         }
 
@@ -71,26 +71,26 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Parameters.SmartRate.RecommendShipDateForZipPair recommendShipDateForZipPairParameters = new()
             {
-                OriginPostalCode = address1Parameters.Zip,
-                DestinationPostalCode = address2Parameters.Zip,
+                FromZip = address1Parameters.Zip,
+                ToZip = address2Parameters.Zip,
                 DesiredDeliveryDate = Fixtures.DesiredDeliveryDate,
                 Carriers = ["USPS", "FedEx", "UPS", "DHL"],
             };
 
-            RecommendShipDateForZipPairResult result = await Client.SmartRate.RecommendShipDate(recommendShipDateForZipPairParameters);
+            RecommendShipDateForZipPairResult results = await Client.SmartRate.RecommendShipDate(recommendShipDateForZipPairParameters);
 
-            Assert.Equal(result.OriginPostalCode, recommendShipDateForZipPairParameters.OriginPostalCode);
-            Assert.Equal(result.DestinationPostalCode, recommendShipDateForZipPairParameters.DestinationPostalCode);
-            Assert.Equal(result.DesiredDeliveryDate, recommendShipDateForZipPairParameters.DesiredDeliveryDate);
-            Assert.NotNull(result.Estimates);
-            Assert.NotEmpty(result.Estimates);
-            foreach (var estimate in result.Estimates)
+            Assert.Equal(results.FromZip, recommendShipDateForZipPairParameters.FromZip);
+            Assert.Equal(results.ToZip, recommendShipDateForZipPairParameters.ToZip);
+            Assert.Equal(results.DesiredDeliveryDate, recommendShipDateForZipPairParameters.DesiredDeliveryDate);
+            Assert.NotNull(results.Results);
+            Assert.NotEmpty(results.Results);
+            foreach (var estimate in results.Results)
             {
                 Assert.NotNull(estimate.Carrier);
                 Assert.NotNull(estimate.Service);
                 Assert.NotNull(estimate.EasyPostTimeInTransitData);
-                Assert.NotNull(estimate.EasyPostTimeInTransitData.TimeInTransitPercentiles);
-                Assert.NotNull(estimate.EasyPostTimeInTransitData.TimeInTransitPercentiles.Percentile75);
+                Assert.NotNull(estimate.EasyPostTimeInTransitData.DaysInTransit);
+                Assert.NotNull(estimate.EasyPostTimeInTransitData.DaysInTransit.Percentile75);
             }
         }
 

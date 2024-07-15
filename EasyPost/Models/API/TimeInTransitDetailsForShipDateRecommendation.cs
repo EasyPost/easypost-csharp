@@ -38,7 +38,7 @@ public class TimeInTransitDetailsForShipDateRecommendation
     ///     Expanded confidence levels for time in transit estimates.
     /// </summary>
     [JsonProperty("days_in_transit")]
-    public TimeInTransit? TimeInTransitPercentiles { get; set; }
+    public TimeInTransit? DaysInTransit { get; set; }
 
     #endregion
 }

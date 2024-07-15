@@ -35,7 +35,6 @@ public class Basics
         var endShipperCollection = new EndShipperCollection();
         var error = new Error();
         var estimateDeliveryDateForZipPairResult = new EstimateDeliveryDateForZipPairResult();
-        var estimateDeliveryDateForShipmentResult = new EstimateDeliveryDateForShipmentResult();
         var @event = new Event();
         var eventCollection = new EventCollection();
         var fee = new Fee();
@@ -75,7 +74,7 @@ public class Basics
         var taxIdentifier = new TaxIdentifier();
         var timeInTransit = new TimeInTransit();
         var timeInTransitDetails = new TimeInTransitDetails();
-        var timeInTransitDetailsByShipDate = new TimeInTransitDetailsForDeliveryDateEstimate();
+        var timeInTransitDetailsForDeliveryDateEstimate = new TimeInTransitDetailsForDeliveryDateEstimate();
         var timeInTransitDetailsByDeliveryDate = new TimeInTransitDetailsForShipDateRecommendation();
         var tracker = new Tracker();
         var trackerCollection = new TrackerCollection();
@@ -146,8 +145,6 @@ public class Basics
         var shipmentInsureParameters = new EasyPost.Parameters.Shipment.Insure();
         var shipmentRegenerateRatesParameters = new EasyPost.Parameters.Shipment.RegenerateRates();
         var shipmentRetrieveEstimatedDeliveryDateParameters = new EasyPost.Parameters.Shipment.RetrieveEstimatedDeliveryDate();
-        var smartRateEstimateDeliveryDateForShipmentParameters = new EasyPost.Parameters.SmartRate.EstimateDeliveryDateForShipment();
-        var smartRateRecommendShipDateForShipmentParameters = new EasyPost.Parameters.SmartRate.RecommendShipDateForShipment();
         var smartRateEstimateDeliveryDateForZipPairParameters = new EasyPost.Parameters.SmartRate.EstimateDeliveryDateForZipPair();
         var smartRateRecommendShipDateForZipPairParameters = new EasyPost.Parameters.SmartRate.RecommendShipDateForZipPair();
         var taxIdentifierCreateParameters = new EasyPost.Parameters.TaxIdentifier.Create();

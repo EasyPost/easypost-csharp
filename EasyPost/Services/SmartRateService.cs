@@ -27,7 +27,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve the estimated delivery date of each carrier-service level combination via the Smart Deliver By API, based on a specific ship date and origin-destination postal code pair.
-        ///     Unlike the <see cref="ShipmentService.EstimateDeliveryDate"/> method, this method does not require a <see cref="Shipment"/> ID.
+        ///     Unlike the <see cref="ShipmentService.RetrieveEstimatedDeliveryDate(string, string, CancellationToken)"/> method, this method does not require a <see cref="Shipment"/> ID.
         /// </summary>
         /// <param name="parameters">The <see cref="Parameters.SmartRate.EstimateDeliveryDateForZipPair"/> parameters to include on the API call.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

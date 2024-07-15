@@ -305,9 +305,9 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
         [Fact]
         [Testing.Function]
-        public async Task TestEstimatedDeliveryDatesDeprecated()
+        public async Task TestEstimatedDeliveryDates()
         {
-            UseVCR("estimated_delivery_dates_deprecated");
+            UseVCR("estimated_delivery_dates");
 
             Shipment shipment = await Client.Shipment.Create(Fixtures.Parameters.Shipments.Create(Fixtures.BasicShipment));
 
@@ -326,56 +326,6 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
                 Assert.NotNull(rate.EasyPostTimeInTransitData.PlannedShipDate);
             }
         }
-
-        [Fact]
-        [Testing.Function]
-        public async Task TestEstimateDeliveryDate()
-        {
-            UseVCR("estimate_delivery_date");
-
-            Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
-
-            Parameters.SmartRate.EstimateDeliveryDateForShipment estimateDeliveryDateForShipmentParameters = new()
-            {
-                PlannedShipDate = Fixtures.PlannedShipDate,
-            };
-
-            List<EstimateDeliveryDateForShipmentResult> ratesWithEstimatedDeliveryDates = await Client.Shipment.EstimateDeliveryDate(shipment.Id, estimateDeliveryDateForShipmentParameters);
-
-            foreach (var rate in ratesWithEstimatedDeliveryDates)
-            {
-                Assert.NotNull(rate.TimeInTransitDetails);
-                Assert.NotNull(rate.TimeInTransitDetails.EasyPostEstimatedDeliveryDate);
-                Assert.NotNull(rate.TimeInTransitDetails.TimeInTransitPercentiles);
-                Assert.NotNull(rate.TimeInTransitDetails.PlannedShipDate);
-            }
-        }
-
-        [Fact]
-        [CrudOperations.Read]
-        [Testing.Function]
-        public async Task TestRecommendShipDateForShipment()
-        {
-            UseVCR("recommend_ship_date");
-
-            Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
-
-            Parameters.SmartRate.RecommendShipDateForShipment recommendShipDateForShipmentParameters = new()
-            {
-                DesiredDeliveryDate = Fixtures.DesiredDeliveryDate,
-            };
-
-            List<RecommendShipDateForShipmentResult> ratesWithEstimatedDeliveryDates = await Client.Shipment.RecommendShipDate(shipment.Id, recommendShipDateForShipmentParameters);
-
-            foreach (var rate in ratesWithEstimatedDeliveryDates)
-            {
-                Assert.NotNull(rate.TimeInTransitDetails);
-                Assert.NotNull(rate.TimeInTransitDetails.EasyPostRecommendedShipDate);
-                Assert.NotNull(rate.TimeInTransitDetails.TimeInTransitPercentiles);
-                Assert.NotNull(rate.TimeInTransitDetails.DesiredDeliveryDate);
-            }
-        }
-
 
         #endregion
 
