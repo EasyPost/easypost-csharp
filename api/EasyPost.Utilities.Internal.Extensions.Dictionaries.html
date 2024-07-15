@@ -90,21 +90,21 @@
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_IDictionary_System_String_System_Nullable_System_Object___System_String_System_Nullable_System_Object__.md&amp;value=---%0Auid%3A%20EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary%7BSystem.String%2CSystem.Nullable%7BSystem.Object%7D%7D%2CSystem.String%2CSystem.Nullable%7BSystem.Object%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_IDictionary_System_String_System_Nullable_System_Object___System_Nullable_System_Object__System_String_.md&amp;value=---%0Auid%3A%20EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary%7BSystem.String%2CSystem.Nullable%7BSystem.Object%7D%7D%2CSystem.Nullable%7BSystem.Object%7D%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Utilities/Internal/Extensions/Dictionaries.cs/#L57">View Source</a>
   </span>
   <a id="EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_" data-uid="EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate*"></a>
-  <h4 id="EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_IDictionary_System_String_System_Nullable_System_Object___System_String_System_Nullable_System_Object__" data-uid="EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Nullable{System.Object}},System.String,System.Nullable{System.Object})">AddOrUpdate(IDictionary&lt;String, Nullable&lt;Object&gt;&gt;, String, Nullable&lt;Object&gt;)</h4>
-  <div class="markdown level1 summary"><p>Add a key-value pair to a dictionary if the key does not exist, otherwise update the value.
+  <h4 id="EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_IDictionary_System_String_System_Nullable_System_Object___System_Nullable_System_Object__System_String_" data-uid="EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Nullable{System.Object}},System.Nullable{System.Object},System.String)">AddOrUpdate(IDictionary&lt;String, Nullable&lt;Object&gt;&gt;, Nullable&lt;Object&gt;, String)</h4>
+  <div class="markdown level1 summary"><p>Add a key-value pair to a dictionary if the key path does not exist, otherwise update the value.
 This is a workaround for the fact that <see cref="!:IDictionary&lt;TKey,TValue>"></see> does not have an AddOrUpdate method.
 This update runs in-place, so the dictionary is not copied and a new dictionary is not returned.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void AddOrUpdate(this IDictionary&lt;string, object?&gt; dictionary, string key, object? value)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void AddOrUpdate(this IDictionary&lt;string, object?&gt; dictionary, object? value, string key)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -123,15 +123,63 @@ This update runs in-place, so the dictionary is not copied and a new dictionary 
 </td>
       </tr>
       <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to add/update.</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">key</span></td>
-        <td><p>The key to add/update.</p>
+        <td><p>The key path to add/update.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_IDictionary_System_String_System_Nullable_System_Object___System_Nullable_System_Object__System_String___.md&amp;value=---%0Auid%3A%20EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary%7BSystem.String%2CSystem.Nullable%7BSystem.Object%7D%7D%2CSystem.Nullable%7BSystem.Object%7D%2CSystem.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Utilities/Internal/Extensions/Dictionaries.cs/#L77">View Source</a>
+  </span>
+  <a id="EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_" data-uid="EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate*"></a>
+  <h4 id="EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_IDictionary_System_String_System_Nullable_System_Object___System_Nullable_System_Object__System_String___" data-uid="EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Nullable{System.Object}},System.Nullable{System.Object},System.String[])">AddOrUpdate(IDictionary&lt;String, Nullable&lt;Object&gt;&gt;, Nullable&lt;Object&gt;, String[])</h4>
+  <div class="markdown level1 summary"><p>Add a key-value pair to a dictionary if the key path does not exist, otherwise update the value.
+This is a workaround for the fact that <see cref="!:IDictionary&lt;TKey,TValue>"></see> does not have an AddOrUpdate method.
+This update runs in-place, so the dictionary is not copied and a new dictionary is not returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AddOrUpdate(this IDictionary&lt;string, object?&gt; dictionary, object? value, params string[] path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Nullable</span>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td><span class="parametername">dictionary</span></td>
+        <td><p>The dictionary to add/update the key-value pair in.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">value</span></td>
         <td><p>The value to add/update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">path</span></td>
+        <td><p>The key path to add/update.</p>
 </td>
       </tr>
     </tbody>

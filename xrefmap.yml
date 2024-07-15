@@ -1166,6 +1166,12 @@ references:
   commentId: F:EasyPost.Constants.ErrorMessages.InvalidApiKeyType
   fullName: EasyPost.Constants.ErrorMessages.InvalidApiKeyType
   nameWithType: Constants.ErrorMessages.InvalidApiKeyType
+- uid: EasyPost.Constants.ErrorMessages.InvalidFunction
+  name: InvalidFunction
+  href: api/EasyPost.Constants.ErrorMessages.html#EasyPost_Constants_ErrorMessages_InvalidFunction
+  commentId: F:EasyPost.Constants.ErrorMessages.InvalidFunction
+  fullName: EasyPost.Constants.ErrorMessages.InvalidFunction
+  nameWithType: Constants.ErrorMessages.InvalidFunction
 - uid: EasyPost.Constants.ErrorMessages.InvalidParameter
   name: InvalidParameter
   href: api/EasyPost.Constants.ErrorMessages.html#EasyPost_Constants_ErrorMessages_InvalidParameter
@@ -1530,6 +1536,12 @@ references:
   isSpec: "True"
   fullName: EasyPost.Exceptions.General.FilteringError.PrettyPrint
   nameWithType: FilteringError.PrettyPrint
+- uid: EasyPost.Exceptions.General.InvalidFunctionError
+  name: InvalidFunctionError
+  href: api/EasyPost.Exceptions.General.InvalidFunctionError.html
+  commentId: T:EasyPost.Exceptions.General.InvalidFunctionError
+  fullName: EasyPost.Exceptions.General.InvalidFunctionError
+  nameWithType: InvalidFunctionError
 - uid: EasyPost.Exceptions.General.InvalidObjectError
   name: InvalidObjectError
   href: api/EasyPost.Exceptions.General.InvalidObjectError.html
@@ -2941,6 +2953,18 @@ references:
   commentId: F:EasyPost.Models.API.CarrierAccountType.Ups
   fullName: EasyPost.Models.API.CarrierAccountType.Ups
   nameWithType: CarrierAccountType.Ups
+- uid: EasyPost.Models.API.CarrierAccountType.UpsMailInnovations
+  name: UpsMailInnovations
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_UpsMailInnovations
+  commentId: F:EasyPost.Models.API.CarrierAccountType.UpsMailInnovations
+  fullName: EasyPost.Models.API.CarrierAccountType.UpsMailInnovations
+  nameWithType: CarrierAccountType.UpsMailInnovations
+- uid: EasyPost.Models.API.CarrierAccountType.UpsSurePost
+  name: UpsSurePost
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_UpsSurePost
+  commentId: F:EasyPost.Models.API.CarrierAccountType.UpsSurePost
+  fullName: EasyPost.Models.API.CarrierAccountType.UpsSurePost
+  nameWithType: CarrierAccountType.UpsSurePost
 - uid: EasyPost.Models.API.CarrierDetail
   name: CarrierDetail
   href: api/EasyPost.Models.API.CarrierDetail.html
@@ -10425,32 +10449,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.ACreate.ACreate
   nameWithType: ACreate.ACreate
-- uid: EasyPost.Parameters.CarrierAccount.ACreate.Description
-  name: Description
-  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate_Description
-  commentId: P:EasyPost.Parameters.CarrierAccount.ACreate.Description
-  fullName: EasyPost.Parameters.CarrierAccount.ACreate.Description
-  nameWithType: ACreate.Description
-- uid: EasyPost.Parameters.CarrierAccount.ACreate.Description*
-  name: Description
-  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate_Description_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.ACreate.Description
-  isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.ACreate.Description
-  nameWithType: ACreate.Description
-- uid: EasyPost.Parameters.CarrierAccount.ACreate.Reference
-  name: Reference
-  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate_Reference
-  commentId: P:EasyPost.Parameters.CarrierAccount.ACreate.Reference
-  fullName: EasyPost.Parameters.CarrierAccount.ACreate.Reference
-  nameWithType: ACreate.Reference
-- uid: EasyPost.Parameters.CarrierAccount.ACreate.Reference*
-  name: Reference
-  href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate_Reference_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.ACreate.Reference
-  isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.ACreate.Reference
-  nameWithType: ACreate.Reference
 - uid: EasyPost.Parameters.CarrierAccount.ACreate.Type
   name: Type
   href: api/EasyPost.Parameters.CarrierAccount.ACreate.html#EasyPost_Parameters_CarrierAccount_ACreate_Type
@@ -10464,6 +10462,12 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.ACreate.Type
   nameWithType: ACreate.Type
+- uid: EasyPost.Parameters.CarrierAccount.AUpdate
+  name: AUpdate
+  href: api/EasyPost.Parameters.CarrierAccount.AUpdate.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.AUpdate
+  fullName: EasyPost.Parameters.CarrierAccount.AUpdate
+  nameWithType: AUpdate
 - uid: EasyPost.Parameters.CarrierAccount.Create
   name: Create
   href: api/EasyPost.Parameters.CarrierAccount.Create.html
@@ -10508,6 +10512,32 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.Create.Credentials
   nameWithType: Create.Credentials
+- uid: EasyPost.Parameters.CarrierAccount.Create.Description
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Description
+  commentId: P:EasyPost.Parameters.CarrierAccount.Create.Description
+  fullName: EasyPost.Parameters.CarrierAccount.Create.Description
+  nameWithType: Create.Description
+- uid: EasyPost.Parameters.CarrierAccount.Create.Description*
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Description_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.Create.Description
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.Create.Description
+  nameWithType: Create.Description
+- uid: EasyPost.Parameters.CarrierAccount.Create.Reference
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Reference
+  commentId: P:EasyPost.Parameters.CarrierAccount.Create.Reference
+  fullName: EasyPost.Parameters.CarrierAccount.Create.Reference
+  nameWithType: Create.Reference
+- uid: EasyPost.Parameters.CarrierAccount.Create.Reference*
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Reference_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.Create.Reference
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.Create.Reference
+  nameWithType: Create.Reference
 - uid: EasyPost.Parameters.CarrierAccount.Create.TestCredentials
   name: TestCredentials
   href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_TestCredentials
@@ -10521,6 +10551,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.Create.TestCredentials
   nameWithType: Create.TestCredentials
+- uid: EasyPost.Parameters.CarrierAccount.Create.Type
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Type
+  commentId: P:EasyPost.Parameters.CarrierAccount.Create.Type
+  fullName: EasyPost.Parameters.CarrierAccount.Create.Type
+  nameWithType: Create.Type
+- uid: EasyPost.Parameters.CarrierAccount.Create.Type*
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Type_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.Create.Type
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.Create.Type
+  nameWithType: Create.Type
 - uid: EasyPost.Parameters.CarrierAccount.CreateFedEx
   name: CreateFedEx
   href: api/EasyPost.Parameters.CarrierAccount.CreateFedEx.html
@@ -10696,6 +10739,32 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.CreateFedEx.CorporatePhoneNumber
   nameWithType: CreateFedEx.CorporatePhoneNumber
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedEx.Description
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedEx.html#EasyPost_Parameters_CarrierAccount_CreateFedEx_Description
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedEx.Description
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedEx.Description
+  nameWithType: CreateFedEx.Description
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedEx.Description*
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedEx.html#EasyPost_Parameters_CarrierAccount_CreateFedEx_Description_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedEx.Description
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedEx.Description
+  nameWithType: CreateFedEx.Description
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedEx.Reference
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedEx.html#EasyPost_Parameters_CarrierAccount_CreateFedEx_Reference
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedEx.Reference
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedEx.Reference
+  nameWithType: CreateFedEx.Reference
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedEx.Reference*
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedEx.html#EasyPost_Parameters_CarrierAccount_CreateFedEx_Reference_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedEx.Reference
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedEx.Reference
+  nameWithType: CreateFedEx.Reference
 - uid: EasyPost.Parameters.CarrierAccount.CreateFedEx.ShippingAddressCity
   name: ShippingAddressCity
   href: api/EasyPost.Parameters.CarrierAccount.CreateFedEx.html#EasyPost_Parameters_CarrierAccount_CreateFedEx_ShippingAddressCity
@@ -10761,6 +10830,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.CreateFedEx.ShippingAddressStreet
   nameWithType: CreateFedEx.ShippingAddressStreet
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedEx.Type
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedEx.html#EasyPost_Parameters_CarrierAccount_CreateFedEx_Type
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedEx.Type
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedEx.Type
+  nameWithType: CreateFedEx.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedEx.Type*
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedEx.html#EasyPost_Parameters_CarrierAccount_CreateFedEx_Type_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedEx.Type
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedEx.Type
+  nameWithType: CreateFedEx.Type
 - uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost
   name: CreateFedExSmartPost
   href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html
@@ -10936,6 +11018,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.CorporatePhoneNumber
   nameWithType: CreateFedExSmartPost.CorporatePhoneNumber
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Description
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_Description
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Description
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Description
+  nameWithType: CreateFedExSmartPost.Description
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Description*
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_Description_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Description
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Description
+  nameWithType: CreateFedExSmartPost.Description
 - uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.HubId
   name: HubId
   href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_HubId
@@ -10949,6 +11044,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.HubId
   nameWithType: CreateFedExSmartPost.HubId
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Reference
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_Reference
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Reference
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Reference
+  nameWithType: CreateFedExSmartPost.Reference
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Reference*
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_Reference_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Reference
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Reference
+  nameWithType: CreateFedExSmartPost.Reference
 - uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressCity
   name: ShippingAddressCity
   href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_ShippingAddressCity
@@ -11014,6 +11122,32 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ShippingAddressStreet
   nameWithType: CreateFedExSmartPost.ShippingAddressStreet
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ToDictionary
+  name: ToDictionary()
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_ToDictionary
+  commentId: M:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ToDictionary
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ToDictionary()
+  nameWithType: CreateFedExSmartPost.ToDictionary()
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ToDictionary*
+  name: ToDictionary
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_ToDictionary_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ToDictionary
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.ToDictionary
+  nameWithType: CreateFedExSmartPost.ToDictionary
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Type
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_Type
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Type
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Type
+  nameWithType: CreateFedExSmartPost.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Type*
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html#EasyPost_Parameters_CarrierAccount_CreateFedExSmartPost_Type_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Type
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Type
+  nameWithType: CreateFedExSmartPost.Type
 - uid: EasyPost.Parameters.CarrierAccount.CreateUps
   name: CreateUps
   href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html
@@ -11046,227 +11180,226 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.CreateUps.AccountNumber
   nameWithType: CreateUps.AccountNumber
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.City
-  name: City
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_City
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.City
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.City
-  nameWithType: CreateUps.City
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.City*
-  name: City
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_City_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.City
+- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Description
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Description
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.Description
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Description
+  nameWithType: CreateUps.Description
+- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Description*
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Description_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.Description
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.City
-  nameWithType: CreateUps.City
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.CompanyName
-  name: CompanyName
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_CompanyName
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.CompanyName
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.CompanyName
-  nameWithType: CreateUps.CompanyName
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.CompanyName*
-  name: CompanyName
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_CompanyName_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.CompanyName
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Description
+  nameWithType: CreateUps.Description
+- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Reference
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Reference
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.Reference
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Reference
+  nameWithType: CreateUps.Reference
+- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Reference*
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Reference_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.Reference
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.CompanyName
-  nameWithType: CreateUps.CompanyName
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Country
-  name: Country
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Country
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.Country
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Country
-  nameWithType: CreateUps.Country
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Country*
-  name: Country
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Country_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.Country
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Reference
+  nameWithType: CreateUps.Reference
+- uid: EasyPost.Parameters.CarrierAccount.CreateUps.ToDictionary
+  name: ToDictionary()
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_ToDictionary
+  commentId: M:EasyPost.Parameters.CarrierAccount.CreateUps.ToDictionary
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.ToDictionary()
+  nameWithType: CreateUps.ToDictionary()
+- uid: EasyPost.Parameters.CarrierAccount.CreateUps.ToDictionary*
+  name: ToDictionary
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_ToDictionary_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.ToDictionary
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Country
-  nameWithType: CreateUps.Country
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Email
-  name: Email
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Email
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.Email
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Email
-  nameWithType: CreateUps.Email
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Email*
-  name: Email
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Email_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.Email
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.ToDictionary
+  nameWithType: CreateUps.ToDictionary
+- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Type
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Type
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.Type
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Type
+  nameWithType: CreateUps.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Type*
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Type_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.Type
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Email
-  nameWithType: CreateUps.Email
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceAmount
-  name: InvoiceAmount
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_InvoiceAmount
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceAmount
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceAmount
-  nameWithType: CreateUps.InvoiceAmount
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceAmount*
-  name: InvoiceAmount
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_InvoiceAmount_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceAmount
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Type
+  nameWithType: CreateUps.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations
+  name: CreateUpsMailInnovations
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations
+  nameWithType: CreateUpsMailInnovations
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.#ctor
+  name: CreateUpsMailInnovations()
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_CreateUpsMailInnovations__ctor
+  commentId: M:EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.#ctor
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.CreateUpsMailInnovations()
+  nameWithType: CreateUpsMailInnovations.CreateUpsMailInnovations()
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.#ctor*
+  name: CreateUpsMailInnovations
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_CreateUpsMailInnovations__ctor_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.#ctor
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceAmount
-  nameWithType: CreateUps.InvoiceAmount
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceControlId
-  name: InvoiceControlId
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_InvoiceControlId
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceControlId
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceControlId
-  nameWithType: CreateUps.InvoiceControlId
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceControlId*
-  name: InvoiceControlId
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_InvoiceControlId_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceControlId
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.CreateUpsMailInnovations
+  nameWithType: CreateUpsMailInnovations.CreateUpsMailInnovations
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.AccountNumber
+  name: AccountNumber
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_CreateUpsMailInnovations_AccountNumber
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.AccountNumber
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.AccountNumber
+  nameWithType: CreateUpsMailInnovations.AccountNumber
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.AccountNumber*
+  name: AccountNumber
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_CreateUpsMailInnovations_AccountNumber_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.AccountNumber
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceControlId
-  nameWithType: CreateUps.InvoiceControlId
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceCurrency
-  name: InvoiceCurrency
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_InvoiceCurrency
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceCurrency
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceCurrency
-  nameWithType: CreateUps.InvoiceCurrency
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceCurrency*
-  name: InvoiceCurrency
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_InvoiceCurrency_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceCurrency
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.AccountNumber
+  nameWithType: CreateUpsMailInnovations.AccountNumber
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Description
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_CreateUpsMailInnovations_Description
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Description
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Description
+  nameWithType: CreateUpsMailInnovations.Description
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Description*
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_CreateUpsMailInnovations_Description_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Description
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceCurrency
-  nameWithType: CreateUps.InvoiceCurrency
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceDate
-  name: InvoiceDate
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_InvoiceDate
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceDate
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceDate
-  nameWithType: CreateUps.InvoiceDate
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceDate*
-  name: InvoiceDate
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_InvoiceDate_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceDate
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Description
+  nameWithType: CreateUpsMailInnovations.Description
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Reference
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_CreateUpsMailInnovations_Reference
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Reference
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Reference
+  nameWithType: CreateUpsMailInnovations.Reference
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Reference*
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_CreateUpsMailInnovations_Reference_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Reference
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceDate
-  nameWithType: CreateUps.InvoiceDate
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceNumber
-  name: InvoiceNumber
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_InvoiceNumber
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceNumber
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceNumber
-  nameWithType: CreateUps.InvoiceNumber
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceNumber*
-  name: InvoiceNumber
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_InvoiceNumber_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceNumber
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Reference
+  nameWithType: CreateUpsMailInnovations.Reference
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.ToDictionary
+  name: ToDictionary()
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_CreateUpsMailInnovations_ToDictionary
+  commentId: M:EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.ToDictionary
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.ToDictionary()
+  nameWithType: CreateUpsMailInnovations.ToDictionary()
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.ToDictionary*
+  name: ToDictionary
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_CreateUpsMailInnovations_ToDictionary_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.ToDictionary
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.InvoiceNumber
-  nameWithType: CreateUps.InvoiceNumber
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.PhoneNumber
-  name: PhoneNumber
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_PhoneNumber
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.PhoneNumber
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.PhoneNumber
-  nameWithType: CreateUps.PhoneNumber
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.PhoneNumber*
-  name: PhoneNumber
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_PhoneNumber_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.PhoneNumber
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.ToDictionary
+  nameWithType: CreateUpsMailInnovations.ToDictionary
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Type
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_CreateUpsMailInnovations_Type
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Type
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Type
+  nameWithType: CreateUpsMailInnovations.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Type*
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_CreateUpsMailInnovations_Type_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Type
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.PhoneNumber
-  nameWithType: CreateUps.PhoneNumber
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.PostalCode
-  name: PostalCode
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_PostalCode
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.PostalCode
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.PostalCode
-  nameWithType: CreateUps.PostalCode
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.PostalCode*
-  name: PostalCode
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_PostalCode_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.PostalCode
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.Type
+  nameWithType: CreateUpsMailInnovations.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost
+  name: CreateUpsSurePost
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.CreateUpsSurePost
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost
+  nameWithType: CreateUpsSurePost
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.#ctor
+  name: CreateUpsSurePost()
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_CreateUpsSurePost__ctor
+  commentId: M:EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.#ctor
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.CreateUpsSurePost()
+  nameWithType: CreateUpsSurePost.CreateUpsSurePost()
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.#ctor*
+  name: CreateUpsSurePost
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_CreateUpsSurePost__ctor_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.#ctor
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.PostalCode
-  nameWithType: CreateUps.PostalCode
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.RegistrarJobTitle
-  name: RegistrarJobTitle
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_RegistrarJobTitle
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.RegistrarJobTitle
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.RegistrarJobTitle
-  nameWithType: CreateUps.RegistrarJobTitle
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.RegistrarJobTitle*
-  name: RegistrarJobTitle
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_RegistrarJobTitle_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.RegistrarJobTitle
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.CreateUpsSurePost
+  nameWithType: CreateUpsSurePost.CreateUpsSurePost
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.AccountNumber
+  name: AccountNumber
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_CreateUpsSurePost_AccountNumber
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.AccountNumber
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.AccountNumber
+  nameWithType: CreateUpsSurePost.AccountNumber
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.AccountNumber*
+  name: AccountNumber
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_CreateUpsSurePost_AccountNumber_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.AccountNumber
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.RegistrarJobTitle
-  nameWithType: CreateUps.RegistrarJobTitle
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.RegistrarName
-  name: RegistrarName
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_RegistrarName
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.RegistrarName
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.RegistrarName
-  nameWithType: CreateUps.RegistrarName
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.RegistrarName*
-  name: RegistrarName
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_RegistrarName_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.RegistrarName
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.AccountNumber
+  nameWithType: CreateUpsSurePost.AccountNumber
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Description
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_CreateUpsSurePost_Description
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Description
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Description
+  nameWithType: CreateUpsSurePost.Description
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Description*
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_CreateUpsSurePost_Description_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Description
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.RegistrarName
-  nameWithType: CreateUps.RegistrarName
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.State
-  name: State
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_State
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.State
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.State
-  nameWithType: CreateUps.State
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.State*
-  name: State
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_State_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.State
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Description
+  nameWithType: CreateUpsSurePost.Description
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Reference
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_CreateUpsSurePost_Reference
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Reference
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Reference
+  nameWithType: CreateUpsSurePost.Reference
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Reference*
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_CreateUpsSurePost_Reference_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Reference
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.State
-  nameWithType: CreateUps.State
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Street
-  name: Street
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Street
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.Street
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Street
-  nameWithType: CreateUps.Street
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Street*
-  name: Street
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Street_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.Street
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Reference
+  nameWithType: CreateUpsSurePost.Reference
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.ToDictionary
+  name: ToDictionary()
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_CreateUpsSurePost_ToDictionary
+  commentId: M:EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.ToDictionary
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.ToDictionary()
+  nameWithType: CreateUpsSurePost.ToDictionary()
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.ToDictionary*
+  name: ToDictionary
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_CreateUpsSurePost_ToDictionary_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.ToDictionary
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Street
-  nameWithType: CreateUps.Street
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Street2
-  name: Street2
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Street2
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.Street2
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Street2
-  nameWithType: CreateUps.Street2
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Street2*
-  name: Street2
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Street2_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.Street2
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.ToDictionary
+  nameWithType: CreateUpsSurePost.ToDictionary
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Type
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_CreateUpsSurePost_Type
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Type
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Type
+  nameWithType: CreateUpsSurePost.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Type*
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_CreateUpsSurePost_Type_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Type
   isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Street2
-  nameWithType: CreateUps.Street2
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Website
-  name: Website
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Website
-  commentId: P:EasyPost.Parameters.CarrierAccount.CreateUps.Website
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Website
-  nameWithType: CreateUps.Website
-- uid: EasyPost.Parameters.CarrierAccount.CreateUps.Website*
-  name: Website
-  href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html#EasyPost_Parameters_CarrierAccount_CreateUps_Website_
-  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUps.Website
-  isSpec: "True"
-  fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Website
-  nameWithType: CreateUps.Website
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Type
+  nameWithType: CreateUpsSurePost.Type
 - uid: EasyPost.Parameters.CarrierAccount.Update
   name: Update
   href: api/EasyPost.Parameters.CarrierAccount.Update.html
@@ -11325,6 +11458,141 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.Update.TestCredentials
   nameWithType: Update.TestCredentials
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUps
+  name: UpdateUps
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUps.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.UpdateUps
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUps
+  nameWithType: UpdateUps
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUps.AccountNumber
+  name: AccountNumber
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUps.html#EasyPost_Parameters_CarrierAccount_UpdateUps_AccountNumber
+  commentId: P:EasyPost.Parameters.CarrierAccount.UpdateUps.AccountNumber
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUps.AccountNumber
+  nameWithType: UpdateUps.AccountNumber
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUps.AccountNumber*
+  name: AccountNumber
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUps.html#EasyPost_Parameters_CarrierAccount_UpdateUps_AccountNumber_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.UpdateUps.AccountNumber
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUps.AccountNumber
+  nameWithType: UpdateUps.AccountNumber
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUps.Description
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUps.html#EasyPost_Parameters_CarrierAccount_UpdateUps_Description
+  commentId: P:EasyPost.Parameters.CarrierAccount.UpdateUps.Description
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUps.Description
+  nameWithType: UpdateUps.Description
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUps.Description*
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUps.html#EasyPost_Parameters_CarrierAccount_UpdateUps_Description_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.UpdateUps.Description
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUps.Description
+  nameWithType: UpdateUps.Description
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUps.Reference
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUps.html#EasyPost_Parameters_CarrierAccount_UpdateUps_Reference
+  commentId: P:EasyPost.Parameters.CarrierAccount.UpdateUps.Reference
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUps.Reference
+  nameWithType: UpdateUps.Reference
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUps.Reference*
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUps.html#EasyPost_Parameters_CarrierAccount_UpdateUps_Reference_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.UpdateUps.Reference
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUps.Reference
+  nameWithType: UpdateUps.Reference
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations
+  name: UpdateUpsMailInnovations
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations
+  nameWithType: UpdateUpsMailInnovations
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.AccountNumber
+  name: AccountNumber
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_UpdateUpsMailInnovations_AccountNumber
+  commentId: P:EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.AccountNumber
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.AccountNumber
+  nameWithType: UpdateUpsMailInnovations.AccountNumber
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.AccountNumber*
+  name: AccountNumber
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_UpdateUpsMailInnovations_AccountNumber_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.AccountNumber
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.AccountNumber
+  nameWithType: UpdateUpsMailInnovations.AccountNumber
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.Description
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_UpdateUpsMailInnovations_Description
+  commentId: P:EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.Description
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.Description
+  nameWithType: UpdateUpsMailInnovations.Description
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.Description*
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_UpdateUpsMailInnovations_Description_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.Description
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.Description
+  nameWithType: UpdateUpsMailInnovations.Description
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.Reference
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_UpdateUpsMailInnovations_Reference
+  commentId: P:EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.Reference
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.Reference
+  nameWithType: UpdateUpsMailInnovations.Reference
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.Reference*
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.html#EasyPost_Parameters_CarrierAccount_UpdateUpsMailInnovations_Reference_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.Reference
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsMailInnovations.Reference
+  nameWithType: UpdateUpsMailInnovations.Reference
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost
+  name: UpdateUpsSurePost
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost
+  nameWithType: UpdateUpsSurePost
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.AccountNumber
+  name: AccountNumber
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_UpdateUpsSurePost_AccountNumber
+  commentId: P:EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.AccountNumber
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.AccountNumber
+  nameWithType: UpdateUpsSurePost.AccountNumber
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.AccountNumber*
+  name: AccountNumber
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_UpdateUpsSurePost_AccountNumber_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.AccountNumber
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.AccountNumber
+  nameWithType: UpdateUpsSurePost.AccountNumber
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.Description
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_UpdateUpsSurePost_Description
+  commentId: P:EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.Description
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.Description
+  nameWithType: UpdateUpsSurePost.Description
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.Description*
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_UpdateUpsSurePost_Description_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.Description
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.Description
+  nameWithType: UpdateUpsSurePost.Description
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.Reference
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_UpdateUpsSurePost_Reference
+  commentId: P:EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.Reference
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.Reference
+  nameWithType: UpdateUpsSurePost.Reference
+- uid: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.Reference*
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.html#EasyPost_Parameters_CarrierAccount_UpdateUpsSurePost_Reference_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.Reference
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.UpdateUpsSurePost.Reference
+  nameWithType: UpdateUpsSurePost.Reference
 - uid: EasyPost.Parameters.CarrierMetadata
   name: EasyPost.Parameters.CarrierMetadata
   href: api/EasyPost.Parameters.CarrierMetadata.html
@@ -15401,12 +15669,12 @@ references:
   fullName.vb: EasyPost.Services.CarrierAccountService.Update(System.String, Dictionary(Of System.String, System.Object), CancellationToken)
   nameWithType: CarrierAccountService.Update(String, Dictionary<String, Object>, CancellationToken)
   nameWithType.vb: CarrierAccountService.Update(String, Dictionary(Of String, Object), CancellationToken)
-- uid: EasyPost.Services.CarrierAccountService.Update(System.String,EasyPost.Parameters.CarrierAccount.Update,CancellationToken)
-  name: Update(String, Update, CancellationToken)
-  href: api/EasyPost.Services.CarrierAccountService.html#EasyPost_Services_CarrierAccountService_Update_System_String_EasyPost_Parameters_CarrierAccount_Update_CancellationToken_
-  commentId: M:EasyPost.Services.CarrierAccountService.Update(System.String,EasyPost.Parameters.CarrierAccount.Update,CancellationToken)
-  fullName: EasyPost.Services.CarrierAccountService.Update(System.String, EasyPost.Parameters.CarrierAccount.Update, CancellationToken)
-  nameWithType: CarrierAccountService.Update(String, Update, CancellationToken)
+- uid: EasyPost.Services.CarrierAccountService.Update(System.String,EasyPost.Parameters.CarrierAccount.AUpdate,CancellationToken)
+  name: Update(String, AUpdate, CancellationToken)
+  href: api/EasyPost.Services.CarrierAccountService.html#EasyPost_Services_CarrierAccountService_Update_System_String_EasyPost_Parameters_CarrierAccount_AUpdate_CancellationToken_
+  commentId: M:EasyPost.Services.CarrierAccountService.Update(System.String,EasyPost.Parameters.CarrierAccount.AUpdate,CancellationToken)
+  fullName: EasyPost.Services.CarrierAccountService.Update(System.String, EasyPost.Parameters.CarrierAccount.AUpdate, CancellationToken)
+  nameWithType: CarrierAccountService.Update(String, AUpdate, CancellationToken)
 - uid: EasyPost.Services.CarrierAccountService.Update*
   name: Update
   href: api/EasyPost.Services.CarrierAccountService.html#EasyPost_Services_CarrierAccountService_Update_
@@ -17500,15 +17768,24 @@ references:
   commentId: T:EasyPost.Utilities.Internal.Extensions.Dictionaries
   fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries
   nameWithType: Dictionaries
-- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Nullable{System.Object}},System.String,System.Nullable{System.Object})
-  name: AddOrUpdate(IDictionary<String, Nullable<Object>>, String, Nullable<Object>)
-  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_IDictionary_System_String_System_Nullable_System_Object___System_String_System_Nullable_System_Object__
-  commentId: M:EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Nullable{System.Object}},System.String,System.Nullable{System.Object})
-  name.vb: AddOrUpdate(IDictionary(Of String, Nullable(Of Object)), String, Nullable(Of Object))
-  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary<System.String, System.Nullable<System.Object>>, System.String, System.Nullable<System.Object>)
-  fullName.vb: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary(Of System.String, System.Nullable(Of System.Object)), System.String, System.Nullable(Of System.Object))
-  nameWithType: Dictionaries.AddOrUpdate(IDictionary<String, Nullable<Object>>, String, Nullable<Object>)
-  nameWithType.vb: Dictionaries.AddOrUpdate(IDictionary(Of String, Nullable(Of Object)), String, Nullable(Of Object))
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Nullable{System.Object}},System.Nullable{System.Object},System.String)
+  name: AddOrUpdate(IDictionary<String, Nullable<Object>>, Nullable<Object>, String)
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_IDictionary_System_String_System_Nullable_System_Object___System_Nullable_System_Object__System_String_
+  commentId: M:EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Nullable{System.Object}},System.Nullable{System.Object},System.String)
+  name.vb: AddOrUpdate(IDictionary(Of String, Nullable(Of Object)), Nullable(Of Object), String)
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary<System.String, System.Nullable<System.Object>>, System.Nullable<System.Object>, System.String)
+  fullName.vb: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary(Of System.String, System.Nullable(Of System.Object)), System.Nullable(Of System.Object), System.String)
+  nameWithType: Dictionaries.AddOrUpdate(IDictionary<String, Nullable<Object>>, Nullable<Object>, String)
+  nameWithType.vb: Dictionaries.AddOrUpdate(IDictionary(Of String, Nullable(Of Object)), Nullable(Of Object), String)
+- uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Nullable{System.Object}},System.Nullable{System.Object},System.String[])
+  name: AddOrUpdate(IDictionary<String, Nullable<Object>>, Nullable<Object>, String[])
+  href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_IDictionary_System_String_System_Nullable_System_Object___System_Nullable_System_Object__System_String___
+  commentId: M:EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary{System.String,System.Nullable{System.Object}},System.Nullable{System.Object},System.String[])
+  name.vb: AddOrUpdate(IDictionary(Of String, Nullable(Of Object)), Nullable(Of Object), String())
+  fullName: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary<System.String, System.Nullable<System.Object>>, System.Nullable<System.Object>, System.String[])
+  fullName.vb: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate(IDictionary(Of System.String, System.Nullable(Of System.Object)), System.Nullable(Of System.Object), System.String())
+  nameWithType: Dictionaries.AddOrUpdate(IDictionary<String, Nullable<Object>>, Nullable<Object>, String[])
+  nameWithType.vb: Dictionaries.AddOrUpdate(IDictionary(Of String, Nullable(Of Object)), Nullable(Of Object), String())
 - uid: EasyPost.Utilities.Internal.Extensions.Dictionaries.AddOrUpdate*
   name: AddOrUpdate
   href: api/EasyPost.Utilities.Internal.Extensions.Dictionaries.html#EasyPost_Utilities_Internal_Extensions_Dictionaries_AddOrUpdate_
