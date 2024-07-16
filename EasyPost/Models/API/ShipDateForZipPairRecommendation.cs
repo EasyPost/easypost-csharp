@@ -1,4 +1,5 @@
-﻿using EasyPost._base;
+﻿using System;
+using EasyPost._base;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -24,9 +25,16 @@ namespace EasyPost.Models.API
 
         /// <summary>
         ///     Estimated <see cref="TimeInTransitDetailsForShipDateRecommendation"/> for the carrier-service level combination.
+        ///     Deprecated: Use <see cref="TimeInTransitDetails"/> instead.
+        /// </summary>
+        [Obsolete("This property will be removed in a future version and replaced with TimeInTransitDetails.")]
+        public TimeInTransitDetailsForShipDateRecommendation? EasyPostTimeInTransitData => TimeInTransitDetails;
+
+        /// <summary>
+        ///     Estimated <see cref="TimeInTransitDetailsForShipDateRecommendation"/> for the carrier-service level combination.
         /// </summary>
         [JsonProperty("easypost_time_in_transit_data")]
-        public TimeInTransitDetailsForShipDateRecommendation? EasyPostTimeInTransitData { get; set; }
+        public TimeInTransitDetailsForShipDateRecommendation? TimeInTransitDetails { get; set; }
 
         #endregion
     }

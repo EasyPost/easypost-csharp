@@ -1,4 +1,5 @@
-﻿using EasyPost._base;
+﻿using System;
+using EasyPost._base;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -21,6 +22,13 @@ namespace EasyPost.Models.API
         /// </summary>
         [JsonProperty("service")]
         public string? Service { get; set; }
+
+        /// <summary>
+        ///     Estimated <see cref="TimeInTransitDetailsForDeliveryDateEstimate"/> for the carrier-service level combination.
+        ///     Deprecated: Use <see cref="TimeInTransitDetails"/> instead.
+        /// </summary>
+        [Obsolete("This property will be removed in a future version and replaced with TimeInTransitDetails.")]
+        public TimeInTransitDetailsForDeliveryDateEstimate? EasyPostTimeInTransitData => TimeInTransitDetails;
 
         /// <summary>
         ///     Estimated <see cref="TimeInTransitDetailsForDeliveryDateEstimate"/> for the carrier-service level combination.

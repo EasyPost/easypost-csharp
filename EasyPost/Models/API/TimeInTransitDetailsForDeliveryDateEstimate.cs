@@ -32,7 +32,7 @@ public class TimeInTransitDetailsForDeliveryDateEstimate
     ///     Convert this object to a deprecated <see cref="TimeInTransitDetails"/> object.
     /// </summary>
     /// <returns>A <see cref="TimeInTransitDetails"/> object copy.</returns>
-    internal TimeInTransitDetails? AsDeprecatedTimeInTransitDetails() => new TimeInTransitDetails
+    internal TimeInTransitDetails AsDeprecatedTimeInTransitDetails() => new TimeInTransitDetails
     {
         DaysInTransit = DaysInTransit,
         EasyPostEstimatedDeliveryDate = EasyPostEstimatedDeliveryDate,
