@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v6.6.0 (2024-07-16)
 
 - Add new `SmartRate` service for interacting with the SmartRate API
     - New `RecommendShipDateForShipment` function to recommend ship date for a shipment based on a desired delivery date.
