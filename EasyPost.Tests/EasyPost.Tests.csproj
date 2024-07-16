@@ -69,5 +69,7 @@
 
   <ItemGroup>
     <Folder Include="cassettes" />
+    <Folder Include="cassettes\netstandard\smartrate_service_with_parameters\" />
+    <Folder Include="cassettes\net\smartrate_service_with_parameters\" />
   </ItemGroup>
 </Project>

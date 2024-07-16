@@ -153,6 +153,23 @@ namespace EasyPost.Services
         }
 
         /// <summary>
+        ///     Retrieve a recommended ship date for a <see cref="Shipment"/> via the Precision Shipping API, based on a specific desired delivery date.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="Shipment"/> to get rate estimates for.</param>
+        /// <param name="desiredDeliveryDate">The desired delivery date for the shipment.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A list of <see cref="RecommendShipDateForShipmentResult"/> objects.</returns>
+        [CrudOperations.Read]
+        public async Task<List<RecommendShipDateForShipmentResult>> RecommendShipDate(string id, string desiredDeliveryDate, CancellationToken cancellationToken = default)
+        {
+            Dictionary<string, object> parameters = new()
+            {
+                { "desired_delivery_date", desiredDeliveryDate },
+            };
+            return await RequestAsync<List<RecommendShipDateForShipmentResult>>(Method.Get, $"shipments/{id}/smartrate/precision_shipping", cancellationToken, parameters, "rates");
+        }
+
+        /// <summary>
         ///     Purchase a label for a <see cref="Shipment"/>.
         ///     <a href="https://www.easypost.com/docs/api#buy-a-shipment">Related API documentation</a>.
         /// </summary>

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
@@ -304,7 +305,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
         [Fact]
         [Testing.Function]
-        public async Task TestRetrieveEstimatedDeliveryDates()
+        public async Task TestEstimatedDeliveryDates()
         {
             UseVCR("estimated_delivery_dates");
 

@@ -2,6 +2,11 @@
 
 ## Next Release
 
+- Add new `SmartRate` service for interacting with the SmartRate API
+    - New `RecommendShipDateForShipment` function to recommend ship date for a shipment based on a desired delivery date.
+    - New `EstimateDeliveryDateForRoute` function to estimate delivery date based on a list of carriers, to/from ZIP codes and a planned ship date (no existing shipment required).
+    - New `RecommendShipDateForRoute` function to to recommend ship date based on a list of carriers, to/from ZIP codes and a planned ship date (no existing shipment required).
+    - New model classes as needed for JSON response to new API functions
 - Enforce one-or-other for `Shipment` and `Batch` parameters in `Pickup.Create` parameter set
 - Add internal parameter dependency utility
 

@@ -122,6 +122,11 @@ namespace EasyPost
         public ShipmentService Shipment { get; }
 
         /// <summary>
+        ///     Access SmartRate-related functionality.
+        /// </summary>
+        public SmartRateService SmartRate { get; }
+
+        /// <summary>
         ///     Access Tracker-related functionality.
         /// </summary>
         public TrackerService Tracker { get; }
@@ -167,6 +172,7 @@ namespace EasyPost
             Report = new ReportService(this);
             ScanForm = new ScanFormService(this);
             Shipment = new ShipmentService(this);
+            SmartRate = new SmartRateService(this);
             Tracker = new TrackerService(this);
             User = new UserService(this);
             Webhook = new WebhookService(this);
@@ -207,6 +213,7 @@ namespace EasyPost
                 Report.Dispose();
                 ScanForm.Dispose();
                 Shipment.Dispose();
+                SmartRate.Dispose();
                 Tracker.Dispose();
                 User.Dispose();
                 Webhook.Dispose();

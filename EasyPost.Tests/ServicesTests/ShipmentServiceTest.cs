@@ -531,10 +531,37 @@ namespace EasyPost.Tests.ServicesTests
 
             foreach (var rate in ratesWithEstimatedDeliveryDates)
             {
+                // Deprecated property
                 Assert.NotNull(rate.EasyPostTimeInTransitData);
                 Assert.NotNull(rate.EasyPostTimeInTransitData.EasyPostEstimatedDeliveryDate);
                 Assert.NotNull(rate.EasyPostTimeInTransitData.DaysInTransit);
                 Assert.NotNull(rate.EasyPostTimeInTransitData.PlannedShipDate);
+
+                // Replacement property, same data
+                Assert.NotNull(rate.TimeInTransitDetails);
+                Assert.NotNull(rate.TimeInTransitDetails.EasyPostEstimatedDeliveryDate);
+                Assert.NotNull(rate.TimeInTransitDetails.DaysInTransit);
+                Assert.NotNull(rate.TimeInTransitDetails.PlannedShipDate);
+            }
+        }
+
+        [Fact]
+        [CrudOperations.Read]
+        [Testing.Function]
+        public async Task TestRecommendShipDateForShipment()
+        {
+            UseVCR("recommend_ship_date");
+
+            Shipment shipment = await Client.Shipment.Create(Fixtures.BasicShipment);
+
+            List<RecommendShipDateForShipmentResult> ratesWithEstimatedDeliveryDates = await Client.Shipment.RecommendShipDate(shipment.Id, Fixtures.DesiredDeliveryDate);
+
+            foreach (var rate in ratesWithEstimatedDeliveryDates)
+            {
+                Assert.NotNull(rate.TimeInTransitDetails);
+                Assert.NotNull(rate.TimeInTransitDetails.EasyPostRecommendedShipDate);
+                Assert.NotNull(rate.TimeInTransitDetails.DaysInTransit);
+                Assert.NotNull(rate.TimeInTransitDetails.DesiredDeliveryDate);
             }
         }
 

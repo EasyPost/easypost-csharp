@@ -1,5 +1,4 @@
 using EasyPost._base;
-using EasyPost.Services.Beta;
 
 namespace EasyPost
 {
@@ -26,12 +25,12 @@ namespace EasyPost
         /// <summary>
         ///     Access beta Rate-related functionality.
         /// </summary>
-        public RateService Rate { get; }
+        public Services.Beta.RateService Rate { get; }
 
         /// <summary>
         ///     Access beta Referral Customer-related functionality.
         /// </summary>
-        public ReferralCustomerService ReferralCustomer { get; }
+        public Services.Beta.ReferralCustomerService ReferralCustomer { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BetaClient"/> class.
@@ -40,8 +39,8 @@ namespace EasyPost
         internal BetaClient(ClientConfiguration configuration)
             : base(configuration)
         {
-            Rate = new RateService(this);
-            ReferralCustomer = new ReferralCustomerService(this);
+            Rate = new Services.Beta.RateService(this);
+            ReferralCustomer = new Services.Beta.ReferralCustomerService(this);
         }
 
         /// <inheritdoc cref="EasyPostClient.Dispose(bool)"/>
