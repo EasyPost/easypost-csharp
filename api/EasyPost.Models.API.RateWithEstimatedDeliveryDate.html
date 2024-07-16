@@ -93,16 +93,17 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_API_RateWithEstimatedDeliveryDate_EasyPostTimeInTransitData.md&amp;value=---%0Auid%3A%20EasyPost.Models.API.RateWithEstimatedDeliveryDate.EasyPostTimeInTransitData%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/API/RateWithEstimatedDeliveryDate.cs/#L22">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/API/RateWithEstimatedDeliveryDate.cs/#L23">View Source</a>
   </span>
   <a id="EasyPost_Models_API_RateWithEstimatedDeliveryDate_EasyPostTimeInTransitData_" data-uid="EasyPost.Models.API.RateWithEstimatedDeliveryDate.EasyPostTimeInTransitData*"></a>
   <h4 id="EasyPost_Models_API_RateWithEstimatedDeliveryDate_EasyPostTimeInTransitData" data-uid="EasyPost.Models.API.RateWithEstimatedDeliveryDate.EasyPostTimeInTransitData">EasyPostTimeInTransitData</h4>
-  <div class="markdown level1 summary"><p>Estimated <a class="xref" href="EasyPost.Models.API.TimeInTransitDetails.html">TimeInTransitDetails</a> for the <a class="xref" href="EasyPost.Models.API.RateWithEstimatedDeliveryDate.html#EasyPost_Models_API_RateWithEstimatedDeliveryDate_Rate">Rate</a>.</p>
+  <div class="markdown level1 summary"><p>Estimated <a class="xref" href="EasyPost.Models.API.RateWithEstimatedDeliveryDate.html#EasyPost_Models_API_RateWithEstimatedDeliveryDate_TimeInTransitDetails">TimeInTransitDetails</a> for the <a class="xref" href="EasyPost.Models.API.RateWithEstimatedDeliveryDate.html#EasyPost_Models_API_RateWithEstimatedDeliveryDate_Rate">Rate</a>.
+Deprecated: Use <a class="xref" href="EasyPost.Models.API.RateWithEstimatedDeliveryDate.html#EasyPost_Models_API_RateWithEstimatedDeliveryDate_TimeInTransitDetails">TimeInTransitDetails</a> instead.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TimeInTransitDetails EasyPostTimeInTransitData { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TimeInTransitDetails EasyPostTimeInTransitData { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -128,7 +129,7 @@
   </span>
   <a id="EasyPost_Models_API_RateWithEstimatedDeliveryDate_Rate_" data-uid="EasyPost.Models.API.RateWithEstimatedDeliveryDate.Rate*"></a>
   <h4 id="EasyPost_Models_API_RateWithEstimatedDeliveryDate_Rate" data-uid="EasyPost.Models.API.RateWithEstimatedDeliveryDate.Rate">Rate</h4>
-  <div class="markdown level1 summary"><p>The <a class="xref" href="EasyPost.Models.API.SmartRate.html">SmartRate</a> object.</p>
+  <div class="markdown level1 summary"><p>The <a class="xref" href="EasyPost.Models.API.Rate.html">Rate</a> object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -146,6 +147,37 @@
     <tbody>
       <tr>
         <td><a class="xref" href="EasyPost.Models.API.Rate.html">Rate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_API_RateWithEstimatedDeliveryDate_TimeInTransitDetails.md&amp;value=---%0Auid%3A%20EasyPost.Models.API.RateWithEstimatedDeliveryDate.TimeInTransitDetails%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/API/RateWithEstimatedDeliveryDate.cs/#L29">View Source</a>
+  </span>
+  <a id="EasyPost_Models_API_RateWithEstimatedDeliveryDate_TimeInTransitDetails_" data-uid="EasyPost.Models.API.RateWithEstimatedDeliveryDate.TimeInTransitDetails*"></a>
+  <h4 id="EasyPost_Models_API_RateWithEstimatedDeliveryDate_TimeInTransitDetails" data-uid="EasyPost.Models.API.RateWithEstimatedDeliveryDate.TimeInTransitDetails">TimeInTransitDetails</h4>
+  <div class="markdown level1 summary"><p>Estimated <a class="xref" href="EasyPost.Models.API.TimeInTransitDetailsForDeliveryDateEstimate.html">TimeInTransitDetailsForDeliveryDateEstimate</a> for the <a class="xref" href="EasyPost.Models.API.RateWithEstimatedDeliveryDate.html#EasyPost_Models_API_RateWithEstimatedDeliveryDate_Rate">Rate</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeInTransitDetailsForDeliveryDateEstimate TimeInTransitDetails { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EasyPost.Models.API.TimeInTransitDetailsForDeliveryDateEstimate.html">TimeInTransitDetailsForDeliveryDateEstimate</a></td>
         <td></td>
       </tr>
     </tbody>
