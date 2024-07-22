@@ -29,6 +29,9 @@ public class Basics
         var carrierFields = new CarrierFields();
         var carrierMetadata = new CarrierMetadata();
         var carrierType = new CarrierType();
+        var claim = new Claim();
+        var claimCollection = new ClaimCollection();
+        var claimHistoryEntry = new ClaimHistoryEntry();
         var customsInfo = new CustomsInfo();
         var customsItem = new CustomsItem();
         var endShipper = new EndShipper();
@@ -109,6 +112,8 @@ public class Basics
         var carrierAccountCreateUpsParameters = new EasyPost.Parameters.CarrierAccount.CreateUps();
         var carrierAccountUpdateParameters = new EasyPost.Parameters.CarrierAccount.Update();
         var carrierMetadataRetrieveParameters = new EasyPost.Parameters.CarrierMetadata.Retrieve();
+        var claimCreateParameters = new EasyPost.Parameters.Claim.Create();
+        var claimAllParameters = new EasyPost.Parameters.Claim.All();
         var customsInfoCreateParameters = new EasyPost.Parameters.CustomsInfo.Create();
         var customsItemCreateParameters = new EasyPost.Parameters.CustomsItem.Create();
         var endShipperCreateParameters = new EasyPost.Parameters.EndShipper.Create();
