@@ -53,6 +53,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Assert.Equal(claimParameters.TrackingCode, claim.TrackingCode);
             Assert.Equal(claimParameters.Amount, claim.RequestedAmount);
             Assert.Equal(claimParameters.Type, claim.Type);
+            Assert.Equal(claim.PaymentMethod, ClaimPaymentMethod.EasyPostWallet);
         }
 
         [Fact]

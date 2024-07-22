@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 
 namespace EasyPost.Parameters.Claim
@@ -70,10 +71,10 @@ namespace EasyPost.Parameters.Claim
         public string? ContactEmail { get; set; }
 
         /// <summary>
-        ///     The payment method for the claim.
+        ///     The <see cref="ClaimPaymentMethod"/> for the claim reimbursement.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "payment_method")]
-        public string? PaymentMethod { get; set; }
+        public ClaimPaymentMethod? PaymentMethod { get; set; }
 
         #endregion
     }

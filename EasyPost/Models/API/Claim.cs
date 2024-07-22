@@ -63,11 +63,19 @@ namespace EasyPost.Models.API
         [JsonProperty("insurance_id")]
         public string? InsuranceId { get; set; }
 
-        /// <summary>
-        ///     The ID of the claim.
-        /// </summary>
+        // ReSharper disable once InconsistentNaming
+#pragma warning disable SA1300
         [JsonProperty("payment_method")]
-        public string? PaymentMethod { get; set; }
+        private string? _paymentMethod { get; set; }
+#pragma warning restore SA1300
+
+        /// <summary>
+        ///     The <see cref="ClaimPaymentMethod"/> of the claim.
+        /// </summary>
+#pragma warning disable SA1101
+        [JsonIgnore]
+        public ClaimPaymentMethod? PaymentMethod => _paymentMethod == null ? null : ValueEnum.FromValue<ClaimPaymentMethod>(_paymentMethod);
+#pragma warning disable SA1101
 
         /// <summary>
         ///     The name of the recipient of the reimbursement.

@@ -292,7 +292,7 @@ namespace EasyPost.Tests._Utilities
                         SupportingDocumentationAttachments = fixture.GetOrNull<string[]>("supporting_documentation_attachments"),
                         Description = fixture.GetOrNull<string>("description"),
                         ContactEmail = fixture.GetOrNull<string>("contact_email"),
-                        PaymentMethod = fixture.GetOrNull<string>("payment_method"),
+                        PaymentMethod = fixture.GetOrNullEnum<ClaimPaymentMethod>("payment_method"),
                         RecipientName = fixture.GetOrNull<string>("recipient_name"),
                     };
                 }
