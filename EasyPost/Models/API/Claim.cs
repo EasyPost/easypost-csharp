@@ -119,13 +119,17 @@ namespace EasyPost.Models.API
 
         [JsonProperty("type")]
         // ReSharper disable once InconsistentNaming
+#pragma warning disable SA1300
         private string? _type { get; set; }
+#pragma warning restore SA1300
 
         /// <summary>
         ///     The <see cref="ClaimType"/> of the claim.
         /// </summary>
         [JsonIgnore]
+#pragma warning disable SA1101
         public ClaimType? Type => _type == null ? null : ValueEnum.FromValue<ClaimType>(_type);
+#pragma warning restore SA1101
 
         #endregion
     }
