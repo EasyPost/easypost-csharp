@@ -6,7 +6,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Class representing an entry in a <see cref="Models.API.Claim.History"/> property.
     /// </summary>
-    public class ClaimHistoryEntry : EasyPostObject
+    public class ClaimHistoryEntry : EphemeralEasyPostObject
     {
         #region JSON Properties
 

@@ -293,6 +293,7 @@ namespace EasyPost.Tests._Utilities
                         Description = fixture.GetOrNull<string>("description"),
                         ContactEmail = fixture.GetOrNull<string>("contact_email"),
                         PaymentMethod = fixture.GetOrNull<string>("payment_method"),
+                        RecipientName = fixture.GetOrNull<string>("recipient_name"),
                     };
                 }
 
