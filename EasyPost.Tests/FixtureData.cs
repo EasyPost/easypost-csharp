@@ -19,6 +19,9 @@ namespace EasyPost.Tests._Utilities
         [JsonProperty("carrier_strings")]
         public CarrierStrings CarrierStrings { get; set; }
 
+        [JsonProperty("claims")]
+        public Claims Claims { get; set; }
+
         [JsonProperty("credit_cards")]
         public CreditCards CreditCards { get; set; }
 
@@ -99,6 +102,16 @@ namespace EasyPost.Tests._Utilities
 
         [JsonProperty("usps")]
         public string Usps { get; set; }
+
+        #endregion
+    }
+
+    public class Claims
+    {
+        #region JSON Properties
+
+        [JsonProperty("basic")]
+        public Dictionary<string, object> Basic { get; set; }
 
         #endregion
     }

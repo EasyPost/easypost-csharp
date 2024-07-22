@@ -115,7 +115,7 @@ namespace EasyPost.Tests.ServicesTests
             Insurance insurance = await Client.Insurance.Create(parameters);
             Insurance cancelledInsurance = await Client.Insurance.Refund(insurance.Id);
 
-            Assert.IsType<Insurance>(insurance);
+            Assert.IsType<Insurance>(cancelledInsurance);
             Assert.StartsWith("ins_", cancelledInsurance.Id);
             Assert.Equal("cancelled", cancelledInsurance.Status);
             Assert.Equal("Insurance was cancelled by the user.", cancelledInsurance.Messages[0]);

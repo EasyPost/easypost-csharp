@@ -13,7 +13,7 @@ namespace EasyPost
          * However, this class doesn't actually dictate that these services will use the beta API endpoint.
          *
          * In each function in each service (beta or not), when the HTTP call is being made, we can optionally override the
-         * API version that will be hit by setting the `overrideApiVersion` parameter to the desired version (defaults to ApiVersion.General otherwise).
+         * API version that will be hit by setting the `overrideApiVersion` parameter to the desired version (defaults to ApiVersion.Current otherwise).
          *
          * From a design perspective, this allows us to specifically redirect certain API calls to certain API versions on an individual basis.
          *

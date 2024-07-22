@@ -44,6 +44,8 @@ namespace EasyPost.Tests._Utilities
 
         internal static Dictionary<string, object> BasicInsurance => GetFixtureStructure().Insurances.Basic;
 
+        internal static Dictionary<string, object> BasicClaim => GetFixtureStructure().Claims.Basic;
+
         internal static Dictionary<string, object> BasicOrder => GetFixtureStructure().Orders.Basic;
 
         internal static Dictionary<string, object> BasicParcel => GetFixtureStructure().Parcels.Basic;
@@ -270,6 +272,41 @@ namespace EasyPost.Tests._Utilities
                         Description = fixture.GetOrNull<string>("description"),
                         Reference = fixture.GetOrNull<string>("reference"),
                         AccountNumber = "123456789",
+                    };
+                }
+            }
+
+            internal static class Claims
+            {
+                internal static ParameterSets.Claim.Create Create(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new ParameterSets.Claim.Create
+                    {
+                        Type = fixture.GetOrNullEnum<ClaimType>("type"),
+                        Amount = fixture.GetOrNullDouble("amount"),
+                        TrackingCode = fixture.GetOrNull<string>("tracking_code"),
+                        EmailEvidenceAttachments = fixture.GetOrNull<string[]>("email_evidence_attachments"),
+                        InvoiceAttachments = fixture.GetOrNull<string[]>("invoice_attachments"),
+                        SupportingDocumentationAttachments = fixture.GetOrNull<string[]>("supporting_documentation_attachments"),
+                        Description = fixture.GetOrNull<string>("description"),
+                        ContactEmail = fixture.GetOrNull<string>("contact_email"),
+                        PaymentMethod = fixture.GetOrNull<string>("payment_method"),
+                    };
+                }
+
+                internal static ParameterSets.Claim.All All(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new ParameterSets.Claim.All
+                    {
+                        PageSize = fixture.GetOrNullInt("page_size"),
+                        BeforeId = fixture.GetOrNull<string>("before_id"),
+                        AfterId = fixture.GetOrNull<string>("after_id"),
+                        StartDatetime = fixture.GetOrNull<string>("start_datetime"),
+                        EndDatetime = fixture.GetOrNull<string>("end_datetime"),
                     };
                 }
             }
