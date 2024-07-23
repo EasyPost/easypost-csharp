@@ -8,7 +8,7 @@ namespace EasyPost.Models.API;
 public class ClaimPaymentMethod : ValueEnum
 {
     /// <summary>
-    ///     An enum representing paying a claim reimbursement via a mailed check
+    ///     An enum representing paying a claim reimbursement via a mailed check.
     /// </summary>
     public static readonly ClaimPaymentMethod MailedCheck = new(1, "mailed_check");
 
