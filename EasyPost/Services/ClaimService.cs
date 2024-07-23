@@ -33,7 +33,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="Claim"/> object.</returns>
         [CrudOperations.Create]
-        public async Task<Claim> Create(Parameters.Claim.Create parameters, CancellationToken cancellationToken = default) => await RequestAsync<Claim>(Method.Post, "claims", cancellationToken, parameters.ToDictionary(), overrideApiVersion: ApiVersion.Beta);
+        public async Task<Claim> Create(Parameters.Claim.Create parameters, CancellationToken cancellationToken = default) => await RequestAsync<Claim>(Method.Post, "claims", cancellationToken, parameters.ToDictionary());
 
         /// <summary>
         ///     List all <see cref="Claim"/>s.
@@ -45,7 +45,7 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<ClaimCollection> All(Parameters.Claim.All parameters, CancellationToken cancellationToken = default)
         {
-            ClaimCollection collection = await RequestAsync<ClaimCollection>(Method.Get, "claims", cancellationToken, parameters.ToDictionary(), overrideApiVersion: ApiVersion.Beta);
+            ClaimCollection collection = await RequestAsync<ClaimCollection>(Method.Get, "claims", cancellationToken, parameters.ToDictionary());
             collection.Filters = parameters;
             return collection;
         }
@@ -70,7 +70,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="Claim"/> instance.</returns>
         [CrudOperations.Read]
-        public async Task<Claim> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Claim>(Method.Get, $"claims/{id}", cancellationToken, overrideApiVersion: ApiVersion.Beta);
+        public async Task<Claim> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Claim>(Method.Get, $"claims/{id}", cancellationToken);
 
         /// <summary>
         ///     Refund an <see cref="Claim"/>.
@@ -80,7 +80,7 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="Claim"/> instance.</returns>
         [CrudOperations.Delete]
-        public async Task<Claim> Cancel(string id, CancellationToken cancellationToken = default) => await RequestAsync<Claim>(Method.Post, $"claims/{id}/cancel", cancellationToken, overrideApiVersion: ApiVersion.Beta);
+        public async Task<Claim> Cancel(string id, CancellationToken cancellationToken = default) => await RequestAsync<Claim>(Method.Post, $"claims/{id}/cancel", cancellationToken);
 
         #endregion
     }
