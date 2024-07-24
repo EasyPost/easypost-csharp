@@ -9,7 +9,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Claim
     /// <summary>
-    ///     Class representing a <a href="https://www.easypost.com/docs/api#claim-object">EasyPost claim object</a>.
+    ///     Class representing a EasyPost claim object.
     /// </summary>
     public class Claim : EasyPostObject, Parameters.IClaimParameter
     {
