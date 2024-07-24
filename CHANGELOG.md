@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Add new `Claim` service for filing claims on EasyPost shipments and insurances
+
 ## v6.6.0 (2024-07-16)
 
 - Add new `SmartRate` service for interacting with the SmartRate API

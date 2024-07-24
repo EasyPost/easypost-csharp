@@ -52,6 +52,11 @@ namespace EasyPost
         public CarrierTypeService CarrierType { get; }
 
         /// <summary>
+        ///     Access Claim-related functionality.
+        /// </summary>
+        public ClaimService Claim { get; }
+
+        /// <summary>
         ///     Access Customs Info-related functionality.
         /// </summary>
         public CustomsInfoService CustomsInfo { get; }
@@ -158,6 +163,7 @@ namespace EasyPost
             CarrierAccount = new CarrierAccountService(this);
             CarrierMetadata = new CarrierMetadataService(this);
             CarrierType = new CarrierTypeService(this);
+            Claim = new ClaimService(this);
             CustomsInfo = new CustomsInfoService(this);
             CustomsItem = new CustomsItemService(this);
             EndShipper = new EndShipperService(this);
@@ -199,6 +205,7 @@ namespace EasyPost
                 CarrierAccount.Dispose();
                 CarrierMetadata.Dispose();
                 CarrierType.Dispose();
+                Claim.Dispose();
                 CustomsInfo.Dispose();
                 CustomsItem.Dispose();
                 EndShipper.Dispose();
