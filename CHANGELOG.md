@@ -2,7 +2,7 @@
 
 ## Next Release
 
-- Fix pagination parameters for `GetNextPageOfChildren` function
+- Fix pagination parameters for `GetNextPageOfChildren` function for User service
 
 ## v6.7.0 (2024-07-24)
 
