@@ -22,60 +22,61 @@ A simple create & buy shipment example:
 
 ```csharp
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyPost;
 using Newtonsoft.Json;
-using EasyPost.Parameters;
 
-namespace example
+namespace Example;
+
+class ExampleClass
 {
-    class exampleClass
+    static async Task Main()
     {
-        static async Task Main()
+        var client = new Client(new ClientConfiguration(Environment.GetEnvironmentVariable("EASYPOST_API_KEY")));
+
+        var createParameters = new EasyPost.Parameters.Shipment.Create()
         {
-            Client client = new Client(new ClientConfiguration(Environment.GetEnvironmentVariable("EASYPOST_API_KEY")));
-
-            Parameters.Shipment.Create createParameters = new() {
-                ToAddress = new Parameters.Address.Create {
-                    Name = "Dr. Steve Brule",
-                    Street1 = "179 N Harbor Dr",
-                    City = "Redondo Beach",
-                    State = "CA",
-                    Zip = "90277",
-                    Country = "US",
-                    Phone = "8573875756",
-                    Email = "dr_steve_brule@gmail.com"
-                },
-                FromAddress = new Parameters.Address.Create {
-                    Name = "EasyPost",
-                    Street1 = "417 Montgomery Street",
-                    Street2 = "5th Floor",
-                    City = "San Francisco",
-                    State = "CA",
-                    Zip = "94104",
-                    Country = "US",
-                    Phone = "4153334445",
-                    Email = "support@easypost.com"
-                },
-                Parcel = new Parameters.Parcel.Create {
-                    Length = 20.2,
-                    Width = 10.9,
-                    Height = 5,
-                    Weight = 65.9
-                }
+            ToAddress = new EasyPost.Parameters.Address.Create
+            {
+                Name = "Dr. Steve Brule",
+                Street1 = "179 N Harbor Dr",
+                City = "Redondo Beach",
+                State = "CA",
+                Zip = "90277",
+                Country = "US",
+                Phone = "8573875756",
+                Email = "dr_steve_brule@gmail.com"
+            },
+            FromAddress = new EasyPost.Parameters.Address.Create
+            {
+                Name = "EasyPost",
+                Street1 = "417 Montgomery Street",
+                Street2 = "5th Floor",
+                City = "San Francisco",
+                State = "CA",
+                Zip = "94104",
+                Country = "US",
+                Phone = "4153334445",
+                Email = "support@easypost.com"
+            },
+            Parcel = new EasyPost.Parameters.Parcel.Create
+            {
+                Length = 20.2,
+                Width = 10.9,
+                Height = 5,
+                Weight = 65.9
             }
+        };
 
-            Shipment shipment = await client.Shipment.Create(parameters);
+        var shipment = await client.Shipment.Create(createParameters);
 
-            Rate rate = shipment.LowestRate();
+        var rate = shipment.LowestRate();
 
-            Paramaters.Shipment.Buy buyParameters = new(rate);
+        var buyParameters = new EasyPost.Parameters.Shipment.Buy(rate);
 
-            Shipment purchasedShipment = await client.Shipment.Buy(shipment.Id, buyParameters);
+        var purchasedShipment = await client.Shipment.Buy(shipment.Id, buyParameters);
 
-            Console.WriteLine(JsonConvert.SerializeObject(purchasedShipment, Formatting.Indented));
-        }
+        Console.WriteLine(JsonConvert.SerializeObject(purchasedShipment, Formatting.Indented));
     }
 }
 ```
