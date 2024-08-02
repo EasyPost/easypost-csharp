@@ -32,7 +32,7 @@ public class ChildUserCollection : PaginatedCollection<User>
     {
         AllChildren parameters = Filters != null ? (AllChildren)Filters : new AllChildren();
 
-        parameters.BeforeId = entries.Last().Id;
+        parameters.AfterId = entries.Last().Id;
 
         if (pageSize != null)
         {
