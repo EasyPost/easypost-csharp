@@ -17,9 +17,15 @@ namespace EasyPost.Models.API
         public string? Type { get; set; }
 
         /// <summary>
+        ///     The category of surcharge.
+        /// </summary>
+        [JsonProperty("category")]
+        public string? Category { get; set; }
+
+        /// <summary>
         ///     The amount of the surcharge.
         /// </summary>
-        [JsonProperty("carrier")]
+        [JsonProperty("amount")]
         public string? Amount { get; set; }
 
         /// <summary>
