@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using EasyPost._base;
 using Newtonsoft.Json;
 
@@ -97,8 +98,13 @@ namespace EasyPost.Models.API
         [JsonProperty("shipment_id")]
         public string? ShipmentId { get; set; }
 
-        #endregion
+        /// <summary>
+        ///     The list of <see cref="Surcharge"/>s for this rate.
+        /// </summary>
+        [JsonProperty("surcharges")]
+        public List<Surcharge>? Surcharges { get; set; }
 
+        #endregion
     }
 }
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Beta.Rate
