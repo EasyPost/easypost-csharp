@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using EasyPost._base;
 using Newtonsoft.Json;
 
@@ -104,6 +105,12 @@ namespace EasyPost.Models.API.Beta
         /// </summary>
         [JsonProperty("shipment_id")]
         public string? ShipmentId { get; set; }
+
+        /// <summary>
+        ///     The list of <see cref="Surcharge"/>s for this rate.
+        /// </summary>
+        [JsonProperty("surcharges")]
+        public List<Surcharge>? Surcharges { get; set; }
 
         #endregion
     }
