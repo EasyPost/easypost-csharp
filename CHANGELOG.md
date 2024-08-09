@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v6.7.1 (2024-08-09)
 
 - Fix pagination parameters for `GetNextPageOfChildren` function for User service
 
