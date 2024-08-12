@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Fix inclusion of `Verify` and `VerifyStrict` parameters when creating an Address as part of a larger object creation (e.g. Shipment, Order, etc.)
+
 ## v6.7.1 (2024-08-09)
 
 - Fix pagination parameters for `GetNextPageOfChildren` function for User service
