@@ -170,14 +170,22 @@ namespace EasyPost.Parameters.Address
         ///     Whether to enforce strict verification for the new <see cref="Models.API.Address"/>.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "verify_strict")]
-        // "verify_strict" is not included when address creation parameters are used in a non-address creation request.
+        [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "verify_strict")]
+        [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "verify_strict")]
+        [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "verify_strict")]
+        [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "verify_strict")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "verify_strict")]
         public bool? VerifyStrict { get; set; }
 
         /// <summary>
         ///     Whether to enforce verification for the new <see cref="Models.API.Address"/>.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "verify")]
-        // "verify" is not included when address creation parameters are used in a non-address creation request.
+        [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "verify")]
+        [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "verify")]
+        [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "verify")]
+        [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "verify")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "verify")]
         public bool? Verify { get; set; }
 
         /// <summary>
