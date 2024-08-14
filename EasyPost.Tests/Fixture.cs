@@ -36,6 +36,12 @@ namespace EasyPost.Tests._Utilities
             }
         }
 
+        internal static string WebhookHmacSignature => GetFixtureStructure().WebhookHmacSignature;
+
+        internal static string WebhookSecret => GetFixtureStructure().WebhookSecret;
+
+        internal static string WebhookUrl => GetFixtureStructure().WebhookUrl;
+
         internal static Dictionary<string, object> BasicCarrierAccount => GetFixtureStructure().CarrierAccounts.Basic;
 
         internal static Dictionary<string, object> BasicCustomsInfo => GetFixtureStructure().CustomsInfos.Basic;
@@ -121,8 +127,6 @@ namespace EasyPost.Tests._Utilities
         }
 
         internal static string UspsService => GetFixtureStructure().ServiceNames.Usps.FirstService;
-
-        internal static string WebhookUrl => GetFixtureStructure().WebhookUrl;
 
         private static FixtureStructure GetFixtureStructure()
         {

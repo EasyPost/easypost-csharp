@@ -92,14 +92,15 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("validate_webhook");
 
             byte[] eventData = Fixtures.EventBody;
+            string webhookHmacSignature = Fixtures.WebhookHmacSignature;
+            string webhookSecret = Fixtures.WebhookSecret;
 
-            // ReSharper disable once StringLiteralTypo
-            const string webhookSecret = "sécret";
-            Dictionary<string, object?> headers = new() { { "X-Hmac-Signature", "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b" } };
+            Dictionary<string, object?> headers = new() { { "X-Hmac-Signature", webhookHmacSignature } };
 
             Event @event = Client.Webhook.ValidateWebhook(eventData, headers, webhookSecret);
 
-            Assert.Equal("batch.created", @event.Description);
+            Assert.Equal("tracker.updated", @event.Description);
+            Assert.Equal(614.4, @event.Result.Weight);
         }
 
         [Fact]
