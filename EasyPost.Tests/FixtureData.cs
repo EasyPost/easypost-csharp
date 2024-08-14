@@ -64,6 +64,12 @@ namespace EasyPost.Tests._Utilities
         [JsonProperty("users")]
         public Users Users { get; set; }
 
+        [JsonProperty("webhook_hmac_signature")]
+        public string WebhookHmacSignature { get; set; }
+
+        [JsonProperty("webhook_secret")]
+        public string WebhookSecret { get; set; }
+
         [JsonProperty("webhook_url")]
         public string WebhookUrl { get; set; }
 
