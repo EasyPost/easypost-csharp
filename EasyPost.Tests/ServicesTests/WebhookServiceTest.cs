@@ -100,7 +100,7 @@ namespace EasyPost.Tests.ServicesTests
             Event @event = Client.Webhook.ValidateWebhook(eventData, headers, webhookSecret);
 
             Assert.Equal("tracker.updated", @event.Description);
-            Assert.Equal(614.4, @event.Result.Weight);
+            Assert.Equal(614.4, @event.Result["weight"]); // Ensure we convert floats properly
         }
 
         [Fact]
