@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 443,
-    "RecordedAt": "2024-04-05T13:24:54.60884-06:00",
+    "Duration": 141,
+    "RecordedAt": "2024-08-16T11:13:01.094102-06:00",
     "Request": {
       "Body": "{\"address\":{\"address\":{\"street1\":\"388 Townsend St\"}}}",
       "BodyContentType": "Json",
@@ -17,7 +17,7 @@
       "Uri": "https://api.easypost.com/v2/addresses"
     },
     "Response": {
-      "Body": "{\"id\":\"adr_2e950becf38211ee9ca4ac1f6bc53342\",\"object\":\"Address\",\"created_at\":\"2024-04-05T13:24:54-06:00\",\"updated_at\":\"2024-04-05T13:24:54-06:00\",\"name\":null,\"company\":null,\"street1\":null,\"street2\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":\"US\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
+      "Body": "{\"id\":\"adr_ca8cc4675bf211ef8d38ac1f6bc53342\",\"object\":\"Address\",\"created_at\":\"2024-08-16T11:13:01-06:00\",\"updated_at\":\"2024-08-16T11:13:01-06:00\",\"name\":null,\"company\":null,\"street1\":null,\"street2\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":\"US\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -32,15 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "1f0ae7a566105006f42bef06000fa422",
+        "x-ep-request-uuid": "8a4bf44166bf889cf442514c004a4ff4",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "Location": "/api/v2/addresses/adr_2e950becf38211ee9ca4ac1f6bc53342",
-        "x-runtime": "0.039333",
-        "x-node": "bigweb38nuq",
-        "x-version-label": "easypost-202404051854-b9502cad97-master",
+        "Location": "/api/v2/addresses/adr_ca8cc4675bf211ef8d38ac1f6bc53342",
+        "x-runtime": "0.040427",
+        "x-node": "bigweb41nuq",
+        "x-version-label": "easypost-202408161634-c713989c9f-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb3nuq 39c21b8207,extlb2nuq 60566a9ec2",
+        "x-proxied": "intlb4nuq c0f5e722d1,extlb1nuq b6e1b5034c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

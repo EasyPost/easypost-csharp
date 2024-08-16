@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 248,
-    "RecordedAt": "2024-04-05T13:23:51.19378-06:00",
+    "Duration": 234,
+    "RecordedAt": "2024-08-16T11:14:22.141402-06:00",
     "Request": {
       "Body": "{\"address\":{\"company\":\"EasyPost\",\"street1\":\"000 unknown street\",\"city\":\"Not A City\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"}}",
       "BodyContentType": "Json",
@@ -17,7 +17,7 @@
       "Uri": "https://api.easypost.com/v2/addresses"
     },
     "Response": {
-      "Body": "{\"id\":\"adr_08c5953ef38211ee8090ac1f6bc539aa\",\"object\":\"Address\",\"created_at\":\"2024-04-05T13:23:51-06:00\",\"updated_at\":\"2024-04-05T13:23:51-06:00\",\"name\":null,\"company\":\"EasyPost\",\"street1\":\"000 unknown street\",\"street2\":null,\"city\":\"Not A City\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
+      "Body": "{\"id\":\"adr_faf36e495bf211efa3a3ac1f6bc53342\",\"object\":\"Address\",\"created_at\":\"2024-08-16T11:14:22-06:00\",\"updated_at\":\"2024-08-16T11:14:22-06:00\",\"name\":null,\"company\":\"EasyPost\",\"street1\":\"000 unknown street\",\"street2\":null,\"city\":\"Not A City\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -32,15 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "f5042d7866104fc7f42d9d0b00100a8f",
+        "x-ep-request-uuid": "0580883266bf88eef3f73ee800494fbb",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "Location": "/api/v2/addresses/adr_08c5953ef38211ee8090ac1f6bc539aa",
-        "x-runtime": "0.054356",
-        "x-node": "bigweb42nuq",
-        "x-version-label": "easypost-202404051854-b9502cad97-master",
+        "Location": "/api/v2/addresses/adr_faf36e495bf211efa3a3ac1f6bc53342",
+        "x-runtime": "0.040446",
+        "x-node": "bigweb35nuq",
+        "x-version-label": "easypost-202408161634-c713989c9f-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb4nuq 39c21b8207,extlb1nuq 60566a9ec2",
+        "x-proxied": "intlb3nuq c0f5e722d1,extlb2nuq b6e1b5034c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -50,8 +50,8 @@
     }
   },
   {
-    "Duration": 86,
-    "RecordedAt": "2024-04-05T13:23:51.29933-06:00",
+    "Duration": 112,
+    "RecordedAt": "2024-08-16T11:14:22.680751-06:00",
     "Request": {
       "Body": "{\"address\":{\"company\":\"EasyPost\",\"street1\":\"000 unknown street\",\"city\":\"Not A City\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"},\"verify\":true}",
       "BodyContentType": "Json",
@@ -67,7 +67,7 @@
       "Uri": "https://api.easypost.com/v2/addresses"
     },
     "Response": {
-      "Body": "{\"id\":\"adr_08d85157f38211ee8097ac1f6bc539aa\",\"object\":\"Address\",\"created_at\":\"2024-04-05T13:23:51-06:00\",\"updated_at\":\"2024-04-05T13:23:51-06:00\",\"name\":null,\"company\":\"EasyPost\",\"street1\":\"000 unknown street\",\"street2\":null,\"city\":\"Not A City\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":false,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":false,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":{}}}}",
+      "Body": "{\"id\":\"adr_fb451c3a5bf211efa85cac1f6bc539ae\",\"object\":\"Address\",\"created_at\":\"2024-08-16T11:14:22-06:00\",\"updated_at\":\"2024-08-16T11:14:22-06:00\",\"name\":null,\"company\":\"EasyPost\",\"street1\":\"000 unknown street\",\"street2\":null,\"city\":\"Not A City\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":false,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":false,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":{}}}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -82,15 +82,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "f5042d7866104fc7f42d9d0b00100aa6",
+        "x-ep-request-uuid": "0580883266bf88eef3f73ee80049504c",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "Location": "/api/v2/addresses/adr_08d85157f38211ee8097ac1f6bc539aa",
-        "x-runtime": "0.047954",
-        "x-node": "bigweb36nuq",
-        "x-version-label": "easypost-202404051854-b9502cad97-master",
+        "Location": "/api/v2/addresses/adr_fb451c3a5bf211efa85cac1f6bc539ae",
+        "x-runtime": "0.060961",
+        "x-node": "bigweb53nuq",
+        "x-version-label": "easypost-202408161634-c713989c9f-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb3nuq 39c21b8207,extlb1nuq 60566a9ec2",
+        "x-proxied": "intlb3nuq c0f5e722d1,extlb2nuq b6e1b5034c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

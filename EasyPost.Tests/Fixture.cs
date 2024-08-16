@@ -62,7 +62,7 @@ namespace EasyPost.Tests._Utilities
             {
                 Dictionary<string, object> fixture = GetFixtureStructure().Pickups.Basic;
 
-                const string pickupDate = "2024-04-08";
+                const string pickupDate = "2024-08-21";
 
                 fixture!.AddOrUpdate(pickupDate, "min_datetime");
                 fixture!.AddOrUpdate(pickupDate, "max_datetime");
@@ -97,9 +97,9 @@ namespace EasyPost.Tests._Utilities
 
         internal static string PickupService => GetFixtureStructure().ServiceNames.Usps.PickupService;
 
-        internal static string PlannedShipDate => "2024-07-17";
+        internal static string PlannedShipDate => "2024-08-23";
 
-        internal static string DesiredDeliveryDate => "2024-07-17";
+        internal static string DesiredDeliveryDate => "2024-08-23";
 
         internal static Dictionary<string, object> ReferralCustomer => GetFixtureStructure().Users.Referral;
 

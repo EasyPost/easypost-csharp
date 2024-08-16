@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 495,
-    "RecordedAt": "2024-04-05T13:24:53.939265-06:00",
+    "Duration": 846,
+    "RecordedAt": "2024-08-16T11:35:26.034229-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -14,7 +14,7 @@
       "Uri": "https://api.easypost.com/v2/events?page_size=5"
     },
     "Response": {
-      "Body": "{\"events\":[{\"description\":\"tracker.created\",\"id\":\"evt_2df87f12f38211ee869321d4a9f67573\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2024-04-05T19:24:53.762Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_2dd34030f38211ee9a4911f68d12a6d9\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2024-04-05T19:24:53.518Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_2d8e4732f38211eeb6ed5db966e0d7dc\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2024-04-05T19:24:53.066Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_2d6605f6f38211ee8a705baa129c69d1\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2024-04-05T19:24:52.802Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_2d413fbef38211eebe8d735f0da14748\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2024-04-05T19:24:52.561Z\",\"mode\":\"test\",\"object\":\"Event\"}],\"has_more\":true}",
+      "Body": "{\"events\":[{\"description\":\"tracker.updated\",\"id\":\"evt_ea5b79805bf511efa188510f1c939063\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2024-08-16T17:35:22.875Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_e940f4445bf511efa5824984ba3efe7c\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2024-08-16T17:35:21.023Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_e929e8305bf511efb34d2d816b30c4ca\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2024-08-16T17:35:20.872Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_e80213ec5bf511efbef567ee90f16996\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2024-08-16T17:35:18.934Z\",\"mode\":\"test\",\"object\":\"Event\"},{\"description\":\"tracker.updated\",\"id\":\"evt_e75126f45bf511efb48859d51ca35791\",\"user_id\":\"user_4d78588f2f744bf6886aa67ddb870865\",\"status\":\"pending\",\"created_at\":\"2024-08-16T17:35:17.774Z\",\"mode\":\"test\",\"object\":\"Event\"}],\"has_more\":true}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -29,14 +29,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "1f0ae7a466105005f451acac000fa332",
+        "x-ep-request-uuid": "0580883566bf8dddf3f9632b004ea2b2",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.192583",
-        "x-node": "bigweb34nuq",
-        "x-version-label": "easypost-202404051854-b9502cad97-master",
+        "x-runtime": "0.224969",
+        "x-node": "bigweb43nuq",
+        "x-version-label": "easypost-202408161634-c713989c9f-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb3nuq 39c21b8207,extlb2nuq 60566a9ec2",
+        "x-canary": "direct",
+        "x-proxied": "intlb4nuq c0f5e722d1,extlb2nuq b6e1b5034c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

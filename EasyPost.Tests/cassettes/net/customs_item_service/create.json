@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 494,
-    "RecordedAt": "2024-04-05T13:24:53.91687-06:00",
+    "Duration": 166,
+    "RecordedAt": "2024-08-16T11:12:59.136161-06:00",
     "Request": {
       "Body": "{\"customs_item\":{\"description\":\"Sweet shirts\",\"quantity\":2,\"weight\":11,\"value\":23.25,\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\"}}",
       "BodyContentType": "Json",
@@ -17,7 +17,7 @@
       "Uri": "https://api.easypost.com/v2/customs_items"
     },
     "Response": {
-      "Body": "{\"id\":\"cstitem_c07e1a40e1364313a8265fda02a7c267\",\"object\":\"CustomsItem\",\"created_at\":\"2024-04-05T19:24:53Z\",\"updated_at\":\"2024-04-05T19:24:53Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.25\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}",
+      "Body": "{\"id\":\"cstitem_7abd283557b94992901f708577e58262\",\"object\":\"CustomsItem\",\"created_at\":\"2024-08-16T17:12:58Z\",\"updated_at\":\"2024-08-16T17:12:58Z\",\"description\":\"Sweet shirts\",\"hs_tariff_number\":\"654321\",\"origin_country\":\"US\",\"quantity\":2,\"value\":\"23.25\",\"weight\":11.0,\"code\":null,\"mode\":\"test\",\"manufacturer\":null,\"currency\":null,\"eccn\":null,\"printed_commodity_identifier\":null}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
@@ -32,15 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "1f0ae7a566105005f41e3172000fa33a",
+        "x-ep-request-uuid": "8a4bf43b66bf889af42bdf2e004a4d5c",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "Location": "/api/v2/customs_items/cstitem_c07e1a40e1364313a8265fda02a7c267",
-        "x-runtime": "0.047655",
-        "x-node": "bigweb39nuq",
-        "x-version-label": "easypost-202404051854-b9502cad97-master",
+        "Location": "/api/v2/customs_items/cstitem_7abd283557b94992901f708577e58262",
+        "x-runtime": "0.036110",
+        "x-node": "bigweb42nuq",
+        "x-version-label": "easypost-202408161634-c713989c9f-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb3nuq 39c21b8207,extlb2nuq 60566a9ec2",
+        "x-proxied": "intlb3nuq c0f5e722d1,extlb1nuq b6e1b5034c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

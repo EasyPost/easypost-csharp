@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 243,
-    "RecordedAt": "2024-04-05T13:23:50.18612-06:00",
+    "Duration": 439,
+    "RecordedAt": "2024-08-16T11:14:20.067261-06:00",
     "Request": {
       "Body": "{\"payment_method\":{\"stripe_customer_id\":\"cus_123\",\"payment_method_reference\":\"ba_123\",\"priority\":\"primary\"}}",
       "BodyContentType": "Json",
@@ -32,15 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "1f0ae7a266104fc6f41c15af000f7178",
+        "x-ep-request-uuid": "0580883166bf88ecf40729a300494d36",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.054492",
+        "x-runtime": "0.040165",
         "Vary": "Origin",
-        "x-node": "bigweb41nuq",
-        "x-version-label": "easypost-202404051854-b9502cad97-master",
+        "x-node": "bigweb53nuq",
+        "x-version-label": "easypost-202408161634-c713989c9f-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb4nuq 39c21b8207,extlb2nuq 60566a9ec2",
+        "x-proxied": "intlb3nuq c0f5e722d1,extlb2nuq b6e1b5034c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
