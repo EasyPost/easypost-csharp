@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 255,
-    "RecordedAt": "2024-04-05T13:23:54.476917-06:00",
+    "Duration": 482,
+    "RecordedAt": "2024-08-16T11:14:24.984581-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -19,7 +19,7 @@
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "1432"
+        "Content-Length": "1717"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -29,14 +29,14 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "f5042d7a66104fcaf43f0b0900100d97",
+        "x-ep-request-uuid": "0580883466bf88f0f02068b9004952f9",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.068429",
-        "x-node": "bigweb40nuq",
-        "x-version-label": "easypost-202404051854-b9502cad97-master",
+        "x-runtime": "0.264404",
+        "x-node": "bigweb42nuq",
+        "x-version-label": "easypost-202408161634-c713989c9f-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb3nuq 39c21b8207,extlb1nuq 60566a9ec2",
+        "x-proxied": "intlb3nuq c0f5e722d1,extlb2nuq b6e1b5034c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -46,8 +46,8 @@
     }
   },
   {
-    "Duration": 117,
-    "RecordedAt": "2024-04-05T13:23:54.613054-06:00",
+    "Duration": 114,
+    "RecordedAt": "2024-08-16T11:14:25.132914-06:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -75,14 +75,14 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "f5042d7a66104fcaf43f0b0900100dba",
+        "x-ep-request-uuid": "0580883466bf88f1f02068b90049538e",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.070200",
-        "x-node": "bigweb34nuq",
-        "x-version-label": "easypost-202404051854-b9502cad97-master",
+        "x-runtime": "0.074149",
+        "x-node": "bigweb35nuq",
+        "x-version-label": "easypost-202408161634-c713989c9f-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb3nuq 39c21b8207,extlb1nuq 60566a9ec2",
+        "x-proxied": "intlb4nuq c0f5e722d1,extlb2nuq b6e1b5034c",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
