@@ -330,7 +330,6 @@ referrals. We have attempted to call out these functions in their respective doc
 unit tests in one framework at a time with, e.g `make unit-test fw=net8.0`. Valid frameworks:
 
 - `net462` (.NET Framework 4.6.2, the oldest non-EOL version of .NET Framework; will not run on Apple Silicon)
-- `net5.0` (.NET 5.0)
 - `net6.0` (.NET 6.0)
 - `net7.0` (.NET 7.0)
 - `net8.0` (.NET 8.0)
