@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Corrects all API documentation link references to point to their new locations
+
 ## v6.7.2 (2024-08-16)
 
 - Fix inclusion of `Verify` and `VerifyStrict` parameters when creating an Address as part of a larger object creation (e.g. Shipment, Order, etc.)
@@ -15,10 +19,10 @@
 ## v6.6.0 (2024-07-16)
 
 - Add new `SmartRate` service for interacting with the SmartRate API
-    - New `RecommendShipDateForShipment` function to recommend ship date for a shipment based on a desired delivery date.
-    - New `EstimateDeliveryDateForRoute` function to estimate delivery date based on a list of carriers, to/from ZIP codes and a planned ship date (no existing shipment required).
-    - New `RecommendShipDateForRoute` function to to recommend ship date based on a list of carriers, to/from ZIP codes and a planned ship date (no existing shipment required).
-    - New model classes as needed for JSON response to new API functions
+  - New `RecommendShipDateForShipment` function to recommend ship date for a shipment based on a desired delivery date.
+  - New `EstimateDeliveryDateForRoute` function to estimate delivery date based on a list of carriers, to/from ZIP codes and a planned ship date (no existing shipment required).
+  - New `RecommendShipDateForRoute` function to to recommend ship date based on a list of carriers, to/from ZIP codes and a planned ship date (no existing shipment required).
+  - New model classes as needed for JSON response to new API functions
 - Enforce one-or-other for `Shipment` and `Batch` parameters in `Pickup.Create` parameter set
 - Add internal parameter dependency utility
 

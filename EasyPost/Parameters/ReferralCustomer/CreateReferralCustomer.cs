@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.ReferralCustomer
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#create-a-referral-customer">Parameters</a> for <see cref="EasyPost.Services.ReferralCustomerService.CreateReferral(CreateReferralCustomer, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/users/referral-customers#create-a-referralcustomer">Parameters</a> for <see cref="EasyPost.Services.ReferralCustomerService.CreateReferral(CreateReferralCustomer, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class CreateReferralCustomer : BaseParameters<Models.API.ReferralCustomer>, IReferralCustomerParameter

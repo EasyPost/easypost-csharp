@@ -10,7 +10,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services.Beta
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#rates">rate-related beta functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/shipments/rates">rate-related beta functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class RateService : EasyPostService
@@ -28,7 +28,7 @@ namespace EasyPost.Services.Beta
 
         /// <summary>
         ///     Retrieve <see cref="Models.API.Beta.StatelessRate"/>s for a <see cref="Models.API.Shipment"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-rates-for-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments/rates#retrieve-rates-for-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to retrieve the rates with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -42,7 +42,7 @@ namespace EasyPost.Services.Beta
 
         /// <summary>
         ///     Retrieve <see cref="Models.API.Beta.StatelessRate"/>s for a <see cref="Models.API.Shipment"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-rates-for-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments/rates#retrieve-rates-for-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to retrieve the rates with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

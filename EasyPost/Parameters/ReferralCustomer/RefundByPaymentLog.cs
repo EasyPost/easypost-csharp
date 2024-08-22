@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.ReferralCustomer
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#refund-a-referral-user">Parameters</a> for <see cref="EasyPost.Services.Beta.ReferralCustomerService.RefundByPaymentLog(RefundByPaymentLog, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/users/referral-customers#refund-a-referralcustomer">Parameters</a> for <see cref="EasyPost.Services.Beta.ReferralCustomerService.RefundByPaymentLog(RefundByPaymentLog, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class RefundByPaymentLog : BaseParameters<Models.API.ReferralCustomer>

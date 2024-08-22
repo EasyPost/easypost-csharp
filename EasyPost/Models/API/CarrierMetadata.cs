@@ -7,7 +7,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Beta.CarrierMetadata
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#carriermetadata-object">EasyPost carrier metadata summary</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/carrier-metadata#carriermetadata-object">EasyPost carrier metadata summary</a>.
     /// </summary>
     public class CarrierMetadata : EphemeralEasyPostObject
     {

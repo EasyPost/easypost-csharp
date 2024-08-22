@@ -5,7 +5,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.ReferralCustomer
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#add-payment-method-to-referral-user">Parameters</a> for <see cref="EasyPost.Services.Beta.ReferralCustomerService.AddPaymentMethod(AddPaymentMethod, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/users/referral-customers#add-payment-method-to-referralcustomer">Parameters</a> for <see cref="EasyPost.Services.Beta.ReferralCustomerService.AddPaymentMethod(AddPaymentMethod, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class AddPaymentMethod : BaseParameters<Models.API.ReferralCustomer>

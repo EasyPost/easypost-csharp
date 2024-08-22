@@ -8,7 +8,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1716
     /// <summary>
-    ///     Represents an <a href="https://www.easypost.com/docs/api#error-object">error returned by the EasyPost API</a>.
+    ///     Represents an <a href="https://docs.easypost.com/docs/errors#error-object">error returned by the EasyPost API</a>.
     ///     These are typically informational about why a request failed (server-side validation issues, missing data, etc.).
     ///     This is different than the EasyPostError class, which represents exceptions in the EasyPost library,
     ///     such as bad HTTP status codes or local validation issues.

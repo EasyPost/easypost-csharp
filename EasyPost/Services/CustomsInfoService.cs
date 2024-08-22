@@ -10,7 +10,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#customs-infos">customs info-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/customs-infos">customs info-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class CustomsInfoService : EasyPostService
@@ -28,7 +28,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="CustomsInfo"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-customsinfo">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/customs-infos#create-a-customsinfo">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="CustomsInfo"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -42,7 +42,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="CustomsInfo"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-customsinfo">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/customs-infos#create-a-customsinfo">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="CustomsInfo"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -56,7 +56,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve a <see cref="CustomsInfo"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-customsinfo">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/customs-infos#retrieve-a-customsinfo">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="CustomsInfo"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

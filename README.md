@@ -243,7 +243,7 @@ Client client = new(new ClientConfiguration(FakeApikey)
 
 ## Documentation
 
-API documentation can be found at: <https://easypost.com/docs/api>.
+API documentation can be found at: <https://docs.easypost.com>.
 
 Library documentation can be found on the web at: <https://easypost.github.io/easypost-csharp> or locally on
 the [`gh-pages` branch](https://github.com/EasyPost/easypost-csharp/tree/gh-pages).

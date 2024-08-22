@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.Shipment
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#insure-a-shipment">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.Insure(string, Insure, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/shipments/shipping-insurance#insure-a-shipment">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.Insure(string, Insure, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Insure : BaseParameters<Models.API.Shipment>

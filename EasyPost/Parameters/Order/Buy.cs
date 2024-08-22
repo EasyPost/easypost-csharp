@@ -5,7 +5,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.Order
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#buy-an-order">Parameters</a> for <see cref="EasyPost.Services.OrderService.Buy(string, Buy, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/orders#buy-an-order">Parameters</a> for <see cref="EasyPost.Services.OrderService.Buy(string, Buy, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Buy : BaseParameters<Models.API.Order>

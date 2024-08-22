@@ -6,7 +6,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.Beta.Rate
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#retrieve-rates-for-a-shipment">Parameters</a> for <see cref="EasyPost.Services.Beta.RateService.RetrieveStatelessRates(Retrieve, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/batches#retrieve-batch">Parameters</a> for <see cref="EasyPost.Services.Beta.RateService.RetrieveStatelessRates(Retrieve, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Retrieve : BaseParameters<Models.API.Beta.StatelessRate>

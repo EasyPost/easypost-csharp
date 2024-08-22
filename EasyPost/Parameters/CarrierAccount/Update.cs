@@ -5,7 +5,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.CarrierAccount
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#update-a-carrieraccount">Parameters</a> for <see cref="EasyPost.Services.CarrierAccountService.Update(string, AUpdate, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/carrier-accounts#update-a-carrieraccount">Parameters</a> for <see cref="EasyPost.Services.CarrierAccountService.Update(string, AUpdate, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Update : AUpdate

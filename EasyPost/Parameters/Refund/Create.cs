@@ -5,7 +5,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.Refund
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#create-a-refund">Parameters</a> for <see cref="EasyPost.Services.RefundService.Create(Create, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/refunds#create-a-refund">Parameters</a> for <see cref="EasyPost.Services.RefundService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Create : BaseParameters<Models.API.Refund>, IRefundParameter

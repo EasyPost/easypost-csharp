@@ -11,7 +11,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#addresses">address-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/addresses">address-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class AddressService : EasyPostService
@@ -29,7 +29,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create an <see cref="Address"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-and-verify-addresses">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/addresses#verify-an-address">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Address"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -63,7 +63,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create an <see cref="Address"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-and-verify-addresses">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/addresses#verify-an-address">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Address"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -77,7 +77,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create and verify an <see cref="Address"/> in one API call.
-        ///     <a href="https://www.easypost.com/docs/api#create-and-verify-addresses">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/addresses#verify-an-address">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Address"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -87,7 +87,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create and verify an <see cref="Address"/> in one API call.
-        ///     <a href="https://www.easypost.com/docs/api#create-and-verify-addresses">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/addresses#verify-an-address">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Address"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -101,7 +101,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Address"/> objects.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-addresses">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/addresses#retrieve-all-addresses">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Dictionary containing parameters to filter the result list with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

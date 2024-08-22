@@ -11,7 +11,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#orders">order-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/orders">order-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class OrderService : EasyPostService
@@ -29,7 +29,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create an <see cref="Order"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-an-order">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/orders#create-an-order">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Order"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -43,7 +43,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create an <see cref="Order"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-an-order">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/orders#create-an-order">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Order"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -57,7 +57,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve an <see cref="Order"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-an-order">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/orders#retrieve-an-order">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Order"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -67,7 +67,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Purchase the <see cref="Shipment"/>s within an <see cref="Order"/>.
-        ///     <a href="https://www.easypost.com/docs/api#buy-an-order">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/orders#buy-an-order">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Order"/> to purchase.</param>
         /// <param name="withCarrier">The carrier to purchase the <see cref="Shipment"/>s with.</param>
@@ -88,7 +88,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Purchase the <see cref="Shipment"/>s within an <see cref="Order"/>.
-        ///     <a href="https://www.easypost.com/docs/api#buy-an-order">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/orders#buy-an-order">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Order"/> to purchase.</param>
         /// <param name="rate">The <see cref="Rate"/> to purchase the <see cref="Shipment"/>s with.</param>
@@ -114,7 +114,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Purchase the <see cref="Shipment"/>s within an <see cref="Order"/>.
-        ///     <a href="https://www.easypost.com/docs/api#buy-an-order">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/orders#buy-an-order">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Order"/> to purchase.</param>
         /// <param name="parameters"><see cref="Parameters.Order.Buy"/> parameters set.</param>

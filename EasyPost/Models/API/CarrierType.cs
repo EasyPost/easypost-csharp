@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#carriertype-object">EasyPost carrier type</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/carrier-types#carriertype-object">EasyPost carrier type</a>.
     /// </summary>
     public class CarrierType : EasyPostObject
     {

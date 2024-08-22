@@ -8,7 +8,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.ReferralCustomer
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#referral-customers">EasyPost referral customer</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/users/referral-customers">EasyPost referral customer</a>.
     /// </summary>
     public class ReferralCustomer : EasyPostObject, Parameters.IReferralCustomerParameter
     {

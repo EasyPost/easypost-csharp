@@ -7,7 +7,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Parameters.Address
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-addresses">Parameters</a> for <see cref="EasyPost.Services.AddressService.All(All, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/addresses#retrieve-all-addresses">Parameters</a> for <see cref="EasyPost.Services.AddressService.All(All, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class All : BaseAllParameters<Models.API.Address>

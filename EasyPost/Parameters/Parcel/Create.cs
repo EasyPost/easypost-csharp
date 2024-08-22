@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.Parcel
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#create-a-parcel">Parameters</a> for <see cref="EasyPost.Services.ParcelService.Create(Create, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/parcels#create-a-parcel">Parameters</a> for <see cref="EasyPost.Services.ParcelService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Create : BaseParameters<Models.API.Parcel>, IParcelParameter

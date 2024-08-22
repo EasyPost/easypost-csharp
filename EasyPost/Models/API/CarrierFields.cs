@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an EasyPost <see cref="CarrierAccount"/>'s <a href="https://www.easypost.com/docs/api#carrier-account-fields-object">credentials</a>.
+    ///     Class representing an EasyPost <see cref="CarrierAccount"/>'s <a href="https://docs.easypost.com/docs/carrier-accounts#fields-object">credentials</a>.
     /// </summary>
     public class CarrierFields : EasyPostObject
     {

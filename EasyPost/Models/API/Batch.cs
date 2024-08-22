@@ -8,7 +8,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Batch
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#batch-object">EasyPost batch</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/batches#batch-object">EasyPost batch</a>.
     /// </summary>
     public class Batch : EasyPostObject, Parameters.IBatchParameter
     {

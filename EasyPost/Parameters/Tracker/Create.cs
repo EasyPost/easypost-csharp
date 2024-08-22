@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.Tracker
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#create-a-tracker">Parameters</a> for <see cref="EasyPost.Services.TrackerService.Create(Create, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/trackers#create-a-tracker">Parameters</a> for <see cref="EasyPost.Services.TrackerService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Create : BaseParameters<Models.API.Tracker>, ITrackerParameter

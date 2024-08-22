@@ -14,7 +14,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#webhooks">webhook-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/webhooks">webhook-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class WebhookService : EasyPostService
@@ -32,7 +32,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Webhook"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-webhook">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/webhooks#create-a-webhook">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Webhook"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -46,7 +46,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Webhook"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-webhook">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/webhooks#create-a-webhook">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Webhook"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -60,7 +60,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Webhook"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#list-a-webhooks">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/webhooks#retrieve-all-webhooks">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Parameters to filter the list of <see cref="Webhook"/>s returned.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -70,7 +70,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Webhook"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#list-a-webhooks">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/webhooks#retrieve-all-webhooks">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Parameters to filter the list of <see cref="Webhook"/>s returned.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -80,7 +80,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve a <see cref="Webhook"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-webhook">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/webhooks#retrieve-a-webhook">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Webhook"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -90,7 +90,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Enable a disabled <see cref="Webhook"/> or alter its secret.
-        ///     <a href="https://www.easypost.com/docs/api#update-a-webhook">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/webhooks#update-a-webhook">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Webhook"/> to update.</param>
         /// <param name="parameters">Data to update <see cref="Webhook"/> with.</param>
@@ -104,7 +104,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Enable a disabled <see cref="Webhook"/> or alter its secret.
-        ///     <a href="https://www.easypost.com/docs/api#update-a-webhook">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/webhooks#update-a-webhook">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Webhook"/> to update.</param>
         /// <param name="parameters">Optional data to update <see cref="Webhook"/> with.</param>
@@ -118,7 +118,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Delete a <see cref="Webhook"/>.
-        ///     <a href="https://www.easypost.com/docs/api#delete-a-webhook">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/webhooks#delete-a-webhook">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Webhook"/> to delete.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -128,7 +128,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Validate a received webhook's HMAC signature.
-        ///     <a href="https://www.easypost.com/docs/api#hmac-validation">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/webhooks#hmac-validation">Related API documentation</a>.
         /// </summary>
         /// <param name="data">Byte data of the received webhook request.</param>
         /// <param name="headers">Dictionary of headers from the received webhook request.</param>

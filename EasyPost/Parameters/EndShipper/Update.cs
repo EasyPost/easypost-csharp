@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.EndShipper
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#update-an-endshipper">Parameters</a> for <see cref="EasyPost.Services.EndShipperService.Update(string, Update, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/endshippers#update-an-endshipper">Parameters</a> for <see cref="EasyPost.Services.EndShipperService.Update(string, Update, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Update : BaseParameters<Models.API.EndShipper>

@@ -7,7 +7,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.CarrierAccount
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#carrier-account-object">EasyPost carrier account</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/carrier-accounts#carrieraccount-object">EasyPost carrier account</a>.
     /// </summary>
     public class CarrierAccount : EasyPostObject, Parameters.ICarrierAccountParameter
     {

@@ -8,7 +8,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Address
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#address-object">EasyPost address</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/addresses#address-object">EasyPost address</a>.
     /// </summary>
     public class Address : EasyPostObject, Parameters.IAddressParameter
     {

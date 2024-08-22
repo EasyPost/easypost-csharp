@@ -12,7 +12,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#api-keys">API key-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/api-keys">API key-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ApiKeyService : EasyPostService
@@ -30,7 +30,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get a list of all <see cref="ApiKey"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-an-api-key">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/api-keys#retrieve-an-api-key">Related API documentation</a>.
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="ApiKeyCollection"/> object.</returns>

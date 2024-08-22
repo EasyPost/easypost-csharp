@@ -9,7 +9,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#carrier-types">carrier type-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/carrier-types">carrier type-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class CarrierTypeService : EasyPostService
@@ -27,7 +27,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get all available <see cref="CarrierType"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-available-carrier-types">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/carrier-types#retrieve-available-carrier-types">Related API documentation</a>.
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="CarrierType"/>s.</returns>

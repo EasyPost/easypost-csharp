@@ -12,7 +12,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#users">user-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/users">user-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class UserService : EasyPostService
@@ -30,7 +30,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a child <see cref="User"/> for the current account.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-child-user">Related API documentation.</a>
+        ///     <a href="https://docs.easypost.com/docs/users/child-users#create-a-child-user">Related API documentation.</a>
         /// </summary>
         /// <param name="parameters">Parameters to create the child <see cref="User"/> with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -44,7 +44,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a child <see cref="User"/> for the current account.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-child-user">Related API documentation.</a>
+        ///     <a href="https://docs.easypost.com/docs/users/child-users#create-a-child-user">Related API documentation.</a>
         /// </summary>
         /// <param name="parameters">Parameters to create the child <see cref="User"/> with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -84,7 +84,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all Child <see cref="User"/> objects.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-child-users">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/child-users#retrieve-all-child-users">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Dictionary containing parameters to filter the result list with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -124,7 +124,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Update a <see cref="User"/>'s <see cref="Brand"/>.
-        ///     <a href="https://www.easypost.com/docs/api#update-a-brand">Related API documentation.</a>
+        ///     <a href="https://docs.easypost.com/docs/users/brand#update-a-brand">Related API documentation.</a>
         /// </summary>
         /// <param name="id">The ID of the <see cref="User"/> to update the <see cref="Brand"/> of.</param>
         /// <param name="parameters">Parameters to update the <see cref="Brand"/> with.</param>
@@ -139,7 +139,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Update a <see cref="User"/>'s <see cref="Brand"/>.
-        ///     <a href="https://www.easypost.com/docs/api#update-a-brand">Related API documentation.</a>
+        ///     <a href="https://docs.easypost.com/docs/users/brand#update-a-brand">Related API documentation.</a>
         /// </summary>
         /// <param name="id">The ID of the <see cref="User"/> to update the <see cref="Brand"/> of.</param>
         /// <param name="parameters">Parameters to update the <see cref="Brand"/> with.</param>
@@ -153,7 +153,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Update a <see cref="User"/>.
-        ///     <a href="https://www.easypost.com/docs/api#update-a-user">Related API documentation.</a>
+        ///     <a href="https://docs.easypost.com/docs/users#update-a-user">Related API documentation.</a>
         /// </summary>
         /// <param name="id">The ID of the <see cref="User"/> to update.</param>
         /// <param name="parameters">Data to update <see cref="User"/> with.</param>
@@ -167,7 +167,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Update a <see cref="User"/>.
-        ///     <a href="https://www.easypost.com/docs/api#update-a-user">Related API documentation.</a>
+        ///     <a href="https://docs.easypost.com/docs/users#update-a-user">Related API documentation.</a>
         /// </summary>
         /// <param name="id">The ID of the <see cref="User"/> to update.</param>
         /// <param name="parameters">Data to update <see cref="User"/> with.</param>
@@ -181,7 +181,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Delete a child <see cref="User"/>.
-        ///     <a href="https://www.easypost.com/docs/api#delete-a-child-user">Related API documentation.</a>
+        ///     <a href="https://docs.easypost.com/docs/users/child-users#delete-a-child-user">Related API documentation.</a>
         /// </summary>
         /// <param name="id">The ID of the child <see cref="User"/> to delete.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

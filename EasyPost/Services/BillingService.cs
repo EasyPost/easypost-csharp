@@ -12,7 +12,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#billing">billing-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/users/billing">billing-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class BillingService : EasyPostService
@@ -30,7 +30,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Fund your wallet from a specific <see cref="PaymentMethod"/>.
-        ///     <a href="https://www.easypost.com/docs/api#add-funds-to-your-wallet-one-time-charge">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/billing#add-funds-to-your-wallet-one-time-charge">Related API documentation</a>.
         /// </summary>
         /// <param name="amount">Amount to fund.</param>
         /// <param name="priority">Which <see cref="PaymentMethod.Priority"/> of payment method to use to fund the wallet. Defaults to <see cref="PaymentMethod.Priority.Primary"/>.</param>
@@ -50,7 +50,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="PaymentMethod"/>s for the user's account.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-payment-methods">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/billing#retrieve-payment-methods">Related API documentation</a>.
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A <see cref="PaymentMethodsSummary"/> object.</returns>
@@ -66,7 +66,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Delete a <see cref="PaymentMethod"/> from the user's account.
-        ///     <a href="https://www.easypost.com/docs/api#delete-a-payment-method">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/billing#delete-a-payment-method">Related API documentation</a>.
         /// </summary>
         /// <param name="priority">Which <see cref="PaymentMethod.Priority"/> of payment method to delete.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

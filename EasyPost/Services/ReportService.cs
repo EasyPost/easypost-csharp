@@ -10,7 +10,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#reports">report-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/reports">report-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ReportService : EasyPostService
@@ -28,7 +28,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Report"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-report">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/reports#create-a-report">Related API documentation</a>.
         /// </summary>
         /// <param name="type">Type of <see cref="Report"/> to create.</param>
         /// <param name="parameters">Data to use to create the <see cref="Report"/>.</param>
@@ -39,7 +39,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Report"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-report">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/reports#create-a-report">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Report"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -57,7 +57,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Report"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-reports">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/reports#retrieve-all-reports">Related API documentation</a>.
         /// </summary>
         /// <param name="type">The type of <see cref="Report"/>s to list.</param>
         /// <param name="parameters">Parameters to filter the list of <see cref="Report"/>s on.</param>
@@ -76,7 +76,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Report"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-reports">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/reports#retrieve-all-reports">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Parameters to filter the list of <see cref="Report"/>s on.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -96,7 +96,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ReportCollection"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-reports">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/reports#retrieve-all-reports">Related API documentation</a>.
         /// </summary>
         /// <param name="collection">The <see cref="ReportCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
@@ -109,7 +109,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve a <see cref="Report"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-report">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/reports#retrieve-a-report">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Report"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -121,7 +121,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve a <see cref="Report"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-report">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/reports#retrieve-a-report">Related API documentation</a>.
         /// </summary>
         /// <param name="type">Type of <see cref="Report"/> to retrieve.</param>
         /// <param name="id">The ID of the <see cref="Report"/> to retrieve.</param>

@@ -10,7 +10,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#scan-form">scan form-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/scan-form">scan form-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ScanFormService : EasyPostService
@@ -28,7 +28,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="ScanForm"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-scanform">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/scan-form#create-a-scanform">Related API documentation</a>.
         /// </summary>
         /// <param name="shipments"><see cref="Shipment"/>s to create a <see cref="ScanForm"/> for.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -42,7 +42,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="ScanForm"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-scanform">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/scan-form#create-a-scanform">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="ScanForm"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -56,7 +56,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="ScanForm"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retreive-a-list-of-scanforms">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/scan-form#retrieve-all-scanforms">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Parameters to filter the list of <see cref="ScanForm"/>s on.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -71,7 +71,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="ScanForm"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retreive-a-list-of-scanforms">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/scan-form#retrieve-all-scanforms">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Parameters to filter the list of <see cref="ScanForm"/>s on.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -86,7 +86,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ScanFormCollection"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-the-next-page-of-a-list-of-scanforms">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/pagination">Related API documentation</a>.
         /// </summary>
         /// <param name="collection">The <see cref="ScanFormCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
@@ -98,7 +98,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve a <see cref="ScanForm"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-scanform">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/scan-form#retrieve-a-scanform">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="ScanForm"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

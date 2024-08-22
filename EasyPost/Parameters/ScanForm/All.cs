@@ -6,7 +6,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Parameters.ScanForm
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-scanforms">Parameters</a> for <see cref="EasyPost.Services.ScanFormService.All(All, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/scan-form#retrieve-all-scanforms">Parameters</a> for <see cref="EasyPost.Services.ScanFormService.All(All, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class All : BaseAllParameters<Models.API.ScanForm>

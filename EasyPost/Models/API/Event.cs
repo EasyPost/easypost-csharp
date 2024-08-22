@@ -9,7 +9,7 @@ namespace EasyPost.Models.API
 #pragma warning disable CA1716
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Event
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#event-object">EasyPost event</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/events#event-object">EasyPost event</a>.
     /// </summary>
     public class Event : EasyPostObject
     {
@@ -23,7 +23,7 @@ namespace EasyPost.Models.API
 
         /// <summary>
         ///     The result type and event name.
-        ///     See https://www.easypost.com/docs/api#possible-event-types for a list of possible values.
+        ///     See https://docs.easypost.com/docs/events#possible-event-types for a list of possible values.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; }

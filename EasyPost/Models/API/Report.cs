@@ -9,7 +9,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Report
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#report-object">EasyPost report</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/reports#report-object">EasyPost report</a>.
     /// </summary>
     public class Report : EasyPostObject, Parameters.IReportParameter
     {

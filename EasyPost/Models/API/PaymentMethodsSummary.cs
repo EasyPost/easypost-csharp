@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Represents a <a href="https://www.easypost.com/docs/api#retrieve-payment-methods">summary of the primary and secondary payment methods on the user's account</a>.
+    ///     Represents a <a href="https://docs.easypost.com/docs/users/billing#retrieve-payment-methods">summary of the primary and secondary payment methods on the user's account</a>.
     /// </summary>
     public class PaymentMethodsSummary : EasyPostObject
     {

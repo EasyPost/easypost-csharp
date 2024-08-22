@@ -11,7 +11,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#batches">batch-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/batches">batch-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class BatchService : EasyPostService
@@ -29,7 +29,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#create-a-batch">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Batch"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -43,7 +43,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-batch">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#create-a-batch">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Batch"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -57,7 +57,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Batch"/> objects.
-        ///     <a href="https://www.easypost.com/docs/api#list-all-batches">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#retrieve-all-batches">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Dictionary containing parameters to filter the result list with.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -72,7 +72,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Batch"/> objects.
-        ///     <a href="https://www.easypost.com/docs/api#list-all-batches">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#retrieve-all-batches">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="Parameters.Batch.All"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -89,7 +89,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Add <see cref="Shipment"/>s to a <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#add-shipments-to-a-batch">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to add <see cref="Shipment"/>s to.</param>
         /// <param name="parameters">Parameters for the <see cref="Shipment"/>s to add.</param>
@@ -103,7 +103,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve a <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-batch">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#retrieve-batch">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -113,7 +113,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Add <see cref="Shipment"/>s to a <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#add-shipments-to-a-batch">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to add <see cref="Shipment"/>s to.</param>
         /// <param name="parameters">Parameters for the <see cref="Shipment"/>s to add.</param>
@@ -127,7 +127,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Add <see cref="Shipment"/>s to a <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#add-shipments-to-a-batch">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to add <see cref="Shipment"/>s to.</param>
         /// <param name="shipmentsToAdd">List of <see cref="Shipment"/>s to add to the <see cref="Batch"/>.</param>
@@ -142,7 +142,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Add <see cref="Shipment"/>s to a <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#add-shipments-to-a-batch">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to add <see cref="Shipment"/>s to.</param>
         /// <param name="shipmentIds">List of IDs of <see cref="Shipment"/>s to add to the <see cref="Batch"/>.</param>
@@ -157,7 +157,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Purchase all <see cref="Shipment"/>s within a <see cref="Batch"/>. The <see cref="Batch.State"/> must be "created" before purchasing.
-        ///     <a href="https://www.easypost.com/docs/api#buy-a-batch">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#buy-a-batch">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to purchase <see cref="Shipment"/>s from.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -170,7 +170,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Asynchronously generate a <see cref="PostageLabel"/> containing all of the <see cref="Shipment"/> labels belonging to a <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#batch-labels">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#batch-labels">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to generate a label for.</param>
         /// <param name="fileFormat">Format to generate the label in. Must be "pdf" or "zpl".</param>
@@ -185,7 +185,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Asynchronously generate a <see cref="PostageLabel"/> containing all of the <see cref="Shipment"/> labels belonging to this <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#batch-labels">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#batch-labels">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to generate a label for.</param>
         /// <param name="parameters"><see cref="Parameters.Batch.GenerateLabel"/> parameter set.</param>
@@ -199,7 +199,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Asynchronously generate a <see cref="ScanForm"/> for a <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#manifesting-scan-form">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#manifesting-scan-form">Related API documentation</a>.
         /// </summary>
         /// <param name="id">String representing a Batch. Starts with "batch_".</param>
         /// <param name="fileFormat">Format to generate the label in. Valid formats: "pdf", "zpl" and "epl2".</param>
@@ -214,7 +214,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Asynchronously generate a <see cref="ScanForm"/> for this <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#manifesting-scan-form">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#manifesting-scan-form">Related API documentation</a>.
         /// </summary>
         /// <param name="id">String representing a Batch. Starts with "batch_".</param>
         /// <param name="parameters"><see cref="Parameters.Batch.GenerateScanForm"/> parameter set.</param>
@@ -228,7 +228,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Remove <see cref="Shipment"/>s from a <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#remove-shipments-from-a-batch">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#remove-shipments-from-a-batch">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to remove <see cref="Shipment"/>s from.</param>
         /// <param name="parameters">Parameters for the <see cref="Shipment"/>s to remove.</param>
@@ -242,7 +242,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Remove <see cref="Shipment"/>s from a <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#remove-shipments-from-a-batch">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#remove-shipments-from-a-batch">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to remove <see cref="Shipment"/>s from.</param>
         /// <param name="parameters">Parameters for the <see cref="Shipment"/>s to remove.</param>
@@ -256,7 +256,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Remove <see cref="Shipment"/>s from a <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#remove-shipments-from-a-batch">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#remove-shipments-from-a-batch">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to remove <see cref="Shipment"/>s from.</param>
         /// <param name="shipmentsToRemove">List of <see cref="Shipment"/>s to remove from the <see cref="Batch"/>.</param>
@@ -271,7 +271,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Remove <see cref="Shipment"/>s from a <see cref="Batch"/>.
-        ///     <a href="https://www.easypost.com/docs/api#remove-shipments-from-a-batch">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/batches#remove-shipments-from-a-batch">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Batch"/> to remove <see cref="Shipment"/>s from.</param>
         /// <param name="shipmentIds">List of IDs of <see cref="Shipment"/>s to remove from the <see cref="Batch"/>.</param>

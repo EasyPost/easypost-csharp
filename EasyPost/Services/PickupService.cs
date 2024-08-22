@@ -11,7 +11,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#pickups">pickup-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/pickups">pickup-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class PickupService : EasyPostService
@@ -29,7 +29,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Pickup"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-pickup">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/pickups#create-a-pickup">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Pickup"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -43,7 +43,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Pickup"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-pickup">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/pickups#create-a-pickup">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Pickup"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -57,7 +57,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve a <see cref="Pickup"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-pickup">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/pickups#retrieve-a-pickup">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Pickup"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -67,7 +67,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Pickup"/> objects.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-pickups">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/pickups#retrieve-all-pickups">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">The parameters to filter the list of <see cref="Pickup"/> objects by.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -82,7 +82,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Pickup"/> objects.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-pickups">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/pickups#retrieve-all-pickups">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">The parameters to filter the list of <see cref="Pickup"/> objects by.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -97,7 +97,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="PickupCollection"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-pickups">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/pickups#retrieve-all-pickups">Related API documentation</a>.
         /// </summary>
         /// <param name="collection">The <see cref="PickupCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
@@ -109,7 +109,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Purchase a <see cref="Pickup"/>.
-        ///     <a href="https://www.easypost.com/docs/api#buy-a-pickup">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/pickups#buy-a-pickup">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Pickup"/> to purchase.</param>
         /// <param name="withCarrier">The name of the carrier to purchase the <see cref="Pickup"/> with.</param>
@@ -130,7 +130,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Purchase a <see cref="Pickup"/>.
-        ///     <a href="https://www.easypost.com/docs/api#buy-a-pickup">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/pickups#buy-a-pickup">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Pickup"/> to purchase.</param>
         /// <param name="parameters">The parameters to purchase the <see cref="Pickup"/> with.</param>
@@ -144,7 +144,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Cancel a <see cref="Pickup"/>.
-        ///     <a href="https://www.easypost.com/docs/api#cancel-a-pickup">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/pickups#cancel-a-pickup">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Pickup"/> to cancel.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

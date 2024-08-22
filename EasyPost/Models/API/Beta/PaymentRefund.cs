@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API.Beta
 {
     /// <summary>
-    ///     Class representing an EasyPost <see cref="Models.API.ReferralCustomer"/> <a href="https://www.easypost.com/docs/api#refund-a-referral-user">payment refund</a>.
+    ///     Class representing an EasyPost <see cref="Models.API.ReferralCustomer"/> <a href="https://docs.easypost.com/docs/users/referral-customers#refund-a-referralcustomer">payment refund</a>.
     /// </summary>
     public class PaymentRefund : EasyPostObject
     {
