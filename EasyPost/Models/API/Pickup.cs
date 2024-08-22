@@ -9,7 +9,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Pickup
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#pickup-object">EasyPost pickup</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/pickups#pickup-object">EasyPost pickup</a>.
     /// </summary>
     public class Pickup : EasyPostObject, Parameters.IPickupParameter
     {

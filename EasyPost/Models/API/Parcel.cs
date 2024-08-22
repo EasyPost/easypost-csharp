@@ -5,7 +5,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Parcel
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#parcel-object">EasyPost parcel</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/parcels#parcel-object">EasyPost parcel</a>.
     /// </summary>
     public class Parcel : EasyPostObject, Parameters.IParcelParameter
     {

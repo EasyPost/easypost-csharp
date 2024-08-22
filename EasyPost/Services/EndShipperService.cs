@@ -10,7 +10,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#endshipper">EndShipper-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/endshippers">EndShipper-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class EndShipperService : EasyPostService
@@ -28,7 +28,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create an <see cref="EndShipper"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-an-endshipper">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/endshippers#create-an-endshipper">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="EndShipper"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -42,7 +42,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create an <see cref="EndShipper"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-an-endshipper">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/endshippers#create-an-endshipper">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="EndShipper"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -56,7 +56,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="EndShipper"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-endshippers">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/endshippers#retrieve-all-endshippers">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">A dictionary containing parameters to filter the list with. See <see cref="Parameters.EndShipper.All"/> for valid keys.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -71,7 +71,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="EndShipper"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-endshippers">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/endshippers#retrieve-all-endshippers">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="Parameters.EndShipper.All"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -88,7 +88,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve an <see cref="EndShipper"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-an-endshipper">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/endshippers#retrieve-an-endshipper">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="EndShipper"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -98,7 +98,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Update an <see cref="EndShipper"/>.
-        ///     <a href="https://www.easypost.com/docs/api#update-an-endshipper">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/endshippers#update-an-endshipper">Related API documentation</a>.
         /// </summary>
         /// <param name="id">ID of the <see cref="EndShipper"/> to update.</param>
         /// <param name="parameters">Data to update <see cref="EndShipper"/> with.</param>
@@ -114,7 +114,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Update an <see cref="EndShipper"/>.
-        ///     <a href="https://www.easypost.com/docs/api#update-an-endshipper">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/endshippers#update-an-endshipper">Related API documentation</a>.
         /// </summary>
         /// <param name="id">ID of the <see cref="EndShipper"/> to update.</param>
         /// <param name="parameters">Data to update <see cref="EndShipper"/> with.</param>

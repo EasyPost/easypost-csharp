@@ -8,7 +8,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.ScanForm
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#scan-form-object">EasyPost scan form</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/scan-form#scanform-object">EasyPost scan form</a>.
     /// </summary>
     public class ScanForm : EasyPostObject, Parameters.IScanFormParameter
     {

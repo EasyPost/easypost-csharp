@@ -7,7 +7,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Parameters.ReferralCustomer
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-referral-customers">Parameters</a> for <see cref="EasyPost.Services.ReferralCustomerService.All(All, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/users/referral-customers#retrieve-all-referralcustomers">Parameters</a> for <see cref="EasyPost.Services.ReferralCustomerService.All(All, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class All : BaseAllParameters<Models.API.ReferralCustomer>

@@ -9,7 +9,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Tracker
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#tracker-object">EasyPost tracker</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/trackers#tracker-object">EasyPost tracker</a>.
     /// </summary>
     public class Tracker : EasyPostObject, Parameters.ITrackerParameter
     {

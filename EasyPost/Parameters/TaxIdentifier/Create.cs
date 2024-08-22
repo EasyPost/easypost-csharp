@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.TaxIdentifier
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#tax-identifiers">Parameters</a> for <see cref="Shipment.Create.TaxIdentifiers"/> property.
+    ///     <a href="https://docs.easypost.com/docs/shipments/tax-identifiers">Parameters</a> for <see cref="Shipment.Create.TaxIdentifiers"/> property.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Create : BaseParameters<Models.API.TaxIdentifier>, ITaxIdentifierParameter

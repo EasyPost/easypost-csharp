@@ -10,7 +10,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#customs-items">customs item-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/customs-items">customs item-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class CustomsItemService : EasyPostService
@@ -28,7 +28,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="CustomsItem"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-customsitem">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/customs-items#create-a-customsitem">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="CustomsItem"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -42,7 +42,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="CustomsItem"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-customsitem">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/customs-items#create-a-customsitem">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="CustomsItem"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -56,7 +56,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve a <see cref="CustomsItem"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-customsitem">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/customs-items#retrieve-a-customsitem">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="CustomsItem"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

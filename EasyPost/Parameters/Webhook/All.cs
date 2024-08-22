@@ -6,7 +6,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Parameters.Webhook
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#list-a-webhooks">Parameters</a> for <see cref="EasyPost.Services.WebhookService.All(All, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/webhooks#retrieve-all-webhooks">Parameters</a> for <see cref="EasyPost.Services.WebhookService.All(All, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class All : BaseAllParameters<Models.API.Webhook>

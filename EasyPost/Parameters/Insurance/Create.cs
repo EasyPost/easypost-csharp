@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.Insurance
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#create-an-insurance">Parameters</a> for <see cref="EasyPost.Services.InsuranceService.Create(Create, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/insurance#create-an-insurance">Parameters</a> for <see cref="EasyPost.Services.InsuranceService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Create : BaseParameters<Models.API.Insurance>, IInsuranceParameter

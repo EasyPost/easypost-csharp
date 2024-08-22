@@ -11,7 +11,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#events">event-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/events">event-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class EventService : EasyPostService
@@ -29,7 +29,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Event"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-events">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/events#retrieve-all-events">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Dictionary containing parameters to filter the results on. See <see cref="Parameters.Event.All"/> for valid keys.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -44,7 +44,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Event"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-events">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/events#retrieve-all-events">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="Parameters.Event.All"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -59,7 +59,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="EventCollection"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-events">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/events#retrieve-all-events">Related API documentation</a>.
         /// </summary>
         /// <param name="collection">The <see cref="EventCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
@@ -71,7 +71,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve an <see cref="Event"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-an-event">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/events#retrieve-an-event">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Event"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -81,7 +81,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve all <see cref="Payload"/>s for an <see cref="Event"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-payloads">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/events/payloads#retrieve-all-payloads">Related API documentation</a>.
         /// </summary>
         /// <param name="eventId">ID of the <see cref="Event"/> to retrieve payloads for.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -90,7 +90,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve a specific <see cref="Payload"/> for an <see cref="Event"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-payload">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/events/payloads#retrieve-a-payload">Related API documentation</a>.
         /// </summary>
         /// <param name="eventId">ID of the <see cref="Event"/> to retrieve payload for.</param>
         /// <param name="payloadId">ID of the <see cref="Payload"/> to retrieve.</param>

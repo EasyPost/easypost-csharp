@@ -12,7 +12,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#carrier-accounts">carrier account-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/carrier-accounts">carrier account-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class CarrierAccountService : EasyPostService
@@ -32,7 +32,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="CarrierAccount"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-carrier-account">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/carrier-accounts#create-a-carrieraccount">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="CarrierAccount"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -61,7 +61,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="CarrierAccount"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-carrier-account">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/carrier-accounts#create-a-carrieraccount">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="CarrierAccount"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -94,7 +94,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all available <see cref="CarrierAccount"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#list-all-carrier-accounts">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/carrier-accounts#retrieve-all-carrieraccounts">Related API documentation</a>.
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>A list of <see cref="CarrierAccount"/>s.</returns>
@@ -103,7 +103,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve a <see cref="CarrierAccount"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-carrieraccount">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/carrier-accounts#retrieve-a-carrieraccount">Related API documentation</a>.
         /// </summary>
         /// <param name="id">String representing a carrier account. Starts with "ca_".</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -113,7 +113,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Update a <see cref="CarrierAccount"/>.
-        ///     <a href="https://www.easypost.com/docs/api#update-a-carrieraccount">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/carrier-accounts#update-a-carrieraccount">Related API documentation</a>.
         /// </summary>
         /// <param name="id">ID of the <see cref="CarrierAccount"/> to update.</param>
         /// <param name="parameters">Data to update <see cref="CarrierAccount"/> with.</param>
@@ -141,7 +141,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Update a <see cref="CarrierAccount"/>.
-        ///     <a href="https://www.easypost.com/docs/api#update-a-carrieraccount">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/carrier-accounts#update-a-carrieraccount">Related API documentation</a>.
         /// </summary>
         /// <param name="id">ID of the <see cref="CarrierAccount"/> to update.</param>
         /// <param name="parameters">Data to update <see cref="CarrierAccount"/> with.</param>
@@ -172,7 +172,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Delete a <see cref="CarrierAccount"/>.
-        ///     <a href="https://www.easypost.com/docs/api#delete-a-carrier-account">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/carrier-accounts#delete-a-carrieraccount">Related API documentation</a>.
         /// </summary>
         /// <param name="id">ID of the <see cref="CarrierAccount"/> to delete.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

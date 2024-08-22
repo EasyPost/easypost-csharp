@@ -9,7 +9,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#carrier-metadata">carrier metadata-related beta functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/carrier-metadata">carrier metadata-related beta functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class CarrierMetadataService : EasyPostService
@@ -27,7 +27,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve metadata about specific carrier(s).
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-carrier-metadata">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/carrier-metadata#retrieve-carrier-metadata">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="Parameters.CarrierMetadata.Retrieve"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

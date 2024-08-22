@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#verification-details-object">EasyPost verification details object</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/addresses#verificationdetails-object">EasyPost verification details object</a>.
     /// </summary>
     public class VerificationDetails : EasyPostObject
     {

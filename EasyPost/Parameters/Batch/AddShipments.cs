@@ -5,7 +5,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.Batch
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#add-shipments-to-a-batch">Parameters</a> for <see cref="EasyPost.Services.BatchService.AddShipments(string, AddShipments, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/batches#add-shipments-to-a-batch">Parameters</a> for <see cref="EasyPost.Services.BatchService.AddShipments(string, AddShipments, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class AddShipments : BaseParameters<Models.API.Batch>

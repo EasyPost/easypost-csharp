@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#tracking-detail-object">EasyPost tracker detail object</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/trackers#trackingdetail-object">EasyPost tracker detail object</a>.
     /// </summary>
     public class TrackingDetail : EasyPostObject
     {

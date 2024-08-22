@@ -11,7 +11,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#insurance">insurance-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/insurance">insurance-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class InsuranceService : EasyPostService
@@ -29,7 +29,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create an <see cref="Insurance"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-an-insurance">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/insurance#create-an-insurance">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Insurance"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -43,7 +43,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create an <see cref="Insurance"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-an-insurance">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/insurance#create-an-insurance">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Insurance"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -57,7 +57,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Insurance"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-insurances">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/insurance#retrieve-all-insurances">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Parameters to filter the list of <see cref="Insurance"/>s.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -72,7 +72,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Insurance"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-insurances">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/insurance#retrieve-all-insurances">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Parameters to filter the list of <see cref="Insurance"/>s.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -87,7 +87,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="InsuranceCollection"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-insurances">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/insurance#retrieve-all-insurances">Related API documentation</a>.
         /// </summary>
         /// <param name="collection">The <see cref="InsuranceCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
@@ -99,7 +99,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve an <see cref="Insurance"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-an-insurance">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/insurance#retrieve-an-insurance">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Insurance"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -109,7 +109,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Refund an <see cref="Insurance"/>.
-        ///     <a href="https://www.easypost.com/docs/api#refund-an-insurance">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/insurance#refund-an-insurance">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Insurance"/> to refund.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

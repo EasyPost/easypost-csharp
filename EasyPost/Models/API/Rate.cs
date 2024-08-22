@@ -6,7 +6,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Beta.Rate
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#rate-object">EasyPost rate</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/shipments/rates#rate-object">EasyPost rate</a>.
     /// </summary>
     public class Rate : EasyPostObject
     {

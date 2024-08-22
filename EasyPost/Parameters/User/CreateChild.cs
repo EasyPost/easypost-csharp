@@ -4,7 +4,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.User
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#create-a-child-user">Parameters</a> for <see cref="EasyPost.Services.UserService.CreateChild(CreateChild, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/users/child-users#create-a-child-user">Parameters</a> for <see cref="EasyPost.Services.UserService.CreateChild(CreateChild, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class CreateChild : BaseParameters<Models.API.User>, IUserParameter

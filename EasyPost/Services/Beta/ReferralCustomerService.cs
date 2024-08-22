@@ -11,7 +11,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Services.Beta
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#referral-customers">referral customer-related beta functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/users/referral-customers">referral customer-related beta functionality</a>.
     /// </summary>
     public class ReferralCustomerService : EasyPostService
     {
@@ -30,7 +30,7 @@ namespace EasyPost.Services.Beta
         ///     Add a Stripe payment method to a <see cref="ReferralCustomer"/>
         ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the <see cref="ReferralCustomer"/>'s API key.
         ///     This function will fail if called against a non-Referral Customer Client.
-        ///     <a href="https://www.easypost.com/docs/api#add-payment-method-to-referral-user">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/referral-customers#add-payment-method-to-referralcustomer">Related API documentation</a>.
         /// </summary>
         /// <param name="stripeCustomerId">Unique customer ID provided by Stripe.</param>
         /// <param name="paymentMethodReference">ID of the card or bank account provided by Stripe.</param>
@@ -63,7 +63,7 @@ namespace EasyPost.Services.Beta
         ///     Add a Stripe payment method to a <see cref="ReferralCustomer"/>
         ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the <see cref="ReferralCustomer"/>'s API key.
         ///     This function will fail if called against a non-Referral Customer Client.
-        ///     <a href="https://www.easypost.com/docs/api#add-payment-method-to-referral-user">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/referral-customers#add-payment-method-to-referralcustomer">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="Parameters.ReferralCustomer.AddPaymentMethod"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -78,7 +78,7 @@ namespace EasyPost.Services.Beta
         /// <summary>
         ///     Refund a <see cref="ReferralCustomer"/>'s wallet by a specified amount.
         ///     Refund will be issued to the user's original payment method.
-        ///     <a href="https://www.easypost.com/docs/api#refund-a-referral-user">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/referral-customers#refund-a-referralcustomer">Related API documentation</a>.
         /// </summary>
         /// <param name="amount">Amount in cents to refund the Referral Customer.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -97,7 +97,7 @@ namespace EasyPost.Services.Beta
         /// <summary>
         ///     Refund a <see cref="ReferralCustomer"/>'s wallet by a specified amount.
         ///     Refund will be issued to the user's original payment method.
-        ///     <a href="https://www.easypost.com/docs/api#refund-a-referral-user">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/referral-customers#refund-a-referralcustomer">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="Parameters.ReferralCustomer.RefundByAmount"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -111,7 +111,7 @@ namespace EasyPost.Services.Beta
         /// <summary>
         ///     Refund a <see cref="ReferralCustomer"/>'s wallet for a specified payment log entry.
         ///     Refund will be issued to the user's original payment method.
-        ///     <a href="https://www.easypost.com/docs/api#refund-a-referral-user">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/referral-customers#refund-a-referralcustomer">Related API documentation</a>.
         /// </summary>
         /// <param name="paymentLogId">Payment log ID to refund.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -130,7 +130,7 @@ namespace EasyPost.Services.Beta
         /// <summary>
         ///     Refund a <see cref="ReferralCustomer"/>'s wallet for a specified payment log entry.
         ///     Refund will be issued to the user's original payment method.
-        ///     <a href="https://www.easypost.com/docs/api#refund-a-referral-user">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/referral-customers#refund-a-referralcustomer">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters"><see cref="Parameters.ReferralCustomer.RefundByPaymentLog"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

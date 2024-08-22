@@ -5,7 +5,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.Report
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#create-a-report">Parameters</a> for <see cref="EasyPost.Services.ReportService.Create(Create, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/reports#create-a-report">Parameters</a> for <see cref="EasyPost.Services.ReportService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Create : BaseParameters<Models.API.Report>, IReportParameter

@@ -6,7 +6,7 @@ using EasyPost.Models.API;
 namespace EasyPost.Parameters.CarrierMetadata
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#retrieve-carrier-metadata">Parameters</a> for <see cref="EasyPost.Services.CarrierMetadataService.Retrieve(Retrieve, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/carrier-metadata#retrieve-carrier-metadata">Parameters</a> for <see cref="EasyPost.Services.CarrierMetadataService.Retrieve(Retrieve, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Retrieve : BaseParameters<Models.API.CarrierMetadata>

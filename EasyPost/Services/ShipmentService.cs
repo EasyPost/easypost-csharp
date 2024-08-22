@@ -11,7 +11,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#shipments">shipment-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/shipments">shipment-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class ShipmentService : EasyPostService
@@ -29,7 +29,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Shipment"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments#create-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Shipment"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -43,7 +43,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Shipment"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments#create-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Shipment"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -57,7 +57,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Shipment"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-shipments">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments#retrieve-all-shipments">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Parameters to filter the list of <see cref="Shipment"/>s on.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -72,7 +72,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Shipment"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-shipments">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments#retrieve-all-shipments">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Parameters to filter the list of <see cref="Shipment"/>s on.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -87,7 +87,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ShipmentCollection"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-shipments">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments#retrieve-all-shipments">Related API documentation</a>.
         /// </summary>
         /// <param name="collection">The <see cref="ShipmentCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
@@ -99,7 +99,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve a <see cref="Shipment"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments#retrieve-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -109,7 +109,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the <see cref="SmartRate"/>s for a <see cref="Shipment"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-time-in-transit-statistics-across-all-rates-for-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments/shipping-smartrate#shipping-smartrate-1">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to get rates for.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -122,7 +122,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve the estimated delivery date of each rate for a <see cref="Shipment"/> via the SmartRates API.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-estimated-delivery-date-and-total-transit-days-across-all-rates-for-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments/shipping-smartrate#delivery-date">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to get rates for.</param>
         /// <param name="plannedShipDate">The planned shipment date.</param>
@@ -140,7 +140,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve the estimated delivery date of each rate for a <see cref="Shipment"/> via the SmartRates API.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-estimated-delivery-date-and-total-transit-days-across-all-rates-for-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments/shipping-smartrate#delivery-date">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to get rates for.</param>
         /// <param name="parameters">The <see cref="Parameters.Shipment.RetrieveEstimatedDeliveryDate"/> parameters to include on the API call.</param>
@@ -154,6 +154,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve a recommended ship date for a <see cref="Shipment"/> via the Precision Shipping API, based on a specific desired delivery date.
+        ///     <a href="https://docs.easypost.com/docs/shipments/shipping-smartrate#precision-shipping">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to get rate estimates for.</param>
         /// <param name="desiredDeliveryDate">The desired delivery date for the shipment.</param>
@@ -171,7 +172,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Purchase a label for a <see cref="Shipment"/>.
-        ///     <a href="https://www.easypost.com/docs/api#buy-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments#buy-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to purchase the label for.</param>
         /// <param name="rateId">The ID of the <see cref="Rate"/> to purchase the shipment with.</param>
@@ -203,7 +204,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Purchase a label for a <see cref="Shipment"/>.
-        ///     <a href="https://www.easypost.com/docs/api#buy-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments#buy-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to purchase the label for.</param>
         /// <param name="rate">The <see cref="Rate"/> to purchase the <see cref="Shipment"/> with.</param>
@@ -224,7 +225,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Purchase a label for this <see cref="Shipment"/> with the given <see cref="Rate"/>.
-        ///     <a href="https://www.easypost.com/docs/api#buy-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments#buy-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to purchase the label for.</param>
         /// <param name="parameters"><see cref="Parameters.Shipment.Buy"/> parameters set.</param>
@@ -238,7 +239,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Generate a <see cref="PostageLabel"/> for a <see cref="Shipment"/>.
-        ///     <a href="https://www.easypost.com/docs/api#convert-the-label-format-of-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments#converting-the-label-format-of-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to generate a label for.</param>
         /// <param name="fileFormat">Format to generate the <see cref="PostageLabel"/> in. Valid formats: "pdf", "zpl" and "epl2".</param>
@@ -254,7 +255,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Generate a <see cref="PostageLabel"/> for a <see cref="Shipment"/>.
-        ///     <a href="https://www.easypost.com/docs/api#convert-the-label-format-of-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments#converting-the-label-format-of-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to generate a label for.</param>
         /// <param name="parameters"><see cref="Parameters.Shipment.GenerateLabel"/> parameter set.</param>
@@ -268,7 +269,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Generate a <see cref="Form"/> for a <see cref="Shipment"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-form">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments/forms#create-form">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to generate a form for.</param>
         /// <param name="parameters">Parameters to generate the <see cref="Form"/> with.</param>
@@ -284,7 +285,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Generate a <see cref="Form"/> for a <see cref="Shipment"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-form">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments/forms#create-form">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to generate a form for.</param>
         /// <param name="parameters"><see cref="Parameters.Shipment.GenerateForm"/> parameter set.</param>
@@ -298,7 +299,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Insure a <see cref="Shipment"/> for the given amount.
-        ///     <a href="https://www.easypost.com/docs/api#insure-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments/shipping-insurance#insure-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to insure.</param>
         /// <param name="amount">The amount to insure the <see cref="Shipment"/> for. Currency is provided when creating a <see cref="Shipment"/>.</param>
@@ -314,7 +315,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Insure a <see cref="Shipment"/> for the given amount.
-        ///     <a href="https://www.easypost.com/docs/api#insure-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments/shipping-insurance#insure-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to insure.</param>
         /// <param name="parameters"><see cref="Parameters.Shipment.Insure"/> parameters set.</param>
@@ -328,7 +329,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Send a refund request to the carrier a <see cref="Shipment"/> was purchased from.
-        ///     <a href="https://www.easypost.com/docs/api#refund-a-shipment">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/shipments/shipping-refund#refund-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to refund.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -341,6 +342,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Refresh the <see cref="Rate"/>s for a <see cref="Shipment"/>.
+        ///     <a href="https://docs.easypost.com/docs/shipments/rates#regenerate-rates-for-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to refresh rates for.</param>
         /// <param name="parameters">Optional dictionary of parameters for the API request.</param>
@@ -355,7 +357,8 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Refresh the <see cref="Models.API.Rate"/>s for a <see cref="Shipment"/>.
+        ///     Refresh the <see cref="Rate"/>s for a <see cref="Shipment"/>.
+        ///     <a href="https://docs.easypost.com/docs/shipments/rates#regenerate-rates-for-a-shipment">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Shipment"/> to refresh rates for.</param>
         /// <param name="parameters"><see cref="Parameters.Shipment.RegenerateRates"/> parameter set.</param>

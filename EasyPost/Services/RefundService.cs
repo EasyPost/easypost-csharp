@@ -11,7 +11,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#refunds">refund-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/refunds">refund-related functionality</a>.
     /// </summary>
     // ReSharper disable once ClassNeverInstantiated.Global
     public class RefundService : EasyPostService
@@ -29,7 +29,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Refund"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-refund">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/refunds#create-a-refund">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Refund"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -43,7 +43,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Create a <see cref="Refund"/>.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-refund">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/refunds#create-a-refund">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="Refund"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -57,7 +57,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Refund"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-refunds">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/refunds#retrieve-all-refunds">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Parameters to filter the list of <see cref="Refund"/>s on. Refer to <see cref="Parameters.Refund.All"/> for more information.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -72,7 +72,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     List all <see cref="Refund"/>s.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-refunds">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/refunds#retrieve-all-refunds">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Parameters to filter the list of <see cref="Refund"/>s on.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -87,7 +87,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="RefundCollection"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-refunds">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/refunds#retrieve-all-refunds">Related API documentation</a>.
         /// </summary>
         /// <param name="collection">The <see cref="RefundCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
@@ -99,7 +99,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Retrieve a <see cref="Refund"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-refund">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/refunds#retrieve-a-refund">Related API documentation</a>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Refund"/> to retrieve.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>

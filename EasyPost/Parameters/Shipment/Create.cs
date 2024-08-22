@@ -5,7 +5,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.Shipment
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#create-a-shipment">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.Create(Create, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/shipments#create-a-shipment">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Create : BaseParameters<Models.API.Shipment>, IShipmentParameter

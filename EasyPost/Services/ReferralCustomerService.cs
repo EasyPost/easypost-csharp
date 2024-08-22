@@ -17,7 +17,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Services
 {
     /// <summary>
-    ///     Class representing a set of <a href="https://www.easypost.com/docs/api#referral-customers">referral customer-related functionality</a>.
+    ///     Class representing a set of <a href="https://docs.easypost.com/docs/users/referral-customers">referral customer-related functionality</a>.
     /// </summary>
     public class ReferralCustomerService : EasyPostService
     {
@@ -35,7 +35,7 @@ namespace EasyPost.Services
         /// <summary>
         ///     Create a <see cref="ReferralCustomer"/> for the account associated with the API key used.
         ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the white label partner's API key.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-referral-customer">Referral Customer API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/referral-customers#create-a-referralcustomer">Referral Customer API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="ReferralCustomer"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -50,7 +50,7 @@ namespace EasyPost.Services
         /// <summary>
         ///     Create a <see cref="ReferralCustomer"/> for the account associated with the API key used.
         ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the white label partner's API key.
-        ///     <a href="https://www.easypost.com/docs/api#create-a-referral-customer">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/referral-customers#create-a-referralcustomer">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Data to use to create the <see cref="ReferralCustomer"/>.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -65,7 +65,7 @@ namespace EasyPost.Services
         /// <summary>
         ///     List all <see cref="ReferralCustomer"/>s.
         ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the white label partner's API key.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-referral-customers">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/referral-customers#retrieve-all-referralcustomers">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Parameters to filter the list of <see cref="ReferralCustomer"/>s.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -81,7 +81,7 @@ namespace EasyPost.Services
         /// <summary>
         ///     List all <see cref="ReferralCustomer"/>s.
         ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the white label partner's API key.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-referral-customers">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/referral-customers#retrieve-all-referralcustomers">Related API documentation</a>.
         /// </summary>
         /// <param name="parameters">Parameters to filter the list of <see cref="ReferralCustomer"/>s.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
@@ -96,7 +96,7 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Get the next page of a paginated <see cref="ReferralCustomerCollection"/>.
-        ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-referral-customers">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/referral-customers#retrieve-all-referralcustomers">Related API documentation</a>.
         /// </summary>
         /// <param name="collection">The <see cref="ReferralCustomerCollection"/> to get the next page of.</param>
         /// <param name="pageSize">The size of the next page.</param>
@@ -110,7 +110,7 @@ namespace EasyPost.Services
         ///     Add a credit card to a <see cref="ReferralCustomer"/>.
         ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the white label partner's API key.
         ///     This function requires the target <see cref="ReferralCustomer"/>'s API key as a parameter.
-        ///     <a href="https://www.easypost.com/docs/api#add-payment-method-to-referral-user">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/referral-customers#add-payment-method-to-referralcustomer">Related API documentation</a>.
         /// </summary>
         /// <param name="referralApiKey">API key of the <see cref="ReferralCustomer"/>.</param>
         /// <param name="number">Credit card number.</param>
@@ -147,7 +147,7 @@ namespace EasyPost.Services
         /// <summary>
         ///     Update a <see cref="ReferralCustomer"/>'s email.
         ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the white label partner's API key.
-        ///     <a href="https://www.easypost.com/docs/api#update-a-referral-customer">Related API documentation</a>.
+        ///     <a href="https://docs.easypost.com/docs/users/referral-customers#update-a-referralcustomer">Related API documentation</a>.
         /// </summary>
         /// <param name="referralId">The ID of the <see cref="ReferralCustomer"/> to update.</param>
         /// <param name="email">The new email address for the <see cref="ReferralCustomer"/>.</param>

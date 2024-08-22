@@ -6,7 +6,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Parameters.Shipment
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#create-form">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.GenerateForm(string, GenerateForm, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/shipments/forms#create-form">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.GenerateForm(string, GenerateForm, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class GenerateForm : BaseParameters<Models.API.Shipment>

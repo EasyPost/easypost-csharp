@@ -6,7 +6,7 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Parameters.Event
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#retrieve-a-list-of-events">Parameters</a> for <see cref="EasyPost.Services.EventService.All(All, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/events#retrieve-all-events">Parameters</a> for <see cref="EasyPost.Services.EventService.All(All, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class All : BaseAllParameters<Models.API.Event>

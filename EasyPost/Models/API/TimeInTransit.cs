@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#time%20in%20transit-object">EasyPost time in transit summary</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/shipments/shipping-smartrate#time-in-transit-object">EasyPost time in transit summary</a>.
     /// </summary>
     public class TimeInTransit : EphemeralEasyPostObject
     {

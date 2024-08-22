@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing a <see cref="Rate"/> with an <a href="https://www.easypost.com/docs/api#retrieve-estimated-delivery-date-and-total-transit-days-across-all-rates-for-a-shipment">estimated delivery date</a>.
+    ///     Class representing a <see cref="Rate"/> with an <a href="https://docs.easypost.com/docs/shipments/shipping-smartrate#shipping-smartrate-1">estimated delivery date</a>.
     /// </summary>
     public class RateWithEstimatedDeliveryDate
     {

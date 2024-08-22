@@ -8,7 +8,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.Refund
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#refund-object">EasyPost refund</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/refunds#refund-object">EasyPost refund</a>.
     /// </summary>
     public class Refund : EasyPostObject, Parameters.IRefundParameter
     {

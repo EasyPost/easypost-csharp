@@ -6,7 +6,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.User
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#user-object">EasyPost user</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/users#user-object">EasyPost user</a>.
     /// </summary>
     public class User : EasyPostObject, Parameters.IUserParameter
     {

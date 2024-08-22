@@ -8,7 +8,7 @@ namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.EndShipper
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#endshipper-object">EasyPost EndShipper</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/endshippers#endshipper-object">EasyPost EndShipper</a>.
     /// </summary>
     public class EndShipper : EasyPostObject, Parameters.IEndShipperParameter
     {

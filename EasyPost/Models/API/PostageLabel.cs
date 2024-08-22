@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#postage-label-object">EasyPost postage label</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/shipments#postage-label-object">EasyPost postage label</a>.
     /// </summary>
     public class PostageLabel : EasyPostObject
     {

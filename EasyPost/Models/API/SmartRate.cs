@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EasyPost.Models.API
 {
     /// <summary>
-    ///     Class representing an <a href="https://www.easypost.com/docs/api#smartrate">EasyPost SmartRate</a>.
+    ///     Class representing an <a href="https://docs.easypost.com/docs/smartrate">EasyPost SmartRate</a>.
     /// </summary>
     public class SmartRate : EasyPostObject
     {

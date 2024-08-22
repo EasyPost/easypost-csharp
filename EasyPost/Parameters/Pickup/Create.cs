@@ -5,7 +5,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.Pickup
 {
     /// <summary>
-    ///     <a href="https://www.easypost.com/docs/api#create-a-pickup">Parameters</a> for <see cref="EasyPost.Services.PickupService.Create(Create, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/pickups#create-a-pickup">Parameters</a> for <see cref="EasyPost.Services.PickupService.Create(Create, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class Create : BaseParameters<Models.API.Pickup>, IPickupParameter
