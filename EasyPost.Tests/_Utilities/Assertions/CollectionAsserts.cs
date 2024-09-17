@@ -6,12 +6,6 @@ namespace EasyPost.Tests._Utilities.Assertions
     // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class Assert
     {
-        private static void GuardArgumentNotNull(string argName, object argValue)
-        {
-            if (argValue == null)
-                throw new ArgumentNullException(argName);
-        }
-
         /// <summary>
         /// Verifies that any items in the collection pass when executed against
         /// action.

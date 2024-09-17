@@ -147,21 +147,18 @@ public class ClientConfiguration : IDisposable
     /// <inheritdoc cref="EasyPostClient.Dispose(bool)"/>
     protected virtual void Dispose(bool disposing)
     {
-        if (_isDisposed) return;
+        if (!disposing || _isDisposed) return;
 
-        if (disposing)
-        {
-            // Dispose managed state (managed objects).
-
-            // dispose of the prepared HTTP client
-            PreparedHttpClient?.Dispose();
-
-            // dispose of the user-provided HTTP client
-            CustomHttpClient?.Dispose();
-        }
-
-        // Free native resources (unmanaged objects) and override a finalizer below.
+        // Set the disposed flag to true before disposing of the object to avoid infinite loops
         _isDisposed = true;
+
+        // Dispose managed state (managed objects)
+
+        // Attempt to dispose of the prepared HTTP client (may already be disposed)
+        PreparedHttpClient?.Dispose();
+
+        // Attempt to dispose of the user-provided HTTP client (may already be disposed)
+        CustomHttpClient?.Dispose();
     }
 
     /// <summary>

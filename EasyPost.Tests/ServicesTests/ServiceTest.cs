@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Services;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
+using CustomAssertions = EasyPost.Tests._Utilities.Assertions.Assert;
 
 namespace EasyPost.Tests.ServicesTests
 {
@@ -19,6 +21,15 @@ namespace EasyPost.Tests.ServicesTests
     {
         public ServiceTests() : base("base_service")
         {
+        }
+
+        [Fact]
+        public void TestServiceDisposal()
+        {
+            Client client = new(new ClientConfiguration("not_a_real_api_key"));
+
+            AddressService addressService = client.Address;
+            CustomAssertions.DoesNotThrow(() => addressService.Dispose());
         }
 
         /// <summary>

@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -9,6 +8,7 @@ using EasyPost.Exceptions.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
+using CustomAssertions = EasyPost.Tests._Utilities.Assertions.Assert;
 
 namespace EasyPost.Tests
 {
@@ -69,6 +69,13 @@ namespace EasyPost.Tests
         #endregion
 
         private const string FakeApikey = "fake_api_key";
+
+        [Fact]
+        public void TestClientDisposal()
+        {
+            Client client = new(new ClientConfiguration(FakeApikey));
+            CustomAssertions.DoesNotThrow(() => client.Dispose());
+        }
 
         [Fact]
         public void TestBaseUrlOverride()
