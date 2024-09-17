@@ -12,7 +12,7 @@ public class RequestTest
     [Fact]
     public void TestRequestDisposal()
     {
-        Request request = new("https://google.com", "not_a_real_endpoint", Method.Get, ApiVersion.V2, new Dictionary<string, object> { { "key", "value" } }, new Dictionary<string, string>{ { "header_key", "header_value" } });
+        Request request = new("https://google.com", "not_a_real_endpoint", Method.Get, ApiVersion.V2, new Dictionary<string, object> { { "key", "value" } }, new Dictionary<string, string> { { "header_key", "header_value" } });
 
         request.Dispose();
 
