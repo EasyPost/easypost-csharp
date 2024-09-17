@@ -1,6 +1,7 @@
 using System;
 using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
+using CustomAssertions = EasyPost.Tests._Utilities.Assertions.Assert;
 
 namespace EasyPost.Tests.HttpTests
 {
@@ -12,10 +13,7 @@ namespace EasyPost.Tests.HttpTests
         public void TestClientConfigurationDisposal()
         {
             ClientConfiguration configuration = new("not_a_real_api_key");
-
-            configuration.Dispose();
-
-            // As long as this test doesn't throw an exception, it passes
+            CustomAssertions.DoesNotThrow(() => configuration.Dispose());
         }
 
         [Fact]

@@ -3,7 +3,7 @@ using Xunit.Sdk;
 namespace EasyPost.Tests._Utilities.Assertions
 {
     /// <summary>
-    /// Exception thrown when an Any assertion has one or more items fail an assertion.
+    ///     Exception thrown when an Any assertion has one or more items fail an assertion.
     /// </summary>
     public class AnyException : XunitException
     {

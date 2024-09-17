@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -9,6 +8,7 @@ using EasyPost.Exceptions.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using Xunit;
+using CustomAssertions = EasyPost.Tests._Utilities.Assertions.Assert;
 
 namespace EasyPost.Tests
 {
@@ -74,9 +74,7 @@ namespace EasyPost.Tests
         public void TestClientDisposal()
         {
             Client client = new(new ClientConfiguration(FakeApikey));
-            client.Dispose();
-
-            // As long as this test doesn't throw an exception, it passes
+            CustomAssertions.DoesNotThrow(() => client.Dispose());
         }
 
         [Fact]

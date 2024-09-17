@@ -10,6 +10,7 @@ using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
+using CustomAssertions = EasyPost.Tests._Utilities.Assertions.Assert;
 
 namespace EasyPost.Tests.ServicesTests
 {
@@ -28,9 +29,7 @@ namespace EasyPost.Tests.ServicesTests
             Client client = new(new ClientConfiguration("not_a_real_api_key"));
 
             AddressService addressService = client.Address;
-            addressService.Dispose();
-
-            // As long as this test doesn't throw an exception, it passes
+            CustomAssertions.DoesNotThrow(() => addressService.Dispose());
         }
 
         /// <summary>
