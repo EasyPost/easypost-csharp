@@ -9,6 +9,16 @@ namespace EasyPost.Tests.HttpTests
         #region Tests
 
         [Fact]
+        public void TestClientConfigurationDisposal()
+        {
+            ClientConfiguration configuration = new("not_a_real_api_key");
+
+            configuration.Dispose();
+
+            // As long as this test doesn't throw an exception, it passes
+        }
+
+        [Fact]
         [Testing.Function]
         public void TestClientConfiguration()
         {

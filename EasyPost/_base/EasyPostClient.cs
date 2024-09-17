@@ -222,17 +222,15 @@ namespace EasyPost._base
         /// <param name="disposing">Whether this object is being disposed.</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (_isDisposed) return;
-            if (disposing)
-            {
-                // Dispose managed state (managed objects).
+            if (!disposing || _isDisposed) return;
 
-                // Dispose the configuration
-                _configuration.Dispose();
-            }
-
-            // Free native resources (unmanaged objects) and override a finalizer below.
+            // Set the disposed flag to true before disposing of the object to avoid infinite loops
             _isDisposed = true;
+
+            // Dispose managed state (managed objects)
+
+            // Dispose of the configuration
+            _configuration.Dispose();
         }
 
         /// <summary>

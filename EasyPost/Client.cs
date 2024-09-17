@@ -190,46 +190,42 @@ namespace EasyPost
         /// <inheritdoc cref="EasyPostClient.Dispose(bool)"/>
         protected override void Dispose(bool disposing)
         {
-            // ref: https://dzone.com/articles/when-and-how-to-use-dispose-and-finalize-in-c
-            // ref: https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1063#pseudo-code-example
-            if (disposing)
-            {
-                // Dispose managed state (managed objects).
-                // "disposing" inherently true when called from Dispose(), so don't need to pass it in.
+            if (!disposing) return;
 
-                // Dispose of the services
-                Address.Dispose();
-                ApiKey.Dispose();
-                Batch.Dispose();
-                Billing.Dispose();
-                CarrierAccount.Dispose();
-                CarrierMetadata.Dispose();
-                CarrierType.Dispose();
-                Claim.Dispose();
-                CustomsInfo.Dispose();
-                CustomsItem.Dispose();
-                EndShipper.Dispose();
-                Event.Dispose();
-                Insurance.Dispose();
-                Order.Dispose();
-                Parcel.Dispose();
-                Pickup.Dispose();
-                Rate.Dispose();
-                ReferralCustomer.Dispose();
-                Refund.Dispose();
-                Report.Dispose();
-                ScanForm.Dispose();
-                Shipment.Dispose();
-                SmartRate.Dispose();
-                Tracker.Dispose();
-                User.Dispose();
-                Webhook.Dispose();
+            // Dispose managed state (managed objects)
 
-                // Dispose of the Beta client
-                Beta.Dispose();
-            }
+            // "disposing" inherently true when called from Dispose(), so don't need to pass it in.
 
-            // Free native resources (unmanaged objects) and override a finalizer below.
+            // Attempt to dispose of the services (some may already be disposed)
+            Address.Dispose();
+            ApiKey.Dispose();
+            Batch.Dispose();
+            Billing.Dispose();
+            CarrierAccount.Dispose();
+            CarrierMetadata.Dispose();
+            CarrierType.Dispose();
+            Claim.Dispose();
+            CustomsInfo.Dispose();
+            CustomsItem.Dispose();
+            EndShipper.Dispose();
+            Event.Dispose();
+            Insurance.Dispose();
+            Order.Dispose();
+            Parcel.Dispose();
+            Pickup.Dispose();
+            Rate.Dispose();
+            ReferralCustomer.Dispose();
+            Refund.Dispose();
+            Report.Dispose();
+            ScanForm.Dispose();
+            Shipment.Dispose();
+            SmartRate.Dispose();
+            Tracker.Dispose();
+            User.Dispose();
+            Webhook.Dispose();
+
+            // Attempt to dispose of the Beta client (may already be disposed)
+            Beta.Dispose();
 
             // Dispose of the base client
             base.Dispose(disposing);

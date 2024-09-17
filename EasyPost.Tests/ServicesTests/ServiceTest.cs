@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
+using EasyPost.Services;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
@@ -19,6 +20,17 @@ namespace EasyPost.Tests.ServicesTests
     {
         public ServiceTests() : base("base_service")
         {
+        }
+
+        [Fact]
+        public void TestServiceDisposal()
+        {
+            Client client = new(new ClientConfiguration("not_a_real_api_key"));
+
+            AddressService addressService = client.Address;
+            addressService.Dispose(); // Will also dispose the underlying client
+
+            // As long as this test doesn't throw an exception, it passes
         }
 
         /// <summary>

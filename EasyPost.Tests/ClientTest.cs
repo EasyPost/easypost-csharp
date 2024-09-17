@@ -71,6 +71,15 @@ namespace EasyPost.Tests
         private const string FakeApikey = "fake_api_key";
 
         [Fact]
+        public void TestClientDisposal()
+        {
+            Client client = new(new ClientConfiguration(FakeApikey));
+            client.Dispose();
+
+            // As long as this test doesn't throw an exception, it passes
+        }
+
+        [Fact]
         public void TestBaseUrlOverride()
         {
             Client normalClient = new(new ClientConfiguration(FakeApikey));
