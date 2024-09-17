@@ -28,7 +28,7 @@ namespace EasyPost.Tests.ServicesTests
             Client client = new(new ClientConfiguration("not_a_real_api_key"));
 
             AddressService addressService = client.Address;
-            addressService.Dispose(); // Will also dispose the underlying client
+            addressService.Dispose();
 
             // As long as this test doesn't throw an exception, it passes
         }

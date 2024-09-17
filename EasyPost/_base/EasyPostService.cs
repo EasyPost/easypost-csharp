@@ -73,8 +73,8 @@ namespace EasyPost._base
 
             // Dispose managed state (managed objects)
 
-            // Attempt to dispose the client (may already be disposed)
-            Client.Dispose();
+            // Don't dispose of the associated client here, as it may be shared among multiple services
+            // Client.Dispose();
         }
 
         /// <summary>
