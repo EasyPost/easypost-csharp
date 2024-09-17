@@ -3,6 +3,7 @@
 ## Next Release
 
 - Corrects all API documentation link references to point to their new locations
+- Fix recursion during disposal causing stack overflow
 
 ## v6.7.2 (2024-08-16)
 
