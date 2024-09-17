@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v6.7.3 (2024-09-17)
 
 - Corrects all API documentation link references to point to their new locations
 - Fix recursion during disposal causing stack overflow
