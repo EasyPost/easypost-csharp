@@ -40,23 +40,6 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         }
 
         [Fact]
-        [CrudOperations.Create]
-        [Testing.Function]
-        public async Task TestCreateList()
-        {
-            UseVCR("create_list");
-
-            Parameters.Tracker.CreateList parameters = new();
-            parameters.AddTracker("EZ1000000001");
-            parameters.AddTracker("EZ1000000002");
-            parameters.AddTracker("EZ1000000003");
-
-            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.Tracker.CreateList(parameters));
-
-            Assert.Null(possibleException);
-        }
-
-        [Fact]
         [CrudOperations.Read]
         [Testing.Function]
         public async Task TestAll()

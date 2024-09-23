@@ -35,23 +35,6 @@ namespace EasyPost.Tests.ServicesTests
         }
 
         [Fact]
-        [CrudOperations.Create]
-        [Testing.Function]
-        public async Task TestCreateList()
-        {
-            UseVCR("create_list");
-
-            Exception? possibleException = await Record.ExceptionAsync(async () => await Client.Tracker.CreateList(new Dictionary<string, object>
-            {
-                { "0", new Dictionary<string, object> { { "tracking_code", "EZ1000000001" } } },
-                { "1", new Dictionary<string, object> { { "tracking_code", "EZ1000000002" } } },
-                { "2", new Dictionary<string, object> { { "tracking_code", "EZ1000000003" } } }
-            }));
-
-            Assert.Null(possibleException);
-        }
-
-        [Fact]
         [CrudOperations.Read]
         [Testing.Function]
         public async Task TestAll()

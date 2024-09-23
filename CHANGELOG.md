@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Removes the deprecated `create_list` tracker endpoint function as it is no longer available via API
+
 ## v6.7.3 (2024-09-17)
 
 - Corrects all API documentation link references to point to their new locations

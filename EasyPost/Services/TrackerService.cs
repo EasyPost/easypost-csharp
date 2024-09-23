@@ -63,34 +63,6 @@ namespace EasyPost.Services
         }
 
         /// <summary>
-        ///     Create a list of <see cref="Tracker"/>s.
-        /// </summary>
-        /// <param name="parameters">A dictionary of tracking codes and carriers.</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><c>true</c> if successful, <c>false</c> otherwise.</returns>
-        [CrudOperations.Create]
-        [Obsolete("This method is deprecated. Please use TrackerService.Create() instead. This method will be removed in a future version.", false)]
-        public async Task CreateList(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
-        {
-            parameters = parameters.Wrap("trackers");
-            // This endpoint does not return a response, so we simply send the request and only throw an exception if the API returns an error.
-            await RequestAsync(Method.Post, "trackers/create_list", cancellationToken, parameters);
-        }
-
-        /// <summary>
-        ///     Create a list of <see cref="Tracker"/>s.
-        /// </summary>
-        /// <param name="parameters">Parameters to use to create the <see cref="Tracker"/>s.</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns><c>true</c> if successful, <c>false</c> otherwise.</returns>
-        [CrudOperations.Create]
-        [Obsolete("This method is deprecated. Please use TrackerService.Create() instead. This method will be removed in a future version.", false)]
-        public async Task CreateList(Parameters.Tracker.CreateList parameters, CancellationToken cancellationToken = default)
-        {
-            await RequestAsync(Method.Post, "trackers/create_list", cancellationToken, parameters.ToDictionary());
-        }
-
-        /// <summary>
         ///     List all <see cref="Tracker"/>s.
         ///     <a href="https://docs.easypost.com/docs/trackers#retrieve-all-trackers">Related API documentation</a>.
         /// </summary>
