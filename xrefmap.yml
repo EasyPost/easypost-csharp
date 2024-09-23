@@ -18305,28 +18305,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.TrackerService.Create
   nameWithType: TrackerService.Create
-- uid: EasyPost.Services.TrackerService.CreateList(Dictionary{System.String,System.Object},CancellationToken)
-  name: CreateList(Dictionary<String, Object>, CancellationToken)
-  href: api/EasyPost.Services.TrackerService.html#EasyPost_Services_TrackerService_CreateList_Dictionary_System_String_System_Object__CancellationToken_
-  commentId: M:EasyPost.Services.TrackerService.CreateList(Dictionary{System.String,System.Object},CancellationToken)
-  name.vb: CreateList(Dictionary(Of String, Object), CancellationToken)
-  fullName: EasyPost.Services.TrackerService.CreateList(Dictionary<System.String, System.Object>, CancellationToken)
-  fullName.vb: EasyPost.Services.TrackerService.CreateList(Dictionary(Of System.String, System.Object), CancellationToken)
-  nameWithType: TrackerService.CreateList(Dictionary<String, Object>, CancellationToken)
-  nameWithType.vb: TrackerService.CreateList(Dictionary(Of String, Object), CancellationToken)
-- uid: EasyPost.Services.TrackerService.CreateList(EasyPost.Parameters.Tracker.CreateList,CancellationToken)
-  name: CreateList(CreateList, CancellationToken)
-  href: api/EasyPost.Services.TrackerService.html#EasyPost_Services_TrackerService_CreateList_EasyPost_Parameters_Tracker_CreateList_CancellationToken_
-  commentId: M:EasyPost.Services.TrackerService.CreateList(EasyPost.Parameters.Tracker.CreateList,CancellationToken)
-  fullName: EasyPost.Services.TrackerService.CreateList(EasyPost.Parameters.Tracker.CreateList, CancellationToken)
-  nameWithType: TrackerService.CreateList(CreateList, CancellationToken)
-- uid: EasyPost.Services.TrackerService.CreateList*
-  name: CreateList
-  href: api/EasyPost.Services.TrackerService.html#EasyPost_Services_TrackerService_CreateList_
-  commentId: Overload:EasyPost.Services.TrackerService.CreateList
-  isSpec: "True"
-  fullName: EasyPost.Services.TrackerService.CreateList
-  nameWithType: TrackerService.CreateList
 - uid: EasyPost.Services.TrackerService.GetNextPage(EasyPost.Models.API.TrackerCollection,System.Nullable{System.Int32},CancellationToken)
   name: GetNextPage(TrackerCollection, Nullable<Int32>, CancellationToken)
   href: api/EasyPost.Services.TrackerService.html#EasyPost_Services_TrackerService_GetNextPage_EasyPost_Models_API_TrackerCollection_System_Nullable_System_Int32__CancellationToken_
