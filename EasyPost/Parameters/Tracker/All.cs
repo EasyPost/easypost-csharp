@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Attributes;
@@ -52,8 +53,16 @@ namespace EasyPost.Parameters.Tracker
         /// <summary>
         ///     Only return trackers with the given tracking code.
         /// </summary>
+        [Obsolete("Use TrackingCodes instead.")]
         [TopLevelRequestParameter(Necessity.Optional, "tracking_code")]
         public string? TrackingCode { get; set; }
+
+
+        /// <summary>
+        ///     Only return trackers with the given tracking codes.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "tracking_codes")]
+        public List<string>? TrackingCodes { get; set; }
 
         #endregion
 
