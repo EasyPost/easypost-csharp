@@ -829,7 +829,7 @@ namespace EasyPost.Models.API
         public bool? PostageLabelInline { get; set; } // bool
 
         [JsonProperty("print_custom")]
-        public List<Dictionary<string, object>>? PrintCustom { get; set; }  // array
+        public List<Dictionary<string, object>>? PrintCustom { get; set; } // array
 
         /// <summary>
         ///     You can optionally print custom messages on labels.
