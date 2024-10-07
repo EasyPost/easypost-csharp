@@ -57,7 +57,6 @@ namespace EasyPost.Parameters.Tracker
         [TopLevelRequestParameter(Necessity.Optional, "tracking_code")]
         public string? TrackingCode { get; set; }
 
-
         /// <summary>
         ///     Only return trackers with the given tracking codes.
         /// </summary>
