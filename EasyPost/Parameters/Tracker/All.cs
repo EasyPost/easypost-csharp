@@ -52,8 +52,10 @@ namespace EasyPost.Parameters.Tracker
 
         /// <summary>
         ///     Only return trackers with the given tracking code.
+        ///     Deprecated: Use <see cref="TrackingCodes"/> instead.
         /// </summary>
-        [Obsolete("Use TrackingCodes instead.")]
+        // TODO: Remove in next major version.
+        [Obsolete("This property will be removed in a future version and replaced with TrackingCodes.")]
         [TopLevelRequestParameter(Necessity.Optional, "tracking_code")]
         public string? TrackingCode { get; set; }
 
