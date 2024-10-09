@@ -18,9 +18,6 @@
             <group targetFramework="netstandard2.0">
                 <dependency id="Newtonsoft.Json" version="[13.0.1, 14.0.0)" />
             </group>
-            <group targetFramework="net5.0">
-                <dependency id="Newtonsoft.Json" version="[13.0.1, 14.0.0)" />
-            </group>
             <group targetFramework="net6.0">
                 <dependency id="Newtonsoft.Json" version="[13.0.1, 14.0.0)" />
             </group>
@@ -35,8 +32,6 @@
     <files>
         <file src="lib\net\netstandard2.0\EasyPost.dll" target="lib\netstandard2.0" />
         <file src="lib\net\netstandard2.0\EasyPost.XML" target="lib\netstandard2.0" />
-        <file src="lib\net\net5.0\EasyPost.dll" target="lib\net5.0" />
-        <file src="lib\net\net5.0\EasyPost.XML" target="lib\net5.0" />
         <file src="lib\net\net6.0\EasyPost.dll" target="lib\net6.0" />
         <file src="lib\net\net6.0\EasyPost.XML" target="lib\net6.0" />
         <file src="lib\net\net7.0\EasyPost.dll" target="lib\net7.0" />
