@@ -3,6 +3,7 @@
 ## Next Release
 
 - Removes the deprecated `create_list` tracker endpoint function as it is no longer available via API
+- Adds `TrackingCodes` optional parameter to `Tracker.All` parameter set for listing trackers
 
 ## v6.7.3 (2024-09-17)
 
