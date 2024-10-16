@@ -335,7 +335,7 @@ namespace EasyPost.Tests._Utilities
                     }
 
                     string? restrictionType = fixture.GetOrNull<string>("restriction_type");
-                    string?  restrictionComments = fixture.GetOrNull<string>("restriction_comments");
+                    string? restrictionComments = fixture.GetOrNull<string>("restriction_comments");
                     if (restrictionType == "none")
                     {
                         restrictionComments ??= "placeholder";  // required if restrictionType is "none", either use the provided value or a fallback placeholder

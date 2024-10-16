@@ -204,8 +204,8 @@ namespace EasyPost.Utilities.Internal.Attributes
             switch (IndependentStatus)
             {
                 // Skip value check if the independent condition is not present
-                case IndependentStatus.IfValue when propertyValue == null:  // Independent value is not set and needs to be to proceed with comparison
-                case IndependentStatus.IfValue when !propertyValue.Equals(IndependentValue):  // Independent value does not match and needs to
+                case IndependentStatus.IfValue when propertyValue == null: // Independent value is not set and needs to be to proceed with comparison
+                case IndependentStatus.IfValue when !propertyValue.Equals(IndependentValue): // Independent value does not match and needs to
                 case IndependentStatus.IfNotValue when propertyValue == null: // Independent value is not set and needs to be to proceed with comparison
                 case IndependentStatus.IfNotValue when propertyValue.Equals(IndependentValue): // Independent value matches and does not need to
                 case IndependentStatus.IfSet when propertyValue == null: // Independent value is not set and needs to be
