@@ -439,10 +439,17 @@ namespace EasyPost.Tests.ParametersTests
                 Assert.Fail("Should not throw exception if only B is set.");
             }
 
-            // Should throw exception if neither A nor B are set.
+            // Should not throw exception if neither A nor B are set.
             var parametersWithOneOrOtherInterdependenceNeitherSet = new ParameterSetWithBothOrNeitherDependentValueBasedTopLevelParameters();
 
-            Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => parametersWithOneOrOtherInterdependenceNeitherSet.ToDictionary());
+            try
+            {
+                parametersWithOneOrOtherInterdependenceNeitherSet.ToDictionary();
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
+            {
+                Assert.Fail("Should not throw exception if neither A nor B are set.");
+            }
         }
 
         [Fact]
