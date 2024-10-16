@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
@@ -227,12 +228,12 @@ namespace EasyPost.Tests.ParametersTests
 
         [Fact]
         [Testing.Exception]
-        public void TestOneOrOtherDependentTopLevelParameters()
+        public void TestOneOrOtherDependentPresenceBasedTopLevelParameters()
         {
             // Either A or B must be set, but not both.
 
             // Should throw exception if both set.
-            var parametersWithOneOrOtherInterdependenceBothSet = new ParameterSetWithOneOrOtherDependentTopLevelParameters
+            var parametersWithOneOrOtherInterdependenceBothSet = new ParameterSetWithOneOrOtherDependentPresenceBasedTopLevelParameters
             {
                 AParam = "A",
                 BParam = "B",
@@ -241,12 +242,12 @@ namespace EasyPost.Tests.ParametersTests
             Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => parametersWithOneOrOtherInterdependenceBothSet.ToDictionary());
 
             // Should throw exception if neither set.
-            var parametersWithOneOrOtherInterdependenceNeitherSet = new ParameterSetWithOneOrOtherDependentTopLevelParameters();
+            var parametersWithOneOrOtherInterdependenceNeitherSet = new ParameterSetWithOneOrOtherDependentPresenceBasedTopLevelParameters();
 
             Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => parametersWithOneOrOtherInterdependenceNeitherSet.ToDictionary());
 
             // Should not throw exception if only A is set.
-            var parametersWithOneOrOtherInterdependenceOnlyASet = new ParameterSetWithOneOrOtherDependentTopLevelParameters
+            var parametersWithOneOrOtherInterdependenceOnlyASet = new ParameterSetWithOneOrOtherDependentPresenceBasedTopLevelParameters
             {
                 AParam = "A",
             };
@@ -261,7 +262,7 @@ namespace EasyPost.Tests.ParametersTests
             }
 
             // Should not throw exception if only B is set.
-            var parametersWithOneOrOtherInterdependenceOnlyBSet = new ParameterSetWithOneOrOtherDependentTopLevelParameters
+            var parametersWithOneOrOtherInterdependenceOnlyBSet = new ParameterSetWithOneOrOtherDependentPresenceBasedTopLevelParameters
             {
                 BParam = "B",
             };
@@ -278,12 +279,12 @@ namespace EasyPost.Tests.ParametersTests
 
         [Fact]
         [Testing.Exception]
-        public void TestBothOrNeitherDependentTopLevelParameters()
+        public void TestBothOrNeitherDependentPresenceBasedTopLevelParameters()
         {
             // Either both A and B must be set, or neither.
 
             // Should throw exception if only A is set.
-            var parametersWithBothOrNeitherInterdependenceOnlyASet = new ParameterSetWithBothOrNeitherDependentTopLevelParameters
+            var parametersWithBothOrNeitherInterdependenceOnlyASet = new ParameterSetWithBothOrNeitherDependentPresenceBasedTopLevelParameters
             {
                 AParam = "A",
             };
@@ -291,7 +292,7 @@ namespace EasyPost.Tests.ParametersTests
             Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => parametersWithBothOrNeitherInterdependenceOnlyASet.ToDictionary());
 
             // Should throw exception if only B is set.
-            var parametersWithBothOrNeitherInterdependenceOnlyBSet = new ParameterSetWithBothOrNeitherDependentTopLevelParameters
+            var parametersWithBothOrNeitherInterdependenceOnlyBSet = new ParameterSetWithBothOrNeitherDependentPresenceBasedTopLevelParameters
             {
                 BParam = "B",
             };
@@ -299,7 +300,7 @@ namespace EasyPost.Tests.ParametersTests
             Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => parametersWithBothOrNeitherInterdependenceOnlyBSet.ToDictionary());
 
             // Should not throw exception if both A and B are set.
-            var parametersWithBothOrNeitherInterdependenceBothSet = new ParameterSetWithBothOrNeitherDependentTopLevelParameters
+            var parametersWithBothOrNeitherInterdependenceBothSet = new ParameterSetWithBothOrNeitherDependentPresenceBasedTopLevelParameters
             {
                 AParam = "A",
                 BParam = "B",
@@ -315,7 +316,7 @@ namespace EasyPost.Tests.ParametersTests
             }
 
             // Should not throw exception if neither A nor B are set.
-            var parametersWithBothOrNeitherInterdependenceNeitherSet = new ParameterSetWithBothOrNeitherDependentTopLevelParameters();
+            var parametersWithBothOrNeitherInterdependenceNeitherSet = new ParameterSetWithBothOrNeitherDependentPresenceBasedTopLevelParameters();
 
             try
             {
@@ -329,12 +330,203 @@ namespace EasyPost.Tests.ParametersTests
 
         [Fact]
         [Testing.Exception]
+        public void TestOneOrOtherDependentValueBasedTopLevelParameters()
+        {
+            // If AParm is set to "A", BParam must be set to "B", and vice versa.
+
+            // Should throw exception if B is not set properly based on A set restriction.
+            var parametersWithOneOrOtherInterdependenceBothSet = new ParameterSetWithOneOrOtherDependentValueBasedTopLevelParameters
+            {
+                AParam = "A",
+                BParam = "NOT B",
+            };
+
+            Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => parametersWithOneOrOtherInterdependenceBothSet.ToDictionary());
+
+            // Should throw exception if A is not set properly based on B set restriction.
+            var parametersWithOneOrOtherInterdependenceBothSet2 = new ParameterSetWithOneOrOtherDependentValueBasedTopLevelParameters
+            {
+                AParam = "NOT A",
+                BParam = "B",
+            };
+
+            Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => parametersWithOneOrOtherInterdependenceBothSet2.ToDictionary());
+
+            // Should not throw exception if both A and B are set properly.
+            var parametersWithOneOrOtherInterdependenceBothSet3 = new ParameterSetWithOneOrOtherDependentValueBasedTopLevelParameters
+            {
+                AParam = "A",
+                BParam = "B",
+            };
+
+            try
+            {
+                parametersWithOneOrOtherInterdependenceBothSet3.ToDictionary();
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
+            {
+                Assert.Fail("Should not throw exception if both A and B are set properly.");
+            }
+
+            // Should not throw exception if neither A nor B are set according to their restrictions.
+            var parametersWithOneOrOtherInterdependenceNeitherSet = new ParameterSetWithOneOrOtherDependentValueBasedTopLevelParameters
+            {
+                AParam = "NOT A",
+                BParam = "NOT B",
+            };
+
+            try
+            {
+                parametersWithOneOrOtherInterdependenceNeitherSet.ToDictionary();
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
+            {
+                Assert.Fail("Should not throw exception if neither A nor B are set according to their restrictions.");
+            }
+        }
+
+        [Fact]
+        [Testing.Exception]
+        public void TestBothOrNeitherDependentValueBasedTopLevelParameters()
+        {
+            // If AParm is set to "A", BParam must be set to "B", and vice versa.
+
+            // Should throw exception if A and B are set to their competing values.
+            var parametersWithOneOrOtherInterdependenceBothSet = new ParameterSetWithBothOrNeitherDependentValueBasedTopLevelParameters
+            {
+                AParam = "A",
+                BParam = "B",
+            };
+
+            Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => parametersWithOneOrOtherInterdependenceBothSet.ToDictionary());
+
+            // Should throw exception if A and B are both not set to their competing values.
+            var parametersWithOneOrOtherInterdependenceBothSet2 = new ParameterSetWithBothOrNeitherDependentValueBasedTopLevelParameters
+            {
+                AParam = "NOT A",
+                BParam = "NOT B",
+            };
+
+            Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => parametersWithOneOrOtherInterdependenceBothSet2.ToDictionary());
+
+            // Should not throw exception if only A is set.
+            var parametersWithOneOrOtherInterdependenceOnlyASet = new ParameterSetWithBothOrNeitherDependentValueBasedTopLevelParameters
+            {
+                AParam = "A",
+            };
+
+            try
+            {
+                parametersWithOneOrOtherInterdependenceOnlyASet.ToDictionary();
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
+            {
+                Assert.Fail("Should not throw exception if only A is set.");
+            }
+
+            // Should not throw exception if only B is set.
+            var parametersWithOneOrOtherInterdependenceOnlyBSet = new ParameterSetWithBothOrNeitherDependentValueBasedTopLevelParameters
+            {
+                BParam = "B",
+            };
+
+            try
+            {
+                parametersWithOneOrOtherInterdependenceOnlyBSet.ToDictionary();
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
+            {
+                Assert.Fail("Should not throw exception if only B is set.");
+            }
+
+            // Should throw exception if neither A nor B are set.
+            var parametersWithOneOrOtherInterdependenceNeitherSet = new ParameterSetWithBothOrNeitherDependentValueBasedTopLevelParameters();
+
+            Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => parametersWithOneOrOtherInterdependenceNeitherSet.ToDictionary());
+        }
+
+        [Fact]
+        [Testing.Exception]
+        public void TestMixedValueAndPresenceBasedDependentTopLevelParameters()
+        {
+            // If AParam is set to "A", BParam must be set to any value.
+            // If AParam is set, BParam must be set to "B".
+            // Therefore, if AParam is set to "A", BParam must be set to "B".
+            var shouldPass = new ParameterSetWithMixedDependentPresenceAndValueBasedTopLevelParameters
+            {
+                AParam = "A",
+                BParam = "B",
+            };
+
+            try
+            {
+                shouldPass.ToDictionary();
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
+            {
+                Assert.Fail("Should not throw exception if both A and B are set properly.");
+            }
+
+            var shouldFail = new ParameterSetWithMixedDependentPresenceAndValueBasedTopLevelParameters
+            {
+                AParam = "A",
+                BParam = "NOT B",
+            };
+
+            Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => shouldFail.ToDictionary());
+
+            var shouldFail2 = new ParameterSetWithMixedDependentPresenceAndValueBasedTopLevelParameters
+            {
+                AParam = "NOT A",
+                BParam = "B",
+            };
+
+            Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => shouldFail2.ToDictionary());
+
+            var shouldFail3 = new ParameterSetWithMixedDependentPresenceAndValueBasedTopLevelParameters
+            {
+                AParam = "NOT A",
+                BParam = "NOT B",
+            };
+
+            Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => shouldFail3.ToDictionary());
+
+            var shouldFail4 = new ParameterSetWithMixedDependentPresenceAndValueBasedTopLevelParameters
+            {
+                AParam = "A",
+                BParam = null,
+            };
+
+            Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => shouldFail4.ToDictionary());
+
+            // If AParam is not set to "A", BParam must not be set.
+            // If AParam is not set, BParam must not be set to "B".
+            // Therefore, if AParam is not set, BParam must not be set.
+            var shouldPass5 = new ParameterSetWithMixedDependentPresenceAndValueBasedTopLevelParameters
+            {
+                AParam = null,
+                BParam = null,
+            };
+
+            try
+            {
+                shouldPass5.ToDictionary();
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
+            {
+                Assert.Fail("Should not throw exception if neither A nor B are set.");
+            }
+        }
+
+
+        [Fact]
+        [Testing.Exception]
         public void TestDependentNestedParameters()
         {
             // Either A or B must be set, but not both.
 
             // Should throw exception if both set.
-            var parametersWithInterdependenceBothSet = new ParameterSetWithOneOrOtherDependentTopLevelParameters
+            var parametersWithInterdependenceBothSet = new ParameterSetWithOneOrOtherDependentPresenceBasedTopLevelParameters
             {
                 AParam = "A",
                 BParam = "B",
@@ -343,12 +535,12 @@ namespace EasyPost.Tests.ParametersTests
             Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => parametersWithInterdependenceBothSet.ToDictionary());
 
             // Should throw exception if neither set.
-            var parametersWithInterdependenceNeitherSet = new ParameterSetWithOneOrOtherDependentTopLevelParameters();
+            var parametersWithInterdependenceNeitherSet = new ParameterSetWithOneOrOtherDependentPresenceBasedTopLevelParameters();
 
             Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => parametersWithInterdependenceNeitherSet.ToDictionary());
 
             // Should not throw exception if only A is set.
-            var parametersWithInterdependenceOnlyASet = new ParameterSetWithOneOrOtherDependentTopLevelParameters
+            var parametersWithInterdependenceOnlyASet = new ParameterSetWithOneOrOtherDependentPresenceBasedTopLevelParameters
             {
                 AParam = "A",
             };
@@ -363,7 +555,7 @@ namespace EasyPost.Tests.ParametersTests
             }
 
             // Should not throw exception if only B is set.
-            var parametersWithInterdependenceOnlyBSet = new ParameterSetWithOneOrOtherDependentTopLevelParameters
+            var parametersWithInterdependenceOnlyBSet = new ParameterSetWithOneOrOtherDependentPresenceBasedTopLevelParameters
             {
                 BParam = "B",
             };
@@ -615,7 +807,7 @@ namespace EasyPost.Tests.ParametersTests
         public string? AParam { get; set; }
     }
 
-    internal sealed class ParameterSetWithOneOrOtherDependentTopLevelParameters : Parameters.BaseParameters<EasyPostObject>
+    internal sealed class ParameterSetWithOneOrOtherDependentPresenceBasedTopLevelParameters : Parameters.BaseParameters<EasyPostObject>
     {
         [TopLevelRequestParameter(Necessity.Optional, "a_param")]
         [TopLevelRequestParameterDependents(IndependentStatus.IfSet, DependentStatus.MustNotBeSet, "BParam")]
@@ -630,7 +822,7 @@ namespace EasyPost.Tests.ParametersTests
         public string? BParam { get; set; }
     }
 
-    internal sealed class ParameterSetWithBothOrNeitherDependentTopLevelParameters : Parameters.BaseParameters<EasyPostObject>
+    internal sealed class ParameterSetWithBothOrNeitherDependentPresenceBasedTopLevelParameters : Parameters.BaseParameters<EasyPostObject>
     {
         [TopLevelRequestParameter(Necessity.Optional, "a_param")]
         [TopLevelRequestParameterDependents(IndependentStatus.IfSet, DependentStatus.MustBeSet, "BParam")]
@@ -641,6 +833,51 @@ namespace EasyPost.Tests.ParametersTests
         [TopLevelRequestParameter(Necessity.Optional, "b_param")]
         [TopLevelRequestParameterDependents(IndependentStatus.IfSet, DependentStatus.MustBeSet, "AParam")]
         [TopLevelRequestParameterDependents(IndependentStatus.IfNotSet, DependentStatus.MustNotBeSet, "AParam")]
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
+        public string? BParam { get; set; }
+    }
+
+    internal sealed class ParameterSetWithOneOrOtherDependentValueBasedTopLevelParameters : Parameters.BaseParameters<EasyPostObject>
+    {
+        [TopLevelRequestParameter(Necessity.Optional, "a_param")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfValue, "A", DependentStatus.MustBeValue, dependentValue: "B", "BParam")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfNotValue, "A", DependentStatus.MustNotBeValue, dependentValue: "B", "BParam")]
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
+        public string? AParam { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "b_param")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfValue, "B", DependentStatus.MustBeValue, dependentValue: "A", "AParam")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfNotValue, "B", DependentStatus.MustNotBeValue, dependentValue: "A", "AParam")]
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
+        public string? BParam { get; set; }
+    }
+
+    internal sealed class ParameterSetWithBothOrNeitherDependentValueBasedTopLevelParameters : Parameters.BaseParameters<EasyPostObject>
+    {
+        [TopLevelRequestParameter(Necessity.Optional, "a_param")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfValue, "A", DependentStatus.MustNotBeValue, dependentValue: "B", "BParam")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfNotValue, "A", DependentStatus.MustBeValue, dependentValue: "B", "BParam")]
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
+        public string? AParam { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "b_param")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfValue, "B", DependentStatus.MustNotBeValue, dependentValue: "A", "AParam")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfNotValue, "B", DependentStatus.MustBeValue, dependentValue: "A", "AParam")]
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
+        public string? BParam { get; set; }
+    }
+
+    internal sealed class ParameterSetWithMixedDependentPresenceAndValueBasedTopLevelParameters : Parameters.BaseParameters<EasyPostObject>
+    {
+        [TopLevelRequestParameter(Necessity.Optional, "a_param")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfValue, "A", DependentStatus.MustBeSet, "BParam")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfNotValue, "A", DependentStatus.MustNotBeSet, "BParam")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfSet, DependentStatus.MustBeValue, dependentValue: "B", "BParam")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfNotSet, DependentStatus.MustNotBeValue, dependentValue: "B", "BParam")]
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
+        public string? AParam { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "b_param")]
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public string? BParam { get; set; }
     }

@@ -35,6 +35,16 @@ namespace EasyPost.Utilities.Internal.Attributes
         ///     Denote the condition when an independent parameter is not set.
         /// </summary>
         IfNotSet,
+
+        /// <summary>
+        ///     Denote the condition when an independent parameter is a specific value.
+        /// </summary>
+        IfValue,
+
+        /// <summary>
+        ///     Denote the condition when an independent parameter is not a specific value.
+        /// </summary>
+        IfNotValue,
     }
 
     /// <summary>
@@ -51,6 +61,16 @@ namespace EasyPost.Utilities.Internal.Attributes
         ///     Denote that a dependent parameter must not be set.
         /// </summary>
         MustNotBeSet,
+
+        /// <summary>
+        ///     Denote that a dependent parameter must be a specific value.
+        /// </summary>
+        MustBeValue,
+
+        /// <summary>
+        ///     Denote that a dependent parameter must not be a specific value.
+        /// </summary>
+        MustNotBeValue,
     }
 
 #pragma warning disable CA1019 // Define accessors for attribute arguments
@@ -94,9 +114,19 @@ namespace EasyPost.Utilities.Internal.Attributes
         private IndependentStatus IndependentStatus { get; }
 
         /// <summary>
+        ///     The evaluated value of the independent property.
+        /// </summary>
+        private object? IndependentValue { get; }
+
+        /// <summary>
         ///     The expected set status of the dependent properties.
         /// </summary>
         private DependentStatus DependentStatus { get; }
+
+        /// <summary>
+        ///     The expected value of the dependent properties.
+        /// </summary>
+        private object? DependentValue { get; }
 
         /// <summary>
         ///     The names of the dependent properties.
@@ -117,19 +147,81 @@ namespace EasyPost.Utilities.Internal.Attributes
         }
 
         /// <summary>
+        ///     Initializes a new instance of the <see cref="RequestParameterDependentsAttribute"/> class.
+        /// </summary>
+        /// <param name="independentStatus">The set status of the independent property.</param>
+        /// <param name="independentValue">The value of the independent property.</param>
+        /// <param name="dependentStatus">The set status of the dependent properties.</param>
+        /// <param name="dependentValue">The value of the dependent properties.</param>
+        /// <param name="dependentProperties">The names of the dependent properties.</param>
+        protected RequestParameterDependentsAttribute(IndependentStatus independentStatus, object independentValue, DependentStatus dependentStatus, object dependentValue, params string[] dependentProperties)
+        {
+            IndependentStatus = independentStatus;
+            IndependentValue = independentValue;
+            DependentStatus = dependentStatus;
+            DependentValue = dependentValue;
+            DependentProperties = dependentProperties.ToList();
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="RequestParameterDependentsAttribute"/> class.
+        /// </summary>
+        /// <param name="independentStatus">The set status of the independent property.</param>
+        /// <param name="dependentStatus">The set status of the dependent properties.</param>
+        /// <param name="dependentValue">The value of the dependent properties.</param>
+        /// <param name="dependentProperties">The names of the dependent properties.</param>
+        protected RequestParameterDependentsAttribute(IndependentStatus independentStatus, DependentStatus dependentStatus, object dependentValue, params string[] dependentProperties)
+        {
+            IndependentStatus = independentStatus;
+            DependentStatus = dependentStatus;
+            DependentValue = dependentValue;
+            DependentProperties = dependentProperties.ToList();
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="RequestParameterDependentsAttribute"/> class.
+        /// </summary>
+        /// <param name="independentStatus">The set status of the independent property.</param>
+        /// <param name="independentValue">The value of the independent property.</param>
+        /// <param name="dependentStatus">The set status of the dependent properties.</param>
+        /// <param name="dependentProperties">The names of the dependent properties.</param>
+        protected RequestParameterDependentsAttribute(IndependentStatus independentStatus, object independentValue, DependentStatus dependentStatus, params string[] dependentProperties)
+        {
+            IndependentStatus = independentStatus;
+            IndependentValue = independentValue;
+            DependentStatus = dependentStatus;
+            DependentProperties = dependentProperties.ToList();
+        }
+
+        /// <summary>
         ///     Check that the expected value state of the property is met.
         /// </summary>
-        /// <param name="dependentStatus">Whether the dependent property must be set or not set.</param>
+        /// <param name="propertyValue">Optional, the value of the independent property.</param>
         /// <param name="dependentPropertyValue">The value of the dependent property.</param>
         /// <returns>True if the dependent property meets the dependency condition, false otherwise.</returns>
-        private static bool DependencyConditionPasses(DependentStatus dependentStatus, object? dependentPropertyValue)
+        private bool DependencyConditionPasses(object? propertyValue, object? dependentPropertyValue)
         {
-            return dependentStatus switch
+            switch (IndependentStatus)
             {
-                DependentStatus.MustBeSet => dependentPropertyValue != null,
-                DependentStatus.MustNotBeSet => dependentPropertyValue == null,
-                var _ => false,
-            };
+                // Skip value check if the independent condition is not present
+                case IndependentStatus.IfValue when propertyValue == null:  // Independent value is not set and needs to be to proceed with comparison
+                case IndependentStatus.IfValue when !propertyValue.Equals(IndependentValue):  // Independent value does not match and needs to
+                case IndependentStatus.IfNotValue when propertyValue == null: // Independent value is not set and needs to be to proceed with comparison
+                case IndependentStatus.IfNotValue when propertyValue.Equals(IndependentValue): // Independent value matches and does not need to
+                case IndependentStatus.IfSet when propertyValue == null: // Independent value is not set and needs to be
+                case IndependentStatus.IfNotSet when propertyValue != null: // Independent value is set and needs to not be
+                    return true;
+                // Independent condition is present, now check dependent condition
+                default:
+                    return DependentStatus switch
+                    {
+                        DependentStatus.MustBeSet => dependentPropertyValue != null,
+                        DependentStatus.MustNotBeSet => dependentPropertyValue == null,
+                        DependentStatus.MustBeValue => dependentPropertyValue != null && dependentPropertyValue.Equals(DependentValue),
+                        DependentStatus.MustNotBeValue => dependentPropertyValue == null || !dependentPropertyValue.Equals(DependentValue),
+                        var _ => false,
+                    };
+            }
         }
 
         /// <summary>
@@ -164,7 +256,7 @@ namespace EasyPost.Utilities.Internal.Attributes
 
                 object? dependentPropertyValue = dependentProperty.GetValue(obj);
                 // If the dependent property does not meet the dependency condition, the dependency is not met
-                if (!DependencyConditionPasses(DependentStatus, dependentPropertyValue))
+                if (!DependencyConditionPasses(propertyValue, dependentPropertyValue))
                 {
                     return new Tuple<bool, string>(false, dependentPropertyName);
                 }
@@ -205,6 +297,43 @@ namespace EasyPost.Utilities.Internal.Attributes
         /// <param name="dependentProperties">The names of the dependent properties.</param>
         public TopLevelRequestParameterDependentsAttribute(IndependentStatus independentStatus, DependentStatus dependentStatus, params string[] dependentProperties)
             : base(independentStatus, dependentStatus, dependentProperties)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="TopLevelRequestParameterDependentsAttribute"/> class.
+        /// </summary>
+        /// <param name="independentStatus">The set status of the independent property.</param>
+        /// <param name="independentValue">The value of the independent property.</param>
+        /// <param name="dependentStatus">The set status of the dependent properties.</param>
+        /// <param name="dependentValue">The value of the dependent properties.</param>
+        /// <param name="dependentProperties">The names of the dependent properties.</param>
+        public TopLevelRequestParameterDependentsAttribute(IndependentStatus independentStatus, object independentValue, DependentStatus dependentStatus, object dependentValue, params string[] dependentProperties)
+            : base(independentStatus, independentValue, dependentStatus, dependentValue, dependentProperties)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="TopLevelRequestParameterDependentsAttribute"/> class.
+        /// </summary>
+        /// <param name="independentStatus">The set status of the independent property.</param>
+        /// <param name="dependentStatus">The set status of the dependent properties.</param>
+        /// <param name="dependentValue">The value of the dependent properties.</param>
+        /// <param name="dependentProperties">The names of the dependent properties.</param>
+        public TopLevelRequestParameterDependentsAttribute(IndependentStatus independentStatus, DependentStatus dependentStatus, object dependentValue, params string[] dependentProperties)
+            : base(independentStatus, dependentStatus, dependentValue, dependentProperties)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="TopLevelRequestParameterDependentsAttribute"/> class.
+        /// </summary>
+        /// <param name="independentStatus">The set status of the independent property.</param>
+        /// <param name="independentValue">The value of the independent property.</param>
+        /// <param name="dependentStatus">The set status of the dependent properties.</param>
+        /// <param name="dependentProperties">The names of the dependent properties.</param>
+        public TopLevelRequestParameterDependentsAttribute(IndependentStatus independentStatus, object independentValue, DependentStatus dependentStatus, params string[] dependentProperties)
+            : base(independentStatus, independentValue, dependentStatus, dependentProperties)
         {
         }
     }
@@ -256,6 +385,43 @@ namespace EasyPost.Utilities.Internal.Attributes
         /// <param name="dependentProperties">The names of the dependent properties.</param>
         public NestedRequestParameterDependentsAttribute(IndependentStatus independentStatus, DependentStatus dependentStatus, params string[] dependentProperties)
             : base(independentStatus, dependentStatus, dependentProperties)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="NestedRequestParameterDependentsAttribute"/> class.
+        /// </summary>
+        /// <param name="independentStatus">The set status of the independent property.</param>
+        /// <param name="independentValue">The value of the independent property.</param>
+        /// <param name="dependentStatus">The set status of the dependent properties.</param>
+        /// <param name="dependentValue">The value of the dependent properties.</param>
+        /// <param name="dependentProperties">The names of the dependent properties.</param>
+        public NestedRequestParameterDependentsAttribute(IndependentStatus independentStatus, object independentValue, DependentStatus dependentStatus, object dependentValue, params string[] dependentProperties)
+            : base(independentStatus, independentValue, dependentStatus, dependentValue, dependentProperties)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="NestedRequestParameterDependentsAttribute"/> class.
+        /// </summary>
+        /// <param name="independentStatus">The set status of the independent property.</param>
+        /// <param name="dependentStatus">The set status of the dependent properties.</param>
+        /// <param name="dependentValue">The value of the dependent properties.</param>
+        /// <param name="dependentProperties">The names of the dependent properties.</param>
+        public NestedRequestParameterDependentsAttribute(IndependentStatus independentStatus, DependentStatus dependentStatus, object dependentValue, params string[] dependentProperties)
+            : base(independentStatus, dependentStatus, dependentValue, dependentProperties)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="NestedRequestParameterDependentsAttribute"/> class.
+        /// </summary>
+        /// <param name="independentStatus">The set status of the independent property.</param>
+        /// <param name="independentValue">The value of the independent property.</param>
+        /// <param name="dependentStatus">The set status of the dependent properties.</param>
+        /// <param name="dependentProperties">The names of the dependent properties.</param>
+        public NestedRequestParameterDependentsAttribute(IndependentStatus independentStatus, object independentValue, DependentStatus dependentStatus, params string[] dependentProperties)
+            : base(independentStatus, independentValue, dependentStatus, dependentProperties)
         {
         }
     }

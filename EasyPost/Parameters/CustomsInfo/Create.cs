@@ -86,7 +86,16 @@ namespace EasyPost.Parameters.CustomsInfo
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "customs_info", "restriction_type")]
         [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "restriction_type")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfNotValue, "none", DependentStatus.MustBeSet, "RestrictionComments")]
         public string? RestrictionType { get; set; }
+
+        /// <summary>
+        ///     Restriction comments.
+        ///     Required if <see cref="RestrictionType"/> is not <c>"none"</c>.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "customs_info", "restriction_comments")]
+        [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "restriction_comments")]
+        public string? RestrictionComments { get; set; }
 
         #endregion
     }
