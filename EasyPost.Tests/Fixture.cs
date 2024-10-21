@@ -97,9 +97,9 @@ namespace EasyPost.Tests._Utilities
 
         internal static string PickupService => GetFixtureStructure().ServiceNames.Usps.PickupService;
 
-        internal static string PlannedShipDate => "2024-08-23";
+        internal static string PlannedShipDate => "2024-10-23";
 
-        internal static string DesiredDeliveryDate => "2024-08-23";
+        internal static string DesiredDeliveryDate => "2024-10-23";
 
         internal static Dictionary<string, object> ReferralCustomer => GetFixtureStructure().Users.Referral;
 
@@ -334,6 +334,13 @@ namespace EasyPost.Tests._Utilities
                         }
                     }
 
+                    string? restrictionType = fixture.GetOrNull<string>("restriction_type");
+                    string? restrictionComments = fixture.GetOrNull<string>("restriction_comments");
+                    if (restrictionType == "none")
+                    {
+                        restrictionComments ??= "placeholder";  // required if restrictionType is "none", either use the provided value or a fallback placeholder
+                    }
+
                     return new ParameterSets.CustomsInfo.Create
                     {
                         Id = fixture.GetOrNull<string>("id"),
@@ -342,7 +349,8 @@ namespace EasyPost.Tests._Utilities
                         EelPfc = fixture.GetOrNull<string>("eel_pfc"),
                         ContentsType = fixture.GetOrNull<string>("contents_type"),
                         ContentsExplanation = fixture.GetOrNull<string>("contents_explanation"),
-                        RestrictionType = fixture.GetOrNull<string>("restriction_type"),
+                        RestrictionType = restrictionType,
+                        RestrictionComments = restrictionComments,
                         NonDeliveryOption = fixture.GetOrNull<string>("non_delivery_option"),
                         CustomsCertify = fixture.GetOrNullBoolean("customs_certify"),
                         CustomsSigner = fixture.GetOrNull<string>("customs_signer"),
