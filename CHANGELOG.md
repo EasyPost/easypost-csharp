@@ -1,9 +1,10 @@
 # CHANGELOG
 
-## Next Release
+## v6.7.4 (2024-10-22)
 
-- Removes the deprecated `create_list` tracker endpoint function as it is no longer available via API
+- Removes the deprecated `CreateList` Tracker function as it is no longer available via API
 - Adds `TrackingCodes` optional parameter to `Tracker.All` parameter set for listing trackers
+- Adds `RestrictionComments` optional parameter to `CustomsInfo.Create` parameter set and enforces usage if `RestrictionType` is not "none"
 
 ## v6.7.3 (2024-09-17)
 
