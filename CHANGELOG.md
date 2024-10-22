@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v6.7.4 (2024-10-22)
+## v6.8.0 (2024-10-22)
 
 - Removes the deprecated `CreateList` Tracker function as it is no longer available via API
 - Adds `TrackingCodes` optional parameter to `Tracker.All` parameter set for listing trackers
