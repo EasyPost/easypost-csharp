@@ -131,7 +131,7 @@ namespace EasyPost.Http
                 var @switch = new SwitchCase
                 {
                     { param.Value is IList, () => listParameters = AddListQueryParameter(listParameters, param.Key, (IList)param.Value) },
-                    { SwitchCaseScenario.Default, () => query[param.Key] = param.Value.ToString() }
+                    { SwitchCaseScenario.Default, () => query[param.Key] = param.Value.ToString() },
                 };
                 @switch.MatchFirstTrue();
             }
@@ -168,6 +168,7 @@ namespace EasyPost.Http
                 {
                     continue;
                 }
+
                 string pair = $"{keyPrefix}={HttpUtility.UrlEncode(itemString)}";
                 pairs.Add(pair);
             }

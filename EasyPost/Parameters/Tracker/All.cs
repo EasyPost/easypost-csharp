@@ -84,7 +84,7 @@ namespace EasyPost.Parameters.Tracker
                 EndDatetime = dictionary.GetOrNull<string>("end_datetime"),
                 Carrier = dictionary.GetOrNull<string>("carrier"),
                 TrackingCode = dictionary.GetOrNull<string>("tracking_code"),
-                TrackingCodes = dictionary.GetOrNull<List<string>>("tracking_codes")
+                TrackingCodes = dictionary.GetOrNull<List<string>>("tracking_codes"),
             };
         }
     }
