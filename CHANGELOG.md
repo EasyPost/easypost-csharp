@@ -1,5 +1,9 @@
 # CHANGELOG
 
+# v6.8.1 (2024-10-31)
+
+- Fixes HTTP query parameter serialization bug causing `TrackingCodes` to be ignored when listing trackers
+
 ## v6.8.0 (2024-10-22)
 
 - Removes the deprecated `CreateList` Tracker function as it is no longer available via API
