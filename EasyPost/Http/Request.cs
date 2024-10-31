@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
@@ -115,6 +116,9 @@ namespace EasyPost.Http
             // add query parameters
             NameValueCollection query = HttpUtility.ParseQueryString(string.Empty);
 
+            // Separately store the list parameters to add them last
+            List<string> listParameters = new();
+
             // build query string from parameters
             foreach (KeyValuePair<string, object> param in _parameters)
             {
@@ -124,26 +128,52 @@ namespace EasyPost.Http
                     continue;
                 }
 
-                query[param.Key] = param.Value switch
+                var @switch = new SwitchCase
                 {
-                    // TODO: Handle special conversions for other types
-                    // DateTime dateTime => dateTime.ToString("o", CultureInfo.InvariantCulture),
-                    var _ => param.Value.ToString(),
+                    { param.Value is IList, () => listParameters = AddListQueryParameter(listParameters, param.Key, (IList)param.Value) },
+                    { SwitchCaseScenario.Default, () => query[param.Key] = param.Value.ToString() },
                 };
+                @switch.MatchFirstTrue();
             }
 
-            // short circuit if no query parameters
-            if (query.Count == 0)
+            // Finalize the query string
+            string queryString = query.ToString() ?? string.Empty;
+
+            // Add list parameters to the query string
+            string parameterCharacter = queryString.Length == 0 ? "?" : "&";
+            foreach (string pair in listParameters)
             {
-                return;
+                queryString += $"{parameterCharacter}{pair}";
+                parameterCharacter = "&";
             }
 
             // rebuild the request URL with the query string appended
             var uriBuilder = new UriBuilder(_requestMessage.RequestUri!)
             {
-                Query = query.ToString(),
+                Query = queryString,
             };
-            _requestMessage.RequestUri = new Uri(uriBuilder.ToString());
+
+            // _requestMessage.RequestUri = new Uri(uriBuilder.ToString());
+            _requestMessage.RequestUri = uriBuilder.Uri;
+        }
+
+        private static List<string> AddListQueryParameter(List<string> pairs, string key, IList value)
+        {
+            string keyPrefix = $"{HttpUtility.UrlEncode(key)}[]";
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach (object? item in value)
+            {
+                string? itemString = item?.ToString();
+                if (itemString == null)
+                {
+                    continue;
+                }
+
+                string pair = $"{keyPrefix}={HttpUtility.UrlEncode(itemString)}";
+                pairs.Add(pair);
+            }
+
+            return pairs;
         }
 
         /// <inheritdoc cref="EasyPostClient._isDisposed"/>
