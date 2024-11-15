@@ -592,7 +592,8 @@ namespace EasyPost.Tests.ParametersTests
             try
             {
                 parameters.ToDictionary();
-            } catch (Exceptions.General.InvalidParameterPairError)
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
             {
                 Assert.Fail("Should not throw exception if both Param1 and Param2 are set correctly.");
             }
@@ -616,7 +617,8 @@ namespace EasyPost.Tests.ParametersTests
             try
             {
                 parameters.ToDictionary();
-            } catch (Exceptions.General.InvalidParameterPairError)
+            }
+            catch (Exceptions.General.InvalidParameterPairError)
             {
                 Assert.Fail("Should not throw exception if Param1 is not set to a value that enforces a restriction on Param2.");
             }
