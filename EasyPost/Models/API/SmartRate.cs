@@ -54,13 +54,6 @@ namespace EasyPost.Models.API
         public int? DeliveryDays { get; set; }
 
         /// <summary>
-        ///     The number of days until delivery for this rate.
-        /// </summary>
-        [Obsolete("Use DeliveryDays instead.")]
-        [JsonProperty("est_delivery_days")]
-        public int? EstDeliveryDays { get; set; }
-
-        /// <summary>
         ///     The currency for the <see cref="ListRate"/>.
         /// </summary>
         [JsonProperty("list_currency")]

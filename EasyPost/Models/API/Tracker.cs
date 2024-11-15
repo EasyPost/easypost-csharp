@@ -202,13 +202,6 @@ namespace EasyPost.Models.API
         public List<TrackingDetail>? TrackingDetails { get; set; }
 
         /// <summary>
-        ///     The date and time the package was last tracked.
-        /// </summary>
-        [Obsolete("Use UpdatedAt instead.")]
-        [JsonProperty("tracking_updated_at")]
-        public DateTime? TrackingUpdatedAt { get; set; }
-
-        /// <summary>
         ///     The weight of the package as measured by the carrier, in ounces.
         /// </summary>
         [JsonProperty("weight")]

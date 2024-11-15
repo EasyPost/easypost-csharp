@@ -126,18 +126,6 @@ namespace EasyPost
         public static class CarrierAccounts
         {
             /// <summary>
-            ///    Represents a FedEx carrier account.
-            /// </summary>
-            [Obsolete("Use CarrierAccountType.FedEx instead.")]
-            public const string FedExAccount = "FedexAccount";
-
-            /// <summary>
-            ///     Represents a UPS carrier account.
-            /// </summary>
-            [Obsolete("Use CarrierAccountType.Ups instead.")]
-            public const string UpsAccount = "UpsAccount";
-
-            /// <summary>
             ///     Carrier account types that support custom creation workflows.
             /// </summary>
             private static List<string> CarrierTypesWithCustomCreateWorkflows => new()

@@ -759,6 +759,15 @@ namespace EasyPost.Tests._Utilities
                 {
                     fixture ??= new Dictionary<string, object>();
 
+                    // Account for fixture migration from tracking_code to tracking_codes
+                    List<string>? trackingCodes = fixture.GetOrNull<List<string>>("tracking_codes");
+
+                    string? trackingCode = fixture.GetOrNull<string>("tracking_code");
+                    if (trackingCodes == null && trackingCode != null)
+                    {
+                        trackingCodes = [trackingCode];
+                    }
+
                     return new ParameterSets.Tracker.All
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
@@ -766,7 +775,7 @@ namespace EasyPost.Tests._Utilities
                         AfterId = fixture.GetOrNull<string>("after_id"),
                         StartDatetime = fixture.GetOrNull<string>("start_datetime"),
                         EndDatetime = fixture.GetOrNull<string>("end_datetime"),
-                        TrackingCode = fixture.GetOrNull<string>("tracking_code"),
+                        TrackingCodes = trackingCodes,
                         Carrier = fixture.GetOrNull<string>("carrier"),
                     };
                 }

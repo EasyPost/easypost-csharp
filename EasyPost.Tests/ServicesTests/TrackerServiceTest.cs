@@ -63,13 +63,13 @@ namespace EasyPost.Tests.ServicesTests
             UseVCR("all_parameter_hand_off");
 
             Dictionary<string, object> filters = new Dictionary<string, object> {
-                { "tracking_code", "0" },
+                { "tracking_codes", new List<string> { "0" } },
                 { "carrier", "test_carrier" },
             };
 
             TrackerCollection trackerCollection = await Client.Tracker.All(filters);
 
-            Assert.Equal(filters["tracking_code"], ((Parameters.Tracker.All)trackerCollection.Filters!).TrackingCode);
+            Assert.Equal(filters["tracking_codes"], ((Parameters.Tracker.All)trackerCollection.Filters!).TrackingCodes);
             Assert.Equal(filters["carrier"], ((Parameters.Tracker.All)trackerCollection.Filters!).Carrier);
         }
 
@@ -127,7 +127,7 @@ namespace EasyPost.Tests.ServicesTests
 
             Parameters.Tracker.All filtersForNextPage = trackerCollection.BuildNextPageParameters<Parameters.Tracker.All>(trackerCollection.Trackers);
 
-            Assert.Equal(((Parameters.Tracker.All)trackerCollection.Filters!).TrackingCode, filtersForNextPage.TrackingCode);
+            Assert.Equal(((Parameters.Tracker.All)trackerCollection.Filters!).TrackingCodes, filtersForNextPage.TrackingCodes);
             Assert.Equal(((Parameters.Tracker.All)trackerCollection.Filters!).Carrier, filtersForNextPage.Carrier);
         }
 
