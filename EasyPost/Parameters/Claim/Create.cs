@@ -71,10 +71,17 @@ namespace EasyPost.Parameters.Claim
         public string? ContactEmail { get; set; }
 
         /// <summary>
-        ///     The <see cref="ClaimPaymentMethod"/> for the claim reimbursement.
+        ///     The <see cref="ClaimPaymentMethod"/> for the claim reimbursement. If set to <see cref="ClaimPaymentMethod.MailedCheck"/>, the <see cref="CheckDeliveryAddress"/> must be provided.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "payment_method")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfValue, "mailed_check", DependentStatus.MustBeSet, "CheckDeliveryAddress")]
         public ClaimPaymentMethod? PaymentMethod { get; set; }
+
+        /// <summary>
+        ///     The destination address for a reimbursement check. Required if the <see cref="PaymentMethod"/> is <see cref="ClaimPaymentMethod.MailedCheck"/>.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "check_delivery_address")]
+        public string? CheckDeliveryAddress { get; set; }
 
         #endregion
     }

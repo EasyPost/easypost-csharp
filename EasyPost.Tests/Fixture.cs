@@ -298,6 +298,7 @@ namespace EasyPost.Tests._Utilities
                         ContactEmail = fixture.GetOrNull<string>("contact_email"),
                         PaymentMethod = fixture.GetOrNullEnum<ClaimPaymentMethod>("payment_method"),
                         RecipientName = fixture.GetOrNull<string>("recipient_name"),
+                        CheckDeliveryAddress = fixture.GetOrNull<string>("check_delivery_address"),
                     };
                 }
 
