@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -109,11 +110,11 @@ namespace EasyPost.Utilities.Internal
         public static IEnumerable<T> GetAll<T>()
             where T : IEnum
             =>
-            typeof(T).GetFields(BindingFlags.Public |
-                                BindingFlags.Static |
-                                BindingFlags.DeclaredOnly)
-                .Select(f => f.GetValue(null))
-                .Cast<T>();
+                typeof(T).GetFields(BindingFlags.Public |
+                                    BindingFlags.Static |
+                                    BindingFlags.DeclaredOnly)
+                    .Select(f => f.GetValue(null))
+                    .Cast<T>();
 
         /// <summary>
         ///     Compare two objects.

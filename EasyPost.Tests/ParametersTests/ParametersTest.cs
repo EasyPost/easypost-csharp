@@ -6,6 +6,7 @@ using EasyPost._base;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
+using EasyPost.Utilities.Internal;
 using EasyPost.Utilities.Internal.Attributes;
 using Xunit;
 
@@ -577,6 +578,50 @@ namespace EasyPost.Tests.ParametersTests
             }
         }
 
+        [Fact]
+        [Testing.Custom]
+        public async Task TestEnumUsageInInterdependentParameterEnforcement()
+        {
+            // Should pass because Param1 and Param2 are set correctly
+            ParameterSetWithInterdependentEnums parameters = new()
+            {
+                Param1 = ParameterEnum.Value1,
+                Param2 = "value2"
+            };
+
+            try
+            {
+                parameters.ToDictionary();
+            } catch (Exceptions.General.InvalidParameterPairError)
+            {
+                Assert.Fail("Should not throw exception if both Param1 and Param2 are set correctly.");
+            }
+
+            // Should fail because Param1 is set to Value1, but Param2 is not set to "value2"
+            parameters = new ParameterSetWithInterdependentEnums
+            {
+                Param1 = ParameterEnum.Value1,
+                Param2 = "value3"
+            };
+
+            Assert.Throws<Exceptions.General.InvalidParameterPairError>(() => parameters.ToDictionary());
+
+            // Should pass because Param1 is not set to a value that enforces a restriction on Param2
+            parameters = new ParameterSetWithInterdependentEnums
+            {
+                Param1 = ParameterEnum.Value2,
+                Param2 = "value3"
+            };
+
+            try
+            {
+                parameters.ToDictionary();
+            } catch (Exceptions.General.InvalidParameterPairError)
+            {
+                Assert.Fail("Should not throw exception if Param1 is not set to a value that enforces a restriction on Param2.");
+            }
+        }
+
         /// <summary>
         /// This test proves that we can reuse the Addresses.Create parameter object,
         /// with its serialization logic adapting to whether it is a top-level parameter object
@@ -887,6 +932,28 @@ namespace EasyPost.Tests.ParametersTests
         [TopLevelRequestParameter(Necessity.Optional, "b_param")]
         // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public string? BParam { get; set; }
+    }
+
+    internal sealed class ParameterEnum : ValueEnum
+    {
+        public static readonly ParameterEnum Value1 = new(1, "value1");
+
+        public static readonly ParameterEnum Value2 = new(2, "value2");
+
+        private ParameterEnum(int id, object value)
+            : base(id, value)
+        {
+        }
+    }
+
+    internal sealed class ParameterSetWithInterdependentEnums : Parameters.BaseParameters<EasyPostObject>
+    {
+        [TopLevelRequestParameter(Necessity.Optional, "param1")]
+        [TopLevelRequestParameterDependents(IndependentStatus.IfValue, "value1", DependentStatus.MustBeValue, dependentValue: "value2", "Param2")]
+        public ParameterEnum? Param1 { get; set; }
+
+        [TopLevelRequestParameter(Necessity.Optional, "param2")]
+        public string? Param2 { get; set; }
     }
 
 #pragma warning restore CA1852 // Can be sealed
