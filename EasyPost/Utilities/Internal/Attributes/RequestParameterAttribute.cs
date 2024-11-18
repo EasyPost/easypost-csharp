@@ -150,9 +150,9 @@ namespace EasyPost.Utilities.Internal.Attributes
         ///     Initializes a new instance of the <see cref="RequestParameterDependentsAttribute"/> class.
         /// </summary>
         /// <param name="independentStatus">The set status of the independent property.</param>
-        /// <param name="independentValue">The value of the independent property.</param>
+        /// <param name="independentValue">The value of the independent property. If enforcing a custom <see cref="ValueEnum"/>, provide the underlying value.</param>
         /// <param name="dependentStatus">The set status of the dependent properties.</param>
-        /// <param name="dependentValue">The value of the dependent properties.</param>
+        /// <param name="dependentValue">The value of the dependent properties. If enforcing a custom <see cref="ValueEnum"/>, provide the underlying value.</param>
         /// <param name="dependentProperties">The names of the dependent properties.</param>
         protected RequestParameterDependentsAttribute(IndependentStatus independentStatus, object independentValue, DependentStatus dependentStatus, object dependentValue, params string[] dependentProperties)
         {
@@ -168,7 +168,7 @@ namespace EasyPost.Utilities.Internal.Attributes
         /// </summary>
         /// <param name="independentStatus">The set status of the independent property.</param>
         /// <param name="dependentStatus">The set status of the dependent properties.</param>
-        /// <param name="dependentValue">The value of the dependent properties.</param>
+        /// <param name="dependentValue">The value of the dependent properties. If enforcing a custom <see cref="ValueEnum"/>, provide the underlying value.</param>
         /// <param name="dependentProperties">The names of the dependent properties.</param>
         protected RequestParameterDependentsAttribute(IndependentStatus independentStatus, DependentStatus dependentStatus, object dependentValue, params string[] dependentProperties)
         {
@@ -182,7 +182,7 @@ namespace EasyPost.Utilities.Internal.Attributes
         ///     Initializes a new instance of the <see cref="RequestParameterDependentsAttribute"/> class.
         /// </summary>
         /// <param name="independentStatus">The set status of the independent property.</param>
-        /// <param name="independentValue">The value of the independent property.</param>
+        /// <param name="independentValue">The value of the independent property. If enforcing a custom <see cref="ValueEnum"/>, provide the underlying value.</param>
         /// <param name="dependentStatus">The set status of the dependent properties.</param>
         /// <param name="dependentProperties">The names of the dependent properties.</param>
         protected RequestParameterDependentsAttribute(IndependentStatus independentStatus, object independentValue, DependentStatus dependentStatus, params string[] dependentProperties)
@@ -197,7 +197,7 @@ namespace EasyPost.Utilities.Internal.Attributes
         ///     Check that the expected value state of the property is met.
         /// </summary>
         /// <param name="propertyValue">Optional, the value of the independent property.</param>
-        /// <param name="dependentPropertyValue">The value of the dependent property.</param>
+        /// <param name="dependentPropertyValue">The value of the dependent property. Do not pass in <see cref="ValueEnum"/>; instead, pass in the underlying value.</param>
         /// <returns>True if the dependent property meets the dependency condition, false otherwise.</returns>
         private bool DependencyConditionPasses(object? propertyValue, object? dependentPropertyValue)
         {
@@ -228,10 +228,17 @@ namespace EasyPost.Utilities.Internal.Attributes
         ///     Check that all dependent properties are compliant with the dependency conditions.
         /// </summary>
         /// <param name="obj">The object containing the dependent properties.</param>
-        /// <param name="propertyValue">The value of the independent property.</param>
+        /// <param name="propertyValue">The value of the independent property. A <see cref="ValueEnum"/> will be converted to its underlying value.</param>
         /// <returns>A tuple containing a boolean indicating whether the dependency is met, and a string containing the name of the first dependent property that does not meet the dependency conditions.</returns>
         public Tuple<bool, string> DependentsAreCompliant(object obj, object? propertyValue)
         {
+            // Convert any value enums to their underlying values (this cannot work with non-value Enums, but those can't be passed to attributes, so it is safe to ignore)
+            if (propertyValue != null && Objects.IsValueEnum(propertyValue))
+            {
+                ValueEnum enumValue = (ValueEnum)propertyValue;
+                propertyValue = enumValue.Value;
+            }
+
             // No need to check dependent IfSet properties if the property is not set
             if (propertyValue == null && IndependentStatus == IndependentStatus.IfSet)
             {
@@ -304,9 +311,9 @@ namespace EasyPost.Utilities.Internal.Attributes
         ///     Initializes a new instance of the <see cref="TopLevelRequestParameterDependentsAttribute"/> class.
         /// </summary>
         /// <param name="independentStatus">The set status of the independent property.</param>
-        /// <param name="independentValue">The value of the independent property.</param>
+        /// <param name="independentValue">The value of the independent property. If enforcing a custom <see cref="ValueEnum"/>, provide the underlying value.</param>
         /// <param name="dependentStatus">The set status of the dependent properties.</param>
-        /// <param name="dependentValue">The value of the dependent properties.</param>
+        /// <param name="dependentValue">The value of the dependent properties. If enforcing a custom <see cref="ValueEnum"/>, provide the underlying value.</param>
         /// <param name="dependentProperties">The names of the dependent properties.</param>
         public TopLevelRequestParameterDependentsAttribute(IndependentStatus independentStatus, object independentValue, DependentStatus dependentStatus, object dependentValue, params string[] dependentProperties)
             : base(independentStatus, independentValue, dependentStatus, dependentValue, dependentProperties)
@@ -318,7 +325,7 @@ namespace EasyPost.Utilities.Internal.Attributes
         /// </summary>
         /// <param name="independentStatus">The set status of the independent property.</param>
         /// <param name="dependentStatus">The set status of the dependent properties.</param>
-        /// <param name="dependentValue">The value of the dependent properties.</param>
+        /// <param name="dependentValue">The value of the dependent properties. If enforcing a custom <see cref="ValueEnum"/>, provide the underlying value.</param>
         /// <param name="dependentProperties">The names of the dependent properties.</param>
         public TopLevelRequestParameterDependentsAttribute(IndependentStatus independentStatus, DependentStatus dependentStatus, object dependentValue, params string[] dependentProperties)
             : base(independentStatus, dependentStatus, dependentValue, dependentProperties)
@@ -329,7 +336,7 @@ namespace EasyPost.Utilities.Internal.Attributes
         ///     Initializes a new instance of the <see cref="TopLevelRequestParameterDependentsAttribute"/> class.
         /// </summary>
         /// <param name="independentStatus">The set status of the independent property.</param>
-        /// <param name="independentValue">The value of the independent property.</param>
+        /// <param name="independentValue">The value of the independent property. If enforcing a custom <see cref="ValueEnum"/>, provide the underlying value.</param>
         /// <param name="dependentStatus">The set status of the dependent properties.</param>
         /// <param name="dependentProperties">The names of the dependent properties.</param>
         public TopLevelRequestParameterDependentsAttribute(IndependentStatus independentStatus, object independentValue, DependentStatus dependentStatus, params string[] dependentProperties)
@@ -392,9 +399,9 @@ namespace EasyPost.Utilities.Internal.Attributes
         ///     Initializes a new instance of the <see cref="NestedRequestParameterDependentsAttribute"/> class.
         /// </summary>
         /// <param name="independentStatus">The set status of the independent property.</param>
-        /// <param name="independentValue">The value of the independent property.</param>
+        /// <param name="independentValue">The value of the independent property. If enforcing a custom <see cref="ValueEnum"/>, provide the underlying value.</param>
         /// <param name="dependentStatus">The set status of the dependent properties.</param>
-        /// <param name="dependentValue">The value of the dependent properties.</param>
+        /// <param name="dependentValue">The value of the dependent properties. If enforcing a custom <see cref="ValueEnum"/>, provide the underlying value.</param>
         /// <param name="dependentProperties">The names of the dependent properties.</param>
         public NestedRequestParameterDependentsAttribute(IndependentStatus independentStatus, object independentValue, DependentStatus dependentStatus, object dependentValue, params string[] dependentProperties)
             : base(independentStatus, independentValue, dependentStatus, dependentValue, dependentProperties)
@@ -406,7 +413,7 @@ namespace EasyPost.Utilities.Internal.Attributes
         /// </summary>
         /// <param name="independentStatus">The set status of the independent property.</param>
         /// <param name="dependentStatus">The set status of the dependent properties.</param>
-        /// <param name="dependentValue">The value of the dependent properties.</param>
+        /// <param name="dependentValue">The value of the dependent properties. If enforcing a custom <see cref="ValueEnum"/>, provide the underlying value.</param>
         /// <param name="dependentProperties">The names of the dependent properties.</param>
         public NestedRequestParameterDependentsAttribute(IndependentStatus independentStatus, DependentStatus dependentStatus, object dependentValue, params string[] dependentProperties)
             : base(independentStatus, dependentStatus, dependentValue, dependentProperties)
@@ -417,7 +424,7 @@ namespace EasyPost.Utilities.Internal.Attributes
         ///     Initializes a new instance of the <see cref="NestedRequestParameterDependentsAttribute"/> class.
         /// </summary>
         /// <param name="independentStatus">The set status of the independent property.</param>
-        /// <param name="independentValue">The value of the independent property.</param>
+        /// <param name="independentValue">The value of the independent property. If enforcing a custom <see cref="ValueEnum"/>, provide the underlying value.</param>
         /// <param name="dependentStatus">The set status of the dependent properties.</param>
         /// <param name="dependentProperties">The names of the dependent properties.</param>
         public NestedRequestParameterDependentsAttribute(IndependentStatus independentStatus, object independentValue, DependentStatus dependentStatus, params string[] dependentProperties)

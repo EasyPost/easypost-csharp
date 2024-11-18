@@ -46,6 +46,7 @@ namespace EasyPost.Utilities
         /// </summary>
         /// <param name="bytes">Byte array to convert to hex string.</param>
         /// <returns>Hex string equivalent of input byte array.</returns>
+#pragma warning disable CA1859 // Use byte[] instead of IReadOnlyList<byte>
         private static string AsHexString(this IReadOnlyList<byte> bytes)
         {
             // Fastest safe way to convert a byte array to hex string,
@@ -61,6 +62,7 @@ namespace EasyPost.Utilities
 
             return new string(result).ToLowerInvariant();
         }
+#pragma warning restore CA1859 // Use byte[] instead of IReadOnlyList<byte>
 
         /// <summary>
         ///     Convert a string to a hex string using a specific encoding.

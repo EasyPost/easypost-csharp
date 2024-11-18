@@ -18,6 +18,12 @@ public class ClaimPaymentMethod : ValueEnum
     public static readonly ClaimPaymentMethod EasyPostWallet = new(2, "easypost_wallet");
 
     /// <summary>
+    ///     An enum representing paying a claim reimbursement via a bank transfer.
+    /// </summary>
+    // ReSharper disable once InconsistentNaming
+    public static readonly ClaimPaymentMethod ACH = new(3, "ach");
+
+    /// <summary>
     ///     Initializes a new instance of the <see cref="ClaimPaymentMethod"/> class.
     /// </summary>
     /// <param name="id">The internal ID of this enum.</param>

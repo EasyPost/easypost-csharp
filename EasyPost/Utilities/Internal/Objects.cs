@@ -32,5 +32,25 @@ namespace EasyPost.Utilities.Internal
         {
             return obj is string or ValueType or null;
         }
+
+        /// <summary>
+        ///    Check if an object is an <see cref="Enum"/> or derived from <see cref="Enum"/>.
+        /// </summary>
+        /// <param name="obj">The object to evaluate.</param>
+        /// <returns><c>true</c> if the object is an <see cref="Enum"/> or derived from <see cref="Enum"/>, <c>false</c> otherwise.</returns>
+        public static bool IsEnum(object? obj)
+        {
+            return obj is Enum;
+        }
+
+        /// <summary>
+        ///     Check if an object is a <see cref="ValueEnum"/> or derived from <see cref="ValueEnum"/>.
+        /// </summary>
+        /// <param name="obj">The object to evaluate.</param>
+        /// <returns><c>true</c> if the object is a <see cref="ValueEnum"/> or derived from <see cref="ValueEnum"/>, <c>false</c> otherwise.</returns>
+        public static bool IsValueEnum(object? obj)
+        {
+            return obj is ValueEnum;
+        }
     }
 }
