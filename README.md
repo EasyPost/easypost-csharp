@@ -347,3 +347,8 @@ The script requires the following tools installed in your PATH:
 
 - `dotnet`
 - [`reportgenerator`](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?tabs=linux#generate-reports)
+
+#### Common Issues
+
+- `TestHTTPTimeoutFriendlyException`, particularly in .NET Framework 4.6.2, tends to fail when run as part of a multi-test run. This is because the test is actually too fast for the manufactured timeout that the test is trying to simulate. This is fine, and often simply re-running the test individually will cause it to pass. This is usually only an issue when running tests locally; the overhead of GitHub Runners actually makes this test pass more consistently.
+- When re-recording cassettes, there may be some instances where the .NET Framework 4.6.2 version of a given test group passes, but all .NET X.X versions fail. This is because all the .NET X.X versions read from the same cassette file. If all the .NET X.X. versions are trying to simultaneously read and write to a given cassette file, they may get deadlocked and all fail. Simply run the test group in only one .NET X.X version FIRST to successfully write to the cassette, then the other .NET X.X versions can all read from the cassette concurrently.

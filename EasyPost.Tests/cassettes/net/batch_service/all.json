@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 594,
-    "RecordedAt": "2024-08-16T11:12:59.63883-06:00",
+    "Duration": 475,
+    "RecordedAt": "2024-11-18T15:20:22.15357-07:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -14,12 +14,12 @@
       "Uri": "https://api.easypost.com/v2/batches?page_size=5&sort=asc"
     },
     "Response": {
-      "Body": "{\"batches\":[],\"has_more\":false}",
+      "Body": "{\"batches\":[{\"id\":\"batch_7c72a414621542208e239ea7d884da84\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"created\",\"num_shipments\":0,\"reference\":null,\"created_at\":\"2024-11-18T21:30:33Z\",\"updated_at\":\"2024-11-18T21:30:33Z\",\"scan_form\":null,\"shipments\":[],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null},{\"id\":\"batch_7cbb81dac1a34032abadbe6f7dc677cf\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"created\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2024-11-18T21:32:08Z\",\"updated_at\":\"2024-11-18T21:32:08Z\",\"scan_form\":null,\"shipments\":[{\"batch_status\":\"created\",\"batch_message\":null,\"reference\":null,\"tracking_code\":null,\"id\":\"shp_7682b0f6f963477b8706a5af4d303602\"}],\"status\":{\"created\":1,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null},{\"id\":\"batch_f511a6416b934c7c9bc1095df40aa07f\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"created\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2024-11-18T21:32:08Z\",\"updated_at\":\"2024-11-18T21:32:08Z\",\"scan_form\":null,\"shipments\":[{\"batch_status\":\"created\",\"batch_message\":null,\"reference\":null,\"tracking_code\":null,\"id\":\"shp_f5c0f061fefd4b6cbd15e970c27f50f8\"}],\"status\":{\"created\":1,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null},{\"id\":\"batch_0de6499f577d432a901d94c8a2f934c3\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"purchase_failed\",\"num_shipments\":1,\"reference\":null,\"created_at\":\"2024-11-18T21:32:09Z\",\"updated_at\":\"2024-11-18T21:32:19Z\",\"scan_form\":null,\"shipments\":[{\"batch_status\":\"postage_purchase_failed\",\"batch_message\":\"USPS does not offer service First for this shipment.\",\"reference\":null,\"tracking_code\":null,\"id\":\"shp_42e902a38755483280d15675dc7d964a\"}],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":1},\"pickup\":null,\"label_url\":null},{\"id\":\"batch_bd1dbad844464e7fbca156c88d06f770\",\"object\":\"Batch\",\"mode\":\"test\",\"state\":\"created\",\"num_shipments\":0,\"reference\":null,\"created_at\":\"2024-11-18T21:32:09Z\",\"updated_at\":\"2024-11-18T21:32:09Z\",\"scan_form\":null,\"shipments\":[],\"status\":{\"created\":0,\"queued_for_purchase\":0,\"creation_failed\":0,\"postage_purchased\":0,\"postage_purchase_failed\":0},\"pickup\":null,\"label_url\":null}],\"has_more\":true}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "31"
+        "Content-Length": "2410"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -29,14 +29,14 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "8a4bf43d66bf889bf3f8dae9004a4da5",
+        "x-ep-request-uuid": "98b2a9e9673bbda6eff623250048cafe",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.347090",
-        "x-node": "bigweb42nuq",
-        "x-version-label": "easypost-202408161634-c713989c9f-master",
+        "x-runtime": "0.118483",
+        "x-node": "bigweb56nuq",
+        "x-version-label": "easypost-202411182055-958aa04221-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb4nuq c0f5e722d1,extlb1nuq b6e1b5034c",
+        "x-proxied": "intlb3nuq 51d74985a2,extlb1nuq 99aac35317",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
