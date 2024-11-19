@@ -1,6 +1,6 @@
 # CHANGELOG
 
-# v6.8.2 (2024-11-18)
+# v6.9.0 (2024-11-19)
 
 - Add missing `CheckDeliveryAddress` parameter for `Claim.Create` parameter set
 - Handle enums when running parameter interdependency checks
