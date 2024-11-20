@@ -1,13 +1,11 @@
-name: Release
+name: Manually build release-ready NuGet package
 
 on:
-  release:
-    types: [ published ]
   workflow_dispatch: ~
 
 jobs:
-  publish:
-    name: Publish to NuGet
+  build:
+    name: Build Release-Ready NuGet Package
     runs-on: windows-latest
     steps:
       - name: Checkout repository
@@ -66,13 +64,7 @@ jobs:
           call scripts\win\build_release_nuget.bat EasyPost EasyPostNETStrongNameSigning.snk "${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }}" Release
         shell: cmd
 
-      - name: Publish to NuGet
-        run: make publish key=${{ secrets.NUGET_API_KEY }}
-
-      - name: Upload NuGet package to release
-        uses: AButler/upload-release-assets@v3.0
+      - name: Upload NuGet package to Action output
+        uses: actions/upload-artifact@v4
         with:
-          files: "*.nupkg"
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-
+          path: "*.nupkg"
