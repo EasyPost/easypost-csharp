@@ -74,3 +74,9 @@ jobs:
           files: "*.nupkg"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Upload NuGet package to Action output
+        uses: actions/upload-artifact@v4
+        with:
+          path: "*.nupkg"
+
+
