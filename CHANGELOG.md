@@ -1,5 +1,10 @@
 # CHANGELOG
 
+# v6.9.0 (2024-11-19)
+
+- Add missing `CheckDeliveryAddress` parameter for `Claim.Create` parameter set
+- Handle enums when running parameter interdependency checks
+
 # v6.8.1 (2024-10-31)
 
 - Fixes HTTP query parameter serialization bug causing `TrackingCodes` to be ignored when listing trackers
