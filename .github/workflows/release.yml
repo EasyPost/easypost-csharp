@@ -3,7 +3,6 @@ name: Release
 on:
   release:
     types: [ published ]
-  workflow_dispatch: ~
 
 jobs:
   publish:
@@ -74,5 +73,4 @@ jobs:
         with:
           files: "*.nupkg"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-
 
