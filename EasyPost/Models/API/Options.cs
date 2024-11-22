@@ -74,41 +74,6 @@ namespace EasyPost.Models.API
         public string? BillingRef { get; set; }
 
         /// <summary>
-        ///     Obsolete. Use <see cref="Payment"/> instead.
-        /// </summary>
-        [Obsolete("Use Payment instead.")]
-        [JsonProperty("bill_receiver_account")]
-        public string? BillReceiverAccount { get; set; }
-
-        /// <summary>
-        ///     Obsolete. Use <see cref="Payment"/> instead.
-        /// </summary>
-        [Obsolete("Use Payment instead.")]
-        [JsonProperty("bill_receiver_postal_code")]
-        public string? BillReceiverPostalCode { get; set; }
-
-        /// <summary>
-        ///     Obsolete. Use <see cref="Payment"/> instead.
-        /// </summary>
-        [Obsolete("Use Payment instead.")]
-        [JsonProperty("bill_third_party_account")]
-        public string? BillThirdPartyAccount { get; set; }
-
-        /// <summary>
-        ///     Obsolete. Use <see cref="Payment"/> instead.
-        /// </summary>
-        [Obsolete("Use Payment instead.")]
-        [JsonProperty("bill_third_party_country")]
-        public string? BillThirdPartyCountry { get; set; }
-
-        /// <summary>
-        ///     Obsolete. Use <see cref="Payment"/> instead.
-        /// </summary>
-        [Obsolete("Use Payment instead.")]
-        [JsonProperty("bill_third_party_postal_code")]
-        public string? BillThirdPartyPostalCode { get; set; }
-
-        /// <summary>
         ///     Setting this option to true will indicate to the carrier to prefer delivery by drone, if the carrier supports drone delivery.
         /// </summary>
         [JsonProperty("by_drone")]

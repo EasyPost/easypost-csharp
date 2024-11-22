@@ -51,15 +51,6 @@ namespace EasyPost.Parameters.Tracker
         public string? Carrier { get; set; }
 
         /// <summary>
-        ///     Only return trackers with the given tracking code.
-        ///     Deprecated: Use <see cref="TrackingCodes"/> instead.
-        /// </summary>
-        // TODO: Remove in next major version.
-        [Obsolete("This property will be removed in a future version and replaced with TrackingCodes.")]
-        [TopLevelRequestParameter(Necessity.Optional, "tracking_code")]
-        public string? TrackingCode { get; set; }
-
-        /// <summary>
         ///     Only return trackers with the given tracking codes.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "tracking_codes")]
@@ -83,7 +74,6 @@ namespace EasyPost.Parameters.Tracker
                 StartDatetime = dictionary.GetOrNull<string>("start_datetime"),
                 EndDatetime = dictionary.GetOrNull<string>("end_datetime"),
                 Carrier = dictionary.GetOrNull<string>("carrier"),
-                TrackingCode = dictionary.GetOrNull<string>("tracking_code"),
                 TrackingCodes = dictionary.GetOrNull<List<string>>("tracking_codes"),
             };
         }

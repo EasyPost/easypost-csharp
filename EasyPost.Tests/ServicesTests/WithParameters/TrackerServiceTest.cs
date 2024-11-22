@@ -73,7 +73,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             Parameters.Tracker.All filters = new()
             {
-                TrackingCode = "0",
+                TrackingCodes = ["0"],
                 Carrier = "test_carrier",
             };
 
@@ -88,7 +88,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             };
             trackerCollection.Trackers.Add(fakeTracker);
 
-            Assert.Equal(filters.TrackingCode, ((Parameters.Tracker.All)trackerCollection.Filters!).TrackingCode);
+            Assert.Equal(filters.TrackingCodes, ((Parameters.Tracker.All)trackerCollection.Filters!).TrackingCodes);
             Assert.Equal(filters.Carrier, ((Parameters.Tracker.All)trackerCollection.Filters!).Carrier);
         }
 

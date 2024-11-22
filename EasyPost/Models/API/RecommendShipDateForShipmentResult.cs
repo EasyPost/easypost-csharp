@@ -18,13 +18,6 @@ namespace EasyPost.Models.API
         public Rate? Rate { get; set; }
 
         /// <summary>
-        ///     Estimated <see cref="TimeInTransitDetailsForShipDateRecommendation"/> for the carrier-service level combination.
-        ///     Deprecated: Use <see cref="TimeInTransitDetails"/> instead.
-        /// </summary>
-        [Obsolete("This property will be removed in a future version and replaced with TimeInTransitDetails.")]
-        public TimeInTransitDetailsForShipDateRecommendation? EasyPostTimeInTransitData => TimeInTransitDetails;
-
-        /// <summary>
         ///     Estimated <see cref="TimeInTransitDetailsForShipDateRecommendation"/> for the <see cref="Rate"/>.
         /// </summary>
         [JsonProperty("easypost_time_in_transit_data")]

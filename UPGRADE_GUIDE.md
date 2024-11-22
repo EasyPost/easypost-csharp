@@ -2,10 +2,13 @@
 
 Use the following guide to assist in the upgrade process of the `easypost-csharp` library between major versions.
 
+- [Upgrading from 6.x to 7.0](#upgrading-from-6x-to-70)
 - [Upgrading from 5.x to 6.0](#upgrading-from-5x-to-60)
 - [Upgrading from 4.x to 5.0](#upgrading-from-4x-to-50)
 - [Upgrading from 3.x to 4.x](#upgrading-from-3x-to-40)
 - [Upgrading from 2.x to 3.0](#upgrading-from-2x-to-30)
+
+## Upgrading from 6.x to 7.0
 
 ## Upgrading from 5.x to 6.0
 

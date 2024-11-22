@@ -76,7 +76,6 @@ public class Basics
         var supportedFeature = new SupportedFeature();
         var taxIdentifier = new TaxIdentifier();
         var timeInTransit = new TimeInTransit();
-        var timeInTransitDetails = new TimeInTransitDetails();
         var timeInTransitDetailsForDeliveryDateEstimate = new TimeInTransitDetailsForDeliveryDateEstimate();
         var timeInTransitDetailsByDeliveryDate = new TimeInTransitDetailsForShipDateRecommendation();
         var tracker = new Tracker();
@@ -155,7 +154,6 @@ public class Basics
         var taxIdentifierCreateParameters = new EasyPost.Parameters.TaxIdentifier.Create();
         var trackerCreateParameters = new EasyPost.Parameters.Tracker.Create();
         var trackerAllParameters = new EasyPost.Parameters.Tracker.All();
-        var trackerCreateListParameters = new EasyPost.Parameters.Tracker.CreateList();
         var userCreateChildParameters = new EasyPost.Parameters.User.CreateChild();
         var userAllChildrenParameters = new EasyPost.Parameters.User.AllChildren();
         var userUpdateParameters = new EasyPost.Parameters.User.Update();
