@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -6,9 +7,10 @@ using EasyPost.Utilities.Internal.Extensions;
 namespace EasyPost.Parameters.Tracker
 {
     /// <summary>
-    ///     Parameters for <see cref="EasyPost.Services.TrackerService.CreateList(CreateList, System.Threading.CancellationToken)"/> API calls.
+    ///     This parameter set is no longer used.
     /// </summary>
     [ExcludeFromCodeCoverage]
+    [Obsolete("This parameter set is no longer used.")]
     public class CreateList : BaseParameters<Models.API.Tracker>, ITrackerParameter
     {
         #region Request Parameters
@@ -67,8 +69,9 @@ namespace EasyPost.Parameters.Tracker
     }
 
     /// <summary>
-    ///     Internal class used to construct a <see cref="CreateList"/> parameter set.
+    ///     This class is no longer used.
     /// </summary>
+    [Obsolete("This class is no longer used.")]
     internal sealed class CreateListTracker
     {
         /// <summary>

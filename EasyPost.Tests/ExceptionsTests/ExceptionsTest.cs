@@ -15,6 +15,7 @@ using Xunit;
 
 namespace EasyPost.Tests.ExceptionsTests
 {
+#pragma warning disable CA2263
     public class ExceptionsTests : UnitTest
     {
         public ExceptionsTests() : base("exceptions")
@@ -31,6 +32,7 @@ namespace EasyPost.Tests.ExceptionsTests
 
             // Generate a dummy HttpResponseMessage with the given status code to parse
             HttpStatusCode httpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), statusCode.ToString(CultureInfo.InvariantCulture));
+
             HttpResponseMessage response = new() { StatusCode = httpStatusCode };
 
             ApiError generatedError = await ApiError.FromErrorResponse(response);
@@ -480,4 +482,5 @@ namespace EasyPost.Tests.ExceptionsTests
 
         #endregion
     }
+#pragma warning restore CA2263
 }

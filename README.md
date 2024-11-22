@@ -327,13 +327,13 @@ Some tests may require a user with a particular set of enabled features such as 
 referrals. We have attempted to call out these functions in their respective docstrings.
 
 **NOTE** .NET Framework/.NET Standard unit tests cannot currently be run on Apple Silicon (M1, M2, etc.). Instead, run
-unit tests in one framework at a time with, e.g `make unit-test fw=net8.0`. Valid frameworks:
+unit tests in one framework at a time with, e.g `make unit-test fw=net9.0`. Valid frameworks:
 
 - `net462` (.NET Framework 4.6.2, the oldest non-EOL version of .NET Framework; will not run on Apple Silicon)
-- `net5.0` (.NET 5.0)
 - `net6.0` (.NET 6.0)
 - `net7.0` (.NET 7.0)
 - `net8.0` (.NET 8.0)
+- `net9.0` (.NET 9.0)
 
 #### Test Coverage
 

@@ -10,7 +10,7 @@ if [[ $(sysctl -n machdep.cpu.brand_string) =~ "Apple" ]]; then
 fi
 
 # .NET versions we want to install
-declare -a NetVersions=("8.0" "7.0" "6.0" "5.0")
+declare -a NetVersions=("9.0" "8.0" "7.0" "6.0")
 
 # Download dotnet-install.sh
 echo "Downloading dotnet-install.sh script..."
