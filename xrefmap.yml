@@ -3724,6 +3724,12 @@ references:
   commentId: T:EasyPost.Models.API.ClaimPaymentMethod
   fullName: EasyPost.Models.API.ClaimPaymentMethod
   nameWithType: ClaimPaymentMethod
+- uid: EasyPost.Models.API.ClaimPaymentMethod.ACH
+  name: ACH
+  href: api/EasyPost.Models.API.ClaimPaymentMethod.html#EasyPost_Models_API_ClaimPaymentMethod_ACH
+  commentId: F:EasyPost.Models.API.ClaimPaymentMethod.ACH
+  fullName: EasyPost.Models.API.ClaimPaymentMethod.ACH
+  nameWithType: ClaimPaymentMethod.ACH
 - uid: EasyPost.Models.API.ClaimPaymentMethod.EasyPostWallet
   name: EasyPostWallet
   href: api/EasyPost.Models.API.ClaimPaymentMethod.html#EasyPost_Models_API_ClaimPaymentMethod_EasyPostWallet
@@ -12628,6 +12634,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Claim.Create.Amount
   nameWithType: Create.Amount
+- uid: EasyPost.Parameters.Claim.Create.CheckDeliveryAddress
+  name: CheckDeliveryAddress
+  href: api/EasyPost.Parameters.Claim.Create.html#EasyPost_Parameters_Claim_Create_CheckDeliveryAddress
+  commentId: P:EasyPost.Parameters.Claim.Create.CheckDeliveryAddress
+  fullName: EasyPost.Parameters.Claim.Create.CheckDeliveryAddress
+  nameWithType: Create.CheckDeliveryAddress
+- uid: EasyPost.Parameters.Claim.Create.CheckDeliveryAddress*
+  name: CheckDeliveryAddress
+  href: api/EasyPost.Parameters.Claim.Create.html#EasyPost_Parameters_Claim_Create_CheckDeliveryAddress_
+  commentId: Overload:EasyPost.Parameters.Claim.Create.CheckDeliveryAddress
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Claim.Create.CheckDeliveryAddress
+  nameWithType: Create.CheckDeliveryAddress
 - uid: EasyPost.Parameters.Claim.Create.ContactEmail
   name: ContactEmail
   href: api/EasyPost.Parameters.Claim.Create.html#EasyPost_Parameters_Claim_Create_ContactEmail
@@ -19342,6 +19361,22 @@ references:
   commentId: T:EasyPost.Utilities.Internal.Objects
   fullName: EasyPost.Utilities.Internal.Objects
   nameWithType: Objects
+- uid: EasyPost.Utilities.Internal.Objects.IsEnum(System.Nullable{System.Object})
+  name: IsEnum(Nullable<Object>)
+  href: api/EasyPost.Utilities.Internal.Objects.html#EasyPost_Utilities_Internal_Objects_IsEnum_System_Nullable_System_Object__
+  commentId: M:EasyPost.Utilities.Internal.Objects.IsEnum(System.Nullable{System.Object})
+  name.vb: IsEnum(Nullable(Of Object))
+  fullName: EasyPost.Utilities.Internal.Objects.IsEnum(System.Nullable<System.Object>)
+  fullName.vb: EasyPost.Utilities.Internal.Objects.IsEnum(System.Nullable(Of System.Object))
+  nameWithType: Objects.IsEnum(Nullable<Object>)
+  nameWithType.vb: Objects.IsEnum(Nullable(Of Object))
+- uid: EasyPost.Utilities.Internal.Objects.IsEnum*
+  name: IsEnum
+  href: api/EasyPost.Utilities.Internal.Objects.html#EasyPost_Utilities_Internal_Objects_IsEnum_
+  commentId: Overload:EasyPost.Utilities.Internal.Objects.IsEnum
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.Objects.IsEnum
+  nameWithType: Objects.IsEnum
 - uid: EasyPost.Utilities.Internal.Objects.IsPrimitive(System.Nullable{System.Object})
   name: IsPrimitive(Nullable<Object>)
   href: api/EasyPost.Utilities.Internal.Objects.html#EasyPost_Utilities_Internal_Objects_IsPrimitive_System_Nullable_System_Object__
@@ -19371,6 +19406,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Utilities.Internal.Objects.IsPropertySet
   nameWithType: Objects.IsPropertySet
+- uid: EasyPost.Utilities.Internal.Objects.IsValueEnum(System.Nullable{System.Object})
+  name: IsValueEnum(Nullable<Object>)
+  href: api/EasyPost.Utilities.Internal.Objects.html#EasyPost_Utilities_Internal_Objects_IsValueEnum_System_Nullable_System_Object__
+  commentId: M:EasyPost.Utilities.Internal.Objects.IsValueEnum(System.Nullable{System.Object})
+  name.vb: IsValueEnum(Nullable(Of Object))
+  fullName: EasyPost.Utilities.Internal.Objects.IsValueEnum(System.Nullable<System.Object>)
+  fullName.vb: EasyPost.Utilities.Internal.Objects.IsValueEnum(System.Nullable(Of System.Object))
+  nameWithType: Objects.IsValueEnum(Nullable<Object>)
+  nameWithType.vb: Objects.IsValueEnum(Nullable(Of Object))
+- uid: EasyPost.Utilities.Internal.Objects.IsValueEnum*
+  name: IsValueEnum
+  href: api/EasyPost.Utilities.Internal.Objects.html#EasyPost_Utilities_Internal_Objects_IsValueEnum_
+  commentId: Overload:EasyPost.Utilities.Internal.Objects.IsValueEnum
+  isSpec: "True"
+  fullName: EasyPost.Utilities.Internal.Objects.IsValueEnum
+  nameWithType: Objects.IsValueEnum
 - uid: EasyPost.Utilities.Internal.ValueEnum
   name: ValueEnum
   href: api/EasyPost.Utilities.Internal.ValueEnum.html

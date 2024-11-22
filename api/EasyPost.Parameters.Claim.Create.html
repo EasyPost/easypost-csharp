@@ -143,6 +143,37 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_Claim_Create_CheckDeliveryAddress.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.Claim.Create.CheckDeliveryAddress%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/Claim/Create.cs/#L83">View Source</a>
+  </span>
+  <a id="EasyPost_Parameters_Claim_Create_CheckDeliveryAddress_" data-uid="EasyPost.Parameters.Claim.Create.CheckDeliveryAddress*"></a>
+  <h4 id="EasyPost_Parameters_Claim_Create_CheckDeliveryAddress" data-uid="EasyPost.Parameters.Claim.Create.CheckDeliveryAddress">CheckDeliveryAddress</h4>
+  <div class="markdown level1 summary"><p>The destination address for a reimbursement check. Required if the <a class="xref" href="EasyPost.Parameters.Claim.Create.html#EasyPost_Parameters_Claim_Create_PaymentMethod">PaymentMethod</a> is <a class="xref" href="EasyPost.Models.API.ClaimPaymentMethod.html#EasyPost_Models_API_ClaimPaymentMethod_MailedCheck">MailedCheck</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? CheckDeliveryAddress { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_Claim_Create_ContactEmail.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.Claim.Create.ContactEmail%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -276,7 +307,7 @@ Each file must be a base64-encoded string.</p>
   </span>
   <a id="EasyPost_Parameters_Claim_Create_PaymentMethod_" data-uid="EasyPost.Parameters.Claim.Create.PaymentMethod*"></a>
   <h4 id="EasyPost_Parameters_Claim_Create_PaymentMethod" data-uid="EasyPost.Parameters.Claim.Create.PaymentMethod">PaymentMethod</h4>
-  <div class="markdown level1 summary"><p>The <a class="xref" href="EasyPost.Models.API.ClaimPaymentMethod.html">ClaimPaymentMethod</a> for the claim reimbursement.</p>
+  <div class="markdown level1 summary"><p>The <a class="xref" href="EasyPost.Models.API.ClaimPaymentMethod.html">ClaimPaymentMethod</a> for the claim reimbursement. If set to <a class="xref" href="EasyPost.Models.API.ClaimPaymentMethod.html#EasyPost_Models_API_ClaimPaymentMethod_MailedCheck">MailedCheck</a>, the <a class="xref" href="EasyPost.Parameters.Claim.Create.html#EasyPost_Parameters_Claim_Create_CheckDeliveryAddress">CheckDeliveryAddress</a> must be provided.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
