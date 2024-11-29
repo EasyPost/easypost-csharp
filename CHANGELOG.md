@@ -27,6 +27,7 @@
 ## v6.7.1 (2024-08-09)
 
 - Fix pagination parameters for `GetNextPageOfChildren` function for User service
+- Add `Surcharges` property to `Rate` class
 
 ## v6.7.0 (2024-07-24)
 
