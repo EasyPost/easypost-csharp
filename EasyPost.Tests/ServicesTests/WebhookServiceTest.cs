@@ -42,6 +42,7 @@ namespace EasyPost.Tests.ServicesTests
 
             string url = $"https://example.com/create/{TestUtils.NetVersion}";
 
+            // TODO: Add webhook_secret and custom_headers params
             Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
             CleanUpAfterTest(webhook.Id);
 
@@ -162,6 +163,7 @@ namespace EasyPost.Tests.ServicesTests
                 Thread.Sleep(10000); // Wait enough time to process
             }
 
+            // TODO: Add webhook_secret and custom_headers params
             webhook = await Client.Webhook.Update(webhook.Id, new Dictionary<string, object>());
 
             Assert.IsType<Webhook>(webhook);

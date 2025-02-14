@@ -99,6 +99,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Webhook> Update(string id, Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
+            parameters = parameters?.Wrap("webhook");
             return await RequestAsync<Webhook>(Method.Put, $"webhooks/{id}", cancellationToken, parameters);
         }
 
@@ -113,6 +114,7 @@ namespace EasyPost.Services
         [CrudOperations.Update]
         public async Task<Webhook> Update(string id, Parameters.Webhook.Update? parameters = null, CancellationToken cancellationToken = default)
         {
+            // TODO: Validate, do we need to wrap the params here too or is it implicitly done somehow?
             return await RequestAsync<Webhook>(Method.Put, $"webhooks/{id}", cancellationToken, parameters?.ToDictionary());
         }
 

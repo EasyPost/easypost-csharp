@@ -25,6 +25,8 @@ namespace EasyPost.Parameters.Webhook
         [TopLevelRequestParameter(Necessity.Required, "url")]
         public string? Url { get; set; }
 
+        // TODO: Add custom_headers
+
         #endregion
     }
 }

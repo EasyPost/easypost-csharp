@@ -19,6 +19,8 @@ namespace EasyPost.Parameters.Webhook
         [TopLevelRequestParameter(Necessity.Optional, "webhook_secret")]
         public string? Secret { get; set; }
 
+        // TODO: Add custom_headers
+
         #endregion
     }
 }
