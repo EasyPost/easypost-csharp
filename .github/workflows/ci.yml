@@ -213,11 +213,6 @@ jobs:
         with:
           submodules: true
 
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 9.x.x
-
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1.2
 
@@ -236,7 +231,7 @@ jobs:
 
         # Run the compatibility tests
       - name: Run Tests
-        run: make fs-compat-test fw=net462
+        run: make netstandard-compat-test fw=net462
 
   FSharp_Compatibility_Tests:
     runs-on: windows-2022

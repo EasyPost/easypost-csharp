@@ -5,7 +5,6 @@ FRAMEWORK="net9.0"
 THRESHOLD=$1
 THRESHOLD_TYPE=line
 
-
 # Navigate to the test folder
 TEST_FOLDER="EasyPost.Tests"
 cd "$TEST_FOLDER" || exit
