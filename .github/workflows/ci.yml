@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request: ~
   workflow_dispatch: ~
 
@@ -124,13 +124,8 @@ jobs:
       EASYPOST_PROD_API_KEY: "123"
     strategy:
       matrix:
-        name: [ 'NetStandard20', 'Net60', 'Net70', 'Net80', 'Net90' ]
+        name: ["Net60", "Net70", "Net80", "Net90"]
         include:
-          - name: NetStandard20
-            # can't run tests on .NET Standard, it's just a bridge between .NET Framework and .NET.
-            # So we'll target .NET Framework 4.6.2
-            # More notes at the bottom of this file
-            framework: net462
           - name: Net60
             framework: net6.0
           - name: Net70
@@ -208,7 +203,40 @@ jobs:
 
         # Run the integration tests
       - name: Run Tests
-        run: make integration-test fw=net9.0  # Always run integration tests on the latest framework
+        run: make integration-test fw=net9.0 # Always run integration tests on the latest framework
+
+  # See notes at the bottom of this file for more info on NetStandard compatibility tests
+  NetStandard_Compatibility_Tests:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 9.x.x
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1.2
+
+      - name: Setup Nuget
+        uses: NuGet/setup-nuget@v1.1.1
+
+      - name: Setup VSTest
+        uses: darenm/Setup-VSTest@v1.2
+
+      - name: Restore NuGet Packages
+        run: make restore
+
+        # Pull in fixtures submodule
+      - name: Set up dotnet tools and dependencies
+        run: make install
+
+        # Run the compatibility tests
+      - name: Run Tests
+        run: make fs-compat-test fw=net462
 
   FSharp_Compatibility_Tests:
     runs-on: windows-2022
@@ -240,12 +268,11 @@ jobs:
 
         # Run the compatibility tests
       - name: Run Tests
-        run: make fs-compat-test fw=net9.0  # Always run compatibility tests on the latest framework
+        run: make fs-compat-test fw=net9.0 # Always run compatibility tests on the latest framework
 
   Visual_Basic_Compatibility_Test:
     runs-on: windows-2022
     steps:
-
       - uses: actions/checkout@v4
         with:
           submodules: true
@@ -273,8 +300,7 @@ jobs:
 
         # Run the compatibility tests
       - name: Run Tests
-        run: make vb-compat-test fw=net9.0  # Always run compatibility tests on the latest framework
-
+        run: make vb-compat-test fw=net9.0 # Always run compatibility tests on the latest framework
 
 # .NET Standard notes:
 # - NET Standard 2.0 is compatible with minimum .NET Framework 4.6.1: https://docs.microsoft.com/en-us/dotnet/standard/net-standard?tabs=net-standard-2-0
