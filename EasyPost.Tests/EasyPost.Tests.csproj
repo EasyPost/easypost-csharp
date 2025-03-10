@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net462;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
 
     <IsPackable>false</IsPackable>
 
@@ -62,7 +62,6 @@
 
   <ItemGroup>
     <None Remove="Microsoft.VisualStudio.UnitTesting" />
-    <None Remove="RestSharp" />
     <None Remove="MSTest.TestFramework" />
     <None Remove="MSTest.TestAdapter" />
   </ItemGroup>

@@ -313,7 +313,6 @@ namespace EasyPost.Tests.ExceptionsTests
             // all the error status codes the library should be able to handle
             Dictionary<int, Type> exceptionsMap = new()
             {
-                { 0, typeof(ConnectionError) }, // RestSharp returns status code 0 when a connection cannot be established (i.e. no internet access)
                 { 100, typeof(UnknownHttpError) },
                 { 101, typeof(UnknownHttpError) },
                 { 102, typeof(UnknownHttpError) },
