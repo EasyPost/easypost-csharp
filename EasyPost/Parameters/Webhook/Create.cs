@@ -30,7 +30,7 @@ namespace EasyPost.Parameters.Webhook
         /// <summary>
         ///     custom headers
         /// </summary>        
-        [TopLevelRequestParameter(Necessity.Optional, "customheaders")]
+        [TopLevelRequestParameter(Necessity.Optional, "custom_headers")]
         public List<WebhookCustomHeader>? CustomHeaders { get; set; }
 
         #endregion
