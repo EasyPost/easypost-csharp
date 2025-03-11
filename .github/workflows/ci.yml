@@ -222,12 +222,12 @@ jobs:
       - name: Setup VSTest
         uses: darenm/Setup-VSTest@v1.2
 
-      - name: Restore NuGet Packages
-        run: make restore
-
         # Pull in fixtures submodule
       - name: Set up dotnet tools and dependencies
         run: make install
+
+      - name: Build Project
+        run: make build-fw fw=net462
 
         # Run the compatibility tests
       - name: Run Tests
