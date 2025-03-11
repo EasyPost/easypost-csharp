@@ -27,7 +27,7 @@ namespace EasyPost.Tests.ServicesTests
                     // trying to delete something that doesn't exist, pass
                     return false;
                 }
-            };
+            };        
 
         #region Tests
 
@@ -42,8 +42,14 @@ namespace EasyPost.Tests.ServicesTests
 
             string url = $"https://example.com/create/{TestUtils.NetVersion}";
 
-            // TODO: Add webhook_secret and custom_headers params
-            Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
+            Dictionary<string,object> webhookParams = new Dictionary<string, object>()
+            {
+                 { "url", url },
+                 { "webhook_secret", Fixtures.WebhookSecret },
+                 { "custom_headers", Fixtures.WebhookCustomHeaders }
+            };
+                        
+            Webhook webhook = await Client.Webhook.Create(webhookParams);
             CleanUpAfterTest(webhook.Id);
 
             Assert.IsType<Webhook>(webhook);
@@ -163,8 +169,13 @@ namespace EasyPost.Tests.ServicesTests
                 Thread.Sleep(10000); // Wait enough time to process
             }
 
-            // TODO: Add webhook_secret and custom_headers params
-            webhook = await Client.Webhook.Update(webhook.Id, new Dictionary<string, object>());
+            Dictionary<string, object> webhookParams = new Dictionary<string, object>()
+            {                 
+                 { "webhook_secret", Fixtures.WebhookSecret },
+                 { "custom_headers", Fixtures.WebhookCustomHeaders }
+            };
+            
+            webhook = await Client.Webhook.Update(webhook.Id, webhookParams);
 
             Assert.IsType<Webhook>(webhook);
             Assert.StartsWith("hook_", webhook.Id);

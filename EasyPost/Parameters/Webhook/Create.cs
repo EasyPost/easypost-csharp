@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
+using Newtonsoft.Json;
 
 namespace EasyPost.Parameters.Webhook
 {
@@ -24,8 +26,12 @@ namespace EasyPost.Parameters.Webhook
         /// </summary>
         [TopLevelRequestParameter(Necessity.Required, "url")]
         public string? Url { get; set; }
-
-        // TODO: Add custom_headers
+                
+        /// <summary>
+        ///     custom headers
+        /// </summary>        
+        [TopLevelRequestParameter(Necessity.Optional, "customheaders")]
+        public List<WebhookCustomHeader>? CustomHeaders { get; set; }
 
         #endregion
     }
