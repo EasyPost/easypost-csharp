@@ -42,7 +42,7 @@ namespace EasyPost.Tests._Utilities
 
         internal static string WebhookUrl => GetFixtureStructure().Webhooks.Url;
 
-        internal static List<object> WebhookCustomHeaders => GetFixtureStructure().Webhooks.CustomHeaders;        
+        internal static List<object> WebhookCustomHeaders => GetFixtureStructure().Webhooks.CustomHeaders;
 
         internal static Dictionary<string, object> BasicCarrierAccount => GetFixtureStructure().CarrierAccounts.Basic;
 

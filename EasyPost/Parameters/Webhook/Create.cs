@@ -26,7 +26,7 @@ namespace EasyPost.Parameters.Webhook
         /// </summary>
         [TopLevelRequestParameter(Necessity.Required, "url")]
         public string? Url { get; set; }
-                
+
         /// <summary>
         ///     custom headers
         /// </summary>        
