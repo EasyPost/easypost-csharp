@@ -213,6 +213,11 @@ jobs:
         with:
           submodules: true
 
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 9.x.x
+
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1.2
 
