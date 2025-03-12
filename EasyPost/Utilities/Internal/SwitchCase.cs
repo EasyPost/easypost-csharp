@@ -36,12 +36,12 @@ namespace EasyPost.Utilities.Internal
         /// <summary>
         ///     The action to execute if the <see cref="Value"/> matches.
         /// </summary>
-        public Action? Action { get; }
+        Action? Action { get; }
 
         /// <summary>
         ///     The value to match to trigger the <see cref="Action"/>.
         /// </summary>
-        public object Value { get; }
+        object Value { get; }
     }
 
     /// <summary>
