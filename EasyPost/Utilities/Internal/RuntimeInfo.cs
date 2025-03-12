@@ -114,7 +114,7 @@ namespace EasyPost.Utilities.Internal
             /// <returns>Architecture of the operating system.</returns>
             internal static string Architecture
             {
-#if NET462
+#if NET472
                     // Sorry, Windows ARM users (if you exist), best we can do is determine if we are running on a 64-bit or 32-bit
                     get => Environment.Is64BitOperatingSystem ? "x64" : "x86";
 #else

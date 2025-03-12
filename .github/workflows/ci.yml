@@ -231,7 +231,7 @@ jobs:
 
         # Run the compatibility tests
       - name: Run Tests
-        run: make netstandard-compat-test fw=net481
+        run: make netstandard-compat-test fw=net472
 
   FSharp_Compatibility_Tests:
     runs-on: windows-2022
@@ -300,9 +300,9 @@ jobs:
 # .NET Standard notes:
 # - NET Standard 2.0 is compatible with minimum .NET Framework 4.6.1: https://docs.microsoft.com/en-us/dotnet/standard/net-standard?tabs=net-standard-2-0
 # - NET Framework 4.6.1 is EOL after April 26, 2022, due to its security concerns (was affected by the SHA-1 crack): https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-framework
-# - GitHub's Windows 2022 runner only supports minimum .NET Framework 4.6.2 anyway: https://github.com/actions/virtual-environments/issues/5055#issuecomment-1040757930
+# - GitHub's Windows 2022 runner only supports minimum .NET Framework 4.7.2 anyway: https://github.com/actions/virtual-environments/issues/5055#issuecomment-1040757930
 # - .NET Standard is not a framework, but a set of shared APIs between the old .NET Framework and new .NET/.NET Core
 # - `EasyPost` targets .NET Standard 2.0, meaning it is compatible with specific versions of both .NET and .NET Framework: https://docs.microsoft.com/en-us/dotnet/standard/net-standard?tabs=net-standard-2-0
 # - When you want to actually run code, however, you can't run it in .NET Standard. You have to run it in either .NET or .NET Framework: https://stackoverflow.com/a/48885500/13343799
-# - So, while `EasyPost` targets .NET Standard 2.0, `EasyPost.Tests`, the code we're actually executing, targets .NET Framework 4.6.2
+# - So, while `EasyPost` targets .NET Standard 2.0, `EasyPost.Tests`, the code we're actually executing, targets .NET Framework 4.7.2
 # - By extension, this is ensuring we are testing that the `EasyPost` source code can run in a .NET Framework environment
