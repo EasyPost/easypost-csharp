@@ -231,8 +231,8 @@ jobs:
       - name: Set up dotnet tools and dependencies
         run: make install
 
-      - name: Build Project
-        run: make build-fw fw=net462
+      - name: Restore NuGet Packages
+        run: make restore
 
         # Run the compatibility tests
       - name: Run Tests
