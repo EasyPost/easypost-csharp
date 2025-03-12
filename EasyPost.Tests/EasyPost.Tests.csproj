@@ -1,18 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
-
     <IsPackable>false</IsPackable>
-
     <Configurations>Release;Debug</Configurations>
-
     <Platforms>AnyCPU</Platforms>
-
-    <RootNamespace>EasyPost.Tests</RootNamespace>
-
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RootNamespace>EasyPost.Tests</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
