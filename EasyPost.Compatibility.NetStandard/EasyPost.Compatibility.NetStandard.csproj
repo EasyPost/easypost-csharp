@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net462;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+    <TargetFramework>net462</TargetFramework>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <RootNamespace>EasyPost.Compatibility.NetStandard</RootNamespace>
   </PropertyGroup>
@@ -17,6 +17,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="NETStandard.Library" Version="2.0.3" />
   </ItemGroup>
 
 </Project>
