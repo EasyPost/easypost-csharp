@@ -26,7 +26,7 @@ namespace EasyPost.Models.API
         public string? Url { get; set; }
 
         /// <summary>
-        ///     custom headers
+        ///     custom headers.
         /// </summary>
         [JsonProperty("custom_headers")]
         public List<WebhookCustomHeader>? CustomHeaders { get; set; }

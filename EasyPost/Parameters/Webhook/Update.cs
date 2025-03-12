@@ -20,7 +20,9 @@ namespace EasyPost.Parameters.Webhook
         [TopLevelRequestParameter(Necessity.Optional, "webhook_secret")]
         public string? Secret { get; set; }
 
-
+        /// <summary>
+        ///     custom headers.
+        /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "custom_headers")]
         public List<WebhookCustomHeader>? CustomHeaders { get; set; }
 
