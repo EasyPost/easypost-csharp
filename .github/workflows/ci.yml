@@ -192,7 +192,7 @@ jobs:
         uses: NuGet/setup-nuget@v2
 
       - name: Setup VSTest
-        uses: darenm/Setup-VSTest@v1.2
+        uses: darenm/Setup-VSTest@v1.3
 
       - name: Restore NuGet Packages
         run: make restore
@@ -225,14 +225,14 @@ jobs:
         uses: NuGet/setup-nuget@v2
 
       - name: Setup VSTest
-        uses: darenm/Setup-VSTest@v1.2
+        uses: darenm/Setup-VSTest@v1.3
 
         # Pull in fixtures submodule
       - name: Set up dotnet tools and dependencies
         run: make install
 
-      - name: Build Project
-        run: make build
+      - name: Restore NuGet Packages
+        run: make restore
 
         # Run the compatibility tests
       - name: Run Tests
@@ -257,7 +257,7 @@ jobs:
         uses: NuGet/setup-nuget@v2
 
       - name: Setup VSTest
-        uses: darenm/Setup-VSTest@v1.2
+        uses: darenm/Setup-VSTest@v1.3
 
       - name: Restore NuGet Packages
         run: make restore
@@ -289,7 +289,7 @@ jobs:
         uses: NuGet/setup-nuget@v2
 
       - name: Setup VSTest
-        uses: darenm/Setup-VSTest@v1.2
+        uses: darenm/Setup-VSTest@v1.3
 
       - name: Restore NuGet Packages
         run: make restore
