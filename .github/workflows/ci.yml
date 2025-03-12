@@ -231,8 +231,8 @@ jobs:
       - name: Set up dotnet tools and dependencies
         run: make install
 
-      - name: Restore NuGet Packages
-        run: make restore
+      - name: Build Project
+        run: make build
 
         # Run the compatibility tests
       - name: Run Tests
