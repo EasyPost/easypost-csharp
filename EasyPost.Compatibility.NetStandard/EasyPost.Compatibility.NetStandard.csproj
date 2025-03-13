@@ -1,22 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <RootNamespace>EasyPost.Compatibility.NetStandard</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EasyPost\EasyPost.csproj" />
+    <Compile Include="NetStandardCompileTest.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="[17.3.0, 18.0.0)" />
+    <PackageReference Include="coverlet.collector" Version="[3.1.2, 4.0.0)">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="xunit" Version="[2.4.2, 3.0.0)" />
     <PackageReference Include="xunit.runner.visualstudio" Version="[2.4.5, 3.0.0)">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472' OR '$(TargetFramework)' == 'net48' OR '$(TargetFramework)' == 'net481'">
+    <Reference Include="EasyPost">
+      <HintPath>..\EasyPost\bin\$(Configuration)\netstandard2.0\EasyPost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'net472' AND '$(TargetFramework)' != 'net48' AND '$(TargetFramework)' != 'net481'">
+    <Reference Include="EasyPost">
+      <HintPath>..\EasyPost\bin\$(Configuration)\$(TargetFramework)\EasyPost.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

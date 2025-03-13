@@ -1,7 +1,13 @@
 {
   "version": 1,
   "dependencies": {
-    ".NETFramework,Version=v4.7.2": {
+    ".NETStandard,Version=v2.0": {
+      "coverlet.collector": {
+        "type": "Direct",
+        "requested": "[3.1.2, 4.0.0)",
+        "resolved": "3.1.2",
+        "contentHash": "wuLDIDKD5XMt0A7lE31JPenT7QQwZPFkP5rRpdJeblyXZ9MGLI8rYjvm5fvAKln+2/X+4IxxQDxBtwdrqKNLZw=="
+      },
       "Microsoft.NET.Test.Sdk": {
         "type": "Direct",
         "requested": "[17.3.0, 18.0.0)",
@@ -11,13 +17,13 @@
           "Microsoft.CodeCoverage": "17.3.0"
         }
       },
-      "Microsoft.NETFramework.ReferenceAssemblies": {
+      "NETStandard.Library": {
         "type": "Direct",
-        "requested": "[1.0.3, )",
-        "resolved": "1.0.3",
-        "contentHash": "vUc9Npcs14QsyOD01tnv/m8sQUnGTGOw1BCmKcv77LBJY7OxhJ+zJF7UD/sCL3lYNFuqmQEVlkfS4Quif6FyYg==",
+        "requested": "[2.0.3, )",
+        "resolved": "2.0.3",
+        "contentHash": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
         "dependencies": {
-          "Microsoft.NETFramework.ReferenceAssemblies.net472": "1.0.3"
+          "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
       "xunit": {
@@ -42,15 +48,10 @@
         "resolved": "17.3.0",
         "contentHash": "/xxz+e29F2V5pePtInjbLffoqWVTm60KCX87vSj2laNboeWq65WFJ634fGtBcMZO3VEfOmh9/XcoWEfLlWWG+g=="
       },
-      "Microsoft.NETFramework.ReferenceAssemblies.net472": {
+      "Microsoft.NETCore.Platforms": {
         "type": "Transitive",
-        "resolved": "1.0.3",
-        "contentHash": "0E7evZXHXaDYYiLRfpyXvCh+yzM2rNTyuZDI+ZO7UUqSc6GfjePiXTdqJGtgIKUwdI81tzQKmaWprnUiPj9hAw=="
-      },
-      "Newtonsoft.Json": {
-        "type": "Transitive",
-        "resolved": "13.0.1",
-        "contentHash": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A=="
+        "resolved": "1.1.0",
+        "contentHash": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A=="
       },
       "xunit.abstractions": {
         "type": "Transitive",
@@ -65,7 +66,10 @@
       "xunit.assert": {
         "type": "Transitive",
         "resolved": "2.4.2",
-        "contentHash": "pxJISOFjn2XTTi1mcDCkRZrTFb9OtRRCtx2kZFNF51GdReLr1ls2rnyxvAS4JO247K3aNtflvh5Q0346K5BROA=="
+        "contentHash": "pxJISOFjn2XTTi1mcDCkRZrTFb9OtRRCtx2kZFNF51GdReLr1ls2rnyxvAS4JO247K3aNtflvh5Q0346K5BROA==",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        }
       },
       "xunit.core": {
         "type": "Transitive",
@@ -81,6 +85,7 @@
         "resolved": "2.4.2",
         "contentHash": "W1BoXTIN1C6kpVSMw25huSet25ky6IAQUNovu3zGOGN/jWnbgSoTyCrlIhmXSg0tH5nEf8q7h3OjNHOjyu5PfA==",
         "dependencies": {
+          "NETStandard.Library": "1.6.1",
           "xunit.abstractions": "2.0.3"
         }
       },
@@ -89,13 +94,8 @@
         "resolved": "2.4.2",
         "contentHash": "CZmgcKkwpyo8FlupZdWpJCryrAOWLh1FBPG6gmVZuPQkGQsim/oL4PcP4nfrC2hHgXUFtluvaJ0Sp9PQKUMNpg==",
         "dependencies": {
+          "NETStandard.Library": "1.6.1",
           "xunit.extensibility.core": "[2.4.2]"
-        }
-      },
-      "easypost": {
-        "type": "Project",
-        "dependencies": {
-          "Newtonsoft.Json": "[13.0.1, 14.0.0)"
         }
       }
     }
