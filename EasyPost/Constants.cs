@@ -20,7 +20,6 @@ namespace EasyPost
         {
             // 1xx status codes are usually HTTP process-related, not server-related
             // (mostly) everything else is related to the server being interacted with: https://httpwg.org/specs/rfc9110.html#rfc.section.15.5
-            { 0, typeof(ConnectionError) }, // RestSharp returns status code 0 when a connection cannot be established (i.e. no internet access)
             { 100, typeof(UnknownHttpError) },
             { 101, typeof(UnknownHttpError) },
             { 102, typeof(UnknownHttpError) },
