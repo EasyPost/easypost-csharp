@@ -1,4 +1,6 @@
 # CHANGELOG
+# v6.10.0 (2025-03-11)
+- Add custom webhook headers
 
 # v6.9.0 (2024-11-19)
 

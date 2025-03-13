@@ -116,7 +116,7 @@ namespace EasyPost.Integration.Utilities
                     Censors = censors,
                     SimulateDelay = false,
                     ManualDelay = 0,
-                    ValidTimeFrame = TimeFrame.Months6,
+                    ValidTimeFrame = TimeFrame.Months12,
                     WhenExpired = ExpirationActions.Warn
                 };
                 _vcr = new EasyVCR.VCR(advancedSettings);
@@ -151,7 +151,7 @@ namespace EasyPost.Integration.Utilities
                 // set up cassette
                 Cassette cassette = new(_testCassettesFolder, cassetteName, new CassetteOrder.Alphabetical());
 
-                // add cassette to vcr  
+                // add cassette to vcr
                 _vcr.Insert(cassette);
 
                 string filePath = Path.Combine(_testCassettesFolder, cassetteName + ".json");

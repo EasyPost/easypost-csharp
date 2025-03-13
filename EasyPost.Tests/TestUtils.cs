@@ -127,7 +127,7 @@ namespace EasyPost.Tests._Utilities
                     Censors = censors,
                     SimulateDelay = false,
                     ManualDelay = 0,
-                    ValidTimeFrame = TimeFrame.Months6,
+                    ValidTimeFrame = TimeFrame.Months12,
                     WhenExpired = ExpirationActions.Warn
                 };
                 _vcr = new EasyVCR.VCR(advancedSettings);

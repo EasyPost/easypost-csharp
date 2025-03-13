@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using EasyPost._base;
 using Newtonsoft.Json;
 
@@ -23,6 +24,12 @@ namespace EasyPost.Models.API
         /// </summary>
         [JsonProperty("url")]
         public string? Url { get; set; }
+
+        /// <summary>
+        ///     custom headers.
+        /// </summary>
+        [JsonProperty("custom_headers")]
+        public List<WebhookCustomHeader>? CustomHeaders { get; set; }
 
         #endregion
 

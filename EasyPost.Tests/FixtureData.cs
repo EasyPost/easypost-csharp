@@ -64,14 +64,8 @@ namespace EasyPost.Tests._Utilities
         [JsonProperty("users")]
         public Users Users { get; set; }
 
-        [JsonProperty("webhook_hmac_signature")]
-        public string WebhookHmacSignature { get; set; }
-
-        [JsonProperty("webhook_secret")]
-        public string WebhookSecret { get; set; }
-
-        [JsonProperty("webhook_url")]
-        public string WebhookUrl { get; set; }
+        [JsonProperty("webhooks")]
+        public Webhooks Webhooks { get; set; }
 
         #endregion
     }
@@ -289,6 +283,25 @@ namespace EasyPost.Tests._Utilities
 
         [JsonProperty("referral")]
         public Dictionary<string, object> Referral { get; set; }
+
+        #endregion
+    }
+
+    public class Webhooks
+    {
+        #region JSON Properties
+
+        [JsonProperty("hmac_signature")]
+        public string HmacSignature { get; set; }
+
+        [JsonProperty("secret")]
+        public string Secret { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("custom_headers")]
+        public List<object> CustomHeaders { get; set; }
 
         #endregion
     }

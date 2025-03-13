@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FRAMEWORK="net7.0"
+FRAMEWORK="net9.0"
 
 THRESHOLD=$1
 THRESHOLD_TYPE=line
