@@ -10199,6 +10199,19 @@ references:
   commentId: T:EasyPost.Models.API.Webhook
   fullName: EasyPost.Models.API.Webhook
   nameWithType: Webhook
+- uid: EasyPost.Models.API.Webhook.CustomHeaders
+  name: CustomHeaders
+  href: api/EasyPost.Models.API.Webhook.html#EasyPost_Models_API_Webhook_CustomHeaders
+  commentId: P:EasyPost.Models.API.Webhook.CustomHeaders
+  fullName: EasyPost.Models.API.Webhook.CustomHeaders
+  nameWithType: Webhook.CustomHeaders
+- uid: EasyPost.Models.API.Webhook.CustomHeaders*
+  name: CustomHeaders
+  href: api/EasyPost.Models.API.Webhook.html#EasyPost_Models_API_Webhook_CustomHeaders_
+  commentId: Overload:EasyPost.Models.API.Webhook.CustomHeaders
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Webhook.CustomHeaders
+  nameWithType: Webhook.CustomHeaders
 - uid: EasyPost.Models.API.Webhook.DisabledAt
   name: DisabledAt
   href: api/EasyPost.Models.API.Webhook.html#EasyPost_Models_API_Webhook_DisabledAt
@@ -10225,6 +10238,38 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Webhook.Url
   nameWithType: Webhook.Url
+- uid: EasyPost.Models.API.WebhookCustomHeader
+  name: WebhookCustomHeader
+  href: api/EasyPost.Models.API.WebhookCustomHeader.html
+  commentId: T:EasyPost.Models.API.WebhookCustomHeader
+  fullName: EasyPost.Models.API.WebhookCustomHeader
+  nameWithType: WebhookCustomHeader
+- uid: EasyPost.Models.API.WebhookCustomHeader.Name
+  name: Name
+  href: api/EasyPost.Models.API.WebhookCustomHeader.html#EasyPost_Models_API_WebhookCustomHeader_Name
+  commentId: P:EasyPost.Models.API.WebhookCustomHeader.Name
+  fullName: EasyPost.Models.API.WebhookCustomHeader.Name
+  nameWithType: WebhookCustomHeader.Name
+- uid: EasyPost.Models.API.WebhookCustomHeader.Name*
+  name: Name
+  href: api/EasyPost.Models.API.WebhookCustomHeader.html#EasyPost_Models_API_WebhookCustomHeader_Name_
+  commentId: Overload:EasyPost.Models.API.WebhookCustomHeader.Name
+  isSpec: "True"
+  fullName: EasyPost.Models.API.WebhookCustomHeader.Name
+  nameWithType: WebhookCustomHeader.Name
+- uid: EasyPost.Models.API.WebhookCustomHeader.Value
+  name: Value
+  href: api/EasyPost.Models.API.WebhookCustomHeader.html#EasyPost_Models_API_WebhookCustomHeader_Value
+  commentId: P:EasyPost.Models.API.WebhookCustomHeader.Value
+  fullName: EasyPost.Models.API.WebhookCustomHeader.Value
+  nameWithType: WebhookCustomHeader.Value
+- uid: EasyPost.Models.API.WebhookCustomHeader.Value*
+  name: Value
+  href: api/EasyPost.Models.API.WebhookCustomHeader.html#EasyPost_Models_API_WebhookCustomHeader_Value_
+  commentId: Overload:EasyPost.Models.API.WebhookCustomHeader.Value
+  isSpec: "True"
+  fullName: EasyPost.Models.API.WebhookCustomHeader.Value
+  nameWithType: WebhookCustomHeader.Value
 - uid: EasyPost.Models.Shared
   name: EasyPost.Models.Shared
   href: api/EasyPost.Models.Shared.html
@@ -16347,6 +16392,19 @@ references:
   commentId: T:EasyPost.Parameters.Webhook.Create
   fullName: EasyPost.Parameters.Webhook.Create
   nameWithType: Create
+- uid: EasyPost.Parameters.Webhook.Create.CustomHeaders
+  name: CustomHeaders
+  href: api/EasyPost.Parameters.Webhook.Create.html#EasyPost_Parameters_Webhook_Create_CustomHeaders
+  commentId: P:EasyPost.Parameters.Webhook.Create.CustomHeaders
+  fullName: EasyPost.Parameters.Webhook.Create.CustomHeaders
+  nameWithType: Create.CustomHeaders
+- uid: EasyPost.Parameters.Webhook.Create.CustomHeaders*
+  name: CustomHeaders
+  href: api/EasyPost.Parameters.Webhook.Create.html#EasyPost_Parameters_Webhook_Create_CustomHeaders_
+  commentId: Overload:EasyPost.Parameters.Webhook.Create.CustomHeaders
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Webhook.Create.CustomHeaders
+  nameWithType: Create.CustomHeaders
 - uid: EasyPost.Parameters.Webhook.Create.Secret
   name: Secret
   href: api/EasyPost.Parameters.Webhook.Create.html#EasyPost_Parameters_Webhook_Create_Secret
@@ -16379,6 +16437,19 @@ references:
   commentId: T:EasyPost.Parameters.Webhook.Update
   fullName: EasyPost.Parameters.Webhook.Update
   nameWithType: Update
+- uid: EasyPost.Parameters.Webhook.Update.CustomHeaders
+  name: CustomHeaders
+  href: api/EasyPost.Parameters.Webhook.Update.html#EasyPost_Parameters_Webhook_Update_CustomHeaders
+  commentId: P:EasyPost.Parameters.Webhook.Update.CustomHeaders
+  fullName: EasyPost.Parameters.Webhook.Update.CustomHeaders
+  nameWithType: Update.CustomHeaders
+- uid: EasyPost.Parameters.Webhook.Update.CustomHeaders*
+  name: CustomHeaders
+  href: api/EasyPost.Parameters.Webhook.Update.html#EasyPost_Parameters_Webhook_Update_CustomHeaders_
+  commentId: Overload:EasyPost.Parameters.Webhook.Update.CustomHeaders
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Webhook.Update.CustomHeaders
+  nameWithType: Update.CustomHeaders
 - uid: EasyPost.Parameters.Webhook.Update.Secret
   name: Secret
   href: api/EasyPost.Parameters.Webhook.Update.html#EasyPost_Parameters_Webhook_Update_Secret
