@@ -227,7 +227,7 @@ jobs:
         run: make install
 
       - name: Restore NuGet Packages
-        run: make restore
+        run: make restore build
 
         # Run the compatibility tests
       - name: Run Tests
