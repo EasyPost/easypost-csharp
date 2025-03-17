@@ -1,10 +1,9 @@
 # CHANGELOG
-# v6.10.0 (2025-03-11)
-- Add custom webhook headers
 
 ## Next Release
 
 - Minimum .NET Framework is now v4.7.2
+- Add custom webhook headers when creating/updating a webhook
 
 ## v6.9.0 (2024-11-19)
 
