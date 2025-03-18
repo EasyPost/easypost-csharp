@@ -606,6 +606,12 @@ namespace EasyPost.Models.API
         [JsonProperty("machinable")]
         public string? Machinable { get; set; }
 
+        /// <summary>
+        ///     This is a required field for DHL eCommerce shipments and should be the merchant's name. It will be displayed on the shipping label and associated with the shipment throughout transit.
+        /// </summary>
+        [JsonProperty("merchant_id")]
+        public string? MerchantId { get; set; }
+
         [JsonProperty("neutral_delivery")]
         public bool? NeutralDelivery { get; set; }
 

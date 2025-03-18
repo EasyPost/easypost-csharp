@@ -3,7 +3,8 @@
 ## Next Release
 
 - Minimum .NET Framework is now v4.7.2
-- Add custom webhook headers when creating/updating a webhook
+- Adds custom webhook headers when creating/updating a webhook
+- Adds `MerchantId` as Shipment option (closes #592)
 - Remove previously-marked obsolete parameter, functions and classes:
   - `EasyPost.Models.API.DeliveryDateForZipPairEstimate.EasyPostTimeInTransitData` property (use `EasyPost.Models.API.DeliveryDateForZipPairEstimate.TimeInTransitDetails` instead)
   - `EasyPost.Models.API.Options.BillReceiverAccount` property (use `EasyPost.Models.API.Options.Payment` instead)
