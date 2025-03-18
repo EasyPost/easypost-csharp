@@ -1,13 +1,16 @@
 # CHANGELOG
-# v6.10.0 (2025-03-11)
-- Add custom webhook headers
 
-# v6.9.0 (2024-11-19)
+## Next Release
+
+- Minimum .NET Framework is now v4.7.2
+- Add custom webhook headers when creating/updating a webhook
+
+## v6.9.0 (2024-11-19)
 
 - Add missing `CheckDeliveryAddress` parameter for `Claim.Create` parameter set
 - Handle enums when running parameter interdependency checks
 
-# v6.8.1 (2024-10-31)
+## v6.8.1 (2024-10-31)
 
 - Fixes HTTP query parameter serialization bug causing `TrackingCodes` to be ignored when listing trackers
 

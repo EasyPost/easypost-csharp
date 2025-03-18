@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request: ~
   workflow_dispatch: ~
 
@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x.x
 
@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x.x
 
@@ -49,7 +49,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x.x
 
@@ -65,7 +65,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x.x
 
@@ -100,7 +100,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x.x
 
@@ -124,13 +124,8 @@ jobs:
       EASYPOST_PROD_API_KEY: "123"
     strategy:
       matrix:
-        name: [ 'NetStandard20', 'Net60', 'Net70', 'Net80', 'Net90' ]
+        name: ["Net60", "Net70", "Net80", "Net90"]
         include:
-          - name: NetStandard20
-            # can't run tests on .NET Standard, it's just a bridge between .NET Framework and .NET.
-            # So we'll target .NET Framework 4.6.2
-            # More notes at the bottom of this file
-            framework: net462
           - name: Net60
             framework: net6.0
           - name: Net70
@@ -145,7 +140,7 @@ jobs:
           submodules: true
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
             6.x.x
@@ -154,13 +149,13 @@ jobs:
             9.x.x
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.1.2
+        uses: microsoft/setup-msbuild@v2
 
       - name: Setup Nuget
-        uses: NuGet/setup-nuget@v1.1.1
+        uses: NuGet/setup-nuget@v2
 
       - name: Load NuGet package cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ matrix.framework }}-${{ hashFiles('**/packages.lock.json') }}
@@ -186,18 +181,18 @@ jobs:
           submodules: true
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x.x
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.1.2
+        uses: microsoft/setup-msbuild@v2
 
       - name: Setup Nuget
-        uses: NuGet/setup-nuget@v1.1.1
+        uses: NuGet/setup-nuget@v2
 
       - name: Setup VSTest
-        uses: darenm/Setup-VSTest@v1.2
+        uses: darenm/Setup-VSTest@v1.3
 
       - name: Restore NuGet Packages
         run: make restore
@@ -208,7 +203,35 @@ jobs:
 
         # Run the integration tests
       - name: Run Tests
-        run: make integration-test fw=net9.0  # Always run integration tests on the latest framework
+        run: make integration-test fw=net9.0 # Always run integration tests on the latest framework
+
+  # See notes at the bottom of this file for more info on NetStandard compatibility tests
+  NetStandard_Compatibility_Tests:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Setup Nuget
+        uses: NuGet/setup-nuget@v2
+
+      - name: Setup VSTest
+        uses: darenm/Setup-VSTest@v1.3
+
+        # Pull in fixtures submodule
+      - name: Set up dotnet tools and dependencies
+        run: make install
+
+      - name: Restore NuGet Packages
+        run: make restore build
+
+        # Run the compatibility tests
+      - name: Run Tests
+        run: make netstandard-compat-test fw=net472
 
   FSharp_Compatibility_Tests:
     runs-on: windows-2022
@@ -218,18 +241,18 @@ jobs:
           submodules: true
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x.x
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.1.2
+        uses: microsoft/setup-msbuild@v2
 
       - name: Setup Nuget
-        uses: NuGet/setup-nuget@v1.1.1
+        uses: NuGet/setup-nuget@v2
 
       - name: Setup VSTest
-        uses: darenm/Setup-VSTest@v1.2
+        uses: darenm/Setup-VSTest@v1.3
 
       - name: Restore NuGet Packages
         run: make restore
@@ -240,29 +263,28 @@ jobs:
 
         # Run the compatibility tests
       - name: Run Tests
-        run: make fs-compat-test fw=net9.0  # Always run compatibility tests on the latest framework
+        run: make fs-compat-test fw=net9.0 # Always run compatibility tests on the latest framework
 
   Visual_Basic_Compatibility_Test:
     runs-on: windows-2022
     steps:
-
       - uses: actions/checkout@v4
         with:
           submodules: true
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x.x
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.1.2
+        uses: microsoft/setup-msbuild@v2
 
       - name: Setup Nuget
-        uses: NuGet/setup-nuget@v1.1.1
+        uses: NuGet/setup-nuget@v2
 
       - name: Setup VSTest
-        uses: darenm/Setup-VSTest@v1.2
+        uses: darenm/Setup-VSTest@v1.3
 
       - name: Restore NuGet Packages
         run: make restore
@@ -273,15 +295,13 @@ jobs:
 
         # Run the compatibility tests
       - name: Run Tests
-        run: make vb-compat-test fw=net9.0  # Always run compatibility tests on the latest framework
-
+        run: make vb-compat-test fw=net9.0 # Always run compatibility tests on the latest framework
 
 # .NET Standard notes:
 # - NET Standard 2.0 is compatible with minimum .NET Framework 4.6.1: https://docs.microsoft.com/en-us/dotnet/standard/net-standard?tabs=net-standard-2-0
-# - NET Framework 4.6.1 is EOL after April 26, 2022, due to its security concerns (was affected by the SHA-1 crack): https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-framework
-# - GitHub's Windows 2022 runner only supports minimum .NET Framework 4.6.2 anyway: https://github.com/actions/virtual-environments/issues/5055#issuecomment-1040757930
+# - GitHub's Windows 2022 runner only supports minimum .NET Framework 4.7.2 anyway: https://github.com/actions/virtual-environments/issues/5055#issuecomment-1040757930
 # - .NET Standard is not a framework, but a set of shared APIs between the old .NET Framework and new .NET/.NET Core
 # - `EasyPost` targets .NET Standard 2.0, meaning it is compatible with specific versions of both .NET and .NET Framework: https://docs.microsoft.com/en-us/dotnet/standard/net-standard?tabs=net-standard-2-0
 # - When you want to actually run code, however, you can't run it in .NET Standard. You have to run it in either .NET or .NET Framework: https://stackoverflow.com/a/48885500/13343799
-# - So, while `EasyPost` targets .NET Standard 2.0, `EasyPost.Tests`, the code we're actually executing, targets .NET Framework 4.6.2
+# - So, while `EasyPost` targets .NET Standard 2.0, `EasyPost.Compatibility.NetStandard`, the code we're actually executing, targets .NET Framework 4.7.2
 # - By extension, this is ensuring we are testing that the `EasyPost` source code can run in a .NET Framework environment

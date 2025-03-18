@@ -112,13 +112,14 @@ namespace EasyPost.Utilities.Internal
             ///     Gets the architecture of the operating system.
             /// </summary>
             /// <returns>Architecture of the operating system.</returns>
-            internal static string Architecture =>
-#if NET462
+            internal static string Architecture
+            {
+#if NET472
                     // Sorry, Windows ARM users (if you exist), best we can do is determine if we are running on a 64-bit or 32-bit
-                    return Environment.Is64BitOperatingSystem ? "x64" : "x86";
+                    get => Environment.Is64BitOperatingSystem ? "x64" : "x86";
 #else
 #pragma warning disable IDE0072 // Disable to avoid unnecessary enums on specific .NET versions
-                RuntimeInformation.OSArchitecture switch
+                get => RuntimeInformation.OSArchitecture switch
 #pragma warning restore IDE0072
                 {
                     System.Runtime.InteropServices.Architecture.Arm => "arm",
@@ -129,6 +130,7 @@ namespace EasyPost.Utilities.Internal
                 };
 #endif
 
+            }
         }
     }
 }

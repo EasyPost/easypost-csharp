@@ -94,7 +94,7 @@ namespace EasyPost.Tests._Utilities
                 // ReSharper disable once RedundantAssignment
                 // ReSharper disable once ConvertToConstant.Local
                 string netVersion = "net";
-#if NET462
+#if NET472
                 netVersion = "netstandard";
 #endif
 

@@ -26,11 +26,11 @@ clean:
 
 ## coverage - Generate coverage reports (unit tests, not integration) for the project
 coverage:
-	bash scripts/unix/generate_test_reports.sh
+	./scripts/unix/generate_test_reports.sh
 
 ## coverage-check - Check if the coverage is above the minimum threshold
 coverage-check:
-	bash scripts/unix/check_coverage.sh 85
+	./scripts/unix/check_coverage.sh 85
 
 ## docs - Generates library documentation
 docs:
@@ -99,7 +99,7 @@ setup-win:
 
 ## setup-unix - Install required .NET versions and tools (Unix only)
 setup-unix:
-	bash scripts/unix/setup.sh
+	./scripts/unix/setup.sh
 
 ## test - Run all tests in all projects (unit + integration + compatibility)
 ## EasyPost.Tests will run in all frameworks
@@ -137,4 +137,10 @@ fs-compat-test:
 vb-compat-test:
 	dotnet test EasyPost.Compatibility.VB/EasyPost.Compatibility.VB.vbproj -f ${fw} -restore
 
-.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format init-examples-submodule install-styleguide install-tools install lint lint-scripts release restore scan setup-win setup-unix test update-examples-submodule unit-test integration-test fs-compat-test vb-compat-test
+## netstandard-compat-test - Run the Net Standard compatibility tests for a specific framework
+## @parameters:
+## fw= - The framework to build for.
+netstandard-compat-test:
+	dotnet test EasyPost.Compatibility.NetStandard/EasyPost.Compatibility.NetStandard.csproj -f ${fw} -restore
+
+.PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format init-examples-submodule install-styleguide install-tools install lint lint-scripts release restore scan setup-win setup-unix test update-examples-submodule unit-test integration-test fs-compat-test vb-compat-test netstandard-compat-test
