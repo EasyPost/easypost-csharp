@@ -60,7 +60,7 @@ jobs:
         run: make scan
 
   Coverage_Requirements:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -77,7 +77,7 @@ jobs:
 
   Upload_Coverage_Report:
     if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -118,7 +118,7 @@ jobs:
 
   NET_Tests:
     # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
-    runs-on: windows-2022
+    runs-on: windows-latest
     env:
       EASYPOST_TEST_API_KEY: "123"
       EASYPOST_PROD_API_KEY: "123"
@@ -174,7 +174,7 @@ jobs:
         run: make unit-test fw=${{ matrix.framework }}
 
   Integration_Tests:
-    runs-on: windows-2022
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
         with:
@@ -234,7 +234,7 @@ jobs:
         run: make netstandard-compat-test fw=net472
 
   FSharp_Compatibility_Tests:
-    runs-on: windows-2022
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
         with:
@@ -266,7 +266,7 @@ jobs:
         run: make fs-compat-test fw=net9.0 # Always run compatibility tests on the latest framework
 
   Visual_Basic_Compatibility_Test:
-    runs-on: windows-2022
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
         with:

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.General;
 using EasyPost.Models.API;
@@ -88,9 +87,9 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             {
                 Assert.NotNull(estimate.Carrier);
                 Assert.NotNull(estimate.Service);
-                Assert.NotNull(estimate.EasyPostTimeInTransitData);
-                Assert.NotNull(estimate.EasyPostTimeInTransitData.DaysInTransit);
-                Assert.NotNull(estimate.EasyPostTimeInTransitData.DaysInTransit.Percentile75);
+                Assert.NotNull(estimate.TimeInTransitDetails);
+                Assert.NotNull(estimate.TimeInTransitDetails.DaysInTransit);
+                Assert.NotNull(estimate.TimeInTransitDetails.DaysInTransit.Percentile75);
             }
         }
 

@@ -4,6 +4,24 @@
 
 - Minimum .NET Framework is now v4.7.2
 - Add custom webhook headers when creating/updating a webhook
+- Remove previously-marked obsolete parameter, functions and classes:
+  - `EasyPost.Models.API.DeliveryDateForZipPairEstimate.EasyPostTimeInTransitData` property (use `EasyPost.Models.API.DeliveryDateForZipPairEstimate.TimeInTransitDetails` instead)
+  - `EasyPost.Models.API.Options.BillReceiverAccount` property (use `EasyPost.Models.API.Options.Payment` instead)
+  - `EasyPost.Models.API.Options.BillReceiverPostalCode` property (use `EasyPost.Models.API.Options.Payment` instead)
+  - `EasyPost.Models.API.Options.BillThirdPartyAccount` property (use `EasyPost.Models.API.Options.Payment` instead)
+  - `EasyPost.Models.API.Options.BillThirdPartyCountry` property (use `EasyPost.Models.API.Options.Payment` instead)
+  - `EasyPost.Models.API.Options.BillThirdPartyPostalCode` property (use `EasyPost.Models.API.Options.Payment` instead)
+  - `EasyPost.Models.API.Rate.EstDeliveryDays` property (use `EasyPost.Models.API.Rate.DeliveryDays` instead)
+  - `EasyPost.Models.API.SmartRate.EstDeliveryDays` property (use `EasyPost.Models.API.SmartRate.DeliveryDays` instead)
+  - `EasyPost.Models.API.RateWithEstimatedDeliveryDate.EasyPostTimeInTransitData` property (use `EasyPost.Models.API.RateWithEstimatedDeliveryDate.TimeInTransitDetails` instead)
+  - `EasyPost.Models.API.RecommendShipDateForShipmentResult.EasyPostTimeInTransitData` property (use `EasyPost.Models.API.RecommendShipDateForShipmentResult.TimeInTransitDetails` instead)
+  - `EasyPost.Models.API.ShipDateForZipPairRecommendation.EasyPostTimeInTransitData` property (use `EasyPost.Models.API.ShipDateForZipPairRecommendation.TimeInTransitDetails` instead)
+  - `EasyPost.Models.API.Tracker.TrackingUpdatedAt` property (use `EasyPost.Models.API.Tracker.UpdatedAt` instead)
+  - `EasyPost.Models.API.TimeInTransitDetails` class (use `EasyPost.Models.API.TimeInTransitDetailsForDeliveryDateEstimate` instead)
+  - `EasyPost.Parameters.Tracker.All.TrackingCode` property (use `EasyPost.Parameters.Tracker.All.TrackingCodes` instead)
+  - `EasyPost.Parameters.Tracker.CreateList` class (related function was removed in v6.8.0)
+  - `EasyPost.Constants.CarrierAccounts.FedExAccount` variable (use `EasyPost.Models.API.CarrierAccountType.FedEx` instead)
+  - `EasyPost.Constants.CarrierAccounts.UpsAccount` variable (use `EasyPost.Models.API.CarrierAccountType.Ups` instead)
 
 ## v6.9.0 (2024-11-19)
 

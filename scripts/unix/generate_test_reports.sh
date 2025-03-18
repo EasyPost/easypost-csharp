@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FRAMEWORK="net7.0"
+FRAMEWORK="net9.0"
 
 # Navigate to the test folder
 TEST_FOLDER="EasyPost.Tests"
@@ -16,15 +16,15 @@ rm -rf "$RESULTS_FOLDER"
 dotnet test --collect:"XPlat Code Coverage" -f $FRAMEWORK
 
 # install reportgenerator if not already installed
-dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.1.10 || true # exit 0 will kill the script, not what we want
+dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.4.4 || true # exit 0 will kill the script, not what we want
 
 # check reportgenerator is available
 set -- dotnet reportgenerator
 for req in "$@"; do
-    if ! command -v "$req" >/dev/null 2>&1; then
-        echo "$req could not be found"
-        exit
-    fi
+  if ! command -v "$req" >/dev/null 2>&1; then
+    echo "$req could not be found"
+    exit
+  fi
 done
 
 COVERAGE_REPORT_FOLDER="../coveragereport"

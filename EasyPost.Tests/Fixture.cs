@@ -64,7 +64,7 @@ namespace EasyPost.Tests._Utilities
             {
                 Dictionary<string, object> fixture = GetFixtureStructure().Pickups.Basic;
 
-                const string pickupDate = "2024-08-21";
+                const string pickupDate = "2025-03-19";
 
                 fixture!.AddOrUpdate(pickupDate, "min_datetime");
                 fixture!.AddOrUpdate(pickupDate, "max_datetime");
@@ -178,8 +178,6 @@ namespace EasyPost.Tests._Utilities
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
                         AfterId = fixture.GetOrNull<string>("after_id"),
-                        StartDatetime = fixture.GetOrNull<string>("start_datetime"),
-                        EndDatetime = fixture.GetOrNull<string>("end_datetime"),
                     };
                 }
             }
@@ -597,8 +595,6 @@ namespace EasyPost.Tests._Utilities
                         PageSize = fixture.GetOrNullInt("page_size"),
                         BeforeId = fixture.GetOrNull<string>("before_id"),
                         AfterId = fixture.GetOrNull<string>("after_id"),
-                        StartDatetime = fixture.GetOrNull<string>("start_datetime"),
-                        EndDatetime = fixture.GetOrNull<string>("end_datetime"),
                     };
                 }
             }
@@ -793,7 +789,6 @@ namespace EasyPost.Tests._Utilities
                     return new ParameterSets.User.AllChildren
                     {
                         PageSize = fixture.GetOrNullInt("page_size"),
-                        BeforeId = fixture.GetOrNull<string>("before_id"),
                         AfterId = fixture.GetOrNull<string>("after_id"),
                     };
                 }
