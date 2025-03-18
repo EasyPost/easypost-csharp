@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Attributes;
@@ -27,24 +26,10 @@ namespace EasyPost.Parameters.ReferralCustomer
         public string? BeforeId { get; set; }
 
         /// <summary>
-        ///     Only return records created before this timestamp. Defaults to 1 month ago, or 1 month before a passed <see cref="StartDatetime"/>.
-        /// </summary>
-        [Obsolete("This parameter is not supported by the API.")]
-        [TopLevelRequestParameter(Necessity.Optional, "end_datetime")]
-        public string? EndDatetime { get; set; }
-
-        /// <summary>
         ///     The number of records to return on each page. The maximum value is 100, and default is 20.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "page_size")]
         public int? PageSize { get; set; } = 20;
-
-        /// <summary>
-        ///     Only return records created after this timestamp. Defaults to 1 month ago, or 1 month before a passed <see cref="EndDatetime"/>.
-        /// </summary>
-        [Obsolete("This parameter is not supported by the API.")]
-        [TopLevelRequestParameter(Necessity.Optional, "start_datetime")]
-        public string? StartDatetime { get; set; }
 
         #endregion
 

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
@@ -320,10 +319,10 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             foreach (var rate in ratesWithEstimatedDeliveryDates)
             {
-                Assert.NotNull(rate.EasyPostTimeInTransitData);
-                Assert.NotNull(rate.EasyPostTimeInTransitData.EasyPostEstimatedDeliveryDate);
-                Assert.NotNull(rate.EasyPostTimeInTransitData.DaysInTransit);
-                Assert.NotNull(rate.EasyPostTimeInTransitData.PlannedShipDate);
+                Assert.NotNull(rate.TimeInTransitDetails);
+                Assert.NotNull(rate.TimeInTransitDetails.EasyPostEstimatedDeliveryDate);
+                Assert.NotNull(rate.TimeInTransitDetails.DaysInTransit);
+                Assert.NotNull(rate.TimeInTransitDetails.PlannedShipDate);
             }
         }
 

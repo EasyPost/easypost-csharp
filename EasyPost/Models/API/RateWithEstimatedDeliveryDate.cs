@@ -1,5 +1,4 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
 {
@@ -15,13 +14,6 @@ namespace EasyPost.Models.API
         /// </summary>
         [JsonProperty("rate")]
         public Rate? Rate { get; set; }
-
-        /// <summary>
-        ///     Estimated <see cref="TimeInTransitDetails"/> for the <see cref="Rate"/>.
-        ///     Deprecated: Use <see cref="TimeInTransitDetails"/> instead.
-        /// </summary>
-        [Obsolete("This property will be removed in a future version and replaced with TimeInTransitDetails.")]
-        public TimeInTransitDetails? EasyPostTimeInTransitData => this.TimeInTransitDetails?.AsDeprecatedTimeInTransitDetails();
 
         /// <summary>
         ///     Estimated <see cref="TimeInTransitDetailsForDeliveryDateEstimate"/> for the <see cref="Rate"/>.
