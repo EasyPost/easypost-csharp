@@ -108,9 +108,9 @@ test:
 	dotnet test
 
 ## unit-test - Run the unit tests for a specific framework
-# @parameters:
-# fw= - The framework to build for.
-# Always run unit tests in Debug mode to allow access to internal members
+## Always run unit tests in Debug mode to allow access to internal members
+## @parameters:
+## fw= - The framework to build for.
 unit-test:
 	dotnet test EasyPost.Tests/EasyPost.Tests.csproj -f ${fw} -c "Debug"
 
@@ -120,10 +120,11 @@ update-examples-submodule:
 	git submodule update --remote
 
 ## integration-test - Run the integration tests for a specific framework
+## Always run integration tests in Release mode to check the end-user experience
 ## @parameters:
 ## fw= - The framework to build for.
 integration-test:
-	dotnet test EasyPost.Integration/EasyPost.Integration.csproj -f ${fw} -c "Release" -restore # Always run integration tests in Release mode to check the end-user experience
+	dotnet test EasyPost.Integration/EasyPost.Integration.csproj -f ${fw} -c "Release" -restore
 
 ## fs-compat-test - Run the F# compatibility tests for a specific framework
 ## @parameters:
