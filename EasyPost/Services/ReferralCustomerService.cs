@@ -145,6 +145,102 @@ namespace EasyPost.Services
         }
 
         /// <summary>
+        ///     Add a credit card to EasyPost for a <see cref="ReferralCustomer"/> with a payment method ID from Stripe.
+        ///     This function requires the <see cref="ReferralCustomer"/>'s API key.
+        ///     <a href="https://docs.easypost.com/docs/users/billing#store-the-payment-method-with-easypost">Related API documentation</a>.
+        /// </summary>
+        /// <param name="referralApiKey">API key of the referral user.</param>
+        /// <param name="paymentMethodId">Payment method ID from Stripe.</param>
+        /// <param name="priority">Priority of the credit card (e.g., "primary" or "secondary").</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="PaymentMethod"/> object.</returns>
+        /// <exception cref="ApiError">When the request fails.</exception>
+        [CrudOperations.Update]
+        public async Task<PaymentMethod> AddCreditCardFromStripe(
+            string referralApiKey,
+            string paymentMethodId,
+            PaymentMethod.Priority priority,
+            CancellationToken cancellationToken = default)
+        {
+            Dictionary<string, object> creditCardParams = new()
+            {
+                { "payment_method_id", paymentMethodId },
+                { "priority", priority.ToString().ToLowerInvariant() },
+            };
+
+            Dictionary<string, object> parameters = new()
+            {
+                { "credit_card", creditCardParams },
+            };
+
+            // Temporarily switch to the referral user's API key
+            string originalApiKey = Client.ApiKeyInUse;
+            Client.ApiKeyInUse = referralApiKey;
+
+            try
+            {
+                return await Client.RequestAsync<PaymentMethod>(
+                    Method.Post,
+                    "credit_cards",
+                    ApiVersion.Current,
+                    cancellationToken,
+                    parameters);
+            }
+            finally
+            {
+                // Restore the original API key
+                Client.ApiKeyInUse = originalApiKey;
+            }
+        }
+
+        /// <summary>
+        ///     Add a bank account to EasyPost for a <see cref="ReferralCustomer"/>.
+        ///     This function requires the <see cref="ReferralCustomer"/>'s API key.
+        ///     <a href="https://docs.easypost.com/docs/users/billing#create-a-bank-account">Related API documentation</a>.
+        /// </summary>
+        /// <param name="referralApiKey">API key of the referral user.</param>
+        /// <param name="financialConnectionsId">Financial connections ID from Stripe.</param>
+        /// <param name="mandateData">Mandate data for the bank account.</param>
+        /// <param name="priority">Priority of the bank account (e.g., "primary" or "secondary").</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="PaymentMethod"/> object.</returns>
+        /// <exception cref="ApiError">When the request fails.</exception>
+        [CrudOperations.Update]
+        public async Task<PaymentMethod> AddBankAccountFromStripe(
+            string referralApiKey,
+            string financialConnectionsId,
+            Dictionary<string, object> mandateData,
+            PaymentMethod.Priority priority,
+            CancellationToken cancellationToken = default)
+        {
+            Dictionary<string, object> parameters = new()
+            {
+                { "financial_connections_id", financialConnectionsId },
+                { "mandate_data", mandateData },
+                { "priority", priority.ToString().ToLowerInvariant() },
+            };
+
+            // Temporarily switch to the referral user's API key
+            string originalApiKey = Client.ApiKeyInUse;
+            Client.ApiKeyInUse = referralApiKey;
+
+            try
+            {
+                return await Client.RequestAsync<PaymentMethod>(
+                    Method.Post,
+                    "bank_accounts",
+                    ApiVersion.Current,
+                    cancellationToken,
+                    parameters);
+            }
+            finally
+            {
+                // Restore the original API key
+                Client.ApiKeyInUse = originalApiKey;
+            }
+        }
+
+        /// <summary>
         ///     Update a <see cref="ReferralCustomer"/>'s email.
         ///     This function should be called against a <see cref="EasyPost.Client"/> configured with the white label partner's API key.
         ///     <a href="https://docs.easypost.com/docs/users/referral-customers#update-a-referralcustomer">Related API documentation</a>.

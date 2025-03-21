@@ -4,6 +4,11 @@
 
 - Minimum .NET Framework is now v4.7.2
 - Adds custom webhook headers when creating/updating a webhook
+- Adds the following functions to assist ReferralCustomer in adding credit cards and bank accounts:
+  - `Beta.ReferralCustomer.CreateCreditCardClientSecret`
+  - `Beta.ReferralCustomer.CreateBankAccountClientSecret`
+  - `ReferralCustomer.AddCreditCardFromStripe`
+  - `ReferralCustomer.AddBankAccountFromStripe`
 - Adds `MerchantId` as Shipment option (closes #592)
 - Remove previously-marked obsolete parameter, functions and classes:
   - `EasyPost.Models.API.DeliveryDateForZipPairEstimate.EasyPostTimeInTransitData` property (use `EasyPost.Models.API.DeliveryDateForZipPairEstimate.TimeInTransitDetails` instead)

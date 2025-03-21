@@ -79,6 +79,30 @@ namespace EasyPost.Tests.ServicesTests.Beta
             }
         }
 
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Function]
+        public async Task TestCreateCreditCardClientSecret()
+        {
+            UseVCR("create_credit_card_client_secret");
+
+            StripeClientSecret response = await Client.Beta.ReferralCustomer.CreateCreditCardClientSecret();
+
+            Assert.StartsWith("seti_", response.ClientSecret);
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Function]
+        public async Task TestCreateBankAccountClientSecret()
+        {
+            UseVCR("create_bank_account_client_secret");
+
+            StripeClientSecret response = await Client.Beta.ReferralCustomer.CreateBankAccountClientSecret();
+
+            Assert.StartsWith("fcsess_client_secret_", response.ClientSecret);
+        }
+
         #endregion
 
         #endregion

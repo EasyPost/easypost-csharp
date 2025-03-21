@@ -13,6 +13,9 @@ namespace EasyPost.Tests._Utilities
         [JsonProperty("addresses")]
         public Addresses Addresses { get; set; }
 
+        [JsonProperty("billing")]
+        public Billing Billing { get; set; }
+
         [JsonProperty("carrier_accounts")]
         public CarrierAccounts CarrierAccounts { get; set; }
 
@@ -82,6 +85,25 @@ namespace EasyPost.Tests._Utilities
 
         [JsonProperty("incorrect")]
         public Dictionary<string, object> IncorrectAddress { get; set; }
+
+        #endregion
+    }
+
+    public class Billing
+    {
+        #region JSON Properties
+
+        [JsonProperty("payment_method_id")]
+        public string PaymentMethodId { get; set; }
+
+        [JsonProperty("financial_connections_id")]
+        public string FinancialConnectionsId { get; set; }
+
+        [JsonProperty("mandate_data")]
+        public Dictionary<string, object> MandateData { get; set; }
+
+        [JsonProperty("priority")]
+        public string Priority { get; set; }
 
         #endregion
     }

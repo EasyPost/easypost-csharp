@@ -141,6 +141,56 @@ namespace EasyPost.Services.Beta
             return await RequestAsync<PaymentRefund>(Method.Post, "referral_customers/refunds", cancellationToken, parameters.ToDictionary(), overrideApiVersion: ApiVersion.Beta);
         }
 
+        /// <summary>
+        ///     Creates a client secret to use with Stripe when adding a credit card.
+        ///     <a href="https://docs.easypost.com/docs/users/billing#confirm-the-setupintents-via-stripejs">Related API documentation</a>.
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="StripeClientSecret"/> object containing the client secret.</returns>
+        /// <exception cref="ApiError">When the request fails.</exception>
+        [CrudOperations.Create]
+        public async Task<StripeClientSecret> CreateCreditCardClientSecret(CancellationToken cancellationToken = default)
+        {
+            return await RequestAsync<StripeClientSecret>(Method.Post, "setup_intents", cancellationToken, null, overrideApiVersion: ApiVersion.Beta);
+        }
+
+        /// <summary>
+        ///     Creates a client secret to use with Stripe when adding a bank account.
+        ///     <a href="https://docs.easypost.com/docs/users/billing#collect-bank-account-details">Related API documentation</a>.
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="StripeClientSecret"/> object containing the client secret.</returns>
+        /// <exception cref="ApiError">When the request fails.</exception>
+        [CrudOperations.Create]
+        public async Task<StripeClientSecret> CreateBankAccountClientSecret(CancellationToken cancellationToken = default)
+        {
+            return await CreateBankAccountClientSecret(null, cancellationToken);
+        }
+
+        /// <summary>
+        ///     Creates a client secret to use with Stripe when adding a bank account.
+        ///     <a href="https://docs.easypost.com/docs/users/billing#collect-bank-account-details">Related API documentation</a>.
+        /// </summary>
+        /// <param name="returnUrl">Optional return URL for the bank account setup.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="StripeClientSecret"/> object containing the client secret.</returns>
+        /// <exception cref="ApiError">When the request fails.</exception>
+        [CrudOperations.Create]
+        public async Task<StripeClientSecret> CreateBankAccountClientSecret(string? returnUrl, CancellationToken cancellationToken = default)
+        {
+            Dictionary<string, object>? parameters = null;
+
+            if (!string.IsNullOrEmpty(returnUrl))
+            {
+                parameters = new Dictionary<string, object>
+                {
+                    { "return_url", returnUrl },
+                };
+            }
+
+            return await RequestAsync<StripeClientSecret>(Method.Post, "financial_connections_sessions", cancellationToken, parameters, overrideApiVersion: ApiVersion.Beta);
+        }
+
         #endregion
     }
 }
