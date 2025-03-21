@@ -33,7 +33,7 @@ namespace EasyPost.Tests.ServicesTests
             });
 
             Assert.IsType<Report>(report);
-            Assert.StartsWith(Fixtures.ReportIdPrefix, report.Id);
+            Assert.StartsWith("shprep_", report.Id);
         }
 
         [Fact]

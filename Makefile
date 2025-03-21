@@ -101,9 +101,7 @@ setup-win:
 setup-unix:
 	./scripts/unix/setup.sh
 
-## test - Run all tests in all projects (unit + integration + compatibility)
-## EasyPost.Tests will run in all frameworks
-## EasyPost.Integration, EasyPost.Compatibility.VB and EasyPost.Compatibility.FSharp will run only in net7.0
+## test - Run all tests in all projects in all configured frameworks (unit + integration + compatibility)
 test:
 	dotnet test
 

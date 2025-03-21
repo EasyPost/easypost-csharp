@@ -310,6 +310,46 @@ namespace EasyPost.Tests.ServicesTests
             Assert.Null(possibleException);
         }
 
+        [Fact]
+        [Testing.Exception]
+        public async Task TestAddCreditCardFromStripe()
+        {
+            UseVCR("add_credit_card_from_stripe");
+
+            NotFoundError exception = await Assert.ThrowsAsync<NotFoundError>(async () =>
+            {
+                await Client.ReferralCustomer.AddCreditCardFromStripe(
+                    ReferralCustomerKey,
+                    Fixtures.Billing.PaymentMethodId,
+                    PaymentMethod.Priority.Primary
+                );
+            });
+
+            Assert.Equal("Stripe::PaymentMethod does not exist for the specified reference_id", exception.Message);
+        }
+
+        [Fact]
+        [Testing.Exception]
+        public async Task TestAddBankAccountFromStripe()
+        {
+            UseVCR("add_bank_account_from_stripe");
+
+            InvalidRequestError exception = await Assert.ThrowsAsync<InvalidRequestError>(async () =>
+            {
+                await Client.ReferralCustomer.AddBankAccountFromStripe(
+                    ReferralCustomerKey,
+                    Fixtures.Billing.FinancialConnectionsId,
+                    Fixtures.Billing.MandateData,
+                    PaymentMethod.Priority.Primary
+                );
+            });
+
+            Assert.Equal(
+                "account_holder_name must be present when creating a Financial Connections payment method",
+                exception.Message
+            );
+        }
+
         #endregion
 
         #endregion

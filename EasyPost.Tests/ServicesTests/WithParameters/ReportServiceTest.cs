@@ -38,7 +38,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Report report = await Client.Report.Create(parameters);
 
             Assert.IsType<Report>(report);
-            Assert.StartsWith(Fixtures.ReportIdPrefix, report.Id);
+            Assert.StartsWith("shprep_", report.Id);
         }
 
         [Fact]
