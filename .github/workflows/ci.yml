@@ -124,6 +124,7 @@ jobs:
       EASYPOST_PROD_API_KEY: "123"
     strategy:
       matrix:
+        name: ["Net60", "Net70", "Net80", "Net90"]
         include:
           - name: Net60
             framework: net6.0
