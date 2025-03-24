@@ -1,0 +1,52 @@
+[
+  {
+    "Duration": 702,
+    "RecordedAt": "2025-03-21T12:14:18.673471-06:00",
+    "Request": {
+      "Body": "{\"credit_card\":{\"payment_method_id\":\"pm_0Pn6bQDqT4huGUvd0CjpRerH\",\"priority\":\"primary\"}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "88"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/credit_cards"
+    },
+    "Response": {
+      "Body": "{\"error\":{\"code\":\"CREDIT_CARD.NOT_FOUND\",\"message\":\"Stripe::PaymentMethod does not exist for the specified reference_id\",\"errors\":[]}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "134"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "4f9f25c767ddac7ae2b984390072820f",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.557702",
+        "x-node": "bigweb32nuq",
+        "x-version-label": "easypost-202503211234-6b2a4667ec-master",
+        "x-backend": "easypost",
+        "x-canary": "direct",
+        "x-proxied": "intlb4nuq 284c5d344a,extlb2nuq 99aac35317",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 404,
+        "Message": "Not Found"
+      }
+    }
+  }
+]

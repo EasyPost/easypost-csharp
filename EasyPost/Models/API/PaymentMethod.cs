@@ -74,6 +74,12 @@ namespace EasyPost.Models.API
         [JsonProperty("verified")]
         public bool? Verified { get; set; } // bank_account
 
+        /// <summary>
+        ///     Whether the payment method requires mandate collection or not.
+        /// </summary>
+        [JsonProperty("requires_mandate_collection")]
+        public bool? RequiresMandateCollection { get; set; } // both
+
         #endregion
 
         /// <summary>

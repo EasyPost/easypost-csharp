@@ -107,8 +107,6 @@ namespace EasyPost.Tests._Utilities
 
         internal static string ReportDate => "2022-04-12";
 
-        internal static string ReportIdPrefix => "shprep_";
-
         internal static string ReportType => GetFixtureStructure().ReportTypes.Shipment;
 
         internal static Dictionary<string, object> RmaFormOptions => GetFixtureStructure().FormOptions.Rma;
@@ -129,6 +127,8 @@ namespace EasyPost.Tests._Utilities
         }
 
         internal static string UspsService => GetFixtureStructure().ServiceNames.Usps.FirstService;
+
+        internal static Billing Billing => GetFixtureStructure().Billing;
 
         private static FixtureStructure GetFixtureStructure()
         {
