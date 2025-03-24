@@ -37,10 +37,10 @@ namespace EasyPost.Models.API.Beta
         public string? PaymentLogId { get; set; }
 
         /// <summary>
-        ///     A list of <see cref="Error"/>s encountered while processing the refund.
+        ///     A list of <see cref="FieldError"/>s encountered while processing the refund.
         /// </summary>
         [JsonProperty("errors")]
-        public List<Error>? Errors { get; set; }
+        public List<FieldError>? Errors { get; set; }
 
         #endregion
     }

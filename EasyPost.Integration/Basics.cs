@@ -36,7 +36,6 @@ public class Basics
         var customsItem = new CustomsItem();
         var endShipper = new EndShipper();
         var endShipperCollection = new EndShipperCollection();
-        var error = new Error();
         var estimateDeliveryDateForZipPairResult = new EstimateDeliveryDateForZipPairResult();
         var @event = new Event();
         var eventCollection = new EventCollection();

@@ -21,7 +21,7 @@ namespace EasyPost.Models.API
         ///     A list of errors encountered during verification.
         /// </summary>
         [JsonProperty("errors")]
-        public List<Error>? Errors { get; set; }
+        public List<AddressVerificationFieldError>? Errors { get; set; }
 
         /// <summary>
         ///     Whether the verification was successful.

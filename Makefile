@@ -1,3 +1,5 @@
+FW ?= net9.0
+
 ## help - Display help about make targets for this Makefile
 help:
 	@cat Makefile | grep '^## ' --color=never | cut -c4- | sed -e "`printf 's/ - /\t- /;'`" | column -s "`printf '\t'`" -t
@@ -12,9 +14,9 @@ build:
 
 ## build-fw - Build the project in Debug mode for a specific framework
 # @parameters:
-# fw= - The framework to build for.
+# FW= - The framework to build for.
 build-fw:
-	dotnet build EasyPost/EasyPost.csproj -c "Debug" -t:Rebuild -restore -f ${fw} -p:EnableNETAnalyzers=false
+	dotnet build EasyPost/EasyPost.csproj -c "Debug" -t:Rebuild -restore -f ${FW} -p:EnableNETAnalyzers=false
 
 ## build-prod - Build the project in Release mode
 build-prod:
@@ -56,11 +58,13 @@ install-styleguide: | update-examples-submodule
 install: | install-tools init-examples-submodule
 
 ## lint - Lints the solution (EasyPost + Tests + Integration + F#/VB compatibilities) (check IDE and SA rule violations)
+## @parameters:
+## FW= - The framework to build for.
 lint:
     # Lint the project code with dotnet-format
 	dotnet tool run dotnet-format --no-restore --check
     # Lint the source code (only EasyPost, no tests et. al) by building with the "Linting" configuration (will trigger StyleCop)
-	dotnet build EasyPost/EasyPost.csproj -c "Linting" -t:Rebuild -restore -p:EnforceCodeStyleInBuild=true
+	dotnet build EasyPost/EasyPost.csproj -c "Linting" -t:Rebuild -restore -p:EnforceCodeStyleInBuild=true -f ${FW}
 
 ## lint-fix - Formats the project
 lint-fix:
@@ -108,9 +112,9 @@ test:
 ## unit-test - Run the unit tests for a specific framework
 ## Always run unit tests in Debug mode to allow access to internal members
 ## @parameters:
-## fw= - The framework to build for.
+## FW= - The framework to build for.
 unit-test:
-	dotnet test EasyPost.Tests/EasyPost.Tests.csproj -f ${fw} -c "Debug"
+	dotnet test EasyPost.Tests/EasyPost.Tests.csproj -f ${FW} -c "Debug"
 
 ## update-examples-submodule - Update the examples submodule
 update-examples-submodule:
@@ -120,26 +124,26 @@ update-examples-submodule:
 ## integration-test - Run the integration tests for a specific framework
 ## Always run integration tests in Release mode to check the end-user experience
 ## @parameters:
-## fw= - The framework to build for.
+## FW= - The framework to build for.
 integration-test:
-	dotnet test EasyPost.Integration/EasyPost.Integration.csproj -f ${fw} -c "Release" -restore
+	dotnet test EasyPost.Integration/EasyPost.Integration.csproj -f ${FW} -c "Release" -restore
 
 ## fs-compat-test - Run the F# compatibility tests for a specific framework
 ## @parameters:
-## fw= - The framework to build for.
+## FW= - The framework to build for.
 fs-compat-test:
-	dotnet test EasyPost.Compatibility.FSharp/EasyPost.Compatibility.FSharp.fsproj -f ${fw} -restore
+	dotnet test EasyPost.Compatibility.FSharp/EasyPost.Compatibility.FSharp.fsproj -f ${FW} -restore
 
 ## vb-compat-test - Run the VB compatibility tests for a specific framework
 ## @parameters:
-## fw= - The framework to build for.
+## FW= - The framework to build for.
 vb-compat-test:
-	dotnet test EasyPost.Compatibility.VB/EasyPost.Compatibility.VB.vbproj -f ${fw} -restore
+	dotnet test EasyPost.Compatibility.VB/EasyPost.Compatibility.VB.vbproj -f ${FW} -restore
 
 ## netstandard-compat-test - Run the Net Standard compatibility tests for a specific framework
 ## @parameters:
-## fw= - The framework to build for.
+## FW= - The framework to build for.
 netstandard-compat-test:
-	dotnet test EasyPost.Compatibility.NetStandard/EasyPost.Compatibility.NetStandard.csproj -f ${fw} -restore
+	dotnet test EasyPost.Compatibility.NetStandard/EasyPost.Compatibility.NetStandard.csproj -f ${FW} -restore
 
 .PHONY: help analyze build build-fw build-prod clean coverage coverage-check docs format init-examples-submodule install-styleguide install-tools install lint lint-scripts release restore scan setup-win setup-unix test update-examples-submodule unit-test integration-test fs-compat-test vb-compat-test netstandard-compat-test

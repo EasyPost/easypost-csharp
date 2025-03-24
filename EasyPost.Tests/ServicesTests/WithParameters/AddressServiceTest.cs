@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
@@ -43,10 +44,10 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         {
             UseVCR("create_verify");
 
-            Dictionary<string, object> fixture = Fixtures.IncorrectAddress;
-            Parameters.Address.Create parameters = Fixtures.Parameters.Addresses.Create(fixture);
-
             // Creating normally (without specifying "verify") will make the address, perform no verifications
+            Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
+            Parameters.Address.Create parameters = Fixtures.Parameters.Addresses.Create(addressData);
+
             Address address = await Client.Address.Create(parameters);
 
             Assert.IsType<Address>(address);
@@ -54,13 +55,30 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Assert.Null(address.Verifications.Zip4);
 
             // Creating with verify would make the address and perform verifications
-            parameters.Verify = true;
+            addressData["verify"] = true;
+            parameters = Fixtures.Parameters.Addresses.Create(addressData);
 
             address = await Client.Address.Create(parameters);
 
             Assert.IsType<Address>(address);
-            Assert.NotNull(address.Verifications.Delivery);
-            Assert.NotNull(address.Verifications.Zip4);
+
+            // Delivery assertions
+            Assert.False(address.Verifications.Delivery.Success);
+            Assert.IsType<VerificationDetails>(address.Verifications.Delivery.Details);
+            AddressVerificationFieldError deliveryError = address.Verifications.Delivery.Errors.First();
+            Assert.Equal("E.ADDRESS.NOT_FOUND", deliveryError.Code);
+            Assert.Equal("address", deliveryError.Field);
+            Assert.Null(deliveryError.Suggestion);
+            Assert.Equal("Address not found", deliveryError.Message);
+
+            // Zip4 assertions
+            Assert.False(address.Verifications.Zip4.Success);
+            Assert.Null(address.Verifications.Zip4.Details);
+            AddressVerificationFieldError zip4Error = address.Verifications.Zip4.Errors.First();
+            Assert.Equal("E.ADDRESS.NOT_FOUND", zip4Error.Code);
+            Assert.Equal("address", zip4Error.Field);
+            Assert.Null(zip4Error.Suggestion);
+            Assert.Equal("Address not found", zip4Error.Message);
         }
 
         [Fact]
