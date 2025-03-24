@@ -124,8 +124,19 @@ jobs:
       EASYPOST_PROD_API_KEY: "123"
     strategy:
       matrix:
-        framework: [net6.0, net7.0, net8.0, net9.0]
-        dotnet-version: [6.x.x, 7.x.x, 8.x.x, 9.x.x]
+        include:
+          - name: Net60
+            framework: net6.0
+            dotnet-version: 6.x.x
+          - name: Net70
+            framework: net7.0
+            dotnet-version: 7.x.x
+          - name: Net80
+            framework: net8.0
+            dotnet-version: 8.x.x
+          - name: Net90
+            framework: net9.0
+            dotnet-version: 9.x.x
     steps:
       - uses: actions/checkout@v4
         with:
