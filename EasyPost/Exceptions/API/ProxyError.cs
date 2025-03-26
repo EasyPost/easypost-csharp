@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using EasyPost.Models.API;
 
 namespace EasyPost.Exceptions.API
 {
@@ -14,8 +13,8 @@ namespace EasyPost.Exceptions.API
         /// <param name="errorMessage">The error message to print to console.</param>
         /// <param name="statusCode">Optional HTTP status code to store as a property.</param>
         /// <param name="errorType">Optional error type string to store as a property.</param>
-        /// <param name="errors">Optional list of <see cref="Error"/> objects to store as a property.</param>
-        internal ProxyError(string errorMessage, int statusCode, string? errorType = null, List<Error>? errors = null)
+        /// <param name="errors">Optional list of errors to store as a property.</param>
+        internal ProxyError(string errorMessage, int statusCode, string? errorType = null, List<object>? errors = null)
             : base(errorMessage, statusCode, errorType, errors)
         {
         }

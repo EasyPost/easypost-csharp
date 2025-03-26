@@ -1,0 +1,51 @@
+[
+  {
+    "Duration": 189,
+    "RecordedAt": "2025-03-24T15:11:07.809054-06:00",
+    "Request": {
+      "Body": "{\"tracking_code\":\"123\",\"type\":\"damage\",\"email_evidence_attachments\":[\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAeUlEQVR42mP8//8/AwAI/AL+4Q7AIAAAAABJRU5ErkJggg==\"],\"invoice_attachments\":[\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAeUlEQVR42mP8//8/AwAI/AL+4Q7AIAAAAABJRU5ErkJggg==\"],\"supporting_documentation_attachments\":[\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAeUlEQVR42mP8//8/AwAI/AL+4Q7AIAAAAABJRU5ErkJggg==\"],\"description\":\"Test description\",\"contact_email\":\"test@example.com\"}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "566"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/claims"
+    },
+    "Response": {
+      "Body": "{\"error\":{\"code\":\"NOT_FOUND\",\"errors\":[\"No eligible insurance found with provided tracking code.\"],\"message\":\"The requested resource could not be found.\"}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "156"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "c3e7cc3e67e1ca6be2b9feb200350528",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.030858",
+        "x-node": "bigweb36nuq",
+        "x-version-label": "easypost-202503242007-97a691cc01-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb3nuq 284c5d344a,extlb1nuq 99aac35317",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 404,
+        "Message": "Not Found"
+      }
+    }
+  }
+]

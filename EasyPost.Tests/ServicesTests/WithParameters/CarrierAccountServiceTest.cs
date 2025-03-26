@@ -73,10 +73,19 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
 
             catch (BadRequestError e)
             {
-                // the data we're sending is invalid, we want to check that the API error is because of malformed data and not due to the endpoint
+                // The data we're sending is invalid; we want to check that the API error is because of malformed data and not due to the endpoint
                 Assert.Equal(400, e.StatusCode); // 400 is fine. We don't want a 404 not found
                 Assert.NotNull(e.Errors);
-                Assert.Contains(e.Errors, error => error is { Message: "Invalid Customer Account Nbr" });
+
+                // Coerce the error into a FieldError and check its properties
+                Assert.Contains(e.Errors, error =>
+                {
+                    if (error is FieldError fieldError)
+                    {
+                        return fieldError.Message == "Invalid Customer Account Nbr";
+                    }
+                    return false;
+                });
 
                 // Check the cassette to make sure the endpoint is correct (it should be carrier_accounts/register)
                 // Check the cassette to make sure the "registration_data" key is populated in the request body
