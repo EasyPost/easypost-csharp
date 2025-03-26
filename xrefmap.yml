@@ -1307,15 +1307,15 @@ references:
   commentId: T:EasyPost.Exceptions.API.ApiError
   fullName: EasyPost.Exceptions.API.ApiError
   nameWithType: ApiError
-- uid: EasyPost.Exceptions.API.ApiError.#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.String},System.Nullable{List{EasyPost.Models.API.Error}})
-  name: ApiError(String, Nullable<Int32>, Nullable<String>, Nullable<List<Error>>)
-  href: api/EasyPost.Exceptions.API.ApiError.html#EasyPost_Exceptions_API_ApiError__ctor_System_String_System_Nullable_System_Int32__System_Nullable_System_String__System_Nullable_List_EasyPost_Models_API_Error___
-  commentId: M:EasyPost.Exceptions.API.ApiError.#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.String},System.Nullable{List{EasyPost.Models.API.Error}})
-  name.vb: ApiError(String, Nullable(Of Int32), Nullable(Of String), Nullable(Of List(Of Error)))
-  fullName: EasyPost.Exceptions.API.ApiError.ApiError(System.String, System.Nullable<System.Int32>, System.Nullable<System.String>, System.Nullable<List<EasyPost.Models.API.Error>>)
-  fullName.vb: EasyPost.Exceptions.API.ApiError.ApiError(System.String, System.Nullable(Of System.Int32), System.Nullable(Of System.String), System.Nullable(Of List(Of EasyPost.Models.API.Error)))
-  nameWithType: ApiError.ApiError(String, Nullable<Int32>, Nullable<String>, Nullable<List<Error>>)
-  nameWithType.vb: ApiError.ApiError(String, Nullable(Of Int32), Nullable(Of String), Nullable(Of List(Of Error)))
+- uid: EasyPost.Exceptions.API.ApiError.#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.String},System.Nullable{List{System.Object}})
+  name: ApiError(String, Nullable<Int32>, Nullable<String>, Nullable<List<Object>>)
+  href: api/EasyPost.Exceptions.API.ApiError.html#EasyPost_Exceptions_API_ApiError__ctor_System_String_System_Nullable_System_Int32__System_Nullable_System_String__System_Nullable_List_System_Object___
+  commentId: M:EasyPost.Exceptions.API.ApiError.#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.String},System.Nullable{List{System.Object}})
+  name.vb: ApiError(String, Nullable(Of Int32), Nullable(Of String), Nullable(Of List(Of Object)))
+  fullName: EasyPost.Exceptions.API.ApiError.ApiError(System.String, System.Nullable<System.Int32>, System.Nullable<System.String>, System.Nullable<List<System.Object>>)
+  fullName.vb: EasyPost.Exceptions.API.ApiError.ApiError(System.String, System.Nullable(Of System.Int32), System.Nullable(Of System.String), System.Nullable(Of List(Of System.Object)))
+  nameWithType: ApiError.ApiError(String, Nullable<Int32>, Nullable<String>, Nullable<List<Object>>)
+  nameWithType.vb: ApiError.ApiError(String, Nullable(Of Int32), Nullable(Of String), Nullable(Of List(Of Object)))
 - uid: EasyPost.Exceptions.API.ApiError.#ctor*
   name: ApiError
   href: api/EasyPost.Exceptions.API.ApiError.html#EasyPost_Exceptions_API_ApiError__ctor_
@@ -2042,6 +2042,64 @@ references:
   fullName.vb: EasyPost.Models.API.AddressCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of EasyPost.Models.API.Address), System.Nullable(Of System.Int32))
   nameWithType: AddressCollection.BuildNextPageParameters<TParameters>(IEnumerable<Address>, Nullable<Int32>)
   nameWithType.vb: AddressCollection.BuildNextPageParameters(Of TParameters)(IEnumerable(Of Address), Nullable(Of Int32))
+- uid: EasyPost.Models.API.AddressVerificationFieldError
+  name: AddressVerificationFieldError
+  href: api/EasyPost.Models.API.AddressVerificationFieldError.html
+  commentId: T:EasyPost.Models.API.AddressVerificationFieldError
+  fullName: EasyPost.Models.API.AddressVerificationFieldError
+  nameWithType: AddressVerificationFieldError
+- uid: EasyPost.Models.API.AddressVerificationFieldError.Code
+  name: Code
+  href: api/EasyPost.Models.API.AddressVerificationFieldError.html#EasyPost_Models_API_AddressVerificationFieldError_Code
+  commentId: P:EasyPost.Models.API.AddressVerificationFieldError.Code
+  fullName: EasyPost.Models.API.AddressVerificationFieldError.Code
+  nameWithType: AddressVerificationFieldError.Code
+- uid: EasyPost.Models.API.AddressVerificationFieldError.Code*
+  name: Code
+  href: api/EasyPost.Models.API.AddressVerificationFieldError.html#EasyPost_Models_API_AddressVerificationFieldError_Code_
+  commentId: Overload:EasyPost.Models.API.AddressVerificationFieldError.Code
+  isSpec: "True"
+  fullName: EasyPost.Models.API.AddressVerificationFieldError.Code
+  nameWithType: AddressVerificationFieldError.Code
+- uid: EasyPost.Models.API.AddressVerificationFieldError.Field
+  name: Field
+  href: api/EasyPost.Models.API.AddressVerificationFieldError.html#EasyPost_Models_API_AddressVerificationFieldError_Field
+  commentId: P:EasyPost.Models.API.AddressVerificationFieldError.Field
+  fullName: EasyPost.Models.API.AddressVerificationFieldError.Field
+  nameWithType: AddressVerificationFieldError.Field
+- uid: EasyPost.Models.API.AddressVerificationFieldError.Field*
+  name: Field
+  href: api/EasyPost.Models.API.AddressVerificationFieldError.html#EasyPost_Models_API_AddressVerificationFieldError_Field_
+  commentId: Overload:EasyPost.Models.API.AddressVerificationFieldError.Field
+  isSpec: "True"
+  fullName: EasyPost.Models.API.AddressVerificationFieldError.Field
+  nameWithType: AddressVerificationFieldError.Field
+- uid: EasyPost.Models.API.AddressVerificationFieldError.Message
+  name: Message
+  href: api/EasyPost.Models.API.AddressVerificationFieldError.html#EasyPost_Models_API_AddressVerificationFieldError_Message
+  commentId: P:EasyPost.Models.API.AddressVerificationFieldError.Message
+  fullName: EasyPost.Models.API.AddressVerificationFieldError.Message
+  nameWithType: AddressVerificationFieldError.Message
+- uid: EasyPost.Models.API.AddressVerificationFieldError.Message*
+  name: Message
+  href: api/EasyPost.Models.API.AddressVerificationFieldError.html#EasyPost_Models_API_AddressVerificationFieldError_Message_
+  commentId: Overload:EasyPost.Models.API.AddressVerificationFieldError.Message
+  isSpec: "True"
+  fullName: EasyPost.Models.API.AddressVerificationFieldError.Message
+  nameWithType: AddressVerificationFieldError.Message
+- uid: EasyPost.Models.API.AddressVerificationFieldError.Suggestion
+  name: Suggestion
+  href: api/EasyPost.Models.API.AddressVerificationFieldError.html#EasyPost_Models_API_AddressVerificationFieldError_Suggestion
+  commentId: P:EasyPost.Models.API.AddressVerificationFieldError.Suggestion
+  fullName: EasyPost.Models.API.AddressVerificationFieldError.Suggestion
+  nameWithType: AddressVerificationFieldError.Suggestion
+- uid: EasyPost.Models.API.AddressVerificationFieldError.Suggestion*
+  name: Suggestion
+  href: api/EasyPost.Models.API.AddressVerificationFieldError.html#EasyPost_Models_API_AddressVerificationFieldError_Suggestion_
+  commentId: Overload:EasyPost.Models.API.AddressVerificationFieldError.Suggestion
+  isSpec: "True"
+  fullName: EasyPost.Models.API.AddressVerificationFieldError.Suggestion
+  nameWithType: AddressVerificationFieldError.Suggestion
 - uid: EasyPost.Models.API.ApiKey
   name: ApiKey
   href: api/EasyPost.Models.API.ApiKey.html
@@ -4242,77 +4300,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.EndShipperCollection.EndShippers
   nameWithType: EndShipperCollection.EndShippers
-- uid: EasyPost.Models.API.Error
-  name: Error
-  href: api/EasyPost.Models.API.Error.html
-  commentId: T:EasyPost.Models.API.Error
-  fullName: EasyPost.Models.API.Error
-  nameWithType: Error
-- uid: EasyPost.Models.API.Error.Code
-  name: Code
-  href: api/EasyPost.Models.API.Error.html#EasyPost_Models_API_Error_Code
-  commentId: P:EasyPost.Models.API.Error.Code
-  fullName: EasyPost.Models.API.Error.Code
-  nameWithType: Error.Code
-- uid: EasyPost.Models.API.Error.Code*
-  name: Code
-  href: api/EasyPost.Models.API.Error.html#EasyPost_Models_API_Error_Code_
-  commentId: Overload:EasyPost.Models.API.Error.Code
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Error.Code
-  nameWithType: Error.Code
-- uid: EasyPost.Models.API.Error.Errors
-  name: Errors
-  href: api/EasyPost.Models.API.Error.html#EasyPost_Models_API_Error_Errors
-  commentId: P:EasyPost.Models.API.Error.Errors
-  fullName: EasyPost.Models.API.Error.Errors
-  nameWithType: Error.Errors
-- uid: EasyPost.Models.API.Error.Errors*
-  name: Errors
-  href: api/EasyPost.Models.API.Error.html#EasyPost_Models_API_Error_Errors_
-  commentId: Overload:EasyPost.Models.API.Error.Errors
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Error.Errors
-  nameWithType: Error.Errors
-- uid: EasyPost.Models.API.Error.Field
-  name: Field
-  href: api/EasyPost.Models.API.Error.html#EasyPost_Models_API_Error_Field
-  commentId: P:EasyPost.Models.API.Error.Field
-  fullName: EasyPost.Models.API.Error.Field
-  nameWithType: Error.Field
-- uid: EasyPost.Models.API.Error.Field*
-  name: Field
-  href: api/EasyPost.Models.API.Error.html#EasyPost_Models_API_Error_Field_
-  commentId: Overload:EasyPost.Models.API.Error.Field
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Error.Field
-  nameWithType: Error.Field
-- uid: EasyPost.Models.API.Error.Message
-  name: Message
-  href: api/EasyPost.Models.API.Error.html#EasyPost_Models_API_Error_Message
-  commentId: P:EasyPost.Models.API.Error.Message
-  fullName: EasyPost.Models.API.Error.Message
-  nameWithType: Error.Message
-- uid: EasyPost.Models.API.Error.Message*
-  name: Message
-  href: api/EasyPost.Models.API.Error.html#EasyPost_Models_API_Error_Message_
-  commentId: Overload:EasyPost.Models.API.Error.Message
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Error.Message
-  nameWithType: Error.Message
-- uid: EasyPost.Models.API.Error.Suggestion
-  name: Suggestion
-  href: api/EasyPost.Models.API.Error.html#EasyPost_Models_API_Error_Suggestion
-  commentId: P:EasyPost.Models.API.Error.Suggestion
-  fullName: EasyPost.Models.API.Error.Suggestion
-  nameWithType: Error.Suggestion
-- uid: EasyPost.Models.API.Error.Suggestion*
-  name: Suggestion
-  href: api/EasyPost.Models.API.Error.html#EasyPost_Models_API_Error_Suggestion_
-  commentId: Overload:EasyPost.Models.API.Error.Suggestion
-  isSpec: "True"
-  fullName: EasyPost.Models.API.Error.Suggestion
-  nameWithType: Error.Suggestion
 - uid: EasyPost.Models.API.EstimateDeliveryDateForZipPairResult
   name: EstimateDeliveryDateForZipPairResult
   href: api/EasyPost.Models.API.EstimateDeliveryDateForZipPairResult.html
@@ -4587,6 +4574,51 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Fee.Type
   nameWithType: Fee.Type
+- uid: EasyPost.Models.API.FieldError
+  name: FieldError
+  href: api/EasyPost.Models.API.FieldError.html
+  commentId: T:EasyPost.Models.API.FieldError
+  fullName: EasyPost.Models.API.FieldError
+  nameWithType: FieldError
+- uid: EasyPost.Models.API.FieldError.Field
+  name: Field
+  href: api/EasyPost.Models.API.FieldError.html#EasyPost_Models_API_FieldError_Field
+  commentId: P:EasyPost.Models.API.FieldError.Field
+  fullName: EasyPost.Models.API.FieldError.Field
+  nameWithType: FieldError.Field
+- uid: EasyPost.Models.API.FieldError.Field*
+  name: Field
+  href: api/EasyPost.Models.API.FieldError.html#EasyPost_Models_API_FieldError_Field_
+  commentId: Overload:EasyPost.Models.API.FieldError.Field
+  isSpec: "True"
+  fullName: EasyPost.Models.API.FieldError.Field
+  nameWithType: FieldError.Field
+- uid: EasyPost.Models.API.FieldError.Message
+  name: Message
+  href: api/EasyPost.Models.API.FieldError.html#EasyPost_Models_API_FieldError_Message
+  commentId: P:EasyPost.Models.API.FieldError.Message
+  fullName: EasyPost.Models.API.FieldError.Message
+  nameWithType: FieldError.Message
+- uid: EasyPost.Models.API.FieldError.Message*
+  name: Message
+  href: api/EasyPost.Models.API.FieldError.html#EasyPost_Models_API_FieldError_Message_
+  commentId: Overload:EasyPost.Models.API.FieldError.Message
+  isSpec: "True"
+  fullName: EasyPost.Models.API.FieldError.Message
+  nameWithType: FieldError.Message
+- uid: EasyPost.Models.API.FieldError.Suggestion
+  name: Suggestion
+  href: api/EasyPost.Models.API.FieldError.html#EasyPost_Models_API_FieldError_Suggestion
+  commentId: P:EasyPost.Models.API.FieldError.Suggestion
+  fullName: EasyPost.Models.API.FieldError.Suggestion
+  nameWithType: FieldError.Suggestion
+- uid: EasyPost.Models.API.FieldError.Suggestion*
+  name: Suggestion
+  href: api/EasyPost.Models.API.FieldError.html#EasyPost_Models_API_FieldError_Suggestion_
+  commentId: Overload:EasyPost.Models.API.FieldError.Suggestion
+  isSpec: "True"
+  fullName: EasyPost.Models.API.FieldError.Suggestion
+  nameWithType: FieldError.Suggestion
 - uid: EasyPost.Models.API.Form
   name: Form
   href: api/EasyPost.Models.API.Form.html
@@ -6540,6 +6572,19 @@ references:
   commentId: F:EasyPost.Models.API.PaymentMethod.Priority.Secondary
   fullName: EasyPost.Models.API.PaymentMethod.Priority.Secondary
   nameWithType: PaymentMethod.Priority.Secondary
+- uid: EasyPost.Models.API.PaymentMethod.RequiresMandateCollection
+  name: RequiresMandateCollection
+  href: api/EasyPost.Models.API.PaymentMethod.html#EasyPost_Models_API_PaymentMethod_RequiresMandateCollection
+  commentId: P:EasyPost.Models.API.PaymentMethod.RequiresMandateCollection
+  fullName: EasyPost.Models.API.PaymentMethod.RequiresMandateCollection
+  nameWithType: PaymentMethod.RequiresMandateCollection
+- uid: EasyPost.Models.API.PaymentMethod.RequiresMandateCollection*
+  name: RequiresMandateCollection
+  href: api/EasyPost.Models.API.PaymentMethod.html#EasyPost_Models_API_PaymentMethod_RequiresMandateCollection_
+  commentId: Overload:EasyPost.Models.API.PaymentMethod.RequiresMandateCollection
+  isSpec: "True"
+  fullName: EasyPost.Models.API.PaymentMethod.RequiresMandateCollection
+  nameWithType: PaymentMethod.RequiresMandateCollection
 - uid: EasyPost.Models.API.PaymentMethod.Type
   name: Type
   href: api/EasyPost.Models.API.PaymentMethod.html#EasyPost_Models_API_PaymentMethod_Type
@@ -8963,6 +9008,25 @@ references:
   commentId: F:EasyPost.Models.API.SortDirection.Descending
   fullName: EasyPost.Models.API.SortDirection.Descending
   nameWithType: SortDirection.Descending
+- uid: EasyPost.Models.API.StripeClientSecret
+  name: StripeClientSecret
+  href: api/EasyPost.Models.API.StripeClientSecret.html
+  commentId: T:EasyPost.Models.API.StripeClientSecret
+  fullName: EasyPost.Models.API.StripeClientSecret
+  nameWithType: StripeClientSecret
+- uid: EasyPost.Models.API.StripeClientSecret.ClientSecret
+  name: ClientSecret
+  href: api/EasyPost.Models.API.StripeClientSecret.html#EasyPost_Models_API_StripeClientSecret_ClientSecret
+  commentId: P:EasyPost.Models.API.StripeClientSecret.ClientSecret
+  fullName: EasyPost.Models.API.StripeClientSecret.ClientSecret
+  nameWithType: StripeClientSecret.ClientSecret
+- uid: EasyPost.Models.API.StripeClientSecret.ClientSecret*
+  name: ClientSecret
+  href: api/EasyPost.Models.API.StripeClientSecret.html#EasyPost_Models_API_StripeClientSecret_ClientSecret_
+  commentId: Overload:EasyPost.Models.API.StripeClientSecret.ClientSecret
+  isSpec: "True"
+  fullName: EasyPost.Models.API.StripeClientSecret.ClientSecret
+  nameWithType: StripeClientSecret.ClientSecret
 - uid: EasyPost.Models.API.SupportedFeature
   name: SupportedFeature
   href: api/EasyPost.Models.API.SupportedFeature.html
@@ -16542,6 +16606,41 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.Beta.ReferralCustomerService.AddPaymentMethod
   nameWithType: ReferralCustomerService.AddPaymentMethod
+- uid: EasyPost.Services.Beta.ReferralCustomerService.CreateBankAccountClientSecret(CancellationToken)
+  name: CreateBankAccountClientSecret(CancellationToken)
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_CreateBankAccountClientSecret_CancellationToken_
+  commentId: M:EasyPost.Services.Beta.ReferralCustomerService.CreateBankAccountClientSecret(CancellationToken)
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.CreateBankAccountClientSecret(CancellationToken)
+  nameWithType: ReferralCustomerService.CreateBankAccountClientSecret(CancellationToken)
+- uid: EasyPost.Services.Beta.ReferralCustomerService.CreateBankAccountClientSecret(System.Nullable{System.String},CancellationToken)
+  name: CreateBankAccountClientSecret(Nullable<String>, CancellationToken)
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_CreateBankAccountClientSecret_System_Nullable_System_String__CancellationToken_
+  commentId: M:EasyPost.Services.Beta.ReferralCustomerService.CreateBankAccountClientSecret(System.Nullable{System.String},CancellationToken)
+  name.vb: CreateBankAccountClientSecret(Nullable(Of String), CancellationToken)
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.CreateBankAccountClientSecret(System.Nullable<System.String>, CancellationToken)
+  fullName.vb: EasyPost.Services.Beta.ReferralCustomerService.CreateBankAccountClientSecret(System.Nullable(Of System.String), CancellationToken)
+  nameWithType: ReferralCustomerService.CreateBankAccountClientSecret(Nullable<String>, CancellationToken)
+  nameWithType.vb: ReferralCustomerService.CreateBankAccountClientSecret(Nullable(Of String), CancellationToken)
+- uid: EasyPost.Services.Beta.ReferralCustomerService.CreateBankAccountClientSecret*
+  name: CreateBankAccountClientSecret
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_CreateBankAccountClientSecret_
+  commentId: Overload:EasyPost.Services.Beta.ReferralCustomerService.CreateBankAccountClientSecret
+  isSpec: "True"
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.CreateBankAccountClientSecret
+  nameWithType: ReferralCustomerService.CreateBankAccountClientSecret
+- uid: EasyPost.Services.Beta.ReferralCustomerService.CreateCreditCardClientSecret(CancellationToken)
+  name: CreateCreditCardClientSecret(CancellationToken)
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_CreateCreditCardClientSecret_CancellationToken_
+  commentId: M:EasyPost.Services.Beta.ReferralCustomerService.CreateCreditCardClientSecret(CancellationToken)
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.CreateCreditCardClientSecret(CancellationToken)
+  nameWithType: ReferralCustomerService.CreateCreditCardClientSecret(CancellationToken)
+- uid: EasyPost.Services.Beta.ReferralCustomerService.CreateCreditCardClientSecret*
+  name: CreateCreditCardClientSecret
+  href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_CreateCreditCardClientSecret_
+  commentId: Overload:EasyPost.Services.Beta.ReferralCustomerService.CreateCreditCardClientSecret
+  isSpec: "True"
+  fullName: EasyPost.Services.Beta.ReferralCustomerService.CreateCreditCardClientSecret
+  nameWithType: ReferralCustomerService.CreateCreditCardClientSecret
 - uid: EasyPost.Services.Beta.ReferralCustomerService.RefundByAmount(EasyPost.Parameters.ReferralCustomer.RefundByAmount,CancellationToken)
   name: RefundByAmount(RefundByAmount, CancellationToken)
   href: api/EasyPost.Services.Beta.ReferralCustomerService.html#EasyPost_Services_Beta_ReferralCustomerService_RefundByAmount_EasyPost_Parameters_ReferralCustomer_RefundByAmount_CancellationToken_
@@ -17424,6 +17523,35 @@ references:
   commentId: T:EasyPost.Services.ReferralCustomerService
   fullName: EasyPost.Services.ReferralCustomerService
   nameWithType: ReferralCustomerService
+- uid: EasyPost.Services.ReferralCustomerService.AddBankAccountFromStripe(System.String,System.String,Dictionary{System.String,System.Object},EasyPost.Models.API.PaymentMethod.Priority,CancellationToken)
+  name: AddBankAccountFromStripe(String, String, Dictionary<String, Object>, PaymentMethod.Priority, CancellationToken)
+  href: api/EasyPost.Services.ReferralCustomerService.html#EasyPost_Services_ReferralCustomerService_AddBankAccountFromStripe_System_String_System_String_Dictionary_System_String_System_Object__EasyPost_Models_API_PaymentMethod_Priority_CancellationToken_
+  commentId: M:EasyPost.Services.ReferralCustomerService.AddBankAccountFromStripe(System.String,System.String,Dictionary{System.String,System.Object},EasyPost.Models.API.PaymentMethod.Priority,CancellationToken)
+  name.vb: AddBankAccountFromStripe(String, String, Dictionary(Of String, Object), PaymentMethod.Priority, CancellationToken)
+  fullName: EasyPost.Services.ReferralCustomerService.AddBankAccountFromStripe(System.String, System.String, Dictionary<System.String, System.Object>, EasyPost.Models.API.PaymentMethod.Priority, CancellationToken)
+  fullName.vb: EasyPost.Services.ReferralCustomerService.AddBankAccountFromStripe(System.String, System.String, Dictionary(Of System.String, System.Object), EasyPost.Models.API.PaymentMethod.Priority, CancellationToken)
+  nameWithType: ReferralCustomerService.AddBankAccountFromStripe(String, String, Dictionary<String, Object>, PaymentMethod.Priority, CancellationToken)
+  nameWithType.vb: ReferralCustomerService.AddBankAccountFromStripe(String, String, Dictionary(Of String, Object), PaymentMethod.Priority, CancellationToken)
+- uid: EasyPost.Services.ReferralCustomerService.AddBankAccountFromStripe*
+  name: AddBankAccountFromStripe
+  href: api/EasyPost.Services.ReferralCustomerService.html#EasyPost_Services_ReferralCustomerService_AddBankAccountFromStripe_
+  commentId: Overload:EasyPost.Services.ReferralCustomerService.AddBankAccountFromStripe
+  isSpec: "True"
+  fullName: EasyPost.Services.ReferralCustomerService.AddBankAccountFromStripe
+  nameWithType: ReferralCustomerService.AddBankAccountFromStripe
+- uid: EasyPost.Services.ReferralCustomerService.AddCreditCardFromStripe(System.String,System.String,EasyPost.Models.API.PaymentMethod.Priority,CancellationToken)
+  name: AddCreditCardFromStripe(String, String, PaymentMethod.Priority, CancellationToken)
+  href: api/EasyPost.Services.ReferralCustomerService.html#EasyPost_Services_ReferralCustomerService_AddCreditCardFromStripe_System_String_System_String_EasyPost_Models_API_PaymentMethod_Priority_CancellationToken_
+  commentId: M:EasyPost.Services.ReferralCustomerService.AddCreditCardFromStripe(System.String,System.String,EasyPost.Models.API.PaymentMethod.Priority,CancellationToken)
+  fullName: EasyPost.Services.ReferralCustomerService.AddCreditCardFromStripe(System.String, System.String, EasyPost.Models.API.PaymentMethod.Priority, CancellationToken)
+  nameWithType: ReferralCustomerService.AddCreditCardFromStripe(String, String, PaymentMethod.Priority, CancellationToken)
+- uid: EasyPost.Services.ReferralCustomerService.AddCreditCardFromStripe*
+  name: AddCreditCardFromStripe
+  href: api/EasyPost.Services.ReferralCustomerService.html#EasyPost_Services_ReferralCustomerService_AddCreditCardFromStripe_
+  commentId: Overload:EasyPost.Services.ReferralCustomerService.AddCreditCardFromStripe
+  isSpec: "True"
+  fullName: EasyPost.Services.ReferralCustomerService.AddCreditCardFromStripe
+  nameWithType: ReferralCustomerService.AddCreditCardFromStripe
 - uid: EasyPost.Services.ReferralCustomerService.AddCreditCardToUser(System.String,System.String,System.Int32,System.Int32,System.String,EasyPost.Models.API.PaymentMethod.Priority,CancellationToken)
   name: AddCreditCardToUser(String, String, Int32, Int32, String, PaymentMethod.Priority, CancellationToken)
   href: api/EasyPost.Services.ReferralCustomerService.html#EasyPost_Services_ReferralCustomerService_AddCreditCardToUser_System_String_System_String_System_Int32_System_Int32_System_String_EasyPost_Models_API_PaymentMethod_Priority_CancellationToken_

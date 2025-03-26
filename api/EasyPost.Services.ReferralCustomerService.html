@@ -114,6 +114,184 @@
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ReferralCustomerService_AddBankAccountFromStripe_System_String_System_String_Dictionary_System_String_System_Object__EasyPost_Models_API_PaymentMethod_Priority_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ReferralCustomerService.AddBankAccountFromStripe(System.String%2CSystem.String%2CDictionary%7BSystem.String%2CSystem.Object%7D%2CEasyPost.Models.API.PaymentMethod.Priority%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L208">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ReferralCustomerService_AddBankAccountFromStripe_" data-uid="EasyPost.Services.ReferralCustomerService.AddBankAccountFromStripe*"></a>
+  <h4 id="EasyPost_Services_ReferralCustomerService_AddBankAccountFromStripe_System_String_System_String_Dictionary_System_String_System_Object__EasyPost_Models_API_PaymentMethod_Priority_CancellationToken_" data-uid="EasyPost.Services.ReferralCustomerService.AddBankAccountFromStripe(System.String,System.String,Dictionary{System.String,System.Object},EasyPost.Models.API.PaymentMethod.Priority,CancellationToken)">AddBankAccountFromStripe(String, String, Dictionary&lt;String, Object&gt;, PaymentMethod.Priority, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Add a bank account to EasyPost for a <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>.
+This function requires the <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>'s API key.
+<a href="https://docs.easypost.com/docs/users/billing#create-a-bank-account">Related API documentation</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;PaymentMethod&gt; AddBankAccountFromStripe(string referralApiKey, string financialConnectionsId, Dictionary&lt;string, object&gt; mandateData, PaymentMethod.Priority priority, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">referralApiKey</span></td>
+        <td><p>API key of the referral user.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">financialConnectionsId</span></td>
+        <td><p>Financial connections ID from Stripe.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">mandateData</span></td>
+        <td><p>Mandate data for the bank account.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EasyPost.Models.API.PaymentMethod.Priority.html">PaymentMethod.Priority</a></td>
+        <td><span class="parametername">priority</span></td>
+        <td><p>Priority of the bank account (e.g., &quot;primary&quot; or &quot;secondary&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.PaymentMethod.html">PaymentMethod</a>&gt;</td>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.PaymentMethod.html">PaymentMethod</a> object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EasyPost.Exceptions.API.ApiError.html">ApiError</a></td>
+        <td><p>When the request fails.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ReferralCustomerService_AddCreditCardFromStripe_System_String_System_String_EasyPost_Models_API_PaymentMethod_Priority_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ReferralCustomerService.AddCreditCardFromStripe(System.String%2CSystem.String%2CEasyPost.Models.API.PaymentMethod.Priority%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L158">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ReferralCustomerService_AddCreditCardFromStripe_" data-uid="EasyPost.Services.ReferralCustomerService.AddCreditCardFromStripe*"></a>
+  <h4 id="EasyPost_Services_ReferralCustomerService_AddCreditCardFromStripe_System_String_System_String_EasyPost_Models_API_PaymentMethod_Priority_CancellationToken_" data-uid="EasyPost.Services.ReferralCustomerService.AddCreditCardFromStripe(System.String,System.String,EasyPost.Models.API.PaymentMethod.Priority,CancellationToken)">AddCreditCardFromStripe(String, String, PaymentMethod.Priority, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Add a credit card to EasyPost for a <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a> with a payment method ID from Stripe.
+This function requires the <a class="xref" href="EasyPost.Models.API.ReferralCustomer.html">ReferralCustomer</a>'s API key.
+<a href="https://docs.easypost.com/docs/users/billing#store-the-payment-method-with-easypost">Related API documentation</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;PaymentMethod&gt; AddCreditCardFromStripe(string referralApiKey, string paymentMethodId, PaymentMethod.Priority priority, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">referralApiKey</span></td>
+        <td><p>API key of the referral user.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">paymentMethodId</span></td>
+        <td><p>Payment method ID from Stripe.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EasyPost.Models.API.PaymentMethod.Priority.html">PaymentMethod.Priority</a></td>
+        <td><span class="parametername">priority</span></td>
+        <td><p>Priority of the credit card (e.g., &quot;primary&quot; or &quot;secondary&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.PaymentMethod.html">PaymentMethod</a>&gt;</td>
+        <td><p>A <a class="xref" href="EasyPost.Models.API.PaymentMethod.html">PaymentMethod</a> object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EasyPost.Exceptions.API.ApiError.html">ApiError</a></td>
+        <td><p>When the request fails.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ReferralCustomerService_AddCreditCardToUser_System_String_System_String_System_Int32_System_Int32_System_String_EasyPost_Models_API_PaymentMethod_Priority_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ReferralCustomerService.AddCreditCardToUser(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CEasyPost.Models.API.PaymentMethod.Priority%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -533,7 +711,7 @@ This function should be called against a <a class="xref" href="EasyPost.Client.h
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ReferralCustomerService_UpdateReferralEmail_System_String_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ReferralCustomerService.UpdateReferralEmail(System.String%2CSystem.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L156">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ReferralCustomerService.cs/#L252">View Source</a>
   </span>
   <a id="EasyPost_Services_ReferralCustomerService_UpdateReferralEmail_" data-uid="EasyPost.Services.ReferralCustomerService.UpdateReferralEmail*"></a>
   <h4 id="EasyPost_Services_ReferralCustomerService_UpdateReferralEmail_System_String_System_String_CancellationToken_" data-uid="EasyPost.Services.ReferralCustomerService.UpdateReferralEmail(System.String,System.String,CancellationToken)">UpdateReferralEmail(String, String, CancellationToken)</h4>

@@ -82,6 +82,12 @@
       <h4><a class="xref" href="EasyPost.Models.API.AddressCollection.html">AddressCollection</a></h4>
       <section><p>Class representing a collection of EasyPost <a class="xref" href="EasyPost.Models.API.Address.html">Address</a>es.</p>
 </section>
+      <h4><a class="xref" href="EasyPost.Models.API.AddressVerificationFieldError.html">AddressVerificationFieldError</a></h4>
+      <section><p>Represents an <a href="https://docs.easypost.com/docs/errors#fielderror-object">error returned by the EasyPost API</a>.
+These are typically informational about why a request failed (server-side validation issues, missing data, etc.).
+This is different than the EasyPostError class, which represents exceptions in the EasyPost library,
+such as bad HTTP status codes or local validation issues.</p>
+</section>
       <h4><a class="xref" href="EasyPost.Models.API.ApiKey.html">ApiKey</a></h4>
       <section><p>Class representing an <a href="https://docs.easypost.com/docs/api-keys#api-keys-object">EasyPost API key</a>.</p>
 </section>
@@ -160,12 +166,6 @@
       <h4><a class="xref" href="EasyPost.Models.API.EndShipperCollection.html">EndShipperCollection</a></h4>
       <section><p>Class representing a collection of EasyPost <a class="xref" href="EasyPost.Models.API.EndShipper.html">EndShipper</a>s.</p>
 </section>
-      <h4><a class="xref" href="EasyPost.Models.API.Error.html">Error</a></h4>
-      <section><p>Represents an <a href="https://docs.easypost.com/docs/errors#error-object">error returned by the EasyPost API</a>.
-These are typically informational about why a request failed (server-side validation issues, missing data, etc.).
-This is different than the EasyPostError class, which represents exceptions in the EasyPost library,
-such as bad HTTP status codes or local validation issues.</p>
-</section>
       <h4><a class="xref" href="EasyPost.Models.API.EstimateDeliveryDateForZipPairResult.html">EstimateDeliveryDateForZipPairResult</a></h4>
       <section><p>Class representing delivery date estimates for carrier-route-service level combinations.</p>
 </section>
@@ -177,6 +177,12 @@ such as bad HTTP status codes or local validation issues.</p>
 </section>
       <h4><a class="xref" href="EasyPost.Models.API.Fee.html">Fee</a></h4>
       <section><p>Class representing an <a href="https://docs.easypost.com/docs/fees#fee-object">EasyPost fee</a>.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Models.API.FieldError.html">FieldError</a></h4>
+      <section><p>Represents an <a href="https://docs.easypost.com/docs/errors#fielderror-object">error returned by the EasyPost API</a>.
+These are typically informational about why a request failed (server-side validation issues, missing data, etc.).
+This is different than the EasyPostError class, which represents exceptions in the EasyPost library,
+such as bad HTTP status codes or local validation issues.</p>
 </section>
       <h4><a class="xref" href="EasyPost.Models.API.Form.html">Form</a></h4>
       <section><p>Class representing an <a href="https://docs.easypost.com/docs/shipments/forms#form-object">EasyPost form</a>.</p>
@@ -285,6 +291,9 @@ such as bad HTTP status codes or local validation issues.</p>
 </section>
       <h4><a class="xref" href="EasyPost.Models.API.SortDirection.html">SortDirection</a></h4>
       <section><p>Enum representing the sort direction for records.</p>
+</section>
+      <h4><a class="xref" href="EasyPost.Models.API.StripeClientSecret.html">StripeClientSecret</a></h4>
+      <section><p>Class representing a client secret to securely collect credit card details.</p>
 </section>
       <h4><a class="xref" href="EasyPost.Models.API.SupportedFeature.html">SupportedFeature</a></h4>
       <section><p>Class representing a supported feature in an EasyPost carrier metadata summary.</p>

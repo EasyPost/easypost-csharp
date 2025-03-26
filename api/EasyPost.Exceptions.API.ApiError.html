@@ -73,9 +73,7 @@
   <h1 id="EasyPost_Exceptions_API_ApiError" data-uid="EasyPost.Exceptions.API.ApiError" class="text-break">Class ApiError
 </h1>
   <div class="markdown level0 summary"><p>Represents an error that occurred while communicating with the EasyPost API.
-This is typically due to a specific HTTP status code, such as 4xx or 5xx.
-This is different than the <a class="xref" href="EasyPost.Models.API.Error.html">Error</a> class, which represents information about what triggered the failed request.
-The information from the top-level <a class="xref" href="EasyPost.Models.API.Error.html">Error</a> class is used to generate this error, and any sub-errors are stored as a list of <a class="xref" href="EasyPost.Models.API.Error.html">Error</a> objects.</p>
+This is typically due to a specific HTTP status code, such as 4xx or 5xx.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -111,19 +109,19 @@ The information from the top-level <a class="xref" href="EasyPost.Models.API.Err
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Exceptions_API_ApiError__ctor_System_String_System_Nullable_System_Int32__System_Nullable_System_String__System_Nullable_List_EasyPost_Models_API_Error___.md&amp;value=---%0Auid%3A%20EasyPost.Exceptions.API.ApiError.%23ctor(System.String%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Nullable%7BSystem.String%7D%2CSystem.Nullable%7BList%7BEasyPost.Models.API.Error%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Exceptions_API_ApiError__ctor_System_String_System_Nullable_System_Int32__System_Nullable_System_String__System_Nullable_List_System_Object___.md&amp;value=---%0Auid%3A%20EasyPost.Exceptions.API.ApiError.%23ctor(System.String%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Nullable%7BSystem.String%7D%2CSystem.Nullable%7BList%7BSystem.Object%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Exceptions/API/_Base.cs/#L67">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Exceptions/API/_Base.cs/#L86">View Source</a>
   </span>
   <a id="EasyPost_Exceptions_API_ApiError__ctor_" data-uid="EasyPost.Exceptions.API.ApiError.#ctor*"></a>
-  <h4 id="EasyPost_Exceptions_API_ApiError__ctor_System_String_System_Nullable_System_Int32__System_Nullable_System_String__System_Nullable_List_EasyPost_Models_API_Error___" data-uid="EasyPost.Exceptions.API.ApiError.#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.String},System.Nullable{List{EasyPost.Models.API.Error}})">ApiError(String, Nullable&lt;Int32&gt;, Nullable&lt;String&gt;, Nullable&lt;List&lt;Error&gt;&gt;)</h4>
+  <h4 id="EasyPost_Exceptions_API_ApiError__ctor_System_String_System_Nullable_System_Int32__System_Nullable_System_String__System_Nullable_List_System_Object___" data-uid="EasyPost.Exceptions.API.ApiError.#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.String},System.Nullable{List{System.Object}})">ApiError(String, Nullable&lt;Int32&gt;, Nullable&lt;String&gt;, Nullable&lt;List&lt;Object&gt;&gt;)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="EasyPost.Exceptions.API.ApiError.html">ApiError</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ApiError(string errorMessage, int? statusCode = null, string? errorType = null, List&lt;Error&gt;? errors = null)</code></pre>
+    <pre><code class="lang-csharp hljs">protected ApiError(string errorMessage, int? statusCode = null, string? errorType = null, List&lt;object&gt;? errors = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -154,9 +152,9 @@ The information from the top-level <a class="xref" href="EasyPost.Models.API.Err
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="EasyPost.Models.API.Error.html">Error</a>&gt;&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">List</span>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
         <td><span class="parametername">errors</span></td>
-        <td><p>Optional list of <a class="xref" href="EasyPost.Models.API.Error.html">Error</a> objects to store as a property.</p>
+        <td><p>Optional list of errors to store as a property.</p>
 </td>
       </tr>
     </tbody>
@@ -168,7 +166,7 @@ The information from the top-level <a class="xref" href="EasyPost.Models.API.Err
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Exceptions_API_ApiError_Code.md&amp;value=---%0Auid%3A%20EasyPost.Exceptions.API.ApiError.Code%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Exceptions/API/_Base.cs/#L27">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Exceptions/API/_Base.cs/#L26">View Source</a>
   </span>
   <h4 id="EasyPost_Exceptions_API_ApiError_Code" data-uid="EasyPost.Exceptions.API.ApiError.Code">Code</h4>
   <div class="markdown level1 summary"><p>The machine-readable error code returned by the API.</p>
@@ -198,15 +196,15 @@ The information from the top-level <a class="xref" href="EasyPost.Models.API.Err
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Exceptions_API_ApiError_Errors.md&amp;value=---%0Auid%3A%20EasyPost.Exceptions.API.ApiError.Errors%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Exceptions/API/_Base.cs/#L32">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Exceptions/API/_Base.cs/#L31">View Source</a>
   </span>
   <h4 id="EasyPost_Exceptions_API_ApiError_Errors" data-uid="EasyPost.Exceptions.API.ApiError.Errors">Errors</h4>
-  <div class="markdown level1 summary"><p>A list of <a class="xref" href="EasyPost.Models.API.Error.html">Error</a> objects that contain information about what triggered the failed request.</p>
+  <div class="markdown level1 summary"><p>A list of errors that contain information about what triggered the failed request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly List&lt;Error&gt;? Errors</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly List&lt;object&gt;? Errors</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -218,7 +216,7 @@ The information from the top-level <a class="xref" href="EasyPost.Models.API.Err
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="EasyPost.Models.API.Error.html">Error</a>&gt;&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">List</span>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -228,7 +226,7 @@ The information from the top-level <a class="xref" href="EasyPost.Models.API.Err
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Exceptions_API_ApiError_StatusCode.md&amp;value=---%0Auid%3A%20EasyPost.Exceptions.API.ApiError.StatusCode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Exceptions/API/_Base.cs/#L37">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Exceptions/API/_Base.cs/#L36">View Source</a>
   </span>
   <h4 id="EasyPost_Exceptions_API_ApiError_StatusCode" data-uid="EasyPost.Exceptions.API.ApiError.StatusCode">StatusCode</h4>
   <div class="markdown level1 summary"><p>The HTTP status code returned by the API.</p>
@@ -260,7 +258,7 @@ The information from the top-level <a class="xref" href="EasyPost.Models.API.Err
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Exceptions_API_ApiError_PrettyPrint.md&amp;value=---%0Auid%3A%20EasyPost.Exceptions.API.ApiError.PrettyPrint%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Exceptions/API/_Base.cs/#L43">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Exceptions/API/_Base.cs/#L42">View Source</a>
   </span>
   <a id="EasyPost_Exceptions_API_ApiError_PrettyPrint_" data-uid="EasyPost.Exceptions.API.ApiError.PrettyPrint*"></a>
   <h4 id="EasyPost_Exceptions_API_ApiError_PrettyPrint" data-uid="EasyPost.Exceptions.API.ApiError.PrettyPrint">PrettyPrint</h4>
@@ -300,7 +298,7 @@ The information from the top-level <a class="xref" href="EasyPost.Models.API.Err
                     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Exceptions_API_ApiError.md&amp;value=---%0Auid%3A%20EasyPost.Exceptions.API.ApiError%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Exceptions/API/_Base.cs/#L21" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Exceptions/API/_Base.cs/#L20" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

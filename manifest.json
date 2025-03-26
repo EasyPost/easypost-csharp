@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.ApiError.html",
-          "hash": "I3KksVXHcFgJ0I1Y4zKP9q5721sG1UsNp3wxfz5HNHg="
+          "hash": "cPcNYrReZw6XoiLFOJAx/aesCUHFHFCXO+Y+fgAgmFw="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.BadRequestError.html",
-          "hash": "pkYgHTEzZsVnHlT4ZOwXy+lIN1vVd51MI8twWT971zo="
+          "hash": "ogFoILnA4UN+bAuzZAW+eeDLzfsWm3f9VxA6Dk2MVrE="
         }
       },
       "is_incremental": false,
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.ConnectionError.html",
-          "hash": "EcDc1jku4AGvLjqwXNortEgLI1XC57hh1qvO64VHcX8="
+          "hash": "jDXP0jCKnceOeCedus9f/4YYr3VYsOMQvvQEAWLQjRo="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.GatewayTimeoutError.html",
-          "hash": "Ipbt2oklYzII9e8aTpxduUHUQJ/rpQ+x3i7ZgU7UdsE="
+          "hash": "e3Zrne2OKD56Ac/onPyPtxTpSeMiRj/knMv1XhbWnMU="
         }
       },
       "is_incremental": false,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.InternalServerError.html",
-          "hash": "rOO9pmTgi59QdrIMUCy21EizfXxYuQ3MtcULlcQYXpE="
+          "hash": "lwpYf+D5uecIr9Xt3+QZKZGrs7Kj/aCFJnMlLUooLZA="
         }
       },
       "is_incremental": false,
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.InvalidRequestError.html",
-          "hash": "q79M9fdtyydxJLwGJLTI8QIXLkliJ98JTYC+Lk06UHo="
+          "hash": "SICyAv/AabVWe3P5ChfgcGWOezSYVfWwrqPF7hOexSo="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.MethodNotAllowedError.html",
-          "hash": "AwVpEBfnDOU5rK6MRynbWoV66ybET5xk0toUqbw8ZWU="
+          "hash": "qIiVY5Ypyoa/KItb/i+N1eKGbct4Qv4DNa1Oh24HDVg="
         }
       },
       "is_incremental": false,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.NotFoundError.html",
-          "hash": "cJQlJk+VzOMLRgH1wNjwHU10wByI9Statglluv6db9o="
+          "hash": "ucHnAlIefkgVLViKLhWLY5PPy+5cq7uOnGYlbIyqSlU="
         }
       },
       "is_incremental": false,
@@ -177,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.PaymentError.html",
-          "hash": "fFFaKReKgv6yVjHKn+ZeRdH2mVt/FQrUWa9pX8qBrVY="
+          "hash": "veByGZX6WCtDJLl0E2BbiGX22Saym9mV1M6zhJAt72c="
         }
       },
       "is_incremental": false,
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.ProxyError.html",
-          "hash": "xm5l4OZEhxgUKupebSPAvqD8iFiO5cws26lq4hb+U3c="
+          "hash": "CToMtzCWU4Mo8zwkFtr5wp+9i8BvZL+aPrYBq+UmxtI="
         }
       },
       "is_incremental": false,
@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.RateLimitError.html",
-          "hash": "WmmSfIwgFjDse5Cyl7YIh/yzak7hTslPQw7k8fzwbhw="
+          "hash": "Wy1pUK70RwPHmHcmY60S5pj9ptptTZa2eyni6uerWMs="
         }
       },
       "is_incremental": false,
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.RedirectError.html",
-          "hash": "tjx5okroYwFK75LffJxoCGyRhPgA3o/ogTPt2c4SnvI="
+          "hash": "L61sbo1/eQqtXupClhlKp/4oO+J4c74o5FHj/Be5j6k="
         }
       },
       "is_incremental": false,
@@ -225,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.RetryError.html",
-          "hash": "hFwfdOFO7w8ovawTVfVQehJQ2WZfkEyWSbuCcvqs9VY="
+          "hash": "bTnvn3qu7EhSXOG5W1O3grdt+hRhbU1Bny+6YlvLSTs="
         }
       },
       "is_incremental": false,
@@ -237,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.ServiceUnavailableError.html",
-          "hash": "PDGdsSWYING2HaPPfCCcjxSJvBWGbKLRa2L/ucwwBJk="
+          "hash": "4Vg/cTKCanyPA15hMDq0PTZBrJ3FwWCt6S5HvZHC+Ko="
         }
       },
       "is_incremental": false,
@@ -249,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.SslError.html",
-          "hash": "yQBhZzN08UW3h9Ou7d5rhAhK2EZvCAxs0U3RUzS356o="
+          "hash": "OSkgaoeJjRBHFQFirA63x0pPG4VExjE5DttWTCbGud4="
         }
       },
       "is_incremental": false,
@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.TimeoutError.html",
-          "hash": "ecu82xW1wphVcJIOuHf5zHC/pUwT/E0GDAHPg6laZ+0="
+          "hash": "6HqkIcJCfnc5eVjd7ER8GW9d7QN0JW470O0CSwFqJH0="
         }
       },
       "is_incremental": false,
@@ -273,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.UnauthorizedError.html",
-          "hash": "NUMu1U+eUfKVfqC8ET5sHtpWwXjdJ1KKPKHclqLVncY="
+          "hash": "C1xtmsHI8g+bq8LJxFPJehdN4wRLnoJ0Csg3KlELk1k="
         }
       },
       "is_incremental": false,
@@ -285,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.UnknownHttpError.html",
-          "hash": "RIImWMQIpWT6yqCrCZw2Z0SrVwtJn/KcCAB5XOkeCu8="
+          "hash": "K5MvslPgdpRuEzJjdfPqTyVNwIufYtbIWjkzOmFx7HU="
         }
       },
       "is_incremental": false,
@@ -297,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Exceptions.API.html",
-          "hash": "8NtbZP7MFfSgpfK6yIHMIiLS9HVUWdnV7jgnLFUCJqo="
+          "hash": "va94fS9HibMwvWxa7sL/9IQC71mQ2KpLOHZc1KVZ/6A="
         }
       },
       "is_incremental": false,
@@ -581,6 +581,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.Models.API.AddressVerificationFieldError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.Models.API.AddressVerificationFieldError.html",
+          "hash": "d5zmZa1CShCLyBC9Ykvqh7xGVw6DGjP1bZ3MUnIsm3U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EasyPost.Models.API.ApiKey.yml",
       "output": {
         ".html": {
@@ -645,7 +657,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.Beta.PaymentRefund.html",
-          "hash": "iLhTDZaRrhUJEmsQ1Q0P62IXIu5AkKZwgWqom7O+cKo="
+          "hash": "uX7Fy8mI4ndeX38r03thuEzn3tWbSHlGoMMQw2yMbjA="
         }
       },
       "is_incremental": false,
@@ -929,18 +941,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/EasyPost.Models.API.Error.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/EasyPost.Models.API.Error.html",
-          "hash": "G5wvw8pJJNNujCSmR+U5AYFlATFs5r21MpGMdTmbYq8="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/EasyPost.Models.API.EstimateDeliveryDateForZipPairResult.yml",
       "output": {
         ".html": {
@@ -982,6 +982,18 @@
         ".html": {
           "relative_path": "api/EasyPost.Models.API.Fee.html",
           "hash": "g7nFSD+v+i1Munet4RqZv1UMwhsTnBNUsth8xwoODrY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.Models.API.FieldError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.Models.API.FieldError.html",
+          "hash": "BTCWrZMHy0IVQkwHpeRIG4u7HQJclojSy48/Gz+rUME="
         }
       },
       "is_incremental": false,
@@ -1089,7 +1101,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.PaymentMethod.Priority.html",
-          "hash": "FlcRxGDUsGTUzZHsQ9BN38sKOE2z1emZoljJAe5X2aA="
+          "hash": "6oiDmh2kzF1By6wN6GGTzddBHmuFyYU3JzXoIaD+J/4="
         }
       },
       "is_incremental": false,
@@ -1101,7 +1113,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.PaymentMethod.html",
-          "hash": "wUWNc5b5eSK5ZnUU39Ls4V4tUbarLGvTvCf5OPzq2q0="
+          "hash": "jbRPDgBgIHHzdXhHFazfvZfI+70wkQbueJCIReTyU60="
         }
       },
       "is_incremental": false,
@@ -1433,6 +1445,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.Models.API.StripeClientSecret.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.Models.API.StripeClientSecret.html",
+          "hash": "IhH09zjMag7ohqFMPyE3dYlmBgFAb2U3LbNz4uM44AQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EasyPost.Models.API.SupportedFeature.yml",
       "output": {
         ".html": {
@@ -1557,7 +1581,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.Verification.html",
-          "hash": "DvuSQZbCzIlP8q4K0O2JHbArA467UZEtRm1FHWENA7Q="
+          "hash": "3ftDfuHcaZ9APym7TcOBkYKy22oUfn8l1a4tCwAIC18="
         }
       },
       "is_incremental": false,
@@ -1617,7 +1641,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.html",
-          "hash": "t2GxKWUBiwYI4oKtE4SDlF8uOiBNHQX+4sEJwFnHi6E="
+          "hash": "9TiACQwF6clj5ozW/P9ClePl4ghZLJyEh8oBnCrjTAw="
         }
       },
       "is_incremental": false,
@@ -3141,7 +3165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.Beta.ReferralCustomerService.html",
-          "hash": "DTTygZroAJ2toRCIht3EpdzXoRWMHUDgtSDsdx8ZKIE="
+          "hash": "/SvT4P8kJqMkKvpyVKQqC6KJ61qE0GBQQzV7Okj/EEk="
         }
       },
       "is_incremental": false,
@@ -3333,7 +3357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.ReferralCustomerService.html",
-          "hash": "Sv76/k0H+H+7tvz+iB/OYR3Jr06o3JOUKmmLjxQmEJ0="
+          "hash": "moZUrvnklCZaqn0PVAX4Ndr533xvzyzj5dTFjtfPImk="
         }
       },
       "is_incremental": false,
@@ -3741,7 +3765,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost._base.EasyPostObject.html",
-          "hash": "6K179P6HcklK1wUAvqi8wq/DpR+fzFRdl2dEkoJGkio="
+          "hash": "WYVgJIaWg5wktrWMxFt8cVpohoyg8rnur679uof0VJE="
         }
       },
       "is_incremental": false,
@@ -3837,7 +3861,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "meo/wbJGOr7QIKsBqZdBp2VuNop0I0bJG+kY3Y0I//E="
+          "hash": "wL/aRvIZU0nR6CBsJBLRoyKuqo8B4v/o4mVbReqsCMo="
         }
       },
       "is_incremental": false,
@@ -3912,7 +3936,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 318,
+          "total_file_count": 320,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
