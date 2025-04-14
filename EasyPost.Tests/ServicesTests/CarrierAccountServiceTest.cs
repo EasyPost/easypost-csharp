@@ -47,6 +47,7 @@ namespace EasyPost.Tests.ServicesTests
 
             Assert.IsType<CarrierAccount>(carrierAccount);
             Assert.StartsWith("ca_", carrierAccount.Id);
+            Assert.Equal("DhlEcsAccount", carrierAccount.Type);
         }
 
         [Fact]
@@ -71,6 +72,26 @@ namespace EasyPost.Tests.ServicesTests
                 // Function should have been halted due to incompatible carrier account type
                 Assert.NotNull(e);
             }
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Parameters]
+        public async Task TestCreateOauth()
+        {
+            UseVCR("create_with_oauth");
+
+            EasyPost.Parameters.CarrierAccount.CreateOauth parameters = new()
+            {
+                Type = CarrierAccountType.AmazonShippingAccount.Name,
+            };
+
+            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
+            CleanUpAfterTest(carrierAccount.Id);
+
+            Assert.IsType<CarrierAccount>(carrierAccount);
+            Assert.StartsWith("ca_", carrierAccount.Id);
+            Assert.Equal("AmazonShippingAccount", carrierAccount.Type);
         }
 
         [Fact]

@@ -1,0 +1,144 @@
+[
+  {
+    "Duration": 472,
+    "RecordedAt": "2025-04-14T13:21:38.891143-06:00",
+    "Request": {
+      "Body": "{\"carrier_account_oauth_registrations\":{\"type\":\"AmazonShippingAccount\"},\"type\":\"AmazonShippingAccount\"}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "103"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/carrier_accounts/register_oauth"
+    },
+    "Response": {
+      "Body": "{\"id\":\"ca_54c1b9d5666944a5a13a4253352ecc98\",\"object\":\"CarrierAccount\",\"type\":\"AmazonShippingAccount\",\"clone\":false,\"created_at\":\"2025-04-14T19:21:38Z\",\"updated_at\":\"2025-04-14T19:21:38Z\",\"description\":null,\"reference\":null,\"billing_type\":\"carrier\",\"readable\":\"Amazon Shipping\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "1444"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "1520db3a67fd6042e2ba20fa0015f644",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.077423",
+        "x-node": "bigweb43nuq",
+        "x-version-label": "easypost-202504111751-33c61fb414-master",
+        "x-backend": "easypost",
+        "x-canary": "direct",
+        "x-proxied": "intlb3nuq 284c5d344a,extlb2nuq 99aac35317",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  },
+  {
+    "Duration": 256,
+    "RecordedAt": "2025-04-14T13:21:39.154048-06:00",
+    "Request": {
+      "Body": "",
+      "BodyContentType": "Text",
+      "ContentHeaders": {},
+      "Method": "GET",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/carrier_accounts/ca_54c1b9d5666944a5a13a4253352ecc98"
+    },
+    "Response": {
+      "Body": "{\"id\":\"ca_54c1b9d5666944a5a13a4253352ecc98\",\"object\":\"CarrierAccount\",\"type\":\"AmazonShippingAccount\",\"clone\":false,\"created_at\":\"2025-04-14T19:21:38Z\",\"updated_at\":\"2025-04-14T19:21:38Z\",\"description\":null,\"reference\":null,\"billing_type\":\"carrier\",\"readable\":\"Amazon Shipping\",\"logo\":null,\"fields\":{\"credentials\":{}},\"credentials\":{}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "1444"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "1520db3a67fd6042e2ba20fa0015f672",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.219481",
+        "x-node": "bigweb34nuq",
+        "x-version-label": "easypost-202504111751-33c61fb414-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb4nuq 284c5d344a,extlb2nuq 99aac35317",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  },
+  {
+    "Duration": 92,
+    "RecordedAt": "2025-04-14T13:21:39.251608-06:00",
+    "Request": {
+      "Body": "",
+      "BodyContentType": "Text",
+      "ContentHeaders": {},
+      "Method": "DELETE",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/carrier_accounts/ca_54c1b9d5666944a5a13a4253352ecc98"
+    },
+    "Response": {
+      "Body": "{}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "2"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "1520db3a67fd6043e2ba20fa0015f6c3",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.056705",
+        "x-node": "bigweb36nuq",
+        "x-version-label": "easypost-202504111751-33c61fb414-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb3nuq 284c5d344a,extlb2nuq 99aac35317",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  }
+]
