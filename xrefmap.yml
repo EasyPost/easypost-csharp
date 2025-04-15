@@ -2994,6 +2994,12 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.CarrierAccountType.All
   nameWithType: CarrierAccountType.All
+- uid: EasyPost.Models.API.CarrierAccountType.AmazonShippingAccount
+  name: AmazonShippingAccount
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_AmazonShippingAccount
+  commentId: F:EasyPost.Models.API.CarrierAccountType.AmazonShippingAccount
+  fullName: EasyPost.Models.API.CarrierAccountType.AmazonShippingAccount
+  nameWithType: CarrierAccountType.AmazonShippingAccount
 - uid: EasyPost.Models.API.CarrierAccountType.FedEx
   name: FedEx
   href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_FedEx
@@ -11883,6 +11889,64 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Type
   nameWithType: CreateFedExSmartPost.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateOauth
+  name: CreateOauth
+  href: api/EasyPost.Parameters.CarrierAccount.CreateOauth.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.CreateOauth
+  fullName: EasyPost.Parameters.CarrierAccount.CreateOauth
+  nameWithType: CreateOauth
+- uid: EasyPost.Parameters.CarrierAccount.CreateOauth.Description
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.CreateOauth.html#EasyPost_Parameters_CarrierAccount_CreateOauth_Description
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateOauth.Description
+  fullName: EasyPost.Parameters.CarrierAccount.CreateOauth.Description
+  nameWithType: CreateOauth.Description
+- uid: EasyPost.Parameters.CarrierAccount.CreateOauth.Description*
+  name: Description
+  href: api/EasyPost.Parameters.CarrierAccount.CreateOauth.html#EasyPost_Parameters_CarrierAccount_CreateOauth_Description_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateOauth.Description
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateOauth.Description
+  nameWithType: CreateOauth.Description
+- uid: EasyPost.Parameters.CarrierAccount.CreateOauth.Reference
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.CreateOauth.html#EasyPost_Parameters_CarrierAccount_CreateOauth_Reference
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateOauth.Reference
+  fullName: EasyPost.Parameters.CarrierAccount.CreateOauth.Reference
+  nameWithType: CreateOauth.Reference
+- uid: EasyPost.Parameters.CarrierAccount.CreateOauth.Reference*
+  name: Reference
+  href: api/EasyPost.Parameters.CarrierAccount.CreateOauth.html#EasyPost_Parameters_CarrierAccount_CreateOauth_Reference_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateOauth.Reference
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateOauth.Reference
+  nameWithType: CreateOauth.Reference
+- uid: EasyPost.Parameters.CarrierAccount.CreateOauth.ToDictionary
+  name: ToDictionary()
+  href: api/EasyPost.Parameters.CarrierAccount.CreateOauth.html#EasyPost_Parameters_CarrierAccount_CreateOauth_ToDictionary
+  commentId: M:EasyPost.Parameters.CarrierAccount.CreateOauth.ToDictionary
+  fullName: EasyPost.Parameters.CarrierAccount.CreateOauth.ToDictionary()
+  nameWithType: CreateOauth.ToDictionary()
+- uid: EasyPost.Parameters.CarrierAccount.CreateOauth.ToDictionary*
+  name: ToDictionary
+  href: api/EasyPost.Parameters.CarrierAccount.CreateOauth.html#EasyPost_Parameters_CarrierAccount_CreateOauth_ToDictionary_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateOauth.ToDictionary
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateOauth.ToDictionary
+  nameWithType: CreateOauth.ToDictionary
+- uid: EasyPost.Parameters.CarrierAccount.CreateOauth.Type
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.CreateOauth.html#EasyPost_Parameters_CarrierAccount_CreateOauth_Type
+  commentId: P:EasyPost.Parameters.CarrierAccount.CreateOauth.Type
+  fullName: EasyPost.Parameters.CarrierAccount.CreateOauth.Type
+  nameWithType: CreateOauth.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateOauth.Type*
+  name: Type
+  href: api/EasyPost.Parameters.CarrierAccount.CreateOauth.html#EasyPost_Parameters_CarrierAccount_CreateOauth_Type_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateOauth.Type
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateOauth.Type
+  nameWithType: CreateOauth.Type
 - uid: EasyPost.Parameters.CarrierAccount.CreateUps
   name: CreateUps
   href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html

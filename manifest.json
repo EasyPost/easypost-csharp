@@ -729,7 +729,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.CarrierAccountType.html",
-          "hash": "upE8AKa+KTapeM2ypmhekvnw7xmH49hTiaBkERsmI8c="
+          "hash": "cF4acVorlCQF4cbeWQ5HIJKHjkadYo2Cetouuy3wzV4="
         }
       },
       "is_incremental": false,
@@ -1869,7 +1869,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.CarrierAccount.ACreate.html",
-          "hash": "duhIBSAnFZ+HYKGIX22EBttXldC6qfwYXyfZiP0Um/w="
+          "hash": "46vOll88a7eZ5nLqf/0cmdfKoycF17Dly2DzE0ahi9w="
         }
       },
       "is_incremental": false,
@@ -1918,6 +1918,18 @@
         ".html": {
           "relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html",
           "hash": "b3kruVmhVbJT3LY2WTVYEoojI/G0JFQy4ct4wEiv0bY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateOauth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateOauth.html",
+          "hash": "WJvbnJyN/u+CjNieR/nAU1OyTbVDh199rNjBtH83MnM="
         }
       },
       "is_incremental": false,
@@ -2013,7 +2025,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.CarrierAccount.html",
-          "hash": "zWkQIlgXjOcBeODiH40dL4a/e7PwRHIMx5kMMQYMYEM="
+          "hash": "0aAiiaR5QZOF9GABeCVsNkopdE+2zULZ9MmokmeySzg="
         }
       },
       "is_incremental": false,
@@ -3201,7 +3213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.CarrierAccountService.html",
-          "hash": "u5Fg9t7vXiZftH8nYnsI0UKgLK36+xg5lXqekAKeYCE="
+          "hash": "ajLv9D613l+StnBUoZTh/e9nHNvQsPQhz+RkmOcGvVw="
         }
       },
       "is_incremental": false,
@@ -3861,7 +3873,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "wL/aRvIZU0nR6CBsJBLRoyKuqo8B4v/o4mVbReqsCMo="
+          "hash": "njGSaSOBagu3VDrqO89wFYTWOV4iY50jJGUl6zIRY9c="
         }
       },
       "is_incremental": false,
@@ -3936,7 +3948,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 320,
+          "total_file_count": 321,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
