@@ -134,6 +134,7 @@ namespace EasyPost
                 CarrierAccountType.Ups.Name,
                 CarrierAccountType.UpsMailInnovations.Name,
                 CarrierAccountType.UpsSurePost.Name,
+                CarrierAccountType.AmazonShippingAccount.Name,
             };
 
             /// <summary>
@@ -154,6 +155,7 @@ namespace EasyPost
                 {
                     { new List<string> { CarrierAccountType.FedEx.Name, CarrierAccountType.FedExSmartPost.Name }.Contains(carrierType), () => endpoint = CustomCreateEndpoint },
                     { new List<string> { CarrierAccountType.Ups.Name, CarrierAccountType.UpsMailInnovations.Name, CarrierAccountType.UpsSurePost.Name }.Contains(carrierType), () => endpoint = UpsOAuthCreateEndpoint },
+                    { new List<string> { CarrierAccountType.AmazonShippingAccount.Name, }.Contains(carrierType), () => endpoint = OauthCreateEndpoint },
                     { SwitchCaseScenario.Default, () => endpoint = StandardCreateEndpoint },
                 };
 
@@ -186,6 +188,7 @@ namespace EasyPost
             internal const string UpsOAuthCreateEndpoint = "ups_oauth_registrations";
             internal const string StandardUpdateEndpoint = "carrier_accounts/{0}";
             internal const string UpsOAuthUpdateEndpoint = "ups_oauth_registrations/{0}";
+            internal const string OauthCreateEndpoint = "carrier_accounts/register_oauth";
         }
     }
 }

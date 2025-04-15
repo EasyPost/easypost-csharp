@@ -108,6 +108,7 @@ public class Basics
         var carrierAccountCreateFedExParameters = new EasyPost.Parameters.CarrierAccount.CreateFedEx();
         var carrierAccountCreateFedExSmartPostParameters = new EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost();
         var carrierAccountCreateUpsParameters = new EasyPost.Parameters.CarrierAccount.CreateUps();
+        var carrierAccountCreateOauthParameters = new EasyPost.Parameters.CarrierAccount.CreateOauth();
         var carrierAccountUpdateParameters = new EasyPost.Parameters.CarrierAccount.Update();
         var carrierMetadataRetrieveParameters = new EasyPost.Parameters.CarrierMetadata.Retrieve();
         var claimCreateParameters = new EasyPost.Parameters.Claim.Create();

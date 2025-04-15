@@ -28,8 +28,6 @@ namespace EasyPost.Services
 
         #region CRUD Operations
 
-        // TODO: Use ID or whole object as parameter?
-
         /// <summary>
         ///     Create a <see cref="CarrierAccount"/>.
         ///     <a href="https://docs.easypost.com/docs/carrier-accounts#create-a-carrieraccount">Related API documentation</a>.
