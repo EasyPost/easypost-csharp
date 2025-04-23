@@ -208,13 +208,13 @@ namespace EasyPost.Models.API
         public double? Weight { get; set; }
 
         /// <summary>
-        ///     Is the tracker in a finalized state
+        ///     Is the tracker in a finalized state.
         /// </summary>
         [JsonProperty("finalized")]
         public bool? Finalized { get; set; }
 
         /// <summary>
-        ///     Is the tracker for a return shipment
+        ///     Is the tracker for a return shipment.
         /// </summary>
         [JsonProperty("is_return")]
         public bool? IsReturn { get; set; }
