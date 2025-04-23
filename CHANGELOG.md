@@ -10,6 +10,7 @@
   - `ReferralCustomer.AddCreditCardFromStripe`
   - `ReferralCustomer.AddBankAccountFromStripe`
 - Adds `MerchantId` as Shipment option (closes #592)
+- Adds missing tracker props
 - Routes `AmazonShippingAccount` to the correct endpoint on create
 - Fixes error parsing
   - Allows for alternative format of `errors` field (previously we deserialized the `errors` field into a list of `Error` objects; however, sometimes the errors are simply a list of strings. This change make the `errors` field a list of `objects` allowing for either the new `FieldError` object or a list of strings. Users will need to check for the type of error returned and handle appropriately)
