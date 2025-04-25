@@ -24,6 +24,18 @@ namespace EasyPost.Models.API
         public string? Message { get; set; }
 
         /// <summary>
+        ///     A human-readable description of the scan event.
+        /// </summary>
+        [JsonProperty("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        ///     A code associated with the carrier.
+        /// </summary>
+        [JsonProperty("carrier_code")]
+        public string? CarrierCode { get; set; }
+
+        /// <summary>
         ///     The original source of the information for this scan event, usually the carrier.
         /// </summary>
         [JsonProperty("source")]
@@ -163,6 +175,12 @@ namespace EasyPost.Models.API
         /// </summary>
         [JsonProperty("tracking_location")]
         public TrackingLocation? TrackingLocation { get; set; }
+
+        /// <summary>
+        ///     The estimated delivery date of the tracker.
+        /// </summary>
+        [JsonProperty("est_delivery_date")]
+        public DateTime? EstDeliveryDate { get; set; }
 
         #endregion
 
