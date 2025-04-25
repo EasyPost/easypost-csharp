@@ -9433,6 +9433,32 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Tracker.Fees
   nameWithType: Tracker.Fees
+- uid: EasyPost.Models.API.Tracker.Finalized
+  name: Finalized
+  href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_Finalized
+  commentId: P:EasyPost.Models.API.Tracker.Finalized
+  fullName: EasyPost.Models.API.Tracker.Finalized
+  nameWithType: Tracker.Finalized
+- uid: EasyPost.Models.API.Tracker.Finalized*
+  name: Finalized
+  href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_Finalized_
+  commentId: Overload:EasyPost.Models.API.Tracker.Finalized
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Tracker.Finalized
+  nameWithType: Tracker.Finalized
+- uid: EasyPost.Models.API.Tracker.IsReturn
+  name: IsReturn
+  href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_IsReturn
+  commentId: P:EasyPost.Models.API.Tracker.IsReturn
+  fullName: EasyPost.Models.API.Tracker.IsReturn
+  nameWithType: Tracker.IsReturn
+- uid: EasyPost.Models.API.Tracker.IsReturn*
+  name: IsReturn
+  href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_IsReturn_
+  commentId: Overload:EasyPost.Models.API.Tracker.IsReturn
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Tracker.IsReturn
+  nameWithType: Tracker.IsReturn
 - uid: EasyPost.Models.API.Tracker.PublicUrl
   name: PublicUrl
   href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_PublicUrl
@@ -9578,6 +9604,19 @@ references:
   commentId: T:EasyPost.Models.API.TrackingDetail
   fullName: EasyPost.Models.API.TrackingDetail
   nameWithType: TrackingDetail
+- uid: EasyPost.Models.API.TrackingDetail.CarrierCode
+  name: CarrierCode
+  href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_CarrierCode
+  commentId: P:EasyPost.Models.API.TrackingDetail.CarrierCode
+  fullName: EasyPost.Models.API.TrackingDetail.CarrierCode
+  nameWithType: TrackingDetail.CarrierCode
+- uid: EasyPost.Models.API.TrackingDetail.CarrierCode*
+  name: CarrierCode
+  href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_CarrierCode_
+  commentId: Overload:EasyPost.Models.API.TrackingDetail.CarrierCode
+  isSpec: "True"
+  fullName: EasyPost.Models.API.TrackingDetail.CarrierCode
+  nameWithType: TrackingDetail.CarrierCode
 - uid: EasyPost.Models.API.TrackingDetail.Datetime
   name: Datetime
   href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_Datetime
@@ -9591,6 +9630,32 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.TrackingDetail.Datetime
   nameWithType: TrackingDetail.Datetime
+- uid: EasyPost.Models.API.TrackingDetail.Description
+  name: Description
+  href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_Description
+  commentId: P:EasyPost.Models.API.TrackingDetail.Description
+  fullName: EasyPost.Models.API.TrackingDetail.Description
+  nameWithType: TrackingDetail.Description
+- uid: EasyPost.Models.API.TrackingDetail.Description*
+  name: Description
+  href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_Description_
+  commentId: Overload:EasyPost.Models.API.TrackingDetail.Description
+  isSpec: "True"
+  fullName: EasyPost.Models.API.TrackingDetail.Description
+  nameWithType: TrackingDetail.Description
+- uid: EasyPost.Models.API.TrackingDetail.EstDeliveryDate
+  name: EstDeliveryDate
+  href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_EstDeliveryDate
+  commentId: P:EasyPost.Models.API.TrackingDetail.EstDeliveryDate
+  fullName: EasyPost.Models.API.TrackingDetail.EstDeliveryDate
+  nameWithType: TrackingDetail.EstDeliveryDate
+- uid: EasyPost.Models.API.TrackingDetail.EstDeliveryDate*
+  name: EstDeliveryDate
+  href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_EstDeliveryDate_
+  commentId: Overload:EasyPost.Models.API.TrackingDetail.EstDeliveryDate
+  isSpec: "True"
+  fullName: EasyPost.Models.API.TrackingDetail.EstDeliveryDate
+  nameWithType: TrackingDetail.EstDeliveryDate
 - uid: EasyPost.Models.API.TrackingDetail.Message
   name: Message
   href: api/EasyPost.Models.API.TrackingDetail.html#EasyPost_Models_API_TrackingDetail_Message
