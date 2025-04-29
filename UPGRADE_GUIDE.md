@@ -2,12 +2,63 @@
 
 Use the following guide to assist in the upgrade process of the `easypost-csharp` library between major versions.
 
+- [Upgrading from 6.x to 7.0](#upgrading-from-6x-to-70)
 - [Upgrading from 5.x to 6.0](#upgrading-from-5x-to-60)
 - [Upgrading from 4.x to 5.0](#upgrading-from-4x-to-50)
 - [Upgrading from 3.x to 4.x](#upgrading-from-3x-to-40)
 - [Upgrading from 2.x to 3.0](#upgrading-from-2x-to-30)
 
+## Upgrading from 6.x to 7.0
+
+### 7.0 High Impact Changes
+
+- [.NET Support](#70-net-support)
+- [Error Parsing](#70-error-parsing)
+
+### 7.0 Medium Impact Changes
+
+- [Deprecations](#70-deprecations)
+
+## 7.0 .NET Support
+
+*Likelihood of Impact: **High***
+
+.NET Framework 4.7.2+ now required.
+
+## 7.0 Error Parsing
+
+*Likelihood of Impact: **High***
+
+The `errors` key of an error response can return either a list of `FieldError` objects or a list of strings. The error parsing has been expanded to include both formats. As such, you will now need to check for the format of the `errors` field and handle the errors appropriately for the type that is returned.
+
+The `Error` model has been removed since it is unused and we directly assign properties of an error response to the `ApiError` type.
+
+The `PaymentRefund` now uses a list of `FieldError` instead of `Error` for the `errors` field.
+
+## 7.0 Deprecations
+
+The following parameters, functions, and classes have been removed:
+
+- `EasyPost.Models.API.DeliveryDateForZipPairEstimate.EasyPostTimeInTransitData` property (use `EasyPost.Models.API.DeliveryDateForZipPairEstimate.TimeInTransitDetails` instead)
+- `EasyPost.Models.API.Options.BillReceiverAccount` property (use `EasyPost.Models.API.Options.Payment` instead)
+- `EasyPost.Models.API.Options.BillReceiverPostalCode` property (use `EasyPost.Models.API.Options.Payment` instead)
+- `EasyPost.Models.API.Options.BillThirdPartyAccount` property (use `EasyPost.Models.API.Options.Payment` instead)
+- `EasyPost.Models.API.Options.BillThirdPartyCountry` property (use `EasyPost.Models.API.Options.Payment` instead)
+- `EasyPost.Models.API.Options.BillThirdPartyPostalCode` property (use `EasyPost.Models.API.Options.Payment` instead)
+- `EasyPost.Models.API.Rate.EstDeliveryDays` property (use `EasyPost.Models.API.Rate.DeliveryDays` instead)
+- `EasyPost.Models.API.SmartRate.EstDeliveryDays` property (use `EasyPost.Models.API.SmartRate.DeliveryDays` instead)
+- `EasyPost.Models.API.RateWithEstimatedDeliveryDate.EasyPostTimeInTransitData` property (use `EasyPost.Models.API.RateWithEstimatedDeliveryDate.TimeInTransitDetails` instead)
+- `EasyPost.Models.API.RecommendShipDateForShipmentResult.EasyPostTimeInTransitData` property (use `EasyPost.Models.API.RecommendShipDateForShipmentResult.TimeInTransitDetails` instead)
+- `EasyPost.Models.API.ShipDateForZipPairRecommendation.EasyPostTimeInTransitData` property (use `EasyPost.Models.API.ShipDateForZipPairRecommendation.TimeInTransitDetails` instead)
+- `EasyPost.Models.API.Tracker.TrackingUpdatedAt` property (use `EasyPost.Models.API.Tracker.UpdatedAt` instead)
+- `EasyPost.Models.API.TimeInTransitDetails` class (use `EasyPost.Models.API.TimeInTransitDetailsForDeliveryDateEstimate` instead)
+- `EasyPost.Parameters.Tracker.CreateList` class (related function was removed in v6.8.0)
+- `EasyPost.Constants.CarrierAccounts.FedExAccount` variable (use `EasyPost.Models.API.CarrierAccountType.FedEx` instead)
+- `EasyPost.Constants.CarrierAccounts.UpsAccount` variable (use `EasyPost.Models.API.CarrierAccountType.Ups` instead)
+
 ## Upgrading from 5.x to 6.0
+
+**NOTICE:** v6 is deprecated.
 
 ### 6.0 High Impact Changes
 
@@ -95,11 +146,13 @@ purchasedPickup = await myClient.Pickup.Buy(pickup.Id); // need to capture the u
 The process of configuring a `Client` has been overhauled to allow for more flexibility in the configuration process.
 
 Old method:
+
 ```csharp
 Client myClient = new Client("my_api_key");
 ```
 
 New method:
+
 ```csharp
 Client myClient = new Client(new ClientConfiguration("my_api_key"));
 ```
@@ -151,11 +204,13 @@ Some exception types have been consolidated or altered:
 The Parameter objects introduced in [`v4.5.0`](CHANGELOG.md#v450-2023-03-22) have been moved out of beta. As a result, the classes are available in a different namespace.
 
 Old namespace:
+
 ```csharp
 var parameters = new EasyPost.BetaFeatures.Parameters.Addresses.Create();
 ```
 
 New namespace:
+
 ```csharp
 var parameters = new EasyPost.Parameters.Address.Create();
 ```
