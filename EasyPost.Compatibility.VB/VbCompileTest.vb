@@ -1,5 +1,4 @@
 'This test checks that EasyPost C# code can be used in Visual Basic.
-'This test project is running on .NET 8.0, although a success here should mean a success in all versions of .NET.
 Imports Xunit
 
 Public Class VbCompileTest
