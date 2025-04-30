@@ -1,6 +1,8 @@
 # CHANGELOG
 
-## Next Release
+## v7.0.0 (2025-04-29)
+
+See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-6x-to-70) for more details.
 
 - Minimum .NET Framework is now v4.7.2
 - Adds custom webhook headers when creating/updating a webhook
@@ -120,6 +122,8 @@
 
 ## v6.0.0 (2023-12-06)
 
+See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-5x-to-60) for more details.
+
 - No changes since `v6.0.0-rc1`, see below.
 
 ## v6.0.0-rc1 (2023-12-06)
@@ -181,6 +185,8 @@
 - Constructors for all response objects (e.g. `EasyPost.Models.API.Address`) are publicly available for end-users to construct their own objects for testing purposes.
 
 ## v5.0.0 (2023-05-15)
+
+See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-4x-to-50) for more details.
 
 ### Breaking Changes
 
@@ -277,6 +283,8 @@
 
 ## v4.0.0 (2022-10-12)
 
+See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-3x-to-40) for more details.
+
 The `v4.0.0` release includes all the changes from the release candidate (see `v4.0.0-rc1` below) as well as the following items:
 
 - Improved API error parsing
@@ -368,7 +376,7 @@ The `v4.0.0` release includes all the changes from the release candidate (see `v
 
 ## v3.0.0
 
-Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
+See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-2x-to-30) for more details.
 
 ### Breaking Changes
 
