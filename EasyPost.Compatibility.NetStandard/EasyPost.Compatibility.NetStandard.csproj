@@ -3,12 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <RootNamespace>EasyPost.Compatibility.NetStandard</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="NetStandardCompileTest.cs" />
+    <ProjectReference Include="..\EasyPost\EasyPost.csproj" />
   </ItemGroup>
 
   <ItemGroup>
