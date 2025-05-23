@@ -14,27 +14,24 @@ namespace EasyPost.Parameters.CarrierAccount
         /// <summary>
         ///     Credentials to update for the <see cref="Models.API.CarrierAccount"/>.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "ups_oauth_registrations", "account_number")]
+        [TopLevelRequestParameter(Necessity.Optional, "carrier_account_oauth_registrations", "account_number")]
         public string? AccountNumber { get; set; }
 
         /// <summary>
         ///     Description to update for the <see cref="Models.API.CarrierAccount"/>.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "ups_oauth_registrations", "description")]
+        [TopLevelRequestParameter(Necessity.Optional, "carrier_account_oauth_registrations", "description")]
         public string? Description { get; set; }
 
         /// <summary>
         ///     Reference name to update for the <see cref="Models.API.CarrierAccount"/>.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "ups_oauth_registrations", "reference")]
+        [TopLevelRequestParameter(Necessity.Optional, "carrier_account_oauth_registrations", "reference")]
         public string? Reference { get; set; }
 
         #endregion
 
         /// <inheritdoc />
-        internal override bool ValidCarrierAccountType(string type) => Constants.CarrierAccounts.IsCustomWorkflowUpdate(type);
-
-        /// <inheritdoc />
-        internal override string Endpoint(string id) => $"ups_oauth_registrations/{id}";
+        internal override string Endpoint(string id) => $"carrier_account/{id}";
     }
 }

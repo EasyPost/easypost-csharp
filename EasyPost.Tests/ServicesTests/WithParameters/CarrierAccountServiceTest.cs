@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
-using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -99,7 +97,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         {
             UseVCR("create_ups");
 
-            // UPS should hit the `/ups_oauth_registrations` endpoint
+            // UPS should hit the `/carrier_account_oauth_registrations` endpoint
             Dictionary<string, object> data = Fixtures.BasicCarrierAccount;
 
             Parameters.CarrierAccount.CreateUps parameters = Fixtures.Parameters.CarrierAccounts.CreateUps(data);
@@ -194,44 +192,6 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Assert.IsType<CarrierAccount>(carrierAccount);
             Assert.StartsWith("ca_", carrierAccount.Id);
             // Assert.Equal(testDescription, carrierAccount.Description); // TODO: Uncomment when the UPS update endpoint is fixed
-        }
-
-        [Fact]
-        [CrudOperations.Create]
-        [Testing.Exception]
-        public async Task TestPreventUsersUsingGenericParameterSetWithCustomUpdateWorkflow()
-        {
-            UseMockClient(new List<TestUtils.MockRequest>
-            {
-                // Fake retrieving an existing UPS account
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Get, @"v2\/carrier_accounts\/ca_123$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new CarrierAccount
-                        {
-                            Id = "ca_123",
-                            Type = CarrierAccountType.Ups.Name,
-                        }
-                    )
-                ),
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Get, @"v2\/carrier_accounts\/ca_456$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new CarrierAccount
-                        {
-                            Id = "ca_456",
-                            Type = CarrierAccountType.FedEx.Name,
-                        }
-                    )
-                ),
-            });
-
-            Parameters.CarrierAccount.Update genericParameters = new();
-            Parameters.CarrierAccount.UpdateUps upsParameters = new();
-
-            // should raise an exception because we're using a generic Create set with a custom workflow type (UpsAccount)
-            await Assert.ThrowsAsync<InvalidParameterError>(async () => await Client.CarrierAccount.Update("ca_123", genericParameters));
-
-            // should raise an exception because we're using a UPS-specific Create set with a standard workflow type (FedExAccount)
-            await Assert.ThrowsAsync<InvalidParameterError>(async () => await Client.CarrierAccount.Update("ca_456", upsParameters));
         }
 
         #endregion

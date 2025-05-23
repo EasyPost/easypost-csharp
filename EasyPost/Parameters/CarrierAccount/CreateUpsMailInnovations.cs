@@ -17,29 +17,29 @@ namespace EasyPost.Parameters.CarrierAccount
         /// <summary>
         ///     The UPS account number.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Required, "ups_oauth_registrations", "account_number")]
+        [TopLevelRequestParameter(Necessity.Required, "carrier_account_oauth_registrations", "account_number")]
         public string? AccountNumber { get; set; }
 
         /// <summary>
         ///     Description for the new <see cref="Models.API.CarrierAccount"/>.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "ups_oauth_registrations", "description")]
+        [TopLevelRequestParameter(Necessity.Optional, "carrier_account_oauth_registrations", "description")]
         public string? Description { get; set; }
 
         /// <summary>
         ///     Reference name for the new <see cref="Models.API.CarrierAccount"/>.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "ups_oauth_registrations", "reference")]
+        [TopLevelRequestParameter(Necessity.Optional, "carrier_account_oauth_registrations", "reference")]
         public string? Reference { get; set; }
 
         /// <inheritdoc/>
-        [TopLevelRequestParameter(Necessity.Required, "ups_oauth_registrations", "type")]
+        [TopLevelRequestParameter(Necessity.Required, "carrier_account_oauth_registrations", "type")]
         public override string? Type { get; set; }
 
         #endregion
 
         /// <inheritdoc cref="EasyPost.Parameters.CarrierAccount.ACreate.Endpoint"/>
-        internal override string Endpoint => Constants.CarrierAccounts.UpsOAuthCreateEndpoint;
+        internal override string Endpoint => Constants.CarrierAccounts.OauthCreateEndpoint;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="CreateUpsMailInnovations"/> class.

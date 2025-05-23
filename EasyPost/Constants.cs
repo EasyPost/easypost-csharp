@@ -137,16 +137,6 @@ namespace EasyPost
                 CarrierAccountType.AmazonShippingAccount.Name,
             };
 
-            /// <summary>
-            ///     Carrier account types that support custom update workflows.
-            /// </summary>
-            private static List<string> CarrierTypesWithCustomUpdateWorkflows => new()
-            {
-                CarrierAccountType.Ups.Name,
-                CarrierAccountType.UpsMailInnovations.Name,
-                CarrierAccountType.UpsSurePost.Name,
-            };
-
             internal static string DeriveCreateEndpoint(string carrierType)
             {
                 string endpoint = StandardCreateEndpoint;
@@ -154,24 +144,8 @@ namespace EasyPost
                 var @switch = new SwitchCase
                 {
                     { new List<string> { CarrierAccountType.FedEx.Name, CarrierAccountType.FedExSmartPost.Name }.Contains(carrierType), () => endpoint = CustomCreateEndpoint },
-                    { new List<string> { CarrierAccountType.Ups.Name, CarrierAccountType.UpsMailInnovations.Name, CarrierAccountType.UpsSurePost.Name }.Contains(carrierType), () => endpoint = UpsOAuthCreateEndpoint },
-                    { new List<string> { CarrierAccountType.AmazonShippingAccount.Name, }.Contains(carrierType), () => endpoint = OauthCreateEndpoint },
+                    { new List<string> { CarrierAccountType.AmazonShippingAccount.Name, CarrierAccountType.Ups.Name, CarrierAccountType.UpsMailInnovations.Name, CarrierAccountType.UpsSurePost.Name, }.Contains(carrierType), () => endpoint = OauthCreateEndpoint },
                     { SwitchCaseScenario.Default, () => endpoint = StandardCreateEndpoint },
-                };
-
-                @switch.MatchFirstTrue();
-
-                return endpoint;
-            }
-
-            internal static string DeriveUpdateEndpoint(string carrierType, string id)
-            {
-                string endpoint = string.Format(CultureInfo.InvariantCulture, StandardUpdateEndpoint, id);
-
-                var @switch = new SwitchCase
-                {
-                    { new List<string> { CarrierAccountType.Ups.Name, CarrierAccountType.UpsMailInnovations.Name, CarrierAccountType.UpsSurePost.Name }.Contains(carrierType), () => endpoint = string.Format(CultureInfo.InvariantCulture, UpsOAuthUpdateEndpoint, id) },
-                    { SwitchCaseScenario.Default, () => endpoint = string.Format(CultureInfo.InvariantCulture, StandardUpdateEndpoint, id) },
                 };
 
                 @switch.MatchFirstTrue();
@@ -181,14 +155,10 @@ namespace EasyPost
 
             internal static bool IsCustomWorkflowCreate(string carrierType) => CarrierTypesWithCustomCreateWorkflows.Contains(carrierType);
 
-            internal static bool IsCustomWorkflowUpdate(string carrierType) => CarrierTypesWithCustomUpdateWorkflows.Contains(carrierType);
-
             internal const string StandardCreateEndpoint = "carrier_accounts";
             internal const string CustomCreateEndpoint = "carrier_accounts/register";
-            internal const string UpsOAuthCreateEndpoint = "ups_oauth_registrations";
-            internal const string StandardUpdateEndpoint = "carrier_accounts/{0}";
-            internal const string UpsOAuthUpdateEndpoint = "ups_oauth_registrations/{0}";
             internal const string OauthCreateEndpoint = "carrier_accounts/register_oauth";
+            internal const string StandardUpdateEndpoint = "carrier_accounts/{0}";
         }
     }
 }
