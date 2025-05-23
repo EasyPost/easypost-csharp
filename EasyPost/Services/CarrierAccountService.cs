@@ -121,7 +121,6 @@ namespace EasyPost.Services
         [Obsolete("This function does not support UPS accounts. Please use the Update(string, Parameters.CarrierAccount.AUpdate) function instead for all carrier account updates.")]
         public async Task<CarrierAccount> Update(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
-
             parameters = parameters.Wrap("carrier_account");
 
             return await RequestAsync<CarrierAccount>(Method.Put, $"carrier_accounts/{id}", cancellationToken, parameters);
