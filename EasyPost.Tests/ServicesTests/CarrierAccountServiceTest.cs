@@ -146,39 +146,6 @@ namespace EasyPost.Tests.ServicesTests
         }
 
         [Fact]
-        [CrudOperations.Create]
-        [Testing.Parameters]
-        public async Task TestUpdateWithCustomWorkflow()
-        {
-            UseMockClient(new List<TestUtils.MockRequest>
-            {
-                // Fake retrieving an existing UPS account
-                new(
-                    new TestUtils.MockRequestMatchRules(Method.Get, @"v2\/carrier_accounts\/ca_123$"),
-                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new CarrierAccount
-                        {
-                            Id = "ca_123",
-                            Type = CarrierAccountType.Ups.Name,
-                        }
-                    )
-                )
-            });
-
-            //  UPS should trigger a function error since not supported by legacy parameter method
-            try
-            {
-                Dictionary<string, object> parameters = new Dictionary<string, object>();
-                CarrierAccount carrierAccount = await Client.CarrierAccount.Update("ca_123", parameters);
-                Assert.Fail("Expected an exception to be thrown");
-            }
-            catch (InvalidFunctionError e)
-            {
-                // Function should have been halted due to incompatible carrier account type
-                Assert.NotNull(e);
-            }
-        }
-
-        [Fact]
         [CrudOperations.Delete]
         [Testing.Function]
         public async Task TestDelete()

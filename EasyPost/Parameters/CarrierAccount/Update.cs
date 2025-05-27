@@ -40,9 +40,6 @@ namespace EasyPost.Parameters.CarrierAccount
         #endregion
 
         /// <inheritdoc />
-        internal override bool ValidCarrierAccountType(string type) => !Constants.CarrierAccounts.IsCustomWorkflowUpdate(type);
-
-        /// <inheritdoc />
         internal override string Endpoint(string id) => $"carrier_accounts/{id}";
     }
 
@@ -53,13 +50,6 @@ namespace EasyPost.Parameters.CarrierAccount
     public abstract class AUpdate : BaseParameters<Models.API.CarrierAccount>
     {
         #region Request Parameters
-
-        /// <summary>
-        ///     Check if the provided carrier account type is valid for this parameter set.
-        /// </summary>
-        /// <param name="type">The carrier account type to check.</param>
-        /// <returns>True if the carrier account type is valid; otherwise, false.</returns>
-        internal abstract bool ValidCarrierAccountType(string type);
 
         /// <summary>
         ///     Get the endpoint for the carrier account update.
