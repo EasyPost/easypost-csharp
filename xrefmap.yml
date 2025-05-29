@@ -3586,6 +3586,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Claim.RecipientName
   nameWithType: Claim.RecipientName
+- uid: EasyPost.Models.API.Claim.Reference
+  name: Reference
+  href: api/EasyPost.Models.API.Claim.html#EasyPost_Models_API_Claim_Reference
+  commentId: P:EasyPost.Models.API.Claim.Reference
+  fullName: EasyPost.Models.API.Claim.Reference
+  nameWithType: Claim.Reference
+- uid: EasyPost.Models.API.Claim.Reference*
+  name: Reference
+  href: api/EasyPost.Models.API.Claim.html#EasyPost_Models_API_Claim_Reference_
+  commentId: Overload:EasyPost.Models.API.Claim.Reference
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Claim.Reference
+  nameWithType: Claim.Reference
 - uid: EasyPost.Models.API.Claim.RequestedAmount
   name: RequestedAmount
   href: api/EasyPost.Models.API.Claim.html#EasyPost_Models_API_Claim_RequestedAmount
@@ -3794,6 +3807,18 @@ references:
   commentId: F:EasyPost.Models.API.ClaimPaymentMethod.MailedCheck
   fullName: EasyPost.Models.API.ClaimPaymentMethod.MailedCheck
   nameWithType: ClaimPaymentMethod.MailedCheck
+- uid: EasyPost.Models.API.ClaimPaymentMethod.ReplacementOrder
+  name: ReplacementOrder
+  href: api/EasyPost.Models.API.ClaimPaymentMethod.html#EasyPost_Models_API_ClaimPaymentMethod_ReplacementOrder
+  commentId: F:EasyPost.Models.API.ClaimPaymentMethod.ReplacementOrder
+  fullName: EasyPost.Models.API.ClaimPaymentMethod.ReplacementOrder
+  nameWithType: ClaimPaymentMethod.ReplacementOrder
+- uid: EasyPost.Models.API.ClaimPaymentMethod.StoreCredit
+  name: StoreCredit
+  href: api/EasyPost.Models.API.ClaimPaymentMethod.html#EasyPost_Models_API_ClaimPaymentMethod_StoreCredit
+  commentId: F:EasyPost.Models.API.ClaimPaymentMethod.StoreCredit
+  fullName: EasyPost.Models.API.ClaimPaymentMethod.StoreCredit
+  nameWithType: ClaimPaymentMethod.StoreCredit
 - uid: EasyPost.Models.API.ClaimType
   name: ClaimType
   href: api/EasyPost.Models.API.ClaimType.html
@@ -12737,6 +12762,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Claim.Create.RecipientName
   nameWithType: Create.RecipientName
+- uid: EasyPost.Parameters.Claim.Create.Reference
+  name: Reference
+  href: api/EasyPost.Parameters.Claim.Create.html#EasyPost_Parameters_Claim_Create_Reference
+  commentId: P:EasyPost.Parameters.Claim.Create.Reference
+  fullName: EasyPost.Parameters.Claim.Create.Reference
+  nameWithType: Create.Reference
+- uid: EasyPost.Parameters.Claim.Create.Reference*
+  name: Reference
+  href: api/EasyPost.Parameters.Claim.Create.html#EasyPost_Parameters_Claim_Create_Reference_
+  commentId: Overload:EasyPost.Parameters.Claim.Create.Reference
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Claim.Create.Reference
+  nameWithType: Create.Reference
 - uid: EasyPost.Parameters.Claim.Create.SupportingDocumentationAttachments
   name: SupportingDocumentationAttachments
   href: api/EasyPost.Parameters.Claim.Create.html#EasyPost_Parameters_Claim_Create_SupportingDocumentationAttachments

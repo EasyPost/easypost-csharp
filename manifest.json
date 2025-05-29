@@ -825,7 +825,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.Claim.html",
-          "hash": "BJ/a2IN/pJvhh1p4V6QSbYBAh5zccJPZ60lnsjYJy8Y="
+          "hash": "4H4I3LkuMuqsXPCVyii5mTu4QH5TYBcPxy/+xtDJRSI="
         }
       },
       "is_incremental": false,
@@ -837,7 +837,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.ClaimCollection.html",
-          "hash": "KzLHTLohquOBCUQiFyFMC7NxfkDRruewvoQzgYoImfI="
+          "hash": "FWOXASFYp2y35+95aIy8eLyWSSC/FbS6RJPlM9O/cdg="
         }
       },
       "is_incremental": false,
@@ -861,7 +861,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.ClaimPaymentMethod.html",
-          "hash": "+WNndITicbO6UvEPzurO1TdDAs4HmasDOrzMC4BieAs="
+          "hash": "2qrGqOM86zZRw8hM1EfKJyxCLxhU5f7ve9Z7I+fRKlI="
         }
       },
       "is_incremental": false,
@@ -2073,7 +2073,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.Claim.Create.html",
-          "hash": "gxIcKlz0x29erZoNPhvwohm3qZY4NfWC5JXqSHfPjZQ="
+          "hash": "/nFi8Yx4OpGqydxjs9JnLcolR+ZdXU4yuQAmCvzMwJ0="
         }
       },
       "is_incremental": false,
