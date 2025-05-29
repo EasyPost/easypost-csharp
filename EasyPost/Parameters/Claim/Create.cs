@@ -65,6 +65,12 @@ namespace EasyPost.Parameters.Claim
         public string? RecipientName { get; set; }
 
         /// <summary>
+        ///     An optional value that may be used in place of ID when doing Retrieve calls for this claim.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "reference")]
+        public string? Reference { get; set; }
+
+        /// <summary>
         ///     The email address of the contact for the claim.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "contact_email")]

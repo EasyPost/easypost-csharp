@@ -84,6 +84,12 @@ namespace EasyPost.Models.API
         public string? RecipientName { get; set; }
 
         /// <summary>
+        ///     An optional value that may be used in place of ID when doing Retrieve calls for this claim.
+        /// </summary>
+        [JsonProperty("reference")]
+        public string? Reference { get; set; }
+
+        /// <summary>
         ///     The amount that has been requested for reimbursement.
         /// </summary>
         [JsonProperty("requested_amount")]
