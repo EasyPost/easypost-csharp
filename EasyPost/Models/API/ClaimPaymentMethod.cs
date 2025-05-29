@@ -24,6 +24,18 @@ public class ClaimPaymentMethod : ValueEnum
     public static readonly ClaimPaymentMethod ACH = new(3, "ach");
 
     /// <summary>
+    ///     An enum representing paying a claim reimbursement via a replacement order.
+    /// </summary>
+    // ReSharper disable once InconsistentNaming
+    public static readonly ClaimPaymentMethod ReplacementOrder = new(4, "replacement_order");
+
+    /// <summary>
+    ///     An enum representing paying a claim reimbursement via store credit.
+    /// </summary>
+    // ReSharper disable once InconsistentNaming
+    public static readonly ClaimPaymentMethod StoreCredit = new(5, "store_credit");
+
+    /// <summary>
     ///     Initializes a new instance of the <see cref="ClaimPaymentMethod"/> class.
     /// </summary>
     /// <param name="id">The internal ID of this enum.</param>

@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v7.1.0 (2025-05-29)
+
+- Adds `Reference` to Claims
+- Adds `ReplacementOrder` and `StoreCredit` to Claim `PaymentMethod` list
+
 ## v7.0.1 (2025-05-27)
 
 - Corrects the endpoint used for creating/updating UPS accounts
