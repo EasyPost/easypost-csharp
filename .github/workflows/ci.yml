@@ -11,6 +11,8 @@ jobs:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v4
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
 
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v4
