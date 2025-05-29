@@ -14,6 +14,7 @@ jobs:
       - name: Set up authenticity certificate
         run: |
           echo "${{ secrets.SM_CLIENT_CERT_FILE_B64 }}" | base64 --decode > /d/Certificate_pkcs12.p12
+          echo "${{ secrets.SM_CLIENT_CERT_PASSWORD }}" > /d/Certificate_pkcs12_password.txt
         shell: bash
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
