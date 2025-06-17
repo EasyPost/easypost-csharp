@@ -40,6 +40,9 @@ namespace EasyPost.Tests._Utilities
         [JsonProperty("insurances")]
         public Insurances Insurances { get; set; }
 
+        [JsonProperty("luma")]
+        public Luma Luma { get; set; }
+
         [JsonProperty("orders")]
         public Orders Orders { get; set; }
 
@@ -184,6 +187,16 @@ namespace EasyPost.Tests._Utilities
 
         [JsonProperty("basic")]
         public Dictionary<string, object> Basic { get; set; }
+
+        #endregion
+    }
+
+    public class Luma
+    {
+        #region JSON Properties
+
+        [JsonProperty("ruleset_name")]
+        public string RulesetName { get; set; }
 
         #endregion
     }

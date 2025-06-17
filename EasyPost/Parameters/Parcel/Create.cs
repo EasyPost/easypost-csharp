@@ -21,6 +21,8 @@ namespace EasyPost.Parameters.Parcel
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "id")]
         [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "id")]
         [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Luma.CreateAndBuy), Necessity.Optional, "id")]
+        [NestedRequestParameter(typeof(Luma.GetPromise), Necessity.Optional, "id")]
         public string? Id { get; set; }
 
         /// <summary>
@@ -29,6 +31,8 @@ namespace EasyPost.Parameters.Parcel
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "height")]
         [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "height")]
         [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "height")]
+        [NestedRequestParameter(typeof(Luma.CreateAndBuy), Necessity.Optional, "height")]
+        [NestedRequestParameter(typeof(Luma.GetPromise), Necessity.Optional, "height")]
         public double? Height { get; set; }
 
         /// <summary>
@@ -37,6 +41,8 @@ namespace EasyPost.Parameters.Parcel
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "length")]
         [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "length")]
         [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "length")]
+        [NestedRequestParameter(typeof(Luma.CreateAndBuy), Necessity.Optional, "length")]
+        [NestedRequestParameter(typeof(Luma.GetPromise), Necessity.Optional, "length")]
         public double? Length { get; set; }
 
         /// <summary>
@@ -45,6 +51,8 @@ namespace EasyPost.Parameters.Parcel
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "weight")]
         [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "weight")]
         [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "weight")]
+        [NestedRequestParameter(typeof(Luma.CreateAndBuy), Necessity.Optional, "weight")]
+        [NestedRequestParameter(typeof(Luma.GetPromise), Necessity.Optional, "weight")]
         public double? Weight { get; set; }
 
         /// <summary>
@@ -53,6 +61,8 @@ namespace EasyPost.Parameters.Parcel
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "width")]
         [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "width")]
         [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "width")]
+        [NestedRequestParameter(typeof(Luma.CreateAndBuy), Necessity.Optional, "width")]
+        [NestedRequestParameter(typeof(Luma.GetPromise), Necessity.Optional, "width")]
         public double? Width { get; set; }
 
         /// <summary>
@@ -61,6 +71,8 @@ namespace EasyPost.Parameters.Parcel
         [TopLevelRequestParameter(Necessity.Optional, "parcel", "predefined_package")]
         [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "predefined_package")]
         [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "predefined_package")]
+        [NestedRequestParameter(typeof(Luma.CreateAndBuy), Necessity.Optional, "predefined_package")]
+        [NestedRequestParameter(typeof(Luma.GetPromise), Necessity.Optional, "predefined_package")]
         public string? PredefinedPackage { get; set; }
 
         #endregion

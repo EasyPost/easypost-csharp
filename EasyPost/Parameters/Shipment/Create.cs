@@ -151,6 +151,7 @@ namespace EasyPost.Parameters.Shipment
         [NestedRequestParameter(typeof(Batch.Create), Necessity.Optional, "carrier_accounts")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "carrier_accounts")]
         [NestedRequestParameter(typeof(ScanForm.Create), Necessity.Optional, "carrier_accounts")]
+        [NestedRequestParameter(typeof(Luma.CreateAndBuy), Necessity.Optional, "carrier_accounts")]
         public List<string>? CarrierAccountIds { get; set; }
 
         #endregion

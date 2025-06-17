@@ -130,6 +130,10 @@ namespace EasyPost.Tests._Utilities
 
         internal static Billing Billing => GetFixtureStructure().Billing;
 
+        internal static string LumaRulesetName => GetFixtureStructure().Luma.RulesetName;
+
+        internal static string LumaPlannedShipDate => "2025-06-17";
+
         private static FixtureStructure GetFixtureStructure()
         {
             string fixtureData = ReadFixtureData();
@@ -457,6 +461,34 @@ namespace EasyPost.Tests._Utilities
                         AfterId = fixture.GetOrNull<string>("after_id"),
                         StartDatetime = fixture.GetOrNull<string>("start_datetime"),
                         EndDatetime = fixture.GetOrNull<string>("end_datetime"),
+                    };
+                }
+            }
+
+            internal static class Luma
+            {
+                internal static ParameterSets.Luma.CreateAndBuy CreateAndBuy(Dictionary<string, object> fixture)
+                {
+
+                    return new ParameterSets.Luma.CreateAndBuy
+                    {
+                        ToAddress = Addresses.Create(fixture.GetOrNull<Dictionary<string, object>>("to_address")),
+                        FromAddress = Addresses.Create(fixture.GetOrNull<Dictionary<string, object>>("from_address")),
+                        Parcel = Parcels.Create(fixture.GetOrNull<Dictionary<string, object>>("parcel")),
+                        RulesetName = Fixtures.LumaRulesetName,
+                        PlannedShipDate = Fixtures.LumaPlannedShipDate,
+                    };
+                }
+
+                internal static ParameterSets.Luma.GetPromise GetPromise(Dictionary<string, object> fixture)
+                {
+                    return new ParameterSets.Luma.GetPromise
+                    {
+                        ToAddress = Addresses.Create(fixture.GetOrNull<Dictionary<string, object>>("to_address")),
+                        FromAddress = Addresses.Create(fixture.GetOrNull<Dictionary<string, object>>("from_address")),
+                        Parcel = Parcels.Create(fixture.GetOrNull<Dictionary<string, object>>("parcel")),
+                        RulesetName = Fixtures.LumaRulesetName,
+                        PlannedShipDate = Fixtures.LumaPlannedShipDate,
                     };
                 }
             }

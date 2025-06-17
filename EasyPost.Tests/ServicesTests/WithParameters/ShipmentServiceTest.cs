@@ -326,6 +326,39 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             }
         }
 
+        [Fact]
+        [Testing.Function]
+        public async Task TestCreateAndBuyLuma()
+        {
+            UseVCR("create_and_buy_luma");
+
+            Dictionary<string, object> shipmentData = Fixtures.OneCallBuyShipment;
+            Parameters.Luma.CreateAndBuy parameters = Fixtures.Parameters.Luma.CreateAndBuy(shipmentData);
+            Shipment shipment = await Client.Shipment.CreateAndBuyLuma(parameters);
+
+            Assert.NotNull(shipment.PostageLabel);
+        }
+
+        [Fact]
+        [Testing.Function]
+        public async Task TestBuyLuma()
+        {
+            UseVCR("buy_luma");
+
+            Parameters.Shipment.Create shipmentParameters = Fixtures.Parameters.Shipments.Create(Fixtures.BasicShipment);
+            Shipment shipment = await Client.Shipment.Create(shipmentParameters);
+
+            Parameters.Luma.Buy buyParameters = new()
+            {
+                RulesetName = Fixtures.LumaRulesetName,
+                PlannedShipDate = Fixtures.LumaPlannedShipDate,
+            };
+
+            Shipment boughtShipment = await Client.Shipment.BuyLuma(shipment.Id, buyParameters);
+
+            Assert.NotNull(boughtShipment.PostageLabel);
+        }
+
         #endregion
 
         #endregion
