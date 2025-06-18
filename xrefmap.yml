@@ -824,6 +824,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Client.Insurance
   nameWithType: Client.Insurance
+- uid: EasyPost.Client.Luma
+  name: Luma
+  href: api/EasyPost.Client.html#EasyPost_Client_Luma
+  commentId: P:EasyPost.Client.Luma
+  fullName: EasyPost.Client.Luma
+  nameWithType: Client.Luma
+- uid: EasyPost.Client.Luma*
+  name: Luma
+  href: api/EasyPost.Client.html#EasyPost_Client_Luma_
+  commentId: Overload:EasyPost.Client.Luma
+  isSpec: "True"
+  fullName: EasyPost.Client.Luma
+  nameWithType: Client.Luma
 - uid: EasyPost.Client.Order
   name: Order
   href: api/EasyPost.Client.html#EasyPost_Client_Order
@@ -2100,6 +2113,103 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.AddressVerificationFieldError.Suggestion
   nameWithType: AddressVerificationFieldError.Suggestion
+- uid: EasyPost.Models.API.AiResults
+  name: AiResults
+  href: api/EasyPost.Models.API.AiResults.html
+  commentId: T:EasyPost.Models.API.AiResults
+  fullName: EasyPost.Models.API.AiResults
+  nameWithType: AiResults
+- uid: EasyPost.Models.API.AiResults.Carrier
+  name: Carrier
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_Carrier
+  commentId: P:EasyPost.Models.API.AiResults.Carrier
+  fullName: EasyPost.Models.API.AiResults.Carrier
+  nameWithType: AiResults.Carrier
+- uid: EasyPost.Models.API.AiResults.Carrier*
+  name: Carrier
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_Carrier_
+  commentId: Overload:EasyPost.Models.API.AiResults.Carrier
+  isSpec: "True"
+  fullName: EasyPost.Models.API.AiResults.Carrier
+  nameWithType: AiResults.Carrier
+- uid: EasyPost.Models.API.AiResults.MeetsRulesetRequirements
+  name: MeetsRulesetRequirements
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_MeetsRulesetRequirements
+  commentId: P:EasyPost.Models.API.AiResults.MeetsRulesetRequirements
+  fullName: EasyPost.Models.API.AiResults.MeetsRulesetRequirements
+  nameWithType: AiResults.MeetsRulesetRequirements
+- uid: EasyPost.Models.API.AiResults.MeetsRulesetRequirements*
+  name: MeetsRulesetRequirements
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_MeetsRulesetRequirements_
+  commentId: Overload:EasyPost.Models.API.AiResults.MeetsRulesetRequirements
+  isSpec: "True"
+  fullName: EasyPost.Models.API.AiResults.MeetsRulesetRequirements
+  nameWithType: AiResults.MeetsRulesetRequirements
+- uid: EasyPost.Models.API.AiResults.PredictedDeliverByDate
+  name: PredictedDeliverByDate
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_PredictedDeliverByDate
+  commentId: P:EasyPost.Models.API.AiResults.PredictedDeliverByDate
+  fullName: EasyPost.Models.API.AiResults.PredictedDeliverByDate
+  nameWithType: AiResults.PredictedDeliverByDate
+- uid: EasyPost.Models.API.AiResults.PredictedDeliverByDate*
+  name: PredictedDeliverByDate
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_PredictedDeliverByDate_
+  commentId: Overload:EasyPost.Models.API.AiResults.PredictedDeliverByDate
+  isSpec: "True"
+  fullName: EasyPost.Models.API.AiResults.PredictedDeliverByDate
+  nameWithType: AiResults.PredictedDeliverByDate
+- uid: EasyPost.Models.API.AiResults.PredictedDeliverDays
+  name: PredictedDeliverDays
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_PredictedDeliverDays
+  commentId: P:EasyPost.Models.API.AiResults.PredictedDeliverDays
+  fullName: EasyPost.Models.API.AiResults.PredictedDeliverDays
+  nameWithType: AiResults.PredictedDeliverDays
+- uid: EasyPost.Models.API.AiResults.PredictedDeliverDays*
+  name: PredictedDeliverDays
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_PredictedDeliverDays_
+  commentId: Overload:EasyPost.Models.API.AiResults.PredictedDeliverDays
+  isSpec: "True"
+  fullName: EasyPost.Models.API.AiResults.PredictedDeliverDays
+  nameWithType: AiResults.PredictedDeliverDays
+- uid: EasyPost.Models.API.AiResults.RateId
+  name: RateId
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_RateId
+  commentId: P:EasyPost.Models.API.AiResults.RateId
+  fullName: EasyPost.Models.API.AiResults.RateId
+  nameWithType: AiResults.RateId
+- uid: EasyPost.Models.API.AiResults.RateId*
+  name: RateId
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_RateId_
+  commentId: Overload:EasyPost.Models.API.AiResults.RateId
+  isSpec: "True"
+  fullName: EasyPost.Models.API.AiResults.RateId
+  nameWithType: AiResults.RateId
+- uid: EasyPost.Models.API.AiResults.RateUsd
+  name: RateUsd
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_RateUsd
+  commentId: P:EasyPost.Models.API.AiResults.RateUsd
+  fullName: EasyPost.Models.API.AiResults.RateUsd
+  nameWithType: AiResults.RateUsd
+- uid: EasyPost.Models.API.AiResults.RateUsd*
+  name: RateUsd
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_RateUsd_
+  commentId: Overload:EasyPost.Models.API.AiResults.RateUsd
+  isSpec: "True"
+  fullName: EasyPost.Models.API.AiResults.RateUsd
+  nameWithType: AiResults.RateUsd
+- uid: EasyPost.Models.API.AiResults.Service
+  name: Service
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_Service
+  commentId: P:EasyPost.Models.API.AiResults.Service
+  fullName: EasyPost.Models.API.AiResults.Service
+  nameWithType: AiResults.Service
+- uid: EasyPost.Models.API.AiResults.Service*
+  name: Service
+  href: api/EasyPost.Models.API.AiResults.html#EasyPost_Models_API_AiResults_Service_
+  commentId: Overload:EasyPost.Models.API.AiResults.Service
+  isSpec: "True"
+  fullName: EasyPost.Models.API.AiResults.Service
+  nameWithType: AiResults.Service
 - uid: EasyPost.Models.API.ApiKey
   name: ApiKey
   href: api/EasyPost.Models.API.ApiKey.html
@@ -4892,6 +5002,64 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.InsuranceCollection.Insurances
   nameWithType: InsuranceCollection.Insurances
+- uid: EasyPost.Models.API.LumaInfo
+  name: LumaInfo
+  href: api/EasyPost.Models.API.LumaInfo.html
+  commentId: T:EasyPost.Models.API.LumaInfo
+  fullName: EasyPost.Models.API.LumaInfo
+  nameWithType: LumaInfo
+- uid: EasyPost.Models.API.LumaInfo.AiResults
+  name: AiResults
+  href: api/EasyPost.Models.API.LumaInfo.html#EasyPost_Models_API_LumaInfo_AiResults
+  commentId: P:EasyPost.Models.API.LumaInfo.AiResults
+  fullName: EasyPost.Models.API.LumaInfo.AiResults
+  nameWithType: LumaInfo.AiResults
+- uid: EasyPost.Models.API.LumaInfo.AiResults*
+  name: AiResults
+  href: api/EasyPost.Models.API.LumaInfo.html#EasyPost_Models_API_LumaInfo_AiResults_
+  commentId: Overload:EasyPost.Models.API.LumaInfo.AiResults
+  isSpec: "True"
+  fullName: EasyPost.Models.API.LumaInfo.AiResults
+  nameWithType: LumaInfo.AiResults
+- uid: EasyPost.Models.API.LumaInfo.LumaSelectedRate
+  name: LumaSelectedRate
+  href: api/EasyPost.Models.API.LumaInfo.html#EasyPost_Models_API_LumaInfo_LumaSelectedRate
+  commentId: P:EasyPost.Models.API.LumaInfo.LumaSelectedRate
+  fullName: EasyPost.Models.API.LumaInfo.LumaSelectedRate
+  nameWithType: LumaInfo.LumaSelectedRate
+- uid: EasyPost.Models.API.LumaInfo.LumaSelectedRate*
+  name: LumaSelectedRate
+  href: api/EasyPost.Models.API.LumaInfo.html#EasyPost_Models_API_LumaInfo_LumaSelectedRate_
+  commentId: Overload:EasyPost.Models.API.LumaInfo.LumaSelectedRate
+  isSpec: "True"
+  fullName: EasyPost.Models.API.LumaInfo.LumaSelectedRate
+  nameWithType: LumaInfo.LumaSelectedRate
+- uid: EasyPost.Models.API.LumaInfo.MatchingRuleIdx
+  name: MatchingRuleIdx
+  href: api/EasyPost.Models.API.LumaInfo.html#EasyPost_Models_API_LumaInfo_MatchingRuleIdx
+  commentId: P:EasyPost.Models.API.LumaInfo.MatchingRuleIdx
+  fullName: EasyPost.Models.API.LumaInfo.MatchingRuleIdx
+  nameWithType: LumaInfo.MatchingRuleIdx
+- uid: EasyPost.Models.API.LumaInfo.MatchingRuleIdx*
+  name: MatchingRuleIdx
+  href: api/EasyPost.Models.API.LumaInfo.html#EasyPost_Models_API_LumaInfo_MatchingRuleIdx_
+  commentId: Overload:EasyPost.Models.API.LumaInfo.MatchingRuleIdx
+  isSpec: "True"
+  fullName: EasyPost.Models.API.LumaInfo.MatchingRuleIdx
+  nameWithType: LumaInfo.MatchingRuleIdx
+- uid: EasyPost.Models.API.LumaInfo.RulesetDescription
+  name: RulesetDescription
+  href: api/EasyPost.Models.API.LumaInfo.html#EasyPost_Models_API_LumaInfo_RulesetDescription
+  commentId: P:EasyPost.Models.API.LumaInfo.RulesetDescription
+  fullName: EasyPost.Models.API.LumaInfo.RulesetDescription
+  nameWithType: LumaInfo.RulesetDescription
+- uid: EasyPost.Models.API.LumaInfo.RulesetDescription*
+  name: RulesetDescription
+  href: api/EasyPost.Models.API.LumaInfo.html#EasyPost_Models_API_LumaInfo_RulesetDescription_
+  commentId: Overload:EasyPost.Models.API.LumaInfo.RulesetDescription
+  isSpec: "True"
+  fullName: EasyPost.Models.API.LumaInfo.RulesetDescription
+  nameWithType: LumaInfo.RulesetDescription
 - uid: EasyPost.Models.API.Message
   name: Message
   href: api/EasyPost.Models.API.Message.html
@@ -13878,6 +14046,303 @@ references:
   commentId: T:EasyPost.Parameters.IWebhookParameter
   fullName: EasyPost.Parameters.IWebhookParameter
   nameWithType: IWebhookParameter
+- uid: EasyPost.Parameters.Luma
+  name: EasyPost.Parameters.Luma
+  href: api/EasyPost.Parameters.Luma.html
+  commentId: N:EasyPost.Parameters.Luma
+  fullName: EasyPost.Parameters.Luma
+  nameWithType: EasyPost.Parameters.Luma
+- uid: EasyPost.Parameters.Luma.Buy
+  name: Buy
+  href: api/EasyPost.Parameters.Luma.Buy.html
+  commentId: T:EasyPost.Parameters.Luma.Buy
+  fullName: EasyPost.Parameters.Luma.Buy
+  nameWithType: Buy
+- uid: EasyPost.Parameters.Luma.Buy.DeliverByDate
+  name: DeliverByDate
+  href: api/EasyPost.Parameters.Luma.Buy.html#EasyPost_Parameters_Luma_Buy_DeliverByDate
+  commentId: P:EasyPost.Parameters.Luma.Buy.DeliverByDate
+  fullName: EasyPost.Parameters.Luma.Buy.DeliverByDate
+  nameWithType: Buy.DeliverByDate
+- uid: EasyPost.Parameters.Luma.Buy.DeliverByDate*
+  name: DeliverByDate
+  href: api/EasyPost.Parameters.Luma.Buy.html#EasyPost_Parameters_Luma_Buy_DeliverByDate_
+  commentId: Overload:EasyPost.Parameters.Luma.Buy.DeliverByDate
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.Buy.DeliverByDate
+  nameWithType: Buy.DeliverByDate
+- uid: EasyPost.Parameters.Luma.Buy.PersistLabel
+  name: PersistLabel
+  href: api/EasyPost.Parameters.Luma.Buy.html#EasyPost_Parameters_Luma_Buy_PersistLabel
+  commentId: P:EasyPost.Parameters.Luma.Buy.PersistLabel
+  fullName: EasyPost.Parameters.Luma.Buy.PersistLabel
+  nameWithType: Buy.PersistLabel
+- uid: EasyPost.Parameters.Luma.Buy.PersistLabel*
+  name: PersistLabel
+  href: api/EasyPost.Parameters.Luma.Buy.html#EasyPost_Parameters_Luma_Buy_PersistLabel_
+  commentId: Overload:EasyPost.Parameters.Luma.Buy.PersistLabel
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.Buy.PersistLabel
+  nameWithType: Buy.PersistLabel
+- uid: EasyPost.Parameters.Luma.Buy.PlannedShipDate
+  name: PlannedShipDate
+  href: api/EasyPost.Parameters.Luma.Buy.html#EasyPost_Parameters_Luma_Buy_PlannedShipDate
+  commentId: P:EasyPost.Parameters.Luma.Buy.PlannedShipDate
+  fullName: EasyPost.Parameters.Luma.Buy.PlannedShipDate
+  nameWithType: Buy.PlannedShipDate
+- uid: EasyPost.Parameters.Luma.Buy.PlannedShipDate*
+  name: PlannedShipDate
+  href: api/EasyPost.Parameters.Luma.Buy.html#EasyPost_Parameters_Luma_Buy_PlannedShipDate_
+  commentId: Overload:EasyPost.Parameters.Luma.Buy.PlannedShipDate
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.Buy.PlannedShipDate
+  nameWithType: Buy.PlannedShipDate
+- uid: EasyPost.Parameters.Luma.Buy.RulesetName
+  name: RulesetName
+  href: api/EasyPost.Parameters.Luma.Buy.html#EasyPost_Parameters_Luma_Buy_RulesetName
+  commentId: P:EasyPost.Parameters.Luma.Buy.RulesetName
+  fullName: EasyPost.Parameters.Luma.Buy.RulesetName
+  nameWithType: Buy.RulesetName
+- uid: EasyPost.Parameters.Luma.Buy.RulesetName*
+  name: RulesetName
+  href: api/EasyPost.Parameters.Luma.Buy.html#EasyPost_Parameters_Luma_Buy_RulesetName_
+  commentId: Overload:EasyPost.Parameters.Luma.Buy.RulesetName
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.Buy.RulesetName
+  nameWithType: Buy.RulesetName
+- uid: EasyPost.Parameters.Luma.CreateAndBuy
+  name: CreateAndBuy
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html
+  commentId: T:EasyPost.Parameters.Luma.CreateAndBuy
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy
+  nameWithType: CreateAndBuy
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.CarrierAccountIds
+  name: CarrierAccountIds
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_CarrierAccountIds
+  commentId: P:EasyPost.Parameters.Luma.CreateAndBuy.CarrierAccountIds
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.CarrierAccountIds
+  nameWithType: CreateAndBuy.CarrierAccountIds
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.CarrierAccountIds*
+  name: CarrierAccountIds
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_CarrierAccountIds_
+  commentId: Overload:EasyPost.Parameters.Luma.CreateAndBuy.CarrierAccountIds
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.CarrierAccountIds
+  nameWithType: CreateAndBuy.CarrierAccountIds
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.DeliverByDate
+  name: DeliverByDate
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_DeliverByDate
+  commentId: P:EasyPost.Parameters.Luma.CreateAndBuy.DeliverByDate
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.DeliverByDate
+  nameWithType: CreateAndBuy.DeliverByDate
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.DeliverByDate*
+  name: DeliverByDate
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_DeliverByDate_
+  commentId: Overload:EasyPost.Parameters.Luma.CreateAndBuy.DeliverByDate
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.DeliverByDate
+  nameWithType: CreateAndBuy.DeliverByDate
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.FromAddress
+  name: FromAddress
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_FromAddress
+  commentId: P:EasyPost.Parameters.Luma.CreateAndBuy.FromAddress
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.FromAddress
+  nameWithType: CreateAndBuy.FromAddress
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.FromAddress*
+  name: FromAddress
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_FromAddress_
+  commentId: Overload:EasyPost.Parameters.Luma.CreateAndBuy.FromAddress
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.FromAddress
+  nameWithType: CreateAndBuy.FromAddress
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.Insurance
+  name: Insurance
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_Insurance
+  commentId: P:EasyPost.Parameters.Luma.CreateAndBuy.Insurance
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.Insurance
+  nameWithType: CreateAndBuy.Insurance
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.Insurance*
+  name: Insurance
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_Insurance_
+  commentId: Overload:EasyPost.Parameters.Luma.CreateAndBuy.Insurance
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.Insurance
+  nameWithType: CreateAndBuy.Insurance
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.Parcel
+  name: Parcel
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_Parcel
+  commentId: P:EasyPost.Parameters.Luma.CreateAndBuy.Parcel
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.Parcel
+  nameWithType: CreateAndBuy.Parcel
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.Parcel*
+  name: Parcel
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_Parcel_
+  commentId: Overload:EasyPost.Parameters.Luma.CreateAndBuy.Parcel
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.Parcel
+  nameWithType: CreateAndBuy.Parcel
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.PersistLabel
+  name: PersistLabel
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_PersistLabel
+  commentId: P:EasyPost.Parameters.Luma.CreateAndBuy.PersistLabel
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.PersistLabel
+  nameWithType: CreateAndBuy.PersistLabel
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.PersistLabel*
+  name: PersistLabel
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_PersistLabel_
+  commentId: Overload:EasyPost.Parameters.Luma.CreateAndBuy.PersistLabel
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.PersistLabel
+  nameWithType: CreateAndBuy.PersistLabel
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.PlannedShipDate
+  name: PlannedShipDate
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_PlannedShipDate
+  commentId: P:EasyPost.Parameters.Luma.CreateAndBuy.PlannedShipDate
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.PlannedShipDate
+  nameWithType: CreateAndBuy.PlannedShipDate
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.PlannedShipDate*
+  name: PlannedShipDate
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_PlannedShipDate_
+  commentId: Overload:EasyPost.Parameters.Luma.CreateAndBuy.PlannedShipDate
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.PlannedShipDate
+  nameWithType: CreateAndBuy.PlannedShipDate
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.RulesetName
+  name: RulesetName
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_RulesetName
+  commentId: P:EasyPost.Parameters.Luma.CreateAndBuy.RulesetName
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.RulesetName
+  nameWithType: CreateAndBuy.RulesetName
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.RulesetName*
+  name: RulesetName
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_RulesetName_
+  commentId: Overload:EasyPost.Parameters.Luma.CreateAndBuy.RulesetName
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.RulesetName
+  nameWithType: CreateAndBuy.RulesetName
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.ToAddress
+  name: ToAddress
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_ToAddress
+  commentId: P:EasyPost.Parameters.Luma.CreateAndBuy.ToAddress
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.ToAddress
+  nameWithType: CreateAndBuy.ToAddress
+- uid: EasyPost.Parameters.Luma.CreateAndBuy.ToAddress*
+  name: ToAddress
+  href: api/EasyPost.Parameters.Luma.CreateAndBuy.html#EasyPost_Parameters_Luma_CreateAndBuy_ToAddress_
+  commentId: Overload:EasyPost.Parameters.Luma.CreateAndBuy.ToAddress
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.CreateAndBuy.ToAddress
+  nameWithType: CreateAndBuy.ToAddress
+- uid: EasyPost.Parameters.Luma.GetPromise
+  name: GetPromise
+  href: api/EasyPost.Parameters.Luma.GetPromise.html
+  commentId: T:EasyPost.Parameters.Luma.GetPromise
+  fullName: EasyPost.Parameters.Luma.GetPromise
+  nameWithType: GetPromise
+- uid: EasyPost.Parameters.Luma.GetPromise.CarrierAccountIds
+  name: CarrierAccountIds
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_CarrierAccountIds
+  commentId: P:EasyPost.Parameters.Luma.GetPromise.CarrierAccountIds
+  fullName: EasyPost.Parameters.Luma.GetPromise.CarrierAccountIds
+  nameWithType: GetPromise.CarrierAccountIds
+- uid: EasyPost.Parameters.Luma.GetPromise.CarrierAccountIds*
+  name: CarrierAccountIds
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_CarrierAccountIds_
+  commentId: Overload:EasyPost.Parameters.Luma.GetPromise.CarrierAccountIds
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.GetPromise.CarrierAccountIds
+  nameWithType: GetPromise.CarrierAccountIds
+- uid: EasyPost.Parameters.Luma.GetPromise.DeliverByDate
+  name: DeliverByDate
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_DeliverByDate
+  commentId: P:EasyPost.Parameters.Luma.GetPromise.DeliverByDate
+  fullName: EasyPost.Parameters.Luma.GetPromise.DeliverByDate
+  nameWithType: GetPromise.DeliverByDate
+- uid: EasyPost.Parameters.Luma.GetPromise.DeliverByDate*
+  name: DeliverByDate
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_DeliverByDate_
+  commentId: Overload:EasyPost.Parameters.Luma.GetPromise.DeliverByDate
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.GetPromise.DeliverByDate
+  nameWithType: GetPromise.DeliverByDate
+- uid: EasyPost.Parameters.Luma.GetPromise.FromAddress
+  name: FromAddress
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_FromAddress
+  commentId: P:EasyPost.Parameters.Luma.GetPromise.FromAddress
+  fullName: EasyPost.Parameters.Luma.GetPromise.FromAddress
+  nameWithType: GetPromise.FromAddress
+- uid: EasyPost.Parameters.Luma.GetPromise.FromAddress*
+  name: FromAddress
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_FromAddress_
+  commentId: Overload:EasyPost.Parameters.Luma.GetPromise.FromAddress
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.GetPromise.FromAddress
+  nameWithType: GetPromise.FromAddress
+- uid: EasyPost.Parameters.Luma.GetPromise.Insurance
+  name: Insurance
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_Insurance
+  commentId: P:EasyPost.Parameters.Luma.GetPromise.Insurance
+  fullName: EasyPost.Parameters.Luma.GetPromise.Insurance
+  nameWithType: GetPromise.Insurance
+- uid: EasyPost.Parameters.Luma.GetPromise.Insurance*
+  name: Insurance
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_Insurance_
+  commentId: Overload:EasyPost.Parameters.Luma.GetPromise.Insurance
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.GetPromise.Insurance
+  nameWithType: GetPromise.Insurance
+- uid: EasyPost.Parameters.Luma.GetPromise.Parcel
+  name: Parcel
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_Parcel
+  commentId: P:EasyPost.Parameters.Luma.GetPromise.Parcel
+  fullName: EasyPost.Parameters.Luma.GetPromise.Parcel
+  nameWithType: GetPromise.Parcel
+- uid: EasyPost.Parameters.Luma.GetPromise.Parcel*
+  name: Parcel
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_Parcel_
+  commentId: Overload:EasyPost.Parameters.Luma.GetPromise.Parcel
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.GetPromise.Parcel
+  nameWithType: GetPromise.Parcel
+- uid: EasyPost.Parameters.Luma.GetPromise.PlannedShipDate
+  name: PlannedShipDate
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_PlannedShipDate
+  commentId: P:EasyPost.Parameters.Luma.GetPromise.PlannedShipDate
+  fullName: EasyPost.Parameters.Luma.GetPromise.PlannedShipDate
+  nameWithType: GetPromise.PlannedShipDate
+- uid: EasyPost.Parameters.Luma.GetPromise.PlannedShipDate*
+  name: PlannedShipDate
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_PlannedShipDate_
+  commentId: Overload:EasyPost.Parameters.Luma.GetPromise.PlannedShipDate
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.GetPromise.PlannedShipDate
+  nameWithType: GetPromise.PlannedShipDate
+- uid: EasyPost.Parameters.Luma.GetPromise.RulesetName
+  name: RulesetName
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_RulesetName
+  commentId: P:EasyPost.Parameters.Luma.GetPromise.RulesetName
+  fullName: EasyPost.Parameters.Luma.GetPromise.RulesetName
+  nameWithType: GetPromise.RulesetName
+- uid: EasyPost.Parameters.Luma.GetPromise.RulesetName*
+  name: RulesetName
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_RulesetName_
+  commentId: Overload:EasyPost.Parameters.Luma.GetPromise.RulesetName
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.GetPromise.RulesetName
+  nameWithType: GetPromise.RulesetName
+- uid: EasyPost.Parameters.Luma.GetPromise.ToAddress
+  name: ToAddress
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_ToAddress
+  commentId: P:EasyPost.Parameters.Luma.GetPromise.ToAddress
+  fullName: EasyPost.Parameters.Luma.GetPromise.ToAddress
+  nameWithType: GetPromise.ToAddress
+- uid: EasyPost.Parameters.Luma.GetPromise.ToAddress*
+  name: ToAddress
+  href: api/EasyPost.Parameters.Luma.GetPromise.html#EasyPost_Parameters_Luma_GetPromise_ToAddress_
+  commentId: Overload:EasyPost.Parameters.Luma.GetPromise.ToAddress
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Luma.GetPromise.ToAddress
+  nameWithType: GetPromise.ToAddress
 - uid: EasyPost.Parameters.Order
   name: EasyPost.Parameters.Order
   href: api/EasyPost.Parameters.Order.html
@@ -17434,6 +17899,34 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.InsuranceService.Retrieve
   nameWithType: InsuranceService.Retrieve
+- uid: EasyPost.Services.LumaService
+  name: LumaService
+  href: api/EasyPost.Services.LumaService.html
+  commentId: T:EasyPost.Services.LumaService
+  fullName: EasyPost.Services.LumaService
+  nameWithType: LumaService
+- uid: EasyPost.Services.LumaService.GetPromise(Dictionary{System.String,System.Object},CancellationToken)
+  name: GetPromise(Dictionary<String, Object>, CancellationToken)
+  href: api/EasyPost.Services.LumaService.html#EasyPost_Services_LumaService_GetPromise_Dictionary_System_String_System_Object__CancellationToken_
+  commentId: M:EasyPost.Services.LumaService.GetPromise(Dictionary{System.String,System.Object},CancellationToken)
+  name.vb: GetPromise(Dictionary(Of String, Object), CancellationToken)
+  fullName: EasyPost.Services.LumaService.GetPromise(Dictionary<System.String, System.Object>, CancellationToken)
+  fullName.vb: EasyPost.Services.LumaService.GetPromise(Dictionary(Of System.String, System.Object), CancellationToken)
+  nameWithType: LumaService.GetPromise(Dictionary<String, Object>, CancellationToken)
+  nameWithType.vb: LumaService.GetPromise(Dictionary(Of String, Object), CancellationToken)
+- uid: EasyPost.Services.LumaService.GetPromise(EasyPost.Parameters.Luma.GetPromise,CancellationToken)
+  name: GetPromise(GetPromise, CancellationToken)
+  href: api/EasyPost.Services.LumaService.html#EasyPost_Services_LumaService_GetPromise_EasyPost_Parameters_Luma_GetPromise_CancellationToken_
+  commentId: M:EasyPost.Services.LumaService.GetPromise(EasyPost.Parameters.Luma.GetPromise,CancellationToken)
+  fullName: EasyPost.Services.LumaService.GetPromise(EasyPost.Parameters.Luma.GetPromise, CancellationToken)
+  nameWithType: LumaService.GetPromise(GetPromise, CancellationToken)
+- uid: EasyPost.Services.LumaService.GetPromise*
+  name: GetPromise
+  href: api/EasyPost.Services.LumaService.html#EasyPost_Services_LumaService_GetPromise_
+  commentId: Overload:EasyPost.Services.LumaService.GetPromise
+  isSpec: "True"
+  fullName: EasyPost.Services.LumaService.GetPromise
+  nameWithType: LumaService.GetPromise
 - uid: EasyPost.Services.OrderService
   name: OrderService
   href: api/EasyPost.Services.OrderService.html
@@ -18107,6 +18600,28 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ShipmentService.Buy
   nameWithType: ShipmentService.Buy
+- uid: EasyPost.Services.ShipmentService.BuyLuma(System.String,Dictionary{System.String,System.Object},CancellationToken)
+  name: BuyLuma(String, Dictionary<String, Object>, CancellationToken)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_BuyLuma_System_String_Dictionary_System_String_System_Object__CancellationToken_
+  commentId: M:EasyPost.Services.ShipmentService.BuyLuma(System.String,Dictionary{System.String,System.Object},CancellationToken)
+  name.vb: BuyLuma(String, Dictionary(Of String, Object), CancellationToken)
+  fullName: EasyPost.Services.ShipmentService.BuyLuma(System.String, Dictionary<System.String, System.Object>, CancellationToken)
+  fullName.vb: EasyPost.Services.ShipmentService.BuyLuma(System.String, Dictionary(Of System.String, System.Object), CancellationToken)
+  nameWithType: ShipmentService.BuyLuma(String, Dictionary<String, Object>, CancellationToken)
+  nameWithType.vb: ShipmentService.BuyLuma(String, Dictionary(Of String, Object), CancellationToken)
+- uid: EasyPost.Services.ShipmentService.BuyLuma(System.String,EasyPost.Parameters.Luma.Buy,CancellationToken)
+  name: BuyLuma(String, Buy, CancellationToken)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_BuyLuma_System_String_EasyPost_Parameters_Luma_Buy_CancellationToken_
+  commentId: M:EasyPost.Services.ShipmentService.BuyLuma(System.String,EasyPost.Parameters.Luma.Buy,CancellationToken)
+  fullName: EasyPost.Services.ShipmentService.BuyLuma(System.String, EasyPost.Parameters.Luma.Buy, CancellationToken)
+  nameWithType: ShipmentService.BuyLuma(String, Buy, CancellationToken)
+- uid: EasyPost.Services.ShipmentService.BuyLuma*
+  name: BuyLuma
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_BuyLuma_
+  commentId: Overload:EasyPost.Services.ShipmentService.BuyLuma
+  isSpec: "True"
+  fullName: EasyPost.Services.ShipmentService.BuyLuma
+  nameWithType: ShipmentService.BuyLuma
 - uid: EasyPost.Services.ShipmentService.Create(Dictionary{System.String,System.Object},CancellationToken)
   name: Create(Dictionary<String, Object>, CancellationToken)
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_Create_Dictionary_System_String_System_Object__CancellationToken_
@@ -18129,6 +18644,28 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ShipmentService.Create
   nameWithType: ShipmentService.Create
+- uid: EasyPost.Services.ShipmentService.CreateAndBuyLuma(Dictionary{System.String,System.Object},CancellationToken)
+  name: CreateAndBuyLuma(Dictionary<String, Object>, CancellationToken)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_CreateAndBuyLuma_Dictionary_System_String_System_Object__CancellationToken_
+  commentId: M:EasyPost.Services.ShipmentService.CreateAndBuyLuma(Dictionary{System.String,System.Object},CancellationToken)
+  name.vb: CreateAndBuyLuma(Dictionary(Of String, Object), CancellationToken)
+  fullName: EasyPost.Services.ShipmentService.CreateAndBuyLuma(Dictionary<System.String, System.Object>, CancellationToken)
+  fullName.vb: EasyPost.Services.ShipmentService.CreateAndBuyLuma(Dictionary(Of System.String, System.Object), CancellationToken)
+  nameWithType: ShipmentService.CreateAndBuyLuma(Dictionary<String, Object>, CancellationToken)
+  nameWithType.vb: ShipmentService.CreateAndBuyLuma(Dictionary(Of String, Object), CancellationToken)
+- uid: EasyPost.Services.ShipmentService.CreateAndBuyLuma(EasyPost.Parameters.Luma.CreateAndBuy,CancellationToken)
+  name: CreateAndBuyLuma(CreateAndBuy, CancellationToken)
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_CreateAndBuyLuma_EasyPost_Parameters_Luma_CreateAndBuy_CancellationToken_
+  commentId: M:EasyPost.Services.ShipmentService.CreateAndBuyLuma(EasyPost.Parameters.Luma.CreateAndBuy,CancellationToken)
+  fullName: EasyPost.Services.ShipmentService.CreateAndBuyLuma(EasyPost.Parameters.Luma.CreateAndBuy, CancellationToken)
+  nameWithType: ShipmentService.CreateAndBuyLuma(CreateAndBuy, CancellationToken)
+- uid: EasyPost.Services.ShipmentService.CreateAndBuyLuma*
+  name: CreateAndBuyLuma
+  href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_CreateAndBuyLuma_
+  commentId: Overload:EasyPost.Services.ShipmentService.CreateAndBuyLuma
+  isSpec: "True"
+  fullName: EasyPost.Services.ShipmentService.CreateAndBuyLuma
+  nameWithType: ShipmentService.CreateAndBuyLuma
 - uid: EasyPost.Services.ShipmentService.GenerateForm(System.String,Dictionary{System.String,System.Object},CancellationToken)
   name: GenerateForm(String, Dictionary<String, Object>, CancellationToken)
   href: api/EasyPost.Services.ShipmentService.html#EasyPost_Services_ShipmentService_GenerateForm_System_String_Dictionary_System_String_System_Object__CancellationToken_
