@@ -82,6 +82,11 @@ namespace EasyPost
         public InsuranceService Insurance { get; }
 
         /// <summary>
+        ///     Access Luma-related functionality.
+        /// </summary>
+        public LumaService Luma { get; }
+
+        /// <summary>
         ///     Access Order-related functionality.
         /// </summary>
         public OrderService Order { get; }
@@ -169,6 +174,7 @@ namespace EasyPost
             EndShipper = new EndShipperService(this);
             Event = new EventService(this);
             Insurance = new InsuranceService(this);
+            Luma = new LumaService(this);
             Order = new OrderService(this);
             Parcel = new ParcelService(this);
             Pickup = new PickupService(this);

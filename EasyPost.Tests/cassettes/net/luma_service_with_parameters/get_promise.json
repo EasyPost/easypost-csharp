@@ -1,0 +1,51 @@
+[
+  {
+    "Duration": 768,
+    "RecordedAt": "2025-06-17T15:26:59.597928-06:00",
+    "Request": {
+      "Body": "{\"shipment\":{\"to_address\":{\"city\":\"Redondo Beach\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"name\":\"Elizabeth Swan\",\"phone\":\"<REDACTED>\",\"state\":\"CA\",\"street1\":\"179 N Harbor Dr\",\"zip\":\"90277\"},\"from_address\":{\"city\":\"San Francisco\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"name\":\"Jack Sparrow\",\"phone\":\"<REDACTED>\",\"state\":\"CA\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"zip\":\"94107\"},\"parcel\":{\"height\":4.0,\"length\":10.0,\"weight\":15.4,\"width\":8.0},\"ruleset_name\":\"cheapest_delivery\",\"planned_ship_date\":\"2025-06-17\"}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "525"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/luma/promise"
+    },
+    "Response": {
+      "Body": "{\"luma_info\":{\"ai_results\":[{\"carrier\":\"USPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-18\",\"predicted_deliver_days\":1,\"rate_usd\":\"34.15\",\"service\":\"Express\"},{\"carrier\":\"USPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-19\",\"predicted_deliver_days\":2,\"rate_usd\":\"7.42\",\"service\":\"Priority\"},{\"carrier\":\"USPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-20\",\"predicted_deliver_days\":3,\"rate_usd\":\"6.07\",\"service\":\"GroundAdvantage\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-18\",\"predicted_deliver_days\":1,\"rate_usd\":\"95.39\",\"service\":\"NextDayAir\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-18\",\"predicted_deliver_days\":1,\"rate_usd\":\"130.79\",\"service\":\"NextDayAirEarlyAM\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-18\",\"predicted_deliver_days\":1,\"rate_usd\":\"89.74\",\"service\":\"NextDayAirSaver\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-19\",\"predicted_deliver_days\":2,\"rate_usd\":\"31.58\",\"service\":\"2ndDayAir\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-19\",\"predicted_deliver_days\":2,\"rate_usd\":\"36.29\",\"service\":\"2ndDayAirAM\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-20\",\"predicted_deliver_days\":3,\"rate_usd\":\"24.01\",\"service\":\"3DaySelect\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-19\",\"predicted_deliver_days\":2,\"rate_usd\":\"15.62\",\"service\":\"Ground\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-18\",\"predicted_deliver_days\":1,\"rate_usd\":\"95.39\",\"service\":\"NextDayAir\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-18\",\"predicted_deliver_days\":1,\"rate_usd\":\"130.79\",\"service\":\"NextDayAirEarlyAM\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-18\",\"predicted_deliver_days\":1,\"rate_usd\":\"89.74\",\"service\":\"NextDayAirSaver\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-19\",\"predicted_deliver_days\":2,\"rate_usd\":\"31.58\",\"service\":\"2ndDayAir\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-19\",\"predicted_deliver_days\":2,\"rate_usd\":\"36.29\",\"service\":\"2ndDayAirAM\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-20\",\"predicted_deliver_days\":3,\"rate_usd\":\"24.01\",\"service\":\"3DaySelect\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-19\",\"predicted_deliver_days\":2,\"rate_usd\":\"15.62\",\"service\":\"Ground\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-18\",\"predicted_deliver_days\":1,\"rate_usd\":\"95.39\",\"service\":\"NextDayAir\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-18\",\"predicted_deliver_days\":1,\"rate_usd\":\"130.79\",\"service\":\"NextDayAirEarlyAM\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-18\",\"predicted_deliver_days\":1,\"rate_usd\":\"89.74\",\"service\":\"NextDayAirSaver\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-19\",\"predicted_deliver_days\":2,\"rate_usd\":\"31.58\",\"service\":\"2ndDayAir\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-19\",\"predicted_deliver_days\":2,\"rate_usd\":\"36.29\",\"service\":\"2ndDayAirAM\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-20\",\"predicted_deliver_days\":3,\"rate_usd\":\"24.01\",\"service\":\"3DaySelect\"},{\"carrier\":\"UPS\",\"meets_ruleset_requirements\":true,\"predicted_deliver_by_date\":\"2025-06-19\",\"predicted_deliver_days\":2,\"rate_usd\":\"15.62\",\"service\":\"Ground\"}],\"matching_rule_idx\":0,\"ruleset_description\":\"Buy the cheapest rate that satisfies all of the following:\\nRule 0\\n    \\nOtherwise buy the cheapest rate\",\"luma_selected_rate\":{\"carrier\":\"USPS\",\"carrier_account_id\":\"ca_7642d249fdcf47bcb5da9ea34c96dfcf\",\"currency\":\"USD\",\"rate\":\"6.07\",\"service\":\"GroundAdvantage\",\"luma_predicted_deliver_by_date\":\"2025-06-20\"}}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "4302"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "e1b7dd976851dda1e7798f8500344286",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "2.383708",
+        "x-node": "bigweb58nuq",
+        "x-version-label": "easypost-202506171918-0b8bae00c5-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb3nuq ec99f2d065,extlb1nuq 99aac35317",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  }
+]

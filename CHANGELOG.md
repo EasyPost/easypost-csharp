@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds the following functions
+  - `Shipment.CreateAndBuyLuma`
+  - `Shipment.BuyLuma`
+  - `Luma.GetPromise`
+
 ## v7.1.0 (2025-05-29)
 
 - Adds `Reference` to Claims

@@ -370,6 +370,57 @@ namespace EasyPost.Services
             return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/rerate", cancellationToken, parameters.ToDictionary());
         }
 
+        /// <summary>
+        ///     Create and buy a Luma Shipment in one call.
+        ///     <a href="https://docs.easypost.com/docs/luma#one-call-buy">Related API documentation</a>.
+        /// </summary>
+        /// <param name="parameters">Dictionary of shipment parameters.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="Shipment"/> object.</returns>
+        public async Task<Shipment> CreateAndBuyLuma(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
+        {
+            parameters = parameters.Wrap("shipment");
+            return await RequestAsync<Shipment>(Method.Post, "shipments/luma", cancellationToken, parameters);
+        }
+
+        /// <summary>
+        ///     Create and buy a Luma Shipment in one call.
+        ///     <a href="https://docs.easypost.com/docs/luma#one-call-buy">Related API documentation</a>.
+        /// </summary>
+        /// <param name="parameters">Shipment parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="Shipment"/> object.</returns>
+        public async Task<Shipment> CreateAndBuyLuma(Parameters.Luma.CreateAndBuy parameters, CancellationToken cancellationToken = default)
+        {
+            return await RequestAsync<Shipment>(Method.Post, "shipments/luma", cancellationToken, parameters.ToDictionary());
+        }
+
+        /// <summary>
+        ///     Buy a Shipment with Luma.
+        ///     <a href="https://docs.easypost.com/docs/luma#standard-buy">Related API documentation</a>.
+        /// </summary>
+        /// <param name="id">The ID of the shipment.</param>
+        /// <param name="parameters">Dictionary of parameters for the buy operation.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="Shipment"/> object.</returns>
+        public async Task<Shipment> BuyLuma(string id, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
+        {
+            return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/luma", cancellationToken, parameters);
+        }
+
+        /// <summary>
+        ///     Buy a Shipment with Luma.
+        ///     <a href="https://docs.easypost.com/docs/luma#standard-buy">Related API documentation</a>.
+        /// </summary>
+        /// <param name="id">The ID of the shipment.</param>
+        /// <param name="parameters">Shipment buy parameter set.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="Shipment"/> object.</returns>
+        public async Task<Shipment> BuyLuma(string id, Parameters.Luma.Buy parameters, CancellationToken cancellationToken = default)
+        {
+            return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/luma", cancellationToken, parameters.ToDictionary());
+        }
+
         #endregion
     }
 }
