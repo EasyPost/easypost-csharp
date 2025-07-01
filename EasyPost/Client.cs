@@ -216,6 +216,7 @@ namespace EasyPost
             EndShipper.Dispose();
             Event.Dispose();
             Insurance.Dispose();
+            Luma.Dispose();
             Order.Dispose();
             Parcel.Dispose();
             Pickup.Dispose();
