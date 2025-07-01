@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Disposes of Luma service
+
 ## v7.2.0 (2025-06-18)
 
 - Adds the following functions
