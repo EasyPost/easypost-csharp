@@ -51,7 +51,10 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 9.x.x
+          # v6 is needed for the tool to run
+          dotnet-version: |
+            9.x.x
+            6.x.x
 
       - name: Set up dotnet tools and dependencies
         run: make install
