@@ -128,12 +128,13 @@ namespace EasyPost
             /// </summary>
             private static List<string> CarrierTypesWithCustomCreateWorkflows => new()
             {
+                CarrierAccountType.AmazonShippingAccount.Name,
                 CarrierAccountType.FedEx.Name,
                 CarrierAccountType.FedExSmartPost.Name,
                 CarrierAccountType.Ups.Name,
                 CarrierAccountType.UpsMailInnovations.Name,
                 CarrierAccountType.UpsSurePost.Name,
-                CarrierAccountType.AmazonShippingAccount.Name,
+                CarrierAccountType.UspsShipAccount.Name,
             };
 
             internal static string DeriveCreateEndpoint(string carrierType)
@@ -143,7 +144,7 @@ namespace EasyPost
                 var @switch = new SwitchCase
                 {
                     { new List<string> { CarrierAccountType.FedEx.Name, CarrierAccountType.FedExSmartPost.Name }.Contains(carrierType), () => endpoint = CustomCreateEndpoint },
-                    { new List<string> { CarrierAccountType.AmazonShippingAccount.Name, CarrierAccountType.Ups.Name, CarrierAccountType.UpsMailInnovations.Name, CarrierAccountType.UpsSurePost.Name, }.Contains(carrierType), () => endpoint = OauthCreateEndpoint },
+                    { new List<string> { CarrierAccountType.AmazonShippingAccount.Name, CarrierAccountType.Ups.Name, CarrierAccountType.UpsMailInnovations.Name, CarrierAccountType.UpsSurePost.Name, CarrierAccountType.UspsShipAccount.Name, }.Contains(carrierType), () => endpoint = OauthCreateEndpoint },
                     { SwitchCaseScenario.Default, () => endpoint = StandardCreateEndpoint },
                 };
 
