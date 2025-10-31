@@ -3153,6 +3153,12 @@ references:
   commentId: F:EasyPost.Models.API.CarrierAccountType.UpsSurePost
   fullName: EasyPost.Models.API.CarrierAccountType.UpsSurePost
   nameWithType: CarrierAccountType.UpsSurePost
+- uid: EasyPost.Models.API.CarrierAccountType.UspsShipAccount
+  name: UspsShipAccount
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_UspsShipAccount
+  commentId: F:EasyPost.Models.API.CarrierAccountType.UspsShipAccount
+  fullName: EasyPost.Models.API.CarrierAccountType.UspsShipAccount
+  nameWithType: CarrierAccountType.UspsShipAccount
 - uid: EasyPost.Models.API.CarrierDetail
   name: CarrierDetail
   href: api/EasyPost.Models.API.CarrierDetail.html
