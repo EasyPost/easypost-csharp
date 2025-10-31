@@ -2,7 +2,8 @@
 
 ## Next Release
 
-- Disposes of Luma service
+- Adds support for `UspsShipAccount`
+- Disposes of Luma service after use
 
 ## v7.2.0 (2025-06-18)
 
