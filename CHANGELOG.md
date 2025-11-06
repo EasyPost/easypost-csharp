@@ -3,6 +3,7 @@
 ## Next Release
 
 - Adds support for `UspsShipAccount`
+- Adds `Tracker.RetrieveBatch` function
 - Disposes of Luma service after use
 
 ## v7.2.0 (2025-06-18)

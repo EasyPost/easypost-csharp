@@ -114,6 +114,19 @@ namespace EasyPost.Services
         [CrudOperations.Read]
         public async Task<Tracker> Retrieve(string id, CancellationToken cancellationToken = default) => await RequestAsync<Tracker>(Method.Get, $"trackers/{id}", cancellationToken);
 
+        /// <summary>
+        ///     Retrieves a batch of <see cref="Tracker"/>s.
+        /// </summary>
+        /// <param name="parameters">A dictionary of parameters to filter the list of <see cref="Tracker"/>s with.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="TrackerCollection"/> instance.</returns>
+        [CrudOperations.Read]
+        public async Task<TrackerCollection> RetrieveBatch(Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
+        {
+            TrackerCollection collection = await RequestAsync<TrackerCollection>(Method.Post, "trackers/batch", cancellationToken, parameters);
+            return collection;
+        }
+
         #endregion
     }
 }
