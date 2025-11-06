@@ -18949,6 +18949,22 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.TrackerService.Retrieve
   nameWithType: TrackerService.Retrieve
+- uid: EasyPost.Services.TrackerService.RetrieveBatch(System.Nullable{Dictionary{System.String,System.Object}},CancellationToken)
+  name: RetrieveBatch(Nullable<Dictionary<String, Object>>, CancellationToken)
+  href: api/EasyPost.Services.TrackerService.html#EasyPost_Services_TrackerService_RetrieveBatch_System_Nullable_Dictionary_System_String_System_Object___CancellationToken_
+  commentId: M:EasyPost.Services.TrackerService.RetrieveBatch(System.Nullable{Dictionary{System.String,System.Object}},CancellationToken)
+  name.vb: RetrieveBatch(Nullable(Of Dictionary(Of String, Object)), CancellationToken)
+  fullName: EasyPost.Services.TrackerService.RetrieveBatch(System.Nullable<Dictionary<System.String, System.Object>>, CancellationToken)
+  fullName.vb: EasyPost.Services.TrackerService.RetrieveBatch(System.Nullable(Of Dictionary(Of System.String, System.Object)), CancellationToken)
+  nameWithType: TrackerService.RetrieveBatch(Nullable<Dictionary<String, Object>>, CancellationToken)
+  nameWithType.vb: TrackerService.RetrieveBatch(Nullable(Of Dictionary(Of String, Object)), CancellationToken)
+- uid: EasyPost.Services.TrackerService.RetrieveBatch*
+  name: RetrieveBatch
+  href: api/EasyPost.Services.TrackerService.html#EasyPost_Services_TrackerService_RetrieveBatch_
+  commentId: Overload:EasyPost.Services.TrackerService.RetrieveBatch
+  isSpec: "True"
+  fullName: EasyPost.Services.TrackerService.RetrieveBatch
+  nameWithType: TrackerService.RetrieveBatch
 - uid: EasyPost.Services.UserService
   name: UserService
   href: api/EasyPost.Services.UserService.html
