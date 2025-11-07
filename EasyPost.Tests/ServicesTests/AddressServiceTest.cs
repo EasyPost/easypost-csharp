@@ -5,7 +5,6 @@ using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
-using EasyPost.Utilities.Internal.Extensions;
 using Xunit;
 
 namespace EasyPost.Tests.ServicesTests
@@ -212,6 +211,43 @@ namespace EasyPost.Tests.ServicesTests
             Assert.IsType<Address>(address);
             Assert.StartsWith("adr_", address.Id);
             Assert.Equal("388 TOWNSEND ST APT 20", address.Street1);
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Function]
+        public async Task TestCreateVerifyCarrier()
+        {
+            UseVCR("create_verify_carrier");
+
+            Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
+
+            addressData.Add("verify", true);
+            addressData.Add("verify_carrier", "UPS");
+
+            Address address = await Client.Address.Create(addressData);
+
+            Assert.IsType<Address>(address);
+            Assert.NotNull(address.Verifications.Delivery);
+            Assert.NotNull(address.Verifications.Zip4);
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Function]
+        public async Task TestCreateAndVerifyCarrier()
+        {
+            UseVCR("create_and_verify_carrier");
+
+            Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
+
+            addressData.Add("verify_carrier", "UPS");
+
+            Address address = await Client.Address.CreateAndVerify(addressData);
+
+            Assert.IsType<Address>(address);
+            Assert.NotNull(address.Verifications.Delivery);
+            Assert.NotNull(address.Verifications.Zip4);
         }
 
         #endregion

@@ -6,7 +6,6 @@ using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
-using EasyPost.Utilities.Internal.Extensions;
 
 namespace EasyPost.Services
 {
@@ -37,28 +36,29 @@ namespace EasyPost.Services
         [CrudOperations.Create]
         public async Task<Address> Create(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
-            // Check verify and verify_strict presence in parameters
-            bool verify = parameters.ContainsKey("verify");
-            bool verifyStrict = parameters.ContainsKey("verify_strict");
+            var wrappedParams = new Dictionary<string, object>();
 
-            // Clean and wrap parameters
-            parameters.Remove("verify");
-            parameters.Remove("verify_strict");
-            parameters = parameters.Wrap("address");
-
-            // Re-add verify and verify_strict if they were present, outside of the address wrapper
-            // Verification is trigger by key presence, not key value, so only add the key if it's true.
-            if (verify)
+            if (parameters.ContainsKey("verify"))
             {
-                parameters.Add("verify", true);
+                wrappedParams.Add("verify", true);
+                parameters.Remove("verify");
             }
 
-            if (verifyStrict)
+            if (parameters.ContainsKey("verify_strict"))
             {
-                parameters.Add("verify_strict", true);
+                wrappedParams.Add("verify_strict", true);
+                parameters.Remove("verify_strict");
             }
 
-            return await RequestAsync<Address>(Method.Post, "addresses", cancellationToken, parameters);
+            if (parameters.TryGetValue("verify_carrier", out object? value))
+            {
+                wrappedParams.Add("verify_carrier", value);
+                parameters.Remove("verify_carrier");
+            }
+
+            wrappedParams.Add("address", parameters);
+
+            return await RequestAsync<Address>(Method.Post, "addresses", cancellationToken, wrappedParams);
         }
 
         /// <summary>
@@ -83,7 +83,20 @@ namespace EasyPost.Services
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns>An <see cref="Address"/> object.</returns>
         [CrudOperations.Create]
-        public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters, CancellationToken cancellationToken = default) => await RequestAsync<Address>(Method.Post, "addresses/create_and_verify", cancellationToken, parameters, "address");
+        public async Task<Address> CreateAndVerify(Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
+        {
+            var wrappedParams = new Dictionary<string, object>();
+
+            if (parameters.TryGetValue("verify_carrier", out object? value))
+            {
+                wrappedParams.Add("verify_carrier", value);
+                parameters.Remove("verify_carrier");
+            }
+
+            wrappedParams.Add("address", parameters);
+
+            return await RequestAsync<Address>(Method.Post, "addresses/create_and_verify", cancellationToken, wrappedParams, "address");
+        }
 
         /// <summary>
         ///     Create and verify an <see cref="Address"/> in one API call.

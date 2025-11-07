@@ -139,6 +139,51 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Assert.Equal("388 TOWNSEND ST APT 20", address.Street1);
         }
 
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Function]
+        public async Task TestCreateVerifyCarrier()
+        {
+            UseVCR("create_verify_carrier");
+
+            Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
+
+            addressData["verify"] = true;
+            addressData["verify_carrier"] = "UPS";
+            Parameters.Address.Create parameters = Fixtures.Parameters.Addresses.Create(addressData);
+
+            Address address = await Client.Address.Create(parameters);
+
+            Assert.IsType<Address>(address);
+
+            AddressVerificationFieldError deliveryError = address.Verifications.Delivery.Errors.First();
+            Assert.Equal("Address not found", deliveryError.Message);
+            AddressVerificationFieldError zip4Error = address.Verifications.Zip4.Errors.First();
+            Assert.Equal("Address not found", zip4Error.Message);
+        }
+
+        [Fact]
+        [CrudOperations.Create]
+        [Testing.Function]
+        public async Task TestCreateAndVerifyCarrier()
+        {
+            UseVCR("create_and_verify_carrier");
+
+            Dictionary<string, object> addressData = Fixtures.IncorrectAddress;
+
+            addressData["verify_carrier"] = "UPS";
+            Parameters.Address.Create parameters = Fixtures.Parameters.Addresses.Create(addressData);
+
+            Address address = await Client.Address.CreateAndVerify(parameters);
+
+            Assert.IsType<Address>(address);
+
+            AddressVerificationFieldError deliveryError = address.Verifications.Delivery.Errors.First();
+            Assert.Equal("Address not found", deliveryError.Message);
+            AddressVerificationFieldError zip4Error = address.Verifications.Zip4.Errors.First();
+            Assert.Equal("Address not found", zip4Error.Message);
+        }
+
         #endregion
 
         #endregion

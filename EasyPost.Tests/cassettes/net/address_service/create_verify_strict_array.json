@@ -1,9 +1,9 @@
 [
   {
-    "Duration": 271,
-    "RecordedAt": "2024-08-16T11:13:05.610561-06:00",
+    "Duration": 301,
+    "RecordedAt": "2025-11-07T12:37:18.047409-07:00",
     "Request": {
-      "Body": "{\"address\":{\"name\":\"Jack Sparrow\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"},\"verify_strict\":true}",
+      "Body": "{\"verify_strict\":true,\"address\":{\"name\":\"Jack Sparrow\",\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Content-Type": "application/json; charset=utf-8",
@@ -17,12 +17,12 @@
       "Uri": "https://api.easypost.com/v2/addresses"
     },
     "Response": {
-      "Body": "{\"id\":\"adr_cd558e795bf211ef8e82ac1f6bc53342\",\"object\":\"Address\",\"created_at\":\"2024-08-16T11:13:05-06:00\",\"updated_at\":\"2024-08-16T11:13:05-06:00\",\"name\":\"JACK SPARROW\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":true,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.77551,\"longitude\":-122.39697,\"time_zone\":\"America/Los_Angeles\"}}}}",
+      "Body": "{\"id\":\"adr_2b985412bc1111f0bdb4ac1f6bc53342\",\"object\":\"Address\",\"created_at\":\"2025-11-07T19:37:18Z\",\"updated_at\":\"2025-11-07T19:37:18Z\",\"name\":\"JACK SPARROW\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":\"\",\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":true,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.77551,\"longitude\":-122.39697,\"time_zone\":\"America/Los_Angeles\"}}}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "646"
+        "Content-Length": "636"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -32,15 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "8a4bf43e66bf88a1f40c152c004a5641",
+        "x-ep-request-uuid": "e4553702690e4a6de787496501377196",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "Location": "/api/v2/addresses/adr_cd558e795bf211ef8e82ac1f6bc53342",
-        "x-runtime": "0.066306",
-        "x-node": "bigweb33nuq",
-        "x-version-label": "easypost-202408161634-c713989c9f-master",
+        "Location": "/api/v2/addresses/adr_2b985412bc1111f0bdb4ac1f6bc53342",
+        "x-runtime": "0.053434",
+        "x-node": "bigweb39nuq",
+        "x-version-label": "easypost-202511071908-b838edaf78-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb4nuq c0f5e722d1,extlb1nuq b6e1b5034c",
+        "x-proxied": "intlb3nuq c0061e0a2e,extlb1nuq cbbd141214",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

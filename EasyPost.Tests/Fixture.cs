@@ -170,6 +170,7 @@ namespace EasyPost.Tests._Utilities
                         Email = fixture.GetOrNull<string>("email"),
                         Verify = fixture.GetOrNullBoolean("verify"),
                         VerifyStrict = fixture.GetOrNullBoolean("verify_strict"),
+                        VerifyCarrier = fixture.GetOrNull<string>("verify_carrier"),
                     };
                 }
 
