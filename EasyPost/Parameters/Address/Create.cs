@@ -195,6 +195,19 @@ namespace EasyPost.Parameters.Address
         public string? Street2 { get; set; }
 
         /// <summary>
+        ///     Whether to enforce verification for the new <see cref="Models.API.Address"/>.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "verify")]
+        [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "verify")]
+        [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "verify")]
+        [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "verify")]
+        [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "verify")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "verify")]
+        [NestedRequestParameter(typeof(Luma.CreateAndBuy), Necessity.Optional, "verify")]
+        [NestedRequestParameter(typeof(Luma.GetPromise), Necessity.Optional, "verify")]
+        public bool? Verify { get; set; }
+
+        /// <summary>
         ///     Whether to enforce strict verification for the new <see cref="Models.API.Address"/>.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "verify_strict")]
@@ -208,17 +221,17 @@ namespace EasyPost.Parameters.Address
         public bool? VerifyStrict { get; set; }
 
         /// <summary>
-        ///     Whether to enforce verification for the new <see cref="Models.API.Address"/>.
+        ///     What carrier to enforce verification with for the new <see cref="Models.API.Address"/>.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "verify")]
-        [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "verify")]
-        [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "verify")]
-        [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "verify")]
-        [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "verify")]
-        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "verify")]
-        [NestedRequestParameter(typeof(Luma.CreateAndBuy), Necessity.Optional, "verify")]
-        [NestedRequestParameter(typeof(Luma.GetPromise), Necessity.Optional, "verify")]
-        public bool? Verify { get; set; }
+        [TopLevelRequestParameter(Necessity.Optional, "verify_carrier")]
+        [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "verify_carrier")]
+        [NestedRequestParameter(typeof(Insurance.Create), Necessity.Optional, "verify_carrier")]
+        [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "verify_carrier")]
+        [NestedRequestParameter(typeof(Pickup.Create), Necessity.Optional, "verify_carrier")]
+        [NestedRequestParameter(typeof(Beta.Rate.Retrieve), Necessity.Optional, "verify_carrier")]
+        [NestedRequestParameter(typeof(Luma.CreateAndBuy), Necessity.Optional, "verify_carrier")]
+        [NestedRequestParameter(typeof(Luma.GetPromise), Necessity.Optional, "verify_carrier")]
+        public string? VerifyCarrier { get; set; }
 
         /// <summary>
         ///     ZIP code for the new <see cref="Models.API.Address"/>.

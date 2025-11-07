@@ -1,0 +1,52 @@
+[
+  {
+    "Duration": 251,
+    "RecordedAt": "2025-11-07T12:37:19.304245-07:00",
+    "Request": {
+      "Body": "{\"verify_carrier\":\"UPS\",\"address\":{\"company\":\"EasyPost\",\"street1\":\"000 unknown street\",\"city\":\"Not A City\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\"}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "198"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/addresses/create_and_verify"
+    },
+    "Response": {
+      "Body": "{\"address\":{\"id\":\"adr_2c59a0d5bc1111f0b7ef3cecef1b359e\",\"object\":\"Address\",\"created_at\":\"2025-11-07T19:37:19Z\",\"updated_at\":\"2025-11-07T19:37:19Z\",\"name\":null,\"company\":\"EASYPOST\",\"street1\":\"000 UNKNOWN STREET\",\"street2\":\"\",\"city\":\"NOT A CITY\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":{\"latitude\":null,\"longitude\":null,\"time_zone\":null}},\"verify_carrier\":\"ups\"}}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "820"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "x-ep-request-uuid": "e4553701690e4a6ee7874966013771f4",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "Location": "/api/v2/addresses/adr_2c59a0d5bc1111f0b7ef3cecef1b359e",
+        "x-runtime": "1.000812",
+        "x-node": "bigweb65nuq",
+        "x-version-label": "easypost-202511071908-b838edaf78-master",
+        "x-backend": "easypost",
+        "x-proxied": "intlb4nuq c0061e0a2e,extlb1nuq cbbd141214",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      }
+    }
+  }
+]

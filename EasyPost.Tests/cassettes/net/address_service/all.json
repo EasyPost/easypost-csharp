@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 791,
-    "RecordedAt": "2024-08-16T11:12:58.702967-06:00",
+    "Duration": 324,
+    "RecordedAt": "2025-11-07T12:37:14.718041-07:00",
     "Request": {
       "Body": "",
       "BodyContentType": "Text",
@@ -14,12 +14,12 @@
       "Uri": "https://api.easypost.com/v2/addresses?page_size=5"
     },
     "Response": {
-      "Body": "{\"addresses\":[{\"id\":\"adr_fc9b96ed491f11efa71bac1f6bc53342\",\"object\":\"Address\",\"created_at\":\"2024-07-23T12:18:40-06:00\",\"updated_at\":\"2024-07-23T12:18:40-06:00\",\"name\":\"Jack Sparrow\",\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},{\"id\":\"adr_fc9833cb491f11ef9ab33cecef1b359e\",\"object\":\"Address\",\"created_at\":\"2024-07-23T12:18:40-06:00\",\"updated_at\":\"2024-07-23T12:18:41-06:00\",\"name\":\"ELIZABETH SWAN\",\"company\":null,\"street1\":\"179 N HARBOR DR\",\"street2\":null,\"city\":\"REDONDO BEACH\",\"state\":\"CA\",\"zip\":\"90277-2506\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":33.8436,\"longitude\":-118.39177,\"time_zone\":\"America/Los_Angeles\"}}}},{\"id\":\"adr_fa92715c491f11efa61cac1f6bc53342\",\"object\":\"Address\",\"created_at\":\"2024-07-23T12:18:36-06:00\",\"updated_at\":\"2024-07-23T12:18:36-06:00\",\"name\":\"Jack Sparrow\",\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}},{\"id\":\"adr_fa902b56491f11efa61bac1f6bc53342\",\"object\":\"Address\",\"created_at\":\"2024-07-23T12:18:36-06:00\",\"updated_at\":\"2024-07-23T12:18:37-06:00\",\"name\":\"ELIZABETH SWAN\",\"company\":null,\"street1\":\"179 N HARBOR DR\",\"street2\":null,\"city\":\"REDONDO BEACH\",\"state\":\"CA\",\"zip\":\"90277-2506\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":false,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":33.8436,\"longitude\":-118.39177,\"time_zone\":\"America/Los_Angeles\"}}}},{\"id\":\"adr_f87ebf80491f11efb559ac1f6bc539ae\",\"object\":\"Address\",\"created_at\":\"2024-07-23T12:18:33-06:00\",\"updated_at\":\"2024-07-23T12:18:33-06:00\",\"name\":\"Jack Sparrow\",\"company\":null,\"street1\":\"388 Townsend St\",\"street2\":\"Apt 20\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"94107\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}],\"has_more\":true}",
+      "Body": "{\"addresses\":[{\"id\":\"adr_189f6a52bc1111f08036ac1f6bc539ae\",\"object\":\"Address\",\"created_at\":\"2025-11-07T19:36:46Z\",\"updated_at\":\"2025-11-07T19:36:46Z\",\"name\":null,\"company\":null,\"street1\":\"000 UNKNOWN STREET\",\"street2\":null,\"city\":\"NOT A CITY\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":{\"latitude\":null,\"longitude\":null,\"time_zone\":null}},\"verify_carrier\":\"ups\"}},{\"id\":\"adr_27af4b4bbc1011f098adac1f6bc53342\",\"object\":\"Address\",\"created_at\":\"2025-11-07T19:30:01Z\",\"updated_at\":\"2025-11-07T19:30:01Z\",\"name\":null,\"company\":\"EASYPOST\",\"street1\":\"000 UNKNOWN STREET\",\"street2\":null,\"city\":\"NOT A CITY\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":{\"latitude\":null,\"longitude\":null,\"time_zone\":null}},\"verify_carrier\":\"ups\"}},{\"id\":\"adr_2740b71fbc1011f094a83cecef1b359e\",\"object\":\"Address\",\"created_at\":\"2025-11-07T19:30:01Z\",\"updated_at\":\"2025-11-07T19:30:01Z\",\"name\":null,\"company\":\"EASYPOST\",\"street1\":\"000 UNKNOWN STREET\",\"street2\":null,\"city\":\"NOT A CITY\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":{\"latitude\":null,\"longitude\":null,\"time_zone\":null}},\"verify_carrier\":\"ups\"}},{\"id\":\"adr_26c92bcdbc1011f094493cecef1b359e\",\"object\":\"Address\",\"created_at\":\"2025-11-07T19:30:00Z\",\"updated_at\":\"2025-11-07T19:30:00Z\",\"name\":\"JACK SPARROW\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":true,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.77551,\"longitude\":-122.39697,\"time_zone\":\"America/Los_Angeles\"}}}},{\"id\":\"adr_2695916ebc1011f0ad12ac1f6bc539ae\",\"object\":\"Address\",\"created_at\":\"2025-11-07T19:30:00Z\",\"updated_at\":\"2025-11-07T19:30:00Z\",\"name\":\"JACK SPARROW\",\"company\":null,\"street1\":\"388 TOWNSEND ST APT 20\",\"street2\":null,\"city\":\"SAN FRANCISCO\",\"state\":\"CA\",\"zip\":\"94107-1670\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":true,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":true,\"errors\":[],\"details\":null},\"delivery\":{\"success\":true,\"errors\":[],\"details\":{\"latitude\":37.77551,\"longitude\":-122.39697,\"time_zone\":\"America/Los_Angeles\"}}}}],\"has_more\":true}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "2705"
+        "Content-Length": "3736"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -29,15 +29,14 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "8a4bf43f66bf889af41bef25004a4cbb",
+        "x-ep-request-uuid": "e4553702690e4a6ae787492601376d4f",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.059130",
-        "x-node": "bigweb43nuq",
-        "x-version-label": "easypost-202408161634-c713989c9f-master",
+        "x-runtime": "0.035314",
+        "x-node": "bigweb35nuq",
+        "x-version-label": "easypost-202511071908-b838edaf78-master",
         "x-backend": "easypost",
-        "x-canary": "direct",
-        "x-proxied": "intlb4nuq c0f5e722d1,extlb1nuq b6e1b5034c",
+        "x-proxied": "intlb3nuq c0061e0a2e,extlb1nuq cbbd141214",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 333,
-    "RecordedAt": "2024-08-16T11:13:01.478935-06:00",
+    "Duration": 272,
+    "RecordedAt": "2025-11-07T12:37:15.939249-07:00",
     "Request": {
       "Body": "{\"address\":{\"city\":\"Not A City\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\",\"state\":\"ZZ\",\"street1\":\"000 unknown street\",\"zip\":\"00001\"}}",
       "BodyContentType": "Json",
@@ -17,12 +17,12 @@
       "Uri": "https://api.easypost.com/v2/addresses"
     },
     "Response": {
-      "Body": "{\"id\":\"adr_cada3e405bf211ef9232ac1f6bc539ae\",\"object\":\"Address\",\"created_at\":\"2024-08-16T11:13:01-06:00\",\"updated_at\":\"2024-08-16T11:13:01-06:00\",\"name\":null,\"company\":null,\"street1\":\"000 unknown street\",\"street2\":null,\"city\":\"Not A City\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
+      "Body": "{\"id\":\"adr_2a585dc2bc1111f090f6ac1f6bc539aa\",\"object\":\"Address\",\"created_at\":\"2025-11-07T19:37:15Z\",\"updated_at\":\"2025-11-07T19:37:15Z\",\"name\":null,\"company\":null,\"street1\":\"000 unknown street\",\"street2\":null,\"city\":\"Not A City\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "447"
+        "Content-Length": "437"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -32,15 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "8a4bf44166bf889df41ada61004a50be",
+        "x-ep-request-uuid": "e4553704690e4a6be787494501376ed8",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "Location": "/api/v2/addresses/adr_cada3e405bf211ef9232ac1f6bc539ae",
-        "x-runtime": "0.037726",
-        "x-node": "bigweb35nuq",
-        "x-version-label": "easypost-202408161634-c713989c9f-master",
+        "Location": "/api/v2/addresses/adr_2a585dc2bc1111f090f6ac1f6bc539aa",
+        "x-runtime": "0.035306",
+        "x-node": "bigweb41nuq",
+        "x-version-label": "easypost-202511071908-b838edaf78-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb4nuq c0f5e722d1,extlb1nuq b6e1b5034c",
+        "x-proxied": "intlb3nuq c0061e0a2e,extlb1nuq cbbd141214",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -50,8 +50,8 @@
     }
   },
   {
-    "Duration": 107,
-    "RecordedAt": "2024-08-16T11:13:02.33216-06:00",
+    "Duration": 103,
+    "RecordedAt": "2025-11-07T12:37:16.048142-07:00",
     "Request": {
       "Body": "{\"address\":{\"city\":\"Not A City\",\"country\":\"US\",\"email\":\"<REDACTED>\",\"phone\":\"<REDACTED>\",\"state\":\"ZZ\",\"street1\":\"000 unknown street\",\"zip\":\"00001\"},\"verify\":true}",
       "BodyContentType": "Json",
@@ -67,12 +67,12 @@
       "Uri": "https://api.easypost.com/v2/addresses"
     },
     "Response": {
-      "Body": "{\"id\":\"adr_cb61d2855bf211ef8dc4ac1f6bc539aa\",\"object\":\"Address\",\"created_at\":\"2024-08-16T11:13:02-06:00\",\"updated_at\":\"2024-08-16T11:13:02-06:00\",\"name\":null,\"company\":null,\"street1\":\"000 unknown street\",\"street2\":null,\"city\":\"Not A City\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":false,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":false,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":{}}}}",
+      "Body": "{\"id\":\"adr_2a69200cbc1111f0bce0ac1f6bc53342\",\"object\":\"Address\",\"created_at\":\"2025-11-07T19:37:16Z\",\"updated_at\":\"2025-11-07T19:37:16Z\",\"name\":null,\"company\":null,\"street1\":\"000 unknown street\",\"street2\":null,\"city\":\"Not A City\",\"state\":\"ZZ\",\"zip\":\"00001\",\"country\":\"US\",\"phone\":\"<REDACTED>\",\"email\":\"<REDACTED>\",\"mode\":\"test\",\"carrier_facility\":null,\"residential\":null,\"federal_tax_id\":null,\"state_tax_id\":null,\"verifications\":{\"zip4\":{\"success\":false,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":null},\"delivery\":{\"success\":false,\"errors\":[{\"code\":\"E.ADDRESS.NOT_FOUND\",\"field\":\"address\",\"message\":\"Address not found\",\"suggestion\":null}],\"details\":{}}}}",
       "BodyContentType": "Json",
       "ContentHeaders": {
         "Expires": "0",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "744"
+        "Content-Length": "734"
       },
       "HttpVersion": "1.1",
       "ResponseHeaders": {
@@ -82,15 +82,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "8a4bf44166bf889ef41ada61004a51b4",
+        "x-ep-request-uuid": "e4553704690e4a6ce787494501376f0a",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "Location": "/api/v2/addresses/adr_cb61d2855bf211ef8dc4ac1f6bc539aa",
-        "x-runtime": "0.054353",
-        "x-node": "bigweb33nuq",
-        "x-version-label": "easypost-202408161634-c713989c9f-master",
+        "Location": "/api/v2/addresses/adr_2a69200cbc1111f0bce0ac1f6bc53342",
+        "x-runtime": "0.045239",
+        "x-node": "bigweb57nuq",
+        "x-version-label": "easypost-202511071908-b838edaf78-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb4nuq c0f5e722d1,extlb1nuq b6e1b5034c",
+        "x-proxied": "intlb4nuq c0061e0a2e,extlb1nuq cbbd141214",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

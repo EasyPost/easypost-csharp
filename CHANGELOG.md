@@ -1,9 +1,10 @@
 # CHANGELOG
 
-## Next Release
+## v7.3.0 (2025-11-10)
 
 - Adds support for `UspsShipAccount`
 - Adds `Tracker.RetrieveBatch` function
+- Adds `VerifyCarrier` address param
 - Disposes of Luma service after use
 
 ## v7.2.0 (2025-06-18)
