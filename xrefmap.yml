@@ -10940,6 +10940,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Address.Create.Verify
   nameWithType: Create.Verify
+- uid: EasyPost.Parameters.Address.Create.VerifyCarrier
+  name: VerifyCarrier
+  href: api/EasyPost.Parameters.Address.Create.html#EasyPost_Parameters_Address_Create_VerifyCarrier
+  commentId: P:EasyPost.Parameters.Address.Create.VerifyCarrier
+  fullName: EasyPost.Parameters.Address.Create.VerifyCarrier
+  nameWithType: Create.VerifyCarrier
+- uid: EasyPost.Parameters.Address.Create.VerifyCarrier*
+  name: VerifyCarrier
+  href: api/EasyPost.Parameters.Address.Create.html#EasyPost_Parameters_Address_Create_VerifyCarrier_
+  commentId: Overload:EasyPost.Parameters.Address.Create.VerifyCarrier
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Address.Create.VerifyCarrier
+  nameWithType: Create.VerifyCarrier
 - uid: EasyPost.Parameters.Address.Create.VerifyStrict
   name: VerifyStrict
   href: api/EasyPost.Parameters.Address.Create.html#EasyPost_Parameters_Address_Create_VerifyStrict
