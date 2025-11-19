@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds the following functions:
+  - `CustomerPortal.CreateAccountLink`
+  - `Embeddable.CreateSession`
+
 ## v7.3.0 (2025-11-10)
 
 - Adds support for `UspsShipAccount`
