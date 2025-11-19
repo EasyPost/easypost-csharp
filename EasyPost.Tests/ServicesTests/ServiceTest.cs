@@ -29,7 +29,6 @@ namespace EasyPost.Tests.ServicesTests
             Client client = new(new ClientConfiguration("not_a_real_api_key"));
 
             AddressService addressService = client.Address;
-            CustomAssertions.DoesNotThrow(() => addressService.Dispose());
         }
 
         /// <summary>

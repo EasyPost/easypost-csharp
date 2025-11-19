@@ -359,10 +359,6 @@ namespace EasyPost.Services
 #endif
             Dictionary<string, object> data = JsonSerialization.ConvertJsonToObject<Dictionary<string, object>>(content);
 
-            // Dispose of the request and response
-            request.Dispose();
-            response.Dispose();
-
             data.TryGetValue("id", out object? id);
             return id == null
                 ? throw new ExternalApiError("Could not send card details to Stripe, please try again later.", (int)response.StatusCode)

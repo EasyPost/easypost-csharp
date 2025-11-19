@@ -11,7 +11,7 @@ namespace EasyPost;
 ///     Provides configuration options for the REST client used by the SDK. Used internally to store API key and other configuration.
 /// </summary>
 // ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
-public class ClientConfiguration : IDisposable
+public class ClientConfiguration
 {
     /// <summary>
     ///     The API base URI.
@@ -133,40 +133,4 @@ public class ClientConfiguration : IDisposable
     [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode", Justification = "ApiBase and Timeout will never change after construction")]
     public override int GetHashCode() => ApiKey.GetHashCode() ^ ApiBase.GetHashCode() ^ Timeout.GetHashCode();
 #pragma warning restore CA1307
-
-    /// <inheritdoc cref="EasyPostClient._isDisposed"/>
-    private bool _isDisposed;
-
-    /// <inheritdoc cref="EasyPostClient.Dispose()"/>
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    /// <inheritdoc cref="EasyPostClient.Dispose(bool)"/>
-    protected virtual void Dispose(bool disposing)
-    {
-        if (!disposing || _isDisposed) return;
-
-        // Set the disposed flag to true before disposing of the object to avoid infinite loops
-        _isDisposed = true;
-
-        // Dispose managed state (managed objects)
-
-        // Attempt to dispose of the prepared HTTP client (may already be disposed)
-        PreparedHttpClient?.Dispose();
-
-        // Attempt to dispose of the user-provided HTTP client (may already be disposed)
-        CustomHttpClient?.Dispose();
-    }
-
-    /// <summary>
-    ///     Finalizes an instance of the <see cref="ClientConfiguration"/> class.
-    /// </summary>
-    ~ClientConfiguration()
-    {
-        // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        Dispose(disposing: false);
-    }
 }

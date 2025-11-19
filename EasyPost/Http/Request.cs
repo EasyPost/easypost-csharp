@@ -11,13 +11,11 @@ using EasyPost.Utilities.Internal;
 namespace EasyPost.Http
 {
 #pragma warning disable CA1001
-#pragma warning disable CA1852 // Cannot be sealed because need virtual Dispose(bool)
     /// <summary>
     ///     Represents an HTTP request being sent to the EasyPost API.
     /// </summary>
-    internal class Request : IDisposable
+    internal class Request
 #pragma warning restore CA1001
-#pragma warning restore CA1852
     {
         /// <summary>
         ///     The <see cref="HttpRequestMessage"/> being executed by an <see cref="HttpClient"/>.
@@ -174,39 +172,6 @@ namespace EasyPost.Http
             }
 
             return pairs;
-        }
-
-        /// <inheritdoc cref="EasyPostClient._isDisposed"/>
-        private bool _isDisposed;
-
-        /// <inheritdoc cref="EasyPostClient.Dispose()"/>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <inheritdoc cref="EasyPostClient.Dispose(bool)"/>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposing || _isDisposed) return;
-
-            // Set the disposed flag to true before disposing of the object to avoid infinite loops
-            _isDisposed = true;
-
-            // Dispose managed state (managed objects)
-
-            // Dispose the request message
-            _requestMessage.Dispose();
-        }
-
-        /// <summary>
-        ///     Finalizes an instance of the <see cref="Request"/> class.
-        /// </summary>
-        ~Request()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(disposing: false);
         }
     }
 }

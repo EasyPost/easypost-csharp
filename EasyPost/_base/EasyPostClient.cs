@@ -16,7 +16,7 @@ namespace EasyPost._base
     /// <summary>
     ///     The base class for all EasyPost clients (i.e. <see cref="Client"/> and <see cref="BetaClient"/>).
     /// </summary>
-    public abstract class EasyPostClient : IDisposable
+    public abstract class EasyPostClient
     {
         /// <summary>
         ///     The configuration for this client. This is immutable once set and is not accessible to end-users.
@@ -145,10 +145,6 @@ namespace EasyPost._base
             // Deserialize the response into an object
             T resource = await JsonSerialization.ConvertJsonToObject<T>(response, null, rootElements);
 
-            // Dispose of the request and response
-            request.Dispose();
-            response.Dispose();
-
 #pragma warning disable IDE0270 // Simplify null check
             if (resource is null)
             {
@@ -182,10 +178,6 @@ namespace EasyPost._base
             // Check whether the HTTP request produced an error (3xx, 4xx or 5xx status code) or not
             bool errorRaised = response.ReturnedNoError();
 
-            // Dispose of the request and response
-            request.Dispose();
-            response.Dispose();
-
             return errorRaised;
         }
 
@@ -201,45 +193,5 @@ namespace EasyPost._base
         /// </summary>
         /// <returns>The hash code for this client.</returns>
         public override int GetHashCode() => _configuration.GetHashCode();
-
-        /// <summary>
-        ///     Whether this object has been disposed or not.
-        /// </summary>
-        private bool _isDisposed;
-
-        /// <summary>
-        ///     Dispose of this object.
-        /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        ///     Dispose of this object.
-        /// </summary>
-        /// <param name="disposing">Whether this object is being disposed.</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposing || _isDisposed) return;
-
-            // Set the disposed flag to true before disposing of the object to avoid infinite loops
-            _isDisposed = true;
-
-            // Dispose managed state (managed objects)
-
-            // Dispose of the configuration
-            _configuration.Dispose();
-        }
-
-        /// <summary>
-        ///     Finalizes an instance of the <see cref="EasyPostClient"/> class.
-        /// </summary>
-        ~EasyPostClient()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(disposing: false);
-        }
     }
 }

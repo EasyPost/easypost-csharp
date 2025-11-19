@@ -42,23 +42,5 @@ namespace EasyPost
             Rate = new Services.Beta.RateService(this);
             ReferralCustomer = new Services.Beta.ReferralCustomerService(this);
         }
-
-        /// <inheritdoc cref="EasyPostClient.Dispose(bool)"/>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                // Dispose managed state (managed objects).
-
-                // Dispose of the services
-                Rate.Dispose();
-                ReferralCustomer.Dispose();
-            }
-
-            // Free native resources (unmanaged objects) and override a finalizer below.
-
-            // Dispose of the base client
-            base.Dispose(disposing);
-        }
     }
 }

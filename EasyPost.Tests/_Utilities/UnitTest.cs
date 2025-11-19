@@ -9,7 +9,7 @@ namespace EasyPost.Tests._Utilities
     ///     Base class for all unit tests.
     ///     Sets up all available client versions for VCR and non-VCR requests.
     /// </summary>
-    public class UnitTest : IDisposable
+    public class UnitTest
     {
         private readonly TestUtils.VCR? _vcr;
 
@@ -31,38 +31,6 @@ namespace EasyPost.Tests._Utilities
         // This is not worth the effort, as the IDE warning is not a real issue.
         protected UnitTest(string groupName, TestUtils.ApiKey apiKey = TestUtils.ApiKey.Test) => _vcr = new TestUtils.VCR(groupName, apiKey);
 #pragma warning restore CS8618
-
-        /// <summary>
-        ///     Called automatically by xUnit after each unit test is run.
-        ///     Executes the CleanupFunction (passes in the _cleanupId) if set.
-        /// </summary>
-        /// <exception cref="Exception">Could not execute the declared clean-up function.</exception>
-        public void Dispose()
-        {
-            if (CleanupFunction == null)
-            {
-                return;
-            }
-
-            if (_cleanupId == null)
-            {
-                return;
-            }
-
-            try
-            {
-                CleanupFunction.Invoke(_cleanupId).GetAwaiter().GetResult();
-                _cleanupId = null;
-            }
-            catch
-            {
-#pragma warning disable CA2201
-                throw new Exception("Could not execute clean-up function.");
-#pragma warning restore CA2201
-            }
-
-            GC.SuppressFinalize(this);
-        }
 
         /// <summary>
         ///     Set the ID that will be passed into the CleanupFunction after each unit test

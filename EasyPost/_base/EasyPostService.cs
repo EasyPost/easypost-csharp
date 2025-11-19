@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,7 +9,7 @@ namespace EasyPost._base
     /// <summary>
     ///     Base class for all EasyPost services (collection of related methods).
     /// </summary>
-    public abstract class EasyPostService : IEasyPostService, IDisposable
+    public abstract class EasyPostService : IEasyPostService
     {
         /// <summary>
         ///     The <see cref="EasyPostClient"/> that this service will use to make API requests.
@@ -52,38 +51,6 @@ namespace EasyPost._base
         /// <returns>None.</returns>
         // ReSharper disable once MemberCanBePrivate.Global
         protected async Task RequestAsync(Http.Method method, string endpoint, CancellationToken cancellationToken, Dictionary<string, object>? parameters = null, ApiVersion? overrideApiVersion = null) => await Client.RequestAsync(method, endpoint, overrideApiVersion ?? ApiVersion.Current, cancellationToken, parameters).ConfigureAwait(false);
-
-        /// <inheritdoc cref="EasyPostClient._isDisposed"/>
-        private bool _isDisposed;
-
-        /// <inheritdoc cref="EasyPostClient.Dispose()"/>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <inheritdoc cref="EasyPostClient.Dispose(bool)"/>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposing || _isDisposed) return;
-
-            // Set the disposed flag to true before disposing of the object to avoid infinite loops
-            _isDisposed = true;
-
-            // Dispose managed state (managed objects)
-
-            // Don't dispose of the associated client here, as it may be shared among multiple services
-        }
-
-        /// <summary>
-        ///     Finalizes an instance of the <see cref="EasyPostService"/> class.
-        /// </summary>
-        ~EasyPostService()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(disposing: false);
-        }
     }
 
     /// <summary>

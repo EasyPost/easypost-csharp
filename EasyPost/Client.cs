@@ -11,20 +11,17 @@ namespace EasyPost
         /// <summary>
         ///     Access Address-related functionality.
         /// </summary>
-        public AddressService Address { get; }
+        public AddressService Address => new AddressService(this);
 
         /// <summary>
         ///     Access API Key-related functionality.
         /// </summary>
-        public ApiKeyService ApiKey { get; } // TODO: Recommend renaming. Because ApiKey is used as the name of the API key service, you have to access the actual configured API key via ApiKeyInUse
+        public ApiKeyService ApiKey => new ApiKeyService(this); // TODO: Recommend renaming. Because ApiKey is used as the name of the API key service, you have to access the actual configured API key via ApiKeyInUse
 
         /// <summary>
         ///     Access Batch-related functionality.
         /// </summary>
-        public BatchService Batch { get; }
-
-        // ReSharper disable once MemberCanBePrivate.Global
-        // ReSharper disable once UnusedAutoPropertyAccessor.Global
+        public BatchService Batch => new BatchService(this);
 
         /// <summary>
         ///     Access beta functionality.
@@ -34,208 +31,131 @@ namespace EasyPost
         /// <summary>
         ///     Access Billing-related functionality.
         /// </summary>
-        public BillingService Billing { get; }
+        public BillingService Billing => new BillingService(this);
 
         /// <summary>
         ///     Access Carrier Account-related functionality.
         /// </summary>
-        public CarrierAccountService CarrierAccount { get; }
+        public CarrierAccountService CarrierAccount => new CarrierAccountService(this);
 
         /// <summary>
         ///     Access Carrier Metadata-related functionality.
         /// </summary>
-        public CarrierMetadataService CarrierMetadata { get; }
+        public CarrierMetadataService CarrierMetadata => new CarrierMetadataService(this);
 
         /// <summary>
         ///     Access Carrier Type-related functionality.
         /// </summary>
-        public CarrierTypeService CarrierType { get; }
+        public CarrierTypeService CarrierType => new CarrierTypeService(this);
 
         /// <summary>
         ///     Access Claim-related functionality.
         /// </summary>
-        public ClaimService Claim { get; }
+        public ClaimService Claim => new ClaimService(this);
 
         /// <summary>
         ///     Access Customs Info-related functionality.
         /// </summary>
-        public CustomsInfoService CustomsInfo { get; }
+        public CustomsInfoService CustomsInfo => new CustomsInfoService(this);
 
         /// <summary>
         ///     Access Customs Item-related functionality.
         /// </summary>
-        public CustomsItemService CustomsItem { get; }
+        public CustomsItemService CustomsItem => new CustomsItemService(this);
 
         /// <summary>
         ///     Access EndShipper-related functionality.
         /// </summary>
-        public EndShipperService EndShipper { get; }
+        public EndShipperService EndShipper => new EndShipperService(this);
 
         /// <summary>
         ///     Access Event-related functionality.
         /// </summary>
-        public EventService Event { get; }
+        public EventService Event => new EventService(this);
 
         /// <summary>
         ///     Access Insurance-related functionality.
         /// </summary>
-        public InsuranceService Insurance { get; }
+        public InsuranceService Insurance => new InsuranceService(this);
 
         /// <summary>
         ///     Access Luma-related functionality.
         /// </summary>
-        public LumaService Luma { get; }
+        public LumaService Luma => new LumaService(this);
 
         /// <summary>
         ///     Access Order-related functionality.
         /// </summary>
-        public OrderService Order { get; }
+        public OrderService Order => new OrderService(this);
 
         /// <summary>
         ///     Access Parcel-related functionality.
         /// </summary>
-        public ParcelService Parcel { get; }
+        public ParcelService Parcel => new ParcelService(this);
 
         /// <summary>
         ///     Access Pickup-related functionality.
         /// </summary>
-        public PickupService Pickup { get; }
+        public PickupService Pickup => new PickupService(this);
 
         /// <summary>
         ///     Access Rate-related functionality.
         /// </summary>
-        public RateService Rate { get; }
+        public RateService Rate => new RateService(this);
 
         /// <summary>
         ///     Access Referral Customer-related functionality.
         /// </summary>
-        public ReferralCustomerService ReferralCustomer { get; }
+        public ReferralCustomerService ReferralCustomer => new ReferralCustomerService(this);
 
         /// <summary>
         ///     Access Refund-related functionality.
         /// </summary>
-        public RefundService Refund { get; }
+        public RefundService Refund => new RefundService(this);
 
         /// <summary>
         ///     Access Report-related functionality.
         /// </summary>
-        public ReportService Report { get; }
+        public ReportService Report => new ReportService(this);
 
         /// <summary>
         ///     Access ScanForm-related functionality.
         /// </summary>
-        public ScanFormService ScanForm { get; }
+        public ScanFormService ScanForm => new ScanFormService(this);
 
         /// <summary>
         ///     Access Shipment-related functionality.
         /// </summary>
-        public ShipmentService Shipment { get; }
+        public ShipmentService Shipment => new ShipmentService(this);
 
         /// <summary>
         ///     Access SmartRate-related functionality.
         /// </summary>
-        public SmartRateService SmartRate { get; }
+        public SmartRateService SmartRate => new SmartRateService(this);
 
         /// <summary>
         ///     Access Tracker-related functionality.
         /// </summary>
-        public TrackerService Tracker { get; }
+        public TrackerService Tracker => new TrackerService(this);
 
         /// <summary>
         ///     Access User-related functionality.
         /// </summary>
-        public UserService User { get; }
+        public UserService User => new UserService(this);
 
         /// <summary>
         ///     Access Webhook-related functionality.
         /// </summary>
-        public WebhookService Webhook { get; }
+        public WebhookService Webhook => new WebhookService(this);
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Client"/> class.
         /// </summary>
         /// <param name="configuration"><see cref="ClientConfiguration"/> for this client.</param>
-#pragma warning disable IDE0021 // Ignoring since more properties will be added during construction in the future.
         public Client(ClientConfiguration configuration)
             : base(configuration)
-#pragma warning restore IDE0021
         {
-            // We initialize the services here since initializing a new one on each property call is expensive.
-            Address = new AddressService(this);
-            ApiKey = new ApiKeyService(this);
-            Batch = new BatchService(this);
-            Billing = new BillingService(this);
-            CarrierAccount = new CarrierAccountService(this);
-            CarrierMetadata = new CarrierMetadataService(this);
-            CarrierType = new CarrierTypeService(this);
-            Claim = new ClaimService(this);
-            CustomsInfo = new CustomsInfoService(this);
-            CustomsItem = new CustomsItemService(this);
-            EndShipper = new EndShipperService(this);
-            Event = new EventService(this);
-            Insurance = new InsuranceService(this);
-            Luma = new LumaService(this);
-            Order = new OrderService(this);
-            Parcel = new ParcelService(this);
-            Pickup = new PickupService(this);
-            Rate = new RateService(this);
-            ReferralCustomer = new ReferralCustomerService(this);
-            Refund = new RefundService(this);
-            Report = new ReportService(this);
-            ScanForm = new ScanFormService(this);
-            Shipment = new ShipmentService(this);
-            SmartRate = new SmartRateService(this);
-            Tracker = new TrackerService(this);
-            User = new UserService(this);
-            Webhook = new WebhookService(this);
-
-            // We go ahead and initialize the Beta client internally here as well
             Beta = new BetaClient(configuration);
-        }
-
-        /// <inheritdoc cref="EasyPostClient.Dispose(bool)"/>
-        protected override void Dispose(bool disposing)
-        {
-            if (!disposing) return;
-
-            // Dispose managed state (managed objects)
-
-            // "disposing" inherently true when called from Dispose(), so don't need to pass it in.
-
-            // Attempt to dispose of the services (some may already be disposed)
-            Address.Dispose();
-            ApiKey.Dispose();
-            Batch.Dispose();
-            Billing.Dispose();
-            CarrierAccount.Dispose();
-            CarrierMetadata.Dispose();
-            CarrierType.Dispose();
-            Claim.Dispose();
-            CustomsInfo.Dispose();
-            CustomsItem.Dispose();
-            EndShipper.Dispose();
-            Event.Dispose();
-            Insurance.Dispose();
-            Luma.Dispose();
-            Order.Dispose();
-            Parcel.Dispose();
-            Pickup.Dispose();
-            Rate.Dispose();
-            ReferralCustomer.Dispose();
-            Refund.Dispose();
-            Report.Dispose();
-            ScanForm.Dispose();
-            Shipment.Dispose();
-            SmartRate.Dispose();
-            Tracker.Dispose();
-            User.Dispose();
-            Webhook.Dispose();
-
-            // Attempt to dispose of the Beta client (may already be disposed)
-            Beta.Dispose();
-
-            // Dispose of the base client
-            base.Dispose(disposing);
         }
     }
 }
