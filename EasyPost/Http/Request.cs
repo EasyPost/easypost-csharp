@@ -14,7 +14,7 @@ namespace EasyPost.Http
     /// <summary>
     ///     Represents an HTTP request being sent to the EasyPost API.
     /// </summary>
-    internal class Request
+    internal sealed class Request
 #pragma warning restore CA1001
     {
         /// <summary>
