@@ -100,6 +100,7 @@ namespace EasyPost.Utilities.Internal.Extensions
             if (!dictionary.ContainsKey(key))
             {
                 var newDictionary = new Dictionary<string, object?>();
+                newDictionary.AddOrUpdate(value, path);
                 dictionary[key] = newDictionary;
             }
 #pragma warning restore CA1854
@@ -108,6 +109,7 @@ namespace EasyPost.Utilities.Internal.Extensions
             if (subDirectory is Dictionary<string, object?> subDictionary)
             {
                 subDictionary.AddOrUpdate(value, path);
+                dictionary[key] = subDictionary;
             }
             else
             {
