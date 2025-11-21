@@ -1,7 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using EasyPost._base;
-using EasyPost.Exceptions.General;
 using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;

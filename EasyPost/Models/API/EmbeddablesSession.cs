@@ -11,12 +11,6 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         /// <summary>
-        ///     Always returns "EmbeddablesSession".
-        /// </summary>
-        [JsonProperty("object")]
-        public string? Object { get; set; }
-
-        /// <summary>
         ///     Short-lived, one-time-use token that authorizes an Embeddables Components session.
         ///     Must be provided to the client-side Embeddables script to initialize the component.
         /// </summary>

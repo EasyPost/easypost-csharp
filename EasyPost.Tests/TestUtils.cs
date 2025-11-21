@@ -23,13 +23,11 @@ namespace EasyPost.Tests._Utilities
 
         private static readonly List<string> BodyCensors =
         [
-            "api_keys",
-            "children",
             "client_ip",
             "credentials",
             "email",
+            "fields",
             "key",
-            "keys",
             "phone_number",
             "phone",
             "test_credentials"

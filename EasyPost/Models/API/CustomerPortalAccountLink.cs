@@ -11,12 +11,6 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         /// <summary>
-        ///     Always returns "CustomerPortalAccountLink".
-        /// </summary>
-        [JsonProperty("object")]
-        public string? Object { get; set; }
-
-        /// <summary>
         ///     One-time-use session URL for initiating the Customer Portal.
         /// </summary>
         [JsonProperty("link")]

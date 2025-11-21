@@ -1,8 +1,8 @@
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using EasyPost.Models.API;
 using EasyPost.Utilities.Internal.Attributes;
 
-namespace EasyPost.Parameters.Claim
+namespace EasyPost.Parameters.CustomerPortal
 {
     /// <summary>
     ///     <a href="https://docs.easypost.com/docs/customer-portals#creating-a-portal-session">Parameters</a> for <see cref="EasyPost.Services.CustomerPortalService.CreateAccountLink(CreateAccountLink, System.Threading.CancellationToken)"/> API calls.
