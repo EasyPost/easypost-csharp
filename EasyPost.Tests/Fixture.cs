@@ -801,6 +801,22 @@ namespace EasyPost.Tests._Utilities
                         Carrier = fixture.GetOrNull<string>("carrier"),
                     };
                 }
+
+                internal static ParameterSets.Tracker.Batch Batch(Dictionary<string, object>? fixture)
+                {
+                    fixture ??= new Dictionary<string, object>();
+
+                    return new ParameterSets.Tracker.Batch
+                    {
+                        PageSize = fixture.GetOrNullInt("page_size"),
+                        BeforeId = fixture.GetOrNull<string>("before_id"),
+                        AfterId = fixture.GetOrNull<string>("after_id"),
+                        StartDatetime = fixture.GetOrNull<string>("start_datetime"),
+                        EndDatetime = fixture.GetOrNull<string>("end_datetime"),
+                        TrackingCodes = fixture.GetOrNull<List<string>>("tracking_codes"),
+                        Carrier = fixture.GetOrNull<string>("carrier"),
+                    };
+                }
             }
 
             internal static class Users

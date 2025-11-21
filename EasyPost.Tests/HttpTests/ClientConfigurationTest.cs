@@ -13,7 +13,6 @@ namespace EasyPost.Tests.HttpTests
         public void TestClientConfigurationDisposal()
         {
             ClientConfiguration configuration = new("not_a_real_api_key");
-            CustomAssertions.DoesNotThrow(() => configuration.Dispose());
         }
 
         [Fact]

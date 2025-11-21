@@ -1,7 +1,7 @@
 [
   {
-    "Duration": 837,
-    "RecordedAt": "2025-11-06T10:40:40.72857-07:00",
+    "Duration": 335,
+    "RecordedAt": "2025-11-19T16:09:30.23482-07:00",
     "Request": {
       "Body": "{\"tracker\":{\"carrier\":\"USPS\",\"tracking_code\":\"EZ1000000001\"}}",
       "BodyContentType": "Json",
@@ -32,15 +32,15 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "bcd4371f690cdd98e2b7cd6b0113cbab",
+        "x-ep-request-uuid": "40a2aa2a691e4e2ae2b86b180113412e",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
         "Location": "/api/v2/trackers/trk_b88311999eaa4429bd11ce27ea62d302",
-        "x-runtime": "0.072554",
-        "x-node": "bigweb38nuq",
-        "x-version-label": "easypost-202511061639-9e7dc69a6b-master",
+        "x-runtime": "0.093700",
+        "x-node": "bigweb63nuq",
+        "x-version-label": "easypost-202511192048-3cb4e6ce9b-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb5nuq c0061e0a2e,extlb2nuq cbbd141214",
+        "x-proxied": "intlb3nuq c0061e0a2e,extlb1nuq cbbd141214",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {
@@ -50,8 +50,8 @@
     }
   },
   {
-    "Duration": 100,
-    "RecordedAt": "2025-11-06T10:40:40.907915-07:00",
+    "Duration": 92,
+    "RecordedAt": "2025-11-19T16:09:30.334499-07:00",
     "Request": {
       "Body": "{\"tracking_codes\":[\"EZ1000000001\"]}",
       "BodyContentType": "Json",
@@ -82,14 +82,14 @@
         "x-download-options": "noopen",
         "x-permitted-cross-domain-policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
-        "x-ep-request-uuid": "bcd4371f690cdd98e2b7cd6b0113cc8d",
+        "x-ep-request-uuid": "40a2aa2a691e4e2ae2b86b1801134161",
         "Cache-Control": "no-store, no-cache, private",
         "Pragma": "no-cache",
-        "x-runtime": "0.059364",
+        "x-runtime": "0.054544",
         "x-node": "bigweb53nuq",
-        "x-version-label": "easypost-202511061639-9e7dc69a6b-master",
+        "x-version-label": "easypost-202511192048-3cb4e6ce9b-master",
         "x-backend": "easypost",
-        "x-proxied": "intlb3nuq c0061e0a2e,extlb2nuq cbbd141214",
+        "x-proxied": "intlb3nuq c0061e0a2e,extlb1nuq cbbd141214",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       },
       "Status": {

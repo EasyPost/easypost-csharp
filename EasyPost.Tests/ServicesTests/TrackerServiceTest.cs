@@ -147,26 +147,6 @@ namespace EasyPost.Tests.ServicesTests
             Assert.Equal(tracker.Id, retrievedTracker.Id);
         }
 
-        [Fact]
-        [CrudOperations.Read]
-        [Testing.Function]
-        public async Task TestRetrieveBatch()
-        {
-            UseVCR("retrieve_batch");
-
-            Tracker tracker = await Client.Tracker.Create(Fixtures.Usps, "EZ1000000001");
-
-            List<string> trackingCodes = new() { tracker.TrackingCode };
-            TrackerCollection trackerCollection = await Client.Tracker.RetrieveBatch(new Dictionary<string, object> { { "tracking_codes", trackingCodes } });
-
-            List<Tracker> trackers = trackerCollection.Trackers;
-
-            foreach (Tracker singleTracker in trackers)
-            {
-                Assert.IsType<Tracker>(singleTracker);
-            }
-        }
-
         #endregion
 
         #endregion
