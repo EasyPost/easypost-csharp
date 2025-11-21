@@ -669,6 +669,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Client.Claim
   nameWithType: Client.Claim
+- uid: EasyPost.Client.CustomerPortal
+  name: CustomerPortal
+  href: api/EasyPost.Client.html#EasyPost_Client_CustomerPortal
+  commentId: P:EasyPost.Client.CustomerPortal
+  fullName: EasyPost.Client.CustomerPortal
+  nameWithType: Client.CustomerPortal
+- uid: EasyPost.Client.CustomerPortal*
+  name: CustomerPortal
+  href: api/EasyPost.Client.html#EasyPost_Client_CustomerPortal_
+  commentId: Overload:EasyPost.Client.CustomerPortal
+  isSpec: "True"
+  fullName: EasyPost.Client.CustomerPortal
+  nameWithType: Client.CustomerPortal
 - uid: EasyPost.Client.CustomsInfo
   name: CustomsInfo
   href: api/EasyPost.Client.html#EasyPost_Client_CustomsInfo
@@ -695,6 +708,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Client.CustomsItem
   nameWithType: Client.CustomsItem
+- uid: EasyPost.Client.Embeddable
+  name: Embeddable
+  href: api/EasyPost.Client.html#EasyPost_Client_Embeddable
+  commentId: P:EasyPost.Client.Embeddable
+  fullName: EasyPost.Client.Embeddable
+  nameWithType: Client.Embeddable
+- uid: EasyPost.Client.Embeddable*
+  name: Embeddable
+  href: api/EasyPost.Client.html#EasyPost_Client_Embeddable_
+  commentId: Overload:EasyPost.Client.Embeddable
+  isSpec: "True"
+  fullName: EasyPost.Client.Embeddable
+  nameWithType: Client.Embeddable
 - uid: EasyPost.Client.EndShipper
   name: EndShipper
   href: api/EasyPost.Client.html#EasyPost_Client_EndShipper
@@ -3837,6 +3863,51 @@ references:
   commentId: F:EasyPost.Models.API.ClaimType.Theft
   fullName: EasyPost.Models.API.ClaimType.Theft
   nameWithType: ClaimType.Theft
+- uid: EasyPost.Models.API.CustomerPortalAccountLink
+  name: CustomerPortalAccountLink
+  href: api/EasyPost.Models.API.CustomerPortalAccountLink.html
+  commentId: T:EasyPost.Models.API.CustomerPortalAccountLink
+  fullName: EasyPost.Models.API.CustomerPortalAccountLink
+  nameWithType: CustomerPortalAccountLink
+- uid: EasyPost.Models.API.CustomerPortalAccountLink.CreatedAt
+  name: CreatedAt
+  href: api/EasyPost.Models.API.CustomerPortalAccountLink.html#EasyPost_Models_API_CustomerPortalAccountLink_CreatedAt
+  commentId: P:EasyPost.Models.API.CustomerPortalAccountLink.CreatedAt
+  fullName: EasyPost.Models.API.CustomerPortalAccountLink.CreatedAt
+  nameWithType: CustomerPortalAccountLink.CreatedAt
+- uid: EasyPost.Models.API.CustomerPortalAccountLink.CreatedAt*
+  name: CreatedAt
+  href: api/EasyPost.Models.API.CustomerPortalAccountLink.html#EasyPost_Models_API_CustomerPortalAccountLink_CreatedAt_
+  commentId: Overload:EasyPost.Models.API.CustomerPortalAccountLink.CreatedAt
+  isSpec: "True"
+  fullName: EasyPost.Models.API.CustomerPortalAccountLink.CreatedAt
+  nameWithType: CustomerPortalAccountLink.CreatedAt
+- uid: EasyPost.Models.API.CustomerPortalAccountLink.ExpiresAt
+  name: ExpiresAt
+  href: api/EasyPost.Models.API.CustomerPortalAccountLink.html#EasyPost_Models_API_CustomerPortalAccountLink_ExpiresAt
+  commentId: P:EasyPost.Models.API.CustomerPortalAccountLink.ExpiresAt
+  fullName: EasyPost.Models.API.CustomerPortalAccountLink.ExpiresAt
+  nameWithType: CustomerPortalAccountLink.ExpiresAt
+- uid: EasyPost.Models.API.CustomerPortalAccountLink.ExpiresAt*
+  name: ExpiresAt
+  href: api/EasyPost.Models.API.CustomerPortalAccountLink.html#EasyPost_Models_API_CustomerPortalAccountLink_ExpiresAt_
+  commentId: Overload:EasyPost.Models.API.CustomerPortalAccountLink.ExpiresAt
+  isSpec: "True"
+  fullName: EasyPost.Models.API.CustomerPortalAccountLink.ExpiresAt
+  nameWithType: CustomerPortalAccountLink.ExpiresAt
+- uid: EasyPost.Models.API.CustomerPortalAccountLink.Link
+  name: Link
+  href: api/EasyPost.Models.API.CustomerPortalAccountLink.html#EasyPost_Models_API_CustomerPortalAccountLink_Link
+  commentId: P:EasyPost.Models.API.CustomerPortalAccountLink.Link
+  fullName: EasyPost.Models.API.CustomerPortalAccountLink.Link
+  nameWithType: CustomerPortalAccountLink.Link
+- uid: EasyPost.Models.API.CustomerPortalAccountLink.Link*
+  name: Link
+  href: api/EasyPost.Models.API.CustomerPortalAccountLink.html#EasyPost_Models_API_CustomerPortalAccountLink_Link_
+  commentId: Overload:EasyPost.Models.API.CustomerPortalAccountLink.Link
+  isSpec: "True"
+  fullName: EasyPost.Models.API.CustomerPortalAccountLink.Link
+  nameWithType: CustomerPortalAccountLink.Link
 - uid: EasyPost.Models.API.CustomsInfo
   name: CustomsInfo
   href: api/EasyPost.Models.API.CustomsInfo.html
@@ -4128,6 +4199,51 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.DeliveryDateForZipPairEstimate.TimeInTransitDetails
   nameWithType: DeliveryDateForZipPairEstimate.TimeInTransitDetails
+- uid: EasyPost.Models.API.EmbeddablesSession
+  name: EmbeddablesSession
+  href: api/EasyPost.Models.API.EmbeddablesSession.html
+  commentId: T:EasyPost.Models.API.EmbeddablesSession
+  fullName: EasyPost.Models.API.EmbeddablesSession
+  nameWithType: EmbeddablesSession
+- uid: EasyPost.Models.API.EmbeddablesSession.CreatedAt
+  name: CreatedAt
+  href: api/EasyPost.Models.API.EmbeddablesSession.html#EasyPost_Models_API_EmbeddablesSession_CreatedAt
+  commentId: P:EasyPost.Models.API.EmbeddablesSession.CreatedAt
+  fullName: EasyPost.Models.API.EmbeddablesSession.CreatedAt
+  nameWithType: EmbeddablesSession.CreatedAt
+- uid: EasyPost.Models.API.EmbeddablesSession.CreatedAt*
+  name: CreatedAt
+  href: api/EasyPost.Models.API.EmbeddablesSession.html#EasyPost_Models_API_EmbeddablesSession_CreatedAt_
+  commentId: Overload:EasyPost.Models.API.EmbeddablesSession.CreatedAt
+  isSpec: "True"
+  fullName: EasyPost.Models.API.EmbeddablesSession.CreatedAt
+  nameWithType: EmbeddablesSession.CreatedAt
+- uid: EasyPost.Models.API.EmbeddablesSession.ExpiresAt
+  name: ExpiresAt
+  href: api/EasyPost.Models.API.EmbeddablesSession.html#EasyPost_Models_API_EmbeddablesSession_ExpiresAt
+  commentId: P:EasyPost.Models.API.EmbeddablesSession.ExpiresAt
+  fullName: EasyPost.Models.API.EmbeddablesSession.ExpiresAt
+  nameWithType: EmbeddablesSession.ExpiresAt
+- uid: EasyPost.Models.API.EmbeddablesSession.ExpiresAt*
+  name: ExpiresAt
+  href: api/EasyPost.Models.API.EmbeddablesSession.html#EasyPost_Models_API_EmbeddablesSession_ExpiresAt_
+  commentId: Overload:EasyPost.Models.API.EmbeddablesSession.ExpiresAt
+  isSpec: "True"
+  fullName: EasyPost.Models.API.EmbeddablesSession.ExpiresAt
+  nameWithType: EmbeddablesSession.ExpiresAt
+- uid: EasyPost.Models.API.EmbeddablesSession.SessionId
+  name: SessionId
+  href: api/EasyPost.Models.API.EmbeddablesSession.html#EasyPost_Models_API_EmbeddablesSession_SessionId
+  commentId: P:EasyPost.Models.API.EmbeddablesSession.SessionId
+  fullName: EasyPost.Models.API.EmbeddablesSession.SessionId
+  nameWithType: EmbeddablesSession.SessionId
+- uid: EasyPost.Models.API.EmbeddablesSession.SessionId*
+  name: SessionId
+  href: api/EasyPost.Models.API.EmbeddablesSession.html#EasyPost_Models_API_EmbeddablesSession_SessionId_
+  commentId: Overload:EasyPost.Models.API.EmbeddablesSession.SessionId
+  isSpec: "True"
+  fullName: EasyPost.Models.API.EmbeddablesSession.SessionId
+  nameWithType: EmbeddablesSession.SessionId
 - uid: EasyPost.Models.API.EndShipper
   name: EndShipper
   href: api/EasyPost.Models.API.EndShipper.html
@@ -12879,6 +12995,83 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Claim.Create.Type
   nameWithType: Create.Type
+- uid: EasyPost.Parameters.CustomerPortal
+  name: EasyPost.Parameters.CustomerPortal
+  href: api/EasyPost.Parameters.CustomerPortal.html
+  commentId: N:EasyPost.Parameters.CustomerPortal
+  fullName: EasyPost.Parameters.CustomerPortal
+  nameWithType: EasyPost.Parameters.CustomerPortal
+- uid: EasyPost.Parameters.CustomerPortal.CreateAccountLink
+  name: CreateAccountLink
+  href: api/EasyPost.Parameters.CustomerPortal.CreateAccountLink.html
+  commentId: T:EasyPost.Parameters.CustomerPortal.CreateAccountLink
+  fullName: EasyPost.Parameters.CustomerPortal.CreateAccountLink
+  nameWithType: CreateAccountLink
+- uid: EasyPost.Parameters.CustomerPortal.CreateAccountLink.Metadata
+  name: Metadata
+  href: api/EasyPost.Parameters.CustomerPortal.CreateAccountLink.html#EasyPost_Parameters_CustomerPortal_CreateAccountLink_Metadata
+  commentId: P:EasyPost.Parameters.CustomerPortal.CreateAccountLink.Metadata
+  fullName: EasyPost.Parameters.CustomerPortal.CreateAccountLink.Metadata
+  nameWithType: CreateAccountLink.Metadata
+- uid: EasyPost.Parameters.CustomerPortal.CreateAccountLink.Metadata*
+  name: Metadata
+  href: api/EasyPost.Parameters.CustomerPortal.CreateAccountLink.html#EasyPost_Parameters_CustomerPortal_CreateAccountLink_Metadata_
+  commentId: Overload:EasyPost.Parameters.CustomerPortal.CreateAccountLink.Metadata
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CustomerPortal.CreateAccountLink.Metadata
+  nameWithType: CreateAccountLink.Metadata
+- uid: EasyPost.Parameters.CustomerPortal.CreateAccountLink.RefreshUrl
+  name: RefreshUrl
+  href: api/EasyPost.Parameters.CustomerPortal.CreateAccountLink.html#EasyPost_Parameters_CustomerPortal_CreateAccountLink_RefreshUrl
+  commentId: P:EasyPost.Parameters.CustomerPortal.CreateAccountLink.RefreshUrl
+  fullName: EasyPost.Parameters.CustomerPortal.CreateAccountLink.RefreshUrl
+  nameWithType: CreateAccountLink.RefreshUrl
+- uid: EasyPost.Parameters.CustomerPortal.CreateAccountLink.RefreshUrl*
+  name: RefreshUrl
+  href: api/EasyPost.Parameters.CustomerPortal.CreateAccountLink.html#EasyPost_Parameters_CustomerPortal_CreateAccountLink_RefreshUrl_
+  commentId: Overload:EasyPost.Parameters.CustomerPortal.CreateAccountLink.RefreshUrl
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CustomerPortal.CreateAccountLink.RefreshUrl
+  nameWithType: CreateAccountLink.RefreshUrl
+- uid: EasyPost.Parameters.CustomerPortal.CreateAccountLink.ReturnUrl
+  name: ReturnUrl
+  href: api/EasyPost.Parameters.CustomerPortal.CreateAccountLink.html#EasyPost_Parameters_CustomerPortal_CreateAccountLink_ReturnUrl
+  commentId: P:EasyPost.Parameters.CustomerPortal.CreateAccountLink.ReturnUrl
+  fullName: EasyPost.Parameters.CustomerPortal.CreateAccountLink.ReturnUrl
+  nameWithType: CreateAccountLink.ReturnUrl
+- uid: EasyPost.Parameters.CustomerPortal.CreateAccountLink.ReturnUrl*
+  name: ReturnUrl
+  href: api/EasyPost.Parameters.CustomerPortal.CreateAccountLink.html#EasyPost_Parameters_CustomerPortal_CreateAccountLink_ReturnUrl_
+  commentId: Overload:EasyPost.Parameters.CustomerPortal.CreateAccountLink.ReturnUrl
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CustomerPortal.CreateAccountLink.ReturnUrl
+  nameWithType: CreateAccountLink.ReturnUrl
+- uid: EasyPost.Parameters.CustomerPortal.CreateAccountLink.SessionType
+  name: SessionType
+  href: api/EasyPost.Parameters.CustomerPortal.CreateAccountLink.html#EasyPost_Parameters_CustomerPortal_CreateAccountLink_SessionType
+  commentId: P:EasyPost.Parameters.CustomerPortal.CreateAccountLink.SessionType
+  fullName: EasyPost.Parameters.CustomerPortal.CreateAccountLink.SessionType
+  nameWithType: CreateAccountLink.SessionType
+- uid: EasyPost.Parameters.CustomerPortal.CreateAccountLink.SessionType*
+  name: SessionType
+  href: api/EasyPost.Parameters.CustomerPortal.CreateAccountLink.html#EasyPost_Parameters_CustomerPortal_CreateAccountLink_SessionType_
+  commentId: Overload:EasyPost.Parameters.CustomerPortal.CreateAccountLink.SessionType
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CustomerPortal.CreateAccountLink.SessionType
+  nameWithType: CreateAccountLink.SessionType
+- uid: EasyPost.Parameters.CustomerPortal.CreateAccountLink.UserId
+  name: UserId
+  href: api/EasyPost.Parameters.CustomerPortal.CreateAccountLink.html#EasyPost_Parameters_CustomerPortal_CreateAccountLink_UserId
+  commentId: P:EasyPost.Parameters.CustomerPortal.CreateAccountLink.UserId
+  fullName: EasyPost.Parameters.CustomerPortal.CreateAccountLink.UserId
+  nameWithType: CreateAccountLink.UserId
+- uid: EasyPost.Parameters.CustomerPortal.CreateAccountLink.UserId*
+  name: UserId
+  href: api/EasyPost.Parameters.CustomerPortal.CreateAccountLink.html#EasyPost_Parameters_CustomerPortal_CreateAccountLink_UserId_
+  commentId: Overload:EasyPost.Parameters.CustomerPortal.CreateAccountLink.UserId
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CustomerPortal.CreateAccountLink.UserId
+  nameWithType: CreateAccountLink.UserId
 - uid: EasyPost.Parameters.CustomsInfo
   name: EasyPost.Parameters.CustomsInfo
   href: api/EasyPost.Parameters.CustomsInfo.html
@@ -13189,6 +13382,44 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CustomsItem.Create.Weight
   nameWithType: Create.Weight
+- uid: EasyPost.Parameters.Embeddable
+  name: EasyPost.Parameters.Embeddable
+  href: api/EasyPost.Parameters.Embeddable.html
+  commentId: N:EasyPost.Parameters.Embeddable
+  fullName: EasyPost.Parameters.Embeddable
+  nameWithType: EasyPost.Parameters.Embeddable
+- uid: EasyPost.Parameters.Embeddable.CreateSession
+  name: CreateSession
+  href: api/EasyPost.Parameters.Embeddable.CreateSession.html
+  commentId: T:EasyPost.Parameters.Embeddable.CreateSession
+  fullName: EasyPost.Parameters.Embeddable.CreateSession
+  nameWithType: CreateSession
+- uid: EasyPost.Parameters.Embeddable.CreateSession.OriginHost
+  name: OriginHost
+  href: api/EasyPost.Parameters.Embeddable.CreateSession.html#EasyPost_Parameters_Embeddable_CreateSession_OriginHost
+  commentId: P:EasyPost.Parameters.Embeddable.CreateSession.OriginHost
+  fullName: EasyPost.Parameters.Embeddable.CreateSession.OriginHost
+  nameWithType: CreateSession.OriginHost
+- uid: EasyPost.Parameters.Embeddable.CreateSession.OriginHost*
+  name: OriginHost
+  href: api/EasyPost.Parameters.Embeddable.CreateSession.html#EasyPost_Parameters_Embeddable_CreateSession_OriginHost_
+  commentId: Overload:EasyPost.Parameters.Embeddable.CreateSession.OriginHost
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Embeddable.CreateSession.OriginHost
+  nameWithType: CreateSession.OriginHost
+- uid: EasyPost.Parameters.Embeddable.CreateSession.UserId
+  name: UserId
+  href: api/EasyPost.Parameters.Embeddable.CreateSession.html#EasyPost_Parameters_Embeddable_CreateSession_UserId
+  commentId: P:EasyPost.Parameters.Embeddable.CreateSession.UserId
+  fullName: EasyPost.Parameters.Embeddable.CreateSession.UserId
+  nameWithType: CreateSession.UserId
+- uid: EasyPost.Parameters.Embeddable.CreateSession.UserId*
+  name: UserId
+  href: api/EasyPost.Parameters.Embeddable.CreateSession.html#EasyPost_Parameters_Embeddable_CreateSession_UserId_
+  commentId: Overload:EasyPost.Parameters.Embeddable.CreateSession.UserId
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Embeddable.CreateSession.UserId
+  nameWithType: CreateSession.UserId
 - uid: EasyPost.Parameters.EndShipper
   name: EasyPost.Parameters.EndShipper
   href: api/EasyPost.Parameters.EndShipper.html
@@ -17567,6 +17798,25 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ClaimService.Retrieve
   nameWithType: ClaimService.Retrieve
+- uid: EasyPost.Services.CustomerPortalService
+  name: CustomerPortalService
+  href: api/EasyPost.Services.CustomerPortalService.html
+  commentId: T:EasyPost.Services.CustomerPortalService
+  fullName: EasyPost.Services.CustomerPortalService
+  nameWithType: CustomerPortalService
+- uid: EasyPost.Services.CustomerPortalService.CreateAccountLink(EasyPost.Parameters.CustomerPortal.CreateAccountLink,CancellationToken)
+  name: CreateAccountLink(CreateAccountLink, CancellationToken)
+  href: api/EasyPost.Services.CustomerPortalService.html#EasyPost_Services_CustomerPortalService_CreateAccountLink_EasyPost_Parameters_CustomerPortal_CreateAccountLink_CancellationToken_
+  commentId: M:EasyPost.Services.CustomerPortalService.CreateAccountLink(EasyPost.Parameters.CustomerPortal.CreateAccountLink,CancellationToken)
+  fullName: EasyPost.Services.CustomerPortalService.CreateAccountLink(EasyPost.Parameters.CustomerPortal.CreateAccountLink, CancellationToken)
+  nameWithType: CustomerPortalService.CreateAccountLink(CreateAccountLink, CancellationToken)
+- uid: EasyPost.Services.CustomerPortalService.CreateAccountLink*
+  name: CreateAccountLink
+  href: api/EasyPost.Services.CustomerPortalService.html#EasyPost_Services_CustomerPortalService_CreateAccountLink_
+  commentId: Overload:EasyPost.Services.CustomerPortalService.CreateAccountLink
+  isSpec: "True"
+  fullName: EasyPost.Services.CustomerPortalService.CreateAccountLink
+  nameWithType: CustomerPortalService.CreateAccountLink
 - uid: EasyPost.Services.CustomsInfoService
   name: CustomsInfoService
   href: api/EasyPost.Services.CustomsInfoService.html
@@ -17649,6 +17899,25 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.CustomsItemService.Retrieve
   nameWithType: CustomsItemService.Retrieve
+- uid: EasyPost.Services.EmbeddableService
+  name: EmbeddableService
+  href: api/EasyPost.Services.EmbeddableService.html
+  commentId: T:EasyPost.Services.EmbeddableService
+  fullName: EasyPost.Services.EmbeddableService
+  nameWithType: EmbeddableService
+- uid: EasyPost.Services.EmbeddableService.CreateSession(EasyPost.Parameters.Embeddable.CreateSession,CancellationToken)
+  name: CreateSession(CreateSession, CancellationToken)
+  href: api/EasyPost.Services.EmbeddableService.html#EasyPost_Services_EmbeddableService_CreateSession_EasyPost_Parameters_Embeddable_CreateSession_CancellationToken_
+  commentId: M:EasyPost.Services.EmbeddableService.CreateSession(EasyPost.Parameters.Embeddable.CreateSession,CancellationToken)
+  fullName: EasyPost.Services.EmbeddableService.CreateSession(EasyPost.Parameters.Embeddable.CreateSession, CancellationToken)
+  nameWithType: EmbeddableService.CreateSession(CreateSession, CancellationToken)
+- uid: EasyPost.Services.EmbeddableService.CreateSession*
+  name: CreateSession
+  href: api/EasyPost.Services.EmbeddableService.html#EasyPost_Services_EmbeddableService_CreateSession_
+  commentId: Overload:EasyPost.Services.EmbeddableService.CreateSession
+  isSpec: "True"
+  fullName: EasyPost.Services.EmbeddableService.CreateSession
+  nameWithType: EmbeddableService.CreateSession
 - uid: EasyPost.Services.EndShipperService
   name: EndShipperService
   href: api/EasyPost.Services.EndShipperService.html
