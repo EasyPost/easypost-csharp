@@ -54,6 +54,11 @@ namespace EasyPost
         public ClaimService Claim => new ClaimService(this);
 
         /// <summary>
+        ///     Access CustomerPortal-related functionality.
+        /// </summary>
+        public CustomerPortalService CustomerPortal => new CustomerPortalService(this);
+
+        /// <summary>
         ///     Access Customs Info-related functionality.
         /// </summary>
         public CustomsInfoService CustomsInfo => new CustomsInfoService(this);
@@ -62,6 +67,11 @@ namespace EasyPost
         ///     Access Customs Item-related functionality.
         /// </summary>
         public CustomsItemService CustomsItem => new CustomsItemService(this);
+
+        /// <summary>
+        ///     Access Embeddable-related functionality.
+        /// </summary>
+        public EmbeddableService Embeddable => new EmbeddableService(this);
 
         /// <summary>
         ///     Access EndShipper-related functionality.
