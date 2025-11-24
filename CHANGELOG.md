@@ -2,6 +2,7 @@
 
 ## v7.4.0 (2025-11-24)
 
+- Adds .NET 10 support
 - Adds the following functions:
   - `CustomerPortal.CreateAccountLink`
   - `Embeddable.CreateSession`
