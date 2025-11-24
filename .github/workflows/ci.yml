@@ -157,7 +157,13 @@ jobs:
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+          dotnet-version: |
+            10.x.x
+            ${{ matrix.dotnet-version }}
+
+      - name: Specify .NET SDK version to use since GitHub runners have multiple installed
+        run: |
+            echo '{"sdk":{"version": "10.x.x"}}' > ./global.json
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
@@ -172,6 +178,9 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ matrix.framework }}-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
+
+      - name: Restore NuGet Packages
+        run: make restore
 
         # Pull in fixtures submodule
       - name: Set up dotnet tools and dependencies
@@ -230,6 +239,16 @@ jobs:
         with:
           submodules: true
 
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v5
+        id: setupid
+        with:
+          dotnet-version: 10.x.x
+
+      - name: Specify .NET SDK version to use since GitHub runners have multiple installed
+        run: |
+            echo '{"sdk":{"version": "${{ steps.setupid.outputs.dotnet-version }}"}}' > ./global.json
+
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
@@ -259,8 +278,13 @@ jobs:
 
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v5
+        id: setupid
         with:
           dotnet-version: 10.x.x
+
+      - name: Specify .NET SDK version to use since GitHub runners have multiple installed
+        run: |
+            echo '{"sdk":{"version": "${{ steps.setupid.outputs.dotnet-version }}"}}' > ./global.json
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
@@ -291,8 +315,13 @@ jobs:
 
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v5
+        id: setupid
         with:
           dotnet-version: 10.x.x
+
+      - name: Specify .NET SDK version to use since GitHub runners have multiple installed
+        run: |
+            echo '{"sdk":{"version": "${{ steps.setupid.outputs.dotnet-version }}"}}' > ./global.json
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
