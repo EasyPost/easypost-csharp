@@ -163,7 +163,7 @@ jobs:
 
       - name: Specify .NET SDK version to use since GitHub runners have multiple installed
         run: |
-            echo '{"sdk":{"version": "10.x.x"}}' > ./global.json
+            echo '{"sdk":{"version": "${{ matrix.dotnet-version }}"}}' > ./global.json
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
