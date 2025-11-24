@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FRAMEWORK="net9.0"
+FRAMEWORK="net10.0"
 
 # Navigate to the test folder
 TEST_FOLDER="EasyPost.Tests"
@@ -21,10 +21,10 @@ dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.4.4 |
 # check reportgenerator is available
 set -- dotnet reportgenerator
 for req in "$@"; do
-  if ! command -v "$req" >/dev/null 2>&1; then
-    echo "$req could not be found"
-    exit
-  fi
+    if ! command -v "$req" >/dev/null 2>&1; then
+        echo "$req could not be found"
+        exit
+    fi
 done
 
 COVERAGE_REPORT_FOLDER="../coveragereport"

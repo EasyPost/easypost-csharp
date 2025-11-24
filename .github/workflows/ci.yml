@@ -8,14 +8,14 @@ on:
 
 jobs:
   lint:
-    runs-on: windows-2022
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.x.x
+          dotnet-version: 10.x.x
 
       - name: Set up dotnet tools
         run: make install install-styleguide
@@ -26,12 +26,12 @@ jobs:
   Roslyn_Static_Analysis:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.x.x
+          dotnet-version: 10.x.x
 
       - name: Set up dotnet tools
         run: make install install-styleguide
@@ -46,14 +46,14 @@ jobs:
   Security_Code_Scan:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           # v6 is needed for the tool to run
           dotnet-version: |
-            9.x.x
+            10.x.x
             6.x.x
 
       - name: Set up dotnet tools and dependencies
@@ -65,12 +65,12 @@ jobs:
   Coverage_Requirements:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.x.x
+          dotnet-version: 10.x.x
 
       - name: Set up dotnet tools and dependencies
         run: make install
@@ -82,12 +82,12 @@ jobs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.x.x
+          dotnet-version: 10.x.x
 
       - name: Set up dotnet tools and dependencies
         run: make install
@@ -105,12 +105,12 @@ jobs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.x.x
+          dotnet-version: 10.x.x
 
       - name: Install docfx
         run: make install-tools
@@ -132,7 +132,7 @@ jobs:
       EASYPOST_PROD_API_KEY: "123"
     strategy:
       matrix:
-        name: ["Net60", "Net70", "Net80", "Net90"]
+        name: ["Net60", "Net70", "Net80", "Net90", "Net100"]
         include:
           - name: Net60
             framework: net6.0
@@ -146,13 +146,16 @@ jobs:
           - name: Net90
             framework: net9.0
             dotnet-version: 9.x.x
+          - name: Net100
+            framework: net10.0
+            dotnet-version: 10.x.x
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           submodules: true
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
 
@@ -184,14 +187,14 @@ jobs:
   Integration_Tests:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           submodules: true
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.x.x
+          dotnet-version: 10.x.x
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
@@ -223,9 +226,10 @@ jobs:
   # - By extension, this is ensuring we are testing that the `EasyPost` source code can run in a .NET Framework environment
 
   NetStandard_Compatibility_Tests:
+    # Need windows-2022 for .NET Framework 4.7.2 support
     runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           submodules: true
 
@@ -252,14 +256,14 @@ jobs:
   FSharp_Compatibility_Tests:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           submodules: true
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.x.x
+          dotnet-version: 10.x.x
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
@@ -284,14 +288,14 @@ jobs:
   Visual_Basic_Compatibility_Test:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           submodules: true
 
       - name: Install .NET SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.x.x
+          dotnet-version: 10.x.x
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2

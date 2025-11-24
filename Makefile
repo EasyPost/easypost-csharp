@@ -1,4 +1,4 @@
-FW ?= net9.0
+FW ?= net10.0
 
 ## help - Display help about make targets for this Makefile
 help:

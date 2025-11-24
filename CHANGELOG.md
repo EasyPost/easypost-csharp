@@ -1,12 +1,15 @@
 # CHANGELOG
 
-## Next Release
+## v7.4.0 (2025-11-24)
 
 - Adds the following functions:
   - `CustomerPortal.CreateAccountLink`
   - `Embeddable.CreateSession`
+- Corrects the definition of `Tracker.RetrieveBatch` to use parameter sets
 
 ## v7.3.0 (2025-11-10)
+
+NOTE: This version was not released to Nuget
 
 - Adds support for `UspsShipAccount`
 - Adds `Tracker.RetrieveBatch` function
