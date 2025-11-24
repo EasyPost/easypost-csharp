@@ -173,9 +173,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
-      - name: Restore NuGet Packages
-        run: make restore
-
         # Pull in fixtures submodule
       - name: Set up dotnet tools and dependencies
         run: make install
