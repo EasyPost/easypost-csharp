@@ -334,6 +334,7 @@ unit tests in one framework at a time with, e.g `make unit-test fw=net9.0`. Vali
 - `net7.0` (.NET 7.0)
 - `net8.0` (.NET 8.0)
 - `net9.0` (.NET 9.0)
+- `net10.0` (.NET 10.0)
 
 #### Test Coverage
 
