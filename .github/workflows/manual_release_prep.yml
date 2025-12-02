@@ -15,11 +15,11 @@ jobs:
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: |
-            5.x.x
             6.x.x
             7.x.x
             8.x.x
             9.x.x
+            10.x.x
 
       - name: Setup Nuget
         uses: NuGet/setup-nuget@v2
@@ -63,10 +63,10 @@ jobs:
 
       - name: Build and Sign NuGet package
         run: |
-          call scripts\win\build_release_nuget.bat EasyPost EasyPostNETStrongNameSigning.snk "${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }}" Release
+          call scripts\win\build_release_nuget.bat EasyPost EasyPostNETStrongNameSigning.snk "${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }}" "${{ secrets.SM_CODE_SIGNING_CERT_SHA256_HASH }}" Release
         shell: cmd
 
       - name: Upload NuGet package to Action output
         uses: actions/upload-artifact@v4
         with:
-          path: "*.nupkg"
+          path: '*.nupkg'
