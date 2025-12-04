@@ -45,13 +45,13 @@ init-examples-submodule:
 
 ## install-tools - Install required dotnet tools
 install-tools:
-	dotnet new tool-manifest || exit 0
+	dotnet new tool-manifest --force || exit 0
 	dotnet tool install --local security-scan --version 5.6.3 || exit 0
 	dotnet tool install --local dotnet-format || exit 0
 	dotnet tool install --local docfx --version 2.60.2 || exit 0
 
 ## install-styleguide - Import style guide (Unix only)
-install-styleguide: | update-examples-submodule
+install-styleguide: | init-examples-submodule
 	sh examples/symlink_directory_files.sh examples/style_guides/csharp .
 
 ## install - Install requirements
