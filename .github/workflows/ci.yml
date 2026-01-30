@@ -10,46 +10,43 @@ jobs:
   lint:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v5
-
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v5
+      - uses: actions/checkout@v6
+      - uses: extractions/setup-just@v3
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.x.x
 
       - name: Set up dotnet tools
-        run: make install install-styleguide
+        run: just install install-styleguide
 
       - name: Check style with dotnet-format
-        run: make lint
+        run: just lint
 
   Roslyn_Static_Analysis:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v5
-
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v5
+      - uses: actions/checkout@v6
+      - uses: extractions/setup-just@v3
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.x.x
 
       - name: Set up dotnet tools
-        run: make install install-styleguide
+        run: just install install-styleguide
 
       - name: Restore NuGet Packages
-        run: make restore
+        run: just restore
 
       # This Make step is configured to treat all warnings as errors, so it will fail if any warnings are found
       - name: Run static analysis
-        run: make analyze
+        run: just analyze
 
   Security_Code_Scan:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v5
-
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v5
+      - uses: actions/checkout@v6
+      - uses: extractions/setup-just@v3
+      - uses: actions/setup-dotnet@v5
         with:
           # v6 is needed for the tool to run
           dotnet-version: |
@@ -57,43 +54,41 @@ jobs:
             6.x.x
 
       - name: Set up dotnet tools and dependencies
-        run: make install
+        run: just install
 
       - name: Run security analysis
-        run: make scan
+        run: just scan
 
   Coverage_Requirements:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v5
+      - uses: actions/checkout@v6
+      - uses: extractions/setup-just@v3
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.x.x
 
       - name: Set up dotnet tools and dependencies
-        run: make install
+        run: just install
 
       - name: Check if test suite coverage meets requirements
-        run: make coverage-check
+        run: just coverage-check
 
   Upload_Coverage_Report:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v5
+      - uses: actions/checkout@v6
+      - uses: extractions/setup-just@v3
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.x.x
 
       - name: Set up dotnet tools and dependencies
-        run: make install
+        run: just install
 
       - name: Generate coverage report
-        run: make coverage
+        run: just coverage
 
       - name: Upload lcov coverage report to Coveralls
         uses: coverallsapp/github-action@master
@@ -105,18 +100,17 @@ jobs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v5
+      - uses: actions/checkout@v6
+      - uses: extractions/setup-just@v3
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.x.x
 
       - name: Install docfx
-        run: make install-tools
+        run: just install-tools
 
       - name: Generate docs
-        run: make docs
+        run: just docs
 
       - name: Deploy docs
         uses: peaceiris/actions-gh-pages@v3
@@ -128,11 +122,11 @@ jobs:
     # derived from https://dev.to/felipetofoli/github-actions-for-net-full-framework-build-and-test-299h
     runs-on: windows-latest
     env:
-      EASYPOST_TEST_API_KEY: "123"
-      EASYPOST_PROD_API_KEY: "123"
+      EASYPOST_TEST_API_KEY: '123'
+      EASYPOST_PROD_API_KEY: '123'
     strategy:
       matrix:
-        name: ["Net60", "Net70", "Net80", "Net90", "Net100"]
+        name: ['Net60', 'Net70', 'Net80', 'Net90', 'Net100']
         include:
           - name: Net60
             framework: net6.0
@@ -150,12 +144,11 @@ jobs:
             framework: net10.0
             dotnet-version: 10.x.x
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           submodules: true
-
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v5
+      - uses: extractions/setup-just@v3
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: |
             10.x.x
@@ -163,7 +156,7 @@ jobs:
 
       - name: Specify .NET SDK version to use since GitHub runners have multiple installed
         run: |
-            echo '{"sdk":{"version": "${{ matrix.dotnet-version }}"}}' > ./global.json
+          echo '{"sdk":{"version": "${{ matrix.dotnet-version }}"}}' > ./global.json
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
@@ -180,25 +173,24 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Restore NuGet Packages
-        run: make restore
+        run: just restore
 
         # Pull in fixtures submodule
       - name: Set up dotnet tools and dependencies
-        run: make install
+        run: just install
 
         # Run the unit tests in a specific framework (verify that the library works in that framework)
       - name: Run Tests
-        run: make unit-test FW=${{ matrix.framework }}
+        run: just unit-test ${{ matrix.framework }}
 
   Integration_Tests:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           submodules: true
-
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v5
+      - uses: extractions/setup-just@v3
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.x.x
 
@@ -212,15 +204,15 @@ jobs:
         uses: darenm/Setup-VSTest@v1.3
 
       - name: Restore NuGet Packages
-        run: make restore
+        run: just restore
 
         # Pull in fixtures submodule
       - name: Set up dotnet tools and dependencies
-        run: make install
+        run: just install
 
         # Run the integration tests
       - name: Run Tests
-        run: make integration-test
+        run: just integration-test
 
   # .NET Standard notes:
   # - NET Standard 2.0 is compatible with minimum .NET Framework 4.6.1: https://docs.microsoft.com/en-us/dotnet/standard/net-standard?tabs=net-standard-2-0
@@ -235,19 +227,18 @@ jobs:
     # Need windows-2022 for .NET Framework 4.7.2 support
     runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           submodules: true
-
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v5
+      - uses: extractions/setup-just@v3
+      - uses: actions/setup-dotnet@v5
         id: setupid
         with:
           dotnet-version: 10.x.x
 
       - name: Specify .NET SDK version to use since GitHub runners have multiple installed
         run: |
-            echo '{"sdk":{"version": "${{ steps.setupid.outputs.dotnet-version }}"}}' > ./global.json
+          echo '{"sdk":{"version": "${{ steps.setupid.outputs.dotnet-version }}"}}' > ./global.json
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
@@ -260,31 +251,30 @@ jobs:
 
         # Pull in fixtures submodule
       - name: Set up dotnet tools and dependencies
-        run: make install
+        run: just install
 
       - name: Restore NuGet Packages
-        run: make restore build
+        run: just restore build
 
         # Run the compatibility tests
       - name: Run Tests
-        run: make netstandard-compat-test FW=net472
+        run: just netstandard-compat-test net472
 
   FSharp_Compatibility_Tests:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           submodules: true
-
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v5
+      - uses: extractions/setup-just@v3
+      - uses: actions/setup-dotnet@v5
         id: setupid
         with:
           dotnet-version: 10.x.x
 
       - name: Specify .NET SDK version to use since GitHub runners have multiple installed
         run: |
-            echo '{"sdk":{"version": "${{ steps.setupid.outputs.dotnet-version }}"}}' > ./global.json
+          echo '{"sdk":{"version": "${{ steps.setupid.outputs.dotnet-version }}"}}' > ./global.json
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
@@ -296,32 +286,31 @@ jobs:
         uses: darenm/Setup-VSTest@v1.3
 
       - name: Restore NuGet Packages
-        run: make restore
+        run: just restore
 
         # Pull in fixtures submodule
       - name: Set up dotnet tools and dependencies
-        run: make install
+        run: just install
 
         # Run the compatibility tests
       - name: Run Tests
-        run: make fs-compat-test
+        run: just fs-compat-test
 
   Visual_Basic_Compatibility_Test:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           submodules: true
-
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v5
+      - uses: extractions/setup-just@v3
+      - uses: actions/setup-dotnet@v5
         id: setupid
         with:
           dotnet-version: 10.x.x
 
       - name: Specify .NET SDK version to use since GitHub runners have multiple installed
         run: |
-            echo '{"sdk":{"version": "${{ steps.setupid.outputs.dotnet-version }}"}}' > ./global.json
+          echo '{"sdk":{"version": "${{ steps.setupid.outputs.dotnet-version }}"}}' > ./global.json
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
@@ -333,12 +322,12 @@ jobs:
         uses: darenm/Setup-VSTest@v1.3
 
       - name: Restore NuGet Packages
-        run: make restore
+        run: just restore
 
         # Pull in fixtures submodule
       - name: Set up dotnet tools and dependencies
-        run: make install
+        run: just install
 
         # Run the compatibility tests
       - name: Run Tests
-        run: make vb-compat-test
+        run: just vb-compat-test
