@@ -10,11 +10,9 @@ jobs:
     name: Publish to NuGet
     runs-on: windows-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
-
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v5
+      - uses: actions/checkout@v6
+      - uses: extractions/setup-just@v3
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: |
             6.x.x
@@ -27,10 +25,10 @@ jobs:
         uses: NuGet/setup-nuget@v2
 
       - name: Restore NuGet Packages
-        run: make restore
+        run: just restore
 
       - name: Set up dotnet tools and dependencies
-        run: make install
+        run: just install
 
       - name: Set up authenticity certificate
         run: |
@@ -69,7 +67,7 @@ jobs:
         shell: cmd
 
       - name: Publish to NuGet
-        run: make publish key=${{ secrets.NUGET_API_KEY }}
+        run: just publish key=${{ secrets.NUGET_API_KEY }}
 
       - name: Upload NuGet package to release
         uses: AButler/upload-release-assets@v3.0.1
