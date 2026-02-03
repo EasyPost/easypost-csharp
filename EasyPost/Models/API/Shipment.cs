@@ -78,6 +78,12 @@ namespace EasyPost.Models.API
         public bool? IsReturn { get; set; }
 
         /// <summary>
+        ///     A list of <see cref="LineItem"/>s associated with the shipment.
+        /// </summary>
+        [JsonProperty("line_items")]
+        public List<LineItem>? LineItems { get; set; }
+
+        /// <summary>
         ///     A list of any carrier errors that occurred during rating or purchasing.
         /// </summary>
         [JsonProperty("messages")]

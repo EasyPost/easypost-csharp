@@ -155,27 +155,11 @@ namespace EasyPost.Parameters.Shipment
         public List<string>? CarrierAccountIds { get; set; }
 
         /// <summary>
-        ///     A list of line items for the new <see cref="Models.API.Shipment"/>.
+        ///     A list of <see cref="Models.API.LineItem"/>s for the new <see cref="Models.API.Shipment"/>.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "shipment", "line_items")]
         [NestedRequestParameter(typeof(Order.Create), Necessity.Optional, "line_items")]
-        public List<LineItem>? LineItems { get; set; }
-
-        /// <summary>
-        ///     Represents a line item for a shipment.
-        /// </summary>
-        public class LineItem
-        {
-            /// <summary>
-            ///     The total value of the line item.
-            /// </summary>
-            public string? TotalLineValue { get; set; }
-
-            /// <summary>
-            ///     The description of the item.
-            /// </summary>
-            public string? ItemDescription { get; set; }
-        }
+        public List<ILineItemParameter>? LineItems { get; set; }
 
         #endregion
     }
