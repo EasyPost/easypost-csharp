@@ -15936,6 +15936,51 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.Shipment.Create.IsReturn
   nameWithType: Create.IsReturn
+- uid: EasyPost.Parameters.Shipment.Create.LineItem
+  name: Create.LineItem
+  href: api/EasyPost.Parameters.Shipment.Create.LineItem.html
+  commentId: T:EasyPost.Parameters.Shipment.Create.LineItem
+  fullName: EasyPost.Parameters.Shipment.Create.LineItem
+  nameWithType: Create.LineItem
+- uid: EasyPost.Parameters.Shipment.Create.LineItem.ItemDescription
+  name: ItemDescription
+  href: api/EasyPost.Parameters.Shipment.Create.LineItem.html#EasyPost_Parameters_Shipment_Create_LineItem_ItemDescription
+  commentId: P:EasyPost.Parameters.Shipment.Create.LineItem.ItemDescription
+  fullName: EasyPost.Parameters.Shipment.Create.LineItem.ItemDescription
+  nameWithType: Create.LineItem.ItemDescription
+- uid: EasyPost.Parameters.Shipment.Create.LineItem.ItemDescription*
+  name: ItemDescription
+  href: api/EasyPost.Parameters.Shipment.Create.LineItem.html#EasyPost_Parameters_Shipment_Create_LineItem_ItemDescription_
+  commentId: Overload:EasyPost.Parameters.Shipment.Create.LineItem.ItemDescription
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Shipment.Create.LineItem.ItemDescription
+  nameWithType: Create.LineItem.ItemDescription
+- uid: EasyPost.Parameters.Shipment.Create.LineItem.TotalLineValue
+  name: TotalLineValue
+  href: api/EasyPost.Parameters.Shipment.Create.LineItem.html#EasyPost_Parameters_Shipment_Create_LineItem_TotalLineValue
+  commentId: P:EasyPost.Parameters.Shipment.Create.LineItem.TotalLineValue
+  fullName: EasyPost.Parameters.Shipment.Create.LineItem.TotalLineValue
+  nameWithType: Create.LineItem.TotalLineValue
+- uid: EasyPost.Parameters.Shipment.Create.LineItem.TotalLineValue*
+  name: TotalLineValue
+  href: api/EasyPost.Parameters.Shipment.Create.LineItem.html#EasyPost_Parameters_Shipment_Create_LineItem_TotalLineValue_
+  commentId: Overload:EasyPost.Parameters.Shipment.Create.LineItem.TotalLineValue
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Shipment.Create.LineItem.TotalLineValue
+  nameWithType: Create.LineItem.TotalLineValue
+- uid: EasyPost.Parameters.Shipment.Create.LineItems
+  name: LineItems
+  href: api/EasyPost.Parameters.Shipment.Create.html#EasyPost_Parameters_Shipment_Create_LineItems
+  commentId: P:EasyPost.Parameters.Shipment.Create.LineItems
+  fullName: EasyPost.Parameters.Shipment.Create.LineItems
+  nameWithType: Create.LineItems
+- uid: EasyPost.Parameters.Shipment.Create.LineItems*
+  name: LineItems
+  href: api/EasyPost.Parameters.Shipment.Create.html#EasyPost_Parameters_Shipment_Create_LineItems_
+  commentId: Overload:EasyPost.Parameters.Shipment.Create.LineItems
+  isSpec: "True"
+  fullName: EasyPost.Parameters.Shipment.Create.LineItems
+  nameWithType: Create.LineItems
 - uid: EasyPost.Parameters.Shipment.Create.Options
   name: Options
   href: api/EasyPost.Parameters.Shipment.Create.html#EasyPost_Parameters_Shipment_Create_Options

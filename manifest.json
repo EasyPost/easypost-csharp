@@ -2969,11 +2969,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.Parameters.Shipment.Create.LineItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.Parameters.Shipment.Create.LineItem.html",
+          "hash": "JGc+ou09v7iCT+NWtjwPiPEGAc5IZ//CfByotWsVADw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EasyPost.Parameters.Shipment.Create.yml",
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.Shipment.Create.html",
-          "hash": "VkwZLHFotSQ/A/tMeDV0inj2tMpCHuKSRgfMzHZ9x1E="
+          "hash": "ggD19tcOhm0e2SAHvoCfXKptdXttxU7wg1aQt7zIH6o="
         }
       },
       "is_incremental": false,
@@ -3045,7 +3057,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.Shipment.html",
-          "hash": "QNWtkHLebU92PiWRsp9rj+2Hq8meRV94faKglzaJrpM="
+          "hash": "ZoSB/U9hAbzEaQEawUd87UXpifjX+yWGzH9KaUha1hc="
         }
       },
       "is_incremental": false,
@@ -4065,7 +4077,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Rt1GFdmc003q5DXu3XjggtWoTO7ont5JTM5zftO8Z7Y="
+          "hash": "Fdk3Cmeqb0+i1KJhSCKmrdh4/NJv+YU//c/pOy3pagk="
         }
       },
       "is_incremental": false,
@@ -4140,7 +4152,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 337,
+          "total_file_count": 338,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
