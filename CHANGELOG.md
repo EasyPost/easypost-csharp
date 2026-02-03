@@ -7,6 +7,7 @@
   - `ApiKey.Delete`
   - `ApiKey.Enable`
   - `ApiKey.Disable`
+- Adds `Tracker.Delete` function
 
 ## v7.4.0 (2025-11-24)
 
