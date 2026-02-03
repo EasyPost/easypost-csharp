@@ -110,7 +110,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ApiKeyService_All_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ApiKeyService.All(CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ApiKeyService.cs/#L37">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ApiKeyService.cs/#L66">View Source</a>
   </span>
   <a id="EasyPost_Services_ApiKeyService_All_" data-uid="EasyPost.Services.ApiKeyService.All*"></a>
   <h4 id="EasyPost_Services_ApiKeyService_All_CancellationToken_" data-uid="EasyPost.Services.ApiKeyService.All(CancellationToken)">All(CancellationToken)</h4>
@@ -158,10 +158,234 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ApiKeyService_Create_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ApiKeyService.Create(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ApiKeyService.cs/#L75">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ApiKeyService_Create_" data-uid="EasyPost.Services.ApiKeyService.Create*"></a>
+  <h4 id="EasyPost_Services_ApiKeyService_Create_System_String_CancellationToken_" data-uid="EasyPost.Services.ApiKeyService.Create(System.String,CancellationToken)">Create(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Create an API key for a child or referral customer user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;ApiKey&gt; Create(string mode, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">mode</span></td>
+        <td><p>The mode for the API key (e.g., &quot;production&quot; or &quot;test&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.ApiKey.html">ApiKey</a>&gt;</td>
+        <td><p>The created <a class="xref" href="EasyPost.Models.API.ApiKey.html">ApiKey</a> object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ApiKeyService_Delete_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ApiKeyService.Delete(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ApiKeyService.cs/#L88">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ApiKeyService_Delete_" data-uid="EasyPost.Services.ApiKeyService.Delete*"></a>
+  <h4 id="EasyPost_Services_ApiKeyService_Delete_System_String_CancellationToken_" data-uid="EasyPost.Services.ApiKeyService.Delete(System.String,CancellationToken)">Delete(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Delete an API key for a child or referral customer user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task Delete(string id, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.ApiKey.html">ApiKey</a> to delete.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A <see cref="!:Task"></see> representing the asynchronous delete operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ApiKeyService_Disable_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ApiKeyService.Disable(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ApiKeyService.cs/#L109">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ApiKeyService_Disable_" data-uid="EasyPost.Services.ApiKeyService.Disable*"></a>
+  <h4 id="EasyPost_Services_ApiKeyService_Disable_System_String_CancellationToken_" data-uid="EasyPost.Services.ApiKeyService.Disable(System.String,CancellationToken)">Disable(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Disable a child or referral customer API key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;ApiKey&gt; Disable(string id, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.ApiKey.html">ApiKey</a> to disable.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.ApiKey.html">ApiKey</a>&gt;</td>
+        <td><p>The updated <a class="xref" href="EasyPost.Models.API.ApiKey.html">ApiKey</a> object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ApiKeyService_Enable_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ApiKeyService.Enable(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ApiKeyService.cs/#L100">View Source</a>
+  </span>
+  <a id="EasyPost_Services_ApiKeyService_Enable_" data-uid="EasyPost.Services.ApiKeyService.Enable*"></a>
+  <h4 id="EasyPost_Services_ApiKeyService_Enable_System_String_CancellationToken_" data-uid="EasyPost.Services.ApiKeyService.Enable(System.String,CancellationToken)">Enable(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Enable a child or referral customer API key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;ApiKey&gt; Enable(string id, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The ID of the <a class="xref" href="EasyPost.Models.API.ApiKey.html">ApiKey</a> to enable.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><see cref="!:CancellationToken"></see> to use for the HTTP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="EasyPost.Models.API.ApiKey.html">ApiKey</a>&gt;</td>
+        <td><p>The updated <a class="xref" href="EasyPost.Models.API.ApiKey.html">ApiKey</a> object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_ApiKeyService_RetrieveApiKeysForUser_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.ApiKeyService.RetrieveApiKeysForUser(System.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ApiKeyService.cs/#L47">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/ApiKeyService.cs/#L38">View Source</a>
   </span>
   <a id="EasyPost_Services_ApiKeyService_RetrieveApiKeysForUser_" data-uid="EasyPost.Services.ApiKeyService.RetrieveApiKeysForUser*"></a>
   <h4 id="EasyPost_Services_ApiKeyService_RetrieveApiKeysForUser_System_String_CancellationToken_" data-uid="EasyPost.Services.ApiKeyService.RetrieveApiKeysForUser(System.String,CancellationToken)">RetrieveApiKeysForUser(String, CancellationToken)</h4>
