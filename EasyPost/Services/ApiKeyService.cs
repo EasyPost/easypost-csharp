@@ -29,15 +29,6 @@ namespace EasyPost.Services
         #region CRUD Operations
 
         /// <summary>
-        ///     Get a list of all <see cref="ApiKey"/>s.
-        ///     <a href="https://docs.easypost.com/docs/api-keys#retrieve-an-api-key">Related API documentation</a>.
-        /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
-        /// <returns>A <see cref="ApiKeyCollection"/> object.</returns>
-        [CrudOperations.Read]
-        public async Task<ApiKeyCollection> All(CancellationToken cancellationToken = default) => await RequestAsync<ApiKeyCollection>(Method.Get, "api_keys", cancellationToken);
-
-        /// <summary>
         ///     Retrieve the <see cref="ApiKey"/>s for a specific <see cref="User"/>.
         /// </summary>
         /// <param name="id">The ID of the <see cref="User"/> to retrieve keys for.</param>
@@ -65,6 +56,58 @@ namespace EasyPost.Services
 
             throw new FilteringError(string.Format(CultureInfo.InvariantCulture, Constants.ErrorMessages.NoObjectFound, "child"));
         }
+
+        /// <summary>
+        ///     Get a list of all <see cref="ApiKey"/>s.
+        ///     <a href="https://docs.easypost.com/docs/api-keys#retrieve-an-api-key">Related API documentation</a>.
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="ApiKeyCollection"/> object.</returns>
+        [CrudOperations.Read]
+        public async Task<ApiKeyCollection> All(CancellationToken cancellationToken = default) => await RequestAsync<ApiKeyCollection>(Method.Get, "api_keys", cancellationToken);
+
+        /// <summary>
+        ///     Create an API key for a child or referral customer user.
+        /// </summary>
+        /// <param name="mode">The mode for the API key (e.g., "production" or "test").</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>The created <see cref="ApiKey"/> object.</returns>
+        [CrudOperations.Create]
+        public async Task<ApiKey> Create(string mode, CancellationToken cancellationToken = default)
+        {
+            Dictionary<string, object> parameters = new() { { "mode", mode } };
+            return await RequestAsync<ApiKey>(Method.Post, "api_keys", cancellationToken, parameters);
+        }
+
+        /// <summary>
+        ///     Delete an API key for a child or referral customer user.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="ApiKey"/> to delete.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous delete operation.</returns>
+        [CrudOperations.Delete]
+        public async Task Delete(string id, CancellationToken cancellationToken = default)
+        {
+            await RequestAsync(Method.Delete, $"api_keys/{id}", cancellationToken);
+        }
+
+        /// <summary>
+        ///     Enable a child or referral customer API key.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="ApiKey"/> to enable.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>The updated <see cref="ApiKey"/> object.</returns>
+        [CrudOperations.Update]
+        public async Task<ApiKey> Enable(string id, CancellationToken cancellationToken = default) => await RequestAsync<ApiKey>(Method.Post, $"api_keys/{id}/enable", cancellationToken);
+
+        /// <summary>
+        ///     Disable a child or referral customer API key.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="ApiKey"/> to disable.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>The updated <see cref="ApiKey"/> object.</returns>
+        [CrudOperations.Update]
+        public async Task<ApiKey> Disable(string id, CancellationToken cancellationToken = default) => await RequestAsync<ApiKey>(Method.Post, $"api_keys/{id}/disable", cancellationToken);
 
         #endregion
     }

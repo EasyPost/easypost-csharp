@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v7.5.0 (2026-02-03)
+
+- Adds the following functions usable by child and referral customer users:
+  - `ApiKey.Create`
+  - `ApiKey.Delete`
+  - `ApiKey.Enable`
+  - `ApiKey.Disable`
+
 ## v7.4.0 (2025-11-24)
 
 - Adds .NET 10 support

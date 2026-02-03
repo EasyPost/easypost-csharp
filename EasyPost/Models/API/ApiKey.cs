@@ -12,10 +12,22 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         /// <summary>
+        ///     Whether the API key is active.
+        /// </summary>
+        [JsonProperty("active")]
+        public bool? Active { get; set; }
+
+        /// <summary>
         ///     The actual key value to use for authentication.
         /// </summary>
         [JsonProperty("key")]
         public string? Key { get; set; }
+
+        /// <summary>
+        ///     The mode of the API key (e.g., "production" or "test").
+        /// </summary>
+        [JsonProperty("mode")]
+        public new string? Mode { get; set; }
 
         #endregion
     }
