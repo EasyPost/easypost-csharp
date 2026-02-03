@@ -84,6 +84,7 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="id">The ID of the <see cref="ApiKey"/> to delete.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous delete operation.</returns>
         [CrudOperations.Delete]
         public async Task Delete(string id, CancellationToken cancellationToken = default)
         {
