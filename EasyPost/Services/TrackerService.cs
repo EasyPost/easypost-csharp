@@ -127,6 +127,16 @@ namespace EasyPost.Services
             return collection;
         }
 
+        /// <summary>
+        ///     Delete a <see cref="Tracker"/>.
+        ///     <a href="https://docs.easypost.com/docs/trackers#delete-a-tracker">Related API documentation</a>.
+        /// </summary>
+        /// <param name="id">The ID of the <see cref="Tracker"/> to delete.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>None.</returns>
+        [CrudOperations.Delete]
+        public async Task Delete(string id, CancellationToken cancellationToken = default) => await RequestAsync(Method.Delete, $"trackers/{id}", cancellationToken);
+
         #endregion
     }
 }

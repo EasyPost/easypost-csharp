@@ -147,6 +147,21 @@ namespace EasyPost.Tests.ServicesTests
             Assert.Equal(tracker.Id, retrievedTracker.Id);
         }
 
+        [Fact]
+        [CrudOperations.Delete]
+        [Testing.Function]
+        public async Task TestDelete()
+        {
+            UseVCR("delete");
+
+            Tracker tracker = await Client.Tracker.Create(Fixtures.Usps, "EZ1000000001");
+
+            await Client.Tracker.Delete(tracker.Id);
+
+            // Deleting a Tracker does not return anything, so we can't test the response
+            Assert.True(true);
+        }
+
         #endregion
 
         #endregion
