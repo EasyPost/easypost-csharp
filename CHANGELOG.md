@@ -8,6 +8,7 @@
   - `ApiKey.Enable`
   - `ApiKey.Disable`
 - Adds `Tracker.Delete` function
+- Adds `LineItems` to the shipment/order create parameter set
 
 ## v7.4.0 (2025-11-24)
 
