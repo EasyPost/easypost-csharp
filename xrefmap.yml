@@ -19271,6 +19271,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.TrackerService.Create
   nameWithType: TrackerService.Create
+- uid: EasyPost.Services.TrackerService.Delete(System.String,CancellationToken)
+  name: Delete(String, CancellationToken)
+  href: api/EasyPost.Services.TrackerService.html#EasyPost_Services_TrackerService_Delete_System_String_CancellationToken_
+  commentId: M:EasyPost.Services.TrackerService.Delete(System.String,CancellationToken)
+  fullName: EasyPost.Services.TrackerService.Delete(System.String, CancellationToken)
+  nameWithType: TrackerService.Delete(String, CancellationToken)
+- uid: EasyPost.Services.TrackerService.Delete*
+  name: Delete
+  href: api/EasyPost.Services.TrackerService.html#EasyPost_Services_TrackerService_Delete_
+  commentId: Overload:EasyPost.Services.TrackerService.Delete
+  isSpec: "True"
+  fullName: EasyPost.Services.TrackerService.Delete
+  nameWithType: TrackerService.Delete
 - uid: EasyPost.Services.TrackerService.GetNextPage(EasyPost.Models.API.TrackerCollection,System.Nullable{System.Int32},CancellationToken)
   name: GetNextPage(TrackerCollection, Nullable<Int32>, CancellationToken)
   href: api/EasyPost.Services.TrackerService.html#EasyPost_Services_TrackerService_GetNextPage_EasyPost_Models_API_TrackerCollection_System_Nullable_System_Int32__CancellationToken_
