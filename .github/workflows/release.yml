@@ -67,7 +67,7 @@ jobs:
         shell: cmd
 
       - name: Publish to NuGet
-        run: just publish key=${{ secrets.NUGET_API_KEY }}
+        run: just publish ${{ secrets.NUGET_API_KEY }}
 
       - name: Upload NuGet package to release
         uses: AButler/upload-release-assets@v3.0.1
