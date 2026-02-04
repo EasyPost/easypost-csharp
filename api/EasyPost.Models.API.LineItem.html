@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Create.LineItem
+    <title>Class LineItem
  </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Create.LineItem
+    <meta name="title" content="Class LineItem
  ">
   
     <link rel="shortcut icon" href="../favicon.ico">
@@ -67,36 +67,77 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="EasyPost.Parameters.Shipment.Create.LineItem">
+            <article class="content wrap" id="_content" data-uid="EasyPost.Models.API.LineItem">
 
 
-  <h1 id="EasyPost_Parameters_Shipment_Create_LineItem" data-uid="EasyPost.Parameters.Shipment.Create.LineItem" class="text-break">Class Create.LineItem
+  <h1 id="EasyPost_Models_API_LineItem" data-uid="EasyPost.Models.API.LineItem" class="text-break">Class LineItem
 </h1>
-  <div class="markdown level0 summary"><p>Represents a line item for a shipment.</p>
+  <div class="markdown level0 summary"><p>Class representing line items of a <a href="https://docs.easypost.com/docs/shipments">Shipment</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Create.LineItem</span></div>
+    <div class="level1"><a class="xref" href="EasyPost._base.EphemeralEasyPostObject.html">EphemeralEasyPostObject</a></div>
+    <div class="level2"><a class="xref" href="EasyPost._base.EasyPostObject.html">EasyPostObject</a></div>
+    <div class="level3"><span class="xref">LineItem</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="EasyPost.Parameters.Shipment.html">EasyPost.Parameters.Shipment</a></h6>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="EasyPost._base.IEasyPostObject.html">IEasyPostObject</a></div>
+    <div><a class="xref" href="EasyPost.Parameters.ILineItemParameter.html">ILineItemParameter</a></div>
+    <div><a class="xref" href="EasyPost.Parameters.IParameter.html">IParameter</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_CreatedAt">EasyPostObject.CreatedAt</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_Id">EasyPostObject.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_UpdatedAt">EasyPostObject.UpdatedAt</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_Prefix">EasyPostObject.Prefix</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_AsDictionary">EasyPostObject.AsDictionary()</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_ToString">EasyPostObject.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_Equals_System_Nullable_System_Object__">EasyPostObject.Equals(Nullable&lt;Object&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost._base.EasyPostObject.html#EasyPost__base_EasyPostObject_GetHashCode">EasyPostObject.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_Mode">EphemeralEasyPostObject.Mode</a>
+    </div>
+    <div>
+      <a class="xref" href="EasyPost._base.EphemeralEasyPostObject.html#EasyPost__base_EphemeralEasyPostObject_AsJson">EphemeralEasyPostObject.AsJson()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="EasyPost.Models.API.html">EasyPost.Models.API</a></h6>
   <h6><strong>Assembly</strong>: EasyPost.dll</h6>
-  <h5 id="EasyPost_Parameters_Shipment_Create_LineItem_syntax">Syntax</h5>
+  <h5 id="EasyPost_Models_API_LineItem_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class LineItem : object</code></pre>
+    <pre><code class="lang-csharp hljs">public class LineItem : EasyPostObject, IEasyPostObject, ILineItemParameter, IParameter</code></pre>
   </div>
   <h3 id="properties">Properties
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_Shipment_Create_LineItem_ItemDescription.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.Shipment.Create.LineItem.ItemDescription%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_API_LineItem_ItemDescription.md&amp;value=---%0Auid%3A%20EasyPost.Models.API.LineItem.ItemDescription%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/Shipment/Create.cs/#L177">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/API/LineItem.cs/#L22">View Source</a>
   </span>
-  <a id="EasyPost_Parameters_Shipment_Create_LineItem_ItemDescription_" data-uid="EasyPost.Parameters.Shipment.Create.LineItem.ItemDescription*"></a>
-  <h4 id="EasyPost_Parameters_Shipment_Create_LineItem_ItemDescription" data-uid="EasyPost.Parameters.Shipment.Create.LineItem.ItemDescription">ItemDescription</h4>
+  <a id="EasyPost_Models_API_LineItem_ItemDescription_" data-uid="EasyPost.Models.API.LineItem.ItemDescription*"></a>
+  <h4 id="EasyPost_Models_API_LineItem_ItemDescription" data-uid="EasyPost.Models.API.LineItem.ItemDescription">ItemDescription</h4>
   <div class="markdown level1 summary"><p>The description of the item.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -121,13 +162,13 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_Shipment_Create_LineItem_TotalLineValue.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.Shipment.Create.LineItem.TotalLineValue%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_API_LineItem_TotalLineValue.md&amp;value=---%0Auid%3A%20EasyPost.Models.API.LineItem.TotalLineValue%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/Shipment/Create.cs/#L172">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/API/LineItem.cs/#L16">View Source</a>
   </span>
-  <a id="EasyPost_Parameters_Shipment_Create_LineItem_TotalLineValue_" data-uid="EasyPost.Parameters.Shipment.Create.LineItem.TotalLineValue*"></a>
-  <h4 id="EasyPost_Parameters_Shipment_Create_LineItem_TotalLineValue" data-uid="EasyPost.Parameters.Shipment.Create.LineItem.TotalLineValue">TotalLineValue</h4>
+  <a id="EasyPost_Models_API_LineItem_TotalLineValue_" data-uid="EasyPost.Models.API.LineItem.TotalLineValue*"></a>
+  <h4 id="EasyPost_Models_API_LineItem_TotalLineValue" data-uid="EasyPost.Models.API.LineItem.TotalLineValue">TotalLineValue</h4>
   <div class="markdown level1 summary"><p>The total value of the line item.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -150,6 +191,16 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="EasyPost._base.IEasyPostObject.html">IEasyPostObject</a>
+  </div>
+  <div>
+      <a class="xref" href="EasyPost.Parameters.ILineItemParameter.html">ILineItemParameter</a>
+  </div>
+  <div>
+      <a class="xref" href="EasyPost.Parameters.IParameter.html">IParameter</a>
+  </div>
 </article>
           </div>
 
@@ -158,10 +209,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Parameters_Shipment_Create_LineItem.md&amp;value=---%0Auid%3A%20EasyPost.Parameters.Shipment.Create.LineItem%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Models_API_LineItem.md&amp;value=---%0Auid%3A%20EasyPost.Models.API.LineItem%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Parameters/Shipment/Create.cs/#L167" class="contribution-link">View Source</a>
+                    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Models/API/LineItem.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
