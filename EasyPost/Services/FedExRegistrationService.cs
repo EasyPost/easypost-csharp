@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,15 +24,14 @@ namespace EasyPost.Services
 
         /// <summary>
         ///     Register the billing address for a FedEx account.
-        ///     Advanced method for custom parameter structures.
         /// </summary>
         /// <param name="fedexAccountNumber">The FedEx account number.</param>
-        /// <param name="parameters">Dictionary of parameters.</param>
+        /// <param name="parameters"><see cref="Parameters.FedExRegistration.RegisterAddress"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="FedExAccountValidationResponse"/> object with next steps (PIN or invoice validation).</returns>
-        public async Task<FedExAccountValidationResponse> RegisterAddress(string fedexAccountNumber, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
+        public async Task<FedExAccountValidationResponse> RegisterAddress(string fedexAccountNumber, Parameters.FedExRegistration.RegisterAddress parameters, CancellationToken cancellationToken = default)
         {
-            Dictionary<string, object> wrappedParams = WrapAddressValidation(parameters);
+            Dictionary<string, object> wrappedParams = parameters.ToDictionary();
             string endpoint = $"fedex_registrations/{fedexAccountNumber}/address";
 
             return await RequestAsync<FedExAccountValidationResponse>(Method.Post, endpoint, cancellationToken, wrappedParams);
@@ -66,12 +64,12 @@ namespace EasyPost.Services
         ///     Validate the PIN entered by the user for FedEx account verification.
         /// </summary>
         /// <param name="fedexAccountNumber">The FedEx account number.</param>
-        /// <param name="parameters">Dictionary of parameters.</param>
+        /// <param name="parameters"><see cref="Parameters.FedExRegistration.ValidatePin"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="FedExAccountValidationResponse"/> object.</returns>
-        public async Task<FedExAccountValidationResponse> ValidatePin(string fedexAccountNumber, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
+        public async Task<FedExAccountValidationResponse> ValidatePin(string fedexAccountNumber, Parameters.FedExRegistration.ValidatePin parameters, CancellationToken cancellationToken = default)
         {
-            Dictionary<string, object> wrappedParams = WrapPinValidation(parameters);
+            Dictionary<string, object> wrappedParams = parameters.ToDictionary();
             string endpoint = $"fedex_registrations/{fedexAccountNumber}/pin/validate";
 
             return await RequestAsync<FedExAccountValidationResponse>(Method.Post, endpoint, cancellationToken, wrappedParams);
@@ -81,104 +79,15 @@ namespace EasyPost.Services
         ///     Submit invoice information to complete FedEx account registration.
         /// </summary>
         /// <param name="fedexAccountNumber">The FedEx account number.</param>
-        /// <param name="parameters">Dictionary of parameters.</param>
+        /// <param name="parameters"><see cref="Parameters.FedExRegistration.SubmitInvoice"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="FedExAccountValidationResponse"/> object.</returns>
-        public async Task<FedExAccountValidationResponse> SubmitInvoice(string fedexAccountNumber, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
+        public async Task<FedExAccountValidationResponse> SubmitInvoice(string fedexAccountNumber, Parameters.FedExRegistration.SubmitInvoice parameters, CancellationToken cancellationToken = default)
         {
-            Dictionary<string, object> wrappedParams = WrapInvoiceValidation(parameters);
+            Dictionary<string, object> wrappedParams = parameters.ToDictionary();
             string endpoint = $"fedex_registrations/{fedexAccountNumber}/invoice";
 
             return await RequestAsync<FedExAccountValidationResponse>(Method.Post, endpoint, cancellationToken, wrappedParams);
-        }
-
-        /// <summary>
-        ///     Wraps address validation parameters and ensures the "name" field exists.
-        ///     If not present, generates a UUID (with hyphens removed) as the name.
-        /// </summary>
-        /// <param name="parameters">The original parameters dictionary.</param>
-        /// <returns>A new dictionary with properly wrapped address_validation and easypost_details.</returns>
-        private static Dictionary<string, object> WrapAddressValidation(Dictionary<string, object> parameters)
-        {
-            Dictionary<string, object> wrappedParams = new Dictionary<string, object>();
-
-            if (parameters.TryGetValue("address_validation", out object? addressValidationValue))
-            {
-                Dictionary<string, object> addressValidation = new Dictionary<string, object>((Dictionary<string, object>)addressValidationValue);
-                EnsureNameField(addressValidation);
-                wrappedParams["address_validation"] = addressValidation;
-            }
-
-            if (parameters.TryGetValue("easypost_details", out object? easypostDetailsValue))
-            {
-                wrappedParams["easypost_details"] = easypostDetailsValue;
-            }
-
-            return wrappedParams;
-        }
-
-        /// <summary>
-        ///     Wraps PIN validation parameters and ensures the "name" field exists.
-        ///     If not present, generates a UUID (with hyphens removed) as the name.
-        /// </summary>
-        /// <param name="parameters">The original parameters dictionary.</param>
-        /// <returns>A new dictionary with properly wrapped pin_validation and easypost_details.</returns>
-        private static Dictionary<string, object> WrapPinValidation(Dictionary<string, object> parameters)
-        {
-            Dictionary<string, object> wrappedParams = new Dictionary<string, object>();
-
-            if (parameters.TryGetValue("pin_validation", out object? pinValidationValue))
-            {
-                Dictionary<string, object> pinValidation = new Dictionary<string, object>((Dictionary<string, object>)pinValidationValue);
-                EnsureNameField(pinValidation);
-                wrappedParams["pin_validation"] = pinValidation;
-            }
-
-            if (parameters.TryGetValue("easypost_details", out object? easypostDetailsValue))
-            {
-                wrappedParams["easypost_details"] = easypostDetailsValue;
-            }
-
-            return wrappedParams;
-        }
-
-        /// <summary>
-        ///     Wraps invoice validation parameters and ensures the "name" field exists.
-        ///     If not present, generates a UUID (with hyphens removed) as the name.
-        /// </summary>
-        /// <param name="parameters">The original parameters dictionary.</param>
-        /// <returns>A new dictionary with properly wrapped invoice_validation and easypost_details.</returns>
-        private static Dictionary<string, object> WrapInvoiceValidation(Dictionary<string, object> parameters)
-        {
-            Dictionary<string, object> wrappedParams = new Dictionary<string, object>();
-
-            if (parameters.TryGetValue("invoice_validation", out object? invoiceValidationValue))
-            {
-                Dictionary<string, object> invoiceValidation = new Dictionary<string, object>((Dictionary<string, object>)invoiceValidationValue);
-                EnsureNameField(invoiceValidation);
-                wrappedParams["invoice_validation"] = invoiceValidation;
-            }
-
-            if (parameters.TryGetValue("easypost_details", out object? easypostDetailsValue))
-            {
-                wrappedParams["easypost_details"] = easypostDetailsValue;
-            }
-
-            return wrappedParams;
-        }
-
-        /// <summary>
-        ///     Ensures the "name" field exists in the provided dictionary.
-        ///     If not present, generates a UUID (with hyphens removed) as the name.
-        /// </summary>
-        /// <param name="dictionary">The dictionary to ensure the "name" field in.</param>
-        private static void EnsureNameField(Dictionary<string, object> dictionary)
-        {
-            if (!dictionary.TryGetValue("name", out object? nameValue) || nameValue == null)
-            {
-                string uuid = Guid.NewGuid().ToString().Replace("-", string.Empty);
-                dictionary["name"] = uuid;
-            }
         }
     }
 }

@@ -26,14 +26,14 @@ namespace EasyPost.Tests.ServicesTests
                         {
                             EmailAddress = "test@example.com",
                             PhoneNumber = "5555555555",
-                            Options = new List<string> { "SMS", "CALL", "INVOICE" }
+                            Options = new List<string> { "SMS", "CALL", "INVOICE" },
                         })
                     ),
                     new(
                         new TestUtils.MockRequestMatchRules(Method.Post, @"v2\/fedex_registrations\/\S*\/pin$"),
                         new TestUtils.MockRequestResponseInfo(HttpStatusCode.OK, data: new FedExRequestPinResponse
                         {
-                            Message = "Your secured PIN has been sent to your phone."
+                            Message = "Your secured PIN has been sent to your phone.",
                         })
                     ),
                     new(
@@ -46,8 +46,8 @@ namespace EasyPost.Tests.ServicesTests
                             Credentials = new Dictionary<string, string>
                             {
                                 { "account_number", "123456789" },
-                                { "mfa_key", "test_mfa_key" }
-                            }
+                                { "mfa_key", "test_mfa_key" },
+                            },
                         })
                     ),
                     new(
@@ -60,8 +60,8 @@ namespace EasyPost.Tests.ServicesTests
                             Credentials = new Dictionary<string, string>
                             {
                                 { "account_number", "123456789" },
-                                { "mfa_key", "test_mfa_key" }
-                            }
+                                { "mfa_key", "test_mfa_key" },
+                            },
                         })
                     ),
                 };
@@ -75,21 +75,16 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseMockClient();
 
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            Parameters.FedExRegistration.RegisterAddress parameters = new Parameters.FedExRegistration.RegisterAddress
             {
-                {
-                    "address_validation", new Dictionary<string, object>
-                    {
-                        { "name", "test_name" },
-                        { "company", "test_company" },
-                        { "street1", "test_street" },
-                        { "city", "test_city" },
-                        { "state", "test_state" },
-                        { "zip", "test_zip" },
-                        { "country", "US" },
-                        { "phone", "test_phone" }
-                    }
-                }
+                Name = "test_name",
+                Company = "test_company",
+                Street1 = "test_street",
+                City = "test_city",
+                State = "test_state",
+                Zip = "test_zip",
+                Country = "US",
+                Phone = "test_phone",
             };
 
             FedExAccountValidationResponse response = await Client.FedExRegistration.RegisterAddress("123456789", parameters);
@@ -119,15 +114,10 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseMockClient();
 
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            Parameters.FedExRegistration.ValidatePin parameters = new Parameters.FedExRegistration.ValidatePin
             {
-                {
-                    "pin_validation", new Dictionary<string, object>
-                    {
-                        { "name", "test_name" },
-                        { "pin", "123456" }
-                    }
-                }
+                Name = "test_name",
+                Pin = "123456",
             };
 
             FedExAccountValidationResponse response = await Client.FedExRegistration.ValidatePin("123456789", parameters);
@@ -143,17 +133,12 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseMockClient();
 
-            Dictionary<string, object> parameters = new Dictionary<string, object>
+            Parameters.FedExRegistration.SubmitInvoice parameters = new Parameters.FedExRegistration.SubmitInvoice
             {
-                {
-                    "invoice_validation", new Dictionary<string, object>
-                    {
-                        { "name", "test_name" },
-                        { "invoice_number", "test_invoice" },
-                        { "invoice_amount", "100.00" },
-                        { "invoice_date", "2023-01-01" }
-                    }
-                }
+                Name = "test_name",
+                InvoiceNumber = "test_invoice",
+                InvoiceAmount = "100.00",
+                InvoiceDate = "2023-01-01",
             };
 
             FedExAccountValidationResponse response = await Client.FedExRegistration.SubmitInvoice("123456789", parameters);

@@ -1,3 +1,4 @@
+using EasyPost._base;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -5,7 +6,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Represents a FedEx request PIN response.
     /// </summary>
-    public class FedExRequestPinResponse
+    public class FedExRequestPinResponse : EphemeralEasyPostObject
     {
         #region JSON Properties
 

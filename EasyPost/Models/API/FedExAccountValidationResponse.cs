@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using EasyPost._base;
 using Newtonsoft.Json;
 
 namespace EasyPost.Models.API
@@ -6,7 +7,7 @@ namespace EasyPost.Models.API
     /// <summary>
     ///     Represents a FedEx account validation response.
     /// </summary>
-    public class FedExAccountValidationResponse
+    public class FedExAccountValidationResponse : EphemeralEasyPostObject
     {
         #region JSON Properties
 
