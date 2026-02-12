@@ -84,6 +84,11 @@ namespace EasyPost
         public EventService Event => new EventService(this);
 
         /// <summary>
+        ///     Access FedEx Registration-related functionality.
+        /// </summary>
+        public FedExRegistrationService FedExRegistration => new FedExRegistrationService(this);
+
+        /// <summary>
         ///     Access Insurance-related functionality.
         /// </summary>
         public InsuranceService Insurance => new InsuranceService(this);

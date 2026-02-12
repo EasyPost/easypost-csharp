@@ -57,6 +57,13 @@ namespace EasyPost.Parameters
     }
 
     /// <summary>
+    ///     An interface marking that an instance of the implementing class can be used as a FedEx registration parameter in a Parameters object.
+    /// </summary>
+    public interface IFedExRegistrationParameter : IParameter
+    {
+    }
+
+    /// <summary>
     ///     An interface marking that an instance of the implementing class can be used as an insurance parameter in a Parameters object.
     /// </summary>
     public interface IInsuranceParameter : IParameter
