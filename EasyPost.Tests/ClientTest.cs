@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -300,6 +301,23 @@ namespace EasyPost.Tests
             // If it throws a UnauthorizedError, then the cancellation token was not used (request went through and failed due to invalid API key)
             // this will not record a cassette because the request should be cancelled before it is sent
             await Assert.ThrowsAsync<TimeoutError>(async () => await Client.Address.Create(new Parameters.Address.Create(), token));
+        }
+
+        [Fact]
+        [Testing.Function]
+        public async Task TestClientMakeApiCall()
+        {
+            UseVCR("make_api_call");
+
+            Dictionary<string, object> parameters = new()
+            {
+                { "page_size", 1 },
+            };
+
+            Dictionary<string, object> response = await Client.MakeApiCallAsync(Http.Method.Get, "/addresses", parameters);
+
+            Assert.NotNull(response);
+            Assert.True(response.ContainsKey("addresses"));
         }
     }
 }
