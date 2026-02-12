@@ -182,6 +182,22 @@ namespace EasyPost._base
         }
 
         /// <summary>
+        ///     Make an API call to the EasyPost API.
+        ///     This public, generic interface is useful for making arbitrary API calls to the EasyPost API that
+        ///     are not yet supported by the client library's services. When possible, the service for your use case
+        ///     should be used instead as it provides a more convenient and higher-level interface depending on the endpoint.
+        /// </summary>
+        /// <param name="method">HTTP <see cref="Method"/> to use for the request.</param>
+        /// <param name="endpoint">EasyPost API endpoint to use for the request.</param>
+        /// <param name="parameters">Parameters to use for the request.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
+        /// <returns>A <see cref="Dictionary{TKey, TValue}"/> representing the response data.</returns>
+        public async Task<Dictionary<string, object>> MakeApiCallAsync(Method method, string endpoint, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
+        {
+            return await RequestAsync<Dictionary<string, object>>(method, endpoint, ApiVersion.Current, cancellationToken, parameters);
+        }
+
+        /// <summary>
         ///     Compare this <see cref="EasyPostClient"/> to another object for equality.
         /// </summary>
         /// <param name="obj">An object to compare this client against.</param>
