@@ -8,8 +8,8 @@ using EasyPost._base;
 using EasyPost.Exceptions.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
+using Newtonsoft.Json.Linq;
 using Xunit;
-using CustomAssertions = EasyPost.Tests._Utilities.Assertions.Assert;
 
 namespace EasyPost.Tests
 {
@@ -316,8 +316,10 @@ namespace EasyPost.Tests
 
             Dictionary<string, object> response = await Client.MakeApiCallAsync(Http.Method.Get, "/addresses", parameters);
 
-            Assert.NotNull(response);
-            Assert.True(response.ContainsKey("addresses"));
+            JArray addresses = response["addresses"] as JArray;
+            Assert.Single(addresses);
+            JObject firstAddress = addresses[0] as JObject;
+            Assert.Equal("Address", firstAddress["object"].ToString());
         }
     }
 }
