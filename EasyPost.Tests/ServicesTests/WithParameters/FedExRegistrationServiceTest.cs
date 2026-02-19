@@ -6,7 +6,7 @@ using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using Xunit;
 
-namespace EasyPost.Tests.ServicesTests
+namespace EasyPost.Tests.ServicesTests.WithParameters
 {
     public class FedExRegistrationServiceTests : UnitTest
     {
