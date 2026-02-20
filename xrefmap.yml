@@ -14051,6 +14051,19 @@ references:
   commentId: T:EasyPost.Parameters.FedExRegistration.RegisterAddress
   fullName: EasyPost.Parameters.FedExRegistration.RegisterAddress
   nameWithType: RegisterAddress
+- uid: EasyPost.Parameters.FedExRegistration.RegisterAddress.Action
+  name: Action
+  href: api/EasyPost.Parameters.FedExRegistration.RegisterAddress.html#EasyPost_Parameters_FedExRegistration_RegisterAddress_Action
+  commentId: P:EasyPost.Parameters.FedExRegistration.RegisterAddress.Action
+  fullName: EasyPost.Parameters.FedExRegistration.RegisterAddress.Action
+  nameWithType: RegisterAddress.Action
+- uid: EasyPost.Parameters.FedExRegistration.RegisterAddress.Action*
+  name: Action
+  href: api/EasyPost.Parameters.FedExRegistration.RegisterAddress.html#EasyPost_Parameters_FedExRegistration_RegisterAddress_Action_
+  commentId: Overload:EasyPost.Parameters.FedExRegistration.RegisterAddress.Action
+  isSpec: "True"
+  fullName: EasyPost.Parameters.FedExRegistration.RegisterAddress.Action
+  nameWithType: RegisterAddress.Action
 - uid: EasyPost.Parameters.FedExRegistration.RegisterAddress.CarrierAccountId
   name: CarrierAccountId
   href: api/EasyPost.Parameters.FedExRegistration.RegisterAddress.html#EasyPost_Parameters_FedExRegistration_RegisterAddress_CarrierAccountId
@@ -14194,6 +14207,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.FedExRegistration.RegisterAddress.ToDictionary
   nameWithType: RegisterAddress.ToDictionary
+- uid: EasyPost.Parameters.FedExRegistration.RegisterAddress.Type
+  name: Type
+  href: api/EasyPost.Parameters.FedExRegistration.RegisterAddress.html#EasyPost_Parameters_FedExRegistration_RegisterAddress_Type
+  commentId: P:EasyPost.Parameters.FedExRegistration.RegisterAddress.Type
+  fullName: EasyPost.Parameters.FedExRegistration.RegisterAddress.Type
+  nameWithType: RegisterAddress.Type
+- uid: EasyPost.Parameters.FedExRegistration.RegisterAddress.Type*
+  name: Type
+  href: api/EasyPost.Parameters.FedExRegistration.RegisterAddress.html#EasyPost_Parameters_FedExRegistration_RegisterAddress_Type_
+  commentId: Overload:EasyPost.Parameters.FedExRegistration.RegisterAddress.Type
+  isSpec: "True"
+  fullName: EasyPost.Parameters.FedExRegistration.RegisterAddress.Type
+  nameWithType: RegisterAddress.Type
 - uid: EasyPost.Parameters.FedExRegistration.RegisterAddress.Zip
   name: Zip
   href: api/EasyPost.Parameters.FedExRegistration.RegisterAddress.html#EasyPost_Parameters_FedExRegistration_RegisterAddress_Zip
@@ -14213,6 +14239,19 @@ references:
   commentId: T:EasyPost.Parameters.FedExRegistration.SubmitInvoice
   fullName: EasyPost.Parameters.FedExRegistration.SubmitInvoice
   nameWithType: SubmitInvoice
+- uid: EasyPost.Parameters.FedExRegistration.SubmitInvoice.Action
+  name: Action
+  href: api/EasyPost.Parameters.FedExRegistration.SubmitInvoice.html#EasyPost_Parameters_FedExRegistration_SubmitInvoice_Action
+  commentId: P:EasyPost.Parameters.FedExRegistration.SubmitInvoice.Action
+  fullName: EasyPost.Parameters.FedExRegistration.SubmitInvoice.Action
+  nameWithType: SubmitInvoice.Action
+- uid: EasyPost.Parameters.FedExRegistration.SubmitInvoice.Action*
+  name: Action
+  href: api/EasyPost.Parameters.FedExRegistration.SubmitInvoice.html#EasyPost_Parameters_FedExRegistration_SubmitInvoice_Action_
+  commentId: Overload:EasyPost.Parameters.FedExRegistration.SubmitInvoice.Action
+  isSpec: "True"
+  fullName: EasyPost.Parameters.FedExRegistration.SubmitInvoice.Action
+  nameWithType: SubmitInvoice.Action
 - uid: EasyPost.Parameters.FedExRegistration.SubmitInvoice.CarrierAccountId
   name: CarrierAccountId
   href: api/EasyPost.Parameters.FedExRegistration.SubmitInvoice.html#EasyPost_Parameters_FedExRegistration_SubmitInvoice_CarrierAccountId
@@ -14304,12 +14343,38 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.FedExRegistration.SubmitInvoice.ToDictionary
   nameWithType: SubmitInvoice.ToDictionary
+- uid: EasyPost.Parameters.FedExRegistration.SubmitInvoice.Type
+  name: Type
+  href: api/EasyPost.Parameters.FedExRegistration.SubmitInvoice.html#EasyPost_Parameters_FedExRegistration_SubmitInvoice_Type
+  commentId: P:EasyPost.Parameters.FedExRegistration.SubmitInvoice.Type
+  fullName: EasyPost.Parameters.FedExRegistration.SubmitInvoice.Type
+  nameWithType: SubmitInvoice.Type
+- uid: EasyPost.Parameters.FedExRegistration.SubmitInvoice.Type*
+  name: Type
+  href: api/EasyPost.Parameters.FedExRegistration.SubmitInvoice.html#EasyPost_Parameters_FedExRegistration_SubmitInvoice_Type_
+  commentId: Overload:EasyPost.Parameters.FedExRegistration.SubmitInvoice.Type
+  isSpec: "True"
+  fullName: EasyPost.Parameters.FedExRegistration.SubmitInvoice.Type
+  nameWithType: SubmitInvoice.Type
 - uid: EasyPost.Parameters.FedExRegistration.ValidatePin
   name: ValidatePin
   href: api/EasyPost.Parameters.FedExRegistration.ValidatePin.html
   commentId: T:EasyPost.Parameters.FedExRegistration.ValidatePin
   fullName: EasyPost.Parameters.FedExRegistration.ValidatePin
   nameWithType: ValidatePin
+- uid: EasyPost.Parameters.FedExRegistration.ValidatePin.Action
+  name: Action
+  href: api/EasyPost.Parameters.FedExRegistration.ValidatePin.html#EasyPost_Parameters_FedExRegistration_ValidatePin_Action
+  commentId: P:EasyPost.Parameters.FedExRegistration.ValidatePin.Action
+  fullName: EasyPost.Parameters.FedExRegistration.ValidatePin.Action
+  nameWithType: ValidatePin.Action
+- uid: EasyPost.Parameters.FedExRegistration.ValidatePin.Action*
+  name: Action
+  href: api/EasyPost.Parameters.FedExRegistration.ValidatePin.html#EasyPost_Parameters_FedExRegistration_ValidatePin_Action_
+  commentId: Overload:EasyPost.Parameters.FedExRegistration.ValidatePin.Action
+  isSpec: "True"
+  fullName: EasyPost.Parameters.FedExRegistration.ValidatePin.Action
+  nameWithType: ValidatePin.Action
 - uid: EasyPost.Parameters.FedExRegistration.ValidatePin.CarrierAccountId
   name: CarrierAccountId
   href: api/EasyPost.Parameters.FedExRegistration.ValidatePin.html#EasyPost_Parameters_FedExRegistration_ValidatePin_CarrierAccountId
@@ -14362,6 +14427,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.FedExRegistration.ValidatePin.ToDictionary
   nameWithType: ValidatePin.ToDictionary
+- uid: EasyPost.Parameters.FedExRegistration.ValidatePin.Type
+  name: Type
+  href: api/EasyPost.Parameters.FedExRegistration.ValidatePin.html#EasyPost_Parameters_FedExRegistration_ValidatePin_Type
+  commentId: P:EasyPost.Parameters.FedExRegistration.ValidatePin.Type
+  fullName: EasyPost.Parameters.FedExRegistration.ValidatePin.Type
+  nameWithType: ValidatePin.Type
+- uid: EasyPost.Parameters.FedExRegistration.ValidatePin.Type*
+  name: Type
+  href: api/EasyPost.Parameters.FedExRegistration.ValidatePin.html#EasyPost_Parameters_FedExRegistration_ValidatePin_Type_
+  commentId: Overload:EasyPost.Parameters.FedExRegistration.ValidatePin.Type
+  isSpec: "True"
+  fullName: EasyPost.Parameters.FedExRegistration.ValidatePin.Type
+  nameWithType: ValidatePin.Type
 - uid: EasyPost.Parameters.IAddressParameter
   name: IAddressParameter
   href: api/EasyPost.Parameters.IAddressParameter.html

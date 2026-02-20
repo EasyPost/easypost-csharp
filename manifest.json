@@ -2349,7 +2349,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.FedExRegistration.RegisterAddress.html",
-          "hash": "dbtrjBasafDq4aibuFBSknbKoLLYEupGUoTembRk6Qo="
+          "hash": "S+MCH6/pFRTCKH3qDEeaYcItf586Zqga+S3fHrCagl8="
         }
       },
       "is_incremental": false,
@@ -2361,7 +2361,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.FedExRegistration.SubmitInvoice.html",
-          "hash": "SYPqoGGIE4nwSUpIEKeh0jZCPKhjkjrCBtXmYJm/YhM="
+          "hash": "h2HN7Yf7cDHomGxV7UkC5oDvbSFzKgYyOiWyRPi/1Mw="
         }
       },
       "is_incremental": false,
@@ -2373,7 +2373,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.FedExRegistration.ValidatePin.html",
-          "hash": "hBTWmpO8Uu4FzqwgPi1tdec2EZxJU5s0Pdso8MX3oMo="
+          "hash": "gZ4IxX5N3VjQWs+H4GWJndlLUKNaIZDkwV2dWhsmwZY="
         }
       },
       "is_incremental": false,
