@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v7.6.0 (2026-02-20)
+
+- Adds the following functions:
+  - `FedexRegistration.RegisterAddress`
+  - `FedexRegistration.RequestPin`
+  - `FedexRegistration.ValidatePin`
+  - `FedexRegistration.SubmitInvoice`
+
 ## v7.5.0 (2026-02-03)
 
 - Adds the following functions usable by child and referral customer users:
