@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v7.7.0 (2026-02-25)
+
+- Adds generic `MakeApiCallAsync` function
+
 ## v7.6.0 (2026-02-20)
 
 - Adds the following functions:
