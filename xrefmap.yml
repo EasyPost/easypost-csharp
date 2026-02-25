@@ -150,6 +150,22 @@ references:
   isSpec: "True"
   fullName: EasyPost._base.EasyPostClient.Hooks
   nameWithType: EasyPostClient.Hooks
+- uid: EasyPost._base.EasyPostClient.MakeApiCallAsync(EasyPost.Http.Method,System.String,Dictionary{System.String,System.Object},CancellationToken)
+  name: MakeApiCallAsync(Method, String, Dictionary<String, Object>, CancellationToken)
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_MakeApiCallAsync_EasyPost_Http_Method_System_String_Dictionary_System_String_System_Object__CancellationToken_
+  commentId: M:EasyPost._base.EasyPostClient.MakeApiCallAsync(EasyPost.Http.Method,System.String,Dictionary{System.String,System.Object},CancellationToken)
+  name.vb: MakeApiCallAsync(Method, String, Dictionary(Of String, Object), CancellationToken)
+  fullName: EasyPost._base.EasyPostClient.MakeApiCallAsync(EasyPost.Http.Method, System.String, Dictionary<System.String, System.Object>, CancellationToken)
+  fullName.vb: EasyPost._base.EasyPostClient.MakeApiCallAsync(EasyPost.Http.Method, System.String, Dictionary(Of System.String, System.Object), CancellationToken)
+  nameWithType: EasyPostClient.MakeApiCallAsync(Method, String, Dictionary<String, Object>, CancellationToken)
+  nameWithType.vb: EasyPostClient.MakeApiCallAsync(Method, String, Dictionary(Of String, Object), CancellationToken)
+- uid: EasyPost._base.EasyPostClient.MakeApiCallAsync*
+  name: MakeApiCallAsync
+  href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_MakeApiCallAsync_
+  commentId: Overload:EasyPost._base.EasyPostClient.MakeApiCallAsync
+  isSpec: "True"
+  fullName: EasyPost._base.EasyPostClient.MakeApiCallAsync
+  nameWithType: EasyPostClient.MakeApiCallAsync
 - uid: EasyPost._base.EasyPostClient.RequestAsync(EasyPost.Http.Method,System.String,EasyPost._base.ApiVersion,CancellationToken,System.Nullable{Dictionary{System.String,System.Object}})
   name: RequestAsync(Method, String, ApiVersion, CancellationToken, Nullable<Dictionary<String, Object>>)
   href: api/EasyPost._base.EasyPostClient.html#EasyPost__base_EasyPostClient_RequestAsync_EasyPost_Http_Method_System_String_EasyPost__base_ApiVersion_CancellationToken_System_Nullable_Dictionary_System_String_System_Object___
