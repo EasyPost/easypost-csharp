@@ -87,14 +87,13 @@ jobs:
       - name: Set up dotnet tools and dependencies
         run: just install
 
-      - name: Generate coverage report
+      - name: Run tests
         run: just coverage
 
-      - name: Upload lcov coverage report to Coveralls
-        uses: coverallsapp/github-action@master
+      - name: Coverage
+        uses: codecov/codecov-action@v5
         with:
-          path-to-lcov: coveragereport/lcov.info
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   Publish_Docs:
     if: github.ref == 'refs/heads/master'

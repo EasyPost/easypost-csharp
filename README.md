@@ -1,7 +1,7 @@
 # EasyPost .Net Client Library
 
 [![CI](https://github.com/EasyPost/easypost-csharp/workflows/CI/badge.svg)](https://github.com/EasyPost/easypost-csharp/actions?query=workflow%3ACI)
-[![Coverage Status](https://coveralls.io/repos/github/EasyPost/easypost-csharp/badge.svg?branch=master)](https://coveralls.io/github/EasyPost/easypost-csharp?branch=master)
+[![codecov](https://codecov.io/gh/EasyPost/easypost-csharp/graph/badge.svg?token=y5QUxhFk0o)](https://codecov.io/gh/EasyPost/easypost-csharp)
 [![NuGet version](https://badge.fury.io/nu/EasyPost-Official.svg)](https://badge.fury.io/nu/EasyPost-Official)
 
 EasyPost, the simple shipping solution. You can sign up for an account at <https://easypost.com>.
