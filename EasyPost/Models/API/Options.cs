@@ -604,7 +604,7 @@ namespace EasyPost.Models.API
         ///     Whether or not the parcel can be processed by the carriers equipment.
         /// </summary>
         [JsonProperty("machinable")]
-        public string? Machinable { get; set; }
+        public bool? Machinable { get; set; }
 
         /// <summary>
         ///     This is a required field for DHL eCommerce shipments and should be the merchant's name. It will be displayed on the shipping label and associated with the shipment throughout transit.

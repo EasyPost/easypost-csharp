@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v7.7.1 (2026-04-03)
+
+- Fixes the type of the Shipment option `Machinable` from `string` to `bool` (closes #653)
+
 ## v7.7.0 (2026-02-25)
 
 - Adds generic `MakeApiCallAsync` function
