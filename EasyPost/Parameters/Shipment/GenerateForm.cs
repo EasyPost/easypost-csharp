@@ -37,7 +37,7 @@ namespace EasyPost.Parameters.Shipment
             }
 
             Dictionary<string, object> data = Data ?? new Dictionary<string, object>();
-            data.Add("type", Type!);
+            data.Add("type", Type);
 
             return data.Wrap("form");
         }

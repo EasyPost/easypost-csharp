@@ -132,7 +132,7 @@ namespace EasyPost.Services
             }
 
             // ReSharper disable once RedundantSuppressNullableWarningExpression
-            string stripeToken = await CreateStripeToken(number, expirationMonth, expirationYear, cvc, easypostStripeApiKey!, cancellationToken);
+            string stripeToken = await CreateStripeToken(number, expirationMonth, expirationYear, cvc, easypostStripeApiKey, cancellationToken);
 
 #pragma warning disable IDE0046
             if (string.IsNullOrEmpty(stripeToken))

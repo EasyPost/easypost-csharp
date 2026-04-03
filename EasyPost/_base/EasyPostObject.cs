@@ -46,7 +46,7 @@ namespace EasyPost._base
         public virtual Dictionary<string, object> AsDictionary() => JsonConvert.DeserializeObject<Dictionary<string, object>>(AsJson())!;
 
         /// <inheritdoc />
-        public override string ToString() => $"{Object!} {Id!}";
+        public override string ToString() => $"{Object} {Id}";
 
         /// <inheritdoc />
         public override bool Equals(object? obj) => GetType() == obj?.GetType() && GetHashCode() == ((EasyPostObject)obj).GetHashCode();
