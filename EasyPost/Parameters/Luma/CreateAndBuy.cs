@@ -5,7 +5,7 @@ using EasyPost.Utilities.Internal.Attributes;
 namespace EasyPost.Parameters.Luma
 {
     /// <summary>
-    ///     <a href="https://docs.easypost.com/docs/luma#one-call-buy">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.CreateAndBuyLuma(Buy, System.Threading.CancellationToken)"/> API calls.
+    ///     <a href="https://docs.easypost.com/docs/luma#one-call-buy">Parameters</a> for <see cref="EasyPost.Services.ShipmentService.CreateAndBuyLuma(CreateAndBuy, System.Threading.CancellationToken)"/> API calls.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class CreateAndBuy : BaseParameters<Models.API.Shipment>

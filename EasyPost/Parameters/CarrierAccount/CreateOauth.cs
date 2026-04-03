@@ -3,6 +3,8 @@ using System.Diagnostics.CodeAnalysis;
 using EasyPost.Utilities.Internal.Attributes;
 using EasyPost.Utilities.Internal.Extensions;
 
+#pragma warning disable CS0618
+
 namespace EasyPost.Parameters.CarrierAccount
 {
     /// <summary>

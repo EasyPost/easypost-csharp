@@ -4,6 +4,8 @@ using EasyPost._base;
 using EasyPost.Models.Shared;
 using Newtonsoft.Json;
 
+#pragma warning disable CS1591
+
 namespace EasyPost.Models.API
 {
 #pragma warning disable CA1724 // Naming conflicts with Parameters.ReferralCustomer

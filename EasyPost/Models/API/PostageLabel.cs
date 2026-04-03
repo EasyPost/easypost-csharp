@@ -2,6 +2,8 @@
 using EasyPost._base;
 using Newtonsoft.Json;
 
+#pragma warning disable CS1591
+
 namespace EasyPost.Models.API
 {
     /// <summary>

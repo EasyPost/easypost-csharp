@@ -14,7 +14,7 @@ namespace EasyPost.Parameters.User
         #region Request Parameters
 
         /// <summary>
-        ///     Only records created after the given ID will be included. May not be used with <see cref="BeforeId"/>.
+        ///     Only records created after the given ID will be included.
         /// </summary>
         [TopLevelRequestParameter(Necessity.Optional, "after_id")]
         public string? AfterId { get; set; }
