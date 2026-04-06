@@ -66,6 +66,9 @@ namespace EasyPost.Models.API
         [JsonProperty("min_datetime")]
         public DateTime? MinDatetime { get; set; }
 
+        /// <summary>
+        ///    The name of the person to pick up the package.
+        /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }
 
