@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v7.7.2 (2026-04-21)
+
+- Corrects mapping of `Zip` and `Country` params for `RegisterAddress` parameter set to `postal_code` and `country_code` on the request
+
 ## v7.7.1 (2026-04-03)
 
 - Fixes the type of the Shipment option `Machinable` from `string` to `bool` (closes #653)

@@ -52,13 +52,13 @@ namespace EasyPost.Parameters.FedExRegistration
         /// <summary>
         ///     ZIP code for the FedEx registration.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "address_validation", "zip")]
+        [TopLevelRequestParameter(Necessity.Optional, "address_validation", "postal_code")]
         public string? Zip { get; set; }
 
         /// <summary>
         ///     Country code for the FedEx registration.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "address_validation", "country")]
+        [TopLevelRequestParameter(Necessity.Optional, "address_validation", "country_code")]
         public string? Country { get; set; }
 
         /// <summary>
