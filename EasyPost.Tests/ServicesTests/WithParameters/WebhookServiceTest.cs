@@ -40,7 +40,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         {
             UseVCR("create");
 
-            string url = $"https://example.com/beta/create/{TestUtils.NetVersion}";
+            string url = $"https://example.com/beta/create";
 
             Dictionary<string, object> data = new Dictionary<string, object> { { "url", url } };
 
@@ -80,7 +80,7 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         {
             UseVCR("update");
 
-            string url = $"https://example.com/beta/update/{TestUtils.NetVersion}";
+            string url = $"https://example.com/beta/update";
             Parameters.Webhook.Create webhookParameters = new()
             {
                 Url = url,

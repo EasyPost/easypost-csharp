@@ -21,37 +21,37 @@ namespace EasyPost.Parameters.Report
         /// <summary>
         ///     A list of additional columns (other than the defaults) to include in the report.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "report", "additional_columns")]
+        [TopLevelRequestParameter(Necessity.Optional, "additional_columns")]
         public List<string>? AdditionalColumns { get; set; }
 
         /// <summary>
         ///     A list of the only columns to include in the report.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "report", "columns")]
+        [TopLevelRequestParameter(Necessity.Optional, "columns")]
         public List<string>? Columns { get; set; }
 
         /// <summary>
         ///     The date the report should end on. Required.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Required, "report", "end_date")]
+        [TopLevelRequestParameter(Necessity.Required, "end_date")]
         public string? EndDate { get; set; }
 
         /// <summary>
         ///     Whether or not to include children in the report. Defaults to <c>false</c>.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "report", "include_children")]
+        [TopLevelRequestParameter(Necessity.Optional, "include_children")]
         public bool? IncludeChildren { get; set; }
 
         /// <summary>
         ///     Send the report via email. Defaults to <c>false</c>.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "report", "send_email")]
+        [TopLevelRequestParameter(Necessity.Optional, "send_email")]
         public bool? SendEmail { get; set; }
 
         /// <summary>
         ///     The date the report should start on. Required.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Required, "report", "start_date")]
+        [TopLevelRequestParameter(Necessity.Required, "start_date")]
         public string? StartDate { get; set; }
 
         #endregion
