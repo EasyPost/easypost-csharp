@@ -40,7 +40,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("create");
 
-            string url = $"https://example.com/create/{TestUtils.NetVersion}";
+            string url = $"https://example.com/create";
 
             Dictionary<string, object> webhookParams = new Dictionary<string, object>()
             {
@@ -79,7 +79,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("retrieve");
 
-            string url = $"https://example.com/retrieve/{TestUtils.NetVersion}";
+            string url = $"https://example.com/retrieve";
 
             Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
             CleanUpAfterTest(webhook.Id);
@@ -159,7 +159,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("update");
 
-            string url = $"https://example.com/update/{TestUtils.NetVersion}";
+            string url = $"https://example.com/update";
 
             Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
             CleanUpAfterTest(webhook.Id);
@@ -188,7 +188,7 @@ namespace EasyPost.Tests.ServicesTests
         {
             UseVCR("delete");
 
-            string url = $"https://example.com/delete/{TestUtils.NetVersion}";
+            string url = $"https://example.com/delete";
 
             Webhook webhook = await Client.Webhook.Create(new Dictionary<string, object> { { "url", url } });
             CleanUpAfterTest(webhook.Id);

@@ -85,21 +85,6 @@ namespace EasyPost.Tests._Utilities
             return File.ReadAllText(filePath);
         }
 
-        internal static string NetVersion
-        {
-            get
-            {
-                // ReSharper disable once RedundantAssignment
-                // ReSharper disable once ConvertToConstant.Local
-                string netVersion = "net";
-#if NET472
-                netVersion = "netstandard";
-#endif
-
-                return netVersion;
-            }
-        }
-
         // ReSharper disable once InconsistentNaming
         public class VCR
         {
@@ -133,10 +118,6 @@ namespace EasyPost.Tests._Utilities
                 _apiKey = GetApiKey(apiKey);
 
                 _testCassettesFolder = Path.Combine(GetSourceFileDirectory(), CassettesFolder); // create "cassettes" folder in same directory as test files
-
-                string netVersionFolder = NetVersion;
-
-                _testCassettesFolder = Path.Combine(_testCassettesFolder, netVersionFolder); // create .NET version-specific folder in "cassettes" folder
 
                 if (testCassettesFolder != null)
                 {

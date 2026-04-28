@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v7.7.3 (2026-04-28)
+
+- Corrects nesting of `report` create parameters in request allowing params like `columns` and `additional_columns` to take effect correctly (closes #658)
+
 ## v7.7.2 (2026-04-21)
 
 - Corrects mapping of `Zip` and `Country` params for `RegisterAddress` parameter set to `postal_code` and `country_code` on the request
