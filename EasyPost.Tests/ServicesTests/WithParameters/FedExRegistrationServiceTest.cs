@@ -102,7 +102,12 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         {
             UseMockClient();
 
-            FedExRequestPinResponse response = await Client.FedExRegistration.RequestPin("123456789", "SMS");
+            Parameters.FedExRegistration.RequestPin parameters = new Parameters.FedExRegistration.RequestPin
+            {
+                CarrierAccountId = "ca_123",
+            };
+
+            FedExRequestPinResponse response = await Client.FedExRegistration.RequestPin("123456789", "SMS", parameters);
 
             Assert.NotNull(response);
             Assert.NotNull(response.Message);

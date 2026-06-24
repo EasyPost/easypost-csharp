@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v7.8.0 (2025-06-25)
+
+- Adds `params` to `requestPin` ensuring users can pass `easypost_details` to the call
+
 ## v7.7.3 (2026-04-28)
 
 - Corrects nesting of `report` create parameters in request allowing params like `columns` and `additional_columns` to take effect correctly (closes #658)
