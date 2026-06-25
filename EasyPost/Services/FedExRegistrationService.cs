@@ -42,18 +42,15 @@ namespace EasyPost.Services
         /// </summary>
         /// <param name="fedexAccountNumber">The FedEx account number.</param>
         /// <param name="pinMethodOption">The PIN delivery method: "SMS", "CALL", or "EMAIL".</param>
+        /// <param name="parameters"><see cref="Parameters.FedExRegistration.RequestPin"/> parameter set.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for the HTTP request.</param>
         /// <returns><see cref="FedExRequestPinResponse"/> object confirming PIN was sent.</returns>
-        public async Task<FedExRequestPinResponse> RequestPin(string fedexAccountNumber, string pinMethodOption, CancellationToken cancellationToken = default)
+        public async Task<FedExRequestPinResponse> RequestPin(string fedexAccountNumber, string pinMethodOption, Parameters.FedExRegistration.RequestPin parameters, CancellationToken cancellationToken = default)
         {
-            Dictionary<string, object> wrappedParams = new Dictionary<string, object>
+            Dictionary<string, object> wrappedParams = parameters.ToDictionary();
+            wrappedParams["pin_method"] = new Dictionary<string, object>
             {
-                {
-                    "pin_method", new Dictionary<string, object>
-                    {
-                        { "option", pinMethodOption },
-                    }
-                },
+                { "option", pinMethodOption },
             };
             string endpoint = $"fedex_registrations/{fedexAccountNumber}/pin";
 
