@@ -14249,6 +14249,51 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.FedExRegistration.RegisterAddress.Zip
   nameWithType: RegisterAddress.Zip
+- uid: EasyPost.Parameters.FedExRegistration.RequestPin
+  name: RequestPin
+  href: api/EasyPost.Parameters.FedExRegistration.RequestPin.html
+  commentId: T:EasyPost.Parameters.FedExRegistration.RequestPin
+  fullName: EasyPost.Parameters.FedExRegistration.RequestPin
+  nameWithType: RequestPin
+- uid: EasyPost.Parameters.FedExRegistration.RequestPin.Action
+  name: Action
+  href: api/EasyPost.Parameters.FedExRegistration.RequestPin.html#EasyPost_Parameters_FedExRegistration_RequestPin_Action
+  commentId: P:EasyPost.Parameters.FedExRegistration.RequestPin.Action
+  fullName: EasyPost.Parameters.FedExRegistration.RequestPin.Action
+  nameWithType: RequestPin.Action
+- uid: EasyPost.Parameters.FedExRegistration.RequestPin.Action*
+  name: Action
+  href: api/EasyPost.Parameters.FedExRegistration.RequestPin.html#EasyPost_Parameters_FedExRegistration_RequestPin_Action_
+  commentId: Overload:EasyPost.Parameters.FedExRegistration.RequestPin.Action
+  isSpec: "True"
+  fullName: EasyPost.Parameters.FedExRegistration.RequestPin.Action
+  nameWithType: RequestPin.Action
+- uid: EasyPost.Parameters.FedExRegistration.RequestPin.CarrierAccountId
+  name: CarrierAccountId
+  href: api/EasyPost.Parameters.FedExRegistration.RequestPin.html#EasyPost_Parameters_FedExRegistration_RequestPin_CarrierAccountId
+  commentId: P:EasyPost.Parameters.FedExRegistration.RequestPin.CarrierAccountId
+  fullName: EasyPost.Parameters.FedExRegistration.RequestPin.CarrierAccountId
+  nameWithType: RequestPin.CarrierAccountId
+- uid: EasyPost.Parameters.FedExRegistration.RequestPin.CarrierAccountId*
+  name: CarrierAccountId
+  href: api/EasyPost.Parameters.FedExRegistration.RequestPin.html#EasyPost_Parameters_FedExRegistration_RequestPin_CarrierAccountId_
+  commentId: Overload:EasyPost.Parameters.FedExRegistration.RequestPin.CarrierAccountId
+  isSpec: "True"
+  fullName: EasyPost.Parameters.FedExRegistration.RequestPin.CarrierAccountId
+  nameWithType: RequestPin.CarrierAccountId
+- uid: EasyPost.Parameters.FedExRegistration.RequestPin.Type
+  name: Type
+  href: api/EasyPost.Parameters.FedExRegistration.RequestPin.html#EasyPost_Parameters_FedExRegistration_RequestPin_Type
+  commentId: P:EasyPost.Parameters.FedExRegistration.RequestPin.Type
+  fullName: EasyPost.Parameters.FedExRegistration.RequestPin.Type
+  nameWithType: RequestPin.Type
+- uid: EasyPost.Parameters.FedExRegistration.RequestPin.Type*
+  name: Type
+  href: api/EasyPost.Parameters.FedExRegistration.RequestPin.html#EasyPost_Parameters_FedExRegistration_RequestPin_Type_
+  commentId: Overload:EasyPost.Parameters.FedExRegistration.RequestPin.Type
+  isSpec: "True"
+  fullName: EasyPost.Parameters.FedExRegistration.RequestPin.Type
+  nameWithType: RequestPin.Type
 - uid: EasyPost.Parameters.FedExRegistration.SubmitInvoice
   name: SubmitInvoice
   href: api/EasyPost.Parameters.FedExRegistration.SubmitInvoice.html
@@ -18799,12 +18844,12 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.FedExRegistrationService.RegisterAddress
   nameWithType: FedExRegistrationService.RegisterAddress
-- uid: EasyPost.Services.FedExRegistrationService.RequestPin(System.String,System.String,CancellationToken)
-  name: RequestPin(String, String, CancellationToken)
-  href: api/EasyPost.Services.FedExRegistrationService.html#EasyPost_Services_FedExRegistrationService_RequestPin_System_String_System_String_CancellationToken_
-  commentId: M:EasyPost.Services.FedExRegistrationService.RequestPin(System.String,System.String,CancellationToken)
-  fullName: EasyPost.Services.FedExRegistrationService.RequestPin(System.String, System.String, CancellationToken)
-  nameWithType: FedExRegistrationService.RequestPin(String, String, CancellationToken)
+- uid: EasyPost.Services.FedExRegistrationService.RequestPin(System.String,System.String,EasyPost.Parameters.FedExRegistration.RequestPin,CancellationToken)
+  name: RequestPin(String, String, RequestPin, CancellationToken)
+  href: api/EasyPost.Services.FedExRegistrationService.html#EasyPost_Services_FedExRegistrationService_RequestPin_System_String_System_String_EasyPost_Parameters_FedExRegistration_RequestPin_CancellationToken_
+  commentId: M:EasyPost.Services.FedExRegistrationService.RequestPin(System.String,System.String,EasyPost.Parameters.FedExRegistration.RequestPin,CancellationToken)
+  fullName: EasyPost.Services.FedExRegistrationService.RequestPin(System.String, System.String, EasyPost.Parameters.FedExRegistration.RequestPin, CancellationToken)
+  nameWithType: FedExRegistrationService.RequestPin(String, String, RequestPin, CancellationToken)
 - uid: EasyPost.Services.FedExRegistrationService.RequestPin*
   name: RequestPin
   href: api/EasyPost.Services.FedExRegistrationService.html#EasyPost_Services_FedExRegistrationService_RequestPin_

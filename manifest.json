@@ -1833,7 +1833,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.BaseParameters-1.html",
-          "hash": "1l9hTJ2iqFA1+s2kHiMHttUjbe867cTseY2NlZy9BKg="
+          "hash": "2wGBo3DhFn3ycWQ1L/nkHpKcp/iuGwB/Qz3iPFCre9U="
         }
       },
       "is_incremental": false,
@@ -2357,6 +2357,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.Parameters.FedExRegistration.RequestPin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.Parameters.FedExRegistration.RequestPin.html",
+          "hash": "rOpjRo3CNj42+hG0hTHcx9XS3+4P0omJwJB3Hb1Q0G4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EasyPost.Parameters.FedExRegistration.SubmitInvoice.yml",
       "output": {
         ".html": {
@@ -2385,7 +2397,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.FedExRegistration.html",
-          "hash": "Y8dL5YpvAXjjBx3wVJ3CU38RzJs3x6hq66Q0XQg1mFE="
+          "hash": "6tv+dMCIBrBBXX15hTbInfno86h5+wRYSZTGPHAAKNk="
         }
       },
       "is_incremental": false,
@@ -3597,7 +3609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Services.FedExRegistrationService.html",
-          "hash": "sVWe+aOhacD+k9dMFtPmGYUMgH89VZVQU+5anvlC9gs="
+          "hash": "WvXGNxvIwhrHCzK/6WQgpXgB5YNhclxqs/j1rDfX5e0="
         }
       },
       "is_incremental": false,
@@ -4185,7 +4197,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "iIwe/l/IOEnCMJaTyxF73CHzA5j6Oxuh2PJoQP1Xt9c="
+          "hash": "IB+fBQoEXRZQO/oB9MmD+xKtt1ePFyh6kwCnaNNifGU="
         }
       },
       "is_incremental": false,
@@ -4260,7 +4272,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 347,
+          "total_file_count": 348,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

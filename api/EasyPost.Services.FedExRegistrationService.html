@@ -169,19 +169,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_FedExRegistrationService_RequestPin_System_String_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.FedExRegistrationService.RequestPin(System.String%2CSystem.String%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_FedExRegistrationService_RequestPin_System_String_System_String_EasyPost_Parameters_FedExRegistration_RequestPin_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.FedExRegistrationService.RequestPin(System.String%2CSystem.String%2CEasyPost.Parameters.FedExRegistration.RequestPin%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/FedExRegistrationService.cs/#L47">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/FedExRegistrationService.cs/#L48">View Source</a>
   </span>
   <a id="EasyPost_Services_FedExRegistrationService_RequestPin_" data-uid="EasyPost.Services.FedExRegistrationService.RequestPin*"></a>
-  <h4 id="EasyPost_Services_FedExRegistrationService_RequestPin_System_String_System_String_CancellationToken_" data-uid="EasyPost.Services.FedExRegistrationService.RequestPin(System.String,System.String,CancellationToken)">RequestPin(String, String, CancellationToken)</h4>
+  <h4 id="EasyPost_Services_FedExRegistrationService_RequestPin_System_String_System_String_EasyPost_Parameters_FedExRegistration_RequestPin_CancellationToken_" data-uid="EasyPost.Services.FedExRegistrationService.RequestPin(System.String,System.String,EasyPost.Parameters.FedExRegistration.RequestPin,CancellationToken)">RequestPin(String, String, RequestPin, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Request a PIN for FedEx account verification.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;FedExRequestPinResponse&gt; RequestPin(string fedexAccountNumber, string pinMethodOption, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;FedExRequestPinResponse&gt; RequestPin(string fedexAccountNumber, string pinMethodOption, RequestPin parameters, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -203,6 +203,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">pinMethodOption</span></td>
         <td><p>The PIN delivery method: &quot;SMS&quot;, &quot;CALL&quot;, or &quot;EMAIL&quot;.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EasyPost.Parameters.FedExRegistration.RequestPin.html">RequestPin</a></td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p><a class="xref" href="EasyPost.Parameters.FedExRegistration.RequestPin.html">RequestPin</a> parameter set.</p>
 </td>
       </tr>
       <tr>
@@ -234,7 +240,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_FedExRegistrationService_SubmitInvoice_System_String_EasyPost_Parameters_FedExRegistration_SubmitInvoice_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.FedExRegistrationService.SubmitInvoice(System.String%2CEasyPost.Parameters.FedExRegistration.SubmitInvoice%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/FedExRegistrationService.cs/#L85">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/FedExRegistrationService.cs/#L82">View Source</a>
   </span>
   <a id="EasyPost_Services_FedExRegistrationService_SubmitInvoice_" data-uid="EasyPost.Services.FedExRegistrationService.SubmitInvoice*"></a>
   <h4 id="EasyPost_Services_FedExRegistrationService_SubmitInvoice_System_String_EasyPost_Parameters_FedExRegistration_SubmitInvoice_CancellationToken_" data-uid="EasyPost.Services.FedExRegistrationService.SubmitInvoice(System.String,EasyPost.Parameters.FedExRegistration.SubmitInvoice,CancellationToken)">SubmitInvoice(String, SubmitInvoice, CancellationToken)</h4>
@@ -296,7 +302,7 @@
     <a href="https://github.com/EasyPost/easypost-csharp/new/master/apiSpec/new?filename=EasyPost_Services_FedExRegistrationService_ValidatePin_System_String_EasyPost_Parameters_FedExRegistration_ValidatePin_CancellationToken_.md&amp;value=---%0Auid%3A%20EasyPost.Services.FedExRegistrationService.ValidatePin(System.String%2CEasyPost.Parameters.FedExRegistration.ValidatePin%2CCancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/FedExRegistrationService.cs/#L70">View Source</a>
+    <a href="https://github.com/EasyPost/easypost-csharp/blob/master/EasyPost/Services/FedExRegistrationService.cs/#L67">View Source</a>
   </span>
   <a id="EasyPost_Services_FedExRegistrationService_ValidatePin_" data-uid="EasyPost.Services.FedExRegistrationService.ValidatePin*"></a>
   <h4 id="EasyPost_Services_FedExRegistrationService_ValidatePin_System_String_EasyPost_Parameters_FedExRegistration_ValidatePin_CancellationToken_" data-uid="EasyPost.Services.FedExRegistrationService.ValidatePin(System.String,EasyPost.Parameters.FedExRegistration.ValidatePin,CancellationToken)">ValidatePin(String, ValidatePin, CancellationToken)</h4>
