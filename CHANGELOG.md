@@ -1,6 +1,10 @@
 # CHANGELOG
 
-## v7.8.0 (2025-06-25)
+## v7.9.0 (2026-07-01)
+
+- Adds `PaymentMode` to carrier account create params
+
+## v7.8.0 (2026-06-25)
 
 - Adds `params` to `requestPin` ensuring users can pass `easypost_details` to the call
 
