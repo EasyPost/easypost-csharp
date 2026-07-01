@@ -74,6 +74,12 @@ namespace EasyPost.Models.API
         [JsonProperty("type")]
         public string? Type { get; set; }
 
+        /// <summary>
+        ///     The payment mode for the associated carrier account.
+        /// </summary>
+        [JsonProperty("payment_mode")]
+        public string? PaymentMode { get; set; }
+
         #endregion
     }
 }

@@ -44,6 +44,12 @@ namespace EasyPost.Parameters.CarrierAccount
         [TopLevelRequestParameter(Necessity.Required, "carrier_account", "type")]
         public override string? Type { get; set; }
 
+        /// <summary>
+        ///     Payment mode for the new <see cref="Models.API.CarrierAccount"/>.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "carrier_account", "payment_mode")]
+        public string? PaymentMode { get; set; }
+
         #endregion
 
         /// <summary>
