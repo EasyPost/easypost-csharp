@@ -2992,6 +2992,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.CarrierAccount.Logo
   nameWithType: CarrierAccount.Logo
+- uid: EasyPost.Models.API.CarrierAccount.PaymentMode
+  name: PaymentMode
+  href: api/EasyPost.Models.API.CarrierAccount.html#EasyPost_Models_API_CarrierAccount_PaymentMode
+  commentId: P:EasyPost.Models.API.CarrierAccount.PaymentMode
+  fullName: EasyPost.Models.API.CarrierAccount.PaymentMode
+  nameWithType: CarrierAccount.PaymentMode
+- uid: EasyPost.Models.API.CarrierAccount.PaymentMode*
+  name: PaymentMode
+  href: api/EasyPost.Models.API.CarrierAccount.html#EasyPost_Models_API_CarrierAccount_PaymentMode_
+  commentId: Overload:EasyPost.Models.API.CarrierAccount.PaymentMode
+  isSpec: "True"
+  fullName: EasyPost.Models.API.CarrierAccount.PaymentMode
+  nameWithType: CarrierAccount.PaymentMode
 - uid: EasyPost.Models.API.CarrierAccount.Readable
   name: Readable
   href: api/EasyPost.Models.API.CarrierAccount.html#EasyPost_Models_API_CarrierAccount_Readable
@@ -11753,6 +11766,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.Create.Description
   nameWithType: Create.Description
+- uid: EasyPost.Parameters.CarrierAccount.Create.PaymentMode
+  name: PaymentMode
+  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_PaymentMode
+  commentId: P:EasyPost.Parameters.CarrierAccount.Create.PaymentMode
+  fullName: EasyPost.Parameters.CarrierAccount.Create.PaymentMode
+  nameWithType: Create.PaymentMode
+- uid: EasyPost.Parameters.CarrierAccount.Create.PaymentMode*
+  name: PaymentMode
+  href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_PaymentMode_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.Create.PaymentMode
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.Create.PaymentMode
+  nameWithType: Create.PaymentMode
 - uid: EasyPost.Parameters.CarrierAccount.Create.Reference
   name: Reference
   href: api/EasyPost.Parameters.CarrierAccount.Create.html#EasyPost_Parameters_CarrierAccount_Create_Reference
