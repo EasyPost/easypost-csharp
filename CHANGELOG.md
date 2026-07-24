@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v7.10.0 (2026-07-24)
+
+- Adds missing `Eccn`, `Manufacturer`, and `PrintedCommodityIdentifier` properties to the `CustomsItem` API model
+
 ## v7.9.0 (2026-07-01)
 
 - Adds `PaymentMode` to carrier account create params
