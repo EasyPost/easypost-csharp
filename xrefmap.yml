@@ -4157,6 +4157,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.CustomsItem.Description
   nameWithType: CustomsItem.Description
+- uid: EasyPost.Models.API.CustomsItem.Eccn
+  name: Eccn
+  href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_Eccn
+  commentId: P:EasyPost.Models.API.CustomsItem.Eccn
+  fullName: EasyPost.Models.API.CustomsItem.Eccn
+  nameWithType: CustomsItem.Eccn
+- uid: EasyPost.Models.API.CustomsItem.Eccn*
+  name: Eccn
+  href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_Eccn_
+  commentId: Overload:EasyPost.Models.API.CustomsItem.Eccn
+  isSpec: "True"
+  fullName: EasyPost.Models.API.CustomsItem.Eccn
+  nameWithType: CustomsItem.Eccn
 - uid: EasyPost.Models.API.CustomsItem.HsTariffNumber
   name: HsTariffNumber
   href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_HsTariffNumber
@@ -4170,6 +4183,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.CustomsItem.HsTariffNumber
   nameWithType: CustomsItem.HsTariffNumber
+- uid: EasyPost.Models.API.CustomsItem.Manufacturer
+  name: Manufacturer
+  href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_Manufacturer
+  commentId: P:EasyPost.Models.API.CustomsItem.Manufacturer
+  fullName: EasyPost.Models.API.CustomsItem.Manufacturer
+  nameWithType: CustomsItem.Manufacturer
+- uid: EasyPost.Models.API.CustomsItem.Manufacturer*
+  name: Manufacturer
+  href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_Manufacturer_
+  commentId: Overload:EasyPost.Models.API.CustomsItem.Manufacturer
+  isSpec: "True"
+  fullName: EasyPost.Models.API.CustomsItem.Manufacturer
+  nameWithType: CustomsItem.Manufacturer
 - uid: EasyPost.Models.API.CustomsItem.OriginCountry
   name: OriginCountry
   href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_OriginCountry
@@ -4183,6 +4209,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.CustomsItem.OriginCountry
   nameWithType: CustomsItem.OriginCountry
+- uid: EasyPost.Models.API.CustomsItem.PrintedCommodityIdentifier
+  name: PrintedCommodityIdentifier
+  href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_PrintedCommodityIdentifier
+  commentId: P:EasyPost.Models.API.CustomsItem.PrintedCommodityIdentifier
+  fullName: EasyPost.Models.API.CustomsItem.PrintedCommodityIdentifier
+  nameWithType: CustomsItem.PrintedCommodityIdentifier
+- uid: EasyPost.Models.API.CustomsItem.PrintedCommodityIdentifier*
+  name: PrintedCommodityIdentifier
+  href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_PrintedCommodityIdentifier_
+  commentId: Overload:EasyPost.Models.API.CustomsItem.PrintedCommodityIdentifier
+  isSpec: "True"
+  fullName: EasyPost.Models.API.CustomsItem.PrintedCommodityIdentifier
+  nameWithType: CustomsItem.PrintedCommodityIdentifier
 - uid: EasyPost.Models.API.CustomsItem.Quantity
   name: Quantity
   href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_Quantity
