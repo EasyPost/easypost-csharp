@@ -25,6 +25,12 @@ namespace EasyPost.Models.API
         public string? Currency { get; set; }
 
         /// <summary>
+        ///     Export Control Classification Number (ECCN) for the item.
+        /// </summary>
+        [JsonProperty("eccn")]
+        public string? Eccn { get; set; }
+
+        /// <summary>
         ///     The description of the item being shipped.
         /// </summary>
         [JsonProperty("description")]
@@ -38,10 +44,22 @@ namespace EasyPost.Models.API
         public string? HsTariffNumber { get; set; }
 
         /// <summary>
+        ///     Manufacturer of the item.
+        /// </summary>
+        [JsonProperty("manufacturer")]
+        public string? Manufacturer { get; set; }
+
+        /// <summary>
         ///     The two-letter ISO 3166 country code where the item is being shipped from.
         /// </summary>
         [JsonProperty("origin_country")]
         public string? OriginCountry { get; set; }
+
+        /// <summary>
+        ///     Commodity identifier for the item.
+        /// </summary>
+        [JsonProperty("printed_commodity_identifier")]
+        public string? PrintedCommodityIdentifier { get; set; }
 
         /// <summary>
         ///     The quantity of the item being shipped.
