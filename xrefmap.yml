@@ -19353,19 +19353,6 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ReferralCustomerService.AddCreditCardFromStripe
   nameWithType: ReferralCustomerService.AddCreditCardFromStripe
-- uid: EasyPost.Services.ReferralCustomerService.AddCreditCardToUser(System.String,System.String,System.Int32,System.Int32,System.String,EasyPost.Models.API.PaymentMethod.Priority,CancellationToken)
-  name: AddCreditCardToUser(String, String, Int32, Int32, String, PaymentMethod.Priority, CancellationToken)
-  href: api/EasyPost.Services.ReferralCustomerService.html#EasyPost_Services_ReferralCustomerService_AddCreditCardToUser_System_String_System_String_System_Int32_System_Int32_System_String_EasyPost_Models_API_PaymentMethod_Priority_CancellationToken_
-  commentId: M:EasyPost.Services.ReferralCustomerService.AddCreditCardToUser(System.String,System.String,System.Int32,System.Int32,System.String,EasyPost.Models.API.PaymentMethod.Priority,CancellationToken)
-  fullName: EasyPost.Services.ReferralCustomerService.AddCreditCardToUser(System.String, System.String, System.Int32, System.Int32, System.String, EasyPost.Models.API.PaymentMethod.Priority, CancellationToken)
-  nameWithType: ReferralCustomerService.AddCreditCardToUser(String, String, Int32, Int32, String, PaymentMethod.Priority, CancellationToken)
-- uid: EasyPost.Services.ReferralCustomerService.AddCreditCardToUser*
-  name: AddCreditCardToUser
-  href: api/EasyPost.Services.ReferralCustomerService.html#EasyPost_Services_ReferralCustomerService_AddCreditCardToUser_
-  commentId: Overload:EasyPost.Services.ReferralCustomerService.AddCreditCardToUser
-  isSpec: "True"
-  fullName: EasyPost.Services.ReferralCustomerService.AddCreditCardToUser
-  nameWithType: ReferralCustomerService.AddCreditCardToUser
 - uid: EasyPost.Services.ReferralCustomerService.All(EasyPost.Parameters.ReferralCustomer.All,CancellationToken)
   name: All(All, CancellationToken)
   href: api/EasyPost.Services.ReferralCustomerService.html#EasyPost_Services_ReferralCustomerService_All_EasyPost_Parameters_ReferralCustomer_All_CancellationToken_
@@ -19426,6 +19413,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Services.ReferralCustomerService.GetNextPage
   nameWithType: ReferralCustomerService.GetNextPage
+- uid: EasyPost.Services.ReferralCustomerService.RetrieveEasypostStripeApiKey(CancellationToken)
+  name: RetrieveEasypostStripeApiKey(CancellationToken)
+  href: api/EasyPost.Services.ReferralCustomerService.html#EasyPost_Services_ReferralCustomerService_RetrieveEasypostStripeApiKey_CancellationToken_
+  commentId: M:EasyPost.Services.ReferralCustomerService.RetrieveEasypostStripeApiKey(CancellationToken)
+  fullName: EasyPost.Services.ReferralCustomerService.RetrieveEasypostStripeApiKey(CancellationToken)
+  nameWithType: ReferralCustomerService.RetrieveEasypostStripeApiKey(CancellationToken)
+- uid: EasyPost.Services.ReferralCustomerService.RetrieveEasypostStripeApiKey*
+  name: RetrieveEasypostStripeApiKey
+  href: api/EasyPost.Services.ReferralCustomerService.html#EasyPost_Services_ReferralCustomerService_RetrieveEasypostStripeApiKey_
+  commentId: Overload:EasyPost.Services.ReferralCustomerService.RetrieveEasypostStripeApiKey
+  isSpec: "True"
+  fullName: EasyPost.Services.ReferralCustomerService.RetrieveEasypostStripeApiKey
+  nameWithType: ReferralCustomerService.RetrieveEasypostStripeApiKey
 - uid: EasyPost.Services.ReferralCustomerService.UpdateReferralEmail(System.String,System.String,CancellationToken)
   name: UpdateReferralEmail(String, String, CancellationToken)
   href: api/EasyPost.Services.ReferralCustomerService.html#EasyPost_Services_ReferralCustomerService_UpdateReferralEmail_System_String_System_String_CancellationToken_
