@@ -196,7 +196,7 @@ namespace EasyPost.Services
 
             if (endShipperId != null)
             {
-                parameters.Add("end_shipper", endShipperId);
+                parameters.Add("end_shipper_id", endShipperId);
             }
 
             return await RequestAsync<Shipment>(Method.Post, $"shipments/{id}/buy", cancellationToken, parameters);
