@@ -27,7 +27,7 @@ namespace EasyPost.Parameters.Shipment
         /// <summary>
         ///     The ID of the <see cref="Models.API.EndShipper"/> to buy the <see cref="Models.API.Shipment"/> with. Optional.
         /// </summary>
-        [TopLevelRequestParameter(Necessity.Optional, "end_shipper")]
+        [TopLevelRequestParameter(Necessity.Optional, "end_shipper_id")]
         public string? EndShipperId { get; set; }
 
         #endregion
