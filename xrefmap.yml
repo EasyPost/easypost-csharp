@@ -2701,6 +2701,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Beta.StatelessRate.ShipmentId
   nameWithType: StatelessRate.ShipmentId
+- uid: EasyPost.Models.API.Beta.StatelessRate.Surcharges
+  name: Surcharges
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_Surcharges
+  commentId: P:EasyPost.Models.API.Beta.StatelessRate.Surcharges
+  fullName: EasyPost.Models.API.Beta.StatelessRate.Surcharges
+  nameWithType: StatelessRate.Surcharges
+- uid: EasyPost.Models.API.Beta.StatelessRate.Surcharges*
+  name: Surcharges
+  href: api/EasyPost.Models.API.Beta.StatelessRate.html#EasyPost_Models_API_Beta_StatelessRate_Surcharges_
+  commentId: Overload:EasyPost.Models.API.Beta.StatelessRate.Surcharges
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Beta.StatelessRate.Surcharges
+  nameWithType: StatelessRate.Surcharges
 - uid: EasyPost.Models.API.Brand
   name: Brand
   href: api/EasyPost.Models.API.Brand.html
@@ -7781,6 +7794,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Rate.ShipmentId
   nameWithType: Rate.ShipmentId
+- uid: EasyPost.Models.API.Rate.Surcharges
+  name: Surcharges
+  href: api/EasyPost.Models.API.Rate.html#EasyPost_Models_API_Rate_Surcharges
+  commentId: P:EasyPost.Models.API.Rate.Surcharges
+  fullName: EasyPost.Models.API.Rate.Surcharges
+  nameWithType: Rate.Surcharges
+- uid: EasyPost.Models.API.Rate.Surcharges*
+  name: Surcharges
+  href: api/EasyPost.Models.API.Rate.html#EasyPost_Models_API_Rate_Surcharges_
+  commentId: Overload:EasyPost.Models.API.Rate.Surcharges
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Rate.Surcharges
+  nameWithType: Rate.Surcharges
 - uid: EasyPost.Models.API.RateWithEstimatedDeliveryDate
   name: RateWithEstimatedDeliveryDate
   href: api/EasyPost.Models.API.RateWithEstimatedDeliveryDate.html
@@ -9552,6 +9578,90 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.SupportedFeature.Supported
   nameWithType: SupportedFeature.Supported
+- uid: EasyPost.Models.API.Surcharge
+  name: Surcharge
+  href: api/EasyPost.Models.API.Surcharge.html
+  commentId: T:EasyPost.Models.API.Surcharge
+  fullName: EasyPost.Models.API.Surcharge
+  nameWithType: Surcharge
+- uid: EasyPost.Models.API.Surcharge.Amount
+  name: Amount
+  href: api/EasyPost.Models.API.Surcharge.html#EasyPost_Models_API_Surcharge_Amount
+  commentId: P:EasyPost.Models.API.Surcharge.Amount
+  fullName: EasyPost.Models.API.Surcharge.Amount
+  nameWithType: Surcharge.Amount
+- uid: EasyPost.Models.API.Surcharge.Amount*
+  name: Amount
+  href: api/EasyPost.Models.API.Surcharge.html#EasyPost_Models_API_Surcharge_Amount_
+  commentId: Overload:EasyPost.Models.API.Surcharge.Amount
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Surcharge.Amount
+  nameWithType: Surcharge.Amount
+- uid: EasyPost.Models.API.Surcharge.Category
+  name: Category
+  href: api/EasyPost.Models.API.Surcharge.html#EasyPost_Models_API_Surcharge_Category
+  commentId: P:EasyPost.Models.API.Surcharge.Category
+  fullName: EasyPost.Models.API.Surcharge.Category
+  nameWithType: Surcharge.Category
+- uid: EasyPost.Models.API.Surcharge.Category*
+  name: Category
+  href: api/EasyPost.Models.API.Surcharge.html#EasyPost_Models_API_Surcharge_Category_
+  commentId: Overload:EasyPost.Models.API.Surcharge.Category
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Surcharge.Category
+  nameWithType: Surcharge.Category
+- uid: EasyPost.Models.API.Surcharge.Currency
+  name: Currency
+  href: api/EasyPost.Models.API.Surcharge.html#EasyPost_Models_API_Surcharge_Currency
+  commentId: P:EasyPost.Models.API.Surcharge.Currency
+  fullName: EasyPost.Models.API.Surcharge.Currency
+  nameWithType: Surcharge.Currency
+- uid: EasyPost.Models.API.Surcharge.Currency*
+  name: Currency
+  href: api/EasyPost.Models.API.Surcharge.html#EasyPost_Models_API_Surcharge_Currency_
+  commentId: Overload:EasyPost.Models.API.Surcharge.Currency
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Surcharge.Currency
+  nameWithType: Surcharge.Currency
+- uid: EasyPost.Models.API.Surcharge.ListAmount
+  name: ListAmount
+  href: api/EasyPost.Models.API.Surcharge.html#EasyPost_Models_API_Surcharge_ListAmount
+  commentId: P:EasyPost.Models.API.Surcharge.ListAmount
+  fullName: EasyPost.Models.API.Surcharge.ListAmount
+  nameWithType: Surcharge.ListAmount
+- uid: EasyPost.Models.API.Surcharge.ListAmount*
+  name: ListAmount
+  href: api/EasyPost.Models.API.Surcharge.html#EasyPost_Models_API_Surcharge_ListAmount_
+  commentId: Overload:EasyPost.Models.API.Surcharge.ListAmount
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Surcharge.ListAmount
+  nameWithType: Surcharge.ListAmount
+- uid: EasyPost.Models.API.Surcharge.RetailAmount
+  name: RetailAmount
+  href: api/EasyPost.Models.API.Surcharge.html#EasyPost_Models_API_Surcharge_RetailAmount
+  commentId: P:EasyPost.Models.API.Surcharge.RetailAmount
+  fullName: EasyPost.Models.API.Surcharge.RetailAmount
+  nameWithType: Surcharge.RetailAmount
+- uid: EasyPost.Models.API.Surcharge.RetailAmount*
+  name: RetailAmount
+  href: api/EasyPost.Models.API.Surcharge.html#EasyPost_Models_API_Surcharge_RetailAmount_
+  commentId: Overload:EasyPost.Models.API.Surcharge.RetailAmount
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Surcharge.RetailAmount
+  nameWithType: Surcharge.RetailAmount
+- uid: EasyPost.Models.API.Surcharge.Type
+  name: Type
+  href: api/EasyPost.Models.API.Surcharge.html#EasyPost_Models_API_Surcharge_Type
+  commentId: P:EasyPost.Models.API.Surcharge.Type
+  fullName: EasyPost.Models.API.Surcharge.Type
+  nameWithType: Surcharge.Type
+- uid: EasyPost.Models.API.Surcharge.Type*
+  name: Type
+  href: api/EasyPost.Models.API.Surcharge.html#EasyPost_Models_API_Surcharge_Type_
+  commentId: Overload:EasyPost.Models.API.Surcharge.Type
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Surcharge.Type
+  nameWithType: Surcharge.Type
 - uid: EasyPost.Models.API.TaxIdentifier
   name: TaxIdentifier
   href: api/EasyPost.Models.API.TaxIdentifier.html
