@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
+using EasyPost.Http;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
@@ -110,6 +112,30 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Assert.StartsWith("ca_", carrierAccount.Id);
         }
 
+        [Theory]
+        [CrudOperations.Create]
+        [Testing.Parameters]
+        [MemberData(nameof(CreateUrlRoutingData))]
+        public async Task TestCreateUrlRouting(Parameters.CarrierAccount.ACreate parameters, string expectedEndpoint)
+        {
+            string endpointRegex = $@"v2\/{expectedEndpoint.Replace("/", @"\/")}$";
+            string responseType = parameters.Type ?? string.Empty;
+
+            UseMockClient(new List<TestUtils.MockRequest>
+            {
+                new(
+                    new TestUtils.MockRequestMatchRules(Method.Post, endpointRegex),
+                    new TestUtils.MockRequestResponseInfo(HttpStatusCode.Created, content: $"{{\"id\":\"ca_123\",\"object\":\"CarrierAccount\",\"type\":\"{responseType}\"}}")
+                )
+            });
+
+            CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
+
+            Assert.IsType<CarrierAccount>(carrierAccount);
+            Assert.StartsWith("ca_", carrierAccount.Id);
+            Assert.Equal(responseType, carrierAccount.Type);
+        }
+
         [Fact]
         [CrudOperations.Create]
         [Testing.Exception]
@@ -195,6 +221,47 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         }
 
         #endregion
+
+        public static IEnumerable<object[]> CreateUrlRoutingData()
+        {
+            yield return new object[] { Fixtures.Parameters.CarrierAccounts.CreateFedEx(new Dictionary<string, object>()), "carrier_accounts/register" };
+            yield return new object[] { CreateFedExSmartPostParameters(), "carrier_accounts/register" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateFedExDefault(), "carrier_accounts/open" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateGofoWallet(), "carrier_accounts/open" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateUpsDap(), "carrier_accounts/open" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateUniUniWallet(), "carrier_accounts/open" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateVehoWallet(), "carrier_accounts/open" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateOauth { Type = CarrierAccountType.AmazonShippingAccount.Name }, "carrier_accounts/register_oauth" };
+            yield return new object[] { Fixtures.Parameters.CarrierAccounts.CreateUps(new Dictionary<string, object>()), "carrier_accounts/register_oauth" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateUpsMailInnovations { AccountNumber = "123456789" }, "carrier_accounts/register_oauth" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateUpsSurePost { AccountNumber = "123456789" }, "carrier_accounts/register_oauth" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateOauth { Type = CarrierAccountType.UspsShipAccount.Name }, "carrier_accounts/register_oauth" };
+        }
+
+        private static Parameters.CarrierAccount.CreateFedExSmartPost CreateFedExSmartPostParameters()
+        {
+            return new Parameters.CarrierAccount.CreateFedExSmartPost
+            {
+                AccountNumber = "123456789",
+                HubId = "1234",
+                CorporateAddressCity = "San Francisco",
+                CorporateAddressCountryCode = "US",
+                CorporateAddressPostalCode = "94105",
+                CorporateAddressState = "CA",
+                CorporateAddressStreet = "345 California St",
+                CorporateCompanyName = "EasyPost",
+                CorporateEmailAddress = "me@example.com",
+                CorporateFirstName = "Demo",
+                CorporateLastName = "User",
+                CorporateJobTitle = "Developer",
+                CorporatePhoneNumber = "5555555555",
+                ShippingAddressCity = "San Francisco",
+                ShippingAddressCountryCode = "US",
+                ShippingAddressPostalCode = "94105",
+                ShippingAddressState = "CA",
+                ShippingAddressStreet = "345 California St",
+            };
+        }
 
         #endregion
     }

@@ -7,6 +7,7 @@
   - Makes `ReferralCustomer.RetrieveEasypostStripeApiKey` public to help facilitate adding credit cards using Stripe.js
 - Correctly passes `end_shipper_id` param instead of `end_shipper` in shipment buy calls (closes [669](https://github.com/EasyPost/easypost-csharp/issues/669))
 - Add `Surcharge` model and `Surcharges` property to `Rate` class
+- Adds support for `FedexDefaultAccount`, `GofoWalletAccount`, `UpsDapAccount`, `UniUniWalletAccount`, and `VehoWalletAccount` by properly routing carrier-account create requests to the `/carrier_accounts/open` endpoint
 
 ## v7.10.0 (2026-07-24)
 

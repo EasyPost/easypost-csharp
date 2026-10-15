@@ -44,6 +44,31 @@ public class CarrierAccountType : ValueEnum
     public static readonly CarrierAccountType UspsShipAccount = new CarrierAccountType(63, "UspsShipAccount");
 
     /// <summary>
+    ///     Represents a FedEx Default carrier account.
+    /// </summary>
+    public static readonly CarrierAccountType FedExDefaultAccount = new CarrierAccountType(64, "FedexDefaultAccount");
+
+    /// <summary>
+    ///     Represents a GOFO Wallet carrier account.
+    /// </summary>
+    public static readonly CarrierAccountType GofoWalletAccount = new CarrierAccountType(65, "GofoWalletAccount");
+
+    /// <summary>
+    ///     Represents a UPS DAP carrier account.
+    /// </summary>
+    public static readonly CarrierAccountType UpsDapAccount = new CarrierAccountType(66, "UpsDapAccount");
+
+    /// <summary>
+    ///     Represents a UniUni Wallet carrier account.
+    /// </summary>
+    public static readonly CarrierAccountType UniUniWalletAccount = new CarrierAccountType(67, "UniUniWalletAccount");
+
+    /// <summary>
+    ///     Represents a Veho Wallet carrier account.
+    /// </summary>
+    public static readonly CarrierAccountType VehoWalletAccount = new CarrierAccountType(68, "VehoWalletAccount");
+
+    /// <summary>
     ///     Initializes a new instance of the <see cref="CarrierAccountType"/> class.
     /// </summary>
     /// <param name="id">Internal ID of the enum. Must be unique among all enums of this specific type.</param>
