@@ -1,0 +1,54 @@
+[
+  {
+    "Duration": 230,
+    "RecordedAt": "2026-10-15T15:17:52.001759-06:00",
+    "Request": {
+      "Body": "{\"carrier_account_oauth_registrations\":{\"account_number\":\"123456789\",\"type\":\"UpsSurepostAccount\"},\"type\":\"UpsSurepostAccount\"}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "126"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/carrier_accounts/register_oauth"
+    },
+    "Response": {
+      "Body": "{\"id\":\"ca_5de944c6fa2f4f40820394533fd331e2\",\"object\":\"CarrierAccount\",\"type\":\"UpsSurepostAccount\",\"clone\":false,\"created_at\":\"2026-10-15T21:17:51Z\",\"updated_at\":\"2026-10-15T21:17:51Z\",\"description\":null,\"reference\":null,\"billing_type\":\"carrier\",\"readable\":\"UPS SurePost\",\"logo\":null,\"fields\":{},\"credentials\":{}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "1590"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "easypost-api-version": "2015-01-01",
+        "Vary": "EasyPost-Api-Version",
+        "x-ep-request-uuid": "aebfacae6ad142ffe2b7d1690072e109",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.112177",
+        "x-node": "web100azw",
+        "x-version-label": "easypost-202610151955-b13716d895-main",
+        "x-backend": "easypost",
+        "x-canary": "direct",
+        "x-proxied": "intlb4azw f29267e751,extlb3azw ff4cfe6eb5",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  }
+]

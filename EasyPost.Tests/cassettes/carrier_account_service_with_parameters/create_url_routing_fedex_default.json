@@ -1,0 +1,53 @@
+[
+  {
+    "Duration": 146,
+    "RecordedAt": "2026-10-15T15:17:50.223498-06:00",
+    "Request": {
+      "Body": "{\"carrier_account\":{\"type\":\"FedexDefaultAccount\"}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "50"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/carrier_accounts/open"
+    },
+    "Response": {
+      "Body": "{\"error\":{\"code\":\"UNPROCESSABLE_ENTITY\",\"message\":\"The request was understood, but cannot be processed.\",\"errors\":[{\"field\":\"name\",\"message\":\"is missing\"},{\"field\":\"street1\",\"message\":\"is missing\"},{\"field\":\"city\",\"message\":\"is missing\"},{\"field\":\"state\",\"message\":\"is missing\"},{\"field\":\"postal_code\",\"message\":\"is missing\"},{\"field\":\"country\",\"message\":\"is missing\"},{\"field\":\"phone\",\"message\":\"is missing\"},{\"field\":\"email\",\"message\":\"is missing\"}]}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "453"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "easypost-api-version": "2015-01-01",
+        "Vary": "EasyPost-Api-Version",
+        "x-ep-request-uuid": "ef2f756d6ad142fee2b7d14a0019995d",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.025967",
+        "x-node": "web120azw",
+        "x-version-label": "easypost-202610151955-b13716d895-main",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1azw f29267e751,extlb1azw ff4cfe6eb5",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 422,
+        "Message": "Unprocessable Entity"
+      }
+    }
+  }
+]

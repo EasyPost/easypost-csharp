@@ -1,0 +1,53 @@
+[
+  {
+    "Duration": 180,
+    "RecordedAt": "2026-10-15T15:17:50.070859-06:00",
+    "Request": {
+      "Body": "{\"carrier_account\":{\"registration_data\":{\"account_number\":\"123456789\",\"hub_id\":\"1234\",\"corporate_city\":\"San Francisco\",\"corporate_country_code\":\"US\",\"corporate_postal_code\":\"94105\",\"corporate_state\":\"CA\",\"corporate_streets\":\"345 California St\",\"corporate_company_name\":\"EasyPost\",\"corporate_email_address\":\"me@example.com\",\"corporate_first_name\":\"Demo\",\"corporate_job_title\":\"Developer\",\"corporate_last_name\":\"User\",\"corporate_phone_number\":\"5555555555\",\"shipping_city\":\"San Francisco\",\"shipping_country_code\":\"US\",\"shipping_postal_code\":\"94105\",\"shipping_state\":\"CA\",\"shipping_streets\":\"345 California St\"},\"type\":\"FedexSmartpostAccount\"}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "640"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/carrier_accounts/register"
+    },
+    "Response": {
+      "Body": "{\"error\":{\"code\":\"GONE\",\"message\":\"The requested resource is no longer available at the server and no forwarding address is known.\",\"errors\":[{\"message\":\"FedEx account registrations must use the multi-factor authentication (MFA) registration workflow. See: https://support.easypost.com/hc/en-us/articles/35262738410253-FedEx-Multi-Factor-Authentication\"}]}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "357"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "easypost-api-version": "2015-01-01",
+        "Vary": "EasyPost-Api-Version",
+        "x-ep-request-uuid": "add87ec66ad142fde2b7d1490072def4",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.054181",
+        "x-node": "web104azw",
+        "x-version-label": "easypost-202610151955-b13716d895-main",
+        "x-backend": "easypost",
+        "x-proxied": "intlb3azw f29267e751,extlb3azw ff4cfe6eb5",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 410,
+        "Message": "Gone"
+      }
+    }
+  }
+]
