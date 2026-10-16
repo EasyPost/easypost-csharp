@@ -1,0 +1,53 @@
+[
+  {
+    "Duration": 253,
+    "RecordedAt": "2026-10-15T15:17:51.525176-06:00",
+    "Request": {
+      "Body": "{\"carrier_account_oauth_registrations\":{\"account_number\":\"123456789\",\"type\":\"UpsAccount\"},\"type\":\"UpsAccount\"}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "110"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/carrier_accounts/register_oauth"
+    },
+    "Response": {
+      "Body": "{\"id\":\"ca_694ee1badda446e398214a212bf379b6\",\"object\":\"CarrierAccount\",\"type\":\"UpsAccount\",\"clone\":false,\"created_at\":\"2026-10-15T21:17:51Z\",\"updated_at\":\"2026-10-15T21:17:51Z\",\"description\":null,\"reference\":null,\"billing_type\":\"carrier\",\"readable\":\"UPS\",\"logo\":null,\"fields\":{},\"credentials\":{}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "1778"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "easypost-api-version": "2015-01-01",
+        "Vary": "EasyPost-Api-Version",
+        "x-ep-request-uuid": "5218e5856ad142ffe2b7d15000199aa1",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.138910",
+        "x-node": "web127azw",
+        "x-version-label": "easypost-202610151955-b13716d895-main",
+        "x-backend": "easypost",
+        "x-proxied": "intlb3azw f29267e751,extlb1azw ff4cfe6eb5",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  }
+]

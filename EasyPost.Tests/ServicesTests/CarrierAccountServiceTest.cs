@@ -50,28 +50,29 @@ namespace EasyPost.Tests.ServicesTests
             Assert.Equal("DhlEcsAccount", carrierAccount.Type);
         }
 
-        [Fact]
+        [Theory]
         [CrudOperations.Create]
         [Testing.Parameters]
-        public async Task TestCreateWithCustomWorkflow()
+        [InlineData("FedexAccount")]
+        [InlineData("FedexSmartpostAccount")]
+        [InlineData("AmazonShippingAccount")]
+        [InlineData("UpsAccount")]
+        [InlineData("UpsMailInnovationsAccount")]
+        [InlineData("UpsSurepostAccount")]
+        [InlineData("UspsShipAccount")]
+        [InlineData("FedexDefaultAccount")]
+        [InlineData("GofoWalletAccount")]
+        [InlineData("UpsDapAccount")]
+        [InlineData("UniUniWalletAccount")]
+        [InlineData("VehoWalletAccount")]
+        public async Task TestCreateWithCustomWorkflow(string carrierType)
         {
             UseVCR("create_with_custom_workflow");
 
-            //  FedEx or UPS should trigger a function error since not supported by legacy parameter method
-            try
-            {
-                Dictionary<string, object> parameters = Fixtures.BasicCarrierAccount;
-                parameters["type"] = CarrierAccountType.FedEx.Name;
-                parameters["registration_data"] = new Dictionary<string, object>();
+            Dictionary<string, object> parameters = Fixtures.BasicCarrierAccount;
+            parameters["type"] = carrierType;
 
-                CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
-                CleanUpAfterTest(carrierAccount.Id);
-            }
-            catch (InvalidFunctionError e)
-            {
-                // Function should have been halted due to incompatible carrier account type
-                Assert.NotNull(e);
-            }
+            await Assert.ThrowsAsync<InvalidFunctionError>(async () => await Client.CarrierAccount.Create(parameters));
         }
 
         [Fact]

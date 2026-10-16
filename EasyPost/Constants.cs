@@ -124,38 +124,59 @@ namespace EasyPost
         public static class CarrierAccounts
         {
             /// <summary>
-            ///     Carrier account types that support custom creation workflows.
+            ///     Carrier account type mappings by create endpoint.
             /// </summary>
-            private static List<string> CarrierTypesWithCustomCreateWorkflows => new()
+            private static readonly Dictionary<string, List<string>> CarrierTypesByCreateEndpoint = new()
             {
-                CarrierAccountType.AmazonShippingAccount.Name,
-                CarrierAccountType.FedEx.Name,
-                CarrierAccountType.FedExSmartPost.Name,
-                CarrierAccountType.Ups.Name,
-                CarrierAccountType.UpsMailInnovations.Name,
-                CarrierAccountType.UpsSurePost.Name,
-                CarrierAccountType.UspsShipAccount.Name,
+                {
+                    OpenCreateEndpoint,
+                    new List<string>
+                    {
+                        CarrierAccountType.FedExDefaultAccount.Name,
+                        CarrierAccountType.GofoWalletAccount.Name,
+                        CarrierAccountType.UpsDapAccount.Name,
+                        CarrierAccountType.UniUniWalletAccount.Name,
+                        CarrierAccountType.VehoWalletAccount.Name,
+                    }
+                },
+                {
+                    CustomCreateEndpoint,
+                    new List<string>
+                    {
+                        CarrierAccountType.FedEx.Name,
+                        CarrierAccountType.FedExSmartPost.Name,
+                    }
+                },
+                {
+                    OauthCreateEndpoint,
+                    new List<string>
+                    {
+                        CarrierAccountType.AmazonShippingAccount.Name,
+                        CarrierAccountType.Ups.Name,
+                        CarrierAccountType.UpsMailInnovations.Name,
+                        CarrierAccountType.UpsSurePost.Name,
+                        CarrierAccountType.UspsShipAccount.Name,
+                    }
+                },
             };
 
             internal static string DeriveCreateEndpoint(string carrierType)
             {
-                string endpoint = StandardCreateEndpoint;
-
-                var @switch = new SwitchCase
+                foreach (KeyValuePair<string, List<string>> endpointMapping in CarrierTypesByCreateEndpoint)
                 {
-                    { new List<string> { CarrierAccountType.FedEx.Name, CarrierAccountType.FedExSmartPost.Name }.Contains(carrierType), () => endpoint = CustomCreateEndpoint },
-                    { new List<string> { CarrierAccountType.AmazonShippingAccount.Name, CarrierAccountType.Ups.Name, CarrierAccountType.UpsMailInnovations.Name, CarrierAccountType.UpsSurePost.Name, CarrierAccountType.UspsShipAccount.Name, }.Contains(carrierType), () => endpoint = OauthCreateEndpoint },
-                    { SwitchCaseScenario.Default, () => endpoint = StandardCreateEndpoint },
-                };
+                    if (endpointMapping.Value.Contains(carrierType))
+                    {
+                        return endpointMapping.Key;
+                    }
+                }
 
-                @switch.MatchFirstTrue();
-
-                return endpoint;
+                return StandardCreateEndpoint;
             }
 
-            internal static bool IsCustomWorkflowCreate(string carrierType) => CarrierTypesWithCustomCreateWorkflows.Contains(carrierType);
+            internal static bool IsCustomWorkflowCreate(string carrierType) => DeriveCreateEndpoint(carrierType) != StandardCreateEndpoint;
 
             internal const string StandardCreateEndpoint = "carrier_accounts";
+            internal const string OpenCreateEndpoint = "carrier_accounts/open";
             internal const string CustomCreateEndpoint = "carrier_accounts/register";
             internal const string OauthCreateEndpoint = "carrier_accounts/register_oauth";
             internal const string StandardUpdateEndpoint = "carrier_accounts/{0}";

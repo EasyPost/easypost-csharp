@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using EasyPost.Exceptions.API;
 using EasyPost.Exceptions.General;
@@ -6,6 +8,7 @@ using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
 using EasyPost.Utilities.Internal.Attributes;
+using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace EasyPost.Tests.ServicesTests.WithParameters
@@ -110,6 +113,28 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
             Assert.StartsWith("ca_", carrierAccount.Id);
         }
 
+        [Theory]
+        [CrudOperations.Create]
+        [Testing.Parameters]
+        [MemberData(nameof(CreateUrlRoutingData))]
+        public async Task TestCreateUrlRouting(Parameters.CarrierAccount.ACreate parameters, string cassetteName, string expectedEndpoint, string expectedBodyKey)
+        {
+            UseVCR(cassetteName);
+
+            try
+            {
+                CarrierAccount carrierAccount = await Client.CarrierAccount.Create(parameters);
+                CleanUpAfterTest(carrierAccount.Id);
+            }
+            catch (ApiError error)
+            {
+                Assert.NotEqual(404, error.StatusCode);
+                Assert.NotEqual(500, error.StatusCode);
+            }
+
+            AssertCassetteRequest(cassetteName, expectedEndpoint, expectedBodyKey);
+        }
+
         [Fact]
         [CrudOperations.Create]
         [Testing.Exception]
@@ -195,6 +220,63 @@ namespace EasyPost.Tests.ServicesTests.WithParameters
         }
 
         #endregion
+
+        public static IEnumerable<object[]> CreateUrlRoutingData()
+        {
+            yield return new object[] { Fixtures.Parameters.CarrierAccounts.CreateFedEx(new Dictionary<string, object>()), "create_url_routing_fedex", "/carrier_accounts/register", "carrier_account" };
+            yield return new object[] { CreateFedExSmartPostParameters(), "create_url_routing_fedex_smartpost", "/carrier_accounts/register", "carrier_account" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateFedExDefault(), "create_url_routing_fedex_default", "/carrier_accounts/open", "carrier_account" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateGofoWallet(), "create_url_routing_gofo_wallet", "/carrier_accounts/open", "carrier_account" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateUpsDap(), "create_url_routing_ups_dap", "/carrier_accounts/open", "carrier_account" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateUniUniWallet(), "create_url_routing_uniuni_wallet", "/carrier_accounts/open", "carrier_account" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateVehoWallet(), "create_url_routing_veho_wallet", "/carrier_accounts/open", "carrier_account" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateOauth { Type = CarrierAccountType.AmazonShippingAccount.Name }, "create_url_routing_amazon_shipping", "/carrier_accounts/register_oauth", "carrier_account_oauth_registrations" };
+            yield return new object[] { Fixtures.Parameters.CarrierAccounts.CreateUps(new Dictionary<string, object>()), "create_url_routing_ups", "/carrier_accounts/register_oauth", "carrier_account_oauth_registrations" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateUpsMailInnovations { AccountNumber = "123456789" }, "create_url_routing_ups_mail_innovations", "/carrier_accounts/register_oauth", "carrier_account_oauth_registrations" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateUpsSurePost { AccountNumber = "123456789" }, "create_url_routing_ups_surepost", "/carrier_accounts/register_oauth", "carrier_account_oauth_registrations" };
+            yield return new object[] { new Parameters.CarrierAccount.CreateOauth { Type = CarrierAccountType.UspsShipAccount.Name }, "create_url_routing_usps_ship", "/carrier_accounts/register_oauth", "carrier_account_oauth_registrations" };
+        }
+
+        private static Parameters.CarrierAccount.CreateFedExSmartPost CreateFedExSmartPostParameters()
+        {
+            return new Parameters.CarrierAccount.CreateFedExSmartPost
+            {
+                AccountNumber = "123456789",
+                HubId = "1234",
+                CorporateAddressCity = "San Francisco",
+                CorporateAddressCountryCode = "US",
+                CorporateAddressPostalCode = "94105",
+                CorporateAddressState = "CA",
+                CorporateAddressStreet = "345 California St",
+                CorporateCompanyName = "EasyPost",
+                CorporateEmailAddress = "me@example.com",
+                CorporateFirstName = "Demo",
+                CorporateLastName = "User",
+                CorporateJobTitle = "Developer",
+                CorporatePhoneNumber = "5555555555",
+                ShippingAddressCity = "San Francisco",
+                ShippingAddressCountryCode = "US",
+                ShippingAddressPostalCode = "94105",
+                ShippingAddressState = "CA",
+                ShippingAddressStreet = "345 California St",
+            };
+        }
+
+        private static void AssertCassetteRequest(string cassetteName, string expectedEndpoint, string expectedBodyKey)
+        {
+            string cassettePath = Path.GetFullPath(Path.Combine(TestUtils.GetSourceFileDirectory(), "..", "..", "cassettes", "carrier_account_service_with_parameters", $"{cassetteName}.json"));
+            string cassetteJson = File.ReadAllText(cassettePath);
+            JArray interactions = JArray.Parse(cassetteJson);
+            JToken? interaction = interactions.FirstOrDefault();
+
+            Assert.NotNull(interaction);
+
+            string? requestUri = interaction!["Request"]?["Uri"]?.Value<string>();
+            string? requestBody = interaction["Request"]?["Body"]?.Value<string>();
+
+            Assert.EndsWith(expectedEndpoint, requestUri);
+            Assert.Contains(expectedBodyKey, requestBody);
+        }
 
         #endregion
     }

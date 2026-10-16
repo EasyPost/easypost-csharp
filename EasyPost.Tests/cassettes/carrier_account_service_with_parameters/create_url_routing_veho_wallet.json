@@ -1,0 +1,53 @@
+[
+  {
+    "Duration": 196,
+    "RecordedAt": "2026-10-15T15:17:51.011485-06:00",
+    "Request": {
+      "Body": "{\"carrier_account\":{\"type\":\"VehoWalletAccount\"}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "48"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/carrier_accounts/open"
+    },
+    "Response": {
+      "Body": "{\"id\":\"ca_202f1c116cca404da6afb9775df0e3c3\",\"object\":\"CarrierAccount\",\"type\":\"VehoWalletAccount\",\"clone\":false,\"created_at\":\"2026-10-15T21:17:50Z\",\"updated_at\":\"2026-10-15T21:17:50Z\",\"description\":\"Veho Account\",\"reference\":null,\"billing_type\":\"easypost\",\"readable\":\"Veho\",\"logo\":null,\"fields\":{},\"credentials\":{}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "583"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "easypost-api-version": "2015-01-01",
+        "Vary": "EasyPost-Api-Version",
+        "x-ep-request-uuid": "cdd5852e6ad142fee2b7d14e0019b2d9",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.073283",
+        "x-node": "web125azw",
+        "x-version-label": "easypost-202610151955-b13716d895-main",
+        "x-backend": "easypost",
+        "x-proxied": "intlb1azw f29267e751,extlb2azw ff4cfe6eb5",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  }
+]

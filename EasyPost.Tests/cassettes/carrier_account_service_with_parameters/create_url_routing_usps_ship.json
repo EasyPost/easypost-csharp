@@ -1,0 +1,53 @@
+[
+  {
+    "Duration": 211,
+    "RecordedAt": "2026-10-15T15:17:52.222343-06:00",
+    "Request": {
+      "Body": "{\"carrier_account_oauth_registrations\":{\"type\":\"UspsShipAccount\"},\"type\":\"UspsShipAccount\"}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "91"
+      },
+      "Method": "POST",
+      "RequestHeaders": {
+        "Authorization": "<REDACTED>",
+        "User-Agent": "<REDACTED>"
+      },
+      "Uri": "https://api.easypost.com/v2/carrier_accounts/register_oauth"
+    },
+    "Response": {
+      "Body": "{\"id\":\"ca_11dc800d513f4b2185527910e584a182\",\"object\":\"CarrierAccount\",\"type\":\"UspsShipAccount\",\"clone\":false,\"created_at\":\"2026-10-15T21:17:52Z\",\"updated_at\":\"2026-10-15T21:17:52Z\",\"description\":null,\"reference\":null,\"billing_type\":\"carrier\",\"readable\":\"Usps Ship\",\"logo\":null,\"fields\":{},\"credentials\":{}}",
+      "BodyContentType": "Json",
+      "ContentHeaders": {
+        "Expires": "0",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "2573"
+      },
+      "HttpVersion": "1.1",
+      "ResponseHeaders": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "x-download-options": "noopen",
+        "x-permitted-cross-domain-policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "easypost-api-version": "2015-01-01",
+        "Vary": "EasyPost-Api-Version",
+        "x-ep-request-uuid": "ef2f756f6ad14300e2b7d16a00199b70",
+        "Cache-Control": "no-store, no-cache, private",
+        "Pragma": "no-cache",
+        "x-runtime": "0.098394",
+        "x-node": "web127azw",
+        "x-version-label": "easypost-202610151955-b13716d895-main",
+        "x-backend": "easypost",
+        "x-proxied": "intlb4azw f29267e751,extlb1azw ff4cfe6eb5",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "Status": {
+        "Code": 201,
+        "Message": "Created"
+      }
+    }
+  }
+]
