@@ -741,7 +741,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Models.API.CarrierAccountType.html",
-          "hash": "6kWGTvQWYQay5vmcWV6G6NKQLka5w7sp5cwTp3lM83A="
+          "hash": "d8FDX1LjJTLSMGZHb/ZR3AjVcoIYnMJxBrvaXTgD/1I="
         }
       },
       "is_incremental": false,
@@ -1989,7 +1989,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.CarrierAccount.Create.html",
-          "hash": "/EkhREHG/G8aCwlg8GUvMbnU6EmcfG6vYHCt6APZidE="
+          "hash": "pcdF7GyVuFXAdQ63d4ufRXKlXVflFhTNwYXqx2Q3Gy0="
         }
       },
       "is_incremental": false,
@@ -2009,11 +2009,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateFedExDefault.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateFedExDefault.html",
+          "hash": "Wcl4P4XcUYipZoT4tagt3AV7pU+yzaZFYOYOSa/ybUU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.yml",
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html",
           "hash": "b3kruVmhVbJT3LY2WTVYEoojI/G0JFQy4ct4wEiv0bY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateGofoWallet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateGofoWallet.html",
+          "hash": "TxPUIBuXVIfrLX6xH8FuZgsGWRBJ2vWd6qAdYxTjg9I="
         }
       },
       "is_incremental": false,
@@ -2033,11 +2057,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateUniUniWallet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateUniUniWallet.html",
+          "hash": "9Wlcv+y4aJmndxZHvVmCreQKdX8Ga9YCJki09GaWJSw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateUps.yml",
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateUps.html",
           "hash": "g5jMx+w61yqQYpKi1F8ElISqeGUNY9UdGz++fXnNgWU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateUpsDap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateUpsDap.html",
+          "hash": "452+t9NppwNiGPW0IlG08r66zdevLPk25hBvS+m70Yo="
         }
       },
       "is_incremental": false,
@@ -2062,6 +2110,18 @@
         ".html": {
           "relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.html",
           "hash": "BYOulWG3Ws0GdsBZ/9AnJtjD1DpizM+hgBJPxGkjWyM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateVehoWallet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EasyPost.Parameters.CarrierAccount.CreateVehoWallet.html",
+          "hash": "poRWpGNbOH2Txpdm1OEc7+22lPBmEX93NesBnRb+JII="
         }
       },
       "is_incremental": false,
@@ -2121,7 +2181,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EasyPost.Parameters.CarrierAccount.html",
-          "hash": "0aAiiaR5QZOF9GABeCVsNkopdE+2zULZ9MmokmeySzg="
+          "hash": "GVgRt+n/6mRaM5mXXdhLqxCfHNou/6odvOOGkvZAJZ8="
         }
       },
       "is_incremental": false,
@@ -4209,7 +4269,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "vvPt48qXU3K7yH6+5u5O2e8WNqpspM2AQhVvk8gMii4="
+          "hash": "BJTRUeaEBNDYGkLJ8FTRgHYJkepAJqaqFZ6sPUIt34w="
         }
       },
       "is_incremental": false,
@@ -4284,7 +4344,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 349,
+          "total_file_count": 354,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

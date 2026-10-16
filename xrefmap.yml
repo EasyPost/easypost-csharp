@@ -3101,12 +3101,24 @@ references:
   commentId: F:EasyPost.Models.API.CarrierAccountType.FedEx
   fullName: EasyPost.Models.API.CarrierAccountType.FedEx
   nameWithType: CarrierAccountType.FedEx
+- uid: EasyPost.Models.API.CarrierAccountType.FedExDefaultAccount
+  name: FedExDefaultAccount
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_FedExDefaultAccount
+  commentId: F:EasyPost.Models.API.CarrierAccountType.FedExDefaultAccount
+  fullName: EasyPost.Models.API.CarrierAccountType.FedExDefaultAccount
+  nameWithType: CarrierAccountType.FedExDefaultAccount
 - uid: EasyPost.Models.API.CarrierAccountType.FedExSmartPost
   name: FedExSmartPost
   href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_FedExSmartPost
   commentId: F:EasyPost.Models.API.CarrierAccountType.FedExSmartPost
   fullName: EasyPost.Models.API.CarrierAccountType.FedExSmartPost
   nameWithType: CarrierAccountType.FedExSmartPost
+- uid: EasyPost.Models.API.CarrierAccountType.GofoWalletAccount
+  name: GofoWalletAccount
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_GofoWalletAccount
+  commentId: F:EasyPost.Models.API.CarrierAccountType.GofoWalletAccount
+  fullName: EasyPost.Models.API.CarrierAccountType.GofoWalletAccount
+  nameWithType: CarrierAccountType.GofoWalletAccount
 - uid: EasyPost.Models.API.CarrierAccountType.Name
   name: Name
   href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_Name
@@ -3120,12 +3132,24 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.CarrierAccountType.Name
   nameWithType: CarrierAccountType.Name
+- uid: EasyPost.Models.API.CarrierAccountType.UniUniWalletAccount
+  name: UniUniWalletAccount
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_UniUniWalletAccount
+  commentId: F:EasyPost.Models.API.CarrierAccountType.UniUniWalletAccount
+  fullName: EasyPost.Models.API.CarrierAccountType.UniUniWalletAccount
+  nameWithType: CarrierAccountType.UniUniWalletAccount
 - uid: EasyPost.Models.API.CarrierAccountType.Ups
   name: Ups
   href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_Ups
   commentId: F:EasyPost.Models.API.CarrierAccountType.Ups
   fullName: EasyPost.Models.API.CarrierAccountType.Ups
   nameWithType: CarrierAccountType.Ups
+- uid: EasyPost.Models.API.CarrierAccountType.UpsDapAccount
+  name: UpsDapAccount
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_UpsDapAccount
+  commentId: F:EasyPost.Models.API.CarrierAccountType.UpsDapAccount
+  fullName: EasyPost.Models.API.CarrierAccountType.UpsDapAccount
+  nameWithType: CarrierAccountType.UpsDapAccount
 - uid: EasyPost.Models.API.CarrierAccountType.UpsMailInnovations
   name: UpsMailInnovations
   href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_UpsMailInnovations
@@ -3144,6 +3168,12 @@ references:
   commentId: F:EasyPost.Models.API.CarrierAccountType.UspsShipAccount
   fullName: EasyPost.Models.API.CarrierAccountType.UspsShipAccount
   nameWithType: CarrierAccountType.UspsShipAccount
+- uid: EasyPost.Models.API.CarrierAccountType.VehoWalletAccount
+  name: VehoWalletAccount
+  href: api/EasyPost.Models.API.CarrierAccountType.html#EasyPost_Models_API_CarrierAccountType_VehoWalletAccount
+  commentId: F:EasyPost.Models.API.CarrierAccountType.VehoWalletAccount
+  fullName: EasyPost.Models.API.CarrierAccountType.VehoWalletAccount
+  nameWithType: CarrierAccountType.VehoWalletAccount
 - uid: EasyPost.Models.API.CarrierDetail
   name: CarrierDetail
   href: api/EasyPost.Models.API.CarrierDetail.html
@@ -12246,6 +12276,25 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.CreateFedEx.Type
   nameWithType: CreateFedEx.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExDefault
+  name: CreateFedExDefault
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExDefault.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.CreateFedExDefault
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExDefault
+  nameWithType: CreateFedExDefault
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExDefault.#ctor
+  name: CreateFedExDefault()
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExDefault.html#EasyPost_Parameters_CarrierAccount_CreateFedExDefault__ctor
+  commentId: M:EasyPost.Parameters.CarrierAccount.CreateFedExDefault.#ctor
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExDefault.CreateFedExDefault()
+  nameWithType: CreateFedExDefault.CreateFedExDefault()
+- uid: EasyPost.Parameters.CarrierAccount.CreateFedExDefault.#ctor*
+  name: CreateFedExDefault
+  href: api/EasyPost.Parameters.CarrierAccount.CreateFedExDefault.html#EasyPost_Parameters_CarrierAccount_CreateFedExDefault__ctor_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateFedExDefault.#ctor
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateFedExDefault.CreateFedExDefault
+  nameWithType: CreateFedExDefault.CreateFedExDefault
 - uid: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost
   name: CreateFedExSmartPost
   href: api/EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.html
@@ -12551,6 +12600,25 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.CreateFedExSmartPost.Type
   nameWithType: CreateFedExSmartPost.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateGofoWallet
+  name: CreateGofoWallet
+  href: api/EasyPost.Parameters.CarrierAccount.CreateGofoWallet.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.CreateGofoWallet
+  fullName: EasyPost.Parameters.CarrierAccount.CreateGofoWallet
+  nameWithType: CreateGofoWallet
+- uid: EasyPost.Parameters.CarrierAccount.CreateGofoWallet.#ctor
+  name: CreateGofoWallet()
+  href: api/EasyPost.Parameters.CarrierAccount.CreateGofoWallet.html#EasyPost_Parameters_CarrierAccount_CreateGofoWallet__ctor
+  commentId: M:EasyPost.Parameters.CarrierAccount.CreateGofoWallet.#ctor
+  fullName: EasyPost.Parameters.CarrierAccount.CreateGofoWallet.CreateGofoWallet()
+  nameWithType: CreateGofoWallet.CreateGofoWallet()
+- uid: EasyPost.Parameters.CarrierAccount.CreateGofoWallet.#ctor*
+  name: CreateGofoWallet
+  href: api/EasyPost.Parameters.CarrierAccount.CreateGofoWallet.html#EasyPost_Parameters_CarrierAccount_CreateGofoWallet__ctor_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateGofoWallet.#ctor
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateGofoWallet.CreateGofoWallet
+  nameWithType: CreateGofoWallet.CreateGofoWallet
 - uid: EasyPost.Parameters.CarrierAccount.CreateOauth
   name: CreateOauth
   href: api/EasyPost.Parameters.CarrierAccount.CreateOauth.html
@@ -12609,6 +12677,25 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.CreateOauth.Type
   nameWithType: CreateOauth.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateUniUniWallet
+  name: CreateUniUniWallet
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUniUniWallet.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.CreateUniUniWallet
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUniUniWallet
+  nameWithType: CreateUniUniWallet
+- uid: EasyPost.Parameters.CarrierAccount.CreateUniUniWallet.#ctor
+  name: CreateUniUniWallet()
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUniUniWallet.html#EasyPost_Parameters_CarrierAccount_CreateUniUniWallet__ctor
+  commentId: M:EasyPost.Parameters.CarrierAccount.CreateUniUniWallet.#ctor
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUniUniWallet.CreateUniUniWallet()
+  nameWithType: CreateUniUniWallet.CreateUniUniWallet()
+- uid: EasyPost.Parameters.CarrierAccount.CreateUniUniWallet.#ctor*
+  name: CreateUniUniWallet
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUniUniWallet.html#EasyPost_Parameters_CarrierAccount_CreateUniUniWallet__ctor_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUniUniWallet.#ctor
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUniUniWallet.CreateUniUniWallet
+  nameWithType: CreateUniUniWallet.CreateUniUniWallet
 - uid: EasyPost.Parameters.CarrierAccount.CreateUps
   name: CreateUps
   href: api/EasyPost.Parameters.CarrierAccount.CreateUps.html
@@ -12693,6 +12780,25 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.CreateUps.Type
   nameWithType: CreateUps.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsDap
+  name: CreateUpsDap
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsDap.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.CreateUpsDap
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsDap
+  nameWithType: CreateUpsDap
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsDap.#ctor
+  name: CreateUpsDap()
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsDap.html#EasyPost_Parameters_CarrierAccount_CreateUpsDap__ctor
+  commentId: M:EasyPost.Parameters.CarrierAccount.CreateUpsDap.#ctor
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsDap.CreateUpsDap()
+  nameWithType: CreateUpsDap.CreateUpsDap()
+- uid: EasyPost.Parameters.CarrierAccount.CreateUpsDap.#ctor*
+  name: CreateUpsDap
+  href: api/EasyPost.Parameters.CarrierAccount.CreateUpsDap.html#EasyPost_Parameters_CarrierAccount_CreateUpsDap__ctor_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateUpsDap.#ctor
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateUpsDap.CreateUpsDap
+  nameWithType: CreateUpsDap.CreateUpsDap
 - uid: EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations
   name: CreateUpsMailInnovations
   href: api/EasyPost.Parameters.CarrierAccount.CreateUpsMailInnovations.html
@@ -12861,6 +12967,25 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CarrierAccount.CreateUpsSurePost.Type
   nameWithType: CreateUpsSurePost.Type
+- uid: EasyPost.Parameters.CarrierAccount.CreateVehoWallet
+  name: CreateVehoWallet
+  href: api/EasyPost.Parameters.CarrierAccount.CreateVehoWallet.html
+  commentId: T:EasyPost.Parameters.CarrierAccount.CreateVehoWallet
+  fullName: EasyPost.Parameters.CarrierAccount.CreateVehoWallet
+  nameWithType: CreateVehoWallet
+- uid: EasyPost.Parameters.CarrierAccount.CreateVehoWallet.#ctor
+  name: CreateVehoWallet()
+  href: api/EasyPost.Parameters.CarrierAccount.CreateVehoWallet.html#EasyPost_Parameters_CarrierAccount_CreateVehoWallet__ctor
+  commentId: M:EasyPost.Parameters.CarrierAccount.CreateVehoWallet.#ctor
+  fullName: EasyPost.Parameters.CarrierAccount.CreateVehoWallet.CreateVehoWallet()
+  nameWithType: CreateVehoWallet.CreateVehoWallet()
+- uid: EasyPost.Parameters.CarrierAccount.CreateVehoWallet.#ctor*
+  name: CreateVehoWallet
+  href: api/EasyPost.Parameters.CarrierAccount.CreateVehoWallet.html#EasyPost_Parameters_CarrierAccount_CreateVehoWallet__ctor_
+  commentId: Overload:EasyPost.Parameters.CarrierAccount.CreateVehoWallet.#ctor
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CarrierAccount.CreateVehoWallet.CreateVehoWallet
+  nameWithType: CreateVehoWallet.CreateVehoWallet
 - uid: EasyPost.Parameters.CarrierAccount.Update
   name: Update
   href: api/EasyPost.Parameters.CarrierAccount.Update.html
