@@ -35,6 +35,12 @@ namespace EasyPost.Parameters.TaxIdentifier
         [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "issuing_country")]
         public string? IssuingCountry { get; set; }
 
+        /// <summary>
+        ///     The <see cref="Models.API.Address"/> associated with the tax identification number.
+        /// </summary>
+        [NestedRequestParameter(typeof(Shipment.Create), Necessity.Optional, "address")]
+        public Models.API.Address? Address { get; set; }
+
         #endregion
     }
 }

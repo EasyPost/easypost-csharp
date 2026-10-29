@@ -12,6 +12,12 @@ namespace EasyPost.Models.API
         #region JSON Properties
 
         /// <summary>
+        ///     The <see cref="Address"/> associated with the <see cref="TaxId"/>.
+        /// </summary>
+        [JsonProperty("address")]
+        public Address? Address { get; set; }
+
+        /// <summary>
         ///     Which entity the <see cref="TaxId"/> belongs to.
         ///     Possible values are:
         ///     <list type="bullet">
