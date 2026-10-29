@@ -50,6 +50,12 @@ namespace EasyPost.Models.API
         public string? Manufacturer { get; set; }
 
         /// <summary>
+        ///     Manufacturer-assigned product identifier (NS-PID) for the item.
+        /// </summary>
+        [JsonProperty("manufacturer_product_id")]
+        public string? ManufacturerProductId { get; set; }
+
+        /// <summary>
         ///     The two-letter ISO 3166 country code where the item is being shipped from.
         /// </summary>
         [JsonProperty("origin_country")]
@@ -66,6 +72,12 @@ namespace EasyPost.Models.API
         /// </summary>
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
+
+        /// <summary>
+        ///     Standardized product identifier (S-PID) for the item, such as a GTIN or EAN.
+        /// </summary>
+        [JsonProperty("standardized_product_id")]
+        public string? StandardizedProductId { get; set; }
 
         /// <summary>
         ///     The value of the item being shipped, in US Dollars.

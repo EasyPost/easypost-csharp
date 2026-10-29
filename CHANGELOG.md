@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v7.12.0 (2026-10-29)
+
+- Adds `ManufacturerProductId` and `StandardizedProductId` properties to the `CustomsItem` API model and create parameters
+- Adds `Address` property to the `TaxIdentifier` API model and create parameters
+
 ## v7.11.0 (2026-10-27)
 
 - Removes the deprecated, unusable `ReferralCustomer.AddCreditCardToUser` function

@@ -88,6 +88,20 @@ namespace EasyPost.Parameters.CustomsItem
         [NestedRequestParameter(typeof(CustomsInfo.Create), Necessity.Optional, "eccn")]
         public string? Eccn { get; set; }
 
+        /// <summary>
+        ///     Manufacturer-assigned product identifier (NS-PID) for the item.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "customs_item", "manufacturer_product_id")]
+        [NestedRequestParameter(typeof(CustomsInfo.Create), Necessity.Optional, "manufacturer_product_id")]
+        public string? ManufacturerProductId { get; set; }
+
+        /// <summary>
+        ///     Standardized product identifier (S-PID) for the item, such as a GTIN or EAN.
+        /// </summary>
+        [TopLevelRequestParameter(Necessity.Optional, "customs_item", "standardized_product_id")]
+        [NestedRequestParameter(typeof(CustomsInfo.Create), Necessity.Optional, "standardized_product_id")]
+        public string? StandardizedProductId { get; set; }
+
         #endregion
     }
 }
