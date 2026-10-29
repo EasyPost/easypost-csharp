@@ -4239,6 +4239,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.CustomsItem.Manufacturer
   nameWithType: CustomsItem.Manufacturer
+- uid: EasyPost.Models.API.CustomsItem.ManufacturerProductId
+  name: ManufacturerProductId
+  href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_ManufacturerProductId
+  commentId: P:EasyPost.Models.API.CustomsItem.ManufacturerProductId
+  fullName: EasyPost.Models.API.CustomsItem.ManufacturerProductId
+  nameWithType: CustomsItem.ManufacturerProductId
+- uid: EasyPost.Models.API.CustomsItem.ManufacturerProductId*
+  name: ManufacturerProductId
+  href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_ManufacturerProductId_
+  commentId: Overload:EasyPost.Models.API.CustomsItem.ManufacturerProductId
+  isSpec: "True"
+  fullName: EasyPost.Models.API.CustomsItem.ManufacturerProductId
+  nameWithType: CustomsItem.ManufacturerProductId
 - uid: EasyPost.Models.API.CustomsItem.OriginCountry
   name: OriginCountry
   href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_OriginCountry
@@ -4278,6 +4291,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.CustomsItem.Quantity
   nameWithType: CustomsItem.Quantity
+- uid: EasyPost.Models.API.CustomsItem.StandardizedProductId
+  name: StandardizedProductId
+  href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_StandardizedProductId
+  commentId: P:EasyPost.Models.API.CustomsItem.StandardizedProductId
+  fullName: EasyPost.Models.API.CustomsItem.StandardizedProductId
+  nameWithType: CustomsItem.StandardizedProductId
+- uid: EasyPost.Models.API.CustomsItem.StandardizedProductId*
+  name: StandardizedProductId
+  href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_StandardizedProductId_
+  commentId: Overload:EasyPost.Models.API.CustomsItem.StandardizedProductId
+  isSpec: "True"
+  fullName: EasyPost.Models.API.CustomsItem.StandardizedProductId
+  nameWithType: CustomsItem.StandardizedProductId
 - uid: EasyPost.Models.API.CustomsItem.Value
   name: Value
   href: api/EasyPost.Models.API.CustomsItem.html#EasyPost_Models_API_CustomsItem_Value
@@ -9698,6 +9724,19 @@ references:
   commentId: T:EasyPost.Models.API.TaxIdentifier
   fullName: EasyPost.Models.API.TaxIdentifier
   nameWithType: TaxIdentifier
+- uid: EasyPost.Models.API.TaxIdentifier.Address
+  name: Address
+  href: api/EasyPost.Models.API.TaxIdentifier.html#EasyPost_Models_API_TaxIdentifier_Address
+  commentId: P:EasyPost.Models.API.TaxIdentifier.Address
+  fullName: EasyPost.Models.API.TaxIdentifier.Address
+  nameWithType: TaxIdentifier.Address
+- uid: EasyPost.Models.API.TaxIdentifier.Address*
+  name: Address
+  href: api/EasyPost.Models.API.TaxIdentifier.html#EasyPost_Models_API_TaxIdentifier_Address_
+  commentId: Overload:EasyPost.Models.API.TaxIdentifier.Address
+  isSpec: "True"
+  fullName: EasyPost.Models.API.TaxIdentifier.Address
+  nameWithType: TaxIdentifier.Address
 - uid: EasyPost.Models.API.TaxIdentifier.Entity
   name: Entity
   href: api/EasyPost.Models.API.TaxIdentifier.html#EasyPost_Models_API_TaxIdentifier_Entity
@@ -13833,6 +13872,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CustomsItem.Create.Manufacturer
   nameWithType: Create.Manufacturer
+- uid: EasyPost.Parameters.CustomsItem.Create.ManufacturerProductId
+  name: ManufacturerProductId
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_ManufacturerProductId
+  commentId: P:EasyPost.Parameters.CustomsItem.Create.ManufacturerProductId
+  fullName: EasyPost.Parameters.CustomsItem.Create.ManufacturerProductId
+  nameWithType: Create.ManufacturerProductId
+- uid: EasyPost.Parameters.CustomsItem.Create.ManufacturerProductId*
+  name: ManufacturerProductId
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_ManufacturerProductId_
+  commentId: Overload:EasyPost.Parameters.CustomsItem.Create.ManufacturerProductId
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CustomsItem.Create.ManufacturerProductId
+  nameWithType: Create.ManufacturerProductId
 - uid: EasyPost.Parameters.CustomsItem.Create.OriginCountry
   name: OriginCountry
   href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_OriginCountry
@@ -13872,6 +13924,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Parameters.CustomsItem.Create.Quantity
   nameWithType: Create.Quantity
+- uid: EasyPost.Parameters.CustomsItem.Create.StandardizedProductId
+  name: StandardizedProductId
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_StandardizedProductId
+  commentId: P:EasyPost.Parameters.CustomsItem.Create.StandardizedProductId
+  fullName: EasyPost.Parameters.CustomsItem.Create.StandardizedProductId
+  nameWithType: Create.StandardizedProductId
+- uid: EasyPost.Parameters.CustomsItem.Create.StandardizedProductId*
+  name: StandardizedProductId
+  href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_StandardizedProductId_
+  commentId: Overload:EasyPost.Parameters.CustomsItem.Create.StandardizedProductId
+  isSpec: "True"
+  fullName: EasyPost.Parameters.CustomsItem.Create.StandardizedProductId
+  nameWithType: Create.StandardizedProductId
 - uid: EasyPost.Parameters.CustomsItem.Create.Value
   name: Value
   href: api/EasyPost.Parameters.CustomsItem.Create.html#EasyPost_Parameters_CustomsItem_Create_Value
@@ -17256,6 +17321,19 @@ references:
   commentId: T:EasyPost.Parameters.TaxIdentifier.Create
   fullName: EasyPost.Parameters.TaxIdentifier.Create
   nameWithType: Create
+- uid: EasyPost.Parameters.TaxIdentifier.Create.Address
+  name: Address
+  href: api/EasyPost.Parameters.TaxIdentifier.Create.html#EasyPost_Parameters_TaxIdentifier_Create_Address
+  commentId: P:EasyPost.Parameters.TaxIdentifier.Create.Address
+  fullName: EasyPost.Parameters.TaxIdentifier.Create.Address
+  nameWithType: Create.Address
+- uid: EasyPost.Parameters.TaxIdentifier.Create.Address*
+  name: Address
+  href: api/EasyPost.Parameters.TaxIdentifier.Create.html#EasyPost_Parameters_TaxIdentifier_Create_Address_
+  commentId: Overload:EasyPost.Parameters.TaxIdentifier.Create.Address
+  isSpec: "True"
+  fullName: EasyPost.Parameters.TaxIdentifier.Create.Address
+  nameWithType: Create.Address
 - uid: EasyPost.Parameters.TaxIdentifier.Create.Entity
   name: Entity
   href: api/EasyPost.Parameters.TaxIdentifier.Create.html#EasyPost_Parameters_TaxIdentifier_Create_Entity
