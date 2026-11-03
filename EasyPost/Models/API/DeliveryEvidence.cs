@@ -26,10 +26,10 @@ namespace EasyPost.Models.API
         public string? Type { get; set; }
 
         /// <summary>
-        ///     The URL of the delivery evidence image. Always present; the URL expires after 30 days.
+        ///     The URL of the delivery evidence image. The URL expires after 30 days.
         /// </summary>
         [JsonProperty("image")]
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         #endregion
     }
