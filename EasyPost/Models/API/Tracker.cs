@@ -219,6 +219,12 @@ namespace EasyPost.Models.API
         [JsonProperty("is_return")]
         public bool? IsReturn { get; set; }
 
+        /// <summary>
+        ///     A list of <see cref="DeliveryEvidence"/> (proof of delivery images) for the package.
+        /// </summary>
+        [JsonProperty("delivery_evidence")]
+        public List<DeliveryEvidence>? DeliveryEvidence { get; set; }
+
         #endregion
 
     }
