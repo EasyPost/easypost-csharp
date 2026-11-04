@@ -26,7 +26,9 @@ namespace EasyPost.Models.API
         public string? Type { get; set; }
 
         /// <summary>
-        ///     The URL of the delivery evidence image. The URL expires after 30 days.
+        ///     The URL of the delivery evidence image.
+        ///     Image URLs aren't guaranteed to remain available,
+        ///     so download and store any image you need to keep.
         /// </summary>
         [JsonProperty("image")]
         public string? Image { get; set; }
