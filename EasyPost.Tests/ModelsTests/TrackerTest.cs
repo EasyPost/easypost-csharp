@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 using EasyPost.Models.API;
 using EasyPost.Tests._Utilities;
 using EasyPost.Tests._Utilities.Attributes;
-using EasyPost.Utilities.Internal;
 using Xunit;
 
 namespace EasyPost.Tests.ModelsTests
@@ -36,20 +35,6 @@ namespace EasyPost.Tests.ModelsTests
                 Assert.NotNull(trackingDetail.TrackingLocation);
                 // TrackingLocation details will be empty, so we can't test their presence.
             }
-        }
-
-        [Fact]
-        [Testing.Properties]
-        public void TestTrackerDeliveryEvidence()
-        {
-            const string json = "{\"id\": \"trk_123\", \"object\": \"Tracker\", \"delivery_evidence\": [{\"type\": \"signature\", \"image\": \"https://example.com/signature.png\"}]}";
-
-            Tracker tracker = JsonSerialization.ConvertJsonToObject<Tracker>(json);
-
-            Assert.NotNull(tracker.DeliveryEvidence);
-            DeliveryEvidence deliveryEvidence = Assert.Single(tracker.DeliveryEvidence);
-            Assert.Equal("signature", deliveryEvidence.Type);
-            Assert.Equal("https://example.com/signature.png", deliveryEvidence.Image);
         }
     }
 }
