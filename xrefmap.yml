@@ -4375,6 +4375,38 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.DeliveryDateForZipPairEstimate.TimeInTransitDetails
   nameWithType: DeliveryDateForZipPairEstimate.TimeInTransitDetails
+- uid: EasyPost.Models.API.DeliveryEvidence
+  name: DeliveryEvidence
+  href: api/EasyPost.Models.API.DeliveryEvidence.html
+  commentId: T:EasyPost.Models.API.DeliveryEvidence
+  fullName: EasyPost.Models.API.DeliveryEvidence
+  nameWithType: DeliveryEvidence
+- uid: EasyPost.Models.API.DeliveryEvidence.Image
+  name: Image
+  href: api/EasyPost.Models.API.DeliveryEvidence.html#EasyPost_Models_API_DeliveryEvidence_Image
+  commentId: P:EasyPost.Models.API.DeliveryEvidence.Image
+  fullName: EasyPost.Models.API.DeliveryEvidence.Image
+  nameWithType: DeliveryEvidence.Image
+- uid: EasyPost.Models.API.DeliveryEvidence.Image*
+  name: Image
+  href: api/EasyPost.Models.API.DeliveryEvidence.html#EasyPost_Models_API_DeliveryEvidence_Image_
+  commentId: Overload:EasyPost.Models.API.DeliveryEvidence.Image
+  isSpec: "True"
+  fullName: EasyPost.Models.API.DeliveryEvidence.Image
+  nameWithType: DeliveryEvidence.Image
+- uid: EasyPost.Models.API.DeliveryEvidence.Type
+  name: Type
+  href: api/EasyPost.Models.API.DeliveryEvidence.html#EasyPost_Models_API_DeliveryEvidence_Type
+  commentId: P:EasyPost.Models.API.DeliveryEvidence.Type
+  fullName: EasyPost.Models.API.DeliveryEvidence.Type
+  nameWithType: DeliveryEvidence.Type
+- uid: EasyPost.Models.API.DeliveryEvidence.Type*
+  name: Type
+  href: api/EasyPost.Models.API.DeliveryEvidence.html#EasyPost_Models_API_DeliveryEvidence_Type_
+  commentId: Overload:EasyPost.Models.API.DeliveryEvidence.Type
+  isSpec: "True"
+  fullName: EasyPost.Models.API.DeliveryEvidence.Type
+  nameWithType: DeliveryEvidence.Type
 - uid: EasyPost.Models.API.EmbeddablesSession
   name: EmbeddablesSession
   href: api/EasyPost.Models.API.EmbeddablesSession.html
@@ -10047,6 +10079,19 @@ references:
   isSpec: "True"
   fullName: EasyPost.Models.API.Tracker.CarrierDetail
   nameWithType: Tracker.CarrierDetail
+- uid: EasyPost.Models.API.Tracker.DeliveryEvidence
+  name: DeliveryEvidence
+  href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_DeliveryEvidence
+  commentId: P:EasyPost.Models.API.Tracker.DeliveryEvidence
+  fullName: EasyPost.Models.API.Tracker.DeliveryEvidence
+  nameWithType: Tracker.DeliveryEvidence
+- uid: EasyPost.Models.API.Tracker.DeliveryEvidence*
+  name: DeliveryEvidence
+  href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_DeliveryEvidence_
+  commentId: Overload:EasyPost.Models.API.Tracker.DeliveryEvidence
+  isSpec: "True"
+  fullName: EasyPost.Models.API.Tracker.DeliveryEvidence
+  nameWithType: Tracker.DeliveryEvidence
 - uid: EasyPost.Models.API.Tracker.EstDeliveryDate
   name: EstDeliveryDate
   href: api/EasyPost.Models.API.Tracker.html#EasyPost_Models_API_Tracker_EstDeliveryDate
