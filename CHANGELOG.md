@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v7.13.1 (2026-11-23)
 
 - Fixes `EasyPostObject.GetHashCode()` and `Equals()` throwing a `NullReferenceException` when `Id` is null, such as on id-less objects returned by the API (e.g. `TrackingDetail`, `Fee`, `Message`) or models created locally (closes [678](https://github.com/EasyPost/easypost-csharp/issues/678))
 
