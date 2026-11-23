@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Fixes `EasyPostObject.GetHashCode()` (and `Equals()`) throwing a `NullReferenceException` when `Id` is null (closes [678](https://github.com/EasyPost/easypost-csharp/issues/678))
+
 ## v7.13.0 (2026-11-09)
 
 - Adds `DeliveryEvidence` property and model to the `Tracker` API model

@@ -54,7 +54,7 @@ namespace EasyPost._base
         /// <inheritdoc />
         // ReSharper disable once NonReadonlyMemberInGetHashCode
 #pragma warning disable CA1307
-        public override int GetHashCode() => base.GetHashCode() ^ Id!.GetHashCode();
+        public override int GetHashCode() => base.GetHashCode() ^ (Id?.GetHashCode() ?? 0);
 #pragma warning restore CA1307
 
         /// <inheritdoc cref="EphemeralEasyPostObject.operator =="/>

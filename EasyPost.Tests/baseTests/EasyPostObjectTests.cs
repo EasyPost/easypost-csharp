@@ -47,6 +47,17 @@ namespace EasyPost.Tests.baseTests
         }
 
         [Fact]
+        [Testing.EdgeCase]
+        public void TestHashCodeWhenIdIsNull()
+        {
+            ApiKey apiKey = new();
+            ApiKey sameProperties = new();
+
+            Assert.Equal(apiKey.GetHashCode(), sameProperties.GetHashCode());
+            Assert.True(apiKey.Equals(sameProperties));
+        }
+
+        [Fact]
         [Testing.Function]
         public void TestEquals()
         {
